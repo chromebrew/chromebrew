@@ -2,7 +2,11 @@
 mkdir chromebrew_install
 cd chromebrew_install
 
-#download tarballs
+#download installation files
+wget https://raw.github.com/skycocker/chromebrew/master/$(uname -m)_links
+wget https://raw.github.com/skycocker/chromebrew/master/lib_files_already_present_in_system_list
+
+#download precompiled core tarballs
 for url in $(cat $(uname -m)_links)
 do
   wget --content-disposition $url
