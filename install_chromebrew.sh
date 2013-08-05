@@ -1,3 +1,6 @@
+#cd to /usr/local so we are certain we are able to execute stuff (certain partitions are mounted with no execute privileges)
+cd /usr/local
+
 #create work directory and cd into it
 mkdir chromebrew_install
 cd chromebrew_install
