@@ -12,4 +12,4 @@ Installation
 
 Download and run installation script
 
-    wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install_chromebrew.sh | sudo bash
+    wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | sudo bash
