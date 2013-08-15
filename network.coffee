@@ -7,6 +7,7 @@ module.exports.getFile = (url) ->
     len = parseInt res.headers['content-length'], 10
     content_disposition = res.headers['content-disposition']
     filename = content_disposition.substring content_disposition.indexOf('"')+1, content_disposition.length-1
+    eventDispatch.emit 'filename', filename
 
     console.log();
     bar = new progressbar ' downloading [:bar] :percent :etas', {
@@ -21,4 +22,4 @@ module.exports.getFile = (url) ->
       bar.tick chunk.length
 
     res.on 'end', ->
-      eventDispatch.emit 'gotFile'
+      eventDispatch.emit 'gotPackage'
