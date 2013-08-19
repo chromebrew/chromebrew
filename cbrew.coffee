@@ -58,24 +58,40 @@ download = (pkgName) =>
 install = (pkgName) =>
   eventDispatch.on 'extractedPackage', =>
     console.log 'installing package...'
-    ncp './usr', './xd', (error) =>
+    fs.rename './usr', './xd', =>
       @device.installed_packages.push { name: pkgName, version: pkgVersion }
       fs.writeFile './device.json', JSON.stringify @device, null, 2
-      ncp './filelist', './meta/' + pkgName + '.filelist', (error) ->
-        console.log 'package ' + pkgName + ' installed!' unless error
+      fs.rename './dlist', './meta/' + pkgName + '.directorylist'
+      fs.rename './filelist', './meta/' + pkgName + '.filelist', ->
+        console.log 'package ' + pkgName + ' installed!'
 
   eventDispatch.on 'packageSumOk', ->
     console.log 'extracting archive...'
-    new tgz().extract './' + @pkg.filename, '.', (error) ->
+    new tgz().extract './' + @pkg.filename, '.', (error) =>
       eventDispatch.emit 'extractedPackage' unless error
+      fs.unlink './' + @pkg.filename, (error) ->
+        throw error if error
 
   download pkgName
 
 remove = (pkgName) =>
-  fs.readFile './meta/' + pkgName + '.filelist', (error, data) ->
+  fs.readFile './meta/' + pkgName + '.filelist', (error, data) =>
     throw error if error
-    lines = data.toString().split '\n'
-    fs.unlink '.' + line for line in lines
+    filelist_lines = data.toString().split '\n'
+    for line in filelist_lines
+      unless not line
+        fs.unlink '.' + line, (error) ->
+          throw error if error
+    fs.readFile './meta/' + pkgName + '.directorylist', (error, data) ->
+      throw error if error
+      directorylist_lines = data.toString().split '\n'
+      for line in directorylist_lines.reverse()
+        unless not line
+          fs.rmdirSync '.' + line
+    @device.installed_packages = @device.installed_packages.filter (pkg) -> pkg.name isnt pkgName
+    fs.writeFileSync './device.json', JSON.stringify @device, null, 2
+    fs.unlink './meta/' + pkgName + '.filelist'
+    fs.unlink './meta/' + pkgName + '.directorylist'
     console.log pkgName + ' removed!'
 
 showStatus = =>
