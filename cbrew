@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+require 'find'
+require 'net/http'
+require 'uri'
+require 'digest/sha1'
+require 'json'
+
+@command = ARGV[0]
+@pkgName = ARGV[1]
+
+@device = JSON.parse(File.read('./device.json'), symbolize_names: true)
+@device.each do |key, elem| #symbolize also values
+  @device[key] = @device[key].to_sym rescue @device[key]
+end
+
+def setPkg
+  require './packages/' + @pkgName
+  @pkg = Object.const_get(@pkgName.capitalize)
+  puts "Found #{@pkgName}, version #{@pkg.version}"
+end
+
+def search (pkgName)
+  Find.find ('packages') do |filename|
+    return setPkg if filename == 'packages/' + pkgName + '.rb'
+  end
+  puts "package #{pkgName} not found :("
+end
+
+def download
+  if @pkg.binary_url && @pkg.binary_url.has_key?(@device[:architecture])
+    url = @pkg.binary_url[@device[:architecture]]
+    source = false
+  else
+    url = @pkg.source_url
+    source = true
+  end
+  uri = URI.parse url
+  filename = File.basename(uri.path)
+  system('wget', '--content-disposition', url)
+  abort 'Checksum mismatch, try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
+  return {source: source, filename: filename}
+end
+
+def install
+  meta = download
+  if meta[:source] == true
+    @pkg.build
+    @pkg.install
+  else#if meta[:source] == false
+    system "tar", "zxf", meta[:filename]
+  end
+end
+
+case @command
+when "search"
+  search @pkgName
+when "download"
+  search @pkgName
+  download
+when "install"
+  search @pkgName
+  install
+else
+  puts "I have no idea how to do #{@command} :("
+end
