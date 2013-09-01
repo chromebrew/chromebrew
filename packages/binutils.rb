@@ -8,5 +8,4 @@ class Binutils < Package
   binary_sha1 ({
     i686: 'a7edc9bdaf9fc72112fe6b370f158a9a1aee87ac'
   })
-  source_url "http://xd.xd/"
 end

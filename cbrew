@@ -4,6 +4,7 @@ require 'net/http'
 require 'uri'
 require 'digest/sha1'
 require 'json'
+require 'fileutils'
 
 @command = ARGV[0]
 @pkgName = ARGV[1]
@@ -30,25 +31,69 @@ def download
   if @pkg.binary_url && @pkg.binary_url.has_key?(@device[:architecture])
     url = @pkg.binary_url[@device[:architecture]]
     source = false
+    puts "Precompiled binary available, downloading..."
   else
     url = @pkg.source_url
     source = true
+    puts "No precompiled binary available for your platform, downloading source..."
   end
   uri = URI.parse url
   filename = File.basename(uri.path)
   system('wget', '--content-disposition', url)
   abort 'Checksum mismatch, try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
+  puts "Archive downloaded"
   return {source: source, filename: filename}
 end
 
 def install
   meta = download
   if meta[:source] == true
+    puts "Building from source, this may take a while..."
     @pkg.build
+    puts "Installing..."
     @pkg.install
-  else#if meta[:source] == false
+  else
+    puts "Unpacking archive, this may take a while..."
     system "tar", "zxf", meta[:filename]
+    puts "Installing..."
+    FileUtils.mv './usr', './xd'
+    FileUtils.mv './dlist', "./meta/#{@pkgName}.directorylist"
+    FileUtils.mv './filelist', "./meta/#{@pkgName}.filelist"
   end
+ 
+  #add to installed packages
+  @device[:installed_packages].push(name: @pkgName, version: @pkg.version)
+  File.open('./device.json', 'w') do |file|
+    output = JSON.parse @device.to_json
+    file.write JSON.pretty_generate(output)
+  end
+  puts "#{@pkgName.capitalize} installed!"
+end
+
+def remove
+  File.open("./meta/#{@pkgName}.filelist").each_line do |line|
+    File.unlink '.' + line.chomp
+  end
+  
+  File.readlines("./meta/#{@pkgName}.directorylist").reverse.each do |line|
+    begin
+      Dir.rmdir '.' + line.chomp
+    rescue => exception #swallow exception
+    end
+  end
+
+  File.unlink "./meta/#{@pkgName}.filelist"
+  File.unlink "./meta/#{@pkgName}.directorylist"
+  
+  #remove from installed packages
+  @device[:installed_packages].each do |elem|
+    @device[:installed_packages].delete elem if elem[:name] == @pkgName
+  end
+  File.open('./device.json', 'w') do |file|
+    out = JSON.parse @device.to_json
+    file.write JSON.pretty_generate(out)
+  end
+  puts "#{@pkgName.capitalize} removed!"
 end
 
 case @command
@@ -60,6 +105,14 @@ when "download"
 when "install"
   search @pkgName
   install
+when "remove"
+  search @pkgName
+  remove
+when nil
+  puts "Chromebrew, version 0.1"
+  puts "Usage: cbrew [command] [package]"
+  puts "Available commands: search, download, install, remove"
 else
   puts "I have no idea how to do #{@command} :("
+  puts "Available commands: search, download, install, remove"
 end
