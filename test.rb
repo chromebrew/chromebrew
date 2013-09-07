@@ -1,4 +1,4 @@
-require './packages/binutils'
+require './packages/gcc'
 require 'json'
 require 'pathname'
 
@@ -7,4 +7,4 @@ require 'pathname'
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-Binutils.dependencies
+Gcc.dependencies

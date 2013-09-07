@@ -10,21 +10,22 @@ require 'fileutils'
 @pkgName = ARGV[1]
 
 @device = JSON.parse(File.read('./device.json'), symbolize_names: true)
-@device.each do |key, elem| #symbolize also values
+#symbolize also values
+@device.each do |key, elem|
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def setPkg
-  require './packages/' + @pkgName
-  @pkg = Object.const_get(@pkgName.capitalize)
-  puts "Found #{@pkgName}, version #{@pkg.version}"
+def setPkg (pkgName, silent = false)
+  require './packages/' + pkgName
+  @pkg = Object.const_get(pkgName.capitalize)
+  puts "Found #{pkgName}, version #{@pkg.version}" unless silent
 end
 
-def search (pkgName)
+def search (pkgName, silent = false)
   Find.find ('packages') do |filename|
-    return setPkg if filename == 'packages/' + pkgName + '.rb'
+    return setPkg(pkgName, silent) if filename == 'packages/' + pkgName + '.rb'
   end
-  puts "package #{pkgName} not found :("
+  abort "package #{pkgName} not found :("
 end
 
 def download
@@ -40,27 +41,82 @@ def download
   uri = URI.parse url
   filename = File.basename(uri.path)
   system('wget', '--content-disposition', url)
-  abort 'Checksum mismatch, try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
+  abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
   puts "Archive downloaded"
   return {source: source, filename: filename}
 end
 
-def install
-  meta = download
-  if meta[:source] == true
-    puts "Building from source, this may take a while..."
-    @pkg.build
-    puts "Installing..."
-    @pkg.install
-  else
-    puts "Unpacking archive, this may take a while..."
-    system "tar", "zxf", meta[:filename]
-    puts "Installing..."
-    FileUtils.mv './usr', './xd'
-    FileUtils.mv './dlist', "./meta/#{@pkgName}.directorylist"
-    FileUtils.mv './filelist', "./meta/#{@pkgName}.filelist"
+def resolveDependenciesAndInstall
+  origin = @pkgName
+
+  resolveDependencies
+  
+  search origin
+  install
+end
+
+def resolveDependencies
+  @dependencies = []
+
+  def pushDeps
+    if @pkg.dependencies
+      @dependencies << @pkg.dependencies
+      
+      @pkg.dependencies.each do |dep|
+        search dep, true
+        pushDeps
+      end
+    end
   end
- 
+  
+  pushDeps
+
+  puts "Following packages also need to be installed: "
+  @dependencies.flatten!.each do |dep|
+    print dep + " "
+  end
+  puts ""
+  puts "Do you agree? [Y/n]"
+  response = STDIN.getc
+  case response
+  when "n"
+    abort "No changes made."
+  when "\n", "y", "Y"
+    puts "Proceeding..."
+    proceed = true
+  else
+    puts "I don't understand '#{response}' :("
+    abort "No changes made."
+  end
+
+  if proceed
+    @dependencies.each do |dep|
+      search dep
+      install
+    end
+  end
+end
+
+def install
+  unless @pkg.is_fake
+    meta = download
+    if meta[:source] == true
+      puts "Building from source, this may take a while..."
+      @pkg.build
+      puts "Installing..."
+      @pkg.install
+    else
+      puts "Unpacking archive, this may take a while..."
+      system "tar", "zxf", meta[:filename]
+      puts "Installing..."
+    
+      #system "mv", "./usr/*", "./xd"
+    
+      FileUtils.mv './dlist', "./meta/#{@pkgName}.directorylist"
+      FileUtils.mv './filelist', "./meta/#{@pkgName}.filelist"
+    end
+  end
+  
   #add to installed packages
   @device[:installed_packages].push(name: @pkgName, version: @pkg.version)
   File.open('./device.json', 'w') do |file|
@@ -104,7 +160,7 @@ when "download"
   download
 when "install"
   search @pkgName
-  install
+  resolveDependenciesAndInstall
 when "remove"
   search @pkgName
   remove
