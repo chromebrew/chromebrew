@@ -5,6 +5,7 @@ class Package
   
   class << self
     attr_reader :dependencies, :is_fake
+    attr_accessor :name
   end
   def self.depends_on (dependency = nil)
     @dependencies = [] unless @dependencies
@@ -15,6 +16,10 @@ class Package
   end
   
   def self.is_fake
-    
+    @is_fake = true
+  end
+  
+  def self.is_fake?
+    @is_fake
   end
 end

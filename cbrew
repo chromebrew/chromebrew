@@ -18,6 +18,7 @@ end
 def setPkg (pkgName, silent = false)
   require './packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
+  @pkg.name = pkgName
   puts "Found #{pkgName}, version #{@pkg.version}" unless silent
 end
 
@@ -70,6 +71,8 @@ def resolveDependencies
   end
   
   pushDeps
+  
+  return if @dependencies.empty?
 
   puts "Following packages also need to be installed: "
   @dependencies.flatten!.each do |dep|
@@ -98,7 +101,12 @@ def resolveDependencies
 end
 
 def install
-  unless @pkg.is_fake
+  if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
+    puts "Package #{@pkg.name} already installed, skipping..."
+    return
+  end
+
+  unless @pkg.is_fake?
     meta = download
     if meta[:source] == true
       puts "Building from source, this may take a while..."
@@ -112,38 +120,48 @@ def install
     
       #system "mv", "./usr/*", "./xd"
     
-      FileUtils.mv './dlist', "./meta/#{@pkgName}.directorylist"
-      FileUtils.mv './filelist', "./meta/#{@pkgName}.filelist"
+      FileUtils.mv './dlist', "./meta/#{@pkg.name}.directorylist"
+      FileUtils.mv './filelist', "./meta/#{@pkg.name}.filelist"
     end
   end
   
   #add to installed packages
-  @device[:installed_packages].push(name: @pkgName, version: @pkg.version)
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open('./device.json', 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
-  puts "#{@pkgName.capitalize} installed!"
+  puts "#{@pkg.name.capitalize} installed!"
 end
 
 def remove
-  File.open("./meta/#{@pkgName}.filelist").each_line do |line|
-    File.unlink '.' + line.chomp
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
+    puts "Package #{@pkg.name} isn't installed."
+    return
   end
   
-  File.readlines("./meta/#{@pkgName}.directorylist").reverse.each do |line|
-    begin
-      Dir.rmdir '.' + line.chomp
-    rescue => exception #swallow exception
+  unless @pkg.is_fake?
+    File.open("./meta/#{@pkg.name}.filelist").each_line do |line|
+      begin
+        File.unlink '.' + line.chomp
+      rescue => exception #swallow exception
+      end
     end
+  
+    File.readlines("./meta/#{@pkg.name}.directorylist").reverse.each do |line|
+      begin
+        Dir.rmdir '.' + line.chomp
+      rescue => exception #swallow exception
+      end
+    end
+
+    File.unlink "./meta/#{@pkg.name}.filelist"
+    File.unlink "./meta/#{@pkg.name}.directorylist"
   end
 
-  File.unlink "./meta/#{@pkgName}.filelist"
-  File.unlink "./meta/#{@pkgName}.directorylist"
-  
   #remove from installed packages
   @device[:installed_packages].each do |elem|
-    @device[:installed_packages].delete elem if elem[:name] == @pkgName
+    @device[:installed_packages].delete elem if elem[:name] == @pkg.name
   end
   File.open('./device.json', 'w') do |file|
     out = JSON.parse @device.to_json

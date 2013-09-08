@@ -1,4 +1,4 @@
-require './packages/gcc'
+require './packages/buildessential'
 require 'json'
 require 'pathname'
 
@@ -7,4 +7,4 @@ require 'pathname'
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-Gcc.dependencies
+@device[:installed_packages].any? { |pkg| pkg[:name] == 'gcc' }
