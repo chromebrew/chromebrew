@@ -9,14 +9,21 @@ require 'fileutils'
 @command = ARGV[0]
 @pkgName = ARGV[1]
 
-@device = JSON.parse(File.read('./device.json'), symbolize_names: true)
+CBREW_PREFIX = '/usr/local'
+CBREW_LIB_PATH = CBREW_PREFIX + '/lib/cbrew/'
+CBREW_CONFIG_PATH = CBREW_PREFIX + '/etc/cbrew/'
+CBREW_BREW_DIR = CBREW_PREFIX + '/tmp/cbrew/'
+
+$LOAD_PATH.push CBREW_LIB_PATH
+
+@device = JSON.parse(File.read(CBREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
 @device.each do |key, elem|
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
 def setPkg (pkgName, silent = false)
-  require './packages/' + pkgName
+  require 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
   puts "Found #{pkgName}, version #{@pkg.version}" unless silent
@@ -41,8 +48,10 @@ def download
   end
   uri = URI.parse url
   filename = File.basename(uri.path)
-  system('wget', '--content-disposition', url)
-  abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
+  Dir.chdir CBREW_BREW_DIR do
+    system('wget', '--content-disposition', url)
+    abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
+  end
   puts "Archive downloaded"
   return {source: source, filename: filename}
 end
@@ -119,15 +128,28 @@ def install
       puts "Installing..."
     
       #system "mv", "./usr/*", "./xd"
-    
-      FileUtils.mv './dlist', "./meta/#{@pkg.name}.directorylist"
-      FileUtils.mv './filelist', "./meta/#{@pkg.name}.filelist"
+      Dir.chdir CBREW_BREW_DIR do
+        FileUtils.mv './dlist', CBREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
+        FileUtils.mv './filelist', CBREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
+      end
+
+      Dir.chdir CBREW_CONFIG_PATH do
+        File.open("meta/#{@pkg.name}.directorylist").each_line do |line|
+          system "mkdir", "-p", line.chomp
+        end
+
+        File.open("meta/#{@pkg.name}.filelist").each_line do |line|
+          Dir.chdir CBREW_BREW_DIR do
+            system "mv", '.' + line.chomp, line.chomp
+          end
+        end
+      end
     end
   end
   
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
-  File.open('./device.json', 'w') do |file|
+  File.open(CBREW_CONFIG_PATH + 'device.json', 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
@@ -141,29 +163,31 @@ def remove
   end
   
   unless @pkg.is_fake?
-    File.open("./meta/#{@pkg.name}.filelist").each_line do |line|
-      begin
-        File.unlink '.' + line.chomp
-      rescue => exception #swallow exception
+    Dir.chdir CBREW_CONFIG_PATH do
+      File.open("meta/#{@pkg.name}.filelist").each_line do |line|
+        begin
+          File.unlink '.' + line.chomp
+        rescue => exception #swallow exception
+        end
       end
-    end
   
-    File.readlines("./meta/#{@pkg.name}.directorylist").reverse.each do |line|
-      begin
-        Dir.rmdir '.' + line.chomp
-      rescue => exception #swallow exception
+      File.readlines("meta/#{@pkg.name}.directorylist").reverse.each do |line|
+        begin
+          Dir.rmdir '.' + line.chomp
+        rescue => exception #swallow exception
+        end
       end
-    end
 
-    File.unlink "./meta/#{@pkg.name}.filelist"
-    File.unlink "./meta/#{@pkg.name}.directorylist"
+      File.unlink "meta/#{@pkg.name}.filelist"
+      File.unlink "meta/#{@pkg.name}.directorylist"
+    end
   end
 
   #remove from installed packages
   @device[:installed_packages].each do |elem|
     @device[:installed_packages].delete elem if elem[:name] == @pkg.name
   end
-  File.open('./device.json', 'w') do |file|
+  File.open(CBREW_CONFIG_PATH + 'device.json', 'w') do |file|
     out = JSON.parse @device.to_json
     file.write JSON.pretty_generate(out)
   end

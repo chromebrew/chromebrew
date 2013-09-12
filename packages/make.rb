@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Make < Package
   version '3.82'

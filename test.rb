@@ -1,4 +1,4 @@
-require './packages/buildessential'
+#require './packages/buildessential'
 require 'json'
 require 'pathname'
 
@@ -7,4 +7,15 @@ require 'pathname'
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-@device[:installed_packages].any? { |pkg| pkg[:name] == 'gcc' }
+Dir.chdir './meta' do
+  File.open("make.directorylist").each_line do |line|
+    #puts line
+    system "mkdir -p " + line.chomp
+  end
+
+  File.open("make.filelist").each_line do |line|
+    Dir.chdir '../tmp' do
+      system "mv", '.' + line.chomp, line.chomp
+    end
+  end
+end

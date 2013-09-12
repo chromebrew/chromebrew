@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Gmp < Package
   version "5.1.2"

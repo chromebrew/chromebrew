@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Linuxheaders < Package
   version '3.4.0'

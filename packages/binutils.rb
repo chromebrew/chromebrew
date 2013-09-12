@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Binutils < Package
   version '2.12'

@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Mpfr < Package
   version '3.1.2'

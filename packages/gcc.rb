@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Gcc < Package
   version '4.8.1-baseline'

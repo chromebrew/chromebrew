@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Glibc < Package
   version '2.17.90-baseline'
@@ -6,6 +6,6 @@ class Glibc < Package
     i686: "https://dl.dropboxusercontent.com/s/dic47f8eqxhpf89/glibc-2.17.90-baseline-chromeos-i686.tar.gz?token_hash=AAHx_77YtWLLnkjCJRaCJt7RsdKrfkT6lgKS9BZc4O-0Pg&dl=1"
   })
   binary_sha1 ({
-    i686: "defebdeeafd71c40193debf3b786938399ece844"
+    i686: "3c3a0b86ed4591ec59daeb24d2dcda139574de1b"
   })
 end

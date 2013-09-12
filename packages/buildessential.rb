@@ -1,4 +1,4 @@
-require './lib/package'
+require 'package'
 
 class Buildessential < Package
   version '1.0'
