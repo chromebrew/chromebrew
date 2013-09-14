@@ -23,7 +23,7 @@ $LOAD_PATH.push CBREW_LIB_PATH
 end
 
 def setPkg (pkgName, silent = false)
-  require 'packages/' + pkgName
+  require CBREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
   puts "Found #{pkgName}, version #{@pkg.version}" unless silent
@@ -31,7 +31,7 @@ end
 
 def search (pkgName, silent = false)
   Find.find (CBREW_LIB_PATH + 'packages') do |filename|
-    return setPkg(pkgName, silent) if filename == 'packages/' + pkgName + '.rb'
+    return setPkg(pkgName, silent) if filename == CBREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
   abort "package #{pkgName} not found :("
 end
