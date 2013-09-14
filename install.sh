@@ -43,7 +43,7 @@ mv cbrew $CBREW_PREFIX/bin
 #install cbrew library
 cd $CBREW_LIB_PATH
 wget https://raw.github.com/skycocker/chromebrew/master/lib/package.rb
-wget https://github.com/skycocker/chromebrew/blob/master/lib/package_helpers.rb
+wget https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb
 #create the device.json file
 cd $CBREW_CONFIG_PATH
 touch device.json
