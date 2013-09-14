@@ -30,7 +30,7 @@ def setPkg (pkgName, silent = false)
 end
 
 def search (pkgName, silent = false)
-  Find.find ('packages') do |filename|
+  Find.find (CBREW_LIB_PATH + 'packages') do |filename|
     return setPkg(pkgName, silent) if filename == 'packages/' + pkgName + '.rb'
   end
   abort "package #{pkgName} not found :("
