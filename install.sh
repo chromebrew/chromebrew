@@ -74,9 +74,9 @@ wget https://raw.github.com/skycocker/chromebrew/master/packages/python.rb
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CBREW_LIB_PATH
-git init
-git remote add -f origin git@github.com:skycocker/chromebrew.git
-git config.sparsecheckout true
+su chronos -c '$CBREW_PREFIX/bin/git init'
+su chronos -c '$CBREW_PREFIX/bin/git remote add -f origin https://github.com/skycocker/chromebrew.git'
+su chronos -c '$CBREW_PREFIX/bin/git config core.sparsecheckout true'
 echo packages >> .git/info/sparse-checkout
-git pull origin master
+su chronos -c '$CBREW_PREFIX/bin/git pull origin master'
 echo "Chromebrew installed successfully and package lists updated."
