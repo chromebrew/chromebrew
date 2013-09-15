@@ -70,7 +70,7 @@ wget https://raw.github.com/skycocker/chromebrew/master/packages/gettext.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/python.rb
 
 #install git
-cbrew install git
+(echo y;) | cbrew install git
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CBREW_LIB_PATH
@@ -79,5 +79,4 @@ git remote add -f origin git@github.com:skycocker/chromebrew.git
 git config.sparsecheckout true
 echo packages >> .git/info/sparse-checkout
 git pull origin master
-
 echo "Chromebrew installed successfully and package lists updated."
