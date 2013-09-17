@@ -9,29 +9,29 @@ require 'fileutils'
 @command = ARGV[0]
 @pkgName = ARGV[1]
 
-CBREW_PREFIX = '/usr/local'
-CBREW_LIB_PATH = CBREW_PREFIX + '/lib/cbrew/'
-CBREW_CONFIG_PATH = CBREW_PREFIX + '/etc/cbrew/'
-CBREW_BREW_DIR = CBREW_PREFIX + '/tmp/cbrew/'
+CREW_PREFIX = '/usr/local'
+CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
+CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
+CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 
-$LOAD_PATH.push CBREW_LIB_PATH
+$LOAD_PATH.push CREW_LIB_PATH
 
-@device = JSON.parse(File.read(CBREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
+@device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
 @device.each do |key, elem|
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
 def setPkg (pkgName, silent = false)
-  require CBREW_LIB_PATH + 'packages/' + pkgName
+  require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
   puts "Found #{pkgName}, version #{@pkg.version}" unless silent
 end
 
 def search (pkgName, silent = false)
-  Find.find (CBREW_LIB_PATH + 'packages') do |filename|
-    return setPkg(pkgName, silent) if filename == CBREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
   abort "package #{pkgName} not found :("
 end
@@ -48,7 +48,7 @@ def download
   end
   uri = URI.parse url
   filename = File.basename(uri.path)
-  Dir.chdir CBREW_BREW_DIR do
+  Dir.chdir CREW_BREW_DIR do
     system('wget', '--content-disposition', url)
     abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
   end
@@ -123,23 +123,23 @@ def install
       puts "Installing..."
       @pkg.install
     else
-      Dir.chdir CBREW_BREW_DIR do
+      Dir.chdir CREW_BREW_DIR do
         puts "Unpacking archive, this may take a while..."
         system "tar", "zxf", meta[:filename]
         
         puts "Installing..."
         
-        FileUtils.mv './dlist', CBREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
-        FileUtils.mv './filelist', CBREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
+        FileUtils.mv './dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
+        FileUtils.mv './filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
       end
 
-      Dir.chdir CBREW_CONFIG_PATH do
+      Dir.chdir CREW_CONFIG_PATH do
         File.open("meta/#{@pkg.name}.directorylist").each_line do |line|
           system "mkdir", "-p", line.chomp
         end
 
         File.open("meta/#{@pkg.name}.filelist").each_line do |line|
-          Dir.chdir CBREW_BREW_DIR do
+          Dir.chdir CREW_BREW_DIR do
             system "mv", '.' + line.chomp, line.chomp
           end
         end
@@ -149,7 +149,7 @@ def install
   
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
-  File.open(CBREW_CONFIG_PATH + 'device.json', 'w') do |file|
+  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
@@ -163,7 +163,7 @@ def remove
   end
   
   unless @pkg.is_fake?
-    Dir.chdir CBREW_CONFIG_PATH do
+    Dir.chdir CREW_CONFIG_PATH do
       File.open("meta/#{@pkg.name}.filelist").each_line do |line|
         begin
           File.unlink '.' + line.chomp
@@ -187,7 +187,7 @@ def remove
   @device[:installed_packages].each do |elem|
     @device[:installed_packages].delete elem if elem[:name] == @pkg.name
   end
-  File.open(CBREW_CONFIG_PATH + 'device.json', 'w') do |file|
+  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     out = JSON.parse @device.to_json
     file.write JSON.pretty_generate(out)
   end
@@ -208,7 +208,7 @@ when "remove"
   remove
 when nil
   puts "Chromebrew, version 0.1"
-  puts "Usage: cbrew [command] [package]"
+  puts "Usage: crew [command] [package]"
   puts "Available commands: search, download, install, remove"
 else
   puts "I have no idea how to do #{@command} :("
