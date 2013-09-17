@@ -5,12 +5,14 @@ CBREW_CONFIG_PATH=$CBREW_PREFIX/etc/cbrew/
 CBREW_BREW_DIR=$CBREW_PREFIX/tmp/cbrew/
 CBREW_PACKAGES_PATH=$CBREW_LIB_PATH/packages
 
+user=$(whoami)
+
 #prepare directories
-mkdir -p $CBREW_LIB_PATH
-mkdir -p $CBREW_CONFIG_PATH
-mkdir -p $CBREW_CONFIG_PATH/meta
-mkdir -p $CBREW_BREW_DIR
-mkdir -p $CBREW_PACKAGES_PATH
+sudo mkdir -p $CBREW_LIB_PATH && sudo chown -R $user:$user $CBREW_LIB_PATH
+sudo mkdir -p $CBREW_CONFIG_PATH && sudo chown -R $user:$user $CBREW_CONFIG_PATH
+sudo mkdir -p $CBREW_CONFIG_PATH/meta && sudo chown -R $user:$user $CBREW_CONFIG_PATH/meta
+sudo mkdir -p $CBREW_BREW_DIR && sudo chown -R $user:$user $CBREW_BREW_DIR
+sudo mkdir -p $CBREW_PACKAGES_PATH && sudo chown -R $user:$user $CBREW_PACKAGES_PATH
 
 #cd into the brew directory, everything will happen there
 cd $CBREW_BREW_DIR
@@ -32,14 +34,14 @@ wget --content-disposition $link
 echo "Extracting ruby (this may take a while)..."
 tar -xf ruby-2.0.0p247-chromeos-$architecture.tar.gz
 echo "Installing ruby (this may take a while)..."
-cp -r ./usr/* /usr
+sudo cp -r ./usr/* /usr
 mv ./dlist $CBREW_CONFIG_PATH/meta/ruby.directorylist
 mv ./filelist $CBREW_CONFIG_PATH/meta/ruby.filelist
 
 #download, prepare and install chromebrew
 wget https://raw.github.com/skycocker/chromebrew/master/cbrew
 chmod +x cbrew
-mv cbrew $CBREW_PREFIX/bin
+sudo mv cbrew $CBREW_PREFIX/bin
 #install cbrew library
 cd $CBREW_LIB_PATH
 wget https://raw.github.com/skycocker/chromebrew/master/lib/package.rb
@@ -70,13 +72,13 @@ wget https://raw.github.com/skycocker/chromebrew/master/packages/gettext.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/python.rb
 
 #install git
-(echo y;) | cbrew install git
+(echo y;) | sudo cbrew install git
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CBREW_LIB_PATH
-su chronos -c '$CBREW_PREFIX/bin/git init'
-su chronos -c '$CBREW_PREFIX/bin/git remote add -f origin https://github.com/skycocker/chromebrew.git'
-su chronos -c '$CBREW_PREFIX/bin/git config core.sparsecheckout true'
+git init
+git remote add -f origin https://github.com/skycocker/chromebrew.git
+git config core.sparsecheckout true
 echo packages >> .git/info/sparse-checkout
-su chronos -c '$CBREW_PREFIX/bin/git pull origin master'
+git pull origin master
 echo "Chromebrew installed successfully and package lists updated."
