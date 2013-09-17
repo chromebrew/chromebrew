@@ -1,21 +1,21 @@
 #chromebrew directories
-CBREW_PREFIX=/usr/local
-CBREW_LIB_PATH=$CBREW_PREFIX/lib/cbrew/
-CBREW_CONFIG_PATH=$CBREW_PREFIX/etc/cbrew/
-CBREW_BREW_DIR=$CBREW_PREFIX/tmp/cbrew/
-CBREW_PACKAGES_PATH=$CBREW_LIB_PATH/packages
+CREW_PREFIX=/usr/local
+CREW_LIB_PATH=$CREW_PREFIX/lib/crew/
+CREW_CONFIG_PATH=$CREW_PREFIX/etc/crew/
+CREW_BREW_DIR=$CREW_PREFIX/tmp/crew/
+CREW_PACKAGES_PATH=$CREW_LIB_PATH/packages
 
 user=$(whoami)
 
 #prepare directories
-sudo mkdir -p $CBREW_LIB_PATH && sudo chown -R $user:$user $CBREW_LIB_PATH
-sudo mkdir -p $CBREW_CONFIG_PATH && sudo chown -R $user:$user $CBREW_CONFIG_PATH
-sudo mkdir -p $CBREW_CONFIG_PATH/meta && sudo chown -R $user:$user $CBREW_CONFIG_PATH/meta
-sudo mkdir -p $CBREW_BREW_DIR && sudo chown -R $user:$user $CBREW_BREW_DIR
-sudo mkdir -p $CBREW_PACKAGES_PATH && sudo chown -R $user:$user $CBREW_PACKAGES_PATH
+sudo mkdir -p $CREW_LIB_PATH && sudo chown -R $user:$user $CREW_LIB_PATH
+sudo mkdir -p $CREW_CONFIG_PATH && sudo chown -R $user:$user $CREW_CONFIG_PATH
+sudo mkdir -p $CREW_CONFIG_PATH/meta && sudo chown -R $user:$user $CREW_CONFIG_PATH/meta
+sudo mkdir -p $CREW_BREW_DIR && sudo chown -R $user:$user $CREW_BREW_DIR
+sudo mkdir -p $CREW_PACKAGES_PATH && sudo chown -R $user:$user $CREW_PACKAGES_PATH
 
 #cd into the brew directory, everything will happen there
-cd $CBREW_BREW_DIR
+cd $CREW_BREW_DIR
 
 #download ruby
 echo "Downloading ruby..."
@@ -35,19 +35,19 @@ echo "Extracting ruby (this may take a while)..."
 tar -xf ruby-2.0.0p247-chromeos-$architecture.tar.gz
 echo "Installing ruby (this may take a while)..."
 sudo cp -r ./usr/* /usr
-mv ./dlist $CBREW_CONFIG_PATH/meta/ruby.directorylist
-mv ./filelist $CBREW_CONFIG_PATH/meta/ruby.filelist
+mv ./dlist $CREW_CONFIG_PATH/meta/ruby.directorylist
+mv ./filelist $CREW_CONFIG_PATH/meta/ruby.filelist
 
 #download, prepare and install chromebrew
-wget https://raw.github.com/skycocker/chromebrew/master/cbrew
-chmod +x cbrew
-sudo mv cbrew $CBREW_PREFIX/bin
-#install cbrew library
-cd $CBREW_LIB_PATH
+wget https://raw.github.com/skycocker/chromebrew/master/crew
+chmod +x crew
+sudo mv crew $CREW_PREFIX/bin
+#install crew library
+cd $CREW_LIB_PATH
 wget https://raw.github.com/skycocker/chromebrew/master/lib/package.rb
 wget https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb
 #create the device.json file
-cd $CBREW_CONFIG_PATH
+cd $CREW_CONFIG_PATH
 touch device.json
 echo "{" > device.json
 echo '  "architecture": "'$architecture'",' >> device.json
@@ -60,7 +60,7 @@ echo '  ]' >> device.json
 echo "}" >> device.json
 
 #download git and its dependencies .rb package files
-cd $CBREW_PACKAGES_PATH
+cd $CREW_PACKAGES_PATH
 wget https://raw.github.com/skycocker/chromebrew/master/packages/git.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/zlib.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/libssh2.rb
@@ -72,10 +72,10 @@ wget https://raw.github.com/skycocker/chromebrew/master/packages/gettext.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/python.rb
 
 #install git
-(echo y;) | sudo cbrew install git
+(echo y;) | sudo crew install git
 
 #prepare sparse checkout .rb packages directory and do it
-cd $CBREW_LIB_PATH
+cd $CREW_LIB_PATH
 git init
 git remote add -f origin https://github.com/skycocker/chromebrew.git
 git config core.sparsecheckout true

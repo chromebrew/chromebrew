@@ -18,7 +18,7 @@ Download and run the installation script
 Usage
 -----
 
-    sudo cbrew <command> <package>
+    sudo crew <command> <package>
 
 Where available commands are:
   
