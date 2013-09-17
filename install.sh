@@ -80,5 +80,6 @@ git init
 git remote add -f origin https://github.com/skycocker/chromebrew.git
 git config core.sparsecheckout true
 echo packages >> .git/info/sparse-checkout
-git pull origin master
+git fetch origin master
+git reset --hard origin/master
 echo "Chromebrew installed successfully and package lists updated."
