@@ -22,9 +22,9 @@ Usage
 
 Where available commands are:
   
-  * search
-  * download
-  * install
-  * remove
+  * search [looks for a package]
+  * download [downloads a package to CBREW_BREW_DIR(/usr/local/tmp/cbrew by default), but doesn't install it]
+  * install [installs a package along with its dependencies. You'll be prompted for confirmation, must be ran as root]
+  * remove [removes a package. Must be ran as root]
   
 Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages). 
