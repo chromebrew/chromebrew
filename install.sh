@@ -3,6 +3,7 @@ CREW_PREFIX=/usr/local
 CREW_LIB_PATH=$CREW_PREFIX/lib/crew/
 CREW_CONFIG_PATH=$CREW_PREFIX/etc/crew/
 CREW_BREW_DIR=$CREW_PREFIX/tmp/crew/
+CREW_DEST_DIR=$CREW_BREW_DIR/dest
 CREW_PACKAGES_PATH=$CREW_LIB_PATH/packages
 
 user=$(whoami)
@@ -12,6 +13,7 @@ sudo mkdir -p $CREW_LIB_PATH && sudo chown -R $user:$user $CREW_LIB_PATH
 sudo mkdir -p $CREW_CONFIG_PATH && sudo chown -R $user:$user $CREW_CONFIG_PATH
 sudo mkdir -p $CREW_CONFIG_PATH/meta && sudo chown -R $user:$user $CREW_CONFIG_PATH/meta
 sudo mkdir -p $CREW_BREW_DIR && sudo chown -R $user:$user $CREW_BREW_DIR
+sudo mkdir -p $CREW_DEST_DIR && sudo chown -R $user:$user $CREW_DEST_DIR
 sudo mkdir -p $CREW_PACKAGES_PATH && sudo chown -R $user:$user $CREW_PACKAGES_PATH
 
 #cd into the brew directory, everything will happen there

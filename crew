@@ -13,6 +13,7 @@ CREW_PREFIX = '/usr/local'
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
+CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
 $LOAD_PATH.push CREW_LIB_PATH
 
@@ -48,9 +49,14 @@ def download
   end
   uri = URI.parse url
   filename = File.basename(uri.path)
+  if source
+    sha1sum = @pkg.source_sha1
+  else
+    sha1sum = @pkg.binary_sha1[@device[:architecture]]
+  end
   Dir.chdir CREW_BREW_DIR do
     system('wget', '--content-disposition', url)
-    abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == @pkg.binary_sha1[@device[:architecture]]
+    abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum
   end
   puts "Archive downloaded"
   return {source: source, filename: filename}
@@ -117,22 +123,38 @@ def install
 
   unless @pkg.is_fake?
     meta = download
-    if meta[:source] == true
-      puts "Building from source, this may take a while..."
-      @pkg.build
-      puts "Installing..."
-      @pkg.install
-    else
-      Dir.chdir CREW_BREW_DIR do
-        puts "Unpacking archive, this may take a while..."
-        system "tar", "zxf", meta[:filename]
-        
+    Dir.chdir CREW_BREW_DIR do
+      puts "Unpacking archive, this may take a while..."
+      system "tar", "zxf", meta[:filename]
+      
+      if meta[:source] == true
+        puts "Building from source, this may take a while..."
+        sytem "cd *"
+        @pkg.build
+        system "rm -rf", CREW_DEST_DIR + "/*" #wipe crew destdir
         puts "Installing..."
-        
-        FileUtils.mv './dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
-        FileUtils.mv './filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
-      end
+        @pkg.install
 
+        Dir.chdir CREW_DEST_DIR do
+          #create directory list
+          system "find . -type f > ../filelist"
+          system "find . -type l >> ../filelist"
+          system "cut -c2- ../filelist > filelist"
+          #create file list
+          system "find . -type d > ../dlist"
+          system "cut -c2- ../dlist > dlistcut"
+          system "tail -n +2 dlistcut > dlist"
+          #remove temporary files
+          system "rm dlistcut ../dlist ../filelist"
+          
+          #move result files and directories to brew dir
+          system "mv * ../"
+        end
+      end
+      puts "Installing..."
+      
+      FileUtils.mv './dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
+      FileUtils.mv './filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
       Dir.chdir CREW_CONFIG_PATH do
         File.open("meta/#{@pkg.name}.directorylist").each_line do |line|
           system "mkdir", "-p", line.chomp

@@ -1,7 +1,7 @@
 require 'package_helpers'
 
 class Package
-  property :version, :binary_url, :binary_sha1, :source_url, :is_fake
+  property :version, :binary_url, :binary_sha1, :source_url, :source_sha1, :is_fake
   
   class << self
     attr_reader :dependencies, :is_fake
@@ -21,5 +21,9 @@ class Package
   
   def self.is_fake?
     @is_fake
+  end
+
+  def self.build
+    
   end
 end
