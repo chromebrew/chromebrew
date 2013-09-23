@@ -149,6 +149,19 @@ def install
           #remove temporary files
           system "rm dlistcut ../dlist ../filelist"
           
+          #create resulting folders list
+          directories = []
+          Dir.glob('*').select do |fn|
+            if File.directory?(fn)
+              directories.push(fn)
+            end
+          end
+
+          #wipe directories with the same name in brew dir to avoid conflicts
+          directories.each do |dir|
+            system "rm -rf ../" + dir.chomp
+          end
+
           #move result files and directories to brew dir
           system "mv * ../"
         end
