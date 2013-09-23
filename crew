@@ -127,6 +127,7 @@ def install
       puts "Unpacking archive, this may take a while..."
       system "tar", "xf", meta[:filename]
       if meta[:source] == true
+        abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
         topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
         Dir.chdir CREW_BREW_DIR + topdir do
           puts "Building from source, this may take a while..."
