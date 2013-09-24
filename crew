@@ -73,9 +73,11 @@ def resolveDependenciesAndInstall
   install
 
   #cleanup
-  Dir.chdir CREW_BREW_DIR do
-    system "rm -rf *"
-    system "mkdir dest" #this is a little ugly, feel free to find a better way
+  unless ARGV[2] == 'keep'
+    Dir.chdir CREW_BREW_DIR do
+      system "rm -rf *"
+      system "mkdir dest" #this is a little ugly, feel free to find a better way
+    end
   end
 end
 
