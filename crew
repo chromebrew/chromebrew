@@ -17,6 +17,8 @@ CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
 $LOAD_PATH.push CREW_LIB_PATH
 
+USER = `whoami`.chomp
+
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
 @device.each do |key, elem|
@@ -133,7 +135,7 @@ def install
           puts "Building from source, this may take a while..."
           @pkg.build
           system "rm -rf", CREW_DEST_DIR + "/*" #wipe crew destdir
-          puts "Installing..."
+          puts "Preconfiguring package..."
           @pkg.install
         end
 
@@ -166,20 +168,18 @@ def install
           system "mv * ../"
         end
       end
-      puts "Installing..."
-      
-      FileUtils.mv './dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
-      FileUtils.mv './filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
-      Dir.chdir CREW_CONFIG_PATH do
-        File.open("meta/#{@pkg.name}.directorylist").each_line do |line|
-          system "sudo mkdir", "-p", line.chomp
-        end
 
-        File.open("meta/#{@pkg.name}.filelist").each_line do |line|
-          Dir.chdir CREW_BREW_DIR do
-            system "sudo mv", '.' + line.chomp, line.chomp
-          end
-        end
+      puts "Installing..."
+
+      FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
+      FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
+ 
+      File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
+        system "sudo", "mkdir", "-p", line.chomp
+      end
+
+      File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist").each_line do |line|
+        system "sudo", "mv", CREW_BREW_DIR + line.chomp, line.chomp
       end
     end
   end
@@ -203,14 +203,14 @@ def remove
     Dir.chdir CREW_CONFIG_PATH do
       File.open("meta/#{@pkg.name}.filelist").each_line do |line|
         begin
-          File.unlink '.' + line.chomp
+          File.unlink line.chomp
         rescue => exception #swallow exception
         end
       end
   
       File.readlines("meta/#{@pkg.name}.directorylist").reverse.each do |line|
         begin
-          Dir.rmdir '.' + line.chomp
+          Dir.rmdir line.chomp
         rescue => exception #swallow exception
         end
       end
@@ -241,6 +241,7 @@ when "install"
   search @pkgName
   resolveDependenciesAndInstall
 when "remove"
+  abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   search @pkgName
   remove
 when nil
