@@ -237,6 +237,12 @@ when "search"
 when "download"
   search @pkgName
   download
+when "update"
+  Dir.chdir CREW_LIB_PATH do
+    system "git fetch origin master"
+    system "git reset --hard origin/master"
+  end
+  puts "Package lists updated."
 when "install"
   search @pkgName
   resolveDependenciesAndInstall
