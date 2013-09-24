@@ -238,11 +238,25 @@ when "download"
   search @pkgName
   download
 when "update"
-  Dir.chdir CREW_LIB_PATH do
-    system "git fetch origin master"
-    system "git reset --hard origin/master"
+  unless @pkgName == 'crew'
+    Dir.chdir CREW_LIB_PATH do
+      system "git fetch origin master"
+      system "git reset --hard origin/master"
+    end
+    puts "Package lists updated."
+  else
+    abort 'Updating crew itself must be done as root.' unless USER == 'root'
+    #update crew binary
+    Dir.chdir CREW_PREFIX + '/bin' do
+      system "wget", "-N", "https://raw.github.com/skycocker/chromebrew/master/crew"
+      system "sudo", "chmod", "+x", "crew"
+    end
+    #update crew library
+    Dir.chdir CREW_LIB_PATH do
+      system "wget", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package.rb"
+      system "wget", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb"
+    end
   end
-  puts "Package lists updated."
 when "install"
   search @pkgName
   resolveDependenciesAndInstall
