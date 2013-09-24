@@ -57,7 +57,7 @@ def download
     sha1sum = @pkg.binary_sha1[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    system('wget', '--content-disposition', '-N', url)
+    system('wget', '--content-disposition', '--no-check-certificate', '-N', url)
     abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum
   end
   puts "Archive downloaded"
@@ -71,6 +71,12 @@ def resolveDependenciesAndInstall
   
   search origin
   install
+
+  #cleanup
+  Dir.chdir CREW_BREW_DIR do
+    system "rm -rf *"
+    system "mkdir dest" #this is a little ugly, feel free to find a better way
+  end
 end
 
 def resolveDependencies
