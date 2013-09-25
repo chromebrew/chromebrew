@@ -1,0 +1,16 @@
+.footer p {
+  text-transform: lowercase;
+}
+.footer p a {
+  color: inherit;
+}
+.footer .name {
+  word-spacing: -0.3em;
+}
+.footer .name-first {
+  opacity: 0.7;
+}
+.jumbotron {
+  background-color: #E2EEFF;
+  color: #5F5F5F;
+}
