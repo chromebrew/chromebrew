@@ -10,7 +10,10 @@
 .footer .name-first {
   opacity: 0.7;
 }
-.jumbotron {
-  background-color: #E2EEFF;
+.container .jumbotron {
+  background-color: #fff;
   color: #5F5F5F;
+}
+.highlight pre {
+  background-color: #D7E3FC;
 }

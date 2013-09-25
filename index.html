@@ -37,17 +37,45 @@
       <div class="jumbotron">
         <h1>Chromebrew</h1>
         <p class="lead">The missing package manager for Chrome OS</p>
-        <pre>wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | sh</pre>
-        <!--<p><a class="btn btn-lg btn-success" href="#">Sign up today</a></p>-->
       </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
           <div class="bs-example bs-example-type">
-            <h4>Chromebrew installs what you need</h4>
+            <h4>Chromebrew installs what you need with its dependencies</h4>
           </div>
           <div class="highlight">
-            <pre><code>$ crew install vim</code></pre>
+            <pre><code>$ crew install node</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>And registers the changes being made, so you can easily remove anything</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ sudo crew remove node</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>Update software lists</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ crew update</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>And update Chromebrew itself</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ sudo crew update crew</code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <div class="bs-example bs-example-type">
+            <h4>Install Chromebrew (along with Ruby and Git)</h4>
+            <h5>currently only i686 Chromebooks supported</h5>
+          </div>
+          <div class="highlight">
+            <pre><code>wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
           </div>
         </div>
       </div>
