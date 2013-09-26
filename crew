@@ -32,6 +32,12 @@ def setPkg (pkgName, silent = false)
   puts "Found #{pkgName}, version #{@pkg.version}" unless silent
 end
 
+def list_packages
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    puts File.basename filename, '.rb'
+  end
+end
+
 def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
@@ -241,7 +247,11 @@ end
 
 case @command
 when "search"
-  search @pkgName
+  if @pkgName
+    search @pkgName
+  else
+    list_packages
+  end
 when "download"
   search @pkgName
   download
