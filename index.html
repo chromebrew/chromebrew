@@ -80,6 +80,39 @@
         </div>
       </div>
 
+      <div class="row marketing">
+        <h3>What it is?</h3>
+        <p>Chromebrew is a package manager / source builder hybrid targeted for Chromebooks with Chrome OS.</p>
+      
+        <h3>What it does?</h3>
+        <p>
+          It installs the software you need that hasn't been provided by Google. Many important packages are already precompiled and it's enough to just type <code>crew install package_name</code>, but if something's not already there, you can easily build and install it from source.
+        </p>
+        
+        <h3>How does it work?</h3>
+        <p>
+          In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install them into your system when the installation script is being ran. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git and a package manager dedicated just for your Chromebook. Cool, huh?
+        </p>
+
+        <h3>How is it different from Crouton?</h3>
+        <p>
+          Well, Chromebrew doesn't install an operating system :p
+        </p>
+        <p>
+          The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have Crouton and need just some few small packages. Also, you may be on a good internet connection and need just some few small packages. Also, why not to use Chrome OS as a normal operating system?
+        </p>
+
+        <h3>Why does it currently only work on i686?</h3>
+        <p>
+          Because it needs Ruby, Git, GNU Make and GCC to work, and I only have an i686 Acer C7 Chromebook, so I can't port this software to other architectures. If Chromebrew will be widely used, I'm planning to raise money on Kickstarter to buy other Chromebooks and make Chromebrew work also on them.
+        </p>
+
+        <h3>How can I help?</h3>
+        <p>
+          If you have a compatibile (i686) Chromebook, you can fork my Github repo and add some new packages. You should know how to create them by looking at some existing ones - they are really simple Ruby files.
+        </p>
+      </div>
+
       <div class="footer">
         <p>&copy; <a href="http://msiwek.com/" target="_"><span class="name"><span class="name-first">Michal</span> Siwek</span></a> 2013</p>
       </div>
