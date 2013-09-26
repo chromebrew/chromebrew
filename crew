@@ -283,7 +283,7 @@ when "remove"
   search @pkgName
   remove
 when nil
-  puts "Chromebrew, version 0.1"
+  puts "Chromebrew, version 0.1.1"
   puts "Usage: crew [command] [package]"
   puts "Available commands: search, download, install, remove"
 else
