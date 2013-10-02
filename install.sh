@@ -7,6 +7,12 @@ CREW_DEST_DIR=$CREW_BREW_DIR/dest
 CREW_PACKAGES_PATH=$CREW_LIB_PATH/packages
 
 user=$(whoami)
+architecture=$(uname -m)
+
+if [ $architecture != "i686" ]; then
+  echo 'Your device is not supported by Chromebrew yet.'
+  exit 1;
+fi
 
 #prepare directories
 sudo mkdir -p $CREW_LIB_PATH && sudo chown -R $user:$user $CREW_LIB_PATH
@@ -21,7 +27,6 @@ cd $CREW_BREW_DIR
 
 #download ruby
 echo "Downloading ruby..."
-architecture=$(uname -m)
 
 case "$architecture" in
 "i686")
