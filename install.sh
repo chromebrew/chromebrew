@@ -9,7 +9,7 @@ CREW_PACKAGES_PATH=$CREW_LIB_PATH/packages
 user=$(whoami)
 architecture=$(uname -m)
 
-if [ $architecture != "i686" ]; then
+if [ $architecture != "i686" ] || [ $architecture != "x86_64" ]; then
   echo 'Your device is not supported by Chromebrew yet.'
   exit 1;
 fi
@@ -32,6 +32,9 @@ case "$architecture" in
 "i686")
   link='https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz?token_hash=AAGu_5wuqZe2eDOkfL5oh4esQ8HAZJIvbMG7GplnQrSa3g&dl=1'
   echo $link
+  ;;
+"x86_64")
+  link='https://dl.dropboxusercontent.com/s/x3jt0z5i1r4afyv/ruby-2.0.0p247-chromeos-x86_64.tar.gz?token_hash=AAEJ-vFEG2yhEH4VIyyQL45ANy6RzbAfaLgx62R9jHwzFA&dl=1'
   ;;
 esac
 
