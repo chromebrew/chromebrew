@@ -45,6 +45,92 @@ def search (pkgName, silent = false)
   abort "package #{pkgName} not found :("
 end
 
+def update
+  abort "'crew update' is used to update crew itself. Use 'crew upgrade <packageName> to upgrade a specific package." if @pkgName
+
+  #update package lists
+  Dir.chdir CREW_LIB_PATH do
+    system "git fetch origin master"
+    system "git reset --hard origin/master"
+  end
+  puts "Package lists updated."
+  
+  #update crew
+  puts "Updating crew..."
+  Dir.chdir CREW_PREFIX + '/bin' do
+  #  system "sudo", "wget", "--no-check-certificate", "-N", "https://raw.github.com/skycocker/chromebrew/master/crew"
+    system "sudo", "chmod", "+x", "crew"
+  end
+
+  #update crew library
+  Dir.chdir CREW_LIB_PATH do
+    system "wget", "--no-check-certificate", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package.rb"
+    system "wget", "--no-check-certificate", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb"
+  end
+  
+  #check for outdated installed packages
+  puts "Checking for package updates..."
+  puts ""
+
+  canBeUpdated = 0
+  @device[:installed_packages].each do |package|
+    search package[:name], true
+    if package[:version] != @pkg.version
+      canBeUpdated += 1
+      puts @pkg.name + " could be updated from " + package[:version] + " to " + @pkg.version
+    end
+  end
+  
+  if canBeUpdated > 0
+    puts ""
+    puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
+  else
+    puts "Your software is up to date."
+  end
+end
+
+def upgrade
+  if @pkgName
+    search @pkgName
+
+    currentVersion = nil
+    @device[:installed_packages].each do |package|
+      if package[:name] == @pkg.name
+        currentVersion = package[:version]
+      end
+    end
+    
+    if currentVersion != @pkg.version
+      search @pkg.name
+      puts "Updating #{@pkg.name}..."
+      remove 
+      resolveDependenciesAndInstall
+    else
+      puts "#{@pkg.name} is already up to date."
+    end
+  else
+    toBeUpdated = []
+    @device[:installed_packages].each do |package|
+      search package[:name], true
+      if package[:version] != @pkg.version
+        toBeUpdated.push(package[:name])
+      end
+    end
+  
+    if toBeUpdated.length > 0
+      puts "Updating packages..."
+      toBeUpdated.each do |package|
+        search package
+        remove
+        resolveDependenciesAndInstall
+      end
+      puts "Packages have been updated."
+    else
+      puts "Your software is already up to date."
+    end
+  end
+end
+
 def download
   if @pkg.binary_url && @pkg.binary_url.has_key?(@device[:architecture])
     url = @pkg.binary_url[@device[:architecture]]
@@ -71,7 +157,7 @@ def download
 end
 
 def resolveDependenciesAndInstall
-  origin = @pkgName
+  origin = @pkg.name
 
   resolveDependencies
   
@@ -242,7 +328,7 @@ def remove
     out = JSON.parse @device.to_json
     file.write JSON.pretty_generate(out)
   end
-  puts "#{@pkgName.capitalize} removed!"
+  puts "#{@pkg.name.capitalize} removed!"
 end
 
 case @command
@@ -256,25 +342,9 @@ when "download"
   search @pkgName
   download
 when "update"
-  unless @pkgName == 'crew'
-    Dir.chdir CREW_LIB_PATH do
-      system "git fetch origin master"
-      system "git reset --hard origin/master"
-    end
-    puts "Package lists updated."
-  else
-    abort 'Updating crew itself must be done as root.' unless USER == 'root'
-    #update crew binary
-    Dir.chdir CREW_PREFIX + '/bin' do
-      system "wget", "-N", "https://raw.github.com/skycocker/chromebrew/master/crew"
-      system "sudo", "chmod", "+x", "crew"
-    end
-    #update crew library
-    Dir.chdir CREW_LIB_PATH do
-      system "wget", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package.rb"
-      system "wget", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb"
-    end
-  end
+  update
+when "upgrade"
+  upgrade
 when "install"
   search @pkgName
   resolveDependenciesAndInstall
@@ -283,7 +353,7 @@ when "remove"
   search @pkgName
   remove
 when nil
-  puts "Chromebrew, version 0.1.1"
+  puts "Chromebrew, version 0.2.1"
   puts "Usage: crew [command] [package]"
   puts "Available commands: search, download, install, remove"
 else
