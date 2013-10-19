@@ -34,7 +34,7 @@ case "$architecture" in
   echo $link
   ;;
 "x86_64")
-  link='https://dl.dropboxusercontent.com/s/x3jt0z5i1r4afyv/ruby-2.0.0p247-chromeos-x86_64.tar.gz?token_hash=AAEJ-vFEG2yhEH4VIyyQL45ANy6RzbAfaLgx62R9jHwzFA&dl=1'
+  link='https://dl.dropboxusercontent.com/s/bwb315aluunam6b/ruby-2.0.0-p247-chromeos1-chromeos-x86_86.tar.gz?token_hash=AAGYQhHhEpgAHCKtVVonVlXIJKZOWzq3arNsirxcRJQgLA&dl=1'
   ;;
 esac
 
@@ -42,7 +42,7 @@ wget --content-disposition $link
 
 #extract and install ruby
 echo "Extracting ruby (this may take a while)..."
-tar -xf ruby-2.0.0p247-chromeos-$architecture.tar.gz
+tar -xf ruby-2.0.0p247-chromeos1-chromeos-$architecture.tar.gz
 echo "Installing ruby (this may take a while)..."
 sudo cp -r ./usr/* /usr
 mv ./dlist $CREW_CONFIG_PATH/meta/ruby.directorylist
@@ -80,6 +80,10 @@ wget https://raw.github.com/skycocker/chromebrew/master/packages/curl.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/expat.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/gettext.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/python.rb
+wget https://raw.github.com/skycocker/chromebrew/master/packages/readline.rb
+
+#install readline for ruby
+(echo y;) | sudo crew install readline
 
 #install git
 (echo y;) | sudo crew install git
