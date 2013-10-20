@@ -31,7 +31,6 @@ echo "Downloading ruby..."
 case "$architecture" in
 "i686")
   link='https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz?token_hash=AAGu_5wuqZe2eDOkfL5oh4esQ8HAZJIvbMG7GplnQrSa3g&dl=1'
-  echo $link
   ;;
 "x86_64")
   link='https://dl.dropboxusercontent.com/s/bwb315aluunam6b/ruby-2.0.0-p247-chromeos1-chromeos-x86_86.tar.gz?token_hash=AAGYQhHhEpgAHCKtVVonVlXIJKZOWzq3arNsirxcRJQgLA&dl=1'
