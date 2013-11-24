@@ -35,7 +35,7 @@ case "$architecture" in
   ;;
 "x86_64")
   link='https://dl.dropboxusercontent.com/s/bwb315aluunam6b/ruby-2.0.0-p247-chromeos1-chromeos-x86_86.tar.gz?token_hash=AAGYQhHhEpgAHCKtVVonVlXIJKZOWzq3arNsirxcRJQgLA&dl=1'
-  tarname='ruby-2.0.0p247-chromeos1-chromeos-'$architecture'.tar.gz'
+  tarname='ruby-2.0.0-p247-chromeos1-chromeos-x86_86.tar.gz'
   ;;
 esac
 
