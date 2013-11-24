@@ -1,6 +1,6 @@
 require 'package'
 
-class Zlib < Package
+class PkgZlib < Package
   version '1.2.8'
   binary_url ({
     i686: 'https://dl.dropboxusercontent.com/s/ljhhvr12u1izayj/zlib-1.2.8-chromeos-i686.tar.gz?token_hash=AAEABTatYkxOOybZGoCj3Kg_DKEbFbSfolzZklfHwCsP_A&dl=1',
