@@ -11,7 +11,7 @@ class Git < Package
     x86_64: '067cb6c36616ac30999ab97e85f3dc0e9d1d57f4'
   })
 
-  depends_on 'zlib'
+  depends_on 'zlibpkg'
   depends_on 'libssh2'
   depends_on 'perl'
   depends_on 'openssl'

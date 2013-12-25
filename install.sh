@@ -34,8 +34,8 @@ case "$architecture" in
   tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.gz'
   ;;
 "x86_64")
-  link='https://dl.dropboxusercontent.com/s/bwb315aluunam6b/ruby-2.0.0-p247-chromeos1-chromeos-x86_86.tar.gz?token_hash=AAGYQhHhEpgAHCKtVVonVlXIJKZOWzq3arNsirxcRJQgLA&dl=1'
-  tarname='ruby-2.0.0p247-chromeos1-chromeos-'$architecture'.tar.gz'
+  link='https://dl.dropboxusercontent.com/s/3dw5ue5vhf5nj8k/ruby-2.0.0-p247-chromeos1-chromeos-x86_64.tar.gz?dl=1&token_hash=AAHYJ-WOExuc2f4mKN3pDHUOlTMnt3h-rBosLmYr2Gvy7w'
+  tarname='ruby-2.0.0-p247-chromeos1-chromeos-'$architecture'.tar.gz'
   ;;
 esac
 
@@ -73,7 +73,7 @@ echo "}" >> device.json
 #download git and its dependencies .rb package files
 cd $CREW_PACKAGES_PATH
 wget https://raw.github.com/skycocker/chromebrew/master/packages/git.rb
-wget https://raw.github.com/skycocker/chromebrew/master/packages/zlib.rb
+wget https://raw.github.com/skycocker/chromebrew/master/packages/zlibpkg.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/libssh2.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/perl.rb
 wget https://raw.github.com/skycocker/chromebrew/master/packages/openssl.rb

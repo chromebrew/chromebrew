@@ -12,5 +12,5 @@ class Ruby < Package
   })
 
   depends_on 'readline'
-  depends_on 'zlib'
+  depends_on 'zlibpkg'
 end
