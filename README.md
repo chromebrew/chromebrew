@@ -18,7 +18,7 @@ Download and run the installation script
 Usage
 -----
 
-    sudo crew <command> <package> <keep[temporary files]>
+    crew <command> <package> <keep[temporary files]>
 
 Where available commands are:
   
