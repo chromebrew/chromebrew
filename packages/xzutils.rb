@@ -1,6 +1,6 @@
 require 'package'
 
-class XZUtils < Package
+class Xzutils < Package
   version '5.0.5-2'
   binary_url ({
     i686: 'https://www.archlinux.org/packages/core/i686/xz/download/',

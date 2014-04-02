@@ -1,6 +1,6 @@
 require 'package'
 
-class NodeJS < Package
+class Nodejs < Package
   version '5.0.5-2'
   depends_on "xzutils"
   binary_url ({
