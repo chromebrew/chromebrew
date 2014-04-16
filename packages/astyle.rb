@@ -12,6 +12,7 @@ class Astyle < Package
   end
 
   def self.install
-    system "cp","build/gcc/bin/astyle","#{CREW_DEST_DIR}/AStyle"
+  	system "mkdir","-p",CREW_DEST_DIR+"/usr/local/bin"
+    system "cp","./build/gcc/bin/astyle",CREW_DEST_DIR+"/usr/local/bin/AStyle"
   end
 end
