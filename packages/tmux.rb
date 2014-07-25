@@ -10,7 +10,7 @@ class Tmux < Package                                            	# name the pack
   depends_on 'ncurses'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure"
+    system "CPPFLAGS=-I/usr/local/include/ncurses ./configure"
     system "make"                                                 # ordered chronologically
   end
   
