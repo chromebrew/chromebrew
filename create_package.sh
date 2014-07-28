@@ -11,3 +11,7 @@ rm dlistcut ../dlist ../filelist
 
 echo building binary package
 tar -czf ../package.tar.gz *
+sha1sum ../package.tar.gz > ../package.tar.gz.sha1
+
+echo finished
+cat ../package.tar.gz.sha1
