@@ -34,6 +34,10 @@ end
 
 def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+        packageName = File.basename filename, '.rb'
+        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist' 
+    end
     puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
 end
