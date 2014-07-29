@@ -34,11 +34,18 @@ end
 
 def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+    if not FileTest.directory?(filename)
         packageName = File.basename filename, '.rb'
-        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist' 
+        require filename
+        @pkg = Object.const_get(packageName.capitalize)
+        @pkg.name = packageName
+        if FileTest.exists?(CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist')
+            print "(i) "
+        else 
+            print "    "
+        end
+        puts "#{@pkg.name} version #{@pkg.version}"
     end
-    puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
 end
 
