@@ -153,7 +153,7 @@ def download
     sha1sum = @pkg.binary_sha1[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    system('wget', '--content-disposition', '--no-check-certificate', '-N', url, '-O', filename)
+    system('wget', '-N', '--continue', '--content-disposition', '--no-check-certificate', '-N', url, '-O', filename)
     abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum
   end
   puts "Archive downloaded"

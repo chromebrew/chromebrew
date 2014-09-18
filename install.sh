@@ -39,7 +39,7 @@ case "$architecture" in
   ;;
 esac
 
-wget --no-check-certificate --content-disposition $link -O $tarname
+wget -N --continue --no-check-certificate --content-disposition $link -O $tarname
 
 #extract and install ruby
 echo "Extracting ruby (this may take a while)..."
@@ -50,13 +50,13 @@ mv ./dlist $CREW_CONFIG_PATH/meta/ruby.directorylist
 mv ./filelist $CREW_CONFIG_PATH/meta/ruby.filelist
 
 #download, prepare and install chromebrew
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/crew
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/crew
 chmod +x crew
 sudo mv crew $CREW_PREFIX/bin
 #install crew library
 cd $CREW_LIB_PATH
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/lib/package.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/lib/package.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb
 #create the device.json file
 cd $CREW_CONFIG_PATH
 touch device.json
@@ -72,26 +72,26 @@ echo "}" >> device.json
 
 #download git and its dependencies .rb package files
 cd $CREW_PACKAGES_PATH
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/git.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/zlibpkg.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/libssh2.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/perl.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/openssl.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/curl.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/expat.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/gettext.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/python.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/readline.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/ruby.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/buildessential.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/gcc.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/binutils.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/make.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/mpc.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/mpfr.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/gmp.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/glibc.rb
-wget --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/linuxheaders.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/git.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/zlibpkg.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/libssh2.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/perl.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/openssl.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/curl.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/expat.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/gettext.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/python.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/readline.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/ruby.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/buildessential.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/gcc.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/binutils.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/make.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/mpc.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/mpfr.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/gmp.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/glibc.rb
+wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/packages/linuxheaders.rb
 
 #install readline for ruby
 (echo y;) | sudo crew install readline
