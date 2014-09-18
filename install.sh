@@ -39,7 +39,7 @@ case "$architecture" in
   ;;
 esac
 
-wget -N --continue --no-check-certificate --content-disposition $link -O $tarname
+wget --continue --no-check-certificate --content-disposition $link -O $tarname
 
 #extract and install ruby
 echo "Extracting ruby (this may take a while)..."
