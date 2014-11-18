@@ -6,7 +6,7 @@ class Python27 < Package
   source_sha1 '511960dd78451a06c9df76509635aeec05b2051a'          	# source tarball sha1 sum
   
   depends_on 'bz2'
-  depends_ on 'ncurses'
+  depends_on 'ncurses'
 
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncurses\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\""
