@@ -36,7 +36,7 @@ def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
         packageName = File.basename filename, '.rb'
-        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist' 
+        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
     puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
@@ -58,7 +58,7 @@ def update
     system "git reset --hard origin/master"
   end
   puts "Package lists, crew, and library updated."
-  
+
   #check for outdated installed packages
   puts "Checking for package updates..."
   puts ""
@@ -71,7 +71,7 @@ def update
       puts @pkg.name + " could be updated from " + package[:version] + " to " + @pkg.version
     end
   end
-  
+
   if canBeUpdated > 0
     puts ""
     puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
@@ -90,11 +90,11 @@ def upgrade
         currentVersion = package[:version]
       end
     end
-    
+
     if currentVersion != @pkg.version
       search @pkg.name
       puts "Updating #{@pkg.name}..."
-      remove 
+      remove
       resolveDependenciesAndInstall
     else
       puts "#{@pkg.name} is already up to date."
@@ -107,7 +107,7 @@ def upgrade
         toBeUpdated.push(package[:name])
       end
     end
-  
+
     if toBeUpdated.length > 0
       puts "Updating packages..."
       toBeUpdated.each do |package|
@@ -151,9 +151,9 @@ def resolveDependenciesAndInstall
   origin = @pkg.name
 
   resolveDependencies
-  
-  search origin
-  install
+
+#  search origin
+#  install
 
   #cleanup
   unless ARGV[2] == 'keep'
@@ -165,27 +165,37 @@ def resolveDependenciesAndInstall
 end
 
 def resolveDependencies
-  @dependencies = []
 
+  old = @pkg.name
   def pushDeps
-    if @pkg.dependencies
-      @dependencies << @pkg.dependencies
-      
+    if @pkg.dependencies.nil?
+      return {}
+    else
+      out = {}
       @pkg.dependencies.each do |dep|
-        search dep, true
-        pushDeps
+        search dep, false
+        out[dep] = pushDeps
       end
     end
+    return out
   end
-  
-  pushDeps
-  
+
+  @dependencies = {@pkg.name => pushDeps() }
+  search old, true
+
   return if @dependencies.empty?
 
-  puts "Following packages also need to be installed: "
-  @dependencies.flatten!.each do |dep|
-    print dep + " "
+  def uniq_deps deps # list of all dependencies and subdependencies... each once
+    deps.collect { |key, val|
+      if val.empty?
+        key
+      else
+        uniq_deps(val) << key
+      end
+    }.flatten.select{|x| x != @pkg.name}.uniq
   end
+
+  puts "Following packages also need to be installed: #{uniq_deps(@dependencies).join(' ')}"
   puts ""
   puts "Do you agree? [Y/n]"
   response = STDIN.getc
@@ -200,12 +210,23 @@ def resolveDependencies
     abort "No changes made."
   end
 
-  if proceed
-    @dependencies.each do |dep|
-      search dep
-      install
+  def install_deps dependencies
+    dependencies.each do |package, deps| # deps are the dependencies of dep as hash
+      if deps.empty? # no dependencies
+        search package
+        install
+      else
+        install_deps deps # install dependencies
+        search package
+        install
+      end
     end
   end
+
+  if proceed
+    install_deps @dependencies
+  end
+
 end
 
 def install
@@ -241,7 +262,7 @@ def install
           system "tail -n +2 dlistcut > dlist"
           #remove temporary files
           system "rm dlistcut ../dlist ../filelist"
-          
+
           #create resulting folders list
           directories = []
           Dir.glob('*').select do |fn|
@@ -264,7 +285,7 @@ def install
 
       FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
       FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
- 
+
       File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
         system "sudo", "mkdir", "-p", line.chomp
       end
@@ -274,7 +295,7 @@ def install
       end
     end
   end
-  
+
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
@@ -289,7 +310,7 @@ def remove
     puts "Package #{@pkg.name} isn't installed."
     return
   end
-  
+
   unless @pkg.is_fake?
     Dir.chdir CREW_CONFIG_PATH do
       File.open("meta/#{@pkg.name}.filelist").each_line do |line|
@@ -298,7 +319,7 @@ def remove
         rescue => exception #swallow exception
         end
       end
-  
+
       File.readlines("meta/#{@pkg.name}.directorylist").reverse.each do |line|
         begin
           Dir.rmdir line.chomp
