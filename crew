@@ -15,7 +15,7 @@ CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
-$LOAD_PATH.push CREW_LIB_PATH
+$LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 USER = `whoami`.chomp
 
@@ -57,20 +57,7 @@ def update
     system "git fetch origin master"
     system "git reset --hard origin/master"
   end
-  puts "Package lists updated."
-  
-  #update crew
-  puts "Updating crew..."
-  Dir.chdir CREW_PREFIX + '/bin' do
-  #  system "sudo", "wget", "--no-check-certificate", "-N", "https://raw.github.com/skycocker/chromebrew/master/crew"
-    system "sudo", "chmod", "+x", "crew"
-  end
-
-  #update crew library
-  Dir.chdir CREW_LIB_PATH do
-    system "wget", "--no-check-certificate", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package.rb"
-    system "wget", "--no-check-certificate", "-N", "https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb"
-  end
+  puts "Package lists, crew, and library updated."
   
   #check for outdated installed packages
   puts "Checking for package updates..."
