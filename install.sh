@@ -59,6 +59,7 @@ wget -N --continue --no-check-certificate $URL/crew
 chmod +x crew
 sudo ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
+mkdir $CREW_LIB_PATH/lib && cd $CREW_LIB_PATH/lib
 wget -N --continue --no-check-certificate $URL/lib/package.rb
 wget -N --continue --no-check-certificate $URL/lib/package_helpers.rb
 #create the device.json file
@@ -109,6 +110,8 @@ git init
 git remote add -f origin https://github.com/$USER/$REPO.git
 git config core.sparsecheckout true
 echo packages >> .git/info/sparse-checkout
+echo lib >> .git/info/sparse-checkout
+echo crew >> .git/info/sparse-checkout
 git fetch origin master
 git reset --hard origin/master
 echo "Chromebrew installed successfully and package lists updated."
