@@ -99,10 +99,10 @@ wget -N --continue --no-check-certificate $URL/packages/glibc.rb
 wget -N --continue --no-check-certificate $URL/packages/linuxheaders.rb
 
 #install readline for ruby
-(echo y;) | sudo crew install readline
+(echo y;) | crew install readline
 
 #install git
-(echo y;) | sudo crew install git
+(echo y;) | crew install git
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
