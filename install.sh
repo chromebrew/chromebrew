@@ -50,11 +50,11 @@ mv ./dlist $CREW_CONFIG_PATH/meta/ruby.directorylist
 mv ./filelist $CREW_CONFIG_PATH/meta/ruby.filelist
 
 #download, prepare and install chromebrew
+cd $CREW_LIB_PATH
 wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/crew
 chmod +x crew
-sudo mv crew $CREW_PREFIX/bin
+sudo ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
-cd $CREW_LIB_PATH
 wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/lib/package.rb
 wget -N --continue --no-check-certificate https://raw.github.com/skycocker/chromebrew/master/lib/package_helpers.rb
 #create the device.json file
