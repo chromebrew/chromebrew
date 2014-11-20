@@ -2,7 +2,7 @@
 OWNER="skycocker"
 REPO="chromebrew"
 BRANCH="master"
-URL="https://raw.github.com/$USER/$REPO/$BRANCH"
+URL="https://raw.github.com/$OWNER/$REPO/$BRANCH"
 CREW_PREFIX=/usr/local
 CREW_LIB_PATH=$CREW_PREFIX/lib/crew/
 CREW_CONFIG_PATH=$CREW_PREFIX/etc/crew/
@@ -107,7 +107,7 @@ wget -N --continue --no-check-certificate $URL/packages/linuxheaders.rb
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
 git init
-git remote add -f origin https://github.com/$USER/$REPO.git
+git remote add -f origin https://github.com/$OWNER/$REPO.git
 git config core.sparsecheckout true
 echo packages >> .git/info/sparse-checkout
 echo lib >> .git/info/sparse-checkout
