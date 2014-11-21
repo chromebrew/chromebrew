@@ -169,7 +169,7 @@ def resolveDependencies
 
   def pushDeps
     if @pkg.dependencies
-      @dependencies << @pkg.dependencies
+      @dependencies.unshift @pkg.dependencies
       
       @pkg.dependencies.each do |dep|
         search dep, true
