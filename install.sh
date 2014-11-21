@@ -58,10 +58,12 @@ cd $CREW_LIB_PATH
 wget -N --continue --no-check-certificate $URL/crew
 chmod +x crew
 sudo ln -s `pwd`/crew $CREW_PREFIX/bin
+
 #install crew library
 mkdir $CREW_LIB_PATH/lib && cd $CREW_LIB_PATH/lib
 wget -N --continue --no-check-certificate $URL/lib/package.rb
 wget -N --continue --no-check-certificate $URL/lib/package_helpers.rb
+
 #create the device.json file
 cd $CREW_CONFIG_PATH
 touch device.json
