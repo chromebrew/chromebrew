@@ -148,18 +148,22 @@ def download
 end
 
 def resolveDependenciesAndInstall
-  origin = @pkg.name
+  begin
+    origin = @pkg.name
 
-  resolveDependencies
+    resolveDependencies
   
-  search origin
-  install
-
-  #cleanup
-  unless ARGV[2] == 'keep'
-    Dir.chdir CREW_BREW_DIR do
-      system "rm -rf *"
-      system "mkdir dest" #this is a little ugly, feel free to find a better way
+    search origin
+    install
+  rescue InstallError => e 
+    puts "install error: #{e.to_s}"
+  ensure
+    #cleanup
+    unless ARGV[2] == 'keep'
+      Dir.chdir CREW_BREW_DIR do
+        system "rm -rf *"
+        system "mkdir dest" #this is a little ugly, feel free to find a better way
+      end
     end
   end
 end
@@ -183,7 +187,7 @@ def resolveDependencies
   return if @dependencies.empty?
 
   puts "Following packages also need to be installed: "
-  @dependencies.flatten!.each do |dep|
+  @dependencies.flatten!.uniq!.each do |dep|
     print dep + " "
   end
   puts ""
