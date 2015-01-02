@@ -156,7 +156,7 @@ def resolveDependenciesAndInstall
     search origin
     install
   rescue InstallError => e 
-    puts "install error: #{e.to_s}"
+    puts "#{@pkg.name} failed to install: #{e.to_s}"
   ensure
     #cleanup
     unless ARGV[2] == 'keep'
