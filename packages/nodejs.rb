@@ -11,6 +11,7 @@ class Nodejs < Package
   def self.build
     # These are needed for node to install
     system "sudo ln -s /usr/local/bin/gcc /usr/local/bin/cc"
+
     system "./configure"
     system "make"
   end
