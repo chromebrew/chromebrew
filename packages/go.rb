@@ -6,30 +6,15 @@ class Go < Package
   source_sha1 'c7a683e8d39b835e333199d68d0c0baefcd24a68'
 
   def self.build
-    FileUtils.cd('src') do
-      system "./all.bash"
-    end
+    system "sudo cp -r ../go /usr/local/lib/"
+    system "./usr/local/lib/go/all.bash"
   end
-
   def self.install
-    system "cp ../go -r /usr/local/lib/"
-    if File.file?('/usr/local/bin/go')
-      system "sudo rm /usr/local/bin/go"
-    end
-    if File.file?('/usr/local/bin/gofmt')
-      system "sudo rm /usr/local/bin/gofmt"
-    end
-    if File.file?('/usr/local/bin/godoc')
-      system "sudo rm /usr/local/bin/godoc"
-    end
-    
-    system "sudo cp -r /usr/local/tmp/go /usr/local/lib/"
-    system "sudo ln -s /usr/local/lib/go/bin/go /usr/local/bin/go"
-    system "sudo ln -s /usr/local/lib/go/bin/godoc /usr/local/bin/godoc"
-    system "sudo ln -s /usr/local/lib/go/bin/gofmt /usr/local/bin/gofmt"
-    
-    puts "---\nCorrected\n---"
+    puts "\n---\nCorrected\n---\n"
     puts "Installed Go for linux/amd64 in /usr/local/lib/go"
-    puts "Installed commands in /usr/local/bin"
+    puts "Make sure to set go environment variables."
+    puts "Minimal:"
+    puts "\texport GOROOT=/usr/local/lib/go"
+    puts "\texport PATH=$GOROOT/bin"
   end
 end
