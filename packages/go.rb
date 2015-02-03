@@ -10,7 +10,7 @@ class Go < Package
     system "./usr/local/lib/go/all.bash"
   end
   def self.install
-    puts "\n---\nCorrected\n---\n"
+    puts "--------"
     puts "Installed Go for linux/amd64 in /usr/local/lib/go"
     puts "Make sure to set go environment variables."
     puts "Minimal:"
