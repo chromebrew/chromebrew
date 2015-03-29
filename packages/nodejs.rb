@@ -1,9 +1,9 @@
 require 'package'
 
 class Nodejs < Package
-  version '0.10.36'
-  source_url 'http://nodejs.org/dist/v0.10.36/node-v0.10.36.tar.gz'
-  source_sha1 '7e89d33ad0e56f6ca517f43a4a7b56079db18420'
+  version '0.12.0'
+  source_url 'http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz'
+  source_sha1 'd08810034d170c19759cb38bfc9442ab6b0ebc7a'
 
   depends_on 'buildessential'
   depends_on 'python27'
