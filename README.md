@@ -3,6 +3,8 @@ chromebrew
 
 Package manager for Chrome OS
 
+**Does not support ARM chipsets yet**
+
 Overview
 --------
 
