@@ -6,10 +6,16 @@ class Go < Package
   source_sha1 'c7a683e8d39b835e333199d68d0c0baefcd24a68'
 
   def self.build
-    system "sudo cp -r ../go /usr/local/lib/"
-    system "./usr/local/lib/go/all.bash"
+    FileUtils.cd('src') do
+      system "./all.bash"
+    end
   end
+
   def self.install
+    dest = "#{CREW_DEST_DIR}/usr/local/lib/"
+    system "mkdir", "-p", dest
+    FileUtils.mv Dir.pwd, dest
+
     puts "--------"
     puts "Installed Go for linux/amd64 in /usr/local/lib/go"
     puts "Make sure to set go environment variables."
