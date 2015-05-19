@@ -1,11 +1,12 @@
 require 'package'
 
-class Libxml2 < Package
-	version '2.9.2'
-	source_url 'ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz'
-	source_sha1 'f46a37ea6d869f702e03f393c376760f3cbee673'
+class Nettle < Package
+	version '2.7.1'
+	source_url 'https://ftp.gnu.org/gnu/nettle/nettle-2.7.1.tar.gz'
+	source_sha1 'e7477df5f66e650c4c4738ec8e01c2efdb5d1211'
 
 	depends_on 'buildessential'
+	depends_on 'm4'
 
 	def self.build
 		system "./configure"
