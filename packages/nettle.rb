@@ -9,7 +9,7 @@ class Nettle < Package
 	depends_on 'm4'
 
 	def self.build
-		system "./configure"
+		system "./configure --libdir=/usr/local/lib"
 		system "make"
 	end
 
