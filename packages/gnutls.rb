@@ -7,6 +7,7 @@ class Gnutls < Package
 
 	depends_on 'buildessential'
 	depends_on 'nettle'
+	depends_on 'pkgconfig'
 
 	def self.build
 		system "./configure"
