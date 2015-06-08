@@ -26,4 +26,10 @@ class Package
   def self.build
     
   end
+
+  def self.system(*args)
+    Kernel.system(*args)
+    exitstatus = $?.exitstatus
+    raise InstallError.new("`#{args.join(" ")}` exited with #{exitstatus}") unless exitstatus == 0
+  end
 end
