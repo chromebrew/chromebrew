@@ -14,7 +14,6 @@ class Git < Package
   depends_on 'zlibpkg'
   depends_on 'libssh2'
   depends_on 'perl'
-  depends_on 'openssl'
   depends_on 'curl'
   depends_on 'expat'
   depends_on 'gettext'
