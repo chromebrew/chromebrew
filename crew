@@ -187,9 +187,12 @@ def resolveDependencies
   return if @dependencies.empty?
 
   puts "Following packages also need to be installed: "
-  @dependencies.flatten!.uniq!.each do |dep|
+  
+  @dependencies.flatten!.uniq!
+  @dependencies.each do |dep|
     print dep + " "
   end
+  
   puts ""
   puts "Do you agree? [Y/n]"
   response = STDIN.getc
