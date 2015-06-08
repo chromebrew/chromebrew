@@ -19,12 +19,12 @@ if [ $architecture != "i686" ] && [ $architecture != "x86_64" ]; then
 fi
 
 #prepare directories
-sudo mkdir -p $CREW_LIB_PATH && sudo chown -R $user:$user $CREW_LIB_PATH
-sudo mkdir -p $CREW_CONFIG_PATH && sudo chown -R $user:$user $CREW_CONFIG_PATH
-sudo mkdir -p $CREW_CONFIG_PATH/meta && sudo chown -R $user:$user $CREW_CONFIG_PATH/meta
-sudo mkdir -p $CREW_BREW_DIR && sudo chown -R $user:$user $CREW_BREW_DIR
-sudo mkdir -p $CREW_DEST_DIR && sudo chown -R $user:$user $CREW_DEST_DIR
-sudo mkdir -p $CREW_PACKAGES_PATH && sudo chown -R $user:$user $CREW_PACKAGES_PATH
+sudo mkdir -p $CREW_LIB_PATH && sudo chown -R $USER:$USER $CREW_LIB_PATH
+sudo mkdir -p $CREW_CONFIG_PATH && sudo chown -R $USER:$USER $CREW_CONFIG_PATH
+sudo mkdir -p $CREW_CONFIG_PATH/meta && sudo chown -R $USER:$USER $CREW_CONFIG_PATH/meta
+sudo mkdir -p $CREW_BREW_DIR && sudo chown -R $USER:$USER $CREW_BREW_DIR
+sudo mkdir -p $CREW_DEST_DIR && sudo chown -R $USER:$USER $CREW_DEST_DIR
+sudo mkdir -p $CREW_PACKAGES_PATH && sudo chown -R $USER:$USER $CREW_PACKAGES_PATH
 
 #cd into the brew directory, everything will happen there
 cd $CREW_BREW_DIR
