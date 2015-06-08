@@ -81,7 +81,6 @@ wget -N --continue --no-check-certificate $URL/packages/git.rb
 wget -N --continue --no-check-certificate $URL/packages/zlibpkg.rb
 wget -N --continue --no-check-certificate $URL/packages/libssh2.rb
 wget -N --continue --no-check-certificate $URL/packages/perl.rb
-wget -N --continue --no-check-certificate $URL/packages/openssl.rb
 wget -N --continue --no-check-certificate $URL/packages/curl.rb
 wget -N --continue --no-check-certificate $URL/packages/expat.rb
 wget -N --continue --no-check-certificate $URL/packages/gettext.rb
