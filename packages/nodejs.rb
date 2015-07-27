@@ -3,7 +3,7 @@ require 'package'
 class Nodejs < Package
   version '0.12.0'
   source_url 'http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz'
-  source_sha1 'a969f17a0a6c9238584f8946d96e8d39be8eb957'
+  source_sha1 'd08810034d170c19759cb38bfc9442ab6b0ebc7a'
 
   depends_on 'buildessential'
   depends_on 'python27'
