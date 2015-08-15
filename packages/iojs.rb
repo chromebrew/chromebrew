@@ -1,9 +1,9 @@
 require 'package'
 
 class Iojs < Package
-  version '2.4.0'
-  source_url 'https://iojs.org/dist/v2.4.0/iojs-v2.4.0.tar.gz'
-  source_sha1 'ec273ab80421126c304a6910d8780cae4cbc1276'
+  version '3.0.0'
+  source_url 'https://iojs.org/dist/v3.0.0/iojs-v3.0.0.tar.gz'
+  source_sha1 'd5de35b35300b8602ebf6be06ebc0f97de4961f4'
 
   depends_on 'buildessential'
   depends_on 'python27'
