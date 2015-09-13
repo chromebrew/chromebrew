@@ -1,5 +1,5 @@
 #chromebrew directories
-OWNER="skycocker"
+OWNER="kriskras99"
 REPO="chromebrew"
 BRANCH="master"
 URL="https://raw.github.com/$OWNER/$REPO/$BRANCH"
@@ -13,7 +13,7 @@ CREW_PACKAGES_PATH=$CREW_LIB_PATH/packages
 user=$(whoami)
 architecture=$(uname -m)
 
-if [ $architecture != "i686" ] && [ $architecture != "x86_64" ]; then
+if [ $architecture != "i686" ] && [ $architecture != "x86_64" ] && [ $architecture != "armv7l" ]; then
   echo 'Your device is not supported by Chromebrew yet.'
   exit 1;
 fi
@@ -40,6 +40,10 @@ case "$architecture" in
 "x86_64")
   link='https://dl.dropboxusercontent.com/s/3dw5ue5vhf5nj8k/ruby-2.0.0-p247-chromeos1-chromeos-x86_64.tar.gz?dl=1&token_hash=AAHYJ-WOExuc2f4mKN3pDHUOlTMnt3h-rBosLmYr2Gvy7w'
   tarname='ruby-2.0.0-p247-chromeos1-chromeos-'$architecture'.tar.gz'
+  ;;
+"armv7l")
+  link='https://www.dropbox.com/s/tfayry9cloq3ukq/ruby.tar.gz?dl=0'
+  tarname='ruby-2.2.3-chromeos-'$architecture'.tar.gz'
   ;;
 esac
 
