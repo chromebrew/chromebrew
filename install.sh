@@ -42,7 +42,7 @@ case "$architecture" in
   tarname='ruby-2.0.0-p247-chromeos1-chromeos-'$architecture'.tar.gz'
   ;;
 "armv7l")
-  link='https://www.dropbox.com/s/gb75rcbraiylnph/ruby.tar.gz?dl=0'
+  link='https://www.dropbox.com/s/xu0jtzc7jukly1a/ruby-2.2.3-chromeos-armv7l.tar.gz?dl=0'
   tarname='ruby-2.2.3-chromeos-'$architecture'.tar.gz'
   ;;
 esac
