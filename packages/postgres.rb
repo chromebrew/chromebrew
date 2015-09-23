@@ -9,11 +9,11 @@ class Postgres < Package
 
   def self.build
     system "./configure"
-    system "make"
+    system "make world"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-world"
     out = "#{CREW_DEST_DIR}/usr/local/pgsql/data"
     system "mkdir", out
     puts "------------------"
