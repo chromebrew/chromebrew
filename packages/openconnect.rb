@@ -1,12 +1,42 @@
 require 'package'
 
+# @todo: provide vpnc-script (standalone), instructions for manual install:
+#
+# sudo su -
+# mkdir /usr/local/etc/vpnc
+# cd /usr/local/etc/vpnc
+# wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script
+# chmod a+x vpnc-script
+# exit
+
+# @todo: provide start-vpn script, instructions for manual connect:
+
+# Usage (as root - run 'sudo su -'):
+#
+# Create 'tun0' tunnel interface:
+#
+# > ip tuntap add mode tun tun0
+#
+# Run openconnect on tun0 interface
+#
+# > openconnect -i tun0 vpn.example.com
+# (Press Ctrl+C to exit)
+#
+# Shut down tun0 interface
+#
+# > ip tuntap del mode tun tun0
+
 class Openconnect < Package
   version '7.06'
   source_url 'ftp://ftp.infradead.org/pub/openconnect/openconnect-7.06.tar.gz'
   source_sha1 '2351408693aab0c6bc97d37e68b4a869fbb217ed'
 
+  depends_on 'buildessential'
+  depends_on 'libxml2'
+  depends_on 'gnutls'
+
   def self.build
-    system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\" --without-gnutls"
+    system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\" --with-vpnc-script=/usr/local/etc/vpnc/vpnc-script"
     system "make"
   end
 
