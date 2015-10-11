@@ -1,9 +1,9 @@
 require 'package'
 
 class Nodejs < Package
-  version '4.0.0'
-  source_url 'https://nodejs.org/dist/v4.0.0/node-v4.0.0.tar.gz'
-  source_sha1 'd4791cb483492aea74574f49eee9d6949ecbc759'
+  version '4.1.2'
+  source_url 'https://nodejs.org/dist/v4.1.2/node-v4.1.2.tar.gz'
+  source_sha1 '3c901d7b34cf9cc161f6c3845a576fbf0c91b4c5'
 
   depends_on 'buildessential'
   depends_on 'python27'
