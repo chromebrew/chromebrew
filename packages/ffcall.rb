@@ -6,7 +6,7 @@ class Ffcall < Package
   source_sha1 '6b4fdc7bd38b434bbf3d65508a3d117fc8b349f3'
 
   def self.build
-    system "./configure --prefix=/usr/local --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+    system "./configure --prefix=/usr/local --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
     system "make"
   end
 

@@ -36,7 +36,7 @@ class Openconnect < Package
   depends_on 'gnutls'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\" --with-vpnc-script=/usr/local/etc/vpnc/vpnc-script"
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" --with-vpnc-script=/usr/local/etc/vpnc/vpnc-script"
     system "make"
   end
 

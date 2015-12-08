@@ -8,7 +8,7 @@ class Pkgconfig < Package
   depends_on 'buildessential'
 
   def self.build
-      system "./configure --with-internal-glib --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+      system "./configure --with-internal-glib --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
       system "make"
   end
 

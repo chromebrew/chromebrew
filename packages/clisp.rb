@@ -9,7 +9,7 @@ class Clisp < Package
   depends_on 'ffcall'
 
   def self.build
-    system "./configure CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+    system "./configure CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
     FileUtils.cd('src') do
       system "ulimit -s 16384"
       system "make"

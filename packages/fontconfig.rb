@@ -8,7 +8,7 @@ class Fontconfig < Package
   depends_on 'pkgconfig'
 
   def self.build
-      system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+      system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
       system "make"
   end
 

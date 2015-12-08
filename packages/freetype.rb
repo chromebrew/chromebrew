@@ -6,7 +6,7 @@ class Freetype < Package
   source_sha1 '12dd3267af62cccc32045ed99984f3d8a8ddbf90'
 
   def self.build
-      system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+      system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
       system "make"
   end
 
