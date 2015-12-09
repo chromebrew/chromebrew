@@ -23,6 +23,8 @@ Installation
 ------------
 Open the terminal with Ctrl+Alt+T and type `shell`.
 
+If this command returns `Unknown command: 'wget'` please have a second look at the prerequisites and make sure your chromebook is in developer mode.
+
 Then download and run the installation script
 
     wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
