@@ -13,7 +13,7 @@ Chromebooks with Chrome OS run a linux kernel - the only missing piece to use th
 Prerequisites
 -------------
 
-You will need a chromebook with developer mode enabled.
+You will need a Chromebook with developer mode enabled.
 
 On [the ChromiumOs Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) select your device and follow the instructions listed there.
 
@@ -23,7 +23,7 @@ Installation
 ------------
 Open the terminal with Ctrl+Alt+T and type `shell`.
 
-If this command returns `Unknown command: 'wget'` please have a second look at the prerequisites and make sure your chromebook is in developer mode.
+If this command returns `Unknown command: 'wget'` please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
 
 Then download and run the installation script
 
