@@ -7,7 +7,7 @@ class Libgd < Package
 
   def self.build
     FileUtils.cd('src') do
-      system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+      system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
       system "make"
     end
   end

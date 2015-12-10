@@ -8,7 +8,7 @@ class Bc < Package
   depends_on 'flex'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib64/"
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/"
     system "make"
   end
 

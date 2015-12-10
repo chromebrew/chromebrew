@@ -6,7 +6,7 @@ class Libxml2 < Package
   source_sha1 'f46a37ea6d869f702e03f393c376760f3cbee673'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\" --without-python"
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" --without-python"
     system "make"
   end
 

@@ -6,7 +6,7 @@ class Proj4 < Package
   source_sha1 '0bc63a41f1bdcff600d076c056f796007abf3f2f'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
     system "make"
   end
 

@@ -6,7 +6,7 @@ class Libpng < Package
   source_sha1 'e912df0826dd6fb74f579ba60bf05c99807548ac'
 
   def self.build
-      system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+      system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
       system "make"
   end
 

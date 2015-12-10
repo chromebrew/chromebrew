@@ -6,7 +6,7 @@ class Geos < Package
   source_sha1 'b8aceab04dd09f4113864f2d12015231bb318e9a'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib64/ CC=\"gcc -m64\" CFLAGS=\" -fPIC\""
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
     system "make"
   end
 
