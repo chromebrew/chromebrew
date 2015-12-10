@@ -10,10 +10,22 @@ Overview
 
 Chromebooks with Chrome OS run a linux kernel - the only missing piece to use them as full-featured linux distro was gcc and make with their dependencies. Well, the piece isn't missing anymore. Say hello to chromebrew!
 
+Prerequisites
+-------------
+
+You will need a Chromebook with developer mode enabled.
+
+On [the ChromiumOs Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) select your device and follow the instructions listed there.
+
+Please be aware of the fact that developer mode is insecure if not properly configured.
+
 Installation
 ------------
+Open the terminal with Ctrl+Alt+T and type `shell`.
 
-Download and run the installation script
+If this command returns `Unknown command: 'wget'` please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
+
+Then download and run the installation script
 
     wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
 
