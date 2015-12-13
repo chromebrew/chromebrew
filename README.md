@@ -15,7 +15,7 @@ Prerequisites
 
 You will need a Chromebook with developer mode enabled.
 
-On [the ChromiumOs Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) select your device and follow the instructions listed there.
+On [the ChromiumOS Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) select your device and follow the instructions listed there.
 
 Please be aware of the fact that developer mode is insecure if not properly configured.
 
