@@ -1,9 +1,9 @@
 require 'package'
 
 class Libjpeg < Package
-  version '6.3'
-  source_url 'http://www.ijg.org/files/jpegsrc.v6b.tar.gz'
-  source_sha1 '7079f0d6c42fad0cfba382cf6ad322add1ace8f9'
+  version '9.1'
+  source_url 'http://www.ijg.org/files/jpegsrc.v9a.tar.gz'
+  source_sha1 'd65ed6f88d318f7380a3a5f75d578744e732daca'
 
   def self.build
     system "./configure --includedir=/usr/local/include --libdir=/usr/local/lib#{SHORTARCH} CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
