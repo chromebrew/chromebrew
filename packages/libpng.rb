@@ -1,9 +1,9 @@
 require 'package'
 
 class Libpng < Package
-  version '1.5.22'
-  source_url 'http://www.mirrorservice.org/sites/downloads.sourceforge.net/l/li/libpng/libpng15/1.5.22/libpng-1.5.22.tar.gz'
-  source_sha1 'e912df0826dd6fb74f579ba60bf05c99807548ac'
+  version '1.6.19'
+  source_url 'http://downloads.sourceforge.net/project/libpng/libpng16/1.6.19/libpng-1.6.19.tar.xz'
+  source_sha1 '483d72ced11c9258f9d1119105273d9af9ff151c'
 
   def self.build
       system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
