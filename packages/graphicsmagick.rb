@@ -1,9 +1,9 @@
 require 'package'
 
 class Graphicsmagick < Package
-  version '1.3.21'
-  source_url 'ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/1.3/GraphicsMagick-1.3.21.tar.gz'
-  source_sha1 '08dd77facf7d59f5e4d5eac04a4ab221e3bd9196'
+  version '1.3.23'
+  source_url 'http://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.23/GraphicsMagick-1.3.23.tar.gz'
+  source_sha1 'ad43788153e11e5123ac94b60a2c9acc74036d70'
 
   depends_on 'buildessential'
 
