@@ -1,5 +1,4 @@
 #!/bin/bash
-DIRNAME=${PWD##*/}
 
 echo creating file list
 find . -type f > ../filelist && find . -type l >> ../filelist && cut -c2- ../filelist > filelist
@@ -11,8 +10,8 @@ echo removing temporary files
 rm dlistcut ../dlist ../filelist
 
 echo building binary package
-tar -czf ../$DIRNAME.tar.gz *
-sha1sum ../$DIRNAME.tar.gz > ../$DIRNAME.tar.gz.sha1
+tar -czf ../package.tar.gz *
+sha1sum ../package.tar.gz > ../package.tar.gz.sha1
 
 echo finished
-cat ../$DIRNAME.tar.gz.sha1
+cat ../package.tar.gz.sha1
