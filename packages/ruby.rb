@@ -8,7 +8,7 @@ class Ruby < Package
   })
   binary_sha1 ({
     i686: "49eeba5d542e4c3e6aa3686f215485e0946fb99a",
-    x86_64: "ec4d9c9d1a993ca03d0dee594c79ab1945e5b88d"
+    x86_64: "f1de1ef5ed690c3b78f4e40208a4fb93e227c4ed"
   })
 
   depends_on 'readline'
