@@ -1,9 +1,9 @@
 require 'package'
 
 class Postgres < Package
-  version '9.4.4'
-  source_url 'https://ftp.postgresql.org/pub/source/v9.4.4/postgresql-9.4.4.tar.bz2'
-  source_sha1 'e295fee0f1bace740b2db1eaa64ac060e277d5a7'
+  version '9.5.0'
+  source_url 'https://ftp.postgresql.org/pub/source/v9.5.0/postgresql-9.5.0.tar.bz2'
+  source_sha1 '930afeb713b81778f29d32e7bf18fd08ce2aa8f9'
 
   depends_on 'buildessential'
 
@@ -23,7 +23,8 @@ class Postgres < Package
     puts "'sudo chown chronos:chronos /usr/local/pgsql/data'"
     puts "'sudo chmod 700 /usr/local/pgsql/data'"
     puts "'initdb -D /usr/local/pgsql/data'"
-    puts "To run your database: 'pg_ctl -D /usr/local/pgsql/data -l logfile start'"
+    puts "To start postgres: 'pg_ctl -D /usr/local/pgsql/data -l logfile start'"
+    puts "To stop postgres: 'pg_ctl -D /usr/local/pgsql/data stop'"
     puts "Create a database: 'createdb <dbname>'"
     puts "Connect to database: 'psql <dbname>'"
   end
