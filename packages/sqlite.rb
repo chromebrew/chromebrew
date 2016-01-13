@@ -1,10 +1,10 @@
 require 'package'                                                      	# include package class file
  
 class Sqlite < Package                                            	# name the package and make it a Package class instance
-  version '3.8.5'                                               	                                      # software version
-  source_url 'https://www.sqlite.org/2014/sqlite-autoconf-3080500.tar.gz'     # software source tarball url
-  source_sha1 '7f667e10ccebc26ab2086b8a30cb0a600ca0acae'          	# source tarball sha1 sum
-  
+  version '3.10'                                               	                                      # software version
+  source_url 'http://www.sqlite.org/2016/sqlite-autoconf-3100000.tar.gz'     # software source tarball url
+  source_sha1 '7be6e6869d0d2d9fe3df71b5c65f065dd2325f58'          	# source tarball sha1 sum
+
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure"
     system "make"                                                 # ordered chronologically
