@@ -2,13 +2,18 @@ require 'package'
 
 class Node_stable < Package
   version '5.4.1'
-  binary_url ({
-    i686: "https://nodejs.org/dist/v5.4.1/node-v5.4.1-linux-x64.tar.xz",
-    x86_64: "https://nodejs.org/dist/v5.4.1/node-v5.4.1-linux-x86.tar.xz"
-  })
-  binary_sha1 ({
-    i686: "39c4e3f5f78849aba02c02f49a9093898c52b933",
-    x86_64: "f7aaac398450a383958b2ecffa987adbec179a18"
-  })
-end
+  source_url 'https://nodejs.org/dist/v5.4.1/node-v5.4.1.tar.gz'
+  source_sha1 '8055bb2bf30a44ed5aaf4b07e69709dd09ca3ebf'
 
+  depends_on 'buildessential'
+  depends_on 'python27'
+
+  def self.build
+    system "CC='gcc' python2.7 ./configure"
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+end
