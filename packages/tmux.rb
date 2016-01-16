@@ -7,6 +7,7 @@ class Tmux < Package                                            	# name the pack
   
   depends_on 'readline'                                            # software dependencies
   depends_on 'libevent'
+  depends_on 'openssl'
   depends_on 'ncurses'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
