@@ -103,6 +103,9 @@ wget -N --continue --no-check-certificate $URL/packages/linuxheaders.rb
 #install git
 (echo y;) | crew install git
 
+#Making GCC act like CC (For some npm packages out there)
+ln -s /usr/local/bin/gcc /usr/local/bin/cc
+
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
 git init
