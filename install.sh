@@ -106,6 +106,9 @@ wget -N --continue --no-check-certificate $URL/packages/linuxheaders.rb
 #Making GCC act like CC (For some npm packages out there)
 ln -s /usr/local/bin/gcc /usr/local/bin/cc
 
+#Fixing the reference failure in some packages out there. 
+ln -s /usr/local/lib64/libmpc.so.3 /usr/local/lib64/libmpc.so.2
+
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
 git init
