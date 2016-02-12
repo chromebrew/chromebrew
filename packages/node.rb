@@ -1,8 +1,8 @@
 require 'package'
 
 class Nodejs < Package
-  version '4.2.6'
-  source_url 'https://nodejs.org/dist/v5.6.0/node-v5.6.0.tar.xz'
+  version '4.3.0'
+  source_url 'https://nodejs.org/dist/v4.3.0/node-v4.3.0.tar.xz'
   source_sha1 'd7b4e9676e63fc3dd1d506cef244874466264e22'
 
   depends_on 'buildessential'

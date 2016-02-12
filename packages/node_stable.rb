@@ -1,7 +1,7 @@
 require 'package'
 
 class Node_stable < Package
-  version '5.5.0'
+  version '5.6.0'
   source_url 'https://nodejs.org/dist/v5.6.0/node-v5.6.0.tar.xz'
   source_sha1 '522b4f1027549eb8161c1edba222176aba92e294'
 
