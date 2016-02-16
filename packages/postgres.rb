@@ -20,6 +20,7 @@ class Postgres < Package
     puts "Installation success!"
     puts "To get started, you need to initialize a database directory"
     puts "'echo \"export PATH=/usr/local/pgsql/bin:$PATH\" >> ~/.bashrc'"
+    puts "'source ~/.bashrc'"
     puts "'sudo chown chronos:chronos /usr/local/pgsql/data'"
     puts "'sudo chmod 700 /usr/local/pgsql/data'"
     puts "'initdb -D /usr/local/pgsql/data'"
