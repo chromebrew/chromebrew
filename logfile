@@ -1,0 +1,5 @@
+LOG:  database system was shut down at 2016-02-29 11:07:34 MYT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "chronos" does not exist
