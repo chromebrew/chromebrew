@@ -6,7 +6,7 @@ class Memcache < Package
   source_sha1 '32a798a37ef782da10a09d74aa1e5be91f2861db'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --disable-coverage"
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" --disable-coverage"
     system "make"
   end
 

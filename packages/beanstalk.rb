@@ -6,6 +6,7 @@ class Beanstalk < Package
   source_sha1 'bfc0ccf99e15b15eac03ec1d8a57a3aaff143237'
 
   def self.build
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
     system "make"
   end
 
