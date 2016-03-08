@@ -6,7 +6,8 @@ class Openssh < Package
   source_sha1 'd30a6fd472199ab5838a7668c0c5fd885fb8d371'
 
   def self.build
-    system "CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" make"
+    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
+    system "make"
   end
 
   def self.install
