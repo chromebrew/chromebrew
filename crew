@@ -38,7 +38,7 @@ def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
         packageName = File.basename filename, '.rb'
-        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist' 
+        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
     puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
@@ -96,7 +96,7 @@ def upgrade
     if currentVersion != @pkg.version
       search @pkg.name
       puts "Updating #{@pkg.name}..."
-      remove 
+      remove
       resolveDependenciesAndInstall
     else
       puts "#{@pkg.name} is already up to date."
@@ -157,7 +157,7 @@ def resolveDependenciesAndInstall
   
     search origin
     install
-  rescue InstallError => e 
+  rescue InstallError => e
     puts "#{@pkg.name} failed to install: #{e.to_s}"
   ensure
     #cleanup
@@ -219,8 +219,12 @@ end
 
 def install
   if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
-    puts "Package #{@pkg.name} already installed, skipping..."
-    return
+    if @reinstall and @reinstall == @pkg.name
+        puts "Re-installing #{@pkg.name}"
+    else
+        puts "Package #{@pkg.name} already installed, skipping..."
+        return
+    end
   end
 
   unless @pkg.is_fake?
@@ -346,6 +350,10 @@ when "update"
 when "upgrade"
   upgrade
 when "install"
+  search @pkgName
+  resolveDependenciesAndInstall
+when "reinstall"
+  @reinstall = @pkgName
   search @pkgName
   resolveDependenciesAndInstall
 when "remove"
