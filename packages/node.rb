@@ -1,6 +1,6 @@
 require 'package'
 
-class Nodejs < Package
+class Node < Package
   version '4.3.0'
   source_url 'https://nodejs.org/dist/v4.3.0/node-v4.3.0.tar.xz'
   source_sha1 'd7b4e9676e63fc3dd1d506cef244874466264e22'
