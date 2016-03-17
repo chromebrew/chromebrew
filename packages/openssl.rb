@@ -12,7 +12,7 @@ class Openssl < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "ln -sf /usr/local/ssl/openssl/includes /usr/local/includes/openssl"
+    system "ln -sf /usr/local/ssl/openssl/includes /usr/local/include/openssl"
     system "ln -sf /usr/local/ssl/bin/openssl /usr/local/bin/openssl"
   end
 end
