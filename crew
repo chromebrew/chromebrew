@@ -7,7 +7,7 @@ require 'json'
 require 'fileutils'
 
 @command = ARGV[0]
-@pkgName = ARGV[1]
+@pkgs = ARGV.drop(1)
 
 CREW_PREFIX = '/usr/local'
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
@@ -175,12 +175,15 @@ def resolveDependencies
 
   def pushDeps
     if @pkg.dependencies
-      @dependencies.unshift @pkg.dependencies
+
+        @pkg.dependencies.each do |d|
+            @dependencies.unshift d unless @device[:installed_packages].each.map { |pkg| pkg[:name] }.include? d
+        end
       
-      @pkg.dependencies.each do |dep|
-        search dep, true
-        pushDeps
-      end
+        @pkg.dependencies.each do |dep|
+            search dep, true
+            pushDeps
+        end
     end
   end
   
@@ -190,7 +193,7 @@ def resolveDependencies
 
   puts "Following packages also need to be installed: "
   
-  @dependencies.flatten!.uniq!
+  @dependencies.uniq!
   @dependencies.each do |dep|
     print dep + " "
   end
@@ -335,36 +338,40 @@ def remove
   puts "#{@pkg.name.capitalize} removed!"
 end
 
+def processPkgs(&block)
+    @pkgs.each do |p|
+        @pkgName = p
+        yield
+    end
+end
+
 case @command
 when "search"
-  if @pkgName
-    search @pkgName
+  if @pkgs
+    @pks.each { |p| search p }
   else
     list_packages
   end
 when "download"
-  search @pkgName
-  download
+    processPkgs { search @pkgName; download }
 when "update"
-  update
+    processPkgs { update }
 when "upgrade"
-  upgrade
+    processPkgs { upgrade }
 when "install"
-  search @pkgName
-  resolveDependenciesAndInstall
+    processPkgs { search @pkgName; resolveDependenciesAndInstall }
 when "reinstall"
-  @reinstall = @pkgName
-  search @pkgName
-  resolveDependenciesAndInstall
+    @pkgs.each do |p|
+        processPkgs { @reinstall = @pkgName; search @pkgName; resolveDependenciesAndInstall }
+    end
 when "remove"
-  abort 'Removing actions must be ran with sudo.' unless USER == 'root'
-  search @pkgName
-  remove
+    abort 'Removing actions must be ran with sudo.' unless USER == 'root'
+    processPkgs { search @pkgName; remove }
 when nil
-  puts "Chromebrew, version 0.2.1"
-  puts "Usage: crew [command] [package]"
-  puts "Available commands: search, download, install, remove"
+    puts "Chromebrew, version 0.2.1"
+    puts "Usage: crew [command] [package]"
+    puts "Available commands: search, download, install, remove"
 else
-  puts "I have no idea how to do #{@command} :("
-  puts "Available commands: search, download, install, remove"
+    puts "I have no idea how to do #{@command} :("
+    puts "Available commands: search, download, install, remove"
 end

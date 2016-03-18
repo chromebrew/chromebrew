@@ -7,10 +7,9 @@ class Ruby_latest < Package
 
   depends_on 'readline'
   depends_on 'zlibpkg'
-  depends_on 'openssl'
 
   def self.build
-    system "./configure --with-openssl-dir=/usr/local/ssl"
+    system "./configure"
     system "CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" make"
   end
 

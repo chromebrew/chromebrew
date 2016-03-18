@@ -7,6 +7,7 @@ class Package
     attr_reader :dependencies, :is_fake
     attr_accessor :name
   end
+  
   def self.depends_on (dependency = nil)
     @dependencies = [] unless @dependencies
     if dependency
