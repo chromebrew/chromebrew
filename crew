@@ -159,14 +159,6 @@ def resolveDependenciesAndInstall
     install
   rescue InstallError => e
     puts "#{@pkg.name} failed to install: #{e.to_s}"
-  ensure
-    #cleanup
-    unless ARGV[2] == 'keep'
-      Dir.chdir CREW_BREW_DIR do
-        system "rm -rf *"
-        system "mkdir dest" #this is a little ugly, feel free to find a better way
-      end
-    end
   end
 end
 
