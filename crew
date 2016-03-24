@@ -7,7 +7,7 @@ require 'json'
 require 'fileutils'
 
 @command = ARGV[0]
-@pkgName = ARGV[1]
+@pkgs = ARGV.drop(1)
 
 CREW_PREFIX = '/usr/local'
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
@@ -21,10 +21,13 @@ $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 USER = `whoami`.chomp
 
-@device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
-#symbolize also values
-@device.each do |key, elem|
-  @device[key] = @device[key].to_sym rescue @device[key]
+@device = {}
+@tmp_device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
+
+@tmp_device.each do |key, elem|
+  unless @device[@tmp_device[key]]
+    @device[key] = @tmp_device[key].to_sym rescue @tmp_device[key]
+  end
 end
 
 def setPkg (pkgName, silent = false)
@@ -38,7 +41,7 @@ def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
         packageName = File.basename filename, '.rb'
-        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist' 
+        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
     puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
@@ -96,7 +99,7 @@ def upgrade
     if currentVersion != @pkg.version
       search @pkg.name
       puts "Updating #{@pkg.name}..."
-      remove 
+      remove
       resolveDependenciesAndInstall
     else
       puts "#{@pkg.name} is already up to date."
@@ -157,16 +160,8 @@ def resolveDependenciesAndInstall
   
     search origin
     install
-  rescue InstallError => e 
+  rescue InstallError => e
     puts "#{@pkg.name} failed to install: #{e.to_s}"
-  ensure
-    #cleanup
-    unless ARGV[2] == 'keep'
-      Dir.chdir CREW_BREW_DIR do
-        system "rm -rf *"
-        system "mkdir dest" #this is a little ugly, feel free to find a better way
-      end
-    end
   end
 end
 
@@ -175,12 +170,15 @@ def resolveDependencies
 
   def pushDeps
     if @pkg.dependencies
-      @dependencies.unshift @pkg.dependencies
+
+        @pkg.dependencies.each do |d|
+            @dependencies.unshift d unless @device[:installed_packages].each.map { |pkg| pkg[:name] }.include? d
+        end
       
-      @pkg.dependencies.each do |dep|
-        search dep, true
-        pushDeps
-      end
+        @pkg.dependencies.each do |dep|
+            search dep, true
+            pushDeps
+        end
     end
   end
   
@@ -190,7 +188,7 @@ def resolveDependencies
 
   puts "Following packages also need to be installed: "
   
-  @dependencies.flatten!.uniq!
+  @dependencies.uniq!
   @dependencies.each do |dep|
     print dep + " "
   end
@@ -219,8 +217,12 @@ end
 
 def install
   if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
-    puts "Package #{@pkg.name} already installed, skipping..."
-    return
+    if @reinstall and @reinstall == @pkg.name
+        puts "Re-installing #{@pkg.name}"
+    else
+        puts "Package #{@pkg.name} already installed, skipping..."
+        return
+    end
   end
 
   unless @pkg.is_fake?
@@ -229,7 +231,8 @@ def install
       puts "Unpacking archive, this may take a while..."
       system "tar", "xf", meta[:filename]
       if meta[:source] == true
-        abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
+        abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless
+system("gcc", "--version")
         topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
         Dir.chdir CREW_BREW_DIR + topdir do
           puts "Building from source, this may take a while..."
@@ -331,32 +334,41 @@ def remove
   puts "#{@pkg.name.capitalize} removed!"
 end
 
+def processPkgs(&block)
+    @pkgs.each do |p|
+        @pkgName = p
+        yield
+    end
+end
+
 case @command
 when "search"
-  if @pkgName
-    search @pkgName
+  if @pkgs
+    @pks.each { |p| search p }
   else
     list_packages
   end
 when "download"
-  search @pkgName
-  download
+    processPkgs { search @pkgName; download }
 when "update"
-  update
+    processPkgs { update }
 when "upgrade"
-  upgrade
+    processPkgs { upgrade }
 when "install"
-  search @pkgName
-  resolveDependenciesAndInstall
+    processPkgs { search @pkgName; resolveDependenciesAndInstall }
+when "reinstall"
+    @pkgs.each do |p|
+        processPkgs { @reinstall = @pkgName; search @pkgName; resolveDependenciesAndInstall }
+    end
 when "remove"
-  abort 'Removing actions must be ran with sudo.' unless USER == 'root'
-  search @pkgName
-  remove
+    abort 'Removing actions must be ran with sudo.' unless USER == 'root'
+    processPkgs { search @pkgName; remove }
 when nil
-  puts "Chromebrew, version 0.2.1"
-  puts "Usage: crew [command] [package]"
-  puts "Available commands: search, download, install, remove"
+    puts "Chromebrew, version 0.2.1"
+    puts "Usage: crew [command] [package]"
+    puts "Available commands: search, download, install, remove"
 else
-  puts "I have no idea how to do #{@command} :("
-  puts "Available commands: search, download, install, remove"
+    puts "I have no idea how to do #{@command} :("
+    puts "Available commands: search, download, install, remove"
 end
+
