@@ -1,13 +1,16 @@
 require 'package'
 
 class Gmp < Package
-  version "5.1.2"
-  binary_url ({
-    i686: "https://dl.dropboxusercontent.com/s/9cwila1kaomsyl2/gmp-5.1.2-chromeos-i686.tar.gz?token_hash=AAHO9VxBpvXU2GPWBwimsp4hL8DADIItfNnIaFbfcyynMg&dl=1",
-    x86_64: "https://dl.dropboxusercontent.com/s/zp1mw0l93jcg35e/gmp-5.1.3-chromeos-x86_64.tar.gz?token_hash=AAHa75_Uu5zFQlbQUbse19d_vhIAmEnZ8bYpshE6giSXGw&dl=1"
-  })
-  binary_sha1 ({
-    i686: "b03b9508463588bfe9d09303c0725068cddd8810",
-    x86_64: "2aee1fee1e4b98261127a4c73f3f88670f1c8162"
-  })
+  version "6.1.0"
+  source_url 'http://ftp.gnu.org/gnu/gmp/gmp-6.1.0.tar.xz'
+  source_sha1 '99d691607613e749aa5d7c0c2a89aeab38fec070'
+  
+  def self.build
+    system "./configure CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
 end

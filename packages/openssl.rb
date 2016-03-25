@@ -1,13 +1,18 @@
 require 'package'
 
 class Openssl < Package
-  version '1.0.1e'
-  binary_url ({
-    i686: 'https://dl.dropboxusercontent.com/s/w6y84tusor5xz5f/openssl-1.0.1e-chromeos-i686.tar.gz?token_hash=AAGQ2xjngbnzme2CKee7Mz5WvkylBtFy1rwUzWDVNuOQ_Q&dl=1',
-    x86_64: 'https://dl.dropboxusercontent.com/s/384awniosicvm12/openssl-1.0.1e-chromeos-x86_64.tar.gz?token_hash=AAH4sdqkNnhIFU-uPdrpqddsi8UU0vWe_gwkplUBM_40MQ&dl=1'
-  })
-  binary_sha1 ({
-    i686: 'cadea32ec770c4b44d565b7e5fdf96a469a05757',
-    x86_64: '3cf4defb11fc2fccce77736d0f4559e56d9d7e05'
-  })
+  version '1.0.2g'
+  source_url 'https://ftp.openssl.org/source/openssl-1.0.2g.tar.gz'
+  source_sha1 '36af23887402a5ea4ebef91df8e61654906f58f2'
+
+  def self.build
+    system "./config shared"
+    system "CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "ln -sf /usr/local/ssl/openssl/includes /usr/local/include/openssl"
+    system "ln -sf /usr/local/ssl/bin/openssl /usr/local/bin/openssl"
+  end
 end

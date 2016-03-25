@@ -1,19 +1,23 @@
 require 'package'
 
 class Gcc < Package
-  version '4.8.1-baseline'
-  binary_url ({
-    i686: "https://dl.dropboxusercontent.com/s/c06pcge8ogsqfcd/gcc-4.8.1-baseline-chromeos-i686.tar.gz?token_hash=AAFLnE_8iL_lAnGtAAVM5G_sYqejA44jGW8D9r0a8xCjrQ&dl=1",
-    x86_64: "https://dl.dropboxusercontent.com/s/kk52ic170je87fc/gcc-4.8.1-baseline-chromeos-x86_64.tar.gz?token_hash=AAGcQBSj1y8OfHXUhsayxlFfvk4LRszY07ehx_Z6UoyNEg&dl=1"
-  })
-  binary_sha1 ({
-    i686: "d720c9a804d26728d730b93748072ffa6df7ee3d",
-    x86_64: "59932a73cd149ae82b4b5c277b734788c1efab44"
-  })
-
+  version '5.3.0'
+  source_url 'http://ftp.gnu.org/gnu/gcc/gcc-5.3.0/gcc-5.3.0.tar.gz'
+  source_sha1 '39ebff8a873181728b02db3689215557628eed9d'
+  
   depends_on 'binutils'
   depends_on 'gmp'
   depends_on 'mpc'
   depends_on 'mpfr'
   depends_on 'glibc'
+
+  def self.build
+    system "./configure CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+
 end
