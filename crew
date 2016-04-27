@@ -22,7 +22,7 @@ $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 USER = `whoami`.chomp
 
 #disallow sudo
-abort "Chromebrew should not be run as root." if Process.uid == 0
+abort "Chromebrew should not be run as root." if Process.uid == 0 && @command != "remove"
 
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
