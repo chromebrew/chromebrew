@@ -13,6 +13,11 @@ CREW_PACKAGES_PATH=$CREW_LIB_PATH/packages
 user=$(whoami)
 architecture=$(uname -m)
 
+if [ $EUID -eq 0 ]; then
+  echo 'Chromebrew should not be run as root.'
+  exit 1;
+fi
+
 if [ $architecture != "i686" ] && [ $architecture != "x86_64" ]; then
   echo 'Your device is not supported by Chromebrew yet.'
   exit 1;
