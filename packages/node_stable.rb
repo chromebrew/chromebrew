@@ -9,7 +9,7 @@ class Node_stable < Package
   depends_on 'python27'
 
   def self.build
-    system "CC='gcc' python2.7 ./configure"
+    system "CC='gcc' python2.7 ./configure --without-snapshot"
     system "make"
   end
 
