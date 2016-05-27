@@ -15,5 +15,7 @@ class Node < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    #Fix Permissiongs for -g installs of node packages
+    system "sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}"
   end
 end
