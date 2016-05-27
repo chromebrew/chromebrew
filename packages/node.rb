@@ -1,15 +1,15 @@
 require 'package'
 
 class Node < Package
-  version '4.3.0'
-  source_url 'https://nodejs.org/dist/v4.3.0/node-v4.3.0.tar.xz'
-  source_sha1 'd7b4e9676e63fc3dd1d506cef244874466264e22'
+  version '4.4.5'
+  source_url 'https://nodejs.org/dist/v4.4.5/node-v4.4.5.tar.xz'
+  source_sha1 'be0af595facab8be2dd8fa64c051c4c5a7ec0c4a'
 
   depends_on 'buildessential'
   depends_on 'python27'
 
   def self.build
-    system "CC='gcc' python2.7 ./configure"
+    system "CC='gcc' python2.7 ./configure --without-snapshot"
     system "make"
   end
 
