@@ -14,5 +14,7 @@ class Flex < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "echo", "Linking Flex to Lex"
+    system "ln", "-sv", "/usr/local/bin/flex", "/usr/local/bin/lex"
   end
 end
