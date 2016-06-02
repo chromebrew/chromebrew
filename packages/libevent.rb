@@ -4,6 +4,8 @@ class Libevent < Package                                            	# name the 
   version '2.0.21'                                               	                                      # software version
   source_url 'https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz'     # software source tarball url
   source_sha1 '3e6674772eb77de24908c6267c698146420ab699'          	# source tarball sha1 sum
+
+  depends_on 'openssl_devel'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure"
