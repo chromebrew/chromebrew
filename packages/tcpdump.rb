@@ -26,11 +26,8 @@ class Tcpdump < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "echo", "Please make sure to add '/usr/local/sbin' to your $PATH"
-    system "echo run this: 'sudo sed -i.original 
-s?PATH=\"/usr/local/bin\:/usr/bin\:/bin\:\$\{PATH\}\"?PATH=\"/usr/local/bin\:/usr/bin\:/bin\:/usr/local/sbin\:\$\{PATH\}\"? 
-/etc/profile'"
-    system "echo 'This will fix you PATH variable make sure you have rw enable on the 
-partition'"
+    puts "Please make sure to add '/usr/local/sbin' to your $PATH"
+    puts 'Run this: sudo sed -i.original s?PATH=\"/usr/local/bin\:/usr/bin\:/bin\:\$\{PATH\}\"?PATH=\"/usr/local/bin\:/usr/bin\:/bin\:/usr/local/sbin\:\$\{PATH\}\"? /etc/profile'
+    puts "This will fix you PATH variable, make sure you have rw enable on the partition"
   end
 end
