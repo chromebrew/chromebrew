@@ -22,7 +22,7 @@ class Vim < Package
     puts "You can then symlink to your home directory so vim can see it"
     puts "\tln -s /usr/local/vim ~/.vim"
     puts "\tln -s ~/.vim/vimrc ~/.vimrc\n\n"
-    puts "\nMake sure to add 'set nocompatible' without the '' to .vimrc file"
-    puts "if your vim is having weird behavior"
+    puts "\nMake sure to add \nset nocompatible\nset backspace=2\nto .vimrc file"
+    puts "If your vim is having weird behavior"
   end
 end
