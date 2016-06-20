@@ -1,6 +1,6 @@
 #chromebrew directories
-OWNER="skycocker"
-REPO="chromebrew"
+OWNER="brunux"
+REPO="cpkg"
 BRANCH="master"
 URL="https://raw.github.com/$OWNER/$REPO/$BRANCH"
 CREW_PREFIX=/usr/local
