@@ -1,17 +1,21 @@
-chromebrew
+CPKG - also know as Chrome Packge Manager
 ==========
 
-Package manager for Chrome OS
+This is an implementation of dpkg for the Chrome OS
+It is posible thanks to the awesome job by [crew](https://github.com/skycocker/chromebrew) developers
 
 **Does not support ARM chipsets yet**
 
 Overview
 --------
 
-Chromebooks with Chrome OS run a linux kernel - the only missing piece to use them as full-featured linux distro was gcc and make with their dependencies. Well, the piece isn't missing anymore. Say hello to chromebrew!
+CPKG will bring new fetures and a GUI... Wait for it ;)
+
 
 Prerequisites
 -------------
+
+Chromebooks with Chrome OS run a linux kernel - the only missing piece to use them as full-featured linux distro was gcc and make with their dependencies. Well, the piece isn't missing anymore. thanks to [chromebrew](https://github.com/skycocker/chromebrew)
 
 You will need a Chromebook with developer mode enabled.
 
@@ -27,7 +31,7 @@ If this command returns `Unknown command: 'wget'` please have a second look at t
 
 Then download and run the installation script
 
-    wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+    wget -q -O - https://raw.github.com/brunux/cpkg/master/install.sh | bash
 
 Usage
 -----
@@ -41,7 +45,7 @@ Where available commands are:
   * install [installs a package along with its dependencies. You'll be prompted for confirmation]
   * remove [removes a package. Must be ran as root]
   
-Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
+Available packages are listed in the [packages directory](https://github.com/brunux/cpkg/tree/master/packages).
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass "keep" as the last parameter when running "crew install".
 
@@ -50,6 +54,6 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 License
 -------
 
-Copyright 2013 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors)
+Copyright [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors)
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt)
