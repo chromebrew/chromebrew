@@ -19,12 +19,12 @@ if [ $architecture != "i686" ] && [ $architecture != "x86_64" ]; then
 fi
 
 #prepare directories
-mkdir -p $CREW_LIB_PATH
-mkdir -p $CREW_CONFIG_PATH
-mkdir -p $CREW_CONFIG_PATH/meta
-mkdir -p $CREW_BREW_DIR
-mkdir -p $CREW_DEST_DIR 
-mkdir -p $CREW_PACKAGES_PATH 
+sudo mkdir -p $CREW_LIB_PATH
+sudo mkdir -p $CREW_CONFIG_PATH
+sudo mkdir -p $CREW_CONFIG_PATH/meta
+sudo mkdir -p $CREW_BREW_DIR
+sudo mkdir -p $CREW_DEST_DIR 
+sudo mkdir -p $CREW_PACKAGES_PATH 
 
 #cd into the brew directory, everything will happen there
 cd $CREW_BREW_DIR
@@ -49,7 +49,7 @@ wget --continue --no-check-certificate --content-disposition $link -O $tarname
 echo "Extracting ruby (this may take a while)..."
 tar -xf $tarname
 echo "Installing ruby (this may take a while)..."
-cp -r ./usr/* /usr
+sudo cp -r ./usr/* /usr
 mv ./dlist $CREW_CONFIG_PATH/meta/ruby.directorylist
 mv ./filelist $CREW_CONFIG_PATH/meta/ruby.filelist
 
@@ -57,7 +57,7 @@ mv ./filelist $CREW_CONFIG_PATH/meta/ruby.filelist
 cd $CREW_LIB_PATH
 wget -N --continue --no-check-certificate $URL/crew
 chmod +x crew
-ln -s `pwd`/crew $CREW_PREFIX/bin
+sudo ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
 mkdir $CREW_LIB_PATH/lib && cd $CREW_LIB_PATH/lib
 wget -N --continue --no-check-certificate $URL/lib/package.rb
