@@ -21,6 +21,9 @@ $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 USER = `whoami`.chomp
 
+#disallow sudo
+abort "Chromebrew should not be run as root." if Process.uid == 0 && @command != "remove"
+
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
 @device.each do |key, elem|
@@ -142,7 +145,7 @@ def download
     sha1sum = @pkg.binary_sha1[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    system('wget', '--continue', '--content-disposition', '--no-check-certificate', '-N', url, '-O', filename)
+    system('wget', '--continue', '--no-check-certificate', url, '-O', filename)
     abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum
   end
   puts "Archive downloaded"
