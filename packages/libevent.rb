@@ -1,12 +1,12 @@
 require 'package'                                                      	# include package class file
  
 class Libevent < Package                                            	# name the package and make it a Package class instance
-  version '2.0.21'                                               	                                      # software version
-  source_url 'https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz'     # software source tarball url
-  source_sha1 '3e6674772eb77de24908c6267c698146420ab699'          	# source tarball sha1 sum
+  version '2.0.22'                                               	                                      # software version
+  source_url 'https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz'     # software source tarball url
+  source_sha1 'a586882bc93a208318c70fc7077ed8fca9862864'          	# source tarball sha1 sum
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure"
+    system "./configure --disable-openssl"
     system "make"                                                 # ordered chronologically
   end
   
