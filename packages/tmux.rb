@@ -1,9 +1,9 @@
 require 'package'                                                      	# include package class file
  
 class Tmux < Package                                            	# name the package and make it a Package class instance
-  version '1.9a'                                               	                                      # software version
-  source_url 'http://downloads.sourceforge.net/tmux/tmux-1.9a.tar.gz'     # software source tarball url
-  source_sha1 '815264268e63c6c85fe8784e06a840883fcfc6a2'          	# source tarball sha1 sum
+  version '2.2'                                               	                                      # software version
+  source_url 'https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz'     # software source tarball url
+  source_sha1 '5ed1430bc7ef44c227e64e9401c686573dd0791a'          	# source tarball sha1 sum
   
   depends_on 'readline'                                            # software dependencies
   depends_on 'libevent'
