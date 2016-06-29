@@ -1,8 +1,8 @@
 require 'package'
 
 class Go < Package
-  version '1.4.1'
-  source_url 'https://storage.googleapis.com/golang/go1.4.1.src.tar.gz'
+  version '1.6.2'
+  source_url 'https://storage.googleapis.com/golang/go1.6.2.src.tar.gz'
   source_sha1 'c7a683e8d39b835e333199d68d0c0baefcd24a68'
 
   def self.build
