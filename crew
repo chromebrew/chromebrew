@@ -3,6 +3,7 @@ require 'find'
 require 'net/http'
 require 'uri'
 require 'digest/sha1'
+require 'digest/sha2'
 require 'json'
 require 'fileutils'
 
