@@ -16,6 +16,7 @@ class Node_stable < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     #Fix Permissiongs for -g installs of node packages
-    system "sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}"
+    system "sudo chown -R chronos /usr/local/lib/node_modules"
+    echo "node_stable has been depricated. Please install node_current to get the latest changes"
   end
 end

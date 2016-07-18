@@ -8,6 +8,8 @@ class Node_current < Package
   depends_on 'buildessential'
   depends_on 'python27'
 
+  depends_on 'openssl_devel'
+
   def self.build
     system "CC='gcc' python2.7 ./configure --without-snapshot"
     system "make"
@@ -16,6 +18,6 @@ class Node_current < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     #Fix Permissiongs for -g installs of node packages
-    system "sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}"
+    system "sudo chown -R chronos /usr/local/lib/node_modules"
   end
 end
