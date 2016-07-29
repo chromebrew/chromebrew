@@ -1,9 +1,9 @@
 require 'package'
 
 class Node_stable < Package
-  version '6.3.1'
-  source_url 'https://nodejs.org/dist/v6.3.1/node-v6.3.1.tar.xz'
-  source_sha1 '7021da27637f0e099598f0a7e8ddaf07e8bb3a69'
+  version '6.2.2'
+  source_url 'https://nodejs.org/dist/v6.2.2/node-v6.2.2.tar.xz'
+  source_sha1 '5014800813FA3682B8053637518B37A119C26E93'
 
   depends_on 'buildessential'
   depends_on 'python27'
@@ -16,9 +16,6 @@ class Node_stable < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     #Fix Permissiongs for -g installs of node packages
-    system "echo 'Now to get npm -g working you should type this'"
-    system "echo 'sudo chown -R chronos /usr/local/lib/node_modules'"
-    system "echo 'also...'"
-    system "echo 'node_stable has been depricated. Please install node_current to get the latest changes'"
+    system "sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}"
   end
 end
