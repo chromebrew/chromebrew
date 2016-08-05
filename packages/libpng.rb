@@ -2,7 +2,7 @@ require 'package'
 
 class Libpng < Package
   version '1.6.24'
-  sourch_rul 'http://downloads.sourceforge.net/project/libpng/libpng16/1.6.24/libpng-1.6.24.tar.xz'
+  source_url 'http://downloads.sourceforge.net/project/libpng/libpng16/1.6.24/libpng-1.6.24.tar.xz'
   source_sha1 'b8fa86449bebd7b1cda71e0ed2cd417b6596ce78'
 
   def self.build
