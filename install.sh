@@ -37,14 +37,24 @@ case "$architecture" in
 "i686")
   link='https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz'
   tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.gz'
+  sha256='e16b0925f21c8651f780fa0be721ba04546bb70017d6da2a84fad83e4ff4ebe2'
   ;;
 "x86_64")
   link='https://dl.dropboxusercontent.com/s/3dw5ue5vhf5nj8k/ruby-2.0.0-p247-chromeos1-chromeos-x86_64.tar.gz'
   tarname='ruby-2.0.0-p247-chromeos1-chromeos-'$architecture'.tar.gz'
+  sha256='77bd45734f460737e14d58cc73f5b9e16d22daa05eac704115047c0d8f9b5d44'
   ;;
 esac
 
 wget -c $link -O $tarname
+
+#verify ruby
+echo "Verifying ruby..."
+echo $sha256 $tarname | sha256sum -c -
+if [ $? -ne 0 ]; then
+  echo 'Verification failed, something may be wrong with the ruby download.'
+  exit 1;
+fi
 
 #extract and install ruby
 echo "Extracting ruby (this may take a while)..."
