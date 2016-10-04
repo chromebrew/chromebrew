@@ -2,7 +2,7 @@ require 'package'
 
 class Flex < Package
   version '2.5.39'
-  source_url 'http://fossies.org/linux/misc/flex-2.5.39.tar.gz'
+  source_url 'http://fossies.org/linux/misc/flex-2.6.0.tar.gz'
   source_sha1 '40866373afd3ab88a7f7fe26c9b27b035aa1f2a9'
 
   depends_on 'm4'
