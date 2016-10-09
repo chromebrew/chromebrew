@@ -7,7 +7,7 @@ class Nano < Package
 
   depends_on 'buildessential'
   depends_on 'ncurses' 
-  depends_on 'file'
+  depends_on 'libmagic'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure CPPFLAGS=\"-I/usr/local/include/ncurses\""
