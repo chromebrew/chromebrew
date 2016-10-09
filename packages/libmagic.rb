@@ -1,6 +1,6 @@
 require 'package'
 
-class File < Package
+class Libmagic < Package
   version '5.28'
   source_url 'ftp://ftp.astron.com/pub/file/file-5.28.tar.gz'
   source_sha1 '1b789a93bea54da3119d98986468cd90b1e571bf'
