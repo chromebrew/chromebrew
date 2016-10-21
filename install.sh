@@ -1,7 +1,7 @@
 #chromebrew directories
-OWNER="zelectrokarz"
+OWNER="skycocker"
 REPO="chromebrew"
-BRANCH="patch-1"
+BRANCH="master"
 URL="https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH"
 CREW_PREFIX=/usr/local
 CREW_LIB_PATH=$CREW_PREFIX/lib/crew/
