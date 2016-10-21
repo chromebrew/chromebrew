@@ -3,7 +3,7 @@ require 'package'
 class PythonBeta < Package
   version '3.6.0b2'
   source_url 'https://www.python.org/ftp/python/3.6.0/Python-3.6.0b2.tgz'     # software source tarball url
-  source_sha1 'e8c1bd575a6ccc2a75f79d9d094a6a29d3802f5d'          	# source tarball sha1 sum
+  source_sha1 'e2ec7f5ae442fc0e918c55d28868a14bc662c078'          	# source tarball sha1 sum
   
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure"
