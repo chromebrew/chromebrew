@@ -35,12 +35,12 @@ echo "Downloading ruby..."
 
 case "$architecture" in
 "i686")
-  link='https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz'
-  tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.gz'
+  link='https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz'
+  tarname='ruby-2.3.1-chromeos-'$architecture'.tar.gz'
   ;;
 "x86_64")
-  link='https://dl.dropboxusercontent.com/s/3dw5ue5vhf5nj8k/ruby-2.0.0-p247-chromeos1-chromeos-x86_64.tar.gz'
-  tarname='ruby-2.0.0-p247-chromeos1-chromeos-'$architecture'.tar.gz'
+  link='https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz'
+  tarname='ruby-2.3.1-'$architecture'.tar.gz'
   ;;
 esac
 
