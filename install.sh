@@ -70,7 +70,7 @@ echo '  "architecture": "'$architecture'",' >> device.json
 echo '  "installed_packages": [' >> device.json
 echo '    {' >> device.json
 echo '      "name": "ruby",' >> device.json
-echo '      "version": "2.0.0p247"' >> device.json
+echo '      "version": "2.3.1"' >> device.json
 echo '    }' >> device.json
 echo '  ]' >> device.json
 echo '}' >> device.json
