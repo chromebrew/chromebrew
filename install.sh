@@ -1,5 +1,5 @@
 #chromebrew directories
-OWNER="skycocker"
+OWNER="jam7"
 REPO="chromebrew"
 BRANCH="master"
 URL="https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH"
@@ -17,10 +17,13 @@ if [ $EUID -eq 0 ]; then
   exit 1;
 fi
 
-if [ $architecture != "i686" ] && [ $architecture != "x86_64" ]; then
+case "$architecture" in
+"i686"|"x86_64"|"armv7l")
+  ;;
+*)
   echo 'Your device is not supported by Chromebrew yet.'
-  exit 1;
-fi
+  exit 1;;
+esac
 
 #prepare directories
 for dir in $CREW_LIB_PATH $CREW_CONFIG_PATH $CREW_CONFIG_PATH/meta $CREW_BREW_DIR $CREW_DEST_DIR $CREW_PACKAGES_PATH; do
@@ -34,6 +37,10 @@ cd $CREW_BREW_DIR
 echo "Downloading ruby..."
 
 case "$architecture" in
+"armv7l")
+  link='https://dl.dropboxusercontent.com/s/w4y8b0an136fk3i/ruby-2.0.0p247-chromeos-armv7l.tar.xz'
+  tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.gz'
+  ;;
 "i686")
   link='https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz'
   tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.gz'
@@ -80,6 +87,15 @@ cd $CREW_PACKAGES_PATH
 for file in git zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders; do
   wget -N -c $URL/packages/$file.rb
 done
+
+#install gcc on arm only.  It requires special treatments
+case "$architecture" in
+"armv7l")
+  echo y | crew install gcc
+  if [ ! -L $HOME/Downloads/tools ]; then
+    ln -s /usr/local $HOME/Downloads/tools
+  fi;;
+esac
 
 #install readline for ruby
 echo y | crew install readline
