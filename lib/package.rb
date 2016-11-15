@@ -32,7 +32,6 @@ class Package
     if ARCH == "armv7l"
       args = args.map {|s| s.gsub("-m32", "")}
       args = args.map {|s| s.gsub("lib32", "lib")}
-      puts *args
     end
     Kernel.system(*args)
     exitstatus = $?.exitstatus
