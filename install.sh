@@ -92,8 +92,20 @@ done
 case "$architecture" in
 "armv7l")
   echo y | crew install gcc
-  if [ ! -L $HOME/Downloads/tools ]; then
-    ln -s /usr/local $HOME/Downloads/tools
+  if [ ! -d $HOME/Downloads/tools ]; then
+    mkdir $HOME/Downloads/tools
+    mkdir $HOME/Downloads/tools/bin
+    mkdir $HOME/Downloads/tools/lib
+    mkdir $HOME/Downloads/tools/libexec
+    mkdir $HOME/Downloads/tools/share
+    ln -s /usr/local/armv7a-cros-linux-gnueabi $HOME/Downloads/tools
+    ln -s /usr/local/bin/as $HOME/Downloads/tools/bin
+    ln -s /usr/local/bin/bison $HOME/Downloads/tools/bin
+    ln -s /usr/local/bin/ld $HOME/Downloads/tools/bin
+    ln -s /usr/local/bin/m4 $HOME/Downloads/tools/bin
+    ln -s /usr/local/lib/gcc $HOME/Downloads/tools/lib
+    ln -s /usr/local/libexec/gcc $HOME/Downloads/tools/libexec
+    ln -s /usr/local/share/bison $HOME/Downloads/tools/share
   fi;;
 esac
 
