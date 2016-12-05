@@ -10,7 +10,7 @@ class Openssl_devel < Package
   version '1.0.2f'
 
 #  chromeos wget can't do proper ssl negotiation with this server
-#  source_url 'https://www.openssl.org/source/old/1.0.2/openssl-1.0.2f.tar.gz'
+#  source_url 'https://www.openssl.org/source/old/1.0.2/openssl-1.0.2g.tar.gz'
 #  so use their ftp server.  
   source_url 'ftp://ftp.openssl.org/source/old/1.0.2/openssl-1.0.2f.tar.gz'
   source_sha1 '2047c592a6e5a42bd37970bdb4a931428110a927'
