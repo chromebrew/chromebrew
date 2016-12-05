@@ -7,10 +7,10 @@ require 'package'
 
 #grumble - package names in crew must conform to ruby variable name restrictions. For instance '-' is disallowed
 class Openssl_devel < Package
-  version '1.0.2g'
+  version '1.0.2f'
 
 #  chromeos wget can't do proper ssl negotiation with this server
-#  source_url 'https://www.openssl.org/source/old/1.0.2/openssl-1.0.2f.tar.gz'
+#  source_url 'https://www.openssl.org/source/old/1.0.2/openssl-1.0.2g.tar.gz'
 #  so use their ftp server.  
   source_url 'ftp://ftp.openssl.org/source/old/1.0.2/openssl-1.0.2g.tar.gz'
   source_sha1 '36af23887402a5ea4ebef91df8e61654906f58f2'
