@@ -1,9 +1,9 @@
 require 'package'
 
 class Python27 < Package
-  version '2.7.10'
-  source_url 'https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz' # software source tarball url
-  source_sha1 '49089f1f6ab445dc8ace97beeb276095c4c8039b'                  # source tarball sha1 sum
+  version '2.7.12'
+  source_url 'https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz' # software source tarball url
+  source_sha1 '05360b8ade117b35e266b2004a7f1f11250c6dcd'                     # source tarball sha1 sum
 
   depends_on 'bz2'
   depends_on 'ncurses'
