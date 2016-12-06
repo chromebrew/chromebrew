@@ -1,9 +1,9 @@
 require 'package'
 
 class Ruby_latest < Package
-  version '2.2.4'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.4.tar.gz'
-  source_sha1 '818e5e157f76d4912ba3a7c7b4fc5156105e83c3'
+  version '2.3.3'
+  source_url 'http://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.xz'
+  source_sha1 'f2318460606d410e80dd5c82862a93e5736534de'
 
   depends_on 'readline'
   depends_on 'zlibpkg'
