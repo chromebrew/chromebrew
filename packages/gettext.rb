@@ -1,13 +1,19 @@
 require 'package'
 
-class Gettext < Package
-  version '0.18.3.1'
-  binary_url ({
-    i686: 'https://dl.dropboxusercontent.com/s/xmsfr7q9r99dhcs/gettext-0.18.3.1-chromeos-i686.tar.gz?token_hash=AAGJo0pqudCOkGU3NHOcBuFG2zLwWpapNXLX-zUJLcS3aA&dl=1',
-    x86_64: 'https://dl.dropboxusercontent.com/s/nidj0ehxwserhz6/gettext-0.18.3.1-chromeos-x86_64.tar.gz?token_hash=AAFn-kdXlB23HDVDCKTn9n_U-i9LFNCIB6HU0jSUiJTctA&dl=1'
-  })
-  binary_sha1 ({
-    i686: '1ecbff59d6134c7f8804bcf18fb2b1b7a9a6d4c0',
-    x86_64: '22174347defa4f034a360078c248a61710c5f854'
-  })
+class Llvm < Package
+  version '0.19.8'
+  source_url 'http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.8.tar.xz'
+  source_sha1 'dc551d4783edf691c1f0095ca927d3128b5093e8'
+
+  depends_on 'buildessential'
+  depends_on 'openssl_devel'
+
+  def self.build
+    system "CC='gcc' ./configure"
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
 end
