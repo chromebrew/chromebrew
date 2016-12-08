@@ -1,9 +1,9 @@
 require 'package'
 
 class Filecmd < Package
-  version '5.25'
-  source_url 'ftp://ftp.astron.com/pub/file/file-5.25.tar.gz'
-  source_sha1 'fea78106dd0b7a09a61714cdbe545135563e84bd'
+  version '5.29'
+  source_url 'ftp://ftp.astron.com/pub/file/file-5.29.tar.gz'
+  source_sha1 '8d360aeed901e3e4f4d4a865696ac1e29efdfcca'
 
   def self.build
     system "./configure"
