@@ -15,6 +15,9 @@ class Nginx < Package
     system "sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx"
     system "echo all NGINX things are in /usr/local/nginx"
     system "echo pages are in /usr/local/nginx/html"
-    system "echo run nginx with root! sudo nginx"
+    system "echo adding bash aliases so you can easily start/stop nginx"
+    system "echo startnginx starts nginx and stopnginx stops nginx"
+    system "sed -i '$ a alias startnginx="sudo nginx"' ~/.bashrc"
+    system "sed -i '$ a alias stopnginx="sudo pkill nginx"' ~/.bashrc"
   end
 end
