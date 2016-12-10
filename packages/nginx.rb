@@ -15,6 +15,5 @@ class Nginx < Package
     system "sed -i '$ a export PATH=$PATH:/usr/local/nginx/sbin' ~/.bashrc"
     system "echo all NGINX things are in /usr/local/nginx"
     system "echo pages are in /usr/local/nginx/html"
-    system "echo remember to run nginx as root sudo nginx" 
   end
 end
