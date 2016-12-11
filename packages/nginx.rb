@@ -19,7 +19,7 @@ class Nginx < Package
     system "echo pages are in /usr/local/nginx/html"
     system "echo adding bash aliases so you can easily start/stop nginx"
     system "echo startnginx starts nginx and stopnginx stops nginx"
-    system "sed -i '$ a alias startnginx="sudo nginx"' ~/.bashrc"
-    system "sed -i '$ a alias stopnginx="sudo pkill nginx"' ~/.bashrc"
+    system "sed -i '$ a alias startnginx=\"sudo nginx\"' ~/.bashrc"
+    system "sed -i '$ a alias stopnginx=\"sudo pkill nginx\"' ~/.bashrc"
   end
 end
