@@ -4,7 +4,9 @@ class Nginx < Package
   version '1.11.6'
   source_url 'http://nginx.org/download/nginx-1.11.6.tar.gz' # software source tarball url
   source_sha1 '51903b721a5ee721568fc59f0a243df5356a98de'  # source tarball sha1 sum
-
+  
+  depends_on 'pcre'
+  
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure"
     system "make"                                                 # ordered chronologically
