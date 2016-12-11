@@ -1,7 +1,7 @@
 require 'package'
 
 class Jdk8 < Package
-  version '8.0.25'
+  version '1.8.0-112'
   binary_url ({
     i686: "https://www.dropbox.com/s/d1omw087ilkh5oq/jdk1.8.0_25_i686.tar.gz?dl=0",
     x86_64: "https://www.dropbox.com/s/ykw2jt797cpghfy/jdk1.8.0_65_x86_64.tar.gz?dl=0"
