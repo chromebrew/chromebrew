@@ -12,7 +12,7 @@ rm dlistcut ../dlist ../filelist
 
 echo building binary package
 tar -czf ../$DIRNAME.tar.gz *
-sha1sum ../$DIRNAME.tar.gz > ../$DIRNAME.tar.gz.sha1
+sha256sum ../$DIRNAME.tar.gz > ../$DIRNAME.tar.gz.sha256
 
 echo finished
-cat ../$DIRNAME.tar.gz.sha1
+cat ../$DIRNAME.tar.gz.sha256
