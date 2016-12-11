@@ -17,7 +17,7 @@ class Python27 < Package
   def self.install                                                # self.install contains commands needed to install the software on the target system
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"          # remember to include DESTDIR set to CREW_DEST_DIR - needed to keep track of changes made to system
     system "wget https://bootstrap.pypa.io/get-pip.py"
-    system "The sudo bit here is for python-pip to be installed"
+    system "echo The sudo bit here is for python-pip to be installed"
     system "sudo python get-pip.py"
   end
 end
