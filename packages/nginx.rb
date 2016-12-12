@@ -14,7 +14,7 @@ class Nginx < Package
 
   def self.install                                                # self.install contains commands needed to install the software on the target system
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"          # remember to include DESTDIR set to CREW_DEST_DIR - needed to keep track of changes made to system
-    system "sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/nginx"
+    system "sudo ln -sf /usr/local/nginx/sbin/nginx /usr/local/bin/nginx"
     system "echo all NGINX things are in /usr/local/nginx"
     system "echo pages are in /usr/local/nginx/html"
     system "echo adding bash aliases so you can easily start/stop nginx"
