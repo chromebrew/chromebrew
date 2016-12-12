@@ -1,9 +1,9 @@
 require 'package'
 
 class Go < Package
-  version '1.4.1'
-  source_url 'https://storage.googleapis.com/golang/go1.4.1.src.tar.gz'
-  source_sha1 'c7a683e8d39b835e333199d68d0c0baefcd24a68'
+  version '1.7.4'
+  source_url 'https://storage.googleapis.com/golang/go1.7.4.src.tar.gz'
+  source_sha1 '0fb305c827c8794cfda7e437befa6101a2d06b2e'
 
   def self.build
     FileUtils.cd('src') do
