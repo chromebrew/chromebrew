@@ -1,9 +1,9 @@
 require 'package'
 
 class Nano < Package
-  version '2.3.6'
-  source_url 'ftp://ftp.gnu.org/pub/gnu/nano/nano-2.3.6.tar.gz' # software source tarball url  
-  source_sha1 '7dd39f21bbb1ab176158e0292fd61c47ef681f6d'
+  version '2.7.1'
+  source_url 'ftp://ftp.gnu.org/pub/gnu/nano/nano-2.7.1.tar.gz' # software source tarball url  
+  source_sha1 '5ad089d08e68dc7977f51403de6d7872686647af'
 
   depends_on 'buildessential'
   depends_on 'ncurses' 
