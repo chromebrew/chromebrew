@@ -40,6 +40,7 @@ case "$architecture" in
 "armv7l")
   link='https://dl.dropboxusercontent.com/s/w4y8b0an136fk3i/ruby-2.0.0p247-chromeos-armv7l.tar.xz'
   tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.gz'
+  sha256='f3e6287ef47c78d2211e31d1d72453292c086f8b6bd08c8608abcf67f87de862'
   ;;
 "i686")
   link='https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz'
