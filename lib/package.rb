@@ -28,6 +28,11 @@ class Package
   end
 
   def self.system(*args)
+    # strip -m32 option and convert lib32 to lib for the case of ARM to avoid SHORTARCH flood
+    if ARCH == "armv7l"
+      args = args.map {|s| s.gsub("-m32", "")}
+      args = args.map {|s| s.gsub("lib32", "lib")}
+    end
     Kernel.system(*args)
     exitstatus = $?.exitstatus
     raise InstallError.new("`#{args.join(" ")}` exited with #{exitstatus}") unless exitstatus == 0
