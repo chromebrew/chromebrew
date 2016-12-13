@@ -6,11 +6,11 @@ Package manager for Chrome OS
 Supported Systems
 -----------------
 
-| Architecture | Supported? |
-|:------------:|:----------:|
-|    x86_64    |     Yes    |
-|     i686     |     Yes    |
-|      arm     |     Yes    |
+|  Architecture  | Supported? |
+|:--------------:|:----------:|
+|     x86_64     |     Yes    |
+|      i686      |     Yes    |
+| arm (Exynos 5) |     Yes    |
 
 Overview
 --------
