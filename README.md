@@ -3,7 +3,14 @@ chromebrew
 
 Package manager for Chrome OS
 
-**Does not support ARM chipsets yet**
+Supported Systems
+-----------------
+
+| Architecture | Supported? |
+|:------------:|:----------:|
+|    x86_64    |     Yes    |
+|     i686     |     Yes    |
+|      arm     |     Yes    |
 
 Overview
 --------
