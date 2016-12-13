@@ -1,12 +1,13 @@
 require 'package'
 
 class Python27 < Package
-  version '2.7.12'
-  source_url 'https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz' # software source tarball url
-  source_sha1 '1e80b781eacc6b7e243bd277e5002426aa56d0f1'                  # source tarball sha1 sum
+  version '2.7.12-1'
+  source_url 'https://dl.dropboxusercontent.com/u/14799278/crew/Python-2.7.12-SSLFIX.tar.gz' # software source tarball url
+  source_sha1 '27a91c877773c5440f65d35d05c0bf398d0ce540'                  # source tarball sha1 sum
 
   depends_on 'bz2'
   depends_on 'ncurses'
+  depends_on 'openssl_devel'
 
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncurses\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\""
