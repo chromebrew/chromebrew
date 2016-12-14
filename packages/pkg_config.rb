@@ -1,6 +1,6 @@
 require 'package'
 
-class Pkg-config < Package
+class Pkg_config < Package
   version '29.1'
   source_url 'https://pkg-config.freedesktop.org/releases/pkg-config-0.29.1.tar.gz'
   source_sha1 '271ce928f6d673cc16cbced2bfd14a5f2e5d3d37'
