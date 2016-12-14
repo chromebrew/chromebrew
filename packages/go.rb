@@ -7,7 +7,7 @@ class Go < Package
 
   def self.build
     FileUtils.cd('src') do
-      system "./all.bash"
+      system "TMPDIR=/usr/local/tmp ./make.bash"
     end
   end
 
