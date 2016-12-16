@@ -1,13 +1,15 @@
 require 'package'
 
 class Jdk8 < Package
-  version '8.0.25'
+  version '8u112'
   binary_url ({
-    i686: "https://www.dropbox.com/s/d1omw087ilkh5oq/jdk1.8.0_25_i686.tar.gz?dl=0",
-    x86_64: "https://www.dropbox.com/s/ykw2jt797cpghfy/jdk1.8.0_65_x86_64.tar.gz?dl=0"
+    i686: "https://dl.dropboxusercontent.com/u/14799278/crew/jdk8u112-i686.tar.gz",
+    x86_64: "https://dl.dropboxusercontent.com/u/14799278/crew/jdk8u112-x86_64.tar.gz",
+    armv7l: "https://www.dropbox.com/s/bfu14nhbeoi8tdo/jdk8u111-armv7l.tar.gz?dl=1"
   })
   binary_sha1 ({
-    i686: "2f6fabc6e7b86fa2f21d19f9617d2641c5862a30",
-    x86_64: "7701c06a704722b73bf8468a9d7819693e6d4be0"
+    i686: "65de377470bdd42e4f3e158b16917166ebe47a02",
+    x86_64: "9a009b3b33cbb82ec70e7b0061973b09308c7fed",
+    armv7l: "913adb900bf0d9d42452a4591c1a9093076ed4b6"
   })
 end

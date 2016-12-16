@@ -15,6 +15,7 @@ CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
+ARCH = `uname -m | tr -d '\n\r'`
 SHORTARCH = `getconf LONG_BIT | tr -d '\n\r'`
 
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
