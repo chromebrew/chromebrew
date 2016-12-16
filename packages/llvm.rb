@@ -1,24 +1,19 @@
 require 'package'
 
 class Llvm < Package
-  version '3.8.1'
-  source_url 'http://llvm.org/releases/3.8.1/llvm-3.8.1.src.tar.xz'
-  source_sha1 'e0c48c4c182424b99999367d688cd8ce7876827b'
+  version '0.19.8'
+  source_url 'http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.8.tar.xz'
+  source_sha1 'dc551d4783edf691c1f0095ca927d3128b5093e8'
 
   depends_on 'buildessential'
-  depends_on 'cmake'
+  depends_on 'openssl_devel'
 
   def self.build
-    system "mkdir mybuilddir"
-    Dir.chdir CREW_BREW_DIR+"llvm-"+version+".src/mybuilddir" do
- 	system "cmake .."
-    	system "cmake --build ."
-    end
+    system "CC='gcc' ./configure"
+    system "make"
   end
 
   def self.install
-    Dir.chdir CREW_BREW_DIR+"llvm-"+version+".src/mybuilddir" do
-       system "cmake -DCMAKE_INSTALL_PREFIX=/usr/local -P cmake_install.cmake"
-    end  
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
