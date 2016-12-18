@@ -22,7 +22,7 @@ class Unzip < Package
 
   def self.build
     self.patch
-    system "make -f unix/Makefile generic"
+    system "make -f unix/Makefile linux_noasm"
   end
 
   def self.install
