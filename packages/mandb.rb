@@ -5,6 +5,12 @@ class Mandb < Package
   source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.7.6.tar.xz'
   source_sha1 '35a10f80d5cf6411d5c73376fcddcec1539e788a'
 
+  depends_on 'libpipeline'
+  depends_on 'pkgconfig'
+  depends_on 'gdbm'
+  depends_on 'groff'
+  depends_on 'less'
+
   def self.build
     system './configure',
       '--with-systemdtmpfilesdir=/usr/local/lib/tmpfiles.d',  # we can't write to /usr/lib/tmpfiles.d
@@ -14,16 +20,10 @@ class Mandb < Package
   end
 
   def self.install
-    system 'make', 'install'
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     puts ""
     puts "You will have to change the default PAGER env variable to be able to use mandb:"
     puts "echo \"export PAGER=/usr/local/bin/less\" >> ~/.bashrc && . ~/.bashrc"
   end
-
-  depends_on 'libpipeline'
-  depends_on 'pkgconfig'
-  depends_on 'gdbm'
-  depends_on 'groff'
-  depends_on 'less'
 
 end
