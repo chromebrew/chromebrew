@@ -22,7 +22,11 @@ class Unzip < Package
 
   def self.build
     self.patch
-    system "make -f unix/Makefile linux_noasm"
+    if ARCH == "armv7l"
+      system "make -f unix/Makefile linux_noasm"
+    else
+      system "make -f unix/Makefile generic"
+    end
   end
 
   def self.install
