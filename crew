@@ -16,7 +16,7 @@ CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
 ARCH = `uname -m`.strip
-#SHORTARCH = `getconf LONG_BIT`.strip # commenting for now since it doesn't work.
+#SHORTARCH = `getconf LONG_BIT`.strip # will refactor this line in the future
 case ARCH
   when "i686"
     SHORTARCH="32"
