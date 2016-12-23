@@ -8,7 +8,7 @@ class Nmap < Package
   depends_on 'buildessential'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure" 
+    system "./configure --with-pcap=linux --without-zenmap" 
     system "make"                                                 # ordered chronologically
   end
   
