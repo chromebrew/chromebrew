@@ -22,7 +22,7 @@ case ARCH
     SHORTARCH="32"
   when "x86_64"
     SHORTARCH="64"
-  when "arm7l"
+  when "armv7l"
     SHORTARCH="32"
   else  
     SHORTARCH="32"
