@@ -12,12 +12,4 @@ class Git < Package
     i686: '8c1bf4bcffb0e9c17bf20dd05981e86ea34d5d65',
     x86_64: '067cb6c36616ac30999ab97e85f3dc0e9d1d57f4'
   })
-
-  depends_on 'zlibpkg'
-  depends_on 'libssh2'
-  depends_on 'perl'
-  depends_on 'curl'
-  depends_on 'expat'
-  depends_on 'gettext'
-  depends_on 'python'
 end

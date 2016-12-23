@@ -188,6 +188,12 @@ end
 def resolveDependencies
   @dependencies = []
 
+  #add buildessential as dependency if we're building from source
+  if !@pkg.binary_url || !@pkg.binary_url.has_key?(@device[:architecture])
+    @dependencies.unshift 'buildessential'
+    search 'buildessential', true
+  end
+
   def pushDeps
     if @pkg.dependencies
       @dependencies.unshift @pkg.dependencies

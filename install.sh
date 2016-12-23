@@ -93,15 +93,16 @@ echo '    }' >> device.json
 echo '  ]' >> device.json
 echo '}' >> device.json
 
-#download git and its dependencies .rb package files
+#download git package file
 cd $CREW_PACKAGES_PATH
-for file in git zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders; do
-  wget -N -c $URL/packages/$file.rb
-done
+wget -N -c $URL/packages/git.rb
 
 #install gcc on arm only.  It requires special treatments
-case "$architecture" in
-"armv7l")
+if [ "$architecture" == "armv7l" ]; then
+  cd $CREW_PACKAGES_PATH
+  for file in buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders; do
+    wget -N -c $URL/packages/$file.rb
+  done
   echo y | crew install gcc
   if [ ! -d $HOME/Downloads/tools ]; then
     mkdir $HOME/Downloads/tools
@@ -117,11 +118,8 @@ case "$architecture" in
     ln -s /usr/local/lib/gcc $HOME/Downloads/tools/lib
     ln -s /usr/local/libexec/gcc $HOME/Downloads/tools/libexec
     ln -s /usr/local/share/bison $HOME/Downloads/tools/share
-  fi;;
-esac
-
-#install readline for ruby
-echo y | crew install readline
+  fi
+fi
 
 #install git
 echo y | crew install git
