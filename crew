@@ -17,6 +17,16 @@ CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
 ARCH = `uname -m`.strip
 #SHORTARCH = `getconf LONG_BIT`.strip # commenting for now since it doesn't work.
+case ARCH
+  when "i686"
+    SHORTARCH="32"
+  when "x86_64"
+    SHORTARCH="64"
+  when "arm7l"
+    SHORTARCH="32"
+  else  
+    SHORTARCH="32"
+end
 
 
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
