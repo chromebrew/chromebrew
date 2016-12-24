@@ -33,6 +33,6 @@ class Go < Package
     puts "Make sure to set go environment variables."
     puts "Minimal:"
     puts "\texport GOROOT=/usr/local/lib/go"
-    puts "\texport PATH=$GOROOT/bin"
+    puts "\texport PATH=$PATH:$GOROOT/bin"
   end
 end
