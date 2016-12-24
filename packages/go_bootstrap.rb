@@ -17,6 +17,6 @@ class Go_bootstrap < Package
     FileUtils.mv Dir.pwd, dest
     
     puts "--------"
-    puts "Installed Go_bootstrap for linux/amd64 in /usr/local/lib/go_bootstrap"
+    puts "Installed Go_bootstrap for #{ARCH} in /usr/local/lib/go_bootstrap"
   end
 end

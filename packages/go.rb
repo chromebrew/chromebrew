@@ -29,7 +29,7 @@ class Go < Package
     FileUtils.mv Dir.pwd, dest
 
     puts "--------"
-    puts "Installed Go for linux/amd64 in /usr/local/lib/go"
+    puts "Installed Go for #{ARCH} in /usr/local/lib/go"
     puts "Make sure to set go environment variables."
     puts "Minimal:"
     puts "\texport GOROOT=/usr/local/lib/go"
