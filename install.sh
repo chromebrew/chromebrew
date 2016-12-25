@@ -38,9 +38,9 @@ echo "Downloading ruby..."
 
 case "$architecture" in
 "armv7l")
-  link='https://dl.dropboxusercontent.com/s/w4y8b0an136fk3i/ruby-2.0.0p247-chromeos-armv7l.tar.xz'
-  tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.gz'
-  sha256='f3e6287ef47c78d2211e31d1d72453292c086f8b6bd08c8608abcf67f87de862'
+  link='https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz'
+  tarname='ruby-2.0.0p247-chromeos-'$architecture'.tar.xz'
+  sha256='de01196461edd57bb39288e7b9dee1ee3cdc605e4e8be6b8871ba47dbe1ca972'
   ;;
 "i686")
   link='https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz'
@@ -98,27 +98,6 @@ cd $CREW_PACKAGES_PATH
 for file in git zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders; do
   wget -N -c $URL/packages/$file.rb
 done
-
-#install gcc on arm only.  It requires special treatments
-case "$architecture" in
-"armv7l")
-  echo y | crew install gcc
-  if [ ! -d $HOME/Downloads/tools ]; then
-    mkdir $HOME/Downloads/tools
-    mkdir $HOME/Downloads/tools/bin
-    mkdir $HOME/Downloads/tools/lib
-    mkdir $HOME/Downloads/tools/libexec
-    mkdir $HOME/Downloads/tools/share
-    ln -s /usr/local/armv7a-cros-linux-gnueabi $HOME/Downloads/tools
-    ln -s /usr/local/bin/as $HOME/Downloads/tools/bin
-    ln -s /usr/local/bin/bison $HOME/Downloads/tools/bin
-    ln -s /usr/local/bin/ld $HOME/Downloads/tools/bin
-    ln -s /usr/local/bin/m4 $HOME/Downloads/tools/bin
-    ln -s /usr/local/lib/gcc $HOME/Downloads/tools/lib
-    ln -s /usr/local/libexec/gcc $HOME/Downloads/tools/libexec
-    ln -s /usr/local/share/bison $HOME/Downloads/tools/share
-  fi;;
-esac
 
 #install readline for ruby
 echo y | crew install readline
