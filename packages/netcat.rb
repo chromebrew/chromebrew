@@ -1,6 +1,6 @@
 require 'package'
 
-class Nc < Package
+class Netcat < Package
   version '0.7.1'
   source_url 'http://downloads.sourceforge.net/project/netcat/netcat/0.7.1/netcat-0.7.1.tar.gz'
   source_sha1 'b5cbc52a7ceed2fd5c4f5081f5747130b2d0fe01'
