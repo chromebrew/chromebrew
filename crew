@@ -24,7 +24,7 @@ case ARCH
     SHORTARCH="64"
   when "armv7l"
     SHORTARCH="32"
-  else  
+  else
     SHORTARCH="32"
 end
 
@@ -42,7 +42,7 @@ abort "Chromebrew should not be run as root." if Process.uid == 0 && @command !=
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def setPkg (pkgName, silent = false)
+def set_package (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
@@ -53,7 +53,7 @@ def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
         packageName = File.basename filename, '.rb'
-        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist' 
+        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
     puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
@@ -61,7 +61,7 @@ end
 
 def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+    return set_package(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
   abort "package #{pkgName} not found :("
 end
@@ -111,8 +111,8 @@ def upgrade
     if currentVersion != @pkg.version
       search @pkg.name
       puts "Updating #{@pkg.name}..."
-      remove 
-      resolveDependenciesAndInstall
+      remove
+      resolve_dependencies_and_install
     else
       puts "#{@pkg.name} is already up to date."
     end
@@ -130,7 +130,7 @@ def upgrade
       toBeUpdated.each do |package|
         search package
         remove
-        resolveDependenciesAndInstall
+        resolve_dependencies_and_install
       end
       puts "Packages have been updated."
     else
@@ -164,15 +164,15 @@ def download
   return {source: source, filename: filename}
 end
 
-def resolveDependenciesAndInstall
+def resolve_dependencies_and_install
   begin
     origin = @pkg.name
 
-    resolveDependencies
+    resolve_dependencies
   
     search origin
     install
-  rescue InstallError => e 
+  rescue InstallError => e
     puts "#{@pkg.name} failed to install: #{e.to_s}"
   ensure
     #cleanup
@@ -185,21 +185,21 @@ def resolveDependenciesAndInstall
   end
 end
 
-def resolveDependencies
+def resolve_dependencies
   @dependencies = []
 
-  def pushDeps
+  def push_deps
     if @pkg.dependencies
       @dependencies.unshift @pkg.dependencies
       
       @pkg.dependencies.each do |dep|
         search dep, true
-        pushDeps
+        push_deps
       end
     end
   end
   
-  pushDeps
+  push_deps
   
   return if @dependencies.empty?
 
@@ -257,7 +257,7 @@ def install
               abort "empty zip archive: #{meta[:filename]}"
             elsif entries.length == 1
               topdir = "tmpzip/" + entries.first
-            else 
+            else
               topdir = "tmpzip/"
             end
           end
@@ -380,7 +380,7 @@ when "upgrade"
   upgrade
 when "install"
   search @pkgName
-  resolveDependenciesAndInstall
+  resolve_dependencies_and_install
 when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   search @pkgName
