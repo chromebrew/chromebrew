@@ -1,9 +1,9 @@
 require 'package'
 
 class Rsync < Package
-  version '3.1.1'
-  source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.1.1.tar.gz' # software source tarball url  
-  source_sha1 'c84faba04f721d393feccfa0476bfeed9b5b5250'
+  version '3.1.2'
+  source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.1.2.tar.gz' # software source tarball url  
+  source_sha1 '0d4c7fb7fe3fc80eeff922a7c1d81df11dbb8a1a'
 
   depends_on 'buildessential'
   
