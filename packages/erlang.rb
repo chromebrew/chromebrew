@@ -1,9 +1,9 @@
 require 'package'
 
 class Erlang < Package
-  version '19.0'
-  source_url 'http://www.erlang.org/download/otp_src_19.0.tar.gz'
-  source_sha1 '3be958b529de4be19d77eb77f587a76210b43bfd'
+  version '19.2'
+  source_url 'http://www.erlang.org/download/otp_src_19.2.tar.gz'
+  source_sha1 'f5188ba6f496b9d1c37597705d095b4e6aa7bcd3'
 
   def self.build
     system 'export ERL_OTP=`pwd`'
