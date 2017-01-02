@@ -13,9 +13,11 @@ class Openssl < Package
 
   def self.install                                                # self.install contains commands needed to install the software on the target system
     system 'make DESTDIR=/usr/local/ssl install'
-    system 'cd /usr/local/ssl && \
+    system 'cd /usr/local/ssl && \                                # make sure cert.pem exists
       wget http://curl.haxx.se/ca/cacert.pem && \
-      mv cacert.pem cert.pem'
+      mv cacert.pem cert.pem && \
+      ln -s /usr/local/ssl/bin/openssl /usr/local/bin/openssl'    # override the system version (in case of a version mismatch)
+                                                                  # the caveat here is /usr/local/bin should come before /usr/bin in $PATH (the default)
   end
 
 end
