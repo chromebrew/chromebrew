@@ -13,12 +13,17 @@ class Openssl < Package
 
   def self.build
 	system "./config","--prefix=/usr/local","shared","zlib-dynamic"
-	system "make depend"
+	system "make" #depend
   end
 
   def self.install
     system "make"
-    system "sudo make install"
+    system "sudo make DESTDIR=/usr/local/ssl install"
+    system 'cd /usr/local/ssl && \                                # make sure cert.pem exists
+    	    sudo wget http://curl.haxx.se/ca/cacert.pem && \
+    	    sudo mv cacert.pem cert.pem'                                # && \
+    	    #ln -s /usr/local/ssl/bin/openssl /usr/local/bin/openssl'    # override the system version (in case of a version mismatch)
+                                                                  	# the caveat here is /usr/local/bin should come before /usr/bin in $PATH (the default)
   end
 
 end
