@@ -1,14 +1,15 @@
 require 'package'
 
-class Rsync < Package
-  version '3.1.2'
-  source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.1.2.tar.gz' # software source tarball url  
-  source_sha1 '0d4c7fb7fe3fc80eeff922a7c1d81df11dbb8a1a'
+class Scrollz < Package
+  version '2.3'
+  source_url 'http://www.scrollz.info/download/ScrollZ-2.3.tar.gz' # Software source tarball url  
+  source_sha1 '991e6acfdf95d84ca159a37336c2d45a624d432f'
 
   depends_on 'buildessential'
+  depends_on 'ncurses'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure"
+    system "./configure" 
     system "make"                                                 # ordered chronologically
   end
   

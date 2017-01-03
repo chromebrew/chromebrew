@@ -30,7 +30,7 @@ Installation
 ------------
 Open the terminal with Ctrl+Alt+T and type `shell`.
 
-If this command returns `Unknown command: 'shell'` please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
+If this command returns `ERROR: unknown command: shell` please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
 
 Then download and run the installation script
 

@@ -15,8 +15,19 @@ CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
-ARCH = `uname -m | tr -d '\n\r'`
-SHORTARCH = `getconf LONG_BIT | tr -d '\n\r'`
+ARCH = `uname -m`.strip
+#SHORTARCH = `getconf LONG_BIT`.strip # will refactor this line in the future
+case ARCH
+  when "i686"
+    SHORTARCH="32"
+  when "x86_64"
+    SHORTARCH="64"
+  when "armv7l"
+    SHORTARCH="32"
+  else  
+    SHORTARCH="32"
+end
+
 
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
@@ -229,12 +240,30 @@ def install
 
   unless @pkg.is_fake?
     meta = download
+    topdir = ""
     Dir.chdir CREW_BREW_DIR do
       puts "Unpacking archive, this may take a while..."
-      system "tar", "xf", meta[:filename]
+      if meta[:filename][-4,4] == ".zip"
+        system "unzip", "-qq", "-d", "tmpzip", meta[:filename]
+      else
+        system "tar", "xf", meta[:filename]
+      end
       if meta[:source] == true
         abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
-        topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
+        if meta[:filename][-4,4] == ".zip"
+          Dir.chdir "tmpzip" do
+            entries=Dir["*"]
+            if entries.length == 0
+              abort "empty zip archive: #{meta[:filename]}"
+            elsif entries.length == 1
+              topdir = "tmpzip/" + entries.first
+            else 
+              topdir = "tmpzip/"
+            end
+          end
+        else
+          topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
+        end
         Dir.chdir CREW_BREW_DIR + topdir do
           puts "Building from source, this may take a while..."
           @pkg.build

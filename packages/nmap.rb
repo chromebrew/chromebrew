@@ -1,14 +1,14 @@
 require 'package'
 
-class Rsync < Package
-  version '3.1.2'
-  source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.1.2.tar.gz' # software source tarball url  
-  source_sha1 '0d4c7fb7fe3fc80eeff922a7c1d81df11dbb8a1a'
+class Nmap < Package
+  version '7.31'
+  source_url 'https://nmap.org/dist/nmap-7.31.tgz' # Software source tarball url  
+  source_sha1 'ccf1bb34463f39a645d9a924ce9e3c9e15eefbbf'
 
   depends_on 'buildessential'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure"
+    system "./configure --with-pcap=linux --without-zenmap" 
     system "make"                                                 # ordered chronologically
   end
   

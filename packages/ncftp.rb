@@ -1,14 +1,14 @@
 require 'package'
 
-class Rsync < Package
-  version '3.1.2'
-  source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.1.2.tar.gz' # software source tarball url  
-  source_sha1 '0d4c7fb7fe3fc80eeff922a7c1d81df11dbb8a1a'
+class Ncftp < Package
+  version '3.2.6'
+  source_url 'ftp://ftp.ncftp.com/ncftp/ncftp-3.2.6-src.tar.gz' # Software source tarball url  
+  source_sha1 'e2351802b40db18d6cbab2537a9644cd858b934d'
 
   depends_on 'buildessential'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure"
+    system "./configure" 
     system "make"                                                 # ordered chronologically
   end
   

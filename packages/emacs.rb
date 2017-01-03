@@ -11,7 +11,7 @@ class Emacs < Package
   depends_on "automake"
 
   def self.build
-    system "./configure --prefix=/usr/local --without-x --without-makeinfo"
+    system "./configure --prefix=/usr/local --without-x --without-makeinfo --disable-selinux"
     system "sed -i '/static void \\*/{ N; /static void \\*\\naligned_alloc/{ s/static //g}}' src/alloc.c"
     system "make"
   end
