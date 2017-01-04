@@ -8,7 +8,7 @@ class Tmux < Package                                            	# name the pack
   depends_on 'readline'                                            # software dependencies
   depends_on 'libevent'
   # does this really depend on openssl?  or just on libevent that depends on openssl
-  depends_on 'openssl_devel'
+  depends_on 'openssl'
   depends_on 'ncurses'
   
   def self.build                                                  # self.build contains commands needed to build the software from source

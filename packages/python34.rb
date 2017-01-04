@@ -5,7 +5,7 @@ class Python34 < Package
   source_url 'https://www.python.org/ftp/python/3.4.1/Python-3.4.1.tgz'     # software source tarball url
   source_sha1 'e8c1bd575a6ccc2a75f79d9d094a6a29d3802f5d'          	# source tarball sha1 sum
 
-  depends_on 'openssl_devel'
+  depends_on 'openssl'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure"
