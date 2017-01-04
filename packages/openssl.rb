@@ -18,6 +18,10 @@ class Openssl < Package
 
   def self.install
     system "make", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
+
+    # make sure cert.pem exists
+    system "wget", "http://curl.haxx.se/ca/cacert.pem",
+        "-O", "#{CREW_DEST_DIR}/usr/local/ssl/cert.pem"
   end
 
 end
