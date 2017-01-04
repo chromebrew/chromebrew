@@ -1,14 +1,14 @@
 require 'package'
 
-class Rsync < Package
-  version '3.1.2'
-  source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.1.2.tar.gz' # software source tarball url  
-  source_sha1 '0d4c7fb7fe3fc80eeff922a7c1d81df11dbb8a1a'
+class Inetutils < Package
+  version '1.9.4'
+  source_url 'http://ftp.gnu.org/gnu/inetutils/inetutils-1.9.4.tar.gz' # Software source tarball url  
+  source_sha1 'defae98a27c0e9516c4ef2321a374a3645adb3b9'
 
   depends_on 'buildessential'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure"
+    system "./configure" 
     system "make"                                                 # ordered chronologically
   end
   

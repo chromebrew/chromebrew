@@ -1,9 +1,9 @@
 require 'package'
  
 class Lua < Package
-  version '5.3.1'
-  source_url 'http://www.lua.org/ftp/lua-5.3.1.tar.gz'
-  source_sha1 '1676c6a041d90b6982db8cef1e5fb26000ab6dee'
+  version '5.3.3'
+  source_url 'https://www.lua.org/ftp/lua-5.3.3.tar.gz'
+  source_sha1 'a0341bc3d1415b814cc738b2ec01ae56045d64ef'
   
   depends_on 'readline'
   depends_on 'ncurses'
