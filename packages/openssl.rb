@@ -17,7 +17,6 @@ class Openssl < Package
   end
 
   def self.install
-    system "make"
     system "sudo make DESTDIR=/usr/local/ssl install"
     system 'cd /usr/local/ssl && \                                # make sure cert.pem exists
     	    sudo wget http://curl.haxx.se/ca/cacert.pem && \
