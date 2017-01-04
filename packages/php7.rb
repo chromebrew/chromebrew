@@ -5,15 +5,18 @@ class Php7 < Package
   source_url 'http://php.net/distributions/php-7.1.0.tar.xz' # software source tarball url
   source_sha1 'c74c920256b9c6873bae696fbb0ec14a02dc8495'     # source tarball sha1 sum
 
+  depends_on 'curl'
   depends_on 'libxml2'
   depends_on 'openssl'
+  depends_on 'pcre'
 
   def self.build                                             # self.build contains commands needed to build the software from source
     system './configure \
+      --prefix=/usr/local \
       --with-curl \
       --with-gd \
       --enable-mbstring \
-      --with-openssl=/usr/local/ssl \
+      --with-openssl \
       --with-pcre-regex \
       --with-zlib'
     system 'make'                                            # ordered chronologically
