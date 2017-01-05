@@ -7,7 +7,7 @@ class Python27 < Package
 
   depends_on 'bz2'
   depends_on 'ncurses'
-  depends_on 'openssl_devel'
+  depends_on 'openssl'
 
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncurses\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\""
