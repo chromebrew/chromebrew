@@ -1,15 +1,15 @@
 require 'package'
 
 class Gmp < Package
-  version "5.1.2"
+  version "6.1.2"
   binary_url ({
-    armv7l: "https://dl.dropboxusercontent.com/s/zk1odzu8wxtffxm/gmp-5.1.2-chromeos-armv7l.tar.xz",
-    i686: "https://dl.dropboxusercontent.com/s/9cwila1kaomsyl2/gmp-5.1.2-chromeos-i686.tar.gz?token_hash=AAHO9VxBpvXU2GPWBwimsp4hL8DADIItfNnIaFbfcyynMg&dl=1",
-    x86_64: "https://dl.dropboxusercontent.com/s/zp1mw0l93jcg35e/gmp-5.1.3-chromeos-x86_64.tar.gz?token_hash=AAHa75_Uu5zFQlbQUbse19d_vhIAmEnZ8bYpshE6giSXGw&dl=1"
+    armv7l: "https://dl.dropboxusercontent.com/s/lsysc6fka01fdb9/gmp-6.1.2-chromeos-armv7l.tar.xz",
+    i686: "https://dl.dropboxusercontent.com/s/skficanyik0fo4q/gmp-6.1.2-chromeos-i686.tar.xz",
+    x86_64: "https://dl.dropboxusercontent.com/s/dnfc1eqnqx6qg1m/gmp-6.1.2-chromeos-x86_64.tar.xz",
   })
   binary_sha1 ({
-    armv7l: "daa46fe9c7a02542b58d9baeebdfafdbc7596e96",
-    i686: "b03b9508463588bfe9d09303c0725068cddd8810",
-    x86_64: "2aee1fee1e4b98261127a4c73f3f88670f1c8162"
+    armv7l: "ef330045d0eb7b33015e31cd1ac8428caacaf026",
+    i686: "a26eeac034966b50ca70d43b23768a078ca4dd14",
+    x86_64: "0ada7fbc26b2b5567df516daaf61edc4129ae1b5",
   })
 end

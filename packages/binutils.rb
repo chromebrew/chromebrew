@@ -1,15 +1,15 @@
 require 'package'
 
 class Binutils < Package
-  version '2.23.2'
+  version '2.25'
   binary_url ({
-    armv7l: "https://dl.dropboxusercontent.com/s/jkaqtj356gmh5un/binutils-2.25-chromeos-armv7l.tar.xz",
-    i686: 'https://dl.dropboxusercontent.com/s/u3cp7mpdyfx99ij/binutils-2.23.2-chromeos-i686.tar.gz?token_hash=AAGsFB9HXNb5tSAm_Wd2GyIUL59BkZYgMTHkj4CkHLxggg&dl=1',
-    x86_64: 'https://dl.dropboxusercontent.com/s/mnu21v101rdbm8k/binutils-2.23.2-chromeos-x86_64.tar.gz?token_hash=AAEn4ngAJs-fpRUz1n1Q_2WKxQvQnPMwlgcEHBDKyLOpoA&dl=1'
+    armv7l: "https://dl.dropboxusercontent.com/s/5pbtdh0l4wfl1jv/binutils-2.25-chromeos-armv7l.tar.xz",
+    i686: "https://dl.dropboxusercontent.com/s/lufy9gv15q2ut5i/binutils-2.25-chromeos-i686.tar.xz",
+    x86_64: "https://dl.dropboxusercontent.com/s/4p9cmf7wapd8l8m/binutils-2.25-chromeos-x86_64.tar.xz",
   })
   binary_sha1 ({
-    armv7l: "60d855c14c2ffb6fd9a486a6284c1b888cbe04ab",
-    i686: 'a7edc9bdaf9fc72112fe6b370f158a9a1aee87ac',
-    x86_64: '1c13b8f261e419a66b87f09653f3fbaf8449efe1'
+    armv7l: "d4b42e13b4e4ed87c0f7a449b067b5f42345b7d8",
+    i686: "bc686fd29b9e9588a6f4f37c619dba217afb9bc3",
+    x86_64: "3ca5e6940c47385456f96861b169f925543f08b3",
   })
 end
