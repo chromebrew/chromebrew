@@ -6,6 +6,7 @@ class Php7 < Package
   source_sha1 'c74c920256b9c6873bae696fbb0ec14a02dc8495'       # source tarball sha1 sum
 
   depends_on 'curl'
+  depends_on 'libpng'
   depends_on 'libxml2'
   depends_on 'openssl'
   depends_on 'pcre'
