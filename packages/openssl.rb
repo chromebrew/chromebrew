@@ -9,16 +9,15 @@ class Openssl < Package
   depends_on 'perl'
 
   def self.build
-    system "./config","--prefix=/usr/local","shared","zlib-dynamic"
+    system "./config", "--prefix=/usr/local", "--openssldir=/etc/ssl", "shared", "zlib-dynamic"
     system "make"
   end
 
   def self.install
     system "make", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
 
-    # make sure cert.pem exists
-    system "wget", "https://curl.haxx.se/ca/cacert.pem",
-        "-O", "#{CREW_DEST_DIR}/usr/local/ssl/cert.pem"
+    # remove all files pretended to install /etc/ssl (use system's /etc/ssl as is)
+    system "rm", "-rf", "#{CREW_DEST_DIR}/etc"
   end
 
 end
