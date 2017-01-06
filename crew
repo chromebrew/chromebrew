@@ -328,12 +328,15 @@ end
 
 def remove (pkgName)
 
+  #make sure the package is actually installed
   unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName }
     puts "Package #{pkgName} isn't installed."
     return
   end
 
   Dir.chdir CREW_CONFIG_PATH do
+
+    #remove all files installed by the package
     File.open("meta/#{pkgName}.filelist").each_line do |line|
       begin
         File.unlink line.chomp
@@ -341,6 +344,7 @@ def remove (pkgName)
       end
     end
 
+    #remove all directories installed by the package
     File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
       begin
         Dir.rmdir line.chomp
@@ -348,19 +352,25 @@ def remove (pkgName)
       end
     end
 
+    #remove the file and directory list
     File.unlink "meta/#{pkgName}.filelist"
     File.unlink "meta/#{pkgName}.directorylist"
+
   end
 
   #remove from installed packages
   @device[:installed_packages].each do |elem|
     @device[:installed_packages].delete elem if elem[:name] == pkgName
   end
+
+  #update the device manifest
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     out = JSON.parse @device.to_json
     file.write JSON.pretty_generate(out)
   end
+
   puts "#{pkgName.capitalize} removed!"
+
 end
 
 case @command
