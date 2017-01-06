@@ -334,7 +334,7 @@ def remove (pkgName)
     return
   end
 
-  #if the package is marked as 'is_fake', the file/directorylists doesn't exist
+  #if the filelist exists, remove the files and directories installed by the package
   if File.file?("meta/#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
 
