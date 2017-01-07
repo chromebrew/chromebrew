@@ -70,18 +70,15 @@ def whatprovides (pkgName, silent = false)
   packageName = ''
   fileName = pkgName + "\n"
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
-      packageName = File.basename filename, '.rb'
-      fileList = CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
-      if File.file?(fileList)
-        File.readlines(fileList).each do |line|
-          if line == fileName
-            found = true
-            break
-          end
+    packageName = File.basename filename, '.rb'
+    fileList = CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
+    if File.file?(fileList)
+      File.readlines(fileList).each do |line|
+        if line == fileName
+          found = true
+          break
         end
       end
-      break if found
     end
     break if found
   end
@@ -414,7 +411,7 @@ when "remove"
   search @pkgName
   remove
 when nil
-  puts "Chromebrew, version 0.2.1"
+  puts "Chromebrew, version 0.2.2"
   puts "Usage: crew [command] [package]"
   puts "Available commands: search, download, install, remove, whatprovides"
 else
