@@ -65,24 +65,51 @@ def search (pkgName, silent = false)
   abort "package #{pkgName} not found :("
 end
 
-def whatprovides (pkgName, silent = false)
-  found = nil
-  packageName = ''
-  fileName = pkgName + "\n"
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    packageName = File.basename filename, '.rb'
-    fileList = CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
-    if File.file?(fileList)
-      File.readlines(fileList).each do |line|
-        if line == fileName
-          found = true
-          break
+def whatprovides (pkgName)
+  fileArray = []
+  arg = ARGV[1].dup
+  op = '*'
+  search = arg
+  if arg[0] == '^'
+    op = '^'
+    search = arg[1..arg.length - 1]
+  end
+  if arg[-1] == '$'
+    op = '$'
+    search = arg[0..arg.length - 2]
+  end
+  Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
+    if File.file? packageList
+      if packageList[/\.filelist$/]
+        packageName = File.basename packageList, '.filelist'
+        File.readlines(packageList).each do |line|
+          found = nil
+          case op
+          when '*'
+            found = line[/#{Regexp.quote(search)}/]
+          when '^'
+            found = line[/^#{Regexp.quote(search)}/]
+          when '$'
+            found = line[/#{Regexp.quote(search)}$/]
+          end
+          if found
+            fileLine = packageName + ': ' + line
+            if not fileArray.include? fileLine
+              fileArray.push(fileLine)
+            end
+          end
         end
       end
     end
-    break if found
   end
-  puts packageName + ': ' + fileName if found
+  if not fileArray.empty?
+    fileCount = 0
+    fileArray.sort.each do |item|
+      puts item
+      fileCount += 1
+    end
+    puts "\nTotal found: #{fileCount}"
+  end
 end
 
 def update
@@ -394,7 +421,7 @@ when "whatprovides"
   if @pkgName
     whatprovides @pkgName
   else
-    puts "Usage: crew whatprovides [filepath]"
+    puts "Usage: crew whatprovides [pattern]"
   end
 when "download"
   search @pkgName
