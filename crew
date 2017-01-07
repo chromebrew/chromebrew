@@ -67,16 +67,23 @@ end
 
 def whatprovides (pkgName)
   fileArray = []
-  arg = ARGV[1].dup
   op = '*'
-  search = arg
-  if arg[0] == '^'
-    op = '^'
-    search = arg[1..arg.length - 1]
+  search = pkgName.dup
+  if search[/\*/]
+    search = search.gsub! '*', ''
   end
-  if arg[-1] == '$'
-    op = '$'
-    search = arg[0..arg.length - 2]
+  abort if not search
+  if search[0] == '^'
+    op = '^'
+    search = search[1..search.length - 1]
+  end
+  if search[-1] == '$'
+    if op == '^'
+      op = '^$'
+    else
+      op = '$'
+    end
+    search = search[0..search.length - 2]
   end
   Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
     if File.file? packageList
@@ -91,6 +98,8 @@ def whatprovides (pkgName)
             found = line[/^#{Regexp.quote(search)}/]
           when '$'
             found = line[/#{Regexp.quote(search)}$/]
+          when '^$'
+            found = line[/^#{Regexp.quote(search)}$/]
           end
           if found
             fileLine = packageName + ': ' + line
@@ -103,12 +112,10 @@ def whatprovides (pkgName)
     end
   end
   if not fileArray.empty?
-    fileCount = 0
     fileArray.sort.each do |item|
       puts item
-      fileCount += 1
     end
-    puts "\nTotal found: #{fileCount}"
+    puts "\nTotal found: #{fileArray.length}"
   end
 end
 
