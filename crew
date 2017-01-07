@@ -28,7 +28,6 @@ case ARCH
     SHORTARCH="32"
 end
 
-
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 USER = `whoami`.chomp
@@ -52,8 +51,8 @@ end
 def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-        packageName = File.basename filename, '.rb'
-        print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist' 
+      packageName = File.basename filename, '.rb'
+      print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
     puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
@@ -64,6 +63,29 @@ def search (pkgName, silent = false)
     return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
   abort "package #{pkgName} not found :("
+end
+
+def source (pkgName, silent = false)
+  found = nil
+  packageName = ''
+  fileName = pkgName + "\n"
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
+      packageName = File.basename filename, '.rb'
+      fileList = CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
+      if File.file?(fileList)
+        File.readlines(fileList).each do |line|
+          if line == fileName
+            found = true
+            break
+          end
+        end
+      end
+      break if found
+    end
+    break if found
+  end
+  puts packageName + ':' + fileName if found
 end
 
 def update
@@ -371,6 +393,12 @@ when "search"
   else
     list_packages
   end
+when "source"
+  if @pkgName
+    source @pkgName
+  else
+    puts "Usage: crew source [filepath]"
+  end
 when "download"
   search @pkgName
   download
@@ -388,8 +416,8 @@ when "remove"
 when nil
   puts "Chromebrew, version 0.2.1"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: search, download, install, remove"
+  puts "Available commands: search, download, install, remove, source"
 else
   puts "I have no idea how to do #{@command} :("
-  puts "Available commands: search, download, install, remove"
+  puts "Available commands: search, download, install, remove, source"
 end
