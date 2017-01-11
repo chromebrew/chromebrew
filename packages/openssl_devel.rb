@@ -1,12 +1,11 @@
 require 'package'
 
-#Installs JUST the headers to match the chromeos supplied libraries so that you can build things 
-# that link with openssl. Needs to be kept version-synced with chromeos releases
-# Could detect current version and grab one of many different packages, compare to saved
-# hashes and support multiple versions if needed
+# We are going to use openssl only instead of openssl_devel for the
+# ease of maintenance.  Removing package file is not easy, so leaving
+# place holder here.  PH needs to have source_url unfortunately.
 
-#grumble - package names in crew must conform to ruby variable name restrictions. For instance '-' is disallowed
 class Openssl_devel < Package
+<<<<<<< HEAD
   version '1.0.2j'
 
 #  chromeos wget can't do proper ssl negotiation with this server
@@ -14,23 +13,16 @@ class Openssl_devel < Package
 #  so use their ftp server.  
   source_url 'ftp://ftp.openssl.org/source/openssl-1.0.2j.tar.gz'
   source_sha1 'bdfbdb416942f666865fa48fe13c2d0e588df54f'
+=======
+  version 'removed'
 
-  depends_on 'perl'
+  source_url 'ftp://ftp.openssl.org/source/old/1.0.2/openssl-1.0.2f.tar.gz'
+  source_sha1 '2047c592a6e5a42bd37970bdb4a931428110a927'
+>>>>>>> upstream/master
 
   def self.build
-    # only need to run config to get the headers set up right
-    system './config'
   end
 
   def self.install
-    out = "#{CREW_DEST_DIR}/usr/local/include/openssl"
-    system "mkdir -p #{out}"
-
-    `ls ./include/openssl`.split(' ').each do |header|
-      system "cp", "./include/openssl/#{header}", out
-    end
-
-    #system "cp", "./include/openssl/*", "#{out}"
   end
-
 end

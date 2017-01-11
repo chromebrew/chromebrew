@@ -6,7 +6,7 @@ class Libunwind < Package
   source_sha1 '7c93a6ae35afff4d0efd143b62a9fd235423964f'
 
   depends_on 'buildessential'
-  depends_on 'openssl_devel'
+  depends_on 'openssl'
 
   def self.build
     system "CC='gcc' ./configure"

@@ -6,7 +6,7 @@ class Cmake < Package
   source_sha1 'a37785b3f256a31ee21a047569bc74a8f57067bb'
 
   depends_on 'buildessential'
-  depends_on 'openssl_devel'
+  depends_on 'openssl'
 
   def self.build
     system "./bootstrap"
