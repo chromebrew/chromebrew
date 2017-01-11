@@ -18,11 +18,6 @@ class Php5 < Package
       --with-zlib \
       --with-pcre-regex \
       --prefix=/usr/local"
-
-      #      --with-pcre-regex \
-      #CPPFLAGS=\"-I/usr/local/include/openssl\" \ 
-      #LDFLAGS=\"-L/usr/local/lib\" "
-
     system 'make'                                            # ordered chronologically
   end
 
