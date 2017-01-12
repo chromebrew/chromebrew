@@ -360,7 +360,7 @@ def remove (pkgName)
   end
 
   #if the filelist exists, remove the files and directories installed by the package
-  if File.file?("meta/#{pkgName}.filelist")
+  if File.file?("#{CREW_CONFIG_PATH}meta/#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
 
       #remove all files installed by the package
