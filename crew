@@ -428,7 +428,7 @@ when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   remove @pkgName
 when nil
-  puts "Chromebrew, version 0.2.2"
+  puts "Chromebrew, version 0.4"
   puts "Usage: crew [command] [package]"
   puts "Available commands: search, download, install, remove, whatprovides"
 else
