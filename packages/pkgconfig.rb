@@ -5,7 +5,7 @@ class Pkgconfig < Package
   source_url 'http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.1.tar.gz'
   source_sha1 '271ce928f6d673cc16cbced2bfd14a5f2e5d3d37'
 
-  # It is not possible to write buildessential here since it depends on build essential too.
+  # It is not possible to write buildessential here since it causes dependency loop.
   #   depends_on 'buildessential'
   # Write dependency to gcc make linuxheaders instead.
   depends_on 'gcc'
