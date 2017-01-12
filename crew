@@ -136,7 +136,7 @@ def upgrade
     if currentVersion != @pkg.version
       search @pkg.name
       puts "Updating #{@pkg.name}..."
-      remove 
+      remove @pkg.name
       resolveDependenciesAndInstall
     else
       puts "#{@pkg.name} is already up to date."
@@ -154,7 +154,7 @@ def upgrade
       puts "Updating packages..."
       toBeUpdated.each do |package|
         search package
-        remove
+        remove @pkg.name
         resolveDependenciesAndInstall
       end
       puts "Packages have been updated."
@@ -351,42 +351,54 @@ def install
   puts "#{@pkg.name.capitalize} installed!"
 end
 
-def remove
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
-    puts "Package #{@pkg.name} isn't installed."
+def remove (pkgName)
+
+  #make sure the package is actually installed
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName }
+    puts "Package #{pkgName} isn't installed."
     return
   end
-  
-  unless @pkg.is_fake?
+
+  #if the filelist exists, remove the files and directories installed by the package
+  if File.file?("meta/#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
-      File.open("meta/#{@pkg.name}.filelist").each_line do |line|
+
+      #remove all files installed by the package
+      File.open("meta/#{pkgName}.filelist").each_line do |line|
         begin
           File.unlink line.chomp
         rescue => exception #swallow exception
         end
       end
-  
-      File.readlines("meta/#{@pkg.name}.directorylist").reverse.each do |line|
+
+      #remove all directories installed by the package
+      File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
         begin
           Dir.rmdir line.chomp
         rescue => exception #swallow exception
         end
       end
 
-      File.unlink "meta/#{@pkg.name}.filelist"
-      File.unlink "meta/#{@pkg.name}.directorylist"
+      #remove the file and directory list
+      File.unlink "meta/#{pkgName}.filelist"
+      File.unlink "meta/#{pkgName}.directorylist"
+
     end
   end
 
   #remove from installed packages
   @device[:installed_packages].each do |elem|
-    @device[:installed_packages].delete elem if elem[:name] == @pkg.name
+    @device[:installed_packages].delete elem if elem[:name] == pkgName
   end
+
+  #update the device manifest
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     out = JSON.parse @device.to_json
     file.write JSON.pretty_generate(out)
   end
-  puts "#{@pkg.name.capitalize} removed!"
+
+  puts "#{pkgName.capitalize} removed!"
+
 end
 
 case @command
@@ -414,8 +426,7 @@ when "install"
   resolveDependenciesAndInstall
 when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
-  search @pkgName
-  remove
+  remove @pkgName
 when nil
   puts "Chromebrew, version 0.2.2"
   puts "Usage: crew [command] [package]"
