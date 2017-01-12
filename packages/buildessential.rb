@@ -8,4 +8,5 @@ class Buildessential < Package
   depends_on 'gcc'
   depends_on 'make'
   depends_on 'linuxheaders'
+  depends_on 'pkgconfig'
 end
