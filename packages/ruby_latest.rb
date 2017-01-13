@@ -10,7 +10,7 @@ class Ruby_latest < Package
   depends_on 'openssl'
 
   def self.build
-    system "CC='gcc' CPPFLAGS=-I/usr/local/include/openssl ./configure"
+    system "CC='gcc' ./configure"
     system "make"
   end
 
