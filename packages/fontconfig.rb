@@ -6,6 +6,7 @@ class Fontconfig < Package
   source_sha1 '3748d8a2b9cf8052dbd003f524d829157f1ead83'
 
   depends_on 'pkgconfig'
+  depends_on 'freetype'
 
   def self.build
       system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
