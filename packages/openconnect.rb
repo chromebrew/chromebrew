@@ -27,7 +27,7 @@ require 'package'
 # > ip tuntap del mode tun tun0
 
 class Openconnect < Package
-  version '7.06'
+  version '7.06-1'
   source_url 'ftp://ftp.infradead.org/pub/openconnect/openconnect-7.06.tar.gz'
   source_sha1 '2351408693aab0c6bc97d37e68b4a869fbb217ed'
 
@@ -36,7 +36,7 @@ class Openconnect < Package
   depends_on 'gnutls'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" --with-vpnc-script=/usr/local/etc/vpnc/vpnc-script"
+    system "./configure CFLAGS=\" -fPIC\" --with-vpnc-script=/usr/local/etc/vpnc/vpnc-script"
     system "make"
   end
 

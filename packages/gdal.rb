@@ -1,7 +1,7 @@
 require 'package'
 
 class Gdal < Package
-  version '1.11.2'
+  version '1.11.2-1'
   source_url 'http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz'
   source_sha1 '6f3ccbe5643805784812072a33c25be0bbff00db'
 
@@ -12,7 +12,7 @@ class Gdal < Package
   depends_on 'libxml2'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\" --with-png=internal --with-libtiff=internal --with-geotiff=internal --with-jpeg=internal --with-gif=internal --with-curl=/usr/local/bin/curl-config --with-geos=/usr/local/bin/geos-config --with-static-proj4=/usr/local/share/proj --with-python"
+    system "./configure CFLAGS=\" -fPIC\" --with-png=internal --with-libtiff=internal --with-geotiff=internal --with-jpeg=internal --with-gif=internal --with-curl=/usr/local/bin/curl-config --with-geos=/usr/local/bin/geos-config --with-static-proj4=/usr/local/share/proj --with-python"
     system "make"
   end
 
