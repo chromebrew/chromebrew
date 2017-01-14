@@ -8,7 +8,7 @@ class Libtool < Package
   depends_on 'buildessential'
 
   def self.build
-    system "./configure"
+    system "./configure --prefix=/usr/local"
     system "make"
   end
 
