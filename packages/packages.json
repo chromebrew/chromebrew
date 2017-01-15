@@ -817,52 +817,148 @@
       "version": "3.4.1"
     },
     {
-      "name": "readline",
-      "description": "",
-      "homepage": "",
+      "name": "r",
+      "description": "R is a free software environment for statistical computing and graphics.",
+      "homepage": "https://www.r-project.org/",
       "type": "package",
-      "category": "",
+      "category": "development",
+      "version": "3.3.2"
+    },
+    {
+      "name": "readline",
+      "description": "The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.",
+      "homepage": "http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html",
+      "type": "package",
+      "category": "libraries",
       "version": "6.3"
     },
     {
-      "name": "ruby",
-      "description": "",
-      "homepage": "",
+      "name": "redis",
+      "description": "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.",
+      "homepage": "https://redis.io/",
+      "type": "package",
+      "category": "databases",
+      "version": "3.0.6"
+    },
+    {
+      "name": "rsync",
+      "description": "rsync is an open source utility that provides fast incremental file transfer.",
+      "homepage": "https://rsync.samba.org/",
       "type": "package",
       "category": "development",
-      "version": "2.0.0p247"
+      "version": "3.1.2"
+    },
+    {
+      "name": "ruby",
+      "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
+      "homepage": "https://www.ruby-lang.org/en/",
+      "type": "package",
+      "category": "development",
+      "version": "2.0.0p247-chromeos1"
+    },
+    {
+      "name": "ruby_latest",
+      "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
+      "homepage": "https://www.ruby-lang.org/en/",
+      "type": "package",
+      "category": "development",
+      "version": "2.4.0"
+    },
+    {
+      "name": "screen",
+      "description": "Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.",
+      "homepage": "https://www.gnu.org/software/screen/",
+      "type": "package",
+      "category": "utilities",
+      "version": "4.3.1"
+    },
+    {
+      "name": "scrollz",
+      "description": "ScrollZ is an advanced IRC client based on ircII.",
+      "homepage": "http://www.scrollz.info/",
+      "type": "package",
+      "category": "communication",
+      "version": "2.3"
+    },
+    {
+      "name": "socat",
+      "description": "SOcket CAT is a multipurpose relay 'netcat++' (extended design, new implementation).",
+      "homepage": "http://www.dest-unreach.org/socat/",
+      "type": "package",
+      "category": "networking",
+      "version": "1.7.3.1"
     },
     {
       "name": "sqlite",
-      "description": "",
-      "homepage": "",
+      "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
+      "homepage": "http://www.sqlite.org/",
       "type": "package",
       "category": "databases",
-      "version": "3.16.2"
+      "version": "3.10"
+    },
+    {
+      "name": "texinfo",
+      "description": "Texinfo is the official documentation format of the GNU project.",
+      "homepage": "https://www.gnu.org/software/texinfo/",
+      "type": "package",
+      "category": "utilities",
+      "version": "6.3"
+    },
+    {
+      "name": "tig",
+      "description": "Tig is an ncurses-based text-mode interface for git.",
+      "homepage": "http://jonas.nitro.dk/tig/",
+      "type": "package",
+      "category": "version_control",
+      "version": "1.9a"
     },
     {
       "name": "tmux",
-      "description": "",
-      "homepage": "",
+      "description": "tmux is a terminal multiplexer",
+      "homepage": "http://tmux.github.io/",
       "type": "package",
       "category": "utilities",
       "version": "2.2"
     },
     {
+      "name": "unzip",
+      "description": "UnZip is an extraction utility for archives compressed in .zip format (also called 'zipfiles').",
+      "homepage": "http://www.info-zip.org/UnZip.html",
+      "type": "package",
+      "category": "utilities",
+      "version": "1.6.1"
+    },
+    {
       "name": "vim",
-      "description": "",
-      "homepage": "",
+      "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.",
+      "homepage": "http://www.vim.org/",
       "type": "package",
       "category": "editors",
       "version": "8.0"
     },
     {
+      "name": "yasm",
+      "description": "Yasm is a complete rewrite of the NASM assembler under the new BSD License.",
+      "homepage": "http://yasm.tortall.net/",
+      "type": "package",
+      "category": "development",
+      "version": "1.3.0"
+    },
+    {
       "name": "zlibpkg",
-      "description": "",
-      "homepage": "",
+      "description": "zlib is a massively spiffy yet delicately unobtrusive compression library.",
+      "homepage": "http://www.zlib.net/",
       "type": "package",
       "category": "libraries",
       "version": "1.2.8"
+    },
+    {
+      "name": "zsh",
+      "description": "Zsh is a shell designed for interactive use, although it is also a powerful scripting language.",
+      "homepage": "http://zsh.sourceforge.net/",
+      "type": "package",
+      "category": "shells",
+      "version": "5.0.7"
     }
   ]
 }
