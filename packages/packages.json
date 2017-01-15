@@ -481,44 +481,116 @@
       "version": "3.4.0"
     },
     {
+      "name": "lldb",
+      "description": "LLDB is a next generation, high-performance debugger.",
+      "homepage": "http://lldb.llvm.org/",
+      "type": "package",
+      "category": "development",
+      "version": "3.6"
+    },
+    {
+      "name": "llvm",
+      "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.",
+      "homepage": "http://llvm.org/",
+      "type": "package",
+      "category": "development",
+      "version": "3.8.1-1"
+    },
+    {
+      "name": "lua",
+      "description": "Lua is a powerful, efficient, lightweight, embeddable scripting language.",
+      "homepage": "https://www.lua.org/",
+      "type": "package",
+      "category": "development",
+      "version": "5.3.3"
+    },
+    {
+      "name": "m4",
+      "description": "GNU M4 is an implementation of the traditional Unix macro processor.",
+      "homepage": "https://www.gnu.org/software/m4/",
+      "type": "package",
+      "category": "utilities",
+      "version": "1.4.17"
+    },
+    {
+      "name": "make",
+      "description": "GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.",
+      "homepage": "https://www.gnu.org/software/make/",
+      "type": "package",
+      "category": "development",
+      "version": "3.82"
+    },
+    {
       "name": "mandb",
-      "description": "",
+      "description": "mandb is used to initialise or manually update index database caches that are usually maintained by man.",
       "homepage": "",
       "type": "package",
       "category": "utilities",
       "version": "2.7.6"
     },
     {
-      "name": "mpc",
-      "description": "",
-      "homepage": "",
+      "name": "mapserver",
+      "description": "MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.",
+      "homepage": "http://mapserver.org/",
       "type": "package",
-      "category": "",
+      "category": "geo_mapping",
+      "version": "5.6.9"
+    },
+    {
+      "name": "memcached",
+      "description": "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.",
+      "homepage": "https://memcached.org/",
+      "type": "package",
+      "category": "databases",
+      "version": "1.4.34"
+    },
+    {
+      "name": "mlocate",
+      "description": "mlocate is a locate/updatedb implementation.",
+      "homepage": "https://fedorahosted.org/mlocate/",
+      "type": "package",
+      "category": "utilities",
+      "version": "0.26"
+    },
+    {
+      "name": "mongodb",
+      "description": "MongoDB is the next-generation database that lets you create applications never before possible.",
+      "homepage": "https://www.mongodb.com/",
+      "type": "package",
+      "category": "databases",
+      "version": "3.0.8"
+    },
+    {
+      "name": "mono",
+      "description": "Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.",
+      "homepage": "http://www.mono-project.com/",
+      "type": "package",
+      "category": "development",
+      "version": "4.4.0.148-1"
+    },
+    {
+      "name": "moonbuggy",
+      "description": "Moon-buggy is a simple character graphics game where you drive some kind of car across the moon's surface.",
+      "homepage": "http://www.seehuhn.de/pages/moon-buggy",
+      "type": "package",
+      "category": "games",
+      "version": "1.0.51"
+    },
+    {
+      "name": "mpc",
+      "description": "Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.",
+      "homepage": "http://www.multiprecision.org/",
+      "type": "package",
+      "category": "libraries",
       "version": "1.0.1"
     },
     {
       "name": "mpfr",
-      "description": "",
-      "homepage": "",
+      "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.",
+      "homepage": "http://www.mpfr.org/",
       "type": "package",
-      "category": "",
+      "category": "libraries",
       "version": "3.1.2"
-    },
-    {
-      "name": "make",
-      "description": "",
-      "homepage": "",
-      "type": "package",
-      "category": "development",
-      "version": "3.82"
-    },
-    {
-      "name": "mlocate",
-      "description": "",
-      "homepage": "",
-      "type": "package",
-      "category": "utilities",
-      "version": "0.26"
     },
     {
       "name": "ncurses",
