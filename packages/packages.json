@@ -322,7 +322,7 @@
     },
     {
       "name": "htop",
-      "description": "An interactive process viewer for Unix systems.",
+      "description": "htop is an interactive process viewer for Unix systems.",
       "homepage": "https://hisham.hm/htop/",
       "type": "package",
       "category": "utilities",
@@ -345,67 +345,139 @@
       "version": "1.9.4"
     },
     {
+      "name": "jdk8",
+      "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
+      "homepage": "http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html",
+      "type": "package",
+      "category": "development",
+      "version": "8u112"
+    },
+    {
+      "name": "jq",
+      "description": "jq is a lightweight and flexible command-line JSON processor.",
+      "homepage": "https://stedolan.github.io/jq/",
+      "type": "package",
+      "category": "utilities",
+      "version": "1.5"
+    },
+    {
       "name": "less",
-      "description": "",
-      "homepage": "",
+      "description": "GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.",
+      "homepage": "https://www.gnu.org/software/less/",
       "type": "package",
       "category": "utilities",
       "version": "451"
     },
     {
+      "name": "leveldb",
+      "description": "LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.",
+      "homepage": "https://leveldb.googlecode.com/",
+      "type": "package",
+      "category": "databases",
+      "version": "1.15.0"
+    },
+    {
       "name": "libevent",
-      "description": "",
-      "homepage": "",
+      "description": "The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.",
+      "homepage": "http://libevent.org/",
       "type": "package",
       "category": "libraries",
       "version": "2.0.22"
     },
     {
+      "name": "libffi",
+      "description": "The libffi library provides a portable, high level programming interface to various calling conventions.",
+      "homepage": "https://sourceware.org/libffi/",
+      "type": "package",
+      "category": "libraries",
+      "version": "3.0.13-1"
+    },
+    {
+      "name": "libgd",
+      "description": "GD is an open source code library for the dynamic creation of images by programmers.",
+      "homepage": "https://libgd.github.io/",
+      "type": "package",
+      "category": "libraries",
+      "version": "2.0.33"
+    },
+    {
+      "name": "libjpeg",
+      "description": "JPEG is a free library for image compression.",
+      "homepage": "http://www.ijg.org/",
+      "type": "package",
+      "category": "libraries",
+      "version": "9.1"
+    },
+    {
       "name": "libpipeline",
-      "description": "",
-      "homepage": "",
+      "description": "libpipeline is a C library for manipulating pipelines of subprocesses in a flexible and convenient way.",
+      "homepage": "http://libpipeline.nongnu.org/",
       "type": "package",
       "category": "libraries",
       "version": "1.4.1"
     },
     {
       "name": "libpng",
-      "description": "",
-      "homepage": "",
+      "description": "libpng is the official PNG reference library.",
+      "homepage": "http://libpng.org/pub/png/libpng.html",
       "type": "package",
       "category": "libraries",
       "version": "1.6.26"
     },
     {
       "name": "libsigsegv",
-      "description": "",
-      "homepage": "",
+      "description": "GNU libsigsegv is a library for handling page faults in user mode.",
+      "homepage": "https://www.gnu.org/software/libsigsegv/",
       "type": "package",
       "category": "libraries",
       "version": "2.10"
     },
     {
       "name": "libssh2",
-      "description": "",
-      "homepage": "",
+      "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
+      "homepage": "https://www.libssh2.org/",
       "type": "package",
       "category": "libraries",
       "version": "1.4.3"
     },
     {
+      "name": "libtiff",
+      "description": "LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.",
+      "homepage": "http://www.libtiff.org/",
+      "type": "package",
+      "category": "libraries",
+      "version": "4.0.7"
+    },
+    {
+      "name": "libunwind",
+      "description": "libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.",
+      "homepage": "http://www.nongnu.org/libunwind/",
+      "type": "package",
+      "category": "libraries",
+      "version": "1.1"
+    },
+    {
       "name": "libxml2",
-      "description": "",
-      "homepage": "",
+      "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
+      "homepage": "http://xmlsoft.org/",
       "type": "package",
       "category": "libraries",
       "version": "2.9.2"
     },
     {
+      "name": "libxslt",
+      "description": "Libxslt is the XSLT C library developed for the GNOME project.",
+      "homepage": "http://xmlsoft.org/libxslt/",
+      "type": "package",
+      "category": "libraries",
+      "version": "1.1.28"
+    },
+    {
       "name": "linuxheaders",
-      "description": "",
+      "description": "Linux headers for Chrome OS.",
       "homepage": "",
       "type": "package",
-      "category": "",
+      "category": "kernel",
       "version": "3.4.0"
     },
     {
