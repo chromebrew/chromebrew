@@ -593,68 +593,228 @@
       "version": "3.1.2"
     },
     {
-      "name": "ncurses",
-      "description": "",
-      "homepage": "",
+      "name": "ncftp",
+      "description": "NcFTP Client (also known as just NcFTP) is a set of FREE application programs implementing the File Transfer Protocol (FTP).",
+      "homepage": "http://ncftp.com/ncftp/",
       "type": "package",
-      "category": "",
+      "category": "remote_access",
+      "version": "3.2.6"
+    },
+    {
+      "name": "ncurses",
+      "description": "The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.",
+      "homepage": "https://www.gnu.org/software/ncurses/",
+      "type": "package",
+      "category": "libraries",
       "version": "5.9"
     },
     {
-      "name": "openssl",
-      "description": "",
-      "homepage": "",
+      "name": "ncurses_so",
+      "description": "The ncurses (new curses) shared object library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.",
+      "homepage": "https://www.gnu.org/software/ncurses/",
       "type": "package",
-      "category": "",
+      "category": "libraries",
+      "version": "5.9"
+    },
+    {
+      "name": "netcat",
+      "description": "Netcat is a featured networking utility which reads and writes data across network connections, using the TCP/IP protocol.",
+      "homepage": "http://netcat.sourceforge.net/",
+      "type": "package",
+      "category": "networking",
+      "version": "0.7.1"
+    },
+    {
+      "name": "nethack4",
+      "description": "NetHack is a 'roguelike' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.",
+      "homepage": "http://nethack4.org/",
+      "type": "package",
+      "category": "games",
+      "version": "4.3.0-beta2"
+    },
+    {
+      "name": "nettle",
+      "description": "Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
+      "homepage": "http://www.lysator.liu.se/~nisse/nettle/",
+      "type": "package",
+      "category": "libraries",
+      "version": "2.7.1"
+    },
+    {
+      "name": "newlisp",
+      "description": "newLISP is a Lisp-like, general-purpose scripting language.",
+      "homepage": "http://www.newlisp.org/",
+      "type": "package",
+      "category": "development",
+      "version": "10.7.0"
+    },
+    {
+      "name": "nginx",
+      "description": "nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.",
+      "homepage": "http://nginx.org/",
+      "type": "package",
+      "category": "web_servers",
+      "version": "1.11.6-1"
+    },
+    {
+      "name": "nmap",
+      "description": "Nmap ('Network Mapper') is a free and open source (license) utility for network discovery and security auditing.",
+      "homepage": "https://nmap.org/",
+      "type": "package",
+      "category": "networking",
+      "version": "7.31"
+    },
+    {
+      "name": "node",
+      "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
+      "homepage": "https://nodejs.org/en/",
+      "type": "package",
+      "category": "development",
+      "version": "6.9.2"
+    },
+    {
+      "name": "node_current",
+      "description": "As an asynchronous event driven JavaScript runtime, Node current is designed to build scalable network applications.",
+      "homepage": "https://nodejs.org/en/",
+      "type": "package",
+      "category": "development",
+      "version": "6.9.2"
+    },
+    {
+      "name": "node_stable",
+      "description": "As an asynchronous event driven JavaScript runtime, Node stable is designed to build scalable network applications.",
+      "homepage": "https://nodejs.org/en/",
+      "type": "package",
+      "category": "development",
+      "version": "6.9.2"
+    },
+    {
+      "name": "openconnect",
+      "description": "OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN.",
+      "homepage": "http://www.infradead.org/openconnect/",
+      "type": "package",
+      "category": "remote_access",
+      "version": "7.06"
+    },
+    {
+      "name": "openssl",
+      "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.",
+      "homepage": "https://www.openssl.org/",
+      "type": "package",
+      "category": "security",
       "version": "1.0.2j"
     },
     {
-      "name": "pcre",
-      "description": "",
-      "homepage": "",
+      "name": "openssl_devel",
+      "description": "OpenSSL stub place holder to help support older packages with this dependency.",
+      "homepage": "https://www.openssl.org/",
       "type": "package",
-      "category": "development",
+      "category": "security",
+      "version": "removed"
+    },
+    {
+      "name": "patchelf",
+      "description": "PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.",
+      "homepage": "http://nixos.org/patchelf.html",
+      "type": "package",
+      "category": "utilities",
+      "version": "0.8-2"
+    },
+    {
+      "name": "patch",
+      "description": "Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.",
+      "homepage": "http://savannah.gnu.org/projects/patch/",
+      "type": "package",
+      "category": "utilities",
+      "version": "2.7"
+    },
+    {
+      "name": "pcre",
+      "description": "The PCRE library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5.",
+      "homepage": "http://pcre.org/",
+      "type": "package",
+      "category": "libraries",
       "version": "8.39"
     },
     {
       "name": "perl",
-      "description": "",
-      "homepage": "",
+      "description": "Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.",
+      "homepage": "https://www.perl.org/",
       "type": "package",
       "category": "development",
       "version": "5.16.3"
     },
     {
+      "name": "php5",
+      "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
+      "homepage": "http://www.php.net/",
+      "type": "package",
+      "category": "development",
+      "version": "5.6.29"
+    },
+    {
       "name": "php7",
-      "description": "",
-      "homepage": "",
+      "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
+      "homepage": "http://www.php.net/",
       "type": "package",
       "category": "development",
       "version": "7.1.0"
     },
     {
       "name": "pkgconfig",
-      "description": "",
-      "homepage": "",
+      "description": "pkg-config is a helper tool used when compiling applications and libraries.",
+      "homepage": "https://www.freedesktop.org/wiki/Software/pkg-config/",
       "type": "package",
-      "category": "",
+      "category": "development",
       "version": "0.29.1"
     },
     {
+      "name": "postgres",
+      "description": "PostgreSQL is a powerful, open source object-relational database system.",
+      "homepage": "https://www.postgresql.org/",
+      "type": "package",
+      "category": "databases",
+      "version": "9.5.0"
+    },
+    {
+      "name": "powerline_fonts",
+      "description": "Patched fonts for Powerline users.",
+      "homepage": "https://github.com/powerline/fonts",
+      "type": "package",
+      "category": "fonts",
+      "version": "1"
+    },
+    {
+      "name": "proj4",
+      "description": "proj.4 is a standard Unix filter function which converts geographic longitude and latitude coordinates into cartesian coordinates (and vice versa), and it is a C API for software developers to include coordinate transformation in their own software.",
+      "homepage": "http://proj4.org/",
+      "type": "package",
+      "category": "geo_mapping",
+      "version": "4.9.1"
+    },
+    {
       "name": "python",
-      "description": "",
-      "homepage": "",
+      "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+      "homepage": "https://www.python.org/",
       "type": "package",
       "category": "development",
       "version": "3.3.2"
     },
     {
       "name": "python27",
-      "description": "",
-      "homepage": "",
+      "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+      "homepage": "https://www.python.org/",
       "type": "package",
       "category": "development",
       "version": "2.7.12"
+    },
+    {
+      "name": "python34",
+      "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+      "homepage": "https://www.python.org/",
+      "type": "package",
+      "category": "development",
+      "version": "3.4.1"
     },
     {
       "name": "readline",
