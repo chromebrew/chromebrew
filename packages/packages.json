@@ -114,34 +114,74 @@
     },
     {
       "name": "diffutils",
-      "description": "",
-      "homepage": "",
+      "description": "GNU Diffutils is a package of several programs related to finding differences between files.",
+      "homepage": "http://www.gnu.org/software/diffutils/diffutils.html",
       "type": "package",
       "category": "utilities",
       "version": "3.3"
     },
     {
-      "name": "expat",
-      "description": "",
-      "homepage": "",
+      "name": "elixir",
+      "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.",
+      "homepage": "http://elixir-lang.org/",
       "type": "package",
-      "category": "",
+      "category": "development",
+      "version": "1.3.1"
+    },
+    {
+      "name": "emacs",
+      "description": "An extensible, customizable, free/libre text editor - and more.",
+      "homepage": "http://www.gnu.org/software/emacs/emacs.html",
+      "type": "package",
+      "category": "editors",
+      "version": "24.4"
+    },
+    {
+      "name": "erlang",
+      "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
+      "homepage": "http://www.erlang.org/",
+      "type": "package",
+      "category": "development",
+      "version": "19.2"
+    },
+    {
+      "name": "expat",
+      "description": "James Clark's Expat XML parser library in C.",
+      "homepage": "https://sourceforge.net/projects/expat/",
+      "type": "package",
+      "category": "utilities",
       "version": "2.1.0"
     },
     {
-      "name": "fontconfig",
-      "description": "",
-      "homepage": "",
+      "name": "ffcall",
+      "description": "Foreign function call is a collection of four libraries which can be used to build foreign function call interfaces in embedded interpreters.",
+      "homepage": "http://www.haible.de/bruno/packages-ffcall-README.html",
       "type": "package",
-      "category": "",
+      "category": "utilities",
+      "version": "1.10"
+    },
+    {
+      "name": "filecmd",
+      "description": "file command determines the file type.",
+      "homepage": "ftp://ftp.astron.com/pub/file",
+      "type": "package",
+      "category": "utilities",
+      "version": "5.29"
+    },
+    {
+      "name": "fontconfig",
+      "description": "Fontconfig is a library for configuring and customizing font access.",
+      "homepage": "https://www.freedesktop.org/software/fontconfig/front.html",
+      "type": "package",
+      "category": "libraries",
       "version": "2.11.94"
     },
     {
       "name": "freetype",
-      "description": "",
-      "homepage": "",
+      "description": "FreeType is a freely available software library to render fonts.",
+      "homepage": "https://www.freetype.org/",
       "type": "package",
-      "category": "",
+      "category": "libraries",
       "version": "2.6"
     },
     {
