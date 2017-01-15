@@ -1,0 +1,420 @@
+{
+  "available_packages": [
+    {
+      "name": "a2ps",
+      "description": "GNU a2ps is an Any to PostScript filter.",
+      "homepage": "http://www.gnu.org/software/a2ps/a2ps.html",
+      "type": "package",
+      "category": "utilities",
+      "version": "4.14"
+    },
+    {
+      "name": "autoconf",
+      "description": "Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.",
+      "homepage": "http://www.gnu.org/software/autoconf/autoconf.html",
+      "type": "package",
+      "category": "development",
+      "version": "2.69"
+    },
+    {
+      "name": "automake",
+      "description": "Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.",
+      "homepage": "http://www.gnu.org/software/automake/automake.html",
+      "type": "package",
+      "category": "development",
+      "version": "1.14"
+    },
+    {
+      "name": "bacon",
+      "description": "BaCon is a free BASIC to C translator for Unix-based systems.",
+      "homepage": "http://www.basic-converter.org/",
+      "type": "package",
+      "category": "development",
+      "version": "3.5"
+    },
+    {
+      "name": "bc",
+      "description": "bc is an arbitrary precision numeric processing language.",
+      "homepage": "http://www.gnu.org/software/bc/bc.html",
+      "type": "package",
+      "category": "development",
+      "version": "1.06"
+    },
+    {
+      "name": "binutils",
+      "description": "The GNU Binutils are a collection of binary tools.",
+      "homepage": "http://www.gnu.org/software/binutils/binutils.html",
+      "type": "package",
+      "category": "utilities",
+      "version": "2.23.2"
+    },
+    {
+      "name": "bison",
+      "description": "Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.",
+      "homepage": "http://www.gnu.org/software/bison/bison.html",
+      "type": "package",
+      "category": "utilities",
+      "version": "3.0.2"
+    },
+    {
+      "name": "buildessential",
+      "description": "A collection of tools necessary to compile and build software.",
+      "homepage": "",
+      "type": "bundle",
+      "category": "development",
+      "version": "1.0"
+    },
+    {
+      "name": "bz2",
+      "description": "bzip2 is a freely available, patent free (see below), high-quality data compressor.",
+      "homepage": "http://www.bzip.org/",
+      "type": "package",
+      "category": "utilities",
+      "version": "1.0.6"
+    },
+    {
+      "name": "chicken",
+      "description": "CHICKEN is practical and portable scheme system.",
+      "homepage": "https://code.call-cc.org/",
+      "type": "package",
+      "category": "development",
+      "version": "4.11.0"
+    },
+    {
+      "name": "clisp",
+      "description": "ANSI Common Lisp compiler, interpreter and debugger.",
+      "homepage": "http://www.gnu.org/software/clisp/clisp.html",
+      "type": "package",
+      "category": "development",
+      "version": "2.49"
+    },
+    {
+      "name": "cmake",
+      "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
+      "homepage": "https://cmake.org/",
+      "type": "package",
+      "category": "development",
+      "version": "3.6.1"
+    },
+    {
+      "name": "ctags",
+      "description": "Exuberant Ctags is a multilanguage reimplementation of the Unix ctags utility.",
+      "homepage": "https://sourceforge.net/projects/ctags/",
+      "type": "package",
+      "category": "utilities",
+      "version": "5.8"
+    },
+    {
+      "name": "curl",
+      "description": "Command line tool and library for transferring data with URLs.",
+      "homepage": "https://curl.haxx.se/",
+      "type": "package",
+      "category": "utilities",
+      "version": "7.32.0"
+    },
+    {
+      "name": "diffutils",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "utilities",
+      "version": "3.3"
+    },
+    {
+      "name": "expat",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "2.1.0"
+    },
+    {
+      "name": "fontconfig",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "2.11.94"
+    },
+    {
+      "name": "freetype",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "2.6"
+    },
+    {
+      "name": "gcc",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "4.8.1-baseline"
+    },
+    {
+      "name": "gdbm",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "1.12"
+    },
+    {
+      "name": "gettext",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "0.18.3.1"
+    },
+    {
+      "name": "git",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "version_control",
+      "version": "1.8.4"
+    },
+    {
+      "name": "glibc",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "2.17.90-baseline"
+    },
+    {
+      "name": "gmp",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "5.1.2"
+    },
+    {
+      "name": "groff",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "utilities",
+      "version": "1.22.3"
+    },
+    {
+      "name": "less",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "utilities",
+      "version": "451"
+    },
+    {
+      "name": "libevent",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "2.0.22"
+    },
+    {
+      "name": "libpipeline",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "1.4.1"
+    },
+    {
+      "name": "libpng",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "1.6.26"
+    },
+    {
+      "name": "libsigsegv",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "2.10"
+    },
+    {
+      "name": "libssh2",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "1.4.3"
+    },
+    {
+      "name": "libxml2",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "2.9.2"
+    },
+    {
+      "name": "linuxheaders",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "3.4.0"
+    },
+    {
+      "name": "mandb",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "utilities",
+      "version": "2.7.6"
+    },
+    {
+      "name": "mpc",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "1.0.1"
+    },
+    {
+      "name": "mpfr",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "3.1.2"
+    },
+    {
+      "name": "make",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "3.82"
+    },
+    {
+      "name": "mlocate",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "utilities",
+      "version": "0.26"
+    },
+    {
+      "name": "ncurses",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "5.9"
+    },
+    {
+      "name": "openssl",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "1.0.2j"
+    },
+    {
+      "name": "pcre",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "8.39"
+    },
+    {
+      "name": "perl",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "5.16.3"
+    },
+    {
+      "name": "php7",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "7.1.0"
+    },
+    {
+      "name": "pkgconfig",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "0.29.1"
+    },
+    {
+      "name": "python",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "3.3.2"
+    },
+    {
+      "name": "python27",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "2.7.12"
+    },
+    {
+      "name": "readline",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "",
+      "version": "6.3"
+    },
+    {
+      "name": "ruby",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "development",
+      "version": "2.0.0p247"
+    },
+    {
+      "name": "sqlite",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "databases",
+      "version": "3.16.2"
+    },
+    {
+      "name": "tmux",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "utilities",
+      "version": "2.2"
+    },
+    {
+      "name": "vim",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "editors",
+      "version": "8.0"
+    },
+    {
+      "name": "zlibpkg",
+      "description": "",
+      "homepage": "",
+      "type": "package",
+      "category": "libraries",
+      "version": "1.2.8"
+    }
+  ]
+}
