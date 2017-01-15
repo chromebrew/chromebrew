@@ -21,9 +21,12 @@ class Mandb < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "if [ ! -d /var/cache/man ]; then sudo mkdir /var/cache/man; fi"
+    system "sudo chown -R chronos:chronos /var/cache/man"
+    system "echo \"export PAGER=/usr/local/bin/less\" >> ~/.bashrc"
     puts ""
-    puts "You will have to change the default PAGER env variable to be able to use mandb:"
-    puts "echo \"export PAGER=/usr/local/bin/less\" >> ~/.bashrc && . ~/.bashrc"
+    puts "Type 'source ~/.bashrc' to change the default PAGER."
+    puts "Type 'mandb -c' to add manual pages."
   end
 
 end
