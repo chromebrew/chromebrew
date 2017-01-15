@@ -1,964 +1,1093 @@
 {
   "available_packages": [
     {
-      "name": "a2ps",
-      "description": "GNU a2ps is an Any to PostScript filter.",
-      "homepage": "http://www.gnu.org/software/a2ps/",
-      "type": "package",
-      "category": "utilities",
-      "version": "4.14"
-    },
-    {
-      "name": "autoconf",
-      "description": "Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.",
-      "homepage": "http://www.gnu.org/software/autoconf/",
-      "type": "package",
-      "category": "development",
-      "version": "2.69"
-    },
-    {
-      "name": "automake",
-      "description": "Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.",
-      "homepage": "http://www.gnu.org/software/automake/",
-      "type": "package",
-      "category": "development",
-      "version": "1.14"
-    },
-    {
-      "name": "bacon",
-      "description": "BaCon is a free BASIC to C translator for Unix-based systems.",
-      "homepage": "http://www.basic-converter.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.5"
-    },
-    {
-      "name": "bc",
-      "description": "bc is an arbitrary precision numeric processing language.",
-      "homepage": "http://www.gnu.org/software/bc/",
-      "type": "package",
-      "category": "development",
-      "version": "1.06"
-    },
-    {
-      "name": "binutils",
-      "description": "The GNU Binutils are a collection of binary tools.",
-      "homepage": "http://www.gnu.org/software/binutils/",
-      "type": "package",
-      "category": "utilities",
-      "version": "2.23.2"
-    },
-    {
-      "name": "bison",
-      "description": "Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.",
-      "homepage": "http://www.gnu.org/software/bison/",
-      "type": "package",
-      "category": "utilities",
-      "version": "3.0.2"
-    },
-    {
-      "name": "buildessential",
-      "description": "A collection of tools essential to compile and build software.",
-      "homepage": "",
-      "type": "bundle",
-      "category": "development",
-      "version": "1.0"
-    },
-    {
-      "name": "bz2",
-      "description": "bzip2 is a freely available, patent free (see below), high-quality data compressor.",
-      "homepage": "http://www.bzip.org/",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.0.6"
-    },
-    {
-      "name": "chicken",
-      "description": "CHICKEN is practical and portable scheme system.",
-      "homepage": "https://code.call-cc.org/",
-      "type": "package",
-      "category": "development",
-      "version": "4.11.0"
-    },
-    {
-      "name": "clisp",
-      "description": "ANSI Common Lisp compiler, interpreter and debugger.",
-      "homepage": "http://www.gnu.org/software/clisp/",
-      "type": "package",
-      "category": "development",
-      "version": "2.49"
-    },
-    {
-      "name": "cmake",
-      "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
-      "homepage": "https://cmake.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.6.1"
-    },
-    {
-      "name": "ctags",
-      "description": "Exuberant Ctags is a multilanguage reimplementation of the Unix ctags utility.",
-      "homepage": "https://sourceforge.net/projects/ctags/",
-      "type": "package",
-      "category": "utilities",
-      "version": "5.8"
-    },
-    {
-      "name": "curl",
-      "description": "Command line tool and library for transferring data with URLs.",
-      "homepage": "https://curl.haxx.se/",
-      "type": "package",
-      "category": "utilities",
-      "version": "7.32.0"
-    },
-    {
-      "name": "diffutils",
-      "description": "GNU Diffutils is a package of several programs related to finding differences between files.",
-      "homepage": "http://www.gnu.org/software/diffutils/",
-      "type": "package",
-      "category": "utilities",
-      "version": "3.3"
-    },
-    {
-      "name": "elixir",
-      "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.",
-      "homepage": "http://elixir-lang.org/",
-      "type": "package",
-      "category": "development",
-      "version": "1.3.1"
-    },
-    {
-      "name": "emacs",
-      "description": "An extensible, customizable, free/libre text editor - and more.",
-      "homepage": "http://www.gnu.org/software/emacs/",
-      "type": "package",
-      "category": "editors",
-      "version": "24.4"
-    },
-    {
-      "name": "erlang",
-      "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
-      "homepage": "http://www.erlang.org/",
-      "type": "package",
-      "category": "development",
-      "version": "19.2"
-    },
-    {
-      "name": "expat",
-      "description": "James Clark's Expat XML parser library in C.",
-      "homepage": "https://sourceforge.net/projects/expat/",
-      "type": "package",
-      "category": "utilities",
-      "version": "2.1.0"
-    },
-    {
-      "name": "ffcall",
-      "description": "Foreign function call is a collection of four libraries which can be used to build foreign function call interfaces in embedded interpreters.",
-      "homepage": "http://www.haible.de/bruno/packages-ffcall-README.html",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.10"
-    },
-    {
-      "name": "filecmd",
-      "description": "file command determines the file type.",
-      "homepage": "ftp://ftp.astron.com/pub/file",
-      "type": "package",
-      "category": "utilities",
-      "version": "5.29"
-    },
-    {
-      "name": "fish",
-      "description": "fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.",
-      "homepage": "http://fishshell.com/",
-      "type": "package",
-      "category": "shells",
-      "version": "2.3.0"
-    },
-    {
-      "name": "flex",
-      "description": "Flex (The Fast Lexical Analyzer) is a fast lexical analyser generator tool for generating programs that perform pattern-matching on text.",
-      "homepage": "https://www.gnu.org/software/flex/",
-      "type": "package",
-      "category": "utilities",
-      "version": "2.5.39"
-    },
-    {
-      "name": "fontconfig",
-      "description": "Fontconfig is a library for configuring and customizing font access.",
-      "homepage": "https://www.freedesktop.org/software/fontconfig/front.html",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.11.94"
-    },
-    {
-      "name": "freetype",
-      "description": "FreeType is a freely available software library to render fonts.",
-      "homepage": "https://www.freetype.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.6"
-    },
-    {
-      "name": "gawk",
-      "description": "The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.",
-      "homepage": "https://www.gnu.org/software/gawk/",
-      "type": "package",
-      "category": "utilities",
-      "version": "4.1.1"
-    },
-    {
-      "name": "gcc",
-      "description": "The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.",
-      "homepage": "https://www.gnu.org/software/gcc/",
-      "type": "package",
-      "category": "development",
-      "version": "4.8.1-baseline"
-    },
-    {
-      "name": "gdal",
-      "description": "The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.",
-      "homepage": "http://www.gdal.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.11.2"
-    },
-    {
-      "name": "gdbm",
-      "description": "GNU dbm is a set of database routines that use extensible hashing.",
-      "homepage": "https://www.gnu.org/software/gdbm/",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.12"
-    },
-    {
-      "name": "geos",
-      "description": "GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology Suite (JTS).",
-      "homepage": "https://trac.osgeo.org/geos/",
-      "type": "package",
-      "category": "development",
-      "version": "3.4.2"
-    },
-    {
-      "name": "gettext",
-      "description": "GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.",
-      "homepage": "https://www.gnu.org/software/gettext/",
-      "type": "package",
-      "category": "utilities",
-      "version": "0.18.3.1"
-    },
-    {
-      "name": "git",
-      "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
-      "homepage": "https://git-scm.com/",
-      "type": "package",
-      "category": "version_control",
-      "version": "1.8.4"
-    },
-    {
-      "name": "glibc",
-      "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
-      "homepage": "https://www.gnu.org/software/libc/",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.17.90-baseline"
-    },
-    {
-      "name": "gmp",
-      "description": "GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.",
-      "homepage": "https://gmplib.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "5.1.2"
-    },
-    {
-      "name": "gnutls",
-      "description": "GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.",
-      "homepage": "http://gnutls.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "3.3.15"
-    },
-    {
-      "name": "go",
-      "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
-      "homepage": "https://golang.org/",
-      "type": "package",
-      "category": "development",
-      "version": "1.7.4"
-    },
-    {
-      "name": "go_bootstrap",
-      "description": "Bootstrap tool chain for the Go programming language.",
-      "homepage": "https://golang.org/",
-      "type": "package",
-      "category": "development",
-      "version": "1.4"
-    },
-    {
-      "name": "gperf",
-      "description": "GNU gperf is a perfect hash function generator.",
-      "homepage": "https://www.gnu.org/software/gperf/",
-      "type": "package",
-      "category": "utilities",
-      "version": "3.0.4"
-    },
-    {
-      "name": "graphicsmagick",
-      "description": "GraphicsMagick is the swiss army knife of image processing.",
-      "homepage": "http://www.graphicsmagick.org/",
-      "type": "package",
-      "category": "graphics",
-      "version": "1.3.23"
-    },
-    {
-      "name": "groff",
-      "description": "Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.",
-      "homepage": "https://www.gnu.org/software/groff/",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.22.3"
-    },
-    {
-      "name": "htop",
-      "description": "htop is an interactive process viewer for Unix systems.",
-      "homepage": "https://hisham.hm/htop/",
-      "type": "package",
-      "category": "utilities",
-      "version": "2.0.2"
-    },
-    {
-      "name": "imagemagick",
-      "description": "Use ImageMagick to create, edit, compose, or convert bitmap images.",
-      "homepage": "http://www.imagemagick.org/script/index.php",
-      "type": "package",
-      "category": "graphics",
-      "version": "6.9.2-10"
-    },
-    {
-      "name": "inetutils",
-      "description": "Inetutils - GNU network utilities is a collection of common network programs.",
-      "homepage": "https://www.gnu.org/software/inetutils/",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.9.4"
-    },
-    {
-      "name": "jdk8",
-      "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
-      "homepage": "http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html",
-      "type": "package",
-      "category": "development",
-      "version": "8u112"
-    },
-    {
-      "name": "jq",
-      "description": "jq is a lightweight and flexible command-line JSON processor.",
-      "homepage": "https://stedolan.github.io/jq/",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.5"
-    },
-    {
-      "name": "less",
-      "description": "GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.",
-      "homepage": "https://www.gnu.org/software/less/",
-      "type": "package",
-      "category": "utilities",
-      "version": "451"
-    },
-    {
-      "name": "leveldb",
-      "description": "LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.",
-      "homepage": "https://leveldb.googlecode.com/",
-      "type": "package",
-      "category": "databases",
-      "version": "1.15.0"
-    },
-    {
-      "name": "libevent",
-      "description": "The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.",
-      "homepage": "http://libevent.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.0.22"
-    },
-    {
-      "name": "libffi",
-      "description": "The libffi library provides a portable, high level programming interface to various calling conventions.",
-      "homepage": "https://sourceware.org/libffi/",
-      "type": "package",
-      "category": "libraries",
-      "version": "3.0.13-1"
-    },
-    {
-      "name": "libgd",
-      "description": "GD is an open source code library for the dynamic creation of images by programmers.",
-      "homepage": "https://libgd.github.io/",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.0.33"
-    },
-    {
-      "name": "libjpeg",
-      "description": "JPEG is a free library for image compression.",
-      "homepage": "http://www.ijg.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "9.1"
-    },
-    {
-      "name": "libpipeline",
-      "description": "libpipeline is a C library for manipulating pipelines of subprocesses in a flexible and convenient way.",
-      "homepage": "http://libpipeline.nongnu.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.4.1"
-    },
-    {
-      "name": "libpng",
-      "description": "libpng is the official PNG reference library.",
-      "homepage": "http://libpng.org/pub/png/libpng.html",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.6.26"
-    },
-    {
-      "name": "libsigsegv",
-      "description": "GNU libsigsegv is a library for handling page faults in user mode.",
-      "homepage": "https://www.gnu.org/software/libsigsegv/",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.10"
-    },
-    {
-      "name": "libssh2",
-      "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
-      "homepage": "https://www.libssh2.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.4.3"
-    },
-    {
-      "name": "libtiff",
-      "description": "LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.",
-      "homepage": "http://www.libtiff.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "4.0.7"
-    },
-    {
-      "name": "libunwind",
-      "description": "libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.",
-      "homepage": "http://www.nongnu.org/libunwind/",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.1"
-    },
-    {
-      "name": "libxml2",
-      "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
-      "homepage": "http://xmlsoft.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.9.2"
-    },
-    {
-      "name": "libxslt",
-      "description": "Libxslt is the XSLT C library developed for the GNOME project.",
-      "homepage": "http://xmlsoft.org/libxslt/",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.1.28"
-    },
-    {
-      "name": "linuxheaders",
-      "description": "Linux headers for Chrome OS.",
-      "homepage": "",
-      "type": "package",
-      "category": "kernel",
-      "version": "3.4.0"
-    },
-    {
-      "name": "lldb",
-      "description": "LLDB is a next generation, high-performance debugger.",
-      "homepage": "http://lldb.llvm.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.6"
-    },
-    {
-      "name": "llvm",
-      "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.",
-      "homepage": "http://llvm.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.8.1-1"
-    },
-    {
-      "name": "lua",
-      "description": "Lua is a powerful, efficient, lightweight, embeddable scripting language.",
-      "homepage": "https://www.lua.org/",
-      "type": "package",
-      "category": "development",
-      "version": "5.3.3"
-    },
-    {
-      "name": "m4",
-      "description": "GNU M4 is an implementation of the traditional Unix macro processor.",
-      "homepage": "https://www.gnu.org/software/m4/",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.4.17"
-    },
-    {
-      "name": "make",
-      "description": "GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.",
-      "homepage": "https://www.gnu.org/software/make/",
-      "type": "package",
-      "category": "development",
-      "version": "3.82"
-    },
-    {
-      "name": "mandb",
-      "description": "mandb is used to initialise or manually update index database caches that are usually maintained by man.",
-      "homepage": "",
-      "type": "package",
-      "category": "utilities",
-      "version": "2.7.6"
-    },
-    {
-      "name": "mapserver",
-      "description": "MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.",
-      "homepage": "http://mapserver.org/",
-      "type": "package",
-      "category": "geo_mapping",
-      "version": "5.6.9"
-    },
-    {
-      "name": "memcached",
-      "description": "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.",
-      "homepage": "https://memcached.org/",
-      "type": "package",
-      "category": "databases",
-      "version": "1.4.34"
-    },
-    {
-      "name": "mlocate",
-      "description": "mlocate is a locate/updatedb implementation.",
-      "homepage": "https://fedorahosted.org/mlocate/",
-      "type": "package",
-      "category": "utilities",
-      "version": "0.26"
-    },
-    {
-      "name": "mongodb",
-      "description": "MongoDB is the next-generation database that lets you create applications never before possible.",
-      "homepage": "https://www.mongodb.com/",
-      "type": "package",
-      "category": "databases",
-      "version": "3.0.8"
-    },
-    {
-      "name": "mono",
-      "description": "Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.",
-      "homepage": "http://www.mono-project.com/",
-      "type": "package",
-      "category": "development",
-      "version": "4.4.0.148-1"
-    },
-    {
-      "name": "moonbuggy",
-      "description": "Moon-buggy is a simple character graphics game where you drive some kind of car across the moon's surface.",
-      "homepage": "http://www.seehuhn.de/pages/moon-buggy",
-      "type": "package",
-      "category": "games",
-      "version": "1.0.51"
-    },
-    {
-      "name": "mpc",
-      "description": "Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.",
-      "homepage": "http://www.multiprecision.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.0.1"
-    },
-    {
-      "name": "mpfr",
-      "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.",
-      "homepage": "http://www.mpfr.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "3.1.2"
-    },
-    {
-      "name": "ncftp",
-      "description": "NcFTP Client (also known as just NcFTP) is a set of FREE application programs implementing the File Transfer Protocol (FTP).",
-      "homepage": "http://ncftp.com/ncftp/",
-      "type": "package",
-      "category": "remote_access",
-      "version": "3.2.6"
-    },
-    {
-      "name": "ncurses",
-      "description": "The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.",
-      "homepage": "https://www.gnu.org/software/ncurses/",
-      "type": "package",
-      "category": "libraries",
-      "version": "5.9"
-    },
-    {
-      "name": "ncurses_so",
-      "description": "The ncurses (new curses) shared object library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.",
-      "homepage": "https://www.gnu.org/software/ncurses/",
-      "type": "package",
-      "category": "libraries",
-      "version": "5.9"
-    },
-    {
-      "name": "netcat",
-      "description": "Netcat is a featured networking utility which reads and writes data across network connections, using the TCP/IP protocol.",
-      "homepage": "http://netcat.sourceforge.net/",
-      "type": "package",
-      "category": "networking",
-      "version": "0.7.1"
-    },
-    {
-      "name": "nethack4",
-      "description": "NetHack is a 'roguelike' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.",
-      "homepage": "http://nethack4.org/",
-      "type": "package",
-      "category": "games",
-      "version": "4.3.0-beta2"
-    },
-    {
-      "name": "nettle",
-      "description": "Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
-      "homepage": "http://www.lysator.liu.se/~nisse/nettle/",
-      "type": "package",
-      "category": "libraries",
-      "version": "2.7.1"
-    },
-    {
-      "name": "newlisp",
-      "description": "newLISP is a Lisp-like, general-purpose scripting language.",
-      "homepage": "http://www.newlisp.org/",
-      "type": "package",
-      "category": "development",
-      "version": "10.7.0"
-    },
-    {
-      "name": "nginx",
-      "description": "nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.",
-      "homepage": "http://nginx.org/",
-      "type": "package",
-      "category": "web_servers",
-      "version": "1.11.6-1"
-    },
-    {
-      "name": "nmap",
-      "description": "Nmap ('Network Mapper') is a free and open source (license) utility for network discovery and security auditing.",
-      "homepage": "https://nmap.org/",
-      "type": "package",
-      "category": "networking",
-      "version": "7.31"
-    },
-    {
-      "name": "node",
-      "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
-      "homepage": "https://nodejs.org/en/",
-      "type": "package",
-      "category": "development",
-      "version": "6.9.2"
-    },
-    {
-      "name": "node_current",
-      "description": "As an asynchronous event driven JavaScript runtime, Node current is designed to build scalable network applications.",
-      "homepage": "https://nodejs.org/en/",
-      "type": "package",
-      "category": "development",
-      "version": "6.9.2"
-    },
-    {
-      "name": "node_stable",
-      "description": "As an asynchronous event driven JavaScript runtime, Node stable is designed to build scalable network applications.",
-      "homepage": "https://nodejs.org/en/",
-      "type": "package",
-      "category": "development",
-      "version": "6.9.2"
-    },
-    {
-      "name": "openconnect",
-      "description": "OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN.",
-      "homepage": "http://www.infradead.org/openconnect/",
-      "type": "package",
-      "category": "remote_access",
-      "version": "7.06"
-    },
-    {
-      "name": "openssl",
-      "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.",
-      "homepage": "https://www.openssl.org/",
-      "type": "package",
-      "category": "security",
-      "version": "1.0.2j"
-    },
-    {
-      "name": "openssl_devel",
-      "description": "OpenSSL stub place holder to help support older packages with this dependency.",
-      "homepage": "https://www.openssl.org/",
-      "type": "package",
-      "category": "security",
-      "version": "removed"
-    },
-    {
-      "name": "patchelf",
-      "description": "PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.",
-      "homepage": "http://nixos.org/patchelf.html",
-      "type": "package",
-      "category": "utilities",
-      "version": "0.8-2"
-    },
-    {
-      "name": "patch",
-      "description": "Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.",
-      "homepage": "http://savannah.gnu.org/projects/patch/",
-      "type": "package",
-      "category": "utilities",
-      "version": "2.7"
-    },
-    {
-      "name": "pcre",
-      "description": "The PCRE library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5.",
-      "homepage": "http://pcre.org/",
-      "type": "package",
-      "category": "libraries",
-      "version": "8.39"
-    },
-    {
-      "name": "perl",
-      "description": "Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.",
-      "homepage": "https://www.perl.org/",
-      "type": "package",
-      "category": "development",
-      "version": "5.16.3"
-    },
-    {
-      "name": "php5",
-      "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-      "homepage": "http://www.php.net/",
-      "type": "package",
-      "category": "development",
-      "version": "5.6.29"
-    },
-    {
-      "name": "php7",
-      "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-      "homepage": "http://www.php.net/",
-      "type": "package",
-      "category": "development",
-      "version": "7.1.0"
-    },
-    {
-      "name": "pkgconfig",
-      "description": "pkg-config is a helper tool used when compiling applications and libraries.",
-      "homepage": "https://www.freedesktop.org/wiki/Software/pkg-config/",
-      "type": "package",
-      "category": "development",
-      "version": "0.29.1"
-    },
-    {
-      "name": "postgres",
-      "description": "PostgreSQL is a powerful, open source object-relational database system.",
-      "homepage": "https://www.postgresql.org/",
-      "type": "package",
-      "category": "databases",
-      "version": "9.5.0"
-    },
-    {
-      "name": "powerline_fonts",
-      "description": "Patched fonts for Powerline users.",
-      "homepage": "https://github.com/powerline/fonts",
-      "type": "package",
-      "category": "fonts",
-      "version": "1"
-    },
-    {
-      "name": "proj4",
-      "description": "proj.4 is a standard Unix filter function which converts geographic longitude and latitude coordinates into cartesian coordinates (and vice versa), and it is a C API for software developers to include coordinate transformation in their own software.",
-      "homepage": "http://proj4.org/",
-      "type": "package",
-      "category": "geo_mapping",
-      "version": "4.9.1"
-    },
-    {
-      "name": "python",
-      "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
-      "homepage": "https://www.python.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.3.2"
-    },
-    {
-      "name": "python27",
-      "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
-      "homepage": "https://www.python.org/",
-      "type": "package",
-      "category": "development",
-      "version": "2.7.12"
-    },
-    {
-      "name": "python34",
-      "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
-      "homepage": "https://www.python.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.4.1"
-    },
-    {
-      "name": "r",
-      "description": "R is a free software environment for statistical computing and graphics.",
-      "homepage": "https://www.r-project.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.3.2"
-    },
-    {
-      "name": "readline",
-      "description": "The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.",
-      "homepage": "http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html",
-      "type": "package",
-      "category": "libraries",
-      "version": "6.3"
-    },
-    {
-      "name": "redis",
-      "description": "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.",
-      "homepage": "https://redis.io/",
-      "type": "package",
-      "category": "databases",
-      "version": "3.0.6"
-    },
-    {
-      "name": "rsync",
-      "description": "rsync is an open source utility that provides fast incremental file transfer.",
-      "homepage": "https://rsync.samba.org/",
-      "type": "package",
-      "category": "development",
-      "version": "3.1.2"
-    },
-    {
-      "name": "ruby",
-      "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
-      "homepage": "https://www.ruby-lang.org/en/",
-      "type": "package",
-      "category": "development",
-      "version": "2.0.0p247-chromeos1"
-    },
-    {
-      "name": "ruby_latest",
-      "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
-      "homepage": "https://www.ruby-lang.org/en/",
-      "type": "package",
-      "category": "development",
-      "version": "2.4.0"
-    },
-    {
-      "name": "screen",
-      "description": "Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.",
-      "homepage": "https://www.gnu.org/software/screen/",
-      "type": "package",
-      "category": "utilities",
-      "version": "4.3.1"
-    },
-    {
-      "name": "scrollz",
-      "description": "ScrollZ is an advanced IRC client based on ircII.",
-      "homepage": "http://www.scrollz.info/",
-      "type": "package",
-      "category": "communication",
-      "version": "2.3"
-    },
-    {
-      "name": "socat",
-      "description": "SOcket CAT is a multipurpose relay 'netcat++' (extended design, new implementation).",
-      "homepage": "http://www.dest-unreach.org/socat/",
-      "type": "package",
-      "category": "networking",
-      "version": "1.7.3.1"
-    },
-    {
-      "name": "sqlite",
-      "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
-      "homepage": "http://www.sqlite.org/",
-      "type": "package",
-      "category": "databases",
-      "version": "3.10"
-    },
-    {
-      "name": "texinfo",
-      "description": "Texinfo is the official documentation format of the GNU project.",
-      "homepage": "https://www.gnu.org/software/texinfo/",
-      "type": "package",
-      "category": "utilities",
-      "version": "6.3"
-    },
-    {
-      "name": "tig",
-      "description": "Tig is an ncurses-based text-mode interface for git.",
-      "homepage": "http://jonas.nitro.dk/tig/",
-      "type": "package",
-      "category": "version_control",
-      "version": "1.9a"
-    },
-    {
-      "name": "tmux",
-      "description": "tmux is a terminal multiplexer",
-      "homepage": "http://tmux.github.io/",
-      "type": "package",
-      "category": "utilities",
-      "version": "2.2"
-    },
-    {
-      "name": "unzip",
-      "description": "UnZip is an extraction utility for archives compressed in .zip format (also called 'zipfiles').",
-      "homepage": "http://www.info-zip.org/UnZip.html",
-      "type": "package",
-      "category": "utilities",
-      "version": "1.6.1"
-    },
-    {
-      "name": "vim",
-      "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.",
-      "homepage": "http://www.vim.org/",
-      "type": "package",
-      "category": "editors",
-      "version": "8.0"
-    },
-    {
-      "name": "yasm",
-      "description": "Yasm is a complete rewrite of the NASM assembler under the new BSD License.",
-      "homepage": "http://yasm.tortall.net/",
-      "type": "package",
-      "category": "development",
-      "version": "1.3.0"
-    },
-    {
-      "name": "zlibpkg",
-      "description": "zlib is a massively spiffy yet delicately unobtrusive compression library.",
-      "homepage": "http://www.zlib.net/",
-      "type": "package",
-      "category": "libraries",
-      "version": "1.2.8"
-    },
-    {
-      "name": "zsh",
-      "description": "Zsh is a shell designed for interactive use, although it is also a powerful scripting language.",
-      "homepage": "http://zsh.sourceforge.net/",
-      "type": "package",
-      "category": "shells",
-      "version": "5.0.7"
+      "a2ps": {
+        "description": "GNU a2ps is an Any to PostScript filter.",
+        "homepage": "http://www.gnu.org/software/a2ps/",
+        "type": "package",
+        "category": "utilities",
+        "version": "4.14"
+      }
+    },
+    {
+      "autoconf": {
+        "description": "Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.",
+        "homepage": "http://www.gnu.org/software/autoconf/",
+        "type": "package",
+        "category": "development",
+        "version": "2.69"
+      }
+    },
+    {
+      "automake": {
+        "description": "Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.",
+        "homepage": "http://www.gnu.org/software/automake/",
+        "type": "package",
+        "category": "development",
+        "version": "1.14"
+      }
+    },
+    {
+      "bacon": {
+        "description": "BaCon is a free BASIC to C translator for Unix-based systems.",
+        "homepage": "http://www.basic-converter.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.5"
+      }
+    },
+    {
+      "bc": {
+        "description": "bc is an arbitrary precision numeric processing language.",
+        "homepage": "http://www.gnu.org/software/bc/",
+        "type": "package",
+        "category": "development",
+        "version": "1.06"
+      }
+    },
+    {
+      "binutils": {
+        "description": "The GNU Binutils are a collection of binary tools.",
+        "homepage": "http://www.gnu.org/software/binutils/",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.23.2"
+      }
+    },
+    {
+      "bison": {
+        "description": "Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.",
+        "homepage": "http://www.gnu.org/software/bison/",
+        "type": "package",
+        "category": "utilities",
+        "version": "3.0.2"
+      }
+    },
+    {
+      "buildessential": {
+        "description": "A collection of tools essential to compile and build software.",
+        "homepage": "",
+        "type": "bundle",
+        "category": "development",
+        "version": "1.0"
+      }
+    },
+    {
+      "bz2": {
+        "description": "bzip2 is a freely available, patent free (see below), high-quality data compressor.",
+        "homepage": "http://www.bzip.org/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.0.6"
+      }
+    },
+    {
+      "chicken": {
+        "description": "CHICKEN is practical and portable scheme system.",
+        "homepage": "https://code.call-cc.org/",
+        "type": "package",
+        "category": "development",
+        "version": "4.11.0"
+      }
+    },
+    {
+      "clisp": {
+        "description": "ANSI Common Lisp compiler, interpreter and debugger.",
+        "homepage": "http://www.gnu.org/software/clisp/",
+        "type": "package",
+        "category": "development",
+        "version": "2.49"
+      }
+    },
+    {
+      "cmake": {
+        "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
+        "homepage": "https://cmake.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.6.1"
+      }
+    },
+    {
+      "ctags": {
+        "description": "Exuberant Ctags is a multilanguage reimplementation of the Unix ctags utility.",
+        "homepage": "https://sourceforge.net/projects/ctags/",
+        "type": "package",
+        "category": "utilities",
+        "version": "5.8"
+      }
+    },
+    {
+      "curl": {
+        "description": "Command line tool and library for transferring data with URLs.",
+        "homepage": "https://curl.haxx.se/",
+        "type": "package",
+        "category": "utilities",
+        "version": "7.32.0"
+      }
+    },
+    {
+      "diffutils": {
+        "description": "GNU Diffutils is a package of several programs related to finding differences between files.",
+        "homepage": "http://www.gnu.org/software/diffutils/",
+        "type": "package",
+        "category": "utilities",
+        "version": "3.3"
+      }
+    },
+    {
+      "elixir": {
+        "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.",
+        "homepage": "http://elixir-lang.org/",
+        "type": "package",
+        "category": "development",
+        "version": "1.3.1"
+      }
+    },
+    {
+      "emacs": {
+        "description": "An extensible, customizable, free/libre text editor - and more.",
+        "homepage": "http://www.gnu.org/software/emacs/",
+        "type": "package",
+        "category": "editors",
+        "version": "24.4"
+      }
+    },
+    {
+      "erlang": {
+        "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
+        "homepage": "http://www.erlang.org/",
+        "type": "package",
+        "category": "development",
+        "version": "19.2"
+      }
+    },
+    {
+      "expat": {
+        "description": "James Clark's Expat XML parser library in C.",
+        "homepage": "https://sourceforge.net/projects/expat/",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.1.0"
+      }
+    },
+    {
+      "ffcall": {
+        "description": "Foreign function call is a collection of four libraries which can be used to build foreign function call interfaces in embedded interpreters.",
+        "homepage": "http://www.haible.de/bruno/packages-ffcall-README.html",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.10"
+      }
+    },
+    {
+      "filecmd": {
+        "description": "file command determines the file type.",
+        "homepage": "ftp://ftp.astron.com/pub/file",
+        "type": "package",
+        "category": "utilities",
+        "version": "5.29"
+      }
+    },
+    {
+      "fish": {
+        "description": "fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.",
+        "homepage": "http://fishshell.com/",
+        "type": "package",
+        "category": "shells",
+        "version": "2.3.0"
+      }
+    },
+    {
+      "flex": {
+        "description": "Flex (The Fast Lexical Analyzer) is a fast lexical analyser generator tool for generating programs that perform pattern-matching on text.",
+        "homepage": "https://www.gnu.org/software/flex/",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.5.39"
+      }
+    },
+    {
+      "fontconfig": {
+        "description": "Fontconfig is a library for configuring and customizing font access.",
+        "homepage": "https://www.freedesktop.org/software/fontconfig/front.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.11.94"
+      }
+    },
+    {
+      "freetype": {
+        "description": "FreeType is a freely available software library to render fonts.",
+        "homepage": "https://www.freetype.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.6"
+      }
+    },
+    {
+      "gawk": {
+        "description": "The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.",
+        "homepage": "https://www.gnu.org/software/gawk/",
+        "type": "package",
+        "category": "utilities",
+        "version": "4.1.1"
+      }
+    },
+    {
+      "gcc": {
+        "description": "The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.",
+        "homepage": "https://www.gnu.org/software/gcc/",
+        "type": "package",
+        "category": "development",
+        "version": "4.8.1-baseline"
+      }
+    },
+    {
+      "gdal": {
+        "description": "The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.",
+        "homepage": "http://www.gdal.org/",
+        "type": "package",
+        "category": "geo_mapping",
+        "version": "1.11.2"
+      }
+    },
+    {
+      "gdbm": {
+        "description": "GNU dbm is a set of database routines that use extensible hashing.",
+        "homepage": "https://www.gnu.org/software/gdbm/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.12"
+      }
+    },
+    {
+      "geos": {
+        "description": "GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology Suite (JTS).",
+        "homepage": "https://trac.osgeo.org/geos/",
+        "type": "package",
+        "category": "geo_mapping",
+        "version": "3.4.2"
+      }
+    },
+    {
+      "gettext": {
+        "description": "GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.",
+        "homepage": "https://www.gnu.org/software/gettext/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.18.3.1"
+      }
+    },
+    {
+      "git": {
+        "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+        "homepage": "https://git-scm.com/",
+        "type": "package",
+        "category": "version_control",
+        "version": "1.8.4"
+      }
+    },
+    {
+      "glibc": {
+        "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
+        "homepage": "https://www.gnu.org/software/libc/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.17.90-baseline"
+      }
+    },
+    {
+      "gmp": {
+        "description": "GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.",
+        "homepage": "https://gmplib.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "5.1.2"
+      }
+    },
+    {
+      "gnutls": {
+        "description": "GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.",
+        "homepage": "http://gnutls.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "3.3.15"
+      }
+    },
+    {
+      "go": {
+        "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+        "homepage": "https://golang.org/",
+        "type": "package",
+        "category": "development",
+        "version": "1.7.4"
+      }
+    },
+    {
+      "go_bootstrap": {
+        "description": "Bootstrap tool chain for the Go programming language.",
+        "homepage": "https://golang.org/",
+        "type": "package",
+        "category": "development",
+        "version": "1.4"
+      }
+    },
+    {
+      "gperf": {
+        "description": "GNU gperf is a perfect hash function generator.",
+        "homepage": "https://www.gnu.org/software/gperf/",
+        "type": "package",
+        "category": "utilities",
+        "version": "3.0.4"
+      }
+    },
+    {
+      "graphicsmagick": {
+        "description": "GraphicsMagick is the swiss army knife of image processing.",
+        "homepage": "http://www.graphicsmagick.org/",
+        "type": "package",
+        "category": "graphics",
+        "version": "1.3.23"
+      }
+    },
+    {
+      "groff": {
+        "description": "Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.",
+        "homepage": "https://www.gnu.org/software/groff/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.22.3"
+      }
+    },
+    {
+      "htop": {
+        "description": "htop is an interactive process viewer for Unix systems.",
+        "homepage": "https://hisham.hm/htop/",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.0.2"
+      }
+    },
+    {
+      "imagemagick": {
+        "description": "Use ImageMagick to create, edit, compose, or convert bitmap images.",
+        "homepage": "http://www.imagemagick.org/script/index.php",
+        "type": "package",
+        "category": "graphics",
+        "version": "6.9.2-10"
+      }
+    },
+    {
+      "inetutils": {
+        "description": "Inetutils - GNU network utilities is a collection of common network programs.",
+        "homepage": "https://www.gnu.org/software/inetutils/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.9.4"
+      }
+    },
+    {
+      "jdk8": {
+        "description": "The JDK is a development environment for building applications, applets, and components using the Java programming language.",
+        "homepage": "http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html",
+        "type": "package",
+        "category": "development",
+        "version": "8u112"
+      }
+    },
+    {
+      "jq": {
+        "description": "jq is a lightweight and flexible command-line JSON processor.",
+        "homepage": "https://stedolan.github.io/jq/",
+        "type": "package",
+        "category": "development",
+        "version": "1.5"
+      }
+    },
+    {
+      "less": {
+        "description": "GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.",
+        "homepage": "https://www.gnu.org/software/less/",
+        "type": "package",
+        "category": "utilities",
+        "version": "451"
+      }
+    },
+    {
+      "leveldb": {
+        "description": "LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.",
+        "homepage": "https://leveldb.googlecode.com/",
+        "type": "package",
+        "category": "databases",
+        "version": "1.15.0"
+      }
+    },
+    {
+      "libevent": {
+        "description": "The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.",
+        "homepage": "http://libevent.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.0.22"
+      }
+    },
+    {
+      "libffi": {
+        "description": "The libffi library provides a portable, high level programming interface to various calling conventions.",
+        "homepage": "https://sourceware.org/libffi/",
+        "type": "package",
+        "category": "libraries",
+        "version": "3.0.13-1"
+      }
+    },
+    {
+      "libgd": {
+        "description": "GD is an open source code library for the dynamic creation of images by programmers.",
+        "homepage": "https://libgd.github.io/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.0.33"
+      }
+    },
+    {
+      "libjpeg": {
+        "description": "JPEG is a free library for image compression.",
+        "homepage": "http://www.ijg.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "9.1"
+      }
+    },
+    {
+      "libpipeline": {
+        "description": "libpipeline is a C library for manipulating pipelines of subprocesses in a flexible and convenient way.",
+        "homepage": "http://libpipeline.nongnu.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.4.1"
+      }
+    },
+    {
+      "libpng": {
+        "description": "libpng is the official PNG reference library.",
+        "homepage": "http://libpng.org/pub/png/libpng.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.6.26"
+      }
+    },
+    {
+      "libsigsegv": {
+        "description": "GNU libsigsegv is a library for handling page faults in user mode.",
+        "homepage": "https://www.gnu.org/software/libsigsegv/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.10"
+      }
+    },
+    {
+      "libssh2": {
+        "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
+        "homepage": "https://www.libssh2.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.4.3"
+      }
+    },
+    {
+      "libtiff": {
+        "description": "LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.",
+        "homepage": "http://www.libtiff.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "4.0.7"
+      }
+    },
+    {
+      "libunwind": {
+        "description": "libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.",
+        "homepage": "http://www.nongnu.org/libunwind/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.1"
+      }
+    },
+    {
+      "libxml2": {
+        "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
+        "homepage": "http://xmlsoft.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.9.2"
+      }
+    },
+    {
+      "libxslt": {
+        "description": "Libxslt is the XSLT C library developed for the GNOME project.",
+        "homepage": "http://xmlsoft.org/libxslt/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.1.28"
+      }
+    },
+    {
+      "linuxheaders": {
+        "description": "Linux headers for Chrome OS.",
+        "homepage": "",
+        "type": "package",
+        "category": "kernel",
+        "version": "3.4.0"
+      }
+    },
+    {
+      "lldb": {
+        "description": "LLDB is a next generation, high-performance debugger.",
+        "homepage": "http://lldb.llvm.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.6"
+      }
+    },
+    {
+      "llvm": {
+        "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.",
+        "homepage": "http://llvm.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.8.1-1"
+      }
+    },
+    {
+      "lua": {
+        "description": "Lua is a powerful, efficient, lightweight, embeddable scripting language.",
+        "homepage": "https://www.lua.org/",
+        "type": "package",
+        "category": "development",
+        "version": "5.3.3"
+      }
+    },
+    {
+      "m4": {
+        "description": "GNU M4 is an implementation of the traditional Unix macro processor.",
+        "homepage": "https://www.gnu.org/software/m4/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.4.17"
+      }
+    },
+    {
+      "make": {
+        "description": "GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.",
+        "homepage": "https://www.gnu.org/software/make/",
+        "type": "package",
+        "category": "development",
+        "version": "3.82"
+      }
+    },
+    {
+      "mandb": {
+        "description": "mandb is used to initialise or manually update index database caches that are usually maintained by man.",
+        "homepage": "",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.7.6"
+      }
+    },
+    {
+      "mapserver": {
+        "description": "MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.",
+        "homepage": "http://mapserver.org/",
+        "type": "package",
+        "category": "geo_mapping",
+        "version": "5.6.9"
+      }
+    },
+    {
+      "memcached": {
+        "description": "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.",
+        "homepage": "https://memcached.org/",
+        "type": "package",
+        "category": "databases",
+        "version": "1.4.34"
+      }
+    },
+    {
+      "mlocate": {
+        "description": "mlocate is a locate/updatedb implementation.",
+        "homepage": "https://fedorahosted.org/mlocate/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.26"
+      }
+    },
+    {
+      "mongodb": {
+        "description": "MongoDB is the next-generation database that lets you create applications never before possible.",
+        "homepage": "https://www.mongodb.com/",
+        "type": "package",
+        "category": "databases",
+        "version": "3.0.8"
+      }
+    },
+    {
+      "mono": {
+        "description": "Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.",
+        "homepage": "http://www.mono-project.com/",
+        "type": "package",
+        "category": "development",
+        "version": "4.4.0.148-1"
+      }
+    },
+    {
+      "moonbuggy": {
+        "description": "Moon-buggy is a simple character graphics game where you drive some kind of car across the moon's surface.",
+        "homepage": "http://www.seehuhn.de/pages/moon-buggy",
+        "type": "package",
+        "category": "games",
+        "version": "1.0.51"
+      }
+    },
+    {
+      "mpc": {
+        "description": "Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.",
+        "homepage": "http://www.multiprecision.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.0.1"
+      }
+    },
+    {
+      "mpfr": {
+        "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.",
+        "homepage": "http://www.mpfr.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "3.1.2"
+      }
+    },
+    {
+      "nano": {
+        "description": "Nano's ANOther editor, an enhanced free Pico clone.",
+        "homepage": "https://www.nano-editor.org/",
+        "type": "package",
+        "category": "editors",
+        "version": "2.7.1"
+      }
+    },
+    {
+      "ncftp": {
+        "description": "NcFTP Client (also known as just NcFTP) is a set of FREE application programs implementing the File Transfer Protocol (FTP).",
+        "homepage": "http://ncftp.com/ncftp/",
+        "type": "package",
+        "category": "remote_access",
+        "version": "3.2.6"
+      }
+    },
+    {
+      "ncurses": {
+        "description": "The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.",
+        "homepage": "https://www.gnu.org/software/ncurses/",
+        "type": "package",
+        "category": "libraries",
+        "version": "5.9"
+      }
+    },
+    {
+      "ncurses_so": {
+        "description": "The ncurses (new curses) shared object library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.",
+        "homepage": "https://www.gnu.org/software/ncurses/",
+        "type": "package",
+        "category": "libraries",
+        "version": "5.9"
+      }
+    },
+    {
+      "netcat": {
+        "description": "Netcat is a featured networking utility which reads and writes data across network connections, using the TCP/IP protocol.",
+        "homepage": "http://netcat.sourceforge.net/",
+        "type": "package",
+        "category": "networking",
+        "version": "0.7.1"
+      }
+    },
+    {
+      "nethack4": {
+        "description": "NetHack is a 'roguelike' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.",
+        "homepage": "http://nethack4.org/",
+        "type": "package",
+        "category": "games",
+        "version": "4.3.0-beta2"
+      }
+    },
+    {
+      "nettle": {
+        "description": "Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
+        "homepage": "http://www.lysator.liu.se/~nisse/nettle/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.7.1"
+      }
+    },
+    {
+      "newlisp": {
+        "description": "newLISP is a Lisp-like, general-purpose scripting language.",
+        "homepage": "http://www.newlisp.org/",
+        "type": "package",
+        "category": "development",
+        "version": "10.7.0"
+      }
+    },
+    {
+      "nginx": {
+        "description": "nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.",
+        "homepage": "http://nginx.org/",
+        "type": "package",
+        "category": "web_servers",
+        "version": "1.11.6-1"
+      }
+    },
+    {
+      "nmap": {
+        "description": "Nmap ('Network Mapper') is a free and open source (license) utility for network discovery and security auditing.",
+        "homepage": "https://nmap.org/",
+        "type": "package",
+        "category": "networking",
+        "version": "7.31"
+      }
+    },
+    {
+      "node": {
+        "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
+        "homepage": "https://nodejs.org/en/",
+        "type": "package",
+        "category": "development",
+        "version": "6.9.2"
+      }
+    },
+    {
+      "node_current": {
+        "description": "As an asynchronous event driven JavaScript runtime, Node current is designed to build scalable network applications.",
+        "homepage": "https://nodejs.org/en/",
+        "type": "package",
+        "category": "development",
+        "version": "6.9.2"
+      }
+    },
+    {
+      "node_stable": {
+        "description": "As an asynchronous event driven JavaScript runtime, Node stable is designed to build scalable network applications.",
+        "homepage": "https://nodejs.org/en/",
+        "type": "package",
+        "category": "development",
+        "version": "6.9.2"
+      }
+    },
+    {
+      "openconnect": {
+        "description": "OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN.",
+        "homepage": "http://www.infradead.org/openconnect/",
+        "type": "package",
+        "category": "remote_access",
+        "version": "7.06"
+      }
+    },
+    {
+      "openssl": {
+        "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.",
+        "homepage": "https://www.openssl.org/",
+        "type": "package",
+        "category": "security",
+        "version": "1.0.2j"
+      }
+    },
+    {
+      "openssl_devel": {
+        "description": "OpenSSL stub place holder to help support older packages with this dependency.",
+        "homepage": "https://www.openssl.org/",
+        "type": "package",
+        "category": "security",
+        "version": "removed"
+      }
+    },
+    {
+      "patchelf": {
+        "description": "PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.",
+        "homepage": "http://nixos.org/patchelf.html",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.8-2"
+      }
+    },
+    {
+      "patch": {
+        "description": "Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.",
+        "homepage": "http://savannah.gnu.org/projects/patch/",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.7"
+      }
+    },
+    {
+      "pcre": {
+        "description": "The PCRE library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5.",
+        "homepage": "http://pcre.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "8.39"
+      }
+    },
+    {
+      "perl": {
+        "description": "Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.",
+        "homepage": "https://www.perl.org/",
+        "type": "package",
+        "category": "development",
+        "version": "5.16.3"
+      }
+    },
+    {
+      "php5": {
+        "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
+        "homepage": "http://www.php.net/",
+        "type": "package",
+        "category": "development",
+        "version": "5.6.29"
+      }
+    },
+    {
+      "php7": {
+        "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
+        "homepage": "http://www.php.net/",
+        "type": "package",
+        "category": "development",
+        "version": "7.1.0"
+      }
+    },
+    {
+      "pkgconfig": {
+        "description": "pkg-config is a helper tool used when compiling applications and libraries.",
+        "homepage": "https://www.freedesktop.org/wiki/Software/pkg-config/",
+        "type": "package",
+        "category": "development",
+        "version": "0.29.1"
+      }
+    },
+    {
+      "postgres": {
+        "description": "PostgreSQL is a powerful, open source object-relational database system.",
+        "homepage": "https://www.postgresql.org/",
+        "type": "package",
+        "category": "databases",
+        "version": "9.5.0"
+      }
+    },
+    {
+      "powerline_fonts": {
+        "description": "Patched fonts for Powerline users.",
+        "homepage": "https://github.com/powerline/fonts",
+        "type": "package",
+        "category": "fonts",
+        "version": "1"
+      }
+    },
+    {
+      "proj4": {
+        "description": "proj.4 is a standard Unix filter function which converts geographic longitude and latitude coordinates into cartesian coordinates (and vice versa), and it is a C API for software developers to include coordinate transformation in their own software.",
+        "homepage": "http://proj4.org/",
+        "type": "package",
+        "category": "geo_mapping",
+        "version": "4.9.1"
+      }
+    },
+    {
+      "python": {
+        "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+        "homepage": "https://www.python.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.3.2"
+      }
+    },
+    {
+      "python27": {
+        "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+        "homepage": "https://www.python.org/",
+        "type": "package",
+        "category": "development",
+        "version": "2.7.12"
+      }
+    },
+    {
+      "python34": {
+        "description": "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+        "homepage": "https://www.python.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.4.1"
+      }
+    },
+    {
+      "r": {
+        "description": "R is a free software environment for statistical computing and graphics.",
+        "homepage": "https://www.r-project.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.3.2"
+      }
+    },
+    {
+      "readline": {
+        "description": "The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.",
+        "homepage": "http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "6.3"
+      }
+    },
+    {
+      "redis": {
+        "description": "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.",
+        "homepage": "https://redis.io/",
+        "type": "package",
+        "category": "databases",
+        "version": "3.0.6"
+      }
+    },
+    {
+      "rsync": {
+        "description": "rsync is an open source utility that provides fast incremental file transfer.",
+        "homepage": "https://rsync.samba.org/",
+        "type": "package",
+        "category": "development",
+        "version": "3.1.2"
+      }
+    },
+    {
+      "ruby": {
+        "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
+        "homepage": "https://www.ruby-lang.org/en/",
+        "type": "package",
+        "category": "development",
+        "version": "2.0.0p247-chromeos1"
+      }
+    },
+    {
+      "ruby_latest": {
+        "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
+        "homepage": "https://www.ruby-lang.org/en/",
+        "type": "package",
+        "category": "development",
+        "version": "2.4.0"
+      }
+    },
+    {
+      "screen": {
+        "description": "Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.",
+        "homepage": "https://www.gnu.org/software/screen/",
+        "type": "package",
+        "category": "utilities",
+        "version": "4.3.1"
+      }
+    },
+    {
+      "scrollz": {
+        "description": "ScrollZ is an advanced IRC client based on ircII.",
+        "homepage": "http://www.scrollz.info/",
+        "type": "package",
+        "category": "communication",
+        "version": "2.3"
+      }
+    },
+    {
+      "socat": {
+        "description": "SOcket CAT is a multipurpose relay 'netcat++' (extended design, new implementation).",
+        "homepage": "http://www.dest-unreach.org/socat/",
+        "type": "package",
+        "category": "networking",
+        "version": "1.7.3.1"
+      }
+    },
+    {
+      "sqlite": {
+        "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
+        "homepage": "http://www.sqlite.org/",
+        "type": "package",
+        "category": "databases",
+        "version": "3.10"
+      }
+    },
+    {
+      "texinfo": {
+        "description": "Texinfo is the official documentation format of the GNU project.",
+        "homepage": "https://www.gnu.org/software/texinfo/",
+        "type": "package",
+        "category": "utilities",
+        "version": "6.3"
+      }
+    },
+    {
+      "tig": {
+        "description": "Tig is an ncurses-based text-mode interface for git.",
+        "homepage": "http://jonas.nitro.dk/tig/",
+        "type": "package",
+        "category": "version_control",
+        "version": "1.9a"
+      }
+    },
+    {
+      "tmux": {
+        "description": "tmux is a terminal multiplexer",
+        "homepage": "http://tmux.github.io/",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.2"
+      }
+    },
+    {
+      "unzip": {
+        "description": "UnZip is an extraction utility for archives compressed in .zip format (also called 'zipfiles').",
+        "homepage": "http://www.info-zip.org/UnZip.html",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.6.1"
+      }
+    },
+    {
+      "vim": {
+        "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.",
+        "homepage": "http://www.vim.org/",
+        "type": "package",
+        "category": "editors",
+        "version": "8.0"
+      }
+    },
+    {
+      "yasm": {
+        "description": "Yasm is a complete rewrite of the NASM assembler under the new BSD License.",
+        "homepage": "http://yasm.tortall.net/",
+        "type": "package",
+        "category": "development",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "zlibpkg": {
+        "description": "zlib is a massively spiffy yet delicately unobtrusive compression library.",
+        "homepage": "http://www.zlib.net/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.2.8"
+      }
+    },
+    {
+      "zsh": {
+        "description": "Zsh is a shell designed for interactive use, although it is also a powerful scripting language.",
+        "homepage": "http://zsh.sourceforge.net/",
+        "type": "package",
+        "category": "shells",
+        "version": "5.0.7"
+      }
     }
   ]
 }
