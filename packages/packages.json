@@ -3,7 +3,7 @@
     {
       "name": "a2ps",
       "description": "GNU a2ps is an Any to PostScript filter.",
-      "homepage": "http://www.gnu.org/software/a2ps/a2ps.html",
+      "homepage": "http://www.gnu.org/software/a2ps/",
       "type": "package",
       "category": "utilities",
       "version": "4.14"
@@ -11,7 +11,7 @@
     {
       "name": "autoconf",
       "description": "Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.",
-      "homepage": "http://www.gnu.org/software/autoconf/autoconf.html",
+      "homepage": "http://www.gnu.org/software/autoconf/",
       "type": "package",
       "category": "development",
       "version": "2.69"
@@ -19,7 +19,7 @@
     {
       "name": "automake",
       "description": "Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.",
-      "homepage": "http://www.gnu.org/software/automake/automake.html",
+      "homepage": "http://www.gnu.org/software/automake/",
       "type": "package",
       "category": "development",
       "version": "1.14"
@@ -35,7 +35,7 @@
     {
       "name": "bc",
       "description": "bc is an arbitrary precision numeric processing language.",
-      "homepage": "http://www.gnu.org/software/bc/bc.html",
+      "homepage": "http://www.gnu.org/software/bc/",
       "type": "package",
       "category": "development",
       "version": "1.06"
@@ -43,7 +43,7 @@
     {
       "name": "binutils",
       "description": "The GNU Binutils are a collection of binary tools.",
-      "homepage": "http://www.gnu.org/software/binutils/binutils.html",
+      "homepage": "http://www.gnu.org/software/binutils/",
       "type": "package",
       "category": "utilities",
       "version": "2.23.2"
@@ -51,14 +51,14 @@
     {
       "name": "bison",
       "description": "Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.",
-      "homepage": "http://www.gnu.org/software/bison/bison.html",
+      "homepage": "http://www.gnu.org/software/bison/",
       "type": "package",
       "category": "utilities",
       "version": "3.0.2"
     },
     {
       "name": "buildessential",
-      "description": "A collection of tools necessary to compile and build software.",
+      "description": "A collection of tools essential to compile and build software.",
       "homepage": "",
       "type": "bundle",
       "category": "development",
@@ -83,7 +83,7 @@
     {
       "name": "clisp",
       "description": "ANSI Common Lisp compiler, interpreter and debugger.",
-      "homepage": "http://www.gnu.org/software/clisp/clisp.html",
+      "homepage": "http://www.gnu.org/software/clisp/",
       "type": "package",
       "category": "development",
       "version": "2.49"
@@ -115,7 +115,7 @@
     {
       "name": "diffutils",
       "description": "GNU Diffutils is a package of several programs related to finding differences between files.",
-      "homepage": "http://www.gnu.org/software/diffutils/diffutils.html",
+      "homepage": "http://www.gnu.org/software/diffutils/",
       "type": "package",
       "category": "utilities",
       "version": "3.3"
@@ -131,7 +131,7 @@
     {
       "name": "emacs",
       "description": "An extensible, customizable, free/libre text editor - and more.",
-      "homepage": "http://www.gnu.org/software/emacs/emacs.html",
+      "homepage": "http://www.gnu.org/software/emacs/",
       "type": "package",
       "category": "editors",
       "version": "24.4"
@@ -169,6 +169,22 @@
       "version": "5.29"
     },
     {
+      "name": "fish",
+      "description": "fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.",
+      "homepage": "http://fishshell.com/",
+      "type": "package",
+      "category": "shells",
+      "version": "2.3.0"
+    },
+    {
+      "name": "flex",
+      "description": "Flex (The Fast Lexical Analyzer) is a fast lexical analyser generator tool for generating programs that perform pattern-matching on text.",
+      "homepage": "https://www.gnu.org/software/flex/",
+      "type": "package",
+      "category": "utilities",
+      "version": "2.5.39"
+    },
+    {
       "name": "fontconfig",
       "description": "Fontconfig is a library for configuring and customizing font access.",
       "homepage": "https://www.freedesktop.org/software/fontconfig/front.html",
@@ -185,60 +201,148 @@
       "version": "2.6"
     },
     {
+      "name": "gawk",
+      "description": "The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.",
+      "homepage": "https://www.gnu.org/software/gawk/",
+      "type": "package",
+      "category": "utilities",
+      "version": "4.1.1"
+    },
+    {
       "name": "gcc",
-      "description": "",
-      "homepage": "",
+      "description": "The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.",
+      "homepage": "https://www.gnu.org/software/gcc/",
       "type": "package",
       "category": "development",
       "version": "4.8.1-baseline"
     },
     {
-      "name": "gdbm",
-      "description": "",
-      "homepage": "",
+      "name": "gdal",
+      "description": "The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.",
+      "homepage": "http://www.gdal.org/",
       "type": "package",
-      "category": "development",
+      "category": "libraries",
+      "version": "1.11.2"
+    },
+    {
+      "name": "gdbm",
+      "description": "GNU dbm is a set of database routines that use extensible hashing.",
+      "homepage": "https://www.gnu.org/software/gdbm/",
+      "type": "package",
+      "category": "utilities",
       "version": "1.12"
     },
     {
-      "name": "gettext",
-      "description": "",
-      "homepage": "",
+      "name": "geos",
+      "description": "GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology Suite (JTS).",
+      "homepage": "https://trac.osgeo.org/geos/",
       "type": "package",
-      "category": "",
+      "category": "development",
+      "version": "3.4.2"
+    },
+    {
+      "name": "gettext",
+      "description": "GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.",
+      "homepage": "https://www.gnu.org/software/gettext/",
+      "type": "package",
+      "category": "utilities",
       "version": "0.18.3.1"
     },
     {
       "name": "git",
-      "description": "",
-      "homepage": "",
+      "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+      "homepage": "https://git-scm.com/",
       "type": "package",
       "category": "version_control",
       "version": "1.8.4"
     },
     {
       "name": "glibc",
-      "description": "",
-      "homepage": "",
+      "description": "The GNU C Library project provides the core libraries for GNU/Linux systems.",
+      "homepage": "https://www.gnu.org/software/libc/",
       "type": "package",
       "category": "libraries",
       "version": "2.17.90-baseline"
     },
     {
       "name": "gmp",
-      "description": "",
-      "homepage": "",
+      "description": "GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.",
+      "homepage": "https://gmplib.org/",
       "type": "package",
-      "category": "",
+      "category": "libraries",
       "version": "5.1.2"
     },
     {
+      "name": "gnutls",
+      "description": "GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.",
+      "homepage": "http://gnutls.org/",
+      "type": "package",
+      "category": "libraries",
+      "version": "3.3.15"
+    },
+    {
+      "name": "go",
+      "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+      "homepage": "https://golang.org/",
+      "type": "package",
+      "category": "development",
+      "version": "1.7.4"
+    },
+    {
+      "name": "go_bootstrap",
+      "description": "Bootstrap tool chain for the Go programming language.",
+      "homepage": "https://golang.org/",
+      "type": "package",
+      "category": "development",
+      "version": "1.4"
+    },
+    {
+      "name": "gperf",
+      "description": "GNU gperf is a perfect hash function generator.",
+      "homepage": "https://www.gnu.org/software/gperf/",
+      "type": "package",
+      "category": "utilities",
+      "version": "3.0.4"
+    },
+    {
+      "name": "graphicsmagick",
+      "description": "GraphicsMagick is the swiss army knife of image processing.",
+      "homepage": "http://www.graphicsmagick.org/",
+      "type": "package",
+      "category": "graphics",
+      "version": "1.3.23"
+    },
+    {
       "name": "groff",
-      "description": "",
-      "homepage": "",
+      "description": "Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.",
+      "homepage": "https://www.gnu.org/software/groff/",
       "type": "package",
       "category": "utilities",
       "version": "1.22.3"
+    },
+    {
+      "name": "htop",
+      "description": "An interactive process viewer for Unix systems.",
+      "homepage": "https://hisham.hm/htop/",
+      "type": "package",
+      "category": "utilities",
+      "version": "2.0.2"
+    },
+    {
+      "name": "imagemagick",
+      "description": "Use ImageMagick to create, edit, compose, or convert bitmap images.",
+      "homepage": "http://www.imagemagick.org/script/index.php",
+      "type": "package",
+      "category": "graphics",
+      "version": "6.9.2-10"
+    },
+    {
+      "name": "inetutils",
+      "description": "Inetutils - GNU network utilities is a collection of common network programs.",
+      "homepage": "https://www.gnu.org/software/inetutils/",
+      "type": "package",
+      "category": "utilities",
+      "version": "1.9.4"
     },
     {
       "name": "less",
