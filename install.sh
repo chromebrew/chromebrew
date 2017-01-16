@@ -30,6 +30,9 @@ for dir in $CREW_LIB_PATH $CREW_CONFIG_PATH $CREW_CONFIG_PATH/meta $CREW_BREW_DI
   sudo mkdir -p $dir && sudo chown -R $USER:$USER $dir
 done
 
+#copy the packages manifest
+cp packages/packages.json $CREW_CONFIG_PATH
+
 #cd into the brew directory, everything will happen there
 cd $CREW_BREW_DIR
 
