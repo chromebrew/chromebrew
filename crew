@@ -66,7 +66,7 @@ def list_packages
     Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
       print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
-    puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
+    puts packageName if File.extname(filename) == '.rb'
   end
 end
 
@@ -448,8 +448,8 @@ when "remove"
 when nil
   puts "Chromebrew, version 0.4.2"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: search, download, install, remove, whatprovides"
+  puts "Available commands: search, download, install, remove, info, whatprovides"
 else
   puts "I have no idea how to do #{@command} :("
-  puts "Available commands: search, download, install, remove, whatprovides"
+  puts "Available commands: search, download, install, remove, info, whatprovides"
 end
