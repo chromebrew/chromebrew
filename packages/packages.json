@@ -41,7 +41,7 @@
         "description": "bc is an arbitrary precision numeric processing language.",
         "homepage": "http://www.gnu.org/software/bc/",
         "type": "package",
-        "category": "development",
+        "category": "utilities",
         "version": "1.06"
       }
     },
@@ -176,7 +176,7 @@
         "description": "Foreign function call is a collection of four libraries which can be used to build foreign function call interfaces in embedded interpreters.",
         "homepage": "http://www.haible.de/bruno/packages-ffcall-README.html",
         "type": "package",
-        "category": "utilities",
+        "category": "libraries",
         "version": "1.10"
       }
     },
@@ -212,7 +212,7 @@
         "description": "Fontconfig is a library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/software/fontconfig/front.html",
         "type": "package",
-        "category": "libraries",
+        "category": "fonts",
         "version": "2.11.94"
       }
     },
@@ -221,7 +221,7 @@
         "description": "FreeType is a freely available software library to render fonts.",
         "homepage": "https://www.freetype.org/",
         "type": "package",
-        "category": "libraries",
+        "category": "fonts",
         "version": "2.6"
       }
     },
@@ -383,7 +383,7 @@
         "description": "Inetutils - GNU network utilities is a collection of common network programs.",
         "homepage": "https://www.gnu.org/software/inetutils/",
         "type": "package",
-        "category": "utilities",
+        "category": "networking",
         "version": "1.9.4"
       }
     },
@@ -833,7 +833,7 @@
         "description": "The PCRE library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5.",
         "homepage": "http://pcre.org/",
         "type": "package",
-        "category": "libraries",
+        "category": "development",
         "version": "8.39"
       }
     },
@@ -959,7 +959,7 @@
         "description": "rsync is an open source utility that provides fast incremental file transfer.",
         "homepage": "https://rsync.samba.org/",
         "type": "package",
-        "category": "development",
+        "category": "utilities",
         "version": "3.1.2"
       }
     },

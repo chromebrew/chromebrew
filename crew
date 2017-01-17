@@ -47,10 +47,17 @@ def info (pkgName)
     package.each_pair do |name, values|
       if pkgName == "#{name}"
         puts "#{name}: #{values[:description]}"
-        abort "#{values[:category]} #{values[:type]} version #{values[:version]}"
+        if "#{values[:homepage]}" != ""
+          puts "This is #{values[:category]} #{values[:type]} version #{values[:version]}"
+          abort "Learn more at #{values[:homepage]}"
+        else
+          abort "This is #{values[:category]} #{values[:type]} version #{values[:version]}"
+        end
       end
     end
   end
+  puts "Package #{pkgName} does not exist.  Do you wish your dream package was available?"
+  puts "Submit an issue at https://github.com/skycocker/chromebrew/issues with your request."
 end
 
 def setPkg (pkgName, silent = false)
