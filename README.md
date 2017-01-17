@@ -15,7 +15,7 @@ Supported Systems
 Overview
 --------
 
-Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use them as full-featured Linux distro were gcc and make with their dependencies. Well, those pieces aren't missing anymore. Say hello to chromebrew!
+Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use them as a full-featured Linux distro were gcc and make with their dependencies. Well, those pieces aren't missing anymore. Say hello to chromebrew!
 
 Prerequisites
 -------------
