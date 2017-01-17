@@ -1063,6 +1063,15 @@
       }
     },
     {
+      "xzutils": {
+        "description": "XZ Utils is free general-purpose data compression software with a high compression ratio.",
+        "homepage": "http://tukaani.org/xz/",
+        "type": "package",
+        "category": "utilites",
+        "version": "5.2.3"
+      }
+    },
+    {
       "yasm": {
         "description": "Yasm is a complete rewrite of the NASM assembler under the new BSD License.",
         "homepage": "http://yasm.tortall.net/",
