@@ -43,10 +43,10 @@ Usage
 
 Where available commands include:
 
-  * search [Looks for a package.]
-  * download [Downloads a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but doesn't install it.]
-  * install [Installs a package along with its dependencies. You'll be prompted for confirmation.]
-  * remove [Removes a package. Must run with sudo.]
+  * search [Look for a package.]
+  * download [Download a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it.]
+  * install [Install a package along with its dependencies. You'll be prompted for confirmation.]
+  * remove [Remove a package. Must run with sudo.]
   * info [Retrieve the information about a package.]
   * whatprovides [Find out which package contains file(s). Regex patterns are allowed!]
 
