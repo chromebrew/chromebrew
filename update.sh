@@ -1,5 +1,5 @@
 #chromebrew directories
-CREW_CONFIG_PATH=/usr/local/etc/crew
+CREW_CONFIG_PATH=/usr/local/etc/crew/
 
 architecture=$(uname -m)
 
@@ -17,6 +17,4 @@ case "$architecture" in
 esac
 
 #copy the packages manifest
-if [ ! -f $CREW_CONFIG_PATH/packages.json ]; then
-  cp packages/packages.json $CREW_CONFIG_PATH/
-fi
+cp -f packages/packages.json $CREW_CONFIG_PATH
