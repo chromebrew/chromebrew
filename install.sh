@@ -96,7 +96,7 @@ echo '}' >> device.json
 #download git and its dependencies .rb package files
 cd $CREW_PACKAGES_PATH
 for file in git zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders; do
-  wget -N -c $URL/packages/$file.rb
+  wget -O$file.rb $URL/packages/$file.rb
 done
 
 #install readline for ruby
