@@ -7,6 +7,7 @@ class Cmake < Package
 
   depends_on 'buildessential'
   depends_on 'openssl'
+  depends_on 'ncurses'
 
   def self.build
     system "./bootstrap"
