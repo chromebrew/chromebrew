@@ -6,6 +6,7 @@ class Flex < Package
   source_sha1 'cfe10b5de4893ced356adc437e78018e715818c3'
 
   depends_on 'm4'
+  depends_on 'bison'
 
   def self.build
     system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
