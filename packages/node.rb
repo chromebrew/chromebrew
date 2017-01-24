@@ -2,7 +2,7 @@ require 'package'
 
 class Node < Package
   version '6.9.4'
-  source_url 'https://nodejs.org/dist/v6.9.4/node-v6.9.4.tar.gz'
+  source_url 'https://nodejs.org/dist/v6.9.4/node-v6.9.4.tar.xz'
   source_sha1 '3b798acf7af4cd3f0efdb86bea009794492129ba'
 
   depends_on 'buildessential'
