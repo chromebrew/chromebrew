@@ -41,11 +41,11 @@ abort "Chromebrew should not be run as root." if Process.uid == 0 && @command !=
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def setPkg (pkgName, silent = false)
-  require CREW_LIB_PATH + 'packages/' + pkgName
-  @pkg = Object.const_get(pkgName.capitalize)
-  @pkg.name = pkgName
-  puts "Found #{pkgName}, version #{@pkg.version}" unless silent
+def set_pkg(pkg_name, silent = false)
+  require CREW_LIB_PATH + 'packages/' + pkg_name
+  @pkg = Object.const_get(pkg_name.capitalize)
+  @pkg.name = pkg_name
+  puts "Found #{pkg_name}, version #{@pkg.version}" unless silent
 end
 
 def list_packages
@@ -58,11 +58,12 @@ def list_packages
   end
 end
 
-def search (pkgName, silent = false)
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
-  end
-  abort "package #{pkgName} not found :("
+def search(pkg_name, silent = false)
+  results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
+	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkg_name, true) } \
+	  .collect { |f| File.basename(f, '.rb') } \
+	  .each    { |f| set_pkg(f) }
+  abort "Package not found :(" unless results.length > 0
 end
 
 def whatprovides (pkgName)
