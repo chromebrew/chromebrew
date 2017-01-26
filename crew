@@ -62,7 +62,7 @@ def search(pkg_name, silent = false)
   results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
 	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkg_name, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
-	  .each    { |f| set_pkg(f) }
+	  .each    { |f| set_pkg(f, silent) }
   abort "Package not found :(" unless results.length > 0
 end
 
@@ -108,7 +108,7 @@ def update
 
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
-    search package[:name], true
+    search("^#{package[:name]}$", true)
     if package[:version] != @pkg.version
       canBeUpdated += 1
       puts @pkg.name + " could be updated from " + package[:version] + " to " + @pkg.version
@@ -125,7 +125,7 @@ end
 
 def upgrade
   if @pkgName
-    search @pkgName
+    search("^#{@pkgName}$")
 
     currentVersion = nil
     @device[:installed_packages].each do |package|
@@ -135,7 +135,7 @@ def upgrade
     end
     
     if currentVersion != @pkg.version
-      search @pkg.name
+      search("^#{@pkg.name}$")
       puts "Updating #{@pkg.name}..."
       remove @pkg.name
       resolveDependenciesAndInstall
@@ -145,7 +145,7 @@ def upgrade
   else
     toBeUpdated = []
     @device[:installed_packages].each do |package|
-      search package[:name], true
+      search("^#{package[:name]}$", true)
       if package[:version] != @pkg.version
         toBeUpdated.push(package[:name])
       end
@@ -154,7 +154,7 @@ def upgrade
     if toBeUpdated.length > 0
       puts "Updating packages..."
       toBeUpdated.each do |package|
-        search package
+        search("^#{package}$")
         remove @pkg.name
         resolveDependenciesAndInstall
       end
@@ -196,7 +196,7 @@ def resolveDependenciesAndInstall
 
     resolveDependencies
   
-    search origin
+    search("^#{origin}$")
     install
   rescue InstallError => e 
     puts "#{@pkg.name} failed to install: #{e.to_s}"
@@ -219,7 +219,7 @@ def resolveDependencies
       @dependencies.unshift @pkg.dependencies
       
       @pkg.dependencies.each do |dep|
-        search dep, true
+        search("^#{dep}$", true)
         pushDeps
       end
     end
@@ -252,7 +252,7 @@ def resolveDependencies
 
   if proceed
     @dependencies.each do |dep|
-      search dep
+      search("^#{dep}$")
       install
     end
   end
@@ -405,7 +405,7 @@ end
 case @command
 when "search"
   if @pkgName
-    search @pkgName
+    search("^#{@pkgName}$")
   else
     list_packages
   end
@@ -416,14 +416,14 @@ when "whatprovides"
     puts "Usage: crew whatprovides [pattern]"
   end
 when "download"
-  search @pkgName
+  search("^#{@pkgName}$")
   download
 when "update"
   update
 when "upgrade"
   upgrade
 when "install"
-  search @pkgName
+  search("^#{@pkgName}$")
   resolveDependenciesAndInstall
 when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
