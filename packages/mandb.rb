@@ -24,6 +24,8 @@ class Mandb < Package
     puts ""
     puts "You will have to change the default PAGER env variable to be able to use mandb:"
     puts "echo \"export PAGER=/usr/local/bin/less\" >> ~/.bashrc && . ~/.bashrc"
+    puts ""
+    puts "You will also have to set the MANPATH env variable:"
+    puts "echo \"export MANPATH/usr/local/man:$MANPATH\" >> ~/.bashrc && ~/.bashrc"
   end
-
 end
