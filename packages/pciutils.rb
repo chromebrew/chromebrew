@@ -6,7 +6,7 @@ class Pciutils < Package
   source_sha1 '29d9a75ce2a2d92721b6e92c7c89236b4c91041f'
 
   def self.build
-    system "make", "PREFIX=/usr/local"
+    system "make", "PREFIX=/usr/local", "SHARED=yes"
   end
 
   def self.install
