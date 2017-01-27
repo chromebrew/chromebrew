@@ -6,6 +6,11 @@ class Di < Package
   source_sha1 'ddced0d59d29ccdcbc4282bc7464a925d14955e1'
 
   def self.build
+    system "sed -i '40s,= ,= $(DESTDIR)/,' Makefile" # set correct bin path
+    system "sed -i '44s,= ,= $(DESTDIR)/,' Makefile" # add destdir to man path
+    system "sed -i '61s,share/,,' Makefile"          # remove share segment
+    system "sed -i '52s/root/chronos/' Makefile"     # set correct owner
+    system "sed -i '53s/bin/chronos/' Makefile"      # set correct group
     system "CC=gcc prefix=/usr/local make -e"
     system "make"
   end
