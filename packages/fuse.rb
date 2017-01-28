@@ -6,11 +6,7 @@ class Fuse < Package
   source_sha1 'cd174e3d37995a42fad32fac92f76cd18e24174f'
 
   def self.build
-    system "./configure \
-              --prefix=/usr/local \
-              --disable-kernel-module \
-              --disable-static \
-              INIT_D_PATH=/tmp/init.d"
+    system "./configure"
     system "make"
   end
 
