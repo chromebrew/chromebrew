@@ -3,7 +3,7 @@ require 'package'
 class Openssl < Package
   version '1.0.2j'
 
-  source_url 'ftp://openssl.org/source/openssl-1.0.2j.tar.gz'
+  source_url 'ftp://openssl.org/source/old/1.0.2/openssl-1.0.2j.tar.gz'
   source_sha1 'bdfbdb416942f666865fa48fe13c2d0e588df54f'
 
   depends_on 'perl'
