@@ -13,6 +13,7 @@ class Git < Package
     x86_64: '067cb6c36616ac30999ab97e85f3dc0e9d1d57f4'
   })
 
+  # compile-time dependencies
   depends_on 'zlibpkg'
   depends_on 'libssh2'
   depends_on 'perl'
@@ -20,4 +21,7 @@ class Git < Package
   depends_on 'expat'
   depends_on 'gettext'
   depends_on 'python'
+
+  # no run-time dependency (need empty line)
+  rdepends_on
 end
