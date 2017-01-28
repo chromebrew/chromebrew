@@ -105,7 +105,7 @@ GIT_BINARY_URL=`sed -e 's/#.*$//' $CREW_PACKAGES_PATH/git.rb | grep ".*$architec
 case .$GIT_BINARY_URL in
 .)
   #download git and its dependencies .rb package files to compile git from source
-  for file in zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders pkgconfig; do
+  for file in zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders pkgconfig openssl; do
     wget -N -c $URL/packages/$file.rb
   done
 
