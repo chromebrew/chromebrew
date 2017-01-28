@@ -93,14 +93,26 @@ echo '    }' >> device.json
 echo '  ]' >> device.json
 echo '}' >> device.json
 
-#download git and its dependencies .rb package files
+#download packages
 cd $CREW_PACKAGES_PATH
-for file in git zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders pkgconfig; do
-  wget -N -c $URL/packages/$file.rb
-done
 
-#install readline for ruby
-echo y | crew install readline
+#first, download only git package
+wget -N -c $URL/packages/git.rb
+
+#check whether git provides binary package or not
+#if not, prepare to compile git from source
+GIT_BINARY_URL=`sed -e 's/#.*$//' $CREW_PACKAGES_PATH/git.rb | grep ".*$architecture:.*\(http\|https\|ftp\)://"`
+case .$GIT_BINARY_URL in
+.)
+  #download git and its dependencies .rb package files to compile git from source
+  for file in zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders pkgconfig; do
+    wget -N -c $URL/packages/$file.rb
+  done
+
+  #install readline for ruby
+  echo y | crew install readline
+  ;;
+esac
 
 #install git
 echo y | crew install git
