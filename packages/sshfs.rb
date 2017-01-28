@@ -5,7 +5,7 @@ class Sshfs < Package
   source_url 'https://github.com/libfuse/sshfs/releases/download/sshfs_2.8/sshfs-2.8.tar.gz'
   source_sha1 '2b792aa5b3a45e0c3fe65c44bd9da8f64a690830'
 
-  depends_on 'glib2'
+  depends_on 'glib'
   depends_on 'fuse'
 
   def self.build
