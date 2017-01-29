@@ -109,7 +109,7 @@ echo y | crew install git
 sudo ln -s /usr/local/bin/gcc /usr/local/bin/cc
 
 #This will allow a lot of things to work without sudo
-sudo chown -R chronos:chronos /usr/local
+sudo chown -R `whoami`:`whoami` /usr/local
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
