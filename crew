@@ -13,7 +13,7 @@ CREW_PREFIX = '/usr/local'
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
-CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
+CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
 
 # Set CREW_NPROC from environment variable or `nproc`
 if ENV["CREW_NPROC"].to_s == ''
@@ -185,6 +185,76 @@ def download
   return {source: source, filename: filename}
 end
 
+def unpack (meta)
+  extract_dir = "#{meta[:filename]}.dir"
+  target_dir = nil
+  Dir.chdir CREW_BREW_DIR do
+    puts "Unpacking archive, this may take a while..."
+    Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
+    if meta[:filename][-4,4] == ".zip"
+      system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
+    else
+      system "tar", "xf", meta[:filename], "-C", "#{extract_dir}"
+    end
+    if meta[:source] == true
+      # Check the number of directories in the archive
+      entries=Dir["#{extract_dir}/*/"]
+      if entries.length == 1
+        # Use `extract_dir/dir_in_archive` if there is only one directory.
+        #  FIXME: need to support archives having Makefile and one src directory.
+        target_dir = entries.first
+      else
+        # Use `extract_dir` otherwise
+        target_dir = extract_dir
+      end
+    else
+      # Use `extract_dir` for binary distribution
+      target_dir = extract_dir
+    end
+  end
+  return CREW_BREW_DIR + target_dir
+end
+
+def build_and_preconfigure (target_dir)
+  Dir.chdir target_dir do
+    puts "Building from source, this may take a while..."
+    @pkg.build
+    system "rm -rf", CREW_DEST_DIR + "/*" #wipe crew destdir
+    puts "Preconfiguring package..."
+    @pkg.install
+  end
+end
+
+def prepare_packaging (destdir)
+  Dir.chdir destdir do
+    #create directory list
+    system "find . -type f > ../filelist"
+    system "find . -type l >> ../filelist"
+    system "cut -c2- ../filelist > filelist"
+    #create file list
+    system "find . -type d > ../dlist"
+    system "cut -c2- ../dlist > dlistcut"
+    system "tail -n +2 dlistcut > dlist"
+    #remove temporary files
+    system "rm dlistcut ../dlist ../filelist"
+  end
+end
+
+def pkg_install (pkgdir)
+  Dir.chdir pkgdir do
+    FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
+    FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
+
+    File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
+      system "sudo", "mkdir", "-p", line.chomp
+    end
+
+    File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist").each_line do |line|
+      system "sudo", "mv", pkgdir + line.chomp, line.chomp
+    end
+  end
+end
+
 def resolveDependenciesAndInstall
   begin
     origin = @pkg.name
@@ -261,81 +331,27 @@ def install
 
   unless @pkg.is_fake?
     meta = download
-    topdir = ""
-    Dir.chdir CREW_BREW_DIR do
-      puts "Unpacking archive, this may take a while..."
-      if meta[:filename][-4,4] == ".zip"
-        system "unzip", "-qq", "-d", "tmpzip", meta[:filename]
-      else
-        system "tar", "xf", meta[:filename]
-      end
-      if meta[:source] == true
-        abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
-        if meta[:filename][-4,4] == ".zip"
-          Dir.chdir "tmpzip" do
-            entries=Dir["*"]
-            if entries.length == 0
-              abort "empty zip archive: #{meta[:filename]}"
-            elsif entries.length == 1
-              topdir = "tmpzip/" + entries.first
-            else 
-              topdir = "tmpzip/"
-            end
-          end
-        else
-          topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
-        end
-        Dir.chdir CREW_BREW_DIR + topdir do
-          puts "Building from source, this may take a while..."
-          @pkg.build
-          system "rm -rf", CREW_DEST_DIR + "/*" #wipe crew destdir
-          puts "Preconfiguring package..."
-          @pkg.install
-        end
+    target_dir = unpack meta
+    if meta[:source] == true
+      abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
 
-        Dir.chdir CREW_DEST_DIR do
-          #create directory list
-          system "find . -type f > ../filelist"
-          system "find . -type l >> ../filelist"
-          system "cut -c2- ../filelist > filelist"
-          #create file list
-          system "find . -type d > ../dlist"
-          system "cut -c2- ../dlist > dlistcut"
-          system "tail -n +2 dlistcut > dlist"
-          #remove temporary files
-          system "rm dlistcut ../dlist ../filelist"
-          
-          #create resulting folders list
-          directories = []
-          Dir.glob('*').select do |fn|
-            if File.directory?(fn)
-              directories.push(fn)
-            end
-          end
+      # build from source and place binaries at CREW_DEST_DIR
+      # CREW_DEST_DIR contains usr/local/... hierarchy
+      build_and_preconfigure target_dir
 
-          #wipe directories with the same name in brew dir to avoid conflicts
-          directories.each do |dir|
-            system "rm -rf ../" + dir.chomp
-          end
+      # prepare filelist and dlist at CREW_DEST_DIR
+      prepare_packaging CREW_DEST_DIR
 
-          #move result files and directories to brew dir
-          system "mv * ../"
-        end
-      end
-
-      puts "Installing..."
-
-      FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
-      FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
- 
-      File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
-        system "sudo", "mkdir", "-p", line.chomp
-      end
-
-      File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist").each_line do |line|
-        system "sudo", "mv", CREW_BREW_DIR + line.chomp, line.chomp
-      end
+      # use CREW_DEST_DIR
+      dest_dir = CREW_DEST_DIR
+    else
+      # use extracted binary directory
+      dest_dir = target_dir
     end
+
+    # install filelist, dlist and binary files
+    puts "Installing..."
+    pkg_install dest_dir
   end
   
   #add to installed packages
