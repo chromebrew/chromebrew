@@ -1,6 +1,9 @@
 #!/bin/bash
 DIRNAME=${PWD##*/}
 
+XZ_OPT=${XZ_OPT-"-7e"}
+export XZ_OPT
+
 echo creating file list
 find . -type f > ../filelist && find . -type l >> ../filelist && cut -c2- ../filelist > filelist
 
@@ -11,8 +14,8 @@ echo removing temporary files
 rm dlistcut ../dlist ../filelist
 
 echo building binary package
-tar -czf ../$DIRNAME.tar.gz *
-sha1sum ../$DIRNAME.tar.gz > ../$DIRNAME.tar.gz.sha1
+tar -cJf ../$DIRNAME.tar.xz *
+sha1sum ../$DIRNAME.tar.xz > ../$DIRNAME.tar.xz.sha1
 
 echo finished
-cat ../$DIRNAME.tar.gz.sha1
+cat ../$DIRNAME.tar.xz.sha1
