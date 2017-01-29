@@ -1,9 +1,9 @@
 require 'package'
 
 class Ncurses < Package
-  version '5.9'
-  source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz'
-  source_sha1 '3e042e5f2c7223bffdaac9646a533b8c758b65b5'
+  version '6.0'
+  source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
+  source_sha1 'acd606135a5124905da770803c05f1f20dd3b21c'
 
   depends_on "diffutils"
 
