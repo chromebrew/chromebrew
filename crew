@@ -198,10 +198,11 @@ def unpack (meta)
     end
     if meta[:source] == true
       # Check the number of directories in the archive
-      entries=Dir["#{extract_dir}/*/"]
-      if entries.length == 1
+      entries=Dir["#{extract_dir}/*"]
+      if entries.length == 0
+        abort "empty archive: #{meta[:filename]}"
+      elsif entries.length == 1 && File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
-        #  FIXME: need to support archives having Makefile and one src directory.
         target_dir = entries.first
       else
         # Use `extract_dir` otherwise
