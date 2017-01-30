@@ -8,7 +8,13 @@ class Ncurses < Package
   depends_on "diffutils"
 
   def self.build
-    system "./configure CFLAGS=\" -fPIC\" --without-debug --prefix=/usr/local --with-shared --with-cxx-shared"
+    system './configure ' \
+	    'CFLAGS=" -fPIC" ' \
+	    '--without-debug ' \
+	    '--prefix=/usr/local ' \
+	    '--with-shared ' \
+	    '--with-cxx-shared ' \
+	    '--enable-widec'
     system "make"
   end
 
