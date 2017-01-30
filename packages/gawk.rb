@@ -1,9 +1,9 @@
 require 'package'
 
 class Gawk < Package
-  version '4.1.1'
-  source_url 'http://ftp.gnu.org/gnu/gawk/gawk-4.1.1.tar.gz'
-  source_sha1 '0480d23fffbf04bfd0d4ede4c1c3d57eb81cc771'
+  version '4.1.4'
+  source_url 'http://ftp.gnu.org/gnu/gawk/gawk-4.1.4.tar.xz'
+  source_sha1 'd67e00e2f6178e9cbd2c0ba923ae157bc0b3b570'
 
   def self.build
     system './configure --prefix=/usr/local'
