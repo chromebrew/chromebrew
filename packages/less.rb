@@ -1,9 +1,9 @@
 require 'package'
 
 class Less < Package
-  version '451'
-  source_url 'ftp://ftp.gnu.org/gnu/less/less-451.tar.gz'
-  source_sha1 'ee95be670e8fcc97ac87d02dd1980209130423d0'
+  version '481'
+  source_url 'ftp://ftp.gnu.org/gnu/less/less-481.tar.gz'
+  source_sha1 '58e7e62a760a9ca3636349de8e3357f7102aea1d'
 
   depends_on 'buildessential'
   depends_on 'ncurses' 
