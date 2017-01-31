@@ -130,7 +130,6 @@ def upgrade
     end
     
     if currentVersion != @pkg.version
-      search @pkg.name
       puts "Updating #{@pkg.name}..."
       remove @pkg.name
       resolveDependenciesAndInstall
