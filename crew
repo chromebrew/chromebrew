@@ -225,7 +225,7 @@ def build_and_preconfigure (target_dir)
   end
 end
 
-def prepare_packaging (destdir)
+def prepare_package (destdir)
   Dir.chdir destdir do
     #create directory list
     system "find . -type f > ../filelist"
@@ -240,7 +240,7 @@ def prepare_packaging (destdir)
   end
 end
 
-def pkg_install (pkgdir)
+def install_package (pkgdir)
   Dir.chdir pkgdir do
     FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
@@ -340,7 +340,7 @@ def install
       build_and_preconfigure target_dir
 
       # prepare filelist and dlist at CREW_DEST_DIR
-      prepare_packaging CREW_DEST_DIR
+      prepare_package CREW_DEST_DIR
 
       # use CREW_DEST_DIR
       dest_dir = CREW_DEST_DIR
@@ -351,7 +351,7 @@ def install
 
     # install filelist, dlist and binary files
     puts "Installing..."
-    pkg_install dest_dir
+    install_package dest_dir
   end
   
   #add to installed packages
