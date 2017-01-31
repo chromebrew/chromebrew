@@ -15,6 +15,13 @@ CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
+# Set CREW_NPROC from environment variable or `nproc`
+if ENV["CREW_NPROC"].to_s == ''
+  CREW_NPROC = `nproc`.strip
+else
+  CREW_NPROC = ENV["CREW_NPROC"]
+end
+
 ARCH = `uname -m`.strip
 #SHORTARCH = `getconf LONG_BIT`.strip # will refactor this line in the future
 case ARCH
