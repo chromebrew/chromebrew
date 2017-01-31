@@ -23,17 +23,6 @@ else
 end
 
 ARCH = `uname -m`.strip
-#SHORTARCH = `getconf LONG_BIT`.strip # will refactor this line in the future
-case ARCH
-  when "i686"
-    SHORTARCH="32"
-  when "x86_64"
-    SHORTARCH="64"
-  when "armv7l"
-    SHORTARCH="32"
-  else  
-    SHORTARCH="32"
-end
 
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 

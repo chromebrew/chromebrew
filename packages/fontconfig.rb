@@ -1,7 +1,7 @@
 require 'package'
 
 class Fontconfig < Package
-  version '2.11.94'
+  version '2.11.94-1'
   source_url 'http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.94.tar.gz'
   source_sha1 '3748d8a2b9cf8052dbd003f524d829157f1ead83'
 
@@ -9,7 +9,7 @@ class Fontconfig < Package
   depends_on 'freetype'
 
   def self.build
-      system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
+      system "./configure CFLAGS=\" -fPIC\""
       system "make"
   end
 
