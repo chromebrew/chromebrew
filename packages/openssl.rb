@@ -7,6 +7,7 @@ class Openssl < Package
   source_sha1 '5f26a624479c51847ebd2f22bb9f84b3b44dcb44'
 
   depends_on 'perl'
+  depends_on 'zlibpkg'
 
   def self.build
     system "./config", "--prefix=/usr/local", "--openssldir=/etc/ssl", "shared", "zlib-dynamic"
