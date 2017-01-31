@@ -241,12 +241,12 @@ def resolveDependencies
   
   pushDeps
 
-  #add buildessential as dependency if we're building from source
+  # Add buildessential and solve its dependencies if any of dependent
+  # packages are made from source
   if @source_package > 0
     @dependencies.unshift 'buildessential'
     search 'buildessential', true
   end
-
   pushDeps
   
   return if @dependencies.empty?
