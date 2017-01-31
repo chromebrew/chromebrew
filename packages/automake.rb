@@ -1,9 +1,9 @@
 require 'package'
 
 class Automake < Package
-  version '1.14'
-  source_url 'ftp://ftp.gnu.org/gnu/automake/automake-1.14.tar.xz'
-  source_sha1 '793881a445134b7561637d6f2a3ca611276e39fe'
+  version '1.15'
+  source_url 'ftp://ftp.gnu.org/gnu/automake/automake-1.15.tar.xz'
+  source_sha1 'c279b35ca6c410809dac8ade143b805fb48b7655'
 
   depends_on 'autoconf'
 
