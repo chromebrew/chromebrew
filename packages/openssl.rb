@@ -15,7 +15,8 @@ class Openssl < Package
   end
 
   def self.install
-    system "make", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
+    # installing using multi cores may cause empty libssl.so.1.0.0 or libcrypto.so.1.0.0 problem
+    system "make", "-j1", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
 
     # remove all files pretended to install /etc/ssl (use system's /etc/ssl as is)
     system "rm", "-rf", "#{CREW_DEST_DIR}/etc"
