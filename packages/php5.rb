@@ -2,10 +2,10 @@ require 'package'
 
 class Php5 < Package
   version '5.6.29'
-  source_url 'http://php.net/distributions/php-7.6.29.tar.xz'   # software source tarball url
+  source_url 'http://php.net/distributions/php-5.6.29.tar.xz'  # software source tarball url
   source_sha1 'df3301d11d56fbeabd8f6336e9c8f4c47af45562'       # source tarball sha1 sum
 
-  depends_on 'pkgconfig'
+  depends_on 'pkgconfig'                                       # add package dependencies
   depends_on 'zlibpkg'
   depends_on 'libpng'
   depends_on 'libxml2'

@@ -1,15 +1,16 @@
 require 'package'
 
 class Nettle < Package
-  version '2.7.1'
-  source_url 'https://ftp.gnu.org/gnu/nettle/nettle-2.7.1.tar.gz'
-  source_sha1 'e7477df5f66e650c4c4738ec8e01c2efdb5d1211'
+  version '3.3'
+  source_url 'https://ftp.gnu.org/gnu/nettle/nettle-3.3.tar.gz'
+  source_sha1 'bf2b4d3a41192ff6177936d7bc3bee4cebeb86c4'
 
   depends_on 'buildessential'
   depends_on 'm4'
+  depends_on 'openssl'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib"
+    system "./configure --prefix=/usr/local"
     system "make"
   end
 

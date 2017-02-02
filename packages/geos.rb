@@ -1,12 +1,12 @@
 require 'package'
 
 class Geos < Package
-  version '3.4.2'
+  version '3.4.2-1'
   source_url 'http://download.osgeo.org/geos/geos-3.4.2.tar.bz2'
   source_sha1 'b8aceab04dd09f4113864f2d12015231bb318e9a'
 
   def self.build
-    system "./configure --libdir=/usr/local/lib#{SHORTARCH}/ CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
+    system "./configure CFLAGS=\" -fPIC\""
     system "make"
   end
 

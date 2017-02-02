@@ -28,10 +28,13 @@ class Package
   end
 
   def self.system(*args)
-    # strip -m32 option and convert lib32 to lib for the case of ARM to avoid SHORTARCH flood
-    if ARCH == "armv7l"
-      args = args.map {|s| s.gsub("-m32", "")}
-      args = args.map {|s| s.gsub("lib32", "lib")}
+    # add "-j#{CREW_NPROC}" argument to "make"
+    if args[0] == "make"
+      # modify ["make", "args", ...] into ["make", "-j#{CREW_NPROC}", "args", ...]
+      args.insert(1, "-j#{CREW_NPROC}")
+    elsif args.length == 1
+      # modify ["make args..."] into ["make -j#{CREW_NPROC} args..."]
+      args[0].gsub!(/^make /, "make -j#{CREW_NPROC} ")
     end
     Kernel.system(*args)
     exitstatus = $?.exitstatus
