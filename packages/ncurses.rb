@@ -10,7 +10,6 @@ class Ncurses < Package
   def self.build
     system './configure ' \
 	    'CFLAGS=" -fPIC" ' \
-	    '--without-debug ' \
 	    '--prefix=/usr/local ' \
 	    '--with-shared ' \
 	    '--with-cxx-shared ' \
