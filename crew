@@ -54,6 +54,28 @@ def list_packages
   end
 end
 
+def list_available
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    @notInstalled = true
+    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+      packageName = File.basename filename, '.rb'
+      @notInstalled = nil if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
+    end
+    puts File.basename filename, '.rb' if File.extname(filename) == '.rb' if @notInstalled
+  end
+end
+
+def list_installed
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+      packageName = File.basename filename, '.rb'
+      if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
+        puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
+      end
+    end
+  end
+end
+
 def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
@@ -399,10 +421,15 @@ end
 
 case @command
 when "search"
-  if @pkgName
-    search @pkgName
-  else
+  case @pkgName
+  when "-i"
+    list_installed
+  when "-a"
+    list_available
+  when nil
     list_packages
+  else
+    search @pkgName
   end
 when "whatprovides"
   if @pkgName
