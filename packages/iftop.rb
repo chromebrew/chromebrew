@@ -9,7 +9,11 @@ class Iftop < Package
   depends_on "ncurses"
 
   def self.build
-    system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncurses"'
+    if Dir.exist? '/usr/local/include/ncursesw'
+      system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncursesw"'
+    else
+      system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncurses"'
+    end
     system 'make'
   end
 

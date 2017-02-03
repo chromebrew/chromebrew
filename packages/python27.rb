@@ -10,7 +10,11 @@ class Python27 < Package
   depends_on 'openssl'
 
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncurses\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\" --with-ensure-pip=install"
+    if Dir.exist? '/usr/local/include/ncursesw'
+      system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncursesw\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\" --with-ensure-pip=install"
+    else
+      system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncurses\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\" --with-ensure-pip=install"
+    end
     system "make"                                                 # ordered chronologically
   end
 
