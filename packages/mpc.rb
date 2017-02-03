@@ -3,9 +3,9 @@ require 'package'
 class Mpc < Package
   version '1.0.3'
   binary_url ({
-    armv7l: "https://dl.dropboxusercontent.com/s/v86dgj7tut6wnty/mpc-1.0.3-chromeos-armv7l.tar.xz",
-    i686: "https://dl.dropboxusercontent.com/s/oewxjj9cx5f879m/mpc-1.0.3-chromeos-i686.tar.xz",
-    x86_64: "https://dl.dropboxusercontent.com/s/vk1qr1t0yisgqt6/mpc-1.0.3-chromeos-x86_64.tar.xz",
+    armv7l: "https://github.com/jam7/chromebrew/releases/download/newtoolchains/mpc-1.0.3-chromeos-armv7l.tar.xz",
+    i686: "https://github.com/jam7/chromebrew/releases/download/newtoolchains/mpc-1.0.3-chromeos-i686.tar.xz",
+    x86_64: "https://github.com/jam7/chromebrew/releases/download/newtoolchains/mpc-1.0.3-chromeos-x86_64.tar.xz",
   })
   binary_sha1 ({
     armv7l: "2a05a536cc6fd4da7d948c4732722c5d430ee010",
