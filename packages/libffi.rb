@@ -1,9 +1,9 @@
 require 'package'
 
 class Libffi < Package
-  version '3.0.13-1'
-  source_url 'ftp://sourceware.org/pub/libffi/libffi-3.0.13.tar.gz'
-  source_sha1 'f5230890dc0be42fb5c58fbf793da253155de106'
+  version '3.2.1'
+  source_url 'ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz'
+  source_sha1 '280c265b789e041c02e5c97815793dfc283fb1e6'
 
   depends_on 'autoconf'
   depends_on 'automake'
