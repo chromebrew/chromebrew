@@ -383,6 +383,7 @@ def unpack (meta)
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
     puts "Unpacking archive, this may take a while..."
+    system "rm", "-rf", "#{extract_dir}"
     Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
     if meta[:filename][-4,4] == ".zip"
       system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
