@@ -27,7 +27,7 @@ grep -h '\(link=\|sha256=\)' install.sh |
       -e 's/\(http\|https\|ftp\):.*\///' | \
   sed -ne 'N;s/\(.*\)\n\(.*\)/\2 \1/;p'
 
-for f in packages/*.rb; do 
+for f in packages/*.rb; do
   grep -h '\(armv7l\|i686\|x86_64\):' $f | \
     sort | \
     sed -e 's:/www\.dropbox\.com/:/dl.dropboxusercontent.com/:' \
