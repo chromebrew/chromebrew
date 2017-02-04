@@ -35,7 +35,7 @@ If this command returns `ERROR: unknown command: shell` please have a second loo
 
 Then download and run the installation script below:
 
-    wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+    wget -q -O - https://raw.github.com/jam7/chromebrew/master/install.sh | bash
 
 Usage
 -----
@@ -54,7 +54,7 @@ Where available commands are:
   * upgrade [update all or a specific package]
   * whatprovides [regex search for package(s) that contains file(s)]
 
-Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
+Available packages are listed in the [packages directory](https://github.com/jam7/chromebrew/tree/master/packages).
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass "keep" as the last parameter when running "crew install".
 
@@ -63,6 +63,9 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 License
 -------
 
-Copyright 2013 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
+Copyright 2013 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).  
+Copyright 2016 Kazushi (Jam) Marukawa, added ARM related packages.
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
+
+Thanks Davy for [putting pre-compiled gcc for ARM](http://davy.nyacom.net/cros-arm-dev.html).  It was the beginning of chromebrew for ARM.
