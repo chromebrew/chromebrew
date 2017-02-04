@@ -6,6 +6,7 @@ class Ncurses < Package
   source_sha1 'acd606135a5124905da770803c05f1f20dd3b21c'
 
   depends_on "diffutils"
+  depends_on "ncursesw"
 
   def self.build
     system './configure ' \
