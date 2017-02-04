@@ -1,25 +1,20 @@
 require 'package'
 
 class Go < Package
-  version '1.7.4'
-  source_url 'https://storage.googleapis.com/golang/go1.7.4.src.tar.gz'
-  source_sha1 '0fb305c827c8794cfda7e437befa6101a2d06b2e'
+  version '1.7.5'
+  source_url 'https://storage.googleapis.com/golang/go1.7.5.src.tar.gz'
+  source_sha1 '4a36ad56b11579a8d534817b70a9baf754e5369a'
   
-  # go is required to build versions of go > 1.4
-  if `which go` == ''
-    depends_on 'go_bootstrap'
-  end
+  # go > 1.4 requirs go_bootstrap
+  depends_on 'go_bootstrap'
 
   def self.build
     FileUtils.cd('src') do
-      # install with go_bootstrap if go is not in the path
-      if `which go` == ''
-        system "GOROOT_BOOTSTRAP=/usr/local/lib/go_bootstrap/go \
-                TMPDIR=/usr/local/tmp \
-                ./make.bash"
-      else
-        system "TMPDIR=/usr/local/tmp ./make.bash"
-      end
+      # Install with go_bootstrap.  Use make.bash instead of all.bash to
+      # skip test since it fails as explained in #265.
+      system "GOROOT_BOOTSTRAP=/usr/local/lib/go_bootstrap/go \
+              TMPDIR=/usr/local/tmp \
+              ./make.bash"
     end
   end
 
@@ -34,5 +29,7 @@ class Go < Package
     puts "Minimal:"
     puts "\texport GOROOT=/usr/local/lib/go"
     puts "\texport PATH=$PATH:$GOROOT/bin"
+    puts "To use `go run`:"
+    puts "\texport TMPDIR=/usr/local/tmp"
   end
 end
