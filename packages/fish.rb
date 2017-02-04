@@ -1,9 +1,9 @@
 require 'package'
 
 class Fish < Package
-  version '2.3.0'
-  source_url 'https://github.com/fish-shell/fish-shell/releases/download/2.3.0/fish-2.3.0.tar.gz'
-  source_sha1 'afc6e9ea4cbd1ade63e9af41280b1f08bff23bba'
+  version '2.5.0'
+  source_url 'https://github.com/fish-shell/fish-shell/releases/download/2.5.0/fish-2.5.0.tar.gz'
+  source_sha1 'ec52debe0a829b9df29f658697523af7c18ee778'
 
   depends_on 'ncurses'
 
