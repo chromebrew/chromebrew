@@ -12,6 +12,7 @@ class Php7 < Package
   depends_on 'openssl'
   depends_on 'curl'
   depends_on 'pcre'
+  depends_on 'readline'
 
   def self.build                                               # self.build contains commands needed to build the software from source
     system './configure \
@@ -21,6 +22,7 @@ class Php7 < Package
       --enable-mbstring \
       --with-openssl \
       --with-pcre-regex \
+      --with-readline \
       --with-zlib'
     system 'make'                                              # ordered chronologically
   end
