@@ -1,20 +1,28 @@
 require 'package'
 
 class Ruby < Package
-  version '2.0.0p247-chromeos1'
-  binary_url ({
-    aarch64: 'https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz',
-    armv7l:  'https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz',
-    i686:    'https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz&dl=1',
-    x86_64:  'https://www.dropbox.com/s/x3jt0z5i1r4afyv/ruby-2.0.0p247-chromeos-x86_64.tar.gz?dl=1',
-  })
-  binary_sha1 ({
-    aarch64: 'f575e27e9b20cbb6f1c77cdd87270748e83cf6b2',
-    armv7l:  'f575e27e9b20cbb6f1c77cdd87270748e83cf6b2',
-    i686:    '49eeba5d542e4c3e6aa3686f215485e0946fb99a',
-    x86_64:  'f1de1ef5ed690c3b78f4e40208a4fb93e227c4ed',
-  })
+  version '2.4.1'
+  source_url 'https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.xz'
+  source_sha1 'eb3e25346431214379e3b92c6f6b6e02f7b2503f'
 
   depends_on 'readline'
-  depends_on 'zlibpkg'
+  depends_on 'ncurses'
+  depends_on 'zlibpkg' => :build
+  depends_on 'openssl' => :build
+  # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
+
+  def self.build
+    system "CC='gcc' ./configure"
+    system "make"
+    system "find . -name '*.so' | xargs strip -S"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "strip #{CREW_DEST_DIR}/usr/local/bin/ruby"
+  end
+
+  def self.check
+    system "TMPDIR=/usr/local/tmp make check"
+  end
 end
