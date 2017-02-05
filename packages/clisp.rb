@@ -1,7 +1,7 @@
 require 'package'
 
 class Clisp < Package
-  version '2.49'
+  version '2.49-1'
   source_url 'ftp://ftp.gnu.org/pub/gnu/clisp/release/2.49/clisp-2.49.tar.bz2'
   source_sha1 '7e8d585ef8d0d6349ffe581d1ac08681e6e670d4'
 
@@ -9,7 +9,7 @@ class Clisp < Package
   depends_on 'ffcall'
 
   def self.build
-    system "./configure CC=\"gcc -m#{SHORTARCH}\" CFLAGS=\" -fPIC\""
+    system "./configure CFLAGS=\" -fPIC\""
     FileUtils.cd('src') do
       system "ulimit -s 16384"
       system "make"

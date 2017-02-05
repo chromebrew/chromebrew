@@ -1,9 +1,9 @@
 require 'package'
 
 class Bison < Package
-  version '3.0.2'
-  source_url 'http://mirror.keystealth.org/gnu/bison/bison-3.0.2.tar.gz'
-  source_sha1 '4bbb9a1bdc7e4328eb4e6ef2479b3fe15cc49e54'
+  version '3.0.4'
+  source_url 'http://mirror.keystealth.org/gnu/bison/bison-3.0.4.tar.gz'
+  source_sha1 'ec1f2706a7cfedda06d29dc394b03e092a1e1b74'
 
   depends_on 'diffutils'
   depends_on 'm4'
