@@ -1,17 +1,28 @@
 require 'package'
 
 class Libssh2 < Package
-  version '1.4.3'
-  binary_url ({
-    aarch64: 'https://dl.dropboxusercontent.com/s/fq23kj42gsifcvi/libssh2-1.4.3-chromeos-armv7l.tar.xz',
-    armv7l:  'https://dl.dropboxusercontent.com/s/fq23kj42gsifcvi/libssh2-1.4.3-chromeos-armv7l.tar.xz',
-    i686:    'https://dl.dropboxusercontent.com/s/zjnild1c2i10h53/libssh2-1.4.3-chromeos-i686.tar.gz?token_hash=AAG_aZ7_dPKOiOMCMUiW2g3mLkz8UKHnGn5jLcDAGcNCIA&dl=1',
-    x86_64:  'https://dl.dropboxusercontent.com/s/frzkbbnf35ie6ns/libssh2-1.4.3-chromeos-x86_64.tar.gz?token_hash=AAEk26mEOXT0MX05nM9gG6yNDPkL6KmLazRxKqQCR6qs8Q&dl=1',
-  })
-  binary_sha1 ({
-    aarch64: '559f37b727f181ad0b623dba352a9efd0facf51a',
-    armv7l:  '559f37b727f181ad0b623dba352a9efd0facf51a',
-    i686:    '21b4b1a9608b12c0b3d1e6f0b6615f4a4152acb3',
-    x86_64:  '903aae8255c47c6052003837be132ff39582422b',
-  })
+  version '1.8.0'
+  source_url 'https://www.libssh2.org/download/libssh2-1.8.0.tar.gz'
+  source_sha1 'baf2d1fb338eee531ba9b6b121c64235e089e0f5'
+
+  depends_on 'openssl' => :build
+  depends_on 'zlibpkg' => :build
+
+  def self.build
+    system "./configure", "--with-zlib", "--with-openssl", "--with-pic", "--disable-static"
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+
+  def self.check
+    # Ignore mansyntax.sh test which checks man page syntax errors.
+    # It causes 'col: Invalid or incomplete multibyte or wide character'
+    # error at hyphenations.  It is mandb's problem.
+    system "sed -i tests/Makefile -e '/TESTS =/s/mansyntax.sh//'"
+
+    system "make", "check"
+  end
 end
