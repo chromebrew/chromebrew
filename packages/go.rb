@@ -1,7 +1,7 @@
 require 'package'
 
 class Go < Package
-  version '1.7.4'
+  version '1.7.5'
   source_url 'https://storage.googleapis.com/golang/go1.7.5.src.tar.gz'
   source_sha1 '4a36ad56b11579a8d534817b70a9baf754e5369a'
   
