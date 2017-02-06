@@ -13,6 +13,14 @@ Supported Systems
 | armv7l | Yes |
 | aarch64 | Yes (use armv7l binaries) |
 
+Here, I'm releasing personally modified chromebrew.  Modifications are listed at
+[below](#modifications). If you are looking for the original chromebrew, please
+refer [the original site](https://github.com/skycocker/chromebrew/).
+
+Basically, I want to merge all modifications here to the original one.
+So, this chromebrew often rebase to the original one to make merging
+easier.
+
 Overview
 --------
 
@@ -45,6 +53,7 @@ Usage
 Where available commands are:
 
   * build [build a package from source and store the archive and checksum in the current working directory]
+  * binstall [build and install a package from source and store the archive and checksum in the current working directory]
   * download [download a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it]
   * help [get information about command usage]
   * install [install a package along with its dependencies after prompting for confirmation]
@@ -60,11 +69,23 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 
     crew install <package> keep
 
+Modifications
+-------------
+
+Chromebrew at this repository is modified from its original, https://github.com/skycocker/chromebrew.
+I'll merge these modifications to the original, but it's time consuming.
+
+What modifications are:
+
+  * Refactoring crew
+    * Change to clean working directory before source extraction
+    * Add binstall (build and install)
+
 License
 -------
 
 Copyright 2013 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).  
-Copyright 2016 Kazushi (Jam) Marukawa, added ARM related packages.
+Copyright 2016-2017 Kazushi (Jam) Marukawa, added ARM related packages.
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
 
