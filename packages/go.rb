@@ -2,8 +2,8 @@ require 'package'
 
 class Go < Package
   version '1.7.4'
-  source_url 'https://storage.googleapis.com/golang/go1.7.4.src.tar.gz'
-  source_sha1 '0fb305c827c8794cfda7e437befa6101a2d06b2e'
+  source_url 'https://storage.googleapis.com/golang/go1.7.5.src.tar.gz'
+  source_sha1 '4a36ad56b11579a8d534817b70a9baf754e5369a'
   
   # go is required to build versions of go > 1.4
   if `which go` == ''
