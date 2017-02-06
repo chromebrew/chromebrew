@@ -10,6 +10,24 @@
       }
     },
     {
+      "acl": {
+        "description": "Commands for Manipulating POSIX Access Control Lists.",
+        "homepage": "http://savannah.nongnu.org/projects/acl",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.2.52"
+      }
+    },
+    {
+      "attr": {
+        "description": "Commands for Manipulating Filesystem Extended Attributes.",
+        "homepage": "http://savannah.nongnu.org/projects/attr",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.4.47"
+      }
+    },
+    {
       "autoconf": {
         "description": "Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.",
         "homepage": "http://www.gnu.org/software/autoconf/",
@@ -109,6 +127,15 @@
       }
     },
     {
+      "cpustat": {
+        "description": "cpustat periodically dumps out the current CPU utilisation statistics of running processes.",
+        "homepage": "http://kernel.ubuntu.com/~cking/cpustat/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.02.01"
+      }
+    },
+    {
       "ctags": {
         "description": "Exuberant Ctags is a multilanguage reimplementation of the Unix ctags utility.",
         "homepage": "https://sourceforge.net/projects/ctags/",
@@ -127,12 +154,30 @@
       }
     },
     {
+      "di": {
+        "description": "'di' is a disk information utility, displaying everything (and more) that your 'df' command does.",
+        "homepage": "http://gentoo.com/di/",
+        "type": "package",
+        "category": "utilities",
+        "version": "4.43"
+      }
+    },
+    {
       "diffutils": {
         "description": "GNU Diffutils is a package of several programs related to finding differences between files.",
         "homepage": "http://www.gnu.org/software/diffutils/",
         "type": "package",
         "category": "utilities",
         "version": "3.3"
+      }
+    },
+    {
+      "dstat": {
+        "description": "Dstat is a versatile replacement for vmstat, iostat, netstat and ifstat.",
+        "homepage": "http://dag.wiee.rs/home-made/dstat/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.7.3"
       }
     },
     {
@@ -172,12 +217,30 @@
       }
     },
     {
+      "expect": {
+        "description": "Expect is a tool for automating interactive applications such as telnet, ftp, passwd, fsck, rlogin, tip, etc.",
+        "homepage": "http://expect.sourceforge.net/",
+        "type": "package",
+        "category": "utilities",
+        "version": "5.45"
+      }
+    },
+    {
       "ffcall": {
         "description": "Foreign function call is a collection of four libraries which can be used to build foreign function call interfaces in embedded interpreters.",
         "homepage": "http://www.haible.de/bruno/packages-ffcall-README.html",
         "type": "package",
         "category": "libraries",
         "version": "1.10"
+      }
+    },
+    {
+      "figlet": {
+        "description": "FIGlet is a program for making large letters out of ordinary text.",
+        "homepage": "http://www.figlet.org/",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.2.5"
       }
     },
     {
@@ -226,12 +289,30 @@
       }
     },
     {
+      "fuse": {
+        "description": "The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.",
+        "homepage": "https://github.com/libfuse/libfuse",
+        "type": "package",
+        "category": "utilities",
+        "version": "2.9.7"
+      }
+    },
+    {
       "gawk": {
         "description": "The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.",
         "homepage": "https://www.gnu.org/software/gawk/",
         "type": "package",
         "category": "utilities",
         "version": "4.1.1"
+      }
+    },
+    {
+      "gc": {
+        "description": "A garbage collector for C and C++.",
+        "homepage": "http://www.hboehm.info/gc/",
+        "type": "package",
+        "category": "utilities",
+        "version": "7.2g"
       }
     },
     {
@@ -253,12 +334,30 @@
       }
     },
     {
+      "gdb": {
+        "description": "GDB, the GNU Project debugger, allows you to see what is going on 'inside' another program while it executes -- or what another program was doing at the moment it crashed.",
+        "homepage": "https://www.gnu.org/software/gdb/",
+        "type": "package",
+        "category": "development",
+        "version": "7.12.1"
+      }
+    },
+    {
       "gdbm": {
         "description": "GNU dbm is a set of database routines that use extensible hashing.",
         "homepage": "https://www.gnu.org/software/gdbm/",
         "type": "package",
         "category": "utilities",
         "version": "1.12"
+      }
+    },
+    {
+      "geoip": {
+        "description": "GeoIP Legacy C API.",
+        "homepage": "https://github.com/maxmind/geoip-api-c/",
+        "type": "package",
+        "category": "geo_mapping",
+        "version": "1.6.9"
       }
     },
     {
@@ -286,6 +385,15 @@
         "type": "package",
         "category": "version_control",
         "version": "1.8.4"
+      }
+    },
+    {
+      "glib": {
+        "description": "GLib provides the core application building blocks for libraries and applications written in C.",
+        "homepage": "https://developer.gnome.org/glib/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.0.7"
       }
     },
     {
@@ -334,12 +442,30 @@
       }
     },
     {
+      "goaccess": {
+        "description": "GoAccess is an open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.",
+        "homepage": "https://goaccess.io/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.1.1"
+      }
+    },
+    {
       "gperf": {
         "description": "GNU gperf is a perfect hash function generator.",
         "homepage": "https://www.gnu.org/software/gperf/",
         "type": "package",
         "category": "utilities",
         "version": "3.0.4"
+      }
+    },
+    {
+      "gpgme": {
+        "description": "GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.",
+        "homepage": "https://www.gnupg.org/related_software/gpgme/index.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.8.0"
       }
     },
     {
@@ -367,6 +493,24 @@
         "type": "package",
         "category": "utilities",
         "version": "2.0.2"
+      }
+    },
+    {
+      "icu4c": {
+        "description": "ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.",
+        "homepage": "http://site.icu-project.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "58.2"
+      }
+    },
+    {
+      "iftop": {
+        "description": "iftop does for network usage what top(1) does for CPU usage.",
+        "homepage": "http://www.ex-parrot.com/pdw/iftop/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.17"
       }
     },
     {
@@ -401,8 +545,17 @@
         "description": "jq is a lightweight and flexible command-line JSON processor.",
         "homepage": "https://stedolan.github.io/jq/",
         "type": "package",
-        "category": "development",
+        "category": "utilities",
         "version": "1.5"
+      }
+    },
+    {
+      "jsonc": {
+        "description": "JSON-C implements a reference counting object model that allows you to easily construct JSON objects in C, output them as JSON formatted strings and parse JSON formatted strings back into the C representation of JSON objects.",
+        "homepage": "https://github.com/json-c/json-c/wiki",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.12.1-nodoc"
       }
     },
     {
@@ -424,6 +577,33 @@
       }
     },
     {
+      "libarchive": {
+        "description": "Multi-format archive and compression library.",
+        "homepage": "http://www.libarchive.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "3.2.2"
+      }
+    },
+    {
+      "libassuan": {
+        "description": "Libassuan is a small library implementing the so-called Assuan protocol.",
+        "homepage": "https://www.gnupg.org/related_software/libassuan/index.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.4.3"
+      }
+    },
+    {
+      "libedit": {
+        "description": "This is an autotool and libtoolized port of the NetBSD Editline library (libedit).",
+        "homepage": "http://thrysoee.dk/editline/",
+        "type": "package",
+        "category": "libraries",
+        "version": "3.1"
+      }
+    },
+    {
       "libevent": {
         "description": "The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.",
         "homepage": "http://libevent.org/",
@@ -442,6 +622,15 @@
       }
     },
     {
+      "libgcrypt": {
+        "description": "Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.",
+        "homepage": "https://www.gnupg.org/related_software/libgcrypt/index.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.7.6"
+      }
+    },
+    {
       "libgd": {
         "description": "GD is an open source code library for the dynamic creation of images by programmers.",
         "homepage": "https://libgd.github.io/",
@@ -451,12 +640,39 @@
       }
     },
     {
+      "libgpgerror": {
+        "description": "Libgpg-error is a small library that defines common error values for all GnuPG components.",
+        "homepage": "https://www.gnupg.org/related_software/libgpg-error/index.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.26"
+      }
+    },
+    {
       "libjpeg": {
         "description": "JPEG is a free library for image compression.",
         "homepage": "http://www.ijg.org/",
         "type": "package",
         "category": "libraries",
         "version": "9.1"
+      }
+    },
+    {
+      "libksba": {
+        "description": "Libksba is a library to make the tasks of working with X.509 certificates, CMS data and related objects more easy.",
+        "homepage": "https://www.gnupg.org/related_software/libksba/index.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.3.5"
+      }
+    },
+    {
+      "libpcap": {
+        "description": "A portable C/C++ library for network traffic capture.",
+        "homepage": "http://www.tcpdump.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.8.1"
       }
     },
     {
@@ -505,12 +721,39 @@
       }
     },
     {
+      "libtool": {
+        "description": "GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries behind a consistent, portable interface.",
+        "homepage": "https://www.gnu.org/software/libtool/",
+        "type": "package",
+        "category": "libraries",
+        "version": "2.4.6"
+      }
+    },
+    {
+      "libunistring": {
+        "description": "A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.",
+        "homepage": "https://www.gnu.org/software/libunistring/",
+        "type": "package",
+        "category": "libraries",
+        "version": "0.9.7"
+      }
+    },
+    {
       "libunwind": {
         "description": "libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.",
         "homepage": "http://www.nongnu.org/libunwind/",
         "type": "package",
         "category": "libraries",
         "version": "1.1"
+      }
+    },
+    {
+      "libuv": {
+        "description": "libuv is a multi-platform support library with a focus on asynchronous I/O.",
+        "homepage": "http://libuv.org/",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.9.1"
       }
     },
     {
@@ -565,6 +808,15 @@
         "type": "package",
         "category": "development",
         "version": "5.3.3"
+      }
+    },
+    {
+      "lz4": {
+        "description": "LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).",
+        "homepage": "http://lz4.github.io/lz4/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.7.5"
       }
     },
     {
@@ -676,6 +928,15 @@
       }
     },
     {
+      "ncdu": {
+        "description": "Ncdu is a disk usage analyzer with an ncurses interface.",
+        "homepage": "https://dev.yorhel.nl/ncdu",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.12"
+      }
+    },
+    {
       "ncftp": {
         "description": "NcFTP Client (also known as just NcFTP) is a set of FREE application programs implementing the File Transfer Protocol (FTP).",
         "homepage": "http://ncftp.com/ncftp/",
@@ -784,6 +1045,15 @@
       }
     },
     {
+      "npth": {
+        "description": "nPth is a library to provide the GNU Pth API and thus a non-preemptive threads implementation.",
+        "homepage": "https://www.gnupg.org/related_software/npth/index.html",
+        "type": "package",
+        "category": "libraries",
+        "version": "1.3"
+      }
+    },
+    {
       "openconnect": {
         "description": "OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN.",
         "homepage": "http://www.infradead.org/openconnect/",
@@ -811,12 +1081,30 @@
       }
     },
     {
-      "patchelf": {
-        "description": "PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.",
-        "homepage": "http://nixos.org/patchelf.html",
+      "optipng": {
+        "description": "OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.",
+        "homepage": "http://optipng.sourceforge.net/",
+        "type": "package",
+        "category": "graphics",
+        "version": "0.7.6"
+      }
+    },
+    {
+      "p7zip": {
+        "description": "p7zip is a port of 7za.exe for POSIX systems like Unix (Linux, Solaris, OpenBSD, FreeBSD, Cygwin, AIX, ...), MacOS X and also for BeOS and Amiga.",
+        "homepage": "http://p7zip.sourceforge.net/",
         "type": "package",
         "category": "utilities",
-        "version": "0.8-2"
+        "version": "16.02"
+      }
+    },
+    {
+      "pagemon": {
+        "description": "Pagemon is an interactive memory/page monitoring tool allowing one to browse the memory map of an active running process.",
+        "homepage": "http://kernel.ubuntu.com/~cking/pagemon/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.01.10"
       }
     },
     {
@@ -826,6 +1114,24 @@
         "type": "package",
         "category": "utilities",
         "version": "2.7"
+      }
+    },
+    {
+      "patchelf": {
+        "description": "PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.",
+        "homepage": "http://nixos.org/patchelf.html",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.8-2"
+      }
+    },
+    {
+      "pciutils": {
+        "description": "The PCI Utilities are a collection of programs for inspecting and manipulating configuration of PCI devices, all based on a common portable library libpci which offers access to the PCI configuration space on a variety of operating systems.",
+        "homepage": "http://mj.ucw.cz/sw/pciutils/",
+        "type": "package",
+        "category": "utilities",
+        "version": "3.5.2"
       }
     },
     {
@@ -892,12 +1198,39 @@
       }
     },
     {
+      "powerstat": {
+        "description": "Powerstat measures the power consumption of a laptop using the ACPI battery information.",
+        "homepage": "http://kernel.ubuntu.com/~cking/powerstat/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.02.11"
+      }
+    },
+    {
       "proj4": {
         "description": "proj.4 is a standard Unix filter function which converts geographic longitude and latitude coordinates into cartesian coordinates (and vice versa), and it is a C API for software developers to include coordinate transformation in their own software.",
         "homepage": "http://proj4.org/",
         "type": "package",
         "category": "geo_mapping",
         "version": "4.9.1"
+      }
+    },
+    {
+      "pv": {
+        "description": "pv - Pipe Viewer - is a terminal-based tool for monitoring the progress of data through a pipeline.",
+        "homepage": "http://www.ivarch.com/programs/pv.shtml",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.6.0"
+      }
+    },
+    {
+      "pwgen": {
+        "description": "Pwgen is a small, GPL'ed password generator which creates passwords which can be easily memorized by a human.",
+        "homepage": "https://sourceforge.net/projects/pwgen/",
+        "type": "package",
+        "category": "security",
+        "version": "2.07"
       }
     },
     {
@@ -925,6 +1258,15 @@
         "type": "package",
         "category": "development",
         "version": "3.4.1"
+      }
+    },
+    {
+      "qemacs": {
+        "description": "QEmacs (for Quick Emacs) is a very small but powerful UNIX editor.",
+        "homepage": "http://bellard.org/qemacs/",
+        "type": "package",
+        "category": "editors",
+        "version": "0.3.3"
       }
     },
     {
@@ -991,12 +1333,48 @@
       }
     },
     {
+      "screenfetch": {
+        "description": "Fetches system/theme information in terminal for Linux desktop screenshots.",
+        "homepage": "https://github.com/KittyKatt/screenFetch",
+        "type": "package",
+        "category": "utilities",
+        "version": "3.7.0"
+      }
+    },
+    {
       "scrollz": {
         "description": "ScrollZ is an advanced IRC client based on ircII.",
         "homepage": "http://www.scrollz.info/",
         "type": "package",
         "category": "communication",
         "version": "2.3"
+      }
+    },
+    {
+      "slang": {
+        "description": "S-Lang is a multi-platform programmer's library designed to allow a developer to create robust multi-platform software.",
+        "homepage": "http://www.jedsoft.org/slang/",
+        "type": "package",
+        "category": "development",
+        "version": "2.3.1a"
+      }
+    },
+    {
+      "sluice": {
+        "description": "Sluice is a program that reads input on stdin and outputs on stdout at a specified data rate.",
+        "homepage": "http://kernel.ubuntu.com/~cking/sluice/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.02.06"
+      }
+    },
+    {
+      "smemstat": {
+        "description": "Smemstat reports the physical memory usage taking into consideration shared memory.",
+        "homepage": "http://kernel.ubuntu.com/~cking/smemstat/",
+        "type": "package",
+        "category": "utilities",
+        "version": "0.01.16"
       }
     },
     {
@@ -1018,6 +1396,42 @@
       }
     },
     {
+      "sshfs": {
+        "description": "A network filesystem client to connect to SSH servers.",
+        "homepage": "https://github.com/libfuse/sshfs",
+        "type": "package",
+        "category": "remote_access",
+        "version": "2.8"
+      }
+    },
+    {
+      "tcl": {
+        "description": "Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.",
+        "homepage": "http://www.tcl.tk/",
+        "type": "package",
+        "category": "development",
+        "version": "8.6.6"
+      }
+    },
+    {
+      "tcpdump": {
+        "description": "A powerful command-line packet analyzer.",
+        "homepage": "http://www.tcpdump.org/",
+        "type": "package",
+        "category": "networking",
+        "version": "4.8.1"
+      }
+    },
+    {
+      "tcpstat": {
+        "description": "tcpstat reports certain network interface statistics much like vmstat does for system statistics. tcpstat gets its information by either monitoring a specific interface, or by reading previously saved tcpdump data from a file.",
+        "homepage": "http://www.frenchfries.net/paul/tcpstat/",
+        "type": "package",
+        "category": "networking",
+        "version": "1.5"
+      }
+    },
+    {
       "texinfo": {
         "description": "Texinfo is the official documentation format of the GNU project.",
         "homepage": "https://www.gnu.org/software/texinfo/",
@@ -1036,12 +1450,48 @@
       }
     },
     {
+      "tinycc": {
+        "description": "TinyCC (aka TCC) is a small but hyper fast C compiler.",
+        "homepage": "http://bellard.org/tcc/",
+        "type": "package",
+        "category": "development",
+        "version": "0.9.26"
+      }
+    },
+    {
       "tmux": {
         "description": "tmux is a terminal multiplexer",
         "homepage": "http://tmux.github.io/",
         "type": "package",
         "category": "utilities",
         "version": "2.2"
+      }
+    },
+    {
+      "traceroute": {
+        "description": "Traceroute tracks the route packets taken from an IP network on their way to a given host.",
+        "homepage": "http://traceroute.sourceforge.net/",
+        "type": "package",
+        "category": "networking",
+        "version": "2.1.0"
+      }
+    },
+    {
+      "tree": {
+        "description": "Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.",
+        "homepage": "http://mama.indstate.edu/users/ice/tree/",
+        "type": "package",
+        "category": "utilities",
+        "version": "1.7.0"
+      }
+    },
+    {
+      "unrar": {
+        "description": "UnRAR is a powerful archive extractor.",
+        "homepage": "http://www.rarlab.com/",
+        "type": "package",
+        "category": "utilities",
+        "version": "5.4.5"
       }
     },
     {

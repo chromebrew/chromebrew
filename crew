@@ -42,12 +42,19 @@ def info (pkgName)
   @packages[:available_packages].each do |package|
     package.each_pair do |name, values|
       if pkgName == "#{name}"
+        installed = 'is not installed.'
+        Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+          if packageList == CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
+            installed = 'is installed.'
+            break
+          end
+        end
         puts "#{name}: #{values[:description]}"
         if "#{values[:homepage]}" != ""
-          puts "This is #{values[:category]} #{values[:type]} version #{values[:version]}"
+          puts "#{values[:category]} #{values[:type]} version #{values[:version]} #{installed}"
           abort "Learn more at #{values[:homepage]}"
         else
-          abort "This is #{values[:category]} #{values[:type]} version #{values[:version]}"
+          abort "#{values[:category]} #{values[:type]} version #{values[:version]} #{installed}"
         end
       end
     end
