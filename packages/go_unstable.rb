@@ -1,6 +1,6 @@
 require 'package'
 
-class Go < Package
+class Go_unstable < Package
   version '1.8rc3'
   source_url 'https://storage.googleapis.com/golang/go1.8rc3.src.tar.gz'
   source_sha1 '7f01a411de18ebe8d078ae81b093926d9d7475f0'
