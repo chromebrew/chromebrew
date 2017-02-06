@@ -264,27 +264,18 @@ def install
     topdir = ""
     Dir.chdir CREW_BREW_DIR do
       puts "Unpacking archive, this may take a while..."
-      if meta[:filename][-4,4] == ".zip"
+      Dir.mkdir("tmpzip") unless Dir.exist?("tmpzip")
+      if File.extname(meta[:filename]) == ".zip"
         system "unzip", "-qq", "-d", "tmpzip", meta[:filename]
       else
-        system "tar", "xf", meta[:filename]
+        system "tar", "xf", meta[:filename], "-C", "tmpzip", "--strip", "1"
       end
       if meta[:source] == true
         abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
-        if meta[:filename][-4,4] == ".zip"
-          Dir.chdir "tmpzip" do
-            entries=Dir["*"]
-            if entries.length == 0
-              abort "empty zip archive: #{meta[:filename]}"
-            elsif entries.length == 1
-              topdir = "tmpzip/" + entries.first
-            else 
-              topdir = "tmpzip/"
-            end
-          end
-        else
-          topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
+        if File.extname(meta[:filename]) == ".zip"
+          abort "empty zip archive: #{meta[:filename]}" if Dir.empty? "tmpzip"
         end
+        topdir = Dir.entries("tmpzip") == 1 ? "tmpzip/#{entries.first}" : "tmpzip/"
         Dir.chdir CREW_BREW_DIR + topdir do
           puts "Building from source, this may take a while..."
           @pkg.build
