@@ -1,6 +1,3 @@
-#chromebrew directories
-CREW_CONFIG_PATH=/usr/local/etc/crew/
-
 architecture=$(uname -m)
 
 if [ $EUID -eq 0 ]; then
@@ -17,4 +14,8 @@ case "$architecture" in
 esac
 
 #copy the packages manifest
-cp -f packages/packages.json $CREW_CONFIG_PATH
+cp -f packages/packages.json /usr/local/etc/crew/
+
+#copy the package.rb template
+cp -f lib/package.rb /usr/local/lib/crew/
+cp -f lib/package.rb /usr/local/lib/crew/lib/
