@@ -47,6 +47,9 @@ Where available commands include:
   * download [Download a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it.]
   * install [Install a package along with its dependencies. You'll be prompted for confirmation.]
   * remove [Remove a package. Must run with sudo.]
+  * refresh [Refresh the package information.]
+  * update [Update crew and search for new packages.]
+  * upgrade [Upgrade packages to the latest versions.]
   * info [Retrieve the information about a package.]
   * whatprovides [Find out which package contains file(s). Regex patterns are allowed!]
 
