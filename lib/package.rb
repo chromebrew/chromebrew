@@ -1,8 +1,8 @@
 require 'package_helpers'
 
 class Package
-  property :version, :binary_url, :binary_sha1, :source_url, :source_sha1, :is_fake
-  
+  property :description, :homepage, :type, :category, :version, :binary_url, :binary_sha1, :source_url, :source_sha1, :is_fake
+
   class << self
     attr_reader :dependencies, :is_fake
     attr_accessor :name
