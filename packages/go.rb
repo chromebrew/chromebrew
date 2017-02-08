@@ -18,7 +18,7 @@ class Go < Package
                 TMPDIR=/usr/local/tmp \
                 ./make.bash"
       else
-        system "TMPDIR=/usr/local/tmp ./make.bash"
+        system "TMPDIR=/usr/local/tmp ./all.bash"
       end
     end
   end
