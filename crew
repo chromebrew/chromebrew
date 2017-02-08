@@ -39,22 +39,17 @@ end
 
 @packages = JSON.parse(File.read(CREW_CONFIG_PATH + 'packages.json'), symbolize_names: true)
 def info (pkgName)
-  @packages[:available_packages].each do |package|
+  @packages.each do |package|
     package.each_pair do |name, values|
       if pkgName == "#{name}"
-        installed = 'is not installed.'
-        Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-          if packageList == CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
-            installed = 'is installed.'
-            break
-          end
-        end
+        isornot = 'is not'
+        isornot = 'is' if setPkg(pkgName, true)
         puts "#{name}: #{values[:description]}"
         if "#{values[:homepage]}" != ""
-          puts "#{values[:category]} #{values[:type]} version #{values[:version]} #{installed}"
+          puts "#{values[:category]} #{values[:type]} version #{values[:version]} #{isornot} installed."
           abort "Learn more at #{values[:homepage]}"
         else
-          abort "#{values[:category]} #{values[:type]} version #{values[:version]} #{installed}"
+          abort "#{values[:category]} #{values[:type]} version #{values[:version]} #{isornot} installed."
         end
       end
     end
@@ -67,7 +62,14 @@ def setPkg (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
-  puts "Found #{pkgName}, version #{@pkg.version}" unless silent
+  Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+    if packageList == CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
+      puts "#{pkgName} version #{@pkg.version} is installed." unless silent
+      return true
+    end
+  end
+  puts "#{pkgName} version #{@pkg.version} is not installed." unless silent
+  return false
 end
 
 def list_packages
@@ -84,7 +86,7 @@ def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
-  abort "package #{pkgName} not found :("
+  abort "package #{pkgName} not found. :("
 end
 
 def whatprovides (pkgName)
@@ -160,6 +162,7 @@ def upgrade
       puts "Updating #{@pkg.name}..."
       remove @pkg.name
       resolveDependenciesAndInstall
+      refresh
     else
       puts "#{@pkg.name} is already up to date."
     end
@@ -179,6 +182,7 @@ def upgrade
         remove @pkg.name
         resolveDependenciesAndInstall
       end
+      refresh
       puts "Packages have been updated."
     else
       puts "Your software is already up to date."
@@ -235,30 +239,26 @@ end
 def resolveDependencies
   @dependencies = []
 
-  def pushDeps
-    if @pkg.dependencies
-      @dependencies.unshift @pkg.dependencies
-
-      @pkg.dependencies.each do |dep|
-        search dep, true
-        pushDeps
+  if @pkg.dependencies
+    @pkg.dependencies.each do |dep|
+      if not search(dep, true)
+        if not @dependencies.include? dep
+          @dependencies.push(dep)
+        end
       end
     end
   end
 
-  pushDeps
-
   return if @dependencies.empty?
 
-  puts "Following packages also need to be installed: "
+  puts "The following packages also need to be installed: "
 
-  @dependencies.flatten!.uniq!
-  @dependencies.each do |dep|
+  @dependencies.sort.each do |dep|
     print dep + " "
   end
 
   puts ""
-  puts "Do you agree? [Y/n]"
+  print "Do you agree? [Y/n]: "
   response = STDIN.getc
   case response
   when "n"
@@ -267,7 +267,7 @@ def resolveDependencies
     puts "Proceeding..."
     proceed = true
   else
-    puts "I don't understand '#{response}' :("
+    puts "I don't understand '#{response}'. :("
     abort "No changes made."
   end
 
@@ -373,6 +373,32 @@ def install
   puts "#{@pkg.name.capitalize} installed!"
 end
 
+def refresh
+  #update package info
+  @packages = []
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    packageName = File.basename filename, '.rb'
+    if packageName != 'packages'
+      setPkg(packageName, true)
+      package = {
+        description: @pkg.description,
+        homepage: @pkg.homepage,
+        type: @pkg.type,
+        category: @pkg.category,
+        version: @pkg.version
+      }
+      @packages.push(@pkg.name => package)
+    end
+  end
+  packages_json = CREW_CONFIG_PATH + 'packages.json'
+  system "rm -f #{packages_json}"
+  File.open(packages_json, 'w') do |file|
+    out = JSON.parse @packages.to_json
+    file.write JSON.pretty_generate(out)
+  end
+  puts "#{packages_json} refreshed!"
+end
+
 def remove (pkgName)
 
   #make sure the package is actually installed
@@ -452,14 +478,16 @@ when "upgrade"
 when "install"
   search @pkgName
   resolveDependenciesAndInstall
+when "refresh"
+  refresh
 when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   remove @pkgName
 when nil
-  puts "Chromebrew, version 0.4.2"
+  puts "Chromebrew, version 0.5.1"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: search, download, install, remove, info, whatprovides"
+  puts "Available commands: search, download, install, refresh, remove, update, upgrade, info, whatprovides"
 else
-  puts "I have no idea how to do #{@command} :("
-  puts "Available commands: search, download, install, remove, info, whatprovides"
+  puts "I have no idea how to do #{@command}. :("
+  puts "Available commands: search, download, install, refresh, remove, update, upgrade, info, whatprovides"
 end
