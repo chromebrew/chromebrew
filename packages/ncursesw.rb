@@ -8,6 +8,16 @@ class Ncursesw < Package
   depends_on "diffutils"
 
   def self.build
+    # Check ncurses doesn't conflict with ncrusesw
+    if File.exist? CREW_CONFIG_PATH + "meta/ncurses.filelist"
+      if `grep include/ncursesw #{CREW_CONFIG_PATH}meta/ncurses.filelist` != ''
+	puts
+	puts "PLEASE PERFORMS `crew upgrade ncurses` OR `sudo crew remove ncurses` FIRST"
+	puts
+	exit 1
+      end
+    end
+    # Build ncursesw
     system './configure ' \
 	    'CFLAGS=" -fPIC" ' \
 	    '--without-debug ' \
