@@ -221,8 +221,10 @@ def resolveDependenciesAndInstall
 
     resolveDependencies
 
-    search origin
+    search(origin, true)
+
     install
+
   rescue InstallError => e
     puts "#{@pkg.name} failed to install: #{e.to_s}"
   ensure
@@ -239,15 +241,20 @@ end
 def resolveDependencies
   @dependencies = []
 
-  if @pkg.dependencies
-    @pkg.dependencies.each do |dep|
-      if not search(dep, true)
-        if not @dependencies.include? dep
-          @dependencies.push(dep)
+  def pushDeps
+    if @pkg.dependencies
+      @pkg.dependencies.each do |dep|
+        if not search(dep, true)
+          if not @dependencies.include? dep
+            @dependencies.push(dep)
+            pushDeps
+          end
         end
       end
     end
   end
+
+  pushDeps
 
   return if @dependencies.empty?
 
