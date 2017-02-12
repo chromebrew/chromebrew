@@ -1,16 +1,21 @@
 require 'package'
  
 class Gdbm < Package
-  version '1.12'
-  source_url 'ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.12.tar.gz'
-  source_sha1 '86513e8871bb376bc014e9e5a2d18a8e0a8ea2f5'
+  version '1.13'
+  source_url 'ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.13.tar.gz'
+  source_sha1 '7f2a8301497bbcac91808b011ca533380914fd21'
   
   def self.build
-    system './configure'
+    system './configure', '--disable-static', '--enable-shared', '--with-pic'
     system 'make'
+    system "find . -name 'lib*.so.*' -print | xargs strip -S"
   end
   
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+  end
+
+  def self.check
+    system "make check"
   end
 end
