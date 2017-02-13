@@ -7,8 +7,9 @@ class Libunwind < Package
   source_url 'http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz'
   source_sha1 'a33e52d7ecd18b9375508369b566eeb2cc6eec3b'
 
-  depends_on 'buildessential'
-  depends_on 'openssl'
+  depends_on 'buildessential' => :build
+  depends_on 'openssl' => :build
+  depends_on 'xzutils' => :build
 
   def self.build
     system "CC='gcc' ./configure"
