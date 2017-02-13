@@ -10,14 +10,14 @@ class Llvm < Package
 
   def self.build
     system "mkdir mybuilddir"
-    Dir.chdir CREW_BREW_DIR+"llvm-"+version+".src/mybuilddir" do
+    Dir.chdir "mybuilddir" do
  	system "cmake .."
     	system "cmake --build ."
     end
   end
 
   def self.install
-    Dir.chdir CREW_BREW_DIR+"llvm-"+version+".src/mybuilddir" do
+    Dir.chdir "mybuilddir" do
        system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_DEST_DIR}/usr/local -P cmake_install.cmake"
     end  
   end
