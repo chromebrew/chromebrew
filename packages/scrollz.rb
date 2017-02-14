@@ -9,13 +9,13 @@ class Scrollz < Package
 
   depends_on 'buildessential'
   depends_on 'ncurses'
-  
+
   def self.build
-    system "./configure" 
+    system "CFLAGS=-I/usr/local/include/ncurses ./configure"
     system "make"
   end
-  
+
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end         
+  end
 end
