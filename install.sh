@@ -83,15 +83,28 @@ wget -N -c $URL/lib/package.rb
 wget -N -c $URL/lib/package_helpers.rb
 #create the device.json file
 cd $CREW_CONFIG_PATH
-echo '{' > device.json
-echo '  "architecture": "'$architecture'",' >> device.json
-echo '  "installed_packages": [' >> device.json
-echo '    {' >> device.json
-echo '      "name": "ruby",' >> device.json
-echo '      "version": "2.0.0p247"' >> device.json
-echo '    }' >> device.json
-echo '  ]' >> device.json
-echo '}' >> device.json
+if [ ! -f device.json ]; then
+  echo "Creating device.json newly..."
+  echo '{' > device.json
+  echo '  "architecture": "'$architecture'",' >> device.json
+  echo '  "installed_packages": [' >> device.json
+  echo '    {' >> device.json
+  echo '      "name": "ruby",' >> device.json
+  echo '      "version": "2.0.0p247"' >> device.json
+  echo '    }' >> device.json
+  echo '  ]' >> device.json
+  echo '}' >> device.json
+elif grep '"name": "ruby"' device.json > /dev/null; then
+  echo "Updating version number of existing information in device.json..."
+  sed -i device.json -e '/"name": "ruby"/N;//s/"version": ".*"/"version": "2.0.0p247"/'
+else
+  echo "Adding new information to device.json..."
+  sed -i device.json -e '/    }$/s/$/,\
+    {\
+      "name": "ruby",\
+      "version": "2.0.0p247"\
+    }/'
+fi
 
 #download git and its dependencies .rb package files
 cd $CREW_PACKAGES_PATH
