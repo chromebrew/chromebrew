@@ -4,7 +4,7 @@ class Package
   property :version, :binary_url, :binary_sha1, :source_url, :source_sha1, :is_fake
   
   class << self
-    attr_reader :dependencies, :is_fake
+    attr_reader :dependencies, :rdependencies, :is_fake
     attr_accessor :name
   end
   def self.depends_on (dependency = nil)
@@ -13,6 +13,14 @@ class Package
       @dependencies << dependency
     end
     @dependencies
+  end
+
+  def self.rdepends_on (dependency = nil)
+    @rdependencies = [] unless @rdependencies
+    if dependency
+      @rdependencies << dependency
+    end
+    @rdependencies
   end
   
   def self.is_fake

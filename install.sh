@@ -74,13 +74,13 @@ mv ./filelist $CREW_CONFIG_PATH/meta/ruby.filelist
 
 #download, prepare and install chromebrew
 cd $CREW_LIB_PATH
-wget -N -c $URL/crew
+wget -N $URL/crew
 chmod +x crew
 sudo ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
 mkdir $CREW_LIB_PATH/lib && cd $CREW_LIB_PATH/lib
-wget -N -c $URL/lib/package.rb
-wget -N -c $URL/lib/package_helpers.rb
+wget -N $URL/lib/package.rb
+wget -N $URL/lib/package_helpers.rb
 #create the device.json file
 cd $CREW_CONFIG_PATH
 echo '{' > device.json
@@ -93,14 +93,26 @@ echo '    }' >> device.json
 echo '  ]' >> device.json
 echo '}' >> device.json
 
-#download git and its dependencies .rb package files
+#download packages
 cd $CREW_PACKAGES_PATH
-for file in git zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders pkgconfig; do
-  wget -N -c $URL/packages/$file.rb
-done
 
-#install readline for ruby
-echo y | crew install readline
+#first, download only git package
+wget -N $URL/packages/git.rb
+
+#check whether git provides binary package or not
+#if not, prepare to compile git from source
+GIT_BINARY_URL=`sed -e 's/#.*$//' $CREW_PACKAGES_PATH/git.rb | grep ".*$architecture:.*\(http\|https\|ftp\)://"`
+case .$GIT_BINARY_URL in
+.)
+  #download git and its dependencies .rb package files to compile git from source
+  for file in zlibpkg libssh2 perl curl expat gettext python readline ruby buildessential gcc binutils make mpc mpfr gmp glibc linuxheaders pkgconfig openssl; do
+    wget -N $URL/packages/$file.rb
+  done
+
+  #install readline for ruby
+  echo y | crew install readline
+  ;;
+esac
 
 #install git
 echo y | crew install git
