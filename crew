@@ -37,20 +37,48 @@ abort "Chromebrew should not be run as root." if Process.uid == 0 && @command !=
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
+@packages = JSON.parse(File.read(CREW_CONFIG_PATH + 'packages.json'), symbolize_names: true)
+def info (pkgName)
+  @packages.each do |package|
+    package.each_pair do |name, values|
+      if pkgName == "#{name}"
+        isornot = 'is not'
+        isornot = 'is' if setPkg(pkgName, true)
+        puts "#{name}: #{values[:description]}"
+        if "#{values[:homepage]}" != ""
+          puts "#{values[:category]} #{values[:type]} version #{values[:version]} #{isornot} installed."
+          abort "Learn more at #{values[:homepage]}"
+        else
+          abort "#{values[:category]} #{values[:type]} version #{values[:version]} #{isornot} installed."
+        end
+      end
+    end
+  end
+  puts "Package #{pkgName} does not exist.  Do you wish your dream package was available?"
+  puts "Submit an issue at https://github.com/skycocker/chromebrew/issues with your request."
+end
+
 def setPkg (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
-  puts "Found #{pkgName}, version #{@pkg.version}" unless silent
+  Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+    if packageList == CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
+      puts "#{pkgName} version #{@pkg.version} is installed." unless silent
+      return true
+    end
+  end
+  puts "#{pkgName} version #{@pkg.version} is not installed." unless silent
+  return false
 end
 
 def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    packageName = File.basename filename, '.rb'
     Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-      packageName = File.basename filename, '.rb'
       print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
-    puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
+    puts packageName if File.extname(filename) == '.rb'
   end
 end
 
@@ -58,7 +86,7 @@ def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
-  abort "package #{pkgName} not found :("
+  abort "package #{pkgName} not found. :("
 end
 
 def whatprovides (pkgName)
@@ -96,7 +124,7 @@ def update
     system "git reset --hard origin/master"
   end
   puts "Package lists, crew, and library updated."
-  
+
   #check for outdated installed packages
   puts "Checking for package updates..."
   puts ""
@@ -109,7 +137,7 @@ def update
       puts @pkg.name + " could be updated from " + package[:version] + " to " + @pkg.version
     end
   end
-  
+
   if canBeUpdated > 0
     puts ""
     puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
@@ -128,12 +156,13 @@ def upgrade
         currentVersion = package[:version]
       end
     end
-    
+
     if currentVersion != @pkg.version
       search @pkg.name
       puts "Updating #{@pkg.name}..."
       remove @pkg.name
       resolveDependenciesAndInstall
+      refresh
     else
       puts "#{@pkg.name} is already up to date."
     end
@@ -145,7 +174,7 @@ def upgrade
         toBeUpdated.push(package[:name])
       end
     end
-  
+
     if toBeUpdated.length > 0
       puts "Updating packages..."
       toBeUpdated.each do |package|
@@ -153,6 +182,7 @@ def upgrade
         remove @pkg.name
         resolveDependenciesAndInstall
       end
+      refresh
       puts "Packages have been updated."
     else
       puts "Your software is already up to date."
@@ -190,10 +220,12 @@ def resolveDependenciesAndInstall
     origin = @pkg.name
 
     resolveDependencies
-  
-    search origin
+
+    search(origin, true)
+
     install
-  rescue InstallError => e 
+
+  rescue InstallError => e
     puts "#{@pkg.name} failed to install: #{e.to_s}"
   ensure
     #cleanup
@@ -211,28 +243,29 @@ def resolveDependencies
 
   def pushDeps
     if @pkg.dependencies
-      @dependencies.unshift @pkg.dependencies
-      
       @pkg.dependencies.each do |dep|
-        search dep, true
-        pushDeps
+        if not search(dep, true)
+          if not @dependencies.include? dep
+            @dependencies.push(dep)
+            pushDeps
+          end
+        end
       end
     end
   end
-  
+
   pushDeps
-  
+
   return if @dependencies.empty?
 
-  puts "Following packages also need to be installed: "
-  
-  @dependencies.flatten!.uniq!
-  @dependencies.each do |dep|
+  puts "The following packages also need to be installed: "
+
+  @dependencies.sort.each do |dep|
     print dep + " "
   end
-  
+
   puts ""
-  puts "Do you agree? [Y/n]"
+  print "Do you agree? [Y/n]: "
   response = STDIN.getc
   case response
   when "n"
@@ -241,7 +274,7 @@ def resolveDependencies
     puts "Proceeding..."
     proceed = true
   else
-    puts "I don't understand '#{response}' :("
+    puts "I don't understand '#{response}'. :("
     abort "No changes made."
   end
 
@@ -278,7 +311,7 @@ def install
               abort "empty zip archive: #{meta[:filename]}"
             elsif entries.length == 1
               topdir = "tmpzip/" + entries.first
-            else 
+            else
               topdir = "tmpzip/"
             end
           end
@@ -304,7 +337,7 @@ def install
           system "tail -n +2 dlistcut > dlist"
           #remove temporary files
           system "rm dlistcut ../dlist ../filelist"
-          
+
           #create resulting folders list
           directories = []
           Dir.glob('*').select do |fn|
@@ -327,7 +360,7 @@ def install
 
       FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
       FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
- 
+
       File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
         system "sudo", "mkdir", "-p", line.chomp
       end
@@ -337,7 +370,7 @@ def install
       end
     end
   end
-  
+
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
@@ -345,6 +378,32 @@ def install
     file.write JSON.pretty_generate(output)
   end
   puts "#{@pkg.name.capitalize} installed!"
+end
+
+def refresh
+  #update package info
+  @packages = []
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    packageName = File.basename filename, '.rb'
+    if packageName != 'packages'
+      setPkg(packageName, true)
+      package = {
+        description: @pkg.description,
+        homepage: @pkg.homepage,
+        type: @pkg.type,
+        category: @pkg.category,
+        version: @pkg.version
+      }
+      @packages.push(@pkg.name => package)
+    end
+  end
+  packages_json = CREW_CONFIG_PATH + 'packages.json'
+  system "rm -f #{packages_json}"
+  File.open(packages_json, 'w') do |file|
+    out = JSON.parse @packages.to_json
+    file.write JSON.pretty_generate(out)
+  end
+  puts "#{packages_json} refreshed!"
 end
 
 def remove (pkgName)
@@ -398,6 +457,12 @@ def remove (pkgName)
 end
 
 case @command
+when "info"
+  if @pkgName
+    info @pkgName
+  else
+    puts "Usage: crew info [package]"
+  end
 when "search"
   if @pkgName
     search @pkgName
@@ -420,14 +485,16 @@ when "upgrade"
 when "install"
   search @pkgName
   resolveDependenciesAndInstall
+when "refresh"
+  refresh
 when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   remove @pkgName
 when nil
-  puts "Chromebrew, version 0.4.1"
+  puts "Chromebrew, version 0.5.1"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: search, download, install, remove, whatprovides"
+  puts "Available commands: search, download, install, refresh, remove, update, upgrade, info, whatprovides"
 else
-  puts "I have no idea how to do #{@command} :("
-  puts "Available commands: search, download, install, remove, whatprovides"
+  puts "I have no idea how to do #{@command}. :("
+  puts "Available commands: search, download, install, refresh, remove, update, upgrade, info, whatprovides"
 end
