@@ -261,27 +261,18 @@ def install
 
   unless @pkg.is_fake?
     meta = download
-    topdir = ""
     Dir.chdir CREW_BREW_DIR do
       puts "Unpacking archive, this may take a while..."
-      if meta[:filename][-4,4] == ".zip"
-        system "unzip", "-qq", "-d", "tmpzip", meta[:filename]
+      if meta[:filename].split(".").last == "zip"
+        system "unzip", "-qq", meta[:filename]
       else
         system "tar", "xf", meta[:filename]
       end
       if meta[:source] == true
         abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
-        if meta[:filename][-4,4] == ".zip"
-          Dir.chdir "tmpzip" do
-            entries=Dir["*"]
-            if entries.length == 0
-              abort "empty zip archive: #{meta[:filename]}"
-            elsif entries.length == 1
-              topdir = "tmpzip/" + entries.first
-            else 
-              topdir = "tmpzip/"
-            end
-          end
+        topdir = ""
+        if meta[:filename].split(".").last == "zip"
+          topdir = `zipinfo -1 #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
         else
           topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
         end
