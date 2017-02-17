@@ -37,11 +37,11 @@ abort "Chromebrew should not be run as root." if Process.uid == 0 && @command !=
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def setPkg (pkgName, silent = false)
-  require CREW_LIB_PATH + 'packages/' + pkgName
-  @pkg = Object.const_get(pkgName.capitalize)
-  @pkg.name = pkgName
-  puts "Found #{pkgName}, version #{@pkg.version}" unless silent
+def set_pkg(pkg_name, silent = false)
+  require CREW_LIB_PATH + 'packages/' + pkg_name
+  @pkg = Object.const_get(pkg_name.capitalize)
+  @pkg.name = pkg_name
+  puts "Found #{pkg_name}, version #{@pkg.version}" unless silent
 end
 
 def list_packages
@@ -54,11 +54,12 @@ def list_packages
   end
 end
 
-def search (pkgName, silent = false)
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
-  end
-  abort "package #{pkgName} not found :("
+def search(pkg_name, silent = false)
+  results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
+	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkg_name, true) } \
+	  .collect { |f| File.basename(f, '.rb') } \
+	  .each    { |f| set_pkg(f, silent) }
+  abort "Package not found :(" unless results.length > 0
 end
 
 def whatprovides (pkgName)
@@ -103,7 +104,7 @@ def update
 
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
-    search package[:name], true
+    search("^#{package[:name]}$", true)
     if package[:version] != @pkg.version
       canBeUpdated += 1
       puts @pkg.name + " could be updated from " + package[:version] + " to " + @pkg.version
@@ -120,7 +121,7 @@ end
 
 def upgrade
   if @pkgName
-    search @pkgName
+    search("^#{@pkgName}$")
 
     currentVersion = nil
     @device[:installed_packages].each do |package|
@@ -130,7 +131,7 @@ def upgrade
     end
     
     if currentVersion != @pkg.version
-      search @pkg.name
+      search("^#{@pkg.name}$")
       puts "Updating #{@pkg.name}..."
       remove @pkg.name
       resolveDependenciesAndInstall
@@ -140,7 +141,7 @@ def upgrade
   else
     toBeUpdated = []
     @device[:installed_packages].each do |package|
-      search package[:name], true
+      search("^#{package[:name]}$", true)
       if package[:version] != @pkg.version
         toBeUpdated.push(package[:name])
       end
@@ -149,7 +150,7 @@ def upgrade
     if toBeUpdated.length > 0
       puts "Updating packages..."
       toBeUpdated.each do |package|
-        search package
+        search("^#{package}$")
         remove @pkg.name
         resolveDependenciesAndInstall
       end
@@ -191,7 +192,7 @@ def resolveDependenciesAndInstall
 
     resolveDependencies
   
-    search origin
+    search("^#{origin}$")
     install
   rescue InstallError => e 
     puts "#{@pkg.name} failed to install: #{e.to_s}"
@@ -214,7 +215,7 @@ def resolveDependencies
       @dependencies.unshift @pkg.dependencies
       
       @pkg.dependencies.each do |dep|
-        search dep, true
+        search("^#{dep}$", true)
         pushDeps
       end
     end
@@ -247,7 +248,7 @@ def resolveDependencies
 
   if proceed
     @dependencies.each do |dep|
-      search dep
+      search("^#{dep}$")
       install
     end
   end
@@ -400,7 +401,7 @@ end
 case @command
 when "search"
   if @pkgName
-    search @pkgName
+    search("^#{@pkgName}$")
   else
     list_packages
   end
@@ -411,14 +412,14 @@ when "whatprovides"
     puts "Usage: crew whatprovides [pattern]"
   end
 when "download"
-  search @pkgName
+  search("^#{@pkgName}$")
   download
 when "update"
   update
 when "upgrade"
   upgrade
 when "install"
-  search @pkgName
+  search("^#{@pkgName}$")
   resolveDependenciesAndInstall
 when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
