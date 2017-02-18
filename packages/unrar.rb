@@ -8,8 +8,10 @@ class Unrar < Package
   def self.build
     system "sed -i '145s,$,/libunrar.so,' makefile" # fix naming mistake
     system "sed -i '145s,install,install -D,' makefile" # create directory
-    system "make", "all"
-    system "make", "lib"
+
+    # force to compile in sequential since unrar Makefile doesn't work in parallel
+    system "make", "-j1", "all"
+    system "make", "-j1", "lib"
   end
 
   def self.install
