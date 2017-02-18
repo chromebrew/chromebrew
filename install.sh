@@ -144,15 +144,19 @@ done
 
 #download, prepare and install chromebrew
 cd $CREW_LIB_PATH
-wget -N -c $URL/crew
+rm -rf crew lib packages
+wget -N $URL/crew
 chmod +x crew
+rm -f $CREW_PREFIX/bin/crew
 sudo ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
-mkdir $CREW_LIB_PATH/lib && cd $CREW_LIB_PATH/lib
-wget -N -c $URL/lib/package.rb
-wget -N -c $URL/lib/package_helpers.rb
+mkdir -p $CREW_LIB_PATH/lib
+cd $CREW_LIB_PATH/lib
+wget -N $URL/lib/package.rb
+wget -N $URL/lib/package_helpers.rb
 
 #Making GCC act like CC (For some npm packages out there)
+rm -f /usr/local/bin/cc
 sudo ln -s /usr/local/bin/gcc /usr/local/bin/cc
 
 #This will allow a lot of things to work without sudo
@@ -160,6 +164,7 @@ sudo chown -R `id -u`:`id -g` /usr/local
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
+rm -rf .git
 git init
 git remote add -f origin https://github.com/$OWNER/$REPO.git
 git config core.sparsecheckout true
