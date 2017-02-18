@@ -1,6 +1,6 @@
 require 'package'
 
-class Python27 < Package
+class Python3 < Package
   version '3.6.0'
   source_url 'https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz' # software source tarball url
   source_sha1 '120d536ee14a3153fc2435838c0f27c2e25cd29c'                     # source tarball sha1 sum
