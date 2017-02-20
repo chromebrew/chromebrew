@@ -304,13 +304,7 @@ def install_package (pkgdir)
     FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
 
-    File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
-      system "mkdir", "-p", line.chomp
-    end
-
-    File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist").each_line do |line|
-      system "mv", pkgdir + line.chomp, line.chomp
-    end
+    system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
   end
 end
 
