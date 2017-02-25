@@ -13,7 +13,7 @@ class Unrar < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-lib"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}/usr/local", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}/usr/local", "install-lib"
   end
 end
