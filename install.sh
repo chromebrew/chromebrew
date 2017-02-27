@@ -18,7 +18,7 @@ if [ $EUID -eq 0 ]; then
 fi
 
 case "$architecture" in
-"i686"|"x86_64"|"armv7l")
+"i686"|"x86_64"|"armv7l"|"aarch64")
   ;;
 *)
   echo 'Your device is not supported by Chromebrew yet.'
@@ -35,6 +35,14 @@ done
 urls=()
 sha256s=()
 case "$architecture" in
+"aarch64")
+  urls+=('https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz')
+  sha256s+=('de01196461edd57bb39288e7b9dee1ee3cdc605e4e8be6b8871ba47dbe1ca972')
+  urls+=('https://dl.dropboxusercontent.com/s/lnz5hmjv48d14f2/git-1.8.4-chromeos-armv7l.tar.xz')
+  sha256s+=('f6f7d2500a41419937944af464494dd0ab95b15877ee630a4c13dd0abb37b02d')
+  urls+=('https://dl.dropboxusercontent.com/s/fq23kj42gsifcvi/libssh2-1.4.3-chromeos-armv7l.tar.xz')
+  sha256s+=('c1b8b09dfae6ab82ec6c961120c38e78ee50ecf902800f8257d0916e18db0b69')
+  ;;
 "armv7l")
   urls+=('https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz')
   sha256s+=('de01196461edd57bb39288e7b9dee1ee3cdc605e4e8be6b8871ba47dbe1ca972')
