@@ -96,7 +96,7 @@ def update
     system "git reset --hard origin/master"
   end
   puts "Package lists, crew, and library updated."
-  
+
   #check for outdated installed packages
   puts "Checking for package updates..."
   puts ""
@@ -109,7 +109,7 @@ def update
       puts @pkg.name + " could be updated from " + package[:version] + " to " + @pkg.version
     end
   end
-  
+
   if canBeUpdated > 0
     puts ""
     puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
@@ -128,7 +128,7 @@ def upgrade
         currentVersion = package[:version]
       end
     end
-    
+
     if currentVersion != @pkg.version
       puts "Updating #{@pkg.name}..."
       remove @pkg.name
@@ -144,7 +144,7 @@ def upgrade
         toBeUpdated.push(package[:name])
       end
     end
-  
+
     if toBeUpdated.length > 0
       puts "Updating packages..."
       toBeUpdated.each do |package|
@@ -246,11 +246,11 @@ def install_package (pkgdir)
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
 
     File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
-      system "sudo", "mkdir", "-p", line.chomp
+      system "mkdir", "-p", line.chomp
     end
 
     File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist").each_line do |line|
-      system "sudo", "mv", pkgdir + line.chomp, line.chomp
+      system "mv", pkgdir + line.chomp, line.chomp
     end
   end
 end
@@ -260,10 +260,10 @@ def resolveDependenciesAndInstall
     origin = @pkg.name
 
     resolveDependencies
-  
+
     search origin
     install
-  rescue InstallError => e 
+  rescue InstallError => e
     puts "#{@pkg.name} failed to install: #{e.to_s}"
   ensure
     #cleanup
@@ -282,25 +282,25 @@ def resolveDependencies
   def pushDeps
     if @pkg.dependencies
       @dependencies.unshift @pkg.dependencies
-      
+
       @pkg.dependencies.each do |dep|
         search dep, true
         pushDeps
       end
     end
   end
-  
+
   pushDeps
-  
+
   return if @dependencies.empty?
 
   puts "Following packages also need to be installed: "
-  
+
   @dependencies.flatten!.uniq!
   @dependencies.each do |dep|
     print dep + " "
   end
-  
+
   puts ""
   puts "Do you agree? [Y/n]"
   response = STDIN.getc
@@ -353,7 +353,7 @@ def install
     puts "Installing..."
     install_package dest_dir
   end
-  
+
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
@@ -437,10 +437,9 @@ when "install"
   search @pkgName
   resolveDependenciesAndInstall
 when "remove"
-  abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   remove @pkgName
 when nil
-  puts "Chromebrew, version 0.4.1"
+  puts "Chromebrew, version 0.4.2"
   puts "Usage: crew [command] [package]"
   puts "Available commands: search, download, install, remove, whatprovides"
 else
