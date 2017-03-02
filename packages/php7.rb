@@ -1,9 +1,9 @@
 require 'package'
 
 class Php7 < Package
-  version '7.1.0'
-  source_url 'http://php.net/distributions/php-7.1.0.tar.xz'   # software source tarball url
-  source_sha1 'c74c920256b9c6873bae696fbb0ec14a02dc8495'       # source tarball sha1 sum
+  version '7.1.2'
+  source_url 'http://php.net/distributions/php-7.1.2.tar.xz'   # software source tarball url
+  source_sha1 'a7a5fd520ae49102df8e80541acfea236ec0357f'       # source tarball sha1 sum
 
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
@@ -12,6 +12,7 @@ class Php7 < Package
   depends_on 'openssl'
   depends_on 'curl'
   depends_on 'pcre'
+  depends_on 'readline'
 
   def self.build                                               # self.build contains commands needed to build the software from source
     system './configure \
@@ -21,6 +22,7 @@ class Php7 < Package
       --enable-mbstring \
       --with-openssl \
       --with-pcre-regex \
+      --with-readline \
       --with-zlib'
     system 'make'                                              # ordered chronologically
   end
