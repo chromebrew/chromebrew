@@ -7,7 +7,9 @@ class Slang < Package
 
   def self.build
     system "./configure", "--prefix=/usr/local", "--without-x"
-    system "make"
+
+    # force to compile in sequential since slang Makefile doesn't work in parallel
+    system "make", "-j1"
   end
 
   def self.install
