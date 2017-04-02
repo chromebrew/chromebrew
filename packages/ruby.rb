@@ -1,18 +1,32 @@
 require 'package'
 
 class Ruby < Package
-  version '2.0.0p247-chromeos1'
+  version '2.4.0'
+  source_url 'http://cache.ruby-lang.org/pub/ruby/ruby-2.4.0.tar.xz'
+  source_sha1 '038804bbd0e77508dd2510b729a9f3b325489b2e'
   binary_url ({
-    armv7l: "https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz",
-    i686: "https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz&dl=1",
-    x86_64: "https://www.dropbox.com/s/x3jt0z5i1r4afyv/ruby-2.0.0p247-chromeos-x86_64.tar.gz?dl=1"
+    armv7l: 'https://github.com/jam7/chromebrew/releases/download/binaries/ruby-2.4.0-chromeos-armv7l.tar.xz',
+    i686:   'https://github.com/jam7/chromebrew/releases/download/binaries/ruby-2.4.0-chromeos-i686.tar.xz',
+    x86_64: 'https://github.com/jam7/chromebrew/releases/download/binaries/ruby-2.4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha1 ({
-    armv7l: "f575e27e9b20cbb6f1c77cdd87270748e83cf6b2",
-    i686: "49eeba5d542e4c3e6aa3686f215485e0946fb99a",
-    x86_64: "f1de1ef5ed690c3b78f4e40208a4fb93e227c4ed"
+    armv7l: '0b8bf1c94b948c26628dbf7d1bf4b2c792296aa2',
+    i686:   '745d237e1947e6ab80745303d5afdf5da09399a7',
+    x86_64: 'cdd25b0fc4a79c92de2899fca290656999aec4d7',
   })
 
+  depends_on 'gmp'
   depends_on 'readline'
+  depends_on 'ncurses'
   depends_on 'zlibpkg'
+  depends_on 'openssl'
+
+  def self.build
+    system "CC='gcc' ./configure"
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
 end
