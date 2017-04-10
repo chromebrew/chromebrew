@@ -4,7 +4,7 @@ class Jdk8 < Package
   version '8u112'
   binary_url ({
     i686: "https://www.dropbox.com/s/0c9yratmcf5fdpq/jdk8u112-i686.tar.gz",
-    x86_64: "https://www.dropbox.com/s/ojtv2phawxzg6wr/jdk8u112-x86_64.tar.gz",
+    x86_64: "https://www.dropbox.com/s/efa747g7or3294u/jdk8u112-x86_64.tar.gz",
     armv7l: "https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz"
   })
   binary_sha1 ({
