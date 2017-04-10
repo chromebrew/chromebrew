@@ -281,9 +281,19 @@ end
 def resolveDependencies
   @dependencies = []
 
+  # check source packages existance
+  @source_package = 0
+
   def pushDeps
-    if @pkg.dependencies
-      @dependencies.unshift @pkg.dependencies
+    if @pkg.binary_url && @pkg.binary_url.has_key?(@device[:architecture])
+      @check_deps = @pkg.dependencies
+    else
+      # Use source dependencies
+      @check_deps = @pkg.dependencies
+      @source_package += 1
+    end
+    if @check_deps && !@check_deps.empty?
+      @dependencies.unshift @check_deps
       
       @pkg.dependencies.each do |dep|
         search dep, true
@@ -292,6 +302,14 @@ def resolveDependencies
     end
   end
   
+  pushDeps
+
+  # Add buildessential and solve its dependencies if any of dependent
+  # packages are made from source
+  if @source_package > 0
+    @dependencies.unshift 'buildessential'
+    search 'buildessential', true
+  end
   pushDeps
   
   return if @dependencies.empty?
