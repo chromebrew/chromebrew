@@ -462,8 +462,8 @@ when "remove"
 when nil
   puts "Chromebrew, version 0.4.1"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: search, download, install, remove, whatprovides"
+  puts "Available commands: download, install, remove, search, update, upgrade, whatprovides"
 else
   puts "I have no idea how to do #{@command} :("
-  puts "Available commands: search, download, install, remove, whatprovides"
+  puts "Available commands: download, install, remove, search, update, upgrade, whatprovides"
 end
