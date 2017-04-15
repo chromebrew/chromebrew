@@ -418,11 +418,10 @@ end
 
 def build_package (pwd)
   abort "It is not possible to build fake package" if @pkg.is_fake?
-  abort "It is not possible to build binary package" if !@pkg.source_url
-  abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
+  abort "It is not possible to build without source" if !@pkg.working_on_source?(@device[:architecture])
 
   # download source codes and unpack it
-  meta = download_source
+  meta = download
   target_dir = unpack meta
 
   # build from source and place binaries at CREW_DEST_DIR
