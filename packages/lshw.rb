@@ -6,14 +6,10 @@ class Lshw < Package
   source_sha1 'c0240f5e53cf40769d52e316719e8010ea6bdea3'
 
   def self.build
-    FileUtils.chdir("src") do
-      system "PREFIX=/usr/local make"
-    end
+    system "cd lshw-*/src; PREFIX=/usr/local make"
   end
 
   def self.install
-    FileUtils.chdir("src") do
-      system "PREFIX=/usr/local make DESTDIR=#{CREW_DEST_DIR} install"
-    end
+    system "cd lshw-*/src; PREFIX=/usr/local make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
