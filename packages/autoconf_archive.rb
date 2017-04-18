@@ -2,7 +2,7 @@ require 'package'
 
 class Autoconf_archive < Package
   version '2017-03-21'
-  source_url 'https://ftp.wrz.de/pub/gnu/autoconf-archive/autoconf-archive-2017.03.21.tar.xz'
+  source_url 'http://ftpmirror.gnu.org/autoconf-archive/autoconf-archive-2017.03.21.tar.xz'
   source_sha1 '93483641babea959e4a307a808cbd74fb9e90d58'
 
   depends_on 'perl'
