@@ -336,7 +336,8 @@ def resolveDependencies
   @source_package = 0
 
   def push_dependencies
-    if @pkg.is_binary?(@device[:architecture])
+    if @pkg.is_binary?(@device[:architecture]) ||
+       (!@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
       @check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
     elsif @pkg.is_fake?
@@ -348,13 +349,17 @@ def resolveDependencies
       # count the number of source packages to add buildessential into dependencies later
       @source_package += 1
     end
-    if @check_deps && !@check_deps.empty?
-      @dependencies.unshift @check_deps
 
-      @check_deps.each do |dep|
-        search dep, true
-        push_dependencies
-      end
+    # remove a dependent package which is equal to the target
+    @check_deps.select! {|name| @pkgName != name}
+
+    # insert only not installed packages into dependencies
+    @dependencies = @check_deps.select {|name| @device[:installed_packages].none? {|pkg| pkg[:name] == name}}.concat(@dependencies)
+
+    # check all dependencies recursively
+    @check_deps.each do |dep|
+      search dep, true
+      push_dependencies
     end
   end
 
@@ -363,16 +368,15 @@ def resolveDependencies
   # Add buildessential and solve its dependencies if any of dependent
   # packages are made from source
   if @source_package > 0
-    @dependencies.unshift 'buildessential'
     search 'buildessential', true
+    push_dependencies
   end
-  push_dependencies
 
   return if @dependencies.empty?
 
   puts "Following packages also need to be installed: "
 
-  @dependencies.flatten!.uniq!
+  @dependencies.uniq!
   @dependencies.each do |dep|
     print dep + " "
   end

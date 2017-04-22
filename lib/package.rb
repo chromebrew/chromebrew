@@ -12,8 +12,9 @@ class Package
   @@debug_symbol = ENV['CREW_DEBUG_SYMBOL'] || false
 
   def self.dependencies
-    # Not sure how to initialize instance variable of not constructed class.
-    # Therefore, initialize it in reader function.
+    # We need instance variable in derived class, so not define it here,
+    # base class.  Instead of define it, we initialize it in a function
+    # called from derived classees.
     @dependencies = Hash.new unless @dependencies
     @dependencies
   end
