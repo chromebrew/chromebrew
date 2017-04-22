@@ -1,17 +1,35 @@
 require 'package'
 
 class Glibc < Package
-  version '2.19'
-  binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-x86_64.tar.xz',
-  })
-  binary_sha1 ({
-    aarch64: 'c4da258eacf411833494bbe6903918909fb5629c',
-    armv7l:  'c4da258eacf411833494bbe6903918909fb5629c',
-    i686:    '7d7f4e8e137bbb96dea2b2792dc12a7e61c729d9',
-    x86_64:  '073545bf8aa4b29fbf9084d31848b40f1df1b4ef',
-  })
+  version '1.0'
+
+  is_fake
+
+  if (File.exist? "/lib/libc-2.23.so") || (File.exist? "/lib64/libc-2.23.so")
+    depends_on 'glibc223'
+    # Check previous version
+    if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
+      conflict_solve = "`sudo crew remove glibc219`"
+    end
+  else
+    depends_on 'glibc219'
+  end
+
+  # Check old glibc
+  if File.exist? CREW_CONFIG_PATH + "meta/glibc.filelist"
+    if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
+      # Already installed old glibc and glibc223, so need to remove both once
+      conflict_solve = "`sudo crew remove glibc223` AND `sudo crew remove glibc`"
+    else
+      # Already installed old glibc, so need it once
+      conflict_solve = "`sudo crew remove glibc`"
+    end
+  end
+
+  if conflict_solve
+    puts
+    puts "IN ORDER TO INSTALL/UPGRADE GLIBC, PLEASE PERFORMS #{conflict_solve} FIRST"
+    puts
+    exit 1
+  end
 end
