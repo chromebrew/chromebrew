@@ -1,9 +1,9 @@
 require 'package'
 
 class Php7 < Package
-  version '7.1.3'
-  source_url 'http://php.net/distributions/php-7.1.3.tar.xz'   # software source tarball url
-  source_sha1 'a9d442fbc9e0210273344a198564449e5ca34b1e'       # source tarball sha1 sum
+  version '7.1.4'
+  source_url 'http://php.net/distributions/php-7.1.4.tar.xz'   # software source tarball url
+  source_sha1 'e60f2621a0be0b538b94156b13d5313820ecd958'       # source tarball sha1 sum
 
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
