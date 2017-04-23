@@ -9,7 +9,11 @@ class Nano < Package
   depends_on 'ncurses' 
   
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure CPPFLAGS=\"-I/usr/local/include/ncurses\""
+    if Dir.exist? '/usr/local/include/ncursesw'
+      system "./configure CPPFLAGS=\"-I/usr/local/include/ncursesw\""
+    else
+      system "./configure CPPFLAGS=\"-I/usr/local/include/ncurses\""
+    end
     system "make"                                                 # ordered chronologically
   end
   

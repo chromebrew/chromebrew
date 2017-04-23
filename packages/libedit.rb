@@ -6,7 +6,11 @@ class Libedit < Package
   source_sha1 '55e327ee4661b13d20ebb411d790f2bb258271cf'
 
   def self.build
-    system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncurses"'
+    if Dir.exist? '/usr/local/include/ncursesw'
+      system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncursesw"'
+    else
+      system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncurses"'
+    end
     system "make"
   end
 
