@@ -1,7 +1,7 @@
 require 'package'
 
 class Newlisp < Package
-  version '10.7.0'
+  version '10.7.1'
   source_url 'http://www.newlisp.org/downloads/newlisp-10.7.1.tgz'
   source_sha1 '724e7fd1c0512a4236fde022825dfd7ef859ca96'
 
