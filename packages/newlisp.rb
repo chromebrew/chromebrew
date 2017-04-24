@@ -2,8 +2,8 @@ require 'package'
 
 class Newlisp < Package
   version '10.7.0'
-  source_url 'http://www.newlisp.org/downloads/newlisp-10.7.0.tgz'
-  source_sha1 '8c256d134e4879d97f83087585cfe90d462def22'
+  source_url 'http://www.newlisp.org/downloads/newlisp-10.7.1.tgz'
+  source_sha1 '724e7fd1c0512a4236fde022825dfd7ef859ca96'
 
   #depends_on 'readline'
   #depends_on 'libffi'
