@@ -8,6 +8,9 @@ class Gnutls < Package
   depends_on 'buildessential'
   depends_on 'nettle'
   depends_on 'pkgconfig'
+  depends_on 'libtasn1'
+  depends_on 'trousers'
+  depends_on 'p11kit'
 
   def self.build
     system "./configure"
