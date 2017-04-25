@@ -5,8 +5,6 @@ class Libtasn1 < Package
   source_url 'https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.10.tar.gz'
   source_sha1 'c7b36fa50866bbc889f7503c7fd1e9f9d7c52a64'
   
-  depends_on 'buildessential'
-  depends_on 'pkgconfig'
   
   def self.build
     system "make"
