@@ -1,9 +1,9 @@
 require 'package'
 
 class Gnutls < Package
-  version '3.5.9'
-  source_url 'ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5/gnutls-3.5.9.tar.xz'
-  source_sha1 'f3f184a92f128af1c2fb29b29a4d325af65694a5'
+  version '3.5.11'
+  source_url 'ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5/gnutls-3.5.11.tar.xz'
+  source_sha1 'bcdc68233590a99b8d4234270fe8a946d9a2abeb'
 
   depends_on 'buildessential' => :build
   depends_on 'zlibpkg' => :build
