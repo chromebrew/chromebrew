@@ -1,7 +1,7 @@
 require 'package'
 
 class Python27 < Package
-  version '2.7.13'
+  version '2.7.13-1'
   source_url 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz' # software source tarball url
   source_sha1 '18a8f30a0356c751b8d0ea6f76e764cab13ee046'                     # source tarball sha1 sum
 
@@ -10,7 +10,7 @@ class Python27 < Package
   depends_on 'openssl'
 
   def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncurses\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\" --with-ensure-pip=install"
+    system "./configure --prefix=/usr/local CPPFLAGS=\"-I/usr/local/include -I/usr/local/include/ncurses\" LDFLAGS=\"-L/usr/local/lib\" CFLAGS=\" -fPIC\" --with-ensurepip=install"
     system "make"                                                 # ordered chronologically
   end
 
