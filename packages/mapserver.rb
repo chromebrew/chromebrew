@@ -15,6 +15,7 @@ class Mapserver < Package
     Dir.chdir "build" do
       system "cmake -DWITH_THREAD_SAFETY=1 -DWITH_HARFBUZZ=0 -DWITH_FRIBIDI=0 -DWITH_FCGI=0 -DWITH_POSTGIS=0 -DWITH_GIF=0 -DWITH_CLIENT_WFS=1 -DWITH_CLIENT_WMS=1 -DWITH_CURL=1 -DCMAKE_C_FLAGS=\" -fPIC\" -DCMAKE_INSTALL_PREFIX=/usr/local .. > ../configure.out.txt"
       system "make"
+    end
   end
 
   def self.install
