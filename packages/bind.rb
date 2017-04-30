@@ -9,6 +9,7 @@ class Bind < Package
   depends_on "openssl"
   depends_on "libcap"
   depends_on "readline"
+  depends_on "diffutils"
 
   def self.build
     system "BUILD_CC=gcc ./configure --with-randomdev=no --with-ecdsa=yes --with-gost=yes --prefix=/usr/local"
@@ -16,6 +17,6 @@ class Bind < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
