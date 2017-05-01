@@ -7,6 +7,7 @@ class Subversion < Package
 
     depends_on 'aprutil'
     depends_on 'sqlite'
+    depends_on 'serf'
 
     def self.build
         system './configure --prefix=/usr/local --with-apr=/usr/local --with-apr-util=/usr/local'
@@ -14,6 +15,6 @@ class Subversion < Package
     end
 
     def self.install
-        system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+        system "make DESTDIR=#{CREW_DEST_DIR} install"
     end
 end
