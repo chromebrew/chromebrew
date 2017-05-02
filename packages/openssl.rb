@@ -10,7 +10,11 @@ class Openssl < Package
   depends_on 'zlibpkg'
 
   def self.build
-    system "./config", "--prefix=/usr/local", "--openssldir=/etc/ssl", "shared", "zlib-dynamic"
+    options="shared zlib-dynamic"
+    if `uname -m`.strip == 'aarch64'
+      options = options + " no-asm"
+    end
+    system "./config --prefix=/usr/local --openssldir=/etc/ssl #{options}"
     system "make"
   end
 
