@@ -1,17 +1,17 @@
 require 'package'
 
 class Mpfr < Package
-  version '3.1.5'
+  version '3.1.5-cc1.3'
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/newtoolchains/mpfr-3.1.5-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/mpfr-3.1.5-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chromebrew/releases/download/newtoolchains/mpfr-3.1.5-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/mpfr-3.1.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/mpfr-3.1.5-cc1.3-chromeos-armv7l.tar.xz',
+    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.3/mpfr-3.1.5-cc1.3-chromeos-armv7l.tar.xz',
+    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.3/mpfr-3.1.5-cc1.3-chromeos-i686.tar.xz',
+    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.3/mpfr-3.1.5-cc1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha1 ({
-    aarch64: '8ace66e438f6593affc460cc8a45f2a7df0ac1ca',
-    armv7l:  '8ace66e438f6593affc460cc8a45f2a7df0ac1ca',
-    i686:    '1a3e4833cbdf002e5fd62135b5113c37c2700362',
-    x86_64:  '0028523daf1b3935bad21d3706e39fb248a8f0f2',
+    aarch64: 'd201c3e9c7fa3d483e93cb967e9ae78b4578868b',
+    armv7l:  'd201c3e9c7fa3d483e93cb967e9ae78b4578868b',
+    i686:    '71569b4f88e852d0a6734b2be8e200f52248a7fe',
+    x86_64:  '7d434ebe762b004d9f822f5baa21b9c9f37452b0',
   })
 end
