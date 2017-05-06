@@ -12,6 +12,6 @@ class Scons < Package
   end
 
   def self.install
-    system "python2.7 setup.py install --prefix=/usr/local"
+    system "python2.7 setup.py install --prefix=/usr/local --root=#{CREW_DEST_DIR}"
   end
 end
