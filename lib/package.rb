@@ -5,7 +5,7 @@ class Package
   
   class << self
     attr_reader :dependencies, :is_fake
-    attr_accessor :name, :in_build
+    attr_accessor :name, :in_build, :build_from_source
   end
   def self.depends_on (dependency = nil)
     @dependencies = [] unless @dependencies
@@ -14,17 +14,45 @@ class Package
     end
     @dependencies
   end
-  
+
+  def self.get_url (architecture)
+    if !@build_from_source && @binary_url && @binary_url.has_key?(architecture)
+      return @binary_url[architecture]
+    else
+      return @source_url
+    end
+  end
+
+  def self.is_binary? (architecture)
+    if !@build_from_source && @binary_url && @binary_url.has_key?(architecture)
+      return true
+    else
+      return false
+    end
+  end
+
+  def self.is_source? (architecture)
+    if is_binary?(architecture) || is_fake?
+      return false
+    else
+      return true
+    end
+  end
+
   def self.is_fake
     @is_fake = true
   end
-  
+
   def self.is_fake?
     @is_fake
   end
 
   def self.build
-    
+
+  end
+
+  def self.check
+
   end
 
   def self.system(*args)

@@ -22,6 +22,14 @@ else
   CREW_NPROC = ENV["CREW_NPROC"]
 end
 
+# Set XZ_OPT environment variable for build command.
+# If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
+if ENV["CREW_XZ_OPT"].to_s == ''
+  ENV["XZ_OPT"] = "-7e"
+else
+  ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
+end
+
 ARCH = `uname -m`.strip
 
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -160,15 +168,17 @@ def upgrade
 end
 
 def download
-  if @pkg.binary_url && @pkg.binary_url.has_key?(@device[:architecture])
-    url = @pkg.binary_url[@device[:architecture]]
-    source = false
+  url = @pkg.get_url(@device[:architecture])
+  source = @pkg.is_source?(@device[:architecture])
+
+  if !source
     puts "Precompiled binary available, downloading..."
+  elsif @pkg.build_from_source
+    puts "Downloading source..."
   else
-    url = @pkg.source_url
-    source = true
     puts "No precompiled binary available for your platform, downloading source..."
   end
+
   uri = URI.parse url
   filename = File.basename(uri.path)
   if source
@@ -383,6 +393,68 @@ def install
   puts "#{@pkg.name.capitalize} installed!"
 end
 
+def resolve_dependencies_and_build
+  begin
+    origin = @pkg.name
+
+    # mark current package as which is required to compile from source
+    @pkg.build_from_source = true
+    resolveDependencies
+
+    search origin, true
+    build_package Dir.pwd
+  rescue InstallError => e
+    abort "#{@pkg.name} failed to build: #{e.to_s}"
+  ensure
+    #cleanup
+    unless ARGV[2] == 'keep'
+      Dir.chdir CREW_BREW_DIR do
+        system "rm -rf *"
+        system "mkdir dest" #this is a little ugly, feel free to find a better way
+      end
+    end
+  end
+end
+
+def build_package (pwd)
+  abort "It is not possible to build fake package" if @pkg.is_fake?
+  abort "It is not possible to build without source" if !@pkg.is_source?(@device[:architecture])
+
+  # download source codes and unpack it
+  meta = download
+  target_dir = unpack meta
+
+  # build from source and place binaries at CREW_DEST_DIR
+  build_and_preconfigure target_dir
+
+  # call check method here.  this check method is called by this function only,
+  # therefore it is possible place time consuming tests in the check method.
+  if Dir.exist? target_dir
+    Dir.chdir target_dir do
+      puts "Checking..."
+      @pkg.check
+    end
+  end
+
+  # prepare filelist and dlist at CREW_DEST_DIR
+  prepare_package CREW_DEST_DIR
+
+  # build package from filelist, dlist and binary files in CREW_DEST_DIR
+  puts "Archiving..."
+  archive_package pwd
+end
+
+def archive_package (pwd)
+  pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
+  Dir.chdir CREW_DEST_DIR do
+    system "tar cJf #{pwd}/#{pkg_name} *"
+  end
+  Dir.chdir pwd do
+    system "sha1sum #{pkg_name} > #{pkg_name}.sha1"
+  end
+  puts "#{pkg_name} is built!"
+end
+
 def remove (pkgName)
 
   #make sure the package is actually installed
@@ -456,14 +528,17 @@ when "upgrade"
 when "install"
   search @pkgName
   resolveDependenciesAndInstall
+when "build"
+  search @pkgName
+  resolve_dependencies_and_build
 when "remove"
   abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   remove @pkgName
 when nil
   puts "Chromebrew, version 0.4.1"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: download, install, remove, search, update, upgrade, whatprovides"
+  puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
 else
   puts "I have no idea how to do #{@command} :("
-  puts "Available commands: download, install, remove, search, update, upgrade, whatprovides"
+  puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
 end
