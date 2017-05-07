@@ -6,7 +6,8 @@ class Nano < Package
   source_sha1 '5ad089d08e68dc7977f51403de6d7872686647af'
 
   depends_on 'buildessential'
-  depends_on 'ncurses' 
+  depends_on 'ncurses'
+  depends_on 'filecmd'
   
   def self.build                                                  # self.build contains commands needed to build the software from source
     system "./configure CPPFLAGS=\"-I/usr/local/include/ncurses\""
