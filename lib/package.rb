@@ -6,6 +6,7 @@ class Package
   class << self
     attr_reader :dependencies, :is_fake
     attr_accessor :name, :in_build, :build_from_source
+    attr_accessor :in_upgrade
   end
   def self.depends_on (dependency = nil)
     @dependencies = [] unless @dependencies
