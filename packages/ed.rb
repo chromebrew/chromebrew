@@ -6,7 +6,7 @@ class Ed < Package
   source_sha1 '3e8aa331ffbc929884107ff3f8fbd76d01252277'
 
   # only lz archive is available for ed and it requires lzip.
-  depends_on 'lzip'
+  depends_on 'lzip' => :build
 
   def self.build
     system "./configure"
