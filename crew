@@ -299,17 +299,22 @@ def resolveDependencies
   @source_package = 0
 
   def pushDeps
-    if @pkg.binary_url && @pkg.binary_url.has_key?(@device[:architecture])
-      @check_deps = @pkg.dependencies
+    if @pkg.is_binary?(@device[:architecture])
+      # retrieve name of dependencies that doesn't contain :build tag
+      @check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
+    elsif @pkg.is_fake?
+      # retrieve name of all dependencies
+      @check_deps = @pkg.dependencies.map {|k, v| k}
     else
-      # Use source dependencies
-      @check_deps = @pkg.dependencies
+      # retrieve name of all dependencies
+      @check_deps = @pkg.dependencies.map {|k, v| k}
+      # count the number of source packages to add buildessential into dependencies later
       @source_package += 1
     end
     if @check_deps && !@check_deps.empty?
       @dependencies.unshift @check_deps
-      
-      @pkg.dependencies.each do |dep|
+
+      @check_deps.each do |dep|
         search dep, true
         pushDeps
       end
