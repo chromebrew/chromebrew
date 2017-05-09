@@ -2,16 +2,36 @@ require 'package_helpers'
 
 class Package
   property :version, :binary_url, :binary_sha1, :source_url, :source_sha1, :is_fake
-  
+
   class << self
-    attr_reader :dependencies, :is_fake
+    attr_reader :is_fake
     attr_accessor :name, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
+
+  def self.dependencies
+    # Not sure how to initialize instance variable of not constructed class.
+    # Therefore, initialize it in reader function.
+    @dependencies = Hash.new unless @dependencies
+    @dependencies
+  end
+
   def self.depends_on (dependency = nil)
-    @dependencies = [] unless @dependencies
+    @dependencies = Hash.new unless @dependencies
     if dependency
-      @dependencies << dependency
+      # add element in "[ name, [ tag1, tag2, ... ] ]" format
+      if dependency.is_a?(Hash)
+        if dependency.first[1].is_a?(Array)
+          # parse "depends_on name => [ tag1, tag2 ]"
+          @dependencies.store(dependency.first[0], dependency.first[1])
+        else
+          # parse "depends_on name => tag"
+          @dependencies.store(dependency.first[0], [ dependency.first[1] ])
+        end
+      else
+        # parse "depends_on name"
+        @dependencies.store(dependency, [])
+      end
     end
     @dependencies
   end
