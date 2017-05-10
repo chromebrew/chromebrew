@@ -1,9 +1,9 @@
 require 'package'
 
 class Curl < Package
-  version '7.52.1'
-  source_url 'https://curl.haxx.se/download/curl-7.52.1.tar.bz2'
-  source_sha1 'aa9f2300096d806c68c7ba8c50771853d1b43eb4'
+  version '7.54.0'
+  source_url 'https://curl.haxx.se/download/curl-7.54.0.tar.bz2'
+  source_sha1 'e1cc251508e98bc5a8b9d5c40d8a4f6e48465d1c'
 
   depends_on 'openssl' => :build
   depends_on 'zlibpkg' => :build
@@ -20,6 +20,6 @@ class Curl < Package
   end
 
   def self.check
-    system "make test"
+    system "make", "test"
   end
 end
