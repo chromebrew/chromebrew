@@ -1,7 +1,7 @@
 require 'package'
 
 class Xzutils < Package
-  version '5.2.3-1'
+  version '5.2.3-2'
   source_url 'http://tukaani.org/xz/xz-5.2.3.tar.gz'
   source_sha1 '529638eec3597e429cc54c74551ac0a89169e841'
 
@@ -11,7 +11,10 @@ class Xzutils < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+
+    # strip debug symbol from library
+    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/liblzma.so.*"
   end
 
   def self.check
