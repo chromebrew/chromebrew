@@ -15,6 +15,9 @@ class Libssh2 < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+
+    # strip debug symbol from library
+    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/libssh2.so.*"
   end
 
   def self.check
