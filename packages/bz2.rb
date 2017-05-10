@@ -21,6 +21,24 @@ class Bz2 < Package
 
     # Use PREFIX instead of DESTDIR
     system "make", "PREFIX=#{CREW_DEST_DIR}/usr/local", "install"
+
+    # Remove static library
+    system "rm", "#{CREW_DEST_DIR}/usr/local/lib/libbz2.a"
+
+    # Install bzip2 using shared library by hand
+    system "cp", "-p", "bzip2-shared", "bzip2"
+    system "cp", "-p", "bzip2", "#{CREW_DEST_DIR}/usr/local/bin/bzip2"
+    system "ln", "-sf", "bzip2", "#{CREW_DEST_DIR}/usr/local/bin/bunzip2"
+    system "ln", "-sf", "bzip2", "#{CREW_DEST_DIR}/usr/local/bin/bzcat"
+
+    # Install shared library by hand
+    system "cp", "-p", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}/usr/local/lib"
+    system "ln", "-s", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}/usr/local/lib/libbz2.so.1.0"
+
+    # Strip binaries and libraries
+    system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2"
+    system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2recover"
+    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/*"
   end
 
   def self.check
