@@ -45,7 +45,7 @@ abort "Chromebrew should not be run as root." if Process.uid == 0 && @command !=
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def setPkg (pkgName, silent = false)
+def set_package (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
@@ -64,7 +64,7 @@ end
 
 def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+    return set_package(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
   abort "package #{pkgName} not found :("
 end
@@ -140,7 +140,7 @@ def upgrade
     if currentVersion != @pkg.version
       puts "Updating #{@pkg.name}..."
       @pkg.in_upgrade = true
-      resolveDependenciesAndInstall
+      resolve_dependencies_and_install
       @pkg.in_upgrade = false
     else
       puts "#{@pkg.name} is already up to date."
@@ -159,7 +159,7 @@ def upgrade
       toBeUpdated.each do |package|
         search package
         @pkg.in_upgrade = true
-        resolveDependenciesAndInstall
+        resolve_dependencies_and_install
         @pkg.in_upgrade = false
       end
       puts "Packages have been updated."
@@ -271,7 +271,7 @@ def install_package (pkgdir)
   end
 end
 
-def resolveDependenciesAndInstall
+def resolve_dependencies_and_install
   begin
     origin = @pkg.name
 
@@ -298,7 +298,7 @@ def resolveDependencies
   # check source packages existance
   @source_package = 0
 
-  def pushDeps
+  def push_dependencies
     if @pkg.is_binary?(@device[:architecture])
       # retrieve name of dependencies that doesn't contain :build tag
       @check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
@@ -316,12 +316,12 @@ def resolveDependencies
 
       @check_deps.each do |dep|
         search dep, true
-        pushDeps
+        push_dependencies
       end
     end
   end
   
-  pushDeps
+  push_dependencies
 
   # Add buildessential and solve its dependencies if any of dependent
   # packages are made from source
@@ -329,7 +329,7 @@ def resolveDependencies
     @dependencies.unshift 'buildessential'
     search 'buildessential', true
   end
-  pushDeps
+  push_dependencies
   
   return if @dependencies.empty?
 
@@ -542,7 +542,7 @@ when "upgrade"
   upgrade
 when "install"
   search @pkgName
-  resolveDependenciesAndInstall
+  resolve_dependencies_and_install
 when "build"
   search @pkgName
   resolve_dependencies_and_build
