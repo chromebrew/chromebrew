@@ -1,16 +1,21 @@
 require 'package'
 
 class Pcre < Package
-  version '8.39'
-  source_url 'http://downloads.sourceforge.net/pcre/pcre-8.39.tar.bz2' # software source tarball url
-  source_sha1 '5e38289fd1b4ef3e8426f31a01e34b6924d80b90'                  # source tarball sha1 sum
+  version '8.40'
+  source_url 'https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.bz2'
+  source_sha1 '12f338719b8b028a2eecbf9192fcc00a13fc04f6'
   
-  def self.build                                                  # self.build contains commands needed to build the software from source
-    system "./configure"
-    system "make"                                                 # ordered chronologically
+  def self.build
+    system "./configure", "--enable-shared", "--disable-static", "--with-pic", "--enable-utf"
+    system "make"
   end
 
-  def self.install                                                # self.install contains commands needed to install the software on the target system
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"          # remember to include DESTDIR set to CREW_DEST_DIR - needed to keep track of changes made to system
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/lib*.so.*"
+  end
+
+  def self.check
+    system "make", "check"
   end
 end
