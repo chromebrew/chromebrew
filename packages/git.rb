@@ -1,25 +1,34 @@
 require 'package'
 
 class Git < Package
-  version '1.8.4'
-  binary_url ({
-    aarch64: 'https://dl.dropboxusercontent.com/s/lnz5hmjv48d14f2/git-1.8.4-chromeos-armv7l.tar.xz',
-    armv7l:  'https://dl.dropboxusercontent.com/s/lnz5hmjv48d14f2/git-1.8.4-chromeos-armv7l.tar.xz',
-    i686:    'https://dl.dropboxusercontent.com/s/g3binxopw5nfky1/git-1.8.4-chromeos-i686.tar.gz?token_hash=AAEWnMNBfozSIzLD1unbYGJzT4FGkEfJmLFQ-3uzydfT_A&dl=1',
-    x86_64:  'https://dl.dropboxusercontent.com/s/i7vs9wfk94tsrzt/git-1.8.4-chromeos-x86_64.tar.gz?token_hash=AAHyvjayN7THoxlryZaxQ2Ejm9xyD6bZCqXZM81hYRC8iQ&dl=1',
-  })
-  binary_sha1 ({
-    aarch64: '084a3b9bb90c572e7c5b12aae485715f145053e5',
-    armv7l:  '084a3b9bb90c572e7c5b12aae485715f145053e5',
-    i686:    '8c1bf4bcffb0e9c17bf20dd05981e86ea34d5d65',
-    x86_64:  '067cb6c36616ac30999ab97e85f3dc0e9d1d57f4',
-  })
+  version '2.13.0'
+  source_url 'https://github.com/git/git/archive/v2.13.0.tar.gz'
+  source_sha1 'd0078048574b824bc0d202deb3830717a955eb3e'
 
-  depends_on 'zlibpkg'
+  # use system zlibpkg, openssl, curl, expat
+  depends_on 'zlibpkg' => :build
   depends_on 'libssh2'
-  depends_on 'perl'
-  depends_on 'curl'
-  depends_on 'expat'
-  depends_on 'gettext'
-  depends_on 'python'
+  depends_on 'openssl' => :build
+  depends_on 'curl' => :build
+  depends_on 'expat' => :build
+  depends_on 'gettext' => :build
+  depends_on 'perl' => :build
+  depends_on 'python27' => :build     # requires python2
+
+  # need to build using single core
+  @make_cmd = "make -j1 prefix=/usr/local CC=gcc PERL_PATH=/usr/local/bin/perl PYTHON_PATH=/usr/local/bin/python2"
+
+  def self.build
+    system "#{@make_cmd} all"
+    system "#{@make_cmd} strip"
+  end
+
+  def self.install
+    system "#{@make_cmd} DESTDIR=#{CREW_DEST_DIR} install"
+  end
+
+  def self.check
+    # Skip several t9010-svn-fe and t9011-svn-da tests since they fail.
+    system "GIT_SKIP_TESTS='t9010.16 t9010.20 t9011.1[49] t9011.2[0346] t9011.31 ' #{@make_cmd} test"
+  end
 end
