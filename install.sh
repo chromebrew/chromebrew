@@ -25,9 +25,12 @@ case "$architecture" in
   exit 1;;
 esac
 
+#This will allow things to work without sudo
+sudo chown -R `id -u`:`id -g` /usr/local
+
 #prepare directories
 for dir in $CREW_LIB_PATH $CREW_CONFIG_PATH $CREW_CONFIG_PATH/meta $CREW_BREW_DIR $CREW_DEST_DIR $CREW_PACKAGES_PATH; do
-  sudo mkdir -p $dir && sudo chown -R $USER:$USER $dir
+  mkdir -p $dir
 done
 
 #prepare url and sha256
@@ -96,7 +99,7 @@ function extract_install () {
     rm -rf ./usr
     tar -xf $2
     echo "Installing $1 (this may take a while)..."
-    sudo tar cf - ./usr/* | (cd /; sudo tar xp --keep-directory-symlink -f -)
+    tar cf - ./usr/*
     mv ./dlist $CREW_CONFIG_PATH/meta/$1.directorylist
     mv ./filelist $CREW_CONFIG_PATH/meta/$1.filelist
 }
@@ -156,7 +159,7 @@ rm -rf crew lib packages
 wget -N $URL/crew
 chmod +x crew
 rm -f $CREW_PREFIX/bin/crew
-sudo ln -s `pwd`/crew $CREW_PREFIX/bin
+ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
 mkdir -p $CREW_LIB_PATH/lib
 cd $CREW_LIB_PATH/lib
@@ -165,10 +168,7 @@ wget -N $URL/lib/package_helpers.rb
 
 #Making GCC act like CC (For some npm packages out there)
 rm -f /usr/local/bin/cc
-sudo ln -s /usr/local/bin/gcc /usr/local/bin/cc
-
-#This will allow a lot of things to work without sudo
-sudo chown -R `id -u`:`id -g` /usr/local
+ln -s /usr/local/bin/gcc /usr/local/bin/cc
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
