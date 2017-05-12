@@ -42,12 +42,12 @@ Usage
     crew <command> <package> <keep[temporary files]>
 
 Where available commands are:
-  
+
   * search [looks for a package]
   * download [downloads a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but doesn't install it]
   * install [installs a package along with its dependencies. You'll be prompted for confirmation]
-  * remove [removes a package. Must be ran as root]
-  
+  * remove [removes a package.]
+
 Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass "keep" as the last parameter when running "crew install".
