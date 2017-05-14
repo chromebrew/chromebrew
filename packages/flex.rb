@@ -11,7 +11,7 @@ class Flex < Package
   def self.build
     system "./configure", "--with-pic", "--disable-static", "--enable-shared"
     system "make"
-    system "find . -name '*.so' -print | xargs strip -S"
+    system "find . -name 'lib*.so.*' -print | xargs strip -S"
   end
 
   def self.install
