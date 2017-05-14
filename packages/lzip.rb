@@ -1,7 +1,7 @@
 require 'package'
 
 class Lzip < Package
-  version '1.19'
+  version '1.19-1'
   source_url 'http://download.savannah.gnu.org/releases/lzip/lzip-1.19.tar.gz'
   source_sha1 'c6042a786b69e3209112fa991806e2e7e0ba5f07'
 
@@ -12,7 +12,7 @@ class Lzip < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
   end
 
   def self.check
