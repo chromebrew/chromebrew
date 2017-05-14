@@ -1,7 +1,7 @@
 require 'package'
 
 class Ed < Package
-  version '1.14.2'
+  version '1.14.2-1'
   source_url 'http://ftpmirror.gnu.org/ed/ed-1.14.2.tar.lz'
   source_sha1 '3e8aa331ffbc929884107ff3f8fbd76d01252277'
 
@@ -14,7 +14,7 @@ class Ed < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
   end
 
   def self.check
