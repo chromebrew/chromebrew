@@ -9,8 +9,8 @@ class Pkgconfig < Package
   #   depends_on 'buildessential'
   # Write dependency to gcc make linuxheaders instead.
   depends_on 'gcc'
-  depends_on 'make'
   depends_on 'linuxheaders'
+  depends_on 'make'
 
   def self.build
       # check lib64 on any architectures since it is not a problem to not exist lib64 directory.
