@@ -22,10 +22,10 @@ class Mandb < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     puts ""
-    puts "You will have to change the default PAGER env variable to be able to use mandb:"
+    puts "You will have to change the default PAGER environment variable to be able to use mandb:"
     puts "echo \"export PAGER=/usr/local/bin/less\" >> ~/.bashrc && . ~/.bashrc"
     puts ""
-    puts "You will also have to set the MANPATH env variable:"
-    puts "echo \"export MANPATH/usr/local/man:$MANPATH\" >> ~/.bashrc && ~/.bashrc"
+    puts "You will also have to set the MANPATH environment variable:"
+    puts "echo \"export MANPATH=/usr/local/man:$MANPATH\" >> ~/.bashrc && . ~/.bashrc"
   end
 end
