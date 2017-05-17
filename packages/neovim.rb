@@ -11,6 +11,7 @@ class Neovim < Package
   depends_on 'cmake'
   depends_on 'gcc'
   depends_on 'pkgconfig'
+  depends_on 'unzip'
 
   def self.build
     system "make"
