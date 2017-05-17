@@ -1,16 +1,14 @@
 require 'package'
 
 class Bc < Package
-  version '1.07.1'
-  source_url 'https://ftp.gnu.org/gnu/bc/bc-1.07.1.tar.gz'
-  source_sha1 'b4475c6d66590a5911d30f9747361db47231640a'
+  version '1.06-1'
+  source_url 'http://ftp.gnu.org/gnu/bc/bc-1.06.tar.gz'
+  source_sha1 'c8f258a7355b40a485007c40865480349c157292'
 
-  depends_on 'readline'
   depends_on 'flex'
-  depends_on 'ed'
 
   def self.build
-    system "./configure", "--with-readline"
+    system "./configure"
     system "make"
   end
 

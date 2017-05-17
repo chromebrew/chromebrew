@@ -1,9 +1,9 @@
 require 'package'
 
 class Libunwind < Package
-  version '1.2'
-  source_url 'http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz'
-  source_sha1 'a33e52d7ecd18b9375508369b566eeb2cc6eec3b'
+  version '1.1'
+  source_url 'http://download.savannah.gnu.org/releases/libunwind/libunwind-1.1.tar.gz'
+  source_sha1 '07ea3c55e67e26fb7a2ab00ecc67c9e80130ad42'
 
   depends_on 'buildessential'
   depends_on 'openssl'

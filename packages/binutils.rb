@@ -1,17 +1,15 @@
 require 'package'
 
 class Binutils < Package
-  version '2.25-1'
+  version '2.23.2'
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/newtoolchains/binutils-2.25-1-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/binutils-2.25-1-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chromebrew/releases/download/newtoolchains/binutils-2.25-1-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/binutils-2.25-1-chromeos-x86_64.tar.xz',
+    armv7l: "https://dl.dropboxusercontent.com/s/jkaqtj356gmh5un/binutils-2.25-chromeos-armv7l.tar.xz",
+    i686: 'https://dl.dropboxusercontent.com/s/u3cp7mpdyfx99ij/binutils-2.23.2-chromeos-i686.tar.gz?token_hash=AAGsFB9HXNb5tSAm_Wd2GyIUL59BkZYgMTHkj4CkHLxggg&dl=1',
+    x86_64: 'https://dl.dropboxusercontent.com/s/mnu21v101rdbm8k/binutils-2.23.2-chromeos-x86_64.tar.gz?token_hash=AAEn4ngAJs-fpRUz1n1Q_2WKxQvQnPMwlgcEHBDKyLOpoA&dl=1'
   })
   binary_sha1 ({
-    aarch64: '5a4b3c8ddcac5d1b3fdc2f6aee8c9ec64f2d23ea',
-    armv7l:  '5a4b3c8ddcac5d1b3fdc2f6aee8c9ec64f2d23ea',
-    i686:    '9d8d586e5e44badbe1f2058f53c183c019353a0e',
-    x86_64:  '94d246a14efc080a398aefe9e192331a4ffaed46',
+    armv7l: "60d855c14c2ffb6fd9a486a6284c1b888cbe04ab",
+    i686: 'a7edc9bdaf9fc72112fe6b370f158a9a1aee87ac',
+    x86_64: '1c13b8f261e419a66b87f09653f3fbaf8449efe1'
   })
 end

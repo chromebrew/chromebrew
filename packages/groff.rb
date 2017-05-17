@@ -7,9 +7,7 @@ class Groff < Package
   
   def self.build
     system './configure'
-
-    # force to compile in sequential since groff Makefile doesn't work in parallel
-    system 'make', '-j1'
+    system 'make'
   end
   
   def self.install

@@ -2,7 +2,7 @@ require 'package'
 
 class Tcpstat < Package
   version '1.5' 
-  source_url 'https://web.archive.org/web/20160504233625/http://www.frenchfries.net/paul/tcpstat/tcpstat-1.5.tar.gz' 
+  source_url 'http://www.frenchfries.net/paul/tcpstat/tcpstat-1.5.tar.gz' 
   source_sha1 '3881edafe2a45c807a6f197792251036c599ec50'
 
   def self.build

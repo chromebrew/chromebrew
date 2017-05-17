@@ -14,7 +14,7 @@ class Nethack4 < Package
 
   
   def self.build
-    target="build"
+    target=CREW_BREW_DIR+"nethack4-4.3-beta2/build"
     system "mkdir -p " + target
     Dir.chdir target  do
       #build with rpath pointing at /usr/local
@@ -24,7 +24,7 @@ class Nethack4 < Package
   end
   
   def self.install
-    target="build"
+    target=CREW_BREW_DIR+"nethack4-4.3-beta2/build"
     Dir.chdir target  do
       #install in destdir so package manager can keep track
       system "/usr/local/bin/perl ../aimake --install-only -i #{CREW_DEST_DIR}/usr/local/ --directory-layout=prefix --without=gui"  

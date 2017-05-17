@@ -7,17 +7,11 @@ class Ffcall < Package
 
   def self.build
     system "./configure --prefix=/usr/local CFLAGS=\" -fPIC\""
-
-    # force to compile in sequential since ffcall Makefile doesn't work in parallel
-    system "make", "-j1"
+    system "make"
   end
 
   def self.install
     system "make check"
-
-    # ffcall's `make install` doesn't create intermediate directory, so prepare for it here.
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local"
-
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

@@ -3,7 +3,7 @@ require 'package'
 class Vim < Package
   version '8.0'
   source_url 'ftp://ftp.vim.org/pub/vim/unix/vim-8.0.tar.bz2'
-  source_sha1 '54bb7fe631ed8eaea5675ec934e88b0da1f1eca0'
+  source_sha1 '1f852a99d667bd675d2f2a70e82094bdbe844108'
 
   depends_on 'ncurses'
   depends_on 'perl'

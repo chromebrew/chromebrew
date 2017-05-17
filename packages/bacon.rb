@@ -1,17 +1,15 @@
 require 'package'
 
 class Bacon < Package
-  version '3.5.3'
-  source_url 'http://www.basic-converter.org/stable/bacon-3.5.3.tar.gz'
-  source_sha1 'd88cc452d0580309e106f692639293ef2c249f58'
+  version '3.5.1'
+  source_url 'http://www.basic-converter.org/stable/bacon-3.5.1.tar.gz'
+  source_sha1 '13a90fa76a07edf36e4a4e5b242b60479a0eccc3'
 
   def self.build
-    system "./configure --prefix=/usr/local --disable-gui"
+    system "./configure --prefix=/usr/local --without-gui"
     system 'sed -i "45s,/usr/share,/usr/local/share," Makefile'
     system 'sed -i "46s,/usr/share,/usr/local/share," Makefile'
-
-    # force to compile in sequential since bacon Makefile doesn't work in parallel
-    system "make", "-j1"
+    system "make"
   end
 
   def self.install

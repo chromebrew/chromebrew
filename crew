@@ -13,21 +13,13 @@ CREW_PREFIX = '/usr/local'
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
-CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
+CREW_DEST_DIR = CREW_BREW_DIR + '/dest'
 
 # Set CREW_NPROC from environment variable or `nproc`
 if ENV["CREW_NPROC"].to_s == ''
   CREW_NPROC = `nproc`.strip
 else
   CREW_NPROC = ENV["CREW_NPROC"]
-end
-
-# Set XZ_OPT environment variable for build command.
-# If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
-if ENV["CREW_XZ_OPT"].to_s == ''
-  ENV["XZ_OPT"] = "-7e"
-else
-  ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
 end
 
 ARCH = `uname -m`.strip
@@ -45,7 +37,7 @@ abort "Chromebrew should not be run as root." if Process.uid == 0 && @command !=
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def set_package (pkgName, silent = false)
+def setPkg (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
@@ -64,7 +56,7 @@ end
 
 def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return set_package(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+    return setPkg(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
   abort "package #{pkgName} not found :("
 end
@@ -104,7 +96,7 @@ def update
     system "git reset --hard origin/master"
   end
   puts "Package lists, crew, and library updated."
-
+  
   #check for outdated installed packages
   puts "Checking for package updates..."
   puts ""
@@ -117,7 +109,7 @@ def update
       puts @pkg.name + " could be updated from " + package[:version] + " to " + @pkg.version
     end
   end
-
+  
   if canBeUpdated > 0
     puts ""
     puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
@@ -136,12 +128,12 @@ def upgrade
         currentVersion = package[:version]
       end
     end
-
+    
     if currentVersion != @pkg.version
+      search @pkg.name
       puts "Updating #{@pkg.name}..."
-      @pkg.in_upgrade = true
-      resolve_dependencies_and_install
-      @pkg.in_upgrade = false
+      remove @pkg.name
+      resolveDependenciesAndInstall
     else
       puts "#{@pkg.name} is already up to date."
     end
@@ -153,14 +145,13 @@ def upgrade
         toBeUpdated.push(package[:name])
       end
     end
-
+  
     if toBeUpdated.length > 0
       puts "Updating packages..."
       toBeUpdated.each do |package|
         search package
-        @pkg.in_upgrade = true
-        resolve_dependencies_and_install
-        @pkg.in_upgrade = false
+        remove @pkg.name
+        resolveDependenciesAndInstall
       end
       puts "Packages have been updated."
     else
@@ -170,19 +161,15 @@ def upgrade
 end
 
 def download
-  url = @pkg.get_url(@device[:architecture])
-  source = @pkg.is_source?(@device[:architecture])
-
-  if !url
-    abort "No precompiled binary for #{@device[:architecture]} nor source is available."
-  elsif !source
+  if @pkg.binary_url && @pkg.binary_url.has_key?(@device[:architecture])
+    url = @pkg.binary_url[@device[:architecture]]
+    source = false
     puts "Precompiled binary available, downloading..."
-  elsif @pkg.build_from_source
-    puts "Downloading source..."
   else
+    url = @pkg.source_url
+    source = true
     puts "No precompiled binary available for your platform, downloading source..."
   end
-
   uri = URI.parse url
   filename = File.basename(uri.path)
   if source
@@ -198,89 +185,16 @@ def download
   return {source: source, filename: filename}
 end
 
-def unpack (meta)
-  extract_dir = "#{meta[:filename]}.dir"
-  target_dir = nil
-  Dir.chdir CREW_BREW_DIR do
-    puts "Unpacking archive, this may take a while..."
-    Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
-    if meta[:filename][-4,4] == ".zip"
-      system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
-    else
-      system "tar", "xf", meta[:filename], "-C", "#{extract_dir}"
-    end
-    if meta[:source] == true
-      # Check the number of directories in the archive
-      entries=Dir["#{extract_dir}/*"]
-      if entries.length == 0
-        abort "empty archive: #{meta[:filename]}"
-      elsif entries.length == 1 && File.directory?(entries.first)
-        # Use `extract_dir/dir_in_archive` if there is only one directory.
-        target_dir = entries.first
-      else
-        # Use `extract_dir` otherwise
-        target_dir = extract_dir
-      end
-    else
-      # Use `extract_dir` for binary distribution
-      target_dir = extract_dir
-    end
-  end
-  return CREW_BREW_DIR + target_dir
-end
-
-def build_and_preconfigure (target_dir)
-  Dir.chdir target_dir do
-    puts "Building from source, this may take a while..."
-    @pkg.in_build = true
-    @pkg.build
-    @pkg.in_build = false
-    system "rm -rf #{CREW_DEST_DIR}/*" #wipe crew destdir
-    puts "Preconfiguring package..."
-    @pkg.install
-  end
-end
-
-def prepare_package (destdir)
-  Dir.chdir destdir do
-    #create directory list
-    system "find . -type f > ../filelist"
-    system "find . -type l >> ../filelist"
-    system "cut -c2- ../filelist > filelist"
-    #create file list
-    system "find . -type d > ../dlist"
-    system "cut -c2- ../dlist > dlistcut"
-    system "tail -n +2 dlistcut > dlist"
-    #remove temporary files
-    system "rm dlistcut ../dlist ../filelist"
-  end
-end
-
-def install_package (pkgdir)
-  Dir.chdir pkgdir do
-    FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
-    FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
-
-    File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
-      system "mkdir", "-p", line.chomp
-    end
-
-    File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist").each_line do |line|
-      system "mv", pkgdir + line.chomp, line.chomp
-    end
-  end
-end
-
-def resolve_dependencies_and_install
+def resolveDependenciesAndInstall
   begin
     origin = @pkg.name
 
     resolveDependencies
-
-    search origin, true
+  
+    search origin
     install
-  rescue InstallError => e
-    abort "#{@pkg.name} failed to install: #{e.to_s}"
+  rescue InstallError => e 
+    puts "#{@pkg.name} failed to install: #{e.to_s}"
   ensure
     #cleanup
     unless ARGV[2] == 'keep'
@@ -295,51 +209,28 @@ end
 def resolveDependencies
   @dependencies = []
 
-  # check source packages existance
-  @source_package = 0
-
-  def push_dependencies
-    if @pkg.is_binary?(@device[:architecture])
-      # retrieve name of dependencies that doesn't contain :build tag
-      @check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
-    elsif @pkg.is_fake?
-      # retrieve name of all dependencies
-      @check_deps = @pkg.dependencies.map {|k, v| k}
-    else
-      # retrieve name of all dependencies
-      @check_deps = @pkg.dependencies.map {|k, v| k}
-      # count the number of source packages to add buildessential into dependencies later
-      @source_package += 1
-    end
-    if @check_deps && !@check_deps.empty?
-      @dependencies.unshift @check_deps
-
-      @check_deps.each do |dep|
+  def pushDeps
+    if @pkg.dependencies
+      @dependencies.unshift @pkg.dependencies
+      
+      @pkg.dependencies.each do |dep|
         search dep, true
-        push_dependencies
+        pushDeps
       end
     end
   end
-
-  push_dependencies
-
-  # Add buildessential and solve its dependencies if any of dependent
-  # packages are made from source
-  if @source_package > 0
-    @dependencies.unshift 'buildessential'
-    search 'buildessential', true
-  end
-  push_dependencies
-
+  
+  pushDeps
+  
   return if @dependencies.empty?
 
   puts "Following packages also need to be installed: "
-
+  
   @dependencies.flatten!.uniq!
   @dependencies.each do |dep|
     print dep + " "
   end
-
+  
   puts ""
   puts "Do you agree? [Y/n]"
   response = STDIN.getc
@@ -363,42 +254,90 @@ def resolveDependencies
 end
 
 def install
-  if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
+  if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
     puts "Package #{@pkg.name} already installed, skipping..."
     return
   end
 
   unless @pkg.is_fake?
     meta = download
-    target_dir = unpack meta
-    if meta[:source] == true
-      abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
+    topdir = ""
+    Dir.chdir CREW_BREW_DIR do
+      puts "Unpacking archive, this may take a while..."
+      if meta[:filename][-4,4] == ".zip"
+        system "unzip", "-qq", "-d", "tmpzip", meta[:filename]
+      else
+        system "tar", "xf", meta[:filename]
+      end
+      if meta[:source] == true
+        abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
+        if meta[:filename][-4,4] == ".zip"
+          Dir.chdir "tmpzip" do
+            entries=Dir["*"]
+            if entries.length == 0
+              abort "empty zip archive: #{meta[:filename]}"
+            elsif entries.length == 1
+              topdir = "tmpzip/" + entries.first
+            else 
+              topdir = "tmpzip/"
+            end
+          end
+        else
+          topdir = `tar -tf #{meta[:filename]} | sed -e 's@/.*@@' | uniq`.chomp!
+        end
+        Dir.chdir CREW_BREW_DIR + topdir do
+          puts "Building from source, this may take a while..."
+          @pkg.build
+          system "rm -rf", CREW_DEST_DIR + "/*" #wipe crew destdir
+          puts "Preconfiguring package..."
+          @pkg.install
+        end
 
-      # build from source and place binaries at CREW_DEST_DIR
-      # CREW_DEST_DIR contains usr/local/... hierarchy
-      build_and_preconfigure target_dir
+        Dir.chdir CREW_DEST_DIR do
+          #create directory list
+          system "find . -type f > ../filelist"
+          system "find . -type l >> ../filelist"
+          system "cut -c2- ../filelist > filelist"
+          #create file list
+          system "find . -type d > ../dlist"
+          system "cut -c2- ../dlist > dlistcut"
+          system "tail -n +2 dlistcut > dlist"
+          #remove temporary files
+          system "rm dlistcut ../dlist ../filelist"
+          
+          #create resulting folders list
+          directories = []
+          Dir.glob('*').select do |fn|
+            if File.directory?(fn)
+              directories.push(fn)
+            end
+          end
 
-      # prepare filelist and dlist at CREW_DEST_DIR
-      prepare_package CREW_DEST_DIR
+          #wipe directories with the same name in brew dir to avoid conflicts
+          directories.each do |dir|
+            system "rm -rf ../" + dir.chomp
+          end
 
-      # use CREW_DEST_DIR
-      dest_dir = CREW_DEST_DIR
-    else
-      # use extracted binary directory
-      dest_dir = target_dir
+          #move result files and directories to brew dir
+          system "mv * ../"
+        end
+      end
+
+      puts "Installing..."
+
+      FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
+      FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
+ 
+      File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist").each_line do |line|
+        system "sudo", "mkdir", "-p", line.chomp
+      end
+
+      File.open(CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist").each_line do |line|
+        system "sudo", "mv", CREW_BREW_DIR + line.chomp, line.chomp
+      end
     end
-
-    # remove it just before the file copy
-    if @pkg.in_upgrade
-      puts "Removing since upgrade..."
-      remove @pkg.name
-    end
-
-    # install filelist, dlist and binary files
-    puts "Installing..."
-    install_package dest_dir
   end
-
+  
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
@@ -406,68 +345,6 @@ def install
     file.write JSON.pretty_generate(output)
   end
   puts "#{@pkg.name.capitalize} installed!"
-end
-
-def resolve_dependencies_and_build
-  begin
-    origin = @pkg.name
-
-    # mark current package as which is required to compile from source
-    @pkg.build_from_source = true
-    resolveDependencies
-
-    search origin, true
-    build_package Dir.pwd
-  rescue InstallError => e
-    abort "#{@pkg.name} failed to build: #{e.to_s}"
-  ensure
-    #cleanup
-    unless ARGV[2] == 'keep'
-      Dir.chdir CREW_BREW_DIR do
-        system "rm -rf *"
-        system "mkdir dest" #this is a little ugly, feel free to find a better way
-      end
-    end
-  end
-end
-
-def build_package (pwd)
-  abort "It is not possible to build fake package" if @pkg.is_fake?
-  abort "It is not possible to build without source" if !@pkg.is_source?(@device[:architecture])
-
-  # download source codes and unpack it
-  meta = download
-  target_dir = unpack meta
-
-  # build from source and place binaries at CREW_DEST_DIR
-  build_and_preconfigure target_dir
-
-  # call check method here.  this check method is called by this function only,
-  # therefore it is possible place time consuming tests in the check method.
-  if Dir.exist? target_dir
-    Dir.chdir target_dir do
-      puts "Checking..."
-      @pkg.check
-    end
-  end
-
-  # prepare filelist and dlist at CREW_DEST_DIR
-  prepare_package CREW_DEST_DIR
-
-  # build package from filelist, dlist and binary files in CREW_DEST_DIR
-  puts "Archiving..."
-  archive_package pwd
-end
-
-def archive_package (pwd)
-  pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-  Dir.chdir CREW_DEST_DIR do
-    system "tar cJf #{pwd}/#{pkg_name} *"
-  end
-  Dir.chdir pwd do
-    system "sha1sum #{pkg_name} > #{pkg_name}.sha1"
-  end
-  puts "#{pkg_name} is built!"
 end
 
 def remove (pkgName)
@@ -542,17 +419,15 @@ when "upgrade"
   upgrade
 when "install"
   search @pkgName
-  resolve_dependencies_and_install
-when "build"
-  search @pkgName
-  resolve_dependencies_and_build
+  resolveDependenciesAndInstall
 when "remove"
+  abort 'Removing actions must be ran with sudo.' unless USER == 'root'
   remove @pkgName
 when nil
-  puts "Chromebrew, version 0.4.2"
+  puts "Chromebrew, version 0.4.1"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+  puts "Available commands: search, download, install, remove, whatprovides"
 else
   puts "I have no idea how to do #{@command} :("
-  puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+  puts "Available commands: search, download, install, remove, whatprovides"
 end

@@ -1,35 +1,15 @@
 require 'package'
 
 class Glibc < Package
-  version '1.0'
-
-  is_fake
-
-  if (File.exist? "/lib/libc-2.23.so") || (File.exist? "/lib64/libc-2.23.so")
-    depends_on 'glibc223'
-    # Check previous version
-    if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
-      conflict_solve = "`sudo crew remove glibc219`"
-    end
-  else
-    depends_on 'glibc219'
-  end
-
-  # Check old glibc
-  if File.exist? CREW_CONFIG_PATH + "meta/glibc.filelist"
-    if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
-      # Already installed old glibc and glibc223, so need to remove both once
-      conflict_solve = "`sudo crew remove glibc223` AND `sudo crew remove glibc`"
-    else
-      # Already installed old glibc, so need it once
-      conflict_solve = "`sudo crew remove glibc`"
-    end
-  end
-
-  if conflict_solve
-    puts
-    puts "IN ORDER TO INSTALL/UPGRADE GLIBC, PLEASE PERFORMS #{conflict_solve} FIRST"
-    puts
-    exit 1
-  end
+  version '2.17.90-baseline'
+  binary_url ({
+    armv7l: "https://dl.dropboxusercontent.com/s/18kk32dzt17mxnu/glibc-2.19-chromeos-armv7l.tar.xz",
+    i686: "https://dl.dropboxusercontent.com/s/dic47f8eqxhpf89/glibc-2.17.90-baseline-chromeos-i686.tar.gz?token_hash=AAHx_77YtWLLnkjCJRaCJt7RsdKrfkT6lgKS9BZc4O-0Pg&dl=1",
+    x86_64: "https://dl.dropboxusercontent.com/s/x3tu160i7pmn6tp/glibc-2.17-baseline-chromeos-x86_64.tar.gz?token_hash=AAG794JG65HjzHMcAyAysQUbEPMUci1bZJPREj3ztCtnBg&dl=1"
+  })
+  binary_sha1 ({
+    armv7l: "fd1ce2302b806a7ebdb4147bc89e0a29bcd90325",
+    i686: "3c3a0b86ed4591ec59daeb24d2dcda139574de1b",
+    x86_64: "d818775f74d91692828f12321044cd95fc649cf0"
+  })
 end

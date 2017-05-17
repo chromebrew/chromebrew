@@ -6,7 +6,7 @@ class Buildessential < Package
   is_fake
   
   depends_on 'gcc'
-  depends_on 'linuxheaders'
   depends_on 'make'
+  depends_on 'linuxheaders'
   depends_on 'pkgconfig'
 end

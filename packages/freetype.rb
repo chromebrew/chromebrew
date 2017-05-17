@@ -1,9 +1,9 @@
 require 'package'
 
 class Freetype < Package
-  version '2.7.1'
-  source_url 'http://download.savannah.gnu.org/releases/freetype/freetype-2.7.1.tar.gz'
-  source_sha1 '60fb8097901a887b8e8f6e7f777ef0516ae68022'
+  version '2.6-1'
+  source_url 'http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.gz'
+  source_sha1 '12dd3267af62cccc32045ed99984f3d8a8ddbf90'
 
   def self.build
       system "./configure CFLAGS=\" -fPIC\""

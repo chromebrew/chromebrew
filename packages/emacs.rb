@@ -1,11 +1,10 @@
 require 'package'
 
 class Emacs < Package
-  version '25.1'
-  source_url 'ftp://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz'
-  source_sha1 '983e457971e3e3c8964d039c113033f98132b8a8'
+  version '24.4'
+  source_url 'ftp://ftp.gnu.org/gnu/emacs/emacs-24.4.tar.xz'
+  source_sha1 '68f9b1f7570a13d076b94c20f2d20fe40782031c'
 
-  depends_on "zlibpkg"
   depends_on "diffutils"
   depends_on "m4"
   depends_on "autoconf"
@@ -13,6 +12,7 @@ class Emacs < Package
 
   def self.build
     system "./configure --prefix=/usr/local --without-x --without-makeinfo --without-selinux"
+    system "sed -i '/static void \\*/{ N; /static void \\*\\naligned_alloc/{ s/static //g}}' src/alloc.c"
     system "make"
   end
 

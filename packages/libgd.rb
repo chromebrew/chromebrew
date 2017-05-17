@@ -1,23 +1,21 @@
 require 'package'
 
 class Libgd < Package
-  version '2.2.4'
-  source_url 'https://github.com/libgd/libgd/archive/gd-2.2.4.tar.gz'
-  source_sha1 '630daec16fe06e4e916fd0fa8499c8fa5c0dcbca'
+  version '2.0.33-1'
+  source_url 'https://github.com/libgd/libgd/archive/GD_2_0_33.tar.gz'
+  source_sha1 '489e25f18d3fc9d7f8b0e4889f98f5aa25363c3e'
 
-  depends_on 'cmake'
   depends_on 'libpng'
 
   def self.build
-    FileUtils.mkdir('build')
-    FileUtils.cd('build') do
-      system "cmake -DCMAKE_INCLUDE_PATH=/usr/local/include -DCMAKE_INSTALL_PREFIX=/usr/local .."
+    FileUtils.cd('src') do
+      system "./configure CFLAGS=\" -fPIC\""
       system "make"
     end
   end
 
   def self.install
-    FileUtils.cd('build') do
+    FileUtils.cd('src') do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
   end

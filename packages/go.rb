@@ -1,9 +1,9 @@
 require 'package'
 
 class Go < Package
-  version '1.8.0'
-  source_url 'https://storage.googleapis.com/golang/go1.8.src.tar.gz'
-  source_sha1 '37945c372140c3a46c2c5b4b9ce382b6c8d88811'
+  version '1.7.4'
+  source_url 'https://storage.googleapis.com/golang/go1.7.4.src.tar.gz'
+  source_sha1 '0fb305c827c8794cfda7e437befa6101a2d06b2e'
   
   # go is required to build versions of go > 1.4
   if `which go` == ''
@@ -18,8 +18,7 @@ class Go < Package
                 TMPDIR=/usr/local/tmp \
                 ./make.bash"
       else
-        system "GOROOT_BOOTSTRAP=/usr/local/lib/go \
-                TMPDIR=/usr/local/tmp ./make.bash"
+        system "TMPDIR=/usr/local/tmp ./make.bash"
       end
     end
   end

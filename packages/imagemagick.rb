@@ -1,9 +1,9 @@
 require 'package'
 
 class Imagemagick < Package
-  version '7.0.5-4'
-  source_url 'https://www.imagemagick.org/download/ImageMagick-7.0.5-4.tar.xz'
-  source_sha1 '118b2d1753cf5eb0761ea8dac068e24217b8e32b'
+  version '6.9.2-10-1'
+  source_url 'http://www.imagemagick.org/download/releases/ImageMagick-6.9.2-10.tar.xz'
+  source_sha1 'd0b3fdf8f25856bf0058716703f7bf989560d2ce'
   
   depends_on 'pkgconfig'
 

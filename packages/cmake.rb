@@ -1,18 +1,15 @@
 require 'package'
 
 class Cmake < Package
-  version '3.7.2'
-  source_url 'https://cmake.org/files/v3.7/cmake-3.7.2.tar.gz'
-  source_sha1 'ea73af0c3c832e586bf2f82a13a708ea509d5a88'
+  version '3.6.1'
+  source_url 'https://cmake.org/files/v3.6/cmake-3.6.1.tar.gz'
+  source_sha1 'a37785b3f256a31ee21a047569bc74a8f57067bb'
 
   depends_on 'buildessential'
   depends_on 'openssl'
   depends_on 'ncurses'
 
   def self.build
-    if Dir.exist? '/usr/local/include/ncursesw'
-      system 'sed -i "51s,$,\n  set(CURSES_INCLUDE_PATH /usr/local/include/ncursesw)," Modules/FindCurses.cmake'
-    end
     system "./bootstrap"
     system "make"
   end
