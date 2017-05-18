@@ -534,20 +534,36 @@ when "whatprovides"
     puts "Usage: crew whatprovides [pattern]"
   end
 when "download"
-  search @pkgName
-  download
+  if @pkgName
+    search @pkgName
+    download
+  else
+    puts "Usage: crew download [package]"
+  end
 when "update"
   update
 when "upgrade"
   upgrade
 when "install"
-  search @pkgName
-  resolve_dependencies_and_install
+  if @pkgName
+    search @pkgName
+    resolve_dependencies_and_install
+  else
+    puts "Usage: crew install [package]"
+  end
 when "build"
-  search @pkgName
-  resolve_dependencies_and_build
+  if @pkgName
+    search @pkgName
+    resolve_dependencies_and_build
+  else
+    puts "Usage: crew build [package]"
+  end
 when "remove"
-  remove @pkgName
+  if @pkgName
+    remove @pkgName
+  else
+    puts "Usage: crew remove [package]"
+  end
 when nil
   puts "Chromebrew, version 0.4.2"
   puts "Usage: crew [command] [package]"
