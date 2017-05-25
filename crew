@@ -70,7 +70,7 @@ def search (pkgName, silent = false)
 end
 
 def help (pkgName)
-  case @pkgName
+  case pkgName
   when "build"
     puts "Build a package."
     puts "Usage: crew build [package]"
@@ -581,14 +581,14 @@ when "whatprovides"
   if @pkgName
     whatprovides @pkgName
   else
-    help @pkgName = "whatprovides"
+    help "whatprovides"
   end
 when "download"
   if @pkgName
     search @pkgName
     download
   else
-    help @pkgName = "download"
+    help "download"
   end
 when "update"
   update
@@ -599,20 +599,20 @@ when "install"
     search @pkgName
     resolve_dependencies_and_install
   else
-    help @pkgName = "install"
+    help "install"
   end
 when "build"
   if @pkgName
     search @pkgName
     resolve_dependencies_and_build
   else
-    help @pkgName = "build"
+    help "build"
   end
 when "remove"
   if @pkgName
     remove @pkgName
   else
-    help @pkgName = "remove"
+    help "remove"
   end
 when nil
   puts "Chromebrew, version 0.4.2"
