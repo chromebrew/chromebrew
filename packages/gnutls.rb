@@ -11,6 +11,7 @@ class Gnutls < Package
   depends_on 'libtasn1'
   depends_on 'trousers'
   depends_on 'p11kit'
+  depends_on 'libunistring'
 
   def self.build
     system "./configure"
