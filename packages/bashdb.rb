@@ -8,9 +8,9 @@ class Bashdb < Package
   def self.build
     system "./configure \
             --bindir=/usr/local/bin \
-            --datadir=/usr/local \
-            --infodir=/usr/local \
-            --mandir=/usr/local"
+            --datadir=/usr/local/share \
+            --infodir=/usr/local/info \
+            --mandir=/usr/local/man"
     system "make"
   end
 
