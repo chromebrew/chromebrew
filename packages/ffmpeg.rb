@@ -1,9 +1,9 @@
 require 'package'
 
 class Ffmpeg < Package
-  version '3.3'
-  source_url 'https://ffmpeg.org/releases/ffmpeg-3.3.tar.xz'
-  source_sha1 'fc6c6dba684a0a75889123850c30d3a71b9e11e7'
+  version '3.3.1'
+  source_url 'https://ffmpeg.org/releases/ffmpeg-3.3.1.tar.xz'
+  source_sha1 'ace4539bbb1ef9abb59842137b2a206ca5659f36'
 
   depends_on 'gnutls'
   depends_on 'libass'
