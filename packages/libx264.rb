@@ -1,14 +1,16 @@
 require 'package'
 
 class Libx264 < Package
-  version '20170524-2245-stable'
-  source_url 'http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20170524-2245-stable.tar.bz2'
-  source_sha1 'e2e34a6bb7724ebf7b06b8607eb173966b5e0e25'
+  version '20170528-2245-stable'
+  source_url 'http://ftp.videolan.org/pub/videolan/x264/snapshots/last_stable_x264.tar.bz2'
+  source_sha1 '5ce46323b25cba7b5c7c960be327eeecc8b8395b'
 
   depends_on 'yasm'
 
   def self.build
-    system "./configure"
+    system "./configure \
+            --enable-shared \
+            --enable-static"
     system "make"
   end
 

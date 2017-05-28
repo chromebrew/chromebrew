@@ -6,7 +6,9 @@ class Libopus < Package
   source_sha1 'fb6d55cf73059bd916790960c2eeffe83edabafe'
 
   def self.build
-    system "./configure --host=#{ARCH}"
+    system "./configure --prefix=/usr/local \
+            --enable-shared \
+            --enable-static"
     system "make"
   end
 
