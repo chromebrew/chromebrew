@@ -3,7 +3,7 @@ require 'package'
 class Openssl < Package
   version '1.0.2k'
 
-  source_url 'http://openssl.org/source/openssl-1.0.2k.tar.gz'
+  source_url 'https://www.openssl.org/source/openssl-1.0.2k.tar.gz'
   source_sha1 '5f26a624479c51847ebd2f22bb9f84b3b44dcb44'
 
   depends_on 'perl'
