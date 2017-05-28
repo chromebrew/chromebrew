@@ -1,10 +1,10 @@
 require 'package'
 
 class Openssl < Package
-  version '1.0.2k'
+  version '1.0.2l'
 
-  source_url 'ftp://openssl.org/source/openssl-1.0.2k.tar.gz'
-  source_sha1 '5f26a624479c51847ebd2f22bb9f84b3b44dcb44'
+  source_url 'https://www.openssl.org/source/openssl-1.0.2l.tar.gz'
+  source_sha1 'b58d5d0e9cea20e571d903aafa853e2ccd914138'
 
   depends_on 'perl'
   depends_on 'zlibpkg'
