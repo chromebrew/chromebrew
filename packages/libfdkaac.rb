@@ -5,6 +5,8 @@ class Libfdkaac < Package
   source_url 'https://github.com/mstorsjo/fdk-aac/archive/v0.1.5.tar.gz'
   source_sha1 '2894bd6d21066bfdf65a2f8cb6d2ca2dde597194'
 
+  depends_on 'automake'
+
   def self.build
     system "./autogen.sh"
     system "./configure"

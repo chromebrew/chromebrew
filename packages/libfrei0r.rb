@@ -6,6 +6,7 @@ class Libfrei0r < Package
   source_sha1 'a8214add5828e20ff49239ed3a462acaa8c1ebb2'
 
   depends_on 'cmake'
+
   def self.build
     system "cmake ."
     system "make"
