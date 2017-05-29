@@ -9,6 +9,7 @@ class Php5 < Package
   depends_on 'zlibpkg'
   depends_on 'libpng'
   depends_on 'libxml2'
+  depends_on 'libxslt'
   depends_on 'openssl'
   depends_on 'curl'
   depends_on 'pcre'
@@ -19,6 +20,7 @@ class Php5 < Package
       --prefix=/usr/local \
       --with-curl \
       --with-gd \
+      --with-xsl \
       --enable-mbstring \
       --with-openssl \
       --with-pcre-regex \
