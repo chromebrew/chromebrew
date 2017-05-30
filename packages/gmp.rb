@@ -1,6 +1,8 @@
 require 'package'
 
 class Gmp < Package
+  description 'GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.'
+  homepage 'https://gmplib.org/'
   version "6.1.2-cc1.3"
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/gmp-6.1.2-cc1.3-chromeos-armv7l.tar.xz',

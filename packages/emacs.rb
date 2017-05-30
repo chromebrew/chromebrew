@@ -1,6 +1,8 @@
 require 'package'
 
 class Emacs < Package
+  description 'An extensible, customizable, free/libre text editor - and more.'
+  homepage 'http://www.gnu.org/software/emacs/'
   version '25.1'
   source_url 'ftp://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz'
   source_sha1 '983e457971e3e3c8964d039c113033f98132b8a8'

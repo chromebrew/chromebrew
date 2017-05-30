@@ -1,6 +1,8 @@
 require 'package'
 
 class Bz2 < Package
+  description 'bzip2 is a freely available, patent free (see below), high-quality data compressor.'
+  homepage 'http://www.bzip.org/'
   version '1.0.6'
   source_url 'http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz'
   source_sha1 '3f89f861209ce81a6bab1fd1998c0ef311712002'

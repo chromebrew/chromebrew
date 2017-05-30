@@ -1,6 +1,8 @@
 require 'package'
 
 class Libpcap < Package
+  description 'A portable C/C++ library for network traffic capture.'
+  homepage 'http://www.tcpdump.org/'
   version '1.8.1'
   source_url 'http://www.tcpdump.org/release/libpcap-1.8.1.tar.gz'
   source_sha1 '32d7526dde8f8a2f75baf40c01670602aeef7e39'

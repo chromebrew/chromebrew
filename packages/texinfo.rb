@@ -1,6 +1,8 @@
 require 'package'
 
 class Texinfo < Package
+  description 'Texinfo is the official documentation format of the GNU project.'
+  homepage 'https://www.gnu.org/software/texinfo/'
   version '6.3'
   source_url 'http://ftp.gnu.org/gnu/texinfo/texinfo-6.3.tar.gz' # software source tarball url
   source_sha1 '29b16c646c7bc9cd351b2f1d8dafdce70e5377f6'                  # source tarball sha1 sum

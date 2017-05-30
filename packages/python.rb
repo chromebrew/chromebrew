@@ -1,6 +1,8 @@
 require 'package'
 
 class Python < Package
+  description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
+  homepage 'https://www.python.org/'
   version '3.3.2'
   binary_url ({
     aarch64: 'https://dl.dropboxusercontent.com/s/xsu18iggr51ewqh/python-3.3.2-chromeos-armv7l.tar.xz',

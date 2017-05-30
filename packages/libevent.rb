@@ -1,6 +1,8 @@
 require 'package'                                                      	# include package class file
  
 class Libevent < Package                                            	# name the package and make it a Package class instance
+  description 'The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.'
+  homepage 'http://libevent.org/'
   version '2.1.8'                                               	                                      # software version
   source_url 'https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz'     # software source tarball url
   source_sha1 '2a1b8bb7a262d3fd0ed6a080a20991a6eed675ec'          	# source tarball sha1 sum

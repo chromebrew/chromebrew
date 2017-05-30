@@ -1,6 +1,8 @@
 require 'package'                                                 # include package class file
 
 class Screen < Package                                               # name the package and make it a Package class instance
+  description 'Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.'
+  homepage 'https://www.gnu.org/software/screen/'
   version '4.3.1'                                                   # software version
   source_url 'ftp://ftp.gnu.org/gnu/screen/screen-4.3.1.tar.gz'     # software source tarball url
   source_sha1 'a524761504e28480517e338b20c852f2ab100c93'          # source tarball sha1 sum

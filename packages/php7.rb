@@ -1,6 +1,8 @@
 require 'package'
 
 class Php7 < Package
+  description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
+  homepage 'http://www.php.net/'
   version '7.1.5'
   source_url 'http://php.net/distributions/php-7.1.5.tar.xz'   # software source tarball url
   source_sha1 '8c1622929b838005c72fb4949be9e249ca927fb3'       # source tarball sha1 sum

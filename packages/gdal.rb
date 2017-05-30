@@ -1,6 +1,8 @@
 require 'package'
 
 class Gdal < Package
+  description 'The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.'
+  homepage 'http://www.gdal.org/'
   version '1.11.2-1'
   source_url 'http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz'
   source_sha1 '6f3ccbe5643805784812072a33c25be0bbff00db'

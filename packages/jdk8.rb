@@ -1,6 +1,8 @@
 require 'package'
 
 class Jdk8 < Package
+  description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
+  homepage 'http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'
   version '8u112'
   binary_url ({
     i686: "https://www.dropbox.com/s/0c9yratmcf5fdpq/jdk8u112-i686.tar.gz",

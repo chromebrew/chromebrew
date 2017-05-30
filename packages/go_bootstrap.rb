@@ -1,6 +1,8 @@
 require 'package'
 
 class Go_bootstrap < Package
+  description 'Bootstrap tool chain for the Go programming language.'
+  homepage 'https://golang.org/'
   version '1.4'
   source_url 'https://storage.googleapis.com/golang/go1.4-bootstrap-20161024.tar.gz'
   source_sha1 '47e02e41aa99dea899b65ebf7b50ec706141be8c'

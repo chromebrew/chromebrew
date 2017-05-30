@@ -1,6 +1,8 @@
 require 'package'
 
 class Mpfr < Package
+  description 'The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.'
+  homepage 'http://www.mpfr.org/'
   version '3.1.5-cc1.3'
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/mpfr-3.1.5-cc1.3-chromeos-armv7l.tar.xz',

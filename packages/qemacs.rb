@@ -1,6 +1,8 @@
 require 'package'
 
 class Qemacs < Package
+  description 'QEmacs (for Quick Emacs) is a very small but powerful UNIX editor.'
+  homepage 'http://bellard.org/qemacs/'
   version '0.3.3'
   source_url 'http://bellard.org/qemacs/qemacs-0.3.3.tar.gz'
   source_sha1 '2a7314610eed09d7c2bef5f1579d774191803bc4'

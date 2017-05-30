@@ -1,6 +1,8 @@
 require 'package'
 
 class Perl < Package
+  description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
+  homepage 'https://www.perl.org/'
   version '5.24.1'
   source_url 'http://www.cpan.org/src/5.0/perl-5.24.1.tar.gz'
   source_sha1 '19b218bbc3a63a8408ed56b93928fd9a4c1b5c83'

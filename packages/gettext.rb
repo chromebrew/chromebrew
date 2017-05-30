@@ -1,6 +1,8 @@
 require 'package'
 
 class Gettext < Package
+  description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
+  homepage 'https://www.gnu.org/software/gettext/'
   version '0.19.8.1'
   source_url 'ftp://ftp.gnu.org/gnu/gettext/gettext-0.19.8.1.tar.xz'
   source_sha1 'e0fe90ede22f7f16bbde7bdea791a835f2773fc9'

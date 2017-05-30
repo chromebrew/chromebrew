@@ -1,6 +1,8 @@
 require 'package'                                                      	# include package class file
  
 class Tig < Package                                            	# name the package and make it a Package class instance
+  description 'Tig is an ncurses-based text-mode interface for git.'
+  homepage 'http://jonas.nitro.dk/tig/'
   version '2.2.1'                                               	                                      # software version
   source_url 'https://github.com/jonas/tig/archive/tig-2.2.1.tar.gz'     # software source tarball url
   source_sha1 '704e35ad3f54024d7ce14dade4294aacc0744b3d'          	# source tarball sha1 sum

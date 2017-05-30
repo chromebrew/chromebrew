@@ -1,6 +1,8 @@
 require 'package'
 
 class Nginx < Package
+  description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
+  homepage 'http://nginx.org/'
   version '1.11.6-1'
   source_url 'http://nginx.org/download/nginx-1.11.6.tar.gz' # software source tarball url
   source_sha1 '51903b721a5ee721568fc59f0a243df5356a98de'  # source tarball sha1 sum

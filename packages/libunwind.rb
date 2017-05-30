@@ -1,6 +1,8 @@
 require 'package'
 
 class Libunwind < Package
+  description 'libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
+  homepage 'http://www.nongnu.org/libunwind/'
   version '1.2'
   source_url 'http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz'
   source_sha1 'a33e52d7ecd18b9375508369b566eeb2cc6eec3b'

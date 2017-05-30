@@ -1,6 +1,8 @@
 require 'package'
 
 class Linuxheaders < Package
+  description 'Linux headers for Chrome OS.'
+  homepage ''
   version '3.18-cc1.3'
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/linux-headers-3.18-cc1.3-chromeos-armv7l.tar.xz',

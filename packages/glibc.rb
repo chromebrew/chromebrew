@@ -1,6 +1,8 @@
 require 'package'
 
 class Glibc < Package
+  description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
+  homepage 'https://www.gnu.org/software/libc/'
   version '1.0'
 
   is_fake

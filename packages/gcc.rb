@@ -1,6 +1,8 @@
 require 'package'
 
 class Gcc < Package
+  description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
+  homepage 'https://www.gnu.org/software/gcc/'
   version '4.9.x-cc1.3'
 
   binary_url ({

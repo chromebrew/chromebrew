@@ -1,6 +1,8 @@
 require 'package'
 
 class Optipng < Package
+  description 'OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.'
+  homepage 'http://optipng.sourceforge.net/'
   version '0.7.6-1'
   source_url 'http://prdownloads.sourceforge.net/optipng/optipng-0.7.6.tar.gz'
   source_sha1 '3b3e31430e735589470c4af204354d38823f4989'

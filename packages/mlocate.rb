@@ -1,6 +1,8 @@
 require 'package'
 
 class Mlocate < Package
+  description 'mlocate is a locate/updatedb implementation.'
+  homepage 'https://fedorahosted.org/mlocate/'
   version '0.26-1'
   source_url 'https://releases.pagure.org/mlocate/mlocate-0.26.tar.xz' # software source tarball url
   source_sha1 'c6e6d81b25359c51c545f4b8ba0f3b469227fcbc'                         # source tarball sha1 sum
