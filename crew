@@ -69,6 +69,49 @@ def search (pkgName, silent = false)
   abort "package #{pkgName} not found :("
 end
 
+def help (pkgName)
+  case pkgName
+  when "build"
+    puts "Build a package."
+    puts "Usage: crew build [package]"
+    puts "Build [package] from source and place the archive and checksum in the current working directory."
+  when "download"
+    puts "Download a package."
+    puts "Usage: crew download [package]"
+    puts "Download [package] to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it."
+  when "install"
+    puts "Install a package."
+    puts "Usage: crew install [package]"
+    puts "The [package] must be a valid name.  Use `crew search [package]` to search for a package to install."
+  when "remove"
+    puts "Remove a package."
+    puts "Usage: crew remove [package]"
+    puts "The [package] must be currently installed."
+  when "search"
+    puts "Look for a package."
+    puts "Usage: crew search [package]"
+    puts "If [package] is omitted, all packages will be returned.  (i) in front of the name means the package is installed."
+    puts "Tips:"
+    puts "  crew search | grep '(i)' will return all installed packages."
+    puts "  crew search | grep -v '(i)' will return all available packages not already installed."
+  when "update"
+    puts "Update crew."
+    puts "Usage: crew update"
+    puts "This only updates crew itself.  Use 'crew upgrade' to update packages."
+  when "upgrade"
+    puts "Update package(s)."
+    puts "Usage: crew upgrade [package]"
+    puts "If [package] is omitted, all packages will be updated.  Otherwise, a specific package will be updated."
+    puts "Use 'crew update' to update crew itself."
+  when "whatprovides"
+    puts "Determine which package(s) contains file(s)."
+    puts "Usage: crew whatprovides [pattern]"
+    puts "The [pattern] is a search string which can contain regular expressions."
+  else
+    puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+  end
+end
+
 def whatprovides (pkgName)
   fileArray = []
   Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
@@ -521,6 +564,13 @@ def remove (pkgName)
 end
 
 case @command
+when "help"
+  if @pkgName
+    help @pkgName
+  else
+    puts "Usage: crew help [command]"
+    help nil
+  end
 when "search"
   if @pkgName
     search @pkgName
@@ -531,14 +581,14 @@ when "whatprovides"
   if @pkgName
     whatprovides @pkgName
   else
-    puts "Usage: crew whatprovides [pattern]"
+    help "whatprovides"
   end
 when "download"
   if @pkgName
     search @pkgName
     download
   else
-    puts "Usage: crew download [package]"
+    help "download"
   end
 when "update"
   update
@@ -549,26 +599,26 @@ when "install"
     search @pkgName
     resolve_dependencies_and_install
   else
-    puts "Usage: crew install [package]"
+    help "install"
   end
 when "build"
   if @pkgName
     search @pkgName
     resolve_dependencies_and_build
   else
-    puts "Usage: crew build [package]"
+    help "build"
   end
 when "remove"
   if @pkgName
     remove @pkgName
   else
-    puts "Usage: crew remove [package]"
+    help "remove"
   end
 when nil
   puts "Chromebrew, version 0.4.2"
   puts "Usage: crew [command] [package]"
-  puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+  help nil
 else
   puts "I have no idea how to do #{@command} :("
-  puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+  help nil
 end
