@@ -1,6 +1,8 @@
 require 'package'
 
 class Pkgconfig < Package
+  description 'pkg-config is a helper tool used when compiling applications and libraries.'
+  homepage 'https://www.freedesktop.org/wiki/Software/pkg-config/'
   version '0.29.2'
   source_url 'http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz'
   source_sha1 '76e501663b29cb7580245720edfb6106164fad2b'

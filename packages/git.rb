@@ -1,6 +1,8 @@
 require 'package'
 
 class Git < Package
+  description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
+  homepage 'https://git-scm.com/'
   version '2.13.0'
   source_url 'https://github.com/git/git/archive/v2.13.0.tar.gz'
   source_sha1 'd0078048574b824bc0d202deb3830717a955eb3e'

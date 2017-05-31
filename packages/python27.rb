@@ -1,6 +1,8 @@
 require 'package'
 
 class Python27 < Package
+  description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
+  homepage 'https://www.python.org/'
   version '2.7.13-1'
   source_url 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz' # software source tarball url
   source_sha1 '18a8f30a0356c751b8d0ea6f76e764cab13ee046'                     # source tarball sha1 sum

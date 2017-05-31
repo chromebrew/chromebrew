@@ -1,6 +1,8 @@
 require 'package'
 
 class Smemstat < Package
+  description 'Smemstat reports the physical memory usage taking into consideration shared memory.'
+  homepage 'http://kernel.ubuntu.com/~cking/smemstat/'
   version '0.01.16'
   source_url 'http://kernel.ubuntu.com/~cking/tarballs/smemstat/smemstat-0.01.16.tar.gz'
   source_sha1 '4efdd89afa15ea7e4cb302653418935dab3c626a' 

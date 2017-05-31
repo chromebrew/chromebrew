@@ -1,6 +1,8 @@
 require 'package'
 
 class Filecmd < Package
+  description 'file command determines the file type.'
+  homepage 'ftp://ftp.astron.com/pub/file'
   version '5.31'
   source_url 'ftp://ftp.astron.com/pub/file/file-5.31.tar.gz'
   source_sha1 'd66f71fb29ec0e9cecbefe9d7433d7a315f3302c'

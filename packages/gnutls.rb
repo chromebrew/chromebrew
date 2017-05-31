@@ -1,6 +1,8 @@
 require 'package'
 
 class Gnutls < Package
+  description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
+  homepage 'http://gnutls.org/'
   version '3.5.12'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.5/gnutls-3.5.12.tar.xz'
   source_sha1 '9f453686bc6b1e6ebc04197158a2bc123c0272df'

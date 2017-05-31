@@ -1,6 +1,8 @@
 require 'package'
 
 class Mpc < Package
+  description 'Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.'
+  homepage 'http://www.multiprecision.org/'
   version '1.0.3-cc1.3'
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/mpc-1.0.3-cc1.3-chromeos-armv7l.tar.xz',

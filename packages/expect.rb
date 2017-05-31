@@ -1,6 +1,8 @@
 require 'package'
 
 class Expect < Package
+  description 'Expect is a tool for automating interactive applications such as telnet, ftp, passwd, fsck, rlogin, tip, etc.'
+  homepage 'http://expect.sourceforge.net/'
   version '5.45'
   source_url 'http://prdownloads.sourceforge.net/expect/expect5.45.tar.gz'
   source_sha1 'e634992cab35b7c6931e1f21fbb8f74d464bd496'

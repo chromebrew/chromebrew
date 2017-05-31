@@ -1,6 +1,8 @@
 require 'package'
 
 class R < Package
+  description 'R is a free software environment for statistical computing and graphics.'
+  homepage 'https://www.r-project.org/'
   version '3.4.0'
   source_url 'https://cran.r-project.org/src/base/R-3/R-3.4.0.tar.gz'
   source_sha1 '054c1d099006354c89b195df6783b933846ced60'

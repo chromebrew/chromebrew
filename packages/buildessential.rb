@@ -1,6 +1,8 @@
 require 'package'
 
 class Buildessential < Package
+  description 'A collection of tools essential to compile and build software.'
+  homepage ''
   version '1.0'
   
   is_fake

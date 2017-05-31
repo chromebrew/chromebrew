@@ -1,6 +1,8 @@
 require 'package'
 
 class Newlisp < Package
+  description 'newLISP is a Lisp-like, general-purpose scripting language.'
+  homepage 'http://www.newlisp.org/'
   version '10.7.1'
   source_url 'https://github.com/kosh04/newlisp/archive/10.7.1.tar.gz'
   source_sha1 '258d88a6c52ecea73da1a7774fa4f53a265da073'

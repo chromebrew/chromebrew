@@ -1,6 +1,8 @@
 require 'package'
  
 class Gdbm < Package
+  description 'GNU dbm is a set of database routines that use extensible hashing.'
+  homepage 'https://www.gnu.org/software/gdbm/'
   version '1.13'
   source_url 'ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.13.tar.gz'
   source_sha1 '7f2a8301497bbcac91808b011ca533380914fd21'

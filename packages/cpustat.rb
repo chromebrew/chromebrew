@@ -1,6 +1,8 @@
 require 'package'
 
 class Cpustat < Package
+  description 'cpustat periodically dumps out the current CPU utilisation statistics of running processes.'
+  homepage 'http://kernel.ubuntu.com/~cking/cpustat/'
   version '0.02.01'
   source_url 'http://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.01.tar.gz'
   source_sha1 '0eca37a1c6e1282b05be51fc2dd1dac72875112d'

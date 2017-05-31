@@ -1,6 +1,8 @@
 require 'package'
 
 # @todo: provide vpnc-script (standalone), instructions for manual install:
+  description 'OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN.'
+  homepage 'http://www.infradead.org/openconnect/'
 #
 # sudo su -
 # mkdir /usr/local/etc/vpnc

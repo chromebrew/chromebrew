@@ -1,6 +1,8 @@
 require 'package'
 
 class Mapserver < Package
+  description 'MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.'
+  homepage 'http://mapserver.org/'
   version '7.0.4'
   source_url 'http://download.osgeo.org/mapserver/mapserver-7.0.4.tar.gz'
   source_sha1 '8fb13c27da5902e6d9ad50f3eba550bd90750607'

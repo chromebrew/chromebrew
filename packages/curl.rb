@@ -1,6 +1,8 @@
 require 'package'
 
 class Curl < Package
+  description 'Command line tool and library for transferring data with URLs.'
+  homepage 'https://curl.haxx.se/'
   version '7.54.0'
   source_url 'https://curl.haxx.se/download/curl-7.54.0.tar.bz2'
   source_sha1 'e1cc251508e98bc5a8b9d5c40d8a4f6e48465d1c'

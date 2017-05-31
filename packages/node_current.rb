@@ -1,6 +1,8 @@
 require 'package'
 
 class Node_current < Package
+  description 'As an asynchronous event driven JavaScript runtime, Node current is designed to build scalable network applications.'
+  homepage 'https://nodejs.org/en/'
   version '7.4.0'
   source_url 'https://nodejs.org/dist/v7.4.0/node-v7.4.0.tar.xz'
   source_sha1 'e31d4d67a6f39ccce2db66dcfa0e6c11851c1375'

@@ -1,6 +1,8 @@
 require 'package'
 
 class Binutils < Package
+  description 'The GNU Binutils are a collection of binary tools.'
+  homepage 'http://www.gnu.org/software/binutils/'
   version '2.25-cc1.3'
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/binutils-2.25-cc1.3-chromeos-armv7l.tar.xz',

@@ -1,6 +1,8 @@
 require 'package'
 
 class Go < Package
+  description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
+  homepage 'https://golang.org/'
   version '1.8.0'
   source_url 'https://storage.googleapis.com/golang/go1.8.src.tar.gz'
   source_sha1 '37945c372140c3a46c2c5b4b9ce382b6c8d88811'

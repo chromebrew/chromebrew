@@ -1,6 +1,8 @@
 require 'package'
 
 class Powerline_fonts < Package
+  description 'Patched fonts for Powerline users.'
+  homepage 'https://github.com/powerline/fonts'
   version '1.1'
   source_url 'https://codeload.github.com/powerline/fonts/tar.gz/2015-12-04?dummy=/'
   source_sha1 '4ffe9a28b842ba4ef052b3ffa8cc58db1dbecc64'

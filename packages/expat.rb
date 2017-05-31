@@ -1,6 +1,8 @@
 require 'package'
 
 class Expat < Package
+  description 'James Clark's Expat XML parser library in C.'
+  homepage 'https://sourceforge.net/projects/expat/'
   version '2.2.0'
   source_url 'https://sourceforge.net/projects/expat/files/expat/2.2.0/expat-2.2.0.tar.bz2/download'
   source_sha1 '8453bc52324be4c796fd38742ec48470eef358b3'

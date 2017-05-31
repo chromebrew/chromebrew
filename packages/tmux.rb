@@ -1,6 +1,8 @@
 require 'package'                                                      	# include package class file
  
 class Tmux < Package                                            	# name the package and make it a Package class instance
+  description 'tmux is a terminal multiplexer'
+  homepage 'http://tmux.github.io/'
   version '2.2'                                               	                                      # software version
   source_url 'https://github.com/tmux/tmux/releases/download/2.2/tmux-2.2.tar.gz'     # software source tarball url
   source_sha1 '5ed1430bc7ef44c227e64e9401c686573dd0791a'          	# source tarball sha1 sum

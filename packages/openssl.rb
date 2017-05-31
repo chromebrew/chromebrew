@@ -1,6 +1,8 @@
 require 'package'
 
 class Openssl < Package
+  description 'OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.'
+  homepage 'https://www.openssl.org/'
   version '1.0.2k'
 
   source_url 'ftp://openssl.org/source/openssl-1.0.2k.tar.gz'

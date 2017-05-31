@@ -1,6 +1,8 @@
 require 'package'
 
 class Lldb < Package
+  description 'LLDB is a next generation, high-performance debugger.'
+  homepage 'http://lldb.llvm.org/'
   version '3.6'
   binary_url ({
     i686: "https://www.dropbox.com/s/bls4hv4z8m2ifsc/lldb-3.6-i386.tar.gz?dl=0",

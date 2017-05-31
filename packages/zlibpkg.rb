@@ -1,6 +1,8 @@
 require 'package'
 
 class Zlibpkg < Package
+  description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
+  homepage 'http://www.zlib.net/'
   version '1.2.11-1'
   source_url 'http://www.zlib.net/zlib-1.2.11.tar.gz'
   source_sha1 'e6d119755acdf9104d7ba236b1242696940ed6dd'

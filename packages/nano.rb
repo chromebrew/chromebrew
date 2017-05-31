@@ -1,6 +1,8 @@
 require 'package'
 
 class Nano < Package
+  description 'Nano's ANOther editor, an enhanced free Pico clone.'
+  homepage 'https://www.nano-editor.org/'
   version '2.7.1'
   source_url 'ftp://ftp.gnu.org/pub/gnu/nano/nano-2.7.1.tar.gz' # software source tarball url  
   source_sha1 '5ad089d08e68dc7977f51403de6d7872686647af'

@@ -1,6 +1,8 @@
 require 'package'
 
 class Ruby < Package
+  description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
+  homepage 'https://www.ruby-lang.org/en/'
   version '2.4.1'
   source_url 'https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.xz'
   source_sha1 'eb3e25346431214379e3b92c6f6b6e02f7b2503f'
