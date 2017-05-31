@@ -1,7 +1,7 @@
 require 'package'
 
 class Slang < Package
-  description 'S-Lang is a multi-platform programmer's library designed to allow a developer to create robust multi-platform software.'
+  description 'S-Lang is a multi-platform programmer\'s library designed to allow a developer to create robust multi-platform software.'
   homepage 'http://www.jedsoft.org/slang/'
   version '2.3.1a'
   source_url 'http://www.jedsoft.org/releases/slang/slang-2.3.1a.tar.bz2'

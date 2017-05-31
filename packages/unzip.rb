@@ -1,7 +1,7 @@
 require 'package'
 
 class Unzip < Package
-  description 'UnZip is an extraction utility for archives compressed in .zip format (also called 'zipfiles').'
+  description 'UnZip is an extraction utility for archives compressed in .zip format (also called \'zipfiles\').'
   homepage 'http://www.info-zip.org/UnZip.html'
   version '1.6_1'
   source_url 'https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/unzip60.tar.gz'
