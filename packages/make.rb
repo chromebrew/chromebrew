@@ -1,7 +1,7 @@
 require 'package'
 
 class Make < Package
-  description 'GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.'
+  description 'GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program\'s source files.'
   homepage 'https://www.gnu.org/software/make/'
   version '4.2'
   source_url 'ftp://ftp.gnu.org/gnu/make/make-4.2.tar.bz2'
