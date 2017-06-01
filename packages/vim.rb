@@ -8,9 +8,10 @@ class Vim < Package
   source_sha1 '54bb7fe631ed8eaea5675ec934e88b0da1f1eca0'
 
   depends_on 'ncurses'
-  depends_on 'perl' => :build
-  depends_on 'python27' => :build
-  depends_on 'ruby' => :build
+  # vim uses shared library of following languages, so need them isntalled at run-time
+  depends_on 'perl'
+  depends_on 'python27'
+  depends_on 'ruby'
 
   def self.build
     system './configure --prefix=/usr/local --enable-gui=no --with-features=huge --without-x --disable-nls --enable-multibyte  --with-tlib=ncurses --enable-perlinterp --enable-pythoninterp  --enable-rubyinterp --with-ruby-command=/usr/local/bin/ruby --disable-selinux'

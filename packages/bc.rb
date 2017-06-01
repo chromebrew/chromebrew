@@ -8,8 +8,8 @@ class Bc < Package
   source_sha1 'b4475c6d66590a5911d30f9747361db47231640a'
 
   depends_on 'readline'
-  depends_on 'flex'
-  depends_on 'ed'
+  depends_on 'flex' => :build
+  depends_on 'ed' => :build
 
   def self.build
     system "./configure", "--with-readline"
