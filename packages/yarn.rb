@@ -8,7 +8,7 @@ class Yarn < Package
   depends_on 'node'
 
   def self.build
-    system "sudo bash chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}"
+    system "npm install"
   end
 
   def self.install
