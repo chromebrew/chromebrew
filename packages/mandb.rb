@@ -19,10 +19,11 @@ class Mandb < Package
       '--disable-cache-owner',                                # we can't create the user 'man'
       '--with-pager=/usr/local/bin/less'                      # the pager is not at the default location
     system 'make'
+    system "find . -name 'lib*.so*' -print | xargs strip -S"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
     puts ""
     puts "You will have to change the default PAGER environment variable to be able to use mandb:"
     puts "echo \"export PAGER=/usr/local/bin/less\" >> ~/.bashrc && . ~/.bashrc"
