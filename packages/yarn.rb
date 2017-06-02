@@ -1,9 +1,9 @@
 require 'package'
 
 class Yarn < Package
-  version '0.25.3'
+  version '0.25.4'
   source_url 'https://github.com/yarnpkg/yarn/releases/download/v0.25.3/yarn-v0.25.3.tar.gz'
-  source_sha1 'a25d2eba9d40479a795422a23af8db9e950f36d0'
+  source_sha1 '94b08478cf06652a337aef5742cf32472c767924'
 
   depends_on 'node'
 
