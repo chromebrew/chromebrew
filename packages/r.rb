@@ -5,6 +5,7 @@ class R < Package
   source_url 'https://cran.rstudio.com/src/base/R-3/R-3.3.2.tar.gz'
   source_sha1 '0e39e9c2d28fe6bab9c55ca23e08ba8727fd2fca'
 
+  depends_on 'bz2'
   depends_on 'readline'
   
   def self.build
