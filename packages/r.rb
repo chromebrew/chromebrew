@@ -6,6 +6,7 @@ class R < Package
   source_sha1 '0e39e9c2d28fe6bab9c55ca23e08ba8727fd2fca'
 
   depends_on 'bz2'
+  depends_on 'curl'
   depends_on 'readline'
   
   def self.build
