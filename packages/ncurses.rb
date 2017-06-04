@@ -22,5 +22,6 @@ class Ncurses < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    FileUtils.ln_s '/usr/local/include/ncursesw', '/usr/local/include/ncurses'
   end
 end
