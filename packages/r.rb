@@ -7,6 +7,7 @@ class R < Package
 
   depends_on 'bz2'
   depends_on 'curl'
+  depends_on 'openssl'
   depends_on 'readline'
   
   def self.build
