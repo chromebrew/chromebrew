@@ -16,7 +16,6 @@ class Ffmpeg < Package
   depends_on 'libtheora'
   depends_on 'libvoamrwbenc'
   depends_on 'libvorbis'
-  depends_on 'libvpx'
   depends_on 'libwebp'
   depends_on 'libx264'
   depends_on 'libx265'
@@ -58,10 +57,10 @@ class Ffmpeg < Package
              --enable-libvidstab \
              --enable-libvo-amrwbenc \
              --enable-libvorbis \
-             --enable-libvpx \
              --enable-libwebp \
              --enable-libx264 \
-             --enable-libx265"
+             --enable-libx265 \
+             --enable-libxvid"
   end
 
   def self.install
