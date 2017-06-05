@@ -6,7 +6,7 @@ class Libvpx < Package
   source_sha1 '9e41a6bb2b991f5542c264676ac452114cda9c7c'
 
   def self.build
-    system "./configure --target=#{ARCH}-linux-gcc \
+    system "./configure --prefix=/usr/local \
             --enable-shared \
             --enable-vp8 \
             --enable-vp9 \

@@ -43,6 +43,7 @@ class Ffmpeg < Package
              --enable-gray \
              --enable-libass \
              --enable-libfdk-aac \
+             --enable-libfontconfig \
              --enable-libfreetype \
              --enable-libfribidi \
              --enable-libmp3lame \
@@ -60,8 +61,7 @@ class Ffmpeg < Package
              --enable-libvpx \
              --enable-libwebp \
              --enable-libx264 \
-             --enable-libx265 \
-             --enable-libxvid"
+             --enable-libx265"
   end
 
   def self.install
