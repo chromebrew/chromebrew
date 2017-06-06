@@ -8,8 +8,8 @@ class Openssl < Package
   source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz'
   source_sha1 '5bea0957b371627e8ebbee5bef221519e94d547c'
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/binaries/openssl-1.0.2l-1-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/binaries/openssl-1.0.2l-1-chromeos-armv7l.tar.xz',
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/binaries/openssl-1.0.2l-chromeos-armv7l.tar.xz',
+    armv7l:  'https://github.com/jam7/chromebrew/releases/download/binaries/openssl-1.0.2l-chromeos-armv7l.tar.xz',
   })
   binary_sha1 ({
     aarch64: '4c9eb37df898e9495a8f53e3aa7f6058063fa8ce',
