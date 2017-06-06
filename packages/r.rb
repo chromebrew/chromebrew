@@ -12,6 +12,11 @@ class R < Package
   depends_on 'zlibpkg'
   depends_on 'xzutils'
 
+  depends_on 'bz2'
+  depends_on 'curl'
+  depends_on 'openssl'
+  depends_on 'readline'
+  
   def self.build
     system './configure',
       '--with-x=no' # X is not available
