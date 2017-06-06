@@ -9,6 +9,8 @@ class Package
     attr_accessor :in_upgrade
   end
 
+  @@debug_symbol = ENV['CREW_DEBUG_SYMBOL'] || false
+
   def self.dependencies
     # Not sure how to initialize instance variable of not constructed class.
     # Therefore, initialize it in reader function.
