@@ -1,6 +1,8 @@
 require 'package'
 
 class Isl < Package
+  description 'Integer Set Library for manipulating sets and relations of integer points bounded by linear constraints'
+  homepage 'http://isl.gforge.inria.fr/'
   version "0.14.1-cc1.3"
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/isl-0.14.1-cc1.3-chromeos-armv7l.tar.xz',
