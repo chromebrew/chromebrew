@@ -1,6 +1,8 @@
 require 'package'
 
 class Glibc223 < Package
+  description 'GNU C Library'
+  homepage 'https://www.gnu.org/software/libc/'
   version '2.23-cc1.3'
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/glibc-2.23-cc1.3-chromeos-armv7l.tar.xz',

@@ -1,6 +1,8 @@
 require 'package'
 
 class Cloog < Package
+  description 'Chunky Loop Generator which is used to perform optimization in gcc'
+  homepage 'https://www.cloog.org/'
   version "0.18.4-cc1.3"
   binary_url ({
     aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/cloog-0.18.4-cc1.3-chromeos-armv7l.tar.xz',
