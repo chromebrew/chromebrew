@@ -146,13 +146,7 @@ end
 
 # create packages.json if it doesn't exist
 packages_json = CREW_CONFIG_PATH + 'packages.json'
-if not File.file? packages_json
-  system "echo '[' > " + packages_json
-  system "echo '  {' >> " + packages_json
-  system "echo '  }' >> " + packages_json
-  system "echo ']' >> " + packages_json
-  refresh
-end
+refresh if not File.file? packages_json
 
 # describe a package
 @packages = JSON.parse(File.read(packages_json), symbolize_names: true)
