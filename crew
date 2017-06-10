@@ -36,6 +36,77 @@ $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 USER = `whoami`.chomp
 
+# colorization
+class String
+  def colorize(color_code, shade)
+    "\e[#{shade};#{color_code}m#{self}\e[0m"
+  end
+
+  def black
+    colorize(30, 0)
+  end
+
+  def red
+    colorize(31, 0)
+  end
+
+  def green
+    colorize(32, 0)
+  end
+
+  def orange
+    colorize(33, 0)
+  end
+
+  def blue
+    colorize(34, 0)
+  end
+
+  def purple
+    colorize(35, 0)
+  end
+
+  def cyan
+    colorize(36, 0)
+  end
+
+  def lightgray
+    colorize(37, 0)
+  end
+
+  def gray
+    colorize(30, 1)
+  end
+
+  def lightred
+    colorize(31, 1)
+  end
+
+  def lightgreen
+    colorize(32, 1)
+  end
+
+  def yellow
+    colorize(33, 1)
+  end
+
+  def lightblue
+    colorize(34, 1)
+  end
+
+  def lightpurple
+    colorize(35, 1)
+  end
+
+  def lightcyan
+    colorize(36, 1)
+  end
+
+  def white
+    colorize(37, 1)
+  end
+end
+
 #disallow sudo
 abort "Chromebrew should not be run as root." if Process.uid == 0 && @command != "remove"
 
@@ -45,20 +116,33 @@ abort "Chromebrew should not be run as root." if Process.uid == 0 && @command !=
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
+def print_package(pkgName, extra = false)
+  search pkgName, true
+  Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+    print '(i) '.lightgreen if packageList == CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
+  end
+  print @pkg.name
+  print ": #{@pkg.description}" if @pkg.description
+  if extra
+    puts ""
+    puts @pkg.homepage if @pkg.homepage
+    print "version #{@pkg.version}"
+  end
+  puts ""
+end
+
 def set_package (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
-  puts "Found #{pkgName}, version #{@pkg.version}" unless silent
+  print_package pkgName unless silent
 end
 
 def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-      packageName = File.basename filename, '.rb'
-      print '(i) ' if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
+    if File.extname(filename) == '.rb'
+      print_package File.basename filename, '.rb'
     end
-    puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
   end
 end
 
@@ -94,6 +178,7 @@ def help (pkgName)
     puts "Tips:"
     puts "  crew search | grep '(i)' will return all installed packages."
     puts "  crew search | grep -v '(i)' will return all available packages not already installed."
+    puts "  crew search | grep -i 'pattern' will return all packages with 'pattern' in the description."
   when "update"
     puts "Update crew."
     puts "Usage: crew update"
@@ -389,7 +474,7 @@ def resolve_dependencies
   end
 
   puts ""
-  puts "Do you agree? [Y/n]"
+  print "Do you agree? [Y/n] "
   response = STDIN.getc
   case response
   when "n"
@@ -578,7 +663,7 @@ when "help"
   end
 when "search"
   if @pkgName
-    search @pkgName
+    print_package @pkgName, true
   else
     list_packages
   end
@@ -620,7 +705,7 @@ when "remove"
     help "remove"
   end
 when nil
-  puts "Chromebrew, version 0.4.2"
+  puts "Chromebrew, version 0.4.3"
   puts "Usage: crew [command] [package]"
   help nil
 else
