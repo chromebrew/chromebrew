@@ -79,10 +79,18 @@ def help (pkgName)
     puts "Download a package."
     puts "Usage: crew download [package]"
     puts "Download [package] to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it."
+  when "info"
+    puts "Describe a package."
+    puts "Usage: crew info [package]"
+    puts "Display information about [package]."
   when "install"
     puts "Install a package."
     puts "Usage: crew install [package]"
     puts "The [package] must be a valid name.  Use `crew search [package]` to search for a package to install."
+  when "refresh"
+    puts "Refresh the package metadata."
+    puts "Usage: crew refresh"
+    puts "Update the package metadata for use with the crew info command."
   when "remove"
     puts "Remove a package."
     puts "Usage: crew remove [package]"
@@ -108,8 +116,58 @@ def help (pkgName)
     puts "Usage: crew whatprovides [pattern]"
     puts "The [pattern] is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, download, info, install, refresh, remove, search, update, upgrade, whatprovides"
   end
+end
+
+# refresh package metadata
+def refresh
+  @packages = []
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    packageName = File.basename filename, '.rb'
+    if packageName != 'packages'
+      set_package(packageName, true)
+      package = {
+        description: @pkg.description,
+        homepage: @pkg.homepage,
+        version: @pkg.version
+      }
+      @packages.push(@pkg.name => package)
+    end
+  end
+  packages_json = CREW_CONFIG_PATH + 'packages.json'
+  system "rm -f #{packages_json}"
+  File.open(packages_json, 'w') do |file|
+    out = JSON.parse @packages.to_json
+    file.write JSON.pretty_generate(out)
+  end
+  puts "#{packages_json} refreshed!"
+end
+
+# create packages.json if it doesn't exist
+packages_json = CREW_CONFIG_PATH + 'packages.json'
+if not File.file? packages_json
+  system "echo '[' > " + packages_json
+  system "echo '  {' >> " + packages_json
+  system "echo '  }' >> " + packages_json
+  system "echo ']' >> " + packages_json
+  refresh
+end
+
+# describe a package
+@packages = JSON.parse(File.read(packages_json), symbolize_names: true)
+def info (pkgName)
+  @packages.each do |package|
+    package.each_pair do |name, values|
+      if pkgName == "#{name}"
+        puts "#{name} version #{values[:version]}"
+        puts "#{values[:description]}" if "#{values[:description]}" != ""
+        puts "Learn more at #{values[:homepage]}" if "#{values[:homepage]}" != ""
+        abort
+      end
+    end
+  end
+  puts "package #{pkgName} not found :("
 end
 
 def whatprovides (pkgName)
@@ -146,6 +204,10 @@ def update
     system "git fetch origin master"
     system "git reset --hard origin/master"
   end
+
+  # add or remove from packages.json
+  refresh
+
   puts "Package lists, crew, and library updated."
 
   #check for outdated installed packages
@@ -576,6 +638,13 @@ when "help"
     puts "Usage: crew help [command]"
     help nil
   end
+when "info"
+  if @pkgName
+    info @pkgName
+  else
+    puts "Usage: crew info [package]"
+    help nil
+  end
 when "search"
   if @pkgName
     search @pkgName
@@ -619,8 +688,10 @@ when "remove"
   else
     help "remove"
   end
+when "refresh"
+  refresh
 when nil
-  puts "Chromebrew, version 0.4.2"
+  puts "Chromebrew, version 0.5.1"
   puts "Usage: crew [command] [package]"
   help nil
 else
