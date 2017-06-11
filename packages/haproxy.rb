@@ -1,6 +1,8 @@
 require 'package'
 
 class Haproxy < Package
+  description 'The Reliable, High Performance TCP/HTTP Load Balancer.'
+  homepage 'http://www.haproxy.org/'
   version '1.7.2'
   source_url 'http://www.haproxy.org/download/1.7/src/haproxy-1.7.2.tar.gz'
   source_sha1 'b022485e28b96b673e3116a69d8922cb7367a81f'

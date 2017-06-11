@@ -1,6 +1,8 @@
 require 'package'
 
 class Bind < Package
+  description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
+  homepage 'https://www.isc.org/downloads/bind/'
   version '9.10.4'
   source_url 'https://www.isc.org/downloads/file/bind-9-10-4-p6/'
   source_sha1 'c08bef47136b3b88844a4c3b8a6227445fca6f40'

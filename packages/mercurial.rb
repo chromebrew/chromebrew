@@ -1,6 +1,8 @@
 require 'package'
 
 class Mercurial < Package
+  description 'Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.'
+  homepage 'https://www.mercurial-scm.org/'
   version '4.1'
   source_url 'https://www.mercurial-scm.org/release/mercurial-4.1.tar.gz'
   source_sha1 'd5f88e05cbbd8f13dd5fc4004433f54435fc27c8'

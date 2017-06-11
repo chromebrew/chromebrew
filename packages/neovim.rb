@@ -1,6 +1,8 @@
 require 'package'
 
 class Neovim < Package
+  description 'Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie).'
+  homepage 'https://neovim.io/'
   version '0.1.7'
   source_url 'https://github.com/neovim/neovim/archive/v0.1.7.tar.gz'
   source_sha1 '00e67f981105f1acbe06df1dbea21b6f7fa6d9b8'
