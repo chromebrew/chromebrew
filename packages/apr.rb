@@ -1,7 +1,7 @@
 require 'package'
 
 class Apr < Package
-  description'The mission of the Apache Portable Runtime (APR) project is to create and maintain software libraries that provide a predictable and consistent interface to underlying platform-specific implementations.  APR is the base portability library.'
+  description 'The mission of the Apache Portable Runtime (APR) project is to create and maintain software libraries that provide a predictable and consistent interface to underlying platform-specific implementations.  APR is the base portability library.'
   homepage 'http://apr.apache.org/'
   version '1.5.2'
   source_url 'http://apache.claz.org/apr/apr-1.5.2.tar.bz2'
