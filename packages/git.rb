@@ -18,7 +18,7 @@ class Git < Package
   depends_on 'python27' => :build     # requires python2
 
   # need to build using single core
-  @make_cmd = "make -j1 prefix=/usr/local CC=gcc PERL_PATH=/usr/local/bin/perl PYTHON_PATH=/usr/local/bin/python2"
+  @make_cmd = "make -j1 prefix=/usr/local CC=gcc PERL_PATH=/usr/local/bin/perl PYTHON_PATH=/usr/local/bin/python2 NO_PTHREADS="
 
   def self.build
     system "#{@make_cmd} all"
