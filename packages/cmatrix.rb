@@ -1,6 +1,8 @@
 require 'package'
 
 class Cmatrix < Package
+  description 'Console Matrix animations.'
+  homepage 'http://www.asty.org/cmatrix/'
   version '1.2a'
   source_url 'http://www.asty.org/cmatrix/dist/cmatrix-1.2a.tar.gz'
   source_sha1 'ca078c10322a47e327f07a44c9a42b52eab5ad93'
