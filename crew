@@ -108,7 +108,7 @@ class String
 end
 
 #disallow sudo
-abort "Chromebrew should not be run as root." if Process.uid == 0 && @command != "remove"
+abort "Chromebrew should not be run as root.".lightred if Process.uid == 0
 
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
@@ -135,7 +135,7 @@ def set_package (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.name = pkgName
-  print_package pkgName unless silent
+  print_package(pkgName, true) unless silent
 end
 
 def list_packages
@@ -150,7 +150,7 @@ def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     return set_package(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
-  abort "package #{pkgName} not found :("
+  abort "Package #{pkgName} not found. :(".lightred
 end
 
 def help (pkgName)
@@ -219,12 +219,12 @@ def whatprovides (pkgName)
     fileArray.sort.each do |item|
       puts item
     end
-    puts "\nTotal found: #{fileArray.length}"
+    puts "\nTotal found: #{fileArray.length}".lightgreen
   end
 end
 
 def update
-  abort "'crew update' is used to update crew itself. Use 'crew upgrade <packageName> to upgrade a specific package." if @pkgName
+  abort "'crew update' is used to update crew itself. Use 'crew upgrade <packageName> to upgrade a specific package.".orange if @pkgName
 
   #update package lists
   Dir.chdir CREW_LIB_PATH do
@@ -250,7 +250,7 @@ def update
     puts ""
     puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
   else
-    puts "Your software is up to date."
+    puts "Your software is up to date.".lightgreen
   end
 end
 
@@ -271,7 +271,7 @@ def upgrade
       resolve_dependencies_and_install
       @pkg.in_upgrade = false
     else
-      puts "#{@pkg.name} is already up to date."
+      puts "#{@pkg.name} is already up to date.".lightgreen
     end
   else
     toBeUpdated = []
@@ -290,9 +290,9 @@ def upgrade
         resolve_dependencies_and_install
         @pkg.in_upgrade = false
       end
-      puts "Packages have been updated."
+      puts "Packages have been updated.".lightgreen
     else
-      puts "Your software is already up to date."
+      puts "Your software is already up to date.".lightgreen
     end
   end
 end
@@ -302,7 +302,7 @@ def download
   source = @pkg.is_source?(@device[:architecture])
 
   if !url
-    abort "No precompiled binary for #{@device[:architecture]} nor source is available."
+    abort "No precompiled binary for #{@device[:architecture]} nor source is available.".lightred
   elsif !source
     puts "Precompiled binary available, downloading..."
   elsif @pkg.build_from_source
@@ -320,9 +320,9 @@ def download
   end
   Dir.chdir CREW_BREW_DIR do
     system('wget', '--continue', '--no-check-certificate', url, '-O', filename)
-    abort 'Checksum mismatch :/ try again' unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum
   end
-  puts "Archive downloaded"
+  puts "Archive downloaded".lightgreen
   return {source: source, filename: filename}
 end
 
@@ -341,7 +341,7 @@ def unpack (meta)
       # Check the number of directories in the archive
       entries=Dir["#{extract_dir}/*"]
       if entries.length == 0
-        abort "empty archive: #{meta[:filename]}"
+        abort "Empty archive: #{meta[:filename]}".lightred
       elsif entries.length == 1 && File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
         target_dir = entries.first
@@ -402,7 +402,7 @@ def resolve_dependencies_and_install
     search origin, true
     install
   rescue InstallError => e
-    abort "#{@pkg.name} failed to install: #{e.to_s}"
+    abort "#{@pkg.name} failed to install: #{e.to_s}".lightred
   ensure
     #cleanup
     unless ARGV[2] == 'keep'
@@ -467,7 +467,7 @@ def resolve_dependencies
 
   return if dependencies.empty?
 
-  puts "Following packages also need to be installed: "
+  puts "The following packages also need to be installed: "
 
   dependencies.each do |dep|
     print dep + " "
@@ -483,7 +483,7 @@ def resolve_dependencies
     puts "Proceeding..."
     proceed = true
   else
-    puts "I don't understand '#{response}' :("
+    puts "I don't understand '#{response}'. :(".lightred
     abort "No changes made."
   end
 
@@ -497,7 +497,7 @@ end
 
 def install
   if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
-    puts "Package #{@pkg.name} already installed, skipping..."
+    puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
 
@@ -505,7 +505,7 @@ def install
     meta = download
     target_dir = unpack meta
     if meta[:source] == true
-      abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again." unless system("gcc", "--version")
+      abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again.".lightred unless system("gcc", "--version")
 
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy
@@ -538,7 +538,7 @@ def install
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
-  puts "#{@pkg.name.capitalize} installed!"
+  puts "#{@pkg.name.capitalize} installed!".lightgreen
 end
 
 def resolve_dependencies_and_build
@@ -552,7 +552,7 @@ def resolve_dependencies_and_build
     search origin, true
     build_package Dir.pwd
   rescue InstallError => e
-    abort "#{@pkg.name} failed to build: #{e.to_s}"
+    abort "#{@pkg.name} failed to build: #{e.to_s}".lightred
   ensure
     #cleanup
     unless ARGV[2] == 'keep'
@@ -565,8 +565,8 @@ def resolve_dependencies_and_build
 end
 
 def build_package (pwd)
-  abort "It is not possible to build fake package" if @pkg.is_fake?
-  abort "It is not possible to build without source" if !@pkg.is_source?(@device[:architecture])
+  abort "It is not possible to build fake package".lightred if @pkg.is_fake?
+  abort "It is not possible to build without source".lightred if !@pkg.is_source?(@device[:architecture])
 
   # download source codes and unpack it
   meta = download
@@ -600,14 +600,14 @@ def archive_package (pwd)
   Dir.chdir pwd do
     system "sha1sum #{pkg_name} > #{pkg_name}.sha1"
   end
-  puts "#{pkg_name} is built!"
+  puts "#{pkg_name} is built!".lightgreen
 end
 
 def remove (pkgName)
 
   #make sure the package is actually installed
   unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName }
-    puts "Package #{pkgName} isn't installed."
+    puts "Package #{pkgName} isn't installed.".lightred
     return
   end
 
@@ -649,7 +649,7 @@ def remove (pkgName)
     file.write JSON.pretty_generate(out)
   end
 
-  puts "#{pkgName.capitalize} removed!"
+  puts "#{pkgName.capitalize} removed!".lightgreen
 
 end
 
@@ -709,6 +709,6 @@ when nil
   puts "Usage: crew [command] [package]"
   help nil
 else
-  puts "I have no idea how to do #{@command} :("
+  puts "I have no idea how to do #{@command} :(".lightred
   help nil
 end
