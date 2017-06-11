@@ -1,6 +1,8 @@
 require 'package'
 
 class Glibc219 < Package
+  description 'GNU C Library'
+  homepage 'https://www.gnu.org/software/libc/'
   version '2.19'
   binary_url ({
     aarch64: 'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-armv7l.tar.xz',

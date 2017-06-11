@@ -1,6 +1,8 @@
 require 'package'
 
 class Libcap < Package
+  description 'Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.'
+  homepage 'https://directory.fsf.org/wiki/Libcap'
   version '2.25'
   source_url 'https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.25.tar.xz'
   source_sha1 'f0b102e4a68e1bbdcb6b143b63c34a250e473088'
