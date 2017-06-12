@@ -18,14 +18,14 @@ class Python27 < Package
     system "make"
 
     # strip debug symbols from library
-    system "find . -name '*.so' -print | xargs strip -S" unless @@debug_symbol
+    system "find . -name '*.so' -print | xargs strip -S" #unless @@debug_symbol
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
     # strip binary
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/python2" unless @@debug_symbol
+    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/python2" #unless @@debug_symbol
 
     # remove static library
     system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs rm"
