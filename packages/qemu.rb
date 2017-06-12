@@ -1,6 +1,8 @@
 require 'package'
 
 class Qemu < Package
+  description 'QEMU is a generic and open source machine emulator and virtualizer.'
+  homepage 'http://www.qemu.org/'
   version '2.9.0'
   source_url 'http://download.qemu-project.org/qemu-2.9.0.tar.xz'
   source_sha1 '5cc63c6cababaaa7d0685e8b32bacf5022873ebc'

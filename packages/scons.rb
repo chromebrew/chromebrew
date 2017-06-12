@@ -1,6 +1,8 @@
 require 'package'
 
 class Scons < Package
+  description 'SCons is an Open Source software construction tool that is, a next-generation build tool.'
+  homepage 'http://scons.org/'
   version '2.5.1'
   source_url 'http://prdownloads.sourceforge.net/scons/scons-2.5.1.tar.gz'
   source_sha1 'f742350251734df75355e51c70f291e119ef927a'

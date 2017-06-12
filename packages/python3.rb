@@ -1,6 +1,8 @@
 require 'package'
 
 class Python3 < Package
+  description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
+  homepage 'https://www.python.org/'
   version '3.6.0'
   source_url 'https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz'
   source_sha1 '120d536ee14a3153fc2435838c0f27c2e25cd29c'

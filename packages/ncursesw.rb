@@ -1,6 +1,8 @@
 require 'package'
 
 class Ncursesw < Package
+  description 'ncurses wide-character libraries.'
+  homepage 'http://www.gnu.org/software/ncurses/'
   version '6.0-2'
   source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
   source_sha1 'acd606135a5124905da770803c05f1f20dd3b21c'

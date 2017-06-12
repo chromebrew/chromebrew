@@ -1,6 +1,8 @@
 require 'package'
 
 class Libunbound < Package
+  description 'Unbound is a validating, recursive, and caching DNS resolver.'
+  homepage 'https://www.unbound.net/'
   version '1.6.2'
   source_url 'https://www.unbound.net/downloads/unbound-1.6.2.tar.gz'
   source_sha1 'de370b1ac8e260db9c4c1504453752713dd8818f'

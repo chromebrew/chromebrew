@@ -1,6 +1,8 @@
 require 'package'
 
 class Httpd < Package
+  description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
+  homepage 'http://httpd.apache.org/'
   version '2.2.32'
   source_url 'https://github.com/apache/httpd/archive/2.2.32.tar.gz'
   source_sha1 '647e459f645c4138561e3f4314570f2f525d754d'
