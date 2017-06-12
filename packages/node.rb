@@ -17,12 +17,6 @@ class Node < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    #Fix Permissiongs for -g installs of node packages
-    puts  "************************************************************"
-    puts "Now run:"
-    puts "sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}"
-    puts "To be able to do"
-    puts "npm install -g"
-    puts "without being SUDO"
+    system "sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}"
   end
 end
