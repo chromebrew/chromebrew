@@ -157,7 +157,7 @@ def regexp_search(pkg_name)
   results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
 	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkg_name, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
-	  .each    { |f| set_package(f) }
+	  .each    { |f| print_package(f, ARGV[2] == "extra") }
   abort "Package not found :(" unless results.length > 0
 end
 
