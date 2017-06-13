@@ -14,19 +14,25 @@ class Wine < Package
   depends_on 'freetype'
 
   def self.build
-    device = JSON.parse(File.read('/usr/local/etc/crew/device.json'), symbolize_names: true)
-    case device[:architecture]
+    case ARCH
     when "i686" || "armv7l"
       system "./configure --without-x"
     when "x86_64" || "aarch64"
-      system "./configure --without-x  --enable-win64"
+      system "./configure --without-x --enable-win64"
     else
-      puts "Error getting your device configuration."
+      abort "Error getting your device configuration."
     end
     system "make"
   end
 
   def self.install
+    case ARCH
+    when "x86_64" || "aarch64"
+      system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
+      FileUtils.cd("#{CREW_DEST_DIR}/usr/local/bin") do
+        system "ln -s wine64 wine"
+      end
+    end
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
