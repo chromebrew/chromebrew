@@ -3,9 +3,11 @@ require 'json'
 require 'fileutils'
 
 class Wine < Package
-  version '2.8'
-  source_url 'https://dl.winehq.org/wine/source/2.x/wine-2.8.tar.xz'
-  source_sha1 'a36d2afb572a3cfb160066373cb78ea0506b9dfd'
+  description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD.'
+  homepage 'https://www.winehq.org/'
+  version '2.10'
+  source_url 'https://dl.winehq.org/wine/source/2.x/wine-2.10.tar.xz'
+  source_sha1 '886bc24c315b2accbc2ad41d921e92177768f3a5'
 
   depends_on 'bison'
   depends_on 'flex'
