@@ -1,6 +1,6 @@
 require 'package'
 
-class Node < Package
+class Node_current < Package
   description 'As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.'
   homepage 'https://nodejs.org/en/'
   version '8.1.0'
