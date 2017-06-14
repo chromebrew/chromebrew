@@ -1,17 +1,19 @@
 require 'package'
 
 class Glibc223 < Package
-  version '2.23'
+  description 'GNU C Library'
+  homepage 'https://www.gnu.org/software/libc/'
+  version '2.23-cc1.3'
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.23-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.23-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.23-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.23-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/glibc-2.23-cc1.3-chromeos-armv7l.tar.xz',
+    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.3/glibc-2.23-cc1.3-chromeos-armv7l.tar.xz',
+    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.3/glibc-2.23-cc1.3-chromeos-i686.tar.xz',
+    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.3/glibc-2.23-cc1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha1 ({
-    aarch64: '4cac7d5d3d97f147c9ac9ad0c1deb1ac9b967450',
-    armv7l:  '4cac7d5d3d97f147c9ac9ad0c1deb1ac9b967450',
-    i686:    '434adb6dd1c3dcc30a25e3700f425a081888a28a',
-    x86_64:  '9b4ae8c6ccc081f7d9d169cd0b3eb74ae736e79f',
+    aarch64: '09cac401b8d6821c4ea2f349f0a348fcef9e07b2',
+    armv7l:  '09cac401b8d6821c4ea2f349f0a348fcef9e07b2',
+    i686:    '66096f5bf50ab19f17f8d9356589ea6dc809f8d9',
+    x86_64:  '1807e449919fff8d3473d97d43d184961a65a323',
   })
 end

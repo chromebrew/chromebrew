@@ -1,6 +1,8 @@
 require 'package'
 
 class Wbox < Package
+  description 'Wbox aims to help you having fun while testing HTTP related stuff.'
+  homepage 'http://www.hping.org/wbox/'
   version '5'
   source_url 'http://www.hping.org/wbox/wbox-5.tar.gz'
   source_sha1 '5f20fca378c8abf53bb6a9069ecdebeb40a74147'

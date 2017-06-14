@@ -1,17 +1,19 @@
-require 'package'                                                      	# include package class file
+require 'package'
  
-class Libevent < Package                                            	# name the package and make it a Package class instance
-  version '2.1.8'                                               	                                      # software version
-  source_url 'https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz'     # software source tarball url
-  source_sha1 '2a1b8bb7a262d3fd0ed6a080a20991a6eed675ec'          	# source tarball sha1 sum
+class Libevent < Package
+  description 'The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.'
+  homepage 'http://libevent.org/'
+  version '2.1.8'
+  source_url 'https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz'
+  source_sha1 '2a1b8bb7a262d3fd0ed6a080a20991a6eed675ec'
   depends_on 'openssl'
   
-  def self.build                                                  # self.build contains commands needed to build the software from source
+  def self.build
     system "./configure"
-    system "make"                                                 # ordered chronologically
+    system "make"
   end
   
-  def self.install                                                # self.install contains commands needed to install the software on the target system
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"          # remember to include DESTDIR set to CREW_DEST_DIR - needed to keep track of changes made to system
-  end                                                             # during installation
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
 end

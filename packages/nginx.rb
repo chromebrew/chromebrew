@@ -1,19 +1,21 @@
 require 'package'
 
 class Nginx < Package
+  description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
+  homepage 'http://nginx.org/'
   version '1.11.6-1'
-  source_url 'http://nginx.org/download/nginx-1.11.6.tar.gz' # software source tarball url
-  source_sha1 '51903b721a5ee721568fc59f0a243df5356a98de'  # source tarball sha1 sum
+  source_url 'http://nginx.org/download/nginx-1.11.6.tar.gz'
+  source_sha1 '51903b721a5ee721568fc59f0a243df5356a98de'
   
   depends_on 'pcre'
   
-  def self.build                                                  # self.build contains commands needed to build the software from source
+  def self.build
     system "./configure"
-    system "make"                                                 # ordered chronologically
+    system "make"
   end
 
-  def self.install                                                # self.install contains commands needed to install the software on the target system
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"          # remember to include DESTDIR set to CREW_DEST_DIR - needed to keep track of changes made to system
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "sudo ln -sf /usr/local/nginx/sbin/nginx /usr/local/bin/nginx"
     system "echo all NGINX things are in /usr/local/nginx"
     system "echo pages are in /usr/local/nginx/html"

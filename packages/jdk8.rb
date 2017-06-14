@@ -1,12 +1,14 @@
 require 'package'
 
 class Jdk8 < Package
+  description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
+  homepage 'http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'
   version '8u112'
   binary_url ({
-    aarch64: 'https://www.dropbox.com/s/bfu14nhbeoi8tdo/jdk8u111-armv7l.tar.gz?dl=1',
-    armv7l:  'https://www.dropbox.com/s/bfu14nhbeoi8tdo/jdk8u111-armv7l.tar.gz?dl=1',
-    i686:    'https://dl.dropboxusercontent.com/u/14799278/crew/jdk8u112-i686.tar.gz',
-    x86_64:  'https://dl.dropboxusercontent.com/u/14799278/crew/jdk8u112-x86_64.tar.gz',
+    i686: "https://www.dropbox.com/s/0c9yratmcf5fdpq/jdk8u112-i686.tar.gz",
+    x86_64: "https://www.dropbox.com/s/efa747g7or3294u/jdk8u112-x86_64.tar.gz",
+    armv7l: "https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz",
+    aarch64: "https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz"
   })
   binary_sha1 ({
     aarch64: '913adb900bf0d9d42452a4591c1a9093076ed4b6',

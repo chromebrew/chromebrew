@@ -1,6 +1,8 @@
 require 'package'
 
 class Nethack4 < Package
+  description 'NetHack is a \'roguelike\' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.'
+  homepage 'http://nethack4.org/'
   # "nethack4" fork of nethack with a few patches and a modern build system
   version '4.3.0-beta2'
   source_url 'http://nethack4.org/media/releases/nethack4-4.3-beta2.tar.gz'

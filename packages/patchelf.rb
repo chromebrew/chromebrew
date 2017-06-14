@@ -1,6 +1,8 @@
 require 'package'
 
 class Patchelf < Package
+  description 'PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.'
+  homepage 'http://nixos.org/patchelf.html'
   version '0.8-2'
   source_url 'http://nixos.org/releases/patchelf/patchelf-0.8/patchelf-0.8.tar.bz2'
   source_sha1 'd0645e9cee6f8e583ae927311c7ce88d29f416fc'

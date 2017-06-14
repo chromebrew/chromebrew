@@ -1,17 +1,20 @@
-require 'package'                                                 # include package class file
+require 'package'
 
-class Screen < Package                                               # name the package and make it a Package class instance
-  version '4.3.1'                                                   # software version
-  source_url 'ftp://ftp.gnu.org/gnu/screen/screen-4.3.1.tar.gz'     # software source tarball url
-  source_sha1 'a524761504e28480517e338b20c852f2ab100c93'          # source tarball sha1 sum
+class Screen < Package
+  description 'Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells.'
+  homepage 'https://www.gnu.org/software/screen/'
+  version '4.3.1'
+  source_url 'ftp://ftp.gnu.org/gnu/screen/screen-4.3.1.tar.gz'
+  source_sha1 'a524761504e28480517e338b20c852f2ab100c93'
   
-  depends_on 'ncurses'                                            # software dependencies
+  depends_on 'ncurses'
   
-  def self.build                                                  # self.build contains commands needed to build the software from source
+  def self.build
     system "./configure --prefix=/usr/local"
-    system "make"  end
+    system "make"
+  end
   
-  def self.install                                                # self.install contains commands needed to install the software on the target system
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"          # remember to include DESTDIR set to CREW_DEST_DIR - needed to keep track of changes made to system
-  end                                                             # during installation
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
 end

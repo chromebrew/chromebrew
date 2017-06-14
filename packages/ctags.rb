@@ -1,16 +1,18 @@
-require 'package'                                                      	# include package class file
+require 'package'
  
-class Ctags < Package                                            	# name the package and make it a Package class instance
-  version '5.8'                                               	                                      # software version
-  source_url 'http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz'     # software source tarball url
-  source_sha1 '482da1ecd182ab39bbdc09f2f02c9fba8cd20030'          	# source tarball sha1 sum
-  
-  def self.build                                                  # self.build contains commands needed to build the software from source
+class Ctags < Package
+  description 'Exuberant Ctags is a multilanguage reimplementation of the Unix ctags utility.'
+  homepage 'https://sourceforge.net/projects/ctags/'
+  version '5.8'
+  source_url 'http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz'
+  source_sha1 '482da1ecd182ab39bbdc09f2f02c9fba8cd20030'
+
+  def self.build
     system "./configure"
-    system "make"                                                 # ordered chronologically
+    system "make"
   end
-  
-  def self.install                                                # self.install contains commands needed to install the software on the target system
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"          # remember to include DESTDIR set to CREW_DEST_DIR - needed to keep track of changes made to system
-  end                                                             # during installation
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
 end

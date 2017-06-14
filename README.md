@@ -15,7 +15,7 @@ Supported Systems
 Overview
 --------
 
-Chromebooks with Chrome OS run a linux kernel - the only missing piece to use them as full-featured linux distro was gcc and make with their dependencies. Well, the piece isn't missing anymore. Say hello to chromebrew!
+Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use them as full-featured Linux distro were gcc and make with their dependencies. Well, these pieces aren't missing anymore. Say hello to chromebrew!
 
 Prerequisites
 -------------
@@ -32,7 +32,7 @@ Open the terminal with Ctrl+Alt+T and type `shell`.
 
 If this command returns `ERROR: unknown command: shell` please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
 
-Then download and run the installation script
+Then download and run the installation script below:
 
     wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
 
@@ -42,12 +42,17 @@ Usage
     crew <command> <package> <keep[temporary files]>
 
 Where available commands are:
-  
-  * search [looks for a package]
-  * download [downloads a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but doesn't install it]
-  * install [installs a package along with its dependencies. You'll be prompted for confirmation]
-  * remove [removes a package. Must be ran as root]
-  
+
+  * build [build a package from source and store the archive and checksum in the current working directory]
+  * download [download a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it]
+  * help [get information about command usage]
+  * install [install a package along with its dependencies after prompting for confirmation]
+  * remove [remove a package]
+  * search [look for a package]
+  * update [update crew itself]
+  * upgrade [update all or a specific package]
+  * whatprovides [regex search for package(s) that contains file(s)]
+
 Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass "keep" as the last parameter when running "crew install".
@@ -57,6 +62,6 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 License
 -------
 
-Copyright 2013 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors)
+Copyright 2013 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
 
-This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt)
+This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).

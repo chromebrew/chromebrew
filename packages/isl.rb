@@ -1,17 +1,19 @@
 require 'package'
 
 class Isl < Package
-  version "0.14.1"
+  description 'Integer Set Library for manipulating sets and relations of integer points bounded by linear constraints'
+  homepage 'http://isl.gforge.inria.fr/'
+  version "0.14.1-cc1.3"
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/newtoolchains/isl-0.14.1-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/isl-0.14.1-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chromebrew/releases/download/newtoolchains/isl-0.14.1-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/isl-0.14.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.3/isl-0.14.1-cc1.3-chromeos-armv7l.tar.xz',
+    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.3/isl-0.14.1-cc1.3-chromeos-armv7l.tar.xz',
+    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.3/isl-0.14.1-cc1.3-chromeos-i686.tar.xz',
+    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.3/isl-0.14.1-cc1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha1 ({
-    aarch64: 'c151cbe2601eda6cd391da165ad940aa7fa666bc',
-    armv7l:  'c151cbe2601eda6cd391da165ad940aa7fa666bc',
-    i686:    'cc2d07411dbfcfd03afe0953bce8cef8d7bb8307',
-    x86_64:  '3fa612198955e3d6e8201c05ef486d1462c76462',
+    aarch64: '749bf7d0a09c1578ce2de20a21ce7f7d6a575756',
+    armv7l:  '749bf7d0a09c1578ce2de20a21ce7f7d6a575756',
+    i686:    '306c249734107ac29e7951a44a000cfcbb523a35',
+    x86_64:  '7e0dcb1c65a99be666c4369abb649ad27f88ade1',
   })
 end

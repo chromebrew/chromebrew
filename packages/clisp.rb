@@ -1,6 +1,8 @@
 require 'package'
 
 class Clisp < Package
+  description 'ANSI Common Lisp compiler, interpreter and debugger.'
+  homepage 'http://www.gnu.org/software/clisp/'
   version '2.49-2'
   source_url 'ftp://ftp.gnu.org/pub/gnu/clisp/release/2.49/clisp-2.49.tar.bz2'
   source_sha1 '7e8d585ef8d0d6349ffe581d1ac08681e6e670d4'

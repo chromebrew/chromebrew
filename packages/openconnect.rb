@@ -28,6 +28,8 @@ require 'package'
 
 class Openconnect < Package
   version '7.06-1'
+  description 'OpenConnect is an SSL VPN client initially created to support Cisco\'s AnyConnect SSL VPN.'
+  homepage 'http://www.infradead.org/openconnect/'
   source_url 'ftp://ftp.infradead.org/pub/openconnect/openconnect-7.06.tar.gz'
   source_sha1 '2351408693aab0c6bc97d37e68b4a869fbb217ed'
 

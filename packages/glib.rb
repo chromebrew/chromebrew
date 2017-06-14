@@ -1,11 +1,14 @@
 require 'package'
 
 class Glib < Package
-  version '2.0.7'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/glib/2.0/glib-2.0.7.tar.gz'
-  source_sha1 '02401937a5e06d8797d966b06d9a191425cbec6f'
+  description 'GLib provides the core application building blocks for libraries and applications written in C.'
+  homepage 'https://developer.gnome.org/glib/'
+  version '2.40.2'
+  source_url 'https://ftp.gnome.org/pub/gnome/sources/glib/2.40/glib-2.40.2.tar.xz'
+  source_sha1 'dcb8ad22b1c0e6969a844029ffb91a6def7ad240'
 
   depends_on 'libffi'
+  depends_on 'gettext'
 
   def self.build
     system "./configure"

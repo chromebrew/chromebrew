@@ -1,9 +1,11 @@
 require 'package'
 
 class Mercurial < Package
-  version '4.0.2'
-  source_url 'https://www.mercurial-scm.org/release/mercurial-4.0.2.tar.gz'
-  source_sha1 '1d7b3eeed790974277db91bd1b0f34a5d142e980'
+  description 'Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.'
+  homepage 'https://www.mercurial-scm.org/'
+  version '4.1'
+  source_url 'https://www.mercurial-scm.org/release/mercurial-4.1.tar.gz'
+  source_sha1 'd5f88e05cbbd8f13dd5fc4004433f54435fc27c8'
 
   # what's the best route for adding a minimum version symbol as a constraint?
   depends_on "python27"
@@ -12,10 +14,6 @@ class Mercurial < Package
     # would be great to avoid even downloading the source tarball if this dependency wasn't met 
     py_ver = %x[python -V 2>&1 | awk '{ print $2 }'].strip
     abort '[!] python 2.7.13 or higher is required for tig, please run `crew upgrade python27` first.' unless py_ver > '2.7.12'
-    if !%x[pip list | grep osutils].include? "osutils"
-      puts "Installing osutils dependency..."
-      system "sudo", "pip", "install", "osutils"
-    end
     if !%x[pip list | grep docutils].include? "docutils"
       puts "Installing docutils dependency..."
       system "sudo", "pip", "install", "docutils"

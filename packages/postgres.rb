@@ -1,6 +1,8 @@
 require 'package'
 
 class Postgres < Package
+  description 'PostgreSQL is a powerful, open source object-relational database system.'
+  homepage 'https://www.postgresql.org/'
   version '9.5.0'
   source_url 'https://ftp.postgresql.org/pub/source/v9.5.0/postgresql-9.5.0.tar.bz2'
   source_sha1 '930afeb713b81778f29d32e7bf18fd08ce2aa8f9'

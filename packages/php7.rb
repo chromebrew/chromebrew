@@ -1,34 +1,38 @@
 require 'package'
 
 class Php7 < Package
-  version '7.1.3'
-  source_url 'http://php.net/distributions/php-7.1.3.tar.xz'   # software source tarball url
-  source_sha1 'a9d442fbc9e0210273344a198564449e5ca34b1e'       # source tarball sha1 sum
+  description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
+  homepage 'http://www.php.net/'
+  version '7.1.5'
+  source_url 'http://php.net/distributions/php-7.1.5.tar.xz'
+  source_sha1 '8c1622929b838005c72fb4949be9e249ca927fb3'
 
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
   depends_on 'libpng'
   depends_on 'libxml2'
+  depends_on 'libxslt'
   depends_on 'openssl'
   depends_on 'curl'
   depends_on 'pcre'
   depends_on 'readline'
 
-  def self.build                                               # self.build contains commands needed to build the software from source
+  def self.build
     system './configure \
       --prefix=/usr/local \
       --with-curl \
       --with-gd \
+      --with-xsl \
       --enable-mbstring \
       --with-openssl \
       --with-pcre-regex \
       --with-readline \
       --with-zlib'
-    system 'make'                                              # ordered chronologically
+    system 'make'
   end
 
-  def self.install                                             # self.install contains commands needed to install the software on the target system
-    system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"  # remember to include INSTALL_ROOT set to CREW_DEST_DIR - needed to keep track of changes made to system
+  def self.install
+    system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
     system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_DIR}/usr/local/lib/php"

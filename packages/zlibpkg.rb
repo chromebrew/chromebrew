@@ -1,17 +1,28 @@
 require 'package'
 
 class Zlibpkg < Package
-  version '1.2.8'
-  binary_url ({
-    aarch64: 'https://dl.dropboxusercontent.com/s/7y34bh0wph4iipa/zlibpkg-1.2.8-chromeos-armv7l.tar.xz',
-    armv7l:  'https://dl.dropboxusercontent.com/s/7y34bh0wph4iipa/zlibpkg-1.2.8-chromeos-armv7l.tar.xz',
-    i686:    'https://dl.dropboxusercontent.com/s/ljhhvr12u1izayj/zlib-1.2.8-chromeos-i686.tar.gz?token_hash=AAEABTatYkxOOybZGoCj3Kg_DKEbFbSfolzZklfHwCsP_A&dl=1',
-    x86_64:  'https://dl.dropboxusercontent.com/s/h4lqj0rnand0jqu/zlib-1.2.8-chromeos-x86_64.tar.gz?token_hash=AAGabAMhX4CGpzhpkcuKMmmWPxFZDiNOC-r9B0o7x4D7eQ&dl=1',
-  })
-  binary_sha1 ({
-    aarch64: '85980c0e6765e6264b191db1fa4c58508e663d3f',
-    armv7l:  '85980c0e6765e6264b191db1fa4c58508e663d3f',
-    i686:    'e02974780bfb3bf46940183043d15897a765ab4e',
-    x86_64:  'cb764e22b68b7e2884372708b5b585d11efca972',
-  })
+  description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
+  homepage 'http://www.zlib.net/'
+  version '1.2.11-1'
+  source_url 'http://www.zlib.net/zlib-1.2.11.tar.gz'
+  source_sha1 'e6d119755acdf9104d7ba236b1242696940ed6dd'
+
+  def self.build
+    system "./configure"
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+
+    # remove static library since there is no configuration option to not create it.
+    system "rm", "#{CREW_DEST_DIR}/usr/local/lib/libz.a"
+
+    # strip library
+    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/libz.so.*"
+  end
+
+  def self.check
+    system "make check"
+  end
 end

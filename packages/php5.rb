@@ -1,34 +1,38 @@
 require 'package'
 
 class Php5 < Package
+  description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
+  homepage 'http://www.php.net/'
   version '5.6.30'
-  source_url 'http://php.net/distributions/php-5.6.30.tar.xz'  # software source tarball url
-  source_sha1 '1bca4a340e6aaf82a3e940b0f2de3f36518238e4'       # source tarball sha1 sum
+  source_url 'http://php.net/distributions/php-5.6.30.tar.xz'
+  source_sha1 '1bca4a340e6aaf82a3e940b0f2de3f36518238e4'
 
-  depends_on 'pkgconfig'                                       # add package dependencies
+  depends_on 'pkgconfig'
   depends_on 'zlibpkg'
   depends_on 'libpng'
   depends_on 'libxml2'
+  depends_on 'libxslt'
   depends_on 'openssl'
   depends_on 'curl'
   depends_on 'pcre'
   depends_on 'readline'
 
-  def self.build                                               # self.build contains commands needed to build the software from source
+  def self.build
     system './configure \
       --prefix=/usr/local \
       --with-curl \
       --with-gd \
+      --with-xsl \
       --enable-mbstring \
       --with-openssl \
       --with-pcre-regex \
       --with-readline \
       --with-zlib'
-    system 'make'                                              # ordered chronologically
+    system 'make'
   end
 
-  def self.install                                             # self.install contains commands needed to install the software on the target system
-    system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"  # remember to include INSTALL_ROOT set to CREW_DEST_DIR - needed to keep track of changes made to system
+  def self.install
+    system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
     system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_DIR}/usr/local/lib/php"

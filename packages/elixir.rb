@@ -1,6 +1,8 @@
 require 'package'
 
 class Elixir < Package
+  description 'Elixir is a dynamic, functional language designed for building scalable and maintainable applications.'
+  homepage 'http://elixir-lang.org/'
   version '1.3.1'
   depends_on 'erlang'
 

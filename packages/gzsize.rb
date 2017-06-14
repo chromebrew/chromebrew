@@ -1,6 +1,8 @@
 require 'package'
 
 class Gzsize < Package
+  description 'Print the uncompressed size of a GZipped file.'
+  homepage 'https://bfontaine.github.io/gzsize/'
   version '0.1.1'
   source_url 'https://github.com/bfontaine/gzsize/archive/0.1.1.tar.gz'
   source_sha1 '778820b0bf3fc2197955b60c6dc49f6fac00878b'

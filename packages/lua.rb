@@ -1,6 +1,8 @@
 require 'package'
 
 class Lua < Package
+  description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
+  homepage 'https://www.lua.org/'
   version '5.3.4'
   source_url 'https://www.lua.org/ftp/lua-5.3.4.tar.gz'
   source_sha1 '79790cfd40e09ba796b01a571d4d63b52b1cd950'

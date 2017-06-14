@@ -1,6 +1,8 @@
 require 'package'
 
 class Di < Package
+  description '\'di\' is a disk information utility, displaying everything (and more) that your \'df\' command does.'
+  homepage 'http://gentoo.com/di/'
   version '4.43'
   source_url 'http://gentoo.com/di/di-4.43.tar.gz'
   source_sha1 'ddced0d59d29ccdcbc4282bc7464a925d14955e1'
