@@ -153,6 +153,14 @@ def search (pkgName, silent = false)
   abort "Package #{pkgName} not found. :(".lightred
 end
 
+def regexp_search(pkg_name)
+  results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
+	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkg_name, true) } \
+	  .collect { |f| File.basename(f, '.rb') } \
+	  .each    { |f| print_package(f, ARGV[2] == "extra") }
+  abort "Package not found :(" unless results.length > 0
+end
+
 def help (pkgName)
   case pkgName
   when "build"
@@ -663,7 +671,7 @@ when "help"
   end
 when "search"
   if @pkgName
-    print_package @pkgName, true
+    regexp_search @pkgName
   else
     list_packages
   end
