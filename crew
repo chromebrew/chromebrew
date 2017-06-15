@@ -347,7 +347,8 @@ def unpack (meta)
     end
     if meta[:source] == true
       # Check the number of directories in the archive
-      entries=Dir["#{extract_dir}/*"]
+      entries = Dir["#{extract_dir}/*"]
+      entries = Dir["#{extract_dir}/."] if entries.empty?
       if entries.length == 0
         abort "Empty archive: #{meta[:filename]}".lightred
       elsif entries.length == 1 && File.directory?(entries.first)
