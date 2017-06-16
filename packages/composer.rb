@@ -1,5 +1,5 @@
 require 'package'
-require 'find'
+require 'fileutils'
 
 class Composer < Package
   description 'Dependency Manager for PHP'
@@ -8,7 +8,7 @@ class Composer < Package
   source_url 'https://github.com/composer/composer/archive/1.4.2.tar.gz'
   source_sha1 'd0179a967011891c2c1e6067acc1faa1e8a8c81c'
 
-  depends_on 'php7' if not Find.find('/usr/local/bin/php')
+  depends_on 'php7' if not File.file? '/usr/local/bin/php'
 
   def self.install
     system "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\""
