@@ -2,16 +2,17 @@ require 'package'
 
 class Mandb < Package
   description 'mandb is used to initialise or manually update index database caches that are usually maintained by man.'
-  homepage ''
+  homepage 'http://savannah.nongnu.org/projects/man-db'
   version '2.7.6.1'
   source_url 'http://download.savannah.gnu.org/releases/man-db/man-db-2.7.6.1.tar.xz'
   source_sha1 '919dcb34d604faac9b18a38ead07f457d0dab501'
 
+  depends_on 'less'
   depends_on 'libpipeline'
-  depends_on 'pkgconfig'
   depends_on 'gdbm'
   depends_on 'groff'
-  depends_on 'less'
+  depends_on 'pkgconfig'
+  depends_on 'readline'
 
   def self.build
     system './configure',
