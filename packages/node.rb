@@ -12,7 +12,7 @@ class Node < Package
 
   def self.build
     case ARCH
-    when "x86_64" || "aarch64"
+    when "x86_64"
       system "CC='gcc -m64' python2.7 ./configure --without-snapshot"
     else
       system "CC='gcc' python2.7 ./configure --without-snapshot"
