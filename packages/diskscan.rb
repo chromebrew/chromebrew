@@ -2,7 +2,7 @@ require 'package'
 
 class Diskscan < Package
   description 'diskscan is intended to find sectors of a storage medium (hard disk, flash drive or pendrive, etc.) which are bad or in the process of going bad.'
-  homepage 'https://github.com/baruch/diskscan'
+  homepage 'http://blog.disksurvey.org/proj/diskscan/'
   version '0.19'
   source_url 'https://github.com/baruch/diskscan/archive/0.19.tar.gz'
   source_sha1 '74777d57af378fffe209086a026b788cd35d4d05'
