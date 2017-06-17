@@ -7,6 +7,7 @@ class Hub < Package
   source_url 'https://github.com/github/hub/archive/v2.3.0-pre9.tar.gz'
   source_sha1 'd18f0a28d13b7e773186ece35df032f561d2172d'
 
+  depends_on 'git'
   depends_on 'go'
 
   def self.install
