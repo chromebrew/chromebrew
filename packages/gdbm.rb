@@ -7,6 +7,8 @@ class Gdbm < Package
   source_url 'ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.13.tar.gz'
   source_sha1 '7f2a8301497bbcac91808b011ca533380914fd21'
   
+  depends_on 'readline'
+  
   def self.build
     system './configure', '--disable-static', '--enable-shared', '--with-pic'
     system 'make'
