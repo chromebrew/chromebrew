@@ -11,7 +11,12 @@ class Node < Package
   depends_on 'python27'
 
   def self.build
-    system "CC='gcc -m64' python2.7 ./configure --without-snapshot"
+    case ARCH
+    when "x86_64" || "aarch64"
+      system "CC='gcc -m64' python2.7 ./configure --without-snapshot"
+    else
+      system "CC='gcc' python2.7 ./configure --without-snapshot"
+    end
     system "make"
   end
 
