@@ -10,5 +10,9 @@ class Fasd < Package
   def self.install
     system "sed -i 's,share/man,man,' Makefile"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    puts ""
+    puts "To get fasd working in a shell, some initialization code must be run:".lightblue
+    puts "echo 'eval \"\$(fasd --init auto)\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+    puts ""
   end
 end
