@@ -17,6 +17,8 @@ class Whois < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
+    system "cp mkpasswd #{CREW_DEST_DIR}/usr/local/bin"
+    system "cp whois #{CREW_DEST_DIR}/usr/local/bin"
   end
 end
