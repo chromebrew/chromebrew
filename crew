@@ -153,12 +153,24 @@ def search (pkgName, silent = false)
   abort "Package #{pkgName} not found. :(".lightred
 end
 
-def regexp_search(pkg_name)
+def regexp_search(pkgName)
   results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
-	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkg_name, true) } \
+	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
 	  .each    { |f| print_package(f, ARGV[2] == "extra") }
-  abort "Package not found :(" unless results.length > 0
+  if results.empty?
+    Find.find ("#{CREW_LIB_PATH}packages/") do |packageName|
+      if File.file? packageName
+        package = File.basename packageName, '.rb'
+        search package, true
+        if ( @pkg.description =~ /#{pkgName}/i )
+          print_package(package, ARGV[2] == "extra")
+          results.push(package)
+        end
+      end
+    end
+  end
+  abort "Package #{pkgName} not found. :(".lightred unless results.length > 0
 end
 
 def help (pkgName)
@@ -181,12 +193,17 @@ def help (pkgName)
     puts "The [package] must be currently installed."
   when "search"
     puts "Look for a package."
-    puts "Usage: crew search [package]"
-    puts "If [package] is omitted, all packages will be returned.  (i) in front of the name means the package is installed."
-    puts "Tips:"
-    puts "  crew search | grep '(i)' will return all installed packages."
-    puts "  crew search | grep -v '(i)' will return all available packages not already installed."
-    puts "  crew search | grep -i 'pattern' will return all packages with 'pattern' in the description."
+    puts "Usage: crew search [package] [extra]"
+    puts "If [package] is omitted, all packages will be returned."
+    puts "(i)".lightgreen + " in front of the name means the package is installed."
+    puts "The [package] string can also contain regular expressions."
+    puts "If the keyword 'extra' is appended, homepage and version will be displayed."
+    puts "Examples:"
+    puts "  crew search | grep '(i)'".lightblue + " will display all installed packages."
+    puts "  crew search | grep -v '(i)'".lightblue + " will display all available packages not already installed."
+    puts "  crew search ^lib".lightblue + " will display all packages that start with 'lib'."
+    puts "  crew search audio".lightblue + " will display all packages with 'audio' in the description."
+    puts "  crew search git extra".lightblue + " will display the git package along with homepage and version."
   when "update"
     puts "Update crew."
     puts "Usage: crew update"
