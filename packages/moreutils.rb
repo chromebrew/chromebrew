@@ -8,6 +8,7 @@ class Moreutils < Package
   source_sha1 '3af60490f763ece48b2fcba968903673c3e63495'
 
   depends_on 'docbook'
+  depends_on 'libxslt'
 
   def self.build
     system "sed -i 's,PREFIX?=/usr,PREFIX?=/usr/local,' Makefile"
