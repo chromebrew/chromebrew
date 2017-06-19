@@ -18,7 +18,12 @@ class Whois < Package
 
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
+    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man5"
     system "cp mkpasswd #{CREW_DEST_DIR}/usr/local/bin"
     system "cp whois #{CREW_DEST_DIR}/usr/local/bin"
+    system "cp mkpasswd.1 #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "cp whois.1 #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "cp whois.conf.5 #{CREW_DEST_DIR}/usr/local/man/man5"
   end
 end
