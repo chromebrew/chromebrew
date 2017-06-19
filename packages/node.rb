@@ -11,18 +11,15 @@ class Node < Package
   depends_on 'python27'
 
   def self.build
-    case ARCH
-    when "x86_64"
-      system "CC='gcc -m64' python2.7 ./configure --without-snapshot"
-    else
-      system "CC='gcc' python2.7 ./configure --without-snapshot"
-    end
+    system "CC='gcc -m64' python2.7 ./configure --without-snapshot"
     system "make"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     #Fix Permissiongs for -g installs of node packages
-    system "sudo chown -R chronos /usr/local/{lib/node_modules,bin,share}"
+    system "sudo chown -R chronos /usr/local/lib/node_modules"
+    system "sudo chown -R chronos /usr/local/bin"
+    system "sudo chown -R chronos /usr/local/share"
   end
 end
