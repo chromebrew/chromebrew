@@ -12,7 +12,6 @@ class Pip < Package
   def self.install
     system "wget https://bootstrap.pypa.io/get-pip.py"
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/pip"
     system "python get-pip.py -I -b #{CREW_DEST_DIR}/usr/local"
     system "cp /usr/local/bin/pip* #{CREW_DEST_DIR}/usr/local/bin"
   end
