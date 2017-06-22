@@ -86,7 +86,7 @@ function download_check () {
     case $? in
     0) ;;
     *)
-      echo 'Verification failed, something may be wrong with the $1 download.'
+      echo "Verification failed, something may be wrong with the $1 download."
       exit 1;;
     esac
 }
