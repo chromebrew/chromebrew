@@ -8,6 +8,8 @@ class Gdrive < Package
   source_url 'https://github.com/prasmussen/gdrive/archive/2.1.0.tar.gz'
   source_sha1 '2abfb27e9c0bfa1904bcfb6bd01b32ed6884db75'
 
+  depends_on 'curl'
+
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     case ARCH
