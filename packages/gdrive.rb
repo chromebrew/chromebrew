@@ -1,6 +1,8 @@
 require 'package'
 
 class Gdrive < Package
+  description 'Google Drive CLI Client'
+  homepage 'https://www.google.com/drive/'
   version '2.1.0'
 
   source_url 'https://github.com/prasmussen/gdrive/archive/2.1.0.tar.gz'
