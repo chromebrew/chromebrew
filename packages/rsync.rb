@@ -8,6 +8,7 @@ class Rsync < Package
   source_sha1 '0d4c7fb7fe3fc80eeff922a7c1d81df11dbb8a1a'
 
   depends_on 'buildessential'
+  depends_on 'perl' => :build
   
   def self.build
     system "./configure"
