@@ -13,7 +13,7 @@ class Curl < Package
   depends_on 'groff' => :build
 
   def self.build
-    system "./configure", "--disable-static"
+    system "./configure", "--lidir=#{CREW_LIB_PREFIX}", "--disable-static"
     system "make"
   end
 
@@ -21,7 +21,7 @@ class Curl < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
 
     # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/libcurl.so.*"
+    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libcurl.so.*"
   end
 
   def self.check

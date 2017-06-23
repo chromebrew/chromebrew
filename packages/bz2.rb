@@ -34,13 +34,13 @@ class Bz2 < Package
     system "ln", "-sf", "bzip2", "#{CREW_DEST_DIR}/usr/local/bin/bzcat"
 
     # Install shared library by hand
-    system "cp", "-p", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}/usr/local/lib"
-    system "ln", "-s", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}/usr/local/lib/libbz2.so.1.0"
+    system "cp", "-p", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+    system "ln", "-s", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libbz2.so.1.0"
 
     # Strip binaries and libraries
     system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2"
     system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2recover"
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/*"
+    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/*"
   end
 
   def self.check
