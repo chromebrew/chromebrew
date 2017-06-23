@@ -22,9 +22,12 @@ class Node_current < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    #Fix Permissiongs for -g installs of node packages
-    system "sudo chown -R chronos /usr/local/lib/node_modules"
+
+    # Fix Permissiongs for -g installs of node packages
     system "sudo chown -R chronos /usr/local/bin"
     system "sudo chown -R chronos /usr/local/share"
+    if Dir.exists?('/usr/local/lib/node_modules')
+      system "sudo chown -R chronos /usr/local/lib/node_modules"                                  
+    end
   end
 end
