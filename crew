@@ -9,7 +9,12 @@ require 'fileutils'
 @command = ARGV[0]
 @pkgName = ARGV[1]
 
+ARCH = `uname -m`.strip
+ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
+
 CREW_PREFIX = '/usr/local'
+CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
+
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
@@ -29,8 +34,6 @@ if ENV["CREW_XZ_OPT"].to_s == ''
 else
   ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
 end
-
-ARCH = `uname -m`.strip
 
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
