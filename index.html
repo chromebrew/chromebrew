@@ -119,38 +119,7 @@
           If you have a compatibile (arm, i686 or x86_64) Chromebook, you can fork my Github repo and add some new packages to its <code>packages</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
         </p>
         <p>
-<pre>
-require 'package'
-
-class Vim < Package
-  description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
-  homepage 'http://www.vim.org/'
-  version '8.0-1'
-  source_url 'ftp://ftp.vim.org/pub/vim/unix/vim-8.0.tar.bz2'
-  source_sha1 '54bb7fe631ed8eaea5675ec934e88b0da1f1eca0'
-
-  depends_on 'ncurses'
-  # vim uses shared library of following languages, so need them isntalled at run-time
-  depends_on 'perl'
-  depends_on 'python27'
-  depends_on 'ruby'
-
-  def self.build
-    system './configure --prefix=/usr/local --enable-gui=no --with-features=huge --without-x --disable-nls --enable-multibyte  --with-tlib=ncurses --enable-perlinterp --enable-pythoninterp  --enable-rubyinterp --with-ruby-command=/usr/local/bin/ruby --disable-selinux'
-    system "make"
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/vim"
-
-    puts "\nMake sure to put your .vim directory in a subdirectory of /usr/local so it has execute permissions"
-    puts "You can then symlink to your home directory so vim can see it"
-    puts "\tln -s /usr/local/vim ~/.vim"
-    puts "\tln -s ~/.vim/vimrc ~/.vimrc\n\n"
-  end
-end        
-</pre>
+          <iframe width="100%" height=300px src="https://raw.githubusercontent.com/skycocker/chromebrew/master/packages/vim.rb"></iframe>
         </p>
       </div>
 
