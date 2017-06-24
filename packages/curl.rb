@@ -13,7 +13,7 @@ class Curl < Package
   depends_on 'groff' => :build
 
   def self.build
-    system "./configure", "--lidir=#{CREW_LIB_PREFIX}", "--disable-static"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--disable-static"
     system "make"
   end
 
