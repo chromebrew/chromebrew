@@ -6,14 +6,13 @@
     <meta name="description" content="The missing package manager for Chrome OS">
     <meta name="author" content="Michal Siwek">
     <link rel="shortcut icon" href="favicon.png">
-    
+
     <title>Chromebrew - the software source you missed so much</title>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="jumbotron-narrow.css" rel="stylesheet">
     <link href="bs-example.css" rel="stylesheet">
     <link href="crew-specific.css" rel="stylesheet">
-    
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -42,49 +41,49 @@
       <div class="row marketing">
         <div class="col-lg-6">
           <div class="bs-example bs-example-type">
-            <h4>Chromebrew installs what you need with its dependencies</h4>
+            <h4>Chromebrew installs what you need with its dependencies:</h4>
           </div>
           <div class="highlight">
             <pre><code>$ crew install vim</code></pre>
           </div>
           <div class="bs-example bs-example-type">
-            <h4>And registers the changes being made, so you can easily remove anything</h4>
+            <h4>It also registers the changes being made, so you can easily remove anything:</h4>
           </div>
           <div class="highlight">
-            <pre><code>$ sudo crew remove vim</code></pre>
+            <pre><code>$ crew remove vim</code></pre>
           </div>
           <div class="bs-example bs-example-type">
-            <h4>See which packages are currently available</h4>
+            <h4>See which packages are currently available:</h4>
           </div>
           <div class="highlight">
             <pre><code>$ crew search</code></pre>
           </div>
           <div class="bs-example bs-example-type">
-            <h4>Look for a specific package</h4>
+            <h4>Look for a package:</h4>
           </div>
           <div class="highlight">
             <pre><code>$ crew search vim</code></pre>
           </div>
           <div class="bs-example bs-example-type">
-            <h4>Update software lists</h4>
+            <h4>Update software lists:</h4>
           </div>
           <div class="highlight">
             <pre><code>$ crew update</code></pre>
           </div>
           <div class="bs-example bs-example-type">
-            <h4>And update Chromebrew itself</h4>
+            <h4>Update Chromebrew packages:</h4>
           </div>
           <div class="highlight">
-            <pre><code>$ sudo crew update crew</code></pre>
+            <pre><code>$ crew upgrade</code></pre>
           </div>
         </div>
       </div>
-      
+
       <div class="row marketing">
         <div class="col-lg-6">
           <div class="bs-example bs-example-type">
-            <h4>Install Chromebrew (along with Ruby and Git)</h4>
-            <h5>avaliable on arm, i686 and x86_64</h5>
+            <h4>Install Chromebrew (along with Ruby and Git).</h4>
+            <h5>Available on aarch64, armv7l, i686 and x86_64.</h5>
           </div>
           <div class="highlight">
             <pre><code>wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
@@ -93,36 +92,35 @@
       </div>
 
       <div class="row marketing">
-        <h3>What it is?</h3>
+        <h3>What is it?</h3>
         <p>Chromebrew is a package manager / source builder hybrid targeted for Chromebooks with Chrome OS.</p>
-      
-        <h3>What it does?</h3>
+
+        <h3>What does it do?</h3>
         <p>
           It installs the software you need that hasn't been provided by Google. Many important packages are already precompiled and it's enough to just type <code>crew install package_name</code>, but if something's not already there, you can easily build and install it from source.
         </p>
-        
+
         <h3>How does it work?</h3>
         <p>
-          In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install them into your system when the installation script is being ran. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git and a package manager dedicated just for your Chromebook. Cool, huh?
+          In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install into your system during installation. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git and a package manager dedicated just for your Chromebook. Cool, huh?
         </p>
 
         <h3>How is it different from Crouton?</h3>
         <p>
-          Well, Chromebrew doesn't install an operating system :p
+          Well, Chromebrew doesn't install an operating system. :p
         </p>
         <p>
-          The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have Crouton and need just some few small packages. Also, you may be on a good internet connection and need just some few small packages. Also, why not to use Chrome OS as a normal operating system?
+          The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have Crouton and need just a few small packages. Also, you may be on a good internet connection and need just a few small packages. Also, why not use Chrome OS as the operating system?
         </p>
 
         <h3 id="howcanihelp">How can I help?</h3>
         <p>
-          If you have a compatibile (arm, i686 or x86_64) Chromebook, you can fork my Github repo and add some new packages to its <code>packages</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
+          If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
         </p>
-        <p>
 <pre>
 require 'package'
 
-class Vim < Package
+class Vim &lt; Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
   version '8.0-1'
@@ -144,12 +142,12 @@ class Vim < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "strip", "#{CREW_DEST_DIR}/usr/local/bin/vim"
 
-    puts "\nMake sure to put your .vim directory in a subdirectory of /usr/local so it has execute permissions"
+    puts "Make sure to put your .vim directory in a subdirectory of /usr/local so it has execute permissions"
     puts "You can then symlink to your home directory so vim can see it"
-    puts "\tln -s /usr/local/vim ~/.vim"
-    puts "\tln -s ~/.vim/vimrc ~/.vimrc\n\n"
+    puts "ln -s /usr/local/vim ~/.vim"
+    puts "ln -s ~/.vim/vimrc ~/.vimrc"
   end
-end        
+end
 </pre>
         </p>
       </div>
