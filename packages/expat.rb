@@ -8,7 +8,7 @@ class Expat < Package
   source_sha1 '8453bc52324be4c796fd38742ec48470eef358b3'
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic"
     system "make"
   end
 
@@ -17,7 +17,7 @@ class Expat < Package
 
     # strip binary and library
     system "strip #{CREW_DEST_DIR}/usr/local/bin/xmlwf"
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/libexpat.so.*"
+    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libexpat.so.*"
   end
 
   def self.check

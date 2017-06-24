@@ -8,7 +8,8 @@ class Xzutils < Package
   source_sha1 '529638eec3597e429cc54c74551ac0a89169e841'
 
   def self.build
-    system "./configure", "--prefix=/usr/local", "--disable-docs", "--enable-shared", "--disable-static", "--with-pic"
+    system "./configure", "--prefix=/usr/local", "--libdir=#{CREW_LIB_PREFIX}",
+      "--disable-docs", "--enable-shared", "--disable-static", "--with-pic"
     system "make"
   end
 
@@ -16,7 +17,7 @@ class Xzutils < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
 
     # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/liblzma.so.*"
+    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/liblzma.so.*"
   end
 
   def self.check
