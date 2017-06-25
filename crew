@@ -302,8 +302,25 @@ def upgrade
       puts "#{@pkg.name} is already up to date.".lightgreen
     end
   else
-    toBeUpdated = []
+    # Make a installed packages list belong to the dependency order
+    dependencies = []
     @device[:installed_packages].each do |package|
+      # skip package if it is dependent other packages previously checked
+      next if dependencies.include? package[:name]
+      # add package itself
+      dependencies = [ package[:name] ].concat(dependencies)
+      # expand depencencies and add it to the dependencies list
+      search package[:name], true
+      exp_dep = expand_dependencies
+      dependencies = exp_dep.concat(dependencies)
+    end
+    dependencies.uniq!
+
+    # Check version number of installed package and make a target list
+    toBeUpdated = []
+    dependencies.each do |dep|
+      package = @device[:installed_packages].find {|pkg| pkg[:name] == dep}
+      next unless package
       search package[:name], true
       if package[:version] != @pkg.version
         toBeUpdated.push(package[:name])
@@ -451,7 +468,7 @@ def expand_dependencies
 
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
-       (!@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
+       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
       check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
     elsif @pkg.is_fake?
