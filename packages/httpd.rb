@@ -7,7 +7,7 @@ class Httpd < Package
   source_url 'https://github.com/apache/httpd/archive/2.2.32.tar.gz'
   source_sha1 '647e459f645c4138561e3f4314570f2f525d754d'
 
-  depends_on 'svn'
+  depends_on 'subversion'
 
   def self.build
     system 'svn co http://svn.apache.org/repos/asf/apr/apr/branches/1.4.x srclib/apr'
