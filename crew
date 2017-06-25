@@ -27,6 +27,9 @@ else
   CREW_NPROC = ENV["CREW_NPROC"]
 end
 
+# Set CREW_NOT_COMPRESS from environment variable
+CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
+
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
 
@@ -424,15 +427,21 @@ end
 
 def prepare_package (destdir)
   Dir.chdir destdir do
-    #create directory list
+    # compress manual files
+    system "find usr/local/man -type f -print | xargs gzip -9 2>/dev/null" unless CREW_NOT_COMPRESS
+    system "find usr/local/share/man -type f -print | xargs gzip -9 2>/dev/null" unless CREW_NOT_COMPRESS
+
+    # create directory list
     system "find . -type f > ../filelist"
     system "find . -type l >> ../filelist"
     system "cut -c2- ../filelist > filelist"
-    #create file list
+
+    # create file list
     system "find . -type d > ../dlist"
     system "cut -c2- ../dlist > dlistcut"
     system "tail -n +2 dlistcut > dlist"
-    #remove temporary files
+
+    # remove temporary files
     system "rm dlistcut ../dlist ../filelist"
   end
 end
