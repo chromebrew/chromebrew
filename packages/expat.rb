@@ -14,10 +14,6 @@ class Expat < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-
-    # strip binary and library
-    system "strip #{CREW_DEST_DIR}/usr/local/bin/xmlwf"
-    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libexpat.so.*"
   end
 
   def self.check

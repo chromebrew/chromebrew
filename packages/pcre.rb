@@ -13,8 +13,7 @@ class Pcre < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
-    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/lib*.so.*"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

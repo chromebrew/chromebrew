@@ -10,11 +10,10 @@ class Filecmd < Package
   def self.build
     system "./configure"
     system "make"
-    system "find . -name 'lib*.so.*' -print | xargs strip -S"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

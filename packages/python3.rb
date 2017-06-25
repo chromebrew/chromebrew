@@ -17,22 +17,13 @@ class Python3 < Package
     system "./configure", "CPPFLAGS=-I/usr/local/include/ncurses -I/usr/local/include/ncursesw",
       "--with-ensurepip=install", "--enable-shared"
     system "make"
-
-    # strip debug symbols from library
-    system "find . -name '*.so' -print | xargs strip -S" unless @@debug_symbol
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
-    # strip binary
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/python3" unless @@debug_symbol
-
     # remove static library
     system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs rm"
-
-    # remove cache (byte-code) files from install package
-    system "find #{CREW_DEST_DIR}/usr/local -name '__pycache__' -print | xargs rm -rf"
   end
 
   def self.check
@@ -53,10 +44,6 @@ class Python3 < Package
         "-e", '/test_logincapa_with_client_ssl_context/i\ \ \ \ @unittest.skipIf(True,\
                      "bpo-30175: FIXME: cyrus.andrew.cmu.edu doesn\'t accept "\
                      "our randomly generated client x509 certificate anymore")'
-
-    # skip gdb test since we are stripping debug symbols
-    system "sed", "-i", "Lib/test/test_gdb.py",
-        "-e", '/get_gdb_version/iraise unittest.SkipTest("only for python install with debug symbols")' unless @@debug_symbol
 
     # Using /tmp breaks test_distutils, test_subprocess
     # Proxy setting breaks test_httpservers, test_ssl,

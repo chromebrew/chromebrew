@@ -16,12 +16,10 @@ class Ruby < Package
   def self.build
     system "CC='gcc' ./configure"
     system "make"
-    system "find . -name '*.so' | xargs strip -S"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "strip #{CREW_DEST_DIR}/usr/local/bin/ruby"
   end
 
   def self.check

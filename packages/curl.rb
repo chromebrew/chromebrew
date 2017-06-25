@@ -18,10 +18,7 @@ class Curl < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
-
-    # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libcurl.so.*"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

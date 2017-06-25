@@ -13,10 +13,7 @@ class Libxml2 < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
-
-    # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/libxml2.so.*"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

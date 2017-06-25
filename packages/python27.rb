@@ -16,22 +16,13 @@ class Python27 < Package
   def self.build
     system "./configure", "CPPFLAGS=-I/usr/local/include/ncurses -I/usr/local/include/ncursesw", "--with-ensurepip=install", "--enable-shared"
     system "make"
-
-    # strip debug symbols from library
-    system "find . -name '*.so' -print | xargs strip -S" unless @@debug_symbol
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
-    # strip binary
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/python2" unless @@debug_symbol
-
     # remove static library
     system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs rm"
-
-    # remove cache (byte-code) files from install package
-    system "find #{CREW_DEST_DIR}/usr/local -name '*.pyc' -o -name '*.pyo' | xargs rm"
   end
 
   def self.check

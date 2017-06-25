@@ -16,11 +16,10 @@ class Bison < Package
   def self.build
     system './configure --prefix=/usr/local'
     system "make"
-    system "find . -name '*.a' -print | xargs strip -S"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

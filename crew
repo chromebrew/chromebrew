@@ -27,6 +27,9 @@ else
   CREW_NPROC = ENV["CREW_NPROC"]
 end
 
+# Set CREW_NOT_STRIP from environment variable
+CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
+
 # Set XZ_OPT environment variable for build command.
 # If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
 if ENV["CREW_XZ_OPT"].to_s == ''
@@ -434,6 +437,16 @@ def install_package (pkgdir)
   Dir.chdir pkgdir do
     FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
+
+    # Strip libraries with -S
+    system "find . -name 'lib*.a' -print | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
+    system "find . -name 'lib*.a' -print | xargs strip -S 2>/dev/null" unless CREW_NOT_STRIP
+    system "find . -name 'lib*.so*' -print | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
+    system "find . -name 'lib*.so*' -print | xargs strip -S 2>/dev/null" unless CREW_NOT_STRIP
+
+    # Strip binaries
+    system "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d' | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
+    system "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d' | xargs strip 2>/dev/null" unless CREW_NOT_STRIP
 
     system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
   end

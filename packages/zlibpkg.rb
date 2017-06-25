@@ -17,9 +17,6 @@ class Zlibpkg < Package
 
     # remove static library since there is no configuration option to not create it.
     system "rm", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libz.a"
-
-    # strip library
-    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libz.so.*"
   end
 
   def self.check
