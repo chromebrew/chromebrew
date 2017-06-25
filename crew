@@ -207,6 +207,10 @@ def help (pkgName)
     puts "  crew search ^lib".lightblue + " will display all packages that start with 'lib'."
     puts "  crew search audio".lightblue + " will display all packages with 'audio' in the description."
     puts "  crew search git extra".lightblue + " will display the git package along with homepage and version."
+  when "shrink"
+    puts "Reduce the size of manpage and shared library object files."
+    puts "Usage: crew shrink"
+    puts "This command helps to recover valuable disk space."
   when "update"
     puts "Update crew."
     puts "Usage: crew update"
@@ -221,7 +225,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides [pattern]"
     puts "The [pattern] is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, download, install, remove, search, shrink, update, upgrade, whatprovides"
   end
 end
 
@@ -699,6 +703,21 @@ def remove (pkgName)
 
 end
 
+def shrink
+  # fix file permissions and ownership
+  system "sudo chmod -R u+w /usr/local"
+  system "sudo chown -R #{USER}:#{USER} /usr/local"
+
+  # compress manpages
+  for i in 1..8
+    system "find /usr/local/man/man#{i} -type f -name '*.#{i}' -print 2> /dev/null | xargs gzip"
+    system "find /usr/local/share/man/man#{i} -type f -name '*.#{i}' -print 2> /dev/null | xargs gzip"
+  end
+
+  # strip shared library object files
+  system "find /usr/local/lib -type f -name '*.so*' -print | xargs strip -S"
+end
+
 case @command
 when "help"
   if @pkgName
@@ -750,8 +769,10 @@ when "remove"
   else
     help "remove"
   end
+when "shrink"
+  shrink
 when nil
-  puts "Chromebrew, version 0.4.3"
+  puts "Chromebrew, version 0.4.4"
   puts "Usage: crew [command] [package]"
   help nil
 else

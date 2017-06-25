@@ -49,6 +49,7 @@ Where available commands are:
   * install [install a package along with its dependencies after prompting for confirmation]
   * remove [remove a package]
   * search [look for a package]
+  * shrink [reduce the size of manpage and shared library object files]
   * update [update crew itself]
   * upgrade [update all or a specific package]
   * whatprovides [regex search for package(s) that contains file(s)]
