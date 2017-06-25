@@ -9,8 +9,6 @@ class Package
     attr_accessor :in_upgrade
   end
 
-  @@debug_symbol = ENV['CREW_DEBUG_SYMBOL'] || false
-
   def self.dependencies
     # We need instance variable in derived class, so not define it here,
     # base class.  Instead of define it, we initialize it in a function
