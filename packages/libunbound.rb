@@ -19,8 +19,6 @@ class Libunbound < Package
     system "sed", "-i", "Makefile", "-e", '/$(LEX) -t $(srcdir)\/util\/configlexer.lex/s:-t:-t -Pub_c_:'
 
     system "make"
-    system "make", "strip"
-    system "find . -name 'lib*.so.*' -print | xargs strip -S"
   end
 
   def self.install

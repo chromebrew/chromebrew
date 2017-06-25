@@ -42,8 +42,5 @@ class Ncursesw < Package
     system "rm", "#{CREW_DEST_DIR}/usr/local/bin/tput"
     system "rm", "#{CREW_DEST_DIR}/usr/local/bin/tset"
     system "rm", "#{CREW_DEST_DIR}/usr/local/bin/toe"
-
-    # strip libraries here since `make install` re-link libraries again
-    system "find #{CREW_DEST_DIR}#{CREW_LIB_PREFIX} -name 'lib*.so.*' -print | xargs strip -S"
   end
 end

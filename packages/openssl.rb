@@ -26,13 +26,10 @@ class Openssl < Package
     end
     system "./config --prefix=/usr/local --openssldir=/etc/ssl #{options}"
     system "make"
-    system "find . -name '*.so' -print | xargs strip -S"
-    system "find . -name '*.so.*' -print | xargs strip -S"
   end
 
   def self.install
     system "make", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/openssl"
     system "find #{CREW_DEST_DIR}/usr/local -name 'lib*.a' -print | xargs rm"
 
     # move man to /usr/local/man

@@ -25,7 +25,6 @@ class Readline < Package
 
     system "CC='gcc' ./configure --libdir=#{CREW_LIB_PREFIX} --disable-static --with-curses"
     system "make"
-    system "find . -name 'lib*.so.*' -print | xargs strip -S"
   end
 
   def self.install

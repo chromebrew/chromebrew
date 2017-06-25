@@ -14,11 +14,10 @@ class Gettext < Package
   def self.build
     system "./configure", "--enable-shared", "--disable-static", "--with-pic"
     system "make"
-    system "find . -name '*.so.*' -print | xargs strip -S"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

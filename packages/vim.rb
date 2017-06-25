@@ -20,7 +20,6 @@ class Vim < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/vim"
 
     puts "\nMake sure to put your .vim directory in a subdirectory of /usr/local so it has execute permissions"
     puts "You can then symlink to your home directory so vim can see it"

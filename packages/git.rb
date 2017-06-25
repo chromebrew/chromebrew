@@ -22,7 +22,6 @@ class Git < Package
 
   def self.build
     system "#{@make_cmd} all"
-    system "#{@make_cmd} strip"
   end
 
   def self.install

@@ -9,7 +9,6 @@ class Dos2unix < Package
 
   def self.build
     system 'make'
-    system 'make strip'
   end
 
   def self.install

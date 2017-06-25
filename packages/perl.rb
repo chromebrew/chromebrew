@@ -14,11 +14,10 @@ class Perl < Package
     # Create shared library
     system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib"
     system "make"
-    system "find . -name '*.so' -print | xargs strip -S"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

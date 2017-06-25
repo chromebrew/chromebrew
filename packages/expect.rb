@@ -12,8 +12,6 @@ class Expect < Package
   def self.build
     system "./configure", "--prefix=/usr/local"
     system "make"
-    system "find . -name '*.so' -print | xargs strip -S"
-    system "strip expect"
   end
 
   def self.install

@@ -13,11 +13,10 @@ class Flex < Package
   def self.build
     system "./configure", "--with-pic", "--disable-static", "--enable-shared"
     system "make"
-    system "find . -name 'lib*.so.*' -print | xargs strip -S"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

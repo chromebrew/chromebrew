@@ -14,10 +14,7 @@ class Xzutils < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
-
-    # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/liblzma.so.*"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

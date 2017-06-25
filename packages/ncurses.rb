@@ -23,17 +23,5 @@ class Ncurses < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-
-    # strip binaries
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/clear"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/infocmp"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tabs"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tic"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tput"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tset"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/toe"
-
-    # strip libraries here since `make install` re-link libraries again
-    system "find #{CREW_DEST_DIR}#{CREW_LIB_PREFIX} -name 'lib*.so.*' -print | xargs strip -S"
   end
 end
