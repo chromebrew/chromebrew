@@ -10,7 +10,8 @@ Supported Systems
 |:--------------:|:----------:|
 |     x86_64     |     Yes    |
 |      i686      |     Yes    |
-| arm (Exynos 5) |     Yes    |
+|     armv7l     |     Yes    |
+|     aarch64    |     Yes(use armv7l binaries)    |
 
 Overview
 --------
