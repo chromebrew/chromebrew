@@ -12,7 +12,7 @@ class Gettext < Package
   depends_on 'libxml2'
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic"
     system "make"
   end
 

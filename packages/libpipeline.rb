@@ -8,7 +8,7 @@ class Libpipeline < Package
   source_sha1 'b31cc955f22b1aa4545dc8d00ddbde831936594f'
   
   def self.build
-    system './configure', '--disable-static', '--enable-shared', '--with-pic'
+    system './configure', "--libdir=#{CREW_LIB_PREFIX}", '--disable-static', '--enable-shared', '--with-pic'
     system 'make'
   end
   

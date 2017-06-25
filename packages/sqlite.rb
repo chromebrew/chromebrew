@@ -8,7 +8,7 @@ class Sqlite < Package
   source_sha1 '74559194e1dd9b9d577cac001c0e9d370856671b'
 
   def self.build
-    system "./configure", "--disable-static", "--enable-shared", "--with-pic"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--disable-static", "--enable-shared", "--with-pic"
     system "make"
   end
   

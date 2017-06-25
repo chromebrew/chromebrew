@@ -11,8 +11,9 @@ class Libssh2 < Package
   depends_on 'zlibpkg' => :build
 
   def self.build
-    system "./configure", "--with-zlib", "--with-openssl", "--with-pic", "--disable-static"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--with-zlib", "--with-openssl", "--with-pic", "--disable-static"
     system "make"
+    system "find . -name '*.so.*' -print | xargs strip -S"
   end
 
   def self.install

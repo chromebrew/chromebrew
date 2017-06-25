@@ -13,7 +13,7 @@ class Libunbound < Package
   depends_on 'expat'
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic"
 
     # flex 2.6.3 requires -P option to rename yylex and other funcions
     system "sed", "-i", "Makefile", "-e", '/$(LEX) -t $(srcdir)\/util\/configlexer.lex/s:-t:-t -Pub_c_:'

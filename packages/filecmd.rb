@@ -8,7 +8,7 @@ class Filecmd < Package
   source_sha256 '09c588dac9cff4baa054f51a36141793bcf64926edc909594111ceae60fce4ee'
 
   def self.build
-    system "./configure"
+    system "./configure --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
