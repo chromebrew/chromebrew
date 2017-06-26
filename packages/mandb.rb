@@ -13,6 +13,7 @@ class Mandb < Package
   depends_on 'groff'
   depends_on 'pkgconfig'
   depends_on 'readline'
+  depends_on 'zlibpkg'
 
   def self.build
     system './configure',
