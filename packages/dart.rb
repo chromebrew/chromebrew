@@ -29,6 +29,6 @@ class Dart < Package
     system "mkdir -p #{CREW_DEST_DIR}/usr/local"
     system "cp -r bin/ #{CREW_DEST_DIR}/usr/local"
     system "cp -r lib/ #{CREW_DEST_DIR}/usr/local"
-    system "cp -r man/ #{CREW_DEST_DIR}/usr/local"
+    system "cp -r include/ #{CREW_DEST_DIR}/usr/local"
   end
 end
