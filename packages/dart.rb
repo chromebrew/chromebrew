@@ -17,8 +17,13 @@ class Dart < Package
   when 'aarch64'
     source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/1.24.2/sdk/dartsdk-linux-arm64-release.zip'
     source_sha1 'cf6b96eb5b88b1865bf357c2c9fd7ad8d64f763f'
-  else
-    abort 'Unable to install dart sdk.  Architecture not supported.'.lightred
+#  
+#  comment out abort per discussion in #798
+#  https://github.com/skycocker/chromebrew/pull/798
+#  we have all current archs covered here anyway, i believe
+#
+#  else
+#    abort 'Unable to install dart sdk.  Architecture not supported.'.lightred
   end
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local"
