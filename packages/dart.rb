@@ -1,5 +1,7 @@
 require 'package'
 
+depends_on 'unzip'
+
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
   homepage 'https://www.dartlang.org'
