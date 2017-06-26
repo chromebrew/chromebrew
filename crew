@@ -185,6 +185,10 @@ def help (pkgName)
     puts "Build a package."
     puts "Usage: crew build [package]"
     puts "Build [package] from source and place the archive and checksum in the current working directory."
+  when "compress"
+    puts "Compress manpages."
+    puts "Usage: crew compress"
+    puts "Reduce the size of manpages to save valuable disk space."
   when "download"
     puts "Download a package."
     puts "Usage: crew download [package]"
@@ -224,7 +228,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides [pattern]"
     puts "The [pattern] is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, compress, download, install, remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -712,6 +716,45 @@ def remove (pkgName)
 
 end
 
+def compress
+
+  # install compressdoc, if necessary
+  unless File.exists? '/usr/local/bin/compressdoc'
+    search 'compressdoc'
+    resolve_dependencies_and_install
+  end
+
+  # make sure ownership and permissions are correct
+  system "sudo chown -R #{USER} /usr/local"
+  system "sudo chmod -R u+w /usr/local"
+
+  puts "Compressing manpages..."
+  system "compressdoc -g /usr/local/man /usr/local/share/man"
+
+  # change package filelist to reflect new manpages
+  Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
+    if File.file? packageList
+      if packageList[/\.filelist$/]
+        packageName = File.basename packageList, '.filelist'
+        File.readlines(packageList).each do |line|
+          if line[/#{Regexp.new('/usr/local/[share/]*man/man[1-8]/.*[1-8]$')}/]
+            if File.exists? line.chomp + '.gz'
+              contents = File.read(packageList)
+              old = line.chomp
+              new = old + '.gz'
+              new_contents = contents.gsub(old, new)
+              File.open(packageList, "w") {|file| file.puts new_contents}
+            end
+          end
+        end
+      end
+    end
+  end
+
+  puts "Compression complete!".lightgreen
+
+end
+
 case @command
 when "help"
   if @pkgName
@@ -757,6 +800,8 @@ when "build"
   else
     help "build"
   end
+when "compress"
+  compress
 when "remove"
   if @pkgName
     remove @pkgName
@@ -764,7 +809,7 @@ when "remove"
     help "remove"
   end
 when nil
-  puts "Chromebrew, version 0.4.3"
+  puts "Chromebrew, version 0.4.4"
   puts "Usage: crew [command] [package]"
   help nil
 else
