@@ -28,7 +28,7 @@ else
 end
 
 # Set CREW_NOT_COMPRESS from environment variable
-CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
+CREW_NOT_COMPRESS = `bash -c "type compressdoc 2> /dev/null"`.empty? || ENV["CREW_NOT_COMPRESS"]
 
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
@@ -428,8 +428,8 @@ end
 def prepare_package (destdir)
   Dir.chdir destdir do
     # compress manual files
-    system "find usr/local/man -type f -print | xargs gzip -9 2>/dev/null" unless CREW_NOT_COMPRESS
-    system "find usr/local/share/man -type f -print | xargs gzip -9 2>/dev/null" unless CREW_NOT_COMPRESS
+    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/man > /dev/null" unless CREW_NOT_COMPRESS
+    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/share/man > /dev/null" unless CREW_NOT_COMPRESS
 
     # create directory list
     system "find . -type f > ../filelist"
