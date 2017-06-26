@@ -735,7 +735,6 @@ def compress
   Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
     if File.file? packageList
       if packageList[/\.filelist$/]
-        packageName = File.basename packageList, '.filelist'
         File.readlines(packageList).each do |line|
           if line[/#{Regexp.new('/usr/local/[share/]*man/man[1-8]/.*[1-8]$')}/]
             if File.exists? line.chomp + '.gz'
