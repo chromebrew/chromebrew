@@ -9,7 +9,6 @@ class Compressdoc < Package
 
   def self.install
     system "wget https://raw.githubusercontent.com/ojab/BLFS/master/auxfiles/compressdoc"
-    abort "Checksum mismatch. :/ Try again.".lightred unless Digest::SHA1.hexdigest( File.read("compressdoc") ) == "3d853b92a1e0495c3b2e753e415c6fffb277d44a"
     system "chmod +x compressdoc"
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     system "cp compressdoc #{CREW_DEST_DIR}/usr/local/bin"
