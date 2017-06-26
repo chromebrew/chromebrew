@@ -476,9 +476,6 @@ end
 def expand_dependencies
   @dependencies = []
 
-  # check source packages existance
-  @source_package = 0
-
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
        (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
@@ -490,8 +487,6 @@ def expand_dependencies
     else
       # retrieve name of all dependencies
       check_deps = @pkg.dependencies.map {|k, v| k}
-      # count the number of source packages to add buildessential into dependencies later
-      @source_package += 1
     end
 
     # remove a dependent package which is equal to the target
@@ -509,12 +504,6 @@ def expand_dependencies
 
   push_dependencies
 
-  # Add buildessential's dependencies if any of dependent
-  # packages are made from source
-  if @source_package > 0
-    search 'buildessential', true
-    push_dependencies
-  end
   @dependencies.uniq
 end
 
