@@ -45,6 +45,7 @@ Usage
 Where available commands are:
 
   * build [build a package from source and store the archive and checksum in the current working directory]
+  * compress [reduce the size of manpages to save valuable disk space]
   * download [download a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it]
   * help [get information about command usage]
   * install [install a package along with its dependencies after prompting for confirmation]
