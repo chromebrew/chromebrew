@@ -429,7 +429,9 @@ def prepare_package (destdir)
   Dir.chdir destdir do
     # compress manual files
     system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/man > /dev/null" unless CREW_NOT_COMPRESS
+    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/info > /dev/null" unless CREW_NOT_COMPRESS
     system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/share/man > /dev/null" unless CREW_NOT_COMPRESS
+    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/share/info > /dev/null" unless CREW_NOT_COMPRESS
 
     # create directory list
     system "find . -type f > ../filelist"
