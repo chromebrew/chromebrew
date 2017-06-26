@@ -28,7 +28,7 @@ else
 end
 
 # Set CREW_NOT_COMPRESS from environment variable
-CREW_NOT_COMPRESS = `bash -c "type compressdoc 2> /dev/null"`.empty? || ENV["CREW_NOT_COMPRESS"]
+CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
 
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
@@ -425,13 +425,23 @@ def build_and_preconfigure (target_dir)
   end
 end
 
+def compress_doc (dir)
+  # check whether crew should compress
+  return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+
+  if Dir.exist? dir
+    system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
+    system "compressdoc --gzip -9 #{dir}"
+  end
+end
+
 def prepare_package (destdir)
   Dir.chdir destdir do
     # compress manual files
-    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/man > /dev/null" unless CREW_NOT_COMPRESS
-    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/info > /dev/null" unless CREW_NOT_COMPRESS
-    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/share/man > /dev/null" unless CREW_NOT_COMPRESS
-    system "compressdoc --gzip -9 #{destdir}#{CREW_PREFIX}/share/info > /dev/null" unless CREW_NOT_COMPRESS
+    compress_doc "#{destdir}#{CREW_PREFIX}/man"
+    compress_doc "#{destdir}#{CREW_PREFIX}/info"
+    compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
+    compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
 
     # create directory list
     system "find . -type f > ../filelist"
