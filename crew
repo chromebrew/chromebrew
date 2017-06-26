@@ -28,7 +28,7 @@ else
 end
 
 # Set CREW_NOT_STRIP from environment variable
-CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
+CREW_NOT_STRIP = ! File.exist?("#{CREW_PREFIX}/bin/strip") || ENV["CREW_NOT_STRIP"]
 
 # Set XZ_OPT environment variable for build command.
 # If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
