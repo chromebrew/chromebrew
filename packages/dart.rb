@@ -1,6 +1,5 @@
 require 'package'
 
-depends_on 'unzip'
 
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
@@ -27,6 +26,9 @@ class Dart < Package
 #  else
 #    abort 'Unable to install dart sdk.  Architecture not supported.'.lightred
   end
+
+  depends_on 'unzip'
+
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local"
     system "cp -r bin/ #{CREW_DEST_DIR}/usr/local"
