@@ -365,8 +365,8 @@ def download
     sha1sum = @pkg.source_sha1
     sha256sum = @pkg.source_sha256
   else
-    sha1sum = @pkg.binary_sha1[@device[:architecture]]
-    sha256sum = @pkg.binary_sha256[@device[:architecture]]
+    sha1sum = @pkg.binary_sha1[@device[:architecture]] if @pkg.binary_sha1
+    sha256sum = @pkg.binary_sha256[@device[:architecture]] if @pkg.binary_sha256
   end
   Dir.chdir CREW_BREW_DIR do
     system('wget', '--continue', '--no-check-certificate', url, '-O', filename)
