@@ -5,7 +5,7 @@ class Byobu < Package
   homepage 'http://byobu.org/'
   version '5.119'
   source_url 'https://launchpadlibrarian.net/322131788/byobu_5.119.orig.tar.gz'
-  source_sha1 '1d8d07da4c94c4adeb662a7f8b33fe02482d9839'
+  source_sha256 '4b092ca12d3a33e89d84cc90c4a41af2ba8697d48e26080a45d64d6b7800ca77'
 
   depends_on 'gawk'
 

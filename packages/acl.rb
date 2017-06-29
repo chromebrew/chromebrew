@@ -5,13 +5,13 @@ class Acl < Package
   homepage 'http://savannah.nongnu.org/projects/acl'
   version '2.2.52'
   source_url 'http://download.savannah.gnu.org/releases/acl/acl-2.2.52.src.tar.gz'
-  source_sha1 '537dddc0ee7b6aa67960a3de2d36f1e2ff2059d9'
+  source_sha256 '179074bb0580c06c4b4137be4c5a92a701583277967acdb5546043c7874e0d23'
 
-  depends_on "attr"
+  depends_on 'attr'
 
   def self.build
-    system "./configure --prefix=/usr/local --libexecdir=/usr/local/lib --disable-static"
-    system "make"
+    system './configure --prefix=/usr/local --libexecdir=/usr/local/lib --disable-static'
+    system 'make'
   end
 
   def self.install

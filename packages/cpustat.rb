@@ -5,9 +5,9 @@ class Cpustat < Package
   homepage 'http://kernel.ubuntu.com/~cking/cpustat/'
   version '0.02.01'
   source_url 'http://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.01.tar.gz'
-  source_sha1 '0eca37a1c6e1282b05be51fc2dd1dac72875112d'
+  source_sha256 '5a4e81b68f89057fc5a6e7ec4ba2c21ae70035193ea8493c2b0eb4b0815a27bf'
 
-  depends_on "ncurses"
+  depends_on 'ncurses'
 
   def self.build
     system "sed -i 's,/usr,/usr/local,g' Makefile"

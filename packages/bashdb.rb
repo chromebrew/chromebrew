@@ -5,7 +5,7 @@ class Bashdb < Package
   homepage 'http://bashdb.sourceforge.net/'
   version '4.4-0.92'
   source_url 'https://downloads.sourceforge.net/project/bashdb/bashdb/4.2-0.92/bashdb-4.4-0.92.tar.gz'
-  source_sha1 '918c7d576c476c4b7d768e1fccda6150cf5ca62d'
+  source_sha256 'fb3d48a22b05d4e3c7a9b8205916d50fa33aac5908f0c9bcd15ff9d4dfa59c86'
 
   def self.build
     system "./configure \
