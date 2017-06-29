@@ -437,20 +437,26 @@ def prepare_package (destdir)
   end
 end
 
+def strip_find_files (find_cmd, strip_option = "")
+  # check whether crew should strip
+  return if CREW_NOT_STRIP || !File.exist?("#{CREW_PREFIX}/bin/strip")
+
+  # run find_cmd and strip only ar or ELF files
+  system "#{find_cmd} | xargs -r chmod u+w"
+  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r strip #{strip_option}"
+end
+
 def install_package (pkgdir)
   Dir.chdir pkgdir do
     FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
 
     # Strip libraries with -S
-    system "find . -name 'lib*.a' -print | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -name 'lib*.a' -print | xargs strip -S 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -name 'lib*.so*' -print | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -name 'lib*.so*' -print | xargs strip -S 2>/dev/null" unless CREW_NOT_STRIP
+    strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
+    strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
 
     # Strip binaries
-    system "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d' | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d' | xargs strip 2>/dev/null" unless CREW_NOT_STRIP
+    strip_find_files "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
   end
