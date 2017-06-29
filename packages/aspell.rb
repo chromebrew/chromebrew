@@ -5,8 +5,7 @@ class Aspell < Package
   homepage 'http://aspell.net/'
   version '0.60.7-rc1'
   source_url 'ftp://alpha.gnu.org/gnu/aspell/aspell-0.60.7-rc1.tar.gz'
-  source_sha1 '65d4bd8c2e9f8455344d22805d6e135706a69bdd'
-  #source_sha256 '86b5662f24316142f70c5890787bdc5596625ca3604dfe85926ee61f27f2365e'
+  source_sha256 '86b5662f24316142f70c5890787bdc5596625ca3604dfe85926ee61f27f2365e'
 
   depends_on 'ruby' unless File.exists? '/usr/local/bin/ruby'
 
