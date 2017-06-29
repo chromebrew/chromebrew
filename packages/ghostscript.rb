@@ -5,7 +5,7 @@ class Ghostscript < Package
   homepage 'https://www.gnu.org/software/ghostscript/'
   version '9.14.1'
   source_url 'ftp://ftp.gnu.org/gnu/ghostscript/gnu-ghostscript-9.14.1.tar.xz'
-  source_sha1 'd2ac2229ee53b6f8594980da3c6a0819c99ecfa0'
+  source_sha256 '424a4ff333a594fdd397cd8adc4249bad7d74a6ae653f840dee72b27f1bf1da0'
 
   depends_on 'lcms'
   depends_on 'libjpeg'
