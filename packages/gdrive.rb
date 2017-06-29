@@ -27,8 +27,6 @@ class Gdrive < Package
       system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnS09XMzhfRXBnUzA&export=download"
       system "sleep 10"
       abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA1.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '70a1ac5be9ba819da5cf7a8dbd513805a26509ac'
-    else
-      abort 'Unable to install gdrive.  Architecture not supported.'.lightred
     end
     system "chmod +x #{CREW_DEST_DIR}/usr/local/bin/gdrive"
   end

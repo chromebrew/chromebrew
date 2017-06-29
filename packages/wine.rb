@@ -19,8 +19,6 @@ class Wine < Package
       system "./configure --without-x"
     when "x86_64" || "aarch64"
       system "./configure --without-x --enable-win64"
-    else
-      abort "Error getting your device configuration."
     end
     system "make"
   end

@@ -11,11 +11,9 @@ class Dropbox < Package
   when 'x86_64'
     source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-28.4.14.tar.gz'
     source_sha1 '40f4f37b64394d42f4fa3d6b3d53553f854587e4'
-  else
-    abort 'Unable to install dropboxd.  Supported architectures include x86 and x86_64 only.'.lightred
   end
 
-  depends_on 'python'
+  depends_on 'python' unless File.exists? '/usr/local/bin/python'
 
   def self.install
     system "wget https://linux.dropbox.com/packages/dropbox.py"

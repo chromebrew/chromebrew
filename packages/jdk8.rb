@@ -17,8 +17,6 @@ class Jdk8 < Package
   when 'aarch64'
     source_url 'https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz'
     source_sha1 '913adb900bf0d9d42452a4591c1a9093076ed4b6'
-  else
-    abort 'Unable to install jdk8.  Architecture not supported.'.lightred
   end
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local"
