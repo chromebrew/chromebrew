@@ -10,10 +10,10 @@ class Gmp < Package
     i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.7/gmp-6.1.2-chromeos-i686.tar.xz',
     x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/gmp-6.1.2-chromeos-x86_64.tar.xz',
   })
-  binary_sha1 ({
-    aarch64: '63b9465ad81d2ad68f6b328f1dada69337c4f71e',
-    armv7l:  '63b9465ad81d2ad68f6b328f1dada69337c4f71e',
-    i686:    '51d647a9a3bd14d0d5f8acbd6f4baf4401e155b4',
-    x86_64:  'a69e303b879264de36ca3e075dd3601f77538163',
+  binary_sha256 ({
+    aarch64: '74c06e1c7fa3b6be68613ba72167416141674a70044452706b9612f6dd4d4267',
+    armv7l:  '74c06e1c7fa3b6be68613ba72167416141674a70044452706b9612f6dd4d4267',
+    i686:    'd9c8f4c0102d30d17e75c753491c527138ead8238681368e265a58edc8b3ae40',
+    x86_64:  '09e6e4a1575da39471e0ae713e54d62dfcb347d913afc3f7f2d49e8489c8d54a',
   })
 end

@@ -5,7 +5,7 @@ class Fish < Package
   homepage 'http://fishshell.com/'
   version '2.5.0'
   source_url 'https://github.com/fish-shell/fish-shell/releases/download/2.5.0/fish-2.5.0.tar.gz'
-  source_sha1 'ec52debe0a829b9df29f658697523af7c18ee778'
+  source_sha256 'f8c0edadca2de379ccf305aeace660a9255fa2180c72e85e97705a24c256b2a5'
 
   depends_on 'ncurses'
 

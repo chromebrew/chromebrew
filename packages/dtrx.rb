@@ -5,7 +5,7 @@ class Dtrx < Package
   homepage 'https://brettcsmith.org/2007/dtrx/'
   version '7.1'
   source_url 'https://brettcsmith.org/2007/dtrx/dtrx-7.1.tar.gz'
-  source_sha1 '05cfe705a04a8b84571b0a5647cd2648720791a4'
+  source_sha256 '1c9afe48e9d9d4a1caa4c9b0c50593c6fe427942716ce717d81bae7f8425ce97'
 
   depends_on 'binutils'
   depends_on 'bz2'

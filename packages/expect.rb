@@ -5,7 +5,7 @@ class Expect < Package
   homepage 'http://expect.sourceforge.net/'
   version '5.45-1'
   source_url 'http://prdownloads.sourceforge.net/expect/expect5.45.tar.gz'
-  source_sha1 'e634992cab35b7c6931e1f21fbb8f74d464bd496'
+  source_sha256 'b28dca90428a3b30e650525cdc16255d76bb6ccd65d448be53e620d95d5cc040'
 
   depends_on "tcl"
 

@@ -5,7 +5,7 @@ class Fasd < Package
   homepage 'https://github.com/clvv/fasd'
   version '1.0.1'
   source_url 'https://github.com/clvv/fasd/archive/1.0.1.tar.gz'
-  source_sha1 'aeb3f9c6f8f9e4355016e3255429bcad5c7a5689'
+  source_sha256 '88efdfbbed8df408699a14fa6c567450bf86480f5ff3dde42d0b3e1dee731f65'
 
   def self.install
     system "sed -i 's,share/man,man,' Makefile"

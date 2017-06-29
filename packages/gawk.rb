@@ -5,7 +5,7 @@ class Gawk < Package
   homepage 'https://www.gnu.org/software/gawk/'
   version '4.1.4-1'
   source_url 'http://ftp.gnu.org/gnu/gawk/gawk-4.1.4.tar.xz'
-  source_sha1 'd67e00e2f6178e9cbd2c0ba923ae157bc0b3b570'
+  source_sha256 '53e184e2d0f90def9207860531802456322be091c7b48f23fdc79cda65adc266'
 
   depends_on 'libsigsegv'
   depends_on 'readline' => :build

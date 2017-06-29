@@ -5,7 +5,7 @@ class Dos2unix < Package
   homepage 'http://freecode.com/projects/dos2unix'
   version '7.3.4'
   source_url 'https://sourceforge.net/projects/dos2unix/files/dos2unix/7.3.4/dos2unix-7.3.4.tar.gz'
-  source_sha1 'f19641741806b8411566144bfdf56df718b4aca0'
+  source_sha256 '8ccda7bbc5a2f903dafd95900abb5bf5e77a769b572ef25150fde4056c5f30c5'
 
   def self.build
     system 'make'

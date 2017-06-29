@@ -5,7 +5,7 @@ class Gettext < Package
   homepage 'https://www.gnu.org/software/gettext/'
   version '0.19.8.1'
   source_url 'ftp://ftp.gnu.org/gnu/gettext/gettext-0.19.8.1.tar.xz'
-  source_sha1 'e0fe90ede22f7f16bbde7bdea791a835f2773fc9'
+  source_sha256 '105556dbc5c3fbbc2aa0edb46d22d055748b6f5c7cd7a8d99f8e7eb84e938be4'
 
   depends_on 'diffutils' => :build
   depends_on 'ncurses'

@@ -5,7 +5,7 @@ class Docbook < Package
   homepage 'http://docbook.sourceforge.net/'
   version '1.79.1'
   source_url 'https://downloads.sourceforge.net/project/docbook/docbook-xsl/1.79.1/docbook-xsl-1.79.1.tar.bz2'
-  source_sha1 '7487b2acc7106253bb77fcddc7e1a9788601ad23'
+  source_sha256 '725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968'
 
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/docbook"
