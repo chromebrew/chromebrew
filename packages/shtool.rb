@@ -5,8 +5,7 @@ class Shtool < Package
   homepage 'http://savannah.gnu.org/projects/shtool'
   version '2.0.8'
   source_url 'http://ftp.gnu.org/gnu/shtool/shtool-2.0.8.tar.gz'
-  source_sha1 '4b974f92d3932ea121e311e3b22c328d3b3572d4'
-  #source_sha256 '1298a549416d12af239e9f4e787e6e6509210afb49d5cf28eb6ec4015046ae19'
+  source_sha256 '1298a549416d12af239e9f4e787e6e6509210afb49d5cf28eb6ec4015046ae19'
 
   def self.build
     system './configure'
