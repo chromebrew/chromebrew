@@ -15,9 +15,9 @@ class Wine < Package
 
   def self.build
     case ARCH
-    when "i686" || "armv7l"
+    when "i686" || "armv7l" || "aarch64"
       system "./configure --without-x"
-    when "x86_64" || "aarch64"
+    when "x86_64"
       system "./configure --without-x --enable-win64"
     else
       abort "Error getting your device configuration."
@@ -27,7 +27,7 @@ class Wine < Package
 
   def self.install
     case ARCH
-    when "x86_64" || "aarch64"
+    when "x86_64"
       system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
       FileUtils.cd("#{CREW_DEST_DIR}/usr/local/bin") do
         system "ln -s wine64 wine"
