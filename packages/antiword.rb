@@ -3,7 +3,7 @@ require 'package'
 class Antiword < Package
   description 'Antiword is a free MS Word reader for Linux and RISC OS.'
   homepage 'http://www.winfield.demon.nl/'
-  version '0.37'
+  version '0.37-1'
   source_url 'http://www.winfield.demon.nl/linux/antiword-0.37.tar.gz'
   source_sha256 '8e2c000fcbc6d641b0e6ff95e13c846da3ff31097801e86702124a206888f5ac'
 
