@@ -5,7 +5,7 @@ class Coreutils < Package
   homepage 'http://www.gnu.org/software/coreutils/coreutils.html'
   version '8.27'
   source_url 'http://ftp.gnu.org/gnu/coreutils/coreutils-8.27.tar.xz'
-  source_sha1 'ee054c8a4c0c924de49e4f03266733f27f986fbb'
+  source_sha256 '8891d349ee87b9ff7870f52b6d9312a9db672d2439d289bc57084771ca21656b'
 
   def self.build
     system './configure'
