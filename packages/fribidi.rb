@@ -5,7 +5,7 @@ class Fribidi < Package
   homepage 'https://www.fribidi.org/'
   version '0.19.7'
   source_url 'https://www.fribidi.org/download/fribidi-0.19.7.tar.bz2'
-  source_sha1 'e470e078eafe6c065708def3e037c129c0d7367d'
+  source_sha256 '08222a6212bbc2276a2d55c3bf370109ae4a35b689acbc66571ad2a670595a8e'
 
   def self.build
     system "./configure"

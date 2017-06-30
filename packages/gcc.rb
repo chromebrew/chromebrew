@@ -11,11 +11,11 @@ class Gcc < Package
     i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.7/gcc-4.9.4-chromeos-i686.tar.xz',
     x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/gcc-4.9.4-chromeos-x86_64.tar.xz',
   })
-  binary_sha1 ({
-    aarch64: 'b34938c0ec56dc7bf7c03d4d5596232dede65c53',
-    armv7l:  'b34938c0ec56dc7bf7c03d4d5596232dede65c53',
-    i686:    '2f18ba781298d4275dd54a339ea415764a4d6fee',
-    x86_64:  '4e8e609fafab6ebb527cad7ecabce481c1b419e4',
+  binary_sha256 ({
+    aarch64: 'e0bf0855f30aa2084e86b0d382c99b6d15bbc1937f4ea6a993ab06ca1a80bd70',
+    armv7l:  'e0bf0855f30aa2084e86b0d382c99b6d15bbc1937f4ea6a993ab06ca1a80bd70',
+    i686:    '66a6f4f1b08c1f0f09bc58ccb65b35e48912bf529d1de8452e3e8faeff75bc0c',
+    x86_64:  '78cd2fd1a95aee25a9804371118adad78265237718068ed86d90d82e41ca02ce',
   })
 
   depends_on 'binutils'

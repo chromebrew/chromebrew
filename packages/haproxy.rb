@@ -5,8 +5,8 @@ class Haproxy < Package
   homepage 'http://www.haproxy.org/'
   version '1.7.2'
   source_url 'http://www.haproxy.org/download/1.7/src/haproxy-1.7.2.tar.gz'
-  source_sha1 'b022485e28b96b673e3116a69d8922cb7367a81f'
-  
+  source_sha256 'f95b40f52a4d61feaae363c9b15bf411c16fe8f61fddb297c7afcca0072e4b2f'
+
   depends_on "openssl"
   depends_on "pcre"
 
@@ -15,6 +15,6 @@ class Haproxy < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

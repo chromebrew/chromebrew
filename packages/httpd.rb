@@ -5,7 +5,7 @@ class Httpd < Package
   homepage 'http://httpd.apache.org/'
   version '2.2.32'
   source_url 'https://github.com/apache/httpd/archive/2.2.32.tar.gz'
-  source_sha1 '647e459f645c4138561e3f4314570f2f525d754d'
+  source_sha256 '0d74b1e4d69cedc56323cedc819c083ca975b679b6a082abf60c21836756bb1d'
 
   depends_on 'subversion'
 

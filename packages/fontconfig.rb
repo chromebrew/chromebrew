@@ -5,7 +5,7 @@ class Fontconfig < Package
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
   version '2.11.94-1'
   source_url 'http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.94.tar.gz'
-  source_sha1 '3748d8a2b9cf8052dbd003f524d829157f1ead83'
+  source_sha256 '73f6d323c7bcfbde25d78397675191d55b8f4139132c6a9444410f3a2d8a9a95'
 
   depends_on 'pkgconfig'
   depends_on 'freetype'

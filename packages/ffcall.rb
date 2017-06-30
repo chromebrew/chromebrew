@@ -5,7 +5,7 @@ class Ffcall < Package
   homepage 'http://www.haible.de/bruno/packages-ffcall-README.html'
   version '1.10-1'
   source_url 'http://www.haible.de/bruno/gnu/ffcall-1.10.tar.gz'
-  source_sha1 '6b4fdc7bd38b434bbf3d65508a3d117fc8b349f3'
+  source_sha256 '6f1b5b8fc84b2c0051637fb1e4e4f8b975f5f98bff8fe053c1992347baa4983d'
 
   def self.build
     system "./configure --prefix=/usr/local CFLAGS=\" -fPIC\""

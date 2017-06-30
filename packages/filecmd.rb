@@ -5,7 +5,7 @@ class Filecmd < Package
   homepage 'ftp://ftp.astron.com/pub/file'
   version '5.31'
   source_url 'ftp://ftp.astron.com/pub/file/file-5.31.tar.gz'
-  source_sha1 'd66f71fb29ec0e9cecbefe9d7433d7a315f3302c'
+  source_sha256 '09c588dac9cff4baa054f51a36141793bcf64926edc909594111ceae60fce4ee'
 
   def self.build
     system "./configure"

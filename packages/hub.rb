@@ -5,7 +5,7 @@ class Hub < Package
   homepage 'https://hub.github.com/'
   version '2.3.0-pre9'
   source_url 'https://github.com/github/hub/archive/v2.3.0-pre9.tar.gz'
-  source_sha1 'd18f0a28d13b7e773186ece35df032f561d2172d'
+  source_sha256 '3246a5e3a071a7ccb06c30230a720b6457837bd6b97b32ab248dfb2b2222dbfb'
 
   depends_on 'git'
   depends_on 'go'
