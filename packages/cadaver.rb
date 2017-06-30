@@ -5,7 +5,7 @@ class Cadaver < Package
   homepage 'http://www.webdav.org/cadaver/'
   version '0.23.3'
   source_url 'http://www.webdav.org/cadaver/cadaver-0.23.3.tar.gz'
-  source_sha1 '4ad8ea2341b77e7dee26b46e4a8a496f1a2962cd'
+  source_sha256 'fd4ce68a3230ba459a92bcb747fc6afa91e46d803c1d5ffe964b661793c13fca'
 
   def self.build
     system "./configure"

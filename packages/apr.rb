@@ -5,7 +5,7 @@ class Apr < Package
   homepage 'http://apr.apache.org/'
   version '1.5.2'
   source_url 'http://apache.claz.org/apr/apr-1.5.2.tar.bz2'
-  source_sha1 '6d757fcf7c687fc300c1066076f2e8380ff8cbc0'
+  source_sha256 '7d03ed29c22a7152be45b8e50431063736df9e1daa1ddf93f6a547ba7a28f67a'
 
   depends_on 'buildessential'
 

@@ -5,7 +5,7 @@ class Aws < Package
   homepage 'https://aws.amazon.com/documentation/cli/'
   version '1.11.110'
   source_url 'https://github.com/aws/aws-cli/archive/1.11.110.tar.gz'
-  source_sha1 'a30e4f23951c06bb4ab9ffaa9ac42188fae6d6ba'
+  source_sha256 '6056401e917302f2b87bb30ad416f02977e6e4a566a86c8e926d66d4c1f01101'
 
   depends_on 'python' unless File.exists? '/usr/local/bin/python'
   depends_on 'unzip'

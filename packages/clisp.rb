@@ -5,7 +5,7 @@ class Clisp < Package
   homepage 'http://www.gnu.org/software/clisp/'
   version '2.49-2'
   source_url 'ftp://ftp.gnu.org/pub/gnu/clisp/release/2.49/clisp-2.49.tar.bz2'
-  source_sha1 '7e8d585ef8d0d6349ffe581d1ac08681e6e670d4'
+  source_sha256 '8132ff353afaa70e6b19367a25ae3d5a43627279c25647c220641fed00f8e890'
 
   depends_on 'libsigsegv'
   depends_on 'ffcall'

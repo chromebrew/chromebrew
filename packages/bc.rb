@@ -5,7 +5,7 @@ class Bc < Package
   homepage 'http://www.gnu.org/software/bc/'
   version '1.07.1'
   source_url 'https://ftp.gnu.org/gnu/bc/bc-1.07.1.tar.gz'
-  source_sha1 'b4475c6d66590a5911d30f9747361db47231640a'
+  source_sha256 '62adfca89b0a1c0164c2cdca59ca210c1d44c3ffc46daf9931cf4942664cb02a'
 
   depends_on 'readline'
   depends_on 'flex' => :build

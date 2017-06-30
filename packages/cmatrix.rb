@@ -5,7 +5,7 @@ class Cmatrix < Package
   homepage 'http://www.asty.org/cmatrix/'
   version '1.2a'
   source_url 'http://www.asty.org/cmatrix/dist/cmatrix-1.2a.tar.gz'
-  source_sha1 'ca078c10322a47e327f07a44c9a42b52eab5ad93'
+  source_sha256 '1fa6e6caea254b6fe70a492efddc1b40ad7ccb950a5adfd80df75b640577064c'
 
   depends_on 'buildessential'
   depends_on 'ncurses'

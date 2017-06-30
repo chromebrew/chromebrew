@@ -5,7 +5,7 @@ class Cairo < Package
   homepage 'https://www.cairographics.org/'
   version '1.14.8'
   source_url 'https://www.cairographics.org/releases/cairo-1.14.8.tar.xz'
-  source_sha1 'c6f7b99986f93c9df78653c3e6a3b5043f65145e'
+  source_sha256 'd1f2d98ae9a4111564f6de4e013d639cf77155baf2556582295a0f00a9bc5e20'
 
   depends_on 'libpng'
   depends_on 'pixman'
