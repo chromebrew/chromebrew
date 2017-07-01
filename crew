@@ -160,7 +160,7 @@ def search (pkgName, silent = false)
 end
 
 def regexp_search(pkgName)
-  results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
+  results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
 	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
 	  .each    { |f| print_package(f, ARGV[2] == "extra") }
