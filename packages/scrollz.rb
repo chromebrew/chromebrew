@@ -5,7 +5,7 @@ class Scrollz < Package
   homepage 'http://www.scrollz.info/'
   version '2.3'
   source_url 'http://www.scrollz.info/download/ScrollZ-2.3.tar.gz'
-  source_sha1 '991e6acfdf95d84ca159a37336c2d45a624d432f'
+  source_sha256 '22535bcc54ad752107ab181775d90d9cf1b37648f500d627f428388a9d3710e6'
 
   depends_on 'buildessential'
   depends_on 'ncurses'

@@ -5,7 +5,7 @@ class Redis < Package
   homepage 'https://redis.io/'
   version '3.0.6'
   source_url 'http://download.redis.io/releases/redis-3.0.6.tar.gz'
-  source_sha1 '4b1c7b1201984bca8f7f9c6c58862f6928cf0a25'
+  source_sha256 '6f1e1523194558480c3782d84d88c2decf08a8e4b930c56d4df038e565b75624'
 
   depends_on 'buildessential'
 

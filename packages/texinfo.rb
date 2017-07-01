@@ -5,7 +5,7 @@ class Texinfo < Package
   homepage 'https://www.gnu.org/software/texinfo/'
   version '6.3'
   source_url 'http://ftp.gnu.org/gnu/texinfo/texinfo-6.3.tar.gz'
-  source_sha1 '29b16c646c7bc9cd351b2f1d8dafdce70e5377f6'
+  source_sha256 '300a6ba4958c2dd4a6d5ce60f0a335daf7e379f5374f276f6ba31a221f02f606'
 
   def self.build
     system "./configure"

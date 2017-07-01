@@ -5,7 +5,7 @@ class Ruby < Package
   homepage 'https://www.ruby-lang.org/en/'
   version '2.4.1'
   source_url 'https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.xz'
-  source_sha1 'eb3e25346431214379e3b92c6f6b6e02f7b2503f'
+  source_sha256 '4fc8a9992de3e90191de369270ea4b6c1b171b7941743614cc50822ddc1fe654'
 
   depends_on 'readline'
   depends_on 'ncurses'

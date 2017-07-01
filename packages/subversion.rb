@@ -5,7 +5,7 @@ class Subversion < Package
   homepage 'https://subversion.apache.org/'
   version '1.9.5'
   source_url 'http://apache.mirrors.ionfish.org/subversion/subversion-1.9.5.tar.gz'
-  source_sha1 'ac9f8ee235f1b667dd6506864af8035aaedfc2d9'
+  source_sha256 '280ba586c5d51d7b976b65d22d5e8e42f3908ed1c968d71120dcf534ce857a83'
 
   depends_on 'aprutil'
   depends_on 'sqlite'

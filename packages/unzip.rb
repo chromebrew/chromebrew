@@ -5,7 +5,8 @@ class Unzip < Package
   homepage 'http://www.info-zip.org/UnZip.html'
   version '1.6_1'
   source_url 'https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/unzip60.tar.gz'
-  source_sha1 'abf7de8a4018a983590ed6f5cbd990d4740f8a22'
+  source_sha256 '036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
+
   depends_on 'patch'
 
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-dupes/blob/master/unzip.rb

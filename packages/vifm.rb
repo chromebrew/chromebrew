@@ -5,9 +5,9 @@ class Vifm < Package
   homepage 'https://vifm.info/'
   version '0.8.2'
   source_url 'https://downloads.sourceforge.net/project/vifm/vifm/vifm-0.8.2.tar.bz2'
-  source_sha1 '1ae4179b2b9a43c440290af0ecc91b9235203be7'
+  source_sha256 '8b466d766658a24d07fc2039a26fefc6a018f5653684a6035183ca79f02c211f'
 
-  depends_on "ncurses"
+  depends_on 'ncurses'
 
   def self.build
     system "./configure", \
@@ -21,6 +21,6 @@ class Vifm < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

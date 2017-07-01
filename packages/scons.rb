@@ -5,7 +5,7 @@ class Scons < Package
   homepage 'http://scons.org/'
   version '2.5.1'
   source_url 'http://prdownloads.sourceforge.net/scons/scons-2.5.1.tar.gz'
-  source_sha1 'f742350251734df75355e51c70f291e119ef927a'
+  source_sha256 '0b25218ae7b46a967db42f2a53721645b3d42874a65f9552ad16ce26d30f51f2'
 
   depends_on 'python27'
 
