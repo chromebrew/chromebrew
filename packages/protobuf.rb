@@ -5,7 +5,7 @@ class Protobuf < Package
   homepage 'https://developers.google.com/protocol-buffers/'
   version '3.3.0'
   source_url 'https://github.com/google/protobuf/archive/v3.3.0.tar.gz'
-  source_sha1 '34bcb26fe1eff098224c93b9176fb2400f1f2a84'
+  source_sha256 '94c414775f275d876e5e0e4a276527d155ab2d0da45eed6b7734301c330be36e'
 
   depends_on 'automake'
   depends_on 'libtool'

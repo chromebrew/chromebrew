@@ -5,7 +5,7 @@ class Mandb < Package
   homepage 'http://savannah.nongnu.org/projects/man-db'
   version '2.7.6.1'
   source_url 'http://download.savannah.gnu.org/releases/man-db/man-db-2.7.6.1.tar.xz'
-  source_sha1 '919dcb34d604faac9b18a38ead07f457d0dab501'
+  source_sha256 '08edbc52f24aca3eebac429b5444efd48b9b90b9b84ca0ed5507e5c13ed10f3f'
 
   depends_on 'less'
   depends_on 'libpipeline'

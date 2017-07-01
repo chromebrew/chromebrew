@@ -5,7 +5,7 @@ class P7zip < Package
   homepage 'http://p7zip.sourceforge.net/'
   version '16.02'
   source_url 'http://downloads.sourceforge.net/p7zip/p7zip_16.02_src_all.tar.bz2'
-  source_sha1 'e8819907132811aa1afe5ef296181d3a15cc8f22'
+  source_sha256 '5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
 
   def self.build
     system "cp", "makefile.linux_any_cpu", "makefile.machine"
@@ -13,6 +13,6 @@ class P7zip < Package
   end
 
   def self.install
-    system "make", "DEST_DIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DEST_DIR=#{CREW_DEST_DIR}", "install"
   end
 end

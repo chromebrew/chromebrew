@@ -5,7 +5,7 @@ class Perl < Package
   homepage 'https://www.perl.org/'
   version '5.24.1-1'
   source_url 'http://www.cpan.org/src/5.0/perl-5.24.1.tar.gz'
-  source_sha1 '19b218bbc3a63a8408ed56b93928fd9a4c1b5c83'
+  source_sha256 'e6c185c9b09bdb3f1b13f678999050c639859a7ef39c8cad418448075f5918af'
 
   depends_on 'patch' => :build
 

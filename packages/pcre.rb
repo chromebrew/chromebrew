@@ -5,8 +5,8 @@ class Pcre < Package
   homepage 'http://pcre.org/'
   version '8.40'
   source_url 'https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.bz2'
-  source_sha1 '12f338719b8b028a2eecbf9192fcc00a13fc04f6'
-  
+  source_sha256 '00e27a29ead4267e3de8111fcaa59b132d0533cdfdbdddf4b0604279acbcf4f4'
+
   def self.build
     system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic", "--enable-utf"
     system "make"

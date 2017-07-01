@@ -6,14 +6,14 @@ class Openssl < Package
   version '1.0.2l'
 
   source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz'
-  source_sha1 '5bea0957b371627e8ebbee5bef221519e94d547c'
+  source_sha256 'a3d3a7c03c90ba370405b2d12791598addfcafb1a77ef483c02a317a56c08485'
   binary_url ({
     aarch64: 'https://github.com/jam7/chromebrew/releases/download/binaries/openssl-1.0.2l-chromeos-armv7l.tar.xz',
     armv7l:  'https://github.com/jam7/chromebrew/releases/download/binaries/openssl-1.0.2l-chromeos-armv7l.tar.xz',
   })
-  binary_sha1 ({
-    aarch64: '4c9eb37df898e9495a8f53e3aa7f6058063fa8ce',
-    armv7l:  '4c9eb37df898e9495a8f53e3aa7f6058063fa8ce',
+  binary_sha256 ({
+    aarch64: '4af16174aa6a9f565a5895fedea89daf0c8fb66b8f26b0c8416f5456aa440ea5',
+    armv7l:  '4af16174aa6a9f565a5895fedea89daf0c8fb66b8f26b0c8416f5456aa440ea5',
   })
 
   depends_on 'perl' => :build

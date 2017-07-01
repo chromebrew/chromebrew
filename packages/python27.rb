@@ -5,7 +5,7 @@ class Python27 < Package
   homepage 'https://www.python.org/'
   version '2.7.13-2'
   source_url 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz'
-  source_sha1 '18a8f30a0356c751b8d0ea6f76e764cab13ee046'
+  source_sha256 '35d543986882f78261f97787fd3e06274bfa6df29fac9b4a94f73930ff98f731'
 
   depends_on 'bz2' => :build
   depends_on 'ncurses'

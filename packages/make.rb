@@ -5,7 +5,7 @@ class Make < Package
   homepage 'https://www.gnu.org/software/make/'
   version '4.2'
   source_url 'ftp://ftp.gnu.org/gnu/make/make-4.2.tar.bz2'
-  source_sha1 'd78b84a219b4c16593544f541dff7eb765ce3d74'
+  source_sha256 '4e5ce3b62fe5d75ff8db92b7f6df91e476d10c3aceebf1639796dc5bfece655f'
 
   depends_on 'gcc' => :build
   depends_on 'linuxheaders' => :build

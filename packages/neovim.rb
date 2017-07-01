@@ -5,7 +5,7 @@ class Neovim < Package
   homepage 'https://neovim.io/'
   version '0.1.7'
   source_url 'https://github.com/neovim/neovim/archive/v0.1.7.tar.gz'
-  source_sha1 '00e67f981105f1acbe06df1dbea21b6f7fa6d9b8'
+  source_sha256 'd8f885d019b1ad608f36ae23b8f1b15b7e33585e16f7514666ab6c9809bb4b7e'
 
   depends_on 'libtool'
   depends_on 'autoconf'
