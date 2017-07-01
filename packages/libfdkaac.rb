@@ -5,7 +5,7 @@ class Libfdkaac < Package
   homepage 'https://github.com/mstorsjo/fdk-aac/'
   version '0.1.5'
   source_url 'https://github.com/mstorsjo/fdk-aac/archive/v0.1.5.tar.gz'
-  source_sha1 '2894bd6d21066bfdf65a2f8cb6d2ca2dde597194'
+  source_sha256 'ff53d1d01cacc29c071e23192dfefa93bdbeaf775fc5d296259b4859d0306b79'
 
   depends_on 'automake'
 

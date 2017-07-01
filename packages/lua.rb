@@ -5,7 +5,7 @@ class Lua < Package
   homepage 'https://www.lua.org/'
   version '5.3.4'
   source_url 'https://www.lua.org/ftp/lua-5.3.4.tar.gz'
-  source_sha1 '79790cfd40e09ba796b01a571d4d63b52b1cd950'
+  source_sha256 'f681aa518233bc407e23acf0f5887c884f17436f000d453b2491a9f11a52400c'
 
   depends_on 'readline'
   depends_on 'ncurses'

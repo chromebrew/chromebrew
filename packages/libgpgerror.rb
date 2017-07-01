@@ -5,7 +5,7 @@ class Libgpgerror < Package
   homepage 'https://www.gnupg.org/related_software/libgpg-error/index.html'
   version '1.26'
   source_url 'ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.26.tar.bz2'
-  source_sha1 '9a926e7ee6309e539313443555535d49a2a5c9f1'
+  source_sha256 '4c4bcbc90116932e3acd37b37812d8653b1b189c1904985898e860af818aee69'
 
   def self.build
     system "./configure --prefix=/usr/local"
@@ -13,6 +13,6 @@ class Libgpgerror < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

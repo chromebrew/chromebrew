@@ -5,7 +5,7 @@ class Libcap < Package
   homepage 'https://directory.fsf.org/wiki/Libcap'
   version '2.25'
   source_url 'https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.25.tar.xz'
-  source_sha1 'f0b102e4a68e1bbdcb6b143b63c34a250e473088'
+  source_sha256 '693c8ac51e983ee678205571ef272439d83afe62dd8e424ea14ad9790bc35162'
 
   def self.build
     # change the path to ld
