@@ -5,7 +5,7 @@ class Pacparser < Package
   homepage 'http://pacparser.manugarg.com/'
   version '1.3.7'
   source_url 'https://github.com/pacparser/pacparser/archive/1.3.7.tar.gz'
-  source_sha1 'bb06b1a0eaeb882877c5afa45cb00b540ee57f5f'
+  source_sha256 '575c5d8096b4c842b2af852bbb8bcfde96170b28b49f33249dbe2057a8beea13'
 
   def self.build
     system "make -C src"

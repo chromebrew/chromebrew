@@ -5,7 +5,7 @@ class Ncftp < Package
   homepage 'http://ncftp.com/ncftp/'
   version '3.2.6'
   source_url 'ftp://ftp.ncftp.com/ncftp/ncftp-3.2.6-src.tar.gz'
-  source_sha1 'e2351802b40db18d6cbab2537a9644cd858b934d'
+  source_sha256 '129e5954850290da98af012559e6743de193de0012e972ff939df9b604f81c23'
 
   depends_on 'buildessential'
 
@@ -13,8 +13,8 @@ class Ncftp < Package
     system "./configure"
     system "make"
   end
-  
+
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end         
+  end
 end

@@ -5,30 +5,30 @@ class Ncursesw < Package
   homepage 'http://www.gnu.org/software/ncurses/'
   version '6.0-2'
   source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
-  source_sha1 'acd606135a5124905da770803c05f1f20dd3b21c'
+  source_sha256 'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
 
-  depends_on "diffutils" => :build
+  depends_on 'diffutils' => :build
 
   def self.build
     # Check ncurses doesn't conflict with ncrusesw
     if File.exist? CREW_CONFIG_PATH + "meta/ncurses.filelist"
       if `grep include/ncursesw #{CREW_CONFIG_PATH}meta/ncurses.filelist` != ''
-	puts
-	puts "PLEASE PERFORMS `crew upgrade ncurses` OR `sudo crew remove ncurses` FIRST"
-	puts
-	exit 1
+        puts
+        puts "PLEASE PERFORM `crew upgrade ncurses` OR `crew remove ncurses` FIRST"
+        puts
+        exit 1
       end
     end
     # Build ncursesw
     system './configure',
-	    '--prefix=/usr/local',
-	    "--libdir=#{CREW_LIB_PREFIX}",
-	    '--without-normal',
-	    '--with-shared',
-	    '--with-cxx-shared',
-	    '--without-debug',
-	    '--enable-widec'
-    system "make"
+           '--prefix=/usr/local',
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--without-normal',
+           '--with-shared',
+           '--with-cxx-shared',
+           '--without-debug',
+           '--enable-widec'
+    system 'make'
   end
 
   def self.install

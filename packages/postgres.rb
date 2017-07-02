@@ -5,7 +5,7 @@ class Postgres < Package
   homepage 'https://www.postgresql.org/'
   version '9.5.0'
   source_url 'https://ftp.postgresql.org/pub/source/v9.5.0/postgresql-9.5.0.tar.bz2'
-  source_sha1 '930afeb713b81778f29d32e7bf18fd08ce2aa8f9'
+  source_sha256 'f1c0d3a1a8aa8c92738cab0153fbfffcc4d4158b3fee84f7aa6bfea8283978bc'
 
   depends_on 'buildessential'
 

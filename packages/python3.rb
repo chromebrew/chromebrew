@@ -5,7 +5,7 @@ class Python3 < Package
   homepage 'https://www.python.org/'
   version '3.6.0'
   source_url 'https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz'
-  source_sha1 '120d536ee14a3153fc2435838c0f27c2e25cd29c'
+  source_sha256 'aa472515800d25a3739833f76ca3735d9f4b2fe77c3cb21f69275e0cce30cb2b'
 
   depends_on 'bz2' => :build
   depends_on 'xzutils' => :build
