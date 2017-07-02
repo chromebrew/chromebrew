@@ -27,6 +27,9 @@ else
   CREW_NPROC = ENV["CREW_NPROC"]
 end
 
+# Set CREW_NOT_COMPRESS from environment variable
+CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
+
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
 
@@ -422,17 +425,35 @@ def build_and_preconfigure (target_dir)
   end
 end
 
+def compress_doc (dir)
+  # check whether crew should compress
+  return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+
+  if Dir.exist? dir
+    system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
+    system "compressdoc --gzip -9 #{dir}"
+  end
+end
+
 def prepare_package (destdir)
   Dir.chdir destdir do
-    #create directory list
+    # compress manual files
+    compress_doc "#{destdir}#{CREW_PREFIX}/man"
+    compress_doc "#{destdir}#{CREW_PREFIX}/info"
+    compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
+    compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
+
+    # create directory list
     system "find . -type f > ../filelist"
     system "find . -type l >> ../filelist"
     system "cut -c2- ../filelist > filelist"
-    #create file list
+
+    # create file list
     system "find . -type d > ../dlist"
     system "cut -c2- ../dlist > dlistcut"
     system "tail -n +2 dlistcut > dlist"
-    #remove temporary files
+
+    # remove temporary files
     system "rm dlistcut ../dlist ../filelist"
   end
 end
