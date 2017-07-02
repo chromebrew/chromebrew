@@ -7,7 +7,7 @@ class Wine < Package
   homepage 'https://www.winehq.org/'
   version '2.10'
   source_url 'https://dl.winehq.org/wine/source/2.x/wine-2.10.tar.xz'
-  source_sha1 '886bc24c315b2accbc2ad41d921e92177768f3a5'
+  source_sha256 '488df7ffd2e81da455bf428fc9eb784bb4273a890334500895665711bd52f179'
 
   depends_on 'bison'
   depends_on 'flex'
