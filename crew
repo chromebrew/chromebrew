@@ -127,8 +127,8 @@ end
 
 def print_package(pkgName, extra = false)
   search pkgName, true
-  Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-    print '(i) '.lightgreen if packageList == CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
+  print '(i) '.lightgreen if @device[:installed_packages].any? do |elem|
+    elem[:name] == pkgName
   end
   print @pkg.name
   print ": #{@pkg.description}" if @pkg.description
@@ -163,7 +163,7 @@ def search (pkgName, silent = false)
 end
 
 def regexp_search(pkgName)
-  results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
+  results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
 	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
 	  .each    { |f| print_package(f, ARGV[2] == "extra") }
