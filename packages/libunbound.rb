@@ -5,7 +5,7 @@ class Libunbound < Package
   homepage 'https://www.unbound.net/'
   version '1.6.2'
   source_url 'https://www.unbound.net/downloads/unbound-1.6.2.tar.gz'
-  source_sha1 'de370b1ac8e260db9c4c1504453752713dd8818f'
+  source_sha256 '1a323d72c32180b7141c9e6ebf199fc68a0208dfebad4640cd2c4c27235e3b9c'
 
   depends_on 'flex' => :build
   depends_on 'bison' => :build

@@ -5,7 +5,7 @@ class Libpcap < Package
   homepage 'http://www.tcpdump.org/'
   version '1.8.1'
   source_url 'http://www.tcpdump.org/release/libpcap-1.8.1.tar.gz'
-  source_sha1 '32d7526dde8f8a2f75baf40c01670602aeef7e39'
+  source_sha256 '673dbc69fdc3f5a86fb5759ab19899039a8e5e6c631749e48dcd9c6f0c83541e'
 
   depends_on "buildessential"
   depends_on "bison"

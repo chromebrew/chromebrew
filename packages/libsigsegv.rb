@@ -5,7 +5,7 @@ class Libsigsegv < Package
   homepage 'https://www.gnu.org/software/libsigsegv/'
   version '2.11'
   source_url 'ftp://ftp.gnu.org/gnu/libsigsegv/libsigsegv-2.11.tar.gz'
-  source_sha1 '186dea8ae788395476bd7cbaf38c17ebe82e1777'
+  source_sha256 'dd7c2eb2ef6c47189406d562c1dc0f96f2fc808036834d596075d58377e37a18'
 
   def self.build
     system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic"

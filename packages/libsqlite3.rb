@@ -5,7 +5,7 @@ class Libsqlite3 < Package
   homepage 'https://github.com/LuaDist/libsqlite3'
   version '3.7.7.1'
   source_url 'https://github.com/LuaDist/libsqlite3/archive/3.7.7.1.tar.gz'
-  source_sha1 '43a8eaad04a2220e9ede5764da8edba4003ad33a'
+  source_sha256 'b1eb700a46a7429a1a587fadd31e8ef5a3fd84bb6a75b898715baf71fedc412e'
 
   def self.build
     system "./configure"
