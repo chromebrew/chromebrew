@@ -5,7 +5,7 @@ class Sysstat < Package
   homepage 'http://sebastien.godard.pagesperso-orange.fr/'
   version '11.5.6'
   source_url 'https://github.com/sysstat/sysstat/archive/v11.5.6.tar.gz'
-  source_sha1 'a8913a7a8418590bc6ea77a7bbe737577ef96e33'
+  source_sha256 '2ba2c6bfe0870e3b10061ec19b2623283d4922bc6d824b1ba6534a27001d9fa8'
 
   def self.build
     system "sed -i 's/GRP=root/GRP=$(whoami)/' configure"

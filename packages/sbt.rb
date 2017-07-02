@@ -5,7 +5,7 @@ class Sbt < Package
   homepage 'http://www.scala-sbt.org/'
   version '0.13.15'
   source_url 'https://github.com/sbt/sbt/releases/download/v0.13.15/sbt-0.13.15.tgz'
-  source_sha1 '46f07dbfec874be8687072e07d2c3f22b4f7cc76'
+  source_sha256 'b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef'
 
   depends_on 'jdk8'
 

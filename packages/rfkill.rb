@@ -5,7 +5,7 @@ class Rfkill < Package
   homepage 'http://linuxwireless.org/en/users/Documentation/rfkill'
   version '0.5'
   source_url 'https://www.kernel.org/pub/software/network/rfkill/rfkill-0.5.tar.xz'
-  source_sha1 '03025d4ae285c40d5c19ec99ef7b317afda9d900'
+  source_sha256 'e0ae3004215e39a6c5c36e0726558740728d16f67ebdb8bea621250f6091d86a'
 
   depends_on 'buildessential' => :build
 

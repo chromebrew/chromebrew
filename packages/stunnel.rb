@@ -5,7 +5,7 @@ class Stunnel < Package
   homepage 'https://www.stunnel.org/index.html'
   version '5.41'
   source_url 'https://www.stunnel.org/downloads/stunnel-5.41.tar.gz'
-  source_sha1 '9aa8335e0f9571480b0d62b4b58d9d510447b732'
+  source_sha256 'f05c6321ee1f6ddebacc234ccf20825971941e831b5beea6d0ce0b8e1668148f'
 
   depends_on 'openssl'
 

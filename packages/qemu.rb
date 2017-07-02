@@ -5,7 +5,7 @@ class Qemu < Package
   homepage 'http://www.qemu.org/'
   version '2.9.0'
   source_url 'http://download.qemu-project.org/qemu-2.9.0.tar.xz'
-  source_sha1 '5cc63c6cababaaa7d0685e8b32bacf5022873ebc'
+  source_sha256 'f01cc33e3c5fd5fd2534ce14e369b6b111d7e54e4a4977f8c37eae668176b022'
 
   depends_on 'glib'
   depends_on 'autoconf'

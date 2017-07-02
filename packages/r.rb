@@ -5,7 +5,7 @@ class R < Package
   homepage 'https://www.r-project.org/'
   version '3.4.0'
   source_url 'https://cran.r-project.org/src/base/R-3/R-3.4.0.tar.gz'
-  source_sha1 '054c1d099006354c89b195df6783b933846ced60'
+  source_sha256 '288e9ed42457c47720780433b3d5c3c20983048b789291cc6a7baa11f9428b91'
 
   # depends_on 'gfortran'       # require gfortran enabled gcc
   depends_on 'pcre'             # need to use pcre not pcre2
@@ -16,7 +16,7 @@ class R < Package
   depends_on 'curl'
   depends_on 'openssl'
   depends_on 'readline'
-  
+
   def self.build
     system './configure',
       '--with-x=no' # X is not available
