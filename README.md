@@ -78,8 +78,8 @@ I'll merge these modifications to the original, but it's time consuming.
 What modifications are:
 
   * Refactoring crew
-    * Change to clean working directory before source extraction
     * Add binstall (build and install)
+    * Clean working directory before source extraction
 
 License
 -------
