@@ -11,7 +11,7 @@ class Flex < Package
   depends_on 'bison' => :build
 
   def self.build
-    system "./configure", "--with-pic", "--disable-static", "--enable-shared"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--with-pic", "--disable-static", "--enable-shared"
     system "make"
   end
 

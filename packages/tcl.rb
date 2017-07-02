@@ -10,9 +10,9 @@ class Tcl < Package
   def self.build
     FileUtils.chdir("unix") do
       if `uname -m`.strip == "x86_64"
-        system "./configure --prefix=/usr/local --enable-64bit"
+        system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --enable-64bit"
       else
-	system "./configure --prefix=/usr/local"
+        system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
       end
       system "make"
     end

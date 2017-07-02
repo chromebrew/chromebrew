@@ -8,7 +8,7 @@ class Libxml2 < Package
   source_sha1 '958ae70baf186263a4bd801a81dd5d682aedd1db'
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic", "--without-python"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic", "--without-python"
     system "make"
   end
 

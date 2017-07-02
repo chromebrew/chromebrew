@@ -14,7 +14,9 @@ class Python3 < Package
   depends_on 'sqlite' => :build
 
   def self.build
+    # python requires to use /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I/usr/local/include/ncurses -I/usr/local/include/ncursesw",
+      "LDFLAGS=-Wl,-rpath,#{CREW_PREFIX}/lib",
       "--with-ensurepip=install", "--enable-shared"
     system "make"
   end
@@ -23,7 +25,13 @@ class Python3 < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
     # remove static library
-    system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs rm"
+    system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs -r rm"
+
+    # create symbolic links in lib64 for other applications which use libpython
+    unless Dir.exist? "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+      system "mkdir -p #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+      system "cd #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}; ln -s ../lib/libpython*.so* ."
+    end
   end
 
   def self.check

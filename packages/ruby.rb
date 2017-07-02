@@ -14,7 +14,7 @@ class Ruby < Package
   # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
 
   def self.build
-    system "CC='gcc' ./configure"
+    system "CC='gcc' ./configure --libdir=#{CREW_LIB_PREFIX} --enable-shared"
     system "make"
   end
 

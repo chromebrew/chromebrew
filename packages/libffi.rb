@@ -8,7 +8,7 @@ class Libffi < Package
   source_sha1 '280c265b789e041c02e5c97815793dfc283fb1e6'
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic", "--disable-debug", "--disable-dependency-tracking"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic", "--disable-debug", "--disable-dependency-tracking"
     system "make"
   end
 
