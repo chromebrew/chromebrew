@@ -2,7 +2,7 @@
 require 'find'
 require 'net/http'
 require 'uri'
-require 'digest/sha1'
+require 'digest/sha2'
 require 'json'
 require 'fileutils'
 
@@ -365,16 +365,13 @@ def download
   uri = URI.parse url
   filename = File.basename(uri.path)
   if source
-    sha1sum = @pkg.source_sha1
     sha256sum = @pkg.source_sha256
   else
-    sha1sum = @pkg.binary_sha1[@device[:architecture]] if @pkg.binary_sha1
-    sha256sum = @pkg.binary_sha256[@device[:architecture]] if @pkg.binary_sha256
+    sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
     system('wget', '--continue', '--no-check-certificate', url, '-O', filename)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum or
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
   end
   puts "Archive downloaded".lightgreen
@@ -688,7 +685,6 @@ def archive_package (pwd)
     system "tar cJf #{pwd}/#{pkg_name} *"
   end
   Dir.chdir pwd do
-    system "sha1sum #{pkg_name} > #{pkg_name}.sha1"
     system "sha256sum #{pkg_name} > #{pkg_name}.sha256"
   end
   puts "#{pkg_name} is built!".lightgreen
