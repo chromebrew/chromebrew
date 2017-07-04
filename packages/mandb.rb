@@ -3,7 +3,7 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialise or manually update index database caches that are usually maintained by man.'
   homepage 'http://savannah.nongnu.org/projects/man-db'
-  version '2.7.6.1'
+  version '2.7.6.1-1'
   source_url 'http://download.savannah.gnu.org/releases/man-db/man-db-2.7.6.1.tar.xz'
   source_sha256 '08edbc52f24aca3eebac429b5444efd48b9b90b9b84ca0ed5507e5c13ed10f3f'
 
