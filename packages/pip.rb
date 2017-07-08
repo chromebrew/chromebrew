@@ -12,7 +12,7 @@ class Pip < Package
 
   def self.install
     # Don't overwrite the currently installed version.
-    abort 'Package pip is already installed, skipping...'.lightgreen if File.exists? '/usr/local/bin/pip'
+    abort 'pip is already installed, skipping...'.lightgreen if File.exists? '/usr/local/bin/pip'
     system "wget https://bootstrap.pypa.io/get-pip.py"
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     system "python get-pip.py -I -b #{CREW_DEST_DIR}/usr/local"
