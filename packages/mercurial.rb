@@ -16,7 +16,7 @@ class Mercurial < Package
     abort '[!] python 2.7.13 or higher is required for tig, please run `crew upgrade python27` first.' unless py_ver > '2.7.12'
     if !%x[pip list | grep docutils].include? "docutils"
       puts "Installing docutils dependency..."
-      system "sudo", "pip", "install", "docutils"
+      system "pip", "install", "docutils"
     end
     system "make", "PREFIX=/usr/local", "all"
   end
@@ -26,7 +26,7 @@ class Mercurial < Package
     puts "------------------"
     puts "Installation success!"
     puts "Cleaning up dependencies only required for build..."
-    system "sudo", "pip", "uninstall", "docutils"
+    system "pip", "uninstall", "docutils"
     puts
     puts "To begin using mercurial you'll need to configure it."
     puts
