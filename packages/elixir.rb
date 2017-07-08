@@ -3,14 +3,14 @@ require 'package'
 class Elixir < Package
   description 'Elixir is a dynamic, functional language designed for building scalable and maintainable applications.'
   homepage 'http://elixir-lang.org/'
-  version '1.3.1'
+  version '1.4.5'
   depends_on 'erlang'
 
-  source_url 'https://github.com/elixir-lang/elixir/archive/v1.3.1.tar.gz'
-  source_sha256 'c4ab90a0d8d7ed4159dd6b7e1bcbcdbdb8c6177a35328d774fccf00346b4b42c'
+  source_url 'https://github.com/elixir-lang/elixir/archive/v1.4.5.tar.gz'
+  source_sha256 'bef1a0ea7a36539eed4b104ec26a82e46940959345ed66509ec6cc3d987bada0'
 
   def self.build
-    system 'make clean test'
+    system 'make'
   end
 
   def self.install
