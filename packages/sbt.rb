@@ -7,6 +7,19 @@ class Sbt < Package
   source_url 'https://github.com/sbt/sbt/releases/download/v0.13.15/sbt-0.13.15.tgz'
   source_sha256 'b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/sbt-0.13.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/sbt-0.13.15-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/sbt-0.13.15-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/sbt-0.13.15-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'e03f09d30d285e58766e9b22714e0c738502b9354fc4abeb067fd9b7575b882d',
+     armv7l: 'e03f09d30d285e58766e9b22714e0c738502b9354fc4abeb067fd9b7575b882d',
+       i686: '5e5ef2ba7df968391227ef30fd35517cf9da236a40852d92dfe34a643e456b42',
+     x86_64: 'f5b3e18adb0253ab7905bc05fb4e9999e9db69df5a584537c7ad04713f4f8cb6',
+  })
+
   depends_on 'jdk8'
 
   def self.install

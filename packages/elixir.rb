@@ -10,6 +10,11 @@ class Elixir < Package
   depends_on 'erlang'
   depends_on 'unzip'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   def self.build
     # do noting
   end

@@ -7,6 +7,11 @@ class Platformsh < Package
   source_url 'https://github.com/platformsh/platformsh-cli/archive/v3.19.0.tar.gz'
   source_sha256 'c8f79f2141bdf5f6bed11376da773f9d90e8b3ddc059a1159cf11a0929aa6aff'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'php7' unless File.exists? '/usr/local/bin/php'
 
   def self.install

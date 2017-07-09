@@ -3,9 +3,22 @@ require 'package'
 class P11kit < Package
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
   homepage 'https://p11-glue.freedesktop.org/p11-kit.html'
-  version '0.23.2-1'
+  version '0.23.2-2'
   source_url 'https://p11-glue.freedesktop.org/releases/p11-kit-0.23.2.tar.gz'
   source_sha256 'ba726ea8303c97467a33fca50ee79b7b35212964be808ecf9b145e9042fdfaf0'
+
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/p11kit-0.23.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/p11kit-0.23.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/p11kit-0.23.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/p11kit-0.23.2-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'e606b415d96f13a5c5e38c1ccbc6be2e7396a5665d24effdd3bcd73f0797a68f',
+     armv7l: 'e606b415d96f13a5c5e38c1ccbc6be2e7396a5665d24effdd3bcd73f0797a68f',
+       i686: 'b11af19cae225bf86d2c8b38639672b0121f7b8af4a3b06432455f723f23431d',
+     x86_64: '94f3f46a6506a49d0c07783854dc09d6cfedee9bf1a310e4e84b6cb7f611fe3f',
+  })
 
   depends_on 'diffutils' => :build
   depends_on 'libffi'

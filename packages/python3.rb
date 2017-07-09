@@ -7,6 +7,19 @@ class Python3 < Package
   source_url 'https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz'
   source_sha256 'aa472515800d25a3739833f76ca3735d9f4b2fe77c3cb21f69275e0cce30cb2b'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/python3-3.6.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/python3-3.6.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/python3-3.6.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/python3-3.6.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '69cd539510eaaf0dfbf101dbb8ee3b1f15985f948887ec9bc5158544fd37994f',
+     armv7l: '69cd539510eaaf0dfbf101dbb8ee3b1f15985f948887ec9bc5158544fd37994f',
+       i686: '459bcc0a0db3ee600c533d0942ff6f38786ad2f6a384b58f57c4bece4af549e6',
+     x86_64: 'c50473d6a3d1b2e7c28943967549e08d61bc49e702469fb6509ef2191fc756f4',
+  })
+
   depends_on 'bz2' => :build
   depends_on 'xzutils' => :build
   depends_on 'ncurses'

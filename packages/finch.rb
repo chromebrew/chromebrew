@@ -3,9 +3,22 @@ require 'package'
 class Finch < Package
   description 'Finch is a chat program which lets you log in to accounts on multiple chat networks simultaneously.'
   homepage 'http://pidgin.im/'
-  version '2.12.0'
+  version '2.12.0-1'
   source_url 'https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2'
   source_sha256 '8c3d3536d6d3c971bd433ff9946678af70a0f6aa4e6969cc2a83bb357015b7f8'
+
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/finch-2.12.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/finch-2.12.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/finch-2.12.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/finch-2.12.0-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'db49b25683a033caaf3b228d9766a5e1718b9caee8a05e1ac87107eb43e96138',
+     armv7l: 'db49b25683a033caaf3b228d9766a5e1718b9caee8a05e1ac87107eb43e96138',
+       i686: 'b7c8bb60997bba78ab44b99ad8b0f4194e57f9af929d581ca46cf1fe8fc484e0',
+     x86_64: '4a16d35a9385c84ea85e1d16e06d9351d00a553848feeaa33118b5f8066dbb83',
+  })
 
   depends_on 'glib'
   depends_on 'ncursesw'

@@ -7,6 +7,19 @@ class Python27 < Package
   source_url 'https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz'
   source_sha256 '35d543986882f78261f97787fd3e06274bfa6df29fac9b4a94f73930ff98f731'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/python27-2.7.13-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/python27-2.7.13-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/python27-2.7.13-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/python27-2.7.13-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'c49956a1b82245c016fa0e865f638ca7b04bca1f6a3053ddda1226f51f17370d',
+     armv7l: 'c49956a1b82245c016fa0e865f638ca7b04bca1f6a3053ddda1226f51f17370d',
+       i686: '3bc20fdd9d63cb11da172d1ddbf5098a2778a26b782f2c900a42794a12230eba',
+     x86_64: '966adcff41706773c3c0ee9819728b3f95603d80d73be06a1057240cee75fe0d',
+  })
+
   depends_on 'bz2' => :build
   depends_on 'ncurses'
   depends_on 'openssl' => :build

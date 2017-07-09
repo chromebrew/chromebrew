@@ -10,6 +10,19 @@ class Mongodb < Package
   source_url 'https://fastdl.mongodb.org/src/mongodb-src-r3.2.16.tar.gz'
   source_sha256 '7a8b1b16f3fa545af16f48aeef1f918f57d96a80e1ceb6e669cdb81fab6511d0'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/mongodb-3.2.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/mongodb-3.2.16-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/mongodb-3.2.16-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/mongodb-3.2.16-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '60f2e041174b4f5f8f01e740e41196e44e4e6c293cf16003e3109144cb41eec9',
+     armv7l: '60f2e041174b4f5f8f01e740e41196e44e4e6c293cf16003e3109144cb41eec9',
+       i686: 'd3e8fee28712b477d3cca0ad8b2dab2d2965a8fd4820e533b979f96cd3fbe766',
+     x86_64: '21f87cc21d04f898dbced0f85de9382114c4087d5741d9f162552aeb00414d2f',
+  })
+
   depends_on 'openssl' => :build
   depends_on 'libpcap' => :build
   depends_on 'python27' => :build

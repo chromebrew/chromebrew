@@ -8,6 +8,19 @@ class Gdrive < Package
   source_url 'https://github.com/prasmussen/gdrive/archive/2.1.0.tar.gz'
   source_sha256 'a1ea624e913e258596ea6340c8818a90c21962b0a75cf005e49a0f72f2077b2e'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/gdrive-2.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/gdrive-2.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/gdrive-2.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/gdrive-2.1.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '6290b75162c27f422ccd8477d5dba46b94a91519f74f404f9edf7c44913cac4d',
+     armv7l: '6290b75162c27f422ccd8477d5dba46b94a91519f74f404f9edf7c44913cac4d',
+       i686: '393b9e31f9700fd6c986d1b1f633bc7b5c12f24ce0d6807a8c83b50ac2d55e5b',
+     x86_64: 'dde5257e1686975cf1e4d0ffb2568eb0ea14fbc44f8cd7fae3a130afade5a854',
+  })
+
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     case ARCH

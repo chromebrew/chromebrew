@@ -7,6 +7,19 @@ class Dtrx < Package
   source_url 'https://brettcsmith.org/2007/dtrx/dtrx-7.1.tar.gz'
   source_sha256 '1c9afe48e9d9d4a1caa4c9b0c50593c6fe427942716ce717d81bae7f8425ce97'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/dtrx-7.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/dtrx-7.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/dtrx-7.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/dtrx-7.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'a607b05853dfa122ebdb852f28ac59b6142c99f7ee156a631b75bc5d82f797fa',
+     armv7l: 'a607b05853dfa122ebdb852f28ac59b6142c99f7ee156a631b75bc5d82f797fa',
+       i686: 'cdd735f6be940b2535b89226bfdeba5b65e92cbdfe0a828bceb7fc5787d872d7',
+     x86_64: '4817af93d2c30c4ced5c8fb5a4e0ebc7ebb51fb6fbfb2300380b27221b6b5c49',
+  })
+
   depends_on 'binutils'
   depends_on 'bz2'
   depends_on 'cabextract'

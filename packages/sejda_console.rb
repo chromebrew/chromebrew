@@ -7,6 +7,11 @@ class Sejda_console < Package
   source_url 'https://github.com/torakiki/sejda/releases/download/v3.2.17/sejda-console-3.2.17-bin.zip'
   source_sha256 '62476a7985c7c272fc036b07d2b16dbeb8dfb0167f202f5d1c6d557fe14137ac'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'help2man'
   depends_on 'jdk8'
   depends_on 'unzip'

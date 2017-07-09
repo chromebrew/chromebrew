@@ -7,6 +7,11 @@ class Nodebrew < Package
   source_url 'https://github.com/hokaccha/nodebrew/archive/v0.9.7.tar.gz'
   source_sha256 '3aa8b0cf30024d105f1ac6921aadf0440bc95bcae43df9d6ec58fc9de8cd352e'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'perl'
 
   def self.install

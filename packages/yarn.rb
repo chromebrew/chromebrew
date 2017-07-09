@@ -7,6 +7,11 @@ class Yarn < Package
   source_url 'https://nightly.yarnpkg.com/yarn-v0.27.0-20170629.1443.tar.gz'
   source_sha256 'e1086d267151cd05896b15023e8c4e253a64e675a80bb38dc294b5b1c86c6656'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'node' unless File.exists? '/usr/local/bin/node'
 
   def self.install

@@ -7,6 +7,19 @@ class Moreutils < Package
   source_url 'http://http.debian.net/debian/pool/main/m/moreutils/moreutils_0.60.orig.tar.xz'
   source_sha256 'e42d18bacbd2d003779a55fb3542befa5d1d217ee37c1874e8c497581ebc17c5'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/moreutils-0.60-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/moreutils-0.60-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/moreutils-0.60-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/moreutils-0.60-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '0c7f2b822e06c806969e5666069933e9d97932320d9759713217e700ad3b1d4d',
+     armv7l: '0c7f2b822e06c806969e5666069933e9d97932320d9759713217e700ad3b1d4d',
+       i686: '63f39101b144273c158aa38e88aa3af2ca84925c52793fdd9beed85da865aa6b',
+     x86_64: 'dea55d855398f5b88d255ab185f44446acb57ae0d1108057755278f68dc1f4f8',
+  })
+
   depends_on 'docbook'
   depends_on 'libxslt'
 
