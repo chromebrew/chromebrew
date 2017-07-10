@@ -8,6 +8,7 @@ class Postgres < Package
   source_sha256 'f1c0d3a1a8aa8c92738cab0153fbfffcc4d4158b3fee84f7aa6bfea8283978bc'
 
   depends_on 'buildessential'
+  depends_on 'readline'
   depends_on 'zlibpkg'
 
   def self.build
