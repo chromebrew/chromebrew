@@ -1,7 +1,7 @@
 require 'package'
 
-class The_silver_searcher < Package
-  description 'Code-search similar to ack. (ag)'
+class Ag < Package
+  description 'The Silver Searcher. Very fast search similar to ack or grep. (ag)'
   homepage 'https://github.com/ggreer/the_silver_searcher'
   version '2.0.0'
   source_url 'https://github.com/ggreer/the_silver_searcher/archive/2.0.0.tar.gz'
