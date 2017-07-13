@@ -11,6 +11,8 @@ class Dropbox < Package
   when 'x86_64'
     source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-29.4.20.tar.gz'
     source_sha256 '82321e3955b8d6dc329fe1fa9f4eb17a88e1beeac9eae8874318574310461671'
+  else
+    'Unable to install dropboxd.  Supported architectures include x86 and x86_64 only.'.lightred
   end
 
   depends_on 'python' unless File.exists? '/usr/local/bin/python'
