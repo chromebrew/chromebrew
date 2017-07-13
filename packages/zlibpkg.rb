@@ -5,7 +5,7 @@ class Zlibpkg < Package
   homepage 'http://www.zlib.net/'
   version '1.2.11-1'
   source_url 'http://www.zlib.net/zlib-1.2.11.tar.gz'
-  source_sha1 'e6d119755acdf9104d7ba236b1242696940ed6dd'
+  source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
 
   def self.build
     system "./configure", "--libdir=#{CREW_LIB_PREFIX}"
@@ -17,9 +17,6 @@ class Zlibpkg < Package
 
     # remove static library since there is no configuration option to not create it.
     system "rm", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libz.a"
-
-    # strip library
-    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libz.so.*"
   end
 
   def self.check

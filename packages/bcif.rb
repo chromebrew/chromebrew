@@ -5,7 +5,7 @@ class Bcif < Package
   homepage 'http://www.researchandtechnology.net/bcif/index.php'
   version '1.0-beta'
   source_url 'http://www.researchandtechnology.net/bcif/downloads/bcif_sources_1_0_beta.zip'
-  source_sha1 '330c81ce5e7c471a629d59e22dae0c59a536b1c4'
+  source_sha256 'fe1dde329fa60160d9ac8a0b9e4b9360a9377bc26177eab1a31e07479839d812'
 
   depends_on 'unzip'
 

@@ -5,7 +5,7 @@ class Libedit < Package
   homepage 'http://thrysoee.dk/editline/'
   version '3.1'
   source_url 'http://thrysoee.dk/editline/libedit-20160903-3.1.tar.gz'
-  source_sha1 '55e327ee4661b13d20ebb411d790f2bb258271cf'
+  source_sha256 '0ccbd2e7d46097f136fcb1aaa0d5bc24e23bb73f57d25bee5a852a683eaa7567'
 
   def self.build
     system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncurses"'
@@ -13,6 +13,6 @@ class Libedit < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

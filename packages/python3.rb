@@ -5,34 +5,34 @@ class Python3 < Package
   homepage 'https://www.python.org/'
   version '3.6.0'
   source_url 'https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz'
-  source_sha1 '120d536ee14a3153fc2435838c0f27c2e25cd29c'
+  source_sha256 'aa472515800d25a3739833f76ca3735d9f4b2fe77c3cb21f69275e0cce30cb2b'
 
   depends_on 'bz2' => :build
   depends_on 'xzutils' => :build
   depends_on 'ncurses'
   depends_on 'openssl' => :build
   depends_on 'sqlite' => :build
+  depends_on 'zlibpkg'
 
   def self.build
+    # python requires to use /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I/usr/local/include/ncurses -I/usr/local/include/ncursesw",
+      "LDFLAGS=-Wl,-rpath,#{CREW_PREFIX}/lib",
       "--with-ensurepip=install", "--enable-shared"
     system "make"
-
-    # strip debug symbols from library
-    system "find . -name '*.so' -print | xargs strip -S" unless @@debug_symbol
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
-    # strip binary
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/python3" unless @@debug_symbol
-
     # remove static library
-    system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs rm"
+    system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs -r rm"
 
-    # remove cache (byte-code) files from install package
-    system "find #{CREW_DEST_DIR}/usr/local -name '__pycache__' -print | xargs rm -rf"
+    # create symbolic links in lib64 for other applications which use libpython
+    unless Dir.exist? "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+      system "mkdir -p #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+      system "cd #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}; ln -s ../lib/libpython*.so* ."
+    end
   end
 
   def self.check
@@ -53,10 +53,6 @@ class Python3 < Package
         "-e", '/test_logincapa_with_client_ssl_context/i\ \ \ \ @unittest.skipIf(True,\
                      "bpo-30175: FIXME: cyrus.andrew.cmu.edu doesn\'t accept "\
                      "our randomly generated client x509 certificate anymore")'
-
-    # skip gdb test since we are stripping debug symbols
-    system "sed", "-i", "Lib/test/test_gdb.py",
-        "-e", '/get_gdb_version/iraise unittest.SkipTest("only for python install with debug symbols")' unless @@debug_symbol
 
     # Using /tmp breaks test_distutils, test_subprocess
     # Proxy setting breaks test_httpservers, test_ssl,

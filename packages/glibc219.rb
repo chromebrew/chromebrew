@@ -10,10 +10,10 @@ class Glibc219 < Package
     i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.7/glibc-2.19-chromeos-i686.tar.xz',
     x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/glibc-2.19-chromeos-x86_64.tar.xz',
   })
-  binary_sha1 ({
-    aarch64: '4e318b8250d90a52d0f19963be60de41a8eccba4',
-    armv7l:  '4e318b8250d90a52d0f19963be60de41a8eccba4',
-    i686:    '156c2b7bcb0ed9f8604d0a91908871648c55e260',
-    x86_64:  'e094f717ec2f5add484994a8537903fa0d07d7f8',
+  binary_sha256 ({
+    aarch64: '7524d818571059970caece1b4616d947c4937a591383ed5644636c45d9c16bdd',
+    armv7l:  '7524d818571059970caece1b4616d947c4937a591383ed5644636c45d9c16bdd',
+    i686:    'b9eb79ec3bfe59c85b7520673cbd5eb24414a176e040fca9a5fb57e82e4dd28e',
+    x86_64:  '173200b006598bc46c964531a87ffde6cae1656759d5f96c54bc73b322e0af46',
   })
 end

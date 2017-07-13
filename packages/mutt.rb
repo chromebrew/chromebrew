@@ -5,7 +5,7 @@ class Mutt < Package
   homepage 'http://mutt.org/'
   version '1.8.2'
   source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-1.8.2.tar.gz'
-  source_sha1 'bdac1201de464d63f61a663f3dcf1ee4484dbbb3'
+  source_sha256 '1d057bf1b565f2c38ee50c9a661654cbbe4165f98e25bfa361ebbd707d96f235'
 
   def self.build
     system 'mkdir /usr/local/mail'

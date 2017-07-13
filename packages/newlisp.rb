@@ -5,7 +5,7 @@ class Newlisp < Package
   homepage 'http://www.newlisp.org/'
   version '10.7.1'
   source_url 'https://github.com/kosh04/newlisp/archive/10.7.1.tar.gz'
-  source_sha1 '258d88a6c52ecea73da1a7774fa4f53a265da073'
+  source_sha256 '87e3ea4bd2d42118af44f2f881302af32a990164fb47088bcad0be6dc88c5c48'
 
   #depends_on 'readline'
   #depends_on 'libffi'

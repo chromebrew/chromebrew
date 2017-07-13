@@ -5,7 +5,7 @@ class Diffutils < Package
   homepage 'http://www.gnu.org/software/diffutils/'
   version '3.5-1'
   source_url 'ftp://ftp.gnu.org/gnu/diffutils/diffutils-3.5.tar.xz'
-  source_sha1 '1169cce8eaaf7290dc087d65db7ed75de0dceb93'
+  source_sha256 'dad398ccd5b9faca6b0ab219a036453f62a602a56203ac659b43e889bec35533'
 
   depends_on "libsigsegv"
 
@@ -15,7 +15,7 @@ class Diffutils < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

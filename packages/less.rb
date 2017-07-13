@@ -5,7 +5,7 @@ class Less < Package
   homepage 'https://www.gnu.org/software/less/'
   version '487'
   source_url 'http://www.greenwoodsoftware.com/less/less-487.tar.gz'
-  source_sha1 '8a5c4be2a51f11543793defec7ccb77c525f007e'
+  source_sha256 'f3dc8455cb0b2b66e0c6b816c00197a71bf6d1787078adeee0bcf2aea4b12706'
 
   depends_on 'buildessential' => :build
   depends_on 'ncurses'
@@ -16,7 +16,7 @@ class Less < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

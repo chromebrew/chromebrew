@@ -5,7 +5,7 @@ class Bz2 < Package
   homepage 'http://www.bzip.org/'
   version '1.0.6'
   source_url 'http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz'
-  source_sha1 '3f89f861209ce81a6bab1fd1998c0ef311712002'
+  source_sha256 'a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd'
 
   depends_on 'diffutils' => :build
 
@@ -37,11 +37,6 @@ class Bz2 < Package
     system "mkdir", "-p", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
     system "cp", "-p", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
     system "ln", "-s", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libbz2.so.1.0"
-
-    # Strip binaries and libraries
-    system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2"
-    system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2recover"
-    system "strip -S #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/*"
   end
 
   def self.check

@@ -5,7 +5,7 @@ class Graphicsmagick < Package
   homepage 'http://www.graphicsmagick.org/'
   version '1.3.23'
   source_url 'http://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.23/GraphicsMagick-1.3.23.tar.gz'
-  source_sha1 'ad43788153e11e5123ac94b60a2c9acc74036d70'
+  source_sha256 'cb320e009173c66927041a675755fad454b8aadf1da2c6fd1d65eac298c556db'
 
   depends_on 'buildessential'
 

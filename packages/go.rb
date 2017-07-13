@@ -5,8 +5,8 @@ class Go < Package
   homepage 'https://golang.org/'
   version '1.8.3'
   source_url 'https://storage.googleapis.com/golang/go1.8.3.src.tar.gz'
-  source_sha1 '7c3b942c58a44396ff1d205d0e6e72770792d626'
-  
+  source_sha256 '5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f68829d99fa6'
+
   # Tests requires perl
   depends_on 'perl'
   # go is required to build versions of go > 1.4

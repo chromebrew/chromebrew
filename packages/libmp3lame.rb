@@ -5,7 +5,7 @@ class Libmp3lame < Package
   homepage 'http://lame.sourceforge.net/'
   version '3.99.5'
   source_url 'https://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz'
-  source_sha1 '03a0bfa85713adcc6b3383c12e2cc68a9cfbf4c4'
+  source_sha256 '24346b4158e4af3bd9f2e194bb23eb473c75fb7377011523353196b19b9a23ff'
 
   def self.build
     system "./configure"

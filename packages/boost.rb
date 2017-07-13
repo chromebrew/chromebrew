@@ -5,7 +5,7 @@ class Boost < Package
   homepage 'http://www.boost.org/'
   version '1.59.0'
   source_url 'http://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.gz'
-  source_sha1 '5123209db194d66d69a9cfa5af8ff473d5941d97'
+  source_sha256 '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
 
   def self.build
     system './bootstrap --prefix=/usr/local'

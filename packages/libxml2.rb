@@ -5,18 +5,15 @@ class Libxml2 < Package
   homepage 'http://xmlsoft.org/'
   version '2.9.4'
   source_url 'ftp://xmlsoft.org/libxml2/libxml2-2.9.4.tar.gz'
-  source_sha1 '958ae70baf186263a4bd801a81dd5d682aedd1db'
+  source_sha256 'ffb911191e509b966deb55de705387f14156e1a56b21824357cdf0053233633c'
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic", "--without-python"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic", "--without-python"
     system "make"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
-
-    # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/libxml2.so.*"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

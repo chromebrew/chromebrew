@@ -5,7 +5,7 @@ class Patch < Package
   homepage 'http://savannah.gnu.org/projects/patch/'
   version '2.7.5'
   source_url 'https://ftp.gnu.org/gnu/patch/patch-2.7.5.tar.xz'
-  source_sha1 '8fd8f8f8ba640d871bce1bd33c7fd5e2ebe03a1e'
+  source_sha256 'fd95153655d6b95567e623843a0e77b81612d502ecf78a489a4aed7867caa299'
 
   def self.build
     system './configure --prefix=/usr/local'
@@ -13,7 +13,7 @@ class Patch < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

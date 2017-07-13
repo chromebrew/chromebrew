@@ -5,7 +5,7 @@ class Dbus < Package
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
   version '1.11.12'
   source_url 'https://dbus.freedesktop.org/releases/dbus/dbus-1.11.12.tar.gz'
-  source_sha1 '2e2247398abb22115e724b5e955fece2307dddb0'
+  source_sha256 'ac12df14a0fd0a9ecb56d02e2988cd313b91116d048aaaf53786ad6ccea9906d'
 
   depends_on 'expat'
 

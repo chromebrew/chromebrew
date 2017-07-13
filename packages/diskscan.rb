@@ -5,7 +5,7 @@ class Diskscan < Package
   homepage 'http://blog.disksurvey.org/proj/diskscan/'
   version '0.19'
   source_url 'https://github.com/baruch/diskscan/archive/0.19.tar.gz'
-  source_sha1 '74777d57af378fffe209086a026b788cd35d4d05'
+  source_sha256 '92a7298af99043e1e584e4343040b6574b9229f44c122e1cbcb90ba478d928d1'
 
   depends_on 'cmake'
   depends_on 'termcap'

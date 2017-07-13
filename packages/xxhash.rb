@@ -5,7 +5,7 @@ class Xxhash < Package
   homepage 'http://cyan4973.github.io/xxHash/'
   version '0.6.2'
   source_url 'https://github.com/Cyan4973/xxHash/archive/v0.6.2.tar.gz'
-  source_sha1 '303f93e57b4e1ddc627d62a3313eaab82fd11720'
+  source_sha256 'e4da793acbe411e7572124f958fa53b280e5f1821a8bf78d79ace972950b8f82'
 
   def self.build
     system "make"

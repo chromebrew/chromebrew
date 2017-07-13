@@ -5,7 +5,7 @@ class Ctorrent < Package
   homepage 'http://www.rahul.net/dholmes/ctorrent/'
   version '3.3.2'
   source_url 'http://www.rahul.net/dholmes/ctorrent/ctorrent-dnh3.3.2.tar.gz'
-  source_sha1 'd4e221f0292268f80e2430ce9d451dd64cf1ffaa'
+  source_sha256 'c87366c91475931f75b924119580abd06a7b3cb3f00fef47346552cab1e24863'
 
   def self.build
     system "./configure"

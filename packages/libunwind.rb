@@ -5,7 +5,7 @@ class Libunwind < Package
   homepage 'http://www.nongnu.org/libunwind/'
   version '1.2'
   source_url 'http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz'
-  source_sha1 'a33e52d7ecd18b9375508369b566eeb2cc6eec3b'
+  source_sha256 '1de38ffbdc88bd694d10081865871cd2bfbb02ad8ef9e1606aee18d65532b992'
 
   depends_on 'buildessential' => :build
   depends_on 'openssl' => :build

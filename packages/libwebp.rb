@@ -5,7 +5,7 @@ class Libwebp < Package
   homepage 'https://developers.google.com/speed/webp/'
   version '0.6.0'
   source_url 'https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.6.0.tar.gz'
-  source_sha1 '156d24fff454bfccd1f44434e226a10d9eb38186'
+  source_sha256 'c928119229d4f8f35e20113ffb61f281eda267634a8dc2285af4b0ee27cf2b40'
 
   def self.build
     system "./configure"

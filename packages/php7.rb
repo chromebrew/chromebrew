@@ -5,7 +5,7 @@ class Php7 < Package
   homepage 'http://www.php.net/'
   version '7.1.6'
   source_url 'http://php.net/distributions/php-7.1.6.tar.xz'
-  source_sha1 '0e4a6825d2d75d3deec99d247d04a7bbaf69bf0e'
+  source_sha256 '01584dc521ab7ec84b502b61952f573652fe6aa00c18d6d844fb9209f14b245b'
 
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'

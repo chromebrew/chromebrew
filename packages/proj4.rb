@@ -5,7 +5,7 @@ class Proj4 < Package
   homepage 'http://proj4.org/'
   version '4.9.1-1'
   source_url 'http://download.osgeo.org/proj/proj-4.9.1.tar.gz'
-  source_sha1 '0bc63a41f1bdcff600d076c056f796007abf3f2f'
+  source_sha256 'fca0388f3f8bc5a1a803d2f6ff30017532367992b30cf144f2d39be88f36c319'
 
   def self.build
     system "./configure CFLAGS=\" -fPIC\""

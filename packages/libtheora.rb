@@ -5,7 +5,7 @@ class Libtheora < Package
   homepage 'https://theora.org/'
   version '1.1.1'
   source_url 'http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2'
-  source_sha1 '8dcaa8e61cd86eb1244467c0b64b9ddac04ae262'
+  source_sha256 'b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc'
 
   depends_on 'libvorbis'
   depends_on 'libsdl'

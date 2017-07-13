@@ -5,7 +5,7 @@ class Autoconf_archive < Package
   homepage 'https://www.gnu.org/software/autoconf-archive/'
   version '2017-03-21'
   source_url 'http://ftpmirror.gnu.org/autoconf-archive/autoconf-archive-2017.03.21.tar.xz'
-  source_sha1 '93483641babea959e4a307a808cbd74fb9e90d58'
+  source_sha256 '386ad455f12bdeb3a7d19280441a5ab77355142349200ff11040a8d9d455d765'
 
   depends_on 'perl'
   depends_on 'm4'

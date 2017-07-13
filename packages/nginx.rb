@@ -5,10 +5,10 @@ class Nginx < Package
   homepage 'http://nginx.org/'
   version '1.11.6-1'
   source_url 'http://nginx.org/download/nginx-1.11.6.tar.gz'
-  source_sha1 '51903b721a5ee721568fc59f0a243df5356a98de'
-  
+  source_sha256 '3153abbb518e2d9c032e1b127da3dc0028ad36cd4679e5f3be0b8afa33bc85bd'
+
   depends_on 'pcre'
-  
+
   def self.build
     system "./configure"
     system "make"

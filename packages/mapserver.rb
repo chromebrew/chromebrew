@@ -5,8 +5,8 @@ class Mapserver < Package
   homepage 'http://mapserver.org/'
   version '7.0.4'
   source_url 'http://download.osgeo.org/mapserver/mapserver-7.0.4.tar.gz'
-  source_sha1 '8fb13c27da5902e6d9ad50f3eba550bd90750607'
-  
+  source_sha256 'c91d40da5cc242b20ca7e29c41bd9eb23097b98a77908b1d708e9708f6f6cf69'
+
   depends_on 'cmake'
   depends_on 'freetype'
   depends_on 'cairo'

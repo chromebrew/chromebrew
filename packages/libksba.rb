@@ -5,7 +5,7 @@ class Libksba < Package
   homepage 'https://www.gnupg.org/related_software/libksba/index.html'
   version '1.3.5'
   source_url 'https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.3.5.tar.bz2'
-  source_sha1 'a98385734a0c3f5b713198e8d6e6e4aeb0b76fde'
+  source_sha256 '41444fd7a6ff73a79ad9728f985e71c9ba8cd3e5e53358e70d5f066d35c1a340'
 
   depends_on 'npth'
 
@@ -15,6 +15,6 @@ class Libksba < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

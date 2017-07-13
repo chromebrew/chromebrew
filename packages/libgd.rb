@@ -5,7 +5,7 @@ class Libgd < Package
   homepage 'https://libgd.github.io/'
   version '2.2.4'
   source_url 'https://github.com/libgd/libgd/archive/gd-2.2.4.tar.gz'
-  source_sha1 '630daec16fe06e4e916fd0fa8499c8fa5c0dcbca'
+  source_sha256 'afdd50db677648cb9335b2dda10dd3a6700d97feb21fe802e6ee0f7065acd8c4'
 
   depends_on 'cmake'
   depends_on 'libpng'

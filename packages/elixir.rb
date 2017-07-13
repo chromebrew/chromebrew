@@ -7,7 +7,7 @@ class Elixir < Package
   depends_on 'erlang'
 
   source_url 'https://github.com/elixir-lang/elixir/archive/v1.3.1.tar.gz'
-  source_sha1 '29dc1b4da5e051ad71ad84b6886d7c184e4b9add'
+  source_sha256 'c4ab90a0d8d7ed4159dd6b7e1bcbcdbdb8c6177a35328d774fccf00346b4b42c'
 
   def self.build
     system 'make clean test'

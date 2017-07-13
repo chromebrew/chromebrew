@@ -5,7 +5,7 @@ class Lzip < Package
   homepage 'http://www.nongnu.org/lzip/lzip.html'
   version '1.19-1'
   source_url 'http://download.savannah.gnu.org/releases/lzip/lzip-1.19.tar.gz'
-  source_sha1 'c6042a786b69e3209112fa991806e2e7e0ba5f07'
+  source_sha256 'ffadc4f56be1bc0d3ae155ec4527bd003133bdc703a753b2cc683f610e646ba9'
 
   def self.build
     # default -O2 cause run-time segmentation fault on armv7l
@@ -14,7 +14,7 @@ class Lzip < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

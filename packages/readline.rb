@@ -5,7 +5,7 @@ class Readline < Package
   homepage 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
   version '6.3p8'
   source_url 'http://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz'
-  source_sha1 '017b92dc7fd4e636a2b5c9265a77ccc05798c9e1'
+  source_sha256 '56ba6071b9462f980c5a72ab0023893b65ba6debb4eeb475d7a563dc65cafd43'
 
   depends_on 'buildessential' => :build
   depends_on 'patch' => :build
@@ -25,7 +25,6 @@ class Readline < Package
 
     system "CC='gcc' ./configure --libdir=#{CREW_LIB_PREFIX} --disable-static --with-curses"
     system "make"
-    system "find . -name 'lib*.so.*' -print | xargs strip -S"
   end
 
   def self.install

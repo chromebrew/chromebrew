@@ -5,7 +5,7 @@ class Libass < Package
   homepage 'https://github.com/libass/libass'
   version '0.13.6'
   source_url 'https://github.com/libass/libass/archive/0.13.6.tar.gz'
-  source_sha1 '10fc35f8aba2a4a37aaed482a4184d144defb3d8'
+  source_sha256 'de68288397d284a955061b3ecba67152cea74d8ace6222d987dd30091b1534b7'
 
   depends_on 'automake'
   depends_on 'autoconf'

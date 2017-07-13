@@ -5,11 +5,11 @@ class Mongodb < Package
   homepage 'https://www.mongodb.com/'
   version '3.0.8'
   binary_url ({
-    i686: "https://www.dropbox.com/s/n32v3h34jswxhg7/mongodb-linux-i686-3.0.8.tar.gz?dl=0",
-    x86_64: "https://www.dropbox.com/s/two0chqyim5eo4a/mongodb-linux-x86_64-3.0.8.tar.gz?dl=0"
+    i686: 'https://www.dropbox.com/s/n32v3h34jswxhg7/mongodb-linux-i686-3.0.8.tar.gz?dl=0',
+    x86_64: 'https://www.dropbox.com/s/two0chqyim5eo4a/mongodb-linux-x86_64-3.0.8.tar.gz?dl=0'
   })
-  binary_sha1 ({
-    i686: "71fd4324ce91352416eea83149432b953928306e",
-    x86_64: "fdbf8ad9207dc5fd31af0113e9c00e02521e9101"
+  binary_sha256 ({
+    i686: 'e4b837c7213d08b528c675710dbd3fb3d5cf761929d0d89d27232fe7609549a3',
+    x86_64: '0cacc59ab09d7031ebafc3ff008ff2e9305d9fafc590f1a0e52848342033197a'
   })
 end

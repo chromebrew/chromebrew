@@ -5,7 +5,7 @@ class Aprutil < Package
   homepage 'http://apr.apache.org/'
   version '1.5.4'
   source_url 'http://apache.claz.org//apr/apr-util-1.5.4.tar.gz'
-  source_sha1 '72cc3ac693b52fb831063d5c0de18723bc8e0095'
+  source_sha256 '976a12a59bc286d634a21d7be0841cc74289ea9077aa1af46be19d1a6e844c19'
 
   depends_on 'apr'
 

@@ -5,7 +5,7 @@ class Php5 < Package
   homepage 'http://www.php.net/'
   version '5.6.30'
   source_url 'http://php.net/distributions/php-5.6.30.tar.xz'
-  source_sha1 '1bca4a340e6aaf82a3e940b0f2de3f36518238e4'
+  source_sha256 'a363185c786432f75e3c7ff956b49c3369c3f6906a6b10459f8d1ddc22f70805'
 
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'

@@ -5,7 +5,7 @@ class Strace < Package
   homepage 'https://strace.io/'
   version '4.16'
   source_url 'https://downloads.sourceforge.net/project/strace/strace/4.16/strace-4.16.tar.xz'
-  source_sha1 'b780a8cd2e60ea836cfd3468e0f81623a346d180'
+  source_sha256 '98487cb5178ec1259986cc9f6e2a844f50e5d1208c112cc22431a1e4d9adf0ef'
 
   depends_on 'buildessential'
 

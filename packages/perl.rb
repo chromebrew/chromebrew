@@ -5,20 +5,20 @@ class Perl < Package
   homepage 'https://www.perl.org/'
   version '5.24.1-1'
   source_url 'http://www.cpan.org/src/5.0/perl-5.24.1.tar.gz'
-  source_sha1 '19b218bbc3a63a8408ed56b93928fd9a4c1b5c83'
+  source_sha256 'e6c185c9b09bdb3f1b13f678999050c639859a7ef39c8cad418448075f5918af'
 
   depends_on 'patch' => :build
 
   def self.build
     # Use system zlib and bzip2
     # Create shared library
-    system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib"
+    # Install manual files into /usr/local/share/man/man* even if groff is not installed.
+    system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_PREFIX}/share/man/man1 -Dman3dir=#{CREW_PREFIX}/share/man/man3"
     system "make"
-    system "find . -name '*.so' -print | xargs strip -S"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

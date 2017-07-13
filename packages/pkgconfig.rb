@@ -5,7 +5,7 @@ class Pkgconfig < Package
   homepage 'https://www.freedesktop.org/wiki/Software/pkg-config/'
   version '0.29.2'
   source_url 'http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz'
-  source_sha1 '76e501663b29cb7580245720edfb6106164fad2b'
+  source_sha256 '6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591'
 
   # It is not possible to write buildessential here since it causes dependency loop.
   #   depends_on 'buildessential'
@@ -21,7 +21,7 @@ class Pkgconfig < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

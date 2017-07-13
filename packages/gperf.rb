@@ -1,15 +1,15 @@
-require "package"
+require 'package'
 
 class Gperf < Package
   description 'GNU gperf is a perfect hash function generator.'
   homepage 'https://www.gnu.org/software/gperf/'
-  version "3.1"
-  source_url "http://ftp.gnu.org/pub/gnu/gperf/gperf-3.1.tar.gz"
-  source_sha1 "e3c0618c2d2e5586eda9498c867d5e4858a3b0e2"
+  version '3.1'
+  source_url 'http://ftp.gnu.org/pub/gnu/gperf/gperf-3.1.tar.gz'
+  source_sha256 '588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2'
 
   def self.build
-    system "./configure"
-    system "make"
+    system './configure'
+    system 'make'
   end
 
   def self.install

@@ -5,7 +5,7 @@ class Screenfetch < Package
   homepage 'https://github.com/KittyKatt/screenFetch'
   version '3.7.0'
   source_url 'https://github.com/KittyKatt/screenFetch/archive/v3.7.0.tar.gz'
-  source_sha1 '5a3702504e154335e372df56e4cb621840dc5506'
+  source_sha256 '6711fe924833919d53c1dfbbb43f3777d33e20357a1b1536c4472f6a1b3c6be0'
 
   def self.build
   end

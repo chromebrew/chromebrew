@@ -3,9 +3,9 @@ require 'package'
 class Socat < Package
   description 'SOcket CAT is a multipurpose relay \'netcat++\' (extended design, new implementation).'
   homepage 'http://www.dest-unreach.org/socat/'
-  version '1.7.3.1' 
+  version '1.7.3.1'
   source_url 'http://www.dest-unreach.org/socat/download/socat-1.7.3.1.tar.gz'
-  source_sha1 'a6f1d8ab3e85f565dbe172f33a9be6708dd52ffb'
+  source_sha256 'a8cb07b12bcd04c98f4ffc1c68b79547f5dd4e23ddccb132940f6d55565c7f79'
 
   depends_on 'readline'
   depends_on 'openssl'
