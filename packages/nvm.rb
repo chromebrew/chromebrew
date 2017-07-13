@@ -9,17 +9,16 @@ class Nvm < Package
 
   def self.install
     system "NVM_DIR=/usr/local/share/nvm && bash install.sh"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/share/nvm"
+    system "rm -rf /usr/local/share/nvm/.git*"
+    system "rm -rf /usr/local/share/nvm/test"
+    system "mkdir -p #{CREW_DEST_DIR}/usr/local/share"
+    system "cp -r /usr/local/share/nvm #{CREW_DEST_DIR}/usr/local/share"
     puts ""
     puts "To complete the installation, execute:".lightblue
     puts "source ~/.bashrc".lightblue
     puts ""
-    puts "To uninstall, do NOT simply run `crew remove nvm`!".lightblue
-    puts ""
-    puts "Execute the following instead:".lightblue
-    puts "rm -rf /usr/local/share/nvm".lightblue
-    puts ""
-    puts "You will also need to remove any lines with NVM_DIR in ~/.bashrc.".lightblue
+    puts "To uninstall, in addition to 'crew remove nvm' you will".lightblue
+    puts "also need to delete any lines with NVM_DIR in ~/.bashrc.".lightblue
     puts ""
   end
 end
