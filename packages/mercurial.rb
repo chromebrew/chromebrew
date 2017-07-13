@@ -9,7 +9,6 @@ class Mercurial < Package
 
   # what's the best route for adding a minimum version symbol as a constraint?
   depends_on "python27"
-  depends_on "zlibpkg"
 
   def self.build
     # would be great to avoid even downloading the source tarball if this dependency wasn't met

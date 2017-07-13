@@ -12,6 +12,7 @@ class Python3 < Package
   depends_on 'ncurses'
   depends_on 'openssl' => :build
   depends_on 'sqlite' => :build
+  depends_on 'zlibpkg'
 
   def self.build
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
