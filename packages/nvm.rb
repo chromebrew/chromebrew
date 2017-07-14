@@ -8,6 +8,7 @@ class Nvm < Package
   source_sha256 '2ad455a0752d5bae49ecff38a8a7778cc734c2d0ece9942dfdd164c2f01e80da'
 
   def self.install
+    system "sed -i 's,\$HOME/.nvm,/usr/local/share/nvm,g' install.sh"
     system "NVM_DIR=/usr/local/share/nvm && bash install.sh"
     system "rm -rf /usr/local/share/nvm/.git*"
     system "rm -rf /usr/local/share/nvm/test"
