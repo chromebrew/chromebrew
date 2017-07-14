@@ -5,7 +5,7 @@ class Bison < Package
   homepage 'http://www.gnu.org/software/bison/'
   version '3.0.4-1'
   source_url 'http://mirror.keystealth.org/gnu/bison/bison-3.0.4.tar.xz'
-  source_sha1 '8270497aad88c7dd4f2c317298c50513fb0c3c8e'
+  source_sha256 'a72428c7917bdf9fa93cb8181c971b6e22834125848cf1d03ce10b1bb0716fe1'
 
   depends_on 'diffutils' => :build
   depends_on 'm4' => :build
@@ -14,7 +14,7 @@ class Bison < Package
   # depends_on 'flex' => :build
 
   def self.build
-    system './configure --prefix=/usr/local'
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

@@ -5,10 +5,10 @@ class Iftop < Package
   homepage 'http://www.ex-parrot.com/pdw/iftop/'
   version '0.17'
   source_url 'http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz'
-  source_sha1 '75ce6afc8c0bf851278b0a15e66f523af90cfda9'
+  source_sha256 'd032547c708307159ff5fd0df23ebd3cfa7799c31536fa0aea1820318a8e0eac'
 
-  depends_on "libpcap"
-  depends_on "ncurses"
+  depends_on 'libpcap'
+  depends_on 'ncurses'
 
   def self.build
     system './configure --prefix=/usr/local CPPFLAGS="-I/usr/local/include/ncurses"'

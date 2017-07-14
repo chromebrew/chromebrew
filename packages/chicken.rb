@@ -5,7 +5,7 @@ class Chicken < Package
   homepage 'https://code.call-cc.org/'
   version '4.12.0'
   source_url 'https://code.call-cc.org/releases/4.12.0/chicken-4.12.0.tar.gz'
-  source_sha1 'f128b57d42ce6f1d4a56a372916e9e538ae1ceab'
+  source_sha256 '605ace459bc66e8c5f82abb03d9b1c9ca36f1c2295931d244d03629a947a6989'
 
   def self.build
     system "make", "PLATFORM=linux"

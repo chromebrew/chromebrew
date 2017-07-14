@@ -5,7 +5,7 @@ class Gdal < Package
   homepage 'http://www.gdal.org/'
   version '1.11.2-1'
   source_url 'http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz'
-  source_sha1 '6f3ccbe5643805784812072a33c25be0bbff00db'
+  source_sha256 '66bc8192d24e314a66ed69285186d46e6999beb44fc97eeb9c76d82a117c0845'
 
   depends_on 'python27'
   depends_on 'curl'

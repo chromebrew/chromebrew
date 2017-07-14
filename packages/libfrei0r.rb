@@ -5,7 +5,7 @@ class Libfrei0r < Package
   homepage 'https://frei0r.dyne.org/'
   version '1.6.0'
   source_url 'https://github.com/dyne/frei0r/archive/v1.6.0.tar.gz'
-  source_sha1 'a8214add5828e20ff49239ed3a462acaa8c1ebb2'
+  source_sha256 '63cae9d20d23b9d9e1ffb3fa053295914417c3e005194c077a0753d04636831c'
 
   depends_on 'cmake'
 

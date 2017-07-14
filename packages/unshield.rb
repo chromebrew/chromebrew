@@ -5,7 +5,7 @@ class Unshield < Package
   homepage 'https://github.com/twogood/unshield'
   version '1.4.2'
   source_url 'https://github.com/twogood/unshield/archive/1.4.2.tar.gz'
-  source_sha1 '02935c888b04507f0a14036773539a4f8c20a152'
+  source_sha256 '5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774'
 
   depends_on 'cmake'
 

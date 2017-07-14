@@ -5,7 +5,7 @@ class Ffmpeg < Package
   homepage 'https://ffmpeg.org/'
   version '3.3.1'
   source_url 'https://ffmpeg.org/releases/ffmpeg-3.3.1.tar.xz'
-  source_sha1 'ace4539bbb1ef9abb59842137b2a206ca5659f36'
+  source_sha256 'b702a7fc656ac23e276b8c823a2f646e4e6f6309bb2788435a708e69bea98f2f'
 
   depends_on 'gnutls'
   depends_on 'libass'

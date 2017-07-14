@@ -5,7 +5,7 @@ class Cmake < Package
   homepage 'https://cmake.org/'
   version '3.7.2'
   source_url 'https://cmake.org/files/v3.7/cmake-3.7.2.tar.gz'
-  source_sha1 'ea73af0c3c832e586bf2f82a13a708ea509d5a88'
+  source_sha256 'dc1246c4e6d168ea4d6e042cfba577c1acd65feea27e56f5ff37df920c30cae0'
 
   depends_on 'buildessential'
   depends_on 'openssl'

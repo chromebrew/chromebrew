@@ -5,14 +5,15 @@ class Libssh2 < Package
   homepage 'https://www.libssh2.org/'
   version '1.8.0'
   source_url 'https://www.libssh2.org/download/libssh2-1.8.0.tar.gz'
-  source_sha1 'baf2d1fb338eee531ba9b6b121c64235e089e0f5'
+  source_sha256 '39f34e2f6835f4b992cafe8625073a88e5a28ba78f83e8099610a7b3af4676d4'
 
   depends_on 'openssl' => :build
   depends_on 'zlibpkg' => :build
 
   def self.build
-    system "./configure", "--with-zlib", "--with-openssl", "--with-pic", "--disable-static"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--with-zlib", "--with-openssl", "--with-pic", "--disable-static"
     system "make"
+    system "find . -name '*.so.*' -print | xargs strip -S"
   end
 
   def self.install

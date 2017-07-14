@@ -5,7 +5,7 @@ class Autoconf < Package
   homepage 'http://www.gnu.org/software/autoconf/'
   version '2.69'
   source_url 'ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz'
-  source_sha1 'e891c3193029775e83e0534ac0ee0c4c711f6d23'
+  source_sha256 '64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684'
 
   depends_on 'perl'
   depends_on 'm4'

@@ -5,20 +5,20 @@ class Ncurses < Package
   homepage 'https://www.gnu.org/software/ncurses/'
   version '6.0-2'
   source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
-  source_sha1 'acd606135a5124905da770803c05f1f20dd3b21c'
+  source_sha256 'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
 
-  depends_on "diffutils" => :build
-  depends_on "ncursesw"
+  depends_on 'diffutils' => :build
+  depends_on 'ncursesw'
 
   def self.build
     system './configure',
-	    '--prefix=/usr/local',
-	    "--libdir=#{CREW_LIB_PREFIX}",
-	    '--without-normal',
-	    '--with-shared',
-	    '--with-cxx-shared',
-	    '--without-debug'
-    system "make"
+           '--prefix=/usr/local',
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--without-normal',
+           '--with-shared',
+           '--with-cxx-shared',
+           '--without-debug'
+    system 'make'
   end
 
   def self.install

@@ -5,7 +5,7 @@ class Sluice < Package
   homepage 'http://kernel.ubuntu.com/~cking/sluice/'
   version '0.02.06'
   source_url 'http://kernel.ubuntu.com/~cking/tarballs/sluice/sluice-0.02.06.tar.gz'
-  source_sha1 'c1afc98790147c2c48bc5675de8352812b4f1fea'
+  source_sha256 'a1f06c2e7077e28fedb2b4f82066f6e6396bbd2fb4e8f22ef219ff573cdbe163'
 
   def self.build
     system "sed -i 's,/usr,/usr/local,g' Makefile"

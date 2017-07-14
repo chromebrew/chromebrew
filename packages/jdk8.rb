@@ -7,18 +7,16 @@ class Jdk8 < Package
   case ARCH
   when 'i686'
     source_url 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=220303_d54c1d3a095b4ff2b6607d096fa80163'
-    source_sha1 '20d1a77783a01a592d9bcf3597256caee2ccfce0'
+    source_sha256 'a773f2fe17061ef637ed2094b06313a99c0b45ba3d3cb7f8f1ebf18448495aeb'
   when 'x86_64'
     source_url 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=220305_d54c1d3a095b4ff2b6607d096fa80163'
-    source_sha1 '9303d3a8e8fc2d2eda014887fd92a6f5883f0170'
+    source_sha256 '355e5cdb066d4cada1f9f16f358b6fa6280ff5caf7470cf0d5cdd43083408d35'
   when 'armv7l'
     source_url 'https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz'
-    source_sha1 '913adb900bf0d9d42452a4591c1a9093076ed4b6'
+    source_sha256 'be13670ce0588a888190a55a63a4a95940b8cd77f6dea3dfeaefe3a9ed800c0b'
   when 'aarch64'
     source_url 'https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz'
-    source_sha1 '913adb900bf0d9d42452a4591c1a9093076ed4b6'
-  else
-    abort 'Unable to install jdk8.  Architecture not supported.'.lightred
+    source_sha256 'be13670ce0588a888190a55a63a4a95940b8cd77f6dea3dfeaefe3a9ed800c0b'
   end
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local"

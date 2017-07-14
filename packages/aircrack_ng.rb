@@ -5,7 +5,7 @@ class Aircrack_ng < Package
   homepage 'https://www.aircrack-ng.org'
   version '1.2-rc4'
   source_url 'http://download.aircrack-ng.org/aircrack-ng-1.2-rc4.tar.gz'
-  source_sha1 '2b2fbe50fedb606b3bd96a34d49f07760e8e618a'
+  source_sha256 'd93ac16aade5b4d37ab8cdf6ce4b855835096ccf83deb65ffdeff6d666eaff36'
 
   depends_on "buildessential" => :build
   depends_on "bison" => :build

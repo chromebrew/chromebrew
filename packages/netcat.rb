@@ -5,8 +5,8 @@ class Netcat < Package
   homepage 'http://netcat.sourceforge.net/'
   version '0.7.1'
   source_url 'http://downloads.sourceforge.net/project/netcat/netcat/0.7.1/netcat-0.7.1.tar.gz'
-  source_sha1 'b5cbc52a7ceed2fd5c4f5081f5747130b2d0fe01'
- 
+  source_sha256 '30719c9a4ffbcf15676b8f528233ccc54ee6cba96cb4590975f5fd60c68a066f'
+
   def self.build
     system "./configure --prefix=/usr/local"
     system "make"

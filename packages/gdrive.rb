@@ -6,29 +6,27 @@ class Gdrive < Package
   version '2.1.0'
 
   source_url 'https://github.com/prasmussen/gdrive/archive/2.1.0.tar.gz'
-  source_sha1 '2abfb27e9c0bfa1904bcfb6bd01b32ed6884db75'
+  source_sha256 'a1ea624e913e258596ea6340c8818a90c21962b0a75cf005e49a0f72f2077b2e'
 
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     case ARCH
+    when 'aarch64'
+      system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnRjBaMVVLalN4cTA&export=download"
+      system "sleep 10"
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '25eb74f892785bfd7c93ec22e63dfce04fd68298d8449ea1473bdbf90e3aaf35'
+    when 'armv7l'
+      system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnRjBaMVVLalN4cTA&export=download"
+      system "sleep 10"
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '25eb74f892785bfd7c93ec22e63dfce04fd68298d8449ea1473bdbf90e3aaf35'
+    when 'i686'
+      system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnLV92dHBpTkFhTEU&export=download"
+      system "sleep 10"
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '768103053ebe56d5b6e17396ac208db85a3b1968d19e9cac9172fe56b6b8cad2'
     when 'x86_64'
       system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"
       system "sleep 10"
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA1.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '4fd8391b300cac45963e53da44dcfe68da08d843'
-    when 'armv7l'
-      system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnamliN0Rld01oRVk&export=download"
-      system "sleep 10"
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA1.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '3d670905e13edf96d43c9f97293bdba62c740926'
-    when 'mips64'
-      system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6Embna2lzdEJ6blFzSzQ&export=download"
-      system "sleep 10"
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA1.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '334bbd74b87fd1d05550e366724fe8e3c9e61ca4'
-    when 'ppc64'
-      system "wget -L -O #{CREW_DEST_DIR}/usr/local/bin/gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnS09XMzhfRXBnUzA&export=download"
-      system "sleep 10"
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA1.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == '70a1ac5be9ba819da5cf7a8dbd513805a26509ac'
-    else
-      abort 'Unable to install gdrive.  Architecture not supported.'.lightred
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("#{CREW_DEST_DIR}/usr/local/bin/gdrive") ) == 'f31b441c5cdb835ee69849a62856e35c17954fd5b600f6de8a6f5d7bd7bf0420'
     end
     system "chmod +x #{CREW_DEST_DIR}/usr/local/bin/gdrive"
   end

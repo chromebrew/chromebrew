@@ -5,7 +5,7 @@ class Tree < Package
   homepage 'http://mama.indstate.edu/users/ice/tree/'
   version '1.7.0'
   source_url 'http://mama.indstate.edu/users/ice/tree/src/tree-1.7.0.tgz'
-  source_sha1 '35bd212606e6c5d60f4d5062f4a59bb7b7b25949'
+  source_sha256 '6957c20e82561ac4231638996e74f4cfa4e6faabc5a2f511f0b4e3940e8f7b12'
 
   def self.build
     system "sed -i 's,/usr,/usr/local,g' Makefile"

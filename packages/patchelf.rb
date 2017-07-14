@@ -5,7 +5,7 @@ class Patchelf < Package
   homepage 'http://nixos.org/patchelf.html'
   version '0.8-2'
   source_url 'http://nixos.org/releases/patchelf/patchelf-0.8/patchelf-0.8.tar.bz2'
-  source_sha1 'd0645e9cee6f8e583ae927311c7ce88d29f416fc'
+  source_sha256 'c99f84d124347340c36707089ec8f70530abd56e7827c54d506eb4cc097a17e7'
 
   def self.build
     system "./configure", "prefix=/usr/local"

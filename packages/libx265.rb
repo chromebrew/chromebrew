@@ -5,7 +5,7 @@ class Libx265 < Package
   homepage 'http://x265.org/'
   version '2.4'
   source_url 'https://bitbucket.org/multicoreware/x265/downloads/x265_2.4.tar.gz'
-  source_sha1 'f8bfb348defa86fbfdce4dcc1d0c48c855e0e987'
+  source_sha256 '9c2aa718d78f6fecdd783f08ab83b98d3169e5f670404da4c16439306907d729'
 
   depends_on 'cmake'
   depends_on 'yasm'

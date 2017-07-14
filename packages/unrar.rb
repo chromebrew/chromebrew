@@ -5,7 +5,7 @@ class Unrar < Package
   homepage 'http://www.rarlab.com/'
   version '5.4.5'
   source_url 'http://www.rarlab.com/rar/unrarsrc-5.4.5.tar.gz'
-  source_sha1 '1590aec535792def68710dad7b73d5522e50c971'
+  source_sha256 'e470c584332422893fb52e049f2cbd99e24dc6c6da971008b4e2ae4284f8796c'
 
   def self.build
     system "sed -i '145s,$,/libunrar.so,' makefile" # fix naming mistake

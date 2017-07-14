@@ -5,7 +5,7 @@ class Jsonc < Package
   homepage 'https://github.com/json-c/json-c/wiki'
   version '0.12.1-nodoc'
   source_url 'https://s3.amazonaws.com/json-c_releases/releases/json-c-0.12.1-nodoc.tar.gz'
-  source_sha1 'ffb24acc03110703a88657a64507cc055373f252'
+  source_sha256 '5a617da9aade997938197ef0f8aabd7f97b670c216dc173977e1d56eef9e1291'
 
   def self.build
     system "./configure --prefix=/usr/local"

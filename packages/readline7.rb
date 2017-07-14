@@ -5,7 +5,7 @@ class Readline7 < Package
   homepage 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
   version '7.0p3'
   source_url 'ftp://ftp.gnu.org/gnu/readline/readline-7.0.tar.gz'
-  source_sha1 'd9095fa14a812495052357e1d678b3f2ac635463'
+  source_sha256 '750d437185286f40a369e1e4f4764eda932b9459b5ec9a731628393dd3d32334'
 
   depends_on 'buildessential' => :build
   depends_on 'patch' => :build

@@ -5,7 +5,7 @@ class Geos < Package
   homepage 'https://trac.osgeo.org/geos/'
   version '3.4.2-1'
   source_url 'http://download.osgeo.org/geos/geos-3.4.2.tar.bz2'
-  source_sha1 'b8aceab04dd09f4113864f2d12015231bb318e9a'
+  source_sha256 '15e8bfdf7e29087a957b56ac543ea9a80321481cef4d4f63a7b268953ad26c53'
 
   def self.build
     system "./configure CFLAGS=\" -fPIC\""

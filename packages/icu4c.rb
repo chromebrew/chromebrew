@@ -5,7 +5,7 @@ class Icu4c < Package
   homepage 'http://site.icu-project.org/'
   version '58.2'
   source_url 'http://download.icu-project.org/files/icu4c/58.2/icu4c-58_2-src.tgz'
-  source_sha1 'b67913c90a484c59fda011797c6f3959d84bdc7c'
+  source_sha256 '2b0a4410153a9b20de0e20c7d8b66049a72aef244b53683d0d7521371683da0c'
 
   def self.build
     FileUtils.cd('source') do
@@ -13,10 +13,10 @@ class Icu4c < Package
       system "make"
     end
   end
-  
+
   def self.install
     FileUtils.cd('source') do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
-  end         
+  end
 end

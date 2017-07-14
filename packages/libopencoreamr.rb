@@ -5,7 +5,7 @@ class Libopencoreamr < Package
   homepage 'https://sourceforge.net/projects/opencore-amr/'
   version '0.1.5'
   source_url 'https://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.5.tar.gz'
-  source_sha1 'bef4d1e3a8a155b47569b6691a223843b33e279e'
+  source_sha256 '2c006cb9d5f651bfb5e60156dbff6af3c9d35c7bbcc9015308c0aff1e14cd341'
 
   def self.build
     system "./configure"

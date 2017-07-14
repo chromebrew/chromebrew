@@ -5,7 +5,7 @@ class Libvorbis < Package
   homepage 'https://xiph.org/vorbis/'
   version '1.3.3'
   source_url 'http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.xz'
-  source_sha1 '31d1a0ec4815bf1ee638b0f2850f03efcd48022a'
+  source_sha256 '834c7d35a5ebf4e7b8ab60b0979f2b7f204ca66ff6829728e9d2a67f15347ebd'
 
   depends_on 'libogg'
 

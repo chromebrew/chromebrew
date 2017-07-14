@@ -5,7 +5,7 @@ class Di < Package
   homepage 'http://gentoo.com/di/'
   version '4.43'
   source_url 'http://gentoo.com/di/di-4.43.tar.gz'
-  source_sha1 'ddced0d59d29ccdcbc4282bc7464a925d14955e1'
+  source_sha256 'c8374d2ab7a82274d733be01639f48440accf4c70c70b152f5fa3b1c8a9745e0'
 
   def self.build
     system "sed -i '40s,= ,= $(DESTDIR)/,' Makefile" # set correct bin path

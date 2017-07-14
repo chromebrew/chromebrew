@@ -5,9 +5,9 @@ class Links < Package
   homepage 'http://www.jikos.cz/~mikulas/links/'
   version '1.03'
   source_url 'http://www.jikos.cz/~mikulas/links/download/links-1.03.tar.gz'
-  source_sha1 '659b2492c97a1416855d3e0f5a5f18aed5160b8a'
+  source_sha256 '32443c6f011216a8a43ed0806d9d23c1defdd19bc4b021ee00cda197782e175a'
 
-  depends_on "openssl"
+  depends_on 'openssl'
 
   def self.build
     system "./configure --prefix=/usr/local"
@@ -15,6 +15,6 @@ class Links < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

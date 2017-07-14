@@ -5,7 +5,7 @@ class Libtasn1 < Package
   homepage 'https://www.gnu.org/software/libtasn1/'
   version '4.10-1'
   source_url 'http://ftpmirror.gnu.org/libtasn1/libtasn1-4.10.tar.gz'
-  source_sha1 'c7b36fa50866bbc889f7503c7fd1e9f9d7c52a64'
+  source_sha256 '681a4d9a0d259f2125713f2e5766c5809f151b3a1392fd91390f780b4b8f5a02'
 
   # bison, diff, cmp are required at compile-time
   depends_on 'buildessential' => :build

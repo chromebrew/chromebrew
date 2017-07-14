@@ -5,7 +5,7 @@ class Git < Package
   homepage 'https://git-scm.com/'
   version '2.13.0'
   source_url 'https://github.com/git/git/archive/v2.13.0.tar.gz'
-  source_sha1 'd0078048574b824bc0d202deb3830717a955eb3e'
+  source_sha256 '0c0ff3ce35c44e5e19de6589b824075c9cdf8ff84c5c1099a56545398a8729e4'
 
   # use system zlibpkg, openssl, curl, expat
   depends_on 'zlibpkg' => :build

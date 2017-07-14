@@ -5,8 +5,8 @@ class Optipng < Package
   homepage 'http://optipng.sourceforge.net/'
   version '0.7.6-1'
   source_url 'http://prdownloads.sourceforge.net/optipng/optipng-0.7.6.tar.gz'
-  source_sha1 '3b3e31430e735589470c4af204354d38823f4989'
-  
+  source_sha256 '4870631fcbd3825605f00a168b8debf44ea1cda8ef98a73e5411eee97199be80'
+
   depends_on 'libpng'
   depends_on 'zlibpkg'
 
@@ -16,6 +16,6 @@ class Optipng < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

@@ -5,7 +5,7 @@ class Nanomsg < Package
   homepage 'http://nanomsg.org/'
   version '1.0,0'
   source_url 'https://github.com/nanomsg/nanomsg/archive/1.0.0.tar.gz'
-  source_sha1 '57f90778a9bb7b95a7fd73910fd41894f3ee9cab'
+  source_sha256 '24afdeb71b2e362e8a003a7ecc906e1b84fd9f56ce15ec567481d1bb33132cc7'
 
   depends_on 'cmake'
 
@@ -15,6 +15,6 @@ class Nanomsg < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

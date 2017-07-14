@@ -5,7 +5,7 @@ class Libtiff < Package
   homepage 'http://www.libtiff.org/'
   version '4.0.7-1'
   source_url 'ftp://download.osgeo.org/libtiff/tiff-4.0.7.tar.gz'
-  source_sha1 '2c1b64478e88f93522a42dd5271214a0e5eae648'
+  source_sha256 '9f43a2cfb9589e5cecaa66e16bf87f814c945f22df7ba600d63aac4632c4f019'
 
   def self.build
     system "./configure CFLAGS=\" -fPIC\""

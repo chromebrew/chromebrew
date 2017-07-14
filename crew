@@ -2,7 +2,7 @@
 require 'find'
 require 'net/http'
 require 'uri'
-require 'digest/sha1'
+require 'digest/sha2'
 require 'json'
 require 'fileutils'
 
@@ -26,6 +26,9 @@ if ENV["CREW_NPROC"].to_s == ''
 else
   CREW_NPROC = ENV["CREW_NPROC"]
 end
+
+# Set CREW_NOT_COMPRESS from environment variable
+CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
 
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
@@ -124,8 +127,8 @@ end
 
 def print_package(pkgName, extra = false)
   search pkgName, true
-  Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-    print '(i) '.lightgreen if packageList == CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
+  print '(i) '.lightgreen if @device[:installed_packages].any? do |elem|
+    elem[:name] == pkgName
   end
   print @pkg.name
   print ": #{@pkg.description}" if @pkg.description
@@ -160,7 +163,7 @@ def search (pkgName, silent = false)
 end
 
 def regexp_search(pkgName)
-  results = Dir["#{CREW_LIB_PATH}packages/*.rb"] \
+  results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
 	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
 	  .each    { |f| print_package(f, ARGV[2] == "extra") }
@@ -362,13 +365,14 @@ def download
   uri = URI.parse url
   filename = File.basename(uri.path)
   if source
-    sha1sum = @pkg.source_sha1
+    sha256sum = @pkg.source_sha256
   else
-    sha1sum = @pkg.binary_sha1[@device[:architecture]]
+    sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
     system('wget', '--continue', '--no-check-certificate', url, '-O', filename)
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA1.hexdigest( File.read("./#{filename}") ) == sha1sum
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless
+      Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
   end
   puts "Archive downloaded".lightgreen
   return {source: source, filename: filename}
@@ -418,19 +422,46 @@ def build_and_preconfigure (target_dir)
   end
 end
 
+def compress_doc (dir)
+  # check whether crew should compress
+  return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+
+  if Dir.exist? dir
+    system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
+    system "compressdoc --gzip -9 #{dir}"
+  end
+end
+
 def prepare_package (destdir)
   Dir.chdir destdir do
-    #create directory list
+    # compress manual files
+    compress_doc "#{destdir}#{CREW_PREFIX}/man"
+    compress_doc "#{destdir}#{CREW_PREFIX}/info"
+    compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
+    compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
+
+    # create directory list
     system "find . -type f > ../filelist"
     system "find . -type l >> ../filelist"
     system "cut -c2- ../filelist > filelist"
-    #create file list
+
+    # create file list
     system "find . -type d > ../dlist"
     system "cut -c2- ../dlist > dlistcut"
     system "tail -n +2 dlistcut > dlist"
-    #remove temporary files
+
+    # remove temporary files
     system "rm dlistcut ../dlist ../filelist"
   end
+end
+
+def strip_find_files (find_cmd, strip_option = "")
+  # check whether crew should strip
+  return if CREW_NOT_STRIP || !File.exist?("#{CREW_PREFIX}/bin/strip")
+
+  # run find_cmd and strip only ar or ELF files
+  system "#{find_cmd} | xargs -r chmod u+w"
+  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r strip #{strip_option}"
 end
 
 def install_package (pkgdir)
@@ -439,14 +470,11 @@ def install_package (pkgdir)
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
 
     # Strip libraries with -S
-    system "find . -name 'lib*.a' -print | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -name 'lib*.a' -print | xargs strip -S 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -name 'lib*.so*' -print | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -name 'lib*.so*' -print | xargs strip -S 2>/dev/null" unless CREW_NOT_STRIP
+    strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
+    strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
 
     # Strip binaries
-    system "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d' | xargs chmod u+w 2>/dev/null" unless CREW_NOT_STRIP
-    system "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d' | xargs strip 2>/dev/null" unless CREW_NOT_STRIP
+    strip_find_files "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
   end
@@ -476,9 +504,6 @@ end
 def expand_dependencies
   @dependencies = []
 
-  # check source packages existance
-  @source_package = 0
-
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
        (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
@@ -490,8 +515,6 @@ def expand_dependencies
     else
       # retrieve name of all dependencies
       check_deps = @pkg.dependencies.map {|k, v| k}
-      # count the number of source packages to add buildessential into dependencies later
-      @source_package += 1
     end
 
     # remove a dependent package which is equal to the target
@@ -509,12 +532,6 @@ def expand_dependencies
 
   push_dependencies
 
-  # Add buildessential's dependencies if any of dependent
-  # packages are made from source
-  if @source_package > 0
-    search 'buildessential', true
-    push_dependencies
-  end
   @dependencies.uniq
 end
 
@@ -657,7 +674,7 @@ def archive_package (pwd)
     system "tar cJf #{pwd}/#{pkg_name} *"
   end
   Dir.chdir pwd do
-    system "sha1sum #{pkg_name} > #{pkg_name}.sha1"
+    system "sha256sum #{pkg_name} > #{pkg_name}.sha256"
   end
   puts "#{pkg_name} is built!".lightgreen
 end

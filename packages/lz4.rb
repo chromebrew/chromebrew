@@ -5,7 +5,7 @@ class Lz4 < Package
   homepage 'http://lz4.github.io/lz4/'
   version '1.7.5'
   source_url 'https://github.com/lz4/lz4/archive/v1.7.5.tar.gz'
-  source_sha1 'a710a7d45beb0951806d2b98f0c1739107e97c14'
+  source_sha256 '0190cacd63022ccb86f44fa5041dc6c3804407ad61550ca21c382827319e7e7e'
 
   def self.build
     if `uname -m`.strip == "x86_64"
@@ -16,6 +16,6 @@ class Lz4 < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

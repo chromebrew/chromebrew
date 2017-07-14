@@ -5,7 +5,7 @@ class Bz2 < Package
   homepage 'http://www.bzip.org/'
   version '1.0.6'
   source_url 'http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz'
-  source_sha1 '3f89f861209ce81a6bab1fd1998c0ef311712002'
+  source_sha256 'a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd'
 
   depends_on 'diffutils' => :build
 

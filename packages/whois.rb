@@ -5,7 +5,7 @@ class Whois < Package
   homepage 'https://github.com/rfc1036/whois'
   version '5.2.16'
   source_url 'https://github.com/rfc1036/whois/archive/v5.2.16.tar.gz'
-  source_sha1 '1a5afb7363ef62de0565ae10cee7f0a42b6b260e'
+  source_sha256 'd8204ca199329f14c33cb9f893b0f50918dbef34a6838317270e65c55ab32615'
 
   depends_on 'gettext'
 

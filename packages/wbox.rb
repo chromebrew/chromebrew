@@ -5,7 +5,7 @@ class Wbox < Package
   homepage 'http://www.hping.org/wbox/'
   version '5'
   source_url 'http://www.hping.org/wbox/wbox-5.tar.gz'
-  source_sha1 '5f20fca378c8abf53bb6a9069ecdebeb40a74147'
+  source_sha256 '1589d85e83c8ee78383a491d89e768ab9aab9f433c5f5e035cfb5eed17efaa19'
 
   def self.build
     system "make"

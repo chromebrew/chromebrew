@@ -5,7 +5,7 @@ class Erlang < Package
   homepage 'http://www.erlang.org/'
   version '19.2'
   source_url 'http://www.erlang.org/download/otp_src_19.2.tar.gz'
-  source_sha1 'f5188ba6f496b9d1c37597705d095b4e6aa7bcd3'
+  source_sha256 'a016b3ef5dac1e532972617b2715ef187ecb616f7cd7ddcfe0f1d502f5d24870'
 
   def self.build
     system 'export ERL_OTP=`pwd`'
