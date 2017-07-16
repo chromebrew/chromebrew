@@ -3,17 +3,17 @@ require 'package'
 class Isl < Package
   description 'Integer Set Library for manipulating sets and relations of integer points bounded by linear constraints'
   homepage 'http://isl.gforge.inria.fr/'
-  version '0.18'
+  version '0.18-1'
   binary_url ({
-    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.7/isl-0.18-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/isl-0.18-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.7/isl-0.18-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/isl-0.18-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.8/isl-0.18-chromeos-armv7l.tar.xz',
+    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.8/isl-0.18-chromeos-armv7l.tar.xz',
+    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.8/isl-0.18-chromeos-i686.tar.xz',
+    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.8/isl-0.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f792f6c917c12e8319f00b7a536f974b7040276ded9a00045b91a7cbe0ac61f1',
-    armv7l:  'f792f6c917c12e8319f00b7a536f974b7040276ded9a00045b91a7cbe0ac61f1',
-    i686:    'eaeb4f965f2e171fd729a111b5525ef31e2a58f67d5cdc68fc5252f1965127ea',
-    x86_64:  'a2732f63f643e64c5e75de026c8ef2e339717f249875a762765b750f4691d760',
+    aarch64: '34ab13258b490e96932dc8cb79fd3f7f6ec1e724aba829011cc5f2b16644c28e',
+    armv7l:  '34ab13258b490e96932dc8cb79fd3f7f6ec1e724aba829011cc5f2b16644c28e',
+    i686:    '513b04781a6759ffff0481151090711b19a29bc636a9839e9b571b1cb4276ac7',
+    x86_64:  'dbab5361321ea49a310e8d6507464438f227dff149223d68a797d4479ae1c173',
   })
 end

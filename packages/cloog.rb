@@ -3,17 +3,17 @@ require 'package'
 class Cloog < Package
   description 'Chunky Loop Generator which is used to perform optimization in gcc'
   homepage 'https://www.cloog.org/'
-  version '0.18.4-1'
+  version '0.18.4-2'
   binary_url ({
-    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.7/cloog-0.18.4-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/cloog-0.18.4-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.7/cloog-0.18.4-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/cloog-0.18.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.8/cloog-0.18.4-chromeos-armv7l.tar.xz',
+    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.8/cloog-0.18.4-chromeos-armv7l.tar.xz',
+    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.8/cloog-0.18.4-chromeos-i686.tar.xz',
+    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.8/cloog-0.18.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5c0d563960076a50f332cf484d5ceb7043045ae6f647e74d86a141158b4fa621',
-    armv7l:  '5c0d563960076a50f332cf484d5ceb7043045ae6f647e74d86a141158b4fa621',
-    i686:    'b82930b14f6b1a506150c3b367f455d8fd78b20a1dacbd53a18b369e32552512',
-    x86_64:  '092a6621231b76f4cd331cdac356281185dcff3a8d62d982baee58f20f1aaec8',
+    aarch64: 'f79bede55ba092c133a26b03c79b71a4d9e7f46c7118308f9d182f3a2ed3f2c0',
+    armv7l:  'f79bede55ba092c133a26b03c79b71a4d9e7f46c7118308f9d182f3a2ed3f2c0',
+    i686:    '7bf5c2b4eb9b0d27fe10c4da4315ffb767f22dcc0281803e1f38bfbf6cbb6c74',
+    x86_64:  'e5f20db359ef15b7881f0b15f25851a462fc06ccd5e17f23cfc420a6b29b79f6',
   })
 end

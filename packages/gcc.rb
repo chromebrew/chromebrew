@@ -3,19 +3,19 @@ require 'package'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '4.9.4'
+  version '4.9.4-1'
 
   binary_url ({
-    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.7/gcc-4.9.4-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/gcc-4.9.4-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.7/gcc-4.9.4-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.7/gcc-4.9.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chrome-cross/releases/download/v1.8/gcc-4.9.4-chromeos-armv7l.tar.xz',
+    armv7l:  'https://github.com/jam7/chrome-cross/releases/download/v1.8/gcc-4.9.4-chromeos-armv7l.tar.xz',
+    i686:    'https://github.com/jam7/chrome-cross/releases/download/v1.8/gcc-4.9.4-chromeos-i686.tar.xz',
+    x86_64:  'https://github.com/jam7/chrome-cross/releases/download/v1.8/gcc-4.9.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e0bf0855f30aa2084e86b0d382c99b6d15bbc1937f4ea6a993ab06ca1a80bd70',
-    armv7l:  'e0bf0855f30aa2084e86b0d382c99b6d15bbc1937f4ea6a993ab06ca1a80bd70',
-    i686:    '66a6f4f1b08c1f0f09bc58ccb65b35e48912bf529d1de8452e3e8faeff75bc0c',
-    x86_64:  '78cd2fd1a95aee25a9804371118adad78265237718068ed86d90d82e41ca02ce',
+    aarch64: 'ecb047a9f52ea6b24313d4329b00236b6880e12df684e52e34e9664127d447c6',
+    armv7l:  'ecb047a9f52ea6b24313d4329b00236b6880e12df684e52e34e9664127d447c6',
+    i686:    '9a8b20b58a564c9557c74b2b2769ddc68c110211588356b71c533aac6d54431b',
+    x86_64:  '1ae1f58ca4b9fee3b0f68856e5d49b2feeb90e259e8d885f339c9aa8091f27c8',
   })
 
   depends_on 'binutils'
