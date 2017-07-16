@@ -3,9 +3,9 @@ require 'package'
 class Php5 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.30'
-  source_url 'http://php.net/distributions/php-5.6.30.tar.xz'
-  source_sha256 'a363185c786432f75e3c7ff956b49c3369c3f6906a6b10459f8d1ddc22f70805'
+  version '5.6.31'
+  source_url 'http://php.net/distributions/php-5.6.31.tar.xz'
+  source_sha256 'c464af61240a9b7729fabe0314cdbdd5a000a4f0c9bd201f89f8628732fe4ae4'
 
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
