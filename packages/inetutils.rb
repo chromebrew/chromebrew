@@ -8,11 +8,13 @@ class Inetutils < Package
   source_sha256 '849d96f136effdef69548a940e3e0ec0624fc0c81265296987986a0dd36ded37'
 
   depends_on 'buildessential'
+  depends_on 'ncurses'
 
   def self.build
-    system "./configure --prefix=/usr/local        \
+    system "./configure --prefix=/usr/local \
             --localstatedir=/usr/var \
             --disable-logger     \
+            --disable-traceroute \
             --disable-whois      \
             --disable-rcp        \
             --disable-rexec      \
