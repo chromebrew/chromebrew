@@ -35,12 +35,23 @@ class Go < Package
 
     puts "--------"
     puts "Installed Go for #{ARCH} in #{CREW_PREFIX}/lib/go"
+    puts ""
     puts "Make sure to set go environment variables."
+    puts ""
     puts "Minimal:"
     puts "\texport GOROOT=#{CREW_PREFIX}/lib/go"
     puts "\texport PATH=$PATH:$GOROOT/bin"
+    puts ""
     puts "To use `go run`:"
     puts "\texport TMPDIR=#{CREW_PREFIX}/tmp"
+    puts ""
+    puts "To add environment variables, execute the following:".lightblue
+    puts ""
+    puts "echo 'export GOROOT=/usr/local/lib/go' >> ~/.bashrc".lightblue
+    puts "echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.bashrc".lightblue
+    puts "echo 'export TMPDIR=/usr/local/tmp' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts ""
   end
 
   def self.check
