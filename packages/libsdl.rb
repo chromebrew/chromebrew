@@ -3,9 +3,9 @@ require 'package'
 class Libsdl < Package
   description 'Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.'
   homepage 'http://www.libsdl.org/'
-  version '1.2.15'
-  source_url 'http://www.libsdl.org/release/SDL-1.2.15.tar.gz'
-  source_sha256 'd6d316a793e5e348155f0dd93b979798933fb98aa1edebcc108829d6474aad00'
+  version '2.0.5'
+  source_url 'https://www.libsdl.org/release/SDL2-2.0.5.tar.gz'
+  source_sha256 '442038cf55965969f2ff06d976031813de643af9c9edc9e331bd761c242e8785'
 
   def self.build
     system "./configure"
