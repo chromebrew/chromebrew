@@ -2,7 +2,7 @@ require 'package'
 
 class Damageproto < Package
   description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
-  homepage ''
+  homepage 'https://x.org'
   version '1.2.1'
   source_url 'https://www.x.org/archive/individual/proto/damageproto-1.2.1.tar.gz'
   source_sha256 'f65ccbf1de9750a527ea6e85694085b179f2d06495cbdb742b3edb2149fef303'
