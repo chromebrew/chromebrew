@@ -1,7 +1,7 @@
 require 'package'
 
 class Kbproto < Package
-  description ''
+  description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage ''
   version '1.0.7'
   source_url 'https://www.x.org/archive/individual/proto/kbproto-1.0.7.tar.gz'

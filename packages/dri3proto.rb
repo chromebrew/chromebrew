@@ -1,7 +1,7 @@
 require 'package'
 
 class Dri3proto < Package
-  description ''
+  description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage ''
   version '1.0'
   source_url 'https://www.x.org/archive/individual/proto/dri3proto-1.0.tar.gz'

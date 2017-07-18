@@ -1,7 +1,7 @@
 require 'package'
 
 class Xcb_proto < Package
-  description ''
+  description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage ''
   version '1.12'
   source_url 'https://www.x.org/archive/individual/xcb/xcb-proto-1.12.tar.gz'

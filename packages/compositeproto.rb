@@ -1,7 +1,7 @@
 require 'package'
 
 class Compositeproto < Package
-  description ''
+  description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage ''
   version '0.4'
   source_url 'https://www.x.org/archive/individual/proto/compositeproto-0.4.tar.gz'

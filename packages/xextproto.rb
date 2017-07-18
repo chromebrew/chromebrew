@@ -1,7 +1,7 @@
 require 'package'
 
 class Xextproto < Package
-  description ''
+  description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage ''
   version '7.3.0'
   source_url 'https://www.x.org/archive/individual/proto/xextproto-7.3.0.tar.gz'

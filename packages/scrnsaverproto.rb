@@ -1,7 +1,7 @@
 require 'package'
 
 class Scrnsaverproto < Package
-  description ''
+  description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage ''
   version '1.2.2'
   source_url 'https://www.x.org/archive/individual/proto/scrnsaverproto-1.2.2.tar.gz'
