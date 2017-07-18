@@ -1,7 +1,7 @@
 require 'package'
 
 class Randrproto < Package
-  description ''
+  description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage ''
   version '1.5.0'
   source_url 'https://www.x.org/archive/individual/proto/randrproto-1.5.0.tar.gz'
