@@ -3,9 +3,9 @@ require 'package'
 class Aprutil < Package
   description 'APR-util provides a number of helpful abstractions on top of APR.'
   homepage 'http://apr.apache.org/'
-  version '1.5.4'
-  source_url 'http://apache.claz.org//apr/apr-util-1.5.4.tar.gz'
-  source_sha256 '976a12a59bc286d634a21d7be0841cc74289ea9077aa1af46be19d1a6e844c19'
+  version '1.6.0'
+  source_url 'http://apache.claz.org/apr/apr-util-1.6.0.tar.bz2'
+  source_sha256 '8474c93fa74b56ac6ca87449abe3e155723d5f534727f3f33283f6631a48ca4c'
 
   depends_on 'apr'
 
