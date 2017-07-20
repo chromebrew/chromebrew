@@ -8,6 +8,7 @@ class Aprutil < Package
   source_sha256 '8474c93fa74b56ac6ca87449abe3e155723d5f534727f3f33283f6631a48ca4c'
 
   depends_on 'apr'
+  depends_on 'expat'
 
   def self.build
     system './configure --prefix=/usr/local --with-apr=/usr/local'
