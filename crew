@@ -37,6 +37,14 @@ Usage:
 version 0.4.3
 DOCOPT
 
+# Set XZ_OPT environment variable for build command.
+# If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
+if ENV["CREW_XZ_OPT"].to_s == ''
+  ENV["XZ_OPT"] = "-7e -T #{CREW_NPROC}"
+else
+  ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
+end
+
 # Parse arguments using docopt
 require_relative 'lib/docopt'
 begin

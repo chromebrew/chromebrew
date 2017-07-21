@@ -26,12 +26,4 @@ CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
 
-# Set XZ_OPT environment variable for build command.
-# If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
-if ENV["CREW_XZ_OPT"].to_s == ''
-  ENV["XZ_OPT"] = "-7e"
-else
-  ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
-end
-
 USER = `whoami`.chomp
