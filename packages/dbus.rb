@@ -3,9 +3,9 @@ require 'package'
 class Dbus < Package
   description 'D-Bus is a message bus system, a simple way for applications to talk to one another.'
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
-  version '1.11.12'
-  source_url 'https://dbus.freedesktop.org/releases/dbus/dbus-1.11.12.tar.gz'
-  source_sha256 'ac12df14a0fd0a9ecb56d02e2988cd313b91116d048aaaf53786ad6ccea9906d'
+  version '1.11.14'
+  source_url 'https://dbus.freedesktop.org/releases/dbus/dbus-1.11.14.tar.gz'
+  source_sha256 '55cfc7fdd2cccb2fce1f75d2132ad4801b5ed6699fc2ce79ed993574adf90c80'
 
   depends_on 'expat'
 
