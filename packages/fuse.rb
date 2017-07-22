@@ -11,7 +11,8 @@ class Fuse < Package
   source_sha256 '1ec1913e38f09b2a9ec1579e1800805b5e2c747d1dce515e316dbb665ca139d6'
 
   def self.build
-    system "./configure"
+    # Disable util since we must use pre-installed /sbin/mount.fuse
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic", "--disable-util"
     # A workaround to "'CLONE_NEWNS' undeclared" error.  See below for details.
     # https://github.com/libfuse/libfuse/commit/ae43094c13ecf49e0b738bbda633cf193c7b3670
     system "sed -i util/fusermount.c -e '1i#define _GNU_SOURCE'"
