@@ -3,12 +3,18 @@ require 'package'
 class Fuse < Package
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse'
-  version '2.9.7'
-  source_url 'https://github.com/libfuse/libfuse/releases/download/fuse-2.9.7/fuse-2.9.7.tar.gz'
-  source_sha256 '832432d1ad4f833c20e13b57cf40ce5277a9d33e483205fc63c78111b3358874'
+  # The version of libfuse need to be matched with ChromeOS /usr/lib/libfuse.so since we must use
+  # /sbin/mount.fuse which is not possible to be overwritten.  If we use different version of
+  # libfuse, it may cause errors.  Chrome OS 59 and 60 use libfuse 2.8.6.
+  version '2.8.6'
+  source_url 'https://github.com/libfuse/libfuse/releases/download/fuse_2_9_4/fuse-2.8.6.tar.gz'
+  source_sha256 '1ec1913e38f09b2a9ec1579e1800805b5e2c747d1dce515e316dbb665ca139d6'
 
   def self.build
     system "./configure"
+    # A workaround to "'CLONE_NEWNS' undeclared" error.  See below for details.
+    # https://github.com/libfuse/libfuse/commit/ae43094c13ecf49e0b738bbda633cf193c7b3670
+    system "sed -i util/fusermount.c -e '1i#define _GNU_SOURCE'"
     system "make"
   end
 
