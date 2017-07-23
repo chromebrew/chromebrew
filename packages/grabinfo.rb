@@ -27,5 +27,6 @@ class Grabinfo < Package
     system "cp GrabInfo.pm #{CREW_DEST_DIR}/usr/local/bin"
     system "cp -r GrabInfo/ #{CREW_DEST_DIR}/usr/local/bin"
     system "cp grabinfo.1 #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "touch #{CREW_DEST_DIR}/usr/local/share/grabinfo/grabinfo.lock"
   end
 end
