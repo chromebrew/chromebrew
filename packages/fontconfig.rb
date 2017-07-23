@@ -3,16 +3,17 @@ require 'package'
 class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
-  version '2.11.94-1'
-  source_url 'http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.94.tar.gz'
-  source_sha256 '73f6d323c7bcfbde25d78397675191d55b8f4139132c6a9444410f3a2d8a9a95'
+  version '2.12.4'
+  source_url 'https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.4.tar.bz2'
+  source_sha256 '668293fcc4b3c59765cdee5cee05941091c0879edcc24dfec5455ef83912e45c'
 
+  depends_on 'gperf'
   depends_on 'pkgconfig'
   depends_on 'freetype'
 
   def self.build
-      system "./configure CFLAGS=\" -fPIC\""
-      system "make"
+      system './configure CFLAGS=" -fPIC" --localstatedir=/usr/local/cache'
+      system 'make'
   end
 
   def self.install
