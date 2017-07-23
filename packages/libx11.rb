@@ -13,8 +13,6 @@ class Libx11 < Package
   depends_on 'inputproto'
   depends_on 'xextproto'
   depends_on 'libxtrans'
-  depends_on 'libxau'
-  depends_on 'pthread_stubs'
   
   def self.build
     system "./configure"
