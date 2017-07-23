@@ -3,9 +3,9 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.13.0'
-  source_url 'https://github.com/git/git/archive/v2.13.0.tar.gz'
-  source_sha256 '0c0ff3ce35c44e5e19de6589b824075c9cdf8ff84c5c1099a56545398a8729e4'
+  version '2.13.3'
+  source_url 'https://github.com/git/git/archive/v2.13.3.tar.gz'
+  source_sha256 '6b50ef5a0f886e41d0f969e68274bacfe8ade8bc22954143f7f6f1aab3b62b82'
 
   # use system zlibpkg, openssl, curl, expat
   depends_on 'zlibpkg' => :build
