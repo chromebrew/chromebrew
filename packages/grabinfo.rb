@@ -22,6 +22,7 @@ class Grabinfo < Package
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "mkdir -p #{CREW_DEST_DIR}/usr/local/share/grabinfo"
     system "cp grabinfo #{CREW_DEST_DIR}/usr/local/bin"
     system "cp GrabInfo.pm #{CREW_DEST_DIR}/usr/local/bin"
     system "cp -r GrabInfo/ #{CREW_DEST_DIR}/usr/local/bin"
