@@ -8,7 +8,7 @@ class Libtheora < Package
   source_sha256 'b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc'
 
   depends_on 'libvorbis'
-  depends_on 'libsdl'
+  depends_on 'libsdl2'
 
   def self.build
     system "sed -i 's/png_sizeof/sizeof/g' ./examples/png2theora.c"
