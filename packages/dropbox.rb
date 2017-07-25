@@ -3,16 +3,16 @@ require 'package'
 class Dropbox < Package
   description 'Dropbox simplifies the way you create, share and collaborate. Bring your photos, docs, and videos anywhere and keep your files safe.'
   homepage 'https://www.dropbox.com/'
-  version '29.4.20'
+  version '30.4.22'
   case ARCH
   when 'i686'
-    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-29.4.20.tar.gz'
-    source_sha256 'd3d51259a4dae434c10f9c352aa2a3f75a98ffbfb04dfab8c182cff7e3b5ed7d'
+    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-30.4.22.tar.gz'
+    source_sha256 '4b41ab4fae4b02a0428cbafccb45ecde82b2b3b774127826f1945f660e0ed47f'
   when 'x86_64'
-    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-29.4.20.tar.gz'
-    source_sha256 '82321e3955b8d6dc329fe1fa9f4eb17a88e1beeac9eae8874318574310461671'
+    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-30.4.22.tar.gz'
+    source_sha256 '1928e49d91a5c039f4903c5bc12be032eb499fcc8352b6eb2a33b40b8d4c8961'
   else
-    'Unable to install dropboxd.  Supported architectures include x86 and x86_64 only.'.lightred
+    puts 'Unable to install dropboxd.  Supported architectures include x86 and x86_64 only.'.lightred
   end
 
   depends_on 'python' unless File.exists? '/usr/local/bin/python'
