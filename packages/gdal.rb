@@ -3,9 +3,9 @@ require 'package'
 class Gdal < Package
   description 'The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.'
   homepage 'http://www.gdal.org/'
-  version '1.11.2-1'
-  source_url 'http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz'
-  source_sha256 '66bc8192d24e314a66ed69285186d46e6999beb44fc97eeb9c76d82a117c0845'
+  version '1.11.5'
+  source_url 'http://download.osgeo.org/gdal/1.11.5/gdal-1.11.5.tar.xz'
+  source_sha256 'd4fdc3e987b9926545f0a514b4328cd733f2208442f8d03bde630fe1f7eff042'
 
   depends_on 'python27'
   depends_on 'curl'
