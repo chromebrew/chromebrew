@@ -8,6 +8,7 @@ class Perl < Package
   source_sha256 'e6c185c9b09bdb3f1b13f678999050c639859a7ef39c8cad418448075f5918af'
 
   depends_on 'patch' => :build
+  depends_on 'curl'
 
   def self.build
     # Use system zlib and bzip2
@@ -19,6 +20,9 @@ class Perl < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "sudo curl -o /usr/local/bin/cpanm https://cpanmin.us"
+    system "sudo chmod +x /usr/local/bin/cpanm"
+    system "sudo chown chronos /usr/local/bin/cpanm"
   end
 
   def self.check
