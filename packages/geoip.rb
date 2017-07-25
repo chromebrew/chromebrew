@@ -3,13 +3,13 @@ require 'package'
 class Geoip < Package
   description 'GeoIP Legacy C API.'
   homepage 'https://github.com/maxmind/geoip-api-c/'
-  version '1.6.9'
-  source_url 'https://github.com/maxmind/geoip-api-c/releases/download/v1.6.9/GeoIP-1.6.9.tar.gz'
-  source_sha256 '4b446491843de67c1af9b887da17a3e5939e0aeed4826923a5f4bf09d845096f'
+  version '1.6.11'
+  source_url 'https://github.com/maxmind/geoip-api-c/releases/download/v1.6.11/GeoIP-1.6.11.tar.gz'
+  source_sha256 'b0e5a92200b5ab540d118983f7b7191caf4faf1ae879c44afa3ff2a2abcdb0f5'
 
   def self.build
-    system "./configure"
-    system "make"
+    system './configure'
+    system 'make'
   end
 
   def self.install
