@@ -3,9 +3,9 @@ require 'package'
 class Ascii < Package
   description 'List ASCII idiomatic names and octal/decimal code-point forms.'
   homepage 'http://www.catb.org/~esr/ascii/'
-  version '3.15'
-  source_url 'http://www.catb.org/~esr/ascii/ascii-3.15.tar.gz'
-  source_sha256 'ace1db8b64371d53d9ad420d341f2b542324ae70437e37b4b75646f12475ff5f'
+  version '3.16'
+  source_url 'http://www.catb.org/~esr/ascii/ascii-3.16.tar.gz'
+  source_sha256 'a94bb3970e8f1f63566f055517aecbdd46b11c4ccf142f77ffb80a79994f03a9'
 
   def self.build
     system 'make'
