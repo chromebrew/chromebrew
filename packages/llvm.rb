@@ -13,7 +13,7 @@ class Llvm < Package
   def self.build
     system "mkdir mybuilddir"
     Dir.chdir "mybuilddir" do
- 	system "cmake .."
+ 	    system "cmake .. -DLLVM_BUILD_LLVM_DYLIB=true"
     	system "cmake --build ."
     end
   end
