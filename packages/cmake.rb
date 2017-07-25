@@ -3,9 +3,9 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.7.2'
-  source_url 'https://cmake.org/files/v3.7/cmake-3.7.2.tar.gz'
-  source_sha256 'dc1246c4e6d168ea4d6e042cfba577c1acd65feea27e56f5ff37df920c30cae0'
+  version '3.9.0'
+  source_url 'https://cmake.org/files/v3.9/cmake-3.9.0.tar.gz'
+  source_sha256 '167701525183dbb722b9ffe69fb525aa2b81798cf12f5ce1c020c93394dfae0f'
 
   depends_on 'buildessential'
   depends_on 'openssl'
