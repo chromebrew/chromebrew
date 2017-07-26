@@ -25,8 +25,11 @@ case "$architecture" in
   exit 1;;
 esac
 
-#This will allow things to work without sudo
+# This will allow things to work without sudo
 sudo chown -R `id -u`:`id -g` /usr/local
+
+# On chromiumos/cloudready there is unnecessary symbolic link, so remove it.
+if [ -L /usr/local/var ]; then sudo rm /usr/local/var; fi
 
 #prepare directories
 for dir in $CREW_LIB_PATH $CREW_CONFIG_PATH $CREW_CONFIG_PATH/meta $CREW_BREW_DIR $CREW_DEST_DIR $CREW_PACKAGES_PATH; do
