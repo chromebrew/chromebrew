@@ -8,6 +8,8 @@ class Openssl < Package
   source_sha256 'a3d3a7c03c90ba370405b2d12791598addfcafb1a77ef483c02a317a56c08485'
 
   depends_on 'perl' => :build
+  depends_on 'bc' => :build             # required for `make test`
+  depends_on 'diffutils' => :build      # required for `make test`
   depends_on 'zlibpkg' => :build
 
   def self.build
