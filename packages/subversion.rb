@@ -8,11 +8,16 @@ class Subversion < Package
   source_sha256 'dbcbc51fb634082f009121f2cb64350ce32146612787ffb0f7ced351aacaae19'
 
   depends_on 'aprutil'
-  depends_on 'sqlite'
+  depends_on 'autoconf'
+  depends_on 'libtool'
   depends_on 'serf'
+  depends_on 'sqlite'
 
   def self.build
-    system './configure --prefix=/usr/local --with-apr=/usr/local --with-apr-util=/usr/local'
+    system "sed -i 's,<serf.h>,</usr/local/include/serf-1/serf.h>,' subversion/libsvn_ra_serf/*"
+    system "sed -i 's,<serf_bucket_util.h>,</usr/local/include/serf-1/serf_bucket_util.h>,' subversion/libsvn_ra_serf/*.c"
+    system "sed -i 's,<serf_bucket_types.h>,</usr/local/include/serf-1/serf_bucket_types.h>,' subversion/libsvn_ra_serf/*.c"
+    system './configure'
     system 'make'
   end
 
