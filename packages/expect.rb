@@ -10,7 +10,7 @@ class Expect < Package
   depends_on "tcl"
 
   def self.build
-    system "./configure", "--prefix=/usr/local"
+    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
