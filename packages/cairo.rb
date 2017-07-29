@@ -10,9 +10,11 @@ class Cairo < Package
   depends_on 'fontconfig'
   depends_on 'libpng'
   depends_on 'pixman'
+  depends_on 'freetype'   # pango requires cairo with freetype
+  depends_on 'fontconfig' # pango requires cairo with fontconfig
 
   def self.build
-    system "./configure"
+    system "./configure --disable-xlib"
     system "make"
   end
 
