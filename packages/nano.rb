@@ -22,6 +22,7 @@ class Nano < Package
 
   depends_on 'buildessential'
   depends_on 'ncurses'
+  depends_on 'filecmd'
 
   def self.build
     system "./configure CPPFLAGS=\"-I/usr/local/include/ncurses\""
