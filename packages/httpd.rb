@@ -3,21 +3,21 @@ require 'package'
 class Httpd < Package
   description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
   homepage 'http://httpd.apache.org/'
-  version '2.2.32'
-  source_url 'https://github.com/apache/httpd/archive/2.2.32.tar.gz'
-  source_sha256 '0d74b1e4d69cedc56323cedc819c083ca975b679b6a082abf60c21836756bb1d'
+  version '2.4.27'
+  source_url 'https://github.com/apache/httpd/archive/2.4.27.tar.gz'
+  source_sha256 '20d6a9258d408077b822d223da7893a905b185fbca518f4399445a68ad971b21'
 
   depends_on 'subversion'
 
   def self.build
-    system 'svn co http://svn.apache.org/repos/asf/apr/apr/branches/1.4.x srclib/apr'
-    system 'svn co http://svn.apache.org/repos/asf/apr/apr-util/branches/1.4.x srclib/apr-util'
+    system 'svn co https://svn.apache.org/repos/asf/apr/apr/branches/1.5.x srclib/apr'
+    system 'svn co https://svn.apache.org/repos/asf/apr/apr-util/branches/1.5.x srclib/apr-util'
     system './buildconf'
-    system './configure --prefix=/usr/local'
+    system './configure --with-included-apr'
     system 'make'
   end
 
   def self.install
-    system 'make -i install'
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
