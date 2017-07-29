@@ -3,17 +3,22 @@ require 'package'
 class Elixir < Package
   description 'Elixir is a dynamic, functional language designed for building scalable and maintainable applications.'
   homepage 'http://elixir-lang.org/'
-  version '1.4.5'
-  depends_on 'erlang'
+  version '1.5.0'
+  source_url 'https://github.com/elixir-lang/elixir/releases/download/v1.5.0/Precompiled.zip'
+  source_sha256 '01841d8f973e10ea2e8e29342193063efb5ebe2c598c21dc8a3b93ec8428466a'
 
-  source_url 'https://github.com/elixir-lang/elixir/archive/v1.4.5.tar.gz'
-  source_sha256 'bef1a0ea7a36539eed4b104ec26a82e46940959345ed66509ec6cc3d987bada0'
+  depends_on 'erlang'
+  depends_on 'unzip'
 
   def self.build
-    system 'make'
+    # do noting
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}"
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/share"
+    system "mv bin #{CREW_DEST_DIR}#{CREW_PREFIX}"
+    system "mv lib #{CREW_DEST_DIR}#{CREW_PREFIX}"
+    system "mv man #{CREW_DEST_DIR}#{CREW_PREFIX}/share"
   end
 end
