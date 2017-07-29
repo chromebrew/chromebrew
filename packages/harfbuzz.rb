@@ -7,6 +7,9 @@ class Harfbuzz < Package
   source_url 'https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-1.4.7.tar.bz2'
   source_sha256 'b85f6627425d54f32118308e053b939c63a388de9bf455b3830f68cad406bc6d'
 
+  depends_on 'glib'
+  depends_on 'icu4c'
+
   def self.build
     system "./configure"
     system "make"
