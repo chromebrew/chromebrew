@@ -9,12 +9,10 @@ class Serf < Package
 
   depends_on 'scons'
   depends_on 'aprutil'
-
-  def self.build
-    nil
-  end
+  depends_on 'openssl'
 
   def self.install
-    system "scons APR=/usr/local APU=/usr/local PREFIX=#{CREW_DEST_DIR} install"
+    system "mkdir -p #{CREW_DEST_DIR}/usr/local"
+    system "scons APR=/usr/local APU=/usr/local OPENSSL=/usr/local/include/openssl PREFIX=#{CREW_DEST_DIR}/usr/local install"
   end
 end
