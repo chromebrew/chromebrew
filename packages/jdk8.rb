@@ -3,25 +3,40 @@ require 'package'
 class Jdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'
-  version '8u131'
-  case ARCH
-  when 'i686'
-    source_url 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=220303_d54c1d3a095b4ff2b6607d096fa80163'
-    source_sha256 'a773f2fe17061ef637ed2094b06313a99c0b45ba3d3cb7f8f1ebf18448495aeb'
-  when 'x86_64'
-    source_url 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=220305_d54c1d3a095b4ff2b6607d096fa80163'
-    source_sha256 '355e5cdb066d4cada1f9f16f358b6fa6280ff5caf7470cf0d5cdd43083408d35'
-  when 'armv7l'
-    source_url 'https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz'
-    source_sha256 'be13670ce0588a888190a55a63a4a95940b8cd77f6dea3dfeaefe3a9ed800c0b'
-  when 'aarch64'
-    source_url 'https://www.dropbox.com/s/vcejuitboafaxib/jdk8u22-armv7l.tar.gz'
-    source_sha256 'be13670ce0588a888190a55a63a4a95940b8cd77f6dea3dfeaefe3a9ed800c0b'
-  end
+  version '8u144'
+  source_url 'http://hg.openjdk.java.net/jdk8/jdk8/archive/2a8f4c022aa0.tar.gz'
+  source_sha256 'e632ae353ccfb90957cbb6a5818ee063710a41e7b97b490ee58ca5f627d863f1'
+
   def self.install
+    case ARCH
+    when 'aarch64'
+      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-arm32-vfp-hflt.tar.gz'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u144-linux-arm32-vfp-hflt.tar.gz') ) == 'cbbd390e19ab4c473e05f60602ce2804db25e4e35be5ab95f4f1a2aeb5b72383'
+      system 'tar xvf jdk-8u144-linux-arm32-vfp-hflt.tar.gz'
+    when 'armv7l'
+      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-arm32-vfp-hflt.tar.gz'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u144-linux-arm32-vfp-hflt.tar.gz') ) == 'cbbd390e19ab4c473e05f60602ce2804db25e4e35be5ab95f4f1a2aeb5b72383'
+      system 'tar xvf jdk-8u144-linux-arm32-vfp-hflt.tar.gz'
+    when 'i686'
+      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-i586.tar.gz'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u144-linux-i586.tar.gz') ) == '624c090647629394ef0ee08d9d8ac5d3d5a9a60fa245fefb2eb417c36c7cb7c4'
+      system 'tar xvf jdk-8u144-linux-i586.tar.gz'
+    when 'x86_64'
+      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u144-linux-x64.tar.gz') ) == 'e8a341ce566f32c3d06f6d0f0eeea9a0f434f538d22af949ae58bc86f2eeaae4'
+      system 'tar xvf jdk-8u144-linux-x64.tar.gz'
+    end
     system "mkdir -p #{CREW_DEST_DIR}/usr/local"
-    system "cp -r bin/ #{CREW_DEST_DIR}/usr/local"
-    system "cp -r lib/ #{CREW_DEST_DIR}/usr/local"
-    system "cp -r man/ #{CREW_DEST_DIR}/usr/local"
+    FileUtils.cd('jdk1.8.0_144') do
+      system "cp -r bin/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r lib/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r db/bin/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r db/lib/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r include/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r jre/bin/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r jre/lib/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r jre/plugin/ #{CREW_DEST_DIR}/usr/local"
+      system "cp -r man/ #{CREW_DEST_DIR}/usr/local"
+    end
   end
 end
