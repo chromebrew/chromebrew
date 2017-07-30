@@ -3,7 +3,7 @@ require 'package'
 class P11kit < Package
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
   homepage 'https://p11-glue.freedesktop.org/p11-kit.html'
-  version '0.23.2-1'
+  version '0.23.2-2'
   source_url 'https://p11-glue.freedesktop.org/releases/p11-kit-0.23.2.tar.gz'
   source_sha256 'ba726ea8303c97467a33fca50ee79b7b35212964be808ecf9b145e9042fdfaf0'
 
@@ -12,7 +12,8 @@ class P11kit < Package
   depends_on 'libtasn1'
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic", "--prefix=/usr/local"
+    system "./configure", "--enable-shared", "--disable-static", "--with-pic",
+      "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
