@@ -11,6 +11,6 @@ class Gox < Package
 
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "go build -ldflags \"-X main.VERSION=v0.3.0\" -o #{CREW_DEST_DIR}/usr/local/bin/gox"
+    system "go build -o #{CREW_DEST_DIR}/usr/local/bin/gox"
   end
 end
