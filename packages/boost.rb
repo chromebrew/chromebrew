@@ -12,8 +12,6 @@ class Boost < Package
   end
 
   def self.install
-    system "./b2 -a install"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/lib"
-    system "cp /usr/local/lib/libboost_* #{CREW_DEST_DIR}/usr/local/lib"
+    system "./b2 -a --prefix=#{CREW_DEST_DIR}#{CREW_PREFIX} --libdir=#{CREW_DEST_DIR}#{CREW_LIB_PREFIX} install"
   end
 end
