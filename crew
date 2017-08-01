@@ -370,7 +370,7 @@ def download
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    system('wget', '--continue', '--no-check-certificate', url, '-O', filename)
+    system('curl', '-C', '--insecure', '-L', '-#', url, '-o', filename)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
   end
