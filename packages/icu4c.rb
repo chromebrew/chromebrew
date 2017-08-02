@@ -9,6 +9,12 @@ class Icu4c < Package
 
   def self.build
     FileUtils.cd('source') do
+      case ARCH
+      when 'aarch64', 'armv7l'
+        # Armhf requires sane ELF headers rather than other architectures as
+        # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
+        system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i config/mh-linux"
+      end
       system "./configure", "--without-samples", "--without-tests"
       system "make"
     end
