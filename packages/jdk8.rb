@@ -26,17 +26,14 @@ class Jdk8 < Package
       abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u144-linux-x64.tar.gz') ) == 'e8a341ce566f32c3d06f6d0f0eeea9a0f434f538d22af949ae58bc86f2eeaae4'
       system 'tar xvf jdk-8u144-linux-x64.tar.gz'
     end
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local"
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/jdk8"
     FileUtils.cd('jdk1.8.0_144') do
-      system "cp -r bin/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r lib/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r db/bin/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r db/lib/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r include/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r jre/bin/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r jre/lib/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r jre/plugin/ #{CREW_DEST_DIR}/usr/local"
-      system "cp -r man/ #{CREW_DEST_DIR}/usr/local"
+      system "rm -f src.zip"
+      system "cp -r * #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/jdk8"
+    end
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
+    FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
+      system "ln -s ../../../#{CREW_LIB_PREFIX}/jdk8/bin/* ."
     end
   end
 end
