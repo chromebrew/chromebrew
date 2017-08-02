@@ -11,6 +11,7 @@ class Httpd < Package
   depends_on 'aprutil'
   depends_on 'libtool'
   depends_on 'pcre'
+  depends_on 'expat'
 
   def self.build
     system './configure'
