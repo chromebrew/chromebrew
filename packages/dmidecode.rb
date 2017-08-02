@@ -8,6 +8,10 @@ class Dmidecode < Package
   source_sha256 'd766ce9b25548c59b1e7e930505b4cad9a7bb0b904a1a391fbb604d529781ac0'
 
   def self.build
+    case ARCH
+    when 'aarch64', 'armv7l'
+      abort "#{ARCH} architecture not supported.".lightred
+    end
     system 'make'
   end
 
