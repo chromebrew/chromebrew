@@ -33,9 +33,7 @@ class Unzip < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "MANDIR=/usr/local/tmp/unzip-man", "-f", "unix/Makefile", "install"
-    #remove the man pages we couldn't install
-    system "rm -r -f /usr/local/tmp/unzip-man"
+    system "make", "BINDIR=#{CREW_DEST_DIR}#{CREW_PREFIX}/bin", "MANDIR=#{CREW_DEST_DIR}#{CREW_PREFIX}/share/man", "-f", "unix/Makefile", "install"
   end
 
 end
