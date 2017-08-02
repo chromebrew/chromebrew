@@ -9,17 +9,21 @@ class Dmidecode < Package
 
   def self.build
     case ARCH
-    when 'aarch64', 'armv7l'
-      abort "#{ARCH} architecture not supported.".lightred
+    when 'i686', 'x86_64'
+      system 'make'
+    else
+      puts "#{ARCH} architecture not supported.".lightred
     end
-    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    puts ""
-    puts "To complete the installation, execute the following:".lightblue
-    puts "echo 'export PATH=$PATH:/usr/local/sbin' >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts ""
+    case ARCH
+    when 'i686', 'x86_64'
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      puts ""
+      puts "To complete the installation, execute the following:".lightblue
+      puts "echo 'export PATH=$PATH:/usr/local/sbin' >> ~/.bashrc && source ~/.bashrc".lightblue
+      puts ""
+    end
   end
 end
