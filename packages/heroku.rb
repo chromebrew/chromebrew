@@ -11,8 +11,7 @@ class Heroku < Package
   depends_on 'yarn'
 
   def self.build
-    system 'export NVM_DIR="/usr/local/share/nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install stable'
-    system 'yarn install'
+    system '\. ~/.bashrc && nvm install stable && yarn install'
   end
 
   def self.install
@@ -22,5 +21,9 @@ class Heroku < Package
     FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
       system "ln -s /usr/local/share/heroku/bin/run heroku"
     end
+    puts ""
+    puts "To finish the installation, execute the following:".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts ""
   end
 end
