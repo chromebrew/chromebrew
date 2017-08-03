@@ -7,6 +7,7 @@ class Heroku < Package
   source_url 'https://github.com/heroku/cli/archive/v6.13.5.tar.gz'
   source_sha256 '769943a2e272f9b9332d85cfd5d4f49a7a3070a06b81e6da1cb33b4723a85607'
 
+  depends_on 'nvm'
   depends_on 'yarn'
 
   def self.build
