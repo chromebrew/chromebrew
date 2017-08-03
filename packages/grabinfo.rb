@@ -11,22 +11,22 @@ class Grabinfo < Package
 
   def self.build
     system "sed -i 's,/usr/bin,/usr/local/bin,g' grabinfo"
-    system "sed -i 's,/var/log,/usr/local/share,g' grabinfo"
-    system "sed -i 's,/var/log,/usr/local/share,g' grabinfo.1"
+    system "sed -i 's,/var/log,/usr/local/tmp,g' grabinfo"
+    system "sed -i 's,/var/log,/usr/local/tmp,g' grabinfo.1"
     system "sed -i 's,/usr/lib,/usr/local/lib,g' Makefile"
     system "sed -i 's,/usr/share,/usr/local/share,g' Makefile"
-    system "sed -i 's,/var/log,/usr/local/share,g' Makefile"
+    system "sed -i 's,/var/log,/usr/local/tmp,g' Makefile"
     system "make"
   end
 
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/share/grabinfo"
+    system "mkdir -p #{CREW_DEST_DIR}/usr/local/tmp/grabinfo"
     system "cp grabinfo #{CREW_DEST_DIR}/usr/local/bin"
     system "cp GrabInfo.pm #{CREW_DEST_DIR}/usr/local/bin"
     system "cp -r GrabInfo/ #{CREW_DEST_DIR}/usr/local/bin"
     system "cp grabinfo.1 #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "touch #{CREW_DEST_DIR}/usr/local/share/grabinfo/grabinfo.lock"
+    system "touch #{CREW_DEST_DIR}/usr/local/tmp/grabinfo/grabinfo.lock"
   end
 end
