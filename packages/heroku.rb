@@ -11,15 +11,15 @@ class Heroku < Package
   depends_on 'yarn'
 
   def self.build
-    system '. ~/.bashrc && nvm install stable'
+    system 'export NVM_DIR="/usr/local/share/nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install stable'
     system 'yarn install'
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/share/heroku"
-    system "cp -r . #{CREW_DEST_DIR}/usr/local/share/heroku"
-    FileUtils.cd("#{CREW_DEST_DIR}/usr/local/bin") do
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/share/heroku"
+    system "cp -r . #{CREW_DEST_DIR}#{CREW_PREFIX}/share/heroku"
+    FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
       system "ln -s /usr/local/share/heroku/bin/run heroku"
     end
   end
