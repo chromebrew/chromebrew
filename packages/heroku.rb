@@ -11,7 +11,7 @@ class Heroku < Package
   depends_on 'yarn'
 
   def self.build
-    system '\. ~/.bashrc && nvm install stable && yarn install'
+    system '. ~/.bashrc && nvm install stable && yarn install'
   end
 
   def self.install
