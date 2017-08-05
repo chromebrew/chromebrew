@@ -3,9 +3,9 @@ require 'package'
 class Mercurial < Package
   description 'Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.'
   homepage 'https://www.mercurial-scm.org/'
-  version '4.1'
-  source_url 'https://www.mercurial-scm.org/release/mercurial-4.1.tar.gz'
-  source_sha256 '7b33c32cdd1d518bc2e2ae223e6ef63c486cf52e9d01a45b99cf8eab7bea5274'
+  version '4.2.2'
+  source_url 'https://www.mercurial-scm.org/release/mercurial-4.2.2.tar.gz'
+  source_sha256 'b20132dec5ae6d27ee43a133144069895befe09f7e454bfa9e39950a185f0afe'
 
   # what's the best route for adding a minimum version symbol as a constraint?
   depends_on "python27"
@@ -24,12 +24,13 @@ class Mercurial < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     puts "------------------"
-    puts "Installation success!"
+    puts "Installation success!".lightgreen
     puts "Cleaning up dependencies only required for build..."
     system "pip", "uninstall", "docutils"
     puts
-    puts "To begin using mercurial you'll need to configure it."
+    puts "To begin using mercurial, you'll need to configure it.".lightblue
     puts
-    puts "Run `hg debuginstall` and address any issues that it reports."
+    puts "Run `hg debuginstall` and address any issues that it reports.".lightblue
+    puts
   end
 end
