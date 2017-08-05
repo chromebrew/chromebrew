@@ -82,7 +82,7 @@ function download_check () {
 
     #download
     echo "Downloading $1..."
-    curl --ignore-content-length -# -L --ssl $2 -o "$3"
+    curl -C - -# -L --ssl $2 -o "$3"
 
     #verify
     echo "Verifying $1..."
@@ -160,15 +160,15 @@ done
 #download, prepare and install chromebrew
 cd $CREW_LIB_PATH
 rm -rf crew lib packages
-curl -R $URL/crew
+curl -# -o crew $URL/crew
 chmod +x crew
 rm -f $CREW_PREFIX/bin/crew
 ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
 mkdir -p $CREW_LIB_PATH/lib
 cd $CREW_LIB_PATH/lib
-curl -R $URL/lib/package.rb
-curl -R $URL/lib/package_helpers.rb
+curl -# -o package.rb $URL/lib/package.rb
+curl -# -o package_helpers.rb $URL/lib/package_helpers.rb
 
 #Making GCC act like CC (For some npm packages out there)
 rm -f /usr/local/bin/cc

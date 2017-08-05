@@ -10,7 +10,7 @@ require 'fileutils'
 @pkgName = ARGV[1]
 
 ARCH = `uname -m`.strip
-ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
+ARCH_LIB = if ARCH == 'x86_64' or ARCH == 'aarch64' then 'lib64' else 'lib' end
 
 CREW_PREFIX = '/usr/local'
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
@@ -370,7 +370,7 @@ def download
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    system('curl', '--insecure', '-L', '-#', url, '-o', filename)
+    system('curl', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
   end
