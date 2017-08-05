@@ -3,9 +3,9 @@ require 'package'
 class Memcached < Package
   description 'Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.'
   homepage 'https://memcached.org/'
-  version '1.4.34'
-  source_url 'https://memcached.org/files/memcached-1.4.34.tar.gz'
-  source_sha256 '5064c87f91a37d822dfeab8768490c55fe686a742f07f67c7121101e48d87c79'
+  version '1.5.0'
+  source_url 'https://memcached.org/files/memcached-1.5.0.tar.gz'
+  source_sha256 'c001f812024bb461b5e4d7d0506daab63dff9614eea26f46536c3b7e1e601c32'
 
   depends_on 'libevent'
 
