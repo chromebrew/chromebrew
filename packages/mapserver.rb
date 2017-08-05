@@ -13,6 +13,7 @@ class Mapserver < Package
   depends_on 'fribidi'
   depends_on 'gdal'
   depends_on 'geos'
+  depends_on 'glib'
   depends_on 'harfbuzz'
   depends_on 'libjpeg'
   depends_on 'proj4'
