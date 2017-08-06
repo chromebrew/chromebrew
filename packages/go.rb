@@ -8,10 +8,10 @@ class Go < Package
   source_sha256 '5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f68829d99fa6'
 
   # Tests requires perl
-  depends_on 'perl'
+  depends_on 'perl' => :build
   # go is required to build versions of go > 1.4
   unless File.exist? "#{CREW_PREFIX}/lib/go/bin/go"
-    depends_on 'go_bootstrap'
+    depends_on 'go_bootstrap' => :build
   end
 
   def self.build
