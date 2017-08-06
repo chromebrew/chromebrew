@@ -10,7 +10,6 @@ class Php7 < Package
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
   depends_on 'libpng'
-  depends_on 'libssh2'
   depends_on 'libxml2'
   depends_on 'libxslt'
   depends_on 'openssl'
