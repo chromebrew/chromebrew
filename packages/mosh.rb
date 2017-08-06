@@ -15,6 +15,6 @@ class Mosh < Package
   end
 
   def self.install
-    system 'make install'
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
