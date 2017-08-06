@@ -10,7 +10,6 @@ class Mutt < Package
   depends_on 'libxslt'
 
   def self.build
-    system 'mkdir /usr/local/mail'
     system './configure --with-mailpath=/usr/local/mail --prefix=/usr/local'
     system 'make'
   end
