@@ -30,5 +30,8 @@ class Nginx < Package
     puts "startnginx - starts nginx".lightblue
     puts "stopnginx - stops nginx".lightblue
     puts
+    puts "To finish the installation, execute the following:".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
   end
 end
