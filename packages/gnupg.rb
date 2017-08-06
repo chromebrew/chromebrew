@@ -14,6 +14,7 @@ class Gnupg < Package
   depends_on 'libassuan'
   depends_on 'libksba'
   depends_on 'npth'
+  depends_on 'gettext'
 
   def self.build
     system "./autogen.sh"
