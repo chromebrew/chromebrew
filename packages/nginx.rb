@@ -37,7 +37,7 @@ class Nginx < Package
     puts
     puts "To completely remove nginx, perform the following:".lightblue
     puts "crew remove nginx".lightblue
-    puts "sudo rm -rf /usr/local/nginx".lightblue
+    puts "sudo rm -rf #{CREW_PREFIX}/nginx".lightblue
     puts
   end
 end
