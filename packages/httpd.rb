@@ -19,6 +19,5 @@ class Httpd < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "libtool --finish #{CREW_DEST_DIR}#{CREW_PREFIX}/apache2/modules"
   end
 end
