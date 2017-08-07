@@ -16,22 +16,28 @@ class Nginx < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "sudo ln -sf /usr/local/nginx/sbin/nginx /usr/local/bin/nginx"
-    system "sed -i \'/^alias startnginx/d\' ~/.bashrc"
-    system "sed -i \'/^alias stopnginx/d\' ~/.bashrc"
-    system "sed -i '$ a alias startnginx=\"sudo nginx\"' ~/.bashrc"
-    system "sed -i '$ a alias stopnginx=\"sudo nginx -s quit\"' ~/.bashrc"
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
+    FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
+      system "sudo ln -sf #{CREW_PREFIX}/nginx/sbin/nginx nginx"
+    end
+    system "echo '#!/bin/bash' > startnginx"
+    system "echo 'sudo nginx' >> startnginx"
+    system "echo '#!/bin/bash' > stopnginx"
+    system "echo 'sudo nginx -s quit' >> stopnginx"
+    system "chmod +x st*nginx"
+    system "cp st*nginx #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
     puts
-    puts "All NGINX things are in /usr/local/nginx.".lightblue
+    puts "All things NGINX are in #{CREW_PREFIX}/nginx.".lightblue
     puts
-    puts "Pages are stored in /usr/local/nginx/html.".lightblue
+    puts "Pages are stored in #{CREW_PREFIX}/nginx/html.".lightblue
     puts
-    puts "Added bash aliases so you can easily start/stop nginx:".lightblue
+    puts "Added bash scripts so you can easily start/stop nginx:".lightblue
     puts "startnginx - starts nginx".lightblue
     puts "stopnginx - stops nginx".lightblue
     puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts "To completely remove nginx, perform the following:".lightblue
+    puts "crew remove nginx".lightblue
+    puts "sudo rm -rf /usr/local/nginx".lightblue
     puts
   end
 end
