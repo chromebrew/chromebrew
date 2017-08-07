@@ -22,6 +22,7 @@ class Mapserver < Package
     system "mkdir build"
     Dir.chdir "build" do
       system "cmake \
+              -DFRIBIDI_INCLUDE_DIR=`pkg-config fribidi --cflags-only-I|sed -e 's/^-I//' -e 's/ -I/;/g'` \
               -DWITH_CLIENT_WFS=1 \
               -DWITH_CLIENT_WMS=1 \
               -DWITH_CURL=1 \
