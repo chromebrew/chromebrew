@@ -18,14 +18,13 @@ class Nginx < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
     FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
-      system "sudo ln -sf #{CREW_PREFIX}/nginx/sbin/nginx nginx"
+      system "ln -s #{CREW_PREFIX}/nginx/sbin/nginx nginx"
+      system "echo '#!/bin/bash' > startnginx"
+      system "echo 'sudo nginx' >> startnginx"
+      system "echo '#!/bin/bash' > stopnginx"
+      system "echo 'sudo nginx -s quit' >> stopnginx"
+      system "chmod +x st*nginx"
     end
-    system "echo '#!/bin/bash' > startnginx"
-    system "echo 'sudo nginx' >> startnginx"
-    system "echo '#!/bin/bash' > stopnginx"
-    system "echo 'sudo nginx -s quit' >> stopnginx"
-    system "chmod +x st*nginx"
-    system "cp st*nginx #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
     puts
     puts "All things NGINX are in #{CREW_PREFIX}/nginx.".lightblue
     puts
