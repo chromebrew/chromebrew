@@ -15,7 +15,7 @@ class Dropbox < Package
     puts 'Unable to install dropboxd.  Supported architectures include x86 and x86_64 only.'.lightred
   end
 
-  depends_on 'python' unless File.exists? '/usr/local/bin/python'
+  depends_on 'python27' unless File.exists? '/usr/local/bin/python'
 
   def self.install
     system "wget https://linux.dropbox.com/packages/dropbox.py"
