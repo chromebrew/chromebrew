@@ -3,9 +3,9 @@ require 'package'
 class Heroku < Package
   description 'The Heroku Command Line Interface (CLI), formerly known as the Heroku Toolbelt, is a tool for creating and managing Heroku apps from the command line / shell of various operating systems.'
   homepage 'https://devcenter.heroku.com/articles/heroku-cli'
-  version '6.13.6'
-  source_url 'https://github.com/heroku/cli/archive/v6.13.6.tar.gz'
-  source_sha256 '395c7e22d16b1fce2d5ed4ac1e022dbd3c9aa8fdbc172d9dadf86ba9c1ad6978'
+  version '6.13.9'
+  source_url 'https://github.com/heroku/cli/archive/v6.13.9.tar.gz'
+  source_sha256 '76699029d86fc10326f8cf39b0c0a3b1f322dee39bd7c96fa81e34e52ff454f9'
 
   depends_on 'nodebrew' unless `node --version`
   depends_on 'yarn'
