@@ -21,7 +21,7 @@ class Nodebrew < Package
 
     puts ""
     puts "Please set PATH environment variable."
-    puts "\texport PATH=$HOME/.nodebrew:$PATH"
+    puts "\texport PATH=$HOME/.nodebrew/current/bin:$PATH"
     puts ""
     puts "To install the latest node, please execute:"
     puts "\tnodebrew install-binary latest"
