@@ -7,11 +7,9 @@ class Heroku < Package
   source_url 'https://github.com/heroku/cli/archive/v6.13.9.tar.gz'
   source_sha256 '76699029d86fc10326f8cf39b0c0a3b1f322dee39bd7c96fa81e34e52ff454f9'
 
-  depends_on 'nodebrew' unless `node --version`
   depends_on 'yarn'
 
   def self.build
-    system 'nodebrew install-binary latest && nodebrew use latest' unless `node --version`
     system 'yarn install'
   end
 
