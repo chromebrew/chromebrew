@@ -10,9 +10,10 @@ class Openconnect < Package
   depends_on 'buildessential'
   depends_on 'libxml2'
   depends_on 'gnutls'
+  depends_on 'vpnc'
 
   def self.build
-    system "./configure CFLAGS=' -fPIC' --with-vpnc-script=#{CREW_PREFIX}/bin/vpnc-script"
+    system "./configure CFLAGS=' -fPIC' --with-vpnc-script=#{CREW_PREFIX}/etc/vpnc/vpnc-script"
     system "make"
   end
 
@@ -20,8 +21,6 @@ class Openconnect < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
     FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
-      system "wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script"
-      system "chmod +x vpnc-script"
       system "echo '#!/bin/bash' > vpnc-start"
       system "echo 'if test \$1; then' >> vpnc-start"
       system "echo '  sudo ip tuntap add mode tun tun0' >> vpnc-start"
