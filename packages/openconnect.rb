@@ -12,8 +12,8 @@ class Openconnect < Package
   depends_on 'gnutls'
 
   def self.build
-    system './configure CFLAGS=" -fPIC" --with-vpnc-script=/usr/local/bin/vpnc-script'
-    system 'make'
+    system "./configure CFLAGS=' -fPIC' --with-vpnc-script=#{CREW_PREFIX}/bin/vpnc-script"
+    system "make"
   end
 
   def self.install
@@ -27,7 +27,7 @@ class Openconnect < Package
       system "echo '  sudo ip tuntap add mode tun tun0' >> vpnc-start"
       system "echo '  read -p \"VPN Username: \" USER' >> vpnc-start"
       system "echo '  read -s -p \"VPN Password: \" PASS' >> vpnc-start"
-      system "echo '  echo \"\$PASS\" | openconnect --user=\$USER --interface=tun0 -b \$1 \&' >> vpnc-start"
+      system "echo '  echo \"\$PASS\" | openconnect --user=\$USER --interface=tun0 -b \$1' >> vpnc-start"
       system "echo 'else' >> vpnc-start"
       system "echo '  echo \"Usage: vpnc-start vpn.example.com\"' >> vpnc-start"
       system "echo 'fi' >> vpnc-start"
