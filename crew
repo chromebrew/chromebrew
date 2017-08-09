@@ -19,6 +19,8 @@ CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
+CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
+CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 
 # Set CREW_NPROC from environment variable or `nproc`
 if ENV["CREW_NPROC"].to_s == ''
@@ -781,7 +783,7 @@ when "remove"
     help "remove"
   end
 when nil
-  puts "Chromebrew, version 0.4.3"
+  puts "Chromebrew, version 0.4.4"
   puts "Usage: crew [command] [package]"
   help nil
 else
