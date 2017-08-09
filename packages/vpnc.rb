@@ -12,11 +12,17 @@ class Vpnc < Package
   depends_on 'perl'
 
   def self.build
-    system 'sed -i "s,\./makeman.pl,perl makeman.pl," Makefile'
-    system 'make'
+    system "sed -i 's,\./makeman.pl,perl makeman.pl,' Makefile"
+    system "sed -i 's,ETCDIR=/etc/vpnc,ETCDIR=#{CREW_PREFIX}/etc/vpnc,' Makefile"
+    system "make"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/etc/vpnc"
+    FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/etc/vpnc") do
+      system "wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script"
+      system "chmod +x vpnc-script"
+    end
   end
 end
