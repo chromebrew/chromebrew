@@ -11,7 +11,7 @@ class Cmatrix < Package
   depends_on 'ncurses'
 
   def self.build
-    system 'CPPFLAGS=-I/usr/local/include/ncurses ./configure --prefix=/usr/local'
+    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure --prefix=#{CREW_PREFIX}"
     system "make"
   end
 
