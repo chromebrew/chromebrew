@@ -783,7 +783,7 @@ when "remove"
     help "remove"
   end
 when nil
-  puts "Chromebrew, version 0.4.4"
+  puts "Chromebrew, version 0.4.3"
   puts "Usage: crew [command] [package]"
   help nil
 else
