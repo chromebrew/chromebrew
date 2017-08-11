@@ -182,3 +182,14 @@ echo crew >> .git/info/sparse-checkout
 git fetch origin master
 git reset --hard origin/master
 echo "Chromebrew installed successfully and package lists updated."
+
+#check LD_LIBRARY_PATH on x86_64
+case "$architecture" in
+"x86_64")
+  (echo $LD_LIBRARY_PATH | grep '/usr/local/lib[^6]\|/usr/local/lib$' > /dev/null) || cat << EOF
+
+Several packages may install their libraries into $CREW_PREFIX/lib, so adding below to your ~/.bash_profile is recommended.
+  export LD_LIBRARY_PATH=/usr/local/lib64:/usr/local/lib
+EOF
+  ;;
+esac
