@@ -3,9 +3,9 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib/'
-  version '2.40.2'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/glib/2.40/glib-2.40.2.tar.xz'
-  source_sha256 'e8ff8af2950897e805408480c454c415d1eade4e670ec5fb507f5e5853726c7a'
+  version '2.53.4'
+  source_url 'https://ftp.gnome.org/pub/gnome/sources/glib/2.53/glib-2.53.4.tar.xz'
+  source_sha256 'f26b5565f9c1deba2d76dd5f819f9ed248dd75fcd19aa9fa6f51c5f554790679'
 
   depends_on 'libffi'
   depends_on 'gettext'
