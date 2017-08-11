@@ -16,7 +16,6 @@ class Luajit < Package
   })
 
   depends_on 'buildessential' => :build
-  depends_on 'make' => :build
 
   def self.build
     system 'make'
