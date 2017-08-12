@@ -12,7 +12,7 @@ class Serf < Package
   depends_on 'openssl'
 
   def self.build
-    system "scons APR=/usr/local APU=/usr/local OPENSSL=/usr/local/include/openssl PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
+    system "scons APR=#{CREW_PREFIX} APU=#{CREW_PREFIX} OPENSSL=#{CREW_PREFIX}/include/openssl PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
   end
 
   def self.install
