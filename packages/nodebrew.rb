@@ -16,6 +16,8 @@ class Nodebrew < Package
     system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
     system "ln -s #{CREW_LIB_PREFIX}/nodebrew/nodebrew #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
     system "ln -s #{CREW_LIB_PREFIX}/nodebrew/current/bin/node #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
+    system "ln -s #{CREW_LIB_PREFIX}/nodebrew/current/bin/npm #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
+    system "ln -s #{CREW_LIB_PREFIX}/nodebrew/current/bin/npx #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
 
     system "ln -s #{CREW_LIB_PREFIX}/nodebrew $HOME/.nodebrew"
 
