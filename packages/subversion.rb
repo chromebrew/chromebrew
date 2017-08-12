@@ -3,21 +3,19 @@ require 'package'
 class Subversion < Package
   description 'Subversion is an open source version control system.'
   homepage 'https://subversion.apache.org/'
-  version '1.9.6-1'
-  source_url 'http://apache.mirrors.ionfish.org/subversion/subversion-1.9.6.tar.bz2'
-  source_sha256 'dbcbc51fb634082f009121f2cb64350ce32146612787ffb0f7ced351aacaae19'
+  version '1.9.7'
+  source_url 'http://www-us.apache.org/dist/subversion/subversion-1.9.7.tar.bz2'
+  source_sha256 'c3b118333ce12e501d509e66bb0a47bcc34d053990acab45559431ac3e491623'
 
   depends_on 'aprutil'
   depends_on 'autoconf'
   depends_on 'libtool'
   depends_on 'serf'
   depends_on 'sqlite'
+  depends_on 'zlibpkg'
 
   def self.build
-    system "sed -i 's,<serf.h>,</usr/local/include/serf-1/serf.h>,' subversion/libsvn_ra_serf/*"
-    system "sed -i 's,<serf_bucket_util.h>,</usr/local/include/serf-1/serf_bucket_util.h>,' subversion/libsvn_ra_serf/*.c"
-    system "sed -i 's,<serf_bucket_types.h>,</usr/local/include/serf-1/serf_bucket_types.h>,' subversion/libsvn_ra_serf/*.c"
-    system './configure'
+    system './configure', '--disable-static', "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
