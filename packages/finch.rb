@@ -30,8 +30,8 @@ class Finch < Package
       '--disable-tk',
       '--disable-vv',
       '--enable-consoleui=yes',
-      '--includedir=/usr/local/include',
-      '--oldincludedir=/usr/local/include',
+      "--includedir=#{CREW_PREFIX}/include",
+      "--oldincludedir=#{CREW_PREFIX}/include",
       "--with-tclconfig=#{CREW_LIB_PREFIX}",
       "--libdir=#{CREW_LIB_PREFIX}",
       '--without-x'
