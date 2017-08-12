@@ -121,20 +121,36 @@ end
 #disallow sudo
 abort "Chromebrew should not be run as root.".lightred if Process.uid == 0
 
+#parse switches
+keep = false
+version = false
+switches = ['-k', '--keep', '-v', '--version']
+for i in 1...ARGV.length
+  case ARGV[i]
+  when '-k', '--keep'
+    keep = true
+  when '-v', '--version'
+    version = true
+  end
+  if ARGV[i].include? '-'
+    abort "Invalid switch.".lightred unless switches.include? ARGV[i]
+  end
+end
+
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
 @device.each do |key, elem|
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def print_package(pkgName, extra = false)
+def print_package(pkgName, version = false)
   search pkgName, true
   print '(i) '.lightgreen if @device[:installed_packages].any? do |elem|
     elem[:name] == pkgName
   end
   print @pkg.name
   print ": #{@pkg.description}" if @pkg.description
-  if extra
+  if version
     puts ""
     puts @pkg.homepage if @pkg.homepage
     print "version #{@pkg.version}"
@@ -164,18 +180,24 @@ def search (pkgName, silent = false)
   abort "Package #{pkgName} not found. :(".lightred
 end
 
-def regexp_search(pkgName)
-  results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
-	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
-	  .collect { |f| File.basename(f, '.rb') } \
-	  .each    { |f| print_package(f, ARGV[2] == "extra") }
+def regexp_search(pkgName, version = false)
+  case pkgName
+  when '-v', '--version'
+    results = []
+    pkgName = '.*'
+  else
+    results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
+      .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
+      .collect { |f| File.basename(f, '.rb') } \
+      .each    { |f| print_package(f, version) }
+  end
   if results.empty?
     Find.find ("#{CREW_LIB_PATH}packages/") do |packageName|
       if File.file? packageName
         package = File.basename packageName, '.rb'
         search package, true
         if ( @pkg.description =~ /#{pkgName}/i )
-          print_package(package, ARGV[2] == "extra")
+          print_package(package, version)
           results.push(package)
         end
       end
@@ -187,47 +209,49 @@ end
 def help (pkgName)
   case pkgName
   when "build"
-    puts "Build a package."
-    puts "Usage: crew build [package]"
-    puts "Build [package] from source and place the archive and checksum in the current working directory."
+    puts "Build package(s)."
+    puts "Usage: crew build <package1> [<package2> ...] [-k | --keep]"
+    puts "Build package(s) from source and place the archive and checksum in the current working directory."
+    puts "If the '-k' or '--keep' switch is provided, the contents of BREW_DIR (/usr/local/tmp/crew by default) will be remain."
   when "download"
-    puts "Download a package."
-    puts "Usage: crew download [package]"
-    puts "Download [package] to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it."
+    puts "Download package(s)."
+    puts "Usage: crew download <package1> [<package2> ...]"
+    puts "Download package(s) to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install."
   when "install"
-    puts "Install a package."
-    puts "Usage: crew install [package]"
-    puts "The [package] must be a valid name.  Use `crew search [package]` to search for a package to install."
+    puts "Install package(s)."
+    puts "Usage: crew install <package1> [<package2> ...] [-k | --keep]"
+    puts "The package(s) must be valid.  Use `crew search` to search for packages to install."
+    puts "If the '-k' or '--keep' switch is provided, the contents of BREW_DIR (/usr/local/tmp/crew by default) will be remain."
   when "remove"
-    puts "Remove a package."
-    puts "Usage: crew remove [package]"
-    puts "The [package] must be currently installed."
+    puts "Remove package(s)."
+    puts "Usage: crew remove <package1> [<package2> ...]"
+    puts "The package(s) must be currently installed."
   when "search"
     puts "Look for a package."
-    puts "Usage: crew search [package] [extra]"
-    puts "If [package] is omitted, all packages will be returned."
+    puts "Usage: crew search <package> [-v | --version]"
+    puts "If <package> is omitted, all packages will be returned."
     puts "(i)".lightgreen + " in front of the name means the package is installed."
-    puts "The [package] string can also contain regular expressions."
-    puts "If the keyword 'extra' is appended, homepage and version will be displayed."
+    puts "The <package> string can also contain regular expressions."
+    puts "If the '-v' or '--version' switch is provided, homepage and version will be displayed."
     puts "Examples:"
     puts "  crew search | grep '(i)'".lightblue + " will display all installed packages."
     puts "  crew search | grep -v '(i)'".lightblue + " will display all available packages not already installed."
     puts "  crew search ^lib".lightblue + " will display all packages that start with 'lib'."
     puts "  crew search audio".lightblue + " will display all packages with 'audio' in the description."
-    puts "  crew search git extra".lightblue + " will display the git package along with homepage and version."
+    puts "  crew search git -v".lightblue + " will display the git package along with homepage and version."
   when "update"
     puts "Update crew."
     puts "Usage: crew update"
     puts "This only updates crew itself.  Use 'crew upgrade' to update packages."
   when "upgrade"
     puts "Update package(s)."
-    puts "Usage: crew upgrade [package]"
-    puts "If [package] is omitted, all packages will be updated.  Otherwise, a specific package will be updated."
+    puts "Usage: crew upgrade <package>"
+    puts "If <package> is omitted, all packages will be updated.  Otherwise, a specific package will be updated."
     puts "Use 'crew update' to update crew itself."
   when "whatprovides"
     puts "Determine which package(s) contains file(s)."
-    puts "Usage: crew whatprovides [pattern]"
-    puts "The [pattern] is a search string which can contain regular expressions."
+    puts "Usage: crew whatprovides <pattern>"
+    puts "The <pattern> is a search string which can contain regular expressions."
   else
     puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
   end
@@ -260,7 +284,7 @@ def whatprovides (pkgName)
 end
 
 def update
-  abort "'crew update' is used to update crew itself. Use 'crew upgrade <packageName> to upgrade a specific package.".orange if @pkgName
+  abort "'crew update' is used to update crew itself. Use 'crew upgrade <package> to upgrade a specific package.".orange if @pkgName
 
   #update package lists
   Dir.chdir CREW_LIB_PATH do
@@ -284,7 +308,7 @@ def update
 
   if canBeUpdated > 0
     puts ""
-    puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
+    puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <package>' to upgrade a specific package."
   else
     puts "Your software is up to date.".lightgreen
   end
@@ -482,7 +506,7 @@ def install_package (pkgdir)
   end
 end
 
-def resolve_dependencies_and_install
+def resolve_dependencies_and_install (keep = false)
   begin
     origin = @pkg.name
 
@@ -494,7 +518,7 @@ def resolve_dependencies_and_install
     abort "#{@pkg.name} failed to install: #{e.to_s}".lightred
   ensure
     #cleanup
-    unless ARGV[2] == 'keep'
+    unless keep
       Dir.chdir CREW_BREW_DIR do
         system "rm -rf *"
         system "mkdir dest" #this is a little ugly, feel free to find a better way
@@ -574,55 +598,52 @@ def resolve_dependencies
 end
 
 def install
-  for i in 1 ... ARGV.length
-    search ARGV[i], true
-    if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
-      puts "Package #{@pkg.name} already installed, skipping...".lightgreen
-      return
-    end
-
-    unless @pkg.is_fake?
-      meta = download
-      target_dir = unpack meta
-      if meta[:source] == true
-        abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again.".lightred unless system("gcc", "--version")
-
-        # build from source and place binaries at CREW_DEST_DIR
-        # CREW_DEST_DIR contains usr/local/... hierarchy
-        build_and_preconfigure target_dir
-
-        # prepare filelist and dlist at CREW_DEST_DIR
-        prepare_package CREW_DEST_DIR
-
-        # use CREW_DEST_DIR
-        dest_dir = CREW_DEST_DIR
-      else
-        # use extracted binary directory
-        dest_dir = target_dir
-      end
-
-      # remove it just before the file copy
-      if @pkg.in_upgrade
-        puts "Removing since upgrade..."
-        remove @pkg.name
-      end
-
-      # install filelist, dlist and binary files
-      puts "Installing..."
-      install_package dest_dir
-    end
-
-    #add to installed packages
-    @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
-    File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
-      output = JSON.parse @device.to_json
-      file.write JSON.pretty_generate(output)
-    end
-    puts "#{@pkg.name.capitalize} installed!".lightgreen
+  if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
+    puts "Package #{@pkg.name} already installed, skipping...".lightgreen
+    return
   end
+
+  unless @pkg.is_fake?
+    meta = download
+    target_dir = unpack meta
+    if meta[:source] == true
+      abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again.".lightred unless system("gcc", "--version")
+
+      # build from source and place binaries at CREW_DEST_DIR
+      # CREW_DEST_DIR contains usr/local/... hierarchy
+      build_and_preconfigure target_dir
+
+      # prepare filelist and dlist at CREW_DEST_DIR
+      prepare_package CREW_DEST_DIR
+
+      # use CREW_DEST_DIR
+      dest_dir = CREW_DEST_DIR
+    else
+      # use extracted binary directory
+      dest_dir = target_dir
+    end
+
+    # remove it just before the file copy
+    if @pkg.in_upgrade
+      puts "Removing since upgrade..."
+      remove @pkg.name
+    end
+
+    # install filelist, dlist and binary files
+    puts "Installing..."
+    install_package dest_dir
+  end
+
+  #add to installed packages
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
+  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
+    output = JSON.parse @device.to_json
+    file.write JSON.pretty_generate(output)
+  end
+  puts "#{@pkg.name.capitalize} installed!".lightgreen
 end
 
-def resolve_dependencies_and_build
+def resolve_dependencies_and_build (keep = false)
   begin
     origin = @pkg.name
 
@@ -636,7 +657,7 @@ def resolve_dependencies_and_build
     abort "#{@pkg.name} failed to build: #{e.to_s}".lightred
   ensure
     #cleanup
-    unless ARGV[2] == 'keep'
+    unless keep
       Dir.chdir CREW_BREW_DIR do
         system "rm -rf *"
         system "mkdir dest" #this is a little ugly, feel free to find a better way
@@ -685,54 +706,53 @@ def archive_package (pwd)
 end
 
 def remove (pkgName)
-  for i in 1 ... ARGV.length
-    pkgName = ARGV[i]
-    #make sure the package is actually installed
-    unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName }
-      puts "Package #{pkgName} isn't installed.".lightred
-      return
-    end
 
-    #if the filelist exists, remove the files and directories installed by the package
-    if File.file?("#{CREW_CONFIG_PATH}meta/#{pkgName}.filelist")
-      Dir.chdir CREW_CONFIG_PATH do
-
-        #remove all files installed by the package
-        File.open("meta/#{pkgName}.filelist").each_line do |line|
-          begin
-            File.unlink line.chomp
-          rescue => exception #swallow exception
-          end
-        end
-
-        #remove all directories installed by the package
-        File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
-          begin
-            Dir.rmdir line.chomp
-          rescue => exception #swallow exception
-          end
-        end
-
-        #remove the file and directory list
-        File.unlink "meta/#{pkgName}.filelist"
-        File.unlink "meta/#{pkgName}.directorylist"
-
-      end
-    end
-
-    #remove from installed packages
-    @device[:installed_packages].each do |elem|
-      @device[:installed_packages].delete elem if elem[:name] == pkgName
-    end
-
-    #update the device manifest
-    File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
-      out = JSON.parse @device.to_json
-      file.write JSON.pretty_generate(out)
-    end
-
-    puts "#{pkgName.capitalize} removed!".lightgreen
+  #make sure the package is actually installed
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName }
+    puts "Package #{pkgName} isn't installed.".lightred
+    return
   end
+
+  #if the filelist exists, remove the files and directories installed by the package
+  if File.file?("#{CREW_CONFIG_PATH}meta/#{pkgName}.filelist")
+    Dir.chdir CREW_CONFIG_PATH do
+
+      #remove all files installed by the package
+      File.open("meta/#{pkgName}.filelist").each_line do |line|
+        begin
+          File.unlink line.chomp
+        rescue => exception #swallow exception
+        end
+      end
+
+      #remove all directories installed by the package
+      File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
+        begin
+          Dir.rmdir line.chomp
+        rescue => exception #swallow exception
+        end
+      end
+
+      #remove the file and directory list
+      File.unlink "meta/#{pkgName}.filelist"
+      File.unlink "meta/#{pkgName}.directorylist"
+
+    end
+  end
+
+  #remove from installed packages
+  @device[:installed_packages].each do |elem|
+    @device[:installed_packages].delete elem if elem[:name] == pkgName
+  end
+
+  #update the device manifest
+  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
+    out = JSON.parse @device.to_json
+    file.write JSON.pretty_generate(out)
+  end
+
+  puts "#{pkgName.capitalize} removed!".lightgreen
+
 end
 
 case @command
@@ -745,7 +765,7 @@ when "help"
   end
 when "search"
   if @pkgName
-    regexp_search @pkgName
+    regexp_search @pkgName, version
   else
     list_packages
   end
@@ -756,9 +776,11 @@ when "whatprovides"
     help "whatprovides"
   end
 when "download"
-  if @pkgName
-    search @pkgName
-    download
+  if ARGV.length > 1
+    for i in 1...ARGV.length
+      search ARGV[i]
+      download
+    end
   else
     help "download"
   end
@@ -767,22 +789,32 @@ when "update"
 when "upgrade"
   upgrade
 when "install"
-  if @pkgName
-    search @pkgName
-    resolve_dependencies_and_install
+  if ARGV.length > 1
+    for i in 1...ARGV.length
+      unless switches.include? ARGV[i]
+        search ARGV[i]
+        resolve_dependencies_and_install keep
+      end
+    end
   else
     help "install"
   end
 when "build"
-  if @pkgName
-    search @pkgName
-    resolve_dependencies_and_build
+  if ARGV.length > 1
+    for i in 1...ARGV.length
+      unless switches.include? ARGV[i]
+        search ARGV[i]
+        resolve_dependencies_and_build keep
+      end
+    end
   else
     help "build"
   end
 when "remove"
-  if @pkgName
-    remove @pkgName
+  if ARGV.length > 1
+    for i in 1...ARGV.length
+      remove ARGV[i]
+    end
   else
     help "remove"
   end
