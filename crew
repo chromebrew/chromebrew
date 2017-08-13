@@ -476,7 +476,7 @@ def install_package (pkgdir)
     strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
 
     # Strip binaries but not compressed archives
-    strip_find_files "find . -type f ! -iname '*\.zip' ! -iname '*\.tar' ! -iname '*\.gz' ! -iname '*\.tgz' ! -iname '*\.bz2' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
   end
