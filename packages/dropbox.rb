@@ -6,10 +6,10 @@ class Dropbox < Package
   version '32.4.23'
   case ARCH
   when 'i686'
-    source_url "https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-32.4.23.tar.gz"
+    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-32.4.23.tar.gz'
     source_sha256 'd7e130f2872fb2d141f8d2f892f7a2c29b95ccd3620398c21ea53dee878dc075'
   when 'x86_64'
-    source_url "https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-32.4.23.tar.gz"
+    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-32.4.23.tar.gz'
     source_sha256 'a18dca750e72e0604b9798bfe5e0b9b7a2b5ed43116ab96166a298ae3c1b5086'
   else
     puts 'Unable to install dropboxd.  Supported architectures include i686 and x86_64 only.'.lightred
