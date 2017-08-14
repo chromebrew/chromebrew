@@ -3,7 +3,7 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.24.1-1'
+  version '5.24.1-2'
   source_url 'http://www.cpan.org/src/5.0/perl-5.24.1.tar.gz'
   source_sha256 'e6c185c9b09bdb3f1b13f678999050c639859a7ef39c8cad418448075f5918af'
 
@@ -15,13 +15,14 @@ class Perl < Package
     # Install manual files into /usr/local/share/man/man* even if groff is not installed.
     system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_PREFIX}/share/man/man1 -Dman3dir=#{CREW_PREFIX}/share/man/man3"
     system "make"
+    system "curl -o cpanm https://cpanmin.us"
+    system "chmod +x cpanm"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "sudo curl -o /usr/local/bin/cpanm https://cpanmin.us"
-    system "sudo chmod +x /usr/local/bin/cpanm"
-    system "sudo chown chronos /usr/local/bin/cpanm"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin/"
+    system "cp cpanm #{CREW_DEST_PREFIX}/bin/"
   end
 
   def self.check
