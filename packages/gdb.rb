@@ -8,10 +8,14 @@ class Gdb < Package
   source_sha256 'f6a24ffe4917e67014ef9273eb8b547cb96a13e5ca74895b06d683b391f3f4ee'
 
   binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/gdb-8.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/gdb-8.0-chromeos-armv7l.tar.xz',
        i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/gdb-8.0-chromeos-i686.tar.xz',
      x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/gdb-8.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '8612b39c8041b7ca574f0689f74a733c0ed168227495bcbc7ef2588dde5e314b',
+     armv7l: '8612b39c8041b7ca574f0689f74a733c0ed168227495bcbc7ef2588dde5e314b',
        i686: 'fcaac403d13015720d0ef469545041a2bcff0b4d0f3bdba48380acfd8ac17385',
      x86_64: 'f58b46880dd963748d604bca3cb9db9e108c64142e45d7df42b389acc0a085f2',
   })
