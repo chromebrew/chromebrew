@@ -9,6 +9,7 @@ class Harfbuzz < Package
 
   depends_on 'glib'
   depends_on 'icu4c'
+  depends_on 'freetype'
 
   def self.build
     system "./configure"
