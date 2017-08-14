@@ -8,16 +8,16 @@ class Texinfo < Package
   source_sha256 '6ae2e61d87c6310f9af7c6f2426bd0470f251d1a6deb61fba83a3b3baff32c3a'
 
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/texinfo-6.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/texinfo-6.4-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/texinfo-6.4-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/texinfo-6.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/texinfo-6.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/texinfo-6.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/texinfo-6.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/texinfo-6.4-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0ebcf7a425ce2b0aa96d96c8310e43804915a7005ed9308c7788ad6367d33e4b',
-     armv7l: '0ebcf7a425ce2b0aa96d96c8310e43804915a7005ed9308c7788ad6367d33e4b',
-       i686: '4916592a77d9a56506d9c410d7bda912c089cb3f74a5f7a90ca15f6b90a60365',
-     x86_64: '0cbfd358c4c970920793a1fbd422cc7e06f03e2ba4caf7e69d2342554bb12ba7',
+    aarch64: 'c754230640c776b6f44910a7e5101d0d14f6aeb3a0b8c7fc0e808440c1576619',
+     armv7l: 'c754230640c776b6f44910a7e5101d0d14f6aeb3a0b8c7fc0e808440c1576619',
+       i686: '1b89c8829a0d945e9842efd538008f4bcf6a04ba521a37177ad12dbe2248e2c2',
+     x86_64: 'b882e0b46a42e0db6afc4ab821564f454273d203ad50dbe135ef0c335b0b9c14',
   })
 
   depends_on 'gettext' => :build
