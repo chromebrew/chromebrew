@@ -1,11 +1,10 @@
 require 'package'
-require 'json'
 require 'fileutils'
 
 class Wine < Package
   description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD.'
   homepage 'https://www.winehq.org/'
-  version '2.10'
+  version '2.10-1'
   source_url 'https://dl.winehq.org/wine/source/2.x/wine-2.10.tar.xz'
   source_sha256 '488df7ffd2e81da455bf428fc9eb784bb4273a890334500895665711bd52f179'
 
@@ -24,7 +23,7 @@ class Wine < Package
 
   def self.build
     case ARCH
-    when "i686" || "armv7l" || "aarch64"
+    when "i686", "armv7l", "aarch64"
       system "./configure --without-x"
     when "x86_64"
       system "./configure --without-x --enable-win64"
