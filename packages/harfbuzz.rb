@@ -3,9 +3,9 @@ require 'package'
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  version '1.4.7'
-  source_url 'https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-1.4.7.tar.bz2'
-  source_sha256 'b85f6627425d54f32118308e053b939c63a388de9bf455b3830f68cad406bc6d'
+  version '1.4.8'
+  source_url 'https://github.com/behdad/harfbuzz/releases/download/1.4.8/harfbuzz-1.4.8.tar.bz2'
+  source_sha256 'ccec4930ff0bb2d0c40aee203075447954b64a8c2695202413cc5e428c907131'
 
   def self.build
     system "./configure"
