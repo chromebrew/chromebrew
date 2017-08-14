@@ -3,21 +3,21 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.24.1-1'
+  version '5.24.1-2'
   source_url 'http://www.cpan.org/src/5.0/perl-5.24.1.tar.gz'
   source_sha256 'e6c185c9b09bdb3f1b13f678999050c639859a7ef39c8cad418448075f5918af'
 
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/perl-5.24.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/perl-5.24.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/perl-5.24.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/perl-5.24.1-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/perl-5.24.1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/perl-5.24.1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/perl-5.24.1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/perl-5.24.1-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'fe79dbe04afeddb1fe5f05aeaad6a5cad2cc7ebe5bebb81c0fa0adb6b3dc832a',
-     armv7l: 'fe79dbe04afeddb1fe5f05aeaad6a5cad2cc7ebe5bebb81c0fa0adb6b3dc832a',
-       i686: '3c00ae12d21edea1d4c97f35730c6047c1efcb286ffbaf80f06ba73f83151229',
-     x86_64: 'cdd728843bda0e1cdac2024ca6fd534e2ab167fefcd636a73b2aa2453b1c382e',
+    aarch64: '0019a364655e4398e010b42dffe2f683b569fe443f230b79808e2355ef648345',
+     armv7l: '0019a364655e4398e010b42dffe2f683b569fe443f230b79808e2355ef648345',
+       i686: '178d51ddb852d9734d042d3a43ad9bfc3b8eb33a5e45cd8303c24931b6669ec3',
+     x86_64: 'e8ff465d454f17f424206422be17355f20f6569988e1666bfd24974e670c63b1',
   })
 
   depends_on 'patch' => :build
