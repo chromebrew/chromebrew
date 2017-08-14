@@ -10,6 +10,7 @@ class Git_lfs < Package
   depends_on 'go'
 
   def self.build
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system 'script/bootstrap'
   end
 
