@@ -19,15 +19,16 @@ class Dropbox < Package
 
   def self.build
     system "wget https://linux.dropbox.com/packages/dropbox.py"
-    system "sed -i 's,~/.dropbox-dist,#{CREW_PREFIX}/bin,g' dropbox.py"
+    system "sed -i 's,~/.dropbox-dist,#{CREW_LIB_PREFIX}/dropbox,g' dropbox.py"
     system "echo '#!/bin/bash' > dropbox"
-    system "echo 'python #{CREW_PREFIX}/bin/dropbox.py \$1' >> dropbox"
+    system "echo 'python #{CREW_PREFIX}/bin/dropbox.py \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9' >> dropbox"
     system "chmod +x dropbox"
   end
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp -r .dropbox-dist/* #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_LIB_PREFIX}/dropbox"
+    system "cp -r .dropbox-dist/* #{CREW_DEST_LIB_PREFIX}/dropbox"
     system "cp dropbox.py #{CREW_DEST_PREFIX}/bin"
     system "cp dropbox #{CREW_DEST_PREFIX}/bin"
   end
