@@ -21,7 +21,7 @@ class Dropbox < Package
     system "wget https://linux.dropbox.com/packages/dropbox.py"
     system "sed -i 's,~/.dropbox-dist,#{CREW_LIB_PREFIX}/dropbox,g' dropbox.py"
     system "echo '#!/bin/bash' > dropbox"
-    system "echo 'python #{CREW_PREFIX}/bin/dropbox.py \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9' >> dropbox"
+    system "echo 'python #{CREW_PREFIX}/bin/dropbox.py \"\$@\"' >> dropbox"
     system "chmod +x dropbox"
   end
 
