@@ -3,7 +3,7 @@ require 'package'
 class Dropbox < Package
   description 'Dropbox simplifies the way you create, share and collaborate.  Bring your photos, docs, and videos anywhere and keep your files safe.'
   homepage 'https://www.dropbox.com/'
-  version '32.4.23'
+  version '32.4.23-1'
   case ARCH
   when 'i686'
     source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-32.4.23.tar.gz'
