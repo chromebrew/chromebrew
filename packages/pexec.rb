@@ -8,10 +8,14 @@ class Pexec < Package
   source_sha256 'a968e4774eef80b8b1de3c10e6c0ad2ebeeb732b10e438596f110aa6aaf94a64'
 
   binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/pexec-1.0rc8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/pexec-1.0rc8-chromeos-armv7l.tar.xz',
        i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/pexec-1.0rc8-chromeos-i686.tar.xz',
      x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/pexec-1.0rc8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '51e334e47a1524582547e216745e3f1340c72e4ad6d2013e63930b7ec8504713',
+     armv7l: '51e334e47a1524582547e216745e3f1340c72e4ad6d2013e63930b7ec8504713',
        i686: 'a42760aed2f785556aff25828bf9d084193507cb7e9fdb82682968e616d1b558',
      x86_64: '1b44e24f07e71491e7d304c96f81238ea087df5776fa241cce5b08dff395428c',
   })
