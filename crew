@@ -14,16 +14,17 @@ Usage:
   #{__FILE__} build [-k|--keep] <name>...
   #{__FILE__} download <name>...
   #{__FILE__} help [<command>]
-  #{__FILE__} install [-k|--keep] <name>...
+  #{__FILE__} install [-k|--keep|-s|--build-from-source] <name>...
   #{__FILE__} remove <name>...
   #{__FILE__} search [-d|--desc] [<name>...]
   #{__FILE__} update
-  #{__FILE__} upgrade [-k|--keep] [<name>...]
+  #{__FILE__} upgrade [-k|--keep|-s|--build-from-source] [<name>...]
   #{__FILE__} whatprovides <name>...
 
-  -k --keep  Keep extracted files as is.
-  -d --desc  Show extra information.
-  -h --help  Show this screen.
+  -k --keep               Keep extracted files as is.
+  -s --build-from-source  Build from source even if pre-compiled binary exists
+  -d --desc               Show extra information.
+  -h --help               Show this screen.
 
 version 0.4.3
 DOCOPT
@@ -37,6 +38,7 @@ end
 
 @opt_keep = args["--keep"]
 @opt_desc = args["--desc"]
+@opt_src = args["--build-from-source"]
 
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
@@ -789,6 +791,7 @@ def install_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
+    @pkg.build_from_source = true if @opt_src
     resolve_dependencies_and_install
   end
 end
@@ -814,6 +817,8 @@ end
 def upgrade_command (args)
   args["<name>"].each do |name|
     @pkgName = name
+    search @pkgName
+    @pkg.build_from_source = true if @opt_src
     upgrade
   end.empty? and begin
     upgrade
