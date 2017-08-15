@@ -170,6 +170,9 @@ wget -N $URL/lib/package_helpers.rb
 rm -f /usr/local/bin/cc
 ln -s /usr/local/bin/gcc /usr/local/bin/cc
 
+# install docopt
+gem install docopt
+
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
 rm -rf .git
