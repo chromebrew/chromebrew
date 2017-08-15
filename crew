@@ -323,8 +323,6 @@ end
 
 def upgrade
   if @pkgName
-    search @pkgName
-
     currentVersion = nil
     @device[:installed_packages].each do |package|
       if package[:name] == @pkg.name
