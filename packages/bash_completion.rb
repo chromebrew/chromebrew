@@ -19,7 +19,7 @@ class Bash_completion < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     puts "Add the floowing to your .bashrc"
-    puts "[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \"
+    puts "[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \\"
     puts ". /usr/local/share/bash-completion/bash_completion"
   end
 
