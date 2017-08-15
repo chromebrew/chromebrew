@@ -1,5 +1,5 @@
 #chromebrew directories
-OWNER="richard-fisher"
+OWNER="skycocker"
 REPO="chromebrew"
 BRANCH="master"
 URL="https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH"
