@@ -16,6 +16,19 @@ class Glide < Package
     source_sha256 '0e2be5e863464610ebc420443ccfab15cdfdf1c4ab63b5eb25d1216900a75109'
   end
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/glide-0.12.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/glide-0.12.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/glide-0.12.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/glide-0.12.3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'e7ffa620825012210d2c01a0c2b4480cbcdea58e03b9aee4e62e012396924334',
+     armv7l: 'e7ffa620825012210d2c01a0c2b4480cbcdea58e03b9aee4e62e012396924334',
+       i686: '12a1e5bc8ddd611d9ea52575e27d4b6e37363a0ac4df546c8d9d9398008c06a8',
+     x86_64: '00b2581e5d851bb92ba622e73ffce9f5c73e65e94a53a284f08d798a0b76a025',
+  })
+
   depends_on 'go'
 
   def self.install

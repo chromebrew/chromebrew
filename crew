@@ -5,9 +5,40 @@ require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
+require 'docopt'
 
-@command = ARGV[0]
-@pkgName = ARGV[1]
+doc = <<DOCOPT
+Chromebrw - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
+
+Usage:
+  #{__FILE__} build [-k|--keep] <name>...
+  #{__FILE__} download <name>...
+  #{__FILE__} help [<command>]
+  #{__FILE__} install [-k|--keep|-s|--build-from-source] <name>...
+  #{__FILE__} remove <name>...
+  #{__FILE__} search [-d|--desc] [<name>...]
+  #{__FILE__} update
+  #{__FILE__} upgrade [-k|--keep|-s|--build-from-source] [<name>...]
+  #{__FILE__} whatprovides <name>...
+
+  -k --keep               Keep extracted files as is.
+  -s --build-from-source  Build from source even if pre-compiled binary exists
+  -d --desc               Show extra information.
+  -h --help               Show this screen.
+
+version 0.4.3
+DOCOPT
+
+begin
+  args = Docopt::docopt(doc)
+rescue Docopt::Exit => e
+  puts e.message
+  exit 1
+end
+
+@opt_keep = args["--keep"]
+@opt_desc = args["--desc"]
+@opt_src = args["--build-from-source"]
 
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
@@ -38,7 +69,7 @@ CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
 # Set XZ_OPT environment variable for build command.
 # If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
 if ENV["CREW_XZ_OPT"].to_s == ''
-  ENV["XZ_OPT"] = "-7e"
+  ENV["XZ_OPT"] = "-7e -T #{CREW_NPROC}"
 else
   ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
 end
@@ -168,14 +199,14 @@ def regexp_search(pkgName)
   results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
 	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
-	  .each    { |f| print_package(f, ARGV[2] == "extra") }
+	  .each    { |f| print_package(f, @opt_desc) }
   if results.empty?
     Find.find ("#{CREW_LIB_PATH}packages/") do |packageName|
       if File.file? packageName
         package = File.basename packageName, '.rb'
         search package, true
         if ( @pkg.description =~ /#{pkgName}/i )
-          print_package(package, ARGV[2] == "extra")
+          print_package(package, @opt_desc)
           results.push(package)
         end
       end
@@ -292,8 +323,6 @@ end
 
 def upgrade
   if @pkgName
-    search @pkgName
-
     currentVersion = nil
     @device[:installed_packages].each do |package|
       if package[:name] == @pkg.name
@@ -372,7 +401,7 @@ def download
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    system('wget', '--continue', '--no-check-certificate', url, '-O', filename)
+    system('curl', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
   end
@@ -385,6 +414,7 @@ def unpack (meta)
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
     puts "Unpacking archive, this may take a while..."
+    system "rm", "-rf", "#{extract_dir}"
     Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
     if meta[:filename][-4,4] == ".zip"
       system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
@@ -494,7 +524,7 @@ def resolve_dependencies_and_install
     abort "#{@pkg.name} failed to install: #{e.to_s}".lightred
   ensure
     #cleanup
-    unless ARGV[2] == 'keep'
+    unless @opt_keep
       Dir.chdir CREW_BREW_DIR do
         system "rm -rf *"
         system "mkdir dest" #this is a little ugly, feel free to find a better way
@@ -633,7 +663,7 @@ def resolve_dependencies_and_build
     abort "#{@pkg.name} failed to build: #{e.to_s}".lightred
   ensure
     #cleanup
-    unless ARGV[2] == 'keep'
+    unless @opt_keep
       Dir.chdir CREW_BREW_DIR do
         system "rm -rf *"
         system "mkdir dest" #this is a little ugly, feel free to find a better way
@@ -731,62 +761,80 @@ def remove (pkgName)
 
 end
 
-case @command
-when "help"
-  if @pkgName
-    help @pkgName
+def build_command (args)
+  args["<name>"].each do |name|
+    @pkgName = name
+    search @pkgName
+    resolve_dependencies_and_build
+  end
+end
+
+def download_command (args)
+  args["<name>"].each do |name|
+    @pkgName = name
+    search @pkgName
+    download
+  end
+end
+
+def help_command (args)
+  if args["<command>"]
+    help args["<command>"]
   else
     puts "Usage: crew help [command]"
     help nil
   end
-when "search"
-  if @pkgName
-    regexp_search @pkgName
-  else
+end
+
+def install_command (args)
+  args["<name>"].each do |name|
+    @pkgName = name
+    search @pkgName
+    @pkg.build_from_source = true if @opt_src
+    resolve_dependencies_and_install
+  end
+end
+
+def remove_command (args)
+  args["<name>"].each do |name|
+    remove name
+  end
+end
+
+def search_command (args)
+  args["<name>"].each do |name|
+    regexp_search name
+  end.empty? and begin
     list_packages
   end
-when "whatprovides"
-  if @pkgName
-    whatprovides @pkgName
-  else
-    help "whatprovides"
-  end
-when "download"
-  if @pkgName
-    search @pkgName
-    download
-  else
-    help "download"
-  end
-when "update"
-  update
-when "upgrade"
-  upgrade
-when "install"
-  if @pkgName
-    search @pkgName
-    resolve_dependencies_and_install
-  else
-    help "install"
-  end
-when "build"
-  if @pkgName
-    search @pkgName
-    resolve_dependencies_and_build
-  else
-    help "build"
-  end
-when "remove"
-  if @pkgName
-    remove @pkgName
-  else
-    help "remove"
-  end
-when nil
-  puts "Chromebrew, version 0.4.3"
-  puts "Usage: crew [command] [package]"
-  help nil
-else
-  puts "I have no idea how to do #{@command} :(".lightred
-  help nil
 end
+
+def update_command (args)
+  update
+end
+
+def upgrade_command (args)
+  args["<name>"].each do |name|
+    @pkgName = name
+    search @pkgName
+    @pkg.build_from_source = true if @opt_src
+    upgrade
+  end.empty? and begin
+    upgrade
+  end
+end
+
+def whatprovides_command (args)
+  args["<name>"].each do |name|
+    whatprovides name
+  end
+end
+
+def is_command (name)
+  return false if name =~ /^[-<]/
+  return true
+end
+
+command_name = args.find { |k, v| v && is_command(k) } [0]
+function = command_name + "_command"
+send(function, args)

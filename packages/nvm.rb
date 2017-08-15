@@ -7,6 +7,11 @@ class Nvm < Package
   source_url 'https://github.com/creationix/nvm/archive/v0.33.2.tar.gz'
   source_sha256 '2ad455a0752d5bae49ecff38a8a7778cc734c2d0ece9942dfdd164c2f01e80da'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   def self.install
     system "sed -i 's,\$HOME/.nvm,/usr/local/share/nvm,g' install.sh"
     system "NVM_DIR=/usr/local/share/nvm && bash install.sh"

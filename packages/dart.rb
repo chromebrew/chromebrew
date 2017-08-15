@@ -26,6 +26,19 @@ class Dart < Package
 #    abort 'Unable to install dart sdk.  Architecture not supported.'.lightred
   end
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/dart-1.24.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/dart-1.24.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/dart-1.24.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/dart-1.24.2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'd19e34f2251670535add6e2877d8f6564ed457a5da85a179575b5d1ce931592e',
+     armv7l: 'd19e34f2251670535add6e2877d8f6564ed457a5da85a179575b5d1ce931592e',
+       i686: '4f355931de520119772399267c50c1738bcbca1e675f16e838023d62874b8428',
+     x86_64: 'e3c08598150d72bcc3b06a79c0a37ab5559d1a3ff7153e7a703c6e7ba1b89ccf',
+  })
+
   depends_on 'unzip'
 
   def self.install

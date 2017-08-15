@@ -7,6 +7,19 @@ class Lsb_release < Package
   source_url 'https://downloads.sourceforge.net/project/lsb/lsb_release/1.4/lsb-release-1.4.tar.gz'
   source_sha256 '99321288f8d62e7a1d485b7c6bdccf06766fb8ca603c6195806e4457fdf17172'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/lsb_release-1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/lsb_release-1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/lsb_release-1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/lsb_release-1.4-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '33f1d5007bdd73ac405da3396a25200e6cc762d42c0b3421c9cb8d4513f5ff53',
+     armv7l: '33f1d5007bdd73ac405da3396a25200e6cc762d42c0b3421c9cb8d4513f5ff53',
+       i686: '62c05facef1dddc63313d08105d19d3df372b8f3be29eb1a561aed2fb625cb1e',
+     x86_64: '969621d3944e7f70b5e182471433e2994cc073e31b5a218925f28d4c9f64f9a6',
+  })
+
   depends_on 'help2man'
 
   def self.build

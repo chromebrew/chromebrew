@@ -7,6 +7,19 @@ class Php5 < Package
   source_url 'http://php.net/distributions/php-5.6.31.tar.xz'
   source_sha256 'c464af61240a9b7729fabe0314cdbdd5a000a4f0c9bd201f89f8628732fe4ae4'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/php5-5.6.31-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/php5-5.6.31-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/php5-5.6.31-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/php5-5.6.31-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'aeca560c546742d3204b65148f3a8da748e4f3228e3e24a9d8779ce8e44195dd',
+     armv7l: 'aeca560c546742d3204b65148f3a8da748e4f3228e3e24a9d8779ce8e44195dd',
+       i686: '88423ffa51e79a7377bb85c94600513428d2f0505d1fa6522598a678c6546666',
+     x86_64: '10a66b8ebe73dfd60f8c194664746330274c033564259f345c802de173c88cf7',
+  })
+
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
   depends_on 'libpng'

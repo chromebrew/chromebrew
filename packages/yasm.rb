@@ -7,6 +7,19 @@ class Yasm < Package
   source_url 'http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz'
   source_sha256 '3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/yasm-1.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/yasm-1.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/yasm-1.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/yasm-1.3.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '2d6cf322742d3737864b5ce42eb3bc58a655c1d0b69551be27342c4a5a0dcf22',
+     armv7l: '2d6cf322742d3737864b5ce42eb3bc58a655c1d0b69551be27342c4a5a0dcf22',
+       i686: 'd040103857bf2c0f6fb4cd6120e7ed6f45891297c148acb750d0355245c568e1',
+     x86_64: 'c83395c97dced0cc820642a7979c26ad830ab0f9b27eed6a8e3e13b5873bf082',
+  })
+
   def self.build
     system './configure --prefix=/usr/local'
     system 'make'

@@ -25,8 +25,11 @@ case "$architecture" in
   exit 1;;
 esac
 
-#This will allow things to work without sudo
+# This will allow things to work without sudo
 sudo chown -R `id -u`:`id -g` /usr/local
+
+# On chromiumos/cloudready there is unnecessary symbolic link, so remove it.
+if [ -L /usr/local/var ]; then sudo rm /usr/local/var; fi
 
 #prepare directories
 for dir in $CREW_LIB_PATH $CREW_CONFIG_PATH $CREW_CONFIG_PATH/meta $CREW_BREW_DIR $CREW_DEST_DIR $CREW_PACKAGES_PATH; do
@@ -170,6 +173,9 @@ wget -N $URL/lib/package_helpers.rb
 rm -f /usr/local/bin/cc
 ln -s /usr/local/bin/gcc /usr/local/bin/cc
 
+# install docopt
+gem install docopt
+
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
 rm -rf .git
@@ -182,3 +188,14 @@ echo crew >> .git/info/sparse-checkout
 git fetch origin master
 git reset --hard origin/master
 echo "Chromebrew installed successfully and package lists updated."
+
+#check LD_LIBRARY_PATH on x86_64
+case "$architecture" in
+"x86_64")
+  (echo $LD_LIBRARY_PATH | grep '/usr/local/lib[^6]\|/usr/local/lib$' > /dev/null) || cat << EOF
+
+Several packages may install their libraries into $CREW_PREFIX/lib, so adding below to your ~/.bash_profile is recommended.
+  export LD_LIBRARY_PATH=/usr/local/lib64:/usr/local/lib
+EOF
+  ;;
+esac

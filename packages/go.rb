@@ -7,6 +7,19 @@ class Go < Package
   source_url 'https://storage.googleapis.com/golang/go1.8.3.src.tar.gz'
   source_sha256 '5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f68829d99fa6'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/go-1.8.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/go-1.8.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/go-1.8.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/go-1.8.3-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'f0ed5baa1cc1ec4a393e3255ce5c6556ce29b17395fb660872a7fa7ee9dd7951',
+     armv7l: 'f0ed5baa1cc1ec4a393e3255ce5c6556ce29b17395fb660872a7fa7ee9dd7951',
+       i686: '5f34ab7487970b560a4eadc37a0308b3e50f9cc37bf5b9c933e8b033c06987c1',
+     x86_64: '87bbb19fa513377c1be217dd23897770c3c307fd22bf85e2202de24659b44129',
+  })
+
   # Tests requires perl
   depends_on 'perl' => :build
   # go is required to build versions of go > 1.4

@@ -7,6 +7,19 @@ class Mapserver < Package
   source_url 'http://download.osgeo.org/mapserver/mapserver-7.0.6.tar.gz'
   source_sha256 'dcbebd62976deef1490b084d8f6a0b2f2a1a25407efb6e058390025375539507'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/mapserver-7.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/mapserver-7.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/mapserver-7.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/mapserver-7.0.6-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '3779fc38a83229c289aa32a8d6610af0a379d08296ff9639c153f6b5a44b1174',
+     armv7l: '3779fc38a83229c289aa32a8d6610af0a379d08296ff9639c153f6b5a44b1174',
+       i686: '2fd2e786969a35a7eba1e23d1e499e9528375c499a72b29d3e7b9db49496574a',
+     x86_64: '30aee13618652273e99735b3bb6ea83e3623598ccdcb353a954143711995bc04',
+  })
+
   depends_on 'cmake'
   depends_on 'cairo'
   depends_on 'curl'

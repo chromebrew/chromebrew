@@ -7,6 +7,19 @@ class Readline < Package
   source_url 'http://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz'
   source_sha256 '56ba6071b9462f980c5a72ab0023893b65ba6debb4eeb475d7a563dc65cafd43'
 
+  binary_url ({
+    aarch64: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/readline-6.3p8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/jam7/chromebrew/releases/download/bin-armv7l/readline-6.3p8-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/jam7/chromebrew/releases/download/bin-i686/readline-6.3p8-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/jam7/chromebrew/releases/download/bin-x86_64/readline-6.3p8-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '7b70ee08258af2bd190b30639306aa4d0b71273cfb702a4ae75003317f19702f',
+     armv7l: '7b70ee08258af2bd190b30639306aa4d0b71273cfb702a4ae75003317f19702f',
+       i686: '572baf2f2bba47d719714fc97709bc3932abab4bf1a9d838bb47ccd0f1fa4395',
+     x86_64: 'f235ee73feba6d2c0bb085042db9462225cda1a18f190a47116417cc6993e716',
+  })
+
   depends_on 'buildessential' => :build
   depends_on 'patch' => :build
   depends_on 'ncurses'
