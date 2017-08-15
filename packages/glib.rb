@@ -9,6 +9,8 @@ class Glib < Package
 
   depends_on 'libffi'
   depends_on 'gettext'
+  depends_on 'zlibpkg'
+  depends_on 'python27'
 
   def self.build
     system "./configure"

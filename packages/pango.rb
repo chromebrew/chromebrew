@@ -9,6 +9,7 @@ class Pango < Package
 
   depends_on 'harfbuzz'
   depends_on 'cairo'
+  depends_on 'glib'
 
   def self.build
     system "./configure"
