@@ -21,9 +21,8 @@ class Bash_completion < Package
     puts
     puts "To complete installation, execute the following:".lightblue
     puts "echo '# bash completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f /usr/local/share/bash-completion/bash_completion ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source /usr/local/share/bash-completion/bash_completion' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "echo '[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \\' >> ~/.bashrc".lightblue
+    puts "echo '. /usr/local/share/bash-completion/bash_completion' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
   end
