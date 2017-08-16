@@ -18,9 +18,14 @@ class Bash_completion < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    puts "Add the floowing to your .bashrc"
-    puts "[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \\"
-    puts ". /usr/local/share/bash-completion/bash_completion"
+    puts
+    puts "To complete installation, execute the following:".lightblue
+    puts "echo '# bash completion' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f /usr/local/share/bash-completion/bash_completion ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  source /usr/local/share/bash-completion/bash_completion' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
   end
 
 end
