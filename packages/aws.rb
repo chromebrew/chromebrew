@@ -7,7 +7,7 @@ class Aws < Package
   source_url 'https://github.com/aws/aws-cli/archive/1.11.121.tar.gz'
   source_sha256 'c667e77880a093d5ef3d635f19e7eab3cb0b7527f648d74e571fca8d170474a8'
 
-  depends_on 'python' unless File.exists? '/usr/local/bin/python'
+  depends_on 'python27' unless File.exists? '/usr/local/bin/python'
   depends_on 'unzip'
 
   def self.install

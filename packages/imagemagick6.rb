@@ -3,9 +3,9 @@ require 'package'
 class Imagemagick6 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '6.9.9-5'
-  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-6.9.9-5.tar.xz'
-  source_sha256 'aa6444ece8d29b87fb4f25e997cd0b4fb48774206cea9490c6028babdee7d056'
+  version '6.9.9-7'
+  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-6.9.9-7.tar.xz'
+  source_sha256 '8467a4c86e368323dd789053c9557dd32be2b3866273f5ee6dcf538656fa9ad3'
 
   depends_on 'pkgconfig'
   depends_on "libjpeg"

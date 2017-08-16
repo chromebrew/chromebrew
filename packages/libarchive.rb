@@ -10,6 +10,7 @@ class Libarchive < Package
   depends_on 'acl'
   depends_on 'attr'
   depends_on 'lz4'
+  depends_on 'xzutils' => :build
 
   def self.build
     system "./configure --prefix=/usr/local --disable-static"
