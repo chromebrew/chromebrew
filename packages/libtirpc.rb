@@ -13,7 +13,7 @@ class Libtirpc < Package
   end
 
   def self.install
- 	  system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "mkdir #{CREW_DEST_DIR}/usr/local/include/rpc"
     system "mv #{CREW_DEST_DIR}/usr/local/include/tirpc/rpc/* #{CREW_DEST_DIR}/usr/local/include/rpc/"
     
