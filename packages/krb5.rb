@@ -9,14 +9,14 @@ class Krb5 < Package
 
   def self.build
     Dir.chdir "src" do
- 	    system "./configure --without-system-verto"
+      system "./configure --without-system-verto"
     	system "make"
     end
   end
 
   def self.install
     Dir.chdir "src" do
- 	    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
   end
 end
