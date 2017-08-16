@@ -3,9 +3,9 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.13.3'
-  source_url 'https://github.com/git/git/archive/v2.13.3.tar.gz'
-  source_sha256 '6b50ef5a0f886e41d0f969e68274bacfe8ade8bc22954143f7f6f1aab3b62b82'
+  version '2.14.1'
+  source_url 'https://github.com/git/git/archive/v2.14.1.tar.gz'
+  source_sha256 'ccc366d5d674fb755fd98d219c23f2b4e5da8a49d8582a6314813b280d75536b'
 
   # use system zlibpkg, openssl, curl, expat
   depends_on 'zlibpkg' => :build
@@ -26,6 +26,19 @@ class Git < Package
 
   def self.install
     system "#{@make_cmd} DESTDIR=#{CREW_DEST_DIR} install"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share/git-completion"
+    system "cp -r contrib/completion/* #{CREW_DEST_PREFIX}/share/git-completion"
+    puts
+    puts "Git completion support is available for the following shells:"
+    system "ls contrib/completion"
+    puts
+    puts "To add git completion for bash, execute the following:".lightblue
+    puts "echo '# git completion' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/share/git-completion/git-completion.bash ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  source #{CREW_PREFIX}/share/git-completion/git-completion.bash' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
   end
 
   def self.check
