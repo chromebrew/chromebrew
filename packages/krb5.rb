@@ -10,7 +10,7 @@ class Krb5 < Package
   def self.build
     Dir.chdir "src" do
       system "./configure --without-system-verto"
-    	system "make"
+      system "make"
     end
   end
 
