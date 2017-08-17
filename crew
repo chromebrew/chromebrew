@@ -8,17 +8,17 @@ require 'fileutils'
 require 'docopt'
 
 doc = <<DOCOPT
-Chromebrw - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
+Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
 Usage:
   #{__FILE__} build [-k|--keep] <name>...
   #{__FILE__} download <name>...
   #{__FILE__} help [<command>]
-  #{__FILE__} install [-k|--keep|-s|--build-from-source] <name>...
+  #{__FILE__} install [-k|--keep] [-s|--build-from-source] <name>...
   #{__FILE__} remove <name>...
   #{__FILE__} search [-d|--desc] [<name>...]
   #{__FILE__} update
-  #{__FILE__} upgrade [-k|--keep|-s|--build-from-source] [<name>...]
+  #{__FILE__} upgrade [-k|--keep] [-s|--build-from-source] [<name>...]
   #{__FILE__} whatprovides <name>...
 
   -k --keep               Keep extracted files as is.
