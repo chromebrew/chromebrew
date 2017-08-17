@@ -3,9 +3,9 @@ require 'package'
 class Libpipeline < Package
   description 'libpipeline is a C library for manipulating pipelines of subprocesses in a flexible and convenient way.'
   homepage 'http://libpipeline.nongnu.org/'
-  version '1.4.1-2'
-  source_url 'https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.1.tar.gz'
-  source_sha1 'b31cc955f22b1aa4545dc8d00ddbde831936594f'
+  version '1.4.2'
+  source_url 'https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.2.tar.gz'
+  source_sha1 '1967691198434f7bc78ffaa2ef6556ee60b0ca4a'
   
   def self.build
     system './configure', '--disable-static', '--enable-shared', '--with-pic'
