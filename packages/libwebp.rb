@@ -7,6 +7,19 @@ class Libwebp < Package
   source_url 'https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.6.0.tar.gz'
   source_sha256 'c928119229d4f8f35e20113ffb61f281eda267634a8dc2285af4b0ee27cf2b40'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libwebp-0.6.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libwebp-0.6.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libwebp-0.6.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libwebp-0.6.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'f35c27b6360a7d7750e5f0ce841a0b3769bf3f0e65db84d82f2d3480fb99365c',
+     armv7l: 'f35c27b6360a7d7750e5f0ce841a0b3769bf3f0e65db84d82f2d3480fb99365c',
+       i686: 'f5aa924cd9837b5f0f408432b718638a65e6fef4d29b071c172636e9c29a5a27',
+     x86_64: '6db6eaed9f0ce7761a41f40b42e6d5db9fdc4e60cd20e35a43decaee17f3cd06',
+  })
+
   def self.build
     system "./configure"
     system "make"

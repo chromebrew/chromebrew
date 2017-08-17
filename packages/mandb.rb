@@ -7,6 +7,19 @@ class Mandb < Package
   source_url 'http://download.savannah.gnu.org/releases/man-db/man-db-2.7.6.1.tar.xz'
   source_sha256 '08edbc52f24aca3eebac429b5444efd48b9b90b9b84ca0ed5507e5c13ed10f3f'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '178afecbafc791ce5e7635033a2ad060e11ef5ceb08fdb76cfc559c7e17cb334',
+     armv7l: '178afecbafc791ce5e7635033a2ad060e11ef5ceb08fdb76cfc559c7e17cb334',
+       i686: '7f21135eaa1e1d64a1262aa9d271647432af0701c1eff0c924ede416bd1594bc',
+     x86_64: '4194dd6a040716ed26d41a560f8f26c438d2d9a6b3e8e99746a2fa89c3b257ba',
+  })
+
   depends_on 'less'
   depends_on 'libpipeline'
   depends_on 'gdbm'

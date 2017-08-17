@@ -7,6 +7,19 @@ class Ncursesw < Package
   source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
   source_sha256 'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'b777a646e051ed128c596da84a81b8b08d22a1021ff603d04f1f470b94e44773',
+     armv7l: 'b777a646e051ed128c596da84a81b8b08d22a1021ff603d04f1f470b94e44773',
+       i686: '521c5059b8652b42757bf6f30420713a2e058f447ac92fc55ff0d052dff6304b',
+     x86_64: '3b2c098ededca06261007f6b1dc0679c76209c763300ee987f2d96dd51683c12',
+  })
+
   depends_on 'diffutils' => :build
 
   def self.build
