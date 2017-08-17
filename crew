@@ -17,14 +17,14 @@ Usage:
   #{__FILE__} help [<command>]
   #{__FILE__} install [-k|--keep] [-s|--build-from-source] <name>...
   #{__FILE__} remove <name>...
-  #{__FILE__} search [-d|--desc] [<name>...]
+  #{__FILE__} search [-v|--verbose] [<name>...]
   #{__FILE__} update
   #{__FILE__} upgrade [-k|--keep] [-s|--build-from-source] [<name>...]
   #{__FILE__} whatprovides <name>...
 
   -k --keep               Keep extracted files as is.
   -s --build-from-source  Build from source even if pre-compiled binary exists
-  -d --desc               Show extra information.
+  -v --verbose            Show extra information.
   -h --help               Show this screen.
 
 version 0.4.3
@@ -81,7 +81,7 @@ rescue Docopt::Exit => e
 end
 
 @opt_keep = args["--keep"]
-@opt_desc = args["--desc"]
+@opt_verbose = args["--verbose"]
 @opt_src = args["--build-from-source"]
 
 # colorization
@@ -205,14 +205,14 @@ def regexp_search(pkgName)
   results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
 	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
 	  .collect { |f| File.basename(f, '.rb') } \
-	  .each    { |f| print_package(f, @opt_desc) }
+	  .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
     Find.find ("#{CREW_LIB_PATH}packages/") do |packageName|
       if File.file? packageName
         package = File.basename packageName, '.rb'
         search package, true
         if ( @pkg.description =~ /#{pkgName}/i )
-          print_package(package, @opt_desc)
+          print_package(package, @opt_verbose)
           results.push(package)
         end
       end
