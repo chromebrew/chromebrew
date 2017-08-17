@@ -5,9 +5,10 @@ require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require 'docopt'
 
-doc = <<DOCOPT
+# Constants definitions
+
+DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
 Usage:
@@ -28,17 +29,6 @@ Usage:
 
 version 0.4.3
 DOCOPT
-
-begin
-  args = Docopt::docopt(doc)
-rescue Docopt::Exit => e
-  puts e.message
-  exit 1
-end
-
-@opt_keep = args["--keep"]
-@opt_desc = args["--desc"]
-@opt_src = args["--build-from-source"]
 
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
@@ -74,9 +64,25 @@ else
   ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
 end
 
+USER = `whoami`.chomp
+
+# Add lib to LOAD_PATH
+
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
-USER = `whoami`.chomp
+# Parse arguments using docopt
+
+require 'docopt'
+begin
+  args = Docopt::docopt(DOC)
+rescue Docopt::Exit => e
+  puts e.message
+  exit 1
+end
+
+@opt_keep = args["--keep"]
+@opt_desc = args["--desc"]
+@opt_src = args["--build-from-source"]
 
 # colorization
 class String
