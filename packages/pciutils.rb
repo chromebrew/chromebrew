@@ -5,7 +5,7 @@ class Pciutils < Package
   homepage 'http://mj.ucw.cz/sw/pciutils/'
   version '3.5.2'
   source_url 'https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.5.2.tar.xz'
-  source_sha1 '29d9a75ce2a2d92721b6e92c7c89236b4c91041f'
+  source_sha256 '3a99141a9f40528d0a0035665a06dc37ddb1ae341658e51b50a76ecf86235efc'
 
   def self.build
     system "make", "PREFIX=/usr/local", "SHARED=yes"

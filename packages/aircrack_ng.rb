@@ -3,9 +3,9 @@ require 'package'
 class Aircrack_ng < Package
   description 'Key cracker for the 802.11 WEP and WPA-PSK protocols.'
   homepage 'https://www.aircrack-ng.org'
-  version '1.2-rc4'
+  version '1.2-rc4-1'
   source_url 'http://download.aircrack-ng.org/aircrack-ng-1.2-rc4.tar.gz'
-  source_sha1 '2b2fbe50fedb606b3bd96a34d49f07760e8e618a'
+  source_sha256 'd93ac16aade5b4d37ab8cdf6ce4b855835096ccf83deb65ffdeff6d666eaff36'
 
   depends_on "buildessential" => :build
   depends_on "bison" => :build
@@ -16,9 +16,8 @@ class Aircrack_ng < Package
   depends_on "rfkill"
 
   def self.build
-    system "make",
-      "sqlite=true",
-      "experimental=true"
+    # Need to specify TMPDIR to run automatic configuration tool correctly
+    system "TMPDIR=/usr/local/tmp make sqlite=true experimental=true"
   end
 
   def self.install

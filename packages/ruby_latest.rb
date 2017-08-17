@@ -5,7 +5,7 @@ class Ruby_latest < Package
   homepage 'https://www.ruby-lang.org/en/'
   version '2.4.0'
   source_url 'http://cache.ruby-lang.org/pub/ruby/ruby-2.4.0.tar.xz'
-  source_sha1 '038804bbd0e77508dd2510b729a9f3b325489b2e'
+  source_sha256 '3a87fef45cba48b9322236be60c455c13fd4220184ce7287600361319bb63690'
 
   depends_on 'readline'
   depends_on 'zlibpkg'

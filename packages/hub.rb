@@ -3,9 +3,9 @@ require 'package'
 class Hub < Package
   description 'hub is a command-line wrapper for git that makes you better at GitHub.'
   homepage 'https://hub.github.com/'
-  version '2.3.0-pre9'
-  source_url 'https://github.com/github/hub/archive/v2.3.0-pre9.tar.gz'
-  source_sha1 'd18f0a28d13b7e773186ece35df032f561d2172d'
+  version '2.3.0-pre10'
+  source_url 'https://github.com/github/hub/archive/v2.3.0-pre10.tar.gz'
+  source_sha256 '9b4764dc2647bc0c14de2bd386e6f428f002d93baf01059d994e1cfa928483fc'
 
   depends_on 'git'
   depends_on 'go'

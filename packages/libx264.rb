@@ -5,7 +5,7 @@ class Libx264 < Package
   homepage 'http://www.videolan.org/developers/x264.html'
   version '20170604-2245-stable'
   source_url 'http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20170604-2245-stable.tar.bz2'
-  source_sha1 '8003044b45010b1b4b40ac3dd8be98d80c888ece'
+  source_sha256 '42fa7cc6af0af36e4a8286ce724e6d20de0967d9017640883e955b4b6d3690ac'
 
   depends_on 'yasm'
 

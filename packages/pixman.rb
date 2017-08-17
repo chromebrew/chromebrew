@@ -5,7 +5,7 @@ class Pixman < Package
   homepage 'http://www.pixman.org/'
   version '0.34.0'
   source_url 'https://www.cairographics.org/releases/pixman-0.34.0.tar.gz'
-  source_sha1 'a1b1683c1a55acce9d928fea1ab6ceb79142ddc7'
+  source_sha256 '21b6b249b51c6800dc9553b65106e1e37d0e25df942c90531d4c3997aa20a88e'
 
   def self.build
     system "./configure"

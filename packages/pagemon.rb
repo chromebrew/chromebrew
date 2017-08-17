@@ -5,9 +5,9 @@ class Pagemon < Package
   homepage 'http://kernel.ubuntu.com/~cking/pagemon/'
   version '0.01.10'
   source_url 'http://kernel.ubuntu.com/~cking/tarballs/pagemon/pagemon-0.01.10.tar.gz'
-  source_sha1 'bc0b4c6db0e1551711e90ffa99162cbbe6217056'
+  source_sha256 '82c240b44b7000fc57355b366bfe28a47a4da857ddaea0ee0ade9d3eae037f54'
 
-  depends_on "ncurses"
+  depends_on 'ncurses'
 
   def self.build
     system "sed -i 's,/usr,/usr/local,g' Makefile"

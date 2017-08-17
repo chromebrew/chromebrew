@@ -3,9 +3,9 @@ require 'package'
 class Di < Package
   description '\'di\' is a disk information utility, displaying everything (and more) that your \'df\' command does.'
   homepage 'http://gentoo.com/di/'
-  version '4.43'
-  source_url 'http://gentoo.com/di/di-4.43.tar.gz'
-  source_sha1 'ddced0d59d29ccdcbc4282bc7464a925d14955e1'
+  version '4.44'
+  source_url 'https://gentoo.com/di/di-4.44.tar.gz'
+  source_sha256 '963d00cadbf5a115ff31b31b0d6141be751c7b0a209e50990cb78e36d1a50320'
 
   def self.build
     system "sed -i '40s,= ,= $(DESTDIR)/,' Makefile" # set correct bin path

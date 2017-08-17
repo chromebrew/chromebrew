@@ -1,15 +1,13 @@
 require 'package_helpers'
 
 class Package
-  property :description, :homepage, :version, :binary_url, :binary_sha1, :source_url, :source_sha1, :is_fake
+  property :description, :homepage, :version, :binary_url, :binary_sha1, :binary_sha256, :source_url, :source_sha1, :source_sha256, :is_fake
 
   class << self
     attr_reader :is_fake
     attr_accessor :name, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
-
-  @@debug_symbol = ENV['CREW_DEBUG_SYMBOL'] || false
 
   def self.dependencies
     # We need instance variable in derived class, so not define it here,

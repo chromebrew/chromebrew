@@ -5,7 +5,7 @@ class Goaccess < Package
   homepage 'https://goaccess.io/'
   version '1.2'
   source_url 'http://tar.goaccess.io/goaccess-1.2.tar.gz'
-  source_sha1 '4c12796ff5afd14f359b1f638fc51c4007db1e3c'
+  source_sha256 '6ba9f66540ea58fc2c17f175265f9ed76d74a8432eeac1182b74ebf4f2cd3414'
 
   depends_on 'openssl'
   depends_on 'geoip'

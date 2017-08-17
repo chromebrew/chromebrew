@@ -5,7 +5,7 @@ class Powerstat < Package
   homepage 'http://kernel.ubuntu.com/~cking/powerstat/'
   version '0.02.11'
   source_url 'http://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.11.tar.gz'
-  source_sha1 '729c5f8f4509ab13134278c8afe04cf2244d928c'
+  source_sha256 'a274a7762c44695129434bab2ff10a23575ecb0c1199eb6e424e1324c61a2d46'
 
   def self.build
     system "sed -i 's,/usr,/usr/local,g' Makefile"

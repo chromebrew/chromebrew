@@ -5,7 +5,7 @@ class Libjpeg < Package
   homepage 'http://www.ijg.org/'
   version '9.1-1'
   source_url 'http://www.ijg.org/files/jpegsrc.v9a.tar.gz'
-  source_sha1 'd65ed6f88d318f7380a3a5f75d578744e732daca'
+  source_sha256 '3a753ea48d917945dd54a2d97de388aa06ca2eb1066cbfdc6652036349fe05a7'
 
   def self.build
     system "./configure --includedir=/usr/local/include CFLAGS=\" -fPIC\""

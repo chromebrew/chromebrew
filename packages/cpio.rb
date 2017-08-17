@@ -5,7 +5,7 @@ class Cpio < Package
   homepage 'https://www.gnu.org/software/cpio/'
   version '2.12'
   source_url 'http://ftp.gnu.org/gnu/cpio/cpio-2.12.tar.gz'
-  source_sha1 'b366685662ab26661c6204b4631af6232e48be3f'
+  source_sha256 '08a35e92deb3c85d269a0059a27d4140a9667a6369459299d08c17f713a92e73'
 
   depends_on 'binutils'
   depends_on 'gawk'

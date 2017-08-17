@@ -5,7 +5,7 @@ class Rtmpdump < Package
   homepage 'https://rtmpdump.mplayerhq.hu/'
   version 'fa8646d'
   source_url 'https://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/fa8646daeb19dfd12c181f7d19de708d623704c0.tar.gz'
-  source_sha1 '2faefe655b72f91540f39eebc3020f1c9dcc654e'
+  source_sha256 'dba4d4d2e1c7de6884b01d98194b83cab6784669089fa3c919152087a3a38fd2'
 
   def self.build
     system "make"

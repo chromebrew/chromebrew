@@ -5,7 +5,7 @@ class Cabextract < Package
   homepage 'https://www.cabextract.org.uk/'
   version '1.6'
   source_url 'https://www.cabextract.org.uk/cabextract-1.6.tar.gz'
-  source_sha1 '64f6d5056d3e417a943648c23cb22218b7079ced'
+  source_sha256 'cee661b56555350d26943c5e127fc75dd290b7f75689d5ebc1f04957c4af55fb'
 
   def self.build
     system './configure'

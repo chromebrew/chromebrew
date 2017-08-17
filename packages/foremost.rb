@@ -5,7 +5,7 @@ class Foremost < Package
   homepage 'http://foremost.sourceforge.net/'
   version '1.5.7'
   source_url 'http://foremost.sourceforge.net/pkg/foremost-1.5.7.tar.gz'
-  source_sha1 'c26d68990d7bd5245d5f7dc83c9217642a7a2056'
+  source_sha256 '502054ef212e3d90b292e99c7f7ac91f89f024720cd5a7e7680c3d1901ef5f34'
 
   def self.build
     system "make"

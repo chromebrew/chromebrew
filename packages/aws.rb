@@ -3,11 +3,11 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version '1.11.110'
-  source_url 'https://github.com/aws/aws-cli/archive/1.11.110.tar.gz'
-  source_sha1 'a30e4f23951c06bb4ab9ffaa9ac42188fae6d6ba'
+  version '1.11.121'
+  source_url 'https://github.com/aws/aws-cli/archive/1.11.121.tar.gz'
+  source_sha256 'c667e77880a093d5ef3d635f19e7eab3cb0b7527f648d74e571fca8d170474a8'
 
-  depends_on 'python' unless File.exists? '/usr/local/bin/python'
+  depends_on 'python27' unless File.exists? '/usr/local/bin/python'
   depends_on 'unzip'
 
   def self.install

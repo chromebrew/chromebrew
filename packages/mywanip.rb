@@ -5,7 +5,7 @@ class Mywanip < Package
   homepage 'https://gist.github.com/DennisLfromGA/ab40940d37be84ae3a88'
   version 'ab4094'
   source_url 'https://gist.github.com/DennisLfromGA/ab40940d37be84ae3a88/archive/b583835e8b2cb7edefc7ccbb911cb8eaf172d341.zip'
-  source_sha1 '1c26e5ed07283dbecb5a7cbaae0d9e408bedff89'
+  source_sha256 '789d22cfa60a40cf60d59e561500cd27e39ac03ecff2e948111a2a07f830fd67'
 
   def self.install
     system "chmod +x mywanip"

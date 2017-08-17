@@ -3,11 +3,11 @@ require 'package'
 class Cpustat < Package
   description 'cpustat periodically dumps out the current CPU utilisation statistics of running processes.'
   homepage 'http://kernel.ubuntu.com/~cking/cpustat/'
-  version '0.02.01'
-  source_url 'http://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.01.tar.gz'
-  source_sha1 '0eca37a1c6e1282b05be51fc2dd1dac72875112d'
+  version '0.02.03'
+  source_url 'http://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.03.tar.gz'
+  source_sha256 '8e48cbd6927b9060a59cd278bb855f6fcdb773ff5ff919a1f75c086c94b4c1d0'
 
-  depends_on "ncurses"
+  depends_on 'ncurses'
 
   def self.build
     system "sed -i 's,/usr,/usr/local,g' Makefile"

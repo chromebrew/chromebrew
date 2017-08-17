@@ -5,7 +5,7 @@ class Curl < Package
   homepage 'https://curl.haxx.se/'
   version '7.54.1'
   source_url 'https://curl.haxx.se/download/curl-7.54.1.tar.bz2'
-  source_sha1 'f5193316e4b5ff23505cb09bc946763d35d02cd6'
+  source_sha256 'fdfc4df2d001ee0c44ec071186e770046249263c491fcae48df0e1a3ca8f25a0'
 
   depends_on 'openssl' => :build
   depends_on 'zlibpkg' => :build
@@ -13,15 +13,12 @@ class Curl < Package
   depends_on 'groff' => :build
 
   def self.build
-    system "./configure", "--disable-static"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--disable-static"
     system "make"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
-
-    # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/libcurl.so.*"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

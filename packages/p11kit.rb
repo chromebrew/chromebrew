@@ -5,7 +5,7 @@ class P11kit < Package
   homepage 'https://p11-glue.freedesktop.org/p11-kit.html'
   version '0.23.2-1'
   source_url 'https://p11-glue.freedesktop.org/releases/p11-kit-0.23.2.tar.gz'
-  source_sha1 '4da0d7b47935b6cb0f321dd00358b063ae42df71'
+  source_sha256 'ba726ea8303c97467a33fca50ee79b7b35212964be808ecf9b145e9042fdfaf0'
 
   depends_on 'diffutils' => :build
   depends_on 'libffi'

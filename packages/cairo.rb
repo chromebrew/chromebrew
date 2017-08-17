@@ -2,16 +2,18 @@ require 'package'
 
 class Cairo < Package
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
-  homepage 'https://www.cairographics.org/'
-  version '1.14.8'
-  source_url 'https://www.cairographics.org/releases/cairo-1.14.8.tar.xz'
-  source_sha1 'c6f7b99986f93c9df78653c3e6a3b5043f65145e'
+  homepage 'https://www.cairographics.org'
+  version '1.14.10-1'
+  source_url 'https://www.cairographics.org/releases/cairo-1.14.10.tar.xz'
+  source_sha256 '7e87878658f2c9951a14fc64114d4958c0e65ac47530b8ac3078b2ce41b66a09'
 
   depends_on 'libpng'
   depends_on 'pixman'
+  depends_on 'freetype'   # pango requires cairo with freetype
+  depends_on 'fontconfig' # pango requires cairo with fontconfig
 
   def self.build
-    system "./configure"
+    system "./configure --disable-xlib"
     system "make"
   end
 

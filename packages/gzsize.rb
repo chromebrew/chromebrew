@@ -5,7 +5,7 @@ class Gzsize < Package
   homepage 'https://bfontaine.github.io/gzsize/'
   version '0.1.1'
   source_url 'https://github.com/bfontaine/gzsize/archive/0.1.1.tar.gz'
-  source_sha1 '778820b0bf3fc2197955b60c6dc49f6fac00878b'
+  source_sha256 'ffb9cc1e5ed10443b1bcf2f711787bc7f69eee27ed83b48f2ccf9d80e39554dd'
 
   def self.build
     system "make"

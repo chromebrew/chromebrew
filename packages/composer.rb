@@ -5,7 +5,7 @@ class Composer < Package
   homepage 'https://getcomposer.org/'
   version '1.4.2'
   source_url 'https://github.com/composer/composer/archive/1.4.2.tar.gz'
-  source_sha1 'd0179a967011891c2c1e6067acc1faa1e8a8c81c'
+  source_sha256 'b5ebe7bfddf6e05be9ab071d5d53dc49e7c9059a12238460ec86e2e6ab722e06'
 
   depends_on 'php7' unless File.exists? '/usr/local/bin/php'
 

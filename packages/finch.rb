@@ -5,7 +5,7 @@ class Finch < Package
   homepage 'http://pidgin.im/'
   version '2.12.0'
   source_url 'https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2'
-  source_sha1 '38f48c48978425b86fc9f4e8ba08216ff379451b'
+  source_sha256 '8c3d3536d6d3c971bd433ff9946678af70a0f6aa4e6969cc2a83bb357015b7f8'
 
   depends_on 'glib'
   depends_on 'ncursesw'

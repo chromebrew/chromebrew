@@ -3,9 +3,9 @@ require 'package'
 class Apr < Package
   description 'The mission of the Apache Portable Runtime (APR) project is to create and maintain software libraries that provide a predictable and consistent interface to underlying platform-specific implementations.  APR is the base portability library.'
   homepage 'http://apr.apache.org/'
-  version '1.5.2'
-  source_url 'http://apache.claz.org/apr/apr-1.5.2.tar.bz2'
-  source_sha1 '6d757fcf7c687fc300c1066076f2e8380ff8cbc0'
+  version '1.6.2'
+  source_url 'http://apache.claz.org/apr/apr-1.6.2.tar.bz2'
+  source_sha256 '09109cea377bab0028bba19a92b5b0e89603df9eab05c0f7dbd4dd83d48dcebd'
 
   depends_on 'buildessential'
 

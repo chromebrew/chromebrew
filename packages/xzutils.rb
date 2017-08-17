@@ -5,18 +5,16 @@ class Xzutils < Package
   homepage 'http://tukaani.org/xz/'
   version '5.2.3-2'
   source_url 'http://tukaani.org/xz/xz-5.2.3.tar.gz'
-  source_sha1 '529638eec3597e429cc54c74551ac0a89169e841'
+  source_sha256 '71928b357d0a09a12a4b4c5fafca8c31c19b0e7d3b8ebb19622e96f26dbf28cb'
 
   def self.build
-    system "./configure", "--prefix=/usr/local", "--disable-docs", "--enable-shared", "--disable-static", "--with-pic"
+    system "./configure", "--prefix=/usr/local", "--libdir=#{CREW_LIB_PREFIX}",
+           "--disable-docs", "--enable-shared", "--disable-static", "--with-pic"
     system "make"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
-
-    # strip debug symbol from library
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/liblzma.so.*"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
   def self.check

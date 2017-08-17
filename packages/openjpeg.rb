@@ -5,7 +5,7 @@ class Openjpeg < Package
   homepage 'https://github.com/uclouvain/openjpeg/'
   version '2.1.2'
   source_url 'https://github.com/uclouvain/openjpeg/archive/v2.1.2.tar.gz'
-  source_sha1 'c8671e7f577fdc58abde1e1f32b10d372e6f9b07'
+  source_sha256 '4ce77b6ef538ef090d9bde1d5eeff8b3069ab56c4906f083475517c2c023dfa7'
 
   depends_on 'cmake'
 

@@ -5,10 +5,12 @@ class Glib < Package
   homepage 'https://developer.gnome.org/glib/'
   version '2.40.2'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/glib/2.40/glib-2.40.2.tar.xz'
-  source_sha1 'dcb8ad22b1c0e6969a844029ffb91a6def7ad240'
+  source_sha256 'e8ff8af2950897e805408480c454c415d1eade4e670ec5fb507f5e5853726c7a'
 
   depends_on 'libffi'
   depends_on 'gettext'
+  depends_on 'zlibpkg'
+  depends_on 'python27'
 
   def self.build
     system "./configure"

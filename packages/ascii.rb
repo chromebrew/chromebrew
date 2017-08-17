@@ -1,14 +1,14 @@
-require "package"
+require 'package'
 
 class Ascii < Package
   description 'List ASCII idiomatic names and octal/decimal code-point forms.'
   homepage 'http://www.catb.org/~esr/ascii/'
-  version "3.15"
-  source_url "http://www.catb.org/~esr/ascii/ascii-3.15.tar.gz"
-  source_sha1 "94ac41d8ef89daf148ebfd30333c07f6e64d4dec"
+  version '3.16'
+  source_url 'http://www.catb.org/~esr/ascii/ascii-3.16.tar.gz'
+  source_sha256 'a94bb3970e8f1f63566f055517aecbdd46b11c4ccf142f77ffb80a79994f03a9'
 
   def self.build
-    system "make"
+    system 'make'
   end
 
   def self.install

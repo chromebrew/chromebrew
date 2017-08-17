@@ -3,11 +3,12 @@ require 'package'
 class Libtool < Package
   description 'GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries behind a consistent, portable interface.'
   homepage 'https://www.gnu.org/software/libtool/'
-  version '2.4.6'
+  version '2.4.6-1'
   source_url 'https://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.gz'
-  source_sha1 '25b6931265230a06f0fc2146df64c04e5ae6ec33'
+  source_sha256 'e3bd4d5d3d025a36c21dd6af7ea818a2afcd4dfc1ea5a17b39d7854bcd0c06e3'
 
   depends_on 'buildessential'
+  depends_on 'm4'
 
   def self.build
     system "./configure --prefix=/usr/local"

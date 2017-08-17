@@ -3,11 +3,11 @@ require 'package'
 class Imagemagick < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.5-4'
-  source_url 'https://www.imagemagick.org/download/ImageMagick-7.0.5-4.tar.xz'
-  source_sha1 '118b2d1753cf5eb0761ea8dac068e24217b8e32b'
-  
-  depends_on 'pkgconfig'
+  version '7.0.6-7'
+  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.6-7.tar.xz'
+  source_sha256 '732332a76cb62f067d680a90d85dd05a2f2592e0017af83becb639d05681106d'
+
+  depends_on 'buildessential' => :build
 
   def self.build
     system "./configure CFLAGS=\" -fPIC\" --without-python"

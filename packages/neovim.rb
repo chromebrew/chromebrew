@@ -3,9 +3,9 @@ require 'package'
 class Neovim < Package
   description 'Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie).'
   homepage 'https://neovim.io/'
-  version '0.1.7'
-  source_url 'https://github.com/neovim/neovim/archive/v0.1.7.tar.gz'
-  source_sha1 '00e67f981105f1acbe06df1dbea21b6f7fa6d9b8'
+  version '0.2.0'
+  source_url 'https://github.com/neovim/neovim/archive/v0.2.0.tar.gz'
+  source_sha256 '72e263f9d23fe60403d53a52d4c95026b0be428c1b9c02b80ab55166ea3f62b5'
 
   depends_on 'libtool'
   depends_on 'autoconf'
@@ -16,7 +16,7 @@ class Neovim < Package
   depends_on 'unzip'
 
   def self.build
-    system "make"
+    system "make", "CMAKE_BUILD_TYPE=RelWithDebInfo"
   end
 
   def self.install

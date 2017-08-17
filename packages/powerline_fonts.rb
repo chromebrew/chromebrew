@@ -5,13 +5,13 @@ class Powerline_fonts < Package
   homepage 'https://github.com/powerline/fonts'
   version '1.1'
   source_url 'https://codeload.github.com/powerline/fonts/tar.gz/2015-12-04?dummy=/'
-  source_sha1 '4ffe9a28b842ba4ef052b3ffa8cc58db1dbecc64'
+  source_sha256 '3a0b73abca6334b5e6bddefab67f6eb1b2fac1231817d95fc79126c8998c4844'
 
   def self.install
     fonts = "#{CREW_DEST_DIR}/usr/local/share/fonts"
     FileUtils.mkdir_p(fonts)
 
-    Dir.glob('*').each do |f| 
+    Dir.glob('*').each do |f|
       FileUtils.mv(f, fonts) unless ["README.rst", "install.sh"].include? f
     end
 
@@ -28,7 +28,7 @@ class Powerline_fonts < Package
 
       puts "\nFonts will be available after restart or chrome:inducebrowsercrashforrealz"
       puts "To change the font in crosh, enable developer tools in extensions and execute:"
-      puts "\tterm_.prefs_.set(\"font-family\", \"DejaVu Sans Mono for Powerline\")" 
+      puts "\tterm_.prefs_.set(\"font-family\", \"DejaVu Sans Mono for Powerline\")"
       puts "in the Javascript Console to change the font to DejaVu Sans Mono, for example\n\n"
     end
   end

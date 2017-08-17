@@ -5,7 +5,7 @@ class Termcap < Package
   homepage 'https://www.gnu.org/software/termutils/'
   version '1.3.1'
   source_url 'https://ftp.gnu.org/gnu/termcap/termcap-1.3.1.tar.gz'
-  source_sha1 '42dd1e6beee04f336c884f96314f0c96cc2578be'
+  source_sha256 '91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100'
 
   def self.build
     system "./configure"

@@ -5,7 +5,7 @@ class Moreutils < Package
   homepage 'https://joeyh.name/code/moreutils/'
   version '0.60'
   source_url 'http://http.debian.net/debian/pool/main/m/moreutils/moreutils_0.60.orig.tar.xz'
-  source_sha1 '3af60490f763ece48b2fcba968903673c3e63495'
+  source_sha256 'e42d18bacbd2d003779a55fb3542befa5d1d217ee37c1874e8c497581ebc17c5'
 
   depends_on 'docbook'
   depends_on 'libxslt'
