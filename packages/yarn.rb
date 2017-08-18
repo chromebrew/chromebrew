@@ -7,6 +7,9 @@ class Yarn < Package
   source_url 'https://nightly.yarnpkg.com/yarn-v1.0.0-20170808.1058.tar.gz'
   source_sha256 '7056c5ee12aa8d014d59b377be2e494ce49a6059e2678d8f79f1fc9904eb008b'
 
+  node_version=`node -v 2> /dev/null`
+  depends_on 'node' unless "#{node_version}" != ""
+
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}/usr/local"
     system "cp -r lib/ #{CREW_DEST_DIR}/usr/local"
