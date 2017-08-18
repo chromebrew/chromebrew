@@ -9,6 +9,7 @@ class Clisp < Package
 
   depends_on 'libsigsegv'
   depends_on 'ffcall'
+  depends_on 'diffutils' => :build
 
   def self.build
     system "./configure", "--disable-static", "--enable-static", "--with-pic"
