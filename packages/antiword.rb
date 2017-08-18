@@ -16,7 +16,7 @@ class Antiword < Package
     system "sed -i 's,/share/,/,g' antiword.h"
     system "sed -i 's,/usr/antiword,/usr/local/share/antiword,g' antiword.h"
     system "sed -i 's,/usr/share/antiword,/usr/local/share/antiword,' Docs/antiword.1"
-    system "mkdir /home/#{USER}/user/.antiword"
+    system "mkdir -p /home/#{USER}/user/.antiword"
     system "mkdir -p #{CREW_DEST_DIR}/home/#{USER}/user/.antiword"
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
     system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
