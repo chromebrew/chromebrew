@@ -13,14 +13,14 @@ class Nodebrew < Package
     system "mkdir -p #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/nodebrew"
     system "NODEBREW_ROOT=#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/nodebrew perl nodebrew setup > /dev/null"
 
+    system "mkdir -p #{CREW_DEST_DIR}/$HOME"
     system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/home/#{USER}/user"
     system "ln -s #{CREW_LIB_PREFIX}/nodebrew/nodebrew #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
     system "ln -s #{CREW_LIB_PREFIX}/nodebrew/current/bin/node #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
     system "ln -s #{CREW_LIB_PREFIX}/nodebrew/current/bin/npm #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
     system "ln -s #{CREW_LIB_PREFIX}/nodebrew/current/bin/npx #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
-    system "ln -s #{CREW_LIB_PREFIX}/nodebrew #{CREW_DEST_DIR}/home/#{USER}/user/.nodebrew"
-    system "ln -s #{CREW_LIB_PREFIX}/nodebrew /home/#{USER}/user/.nodebrew"
+    system "ln -s #{CREW_LIB_PREFIX}/nodebrew #{CREW_DEST_DIR}/$HOME/.nodebrew"
+    system "ln -s #{CREW_LIB_PREFIX}/nodebrew $HOME/.nodebrew"
     puts
     puts "Nodebrew completion support is available for the following shells:"
     puts "bash fish zsh"
@@ -31,6 +31,9 @@ class Nodebrew < Package
     puts "echo '  source #{CREW_LIB_PREFIX}/nodebrew/completions/bash/nodebrew-completion' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts "echo 'export PATH=\$HOME/.nodebrew/current/bin:\$PATH' >> ~/.bashrc && source ~/.bashrc".lightblue
     puts
     puts "To install the latest node, please execute:".lightblue
     puts "\tnodebrew install-binary latest".lightblue
