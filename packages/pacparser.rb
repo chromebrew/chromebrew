@@ -12,6 +12,6 @@ class Pacparser < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} PREFIX=/usr/local make -C src install"
+    system "DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} make -C src install"
   end
 end
