@@ -13,7 +13,9 @@ class Scrollz < Package
   def self.build
     # Scrollz prefers termcap over ncurses, but scrollz doesn't work our termcap
     # because of link errors.  This configure option prohibits choosing termcap.
-    system "CFLAGS=-I/usr/local/include/ncurses ./configure ac_cv_header_termcap_h=no ac_cv_lib_termcap_tgetent=no"
+    system "CFLAGS=-I#{CREW_PREFIX}/include/ncurses " \
+      "./configure --prefix=#{CREW_PREFIX} " \
+      "ac_cv_header_termcap_h=no ac_cv_lib_termcap_tgetent=no"
     system "make"
   end
 
