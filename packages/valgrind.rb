@@ -58,7 +58,7 @@ class Valgrind < Package
  
  #  elif defined(VGP_arm64_linux)
 EOF'
-    system './configure --prefix=/usr/local'
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
