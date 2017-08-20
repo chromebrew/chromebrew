@@ -13,17 +13,17 @@ class Waf < Package
   def self.build
     system './waf-light configure build'
     system './waf-light --tools=compat15'
+    system "help2man -N ./waf > waf.1"
+    case ARCH
+    when 'x86_64'
+      system "sed -i 's,/lib/,/lib64/,' waf"
+    end
   end
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
     system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
-    system "help2man -N ./waf > waf.1"
-    case ARCH
-    when 'x86_64'
-      system "sed -i 's,/lib/,/lib64/,' waf"
-    end
     system "cp waf #{CREW_DEST_PREFIX}/bin"
     system "cp waf-light #{CREW_DEST_PREFIX}/bin"
     system "cp waf.1 #{CREW_DEST_PREFIX}/man/man1"
