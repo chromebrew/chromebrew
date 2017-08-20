@@ -14,12 +14,12 @@ class Emacs < Package
   depends_on 'automake' => :build
 
   def self.build
-    system './configure \
+    system "./configure \
             --with-x=no \
-            --localstatedir=/usr/local/share \
+            --localstatedir=#{CREW_PREFIX}/tmp \
             --without-makeinfo \
-            --without-selinux'
-    system 'make'
+            --without-selinux"
+    system "make"
   end
 
   def self.install
