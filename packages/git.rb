@@ -3,11 +3,12 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.14.1'
+  version '2.14.1-1'
   source_url 'https://github.com/git/git/archive/v2.14.1.tar.gz'
   source_sha256 'ccc366d5d674fb755fd98d219c23f2b4e5da8a49d8582a6314813b280d75536b'
 
   # use system zlibpkg, openssl, curl, expat
+  depends_on 'autoconf' => :build
   depends_on 'zlibpkg' => :build
   depends_on 'libssh2'
   depends_on 'openssl' => :build
@@ -18,9 +19,11 @@ class Git < Package
   depends_on 'python27' => :build     # requires python2
 
   # need to build using single core
-  @make_cmd = "make -j1 prefix=/usr/local CC=gcc PERL_PATH=/usr/local/bin/perl PYTHON_PATH=/usr/local/bin/python2"
+  @make_cmd = "make -j1 prefix=#{CREW_PREFIX} CC=gcc PERL_PATH=#{CREW_PREFIX}/bin/perl PYTHON_PATH=#{CREW_PREFIX}/bin/python2"
 
   def self.build
+    system "autoconf"
+    system "./configure --without-tcltk"
     system "#{@make_cmd} all"
   end
 
