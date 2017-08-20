@@ -3,7 +3,7 @@ require 'package'
 class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.5.14'
+  version '3.5.14-1'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.5/gnutls-3.5.14.tar.xz'
   source_sha256 '4aa12dec92f42a0434df794aca3d02f6f2a35b47b48c01252de65f355c051bda'
 
@@ -22,7 +22,8 @@ class Gnutls < Package
   def self.build
     system "./configure", "--enable-shared", "--disable-static", "--with-pic",
       "--with-system-priority-file=#{CREW_PREFIX}/etc/gnutls/default-priorities",
-      "--with-unbound-root-key-file=#{CREW_PREFIX}/etc/unbound/root.key"
+      "--with-unbound-root-key-file=#{CREW_PREFIX}/etc/unbound/root.key",
+      "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
