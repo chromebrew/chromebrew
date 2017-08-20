@@ -11,7 +11,7 @@ class Util_linux < Package
   depends_on 'vdev'
 
   def self.build
-    system "./configure --prefix=/usr/local"
+    system "./configure --prefix=#{CREW_PREFIX}"
     system "sed -i '/chgrp/d' ./Makefile"
     system "make"
   end
