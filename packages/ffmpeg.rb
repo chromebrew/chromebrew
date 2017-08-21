@@ -4,7 +4,7 @@ class Ffmpeg < Package
   description 'A complete, cross-platform solution to record, convert and stream audio and video.'
   homepage 'https://ffmpeg.org/'
   version '3.3.3'
-  source_url 'http://ffmpeg.org/releases/ffmpeg-3.3.3.tar.xz'
+  source_url 'https://ffmpeg.org/releases/ffmpeg-3.3.3.tar.xz'
   source_sha256 'd2a9002cdc6b533b59728827186c044ad02ba64841f1b7cd6c21779875453a1e'
 
   depends_on 'gnutls'
