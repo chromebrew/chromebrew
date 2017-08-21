@@ -22,8 +22,8 @@ class Plowshare < Package
     puts
     puts "To add command completion for bash, execute the following:".lightblue
     puts "echo '# plowdown completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f /usr/local/share/bash-completion/completions/plowdown ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source /usr/local/share/bash-completion/completions/plowdown' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/share/bash-completion/completions/plowdown ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  source #{CREW_PREFIX}/share/bash-completion/completions/plowdown' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
