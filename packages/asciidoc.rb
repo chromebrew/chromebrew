@@ -12,13 +12,13 @@ class Asciidoc < Package
 
   def self.build
     system "autoconf"
-    system "mkdir -p #{CREW_DEST_PREFIX}/etc/vim"
-    system "sed -i 's,/etc/vim,#{CREW_DEST_PREFIX}/etc/vim,g' Makefile.in"
+    system "sed -i 's,/etc/vim,#{CREW_PREFIX}/etc/vim,g' Makefile.in"
     system "./configure"
     system "make"
   end
 
   def self.install
+    system "mkdir -p #{CREW_DEST_PREFIX}/etc/vim"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
