@@ -11,6 +11,8 @@ class Weather < Package
 
   def self.build
     system "echo 'setpath = $HOME/.weather:#{CREW_PREFIX}/data/weather' >> weatherrc"
+    system "if [ ! -d $HOME/.weather ]; then mkdir $HOME/.weather; fi"
+    system "if [ ! -f $HOME/.weather/weatherrc ]; then cp weatherrc $HOME/.weather; fi"
   end
 
   def self.install
@@ -31,14 +33,5 @@ class Weather < Package
     system "cp weatherrc #{CREW_DEST_PREFIX}/etc"
     system "cp weather.1 #{CREW_DEST_PREFIX}/man/man1"
     system "cp weatherrc.5 #{CREW_DEST_PREFIX}/man/man5"
-  #end
-
-  # uncomment after PR #1110 is merged
-  #def self.postinstall
-    puts
-    puts "To complete the installation, execute the following:".lightblue
-    puts "mkdir $HOME/.weather".lightblue
-    puts "cp #{CREW_PREFIX}/etc/weatherrc $HOME/.weather".lightblue
-    puts
   end
 end
