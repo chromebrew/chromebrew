@@ -3,9 +3,9 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.13.3'
-  source_url 'https://nginx.org/download/nginx-1.13.3.tar.gz'
-  source_sha256 '5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72'
+  version '1.13.4'
+  source_url 'https://nginx.org/download/nginx-1.13.4.tar.gz'
+  source_sha256 'de21f3c49ba65c611329d8759a63d72e5fcf719bc6f2a3270e2541348ef1fbba'
 
   depends_on 'pcre'
 
