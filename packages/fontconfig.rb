@@ -7,6 +7,7 @@ class Fontconfig < Package
   source_url 'https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.4.tar.bz2'
   source_sha256 '668293fcc4b3c59765cdee5cee05941091c0879edcc24dfec5455ef83912e45c'
 
+  depends_on 'expat'
   depends_on 'gperf'
   depends_on 'pkgconfig'
   depends_on 'freetype'

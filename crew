@@ -19,6 +19,8 @@ CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
 CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
+CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
+CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 
 # Set CREW_NPROC from environment variable or `nproc`
 if ENV["CREW_NPROC"].to_s == ''
@@ -473,8 +475,8 @@ def install_package (pkgdir)
     strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
     strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
 
-    # Strip binaries
-    strip_find_files "find . -type f -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    # Strip binaries but not compressed archives
+    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
   end

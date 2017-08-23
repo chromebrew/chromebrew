@@ -3,12 +3,14 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.9.4'
+  version '2.9.4-1'
   source_url 'ftp://xmlsoft.org/libxml2/libxml2-2.9.4.tar.gz'
   source_sha256 'ffb911191e509b966deb55de705387f14156e1a56b21824357cdf0053233633c'
 
   def self.build
-    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic", "--without-python"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}",
+      "--enable-shared", "--disable-static", "--with-pic", "--without-python",
+      "--without-lzma", "--without-zlib"
     system "make"
   end
 
