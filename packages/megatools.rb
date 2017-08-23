@@ -8,6 +8,7 @@ class Megatools < Package
   source_sha256 '9b0521a4d27dbc417fc8e12610ac1e1da729bf6d6eb5bef927ef3670b372a16f'
 
   depends_on 'asciidoc'
+  depends_on 'glib'
 
   def self.build
     system './configure'
