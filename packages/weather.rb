@@ -10,7 +10,7 @@ class Weather < Package
   depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.build
-    system "echo 'datadir = #{CREW_PREFIX}/data/weather' >> weatherrc"
+    system "echo 'setpath = $HOME/.weather:#{CREW_PREFIX}/data/weather' >> weatherrc"
   end
 
   def self.install
@@ -19,7 +19,6 @@ class Weather < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/etc"
     system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
     system "mkdir -p #{CREW_DEST_PREFIX}/man/man5"
-    system "mkdir -p #{CREW_DEST_PREFIX}/$HOME"
     system "cp weather #{CREW_DEST_PREFIX}/bin"
     system "cp weather.py #{CREW_DEST_PREFIX}/bin"
     system "cp airports #{CREW_DEST_PREFIX}/data/weather"
@@ -32,15 +31,14 @@ class Weather < Package
     system "cp weatherrc #{CREW_DEST_PREFIX}/etc"
     system "cp weather.1 #{CREW_DEST_PREFIX}/man/man1"
     system "cp weatherrc.5 #{CREW_DEST_PREFIX}/man/man5"
-    system "cp weatherrc $HOME/.weatherrc"
-    system "cp weatherrc #{CREW_DEST_PREFIX}/$HOME/.weatherrc"
   #end
 
   # uncomment after PR #1110 is merged
   #def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
-    puts "echo 'alias weather=\"weather --setpath=/usr/local/data/weather\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+    puts "mkdir $HOME/.weather".lightblue
+    puts "cp #{CREW_PREFIX}/etc/weatherrc $HOME/.weather".lightblue
     puts
   end
 end
