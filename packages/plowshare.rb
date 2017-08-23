@@ -9,12 +9,8 @@ class Plowshare < Package
 
   depends_on 'recode'
 
-  def self.build
-    system "sed -i 's,PREFIX ?= /usr,PREFIX ?= #{CREW_PREFIX},' Makefile"
-  end
-
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
   #end
 
   # uncomment after PR #1110 is merged
