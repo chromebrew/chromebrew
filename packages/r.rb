@@ -3,9 +3,9 @@ require 'package'
 class R < Package
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
-  version '3.4.0'
-  source_url 'https://cran.r-project.org/src/base/R-3/R-3.4.0.tar.gz'
-  source_sha256 '288e9ed42457c47720780433b3d5c3c20983048b789291cc6a7baa11f9428b91'
+  version '3.4.1'
+  source_url 'https://cran.r-project.org/src/base/R-3/R-3.4.1.tar.gz'
+  source_sha256 '02b1135d15ea969a3582caeb95594a05e830a6debcdb5b85ed2d5836a6a3fc78'
 
   # depends_on 'gfortran'       # require gfortran enabled gcc
   depends_on 'pcre'             # need to use pcre not pcre2
