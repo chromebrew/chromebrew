@@ -3,9 +3,9 @@ require 'package'
 class Redis < Package
   description 'Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.'
   homepage 'https://redis.io/'
-  version '3.0.6'
-  source_url 'http://download.redis.io/releases/redis-3.0.6.tar.gz'
-  source_sha256 '6f1e1523194558480c3782d84d88c2decf08a8e4b930c56d4df038e565b75624'
+  version '4.0.1'
+  source_url 'http://download.redis.io/releases/redis-4.0.1.tar.gz'
+  source_sha256 '2049cd6ae9167f258705081a6ef23bb80b7eff9ff3d0d7481e89510f27457591'
 
   depends_on 'buildessential'
 
