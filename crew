@@ -424,6 +424,13 @@ def build_and_preconfigure (target_dir)
   end
 end
 
+def post_install (target_dir)
+  Dir.chdir target_dir do
+    puts "Performing post-install..."
+    @pkg.postinstall
+  end
+end
+
 def compress_doc (dir)
   # check whether crew should compress
   return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
@@ -609,6 +616,9 @@ def install
     puts "Installing..."
     install_package dest_dir
   end
+
+  # perform post-install process
+  post_install target_dir
 
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
