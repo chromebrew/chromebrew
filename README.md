@@ -40,25 +40,25 @@ Then download and run the installation script below:
 Usage
 -----
 
-    crew <command> <package> <keep[temporary files]>
+    crew <command> [-k|--keep] <package1> [<package2> ...]
 
 Where available commands are:
 
-  * build [build a package from source and store the archive and checksum in the current working directory]
-  * download [download a package to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it]
+  * build [build package(s) from source and store the archive and checksum in the current working directory]
+  * download [download package(s) to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install]
   * help [get information about command usage]
-  * install [install a package along with its dependencies after prompting for confirmation]
-  * remove [remove a package]
+  * install [install package(s) along with dependencies after prompting for confirmation]
+  * remove [remove package(s)]
   * search [look for a package]
   * update [update crew itself]
-  * upgrade [update all or a specific package]
+  * upgrade [update all or specific package(s)]
   * whatprovides [regex search for package(s) that contains file(s)]
 
 Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
 
-Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass "keep" as the last parameter when running "crew install".
+Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
 
-    crew install <package> keep
+    crew install --keep <package1> [<package2> ...]
 
 License
 -------
