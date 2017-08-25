@@ -28,10 +28,9 @@ class Waf < Package
     system "cp waf-light #{CREW_DEST_PREFIX}/bin"
     system "cp waf.1 #{CREW_DEST_PREFIX}/man/man1"
     system "cp -r waflib/ #{CREW_DEST_LIB_PREFIX}"
-  #end
+  end
 
-  # uncomment after PR #1110 is merged
-  #def self.postinstall
+  def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
     puts "echo 'export WAFDIR=#{CREW_LIB_PREFIX}' >> ~/.bashrc && source ~/.bashrc".lightblue
