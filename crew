@@ -615,11 +615,11 @@ def install
     # install filelist, dlist and binary files
     puts "Installing..."
     install_package dest_dir
+
+    # perform post-install process
+    post_install target_dir
   end
-
-  # perform post-install process
-  post_install target_dir
-
+	
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
