@@ -12,7 +12,7 @@ class Less < Package
   depends_on 'pcre'
 
   def self.build
-    system "./configure --with-regex=pcre"
+    system "./configure --with-regex=posix"
     system "make"
   end
 
