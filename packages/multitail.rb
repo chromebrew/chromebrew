@@ -9,6 +9,10 @@ class Multitail < Package
 
   depends_on 'ncursesw'
 
+  def self.build
+    system 'make'
+  end
+
   def self.install
     system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
