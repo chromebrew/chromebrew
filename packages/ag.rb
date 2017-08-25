@@ -3,9 +3,9 @@ require 'package'
 class Ag < Package
   description 'The Silver Searcher. Very fast search similar to ack or grep. (ag)'
   homepage 'https://github.com/ggreer/the_silver_searcher'
-  version '2.0.0'
-  source_url 'https://github.com/ggreer/the_silver_searcher/archive/2.0.0.tar.gz'
-  source_sha256 'ff7243863f22ed73eeab6f7a6d17cfff585a7eaa41d5ab3ae4f5d6db97701d5f'
+  version '2.1.0'
+  source_url 'https://github.com/ggreer/the_silver_searcher/archive/2.1.0.tar.gz'
+  source_sha256 'cb416a0da7fe354a009c482ae709692ed567f8e7d2dad4d242e726dd7ca202f0'
 
   depends_on "autoconf"
   depends_on "automake"
