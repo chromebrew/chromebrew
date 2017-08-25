@@ -79,7 +79,7 @@ class Package
 
   end
 
-  # Function to perform post-install for all even if it is a fake package.
+  # Function to perform post-install for both source build and binary distribution
   def self.postinstall
 
   end
