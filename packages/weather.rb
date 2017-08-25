@@ -35,7 +35,6 @@ class Weather < Package
 
   def self.postinstall
     system "if [ ! -d $HOME/.weather ]; then mkdir $HOME/.weather; fi"
-    system "if [ ! -f $HOME/.weather/weatherrc ]; then cp weatherrc $HOME/.weather; fi"
+    system "if [ ! -f $HOME/.weather/weatherrc ]; then cp #{CREW_PREFIX}/etc/weatherrc $HOME/.weather; fi"
   end
-
 end
