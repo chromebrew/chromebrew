@@ -11,8 +11,6 @@ class Weather < Package
 
   def self.build
     system "echo 'setpath = $HOME/.weather:#{CREW_PREFIX}/data/weather' >> weatherrc"
-    system "if [ ! -d $HOME/.weather ]; then mkdir $HOME/.weather; fi"
-    system "if [ ! -f $HOME/.weather/weatherrc ]; then cp weatherrc $HOME/.weather; fi"
   end
 
   def self.install
@@ -34,4 +32,10 @@ class Weather < Package
     system "cp weather.1 #{CREW_DEST_PREFIX}/man/man1"
     system "cp weatherrc.5 #{CREW_DEST_PREFIX}/man/man5"
   end
+
+  def self.postinstall
+    system "if [ ! -d $HOME/.weather ]; then mkdir $HOME/.weather; fi"
+    system "if [ ! -f $HOME/.weather/weatherrc ]; then cp weatherrc $HOME/.weather; fi"
+  end
+
 end
