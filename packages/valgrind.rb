@@ -7,6 +7,11 @@ class Valgrind < Package
   source_url 'ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2'
   source_sha256 'd76680ef03f00cd5e970bbdcd4e57fb1f6df7d2e2c071635ef2be74790190c3b'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'patch' => :build
 
   def self.build

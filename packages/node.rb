@@ -7,6 +7,11 @@ class Node < Package
   source_url 'https://nodejs.org/dist/v6.11.0/node-v6.11.0.tar.xz'
   source_sha256 '02ba35391edea2b294c736489af01954ce6e6c39d318f4423ae6617c69ef0a51'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'buildessential'
   depends_on 'python27'
 

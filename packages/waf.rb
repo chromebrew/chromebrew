@@ -7,6 +7,19 @@ class Waf < Package
   source_url 'https://github.com/waf-project/waf/archive/waf-1.9.13.tar.gz'
   source_sha256 '08d41e9e50398b2f07d74b0cef7b9f02d33787d6d27d2a0e6df5732bbd95bebc'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/waf-1.9.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/waf-1.9.13-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/waf-1.9.13-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/waf-1.9.13-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'de828d9a81f18da0c7dc966623e2f41815f6bd42a723b5bd3eda444eb9b93538',
+     armv7l: 'de828d9a81f18da0c7dc966623e2f41815f6bd42a723b5bd3eda444eb9b93538',
+       i686: 'a18ef4d76efe3e6fd2e125c0df3a589851d11c06dd7c22cdf8bb1ec7e0a9ca20',
+     x86_64: 'b577a4768c54331ac09d4d6eb4e6258ad6a0e6b1267cec468c5dd33c1b01bff4',
+  })
+
   depends_on 'help2man'
   depends_on 'python27' unless File.exists? '/usr/local/bin/python'
 

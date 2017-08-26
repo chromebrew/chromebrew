@@ -7,6 +7,19 @@ class Libcap < Package
   source_url 'https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.25.tar.xz'
   source_sha256 '693c8ac51e983ee678205571ef272439d83afe62dd8e424ea14ad9790bc35162'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.25-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.25-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.25-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.25-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'e16e2cff870a30f50b4b17284325b672c5f204eeec9c28753d6dfd4998c1593c',
+     armv7l: 'e16e2cff870a30f50b4b17284325b672c5f204eeec9c28753d6dfd4998c1593c',
+       i686: 'da6a3a37bb2c9fa6cfdafbec225b7038d37c77b87c8a8b0e3c9573358ce95efd',
+     x86_64: '4aec1e1f208538ec02df02808e9a40df4628a0bfb019367e3f7059fa1debe1bc',
+  })
+
   depends_on 'gperf' => :build
   depends_on 'perl' => :build
 

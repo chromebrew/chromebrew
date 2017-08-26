@@ -7,6 +7,11 @@ class Misctools < Package
   source_url 'http://www.hyperrealm.com/misctools/misctools-2.5.5.tar.bz2'
   source_sha256 '4eb5913566da3e243ebd9cab499f927a2d46a2191baa51b810214f83eebb3ae9'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'cbase'
 
   def self.build

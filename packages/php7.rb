@@ -7,6 +7,19 @@ class Php7 < Package
   source_url 'https://php.net/distributions/php-7.1.8.tar.xz'
   source_sha256 '8943858738604acb33ecedb865d6c4051eeffe4e2d06f3a3c8f794daccaa2aab'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '189dd7432d81613f46c36df7e833308fa4c4dfd42930fbb8ee259c7e5acdd2bc',
+     armv7l: '189dd7432d81613f46c36df7e833308fa4c4dfd42930fbb8ee259c7e5acdd2bc',
+       i686: 'e7af55ce2d1330b2078259e67a6437ff08b78134b5db7c2acb919265eb8bf02a',
+     x86_64: '0ed419400ca523f36d428e0aa778813274d4faf7554a5fcf3eab2d811c031414',
+  })
+
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
   depends_on 'libpng'
