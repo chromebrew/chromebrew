@@ -8,8 +8,16 @@ class Php5 < Package
   source_sha256 'c464af61240a9b7729fabe0314cdbdd5a000a4f0c9bd201f89f8628732fe4ae4'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '0e4862b4afb8c8846e462ce77f88e01d2bb3853fc108844ad48f2113045b6b50',
+     armv7l: '0e4862b4afb8c8846e462ce77f88e01d2bb3853fc108844ad48f2113045b6b50',
+       i686: 'f1527a845d79ea3a689f80198938ee4e26e2236766442040166a8fb45c61c72c',
+     x86_64: 'aefef7c188611a259d15500ecd9ebd6a5b91fa5d266e8659e6ac7b13c400d154',
   })
 
   depends_on 'pkgconfig'
