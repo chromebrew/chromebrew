@@ -70,20 +70,6 @@ USER = `whoami`.chomp
 
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
-# Parse arguments using docopt
-
-require 'docopt'
-begin
-  args = Docopt::docopt(DOC)
-rescue Docopt::Exit => e
-  puts e.message
-  exit 1
-end
-
-@opt_keep = args["--keep"]
-@opt_verbose = args["--verbose"]
-@opt_src = args["--build-from-source"]
-
 # colorization
 class String
   def colorize(color_code, shade)
@@ -155,8 +141,23 @@ class String
   end
 end
 
+return 0 if defined? CREW_INIT_ONLY
+
 #disallow sudo
 abort "Chromebrew should not be run as root.".lightred if Process.uid == 0
+
+# Parse arguments using docopt
+require 'docopt'
+begin
+  args = Docopt::docopt(DOC)
+rescue Docopt::Exit => e
+  puts e.message
+  exit 1
+end
+
+@opt_keep = args["--keep"]
+@opt_verbose = args["--verbose"]
+@opt_src = args["--build-from-source"]
 
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
@@ -203,9 +204,9 @@ end
 
 def regexp_search(pkgName)
   results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
-	  .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
-	  .collect { |f| File.basename(f, '.rb') } \
-	  .each    { |f| print_package(f, @opt_verbose) }
+    .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
+    .collect { |f| File.basename(f, '.rb') } \
+    .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
     Find.find ("#{CREW_LIB_PATH}packages/") do |packageName|
       if File.file? packageName
@@ -654,7 +655,7 @@ def install
     # perform post-install process
     post_install target_dir
   end
-	
+
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|

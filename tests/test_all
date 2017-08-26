@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+CREW_INIT_ONLY = true
+load '../crew'
+
+puts "Running tests..."
+
+Find.find(".") do |filename|
+  if File.extname(filename) == '.rb'
+    puts "\nTest Name: #{File.basename(filename, ".rb")}"
+    load filename
+  end
+end
+
+puts "\nAll tests successful.".lightgreen
