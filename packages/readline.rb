@@ -3,9 +3,9 @@ require 'package'
 class Readline < Package
   description 'The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.'
   homepage 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
-  version '7.0'
-  source_url 'http://ftp.gnu.org/gnu/readline/readline-7.0.tar.gz'
-  source_sha256 '750d437185286f40a369e1e4f4764eda932b9459b5ec9a731628393dd3d32334'
+  version '6.3p8'
+  source_url 'http://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz'
+  source_sha256 '56ba6071b9462f980c5a72ab0023893b65ba6debb4eeb475d7a563dc65cafd43'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/readline-6.3p8-chromeos-armv7l.tar.xz',
