@@ -25,19 +25,19 @@ class Sejda_console < Package
   depends_on 'unzip'
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/share/sejda_console"
-    system "cp -r . #{CREW_DEST_DIR}/usr/local/share/sejda_console"
-    FileUtils.cd("#{CREW_DEST_DIR}/usr/local/bin") do
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share/sejda_console"
+    system "cp -r . #{CREW_DEST_PREFIX}/share/sejda_console"
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "echo '#!/bin/bash' > sejda-console"
       system "echo 'PWD=$(pwd)' >> sejda-console"
-      system "echo 'cd /usr/local/share/sejda_console' >> sejda-console"
+      system "echo 'cd #{CREW_PREFIX}/share/sejda_console' >> sejda-console"
       system "echo 'bin/sejda-console \"\$@\"' >> sejda-console"
       system "echo 'cd $PWD' >> sejda-console"
       system "chmod +x sejda-console"
     end
-    system "cp #{CREW_DEST_DIR}/usr/local/bin/sejda-console /usr/local/bin"
-    system "help2man -N sejda-console > #{CREW_DEST_DIR}/usr/local/man/man1/sejda-console.1"
+    system "cp #{CREW_DEST_PREFIX}/bin/sejda-console #{CREW_PREFIX}/bin"
+    system "help2man -N sejda-console > #{CREW_DEST_PREFIX}/man/man1/sejda-console.1"
   end
 end
