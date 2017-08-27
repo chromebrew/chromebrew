@@ -12,15 +12,15 @@ DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
 Usage:
-  crew build [-k|--keep] <package1> [package2 ...]
-  crew download <package1> [package2 ...]
+  crew build [-k|--keep] <name> ...
+  crew download <name> ...
   crew help [<command>]
-  crew install [-k|--keep] [-s|--build-from-source] <package1> [package2 ...]
-  crew remove <package1> [package2 ...]
-  crew search [-v|--verbose] [<pattern>]
+  crew install [-k|--keep] [-s|--build-from-source] <name> ...
+  crew remove <name> ...
+  crew search [-v|--verbose] [<name>]
   crew update
-  crew upgrade [-k|--keep] [-s|--build-from-source] [package1 package2 ...]
-  crew whatprovides <pattern>
+  crew upgrade [-k|--keep] [-s|--build-from-source] <name> ...
+  crew whatprovides <name>
 
   -k --keep               Keep the BREW_DIR (/usr/local/tmp/crew by default) directory.
   -s --build-from-source  Build from source even if pre-compiled binary exists.
