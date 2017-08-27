@@ -33,7 +33,7 @@ class Sejda_console < Package
       system "echo '#!/bin/bash' > sejda-console"
       system "echo 'PWD=$(pwd)' >> sejda-console"
       system "echo 'cd /usr/local/share/sejda_console' >> sejda-console"
-      system "echo 'bin/sejda-console $1 $2 $3 $4 $5 $6 $7 $8 $9' >> sejda-console"
+      system "echo 'bin/sejda-console \"\$@\"' >> sejda-console"
       system "echo 'cd $PWD' >> sejda-console"
       system "chmod +x sejda-console"
     end
