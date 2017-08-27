@@ -3,15 +3,15 @@ require 'package'
 class Sfk < Package
   description 'The Swiss File Knife - A Command Line Tools Collection for Windows / Linux / Mac.'
   homepage 'http://swissfileknife.sourceforge.net/'
-  version '1.8.6'
-  source_url 'https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.8.6/sfk-1.8.6.tar.gz'
-  source_sha256 'e65ec60b529785accdb90a77c99376888898764b2d79f6d4280077992994b1e2'
+  version '1.8.7'
+  source_url 'https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.8.7/sfk-1.8.7.tar.gz'
+  source_sha256 '1c53d4d9d05af752546c8341a718bf64be99b62491ff91db02ef100e2f93bfc3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '66de7a4de3b92fad4a4e68df7fbedf6318f0576f98f3bbcd2be6bfa5026638f8',
