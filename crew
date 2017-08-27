@@ -19,7 +19,7 @@ Usage:
   crew remove <name> ...
   crew search [-v|--verbose] [<name>]
   crew update
-  crew upgrade [-k|--keep] [-s|--build-from-source] <name> ...
+  crew upgrade [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides <name>
 
   -k --keep               Keep the BREW_DIR (/usr/local/tmp/crew by default) directory.
