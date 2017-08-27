@@ -249,7 +249,7 @@ def help (pkgName)
     puts "If <pattern> is omitted, all packages will be returned."
     puts "(i)".lightgreen + " in front of the name means the package is installed."
     puts "The <pattern> string can also contain regular expressions."
-    puts "If '-v' or '--verbose' switch is present, homepage and version will be displayed."
+    puts "If '-v' or '--verbose' is present, homepage and version will be displayed."
     puts "Examples:"
     puts "  crew search | grep '(i)'".lightblue + " will display all installed packages."
     puts "  crew search | grep -v '(i)'".lightblue + " will display all available packages not already installed."
