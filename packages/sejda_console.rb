@@ -3,15 +3,15 @@ require 'package'
 class Sejda_console < Package
   description 'Sejda SDK is an open source, task oriented Java library to edit PDF files.'
   homepage 'http://sejda.org/'
-  version '3.2.17'
-  source_url 'https://github.com/torakiki/sejda/releases/download/v3.2.17/sejda-console-3.2.17-bin.zip'
-  source_sha256 '62476a7985c7c272fc036b07d2b16dbeb8dfb0167f202f5d1c6d557fe14137ac'
+  version '3.2.22'
+  source_url 'https://github.com/torakiki/sejda/releases/download/v3.2.22/sejda-console-3.2.22-bin.zip'
+  source_sha256 '09379d7f89d6b373a39d3e642a377650f0660849e8a934e2b94169df51dd7c13'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.17-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.17-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.17-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.22-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.22-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sejda_console-3.2.22-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7d9ae694a3df31802075f15af16567bc581935a7450033e03d99e4aed0b5612a',
