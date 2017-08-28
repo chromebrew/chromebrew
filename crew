@@ -226,22 +226,22 @@ def help (pkgName)
   case pkgName
   when "build"
     puts "Build package(s)."
-    puts "Usage: crew build [-k|--keep] <package1> [package2 ...]"
+    puts "Usage: crew build [-k|--keep] <package1> [<package2> ...]"
     puts "Build package(s) from source and place the archive and checksum in the current working directory."
     puts "If '-k' or '--keep' is present, the BREW_DIR (/usr/local/tmp/crew by default) directory will remain."
   when "download"
     puts "Download package(s)."
-    puts "Usage: crew download <package1> [package2 ...]"
+    puts "Usage: crew download <package1> [<package2> ...]"
     puts "Download package(s) to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install."
   when "install"
     puts "Install package(s)."
-    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] <package1> [package2 ...]"
+    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] <package1> [<package2> ...]"
     puts "The package(s) must have a valid name.  Use `crew search <pattern>` to search for a package to install."
     puts "If '-k' or '--keep' is present, the BREW_DIR (/usr/local/tmp/crew by default) directory will remain."
     puts "If '-s' or '--build-from-source' is present, the package(s) will be compiled instead of installed via binary."
   when "remove"
     puts "Remove package(s)."
-    puts "Usage: crew remove <package1> [package2 ...]"
+    puts "Usage: crew remove <package1> [<package2> ...]"
     puts "The package(s) must be currently installed."
   when "search"
     puts "Look for a package."
@@ -262,10 +262,10 @@ def help (pkgName)
     puts "This only updates crew itself.  Use 'crew upgrade' to update packages."
   when "upgrade"
     puts "Update package(s)."
-    puts "Usage: crew upgrade [-k|--keep] [-s|--build-from-source] [package1 package2 ...]"
+    puts "Usage: crew upgrade [-k|--keep] [-s|--build-from-source] [<package1> <package2> ...]"
     puts "If '-k' or '--keep' is present, the BREW_DIR (/usr/local/tmp/crew by default) directory will remain."
     puts "If '-s' or '--build-from-source' is present, the package(s) will be compiled instead of updated via binary."
-    puts "If [package1 package2 ..] is omitted, all packages will be updated.  Otherwise, specific package(s) will be updated."
+    puts "If [<package1> <package2> ...] is omitted, all packages will be updated.  Otherwise, specific package(s) will be updated."
     puts "Use 'crew update' to update crew itself."
   when "whatprovides"
     puts "Determine which package(s) contains file(s)."
@@ -303,7 +303,7 @@ def whatprovides (pkgName)
 end
 
 def update
-  abort "'crew update' is used to update crew itself.  Use 'crew upgrade <package1> [package2 ...] to update specific package(s).".orange if @pkgName
+  abort "'crew update' is used to update crew itself.  Use 'crew upgrade <package1> [<package2> ...] to update specific package(s).".orange if @pkgName
 
   # Update package lists
   Dir.chdir CREW_LIB_PATH do
@@ -800,7 +800,7 @@ def help_command (args)
   if args["<command>"]
     help args["<command>"]
   else
-    puts "Usage: crew help [command]"
+    puts "Usage: crew help <command>"
     help nil
   end
 end
