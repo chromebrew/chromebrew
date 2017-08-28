@@ -17,10 +17,10 @@ Usage:
   crew help [<command>]
   crew install [-k|--keep] [-s|--build-from-source] <name> ...
   crew remove <name> ...
-  crew search [-v|--verbose] [<name>]
+  crew search [-v|--verbose] [<name> ...]
   crew update
   crew upgrade [-k|--keep] [-s|--build-from-source] [<name> ...]
-  crew whatprovides <name>
+  crew whatprovides <name> ...
 
   -k --keep               Keep the BREW_DIR (/usr/local/tmp/crew by default) directory.
   -s --build-from-source  Build from source even if pre-compiled binary exists.
