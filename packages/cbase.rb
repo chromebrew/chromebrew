@@ -7,6 +7,11 @@ class Cbase < Package
   source_url 'http://www.hyperrealm.com/cbase/cbase-1.3.7.tar.gz'
   source_sha256 'c4d155686ac2e9d1480319de311967fadad745a6ab6971d53d495d9a9e52dc47'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   def self.build
     system './configure'
     system 'make'

@@ -7,6 +7,19 @@ class Composer < Package
   source_url 'https://github.com/composer/composer/archive/1.4.2.tar.gz'
   source_sha256 'b5ebe7bfddf6e05be9ab071d5d53dc49e7c9059a12238460ec86e2e6ab722e06'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.4.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.4.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.4.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.4.2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '21fc4be414c57b87f2fef310bd5686bf9afacf9b42d70eb965c3d2a2ebf8169d',
+     armv7l: '21fc4be414c57b87f2fef310bd5686bf9afacf9b42d70eb965c3d2a2ebf8169d',
+       i686: 'd9287ea3756417da202bc720f24a68942f0d8391e73ab2f403b4d28b243d5ec0',
+     x86_64: 'a4df579e211c787e5d92c6102a6f3ee1017de8813ed5fe3482b5be0b0633f27e',
+  })
+
   depends_on 'php7' unless File.exists? '/usr/local/bin/php'
 
   def self.install

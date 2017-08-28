@@ -15,6 +15,15 @@ class Dropbox < Package
     puts 'Unable to install dropboxd.  Supported architectures include i686 and x86_64 only.'.lightred
   end
 
+  binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-32.4.23-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-32.4.23-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+       i686: '9b1223d26c8d93a9e1b981bb0746fcb2053c175caaa57494af9de779551ffb7b',
+     x86_64: '372981c324e128d2b9df037c1c8413c9e7a055aae3267954cd9f213cf00c8f16',
+  })
+
   depends_on 'python27' unless File.exists? '/usr/local/bin/python'
 
   def self.build

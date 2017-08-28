@@ -7,6 +7,19 @@ class Libunbound < Package
   source_url 'https://www.unbound.net/downloads/unbound-1.6.2.tar.gz'
   source_sha256 '1a323d72c32180b7141c9e6ebf199fc68a0208dfebad4640cd2c4c27235e3b9c'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.6.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.6.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.6.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.6.2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '72a4c0a18e74232aed3c619e97fcd41a9df18a8887b9f5f7b45ab7cb9e0f4e1b',
+     armv7l: '72a4c0a18e74232aed3c619e97fcd41a9df18a8887b9f5f7b45ab7cb9e0f4e1b',
+       i686: '2fd2b4fc97ab09228022f8f76a9fdb64da733dcbd68de247273c34887b749570',
+     x86_64: 'dde8bd43e4fb63f9c21d751198efffce41a4ea59db965a69540538d670ea5048',
+  })
+
   depends_on 'flex' => :build
   depends_on 'bison' => :build
   depends_on 'gawk' => :build

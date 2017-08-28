@@ -9,6 +9,19 @@ class Docbook_xsl < Package
   source_url 'http://downloads.sourceforge.net/docbook/docbook-xsl-1.79.1.tar.bz2'
   source_sha256 '725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'dc78b57e5e4219ea92f0c2f077806c8f1f88f66577cec829d23691319d812ad6',
+     armv7l: 'dc78b57e5e4219ea92f0c2f077806c8f1f88f66577cec829d23691319d812ad6',
+       i686: '46834cf7ee7510cd02417a50b874fe0aceb806fc656ca13600e3bfa7dee25c5c',
+     x86_64: '6713dae4909337fde776f610cf3dee9b6b0ca88a8b35ffb02cc213022f6b85ba',
+  })
+
   depends_on 'unzip'
   depends_on 'libxml2'
   depends_on 'libxslt'

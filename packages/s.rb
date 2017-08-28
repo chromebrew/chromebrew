@@ -20,6 +20,19 @@ class S < Package
     source_sha256 '1e9a379071171ffaa28ce4d697389a70b115955335e41cfbbd37197404129d49'
   end
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'a9b1301b6fd3283a7464b4820d115079d79ba7f2b09c14a635bab851721a3f77',
+     armv7l: 'a9b1301b6fd3283a7464b4820d115079d79ba7f2b09c14a635bab851721a3f77',
+       i686: 'bad1fcf5147b65d4d527512fdfe9aa7e8cdfb20ab9598d98bacf91b7df4c3b1e',
+     x86_64: '8a904b6a061c4efa8c55ea2af93f7a5be5af42fafcfc1cc7233fd9f28afeb1f5',
+  })
+
   depends_on 'links'
   depends_on 'unzip'
 
