@@ -245,7 +245,7 @@ def help (pkgName)
     puts "The package(s) must be currently installed."
   when "search"
     puts "Look for a package."
-    puts "Usage: crew search [-v|--verbose] [<pattern>]"
+    puts "Usage: crew search [-v|--verbose] [<pattern> ...]"
     puts "If <pattern> is omitted, all packages will be returned."
     puts "(i)".lightgreen + " in front of the name means the package is installed."
     puts "The <pattern> string can also contain regular expressions."
@@ -269,7 +269,7 @@ def help (pkgName)
     puts "Use 'crew update' to update crew itself."
   when "whatprovides"
     puts "Determine which package(s) contains file(s)."
-    puts "Usage: crew whatprovides <pattern>"
+    puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
     puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
