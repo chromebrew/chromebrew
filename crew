@@ -656,7 +656,7 @@ def install
     install_package dest_dir
 
     # Perform post-install process
-    post_install target_dir
+    post_install dest_dir
   end
 
   # Add to installed packages
