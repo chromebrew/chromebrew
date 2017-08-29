@@ -466,8 +466,8 @@ def build_and_preconfigure (target_dir)
   end
 end
 
-def post_install (target_dir)
-  Dir.chdir target_dir do
+def post_install (dest_dir)
+  Dir.chdir dest_dir do
     puts "Performing post-install..."
     @pkg.postinstall
   end

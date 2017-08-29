@@ -3,21 +3,21 @@ require 'package'
 class Sfk < Package
   description 'The Swiss File Knife - A Command Line Tools Collection for Windows / Linux / Mac.'
   homepage 'http://swissfileknife.sourceforge.net/'
-  version '1.8.6'
-  source_url 'https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.8.6/sfk-1.8.6.tar.gz'
-  source_sha256 'e65ec60b529785accdb90a77c99376888898764b2d79f6d4280077992994b1e2'
+  version '1.8.7'
+  source_url 'https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.8.7/sfk-1.8.7.tar.gz'
+  source_sha256 '1c53d4d9d05af752546c8341a718bf64be99b62491ff91db02ef100e2f93bfc3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '66de7a4de3b92fad4a4e68df7fbedf6318f0576f98f3bbcd2be6bfa5026638f8',
-     armv7l: '66de7a4de3b92fad4a4e68df7fbedf6318f0576f98f3bbcd2be6bfa5026638f8',
-       i686: 'ba2504cdbfa127dddfeea0ce1d39d60cf0a06e8c1f9eda0c14870db9c53ba755',
-     x86_64: '714260e8edd3bac91f3a034e896ac36626f0dc4ec7f6a7ec4a88dfb7617ebc5b',
+    aarch64: '1666f3bd5271973be9ce535e6cc1a71a831ba3d479ba2a08b7c587d2142ef360',
+     armv7l: '1666f3bd5271973be9ce535e6cc1a71a831ba3d479ba2a08b7c587d2142ef360',
+       i686: 'e2366c801933f920eef6058c559883be2ab31470f314c0fc0bdd40187014331c',
+     x86_64: '86c8b0fc3953d74b5225e16aec90dfb8e5c6f794f4d02ffb731e8ab8469c97e6',
   })
 
   def self.build
