@@ -3,20 +3,25 @@ require 'package'
 class Vifm < Package
   description 'Vifm is an ncurses based file manager with vi like keybindings/modes/options/commands/configuration, which also borrows some useful ideas from mutt.'
   homepage 'https://vifm.info/'
-  version '0.8.2'
-  source_url 'https://downloads.sourceforge.net/project/vifm/vifm/vifm-0.8.2.tar.bz2'
-  source_sha256 '8b466d766658a24d07fc2039a26fefc6a018f5653684a6035183ca79f02c211f'
+  version '0.9'
+  source_url 'https://downloads.sourceforge.net/project/vifm/vifm/vifm-0.9.tar.bz2'
+  source_sha256 'ab10c99d1e4c24ff8a03c20be1c202cc15874750cc47a1614e6fe4f8d816a7fd'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'ncurses'
 
   def self.build
     system "./configure", \
-	   "--prefix=/usr/local", \
+	   "--prefix=#{CREW_PREFIX}", \
 	   "--without-gtk", \
 	   "--without-X11", \
-	   #"--with-curses=/usr/local/include/ncursesw" \
+	   #"--with-curses=#{CREW_PREFIX}/include/ncursesw" \
 	   #"--with-curses-name=ncursesw" \
-	   "CPPFLAGS=-I/usr/local/include/ncursesw"
+	   "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
     system "make"
   end
 

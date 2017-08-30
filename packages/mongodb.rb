@@ -6,9 +6,14 @@ class Mongodb < Package
   # We use 3.2 branch here since:
   #  - 3.2 branch works well with gcc-4.9.4
   #  - master 3.4 branch requires gcc-5.4.0
-  version '3.2.15'
-  source_url 'https://fastdl.mongodb.org/src/mongodb-src-r3.2.15.tar.gz'
-  source_sha256 '6726634f86d5887f9a8f9ae5e9e57d5d27ef219b6154280782d95ab81a2e43d7'
+  version '3.2.16'
+  source_url 'https://fastdl.mongodb.org/src/mongodb-src-r3.2.16.tar.gz'
+  source_sha256 '7a8b1b16f3fa545af16f48aeef1f918f57d96a80e1ceb6e669cdb81fab6511d0'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'openssl' => :build
   depends_on 'libpcap' => :build

@@ -3,9 +3,22 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.24.1-1'
+  version '5.24.1-3'
   source_url 'http://www.cpan.org/src/5.0/perl-5.24.1.tar.gz'
   source_sha256 'e6c185c9b09bdb3f1b13f678999050c639859a7ef39c8cad418448075f5918af'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.24.1-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.24.1-3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.24.1-3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.24.1-3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '98a97e66b1bef91a97654675197141b4c2b25990b2ba17465ff33d98a494c521',
+     armv7l: '98a97e66b1bef91a97654675197141b4c2b25990b2ba17465ff33d98a494c521',
+       i686: '04930ee73e84e5df65c759e9b9b7be1f956c3c99cdc34dc74b504088d6b73021',
+     x86_64: '4f436341733c7230bfd843349a0737fd910e2762ff3f990ef976b466c305b930',
+  })
 
   depends_on 'patch' => :build
 
@@ -15,13 +28,14 @@ class Perl < Package
     # Install manual files into /usr/local/share/man/man* even if groff is not installed.
     system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_PREFIX}/share/man/man1 -Dman3dir=#{CREW_PREFIX}/share/man/man3"
     system "make"
+    system "curl -o cpanm https://cpanmin.us"
+    system "chmod +x cpanm"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "sudo curl -o /usr/local/bin/cpanm https://cpanmin.us"
-    system "sudo chmod +x /usr/local/bin/cpanm"
-    system "sudo chown chronos /usr/local/bin/cpanm"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin/"
+    system "cp cpanm #{CREW_DEST_PREFIX}/bin/"
   end
 
   def self.check

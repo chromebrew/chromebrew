@@ -7,6 +7,19 @@ class Libxvid < Package
   source_url 'http://downloads.xvid.org/downloads/xvidcore-1.3.4.tar.gz'
   source_sha256 '4e9fd62728885855bc5007fe1be58df42e5e274497591fec37249e1052ae316f'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxvid-1.3.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxvid-1.3.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxvid-1.3.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxvid-1.3.4-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '76767ad14d293f66f07c43ca837fad10b78c0f98d67fd5eb00a1a940355d61a7',
+     armv7l: '76767ad14d293f66f07c43ca837fad10b78c0f98d67fd5eb00a1a940355d61a7',
+       i686: '57164785ff150a29ce3e292b3ac2b49b49152beb8b13e4217d7909f6f7e6adc8',
+     x86_64: 'de31167c342fe26b2864265c2b01566bbd4a22254e2479768c87555351da2f36',
+  })
+
   depends_on 'yasm'
 
   def self.build
