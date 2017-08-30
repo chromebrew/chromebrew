@@ -37,6 +37,14 @@ Then download and run the installation script below:
 
     wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
 
+On a rooted Google OnHub, the command need to be run with "chronos" user. In order to make sudo work, a password is needed for chronos user.
+
+    passwd chronos
+    # Choose your password
+    su - chronos
+    curl -L https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+    # When prompt, use the password you just created for "chronos" user.
+
 Usage
 -----
 
