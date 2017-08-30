@@ -28,7 +28,7 @@ class Php7 < Package
   depends_on 'openssl'
   depends_on 'curl'
   depends_on 'pcre'
-  depends_on 'readline'
+  depends_on 'readline7'
 
   def self.build
     system './configure \
