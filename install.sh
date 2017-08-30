@@ -48,8 +48,8 @@ case "$architecture" in
   ;;
 "armv7l")
   if ! type "xz" > /dev/null; then
-    urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
-    sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
+    urls+=('https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.3-2-chromeos-armv7l.tar.xz')
+    sha256s+=('839ead7097adee016986a9992d8cf8f4c91554ade2b6e111f7d0379c595be366')
   fi
   urls+=('https://dl.bintray.com/chromebrew/chromebrew-cross/ruby-2.4.1-chromeos-armv7l.tar.xz')
   sha256s+=('6c0ef23447d4591739dc00fa9b021a4d83291acbc37330e659d257efed474caf')
