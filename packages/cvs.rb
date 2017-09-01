@@ -20,10 +20,5 @@ class Cvs < Package
   
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-
-  end
-  
-  def self.check
-    system "make", "check"
   end
 end
