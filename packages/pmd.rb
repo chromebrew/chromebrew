@@ -12,6 +12,7 @@ class Pmd < Package
   binary_sha256 ({
   })
 
+  depends_on 'jdk8'
   depends_on 'unzip'
 
   def self.install
