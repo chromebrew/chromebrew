@@ -327,7 +327,7 @@ def update
 
   if canBeUpdated > 0
     puts ""
-    puts "Run 'crew upgrade' to update everything or 'crew upgrade <package1> [package2 ...]' to update specific package(s)."
+    puts "Run 'crew upgrade' to update everything or 'crew upgrade <package1> [<package2> ...]' to update specific package(s)."
   else
     puts "Your software is up to date.".lightgreen
   end
