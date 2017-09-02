@@ -5,8 +5,11 @@ require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
+require_relative 'lib/color'
+require_relative 'lib/const'
 
-# Constants definitions
+# Add lib to LOAD_PATH
+$LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
@@ -30,124 +33,11 @@ Usage:
 version 0.4.3
 DOCOPT
 
-ARCH = `uname -m`.strip
-ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
-
-CREW_PREFIX = '/usr/local'
-CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
-
-CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
-CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
-CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
-CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
-CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
-CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
-
-# Set CREW_NPROC from environment variable or `nproc`
-if ENV["CREW_NPROC"].to_s == ''
-  CREW_NPROC = `nproc`.strip
-else
-  CREW_NPROC = ENV["CREW_NPROC"]
-end
-
-# Set CREW_NOT_COMPRESS from environment variable
-CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
-
-# Set CREW_NOT_STRIP from environment variable
-CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
-
-# Set XZ_OPT environment variable for build command.
-# If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
-if ENV["CREW_XZ_OPT"].to_s == ''
-  ENV["XZ_OPT"] = "-7e"
-else
-  ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
-end
-
-USER = `whoami`.chomp
-
-# Add lib to LOAD_PATH
-
-$LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
-
-# colorization
-class String
-  def colorize(color_code, shade)
-    "\e[#{shade};#{color_code}m#{self}\e[0m"
-  end
-
-  def black
-    colorize(30, 0)
-  end
-
-  def red
-    colorize(31, 0)
-  end
-
-  def green
-    colorize(32, 0)
-  end
-
-  def orange
-    colorize(33, 0)
-  end
-
-  def blue
-    colorize(34, 0)
-  end
-
-  def purple
-    colorize(35, 0)
-  end
-
-  def cyan
-    colorize(36, 0)
-  end
-
-  def lightgray
-    colorize(37, 0)
-  end
-
-  def gray
-    colorize(30, 1)
-  end
-
-  def lightred
-    colorize(31, 1)
-  end
-
-  def lightgreen
-    colorize(32, 1)
-  end
-
-  def yellow
-    colorize(33, 1)
-  end
-
-  def lightblue
-    colorize(34, 1)
-  end
-
-  def lightpurple
-    colorize(35, 1)
-  end
-
-  def lightcyan
-    colorize(36, 1)
-  end
-
-  def white
-    colorize(37, 1)
-  end
-end
-
-return 0 if defined? CREW_INIT_ONLY
-
-#disallow sudo
+# Disallow sudo
 abort "Chromebrew should not be run as root.".lightred if Process.uid == 0
 
 # Parse arguments using docopt
-require 'docopt'
+require_relative 'lib/docopt'
 begin
   args = Docopt::docopt(DOC)
 rescue Docopt::Exit => e

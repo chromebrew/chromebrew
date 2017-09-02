@@ -1,11 +1,17 @@
 #!/usr/bin/env ruby
 
-CREW_INIT_ONLY = true
-load '../crew'
+require 'find'
+require_relative '../lib/const'
+require_relative '../lib/color'
+
+CUR_DIR = File.dirname(__FILE__)
+
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift "#{CUR_DIR}/../lib"
 
 puts "Running tests..."
 
-Find.find(".") do |filename|
+Find.find(CUR_DIR) do |filename|
   if File.extname(filename) == '.rb'
     puts "\nTest Name: #{File.basename(filename, ".rb")}"
     load filename

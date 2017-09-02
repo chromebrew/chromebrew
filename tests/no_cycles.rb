@@ -3,10 +3,10 @@ require 'find'
 @all_pkgs = {}
 
 # Loads all packages
-Find.find("../packages") do |filename|
+Find.find("#{CUR_DIR}/../packages") do |filename|
   if File.extname(filename) == '.rb'
     name = File.basename(filename, '.rb')
-    require("../packages/" + name)
+    require_relative("../packages/#{name}")
     pkg = Object.const_get(name.capitalize)
     pkg.name = name
     @all_pkgs[name] = pkg
