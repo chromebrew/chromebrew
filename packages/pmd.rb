@@ -16,10 +16,15 @@ class Pmd < Package
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
+      system "echo '#!/bin/bash' > pmd"
+      system "echo 'PWD=$(pwd)' >> pmd"
+      system "echo 'cd #{CREW_LIB_PREFIX}/pmd' >> pmd"
+      system "echo 'bin/run.sh \"$@\"' >> pmd"
+      system "echo 'cd $PWD' >> pmd"
+      system "chmod +x pmd"
+    end
     system "mkdir -p #{CREW_DEST_LIB_PREFIX}/pmd"
     system "cp -r . #{CREW_DEST_LIB_PREFIX}/pmd"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "ln -s #{CREW_LIB_PREFIX}/pmd/bin/run.sh pmd"
-    end
   end
 end
