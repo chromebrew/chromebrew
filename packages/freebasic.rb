@@ -5,12 +5,14 @@ class Freebasic < Package
   homepage 'https://www.freebasic.net/'
   version '1.05.0'
   case ARCH
-  when 'x86'
+  when 'i686'
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.05.0-linux-x86.tar.gz'
     source_sha256 'df20d3d11637d6f6173017dadf666d673133087189f8ecdb9756136f175e91b9'
   when 'x86_64'
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.05.0-linux-x86_64.tar.gz'
     source_sha256 '26d184061e2a55c7ee9c12213ac4bf062556ecec1bacf84037233a41aef6c74f'
+  else
+    puts 'Unable to install freebasic.  Supported architectures include i686 and x86_64 only.'.lightred
   end
 
   binary_url ({
