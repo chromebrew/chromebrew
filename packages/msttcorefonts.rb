@@ -15,6 +15,8 @@ class Msttcorefonts < Package
   depends_on 'cabextract'
 
   def self.build
+    # Since there is no configure script available, some modifications to prevent a 'file not found'
+    # message and writes to read-only directories were necessary in the update-ms-fonts script.
     system "sed -i '61icp cabfiles.sha256sums \$SCRATCHDIR/' update-ms-fonts"
     system "sed -i 's,/var/lib/msttcorefonts/,,g' update-ms-fonts"
     system "sed -i 's,/usr/share,#{CREW_DEST_PREFIX}/share,g' update-ms-fonts"
