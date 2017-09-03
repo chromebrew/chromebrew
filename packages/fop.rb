@@ -22,6 +22,9 @@ class Fop < Package
       system "echo 'cd $PWD' >> fop"
       system "chmod +x fop"
     end
+  end
+
+  def self.postinstall
     puts
     puts "To complete the installation, set the environment variable as follows:".lightblue
     puts "echo 'export JAVA_HOME=#{CREW_LIB_PREFIX}/jdk8' >> ~/.bashrc && source ~/.bashrc".lightblue
