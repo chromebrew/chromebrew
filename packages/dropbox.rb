@@ -48,6 +48,7 @@ class Dropbox < Package
   def self.postinstall
     puts
     puts "To finish the installation, execute 'dropboxd'.".lightblue
+    puts "Login to Dropbox, highlight the url and paste into Chrome.".lightblue
     puts "Type Ctrl+C to exit dropboxd after linking your system.".lightblue
     puts "Execute 'dropbox start' and after synching is complete, files will be available in ~/Dropbox.".lightblue
     puts "Execute 'dropbox' to see the full list of available options.".lightblue
