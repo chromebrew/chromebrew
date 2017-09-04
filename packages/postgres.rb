@@ -3,21 +3,13 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '9.5.0'
-  source_url 'https://ftp.postgresql.org/pub/source/v9.5.0/postgresql-9.5.0.tar.bz2'
-  source_sha256 'f1c0d3a1a8aa8c92738cab0153fbfffcc4d4158b3fee84f7aa6bfea8283978bc'
+  version '9.6.5'
+  source_url 'https://ftp.postgresql.org/pub/source/v9.6.5/postgresql-9.6.5.tar.bz2'
+  source_sha256 '06da12a7e3dddeb803962af8309fa06da9d6989f49e22865335f0a14bad0744c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.5.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.5.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.5.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.5.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '455a13824825618b672d5d7707c9b2f54b267cf62e97a6af4e8f5aa735dd0d9b',
-     armv7l: '455a13824825618b672d5d7707c9b2f54b267cf62e97a6af4e8f5aa735dd0d9b',
-       i686: 'aa007ee10e7649e6ba71efcb22dcf9d925146b4719e1885b0926b4f0a9d20ae1',
-     x86_64: '4f81a4206fb7251a1b7a19ea537b44124faa32519385fc8f43fc1afb88524797',
   })
 
   depends_on 'buildessential'
@@ -25,24 +17,34 @@ class Postgres < Package
   depends_on 'zlibpkg'
 
   def self.build
-    system "./configure"
+    system "./configure \
+            --prefix=#{CREW_PREFIX} \
+            --libdir=#{CREW_LIB_PREFIX}"
     system "make world"
   end
 
   def self.install
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/pgsql/data" unless Dir.exists? "#{CREW_DEST_PREFIX}/pgsql/data"
+    system "chmod", "700", "#{CREW_DEST_PREFIX}/pgsql/data"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-world"
-    out = "#{CREW_DEST_DIR}/usr/local/pgsql/data"
-    system "mkdir", out
-    puts "------------------"
-    puts "Installation success!"
-    puts "To get started, you need to initialize a database directory"
-    puts "'echo \"export PATH=/usr/local/pgsql/bin:$PATH\" >> ~/.bashrc'"
-    puts "'source ~/.bashrc'"
-    puts "'chmod 700 /usr/local/pgsql/data'"
-    puts "'initdb -D /usr/local/pgsql/data'"
-    puts "To start postgres: 'pg_ctl -D /usr/local/pgsql/data -l logfile start'"
-    puts "To stop postgres: 'pg_ctl -D /usr/local/pgsql/data stop'"
-    puts "Create a database: 'createdb <dbname>'"
-    puts "Connect to database: 'psql <dbname>'"
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
+      system "echo '#!/bin/bash' > pgctl"
+      system "echo 'if [ \"$1\" == \"--help\" ]; then' >> pgctl"
+      system "echo '  pg_ctl --help' >> pgctl"
+      system "echo 'else' >> pgctl"
+      system "echo '  pg_ctl -D #{CREW_PREFIX}/pgsql/data \"$@\"' >> pgctl"
+      system "echo 'fi' >> pgctl"
+      system "chmod +x pgctl"
+    end
+  end
+
+  def self.postinstall
+    system "initdb -D #{CREW_PREFIX}/pgsql/data" unless File.exists? "#{CREW_PREFIX}/pgsql/data/PG_VERSION"
+    puts
+    puts "To start postgres: pgctl -l logfile start".lightblue
+    puts "To stop postgres: pgctl stop".lightblue
+    puts "Create a database: createdb <dbname>".lightblue
+    puts "Connect to database: psql <dbname>".lightblue
+    puts
   end
 end
