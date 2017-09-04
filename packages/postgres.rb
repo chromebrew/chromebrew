@@ -20,6 +20,13 @@ class Postgres < Package
     system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX}"
+    system "echo '#!/bin/bash' > pgctl"
+    system "echo 'if [ \"$1\" == \"--help\" ]; then' >> pgctl"
+    system "echo '  pg_ctl --help' >> pgctl"
+    system "echo 'else' >> pgctl"
+    system "echo '  pg_ctl -D #{CREW_PREFIX}/pgsql/data \"$@\"' >> pgctl"
+    system "echo 'fi' >> pgctl"
+    system "chmod +x pgctl"
     system "make world"
   end
 
@@ -29,15 +36,7 @@ class Postgres < Package
       system "chmod", "700", "#{CREW_DEST_PREFIX}/pgsql/data"
     end
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-world"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "echo '#!/bin/bash' > pgctl"
-      system "echo 'if [ \"$1\" == \"--help\" ]; then' >> pgctl"
-      system "echo '  pg_ctl --help' >> pgctl"
-      system "echo 'else' >> pgctl"
-      system "echo '  pg_ctl -D #{CREW_PREFIX}/pgsql/data \"$@\"' >> pgctl"
-      system "echo 'fi' >> pgctl"
-      system "chmod +x pgctl"
-    end
+    system "cp", "pgctl", "#{CREW_DEST_PREFIX}/bin"
   end
 
   def self.postinstall
