@@ -24,8 +24,10 @@ class Postgres < Package
   end
 
   def self.install
-    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/pgsql/data" unless Dir.exists? "#{CREW_DEST_PREFIX}/pgsql/data"
-    system "chmod", "700", "#{CREW_DEST_PREFIX}/pgsql/data"
+    unless Dir.exists? "#{CREW_PREFIX}/pgsql/data"
+      system "mkdir", "-p", "#{CREW_DEST_PREFIX}/pgsql/data"
+      system "chmod", "700", "#{CREW_DEST_PREFIX}/pgsql/data"
+    end
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-world"
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "echo '#!/bin/bash' > pgctl"
