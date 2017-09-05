@@ -12,17 +12,21 @@ class Nethack < Package
   depends_on 'flex'
   depends_on 'ncurses'
 
-  def self.build
+  def self.patch
     # Apply a patch to set a hints file that will work for the current build environment. 
     system "curl -L 'https://gist.githubusercontent.com/anonymous/77b05c6cd87628ab3cb944e75ecc45b7/raw/d5f327450aa6b4d50cafb5352fad06ed60f91b69/nethack_chromebrew.patch' | patch -p0"
+  end
+
+  def self.build
+    self.patch
     system "./sys/unix/setup.sh", "./sys/unix/hints/linux"
     system "make"
   end
 
   def self.install
-    system "make", "PREFIX=#{CREW_DEST_DIR}/usr/local/", "install"
-    system "mkdir", "#{CREW_DEST_DIR}/usr/local/bin/"
-    system "sed", "-i", "s|^HACKDIR=.*$|HACKDIR=#{CREW_PREFIX}/games/lib/nethackdir|g", "#{CREW_DEST_DIR}/usr/local/games/nethack"
-    system "cp", "#{CREW_DEST_DIR}/usr/local/games/nethack", "#{CREW_DEST_DIR}/usr/local/bin/nethack"
+    system "make", "PREFIX=#{CREW_DEST_PREFIX}", "install"
+    system "mkdir", "#{CREW_DEST_PREFIX}/bin/"
+    system "sed", "-i", "s|^HACKDIR=.*$|HACKDIR=#{CREW_PREFIX}/games/lib/nethackdir|g", "#{CREW_DEST_PREFIX}/games/nethack"
+    system "cp", "#{CREW_DEST_PREFIX}/games/nethack", "#{CREW_DEST_PREFIX}/bin/nethack"
   end
 end
