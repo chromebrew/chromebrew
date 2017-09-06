@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
+require_relative 'lib/color'
+
+# Disallow sudo
+abort "Chromebrew should not be run as root.".lightred if Process.uid == 0
+
 require 'find'
 require 'net/http'
 require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require_relative 'lib/color'
 require_relative 'lib/const'
 
 # Add lib to LOAD_PATH
@@ -32,9 +36,6 @@ Usage:
 
 version 0.4.3
 DOCOPT
-
-# Disallow sudo
-abort "Chromebrew should not be run as root.".lightred if Process.uid == 0
 
 # Parse arguments using docopt
 require_relative 'lib/docopt'
