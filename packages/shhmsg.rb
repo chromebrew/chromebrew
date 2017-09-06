@@ -17,6 +17,6 @@ class Shhmsg < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "INSTBASEDIR=#{CREW_DEST_PREFIX}", "install"
   end
 end
