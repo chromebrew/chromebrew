@@ -5,7 +5,7 @@ class Texlive < Package
   homepage 'https://www.tug.org/texlive/'
   version '2017'
   source_url 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz'
-  source_sha256 '9bc5c663bf5fb7066b4bf3c54e5ce93251923d4edaeadb485224621a02297a39'
+  source_sha256 '13e36ba42cf6fb3b4eb96878bdb2828b38709c9538e9446c723ca82fd00a6ac4'
 
   def self.build
   end
@@ -18,15 +18,15 @@ class Texlive < Package
            TEXLIVE_INSTALL_TEXMFHOME=#{dir}/local \
            ./install-tl --scheme=basic --no-cls"
     system "find #{dir} -iname '*.pdf' -delete" # saving some space
-    system "mkdir -p #{CREW_DEST_PREFIX}/man"
-    system "mv #{dir}/2017/texmf-dist/doc/man/* #{CREW_DEST_PREFIX}/man/" # copying manpages
-    system "rm -rf #{dir}/2017/texmf-dist/doc"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "find #{dir}/2017/bin/ -xtype f -exec ln -rs {} #{CREW_DEST_PREFIX}/bin ';'" # linking binaries
-    system "#{CREW_DEST_PREFIX}/bin/tlmgr init-usertree"
+    system "find #{dir}/2017/texmf-dist/doc -type f -and -not -path '*man*' -delete"
+    system "find #{dir} -name 'tlmgr' -exec {} init-usertree ';'"
   end
 
   def self.postinstall
-    puts "This is a very small installation, with only the basic packages. To install more, use `tlmgr install <package>`.".lightblue
+    puts "\nPlease add texlive to your PATH and MANPATH to be able to use the executables and manpages. Use the following commands:".lightblue
+    puts " echo \"export PATH=\$PATH:#{CREW_PREFIX}/share/texlive/2017/bin/#{ARCH}-linux\" >> ~/.bashrc".lightblue
+    puts " echo \"export MANPATH=\$MANPATH:#{CREW_PREFIX}/share/texlive/2017/bin/texmf-dist/doc/man\" >> ~/.bashrc".lightblue
+    puts " source ~/.bashrc".lightblue
+    puts "\nThis is a very small installation, with only the basic packages. To install more, use `tlmgr install <package>`.".lightblue
   end
 end
