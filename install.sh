@@ -26,7 +26,7 @@ case "$architecture" in
 esac
 
 #This will allow things to work without sudo
-sudo chown -R `id -u`:`id -g` /usr/local
+sudo chown -R `id -u`:`id -g` "${CREW_PREFIX}"
 
 #prepare directories
 for dir in $CREW_LIB_PATH $CREW_CONFIG_PATH $CREW_CONFIG_PATH/meta $CREW_BREW_DIR $CREW_DEST_DIR $CREW_PACKAGES_PATH; do
