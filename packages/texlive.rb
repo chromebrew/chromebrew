@@ -4,8 +4,8 @@ class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
   version '2017'
-  source_url 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz'
-  source_sha256 '13e36ba42cf6fb3b4eb96878bdb2828b38709c9538e9446c723ca82fd00a6ac4'
+  source_url 'ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz'
+  source_sha256 '7145f52c1ec6941f18285dfe13e9faaefd55092bd38f900b6cff07342311e243'
 
   def self.build
   end
