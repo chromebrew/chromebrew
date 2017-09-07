@@ -3,21 +3,21 @@ require 'package'
 class Php5 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.31'
+  version '5.6.31-1'
   source_url 'http://php.net/distributions/php-5.6.31.tar.xz'
   source_sha256 'c464af61240a9b7729fabe0314cdbdd5a000a4f0c9bd201f89f8628732fe4ae4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.31-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'aeca560c546742d3204b65148f3a8da748e4f3228e3e24a9d8779ce8e44195dd',
-     armv7l: 'aeca560c546742d3204b65148f3a8da748e4f3228e3e24a9d8779ce8e44195dd',
-       i686: '88423ffa51e79a7377bb85c94600513428d2f0505d1fa6522598a678c6546666',
-     x86_64: '10a66b8ebe73dfd60f8c194664746330274c033564259f345c802de173c88cf7',
+    aarch64: '0e4862b4afb8c8846e462ce77f88e01d2bb3853fc108844ad48f2113045b6b50',
+     armv7l: '0e4862b4afb8c8846e462ce77f88e01d2bb3853fc108844ad48f2113045b6b50',
+       i686: 'f1527a845d79ea3a689f80198938ee4e26e2236766442040166a8fb45c61c72c',
+     x86_64: 'aefef7c188611a259d15500ecd9ebd6a5b91fa5d266e8659e6ac7b13c400d154',
   })
 
   depends_on 'pkgconfig'

@@ -1,4 +1,5 @@
 require 'find'
+require_relative '../lib/color'
 
 @all_pkgs = {}
 
