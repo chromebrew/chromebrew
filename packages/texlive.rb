@@ -5,7 +5,7 @@ class Texlive < Package
   homepage 'https://www.tug.org/texlive/'
   version '2017'
   source_url 'ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz'
-  source_sha256 '7145f52c1ec6941f18285dfe13e9faaefd55092bd38f900b6cff07342311e243'
+  source_sha256 '1e09ffe84046af5fa68c788a3fd3c517f9c7e131d9d08603e2856cba22adf36e'
 
   def self.build
   end
