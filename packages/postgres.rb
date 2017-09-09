@@ -16,36 +16,40 @@ class Postgres < Package
   depends_on 'readline'
   depends_on 'zlibpkg'
 
+  # Feel free to change this directory prior to compiling.
+  PGDATA = "#{CREW_PREFIX}/data/pgsql"
+
   def self.build
+    system "sed -i 's,PGDATA=\"/usr/local/pgsql/data\",PGDATA=\"#{PGDATA}\",' contrib/start-scripts/linux"
     system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX}"
-    system "echo '#!/bin/bash' > pgctl"
-    system "echo 'if [ \"$1\" == \"--help\" ]; then' >> pgctl"
-    system "echo '  pg_ctl --help' >> pgctl"
-    system "echo 'else' >> pgctl"
-    system "echo '  pg_ctl -D #{CREW_PREFIX}/pgsql/data \"$@\"' >> pgctl"
-    system "echo 'fi' >> pgctl"
-    system "chmod +x pgctl"
     system "make world"
   end
 
   def self.install
-    unless Dir.exists? "#{CREW_PREFIX}/pgsql/data"
-      system "mkdir", "-p", "#{CREW_DEST_PREFIX}/pgsql/data"
-      system "chmod", "700", "#{CREW_DEST_PREFIX}/pgsql/data"
+    # This conditional is needed for installation only.
+    unless Dir.exists? "#{PGDATA}"
+      system "mkdir", "-p", "#{PGDATA}"
+      system "chmod", "700", "#{PGDATA}"
     end
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-world"
-    system "cp", "pgctl", "#{CREW_DEST_PREFIX}/bin"
   end
 
   def self.postinstall
-    system "initdb -D #{CREW_PREFIX}/pgsql/data" unless File.exists? "#{CREW_PREFIX}/pgsql/data/PG_VERSION"
-    puts
-    puts "To start postgres: pgctl -l logfile start".lightblue
-    puts "To stop postgres: pgctl stop".lightblue
-    puts "Create a database: createdb <dbname>".lightblue
-    puts "Connect to database: psql <dbname>".lightblue
-    puts
+    # This conditional is needed for installation only.  If this package is updated in the future,
+    # there is no need to initialize the data directory and display messages again.
+    unless File.exists? "#{PGDATA}/PG_VERSION"
+      system "initdb -D #{PGDATA}"
+      puts
+      puts "To complete the installation, execute the following:".lightblue
+      puts "echo 'alias pgctl=\"pg_ctl -D #{PGDATA}\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+      puts
+      puts "To start postgres: pgctl -l logfile start".lightblue
+      puts "To stop postgres: pgctl stop".lightblue
+      puts "Create a database: createdb <dbname>".lightblue
+      puts "Connect to database: psql <dbname>".lightblue
+      puts
+    end
   end
 end
