@@ -43,10 +43,10 @@ class Postgres < Package
       system "initdb -D #{PGDATA}"
       puts
       puts "To complete the installation, execute the following:".lightblue
-      puts "echo 'alias pgctl=\"pg_ctl -D #{PGDATA}\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+      puts "echo 'export PGDATA=\"#{PGDATA}\"' >> ~/.bashrc && source ~/.bashrc".lightblue
       puts
-      puts "To start postgres: pgctl -l logfile start".lightblue
-      puts "To stop postgres: pgctl stop".lightblue
+      puts "To start postgres: pg_ctl -l logfile start".lightblue
+      puts "To stop postgres: pg_ctl stop".lightblue
       puts "Create a database: createdb <dbname>".lightblue
       puts "Connect to database: psql <dbname>".lightblue
       puts
