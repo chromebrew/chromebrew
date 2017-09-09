@@ -19,18 +19,18 @@ DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
 Usage:
-  #{__FILE__} build [-k|--keep] <name>...
-  #{__FILE__} download <name>...
-  #{__FILE__} help [<command>]
-  #{__FILE__} install [-k|--keep] [-s|--build-from-source] <name>...
-  #{__FILE__} remove <name>...
-  #{__FILE__} search [-v|--verbose] [<name>...]
-  #{__FILE__} update
-  #{__FILE__} upgrade [-k|--keep] [-s|--build-from-source] [<name>...]
-  #{__FILE__} whatprovides <name>...
+  crew build [-k|--keep] <name> ...
+  crew download <name> ...
+  crew help [<command>]
+  crew install [-k|--keep] [-s|--build-from-source] <name> ...
+  crew remove <name> ...
+  crew search [-v|--verbose] [<name> ...]
+  crew update
+  crew upgrade [-k|--keep] [-s|--build-from-source] [<name> ...]
+  crew whatprovides <name> ...
 
-  -k --keep               Keep extracted files as is.
-  -s --build-from-source  Build from source even if pre-compiled binary exists
+  -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
+  -s --build-from-source  Build from source even if pre-compiled binary exists.
   -v --verbose            Show extra information.
   -h --help               Show this screen.
 
@@ -116,47 +116,50 @@ end
 def help (pkgName)
   case pkgName
   when "build"
-    puts "Build a package."
-    puts "Usage: crew build [package]"
-    puts "Build [package] from source and place the archive and checksum in the current working directory."
+    puts "Build package(s)."
+    puts "Usage: crew build [-k|--keep] <package1> [<package2> ...]"
+    puts "Build package(s) from source and place the archive and checksum in the current working directory."
+    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
   when "download"
-    puts "Download a package."
-    puts "Usage: crew download [package]"
-    puts "Download [package] to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install it."
+    puts "Download package(s)."
+    puts "Usage: crew download <package1> [<package2> ...]"
+    puts "Download package(s) to `CREW_BREW_DIR` (#{CREW_BREW_DIR}), but don't install."
   when "install"
-    puts "Install a package."
-    puts "Usage: crew install [package]"
-    puts "The [package] must be a valid name.  Use `crew search [package]` to search for a package to install."
+    puts "Install package(s)."
+    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] <package1> [<package2> ...]"
+    puts "The package(s) must have a valid name.  Use `crew search <pattern>` to search for packages to install."
+    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
+    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
   when "remove"
-    puts "Remove a package."
-    puts "Usage: crew remove [package]"
-    puts "The [package] must be currently installed."
+    puts "Remove package(s)."
+    puts "Usage: crew remove <package1> [<package2> ...]"
+    puts "The package(s) must be currently installed."
   when "search"
-    puts "Look for a package."
-    puts "Usage: crew search [package] [extra]"
-    puts "If [package] is omitted, all packages will be returned."
+    puts "Look for package(s)."
+    puts "Usage: crew search [-v|--verbose] [<pattern> ...]"
+    puts "If <pattern> is omitted, all packages will be returned."
     puts "(i)".lightgreen + " in front of the name means the package is installed."
-    puts "The [package] string can also contain regular expressions."
-    puts "If the keyword 'extra' is appended, homepage and version will be displayed."
+    puts "The <pattern> string can also contain regular expressions."
+    puts "If `-v` or `--verbose` is present, homepage and version will be displayed."
     puts "Examples:"
     puts "  crew search | grep '(i)'".lightblue + " will display all installed packages."
     puts "  crew search | grep -v '(i)'".lightblue + " will display all available packages not already installed."
-    puts "  crew search ^lib".lightblue + " will display all packages that start with 'lib'."
-    puts "  crew search audio".lightblue + " will display all packages with 'audio' in the description."
-    puts "  crew search git extra".lightblue + " will display the git package along with homepage and version."
+    puts "  crew search ^lib".lightblue + " will display all packages that start with `lib`."
+    puts "  crew search audio".lightblue + " will display all packages with `audio` in the description."
+    puts "  crew search git -v".lightblue + " will display packages with `git` in the name along with homepage and version."
   when "update"
     puts "Update crew."
     puts "Usage: crew update"
-    puts "This only updates crew itself.  Use 'crew upgrade' to update packages."
+    puts "This only updates crew itself.  Use `crew upgrade` to update packages."
   when "upgrade"
     puts "Update package(s)."
-    puts "Usage: crew upgrade [package]"
-    puts "If [package] is omitted, all packages will be updated.  Otherwise, a specific package will be updated."
-    puts "Use 'crew update' to update crew itself."
+    puts "Usage: crew upgrade <package1> [<package2> ...]"
+    puts "If package(s) are omitted, all packages will be updated.  Otherwise, specific package(s) will be updated."
+    puts "Use `crew update` to update crew itself."
   when "whatprovides"
     puts "Determine which package(s) contains file(s)."
-    puts "Usage: crew whatprovides [pattern]"
-    puts "The [pattern] is a search string which can contain regular expressions."
+    puts "Usage: crew whatprovides <pattern> ..."
+    puts "The <pattern> is a search string which can contain regular expressions."
   else
     puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
   end
@@ -189,7 +192,7 @@ def whatprovides (pkgName)
 end
 
 def update
-  abort "'crew update' is used to update crew itself. Use 'crew upgrade <packageName> to upgrade a specific package.".orange if @pkgName
+  abort "`crew update` is used to update crew itself. Use `crew upgrade <package1> [<package2> ...]` to update specific packages.".orange if @pkgName
 
   #update package lists
   Dir.chdir CREW_LIB_PATH do
@@ -213,7 +216,7 @@ def update
 
   if canBeUpdated > 0
     puts ""
-    puts "Run 'crew upgrade' to upgrade everything or 'crew upgrade <packageName>' to upgrade a specific package."
+    puts "Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages."
   else
     puts "Your software is up to date.".lightgreen
   end
@@ -282,7 +285,7 @@ def download
   source = @pkg.is_source?(@device[:architecture])
 
   if !url
-    abort "No precompiled binary for #{@device[:architecture]} nor source is available.".lightred
+    abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
   elsif !source
     puts "Precompiled binary available, downloading..."
   elsif @pkg.build_from_source
@@ -311,7 +314,7 @@ def unpack (meta)
   extract_dir = "#{meta[:filename]}.dir"
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
-    puts "Unpacking archive, this may take a while..."
+    puts "Unpacking archive, this may take awhile..."
     Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
     if meta[:filename][-4,4] == ".zip"
       system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
@@ -495,7 +498,7 @@ def resolve_dependencies
     puts "Proceeding..."
     proceed = true
   else
-    puts "I don't understand '#{response}'. :(".lightred
+    puts "I don't understand `#{response}`. :(".lightred
     abort "No changes made."
   end
 
@@ -517,7 +520,7 @@ def install
     meta = download
     target_dir = unpack meta
     if meta[:source] == true
-      abort "You don't have a working C compiler. Run 'crew install buildessential' to get one and try again.".lightred unless system("gcc", "--version")
+      abort "You don't have a working C compiler. Run `crew install buildessential` to get one and try again.".lightred unless system("gcc", "--version")
 
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy
@@ -580,7 +583,7 @@ def resolve_dependencies_and_build
 end
 
 def build_package (pwd)
-  abort "It is not possible to build fake package".lightred if @pkg.is_fake?
+  abort "It is not possible to build a fake package".lightred if @pkg.is_fake?
   abort "It is not possible to build without source".lightred if !@pkg.is_source?(@device[:architecture])
 
   # download source codes and unpack it
@@ -688,7 +691,7 @@ def help_command (args)
   if args["<command>"]
     help args["<command>"]
   else
-    puts "Usage: crew help [command]"
+    puts "Usage: crew help <command>"
     help nil
   end
 end
