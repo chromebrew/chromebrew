@@ -15,7 +15,7 @@ rm dlistcut ../dlist ../filelist
 
 echo building binary package
 tar -cJf ../$DIRNAME.tar.xz *
-sha1sum ../$DIRNAME.tar.xz > ../$DIRNAME.tar.xz.sha1
+sha256sum ../$DIRNAME.tar.xz > ../$DIRNAME.tar.xz.sha256
 
 echo finished
-cat ../$DIRNAME.tar.xz.sha1
+cat ../$DIRNAME.tar.xz.sha256
