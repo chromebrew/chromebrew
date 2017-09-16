@@ -5,6 +5,8 @@
 # Prerequirement:
 #   github-release  (https://github.com/aktau/github-release)
 #   golang
+#
+# These commands can be installed with `crew install github_release go`.
 
 owner=skycocker
 repo=chromebrew
