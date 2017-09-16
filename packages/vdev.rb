@@ -4,8 +4,8 @@ class Vdev < Package
   description 'A device-file manager for *nix'
   homepage 'https://github.com/jcnelson/vdev'
   version '1.0.0'
-  source_url 'https://github.com/flyingP0tat0/vdev/archive/1.0.0.tar.gz'
-  source_sha256 '971b31486e8abe76d81891832b3c5c31441f5585a5731afdeedc8b2bc57271f7'
+  source_url 'https://github.com/jcnelson/vdev/archive/ceb7a6c4f44dec542dc1c3c3d5abd27dec7f3e0e.tar.gz'
+  source_sha256 'dbf561890aa70a8619506d166803a72d0c2a5b7590226feef784ec623bcb4739'
 
   depends_on 'glibc'
   depends_on 'fuse'
