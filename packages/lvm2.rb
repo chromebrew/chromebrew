@@ -10,7 +10,7 @@ class Lvm2 < Package
   depends_on 'readline'
 
   def self.build
-    system "./configure --disable-selinux --prefix=#{CREW_PREFIX}"
+    system "./configure --disable-selinux --prefix=#{CREW_PREFIX} --with-confdir=#{CREW_PREFIX}/etc"
     system "make"
   end
 
