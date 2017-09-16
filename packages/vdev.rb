@@ -12,7 +12,6 @@ class Vdev < Package
   depends_on 'libpstat'
   depends_on 'fskit'
   depends_on 'lvm2'
-  depends_on 'iproute2'
 
   def self.build
     system "make"
@@ -24,11 +23,11 @@ class Vdev < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "make -C vdevd OS=LINUX install"
-    system "make -C example install"
-    system "make -C hwdb install"
-    system "make -C libudev-compat install"
-    system "make -C fs install"
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system "make DESTDIR=#{CREW_DEST_DIR} -C vdevd OS=LINUX install"
+    system "make DESTDIR=#{CREW_DEST_DIR} -C example install"
+    system "make DESTDIR=#{CREW_DEST_DIR} -C hwdb install"
+    system "make DESTDIR=#{CREW_DEST_DIR} -C libudev-compat install"
+    system "make DESTDIR=#{CREW_DEST_DIR} -C fs install"
   end
 end
