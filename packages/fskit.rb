@@ -4,8 +4,8 @@ class Fskit < Package
   description 'Filesystem utility library and SDK'
   homepage 'https://github.com/jcnelson/fskit'
   version '1.0.0'
-  source_url 'https://github.com/flyingP0tat0/fskit/archive/1.0.0.tar.gz'
-  source_sha256 '3a1d49d433870fa27e498ab25e49280ce788f401cdd0afb27f29d99ba0e117c2'
+  source_url 'https://github.com/jcnelson/fskit/archive/2feb33a84932980e4ed9691242537771dd4e80f4.tar.gz'
+  source_sha256 'c3f0506eb5d9345e5ea91086ebb2b2afcee889eed55792715c8ab5e523e02031'
 
   depends_on 'attr'
 
