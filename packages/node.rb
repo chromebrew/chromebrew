@@ -7,11 +7,21 @@ class Node < Package
   source_url 'https://nodejs.org/dist/v6.11.0/node-v6.11.0.tar.xz'
   source_sha256 '02ba35391edea2b294c736489af01954ce6e6c39d318f4423ae6617c69ef0a51'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'buildessential'
   depends_on 'python27'
 
   def self.build
-    system "CC='gcc -m64' python2.7 ./configure --without-snapshot"
+    case ARCH
+    when "x86_64"
+      system "CC='gcc -m64' python2.7 ./configure --without-snapshot"
+    else
+      system "CC='gcc' python2.7 ./configure --without-snapshot"
+    end
     system "make"
   end
 

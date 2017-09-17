@@ -7,6 +7,19 @@ class Bind < Package
   source_url 'https://www.isc.org/downloads/file/9-10-5-p3/?version=tar-gz'
   source_sha256 '8d7e96b5b0bbac7b900d4c4bbb82e0956b4e509433c5fa392bb72a929b96606a'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.10.5-p3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.10.5-p3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.10.5-p3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.10.5-p3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '5d0ffc0fdfadccb9f838730797e645c249444abb077e5b3d05ad8f0a8241924f',
+     armv7l: '5d0ffc0fdfadccb9f838730797e645c249444abb077e5b3d05ad8f0a8241924f',
+       i686: '8d52384957c720b527650357ad3e5fd3732fbcae2083613c68993b913f603855',
+     x86_64: '3ca89eb998a259f393920174ac2bd1427465101eeb2a9cc8dcb5a880bbe0e4e0',
+  })
+
   depends_on "buildessential"
   depends_on "openssl"
   depends_on "libcap"

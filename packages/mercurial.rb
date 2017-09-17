@@ -7,6 +7,19 @@ class Mercurial < Package
   source_url 'https://www.mercurial-scm.org/release/mercurial-4.2.2.tar.gz'
   source_sha256 'b20132dec5ae6d27ee43a133144069895befe09f7e454bfa9e39950a185f0afe'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '80f381f790326ad000501235b038d3f0633a6ac001d1bdb6969a7a0b3dd981da',
+     armv7l: '80f381f790326ad000501235b038d3f0633a6ac001d1bdb6969a7a0b3dd981da',
+       i686: '56f202784a34ae85917da536732f2d1897b4efef3cf1214272850598d363d4f1',
+     x86_64: '5e33ff3958f26ff084330c833b90afd90314f28f9d60ec17150be63ab4b7e305',
+  })
+
   # what's the best route for adding a minimum version symbol as a constraint?
   depends_on "python27"
 

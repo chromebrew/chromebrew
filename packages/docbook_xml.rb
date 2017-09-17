@@ -9,6 +9,19 @@ class Docbook_xml < Package
   source_url 'http://www.docbook.org/xml/4.3/docbook-xml-4.3.zip'
   source_sha256 '23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'd52eb60b394b51945c4ebcefe915664fb835308e68e81a03f63da6b524f2b8db',
+     armv7l: 'd52eb60b394b51945c4ebcefe915664fb835308e68e81a03f63da6b524f2b8db',
+       i686: '432c69d99add5b330b8c3a43bbf937e10a2cee93081296e7fb43cd2e35cf3bd6',
+     x86_64: '43652bc703c27c907372133db6e93c39a90b8d671a94e6136a3c2e453672a02d',
+  })
+
   depends_on 'unzip'
   depends_on 'libxml2'
   depends_on 'docbook'

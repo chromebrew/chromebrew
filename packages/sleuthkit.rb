@@ -7,6 +7,19 @@ class Sleuthkit < Package
   source_url 'https://github.com/sleuthkit/sleuthkit/archive/sleuthkit-4.4.1.tar.gz'
   source_sha256 '91e2f038ff8407cfe38a26d18adc8dd98970e95db73394c188db98975deb23f7'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.4.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.4.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.4.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.4.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '8cccafa9d3434ac348fce223ee2d9d9db989d62bcaa2a0da0a396177b28cee3f',
+     armv7l: '8cccafa9d3434ac348fce223ee2d9d9db989d62bcaa2a0da0a396177b28cee3f',
+       i686: '6b8d6561c5b545604e75702adc2ce614a13a89780cd320d75b9ac6515f21fa27',
+     x86_64: 'e03e322df272ad6a4d1f385b134d513298af3dedd94c79daa3e04fa684b079ab',
+  })
+
   depends_on 'autoconf'
   depends_on 'automake'
   depends_on 'gawk'
