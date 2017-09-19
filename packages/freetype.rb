@@ -8,12 +8,16 @@ class Freetype < Package
   source_sha256 'a3c603ed84c3c2495f9c9331fe6bba3bb0ee65e06ec331e0a0fb52158291b40b'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5ec39b82a7b680abf3a42cb460e885452e32f54c00f3e59fb7b284ab78cf7bd0',
-     armv7l: '5ec39b82a7b680abf3a42cb460e885452e32f54c00f3e59fb7b284ab78cf7bd0',
-       i686: 'f76398ca157ba8e311f750352e4914fa143c1b6f46f5d74f85f8658fc0afe906',
-     x86_64: '1015587a901348072e4315afdfdf9901ff2d7d2f671cfe54023407bc8836dcb6',
+    aarch64: '58621598c0709365f4b3ca410f7a50970923dc2321854329849d7a040943ba90',
+     armv7l: '58621598c0709365f4b3ca410f7a50970923dc2321854329849d7a040943ba90',
+       i686: '05ad35d74ec47427e358928f9aff083c711f4af39b8f84aced44b15d91048397',
+     x86_64: 'ff9281a9a5bac7c32ddb8a27620ebab461380994f17517cc62c11b3dbee89773',
   })
 
   depends_on 'expat'
