@@ -8,12 +8,16 @@ class Zsh < Package
   source_sha256 '43f0a4c179ef79bb8c9153575685f7f45f28a3615c8cf96345f503d5b9e7b919'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '862a30e8e8098705e04b3691e97ede2e0c3b220bf1ea75d340beccfa1fda7d59',
-     armv7l: '862a30e8e8098705e04b3691e97ede2e0c3b220bf1ea75d340beccfa1fda7d59',
-       i686: 'ac3d4af763755593166c82ac88a0280fc9baa48896f7679f53c9bc77641adc56',
-     x86_64: '0f6a804aeb501aefa86d4008972801a417789e0a7a7b025fea7f116b9bbe0dce',
+    aarch64: 'daaecbc646bada9365f22f26ba7de4a835079fd10a5353f3fa1c67beb27d5881',
+     armv7l: 'daaecbc646bada9365f22f26ba7de4a835079fd10a5353f3fa1c67beb27d5881',
+       i686: '2e138f7ddfc2252c81a379e379837ebd69f19e001184729180b9c43b979301aa',
+     x86_64: '132f36ade3c10430d8f702112f82065fab8449ebd8dc409542930de5cc95e3c2',
   })
 
   depends_on 'ncurses'
