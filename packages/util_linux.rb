@@ -8,6 +8,7 @@ class Util_linux < Package
   source_sha256 'c208a4ff6906cb7f57940aa5bc3a6eed146e50a7cc0a092f52ef2ab65057a08d'
 
   depends_on 'python27'
+  depends_on 'libcap_ng'
   depends_on 'vdev'
 
   def self.build
