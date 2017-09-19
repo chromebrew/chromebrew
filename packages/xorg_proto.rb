@@ -28,6 +28,7 @@ class Xorg_proto < Package
   depends_on 'windowswmproto'
   depends_on 'xcmiscproto'
   depends_on 'xextproto'
+  depends_on 'xf86driproto'
   depends_on 'xf86vidmodeproto'
   depends_on 'xineramaproto'
   depends_on 'xproto'
