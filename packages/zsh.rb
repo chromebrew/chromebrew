@@ -3,15 +3,11 @@ require 'package'
 class Zsh < Package
   description 'Zsh is a shell designed for interactive use, although it is also a powerful scripting language.'
   homepage 'http://zsh.sourceforge.net/'
-  version '5.0.7'
+  version '5.0.7-1'
   source_url 'http://sourceforge.net/projects/zsh/files/zsh/5.0.7/zsh-5.0.7.tar.gz/download'
   source_sha256 '43f0a4c179ef79bb8c9153575685f7f45f28a3615c8cf96345f503d5b9e7b919'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '862a30e8e8098705e04b3691e97ede2e0c3b220bf1ea75d340beccfa1fda7d59',
