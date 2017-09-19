@@ -17,7 +17,7 @@ class Eudev < Package
 
   def self.build
     system 'autoreconf -f -i -s'
-    system './configure --prefix=/usr/local'
+    system "./configure --prefix=#{CREW_PREFIX}"
     system 'make'
   end
 
