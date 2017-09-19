@@ -15,6 +15,6 @@ class Pass < Package
   depends_on 'gnupg'
 
   def self.install
-    system  "make", "PREFIX=/usr/local", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system  "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
