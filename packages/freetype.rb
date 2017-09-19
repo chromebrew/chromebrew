@@ -3,15 +3,11 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.8'
+  version '2.8-1'
   source_url 'http://download.savannah.gnu.org/releases/freetype/freetype-2.8.tar.bz2'
   source_sha256 'a3c603ed84c3c2495f9c9331fe6bba3bb0ee65e06ec331e0a0fb52158291b40b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5ec39b82a7b680abf3a42cb460e885452e32f54c00f3e59fb7b284ab78cf7bd0',
