@@ -125,6 +125,10 @@ def help (pkgName)
     puts "Download package(s)."
     puts "Usage: crew download <package1> [<package2> ...]"
     puts "Download package(s) to `CREW_BREW_DIR` (#{CREW_BREW_DIR}), but don't install."
+  when "files"
+    puts "Display installed files of package(s)."
+    puts "Usage: crew files <package1> [<package2> ...]"
+    puts "The package(s) must be currently installed."
   when "install"
     puts "Install package(s)."
     puts "Usage: crew install [-k|--keep] [-s|--build-from-source] <package1> [<package2> ...]"
@@ -162,7 +166,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, download, files, install, remove, search, update, upgrade, whatprovides"
   end
 end
 
