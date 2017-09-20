@@ -21,6 +21,7 @@ Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew
 Usage:
   crew build [-k|--keep] <name> ...
   crew download <name> ...
+  crew files <name> ...
   crew help [<command>]
   crew install [-k|--keep] [-s|--build-from-source] <name> ...
   crew remove <name> ...
@@ -163,6 +164,12 @@ def help (pkgName)
   else
     puts "Available commands: build, download, install, remove, search, update, upgrade, whatprovides"
   end
+end
+
+def files (pkgName)
+  system "cat #{CREW_PREFIX}/etc/crew/meta/#{pkgName}.filelist"
+  print "Total found: ".lightgreen
+  system "wc -l #{CREW_PREFIX}/etc/crew/meta/#{pkgName}.filelist | cut -d' ' -f1"
 end
 
 def whatprovides (pkgName)
@@ -684,6 +691,14 @@ def download_command (args)
     @pkgName = name
     search @pkgName
     download
+  end
+end
+
+def files_command (args)
+  args["<name>"].each do |name|
+    @pkgName = name
+    search @pkgName
+    files name
   end
 end
 
