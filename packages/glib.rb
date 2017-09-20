@@ -14,7 +14,7 @@ class Glib < Package
   depends_on 'python27'
 
   def self.build
-    system "./configure --with-pcre --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-pcre"
     system "make"
   end
 
