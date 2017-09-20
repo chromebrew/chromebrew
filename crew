@@ -171,9 +171,11 @@ def help (pkgName)
 end
 
 def files (pkgName)
-  system "cat #{CREW_PREFIX}/etc/crew/meta/#{pkgName}.filelist"
-  print "Total found: ".lightgreen
-  system "wc -l #{CREW_PREFIX}/etc/crew/meta/#{pkgName}.filelist | cut -d' ' -f1"
+  filelist = "#{CREW_PREFIX}/etc/crew/meta/#{pkgName}.filelist"
+  abort "Package #{pkgName} is not installed.".lightred unless File.exists? #{filelist}
+  system "cat #{filelist}"
+  lines = `wc -l "#{filelist}"`.strip.split(' ')[0].to_i
+  puts "Total found: #{lines}".lightgreen
 end
 
 def whatprovides (pkgName)
