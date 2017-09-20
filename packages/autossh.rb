@@ -9,11 +9,18 @@ class Autossh < Package
   source_sha256 '39497e1ccd80f781282e8f6387bb3ae5b1501807a39aeced95e8be57c3778cba'
 
   def self.build
-    system './configure'
-    system 'make'
+    system "./configure --prefix=#{CREW_PREFIX}"
+    system "make"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share/doc/autossh"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share/examples/autossh"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
+    system "cp autossh #{CREW_DEST_PREFIX}/bin"
+    system "cp CHANGES README #{CREW_DEST_PREFIX}/share/doc/autossh"
+    system "cp autossh.host rscreen #{CREW_DEST_PREFIX}/share/examples/autossh"
+    system "cp autossh.1 #{CREW_DEST_PREFIX}/man/man1"
   end
 end
