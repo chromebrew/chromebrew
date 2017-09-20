@@ -18,11 +18,11 @@ class Aws < Package
   def self.install
     system "wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip"
     system "unzip awscli-bundle.zip"
-    system "awscli-bundle/install -i #{CREW_PREFIX}/aws -b #{CREW_PREFIX}/bin/aws"
+    system "awscli-bundle/install -i #{CREW_PREFIX}/share/aws -b #{CREW_PREFIX}/bin/aws"
     system "chmod +x #{CREW_PREFIX}/bin/aws"
-    system "mkdir -p #{CREW_DEST_PREFIX}/aws"
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp -r #{CREW_PREFIX}/aws #{CREW_DEST_PREFIX}"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share"
     system "cp #{CREW_PREFIX}/bin/aws #{CREW_DEST_PREFIX}/bin"
+    system "cp -r #{CREW_PREFIX}/share/aws #{CREW_DEST_PREFIX}/share"
   end
 end
