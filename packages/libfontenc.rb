@@ -8,6 +8,7 @@ class Libfontenc < Package
   source_sha256 '6fba26760ca8d5045f2b52ddf641c12cedc19ee30939c6478162b7db8b6220fb'
   
   depends_on 'xorg_proto'
+  depends_on 'zlibpkg'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"
