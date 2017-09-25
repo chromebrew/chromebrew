@@ -25,6 +25,7 @@ class Emacs < Package
   depends_on "m4" => :build
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "ncurses"
 
   def self.build
     system "./configure --prefix=/usr/local --without-x --without-makeinfo --without-selinux"
