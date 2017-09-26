@@ -18,7 +18,9 @@ class Ascii < Package
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
     system "cp ascii #{CREW_DEST_PREFIX}/bin"
+    system "cp ascii.1 #{CREW_DEST_PREFIX}/man/man1"
   end
 end
 
