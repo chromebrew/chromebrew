@@ -10,7 +10,7 @@ class Mg < Package
   depends_on 'ncurses'
 
   def self.build
-    system "CFLAGS=-I/usr/local/include/ncurses make"
+    system "CFLAGS=-I#{CREW_PREFIX}/include/ncurses make"
   end
 
   def self.install
