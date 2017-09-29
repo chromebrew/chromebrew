@@ -12,7 +12,7 @@ class Composer < Package
   binary_sha256 ({
   })
 
-  depends_on 'php7' unless File.exists? '/usr/local/bin/php'
+  depends_on 'php7' unless File.exists? "#{CREW_PREFIX}/bin/php"
 
   def self.install
     system "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\""
