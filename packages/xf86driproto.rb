@@ -8,7 +8,7 @@ class Xf86driproto < Package
   source_sha256 '18ff8de129b89fa24a412a1ec1799f8687f96c186c655b44b1a714a3a5d15d6c'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
   end
 
   def self.install
