@@ -20,6 +20,7 @@ class Mutt < Package
      x86_64: '5a3b3dee04f8f5d1219555a4f9c717fde4e032d1fd14509119158eb9d9194062',
   })
 
+  depends_on 'perl'
   depends_on 'libxslt'
 
   def self.build
