@@ -22,6 +22,7 @@ class Mutt < Package
 
   depends_on 'perl'
   depends_on 'libxslt'
+  depends_on 'openssl'
 
   def self.build
     system './configure --with-mailpath=/usr/local/mail --prefix=/usr/local --enable-imap --with-ssl --enable-smtp'
