@@ -8,18 +8,19 @@ class Libepoxy < Package
   source_sha256 '0b808a06c9685a62fca34b680abb8bc7fb2fda074478e329b063c1f872b826f6'
 
   depends_on 'mesa'
+  depends_on 'python3'
 
   def self.build
     system "mkdir _build"
     Dir.chdir "_build" do
-      system "../configure --prefix=#{CREW_PREFIX}"
+      system "../configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
       system "make"
     end
   end
 
   def self.install
     Dir.chdir "_build" do
-      system "make install"
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
   end
 end
