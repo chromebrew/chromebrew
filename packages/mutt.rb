@@ -34,5 +34,6 @@ class Mutt < Package
   def self.install
     system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/mail"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "echo 'export SASL_PATH=/usr/local/lib/sasl2' >> ~/.bashrc"
   end
 end
