@@ -23,9 +23,10 @@ class Mutt < Package
   depends_on 'perl'
   depends_on 'libxslt'
   depends_on 'openssl'
+  depends_on 'libcyrussasl' => :build
 
   def self.build
-    system './configure --with-mailpath=/usr/local/mail --prefix=/usr/local --enable-imap --with-ssl --enable-smtp'
+    system './configure --with-mailpath=/usr/local/mail --prefix=/usr/local --enable-imap --with-ssl --enable-smtp --with-sasl=/usr/local/lib/sasl2'
     system 'make'
   end
 
