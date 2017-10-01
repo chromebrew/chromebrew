@@ -3,28 +3,20 @@ require 'package'
 class Erlang < Package
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
   homepage 'http://www.erlang.org/'
-  version '20.0'
-  source_url 'http://erlang.org/download/otp_src_20.0.tar.gz'
-  source_sha256 'fe80e1e14a2772901be717694bb30ac4e9a07eee0cc7a28988724cbd21476811'
+  version '20.1'
+  source_url 'http://erlang.org/download/otp_src_20.1.tar.gz'
+  source_sha256 '900d35eb563607785a8e27f4b4c03cf6c98b4596028c5d6958569ddde5d4ddbf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/erlang-20.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/erlang-20.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/erlang-20.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/erlang-20.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'dc606a55efaa490551c47a57d40f5eb57f5d9e7e7cc4f1e5ed315d9ea81dfcec',
-     armv7l: 'dc606a55efaa490551c47a57d40f5eb57f5d9e7e7cc4f1e5ed315d9ea81dfcec',
-       i686: 'cd06eacaa56bba7fd3ec72840f5e6e1c9e893684837b8af2b889832a212c539d',
-     x86_64: '807f78fae8ec997e891a443f982ccad5820b42777ec6c7020660a89597e4d368',
   })
 
   depends_on 'flex' => :build
 
   def self.build
     system 'export ERL_OTP=`pwd`'
-    system './configure --prefix=/usr/local'
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
