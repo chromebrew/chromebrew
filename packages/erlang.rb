@@ -16,7 +16,7 @@ class Erlang < Package
 
   def self.build
     system 'export ERL_OTP=`pwd`'
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
