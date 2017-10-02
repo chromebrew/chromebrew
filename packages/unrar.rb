@@ -3,9 +3,9 @@ require 'package'
 class Unrar < Package
   description 'UnRAR is a powerful archive extractor.'
   homepage 'http://www.rarlab.com/'
-  version '5.5.7'
-  source_url 'http://www.rarlab.com/rar/unrarsrc-5.5.7.tar.gz'
-  source_sha256 '8aef0a0d91bf9c9ac48fab8a26049ac7ac49907e75a2dcbd511a4ba375322d8f'
+  version '5.5.8'
+  source_url 'http://www.rarlab.com/rar/unrarsrc-5.5.8.tar.gz'
+  source_sha256 '9b66e4353a9944bc140eb2a919ff99482dd548f858f5e296d809e8f7cdb2fcf4'
 
   def self.build
     # force to compile in sequential since unrar Makefile doesn't work in parallel
@@ -14,7 +14,8 @@ class Unrar < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}/usr/local", "install"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}/usr/local", "install-lib"
+    system "make", "DESTDIR=#{CREW_DEST_PREFIX}", "install"
+    system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
+    system "cp libunrar.so #{CREW_DEST_LIB_PREFIX}/libunrar.so"
   end
 end
