@@ -12,13 +12,15 @@ class Emacs < Package
   depends_on 'm4' => :build
   depends_on 'autoconf' => :build
   depends_on 'automake' => :build
+  depends_on 'ncurses'
 
   def self.build
-    system './configure \
+    system "./configure \
+            --prefix=#{CREW_PREFIX} \
+            --localstatedir=#{CREW_PREFIX}/share \
             --with-x=no \
-            --localstatedir=/usr/local/share \
             --without-makeinfo \
-            --without-selinux'
+            --without-selinux"
     system 'make'
   end
 
