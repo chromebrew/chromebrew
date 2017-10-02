@@ -12,7 +12,16 @@ class Poppler < Package
   binary_sha256 ({
   })
 
+  depends_on 'cairo'
+  depends_on 'fontconfig'
+  depends_on 'harfbuzz'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
+  depends_on 'zlibpkg'
+
   def self.build
+    system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' configure"
+    system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' m4/libtool.m4"
     system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX}"
