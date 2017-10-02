@@ -20,6 +20,6 @@ class Banner < Package
   end
 
   def self.install
-    system 'make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "INSTBASEDIR=#{CREW_DEST_PREFIX}", 'install'
   end
 end
