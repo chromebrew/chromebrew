@@ -7,7 +7,7 @@ class Glibc < Package
 
   is_fake
 
-  if (File.exist? "#{CREW_LIB_PREFIX}/libc-2.23.so")
+  if (File.exist? "/lib/libc-2.23.so") || (File.exist? "/lib64/libc-2.23.so")
     depends_on 'glibc223'
     # Check previous version
     if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
