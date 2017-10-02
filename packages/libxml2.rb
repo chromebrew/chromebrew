@@ -14,6 +14,7 @@ class Libxml2 < Package
 
   def self.build
     system "./configure",
+      "--prefix=#{CREW_PREFIX}",
       "--libdir=#{CREW_LIB_PREFIX}",
       "--enable-shared",
       "--disable-static",
