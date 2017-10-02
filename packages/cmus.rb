@@ -7,9 +7,11 @@ class Cmus < Package
   source_url 'https://github.com/cmus/cmus/archive/v2.7.1.tar.gz'
   source_sha256 '8179a7a843d257ddb585f4c65599844bc0e516fe85e97f6f87a7ceade4eb5165'
 
+  depends_on 'ffmpeg'
+
   def self.build
     system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' configure"
-    system "./configure"
+    system "./configure prefix=#{CREW_PREFIX} libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
