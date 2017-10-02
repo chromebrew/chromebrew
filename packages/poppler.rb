@@ -13,7 +13,6 @@ class Poppler < Package
   })
 
   depends_on 'cairo'
-  depends_on 'fontconfig'
   depends_on 'harfbuzz'
   depends_on 'libjpeg'
   depends_on 'libpng'
