@@ -22,7 +22,10 @@ class R < Package
   depends_on 'readline'
 
   def self.build
-    system './configure', '--with-x=no' # X is not available
+    system './configure',
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}",
+      '--with-x=no' # X is not available
     system 'make'
   end
 
