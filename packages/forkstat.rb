@@ -15,14 +15,14 @@ class Forkstat < Package
   def self.build
     system 'make',
       "BINDIR=#{CREW_PREFIX}/bin",
-      "MANDIR=#{CREW_PREFIX}/share/man/man1"
+      "MANDIR=#{CREW_PREFIX}/share/man/man8"
   end
 
   def self.install
     system 'make',
       "DESTDIR=#{CREW_DEST_DIR}",
       "BINDIR=#{CREW_PREFIX}/bin",
-      "MANDIR=#{CREW_PREFIX}/share/man/man1",
+      "MANDIR=#{CREW_PREFIX}/share/man/man8",
       'install'
   end
 end
