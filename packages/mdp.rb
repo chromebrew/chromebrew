@@ -15,7 +15,7 @@ class Mdp < Package
   depends_on 'ncurses'
 
   def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw make"
+    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw PREFIX=#{CREW_PREFIX} make"
   end
 
   def self.install
