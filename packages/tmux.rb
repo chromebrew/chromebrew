@@ -17,7 +17,7 @@ class Tmux < Package
   depends_on 'ncurses'
 
   def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure"
+    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure --prefix=#{CREW_PREFIX}"
     system 'make'
   end
 
