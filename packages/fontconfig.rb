@@ -3,21 +3,21 @@ require 'package'
 class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
-  version '2.12.4'
+  version '2.12.4-1'
   source_url 'https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.4.tar.bz2'
   source_sha256 '668293fcc4b3c59765cdee5cee05941091c0879edcc24dfec5455ef83912e45c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.12.4-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e9019600344fb674b24c24b78599cb9ad45f5b33cfd3d3e31c2a3b8c87895f67',
-     armv7l: 'e9019600344fb674b24c24b78599cb9ad45f5b33cfd3d3e31c2a3b8c87895f67',
-       i686: '0d970e13d571ebeb4963ed1b50d9943502117877b2e08168613a0e705bf48211',
-     x86_64: '96dd1f4f9b381f3670d706a7ab0ed83cb48d354f1a5690a22d24929655dbc7ef',
+    aarch64: '34f5212e583b5c6c993ccdf4d2f0252e276a18328492a336a483c066f640dd55',
+     armv7l: '34f5212e583b5c6c993ccdf4d2f0252e276a18328492a336a483c066f640dd55',
+       i686: '9ab6f59b64fd27f81b2d30d01da4b29c94bf1e60a0e4d87f8ca1cda5f22b9386',
+     x86_64: 'dc136fe2a61688e9ec461682627c6475b7918bcc0f6584e5ff27649791629e8f',
   })
 
   depends_on 'expat'

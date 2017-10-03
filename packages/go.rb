@@ -3,21 +3,13 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  version '1.8.3-1'
-  source_url 'https://storage.googleapis.com/golang/go1.8.3.src.tar.gz'
-  source_sha256 '5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f68829d99fa6'
+  version '1.9'
+  source_url 'https://storage.googleapis.com/golang/go1.9.src.tar.gz'
+  source_sha256 'a4ab229028ed167ba1986825751463605264e44868362ca8e7accc8be057e993'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f0ed5baa1cc1ec4a393e3255ce5c6556ce29b17395fb660872a7fa7ee9dd7951',
-     armv7l: 'f0ed5baa1cc1ec4a393e3255ce5c6556ce29b17395fb660872a7fa7ee9dd7951',
-       i686: '5f34ab7487970b560a4eadc37a0308b3e50f9cc37bf5b9c933e8b033c06987c1',
-     x86_64: '87bbb19fa513377c1be217dd23897770c3c307fd22bf85e2202de24659b44129',
   })
 
   # Tests requires perl
