@@ -17,7 +17,7 @@ class Brotli < Package
   def self.build
     system 'mkdir out'
     Dir.chdir 'out' do
-      system "cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX}"
+      system "cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_DEST_LIB_PREFIX}"
       system "cmake --build . --config Release --target install"
     end
   end
@@ -25,7 +25,7 @@ class Brotli < Package
   def self.install
     #system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir 'out' do
-      system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_DEST_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} -P cmake_install.cmake"
+      system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_DEST_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_DEST_LIB_PREFIX} -P cmake_install.cmake"
     end
   end
 end
