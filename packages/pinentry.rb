@@ -7,7 +7,9 @@ class Pinentry < Package
   source_url 'https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.0.0.tar.bz2'
   source_sha256 '1672c2edc1feb036075b187c0773787b2afd0544f55025c645a71b4c2f79275a'
 
+  depends_on 'libassuan'
   depends_on 'libcap'
+  depends_on 'libgpgerror'
   depends_on 'ncurses'
 
   def self.build
