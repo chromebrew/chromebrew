@@ -20,8 +20,9 @@ class Cmake < Package
     if Dir.exist? "#{CREW_PREFIX}/include/ncursesw"
       system 'sed -i "51s,$,\n  set(CURSES_INCLUDE_PATH ' + "#{CREW_PREFIX}/include/ncursesw" + ')," Modules/FindCurses.cmake'
     end
-    system "./bootstrap"
-    system "make"
+    system './bootstrap',
+      "--prefix=#{CREW_PREFIX}"
+    system 'make'
   end
 
   def self.install
