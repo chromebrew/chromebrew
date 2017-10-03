@@ -22,6 +22,8 @@ class Texinfo < Package
   def self.build
     # configure and make
     system './configure',
+        "--prefix=#{CREW_PREFIX}",
+        "--libdir=#{CREW_LIB_PREFIX}",
         '--with-external-Text-Unidecode',
         '--with-external-Unicode-EastAsianWidth'
     system "make"
