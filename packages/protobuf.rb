@@ -20,8 +20,8 @@ class Protobuf < Package
      x86_64: 'd96734af335416a6e78fefaa86c39c51baca17a3b5486f4d75022ee11f2aa1f2',
   })
 
-  depends_on 'automake'
-  depends_on 'libtool'
+  depends_on 'automake' => :build
+  depends_on 'libtool'  => :build
 
   def self.build
     system './autogen.sh'
