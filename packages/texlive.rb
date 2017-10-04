@@ -4,10 +4,21 @@ class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
   version '2017'
-  source_url 'ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz'
-  source_sha256 '1e09ffe84046af5fa68c788a3fd3c517f9c7e131d9d08603e2856cba22adf36e'
+  source_url 'ftp://tug.org/historic/systems/texlive/2017/texlive-20170524-extra.tar.xz'
+  source_sha256 'afe49758c26fb51c2fae2e958d3f0c447b5cc22342ba4a4278119d39f5176d7f'
+
+  depends_on 'perl'
 
   def self.build
+    system "rm -rf *"
+    system "wget mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
+    system "wget mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz.sha512"
+    system "cat install-tl-unx.tar.gz.sha512 | xargs | cut -d' ' -f1 > sha512"
+    sha512 = open('sha512').read.chomp
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA512.hexdigest( File.read('install-tl-unx.tar.gz') ) == "#{sha512}"
+    system "tar xvf install-tl-unx.tar.gz"
+    system "mv install-tl-2017*/* ."
+    system "rm -rf install-tl-2017*/"
   end
 
   def self.install
