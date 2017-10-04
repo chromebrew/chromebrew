@@ -20,7 +20,7 @@ class Htop < Package
      x86_64: '5e1faafcb9559adf098f2a4e03d282202d981522ad4a84d515d2006363fd840c',
   })
 
-  depends_on 'buildessential'
+  depends_on 'buildessential'  => :build
   depends_on 'ncurses'
 
   def self.build
