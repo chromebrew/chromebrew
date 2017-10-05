@@ -24,7 +24,7 @@ class Htop < Package
   depends_on 'ncurses'
 
   def self.build
-    system "./configure --disable-unicode"
+    system "./configure --prefix=#{CREW_PREFIX} --disable-unicode"
     system "make"
   end
 
