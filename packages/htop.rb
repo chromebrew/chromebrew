@@ -3,7 +3,7 @@ require 'package'
 class Htop < Package
   description 'htop is an interactive process viewer for Unix systems.'
   homepage 'https://hisham.hm/htop/'
-  version '2.0.2'
+  version '2.0.2-1'
   source_url 'http://hisham.hm/htop/releases/2.0.2/htop-2.0.2.tar.gz'
   source_sha256 '179be9dccb80cee0c5e1a1f58c8f72ce7b2328ede30fb71dcdf336539be2f487'
 
