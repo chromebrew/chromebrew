@@ -22,6 +22,6 @@ class Smem < Package
   def self.install
     system "install -Dm755 smem #{CREW_DEST_PREFIX}/bin/smem"
     system "install -Dm755 smemcap #{CREW_DEST_PREFIX}/bin/smemcap"
-    system "install -Dm643 smem.8 #{CREW_DEST_PREFIX}/man/man8/smem.8"
+    system "install -Dm644 smem.8 #{CREW_DEST_PREFIX}/man/man8/smem.8"
   end
 end
