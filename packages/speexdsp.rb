@@ -8,7 +8,12 @@ class Speexdsp < Package
   source_sha256 '4ae688600039f5d224bdf2e222d2fbde65608447e4c2f681585e4dca6df692f1'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure \
+            --prefix=#{CREW_PREFIX} \
+            --libdir=#{CREW_LIB_PREFIX} \
+            --disable-dependency-tracking \
+            --disable-maintainer-mode \
+            --disable-examples"
     system "make"
   end
 
