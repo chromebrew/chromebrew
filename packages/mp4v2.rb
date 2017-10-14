@@ -8,7 +8,11 @@ class Mp4v2 < Package
   source_sha256 '0319b9a60b667cf10ee0ec7505eb7bdc0a2e21ca7a93db96ec5bd758e3428338'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure \
+            --prefix=#{CREW_PREFIX} \
+            --libdir=#{CREW_LIB_PREFIX} \
+            --disable-dependency-tracking \
+            --disable-debug"
     system "make"
   end
 
