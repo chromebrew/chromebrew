@@ -13,6 +13,7 @@ class Rlwrap < Package
   })
 
   depends_on 'autoconf'
+  depends_on 'readline'
 
   def self.build
     system "autoreconf --install"
