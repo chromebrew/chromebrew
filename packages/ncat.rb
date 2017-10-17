@@ -23,7 +23,7 @@ class Ncat < Package
     system "sed -i s#/usr/bin/file##{CREW_PREFIX}/bin/file#g libdnet-stripped/configure"
 
     #without-zenmap in configure removes openssl dependency
-    system "./configure --without-zenmap --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure --without-zenmap --prefix=#{CREW_PREFIX}"
     system "cd ncat && make"
   end
 
