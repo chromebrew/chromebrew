@@ -20,10 +20,13 @@ class Nmap < Package
      x86_64: '12eb815ec4bc47ac0d778575c7125907421937396fa491745d5ab48486380550',
   })
 
-  depends_on 'buildessential'
+  depends_on 'buildessential' => :build
+  depends_on 'filecmd' => :build
 
   def self.build
-    system "./configure --with-pcap=linux --without-zenmap"
+    #fixup "/usr/bin/file" -> "/usr/local/bin/file" in the configure scripts
+    system "sed -i s#/usr/bin/file##{CREW_DEST_PREFIX}/bin/file#g libdnet-stripped/configure" 
+    system "./configure --with-pcap=linux --without-zenmap --prefix=#{CREW_PREFIX}"
     system "make"
   end
 
