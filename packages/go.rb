@@ -3,9 +3,9 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  version '1.9'
-  source_url 'https://storage.googleapis.com/golang/go1.9.src.tar.gz'
-  source_sha256 'a4ab229028ed167ba1986825751463605264e44868362ca8e7accc8be057e993'
+  version '1.9.1'
+  source_url 'https://storage.googleapis.com/golang/go1.9.1.src.tar.gz'
+  source_sha256 'a84afc9dc7d64fe0fa84d4d735e2ece23831a22117b50dafc75c1484f1cb550e'
 
   binary_url ({
   })
