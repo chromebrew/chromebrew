@@ -3,9 +3,9 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.13.5'
-  source_url 'https://nginx.org/download/nginx-1.13.5.tar.gz'
-  source_sha256 '0e75b94429b3f745377aeba3aff97da77bf2b03fcb9ff15b3bad9b038db29f2e'
+  version '1.13.6'
+  source_url 'https://nginx.org/download/nginx-1.13.6.tar.gz'
+  source_sha256 '8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
 
   binary_url ({
   })
@@ -15,14 +15,15 @@ class Nginx < Package
   depends_on 'pcre'
 
   def self.build
-    system "./configure"
-    system "make"
+    system './configure',
+      "--prefix=#{CREW_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
-    FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "ln -s #{CREW_PREFIX}/nginx/sbin/nginx nginx"
       system "echo '#!/bin/bash' > startnginx"
       system "echo 'sudo nginx' >> startnginx"
