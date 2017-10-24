@@ -31,14 +31,18 @@ class Jdk8 < Package
       abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u152-linux-x64.tar.gz') ) == '218b3b340c3f6d05d940b817d0270dfe0cfd657a636bad074dcabe0c111961bf'
       system 'tar xvf jdk-8u152-linux-x64.tar.gz'
     end
-    system "mkdir -p #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/jdk8"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share/jdk8"
     FileUtils.cd('jdk1.8.0_152') do
       system "rm -f src.zip"
-      system "cp -r * #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/jdk8"
+      system "cp -r * #{CREW_DEST_PREFIX}/share/jdk8"
     end
-    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
-    FileUtils.cd("#{CREW_DEST_DIR}#{CREW_PREFIX}/bin") do
-      system "ln -s ../../../#{CREW_LIB_PREFIX}/jdk8/bin/* ."
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
+      system "ln -s ../../../#{CREW_PREFIX}/share/jdk8/bin/* ."
+    end
+    FileUtils.cd("#{CREW_DEST_PREFIX}/share") do
+      system "cp -r jdk8/man/ ."
+      system "rm -rf jdk8/man/"
     end
   end
 end
