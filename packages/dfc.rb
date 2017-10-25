@@ -7,7 +7,7 @@ class Dfc < Package
   source_url 'https://projects.gw-computing.net/attachments/download/615/dfc-3.1.1.tar.gz'
   source_sha256 '962466e77407dd5be715a41ffc50a54fce758a78831546f03a6bb282e8692e54'
 
-  depends_on 'cmake'
+  depends_on 'cmake' => :build
   depends_on 'gettext'
 
   def self.build
