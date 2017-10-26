@@ -22,16 +22,12 @@ class Micro < Package
 
   depends_on 'go' => :build
 
-  def self.build
-    system "go get -d github.com/zyedidia/micro/cmd/micro"
-  end
-
   def self.install
-    system "cd $GOPATH/src/github.com/zyedidia/micro"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
-
-  def self.postinstall
-    system "rm -f #{CREW_DEST_DIR}/{LICENSE,LICENSE-THIRD-PARTY,README.md}"
+    system "go get -d github.com/zyedidia/micro/cmd/micro"
+    gopath = `go env GOPATH`.strip
+    Dir.chdir "#{gopath}/src/github.com/zyedidia/micro/cmd/micro" do
+      system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
+      system "go build -o #{CREW_DEST_DIR}/usr/local/bin/micro"
+    end
   end
 end
