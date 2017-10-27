@@ -3,10 +3,10 @@ require 'package'
 class Elinks < Package
   description 'Full-Featured Text WWW Browser'
   homepage 'http://elinks.or.cz/'
-  version '0.13'
+  version 'f86be65971'
 
-  source_url 'http://elinks.cz/download/elinks-current-0.13.tar.gz'
-  source_sha256 '39f3101c1c39808193b92907dbb779b21bc175a8d381ee05d663680c65aef557'
+  source_url 'https://git.phpizza.com/alan/elinks/archive/f86be659718c0cd0a67f88b42f07044c23d0d028.tar.gz'
+  source_sha256 'ce416fdd57b23442275b5d74c80e0ac5793b66ec0f8ed07500c64eb647339838'
 
   depends_on 'bz2'
   depends_on 'lzip'
