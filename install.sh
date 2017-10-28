@@ -186,4 +186,5 @@ echo crew >> .git/info/sparse-checkout
 git fetch origin master
 git reset --hard origin/master
 crew install buildessential
+crew install less
 echo "Chromebrew installed successfully and package lists updated."
