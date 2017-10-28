@@ -187,4 +187,8 @@ git fetch origin master
 git reset --hard origin/master
 crew install buildessential
 crew install less
+echo
+echo "You will have to set the default PAGER environment variable to be able to use less:"
+echo "echo \"export PAGER=$CREW_PREFIX/bin/less\" >> ~/.bashrc && . ~/.bashrc"
+echo
 echo "Chromebrew installed successfully and package lists updated."
