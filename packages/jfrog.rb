@@ -12,7 +12,6 @@ class Jfrog < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp jfrog #{CREW_DEST_PREFIX}/bin"
+    system "install -Dm755 jfrog #{CREW_DEST_PREFIX}/bin/jfrog"
   end
 end
