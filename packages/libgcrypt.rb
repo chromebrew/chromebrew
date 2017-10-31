@@ -15,9 +15,16 @@ class Libgcrypt < Package
   depends_on 'libgpgerror'
 
   def self.build
-    system './configure',
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}"
+    if ARCH == 'aarch64'
+      system './configure',
+        "--prefix=#{CREW_PREFIX}",
+        "--libdir=#{CREW_LIB_PREFIX}",
+        "--build=armv7l"
+    else
+      system './configure',
+        "--prefix=#{CREW_PREFIX}",
+        "--libdir=#{CREW_LIB_PREFIX}"
+    end
     system 'make'
   end
 
