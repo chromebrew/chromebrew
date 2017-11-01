@@ -3,9 +3,9 @@ require 'package'
 class Collectl < Package
   description 'Collectl is a light-weight performance monitoring tool capable of reporting interactively as well as logging to disk.'
   homepage 'http://collectl.sourceforge.net/'
-  version '4.1.2'
-  source_url 'https://downloads.sourceforge.net/project/collectl/collectl/collectl-4.1.2/collectl-4.1.2.src.tar.gz'
-  source_sha256 '972654e93ffa1ad535c6ef760c55f1ee53323893217aa83d4ad0f5aff824c431'
+  version '4.2.0'
+  source_url 'https://downloads.sourceforge.net/project/collectl/collectl/collectl-4.2.0/collectl-4.2.0.src.tar.gz'
+  source_sha256 'bf4c52d315d4e754b8275f6c6a9a48188c440f78c4307e5f72abcb518a9d07d0'
 
   binary_url ({
   })
