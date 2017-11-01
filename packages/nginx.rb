@@ -3,27 +3,46 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.11.6-1'
-  source_url 'http://nginx.org/download/nginx-1.11.6.tar.gz'
-  source_sha256 '3153abbb518e2d9c032e1b127da3dc0028ad36cd4679e5f3be0b8afa33bc85bd'
+  version '1.13.6'
+  source_url 'https://nginx.org/download/nginx-1.13.6.tar.gz'
+  source_sha256 '8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'pcre'
 
   def self.build
-    system "./configure"
-    system "make"
+    system './configure',
+      "--prefix=#{CREW_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "sudo ln -sf /usr/local/nginx/sbin/nginx /usr/local/bin/nginx"
-    system "echo all NGINX things are in /usr/local/nginx"
-    system "echo pages are in /usr/local/nginx/html"
-    system "echo adding bash aliases so you can easily start/stop nginx"
-    system "echo startnginx starts nginx and stopnginx stops nginx"
-    system "sed -i \'/^alias startnginx/d\' ~/.bashrc"
-    system "sed -i \'/^alias stopnginx/d\' ~/.bashrc"
-    system "sed -i '$ a alias startnginx=\"sudo nginx\"' ~/.bashrc"
-    system "sed -i '$ a alias stopnginx=\"sudo nginx -s quit\"' ~/.bashrc"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
+      system "ln -s #{CREW_PREFIX}/nginx/sbin/nginx nginx"
+      system "echo '#!/bin/bash' > startnginx"
+      system "echo 'sudo nginx' >> startnginx"
+      system "echo '#!/bin/bash' > stopnginx"
+      system "echo 'sudo nginx -s quit' >> stopnginx"
+      system "chmod +x st*nginx"
+    end
+    puts
+    puts "All things NGINX are in #{CREW_PREFIX}/nginx.".lightblue
+    puts
+    puts "Pages are stored in #{CREW_PREFIX}/nginx/html.".lightblue
+    puts
+    puts "Added bash scripts so you can easily start/stop nginx:".lightblue
+    puts "startnginx - starts nginx".lightblue
+    puts "stopnginx - stops nginx".lightblue
+    puts
+    puts "To completely remove nginx, perform the following:".lightblue
+    puts "crew remove nginx".lightblue
+    puts "sudo rm -rf #{CREW_PREFIX}/nginx".lightblue
+    puts
   end
 end

@@ -3,9 +3,14 @@ require 'package'
 class Tcpdump < Package
   description 'A powerful command-line packet analyzer.'
   homepage 'http://www.tcpdump.org/'
-  version '4.8.1'
-  source_url 'http://www.tcpdump.org/release/tcpdump-4.8.1.tar.gz'
-  source_sha256 '20e4341ec48fcf72abcae312ea913e6ba6b958617b2f3fb496d51f0ae88d831c'
+  version '4.9.2'
+  source_url 'http://www.tcpdump.org/release/tcpdump-4.9.2.tar.gz'
+  source_sha256 '798b3536a29832ce0cbb07fafb1ce5097c95e308a6f592d14052e1ef1505fe79'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'libpcap'
   depends_on 'openssl'

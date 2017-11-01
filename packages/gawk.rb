@@ -3,9 +3,14 @@ require 'package'
 class Gawk < Package
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  version '4.1.4-1'
-  source_url 'http://ftp.gnu.org/gnu/gawk/gawk-4.1.4.tar.xz'
-  source_sha256 '53e184e2d0f90def9207860531802456322be091c7b48f23fdc79cda65adc266'
+  version '4.2.0'
+  source_url 'https://ftp.gnu.org/gnu/gawk/gawk-4.2.0.tar.xz'
+  source_sha256 'd4f3cd31c001fd0ed52832d4fbfbdfeaa38ad541c182f80ff8fdf87324a6a9f2'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'libsigsegv'
   depends_on 'readline' => :build

@@ -3,14 +3,21 @@ require 'package'
 class Memcached < Package
   description 'Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.'
   homepage 'https://memcached.org/'
-  version '1.4.34'
-  source_url 'https://memcached.org/files/memcached-1.4.34.tar.gz'
-  source_sha256 '5064c87f91a37d822dfeab8768490c55fe686a742f07f67c7121101e48d87c79'
+  version '1.5.2'
+  source_url 'https://memcached.org/files/memcached-1.5.2.tar.gz'
+  source_sha256 '9ac93113bdb5d037e79c61277386564ac2e5e31d49e594f11e554e4c149b7245'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'libevent'
 
   def self.build
-    system "./configure"
+    system "./configure",
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

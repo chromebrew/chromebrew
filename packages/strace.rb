@@ -3,14 +3,21 @@ require 'package'
 class Strace < Package
   description 'strace is a diagnostic, debugging and instructional userspace utility for Linux.'
   homepage 'https://strace.io/'
-  version '4.16'
-  source_url 'https://downloads.sourceforge.net/project/strace/strace/4.16/strace-4.16.tar.xz'
-  source_sha256 '98487cb5178ec1259986cc9f6e2a844f50e5d1208c112cc22431a1e4d9adf0ef'
+  version '4.19'
+  source_url 'https://downloads.sourceforge.net/project/strace/strace/4.19/strace-4.19.tar.xz'
+  source_sha256 '7c93ebc6c29280f47c24a0eb86873a99ccb2cac6512c60a60ba4ef99ab807281'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'buildessential'
 
   def self.build
-    system "./configure --prefix=/usr/local"
+    system "./configure",
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

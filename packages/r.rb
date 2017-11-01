@@ -3,15 +3,19 @@ require 'package'
 class R < Package
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
-  version '3.4.0'
-  source_url 'https://cran.r-project.org/src/base/R-3/R-3.4.0.tar.gz'
-  source_sha256 '288e9ed42457c47720780433b3d5c3c20983048b789291cc6a7baa11f9428b91'
+  version '3.4.2'
+  source_url 'https://cran.r-project.org/src/base/R-3/R-3.4.2.tar.gz'
+  source_sha256 '971e30c2436cf645f58552905105d75788bd9733bddbcb7c4fbff4c1a6d80c64'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   # depends_on 'gfortran'       # require gfortran enabled gcc
   depends_on 'pcre'             # need to use pcre not pcre2
   depends_on 'zlibpkg'
   depends_on 'xzutils'
-
   depends_on 'bz2'
   depends_on 'curl'
   depends_on 'openssl'
@@ -19,6 +23,8 @@ class R < Package
 
   def self.build
     system './configure',
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}",
       '--with-x=no' # X is not available
     system 'make'
   end

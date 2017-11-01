@@ -3,15 +3,20 @@ require 'package'
 class Xe < Package
   description 'simple xargs and apply replacement.'
   homepage 'https://github.com/chneukirchen/xe/'
-  version '0.6.1'
-  source_url 'https://github.com/chneukirchen/xe/archive/v0.6.1.tar.gz'
-  source_sha256 '36036d0e9464233d3113af187c473491298ed1168976330d7dd615b8f0521b96'
+  version '0.9'
+  source_url 'https://github.com/chneukirchen/xe/archive/v0.9.tar.gz'
+  source_sha256 '0e72bafd0d5c30953ef7a5dca710296aec621a60fb62c0aaf7ee2af5e68c2ac2'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   def self.build
-    system "make", "PREFIX=/usr/local"
+    system 'make', "PREFIX=#{CREW_PREFIX}"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -69,10 +69,23 @@ class Package
     @is_fake
   end
 
+  # Function to perform build from source.
   def self.build
 
   end
 
+  # Function to perform install from source build.
+  def self.install
+
+  end
+
+  # Function to perform post-install for both source build and binary distribution
+  def self.postinstall
+
+  end
+
+  # Function to perform check from source build.
+  # This is execute if and only if `crew build`.
   def self.check
 
   end
