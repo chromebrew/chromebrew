@@ -3,10 +3,10 @@ require 'package'
 class Emacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'http://www.gnu.org/software/emacs/'
-  version '25.1'
-  source_url 'ftp://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz'
-  source_sha256 '19f2798ee3bc26c95dca3303e7ab141e7ad65d6ea2b6945eeba4dbea7df48f33'
-
+  version '25.3'
+  source_url 'https://ftp.gnu.org/gnu/emacs/emacs-25.3.tar.xz'
+  source_sha256 '253ac5e7075e594549b83fd9ec116a9dc37294d415e2f21f8ee109829307c00b'
+  
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-25.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-25.1-chromeos-armv7l.tar.xz',
@@ -27,8 +27,13 @@ class Emacs < Package
   depends_on "automake" => :build
 
   def self.build
-    system "./configure --prefix=/usr/local --without-x --without-makeinfo --without-selinux"
-    system "make"
+    system "./configure \
+            --prefix=#{CREW_PREFIX} \
+            --localstatedir=#{CREW_PREFIX}/share \
+            --with-x=no \
+            --without-makeinfo \
+            --without-selinux"
+    system 'make'
   end
 
   def self.install
