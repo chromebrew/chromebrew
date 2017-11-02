@@ -35,27 +35,26 @@ If this command returns `ERROR: unknown command: shell` please have a second loo
 
 Then download and run the installation script below:
 
-    `wget -q https://raw.github.com/skycocker/chromebrew/master/install.sh && yes | bash install.sh`
+    wget -q https://raw.github.com/skycocker/chromebrew/master/install.sh && yes | bash install.sh
 
     -- or --
 
-    `curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh`
+    curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh
 
 On a rooted Google OnHub, the command needs to be run with the "chronos" user. In order to make su work, a password is needed for the chronos user.
 
-    ```bash
     # passwd chronos
     Changing password for chronos.
     Enter new UNIX password:
     Retype new UNIX password:
     # su - chronos
     Password:
-    $ curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
-    ```
+    $ curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh
+
 Usage
 -----
 
-    `crew <command> [-k|--keep] <package1> [<package2> ...]`
+    crew <command> [-k|--keep] <package1> [<package2> ...]
 
 Where available commands are:
 
@@ -74,7 +73,7 @@ Available packages are listed in the [packages directory](https://github.com/sky
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
 
-    `crew install --keep <package1> [<package2> ...]`
+    crew install --keep <package1> [<package2> ...]
 
 License
 -------
