@@ -17,7 +17,7 @@ class Libgcrypt < Package
   def self.build
     case ARCH
     when 'aarch64'
-      system 'export gcry_cv_gcc_arm_platform_as_ok=no'
+      ENV['gcry_cv_gcc_arm_platform_as_ok'] = 'no'
       system './configure',
         "--prefix=#{CREW_PREFIX}",
         "--libdir=#{CREW_LIB_PREFIX}",
