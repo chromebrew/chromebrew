@@ -7,6 +7,9 @@ class Perl_xml_parser < Package
   source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz'
   source_sha256 '1ae9d07ee9c35326b3d9aad56eae71a6730a73a116b9fe9e8a4758b7cc033216'
 
+  depends_on 'expat'
+  depends_on 'perl'
+
   def self.build
   end
 
