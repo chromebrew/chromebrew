@@ -3,9 +3,9 @@ require 'package'
 class Libxslt < Package
   description 'Libxslt is the XSLT C library developed for the GNOME project.'
   homepage 'http://xmlsoft.org/libxslt/'
-  version '1.1.30'
-  source_url 'http://xmlsoft.org/sources/libxslt-1.1.30.tar.gz'
-  source_sha256 'ba65236116de8326d83378b2bd929879fa185195bc530b9d1aba72107910b6b3'
+  version '1.1.32'
+  source_url 'http://xmlsoft.org/sources/libxslt-1.1.32.tar.gz'
+  source_sha256 '526ecd0abaf4a7789041622c3950c0e7f2c4c8835471515fd77eec684a355460'
 
   binary_url ({
   })
