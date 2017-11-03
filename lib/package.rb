@@ -69,6 +69,16 @@ class Package
     @is_fake
   end
 
+  # Function to perform pre-install operations prior to build from source.
+  def self.preinstall
+
+  end
+
+  # Function to perform patch operations prior to build from source.
+  def self.patch
+
+  end
+
   # Function to perform build from source.
   def self.build
 
