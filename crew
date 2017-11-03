@@ -370,6 +370,8 @@ def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
     puts "Building from source, this may take a while..."
     @pkg.in_build = true
+    @pkg.preinstall
+    @pkg.patch
     @pkg.build
     @pkg.in_build = false
     system "rm -rf #{CREW_DEST_DIR}/*" #wipe crew destdir

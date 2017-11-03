@@ -171,8 +171,8 @@ curl -# -o package.rb $URL/lib/package.rb
 curl -# -o package_helpers.rb $URL/lib/package_helpers.rb
 
 #Making GCC act like CC (For some npm packages out there)
-rm -f /usr/local/bin/cc
-ln -s /usr/local/bin/gcc /usr/local/bin/cc
+rm -f $CREW_PREFIX/bin/cc
+ln -s $CREW_PREFIX/bin/gcc $CREW_PREFIX/bin/cc
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
@@ -185,4 +185,10 @@ echo lib >> .git/info/sparse-checkout
 echo crew >> .git/info/sparse-checkout
 git fetch origin master
 git reset --hard origin/master
+crew install buildessential
+crew install less
+echo
+echo "You will have to set the default PAGER environment variable to be able to use less:"
+echo "echo \"export PAGER=$CREW_PREFIX/bin/less\" >> ~/.bashrc && . ~/.bashrc"
+echo
 echo "Chromebrew installed successfully and package lists updated."
