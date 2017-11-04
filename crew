@@ -11,6 +11,7 @@ require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require_relative 'lib/const'
+require_relative 'lib/util'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -51,6 +52,16 @@ require_relative 'lib/docopt'
 begin
   args = Docopt::docopt(DOC)
 rescue Docopt::Exit => e
+  puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
+  cmds = ["build", "download", "files", "help", "install", "remove", "search", "update", "upgrade", "whatprovides"]
+  # Looking for similar commands
+  if ARGV.size >= 1 and not cmds.include?(ARGV[0]) then
+    similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
+    if not similar.empty? then
+      puts "Did you mean?"
+      similar.each {|sug| puts "  #{sug}"}
+    end
+  end
   puts e.message
   exit 1
 end
