@@ -12,10 +12,12 @@ class Poppler < Package
   binary_sha256 ({
   })
 
+  depends_on 'automake' => :build
   depends_on 'cairo'
   depends_on 'harfbuzz'
   depends_on 'libjpeg'
   depends_on 'libpng'
+  depends_on 'openjpeg'
   depends_on 'zlibpkg'
 
   def self.build
