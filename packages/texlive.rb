@@ -17,8 +17,8 @@ class Texlive < Package
     sha512 = open('sha512').read.chomp
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA512.hexdigest( File.read('install-tl-unx.tar.gz') ) == "#{sha512}"
     system "tar xvf install-tl-unx.tar.gz"
-    system "mv install-tl-2017*/* ."
-    system "rm -rf install-tl-2017*/"
+    system "mv install-tl-20*/* ."
+    system "rm -rf install-tl-20*/"
   end
 
   def self.install
@@ -29,14 +29,15 @@ class Texlive < Package
            TEXLIVE_INSTALL_TEXMFHOME=#{dir}/local \
            ./install-tl --scheme=basic --no-cls"
     system "find #{dir} -iname '*.pdf' -delete" # saving some space
-    system "find #{dir}/2017/texmf-dist/doc -type f -and -not -path '*man*' -delete"
+    system "find #{dir}/20*/texmf-dist/doc -type f -and -not -path '*man*' -delete"
     system "find #{dir} -name 'tlmgr' -exec {} init-usertree ';'"
   end
 
   def self.postinstall
+    path = `echo #{CREW_PREFIX}/share/texlive/20*`.chomp
     puts "\nPlease add texlive to your PATH and MANPATH to be able to use the executables and manpages. Use the following commands:".lightblue
-    puts " echo \"export PATH=\$PATH:#{CREW_PREFIX}/share/texlive/2017/bin/#{ARCH}-linux\" >> ~/.bashrc".lightblue
-    puts " echo \"export MANPATH=\$MANPATH:#{CREW_PREFIX}/share/texlive/2017/bin/texmf-dist/doc/man\" >> ~/.bashrc".lightblue
+    puts " echo \"export PATH=\$PATH:#{path}/bin/#{ARCH}-linux\" >> ~/.bashrc".lightblue
+    puts " echo \"export MANPATH=\$MANPATH:#{path}/bin/texmf-dist/doc/man\" >> ~/.bashrc".lightblue
     puts " source ~/.bashrc".lightblue
     puts "\nThis is a very small installation, with only the basic packages. To install more, use `tlmgr install <package>`.".lightblue
   end
