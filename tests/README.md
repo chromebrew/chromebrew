@@ -8,12 +8,6 @@ Running these tests will make sure that crew is working correctly, or explain th
 
 The tests can be used at any time to help with developing, but make sure to run them before submitting a Pull Request.
 
-## How to run tests
-
-Execute `ruby test_all` from this directory (`tests/`). If all tests pass, it will print `All tests successful.`, otherwise it will show what went wrong.
-
-Running tests manually may not work!
-
 ## Preparing new tests
 
 To prepare a new test, create a `.rb` file. It may use crew constants (created in `lib/const.rb`) and import packages (be sure to use `require_relative`).
@@ -35,3 +29,9 @@ else
 	exit 1
 end
 ```
+
+## How to run tests
+
+Execute `ruby test_all` from this directory (`tests/`). If all tests pass, it will print `All tests successful.`, otherwise it will show what went wrong.
+
+Running tests manually may not work!
