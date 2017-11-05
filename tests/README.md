@@ -1,6 +1,6 @@
 # Tests
 
-## Why to run the tests
+## Why to run tests
 
 Running these tests will make sure that crew is working correctly, or explain the problem if it's not.
 
@@ -8,9 +8,9 @@ Running these tests will make sure that crew is working correctly, or explain th
 
 The tests can be used at any time to help with developing, but make sure to run them before submitting a Pull Request.
 
-## How to run the tests
+## How to run tests
 
-Execute `ruby test_all`. If all tests pass, it will print `All tests successful.`, otherwise it will show what went wrong.
+Execute `ruby test_all` from this directory (`tests/`). If all tests pass, it will print `All tests successful.`, otherwise it will show what went wrong.
 
 Running tests manually may not work!
 
@@ -32,5 +32,6 @@ if pkg.dependencies and pkg.dependencies.has_key?('gcc') then
 	puts "Everything works properly.".lightgreen
 else
 	puts "Buildessential should depend on gcc!".lightred
+	exit 1
 end
 ```
