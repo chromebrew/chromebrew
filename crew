@@ -52,14 +52,16 @@ require_relative 'lib/docopt'
 begin
   args = Docopt::docopt(DOC)
 rescue Docopt::Exit => e
-  puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-  cmds = ["build", "download", "files", "help", "install", "remove", "search", "update", "upgrade", "whatprovides"]
-  # Looking for similar commands
-  if ARGV.size >= 1 and not cmds.include?(ARGV[0]) then
-    similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
-    if not similar.empty? then
-      puts "Did you mean?"
-      similar.each {|sug| puts "  #{sug}"}
+  if ARGV[0] and ARGV[0] != '-h' and ARGV[0] != '--help' then
+    puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
+    cmds = ["build", "download", "files", "help", "install", "remove", "search", "update", "upgrade", "whatprovides"]
+    # Looking for similar commands
+    if not cmds.include?(ARGV[0]) then
+      similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
+      if not similar.empty? then
+        puts "Did you mean?"
+        similar.each {|sug| puts "  #{sug}"}
+      end
     end
   end
   puts e.message
@@ -69,7 +71,6 @@ end
 @opt_keep = args["--keep"]
 @opt_verbose = args["--verbose"]
 @opt_src = args["--build-from-source"]
-@opt_help = args["--help"]
 
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
