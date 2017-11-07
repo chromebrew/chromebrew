@@ -5,7 +5,20 @@ class Nettle < Package
   homepage 'http://www.lysator.liu.se/~nisse/nettle/'
   version '3.3'
   source_url 'https://ftp.gnu.org/gnu/nettle/nettle-3.3.tar.gz'
-  source_sha1 'bf2b4d3a41192ff6177936d7bc3bee4cebeb86c4'
+  source_sha256 '46942627d5d0ca11720fec18d81fc38f7ef837ea4197c1f630e71ce0d470b11e'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nettle-3.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nettle-3.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nettle-3.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nettle-3.3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'd6d0a4768a6e5642fd1817c16bbd56c38075f9094354dd47a92cb61e2d091791',
+     armv7l: 'd6d0a4768a6e5642fd1817c16bbd56c38075f9094354dd47a92cb61e2d091791',
+       i686: 'c4df887ade348014dea7134e5e8617ffb65fd31c3b0143f0be21e0760a20d62c',
+     x86_64: '015e142b98b101f4069f08a78462672984f9d0190edd6c76d3d552c8c0b89bd0',
+  })
 
   depends_on 'buildessential'
   depends_on 'm4'

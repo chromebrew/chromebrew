@@ -3,12 +3,17 @@ require 'package'
 class Powerstat < Package
   description 'Powerstat measures the power consumption of a laptop using the ACPI battery information.'
   homepage 'http://kernel.ubuntu.com/~cking/powerstat/'
-  version '0.02.11'
-  source_url 'http://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.11.tar.gz'
-  source_sha1 '729c5f8f4509ab13134278c8afe04cf2244d928c'
+  version '0.02.14'
+  source_url 'http://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.14.tar.gz'
+  source_sha256 '79b059d12dc776f7f47d3bef0b1c60185a0ba49765d1c89e920fa2f24a081711'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   def self.build
-    system "sed -i 's,/usr,/usr/local,g' Makefile"
+    system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
     system "make"
   end
 

@@ -3,17 +3,17 @@ require 'package'
 class Glibc219 < Package
   description 'GNU C Library'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.19'
+  version '2.19-2'
   binary_url ({
-    aarch64: 'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-armv7l.tar.xz',
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-armv7l.tar.xz',
-    i686:    'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-i686.tar.xz',
-    x86_64:  'https://github.com/jam7/chromebrew/releases/download/newtoolchains/glibc-2.19-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew-cross/glibc219-2.19-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew-cross/glibc219-2.19-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew-cross/glibc219-2.19-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew-cross/glibc219-2.19-2-chromeos-x86_64.tar.xz',
   })
-  binary_sha1 ({
-    aarch64: 'c4da258eacf411833494bbe6903918909fb5629c',
-    armv7l:  'c4da258eacf411833494bbe6903918909fb5629c',
-    i686:    '7d7f4e8e137bbb96dea2b2792dc12a7e61c729d9',
-    x86_64:  '073545bf8aa4b29fbf9084d31848b40f1df1b4ef',
+  binary_sha256 ({
+    aarch64: 'df5fb603d658438489bc1d54de317bf8901e2cd3d80a4f3c3379e93cf8539c3c',
+     armv7l: 'df5fb603d658438489bc1d54de317bf8901e2cd3d80a4f3c3379e93cf8539c3c',
+       i686: 'a7e09144668734a08c660093b4f9ef7b6660c89c027d16eb9db1426f61660d85',
+     x86_64: 'bd8a5e69ca2994884bb7cf006887754331faa90e59e6165a693c4392968ccca3',
   })
 end

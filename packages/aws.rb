@@ -3,19 +3,26 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version 'latest'
-  source_url 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip'
-  source_sha1 'af083a1e5455a8e040aaeda46e7b634b6510a8af'
+  version '1.11.156'
+  source_url 'https://github.com/aws/aws-cli/archive/1.11.156.tar.gz'
+  source_sha256 'e16e4e7e56b94bcbd97e1ef2131f8b760ab0e06ac80b73caae1304c9b6d2a1e2'
 
-  depends_on 'python'
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
+  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
   depends_on 'unzip'
 
   def self.install
-    system "#{CREW_BREW_DIR}/awscli-bundle.zip.dir/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws"
-    system "chmod +x /usr/local/bin/aws"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/aws"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp -r /usr/local/aws #{CREW_DEST_DIR}/usr/local"
-    system "cp /usr/local/bin/aws #{CREW_DEST_DIR}/usr/local/bin"
+    system "wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip"
+    system "unzip awscli-bundle.zip"
+    system "awscli-bundle/install -i #{CREW_PREFIX}/share/aws -b #{CREW_PREFIX}/bin/aws"
+    system "chmod +x #{CREW_PREFIX}/bin/aws"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share"
+    system "cp #{CREW_PREFIX}/bin/aws #{CREW_DEST_PREFIX}/bin"
+    system "cp -r #{CREW_PREFIX}/share/aws #{CREW_DEST_PREFIX}/share"
   end
 end

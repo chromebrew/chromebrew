@@ -5,7 +5,20 @@ class Autoconf_archive < Package
   homepage 'https://www.gnu.org/software/autoconf-archive/'
   version '2017-03-21'
   source_url 'http://ftpmirror.gnu.org/autoconf-archive/autoconf-archive-2017.03.21.tar.xz'
-  source_sha1 '93483641babea959e4a307a808cbd74fb9e90d58'
+  source_sha256 '386ad455f12bdeb3a7d19280441a5ab77355142349200ff11040a8d9d455d765'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2017-03-21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2017-03-21-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2017-03-21-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2017-03-21-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'b7bc2a58e881a0c4c9b397b97610285435908bfaeb12f95019f0de9f83c28a8b',
+     armv7l: 'b7bc2a58e881a0c4c9b397b97610285435908bfaeb12f95019f0de9f83c28a8b',
+       i686: 'dd45fdfbc8245782d42b5c62a2b191e26cec41acde7ecaac333eb5ffe2acba78',
+     x86_64: '029ec35f3739e103e18486bc985463809fd91b49e0f8ca236a33cd014f69cebf',
+  })
 
   depends_on 'perl'
   depends_on 'm4'

@@ -1,15 +1,13 @@
 require 'package_helpers'
 
 class Package
-  property :description, :homepage, :version, :binary_url, :binary_sha1, :source_url, :source_sha1, :is_fake
+  property :description, :homepage, :version, :binary_url, :binary_sha1, :binary_sha256, :source_url, :source_sha1, :source_sha256, :is_fake
 
   class << self
     attr_reader :is_fake
     attr_accessor :name, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
-
-  @@debug_symbol = ENV['CREW_DEBUG_SYMBOL'] || false
 
   def self.dependencies
     # We need instance variable in derived class, so not define it here,
@@ -71,10 +69,33 @@ class Package
     @is_fake
   end
 
+  # Function to perform pre-install operations prior to build from source.
+  def self.preinstall
+
+  end
+
+  # Function to perform patch operations prior to build from source.
+  def self.patch
+
+  end
+
+  # Function to perform build from source.
   def self.build
 
   end
 
+  # Function to perform install from source build.
+  def self.install
+
+  end
+
+  # Function to perform post-install for both source build and binary distribution
+  def self.postinstall
+
+  end
+
+  # Function to perform check from source build.
+  # This is execute if and only if `crew build`.
   def self.check
 
   end

@@ -5,21 +5,23 @@ class Libsigsegv < Package
   homepage 'https://www.gnu.org/software/libsigsegv/'
   version '2.11'
   source_url 'ftp://ftp.gnu.org/gnu/libsigsegv/libsigsegv-2.11.tar.gz'
-  source_sha1 '186dea8ae788395476bd7cbaf38c17ebe82e1777'
+  source_sha256 'dd7c2eb2ef6c47189406d562c1dc0f96f2fc808036834d596075d58377e37a18'
 
-  # Not duplicating armv7l as aarch64 for the safe since libsigsegv traces stack.
-  # I'm not sure differences between armv7l stack and aarch64 stack.
   binary_url ({
-    armv7l:  'https://github.com/jam7/chromebrew/releases/download/binaries/libsigsegv-2.11-chromeos-armv7l.tar.xz',
-    x86_64:  'https://github.com/jam7/chromebrew/releases/download/binaries/libsigsegv-2.11-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigsegv-2.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsigsegv-2.11-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsigsegv-2.11-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigsegv-2.11-chromeos-x86_64.tar.xz',
   })
-  binary_sha1 ({
-    armv7l:  '49ac940d93c9c174194a96444ac4006d8ebd6d53',
-    x86_64:  '3fdafd698589fffabc215dea2b559dacf94b4500',
+  binary_sha256 ({
+    aarch64: '848d1532b32bd8833013093ae05f42bc7289d12aafcd1b29152598deefcd546c',
+     armv7l: '848d1532b32bd8833013093ae05f42bc7289d12aafcd1b29152598deefcd546c',
+       i686: '4f2ed1ee3c5827881d8fbf0e0fe59fa8a9d4f581e5adc03a93ff97e8032a25f4',
+     x86_64: 'a6e4750facffe105650502313c2622368e0923919adeb38865e8875b88288565',
   })
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic"
+    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic"
     system "make"
   end
 

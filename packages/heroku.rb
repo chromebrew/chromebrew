@@ -3,15 +3,33 @@ require 'package'
 class Heroku < Package
   description 'The Heroku Command Line Interface (CLI), formerly known as the Heroku Toolbelt, is a tool for creating and managing Heroku apps from the command line / shell of various operating systems.'
   homepage 'https://devcenter.heroku.com/articles/heroku-cli'
-  version '4.28.3'
+  version '6.13.9'
+  source_url 'https://github.com/heroku/cli/archive/v6.13.9.tar.gz'
+  source_sha256 '76699029d86fc10326f8cf39b0c0a3b1f322dee39bd7c96fa81e34e52ff454f9'
+
   binary_url ({
-    armv7l: "https://drive.google.com/uc?export=download&id=0ByCixsDmZPzxOHFIMzQyNHNFUWc",
-    i686: "https://drive.google.com/uc?export=download&id=0ByCixsDmZPzxd3NULTRkMWlHQTA",
-    x86_64: "https://drive.google.com/uc?export=download&id=0ByCixsDmZPzxLURkMktpREpDZk0"
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-6.13.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-6.13.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-6.13.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-6.13.9-chromeos-x86_64.tar.xz',
   })
-  binary_sha1 ({
-    armv7l: "b48f2f52d11cee4ca6a1878fdf2608a4b10ea53d",
-    i686: "1b0a736797c9293431b7db0055861fc73657a3fe",
-    x86_64: "9524fbc86c0a19f84f8bbb77c56ce2439d929a92"
+  binary_sha256 ({
+    aarch64: '73f9f8288e4c8767dd3d6158ab86b1384c734367b639c18d4fce971c133cb31d',
+     armv7l: '73f9f8288e4c8767dd3d6158ab86b1384c734367b639c18d4fce971c133cb31d',
+       i686: '787f77bde4831a1e82ec9777dfe5a16c4837f07a04f74fd5f51637288c469f1d',
+     x86_64: '7b78ab9be7f1c12c2d2b3d11957e749729089a2bc1b8342f4fc1253ecfe229e6',
   })
+
+  depends_on 'yarn'
+
+  def self.build
+    system 'yarn install'
+  end
+
+  def self.install
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/heroku"
+    system "cp -r . #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/heroku"
+    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
+    system "ln -s #{CREW_LIB_PREFIX}/heroku/bin/run #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/heroku"
+  end
 end

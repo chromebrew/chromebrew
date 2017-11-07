@@ -5,7 +5,21 @@ class Unzip < Package
   homepage 'http://www.info-zip.org/UnZip.html'
   version '1.6_1'
   source_url 'https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/unzip60.tar.gz'
-  source_sha1 'abf7de8a4018a983590ed6f5cbd990d4740f8a22'
+  source_sha256 '036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-1.6_1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-1.6_1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-1.6_1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-1.6_1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '908e42c861f246a9d3bebf166ef66f771372414d569c2d38cafb8d6feb6c92dc',
+     armv7l: '908e42c861f246a9d3bebf166ef66f771372414d569c2d38cafb8d6feb6c92dc',
+       i686: 'f03a2abf53121c4f46e3e71d12d0ea8956bc7dec73b57586033d8e9b2b55e547',
+     x86_64: '92fcd85aac88f039375e98386b47a916a739c744f21808f2a037011eca82e700',
+  })
+
   depends_on 'patch'
 
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-dupes/blob/master/unzip.rb
@@ -32,9 +46,7 @@ class Unzip < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "MANDIR=/usr/local/tmp/unzip-man", "-f", "unix/Makefile", "install"
-    #remove the man pages we couldn't install
-    system "rm -r -f /usr/local/tmp/unzip-man"
+    system "make", "BINDIR=#{CREW_DEST_DIR}#{CREW_PREFIX}/bin", "MANDIR=#{CREW_DEST_DIR}#{CREW_PREFIX}/share/man", "-f", "unix/Makefile", "install"
   end
 
 end
