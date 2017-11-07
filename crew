@@ -69,6 +69,7 @@ end
 @opt_keep = args["--keep"]
 @opt_verbose = args["--verbose"]
 @opt_src = args["--build-from-source"]
+@opt_help = args["--help"]
 
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
