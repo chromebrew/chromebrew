@@ -29,6 +29,7 @@ class Mongodb < Package
   def self.build
     # prepare mongo-tools
     system "git clone https://github.com/mongodb/mongo-tools"
+    system "git checkout tags/r3.2.16"
     system "cd mongo-tools; ./build.sh ssl || echo '***YOU NEED TO SET UP GO ENVIRONMENT IN ORDER TO COMPILE MONGO-TOOLS***'"
     system "mkdir src/mongo-tools"
     system "cp mongo-tools/bin/* src/mongo-tools/"
