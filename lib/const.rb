@@ -1,5 +1,7 @@
 # Defines common constants used in different parts of crew
 
+CREW_VERSION = '0.4.3'
+
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 
