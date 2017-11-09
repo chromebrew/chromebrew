@@ -6,7 +6,7 @@ class Mongodb < Package
   # We use 3.2 branch here since:
   #  - 3.2 branch works well with gcc-4.9.4
   #  - master 3.4 branch requires gcc-5.4.0
-  version '3.2.16'
+  version '3.2.16-1'
   source_url 'https://fastdl.mongodb.org/src/mongodb-src-r3.2.16.tar.gz'
   source_sha256 '7a8b1b16f3fa545af16f48aeef1f918f57d96a80e1ceb6e669cdb81fab6511d0'
 
@@ -29,7 +29,7 @@ class Mongodb < Package
   def self.build
     # prepare mongo-tools
     system "git clone https://github.com/mongodb/mongo-tools"
-    system "cd mongo-tools; git checkout tags/r3.2.16; ./build.sh ssl || echo '***YOU NEED TO SET UP GO ENVIRONMENT IN ORDER TO COMPILE
+    system "cd mongo-tools; git checkout tags/r3.2.16 && ./build.sh ssl || echo '***YOU NEED TO SET UP GO ENVIRONMENT IN ORDER TO COMPILE
 MONGO-TOOLS***'"
     system "mkdir src/mongo-tools"
     system "cp mongo-tools/bin/* src/mongo-tools/"
