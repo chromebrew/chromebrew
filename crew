@@ -20,23 +20,24 @@ DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
 Usage:
-  crew build [-k|--keep] <name> ...
-  crew download <name> ...
+  crew build [-k|--keep] [-v|--verbose] <name> ...
+  crew download [-v|--verbose] <name> ...
   crew files <name> ...
   crew help [<command>]
-  crew install [-k|--keep] [-s|--build-from-source] <name> ...
-  crew remove <name> ...
+  crew install [-k|--keep] [-s|--build-from-source] [-v|--verbose] <name> ...
+  crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
   crew update
-  crew upgrade [-k|--keep] [-s|--build-from-source] [<name> ...]
+  crew upgrade [-k|--keep] [-s|--build-from-source] [-v|--verbose] [<name> ...]
   crew whatprovides <name> ...
 
   -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
   -s --build-from-source  Build from source even if pre-compiled binary exists.
+  -V --version            Display the crew version.
   -v --verbose            Show extra information.
   -h --help               Show this screen.
 
-version 0.4.3
+version #{CREW_VERSION}
 DOCOPT
 
 # Set XZ_OPT environment variable for build command.
@@ -52,15 +53,21 @@ require_relative 'lib/docopt'
 begin
   args = Docopt::docopt(DOC)
 rescue Docopt::Exit => e
-  if ARGV[0] and ARGV[0] != '-h' and ARGV[0] != '--help' then
-    puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-    cmds = ["build", "download", "files", "help", "install", "remove", "search", "update", "upgrade", "whatprovides"]
-    # Looking for similar commands
-    if not cmds.include?(ARGV[0]) then
-      similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
-      if not similar.empty? then
-        puts "Did you mean?"
-        similar.each {|sug| puts "  #{sug}"}
+  if ARGV[0] then
+    if ARGV[0] == '-V' or ARGV[0] == '--version' then
+      puts "#{CREW_VERSION}"
+      exit 0
+    end
+    if ARGV[0] != '-h' and ARGV[0] != '--help' then
+      puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
+      cmds = ["build", "download", "files", "help", "install", "remove", "search", "update", "upgrade", "whatprovides"]
+      # Looking for similar commands
+      if not cmds.include?(ARGV[0]) then
+        similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
+        if not similar.empty? then
+          puts "Did you mean?"
+          similar.each {|sug| puts "  #{sug}"}
+        end
       end
     end
   end
@@ -139,27 +146,31 @@ def help (pkgName)
   case pkgName
   when "build"
     puts "Build package(s)."
-    puts "Usage: crew build [-k|--keep] <package1> [<package2> ...]"
+    puts "Usage: crew build [-k|--keep] [-v|--verbose] <package1> [<package2> ...]"
     puts "Build package(s) from source and place the archive and checksum in the current working directory."
     puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
+    puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "download"
     puts "Download package(s)."
-    puts "Usage: crew download <package1> [<package2> ...]"
+    puts "Usage: crew download [-v|--verbose] <package1> [<package2> ...]"
     puts "Download package(s) to `CREW_BREW_DIR` (#{CREW_BREW_DIR}), but don't install."
+    puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "files"
     puts "Display installed files of package(s)."
     puts "Usage: crew files <package1> [<package2> ...]"
     puts "The package(s) must be currently installed."
   when "install"
     puts "Install package(s)."
-    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] <package1> [<package2> ...]"
+    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] [-v|--verbose] <package1> [<package2> ...]"
     puts "The package(s) must have a valid name.  Use `crew search <pattern>` to search for packages to install."
     puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
     puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
+    puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "remove"
     puts "Remove package(s)."
-    puts "Usage: crew remove <package1> [<package2> ...]"
+    puts "Usage: crew remove [-v|--verbose] <package1> [<package2> ...]"
     puts "The package(s) must be currently installed."
+    puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "search"
     puts "Look for package(s)."
     puts "Usage: crew search [-v|--verbose] [<pattern> ...]"
@@ -179,9 +190,10 @@ def help (pkgName)
     puts "This only updates crew itself.  Use `crew upgrade` to update packages."
   when "upgrade"
     puts "Update package(s)."
-    puts "Usage: crew upgrade <package1> [<package2> ...]"
+    puts "Usage: crew upgrade [-v|--verbose] <package1> [<package2> ...]"
     puts "If package(s) are omitted, all packages will be updated.  Otherwise, specific package(s) will be updated."
     puts "Use `crew update` to update crew itself."
+    puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "whatprovides"
     puts "Determine which package(s) contains file(s)."
     puts "Usage: crew whatprovides <pattern> ..."
@@ -306,6 +318,7 @@ def upgrade
       puts "Updating packages..."
       toBeUpdated.each do |package|
         search package
+        puts "Updating " + @pkg.name + "..." if @opt_verbose
         @pkg.in_upgrade = true
         resolve_dependencies_and_install
         @pkg.in_upgrade = false
@@ -339,7 +352,11 @@ def download
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    system('curl', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
+    if @opt_verbose then
+      system('curl', '-v', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
+    else
+      system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
+    end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
   end
@@ -354,9 +371,17 @@ def unpack (meta)
     puts "Unpacking archive, this may take awhile..."
     Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
     if meta[:filename][-4,4] == ".zip"
-      system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
+      if @opt_verbose then
+        system "unzip", "-v", "-d", "#{extract_dir}", meta[:filename]
+      else
+        system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
+      end
     else
-      system "tar", "xf", meta[:filename], "-C", "#{extract_dir}"
+      if @opt_verbose then
+        system "tar", "xvf", meta[:filename], "-C", "#{extract_dir}"
+      else
+        system "tar", "xf", meta[:filename], "-C", "#{extract_dir}"
+      end
     end
     if meta[:source] == true
       # Check the number of directories in the archive
@@ -387,7 +412,12 @@ def build_and_preconfigure (target_dir)
     @pkg.patch
     @pkg.build
     @pkg.in_build = false
-    system "rm -rf #{CREW_DEST_DIR}/*" #wipe crew destdir
+    # wipe crew destdir
+    if @opt_verbose then
+      system "rm -rvf #{CREW_DEST_DIR}/*"
+    else
+      system "rm -rf #{CREW_DEST_DIR}/*"
+    end
     puts "Preconfiguring package..."
     @pkg.install
   end
@@ -406,7 +436,11 @@ def compress_doc (dir)
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "compressdoc --gzip -9 #{dir}"
+    if @opt_verbose then
+      system "compressdoc -v --gzip -9 #{dir}"
+    else
+      system "compressdoc --gzip -9 #{dir}"
+    end
   end
 end
 
@@ -429,7 +463,11 @@ def prepare_package (destdir)
     system "tail -n +2 dlistcut > dlist"
 
     # remove temporary files
-    system "rm dlistcut ../dlist ../filelist"
+    if @opt_verbose then
+      system "rm -vf dlistcut ../dlist ../filelist"
+    else
+      system "rm -f dlistcut ../dlist ../filelist"
+    end
   end
 end
 
@@ -454,7 +492,11 @@ def install_package (pkgdir)
     # Strip binaries but not compressed archives
     strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
-    system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+    if @opt_verbose then
+      system "tar cvf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+    else
+      system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+    end
   end
 end
 
@@ -469,14 +511,19 @@ def resolve_dependencies_and_install
   rescue InstallError => e
     abort "#{@pkg.name} failed to install: #{e.to_s}".lightred
   ensure
-    #cleanup
+    # cleanup
     unless @opt_keep
       Dir.chdir CREW_BREW_DIR do
-        system "rm -rf *"
-        system "mkdir dest" #this is a little ugly, feel free to find a better way
+        if @opt_verbose then
+          system "rm -rvf *"
+        else
+          system "rm -rf *"
+        end
+        system "mkdir dest" # this is a little ugly, feel free to find a better way
       end
     end
   end
+  puts "#{@pkg.name.capitalize} installed!".lightgreen
 end
 
 def expand_dependencies
@@ -595,7 +642,6 @@ def install
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
-  puts "#{@pkg.name.capitalize} installed!".lightgreen
 end
 
 def resolve_dependencies_and_build
@@ -614,11 +660,16 @@ def resolve_dependencies_and_build
     #cleanup
     unless @opt_keep
       Dir.chdir CREW_BREW_DIR do
-        system "rm -rf *"
+        if @opt_verbose then
+          system "rm -rvf *"
+        else
+          system "rm -rf *"
+        end
         system "mkdir dest" #this is a little ugly, feel free to find a better way
       end
     end
   end
+  puts "#{@pkg.name} is built!".lightgreen
 end
 
 def build_package (pwd)
@@ -652,12 +703,15 @@ end
 def archive_package (pwd)
   pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
   Dir.chdir CREW_DEST_DIR do
-    system "tar cJf #{pwd}/#{pkg_name} *"
+    if @opt_verbose then
+      system "tar cJvf #{pwd}/#{pkg_name} *"
+    else
+      system "tar cJf #{pwd}/#{pkg_name} *"
+    end
   end
   Dir.chdir pwd do
     system "sha256sum #{pkg_name} > #{pkg_name}.sha256"
   end
-  puts "#{pkg_name} is built!".lightgreen
 end
 
 def remove (pkgName)
@@ -675,6 +729,7 @@ def remove (pkgName)
       #remove all files installed by the package
       File.open("meta/#{pkgName}.filelist").each_line do |line|
         begin
+          puts "Removing file " + line.chomp + "".lightred if @opt_verbose
           File.unlink line.chomp
         rescue => exception #swallow exception
         end
@@ -683,6 +738,7 @@ def remove (pkgName)
       #remove all directories installed by the package
       File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
         begin
+          puts "Removing directory " + line.chomp + "".lightred if @opt_verbose
           Dir.rmdir line.chomp
         rescue => exception #swallow exception
         end
@@ -696,6 +752,7 @@ def remove (pkgName)
   end
 
   #remove from installed packages
+  puts "Removing package " + pkgName + "".lightred if @opt_verbose
   @device[:installed_packages].each do |elem|
     @device[:installed_packages].delete elem if elem[:name] == pkgName
   end
