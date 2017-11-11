@@ -3,9 +3,9 @@ require 'package'
 class Aprutil < Package
   description 'APR-util provides a number of helpful abstractions on top of APR.'
   homepage 'http://apr.apache.org/'
-  version '1.6.0-1'
-  source_url 'http://apache.claz.org/apr/apr-util-1.6.0.tar.bz2'
-  source_sha256 '8474c93fa74b56ac6ca87449abe3e155723d5f534727f3f33283f6631a48ca4c'
+  version '1.6.1'
+  source_url 'https://apache.claz.org/apr/apr-util-1.6.1.tar.bz2'
+  source_sha256 'd3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b'
 
   binary_url ({
   })
@@ -16,10 +16,11 @@ class Aprutil < Package
   depends_on 'expat'
 
   def self.build
-    system "./configure \
-            --prefix=#{CREW_PREFIX} \
-            --libdir=#{CREW_LIB_PREFIX} \
-            --with-apr=#{CREW_PREFIX}"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           "--with-apr=#{CREW_PREFIX}",
+           '--disable-maintainer-mode'
     system "make"
   end
 
