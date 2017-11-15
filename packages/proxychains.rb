@@ -13,5 +13,9 @@ class Proxychains < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "install -Dm644 src/proxychains.conf #{CREW_DEST_PREFIX}/$HOME/.proxychains/proxychains.conf"
+    system "install -Dm644 src/proxychains.conf #{CREW_DEST_PREFIX}/etc/proxychains.conf"
+    system "mkdir -p HOME/.proxychains && cp src/proxychains.conf $HOME/.proxychains"
+    system "install -Dm755 src/proxyresolv #{CREW_DEST_PREFIX}/bin/proxyresolv"
   end
 end
