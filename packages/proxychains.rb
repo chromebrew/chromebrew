@@ -7,7 +7,7 @@ class Proxychains < Package
   source_url 'https://github.com/haad/proxychains/archive/proxychains-4.2.0.tar.gz'
   source_sha256 '225284e5553fb062d09ed425d2815387eda9c1c0d6e2bc24ea95393a71601619'
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}"
+    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
