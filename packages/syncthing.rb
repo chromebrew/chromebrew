@@ -23,6 +23,12 @@ class Syncthing < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "mv bin/syncthing #{CREW_DEST_PREFIX}/bin/syncthing-bin"
 
+    [ 1, 5, 7 ].each do |i|
+        system "mkdir -p #{CREW_DEST_PREFIX}/share/man/man#{i}"
+        system "gzip man/*.#{i}"
+        system "cp -R man/*.#{i}.gz #{CREW_DEST_PREFIX}/share/man/man#{i}"
+    end
+
     #syncthing requires some ports to be open
     system %Q(echo '#!/bin/bash
 if [[ $EUID == 0 ]]; then
@@ -36,7 +42,7 @@ fi
 sudo /sbin/iptables -I INPUT -p tcp --dport 22000 -j ACCEPT &&
 sudo /sbin/iptables -I INPUT -p udp --dport 21025 -j ACCEPT &&
 
-syncthing-bin
+syncthing-bin "$@"
 
 #clean up created rules to avoid duplicating them
 sudo /sbin/iptables -D INPUT -p tcp --dport 22000 -j ACCEPT
