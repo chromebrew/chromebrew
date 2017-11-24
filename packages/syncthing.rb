@@ -12,7 +12,7 @@ class Syncthing < Package
   binary_sha256 ({
   })
 
-  depends_on 'go' => build
+  depends_on 'go' => :build
 
   def self.build
     #The system tmp dir is mounted noexec, and the build will fail if it is used
