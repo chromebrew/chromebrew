@@ -21,7 +21,29 @@ class Syncthing < Package
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mv bin/syncthing #{CREW_DEST_PREFIX}/bin"
+    system "mv bin/syncthing #{CREW_DEST_PREFIX}/bin/syncthing-bin"
+
+    #syncthing requires some ports to be open
+    system %Q(echo '#!/bin/bash
+if [[ $EUID == 0 ]]; then
+    echo "Do not run syncthing as root."
+    echo "This wrapper script calls iptables with sudo to open ports for syncthing."
+    echo "syncthing run as root will try and fail to write to the read-only root directory."
+    exit
+fi
+
+#syncthing listens on these ports
+sudo /sbin/iptables -I INPUT -p tcp --dport 22000 -j ACCEPT &&
+sudo /sbin/iptables -I INPUT -p udp --dport 21025 -j ACCEPT &&
+
+syncthing-bin
+
+#clean up created rules to avoid duplicating them
+sudo /sbin/iptables -D INPUT -p tcp --dport 22000 -j ACCEPT
+sudo /sbin/iptables -D INPUT -p udp --dport 21025 -j ACCEPT
+' > #{CREW_DEST_PREFIX}/bin/syncthing)
+    system "chmod +x #{CREW_DEST_PREFIX}/bin/syncthing"
+
     #The build process leaves 50M of files around that we do not need
     system "rm -rf /usr/local/tmp/syncthing-*/"
   end
