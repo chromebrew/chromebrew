@@ -3,7 +3,7 @@ require 'package'
 class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
-  version '1.13.6-1'
+  version '1.13.6-2'
   source_url 'https://nginx.org/download/nginx-1.13.6.tar.gz'
   source_sha256 '8512fc6f986a20af293b61f33b0e72f64a72ea5b1acbcc790c4c4e2d6f63f8f8'
 
@@ -13,6 +13,7 @@ class Nginx < Package
   })
 
   depends_on 'pcre'
+  depends_on 'zlibpkg'
 
   def self.build
     system './configure',
@@ -26,26 +27,28 @@ class Nginx < Package
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "ln -s #{CREW_PREFIX}/share/nginx/sbin/nginx nginx"
       system "echo '#!/bin/bash' > startnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | cut -d\" \" -f1 2> /dev/null)' >> startnginx"
+      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> startnginx"
       system "echo 'if [ -z \"\$NGINX\" ]; then' >> startnginx"
       system "echo '  sudo nginx' >> startnginx"
       system "echo 'fi' >> startnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | cut -d\" \" -f1 2> /dev/null)' >> startnginx"
+      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> startnginx"
       system "echo 'if [ ! -z \"\$NGINX\" ]; then' >> startnginx"
       system "echo '  echo \"nginx process \$NGINX is running\"' >> startnginx"
       system "echo 'else' >> startnginx"
       system "echo '  echo \"nginx failed to start\"' >> startnginx"
+      system "echo '  exit 1' >> startnginx"
       system "echo 'fi' >> startnginx"
       system "echo '#!/bin/bash' > stopnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | cut -d\" \" -f1 2> /dev/null)' >> stopnginx"
+      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> stopnginx"
       system "echo 'if [ ! -z \"\$NGINX\" ]; then' >> stopnginx"
       system "echo '  sudo nginx -s quit' >> stopnginx"
       system "echo 'fi' >> stopnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | cut -d\" \" -f1 2> /dev/null)' >> stopnginx"
+      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> stopnginx"
       system "echo 'if [ -z \"\$NGINX\" ]; then' >> stopnginx"
       system "echo '  echo \"nginx process stopped\"' >> stopnginx"
       system "echo 'else' >> stopnginx"
       system "echo '  echo \"nginx process \$NGINX is running\"' >> stopnginx"
+      system "echo '  exit 1' >> stopnginx"
       system "echo 'fi' >> stopnginx"
       system "chmod +x st*nginx"
     end

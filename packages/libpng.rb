@@ -3,14 +3,16 @@ require 'package'
 class Libpng < Package
   description 'libpng is the official PNG reference library.'
   homepage 'http://libpng.org/pub/png/libpng.html'
-  version '1.6.33'
-  source_url 'http://prdownloads.sourceforge.net/libpng/libpng-1.6.33.tar.gz'
-  source_sha256 '6a6bacae7510dd53321af0604182b6c731a09457e3ddb8d9668bbce614a2751f'
+  version '1.6.34'
+  source_url 'https://sourceforge.net/projects/libpng/files/libpng16/1.6.34/libpng-1.6.34.tar.xz'
+  source_sha256 '2f1e960d92ce3b3abd03d06dfec9637dfbd22febf107a536b44f7a47c60659f6'
 
   binary_url ({
   })
   binary_sha256 ({
   })
+
+  depends_on 'zlibpkg'
 
   def self.build
       system './configure',
