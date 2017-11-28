@@ -22,7 +22,6 @@ class Gnupg < Package
   depends_on 'gettext'
 
   def self.build
-    system './autogen.sh'
     system './configure',
       "--prefix=#{CREW_PREFIX}",
       "--libdir=#{CREW_LIB_PREFIX}"
