@@ -8,8 +8,16 @@ class Aws < Package
   source_sha256 'e16e4e7e56b94bcbd97e1ef2131f8b760ab0e06ac80b73caae1304c9b6d2a1e2'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.11.156-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.11.156-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.11.156-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.11.156-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '94283e523ede3bab13212838f74f346a3894c7f4d5674771107e137be7d6f451',
+     armv7l: '94283e523ede3bab13212838f74f346a3894c7f4d5674771107e137be7d6f451',
+       i686: '0bb6ba9e25f13e17b854978ecd13e1a817dccf83454a961f546d2522e1b6fce0',
+     x86_64: '8412d555077d4fde32577f63e0df68b95c742df031a75f13b7c26004dd997761',
   })
 
   depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
