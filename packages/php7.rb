@@ -8,8 +8,16 @@ class Php7 < Package
   source_sha256 'a0118850774571b1f2d4e30b4fe7a4b958ca66f07d07d65ebdc789c54ba6eeb3'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'fa1a0897dd78ea1cf94bc353a78e56e15789f7705babaabdee8c353f651ae89a',
+     armv7l: 'fa1a0897dd78ea1cf94bc353a78e56e15789f7705babaabdee8c353f651ae89a',
+       i686: '6fbea0ee47680e4f08e61712e6a2aa8128af7987e8fe20c4458a6b988458e213',
+     x86_64: '78fa2609dd43dea42c62436551ec9b3efba1e037dd8e983f68ab81636f4b10b9',
   })
 
   depends_on 'pkgconfig'

@@ -8,8 +8,16 @@ class Mandb < Package
   source_sha256 '08edbc52f24aca3eebac429b5444efd48b9b90b9b84ca0ed5507e5c13ed10f3f'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'd583e56cd4c924f328f2b0052de2d08b8f0e6519db7a6c9b232852bbca76f6bf',
+     armv7l: 'd583e56cd4c924f328f2b0052de2d08b8f0e6519db7a6c9b232852bbca76f6bf',
+       i686: '64ca4d1b671f87fa2fa72edc35368fe54ab5ca4d8fddbb99981b6179deb5fd88',
+     x86_64: '37da9857a8e52bfb5ca02e672c2632eceba5eb42d331698c28d8c98029cf3351',
   })
 
   depends_on 'less'

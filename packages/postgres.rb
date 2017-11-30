@@ -8,8 +8,16 @@ class Postgres < Package
   source_sha256 '06da12a7e3dddeb803962af8309fa06da9d6989f49e22865335f0a14bad0744c'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '9e0004789da8e05332b53e050df96ca73659e4f94c9715ef53162959b6b8a3e7',
+     armv7l: '9e0004789da8e05332b53e050df96ca73659e4f94c9715ef53162959b6b8a3e7',
+       i686: '6aa981708ff298e1b423fbcff6f17faa52aca9cb1dfe7cda278b50fd09c6acd2',
+     x86_64: '7c6725c690d0118f53ca0c60cd96a38afd764cc38b1109e07b566d12f2c7a9bf',
   })
 
   depends_on 'buildessential'
