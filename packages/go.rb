@@ -8,8 +8,16 @@ class Go < Package
   source_sha256 'a4ab229028ed167ba1986825751463605264e44868362ca8e7accc8be057e993'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '5f3f49f4e983af9524115762b6a5533f152328527558b5c42c6d70bfd79aa71b',
+     armv7l: '5f3f49f4e983af9524115762b6a5533f152328527558b5c42c6d70bfd79aa71b',
+       i686: '05830ea2da5c99cc0dc6bf2e28b9856f0144400409444dfb638bf588af6764ef',
+     x86_64: '3d2a2b96b756914ca1612405926196e1058a149bc85641e08f657d345d5593f1',
   })
 
   # Tests requires perl

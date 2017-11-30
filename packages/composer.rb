@@ -8,8 +8,16 @@ class Composer < Package
   source_sha256 'e8af65669563890364ec73ed57f589b1200f03fd86edc925a9961235aff5f54d'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.5.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.5.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.5.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/composer-1.5.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'a6b6f5e5248de63e88af047b9d70fb2a614d0d759b85f92ba3386062b4a7441b',
+     armv7l: 'a6b6f5e5248de63e88af047b9d70fb2a614d0d759b85f92ba3386062b4a7441b',
+       i686: 'a208dc47105d4417255de03a5ab972aa8d1fff5a2e3e0908e587f71a021a91fb',
+     x86_64: '0ae47d615f662c3d0b78c96c9f5750e9f04b4e0ce45dee2caa5080f4b6740056',
   })
 
   depends_on 'php7' unless File.exists? "#{CREW_PREFIX}/bin/php"
