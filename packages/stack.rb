@@ -18,8 +18,16 @@ class Stack < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/stack-1.5.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/stack-1.5.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/stack-1.5.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/stack-1.5.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '4c7be5f76b9c48e2b87da03f69d1dc90567e1ccf2e7551a34b0eab29d0264c08',
+     armv7l: '4c7be5f76b9c48e2b87da03f69d1dc90567e1ccf2e7551a34b0eab29d0264c08',
+       i686: 'b478976d8e39abf913d2666f4f3da888d77655e7e97adce6f2411fb1b356780e',
+     x86_64: 'a9b9e84bb5102b3b8cd2e8147e4fe9d1f15f37baf601600b19b13f987c4cd77b',
   })
 
   def self.install

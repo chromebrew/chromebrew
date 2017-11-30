@@ -8,8 +8,16 @@ class Pmd < Package
   source_sha256 '2d854e30717b66e253213f36d4bcd202b83b180ea427836797d13a857c19a6b4'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '3a67cbb0aa75d9b5bb6b30d54029cf8598810045e10cc5b8622c52ae0f0f67a4',
+     armv7l: '3a67cbb0aa75d9b5bb6b30d54029cf8598810045e10cc5b8622c52ae0f0f67a4',
+       i686: '8271fa0b8d53652830d7d791dbc859d298f1dc573cf956c6029e5f52edd15435',
+     x86_64: '0faf4b05cbaad158d8776b7229e85fce484e9c9d1245c4977647bdb653c2e1b8',
   })
 
   depends_on 'jdk8'

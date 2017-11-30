@@ -20,6 +20,19 @@ class Micro < Package
     source_sha256 '329f746e4ee9edf244618dda4208b638fda34c593d5cd96d8f71dc3b53e3d994'
   end
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.3.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.3.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.3.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.3.3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '6522c21cd8861a6477172cfc59d84a2e0339c7ef935fbbdac9207dae8a204c80',
+     armv7l: '6522c21cd8861a6477172cfc59d84a2e0339c7ef935fbbdac9207dae8a204c80',
+       i686: '13579b24473499d0509932bb73bcb01ec2e1946e2d4012ee0698948b608d4bbf',
+     x86_64: '36bfbe54a6971ccd4b33687904677b98c43cc29155949aa664ae1ea428a1fa2a',
+  })
+
   def self.install
     system "install -Dm755 micro #{CREW_DEST_PREFIX}/bin/micro"
   end
