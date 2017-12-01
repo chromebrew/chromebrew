@@ -8,8 +8,16 @@ class Nginx < Package
   source_sha256 'beb732bc7da80948c43fd0bf94940a21a21b1c1ddfba0bd99a4b88e026220f5c'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nginx-1.13.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nginx-1.13.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nginx-1.13.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nginx-1.13.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'b69ff9cddf02c21fe1e335d17319297a4070cce6be4a33a7ef723dea1042aebe',
+     armv7l: 'b69ff9cddf02c21fe1e335d17319297a4070cce6be4a33a7ef723dea1042aebe',
+       i686: 'a1edfca5490907b118265216c8a92404691321d7492139a3e469fc474bc81c71',
+     x86_64: '01c5891161b00963b17cc2c60871953f9f8fca18d13c5767c8c64b0d11f25cca',
   })
 
   depends_on 'pcre'
