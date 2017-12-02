@@ -16,11 +16,18 @@ class Dropbox < Package
   end
 
   binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-33.4.23-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-33.4.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+       i686: 'b59f73d452cd7cc956a3107e99675a1cbfe4d3bb15d7fc5bb16c4d77f1e3875d',
+     x86_64: '8759fad457f68f4d25cf9bf016d738db5d5ddee001fcc5b8fcdb6b199b004ded',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  case ARCH
+  when 'i686', 'x86_64'
+    depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  end
 
   def self.build
     system "wget https://linux.dropbox.com/packages/dropbox.py"

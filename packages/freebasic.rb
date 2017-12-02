@@ -16,11 +16,18 @@ class Freebasic < Package
   end
 
   binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freebasic-1.05.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freebasic-1.05.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+       i686: '78d66a743264f37f605eaaf83fcbe612b52588928b200d89fe9227430dbf2dd8',
+     x86_64: '3d289b59687e4a0fdba3272b290b3b638f1f2cf625ef14873e4e33e2acdd12aa',
   })
 
-  depends_on 'ncurses'
+  case ARCH
+  when 'i686', 'x86_64'
+    depends_on 'ncurses'
+  end
 
   def self.install
     system "mkdir -p #{CREW_DEST_LIB_PREFIX}"

@@ -8,8 +8,16 @@ class Avocado < Package
   source_sha256 '0ec798afaca0910d7b3853aa8a7782c4d95e54bbf5ff8473005bcd70829e5a9f'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/avocado-55.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/avocado-55.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/avocado-55.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/avocado-55.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'b3ac4e192ca4bfbcb1edd6748468da4c478ed34567e6d458972915d34ebbcb16',
+     armv7l: 'b3ac4e192ca4bfbcb1edd6748468da4c478ed34567e6d458972915d34ebbcb16',
+       i686: '412ac4c79f809aedb1b95385607799f21396b198d6fe2bffbd5322d09b6cb2c9',
+     x86_64: '40e334f809c80e1ac0bda9608b662d266356ba12da148080c99aa68cc8788a01',
   })
 
   depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/pip"
