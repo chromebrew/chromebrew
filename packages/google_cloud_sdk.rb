@@ -17,11 +17,18 @@ class Google_cloud_sdk < Package
   end
 
   binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-179.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-179.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+       i686: '86526b7704b3330813192bcc129b2714d2fddd74987a928f9893b1cc979c91d8',
+     x86_64: 'e11d8bacee72c6059ed23d02d7d7ff0aa36b3e7f2f6aeebd204ea983cc5922c7',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  case ARCH
+  when 'i686', 'x86_64'
+    depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  end
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/share/google_cloud_sdk"
