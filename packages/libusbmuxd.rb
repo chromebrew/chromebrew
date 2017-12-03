@@ -5,7 +5,7 @@ class Libusbmuxd < Package
   homepage 'http://www.libimobiledevice.org/'
   version '1.0.9'
   source_url 'http://www.libimobiledevice.org/downloads/libusbmuxd-1.0.9.tar.bz2'
-  source_sha256 'i2e3f708a3df30ad7832d2d2389eeb29f68f4e4488a42a20149cc99f4f9223dfc'
+  source_sha256 '2e3f708a3df30ad7832d2d2389eeb29f68f4e4488a42a20149cc99f4f9223dfc'
 
   binary_url ({
   })
