@@ -1,3 +1,6 @@
+# It is recommended that you investigate other files in the package directory
+# to help get an idea of how existing packages are being installed through chromebrew
+
 require 'package'
 
 class Template < Package
@@ -26,12 +29,42 @@ class Template < Package
   # depends_on '*'
   #
 
-  # Define here behavior to build the package from source
-  def self.build
+
+  # Function to perform pre-install operations prior to build from source.
+  def self.preinstall
+
   end
 
-  # Define here the behavior to install the package from binary
-  def self.install
+
+  # Function to perform patch operations prior to build from source.
+  def self.patch
+
   end
+
+
+  # Function to perform build from source.
+  def self.build
+
+  end
+
+
+  # Function to perform install from source build.
+  def self.install
+
+  end
+
+
+  # Function to perform post-install for both source build and binary distribution
+  def self.postinstall
+
+  end
+
+
+  # Function to perform check from source build.
+  # This is execute if and only if `crew build`.
+  def self.check
+
+  end
+
 
 end
