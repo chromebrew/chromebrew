@@ -1,6 +1,6 @@
 Fixes #
 
-(let GitHub automatically colse an issue when this pull request gets merged)
+(let GitHub automatically close an issue when this pull request gets merged)
 
 ## Before you submit a pull request
 This template is not neccessary when you do simple things like updating packages to the latest version. But in doubt, it's always better so provide some information.
