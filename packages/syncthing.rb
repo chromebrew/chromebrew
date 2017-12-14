@@ -8,8 +8,16 @@ class Syncthing < Package
   source_sha256 '9c406897443465e03d3259df1dda10bd86e49ae4286f8c855d9f35e47026af2f'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',
+     armv7l: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',
+       i686: 'a7cce6d9cf389f991a29ead1212c11c77ae78b9f7093e739c56b19c5ef0d6d9b',
+     x86_64: '60c9415478f1f640043ca18cfce40afa60c623d734e80df191620e1e2b935379',
   })
 
   depends_on 'go' => :build
