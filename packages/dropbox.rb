@@ -3,30 +3,27 @@ require 'package'
 class Dropbox < Package
   description 'Dropbox simplifies the way you create, share and collaborate.  Bring your photos, docs, and videos anywhere and keep your files safe.'
   homepage 'https://www.dropbox.com/'
-  version '33.4.23'
+  version '39.4.49'
   case ARCH
   when 'i686'
-    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-33.4.23.tar.gz'
-    source_sha256 '27e1bfd3823bdab797b27614cb3b1761316da6a29a2b39505fa6d07a7b0c521f'
+    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-39.4.49.tar.gz'
+    source_sha256 'ac7554d2e2551aff2251dc4e25efe53d001abe3428598f5220b4f69d6c4c00d8'
   when 'x86_64'
-    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-33.4.23.tar.gz'
-    source_sha256 'bf635cc4dad1094dc3c42cac6208c8a7ad791e9419f0873ac1cb75b0c3691a7d'
+    source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-39.4.49.tar.gz'
+    source_sha256 '80857ece96ff28e265a32803d199b42755a706dba2d9238965b882e4166c19bd'
   else
     puts 'Unable to install dropboxd.  Supported architectures include i686 and x86_64 only.'.lightred
   end
 
   binary_url ({
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-33.4.23-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-33.4.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-       i686: 'b59f73d452cd7cc956a3107e99675a1cbfe4d3bb15d7fc5bb16c4d77f1e3875d',
-     x86_64: '8759fad457f68f4d25cf9bf016d738db5d5ddee001fcc5b8fcdb6b199b004ded',
   })
 
   case ARCH
   when 'i686', 'x86_64'
     depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+    depends_on 'libxslt'
   end
 
   def self.build
