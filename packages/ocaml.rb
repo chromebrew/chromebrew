@@ -3,7 +3,7 @@ require 'package'
 class Ocaml < Package
   description 'OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles'
   homepage 'http://ocaml.org/'
-  version '4.05.0'
+  version '4.06.0'
   source_url 'https://caml.inria.fr/pub/distrib/ocaml-4.06/ocaml-4.06.0.tar.xz'
   source_sha256 '1236b5f91e1c075086d69e2d40cfab21e048b9fe38e902f707815bebbc20c5b7'
 
