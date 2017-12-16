@@ -8,8 +8,16 @@ class Vim < Package
   source_sha256 '08bd0d1dd30ece3cb9905ccd48b82b2f81c861696377508021265177dc153a61'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0.586-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0.586-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0.586-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0.586-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '4b344479de2a777293f738d17944712ddc64339fedc1921cc72e4fd88494e780',
+     armv7l: '4b344479de2a777293f738d17944712ddc64339fedc1921cc72e4fd88494e780',
+       i686: '50dd8e043a2b264a7d468f186dbeda79520e763b4fab78ff577102e4962cb46d',
+     x86_64: 'bd5abac6c9afe34430b95e983a240576474421af698491e046c9dd4cab7a511b',
   })
 
   depends_on 'compressdoc' => :build
