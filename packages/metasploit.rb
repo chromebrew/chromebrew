@@ -3,9 +3,9 @@ require 'package'
 class Metasploit < Package
   description 'The Metasploit Framework is a tool for developing and executing exploit code against a remote target machine.'
   homepage 'https://www.metasploit.com/'
-  version '4.14.28'
-  source_url 'https://github.com/rapid7/metasploit-framework/archive/4.14.28.tar.gz'
-  source_sha256 'f2bc048542d7cbba16308b5a987718428825b5f00df7e5245543598d9d42a169'
+  version '4.16.19'
+  source_url 'https://github.com/rapid7/metasploit-framework/archive/4.16.19.tar.gz'
+  source_sha256 'd42d950da520586cf2e3b4f0a86e895250a95e2cd6ec3aff972e3b24492bfd2a'
 
   binary_url ({
   })
@@ -29,14 +29,14 @@ class Metasploit < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/share/metasploit-framework/"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp -r * #{CREW_DEST_DIR}/usr/local/share/metasploit-framework"
-    system "ln -s /usr/local/share/metasploit-framework/msfconsole #{CREW_DEST_DIR}/usr/local/bin/msfconsole"
-    system "ln -s /usr/local/share/metasploit-framework/msfd #{CREW_DEST_DIR}/usr/local/bin/msfd"
-    system "ln -s /usr/local/share/metasploit-framework/msfrpc #{CREW_DEST_DIR}/usr/local/bin/msfrpc"
-    system "ln -s /usr/local/share/metasploit-framework/msfrpcd #{CREW_DEST_DIR}/usr/local/bin/msfrpcd"
-    system "ln -s /usr/local/share/metasploit-framework/msfupdate #{CREW_DEST_DIR}/usr/local/bin/msfupdate" # Doesn't work, but I symlinked it anyway
-    system "ln -s /usr/local/share/metasploit-framework/msfvenom #{CREW_DEST_DIR}/usr/local/bin/msfvenom"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share/metasploit-framework/"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp -r * #{CREW_DEST_PREFIX}/share/metasploit-framework"
+    system "ln -s #{CREW_PREFIX}/share/metasploit-framework/msfconsole #{CREW_DEST_PREFIX}/bin/msfconsole"
+    system "ln -s #{CREW_PREFIX}/share/metasploit-framework/msfd #{CREW_DEST_PREFIX}/bin/msfd"
+    system "ln -s #{CREW_PREFIX}/share/metasploit-framework/msfrpc #{CREW_DEST_PREFIX}/bin/msfrpc"
+    system "ln -s #{CREW_PREFIX}/share/metasploit-framework/msfrpcd #{CREW_DEST_PREFIX}/bin/msfrpcd"
+    system "ln -s #{CREW_PREFIX}/share/metasploit-framework/msfupdate #{CREW_DEST_PREFIX}/bin/msfupdate" # Doesn't work, but I symlinked it anyway
+    system "ln -s #{CREW_PREFIX}/share/metasploit-framework/msfvenom #{CREW_DEST_PREFIX}/bin/msfvenom"
   end
 end
