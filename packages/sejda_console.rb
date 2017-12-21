@@ -6,7 +6,8 @@ class Sejda_console < Package
   version '3.2.43'
   source_url 'https://github.com/torakiki/sejda/releases/download/v3.2.43/sejda-console-3.2.43-bin.zip'
   source_sha256 '0d1c5e9e5857332cc50a881e6ab6f2051ebd8ae04f8421f6865c38b9f14dd67c'
-
+  
+  depends_on 'help2man' => :build
   depends_on 'jdk8'
   depends_on 'unzip'
 
