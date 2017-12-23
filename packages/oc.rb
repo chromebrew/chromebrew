@@ -13,8 +13,10 @@ class Oc < Package
   end
 
   binary_url ({
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/oc-3.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+     x86_64: '3243a878b6ba2c52888c633c29b95ac07bb63ec6704e90e849a6e6d463c0d1bc',
   })
 
   def self.install
