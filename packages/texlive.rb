@@ -7,6 +7,19 @@ class Texlive < Package
   source_url 'ftp://tug.org/historic/systems/texlive/2017/texlive-20170524-extra.tar.xz'
   source_sha256 'afe49758c26fb51c2fae2e958d3f0c447b5cc22342ba4a4278119d39f5176d7f'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-2017-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-2017-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-2017-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-2017-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'bb40fc919fcbb9448c484701d86243d018c4644281d6fa8ba5a38773e6889488',
+     armv7l: 'bb40fc919fcbb9448c484701d86243d018c4644281d6fa8ba5a38773e6889488',
+       i686: '413154155e75db6e04530fe1493bfacfd0893837ed3e005675a8d1eb339d5fb6',
+     x86_64: 'b8d927bc0abb8a17a440d235459a90cb50a49c343b8f0a43c9be853cbe0f26b3',
+  })
+
   depends_on 'perl'
 
   def self.build

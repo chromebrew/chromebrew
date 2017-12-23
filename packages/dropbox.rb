@@ -16,8 +16,12 @@ class Dropbox < Package
   end
 
   binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-39.4.49-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-39.4.49-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+       i686: '8cb65ea48c707781e58018e689da3e90e1efb56c08d2895c59ab36c38591ed4a',
+     x86_64: '4d95334304b5dae9f5e5f30c62ecad557cc0f5be99a2fc7ddd2afaeb5568bd11',
   })
 
   case ARCH
