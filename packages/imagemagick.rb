@@ -3,9 +3,9 @@ require 'package'
 class Imagemagick < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.7-11'
-  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-11.tar.xz'
-  source_sha256 '7993942d64c138f6c3e9d4bce6d8c13f747128bafe5c2295dcb45d91d1ff21e3'
+  version '7.0.7-15'
+  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-15.tar.xz'
+  source_sha256 '9809be6bab0c5258721a5c5bbe8bccf61357b506024f8514d94e9efcd575a69d'
 
   binary_url ({
   })
@@ -13,8 +13,12 @@ class Imagemagick < Package
   })
 
   def self.build
-    system "./configure CFLAGS=\" -fPIC\" --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --without-python --disable-dependency-tracking"
-    system "make"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--without-python',
+           '--disable-dependency-tracking'
+    system 'make'
   end
 
   def self.install
