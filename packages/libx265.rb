@@ -3,9 +3,9 @@ require 'package'
 class Libx265 < Package
   description 'x265 is a H.265 / HEVC video encoder application library.'
   homepage 'http://x265.org/'
-  version '2.4'
-  source_url 'https://bitbucket.org/multicoreware/x265/downloads/x265_2.4.tar.gz'
-  source_sha256 '9c2aa718d78f6fecdd783f08ab83b98d3169e5f670404da4c16439306907d729'
+  version '2.6'
+  source_url 'https://bitbucket.org/multicoreware/x265/downloads/x265_2.6.tar.gz'
+  source_sha256 '1bf0036415996af841884802161065b9e6be74f5f6808ac04831363e2549cdbf'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libx265-2.4-chromeos-armv7l.tar.xz',
