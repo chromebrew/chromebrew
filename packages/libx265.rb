@@ -8,16 +8,8 @@ class Libx265 < Package
   source_sha256 '1bf0036415996af841884802161065b9e6be74f5f6808ac04831363e2549cdbf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libx265-2.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libx265-2.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libx265-2.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libx265-2.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '719327b0fa7b551025d09b99add81b217ad5a34798504f4a705d73406741a77a',
-     armv7l: '719327b0fa7b551025d09b99add81b217ad5a34798504f4a705d73406741a77a',
-       i686: 'ae22b9c37a522bc2edaca35d09777daed05566cd44d82199112cdd7250a95fab',
-     x86_64: 'a5579d3806098783677b2a7f71dea95137f1b676f6347861431a1664d5ae0633',
   })
 
   depends_on 'cmake'
