@@ -3,9 +3,9 @@ require 'package'
 class Perl_locale_messages < Package
   description 'Perl Locale::Messages - Gettext Like Message Retrieval.'
   homepage 'https://metacpan.org/pod/Locale::Messages'
-  version '1.27'
-  source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.27.tar.gz'
-  source_sha256 '46de373e84e8a178353990b87eeacf9ef4f5c72650248eb20ed9772a65817c6a'
+  version '1.29'
+  source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.29.tar.gz'
+  source_sha256 '78935f10db6d6a080c3160b4ae02c3f6ed07ef6bf624623295a87545e0cbfbb1'
 
   binary_url ({
   })
