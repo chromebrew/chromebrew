@@ -3,21 +3,13 @@ require 'package'
 class Perl_locale_messages < Package
   description 'Perl Locale::Messages - Gettext Like Message Retrieval.'
   homepage 'https://metacpan.org/pod/Locale::Messages'
-  version '1.27'
-  source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.27.tar.gz'
-  source_sha256 '46de373e84e8a178353990b87eeacf9ef4f5c72650248eb20ed9772a65817c6a'
+  version '1.29'
+  source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.29.tar.gz'
+  source_sha256 '78935f10db6d6a080c3160b4ae02c3f6ed07ef6bf624623295a87545e0cbfbb1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_messages-1.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_messages-1.27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_messages-1.27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_messages-1.27-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ba76a389c59fff402dd111a0bb919379a11180ff019e10f7f23b7a380477dd20',
-     armv7l: 'ba76a389c59fff402dd111a0bb919379a11180ff019e10f7f23b7a380477dd20',
-       i686: '9070c6e3b5f8c7e3f9fa7896372f619cfd5493880d2f3f8a04858c9428389e43',
-     x86_64: '37b149b5620e590f52deee28d65854ddb26d3a43cd4872dd6a4f1fd9fd7d72b2',
   })
 
   depends_on 'perl'
