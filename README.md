@@ -35,11 +35,11 @@ If this command returns `ERROR: unknown command: shell` please have a second loo
 
 Then download and run the installation script below:
 
-    wget -q https://raw.github.com/skycocker/chromebrew/master/install.sh && yes | bash install.sh
+    wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
 
     -- or --
 
-    curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh
+    curl -Ls git.io/vddgY | bash
 
 On a rooted Google OnHub, the command needs to be run with the "chronos" user. In order to make su work, a password is needed for the chronos user.
 
