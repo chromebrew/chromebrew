@@ -19,8 +19,7 @@ class Terraform < Package
 
   def self.install
     Dir.chdir 'src/github.com/hashicorp/terraform' do
-      system "install -D -d #{CREW_DEST_DIR}/usr/local/bin"
-      system "install -D -m 00755 bin/terraform #{CREW_DEST_DIR}/usr/local/bin/terraform"
+      system "install -D -m 00755 bin/terraform #{CREW_DEST_PREFIX}/bin/terraform"
     end
   end
 end
