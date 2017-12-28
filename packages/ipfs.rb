@@ -19,7 +19,7 @@ class Ipfs < Package
 
   def self.install
     Dir.chdir 'src/github.com/ipfs/go-ipfs' do
-      system "install -D -d -m 00755 #{CREW_DEST_DIR}/usr/local/bin"
+      system "install -D -d #{CREW_DEST_DIR}/usr/local/bin"
       system "install -D -m 00755 cmd/ipfs/ipfs #{CREW_DEST_DIR}/usr/local/bin/ipfs"
     end
   end
