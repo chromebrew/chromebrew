@@ -22,8 +22,8 @@ class Python27 < Package
   def self.build
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
-        "LDFLAGS=-Wl,-rpath,-L#{CREW_PREFIX}/lib",
-        "--with-ensurepip=install", "--enable-shared"
+        "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
+        "--with-ensurepip=#{ARGV[0]}", "--enable-shared"
     system "make"
   end
 
