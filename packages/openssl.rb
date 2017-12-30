@@ -3,21 +3,13 @@ require 'package'
 class Openssl < Package
   description 'OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.'
   homepage 'https://www.openssl.org/'
-  version '1.0.2l-1'
-  source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2l.tar.gz'
-  source_sha256 'a3d3a7c03c90ba370405b2d12791598addfcafb1a77ef483c02a317a56c08485'
+  version '1.0.2n'
+  source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2n.tar.gz'
+  source_sha256 '4f4bc907caff1fee6ff8593729e5729891adcee412049153a3bb4db7625e8364'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2l-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2l-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2l-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2l-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ac4829ea69ad8434fca87133aec9fbd5d229ed59084c5e2f2e037735b0067eaf',
-     armv7l: 'ac4829ea69ad8434fca87133aec9fbd5d229ed59084c5e2f2e037735b0067eaf',
-       i686: '33d9cf05d4a2d4ea611d95b996039e170f26f60ed3a988631e772859c385ac28',
-     x86_64: '25374f35918d85ea05667c35b3df862e9c555b04f0579f1513d4461036bd1bff',
   })
 
   depends_on 'perl' => :build
