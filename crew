@@ -119,7 +119,7 @@ def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     return set_package(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
-  abort "Package #{pkgName} not found. :(".lightred
+  abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgName)
