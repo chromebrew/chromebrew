@@ -12,6 +12,7 @@ class Openssl < Package
   binary_sha256 ({
   })
 
+  depends_on 'compressdoc' => :build
   depends_on 'perl' => :build
   depends_on 'bc' => :build             # required for `make test`
   depends_on 'diffutils' => :build      # required for `make test`
@@ -32,24 +33,32 @@ class Openssl < Package
     system "sed -e '/linux-armv4/s/-O3/-O2/' -i Configure"
 
     # Specify armv7 for aarch64 since Chrome OS aarch64 uses armv7 binaries as its userland.
-    case `uname -m`.strip
-    when "aarch64"
-      system "./Configure --prefix=/usr/local --openssldir=/etc/ssl #{options} linux-armv4 -march=armv7-a"
+    case ARCH
+    when 'aarch64'
+      system "./Configure --prefix=#{CREW_PREFIX} --openssldir=/etc/ssl #{options} linux-armv4 -march=armv7-a"
+    when 'x86_64'
+      system "./config --prefix=#{CREW_PREFIX} --libdir=lib64 --openssldir=/etc/ssl #{options}"
     else
-      system "./config --prefix=/usr/local --openssldir=/etc/ssl #{options}"
+      system "./config --prefix=#{CREW_PREFIX} --openssldir=/etc/ssl #{options}"
     end
-    system "make"
+    system 'make'
   end
 
   def self.install
     system "make", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
-    system "find #{CREW_DEST_DIR}/usr/local -name 'lib*.a' -print | xargs rm"
+    system "find #{CREW_DEST_PREFIX} -name 'lib*.a' -print | xargs rm"
 
     # move man to /usr/local/man
-    system "mv", "#{CREW_DEST_DIR}/etc/ssl/man", "#{CREW_DEST_DIR}/usr/local/man"
+    system "mv", "#{CREW_DEST_DIR}/etc/ssl/man", "#{CREW_DEST_PREFIX}/man"
 
     # remove all files under /etc/ssl (use system's /etc/ssl as is)
     system "rm", "-rf", "#{CREW_DEST_DIR}/etc"
+
+    # compress man pages
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man1"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man3"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man5"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man7"
   end
 
   def self.check
