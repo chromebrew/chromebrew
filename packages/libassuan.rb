@@ -8,12 +8,7 @@ class Libassuan < Package
   source_sha256 '47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449'
 
   def self.build
-    case ARCH
-      when 'x86_64'
-        system './configure --prefix=/usr/local --libdir=/usr/local/lib64'
-      else
-        system './configure --prefix=/usr/local'
-    end
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
