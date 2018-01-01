@@ -3,9 +3,9 @@ require 'package'
 class Erlang < Package
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
   homepage 'http://www.erlang.org/'
-  version '20.1'
-  source_url 'http://erlang.org/download/otp_src_20.1.tar.gz'
-  source_sha256 '900d35eb563607785a8e27f4b4c03cf6c98b4596028c5d6958569ddde5d4ddbf'
+  version '20.2'
+  source_url 'http://erlang.org/download/otp_src_20.2.tar.gz'
+  source_sha256 '24d9895e84b800bf0145d6b3042c2f2087eb31780a4a45565206844b41eb8f23'
 
   binary_url ({
   })
