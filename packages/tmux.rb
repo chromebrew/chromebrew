@@ -3,9 +3,9 @@ require 'package'
 class Tmux < Package
   description 'tmux is a terminal multiplexer'
   homepage 'http://tmux.github.io/'
-  version '2.5'
-  source_url 'https://github.com/tmux/tmux/releases/download/2.5/tmux-2.5.tar.gz'
-  source_sha256 'ae135ec37c1bf6b7750a84e3a35e93d91033a806943e034521c8af51b12d95df'
+  version '2.6'
+  source_url 'https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz'
+  source_sha256 'b17cd170a94d7b58c0698752e1f4f263ab6dc47425230df7e53a6435cc7cd7e8'
 
   binary_url ({
   })
