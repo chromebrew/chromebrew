@@ -3,9 +3,9 @@ require 'package'
 class Mdp < Package
   description 'A command-line based markdown presentation tool.'
   homepage 'https://github.com/visit1985/mdp'
-  version '1.0.10'
-  source_url 'https://github.com/visit1985/mdp/archive/1.0.10.tar.gz'
-  source_sha256 '7384c1ba32bd8e4b11342570d2144165a60682499b4cb54e50c8eb3164cfabc5'
+  version '1.0.11'
+  source_url 'https://github.com/visit1985/mdp/archive/1.0.11.tar.gz'
+  source_sha256 '885660432d77dfce9f443c518e595b2a3780b5883a06cc21e593d13af1afcf4a'
 
   binary_url ({
   })
