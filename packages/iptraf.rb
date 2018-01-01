@@ -8,8 +8,16 @@ class Iptraf < Package
   source_sha256 '9ee433d95573d612539da4b452e6cdcbca6ab6674a88bfbf6eaf12d4902b5163'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iptraf-3.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iptraf-3.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iptraf-3.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/iptraf-3.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'f0961b50adbce4ce969559f556621debee9a6e29886202063eeeaca5a898bc64',
+     armv7l: 'f0961b50adbce4ce969559f556621debee9a6e29886202063eeeaca5a898bc64',
+       i686: '74cb84691008e78b2c8592f647b65fc416f93139278883c06f1783b3c4efbfc6',
+     x86_64: '3b1c16b812628599c72e853783eec2b7f144b18c3c5b3d2eda1ecacd8e006b0e',
   })
 
   depends_on 'ncurses'
