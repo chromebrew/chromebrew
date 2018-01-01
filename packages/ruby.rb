@@ -8,8 +8,16 @@ class Ruby < Package
   source_sha256 '1da0afed833a0dab94075221a615c14487b05d0c407f991c8080d576d985b49b'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'ad6bad7fcce9b595af3172e6ae48a2b4ffac7e0ed73daa22be4e972f4889c3a6',
+     armv7l: 'ad6bad7fcce9b595af3172e6ae48a2b4ffac7e0ed73daa22be4e972f4889c3a6',
+       i686: '01bb17f706dc73013f23c15d589744858e1501c6664feef73dad1ff0e9b67599',
+     x86_64: '1c748efef37747afb9b4f11068a2bbbaf03495bcb697310e1a39bb82a3549c71',
   })
 
   depends_on 'readline'
