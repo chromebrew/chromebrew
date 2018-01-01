@@ -3,21 +3,13 @@ require 'package'
 class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
-  version 'v0.9.7-1'
-  source_url 'https://github.com/hokaccha/nodebrew/archive/v0.9.7.tar.gz'
-  source_sha256 '3aa8b0cf30024d105f1ac6921aadf0440bc95bcae43df9d6ec58fc9de8cd352e'
+  version '0.9.8'
+  source_url 'https://github.com/hokaccha/nodebrew/archive/v0.9.8.tar.gz'
+  source_sha256 '040c1b32ddce6d83fda76a50ce9bc635ce0040f76a63617d74234449b8ff078b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-v0.9.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-v0.9.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-v0.9.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-v0.9.7-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bd9aa8fcac6099e5367d687a90578cab3ec2281f50301c57268540b82d40b203',
-     armv7l: 'bd9aa8fcac6099e5367d687a90578cab3ec2281f50301c57268540b82d40b203',
-       i686: '8b4bf0c1169bf44b1d45a13d3adaff3c2a9573c43acd262bd3255ef07e276351',
-     x86_64: '8ec7697374c124d37cc905ba0d6e7c07fad4cbee789ada940d9528c114a691de',
   })
 
   depends_on 'perl'
