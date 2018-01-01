@@ -3,9 +3,9 @@ require 'package'
 class Wget < Package
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
-  version '1.19'
-  source_url 'https://ftp.gnu.org/gnu/wget/wget-1.19.tar.xz'
-  source_sha256 '0f1157bbf4daae19f3e1ddb70c6ccb2067feb834a6aa23c9d9daa7f048606384'
+  version '1.19.2'
+  source_url 'https://ftp.gnu.org/gnu/wget/wget-1.19.2.tar.gz'
+  source_sha256 '4f4a673b6d466efa50fbfba796bd84a46ae24e370fa562ede5b21ab53c11a920'
 
   binary_url ({
   })
