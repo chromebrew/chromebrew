@@ -3,9 +3,9 @@ require 'package'
 class Mutt < Package
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '1.9.1'
-  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz'
-  source_sha256 '749b83a96373c6e2101ebe8c4b9a651735e02c478edb750750a5146a15d91bb1'
+  version '1.9.2'
+  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-1.9.2.tar.gz'
+  source_sha256 'a2e152a352bbf02d222d54074199d9c53821c19f700c4cb85f78fa85faed7896'
 
   binary_url ({
   })
