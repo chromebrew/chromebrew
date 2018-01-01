@@ -3,9 +3,9 @@ require 'package'
 class Od1n < Package
   description '0d1n is a tool for automating customized attacks against web applications.'
   homepage 'https://github.com/CoolerVoid/0d1n'
-  version '2.3'
-  source_url 'https://github.com/CoolerVoid/0d1n/archive/2.3.tar.gz'
-  source_sha256 '7fe26f0268fe63ec0352502ae590a7a5e258248f253649661dc782ca7edd52ae'
+  version '2.5'
+  source_url 'https://github.com/CoolerVoid/0d1n/archive/0d1n2.5.tar.gz'
+  source_sha256 'c883907e44e7fc087af170ff82f063febde941dce9b46646b4ecc8410b887b3d'
 
   depends_on 'curl'
 
