@@ -3,9 +3,9 @@ require 'package'
 class Avocado < Package
   description 'Avocado is a next generation testing framework inspired by Autotest and modern development tools such as git.'
   homepage 'http://avocado-framework.github.io/'
-  version '55.0'
-  source_url 'https://github.com/avocado-framework/avocado/archive/55.0.tar.gz'
-  source_sha256 '0ec798afaca0910d7b3853aa8a7782c4d95e54bbf5ff8473005bcd70829e5a9f'
+  version '57.0'
+  source_url 'https://github.com/avocado-framework/avocado/archive/57.0.tar.gz'
+  source_sha256 'c49fdf0946eed445fd8397354db3491869389ed4578ba477d447f105c99f15e4'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/avocado-55.0-chromeos-armv7l.tar.xz',

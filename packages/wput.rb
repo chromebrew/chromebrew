@@ -3,9 +3,9 @@ require 'package'
 class Wput < Package
   description 'wput is a command line file upload tool, the opposite of wget'
   homepage 'http://wput.sourceforge.net/'
-  version '0.6.1'
-  source_url 'https://prdownloads.sourceforge.net/wput/wput-0.6.1.tgz'
-  source_sha256 '67125acab1d520e5d2a0429cd9cf7fc379987f30d5bbed0b0e97b92b554fcc13'
+  version '0.6.2'
+  source_url 'https://downloads.sourceforge.net/project/wput/wput/0.6.2/wput-0.6.2.tgz'
+  source_sha256 '229d8bb7d045ca1f54d68de23f1bc8016690dc0027a16586712594fbc7fad8c7'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wput-0.6.1-chromeos-armv7l.tar.xz',

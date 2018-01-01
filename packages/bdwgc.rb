@@ -3,21 +3,13 @@ require 'package'
 class Bdwgc < Package
   description 'The Boehm-Demers-Weiser conservative C/C++ Garbage Collecto'
   homepage 'https://github.com/ivmai/bdwgc'
-  version '7.6.0'
-  source_url 'https://github.com/ivmai/bdwgc/files/1005477/gc-7.6.0.tar.gz'
-  source_sha256 'a14a28b1129be90e55cd6f71127ffc5594e1091d5d54131528c24cd0c03b7d90'
+  version '7.6.2'
+  source_url 'https://github.com/ivmai/bdwgc/releases/download/v7.6.2/gc-7.6.2.tar.gz'
+  source_sha256 'bd112005563d787675163b5afff02c364fc8deb13a99c03f4e80fdf6608ad41e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bdwgc-7.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bdwgc-7.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bdwgc-7.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bdwgc-7.6.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'be29d91fd1e4ca65bc1f624f045b04b11178d689a9bd898c9a1e91b2e8cf8221',
-     armv7l: 'be29d91fd1e4ca65bc1f624f045b04b11178d689a9bd898c9a1e91b2e8cf8221',
-       i686: '6444b15b6cfa80b0e2ed0702944572b24ff2e6eb6fbe9baacc0acebdebe08c9d',
-     x86_64: 'cfb243044ce59c9b36b862400f30008413c7f48da01a162364e5ec796f4690b6',
   })
 
   depends_on 'libatomic_ops'

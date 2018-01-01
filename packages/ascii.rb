@@ -3,9 +3,9 @@ require 'package'
 class Ascii < Package
   description 'List ASCII idiomatic names and octal/decimal code-point forms.'
   homepage 'http://www.catb.org/~esr/ascii/'
-  version '3.16-1'
-  source_url 'http://www.catb.org/~esr/ascii/ascii-3.16.tar.gz'
-  source_sha256 'a94bb3970e8f1f63566f055517aecbdd46b11c4ccf142f77ffb80a79994f03a9'
+  version '3.18'
+  source_url 'http://www.catb.org/~esr/ascii/ascii-3.18.tar.gz'
+  source_sha256 '728422d5f4da61a37a17b4364d06708e543297de0a5f70305243236d80df072d'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.16-1-chromeos-armv7l.tar.xz',

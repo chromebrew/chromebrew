@@ -3,21 +3,13 @@ require 'package'
 class Whois < Package
   description 'Intelligent WHOIS client'
   homepage 'https://github.com/rfc1036/whois'
-  version '5.2.16'
-  source_url 'https://github.com/rfc1036/whois/archive/v5.2.16.tar.gz'
-  source_sha256 'd8204ca199329f14c33cb9f893b0f50918dbef34a6838317270e65c55ab32615'
+  version '5.2.20'
+  source_url 'https://github.com/rfc1036/whois/archive/v5.2.20.tar.gz'
+  source_sha256 '1812b9c64a41d8ed70507bb1161a18a0a7b2f29ba5b442ca7828a5acb1e44c7e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6af8f5df827b4df623dcc9e6b8adc4d6c5627391cc4cc5a575db429e994c6264',
-     armv7l: '6af8f5df827b4df623dcc9e6b8adc4d6c5627391cc4cc5a575db429e994c6264',
-       i686: '0535b924068cb2be49b0d722969c8e7459c9d73998f32638a72db33ed9672674',
-     x86_64: '778b41edd15d5c6aad04168c5be30f160fae7d5030aa7a6f90b66117ac389486',
   })
 
   depends_on 'gettext'

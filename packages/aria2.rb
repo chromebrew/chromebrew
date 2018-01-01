@@ -3,9 +3,9 @@ require 'package'
 class Aria2 < Package
   description 'aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.'
   homepage 'https://aria2.github.io/'
-  version '1.33.0'
-  source_url 'https://github.com/aria2/aria2/releases/download/release-1.33.0/aria2-1.33.0.tar.xz'
-  source_sha256 '996e3fc2fd07ce2dd517e20a1f79b8b3dbaa5c7e27953b5fc19dae38f3874b8c'
+  version '1.33.1'
+  source_url 'https://github.com/aria2/aria2/releases/download/release-1.33.1/aria2-1.33.1.tar.xz'
+  source_sha256 '2539e4844f55a1f1f5c46ad42744335266053a69162e964d9a2d80a362c75e1b'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.33.0-chromeos-armv7l.tar.xz',
