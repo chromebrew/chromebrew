@@ -3,9 +3,9 @@ require 'package'
 class Pinentry < Package
   description "A collection of passphrase entry dialogs which is required for almost all usages of GnuPG"
   homepage 'https://gnupg.org/software/pinentry/index.html'
-  version '1.0.0'
-  source_url 'https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.0.0.tar.bz2'
-  source_sha256 '1672c2edc1feb036075b187c0773787b2afd0544f55025c645a71b4c2f79275a'
+  version '1.1.0'
+  source_url 'https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2'
+  source_sha256 '68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570'
 
   depends_on 'gnupg'
   depends_on 'libcap'
