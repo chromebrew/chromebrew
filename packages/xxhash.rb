@@ -3,9 +3,9 @@ require 'package'
 class Xxhash < Package
   description 'xxHash is an extremely fast non-cryptographic hash algorithm, working at speeds close to RAM limits.'
   homepage 'http://cyan4973.github.io/xxHash/'
-  version '0.6.3'
-  source_url 'https://github.com/Cyan4973/xxHash/archive/v0.6.3.tar.gz'
-  source_sha256 'd8c739ec666ac2af983a61dc932aaa2a8873df974d333a9922d472a121f2106e'
+  version '0.6.4'
+  source_url 'https://github.com/Cyan4973/xxHash/archive/v0.6.4.tar.gz'
+  source_sha256 '4570ccd111df6b6386502791397906bf69b7371eb209af7d41debc2f074cdb22'
 
   binary_url ({
   })
