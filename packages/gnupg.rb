@@ -3,9 +3,9 @@ require 'package'
 class Gnupg < Package
   description 'GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP).'
   homepage 'https://gnupg.org/'
-  version '2.2.2'
-  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.2.tar.bz2'
-  source_sha256 'bfb62c7412ceb3b9422c6c7134a34ff01a560f98eb981c2d96829c1517c08197'
+  version '2.2.4'
+  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.4.tar.bz2'
+  source_sha256 '401a3e64780fdfa6d7670de0880aa5c9d589b3db7a7098979d7606cec546f2ec'
 
   binary_url ({
   })
