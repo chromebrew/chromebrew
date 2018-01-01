@@ -7,6 +7,11 @@ class Asciidoc < Package
   source_url 'https://downloads.sourceforge.net/project/asciidoc/asciidoc/8.6.9/asciidoc-8.6.9.tar.gz'
   source_sha256 '78db9d0567c8ab6570a6eff7ffdf84eadd91f2dfc0a92a2d0105d323cab4e1f0'
 
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
+
   depends_on 'autoconf'
   depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
