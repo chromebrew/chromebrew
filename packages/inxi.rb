@@ -13,6 +13,11 @@ class Inxi < Package
   })
 
   depends_on 'gawk'
+  depends_on 'perl'
+
+  def self.build
+    system "sed -i 's,/os-release,/lsb-release,g' inxi"
+  end
 
   def self.install
     system "install -Dm755 inxi #{CREW_DEST_PREFIX}/bin/inxi"
