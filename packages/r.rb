@@ -28,6 +28,7 @@ class R < Package
   depends_on 'curl'
   depends_on 'openssl'
   depends_on 'readline'
+  depends_on 'icu4c'
 
   def self.build
     system './configure',
