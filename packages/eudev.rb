@@ -22,7 +22,7 @@ class Eudev < Package
 
   def self.build
     system 'autoreconf -f -i -s'
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure --prefix=#{CREW_PREFIX}  --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 

@@ -19,7 +19,7 @@ class Bind < Package
   depends_on "diffutils"
 
   def self.build
-    system "BUILD_CC=gcc ./configure --with-randomdev=no --with-ecdsa=yes --with-gost=yes --prefix=#{CREW_PREFIX}"
+    system "BUILD_CC=gcc ./configure --with-randomdev=no --with-ecdsa=yes --with-gost=yes --prefix=#{CREW_PREFIX}  --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

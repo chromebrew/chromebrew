@@ -12,8 +12,8 @@ class Doxygen < Package
   binary_sha256 ({
   })
 
-  depends_on 'cmake'
-  depends_on 'unzip'
+  depends_on 'cmake' => :build
+  remove depends_on 'unzip'
 
   def self.build
     system "cmake ."
