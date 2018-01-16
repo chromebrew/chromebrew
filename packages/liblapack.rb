@@ -12,7 +12,7 @@ class Liblapack < Package                 # The first character of the class nam
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-    system "cmake ..-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_DEST_LIB_PREFIX}"
+    system "cmake .. -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_DEST_LIB_PREFIX}"
     system "make"
     end
   end
