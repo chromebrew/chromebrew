@@ -13,9 +13,6 @@ class Erlang < Package
   })
 
   depends_on 'flex' => :build
-  depends_on 'automake' => :build
-  depends_on 'util_linux' => :build
-  depends_on 'm4' => :build
 
   def self.build
     system 'export ERL_OTP=`pwd`'
