@@ -20,7 +20,7 @@ class Liblapack < Package                 # The first character of the class nam
 
   def self.install
     Dir.chdir 'build' do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
   end  
 end
