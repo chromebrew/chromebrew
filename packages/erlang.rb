@@ -16,7 +16,6 @@ class Erlang < Package
   depends_on 'automake' => :build
   depends_on 'util_linux' => :build
   depends_on 'm4' => :build
-  remove depends_on 'autoconf'
 
   def self.build
     system 'export ERL_OTP=`pwd`'

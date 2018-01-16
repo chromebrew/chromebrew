@@ -14,7 +14,6 @@ class Eudev < Package
 
   depends_on 'util_linux'
   depends_on 'm4'
-  depends_on 'autoconf'
   depends_on 'automake'
   depends_on 'libxslt'
   depends_on 'libtool'

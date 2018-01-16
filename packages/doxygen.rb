@@ -13,7 +13,6 @@ class Doxygen < Package
   })
 
   depends_on 'cmake' => :build
-  remove depends_on 'unzip'
 
   def self.build
     system "cmake ."
