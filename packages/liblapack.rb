@@ -13,14 +13,14 @@ class Liblapack < Package                 # The first character of the class nam
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "cmake .."   # recommended for default cmake setting
-      system "make"
+    system "cmake ..-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_DEST_LIB_PREFIX}"
+    system "make"
     end
   end
 
   def self.install
     Dir.chdir 'build' do
-      system "make install" # recommended for default installation directory
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
   end  
 end
