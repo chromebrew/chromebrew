@@ -8,8 +8,16 @@ class Pciutils < Package
   source_sha256 'f346eeb90cce0910c05b877fe49eadc760fa084c0455fd313e39d4b2c2d4bb21'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pciutils-3.5.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pciutils-3.5.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pciutils-3.5.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pciutils-3.5.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'eaca3ede010846f7abb86206a820681216390a0c2acef1e9e6c20bc28a966b65',
+     armv7l: 'eaca3ede010846f7abb86206a820681216390a0c2acef1e9e6c20bc28a966b65',
+       i686: '382b96cfc4f72ac99f65f653bf748532401511eecb9f62957e50f2f4ef4eb08b',
+     x86_64: '9842f4c3c91ec9e60580a7658dc590c3c1c30310513b4825b6e67a5029536306',
   })
 
   depends_on 'zlibpkg'
