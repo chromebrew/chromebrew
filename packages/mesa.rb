@@ -26,7 +26,7 @@ class Mesa < Package
   depends_on 'libxtrans'
   depends_on 'libxkbfile'
   depends_on 'wayland'
-
+  depends_on 'python'
   depends_on 'bison'
 
   # tested on armv7l
