@@ -15,7 +15,8 @@ class Cairo < Package
   depends_on 'libpng'
   depends_on 'pixman'
   depends_on 'fontconfig' # pango requires cairo with fontconfig
-
+  depends_on 'automake'
+  
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
