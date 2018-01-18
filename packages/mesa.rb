@@ -26,13 +26,23 @@ class Mesa < Package
   depends_on 'libxtrans'
   depends_on 'libxkbfile'
   depends_on 'wayland'
-  depends_on 'python'
+  depends_on 'python27'
   depends_on 'bison'
 
   # tested on armv7l
   def self.build
     system "pip install Mako"
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --enable-shared-glapi --with-gallium-drivers=nouveau --with-dri-drivers=nouveau --enable-egl --with-platforms=x11,drm,wayland --enable-gbm --enable-xa --enable-dri"
+    system "./configure \
+            --prefix=#{CREW_PREFIX} \
+            --libdir=#{CREW_LIB_PREFIX} \
+            --enable-shared-glapi \
+            --with-gallium-drivers=nouveau \
+            --with-dri-drivers=nouveau \
+            --enable-egl \
+            --with-platforms=x11,drm,wayland \
+            --enable-gbm \
+            --enable-xa \
+            --enable-dri"    
     system "make"
   end
 
