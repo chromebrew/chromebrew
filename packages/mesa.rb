@@ -4,7 +4,7 @@ class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
   version '17.3.2'
-  source_url 'ftp://ftp.freedesktop.org/pub/mesa/mesa-17.3.2.tar.xz'
+  source_url 'https://mesa.freedesktop.org/archive/mesa-17.3.2.tar.xz'
   source_sha256 'e2844a13f2d6f8f24bee65804a51c42d8dc6ae9c36cff7ee61d0940e796d64c6'
 
   binary_url ({
