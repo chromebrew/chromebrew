@@ -31,7 +31,7 @@ class Mesa < Package
 
   # tested on armv7l
   def self.build
-    system "pip install Mako"
+    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} Mako"
     system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
