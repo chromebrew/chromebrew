@@ -3,17 +3,15 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '17.1.5'
-  source_url 'ftp://ftp.freedesktop.org/pub/mesa/mesa-17.1.5.tar.xz'
-  source_sha256 '378516b171712687aace4c7ea8b37c85895231d7a6d61e1e27362cf6034fded9'
+  version '17.3.2'
+  source_url 'https://mesa.freedesktop.org/archive/mesa-17.3.2.tar.xz'
+  source_sha256 'e2844a13f2d6f8f24bee65804a51c42d8dc6ae9c36cff7ee61d0940e796d64c6'
 
   binary_url ({
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.1.5-chromeos-x86_64.tar.xz',
+
   })
   binary_sha256 ({
-       i686: '54e67d2890dc0a134e105007082d1a14e64b0ef58aed5c37c47815b51e0a9b9c',
-     x86_64: '9c4af5498c04673929ef3b88ea53bd0dce8bad5010b2a74803eb82539b253ca9',
+
   })
 
   depends_on 'libdrm'
