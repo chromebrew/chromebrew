@@ -14,8 +14,12 @@ class Wkhtmltox < Package
   end
 
   binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wkhtmltox-0.12.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wkhtmltox-0.12.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+       i686: '49df2dd2e7d9bda0e8cc4b29d186df54a49f03b7a3ad4125d835732edf0d0c01',
+     x86_64: 'b2084816bae9c21d3ebd1e68f4ec4661b8e08426161b10841f80488c71aac7af',
   })
 
   def self.install

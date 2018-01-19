@@ -8,8 +8,16 @@ class Rust < Package
   source_sha256 '05a4f35bad7643aea094066815cf856009b115170086bbd916cfb0ee9a31f54e'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.23.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.23.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.23.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.23.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'a68c57e384a5434fec9c210c015e6acd9e22eaac938ed6e1e8afd6e38d2675df',
+     armv7l: 'a68c57e384a5434fec9c210c015e6acd9e22eaac938ed6e1e8afd6e38d2675df',
+       i686: '932c881bdf3d726ae9d8782dfcabe42acbc3142edce6a08e558f0c2e4390d478',
+     x86_64: 'f6c0ab056802e0d82a8e87664b8a3af8f536a2122e064596a795189bd73bed20',
   })
 
   def self.install
