@@ -101,21 +101,42 @@ class Package
   end
 
   def self.system(*args)
-    # add "-j#{CREW_NPROC}" argument to "make" at only compile-time
+    # add "-j#" argument to "make" at compile-time, if necessary
+
+    # Order of precendence to assign the number of processors:
+    # 1. The value of '-j#' from the package make argument
+    # 2. The value of ENV["CREW_NPROC"]
+    # 3. The value of `nproc`.strip
+    # See lib/const.rb for more details
+
     if @in_build == true
+      nproc = ''
+      nproc_opt =  ''
+      args.each do |arg|
+        params = arg.split(/\W+/)
+        params.each do |param|
+          if param.match(/j(\d)+/)
+            nproc_opt = param
+            break
+          end
+        end
+      end
+      nproc = "#{CREW_NPROC}" if nproc_opt == ''
       if args[0] == "make"
-        # modify ["make", "args", ...] into ["make", "-j#{CREW_NPROC}", "args", ...]
+        # modify ["make", "args", ...] into ["make", "-j#{nproc}", "args", ...]
+        args.insert(1, "-j#{nproc}") if nproc != ''
         if @opt_verbose then
-          args.insert(1, "-j#{CREW_NPROC}", "V=1")
+          args.insert(1, "V=1")
         else
-          args.insert(1, "-j#{CREW_NPROC}", "V=0")
+          args.insert(1, "V=0")
         end
       elsif args.length == 1
-        # modify ["make args..."] into ["make -j#{CREW_NPROC} args..."]
+        # modify ["make args..."] into ["make -j#{nproc} args..."]
+        args[0].gsub!(/^make /, "make -j#{nproc} ") if nproc != ''
         if @opt_verbose then
-          args[0].gsub!(/^make /, "make -j#{CREW_NPROC} V=1 ")
+          args[0].gsub!(/^make /, "make V=1 ")
         else
-          args[0].gsub!(/^make /, "make -j#{CREW_NPROC} V=0 ")
+          args[0].gsub!(/^make /, "make V=0 ")
         end
       end
     end
