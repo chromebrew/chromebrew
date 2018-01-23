@@ -12,7 +12,6 @@ class Cmatrix < Package
   binary_sha256 ({
   })
 
-  depends_on 'buildessential'
   depends_on 'ncurses'
 
   def self.build
