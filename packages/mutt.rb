@@ -20,17 +20,27 @@ class Mutt < Package
      x86_64: 'fec90a3d7928479772c0b285ccc44f4746c4f1de86e96d7aa7598edf24218da2',
   })
 
+  depends_on 'perl'
   depends_on 'libxslt'
+  depends_on 'openssl'
+  depends_on 'libcyrussasl' => :build
+  depends_on 'gdbm'
 
   def self.build
     system "./configure \
             --prefix=#{CREW_PREFIX} \
-            --with-mailpath=#{CREW_PREFIX}/mail"
+            --with-mailpath=#{CREW_PREFIX}/mail
+            --enable-imap 
+            --with-ssl 
+            --enable-smtp 
+            --with-sasl=/usr/local/lib/sasl2 
+            --enable-hcache"
     system 'make'
   end
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/mail"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "echo 'export SASL_PATH=/usr/local/lib/sasl2' >> ~/.bashrc"
   end
 end
