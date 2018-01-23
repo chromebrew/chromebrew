@@ -15,7 +15,7 @@ class Fish < Package
   depends_on 'ncurses'
 
   def self.build
-    system "./configure"
+    system "./configure", "--prefix=#{CREW_PREFIX}"
     system "make"
   end
 

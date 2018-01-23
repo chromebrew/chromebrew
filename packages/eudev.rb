@@ -12,8 +12,6 @@ class Eudev < Package
   binary_sha256 ({
   })
 
-  depends_on 'util_linux'
-  depends_on 'automake'
   depends_on 'libxslt'
   depends_on 'libtool'
   depends_on 'gperf'
