@@ -3,21 +3,21 @@ require 'package'
 class Powerstat < Package
   description 'Powerstat measures the power consumption of a laptop using the ACPI battery information.'
   homepage 'http://kernel.ubuntu.com/~cking/powerstat/'
-  version '0.02.12'
-  source_url 'http://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.12.tar.gz'
-  source_sha256 'dc802ae739120bb7c99f248f2631f14e8903767c187f2d16a093391e741e9a9a'
+  version '0.02.14'
+  source_url 'http://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.14.tar.gz'
+  source_sha256 '79b059d12dc776f7f47d3bef0b1c60185a0ba49765d1c89e920fa2f24a081711'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.14-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.14-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3f98c844ffa30b00c632382a764306995acfc4973d23ed781aea6a0b90aa57a4',
-     armv7l: '3f98c844ffa30b00c632382a764306995acfc4973d23ed781aea6a0b90aa57a4',
-       i686: '709a23dc76aa214fb13dfe9043d6e1482e276f042b7f1c43c1d3a4690576ce4f',
-     x86_64: 'c7c93f71d2d14d43431ecbd069996587e6a2650e5e96bd18abf60dcbcaa40db4',
+    aarch64: '4ea5f8f48a1180b348dc90b150f7a97c9cb0e0289ac4b093b01ef8f087853dd0',
+     armv7l: '4ea5f8f48a1180b348dc90b150f7a97c9cb0e0289ac4b093b01ef8f087853dd0',
+       i686: '5c3cfbba81c9adf2010b2f9e69dd5adcaa96cdf15446eabfcc1a80e0ce2160be',
+     x86_64: '81b9ad7bfdf9bcc6c95148a4d8216f0105a0a54ed31419bb637eeb374901afd5',
   })
 
   def self.build

@@ -4,21 +4,21 @@ class Libpipeline < Package
   description 'libpipeline is a C library for manipulating pipelines of subprocesses in a flexible and convenient way.'
   homepage 'http://libpipeline.nongnu.org/'
 
-  version '1.4.2'
-  source_url 'https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.4.2.tar.gz'
-  source_sha256 'fef1fc9aa40ce8796f18cd1aecd888a9484a9556c8b0f8d07c863578277679be'
+  version '1.5.0'
+  source_url 'https://mirror.csclub.uwaterloo.ca/nongnu/libpipeline/libpipeline-1.5.0.tar.gz'
+  source_sha256 '0d72e12e4f2afff67fd7b9df0a24d7ba42b5a7c9211ac5b3dcccc5cd8b286f2b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.4.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.5.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.5.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.5.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpipeline-1.5.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5094a4df0e8eedce62fa401b182a7e800d5fbc11dbc17bc412bed376de6ad12a',
-     armv7l: '5094a4df0e8eedce62fa401b182a7e800d5fbc11dbc17bc412bed376de6ad12a',
-       i686: 'a3557d35b55bc238be7de5dc70d559194a463069fc7e405da7247f62dbf62e83',
-     x86_64: '628776afa460b3c5ffd73ae8af404beb88b13c620b2bd25d08abc197190d7519',
+    aarch64: 'b22c978f504de0e8356772bdb6c775a6d4b9760cb5422ab540a70940d63e8cab',
+     armv7l: 'b22c978f504de0e8356772bdb6c775a6d4b9760cb5422ab540a70940d63e8cab',
+       i686: '5ab87ee758833b15d55b680fee6742f27f26e25394feaeeca5d1c2d6e069b1d5',
+     x86_64: '9cefcb70b634fa7d1ff081794712ca4e1448e0dbfd57d0be411bbef2a149bd78',
   })
 
   def self.build

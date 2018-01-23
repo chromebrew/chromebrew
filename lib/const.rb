@@ -1,5 +1,7 @@
 # Defines common constants used in different parts of crew
 
+CREW_VERSION = '0.4.3'
+
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 
@@ -25,13 +27,5 @@ CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
 
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
-
-# Set XZ_OPT environment variable for build command.
-# If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
-if ENV["CREW_XZ_OPT"].to_s == ''
-  ENV["XZ_OPT"] = "-7e"
-else
-  ENV["XZ_OPT"] = ENV["CREW_XZ_OPT"]
-end
 
 USER = `whoami`.chomp

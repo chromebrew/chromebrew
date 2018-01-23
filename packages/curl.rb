@@ -3,38 +3,43 @@ require 'package'
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.haxx.se/'
-  version '7.55.1'
-  source_url 'https://curl.haxx.se/download/curl-7.55.1.tar.bz2'
-  source_sha256 'e5b1a92ed3b0c11f149886458fa063419500819f1610c020d62f25b8e4b16cfb'
+  version '7.57.0-1'
+  source_url 'https://curl.haxx.se/download/curl-7.57.0.tar.xz'
+  source_sha256 'f5f6fd3c72b7b8389969f4fb671ed8532fa9b5bb7a5cae7ca89bc1cea45c7878'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.55.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.55.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.55.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.55.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.57.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.57.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.57.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.57.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7ef956dad600af8a22681f2d03360b88900ced7f27d3515904ef3f9aac47685e',
-     armv7l: '7ef956dad600af8a22681f2d03360b88900ced7f27d3515904ef3f9aac47685e',
-       i686: '85e4c5086ff52f3c0e86db39fc23cf9fc942ebc2acfeb34cb9c02a59d1d7ad85',
-     x86_64: 'a033d6ed5133d8f0e6e6f76a38b2e4b6fb241803d21ff0b593e11d5a9481ed3c',
+    aarch64: '1805db33717f18a38933f6bc13e4135856c5576a4501797aefba5f05714cbca5',
+     armv7l: '1805db33717f18a38933f6bc13e4135856c5576a4501797aefba5f05714cbca5',
+       i686: '1ae5e21dab5a93a3a6f49981b33f035ee5e7226d0f92ad15c085ec3c2bb99f6d',
+     x86_64: '7dec09c121ac5f7028e43e88cf20214d8d3b358c1fe097ef9e4ba0d924816b25',
   })
 
-  depends_on 'openssl' => :build
-  depends_on 'zlibpkg' => :build
-  depends_on 'libssh2'
   depends_on 'groff' => :build
+  depends_on 'libssh2'
+  depends_on 'openssl'
+  depends_on 'rtmpdump'
 
   def self.build
-    system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--disable-static"
-    system "make"
+    system './configure',
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}",
+      '--disable-debug',
+      '--disable-dependency-tracking',
+      '--disable-static'
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    system "make", "test"
+    system 'make', 'test'
   end
 end

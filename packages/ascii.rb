@@ -3,21 +3,21 @@ require 'package'
 class Ascii < Package
   description 'List ASCII idiomatic names and octal/decimal code-point forms.'
   homepage 'http://www.catb.org/~esr/ascii/'
-  version '3.16'
-  source_url 'http://www.catb.org/~esr/ascii/ascii-3.16.tar.gz'
-  source_sha256 'a94bb3970e8f1f63566f055517aecbdd46b11c4ccf142f77ffb80a79994f03a9'
+  version '3.18-1'
+  source_url 'http://www.catb.org/~esr/ascii/ascii-3.18.tar.gz'
+  source_sha256 '728422d5f4da61a37a17b4364d06708e543297de0a5f70305243236d80df072d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.18-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.18-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ascii-3.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '960f68dac5375dfe116f0b1a299761279b35890a1926b70607130eeebe052c45',
-     armv7l: '960f68dac5375dfe116f0b1a299761279b35890a1926b70607130eeebe052c45',
-       i686: 'e3df5f81fdfc3ff137a50372a50d79e44902c0569e12c253dcaddec824ec5259',
-     x86_64: '4138b0c85c565d38cdcbea96edbd223551ff640d65868dc00e016cc72f64bc46',
+    aarch64: '63c6f3c239267c0b815e21f4dd697e2aff4eea42b7612f0e6ef2355bec4af25a',
+     armv7l: '63c6f3c239267c0b815e21f4dd697e2aff4eea42b7612f0e6ef2355bec4af25a',
+       i686: '842cdd491d6d8e7cfaafc2787cee021bbcf76bd70c70dd76397bff6391c9e3ef',
+     x86_64: '4107a21b427fd0a090d73a89d06ace01d28d68ae84d56d3c3f159633304f1b22',
   })
 
   def self.build
@@ -25,8 +25,9 @@ class Ascii < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp ascii #{CREW_DEST_DIR}/usr/local/bin"
+    system "gzip -9 ascii.1"
+    system "install -Dm755 ascii #{CREW_DEST_PREFIX}/bin/ascii"
+    system "install -Dm644 ascii.1.gz #{CREW_DEST_PREFIX}/man/man1/ascii.1.gz"
   end
 end
 

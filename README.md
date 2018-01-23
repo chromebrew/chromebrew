@@ -11,7 +11,7 @@ Supported Systems
 | x86_64 | Yes |
 | i686 | Yes |
 | armv7l | Yes |
-| aarch64 | Yes (use armv7l binaries) |
+| aarch64 | Yes |
 
 Overview
 --------
@@ -37,13 +37,19 @@ Then download and run the installation script below:
 
     wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
 
-On a rooted Google OnHub, the command need to be run with "chronos" user. In order to make sudo work, a password is needed for chronos user.
+    -- or --
 
-    passwd chronos
-    # Choose your password
-    su - chronos
-    curl -L https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
-    # When prompt, use the password you just created for "chronos" user.
+    curl -Ls git.io/vddgY | bash
+
+On a rooted Google OnHub, the command needs to be run with the "chronos" user. In order to make su work, a password is needed for the chronos user.
+
+    # passwd chronos
+    Changing password for chronos.
+    Enter new UNIX password:
+    Retype new UNIX password:
+    # su - chronos
+    Password:
+    $ curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh
 
 Usage
 -----
@@ -54,6 +60,7 @@ Where available commands are:
 
   * build [build package(s) from source and store the archive and checksum in the current working directory]
   * download [download package(s) to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install]
+  * files [display installed files of package(s).]
   * help [get information about command usage]
   * install [install package(s) along with dependencies after prompting for confirmation]
   * remove [remove package(s)]
@@ -71,6 +78,6 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 License
 -------
 
-Copyright 2013 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
+Copyright 2013-2017 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).

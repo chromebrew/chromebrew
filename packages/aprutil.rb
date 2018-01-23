@@ -3,29 +3,33 @@ require 'package'
 class Aprutil < Package
   description 'APR-util provides a number of helpful abstractions on top of APR.'
   homepage 'http://apr.apache.org/'
-  version '1.6.0'
-  source_url 'http://apache.claz.org/apr/apr-util-1.6.0.tar.bz2'
-  source_sha256 '8474c93fa74b56ac6ca87449abe3e155723d5f534727f3f33283f6631a48ca4c'
+  version '1.6.1'
+  source_url 'https://apache.claz.org/apr/apr-util-1.6.1.tar.bz2'
+  source_sha256 'd3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aprutil-1.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0c43c0acf059f91ed31c429facf69cc3c381093fd48f06ff377897199bdae49e',
-     armv7l: '0c43c0acf059f91ed31c429facf69cc3c381093fd48f06ff377897199bdae49e',
-       i686: 'da915a6f7c4e5827f177b0f5473295d3a8886704e383e11a167961690d7a532b',
-     x86_64: '3054b966fa64e6b793210563fe01195238cbbacc4d31c33830cc2bfc39925836',
+    aarch64: 'e9fc87b307ffd4b0ebf0f8edb198813eff40c78652ca128b870401e0b95e8da5',
+     armv7l: 'e9fc87b307ffd4b0ebf0f8edb198813eff40c78652ca128b870401e0b95e8da5',
+       i686: '487fce828c6a4e0bae45b4675240fa06bd7a59bde1007009db3722dce065397f',
+     x86_64: 'e5abe47026a3bf51748e2d3aaaa1e5dc5d46c66180145502e989a28cdae49b30',
   })
 
   depends_on 'apr'
   depends_on 'expat'
 
   def self.build
-    system './configure --prefix=/usr/local --with-apr=/usr/local'
-    system 'make'
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           "--with-apr=#{CREW_PREFIX}",
+           '--disable-maintainer-mode'
+    system "make"
   end
 
   def self.install

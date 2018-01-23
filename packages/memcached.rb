@@ -3,27 +3,29 @@ require 'package'
 class Memcached < Package
   description 'Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.'
   homepage 'https://memcached.org/'
-  version '1.5.1'
-  source_url 'https://memcached.org/files/memcached-1.5.1.tar.gz'
-  source_sha256 'a87908936b51d1bd3ef10a2347eef5647f003b63407a5d8161fa7928b1cd6b5c'
+  version '1.5.3'
+  source_url 'https://memcached.org/files/memcached-1.5.3.tar.gz'
+  source_sha256 '258cc3ddb7613685465acfd0215f827220a3bbdd167fd2c080632105b2d2f3ce'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '21f95bb2d9f7034a894629340dccb498419fad98d831737ef2e8464fdabff92d',
-     armv7l: '21f95bb2d9f7034a894629340dccb498419fad98d831737ef2e8464fdabff92d',
-       i686: '0afb5959638e2c18184ef65fcc460f84edd618d522a3221c632175b8fe18d665',
-     x86_64: 'd3bddaab1921ee3d11b6eae45ad6933abebc41383fc3bb1f14ee666da582edb9',
+    aarch64: '24640b0e777ede59135083f836f2e2dbfdb007d943d48c23719af2ff63d8c7c5',
+     armv7l: '24640b0e777ede59135083f836f2e2dbfdb007d943d48c23719af2ff63d8c7c5',
+       i686: 'c544b7afdcdc6307e9aa547f3ab238d6daeb8d064625177622207ffa3ebe9fde',
+     x86_64: '0ae6afff645bddd1fdebe42fcc1289c9ec259901e89e6312e0c94054061402ee',
   })
 
   depends_on 'libevent'
 
   def self.build
-    system "./configure"
+    system "./configure",
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

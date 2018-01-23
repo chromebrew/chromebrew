@@ -3,34 +3,38 @@ require 'package'
 class Redis < Package
   description 'Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.'
   homepage 'https://redis.io/'
-  version '4.0.1'
-  source_url 'http://download.redis.io/releases/redis-4.0.1.tar.gz'
-  source_sha256 '2049cd6ae9167f258705081a6ef23bb80b7eff9ff3d0d7481e89510f27457591'
+  version '4.0.6'
+  source_url 'http://download.redis.io/releases/redis-4.0.6.tar.gz'
+  source_sha256 '769b5d69ec237c3e0481a262ff5306ce30db9b5c8ceb14d1023491ca7be5f6fa'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bbfe8f3f61405a5afadfd724e969db4ad37c562e764764377316b881d83e5011',
-     armv7l: 'bbfe8f3f61405a5afadfd724e969db4ad37c562e764764377316b881d83e5011',
-       i686: '995ef2a996369cec2cfad0f60bcb42ab36a38d88ed207d10bcf4e67ea93a9d3d',
-     x86_64: '7d8affbafbe7707ca4ee471c0057ececda07ab0fa6136cea3adafbef3c9f820f',
+    aarch64: '42719b23596a9340ae1e87321b91ec810fd6a3f5c69b540036674ce56c78d0e8',
+     armv7l: '42719b23596a9340ae1e87321b91ec810fd6a3f5c69b540036674ce56c78d0e8',
+       i686: 'c0b2c01f64fe02f922488d766047de9d40b8dd0b8409c4d840a7f52d6886ce8a',
+     x86_64: 'a52137729d4194dab6b1a164f9e3a984a121a44c4812c548d2e8e921329f9edd',
   })
 
-  depends_on 'buildessential'
+  depends_on 'tcl' => :build
 
   def self.build
     system "CC='gcc' make"
+    system "./runtest"
   end
 
   def self.install
-    system "make", "PREFIX=#{CREW_DEST_DIR}/usr/local", "install"
-    puts "-----------------"
-    puts "Installation success!"
-    puts "To start the redis server: redis-server --daemonize yes"
-    puts "To connect to the server: redis-cli"
+    system "make", "PREFIX=#{CREW_DEST_PREFIX}", "install"
+  end
+
+  def self.postinstall
+    puts
+    puts "To start the redis server: redis-server --daemonize yes".lightblue
+    puts "To connect to the server: redis-cli".lightblue
+    puts
   end
 end

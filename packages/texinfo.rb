@@ -3,21 +3,21 @@ require 'package'
 class Texinfo < Package
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
-  version '6.4-1'
-  source_url 'http://ftpmirror.gnu.org/texinfo/texinfo-6.4.tar.xz'
-  source_sha256 '6ae2e61d87c6310f9af7c6f2426bd0470f251d1a6deb61fba83a3b3baff32c3a'
+  version '6.5'
+  source_url 'http://ftpmirror.gnu.org/texinfo/texinfo-6.5.tar.xz'
+  source_sha256 '77774b3f4a06c20705cc2ef1c804864422e3cf95235e965b1f00a46df7da5f62'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.4-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texinfo-6.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c754230640c776b6f44910a7e5101d0d14f6aeb3a0b8c7fc0e808440c1576619',
-     armv7l: 'c754230640c776b6f44910a7e5101d0d14f6aeb3a0b8c7fc0e808440c1576619',
-       i686: '1b89c8829a0d945e9842efd538008f4bcf6a04ba521a37177ad12dbe2248e2c2',
-     x86_64: 'b882e0b46a42e0db6afc4ab821564f454273d203ad50dbe135ef0c335b0b9c14',
+    aarch64: '5efcbcab8d9961230704abb8dbc2f4a3b18c27898231e70d0bbefb5818c908e2',
+     armv7l: '5efcbcab8d9961230704abb8dbc2f4a3b18c27898231e70d0bbefb5818c908e2',
+       i686: '07157f88ec58254a8e5c2965a1b1c8eac1159358c22b64dc191f150567d024a2',
+     x86_64: '5725777dd74498d46aab775b7152ba42b33d8551e73c77ced2b8807e8e9ccf38',
   })
 
   depends_on 'gettext' => :build
@@ -30,6 +30,8 @@ class Texinfo < Package
   def self.build
     # configure and make
     system './configure',
+        "--prefix=#{CREW_PREFIX}",
+        "--libdir=#{CREW_LIB_PREFIX}",
         '--with-external-Text-Unidecode',
         '--with-external-Unicode-EastAsianWidth'
     system "make"

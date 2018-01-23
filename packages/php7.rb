@@ -3,21 +3,21 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.1.8-1'
-  source_url 'https://php.net/distributions/php-7.1.8.tar.xz'
-  source_sha256 '8943858738604acb33ecedb865d6c4051eeffe4e2d06f3a3c8f794daccaa2aab'
+  version '7.1.12'
+  source_url 'https://php.net/distributions/php-7.1.12.tar.xz'
+  source_sha256 'a0118850774571b1f2d4e30b4fe7a4b958ca66f07d07d65ebdc789c54ba6eeb3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.8-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f16f0456a071bc67d8f52d822b8a854e7e73903bad3b91bec87101f5ab8bb61f',
-     armv7l: 'f16f0456a071bc67d8f52d822b8a854e7e73903bad3b91bec87101f5ab8bb61f',
-       i686: '873824cdb85932a082fca7ab4e81eeed39ec03cff1621ee650e61892afff2490',
-     x86_64: 'b39ae5ea701573c27022ce0838b1cf64302b502ed8b54b3845ffd4793a99e82b',
+    aarch64: 'fa1a0897dd78ea1cf94bc353a78e56e15789f7705babaabdee8c353f651ae89a',
+     armv7l: 'fa1a0897dd78ea1cf94bc353a78e56e15789f7705babaabdee8c353f651ae89a',
+       i686: '6fbea0ee47680e4f08e61712e6a2aa8128af7987e8fe20c4458a6b988458e213',
+     x86_64: '78fa2609dd43dea42c62436551ec9b3efba1e037dd8e983f68ab81636f4b10b9',
   })
 
   depends_on 'pkgconfig'
@@ -31,11 +31,13 @@ class Php7 < Package
   depends_on 'readline'
 
   def self.build
-    system './configure \
-      --prefix=/usr/local \
-      --docdir=/usr/local/doc \
-      --infodir=/usr/local/info \
-      --mandir=/usr/local/man \
+    system "./configure \
+      --prefix=#{CREW_PREFIX} \
+      --docdir=#{CREW_PREFIX}/doc \
+      --infodir=#{CREW_PREFIX}/info \
+      --libdir=#{CREW_LIB_PREFIX} \
+      --localstatedir=#{CREW_PREFIX}/tmp \
+      --mandir=#{CREW_PREFIX}/man \
       --with-curl \
       --with-gd \
       --with-xsl \
@@ -43,7 +45,7 @@ class Php7 < Package
       --with-openssl \
       --with-pcre-regex \
       --with-readline \
-      --with-zlib'
+      --with-zlib"
     system 'make'
   end
 
@@ -51,8 +53,8 @@ class Php7 < Package
     system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
-    system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_DIR}/usr/local/lib/php"
-    system "mv", "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_DIR}/usr/local/lib/php"
+    system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
+    system "mv", "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
     system "rm", "-rf", "#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock", "#{CREW_DEST_DIR}/.registry"
   end
 end

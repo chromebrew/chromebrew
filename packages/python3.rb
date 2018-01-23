@@ -3,21 +3,21 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.6.0'
-  source_url 'https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz'
-  source_sha256 'aa472515800d25a3739833f76ca3735d9f4b2fe77c3cb21f69275e0cce30cb2b'
+  version '3.6.4'
+  source_url 'https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz'
+  source_sha256 '159b932bf56aeaa76fd66e7420522d8c8853d486b8567c459b84fe2ed13bcaba'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '69cd539510eaaf0dfbf101dbb8ee3b1f15985f948887ec9bc5158544fd37994f',
-     armv7l: '69cd539510eaaf0dfbf101dbb8ee3b1f15985f948887ec9bc5158544fd37994f',
-       i686: '69e79202b30ed23640619c2cc425d92df6e638b9cfb502e939fd33eb2c359d36',
-     x86_64: 'c50473d6a3d1b2e7c28943967549e08d61bc49e702469fb6509ef2191fc756f4',
+    aarch64: 'c4dcf1dcbc30e396194a84fd19254f13f3273c89845e1a26f4b86d5595ce2c9d',
+     armv7l: 'c4dcf1dcbc30e396194a84fd19254f13f3273c89845e1a26f4b86d5595ce2c9d',
+       i686: 'ba6a9207d9e8ee1af513b13fff7771044177c43dafa1f3849f07aa31be9e3e24',
+     x86_64: 'ed98bdff4bcb4e1a413498bdb9e79a20ddf0c8972a523039f5d528e28c858325',
   })
 
   depends_on 'bz2' => :build
@@ -29,8 +29,8 @@ class Python3 < Package
 
   def self.build
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
-    system "./configure", "CPPFLAGS=-I/usr/local/include/ncurses -I/usr/local/include/ncursesw",
-      "LDFLAGS=-Wl,-rpath,#{CREW_PREFIX}/lib",
+    system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
+      "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
       "--with-ensurepip=install", "--enable-shared"
     system "make"
   end
@@ -39,12 +39,12 @@ class Python3 < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
     # remove static library
-    system "find #{CREW_DEST_DIR}/usr/local -name 'libpython*.a' -print | xargs -r rm"
+    system "find #{CREW_DEST_PREFIX} -name 'libpython*.a' -print | xargs -r rm"
 
     # create symbolic links in lib64 for other applications which use libpython
-    unless Dir.exist? "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
-      system "mkdir -p #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
-      system "cd #{CREW_DEST_DIR}#{CREW_LIB_PREFIX}; ln -s ../lib/libpython*.so* ."
+    unless Dir.exist? "#{CREW_DEST_LIB_PREFIX}"
+      system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
+      system "cd #{CREW_DEST_LIB_PREFIX}; ln -s ../lib/libpython*.so* ."
     end
   end
 
@@ -70,6 +70,6 @@ class Python3 < Package
     # Using /tmp breaks test_distutils, test_subprocess
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet
-    system "TMPDIR=/usr/local/tmp http_proxy= https_proxy= ftp_proxy= make test"
+    system "TMPDIR=#{CREW_PREFIX}/tmp http_proxy= https_proxy= ftp_proxy= make test"
   end
 end

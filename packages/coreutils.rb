@@ -3,29 +3,35 @@ require 'package'
 class Coreutils < Package
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
   homepage 'http://www.gnu.org/software/coreutils/coreutils.html'
-  version '8.27'
-  source_url 'https://ftpmirror.gnu.org/coreutils/coreutils-8.27.tar.xz'
-  source_sha256 '8891d349ee87b9ff7870f52b6d9312a9db672d2439d289bc57084771ca21656b'
+  version '8.29'
+  source_url 'https://ftpmirror.gnu.org/gnu/coreutils/coreutils-8.29.tar.xz'
+  source_sha256 '92d0fa1c311cacefa89853bdb53c62f4110cdfda3820346b59cbd098f40f955e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.27-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.29-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.29-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.29-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.29-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '150a40838d94d5d53fd2b1596802147a2ec8e9cdb18c7771aa4b8b22bc3c7312',
-     armv7l: '150a40838d94d5d53fd2b1596802147a2ec8e9cdb18c7771aa4b8b22bc3c7312',
-       i686: 'cdfa9a67beecc2f9c8e62ed096af27c0a7f780e829786421d8a93d8c1e315cdc',
-     x86_64: '5dee72c39c02c6039406f011394f499dcd91bcced4b62c4ea0fa155d12bab9b3',
+    aarch64: 'cc4f7ac351c1de16e6dd195c795b3505f05fc981bae46d0ab7cfbc7009ee920d',
+     armv7l: 'cc4f7ac351c1de16e6dd195c795b3505f05fc981bae46d0ab7cfbc7009ee920d',
+       i686: 'c55c8f37354f348741f387fe0de01f664dfe20ad89e8ae93b27d66553375add9',
+     x86_64: '26c43836ce9581f9daeddc1b50f88a88d5c1f8417cd545ee417729f94ad59621',
   })
 
   def self.build
-    system './configure'
+    system "./configure --prefix=#{CREW_PREFIX}"
     system 'make'
   end
 
   def self.install
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
+      system "echo '#!/bin/bash' > arch"
+      system "echo '#{CREW_PREFIX}/bin/uname -m' >> arch"
+      system 'chmod +x arch'
+    end
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

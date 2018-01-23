@@ -1,3 +1,5 @@
+# This test checks whether the packages create a dependency cycle.
+
 require 'find'
 require_relative '../lib/color'
 

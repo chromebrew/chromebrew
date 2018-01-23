@@ -3,21 +3,21 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  version '1.8.3-1'
-  source_url 'https://storage.googleapis.com/golang/go1.8.3.src.tar.gz'
-  source_sha256 '5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f68829d99fa6'
+  version '1.9.1'
+  source_url 'https://storage.googleapis.com/golang/go1.9.1.src.tar.gz'
+  source_sha256 'a84afc9dc7d64fe0fa84d4d735e2ece23831a22117b50dafc75c1484f1cb550e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.8.3-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f0ed5baa1cc1ec4a393e3255ce5c6556ce29b17395fb660872a7fa7ee9dd7951',
-     armv7l: 'f0ed5baa1cc1ec4a393e3255ce5c6556ce29b17395fb660872a7fa7ee9dd7951',
-       i686: '5f34ab7487970b560a4eadc37a0308b3e50f9cc37bf5b9c933e8b033c06987c1',
-     x86_64: '87bbb19fa513377c1be217dd23897770c3c307fd22bf85e2202de24659b44129',
+    aarch64: '5f3f49f4e983af9524115762b6a5533f152328527558b5c42c6d70bfd79aa71b',
+     armv7l: '5f3f49f4e983af9524115762b6a5533f152328527558b5c42c6d70bfd79aa71b',
+       i686: '05830ea2da5c99cc0dc6bf2e28b9856f0144400409444dfb638bf588af6764ef',
+     x86_64: '3d2a2b96b756914ca1612405926196e1058a149bc85641e08f657d345d5593f1',
   })
 
   # Tests requires perl

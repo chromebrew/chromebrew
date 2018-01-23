@@ -3,21 +3,21 @@ require 'package'
 class Whois < Package
   description 'Intelligent WHOIS client'
   homepage 'https://github.com/rfc1036/whois'
-  version '5.2.16'
-  source_url 'https://github.com/rfc1036/whois/archive/v5.2.16.tar.gz'
-  source_sha256 'd8204ca199329f14c33cb9f893b0f50918dbef34a6838317270e65c55ab32615'
+  version '5.2.20-1'
+  source_url 'https://github.com/rfc1036/whois/archive/v5.2.20.tar.gz'
+  source_sha256 '1812b9c64a41d8ed70507bb1161a18a0a7b2f29ba5b442ca7828a5acb1e44c7e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6af8f5df827b4df623dcc9e6b8adc4d6c5627391cc4cc5a575db429e994c6264',
-     armv7l: '6af8f5df827b4df623dcc9e6b8adc4d6c5627391cc4cc5a575db429e994c6264',
-       i686: '0535b924068cb2be49b0d722969c8e7459c9d73998f32638a72db33ed9672674',
-     x86_64: '778b41edd15d5c6aad04168c5be30f160fae7d5030aa7a6f90b66117ac389486',
+    aarch64: '0f540befde8dc78202a0c7c30e73b15bf7e3db6bf108e762e231a58bf7f2f8eb',
+     armv7l: '0f540befde8dc78202a0c7c30e73b15bf7e3db6bf108e762e231a58bf7f2f8eb',
+       i686: '543cd5034dce8928a35d03c90d9f1357b98321b4135c93f3b0bd1c92e51edd64',
+     x86_64: 'b8125e4f3ab2652c45069d0e56ea7eb9118f7555e4b1deafb057f43ac42b691b',
   })
 
   depends_on 'gettext'
@@ -32,13 +32,12 @@ class Whois < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man5"
-    system "cp mkpasswd #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp whois #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp mkpasswd.1 #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "cp whois.1 #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "cp whois.conf.5 #{CREW_DEST_DIR}/usr/local/man/man5"
+    system "gzip -9 mkpasswd.1 whois.1 whois.conf.5"
+    system "install -Dm755 mkpasswd #{CREW_DEST_PREFIX}/bin/mkpasswd"
+    system "install -Dm755 whois #{CREW_DEST_PREFIX}/bin/whois"
+    system "install -Dm644 whois.conf #{CREW_DEST_PREFIX}/etc/whois.conf"
+    system "install -Dm644 mkpasswd.1.gz #{CREW_DEST_PREFIX}/man/man1/mkpasswd.1.gz"
+    system "install -Dm644 whois.1.gz #{CREW_DEST_PREFIX}/man/man1/whois.1.gz"
+    system "install -Dm644 whois.conf.5.gz #{CREW_DEST_PREFIX}/man/man5/whois.conf.5.gz"
   end
 end

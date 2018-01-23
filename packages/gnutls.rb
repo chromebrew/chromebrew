@@ -21,7 +21,7 @@ class Gnutls < Package
   })
 
   depends_on 'buildessential' => :build
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlibpkg'
   depends_on 'libunistring'
   depends_on 'gmp'
   depends_on 'nettle'
