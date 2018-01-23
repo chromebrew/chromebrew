@@ -15,7 +15,7 @@ class Doxygen < Package
   depends_on 'cmake' => :build
 
   def self.build
-    system "cmake ."
+    system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_DEST_PREFIX} ."
     system "make"
   end
 

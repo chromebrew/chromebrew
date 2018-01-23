@@ -8,8 +8,16 @@ class Elixir < Package
   source_sha256 '70972b844c12bc1a3960136d628ab4f21ca87dd5539c544ebabe41d6c9239ba9'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/elixir-1.5.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/elixir-1.5.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/elixir-1.5.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/elixir-1.5.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '5b2766a7b79e4fcb715604d9fbedbd347b6a7b797d2ff09c76e6b6e35d74eb80',
+     armv7l: '5b2766a7b79e4fcb715604d9fbedbd347b6a7b797d2ff09c76e6b6e35d74eb80',
+       i686: 'df2a3c7a938b52c07b31e9d4028c3aba2b7f24bba20d62ecc17262dc7f72dd50',
+     x86_64: '7a71cc9069e87ae71d5dbdff6ea5580befe78803237822b4828289280e4fd7de',
   })
 
   depends_on 'erlang'
