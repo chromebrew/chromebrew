@@ -10,7 +10,7 @@ class Wol < Package
   depends_on 'compressdoc' => :build
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--mandir #{CREW_PREFIX}/share/man"
+    system "./configure", "--prefix=#{CREW_PREFIX}", "--mandir=#{CREW_PREFIX}/share/man"
     system "make"
   end
 
