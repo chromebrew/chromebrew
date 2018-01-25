@@ -8,9 +8,17 @@ class Mesa < Package
   source_sha256 'e2844a13f2d6f8f24bee65804a51c42d8dc6ae9c36cff7ee61d0940e796d64c6'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.2-chromeos-x86_64.tar.xz',
 
   })
   binary_sha256 ({
+    aarch64: 'a471dcc099c172ad9113f93adfa5878aac25235a9db60c1d4c68d8c1a7df112f',
+     armv7l: 'a471dcc099c172ad9113f93adfa5878aac25235a9db60c1d4c68d8c1a7df112f',
+       i686: '7a01dc3d49956d87b246a56d9c4ed0f14fc12945d56f1735bccb9f2477c7426e',
+     x86_64: 'f069566c26b2b125c7d86afcd410cc90ca75ea1a62ad747271a6aa2f1f48dbec',
 
   })
 
