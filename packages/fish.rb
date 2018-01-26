@@ -8,8 +8,16 @@ class Fish < Package
   source_sha256 'e42bb19c7586356905a58578190be792df960fa81de35effb1ca5a5a981f0c5a'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'b9cc7f130de93e55605660f7fd8b98283ef1877ed8968d5889d0ecaa041b476e',
+     armv7l: 'b9cc7f130de93e55605660f7fd8b98283ef1877ed8968d5889d0ecaa041b476e',
+       i686: '0cfe2d362b929264ec3a487d51cba511313c8f20a81067b37c76f84ae864a1a7',
+     x86_64: '56dd0139ed8a13d178151863cf79521a676e7e3778cd75790dac5f6e48e7bfa0',
   })
 
   depends_on 'ncurses'
