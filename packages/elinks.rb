@@ -25,6 +25,7 @@ class Elinks < Package
   depends_on 'lzip'
   depends_on 'openssl'
   depends_on 'zlibpkg'
+  depends_on 'libx11'
 
   def self.build
     system "wget -O config/config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
