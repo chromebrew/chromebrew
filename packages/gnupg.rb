@@ -12,8 +12,8 @@ class Gnupg < Package
   binary_sha256 ({
   })
 
+  depends_on 'automake' => :build
   depends_on 'bz2'
-  depends_on 'automake'
   depends_on 'libgpgerror'
   depends_on 'libgcrypt'
   depends_on 'libassuan'

@@ -12,14 +12,18 @@ class Bind < Package
   binary_sha256 ({
   })
 
-  depends_on "buildessential"
   depends_on "openssl"
   depends_on "libcap"
   depends_on "readline"
   depends_on "diffutils"
 
   def self.build
-    system "BUILD_CC=gcc ./configure --with-randomdev=no --with-ecdsa=yes --with-gost=yes --prefix=/usr/local"
+    system "BUILD_CC=gcc ./configure \
+                --with-randomdev=no \
+                --with-ecdsa=yes \
+                --with-gost=yes \
+                --prefix=#{CREW_PREFIX} \
+                --libdir=#{CREW_LIB_PREFIX}"  
     system "make"
   end
 
