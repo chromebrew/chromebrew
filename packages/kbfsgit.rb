@@ -15,7 +15,7 @@ class Kbfsgit < Package
   depends_on 'keybase'
 
   def self.install
-    system "go get github.com/keybase/kbfs/kbfsgit"
-    system "go build -o #{CREW_DEST_PREFIX}/bin/git-remote-keybase -tags production github.com/keybase/kbfs/kbfsgit"
+    system "go get github.com/keybase/kbfs/kbfsgit/git-remote-keybase"
+    system "go build -o #{CREW_DEST_PREFIX}/bin/git-remote-keybase -tags production github.com/keybase/kbfs/kbfsgit/git-remote-keybase"
   end
 end
