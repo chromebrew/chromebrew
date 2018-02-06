@@ -14,7 +14,12 @@ class Cairo < Package
   depends_on 'mesa'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --enable-xlib --enable-xlib-xcb --enable-glesv2"
+    system "./configure \
+            --prefix=#{CREW_PREFIX} \
+            --libdir=#{CREW_LIB_PREFIX} \
+            --enable-xlib \
+            --enable-xlib-xcb \
+            --enable-glesv2"
     system "make"
   end
 
