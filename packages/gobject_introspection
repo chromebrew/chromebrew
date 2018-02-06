@@ -11,7 +11,7 @@ class Gobject_introspection < Package
   depends_on 'flex'
 
   def self.build
-    system './configure'
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
