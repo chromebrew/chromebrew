@@ -12,9 +12,14 @@ class Libatomic_ops < Package
   binary_sha256 ({
   })
 
+  depends_on 'autoconf' => :build
+  depends_on 'automake' => :build
+  depends_on 'libtool' => :build
+  depends_on 'pkgconfig' => :build
+
   def self.build
     system "./autogen.sh"
-    system "./configure"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

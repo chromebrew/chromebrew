@@ -12,8 +12,6 @@ class Bacon < Package
   binary_sha256 ({
   })
 
-  depends_on 'buildessential'
-
   def self.build
     system 'sed -i "s,/usr/share,\$\(DATADIR\)," Makefile.in'
     system './configure',
