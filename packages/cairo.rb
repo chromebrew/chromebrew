@@ -1,4 +1,3 @@
-
 require 'package'
 
 class Cairo < Package
