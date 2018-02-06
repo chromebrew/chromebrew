@@ -22,7 +22,7 @@ class Pango < Package
   end
 
   def self.install
-    system "pip install six"
+    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
