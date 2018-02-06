@@ -7,7 +7,7 @@ class At_spi2_core < Package
   source_url 'https://github.com/GNOME/at-spi2-core/archive/AT_SPI2_CORE_2_26_1.tar.gz'
   source_sha256 '30cafdcce582cf7fc57d760ef36293344b8a29370f96b300ff56fe24cdb4a0a2'
 
-  depends_on 'automake'
+  depends_on 'automake' => :build
   depends_on 'libxtst'
   depends_on 'dbus'
   depends_on 'glib'
