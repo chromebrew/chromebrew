@@ -22,3 +22,4 @@ class Cairo < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
+end
