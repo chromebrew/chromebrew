@@ -8,11 +8,10 @@ class Graphene < Package
   source_sha256 '98970f859e452ce421b72726ca727fdf3ac27cb4804b62bfe520157fa46aa2fd'
 
   depends_on 'ninja'
-  depends_on 'python3'
+  depends_on 'meson'
   depends_on 'gobject_introspection'
 
   def self.build
-    system "pip3 install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} meson"    # depends_on meson
     system "meson _build --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} -Denable-arm-neon=false"
   end
 
