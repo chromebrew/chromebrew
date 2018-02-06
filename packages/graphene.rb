@@ -18,8 +18,14 @@ class Graphene < Package
 
   def self.install
     Dir.chdir("_build") do
-     system "ninja test"
      system "ninja install"
     end
   end
+  
+  def self.check
+    Dir.chdir("_build") do
+     system "ninja test"
+    end
+  end  
+  
 end
