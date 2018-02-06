@@ -7,7 +7,6 @@ class Graphene < Package
   source_url 'https://github.com/ebassi/graphene/archive/1.6.0.tar.gz'
   source_sha256 '98970f859e452ce421b72726ca727fdf3ac27cb4804b62bfe520157fa46aa2fd'
 
-  depends_on 'ninja'
   depends_on 'meson'
   depends_on 'gobject_introspection'
 
