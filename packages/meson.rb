@@ -8,6 +8,7 @@ class Meson < Package
   source_sha256 '50f9b12b77272ef6ab064d26b7e06667f07fa9f931e6a20942bba2216ba4281b'
   
   depends_on 'python3'
+  depends_on 'ninja'
 
   def self.install
     system "pip3 install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} meson"
