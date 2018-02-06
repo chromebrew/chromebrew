@@ -9,7 +9,8 @@ class Gobject_introspection < Package
 
   depends_on 'glib'
   depends_on 'flex'
-
+  depends_on 'bison'
+  
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
