@@ -2,7 +2,7 @@
 require 'package'
 
 class Yelp_xsl < Package
-  description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documen$
+  description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documen'
   homepage 'https://github.com/GNOME/yelp-xsl'
   version '3.27.90'
   source_url 'https://github.com/GNOME/yelp-xsl/archive/3.27.90.tar.gz'
