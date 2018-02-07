@@ -8,8 +8,10 @@ class Xkeyboard_config < Package
   source_url 'https://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.21.tar.bz2'
   source_sha256 '30c17049fae129fc14875656da9aa3099e3031d6ce0ee1d77aae190fd9edcec5'
 
-  depends_on "util_macros"
-  depends_on "intltool"
+  depends_on "util_macros" => :build
+  depends_on "intltool" => :build
+  depends_on "libx11"
+  depends_on "gettext" => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
