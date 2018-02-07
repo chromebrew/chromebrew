@@ -9,6 +9,7 @@ class At_spi2_atk < Package
   
   depends_on 'automake' => :build
   depends_on 'at_spi2_core'  
+  depends_on 'atk'
 
   def self.build
     system "./autogen.sh"
