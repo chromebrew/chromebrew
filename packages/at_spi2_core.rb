@@ -12,6 +12,7 @@ class At_spi2_core < Package
   depends_on 'dbus'
   depends_on 'glib'
   depends_on 'gobject_introspection'
+  depends_on 'libxi'
   
   def self.build
     system "./autogen.sh"
