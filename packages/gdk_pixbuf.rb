@@ -11,6 +11,7 @@ class Gdk_pixbuf < Package
   depends_on 'gobject_introspection'
   depends_on 'libtiff'
   depends_on 'libjpeg'
+  depends_on 'python27'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -18,6 +19,8 @@ class Gdk_pixbuf < Package
   end
 
   def self.install
+    system "pip install six" # for installation process
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "pip uninstall --yes six"
   end
 end
