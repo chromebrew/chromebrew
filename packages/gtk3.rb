@@ -21,6 +21,7 @@ class Gtk3 < Package
   depends_on 'python3'
   depends_on 'libx11'
   depends_on 'at_spi2_atk'
+  depends_on 'python27'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -28,7 +29,8 @@ class Gtk3 < Package
   end
 
   def self.install
+    system "pip install six"  # for installation process
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "pip uninstall --yes six"
   end
-
 end
