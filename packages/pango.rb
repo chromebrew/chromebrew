@@ -22,7 +22,8 @@ class Pango < Package
   end
 
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} six"
+    system "pip install six"   # fix installation error,  "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} six" does not work
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "pip uninstall --yes six"
   end
 end
