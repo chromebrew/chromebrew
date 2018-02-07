@@ -1,7 +1,7 @@
 require 'package'
 
 class Yelp_tools < Package
-  description 'yelp-tools is a collection of scripts and build utilities to help create, manage, and publish documentation for Yelp and$
+  description 'yelp-tools is a collection of scripts and build utilities to help create, manage, and publish documentation for Yelp and'
   homepage 'https://github.com/GNOME/yelp-tools'
   version '3.27.90'
   source_url 'https://github.com/GNOME/yelp-tools/archive/3.27.90.tar.gz'
