@@ -9,6 +9,7 @@ class Libxi < Package
 
   depends_on 'automake' => :build
   depends_on 'libx11'
+  depends_on 'util_macros'
 
   def self.build
     system "./autogen.sh"
