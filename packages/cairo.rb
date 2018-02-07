@@ -12,8 +12,10 @@ class Cairo < Package
   depends_on 'fontconfig' # pango requires cairo with fontconfig
   depends_on 'gobject_introspection'
   depends_on 'mesa'
+  depends_on 'automake' => :build
 
   def self.build
+    system "./autogen.sh"   # This fixes automake error (when we directly use configure)
     system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
