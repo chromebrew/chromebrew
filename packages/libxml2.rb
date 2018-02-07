@@ -3,22 +3,12 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.9.7'
+  version '2.9.7-1'
   source_url 'ftp://xmlsoft.org/libxml2/libxml2-2.9.7.tar.gz'
   source_sha256 'f63c5e7d30362ed28b38bfa1ac6313f9a80230720b7fb6c80575eeab3ff5900c'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.7-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '26c83a2954c6180c3353d498bf6271216b9c12e11a7dc5f7207df9dc93c2b76a',
-     armv7l: '26c83a2954c6180c3353d498bf6271216b9c12e11a7dc5f7207df9dc93c2b76a',
-       i686: '650adc4a7aedbd6e9db24dff7d747ee3a9c87366b1d4aa012464867ebff15151',
-     x86_64: '2f55a258847137e155f029392119906803f5a4e361aa137235a6e79c5470716e',
-  })
+ 
+  depends_on 'python27'
+  depends_on 'zlibpkg'
 
   def self.build
     system "./configure",
@@ -27,9 +17,9 @@ class Libxml2 < Package
       "--enable-shared",
       "--disable-static",
       "--with-pic",
-      "--without-python",
+      "--with-python",
       "--without-lzma",
-      "--without-zlib"
+      "--with-zlib"
     system "make"
   end
 
