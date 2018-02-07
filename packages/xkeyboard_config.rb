@@ -10,6 +10,8 @@ class Xkeyboard_config < Package
 
   depends_on "util_macros"
   depends_on "intltool"
+  depends_on "libx11"
+  depends_on "gettext" => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
