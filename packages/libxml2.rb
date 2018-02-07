@@ -3,7 +3,7 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.9.7'
+  version '2.9.7-1'
   source_url 'ftp://xmlsoft.org/libxml2/libxml2-2.9.7.tar.gz'
   source_sha256 'f63c5e7d30362ed28b38bfa1ac6313f9a80230720b7fb6c80575eeab3ff5900c'
  
