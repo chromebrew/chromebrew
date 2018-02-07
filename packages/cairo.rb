@@ -10,7 +10,7 @@ class Cairo < Package
   depends_on 'libpng'
   depends_on 'pixman'
   depends_on 'fontconfig' # pango requires cairo with fontconfig
-  depends_on 'gobject_introspection'
+  depends_on 'libtool'
   depends_on 'mesa'
   depends_on 'automake' => :build
 
