@@ -3,7 +3,7 @@ require 'package'
 class Gtk3 < Package
   description 'Gtk3 is a cross-platform widget toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  version '3.22'
+  version '3.22.26'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gtk+/3.22/gtk+-3.22.26.tar.xz'
   source_sha256 '61eef0d320e541976e2dfe445729f12b5ade53050ee9de6184235cb60cd4b967'
 
