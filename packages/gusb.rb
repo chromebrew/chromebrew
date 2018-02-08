@@ -11,6 +11,8 @@ class Gusb < Package
   depends_on 'glib'
   depends_on 'gtk_doc'
   depends_on 'libusb'
+  depends_on 'libtool' => :build
+  depends_on 'intltool' => :build
 
   def self.build
     system "./autogen.sh"
