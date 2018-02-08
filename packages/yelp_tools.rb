@@ -7,6 +7,7 @@ class Yelp_tools < Package
   source_url 'https://github.com/GNOME/yelp-tools/archive/3.27.90.tar.gz'
   source_sha256 'da584450bc2373d1a27a922e851f88256c49c9a49a15ed2762e493f37b52a692'
 
+  depends_on 'automake' => :build
   depends_on 'yelp_xsl'
 
   def self.build
