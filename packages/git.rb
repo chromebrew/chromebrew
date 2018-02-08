@@ -8,8 +8,16 @@ class Git < Package
   source_sha256 'e3f13e3c86981f64b1920749c07be11841bbf5a3434ec9b5611959dfd7c7398e'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '1267dd4eedcdef94c201b462f18f8dbc3bdef1e82106adf642cf428ede350d3b',
+     armv7l: '1267dd4eedcdef94c201b462f18f8dbc3bdef1e82106adf642cf428ede350d3b',
+       i686: '2215ef3534daf89e1b96b63f7b5177018cb657bb7713d9aad97a80729c4da546',
+     x86_64: '8447b69bb2eb1040fa5627c1e0aae122db6b22ec846f957b81fd3fbc2d287783',
   })
 
   # use system zlibpkg, openssl, curl, expat

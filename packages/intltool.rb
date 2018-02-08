@@ -7,6 +7,19 @@ class Intltool < Package
   source_url 'https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz'
   source_sha256 '67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '47c82f3b2e4d6c2959ee1edf1d8dc480eb4e28e0bfac9efc823be7d937bfadcb',
+     armv7l: '47c82f3b2e4d6c2959ee1edf1d8dc480eb4e28e0bfac9efc823be7d937bfadcb',
+       i686: '41acb4802df44c0264e496a6a20c96a8db8bf5626d6214a72dee58f26a2caa9a',
+     x86_64: '128c16c438bcf23d0d9cc27afe947c7ece5e5ba96d96dd5838d3550f702bfe40',
+  })
+
   depends_on 'libtool'
   depends_on 'perl_xml_parser'
   depends_on 'patch' => :build
