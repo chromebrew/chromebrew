@@ -3,22 +3,9 @@ require 'package'
 class Python27 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '2.7.14'
+  version '2.7.14-0'
   source_url 'https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz'
   source_sha256 '71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'ce57af02374678753825f216938d64d98c08f6e1475b92880491efc16b79e9ff',
-     armv7l: 'ce57af02374678753825f216938d64d98c08f6e1475b92880491efc16b79e9ff',
-       i686: 'd1d0449f4bae645a39ef827e03cb892dc701c28115e3ed1404d074df964b4caf',
-     x86_64: 'e446e1313a28c4a75303a0fa108022a7fc73d0c15a50570c8949d194bc44e51b',
-  })
 
   depends_on 'bz2' => :build
   depends_on 'ncurses'
