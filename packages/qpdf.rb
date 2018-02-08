@@ -19,6 +19,8 @@ class Qpdf < Package
        i686: '851a7ad6e4f60feac3b0acd592649e784837d774e76916c153881db895b8df6e',
      x86_64: '980b28cfb28952ba95560acf4745dd0ef899c3be2fe04b9d343a89a28f566e28',
   })
+  
+  depends_on 'libjpeg'
 
   def self.build
     system './autogen.sh'
