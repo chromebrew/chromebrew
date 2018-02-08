@@ -16,7 +16,7 @@ class Qpdf < Package
 
   def self.build
     system './autogen.sh'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system './configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}'
     system 'make'
   end
 
