@@ -9,7 +9,8 @@ class Yelp_tools < Package
 
   depends_on 'automake' => :build
   depends_on 'yelp_xsl'
-
+  depends_on 'libxslt'
+  
   def self.build
     system "./autogen.sh"
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
