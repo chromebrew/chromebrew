@@ -8,8 +8,16 @@ class Byobu < Package
   source_sha256 '4eca1287b95093ac4697e6ebf7312308d54af90630db151669c5f328e0bef122'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '6ae0a523b224701125020c8a8051a8993fc2999d29239ded9ad92935b4f71b79',
+     armv7l: '6ae0a523b224701125020c8a8051a8993fc2999d29239ded9ad92935b4f71b79',
+       i686: 'bc8d3e924a029ba6dece63a845c0a70d39afeab85ad0aab093f05ef49b6a45bd',
+     x86_64: '633a6857112ea892bafa9718e7092161fdf161c7b75a5b3ad432cfb5f895506a',
   })
 
   depends_on 'gawk'
