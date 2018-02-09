@@ -7,23 +7,14 @@ class Google_cloud_sdk < Package
 
   case ARCH
   when 'i686'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-179.0.0-linux-x86.tar.gz'
-    source_sha256 '9aa61b596fc7a247643bf42f5d2ce153d46da79b136f0723055ad1a2864aba46'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-187.0.0-linux-x86.tar.gz'
+    source_sha256 '2c95fbef6e917f658e7a925c9e405823e853e3d62e908a013c4aa760aec28864'
   when 'x86_64'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-179.0.0-linux-x86_64.tar.gz'
-    source_sha256 '7852ec02a38453ed11707646123994e5714a8ffd7cf3b401f4c963aadba8ed14'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-187.0.0-linux-x86_64.tar.gz'
+    source_sha256 'bd35518e0c8605327934b0c3c3ac1429b833b72dd09bc2ac002a47a505cf1d78'
   else
     puts 'Unable to install google_cloud_sdk.  Supported architectures include i686 and x86_64 only.'.lightred
   end
-
-  binary_url ({
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-179.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-179.0.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-       i686: '86526b7704b3330813192bcc129b2714d2fddd74987a928f9893b1cc979c91d8',
-     x86_64: 'e11d8bacee72c6059ed23d02d7d7ff0aa36b3e7f2f6aeebd204ea983cc5922c7',
-  })
 
   case ARCH
   when 'i686', 'x86_64'
