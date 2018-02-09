@@ -12,7 +12,7 @@ class Graphviz < Package
   depends_on 'flex'
   depends_on 'gdk_pixbuf'
   depends_on 'libxrender'
-  depends_on 'popper'
+  depends_on 'poppler'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
