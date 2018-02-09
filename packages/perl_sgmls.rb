@@ -5,7 +5,7 @@ class Perl_sgmls < Package
   description 'a set of Perl5 routines for processing the output from the onsgmls SGML parsers.'
   homepage 'http://search.cpan.org/dist/SGMLSpm/'
   version '1.1'
-  source_url 'https://search.cpan.org/CPAN/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz'
+  source_url 'http://search.cpan.org/CPAN/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz'   # can not install it if using https://
   source_sha256 '550c9245291c8df2242f7e88f7921a0f636c7eec92c644418e7d89cfea70b2bd'
 
   depends_on 'perl'
