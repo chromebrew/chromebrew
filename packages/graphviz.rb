@@ -7,6 +7,7 @@ class Graphviz < Package
   source_url 'https://gitlab.com/graphviz/graphviz/repository/67cd2e5121379a38e0801cc05cce5033f8a2a609/archive.tar.bz2'
   source_sha256 '8dddc80b4194b17c1a5bc1cc7b5e001e9a3ec27272287dc16f278c736a29a9b9'
 
+  depends_on 'automake' => :build
   depends_on 'fontconfig'
   depends_on 'pango'
   depends_on 'flex'
