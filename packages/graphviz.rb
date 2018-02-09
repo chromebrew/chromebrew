@@ -8,7 +8,6 @@ class Graphviz < Package
   source_sha256 '8dddc80b4194b17c1a5bc1cc7b5e001e9a3ec27272287dc16f278c736a29a9b9'
 
   depends_on 'automake' => :build
-  depends_on 'fontconfig'
   depends_on 'pango'
   depends_on 'flex'
   depends_on 'gdk_pixbuf'
