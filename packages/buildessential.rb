@@ -12,8 +12,10 @@ class Buildessential < Package
   depends_on 'make'
   depends_on 'pkgconfig'
   
-  depends_on 'automake' #
-  depends_on 'libtool'  #
-  depends_on 'intltool' # These three are mostly required for "./autogen.sh"
+  # typically required library to compile source code using "./autogen.sh"
+  depends_on 'automake' 
+  depends_on 'libtool'  
+  depends_on 'intltool' 
+  depends_on 'patch'
   
 end
