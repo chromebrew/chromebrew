@@ -20,7 +20,7 @@ class Xcb_proto < Package
      x86_64: 'd1b2f9c4c8ab6de2f496efabfd614a89fd38499091a4b7a82ba4b221499dd1a7',
   })
   
-  depends_on 'python27' => :build
+  depends_on 'python27' => :build    # I have removed this. It also works.
   
   def self.build
     system "./configure"
