@@ -21,6 +21,7 @@ class Buildessential < Package
   depends_on 'bison'
   depends_on 'flex'
   depends_on 'util_macros'  
+  depends_on 'gettext'
  
   # xorg protocols headers
   depends_on 'xorg_proto'
