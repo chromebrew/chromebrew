@@ -20,7 +20,7 @@ class Libxml2 < Package
      x86_64: 'e9b0b85c681e748b4532bd201503caaee5fcce8f73849d7199bf80634e9cbbba',
   })
  
-  depends_on 'python27'
+  depends_on 'python27' => :build   # since binary is available, mark it as build depedency
   depends_on 'zlibpkg'
 
   def self.build
