@@ -21,10 +21,11 @@ class Buildessential < Package
   depends_on 'bison'
   depends_on 'flex'
   depends_on 'util_macros'  
-  
+ 
   # xorg protocols headers
   depends_on 'xorg_proto'
-  
-  
+ 
+  # maybe meson build system ?   
+  # depends_on 'meson'        ## With python binary fixed, this chould be included here.
   
 end
