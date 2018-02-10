@@ -3,7 +3,7 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.6.4-0'
+  version '3.6.4-1'
   source_url 'https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz'
   source_sha256 '159b932bf56aeaa76fd66e7420522d8c8853d486b8567c459b84fe2ed13bcaba'
 
@@ -14,6 +14,8 @@ class Python3 < Package
   depends_on 'openssl' => :build
   depends_on 'sqlite' => :build
   depends_on 'zlibpkg'
+  depends_on 'libffi'
+  depends_on 'readline'
 
   def self.build
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
