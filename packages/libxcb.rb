@@ -20,7 +20,7 @@ class Libxcb < Package
      x86_64: 'e68026a9ce6d39647790fa2f8f93c129070977c6d39c939d47ee5ec976a3da8a',
   })
 
-  depends_on 'python27'
+  depends_on 'python27' => :build
   depends_on 'xcb_proto'
   depends_on 'libxau'
   depends_on 'pthread_stubs'
