@@ -1,8 +1,13 @@
 require 'package'
 
 class Xorg_lib < Package
+  description 'A collection of xorg libraries.'
+  homepage ''
+  version '0.1'  
+  
   is_fake
-
+ 
+  # new
   depends_on 'libdmx'
   depends_on 'libfs'
   depends_on 'libice'
