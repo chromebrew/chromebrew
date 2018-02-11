@@ -17,6 +17,14 @@ class Cbase < Package
   })
 
   def self.build
+    # fix error on arm architecture
+    case ARCH
+      when 'armv7l','aarch64'
+        Dir.chdir("lib") do
+          system "sed -i '376c if (&vp == NULL)' strings.c"  # change from   if(!vp)   to    if (&vp == NULL),  tested on armv7l   
+        end
+    end
+    
     system "./configure --prefix=#{CREW_PREFIX}"
     system "make"
   end
