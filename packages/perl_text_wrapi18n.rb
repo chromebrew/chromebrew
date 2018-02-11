@@ -8,13 +8,14 @@ class Perl_text_wrapi18n < Package
   source_sha256 '4bd29a17f0c2c792d12c1005b3c276f2ab0fae39c00859ae1741d7941846a488'
 
   depends_on 'perl'
+  depends_on 'perl_text_charwidth'  # add dependency
 
   def self.build
   end
 
   def self.install
     # install files to build directory
-    system 'cpanm', '-l', "build", '--self-contained', '.'
+    system 'cpanm', '-l', "build", '.'            #  remove --self-contained
 
     # install lib
     libdir = `perl -e 'require Config; print $Config::Config{'"'installsitelib'"'};'`
