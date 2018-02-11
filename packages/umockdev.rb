@@ -11,8 +11,12 @@ class Umockdev < Package
   depends_on 'automake' => :build
   depends_on 'libtool' => :build
   depends_on 'intltool' => :build
-  depends_on 'python27'
-
+  depends_on 'python27' => :build
+  depends_on 'glib'
+  depends_on 'libgudev'
+  depends_on 'vala'  => :build
+  
+  
   def self.build
     system "./autogen.sh"
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
