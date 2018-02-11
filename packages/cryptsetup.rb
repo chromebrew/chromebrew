@@ -1,7 +1,7 @@
 require 'package'
 
 class Cryptsetup < Package
-  description 'Cryptsetup is utility used to conveniently setup disk encryption based on DMCrypt kernel module.'
+  description 'The cryptsetup utility is used to conveniently setup disk en-/decryption based on DMCrypt kernel module.'
   homepage 'https://gitlab.com/cryptsetup/cryptsetup'
   version '2.0.1'
   source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.1.tar.xz'
@@ -20,7 +20,6 @@ class Cryptsetup < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    #system "make", "install"
   end
 
   def self.check
