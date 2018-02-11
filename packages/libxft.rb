@@ -10,6 +10,8 @@ class Libxft < Package
   depends_on 'libxrender'
   depends_on 'libx11' 
   depends_on 'fontconfig'
+  depends_on 'util_macros'
+  depends_on 'zlibpkg'
   
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
