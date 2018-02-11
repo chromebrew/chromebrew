@@ -16,6 +16,8 @@ class Cbase < Package
      x86_64: '2f504105cc4c0aef846e0d5fc272a7baf919517f40cc19a86e55b59c12ab0d61',
   })
 
+  depends_on 'expat'
+  
   def self.build
     # fix error on arm architecture
     case ARCH
