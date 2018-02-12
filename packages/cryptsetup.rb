@@ -7,7 +7,7 @@ class Cryptsetup < Package
   source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.1.tar.xz'
   source_sha256 '41d188092c52e23d576af41cf0cfe0555d8f7efa21598d4c57c56ea1b6d9c975'
 
-  depends_on 'libuuid'
+  depends_on 'util_linux'
   depends_on 'lvm2'
   depends_on 'jsonc'
   depends_on 'libgcrypt'
