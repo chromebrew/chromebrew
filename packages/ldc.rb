@@ -8,8 +8,16 @@ class Ldc < Package                 # The first character of the class name must
   source_sha256 '7cd46140ca3e4ca0d52c352e5b694d4d5336898ed4f02c3e18e0eafd69dd18bd'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ldc-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ldc-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ldc-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ldc-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '6a4b83f91ead7675d40aa3621dc48362fffa99db4217e3e3557cecf80d91fef8',
+     armv7l: '6a4b83f91ead7675d40aa3621dc48362fffa99db4217e3e3557cecf80d91fef8',
+       i686: '53a3b65c1727431eb86c528da90e49a3687ab423215018bf8b9ea4fc388b32d7',
+     x86_64: '6730100e809fc14d8b42f6d39fce4699917d24b971438eceb819e9c9264fbeaa',
   })
 
   depends_on 'llvm'
