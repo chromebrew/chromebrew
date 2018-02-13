@@ -3,10 +3,22 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.6.4-1'
+  version '3.6.4-2'
   source_url 'https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz'
   source_sha256 '159b932bf56aeaa76fd66e7420522d8c8853d486b8567c459b84fe2ed13bcaba'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '84ac3a9e1d4bc8fc6e6b73ab83e7b1c9fc1925794d56bfd795ec68ddf0668104',
+     armv7l: '84ac3a9e1d4bc8fc6e6b73ab83e7b1c9fc1925794d56bfd795ec68ddf0668104',
+       i686: '8e7ffe80318afee1e3f3614440d30fb5fd4daf2d2d901b55b48c2216e034059d',
+     x86_64: 'f1536a51e87f816edb216dcb036af9f5c2d6c767eefef0e2fdae85a0ffb8d84c',
+  })
 
   depends_on 'bz2' => :build
   depends_on 'xzutils' => :build
@@ -21,7 +33,7 @@ class Python3 < Package
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
       "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
-      "--with-ensurepip=install", "--enable-shared"
+      "--with-ensurepip=yes", "--enable-shared"
     system "make"
   end
 

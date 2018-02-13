@@ -3,9 +3,22 @@ require 'package'
 class Python27 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '2.7.14-0'
+  version '2.7.14-1'
   source_url 'https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz'
   source_sha256 '71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '400482313b4fba0565d3183f21070e41a4023f4e7306120389702a813728c23a',
+     armv7l: '400482313b4fba0565d3183f21070e41a4023f4e7306120389702a813728c23a',
+       i686: '52b3fed24888bf92e4424927c12d27187669eb5723377c7176e91bbc9990de36',
+     x86_64: 'b7ea621041b9168ffdaf60ba19cb5e740e939b6ef2105612631047484fed1512',
+  })
 
   depends_on 'bz2' => :build
   depends_on 'ncurses'
@@ -18,7 +31,7 @@ class Python27 < Package
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
         "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
-        "--with-ensurepip=install", "--enable-shared"
+        "--with-ensurepip=yes", "--enable-shared"
     system "make"
   end
 
