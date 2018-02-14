@@ -14,10 +14,10 @@ class Python27 < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.14-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '400482313b4fba0565d3183f21070e41a4023f4e7306120389702a813728c23a',
-     armv7l: '400482313b4fba0565d3183f21070e41a4023f4e7306120389702a813728c23a',
+    aarch64: 'b9b46abdff0324b9b701cd8dc36f7658a5780029bc9f6b6f8c45efbc6bfaca53',
+     armv7l: 'b9b46abdff0324b9b701cd8dc36f7658a5780029bc9f6b6f8c45efbc6bfaca53',
        i686: '52b3fed24888bf92e4424927c12d27187669eb5723377c7176e91bbc9990de36',
-     x86_64: 'b7ea621041b9168ffdaf60ba19cb5e740e939b6ef2105612631047484fed1512',
+     x86_64: '3cc45031f1cbfa34d2232ad1628a358ab26fd03954b29d7d3c3832e84ffcdf2e',
   })
 
   depends_on 'bz2' => :build
