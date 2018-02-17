@@ -8,8 +8,16 @@ class Percona_server < Package
   source_sha256 '17f06c07165954e7eacc3ba2cac0e1d4ba65b0b568f2437298d3c17a6a0940fd'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',
+     armv7l: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',
+       i686: '757706998388bf559a70f53567af4518c523f1236a500e228210ce023ef41a5c',
+     x86_64: '47431d59582a5be3361cbfd571de3da9a557b76cea40a01f4b58347988e7aa2c',
   })
 
   depends_on 'cmake' => :build

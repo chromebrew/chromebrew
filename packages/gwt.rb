@@ -8,8 +8,16 @@ class Gwt < Package
   source_sha256 '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gwt-2.8.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gwt-2.8.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gwt-2.8.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gwt-2.8.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'abb5a99c68ece5bac1c17b336fc6178ddee1b870a4e3491af31c1695a9b9d70d',
+     armv7l: 'abb5a99c68ece5bac1c17b336fc6178ddee1b870a4e3491af31c1695a9b9d70d',
+       i686: '533e96845f196c95510cec486bf4cd4f173a88b298a104eb6f8f9713a24f665b',
+     x86_64: 'ec69121900cf3370ad358465158e76967e5998a006604e522b102836c754f92b',
   })
 
   depends_on 'ant'

@@ -7,6 +7,19 @@ class Miniconda3 < Package
   source_url 'https://raw.githubusercontent.com/Anaconda-Platform/anaconda-project/adb2d443b805f2c6c53f989251cc1a2b13fc0d0e/README.md'
   source_sha256 'ec0bfe39423ca117ffcd17c154e3e5f6c81a28c4fb14c22dd5033f499a306362'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-5.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-5.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-5.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-5.0.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'f39e37069874e57911e58024e63acdbe530b8b4a7cbf3197b86fd7a9f4855bd9',
+     armv7l: 'f39e37069874e57911e58024e63acdbe530b8b4a7cbf3197b86fd7a9f4855bd9',
+       i686: '3dc928dc63f119c92029213a92b244543e916c1ba239483a935ccac79da1b7b6',
+     x86_64: 'f488aed6b483c82f42be176b07fd8398b302381d60c80a34f3e7569a2295812a',
+  })
+
   depends_on 'python3'
 
   def self.install
