@@ -17,7 +17,7 @@ class Python3 < Package
     aarch64: '481fa9f5bdff6d43eeea4ac90bbee6ef5054e2960d5f1f141bb24359af5ac25b',
      armv7l: '481fa9f5bdff6d43eeea4ac90bbee6ef5054e2960d5f1f141bb24359af5ac25b',
        i686: '8e7ffe80318afee1e3f3614440d30fb5fd4daf2d2d901b55b48c2216e034059d',
-     x86_64: 'f3daa7011ff0db8e6446c3f1be0f8d526d4599337bc05bfdfe9f35dc666b6a75',
+     x86_64: 'f1536a51e87f816edb216dcb036af9f5c2d6c767eefef0e2fdae85a0ffb8d84c',
   })
 
   depends_on 'bz2' => :build
