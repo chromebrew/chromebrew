@@ -3,34 +3,50 @@ require 'package'
 class Mutt < Package
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '1.9.1'
-  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz'
-  source_sha256 '749b83a96373c6e2101ebe8c4b9a651735e02c478edb750750a5146a15d91bb1'
+  version '1.9.2'
+  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-1.9.2.tar.gz'
+  source_sha256 'a2e152a352bbf02d222d54074199d9c53821c19f700c4cb85f78fa85faed7896'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7d0ecbe964f7c76e8206297c29dfabf40e725ed0677a5cdd6ba89c6591c57c63',
-     armv7l: '7d0ecbe964f7c76e8206297c29dfabf40e725ed0677a5cdd6ba89c6591c57c63',
-       i686: 'c755e1e814a1f7660316308b86b53e8cf11db72c83c1223c84f63abc61f00230',
-     x86_64: 'fec90a3d7928479772c0b285ccc44f4746c4f1de86e96d7aa7598edf24218da2',
+    aarch64: '0acaa6fa2863afa8da56a61ba99d365e2bdd73dc56e9801ee9b6e9338d33e2a2',
+     armv7l: '0acaa6fa2863afa8da56a61ba99d365e2bdd73dc56e9801ee9b6e9338d33e2a2',
+       i686: '97e12bc88aff256ea46c6389c69a5cf2623908c423ca43f08d6a905c0cb50391',
+     x86_64: 'e8ca9e36db89e76471118d9620df06e9f6eac43c20eefd01810a98ca80149583',
   })
 
+  depends_on 'gdbm'
+  depends_on 'libcyrussasl'
   depends_on 'libxslt'
+  depends_on 'openssl'
+  depends_on 'perl'
 
   def self.build
     system "./configure \
             --prefix=#{CREW_PREFIX} \
-            --with-mailpath=#{CREW_PREFIX}/mail"
+            --with-mailpath=#{CREW_PREFIX}/mail \
+            --with-sasl=#{CREW_PREFIX}/lib/sasl2 \
+            --with-ssl \
+            --enable-imap \
+            --enable-smtp \
+            --enable-hcache"
     system 'make'
   end
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/mail"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+
+  def self.postinstall
+    puts
+    puts "To finish the installation, execute the following:".lightblue
+    puts "echo 'export SASL_PATH=#{CREW_PREFIX}/lib/sasl2' >> ~/.bashrc && source ~/.bashrc".lightblue
+    puts
   end
 end

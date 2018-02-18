@@ -3,26 +3,26 @@ require 'package'
 class Google_cloud_sdk < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/'
-  version '179.0.0'
+  version '188.0.1'
 
   case ARCH
   when 'i686'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-179.0.0-linux-x86.tar.gz'
-    source_sha256 '9aa61b596fc7a247643bf42f5d2ce153d46da79b136f0723055ad1a2864aba46'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-188.0.1-linux-x86.tar.gz'
+    source_sha256 '5ac86acadcecb050c12f0b166fede71441c90415f3b794860764894deb451949'
   when 'x86_64'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-179.0.0-linux-x86_64.tar.gz'
-    source_sha256 '7852ec02a38453ed11707646123994e5714a8ffd7cf3b401f4c963aadba8ed14'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-188.0.1-linux-x86_64.tar.gz'
+    source_sha256 '2966e8c21b4176037cc7f1916a170f2b6c7fcdb563cde25e26063986d2bdc047'
   else
     puts 'Unable to install google_cloud_sdk.  Supported architectures include i686 and x86_64 only.'.lightred
   end
 
   binary_url ({
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-179.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-179.0.0-chromeos-x86_64.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-188.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-188.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-       i686: '86526b7704b3330813192bcc129b2714d2fddd74987a928f9893b1cc979c91d8',
-     x86_64: 'e11d8bacee72c6059ed23d02d7d7ff0aa36b3e7f2f6aeebd204ea983cc5922c7',
+       i686: '60d2def4626fe1b977a1f4719746e255426c8b6350fbc346dbd597293a768cae',
+     x86_64: '328017c5c64b10cb2b9c561cb875037a1f9beff273cb9b6b77a6ee8342706e6b',
   })
 
   case ARCH
@@ -41,7 +41,7 @@ class Google_cloud_sdk < Package
     end
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     FileUtils.cd("#{CREW_DEST_PREFIX}/share/google_cloud_sdk/bin") do
-      system "find . -exec ln -s #{CREW_PREFIX}/share/google_cloud_sdk/bin/{} #{CREW_DEST_PREFIX}/bin \\;"
+      system "find . -type f -exec ln -s #{CREW_PREFIX}/share/google_cloud_sdk/bin/{} #{CREW_DEST_PREFIX}/bin \\;"
     end
     system "sed -i 's,#{CREW_DEST_DIR},,g' $HOME/.bashrc"
   end

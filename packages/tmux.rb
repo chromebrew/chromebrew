@@ -3,21 +3,21 @@ require 'package'
 class Tmux < Package
   description 'tmux is a terminal multiplexer'
   homepage 'http://tmux.github.io/'
-  version '2.5'
-  source_url 'https://github.com/tmux/tmux/releases/download/2.5/tmux-2.5.tar.gz'
-  source_sha256 'ae135ec37c1bf6b7750a84e3a35e93d91033a806943e034521c8af51b12d95df'
+  version '2.6'
+  source_url 'https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz'
+  source_sha256 'b17cd170a94d7b58c0698752e1f4f263ab6dc47425230df7e53a6435cc7cd7e8'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f974bcaa1533327eb6beecc4aa2572dd6e557fede27cf91c80832df3b16dc399',
-     armv7l: 'f974bcaa1533327eb6beecc4aa2572dd6e557fede27cf91c80832df3b16dc399',
-       i686: 'ebdabcaddde645887615ce990d1487c2f7dc50a77785e1dd81595fb930860ac9',
-     x86_64: '1901576a8c7ac2ca156e219892c1df41046e76608a64418a0a1dbeb1097dcbd5',
+    aarch64: '76ca89c630b2be0ed3ed0820d92329b78e0d0ef7ad61a94e3dfbfdcdb9b5cc9f',
+     armv7l: '76ca89c630b2be0ed3ed0820d92329b78e0d0ef7ad61a94e3dfbfdcdb9b5cc9f',
+       i686: '54e86a02043ca23793838da5d605a3131800c2bfffaec46be3b7a8e0add3f5bb',
+     x86_64: '85790c069f950e16d001391a737f67389baa90f3fc44e4eccfd382ed43f8311d',
   })
 
   depends_on 'readline'

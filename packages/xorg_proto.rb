@@ -30,6 +30,11 @@ class Xorg_proto < Package
   depends_on 'xextproto'
   depends_on 'xf86driproto'
   depends_on 'xf86vidmodeproto'
+  depends_on 'xf86rushproto'
+  depends_on 'xf86dgaproto'
+  depends_on 'xf86bigfontproto'
   depends_on 'xineramaproto'
   depends_on 'xproto'
+  depends_on 'xproxymanagementproto'
+  
 end

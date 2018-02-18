@@ -3,25 +3,26 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.1.12'
-  source_url 'https://php.net/distributions/php-7.1.12.tar.xz'
-  source_sha256 'a0118850774571b1f2d4e30b4fe7a4b958ca66f07d07d65ebdc789c54ba6eeb3'
+  version '7.2.2'
+  source_url 'https://php.net/distributions/php-7.2.2.tar.xz'
+  source_sha256 '47d7607d38a1d565fc43ea942c92229a7cd165f156737f210937e375b243cb11'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'fa1a0897dd78ea1cf94bc353a78e56e15789f7705babaabdee8c353f651ae89a',
-     armv7l: 'fa1a0897dd78ea1cf94bc353a78e56e15789f7705babaabdee8c353f651ae89a',
-       i686: '6fbea0ee47680e4f08e61712e6a2aa8128af7987e8fe20c4458a6b988458e213',
-     x86_64: '78fa2609dd43dea42c62436551ec9b3efba1e037dd8e983f68ab81636f4b10b9',
+    aarch64: '905145fcb31e3cabd5f0e7ebccc7733ccb681d5ee0ffc6a374a6ec807cec526c',
+     armv7l: '905145fcb31e3cabd5f0e7ebccc7733ccb681d5ee0ffc6a374a6ec807cec526c',
+       i686: 'e26a38c963c35436a959d1b9ce414f5545e8a37fe873083888c6b478ae291afb',
+     x86_64: 'ae983b4120e31caeff429670004c7dd27ec1db21e5767a2d8b96fdabfd91f587',
   })
 
   depends_on 'pkgconfig'
   depends_on 'zlibpkg'
+  depends_on 'libgcrypt'
   depends_on 'libpng'
   depends_on 'libxml2'
   depends_on 'libxslt'

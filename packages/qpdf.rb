@@ -3,26 +3,29 @@ require 'package'
 class Qpdf < Package
   description 'QPDF is a command-line program that does structural, content-preserving transformations on PDF files.'
   homepage 'http://qpdf.sourceforge.net/'
-  version '7.0.b1'
-  source_url 'https://github.com/qpdf/qpdf/archive/release-qpdf-7.0.b1.tar.gz'
-  source_sha256 '2e0a26f7a03fe41c72be8e95c420744f98dbf553e025fb0d4c990f83df023d90'
+  version '7.1.1'
+  source_url 'https://github.com/qpdf/qpdf/archive/release-qpdf-7.1.1.tar.gz'
+  source_sha256 '21822dc365eaee55bc449d84eb760b9845c4871783ab0e4c4f3b244052718a1a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.0.b1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.0.b1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.0.b1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.0.b1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2d01edee3bbe5b8d8b8bee704889307dbe48fe5fdb6b064516b1a290be8bc2fa',
-     armv7l: '2d01edee3bbe5b8d8b8bee704889307dbe48fe5fdb6b064516b1a290be8bc2fa',
-       i686: '851a7ad6e4f60feac3b0acd592649e784837d774e76916c153881db895b8df6e',
-     x86_64: '980b28cfb28952ba95560acf4745dd0ef899c3be2fe04b9d343a89a28f566e28',
+    aarch64: '94947bdabca20ed079672c86ce3f6b94ff5e3d992e0d94d41cbeef7bbc40d78e',
+     armv7l: '94947bdabca20ed079672c86ce3f6b94ff5e3d992e0d94d41cbeef7bbc40d78e',
+       i686: 'c0bc260a6c702e6edc13cccf8294b257bf560d7e6977030aeddaf64606372668',
+     x86_64: '32069b9fb1bcb81e9024eef707b5ab9e61bacc87fa8141f8de51ba4293fefa98',
   })
+  
+  depends_on 'libjpeg'
+  depends_on 'automake' => :build
 
   def self.build
     system './autogen.sh'
-    system './configure'
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 

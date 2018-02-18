@@ -3,25 +3,27 @@ require 'package'
 class Jsonc < Package
   description 'JSON-C implements a reference counting object model that allows you to easily construct JSON objects in C, output them as JSON formatted strings and parse JSON formatted strings back into the C representation of JSON objects.'
   homepage 'https://github.com/json-c/json-c/wiki'
-  version '0.12.1-nodoc'
-  source_url 'https://s3.amazonaws.com/json-c_releases/releases/json-c-0.12.1-nodoc.tar.gz'
-  source_sha256 '5a617da9aade997938197ef0f8aabd7f97b670c216dc173977e1d56eef9e1291'
+  version '0.13-nodoc'
+  source_url 'https://s3.amazonaws.com/json-c_releases/releases/json-c-0.13-nodoc.tar.gz'
+  source_sha256 '8572760646e9d23ee68f967ca62fa134a97b931665fd9af562192b7788c95a06'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.12.1-nodoc-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.12.1-nodoc-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.12.1-nodoc-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.12.1-nodoc-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.13-nodoc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.13-nodoc-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.13-nodoc-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jsonc-0.13-nodoc-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '48fa744832dce095fe3d1a5d362b896b2d5a754207db4c9744acb58cf75a5dc1',
-     armv7l: '48fa744832dce095fe3d1a5d362b896b2d5a754207db4c9744acb58cf75a5dc1',
-       i686: 'c6f53630a47e62238fdc973e6b9ea7c0a0b0346cb320a9ea19d5e72b30e7c6d0',
-     x86_64: 'fdd9d9e5d263fef32972f841cc92e77be61a6df5d175e8ae4033c0df62737ba9',
+    aarch64: '7a7202d506c9ed3580b02f37e7aae42ecb665e240fa45d09d16cb9c4de501745',
+     armv7l: '7a7202d506c9ed3580b02f37e7aae42ecb665e240fa45d09d16cb9c4de501745',
+       i686: 'c9305143aec228f737b3fc952ccd22ae0e139174b7bd46e8f25ef06b2bdf2131',
+     x86_64: 'ecfa4db7850b31558d70ac0d92f372c4fd1082fcd04130a51b4520f591bcb5fb',
   })
 
+  depends_on "autoconf" => :build
+
   def self.build
-    system "./configure --prefix=/usr/local"
+    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

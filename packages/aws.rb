@@ -3,21 +3,21 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version '1.14.16'
-  source_url 'https://github.com/aws/aws-cli/archive/1.14.16.tar.gz'
-  source_sha256 '5134f47dc0f6a45c0600e71abf040965f5356f5185e544f78f8b975f7d2d3e21'
+  version '1.14.32'
+  source_url 'https://github.com/aws/aws-cli/archive/1.14.32.tar.gz'
+  source_sha256 'de84cef870b78198168404af27c7ab511dc27b0c28e1be6e4ed77fd8dbd4b78c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.32-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.32-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.32-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.14.32-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'aeff85395a5937d5796fbe91c94c49421d73e4e76cb0913c9552c0455435661d',
-     armv7l: 'aeff85395a5937d5796fbe91c94c49421d73e4e76cb0913c9552c0455435661d',
-       i686: '95897d6c609d9f775d1bda59075dbab02e98f1a1fa6209c28d11059df80026c2',
-     x86_64: 'c85943d67869c652453668588b5c52992a6c1a6124285cdcfbeddd3404463f4a',
+    aarch64: '70d4d81009a0948e2d8069df794c1b52c7864f6918dd78146e30a1ff55c3bb2f',
+     armv7l: '70d4d81009a0948e2d8069df794c1b52c7864f6918dd78146e30a1ff55c3bb2f',
+       i686: '703001f046ae3ef9e8dfab13e968ae11ece54d737916110dcd7c87ffb25a5fb5',
+     x86_64: 'd79bce821399bb5edd1716bbca98b0d9fe83b77e3766859aad820d4b3ef9132d',
   })
 
   depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"

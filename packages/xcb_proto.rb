@@ -19,8 +19,8 @@ class Xcb_proto < Package
        i686: '321e8479a559cbb9c726d5ddb44556eda41dbcf4a7ee9a6ff6f1e46426ca3618',
      x86_64: 'd1b2f9c4c8ab6de2f496efabfd614a89fd38499091a4b7a82ba4b221499dd1a7',
   })
-
-  depends_on 'python27'
+  
+  depends_on 'python27' => :build 
   
   def self.build
     system "./configure"
