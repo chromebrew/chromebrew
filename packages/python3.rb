@@ -17,7 +17,7 @@ class Python3 < Package
     aarch64: '481fa9f5bdff6d43eeea4ac90bbee6ef5054e2960d5f1f141bb24359af5ac25b',
      armv7l: '481fa9f5bdff6d43eeea4ac90bbee6ef5054e2960d5f1f141bb24359af5ac25b',
        i686: '8e7ffe80318afee1e3f3614440d30fb5fd4daf2d2d901b55b48c2216e034059d',
-     x86_64: 'f1536a51e87f816edb216dcb036af9f5c2d6c767eefef0e2fdae85a0ffb8d84c',
+     x86_64: 'cb75bc5794d06951897906b87ec2fedf316d268040290845809517861a9e7bbe',
   })
 
   depends_on 'bz2' => :build
@@ -33,7 +33,7 @@ class Python3 < Package
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
       "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
-      "--with-ensurepip=yes", "--enable-shared"
+      "--with-ensurepip=install", "--enable-shared"
     system "make"
   end
 
