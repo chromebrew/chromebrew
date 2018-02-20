@@ -16,8 +16,8 @@ class Python27 < Package
   binary_sha256 ({
     aarch64: 'b9b46abdff0324b9b701cd8dc36f7658a5780029bc9f6b6f8c45efbc6bfaca53',
      armv7l: 'b9b46abdff0324b9b701cd8dc36f7658a5780029bc9f6b6f8c45efbc6bfaca53',
-       i686: '52b3fed24888bf92e4424927c12d27187669eb5723377c7176e91bbc9990de36',
-     x86_64: '3cc45031f1cbfa34d2232ad1628a358ab26fd03954b29d7d3c3832e84ffcdf2e',
+       i686: '3d18cf9af249c18eab193f7fd22137612555bb5b877304838f74cc13fba9ad5e',
+     x86_64: '099a31f3584cf2c0e65beeaace1b2c995d5fb64c8891fd0dce75c3cc7f8a6503',
   })
 
   depends_on 'bz2' => :build
@@ -31,7 +31,7 @@ class Python27 < Package
     # python requires to use /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
         "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
-        "--with-ensurepip=yes", "--enable-shared"
+        "--with-ensurepip=install", "--enable-shared"
     system "make"
   end
 

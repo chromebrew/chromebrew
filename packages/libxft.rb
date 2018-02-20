@@ -12,6 +12,7 @@ class Libxft < Package
   depends_on 'fontconfig'
   depends_on 'util_macros'
   depends_on 'zlibpkg'
+  depends_on 'harfbuzz'
   
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
