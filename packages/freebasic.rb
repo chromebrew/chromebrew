@@ -3,7 +3,7 @@ require 'package'
 class Freebasic < Package
   description 'FreeBASIC is a free/open source (GPL), BASIC compiler for Microsoft Windows, DOS and Linux.'
   homepage 'https://www.freebasic.net/'
-  version '1.05.0'
+  version '1.05.0-1'
   case ARCH
   when 'i686'
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.05.0-linux-x86.tar.gz'
@@ -12,7 +12,7 @@ class Freebasic < Package
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.05.0-linux-x86_64.tar.gz'
     source_sha256 '26d184061e2a55c7ee9c12213ac4bf062556ecec1bacf84037233a41aef6c74f'
   else
-    puts 'Unable to install freebasic.  Supported architectures include i686 and x86_64 only.'.lightred
+    puts "#{ARCH} architecture not supported.".lightred
   end
 
   binary_url ({
@@ -24,18 +24,9 @@ class Freebasic < Package
      x86_64: '3d289b59687e4a0fdba3272b290b3b638f1f2cf625ef14873e4e33e2acdd12aa',
   })
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'ncurses'
-  end
+  depends_on 'libtinfo'
 
   def self.install
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
-    FileUtils.cd("#{CREW_DEST_LIB_PREFIX}") do
-      # This is needed to fix fbc: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
-      # See http://www.linuxforums.org/forum/installation/6251-libtinfo-so-5-a.html for more information.
-      system "ln -s libncurses.so.6 libtinfo.so.5"
-    end
     system "mkdir -p #{CREW_DEST_PREFIX}"
     system "./install.sh -i #{CREW_DEST_PREFIX}"
   end
