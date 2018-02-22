@@ -8,8 +8,16 @@ class Jdk8 < Package
   source_sha256 'e632ae353ccfb90957cbb6a5818ee063710a41e7b97b490ee58ca5f627d863f1'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'bcbf7202fb97074c4161455d6a921378b4ce43b3fd430546b92d83d60c65fcc2',
+     armv7l: 'bcbf7202fb97074c4161455d6a921378b4ce43b3fd430546b92d83d60c65fcc2',
+       i686: '81d015255c8f1bbe9c78b6b78cc75cfd81fd63777ad8e1b1f1151d7f37d4889b',
+     x86_64: 'eebda392cdcdfee0cefac114edbfa4a39f8d76e83eb380e51e9bbc4a202206f1',
   })
 
   def self.install
