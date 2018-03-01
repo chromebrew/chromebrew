@@ -3,9 +3,22 @@ require 'package'
 class Automake < Package
   description 'Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.'
   homepage 'http://www.gnu.org/software/automake/'
-  version '1.15'
-  source_url 'ftp://ftp.gnu.org/gnu/automake/automake-1.15.tar.xz'
-  source_sha1 'c279b35ca6c410809dac8ade143b805fb48b7655'
+  version '1.15.1'
+  source_url 'https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz'
+  source_sha256 'af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '6b24c2151919dec05fe5db181594b8a0c9064de3b2c84ed297a6a206428863b5',
+     armv7l: '6b24c2151919dec05fe5db181594b8a0c9064de3b2c84ed297a6a206428863b5',
+       i686: '0a65312bf54e75983674a7933a01e073f625f073ba25fcb071185b2722797dc6',
+     x86_64: '9a354fc263d5e4118ae563f82f78a56df4d928271969a1b2bcba915f4ae85cac',
+  })
 
   depends_on 'autoconf'
 

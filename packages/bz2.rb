@@ -5,7 +5,20 @@ class Bz2 < Package
   homepage 'http://www.bzip.org/'
   version '1.0.6'
   source_url 'http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz'
-  source_sha1 '3f89f861209ce81a6bab1fd1998c0ef311712002'
+  source_sha256 'a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '7b41f602ad83ecf36b72907ed86d739daaf8d177625f31d9205f7788e0cc9b5d',
+     armv7l: '7b41f602ad83ecf36b72907ed86d739daaf8d177625f31d9205f7788e0cc9b5d',
+       i686: '39e8e5157a5b645c7af0b65f36d765ae16304781fbdcecde1f34f15eed798633',
+     x86_64: '3808a7cba103b79efe35a7f131873b99d4253640715ab05b374db384272735eb',
+  })
 
   depends_on 'diffutils' => :build
 
@@ -34,13 +47,9 @@ class Bz2 < Package
     system "ln", "-sf", "bzip2", "#{CREW_DEST_DIR}/usr/local/bin/bzcat"
 
     # Install shared library by hand
-    system "cp", "-p", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}/usr/local/lib"
-    system "ln", "-s", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}/usr/local/lib/libbz2.so.1.0"
-
-    # Strip binaries and libraries
-    system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2"
-    system "strip #{CREW_DEST_DIR}/usr/local/bin/bzip2recover"
-    system "strip -S #{CREW_DEST_DIR}/usr/local/lib/*"
+    system "mkdir", "-p", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+    system "cp", "-p", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+    system "ln", "-s", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libbz2.so.1.0"
   end
 
   def self.check

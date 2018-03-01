@@ -3,7 +3,7 @@ OWNER="skycocker"
 REPO="chromebrew"
 BRANCH="master"
 URL="https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH"
-CREW_PREFIX=/usr/local
+CREW_PREFIX=${CREW_PREFIX:-/usr/local}
 CREW_LIB_PATH=$CREW_PREFIX/lib/crew/
 CREW_CONFIG_PATH=$CREW_PREFIX/etc/crew/
 CREW_BREW_DIR=$CREW_PREFIX/tmp/crew/
@@ -26,7 +26,7 @@ case "$architecture" in
 esac
 
 #This will allow things to work without sudo
-sudo chown -R `id -u`:`id -g` /usr/local
+sudo chown -R `id -u`:`id -g` "${CREW_PREFIX}"
 
 #prepare directories
 for dir in $CREW_LIB_PATH $CREW_CONFIG_PATH $CREW_CONFIG_PATH/meta $CREW_BREW_DIR $CREW_DEST_DIR $CREW_PACKAGES_PATH; do
@@ -39,36 +39,40 @@ urls=()
 sha256s=()
 case "$architecture" in
 "aarch64")
-  urls+=('https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz')
-  sha256s+=('de01196461edd57bb39288e7b9dee1ee3cdc605e4e8be6b8871ba47dbe1ca972')
-  urls+=('https://dl.dropboxusercontent.com/s/lnz5hmjv48d14f2/git-1.8.4-chromeos-armv7l.tar.xz')
-  sha256s+=('f6f7d2500a41419937944af464494dd0ab95b15877ee630a4c13dd0abb37b02d')
-  urls+=('https://dl.dropboxusercontent.com/s/fq23kj42gsifcvi/libssh2-1.4.3-chromeos-armv7l.tar.xz')
-  sha256s+=('c1b8b09dfae6ab82ec6c961120c38e78ee50ecf902800f8257d0916e18db0b69')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-armv7l.tar.xz')
+  sha256s+=('ad6bad7fcce9b595af3172e6ae48a2b4ffac7e0ed73daa22be4e972f4889c3a6')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-armv7l.tar.xz')
+  sha256s+=('1267dd4eedcdef94c201b462f18f8dbc3bdef1e82106adf642cf428ede350d3b')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.0-chromeos-armv7l.tar.xz')
+  sha256s+=('6fa84296583273dd9e749a2c54cb1cf688a7dab032e2528de5944a4d9777f037')
   ;;
 "armv7l")
-  urls+=('https://dl.dropboxusercontent.com/s/02afb4qm4ugl0os/ruby-2.0.0p247-chromeos-armv7l.tar.xz')
-  sha256s+=('de01196461edd57bb39288e7b9dee1ee3cdc605e4e8be6b8871ba47dbe1ca972')
-  urls+=('https://dl.dropboxusercontent.com/s/lnz5hmjv48d14f2/git-1.8.4-chromeos-armv7l.tar.xz')
-  sha256s+=('f6f7d2500a41419937944af464494dd0ab95b15877ee630a4c13dd0abb37b02d')
-  urls+=('https://dl.dropboxusercontent.com/s/fq23kj42gsifcvi/libssh2-1.4.3-chromeos-armv7l.tar.xz')
-  sha256s+=('c1b8b09dfae6ab82ec6c961120c38e78ee50ecf902800f8257d0916e18db0b69')
+  if ! type "xz" > /dev/null; then
+    urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
+    sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
+  fi
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-armv7l.tar.xz')
+  sha256s+=('ad6bad7fcce9b595af3172e6ae48a2b4ffac7e0ed73daa22be4e972f4889c3a6')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-armv7l.tar.xz')
+  sha256s+=('1267dd4eedcdef94c201b462f18f8dbc3bdef1e82106adf642cf428ede350d3b')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.0-chromeos-armv7l.tar.xz')
+  sha256s+=('6fa84296583273dd9e749a2c54cb1cf688a7dab032e2528de5944a4d9777f037')
   ;;
 "i686")
-  urls+=('https://dl.dropboxusercontent.com/s/tufbuqcn80ubypx/ruby-2.0.0p247-chromeos-i686.tar.gz')
-  sha256s+=('e16b0925f21c8651f780fa0be721ba04546bb70017d6da2a84fad83e4ff4ebe2')
-  urls+=('https://dl.dropboxusercontent.com/s/g3binxopw5nfky1/git-1.8.4-chromeos-i686.tar.gz')
-  sha256s+=('ef561d3b0d498b847327a90ff8c9d75daa0ae04adb83a71f22bffdbb575f6097')
-  urls+=('https://dl.dropboxusercontent.com/s/zjnild1c2i10h53/libssh2-1.4.3-chromeos-i686.tar.gz')
-  sha256s+=('195aef637b35166eef4c7634b133d945536fb5d3fda2c1acac99a2b74ddcc580')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-i686.tar.xz')
+  sha256s+=('01bb17f706dc73013f23c15d589744858e1501c6664feef73dad1ff0e9b67599')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-i686.tar.xz')
+  sha256s+=('2215ef3534daf89e1b96b63f7b5177018cb657bb7713d9aad97a80729c4da546')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.0-chromeos-i686.tar.xz')
+  sha256s+=('771b2d30a49dd691db8456f773da404753d368f3c31d03c682c552ea0b5eb65e')
   ;;
 "x86_64")
-  urls+=('https://dl.dropboxusercontent.com/s/3dw5ue5vhf5nj8k/ruby-2.0.0-p247-chromeos1-chromeos-x86_64.tar.gz')
-  sha256s+=('77bd45734f460737e14d58cc73f5b9e16d22daa05eac704115047c0d8f9b5d44')
-  urls+=('https://dl.dropboxusercontent.com/s/i7vs9wfk94tsrzt/git-1.8.4-chromeos-x86_64.tar.gz')
-  sha256s+=('2938d817d1a66c94c03c886eb9cc9b2deb4f96cad6f46be82729caee46cb0197')
-  urls+=('https://dl.dropboxusercontent.com/s/frzkbbnf35ie6ns/libssh2-1.4.3-chromeos-x86_64.tar.gz')
-  sha256s+=('eaf7c34b7f694a0df2fc80ddea117997428e0f364f2729ef943ca81572dfcd6c')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-x86_64.tar.xz')
+  sha256s+=('1c748efef37747afb9b4f11068a2bbbaf03495bcb697310e1a39bb82a3549c71')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-x86_64.tar.xz')
+  sha256s+=('8447b69bb2eb1040fa5627c1e0aae122db6b22ec846f957b81fd3fbc2d287783')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.0-chromeos-x86_64.tar.xz')
+  sha256s+=('6e026450389021c6267a9cc79b8722d15f48e2f8d812d5212501f686b4368e3c')
   ;;
 esac
 
@@ -78,7 +82,7 @@ function download_check () {
 
     #download
     echo "Downloading $1..."
-    wget -c $2 -O $3
+    curl -C - -# -L --ssl $2 -o "$3"
 
     #verify
     echo "Verifying $1..."
@@ -86,7 +90,7 @@ function download_check () {
     case $? in
     0) ;;
     *)
-      echo 'Verification failed, something may be wrong with the $1 download.'
+      echo "Verification failed, something may be wrong with the $1 download."
       exit 1;;
     esac
 }
@@ -156,19 +160,19 @@ done
 #download, prepare and install chromebrew
 cd $CREW_LIB_PATH
 rm -rf crew lib packages
-wget -N $URL/crew
+curl -# -o crew $URL/crew
 chmod +x crew
 rm -f $CREW_PREFIX/bin/crew
 ln -s `pwd`/crew $CREW_PREFIX/bin
 #install crew library
 mkdir -p $CREW_LIB_PATH/lib
 cd $CREW_LIB_PATH/lib
-wget -N $URL/lib/package.rb
-wget -N $URL/lib/package_helpers.rb
+curl -# -o package.rb $URL/lib/package.rb
+curl -# -o package_helpers.rb $URL/lib/package_helpers.rb
 
 #Making GCC act like CC (For some npm packages out there)
-rm -f /usr/local/bin/cc
-ln -s /usr/local/bin/gcc /usr/local/bin/cc
+rm -f $CREW_PREFIX/bin/cc
+ln -s $CREW_PREFIX/bin/gcc $CREW_PREFIX/bin/cc
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
@@ -181,4 +185,14 @@ echo lib >> .git/info/sparse-checkout
 echo crew >> .git/info/sparse-checkout
 git fetch origin master
 git reset --hard origin/master
+yes | crew install buildessential
+yes | crew install less
+yes | crew install most
+echo
+echo "To set the default PAGER environment variable to be able to use less:"
+echo "echo \"export PAGER=$CREW_PREFIX/bin/less\" >> ~/.bashrc && . ~/.bashrc"
+echo
+echo "Alternatively, you could use most.  Why settle for less, right?"
+echo "echo \"export PAGER=$CREW_PREFIX/bin/most\" >> ~/.bashrc && . ~/.bashrc"
+echo
 echo "Chromebrew installed successfully and package lists updated."

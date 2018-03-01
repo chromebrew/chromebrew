@@ -5,34 +5,36 @@ class Ncurses < Package
   homepage 'https://www.gnu.org/software/ncurses/'
   version '6.0-2'
   source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
-  source_sha1 'acd606135a5124905da770803c05f1f20dd3b21c'
+  source_sha256 'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
 
-  depends_on "diffutils" => :build
-  depends_on "ncursesw"
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '3951a422aff0fb0358c5190674bff39f30dd36b0b0df6f3c8a2717141be1447d',
+     armv7l: '3951a422aff0fb0358c5190674bff39f30dd36b0b0df6f3c8a2717141be1447d',
+       i686: '57851803decba529076a1a1b9b719dc15ac60c5f96709a2fb9eb769a56f4e81b',
+     x86_64: '761f5a0bac8df8af682ca0df82b42afc3d5a7217a1b359e4b7ba51c7851857e4',
+  })
+
+  depends_on 'diffutils' => :build
+  depends_on 'ncursesw'
 
   def self.build
     system './configure',
-	    '--prefix=/usr/local',
-	    '--without-normal',
-	    '--with-shared',
-	    '--with-cxx-shared',
-	    '--without-debug'
-    system "make"
+           '--prefix=/usr/local',
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--without-normal',
+           '--with-shared',
+           '--with-cxx-shared',
+           '--without-debug'
+    system 'make'
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-
-    # strip binaries
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/clear"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/infocmp"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tabs"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tic"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tput"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/tset"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/toe"
-
-    # strip libraries here since `make install` re-link libraries again
-    system "find #{CREW_DEST_DIR}/usr/local -name 'lib*.so.*' -print | xargs strip -S"
   end
 end

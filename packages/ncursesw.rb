@@ -5,29 +5,43 @@ class Ncursesw < Package
   homepage 'http://www.gnu.org/software/ncurses/'
   version '6.0-2'
   source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
-  source_sha1 'acd606135a5124905da770803c05f1f20dd3b21c'
+  source_sha256 'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
 
-  depends_on "diffutils" => :build
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncursesw-6.0-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'b777a646e051ed128c596da84a81b8b08d22a1021ff603d04f1f470b94e44773',
+     armv7l: 'b777a646e051ed128c596da84a81b8b08d22a1021ff603d04f1f470b94e44773',
+       i686: '521c5059b8652b42757bf6f30420713a2e058f447ac92fc55ff0d052dff6304b',
+     x86_64: '3b2c098ededca06261007f6b1dc0679c76209c763300ee987f2d96dd51683c12',
+  })
+
+  depends_on 'diffutils' => :build
 
   def self.build
     # Check ncurses doesn't conflict with ncrusesw
     if File.exist? CREW_CONFIG_PATH + "meta/ncurses.filelist"
       if `grep include/ncursesw #{CREW_CONFIG_PATH}meta/ncurses.filelist` != ''
-	puts
-	puts "PLEASE PERFORMS `crew upgrade ncurses` OR `sudo crew remove ncurses` FIRST"
-	puts
-	exit 1
+        puts
+        puts "PLEASE PERFORM `crew upgrade ncurses` OR `crew remove ncurses` FIRST"
+        puts
+        exit 1
       end
     end
     # Build ncursesw
     system './configure',
-	    '--prefix=/usr/local',
-	    '--without-normal',
-	    '--with-shared',
-	    '--with-cxx-shared',
-	    '--without-debug',
-	    '--enable-widec'
-    system "make"
+           '--prefix=/usr/local',
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--without-normal',
+           '--with-shared',
+           '--with-cxx-shared',
+           '--without-debug',
+           '--enable-widec'
+    system 'make'
   end
 
   def self.install
@@ -41,8 +55,5 @@ class Ncursesw < Package
     system "rm", "#{CREW_DEST_DIR}/usr/local/bin/tput"
     system "rm", "#{CREW_DEST_DIR}/usr/local/bin/tset"
     system "rm", "#{CREW_DEST_DIR}/usr/local/bin/toe"
-
-    # strip libraries here since `make install` re-link libraries again
-    system "find #{CREW_DEST_DIR}/usr/local -name 'lib*.so.*' -print | xargs strip -S"
   end
 end
