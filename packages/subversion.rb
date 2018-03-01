@@ -10,6 +10,7 @@ class Subversion < Package
   depends_on 'aprutil'
   depends_on 'sqlite'
   depends_on 'serf'
+  depends_on 'filecmd'
 
   def self.build
     system './configure --prefix=/usr/local --with-apr=/usr/local --with-apr-util=/usr/local'
