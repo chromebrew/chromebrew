@@ -8,8 +8,16 @@ class Clojure < Package
   source_sha256 'eed803be567d7a3dd50c72ebb9622718c84ca32100c5cb246efd1df9f3038784'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '10983ab068a03934d60ce37ea223cb08eae6d0fd77c41e2492f20b516ab78724',
+     armv7l: '10983ab068a03934d60ce37ea223cb08eae6d0fd77c41e2492f20b516ab78724',
+       i686: 'cac79c3924582c3188ff2c80fe6955d04684dbe4ae826d3967d646bc6ed81b07',
+     x86_64: '5376b48364b9551fdb301315d501973a206bd2abc01f14d2613cbaab82295b96',
   })
   
   depends_on 'jdk8'
