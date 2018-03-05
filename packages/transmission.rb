@@ -20,9 +20,6 @@ class Transmission < Package
   depends_on 'glib'
   depends_on 'rtmpdump'
   depends_on 'ctorrent'
-  depends_on 'intltool'
-  depends_on 'gettext'
-  depends_on 'pkgconfig'
 
   def self.build
     system "sh autogen.sh"
