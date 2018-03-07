@@ -3,7 +3,7 @@ require 'package'
 class Subversion < Package
   description 'Subversion is an open source version control system.'
   homepage 'https://subversion.apache.org/'
-  version '1.9.7'
+  version '1.9.7-1'
   source_url 'http://www-us.apache.org/dist/subversion/subversion-1.9.7.tar.bz2'
   source_sha256 'c3b118333ce12e501d509e66bb0a47bcc34d053990acab45559431ac3e491623'
 
