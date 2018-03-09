@@ -3,7 +3,7 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  version '2.36.7-0'
+  version '2.36.7-1'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.7.tar.xz'
   source_sha256 '1b6e5eef09d98f05f383014ecd3503e25dfb03d7e5b5f5904e5a65b049a6a4d8'
 
@@ -39,6 +39,6 @@ class Gdk_pixbuf < Package
   
   def self.postinstall
     # If the package is installed using a "DESTDIR" method, an important file was not installed and should be copied or generated.
-    system "sudo gdk-pixbuf-query-loaders --update-cache"
+    puts "please run \"sudo gdk-pixbuf-query-loaders --update-cache\" to generate an important file that was not installed."
   end
 end
