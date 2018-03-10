@@ -23,7 +23,7 @@ class Cracklib < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
     
-    def self.test
-        system "make test"
-    end
+  def self.test
+    system "make test"
+  end
 end
