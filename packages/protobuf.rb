@@ -12,8 +12,7 @@ class Protobuf < Package
   binary_sha256 ({
   })
 
-  depends_on 'automake' => :build
-  depends_on 'libtool'  => :build
+  depends_on 'unzip' => :build
 
   def self.build
     system './autogen.sh'
