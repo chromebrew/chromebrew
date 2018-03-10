@@ -1143,6 +1143,10 @@ name: libgudev
 url: https://download.gnome.org/sources/libgudev/
 ---
 kind: url
+name: libinput
+url: https://www.freedesktop.org/software/libinput/
+---
+kind: url
 name: libjpeg
 url: http://www.ijg.org/files
 ---
@@ -1305,6 +1309,10 @@ url: https://sourceforge.net/projects/opencore-amr/files/vo-amrwbenc/
 kind: url
 name: libvorbis
 url: https://downloads.xiph.org/releases/vorbis
+---
+kind: url
+name: libwacom
+url: https://sourceforge.net/projects/linuxwacom/files/libwacom/
 ---
 kind: url
 name: libwayland
@@ -2344,6 +2352,10 @@ url: https://github.com/waf-project/waf/releases
 ---
 kind: url
 name: wayland
+url: https://wayland.freedesktop.org/releases
+---
+kind: url
+name: wayland_protocols
 url: https://wayland.freedesktop.org/releases
 ---
 kind: url
