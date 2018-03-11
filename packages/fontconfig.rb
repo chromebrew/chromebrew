@@ -23,7 +23,7 @@ class Fontconfig < Package
     system "./configure \
           --prefix=#{CREW_PREFIX} \
           --libdir=#{CREW_LIB_PREFIX} \
-          --localstatedir=/usr/local/cache"
+          --localstatedir=#{CREW_PREFIX}/cache"
     system 'make'
   end
 
