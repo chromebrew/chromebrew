@@ -21,7 +21,7 @@ class Applewmproto < Package
   })
 
   def self.build
-    system "./configure"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
   end
 
   def self.install
