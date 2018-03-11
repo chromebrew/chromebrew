@@ -18,14 +18,13 @@ class Graphene < Package
   depends_on 'gobject_introspection' => :build
 
   def self.build
-      system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} -Darm_neon=false _build"           
-      system "ninja -v -C _build"
-      system "ninja -C _build test"
-      
+    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} -Darm_neon=false _build"           
+    system "ninja -v -C _build"
+    system "ninja -C _build test"      
   end
 
   def self.install
-      system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end 
   
 end
