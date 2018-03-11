@@ -22,7 +22,7 @@ class Xkbcomp < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir -p #{CREW_LIB_PREFIX}/X11/xkb"
+    system "mkdir -p #{CREW_DEST_LIB_PREFIX}/X11/xkb"
   end
   
   def self.postinstall
