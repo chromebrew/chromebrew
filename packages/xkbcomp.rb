@@ -26,6 +26,6 @@ class Xkbcomp < Package
   end
   
   def self.postinstall
-    puts "xkb configuration files are located in #{CREW_LIB_PREFIX}/X11/xkb"
+    puts "xkb configuration files are located in #{CREW_LIB_PREFIX}/X11/xkb".lightblue
   end
 end
