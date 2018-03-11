@@ -22,9 +22,10 @@ class Xkbcomp < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "mkdir -p #{CREW_LIB_PREFIX}/X11/xkb"
   end
   
   def self.postinstall
-    system "mkdir -p #{CREW_LIB_PREFIX}/X11/xkb"
+    puts "xkb configuration files are located in #{CREW_LIB_PREFIX}/X11/xkb"
   end
 end
