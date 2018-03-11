@@ -32,8 +32,7 @@ class Docbook_xml < Package
   def self.install
     system "install -v -d -m755 #{CREW_DEST_DIR}/usr/local/share/xml/docbook/xml-dtd-4.3"
     system "install -v -d -m755 #{CREW_DEST_DIR}/usr/local/etc/xml"
-    system "cp -v -af docbook.cat *.dtd ent/ *.mod #{CREW_DEST_DIR}/usr/local/share/xml/docbook/xml-dtd-4.3"
-    
+ 
     system "if [ ! -e #{CREW_DEST_DIR}/usr/local/etc/xml/docbook ]; then
                 xmlcatalog --noout --create #{CREW_DEST_DIR}/usr/local/etc/xml/docbook
             fi &&
