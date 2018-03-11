@@ -1,8 +1,8 @@
 require 'package'
 
 class Gsettings_desktop_schemas < Package
-  description 'Collection of GSettings schemas for GNOME desktop. https://git.gnome.org/browse/gsettings-desktop-schemas'
-  homepage 'https://github.com/GNOME/gsettings-desktop-schemas/releases'
+  description 'Collection of GSettings schemas for GNOME desktop.'
+  homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
   version '3.27.92'
   source_url 'https://github.com/GNOME/gsettings-desktop-schemas/archive/3.27.92.tar.gz'
   source_sha256 'f7605fe6d214dd64d6169541dabd630ed91f03ee23ca239d36667d616ca344c7'
