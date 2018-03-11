@@ -16,12 +16,15 @@ class Xkbcomp < Package
     system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \ 
-            --with-xkb-config-root=#{CREW_PREFIX}/X11/xkb "
+            --with-xkb-config-root=#{CREW_LIB_PREFIX}/X11/xkb "
     system "make"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir -p #{CREW_PREFIX}/X11/xkb"
+  end
+  
+  def self.postinstall
+    system "mkdir -p #{CREW_LIB_PREFIX}/X11/xkb"
   end
 end
