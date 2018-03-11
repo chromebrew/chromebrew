@@ -3,8 +3,8 @@ require 'package'
 class Cairo < Package
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
-  version '1.15.10'
-  source_url 'http://cairographics.org/snapshots/cairo-1.15.10.tar.xz'
+  version '1.15.10-0'
+  source_url 'https://fossies.org/linux/misc/cairo-1.15.10.tar.xz'
   source_sha256 '62ca226134cf2f1fd114bea06f8b374eb37f35d8e22487eaa54d5e9428958392'
 
   depends_on 'libpng'
