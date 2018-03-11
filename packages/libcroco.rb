@@ -1,8 +1,8 @@
 require 'package'
 
 class Libcroco < Package
-  description 'Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit. https://git.gnome.org/browse/libcroco/'
-  homepage 'http://www.linuxfromscratch.org/blfs/view/svn/general/libcroco.html'
+  description 'Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit.'
+  homepage 'https://git.gnome.org/browse/libcroco/'
   version '0.6.12'
   source_url 'http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6/libcroco-0.6.12.tar.xz'
   source_sha256 'ddc4b5546c9fb4280a5017e2707fbd4839034ed1aba5b7d4372212f34f84f860'
