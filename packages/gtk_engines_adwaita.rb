@@ -1,8 +1,8 @@
 require 'package'
 
 class Gtk_engines_adwaita < Package
-  description 'Adwaita GTK+2 theme engine. https://git.gnome.org/browse/gnome-themes-standard/'
-  homepage 'https://github.com/GNOME/gnome-themes-extra/releases'
+  description 'Adwaita GTK+2 theme engine.'
+  homepage 'https://git.gnome.org/browse/gnome-themes-standard/'
   version '3.27.92'
   source_url 'https://github.com/GNOME/gnome-themes-extra/archive/3.27.92.tar.gz'
   source_sha256 'c2c2b02e6826d51de4e6e53afffbdb0ec301ef776df91944574fdc42b558cecb'
