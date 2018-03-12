@@ -1,8 +1,8 @@
 require 'package'
 
 class Glib_networking < Package
-  description 'Network-related giomodules for glib. https://git.gnome.org/browse/glib-networking/'
-  homepage 'https://download.gnome.org/sources/glib-networking/'
+  description 'Network-related giomodules for glib.'
+  homepage 'https://git.gnome.org/browse/glib-networking/'
   version '2.54.1'
   source_url 'https://download.gnome.org/sources/glib-networking/2.54/glib-networking-2.54.1.tar.xz'
   source_sha256 'eaa787b653015a0de31c928e9a17eb57b4ce23c8cf6f277afaec0d685335012f'
