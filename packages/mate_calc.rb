@@ -11,6 +11,16 @@ class Mate_calc < Package
   })
   binary_sha256 ({
   })
+  
+  depends_on 'cairo'
+  depends_on 'gtk3'
+  depends_on 'pango'
+  depends_on 'atk'
+  depends_on 'gobject_introspection'
+  depends_on 'gdk_pixbuf'
+  depends_on 'libxml2'
+  depends_on 'glib'
+  depends_on 'mate_common'
 
   def self.build
     system "sh autogen.sh"
