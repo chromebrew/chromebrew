@@ -1,8 +1,8 @@
 require 'package'
 
 class Libsoup < Package
-  description 'An HTTP library implementation in C. https://wiki.gnome.org/Projects/libsoup'
-  homepage 'https://download.gnome.org/sources/libsoup/'
+  description 'An HTTP library implementation in C.'
+  homepage 'https://wiki.gnome.org/Projects/libsoup'
   version '2.54.1'
   source_url 'https://download.gnome.org/sources/libsoup/2.54/libsoup-2.54.1.tar.xz'
   source_sha256 '47b42c232034734d66e5f093025843a5d8cc4b2357c011085a2fd04ef02dd633'
