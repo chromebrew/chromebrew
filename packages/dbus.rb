@@ -20,7 +20,7 @@ class Dbus < Package
     system "./configure \
     --prefix=#{CREW_PREFIX} \
     --libdir=#{CREW_LIB_PREFIX} \
-    --localstatedir=#{CREW_DEST_DIR}/var \
+    --localstatedir=#{CREW_DEST_PREFIX}/var \
     --disable-static \
     --disable-doxygen-docs \
     --disable-xml-docs"
