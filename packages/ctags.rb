@@ -7,12 +7,6 @@ class Ctags < Package
   source_url 'http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz'
   source_sha256 '0e44b45dcabe969e0bbbb11e30c246f81abe5d32012db37395eb57d66e9e99c7'
 
-  binary_url ({
-
-  })
-  binary_sha256 ({
-
-  })
 
   def self.build
    system "./configure  --prefix=#{CREW_PREFIX}  --libdir=#{CREW_LIB_PREFIX}"
