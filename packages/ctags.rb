@@ -15,17 +15,14 @@ class Ctags < Package
   })
 
   def self.build
-   system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+   system "./configure  --prefix=#{CREW_PREFIX}  --libdir=#{CREW_LIB_PREFIX}"
    system "make"
   end
 
   def self.install
     #system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"  # it does not work here
-    `mkdir -p #{CREW_DEST_PREFIX}/bin`
-    `cp ctags #{CREW_DEST_PREFIX}/bin/ctags`
-    `chmod 755 #{CREW_DEST_PREFIX}/bin/ctags`
-    `mkdir -p #{CREW_DEST_PREFIX}/share/man/man1`
-    `cp ./ctags.1 #{CREW_DEST_PREFIX}/share/man/man1/ctags.1`
-    `chmod 644 #{CREW_DEST_PREFIX}/share/man/man1/ctags.1`
+    system "install -D755 ctags #{CREW_DEST_PREFIX}/bin/ctags"
+    system "gzip -9 ctags.1"
+    system "install -D644 ctags.1.gz #{CREW_DEST_PREFIX}/share/man/man1/ctags.1.gz"
   end
 end
