@@ -12,6 +12,8 @@ class Mate_desktop < Package
   binary_sha256 ({
   })
 
+  depends_on 'mate_common'
+  
   def self.build
     system "sh autogen.sh"
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
