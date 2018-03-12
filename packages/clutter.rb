@@ -1,8 +1,8 @@
 require 'package'
 
 class Clutter < Package
-  description 'Clutter is a library for creating graphical user interfaces. https://wiki.gnome.org/Projects/Clutter'
-  homepage 'https://download.gnome.org/sources/clutter/'
+  description 'Clutter is a library for creating graphical user interfaces.'
+  homepage 'https://wiki.gnome.org/Projects/Clutter'
   version '1.26.2'
   source_url 'https://download.gnome.org/sources/clutter/1.26/clutter-1.26.2.tar.xz'
   source_sha256 'e7233314983055e9018f94f56882e29e7fc34d8d35de030789fdcd9b2d0e2e56'
