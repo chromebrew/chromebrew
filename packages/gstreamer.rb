@@ -1,8 +1,8 @@
 require 'package'
 
 class Gstreamer < Package
-  description 'Open source multimedia framework. https://gstreamer.freedesktop.org/'
-  homepage 'https://download.gnome.org/sources/gstreamer/'
+  description 'Open source multimedia framework.'
+  homepage 'https://gstreamer.freedesktop.org/'
   version '1.13.90'
   source_url 'https://download.gnome.org/sources/gstreamer/1.13/gstreamer-1.13.90.tar.xz'
   source_sha256 '4ffbd96a3ea1844212757be5609bbd16667f83c21db79a91f9da589c833258b0'
