@@ -12,14 +12,12 @@ class Xf86vidmodeproto < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xf86vidmodeproto-2.3-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xf86vidmodeproto-2.3-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xf86vidmodeproto-2.3-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: '674aecc3bf990b96d8779091d1555b32bf2bcf65d56e7a70611b1131dcdb550b',
      armv7l: '674aecc3bf990b96d8779091d1555b32bf2bcf65d56e7a70611b1131dcdb550b',
        i686: '19002ea6322f6b16957eb7139675b225326da54ef8d48f9cae1676ffe6a6d775',
      x86_64: '2d3e9ddad6ca30fd28c8339d9efaea6af3e9dd73c9364ce63fb91b3a49bbccd6',
-
   })
 
   def self.build

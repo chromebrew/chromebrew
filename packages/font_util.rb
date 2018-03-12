@@ -20,11 +20,10 @@ class Font_util < Package
      x86_64: '0e3e3dd3f83cbf53f3d80113d367cb7e69fbcbe6e68653687c7498d3e3260c7b',
   })
 
-    depends_on 'util_macros'
+  depends_on 'util_macros'
 
-    
   def self.build
-      system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

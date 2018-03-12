@@ -12,14 +12,12 @@ class Glproto < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glproto-1.4.17-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/glproto-1.4.17-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glproto-1.4.17-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: 'f4838cf8326d49489449651621089b41cbd272a662080c37689d185f69dbf6c2',
      armv7l: 'f4838cf8326d49489449651621089b41cbd272a662080c37689d185f69dbf6c2',
        i686: '3957ebb8e93b706662ccf4e90c02695ad393bbda09b00d5263e05f4335b51fd7',
      x86_64: 'df88d08e93501957db16bbbcf24a8627fb706fce19b6718dbda4803d74a95055',
-
   })
 
   def self.build

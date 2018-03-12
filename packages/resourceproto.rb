@@ -12,14 +12,12 @@ class Resourceproto < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/resourceproto-1.2.0-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/resourceproto-1.2.0-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/resourceproto-1.2.0-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: '79867cc16a5628313f5de2b3e339ce4bf883c681723ce6684bd5577e6ebc4607',
      armv7l: '79867cc16a5628313f5de2b3e339ce4bf883c681723ce6684bd5577e6ebc4607',
        i686: '9ce0365e57d2b6621ee1930f497d8309888f4fb68399a4844fcaeb69b3eec10a',
      x86_64: 'd4a57964f00fb78e5bdd91004e1a3dd655a20eb116d1db5f0fa438e308dbc430',
-
   })
 
   def self.build

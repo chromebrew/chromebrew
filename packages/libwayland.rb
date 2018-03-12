@@ -12,14 +12,12 @@ class Libwayland < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libwayland-1.14.91-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libwayland-1.14.91-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libwayland-1.14.91-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: '831a11987aea55aa4f74cb128626399dead299409a2c51d1fc2516b14fb4655a',
      armv7l: '831a11987aea55aa4f74cb128626399dead299409a2c51d1fc2516b14fb4655a',
        i686: 'cd182ec064b533c9625cc7e7495e6982058a6ef82064860b4db61ff7f3cd691b',
      x86_64: '70ac6ef44c5c0060f005c85c1b8a570c524f3245c532db3ade547de2a0e5ad72',
-
   })
 
   depends_on 'libffi'

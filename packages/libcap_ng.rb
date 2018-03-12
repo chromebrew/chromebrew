@@ -12,14 +12,12 @@ class Libcap_ng < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libcap_ng-0.7.8-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libcap_ng-0.7.8-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap_ng-0.7.8-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: '393c39c06fa807c9d879fbf97a50f95ad94741f2a64ea79306181026df057208',
      armv7l: '393c39c06fa807c9d879fbf97a50f95ad94741f2a64ea79306181026df057208',
        i686: '60bd85f01a320d59e114cab2ecae92c8bbe5a05552512ec0ef81cb9b792aea89',
      x86_64: 'ddf60e28ecb7fc3f60d6e2bfa47492ddfa9a09fff1b115634eb726901846304e',
-
   })
 
   depends_on 'python3'

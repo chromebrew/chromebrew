@@ -12,14 +12,12 @@ class Printproto < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/printproto-1.0.5-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/printproto-1.0.5-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/printproto-1.0.5-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: 'e31b6334ecfa1dd352d0702e61a07cfd7f0e334a0891e414fa3b325308fe1570',
      armv7l: 'e31b6334ecfa1dd352d0702e61a07cfd7f0e334a0891e414fa3b325308fe1570',
        i686: '8382acdb197b250a215ad492497014bc77bfda608ef09401f2251809d17c19f6',
      x86_64: 'f5ee18cf4f16279229252671eb2210d70b1d69d21129f718da8de02cbdc3ccdc',
-
   })
 
   def self.build

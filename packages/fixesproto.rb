@@ -12,14 +12,12 @@ class Fixesproto < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fixesproto-5.0-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/fixesproto-5.0-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fixesproto-5.0-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: 'ae85ec2d41106e1c91cfc3b5723f100d699cae87ea8e6576a0e1fb73acffe249',
      armv7l: 'ae85ec2d41106e1c91cfc3b5723f100d699cae87ea8e6576a0e1fb73acffe249',
        i686: 'a4d9a4ede7cc9d6bac8fb8bb356a5bab82e0da528333f8a2b40c341134ce9a9a',
      x86_64: '51f5ecc4d0d240ad423ad0caaf07af3baa72d887f36e4eabc6f97c2da4914f7e',
-
   })
 
   def self.build

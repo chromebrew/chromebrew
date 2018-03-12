@@ -34,5 +34,4 @@ class Libcroco < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "pip uninstall --yes six"
   end
-  
 end

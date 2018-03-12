@@ -12,14 +12,12 @@ class Windowswmproto < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/windowswmproto-1.0.4-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/windowswmproto-1.0.4-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/windowswmproto-1.0.4-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: '835c2c8034cbf508cb0238cac225d5dde0525a9a8d4717ba804e3068ed028bfc',
      armv7l: '835c2c8034cbf508cb0238cac225d5dde0525a9a8d4717ba804e3068ed028bfc',
        i686: 'afd6bda4b6837a6dbd78ea12679e910f5ad5f515e7e93bc7c9b3925684da0f40',
      x86_64: 'd5241ad70b424941293cf448e3b23d0b08356cd812acd0eaf202def86ffc71ef',
-
   })
 
   def self.build

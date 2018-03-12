@@ -12,14 +12,12 @@ class Libxfixes < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-0-chromeos-x86_64.tar.xz',
-
   })
   binary_sha256 ({
     aarch64: '46dba76831c0ff2458b76022c57c9c123340915c2126b70aad6a7d031c82a35e',
      armv7l: '46dba76831c0ff2458b76022c57c9c123340915c2126b70aad6a7d031c82a35e',
        i686: '0b20661456a881be0f0ac34833b096cec7c32355fbc4db0594014ba8af7ba34c',
      x86_64: 'a4d50d68f16ed1937fdfc8ee693c5dd8fac28050673da9834f97fba472449bab',
-
   })
 
   depends_on 'fixesproto'
