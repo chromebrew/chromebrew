@@ -1,8 +1,8 @@
 require 'package'
 
 class Cogl < Package
-  description 'A library for using 3D graphics hardware to draw pretty pictures. https://www.cogl3d.org/'
-  homepage 'https://download.gnome.org/sources/cogl/'
+  description 'A library for using 3D graphics hardware to draw pretty pictures.'
+  homepage 'https://www.cogl3d.org/'
   version '1.22.2'
   source_url 'https://download.gnome.org/sources/cogl/1.22/cogl-1.22.2.tar.xz'
   source_sha256 '39a718cdb64ea45225a7e94f88dddec1869ab37a21b339ad058a9d898782c00d'
