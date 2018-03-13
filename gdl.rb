@@ -1,8 +1,8 @@
 require 'package'
 
 class Gdl < Package
-  description 'GNU Data Language. http://gnudatalanguage.sourceforge.net/'
-  homepage 'https://download.gnome.org/sources/gdl/'
+  description 'GNU Data Language.'
+  homepage 'http://gnudatalanguage.sourceforge.net/'
   version '3.28.0'
   source_url 'https://download.gnome.org/sources/gdl/3.28/gdl-3.28.0.tar.xz'
   source_sha256 '52cc98ecc105148467b3b2b4e0d27ae484b1b6710d53413f771ed07ef1b737b6'
