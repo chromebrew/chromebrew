@@ -1,8 +1,8 @@
 require 'package'
 
 class Gentoo_file_manager < Package
-  description 'Graphical file manager for Unix-like systems, using GTK+. http://gentoo.sourceforge.net/'
-  homepage 'https://sourceforge.net/projects/gentoo/files/gentoo/'
+  description 'Graphical file manager for Unix-like systems, using GTK+.'
+  homepage 'http://gentoo.sourceforge.net/'
   version '0.20.7'
   source_url 'https://sourceforge.net/projects/gentoo/files/gentoo/0.20.7/gentoo-0.20.7.tar.gz'
   source_sha256 '9a50a139509a2f7e4540c8a093105bd8dd432596c9903db24891fbacf28ab1aa'
