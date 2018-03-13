@@ -11,11 +11,11 @@ class Libnl3 < Package
 
   def self.build
 	system "./configure \
-			    --prefix=#{CREW_PREFIX} \
-			    --libdir=#{CREW_LIB_PREFIX} \
-          --sysconfdir=#{CREW_DEST_PREFIX}/etc \
-          --sbindir=#{CREW_DEST_PREFIX}/sbin \
-          --disable-static"
+		--prefix=#{CREW_PREFIX} \
+		--libdir=#{CREW_LIB_PREFIX} \
+                --sysconfdir=#{CREW_PREFIX}/etc \
+                --sbindir=#{CREW_PREFIX}/sbin \
+                --disable-static"
     system "make"
   end
 
