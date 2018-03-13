@@ -3,9 +3,9 @@ require 'package'
 class Libarchive < Package
   description 'Multi-format archive and compression library.'
   homepage 'http://www.libarchive.org/'
-  version '3.2.2-0'
-  source_url 'http://www.libarchive.org/downloads/libarchive-3.2.2.tar.gz'
-  source_sha256 '691c194ee132d1f0f7a42541f091db811bc2e56f7107e9121be2bc8c04f1060f'
+  version '3.3.2'
+  source_url 'http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz'
+  source_sha256 'ed2dbd6954792b2c054ccf8ec4b330a54b85904a80cef477a1c74643ddafa0ce'
 
 
 
