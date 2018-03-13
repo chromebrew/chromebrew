@@ -1,8 +1,8 @@
 require 'package'
 
 class Libgee < Package
-  description 'GObject-based interfaces and classes for commonly used data structures. https://wiki.gnome.org/Projects/Libgee'
-  homepage 'https://wiki.gnome.org/Projects/Libgee/Release'
+  description 'GObject-based interfaces and classes for commonly used data structures.'
+  homepage 'https://wiki.gnome.org/Projects/Libgee'
   version '0.18.0'
   source_url 'https://download.gnome.org/sources/libgee/0.18/libgee-0.18.0.tar.xz'
   source_sha256 '4ad99ef937d071b4883c061df40bfe233f7649d50c354cf81235f180b4244399'
