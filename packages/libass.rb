@@ -3,9 +3,9 @@ require 'package'
 class Libass < Package
   description 'A portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format.'
   homepage 'https://github.com/libass/libass'
-  version '0.13.6-2'
-  source_url 'https://github.com/libass/libass/archive/0.13.6.tar.gz'
-  source_sha256 'de68288397d284a955061b3ecba67152cea74d8ace6222d987dd30091b1534b7'
+  version '0.14.0'
+  source_url 'https://github.com/libass/libass/releases/download/0.14.0/libass-0.14.0.tar.xz'
+  source_sha256 '881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2'
 
 
 
