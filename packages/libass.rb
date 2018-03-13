@@ -7,7 +7,6 @@ class Libass < Package
   source_url 'https://github.com/libass/libass/releases/download/0.14.0/libass-0.14.0.tar.xz'
   source_sha256 '881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2'
 
-
   def self.build
     system "./autogen.sh"
     system "autoconf"
