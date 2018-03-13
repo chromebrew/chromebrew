@@ -8,14 +8,6 @@ class Libass < Package
   source_sha256 '881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2'
 
 
-
-  depends_on 'automake' => :build
-  depends_on 'autoconf' => :build
-  depends_on 'freetype'
-  depends_on 'fribidi'
-  depends_on 'fontconfig'
-  depends_on 'libtool' => :build
-
   def self.build
     system "./autogen.sh"
     system "autoconf"
