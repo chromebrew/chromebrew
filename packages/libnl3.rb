@@ -7,7 +7,6 @@ class Libnl3 < Package
   source_url 'http://www.infradead.org/~tgr/libnl/files/libnl-3.2.25.tar.gz'
   source_sha256 '8beb7590674957b931de6b7f81c530b85dc7c1ad8fbda015398bc1e8d1ce8ec5'
 
-  depends_on "buildessential" => :build
   depends_on "glibc"
 
   def self.build
