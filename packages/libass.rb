@@ -7,9 +7,9 @@ class Libass < Package
   source_url 'https://github.com/libass/libass/releases/download/0.14.0/libass-0.14.0.tar.xz'
   source_sha256 '881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2'
 
-  depends_on 'automake' => :build
-  depends_on 'autoconf' => :build
-  depends_on 'libtool' => :build
+  depends_on 'automake'
+  depends_on 'autoconf'
+  depends_on 'libtool'
   depends_on 'fribidi'
   depends_on 'fontconfig'  
   
