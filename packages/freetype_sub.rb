@@ -13,12 +13,12 @@ class Freetype_sub < Package
   depends_on 'bz2'
   
   def self.build
-      system "./configure \
-              CFLAGS=\" -fPIC\" \
-              --prefix=#{CREW_PREFIX} \
-              --libdir=#{CREW_LIB_PREFIX} \
-              --without-harfbuzz"
-      system "make"
+    system "./configure \
+            CFLAGS=\" -fPIC\" \
+            --prefix=#{CREW_PREFIX} \
+            --libdir=#{CREW_LIB_PREFIX} \
+            --without-harfbuzz"
+    system "make"
   end
 
   def self.install
