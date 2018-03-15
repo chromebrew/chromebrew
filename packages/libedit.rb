@@ -9,10 +9,10 @@ class Libedit < Package
 
 
   def self.build
-    system "./configure  \
-	    --prefix=#{CREW_PREFIX} \
-	    --libdir=#{CREW_LIB_PREFIX} \ 
-            CPPFLAGS=\"-I/usr/local/include/ncurses\""
+    system "./configure",
+	   "--prefix=#{CREW_PREFIX}", 
+	   "--libdir=#{CREW_LIB_PREFIX}",
+           "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses"
     system "make"
   end
 
