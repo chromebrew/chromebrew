@@ -3,25 +3,25 @@ require 'package'
 class Libxkbfile < Package
   description 'library for the X window system'
   homepage 'https://x.org'
-  version '1.0.9'
+  version '1.0.9-0'
   source_url 'https://www.x.org/archive/individual/lib/libxkbfile-1.0.9.tar.gz'
   source_sha256 '95df50570f38e720fb79976f603761ae6eff761613eb56f258c3cb6bab4fd5e3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbfile-1.0.9-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd222e905fd312dc413722efc44f18cbc1168896f08023cb04a90b7b6e065d67f',
-     armv7l: 'd222e905fd312dc413722efc44f18cbc1168896f08023cb04a90b7b6e065d67f',
-       i686: '046be4d7969829495ada6d9d3f830e97ca2b65cfb3783b7cbf41675988c020f2',
-     x86_64: '955ab05956064921cbc8add816de59af73493562a42d2853c8426852ac5eae04',
+    aarch64: '0da685fe99dcbbe5f69daa717ea1938d6bf6fab3149cbc50cefbd14e68e3963a',
+     armv7l: '0da685fe99dcbbe5f69daa717ea1938d6bf6fab3149cbc50cefbd14e68e3963a',
+       i686: '7be642dffe2807fc53b4b3b1dde506251ad42a2d24c94b3271db58c61a607711',
+     x86_64: '4fd10398c3b8d444dc540aa574e437401597f442f8e2837f2a2eacabc08d83ba',
   })
 
   def self.build
-    system "./configure"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

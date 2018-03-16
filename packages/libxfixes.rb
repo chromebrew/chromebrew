@@ -3,21 +3,21 @@ require 'package'
 class Libxfixes < Package
   description 'library for the X window system'
   homepage 'https://x.org'
-  version '5.0.3'
+  version '5.0.3-0'
   source_url 'https://www.x.org/archive/individual/lib/libXfixes-5.0.3.tar.gz'
   source_sha256 '9ab6c13590658501ce4bd965a8a5d32ba4d8b3bb39a5a5bc9901edffc5666570'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfixes-5.0.3-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7cd3419b872fafceaebf4df3a747ddffaf491720635d60f7723af683d436c630',
-     armv7l: '7cd3419b872fafceaebf4df3a747ddffaf491720635d60f7723af683d436c630',
-       i686: '9583bb5532d07a2c3b3c9678d2ff4237dbfc47828118636b345651e20b4f8c80',
-     x86_64: '6ff70e781b5b96e603a3ae840cd7a41d7170a349a5b1b32e6c5e59c4c75b8d6c',
+    aarch64: '46dba76831c0ff2458b76022c57c9c123340915c2126b70aad6a7d031c82a35e',
+     armv7l: '46dba76831c0ff2458b76022c57c9c123340915c2126b70aad6a7d031c82a35e',
+       i686: '0b20661456a881be0f0ac34833b096cec7c32355fbc4db0594014ba8af7ba34c',
+     x86_64: 'a4d50d68f16ed1937fdfc8ee693c5dd8fac28050673da9834f97fba472449bab',
   })
 
   depends_on 'fixesproto'
@@ -26,7 +26,7 @@ class Libxfixes < Package
   depends_on 'libx11'
   
   def self.build
-    system "./configure"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

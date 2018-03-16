@@ -20,9 +20,14 @@ class Itstool < Package
      x86_64: '1a2b5ed97e30e42bb37140eef1d0b09055c7f00e34b7b9748a3387fd38426f6a',
   })
 
-  depends_on 'python27'
-
-  def self.install
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} itstool"
+  def self.build
+    system "./autogen.sh"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "make"
   end
+  
+   def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
+  end
+  
 end

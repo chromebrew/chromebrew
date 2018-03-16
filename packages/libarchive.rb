@@ -3,21 +3,21 @@ require 'package'
 class Libarchive < Package
   description 'Multi-format archive and compression library.'
   homepage 'http://www.libarchive.org/'
-  version '3.2.2'
-  source_url 'http://www.libarchive.org/downloads/libarchive-3.2.2.tar.gz'
-  source_sha256 '691c194ee132d1f0f7a42541f091db811bc2e56f7107e9121be2bc8c04f1060f'
+  version '3.3.2'
+  source_url 'http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz'
+  source_sha256 'ed2dbd6954792b2c054ccf8ec4b330a54b85904a80cef477a1c74643ddafa0ce'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.3.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2dde0581548d00cb3df09232daa5dc4f62a310537385afdbe7710d452b63c1fb',
-     armv7l: '2dde0581548d00cb3df09232daa5dc4f62a310537385afdbe7710d452b63c1fb',
-       i686: '80a0e5dac82fd52f60e8dbf6f5130e865888b0e50fb028efd485f28f8e4f81ec',
-     x86_64: 'df7b464068f21919d6fc9a5afa782713b2533bc345a60f1be44944af67f718c4',
+    aarch64: '06a0fd7aeaa505d75963286eb61302915b421a824aeec0237f4d6efed4f4f671',
+     armv7l: '06a0fd7aeaa505d75963286eb61302915b421a824aeec0237f4d6efed4f4f671',
+       i686: 'c902c5e75b4a7de6bc027fe971bb963957ed752e79dc6306734b2c1f3b0bab5b',
+     x86_64: '55d1f9d949edad46042e0a268c19cebc2398fc8711c99b1071e089d7588ccfef',
   })
 
   depends_on 'acl'
@@ -26,7 +26,9 @@ class Libarchive < Package
   depends_on 'xzutils' => :build
 
   def self.build
-    system "./configure --prefix=/usr/local --disable-static"
+    system "./configure \
+          --prefix=#{CREW_PREFIX} \
+          --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

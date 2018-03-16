@@ -3,21 +3,23 @@ require 'package'
 class Valgrind < Package
   description 'Valgrind is an instrumentation framework for building dynamic analysis tools.'
   homepage 'http://valgrind.org/'
-  version '3.13.0-2'
+  version '3.13.0-3'
   source_url 'ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2'
   source_sha256 'd76680ef03f00cd5e970bbdcd4e57fb1f6df7d2e2c071635ef2be74790190c3b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/valgrind-3.13.0-3-chromeos-x86_64.tar.xz',
+
   })
   binary_sha256 ({
-    aarch64: '859913a6f0f4a629f464fb01912e0e99d59a2f4dd0ef19a0ebfd8874180de0b9',
-     armv7l: '859913a6f0f4a629f464fb01912e0e99d59a2f4dd0ef19a0ebfd8874180de0b9',
-       i686: 'b6b11f8f929583a90fb3ea4fe939c320b4b8c0570280b572228daad1a6638867',
-     x86_64: 'ae45af143f6b45454da54d426246e11b2cb5add80d134d1e617d625b756c6e6c',
+    aarch64: '7ed434448c96b37fae3ddc546f3950fc705892179522b16d0210292ecad9d1a4',
+     armv7l: '7ed434448c96b37fae3ddc546f3950fc705892179522b16d0210292ecad9d1a4',
+       i686: 'e332c6d0447e71c54712359d90ae986ddff253a0b2c059d882810d6159766abe',
+     x86_64: 'c468df7dad7a385b6759833b0939f2551804dde400bb3b2629315c8ee80c8b45',
+
   })
 
   depends_on 'patch' => :build

@@ -3,21 +3,21 @@ require 'package'
 class Libxdamage < Package
   description 'library for the X window system'
   homepage 'https://x.org'
-  version '1.1.4'
+  version '1.1.4-0'
   source_url 'https://www.x.org/archive/individual/lib/libXdamage-1.1.4.tar.gz'
   source_sha256 '4bb3e9d917f5f593df2277d452926ee6ad96de7b7cd1017cbcf4579fe5d3442b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.4-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c9abe9268a3ac340598e1b15665ac2bdf2b63eefce22028a0ccd51f23791f994',
-     armv7l: 'c9abe9268a3ac340598e1b15665ac2bdf2b63eefce22028a0ccd51f23791f994',
-       i686: 'e3a1ff3de3d2fdf105d12e13e9c053fd1c1a80433d96a521f3a23fdcc09bde13',
-     x86_64: '30d9a122648f4fbe8754ecdb67b00a6ca21e7e829f03b9652209f517e575c82e',
+    aarch64: '52d8da8a4f1cc00f749a464380949d754fe7f8ce41c70a808c031b93a239d462',
+     armv7l: '52d8da8a4f1cc00f749a464380949d754fe7f8ce41c70a808c031b93a239d462',
+       i686: '20f49056f9a39a1b0c08d760c44f1b3ca8bad1b572b0c67b475f0e0b36d4a5d8',
+     x86_64: '4f1552b42c293b8a7282ed13f45bdd9407d113d261aab337bbca75a5f411fe5d',
   })
 
   depends_on 'fixesproto'
@@ -27,7 +27,7 @@ class Libxdamage < Package
   depends_on 'damageproto'
 
   def self.build
-    system "./configure"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

@@ -22,9 +22,8 @@ class Font_util < Package
 
     depends_on 'util_macros'
 
-    
   def self.build
-      system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
