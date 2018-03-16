@@ -16,10 +16,10 @@ class Krb5 < Package
 
   def self.build
     Dir.chdir "src" do
-      system "./configure \
-      --prefix=#{CREW_PREFIX} \
-      --libdir=#{CREW_LIB_PREFIX} \
-      --without-system-verto"
+      system "./configure",
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}",
+      "--without-system-verto"
       system "make"
     end
   end
