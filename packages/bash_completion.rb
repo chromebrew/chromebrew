@@ -31,11 +31,14 @@ class Bash_completion < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+
+  def self.postinstall
     puts
     puts "To complete installation, execute the following:".lightblue
     puts "echo '# bash completion' >> ~/.bashrc".lightblue
     puts "echo '[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion ]] && \\' >> ~/.bashrc".lightblue
-    puts "echo '. /usr/local/share/bash-completion/bash_completion' >> ~/.bashrc".lightblue
+    puts "echo '    . /usr/local/share/bash-completion/bash_completion' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
   end
