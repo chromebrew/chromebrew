@@ -9,6 +9,7 @@ class Libdrm < Package
 
   depends_on 'libpciaccess'
   depends_on 'xorg_lib' => :build
+  depends_on 'eudev'
 
   def self.build
     case ARCH
