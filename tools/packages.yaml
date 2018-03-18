@@ -35,6 +35,14 @@ name: alsa_plugins
 url: ftp://ftp.alsa-project.org/pub/plugins
 ---
 kind: url
+name: ansible
+url: https://releases.ansible.com/ansible/
+---
+kind: url
+name: ansifilter
+url: http://www.andre-simon.de/zip/download.php
+---
+kind: url
 name: anagram
 url: http://www.fourmilab.ch/anagram/
 ---
@@ -369,6 +377,10 @@ url: http://ftp.gnu.org/gnu/cpio
 kind: url
 name: cpustat
 url: http://kernel.ubuntu.com/~cking/tarballs/cpustat
+---
+kind: url
+name: cracklib
+url: https://github.com/cracklib/cracklib/releases/
 ---
 kind: url
 name: cros_resize
@@ -727,6 +739,14 @@ name: gmp
 url: https://gmplib.org/#DOWNLOAD
 ---
 kind: url
+name: gnome_common
+url: https://github.com/GNOME/gnome-common/releases/
+---
+kind: url
+name: gnome_themes_standard
+url: https://github.com/GNOME/gnome-themes-extra/releases/
+---
+kind: url
 name: gnupg
 url: https://gnupg.org/ftp/gcrypt/gnupg
 ---
@@ -799,12 +819,20 @@ name: groff
 url: http://ftp.gnu.org/gnu/groff
 ---
 kind: url
+name: gsettings_desktop_schemas
+url: https://github.com/GNOME/gsettings-desktop-schemas/releases/
+---
+kind: url
 name: gsl
 url: https://ftpmirror.gnu.org/gsl/
 ---
 kind: url
 name: gtk_doc
 url: https://github.com/GNOME/gtk-doc/releases
+---
+kind: url
+name: gtk_engines_adwaita
+url: https://github.com/GNOME/gnome-themes-extra/releases/
 ---
 kind: url
 name: gtk3
@@ -995,6 +1023,10 @@ name: keybase
 url: https://github.com/keybase/client/releases
 ---
 kind: url
+name: keychain
+url: https://github.com/funtoo/keychain/releases/
+---
+kind: url
 name: kore
 url: https://github.com/jorisvink/kore/releases
 ---
@@ -1083,6 +1115,10 @@ name: libconfuse
 url: https://github.com/martinh/libconfuse/releases
 ---
 kind: url
+name: libcroco
+url: http://ftp.gnome.org/pub/gnome/sources/libcroco/
+---
+kind: url
 name: libcyrussasl
 url: ftp://ftp.cyrusimap.org/cyrus-sasl/
 ---
@@ -1127,6 +1163,10 @@ name: libfrei0r
 url: https://github.com/dyne/frei0r/releases
 ---
 kind: url
+name: libfs
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
 name: libgcrypt
 url: https://www.gnupg.org/ftp/gcrypt/libgcrypt
 ---
@@ -1141,6 +1181,14 @@ url: ftp://ftp.gnupg.org/gcrypt/libgpg-error
 kind: url
 name: libgudev
 url: https://download.gnome.org/sources/libgudev/
+---
+kind: url
+name: libice
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: libiconv
+url: https://ftpmirror.gnu.org/libiconv/
 ---
 kind: url
 name: libinput
@@ -1173,6 +1221,10 @@ url: https://downloads.sourceforge.net/project/lame/lame/
 kind: url
 name: libnl3
 url: http://www.infradead.org/~tgr/libnl/files
+---
+kind: url
+name: libnotify
+url: https://github.com/GNOME/libnotify/releases/
 ---
 kind: url
 name: libogg
@@ -1211,8 +1263,16 @@ name: libpng
 url: https://sourceforge.net/projects/libpng/files/libpng16
 ---
 kind: url
+name: libprelude
+url: https://www.prelude-siem.org/projects/prelude/files
+---
+kind: url
 name: libpstat
 url: https://github.com/jcnelson/libpstat/releases
+---
+kind: url
+name: librsvg
+url: https://download.gnome.org/sources/librsvg/
 ---
 kind: url
 name: librsync
@@ -1241,6 +1301,10 @@ url: http://ftp.gnu.org/gnu/libsigsegv
 kind: url
 name: libslz
 url: http://www.libslz.org/
+---
+kind: url
+name: libsm
+url: https://www.x.org/archive/individual/lib/
 ---
 kind: url
 name: libsndfile
@@ -1495,6 +1559,10 @@ name: masscan
 url: https://github.com/robertdavidgraham/masscan/releases
 ---
 kind: url
+name: mate_calc
+url: https://pub.mate-desktop.org/releases/
+---
+kind: url
 name: maven
 url: http://mirror.csclub.uwaterloo.ca/apache/maven/
 ---
@@ -1619,6 +1687,10 @@ name: mutt
 url: http://ftp.mutt.org/pub/mutt
 ---
 kind: url
+name: mysqltuner
+url: https://github.com/major/MySQLTuner-perl/
+---
+kind: url
 name: mywanip
 url: https://gist.github.com/DennisLfromGA
 ---
@@ -1649,6 +1721,10 @@ url: https://nmap.org/ncrack/dist
 kind: url
 name: ncurses
 url: http://ftp.gnu.org/pub/gnu/ncurses
+---
+kind: url
+name: neofetch
+url: https://github.com/dylanaraps/neofetch/releases
 ---
 kind: url
 name: neovim
@@ -1719,6 +1795,10 @@ name: od1n
 url: https://github.com/CoolerVoid/0d1n/releases
 ---
 kind: url
+name: ondir
+url: https://swapoff.org/files/ondir/
+---
+kind: url
 name: openconnect
 url: http://ftp.infradead.org/pub/openconnect
 ---
@@ -1729,6 +1809,10 @@ url: https://github.com/uclouvain/openjpeg/releases
 kind: url
 name: openldap
 url: ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release
+---
+kind: url
+name: openrtsp
+url: http://www.live555.com/liveMedia/public/
 ---
 kind: url
 name: openssh
@@ -1753,6 +1837,14 @@ url: https://p11-glue.freedesktop.org/releases
 kind: url
 name: p7zip
 url: https://sourceforge.net/projects/p7zip/files/p7zip/
+---
+kind: url
+name: packer
+url: https://releases.hashicorp.com/packer/
+---
+kind: url
+name: packer_completion
+url: https://github.com/mrolli/packer-bash-completion/releases/
 ---
 kind: url
 name: pacparser
@@ -1815,6 +1907,10 @@ name: percona_server
 url: https://www.percona.com/downloads/Percona-Server-LATEST/
 ---
 kind: url
+name: percona_toolkit
+url: https://www.percona.com/downloads/percona-toolkit/
+---
+kind: url
 name: perl
 url: http://www.cpan.org/src
 ---
@@ -1829,6 +1925,10 @@ url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
 kind: url
 name: perl_module_build
 url: https://cpan.metacpan.org/authors/id/L/LE/LEONT/
+---
+kind: url
+name: perl_sgmls
+url: http://search.cpan.org/CPAN/authors/id/R/RA/RAAB/
 ---
 kind: url
 name: perl_text_charwidth
@@ -2369,6 +2469,10 @@ url: http://fungi.yuggoth.org/weather/src
 kind: url
 name: weechat
 url: https://weechat.org/files/src/
+---
+kind: url
+name: weston
+url: https://github.com/wayland-project/weston/releases/
 ---
 kind: url
 name: wget
