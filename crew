@@ -407,6 +407,9 @@ end
 def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
     puts "Building from source, this may take a while..."
+    if ARCH == "x86_64"
+      @pkg.remove_la_files
+    end
     @pkg.in_build = true
     @pkg.preinstall
     @pkg.patch
