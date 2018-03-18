@@ -21,8 +21,16 @@ class Packer < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/packer-1.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/packer-1.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/packer-1.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/packer-1.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '7d187c36dbede0977f43f6a7e70ffedffddfe39e3920453f8a399d19789295ec',
+     armv7l: '7d187c36dbede0977f43f6a7e70ffedffddfe39e3920453f8a399d19789295ec',
+       i686: '40fddfa96ac9bcb343ed0e5f4bf607a04268293dd42dc480457f59e78ab186b8',
+     x86_64: '7e9a790a93c8517ffd2a44c3cbca83d97bbfa5e6ac3c47cf37569c5d579fbdfc',
   })
 
   depends_on 'unzip' => :build
