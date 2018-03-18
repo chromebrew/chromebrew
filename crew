@@ -411,14 +411,12 @@ def build_and_preconfigure (target_dir)
     # Remove /usr/local/lib64/*.la to resolve any "can not find /usr/local/*.la" compile errors when building the packages (only needed for x86_64).
     # https://gnunet.org/faq-la-files
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
-    if @opt_verbose then
-        if ARCH == "x86_64"
-          system "rm -rf #{CREW_LIB_PREFIX}/*.la"   # remove all .la files in /usr/local/lib64 to resolve any .la related compile issues.
-        end 
-    else
-        if ARCH == "x86_64"
-          system "rm -rf #{CREW_LIB_PREFIX}/*.la"   # remove all .la files in /usr/local/lib64 to resolve any .la related compile issues.
-        end
+    if ARCH == 'x86_64'
+      if @opt_verbose then
+        system "rm -rvf #{CREW_LIB_PREFIX}/*.la"
+      else
+        system "rm -rf #{CREW_LIB_PREFIX}/*.la"
+      end
     end
     @pkg.in_build = true
     @pkg.preinstall
