@@ -69,6 +69,13 @@ class Package
     @is_fake
   end
 
+  # Remove /usr/local/lib64/*.la to resolve any "can not find /usr/local/*.la" compile errors when building the packages (only needed for x86_64).
+  # https://gnunet.org/faq-la-files
+  # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
+  def self.remove_la_files
+    system "rm -rf #{CREW_LIB_PREFIX}/*.la"
+  end
+  
   # Function to perform pre-install operations prior to build from source.
   def self.preinstall
 
