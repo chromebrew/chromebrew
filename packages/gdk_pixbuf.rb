@@ -17,14 +17,14 @@ class Gdk_pixbuf < Package
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-x11"
     system "make"
-    # generate cache
-    system "mkdir -p #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/"
-    system "sudo #{CREW_DEST_PREFIX}/bin/gdk-pixbuf-query-loaders --update-cache"
   end
-
+  
   def self.install
     system "pip install six" # for installation process
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" 
+    # generate cache
+    system "mkdir -p #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/"
+    system "#{CREW_DEST_PREFIX}/bin/gdk-pixbuf-query-loaders --update-cache"
     system "mkdir -p #{CREW_DEST_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0"
     system "cp -r #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache* #{CREW_DEST_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/"
     system "pip uninstall --yes six"
