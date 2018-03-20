@@ -4,8 +4,8 @@ class Wget < Package
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
   version '1.19.4'
-  source_url 'https://ftpmirror.gnu.org/wget/wget-1.19.tar.xz'
-  source_sha256 '0f1157bbf4daae19f3e1ddb70c6ccb2067feb834a6aa23c9d9daa7f048606384'
+  source_url 'https://ftpmirror.gnu.org/wget/wget-1.19.4.tar.gz'
+  source_sha256 '93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.4-chromeos-armv7l.tar.xz',
