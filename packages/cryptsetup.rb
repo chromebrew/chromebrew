@@ -1,7 +1,7 @@
 require 'package'
 
 class Cryptsetup < Package
-  description 'Tool to setup encrypted devices with dm-crypt. https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md'
+  description 'Tool to setup encrypted devices with dm-crypt.'
   homepage 'https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md'
   version '2.0.2'
   source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.2.tar.xz'
