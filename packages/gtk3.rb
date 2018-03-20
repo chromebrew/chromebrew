@@ -39,10 +39,10 @@ class Gtk3 < Package
   def self.install
     system "pip install six"  # for installation process
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share/glib-2.0/schemas"
+    system "#{CREW_DEST_PREFIX}/bin/glib-compile-schemas #{CREW_DEST_PREFIX}/share/glib-2.0/schemas"    
     system "pip uninstall --yes six"
   end
   
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"   # generate gschemas.compiled
-  end
+
 end
