@@ -1,8 +1,8 @@
 require 'package'
 
 class Gtk2 < Package
-  description 'Gtk+ 2.24 graphical user interface library. https://www.gtk.org/'
-  homepage 'https://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/'
+  description 'Gtk+ 2.24 graphical user interface library.'
+  homepage 'https://www.gtk.org/'
   version '2.24.32'
   source_url 'https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.32.tar.xz'
   source_sha256 'b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e'
