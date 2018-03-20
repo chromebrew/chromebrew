@@ -1,8 +1,8 @@
 require 'package'
 
 class Python3 < Package
-  description 'Python is a programming language that lets you work quickly and integrate systems more effectively. https://www.python.org/'
-  homepage 'https://www.python.org/ftp/python/'
+  description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
+  homepage 'https://www.python.org/'
   version '3.7.0b2'
   source_url 'https://www.python.org/ftp/python/3.7.0/Python-3.7.0b2.tar.xz'
   source_sha256 '92082de7fafdcdab61a91b908f32b35f13a7aef3c2671c0fa388eb574c3fc882'
