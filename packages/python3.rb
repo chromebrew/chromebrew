@@ -1,24 +1,11 @@
 require 'package'
 
 class Python3 < Package
-  description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
-  homepage 'https://www.python.org/'
-  version '3.6.4-2'
-  source_url 'https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz'
-  source_sha256 '159b932bf56aeaa76fd66e7420522d8c8853d486b8567c459b84fe2ed13bcaba'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.6.4-2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '481fa9f5bdff6d43eeea4ac90bbee6ef5054e2960d5f1f141bb24359af5ac25b',
-     armv7l: '481fa9f5bdff6d43eeea4ac90bbee6ef5054e2960d5f1f141bb24359af5ac25b',
-       i686: '8e7ffe80318afee1e3f3614440d30fb5fd4daf2d2d901b55b48c2216e034059d',
-     x86_64: 'cb75bc5794d06951897906b87ec2fedf316d268040290845809517861a9e7bbe',
-  })
+  description 'Python is a programming language that lets you work quickly and integrate systems more effectively. https://www.python.org/'
+  homepage 'https://www.python.org/ftp/python/'
+  version '3.7.0b2'
+  source_url 'https://www.python.org/ftp/python/3.7.0/Python-3.7.0b2.tar.xz'
+  source_sha256 '92082de7fafdcdab61a91b908f32b35f13a7aef3c2671c0fa388eb574c3fc882'
 
   depends_on 'bz2' => :build
   depends_on 'xzutils' => :build
