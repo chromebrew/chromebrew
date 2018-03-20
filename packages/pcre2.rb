@@ -1,8 +1,8 @@
 require 'package'
 
 class Pcre2 < Package
-  description 'The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries. http://pcre.org'
-  homepage 'https://ftp.pcre.org/pub/pcre/'
+  description 'The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries.'
+  homepage 'http://pcre.org'
   version '10.31'
   source_url 'https://ftp.pcre.org/pub/pcre/pcre2-10.31.tar.gz'
   source_sha256 'e11ebd99dd23a7bccc9127d95d9978101b5f3cf0a6e7d25a1b1ca165a97166c4'
