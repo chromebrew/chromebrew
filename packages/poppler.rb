@@ -38,6 +38,9 @@ class Poppler < Package
   end
 
   def self.install
+    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "pip uninstall --yes six"
   end
 end
+
