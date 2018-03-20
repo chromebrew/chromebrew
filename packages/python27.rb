@@ -1,8 +1,8 @@
 require 'package'
 
 class Python27 < Package
-  description 'Python is a programming language that lets you work quickly and integrate systems more effectively. https://www.python.org/'
-  homepage 'https://www.python.org/ftp/python/'
+  description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
+  homepage 'https://www.python.org/'
   version '2.7.14'
   source_url 'https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz'
   source_sha256 '71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66'
