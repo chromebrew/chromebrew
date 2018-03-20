@@ -1,8 +1,8 @@
 require 'package'
 
 class Vala < Package
-  description 'Vala is a programming language that aims to bring modern programming language features to GNOME developers. https://wiki.gnome.org/Projects/Vala'
-  homepage 'https://download.gnome.org/sources/vala/'
+  description 'Vala is a programming language that aims to bring modern programming language features to GNOME developers.'
+  homepage 'https://wiki.gnome.org/Projects/Vala'
   version '0.40.0'
   source_url 'https://download.gnome.org/sources/vala/0.40/vala-0.40.0.tar.xz'
   source_sha256 '15888fcb5831917cd67367996407b28fdfc6cd719a30e6a8de38a952a8a48e71'
