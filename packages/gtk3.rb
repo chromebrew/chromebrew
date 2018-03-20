@@ -20,6 +20,7 @@ class Gtk3 < Package
      x86_64: '449303430fc73dfa177ef7880a02b3972cc65efbbda1256c598710330e9a6bf7',
   })
 
+  depends_on 'xorg_lib' 
   depends_on 'gdk_pixbuf'
   depends_on 'libepoxy'
   depends_on 'graphene'
