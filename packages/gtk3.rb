@@ -20,8 +20,6 @@ class Gtk3 < Package
      x86_64: '449303430fc73dfa177ef7880a02b3972cc65efbbda1256c598710330e9a6bf7',
   })
 
-
-
   depends_on 'gdk_pixbuf'
   depends_on 'libepoxy'
   depends_on 'graphene'
@@ -36,7 +34,6 @@ class Gtk3 < Package
            "--enable-x11-backend",
            "--enable-wayland-backend"
     system "make"
-
   end
 
   def self.install
@@ -46,6 +43,6 @@ class Gtk3 < Package
   end
   
   def self.postinstall
-    system "glib-compile-schemas #{CREW_DEST_PREFIX}/share/glib-2.0/schemas"   # generate gschemas.compiled
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"   # generate gschemas.compiled
   end
 end
