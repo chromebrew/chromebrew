@@ -1,8 +1,8 @@
 require 'package'
 
 class Ffmpeg < Package
-  description 'A complete, cross-platform solution to record, convert and stream audio and video. https://ffmpeg.org/'
-  homepage 'https://www.ffmpeg.org/download.html'
+  description 'A complete, cross-platform solution to record, convert and stream audio and video.'
+  homepage 'https://ffmpeg.org/'
   version '3.4.2'
   source_url 'https://ffmpeg.org/releases/ffmpeg-3.4.2.tar.bz2'
   source_sha256 'eb0370bf223809b9ebb359fed5318f826ac038ce77933b3afd55ab1a0a21785a'
