@@ -3,21 +3,21 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  version '1.19.6'
+  version '1.19.6-0'
   source_url 'https://www.x.org/releases/individual/xserver/xorg-server-1.19.6.tar.bz2'
   source_sha256 'a732502f1db000cf36a376cd0c010ffdbf32ecdd7f1fa08ba7f5bdf9601cc197'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.19.6-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0428359e4080a6b1b331d7e73af726aaab21598ea482f212efc0b9591011847d',
-     armv7l: '0428359e4080a6b1b331d7e73af726aaab21598ea482f212efc0b9591011847d',
-       i686: 'c5d419b18e50c56ed0da0e9214d0816ae4f4124f1cad0974c51b40d670d06f61',
-     x86_64: '5f7191352bf495d3166211d59d9098efc5f231bb7a3f47c3b4f010b2cf2df740',
+    aarch64: '52b2e20370b8fcef5fd0315e5e817d70f7907dabef3533ad6cdece634b988064',
+     armv7l: '52b2e20370b8fcef5fd0315e5e817d70f7907dabef3533ad6cdece634b988064',
+       i686: '5066413429e3b561679398f23fa5c3d3bf23cbf2de92cbe64e6149c6d7594955',
+     x86_64: 'ae89f5ad22ddc6b109b9ca224565c3857a499308195df69f294b769ad0edae96',
   })
 
 
@@ -50,8 +50,7 @@ class Xorg_server < Package
              "--enable-xwayland",
              "--disable-xvfb",
              "--disable-xnest",
-             "--disable-systemd-logind",
-             "--enable-suid-wrapper"
+             "--disable-systemd-logind"
     system "make"
   end
 
