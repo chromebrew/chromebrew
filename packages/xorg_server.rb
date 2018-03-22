@@ -39,23 +39,23 @@ class Xorg_server < Package
   depends_on 'libxkbcommon'
   depends_on 'xkbcomp'
   
-def self.build
-  system "./configure",
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--enable-xfree86-utils",
-           "--enable-xf86vidmode",
-           "--disable-glamor",
-           "--enable-xorg",
-           "--enable-xwayland",
-           "--disable-xvfb",
-           "--disable-xnest",
-           "--disable-systemd-logind",
-           "--enable-suid-wrapper"
-  system "make"
-end
+  def self.build
+    system "./configure",
+             "--prefix=#{CREW_PREFIX}",
+             "--libdir=#{CREW_LIB_PREFIX}",
+             "--enable-xfree86-utils",
+             "--enable-xf86vidmode",
+             "--disable-glamor",
+             "--enable-xorg",
+             "--enable-xwayland",
+             "--disable-xvfb",
+             "--disable-xnest",
+             "--disable-systemd-logind",
+             "--enable-suid-wrapper"
+    system "make"
+  end
 
-def self.install
-  system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-end
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
 end
