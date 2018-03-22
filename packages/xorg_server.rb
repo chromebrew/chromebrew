@@ -20,25 +20,27 @@ class Xorg_server < Package
      x86_64: '5f7191352bf495d3166211d59d9098efc5f231bb7a3f47c3b4f010b2cf2df740',
   })
 
-    depends_on 'pixman'
-    depends_on 'mesa'
-    depends_on 'xorg_lib'
-    depends_on 'xorg_proto'
-    depends_on 'libepoxy'
-    depends_on 'libtirpc'  # fix rpc.h missing problem
-    depends_on 'font_util'
-    depends_on 'libunwind'
-    depends_on 'libwayland'
-    depends_on 'wayland_protocols'
-    depends_on 'nettle'
-    depends_on 'libbsd'
-    depends_on 'dbus'
-    depends_on 'lzma' => :build
-    depends_on 'font_util'
-    depends_on 'libxkbcommon'
-    depends_on 'xkbcomp'
 
-    system "./configure",
+  depends_on 'pixman'
+  depends_on 'mesa'
+  depends_on 'xorg_lib'
+  depends_on 'xorg_proto'
+  depends_on 'libepoxy'
+  depends_on 'libtirpc'  # fix rpc.h missing problem
+  depends_on 'font_util'
+  depends_on 'libunwind'
+  depends_on 'libwayland'
+  depends_on 'wayland_protocols'
+  depends_on 'nettle'
+  depends_on 'libbsd'
+  depends_on 'dbus'
+  depends_on 'lzma' => :build
+  depends_on 'font_util'
+  depends_on 'libxkbcommon'
+  depends_on 'xkbcomp'
+  
+def self.build
+  system "./configure",
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
            "--enable-xfree86-utils",
@@ -50,10 +52,10 @@ class Xorg_server < Package
            "--disable-xnest",
            "--disable-systemd-logind",
            "--enable-suid-wrapper"
-    system "make"
-  end
+  system "make"
+end
 
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+def self.install
+  system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+end
 end
