@@ -5,7 +5,7 @@ class Imagemagick7 < Package
   homepage 'http://www.imagemagick.org/script/index.php'
   version '7.0.7-27'
   source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-27.tar.xz'
-  source_sha256 '78380b6f9b0ebfbf7f1630769ffd626dc9106807d0acd62ebc556a3b80830cb8'
+  source_sha256 '56130c16790d8d38c3a1888cc07074d5b50ffb718243e0c56e4c88839edbf931'
 
   binary_url ({
   })
