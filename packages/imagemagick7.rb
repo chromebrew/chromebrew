@@ -3,9 +3,9 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.7-24'
-  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-24.tar.xz'
-  source_sha256 '2f83f8a1b7725e9d96a6f4ddf8dd2e70d44bc039bdc32f056805ab4d0f7485fb'
+  version '7.0.7-27'
+  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-27.tar.xz'
+  source_sha256 '78380b6f9b0ebfbf7f1630769ffd626dc9106807d0acd62ebc556a3b80830cb8'
 
   binary_url ({
   })
