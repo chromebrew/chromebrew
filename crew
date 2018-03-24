@@ -25,6 +25,7 @@ Usage:
   crew files <name> ...
   crew help [<command>]
   crew install [-k|--keep] [-s|--build-from-source] [-v|--verbose] <name> ...
+  crew list (available|installed)
   crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
   crew update
@@ -60,7 +61,7 @@ rescue Docopt::Exit => e
     end
     if ARGV[0] != '-h' and ARGV[0] != '--help' then
       puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-      cmds = ["build", "download", "files", "help", "install", "remove", "search", "update", "upgrade", "whatprovides"]
+      cmds = ["build", "download", "files", "help", "install", "list", "remove", "search", "update", "upgrade", "whatprovides"]
       # Looking for similar commands
       if not cmds.include?(ARGV[0]) then
         similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
@@ -111,6 +112,28 @@ def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     if File.extname(filename) == '.rb'
       print_package File.basename filename, '.rb'
+    end
+  end
+end
+
+def list_available
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    @notInstalled = true
+    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+      packageName = File.basename filename, '.rb'
+      @notInstalled = nil if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
+    end
+    puts File.basename filename, '.rb' if File.extname(filename) == '.rb' if @notInstalled
+  end
+end
+
+def list_installed
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
+      packageName = File.basename filename, '.rb'
+      if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
+        puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
+      end
     end
   end
 end
@@ -166,6 +189,9 @@ def help (pkgName)
     puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
     puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
+  when "list"
+    puts "List available or installed packages"
+    puts "Usage: crew list (available|installed)"
   when "remove"
     puts "Remove package(s)."
     puts "Usage: crew remove [-v|--verbose] <package1> [<package2> ...]"
@@ -199,7 +225,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, download, files, install, remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, download, files, install, list ,remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -817,6 +843,14 @@ def install_command (args)
     search @pkgName
     @pkg.build_from_source = true if @opt_src
     resolve_dependencies_and_install
+  end
+end
+
+def list_command (args)
+  if args['available']
+    list_available
+  elsif args['installed']
+    list_installed
   end
 end
 
