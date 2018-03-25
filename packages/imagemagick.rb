@@ -17,16 +17,16 @@ class Imagemagick < Package
     while version = STDIN.gets.chomp
       case version
       when '6'
-        source_url 'https://www.imagemagick.org/download/releases/ImageMagick-6.9.9-39.tar.xz'
-        source_sha256 '56130c16790d8d38c3a1888cc07074d5b50ffb718243e0c56e4c88839edbf931'
+        source_url 'https://www.imagemagick.org/download/ImageMagick-6.9.9-39.tar.gz'
+        source_sha256 '78380b6f9b0ebfbf7f1630769ffd626dc9106807d0acd62ebc556a3b80830cb8'
         binary_url ({
         })
         binary_sha256 ({
         })
         break
       when '7'
-        source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-27.tar.xz'
-        source_sha256 '543776f09d69e3ca29b1b83a9c0223185ba26bec673593840b4d7face6ea253b'
+        source_url 'https://www.imagemagick.org/download/ImageMagick-7.0.7-27.tar.gz'
+        source_sha256 'eb73af01344eba5bfa1be4360a67c4b278cfb752da5b14055290d08bf22b88ce'
         binary_url ({
         })
         binary_sha256 ({
