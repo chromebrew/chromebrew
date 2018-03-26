@@ -63,6 +63,7 @@ Where available commands are:
   * files [display installed files of package(s).]
   * help [get information about command usage]
   * install [install package(s) along with dependencies after prompting for confirmation]
+  * list [available or installed packages]
   * remove [remove package(s)]
   * search [look for a package]
   * update [update crew itself]
