@@ -7,6 +7,15 @@ class Miniconda3 < Package
   source_url 'https://raw.githubusercontent.com/Anaconda-Platform/anaconda-project/adb2d443b805f2c6c53f989251cc1a2b13fc0d0e/README.md'
   source_sha256 'ec0bfe39423ca117ffcd17c154e3e5f6c81a28c4fb14c22dd5033f499a306362'
 
+  binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-4.4.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-4.4.10-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+       i686: '289962ee7c7456fce196ca70ae983c440dea7b3a259767090f09768e9dc213cb',
+     x86_64: 'cfe89978fef64fd7d8efe6ad1a1d8b18023ae55f87c0246f82dcc5755881bfe2',
+  })
+
   depends_on 'python3'
 
   def self.install
@@ -30,19 +39,8 @@ class Miniconda3 < Package
         system "echo 'bin/conda \"\$@\"' >> conda"
         system "chmod +x conda"
       end
-      system "mkdir -p #{CREW_DEST_DIR}#{CREW_CONFIG_PATH}/meta"
-      system "echo #{CREW_PREFIX}/bin/conda > #{CREW_DEST_DIR}#{CREW_CONFIG_PATH}/meta/miniconda3.filelist"
-      system "find #{CREW_PREFIX}/share/miniconda3/ -type d -exec echo {} >> #{CREW_DEST_DIR}#{CREW_CONFIG_PATH}/meta/miniconda3.directorylist \\;"
-      system "find #{CREW_PREFIX}/share/miniconda3/ -type f -exec echo {} >> #{CREW_DEST_DIR}#{CREW_CONFIG_PATH}/meta/miniconda3.filelist \\;"
-      system "find #{CREW_PREFIX}/share/miniconda3/ -type l -exec echo {} >> #{CREW_DEST_DIR}#{CREW_CONFIG_PATH}/meta/miniconda3.filelist \\;"
+      system "mkdir -p #{CREW_DEST_PREFIX}/share"
+      system "cp -r #{CREW_PREFIX}/share/miniconda3 #{CREW_DEST_PREFIX}/share"
     end
-  end
-
-  def self.postinstall
-    puts
-    puts "To completely remove miniconda3 and all installed packages, execute the following:".lightblue
-    puts "crew remove miniconda3".lightblue
-    puts "rm -rf #{CREW_PREFIX}/share/miniconda3".lightblue
-    puts
   end
 end

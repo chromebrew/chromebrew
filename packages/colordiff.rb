@@ -8,8 +8,16 @@ class Colordiff < Package
   source_sha256 '29cfecd8854d6e19c96182ee13706b84622d7b256077df19fbd6a5452c30d6e0'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/colordiff-1.0.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/colordiff-1.0.18-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/colordiff-1.0.18-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/colordiff-1.0.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'f8e3848078a822375729d5243697ed856e45db41badef0db95052dac3beac452',
+     armv7l: 'f8e3848078a822375729d5243697ed856e45db41badef0db95052dac3beac452',
+       i686: 'f47a74e3d39e7b72989925434897313ca1a98c11e6895c30c1db7f23049ac166',
+     x86_64: 'd0cafc057a6967a0232ec57769a9b013e1e4cc8412b3b0ece257cc622f2a3234',
   })
 
   depends_on 'perl'
