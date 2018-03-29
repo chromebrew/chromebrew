@@ -19,6 +19,8 @@ class Itstool < Package
        i686: '3fd0335f8b9c45ca65994abd1facd313f061d9ed529aa54161309dd96ed5a928',
      x86_64: '1a2b5ed97e30e42bb37140eef1d0b09055c7f00e34b7b9748a3387fd38426f6a',
   })
+  
+  depends_on 'libxml2'
 
   def self.build
     system "./autogen.sh"
