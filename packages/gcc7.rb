@@ -9,7 +9,6 @@ class Gcc7 < Package
 
   source_sha256 'd8cb199f0d98bd83e3dac645126722e44137c24cbe5e87e1113dd4270f7530c6'
 
-  depends_on 'buildessential'
   depends_on 'gawk'
   depends_on 'unzip' => :build
 
