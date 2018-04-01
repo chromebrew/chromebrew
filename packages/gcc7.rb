@@ -33,6 +33,7 @@ class Gcc7 < Package
     Dir.chdir "build" do
       ENV["LIBRARY_PATH"] = "#{CREW_LIB_PREFIX}"
       system "make",
+             "DESTDIR=#{CREW_DEST_DIR}",
              "install-strip"
     end
   end
