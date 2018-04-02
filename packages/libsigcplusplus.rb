@@ -20,10 +20,6 @@ class Libsigcplusplus < Package
      x86_64: 'c32ff29b0f4a8394b69502cd3dc030848f84c5c3df048beb88966f7b1b6c6935',
   })
 
-  depends_on 'pkgconfig' => :build
-  depends_on 'diffutils' => :build
-  depends_on 'm4' => :build
-
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
