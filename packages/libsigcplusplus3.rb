@@ -1,6 +1,6 @@
 require 'package'
 
-class Libsigcplusplus < Package
+class Libsigcplusplus3 < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
   homepage 'http://libsigc.sourceforge.net/'
   version '2.99.10'
