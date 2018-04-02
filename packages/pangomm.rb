@@ -4,7 +4,7 @@ class Pangomm < Package
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
   version '2.40.1'
-  source_url 'http://ftp.acc.umu.se/pub/GNOME/sources/pangomm/2.40/pangomm-2.40.1.tar.xz'
+  source_url 'https://ftp.gnome.org/pub/GNOME/sources/pangomm/2.40/pangomm-2.40.1.tar.xz'
   source_sha256 '9762ee2a2d5781be6797448d4dd2383ce14907159b30bc12bf6b08e7227be3af'
 
   binary_url ({
