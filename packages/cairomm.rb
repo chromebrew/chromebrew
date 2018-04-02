@@ -21,7 +21,7 @@ class Cairomm < Package
   })
 
   depends_on 'cairo'
-  depends_on 'libsigcplusplus'
+  depends_on 'libsigcplusplus3'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'
   depends_on 'gcc7' => :build
