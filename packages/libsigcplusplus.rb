@@ -24,6 +24,7 @@ class Libsigcplusplus < Package
   depends_on 'diffutils' => :build
   depends_on 'm4' => :build
   depends_on 'gcc7' => :build  # c++14 support
+  depends_on 'cmake' => :build
 
   def self.build
     system "mkdir -p build"
