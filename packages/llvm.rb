@@ -1,8 +1,8 @@
 require 'package'
 
 class Llvm < Package
-    description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.'
-  homepage 'https://compiler-rt.llvm.org/'
+  description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.'
+  homepage 'http://llvm.org/'
   version '6.0.0'
     source_url 'http://llvm.org/releases/6.0.0/llvm-6.0.0.src.tar.xz'
   source_sha256 '1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408'
