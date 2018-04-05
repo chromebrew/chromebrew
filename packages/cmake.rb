@@ -20,7 +20,7 @@ class Cmake < Package
      x86_64: '77c23449a2a8e4a9f98069b330d2e186a5845bba78a4899d7a84840b378c3b7f',
   })
 
-  depends_on 'buildessential'
+  depends_on 'libuv'
   depends_on 'openssl'
   depends_on 'ncurses'
 
