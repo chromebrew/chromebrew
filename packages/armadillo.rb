@@ -21,7 +21,6 @@ class Armadillo < Package
   def self.install
     system "make",
            "DESTDIR=#{CREW_DEST_DIR}",
-           "LIBDIR=#{CREW_LIB_PREFIX}",
            "install"
   end
 
