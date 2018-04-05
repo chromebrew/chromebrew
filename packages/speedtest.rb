@@ -10,8 +10,14 @@ class Speedtest < Package
   depends_on 'python3'
 
   def self.install
+<<<<<<< HEAD
     system "yes | pip3 install setuptools"
     system "pip3 install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I speedtest-cli==2.0.0"
     system "yes | pip3 uninstall setuptools"
+=======
+    system "yes | pip install setuptools"
+    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I speedtest-cli==2.0.0"
+    system "yes | pip uninstall setuptools"
+>>>>>>> Add speedtest package
   end
 end
