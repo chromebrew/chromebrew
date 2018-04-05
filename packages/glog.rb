@@ -8,7 +8,7 @@ class Glog < Package
   source_url 'https://github.com/google/glog/archive/v0.3.5.zip'
   source_sha256 '267103f8a1e9578978aa1dc256001e6529ef593e5aea38193d31c2872ee025e8'
 
-  depends_on 'openblas'
+  depends_on 'unzip' => :build
 
   def self.build
     system "./configure",
@@ -20,7 +20,6 @@ class Glog < Package
   def self.install
     system "make",
            "DESTDIR=#{CREW_DEST_DIR}",
-           "LIBDIR=#{CREW_LIB_PREFIX}",
            "install"
   end
 
