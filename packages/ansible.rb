@@ -32,7 +32,7 @@ class Ansible < Package
   end
   
   def self.postinstall
-    puts "Check and install dependencies ...".blue
+    puts "Check and install dependencies ...".lightblue
     system "yes | pip install ansible"
   end
 end
