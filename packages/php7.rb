@@ -20,6 +20,7 @@ class Php7 < Package
      x86_64: '07832256ee0f311534432a5cf074e179a4f1928627af868c63b16b5a4e23dc1d',
   })
 
+  depends_on 'icu4c'
   depends_on 'libgcrypt'
   depends_on 'libpng'
   depends_on 'libxslt'

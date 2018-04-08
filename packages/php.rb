@@ -87,6 +87,14 @@ class Php < Package
     end
   end
 
+  depends_on 'icu4c'
+  depends_on 'libgcrypt'
+  depends_on 'libpng'
+  depends_on 'libxslt'
+  depends_on 'curl'
+  depends_on 'pcre'
+  depends_on 'readline'
+
   def self.postinstall
     puts
     puts "To start the php-fpm service, execute:".lightblue
