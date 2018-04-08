@@ -234,7 +234,9 @@ def files (pkgName)
   if File.exists? "#{filelist}"
     system "sort #{filelist}"
     lines = `wc -l "#{filelist}"`.strip.split(' ')[0].to_i
+    size = `du -ch $file_list | tail -1 | cut -f 1`
     puts "Total found: #{lines}".lightgreen
+    puts "Total disk space used by #{pkgName}: #{size}".lightgreen
   else
     puts "Package #{pkgName} is not installed. :(".lightred
   end
