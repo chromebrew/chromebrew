@@ -3,7 +3,7 @@ require 'package'
 class Texinfo < Package
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
-  version '6.5'
+  version '6.5-0'
   source_url 'http://ftpmirror.gnu.org/texinfo/texinfo-6.5.tar.xz'
   source_sha256 '77774b3f4a06c20705cc2ef1c804864422e3cf95235e965b1f00a46df7da5f62'
 
