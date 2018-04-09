@@ -1,8 +1,7 @@
 require 'package'
 
 class Libdnet < Package
-  description 'libdnet provides a simplified, portable interface to several low-level
-networking routines.'
+  description 'libdnet provides a simplified, portable interface to several low-level networking routines.'
   homepage 'https://github.com/dugsong/libdnet'
   version '1.12'
   source_url 'https://github.com/dugsong/libdnet/archive/libdnet-1.12.tar.gz'
