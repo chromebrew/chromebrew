@@ -20,6 +20,7 @@ class Php5 < Package
      x86_64: '0772f8d82fd27a2d3bae83d27929950cc80db59d2e0f70d8db04f131f6cad753',
   })
 
+  depends_on 'icu4c'
   depends_on 'libgcrypt'
   depends_on 'libpng'
   depends_on 'libxslt'
