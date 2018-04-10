@@ -8,8 +8,12 @@ class Cf < Package
   source_sha256 'e760fc21cdee6960dbd864e48c08630eabe33af0bb1bb4d412a22d4bb9ac6a06'
 
   binary_url ({
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cf-6.36.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cf-6.36.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+       i686: '8fc3e0c54791538211b3b5d2c7b4756da9c122637917baeceb025dda4be5347d',
+     x86_64: 'd99c348433cef60967da0322bbf3035e28959a24d50c5042c489cf3b14d35feb',
   })
 
   def self.install
