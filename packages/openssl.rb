@@ -3,21 +3,21 @@ require 'package'
 class Openssl < Package
   description 'OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.'
   homepage 'https://www.openssl.org/'
-  version '1.0.2n'
-  source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2n.tar.gz'
-  source_sha256 '4f4bc907caff1fee6ff8593729e5729891adcee412049153a3bb4db7625e8364'
+  version '1.0.2o'
+  source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2o.tar.gz'
+  source_sha256 'fd8bff81636c262ff82cb22286957d73213f899c1a80a3ec712c7ae80761ea9b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2n-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2n-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2n-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2n-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2o-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2o-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2o-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2o-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '79722da5e3fd6230c21299a05d19f01010a0dfbc505d4c11216256ce326a3ab0',
-     armv7l: '79722da5e3fd6230c21299a05d19f01010a0dfbc505d4c11216256ce326a3ab0',
-       i686: '34f1886d7937abebffc9870d9aab4299a33236ef2a03328551ca409474505371',
-     x86_64: '2df754d37d6c68d23031325a35ae4f8b27ad325a803c19110be448c2b45fbdc3',
+    aarch64: 'b7500bdbfd231f726182b415bbd3b27194e617df455f6f42bdd0e0822cf39a60',
+     armv7l: 'b7500bdbfd231f726182b415bbd3b27194e617df455f6f42bdd0e0822cf39a60',
+       i686: 'e6633187ec8ba10f13c4b4e2af0643f78409bcd84c596744289d47d9afdef664',
+     x86_64: '45caf4d45bc65e494f7b77d1d454f0aff516a2f76656e00efa335cf38bcf7055',
   })
 
   depends_on 'compressdoc' => :build

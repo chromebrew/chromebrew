@@ -3,21 +3,21 @@ require 'package'
 class Libuv < Package
   description 'libuv is a multi-platform support library with a focus on asynchronous I/O.'
   homepage 'http://libuv.org/'
-  version '1.18.0'
-  source_url 'https://dist.libuv.org/dist/v1.18.0/libuv-v1.18.0.tar.gz'
-  source_sha256 '54e4734da09172f19d5061dcfd7a536fe4c3a8dc12ed981a14a58ac17efdab88'
+  version '1.19.2'
+  source_url 'https://dist.libuv.org/dist/v1.19.2/libuv-v1.19.2.tar.gz'
+  source_sha256 '7cbcf2017e7116cf9da8ec1c6a146d578536b1e479458438873c991f984a53d7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.18.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.18.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.18.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.18.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.19.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.19.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.19.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.19.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '8dee95617be290c9fa4292973bd06e20a3167f8ab2e04164e4ae48953022664a',
-     armv7l: '8dee95617be290c9fa4292973bd06e20a3167f8ab2e04164e4ae48953022664a',
-       i686: '3a5c4b72c075019b940faaec252ad7c632bc93ea3b00a6259488788b27140e38',
-     x86_64: '32ab49169ef9aa53b677ea83bf2cb5c1ad343fa962ba096189b2bf4012e17f66',
+    aarch64: '5bfbdbf3ff78d210edc9517bfeacc021fdc53e916e7f34290cda08098e4ee12c',
+     armv7l: '5bfbdbf3ff78d210edc9517bfeacc021fdc53e916e7f34290cda08098e4ee12c',
+       i686: '5a8d532be1c828835f7237dd20e722eda12c0717a4f01847f1cad374fc3781cb',
+     x86_64: 'ac00cf539fcdf67bb88ff6994d41672578e9e4dd93a26e0b11bd7ffb850ccd37',
   })
 
   depends_on 'automake'
