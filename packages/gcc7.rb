@@ -14,12 +14,11 @@ class Gcc7 < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '19b4c233e45d2be3243c70e8e05aa7e34b6969d884768635d24b9383a025be51',
-     armv7l: '19b4c233e45d2be3243c70e8e05aa7e34b6969d884768635d24b9383a025be51',
-       i686: '98bf6ab14d25f7d32f4b588dcfeadaba62a6d5433214a5d8a5e63c4b78f42e31',
-     x86_64: '93ba8533ce6863c23819fa24edf29d91bb030f80d17684c90d291efebd33d2c9',
+    aarch64: '6cf87fdec09dcfe030d3c6a9fbd5d7cb838d18d01c1213304e5c2d6180be5e89',
+     armv7l: '6cf87fdec09dcfe030d3c6a9fbd5d7cb838d18d01c1213304e5c2d6180be5e89',
+       i686: 'bf8eb6cb5ac5491b53de52adc3c24f2904283b39fb64253d3e14b98731f847fa',
+     x86_64: '8903d899d22e02ecb018393fe4242923dc4adc7d505e6bd731a0cb1c75e4e642',
   })
-
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
@@ -47,6 +46,7 @@ class Gcc7 < Package
                  "--disable-multilib",
                  "--enable-threads=posix",
                  "--enable-bootstrap",
+                 "--disable-werror",
                  "--disable-libmpx",
                  "--disable-static",
                  "--program-suffix=-7.3",
@@ -67,6 +67,7 @@ class Gcc7 < Package
                  "--disable-multilib",
                  "--enable-threads=posix",
                  "--enable-bootstrap",
+                 "--disable-werror",
                  "--disable-libmpx",
                  "--disable-static",
                  "--program-suffix=-7.3",
@@ -84,6 +85,7 @@ class Gcc7 < Package
                  "--disable-multilib",
                  "--enable-threads=posix",
                  "--enable-bootstrap",
+                 "--disable-werror",
                  "--disable-libmpx",
                  "--disable-static",
                  "--program-suffix=-7.3",
@@ -120,15 +122,11 @@ class Gcc7 < Package
 	    
       # Install Binary File Descriptor library (BFD)
       system "install -v -dm755 #{CREW_DEST_LIB_PREFIX}/bfd-plugins"
+      
+      # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)
+      system "ln -sfv #{CREW_DEST_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      system "ln -sv gcc-7.3 #{CREW_DEST_PREFIX}/bin/gcc"
+      system "ln -sv gcc-7.3 #{CREW_DEST_PREFIX}/bin/cc"
     end
-  end
-    
-  def self.postinstall  
-    #system "ln -sv gcc-7.3 #{CREW_PREFIX}/bin/gcc"
-    #system "ln -sv gcc-7.3 #{CREW_PREFIX}/bin/cc"
-	  
-    # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)	  
-    system "ln -sfv #{CREW_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_LIB_PREFIX}/bfd-plugins/"
-  end
-  
+  end  
 end
