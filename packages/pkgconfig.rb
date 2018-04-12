@@ -14,10 +14,10 @@ class Pkgconfig < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pkgconfig-0.29.2-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '53a0d80b00c745762a25eb9622fdd96f1f2e3a7ff86ca13bec15cdc6c943845c',
-     armv7l: '53a0d80b00c745762a25eb9622fdd96f1f2e3a7ff86ca13bec15cdc6c943845c',
-       i686: 'bb54749f9ca7f6cf50adc8e52ecf2dc48af3eb1e5bc841e65ecab55142020741',
-     x86_64: 'd5084005544be49e828269473c0acd43eb7bb46b7080926c3a9cddd0926c028b',
+    aarch64: '38f69777e092690dd565ce6d43bfbc6b3906d81d6547c889b8c869bca10c3d40',
+     armv7l: '38f69777e092690dd565ce6d43bfbc6b3906d81d6547c889b8c869bca10c3d40',
+       i686: '3e4407346894c23be4a9f67bea88815b0086a292ab70fea149c20ff99017103b',
+     x86_64: '9ec6d03083164dd778e3cdfc75224c4d307adad2ac93ce1a0077a14e6d6390cc',
   })
   
   depends_on 'python27' => :build
@@ -26,6 +26,8 @@ class Pkgconfig < Package
     case ARCH
     when "x86_64"
       system "./configure",
+             "--prefix=#{CREW_PREFIX}",
+             "--libdir=#{CREW_LIB_PREFIX}",
              "--with-internal-glib",
              "--with-pc-path=#{CREW_PREFIX}/lib/pkgconfig:#{CREW_PREFIX}/lib64/pkgconfig:#{CREW_PREFIX}/share/pkgconfig",
              "--with-system-include-path=/usr/include:#{CREW_PREFIX}/include",
@@ -35,6 +37,8 @@ class Pkgconfig < Package
              "--disable-host-tool"
     when "i686","armv7l","aarch64"
       system "./configure",
+             "--prefix=#{CREW_PREFIX}",
+             "--libdir=#{CREW_LIB_PREFIX}",
              "--with-internal-glib",
              "--with-pc-path=#{CREW_PREFIX}/lib/pkgconfig:#{CREW_PREFIX}/share/pkgconfig",
              "--with-system-include-path=/usr/include:#{CREW_PREFIX}/include",
