@@ -23,8 +23,8 @@ class Gcc7 < Package
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'gcc'    # gcc version 4.9.4
-  depends_on 'icu4c'  # icu version 60.1
+  depends_on 'gcc' => :build   # gcc version 4.9.4
+  depends_on 'icu4c' => :build # icu version 60.1
   
   def self.build
     # previous compile issue
