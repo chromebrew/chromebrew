@@ -94,7 +94,7 @@ class Gcc7 < Package
       #          Use this switch if we are upgrading from GCC version prior to 5.1.0
       #          We do not want to recompile all the libraries written in C++
       
-        system "make"
+      system "make"
     end
   end
   
@@ -110,25 +110,25 @@ class Gcc7 < Package
   
   def self.install
     Dir.chdir("objdir") do
-	    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 	   
-	    # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
-	    # move a misplaced file
-	    # The installation stage puts some files used by gdb under the /usr/local/lib(64) directory. This generates spurious error messages when performing ldconfig. This command moves the files to another location.
+      # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
+      # move a misplaced file
+      # The installation stage puts some files used by gdb under the /usr/local/lib(64) directory. This generates spurious error messages when performing ldconfig. This command moves the files to another location.
       system "mkdir -pv #{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
       system "mv -v #{CREW_DEST_LIB_PREFIX}/*gdb.py #{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
 	    
-	    # Install Binary File Descriptor library (BFD)
-	    system "install -v -dm755 #{CREW_DEST_LIB_PREFIX}/bfd-plugins"
+      # Install Binary File Descriptor library (BFD)
+      system "install -v -dm755 #{CREW_DEST_LIB_PREFIX}/bfd-plugins"
     end
   end
     
-  def self.postinstall
-    
+  def self.postinstall  
     #system "ln -sv gcc-7.3 #{CREW_PREFIX}/bin/gcc"
-	  #system "ln -sv gcc-7.3 #{CREW_PREFIX}/bin/cc"
-	  # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)
-	  system "ln -sfv #{CREW_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_LIB_PREFIX}/bfd-plugins/"
+    #system "ln -sv gcc-7.3 #{CREW_PREFIX}/bin/cc"
+	  
+    # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)	  
+    system "ln -sfv #{CREW_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_LIB_PREFIX}/bfd-plugins/"
   end
   
 end
