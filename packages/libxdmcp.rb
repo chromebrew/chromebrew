@@ -20,9 +20,7 @@ class Libxdmcp < Package
      x86_64: 'b9b1a87572a321a7ff1be4bcb9c20b25c67b4a80fb5fe8867d0f24d29ecce5ae',
   })
 
-  depends_on "util_macros"
   depends_on "xorg_proto"
-
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
