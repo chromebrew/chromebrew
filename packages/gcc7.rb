@@ -14,10 +14,10 @@ class Gcc7 < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd72f4e2b4eca106dd378ea337ee6ee640fab0db0c19ef3392c0d9f93408c8071',
-     armv7l: 'd72f4e2b4eca106dd378ea337ee6ee640fab0db0c19ef3392c0d9f93408c8071',
-       i686: '6fd7621b2e713bdb378e0720f90c36aab9109c5bb74f3a35af97b07933128a7b',
-     x86_64: '4f96ebe9f76b571fbec77ef9cdc03e9a2dafe27bd3a0461dd0a41ccdd555e6a2',
+    aarch64: '12cea1ff38da7c29a55bf49e7487b8eb1d4ded1229ef2cf074932c4f49bbcd58',
+     armv7l: '12cea1ff38da7c29a55bf49e7487b8eb1d4ded1229ef2cf074932c4f49bbcd58',
+       i686: 'e28bc4def2804302e7f19c0ba9f8438260173b8cfa1022d85c48199df4a1beb3',
+     x86_64: 'f2e0f4c3157d2f728c8a24b55708f86dbe10734243424c9e01d913977ef42ca6',
   })
 
   depends_on 'unzip' => :build
@@ -129,29 +129,29 @@ class Gcc7 < Package
       system "install -v -dm755 #{CREW_DEST_LIB_PREFIX}/bfd-plugins"
       
       # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)
-      system "ln -sfv #{CREW_DEST_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      system "ln -sfv #{CREW_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
       
       # Make symbolic links
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/cc"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/gcc"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/c++-7.3 #{CREW_DEST_PREFIX}/bin/c++"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/g++-7.3 #{CREW_DEST_PREFIX}/bin/g++"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/cpp-7.3 #{CREW_DEST_PREFIX}/bin/cpp"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ar"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/gcc-nm"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ranlib"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcov-7.3 #{CREW_DEST_PREFIX}/bin/gcov"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcov-dump-7.3 #{CREW_DEST_PREFIX}/bin/gcov-dump"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gcov-tool-7.3 #{CREW_DEST_PREFIX}/bin/gcov-tool"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/gfortran-7.3 #{CREW_DEST_PREFIX}/bin/gfortran"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/cc"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/gcc"
+      system "ln -sv #{CREW_PREFIX}/bin/c++-7.3 #{CREW_DEST_PREFIX}/bin/c++"
+      system "ln -sv #{CREW_PREFIX}/bin/g++-7.3 #{CREW_DEST_PREFIX}/bin/g++"
+      system "ln -sv #{CREW_PREFIX}/bin/cpp-7.3 #{CREW_DEST_PREFIX}/bin/cpp"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ar"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/gcc-nm"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ranlib"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-7.3 #{CREW_DEST_PREFIX}/bin/gcov"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-dump-7.3 #{CREW_DEST_PREFIX}/bin/gcov-dump"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-tool-7.3 #{CREW_DEST_PREFIX}/bin/gcov-tool"
+      system "ln -sv #{CREW_PREFIX}/bin/gfortran-7.3 #{CREW_DEST_PREFIX}/bin/gfortran"
       
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-c++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-c++"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-g++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-g++"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib"
-      system "ln -sv #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gfortran-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gfortran"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-c++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-c++"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-g++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-g++"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gfortran-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gfortran"
 
     end
   end
