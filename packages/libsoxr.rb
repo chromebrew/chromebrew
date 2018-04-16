@@ -7,8 +7,6 @@ class Libsoxr < Package
   source_url 'https://sourceforge.net/projects/soxr/files/soxr-0.1.3-Source.tar.xz'
   source_sha256 'b111c15fdc8c029989330ff559184198c161100a59312f5dc19ddeb9b5a15889'
 
-  depends_on 'cmake' => :build
-
   def self.build
     if ARCH == "x86_64"
       system "cmake",
