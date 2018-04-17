@@ -267,7 +267,7 @@ class Llvm6 < Package
     end
     
     ############################################################
-    puts "Optinal packages are ready".lightgreen
+    puts "Optional packages are ready".lightgreen
     ############################################################
     
   end
