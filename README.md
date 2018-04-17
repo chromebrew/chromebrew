@@ -21,11 +21,10 @@ Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use th
 Prerequisites
 -------------
 
-You will need a Chromebook with developer mode enabled.
+You will need a Chromebook with developer mode enabled.  To do so, select your device on
+[the ChromiumOS Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) and follow the instructions listed there.
 
-On [the ChromiumOS Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) select your device and follow the instructions listed there.
-
-Please be aware of the fact that developer mode is insecure if not properly configured.
+Please be aware of the fact that developer mode is insecure if not properly configured. Setting a password as instructed in the VT-2 login screen is essential.
 
 Installation
 ------------
@@ -63,6 +62,7 @@ Where available commands are:
   * files [display installed files of package(s).]
   * help [get information about command usage]
   * install [install package(s) along with dependencies after prompting for confirmation]
+  * list [available or installed packages]
   * remove [remove package(s)]
   * search [look for a package]
   * update [update crew itself]

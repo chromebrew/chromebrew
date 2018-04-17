@@ -3,21 +3,21 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.16.1'
-  source_url 'https://github.com/git/git/archive/v2.16.1.tar.gz'
-  source_sha256 'e3f13e3c86981f64b1920749c07be11841bbf5a3434ec9b5611959dfd7c7398e'
+  version '2.17.0'
+  source_url 'https://github.com/git/git/archive/v2.17.0.tar.gz'
+  source_sha256 '46f3a29c250313276ac747a3a221ca69dbc3218754f8db188841322cf7ab58d3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.16.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1267dd4eedcdef94c201b462f18f8dbc3bdef1e82106adf642cf428ede350d3b',
-     armv7l: '1267dd4eedcdef94c201b462f18f8dbc3bdef1e82106adf642cf428ede350d3b',
-       i686: '2215ef3534daf89e1b96b63f7b5177018cb657bb7713d9aad97a80729c4da546',
-     x86_64: '8447b69bb2eb1040fa5627c1e0aae122db6b22ec846f957b81fd3fbc2d287783',
+    aarch64: '2344502e10a3e8d9054e5769b9781640d455288914f517f9bc1e669050d13703',
+     armv7l: '2344502e10a3e8d9054e5769b9781640d455288914f517f9bc1e669050d13703',
+       i686: '127385a0b9d0f6e2f14b96cd649f38a3af18f02689685cd06b2eb8b35a6134df',
+     x86_64: 'fddf194fcafc443968343f19f20561b71faedf93e43b0db52c180144e4457145',
   })
 
   # use system zlibpkg, openssl, curl, expat

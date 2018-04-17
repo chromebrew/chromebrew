@@ -3,28 +3,28 @@ require 'package'
 class Automake < Package
   description 'Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.'
   homepage 'http://www.gnu.org/software/automake/'
-  version '1.15.1'
-  source_url 'https://ftp.gnu.org/gnu/automake/automake-1.15.1.tar.xz'
-  source_sha256 'af6ba39142220687c500f79b4aa2f181d9b24e4f8d8ec497cea4ba26c64bedaf'
+  version '1.16.1'
+  source_url 'https://ftpmirror.gnu.org/automake/automake-1.16.1.tar.xz'
+  source_sha256 '5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.15.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.16.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.16.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.16.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.16.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6b24c2151919dec05fe5db181594b8a0c9064de3b2c84ed297a6a206428863b5',
-     armv7l: '6b24c2151919dec05fe5db181594b8a0c9064de3b2c84ed297a6a206428863b5',
-       i686: '0a65312bf54e75983674a7933a01e073f625f073ba25fcb071185b2722797dc6',
-     x86_64: '9a354fc263d5e4118ae563f82f78a56df4d928271969a1b2bcba915f4ae85cac',
+    aarch64: '83961e48a99575d70e225d4d0b89b71eae90dd7308fb6a5e8234831afdb87134',
+     armv7l: '83961e48a99575d70e225d4d0b89b71eae90dd7308fb6a5e8234831afdb87134',
+       i686: '46cc913feaf2b7ad6490967361fc36ee69181deb0481c9287d9949fcfe45b579',
+     x86_64: '3f9ff866f29e8b15b99e2b807e2c7f75d8091d551f25ab5480b60703c3612ba6',
   })
 
   depends_on 'autoconf'
 
   def self.build
-    system "./configure"
-    system "make"
+    system "./configure --prefix=#{CREW_PREFIX}"
+    system 'make'
   end
 
   def self.install

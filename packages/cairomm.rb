@@ -14,20 +14,23 @@ class Cairomm < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '716198def65f7a922c3731bdb67e11734bfe48ce88c1387babe397cf173803d9',
-     armv7l: '716198def65f7a922c3731bdb67e11734bfe48ce88c1387babe397cf173803d9',
-       i686: '116e6672c979c5437e3b6f09d77115193abfdfea29571eeeea9c99e1203482de',
-     x86_64: '1f1d306f729cf04dd1d29979df6caefa5d8e6cfaa2dafd404a807d16b0f08a4b',
+    aarch64: '888898b832f6d43a3810caf17de63dbca0380914febcfada5210a36d839d8097',
+     armv7l: '888898b832f6d43a3810caf17de63dbca0380914febcfada5210a36d839d8097',
+       i686: '3781427ed44646a23045843d73ce1bdb85eb9b9a12a0130c7726ea7afa23dd50',
+     x86_64: '94dfeb48047f9d9cb2ebda72c640dbe64532f2d4496f8c0dd7bfc2aea91b42ae',
   })
 
   depends_on 'cairo'
   depends_on 'libsigcplusplus'
+  depends_on 'libxxf86vm'
+  depends_on 'libxrender'
 
   def self.build
-    # fix the documents directory name
     system "sed -e '/^libdocdir =/ s/$(book_name)/cairomm-1.12.2/' \
     -i docs/Makefile.in"
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure",
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 

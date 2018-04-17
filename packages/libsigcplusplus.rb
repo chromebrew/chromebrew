@@ -4,7 +4,7 @@ class Libsigcplusplus < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
   homepage 'http://libsigc.sourceforge.net/'
   version '2.10.0'
-  source_url 'http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz'
+  source_url 'https://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz'
   source_sha256 'f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81'
 
   binary_url ({
@@ -19,10 +19,6 @@ class Libsigcplusplus < Package
        i686: 'cbdf640dbf2462b3b8f24bb5f7cd2345f1ff3f46c983191e7ee31482213d24cd',
      x86_64: 'c32ff29b0f4a8394b69502cd3dc030848f84c5c3df048beb88966f7b1b6c6935',
   })
-
-  depends_on 'pkgconfig' => :build
-  depends_on 'diffutils' => :build
-  depends_on 'm4' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

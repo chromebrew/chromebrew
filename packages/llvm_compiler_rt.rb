@@ -3,36 +3,41 @@ require 'package'
 class Llvm_compiler_rt < Package
   description 'Part of the LLVM project.'
   homepage 'https://compiler-rt.llvm.org/'
-  version '5.0.1'
-  source_url 'https://releases.llvm.org/5.0.1/compiler-rt-5.0.1.src.tar.xz'
-  source_sha256 '4edd1417f457a9b3f0eb88082530490edf3cf6a7335cdce8ecbc5d3e16a895da'
+  version '6.0.0'
+  source_url 'http://releases.llvm.org/6.0.0/compiler-rt-6.0.0.src.tar.xz'
+  source_sha256 'd0cc1342cf57e9a8d52f5498da47a3b28d24ac0d39cbc92308781b3ee0cea79a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-5.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-5.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-5.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-5.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-6.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-6.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-6.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_compiler_rt-6.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2fcae8af767e99a33d933bef54aa6a4204215eda11429acdf552fc7a02006b07',
-     armv7l: '2fcae8af767e99a33d933bef54aa6a4204215eda11429acdf552fc7a02006b07',
-       i686: 'fcdff59e1284e2d0ad2c559019d82138a94dfb3036860dc2dfa61fbac455f9fa',
-     x86_64: '54feea8df115c8d23c131bb5525de8afe4067149e9ab1423651e2c8040e9726c',
+    aarch64: '78d7bd2c47789d3e19e35d3a5f23cc7ff85509a9e86a6cca4fbed9c99fa1f52b',
+     armv7l: '78d7bd2c47789d3e19e35d3a5f23cc7ff85509a9e86a6cca4fbed9c99fa1f52b',
+       i686: 'c9bdb1c5819571139cced1615373a51694bf0829815143f0a1552708e4a53764',
+     x86_64: '5ac574941affdeeedd11124b0c02504e74b0af59ee1661baf182acf267706328',
   })
 
-  depends_on 'cmake' => :build
-
+  depends_on 'llvm'
+  
   def self.build
-    Dir.mkdir 'mybuilddir'
-    Dir.chdir "mybuilddir" do
-      system "cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .."
-      system "cmake --build . --  -j#{CREW_NPROC}"
+    system "mkdir -p builddir"
+    Dir.chdir("builddir") do
+      system "cmake",
+             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
+             "-DBUILD_SHARED_LIBS=ON",
+             "-DCMAKE_BUILD_TYPE=Release",
+             ".."
+      system "make"
     end
   end
 
-  def self.install
-    Dir.chdir "mybuilddir" do
-      system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_DEST_PREFIX} -P cmake_install.cmake"
+  def self.install                 # the steps required to install the package
+    Dir.chdir("builddir") do
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
   end
+  
 end

@@ -3,21 +3,21 @@ require 'package'
 class Ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6.0-2'
-  source_url 'ftp://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.0.tar.gz'
-  source_sha256 'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
+  version '6.1'
+  source_url 'https://ftpmirror.gnu.org/ncurses/ncurses-6.1.tar.gz'
+  source_sha256 'aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.0-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3951a422aff0fb0358c5190674bff39f30dd36b0b0df6f3c8a2717141be1447d',
-     armv7l: '3951a422aff0fb0358c5190674bff39f30dd36b0b0df6f3c8a2717141be1447d',
-       i686: '57851803decba529076a1a1b9b719dc15ac60c5f96709a2fb9eb769a56f4e81b',
-     x86_64: '761f5a0bac8df8af682ca0df82b42afc3d5a7217a1b359e4b7ba51c7851857e4',
+    aarch64: '4e33d4fc68ea5b47bae07aa710b1f801fd80ba85a02c0060c6f157100acadaf4',
+     armv7l: '4e33d4fc68ea5b47bae07aa710b1f801fd80ba85a02c0060c6f157100acadaf4',
+       i686: '16a5f5c03a4e9591146dc56a1ed4b017c09ad9d72da38d104ce282a3d25ef9fd',
+     x86_64: '1eab39eee49e16799ad61def29e69c50a7ea39b04a8da2ff4f4ada033e81273c',
   })
 
   depends_on 'diffutils' => :build
@@ -25,7 +25,7 @@ class Ncurses < Package
 
   def self.build
     system './configure',
-           '--prefix=/usr/local',
+           "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
            '--without-normal',
            '--with-shared',

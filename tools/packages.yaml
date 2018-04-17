@@ -1,0 +1,2587 @@
+kind: url
+name: a2png
+url: https://sourceforge.net/projects/a2png/files/a2png
+---
+kind: url
+name: a2ps
+url: https://ftp.gnu.org/gnu/a2ps
+---
+kind: url
+name: aalib
+url: https://downloads.sourceforge.net/project/aa-project/aa-lib
+---
+kind: url
+name: abcde
+url: https://abcde.einval.com/download/
+---
+kind: url
+name: acl
+url: https://download.savannah.gnu.org/releases/acl
+---
+kind: url
+name: ag
+url: https://github.com/ggreer/the_silver_searcher/releases
+---
+kind: url
+name: aircrack_ng
+url: http://download.aircrack-ng.org
+---
+kind: url
+name: alsa_lib
+url: ftp://ftp.alsa-project.org/pub/lib
+---
+kind: url
+name: alsa_plugins
+url: ftp://ftp.alsa-project.org/pub/plugins
+---
+kind: url
+name: ansible
+url: https://releases.ansible.com/ansible/
+---
+kind: url
+name: ansifilter
+url: http://www.andre-simon.de/zip/download.php
+---
+kind: url
+name: anagram
+url: http://www.fourmilab.ch/anagram/
+---
+kind: url
+name: ant
+url: https://www.apache.org/dist/ant/binaries/
+---
+kind: url
+name: antiword
+url: http://www.winfield.demon.nl/linux
+---
+kind: url
+name: applewmproto
+url: https://www.x.org/archive/individual/proto/
+---
+kind: url
+name: apr
+url: https://apache.claz.org/apr
+---
+kind: url
+name: apriconv
+url: https://apache.claz.org/apr
+---
+kind: url
+name: aprutil
+url: https://apache.claz.org/apr
+---
+kind: url
+name: argon2
+url: https://github.com/P-H-C/phc-winner-argon2/releases
+---
+kind: url
+name: aria2
+url: https://github.com/aria2/aria2/releases
+---
+kind: url
+name: ascii
+url: http://www.catb.org/~esr/ascii
+---
+kind: url
+name: asciidoc
+url: https://sourceforge.net/projects/asciidoc/files/asciidoc/
+---
+kind: url
+name: aspell
+url: http://alpha.gnu.org/gnu/aspell
+---
+kind: url
+name: aspell_en
+url: http://ftp.gnu.org/gnu/aspell/dict/en
+---
+kind: url
+name: aspell_es
+url: http://ftp.gnu.org/gnu/aspell/dict/es
+---
+kind: url
+name: at_spi2_atk
+url: https://github.com/GNOME/at-spi2-atk/releases
+---
+kind: url
+name: at_spi2_core
+url: https://github.com/GNOME/at-spi2-core/releases
+---
+kind: url
+name: atk
+url: https://download.gnome.org/sources/atk/
+---
+kind: url
+name: atkmm
+url: https://ftp.gnome.org/pub/gnome/sources/atkmm/
+---
+kind: url
+name: atomicparsley
+url: https://bitbucket.org/wez/atomicparsley/commits/all
+---
+kind: url
+name: atool
+url: https://download.savannah.gnu.org/releases/atool/
+---
+kind: url
+name: attr
+url: http://download.savannah.gnu.org/releases/attr
+---
+kind: url
+name: autoconf
+url: http://ftp.gnu.org/gnu/autoconf
+---
+kind: url
+name: autoconf_archive
+url: https://ftpmirror.gnu.org/autoconf-archive
+---
+kind: url
+name: automake
+url: https://ftp.gnu.org/gnu/automake
+---
+kind: url
+name: autossh
+url: https://github.com/jonhiggs/autossh
+---
+kind: url
+name: aview
+url: https://downloads.sourceforge.net/project/aa-project/aview
+---
+kind: url
+name: avocado
+url: https://github.com/avocado-framework/avocado/releases
+---
+kind: url
+name: aws
+url: https://github.com/aws/aws-cli/releases
+---
+kind: url
+name: aws_shell
+url: https://github.com/awslabs/aws-shell/releases
+---
+kind: url
+name: az
+url: https://github.com/Azure/azure-cli/releases
+---
+kind: url
+name: bacon
+url: http://www.basic-converter.org/stable
+---
+kind: url
+name: banner
+url: http://shh.thathost.com/pub-unix/
+---
+kind: url
+name: bash_completion
+url: https://github.com/scop/bash-completion/releases
+---
+kind: url
+name: bashdb
+url: https://sourceforge.net/projects/bashdb/files/bashdb/
+---
+kind: url
+name: bc
+url: https://ftp.gnu.org/gnu/bc
+---
+kind: url
+name: bcif
+url: http://www.researchandtechnology.net/bcif/downloads
+---
+kind: url
+name: bdwgc
+url: https://github.com/ivmai/bdwgc/releases
+---
+kind: url
+name: biew
+url: http://downloads.sourceforge.net/project/beye/biew/
+---
+kind: url
+name: bigreqsproto
+url: https://www.x.org/archive/individual/proto/
+---
+kind: url
+name: binclock
+url: https://github.com/JohnAnthony/Binary-Clock
+---
+kind: url
+name: bind
+url: https://www.isc.org/downloads/file
+---
+kind: url
+name: binutils
+url: https://ftp.gnu.org/gnu/binutils/
+---
+kind: url
+name: bison
+url: http://mirror.keystealth.org/gnu/bison
+---
+kind: url
+name: bitpocket
+url: https://github.com/sickill/bitpocket/releases
+---
+kind: url
+name: bmon
+url: https://github.com/tgraf/bmon/releases/
+---
+kind: url
+name: boost
+url: https://sourceforge.net/projects/boost/files/boost/
+---
+kind: url
+name: box
+url: https://github.com/box-project/box2/releases
+---
+kind: url
+name: brotli
+url: https://github.com/google/brotli/releases
+---
+kind: url
+name: byobu
+url: https://launchpad.net/byobu/trunk
+---
+kind: url
+name: bz2
+url: http://www.bzip.org
+---
+kind: url
+name: c_ares
+url: https://github.com/c-ares/c-ares/releases
+---
+kind: url
+name: cabal
+url: https://www.haskell.org/cabal/release/
+---
+kind: url
+name: cabextract
+url: https://www.cabextract.org.uk
+---
+kind: url
+name: cadaver
+url: https://packages.ubuntu.com/source/xenial/cadaver
+---
+kind: url
+name: cairo
+url: https://www.cairographics.org/releases
+---
+kind: url
+name: cbase
+url: http://www.hyperrealm.com/packages
+---
+kind: url
+name: ccl
+url: ftp://ftp.clozure.com/pub/release
+---
+kind: url
+name: cdargs
+url: http://www.skamphausen.de/downloads/cdargs
+---
+kind: url
+name: cdrkit
+url: https://sourceforge.net/projects/wodim/files/cdrkit/
+---
+kind: url
+name: cgroupfs_mount
+url: https://github.com/tianon/cgroupfs-mount/releases
+---
+kind: url
+name: chicken
+url: https://code.call-cc.org/releases
+---
+kind: url
+name: choose
+url: https://github.com/geier/choose/releases
+---
+kind: url
+name: chromebrew_scripts
+url: https://github.com/uberhacker/chromebrew-scripts/releases
+---
+kind: url
+name: chruby
+url: https://github.com/postmodern/chruby/releases
+---
+kind: url
+name: clamav
+url: https://www.clamav.net/downloads/
+---
+kind: url
+name: clang
+url: https://releases.llvm.org/
+---
+kind: url
+name: clang_libcpp
+url: https://releases.llvm.org/
+---
+kind: url
+name: clang_openmp
+url: https://releases.llvm.org/
+---
+kind: url
+name: clean
+url: http://downloads.sourceforge.net/project/clean/clean/
+---
+kind: url
+name: clisp
+url: http://ftp.gnu.org/pub/gnu/clisp/release
+---
+kind: url
+name: clmystery
+url: https://github.com/veltman/clmystery/
+---
+kind: url
+name: clojure
+url: https://github.com/clojure/clojure/releases
+---
+kind: url
+name: cloog
+url: https://www.bastoul.net/cloog/download.php
+---
+kind: url
+name: cmake
+url: https://cmake.org/files
+---
+kind: url
+name: cmatrix
+url: https://github.com/abishekvashok/cmatrix/releases
+---
+kind: url
+name: cmus
+url: https://github.com/cmus/cmus/releases
+---
+kind: url
+name: collectl
+url: https://sourceforge.net/projects/collectl/files/collectl/
+---
+kind: url
+name: commacd
+url: https://github.com/shyiko/commacd/releases
+---
+kind: url
+name: composer
+url: https://github.com/composer/composer/releases
+---
+kind: url
+name: compositeproto
+url: https://www.x.org/archive/individual/proto/
+---
+kind: url
+name: compressdoc
+url: https://github.com/ojab/BLFS/releases
+---
+kind: url
+name: coreutils
+url: https://ftp.gnu.org/gnu/coreutils
+---
+kind: url
+name: cpio
+url: http://ftp.gnu.org/gnu/cpio
+---
+kind: url
+name: cpustat
+url: http://kernel.ubuntu.com/~cking/tarballs/cpustat
+---
+kind: url
+name: cracklib
+url: https://github.com/cracklib/cracklib/releases/
+---
+kind: url
+name: cros_resize
+url: https://github.com/ethanmad/chromeos-resize/releases/
+---
+kind: url
+name: cryptsetup
+url: https://www.kernel.org/pub/linux/utils/cryptsetup/
+---
+kind: url
+name: csvkit
+url: https://github.com/wireservice/csvkit/releases
+---
+kind: url
+name: ctags
+url: https://sourceforge.net/projects/ctags/files/ctags/
+---
+kind: url
+name: ctorrent
+url: http://www.rahul.net/dholmes/ctorrent
+---
+kind: url
+name: curl
+url: https://curl.haxx.se/download
+---
+kind: url
+name: cvs
+url: https://ftp.gnu.org/non-gnu/cvs/source/stable
+---
+kind: url
+name: damageproto
+url: https://www.x.org/archive/individual/proto/
+---
+kind: url
+name: darkhttpd
+url: https://unix4lyfe.org/darkhttpd
+---
+kind: url
+name: dart
+url: https://github.com/dart-lang/sdk/releases
+---
+kind: url
+name: datamash
+url: https://ftpmirror.gnu.org/datamash
+---
+kind: url
+name: dbus
+url: https://dbus.freedesktop.org/releases/dbus
+---
+kind: url
+name: detox
+url: https://downloads.sourceforge.net/project/detox/detox/
+---
+kind: url
+name: dfc
+url: https://projects.gw-computing.net/
+---
+kind: url
+name: di
+url: https://gentoo.com/di
+---
+kind: url
+name: diffutils
+url: https://ftp.gnu.org/gnu/diffutils
+---
+kind: url
+name: diskscan
+url: https://github.com/baruch/diskscan/releases
+---
+kind: url
+name: disktype
+url: http://downloads.sourceforge.net/project/disktype/disktype/
+---
+kind: url
+name: dmidecode
+url: http://download.savannah.gnu.org/releases/dmidecode
+---
+kind: url
+name: dmxproto
+url: https://www.x.org/archive/individual/proto/
+---
+kind: url
+name: docbook
+url: https://sourceforge.net/projects/docbook/files/docbook-xsl/
+---
+kind: url
+name: docbook_xml
+url: http://www.docbook.org/xml
+---
+kind: url
+name: docbook_xsl
+url: https://github.com/docbook/xslt10-stylesheets/releases/
+---
+kind: url
+name: docbook2x
+url: https://sourceforge.net/projects/docbook2x/files/docbook2x/
+---
+kind: url
+name: dos2unix
+url: https://sourceforge.net/projects/dos2unix/files/dos2unix/
+---
+kind: url
+name: doxygen
+url: https://github.com/doxygen/doxygen/releases
+---
+kind: url
+name: dropbox
+url: https://www.dropbox.com/
+---
+kind: url
+name: dropbox_uploader
+url: https://github.com/andreafabrizi/Dropbox-Uploader
+---
+kind: url
+name: dstat
+url: https://github.com/dagwieers/dstat/releases
+---
+kind: url
+name: dtrx
+url: https://brettcsmith.org/2007/dtrx
+---
+kind: url
+name: dub
+url: https://github.com/dlang/dub/releases
+---
+kind: url
+name: duplicity
+url: https://code.launchpad.net/duplicity/
+---
+kind: url
+name: ed
+url: http://ftpmirror.gnu.org/ed
+---
+kind: url
+name: elinks
+url: https://gitlab.com/alanaktion/elinks-mirror/repository
+---
+kind: url
+name: elixir
+url: https://github.com/elixir-lang/elixir/releases
+---
+kind: url
+name: emacs
+url: https://ftp.gnu.org/gnu/emacs
+---
+kind: url
+name: entr
+url: http://entrproject.org/code/
+---
+kind: url
+name: erlang
+url: http://erlang.org/download
+---
+kind: url
+name: eudev
+url: https://github.com/gentoo/eudev/releases
+---
+kind: url
+name: eventstat
+url: http://kernel.ubuntu.com/~cking/tarballs/eventstat
+---
+kind: url
+name: expat
+url: https://sourceforge.net/projects/expat/files/expat/
+---
+kind: url
+name: expect
+url: https://sourceforge.net/projects/expect/files/Expect/
+---
+kind: url
+name: fasd
+url: https://github.com/clvv/fasd/releases
+---
+kind: url
+name: fetch
+url: https://github.com/gruntwork-io/fetch/releases
+---
+kind: url
+name: ffcall
+url: https://ftp.gnu.org/gnu/libffcall/
+---
+kind: url
+name: ffmpeg
+url: https://ffmpeg.org/releases
+---
+kind: url
+name: figlet
+url: ftp://ftp.figlet.org/pub/figlet/program/unix
+---
+kind: url
+name: filecmd
+url: ftp://ftp.astron.com/pub/file
+---
+kind: url
+name: finch
+url: https://sourceforge.net/projects/pidgin/files/Pidgin/
+---
+kind: url
+name: fish
+url: https://github.com/fish-shell/fish-shell/releases
+---
+kind: url
+name: flex
+url: https://github.com/westes/flex/releases
+---
+kind: url
+name: fly
+url: http://www.w3perl.com/fly/installation.html
+---
+kind: url
+name: fnotifystat
+url: http://kernel.ubuntu.com/~cking/tarballs/fnotifystat/
+---
+kind: url
+name: font_util
+url: https://www.x.org/archive/individual/font/
+---
+kind: url
+name: fontconfig
+url: https://www.freedesktop.org/software/fontconfig/release
+---
+kind: url
+name: fop
+url: http://apache.forsale.plus/xmlgraphics/fop/binaries
+---
+kind: url
+name: foremost
+url: http://foremost.sourceforge.net/
+---
+kind: url
+name: forkstat
+url: http://kernel.ubuntu.com/~cking/tarballs/forkstat
+---
+kind: url
+name: freebasic
+url: https://sourceforge.net/projects/fbc/files/Source%20Code/
+---
+kind: url
+name: freetype
+url: http://download.savannah.gnu.org/releases/freetype
+---
+kind: url
+name: fribidi
+url: https://github.com/fribidi/fribidi/releases
+---
+kind: url
+name: fskit
+url: https://github.com/jcnelson/fskit/releases
+---
+kind: url
+name: fslint
+url: http://www.pixelbeat.org/fslint
+---
+kind: url
+name: fswatch
+url: https://github.com/emcrisostomo/fswatch/releases/
+---
+kind: url
+name: fuse
+url: https://github.com/libfuse/libfuse/releases
+---
+kind: url
+name: fzf
+url: https://github.com/junegunn/fzf/releases
+---
+kind: url
+name: gawk
+url: https://ftp.gnu.org/gnu/gawk
+---
+kind: url
+name: gb
+url: https://github.com/constabulary/gb/releases
+---
+kind: url
+name: gdal
+url: http://download.osgeo.org/gdal
+---
+kind: url
+name: gdb
+url: http://ftp.gnu.org/gnu/gdb
+---
+kind: url
+name: gdbm
+url: http://ftp.gnu.org/gnu/gdbm
+---
+kind: url
+name: gc
+url: http://www.hboehm.info/gc/gc_source
+---
+kind: url
+name: gdk_pixbuf
+url: https://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/
+---
+kind: url
+name: gdrive
+url: https://github.com/prasmussen/gdrive/releases
+---
+kind: url
+name: geoip
+url: https://github.com/maxmind/geoip-api-c/releases
+---
+kind: url
+name: geos
+url: http://download.osgeo.org/geos
+---
+kind: url
+name: get_iplayer
+url: https://github.com/get-iplayer/get_iplayer/releases
+---
+kind: url
+name: gettext
+url: http://ftp.gnu.org/gnu/gettext
+---
+kind: url
+name: ghc
+url: https://www.haskell.org/ghc/
+---
+kind: url
+name: ghostscript
+url: http://ftp.gnu.org/gnu/ghostscript
+---
+kind: url
+name: gifgen
+url: https://github.com/lukechilds/gifgen/releases
+---
+kind: url
+name: gifsicle
+url: https://github.com/kohler/gifsicle/releases
+---
+kind: url
+name: git
+url: https://github.com/git/git/releases
+---
+kind: url
+name: git_lfs
+url: https://github.com/git-lfs/git-lfs/releases
+---
+kind: url
+name: github_release
+url: https://github.com/aktau/github-release
+---
+kind: url
+name: glib
+url: https://ftp.gnome.org/pub/gnome/sources/glib
+---
+kind: url
+name: glibmm
+url: https://ftp.gnome.org/pub/gnome/sources/glibmm/
+---
+kind: url
+name: glide
+url: https://github.com/Masterminds/glide/releases
+---
+kind: url
+name: gmp
+url: https://gmplib.org/#DOWNLOAD
+---
+kind: url
+name: gnome_common
+url: https://github.com/GNOME/gnome-common/releases/
+---
+kind: url
+name: gnome_themes_standard
+url: https://github.com/GNOME/gnome-themes-extra/releases/
+---
+kind: url
+name: gnupg
+url: https://gnupg.org/ftp/gcrypt/gnupg
+---
+kind: url
+name: gnutls
+url: https://www.gnupg.org/ftp/gcrypt/gnutls
+---
+kind: url
+name: go
+url: https://storage.googleapis.com/golang
+---
+kind: url
+name: goaccess
+url: https://goaccess.io/download
+---
+kind: url
+name: gobject_introspection
+url: https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/
+---
+kind: url
+name: google_cloud_sdk
+url: https://cloud.google.com/sdk/downloads
+---
+kind: url
+name: gox
+url: https://github.com/mitchellh/gox/releases
+---
+kind: url
+name: gpart
+url: https://github.com/baruch/gpart/releases
+---
+kind: url
+name: gperf
+url: http://ftp.gnu.org/pub/gnu/gperf
+---
+kind: url
+name: gpgme
+url: https://www.gnupg.org/ftp/gcrypt/gpgme
+---
+kind: url
+name: gptfdisk
+url: https://sourceforge.net/projects/gptfdisk/files/gptfdisk/
+---
+kind: url
+name: grabinfo
+url: https://sourceforge.net/projects/grabinfo/files/grabinfo/
+---
+kind: url
+name: gradle
+url: https://services.gradle.org/distributions/
+---
+kind: url
+name: graphene
+url: https://github.com/ebassi/graphene/releases
+---
+kind: url
+name: graphicsmagick
+url: https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/
+---
+kind: url
+name: graphviz
+url: https://gitlab.com/graphviz/graphviz/
+---
+kind: url
+name: grive
+url: https://github.com/vitalif/grive2/releases
+---
+kind: url
+name: groff
+url: http://ftp.gnu.org/gnu/groff
+---
+kind: url
+name: gsettings_desktop_schemas
+url: https://github.com/GNOME/gsettings-desktop-schemas/releases/
+---
+kind: url
+name: gsl
+url: https://ftpmirror.gnu.org/gsl/
+---
+kind: url
+name: gtk_doc
+url: https://github.com/GNOME/gtk-doc/releases
+---
+kind: url
+name: gtk_engines_adwaita
+url: https://github.com/GNOME/gnome-themes-extra/releases/
+---
+kind: url
+name: gtk3
+url: https://ftp.gnome.org/pub/gnome/sources/gtk+/
+---
+kind: url
+name: gtkvte
+url: https://ftp.gnome.org/pub/gnome/sources/vte/
+---
+kind: url
+name: gtypist
+url: http://ftp.gnu.org/gnu/gtypist
+---
+kind: url
+name: guile
+url: https://ftp.gnu.org/gnu/guile/
+---
+kind: url
+name: gusb
+url: https://github.com/hughsie/libgusb/releases
+---
+kind: url
+name: gwt
+url: http://www.gwtproject.org/versions.html
+---
+kind: url
+name: gzsize
+url: https://github.com/bfontaine/gzsize/releases
+---
+kind: url
+name: halibut
+url: https://www.chiark.greenend.org.uk/~sgtatham/halibut
+---
+kind: url
+name: haproxy
+url: http://www.haproxy.org/download/1.7/src
+---
+kind: url
+name: harfbuzz
+url: https://github.com/behdad/harfbuzz/releases
+---
+kind: url
+name: has
+url: https://github.com/kdabir/has/releases
+---
+kind: url
+name: hdparm
+url: http://www.ibiblio.org/pub/Linux/system/hardware
+---
+kind: url
+name: health_check
+url: http://kernel.ubuntu.com/~cking/tarballs/health-check/
+---
+kind: url
+name: healthcheck
+url: https://github.com/SimplyLinuxFAQ/health-check-script/releases
+---
+kind: url
+name: help2info
+url: http://download.savannah.nongnu.org/releases/help2info
+---
+kind: url
+name: help2man
+url: https://ftpmirror.gnu.org/help2man
+---
+kind: url
+name: heroku
+url: https://github.com/heroku/cli/releases
+---
+kind: url
+name: hexedit
+url: http://rigaux.org
+---
+kind: url
+name: hicolor_icon_theme
+url: https://icon-theme.freedesktop.org/releases/
+---
+kind: url
+name: htop
+url: http://hisham.hm/htop/releases/2.0.2
+---
+kind: url
+name: httpd
+url: https://www-us.apache.org/dist/httpd
+---
+kind: url
+name: httrack
+url: http://mirror.httrack.com
+---
+kind: url
+name: hub
+url: https://github.com/github/hub/releases
+---
+kind: url
+name: icu4c
+url: http://download.icu-project.org/files/icu4c
+---
+kind: url
+name: iftop
+url: http://www.ex-parrot.com/pdw/iftop/download
+---
+kind: url
+name: imagemagick
+url: https://www.imagemagick.org/download/releases
+---
+kind: url
+name: imgur
+url: https://github.com/tremby/imgur.sh/releases
+---
+kind: url
+name: inetutils
+url: https://ftp.gnu.org/gnu/inetutils
+---
+kind: url
+name: intltool
+url: https://launchpad.net/intltool/trunk
+---
+kind: url
+name: inxi
+url: https://github.com/smxi/inxi/releases
+---
+kind: url
+name: iperf3
+url: https://github.com/esnet/iperf/releases
+---
+kind: url
+name: ipfs
+url: https://github.com/ipfs/go-ipfs/releases
+---
+kind: url
+name: iptables
+url: https://www.netfilter.org/projects/iptables/files
+---
+kind: url
+name: iptraf
+url: ftp://iptraf.seul.org/pub/iptraf/
+---
+kind: url
+name: irssi
+url: https://github.com/irssi/irssi/releases
+---
+kind: url
+name: isl
+url: http://isl.gforge.inria.fr/
+---
+kind: url
+name: itstool
+url: https://github.com/itstool/itstool/releases
+---
+kind: url
+name: jam
+url: https://swarm.workshop.perforce.com/downloads/guest/perforce_software/jam/
+---
+kind: url
+name: jansson
+url: https://github.com/akheron/jansson/releases
+---
+kind: url
+name: jdk8
+url: http://www.oracle.com/technetwork/java/javase/downloads/
+---
+kind: url
+name: jemalloc
+url: https://github.com/jemalloc/jemalloc/releases
+---
+kind: url
+name: jfrog
+url: https://github.com/JFrogDev/jfrog-cli-go/releases
+---
+kind: url
+name: jq
+url: https://github.com/stedolan/jq/releases
+---
+kind: url
+name: jsonc
+url: https://github.com/json-c/json-c/releases
+---
+kind: url
+name: kbfsfuse
+url: https://github.com/keybase/kbfs/releases
+---
+kind: url
+name: kbfsgit
+url: https://github.com/keybase/kbfs/releases
+---
+kind: url
+name: keybase
+url: https://github.com/keybase/client/releases
+---
+kind: url
+name: keychain
+url: https://github.com/funtoo/keychain/releases/
+---
+kind: url
+name: kore
+url: https://github.com/jorisvink/kore/releases
+---
+kind: url
+name: kotlin
+url: https://github.com/JetBrains/kotlin/releases
+---
+kind: url
+name: krb5
+url: http://web.mit.edu/kerberos/dist/krb5
+---
+kind: url
+name: kubectl
+url: https://github.com/kubernetes/kubernetes/releases
+---
+kind: url
+name: lcms
+url: https://sourceforge.net/projects/lcms/files/lcms/
+---
+kind: url
+name: ldc
+url: https://github.com/ldc-developers/ldc/releases
+---
+kind: url
+name: less
+url: http://www.greenwoodsoftware.com/less
+---
+kind: url
+name: leveldb
+url: https://github.com/google/leveldb/releases
+---
+kind: url
+name: lft
+url: https://fossies.org/linux/privat/
+---
+kind: url
+name: lha
+url: http://prdownloads.sourceforge.jp/lha
+---
+kind: url
+name: libaio
+url: http://libaio.sourcearchive.com/downloads/
+---
+kind: url
+name: libarchive
+url: http://www.libarchive.org/downloads
+---
+kind: url
+name: libass
+url: https://github.com/libass/libass/releases
+---
+kind: url
+name: libassuan
+url: https://www.gnupg.org/ftp/gcrypt/libassuan
+---
+kind: url
+name: libatomic_ops
+url: https://github.com/ivmai/libatomic_ops/releases
+---
+kind: url
+name: libbsd
+url: https://libbsd.freedesktop.org/releases
+---
+kind: url
+name: libcaca
+url: http://caca.zoy.org/files/libcaca/
+---
+kind: url
+name: libcap
+url: https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2
+---
+kind: url
+name: libcap_ng
+url: https://people.redhat.com/sgrubb/libcap-ng
+---
+kind: url
+name: libcheck
+url: https://github.com/libcheck/check/releases
+---
+kind: url
+name: libconfig
+url: https://hyperrealm.github.io/libconfig/
+---
+kind: url
+name: libconfuse
+url: https://github.com/martinh/libconfuse/releases
+---
+kind: url
+name: libcroco
+url: http://ftp.gnome.org/pub/gnome/sources/libcroco/
+---
+kind: url
+name: libcyrussasl
+url: ftp://ftp.cyrusimap.org/cyrus-sasl/
+---
+kind: url
+name: libdmx
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: libdrm
+url: https://dri.freedesktop.org/libdrm
+---
+kind: url
+name: libedit
+url: http://thrysoee.dk/editline
+---
+kind: url
+name: libepoxy
+url: https://github.com/anholt/libepoxy/releases
+---
+kind: url
+name: libevdev
+url: https://www.freedesktop.org/software/libevdev/
+---
+kind: url
+name: libevent
+url: https://github.com/libevent/libevent/releases
+---
+kind: url
+name: libfdkaac
+url: https://github.com/mstorsjo/fdk-aac/releases
+---
+kind: url
+name: libffi
+url: http://sourceware.org/pub/libffi
+---
+kind: url
+name: libfontenc
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: libfrei0r
+url: https://github.com/dyne/frei0r/releases
+---
+kind: url
+name: libfs
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: libgcrypt
+url: https://www.gnupg.org/ftp/gcrypt/libgcrypt
+---
+kind: url
+name: libgd
+url: https://github.com/libgd/libgd/releases
+---
+kind: url
+name: libgpgerror
+url: ftp://ftp.gnupg.org/gcrypt/libgpg-error
+---
+kind: url
+name: libgudev
+url: https://download.gnome.org/sources/libgudev/
+---
+kind: url
+name: libice
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: libiconv
+url: https://ftpmirror.gnu.org/libiconv/
+---
+kind: url
+name: libinput
+url: https://www.freedesktop.org/software/libinput/
+---
+kind: url
+name: libjpeg
+url: http://www.ijg.org/files
+---
+kind: url
+name: libksba
+url: https://www.gnupg.org/ftp/gcrypt/libksba
+---
+kind: url
+name: liblapack
+url: http://www.netlib.org/lapack/
+---
+kind: url
+name: libmicrohttpd
+url: https://ftpmirror.gnu.org/libmicrohttpd/
+---
+kind: url
+name: libmnl
+url: https://www.netfilter.org/projects/libmnl/files/
+---
+kind: url
+name: libmp3lame
+url: https://downloads.sourceforge.net/project/lame/lame/
+---
+kind: url
+name: libnl3
+url: http://www.infradead.org/~tgr/libnl/files
+---
+kind: url
+name: libnotify
+url: https://github.com/GNOME/libnotify/releases/
+---
+kind: url
+name: libogg
+url: https://ftp.osuosl.org/pub/xiph/releases/ogg
+---
+kind: url
+name: libomxil_bellagio
+url: https://sourceforge.net/projects/omxil/files/omxil/
+---
+kind: url
+name: libopencoreamr
+url: https://sourceforge.net/projects/opencore-amr/files/opencore-amr/
+---
+kind: url
+name: libopus
+url: https://archive.mozilla.org/pub/opus/
+---
+kind: url
+name: libpcap
+url: http://www.tcpdump.org/release/
+---
+kind: url
+name: libpciaccess
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: libpipeline
+url: https://download.savannah.gnu.org/releases/libpipeline
+---
+kind: url
+name: libplist
+url: http://www.libimobiledevice.org/
+---
+kind: url
+name: libpng
+url: https://sourceforge.net/projects/libpng/files/libpng16
+---
+kind: url
+name: libprelude
+url: https://www.prelude-siem.org/projects/prelude/files
+---
+kind: url
+name: libpstat
+url: https://github.com/jcnelson/libpstat/releases
+---
+kind: url
+name: librsvg
+url: https://download.gnome.org/sources/librsvg/
+---
+kind: url
+name: librsync
+url: https://github.com/librsync/librsync/releases
+---
+kind: url
+name: libsdl
+url: https://www.libsdl.org/release
+---
+kind: url
+name: libsdl2
+url: https://www.libsdl.org/release
+---
+kind: url
+name: libseccomp
+url: https://github.com/seccomp/libseccomp/releases
+---
+kind: url
+name: libsigcplusplus
+url: http://ftp.gnome.org/pub/GNOME/sources/libsigc++/
+---
+kind: url
+name: libsigsegv
+url: http://ftp.gnu.org/gnu/libsigsegv
+---
+kind: url
+name: libslz
+url: http://www.libslz.org/
+---
+kind: url
+name: libsm
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: libsndfile
+url: http://www.mega-nerd.com/libsndfile/files
+---
+kind: url
+name: libsoxr
+url: https://sourceforge.net/projects/soxr/files
+---
+kind: url
+name: libssh2
+url: https://www.libssh2.org/download
+---
+kind: url
+name: libtasn1
+url: https://ftpmirror.gnu.org/libtasn1
+---
+kind: url
+name: libtheora
+url: http://downloads.xiph.org/releases/theora
+---
+kind: url
+name: libtiff
+url: http://download.osgeo.org/libtiff
+---
+kind: url
+name: libtirpc
+url: https://sourceforge.net/projects/libtirpc/files/libtirpc/
+---
+kind: url
+name: libtool
+url: https://ftp.gnu.org/gnu/libtool
+---
+kind: url
+name: libunbound
+url: https://www.unbound.net/downloads
+---
+kind: url
+name: libuninum
+url: http://www.billposer.org/software.html
+---
+kind: url
+name: libunistring
+url: http://ftp.gnu.org/gnu/libunistring
+---
+kind: url
+name: libunwind
+url: http://download.savannah.gnu.org/releases/libunwind
+---
+kind: url
+name: libusb
+url: http://downloads.sourceforge.net/project/libusb/
+---
+kind: url
+name: libusbmuxd
+url: http://www.libimobiledevice.org/downloads/
+---
+kind: url
+name: libuv
+url: https://dist.libuv.org/dist
+---
+kind: url
+name: libvoamrwbenc
+url: https://sourceforge.net/projects/opencore-amr/files/vo-amrwbenc/
+---
+kind: url
+name: libvorbis
+url: https://downloads.xiph.org/releases/vorbis
+---
+kind: url
+name: libwacom
+url: https://sourceforge.net/projects/linuxwacom/files/libwacom/
+---
+kind: url
+name: libwayland
+url: https://wayland.freedesktop.org/releases/
+---
+kind: url
+name: libwebp
+url: https://chromium.googlesource.com/webm/libwebp
+---
+kind: url
+name: libx11
+url: https://www.x.org/archive/individual/lib
+---
+kind: url
+name: libx264
+url: http://ftp.videolan.org/pub/videolan/x264/snapshots
+---
+kind: url
+name: libx265
+url: https://bitbucket.org/multicoreware/x265/downloads
+---
+kind: url
+name: libxau
+url: https://www.x.org/archive/individual/xcb
+---
+kind: url
+name: libxcb
+url: https://www.x.org/archive/individual/xcb
+---
+kind: url
+name: libxdamage
+url: https://www.x.org/archive/individual/lib
+---
+kind: url
+name: libxext
+url: https://www.x.org/archive/individual/lib
+---
+kind: url
+name: libxfixes
+url: https://www.x.org/archive/individual/lib
+---
+kind: url
+name: libxfont
+url: https://www.x.org/archive/individual/lib
+---
+kind: url
+name: libxi
+url: https://github.com/mirror/libXi/releases
+---
+kind: url
+name: libxkbcommon
+url: https://xkbcommon.org/download/
+---
+kind: url
+name: libxkbfile
+url: https://www.x.org/archive/individual/lib
+---
+kind: url
+name: libxml2
+url: https://git.gnome.org//browse/libxml2/
+---
+kind: url
+name: libxshmfence
+url: https://xorg.freedesktop.org/releases/individual/lib
+---
+kind: url
+name: libxslt
+url: http://xmlsoft.org/sources
+---
+kind: url
+name: libxtrans
+url: https://www.x.org/archive/individual/lib
+---
+kind: url
+name: libxvid
+url: http://downloads.xvid.org/downloads
+---
+kind: url
+name: links
+url: http://www.jikos.cz/~mikulas/links/download
+---
+kind: url
+name: lld
+url: https://releases.llvm.org/
+---
+kind: url
+name: lldb
+url: https://releases.llvm.org/
+---
+kind: url
+name: llvm
+url: https://releases.llvm.org/
+---
+kind: url
+name: llvm_compiler_rt
+url: https://releases.llvm.org/
+---
+kind: url
+name: llvm_polly
+url: https://releases.llvm.org/
+---
+kind: url
+name: llvm_unwind
+url: https://releases.llvm.org/
+---
+kind: url
+name: log4cplus
+url: https://sourceforge.net/projects/log4cplus/files/log4cplus-stable/
+---
+kind: url
+name: lsb_release
+url: https://sourceforge.net/projects/lsb/files/lsb_release/
+---
+kind: url
+name: lshw
+url: http://www.ezix.org/software/files
+---
+kind: url
+name: lua
+url: https://www.lua.org/ftp
+---
+kind: url
+name: luajit
+url: http://luajit.org/
+---
+kind: url
+name: lvm2
+url: http://sources.redhat.com/pub/lvm2/releases
+---
+kind: url
+name: lynis
+url: https://cisofy.com/files
+---
+kind: url
+name: lz4
+url: https://github.com/lz4/lz4/releases
+---
+kind: url
+name: lzip
+url: http://download.savannah.gnu.org/releases/lzip
+---
+kind: url
+name: lzma
+url: https://tukaani.org/lzma/
+---
+kind: url
+name: lzo
+url: http://www.oberhumer.com/opensource/lzo/download
+---
+kind: url
+name: lzop
+url: https://www.lzop.org/download
+---
+kind: url
+name: m4
+url: https://ftp.gnu.org/gnu/m4
+---
+kind: url
+name: make
+url: https://ftp.gnu.org/gnu/make
+---
+kind: url
+name: mandb
+url: http://download.savannah.gnu.org/releases/man-db
+---
+kind: url
+name: manpages
+url: https://www.kernel.org/pub/linux/docs/man-pages
+---
+kind: url
+name: mapserver
+url: http://download.osgeo.org/mapserver
+---
+kind: url
+name: markdown
+url: http://daringfireball.net/projects/downloads/
+---
+kind: url
+name: masscan
+url: https://github.com/robertdavidgraham/masscan/releases
+---
+kind: url
+name: mate_calc
+url: https://pub.mate-desktop.org/releases/
+---
+kind: url
+name: maven
+url: http://mirror.csclub.uwaterloo.ca/apache/maven/
+---
+kind: url
+name: mc
+url: https://github.com/MidnightCommander/mc/releases
+---
+kind: url
+name: mdp
+url: https://github.com/visit1985/mdp/releases
+---
+kind: url
+name: mediainfo
+url: http://mediaarea.net/download/binary/mediainfo/
+---
+kind: url
+name: megatools
+url: https://megatools.megous.com/builds
+---
+kind: url
+name: memcached
+url: https://memcached.org/files
+---
+kind: url
+name: mercurial
+url: https://www.mercurial-scm.org/release
+---
+kind: url
+name: mesa
+url: ftp://ftp.freedesktop.org/pub/mesa
+---
+kind: url
+name: meson
+url: https://github.com/mesonbuild/meson/releases
+---
+kind: url
+name: metasploit
+url: https://github.com/rapid7/metasploit-framework/releases
+---
+kind: url
+name: mg
+url: https://devio.us/~bcallah/mg
+---
+kind: url
+name: micro
+url: https://github.com/zyedidia/micro/releases
+---
+kind: url
+name: minerd
+url: https://github.com/pooler/cpuminer/releases/
+---
+kind: url
+name: miniconda3
+url: https://github.com/Anaconda-Platform/anaconda-project/releases
+---
+kind: url
+name: miniupnpc
+url: http://miniupnp.free.fr/files
+---
+kind: url
+name: misctools
+url: http://www.hyperrealm.com/packages/
+---
+kind: url
+name: mlocate
+url: https://releases.pagure.org/mlocate
+---
+kind: url
+name: mono
+url: http://download.mono-project.com/sources/mono
+---
+kind: url
+name: mongodb
+url: https://www.mongodb.com/download-center#community
+---
+kind: url
+name: moonbuggy
+url: http://m.seehuhn.de/programs
+---
+kind: url
+name: moreutils
+url: http://http.debian.net/debian/pool/main/m/moreutils
+---
+kind: url
+name: mosh
+url: https://mosh.org
+---
+kind: url
+name: most
+url: https://www.jedsoft.org/snapshots/
+---
+kind: url
+name: mp4v2
+url: https://code.google.com/archive/p/mp4v2/downloads
+---
+kind: url
+name: mpc
+url: http://www.multiprecision.org/mpc/download.html
+---
+kind: url
+name: mpfr
+url: http://www.mpfr.org/mpfr-current/#download
+---
+kind: url
+name: msttcorefonts
+url: http://http.debian.net/debian/pool/contrib/m/msttcorefonts
+---
+kind: url
+name: mtdev
+url: http://bitmath.org/code/mtdev
+---
+kind: url
+name: mtools
+url: https://ftp.gnu.org/gnu/mtools
+---
+kind: url
+name: multitail
+url: https://www.vanheusden.com/multitail
+---
+kind: url
+name: mutt
+url: http://ftp.mutt.org/pub/mutt
+---
+kind: url
+name: mysqltuner
+url: https://github.com/major/MySQLTuner-perl/
+---
+kind: url
+name: mywanip
+url: https://gist.github.com/DennisLfromGA
+---
+kind: url
+name: nano
+url: https://www.nano-editor.org/dist
+---
+kind: url
+name: nanomsg
+url: https://github.com/nanomsg/nanomsg/releases
+---
+kind: url
+name: ncat
+url: https://nmap.org/dist/
+---
+kind: url
+name: ncdu
+url: https://dev.yorhel.nl/download
+---
+kind: url
+name: ncftp
+url: http://ftp.ncftp.com/ncftp
+---
+kind: url
+name: ncrack
+url: https://nmap.org/ncrack/dist
+---
+kind: url
+name: ncurses
+url: http://ftp.gnu.org/pub/gnu/ncurses
+---
+kind: url
+name: neofetch
+url: https://github.com/dylanaraps/neofetch/releases
+---
+kind: url
+name: neovim
+url: https://github.com/neovim/neovim/releases
+---
+kind: url
+name: netcat
+url: https://sourceforge.net/projects/netcat/files/netcat/
+---
+kind: url
+name: nethack
+url: https://github.com/NetHack/NetHack/releases
+---
+kind: url
+name: nethack4
+url: http://nethack4.org/
+---
+kind: url
+name: nettle
+url: https://ftp.gnu.org/gnu/nettle
+---
+kind: url
+name: newlisp
+url: https://github.com/kosh04/newlisp/releases
+---
+kind: url
+name: nginx
+url: https://nginx.org/download
+---
+kind: url
+name: ninja
+url: https://github.com/ninja-build/ninja/releases
+---
+kind: url
+name: nmap
+url: https://nmap.org/dist
+---
+kind: url
+name: nodebrew
+url: https://github.com/hokaccha/nodebrew/releases
+---
+kind: url
+name: nping
+url: https://nmap.org/dist/
+---
+kind: url
+name: npth
+url: https://www.gnupg.org/ftp/gcrypt/npth
+---
+kind: url
+name: nvm
+url: https://github.com/creationix/nvm/releases
+---
+kind: url
+name: oc
+url: https://github.com/openshift/origin/releases
+---
+kind: url
+name: ocaml
+url: https://caml.inria.fr/pub/distrib
+---
+kind: url
+name: octane
+url: https://github.com/chromium/octane/releases
+---
+kind: url
+name: od1n
+url: https://github.com/CoolerVoid/0d1n/releases
+---
+kind: url
+name: ondir
+url: https://swapoff.org/files/ondir/
+---
+kind: url
+name: openconnect
+url: http://ftp.infradead.org/pub/openconnect
+---
+kind: url
+name: openjpeg
+url: https://github.com/uclouvain/openjpeg/releases
+---
+kind: url
+name: openldap
+url: ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release
+---
+kind: url
+name: openrtsp
+url: http://www.live555.com/liveMedia/public/
+---
+kind: url
+name: openssh
+url: https://github.com/openssh/openssh-portable/releases
+---
+kind: url
+name: openssl
+url: https://github.com/openssl/openssl/releases
+---
+kind: url
+name: optipng
+url: https://sourceforge.net/projects/optipng/files/OptiPNG/
+---
+kind: url
+name: owl
+url: https://github.com/aoh/owl-lisp/releases
+---
+kind: url
+name: p11kit
+url: https://p11-glue.freedesktop.org/releases
+---
+kind: url
+name: p7zip
+url: https://sourceforge.net/projects/p7zip/files/p7zip/
+---
+kind: url
+name: packer
+url: https://releases.hashicorp.com/packer/
+---
+kind: url
+name: packer_completion
+url: https://github.com/mrolli/packer-bash-completion/releases/
+---
+kind: url
+name: pacparser
+url: https://github.com/pacparser/pacparser/releases
+---
+kind: url
+name: pagein
+url: http://kernel.ubuntu.com/~cking/tarballs/pagein
+---
+kind: url
+name: pagemon
+url: http://kernel.ubuntu.com/~cking/tarballs/pagemon
+---
+kind: url
+name: pango
+url: https://ftp.gnome.org/pub/gnome/sources/pango
+---
+kind: url
+name: parted
+url: https://ftpmirror.gnu.org/parted/
+---
+kind: url
+name: pass
+url: https://git.zx2c4.com/password-store
+---
+kind: url
+name: patch
+url: https://ftp.gnu.org/gnu/patch
+---
+kind: url
+name: patchelf
+url: http://nixos.org/releases/patchelf
+---
+kind: url
+name: patchutils
+url: http://cyberelk.net/tim/data/patchutils/stable
+---
+kind: url
+name: pavuk
+url: https://sourceforge.net/projects/pavuk/files/pavuk/
+---
+kind: url
+name: pciutils
+url: https://www.kernel.org/pub/software/utils/pciutils
+---
+kind: url
+name: pcre
+url: https://ftp.pcre.org/pub/pcre
+---
+kind: url
+name: pdfcrack
+url: https://sourceforge.net/projects/pdfcrack/files/pdfcrack
+---
+kind: url
+name: pdfgrep
+url: https://pdfgrep.org/download.html
+---
+kind: url
+name: percona_server
+url: https://www.percona.com/downloads/Percona-Server-LATEST/
+---
+kind: url
+name: percona_toolkit
+url: https://www.percona.com/downloads/percona-toolkit/
+---
+kind: url
+name: perl
+url: http://www.cpan.org/src
+---
+kind: url
+name: perl_locale_gettext
+url: https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/
+---
+kind: url
+name: perl_locale_messages
+url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
+---
+kind: url
+name: perl_module_build
+url: https://cpan.metacpan.org/authors/id/L/LE/LEONT/
+---
+kind: url
+name: perl_sgmls
+url: http://search.cpan.org/CPAN/authors/id/R/RA/RAAB/
+---
+kind: url
+name: perl_text_charwidth
+url: https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/
+---
+kind: url
+name: perl_text_unidecode
+url: https://cpan.metacpan.org/authors/id/S/SB/SBURKE/
+---
+kind: url
+name: perl_text_wrapi18n
+url: https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/
+---
+kind: url
+name: perl_unicode_eastasianwidth
+url: https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/
+---
+kind: url
+name: perl_xml_parser
+url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/
+---
+kind: url
+name: perl_xml_sax_parserfactory
+url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
+---
+kind: url
+name: pexec
+url: https://ftp.gnu.org/gnu/pexec
+---
+kind: url
+name: php
+url: https://php.net/distributions
+---
+kind: url
+name: pinentry
+url: https://gnupg.org/ftp/gcrypt/pinentry
+---
+kind: url
+name: pixman
+url: https://www.cairographics.org/releases/
+---
+kind: url
+name: pkgconfig
+url: http://pkgconfig.freedesktop.org/releases
+---
+kind: url
+name: platformsh
+url: https://github.com/platformsh/platformsh-cli/releases
+---
+kind: url
+name: plowshare
+url: https://github.com/mcrapet/plowshare/releases
+---
+kind: url
+name: pmd
+url: https://github.com/pmd/pmd/releases
+---
+kind: url
+name: poppler
+url: https://poppler.freedesktop.org
+---
+kind: url
+name: popt
+url: http://rpm5.org/files/popt/
+---
+kind: url
+name: postgres
+url: https://ftp.postgresql.org/pub/source
+---
+kind: url
+name: potrace
+url: http://potrace.sourceforge.net/download
+---
+kind: url
+name: powerline_fonts
+url: https://github.com/powerline/fonts/releases
+---
+kind: url
+name: powerstat
+url: http://kernel.ubuntu.com/~cking/tarballs/powerstat
+---
+kind: url
+name: presentproto
+url: https://www.x.org/archive/individual/proto/
+---
+kind: url
+name: printproto
+url: https://www.x.org/archive/individual/proto/
+---
+kind: url
+name: progress
+url: https://github.com/Xfennec/progress/releases
+---
+kind: url
+name: proj4
+url: http://download.osgeo.org/proj
+---
+kind: url
+name: protobuf
+url: https://github.com/google/protobuf/releases
+---
+kind: url
+name: proxychains
+url: https://github.com/haad/proxychains/releases
+---
+kind: url
+name: psmisc
+url: http://downloads.sourceforge.net/project/psmisc/psmisc/
+---
+kind: url
+name: pthread_stubs
+url: https://www.x.org/archive/individual/lib/
+---
+kind: url
+name: pulseaudio
+url: https://freedesktop.org/software/pulseaudio/releases
+---
+kind: url
+name: putty
+url: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+---
+kind: url
+name: pv
+url: http://www.ivarch.com/programs/sources
+---
+kind: url
+name: pwgen
+url: https://pilotfiber.dl.sourceforge.net/project/pwgen/pwgen
+---
+kind: url
+name: python
+url: https://www.python.org/ftp/python
+---
+kind: url
+name: q
+url: https://github.com/harelba/q/releases
+---
+kind: url
+name: qemacs
+url: http://bellard.org/qemacs
+---
+kind: url
+name: qemu
+url: https://download.qemu.org
+---
+kind: url
+name: qpdf
+url: https://github.com/qpdf/qpdf/releases
+---
+kind: url
+name: r
+url: https://cran.r-project.org/src/base
+---
+kind: url
+name: ranger
+url: https://github.com/ranger/ranger/releases
+---
+kind: url
+name: readline
+url: http://ftp.gnu.org/gnu/readline
+---
+kind: url
+name: redis
+url: http://download.redis.io/releases
+---
+kind: url
+name: recode
+url: https://github.com/pinard/Recode/releases
+---
+kind: url
+name: renameutils
+url: http://download.savannah.gnu.org/releases/renameutils
+---
+kind: url
+name: rfkill
+url: https://www.kernel.org/pub/software/network/rfkill
+---
+kind: url
+name: rkhunter
+url: https://sourceforge.net/projects/rkhunter/files/rkhunter/
+---
+kind: url
+name: rlwrap
+url: https://github.com/hanslub42/rlwrap/releases
+---
+kind: url
+name: rsync
+url: http://rsync.samba.org/ftp/rsync/src
+---
+kind: url
+name: rtmpdump
+url: https://git.ffmpeg.org/gitweb/rtmpdump.git
+---
+kind: url
+name: ruby
+url: http://cache.ruby-lang.org/pub/ruby
+---
+kind: url
+name: rust
+url: https://github.com/rust-lang/rust/releases
+---
+kind: url
+name: s
+url: https://github.com/zquestz/s/releases
+---
+kind: url
+name: s3cmd
+url: https://github.com/s3tools/s3cmd/releases
+---
+kind: url
+name: sbt
+url: https://github.com/sbt/sbt/releases
+---
+kind: url
+name: scheme48
+url: http://s48.org
+---
+kind: url
+name: scons
+url: https://sourceforge.net/projects/scons/files/scons/
+---
+kind: url
+name: screen
+url: https://ftp.gnu.org/gnu/screen
+---
+kind: url
+name: screenfetch
+url: https://github.com/KittyKatt/screenFetch/releases
+---
+kind: url
+name: scrollz
+url: http://www.scrollz.info/download
+---
+kind: url
+name: scron
+url: https://git.2f30.org/scron/
+---
+kind: url
+name: sejda_console
+url: https://github.com/torakiki/sejda/releases
+---
+kind: url
+name: serf
+url: https://www.apache.org/dist/serf
+---
+kind: url
+name: sfk
+url: https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife
+---
+kind: url
+name: sharedmimeinfo
+url: https://people.freedesktop.org/~hadess/
+---
+kind: url
+name: shhmsg
+url: http://shh.thathost.com/pub-unix/files/
+---
+kind: url
+name: shhopt
+url: http://shh.thathost.com/pub-unix/files/
+---
+kind: url
+name: shrinkpdf
+url: http://alfredklomp.com/programming/shrinkpdf/
+---
+kind: url
+name: shtool
+url: https://ftpmirror.gnu.org/shtool
+---
+kind: url
+name: siege
+url: http://download.joedog.org/siege/
+---
+kind: url
+name: slang
+url: http://www.jedsoft.org/releases/slang
+---
+kind: url
+name: sleuthkit
+url: https://github.com/sleuthkit/sleuthkit/releases
+---
+kind: url
+name: sluice
+url: http://kernel.ubuntu.com/~cking/tarballs/sluice
+---
+kind: url
+name: smem
+url: https://www.selenic.com/smem/download
+---
+kind: url
+name: smemstat
+url: http://kernel.ubuntu.com/~cking/tarballs/smemstat
+---
+kind: url
+name: snooze
+url: https://github.com/chneukirchen/snooze/releases
+---
+kind: url
+name: socat
+url: http://www.dest-unreach.org/socat/download
+---
+kind: url
+name: speex
+url: http://downloads.us.xiph.org/releases/speex
+---
+kind: url
+name: speexdsp
+url: http://downloads.xiph.org/releases/speex
+---
+kind: url
+name: sqlite
+url: https://www.sqlite.org
+---
+kind: url
+name: squashfs
+url: https://sourceforge.net/projects/squashfs/files/squashfs/
+---
+kind: url
+name: sshfs
+url: https://github.com/libfuse/sshfs/releases
+---
+kind: url
+name: sshuttle
+url: https://github.com/sshuttle/sshuttle/releases
+---
+kind: url
+name: stack
+url: https://github.com/commercialhaskell/stack/releases
+---
+kind: url
+name: stow
+url: https://ftp.gnu.org/gnu/stow
+---
+kind: url
+name: strace
+url: https://sourceforge.net/projects/strace/files/strace/
+---
+kind: url
+name: stressng
+url: http://kernel.ubuntu.com/~cking/tarballs/stress-ng
+---
+kind: url
+name: stunnel
+url: https://www.stunnel.org/downloads.html
+---
+kind: url
+name: subversion
+url: http://www-us.apache.org/dist/subversion
+---
+kind: url
+name: swatchdog
+url: https://downloads.sourceforge.net/project/swatch/swatchdog/
+---
+kind: url
+name: swig
+url: https://sourceforge.net/projects/swig/files/swig/
+---
+kind: url
+name: syncthing
+url: https://github.com/syncthing/syncthing/releases
+---
+kind: url
+name: sysstat
+url: https://github.com/sysstat/sysstat/releases
+---
+kind: url
+name: tcl
+url: https://sourceforge.net/projects/tcl/files/Tcl/
+---
+kind: url
+name: tcpdump
+url: http://www.tcpdump.org/release
+---
+kind: url
+name: tcpstat
+url: http://www.frenchfries.net/paul/tcpstat/
+---
+kind: url
+name: termcap
+url: https://ftp.gnu.org/gnu/termcap
+---
+kind: url
+name: terraform
+url: https://github.com/hashicorp/terraform/releases
+---
+kind: url
+name: testdisk
+url: https://www.cgsecurity.org/
+---
+kind: url
+name: texinfo
+url: http://ftpmirror.gnu.org/texinfo
+---
+kind: url
+name: texlive
+url: ftp://tug.org/historic/systems/texlive/
+---
+kind: url
+name: tig
+url: https://github.com/jonas/tig/releases
+---
+kind: url
+name: tinycc
+url: http://download.savannah.gnu.org/releases/tinycc
+---
+kind: url
+name: tldr
+url: https://github.com/raylee/tldr/releases
+---
+kind: url
+name: tmux
+url: https://github.com/tmux/tmux/releases
+---
+kind: url
+name: tpp
+url: http://www.ngolde.de/download/
+---
+kind: url
+name: traceroute
+url: https://sourceforge.net/projects/traceroute/files/traceroute/
+---
+kind: url
+name: transmission
+url: https://github.com/transmission/transmission-releases/releases
+---
+kind: url
+name: tre
+url: https://github.com/laurikari/tre/releases
+---
+kind: url
+name: tree
+url: http://mama.indstate.edu/users/ice/tree/src
+---
+kind: url
+name: trousers
+url: https://sourceforge.net/projects/trousers/files/trousers/
+---
+kind: url
+name: txt2man
+url: http://mvertes.free.fr/txt2man/Changelog
+---
+kind: url
+name: umockdev
+url: https://github.com/martinpitt/umockdev/releases
+---
+kind: url
+name: units
+url: https://ftp.gnu.org/gnu/units
+---
+kind: url
+name: unrar
+url: https://www.rarlab.com/download.htm
+---
+kind: url
+name: unrtf
+url: https://www.gnu.org/software/unrtf
+---
+kind: url
+name: unshield
+url: https://github.com/twogood/unshield/releases
+---
+kind: url
+name: unzip
+url: https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/
+---
+kind: url
+name: urlwatch
+url: https://github.com/thp/urlwatch/releases
+---
+kind: url
+name: usbutils
+url: https://www.kernel.org/pub/linux/utils/usb/usbutils/
+---
+kind: url
+name: utf8proc
+url: https://github.com/JuliaLang/utf8proc/releases
+---
+kind: url
+name: util_linux
+url: https://www.kernel.org/pub/linux/utils/util-linux
+---
+kind: url
+name: util_macros
+url: https://www.x.org/pub/individual/util/
+---
+kind: url
+name: vagrant
+url: https://github.com/hashicorp/vagrant/releases
+---
+kind: url
+name: vala
+url: https://download.gnome.org/sources/vala/
+---
+kind: url
+name: valgrind
+url: http://sourceware.org/pub/valgrind
+---
+kind: url
+name: vdev
+url: https://github.com/jcnelson/vdev/releases
+---
+kind: url
+name: vidstab
+url: https://github.com/georgmartius/vid.stab/releases
+---
+kind: url
+name: vim
+url: http://ftp.vim.org/pub/vim/unix
+---
+kind: url
+name: vifm
+url: https://sourceforge.net/projects/vifm/files/vifm/
+---
+kind: url
+name: vpnc
+url: https://www.unix-ag.uni-kl.de/~massar/vpnc
+---
+kind: url
+name: waf
+url: https://github.com/waf-project/waf/releases
+---
+kind: url
+name: wayland
+url: https://wayland.freedesktop.org/releases
+---
+kind: url
+name: wayland_protocols
+url: https://wayland.freedesktop.org/releases
+---
+kind: url
+name: wbox
+url: http://www.hping.org/wbox
+---
+kind: url
+name: weather
+url: http://fungi.yuggoth.org/weather/src
+---
+kind: url
+name: weechat
+url: https://weechat.org/files/src/
+---
+kind: url
+name: weston
+url: https://github.com/wayland-project/weston/releases/
+---
+kind: url
+name: wget
+url: https://ftp.gnu.org/gnu/wget
+---
+kind: url
+name: whiptail
+url: https://releases.pagure.org/newt/
+---
+kind: url
+name: whitedb
+url: http://whitedb.org/download.html
+---
+kind: url
+name: whois
+url: https://github.com/rfc1036/whois/releases
+---
+kind: url
+name: wine
+url: https://dl.winehq.org/wine/source
+---
+kind: url
+name: wkhtmltox
+url: https://github.com/wkhtmltopdf/wkhtmltopdf/releases
+---
+kind: url
+name: wol
+url: https://downloads.sourceforge.net/ahh/
+---
+kind: url
+name: wp_cli
+url: https://github.com/wp-cli/wp-cli/releases
+---
+kind: url
+name: wput
+url: https://sourceforge.net/projects/wput/files/wput/
+---
+kind: url
+name: xe
+url: https://github.com/chneukirchen/xe/releases
+---
+kind: url
+name: xmlclitools
+url: ftp://ftp.nstu.ru/pub/sources/langs/xml
+---
+kind: url
+name: xmlstarlet
+url: https://sourceforge.net/projects/xmlstar/files/xmlstarlet/
+---
+kind: url
+name: xmlto
+url: https://releases.pagure.org/xmlto
+---
+kind: url
+name: xproto
+url: https://www.x.org/archive/individual/proto
+---
+kind: url
+name: xxhash
+url: https://github.com/Cyan4973/xxHash/releases
+---
+kind: url
+name: xwayland
+url: https://www.x.org/releases/individual/xserver
+---
+kind: url
+name: xzutils
+url: http://tukaani.org/xz
+---
+kind: url
+name: yajl
+url: https://github.com/lloyd/yajl/releases
+---
+kind: url
+name: yarn
+url: https://nightly.yarnpkg.com
+---
+kind: url
+name: yasm
+url: http://www.tortall.net/projects/yasm/releases
+---
+kind: url
+name: yelp_tools
+url: https://github.com/GNOME/yelp-tools/releases
+---
+kind: url
+name: yelp_xsl
+url: https://github.com/GNOME/yelp-xsl/releases
+---
+kind: url
+name: zeromq
+url: https://github.com/zeromq/libzmq/releases
+---
+kind: url
+name: zile
+url: https://ftp.gnu.org/gnu/zile
+---
+kind: url
+name: zip
+url: http://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/
+---
+kind: url
+name: zlibpkg
+url: http://www.zlib.net
+---
+kind: url
+name: zsh
+url: http://sourceforge.net/projects/zsh/files/zsh
+---
+kind: url
+name: zsync
+url: http://zsync.moria.org.uk/downloads

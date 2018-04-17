@@ -3,21 +3,21 @@ require 'package'
 class Libtasn1 < Package
   description 'Libtasn1 is the ASN.1 library used by GnuTLS, GNU Shishi and some other packages.'
   homepage 'https://www.gnu.org/software/libtasn1/'
-  version '4.12'
-  source_url 'https://ftpmirror.gnu.org/libtasn1/libtasn1-4.12.tar.gz'
-  source_sha256 '6753da2e621257f33f5b051cc114d417e5206a0818fe0b1ecfd6153f70934753'
+  version '4.13'
+  source_url 'https://ftpmirror.gnu.org/libtasn1/libtasn1-4.13.tar.gz'
+  source_sha256 '7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '88e880dfcb967d2e267d6a9cb5edd7edc24102e3512b976372a59707aa3f800d',
-     armv7l: '88e880dfcb967d2e267d6a9cb5edd7edc24102e3512b976372a59707aa3f800d',
-       i686: '480a302070acd99918eb8f38ba2811b352e1ffa34c930906072d6f4986c3cd70',
-     x86_64: '0dcf60ecafad42147372010b35f360ec8f364443aaeccb1805f71b8ba568385f',
+    aarch64: '5b445e57a2882b410e6b8493c7997a34d01bec701f67eb0654aa92d114c61ed8',
+     armv7l: '5b445e57a2882b410e6b8493c7997a34d01bec701f67eb0654aa92d114c61ed8',
+       i686: '89e4bf3ab1bd6c561209dd3e1cf298af0a8498cdae6a0b3c270ecfc84392bc4a',
+     x86_64: '51009ec44bf8f51a3fc0432d78f14716b18d99eb99ad9b3b073079b5d168d1b9',
   })
 
   # bison, diff, cmp are required at compile-time

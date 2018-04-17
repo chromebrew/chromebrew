@@ -3,21 +3,21 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '2.5.0'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.0.tar.xz'
-  source_sha256 '1da0afed833a0dab94075221a615c14487b05d0c407f991c8080d576d985b49b'
+  version '2.5.1'
+  source_url 'https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.1.tar.xz'
+  source_sha256 '886ac5eed41e3b5fc699be837b0087a6a5a3d10f464087560d2d21b3e71b754d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ad6bad7fcce9b595af3172e6ae48a2b4ffac7e0ed73daa22be4e972f4889c3a6',
-     armv7l: 'ad6bad7fcce9b595af3172e6ae48a2b4ffac7e0ed73daa22be4e972f4889c3a6',
-       i686: '01bb17f706dc73013f23c15d589744858e1501c6664feef73dad1ff0e9b67599',
-     x86_64: '1c748efef37747afb9b4f11068a2bbbaf03495bcb697310e1a39bb82a3549c71',
+    aarch64: 'b03154f57e2599f71b0bdd42ba3a126397eca451ccb99485615b5b0429955152',
+     armv7l: 'b03154f57e2599f71b0bdd42ba3a126397eca451ccb99485615b5b0429955152',
+       i686: 'de1d30b89fd09b6e544fe537cbbc4cdc76f4f1610b0f801ab82ce90c1dc04999',
+     x86_64: '2e60c9b84968f17ac796e92992a5e32b4c39291d5a0b1bb0183f43d1c784303f',
   })
 
   depends_on 'readline'
