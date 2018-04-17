@@ -4,7 +4,7 @@ class Llvm6 < Package
   description 'The LLVM Project (version 6.0.0) is a collection of modular and reusable compiler and toolchain technologies. The optional packages including clang, lld, polly, compiler-rt, libcxx, libcxxabi and openmp are included.'
   homepage 'http://llvm.org/'
   version '6.0.0'
-  source_url 'http://llvm.org/releases/6.0.0/llvm-6.0.0.src.tar.xz'
+  source_url 'https://llvm.org/releases/6.0.0/llvm-6.0.0.src.tar.xz'
   source_sha256 '1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408'
 
   binary_url ({
@@ -27,7 +27,7 @@ class Llvm6 < Package
   def self.preinstall
     
     ############################# Download clang (tools) ###########################################
-    url_clang = 'http://llvm.org/releases/6.0.0/cfe-6.0.0.src.tar.xz'
+    url_clang = 'https://llvm.org/releases/6.0.0/cfe-6.0.0.src.tar.xz'
     uri_clang = URI.parse url_clang
     filename_clang = File.basename(uri_clang.path)
     sha256sum_clang = 'e07d6dd8d9ef196cfc8e8bb131cbd6a2ed0b1caf1715f9d05b0f0eeaddb6df32'
@@ -119,7 +119,7 @@ class Llvm6 < Package
 
 
     ############################# Download compiler-rt (projects) ####################################
-    url_compiler_rt = 'http://releases.llvm.org/6.0.0/compiler-rt-6.0.0.src.tar.xz'
+    url_compiler_rt = 'https://releases.llvm.org/6.0.0/compiler-rt-6.0.0.src.tar.xz'
     uri_compiler_rt = URI.parse url_compiler_rt
     filename_compiler_rt = File.basename(uri_compiler_rt.path)
     sha256sum_compiler_rt = 'd0cc1342cf57e9a8d52f5498da47a3b28d24ac0d39cbc92308781b3ee0cea79a'
