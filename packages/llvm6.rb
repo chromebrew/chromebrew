@@ -43,7 +43,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_clang, '-o', filename_clang)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_clang}") ) == sha256sum_clang
-      puts "Clang archive downloaded".lightblue
+      puts "Clang archive downloaded".lightgreen
       
       system "tar", "xf", "cfe-6.0.0.src.tar.xz", "-C", "tools"
       puts "Clang source code unpacked".lightgreen
@@ -67,7 +67,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_lld, '-o', filename_lld)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_lld}") ) == sha256sum_lld
-      puts "Lld archive downloaded".lightblue
+      puts "Lld archive downloaded".lightgreen
       
       system "tar", "xf", "lld-6.0.0.src.tar.xz", "-C", "tools"
       puts "Lld source code unpacked".lightgreen
@@ -91,7 +91,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_polly, '-o', filename_polly)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_polly}") ) == sha256sum_polly
-      puts "Polly archive downloaded".lightblue
+      puts "Polly archive downloaded".lightgreen
       
       system "tar", "xf", "polly-6.0.0.src.tar.xz", "-C", "tools"
       puts "Polly source code unpacked".lightgreen
@@ -110,7 +110,7 @@ class Llvm6 < Package
 #    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_extra_tools, '-o', filename_extra_tools)
 #    abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
 #      Digest::SHA256.hexdigest( File.read("./#{filename_extra_tools}") ) == sha256sum_extra_tools
-#    puts "Clang extra tools archive downloaded".lightblue
+#    puts "Clang extra tools archive downloaded".lightgreen
 #
 #    system "tar", "xf", "clang-tools-extra-6.0.0.src.tar.xz", "-C", "tools"
 #    puts "Clang extra tools source code unpacked".lightgreen
@@ -135,7 +135,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_compiler_rt, '-o', filename_compiler_rt)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_compiler_rt}") ) == sha256sum_compiler_rt
-      puts "Compiler-rt archive downloaded".lightblue
+      puts "Compiler-rt archive downloaded".lightgreen
       
       system "tar", "xf", "compiler-rt-6.0.0.src.tar.xz", "-C", "projects"
       puts "Compiler-rt source code unpacked".lightgreen
@@ -161,7 +161,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_libcxx, '-o', filename_libcxx)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_libcxx}") ) == sha256sum_libcxx
-      puts "Libcxx archive downloaded".lightblue
+      puts "Libcxx archive downloaded".lightgreen
       
       system "tar", "xf", "libcxx-6.0.0.src.tar.xz", "-C", "projects"
       puts "Libcxx source code unpacked".lightgreen
@@ -186,7 +186,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_libcxxabi, '-o', filename_libcxxabi)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_libcxxabi}") ) == sha256sum_libcxxabi
-      puts "Libcxxabi archive downloaded".lightblue
+      puts "Libcxxabi archive downloaded".lightgreen
       
       system "tar", "xf", "libcxxabi-6.0.0.src.tar.xz", "-C", "projects"
       puts "Libcxxabi source code unpacked".lightgreen
@@ -210,7 +210,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_openmp, '-o', filename_openmp)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_openmp}") ) == sha256sum_openmp
-      puts "Openmp archive downloaded".lightblue
+      puts "Openmp archive downloaded".lightgreen
       
       system "tar", "xf", "openmp-6.0.0.src.tar.xz", "-C", "projects"
       puts "Openmp source code unpacked".lightgreen
@@ -234,7 +234,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_libunwind, '-o', filename_libunwind)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_libunwind}") ) == sha256sum_libunwind
-      puts "Libunwind archive downloaded".lightblue
+      puts "Libunwind archive downloaded".lightgreen
       
       system "tar", "xf", "libunwind-6.0.0.src.tar.xz", "-C", "projects"
       puts "Libunwind source code unpacked".lightgreen
@@ -259,7 +259,7 @@ class Llvm6 < Package
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_testsuite, '-o', filename_testsuite)
       abort 'Checksum mismatch. :/ Try again.'.lightyellow unless
         Digest::SHA256.hexdigest( File.read("./#{filename_testsuite}") ) == sha256sum_testsuite
-      puts "Test-suite archive downloaded".lightblue
+      puts "Test-suite archive downloaded".lightgreen
       
       system "tar", "xf", "test-suite-6.0.0.src.tar.xz", "-C", "projects"
       puts "Test-suite source code unpacked".lightgreen
