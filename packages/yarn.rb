@@ -3,21 +3,21 @@ require 'package'
 class Yarn < Package
   description 'Yarn is a new package manager for JavaScript and an alternative to npm.'
   homepage 'https://yarnpkg.com/en/'
-  version '1.3.2-20171127.1833'
-  source_url 'https://nightly.yarnpkg.com/yarn-v1.3.2-20171127.1833.tar.gz'
-  source_sha256 '36293f1327693a8742a9030aa8b8213eb7c33b298b7eb28d2d9b2efe93279060'
+  version '1.6.0'
+  source_url 'https://github.com/yarnpkg/yarn/releases/download/v1.6.0/yarn-v1.6.0.tar.gz'
+  source_sha256 'a57b2fdb2bfeeb083d45a883bc29af94d5e83a21c25f3fc001c295938e988509'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.3.2-20171127.1833-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.3.2-20171127.1833-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.3.2-20171127.1833-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.3.2-20171127.1833-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '14ec12edc8ef9e74a0fc7bf914e3e09f2eb90a70ef5a32bf858fe24dd42dcbcd',
-     armv7l: '14ec12edc8ef9e74a0fc7bf914e3e09f2eb90a70ef5a32bf858fe24dd42dcbcd',
-       i686: 'fe3ac396402804f42e9d74bf36950a6fed8df5b3a8b6e50c666b8c0ff7a69b1f',
-     x86_64: '2f3c453523d498376bf5182fb01eaebb1f269dd32cb8dae40eb7515386dec3e6',
+    aarch64: '3c85013806518b087950a93ff2b5bdbc986a79dd56f93063a24eff1d785657f7',
+     armv7l: '3c85013806518b087950a93ff2b5bdbc986a79dd56f93063a24eff1d785657f7',
+       i686: '53303cb77b189f5a166d2b3efaac3e840c89f61ea49bf9ab6fc3b7bf724c7bc1',
+     x86_64: 'db01d493bcc9277d259681806871eeb99161ce2857fb5843ab880d966cafd5fb',
   })
 
   node_version=`node -v 2> /dev/null`
