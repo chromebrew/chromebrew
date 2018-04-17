@@ -33,7 +33,7 @@ class Llvm6 < Package
     sha256sum_clang = 'e07d6dd8d9ef196cfc8e8bb131cbd6a2ed0b1caf1715f9d05b0f0eeaddb6df32'
     
     if File.exist?(filename_clang) && Digest::SHA256.hexdigest( File.read("./#{filename_clang}") ) == sha256sum_clang
-      puts "Clang soruce code exists and perform unpacking".lightyellow
+      puts "Clang source code exists and perform unpacking".lightyellow
       system "tar", "xf", "cfe-6.0.0.src.tar.xz", "-C", "tools"
       puts "Clang source code unpacked".lightgreen
       system "rm -rf tools/clang"  # remove possible existing folder
@@ -57,7 +57,7 @@ class Llvm6 < Package
     sha256sum_lld = '6b8c4a833cf30230c0213d78dbac01af21387b298225de90ab56032ca79c0e0b'
 
     if File.exist?(filename_lld) && Digest::SHA256.hexdigest( File.read("./#{filename_lld}") ) == sha256sum_lld
-      puts "Lld soruce code exists and perform unpacking".lightyellow
+      puts "Lld source code exists and perform unpacking".lightyellow
       system "tar", "xf", "lld-6.0.0.src.tar.xz", "-C", "tools"
       puts "Lld source code unpacked".lightgreen
       system "rm -rf tools/lld"
@@ -81,7 +81,7 @@ class Llvm6 < Package
     sha256sum_polly = '47e493a799dca35bc68ca2ceaeed27c5ca09b12241f87f7220b5f5882194f59c'
 
     if File.exist?(filename_polly) && Digest::SHA256.hexdigest( File.read("./#{filename_polly}") ) == sha256sum_polly
-      puts "Polly soruce code exists and perform unpacking".lightyellow
+      puts "Polly source code exists and perform unpacking".lightyellow
       system "tar", "xf", "polly-6.0.0.src.tar.xz", "-C", "tools"
       puts "Polly source code unpacked".lightgreen
       system "rm -rf tools/polly"
@@ -125,7 +125,7 @@ class Llvm6 < Package
     sha256sum_compiler_rt = 'd0cc1342cf57e9a8d52f5498da47a3b28d24ac0d39cbc92308781b3ee0cea79a'
 
     if File.exist?(filename_compiler_rt) && Digest::SHA256.hexdigest( File.read("./#{filename_compiler_rt}") ) == sha256sum_compiler_rt
-      puts "Compiler-rt soruce code exists and perform unpacking".lightyellow
+      puts "Compiler-rt source code exists and perform unpacking".lightyellow
       system "tar", "xf", "compiler-rt-6.0.0.src.tar.xz", "-C", "projects"
       puts "Compiler-rt source code unpacked".lightgreen
       system "rm -rf projects/compiler-rt"
@@ -151,7 +151,7 @@ class Llvm6 < Package
     sha256sum_libcxx = '70931a87bde9d358af6cb7869e7535ec6b015f7e6df64def6d2ecdd954040dd9'
 
     if File.exist?(filename_libcxx) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxx}") ) == sha256sum_libcxx
-      puts "Libcxx soruce code exists and perform unpacking".lightyellow
+      puts "Libcxx source code exists and perform unpacking".lightyellow
       system "tar", "xf", "libcxx-6.0.0.src.tar.xz", "-C", "projects"
       puts "Libcxx source code unpacked".lightgreen
       system "rm -rf projects/libcxx"
@@ -176,7 +176,7 @@ class Llvm6 < Package
     sha256sum_libcxxabi = '91c6d9c5426306ce28d0627d6a4448e7d164d6a3f64b01cb1d196003b16d641b'
 
     if File.exist?(filename_libcxxabi) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxxabi}") ) == sha256sum_libcxxabi
-      puts "Libcxxabi soruce code exists and perform unpacking".lightyellow
+      puts "Libcxxabi source code exists and perform unpacking".lightyellow
       system "tar", "xf", "libcxxabi-6.0.0.src.tar.xz", "-C", "projects"
       puts "Libcxxabi source code unpacked".lightgreen
       system "rm -rf projects/libcxxabi"
@@ -200,7 +200,7 @@ class Llvm6 < Package
     sha256sum_openmp = '7c0e050d5f7da3b057579fb3ea79ed7dc657c765011b402eb5bbe5663a7c38fc'
 
     if File.exist?(filename_openmp) && Digest::SHA256.hexdigest( File.read("./#{filename_openmp}") ) == sha256sum_openmp
-      puts "Openmp soruce code exists and perform unpacking".lightyellow
+      puts "Openmp source code exists and perform unpacking".lightyellow
       system "tar", "xf", "openmp-6.0.0.src.tar.xz", "-C", "projects"
       puts "Openmp source code unpacked".lightgreen
       system "rm -rf projects/openmp"
@@ -224,7 +224,7 @@ class Llvm6 < Package
     sha256sum_libunwind = '256c4ed971191bde42208386c8d39e5143fa4afd098e03bd2c140c878c63f1d6'
 
     if File.exist?(filename_libunwind) && Digest::SHA256.hexdigest( File.read("./#{filename_libunwind}") ) == sha256sum_libunwind
-      puts "Libunwind soruce code exists and perform unpacking".lightyellow
+      puts "Libunwind source code exists and perform unpacking".lightyellow
       system "tar", "xf", "libunwind-6.0.0.src.tar.xz", "-C", "projects"
       puts "Libunwind source code unpacked".lightgreen
       system "rm -rf projects/libunwind"
@@ -249,7 +249,7 @@ class Llvm6 < Package
     sha256sum_testsuite = '74e0055efa27b2143415148ee93b817155e6333337d9cadd4cc5d468ad3c0edf'
 
     if File.exist?(filename_testsuite) && Digest::SHA256.hexdigest( File.read("./#{filename_testsuite}") ) == sha256sum_testsuite
-      puts "Test-suite soruce code exists and perform unpacking".lightyellow
+      puts "Test-suite source code exists and perform unpacking".lightyellow
       system "tar", "xf", "test-suite-6.0.0.src.tar.xz", "-C", "projects"
       puts "Test-suite source code unpacked".lightgreen
       system "rm -rf projects/test-suite"
