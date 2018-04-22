@@ -3,21 +3,21 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialise or manually update index database caches that are usually maintained by man.'
   homepage 'http://savannah.nongnu.org/projects/man-db'
-  version '2.7.6.1-2'
-  source_url 'http://download.savannah.gnu.org/releases/man-db/man-db-2.7.6.1.tar.xz'
-  source_sha256 '08edbc52f24aca3eebac429b5444efd48b9b90b9b84ca0ed5507e5c13ed10f3f'
+  version '2.8.3'
+  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.8.3.tar.xz'
+  source_sha256 '5932a1ca366e1ec61a3ece1a3afa0e92f2fdc125b61d236f20cc6ff9d80cc4ac'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.7.6.1-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd583e56cd4c924f328f2b0052de2d08b8f0e6519db7a6c9b232852bbca76f6bf',
-     armv7l: 'd583e56cd4c924f328f2b0052de2d08b8f0e6519db7a6c9b232852bbca76f6bf',
-       i686: '64ca4d1b671f87fa2fa72edc35368fe54ab5ca4d8fddbb99981b6179deb5fd88',
-     x86_64: '37da9857a8e52bfb5ca02e672c2632eceba5eb42d331698c28d8c98029cf3351',
+    aarch64: '3729439a4b76560027ef642acbaa39512cd5e0c116905a07e04c6efcc3f63d60',
+     armv7l: '3729439a4b76560027ef642acbaa39512cd5e0c116905a07e04c6efcc3f63d60',
+       i686: '0c6b7b712c7a66588766d7a2c8fbba2577d9db68127f379c1fc19372f430cd94',
+     x86_64: '0e49e640687ee7248437f7fa07aaa908674e94a03ae9232beb01a2e3744b1c56',
   })
 
   depends_on 'less'
