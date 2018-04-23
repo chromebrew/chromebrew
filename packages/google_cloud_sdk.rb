@@ -3,26 +3,26 @@ require 'package'
 class Google_cloud_sdk < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/'
-  version '188.0.1'
+  version '198.0.0'
 
   case ARCH
   when 'i686'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-188.0.1-linux-x86.tar.gz'
-    source_sha256 '5ac86acadcecb050c12f0b166fede71441c90415f3b794860764894deb451949'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-198.0.0-linux-x86.tar.gz'
+    source_sha256 'd7f0296356808b96026a62ca20c7c97fbcfe634fdf1d31d7964c31a2b2b94463'
   when 'x86_64'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-188.0.1-linux-x86_64.tar.gz'
-    source_sha256 '2966e8c21b4176037cc7f1916a170f2b6c7fcdb563cde25e26063986d2bdc047'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-198.0.0-linux-x86_64.tar.gz'
+    source_sha256 '37223616327ec82e33d0b07b77f6d641e4c031a786ea945f21e67f78fc67d1c1'
   else
     puts 'Unable to install google_cloud_sdk.  Supported architectures include i686 and x86_64 only.'.lightred
   end
 
   binary_url ({
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-188.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-188.0.1-chromeos-x86_64.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-198.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/google_cloud_sdk-198.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-       i686: '60d2def4626fe1b977a1f4719746e255426c8b6350fbc346dbd597293a768cae',
-     x86_64: '328017c5c64b10cb2b9c561cb875037a1f9beff273cb9b6b77a6ee8342706e6b',
+       i686: '9308ccb875080829dcfe76b7f822552471ab01ef68e0a8209138ac14237e1b0c',
+     x86_64: 'a767bc817d26e619f2f492abb4f17ed85ee1c8f61bbc8c5317577c0664cc9eca',
   })
 
   case ARCH
