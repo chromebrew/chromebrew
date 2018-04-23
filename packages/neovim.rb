@@ -20,14 +20,6 @@ class Neovim < Package
      x86_64: '16f6dfd198931f3162e1cf6054224c1e4e8059403597d621ab54b4a421fe89ed',
   })
 
-  depends_on 'libtool'
-  depends_on 'autoconf'
-  depends_on 'automake'
-  depends_on 'cmake'
-  depends_on 'gcc'
-  depends_on 'pkgconfig'
-  depends_on 'unzip'
-
   def self.build
     system "make", "CMAKE_BUILD_TYPE=RelWithDebInfo"
   end
