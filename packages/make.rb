@@ -20,9 +20,6 @@ class Make < Package
      x86_64: 'ebab3261fbd37c88586894e3f79c1eedfbc3d24d999996bc5abb974a8a07980a',
   })
 
-  depends_on 'gcc' => :build
-  depends_on 'linuxheaders' => :build
-
   def self.build
     system "./configure"
     system "./build.sh"
