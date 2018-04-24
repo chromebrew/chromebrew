@@ -28,6 +28,14 @@ class Gcc7 < Package
   depends_on 'python27' => :build
   depends_on 'python3' => :build
   
+  depends_on 'binutils'
+  depends_on 'gmp'
+  depends_on 'mpfr'
+  depends_on 'mpc'
+  depends_on 'isl'
+  depends_on 'cloog'
+  depends_on 'glibc'		
+	
   def self.build
     # previous compile issue
     # /usr/local/bin/ld: cannot find crti.o: No such file or directory
