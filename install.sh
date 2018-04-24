@@ -170,9 +170,12 @@ cd $CREW_LIB_PATH/lib
 curl -# -o package.rb $URL/lib/package.rb
 curl -# -o package_helpers.rb $URL/lib/package_helpers.rb
 
-#Making GCC act like CC (For some npm packages out there)
-rm -f $CREW_PREFIX/bin/cc
-ln -s $CREW_PREFIX/bin/gcc $CREW_PREFIX/bin/cc
+#Making GCC act like CC (For some npm packages out there, only required for gcc)
+#rm -f $CREW_PREFIX/bin/cc
+#ln -s $CREW_PREFIX/bin/gcc $CREW_PREFIX/bin/cc
+
+#package gcc7 has already made symbolic links for cc and gcc, no action required here
+
 
 #prepare sparse checkout .rb packages directory and do it
 cd $CREW_LIB_PATH
