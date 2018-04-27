@@ -3,33 +3,31 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialise or manually update index database caches that are usually maintained by man.'
   homepage 'http://savannah.nongnu.org/projects/man-db'
-  version '2.8.3'
+  version '2.8.3-1'
   source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.8.3.tar.xz'
   source_sha256 '5932a1ca366e1ec61a3ece1a3afa0e92f2fdc125b61d236f20cc6ff9d80cc4ac'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3729439a4b76560027ef642acbaa39512cd5e0c116905a07e04c6efcc3f63d60',
-     armv7l: '3729439a4b76560027ef642acbaa39512cd5e0c116905a07e04c6efcc3f63d60',
-       i686: '0c6b7b712c7a66588766d7a2c8fbba2577d9db68127f379c1fc19372f430cd94',
-     x86_64: '0e49e640687ee7248437f7fa07aaa908674e94a03ae9232beb01a2e3744b1c56',
+    aarch64: '47de869585dada625523682c73d774dd66af309be5be9a1979719629852216de',
+     armv7l: '47de869585dada625523682c73d774dd66af309be5be9a1979719629852216de',
+       i686: '860910cc197a8ce04fd138f70e73e3157c372ff9e3a703c4fad9d349c75d5f6d',
+     x86_64: 'cdf13916d9f2afa47c9a2baa156af61f21abb2a245d5b90153b13978251bde2b',
   })
 
-  depends_on 'less'
   depends_on 'libpipeline'
   depends_on 'gdbm'
   depends_on 'groff'
-  depends_on 'pkgconfig'
   depends_on 'readline'
-  depends_on 'zlibpkg'
 
   def self.build
     system './configure',
+      "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}",
       "--with-systemdtmpfilesdir=#{CREW_PREFIX}/lib/tmpfiles.d", # we can't write to /usr/lib/tmpfiles.d
       '--disable-cache-owner',                                   # we can't create the user 'man'
       "--with-pager=#{CREW_PREFIX}/bin/less"                     # the pager is not at the default location

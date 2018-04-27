@@ -3,46 +3,33 @@ require 'package'
 class Libsigcplusplus3 < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
   homepage 'http://libsigc.sourceforge.net/'
-  version '2.99.10'
-  source_url 'https://github.com/GNOME/libsigcplusplus/archive/2.99.10.tar.gz'
-  source_sha256 '502735363777cd8d540299035daa3f9162912f325491cbb0f8d709b691593e07'
+  version '2.99.11'
+  source_url 'https://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.99/libsigc++-2.99.11.tar.xz'
+  source_sha256 '177fb08df33da71780eef2ce4c5991a2b3b6d07d4ad1efbf6ad38f7964e4bb55'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.99.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.99.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.99.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.99.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-2.99.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-2.99.11-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-2.99.11-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-2.99.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'a8b8bdd9040ebb67bb092055ee36a25135825d08a039f4596e835996bb245cff',
-     armv7l: 'a8b8bdd9040ebb67bb092055ee36a25135825d08a039f4596e835996bb245cff',
-       i686: '57e89d0057217ae81a55ec675be843ed5dbfa54d5ad1deba4b900c6b9c72c451',
-     x86_64: 'da7e1a5edf563ae95c677b89283a2f79cc23380a1b58b264df1abfcfec919bca',
+    aarch64: '37cc07ba4469b7975214cf2bdb8fed2665962353318888386907f96f08dc9f95',
+     armv7l: '37cc07ba4469b7975214cf2bdb8fed2665962353318888386907f96f08dc9f95',
+       i686: '86a3fed7a036dbcfed62bfd4b83e903d3cc78f241a793546f07af00fc3855d2b',
+     x86_64: 'e0fb98d028040eb6567a153c1314bd51fb044d4f7cf1c2cfaf4cb4d672a31130',
   })
 
-  depends_on 'pkgconfig' => :build
-  depends_on 'diffutils' => :build
-  depends_on 'm4' => :build
-  depends_on 'gcc7' => :build  # c++14 support
-  depends_on 'cmake' => :build
-
   def self.build
-    system "mkdir -p build"
-    Dir.chdir("build") do
-      system "cmake",
-             "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}",
-             "-DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX}",
-             "-DCMAKE_C_COMPILER=gcc-7.3",
-             "-DCMAKE_CXX_COMPILER=g++-7.3",
-             "-DCMAKE_CXX_FLAGS=--std=c++14",
-             ".."
-      system "make"
-    end
+    system './configure',
+           "CXX_FLAGS=' --std=c++14'",
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--disable-maintainer-mode'
+    system 'make'
   end
 
   def self.install
-    Dir.chdir("build") do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    end
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

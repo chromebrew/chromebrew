@@ -3,28 +3,26 @@ require 'package'
 class Libfrei0r < Package
   description 'Minimalistic API for a collection of free video effect plugins.'
   homepage 'https://frei0r.dyne.org/'
-  version '1.6.0'
-  source_url 'https://github.com/dyne/frei0r/archive/v1.6.0.tar.gz'
-  source_sha256 '63cae9d20d23b9d9e1ffb3fa053295914417c3e005194c077a0753d04636831c'
+  version '1.6.1'
+  source_url 'https://github.com/dyne/frei0r/archive/v1.6.1.tar.gz'
+  source_sha256 'dae0ca623c83173788ce4fc74cb67ac7e50cf33a4412ee3d33bed284da1a8437'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libfrei0r-1.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7da44d7ceab2124298d49e0079d85cf06aec5e0dc0cebf1464f7b5e01c8a57f3',
-     armv7l: '7da44d7ceab2124298d49e0079d85cf06aec5e0dc0cebf1464f7b5e01c8a57f3',
-       i686: 'd7af95c71eb57144caf739e0fce9a6e81a2329382e448c5a590a9f8692ed4078',
-     x86_64: 'eb79f81a2d63d6ebaa67ea5018fa76f67e2dec36d34a6b3e9b964f0686205814',
+    aarch64: 'bd9381d2c456c270133c206c66e94ed5f77a856bd23d18138d92df6b4e2c7759',
+     armv7l: 'bd9381d2c456c270133c206c66e94ed5f77a856bd23d18138d92df6b4e2c7759',
+       i686: '97eed475d2ad73584e604455e9d7b8c09d6348b0b0ade255f369eae4d1f6a4c7',
+     x86_64: '73646984853d48487d8881cdc4a9ac3fd35f08e8384be54db9948a6d41046d23',
   })
 
-  depends_on 'cmake'
-
   def self.build
-    system "cmake ."
-    system "make"
+    system "cmake . -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_CXX_FLAGS=' -L#{CREW_LIB_PREFIX}'"
+    system 'make'
   end
 
   def self.install
