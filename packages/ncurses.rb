@@ -20,8 +20,6 @@ class Ncurses < Package
      x86_64: 'fcaf728604029920a14f27f64f498dfc8a3586bc0426ca6a890adf925e39e204',
   })
 
-  depends_on 'diffutils' => :build
-
   def self.build
     # build libncursesw
     system "mkdir -p ncursesw_build"
