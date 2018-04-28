@@ -3,21 +3,21 @@ require 'package'
 class Unrar < Package
   description 'UnRAR is a powerful archive extractor.'
   homepage 'http://www.rarlab.com/'
-  version '5.5.8'
-  source_url 'http://www.rarlab.com/rar/unrarsrc-5.5.8.tar.gz'
-  source_sha256 '9b66e4353a9944bc140eb2a919ff99482dd548f858f5e296d809e8f7cdb2fcf4'
+  version '5.6.3'
+  source_url 'https://www.rarlab.com/rar/unrarsrc-5.6.3.tar.gz'
+  source_sha256 'c590e70a745d840ae9b9f05ba6c449438838c8280d76ce796a26b3fcd0a1972e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.4.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.4.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.4.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.4.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.6.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.6.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.6.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/unrar-5.6.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'af75463a906436baf4718febdc9e2a2d61150cf5df30fd244b2b808cf4f16929',
-     armv7l: 'af75463a906436baf4718febdc9e2a2d61150cf5df30fd244b2b808cf4f16929',
-       i686: '7e5c893ed0e8d5ba41c59a1dbda6b47a062e121b85e2e1c14ad72a393a0d6540',
-     x86_64: 'a4d98de19dcede1e90c31f575b68534c6a55e93a248df109a9c087f0c21f53e4',
+    aarch64: 'ebf07529e4586d9494a41e0c0bc08d9c45b706a953ed9dc224b93e67f6b26cab',
+     armv7l: 'ebf07529e4586d9494a41e0c0bc08d9c45b706a953ed9dc224b93e67f6b26cab',
+       i686: '352da95a4126086f58fb69ae4aa4301f5464d52ac7c0d527e0434aaa6c846bee',
+     x86_64: 'ff5bc1b1c1b2f04cfc69b42345df16cac2bfc4be64a15016825e7980b4f5683f',
   })
 
   def self.build
@@ -27,8 +27,6 @@ class Unrar < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_PREFIX}", "install"
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
-    system "cp libunrar.so #{CREW_DEST_LIB_PREFIX}/libunrar.so"
+    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_PREFIX}", "install"
   end
 end
