@@ -8,8 +8,16 @@ class Heroku < Package
   source_sha256 'ca02341f8a80aaccef256f7c6a05ce8c0fdbbb78d7423aee64c1ec0c18362271'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-7.0.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-7.0.15-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-7.0.15-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-7.0.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '504e4ee8d5bc5c0bcd508fdea906ad79096de9c30af7b2e0cdf915c9fc445e2e',
+     armv7l: '504e4ee8d5bc5c0bcd508fdea906ad79096de9c30af7b2e0cdf915c9fc445e2e',
+       i686: 'deb047ee88badf1894bda5eace77b3aee1e2ba762f1a9d2484e39e907d47c64d',
+     x86_64: 'f2c0bf6a765f1135679b6fcbbcd843046df62bd79c6d176013f7fee824345bb9',
   })
 
   depends_on 'yarn'
