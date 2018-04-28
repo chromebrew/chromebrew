@@ -21,7 +21,7 @@ class Aspell < Package
   })
 
   depends_on 'ruby' unless File.exists? "#{CREW_PREFIX}/bin/ruby"
-  depends_on 'ncursesw'
+  depends_on 'ncurses'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

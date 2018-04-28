@@ -21,7 +21,7 @@ class Finch < Package
   })
 
   depends_on 'glib'
-  depends_on 'ncursesw'
+  depends_on 'ncurses'
   depends_on 'tcl'
   depends_on 'perl'
   depends_on 'gnutls'

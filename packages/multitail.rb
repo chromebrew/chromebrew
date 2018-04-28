@@ -20,7 +20,7 @@ class Multitail < Package
      x86_64: '52a90a8a16d8b471aa369a62191e766082e70a88eed84e1eb1afbf267a351d0d',
   })
 
-  depends_on 'ncursesw'
+  depends_on 'ncurses'
 
   def self.build
     system 'make'

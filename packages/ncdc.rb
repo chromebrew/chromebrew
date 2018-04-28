@@ -20,7 +20,7 @@ class Ncdc < Package
      x86_64: '7d72e59960fa27fef99a6f45c0fc9fc86b62931851c811d192e60d1376829452',
   })
 
-  depends_on 'ncursesw'
+  depends_on 'ncurses'
   depends_on 'zlibpkg'
   depends_on 'bz2'
   depends_on 'sqlite'
