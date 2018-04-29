@@ -35,21 +35,18 @@ class Llvm < Package
     
     if File.exist?(filename_clang) && Digest::SHA256.hexdigest( File.read("./#{filename_clang}") ) == sha256sum_clang
       puts "Clang source code exists and perform unpacking".yellow
-      system "tar", "xf", "cfe-6.0.0.src.tar.xz", "-C", "tools"
-      puts "Clang source code unpacked".lightgreen
-      system "rm -rf tools/clang"  # remove possible existing folder
-      system "mv -v tools/cfe-6.0.0.src tools/clang"
     else
       puts "Downloading clang".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_clang, '-o', filename_clang)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_clang}") ) == sha256sum_clang
       puts "Clang archive downloaded".lightgreen
-      
-      system "tar", "xf", "cfe-6.0.0.src.tar.xz", "-C", "tools"
-      puts "Clang source code unpacked".lightgreen
-      system "mv -v tools/cfe-6.0.0.src tools/clang"
     end
+    
+    system "tar", "xf", "cfe-6.0.0.src.tar.xz", "-C", "tools"
+    puts "Clang source code unpacked".lightgreen
+    system "rm -rf tools/clang"  # remove possible existing folder
+    system "mv -v tools/cfe-6.0.0.src tools/clang"
 
     ############################# Download lld (tools) ###########################################
     url_lld = 'https://releases.llvm.org/6.0.0/lld-6.0.0.src.tar.xz'
@@ -59,22 +56,19 @@ class Llvm < Package
 
     if File.exist?(filename_lld) && Digest::SHA256.hexdigest( File.read("./#{filename_lld}") ) == sha256sum_lld
       puts "Lld source code exists and perform unpacking".yellow
-      system "tar", "xf", "lld-6.0.0.src.tar.xz", "-C", "tools"
-      puts "Lld source code unpacked".lightgreen
-      system "rm -rf tools/lld"
-      system "mv -v tools/lld-6.0.0.src tools/lld"
     else
       puts "Downloading lld".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_lld, '-o', filename_lld)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_lld}") ) == sha256sum_lld
       puts "Lld archive downloaded".lightgreen
-      
-      system "tar", "xf", "lld-6.0.0.src.tar.xz", "-C", "tools"
-      puts "Lld source code unpacked".lightgreen
-      system "mv -v tools/lld-6.0.0.src tools/lld"
     end
-
+    
+    system "tar", "xf", "lld-6.0.0.src.tar.xz", "-C", "tools"
+    puts "Lld source code unpacked".lightgreen
+    system "rm -rf tools/lld"
+    system "mv -v tools/lld-6.0.0.src tools/lld"
+    
     ############################# Download polly (tools) ###########################################
     url_polly = 'https://releases.llvm.org/6.0.0/polly-6.0.0.src.tar.xz'
     uri_polly = URI.parse url_polly
@@ -83,22 +77,18 @@ class Llvm < Package
 
     if File.exist?(filename_polly) && Digest::SHA256.hexdigest( File.read("./#{filename_polly}") ) == sha256sum_polly
       puts "Polly source code exists and perform unpacking".yellow
-      system "tar", "xf", "polly-6.0.0.src.tar.xz", "-C", "tools"
-      puts "Polly source code unpacked".lightgreen
-      system "rm -rf tools/polly"
-      system "mv -v tools/polly-6.0.0.src tools/polly"
     else
       puts "Downloading polly".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_polly, '-o', filename_polly)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_polly}") ) == sha256sum_polly
       puts "Polly archive downloaded".lightgreen
-      
-      system "tar", "xf", "polly-6.0.0.src.tar.xz", "-C", "tools"
-      puts "Polly source code unpacked".lightgreen
-      system "mv -v tools/polly-6.0.0.src tools/polly"
    end
-
+    
+    system "tar", "xf", "polly-6.0.0.src.tar.xz", "-C", "tools"
+    puts "Polly source code unpacked".lightgreen
+    system "rm -rf tools/polly"
+    system "mv -v tools/polly-6.0.0.src tools/polly"
 
     #  Due to compilation error, extra clang tools are not included.
     ############################## Download extra clang tools (tools) ###########################################
@@ -133,22 +123,18 @@ class Llvm < Package
 
     if File.exist?(filename_compiler_rt) && Digest::SHA256.hexdigest( File.read("./#{filename_compiler_rt}") ) == sha256sum_compiler_rt
       puts "Compiler-rt source code exists and perform unpacking".yellow
-      system "tar", "xf", "compiler-rt-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Compiler-rt source code unpacked".lightgreen
-      system "rm -rf projects/compiler-rt"
-      system "mv -v projects/compiler-rt-6.0.0.src projects/compiler-rt"
     else
       puts "Downloading compiler-rt".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_compiler_rt, '-o', filename_compiler_rt)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_compiler_rt}") ) == sha256sum_compiler_rt
       puts "Compiler-rt archive downloaded".lightgreen
-      
-      system "tar", "xf", "compiler-rt-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Compiler-rt source code unpacked".lightgreen
-      system "mv -v projects/compiler-rt-6.0.0.src projects/compiler-rt"
-   end
+    end
     
+    system "tar", "xf", "compiler-rt-6.0.0.src.tar.xz", "-C", "projects"
+    puts "Compiler-rt source code unpacked".lightgreen
+    system "rm -rf projects/compiler-rt"
+    system "mv -v projects/compiler-rt-6.0.0.src projects/compiler-rt"    
     
     ############################# Download libcxx (procjects) ####################################
     url_libcxx = 'https://releases.llvm.org/6.0.0/libcxx-6.0.0.src.tar.xz'
@@ -158,22 +144,18 @@ class Llvm < Package
 
     if File.exist?(filename_libcxx) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxx}") ) == sha256sum_libcxx
       puts "Libcxx source code exists and perform unpacking".yellow
-      system "tar", "xf", "libcxx-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Libcxx source code unpacked".lightgreen
-      system "rm -rf projects/libcxx"
-      system "mv -v projects/libcxx-6.0.0.src projects/libcxx"
     else
       puts "Downloading libcxx".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_libcxx, '-o', filename_libcxx)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_libcxx}") ) == sha256sum_libcxx
       puts "Libcxx archive downloaded".lightgreen
-      
-      system "tar", "xf", "libcxx-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Libcxx source code unpacked".lightgreen
-      system "mv -v projects/libcxx-6.0.0.src projects/libcxx"
     end
-
+    
+    system "tar", "xf", "libcxx-6.0.0.src.tar.xz", "-C", "projects"
+    puts "Libcxx source code unpacked".lightgreen
+    system "rm -rf projects/libcxx"
+    system "mv -v projects/libcxx-6.0.0.src projects/libcxx"
 
     ############################# Download libcxxabi (procjects) ####################################
     url_libcxxabi = 'https://releases.llvm.org/6.0.0/libcxxabi-6.0.0.src.tar.xz'
@@ -183,21 +165,18 @@ class Llvm < Package
 
     if File.exist?(filename_libcxxabi) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxxabi}") ) == sha256sum_libcxxabi
       puts "Libcxxabi source code exists and perform unpacking".yellow
-      system "tar", "xf", "libcxxabi-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Libcxxabi source code unpacked".lightgreen
-      system "rm -rf projects/libcxxabi"
-      system "mv -v projects/libcxxabi-6.0.0.src projects/libcxxabi"
     else
       puts "Downloading libcxxabi".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_libcxxabi, '-o', filename_libcxxabi)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_libcxxabi}") ) == sha256sum_libcxxabi
       puts "Libcxxabi archive downloaded".lightgreen
-      
-      system "tar", "xf", "libcxxabi-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Libcxxabi source code unpacked".lightgreen
-      system "mv -v projects/libcxxabi-6.0.0.src projects/libcxxabi"
     end
+    
+    system "tar", "xf", "libcxxabi-6.0.0.src.tar.xz", "-C", "projects"
+    puts "Libcxxabi source code unpacked".lightgreen
+    system "rm -rf projects/libcxxabi"
+    system "mv -v projects/libcxxabi-6.0.0.src projects/libcxxabi"
     
     ############################# Download libomp (procjects) ####################################
     url_openmp = 'https://releases.llvm.org/6.0.0/openmp-6.0.0.src.tar.xz'
@@ -207,22 +186,19 @@ class Llvm < Package
 
     if File.exist?(filename_openmp) && Digest::SHA256.hexdigest( File.read("./#{filename_openmp}") ) == sha256sum_openmp
       puts "Openmp source code exists and perform unpacking".yellow
-      system "tar", "xf", "openmp-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Openmp source code unpacked".lightgreen
-      system "rm -rf projects/openmp"
-      system "mv -v projects/openmp-6.0.0.src projects/openmp"
     else
       puts "Downloading openmp".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_openmp, '-o', filename_openmp)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_openmp}") ) == sha256sum_openmp
       puts "Openmp archive downloaded".lightgreen
-      
-      system "tar", "xf", "openmp-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Openmp source code unpacked".lightgreen
-      system "mv -v projects/openmp-6.0.0.src projects/openmp"
     end
  
+    system "tar", "xf", "openmp-6.0.0.src.tar.xz", "-C", "projects"
+    puts "Openmp source code unpacked".lightgreen
+    system "rm -rf projects/openmp"
+    system "mv -v projects/openmp-6.0.0.src projects/openmp"
+    
     ############################# Download libunwind (procjects) ####################################
     url_libunwind = 'https://releases.llvm.org/6.0.0/libunwind-6.0.0.src.tar.xz'
     uri_libunwind = URI.parse url_libunwind
@@ -231,23 +207,18 @@ class Llvm < Package
 
     if File.exist?(filename_libunwind) && Digest::SHA256.hexdigest( File.read("./#{filename_libunwind}") ) == sha256sum_libunwind
       puts "Libunwind source code exists and perform unpacking".yellow
-      system "tar", "xf", "libunwind-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Libunwind source code unpacked".lightgreen
-      system "rm -rf projects/libunwind"
-      system "mv -v projects/libunwind-6.0.0.src projects/libunwind"
     else
       puts "Downloading libunwind".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_libunwind, '-o', filename_libunwind)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_libunwind}") ) == sha256sum_libunwind
       puts "Libunwind archive downloaded".lightgreen
-      
-      system "tar", "xf", "libunwind-6.0.0.src.tar.xz", "-C", "projects"
-      puts "Libunwind source code unpacked".lightgreen
-      system "mv -v projects/libunwind-6.0.0.src projects/libunwind"
     end
  
-
+    system "tar", "xf", "libunwind-6.0.0.src.tar.xz", "-C", "projects"
+    puts "Libunwind source code unpacked".lightgreen
+    system "rm -rf projects/libunwind"
+    system "mv -v projects/libunwind-6.0.0.src projects/libunwind"
   
      ############################# Download test-suite (procjects) ####################################
     #url_testsuite = 'https://releases.llvm.org/6.0.0/test-suite-6.0.0.src.tar.xz'
@@ -257,21 +228,18 @@ class Llvm < Package
 
     #if File.exist?(filename_testsuite) && Digest::SHA256.hexdigest( File.read("./#{filename_testsuite}") ) == sha256sum_testsuite
     #  puts "Test-suite source code exists and perform unpacking".yellow
-    #  system "tar", "xf", "test-suite-6.0.0.src.tar.xz", "-C", "projects"
-    #  puts "Test-suite source code unpacked".lightgreen
-    #  system "rm -rf projects/test-suite"
-    #  system "mv -v projects/test-suite-6.0.0.src projects/test-suite"
     #else
     #  puts "Downloading test suite".yellow
     #  system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_testsuite, '-o', filename_testsuite)
     #  abort 'Checksum mismatch. :/ Try again.'.lightred unless
     #    Digest::SHA256.hexdigest( File.read("./#{filename_testsuite}") ) == sha256sum_testsuite
     #  puts "Test-suite archive downloaded".lightgreen
-    #
+    #end
+    
     #  system "tar", "xf", "test-suite-6.0.0.src.tar.xz", "-C", "projects"
     #  puts "Test-suite source code unpacked".lightgreen
-    #  system "mv -v projects/test-suite-6.0.0.src projects/test-suite"
-    #end
+    #  system "rm -rf projects/test-suite"
+    #  system "mv -v projects/test-suite-6.0.0.src projects/test-suite"   
     
     ############################################################
     puts "Optional packages are ready".lightgreen
