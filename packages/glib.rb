@@ -3,27 +3,25 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  version '2.56.0'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/glib/2.56/glib-2.56.0.tar.xz'
-  source_sha256 'ecef6e17e97b8d9150d0e8a4b3edee1ac37331213b8a2a87a083deea408a0fc7'
+  version '2.56.1'
+  source_url 'https://ftp.gnome.org/pub/gnome/sources/glib/2.56/glib-2.56.1.tar.xz'
+  source_sha256 '40ef3f44f2c651c7a31aedee44259809b6f03d3d20be44545cd7d177221c0b8d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.56.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '422ea16181d61fe0b387291ed43c687309dedaa4e71eb940b0bff3ace1694156',
-     armv7l: '422ea16181d61fe0b387291ed43c687309dedaa4e71eb940b0bff3ace1694156',
-       i686: '14fc4856cf169052c5a16fced1e121d1e8ec6fd0aaece663d4a3bea35c9fcdf1',
-     x86_64: '81f7387d0a0bda851dd8df7a09c8216f39f8813fd2824a134c4942a58f86fb84',
+    aarch64: 'c204eac72fd82ad0aa5c58be276960f98f05ff1edca0beea76dd60ecedc8adbf',
+     armv7l: 'c204eac72fd82ad0aa5c58be276960f98f05ff1edca0beea76dd60ecedc8adbf',
+       i686: '14f14d855b87c7c062b850d91b4de2deb6d92fef8d252938631820a43d468d7c',
+     x86_64: 'fd6aea5f310ed045f3e9c132af14d11e63c5d50e04871369eb4888dfef9aee66',
   })
 
   depends_on 'libffi'
-  depends_on 'gettext'
   depends_on 'util_linux'
-  depends_on 'zlibpkg'
   depends_on 'python27'
 
   def self.build
