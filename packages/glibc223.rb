@@ -28,7 +28,7 @@ class Glibc223 < Package
     # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
     Dir.chdir "misc" do
       if File.readlines("regexp.c").grep(/monitor/).any?
-        puts "Patched!"
+        puts "Patched!".lightgreen
       else
         system "sed -i 's,char \\*loc1,char \\*loc1 __attribute__ ((nocommon)),g' regexp.c"
         system "sed -i 's,char \\*loc2,char \\*loc2 __attribute__ ((nocommon)),g' regexp.c"
