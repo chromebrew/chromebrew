@@ -4,7 +4,7 @@ class Glibc223 < Package
   description 'GNU C Library'
   homepage 'https://www.gnu.org/software/libc/'
   version '2.23-3'
-  source_url 'https://ftp.gnu.org/gnu/glibc/glibc-2.23.tar.xz'
+  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
   source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
   binary_url ({
@@ -28,7 +28,7 @@ class Glibc223 < Package
     # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
     Dir.chdir "misc" do
       if File.readlines("regexp.c").grep(/monitor/).any?
-        puts "Pachted!"
+        puts "Patched!"
       else
         system "sed -i 's,char \\*loc1,char \\*loc1 __attribute__ ((nocommon)),g' regexp.c"
         system "sed -i 's,char \\*loc2,char \\*loc2 __attribute__ ((nocommon)),g' regexp.c"
