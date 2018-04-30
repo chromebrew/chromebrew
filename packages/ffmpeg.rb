@@ -3,21 +3,21 @@ require 'package'
 class Ffmpeg < Package
   description 'A complete, cross-platform solution to record, convert and stream audio and video.'
   homepage 'https://ffmpeg.org/'
-  version '3.4.1'
-  source_url 'https://ffmpeg.org/releases/ffmpeg-3.4.1.tar.xz'
-  source_sha256 '5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0'
+  version '4.0'
+  source_url 'https://ffmpeg.org/releases/ffmpeg-4.0.tar.xz'
+  source_sha256 'ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-3.4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-3.4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-3.4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-3.4.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '69b5a4c0f2e48c31a33cbd1f99df02d662d483e14d24a0bcd50da8312fc6cd82',
-     armv7l: '69b5a4c0f2e48c31a33cbd1f99df02d662d483e14d24a0bcd50da8312fc6cd82',
-       i686: '4315c7f32fe05c13cbd1d97950dddfe259c84432406b6f83cd7c548b512788bb',
-     x86_64: 'cf4569ffb65ab474528d3cbf68189b4e49de323d15bb19360ba6c5ebc2bf245f',
+    aarch64: 'bd6d8edae2aa12f149e7d514e56378fa18bd427f610ce3e4d9bf68884a3c8dc7',
+     armv7l: 'bd6d8edae2aa12f149e7d514e56378fa18bd427f610ce3e4d9bf68884a3c8dc7',
+       i686: '34dfd0ed8773bde7066f4454cec9316ed02753ca84a9303bfd958924df415f08',
+     x86_64: '84811eca1f3f2b47537e8c9bfe3f0611247e6797cd1e64797bd5d68a9bcf1ea6',
   })
 
   depends_on 'gnutls'
