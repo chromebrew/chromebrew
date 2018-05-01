@@ -3,27 +3,27 @@ require 'package'
 class Gcc7 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '7.3.0-1'
+  version '7.3.0-2'
   source_url 'https://github.com/gcc-mirror/gcc/archive/gcc-7_3_0-release.tar.gz'
   source_sha256 'af11c397296cab69996723b9d828c98a9bb749447ac8f7ed67458bcdb60311ed'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '12cea1ff38da7c29a55bf49e7487b8eb1d4ded1229ef2cf074932c4f49bbcd58',
-     armv7l: '12cea1ff38da7c29a55bf49e7487b8eb1d4ded1229ef2cf074932c4f49bbcd58',
-       i686: 'e28bc4def2804302e7f19c0ba9f8438260173b8cfa1022d85c48199df4a1beb3',
-     x86_64: 'f2e0f4c3157d2f728c8a24b55708f86dbe10734243424c9e01d913977ef42ca6',
+    aarch64: 'aaa760b75d8aa75fcc615375b79265c8cc9f37e23944fe108e542a3b4bf788c6',
+     armv7l: 'aaa760b75d8aa75fcc615375b79265c8cc9f37e23944fe108e542a3b4bf788c6',
+       i686: 'caf14b8399a42710f31526daf418d0ec1128e8e91b93865bd549cb0333cb678e',
+     x86_64: 'c2d6296473a4c2a97804d10a517ebce66fc4e1e5256210d28d15116f943d1611',
   })
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'gcc' => :build   # gcc version 4.9.4
+  #depends_on 'gcc' => :build   # gcc version 4.9.4
   depends_on 'icu4c' => :build # icu version 60.1
   depends_on 'python27' => :build
   depends_on 'python3' => :build
@@ -34,7 +34,7 @@ class Gcc7 < Package
   depends_on 'mpc'
   depends_on 'isl'
   depends_on 'cloog'
-  depends_on 'glibc'		
+  depends_on 'glibc'
 	
   def self.build
     # previous compile issue
@@ -125,7 +125,7 @@ class Gcc7 < Package
   
   def self.install
     Dir.chdir("objdir") do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
 	   
       # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
       # move a misplaced file
@@ -160,7 +160,6 @@ class Gcc7 < Package
       system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm"
       system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib"
       system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gfortran-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gfortran"
-
     end
   end
 end
