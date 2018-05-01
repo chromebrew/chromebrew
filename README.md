@@ -6,12 +6,12 @@ Package manager for Chrome OS
 Supported Systems
 -----------------
 
-| Architecture | Supported? |
-|:---:|:---:|
-| x86_64 | Yes |
-| i686 | Yes |
-| armv7l | Yes |
-| aarch64 | Yes |
+| Architecture | Supported? | Compiler tool |
+|:---:|:---:|:---:|
+| x86_64 | Yes | gcc 7.3.0 |
+| i686 | Yes | gcc 7.3.0 |
+| armv7l | Yes | gcc 7.3.0 |
+| aarch64 | Yes | gcc 7.3.0 |
 
 Overview
 --------
