@@ -1,4 +1,4 @@
-chromebrew
+chromebrew2
 ==========
 
 Package manager for Chrome OS
@@ -34,7 +34,7 @@ If this command returns `ERROR: unknown command: shell` please have a second loo
 
 Then download and run the installation script below:
 
-    wget -q -O - https://raw.github.com/lovedheart/chromebrew/master/install.sh | bash
+    wget -q -O - https://raw.github.com/lovedheart/chromebrew2/master/install.sh | bash
 
 Usage
 -----
@@ -68,6 +68,6 @@ Copyright 2013-2018 Michal Siwek and [all the awesome contributors](https://gith
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
 
-Our binary packages are hosted on [bintray](https://bintray.com/chromebrew/chromebrew).
+Our binary packages are hosted on [bintray](https://bintray.com/chromebrew2/chromebrew2).
 
-<a href="https://bintray.com/chromebrew/chromebrew" target="_blank"><img src="https://github.com/skycocker/chromebrew/blob/master/images/Powered-by-Bintray_Banner_16-6-16-green.png" alt="Powered by Bintray" /></a>
+<a href="https://bintray.com/chromebrew2/chromebrew2" target="_blank"><img src="https://github.com/skycocker/chromebrew/blob/master/images/Powered-by-Bintray_Banner_16-6-16-green.png" alt="Powered by Bintray" /></a>
