@@ -1,6 +1,6 @@
 #chromebrew directories
 OWNER="lovedheart"
-REPO="chromebrew"
+REPO="chromebrew2"
 BRANCH="master"
 URL="https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH"
 CREW_PREFIX=${CREW_PREFIX:-/usr/local}
