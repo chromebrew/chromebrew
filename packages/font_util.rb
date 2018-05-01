@@ -14,8 +14,8 @@ class Font_util < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/font_util-1.3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '37a5171ab42bf759a2d7f878b541de7f68a3701fb8144561c0f6f29473b2cce2',
-     armv7l: '37a5171ab42bf759a2d7f878b541de7f68a3701fb8144561c0f6f29473b2cce2',
+    aarch64: '566f6aa0929b42fda7abdee66c4f5a1510bb701d824c7ddb616881fd24951469',
+     armv7l: '566f6aa0929b42fda7abdee66c4f5a1510bb701d824c7ddb616881fd24951469',
        i686: 'ad05ed87b4da0069c731bcd3a17f077b9d317c3784c2a954c4284bc1197e5434',
      x86_64: '3d87ede9af652619cfc28f1cf16779a841228233978605c9a234501b789fd86c',
   })
