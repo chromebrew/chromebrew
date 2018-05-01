@@ -20,8 +20,8 @@ class Libevdev < Package
      x86_64: '6f113678d99a5f4fc52db49702bb209e845de505c1bb456b4f2d1c862e9ff7ed',
   })
 
-  depends_on 'doxygen'
-  depends_on 'python27'
+  depends_on 'doxygen' => :build
+  depends_on 'python27' => :build
   
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
