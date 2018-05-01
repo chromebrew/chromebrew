@@ -3,24 +3,23 @@ require 'package'
 class Byobu < Package
   description 'Byobu is a GPLv3 open source text-based window manager and terminal multiplexer.'
   homepage 'http://byobu.org/'
-  version '5.124'
-  source_url 'https://launchpad.net/byobu/trunk/5.124/+download/byobu_5.124.orig.tar.gz'
-  source_sha256 '4eca1287b95093ac4697e6ebf7312308d54af90630db151669c5f328e0bef122'
+  version '5.125'
+  source_url 'https://launchpad.net/byobu/trunk/5.125/+download/byobu_5.125.orig.tar.gz'
+  source_sha256 '5022c82705a5d57f1d4e8dcb1819fd04628af2d4b4618b7d44fa27ebfcdda9db'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.124-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.125-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.125-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.125-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/byobu-5.125-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6ae0a523b224701125020c8a8051a8993fc2999d29239ded9ad92935b4f71b79',
-     armv7l: '6ae0a523b224701125020c8a8051a8993fc2999d29239ded9ad92935b4f71b79',
-       i686: 'bc8d3e924a029ba6dece63a845c0a70d39afeab85ad0aab093f05ef49b6a45bd',
-     x86_64: '633a6857112ea892bafa9718e7092161fdf161c7b75a5b3ad432cfb5f895506a',
+    aarch64: 'b24959d0ad54aed9655241f9492aa63473503c5720cfc66574b306e8a79edcb6',
+     armv7l: 'b24959d0ad54aed9655241f9492aa63473503c5720cfc66574b306e8a79edcb6',
+       i686: 'c3ca28d2979e3d7a0086b03be5508cf30ae115b60d22284803a06a8b7d3fcb0c',
+     x86_64: 'f0a2933be3634409f9405e33979b06068f734d4a7b100dac01776a288fa3c843',
   })
 
-  depends_on 'gawk'
   depends_on 'tmux' unless File.exists? "#{CREW_PREFIX}/bin/screen"
 
   def self.build
