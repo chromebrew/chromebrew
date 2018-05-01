@@ -39,5 +39,6 @@ class Dart < Package
     system "cp -r bin/ #{CREW_DEST_PREFIX}"
     system "cp -r lib/* #{CREW_DEST_LIB_PREFIX}"
     system "cp -r include/ #{CREW_DEST_PREFIX}"
+    system "cp version /usr/local/version" # This stops 'pub get' from throwing errors
   end
 end
