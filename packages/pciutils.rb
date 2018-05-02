@@ -20,7 +20,6 @@ class Pciutils < Package
      x86_64: '9842f4c3c91ec9e60580a7658dc590c3c1c30310513b4825b6e67a5029536306',
   })
 
-  depends_on 'zlib'
 
   def self.build
     system "sed -i 's,SBINDIR=\$(PREFIX)/sbin,SBINDIR=#{CREW_PREFIX}/bin,' Makefile"

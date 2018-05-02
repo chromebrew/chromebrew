@@ -24,7 +24,6 @@ class Siege < Package
   depends_on 'diffutils' => :build
   depends_on 'openssl'
   depends_on 'perl'
-  depends_on 'zlib'
 
   def self.build
     system './configure',

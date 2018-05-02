@@ -21,7 +21,6 @@ class Ruby_latest < Package
   })
 
   depends_on 'readline'
-  depends_on 'zlib'
   depends_on 'openssl'
 
   def self.build

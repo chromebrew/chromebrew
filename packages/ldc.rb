@@ -23,7 +23,6 @@ class Ldc < Package                 # The first character of the class name must
   depends_on 'llvm'
   depends_on 'curl'
   depends_on 'ncurses'
-  depends_on 'zlib'
   depends_on 'libconfig' => :build
   depends_on 'cmake' => :build
   depends_on 'libedit' => :build

@@ -25,7 +25,6 @@ class Elinks < Package
   depends_on 'bz2'
   depends_on 'lzip'
   depends_on 'openssl'
-  depends_on 'zlib'
 
   def self.build
     system "sh autogen.sh"

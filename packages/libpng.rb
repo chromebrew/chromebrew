@@ -20,7 +20,6 @@ class Libpng < Package
      x86_64: '172fa194c4a7e185a9bacf7a1932c6dcf71ce0a3d19990fd10a39ee9f6a2171a',
   })
 
-  depends_on 'zlib'
 
   def self.build
       system './configure',

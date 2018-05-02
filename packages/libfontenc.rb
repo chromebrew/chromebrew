@@ -20,7 +20,6 @@ class Libfontenc < Package
      x86_64: 'e908f737e72de556d70a7013efeaf6a23bdeb570b159df3907cdc387584b0de2',
   })
 
-  depends_on 'zlib'
   depends_on 'xorg_proto' => :build
   depends_on 'pkgconfig' => :build
 
