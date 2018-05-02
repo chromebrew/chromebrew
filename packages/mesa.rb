@@ -3,21 +3,21 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '17.3.6-0'
-  source_url 'https://mesa.freedesktop.org/archive/mesa-17.3.6.tar.xz'
-  source_sha256 'e5915680d44ac9d05defdec529db7459ac9edd441c9845266eff2e2d3e57fbf8'
+  version '18.1.0-rc2'
+  source_url 'https://mesa.freedesktop.org/archive/mesa-18.1.0-rc2.tar.xz'
+  source_sha256 '39f0a0c748edcd13b1bbefbf203be937a7931f3e325a908c59fecc91d1bd008e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-17.3.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew2/chromebrew2/mesa-18.1.0-rc2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew2/chromebrew2/mesa-18.1.0-rc2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew2/chromebrew2/mesa-18.1.0-rc2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew2/chromebrew2/mesa-18.1.0-rc2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '31a1e05451b1d8779036c41330f9555c6cb94ecd340285b30fdaee65f856f61d',
-     armv7l: '31a1e05451b1d8779036c41330f9555c6cb94ecd340285b30fdaee65f856f61d',
-       i686: 'f0abd6726a40a7da699d0d28e40eb7db359ae98ffe41b9dfc302987e5d7841af',
-     x86_64: 'd4a38cee8aa4880b376bace883c3451e11730b52b20847f9f724124afbdb862e',
+    aarch64: '2e9527172429e533abf94840ef8f64f53199f5fd3087685462832a21ff1ff0ae',
+     armv7l: '2e9527172429e533abf94840ef8f64f53199f5fd3087685462832a21ff1ff0ae',
+       i686: 'c751352db63e6a9dd7f594d758cdc71be4db42c2731d470edae89df597ba363b',
+     x86_64: '108bae6bd00ae84906bfd7de1c3d67bc4a2442e409fe21b3e274e9756d4218ab',
   })
 
   depends_on 'libdrm'
@@ -41,12 +41,14 @@ class Mesa < Package
     system "pip install --install-option=\"--prefix=#{CREW_PREFIX}\" Mako"
     case ARCH
       when 'x86_64', 'i686'
-        system "./autogen.sh \
+        system "./autogen.sh"
+        system "./configure \
                 --prefix=#{CREW_PREFIX} \
                 --libdir=#{CREW_LIB_PREFIX} \
+                --sysconfdir=#{CREW_PREFIX}/etc \
                 --enable-shared-glapi \
-                --with-gallium-drivers=i915,r300,r600,radeon,radeonsi,nouveau,svga,swrast,virgl \
-                --with-dri-drivers=i915,i965,nouveau,swrast,r200,radeon \
+                --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+                --with-dri-drivers=i915,i965,nouveau,swrast,r200 \
                 --enable-osmesa \
                 --enable-opengl \
                 --enable-egl \
@@ -55,15 +57,17 @@ class Mesa < Package
                 --with-platforms=x11,drm,wayland \
                 --enable-gbm \
                 --enable-xa \
-                --enable-glx\
+                --enable-glx \
+                --enable-glx-tls \
                 --enable-dri \
                 --enable-llvm"
       when 'aarch64', 'armv7l'
         system "./configure \
                 --prefix=#{CREW_PREFIX} \
                 --libdir=#{CREW_LIB_PREFIX} \
+                --sysconfdir=#{CREW_PREFIX}/etc \
                 --enable-shared-glapi \
-                --with-gallium-drivers=nouveau,freedreno,vc4,virgl \
+                --with-gallium-drivers=nouveau,freedreno,tegra,vc4,virgl \
                 --with-dri-drivers=nouveau,swrast \
                 --enable-osmesa \
                 --enable-opengl \
@@ -73,14 +77,19 @@ class Mesa < Package
                 --with-platforms=x11,drm,wayland \
                 --enable-gbm \
                 --enable-xa \
-                --enable-glx\
+                --enable-glx \
+                --enable-glx-tls \
                 --enable-dri \
                 --enable-llvm"
       end
     system "make"
   end
+  
+  def self.check
+    system "make -k -j#{CREW_NPROC} check"
+  end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
   end
 end
