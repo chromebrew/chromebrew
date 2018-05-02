@@ -11,7 +11,8 @@ class Buildessential < Package
   depends_on 'linuxheaders'
   depends_on 'make'
   depends_on 'pkgconfig'
-
+  depends_on 'zlibpkg'
+  
   # typically required library to compile source code using "./autogen.sh"
   depends_on 'automake'
   depends_on 'libtool'
