@@ -13,8 +13,8 @@
 #       If you see 'Forbidden' errors, please try it again in a next day.
 #
 
-ORG=chromebrew
-REPO=chromebrew
+ORG=chromebrew2
+REPO=chromebrew2
 DRYRUN=
 DEBUG=
 

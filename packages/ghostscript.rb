@@ -21,7 +21,7 @@ class Ghostscript < Package
   })
 
   depends_on 'lcms'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
 
   def self.build
     system './configure'

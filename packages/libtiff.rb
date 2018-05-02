@@ -20,6 +20,9 @@ class Libtiff < Package
      x86_64: '256279df77d0772be848deb674f865b1c2359c018562ceb8bb6cbd06f8f28a2e',
   })
 
+  depends_on 'compressdoc' => :build
+  depends_on 'libjpeg_turbo'
+
   def self.build
     system "./configure \
             CFLAGS=\" -fPIC\" \
@@ -27,11 +30,7 @@ class Libtiff < Package
             --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
-
-  depends_on 'compressdoc' => :build
-  depends_on 'libjpeg'
-  depends_on 'zlibpkg'
-
+  
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"

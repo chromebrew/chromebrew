@@ -20,8 +20,7 @@ class Libssh2 < Package
      x86_64: '6e026450389021c6267a9cc79b8722d15f48e2f8d812d5212501f686b4368e3c',
   })
 
-  depends_on 'openssl' => :build
-  depends_on 'zlibpkg' => :build
+  depends_on 'openssl'
 
   def self.build
     system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--with-zlib", "--with-openssl", "--with-pic", "--disable-static"

@@ -24,7 +24,7 @@ class Imagemagick7 < Package
   depends_on 'ghostscript'
   depends_on 'lcms'
   depends_on 'lzma'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'libwebp'
@@ -33,7 +33,6 @@ class Imagemagick7 < Package
   depends_on 'pango'
   depends_on 'perl'
   depends_on 'python27'
-  depends_on 'zlibpkg'
 
   def self.build
     system './configure',

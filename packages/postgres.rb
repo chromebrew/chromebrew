@@ -22,7 +22,6 @@ class Postgres < Package
 
   depends_on 'buildessential'
   depends_on 'readline'
-  depends_on 'zlibpkg'
 
   # Feel free to change this directory prior to compiling.
   PGDATA = "#{CREW_PREFIX}/data/pgsql"

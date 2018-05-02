@@ -24,7 +24,6 @@ class Get_iplayer < Package
   depends_on 'ffmpeg'
   depends_on 'atomicparsley'
   depends_on 'libxml2'
-  depends_on 'zlibpkg'
 
   def self.build
     system "wget http://search.cpan.org/CPAN/authors/id/W/WI/WIMV/Math-LP-0.03.tar.gz"

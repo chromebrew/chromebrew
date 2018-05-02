@@ -22,7 +22,6 @@ class R < Package
 
   # depends_on 'gfortran'       # require gfortran enabled gcc
   depends_on 'pcre'             # need to use pcre not pcre2
-  depends_on 'zlibpkg'
   depends_on 'xzutils'
   depends_on 'bz2'
   depends_on 'curl'

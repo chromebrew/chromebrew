@@ -13,7 +13,7 @@ class Weston < Package
   depends_on 'libxkbcommon'
   depends_on 'libwayland'
   depends_on 'wayland_protocols'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libunwind'
     
   depends_on 'pango'

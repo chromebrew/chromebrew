@@ -22,7 +22,6 @@ class Sqlite < Package
 
   depends_on 'libedit'
   depends_on 'readline'
-  depends_on 'zlibpkg'
 
   def self.build
     system './configure',

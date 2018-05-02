@@ -434,8 +434,16 @@ end
 
 def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
-    puts "Building from source, this may take a while..."    
+    puts "Building from source, this may take a while..."
     
+    # rename *.la files temporily to *.la_tmp to avoid libtool error
+    puts "Rename all *.la files to *.la_tmp".lightblue
+    if @opt_verbose then
+      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
+    else
+      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
+    end
+
     @pkg.in_build = true
     @pkg.preinstall
     @pkg.patch
@@ -449,6 +457,17 @@ def build_and_preconfigure (target_dir)
     end
     puts "Preconfiguring package..."
     @pkg.install
+
+
+    # Rename all *.la_tmp back to *.la
+    # find /usr/local/lib64 -type f -name '*.la_tmp' -exec sh -c 'mv "$1" "${1%.la_tmp}.la"' _  {} \;
+    puts "Rename all *.la_tmp files back to *.la".lightblue
+    if @opt_verbose then
+      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    else
+      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    end
+
   end
 end
 
@@ -485,9 +504,9 @@ def prepare_package (destdir)
     # https://gnunet.org/faq-la-files
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     if @opt_verbose then
-      system "find #{destdir}#{CREW_LIB_PREFIX} -type f -name *.la -delete"
+      system "find #{CREW_DEST_LIB_PREFIX} -type f -name *.la -delete"
     else
-      system "find #{destdir}#{CREW_LIB_PREFIX} -type f -name *.la -delete"
+      system "find #{CREW_DEST_LIB_PREFIX} -type f -name *.la -delete"
     end
 
     # create directory list

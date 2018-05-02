@@ -20,9 +20,8 @@ class Git < Package
      x86_64: 'fddf194fcafc443968343f19f20561b71faedf93e43b0db52c180144e4457145',
   })
 
-  # use system zlibpkg, openssl, curl, expat
+  # use system zlib, openssl, curl, expat
   depends_on 'autoconf' => :build
-  depends_on 'zlibpkg' => :build
   depends_on 'libssh2'
   depends_on 'openssl' => :build
   depends_on 'curl' => :build

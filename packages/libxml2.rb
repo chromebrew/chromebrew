@@ -20,7 +20,6 @@ class Libxml2 < Package
      x86_64: '061f528bece488ea9d4b8ad5b4f033dd4d005a76a58878f2ae3ae437fdda8fd4',
   })
  
-  depends_on 'zlibpkg'
 
   def self.build
     system "./configure",

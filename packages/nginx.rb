@@ -21,7 +21,6 @@ class Nginx < Package
   })
 
   depends_on 'pcre'
-  depends_on 'zlibpkg'
 
   def self.build
     system './configure',

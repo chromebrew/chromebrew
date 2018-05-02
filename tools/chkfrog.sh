@@ -14,7 +14,7 @@
 #   release/i686/*.tar.xz.sha256    SHA256 files for i686
 #   release/x86_64/*.tar.xz.sha256  SHA256 files for x86_64
 
-URL="https://dl.bintray.com/chromebrew/chromebrew"
+URL="https://dl.bintray.com/chromebrew2/chromebrew2"
 
 case $# in
 0) set `basename -s .rb packages/*`

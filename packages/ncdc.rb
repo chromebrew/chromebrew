@@ -21,7 +21,6 @@ class Ncdc < Package
   })
 
   depends_on 'ncurses'
-  depends_on 'zlibpkg'
   depends_on 'bz2'
   depends_on 'sqlite'
   depends_on 'glib'

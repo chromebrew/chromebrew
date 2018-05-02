@@ -1,4 +1,4 @@
-chromebrew
+chromebrew2
 ==========
 
 Package manager for Chrome OS
@@ -6,12 +6,12 @@ Package manager for Chrome OS
 Supported Systems
 -----------------
 
-| Architecture | Supported? |
-|:---:|:---:|
-| x86_64 | Yes |
-| i686 | Yes |
-| armv7l | Yes |
-| aarch64 | Yes |
+| Architecture | Supported? | Compiler tool |
+|:---:|:---:|:---:|
+| x86_64 | Yes | gcc 7.3.0 |
+| i686 | Yes | gcc 7.3.0 |
+| armv7l | Yes | gcc 7.3.0 |
+| aarch64 | Yes | gcc 7.3.0 |
 
 Overview
 --------
@@ -34,21 +34,7 @@ If this command returns `ERROR: unknown command: shell` please have a second loo
 
 Then download and run the installation script below:
 
-    wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
-
-    -- or --
-
-    curl -Ls git.io/vddgY | bash
-
-On a rooted Google OnHub, the command needs to be run with the "chronos" user. In order to make su work, a password is needed for the chronos user.
-
-    # passwd chronos
-    Changing password for chronos.
-    Enter new UNIX password:
-    Retype new UNIX password:
-    # su - chronos
-    Password:
-    $ curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh
+    curl -Ls https://raw.github.com/lovedheart/chromebrew2/master/install.sh | bash
 
 Usage
 -----
@@ -82,6 +68,6 @@ Copyright 2013-2018 Michal Siwek and [all the awesome contributors](https://gith
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
 
-Our binary packages are hosted on [bintray](https://bintray.com/chromebrew/chromebrew).
+Our binary packages are hosted on [bintray](https://bintray.com/chromebrew2/chromebrew2).
 
-<a href="https://bintray.com/chromebrew/chromebrew" target="_blank"><img src="https://github.com/skycocker/chromebrew/blob/master/images/Powered-by-Bintray_Banner_16-6-16-green.png" alt="Powered by Bintray" /></a>
+<a href="https://bintray.com/chromebrew2/chromebrew2" target="_blank"><img src="https://github.com/skycocker/chromebrew/blob/master/images/Powered-by-Bintray_Banner_16-6-16-green.png" alt="Powered by Bintray" /></a>

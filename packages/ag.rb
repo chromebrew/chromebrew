@@ -25,7 +25,6 @@ class Ag < Package
   depends_on "pkgconfig" => :build
   depends_on "pcre"
   depends_on "xzutils"
-  depends_on "zlibpkg"
 
   def self.build
     system "autoreconf", "-fiv"

@@ -20,7 +20,6 @@ class Emacs < Package
      x86_64: 'd135d3f0ffd2cc536fe30fb8b1b002b63e086b4a2f6b56ebd89e451803372040',
   })
 
-  depends_on "zlibpkg" => :build
   depends_on "diffutils" => :build
   depends_on "m4" => :build
   depends_on "autoconf" => :build

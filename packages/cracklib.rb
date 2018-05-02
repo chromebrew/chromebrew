@@ -21,7 +21,6 @@ class Cracklib < Package
   })
 
   depends_on 'glibc'
-  depends_on 'zlibpkg'
     
        
   def self.build
