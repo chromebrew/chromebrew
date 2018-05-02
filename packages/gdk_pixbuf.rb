@@ -25,7 +25,7 @@ class Gdk_pixbuf < Package
   depends_on 'pango'
   depends_on 'gobject_introspection'
   depends_on 'libtiff'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'python27'
 
   def self.build

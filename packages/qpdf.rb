@@ -20,7 +20,7 @@ class Qpdf < Package
      x86_64: '32069b9fb1bcb81e9024eef707b5ab9e61bacc87fa8141f8de51ba4293fefa98',
   })
   
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'automake' => :build
 
   def self.build
