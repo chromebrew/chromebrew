@@ -22,7 +22,6 @@ class Git < Package
 
   # use system zlib, openssl, curl, expat
   depends_on 'autoconf' => :build
-  depends_on 'zlib' => :build
   depends_on 'libssh2'
   depends_on 'openssl' => :build
   depends_on 'curl' => :build

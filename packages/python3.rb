@@ -25,7 +25,6 @@ class Python3 < Package
   depends_on 'ncurses'
   depends_on 'openssl' => :build
   depends_on 'sqlite' => :build
-  depends_on 'zlib'
   depends_on 'libffi'
   depends_on 'readline'
 

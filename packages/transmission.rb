@@ -24,7 +24,6 @@ class Transmission < Package
   depends_on 'openssl'
   depends_on 'miniupnpc'
   depends_on 'curl'
-  depends_on 'zlib'
   depends_on 'glib'
   depends_on 'rtmpdump'
   depends_on 'ctorrent'

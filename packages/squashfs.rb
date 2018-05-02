@@ -25,7 +25,6 @@ class Squashfs < Package
   depends_on 'lz4'
   depends_on 'lzo'
   depends_on 'xzutils'
-  depends_on 'zlib'
 
   def self.build
     FileUtils.cd('squashfs-tools') do

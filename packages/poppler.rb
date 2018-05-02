@@ -26,7 +26,6 @@ class Poppler < Package
   depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'openjpeg'
-  depends_on 'zlib'
   depends_on 'cmake' => :build
 
   def self.build

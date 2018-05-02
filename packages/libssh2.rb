@@ -21,7 +21,6 @@ class Libssh2 < Package
   })
 
   depends_on 'openssl'
-  depends_on 'zlib' => :build
 
   def self.build
     system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--with-zlib", "--with-openssl", "--with-pic", "--disable-static"

@@ -22,7 +22,6 @@ class Atomicparsley < Package
 
   depends_on 'autoconf'
   depends_on 'automake'
-  depends_on 'zlib'
 
   def self.build
     system "./autogen.sh"

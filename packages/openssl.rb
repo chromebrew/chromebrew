@@ -24,7 +24,6 @@ class Openssl < Package
   depends_on 'perl' => :build
   depends_on 'bc' => :build             # required for `make test`
   depends_on 'diffutils' => :build      # required for `make test`
-  depends_on 'zlib' => :build
 
   def self.build
     options="shared zlib-dynamic"

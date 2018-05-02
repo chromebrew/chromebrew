@@ -22,7 +22,6 @@ class Ruby < Package
 
   depends_on 'readline'
   depends_on 'ncurses'
-  depends_on 'zlib' => :build
   depends_on 'openssl' => :build
   # at run-time, system's gmp, openssl, readline and zlib are possible to use
 
