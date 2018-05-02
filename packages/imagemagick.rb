@@ -70,7 +70,7 @@ class Imagemagick < Package
   depends_on 'pango'
   depends_on 'perl'
   depends_on 'python27'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system './configure',

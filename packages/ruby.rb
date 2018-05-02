@@ -22,9 +22,9 @@ class Ruby < Package
 
   depends_on 'readline'
   depends_on 'ncurses'
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlib' => :build
   depends_on 'openssl' => :build
-  # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
+  # at run-time, system's gmp, openssl, readline and zlib are possible to use
 
   def self.build
     system "CC='gcc' ./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --enable-shared"

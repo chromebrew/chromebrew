@@ -26,7 +26,7 @@ class Subversion < Package
   depends_on 'serf'
   depends_on 'filecmd'
   depends_on 'sqlite'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system './configure', '--disable-static', "--libdir=#{CREW_LIB_PREFIX}"

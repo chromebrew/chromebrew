@@ -21,7 +21,7 @@ class Rtmpdump < Package
   })
 
   depends_on 'openssl'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system "sed -i 's,prefix=/usr/local,prefix=#{CREW_PREFIX},' Makefile"

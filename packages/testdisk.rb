@@ -24,7 +24,7 @@ class Testdisk < Package
   depends_on 'ncurses'
   depends_on 'apriconv'
   depends_on 'libjpeg'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

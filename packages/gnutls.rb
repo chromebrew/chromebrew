@@ -20,7 +20,7 @@ class Gnutls < Package
      x86_64: '119494bbb371d74538696b1ffae01bae736824db16ac58ad1c4e05cf35dc6e36',
   })
 
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'libunistring'
   depends_on 'gmp'
   depends_on 'nettle'

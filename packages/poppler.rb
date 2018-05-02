@@ -21,12 +21,12 @@ class Poppler < Package
   })
 
   depends_on 'automake' => :build
-  depends_on 'cairo'
+  depends_on 'cairo' => :build
   depends_on 'harfbuzz'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'openjpeg'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'cmake' => :build
 
   def self.build

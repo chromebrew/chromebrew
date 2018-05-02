@@ -1,6 +1,6 @@
 require 'package'
 
-class Zlibpkg < Package
+class Zlib < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'http://www.zlib.net/'
   version '1.2.11-1'

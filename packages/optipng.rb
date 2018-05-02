@@ -21,7 +21,7 @@ class Optipng < Package
   })
 
   depends_on 'libpng'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system "./configure --prefix=/usr/local --with-system-libpng" # Bundled libpng doesn't work on armv7l

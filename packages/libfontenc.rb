@@ -19,9 +19,10 @@ class Libfontenc < Package
        i686: '18570f0cbbd7083ff01de80bf13a565f34319f27a93427fcf9dd2f47577c8342',
      x86_64: 'e908f737e72de556d70a7013efeaf6a23bdeb570b159df3907cdc387584b0de2',
   })
-  
-  depends_on 'xorg_proto'
-  depends_on 'zlibpkg'
+
+  depends_on 'zlib'
+  depends_on 'xorg_proto' => :build
+  depends_on 'pkgconfig' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

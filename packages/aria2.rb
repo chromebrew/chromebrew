@@ -25,7 +25,7 @@ class Aria2 < Package
   depends_on 'libssh2'
   depends_on 'libxml2'
   depends_on 'sqlite'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system './configure',
