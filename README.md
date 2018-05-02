@@ -34,7 +34,7 @@ If this command returns `ERROR: unknown command: shell` please have a second loo
 
 Then download and run the installation script below:
 
-    wget -q -O - https://raw.github.com/lovedheart/chromebrew2/master/install.sh | bash
+    curl -Ls https://raw.github.com/lovedheart/chromebrew2/master/install.sh | bash
 
 Usage
 -----
