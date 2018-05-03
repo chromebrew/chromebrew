@@ -27,8 +27,16 @@ class Dart < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dart-1.24.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dart-1.24.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dart-1.24.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dart-1.24.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '35b7364ceef80b107c2e63b75d94960dd9577771eb868b7de37f70058fb44c23',
+     armv7l: '35b7364ceef80b107c2e63b75d94960dd9577771eb868b7de37f70058fb44c23',
+       i686: '652ef28a052a7dd538bf73652a8ab29893cf53e054559e3b6d1cdfb3b4f6487a',
+     x86_64: '5686e5021a5fceaf2517f53e2cda0d93b4852f009aab959a5a88bb9e64d4844f',
   })
 
   depends_on 'unzip' => :build
