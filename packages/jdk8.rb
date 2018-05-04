@@ -3,40 +3,40 @@ require 'package'
 class Jdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'
-  version '8u162'
+  version '8u172'
   source_url 'http://hg.openjdk.java.net/jdk8/jdk8/archive/2a8f4c022aa0.tar.gz'
   source_sha256 'e632ae353ccfb90957cbb6a5818ee063710a41e7b97b490ee58ca5f627d863f1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u162-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u172-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u172-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u172-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jdk8-8u172-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bcbf7202fb97074c4161455d6a921378b4ce43b3fd430546b92d83d60c65fcc2',
-     armv7l: 'bcbf7202fb97074c4161455d6a921378b4ce43b3fd430546b92d83d60c65fcc2',
-       i686: '81d015255c8f1bbe9c78b6b78cc75cfd81fd63777ad8e1b1f1151d7f37d4889b',
-     x86_64: 'eebda392cdcdfee0cefac114edbfa4a39f8d76e83eb380e51e9bbc4a202206f1',
+    aarch64: '90f418f144133a3776017729599465f9efa1b675ae402c20d22e9007bce901ad',
+     armv7l: '90f418f144133a3776017729599465f9efa1b675ae402c20d22e9007bce901ad',
+       i686: 'efe0479401b215616a682a1bcb487d0a9dd1646354bfa344c39f0510f14c3ff0',
+     x86_64: '827c56c9b2b24cbac1000c13146f568eb6d6ffaa8fde2db702569eaff169e92e',
   })
 
   def self.install
     case ARCH
     when 'aarch64', 'armv7l'
-      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-arm32-vfp-hflt.tar.gz'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u162-linux-arm32-vfp-hflt.tar.gz') ) == '57720cc98e0dd709e8439df73d70cd1252d76f059e3e08ce0b36e8776b7bfa77'
-      system 'tar xvf jdk-8u162-linux-arm32-vfp-hflt.tar.gz'
+      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-arm32-vfp-hflt.tar.gz'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u172-linux-arm32-vfp-hflt.tar.gz') ) == '965e6cca2255a34e0e44ba8cf00c53472bc9837f080d58ad6e82309ac162e694'
+      system 'tar xvf jdk-8u172-linux-arm32-vfp-hflt.tar.gz'
     when 'i686'
-      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-i586.tar.gz'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u162-linux-i586.tar.gz') ) == 'eecf88dbcf7c78d236251d44350126f1297a522f2eab974b4027ef20f7a6fb24'
-      system 'tar xvf jdk-8u162-linux-i586.tar.gz'
+      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-i586.tar.gz'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u172-linux-i586.tar.gz') ) == '0a4310d31246924d5c3cd161b9da7f446acef373e6484452c80de8d8519f5a33'
+      system 'tar xvf jdk-8u172-linux-i586.tar.gz'
     when 'x86_64'
-      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.tar.gz'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u162-linux-x64.tar.gz') ) == '68ec82d47fd9c2b8eb84225b6db398a72008285fafc98631b1ff8d2229680257'
-      system 'tar xvf jdk-8u162-linux-x64.tar.gz'
+      system 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" --no-check-certificate https://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('jdk-8u172-linux-x64.tar.gz') ) == '28a00b9400b6913563553e09e8024c286b506d8523334c93ddec6c9ec7e9d346'
+      system 'tar xvf jdk-8u172-linux-x64.tar.gz'
     end
     system "mkdir -p #{CREW_DEST_PREFIX}/share/jdk8"
-    FileUtils.cd('jdk1.8.0_162') do
+    FileUtils.cd('jdk1.8.0_172') do
       system "rm -f src.zip"
       system "cp -r * #{CREW_DEST_PREFIX}/share/jdk8"
     end
