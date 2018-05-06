@@ -1,11 +1,11 @@
 require 'package'
 
 class Dpkg < Package
-  description 'dpkg, a medium-level package manager for Debian'
+  description 'A medium-level package manager for Debian'
   homepage 'https://anonscm.debian.org/git/dpkg/'
   version '1.19.0.5'
-  source_url 'https://salsa.debian.org/dpkg-team/dpkg/-/archive/master/dpkg-master.tar.gz'
-  source_sha256 'a64b257d89d95f2e199fb39c6b37bf9de9e15e2d1e1898060fa9c9af3899330e'
+  source_url 'https://salsa.debian.org/dpkg-team/dpkg/-/archive/1.19.0.5/dpkg-1.19.0.5.tar.gz'
+  source_sha256 'd38308afcd5d7896bbd1f946875b90f9d8510a8a96b44e4f14e781285e5d9641'
 
     depends_on 'perl' => :build
     depends_on 'pkgconfig' => :build
@@ -25,13 +25,13 @@ class Dpkg < Package
 	    system "echo 'Thank you for entering your sudo password. It will be used to run the configure script.'"
 	    system "rm -rf {*,.*}"
 	    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
-	    Dir.chdir ("dpkg")
+	Dir.chdir ("dpkg")
 	    system "autoreconf -i -f"
 	    system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=#{CREW_PREFIX}"
 	    system "make"
 	end
 
-    def self.install 
+	def self.install 
 	    system "make install DESTDIR=#{CREW_DEST_DIR}"
 	    system "alias dpkg='dpkg --root=/usr/local'"
   end
