@@ -7,18 +7,7 @@ class Dpkg < Package
   source_url 'https://salsa.debian.org/dpkg-team/dpkg/-/archive/1.19.0.5/dpkg-1.19.0.5.tar.gz'
   source_sha256 'd38308afcd5d7896bbd1f946875b90f9d8510a8a96b44e4f14e781285e5d9641'
 
-    depends_on 'perl' => :build
-    depends_on 'pkgconfig' => :build
-    depends_on 'automake' => :build
-    depends_on 'make' => :build
-    depends_on 'gcc' => :build
-    depends_on 'linuxheaders' => :build
-    depends_on 'flex' => :build
-    depends_on 'bison' => :build
     depends_on 'icu4c' => :build
-    depends_on 'gettext' => :build
-    depends_on 'autoconf' => :build
-    depends_on 'libtool' => :build
 
     def self.build
 	    system "rm -rf {*,.*}"
