@@ -21,8 +21,6 @@ class Dpkg < Package
     depends_on 'libtool' => :build
 
     def self.build
-	    system "sudo mount -o remount,rw -io exec ~/"
-	    system "echo 'Thank you for entering your sudo password. It will be used to run the configure script.'"
 	    system "rm -rf {*,.*}"
 	    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
 	Dir.chdir ("dpkg")
