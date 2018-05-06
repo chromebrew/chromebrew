@@ -21,6 +21,6 @@ class Dpkg < Package
 	def self.install 
 	    system "make install DESTDIR=#{CREW_DEST_DIR}"
 	    system "echo \"# Dpkg Alias (Do NOT Touch)\" >> ~/.bashrc"
-	    system "echo \"alias dpkg=\"dpkg --root=#{CREW_PREFIX}\"\" >> ~/.bashrc"
+	    system "echo \"alias dpkg='dpkg --root=/usr/local'\" >> ~/.bashrc"
   end
 end
