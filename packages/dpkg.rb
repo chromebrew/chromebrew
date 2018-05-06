@@ -33,5 +33,6 @@ class Dpkg < Package
 
     def self.install 
 	    system "make install DESTDIR=#{CREW_DEST_DIR}"
+	    system "alias dpkg=\"dpkg --root=/usr/local\""
   end
 end
