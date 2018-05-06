@@ -10,9 +10,9 @@ class Dpkg < Package
     depends_on 'icu4c' => :build
 
     def self.build
-	    system "rm -rf {*,.*}"
 	    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
 	Dir.chdir ("dpkg")
+	    system "git checkout 1.19.0.5"
 	    system "autoreconf -i -f"
 	    system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=#{CREW_PREFIX}"
 	    system "make"
@@ -20,7 +20,10 @@ class Dpkg < Package
 
 	def self.install 
 	    system "make install DESTDIR=#{CREW_DEST_DIR}"
-	    system "echo \"# Dpkg Alias (Do NOT Touch)\" >> ~/.bashrc"
-	    system "echo \"alias dpkg='dpkg --root=/usr/local'\" >> ~/.bashrc"
+	    system "mkdir -p ~/.config/fish"
+	    system "mkdir -p /usr/local/var/lib/dpkg"
+	    system "echo \"# Dpkg Alias (Do NOT Touch)\" >> ~/.{bashrc,zshrc,config/fish/config.fish}"
+	    system "echo \"alias dpkg='dpkg --root=/usr/local'\" >> ~/.{bashrc,zshrc,config/fish/config.fish}"
+	    system "touch /usr/local/var/lib/dpkg/status"
   end
 end
