@@ -20,6 +20,7 @@ class Dpkg < Package
 
 	def self.install 
 	    system "make install DESTDIR=#{CREW_DEST_DIR}"
+	    system "ln -s /usr/ /usr/local/usr"
 	    system "mkdir -p ~/.config/fish"
 	    system "mkdir -p /usr/local/var/lib/dpkg"
 	    system "echo \"# Dpkg Alias (Do NOT Touch)\" >> ~/.{bashrc,zshrc,config/fish/config.fish}"
