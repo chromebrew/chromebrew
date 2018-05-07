@@ -5,7 +5,7 @@ class Ghc < Package
   homepage 'https://www.haskell.org/ghc/'
   version '8.4.2'
   source_url 'https://www.haskell.org/ghc/download_ghc_8_4_2.html'
-  source_sha256 'a0e87e7b42b372901fb7a698559b183414cfb0de2e4a1979f69d617ace1361d4'
+  source_sha256 'a0f4ee8bdd284d869a3db0a0c58f83800a880293ccc19abc5e9debd2e7ab93d7'
 
   binary_url ({
   })
