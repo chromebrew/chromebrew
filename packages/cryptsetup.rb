@@ -3,21 +3,21 @@ require 'package'
 class Cryptsetup < Package
   description 'The cryptsetup utility is used to conveniently setup disk en-/decryption based on DMCrypt kernel module.'
   homepage 'https://gitlab.com/cryptsetup/cryptsetup'
-  version '2.0.1'
-  source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.1.tar.xz'
-  source_sha256 '41d188092c52e23d576af41cf0cfe0555d8f7efa21598d4c57c56ea1b6d9c975'
+  version '2.0.3'
+  source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.3.tar.xz'
+  source_sha256 '4d6cca04c1f5ff4a68d045d190efb2623087eda0274ded92f92a4b6911e501d4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cryptsetup-2.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'cfe406001f6f010a655a9b2a55ff3be03e29d5e2ee79a757a46bba3809b4ba01',
-     armv7l: 'cfe406001f6f010a655a9b2a55ff3be03e29d5e2ee79a757a46bba3809b4ba01',
-       i686: '8cd48aa7e01d5e6854e78a888f97478c530c18ee450809c9cc7867801a6cf3fa',
-     x86_64: 'fd33e4276dad999973373c75c802a0561b32a2472cc02c99b6b7bca07eb61eff',
+    aarch64: '336db165a18055d522037b89e90dc97a2c967e3c4c14a84b77a2effb2b6f8618',
+     armv7l: '336db165a18055d522037b89e90dc97a2c967e3c4c14a84b77a2effb2b6f8618',
+       i686: 'ba83377debf5b8716b568b594d60546fa6fd0987241409592cc2a4e8bb659503',
+     x86_64: '38500360185a743c7421c19863b902917445da3e7fb5cff2001fbffc16d58e70',
   })
 
   depends_on 'util_linux'
@@ -27,8 +27,11 @@ class Cryptsetup < Package
   depends_on 'popt'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--disable-static'
+    system 'make'
   end
 
   def self.install

@@ -3,29 +3,28 @@ require 'package'
 class Cpustat < Package
   description 'cpustat periodically dumps out the current CPU utilisation statistics of running processes.'
   homepage 'http://kernel.ubuntu.com/~cking/cpustat/'
-  version '0.02.03'
-  source_url 'http://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.03.tar.gz'
-  source_sha256 '8e48cbd6927b9060a59cd278bb855f6fcdb773ff5ff919a1f75c086c94b4c1d0'
+  version '0.02.04'
+  source_url 'http://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.04.tar.gz'
+  source_sha256 '10fbe56a17161094818be779127f635dc65262b305e5a5614d9e46536a9d92c7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.03-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.03-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.03-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.03-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3512fe1d54b69cc47830c99ea89fa6851dc14a936c942c1087d49bd9c4a1643c',
-     armv7l: '3512fe1d54b69cc47830c99ea89fa6851dc14a936c942c1087d49bd9c4a1643c',
-       i686: 'e108e8981bcfa369dbeb450ef2fe5f60adf752ba7bd6b45e3670778fd871089a',
-     x86_64: 'fd4dc76c596c68617c9ef91cefc17ce5394e52227754968a6f699548439c08e7',
+    aarch64: '20a5e9e09f2e3bd704f17c14b7f260ccbeac1111418cc837e904c05a700dae67',
+     armv7l: '20a5e9e09f2e3bd704f17c14b7f260ccbeac1111418cc837e904c05a700dae67',
+       i686: '21670c81a422830e149287936be6c10e58bcbb39fe9c94810677ba8f93949f5d',
+     x86_64: 'b505ca257198a54ee256f85fee63fb14d2275572b37af287aad8a47d1ba2b6b8',
   })
 
-  depends_on 'ncurses'
-
   def self.build
-    system "sed -i 's,/usr,/usr/local,g' Makefile"
-    system "sed -i '/^CFLAGS += -Wall/s/$/ -I\\/usr\\/local\\/include\\/ncurses/' Makefile"
-    system "make"
+    system "sed -i 's,sbin,bin,' Makefile"
+    system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
+    system "sed -i '/^CFLAGS += -Wall/s,$, -I#{CREW_PREFIX}/include/ncurses,' Makefile"
+    system 'make'
   end
 
   def self.install
