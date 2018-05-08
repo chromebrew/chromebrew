@@ -7,15 +7,11 @@ class Kr < Package
   source_url 'https://raw.githubusercontent.com/kryptco/kr/master/README.md'
   source_sha256 'a0452783d22218a6fab914abbf5263459aaa1c8745512d7c4ebcf51fe08aaf7a'
 
-  depends_on "gcc7" => :build
   depends_on "rust" => :build
   depends_on "go" => :build
-  depends_on "pkgconfig" => :build
   depends_on "libsodium" => :build
   depends_on "rsync" => :build
-  depends_on "buildessential" => :build
   depends_on "psmisc" => :build
-  depends_on "git" => :build
 
   def self.install
     ENV["GOPATH"] = "#{Dir.pwd}/go"
