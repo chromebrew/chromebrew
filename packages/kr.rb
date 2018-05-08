@@ -38,4 +38,11 @@ class Kr < Package
       system "make", "install"
     end
   end
+  
+  def self.postinstall
+    puts "============================"
+    puts "Krypton is now installed!"
+    puts "'kr pair' will automatically configure ~/.ssh/config to use Krypton. To prevent this, export KR_SKIP_SSH_CONFIG=1"
+    puts "============================"
+  end
 end
