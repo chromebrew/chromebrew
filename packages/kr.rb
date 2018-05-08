@@ -21,8 +21,6 @@ class Kr < Package
     system "mkdir -p #{ENV["RUSTUP_HOME"]}"
     system "mkdir -p #{ENV["CARGO_HOME"]}"
 
-    ENV["PATH"] = "#{ENV["CARGO_HOME"]}/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin"
-
     system "rustup", "install", "stable"
     system "rustup", "default", "stable"
     system "rustup", "target", "add", "wasm32-unknown-emscripten"
