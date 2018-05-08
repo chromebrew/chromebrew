@@ -27,7 +27,7 @@ class Kr < Package
     system "rustup", "target", "add", "wasm32-unknown-emscripten"
 
     system "curl -Ls https://github.com/koute/cargo-web/archive/#{cargo_web_version}.zip -o cargo-web.zip"
-    system "if [ $(sha256sum cargo-web.zip | cut -d ' ' -f1) != '#{cargo_web_sha256}' ]; then echo 'cargo-web sha did not match #{cargo_web_sha256}, exiting.'; exit 1; fi"
+    abort "Checksum mismatch. :/  Try again.".lightred unless Digest::SHA256.hexdigest( File.read("cargo-web.zip") ) == "#{cargo_web_sha256}"
     system "unzip cargo-web.zip && cd cargo-web-#{cargo_web_version}"
     system "cargo build --release && cargo install"
 
