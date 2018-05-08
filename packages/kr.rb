@@ -16,8 +16,17 @@ class Kr < Package
   def self.install
     cargo_web_sha256 = "c8a92ed0185206ad7f2da8e1692d168b20044de7066b2eb086e4bbb0d06ff787"
     ENV["GOPATH"] = "#{Dir.pwd}/go"
+    ENV["RUSTUP_HOME"] = "#{Dir.pwd}/.rustup"
+    ENV["CARGO_HOME"] = "#{Dir.pwd}/.cargo"
+    system "mkdir -p #{ENV["RUSTUP_HOME"]}"
+    system "mkdir -p #{ENV["CARGO_HOME"]}"
 
+    ENV["PATH"] = "#{ENV["CARGO_HOME"]}/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin"
+
+    system "rustup", "install", "stable"
+    system "rustup", "default", "stable"
     system "rustup", "target", "add", "wasm32-unknown-emscripten"
+
     system "cargo web --version || ( curl -Ls https://github.com/koute/cargo-web/archive/0.6.10.zip -o cargo-web.zip; if [ $(sha256sum cargo-web.zip | cut -d ' ' -f1) != '#{cargo_web_sha256}' ]; then echo 'cargo-web sha did not match #{cargo_web_sha256}, exiting.'; exit 1; fi; unzip cargo-web.zip; cd cargo-web-0.6.10; cargo build --release && cargo install )"
 
     system "mkdir -p #{Dir.pwd}/go/src"
