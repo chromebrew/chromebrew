@@ -501,6 +501,13 @@ def prepare_package (destdir)
     compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
     compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
 
+    # Remove *.la before archiving packages
+    if @opt_verbose then
+      system "find #{CREW_DEST_LIB_PREFIX} -type f -name *.la -delete"
+    else
+      system "find #{CREW_DEST_LIB_PREFIX} -type f -name *.la -delete"
+    end
+      
     # create directory list
     system "find . -type f > ../filelist"
     system "find . -type l >> ../filelist"
