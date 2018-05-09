@@ -8,7 +8,6 @@ class thefuck < Package
   depends_on 'python3'
 
   def self.install
-    system "pip3 install setuptools"
     system "pip3 install thefuck --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
     system "fuck && fuck"
   end
