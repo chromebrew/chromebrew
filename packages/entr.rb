@@ -3,29 +3,29 @@ require 'package'
 class Entr < Package
   description 'Run arbitrary commands when files change'
   homepage 'http://entrproject.org/'
-  version '3.9'
-  source_url 'http://entrproject.org/code/entr-3.9.tar.gz'
-  source_sha256 '02d78f18ae530e64bfbb9d8e0250962f85946e10850dd065899d03af15f26876'
+  version '4.0'
+  source_url 'http://entrproject.org/code/entr-4.0.tar.gz'
+  source_sha256 '4ad4fe9108b179199951cfc78a581a8a69602b073dae59bcae4b810f6e1f6c8b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/entr-3.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/entr-3.9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/entr-3.9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/entr-3.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/entr-4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/entr-4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/entr-4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/entr-4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bb30f02b3bbb9f212cd2890ec398f2e619a29dc0bbc0192a36e9657f2cfcc819',
-     armv7l: 'bb30f02b3bbb9f212cd2890ec398f2e619a29dc0bbc0192a36e9657f2cfcc819',
-       i686: 'd9b85cfd5995132b88f3c73e3514ad07d6a31102ffdb49c629a682ac64551d51',
-     x86_64: 'a2c80447e6772923445e62b75b5498622588ffc3f7f4d045f9b20e52770eb989',
+    aarch64: '0245397ddc6c63266cb85893650b4e3f30ba9ba433c3bb6ce4f1e026b31d7f41',
+     armv7l: '0245397ddc6c63266cb85893650b4e3f30ba9ba433c3bb6ce4f1e026b31d7f41',
+       i686: '74adb77a26cc198d011f0e57f8311c41cd34b91243cb3456269f71ef1e2be273',
+     x86_64: '6efb1d26f5472c55ac84d32807bae88c444df2bdb4128a9e2d6ba2349f60e591',
   })
 
   def self.build
     system 'cp Makefile.linux Makefile'
-    system "PREFIX=#{CREW_PREFIX} make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
