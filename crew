@@ -502,6 +502,7 @@ def prepare_package (destdir)
     compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
 
     # Remove *.la before archiving packages
+    puts "Remove all *.la files before archiving the package".lightblue    
     if @opt_verbose then
       system "find #{CREW_DEST_LIB_PREFIX} -type f -name *.la -delete"
     else
