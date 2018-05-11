@@ -28,8 +28,10 @@ class Kr < Package
 
     system "curl -Ls https://github.com/koute/cargo-web/archive/#{cargo_web_version}.zip -o cargo-web.zip"
     abort "Checksum mismatch. :/  Try again.".lightred unless Digest::SHA256.hexdigest( File.read("cargo-web.zip") ) == "#{cargo_web_sha256}"
-    system "unzip cargo-web.zip && cd cargo-web-#{cargo_web_version}"
-    system "cargo build --release && cargo install"
+    system "unzip cargo-web.zip"
+    FileUtils.cd("cargo-web-#{cargo_web_version}") do
+      system "cargo build --release && cargo install"
+    end
 
     system "mkdir -p #{Dir.pwd}/go/src"
     system "go get github.com/kryptco/kr"
