@@ -21,7 +21,7 @@ class Tidy < Package
   })
 
   def self.build
-    Dir.chdir 'build/cmake'
+    Dir.chdir 'build/cmake' do
       case ARCH
       when 'x86_64'
         system "cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DLIB_SUFFIX=64"
@@ -33,7 +33,7 @@ class Tidy < Package
   end
 
   def self.install
-    Dir.chdir 'build/cmake'
+    Dir.chdir 'build/cmake' do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     end
   end
