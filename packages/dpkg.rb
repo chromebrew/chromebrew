@@ -20,7 +20,7 @@ class Dpkg < Package
 
 	def self.install
 	    system "make install DESTDIR=#{CREW_DEST_DIR}"
-	    system "mkdir -p /usr/local/usr/"
-	    system "ln -s /usr/local/ /usr/local/usr/local"
+	    system "mkdir -p #{CREW_DEST_PREFIX}/usr/"
+	    system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
   end
 end
