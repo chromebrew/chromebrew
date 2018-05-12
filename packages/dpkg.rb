@@ -24,14 +24,19 @@ class Dpkg < Package
       system "make install DESTDIR=#{CREW_DEST_DIR}"
       system "mkdir -p #{CREW_DEST_PREFIX}/usr/"
       system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
+      system "mkdir -p #{CREW_DEST_PREFIX}/var/lib/dpkg/"
+      system "mv #{CREW_PREFIX}/var/lib/dpkg/status #{CREW_PREFIX}/var/lib/dpkg/status.old"
+      system "touch #{CREW_DEST_PREFIX}/var/lib/dpkg/status"
+    end
+    Dir.chdir ("#{CREW_DEST_PREFIX}/bin") do
+      system 'mv dpkg dpkg-run'
+      system "echo '#!/bin/bash' > dpkg"
+      system "echo 'dpkg-run --force-depends --root=#{CREW_PREFIX} \"$@\"' >> dpkg"
+      system 'chmod a+x dpkg'
     end
   end
     def self.postinstall
-    puts "You may need to run" 
-    puts "'sudo chromeos-firmwareupdate --mode=todev',"
-    puts "followed by 'sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification',"
-    puts "follow the instructions, and restart your Chromebook before installing packages."
-    puts "However, this isn't necessary if you aren't going to install any packages."
-    system "echo >> /usr/local/var/lib/dpkg/status"
+    system "cat #{CREW_PREFIX}/var/lib/dpkg/status.old >> #{CREW_PREFIX}/var/lib/dpkg/status"
+    system "rm #{CREW_PREFIX}/var/lib/dpkg/status.old"
   end
 end
