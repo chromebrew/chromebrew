@@ -24,7 +24,7 @@ class Dpkg < Package
       system "make install DESTDIR=#{CREW_DEST_DIR}"
       system "mkdir -p #{CREW_DEST_PREFIX}/usr/"
       system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
-      system "touch /usr/local/var/lib/dpkg/status"
+      system "touch #{CREW_DEST_PREFIX}/var/lib/dpkg/status"
     end
   end
 end
