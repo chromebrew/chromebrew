@@ -31,7 +31,7 @@ class Dpkg < Package
     puts "'sudo chromeos-firmwareupdate --mode=todev',"
     puts "followed by 'sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification',"
     puts "follow the instructions, and restart your Chromebook before installing packages."
-    puts "However, this isn't necessary if you aren't going to use dpkg -i."
+    puts "However, this isn't necessary if you aren't going to install any packages."
     system "echo >> /usr/local/var/lib/dpkg/status"
   end
 end
