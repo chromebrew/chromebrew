@@ -10,21 +10,17 @@ class Dpkg < Package
     depends_on 'icu4c' => :build
 
     def self.build
-	    system "ARCH = `uname -m`.strip"
-            system "ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end"          
-            system "CREW_LIB_PREFIX = /usr/local + '/' + ARCH_LIB"
-	    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
+    	    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
 	Dir.chdir ("dpkg")
 	    system "git checkout 1.19.0.5"
 	    system "autoreconf -i -f"
-	    system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=/usr/local"
+	    system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=#{CREW_PREFIX}"
 	    system "make"
 	end
 
 	def self.install
-	    system "make install DESTDIR=/usr/local/${ARCH_LIB}"
-	    system "ln -s /usr/ /usr/local/usr"
-	    system "mkdir -p /usr/local/var/lib/dpkg"
-	    system "touch /usr/local/var/lib/dpkg/status"
+	    system "make install DESTDIR=#{CREW_DEST_DIR}"
+	    system "mkdir -p /usr/local/usr/"
+	    system "ln -s /usr/local/ /usr/local/usr/local"
   end
 end
