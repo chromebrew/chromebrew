@@ -11,7 +11,7 @@ class Dpkg < Package
 
   def self.build
     system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
-    Dir.chdir ("dpkg")
+    Dir.chdir ("dpkg") do
       system "git checkout 1.19.0.5"
       system "autoreconf -i -f"
       system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=#{CREW_PREFIX}"
@@ -20,10 +20,11 @@ class Dpkg < Package
   end
 
   def self.install
-    Dir.chdir ("dpkg")
+    Dir.chdir ("dpkg") do
       system "make install DESTDIR=#{CREW_DEST_DIR}"
       system "mkdir -p #{CREW_DEST_PREFIX}/usr/"
       system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
+      system "touch /usr/local/var/lib/dpkg/status"
     end
   end
 end
