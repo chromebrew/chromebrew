@@ -10,17 +10,18 @@ class Dpkg < Package
     depends_on 'icu4c' => :build
 
     def self.build
-    	    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
-	Dir.chdir ("dpkg")
-	    system "git checkout 1.19.0.5"
-	    system "autoreconf -i -f"
-	    system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=#{CREW_PREFIX}"
-	    system "make"
-	end
+          system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
+  Dir.chdir ("dpkg")
+      system "git checkout 1.19.0.5"
+      system "autoreconf -i -f"
+      system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=#{CREW_PREFIX}"
+      system "make"
+  end
 
-	def self.install
-	    system "make install DESTDIR=#{CREW_DEST_DIR}"
-	    system "mkdir -p #{CREW_DEST_PREFIX}/usr/"
-	    system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
+  def self.install
+      Dir.chdir ("dpkg")
+      system "make install DESTDIR=#{CREW_DEST_DIR}"
+      system "mkdir -p #{CREW_DEST_PREFIX}/usr/"
+      system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
   end
 end
