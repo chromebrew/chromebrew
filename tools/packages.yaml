@@ -23,8 +23,16 @@ name: ag
 url: https://github.com/ggreer/the_silver_searcher/releases
 ---
 kind: url
+name: aide
+url: https://sourceforge.net/projects/aide/files/aide/
+---
+kind: url
 name: aircrack_ng
 url: http://download.aircrack-ng.org
+---
+kind: url
+name: alive
+url: https://ftpmirror.gnu.org/alive/
 ---
 kind: url
 name: alsa_lib
@@ -77,6 +85,10 @@ url: https://github.com/P-H-C/phc-winner-argon2/releases
 kind: url
 name: aria2
 url: https://github.com/aria2/aria2/releases
+---
+kind: url
+name: armadillo
+url: https://sourceforge.net/projects/arma/files/
 ---
 kind: url
 name: ascii
@@ -159,6 +171,10 @@ name: aws_shell
 url: https://github.com/awslabs/aws-shell/releases
 ---
 kind: url
+name: axel
+url: https://github.com/axel-download-accelerator/axel/releases
+---
+kind: url
 name: az
 url: https://github.com/Azure/azure-cli/releases
 ---
@@ -177,6 +193,10 @@ url: https://github.com/scop/bash-completion/releases
 kind: url
 name: bashdb
 url: https://sourceforge.net/projects/bashdb/files/bashdb/
+---
+kind: url
+name: bats
+url: https://github.com/sstephenson/bats/releases
 ---
 kind: url
 name: bc
@@ -279,8 +299,16 @@ name: cdrkit
 url: https://sourceforge.net/projects/wodim/files/cdrkit/
 ---
 kind: url
+name: cf
+url: https://github.com/cloudfoundry/cli/releases
+---
+kind: url
 name: cgroupfs_mount
 url: https://github.com/tianon/cgroupfs-mount/releases
+---
+kind: url
+name: charm
+url: https://sourceforge.net/projects/ljcharm/files/charm/
 ---
 kind: url
 name: chicken
@@ -301,18 +329,6 @@ url: https://github.com/postmodern/chruby/releases
 kind: url
 name: clamav
 url: https://www.clamav.net/downloads/
----
-kind: url
-name: clang
-url: https://releases.llvm.org/
----
-kind: url
-name: clang_libcpp
-url: https://releases.llvm.org/
----
-kind: url
-name: clang_openmp
-url: https://releases.llvm.org/
 ---
 kind: url
 name: clean
@@ -349,6 +365,10 @@ url: https://github.com/cmus/cmus/releases
 kind: url
 name: collectl
 url: https://sourceforge.net/projects/collectl/files/collectl/
+---
+kind: url
+name: colordiff
+url: https://www.colordiff.org/
 ---
 kind: url
 name: commacd
@@ -415,6 +435,10 @@ name: damageproto
 url: https://www.x.org/archive/individual/proto/
 ---
 kind: url
+name: daq
+url: https://www.snort.org/downloads/
+---
+kind: url
 name: darkhttpd
 url: https://unix4lyfe.org/darkhttpd
 ---
@@ -429,6 +453,18 @@ url: https://ftpmirror.gnu.org/datamash
 kind: url
 name: dbus
 url: https://dbus.freedesktop.org/releases/dbus
+---
+kind: url
+name: dconf
+url: https://download.gnome.org/sources/dconf/
+---
+kind: url
+name: dehtml
+url: http://www.moria.de/~michael/dehtml/
+---
+kind: url
+name: dejagnu
+url: https://ftpmirror.gnu.org/dejagnu/
 ---
 kind: url
 name: detox
@@ -487,6 +523,10 @@ name: doxygen
 url: https://github.com/doxygen/doxygen/releases
 ---
 kind: url
+name: dpkg
+url: https://salsa.debian.org/dpkg-team/dpkg/branches
+---
+kind: url
 name: dropbox
 url: https://www.dropbox.com/
 ---
@@ -513,6 +553,10 @@ url: https://code.launchpad.net/duplicity/
 kind: url
 name: ed
 url: http://ftpmirror.gnu.org/ed
+---
+kind: url
+name: elfutils
+url: https://sourceware.org/elfutils/ftp/
 ---
 kind: url
 name: elinks
@@ -655,6 +699,10 @@ name: gb
 url: https://github.com/constabulary/gb/releases
 ---
 kind: url
+name: gcc
+url: https://github.com/gcc-mirror/gcc/releases
+---
+kind: url
 name: gdal
 url: http://download.osgeo.org/gdal
 ---
@@ -727,6 +775,10 @@ name: glib
 url: https://ftp.gnome.org/pub/gnome/sources/glib
 ---
 kind: url
+name: glibc
+url: https://sourceware.org/glibc/wiki/Glibc%20Timeline
+---
+kind: url
 name: glibmm
 url: https://ftp.gnome.org/pub/gnome/sources/glibmm/
 ---
@@ -735,12 +787,20 @@ name: glide
 url: https://github.com/Masterminds/glide/releases
 ---
 kind: url
+name: glog
+url: https://github.com/google/glog/releases
+---
+kind: url
 name: gmp
 url: https://gmplib.org/#DOWNLOAD
 ---
 kind: url
 name: gnome_common
 url: https://github.com/GNOME/gnome-common/releases/
+---
+kind: url
+name: gnome_docking_library
+url: https://github.com/GNOME/gdl/releases
 ---
 kind: url
 name: gnome_themes_standard
@@ -1035,6 +1095,10 @@ name: kotlin
 url: https://github.com/JetBrains/kotlin/releases
 ---
 kind: url
+name: kr
+url: https://github.com/kryptco/kr/releases
+---
+kind: url
 name: krb5
 url: http://web.mit.edu/kerberos/dist/krb5
 ---
@@ -1127,6 +1191,10 @@ name: libdmx
 url: https://www.x.org/archive/individual/lib/
 ---
 kind: url
+name: libdnet
+url: https://github.com/dugsong/libdnet/releases
+---
+kind: url
 name: libdrm
 url: https://dri.freedesktop.org/libdrm
 ---
@@ -1199,6 +1267,10 @@ name: libjpeg
 url: http://www.ijg.org/files
 ---
 kind: url
+name: libjpeg_turbo
+url: https://sourceforge.net/projects/libjpeg-turbo/files/
+---
+kind: url
 name: libksba
 url: https://www.gnupg.org/ftp/gcrypt/libksba
 ---
@@ -1267,6 +1339,10 @@ name: libprelude
 url: https://www.prelude-siem.org/projects/prelude/files
 ---
 kind: url
+name: libproxy
+url: https://github.com/libproxy/libproxy/releases
+---
+kind: url
 name: libpstat
 url: https://github.com/jcnelson/libpstat/releases
 ---
@@ -1309,6 +1385,10 @@ url: https://www.x.org/archive/individual/lib/
 kind: url
 name: libsndfile
 url: http://www.mega-nerd.com/libsndfile/files
+---
+kind: url
+name: libsodium
+url: https://github.com/jedisct1/libsodium/releases
 ---
 kind: url
 name: libsoxr
@@ -1471,18 +1551,6 @@ name: llvm
 url: https://releases.llvm.org/
 ---
 kind: url
-name: llvm_compiler_rt
-url: https://releases.llvm.org/
----
-kind: url
-name: llvm_polly
-url: https://releases.llvm.org/
----
-kind: url
-name: llvm_unwind
-url: https://releases.llvm.org/
----
-kind: url
 name: log4cplus
 url: https://sourceforge.net/projects/log4cplus/files/log4cplus-stable/
 ---
@@ -1493,6 +1561,10 @@ url: https://sourceforge.net/projects/lsb/files/lsb_release/
 kind: url
 name: lshw
 url: http://www.ezix.org/software/files
+---
+kind: url
+name: lsscsi
+url: https://github.com/hreinecke/lsscsi/releases
 ---
 kind: url
 name: lua
@@ -1763,6 +1835,10 @@ name: nmap
 url: https://nmap.org/dist
 ---
 kind: url
+name: nmon
+url: https://sourceforge.net/projects/nmon/files/
+---
+kind: url
 name: nodebrew
 url: https://github.com/hokaccha/nodebrew/releases
 ---
@@ -1797,6 +1873,10 @@ url: https://github.com/CoolerVoid/0d1n/releases
 kind: url
 name: ondir
 url: https://swapoff.org/files/ondir/
+---
+kind: url
+name: openblas
+url: https://github.com/xianyi/OpenBLAS/releases
 ---
 kind: url
 name: openconnect
@@ -1959,6 +2039,10 @@ name: pexec
 url: https://ftp.gnu.org/gnu/pexec
 ---
 kind: url
+name: phive
+url: https://github.com/phar-io/phive/releases
+---
+kind: url
 name: php
 url: https://php.net/distributions
 ---
@@ -2083,6 +2167,14 @@ name: r
 url: https://cran.r-project.org/src/base
 ---
 kind: url
+name: rack
+url: https://github.com/rackspace/rack/releases
+---
+kind: url
+name: radare2
+url: https://github.com/radare/radare2/releases
+---
+kind: url
 name: ranger
 url: https://github.com/ranger/ranger/releases
 ---
@@ -2097,6 +2189,10 @@ url: http://download.redis.io/releases
 kind: url
 name: recode
 url: https://github.com/pinard/Recode/releases
+---
+kind: url
+name: regex_opt
+url: https://bisqwit.iki.fi/source/regexopt.html#download
 ---
 kind: url
 name: renameutils
@@ -2171,6 +2267,10 @@ name: sejda_console
 url: https://github.com/torakiki/sejda/releases
 ---
 kind: url
+name: selenium_server_standalone
+url: https://github.com/SeleniumHQ/selenium/releases
+---
+kind: url
 name: serf
 url: https://www.apache.org/dist/serf
 ---
@@ -2227,8 +2327,16 @@ name: snooze
 url: https://github.com/chneukirchen/snooze/releases
 ---
 kind: url
+name: snort
+url: https://www.snort.org/downloads/
+---
+kind: url
 name: socat
 url: http://www.dest-unreach.org/socat/download
+---
+kind: url
+name: speedtest
+url: https://github.com/sivel/speedtest-cli/releases
 ---
 kind: url
 name: speex
@@ -2249,6 +2357,10 @@ url: https://sourceforge.net/projects/squashfs/files/squashfs/
 kind: url
 name: sshfs
 url: https://github.com/libfuse/sshfs/releases
+---
+kind: url
+name: sshrc
+url: https://github.com/Russell91/sshrc/releases
 ---
 kind: url
 name: sshuttle
@@ -2295,6 +2407,10 @@ name: sysstat
 url: https://github.com/sysstat/sysstat/releases
 ---
 kind: url
+name: tack
+url: https://ftpmirror.gnu.org/ncurses/
+---
+kind: url
 name: tcl
 url: https://sourceforge.net/projects/tcl/files/Tcl/
 ---
@@ -2325,6 +2441,14 @@ url: http://ftpmirror.gnu.org/texinfo
 kind: url
 name: texlive
 url: ftp://tug.org/historic/systems/texlive/
+---
+kind: url
+name: thefuck
+url: https://github.com/nvbn/thefuck/releases
+---
+kind: url
+name: tidy
+url: https://github.com/htacg/tidy-html5/releases
 ---
 kind: url
 name: tig
@@ -2413,6 +2537,10 @@ url: https://www.kernel.org/pub/linux/utils/util-linux
 kind: url
 name: util_macros
 url: https://www.x.org/pub/individual/util/
+---
+kind: url
+name: uwsgi
+url: https://github.com/unbit/uwsgi/releases
 ---
 kind: url
 name: vagrant
@@ -2561,6 +2689,10 @@ url: https://github.com/GNOME/yelp-tools/releases
 kind: url
 name: yelp_xsl
 url: https://github.com/GNOME/yelp-xsl/releases
+---
+kind: url
+name: youtubedl
+url: https://github.com/rg3/youtube-dl/releases
 ---
 kind: url
 name: zeromq
