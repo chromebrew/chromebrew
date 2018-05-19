@@ -47,6 +47,9 @@ class Dpkg < Package
       system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
       system "mkdir -p #{CREW_DEST_PREFIX}/var/lib/dpkg/"
       system "touch #{CREW_DEST_PREFIX}/var/lib/dpkg/status"
+      system "mkdir -p #{CREW_DEST_PREFIX}/lib/perl5/site_perl/"
+      system "ln -s #{CREW_PREFIX}/Dpkg.pm #{CREW_DEST_PREFIX}/lib/perl5/site_perl/"
+      system "ln -s #{CREW_PREFIX}/Dpkg/ #{CREW_DEST_PREFIX}/lib/perl5/site_perl/"
     end
     Dir.chdir ("#{CREW_DEST_PREFIX}/bin") do
       system 'mv dpkg dpkg-run'
