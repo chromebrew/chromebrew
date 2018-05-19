@@ -3,22 +3,9 @@ require 'package'
 class Dpkg < Package
   description 'A medium-level package manager for Debian'
   homepage 'https://anonscm.debian.org/git/dpkg/'
-  version '1.19.0.5'
+  version '1.19.0.5-1'
   source_url 'https://salsa.debian.org/dpkg-team/dpkg/-/archive/1.19.0.5/dpkg-1.19.0.5.tar.gz'
   source_sha256 'd38308afcd5d7896bbd1f946875b90f9d8510a8a96b44e4f14e781285e5d9641'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'd947f4af5584d878462fdb0b7fce220ae3b1f15a6140ec2ed3cf447f8ea80fbb',
-     armv7l: 'd947f4af5584d878462fdb0b7fce220ae3b1f15a6140ec2ed3cf447f8ea80fbb',
-       i686: '19f40a5186dccbe3a135defe6440b2b5c4f0c05d5b4878046e8fb23b330978d5',
-     x86_64: '2075f9d91e997890c2906e0b1c53e705bfd97b99b14de4fd5e1cb9ca3a67b038',
-  })
 
   depends_on 'bz2'
   depends_on 'xzutils'
@@ -47,6 +34,9 @@ class Dpkg < Package
       system "ln -s #{CREW_PREFIX} #{CREW_DEST_PREFIX}/usr/local"
       system "mkdir -p #{CREW_DEST_PREFIX}/var/lib/dpkg/"
       system "touch #{CREW_DEST_PREFIX}/var/lib/dpkg/status"
+      system "mkdir -p #{CREW_DEST_PREFIX}/lib/perl5/site_perl/"
+      system "ln -s #{CREW_PREFIX}/Dpkg.pm #{CREW_DEST_PREFIX}/lib/perl5/site_perl/"
+      system "ln -s #{CREW_PREFIX}/Dpkg/ #{CREW_DEST_PREFIX}/lib/perl5/site_perl/"
     end
     Dir.chdir ("#{CREW_DEST_PREFIX}/bin") do
       system 'mv dpkg dpkg-run'
