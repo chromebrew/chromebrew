@@ -11,7 +11,7 @@ class Fakeroot < Package
   
   def self.build
     system "./bootstrap"
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_DIR}"
+    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
