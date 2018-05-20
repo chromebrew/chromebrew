@@ -3,7 +3,7 @@ require 'package'
 class Xsltproc < Package
   description 'The XSLT C library for GNOME'
   homepage 'http://xmlsoft.org/XSLT/xsltproc2.html'
-  version '0.52'
+  version '1.1.33-rc1'
   source_url 'https://git.gnome.org/browse/libxslt/snapshot/libxslt-1.1.33-rc1.tar.xz'
   source_sha256 '5e257266ba8472c5c319aff87d54140edb950972805cbf5bcf45c4a040c16506'
 
