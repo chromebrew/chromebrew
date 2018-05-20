@@ -1,6 +1,6 @@
 require 'package'
 
-class Perl_unicode_linebreak < Package
+class Perl_gcstring_linebreak < Package
   description 'UAX 14 Unicode Line Breaking Algorithm - Perl binding Unicode::LineBreak Unicode::GCString'
   homepage 'http://search.cpan.org/~nezumi/Unicode-LineBreak-2018.003/lib/Unicode/LineBreak.pod'
   version '2018.003'
@@ -16,6 +16,6 @@ class Perl_unicode_linebreak < Package
   end
 
   def self.install
-    system "make", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
