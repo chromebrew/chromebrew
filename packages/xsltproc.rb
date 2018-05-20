@@ -8,7 +8,7 @@ class Xsltproc < Package
   source_sha256 '5e257266ba8472c5c319aff87d54140edb950972805cbf5bcf45c4a040c16506'
 
   def self.build
-    system "./autogen.sh", "--prefix=#{CREW_PREFIX}" "--libdir=#{CREW_LIB_PREFIX}"
+    system "./autogen.sh", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
