@@ -17,8 +17,8 @@ class Perl_read_key < Package
   end
 
   def self.postinstall
-    puts "Please install perl_read_key_pm after installing this package,"
-    puts "This just fills in dependencies so it can compile correctly."
-    puts "If you are currently installing perl_read_key_pm, you are OK."
+    puts "Please install perl_read_key_pm after installing this package,".lightblue
+    puts "This just fills in dependencies so it can compile correctly.".lightblue
+    puts "If you are currently installing perl_read_key_pm, you are OK.".lightblue
   end
 end
