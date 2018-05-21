@@ -9,6 +9,7 @@ class Dpkg < Package
 
   depends_on 'bz2'
   depends_on 'xzutils'
+  depends_on 'icu4c' => :build
 
   def self.build
     system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
