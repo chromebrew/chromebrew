@@ -10,18 +10,7 @@ class Perl_read_key < Package
   def self.build
     system "perl", "Makefile.PL"
     system "make"
-    system "make", "DESTDIR=#{CREW_PREFIX}", "install"
-    system "make", "clean"
-    system "perl", "ReadKey_pm.PL"
-    system "perl", "Makefile.PL"
-    system "make"
-    system "make", "uninstall"
   end
-
-  def self.check
-    system "make", "test"
-  end
-    
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
