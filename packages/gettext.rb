@@ -23,7 +23,6 @@ class Gettext < Package
   depends_on 'diffutils' => :build
   depends_on 'ncurses'
   depends_on 'libxml2'
-  depends_on 'icu4c'
 
   def self.build
     system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--enable-shared", "--disable-static", "--with-pic"
