@@ -13,8 +13,10 @@ class Po4a < Package
   depends_on 'perl_text_wrapi18n' => :build
   depends_on 'perl_read_key' => :build
   depends_on 'perl_gcstring_linebreak' => :build
+  depends_on 'xsltproc' => :build
 
   def self.build
+    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Build.PL"
     system "perl", "Build.PL"
     system "perl", "Build"
     system "perl", "Build.PL"
