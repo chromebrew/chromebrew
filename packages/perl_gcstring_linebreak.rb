@@ -16,6 +16,8 @@ class Perl_gcstring_linebreak < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    Dir.chdir ("Unicode-LineBreak") do
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    end
   end
 end
