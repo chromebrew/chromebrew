@@ -19,6 +19,7 @@ class Perl_read_key_pm < Package
 
   def self.check
     system "make", "test"
+  end
     
 
   def self.install
