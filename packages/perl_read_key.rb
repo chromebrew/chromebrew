@@ -1,6 +1,6 @@
 require 'package'
 
-class Perl_read_key_pm < Package
+class Perl_read_key < Package
   description 'Character mode terminal access for Perl Term::ReadKey'
   homepage 'https://metacpan.org/source/JSTOWE/TermReadKey-2.37/'
   version '2.37'
