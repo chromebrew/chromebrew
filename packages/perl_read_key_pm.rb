@@ -8,13 +8,13 @@ class Perl_read_key_pm < Package
   source_sha256 '0fa4fb2f8145e3fb2c2129ad28d55be175abcc258f239ba8ddc2cd83790aa8fb'
 
   def self.build
-    system "crew", "install", "perl_read_key"
+    system "crew", "install", "perl_read_key", "|", "yes"
     system "perl", "Makefile.PL"
     system "make", "uninstall"
     system "perl", "ReadKey_pm.PL"
     system "perl", "Makefile.PL"
     system "make"
-    system "crew", "remove", "perl_read_key"
+    system "crew", "remove", "perl_read_key", "|", "yes"
   end
 
   def self.check
