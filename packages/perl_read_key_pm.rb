@@ -17,6 +17,10 @@ class Perl_read_key_pm < Package
     system "crew", "remove", "perl_read_key"
   end
 
+  def self.check
+    system "make", "test"
+    
+
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
