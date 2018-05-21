@@ -17,10 +17,8 @@ class Po4a < Package
 
   def self.build
     system "perl", "Build.PL"
-    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Build"
-    system "perl", "Build"
+    system "perl", "Build",  "distmeta"
     system "perl", "Build.PL"
-    system "sed -i \"s,/usr/bin,#{CREW_PREFIX}/bin,g\" Build"
     system "perl", "Build"
   end
 
