@@ -16,10 +16,11 @@ class Po4a < Package
   depends_on 'xsltproc' => :build
 
   def self.build
-    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Build.PL"
     system "perl", "Build.PL"
+    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Build"
     system "perl", "Build"
     system "perl", "Build.PL"
+    system "sed -i \"s,/usr/bin,#{CREW_PREFIX}/bin,g\" Build"
     system "perl", "Build"
   end
 
