@@ -14,6 +14,6 @@ class Perl_read_key < Package
   end
 
   def self.install
-    system "make", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
