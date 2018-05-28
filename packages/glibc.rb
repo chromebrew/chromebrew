@@ -7,14 +7,13 @@ class Glibc < Package
 
   is_fake
 
-    if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
+  if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
       conflict_solve = "`crew remove glibc219`"
   else
       depends_on 'glibc223'
   end
-    if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
+  if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
       conflict_solve = "`crew remove glibc223`"
-    end
   else
     depends_on 'glibc223'
   end
