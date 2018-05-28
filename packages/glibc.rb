@@ -12,9 +12,6 @@ class Glibc < Package
   else
       depends_on 'glibc223'
   end
-  if (File.exist? "/lib/libc-2.27.so") || (File.exist? "/lib64/libc-2.27.so")
-    depends_on 'glibc227'
-    # Check previous version
     if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
       conflict_solve = "`crew remove glibc223`"
     end
