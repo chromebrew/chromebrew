@@ -122,7 +122,7 @@ class Glibc227 < Package
       system "localedef --prefix=#{CREW_DEST_DIR} -i zh_CN -f GB18030 zh_CN.GB18030"
     end
     
-  end
+#  end
   
   def self.check
     Dir.chdir "glibc_build" do
