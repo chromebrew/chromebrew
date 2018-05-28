@@ -7,7 +7,8 @@ class Glibc227 < Package
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
   source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
-#  depends_on 'libselinux' => :build
+  depends_on 'make' => :build
+  depends_on 'libselinux' => :build
   depends_on 'libgd' => :build
   depends_on 'texinfo' => :build
 
