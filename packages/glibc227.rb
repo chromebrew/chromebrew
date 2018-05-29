@@ -7,10 +7,13 @@ class Glibc227 < Package
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
   source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
+  depends_on 'glibc_headers' => :build
+  depends_on 'python3' => :build
   depends_on 'libselinux' => :build
   depends_on 'libgd' => :build
   depends_on 'texinfo' => :build
   depends_on 'libcap' => :build
+  
 
   def self.patch
     # Apply patch due to new version of binutils  which causes compilation failure
@@ -22,6 +25,7 @@ class Glibc227 < Package
         system "sed -i 's,char \\*loc1,char \\*loc1 __attribute__ ((nocommon)),g' regexp.c"
         system "sed -i 's,char \\*loc2,char \\*loc2 __attribute__ ((nocommon)),g' regexp.c"
         system "sed -i 's,char \\*locs,char \\*locs __attribute__ ((nocommon)),g' regexp.c"
+        puts "Had to patch, continuing...".lightgreen
       end
     end
   end
@@ -35,7 +39,9 @@ class Glibc227 < Package
                "--prefix=#{CREW_PREFIX}",
                "--libdir=#{CREW_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
+               "--disable-sanity-check",
                "--enable-shared",
+               "--enable-kernel=3.18.0",
                "--enable-obsolete-rpc",
                "libc_cv_forced_unwind=yes"
       when 'x86_64'
@@ -46,6 +52,8 @@ class Glibc227 < Package
                "--libdir=#{CREW_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
                "--enable-shared",
+               "--enable-kernel=3.18.0",
+               "--disable-sanity-check",
                "--disable-multilib",
                "--enable-obsolete-rpc",
                "libc_cv_forced_unwind=yes",
@@ -57,13 +65,21 @@ class Glibc227 < Package
                "--libdir=#{CREW_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
                "--enable-shared",
+               "--enable-kernel=3.18.0",
                "--disable-multilib",
+               "--disable-sanity-check",
                "--enable-obsolete-rpc",
                "libc_cv_forced_unwind=yes",
                "libc_cv_ssp=no",
                "libc_cv_ssp_strong=no"
       end
       system "make"
+    end
+  end
+
+  def self.check
+    Dir.chdir "glibc_build" do
+      system "make -k -j#{CREW_NPROC} check"
     end
   end
 
@@ -74,54 +90,4 @@ class Glibc227 < Package
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "localedata/install-locales"  # This installs full locales, but it has large disk size.
     end
-      
-    # minimum set of locales -> /usr/local/lib(64)/locale/locale-archive
-#    Dir.chdir "glibc_build/localedata" do
-#      system "mkdir -pv #{CREW_DEST_LIB_PREFIX}/locale"
-#      puts "Install minimum set of locales".lightblue
-      
-      # Assume old version of glibc is installed. -> use localedef.
-      # If not installed, we can move following instruction to postinstall
-      # Since glibc is a basic package, we prefer to provide pre-compiled package.
-      # No compilcated detect logics required -> make it as simple as possible
-      system "localedef --prefix=#{CREW_DEST_DIR} -i cs_CZ -f UTF-8 cs_CZ.UTF-8"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i de_DE -f ISO-8859-1 de_DE"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i de_DE@euro -f ISO-8859-15 de_DE@euro"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i de_DE -f UTF-8 de_DE.UTF-8"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i en_GB -f UTF-8 en_GB.UTF-8"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i en_HK -f ISO-8859-1 en_HK"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i en_PH -f ISO-8859-1 en_PH"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i en_US -f ISO-8859-1 en_US"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i en_US -f UTF-8 en_US.UTF-8"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i es_MX -f ISO-8859-1 es_MX"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i fa_IR -f UTF-8 fa_IR"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i fr_FR -f ISO-8859-1 fr_FR"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i fr_FR@euro -f ISO-8859-15 fr_FR@euro"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i fr_FR -f UTF-8 fr_FR.UTF-8"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i it_IT -f ISO-8859-1 it_IT"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i it_IT -f UTF-8 it_IT.UTF-8"
-
-      system "localedef --prefix=#{CREW_DEST_DIR} -i ja_JP -f EUC-JP ja_JP"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i ru_RU -f KOI8-R ru_RU.KOI8-R"
-      system "localedef --prefix=#{CREW_DEST_DIR} -i ru_RU -f UTF-8 ru_RU.UTF-8"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i tr_TR -f UTF-8 tr_TR.UTF-8"
-      
-      system "localedef --prefix=#{CREW_DEST_DIR} -i zh_CN -f GB18030 zh_CN.GB18030"
-    end
-    
-#  end
-  
-  def self.check
-    Dir.chdir "glibc_build" do
-      system "make -k -j#{CREW_NPROC} check"
-    end
-  end
-  
 end

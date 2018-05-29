@@ -7,6 +7,8 @@ class Libsepol < Package
   source_url 'https://github.com/SELinuxProject/selinux/archive/libsepol-2.8.tar.gz'
   source_sha256 'de81b76118f958150b559b406caa36131a373921eb51c379a266747585744e48'
 
+  depends_on 'glibc_headers' => :build
+
   def self.build
     Dir.chdir ("libsepol") do
       system 'make'

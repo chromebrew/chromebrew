@@ -7,7 +7,8 @@ class Libselinux < Package
   source_url 'https://github.com/SELinuxProject/selinux/archive/libselinux-2.8.tar.gz'
   source_sha256 'b2b2efff29e457dc8ee6834e0df49571b54246d65ef21e88f8374abf7524598e'
 
-  depends_on 'libsepol' => :build
+  depends_on 'libsepol'
+#  depends_on 'glibc_headers'
 #  depends_on 'pcre' => :build
 
   def self.build
