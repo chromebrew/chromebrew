@@ -10,11 +10,6 @@ class Glibc < Package
   if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
       conflict_solve = "`crew remove glibc219`"
   else
-      depends_on 'glibc223'
-  end
-  if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
-      conflict_solve = "`crew remove glibc223`"
-  else
     depends_on 'glibc223'
   end
 
@@ -27,6 +22,11 @@ class Glibc < Package
       # Already installed old glibc, so need it once
       conflict_solve = "`crew remove glibc`"
     end
+  end
+
+  if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
+    # Already installed old glibc version 2.19, so need to remove
+    conflict_solve = "`crew remove glibc219`"
   end
 
   if conflict_solve
