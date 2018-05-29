@@ -3,29 +3,25 @@ require 'package'
 class Elinks < Package
   description 'Full-Featured Text WWW Browser'
   homepage 'http://elinks.or.cz/'
-  version 'f86be6597'
-
-  source_url 'https://gitlab.com/alanaktion/elinks-mirror/repository/f86be659718c0cd0a67f88b42f07044c23d0d028/archive.tar.gz'
-  source_sha256 'c19a342a5a6716b5213a4c539a149711491136d8b12daba7846bc2225c5fb309'
+  version '0.11.7'
+  source_url 'http://elinks.or.cz/download/elinks-0.11.7.tar.bz2'
+  source_sha256 '456db6f704c591b1298b0cd80105f459ff8a1fc07a0ec1156a36c4da6f898979'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-f86be6597-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-f86be6597-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-f86be6597-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-f86be6597-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-0.11.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-0.11.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-0.11.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/elinks-0.11.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd35ccb21f21db6479c457768465ff70bdd89a4bcbc593d9d07a6805e92c48130',
-     armv7l: 'd35ccb21f21db6479c457768465ff70bdd89a4bcbc593d9d07a6805e92c48130',
-       i686: '65e2c49a1f8ceb7e764d7ee845fd8d0b5ec46969fae8dfa9728127ae23e88fc5',
-     x86_64: '3686325a59d328fd02afa52b0bf07608fefe7c43cf12edafca24743093a0a535',
+    aarch64: '0d84da6aae40b4ac0df284338634493925ad37ff8a3e5017383de8a8ca8c8db8',
+     armv7l: '0d84da6aae40b4ac0df284338634493925ad37ff8a3e5017383de8a8ca8c8db8',
+       i686: 'cffbb308ddf6d25d74d94d3f17e790b1f0d90ef9e6fea933180c50ef35006152',
+     x86_64: '6473794b1cad1f09965ae540adf4f8fe0e8bb9a957d9d37477ff06e6f99095d0',
   })
 
-  depends_on 'automake' => :build
   depends_on 'bz2'
   depends_on 'lzip'
-  depends_on 'openssl'
-  depends_on 'zlibpkg'
 
   def self.build
     system "sh autogen.sh"

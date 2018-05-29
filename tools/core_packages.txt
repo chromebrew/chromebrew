@@ -7,14 +7,15 @@ cmake
 diffutils
 expat
 flex
-gcc
 gawk
+gcc7
 gettext
 git
 glibc
 glibc223
 gmp
 gnutls
+icu4c
 intltool
 isl
 less
@@ -25,7 +26,6 @@ libtasn1
 libtool
 libunbound
 libunistring
-libuv
 libxml2
 linuxheaders
 m4
@@ -34,7 +34,6 @@ most
 mpc
 mpfr
 ncurses
-ncursesw
 nettle
 openssl
 p11kit

@@ -3,33 +3,36 @@ require 'package'
 class Zlibpkg < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'http://www.zlib.net/'
-  version '1.2.11-1'
+  version '1.2.11-2'
   source_url 'http://www.zlib.net/zlib-1.2.11.tar.gz'
   source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-1-chromeos-x86_64.tar.xz',
+  binary_url ({	
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-2-chromeos-armv7l.tar.xz',	
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-2-chromeos-armv7l.tar.xz',	
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-2-chromeos-i686.tar.xz',	
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zlibpkg-1.2.11-2-chromeos-x86_64.tar.xz',	
+  })	
+  binary_sha256 ({	
+    aarch64: '05c91e73a746eb34abebaf8ca8d22732d67465299aa5c3127fb74916e15d6323',	
+     armv7l: '05c91e73a746eb34abebaf8ca8d22732d67465299aa5c3127fb74916e15d6323',	
+       i686: '0302d82be0083ab3034909c0111ccddf8d94e83bf0a6218523d49d502876796b',	
+     x86_64: '79e08846bb5d73f07cfe0a515cf46a060c2f96ad95651e7d2e5bced93f52ade4',	
   })
-  binary_sha256 ({
-    aarch64: 'b9fea1db11323af7101be1a5abbbad91e4f7ac8b90c2faa663d51ded9fd189f5',
-     armv7l: 'b9fea1db11323af7101be1a5abbbad91e4f7ac8b90c2faa663d51ded9fd189f5',
-       i686: '88fd4195cdb279dd7e4ef5c88a934b9e466710325142eb6f1b7f55b06ce32ff9',
-     x86_64: '451f231b181b174cfe1638d4319258b526cccf58d0b1622a8b4d55600bc67b82',
-  })
-
+  
+  
   def self.build
-    system "./configure", "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}"
+    system 'make'
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
     # remove static library since there is no configuration option to not create it.
-    system "rm", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libz.a"
+    system "rm", "#{CREW_DEST_LIB_PREFIX}/libz.a"
   end
 
   def self.check
