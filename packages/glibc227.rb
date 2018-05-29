@@ -1,7 +1,7 @@
 require 'package'
 
 class Glibc227 < Package
-  description 'GNU C Library'
+  description 'GNU C Library version 2.27'
   homepage 'https://www.gnu.org/software/libc/'
   version '2.27'
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
