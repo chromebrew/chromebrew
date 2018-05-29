@@ -90,4 +90,5 @@ class Glibc227 < Package
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "localedata/install-locales"  # This installs full locales, but it has large disk size.
     end
+  end
 end
