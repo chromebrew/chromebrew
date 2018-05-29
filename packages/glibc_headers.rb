@@ -54,6 +54,8 @@ class Glibc_headers < Package
   end
 
   def self.install
+    Dir.chdir "glibc_build" do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "headers_install", "INSTALL_HDR_PATH=#{CREW_PREFIX}"
+    end
   end
 end
