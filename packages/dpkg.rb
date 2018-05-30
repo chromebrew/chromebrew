@@ -3,22 +3,9 @@ require 'package'
 class Dpkg < Package
   description 'A medium-level package manager for Debian'
   homepage 'https://anonscm.debian.org/git/dpkg/'
-  version '1.19.0.5-1'
+  version '1.19.0.5-2'
   source_url 'https://salsa.debian.org/dpkg-team/dpkg/-/archive/1.19.0.5/dpkg-1.19.0.5.tar.gz'
   source_sha256 'd38308afcd5d7896bbd1f946875b90f9d8510a8a96b44e4f14e781285e5d9641'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.0.5-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'ec2d481788b7ccc43edbc56a62b999fffafa720e30ff90ddc84e5678a1e947d5',
-     armv7l: 'ec2d481788b7ccc43edbc56a62b999fffafa720e30ff90ddc84e5678a1e947d5',
-       i686: '1eb3da48f913f05718c2e35beea9aa7d147a0fbd09888226afd06a48b0b665df',
-     x86_64: '1ba5f80a00c05273cd2a0dcb7bfc789e5f7cc741d5dca65487a33312c35114a2',
-  })
 
   depends_on 'bz2'
   depends_on 'xzutils'
@@ -53,8 +40,12 @@ class Dpkg < Package
     Dir.chdir ("#{CREW_DEST_PREFIX}/bin") do
       system 'mv dpkg dpkg-run'
       system "echo '#!/bin/bash' > dpkg"
-      system "echo 'dpkg-run --force-depends --root=#{CREW_PREFIX} \"$@\"' >> dpkg"
+      system "echo 'dpkg-run --force-not-root --force-depends --root=#{CREW_PREFIX} \"$@\"' >> dpkg"
       system 'chmod a+x dpkg'
+    end
+    Dir.chdir ("#{CREW_DEST_PREFIX}") do
+      # This will make dpkg run without root
+      system "sudo", "chown", "-R", "#{USER}:#{USER}", "./var/lib/dpkg"
     end
   end
 
