@@ -1,6 +1,6 @@
 require 'package'
 
-class Uclibc-ng < Package
+class Uclibc_ng < Package
   description 'uClibc-ng is a small C library for developing embedded Linux systems. \nIt is much smaller than the GNU C Library,\n but nearly all applications supported by glibc also work perfectly with uClibc-ng'
   homepage 'https://uclibc-ng.org/'
   version '1.0.30'
