@@ -13,7 +13,7 @@ class Glibc227 < Package
   depends_on 'libgd' => :build
   depends_on 'texinfo' => :build
   depends_on 'libcap' => :build
-  
+  depends_on 'dpkg' => :build
 
   def self.patch
     # Apply patch due to new version of binutils  which causes compilation failure
@@ -76,6 +76,18 @@ class Glibc227 < Package
                "libc_cv_ssp=no",
                "libc_cv_ssp_strong=no"
       end
+      system "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:/usr/local/usr/lib\""
+        case ARCH
+        when 'armv7l', 'aarch64'
+          system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_armhf.deb"
+          system "dpkg", "--force-no-root", "-i", "libc6-dev_2.24-11+deb9u3_armhf.deb"
+        when 'i686'
+          system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_i386.deb"
+          system "dpkg", "--force-no-root", "-i", "libc6-dev_2.24-11+deb9u3_i386.deb"
+        when 'x86_64'
+          system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_amd64.deb"
+          system "dpkg", "--force-no-root", "-i", "libc6-dev_2.24-11+deb9u3_amd64.deb"
+        end
       system "make"
     end
   end
