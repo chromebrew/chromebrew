@@ -80,13 +80,13 @@ class Glibc227 < Package
         case ARCH
         when 'armv7l', 'aarch64'
           system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_armhf.deb"
-          system "dpkg", "--force-no-root", "-i", "libc6-dev_2.24-11+deb9u3_armhf.deb"
+          system "dpkg", "--force-not-root", "-i", "libc6-dev_2.24-11+deb9u3_armhf.deb"
         when 'i686'
           system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_i386.deb"
-          system "dpkg", "--force-no-root", "-i", "libc6-dev_2.24-11+deb9u3_i386.deb"
+          system "dpkg", "--force-not-root", "-i", "libc6-dev_2.24-11+deb9u3_i386.deb"
         when 'x86_64'
           system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_amd64.deb"
-          system "dpkg", "--force-no-root", "-i", "libc6-dev_2.24-11+deb9u3_amd64.deb"
+          system "dpkg", "--force-not-root", "-i", "libc6-dev_2.24-11+deb9u3_amd64.deb"
         end
       system "make"
     end
