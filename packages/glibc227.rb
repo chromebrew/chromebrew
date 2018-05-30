@@ -13,8 +13,7 @@ class Glibc227 < Package
   depends_on 'libgd' => :build
   depends_on 'texinfo' => :build
   depends_on 'libcap' => :build
-  depends_on 'uclibc-ng' => :build
-
+  
   def self.patch
     # Apply patch due to new version of binutils  which causes compilation failure
     # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
