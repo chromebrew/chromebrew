@@ -23,8 +23,6 @@ class Glibc < Package
   if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
     # Already installed old glibc version 2.23, so need to remove
     conflict_solve = "`crew remove glibc223`"
-  else
-    depends_on 'glibc227'
   end
 
   if conflict_solve
