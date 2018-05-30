@@ -18,10 +18,10 @@ class Glibc < Package
     end
   else
     case CHROMEOS_RELEASE
-    when '67', '68', '69'
-      depends_on 'glibc227'
-    else
+    when '66'
       depends_on 'glibc223'
+    else
+      depends_on 'glibc227'
     end
   end
 
