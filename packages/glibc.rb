@@ -17,7 +17,11 @@ class Glibc < Package
       conflict_solve = "`crew remove glibc`"
     end
   else
-    depends_on 'glibc227'
+    case CHROMEOS_RELEASE
+    when '67', '68', '69'
+      depends_on 'glibc227'
+    else
+      depends_on 'glibc223'
   end
 
   if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
