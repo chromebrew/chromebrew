@@ -3,21 +3,21 @@ require 'package'
 class Yarn < Package
   description 'Yarn is a new package manager for JavaScript and an alternative to npm.'
   homepage 'https://yarnpkg.com/en/'
-  version '1.6.0'
-  source_url 'https://github.com/yarnpkg/yarn/releases/download/v1.6.0/yarn-v1.6.0.tar.gz'
-  source_sha256 'a57b2fdb2bfeeb083d45a883bc29af94d5e83a21c25f3fc001c295938e988509'
+  version '1.7.0'
+  source_url 'https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-v1.7.0.tar.gz'
+  source_sha256 'e7720ee346b2bd7ec32b7e04517643c38648f5022c7981168321ba1636f2dca3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.6.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yarn-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3c85013806518b087950a93ff2b5bdbc986a79dd56f93063a24eff1d785657f7',
-     armv7l: '3c85013806518b087950a93ff2b5bdbc986a79dd56f93063a24eff1d785657f7',
-       i686: '53303cb77b189f5a166d2b3efaac3e840c89f61ea49bf9ab6fc3b7bf724c7bc1',
-     x86_64: 'db01d493bcc9277d259681806871eeb99161ce2857fb5843ab880d966cafd5fb',
+    aarch64: '8879fa67acbd62af27f111ca20f67a746823d21056cac78006675f22fb6f0764',
+     armv7l: '8879fa67acbd62af27f111ca20f67a746823d21056cac78006675f22fb6f0764',
+       i686: 'fa6eecd4b7fcd9445764e69d4a4ec968c6aecf59a2eee04104a1d181bc87101d',
+     x86_64: '2e61b0d2f3c83474e9c8dd7aa1738e6732a9db928164328fd4234908214e86fa',
   })
 
   node_version=`node -v 2> /dev/null`
