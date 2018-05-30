@@ -22,6 +22,7 @@ class Glibc < Package
       depends_on 'glibc227'
     else
       depends_on 'glibc223'
+    end
   end
 
   if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
