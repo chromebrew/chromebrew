@@ -55,7 +55,10 @@ class Glibc_headers < Package
 
   def self.install
     Dir.chdir "glibc_build" do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "headers_install", "INSTALL_HDR_PATH=#{CREW_PREFIX}"
+      system "cp", "./config.status", ".."
+      system "cp", "./config.make", ".."
+      system "sed", "-i", '42 s/^/#/', "../Makeconfig"
+      system "make", "-C..", "--file=Makerules", "DESTDIR=#{CREW_DEST_DIR}", "install-headers", "INSTALL_HDR_PATH=#{CREW_PREFIX}"
     end
   end
 end

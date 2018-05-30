@@ -7,26 +7,24 @@ class Glibc < Package
 
   is_fake
 
-  if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
-      conflict_solve = "`crew remove glibc219`"
-  else
-    depends_on 'glibc223'
-  end
-
   # Check old glibc
   if File.exist? CREW_CONFIG_PATH + "meta/glibc.filelist"
-    if File.exist? CREW_CONFIG_PATH + "meta/glibc227.filelist"
-      # Already installed old glibc and glibc227, so need to remove both once
-      conflict_solve = "`crew remove glibc227 glibc`"
+    if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
+      # Already installed old glibc and glibc219, so need to remove both once
+      conflict_solve = "`crew remove glibc219 glibc`"
     else
       # Already installed old glibc, so need it once
       conflict_solve = "`crew remove glibc`"
     end
+  else
+    depends_on 'glibc227'
   end
 
-  if File.exist? CREW_CONFIG_PATH + "meta/glibc219.filelist"
-    # Already installed old glibc version 2.19, so need to remove
-    conflict_solve = "`crew remove glibc219`"
+  if File.exist? CREW_CONFIG_PATH + "meta/glibc223.filelist"
+    # Already installed old glibc version 2.23, so need to remove
+    conflict_solve = "`crew remove glibc223`"
+  else
+    depends_on 'glibc227'
   end
 
   if conflict_solve
