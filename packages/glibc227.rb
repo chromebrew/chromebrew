@@ -88,7 +88,7 @@ class Glibc227 < Package
           system "dpkg", "--force-not-root", "-i", "libc6-dev_2.24-11+deb9u3_amd64.deb"
         end
         case ARCH
-        when 'i686
+        when 'i686'
           system "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:/usr/local/usr/lib/i386-linux-gnu\""
         else
           system "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:/usr/local/usr/lib/${ARCH}-linux-gnu\""
