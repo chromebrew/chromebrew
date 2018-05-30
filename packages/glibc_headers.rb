@@ -3,7 +3,7 @@ require 'package'
 class Glibc_headers < Package
   description 'GNU C Library Headers'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.27'
+  version '2.27-0'
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
   source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
@@ -51,6 +51,10 @@ class Glibc_headers < Package
                "libc_cv_ssp_strong=no"
       end
     end
+  end
+
+  def self.install
+    system "make", "startfiles"
   end
 
   def self.install
