@@ -54,10 +54,6 @@ class Glibc_headers < Package
   end
 
   def self.install
-    system "make", "startfiles"
-  end
-
-  def self.install
     Dir.chdir "glibc_build" do
       system "cp", "./config.status", ".."
       system "cp", "./config.make", ".."
