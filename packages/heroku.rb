@@ -25,4 +25,3 @@ class Heroku < Package
     system "ln -s #{CREW_PREFIX}/share/heroku/bin/run #{CREW_DEST_PREFIX}/bin/heroku"
   end
 end
-
