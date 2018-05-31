@@ -25,7 +25,6 @@ class Libc6 < Package
       system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_amd64.deb"
       system "dpkg-run", "-x", "libc6-dev_2.24-11+deb9u3_amd64.deb", "#{CREW_DEST_PREFIX}"
     end
-    system "mv", "#{CREW_DEST_PREFIX}/usr/lib/*/*", "#{CREW_DEST_PREFIX}/usr/lib"
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include", "#{CREW_DEST_PREFIX}"
       case ARCH
       when 'aarch64', 'x86_64'
