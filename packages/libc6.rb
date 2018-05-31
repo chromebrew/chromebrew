@@ -34,11 +34,11 @@ class Libc6 < Package
   def self.postinstall
     case ARCH
     when 'i686'
-      system "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/i386-linux-gnu\""
+      system "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/i386-linux-gnu"
     when 'armv7l'
-      system "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/arm-linux-gnueabihf\""
+      system "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/arm-linux-gnueabihf"
     else
-      system "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/#{ARCH}-linux-gnu\""
+      system "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/#{ARCH}-linux-gnu"
     end
   end
 end
