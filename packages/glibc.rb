@@ -17,8 +17,8 @@ class Glibc < Package
       conflict_solve = "`crew remove glibc`"
     end
   else
-    case CHROMEOS_RELEASE
-    when '66', '65'
+    case
+    when Integer(CHROMEOS_RELEASE) <= 66
       depends_on 'glibc223'
     else
       depends_on 'glibc227'

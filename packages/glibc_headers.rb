@@ -13,8 +13,8 @@ class Glibc_headers < Package
       case ARCH
       when 'armv7l' || 'aarch64'
         system "../configure",
-               "--prefix=#{CREW_PREFIX}",
-               "--libdir=#{CREW_LIB_PREFIX}",
+               "--prefix=#{CREW_DEST_PREFIX}",
+               "--libdir=#{CREW_DEST_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
                "--disable-sanity-checks",
                "--enable-shared",
@@ -22,11 +22,11 @@ class Glibc_headers < Package
                "--enable-obsolete-rpc",
                "libc_cv_forced_unwind=yes"
       when 'x86_64'
-        system "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
-        puts "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
+        system "echo \"slibdir=#{CREW_DEST_LIB_PREFIX}\" > configparms"
+        puts "echo \"slibdir=#{CREW_DEST_LIB_PREFIX}\" > configparms"
         system "../configure",
-               "--prefix=#{CREW_PREFIX}",
-               "--libdir=#{CREW_LIB_PREFIX}",
+               "--prefix=#{CREW_DEST_PREFIX}",
+               "--libdir=#{CREW_DEST_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
                "--enable-shared",
                "--enable-kernel=3.18.0",
@@ -38,8 +38,8 @@ class Glibc_headers < Package
                "libc_cv_ssp_strong=no"
       when 'i686'
         system "../configure",
-               "--prefix=#{CREW_PREFIX}",
-               "--libdir=#{CREW_LIB_PREFIX}",
+               "--prefix=#{CREW_DEST_PREFIX}",
+               "--libdir=#{CREW_DEST_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
                "--enable-shared",
                "--enable-kernel=3.18.0",
@@ -58,7 +58,7 @@ class Glibc_headers < Package
       system "cp", "./config.status", ".."
       system "cp", "./config.make", ".."
       system "sed", "-i", '42 s/^/#/', "../Makeconfig"
-      system "make", "-C..", "--file=Makerules", "DESTDIR=#{CREW_DEST_DIR}", "install-headers", "INSTALL_HDR_PATH=#{CREW_PREFIX}"
+      system "make", "-C..", "--file=Makerules", "install-headers"
     end
   end
 end
