@@ -3,32 +3,24 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.17.0'
-  source_url 'https://github.com/git/git/archive/v2.17.0.tar.gz'
-  source_sha256 '46f3a29c250313276ac747a3a221ca69dbc3218754f8db188841322cf7ab58d3'
+  version '2.17.1'
+  source_url 'https://github.com/git/git/archive/v2.17.1.tar.gz'
+  source_sha256 '690f12cc5691e5adaf2dd390eae6f5acce68ae0d9bd9403814f8a1433833f02a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.17.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2344502e10a3e8d9054e5769b9781640d455288914f517f9bc1e669050d13703',
-     armv7l: '2344502e10a3e8d9054e5769b9781640d455288914f517f9bc1e669050d13703',
-       i686: '127385a0b9d0f6e2f14b96cd649f38a3af18f02689685cd06b2eb8b35a6134df',
-     x86_64: 'fddf194fcafc443968343f19f20561b71faedf93e43b0db52c180144e4457145',
+    aarch64: 'd8f13dc48bae374a359de16f564357d2d7a350061734be7f6807ef2bf64a1ca2',
+     armv7l: 'd8f13dc48bae374a359de16f564357d2d7a350061734be7f6807ef2bf64a1ca2',
+       i686: '303eaede71c14030740054db083d0c182b923e22f12bb39101821b093eaacb0e',
+     x86_64: '797ed11ae67ffaf1ba0c5019d10270c0b6a880f40b8c89cb2da98c7fa17cae1d',
   })
 
-  # use system zlibpkg, openssl, curl, expat
-  depends_on 'autoconf' => :build
-  depends_on 'zlibpkg' => :build
-  depends_on 'libssh2'
-  depends_on 'openssl' => :build
   depends_on 'curl' => :build
-  depends_on 'expat' => :build
-  depends_on 'gettext' => :build
-  depends_on 'perl' => :build
   depends_on 'python27' => :build     # requires python2
 
   # need to build using single core
