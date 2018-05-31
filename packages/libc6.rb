@@ -25,6 +25,7 @@ class Libc6 < Package
       system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_amd64.deb"
       system "dpkg-run", "-x", "libc6-dev_2.24-11+deb9u3_amd64.deb", "#{CREW_DEST_PREFIX}"
     end
+    system "mv", "#{CREW_DEST_PREFIX}/usr/lib/*/*", "#{CREW_DEST_PREFIX}/usr/lib"
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include", "#{CREW_DEST_PREFIX}"
       case ARCH
       when 'aarch64', 'x86_64'
@@ -34,16 +35,5 @@ class Libc6 < Package
       end
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/share", "#{CREW_DEST_PREFIX}"
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
-  end
-
-  def self.postinstall
-    case ARCH
-    when 'i686'
-      system "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/i386-linux-gnu"
-    when 'armv7l'
-      system "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/arm-linux-gnueabihf"
-    else
-      system "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib64/#{ARCH}-linux-gnu"
-    end
   end
 end
