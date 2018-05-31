@@ -7,58 +7,9 @@ class Glibc_headers < Package
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
   source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
-  def self.build
-    system "mkdir -pv glibc_build"
-    Dir.chdir "glibc_build" do
-      case ARCH
-      when 'armv7l' || 'aarch64'
-        system "../configure",
-               "--prefix=#{CREW_DEST_PREFIX}",
-               "--libdir=#{CREW_DEST_LIB_PREFIX}",
-               "--with-headers=#{CREW_PREFIX}/include",
-               "--disable-sanity-checks",
-               "--enable-shared",
-               "--enable-kernel=3.18.0",
-               "--enable-obsolete-rpc",
-               "libc_cv_forced_unwind=yes"
-      when 'x86_64'
-        system "echo \"slibdir=#{CREW_DEST_LIB_PREFIX}\" > configparms"
-        puts "echo \"slibdir=#{CREW_DEST_LIB_PREFIX}\" > configparms"
-        system "../configure",
-               "--prefix=#{CREW_DEST_PREFIX}",
-               "--libdir=#{CREW_DEST_LIB_PREFIX}",
-               "--with-headers=#{CREW_PREFIX}/include",
-               "--enable-shared",
-               "--enable-kernel=3.18.0",
-               "--disable-sanity-checks",
-               "--disable-multilib",
-               "--enable-obsolete-rpc",
-               "libc_cv_forced_unwind=yes",
-               "libc_cv_ssp=no",
-               "libc_cv_ssp_strong=no"
-      when 'i686'
-        system "../configure",
-               "--prefix=#{CREW_DEST_PREFIX}",
-               "--libdir=#{CREW_DEST_LIB_PREFIX}",
-               "--with-headers=#{CREW_PREFIX}/include",
-               "--enable-shared",
-               "--enable-kernel=3.18.0",
-               "--disable-multilib",
-               "--disable-sanity-checks",
-               "--enable-obsolete-rpc",
-               "libc_cv_forced_unwind=yes",
-               "libc_cv_ssp=no",
-               "libc_cv_ssp_strong=no"
-      end
-    end
-  end
+  depends_on 'libc6'
 
   def self.install
-    Dir.chdir "glibc_build" do
-      system "cp", "./config.status", ".."
-      system "cp", "./config.make", ".."
-      system "sed", "-i", '42 s/^/#/', "../Makeconfig"
-      system "make", "-C..", "--file=Makerules", "install-headers"
-    end
+    system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
   end
 end
