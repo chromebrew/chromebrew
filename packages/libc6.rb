@@ -35,4 +35,17 @@ class Libc6 < Package
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/share", "#{CREW_DEST_PREFIX}"
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
   end
+
+  def self.postinstall
+    puts "Please execute".lightblue
+    case ARCH
+    when 'i686'
+      puts "echo 'export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/i386-linux-gnu\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+    when 'armv7l'
+      puts "echo 'export LD_LIBRARY_PATH=\\\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/arm-linux-gnueabihf\\\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+    else
+      puts "echo 'export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/#{ARCH}-linux-gnu\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+    end
+    puts "To add libc6 to your $LD_LIBRARY_PATH".lightblue
+  end
 end
