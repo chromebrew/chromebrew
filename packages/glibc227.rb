@@ -13,7 +13,6 @@ class Glibc227 < Package
   depends_on 'libgd' => :build
   depends_on 'texinfo' => :build
   depends_on 'libcap' => :build
-  depends_on 'libc6' => :build
   
   def self.patch
     # Apply patch due to new version of binutils  which causes compilation failure
