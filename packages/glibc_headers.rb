@@ -10,6 +10,7 @@ class Glibc_headers < Package
   depends_on 'libc6'
 
   def self.install
+    system "mkdir", "-p" "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
   end
 end
