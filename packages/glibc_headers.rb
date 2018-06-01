@@ -31,5 +31,6 @@ class Glibc_headers < Package
     system "cp", "-r", "string/endian.h", "#{CREW_DEST_PREFIX}/include/string/"
     system "cp", "-r", "string/bits", "#{CREW_DEST_PREFIX}/include/string/"
     system "cp", "-r", "locale/bits", "#{CREW_DEST_PREFIX}/include/locale/"
+    system "cp", "-r", "sysdeps/generic/string_private.h", "#{CREW_DEST_PREFIX}/include/"
   end
 end
