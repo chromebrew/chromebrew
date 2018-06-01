@@ -30,10 +30,13 @@ class Libc6 < Package
     case ARCH
     when 'i686'
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/i386-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/misc/"
+      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/i386-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
     when 'armv7l'
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/arm-linux-gnueabihf/sys", "#{CREW_DEST_PREFIX}/include/misc/"
+      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/arm-linux-gnueabihf/bits", "#{CREW_DEST_PREFIX}/include/"
     else
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/#{ARCH}-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/misc/"
+      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/#{ARCH}-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
     end
       case ARCH
       when 'aarch64', 'x86_64'
