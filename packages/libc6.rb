@@ -27,16 +27,20 @@ class Libc6 < Package
     end
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include", "#{CREW_DEST_PREFIX}"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/misc/"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/posix/"
     case ARCH
     when 'i686'
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/i386-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/misc/"
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/i386-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
+      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/i386-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/posix/"
     when 'armv7l'
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/arm-linux-gnueabihf/sys", "#{CREW_DEST_PREFIX}/include/misc/"
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/arm-linux-gnueabihf/bits", "#{CREW_DEST_PREFIX}/include/"
+      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/arm-linux-gnueabihf/sys", "#{CREW_DEST_PREFIX}/include/posix/"
     else
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/#{ARCH}-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/misc/"
       system "cp", "-r", "#{CREW_DEST_PREFIX}/include/#{ARCH}-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
+      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/#{ARCH}-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/posix/"
     end
       case ARCH
       when 'aarch64', 'x86_64'
