@@ -10,7 +10,6 @@ class Glibc_headers < Package
   depends_on 'libc6'
 
   def self.install
-    system "mkdir", "-p", "#{CREW_DEST_PREFIX}"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/stdlib"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/libio"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/posix"
@@ -19,5 +18,6 @@ class Glibc_headers < Package
     system "cp", "-r", "stdlib/errno.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
     system "cp", "-r", "libio/stdio.h", "#{CREW_DEST_PREFIX}/include/libio/"
     system "cp", "-r", "posix/bits", "#{CREW_DEST_PREFIX}/include/posix/"
+    system "cp", "-r", "libio/bits", "#{CREW_DEST_PREFIX}/include/libio/"
   end
 end
