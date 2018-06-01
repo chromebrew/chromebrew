@@ -16,6 +16,7 @@ class Glibc_headers < Package
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/wcsmbs"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/time"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/string"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/locale"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "bits", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "stdlib/errno.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
@@ -29,5 +30,6 @@ class Glibc_headers < Package
     system "cp", "-r", "time/time.h", "#{CREW_DEST_PREFIX}/include/time/"
     system "cp", "-r", "string/endian.h", "#{CREW_DEST_PREFIX}/include/string/"
     system "cp", "-r", "string/bits", "#{CREW_DEST_PREFIX}/include/string/"
+    system "cp", "-r", "locale/bits", "#{CREW_DEST_PREFIX}/include/locale/"
   end
 end
