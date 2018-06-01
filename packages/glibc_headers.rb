@@ -33,5 +33,6 @@ class Glibc_headers < Package
     system "cp", "-r", "locale/bits", "#{CREW_DEST_PREFIX}/include/locale/"
     system "cp", "-r", "sysdeps/generic/string_private.h", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "string/string.h", "#{CREW_DEST_PREFIX}/include/string/"
+    system "cp", "-r", "string/strings.h", "#{CREW_DEST_PREFIX}/include/string/"
   end
 end
