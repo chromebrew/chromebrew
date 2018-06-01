@@ -25,6 +25,7 @@ class Glibc_headers < Package
     system "cp", "-r", "libio/bits", "#{CREW_DEST_PREFIX}/include/libio/"
     system "cp", "-r", "wcsmbs/bits", "#{CREW_DEST_PREFIX}/include/wcsmbs/"
     system "cp", "-r", "posix/sys", "#{CREW_DEST_PREFIX}/include/posix/"
+    system "cp", "-r", "posix/unistd.h", "#{CREW_DEST_PREFIX}/include/posix/"
     system "cp", "-r", "time/bits", "#{CREW_DEST_PREFIX}/include/time/"
     system "cp", "-r", "time/sys", "#{CREW_DEST_PREFIX}/include/time/"
     system "cp", "-r", "time/time.h", "#{CREW_DEST_PREFIX}/include/time/"
