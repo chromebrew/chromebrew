@@ -13,11 +13,13 @@ class Glibc_headers < Package
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/stdlib"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/libio"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/posix"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/wcsmbs"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "bits", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "stdlib/errno.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
     system "cp", "-r", "libio/stdio.h", "#{CREW_DEST_PREFIX}/include/libio/"
     system "cp", "-r", "posix/bits", "#{CREW_DEST_PREFIX}/include/posix/"
     system "cp", "-r", "libio/bits", "#{CREW_DEST_PREFIX}/include/libio/"
+    system "cp", "-r", "wcsmbs/bits", "#{CREW_DEST_PREFIX}/include/wcsmbs/"
   end
 end
