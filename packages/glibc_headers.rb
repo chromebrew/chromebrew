@@ -11,7 +11,9 @@ class Glibc_headers < Package
 
   def self.install
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/stdlib"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "bits", "#{CREW_DEST_PREFIX}/include"
+    system "cp", "-r", "stdlib/errno.h", "#{CREW_DEST_PREFIX}/stdlib"
   end
 end
