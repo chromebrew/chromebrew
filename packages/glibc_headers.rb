@@ -21,5 +21,6 @@ class Glibc_headers < Package
     system "cp", "-r", "posix/bits", "#{CREW_DEST_PREFIX}/include/posix/"
     system "cp", "-r", "libio/bits", "#{CREW_DEST_PREFIX}/include/libio/"
     system "cp", "-r", "wcsmbs/bits", "#{CREW_DEST_PREFIX}/include/wcsmbs/"
+    system "cp", "-r", "posix/sys", "#{CREW_DEST_PREFIX}/include/posix/"
   end
 end
