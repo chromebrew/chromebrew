@@ -14,6 +14,7 @@ class Glibc_headers < Package
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/libio"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/posix"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/wcsmbs"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/time"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "bits", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "stdlib/errno.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
@@ -22,5 +23,7 @@ class Glibc_headers < Package
     system "cp", "-r", "libio/bits", "#{CREW_DEST_PREFIX}/include/libio/"
     system "cp", "-r", "wcsmbs/bits", "#{CREW_DEST_PREFIX}/include/wcsmbs/"
     system "cp", "-r", "posix/sys", "#{CREW_DEST_PREFIX}/include/posix/"
+    system "cp", "-r", "time/bits", "#{CREW_DEST_PREFIX}/include/time/"
+    system "cp", "-r", "time/sys", "#{CREW_DEST_PREFIX}/include/time/"
   end
 end
