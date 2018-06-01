@@ -27,5 +27,6 @@ class Glibc_headers < Package
     system "cp", "-r", "time/bits", "#{CREW_DEST_PREFIX}/include/time/"
     system "cp", "-r", "time/sys", "#{CREW_DEST_PREFIX}/include/time/"
     system "cp", "-r", "string/endian.h", "#{CREW_DEST_PREFIX}/include/string/"
+    system "cp", "-r", "string/bits", "#{CREW_DEST_PREFIX}/include/string/"
   end
 end
