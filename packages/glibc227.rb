@@ -41,7 +41,7 @@ class Glibc227 < Package
                "--disable-sanity-checks",
                "--disable-werror",
                "--enable-shared",
-               "--enable-kernel=3.18.0",
+               "--enable-kernel=3.8.0",
                "--enable-obsolete-rpc",
                "libc_cv_forced_unwind=yes"
       when 'x86_64'
@@ -52,7 +52,7 @@ class Glibc227 < Package
                "--libdir=#{CREW_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
                "--enable-shared",
-               "--enable-kernel=3.18.0",
+               "--enable-kernel=3.8.0",
                "--disable-sanity-checks",
                "--disable-multilib",
                "--disable-werror",
@@ -66,7 +66,7 @@ class Glibc227 < Package
                "--libdir=#{CREW_LIB_PREFIX}",
                "--with-headers=#{CREW_PREFIX}/include",
                "--enable-shared",
-               "--enable-kernel=3.18.0",
+               "--enable-kernel=3.8.0",
                "--disable-multilib",
                "--disable-sanity-checks",
                "--disable-werror",
