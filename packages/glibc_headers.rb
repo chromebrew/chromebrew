@@ -12,5 +12,6 @@ class Glibc_headers < Package
   def self.install
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
+    system "cp", "-r", "bits", "#{CREW_DEST_PREFIX}/include"
   end
 end
