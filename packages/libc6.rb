@@ -25,13 +25,19 @@ class Libc6 < Package
       system "wget", "-q", "http://ftp.debian.org/debian/pool/main/g/glibc/libc6-dev_2.24-11+deb9u3_amd64.deb"
       system "dpkg-run", "-x", "libc6-dev_2.24-11+deb9u3_amd64.deb", "#{CREW_DEST_PREFIX}"
     end
-    system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/bits", "#{CREW_DEST_PREFIX}/include/"
       case ARCH
       when 'aarch64', 'x86_64'
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/lib", "#{CREW_DEST_PREFIX}/lib64"
       else
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/lib", "#{CREW_DEST_PREFIX}"
       end
+      case ARCH
+      when 'i686'
+        system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/i386-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
+      when 'armv7l'
+        system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/arm-linux-gnueabihf/bits", "#{CREW_DEST_PREFIX}/include/"
+      else
+        system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/#{ARCH}-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
   end
 
