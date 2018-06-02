@@ -38,6 +38,7 @@ class Libc6 < Package
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/arm-linux-gnueabihf/bits", "#{CREW_DEST_PREFIX}/include/"
       else
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/#{ARCH}-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
+      end
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
   end
 
