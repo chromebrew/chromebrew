@@ -52,6 +52,6 @@ class Glibc_headers < Package
     system "cp", "-r", "stdlib/bits", "#{CREW_DEST_PREFIX}/include/stdlib/"
     system "cp", "-r", "stdlib/sys", "#{CREW_DEST_PREFIX}/include/stdlib/"
     system "cp", "-r", "stdlib/alloca.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
-    system "cp", "-r", "include/stackinfo.h", "#{CREW_DEST_PREFIX}/include/"
+    system "cp", "-r", "sysdeps/generic/stackinfo.h", "#{CREW_DEST_PREFIX}/include/"
   end
 end
