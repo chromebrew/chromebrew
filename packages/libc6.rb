@@ -45,6 +45,7 @@ class Libc6 < Package
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/lib", "#{CREW_DEST_PREFIX}"
       end
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/share", "#{CREW_DEST_PREFIX}"
+    system "cp", "-r", "#{CREW_DEST_PREFIX}/include/misc/sys/", "#{CREW_DEST_PREFIX}/include/"
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
   end
 
