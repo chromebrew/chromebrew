@@ -26,26 +26,13 @@ class Libc6 < Package
       system "dpkg-run", "-x", "libc6-dev_2.24-11+deb9u3_amd64.deb", "#{CREW_DEST_PREFIX}"
     end
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include", "#{CREW_DEST_PREFIX}"
-    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/misc/"
-    case ARCH
-    when 'i686'
-      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/i386-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/misc/"
-      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/i386-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
-    when 'armv7l'
-      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/arm-linux-gnueabihf/sys", "#{CREW_DEST_PREFIX}/include/misc/"
-      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/arm-linux-gnueabihf/bits", "#{CREW_DEST_PREFIX}/include/"
-    else
-      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/#{ARCH}-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/misc/"
-      system "cp", "-r", "#{CREW_DEST_PREFIX}/include/#{ARCH}-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
-    end
       case ARCH
       when 'aarch64', 'x86_64'
-        system "mv", "#{CREW_DEST_PREFIX}/usr/lib", "#{CREW_DEST_PREFIX}/lib64"
+        system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/lib", "#{CREW_DEST_PREFIX}/lib64"
       else
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/lib", "#{CREW_DEST_PREFIX}"
       end
     system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/share", "#{CREW_DEST_PREFIX}"
-    system "cp", "-r", "#{CREW_DEST_PREFIX}/include/misc/sys/", "#{CREW_DEST_PREFIX}/include/"
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
   end
 

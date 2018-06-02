@@ -9,7 +9,6 @@ class Glibc227 < Package
 
   depends_on 'glibc_headers' => :build
   depends_on 'python3' => :build
-  depends_on 'libselinux' => :build
   depends_on 'libgd' => :build
   depends_on 'texinfo' => :build
   depends_on 'libcap' => :build
