@@ -34,10 +34,13 @@ class Libc6 < Package
       case ARCH
       when 'i686'
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/i386-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
+        system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/i386-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/"
       when 'armv7l'
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/arm-linux-gnueabihf/bits", "#{CREW_DEST_PREFIX}/include/"
+        system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/arm-linux-gnueabihf/sys", "#{CREW_DEST_PREFIX}/include/"
       else
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/#{ARCH}-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
+        system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/#{ARCH}-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/"
       end
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
   end
