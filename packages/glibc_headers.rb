@@ -20,6 +20,7 @@ class Glibc_headers < Package
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/intl"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/ctype"
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/signal"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/misc"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "bits", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "stdlib/errno.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
@@ -43,5 +44,6 @@ class Glibc_headers < Package
     system "cp", "-r", "ctype/ctype.h", "#{CREW_DEST_PREFIX}/include/ctype/"
     system "cp", "-r", "signal/signal.h", "#{CREW_DEST_PREFIX}/include/signal/"
     system "cp", "-r", "signal/bits", "#{CREW_DEST_PREFIX}/include/signal/"
+    system "cp", "-r", "misc/sys", "#{CREW_DEST_PREFIX}/include/misc/"
   end
 end
