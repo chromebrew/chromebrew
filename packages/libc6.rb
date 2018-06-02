@@ -56,7 +56,7 @@ class Libc6 < Package
     when 'armv7l'
       puts "echo 'export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/arm-linux-gnueabihf\"' >> ~/.bashrc && source ~/.bashrc".lightblue
     else
-      puts "echo 'export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib/#{ARCH}-linux-gnu\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+      puts "echo 'export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:#{CREW_PREFIX}/lib64/#{ARCH}-linux-gnu\"' >> ~/.bashrc && source ~/.bashrc".lightblue
     end
     puts "To add libc6 to your $LD_LIBRARY_PATH".lightblue
   end
