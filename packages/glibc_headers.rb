@@ -48,5 +48,8 @@ class Glibc_headers < Package
     system "cp", "-r", "misc/sys", "#{CREW_DEST_PREFIX}/include/misc/"
     system "cp", "-r", "io/fcntl.h", "#{CREW_DEST_PREFIX}/include/io/"
     system "cp", "-r", "io/sys", "#{CREW_DEST_PREFIX}/include/io/"
+    system "cp", "-r", "stdlib/stdlib.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
+    system "cp", "-r", "stdlib/bits", "#{CREW_DEST_PREFIX}/include/stdlib/"
+    system "cp", "-r", "stdlib/sys", "#{CREW_DEST_PREFIX}/include/stdlib"
   end
 end
