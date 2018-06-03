@@ -42,6 +42,7 @@ class Libc6 < Package
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/#{ARCH}-linux-gnu/bits", "#{CREW_DEST_PREFIX}/include/"
         system "cp", "-r", "#{CREW_DEST_PREFIX}/usr/include/#{ARCH}-linux-gnu/sys", "#{CREW_DEST_PREFIX}/include/"
       end
+      system "rm", "-f", "#{CREW_DEST_PREFIX}/include/bits/wordsize.h"
     system "rm", "-r", "#{CREW_DEST_PREFIX}/usr/"
   end
 

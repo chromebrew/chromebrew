@@ -55,6 +55,7 @@ class Glibc_headers < Package
     system "cp", "-r", "sysdeps/generic/sys", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "sysdeps/generic/string_private.h", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "sysdeps/generic/stackinfo.h", "#{CREW_DEST_PREFIX}/include/"
+    system "cp", "-r", "sysdeps/pthread/allocalim.h", "#{CREW_DEST_PREFIX}/include/"
     system "cp", "-r", "locale/xlocale.h", "#{CREW_DEST_PREFIX}/include/locale/"
     system "cp", "-r", "posix/getopt.h", "#{CREW_DEST_PREFIX}/include/posix/"
   end
