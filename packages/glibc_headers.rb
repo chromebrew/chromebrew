@@ -24,6 +24,7 @@ class Glibc_headers < Package
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/include/io"
     system "cp", "-r", "include", "#{CREW_DEST_PREFIX}"
     system "cp", "-r", "bits", "#{CREW_DEST_PREFIX}/include/"
+    system "rm", "-f", "#{CREW_DEST_PREFIX}/include/bits/wordsize.h"
     system "cp", "-r", "stdlib/errno.h", "#{CREW_DEST_PREFIX}/include/stdlib/"
     system "cp", "-r", "libio/stdio.h", "#{CREW_DEST_PREFIX}/include/libio/"
     system "cp", "-r", "libio/libio.h", "#{CREW_DEST_PREFIX}/include/libio/"
