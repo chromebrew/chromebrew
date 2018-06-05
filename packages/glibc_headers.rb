@@ -19,5 +19,6 @@ class Glibc_headers < Package
       system "rm $(find . | fgrep .so)"
       system "mv ../etc/ ."
     end
+    system "cp", "-r", "usr", "#{CREW_DEST_DIR}"
   end
 end
