@@ -1,7 +1,7 @@
 require 'package'
 
 class Glibc_headers < Package
-  description 'GNU C Library Headers'
+  description 'GNU C Library headers and other dependencies'
   homepage 'https://www.gnu.org/software/libc/'
   version '2.23'
   source_url 'https://github.com/skycocker/chromebrew/files/2059646/bashrc.txt'
@@ -15,7 +15,9 @@ class Glibc_headers < Package
   def self.install
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}"
     Dir.chdir ("usr/local") do
-      system "cp", "-r", "include", "#{CREW_DEST_PREFIX}/"
+      system "mv etc/ .."
+      system "rm $(find . | fgrep .so)"
+      system "mv ../etc/ ."
     end
   end
 end
