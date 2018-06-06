@@ -57,17 +57,18 @@ Usage
 
 Where available commands are:
 
-  * build [build package(s) from source and store the archive and checksum in the current working directory]
-  * download [download package(s) to `CREW_BREW_DIR` (`/usr/local/tmp/crew` by default), but don't install]
-  * files [display installed files of package(s).]
-  * help [get information about command usage]
-  * install [install package(s) along with dependencies after prompting for confirmation]
-  * list [available or installed packages]
-  * remove [remove package(s)]
-  * search [look for a package]
-  * update [update crew itself]
-  * upgrade [update all or specific package(s)]
-  * whatprovides [regex search for package(s) that contains file(s)]
+  * build - `build package(s) from source and store the archive and checksum in the current working directory`
+  * const - `display constant(s)`
+  * download - `download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install`
+  * files - `display installed files of package(s)`
+  * help - `get information about command usage`
+  * install - `install package(s) along with dependencies after prompting for confirmation`
+  * list - `available or installed packages`
+  * remove - `remove package(s)`
+  * search - `look for package(s)`
+  * update - `update crew itself`
+  * upgrade - `update all or specific package(s)`
+  * whatprovides - `regex search for package(s) that contains file(s)`
 
 Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
 
