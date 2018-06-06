@@ -9,7 +9,12 @@ class Glibc_headers < Package
 
   def self.build
     system "crew", "download", "glibc223"
-    system "tar", "-xf", "#{CREW_BREW_DIR}/glibc223-2.23-3-chromeos-x86_64.tar.xz", "-C", "."
+    case ARCH
+    when 'aarch64'
+      system "tar", "-xf", "#{CREW_BREW_DIR}/glibc223-2.23-3-chromeos-armv7l.tar.xz", "-C", "."
+    else
+      system "tar", "-xf", "#{CREW_BREW_DIR}/glibc223-2.23-3-chromeos-#{ARCH}.tar.xz", "-C", "."
+    end
   end
 
   def self.install
