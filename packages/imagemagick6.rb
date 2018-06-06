@@ -3,21 +3,21 @@ require 'package'
 class Imagemagick6 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '6.9.9-39'
-  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-6.9.9-39.tar.xz'
-  source_sha256 '56130c16790d8d38c3a1888cc07074d5b50ffb718243e0c56e4c88839edbf931'
+  version '6.9.9-50'
+  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-6.9.9-50.tar.xz'
+  source_sha256 'b6a8b6afea4cd0ea87e752a83bc66b13200e219e0a476156a83a259be3760560'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-39-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-39-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-39-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-39-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-50-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-50-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-50-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.9-50-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '071bea4fdc809f539bf50cac533116d2e503930950cec5a38d5327bc0d079cfd',
-     armv7l: '071bea4fdc809f539bf50cac533116d2e503930950cec5a38d5327bc0d079cfd',
-       i686: 'ece2e339acfb29ae048e7042a68f673b442ef9f024490461906f2e205676ecdf',
-     x86_64: '624ac10730c4b99c23a3049e0ec2a0a9ebdbd4662e7a3e2be8829636e3f187c4',
+    aarch64: '90af69292dc58d68a81b4047be0ddf56c98e6548f5bd15f096228690039d6135',
+     armv7l: '90af69292dc58d68a81b4047be0ddf56c98e6548f5bd15f096228690039d6135',
+       i686: '4721027f02c5cb590ac73dcc97ce505e0504f3c9810fb922f8482f5c114631b1',
+     x86_64: '6e176b5027fdb3170561b50aefdf2738eb656f7373973c10c56922b93dcbb220',
   })
 
   depends_on 'freetype'
