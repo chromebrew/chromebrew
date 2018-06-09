@@ -57,7 +57,6 @@ class Glibc227 < Package
                "--disable-multilib",
                "--disable-werror",
                "--enable-obsolete-rpc",
-               "--disable-selinux",
                "libc_cv_forced_unwind=yes",
                "libc_cv_ssp=no",
                "libc_cv_ssp_strong=no"
@@ -72,7 +71,6 @@ class Glibc227 < Package
                "--disable-sanity-checks",
                "--disable-werror",
                "--enable-obsolete-rpc",
-               "--disable-selinux",
                "libc_cv_forced_unwind=yes",
                "libc_cv_ssp=no",
                "libc_cv_ssp_strong=no"
