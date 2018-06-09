@@ -42,6 +42,7 @@ class Glibc227 < Package
                "--enable-shared",
                "--enable-kernel=3.8.0",
                "--enable-obsolete-rpc",
+               "--disable-selinux",
                "libc_cv_forced_unwind=yes"
       when 'x86_64'
         system "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
@@ -56,6 +57,7 @@ class Glibc227 < Package
                "--disable-multilib",
                "--disable-werror",
                "--enable-obsolete-rpc",
+               "--disable-selinux",
                "libc_cv_forced_unwind=yes",
                "libc_cv_ssp=no",
                "libc_cv_ssp_strong=no"
@@ -70,6 +72,7 @@ class Glibc227 < Package
                "--disable-sanity-checks",
                "--disable-werror",
                "--enable-obsolete-rpc",
+               "--disable-selinux",
                "libc_cv_forced_unwind=yes",
                "libc_cv_ssp=no",
                "libc_cv_ssp_strong=no"
