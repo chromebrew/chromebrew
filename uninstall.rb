@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'package'
+include '../lib/const.rb'
 class Uninstall < Package
   description 'Remove crew and all of its components'
   homepage 'https://skycocker.github.io/chromebrew'
