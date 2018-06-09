@@ -3,21 +3,21 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.7-27'
-  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-27.tar.xz'
-  source_sha256 '543776f09d69e3ca29b1b83a9c0223185ba26bec673593840b4d7face6ea253b'
+  version '7.0.7-38'
+  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.7-38.tar.xz'
+  source_sha256 'db6a88477dc7290a450570d215ae68caf83e0d80c868addefb608109978db17b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-27-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-38-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-38-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-38-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.7-38-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2b60e59633eeb052949a7792bd8fde360db7a6c34e04c7ce6f7c1fadfe5411ea',
-     armv7l: '2b60e59633eeb052949a7792bd8fde360db7a6c34e04c7ce6f7c1fadfe5411ea',
-       i686: '8c549ac27f1d0a6248411662dc64d9cb96df5d00ef1808ec802f1dac875c0a2d',
-     x86_64: 'd37404daaf575bf898be65c65aed1761d32031abaffd9eac2d2a6c29696febda',
+    aarch64: '8af6733552d6d8f2b08f4f4f8a069de5b8e16916fb0e0508c206a4ef2769f5c2',
+     armv7l: '8af6733552d6d8f2b08f4f4f8a069de5b8e16916fb0e0508c206a4ef2769f5c2',
+       i686: '965af8c91a324d4e74383cf2cd2b976bb318f6e869da313c444aff23eb6a9d0b',
+     x86_64: 'a763794967fe8d825809155db55a61e3b4b4ed09521c20f861a622870304e9bf',
   })
 
   depends_on 'freetype'
