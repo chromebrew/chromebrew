@@ -3,21 +3,21 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.5'
-  source_url 'https://php.net/distributions/php-7.2.5.tar.xz'
-  source_sha256 'af70a33b3f7a51510467199b39af151333fbbe4cc21923bad9c7cf64268cddb2'
+  version '7.2.6'
+  source_url 'https://php.net/distributions/php-7.2.6.tar.xz'
+  source_sha256 '1f004e049788a3effc89ef417f06a6cf704c95ae2a718b2175185f2983381ae7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5a797e8599c4cc221c8589123abc2db8fb9c1a75aa4ac62ecf046dca13d0032e',
-     armv7l: '5a797e8599c4cc221c8589123abc2db8fb9c1a75aa4ac62ecf046dca13d0032e',
-       i686: '79853aac86398b3508e805971fd8b6c15c5b34076418bb1cff165c5e1932b0ab',
-     x86_64: '6efecf45304e9967e1edc3090d08679a5cde7a3747ee1ca518cfa59afd3f94f6',
+    aarch64: '3053099db705b825c0f1f35913b9c69bad20d35f6ddd7581c0eb20e4433ec342',
+     armv7l: '3053099db705b825c0f1f35913b9c69bad20d35f6ddd7581c0eb20e4433ec342',
+       i686: '06e6fce8d54e425edc864eb7912521ffb2a2c5cfcf88ad83ddaf7f4c1d3853f4',
+     x86_64: '9f05e236dedcf92e85ef69ac6cd70a470a4e78dc4a7812d15eedfbad25ad5060',
   })
 
   depends_on 'icu4c'
