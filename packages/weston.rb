@@ -20,6 +20,8 @@ class Weston < Package
   depends_on 'dbus'
   
   depends_on 'libxxf86vm'
+  
+  depends_on 'autoconf' => :build
 
   def self.build
     system "./autogen.sh"
