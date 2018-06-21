@@ -3,7 +3,7 @@ require 'package'
 class Glibc223 < Package
   description 'GNU C Library'
   homepage 'https://www.gnu.org/software/libc/'
-  version '2.23-3'
+  version '2.23-4'
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
   source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
@@ -22,6 +22,10 @@ class Glibc223 < Package
 
   depends_on 'libgd' => :build
   depends_on 'texinfo' => :build
+
+  if (CHROMEOS_RELEASE > '66') && (ARGV[0] != 'search')
+    abort "This package cannot be installed with release #{CHROMEOS_RELEASE}!".lightred
+  end
 
   def self.patch
     # Apply patch due to new version of binutils  which causes compilation failure
