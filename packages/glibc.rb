@@ -42,7 +42,7 @@ class Glibc < Package
     system "mkdir -pv glibc_build"
     Dir.chdir "glibc_build" do
       case ARCH
-      when 'armv7l' || 'aarch64'
+      when 'armv7l', 'aarch64'
         system "../configure",
                "--prefix=#{CREW_PREFIX}",
                "--libdir=#{CREW_LIB_PREFIX}",
@@ -51,7 +51,8 @@ class Glibc < Package
                "--disable-sanity-checks",
                "--enable-shared",
                "--enable-obsolete-rpc",
-               "libc_cv_forced_unwind=yes"
+               "libc_cv_forced_unwind=yes",
+               "--without-selinux"
       when 'x86_64'
         system "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
         puts "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
