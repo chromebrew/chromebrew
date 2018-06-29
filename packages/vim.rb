@@ -19,18 +19,11 @@ class Vim < Package
        i686: 'c248117c8aba83f20c362999da8ec4b7c7b73aa74e6e4251a0dc114320809df9',
      x86_64: 'c0b2c46297ce1b5d01c42352675e26c980c4f51e1816263150c4c0e99f1899be',
   })
-  if !File.exists?("#{CREW_PREFIX}/bin/python") && File.exists?("#{CREW_PREFIX}/bin/python3")
-  @@only_py3 = true
-  end 
   depends_on 'compressdoc' => :build
   depends_on 'ncurses'
   # vim uses shared library of following languages, so need them isntalled at run-time
   depends_on 'perl'
-  if @@only_py3
   depends_on 'python3'
-  else
-  depends_on 'python27'
-  end 
   depends_on 'ruby'
 
   def self.build
@@ -43,7 +36,7 @@ class Vim < Package
             --enable-multibyte \
             --with-tlib=ncurses \
             --enable-perlinterp \
-            #{@@only_py3 ? "--enable-python3interp" : "--enable-pythoninterp"} \
+            --enable-python3interp \
             --enable-rubyinterp \
             --with-ruby-command=#{CREW_PREFIX}/bin/ruby \
             --with-vimdiff \
