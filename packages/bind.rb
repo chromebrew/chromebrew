@@ -3,36 +3,37 @@ require 'package'
 class Bind < Package
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
   homepage 'https://www.isc.org/downloads/bind/'
-  version '9.12.0'
-  source_url 'https://www.isc.org/downloads/file/bind-9-12-0/'
-  source_sha256 '29870e9bf9dcc31ead3793ca754a7b0236a0785a7a9dc0f859a0bc42e19b3c82'
+  version '9.12.1-p2'
+  source_url 'https://www.isc.org/downloads/file/bind-9-12-1-p2/?version=tar-gz'
+  source_sha256 '0de7c3453461e2f0505ac634b984f8e7afa1952cf7fc972cbefbcc169edf2d29'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9dd44bcabd7c6fff45ded90c1c5a1d7035efe892705eff6b7c4403126742fe7c',
-     armv7l: '9dd44bcabd7c6fff45ded90c1c5a1d7035efe892705eff6b7c4403126742fe7c',
-       i686: '53542e742f07b01367bec3b9c44b9464d7174402629911da3586f26c46f666cd',
-     x86_64: 'c0cc93e84f7585eabe3bbd90d3163871777fb8e94fe3f0774d403f45a018c04d',
+    aarch64: '8f2822175252af8487a38831585e5d5dfc8f4c5e40645681fcc4ca41df10fded',
+     armv7l: '8f2822175252af8487a38831585e5d5dfc8f4c5e40645681fcc4ca41df10fded',
+       i686: 'e9f2a68b7ed4d5c39bb42044c2dc5f68c78d5e5749bcf384d32bb26a178a527e',
+     x86_64: '78691fbd7abba5a0802a88f9caaef1efdc0845f7b92b80887fd72a1b01c743b6',
   })
 
-  depends_on "openssl"
-  depends_on "libcap"
-  depends_on "readline"
-  depends_on "diffutils"
+  depends_on 'openssl'
+  depends_on 'libcap'
+  depends_on 'libseccomp'
+  depends_on 'readline'
 
   def self.build
     system "BUILD_CC=gcc ./configure \
                 --with-randomdev=no \
                 --with-ecdsa=yes \
                 --with-gost=yes \
+                --with-seccomp \
                 --prefix=#{CREW_PREFIX} \
-                --libdir=#{CREW_LIB_PREFIX}"  
-    system "make"
+                --libdir=#{CREW_LIB_PREFIX}"
+    system 'make'
   end
 
   def self.install
