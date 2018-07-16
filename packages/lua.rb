@@ -20,7 +20,7 @@ class Lua < Package
      x86_64: '92bd9b21a28c907827fd017a6097009ac8fd7c1c85e749bdbf7b36021a2a3ccd',
   })
 
-  depends_on 'readline'
+  depends_on 'readline7'
 
   def self.build
     system "make -C src all SYSCFLAGS=\"-DLUA_USE_LINUX\" SYSLIBS=\"-Wl,-E -ldl -lreadline -lncurses\""
