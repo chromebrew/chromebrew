@@ -12,7 +12,6 @@ gcc7
 gettext
 git
 glibc
-glibc223
 gmp
 gnutls
 icu4c
