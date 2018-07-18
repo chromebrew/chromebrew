@@ -31,7 +31,7 @@ class Readline < Package
     # system "for i in readline-6.3-patches/*.sig; do gpg $i; done"
     system "for i in readline-6.3-patches/readline63-???; do patch < $i; done"
 
-    system "CC='gcc' ./configure --libdir=#{CREW_LIB_PREFIX} --disable-static --with-curses"
+    system "CC='gcc' ./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-static --with-curses"
     system "make"
   end
 
