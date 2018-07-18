@@ -42,5 +42,6 @@ class Readline < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "ln", "-sf", "/#{ARCH_LIB}/libreadline.so.6", "/usr/local/#{ARCH_LIB}/libreadline.so.6"
   end
 end
