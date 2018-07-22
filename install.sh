@@ -191,12 +191,15 @@ git reset --hard origin/master
 yes | crew install buildessential
 yes | crew install less
 yes | crew install most
-yes | crew install crew_profile
 echo
 echo "To set the default PAGER environment variable to be able to use less:"
 echo "echo \"export PAGER=$CREW_PREFIX/bin/less\" >> ~/.bashrc && . ~/.bashrc"
 echo
 echo "Alternatively, you could use most.  Why settle for less, right?"
 echo "echo \"export PAGER=$CREW_PREFIX/bin/most\" >> ~/.bashrc && . ~/.bashrc"
+echo
+
+yes | crew install crew_profile
+
 echo
 echo "Chromebrew installed successfully and package lists updated."
