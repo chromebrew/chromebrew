@@ -2270,7 +2270,7 @@ activity: medium
 ---
 kind: url
 name: mongodb
-url: https://www.mongodb.com/download-center?jmp=nav#community
+url: https://github.com/mongodb/mongo/releases
 activity: medium
 ---
 kind: url
@@ -3340,7 +3340,7 @@ activity: medium
 ---
 kind: url
 name: unrar
-url: https://www.rarlab.com/download.htm
+url: https://www.rarlab.com/rar_add.htm
 activity: medium
 ---
 kind: url
