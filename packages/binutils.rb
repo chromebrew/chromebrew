@@ -3,25 +3,29 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'http://www.gnu.org/software/binutils/'
-  version '2.30-0'
-  source_url 'https://ftpmirror.gnu.org/binutils/binutils-2.30.tar.xz'
-  source_sha256 '6e46b8aeae2f727a36f0bd9505e405768a72218f1796f0d09757d45209871ae6'
+  version '2.31.1'
+  source_url 'https://ftpmirror.gnu.org/binutils/binutils-2.31.1.tar.xz'
+  source_sha256 '5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.30-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.30-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.30-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.30-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.31.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.31.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.31.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.31.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4cc7528d1c7f6d5cf6e0cd713a14318272ca1354da9f400571b16a96a889a0eb',
-     armv7l: '4cc7528d1c7f6d5cf6e0cd713a14318272ca1354da9f400571b16a96a889a0eb',
-       i686: 'cdd19802623b3184f53604813fbf207ca3f758b354cc26378412a9e452c133a2',
-     x86_64: 'c36989b8e1c84ff546bbb6d24d8022438e1f5ed17ea1dbe2a65d90ec1356c260',
+    aarch64: 'd95917350f3aea952cbff6226115599cb1ab78b2d0af98c4d4fc6487b6f4f133',
+     armv7l: 'd95917350f3aea952cbff6226115599cb1ab78b2d0af98c4d4fc6487b6f4f133',
+       i686: '43a870b20c744dd7948e60c8d04971e2f8cb0600b90adb47a2c392bb24251293',
+     x86_64: 'd02caabe18956f1e03a7f59539fa5470622ebe833a635ef69535b2277b802222',
   })
+
+  depends_on 'filecmd'
+  depends_on 'texinfo'
 
   def self.build
     system "mkdir -vp build"
+    system "for f in $(find . -name configure); do sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' $f; done"
     Dir.chdir("build") do
       system "../configure",
              "--prefix=#{CREW_PREFIX}",
