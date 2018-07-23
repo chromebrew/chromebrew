@@ -198,4 +198,8 @@ echo
 echo "Alternatively, you could use most.  Why settle for less, right?"
 echo "echo \"export PAGER=$CREW_PREFIX/bin/most\" >> ~/.bashrc && . ~/.bashrc"
 echo
+
+yes | crew install crew_profile
+
+echo
 echo "Chromebrew installed successfully and package lists updated."
