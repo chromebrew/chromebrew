@@ -3,17 +3,16 @@ require 'package'
 class Dpkg < Package
   description 'A medium-level package manager for Debian'
   homepage 'https://anonscm.debian.org/git/dpkg/'
-  version '1.19.0.5-2'
-  source_url 'https://salsa.debian.org/dpkg-team/dpkg/-/archive/1.19.0.5/dpkg-1.19.0.5.tar.gz'
-  source_sha256 'd38308afcd5d7896bbd1f946875b90f9d8510a8a96b44e4f14e781285e5d9641'
+  version '1.18.25'
+  source_url 'https://salsa.debian.org/dpkg-team/dpkg/-/archive/1.18.25/dpkg-1.18.25.tar.gz'
+  source_sha256 '93470770161bb15fd7988da1890aecda322e19c3fc858d6cb8f33417e5fe01e9'
 
   depends_on 'bz2'
   depends_on 'xzutils'
 
   def self.build
-    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git"
+    system "git clone https://salsa.debian.org/dpkg-team/dpkg.git -b 1.18.25"
     Dir.chdir ("dpkg") do
-      system "git checkout 1.19.0.5"
       system "autoreconf -i -f"
       system "./configure --libdir=#{CREW_LIB_PREFIX} --prefix=#{CREW_PREFIX}"
       system "make"
