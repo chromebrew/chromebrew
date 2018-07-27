@@ -3,8 +3,8 @@ chromebrew
 
 Package manager for Chrome OS
 
-![Slack](/images/slack.svg)
-[Join the chat on Slack](https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE)
+<a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank"><img src="/images/slack.svg" alt="Slack Invite" /></a>
+[Join the chat on Slack](https://join.slack.com/t/chromebrew/shared_invite/enQtMzUzMjI3NzU2NzUzLWViMGMzNzY1MDk0YTI5Y2RkMTIxMTY3OGQ0ZDYzMDRjODE0ZWI2NTM5MjBkM2Q4NGNlYzY4MGM1MzM2ZTI4NTQ)
 
 Supported Systems
 -----------------
