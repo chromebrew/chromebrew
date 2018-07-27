@@ -6,7 +6,6 @@ Package manager for Chrome OS
 ![Slack](/images/slack.svg)
 [Join the chat on Slack](https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE)
 
-
 Supported Systems
 -----------------
 
