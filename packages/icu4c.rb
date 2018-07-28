@@ -3,21 +3,21 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
-  version '62.1'
-  source_url 'https://download.icu-project.org/files/icu4c/62.1/icu4c-62_1-src.tgz'
-  source_sha256 '3dd9868d666350dda66a6e305eecde9d479fb70b30d5b55d78a1deffb97d5aa3'
+  version '60.1'
+  source_url 'http://download.icu-project.org/files/icu4c/60.1/icu4c-60_1-src.tgz'
+  source_sha256 'f8f5a6c8fbf32c015a467972bdb1477dc5f5d5dfea908b6ed218715eeb5ee225'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-62.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-62.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-62.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-62.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-60.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-60.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-60.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-60.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c147083d3a6bbc5757fd0a0e01ea131a4cb0bb668ed6a3624ee811e02c21b836',
-     armv7l: 'c147083d3a6bbc5757fd0a0e01ea131a4cb0bb668ed6a3624ee811e02c21b836',
-       i686: '690dcc70dde735c24a6f26d54c41b17e78ea03dd37025ea51c2d1d300e8c88a0',
-     x86_64: '3ac1b0401d0af3b4357a6874bd069deb8aca472dc1bd23d455e1f90ae7736262',
+    aarch64: '0966765530795fb323aa924ea66e468cb33ff012a4a873ad5b03fd919ffa437f',
+     armv7l: '0966765530795fb323aa924ea66e468cb33ff012a4a873ad5b03fd919ffa437f',
+       i686: '367d86638f8722530ef21c631a2df7195790cf1610e39d6ff37cca5c191bbec8',
+     x86_64: 'a35e8d783180ffce19cb1a1bb9bf7ad29cfc33427fb2baf451afdc81d0680592',
   })
 
   def self.build
