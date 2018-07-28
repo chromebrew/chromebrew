@@ -3,21 +3,21 @@ require 'package'
 class Libunistring < Package
   description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
   homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.9'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.9.tar.xz'
-  source_sha256 'a4d993ecfce16cf503ff7579f5da64619cee66226fb3b998dafb706190d9a833'
+  version '0.9.10'
+  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
+  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '570ba012dd7e01f7d4a7e859e4afafc61a607ae7762c32f1bfcdd63f9e04bb18',
-     armv7l: '570ba012dd7e01f7d4a7e859e4afafc61a607ae7762c32f1bfcdd63f9e04bb18',
-       i686: 'd55df8d5c90d2ea1cf9ee75059950859c0afbc134680bd77c11022aec848ffc8',
-     x86_64: '5f0dc6bafb63fd29c678d320c4a211675f6f1812ac8c8d8ef0e1fb950bdbc02f',
+    aarch64: 'bd3254d74558de91f176d933d0e4c71eb34b82e245abfbbce9fbee675e89e6fc',
+     armv7l: 'bd3254d74558de91f176d933d0e4c71eb34b82e245abfbbce9fbee675e89e6fc',
+       i686: '88cb3cbfdf6c108045cf63d5aa70b2d036fceacc93f0ead76858381db4268c76',
+     x86_64: 'd0fccb9b680e38517ce95483fcbac289ba835aa79e5c106bc21ec8de7872a13b',
   })
 
   depends_on 'glibc'
