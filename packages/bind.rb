@@ -3,24 +3,23 @@ require 'package'
 class Bind < Package
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
   homepage 'https://www.isc.org/downloads/bind/'
-  version '9.12.1-p2'
-  source_url 'https://www.isc.org/downloads/file/bind-9-12-1-p2/?version=tar-gz'
-  source_sha256 '0de7c3453461e2f0505ac634b984f8e7afa1952cf7fc972cbefbcc169edf2d29'
+  version '9.12.2'
+  source_url 'https://www.isc.org/downloads/file/bind-9-12-2/?version=tar-gz'
+  source_sha256 '9f6a4c8b39a7064d447d8414a09ed667ff21adc69f17461916d8f5a45f348452'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.1-p2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bind-9.12.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '8f2822175252af8487a38831585e5d5dfc8f4c5e40645681fcc4ca41df10fded',
-     armv7l: '8f2822175252af8487a38831585e5d5dfc8f4c5e40645681fcc4ca41df10fded',
-       i686: 'e9f2a68b7ed4d5c39bb42044c2dc5f68c78d5e5749bcf384d32bb26a178a527e',
-     x86_64: '78691fbd7abba5a0802a88f9caaef1efdc0845f7b92b80887fd72a1b01c743b6',
+    aarch64: '624fb5a8b679ded3a5034e4af58a001bd2b1962b308cf9f5690945898c640820',
+     armv7l: '624fb5a8b679ded3a5034e4af58a001bd2b1962b308cf9f5690945898c640820',
+       i686: '0513adea01afa62c7a5df53eba0e7dd71127f26439464b56f0d27773231b2e98',
+     x86_64: '1ae24865bcf2d1a8c953644f809fe52794cf6968d4bf06d9f77c08b80c3fa343',
   })
 
-  depends_on 'openssl'
   depends_on 'libcap'
   depends_on 'libseccomp'
   depends_on 'readline'
