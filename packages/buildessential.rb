@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.1'
+  version '1.2'
 
   is_fake
 
@@ -11,6 +11,21 @@ class Buildessential < Package
   depends_on 'linuxheaders'
   depends_on 'make'
   depends_on 'pkgconfig'
+
+  # compress man pages
+  depends_on 'compressdoc'
+
+  # build documentation
+  depends_on 'doxygen'
+
+  # configure scripts reference the file command
+  depends_on 'filecmd'
+
+  # essential dependency for many packages
+  depends_on 'readline'
+
+  # override the system version with sandbox mode enabled
+  depends_on 'sed'
 
   # typically required library to compile source code using "./autogen.sh"
   depends_on 'automake'
