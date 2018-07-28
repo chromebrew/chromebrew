@@ -3,26 +3,27 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.9.8-1'
-  source_url 'ftp://xmlsoft.org/libxml2/libxml2-2.9.8.tar.gz'
-  source_sha256 '0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732'
+  version '2.9.8-2'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.9.8/libxml2-v2.9.8.tar.bz2'
+  source_sha256 '75f60530c4ff9717930ea28abcf3dfc4b213ac7617884f37637d069b01032b8a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.8-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ab6dfc5969c4220c58ec1a24d989e761158de397897345047bbe2d69d875c365',
-     armv7l: 'ab6dfc5969c4220c58ec1a24d989e761158de397897345047bbe2d69d875c365',
-       i686: '0f0b0fc514b0002207de170e99fe085f994db4307130b77bb6d9fbced6e09cdd',
-     x86_64: '061f528bece488ea9d4b8ad5b4f033dd4d005a76a58878f2ae3ae437fdda8fd4',
+    aarch64: '51646006a23ab2adcf59c464c0358b4cde2c78707d25fc736cfcabb16e37bb27',
+     armv7l: '51646006a23ab2adcf59c464c0358b4cde2c78707d25fc736cfcabb16e37bb27',
+       i686: '11b78a2921229406fcff2e8421df0a58d27ec97c7bfcc89f908583f46dafd71c',
+     x86_64: '2b1ecd272734fd960d79d75187313e581911971466ad99f360e24a5fc0e19e6a',
   })
  
   depends_on 'zlibpkg'
 
   def self.build
+    system './autogen.sh'
     system "./configure",
       "--prefix=#{CREW_PREFIX}",
       "--libdir=#{CREW_LIB_PREFIX}",
