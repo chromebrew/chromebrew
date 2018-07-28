@@ -188,9 +188,7 @@ echo lib >> .git/info/sparse-checkout
 echo crew >> .git/info/sparse-checkout
 git fetch origin master
 git reset --hard origin/master
-yes | crew install buildessential
-yes | crew install less
-yes | crew install most
+yes | crew install buildessential less most
 echo
 echo "To set the default PAGER environment variable to be able to use less:"
 echo "echo \"export PAGER=$CREW_PREFIX/bin/less\" >> ~/.bashrc && . ~/.bashrc"
