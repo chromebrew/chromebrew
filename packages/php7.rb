@@ -3,21 +3,21 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.6'
-  source_url 'https://php.net/distributions/php-7.2.6.tar.xz'
-  source_sha256 '1f004e049788a3effc89ef417f06a6cf704c95ae2a718b2175185f2983381ae7'
+  version '7.2.8'
+  source_url 'https://php.net/distributions/php-7.2.8.tar.xz'
+  source_sha256 '53ba0708be8a7db44256e3ae9fcecc91b811e5b5119e6080c951ffe7910ffb0f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3053099db705b825c0f1f35913b9c69bad20d35f6ddd7581c0eb20e4433ec342',
-     armv7l: '3053099db705b825c0f1f35913b9c69bad20d35f6ddd7581c0eb20e4433ec342',
-       i686: '06e6fce8d54e425edc864eb7912521ffb2a2c5cfcf88ad83ddaf7f4c1d3853f4',
-     x86_64: '9f05e236dedcf92e85ef69ac6cd70a470a4e78dc4a7812d15eedfbad25ad5060',
+    aarch64: '01f39e3bb42b9f00f10417b53abd5802922625c846c601cdd1890118a4cb791e',
+     armv7l: '01f39e3bb42b9f00f10417b53abd5802922625c846c601cdd1890118a4cb791e',
+       i686: '6d404e5f100005d9e8ed5b08cdc70e0294155b65c0b2fe1c80fbbef227e632b8',
+     x86_64: '8f0c18b8f9f2a2aa52af6f8fc4af55a755fe110bdaa6c50dff42dfcbff4307fa',
   })
 
   depends_on 'icu4c'
@@ -26,11 +26,8 @@ class Php7 < Package
   depends_on 'libxslt'
   depends_on 'curl'
   depends_on 'pcre'
-  depends_on 'readline'
 
   def self.build
-    libdir = 'lib'
-    libdir = 'lib64' if ARCH == 'x86_64'
     system "sed -i 's,;pid = run/php-fpm.pid,pid = #{CREW_PREFIX}/tmp/run/php-fpm.pid,' sapi/fpm/php-fpm.conf.in"
     system "sed -i 's,;error_log = log/php-fpm.log,error_log = #{CREW_PREFIX}/log/php-fpm.log,' sapi/fpm/php-fpm.conf.in"
     system "sed -i 's,include=@php_fpm_sysconfdir@/php-fpm.d,include=#{CREW_PREFIX}/etc/php-fpm.d,' sapi/fpm/php-fpm.conf.in"
@@ -52,7 +49,7 @@ class Php7 < Package
       --mandir=#{CREW_PREFIX}/man \
       --sbindir=#{CREW_PREFIX}/bin \
       --with-config-file-path=#{CREW_PREFIX}/etc \
-      --with-libdir=#{libdir} \
+      --with-libdir=#{ARCH_LIB} \
       --enable-fpm \
       --enable-mbstring \
       --enable-opcache \
