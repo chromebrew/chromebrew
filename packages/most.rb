@@ -3,32 +3,27 @@ require 'package'
 class Most < Package
   description 'MOST is a powerful paging program for Unix, VMS, MSDOS, and win32 systems.'
   homepage 'http://www.jedsoft.org/most/'
-  version 'pre5.1-20-1'
-  source_url 'https://www.jedsoft.org/snapshots/most-pre5.1-20.tar.gz'
-  source_sha256 '59b02c9f131c5fb0e20f952ca34bcf90919251f585bbf014dfb5c281d699388d'
+  version 'pre5.1-21'
+  source_url 'https://www.jedsoft.org/snapshots/most-pre5.1-21.tar.gz'
+  source_sha256 '3584ee9c00067e86e357eb434484cf1073ee98cfc5cda0de63428cd8c4cc900a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-20-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-20-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-20-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-21-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-21-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/most-pre5.1-21-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '181130263ca17d63be8d4933493c27e0a823cf642c318e8e407d2278e58d1248',
-     armv7l: '181130263ca17d63be8d4933493c27e0a823cf642c318e8e407d2278e58d1248',
-       i686: 'd4d7b56bb11a12910defbfa91d81faec24564f1f123a55691a7464d247cb2653',
-     x86_64: '75252b49089c84486e7a611ea07e0154ca06ee1b24f2deafd6c343181c112880',
+    aarch64: 'b861bad56a21041a0ef66f02773f435a8bdc3fe64f3dfdec6399e2c4eb7da449',
+     armv7l: 'b861bad56a21041a0ef66f02773f435a8bdc3fe64f3dfdec6399e2c4eb7da449',
+       i686: '75acde59244bf156d71d437804c6cd48028ab14587c428991e3632f2d3e990b6',
+     x86_64: '8b1b065df8a7491646cecb73386a20139f3d8b4e9896b1a7cd311f605419b1fa',
   })
 
   depends_on 'slang'
 
   def self.build
-    system "sed -i 's,ncurses5,ncurses6,g' configure"
-    system "sed -i 's,ncursesw5,ncursesw6,g' configure"
-    system "sed -i 's,ncurses5,ncurses6,g' autoconf/aclocal.m4"
-    system "sed -i 's,ncursesw5,ncursesw6,g' autoconf/aclocal.m4"
     system "./configure --prefix=#{CREW_PREFIX}"
-    system "sed -i '36d' Makefile"
     system 'make'
   end
 
