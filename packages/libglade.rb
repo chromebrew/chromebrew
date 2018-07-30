@@ -12,15 +12,15 @@ class Libglade < Package
   binary_sha256 ({
   })
 
-  depends_on 'python3'
+  depends_on 'gtk2'
+  depends_on 'gtk3'
 
   def self.build
-    system 'pip3 install six'
+    system 'pip install six'
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
-    system 'pip3 uninstall --yes six'
   end
 
   def self.install
@@ -28,6 +28,6 @@ class Libglade < Package
   end
 
   def self.check
-    system 'make', 'check'
+    #system 'make', 'check'
   end
 end
