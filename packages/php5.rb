@@ -3,21 +3,21 @@ require 'package'
 class Php5 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.36'
-  source_url 'http://php.net/distributions/php-5.6.36.tar.xz'
-  source_sha256 '18f536bf548e909b4e980379d0c4e56d024b2b1eb1c9768fd169360491f1d6dd'
+  version '5.6.37'
+  source_url 'http://php.net/distributions/php-5.6.37.tar.xz'
+  source_sha256 '5000d82610f9134aaedef28854ec3591f68dedf26a17b8935727dac2843bd256'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.36-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.36-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.36-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.36-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.37-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.37-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.37-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.37-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f1704e75ec47496d6cdb221a99c51e666cd84973ff92f170be75cd1a3f10c951',
-     armv7l: 'f1704e75ec47496d6cdb221a99c51e666cd84973ff92f170be75cd1a3f10c951',
-       i686: 'd6240fef149bd90b2dfdf2b4b4559f46f344a326ef1b6a405a973445ee83f7fc',
-     x86_64: '2c96f21d5826543789a26ac033ab7a02e615003c4f58b70ba7a8a06496c9745d',
+    aarch64: '993d11d53a2f8cc0313848e318e52471882f7ff73d8acff695ebfa97ccaf52ee',
+     armv7l: '993d11d53a2f8cc0313848e318e52471882f7ff73d8acff695ebfa97ccaf52ee',
+       i686: 'ff37cce3c0c7ff128ba08201994dfa355dc3527431811b3ab41c6c579949fe43',
+     x86_64: '51f08048091118b86a07a61708a388cd1312bca005dc7ba4bc06b11d20517b5c',
   })
 
   depends_on 'icu4c'
@@ -26,11 +26,8 @@ class Php5 < Package
   depends_on 'libxslt'
   depends_on 'curl'
   depends_on 'pcre'
-  depends_on 'readline'
 
   def self.build
-    libdir = 'lib'
-    libdir = 'lib64' if ARCH == 'x86_64'
     system "sed -i 's,;pid = run/php-fpm.pid,pid = #{CREW_PREFIX}/tmp/run/php-fpm.pid,' sapi/fpm/php-fpm.conf.in"
     system "sed -i 's,;error_log = log/php-fpm.log,error_log = #{CREW_PREFIX}/log/php-fpm.log,' sapi/fpm/php-fpm.conf.in"
     system "sed -i 's,include=@php_fpm_sysconfdir@/php-fpm.d,include=#{CREW_PREFIX}/etc/php-fpm.d,' sapi/fpm/php-fpm.conf.in"
@@ -54,7 +51,7 @@ class Php5 < Package
       --mandir=#{CREW_PREFIX}/man \
       --sbindir=#{CREW_PREFIX}/bin \
       --with-config-file-path=#{CREW_PREFIX}/etc \
-      --with-libdir=#{libdir} \
+      --with-libdir=#{ARCH_LIB} \
       --enable-fpm \
       --enable-mbstring \
       --enable-opcache \
