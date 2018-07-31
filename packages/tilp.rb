@@ -3,7 +3,7 @@ require 'package'
 class Tilp < Package
   description 'TiLP is a linking program for Texas Instruments\' graphing calculators.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
-  version '1.18'
+  version '1.19'
   source_url 'https://www.ticalc.org/pub/unix/tilp.tar.gz'
   source_sha256 '6ba834f7fdbbce9818ccaa864222aed2d1688b210e9ff2c59576d1fde5159cd7'
 
