@@ -21,11 +21,11 @@ Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew
 
 Usage:
   crew build [-k|--keep] [-v|--verbose] <name> ...
-  crew download [-v|--verbose] <name> ...
   crew const [<name> ...]
+  crew download [-v|--verbose] <name> ...
   crew files <name> ...
   crew help [<command>]
-  crew install [-k|--keep] [-s|--build-from-source] [-v|--verbose] <name> ...
+  crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew list (available|installed)
   crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
@@ -35,6 +35,7 @@ Usage:
 
   -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
   -s --build-from-source  Build from source even if pre-compiled binary exists.
+  -S --recursive-build    Build from source, including all dependencies, even if pre-compiled binaries exist.
   -V --version            Display the crew version.
   -v --verbose            Show extra information.
   -h --help               Show this screen.
@@ -80,6 +81,7 @@ end
 @opt_keep = args["--keep"]
 @opt_verbose = args["--verbose"]
 @opt_src = args["--build-from-source"]
+@opt_recursive = args["--recursive-build"]
 
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
 #symbolize also values
@@ -105,6 +107,7 @@ end
 def set_package (pkgName, silent = false)
   require CREW_LIB_PATH + 'packages/' + pkgName
   @pkg = Object.const_get(pkgName.capitalize)
+  @pkg.build_from_source = true if @opt_recursive
   @pkg.name = pkgName
   print_package(pkgName, true) unless silent
 end
@@ -189,10 +192,11 @@ def help (pkgName)
     puts "The package(s) must be currently installed."
   when "install"
     puts "Install package(s)."
-    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] [-v|--verbose] <package1> [<package2> ...]"
+    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]"
     puts "The package(s) must have a valid name.  Use `crew search <pattern>` to search for packages to install."
     puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
     puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
+    puts "If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary."
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "list"
     puts "List available or installed packages"
@@ -221,16 +225,17 @@ def help (pkgName)
     puts "This only updates crew itself.  Use `crew upgrade` to update packages."
   when "upgrade"
     puts "Update package(s)."
-    puts "Usage: crew upgrade [-v|--verbose] <package1> [<package2> ...]"
+    puts "Usage: crew upgrade [-v|--verbose] [-s|--build-from-source] <package1> [<package2> ...]"
     puts "If package(s) are omitted, all packages will be updated.  Otherwise, specific package(s) will be updated."
     puts "Use `crew update` to update crew itself."
+    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of upgraded via binary."
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "whatprovides"
     puts "Determine which package(s) contains file(s)."
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, download, files, install, list ,remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, const, download, files, install, list ,remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -898,7 +903,7 @@ def install_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    @pkg.build_from_source = true if @opt_src
+    @pkg.build_from_source = true if @opt_src or @opt_recursive
     resolve_dependencies_and_install
   end
 end
