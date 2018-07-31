@@ -19,7 +19,9 @@ class Tilp < Package
   def self.install
     system 'wget http://lpg.ticalc.org/prj_tilp/download/install_tilp.sh'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('install_tilp.sh') ) == '6baf4b79100a938c2c36218d50c30a39c2beec17490784e3623d4aeebe9931ee'
-    system "PREFIX=#{CREW_PREFIX} SRCDIR=#{CREW_DEST_PREFIX}/share bash install_tilp.sh"
+    system "sed -i '243iif [ \"x\$LIBDIR\" = \"x\" ]; then' install_tilp.sh"
+    system "sed -i '250ifi' install_tilp.sh"
+    system "PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} SRCDIR=#{CREW_DEST_PREFIX}/share bash install_tilp.sh"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/pkgconfig"
