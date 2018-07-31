@@ -3,13 +3,21 @@ require 'package'
 class Tilp < Package
   description 'TiLP is a linking program for Texas Instruments\' graphing calculators.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
-  version '1.18'
+  version '1.19'
   source_url 'https://www.ticalc.org/pub/unix/tilp.tar.gz'
   source_sha256 '6ba834f7fdbbce9818ccaa864222aed2d1688b210e9ff2c59576d1fde5159cd7'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '18ef92ecc5de0ca7d8e312c9a82de1866de2701397f44db7e04028dc0ed5fcc6',
+     armv7l: '18ef92ecc5de0ca7d8e312c9a82de1866de2701397f44db7e04028dc0ed5fcc6',
+       i686: '12e4c59b7fd4d84f16c2cf4eb3a129d12491965444eaf1ef85b72df8f119addd',
+     x86_64: 'd1c4245d7f60a805816bd4db573c797ed0bb484b1d5cf4425d46dff1559cab93',
   })
 
   depends_on 'libarchive'
@@ -19,7 +27,9 @@ class Tilp < Package
   def self.install
     system 'wget http://lpg.ticalc.org/prj_tilp/download/install_tilp.sh'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('install_tilp.sh') ) == '6baf4b79100a938c2c36218d50c30a39c2beec17490784e3623d4aeebe9931ee'
-    system "PREFIX=#{CREW_PREFIX} SRCDIR=#{CREW_DEST_PREFIX}/share bash install_tilp.sh"
+    system "sed -i '243iif [ \"x\$LIBDIR\" = \"x\" ]; then' install_tilp.sh"
+    system "sed -i '250ifi' install_tilp.sh"
+    system "PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} SRCDIR=#{CREW_DEST_PREFIX}/share bash install_tilp.sh"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/pkgconfig"
