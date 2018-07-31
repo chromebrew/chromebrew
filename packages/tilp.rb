@@ -7,8 +7,16 @@ class Tilp < Package
   source_sha256 '6ba834f7fdbbce9818ccaa864222aed2d1688b210e9ff2c59576d1fde5159cd7'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tilp-1.19-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'db30e53d1c32e60d62238c7185059692ae43f7514026f965cb4e3f64b8f11c95',
+     armv7l: 'db30e53d1c32e60d62238c7185059692ae43f7514026f965cb4e3f64b8f11c95',
+       i686: 'f21fa9762e55d14383c96d9ea25fc22d69aeb26fdaacdbfc7482132d29872f83',
+     x86_64: '607e83053d566f29a5daf692d01fe5fc66d371e176aa89bc97a4c75cdcbe3c90',
   })
 
   depends_on 'libarchive'
