@@ -5,7 +5,7 @@ class Gcc8 < Package
   homepage 'https://www.gnu.org/software/gcc/'
   version '8.2.0'
   source_url 'https://ftpmirror.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz'
-  source_sha256 ''
+  source_sha256 '196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
 
   binary_url ({
   })
