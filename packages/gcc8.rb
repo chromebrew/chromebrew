@@ -15,8 +15,7 @@ class Gcc8 < Package
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
   depends_on 'dejagnu' => :build # for test
-  #depends_on 'gcc' => :build   # gcc version 4.9.4
-  depends_on 'icu4c' => :build # icu version 60.1
+  depends_on 'icu4c' => :build # icu version 62.1
   depends_on 'python27' => :build
   depends_on 'python3' => :build
   
@@ -46,7 +45,6 @@ class Gcc8 < Package
                  "--enable-checking=release",
                  "--disable-multilib",
                  "--enable-threads=posix",
-                 "--disable-werror",
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
@@ -54,8 +52,7 @@ class Gcc8 < Package
                  "--with-arch=armv7-a",
                  "--with-tune=cortex-a15",
                  "--with-fpu=neon",
-                 "--with-float=hard",
-      #           "--with-default-libstdcxx-abi=gcc4-compatible"
+                 "--with-float=hard"
         when "x86_64"
           system "../configure",
                  "--prefix=#{CREW_PREFIX}",
@@ -66,13 +63,11 @@ class Gcc8 < Package
                  "--enable-checking=release",
                  "--disable-multilib",
                  "--enable-threads=posix",
-                 "--disable-werror",
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
                  "--program-suffix=-8.2",
-                 "--with-arch-64=x86-64",
-      #           "--with-default-libstdcxx-abi=gcc4-compatible"
+                 "--with-arch-64=x86-64"
         when "i686"
           system "../configure",
                  "--prefix=#{CREW_PREFIX}",
@@ -83,13 +78,11 @@ class Gcc8 < Package
                  "--enable-checking=release",
                  "--disable-multilib",
                  "--enable-threads=posix",
-                 "--disable-werror",
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
 		 "--program-suffix=-8.2",
-                 "--with-arch-32=i686",
-      #           "--with-default-libstdcxx-abi=gcc4-compatible"
+                 "--with-arch-32=i686"
       end
       # Comment: --with-default-libstdcxx-abi=gcc-compatible
       #          Use this switch if we are upgrading from GCC version prior to 5.1.0
