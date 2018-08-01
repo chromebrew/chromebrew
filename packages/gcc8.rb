@@ -35,7 +35,7 @@ class Gcc8 < Package
     system "mkdir -p objdir"
     Dir.chdir("objdir") do
       case ARCH
-        when 'armv7l' || 'aarch64'
+        when 'armv7l', 'aarch64'
           system "../configure",
                  "--prefix=#{CREW_PREFIX}",
                  "--libdir=#{CREW_LIB_PREFIX}",
