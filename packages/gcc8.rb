@@ -1,23 +1,15 @@
 require 'package'
 
-class Gcc7 < Package
+class Gcc8 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '7.3.0-2'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/gcc-7_3_0-release.tar.gz'
-  source_sha256 'af11c397296cab69996723b9d828c98a9bb749447ac8f7ed67458bcdb60311ed'
+  version '8.2.0'
+  source_url 'https://ftpmirror.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz'
+  source_sha256 ''
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'aaa760b75d8aa75fcc615375b79265c8cc9f37e23944fe108e542a3b4bf788c6',
-     armv7l: 'aaa760b75d8aa75fcc615375b79265c8cc9f37e23944fe108e542a3b4bf788c6',
-       i686: 'caf14b8399a42710f31526daf418d0ec1128e8e91b93865bd549cb0333cb678e',
-     x86_64: 'c2d6296473a4c2a97804d10a517ebce66fc4e1e5256210d28d15116f943d1611',
   })
 
   depends_on 'unzip' => :build
@@ -52,20 +44,18 @@ class Gcc7 < Package
                  "--host=armv7l-cros-linux-gnueabihf",
                  "--target=armv7l-cros-linux-gnueabihf",
                  "--enable-checking=release",
-                 "--enable-languages=c,c++,fortran",
                  "--disable-multilib",
                  "--enable-threads=posix",
-                 "--disable-bootstrap",
                  "--disable-werror",
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
-                 "--program-suffix=-7.3",
+		 "--program-suffix=-8.2",
                  "--with-arch=armv7-a",
                  "--with-tune=cortex-a15",
                  "--with-fpu=neon",
                  "--with-float=hard",
-                 "--with-default-libstdcxx-abi=gcc4-compatible"
+      #           "--with-default-libstdcxx-abi=gcc4-compatible"
         when "x86_64"
           system "../configure",
                  "--prefix=#{CREW_PREFIX}",
@@ -74,17 +64,15 @@ class Gcc7 < Package
                  "--host=#{ARCH}-cros-linux-gnu",
                  "--target=#{ARCH}-cros-linux-gnu",
                  "--enable-checking=release",
-                 "--enable-languages=c,c++,fortran",
                  "--disable-multilib",
                  "--enable-threads=posix",
-                 "--disable-bootstrap",
                  "--disable-werror",
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
-                 "--program-suffix=-7.3",
+                 "--program-suffix=-8.2",
                  "--with-arch-64=x86-64",
-                 "--with-default-libstdcxx-abi=gcc4-compatible"
+      #           "--with-default-libstdcxx-abi=gcc4-compatible"
         when "i686"
           system "../configure",
                  "--prefix=#{CREW_PREFIX}",
@@ -93,17 +81,15 @@ class Gcc7 < Package
                  "--host=#{ARCH}-cros-linux-gnu",
                  "--target=#{ARCH}-cros-linux-gnu",
                  "--enable-checking=release",
-                 "--enable-languages=c,c++,fortran",
                  "--disable-multilib",
                  "--enable-threads=posix",
-                 "--disable-bootstrap",
                  "--disable-werror",
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
-                 "--program-suffix=-7.3",
+		 "--program-suffix=-8.2",
                  "--with-arch-32=i686",
-                 "--with-default-libstdcxx-abi=gcc4-compatible"
+      #           "--with-default-libstdcxx-abi=gcc4-compatible"
       end
       # Comment: --with-default-libstdcxx-abi=gcc-compatible
       #          Use this switch if we are upgrading from GCC version prior to 5.1.0
@@ -137,29 +123,29 @@ class Gcc7 < Package
       system "install -v -dm755 #{CREW_DEST_LIB_PREFIX}/bfd-plugins"
       
       # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)
-      system "ln -sfv #{CREW_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      system "ln -sfv #{CREW_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/8.2.0/liblto_plugin.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
       
       # Make symbolic links
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/cc"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/gcc"
-      system "ln -sv #{CREW_PREFIX}/bin/c++-7.3 #{CREW_DEST_PREFIX}/bin/c++"
-      system "ln -sv #{CREW_PREFIX}/bin/g++-7.3 #{CREW_DEST_PREFIX}/bin/g++"
-      system "ln -sv #{CREW_PREFIX}/bin/cpp-7.3 #{CREW_DEST_PREFIX}/bin/cpp"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ar"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/gcc-nm"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ranlib"
-      system "ln -sv #{CREW_PREFIX}/bin/gcov-7.3 #{CREW_DEST_PREFIX}/bin/gcov"
-      system "ln -sv #{CREW_PREFIX}/bin/gcov-dump-7.3 #{CREW_DEST_PREFIX}/bin/gcov-dump"
-      system "ln -sv #{CREW_PREFIX}/bin/gcov-tool-7.3 #{CREW_DEST_PREFIX}/bin/gcov-tool"
-      system "ln -sv #{CREW_PREFIX}/bin/gfortran-7.3 #{CREW_DEST_PREFIX}/bin/gfortran"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-8.2 #{CREW_DEST_PREFIX}/bin/cc"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-8.2 #{CREW_DEST_PREFIX}/bin/gcc"
+      system "ln -sv #{CREW_PREFIX}/bin/c++-8.2 #{CREW_DEST_PREFIX}/bin/c++"
+      system "ln -sv #{CREW_PREFIX}/bin/g++-8.2 #{CREW_DEST_PREFIX}/bin/g++"
+      system "ln -sv #{CREW_PREFIX}/bin/cpp-8.2 #{CREW_DEST_PREFIX}/bin/cpp"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-ar-8.2 #{CREW_DEST_PREFIX}/bin/gcc-ar"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-nm-8.2 #{CREW_DEST_PREFIX}/bin/gcc-nm"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-ranlib-8.2 #{CREW_DEST_PREFIX}/bin/gcc-ranlib"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-8.2 #{CREW_DEST_PREFIX}/bin/gcov"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-dump-8.2 #{CREW_DEST_PREFIX}/bin/gcov-dump"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-tool-8.2 #{CREW_DEST_PREFIX}/bin/gcov-tool"
+      system "ln -sv #{CREW_PREFIX}/bin/gfortran-8.2 #{CREW_DEST_PREFIX}/bin/gfortran"
       
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-c++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-c++"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-g++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-g++"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gfortran-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gfortran"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-c++-8.2 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-c++"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-g++-8.2 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-g++"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-8.2 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar-8.2 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm-8.2 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib-8.2 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib"
+      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gfortran-8.2 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gfortran"
     end
   end
 end
