@@ -20,8 +20,6 @@ class Cvs < Package
      x86_64: '77bb711a00b0f204092a7833e5f0a45b29d30e1440d0448769637708909fb655',
   })
   
-  depends_on 'gcc'
-  
   def self.build
     system "sed 's/getline /get_line /' <lib/getline.c >lib/getline.c2" # A bug in cvs, read here: http://permalink.gmane.org/gmane.linux.lfs.devel/10198
     system "sed 's/getline /get_line /' <lib/getline.h >lib/getline.h2"
