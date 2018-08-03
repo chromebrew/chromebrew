@@ -3,21 +3,21 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.11.4'
-  source_url 'https://cmake.org/files/v3.11/cmake-3.11.4.tar.gz'
-  source_sha256 '8f864e9f78917de3e1483e256270daabc4a321741592c5b36af028e72bff87f5'
+  version '3.12'
+  source_url 'https://cmake.org/files/v3.12/cmake-3.12.0.tar.gz'
+  source_sha256 'd0781a90f6cdb9049d104ac16a150f9350b693498b9dea8a0331e799db6b9d69'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.11.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.11.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.11.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.11.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.12-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.12-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '12b176c138d6034bb0c9afe305342ec6458e926d30ecf69e249fdc1e1e558c3c',
-     armv7l: '12b176c138d6034bb0c9afe305342ec6458e926d30ecf69e249fdc1e1e558c3c',
-       i686: 'ea3cf4cd98c36144894d10dd6a2551ed8ef0a54f097bbb2d25cfc68f5e9493d9',
-     x86_64: '8c26d1c5236b28b1132aec93957292f28aadb3f6065517b3c223c9fc42b0f9ce',
+    aarch64: '93827f90c17c1394cadda69ed9df7cedc4779b8e62ad582068c793546b8cd768',
+     armv7l: '93827f90c17c1394cadda69ed9df7cedc4779b8e62ad582068c793546b8cd768',
+       i686: '5bba9a1131a563a3236792a2035125656552e0026124f7170ac8048345b9ef6d',
+     x86_64: 'e23172aaae71b3a9d8cf6ceb2b125dfc60910b026e8d7dc2a650f0554795e4de',
   })
 
   def self.build
