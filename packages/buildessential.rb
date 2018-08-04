@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.2'
+  version '1.3'
 
   is_fake
 
@@ -27,7 +27,7 @@ class Buildessential < Package
   # override the system version with sandbox mode enabled
   depends_on 'sed'
 
-  # typically required library to compile source code using "./autogen.sh"
+  # typically required libraries to compile source code using "./autogen.sh"
   depends_on 'automake'
   depends_on 'libtool'
   depends_on 'intltool'
@@ -37,21 +37,24 @@ class Buildessential < Package
   depends_on 'flex'
   depends_on 'util_macros'
   depends_on 'gettext'
-  depends_on 'wget'     # in some case, some patches might be required and can be downloaded using wget
+  depends_on 'wget' # in some cases, patches might be required and can be downloaded using wget
+  depends_on 'gawk'
+
+  # compression utilities
+  depends_on 'lzip'
   depends_on 'unzip'
   depends_on 'zip'
-  depends_on 'gawk'
-  
+
   # cmake
   depends_on 'cmake'
-  
+
   # xorg protocols headers
   #depends_on 'xorg_proto'
- 
+
   # maybe meson build system ?
   # depends_on 'meson'        ## With python binary fixed, this chould be included here.
-  
+
   # perl module build ?
   # depends_on 'perl_module_build'
-  
+
 end
