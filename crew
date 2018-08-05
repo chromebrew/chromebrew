@@ -438,7 +438,8 @@ def unpack (meta)
   Dir.chdir CREW_BREW_DIR do
     puts "Unpacking archive, this may take awhile..."
     Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
-    if meta[:filename][-4,4] == ".zip"
+    case File.extname meta[:filename]
+    when '.zip'
       if @opt_verbose then
         system "unzip", "-v", "-d", "#{extract_dir}", meta[:filename]
       else
@@ -579,7 +580,7 @@ def install_package (pkgdir)
     strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
 
     # Strip binaries but not compressed archives
-    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     if @opt_verbose then
       system "tar cvf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
