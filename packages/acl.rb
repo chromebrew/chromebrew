@@ -5,7 +5,7 @@ class Acl < Package
   homepage 'http://savannah.nongnu.org/projects/acl'
   version '2.2.53'
   source_url 'https://bigsearcher.com/mirrors/nongnu/acl/acl-2.2.53.tar.gz'
-  source_sha256 '179074bb0580c06c4b4137be4c5a92a701583277967acdb5546043c7874e0d23'
+  source_sha256 '06be9865c6f418d851ff4494e12406568353b891ffe1f596b34693c387af26c7'
 
   binary_url ({
   })
@@ -25,7 +25,6 @@ class Acl < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-dev"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-lib"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-am"
   end
 end
