@@ -30,6 +30,7 @@ libunbound
 libunistring
 libxml2
 linuxheaders
+lzip
 m4
 make
 most
