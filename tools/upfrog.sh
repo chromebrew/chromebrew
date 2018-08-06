@@ -9,6 +9,17 @@
 #   upfrog -t package...           Performs only dry-run (not upload)
 #   upfrog -d package...           Performs only debug-run (not execute jfrog)
 #
+# Configuration
+#
+#   1. Login to https://bintray.com/login?targetUri=/profile/edit
+#   2. Select API Key
+#   3. Generate a new API Key
+#   4. Install jfrog:
+#      $ crew install jfrog
+#   5. Configure jfrog:
+#      $ jfrog bt c --user <bintray_username> --key <api_key> --licences GPL-3.0
+#      See https://www.jfrog.com/confluence/display/CLI/CLI+for+JFrog+Bintray#CLIforJFrogBintray-Configuration
+#
 # Note: OSS free account has limitation of the number of REST API uses by a day.
 #       If you see 'Forbidden' errors, please try it again in a next day.
 #
