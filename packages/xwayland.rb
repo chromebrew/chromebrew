@@ -31,6 +31,7 @@ class Xwayland < Package
   depends_on 'nettle'
   depends_on 'libtirpc'
   depends_on 'pixman'
+  depends_on 'xinit'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --disable-docs --disable-devel-docs --enable-xwayland --disable-xorg --disable-xvfb --disable-xnest --disable-xquartz --disable-xwin"
@@ -39,5 +40,6 @@ class Xwayland < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "ln", "-s", "#{CREW_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/X"
   end
 end
