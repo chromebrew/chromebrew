@@ -16,7 +16,6 @@ class Sommelier < Package
   depends_on 'pixman'
   depends_on 'libxkbcommon'
   depends_on 'xwayland'
-  depends_on 'libunwind'
   
   def self.build
     system 'mkdir sommelier'
