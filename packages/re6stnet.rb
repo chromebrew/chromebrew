@@ -3,8 +3,8 @@ class Re6stnet < Package
   description 'Resilient, Scalable, IPv6 Network'
   homepage 'https://re6st.nexedi.com/'
   version '0.501'
-  source_url 'https://lab.nexedi.com/nexedi/chromebrew-buildout-re6st/repository/archive?sha=master'
-  source_sha256 '056a94304282f9e073b85370be0b77c5f42a16fe0365602e921679d1287137fa'
+  source_url 'https://lab.nexedi.com/nexedi/chromebrew-buildout-re6st/repository/archive.tar.bz2?ref=ec195cec46f7ed4893bbc8462266d28cec886dad'
+  source_sha256 '62fb68e53aa1f60ed073efad192e06298746922331fe84f6cd3d0f68c5dd4941'
 
   binary_url ({
     x86_64: 'https://softinst62285.host.vifib.net/public/re6stnet-0.501-chromeos-x86_64.tar.xz',
@@ -24,16 +24,16 @@ class Re6stnet < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/ "
+    system "mkdir -p #{CREW_DEST_PREFIX}/opt/ "
     system "cp -r #{@re6st_dir} #{CREW_DEST_DIR}#{@re6st_dir}"
     system "rm -rf #{CREW_DEST_DIR}#{@re6st_dir}/download-cache"
+    system "ln -fs #{@grande_dir}/bin/grandenet #{CREW_PREFIX}/sbin/grandenet"
+    system "ln -fs #{@re6st_dir}/bin/re6stnet #{CREW_PREFIX}/sbin/re6stnet"
+    system "ln -fs #{@re6st_dir}/bin/re6st-conf #{CREW_PREFIX}/bin/re6st-conf"
+    system "ln -fs #{@re6st_dir}/bin/re6st-registry #{CREW_PREFIX}/bin/re6st-registry"
   end
 
   def self.postinstall
-    system "ln -fs #{@re6st_dir}/bin/grandenet #{CREW_PREFIX}/bin/grandenet"
-    system "ln -fs #{@re6st_dir}/bin/re6stnet #{CREW_PREFIX}/bin/re6stnet"
-    system "ln -fs #{@re6st_dir}/bin/re6st-conf #{CREW_PREFIX}/bin/re6st-conf"
-    system "ln -fs #{@re6st_dir}/bin/re6st-registry #{CREW_PREFIX}/bin/re6st-registry"
-    puts "To initiate re6stnet, run /usr/local/bin/grandenet with superuser priviliges"
+    puts "To initiate re6stnet, run #{CREW_PREFIX}/sbin/grandenet"
   end
 end
