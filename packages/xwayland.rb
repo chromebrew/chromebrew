@@ -3,7 +3,7 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to (only) work with weston'
   homepage 'https://x.org'
-  version '1.19.3'
+  version '1.19.3-2'
   source_url 'https://www.x.org/releases/individual/xserver/xorg-server-1.19.3.tar.gz'
   source_sha256 '8f93b98f1ac9fbd87515bfe329a069b48bbec98e5329584ab5fbf759a0953b8d'
 
