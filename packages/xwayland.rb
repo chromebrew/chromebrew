@@ -32,6 +32,7 @@ class Xwayland < Package
   depends_on 'libtirpc'
   depends_on 'pixman'
   depends_on 'libunwind'
+  depends_on 'libxxf86vm'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --disable-docs --disable-devel-docs --enable-xwayland --disable-xorg --disable-xvfb --disable-xnest --disable-xquartz --disable-xwin"
