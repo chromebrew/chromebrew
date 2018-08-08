@@ -27,8 +27,8 @@ class Aircrack_ng < Package
               "--libdir=#{CREW_LIB_PREFIX}",
               "--with-experimental",
               "--with-ext-scripts",
-              "--enable-shared",
-              "--disable-static"
+              "--disable-shared",
+              "--enable-static"
     system "TMPDIR=#{CREW_PREFIX}/tmp make"
   end
 
