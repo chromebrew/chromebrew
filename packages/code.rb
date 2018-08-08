@@ -12,18 +12,31 @@ class Code < Package
       source_url 'https://go.microsoft.com/fwlink/?LinkID=620885'
       source_sha256 'af6adc2e2500e50bfebe7ee7b97d661b6e774a590136bf5f89334132a5b292e2'
     else
-      
-   end
-
-  depends_on 'xwayland'
-  depends_on 'xinit'
+      source_url 'https://raw.githubusercontent.com/Microsoft/vscode/1.25.1/README.md'
+      source_sha256 'c1c5e6ec903730a4e116c1cfd83bb29acd227195d97f2ec8944452808232c310'
+  end
 
   binary_url ({
   })
   binary_sha256 ({
   })
 
-  depends_on 'xinit'
+  depends_on 'sommelier'
+
+  case ARCH
+    when 'x86_64', 'i686'
+      depends_on 'sommelier'
+      depends_on 'xterm
+    else
+      puts
+      puts "Visual Studio Code is currently not supported on ARM and AArch64."
+      puts "Please try HeatMelted."
+      puts "https://code.heatmelted.com"
+      puts
+      puts "Happy coding!"
+      puts
+      return 1
+  end
   
   def self.build
     nil
@@ -37,20 +50,11 @@ class Code < Package
         system "cp", "-rpa", ".", "#{CREW_DEST_PREFIX}/lib/code/"
         system "echo '#!/bin/bash' > #{CREW_DEST_PREFIX}/bin/code"
         system "echo >> #{CREW_DEST_PREFIX}/bin/code"
-        system "echo '#{CREW_PREFIX}/lib/code/bin/code' >> #{CREW_DEST_PREFIX}/bin/code"
+        system "echo '#{CREW_PREFIX}/sbin/sommelierd' >> #{CREW_DEST_PREFIX}/bin/code"
+        system "echo 'xterm -e #{CREW_PREFIX}/lib/code/bin/code' >> #{CREW_DEST_PREFIX}/bin/code"
         system "chmod a+x #{CREW_DEST_PREFIX}/bin/code"
       else
-        
+      nil 
     end
-  end
-
-  def self.postinstall
-    puts
-    puts "To run VS code, run this:"
-    puts "xinit"
-    puts "When in the X server, run this:"
-    puts "code"
-    puts "Happy coding!"
-    puts
   end
 end
