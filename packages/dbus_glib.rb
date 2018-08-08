@@ -13,6 +13,9 @@ class Dbus_glib < Package
   })
 
   depends_on 'gtk_doc'
+  depends_on 'dbus'
+  depends_on 'glib'
+
 
   def self.build
     system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
