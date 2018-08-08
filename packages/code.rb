@@ -30,8 +30,8 @@ class Code < Package
     else
       puts
       puts "Visual Studio Code is currently not supported on ARM and AArch64."
-      puts "Please try HeatMelted."
-      puts "https://code.heatmelted.com"
+      puts "Please try HeadMelted."
+      puts "https://code.headmelted.com"
       puts
       puts "Happy coding!"
       puts
