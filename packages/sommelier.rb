@@ -19,7 +19,6 @@ class Sommelier < Package
   depends_on 'xkbcomp'
   
   def self.build
-    system 'mkdir sommelier'
     system 'git clone https://chromium.googlesource.com/chromiumos/containers/sommelier -b f85b7e1ca4882c63467c7b3ec2ee65c654eca0d0'
     Dir.chdir ("sommelier") do
       system "sed -i 's,/lib/,/#{ARCH_LIB}/,g' Makefile"
