@@ -32,7 +32,7 @@ class Gtk_doc < Package
 
   def self.build
     system "./autogen.sh"
-    system "./configure --with-xml-catalog=/usr/local/etc/xml/catalog --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure --with-xml-catalog=#{CREW_PREFIX}/etc/xml/catalog --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
