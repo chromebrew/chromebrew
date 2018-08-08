@@ -27,7 +27,6 @@ class Aide < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "cat doc/aide.conf"
     system "sed -i '22d' doc/aide.conf"
     system "sed -i '24d' doc/aide.conf"
     system "sed -i '24i@@define TOPDIR #{CREW_PREFIX}/etc' doc/aide.conf"
