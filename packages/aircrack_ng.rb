@@ -23,8 +23,8 @@ class Aircrack_ng < Package
   def self.build
     # Need to specify TMPDIR to run automatic configuration tool correctly
     system "./autogen.sh",
-              "--prefix=#{CREW_DEST_DIR}",
-              "--libdir=#{CREW_DEST_DIR}",
+              "--prefix=#{CREW_PREFIX}",
+              "--libdir=#{CREW_LIB_PREFIX}",
               "--with-experimental",
               "--with-ext-scripts",
               "--enable-shared",
