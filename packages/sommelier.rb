@@ -3,7 +3,7 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/containers/sommelier'
-  version 'f85b7e1'
+  version '1382c'
   source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
   source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
 
@@ -19,8 +19,9 @@ class Sommelier < Package
   depends_on 'xkbcomp'
   
   def self.build
-    system 'git clone https://chromium.googlesource.com/chromiumos/containers/sommelier -b f85b7e1ca4882c63467c7b3ec2ee65c654eca0d0'
+    system 'git clone https://chromium.googlesource.com/chromiumos/containers/sommelier'
     Dir.chdir ("sommelier") do
+      system "git reset --hard 1382ce084cc40790340d672e8b62ec47733cb860"
       system "sed -i 's,/lib/,/#{ARCH_LIB}/,g' Makefile"
       system "sed -i 's,-I.,-I. -I#{CREW_PREFIX}/include/pixman-1,g' Makefile"
       system "make PREFIX=#{CREW_PREFIX} SYSCONFDIR=#{CREW_PREFIX}/etc"
