@@ -14,13 +14,13 @@ class Font_util < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/font_util-1.3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '566f6aa0929b42fda7abdee66c4f5a1510bb701d824c7ddb616881fd24951469',
-     armv7l: '566f6aa0929b42fda7abdee66c4f5a1510bb701d824c7ddb616881fd24951469',
+    aarch64: 'a5617374b5f1354f427fbbc25e7d5bf8b300a53b5c48d0d347096ed45c2f1cf3',
+     armv7l: 'a5617374b5f1354f427fbbc25e7d5bf8b300a53b5c48d0d347096ed45c2f1cf3',
        i686: 'ad05ed87b4da0069c731bcd3a17f077b9d317c3784c2a954c4284bc1197e5434',
      x86_64: '3d87ede9af652619cfc28f1cf16779a841228233978605c9a234501b789fd86c',
   })
 
-    depends_on 'util_macros'
+  depends_on 'util_macros'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
