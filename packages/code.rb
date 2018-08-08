@@ -21,6 +21,10 @@ class Code < Package
   binary_sha256 ({
   })
 
+  depends_on 'sommelier'
+  depends_on 'xterm'
+  depends_on 'libgconf'
+
   def self.install
     case ARCH
     when 'armv7l', 'aarch64'
