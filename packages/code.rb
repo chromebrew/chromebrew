@@ -36,7 +36,7 @@ class Code < Package
       puts
       puts 'Visual Studio Code is currently not supported on ARM and AArch64.'.lightred
       puts 'Please try HeadMelted.'.lightred
-      puts 'https://code.headmelted.com'.lihghtred
+      puts 'https://code.headmelted.com'.lightred
       puts
       puts 'Happy coding!'.lightgreen
       puts
