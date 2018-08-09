@@ -7,7 +7,7 @@ cd ../packages
 arch=$(uname -m)
 exclusions="cabal.rb cros_resize.rb docx2txt.rb dpkg.rb fpc.rb freedos.rb ghc.rb kr.rb"
 exclusions+=" libtinfo.rb lsb_release.rb mysqltuner.rb nodebrew.rb nvm.rb oc.rb stack.rb"
-exclusions+=" txt2regex.rb uwsgi.rb xdg_base.rb"
+exclusions+=" txt2regex.rb uwsgi.rb xdg_base.rb docbook.rb docbook_xsl.rb docbook_xml.rb"
 if [[ "$arch" == "aarch64" || "$arch" == "armv7l" ]]; then
   exclusions+=" cbase.rb dropbox.rb freebasic.rb google_cloud_sdk.rb lldb.rb mesa.rb misctools.rb"
 fi
