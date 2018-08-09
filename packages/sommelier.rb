@@ -3,7 +3,7 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/containers/sommelier'
-  version '1382ce'
+  version '1382ce-1'
   source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
   source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
 
@@ -48,14 +48,22 @@ class Sommelier < Package
   def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
-    puts "echo '# Sommelier environment variables' >> ~/.bashrc".lightblue
+    puts "echo '# Sommelier environment variables + daemon' >> ~/.bashrc".lightblue
     puts "echo '# See https://github.com/dnschneid/crouton/wiki/Sommelier-(A-more-native-alternative-to-xiwi)' >> ~/.bashrc".lightblue
     puts "echo 'export GDK_BACKEND=wayland' >> ~/.bashrc".lightblue
     puts "echo 'export CLUTTER_BACKEND=wayland' >> ~/.bashrc".lightblue
     puts "echo 'export XDG_RUNTIME_DIR=/var/run/chrome' >> ~/.bashrc".lightblue
     puts "echo 'export WAYLAND_DISPLAY=wayland-0' >> ~/.bashrc".lightblue
     puts "echo 'export DISPLAY=:0' >> ~/.bashrc".lightblue
-    puts "echo '[ -f #{CREW_PREFIX}/sbin/sommelierd ] && #{CREW_PREFIX}/sbin/sommelierd &' >> ~/.bashrc".lightblue
+    puts "echo 'if [ ! -d /tmp/.X11-unix ]; then' >> ~/.bashrc".lightblue
+    puts "echo 'mkdir /tmp/.X11-unix' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "echo 'chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
+    puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
+    puts "echo 'if ! pgrep -x \"sommelier\" > /dev/null' >> ~/.bashrc".lightblue
+    puts "echo 'then' >> ~/.bashrc".lightblue
+    puts "echo '#{CREW_PREFIX}/sbin/sommelierd &' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
   end
