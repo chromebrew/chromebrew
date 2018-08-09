@@ -16,10 +16,6 @@ class Gtk_doc < Package
   depends_on 'python27'
   depends_on 'autoconf'
   depends_on 'automake'
-  depends_on 'libxml2'
-  depends_on 'libxslt'
-  depends_on 'docbook'
-  depends_on 'docbook_xml'
   depends_on 'docbook_xsl'
   depends_on 'six'
 
