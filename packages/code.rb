@@ -21,6 +21,7 @@ class Code < Package
   binary_sha256 ({
   })
 
+  depends_on 'gtk2'
   depends_on 'libgconf'
   depends_on 'xdg_base'
   depends_on 'sommelier'
