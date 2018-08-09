@@ -13,6 +13,7 @@ class Libgconf < Package
   })
 
   depends_on 'dbus_glib'
+  depends_on 'gtk2'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-orbit"

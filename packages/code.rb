@@ -24,6 +24,7 @@ class Code < Package
   depends_on 'sommelier'
   depends_on 'xterm'
   depends_on 'libgconf'
+  depends_on 'xdg_base'
 
   def self.install
     case ARCH
