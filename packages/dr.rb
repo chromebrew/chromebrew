@@ -5,7 +5,7 @@ class Dr < Package
   homepage 'https://github.com/Ewpratten/dr'
   version '2.0'
   source_url 'https://github.com/Ewpratten/dr/archive/2.0-cros.tar.gz'
-  source_sha256 '3e7b33bec353b23132db365e5bacd175361d1e9039544e5e64b8df8c7e828006'
+  source_sha256 '4e39a28f947ac044e28349fb10ffb423100fb00acb0ab819e931d931e3f0b02f'
 
   depends_on 'python3'
 
