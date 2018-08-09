@@ -1,6 +1,6 @@
 require 'package'
 
-class Setuptools < Package
+class Six < Package
   description 'Six is a Python 2 and 3 compatibility library.'
   homepage 'https://github.com/benjaminp/six'
   version '1.11.0'
