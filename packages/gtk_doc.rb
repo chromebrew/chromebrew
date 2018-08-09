@@ -29,10 +29,9 @@ class Gtk_doc < Package
   depends_on 'docbook'
   depends_on 'docbook_xml'
   depends_on 'docbook_xsl'
+  depends_on 'six'
 
   def self.build
-    system 'pip3 install six'
-    system 'pip install six'
     system './autogen.sh --with-xml-catalog=/usr/local/etc/xml/catalog'
     system './configure --with-xml-catalog=/usr/local/etc/xml/catalog'
     system 'make'
