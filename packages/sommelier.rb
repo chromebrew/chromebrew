@@ -62,7 +62,7 @@ class Sommelier < Package
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'if ! pgrep -x \"sommelier\" > /dev/null' >> ~/.bashrc".lightblue
     puts "echo 'then' >> ~/.bashrc".lightblue
-    puts "echo '/usr/local/sbin/sommelierd &' >> ~/.bashrc".lightblue
+    puts "echo '#{CREW_PREFIX}/sbin/sommelierd &' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
