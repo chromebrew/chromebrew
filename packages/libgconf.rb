@@ -13,6 +13,7 @@ class Libgconf < Package
   })
 
   depends_on 'dbus_glib'
+  depends_on 'gtk3'
   depends_on 'gtk2'
 
   def self.build
