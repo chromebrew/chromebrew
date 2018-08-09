@@ -54,4 +54,5 @@ class Code < Package
     puts 'Now, please reboot to restart the Sommelier Daemon, and run \'code\' to start Visual Studio.'.lightgreen
     puts 'Happy coding!'.lightgreen
     puts
+  end
 end
