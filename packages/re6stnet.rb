@@ -27,7 +27,7 @@ class Re6stnet < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/opt/ "
     system "cp -r #{@re6st_dir} #{CREW_DEST_DIR}#{@re6st_dir}"
     system "rm -rf #{CREW_DEST_DIR}#{@re6st_dir}/download-cache"
-    system "ln -fs #{@grande_dir}/bin/grandenet #{CREW_PREFIX}/sbin/grandenet"
+    system "ln -fs #{@re6st_dir}/bin/grandenet #{CREW_PREFIX}/sbin/grandenet"
     system "ln -fs #{@re6st_dir}/bin/re6stnet #{CREW_PREFIX}/sbin/re6stnet"
     system "ln -fs #{@re6st_dir}/bin/re6st-conf #{CREW_PREFIX}/bin/re6st-conf"
     system "ln -fs #{@re6st_dir}/bin/re6st-registry #{CREW_PREFIX}/bin/re6st-registry"
