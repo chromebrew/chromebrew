@@ -21,7 +21,6 @@ class Code < Package
   binary_sha256 ({
   })
 
-  depends_on 'xterm'
   depends_on 'libgconf'
   depends_on 'xdg_base'
   depends_on 'sommelier'
@@ -32,10 +31,7 @@ class Code < Package
       system "mkdir", "-p", "#{CREW_DEST_PREFIX}/share/code"
       system "mkdir", "-p", "#{CREW_DEST_PREFIX}/bin"
       system "cp", "-rpa", ".", "#{CREW_DEST_PREFIX}/share/code/"
-      system "echo '#!/bin/bash' > #{CREW_DEST_PREFIX}/bin/code"
-      system "echo >> #{CREW_DEST_PREFIX}/bin/code"
-      system "echo 'xterm -e #{CREW_PREFIX}/share/code/bin/code' >> #{CREW_DEST_PREFIX}/bin/code"
-      system "chmod a+x #{CREW_DEST_PREFIX}/bin/code"
+      system "ln", "-s", "#{CREW_PREFIX}/share/code/bin/code", "#{CREW_DEST_PREFIX}/bin"
     else
       puts
       puts 'Visual Studio Code is currently not supported on ARM and AArch64.'.lightred
