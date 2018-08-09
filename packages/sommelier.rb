@@ -58,7 +58,7 @@ class Sommelier < Package
     puts "echo 'if [ ! -d /tmp/.X11-unix ]; then' >> ~/.bashrc".lightblue
     puts "echo 'mkdir /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "echo 'chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
+    puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'if ! pgrep -x \"sommelier\" > /dev/null' >> ~/.bashrc".lightblue
     puts "echo 'then' >> ~/.bashrc".lightblue
