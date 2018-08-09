@@ -47,4 +47,11 @@ class Code < Package
       system "chmod a+x #{CREW_DEST_PREFIX}/bin/code"
     end
   end
+
+  def self.postinstall
+    puts
+    puts 'Congratulations! You have installed Visual Studio Code on Chrome OS!'.lightgreen
+    puts 'Now, please reboot to restart the Sommelier Daemon, and run \'code\' to start Visual Studio.'.lightgreen
+    puts 'Happy coding!'.lightgreen
+    puts
 end
