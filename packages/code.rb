@@ -48,7 +48,7 @@ class Code < Package
   def self.postinstall
     puts
     puts 'Congratulations! You have installed Visual Studio Code on Chrome OS!'.lightgreen
-    puts 'Now, please reboot to restart the Sommelier Daemon, and run \'code\' to start Visual Studio.'.lightgreen
+    puts 'Now, please run \'code\' to start Visual Studio.'.lightgreen
     puts 'Happy coding!'.lightgreen
     puts
   end
