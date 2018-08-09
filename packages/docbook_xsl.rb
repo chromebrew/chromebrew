@@ -19,39 +19,38 @@ class Docbook_xsl < Package
   depends_on 'libxml2'
   depends_on 'libxslt'
   depends_on 'docbook_xml'
-  depends_on 'docbook'
 
   def self.build
   end
 
   def self.install
-    system "install -v -m755 -d #{CREW_DEST_DIR}/usr/local/share/xml/docbook/xsl-stylesheets-1.79.1 &&
+    system "install -v -m755 -d #{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1 &&
             cp -v -R . \
-                #{CREW_DEST_DIR}/usr/local/share/xml/docbook/xsl-stylesheets-1.79.1/ &&
+                #{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1/ &&
             
             install -v -m644 -D README \
-                                #{CREW_DEST_DIR}/usr/local/share/doc/docbook-xsl-1.79.1/README.txt &&
+                                #{CREW_DEST_PREFIX}/share/doc/docbook-xsl-1.79.1/README.txt &&
             install -v -m644    RELEASE-NOTES* NEWS* \
-                                #{CREW_DEST_DIR}/usr/local/share/doc/docbook-xsl-1.79.1"
+                                #{CREW_DEST_PREFIX}/share/doc/docbook-xsl-1.79.1"
     
     system "xmlcatalog --noout --add 'rewriteSystem' \
                        'http://docbook.sourceforge.net/release/xsl/1.79.1' \
-                       '#{CREW_DEST_DIR}/usr/local/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteURI' \
                        'http://docbook.sourceforge.net/release/xsl/1.79.1' \
-                       '#{CREW_DEST_DIR}/usr/local/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteSystem' \
                        'http://docbook.sourceforge.net/release/xsl/current' \
-                       '#{CREW_DEST_DIR}/usr/local/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteURI' \
                        'http://docbook.sourceforge.net/release/xsl/current' \
-                       '#{CREW_DEST_DIR}/usr/local/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog"
 
   end
