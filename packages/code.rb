@@ -41,7 +41,7 @@ class Code < Package
       puts
       puts 'Happy coding!'.lightgreen
       puts
-      return 1
+      exit 1
     end
   end
 
