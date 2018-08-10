@@ -3,21 +3,21 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/containers/sommelier'
-  version '1382ce-1'
+  version '1382ce0'
   source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
   source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce-chromeos-x86_64.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce0-chromeos-armv7l.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '54fd051594c0f62a1b8af107c23432b7a12a961450741d2c40fe5b5453ae3a10',
-     armv7l: '54fd051594c0f62a1b8af107c23432b7a12a961450741d2c40fe5b5453ae3a10',
-       i686: 'a6a00941d0a7c22059bc44e1bc9fd766d0bca2168c96c0ac825f7d4779f7c929',
-     x86_64: 'd46cfd42ff7f05de3096235ec89d297687202a929edb731e2f7532eec8d4e7eb',
+       i686: 'd89dd374f3ac1adbd7ba861284506c0b515733dfaa68cb998965f73f8628405b',
+     x86_64: '694a58eead61a518cd99c75d580a84c70f8f63ed4d299bc3f9476f937156cf58',
+    aarch64: '1ce406e7806f37bddbe971f18acc3992cd55d3e6598b396fc26657dfb1128e24',
+     armv7l: '1ce406e7806f37bddbe971f18acc3992cd55d3e6598b396fc26657dfb1128e24',
   })
 
   depends_on 'mesa'
@@ -25,6 +25,7 @@ class Sommelier < Package
   depends_on 'libxkbcommon'
   depends_on 'xwayland'
   depends_on 'xkbcomp'
+  depends_on 'psmisc'
   
   def self.build
     system 'git clone https://chromium.googlesource.com/chromiumos/containers/sommelier'
@@ -35,6 +36,32 @@ class Sommelier < Package
       system "make PREFIX=#{CREW_PREFIX} SYSCONFDIR=#{CREW_PREFIX}/etc"
       system "echo '#!/bin/bash' > sommelierd"
       system "echo 'sommelier -X --x-display=\$DISPLAY --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\"' >> sommelierd"
+      system "echo '#!/bin/bash' > startsommelier"
+      system "echo 'SOMM=\$(ps ax | grep \"sommelierrc\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> startsommelier"
+      system "echo 'if [ -z \"\$SOMM\" ]; then' >> startsommelier"
+      system "echo '  #{CREW_PREFIX}/sbin/sommelierd &' >> startsommelier"
+      system "echo '  sleep 3' >> startsommelier"
+      system "echo 'fi' >> startsommelier"
+      system "echo 'SOMM=\$(ps ax | grep \"sommelierrc\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> startsommelier"
+      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> startsommelier"
+      system "echo '  echo \"sommelier process \$SOMM is running\"' >> startsommelier"
+      system "echo 'else' >> startsommelier"
+      system "echo '  echo \"sommelier failed to start\"' >> startsommelier"
+      system "echo '  exit 1' >> startsommelier"
+      system "echo 'fi' >> startsommelier"
+      system "echo '#!/bin/bash' > stopsommelier"
+      system "echo 'SOMM=\$(ps ax | grep \"sommelierrc\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> stopsommelier"
+      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
+      system "echo '  killall sommelier' >> stopsommelier"
+      system "echo '  sleep 3' >> stopsommelier"
+      system "echo 'fi' >> stopsommelier"
+      system "echo 'SOMM=\$(ps ax | grep \"sommelierrc\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> stopsommelier"
+      system "echo 'if [ -z \"\$SOMM\" ]; then' >> stopsommelier"
+      system "echo '  echo \"sommelier process stopped\"' >> stopsommelier"
+      system "echo 'else' >> stopsommelier"
+      system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
+      system "echo '  exit 1' >> stopsommelier"
+      system "echo 'fi' >> stopsommelier"
     end
   end
 
@@ -42,6 +69,8 @@ class Sommelier < Package
     Dir.chdir ("sommelier") do
       system "make", "PREFIX=#{CREW_PREFIX}", "SYSCONFDIR=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", "install"
       system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
+      system "install -Dm755 startsommelier #{CREW_DEST_PREFIX}/bin/startsommelier"
+      system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
     end
   end
 
@@ -60,11 +89,13 @@ class Sommelier < Package
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'if ! pgrep -x \"sommelier\" > /dev/null' >> ~/.bashrc".lightblue
-    puts "echo 'then' >> ~/.bashrc".lightblue
-    puts "echo '#{CREW_PREFIX}/sbin/sommelierd &' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "echo 'startsommelier' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
+    puts
+    puts "To start the sommelier daemon, run 'startsommelier'".lightblue
+    puts "To stop the sommelier daemon, run 'stopsommelier'".lightblue
+    puts
+    puts "Please be aware that gui applications may not work without the sommelier daemon running.".orange
     puts
   end
 end
