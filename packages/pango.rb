@@ -20,14 +20,12 @@ class Pango < Package
        i686: 'deddc56994ca366f1b8e371503378361aae138deea46cc278dcb6ba33096c2ff',
   })
 
-  depends_on 'diffutils' => :build
   depends_on 'harfbuzz'
   depends_on 'cairo'
   depends_on 'glib'
-  depends_on 'perl'
   depends_on 'gobject_introspection'   # add this package to build gtk+, avoid compilation error
-  depends_on 'python27'                # need six package from python to install Pango
   depends_on 'fribidi'
+  depends_on 'six'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -35,8 +33,6 @@ class Pango < Package
   end
 
   def self.install
-    system "pip install six"   # fix installation error,  "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} six" does not work
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
   end
 end

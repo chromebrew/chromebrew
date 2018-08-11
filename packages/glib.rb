@@ -20,9 +20,8 @@ class Glib < Package
      x86_64: 'fd6aea5f310ed045f3e9c132af14d11e63c5d50e04871369eb4888dfef9aee66',
   })
 
-  depends_on 'libffi'
   depends_on 'util_linux'
-  depends_on 'python27'
+  depends_on 'six'
 
   def self.build
     system "./configure",
@@ -33,8 +32,6 @@ class Glib < Package
   end
 
   def self.install
-    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
   end
 end

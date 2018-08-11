@@ -26,7 +26,8 @@ class Gtk3 < Package
   depends_on 'graphene'
   depends_on 'libxkbcommon'
   depends_on 'at_spi2_atk'
-  
+  depends_on 'six' => :build
+
   def self.build
     system "./configure",
            "--prefix=#{CREW_PREFIX}",
@@ -38,13 +39,9 @@ class Gtk3 < Package
   end
 
   def self.install
-    system "pip install six"  # for installation process
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     # generate schemas
     system "mkdir -p #{CREW_DEST_PREFIX}/share/glib-2.0/schemas"
     system "glib-compile-schemas #{CREW_DEST_PREFIX}/share/glib-2.0/schemas"
-    system "pip uninstall --yes six"
   end
-  
-
 end
