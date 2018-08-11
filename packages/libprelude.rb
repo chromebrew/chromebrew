@@ -20,9 +20,8 @@ class Libprelude < Package
      x86_64: 'f7642b1ffb9a0b5ee5c22a3f1345fbc0ff8b7e334a9839c7d24b7108fd069806',
   })
 
-  depends_on 'python27' => :build    
-  depends_on 'python3' => :build
-    
+  depends_on 'six' => :build
+
   def self.build
     system "./configure \
             --prefix=#{CREW_PREFIX} \
@@ -30,8 +29,6 @@ class Libprelude < Package
   end
 
   def self.install
-    system "pip install six"
     system "make DESTDIR=#{CREW_DEST_DIR} install"
-    system "pip uninstall --yes six"
   end
 end

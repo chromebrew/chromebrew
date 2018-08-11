@@ -19,14 +19,13 @@ class Gtk2 < Package
        i686: '9d961a6437d896cd1dbde21ebe4a20967ad0267621fbbb7d80cb36309fd7f232',
      x86_64: '96e236c0057e01ac2790ec5881349a2fa4b6c0821fa3d9ae477a1471f0c1d1af',
   })
-  
-  depends_on 'docbook_xml'
-  depends_on 'docbook_xsl'
+
   depends_on 'gtk_doc'
   depends_on 'atk'
   depends_on 'pango'
   depends_on 'cairo'
   depends_on 'gdk_pixbuf'
+  depends_on 'six' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -34,9 +33,6 @@ class Gtk2 < Package
   end
 
   def self.install
-    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
-    system "pip uninstall --yes six"
   end
-  
 end

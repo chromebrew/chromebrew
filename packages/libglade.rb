@@ -24,7 +24,6 @@ class Libglade < Package
   depends_on 'gtk3'
 
   def self.build
-    system 'pip install six'
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}"

@@ -9,6 +9,7 @@ class Mate_desktop < Package
 
   depends_on 'mate_common'
   depends_on 'dconf'
+  depends_on 'six' => :build
 
   def self.build
     system "./autogen.sh"
@@ -17,9 +18,7 @@ class Mate_desktop < Package
   end
 
   def self.install
-    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
   end
   
 end
