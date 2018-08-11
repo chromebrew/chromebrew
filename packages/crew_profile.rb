@@ -38,10 +38,10 @@ class Crew_profile < Package
     puts
     puts "For Fish, execute this:".lightblue
     puts
-    puts "echo \"if [ -f #{CREW_PREFIX}/etc/profile ]; then\" >> ~/.config/fish/config.fish".lightblue
+    puts "echo \"if [ -f #{CREW_PREFIX}/etc/profile ]\" >> ~/.config/fish/config.fish".lightblue
     puts "echo \"  # Source crew profile\" >> ~/.config/fish/config.fish".lightblue
     puts "echo \"  source #{CREW_PREFIX}/etc/profile\" >> ~/.config/fish/config.fish".lightblue
-    puts "echo \"fi\" >> ~/.config/fish/config.fish".lightblue
+    puts "echo \"end\" >> ~/.config/fish/config.fish".lightblue
     puts "source ~/.config/fish/config.fish".lightblue
     puts
     puts "Works with Bash, Zsh, and Fish".lightblue
