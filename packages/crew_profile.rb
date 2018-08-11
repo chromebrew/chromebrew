@@ -23,7 +23,7 @@ class Crew_profile < Package
     puts
     puts "To create your very own Crew profile, please execute this:".lightblue
     puts
-    puts "touch ~/.profile"
+    puts "touch ~/.profile".lightblue
     puts
     puts "For Bash, execute this:".lightblue
     puts
