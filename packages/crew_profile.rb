@@ -3,7 +3,7 @@ require 'package'
 class Crew_profile < Package
   description 'A profile for Chromebrew, to be used instead of ~/.*rc'
   homepage 'https://github.com/skycocker/chromebrew'
-  version "#{CREW_VERSION}"
+  version "1"
   source_url 'https://github.com/skycocker/chromebrew/raw/511ee9cb3138e113df74ddf0dee057ef5d9a46fd/README.md'
   source_sha256 '27b201cec82d903a1856972e6d7ff1ac58a67c761d729ecd7fd14f24fa9d9901'
 
@@ -17,6 +17,8 @@ class Crew_profile < Package
   end
 
   def self.postinstall
+    puts
+    puts "Works with Bash, Zsh, and Fish".lightblue
     puts
     puts "To create your very own Crew profile, please execute this:".lightblue
     puts
@@ -41,8 +43,6 @@ class Crew_profile < Package
     puts "echo \"  source #{CREW_PREFIX}/etc/profile\" >> ~/.config/fish/config.fish".lightblue
     puts "echo \"end\" >> ~/.config/fish/config.fish".lightblue
     puts "source ~/.config/fish/config.fish".lightblue
-    puts
-    puts "Works with Bash, Zsh, and Fish".lightblue
     puts
   end
 end
