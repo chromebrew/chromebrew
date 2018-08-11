@@ -3,36 +3,36 @@ require 'package'
 class Tcl < Package
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  version '8.6.7'
-  source_url 'http://downloads.sourceforge.net/tcl/tcl8.6.7-src.tar.gz'
-  source_sha256 '7c6b8f84e37332423cfe5bae503440d88450da8cc1243496249faa5268026ba5'
+  version '8.6.8'
+  source_url 'https://prdownloads.sourceforge.net/tcl/tcl8.6.8-src.tar.gz'
+  source_sha256 'c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '8e4cda3f545673755249e8b168cb07503a51e6629137cb47c1bebdd707e05947',
-     armv7l: '8e4cda3f545673755249e8b168cb07503a51e6629137cb47c1bebdd707e05947',
-       i686: '1f20c9bc6a2a5699fd86f78e5b2bfc0535fe9f97fc613bcab5bc3a517fb29d58',
-     x86_64: '56fba3820399b6794ed05a5725b25886f3d8b6828c2b8b08bf0245e9b7d4360c',
+    aarch64: '343bb68fd5998ca2db9178b0b999e74733ff2254cdee25aa007c178a7759e5d2',
+     armv7l: '343bb68fd5998ca2db9178b0b999e74733ff2254cdee25aa007c178a7759e5d2',
+       i686: '96d779474cfc036c5f7ff3146e7e688a5010f61dc745ebf5385868fd6c457a59',
+     x86_64: 'c87a5444244e428a72baa10f2d8560f22efc3be47ffa9f93121312fdc4939188',
   })
 
   def self.build
-    FileUtils.chdir("unix") do
-      if `uname -m`.strip == "x86_64"
+    FileUtils.chdir('unix') do
+      if ARCH == 'x86_64'
         system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --enable-64bit"
       else
-        system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+        system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-64bit"
       end
-      system "make"
+      system 'make'
     end
   end
 
   def self.install
-    FileUtils.chdir("unix") do
+    FileUtils.chdir('unix') do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-private-headers"
     end
