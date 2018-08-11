@@ -11,7 +11,8 @@ class Crew_profile < Package
 
   def self.install
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/etc"
-    system "touch", "#{CREW_DEST_PREFIX}/etc/profile"
+    system "touch", "#{CREW_DEST_HOME}/.profile"
+    system "ln", "-s", "#{CREW_DEST_HOME}/.profile", "#{CREW_PREFIX}/etc/profile"
   end
 
   def self.postinstall
