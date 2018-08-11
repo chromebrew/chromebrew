@@ -14,7 +14,6 @@ class Crew_profile < Package
   def self.install
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/etc"
     system "mkdir", "-p", "#{CREW_DEST_HOME}"
-    system "touch", "#{HOME}/.profile" # To not overwrite already installed configuration
     system "ln", "-s", "#{HOME}/.profile", "#{CREW_DEST_PREFIX}/etc/profile"
   end
 
@@ -23,6 +22,10 @@ class Crew_profile < Package
     puts "Works with Bash, Zsh, and Fish".lightblue
     puts
     puts "To create your very own Crew profile, please execute this:".lightblue
+    puts
+    puts "touch ~/.profile"
+    puts
+    puts "For Bash, execute this:".lightblue
     puts
     puts "echo \"if [ -f #{CREW_PREFIX}/etc/profile ]; then\" >> ~/.bashrc".lightblue
     puts "echo \"  # Source crew profile\" >> ~/.bashrc".lightblue
