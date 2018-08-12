@@ -1,116 +1,140 @@
 #!/bin/sh
 
- set -e
+set -e
 
- case $1 in
+if ! test $1; then
+  echo USAGE:
+  echo \ $0 [options] target arch_type
+  echo \ \-h, --help: Display help
+  echo \ \-v, --version: Display version
+  echo \ \-c, --clean: Clean current directory
+  exit
+fi
 
- -h) echo USAGE:
- echo \ $0 [options] target arch_type kernel_version
- echo \ \-h, --help: Display help
- echo \ \-v, --version: Display version
- echo \ \-c, --clean: Clean current directory
- shift
- exit 0;;
- --help) echo USAGE:
- echo \ $0 target arch_type kernel_version
- echo \ \-h, --help: Display help
- echo \ \-v, --version: Display version
- echo \ \-c, --clean: Clean current directory
- shift
- exit 0;;
- -v) echo build_cross_gcc version 1.2.0
- shift
- exit 0;;
- --version) echo build_cross_gcc version 1.2.0
- shift
- exit 0;;
- -c) rm -rf build-binutils build-gcc build-glibc
- rm -rf \
- ./gcc-8.2.0 \
- ./cloog-0.18.4 \
- ./gmp-6.1.2 \
- ./glibc-2.28 \
- ./binutils-2.31.1 \
- ./mpfr-4.0.1 \
- ./mpc-1.1.0 \
- ./linux-3.18.1 \
- ./isl-0.20
- shift
- exit 0;;
- --clean) rm -rf build-binutils build-gcc build-glibc
- rm -rf \ 
- ./gcc-8.2.0 \
- ./cloog-0.18.4 \
- ./gmp-6.1.2 \
- ./glibc-2.28 \
- ./binutils-2.31.1 \
- ./mpfr-4.0.1 \
- ./mpc-1.1.0 \
- ./linux-3.18.1 \
- ./isl-0.20
- shift
- exit 0;;
- esac
+command -v crew > /dev/null || { echo "crew command not found."; exit 1; }
 
- export major_version="$(echo $3 | cut -c1)"
+PREFIX=$(crew const CREW_PREFIX | cut -d'=' -f2)
+BINUTILS=binutils-$(crew search binutils -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+CLOOG=cloog-$(crew search cloog -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+GCC=gcc-$(crew search gcc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+GLIBC=glibc-$(crew search glibc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+GMP=gmp-$(crew search gmp -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+ISL=isl-$(crew search isl -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+KERNEL=$(crew search linuxheaders -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+MPC=mpc-$(crew search mpc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+MPFR=mpfr-$(crew search mpfr -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
 
- wget https://ftpmirror.gnu.org/gnu/binutils/binutils-2.31.1.tar.xz
- wget https://ftpmirror.gnu.org/gnu/gcc/gcc-8.2.0/gcc-8.2.0.tar.xz
- wget https://mirrors.edge.kernel.org/pub/linux/kernel/v"$major_version".x/linux-$3.tar.xz
- wget https://ftpmirror.gnu.org/gnu/libc/glibc-2.28.tar.xz
- wget https://ftpmirror.gnu.org/gnu/mpfr/mpfr-4.0.1.tar.xz
- wget https://ftpmirror.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
- wget https://ftpmirror.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
- wget http://isl.gforge.inria.fr/isl-0.20.tar.bz2
- wget https://www.bastoul.net/cloog/pages/download/cloog-0.18.4.tar.gz
+case $1 in
+  -h|--help) echo USAGE:
+  echo \ $0 [options] target arch_type
+  echo \ \-h, --help: Display help
+  echo \ \-v, --version: Display version
+  echo \ \-c, --clean: Clean current directory
+  shift
+  exit 0;;
 
- for tar in *.tar*; do tar xpf $tar; done
+  -v|--version) echo build_cross_gcc version 1.2.0
+  shift
+  exit 0;;
 
- rm -f \
- ./glibc-2.28.tar.xz \
- ./gmp-6.1.2.tar.xz \
- ./gcc-8.2.0.tar.xz \
- ./binutils-2.31.1.tar.xz \
- ./linux-3.18.1.tar.xz \
- ./mpfr-4.0.1.tar.xz \
- ./cloog-0.18.4.tar.gz \
- ./isl-0.20.tar.bz2 \
- ./mpc-1.1.0.tar.gz \
+  -c|--clean) if ! test $2; then
+    echo "Please specify the target directory."
+    exit 1
+  fi
+  if [ ! -d $2 ]; then
+    echo "$2 directory does not exist."
+    exit 1
+  fi
+  cd $2
+  rm -f $BINUTILS.tar.xz* $CLOOG.tar.gz* $GCC.tar.xz* $GLIBC.tar.xz* $GMP.tar.xz*
+  rm -f $ISL.tar.bz2* $MPC.tar.gz* $MPFR.tar.xz* linux-$KERNEL.tar.xz*
+  rm -rf build-binutils build-gcc build-glibc
+  rm -rf \
+  ./$BINUTILS \
+  ./$CLOOG \
+  ./$GCC \
+  ./$GLIBC \
+  ./$GMP \
+  ./$ISL \
+  ./$MPC \
+  ./$MPFR \
+  ./linux-$KERNEL
+  cd -
+  shift
+  exit 0;;
+esac
 
- mkdir build-binutils || true
- cd build-binutils
- ../binutils-2.31.1/configure --prefix=/usr/local --target=$1
- make -j$(nproc)
- make install
- cd ..
- cd linux-$3
- make ARCH=$2 INSTALL_HDR_PATH=/usr/local/$1 headers_install
- cd ..
- mkdir build-gcc || true
- cd build-gcc
- ../gcc-8.2.0/configure --prefix=/usr/local --target=$1 --enable-languages=c,c++,fortran --disable-multilib
- make -j$(nproc) all-gcc
- make install-gcc
- cd ..
- mkdir build-glibc || true
- cd build-glibc
- ../glibc-2.28/configure --disable-libmpx --prefix=/usr/local/$1 --disable-werror --enable-shared --build=$MACHTYPE --host=$1 --with-headers=/usr/local/$1/include --disable-multilib libc_cv_forced_unwind=yes
- make install-bootstrap-headers=yes install-headers
- make -j$(nproc) csu/subdir_lib
- install csu/crt1.o csu/crti.o csu/crtn.o /usr/local/$1/lib
- $1-gcc -nostdlib -nostartfiles -shared -x c /dev/null -o /usr/local/$1/lib/libc.so
- touch /usr/local/$1/include/gnu/stubs.h
- cd ..
- cd build-gcc
- make -j$(nproc) all-target-libgcc
- make install-target-libgcc
- cd ..
- cd build-glibc
- make -j$(nproc)
- make install
- cd ..
- cd build-gcc
- make -j$(nproc)
- make install
- cd ..
- $1-gcc -v
+TARGET=$1
+if [ ! -d $TARGET ]; then
+  echo "$TARGET directory does not exist."
+  exit 1
+fi
+ARCH=unknown
+if test $2; then
+  ARCH=$2
+fi
+
+VALID=
+ARCHITECTURES="aarch64-cros-linux arm-cros-eabi i686-cros-linux x86_64-cros-linux"
+for A in $ARCHITECTURES; do
+  [[ $A == $ARCH ]] && VALID=1
+done
+
+if ! test $VALID; then
+  echo "Architecture $ARCH is not valid."
+  echo "Valid architectures: $ARCHITECTURES"
+  exit 1
+fi
+
+MAJOR_VERSION=$(echo $KERNEL | cut -c1)
+
+cd $TARGET
+wget https://ftpmirror.gnu.org/gnu/binutils/$BINUTILS.tar.xz
+wget https://www.bastoul.net/cloog/pages/download/$CLOOG.tar.gz
+wget https://ftpmirror.gnu.org/gnu/gcc/$GCC/$GCC.tar.xz
+wget https://ftpmirror.gnu.org/gnu/libc/$GLIBC.tar.xz
+wget https://ftpmirror.gnu.org/gnu/gmp/$GMP.tar.xz
+wget http://isl.gforge.inria.fr/$ISL.tar.bz2
+wget https://ftpmirror.gnu.org/gnu/mpc/$MPC.tar.gz
+wget https://ftpmirror.gnu.org/gnu/mpfr/$MPFR.tar.xz
+wget https://mirrors.edge.kernel.org/pub/linux/kernel/v$MAJOR_VERSION.x/linux-$KERNEL.tar.xz
+
+for tar in *.tar*; do tar xpf $tar; done
+
+mkdir build-binutils || true
+cd build-binutils
+../$BINUTILS/configure --prefix=$PREFIX --target=$ARCH
+make -j$(nproc)
+make install
+cd ..
+cd linux-$KERNEL
+make ARCH=$ARCH INSTALL_HDR_PATH=$PREFIX/$ARCH headers_install
+cd ..
+mkdir build-gcc || true
+cd build-gcc
+../$GCC/configure --prefix=$PREFIX --target=$ARCH --enable-languages=c,c++,fortran --disable-multilib
+make -j$(nproc) all-gcc
+make install-gcc
+cd ..
+mkdir build-glibc || true
+cd build-glibc
+../$GLIBC/configure --prefix=$PREFIX/$ARCH --disable-libmpx --disable-werror --enable-shared --build=$MACHTYPE --host=$ARCH --with-headers=$PREFIX/$ARCH/include --disable-multilib libc_cv_forced_unwind=yes
+make install-bootstrap-headers=yes install-headers
+make -j$(nproc) csu/subdir_lib
+install csu/crt1.o csu/crti.o csu/crtn.o $PREFIX/$ARCH/lib
+$ARCH-gcc -nostdlib -nostartfiles -shared -x c /dev/null -o $PREFIX/$ARCH/lib/libc.so
+touch $PREFIX/$ARCH/include/gnu/stubs.h
+cd ..
+cd build-gcc
+make -j$(nproc) all-target-libgcc
+make install-target-libgcc
+cd ..
+cd build-glibc
+make -j$(nproc)
+make install
+cd ..
+cd build-gcc
+make -j$(nproc)
+make install
+cd ..
+$ARCH-gcc -v
