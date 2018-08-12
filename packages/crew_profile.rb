@@ -9,12 +9,10 @@ class Crew_profile < Package
 
   depends_on "xdg_base"
 
-  ENV['HOME'] = '/home/chronos/user'
-
   def self.install
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/etc"
     system "mkdir", "-p", "#{CREW_DEST_HOME}"
-    system "ln", "-s", "#{HOME}/.profile", "#{CREW_DEST_PREFIX}/etc/profile"
+    system "ln", "-s", "#{ENV['HOME']}/.profile", "#{CREW_DEST_PREFIX}/etc/profile"
   end
 
   def self.postinstall
