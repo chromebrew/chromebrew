@@ -19,18 +19,18 @@ class Librsvg < Package
      armv7l: '692cdd07b2038a00220d1177a32692e56171188388282a4ca75a480ac26d78a2',
        i686: '2c590e62ab4bee72be2f8014c9b256d24fbdcf307c0f2ac44dcabee6c566cfdb',
   })
-  
+
   depends_on 'gtk_doc'
   depends_on 'vala'
   depends_on 'cairo'
   depends_on 'pango'
-  depends_on 'libxml2'
   depends_on 'libcroco'
   depends_on 'rust'
   depends_on 'gdk_pixbuf'
   depends_on 'gobject_introspection'
   depends_on 'gtk3'
-    
+  depends_on 'six' => :build
+
   def self.build
     system "rustup install stable"
     system "rustup default stable"
@@ -43,10 +43,7 @@ class Librsvg < Package
     system "make"
   end
 
-def self.install
-    system "pip install six"
+  def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
- end
-  
+  end
 end
