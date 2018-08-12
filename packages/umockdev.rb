@@ -1,4 +1,3 @@
-
 require 'package'
 
 class Umockdev < Package
@@ -21,15 +20,11 @@ class Umockdev < Package
      x86_64: '95fd0e8eeacb4d95051cf80a1d6a44e4882c51f4be477f100c1d69e43f61fbd4',
   })
 
-  depends_on 'automake' => :build
-  depends_on 'libtool' => :build
-  depends_on 'intltool' => :build
-  depends_on 'python27' => :build
   depends_on 'glib'
   depends_on 'libgudev'
   depends_on 'vala'  => :build
-  
-  
+  depends_on 'six' => :build
+
   def self.build
     system "./autogen.sh"
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -37,9 +32,6 @@ class Umockdev < Package
   end
 
   def self.install
-    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
- end
-
+  end
 end

@@ -21,10 +21,9 @@ class Gtkvte < Package
   })
 
   depends_on 'gtk3'
-  depends_on 'libxml2'
   depends_on 'pcre2'
   depends_on 'vala'
-  depends_on 'gnutls'
+  depends_on 'six' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -32,8 +31,6 @@ class Gtkvte < Package
   end
 
   def self.install
-    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
   end
 end

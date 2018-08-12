@@ -21,8 +21,8 @@ class Harfbuzz < Package
   })
 
   depends_on 'glib'
-  depends_on 'icu4c'
   depends_on 'freetype_sub'
+  depends_on 'six' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -30,8 +30,6 @@ class Harfbuzz < Package
   end
 
   def self.install
-    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
   end
 end

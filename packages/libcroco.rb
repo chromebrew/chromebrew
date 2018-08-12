@@ -19,9 +19,9 @@ class Libcroco < Package
        i686: '913d41daf21e307c5c06d04d82b0f55e3a14fa31baf552475380217748ba3455',
      x86_64: '21b8c0b44777da7c607c08b85732f1a91a805f248a1937351f4c92ec50444975',
   })
-  
-  depends_on 'libxml2'
+
   depends_on 'gtk_doc'
+  depends_on 'six' => :build
 
   def self.build
     system "sh autogen.sh"
@@ -30,8 +30,6 @@ class Libcroco < Package
   end
 
   def self.install
-    system "pip install six"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
   end
 end

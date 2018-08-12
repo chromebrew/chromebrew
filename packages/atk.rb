@@ -21,9 +21,7 @@ class Atk < Package
   })
 
   depends_on 'gobject_introspection'
-  depends_on 'diffutils' => :build
-  depends_on 'perl' => :build
-  depends_on 'python27' => :build
+  depends_on 'six' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
@@ -31,8 +29,6 @@ class Atk < Package
   end
 
   def self.install
-    system "pip install six"  # ensure correction installation
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "pip uninstall --yes six"
   end
 end
