@@ -40,6 +40,9 @@ arch=$(uname -m)
 # Exclude fake packages
 exclusions="buildessential glibc parallel wayland xorg_proto"
 
+# Exclude packages that binary packages break
+exclusions="$exclusions docbook_xsl docbook_xml docbook"
+
 # Exclude packages without architecture support
 if [[ "$arch" == "aarch64" || "$arch" == "armv7l" ]]; then
   exclusions="$exclusions cbase dropbox freebasic google_cloud_sdk lldb mesa misctools"
