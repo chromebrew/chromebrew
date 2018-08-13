@@ -15,7 +15,6 @@ class Docbook_xsl < Package
   binary_sha256 ({
   })
 
-  depends_on 'unzip'
   depends_on 'libxml2'
   depends_on 'libxslt'
   depends_on 'docbook_xml'
@@ -35,22 +34,22 @@ class Docbook_xsl < Package
     
     system "xmlcatalog --noout --add 'rewriteSystem' \
                        'http://docbook.sourceforge.net/release/xsl/1.79.1' \
-                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteURI' \
                        'http://docbook.sourceforge.net/release/xsl/1.79.1' \
-                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteSystem' \
                        'http://docbook.sourceforge.net/release/xsl/current' \
-                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteURI' \
                        'http://docbook.sourceforge.net/release/xsl/current' \
-                       '#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
+                       '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 /usr/local/etc/xml/catalog"
 
   end
