@@ -13,6 +13,7 @@ class Gtk_doc < Package
   })
 
   depends_on 'six'
+  depends_on 'libxslt'
 
   def self.build
     system "./autogen.sh --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-xml-catalog=#{CREW_PREFIX}/etc/xml/catalog"
