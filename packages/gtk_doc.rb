@@ -12,12 +12,8 @@ class Gtk_doc < Package
   binary_sha256 ({
   })
 
-  depends_on 'python3'
-  depends_on 'python27'
-  depends_on 'autoconf'
-  depends_on 'automake'
-  depends_on 'docbook_xsl'
   depends_on 'six'
+  depends_on 'docbook_xsl'
 
   def self.build
     system "./autogen.sh --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-xml-catalog=#{CREW_PREFIX}/etc/xml/catalog"
