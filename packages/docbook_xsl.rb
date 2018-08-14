@@ -15,7 +15,6 @@ class Docbook_xsl < Package
   binary_sha256 ({
   })
 
-  depends_on 'libxml2'
   depends_on 'docbook_xml'
 
   def self.build

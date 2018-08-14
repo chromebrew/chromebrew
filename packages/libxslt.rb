@@ -12,7 +12,6 @@ class Libxslt < Package
   binary_sha256 ({
   })
 
-  depends_on 'libxml2'
   depends_on 'libxml2_python'
   depends_on 'libgcrypt'
   depends_on 'docbook'

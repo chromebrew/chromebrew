@@ -15,8 +15,6 @@ class Docbook_xml < Package
   binary_sha256 ({
   })
 
-  depends_on 'unzip' => :build
-  depends_on 'libxml2'
   depends_on 'docbook'
 
   def self.build
