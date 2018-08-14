@@ -16,7 +16,6 @@ class Docbook_xsl < Package
   })
 
   depends_on 'libxml2'
-  depends_on 'libxslt'
   depends_on 'docbook_xml'
 
   def self.build

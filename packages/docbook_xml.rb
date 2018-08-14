@@ -7,7 +7,7 @@ class Docbook_xml < Package
   homepage 'http://www.docbook.org'
   version '4.3-1'
   source_url 'http://www.docbook.org/xml/4.3/docbook-xml-4.3.zip'
-  source_sha256 '23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464'
+  source_sha256 '5a5dba9893ab3338d7ab01c91e7e6038c36e6da744bee53edc714cc05c695013'
 
   binary_url ({
   # Please do not create binaries for this package, breaks gtk_doc.

@@ -16,8 +16,6 @@ class Libxslt < Package
   depends_on 'libgcrypt'
   depends_on 'docbook'
   depends_on 'docbook_xsl'
-  depends_on 'python27'
-  depends_on 'python3'
 
   def self.build
     system './configure',
