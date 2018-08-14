@@ -33,22 +33,22 @@ class Docbook_xsl < Package
     system "xmlcatalog --noout --add 'rewriteSystem' \
                        'http://docbook.sourceforge.net/release/xsl/1.79.1' \
                        '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
-                /usr/local/etc/xml/catalog &&
+                #{CREW_PREFIX}/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteURI' \
                        'http://docbook.sourceforge.net/release/xsl/1.79.1' \
                        '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
-                /usr/local/etc/xml/catalog &&
+                #{CREW_PREFIX}/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteSystem' \
                        'http://docbook.sourceforge.net/release/xsl/current' \
                        '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
-                /usr/local/etc/xml/catalog &&
+                #{CREW_PREFIX}/etc/xml/catalog &&
             
             xmlcatalog --noout --add 'rewriteURI' \
                        'http://docbook.sourceforge.net/release/xsl/current' \
                        '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
-                /usr/local/etc/xml/catalog"
+                #{CREW_PREFIX}/etc/xml/catalog"
 
   end
 end

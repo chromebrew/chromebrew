@@ -14,7 +14,7 @@ class Docbook < Package
   })
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/docbook"
-    system "cp -r . #{CREW_DEST_DIR}/usr/local/docbook"
+    system "mkdir -p #{CREW_DEST_PREFIX}/docbook"
+    system "cp -r . #{CREW_DEST_PREFIX}/docbook"
   end
 end
