@@ -21,6 +21,9 @@ class Docbook_xsl < Package
   end
 
   def self.install
+    system "mkdir -p #{CREW_DEST_PREFIX}/etc/xml"
+    system "touch #{CREW_DEST_PREFIX}/etc/xml/catalog"
+    system "touch #{CREW_DEST_PREFIX}/etc/xml/docbook"
     system "install -v -m755 -d #{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1 &&
             cp -v -R . \
                 #{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1/"

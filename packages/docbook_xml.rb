@@ -21,6 +21,9 @@ class Docbook_xml < Package
   end
 
   def self.install
+    system "mkdir -p #{CREW_DEST_PREFIX}/etc/xml"
+    system "touch #{CREW_DEST_PREFIX}/etc/xml/docbook"
+    system "touch #{CREW_DEST_PREFIX}/etc/xml/catalog"
     system "install -v -d -m755 #{CREW_DEST_PREFIX}/share/xml/docbook/xml-dtd-4.3"
     system "install -v -d -m755 #{CREW_PREFIX}/etc/xml"
     system "cp -rpa . #{CREW_DEST_PREFIX}/share/xml/docbook/xml-dtd-4.3/"
