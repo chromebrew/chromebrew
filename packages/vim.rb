@@ -3,21 +3,15 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  version '8.0-3'
+  version '8.0-4'
   source_url 'ftp://ftp.vim.org/pub/vim/unix/vim-8.0.tar.bz2'
   source_sha256 '08bd0d1dd30ece3cb9905ccd48b82b2f81c861696377508021265177dc153a61'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0-3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0-3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.0-3-chromeos-x86_64.tar.xz',
+
   })
   binary_sha256 ({
-    aarch64: '5b7271a46f852461ee5ec01894b0ac5ca78e606eb0769763ab85f0a5f5bf4ca5',
-     armv7l: '5b7271a46f852461ee5ec01894b0ac5ca78e606eb0769763ab85f0a5f5bf4ca5',
-       i686: '29cf236b9cb80869fa0c4a255834f139e5e6487fe2f0ba8e0c10686edc6553f8',
-     x86_64: 'e1459257c1543a695f673452eaf9d0a2db7e1adc21252eb6cfc56405a134203e',
+
   })
 
   depends_on 'compressdoc' => :build
@@ -37,7 +31,6 @@ class Vim < Package
             --enable-multibyte \
             --with-tlib=ncurses \
             --enable-perlinterp \
-            --enable-python3interp \
             --enable-rubyinterp \
             --with-ruby-command=#{CREW_PREFIX}/bin/ruby \
             --with-vimdiff \
