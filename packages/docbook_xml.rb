@@ -24,7 +24,9 @@ class Docbook_xml < Package
     system "install -v -d -m755 #{CREW_DEST_PREFIX}/share/xml/docbook/xml-dtd-4.3"
     system "install -v -d -m755 #{CREW_PREFIX}/etc/xml"
     system "cp -rpa . #{CREW_DEST_PREFIX}/share/xml/docbook/xml-dtd-4.3/"
- 
+  end
+
+  def self.postinstall
     system "if [ ! -e #{CREW_PREFIX}/etc/xml/docbook ]; then
                 xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/docbook
             fi &&
