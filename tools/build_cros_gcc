@@ -1,0 +1,178 @@
+#!/bin/bash
+
+ GLIBC=glibc-$(crew search glibc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+ BINUTILS=binutils-2.31.1
+ GCC=gcc-8.2.0
+ MPFR=mpfr-4.0.1
+ GMP=gmp-6.1.2
+ MPC=mpc-1.1.0
+ ISL=isl-0.20
+ CLOOG=cloog-0.18.4
+
+ KERNEL_VERSION=$(crew search linuxheaders -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1).1
+
+ MAJOR_VERSION="$(echo $KERNEL_VERSION | cut -c1)"
+
+ case $1 in
+ -h|--help) echo USAGE:
+ echo \ $0 target arch_type prefix
+ echo \ \-h, --help: Display this help
+ echo \ \-v, --version: Display version
+ echo \ \-t, --const: Display constants
+ echo \ \-c, --clean: Clean current directory
+ echo \ Valid targets: 'aarch64-cros-linux-gnu', 'x86_64-cros-linux-gnu', 'i686-cros-linux-gnu', 'armv7l-cros-linux-gnueabihf'
+ shift
+ exit 0;;
+ -v|--version) echo build_cros_gcc version 1.26
+ shift
+ exit 0;;
+ -c|--clean) rm -rf build-binutils build-gcc build-glibc
+ rm -rf \
+ ./$GCC \
+ ./$CLOOG \
+ ./$GMP \
+ ./$GLIBC \
+ ./$BINUTILS \
+ ./$MPFR \
+ ./$MPC \
+ ./linux-$KERNEL_VERSION \
+ ./$ISL \
+ ./$GLIBC.tar.xz \
+ ./$GMP.tar.xz \
+ ./$GCC.tar.xz \
+ ./$BINUTILS.tar.xz \
+ ./linux-$KERNEL_VERSION.tar.xz \
+ ./$MPFR.tar.xz \
+ ./$CLOOG.tar.gz \
+ ./$ISL.tar.bz2 \
+ ./$MPC.tar.gz || true
+ shift
+ exit 0;;
+ -t|--const)
+ echo KERNEL_VERSION=$KERNEL_VERSION
+ echo MAJOR_VERSION=$MAJOR_VERSION
+ echo CLOOG=$CLOOG
+ echo ISL=$ISL
+ echo MPC=$MPC
+ echo GMP=$GMP
+ echo MPFR=$MPFR
+ echo GCC=$GCC
+ echo BINUTILS=$BINUTILS
+ echo GLIBC=$GLIBC
+ shift
+ exit 0;;
+ armv7l-cros-linux-gnueabihf)
+ true;;
+ aarch64-cros-linux-gnu)
+ true;;
+ i686-cros-linux-gnu)
+ true;;
+ x86_64-cros-linux-gnu)
+ true;;
+ *)
+ echo Invalid target or option \'$1\'
+ $0 -h
+ exit 1;;
+ esac
+
+ # '\033[1;31' outputs red text. '\033[0m' reverts it to normal.
+ command -v crew > /dev/null || { echo "\033[1;31mcrew command not found.\033[0m"; exit 1; }
+
+ if test ! $2; then
+   echo "$1" | grep x86_64 1>/dev/null
+   if [ $? == 0 ]; then
+   $0 $1 x86 $3;
+   exit 0;
+   fi
+   echo "$1" | grep i686 1>/dev/null
+   if [ $? == 0 ]; then
+   $0 $1 x86 $3;
+   exit 0;
+   fi
+   echo "$1" | grep armv7l 1>/dev/null
+   if [ $? == 0 ]; then
+   $0 $1 arm $3;
+   exit 0;
+   fi
+   echo "$1" | grep aarch64 1>/dev/null
+   if [ $? == 0 ]; then
+   $0 $1 arm64 $3;
+   exit 0;
+   fi
+ fi
+ if test ! $3; then
+   $0 $1 $2 $(crew const CREW_PREFIX | cut -d'=' -f2)
+   exit 0
+ fi
+
+ $0 -c
+
+ echo $1 $2 $3
+
+ wget https://ftpmirror.gnu.org/gnu/binutils/$BINUTILS.tar.xz
+ wget https://ftpmirror.gnu.org/gnu/gcc/$GCC/$GCC.tar.xz
+ wget https://www.kernel.org/pub/linux/kernel/v"$MAJOR_VERSION".x/linux-$KERNEL_VERSION.tar.xz
+ wget https://ftpmirror.gnu.org/gnu/libc/$GLIBC.tar.xz
+ wget https://ftpmirror.gnu.org/gnu/mpfr/$MPFR.tar.xz
+ wget https://ftpmirror.gnu.org/gnu/gmp/$GMP.tar.xz
+ wget https://ftpmirror.gnu.org/gnu/mpc/$MPC.tar.gz
+ wget http://isl.gforge.inria.fr/$ISL.tar.bz2
+ wget https://www.bastoul.net/cloog/pages/download/$CLOOG.tar.gz
+
+ for tar in *.tar*; do tar xpf $tar; done
+
+ rm -f \
+ ./$GLIBC.tar.xz \
+ ./$GMP.tar.xz \
+ ./$GCC.tar.xz \
+ ./$BINUTILS.tar.xz \
+ ./linux-$KERNEL_VERSION.tar.xz \
+ ./$MPFR.tar.xz \
+ ./$CLOOG.tar.gz \
+ ./$ISL.tar.bz2 \
+ ./$MPC.tar.gz 
+
+ cd $GCC
+ ln -s ../$CLOOG cloog
+ ln -s ../$ISL isl
+ ln -s ../$MPC mpc
+ ln -s ../$GMP gmp
+ ln -s ../$MPFR mpfr
+ cd ..
+ mkdir build-binutils || true
+ cd build-binutils
+ ../$BINUTILS/configure --prefix=$3 --target=$1 --disable-multilib
+ make -j$(nproc)
+ make install
+ cd ..
+ cd linux-$KERNEL_VERSION
+ make ARCH=$2 INSTALL_HDR_PATH=$3/$1 headers_install
+ cd ..
+ mkdir build-gcc || true
+ cd build-gcc
+ ../$GCC/configure --disable-libmpx --prefix=$3 --target=$1 --enable-shared --enable-host-shared --enable-languages=c,c++,fortran,go --disable-multilib
+ make -j$(nproc) all-gcc
+ make install-gcc
+ cd ..
+ mkdir build-glibc || true
+ cd build-glibc
+ ../$GLIBC/configure --disable-libmpx --prefix=$3/$1 --enable-shared --enable-host-shared --build=$MACHTYPE --host=$1 --target=$1 --with-headers=$3/$1/include --disable-multilib libc_cv_forced_unwind=yes
+ make install-bootstrap-headers=yes install-headers
+ make -j$(nproc) csu/subdir_lib
+ install csu/crt1.o csu/crti.o csu/crtn.o $3/$1/lib
+ $1-gcc -nostdlib -nostartfiles -shared -x c /dev/null -o $3/$1/lib/libc.so
+ touch $3/$1/include/gnu/stubs.h
+ cd ..
+ cd build-gcc
+ make -j$(nproc) all-target-libgcc
+ make install-target-libgcc
+ cd ..
+ cd build-glibc
+ make -j$(nproc)
+ make install
+ cd ..
+ cd build-gcc
+ make -j$(nproc)
+ make install
+ cd ..
+ $1-gcc -v
