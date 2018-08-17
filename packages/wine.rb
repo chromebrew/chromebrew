@@ -22,7 +22,7 @@ class Wine < Package
     when "i686", "armv7l", "aarch64"
       system "./configure"
     when "x86_64"
-      system "./configure --without-freetype --enable-win64"
+      system "./configure --enable-win64"
     else
       abort "Error getting your device configuration."
     end
