@@ -31,6 +31,7 @@ class Docbook_xsl < Package
   end
 
   def self.postinstall
+    FileUtils.mkdir_p ("#{CREW_DEST_PREFIX}/etc/xml")
     system "xmlcatalog --noout --add 'rewriteSystem' \
                        'http://docbook.sourceforge.net/release/xsl/1.79.1' \
                        '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
@@ -50,6 +51,6 @@ class Docbook_xsl < Package
                        'http://docbook.sourceforge.net/release/xsl/current' \
                        '#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.1' \
                 #{CREW_PREFIX}/etc/xml/catalog"
-
+    system "mv #{CREW_PREFIX}/etc/xml/catalog #{CREW_DEST_PREFIX}/etc/xml/"
   end
 end
