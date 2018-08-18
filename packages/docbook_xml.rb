@@ -27,9 +27,8 @@ class Docbook_xml < Package
   end
 
   def self.postinstall
-    system "if [ ! -e #{CREW_PREFIX}/etc/xml/docbook ]; then
-                xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/docbook
-            fi &&
+    system "rm #{CREW_PREFIX}/etc/xml/docbook && \
+                xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/docbook && \
             xmlcatalog --noout --add 'public' \
                 '-//OASIS//DTD DocBook XML V4.3//EN' \
                 'http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd' \
@@ -75,9 +74,8 @@ class Docbook_xml < Package
                 'file://#{CREW_PREFIX}/share/xml/docbook/xml-dtd-4.3' \
                 #{CREW_PREFIX}/etc/xml/docbook"
     
-    system "if [ ! -e #{CREW_PREFIX}/etc/xml/catalog ]; then
-                xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog
-            fi &&
+    system "rm #{CREW_PREFIX}/etc/xml/catalog && \
+                xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog && \
             xmlcatalog --noout --add 'delegatePublic' \
                 '-//OASIS//ENTITIES DocBook XML' \
                 'file://#{CREW_PREFIX}/etc/xml/docbook' \
