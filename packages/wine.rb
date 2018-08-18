@@ -14,6 +14,7 @@ class Wine < Package
   })
 
   depends_on 'bison'
+  depends_on 'sommelier'
   depends_on 'flex'
   depends_on 'freetype'
 
