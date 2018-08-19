@@ -25,6 +25,7 @@ class Julia < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}"
-    system "cp -r . #{CREW_DEST_PREFIX}"
+	system "cp -r . #{CREW_DEST_PREFIX}"
+	system "mv #{CREW_DEST_PREFIX}/lib #{CREW_DEST_PREFIX}/lib64" if ARCH == 'x86_64'
   end
 end
