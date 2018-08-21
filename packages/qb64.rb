@@ -18,6 +18,7 @@ class Qb64 < Package
     system "find . -name '*.sh' -exec sed -i \"s/\.\\/setup/bash setup/g\" {} \\;"
     system "find . -name '*.sh' -exec sed -i \"s/\.\\/qb64 \\&/exec qb64 \\&/g\" {} \\;"
     system "find . -name '*.sh' -exec sed -i \"s/\~\\/\.local\\/share\\/applicationexec qb64\\.desktop/\\/dev\\/null/g\" {} \\;"
+    system "sed -i '1i#define QB64_NOT_X86' internal/c/common.h" if ARCH == 'armv7l' || ARCH == 'aarch64'
     system "bash setup_lnx.sh"
   end
 
