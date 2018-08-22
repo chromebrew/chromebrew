@@ -50,6 +50,7 @@ class Bz2 < Package
     system "mkdir", "-p", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
     system "cp", "-p", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
     system "ln", "-s", "libbz2.so.1.0.6", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libbz2.so.1.0"
+    system "ln", "-s", "libbz2.so.1.0", "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}/libbz2.so.1"
   end
 
   def self.check
