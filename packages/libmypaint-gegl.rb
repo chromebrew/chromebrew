@@ -1,7 +1,7 @@
 require 'package'
 
 class Libmypaint < Package
-  description 'This is the brush library used by MyPaint. A number of other painting programs use it too.'
+  description 'Libmypaint is MyPaint’s brushstroke rendering code, in a form that can be used by other programs.'
   homepage 'http://mypaint.org/'
   version '1.3.0'
   source_url 'https://github.com/mypaint/libmypaint/releases/download/v1.3.0/libmypaint-1.3.0.tar.xz'
