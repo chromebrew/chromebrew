@@ -14,7 +14,6 @@ class Libxslt < Package
 
   depends_on 'libxml2_python'
   depends_on 'libgcrypt'
-  depends_on 'docbook'
   depends_on 'docbook_xsl'
 
   def self.build

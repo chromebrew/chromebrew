@@ -8,7 +8,6 @@ class Docbook < Package
   source_sha256 '725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968'
 
   binary_url ({
-  # Please do not create binaries for this package, breaks gtk_doc.
   })
   binary_sha256 ({
   })
