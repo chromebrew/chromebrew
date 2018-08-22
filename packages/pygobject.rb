@@ -9,9 +9,7 @@ class Pygobject < Package
 
   depends_on 'glib'
   depends_on 'gobject_introspection'
-  depends_on 'libffi'
   depends_on 'pycairo'
-  depends_on 'pkgconfig'
 
   def self.build
     system "python2.7 setup.py build"
