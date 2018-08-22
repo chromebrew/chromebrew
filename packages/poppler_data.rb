@@ -1,7 +1,7 @@
 require 'package'
 
 class Poppler_data < Package
-  description 'The additional package consists of encoding files for use with Poppler.'
+  description 'This additional package consists of encoding files for use with Poppler.'
   homepage 'https://poppler.freedesktop.org/'
   version '0.4.9'
   source_url 'https://poppler.freedesktop.org/poppler-data-0.4.9.tar.gz'
@@ -10,6 +10,6 @@ class Poppler_data < Package
   depends_on 'poppler'
 
   def self.install
-    system "make prefix=#{CREW_DEST_DIR} install"
+    system "make prefix=#{CREW_DEST_PREFIX} install"
   end
 end
