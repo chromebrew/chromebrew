@@ -10,6 +10,6 @@ class Poppler_data < Package
   depends_on 'poppler'
 
   def self.install
-    system "make prefix=#{CREW_DEST_PREFIX} install"
+    system "make --prefix=#{CREW_DEST_PREFIX} install"
   end
 end
