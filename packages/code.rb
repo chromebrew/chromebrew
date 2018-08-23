@@ -6,11 +6,13 @@ class Code < Package
   version '1.25'
   case ARCH
   when 'x86_64'
+    # code-stable-1534444642.tar.gz
     source_url 'https://go.microsoft.com/fwlink/?LinkID=620884'
-    source_sha256 '5856bbebf38aa05d584da4722869bbe507cf123f69f7ffab5f1532d73dbf3438'
+    source_sha256 '5ef2f82e1272b0008a446fc8f62f9693e2af7c83d5922883ecbfd8a9986fd40b'
   when 'i686'
+    # code-stable-1534444635.tar.gz 
     source_url 'https://go.microsoft.com/fwlink/?LinkID=620885'
-    source_sha256 'af6adc2e2500e50bfebe7ee7b97d661b6e774a590136bf5f89334132a5b292e2'
+    source_sha256 '16a9eb4582767c31ca92fce9d7ed97b960175d8a97db25fab3c8e56afec2f3bc'
   else
     source_url 'https://raw.githubusercontent.com/Microsoft/vscode/1.25.1/README.md'
     source_sha256 'c1c5e6ec903730a4e116c1cfd83bb29acd227195d97f2ec8944452808232c310'
