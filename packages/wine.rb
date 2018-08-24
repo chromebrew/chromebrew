@@ -14,9 +14,17 @@ class Wine < Package
   })
 
   depends_on 'bison'
-  depends_on 'sommelier'
   depends_on 'flex'
   depends_on 'freetype'
+  depends_on 'ncurses'
+  depends_on 'cups'
+  depends_on 'gettext'
+  depends_on 'libgudev'
+  depends_on 'mesa'
+  depends_on 'krb5'
+  depends_on 'libxrandr'
+  depends_on 'zlibpkg'
+  depends_on 'sommelier'
 
   def self.build
     case ARCH
@@ -25,7 +33,7 @@ class Wine < Package
     when "x86_64"
       system "./configure --enable-win64"
     else
-      abort "Error getting your device configuration."
+	  abort "#{ARCH} architecture not supported.".lightred
     end
     system "make"
   end
