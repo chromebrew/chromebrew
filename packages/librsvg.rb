@@ -25,10 +25,10 @@ class Librsvg < Package
   depends_on 'cairo'
   depends_on 'pango'
   depends_on 'libcroco'
-  depends_on 'rust'
   depends_on 'gdk_pixbuf'
   depends_on 'gobject_introspection'
   depends_on 'gtk3'
+  depends_on 'rust' => :build
   depends_on 'six' => :build
 
   def self.build
