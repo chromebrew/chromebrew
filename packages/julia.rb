@@ -24,11 +24,12 @@ class Julia < Package
   })
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
+    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/julia"
     system "cp -r . #{CREW_DEST_PREFIX}"
     if ARCH == 'x86_64'
-      FileUtils.cd "#{CREW_DEST_PREFIX}/lib" do
-        system "find . -type f -exec ln -s #{CREW_PREFIX}/lib/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
+      FileUtils.cd "#{CREW_DEST_PREFIX}/lib/julia" do
+        system "find . -type f -exec ln -s #{CREW_PREFIX}/lib/julia/{} #{CREW_DEST_LIB_PREFIX}/julia/{} \\;"
+        system "find . -type l -exec ln -s #{CREW_PREFIX}/lib/julia/{} #{CREW_DEST_LIB_PREFIX}/julia/{} \\;"
       end
     end
   end
