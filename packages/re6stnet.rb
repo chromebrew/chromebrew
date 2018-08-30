@@ -3,8 +3,8 @@ class Re6stnet < Package
   description 'Resilient, Scalable, IPv6 Network'
   homepage 'https://re6st.nexedi.com/'
   version '0.501'
-  source_url 'https://lab.nexedi.com/nexedi/chromebrew-buildout-re6st/repository/archive.tar.bz2?ref=02992c9ae6c0ac16a6a024cc23400b331e70b67f'
-  source_sha256 'c2c6744c2d5bf731ca60ce7f32d70ef1fda7c7a2cbf583d4521b9bc4121b32b8'
+  source_url 'https://lab.nexedi.com/nexedi/chromebrew-buildout-re6st/repository/archive.tar.bz2?ref=64b11f4eb4fe1f1f07861f8060546414dfcf949f'
+  source_sha256 '5e1815347175d982a0184f22a0d913f8efc992b2ed74b73c92a543299d9f89e3'
 
   binary_url ({
     x86_64: 'https://softinst62285.host.vifib.net/public/re6stnet-0.501-chromeos-x86_64.tar.xz',
