@@ -2,15 +2,15 @@ require 'package'
 class Re6stnet < Package
   description 'Resilient, Scalable, IPv6 Network'
   homepage 'https://re6st.nexedi.com/'
-  version '0.501'
-  source_url 'https://lab.nexedi.com/nexedi/chromebrew-buildout-re6st/repository/archive.tar.bz2?ref=bac2e5bb857dfe5a72fef58575e36e5629018569'
-  source_sha256 'dd8d8e211a7eeb32eab3556b08b233969d77a4468a59c620dffd8db80f7d26fd'
+  version '0.509'
+  source_url 'https://lab.nexedi.com/nexedi/chromebrew-buildout-re6st/repository/archive.tar.bz2?ref=5cb542c266b398fd2a36d16c9f8cb1fb9fc1d567'
+  source_sha256 '6872b0275ff11d264241e098133b2f490a04273dfb1db5bf91547ceb0c320763'
 
   binary_url ({
-    x86_64: 'https://softinst62285.host.vifib.net/public/re6stnet-0.501-chromeos-x86_64.tar.xz',
+    x86_64: 'https://softinst105421.host.vifib.net/public/re6stnet-0.509-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    x86_64: '39e86454e8e11ba9672145a2fa5ab4754c1c739a9062f2019e6a2f066787e064',
+    x86_64: '506d8e7f959bbe05c6e68672b5e488ecfc4e87a3782aafe73a4621b34a6cf0c8',
   })
 
   depends_on 'python27' => :build
