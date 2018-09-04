@@ -16,7 +16,7 @@ class Gcc7 < Package
   binary_sha256 ({
     aarch64: 'c9dd2a2b2d195f0f2021dc673d6317e46b5dfaef582f496b4cea1f3c5c2c17ad',
      armv7l: 'c9dd2a2b2d195f0f2021dc673d6317e46b5dfaef582f496b4cea1f3c5c2c17ad',
-       i686: 'caf14b8399a42710f31526daf418d0ec1128e8e91b93865bd549cb0333cb678e',
+       i686: '4202ea5e9d703d39c522e5f1d7145b8d682a0380baf53b98309b94816408e0b6',
      x86_64: '992fa6556e3c4b45ae548b0ce64e1c5cafaffd109fe9aba5d857c6c569e5b33e',
   })
 
