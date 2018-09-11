@@ -21,7 +21,8 @@ class Re6stnet < Package
   @re6st_dir = 	"#{CREW_PREFIX}/opt/re6st"
 
   def self.build
-    system "mkdir -p #{@re6st_dir}/bin && cp buildout.cfg #{@re6st_dir} && cp bin/grandenet #{@re6st_dir}/bin"
+    system "mkdir -p #{@re6st_dir}/bin && cp buildout.cfg #{@re6st_dir}"
+    system "cp bin/grandenet #{@re6st_dir}/bin && cp bin/shill.sh #{@re6st_dir}/bin"
     system "gcc shill_wrapper.c -o #{@re6st_dir}/bin/shill_wrapper -ldl -Wall -fPIC -pie"
     system "SSL_CERT_DIR=/etc/ssl/certs ./bin/buildout buildout:directory=#{@re6st_dir}"
   end
@@ -31,6 +32,8 @@ class Re6stnet < Package
     system "cp -r #{@re6st_dir} #{CREW_DEST_DIR}#{@re6st_dir}"
     system "rm -rf #{CREW_DEST_DIR}#{@re6st_dir}/download-cache"
     system "ln -fs #{@re6st_dir}/bin/grandenet #{CREW_PREFIX}/sbin/grandenet"
+    system "ln -fs #{@re6st_dir}/bin/shill.sh #{CREW_PREFIX}/sbin/shill.sh"
+    system "ln -fs #{@re6st_dir}/bin/shill_wrapper #{CREW_PREFIX}/sbin/shill_wrapper"
     system "ln -fs #{@re6st_dir}/bin/re6stnet #{CREW_PREFIX}/sbin/re6stnet"
     system "ln -fs #{@re6st_dir}/bin/re6st-conf #{CREW_PREFIX}/bin/re6st-conf"
     system "ln -fs #{@re6st_dir}/bin/re6st-registry #{CREW_PREFIX}/bin/re6st-registry"
