@@ -12,8 +12,8 @@ class Xorg_vmmouse_driver < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_vmmouse_driver-13.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-       i686: '8c58a01d23d1a4dfc99227a9353a714ef8d317446e934d1c69adb7a151d69806',
-     x86_64: 'fafabffe2375b86cc48e6351767f37c61bf67739a3182647ea3a2393aee5b3d1',
+       i686: 'd24b37d653b0c8a57373f10b8431ad26691a196f0d9d9e5ba45495c65b9a60eb',
+     x86_64: '5a2837b20f71f04a5d5791adf96c5c78795e1a8487ee564795779e7c91fb9a01',
   })
 
   depends_on 'xorg_server' => :build
