@@ -3,9 +3,9 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.7.2'
-  source_url 'https://github.com/composer/composer/archive/1.7.2.tar.gz'
-  source_sha256 'b0d9fa978b0a05017de60d25701fbe270b4a49870d6c4e573b5678ad565c1743'
+  version '1.7.0'
+  source_url 'https://github.com/composer/composer/archive/1.7.0.tar.gz'
+  source_sha256 '08fd8538872f59c666d4c0a5596e8aff65ddb76900f615e1480d1e8803563adc'
 
   binary_url ({
   })
@@ -29,7 +29,7 @@ class Composer < Package
     system "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\""
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA384.hexdigest( File.read('composer-setup.php') ) == '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061' 
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "php composer-setup.php --install-dir=#{CREW_DEST_PREFIX}/bin --filename=composer --version=1.7.2"
+    system "php composer-setup.php --install-dir=#{CREW_DEST_PREFIX}/bin --filename=composer --version=1.7.0"
     system "mkdir -p #{CREW_DEST_PREFIX}/.config"
     system "cp -r $HOME/.config/composer #{CREW_DEST_PREFIX}/.config"
     system "rm -rf $HOME/.config"

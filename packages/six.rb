@@ -14,10 +14,10 @@ class Six < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/six-1.11.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2eccdbb14fcef16c0a1d0c84e3ed80d49225ddc188d2d8ee7116a0572a9ba277',
-     armv7l: '2eccdbb14fcef16c0a1d0c84e3ed80d49225ddc188d2d8ee7116a0572a9ba277',
-       i686: '022a175322383509ac825b5727cd544af2c4b9e3b8f2a65b2c7c231cde13590f',
-     x86_64: '9b3e2de8109ab192bd6b5522619fd6fe4b39b44beb0d89b45091d82805123b2c',
+    aarch64: 'a0568eddd9cbbb946995f7cdec51af27a20b4c7a8a8acfc858f914670127f49b',
+     armv7l: 'a0568eddd9cbbb946995f7cdec51af27a20b4c7a8a8acfc858f914670127f49b',
+       i686: '08e6dc17e7e38f5ebe1a232da19fb705d086506cda13568cbe98c0329b7dab60',
+     x86_64: 'fda02acf7263f566fb43018402175064ebff70be2b1c486151a408be8c3c5110',
   })
 
   depends_on 'python3'

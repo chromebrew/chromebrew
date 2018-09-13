@@ -5,98 +5,100 @@ require 'package'
 class Docbook_xml < Package
   description 'document type definitions for verification of XML data files against the DocBook rule set'
   homepage 'http://www.docbook.org'
-  version '4.3-1'
+  version '4.3'
   source_url 'http://www.docbook.org/xml/4.3/docbook-xml-4.3.zip'
   source_sha256 '23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd3008b147f80217982def39e17e04ab9dd32774932322685ae54e5310c70787b',
-     armv7l: 'd3008b147f80217982def39e17e04ab9dd32774932322685ae54e5310c70787b',
-       i686: '2650849c66d4838eb91c679dcd18792583e848a11073b8f60fdc2f5c9f81a7dd',
-     x86_64: '2479e13c8b04434b51a07a96d8500a753042e08ed68dac8b692a267b44372001',
+    aarch64: 'd52eb60b394b51945c4ebcefe915664fb835308e68e81a03f63da6b524f2b8db',
+     armv7l: 'd52eb60b394b51945c4ebcefe915664fb835308e68e81a03f63da6b524f2b8db',
+       i686: '432c69d99add5b330b8c3a43bbf937e10a2cee93081296e7fb43cd2e35cf3bd6',
+     x86_64: '43652bc703c27c907372133db6e93c39a90b8d671a94e6136a3c2e453672a02d',
   })
 
+  depends_on 'unzip'
+  depends_on 'libxml2'
   depends_on 'docbook'
-  depends_on 'sgml_common'
+
+  def self.build
+  end
 
   def self.install
-
-    xml_version = '4.3'
-    xml_dtd = "xml-dtd-#{xml_version}"
-
-    system "install -v -d -m755 #{CREW_DEST_PREFIX}/share/xml/docbook/#{xml_dtd}"
-    system "install -v -d -m755 #{CREW_DEST_PREFIX}/etc/xml"
-    system "cp -rpa . #{CREW_DEST_PREFIX}/share/xml/docbook/#{xml_dtd}/"
-    system "rm -f #{CREW_PREFIX}/etc/xml/docbook && \
-                xmlcatalog --noout --create #{CREW_DEST_PREFIX}/etc/xml/docbook && \
+    system "install -v -d -m755 #{CREW_DEST_DIR}/usr/local/share/xml/docbook/xml-dtd-4.3"
+    system "install -v -d -m755 #{CREW_DEST_DIR}/usr/local/etc/xml"
+ 
+    system "if [ ! -e #{CREW_DEST_DIR}/usr/local/etc/xml/docbook ]; then
+                xmlcatalog --noout --create #{CREW_DEST_DIR}/usr/local/etc/xml/docbook
+            fi &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//DTD DocBook XML V#{xml_version}//EN' \
-                'http://www.oasis-open.org/docbook/xml/#{xml_version}/docbookx.dtd' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//DTD DocBook XML V4.3//EN' \
+                'http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//DTD DocBook XML CALS Table Model V#{xml_version}//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/calstblx.dtd' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//DTD DocBook XML CALS Table Model V4.3//EN' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/calstblx.dtd' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
                 '-//OASIS//DTD XML Exchange Table Model 19990315//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/soextblx.dtd' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/soextblx.dtd' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//ELEMENTS DocBook XML Information Pool V#{xml_version}//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/dbpoolx.mod' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//ELEMENTS DocBook XML Information Pool V4.3//EN' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/dbpoolx.mod' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//ELEMENTS DocBook XML Document Hierarchy V#{xml_version}//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/dbhierx.mod' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.3//EN' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/dbhierx.mod' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//ELEMENTS DocBook XML HTML Tables V#{xml_version}//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/htmltblx.mod' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//ELEMENTS DocBook XML HTML Tables V4.3//EN' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/htmltblx.mod' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//ENTITIES DocBook XML Notations V#{xml_version}//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/dbnotnx.mod' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//ENTITIES DocBook XML Notations V4.3//EN' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/dbnotnx.mod' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//ENTITIES DocBook XML Character Entities V#{xml_version}//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/dbcentx.mod' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//ENTITIES DocBook XML Character Entities V4.3//EN' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/dbcentx.mod' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'public' \
-                '-//OASIS//ENTITIES DocBook XML Additional General Entities V#{xml_version}//EN' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}/dbgenent.mod' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                '-//OASIS//ENTITIES DocBook XML Additional General Entities V4.3//EN' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3/dbgenent.mod' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'rewriteSystem' \
-                'http://www.oasis-open.org/docbook/xml/#{xml_version}' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook &&
+                'http://www.oasis-open.org/docbook/xml/4.3' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook &&
             xmlcatalog --noout --add 'rewriteURI' \
-                'http://www.oasis-open.org/docbook/xml/#{xml_version}' \
-                'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}' \
-                #{CREW_DEST_PREFIX}/etc/xml/docbook"
+                'http://www.oasis-open.org/docbook/xml/4.3' \
+                'file:///usr/local/share/xml/docbook/xml-dtd-4.3' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/docbook"
     
-    system "rm -f #{CREW_PREFIX}/etc/xml/catalog && \
-                xmlcatalog --noout --create #{CREW_DEST_PREFIX}/etc/xml/catalog && \
+    system "if [ ! -e #{CREW_DEST_DIR}/usr/local/etc/xml/catalog ]; then
+                xmlcatalog --noout --create #{CREW_DEST_DIR}/usr/local/etc/xml/catalog
+            fi &&
             xmlcatalog --noout --add 'delegatePublic' \
                 '-//OASIS//ENTITIES DocBook XML' \
-                'file://#{CREW_PREFIX}/etc/xml/docbook' \
-                #{CREW_DEST_PREFIX}/etc/xml/catalog &&
+                'file:///usr/local/etc/xml/docbook' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/catalog &&
             xmlcatalog --noout --add 'delegatePublic' \
                 '-//OASIS//DTD DocBook XML' \
-                'file://#{CREW_PREFIX}/etc/xml/docbook' \
-                #{CREW_DEST_PREFIX}/etc/xml/catalog &&
+                'file:///usr/local/etc/xml/docbook' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/catalog &&
             xmlcatalog --noout --add 'delegateSystem' \
                 'http://www.oasis-open.org/docbook/' \
-                'file://#{CREW_PREFIX}/etc/xml/docbook' \
-                #{CREW_DEST_PREFIX}/etc/xml/catalog &&
+                'file:///usr/local/etc/xml/docbook' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/catalog &&
             xmlcatalog --noout --add 'delegateURI' \
                 'http://www.oasis-open.org/docbook/' \
-                'file://#{CREW_PREFIX}/etc/xml/docbook' \
-                #{CREW_DEST_PREFIX}/etc/xml/catalog"
+                'file:///usr/local/etc/xml/docbook' \
+                #{CREW_DEST_DIR}/usr/local/etc/xml/catalog"
   end
 end

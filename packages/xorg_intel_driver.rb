@@ -12,8 +12,8 @@ class Xorg_intel_driver < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_intel_driver-3.3.17-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-       i686: 'cde6829f4369ebcc687ce8d8ca4bf13c22c815edb086bf7cd0cdd20cb42be1b1',
-     x86_64: 'a9c50a31933fba36b7e3440b897b52cb18c2e264b8ac86aa2253e0cb899cb2a3',
+       i686: 'cc156e80692820cbaa2bf816cd6da3b699e0bae35af228d64d639365e8346dcd',
+     x86_64: '9a59dfe1ce9e60dfdb5936ec5b8fb0b5d6d060f5f1d137141b93798a951359ac',
   })
 
   depends_on 'xorg_server' => :build
