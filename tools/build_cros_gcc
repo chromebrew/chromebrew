@@ -1,21 +1,24 @@
 #!/bin/bash
 
+ # '\033[1;31' outputs red text. '\033[0m' reverts it to normal.
+ command -v crew > /dev/null || { echo -e "\033[1;31mcrew command not found.\033[0m"; exit 1; }
+
  GLIBC=glibc-$(crew search glibc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
- BINUTILS=binutils-2.31.1
+ BINUTILS=binutils-$(crew search binutils -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
  GCC=gcc-8.2.0
- MPFR=mpfr-4.0.1
- GMP=gmp-6.1.2
- MPC=mpc-1.1.0
- ISL=isl-0.20
- CLOOG=cloog-0.18.4
+ MPFR=mpfr-$(crew search mpfr -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+ GMP=gmp-$(crew search gmp -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+ MPC=mpc-$(crew search mpc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+ ISL=isl-$(crew search isl -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
+ CLOOG=cloog-$(crew search cloog -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
 
  KERNEL_VERSION=$(crew search linuxheaders -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1).1
 
  MAJOR_VERSION="$(echo $KERNEL_VERSION | cut -c1)"
 
- case $1 in
- -h|--help) echo USAGE:
- echo \ $0 target arch_type prefix
+ case x$1x in
+ x-hx|x--helpx) echo USAGE:
+ echo \ $0 target [arch_type] [prefix]
  echo \ \-h, --help: Display this help
  echo \ \-v, --version: Display version
  echo \ \-t, --const: Display constants
@@ -23,10 +26,10 @@
  echo \ Valid targets: 'aarch64-cros-linux-gnu', 'x86_64-cros-linux-gnu', 'i686-cros-linux-gnu', 'armv7l-cros-linux-gnueabihf'
  shift
  exit 0;;
- -v|--version) echo build_cros_gcc version 1.26
+ x-vx|x--versionx) echo build_cros_gcc version 1.26.1
  shift
  exit 0;;
- -c|--clean) rm -rf build-binutils build-gcc build-glibc
+ x-cx|x--cleanx) rm -rf build-binutils build-gcc build-glibc
  rm -rf \
  ./$GCC \
  ./$CLOOG \
@@ -48,7 +51,7 @@
  ./$MPC.tar.gz || true
  shift
  exit 0;;
- -t|--const)
+ x-tx|x--constx)
  echo KERNEL_VERSION=$KERNEL_VERSION
  echo MAJOR_VERSION=$MAJOR_VERSION
  echo CLOOG=$CLOOG
@@ -61,22 +64,22 @@
  echo GLIBC=$GLIBC
  shift
  exit 0;;
- armv7l-cros-linux-gnueabihf)
+ xarmv7l-cros-linux-gnueabihfx)
  true;;
- aarch64-cros-linux-gnu)
+ xaarch64-cros-linux-gnux)
  true;;
- i686-cros-linux-gnu)
+ xi686-cros-linux-gnux)
  true;;
- x86_64-cros-linux-gnu)
+ xx86_64-cros-linux-gnux)
  true;;
- *)
+ xx)
+ $0 -h
+ exit 1;;
+ x*x)
  echo Invalid target or option \'$1\'
  $0 -h
  exit 1;;
  esac
-
- # '\033[1;31' outputs red text. '\033[0m' reverts it to normal.
- command -v crew > /dev/null || { echo "\033[1;31mcrew command not found.\033[0m"; exit 1; }
 
  if test ! $2; then
    echo "$1" | grep x86_64 1>/dev/null
@@ -105,19 +108,28 @@
    exit 0
  fi
 
- $0 -c
+ rm -rf \
+ ./$GLIBC \
+ ./$GMP \
+ ./$GCC \
+ ./$BINUTILS \
+ ./linux-$KERNEL_VERSION \
+ ./$MPFR \
+ ./$CLOOG \
+ ./$ISL \
+ ./$MPC
 
- echo $1 $2 $3
+ echo $0 $1 $2 $3
 
- wget https://ftpmirror.gnu.org/gnu/binutils/$BINUTILS.tar.xz
- wget https://ftpmirror.gnu.org/gnu/gcc/$GCC/$GCC.tar.xz
- wget https://www.kernel.org/pub/linux/kernel/v"$MAJOR_VERSION".x/linux-$KERNEL_VERSION.tar.xz
- wget https://ftpmirror.gnu.org/gnu/libc/$GLIBC.tar.xz
- wget https://ftpmirror.gnu.org/gnu/mpfr/$MPFR.tar.xz
- wget https://ftpmirror.gnu.org/gnu/gmp/$GMP.tar.xz
- wget https://ftpmirror.gnu.org/gnu/mpc/$MPC.tar.gz
- wget http://isl.gforge.inria.fr/$ISL.tar.bz2
- wget https://www.bastoul.net/cloog/pages/download/$CLOOG.tar.gz
+ wget -c https://ftpmirror.gnu.org/gnu/binutils/$BINUTILS.tar.xz
+ wget -c https://ftpmirror.gnu.org/gnu/gcc/$GCC/$GCC.tar.xz
+ wget -c https://www.kernel.org/pub/linux/kernel/v"$MAJOR_VERSION".x/linux-$KERNEL_VERSION.tar.xz
+ wget -c https://ftpmirror.gnu.org/gnu/libc/$GLIBC.tar.xz
+ wget -c https://ftpmirror.gnu.org/gnu/mpfr/$MPFR.tar.xz
+ wget -c https://ftpmirror.gnu.org/gnu/gmp/$GMP.tar.xz
+ wget -c https://ftpmirror.gnu.org/gnu/mpc/$MPC.tar.gz
+ wget -c http://isl.gforge.inria.fr/$ISL.tar.bz2
+ wget -c https://www.bastoul.net/cloog/pages/download/$CLOOG.tar.gz
 
  for tar in *.tar*; do tar xpf $tar; done
 
@@ -133,6 +145,10 @@
  ./$MPC.tar.gz 
 
  cd $GCC
+ for patch in {isl-0.20,libmpx}; do
+   wget https://github.com/JL2210/patches/raw/master/gcc-8.2.0-$patch.patch
+   patch -p1 < gcc-8.2.0-$patch.patch
+ done
  ln -s ../$CLOOG cloog
  ln -s ../$ISL isl
  ln -s ../$MPC mpc
@@ -142,7 +158,7 @@
  mkdir build-binutils || true
  cd build-binutils
  ../$BINUTILS/configure --prefix=$3 --target=$1 --disable-multilib
- make -j$(nproc)
+ make -j$(( `nproc` + 1 ))
  make install
  cd ..
  cd linux-$KERNEL_VERSION
@@ -150,29 +166,29 @@
  cd ..
  mkdir build-gcc || true
  cd build-gcc
- ../$GCC/configure --disable-libmpx --prefix=$3 --target=$1 --enable-shared --enable-host-shared --enable-languages=c,c++,fortran,go --disable-multilib
- make -j$(nproc) all-gcc
+ ../$GCC/configure --prefix=$3 --target=$1 --enable-shared --enable-host-shared --enable-languages=c,c++,fortran,go --disable-multilib
+ make -j$(( `nproc` + 1 )) all-gcc
  make install-gcc
  cd ..
  mkdir build-glibc || true
  cd build-glibc
- ../$GLIBC/configure --disable-libmpx --prefix=$3/$1 --enable-shared --enable-host-shared --build=$MACHTYPE --host=$1 --target=$1 --with-headers=$3/$1/include --disable-multilib libc_cv_forced_unwind=yes
+ ../$GLIBC/configure --prefix=$3/$1 --enable-shared --enable-host-shared --build=$MACHTYPE --host=$1 --target=$1 --with-headers=$3/$1/include --disable-multilib libc_cv_forced_unwind=yes
  make install-bootstrap-headers=yes install-headers
- make -j$(nproc) csu/subdir_lib
+ make -j$(( `nproc` + 1 )) csu/subdir_lib
  install csu/crt1.o csu/crti.o csu/crtn.o $3/$1/lib
  $1-gcc -nostdlib -nostartfiles -shared -x c /dev/null -o $3/$1/lib/libc.so
  touch $3/$1/include/gnu/stubs.h
  cd ..
  cd build-gcc
- make -j$(nproc) all-target-libgcc
+ make -j$(( `nproc` + 1 )) all-target-libgcc
  make install-target-libgcc
  cd ..
  cd build-glibc
- make -j$(nproc)
+ make -j$(( `nproc` + 1 ))
  make install
  cd ..
  cd build-gcc
- make -j$(nproc)
+ make -j$(( `nproc` + 1 ))
  make install
  cd ..
  $1-gcc -v
