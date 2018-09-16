@@ -3,21 +3,21 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '4.15'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-4.15.tar.xz'
-  source_sha256 'ce707f2a28ee49496595af163d0cac24a9b7b88ab9aa5e5057abaa3d03cec106'
+  version '4.16'
+  source_url 'https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-4.16.tar.xz'
+  source_sha256 '47ffcc0d27d50e497e290b27e8d76dbed4550db14c881f25b771bcaf28354db4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.16-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.16-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-4.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c566190f3dae32ca9df24bc053c1b8754a26088c36da4355c1aab9d28e6e15f4',
-     armv7l: 'c566190f3dae32ca9df24bc053c1b8754a26088c36da4355c1aab9d28e6e15f4',
-       i686: 'f523d513517f1be4132d0023bbad1492c91822b48d590f93982306aeed9f5d68',
-     x86_64: '13b7282b0c45b1c0ae81af86bab2cbdf31c13cc923a1fb248130c62e7ea89fa1',
+    aarch64: 'b35bc3788192c55de31e28d0fd1105e3e9e1e7285f49c837aaef76239bd8df80',
+     armv7l: 'b35bc3788192c55de31e28d0fd1105e3e9e1e7285f49c837aaef76239bd8df80',
+       i686: '99aec8751774cccc93675cb93b95c1023e08a6a9612f9da0d1fb63adfdae26fe',
+     x86_64: '2954a0b3aad52ea863273182dca083c0e3417ad4ffb3ecf8480ea83c69d7b0c7',
   })
 
   depends_on 'mandb'
