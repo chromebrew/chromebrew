@@ -3,21 +3,21 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialise or manually update index database caches that are usually maintained by man.'
   homepage 'http://savannah.nongnu.org/projects/man-db'
-  version '2.8.3-1'
-  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.8.3.tar.xz'
-  source_sha256 '5932a1ca366e1ec61a3ece1a3afa0e92f2fdc125b61d236f20cc6ff9d80cc4ac'
+  version '2.8.4'
+  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.8.4.tar.xz'
+  source_sha256 '103c185f9d8269b9ee3b8a4cb27912b3aa393e952731ef96fedc880723472bc3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.3-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '47de869585dada625523682c73d774dd66af309be5be9a1979719629852216de',
-     armv7l: '47de869585dada625523682c73d774dd66af309be5be9a1979719629852216de',
-       i686: '860910cc197a8ce04fd138f70e73e3157c372ff9e3a703c4fad9d349c75d5f6d',
-     x86_64: 'cdf13916d9f2afa47c9a2baa156af61f21abb2a245d5b90153b13978251bde2b',
+    aarch64: 'ff27c031abd6c775bdf8eb25f3655fe4b2cd91963e1d7779527d8fd9ad692c79',
+     armv7l: 'ff27c031abd6c775bdf8eb25f3655fe4b2cd91963e1d7779527d8fd9ad692c79',
+       i686: '6a403dd38647e742a9affc1ac831c9dbacfaa55aa09db127f51d6fc331214d99',
+     x86_64: '0f3b5fee5e9b90e93f2242033cf7a49cd9100cf8b355e3abe4ba6f0d2f51b733',
   })
 
   depends_on 'libpipeline'
@@ -28,7 +28,7 @@ class Mandb < Package
   def self.build
     system './configure',
       "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}",
-      "--with-systemdtmpfilesdir=#{CREW_PREFIX}/lib/tmpfiles.d", # we can't write to /usr/lib/tmpfiles.d
+      "--with-systemdtmpfilesdir=#{CREW_PREFIX}/etc/tmpfiles.d", # we can't write to /usr/lib/tmpfiles.d
       '--disable-cache-owner',                                   # we can't create the user 'man'
       "--with-pager=#{CREW_PREFIX}/bin/less"                     # the pager is not at the default location
     system 'make'
@@ -55,8 +55,7 @@ class Mandb < Package
 
   def self.postinstall
     puts
-    puts "To finish the installation, set the default PAGER and MANPATH environment variables:".lightblue
-    puts "echo \"export PAGER=#{CREW_PREFIX}/bin/less\" >> ~/.bashrc".lightblue
+    puts "To finish the installation, set the default MANPATH environment variable:".lightblue
     puts "echo \"export MANPATH=#{CREW_PREFIX}/man:$MANPATH\" >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
