@@ -13,8 +13,8 @@ class Checkinstall < Package
   })
 
   def self.patch
-    system 'wget', 'https://github.com/JL2210/patches/raw/f2da9fb13545311e67decef27626c45e4c6583e1/checkinstall-1.6.2-chromebrew.patch'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('checkinstall-1.6.2-chromebrew.patch') ) == '17706ab65698b7baa4cb2c1eda1c9ef3a41453069f6d83843f3c134439d3096a'
+    system 'wget', 'https://github.com/JL2210/patches/raw/267ebd80cc8d2c366cd3adb72e26d4cd51677571/checkinstall-1.6.2-chromebrew.patch'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('checkinstall-1.6.2-chromebrew.patch') ) == '2a70ef396416c3a405b0c5dea54df867e52318efd9868fa1c0cf25c7d7b5e2f3'
     system 'patch -p1 < checkinstall-1.6.2-chromebrew.patch'
   end
 
@@ -23,14 +23,7 @@ class Checkinstall < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/checkinstall/"
-    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
-    system "make", "install", "PREFIX=#{CREW_PREFIX}", "LCDIR=#{CREW_PREFIX}/lib/checkinstall", "CONFDIR=#{CREW_PREFIX}/lib/checkinstall/locale", "LIBDIR=#{CREW_LIB_PREFIX}"
-    system "cp -pa #{CREW_PREFIX}/bin/installwatch #{CREW_DEST_PREFIX}/bin/"
-    system "cp -rpa #{CREW_PREFIX}/lib/checkinstall/ #{CREW_DEST_PREFIX}/lib/"
-    system "cp -pa #{CREW_LIB_PREFIX}/installwatch.so #{CREW_DEST_LIB_PREFIX}/"
-    system "cp -pa #{CREW_PREFIX}/sbin/checkinstall #{CREW_DEST_PREFIX}/bin/"
-    system "cp -pa #{CREW_PREFIX}/sbin/makepak #{CREW_DEST_PREFIX}/bin/"
+    system "make", "install", "PREFIX=#{CREW_DEST_PREFIX}", "LCDIR=#{CREW_DEST_PREFIX}/etc/checkinstall", "CONFDIR=#{CREW_DEST_PREFIX}/share/checkinstall/locale", "LIBDIR=#{CREW_DEST_LIB_PREFIX}"
+    system "sed -i 's,#{CREW_DEST_PREFIX},#{CREW_PREFIX},g' #{CREW_DEST_PREFIX}/bin/installwatch"
   end
 end
