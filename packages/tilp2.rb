@@ -21,7 +21,13 @@ class Tilp2 < Package
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('tilp2-1.18-autoconf.patch') ) == 'dedba5bbd1ceb9cf819ea62c156377b6e4eb4b167f33e2c4c8823c2684fa352b'
     system 'patch -Np1 -i tilp2-1.18-autoconf.patch'
     system 'autoreconf -i'
-    system "CC='clang -fuse-ld=lld -L#{CREW_LIB_PREFIX} -lusb-1.0' CXX='clang++ -fuse-ld=lld -L#{CREW_LIB_PREFIX} -lusb-1.0' ./configure --prefix=#{CREW_PREFIX} --without-kde --enable-libusb10 --libdir=#{CREW_LIB_PREFIX}"
+    system "/usr/bin/env",
+           "CC=clang -fuse-ld=lld",
+           "CXX=clang++ -fuse-ld=lld",
+           "./configure",
+           "--prefix=#{CREW_PREFIX}",
+           "--without-kde",
+           "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
     system 'make install'
   end
