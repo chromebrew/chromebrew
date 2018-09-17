@@ -29,16 +29,16 @@ class Tinycore < Package
 
 set -e
 
-export PKG=`echo \$\{1%%.*\}`
+export PKG=`echo $\{1%%.*\}`
 export BIN=`echo $1|sed \"s/^[^\.]*\.//\"`
 export OPT=`shift; echo $@`
 
-[ -d #{CREW_PREFIX}/share/tinycore/\$\PKG ] || { echo Package $PKG not found. && exit 1; }
-[ -e #{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/bin/\$\BIN ] || { echo Program $BIN not found. && exit 1; }
-if file #{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/bin/\$\BIN | grep \"text executable\" &>/dev/null; then
-  LD_LIBRARY_PATH=\$\LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/lib #{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/bin/\$\BIN $OPT
+[ -d #{CREW_PREFIX}/share/tinycore/$PKG ] || { echo Package $PKG not found. && exit 1; }
+[ -e #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN ] || { echo Program $BIN not found. && exit 1; }
+if file #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN | grep \"text executable\" &>/dev/null; then
+  LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/lib #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN $OPT
 else
-  LD_LIBRARY_PATH=\$\LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/lib /#{ARCH_LIB}/ld-linux-x86-64.so.2 #{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/bin/\$\BIN $OPT
+  LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/lib /#{ARCH_LIB}/ld-linux-x86-64.so.2 #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN $OPT
 fi
 ' > tinycore" 
     else
@@ -46,13 +46,13 @@ fi
 
 set -e
 
-export PKG=`echo \$\{1%%.*\}`
+export PKG=`echo $\{1%%.*\}`
 export BIN=`echo $1|sed \"s/^[^\.]*\.//\"`
 export OPT=`shift; echo $@`
 
-[ -d #{CREW_PREFIX}/share/tinycore/\$\PKG ] || { echo Package $PKG not found. && exit 1; }
-[ -e #{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/bin/\$\BIN ] || { echo Program $BIN not found. && exit 1; }
-LD_LIBRARY_PATH=\$\LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/lib #{CREW_PREFIX}/share/tinycore/\$\PKG/usr/local/bin/\$\BIN $OPT
+[ -d #{CREW_PREFIX}/share/tinycore/$PKG ] || { echo Package $PKG not found. && exit 1; }
+[ -e #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN ] || { echo Program $BIN not found. && exit 1; }
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/lib #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN $OPT
 ' > tinycore"
     end
     system "chmod a+x tinycore"
@@ -76,10 +76,10 @@ LD_LIBRARY_PATH=\$\LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/\$\PKG/usr/loca
     puts "sudo umount #{CREW_PREFIX}/share/tinycore/bash/".lightblue
     puts
     puts "The executable names are in the format of Snap executable names.".lightblue
-    puts "For eample, to execute the \'bashbug\' program in the TinyCore \'bash\' package, please execute:".lightblue
+    puts "For eample, to execute the 'bashbug' program in the TinyCore 'bash' package, please execute:".lightblue
     puts "tinycore bash.bashbug".lightblue
     puts
-    puts "To run a binary that has a dot in its name, such as \'ld.gold\', use the full name:".lightblue
+    puts "To run a binary that has a dot in its name, such as 'ld.gold', use the full name:".lightblue
     puts "tinycore binutils.ld.gold".lightblue
     puts
   end
