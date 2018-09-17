@@ -4,7 +4,7 @@ class Tinycore < Package
   description 'TinyCore Linux is a distro based on loop-device mounted programs, like Snaps.
           This is a wrapper script to be able to execute their .tcz files.'
   homepage 'https://distro.ibiblio.org/tinycorelinux/'
-  version '9.0'
+  version '9.0-0'
   case ARCH
   when 'armv7l', 'aarch64'
     source_url 'https://distro.ibiblio.org/tinycorelinux/9.x/armv7/tcz/bash.tcz'
@@ -72,11 +72,12 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/li
     puts "Examples are located at #{CREW_PREFIX}/share/tinycore/examples/".lightblue
     puts "To try TinyCore Bash, please execute:".lightblue
     puts "sudo mount -o loop #{CREW_PREFIX}/share/tinycore/examples/bash.tcz #{CREW_PREFIX}/share/tinycore/bash/".lightblue
-    puts "tinycore bash".lightblue
+    puts "tinycore bash.bash".lightblue
     puts "sudo umount #{CREW_PREFIX}/share/tinycore/bash/".lightblue
     puts
     puts "The executable names are in the format of Snap executable names.".lightblue
-    puts "For eample, to execute the 'bashbug' program in the TinyCore 'bash' package, please execute:".lightblue
+    puts "This is imperative to be able to run TinyCore programs.".lightblue
+    puts "For eample, to run the 'bashbug' program in the TinyCore 'bash' package, please execute:".lightblue
     puts "tinycore bash.bashbug".lightblue
     puts
     puts "To run a binary that has a dot in its name, such as 'ld.gold', use the full name:".lightblue
