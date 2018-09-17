@@ -8,8 +8,16 @@ class Nano < Package
   source_sha256 'e0a5bca354514e64762c987c200a8758b05e7bcced3b00b3e48ea0a2d383c8a0'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'dfe6697ad765fb20a78d7a8e7fec8eb3b603ca94d08efb1542667067f91a7904',
+     armv7l: 'dfe6697ad765fb20a78d7a8e7fec8eb3b603ca94d08efb1542667067f91a7904',
+       i686: '63984d3fc80bbf58cdd46ef3fd183e3fd145a0ab50e931a99f789286a05791fa',
+     x86_64: 'dc7d01d8bf910cb2a242687212bea0bedf520006a594ef92f038cc1a1f76cb2a',
   })
 
   depends_on 'filecmd'
