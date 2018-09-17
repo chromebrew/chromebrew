@@ -1,7 +1,7 @@
 require 'package'
 
 class Libticalcs2 < Package
-  description 'Libticalcs2 offers the library used to properly manipulate files on TI calculators.'
+  description 'Libticalcs2 offers the library used to communicate with TI calculators. It implements the TI protocol for each type of calculator, independently of the link cable used to establish the link.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
   version '1.1.9'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libticalcs2-1.1.9.tar.bz2'
