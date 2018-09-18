@@ -1,6 +1,6 @@
 #!/bin/bash
 
- # '\033[1;31' outputs red text. '\033[0m' reverts it to normal.
+ # '\033[1;31m' outputs red text. '\033[0m' reverts it to normal.
  command -v crew > /dev/null || { echo -e "\033[1;31mcrew command not found.\033[0m"; exit 1; }
 
  GLIBC=glibc-$(crew search glibc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
@@ -17,7 +17,7 @@
  MAJOR_VERSION="$(echo $KERNEL_VERSION | cut -c1)"
 
  case x$1x in
- x-hx|x--helpx) echo USAGE:
+ x-hx|x--helpx) echo Usage:
  echo \ $0 target [arch_type] [prefix]
  echo \ \-h, --help: Display this help
  echo \ \-v, --version: Display version
@@ -76,7 +76,7 @@
  $0 -h
  exit 1;;
  x*x)
- echo Invalid target or option \'$1\'
+ echo -e "\033[1;31mInvalid target or option '$1'\033[0m"
  $0 -h
  exit 1;;
  esac
@@ -119,8 +119,6 @@
  ./$ISL \
  ./$MPC
 
- echo $0 $1 $2 $3
-
  wget -c https://ftpmirror.gnu.org/gnu/binutils/$BINUTILS.tar.xz
  wget -c https://ftpmirror.gnu.org/gnu/gcc/$GCC/$GCC.tar.xz
  wget -c https://www.kernel.org/pub/linux/kernel/v"$MAJOR_VERSION".x/linux-$KERNEL_VERSION.tar.xz
@@ -145,9 +143,10 @@
  ./$MPC.tar.gz 
 
  cd $GCC
- for patch in isl-0.20; do
-   wget https://github.com/JL2210/patches/raw/master/gcc-8.2.0-$patch.patch
-   patch -p1 < gcc-8.2.0-$patch.patch
+ GCC_PATCHES="$GCC-$ISL.patch"
+ for patch in $GCC_PATCHES; do
+   wget https://github.com/JL2210/patches/raw/master/$patch.patch
+   patch -p1 < $patch.patch
  done
  ln -s ../$CLOOG cloog
  ln -s ../$ISL isl
