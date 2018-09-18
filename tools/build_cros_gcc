@@ -18,7 +18,7 @@
 
  case x$1x in
  x-hx|x--helpx) echo Usage:
- echo \ $0 target [arch_type] [prefix]
+ echo \ $0 target [arch_type] [prefix] [jobs]
  echo \ \-h, --help: Display this help
  echo \ \-v, --version: Display version
  echo \ \-t, --const: Display constants
@@ -107,6 +107,8 @@
    $0 $1 $2 $(crew const CREW_PREFIX | cut -d'=' -f2)
    exit 0
  fi
+ if test ! $4; then
+   $0 $1 $2 $3 $(( `nproc` + 1 ))
 
  rm -rf \
  ./$GLIBC \
@@ -144,9 +146,9 @@
 
  cd $GCC
  GCC_PATCHES="$GCC-$ISL.patch"
- for patch in $GCC_PATCHES; do
-   wget https://github.com/JL2210/patches/raw/master/$patch.patch
-   patch -p1 < $patch.patch
+ for PATCH in $GCC_PATCHES; do
+   wget https://github.com/JL2210/patches/raw/master/$PATCH
+   patch -p1 < $PATCH
  done
  ln -s ../$CLOOG cloog
  ln -s ../$ISL isl
@@ -157,7 +159,7 @@
  mkdir build-binutils || true
  cd build-binutils
  ../$BINUTILS/configure --prefix=$3 --target=$1 --disable-multilib
- make -j$(( `nproc` + 1 ))
+ make -j$4
  make install
  cd ..
  cd linux-$KERNEL_VERSION
@@ -166,28 +168,28 @@
  mkdir build-gcc || true
  cd build-gcc
  ../$GCC/configure --prefix=$3 --target=$1 --enable-shared --enable-host-shared --enable-languages=c,c++,fortran,go --disable-multilib --disable-libmpx
- make -j$(( `nproc` + 1 )) all-gcc
+ make -j$4 all-gcc
  make install-gcc
  cd ..
  mkdir build-glibc || true
  cd build-glibc
  ../$GLIBC/configure --prefix=$3/$1 --enable-shared --enable-host-shared --build=$MACHTYPE --host=$1 --target=$1 --with-headers=$3/$1/include --disable-multilib libc_cv_forced_unwind=yes
  make install-bootstrap-headers=yes install-headers
- make -j$(( `nproc` + 1 )) csu/subdir_lib
+ make -j$4 csu/subdir_lib
  install csu/crt1.o csu/crti.o csu/crtn.o $3/$1/lib
  $1-gcc -nostdlib -nostartfiles -shared -x c /dev/null -o $3/$1/lib/libc.so
  touch $3/$1/include/gnu/stubs.h
  cd ..
  cd build-gcc
- make -j$(( `nproc` + 1 )) all-target-libgcc
+ make -j$4 all-target-libgcc
  make install-target-libgcc
  cd ..
  cd build-glibc
- make -j$(( `nproc` + 1 ))
+ make -j$4
  make install
  cd ..
  cd build-gcc
- make -j$(( `nproc` + 1 ))
+ make -j$4
  make install
  cd ..
  $1-gcc -v
