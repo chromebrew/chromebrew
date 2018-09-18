@@ -145,7 +145,7 @@
  ./$MPC.tar.gz 
 
  cd $GCC
- for patch in {isl-0.20,libmpx}; do
+ for patch in isl-0.20; do
    wget https://github.com/JL2210/patches/raw/master/gcc-8.2.0-$patch.patch
    patch -p1 < gcc-8.2.0-$patch.patch
  done
@@ -166,7 +166,7 @@
  cd ..
  mkdir build-gcc || true
  cd build-gcc
- ../$GCC/configure --prefix=$3 --target=$1 --enable-shared --enable-host-shared --enable-languages=c,c++,fortran,go --disable-multilib
+ ../$GCC/configure --prefix=$3 --target=$1 --enable-shared --enable-host-shared --enable-languages=c,c++,fortran,go --disable-multilib --disable-libmpx
  make -j$(( `nproc` + 1 )) all-gcc
  make install-gcc
  cd ..
