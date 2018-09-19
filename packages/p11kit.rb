@@ -3,21 +3,21 @@ require 'package'
 class P11kit < Package
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
   homepage 'https://p11-glue.freedesktop.org/p11-kit.html'
-  version '0.23.12'
-  source_url 'https://github.com/p11-glue/p11-kit/releases/download/0.23.12/p11-kit-0.23.12.tar.gz'
-  source_sha256 '58bae22f19db1de1a1103e7ca4149eed6e303e727878c2cd5ea9e6fe445fd403'
+  version '0.23.14'
+  source_url 'https://github.com/p11-glue/p11-kit/releases/download/0.23.14/p11-kit-0.23.14.tar.gz'
+  source_sha256 '1cb9fa6d237539f25f62f4c3d4ec71a1c8e0772957ec45ec5af92134129e0d70'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.14-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.14-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c9c3d841ccc2d45536c9a8329f8661091d0d23aeea1a8bb62d0f2c4e86116167',
-     armv7l: 'c9c3d841ccc2d45536c9a8329f8661091d0d23aeea1a8bb62d0f2c4e86116167',
-       i686: '0d93fde738b8cfd25545ea5d269d8dcf9597c5b278be063d7a4dda4af12a1608',
-     x86_64: '581a24c662d39ea82b8bf40528f496ccee5bcefd00d342b9fa24ccb2c5deb74c',
+    aarch64: 'b6957e7f22ee476d529a351dade879a168c6c5f5241e0b1c96c20a93e853ee5a',
+     armv7l: 'b6957e7f22ee476d529a351dade879a168c6c5f5241e0b1c96c20a93e853ee5a',
+       i686: 'f6b0ba591a68a77173b35eb0694e1178dd476af18e26ac3c7a1928f2612b8fc9',
+     x86_64: '748a9021e772591b6133babda14dc52e0f4c95ea7955254d447d0b6ad7ba2df9',
   })
 
   depends_on 'libffi'
