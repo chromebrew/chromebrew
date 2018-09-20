@@ -3,21 +3,21 @@ require 'package'
 class Wget < Package
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
-  version '1.19.4'
-  source_url 'https://ftpmirror.gnu.org/wget/wget-1.19.4.tar.gz'
-  source_sha256 '93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5'
+  version '1.19.5'
+  source_url 'https://ftpmirror.gnu.org/wget/wget-1.19.5.tar.lz'
+  source_sha256 '29fbe6f3d5408430c572a63fe32bd43d5860f32691173dfd84edc06869edca75'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wget-1.19.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bab5af68ea69bfe5bd74d533fa6f7f5fefa428ac05c8e505f9725ac3deb7c56d',
-     armv7l: 'bab5af68ea69bfe5bd74d533fa6f7f5fefa428ac05c8e505f9725ac3deb7c56d',
-       i686: '6019d23e65947cae46590465e653d556a42a6ee987d20bd617e32ba79f5a4521',
-     x86_64: '31077b80d13d573384154a222a490bb97d640e85fc0c8e0c444568a01e4f4df4',
+    aarch64: '35587c27c9750f198bdab2867e41e7f06296c50de68287d0d58facab8c5fb1e0',
+     armv7l: '35587c27c9750f198bdab2867e41e7f06296c50de68287d0d58facab8c5fb1e0',
+       i686: 'b87c6a0ba84f08875205e232f85eb75e548201554887800ccbc8b5e5aa5f8bbe',
+     x86_64: '548eed614937bab283230225992d52d7760e76f2b1aeb5f0e605419bdb9b0439',
   })
 
   depends_on 'gnutls'
