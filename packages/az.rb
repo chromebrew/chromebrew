@@ -3,26 +3,26 @@ require 'package'
 class Az < Package
   description 'The Azure CLI 2.0 is Azure\'s new command-line experience for managing Azure resources.'
   homepage 'https://github.com/Azure/azure-cli'
-  version '2.0.32'
-  source_url 'https://github.com/Azure/azure-cli/archive/azure-cli-2.0.32.tar.gz'
-  source_sha256 'e15fd9b22ab2933532b06d772f97c9bfb12cf9f8908aab48078a030eeee252b1'
+  version '2.0.46'
+  source_url 'https://github.com/Azure/azure-cli/archive/azure-cli-2.0.46.tar.gz'
+  source_sha256 '9a571e16e832614a064311dffea884ab4ae4c2739010b58c34fb2b190484d41c'
 
   binary_url ({
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/az-2.0.32-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/az-2.0.32-chromeos-x86_64.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/az-2.0.46-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/az-2.0.46-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-       i686: '60a1e5f80401b760d5e20767a69b265de90ef791865862f87379214c61f521a1',
-     x86_64: 'f469959218e5ad32c99748b41903403968bcf0c53ab7ff22f9fcda28aca421a1',
+       i686: 'f94d828a2eac6c69ec330f2434e90de97f77c19e5de09c6370e1f4ecf53792da',
+     x86_64: 'e21a228cfaf6d85c0407451796c869a7a20da8ccd8de15380a28c1850c2e4347',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
   depends_on 'libffi'
   depends_on 'openssl'
+  depends_on 'setuptools'
 
   def self.install
-    system "pip install setuptools"
     system "pip install azure-cli -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
+    system "chmod +x #{CREW_DEST_PREFIX}/bin/az"
   end
 
   def self.postinstall
