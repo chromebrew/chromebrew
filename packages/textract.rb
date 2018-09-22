@@ -20,13 +20,11 @@ class Textract < Package
      x86_64: '13e5933fe8082e152cdf80c661f85f9a425e2a303ace296cf82e8d302da39551',
   })
 
-  depends_on 'python3'
+  depends_on 'setuptools'
   depends_on 'pulseaudio'
   depends_on 'swig'
 
   def self.install
-    system 'pip3 install setuptools'
     system "pip3 install textract --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
-    system 'pip3 uninstall --yes setuptools'
   end
 end

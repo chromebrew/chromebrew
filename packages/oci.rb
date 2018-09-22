@@ -16,14 +16,12 @@ class Oci < Package
      x86_64: 'c99356e8373dde7f00b3a24351e0eacdaf2037b47d30f52fedfc7c2233a2300b',
   })
 
-  depends_on 'python3'
+  depends_on 'setuptools'
   depends_on 'virtualenv'
 
   def self.install
-    system "pip3 install setuptools"
     system "pip3 install oci_cli-*-py2.py3-none-any.whl --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
     system "pip3 install oci_cli --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
-    system "pip3 uninstall --yes setuptools"
   end
 
   def self.postinstall
