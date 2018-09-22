@@ -20,11 +20,12 @@ class Csvkit < Package
      x86_64: '0f56661e9e4d3d9bc7c72b1bc12d8558f8ec622e9310f18a155ac7601e2ba9e0',
   })
 
-  depends_on 'python27'
+  depends_on 'setuptools'
 
   def self.install
-    system "yes | pip install setuptools"
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -r requirements-py2.txt -r requirements-py3.txt csvkit"
-    system "yes | pip uninstall setuptools"
+    system "pip install --prefix #{CREW_PREFIX} \
+            --root #{CREW_DEST_DIR} \
+            -r requirements-py2.txt \
+            -r requirements-py3.txt csvkit"
   end
 end

@@ -20,12 +20,10 @@ class Choose < Package
      x86_64: '138d368f47682787e47e01a59090014d993e8f63ba6678a9b315640a5075cd88',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'setuptools'
 
   def self.install
-    system "yes | pip install setuptools"
     system "pip install urwid --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
     system "install -Dm755 choose #{CREW_DEST_PREFIX}/bin/choose"
-    system "pip uninstall setuptools"
   end
 end
