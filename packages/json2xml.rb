@@ -21,7 +21,7 @@ class Json2xml < Package
   })
 
   depends_on 'libxslt'
-  depends_on 'python3'
+  depends_on 'setuptools'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
@@ -35,8 +35,6 @@ class Json2xml < Package
       system "echo 'fi' >> json2xml"
       system "chmod +x json2xml"
     end
-    system 'pip3 install setuptools'
     system "CFLAGS=-I#{CREW_PREFIX}/include/libxml2 pip3 install . --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
-    system 'pip3 uninstall --yes setuptools'
   end
 end
