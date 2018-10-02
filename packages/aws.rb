@@ -12,15 +12,18 @@ class Aws < Package
   binary_sha256 ({
   })
 
-  depends_on 'python3' unless File.exists? "#{CREW_PREFIX}/bin/python3"
+  depends_on 'python3'
 
-  def self.install
+  def self.build
     system "cat requirements-docs.txt >> requirements.txt"
     system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore,g' requirements.txt"
     system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer,g' requirements.txt"
     system "sed -i 's,-e git://github.com/boto/jmespath.git@develop#egg=jmespath,jmespath,g' requirements.txt"
-    system "pip3 install aws -r requirements.txt --upgrade --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
     system "python3 setup.py build"
+  end
+
+  def self.install
+    system "pip3 install aws -r requirements.txt --upgrade --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
     system "python3 setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
   end
 end
