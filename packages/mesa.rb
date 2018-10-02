@@ -33,7 +33,6 @@ class Mesa < Package
   depends_on 'python27'
   depends_on 'bison'
   depends_on 'libxshmfence'
-  depends_on 'llvm'
   depends_on 'elfutils'
   
   def self.build
