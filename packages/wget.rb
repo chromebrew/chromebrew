@@ -21,6 +21,7 @@ class Wget < Package
   })
 
   depends_on 'gnutls'
+  depends_on 'libpsl'
 
   def self.build
     system './configure',
