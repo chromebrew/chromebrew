@@ -21,11 +21,11 @@ class Avocado < Package
   end
 
   def self.install
-    system "pip2 install avocado-framework -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
+    system "pip3 install avocado-framework -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
     system "python3 setup.py install --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
     system "mkdir -p $HOME/.config/avocado"
     system "ln -sf #{CREW_PREFIX}/etc/avocado/avocado.conf $HOME/.config/avocado/avocado.conf"
-    system "mkdir -p #{CREW_DEST_DIR}/$HOME/.config/avocado"
-    system "ln -sf #{CREW_PREFIX}/etc/avocado/avocado.conf #{CREW_DEST_DIR}/$HOME/.config/avocado/avocado.conf"
+    system "mkdir -p #{CREW_DEST_HOME}/.config/avocado"
+    system "ln -sf #{CREW_PREFIX}/etc/avocado/avocado.conf #{CREW_DEST_HOME}/.config/avocado/avocado.conf"
   end
 end
