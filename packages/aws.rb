@@ -47,11 +47,11 @@ class Aws < Package
     puts "source ~/.bashrc".lightblue
     puts
     puts "To add aws completion for zsh, execute the following:".lightblue
-    puts "echo '# aws completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_zsh_completer.sh ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/bin/aws_zsh_completer.sh' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts "echo '# aws completion' >> ~/.zshrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_zsh_completer.sh ]; then' >> ~/.zshrc".lightblue
+    puts "echo '  source #{CREW_PREFIX}/bin/aws_zsh_completer.sh' >> ~/.zshrc".lightblue
+    puts "echo 'fi' >> ~/.zshrc".lightblue
+    puts "source ~/.zshrc".lightblue
     puts
   end
 end
