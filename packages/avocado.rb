@@ -17,7 +17,7 @@ class Avocado < Package
   depends_on 'setuptools'
 
   def self.install
-    system "pip3 install avocado-framework==64.0 -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
+    system "pip3 install -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
     system "python3 setup.py install --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
     system "mkdir -p $HOME/.config/avocado"
     system "ln -sf #{CREW_PREFIX}/etc/avocado/avocado.conf $HOME/.config/avocado/avocado.conf"
