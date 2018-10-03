@@ -15,15 +15,35 @@ class Aws < Package
   depends_on 'python3'
 
   def self.build
-    system "cat requirements-docs.txt >> requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore,g' requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer,g' requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/jmespath.git@develop#egg=jmespath,jmespath,g' requirements.txt"
-    system "python3 setup.py build"
+    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore==1.12.15,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer==0.1.13,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/jmespath.git@develop#egg=jmespath,jmespath==0.9.3,' requirements.txt"
   end
 
   def self.install
-    system "pip3 install aws -r requirements.txt --upgrade --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
-    system "python3 setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "pip3 install awscli==1.16.25 -r requirements.txt --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "chmod +x #{CREW_DEST_PREFIX}/bin/aws"
+    system "chmod +x #{CREW_DEST_PREFIX}/bin/aws_completer"
+  end
+
+  def self.postinstall
+    puts
+    puts "Command completion support is available for the following shells:".lightblue
+    puts "bash zsh".lightblue
+    puts
+    puts "To add aws completion for bash, execute the following:".lightblue
+    puts "echo '# aws completion' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_bash_completer ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  source #{CREW_PREFIX}/bin/aws_bash_completer' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
+    puts "To add aws completion for zsh, execute the following:".lightblue
+    puts "echo '# aws completion' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_zsh_completer.sh ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  source #{CREW_PREFIX}/bin/aws_zsh_completer.sh' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
   end
 end
