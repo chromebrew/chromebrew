@@ -12,7 +12,7 @@ class Avocado < Package
   binary_sha256 ({
   })
 
-  depends_on 'python3'
+  depends_on 'xdg_base'
   depends_on 'xzutils'
   depends_on 'setuptools'
 
