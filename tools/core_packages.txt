@@ -27,6 +27,7 @@ libffi
 libiconv
 libidn2
 libpipeline
+libpsl
 libsigsegv
 libssh2
 libtasn1
