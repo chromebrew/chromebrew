@@ -3,34 +3,47 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version '1.15.6'
-  source_url 'https://github.com/aws/aws-cli/archive/1.15.6.tar.gz'
-  source_sha256 '8dbc72ba35802579c99a18a0821932c15cd44e3456aaab986f3e68824e4722b6'
+  version '1.16.25'
+  source_url 'https://github.com/aws/aws-cli/archive/1.16.25.tar.gz'
+  source_sha256 '7c785969c320d8f00c5f4b6daee9e7f1377ec0de045ff811a645b709f534fd82'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.15.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.15.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.15.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.15.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4b94294abde4f05a2be26b748036400c456322c303ba274c5f3dcc08be879a05',
-     armv7l: '4b94294abde4f05a2be26b748036400c456322c303ba274c5f3dcc08be879a05',
-       i686: '78c0ad96c3d70e0d0124fd458a78a4221477fe659dd3966d3ab14cbd4b9f7fd2',
-     x86_64: 'f8a8b52a993aefe3f601badaba08a676ca53486e83484feda732bc3916636c1b',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
-  depends_on 'unzip' => :build
+  depends_on 'python3'
+
+  def self.build
+    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore==1.12.15,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer==0.1.13,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/jmespath.git@develop#egg=jmespath,jmespath==0.9.3,' requirements.txt"
+  end
 
   def self.install
-    system "wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip"
-    system "unzip awscli-bundle.zip"
-    system "awscli-bundle/install -i #{CREW_PREFIX}/share/aws -b #{CREW_PREFIX}/bin/aws"
-    system "chmod +x #{CREW_PREFIX}/bin/aws"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share"
-    system "cp #{CREW_PREFIX}/bin/aws #{CREW_DEST_PREFIX}/bin"
-    system "cp -r #{CREW_PREFIX}/share/aws #{CREW_DEST_PREFIX}/share"
+    system "pip3 install awscli==1.16.25 -r requirements.txt --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "chmod +x #{CREW_DEST_PREFIX}/bin/aws"
+    system "chmod +x #{CREW_DEST_PREFIX}/bin/aws_completer"
+  end
+
+  def self.postinstall
+    puts
+    puts "Command completion support is available for the following shells:".lightblue
+    puts "bash zsh".lightblue
+    puts
+    puts "To add aws completion for bash, execute the following:".lightblue
+    puts "echo '# aws completion' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_bash_completer ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  source #{CREW_PREFIX}/bin/aws_bash_completer' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
+    puts "To add aws completion for zsh, execute the following:".lightblue
+    puts "echo '# aws completion' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_zsh_completer.sh ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  source #{CREW_PREFIX}/bin/aws_zsh_completer.sh' >> ~/.bashrc".lightblue
+    puts "echo 'fi' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
   end
 end
