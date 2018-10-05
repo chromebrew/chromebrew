@@ -3,22 +3,9 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  version '1.10.2'
-  source_url 'https://dl.google.com/go/go1.10.2.src.tar.gz'
-  source_sha256 '6264609c6b9cd8ed8e02ca84605d727ce1898d74efa79841660b2e3e985a98bd'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.10.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '439c856bf87c758ba4cc227cd5ba4dd916908ed8d05d576610906a9ac908c546',
-     armv7l: '439c856bf87c758ba4cc227cd5ba4dd916908ed8d05d576610906a9ac908c546',
-       i686: 'f62c9b4a99a161c122b4099b0cda4de4d16ea26d651f70d70ecbd1cd85b44f94',
-     x86_64: 'd3c84bd8dec8731268e54a565da794e93966ffb68063a29dcc16b31bc007f723',
-  })
+  version '1.11.1'
+  source_url 'https://dl.google.com/go/go1.11.1.src.tar.gz'
+  source_sha256 '558f8c169ae215e25b81421596e8de7572bd3ba824b79add22fba6e284db1117'
 
   # Tests requires perl
   depends_on 'perl' => :build
