@@ -21,6 +21,7 @@ class Gvim < Package
   })
 
   depends_on 'vim'
+  depends_on 'gtk2'
   depends_on 'sommelier'
 
   def self.build
