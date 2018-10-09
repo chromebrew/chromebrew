@@ -10,7 +10,12 @@ class Glfw < Package                 # The first character of the class name mus
   depends_on 'cmake' => :build      # packages with "=> :build" are only required if you're building from source 
 
   def self.build                   # the steps required to build the package
-    system "cmake","-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}", "-DCMAKE_LIB_SUFFIX=64"
+    case ARCH
+    with 'x86_64'
+      system "cmake","-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}", "-DCMAKE_LIB_SUFFIX=64"
+    else
+      system "cmake","-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}"
+    end
     system "make"
   end
 
