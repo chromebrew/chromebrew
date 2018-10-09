@@ -86,14 +86,14 @@
             <h5>Available on aarch64, armv7l, i686 and x86_64.</h5>
           </div>
           <div class="highlight">
-            <pre><code>wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
+            <pre><code>curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
           </div>
         </div>
       </div>
 
       <div class="row marketing">
         <h3>What is it?</h3>
-        <p>Chromebrew is a package manager / source builder hybrid targeted for Chromebooks with Chrome OS.</p>
+        <p>Chromebrew is an <a href="https://github.com/skycocker/chromebrew/blob/master/LICENSE">open source</a> package manager / source builder hybrid targeting Chromebooks and Chrome OS.</p>
 
         <h3>What does it do?</h3>
         <p>
@@ -118,42 +118,82 @@
           If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
         </p>
 <pre>
+# It is recommended that you investigate other files in the 'packages/' directory
+# to help get an idea of how existing packages are being installed through Chromebrew.
+
 require 'package'
 
-class Vim &lt; Package
-  description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
-  homepage 'http://www.vim.org/'
-  version '8.0-1'
-  source_url 'ftp://ftp.vim.org/pub/vim/unix/vim-8.0.tar.bz2'
-  source_sha1 '54bb7fe631ed8eaea5675ec934e88b0da1f1eca0'
+class Template &lt; Package
+  description ''
+  homepage ''
+  version ''
+  source_url '*.tar.gz'
+  source_sha256 ''
 
-  depends_on 'ncurses'
-  # vim uses shared library of following languages, so need them isntalled at run-time
-  depends_on 'perl'
-  depends_on 'python27'
-  depends_on 'ruby'
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '',
+     armv7l: '',
+       i686: '',
+     x86_64: '',
+  })
 
+
+  # Register dependencies (use the following line as a basis)
+  #
+  # depends_on '*'
+  #
+
+
+  # Function to perform pre-install operations prior to install for both source build and binary distribution.
+  def self.preinstall
+
+  end
+
+
+  # Function to perform patch operations prior to build from source.
+  def self.patch
+
+  end
+
+
+  # Function to perform build from source.
   def self.build
-    system './configure --prefix=/usr/local --enable-gui=no --with-features=huge --without-x --disable-nls --enable-multibyte  --with-tlib=ncurses --enable-perlinterp --enable-pythoninterp  --enable-rubyinterp --with-ruby-command=/usr/local/bin/ruby --disable-selinux'
-    system "make"
+
   end
 
+
+  # Function to perform install from source build.
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "strip", "#{CREW_DEST_DIR}/usr/local/bin/vim"
 
-    puts "Make sure to put your .vim directory in a subdirectory of /usr/local so it has execute permissions"
-    puts "You can then symlink to your home directory so vim can see it"
-    puts "ln -s /usr/local/vim ~/.vim"
-    puts "ln -s ~/.vim/vimrc ~/.vimrc"
   end
+
+
+  # Function to perform post-install for both source build and binary distribution
+  def self.postinstall
+
+  end
+
+
+  # Function to perform check from source build.
+  # This is execute if and only if `crew build`.
+  def self.check
+
+  end
+
+
 end
 </pre>
         </p>
       </div>
 
       <div class="footer">
-        <p>&copy; <a href="http://msiwek.com/" target="_"><span class="name"><span class="name-first">Michal</span> Siwek</span></a> 2013</p>
+        <pre>&copy; 2013 Michal Siwek</pre>
       </div>
 
     </div> <!-- /container -->
