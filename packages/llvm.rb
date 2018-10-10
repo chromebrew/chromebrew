@@ -283,7 +283,8 @@ clang -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc"
 cxx_sys=#{CREW_PREFIX}/include/c++/#{gcc_ver}
 cxx_inc=#{CREW_PREFIX}/include/c++/#{gcc_ver}/x86_64-cros-linux-gnu
 gnuc_lib=#{CREW_PREFIX}/lib/gcc/x86_64-cros-linux-gnu/#{gcc_ver}
-clang++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
+gnuc_lib64=#{CREW_PREFIX}/lib64/gcc/x86_64-cros-linux-gnu/#{gcc_ver}
+clang++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -B \${gnuc_lib654} -L \${gnuc_lib} -L \${gnuc_lib64} \"\$@\"' > clc++"
         system "cmake",
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
                "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
