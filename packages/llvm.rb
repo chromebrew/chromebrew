@@ -17,7 +17,7 @@ class Llvm < Package
     aarch64: 'dc4fffeb9486455e59cc7f81225fbd5a486840a4bbeac832861fe7c37f61021e',
      armv7l: 'dc4fffeb9486455e59cc7f81225fbd5a486840a4bbeac832861fe7c37f61021e',
        i686: '166d984b4b6b43454ecaac5ef02e5848644285e3ea4cd838c97317d0cf2b4767',
-     x86_64: 'a3b35c555da3a1e9fb00032c7b8389ffae613ecf86b942d4b4d568141dfd90ab',
+     x86_64: '882659f61d8a60a1022307f350d67a772d8a014ad2f70fb59091612aceb0dd78',
   })
 
   depends_on 'python27' => :build # for test suite
@@ -282,9 +282,8 @@ clang -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc"
         system "echo '#!/bin/bash
 cxx_sys=#{CREW_PREFIX}/include/c++/#{gcc_ver}
 cxx_inc=#{CREW_PREFIX}/include/c++/#{gcc_ver}/x86_64-cros-linux-gnu
-gnuc_lib=#{CREW_PREFIX}/lib/gcc/x86_64-cros-linux-gnu/#{gcc_ver}
-gnuc_lib64=#{CREW_PREFIX}/lib64/gcc/x86_64-cros-linux-gnu/#{gcc_ver}
-clang++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -B \${gnuc_lib654} -L \${gnuc_lib} -L \${gnuc_lib64} \"\$@\"' > clc++"
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/x86_64-cros-linux-gnu/#{gcc_ver}
+clang++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
         system "cmake",
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
                "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
@@ -304,7 +303,7 @@ clang -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc"
         system "echo '#!/bin/bash
 cxx_sys=#{CREW_PREFIX}/include/c++/#{gcc_ver}
 cxx_inc=#{CREW_PREFIX}/include/c++/#{gcc_ver}/i686-cros-linux-gnu
-gnuc_lib=#{CREW_PREFIX}/lib/gcc/i686-cros-linux-gnu/#{gcc_ver}
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/i686-cros-linux-gnu/#{gcc_ver}
 clang++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
         system "cmake",
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
@@ -321,7 +320,7 @@ clang -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc"
         system "echo '#!/bin/bash
 cxx_sys=#{CREW_PREFIX}/include/c++/#{gcc_ver}
 cxx_inc=#{CREW_PREFIX}/include/c++/#{gcc_ver}/armv7l-cros-linux-gnueabihf
-gnuc_lib=#{CREW_PREFIX}/lib/gcc/armv7l-cros-linux-gnueabihf/#{gcc_ver}
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/armv7l-cros-linux-gnueabihf/#{gcc_ver}
 clang++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
         system "cmake",
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
