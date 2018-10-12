@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi and openmp are included.'
   homepage 'http://llvm.org/'
-  version '7.0.0'
+  version '7.0.0-1'
   source_url 'https://releases.llvm.org/7.0.0/llvm-7.0.0.src.tar.xz'
   source_sha256 '8bc1f844e6cbde1b652c19c1edebc1864456fd9c78b8c1bea038e51b363fe222'
 
