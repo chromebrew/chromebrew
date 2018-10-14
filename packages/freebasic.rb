@@ -3,7 +3,7 @@ require 'package'
 class Freebasic < Package
   description 'FreeBASIC is a free/open source (GPL), BASIC compiler for Microsoft Windows, DOS and Linux.'
   homepage 'https://www.freebasic.net/'
-  version '1.05.0-1'
+  version '1.05.0-2'
   case ARCH
   when 'i686'
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.05.0-linux-x86.tar.gz'
@@ -11,8 +11,6 @@ class Freebasic < Package
   when 'x86_64'
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.05.0-linux-x86_64.tar.gz'
     source_sha256 '26d184061e2a55c7ee9c12213ac4bf062556ecec1bacf84037233a41aef6c74f'
-  else
-    puts "#{ARCH} architecture not supported.".lightred
   end
 
   binary_url ({
