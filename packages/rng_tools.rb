@@ -49,12 +49,11 @@ class Rng_tools < Package
     system "echo '  echo \"rngd process \$RNG is running\"' >> stoprngd"
     system "echo '  exit 1' >> stoprngd"
     system "echo 'fi' >> stoprngd"
-    system "chmod a+x startrngd stoprngd"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "cp", "startrngd", "stoprngd", "#{CREW_DEST_PREFIX}/bin/"
+    system "install", "-Dm755", "startrngd", "stoprngd", "#{CREW_DEST_PREFIX}/bin/"
   end
 
   def self.postinstall
