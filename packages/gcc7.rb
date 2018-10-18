@@ -33,7 +33,6 @@ class Gcc7 < Package
   depends_on 'mpfr'
   depends_on 'mpc'
   depends_on 'isl'
-  depends_on 'cloog'
   depends_on 'glibc'
 
   def self.build
