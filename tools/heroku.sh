@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PWD_HOLD="${PWD}"
+PWD_HOLD="${PWD}"
 
 cd /tmp
 if [[ -d /tmp/heroku-cli ]]; then
@@ -49,5 +49,3 @@ echo "    system \"mkdir -p #{CREW_DEST_PREFIX}/bin\"" >> heroku.rb
 echo "    system \"ln -s #{CREW_PREFIX}/share/heroku/bin/run #{CREW_DEST_PREFIX}/bin/heroku\"" >> heroku.rb
 echo "  end" >> heroku.rb
 echo "end" >> heroku.rb
-
-unset PWD_HOLD
