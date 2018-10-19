@@ -118,7 +118,7 @@
    PREFIX="$(crew const CREW_PREFIX | cut -d'=' -f2)"
  fi
  if [[ -z "${JOBS}" ]]; then
-   JOBS="1"
+   JOBS="$(nproc --all)"
  fi
 
  rm -rf \
@@ -130,7 +130,8 @@
  ./${MPFR} \
  ./${CLOOG} \
  ./${ISL} \
- ./${MPC}
+ ./${MPC} \
+ ./sha256sum
 
  wget -c https://ftpmirror.gnu.org/gnu/binutils/${BINUTILS}.tar.xz
  wget -c https://ftpmirror.gnu.org/gnu/gcc/${GCC}/${GCC}.tar.xz
