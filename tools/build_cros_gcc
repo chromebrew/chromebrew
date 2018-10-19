@@ -7,7 +7,7 @@
 
  GLIBC=glibc-$(crew search glibc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
  BINUTILS=binutils-$(crew search binutils -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
- GCC=gcc-8.2.0
+ GCC=gcc-$(crew search gcc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
  MPFR=mpfr-$(crew search mpfr -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
  GMP=gmp-$(crew search gmp -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
  MPC=mpc-$(crew search mpc -v | tail -1 | cut -d' ' -f2 | cut -d'-' -f1)
@@ -27,7 +27,7 @@
      echo \ \-c, --clean: Clean current directory
      echo \ Valid targets: 'aarch64-cros-linux-gnu', 'x86_64-cros-linux-gnu', 'i686-cros-linux-gnu', 'armv7l-cros-linux-gnueabihf'
      exit 0;;
-   x-vx|x--versionx) echo build_cros_gcc version 1.27
+   x-vx|x--versionx) echo build_cros_gcc version 1.27.1
      exit 0;;
    x-cx|x--cleanx) rm -rf build-binutils build-gcc build-glibc
      rm -rf \
@@ -48,7 +48,8 @@
      ./${MPFR}.tar.xz \
      ./${CLOOG}.tar.gz \
      ./${ISL}.tar.bz2 \
-     ./${MPC}.tar.gz || true
+     ./${MPC}.tar.gz \
+     ./sha256sum || true
      exit 0;;
    x-tx|x--constx)
      echo KERNEL_VERSION=${KERNEL_VERSION}
@@ -79,45 +80,45 @@
    exit 1;;
  esac
 
- export TARGET="$1" && shift
+ TARGET="$1" && shift
 
  if ! [[ "$1" =~ "^[0-9]+$" ]] &>/dev/null; then
-   export JOBS="$1"
+   JOBS="$1"
    shift
  else
    shift
  fi
  if [[ -d $1 ]] &>/dev/null; then
-   export PREFIX="$1"
+   PREFIX="$1"
    shift
  else
    if ! [[ "$1" =~ "^[0-9]+$" ]] &>/dev/null; then
-     export JOBS="$1"
+     JOBS="$1"
      shift
    else if { mkdir -p "$1" &>/dev/null; }; then
-     export PREFIX="$1"
+     PREFIX="$1"
      shift
    fi
  fi
  if [[ -z "${ARCH}" ]]; then
    if { echo "${TARGET}" | grep x86_64 1>/dev/null; }; then
-     export ARCH="x86_64";
+     ARCH="x86_64";
    fi
    if { echo "${TARGET}" | grep i686 1>/dev/null; }; then
-     export ARCH="x86";
+     ARCH="x86";
    fi
    if { echo "${TARGET}" | grep armv7l 1>/dev/null; }; then
-     export ARCH="arm";
+     ARCH="arm";
    fi
    if { echo "${TARGET}" | grep aarch64 1>/dev/null; }; then
-     export ARCH="arm64";
+     ARCH="arm64";
    fi
  fi
  if [[ -z "${PREFIX}" ]]; then
-   export PREFIX="$(crew const CREW_PREFIX | cut -d'=' -f2)"
+   PREFIX="$(crew const CREW_PREFIX | cut -d'=' -f2)"
  fi
  if [[ -z "${JOBS}" ]]; then
-   export JOBS="1"
+   JOBS="1"
  fi
 
  rm -rf \
@@ -143,7 +144,7 @@
 
  SUMS="5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86  $BINUTILS.tar.xz\n"
  SUMS+="325adf3710ce2229b7eeb9e84d3b539556d093ae860027185e7af8a8b00a750e  $CLOOG.tar.gz\n"
- SUMS+="196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080  $GCC.tar.xz\n"
+ SUMS+="832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c  $GCC.tar.xz\n"
  SUMS+="94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9  $GLIBC.tar.xz\n"
  SUMS+="87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912  $GMP.tar.xz\n"
  SUMS+="b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2  $ISL.tar.bz2\n"
@@ -160,7 +161,7 @@
  for tar in *.tar.*; do echo "Extracting ${tar}..." && tar xpf ${tar}; done
 
  cd ${GCC}
- GCC_PATCHES="${GCC}-${ISL}.patch"
+ GCC_PATCHES="gcc-8.2.0-isl-0.20.patch"
  for PATCH in ${GCC_PATCHES}; do
    wget https://github.com/JL2210/patches/raw/master/${PATCH}
    patch -Np1 -i ${PATCH}
