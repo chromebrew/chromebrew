@@ -95,7 +95,7 @@
    if ! [[ "$1" =~ "^[0-9]+$" ]] &>/dev/null; then
      JOBS="$1"
      shift
-   else if { mkdir -p "$1" &>/dev/null; }; then
+   else
      PREFIX="$1"
      shift
    fi
