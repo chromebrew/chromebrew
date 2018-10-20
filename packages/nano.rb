@@ -38,7 +38,7 @@ class Nano < Package
     puts "To make nano your default editor, execute this:".lightblue
     puts
     puts "echo 'EDITOR=nano' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc"
+    puts "source ~/.bashrc".lightblue
     puts
     open("#{ENV['HOME']}/.nanorc", 'w') { |f|
       f << "set constantshow\n"
