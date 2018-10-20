@@ -23,6 +23,5 @@ class Gcc < Package
   depends_on 'mpfr'
   depends_on 'mpc'
   depends_on 'isl'
-  depends_on 'cloog'
   depends_on 'glibc'
 end

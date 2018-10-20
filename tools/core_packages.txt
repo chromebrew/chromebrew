@@ -2,7 +2,6 @@ autoconf
 automake
 binutils
 bison
-cloog
 cmake
 compressdoc
 diffutils
