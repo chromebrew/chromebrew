@@ -25,11 +25,11 @@ class Foremost < Package
   end
 
   def self.install
-    FileUtils.mkdir_p ["#{CREW_DEST_DIR}/usr/local/bin", \
-                       "#{CREW_DEST_DIR}/usr/local/man/man1", \
-                       "#{CREW_DEST_DIR}/usr/local/etc"]
-    FileUtils.cp_r 'foremost', "#{CREW_DEST_DIR}/usr/local/bin/"
-    FileUtils.cp_r 'foremost.8.gz', "#{CREW_DEST_DIR}/usr/local/man/man1/foremost.1.gz"
-    FileUtils.cp_r 'foremost.conf', "#{CREW_DEST_DIR}/usr/local/etc/"
+    FileUtils.mkdir_p ["#{CREW_DEST_PREFIX}/bin", \
+                       "#{CREW_DEST_PREFIX}/man/man1", \
+                       "#{CREW_DEST_PREFIX}/etc"]
+    FileUtils.cp_r 'foremost', "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.cp_r 'foremost.8.gz', "#{CREW_DEST_PREFIX}/man/man1/foremost.1.gz"
+    FileUtils.cp_r 'foremost.conf', "#{CREW_DEST_PREFIX}/etc/"
   end
 end

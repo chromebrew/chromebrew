@@ -21,7 +21,7 @@ class Powerline_fonts < Package
   })
 
   def self.install
-    fonts = "#{CREW_DEST_DIR}/usr/local/share/fonts"
+    fonts = "#{CREW_DEST_DIR}#{CREW_PREFIX}share/fonts"
     FileUtils.mkdir_p(fonts)
 
     Dir.glob('*').each do |f|
@@ -35,7 +35,7 @@ class Powerline_fonts < Package
         f.puts "<?xml version=\"1.0\"?>"
         f.puts "<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">"
         f.puts "<fontconfig>"
-        f.puts "\t<dir>/usr/local/share/fonts</dir>"
+        f.puts "\t<dir>#{CREW_PREFIX}share/fonts</dir>"
         f.puts "</fontconfig>"
       end
 

@@ -28,9 +28,9 @@ class Apriconv < Package
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --with-apr=#{CREW_PREFIX}"
-    system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' Makefile"
-    system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' ccs/Makefile"
-    system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' ces/Makefile"
+    system "sed -i 's,#{CREW_LIB_PREFIX},#{CREW_LIB_PREFIX},g' Makefile"
+    system "sed -i 's,#{CREW_LIB_PREFIX},#{CREW_LIB_PREFIX},g' ccs/Makefile"
+    system "sed -i 's,#{CREW_LIB_PREFIX},#{CREW_LIB_PREFIX},g' ces/Makefile"
     system "make"
   end
 

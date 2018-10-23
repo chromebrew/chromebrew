@@ -30,8 +30,8 @@ class Bcif < Package
 
   def self.install
     FileUtils.cd('Cpp') do
-      system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-      system "cp bcif #{CREW_DEST_DIR}/usr/local/bin"
+      system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+      system "cp bcif #{CREW_DEST_PREFIX}/bin"
     end
   end
 end

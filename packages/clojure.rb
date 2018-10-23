@@ -28,8 +28,8 @@ class Clojure < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/share/clojure"
     system "curl -O https://download.clojure.org/install/linux-install-1.9.0.326.sh"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('linux-install-1.9.0.326.sh') ) == 'ced0fa4bdb3c2b6901239b0b7fd57471920d35d6e422e5c47dc09a225a222c8c'
-    system "sed -i 's,/usr/local/bin,#{CREW_DEST_PREFIX}/bin,g' linux-install-1.9.0.326.sh"
-    system "sed -i 's,/usr/local/lib,#{CREW_DEST_PREFIX}/share/clojure,g' linux-install-1.9.0.326.sh"
+    system "sed -i 's,#{CREW_PREFIX}/bin,#{CREW_DEST_PREFIX}/bin,g' linux-install-1.9.0.326.sh"
+    system "sed -i 's,#{CREW_LIB_PREFIX},#{CREW_DEST_PREFIX}/share/clojure,g' linux-install-1.9.0.326.sh"
     system "chmod +x linux-install-1.9.0.326.sh"
     system "./linux-install-1.9.0.326.sh"
     system "sed -i 's,install_dir=#{CREW_DEST_PREFIX},install_dir=#{CREW_PREFIX},' #{CREW_DEST_PREFIX}/bin/clojure"

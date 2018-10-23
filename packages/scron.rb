@@ -24,7 +24,7 @@ class Scron < Package
     system 'git clone git://git.2f30.org/scron.git'
     Dir.chdir 'scron' do
       system 'git checkout 0.4'
-      system "sed -i 's,PREFIX = /usr/local,PREFIX = #{CREW_DEST_PREFIX},' Makefile"
+      system "sed -i 's,PREFIX = #{CREW_PREFIX},PREFIX = #{CREW_DEST_PREFIX},' Makefile"
       system 'make'
     end
   end

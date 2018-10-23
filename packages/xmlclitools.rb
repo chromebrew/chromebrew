@@ -25,7 +25,7 @@ class Xmlclitools < Package
   depends_on 'libxml2'
 
   def self.preinstall
-    system "sed -i 's,/usr/local,#{CREW_DEST_PREFIX},g' Makefile"
+    system "sed -i 's,#{CREW_PREFIX},#{CREW_DEST_PREFIX},g' Makefile"
     system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' Makefile"
     system "sed -i 's,/usr/lib,#{CREW_LIB_PREFIX},g' Makefile"
   end

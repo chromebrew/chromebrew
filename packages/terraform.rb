@@ -27,7 +27,7 @@ class Terraform < Package
     system 'cp -aT . ../src/github.com/hashicorp/terraform/'
     system 'mv ../src .'
     system 'export GOPATH=`pwd`; go get -u golang.org/x/tools/cmd/stringer'
-    system 'export TMPDIR=/usr/local/tmp; export GOPATH=`pwd`; export PATH=$PATH:$GOPATH/bin; cd src/github.com/hashicorp/terraform/; make dev'
+    system 'export TMPDIR=#{CREW_PREFIX}tmp; export GOPATH=`pwd`; export PATH=$PATH:$GOPATH/bin; cd src/github.com/hashicorp/terraform/; make dev'
   end
 
   def self.install

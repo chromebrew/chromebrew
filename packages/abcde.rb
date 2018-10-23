@@ -21,7 +21,7 @@ class Abcde < Package
   })
 
   def self.build
-    system "sed -i 's,prefix = /usr/local,prefix = #{CREW_DEST_PREFIX},' Makefile"
+    system "sed -i 's,prefix = #{CREW_PREFIX},prefix = #{CREW_DEST_PREFIX},' Makefile"
     system "sed -i 's,sysconfdir = /etc,sysconfdir = #{CREW_DEST_PREFIX}/etc,' Makefile"
   end
 

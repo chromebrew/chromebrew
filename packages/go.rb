@@ -49,7 +49,7 @@ class Go < Package
     system "mkdir", "-p", dest
     FileUtils.cp_r Dir.pwd, dest
 
-    # make a symbolic link for /usr/local/bin/{go,gofmt}
+    # make a symbolic link for #{CREW_PREFIX}bin/{go,gofmt}
     system "mkdir", "-p", "#{CREW_DEST_PREFIX}/bin"
     system "ln", "-s", "#{CREW_PREFIX}/share/go/bin/go", "#{CREW_DEST_PREFIX}/bin"
     system "ln", "-s", "#{CREW_PREFIX}/share/go/bin/gofmt", "#{CREW_DEST_PREFIX}/bin"

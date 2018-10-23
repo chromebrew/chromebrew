@@ -21,7 +21,7 @@ class Dmidecode < Package
   })
 
   def self.patch
-    system "sed -i 's,^prefix = /usr/local,prefix = #{CREW_PREFIX},' Makefile"
+    system "sed -i 's,^prefix = #{CREW_PREFIX},prefix = #{CREW_PREFIX},' Makefile"
     case ARCH
     when 'aarch64', 'armv7l'
       system "sed -i '55iPROGRAMS-#{ARCH} := biosdecode ownership vpddecode' Makefile"

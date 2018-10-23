@@ -25,7 +25,7 @@ class Tpp < Package
   def self.build
     installed=`gem list | grep ^ncurses-ruby`
     system "gem install ncurses-ruby" unless "#{installed}" != ""
-    system "sed -i 's,prefix=/usr/local,prefix=#{CREW_DEST_PREFIX},' Makefile"
+    system "sed -i 's,prefix=#{CREW_PREFIX},prefix=#{CREW_DEST_PREFIX},' Makefile"
   end
 
   def self.install

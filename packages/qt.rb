@@ -28,7 +28,7 @@ class Qt < Package
       system "echo '    gui.clickButton(buttons.NextButton);' >> qt-installer-script.qs"
       system "echo '}' >> qt-installer-script.qs"
       system "echo 'Controller.prototype.TargetDirectoryPageCallback = function() {' >> qt-installer-script.qs"
-      system "echo '    gui.currentPageWidget().TargetDirectoryLineEdit.setText(\"/usr/local/share/qt\");' >> qt-installer-script.qs"
+      system "echo '    gui.currentPageWidget().TargetDirectoryLineEdit.setText(\"#{CREW_PREFIX}share/qt\");' >> qt-installer-script.qs"
       system "echo '    gui.clickButton(buttons.NextButton);' >> qt-installer-script.qs"
       system "echo '}' >> qt-installer-script.qs"
       system "echo 'Controller.prototype.ComponentSelectionPageCallback = function() {' >> qt-installer-script.qs"

@@ -24,8 +24,8 @@ class Rtmpdump < Package
   depends_on 'zlibpkg'
 
   def self.build
-    system "sed -i 's,prefix=/usr/local,prefix=#{CREW_PREFIX},' Makefile"
-    system "sed -i 's,prefix=/usr/local,prefix=#{CREW_PREFIX},' librtmp/Makefile"
+    system "sed -i 's,prefix=#{CREW_PREFIX},prefix=#{CREW_PREFIX},' Makefile"
+    system "sed -i 's,prefix=#{CREW_PREFIX},prefix=#{CREW_PREFIX},' librtmp/Makefile"
     system "sed -i 's,libdir=\$(prefix)/lib,libdir=#{CREW_LIB_PREFIX},' librtmp/Makefile"
     system "make"
   end

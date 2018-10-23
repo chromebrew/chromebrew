@@ -27,7 +27,7 @@ class Finch < Package
   depends_on 'gnutls'
 
   def self.build
-    system "sed -i 's,/usr/include,/usr/local/include,g' configure"
+    system "sed -i 's,/usr/include,#{CREW_PREFIX}include,g' configure"
     system './configure',
       '--disable-avahi',
       '--disable-dbus',

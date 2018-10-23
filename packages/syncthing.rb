@@ -24,7 +24,7 @@ class Syncthing < Package
 
   def self.build
     #The system tmp dir is mounted noexec, and the build will fail if it is used
-    system "TMPDIR=/usr/local/tmp go run build.go -version v0.14.40"
+    system "TMPDIR=#{CREW_PREFIX}tmp go run build.go -version v0.14.40"
   end
 
   def self.install
@@ -59,6 +59,6 @@ sudo /sbin/iptables -D INPUT -p udp --dport 21025 -j ACCEPT
     system "chmod +x #{CREW_DEST_PREFIX}/bin/syncthing"
 
     #The build process leaves 50M of files around that we do not need
-    system "rm -rf /usr/local/tmp/syncthing-*/"
+    system "rm -rf #{CREW_PREFIX}tmp/syncthing-*/"
   end
 end

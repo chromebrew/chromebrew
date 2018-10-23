@@ -25,7 +25,7 @@ class Darkhttpd < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_DIR}/usr/local/bin"
-    FileUtils.cp 'darkhttpd', "#{CREW_DEST_DIR}/usr/local/bin/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.cp 'darkhttpd', "#{CREW_DEST_PREFIX}/bin/"
   end
 end

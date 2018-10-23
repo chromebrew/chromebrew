@@ -25,7 +25,7 @@ class Perl < Package
   def self.build
     # Use system zlib and bzip2
     # Create shared library
-    # Install manual files into /usr/local/share/man/man* even if groff is not installed.
+    # Install manual files into #{CREW_PREFIX}share/man/man* even if groff is not installed.
     system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_PREFIX}/share/man/man1 -Dman3dir=#{CREW_PREFIX}/share/man/man3"
     system "make"
     system "curl -o cpanm https://cpanmin.us"

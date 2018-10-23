@@ -23,8 +23,8 @@ class Whois < Package
   depends_on 'gettext'
 
   def self.build
-    system "sed -i 's,prefix = /usr,prefix = /usr/local,' Makefile"
-    system "sed -i 's,prefix = /usr,prefix = /usr/local,' po/Makefile"
+    system "sed -i 's,prefix = /usr,prefix = #{CREW_PREFIX},' Makefile"
+    system "sed -i 's,prefix = /usr,prefix = #{CREW_PREFIX},' po/Makefile"
     system "sed -i 's,/share/,/,g' Makefile"
     system "sed -i 's,/share/,/,g' po/Makefile"
     system "sed -i 's,/share/,/,g' config.h"

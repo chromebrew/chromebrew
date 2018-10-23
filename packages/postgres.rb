@@ -28,7 +28,7 @@ class Postgres < Package
   PGDATA = "#{CREW_PREFIX}/data/pgsql"
 
   def self.build
-    system "sed -i 's,PGDATA=\"/usr/local/pgsql/data\",PGDATA=\"#{PGDATA}\",' contrib/start-scripts/linux"
+    system "sed -i 's,PGDATA=\"#{CREW_PREFIX}pgsql/data\",PGDATA=\"#{PGDATA}\",' contrib/start-scripts/linux"
     system "./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX}"

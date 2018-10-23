@@ -21,7 +21,7 @@ class Regex_opt < Package
   })
 
   def self.build
-    system "sed -i 's,PREFIX=/usr/local,PREFIX=#{CREW_PREFIX},' Makefile"
+    system "sed -i 's,PREFIX=#{CREW_PREFIX},PREFIX=#{CREW_PREFIX},' Makefile"
     system "make"
   end
 

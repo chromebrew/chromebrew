@@ -28,8 +28,8 @@ class Unshield < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "cp man/* #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
+    system "cp man/* #{CREW_DEST_PREFIX}/man/man1"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

@@ -31,9 +31,9 @@ class Nethack4 < Package
     target="build"
     system "mkdir -p " + target
     Dir.chdir target  do
-      #build with rpath pointing at /usr/local
-      system "/usr/local/bin/perl ../aimake --config-only -i /usr/local/ --directory-layout=prefix --without=gui"
-      system "/usr/local/bin/perl ../aimake"
+      #build with rpath pointing at #{CREW_PREFIX}
+      system "#{CREW_PREFIX}bin/perl ../aimake --config-only -i #{CREW_PREFIX} --directory-layout=prefix --without=gui"
+      system "#{CREW_PREFIX}bin/perl ../aimake"
     end
   end
 
@@ -41,7 +41,7 @@ class Nethack4 < Package
     target="build"
     Dir.chdir target  do
       #install in destdir so package manager can keep track
-      system "/usr/local/bin/perl ../aimake --install-only -i #{CREW_DEST_DIR}/usr/local/ --directory-layout=prefix --without=gui"
+      system "#{CREW_PREFIX}bin/perl ../aimake --install-only -i #{CREW_DEST_DIR}#{CREW_PREFIX} --directory-layout=prefix --without=gui"
     end
   end
 end

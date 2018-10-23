@@ -23,7 +23,7 @@ class Clib < Package
   depends_on 'curl'
 
   def self.build
-    system "sed -i 's,PREFIX ?= /usr/local,PREFIX ?= #{CREW_DEST_PREFIX},' Makefile"
+    system "sed -i 's,PREFIX ?= #{CREW_PREFIX},PREFIX ?= #{CREW_DEST_PREFIX},' Makefile"
     system 'make'
   end
 

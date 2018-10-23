@@ -60,7 +60,7 @@ class Aircrack_ng < Package
     # [*] Downloading IEEE OUI file...
     # [*] Parsing OUI file...
     # [*] Airodump-ng OUI file successfully updated
-    system "sed -i 's,/usr/local,,' #{CREW_PREFIX}/sbin/airodump-ng-oui-update"
+    system "sed -i 's,#{CREW_PREFIX},,' #{CREW_PREFIX}/sbin/airodump-ng-oui-update"
     system "sed -i 's,/etc,#{CREW_PREFIX}/etc,g' #{CREW_PREFIX}/sbin/airodump-ng-oui-update"
     system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,' #{CREW_PREFIX}/sbin/airodump-ng-oui-update"
   end

@@ -21,7 +21,7 @@ class Di < Package
   })
 
   def self.build
-    system "sed -i 's,prefix = /usr/local,prefix = #{CREW_DEST_PREFIX},' Makefile"
+    system "sed -i 's,prefix = #{CREW_PREFIX},prefix = #{CREW_DEST_PREFIX},' Makefile"
     system "sed -i 's,USER = root,USER = #{USER},' Makefile" # set correct owner
     system "sed -i 's,GROUP = bin,GROUP = #{USER},' Makefile" # set correct group
     system 'make -e dioptions.dat'

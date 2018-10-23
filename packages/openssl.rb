@@ -56,7 +56,7 @@ class Openssl < Package
     system "make", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
     system "find #{CREW_DEST_PREFIX} -name 'lib*.a' -print | xargs rm"
 
-    # move man to /usr/local/man
+    # move man to #{CREW_PREFIX}man
     system "mv", "#{CREW_DEST_DIR}/etc/ssl/man", "#{CREW_DEST_PREFIX}/man"
 
     # remove all files under /etc/ssl (use system's /etc/ssl as is)

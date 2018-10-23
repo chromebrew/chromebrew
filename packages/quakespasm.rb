@@ -35,7 +35,7 @@ class Quakespasm < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     Dir.chdir ("Quake") do
-      system "sed -i 's,/usr/local/games/quake,#{CREW_DEST_PREFIX}/bin/,g' Makefile"
+      system "sed -i 's,#{CREW_PREFIX}/games/quake,#{CREW_DEST_PREFIX}/bin/,g' Makefile"
       system "make", "install"
     end
   end

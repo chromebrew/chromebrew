@@ -25,7 +25,7 @@ class Progress < Package
 
   def self.build
     system "sed -i '9,14d' Makefile"
-    system "sed -i 's,PREFIX ?= /usr/local,PREFIX ?= #{CREW_PREFIX},' Makefile"
+    system "sed -i 's,PREFIX ?= #{CREW_PREFIX},PREFIX ?= #{CREW_PREFIX},' Makefile"
     system "make CFLAGS=' -I#{CREW_PREFIX}/include/ncurses'"
   end
 
