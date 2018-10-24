@@ -28,8 +28,8 @@ class Powerline_fonts < Package
       FileUtils.mv(f, fonts) unless ["README.rst", "install.sh"].include? f
     end
 
-    FileUtils.mkdir_p(#{CREW_DEST_HOME})
-    FileUtils.cd(#{CREW_DEST_HOME}) do
+    FileUtils.mkdir_p("#{CREW_DEST_HOME}")
+    FileUtils.cd("#{CREW_DEST_HOME}") do
       File.open('.font.conf','w') do |f|
         f.puts "<?xml version=\"1.0\"?>"
         f.puts "<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">"
