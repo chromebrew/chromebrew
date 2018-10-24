@@ -26,7 +26,7 @@ class Python3 < Package
 
   def self.build
     # IMPORTANT: Do not build with python3 already installed or pip3 will not be included.
-    # python requires #{CREW_LIB_PREFIX}, so leave as is but specify -rpath
+    # python requires /usr/local/lib, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
       "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
       "--with-ensurepip=install", "--enable-shared"

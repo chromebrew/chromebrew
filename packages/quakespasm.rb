@@ -35,13 +35,13 @@ class Quakespasm < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     Dir.chdir ("Quake") do
-      system "sed -i 's,#{CREW_PREFIX}/games/quake,#{CREW_DEST_PREFIX}/bin/,g' Makefile"
+      system "sed -i 's,/usr/local/games/quake,#{CREW_DEST_PREFIX}/bin/,g' Makefile"
       system "make", "install"
     end
   end
 
   def self.postinstall
-      puts "Please make sure you have the proper .pak and/or .wad files to play Quake!".lightblue
-      puts "By default, quakespasm uses the current directory, but you can also specify the -basedir option.".lightblue
+    puts "Please make sure you have the proper .pak and/or .wad files to play Quake!".lightblue
+    puts "By default, quakespasm uses the current directory, but you can also specify the -basedir option.".lightblue
   end
 end
