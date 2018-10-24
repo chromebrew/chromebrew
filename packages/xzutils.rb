@@ -21,7 +21,7 @@ class Xzutils < Package
   })
 
   def self.build
-    system "./configure", "--prefix=/usr/local", "--libdir=#{CREW_LIB_PREFIX}",
+    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}",
            "--disable-docs", "--enable-shared", "--disable-static", "--with-pic"
     system "make"
   end

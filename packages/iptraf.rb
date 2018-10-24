@@ -32,7 +32,7 @@ class Iptraf < Package
       system "sed -i 's,/var/log,#{CREW_PREFIX}/logs,' Makefile"
       system "sed -i 's,/var/run,#{CREW_PREFIX}/run,' Makefile"
       system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' Makefile"
-      system "sed -i 's,/usr/local/iptraf,#{CREW_PREFIX}/share/iptraf,g' Makefile"
+      system "sed -i 's,#{CREW_PREFIX}/iptraf,#{CREW_PREFIX}/share/iptraf,g' Makefile"
       system "sed -i 's,/var/local,#{CREW_PREFIX},' dirs.h"
       system "sed -i 's,/var/log,#{CREW_PREFIX}/logs,' dirs.h"
       system "sed -i 's,/var/run,#{CREW_PREFIX}/run,' dirs.h"

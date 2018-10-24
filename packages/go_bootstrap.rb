@@ -22,16 +22,16 @@ class Go_bootstrap < Package
 
   def self.build
     FileUtils.cd('src') do
-      system "TMPDIR=/usr/local/tmp ./make.bash"
+      system "TMPDIR=#{CREW_PREFIX}/tmp ./make.bash"
     end
   end
 
   def self.install
-    dest = "#{CREW_DEST_DIR}/usr/local/lib/go_bootstrap"
+    dest = "#{CREW_DEST_LIB_PREFIX}/go_bootstrap"
     system "mkdir", "-p", dest
     FileUtils.mv Dir.pwd, dest
 
     puts "--------"
-    puts "Installed Go_bootstrap for #{ARCH} in /usr/local/lib/go_bootstrap"
+    puts "Installed Go_bootstrap for #{ARCH} in #{CREW_LIB_PREFIX}/go_bootstrap"
   end
 end

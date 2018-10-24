@@ -121,7 +121,7 @@ class Glibc < Package
       end
     end
 
-    # minimum set of locales -> /usr/local/lib(64)/locale/locale-archive
+    # minimum set of locales -> #{CREW_LIB_PREFIX}(64)/locale/locale-archive
     Dir.chdir "glibc_build/localedata" do
       system "mkdir -pv #{CREW_DEST_LIB_PREFIX}/locale"
       puts "Install minimum set of locales".lightblue

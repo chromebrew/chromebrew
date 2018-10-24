@@ -24,7 +24,7 @@ class Gox < Package
 
   def self.install
     system "go get github.com/mitchellh/iochan"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "go build -o #{CREW_DEST_DIR}/usr/local/bin/gox"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "go build -o #{CREW_DEST_PREFIX}/bin/gox"
   end
 end

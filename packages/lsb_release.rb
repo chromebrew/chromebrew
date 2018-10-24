@@ -19,7 +19,7 @@ class Lsb_release < Package
     system 'STR=$(grep ^CHROMEOS_RELEASE_NAME= /tmp/lsb-release | cut -d= -f2) && sed -i "s,$STR,\'&\'," /tmp/lsb-release'
     system 'STR=$(grep ^CHROMEOS_RELEASE_BUILD_TYPE= /tmp/lsb-release | cut -d= -f2) && sed -i "s,$STR$,\'&\'," /tmp/lsb-release'
     system 'STR=$(grep ^CHROMEOS_RELEASE_DESCRIPTION= /tmp/lsb-release | cut -d= -f2) && sed -i "s,$STR,\'&\'," /tmp/lsb-release'
-    system "sed -i 's,INFO_ROOT=\"/etc\",INFO_ROOT=\"/usr/local/etc\",' lsb_release"
+    system "sed -i 's,INFO_ROOT=\"/etc\",INFO_ROOT=\"#{CREW_PREFIX}/etc\",' lsb_release"
     system "sed -i 's,LSB_VERSION=\$MSG_NA,LSB_VERSION=1.4,' lsb_release"
     system "sed -i 's,DISTRIB_ID,CHROMEOS_RELEASE_NAME,g' lsb_release"
     system "sed -i 's,DISTRIB_DESCRIPTION,CHROMEOS_RELEASE_DESCRIPTION,g' lsb_release"

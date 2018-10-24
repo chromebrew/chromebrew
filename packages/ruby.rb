@@ -36,6 +36,6 @@ class Ruby < Package
   end
 
   def self.check
-    system "TMPDIR=/usr/local/tmp make check"
+    system "TMPDIR=#{CREW_PREFIX}/tmp make check"
   end
 end

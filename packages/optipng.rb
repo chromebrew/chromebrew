@@ -24,7 +24,7 @@ class Optipng < Package
   depends_on 'zlibpkg'
 
   def self.build
-    system "./configure --prefix=/usr/local --with-system-libpng" # Bundled libpng doesn't work on armv7l
+    system "./configure --prefix=#{CREW_PREFIX} --with-system-libpng" # Bundled libpng doesn't work on armv7l
     system "make"
   end
 

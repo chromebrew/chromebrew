@@ -31,7 +31,7 @@ class Mercurial < Package
       puts "Installing docutils dependency..."
       system "pip", "install", "docutils"
     end
-    system "make", "PREFIX=/usr/local", "all"
+    system "make", "PREFIX=#{CREW_PREFIX}", "all"
   end
 
   def self.install

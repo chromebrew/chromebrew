@@ -25,9 +25,9 @@ class Gifgen < Package
 
   def self.install
     system "help2man -N ./gifgen > gifgen.1"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "cp gifgen #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp gifgen.1 #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
+    system "cp gifgen #{CREW_DEST_PREFIX}/bin"
+    system "cp gifgen.1 #{CREW_DEST_PREFIX}/man/man1"
   end
 end

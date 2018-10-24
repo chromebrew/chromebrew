@@ -21,7 +21,7 @@ class Figlet < Package
   })
 
   def self.build
-    system "make", "PREFIX=/usr/local"
+    system "make", "PREFIX=#{CREW_PREFIX}"
   end
 
   def self.install

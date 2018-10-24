@@ -55,7 +55,7 @@ class Get_iplayer < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp get_iplayer #{CREW_DEST_DIR}/usr/local/bin/"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp get_iplayer #{CREW_DEST_PREFIX}/bin/"
   end
 end
