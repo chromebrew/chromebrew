@@ -21,8 +21,8 @@ class Patchutils < Package
   })
 
   def self.build
-    system './configure --prefix=#{CREW_PREFIX}'
-    system "make"
+    system "./configure --prefix=#{CREW_PREFIX}"
+    system 'make'
   end
 
   def self.install

@@ -23,7 +23,7 @@ class Ncrack < Package
   depends_on 'buildessential'
 
   def self.build
-    system './configure --prefix=#{CREW_PREFIX}'
+    system "./configure --prefix=#{CREW_PREFIX}"
     system "make"
   end
 

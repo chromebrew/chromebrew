@@ -23,7 +23,7 @@ class Mosh < Package
   depends_on 'protobuf'
 
   def self.build
-    system './configure --prefix=#{CREW_PREFIX}'
+    system "./configure --prefix=#{CREW_PREFIX}"
     system 'make'
   end
 

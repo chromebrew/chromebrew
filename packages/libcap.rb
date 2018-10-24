@@ -28,7 +28,7 @@ class Libcap < Package
     system 'sed -e "/gperf --/s/gperf --/gperf --includes --/" -e "/gperf --/s/cap_lookup_name(/cap_dummy(/" -i libcap/Makefile'
 
     # change the path to ld
-    system 'sed -i "s,/usr/bin/ld,#{CREW_PREFIX}/bin/ld,g" Make.Rules'
+    system "sed -i 's,/usr/bin/ld,#{CREW_PREFIX}/bin/ld,g' Make.Rules"
     # change prefix
     system 'sed -i "s,prefix=/usr,prefix=#{CREW_PREFIX}," Make.Rules'
     # set exec_prefix
