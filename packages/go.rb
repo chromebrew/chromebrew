@@ -31,7 +31,7 @@ class Go < Package
     FileUtils.cd('src') do
       # install with go_bootstrap if go is not in the path
       unless File.exist? "#{CREW_PREFIX}/share/go/bin/go"
-        system "GOROOT_BOOTSTRAP=#{CREW_LIB_PREFIX}/go_bootstrap/go \
+        system "GOROOT_BOOTSTRAP=#{CREW_PREFIX}/share/go_bootstrap/go \
                 TMPDIR=#{CREW_PREFIX}/tmp \
                 GOROOT_FINAL=#{CREW_PREFIX}/share/go \
                 ./make.bash"
