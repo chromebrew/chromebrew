@@ -30,9 +30,9 @@ class Libcap < Package
     # change the path to ld
     system "sed -i 's,/usr/bin/ld,#{CREW_PREFIX}/bin/ld,g' Make.Rules"
     # change prefix
-    system 'sed -i "s,prefix=/usr,prefix=#{CREW_PREFIX}," Make.Rules'
+    system "sed -i 's,prefix=/usr,prefix=#{CREW_PREFIX},' Make.Rules"
     # set exec_prefix
-    system 'sed -i "s,^exec_prefix=,exec_prefix=\$(prefix)," Make.Rules'
+    system "sed -i 's,^exec_prefix=,exec_prefix=\$(prefix),' Make.Rules"
     # http://git.yoctoproject.org/cgit.cgi/poky/plain/meta/recipes-support/libcap/files/0001-ensure-the-XATTR_NAME_CAPS-is-defined-when-it-is-use.patch
     system 'sed -i "s,^\#ifdef VFS_CAP_U32,\#if defined (VFS_CAP_U32) \&\& defined (XATTR_NAME_CAPS),g" libcap/cap_file.c'
     system 'make'
