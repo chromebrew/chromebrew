@@ -29,6 +29,7 @@ class Gimp < Package
   depends_on 'libmng'
   depends_on 'libtiff'
   depends_on 'libwmf'
+  depends_on 'llvm'
   depends_on 'aalib'
   depends_on 'mypaint_brushes'
   depends_on 'openexr'
