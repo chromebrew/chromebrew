@@ -10,15 +10,11 @@ class Fortune < Package
   depends_on "fortunes"
 
   def self.build
-    text = File.read("fortune.c")
-    new_contents = text.gsub(/\/usr/, "#{CREW_PREFIX}")
-    File.open("fortune.c.t", "w") {|file| file.puts new_contents }
-    system "mv fortune.c.t fortune.c"
+    system "sed -i 's,/usr,#{CREW_PREFIX},' fortune.c"
     system "make"
   end
 
   def self.install
-    system "mkdir -pv #{CREW_DEST_PREFIX}/bin"
-    system "mv fortune #{CREW_DEST_PREFIX}/bin/"
+    system "install -Dm755 fortune #{CREW_DEST_PREFIX}/bin/"
   end
 end
