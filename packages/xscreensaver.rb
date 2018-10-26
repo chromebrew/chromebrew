@@ -7,10 +7,10 @@ class Xscreensaver < Package
   source_url 'https://www.jwz.org/xscreensaver/xscreensaver-5.40.tar.gz'
   source_sha256 '30a0908d4164cf780ef034f87ba884316296b308af2484261ccde86be0c95ae0'
 
-  depends_on 'sommelier'
   depends_on 'glfw'
   depends_on 'libglu'
   depends_on 'freeglut'
+  depends_on 'sommelier'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"
