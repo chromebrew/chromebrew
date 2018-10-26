@@ -10,4 +10,13 @@ class Cowsay < Package
   def self.install
     system "sh install.sh #{CREW_DEST_PREFIX}"
   end
+
+  def self.postinstall
+    puts
+    puts "To finish the installation, execute the following:".lightblue
+    puts "echo '# Set COWPATH for cowsay' >> ~/.bashrc".lightblue
+    puts "echo 'export COWPATH=#{CREW_PREFIX}/share/cows' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
+  end
 end
