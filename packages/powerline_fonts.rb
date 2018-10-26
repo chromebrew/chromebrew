@@ -21,21 +21,20 @@ class Powerline_fonts < Package
   })
 
   def self.install
-    fonts = "#{CREW_DEST_DIR}/usr/local/share/fonts"
+    fonts = "#{CREW_DEST_PREFIX}/share/fonts"
     FileUtils.mkdir_p(fonts)
 
     Dir.glob('*').each do |f|
       FileUtils.mv(f, fonts) unless ["README.rst", "install.sh"].include? f
     end
 
-    home = "#{CREW_DEST_DIR}/home/chronos/user"
-    FileUtils.mkdir_p(home)
-    FileUtils.cd(home) do
+    FileUtils.mkdir_p("#{CREW_DEST_HOME}")
+    FileUtils.cd("#{CREW_DEST_HOME}") do
       File.open('.font.conf','w') do |f|
         f.puts "<?xml version=\"1.0\"?>"
         f.puts "<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">"
         f.puts "<fontconfig>"
-        f.puts "\t<dir>/usr/local/share/fonts</dir>"
+        f.puts "\t<dir>#{CREW_PREFIX}/share/fonts</dir>"
         f.puts "</fontconfig>"
       end
 

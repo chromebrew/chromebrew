@@ -28,7 +28,7 @@ Internet in under 5 minutes.'
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp bin/masscan #{CREW_DEST_DIR}/usr/local/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp bin/masscan #{CREW_DEST_PREFIX}/bin"
   end
 end

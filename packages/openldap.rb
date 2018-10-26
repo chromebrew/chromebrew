@@ -21,7 +21,7 @@ class Openldap < Package
   })
 
   def self.build
-    system "./configure --disable-slapd --prefix=/usr/local"
+    system "./configure --disable-slapd --prefix=#{CREW_PREFIX}"
     system "make"
     system "make depend"
   end

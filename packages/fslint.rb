@@ -41,10 +41,10 @@ class Fslint < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "cp -r fslint/* #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp fslint/fstool/lS #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp man/* #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
+    system "cp -r fslint/* #{CREW_DEST_PREFIX}/bin"
+    system "cp fslint/fstool/lS #{CREW_DEST_PREFIX}/bin"
+    system "cp man/* #{CREW_DEST_PREFIX}/man/man1"
   end
 end

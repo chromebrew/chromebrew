@@ -21,7 +21,7 @@ class Tree < Package
   })
 
   def self.build
-    system "sed -i 's,/usr,/usr/local,g' Makefile"
+    system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
     system "sed -i '25s,=,=$(DESTDIR),' Makefile"
     system "sed -i '27s,=,=$(DESTDIR),' Makefile"
     system "make"

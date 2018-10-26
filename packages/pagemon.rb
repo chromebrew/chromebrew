@@ -23,7 +23,7 @@ class Pagemon < Package
   depends_on 'ncurses'
 
   def self.build
-    system "sed -i 's,/usr,/usr/local,g' Makefile"
+    system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
     system "sed -i '/^CFLAGS += -Wall/s/$/ -I\\/usr\\/local\\/include\\/ncurses/' Makefile"
     system "make"
   end

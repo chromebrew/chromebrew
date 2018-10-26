@@ -22,8 +22,8 @@ class Mywanip < Package
 
   def self.install
     system "chmod +x mywanip"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp mywanip #{CREW_DEST_DIR}/usr/local/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp mywanip #{CREW_DEST_PREFIX}/bin"
   end
 end
 

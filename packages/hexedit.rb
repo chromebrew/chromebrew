@@ -23,11 +23,11 @@ class Hexedit < Package
   depends_on 'ncurses'
 
   def self.build
-    system "./configure", "--prefix=/usr/local"
-    system "make", "CFLAGS=-I/usr/local/include/ncurses"
+    system "./configure", "--prefix=#{CREW_PREFIX}"
+    system "make", "CFLAGS=-I#{CREW_PREFIX}/include/ncurses"
   end
 
   def self.install
-    system "make", "prefix=#{CREW_DEST_DIR}/usr/local", "install"
+    system "make", "prefix=#{CREW_DEST_PREFIX}", "install"
   end
 end

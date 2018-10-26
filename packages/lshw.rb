@@ -21,10 +21,10 @@ class Lshw < Package
   })
 
   def self.build
-    system "cd lshw-*/src; PREFIX=/usr/local make"
+    system "cd lshw-*/src; PREFIX=#{CREW_PREFIX} make"
   end
 
   def self.install
-    system "cd lshw-*/src; PREFIX=/usr/local make DESTDIR=#{CREW_DEST_DIR} install"
+    system "cd lshw-*/src; PREFIX=#{CREW_PREFIX} make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end

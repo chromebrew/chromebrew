@@ -21,8 +21,8 @@ class Hdparm < Package
   })
 
   def self.build
-    system "sed -i 's,binprefix = ,binprefix = /usr/local,' Makefile"
-    system "sed -i 's,manprefix = /usr,manprefix = /usr/local,' Makefile"
+    system "sed -i 's,binprefix = ,binprefix = #{CREW_PREFIX},' Makefile"
+    system "sed -i 's,manprefix = /usr,manprefix = #{CREW_PREFIX},' Makefile"
     system "make"
   end
 

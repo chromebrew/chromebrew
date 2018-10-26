@@ -32,8 +32,8 @@ class Newlisp < Package
     #  one shipped with bash.
     #
     # Ideally I'll figure out how to get it building properly as follows:
-    # system "./configure --prefix=/usr/local --enable-readline --enable-ffi"
-    system "./configure-alt --prefix=/usr/local"
+    # system "./configure --prefix=#{CREW_PREFIX} --enable-readline --enable-ffi"
+    system "./configure-alt --prefix=#{CREW_PREFIX}"
     system "make"
     system "make", "check"
   end

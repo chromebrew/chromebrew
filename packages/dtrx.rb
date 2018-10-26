@@ -31,8 +31,8 @@ class Dtrx < Package
   depends_on 'unzip'
 
   def self.install
-    system "python setup.py install --prefix=/usr/local"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp /usr/local/bin/dtrx #{CREW_DEST_DIR}/usr/local/bin"
+    system "python setup.py install --prefix=#{CREW_PREFIX}"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp #{CREW_PREFIX}/bin/dtrx #{CREW_DEST_PREFIX}/bin"
   end
 end

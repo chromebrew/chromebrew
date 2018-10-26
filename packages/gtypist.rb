@@ -26,12 +26,12 @@ class Gtypist < Package
 
   def self.build
     system "autoreconf"
-    system "./configure", "--prefix=/usr/local"
+    system "./configure", "--prefix=#{CREW_PREFIX}"
     system "make"
   end
 
   def self.install
-    system "make", "prefix=#{CREW_DEST_DIR}/usr/local", "install"
-    system "rm", "-f", "#{CREW_DEST_DIR}/usr/local/share/info/dir"
+    system "make", "prefix=#{CREW_DEST_PREFIX}", "install"
+    system "rm", "-f", "#{CREW_DEST_PREFIX}/share/info/dir"
   end
 end

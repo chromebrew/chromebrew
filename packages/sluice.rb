@@ -21,7 +21,7 @@ class Sluice < Package
   })
 
   def self.build
-    system "sed -i 's,/usr,/usr/local,g' Makefile"
+    system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
     system "make"
   end
 

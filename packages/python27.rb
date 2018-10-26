@@ -25,7 +25,7 @@ class Python27 < Package
 
   def self.build
     # IMPORTANT: Do not build with python27 already installed or pip will not be included.
-    # python requires /usr/local/lib, so leave as is but specify -rpath
+    # python requires #{CREW_LIB_PREFIX}, so leave as is but specify -rpath
     system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
         "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
         "--with-ensurepip=install", "--enable-shared"

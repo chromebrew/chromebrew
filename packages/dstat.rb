@@ -26,6 +26,6 @@ class Dstat < Package
   end
 
   def self.install
-    system "make", "prefix=/usr/local", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "make", "prefix=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

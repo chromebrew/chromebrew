@@ -50,7 +50,7 @@ class Mapserver < Package
               -DWITH_THREAD_SAFETY=1 \
               -DWITH_WCS=1 \
               -DCMAKE_C_FLAGS=\" -fPIC\" \
-              -DCMAKE_INSTALL_PREFIX=/usr/local .. > ../configure.out.txt"
+              -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} .. > ../configure.out.txt"
       system "make"
     end
   end
