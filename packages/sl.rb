@@ -13,6 +13,6 @@ class Sl < Package
   end
 
   def self.install
-    system "install -Dm755 sl #{CREW_DEST_PREFIX}/bin/"
+    system "install -Dm755 sl #{CREW_DEST_PREFIX}/bin/sl"
   end
 end
