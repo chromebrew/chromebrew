@@ -15,6 +15,6 @@ class Fortune < Package
   end
 
   def self.install
-    system "install -Dm755 fortune #{CREW_DEST_PREFIX}/bin/"
+    system "install -Dm755 fortune #{CREW_DEST_PREFIX}/bin/fortune"
   end
 end
