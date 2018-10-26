@@ -8,7 +8,6 @@ class Xscreensaver < Package
   source_sha256 '30a0908d4164cf780ef034f87ba884316296b308af2484261ccde86be0c95ae0'
 
   depends_on 'glfw'
-  depends_on 'libglu'
   depends_on 'freeglut'
   depends_on 'sommelier'
 
