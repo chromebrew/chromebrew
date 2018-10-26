@@ -24,7 +24,7 @@ class Tcpdump < Package
   depends_on 'openssl'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --with-user=chronos"
+    system "./configure --prefix=#{CREW_PREFIX} --with-user=#{USER}"
     system "make"
   end
 

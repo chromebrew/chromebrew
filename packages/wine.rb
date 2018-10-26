@@ -33,7 +33,7 @@ class Wine < Package
   def self.install
     case ARCH
     when "x86_64"
-      system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
       FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
         system "ln -s wine64 wine"
       end
