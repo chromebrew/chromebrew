@@ -23,18 +23,18 @@ class Sbt < Package
   depends_on 'jdk8'
 
   def self.install
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/share/sbt/bin"
-    system "install", "-m", "644", "bin/sbt-launch.jar", "#{CREW_DEST_DIR}/usr/local/share/sbt/bin"
-    system "install", "-m", "644", "bin/sbt-launch-lib.bash", "#{CREW_DEST_DIR}/usr/local/share/sbt/bin"
-    system "install", "-m", "755", "bin/sbt", "#{CREW_DEST_DIR}/usr/local/share/sbt/bin"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/share/sbt/bin"
+    system "install", "-m", "644", "bin/sbt-launch.jar", "#{CREW_DEST_PREFIX}/share/sbt/bin"
+    system "install", "-m", "644", "bin/sbt-launch-lib.bash", "#{CREW_DEST_PREFIX}/share/sbt/bin"
+    system "install", "-m", "755", "bin/sbt", "#{CREW_DEST_PREFIX}/share/sbt/bin"
 
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/share/sbt/conf"
-    system "install", "-m", "644", "conf/sbtopts", "#{CREW_DEST_DIR}/usr/local/share/sbt/conf"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/share/sbt/conf"
+    system "install", "-m", "644", "conf/sbtopts", "#{CREW_DEST_PREFIX}/share/sbt/conf"
 
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/bin"
-    system "ln", "-s", "/usr/local/share/sbt/bin/sbt", "#{CREW_DEST_DIR}/usr/local/bin/sbt"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/bin"
+    system "ln", "-s", "#{CREW_PREFIX}/share/sbt/bin/sbt", "#{CREW_DEST_PREFIX}/bin/sbt"
 
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/etc/sbt"
-    system "ln", "-s", "/usr/local/share/sbt/conf/sbtopts", "#{CREW_DEST_DIR}/usr/local/etc/sbt/sbtopts"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/etc/sbt"
+    system "ln", "-s", "#{CREW_PREFIX}/share/sbt/conf/sbtopts", "#{CREW_DEST_PREFIX}/etc/sbt/sbtopts"
   end
 end

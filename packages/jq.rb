@@ -22,7 +22,7 @@ class Jq < Package
 
   def self.build
     system "./configure",
-      "--prefix=/usr/local",
+      "--prefix=#{CREW_PREFIX}",
       "--disable-maintainer-mode", # disable make rules and dependencies not useful
       "--disable-docs"             # there's no support for manpages
     system "make"

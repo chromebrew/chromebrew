@@ -24,7 +24,7 @@ class Nmap < Package
   depends_on 'filecmd' => :build
 
   def self.build
-    #fixup "/usr/bin/file" -> "/usr/local/bin/file" in the configure scripts
+    #fixup "/usr/bin/file" -> "#{CREW_PREFIX}/bin/file" in the configure scripts
     system "sed -i s#/usr/bin/file##{CREW_DEST_PREFIX}/bin/file#g libdnet-stripped/configure" 
     system "./configure --with-pcap=linux --without-zenmap --prefix=#{CREW_PREFIX}"
     system "make"

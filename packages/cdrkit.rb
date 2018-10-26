@@ -25,7 +25,7 @@ class Cdrkit < Package
 
   def self.build
     system 'make clean'
-    system 'make CFLAGS=-I/usr/local/include LDFLAGS=-L/usr/local/lib'
+    system "make CFLAGS='-I#{CREW_PREFIX}/include' LDFLAGS='-L#{CREW_LIB_PREFIX}'"
   end
 
   def self.install

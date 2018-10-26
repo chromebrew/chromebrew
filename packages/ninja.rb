@@ -28,7 +28,7 @@ class Ninja < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp ninja #{CREW_DEST_DIR}/usr/local/bin/"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp ninja #{CREW_DEST_PREFIX}/bin/"
   end
 end

@@ -41,7 +41,7 @@ class Quakespasm < Package
   end
 
   def self.postinstall
-      puts "Please make sure you have the proper .pak and/or .wad files to play Quake!".lightblue
-      puts "By default, quakespasm uses the current directory, but you can also specify the -basedir option.".lightblue
+    puts "Please make sure you have the proper .pak and/or .wad files to play Quake!".lightblue
+    puts "By default, quakespasm uses the current directory, but you can also specify the -basedir option.".lightblue
   end
 end

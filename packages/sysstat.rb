@@ -26,9 +26,9 @@ class Sysstat < Package
     system "sed -i 's/root/$(whoami)/g' configure.in"
     system "sed -i 's/root/$(whoami)/g' sysstat-11.5.6.spec"
     system "./configure \
-            --docdir=/usr/local/doc \
-            --infodir=/usr/local/info \
-            --mandir=/usr/local/man"
+            --docdir=#{CREW_PREFIX}/doc \
+            --infodir=#{CREW_PREFIX}/info \
+            --mandir=#{CREW_PREFIX}/man"
     system "make"
   end
 

@@ -26,9 +26,9 @@ class Shtool < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/man/man1"
-    system "cp shtool #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp *.1 #{CREW_DEST_DIR}/usr/local/man/man1"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
+    system "cp shtool #{CREW_DEST_PREFIX}/bin"
+    system "cp *.1 #{CREW_DEST_PREFIX}/man/man1"
   end
 end

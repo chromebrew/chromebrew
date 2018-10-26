@@ -37,8 +37,8 @@ class Gcc7 < Package
 
   def self.build
     # previous compile issue
-    # /usr/local/bin/ld: cannot find crti.o: No such file or directory
-    # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
+    # #{CREW_PREFIX}/bin/ld: cannot find crti.o: No such file or directory
+    # #{CREW_PREFIX}/bin/ld: cannot find /usr/lib64/libc_nonshared.a
     ENV["LIBRARY_PATH"] = "#{CREW_LIB_PREFIX}"   # fix x86_64 issues
     system "mkdir -p objdir"
     Dir.chdir("objdir") do
@@ -127,7 +127,7 @@ class Gcc7 < Package
 
       # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
       # move a misplaced file
-      # The installation stage puts some files used by gdb under the /usr/local/lib(64) directory. This generates spurious error messages when performing ldconfig. This command moves the files to another location.
+      # The installation stage puts some files used by gdb under the #{CREW_LIB_PREFIX} directory. This generates spurious error messages when performing ldconfig. This command moves the files to another location.
       system "mkdir -pv #{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
       system "mv -v #{CREW_DEST_LIB_PREFIX}/*gdb.py #{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
 

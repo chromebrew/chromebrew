@@ -27,10 +27,10 @@ class Dos2unix < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp dos2unix #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp mac2unix #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp unix2dos #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp unix2mac #{CREW_DEST_DIR}/usr/local/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp dos2unix #{CREW_DEST_PREFIX}/bin"
+    system "cp mac2unix #{CREW_DEST_PREFIX}/bin"
+    system "cp unix2dos #{CREW_DEST_PREFIX}/bin"
+    system "cp unix2mac #{CREW_DEST_PREFIX}/bin"
   end
 end

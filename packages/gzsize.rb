@@ -25,9 +25,9 @@ class Gzsize < Package
   end
 
   def self.install
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/man/man1"
-    FileUtils.cp "gzsize", "#{CREW_DEST_DIR}/usr/local/bin/gzsize"
-    FileUtils.cp "man/gzsize.1", "#{CREW_DEST_DIR}/usr/local/man/man1/gzsize.1"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/bin"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/man/man1"
+    FileUtils.cp "gzsize", "#{CREW_DEST_PREFIX}/bin/gzsize"
+    FileUtils.cp "man/gzsize.1", "#{CREW_DEST_PREFIX}/man/man1/gzsize.1"
   end
 end

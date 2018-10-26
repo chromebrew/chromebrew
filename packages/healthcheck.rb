@@ -27,8 +27,8 @@ class Healthcheck < Package
   def self.install
     system "chmod +x health-check.sh"
     system "sed -i 's,usr/bin,usr/local/bin,' health-check.sh"
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "cp health-check.sh #{CREW_DEST_DIR}/usr/local/bin/healthcheck"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "cp health-check.sh #{CREW_DEST_PREFIX}/bin/healthcheck"
     puts ""
     puts "To execute, enter the following:".lightblue
     puts "sudo healthcheck".lightblue

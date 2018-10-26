@@ -37,13 +37,13 @@ class S < Package
   depends_on 'unzip'
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "mkdir -p #{CREW_DEST_DIR}/home/#{USER}/user"
     system "cp autocomplete/s-completion.bash /home/#{USER}/user/.s-completion.bash"
     system "cp autocomplete/s-completion.bash #{CREW_DEST_DIR}/home/#{USER}/user/.s-completion.bash"
     system "cp autocomplete/s.fish /home/#{USER}/user/.s.fish"
     system "cp autocomplete/s.fish #{CREW_DEST_DIR}/home/#{USER}/user/.s.fish"
-    system "cp s #{CREW_DEST_DIR}/usr/local/bin"
+    system "cp s #{CREW_DEST_PREFIX}/bin"
     puts ""
     puts "In order to enable autocomplete for bash, execute the following:".lightblue
     puts "echo \"source ~/.s-completion.bash\" >> ~/.bashrc && source ~/.bashrc".lightblue

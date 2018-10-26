@@ -29,7 +29,7 @@ class Fetch < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}/usr/local/bin"
-    system "go build -ldflags \"-X main.VERSION=v0.1.1\" -o #{CREW_DEST_DIR}/usr/local/bin/fetch"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "go build -ldflags \"-X main.VERSION=v0.1.1\" -o #{CREW_DEST_PREFIX}/bin/fetch"
   end
 end

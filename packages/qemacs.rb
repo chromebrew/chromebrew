@@ -24,7 +24,7 @@ class Qemacs < Package
     system "sed -i 's,css.h,libqhtml/css.h,' html2png.c"
     system "sed -i 's/$(prefix)/$(DESTDIR)$(prefix)/g' Makefile"
     system "./configure", \
-           "--prefix=/usr/local", \
+           "--prefix=#{CREW_PREFIX}", \
            "--disable-x11", \
            "--disable-xv", \
            "--disable-xrender", \
@@ -34,9 +34,9 @@ class Qemacs < Package
   end
 
   def self.install
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/bin"
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/share/qe"
-    system "mkdir", "-p", "#{CREW_DEST_DIR}/usr/local/man/man1"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/bin"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/share/qe"
+    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/man/man1"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

@@ -36,7 +36,7 @@ class Gsettings_desktop_schemas < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
     
-    # The package is installed using a “DESTDIR” method, /usr/local/share/glib-2.0/schemas/gschemas.compiled was not updated/created.
+    # The package is installed using a “DESTDIR” method, #{CREW_PREFIX}/share/glib-2.0/schemas/gschemas.compiled was not updated/created.
     # Generate gschemas.compiled
     system "glib-compile-schemas #{CREW_DEST_PREFIX}/share/glib-2.0/schemas"
   end

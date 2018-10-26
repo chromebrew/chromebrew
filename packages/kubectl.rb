@@ -31,6 +31,6 @@ class Kubectl < Package
   end
 
   def self.install
-    system "install", "-D", "-m", "755", "_output/bin/kubectl", "#{CREW_DEST_DIR}/usr/local/bin/kubectl"
+    system "install", "-D", "-m", "755", "_output/bin/kubectl", "#{CREW_DEST_PREFIX}/bin/kubectl"
   end
 end

@@ -27,7 +27,7 @@ class Rfkill < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "SBINDIR=/usr/local/sbin", "MANDIR=/usr/local/share/man", "install"
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "SBINDIR=#{CREW_PREFIX}/sbin", "MANDIR=#{CREW_PREFIX}/share/man", "install"
   end
 
   def self.check

@@ -21,7 +21,7 @@ class Waf < Package
   })
 
   depends_on 'help2man'
-  depends_on 'python27' unless File.exists? '/usr/local/bin/python'
+  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.build
     system './waf-light configure build'

@@ -23,7 +23,7 @@ class Ncdu < Package
   depends_on 'ncurses'
 
   def self.build
-    system "./configure --prefix=/usr/local CPPFLAGS=-I/usr/local/include/ncurses"
+    system "./configure --prefix=#{CREW_PREFIX} CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses"
     system "make"
   end
 

@@ -24,8 +24,8 @@ class Moreutils < Package
   depends_on 'libxslt'
 
   def self.build
-    system "sed -i 's,PREFIX?=/usr,PREFIX?=/usr/local,' Makefile"
-    system "sed -i 's,DOCBOOKXSL?=/usr/share/xml/docbook/stylesheet/docbook-xsl,DOCBOOKXSL?=/usr/local/docbook,' Makefile"
+    system "sed -i 's,PREFIX?=/usr,PREFIX?=#{CREW_PREFIX},' Makefile"
+    system "sed -i 's,DOCBOOKXSL?=/usr/share/xml/docbook/stylesheet/docbook-xsl,DOCBOOKXSL?=#{CREW_PREFIX}/docbook,' Makefile"
     system "sed -i 's,share/man,man,g' Makefile"
     system 'make'
   end
