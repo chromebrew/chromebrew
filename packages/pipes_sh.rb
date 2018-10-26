@@ -10,6 +10,6 @@ class Pipes_sh < Package
   depends_on 'ncurses'
 
   def self.install
-    system "make", "PREFIX=#{CREW_DEST_DIR}#{CREW_PREFIX}", "install"
+    system "make DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} install"
   end
 end
