@@ -7,6 +7,13 @@ class Dpkg < Package
   source_url 'http://http.debian.net/debian/pool/main/d/dpkg/dpkg_1.19.2.tar.xz'
   source_sha256 'f8f2ae2cf8065b81239db960b3794099ec607c94a125cec61c986f68f9861b71'
 
+  binary_url ({
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dpkg-1.19.2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    x86_64: '96bf208d095194eef87388ed1bb5e1068777d0c3b4f01a3f018f7e4e70b0785f',
+  })
+
   depends_on 'bz2'
   depends_on 'xzutils'
 
