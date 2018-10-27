@@ -3,9 +3,9 @@ require 'package'
 class Dpkg < Package
   description 'A medium-level package manager for Debian'
   homepage 'https://anonscm.debian.org/git/dpkg/'
-  version '1.19.1'
-  source_url 'http://http.debian.net/debian/pool/main/d/dpkg/dpkg_1.19.1.tar.xz'
-  source_sha256 'ae3978a6b7bddc3e3196804ae0d49ea008c84a8a7a60b7d212af1e1d469e7ccf'
+  version '1.19.2'
+  source_url 'http://http.debian.net/debian/pool/main/d/dpkg/dpkg_1.19.2.tar.xz'
+  source_sha256 'f8f2ae2cf8065b81239db960b3794099ec607c94a125cec61c986f68f9861b71'
 
   depends_on 'bz2'
   depends_on 'xzutils'
