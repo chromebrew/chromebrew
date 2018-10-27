@@ -17,7 +17,7 @@ class Acl < Package
     aarch64: '63d5600ce26933fc49b5fea4a9ab37f1dac8546c9a2bee6d0525ced6b98c03bb',
      armv7l: '63d5600ce26933fc49b5fea4a9ab37f1dac8546c9a2bee6d0525ced6b98c03bb',
        i686: 'a6859cfa0dc95c84304e49e90bbabc19f99a88daf962c58ff83914acd87f151e',
-     x86_64: 'bcf1563988e765aaa8a7ed3969b677a035571bad41c5e12935ebc1745e9fcdd0',
+     x86_64: '3dc686dbda7dd835281a0e9f54fb0740bd4fcb318c273bc78bbe75a402b906d9',
   })
 
   depends_on 'attr'
