@@ -17,6 +17,7 @@ class Code < Package
   end
 
   binary_url ({
+    armv7l:'https://github.com/stevedesmond-ca/vscode-arm/releases/download/1.28.0/vscode-1.28.0.deb'
   })
   binary_sha256 ({
   })
@@ -25,7 +26,12 @@ class Code < Package
   depends_on 'libgconf'
   depends_on 'xdg_base'
   depends_on 'sommelier'
-
+  def self.preinstall
+    case ARCH
+    when 'armv7l'
+      system "dpkg", "-i", "vscode-1.28.0.deb"
+    end
+  end
   def self.install
     case ARCH
     when 'x86_64', 'i686'
