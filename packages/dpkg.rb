@@ -4,8 +4,13 @@ class Dpkg < Package
   description 'A medium-level package manager for Debian'
   homepage 'https://anonscm.debian.org/git/dpkg/'
   version '1.19.2'
-  source_url 'http://http.debian.net/debian/pool/main/d/dpkg/dpkg_1.19.2.tar.xz'
+  source_url 'https://deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.19.2.tar.xz'
   source_sha256 'f8f2ae2cf8065b81239db960b3794099ec607c94a125cec61c986f68f9861b71'
+
+  binary_url ({
+  })
+  binary_sha256 ({
+  })
 
   depends_on 'bz2'
   depends_on 'xzutils'
