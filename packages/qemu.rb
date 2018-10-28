@@ -18,6 +18,7 @@ class Qemu < Package
   depends_on 'curl'
   depends_on 'glib'
   depends_on 'gtk3'
+  depends_on 'gtk2'
   depends_on 'jemalloc'
   depends_on 'libaio'
   depends_on 'libcap_ng'
