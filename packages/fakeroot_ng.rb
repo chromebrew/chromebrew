@@ -11,11 +11,14 @@ class Fakeroot_ng < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fakeroot_ng-0.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '8193a2fd03ed29a7944c3b186f616d9ceb1b25b0327c48ec4f59913d9e7bbc49',
+     x86_64: '68ade929172b332a688333874644ce80d3af25f9604c9cc68103975c667f4fee',
   })
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure",
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           "--with-memdir=#{CREW_PREFIX}/tmp"
     system 'make'
   end
 
