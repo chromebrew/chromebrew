@@ -15,7 +15,6 @@ class Gst_plugins_base < Package
   })
 
   depends_on 'gstreamer'
-  depends_on 'mesa'
   depends_on 'libtheora'
   depends_on 'glib'
   depends_on 'pango'
