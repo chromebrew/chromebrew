@@ -1,27 +1,24 @@
 require 'package'
 
 class Gstreamer < Package
-  description 'Open source multimedia framework'
+  description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.14.2'
-  source_url 'https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.14.2.tar.xz'
-  source_sha256 '4bd6127299f3f29379046bbd58a526e6353b569e0e72f7b4df2ae70df6882e09'
+  version '1.14.4'
+  source_url 'https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.14.4.tar.xz'
+  source_sha256 'f94f6696c5f05a3b3a9183e39c5f5c0b779f75a04c0efa497e7920afa985ffc7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '361ed7db7f1971cfa3ca4583104b361902899bd9ee73eb2e42cf9f613815874e',
-     armv7l: '361ed7db7f1971cfa3ca4583104b361902899bd9ee73eb2e42cf9f613815874e',
-       i686: '92558c22f27f9bcd6646d09c4142b0f5d5b9065f18ed08ce853867473e06e064',
-     x86_64: 'ee1184478d7caa6816714faa6651c30e2c1e74ae709944608453851144872fc4',
+     x86_64: 'ffef3b7e782be4821276a5f75c4b75e096a145901193b962b3e94b6ac63252ca',
   })
 
   depends_on 'glib'
+  depends_on 'libcap'
   depends_on 'gtk3'
+  depends_on 'gsl'
+  depends_on 'elfutils'
   depends_on 'libunwind'
   depends_on 'python27'
 
@@ -29,11 +26,17 @@ class Gstreamer < Package
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+           '--enable-failing-tests',
+           '--disable-gst-debug',
+           '--disable-debug'
     system 'make'
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+
+  def self.check
+    # system "make", "check" # The 'gst/gsttracerrecord' test fails.
   end
 end
