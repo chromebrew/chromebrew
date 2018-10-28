@@ -11,13 +11,14 @@ class Gstreamer < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '3242ab5a7000360604c49f15e6ba3abd41710cb6e7ced873ba689923aa7552ea',
+     x86_64: 'ffef3b7e782be4821276a5f75c4b75e096a145901193b962b3e94b6ac63252ca',
   })
 
   depends_on 'glib'
   depends_on 'libcap'
   depends_on 'gtk3'
   depends_on 'gsl'
+  depends_on 'elfutils'
   depends_on 'libunwind'
   depends_on 'python27'
 
@@ -25,11 +26,17 @@ class Gstreamer < Package
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           "--enable-failing-tests"
+           '--enable-failing-tests',
+           '--disable-gst-debug',
+           '--disable-debug'
     system 'make'
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+
+  def self.check
+    # system "make", "check" # The 'gst/gsttracerrecord' test fails.
   end
 end
