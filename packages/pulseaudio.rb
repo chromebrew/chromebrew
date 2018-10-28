@@ -20,7 +20,7 @@ class Pulseaudio < Package
      x86_64: '67608beaffd35ca0f5a3c35769797d2eae4193d5c81c8cad5e6e123f2d667e44',
   })
 
-  depends_on 'alsa_plugins'
+  depends_on 'alsa_plugins' => :build
   depends_on 'dbus'
   depends_on 'intltool'
   depends_on 'libsndfile'
