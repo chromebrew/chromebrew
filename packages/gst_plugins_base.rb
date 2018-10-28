@@ -16,9 +16,6 @@ class Gst_plugins_base < Package
 
   depends_on 'gstreamer'
   depends_on 'mesa'
-  depends_on 'wayland'
-  depends_on 'libx11'
-  depends_on 'libvorbis'
   depends_on 'libtheora'
   depends_on 'glib'
   depends_on 'pango'
@@ -31,11 +28,9 @@ class Gst_plugins_base < Package
   depends_on 'libxshmfence'
   depends_on 'libxcomposite'
   depends_on 'libxv'
-  depends_on 'libxext'
   depends_on 'libglu'
   depends_on 'libgudev'
   depends_on 'gdk_pixbuf'
-  depends_on 'libdrm'
 
   def self.build
     system './configure',
