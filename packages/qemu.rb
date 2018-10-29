@@ -8,9 +8,13 @@ class Qemu < Package
   source_sha256 '8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.0.0-chromeos-armv7l.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'c5358ff14b2271b5863a9234d57c4cc8af119f80b490e036fc0c5f9eef0fe98f',
+     armv7l: 'c5358ff14b2271b5863a9234d57c4cc8af119f80b490e036fc0c5f9eef0fe98f',
      x86_64: '3f5e0ad3cae968281e720a3351157e7e72ee275a403d89cce4dc0090f13a08dc',
   })
 
