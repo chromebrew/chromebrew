@@ -8,9 +8,15 @@ class Gst_plugins_base < Package
   source_sha256 'ca6139490e48863e7706d870ff4e8ac9f417b56f3b9e4b3ce490c13b09a77461'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.14.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.14.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.14.4-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.14.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'f829a4e5e8c59fc70a35e66664a7e82b780f2a6e5dc0be140c53fa986c260706',
+     armv7l: 'f829a4e5e8c59fc70a35e66664a7e82b780f2a6e5dc0be140c53fa986c260706',
+       i686: '84400b9d962da80378a8bd3d99bb6e2ceb642f31735a4aa2011b28347c4e69ef',
      x86_64: 'f858e5ccb578bcff6db1cdd143727b8feec5cf153d0b438af4925827e6fabcc1',
   })
 
