@@ -3,7 +3,7 @@ require 'package'
 class Libav < Package
   description 'Libav provides cross-platform tools and libraries to convert, manipulate and stream a wide range of multimedia formats and protocols.'
   homepage 'https://www.libav.org/'
-  version '12.3'
+  version '12.3-1'
   source_url 'https://libav.org/releases/libav-12.3.tar.xz'
   source_sha256 '6893cdbd7bc4b62f5d8fd6593c8e0a62babb53e323fbc7124db3658d04ab443b'
 
@@ -17,7 +17,7 @@ class Libav < Package
     aarch64: '31dda6c353eab2c8a9671fc1b22634f4dcc7fe8717fdbe9ec4581909f890fe1f',
      armv7l: '31dda6c353eab2c8a9671fc1b22634f4dcc7fe8717fdbe9ec4581909f890fe1f',
        i686: '23af5d635117763e3a73c952277bb92f80f968605419fdc0e7d5fee6bfe91f52',
-     x86_64: 'e2ecf0997285a170d1d4b36d71c337c2605ec378064e94e306884f8d0c7cd2f3',
+     x86_64: '96dd6d0c2b586c24c886896e98c7e4c13d7422655fc796b3beb7b5131f8d5a8b',
   })
 
   depends_on 'nasm'
@@ -27,6 +27,7 @@ class Libav < Package
            ./configure \
            --prefix=#{CREW_PREFIX} \
            --libdir=#{CREW_LIB_PREFIX} \
+           --shlibdir=#{CREW_LIB_PREFIX} \
            --disable-static \
            --enable-shared"
     system 'make'
