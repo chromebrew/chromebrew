@@ -3,22 +3,22 @@ require 'package'
 class Cairomm < Package
   description 'The Cairomm package provides a C++ interface to Cairo.'
   homepage 'https://www.cairographics.org/'
-  version '1.12.2'
+  version '1.12.2-1'
   source_url 'https://www.cairographics.org/releases/cairomm-1.12.2.tar.gz'
   source_sha256 '45c47fd4d0aa77464a75cdca011143fea3ef795c4753f6e860057da5fb8bd599'
 
-#  binary_url ({
-#    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-armv7l.tar.xz',
-#     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-armv7l.tar.xz',
-#       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-i686.tar.xz',
-#     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-x86_64.tar.xz',
-#  })
-#  binary_sha256 ({
-#    aarch64: '888898b832f6d43a3810caf17de63dbca0380914febcfada5210a36d839d8097',
-#     armv7l: '888898b832f6d43a3810caf17de63dbca0380914febcfada5210a36d839d8097',
-#       i686: '3781427ed44646a23045843d73ce1bdb85eb9b9a12a0130c7726ea7afa23dd50',
-#     x86_64: '94dfeb48047f9d9cb2ebda72c640dbe64532f2d4496f8c0dd7bfc2aea91b42ae',
-#  })
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm-1.12.2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '24b1da59d5156446baa4b524a194cb1f1f446b9377452e83b132127b3b4bfe1f',
+     armv7l: '24b1da59d5156446baa4b524a194cb1f1f446b9377452e83b132127b3b4bfe1f',
+       i686: 'd37adb6a92ba92cccfc58a70b868b2e2deab20f8b397bfdb2ba2ee30f8310623',
+     x86_64: 'd5510efba06f2543a15761be7b9d7a08f980db22022f84b011436f1faf787b33',
+  })
 
   depends_on 'cairo'
   depends_on 'libsigcplusplus'
