@@ -3,26 +3,22 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.7.0'
-  source_url 'https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz'
-  source_sha256 '0382996d1ee6aafe59763426cf0139ffebe36984474d0ec4126dd1c40a8b3549'
+  version '3.7.1'
+  source_url 'https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz'
+  source_sha256 'fa7e2b8e8c9402f192ad56dc4f814089d1c4466c97d780f5e5acc02c04243d6d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '581aad055468b2fb9b6e95776fc22de1edde80cebeef1fe5455dab5b18538002',
-     armv7l: '581aad055468b2fb9b6e95776fc22de1edde80cebeef1fe5455dab5b18538002',
-       i686: 'ae3ba2c8b1a96b745278286baadb41f8607f802de2f620846689ce0490de73bb',
-     x86_64: '7c4e07989669cac3233fe2b10d2447208a96c7d2056c20731f46aed90a83622b',
+     x86_64: '3e414c4a01b4f47c75f900435a29b5325900975f525ae905a5d1d073cdb8f332',
   })
 
-  depends_on 'bz2' => :build
-  depends_on 'xzutils' => :build
-  depends_on 'sqlite' => :build
+  depends_on 'bz2'
+  depends_on 'xzutils'
+  depends_on 'sqlite'
+  depends_on 'krb5'
+  depends_on 'libtirpc'
 
   def self.build
     # IMPORTANT: Do not build with python3 already installed or pip3 will not be included.
