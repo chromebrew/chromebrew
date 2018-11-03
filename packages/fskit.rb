@@ -17,7 +17,8 @@ class Fskit < Package
   depends_on 'attr'
 
   def self.patch
-    system "wget", "https://github.com/JL2210/patches/raw/master/fskit-dd9a8-xattr.patch"
+    system "wget", "https://github.com/JL2210/patches/raw/06346b89275a12eaa3fb71fce88a97dd288fa09d/fskit-dd9a8-xattr.patch"
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('fskit-dd9a8-xattr.patch') ) == 'bd221435060b92ecd237d2d90e4758a26acb02bbfa737c36b9ea0d4fe0d3c77a'
     system "patch -Np1 -i fskit-dd9a8-xattr.patch"
   end
 
