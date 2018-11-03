@@ -25,20 +25,20 @@ class Vdev < Package
   end
 
   def self.build
-    system "make LIBDIR=#{CREW_LIB_PREFIX}"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} -C vdevd OS=LINUX"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} -C example"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} -C hwdb"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} -C libudev-compat"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} -C fs"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} -C vdevd OS=LINUX"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} -C example"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} -C hwdb"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} -C libudev-compat"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} -C fs"
   end
 
   def self.install
-    system "make LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} install"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C vdevd OS=LINUX install"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C example install"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C hwdb install"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C libudev-compat install"
-    system "make LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C fs install"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} install"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C vdevd OS=LINUX install"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C example install"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C hwdb install"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C libudev-compat install"
+    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} DESTDIR=#{CREW_DEST_DIR} -C fs install"
   end
 end
