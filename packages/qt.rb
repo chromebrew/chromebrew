@@ -3,10 +3,11 @@ require 'package'
 class Qt < Package
   description 'Qt is a comprehensive cross-platform framework and toolkit that helps you create and build native applications and user interfaces for all the screens of your end user.'
   homepage 'https://info.qt.io/download-qt-for-application-development'
-  version '5.11.1'
-  source_url 'http://download.qt.io/official_releases/qt/5.11/5.11.1/single/qt-everywhere-src-5.11.1.tar.xz'
-  source_sha256 '39602cb08f9c96867910c375d783eed00fc4a244bffaa93b801225d17950fb2b'
+  version '5.11.2'
+  source_url 'http://download.qt.io/official_releases/qt/5.11/5.11.2/md5sums.txt'
+  source_sha256 '89b15d7fc584511b3eb9be22f409f750b9208325017b85cb3e2b354115c5ed9b'
 
+  depends_on 'xdg_base'
   depends_on 'sommelier'
 
   def self.install
@@ -55,6 +56,8 @@ class Qt < Package
       system "echo '    }' >> qt-installer-script.qs"
       system "echo '    gui.clickButton(buttons.FinishButton);' >> qt-installer-script.qs"
       system "echo '}' >> qt-installer-script.qs"
+    else
+      abort "Supported architectures are i686 and x86_64 only.".lightred
     end
     case ARCH
     when 'i686'
