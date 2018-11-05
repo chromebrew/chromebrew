@@ -3,33 +3,40 @@ require 'package'
 class Graphicsmagick < Package
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
-  version '1.3.28'
-  source_url 'http://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.28/GraphicsMagick-1.3.28.tar.xz'
-  source_sha256 '942a68a9a8a5af6f682b896fd4f0ad617d8b49907e474acfe59549956bcc994a'
+  version '1.3.30'
+  source_url 'https://prdownloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.30/GraphicsMagick-1.3.30.tar.xz'
+  source_sha256 'd965e5c6559f55eec76c20231c095d4ae682ea0cbdd8453249ae8771405659f1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.28-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.28-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.28-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.30-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.30-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.30-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/graphicsmagick-1.3.30-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b34b0b5c2a85a0e1e410b5ea43ad22459aa102ca65d1fb70fe56442d93969936',
-     armv7l: 'b34b0b5c2a85a0e1e410b5ea43ad22459aa102ca65d1fb70fe56442d93969936',
-       i686: 'bd8d55e6347d2bb1fb27a87883c6dc8aecacbf905c41c92a2c28bd75528f1242',
-     x86_64: 'c92c2a2630342f13ef3e6e89cb07fc1b90d0b281cef401047271dd243ab8618e',
+    aarch64: 'c2a653efa6a3ee47ef4cf50fc10965dd16e3acdee0baa3668ef2899d147cf6e4',
+     armv7l: 'c2a653efa6a3ee47ef4cf50fc10965dd16e3acdee0baa3668ef2899d147cf6e4',
+       i686: '5b44100564bf0e4910c9559cc4eca9a5ed3dea91ce3f47dfceb2bf885aa2d6c2',
+     x86_64: '8554b70d6ba8428089a26b61d1534874691d55fda6fedc6d69e79af53c3c7526',
   })
 
+  depends_on 'docutils'
   depends_on 'freetype'
-  depends_on 'lcms'
+  depends_on 'ghostscript'
   depends_on 'libwebp'
+  depends_on 'libwmf'
+  depends_on 'msttcorefonts'
 
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
+           "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
+           "--with-perl=#{CREW_PREFIX}/bin/perl",
            '--disable-maintainer-mode',
            '--enable-magick-compat',
+           '--enable-shared=yes',
+           '--enable-static=no',
            '--with-modules',
            '--with-xml'
     system 'make'
