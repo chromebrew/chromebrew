@@ -8,10 +8,16 @@ class Python3 < Package
   source_sha256 'fa7e2b8e8c9402f192ad56dc4f814089d1c4466c97d780f5e5acc02c04243d6d'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '3e414c4a01b4f47c75f900435a29b5325900975f525ae905a5d1d073cdb8f332',
+    aarch64: 'c6ad3a008510f5cbafc94d23e2470fe350b75bd4dcce4c20bce69d5ba3dc7f15',
+     armv7l: 'c6ad3a008510f5cbafc94d23e2470fe350b75bd4dcce4c20bce69d5ba3dc7f15',
+       i686: '51c94f7be089b8515bb03eacb5812c4080f93201565406d438fb2cd9e2a4cb50',
+     x86_64: '434f8f1156f89cb15dcbbdbf3a6e0448c931e5f5480dc1c5550694f014aab315',
   })
 
   depends_on 'bz2'
