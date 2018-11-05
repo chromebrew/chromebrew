@@ -9,15 +9,15 @@ class Iptables < Package
 
   binary_url ({
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/iptables-1.6.1-1-chromeos-x86_64.tar.xz',
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iptables-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iptables-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iptables-1.6.1-chromeos-i686.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iptables-1.6.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iptables-1.6.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iptables-1.6.1-1-chromeos-i686.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '249bf764fc6bf31d7fdf7e926af710ced35650d16c701ee7ba3cc90e5c441446',
-    aarch64: '4a72a30c1e6d29706a68473a8814461912f04c408e2738edb963667ad9e3a591',
-     armv7l: '4a72a30c1e6d29706a68473a8814461912f04c408e2738edb963667ad9e3a591',
-       i686: '4289bf6ce4a37636ce84bc47dbe5ceb96c1bc6ea5f08991ca018b3e40ad3fefc',
+     x86_64: 'db40420fd3c926cf252232c19f4c07c35769ed2fa496350e88a4ff2a0422edee',
+    aarch64: '72c2d7c0c065ac6b4d3f98463e8accde960b67e9584c9c9a82043d71f5ef9dcd',
+     armv7l: '72c2d7c0c065ac6b4d3f98463e8accde960b67e9584c9c9a82043d71f5ef9dcd',
+       i686: '7c9eedcc3dd9e2657bdfbf0efcebe5e39762a36def97c3b531c93913c1ec29a0',
   })
 
   def self.build
