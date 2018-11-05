@@ -8,10 +8,16 @@ class Vdev < Package
   source_sha256 'dbf561890aa70a8619506d166803a72d0c2a5b7590226feef784ec623bcb4739'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '826658f93e7a9c31eda6adfc1d96f9e1ded2c8becf4bbc0a8315ba4e6a77da3f',
+    aarch64: '087ab4f0a4b12f0fe49c8e0031e8af37b2b4e645cd71def45c212177716eaebb',
+     armv7l: '087ab4f0a4b12f0fe49c8e0031e8af37b2b4e645cd71def45c212177716eaebb',
+       i686: '7a9730d9c87a269e8f41adad59d55232b583614c7f11b9ce5472ed6fee7f4314',
+     x86_64: 'f8384c3a8b057e48d13889a9ce8433b16d44f74a6750273323a53aa782bf24be',
   })
 
   depends_on 'fuse'
