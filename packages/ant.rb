@@ -4,7 +4,7 @@ class Ant < Package
   description 'Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.'
   homepage 'http://ant.apache.org/'
   version '1.10.5'
-  source_url 'http://www.apache.org/dist/ant/source/apache-ant-1.10.5-src.tar.xz'
+  source_url 'https://www.apache.org/dist/ant/source/apache-ant-1.10.5-src.tar.xz'
   source_sha256 'ec7c704e22a2b0167e1ff35cc3d4198267e6489f142aa3e9da1b7fe6e39ff53d'
 
   binary_url ({
