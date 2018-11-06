@@ -21,6 +21,7 @@ class Emacs < Package
   })
 
   depends_on 'lcms'
+  depends_on 'libjpeg'
 
   def self.build
     system "./configure \
