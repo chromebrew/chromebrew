@@ -1,3 +1,5 @@
+acl
+attr
 autoconf
 automake
 binutils
