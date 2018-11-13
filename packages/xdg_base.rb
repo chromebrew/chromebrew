@@ -4,8 +4,8 @@ class Xdg_base < Package
   description 'XDG Base Directory Specification Configuration'
   homepage 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
   version '0.7-1'
-  source_url 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
-  source_sha256 '342289ad33b48b8f643278f74cafa182f4471d490b82dc5e442e2e720fa4080f'
+  source_url 'file:///dev/null'
+  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   def self.preinstall
     # Save any previous configuration, if it exists.
