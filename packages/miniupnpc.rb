@@ -3,29 +3,41 @@ require 'package'
 class Miniupnpc < Package
   description 'UPnP IGD client lightweight library'
   homepage 'http://miniupnp.free.fr/'
-  version '2.0.20171212-1'
-  source_url 'http://miniupnp.free.fr/files/download.php?file=miniupnpc-2.0.20171212.tar.gz'
-  source_sha256 'cef135ae46c12358a485e809619c01145238aceb10e6e8e2946ae40c4dbe477d'
+  version '2.1'
+  source_url 'https://github.com/miniupnp/miniupnp/archive/miniupnpc_2_1.tar.gz'
+  source_sha256 '19c5b6cf8f3fc31d5e641c797b36ecca585909c7f3685a5c1a64325340537c94'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.0.20171212-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.0.20171212-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.0.20171212-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.0.20171212-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/miniupnpc-2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2ad619aa0e291c2fd61ce5a42367e21221a0a330986102ad16355a805ba45cdd',
-     armv7l: '2ad619aa0e291c2fd61ce5a42367e21221a0a330986102ad16355a805ba45cdd',
-       i686: '9821f66ae49937a0b6bb3a759632e3cc545707c4f3a68fe9dcc3d293d9fba6e5',
-     x86_64: '1578fc098850bca69aba3aab589651733c2332128e4e88ec309e17bd4a8d4a07',
+    aarch64: '312d76ffa9e5f86e7d1556b49a875387455cea3914f359aa2e9b9dee761a6adb',
+     armv7l: '312d76ffa9e5f86e7d1556b49a875387455cea3914f359aa2e9b9dee761a6adb',
+       i686: 'ec9f784b89804522b35d05c62c027ef359c03aa664b885619d942f72418474c5',
+     x86_64: 'cc39583447b82b0599b6fd6807f6df3f728b35089d9d9a99d4c9064f58eb4fa0',
   })
 
+  def self.patch
+    #system "sed -i '139s,/usr,,' Makefile"
+  end
+
   def self.build
-    system "sed -i '139s,/usr,,' Makefile"
-    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}"
+    Dir.chdir 'miniupnpc' do
+      if ARCH == 'x86_64'
+        system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DLIB_SUFFIX=64"
+      else
+        system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}"
+      end
+      system 'make'
+    end
   end
 
   def self.install
-    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    Dir.chdir 'miniupnpc' do
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    end
   end
 end
