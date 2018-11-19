@@ -21,9 +21,11 @@ class Scite < Package
   })
 
   depends_on 'gtk3'
+  depends_on 'gnome_icon_theme'
   depends_on 'hicolor_icon_theme'
   depends_on 'shared_mime_info'
   depends_on 'sommelier'
+
 
   def self.build
     system 'wget https://www.scintilla.org/scintilla412.tgz'
