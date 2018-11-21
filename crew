@@ -523,7 +523,7 @@ end
 
 def compress_doc (dir)
   # check whether crew should compress
-  return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+  return if CREW_NOT_COMPRESS || ENV['CREW_NOT_COMPRESS'] || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
@@ -564,7 +564,7 @@ end
 
 def strip_find_files (find_cmd, strip_option = "")
   # check whether crew should strip
-  return if CREW_NOT_STRIP || !File.exist?("#{CREW_PREFIX}/bin/strip")
+  return if CREW_NOT_STRIP || ENV['CREW_NOT_STRIP'] || !File.exist?("#{CREW_PREFIX}/bin/strip")
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
