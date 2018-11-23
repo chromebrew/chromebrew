@@ -261,6 +261,7 @@ def const (var)
       'CREW_NPROC',
       'CREW_PREFIX',
       'CREW_VERSION',
+      'LIBC_VERSION',
       'USER'
     ]
     vars.each { |var|

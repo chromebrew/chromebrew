@@ -25,6 +25,7 @@ intltool
 isl
 less
 libffi
+libgd
 libiconv
 libidn2
 libpipeline

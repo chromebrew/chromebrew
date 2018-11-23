@@ -1,9 +1,10 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.0.4'
+CREW_VERSION = '1.0.5'
 
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
+LIBC_VERSION = if File.exists? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
 
 CREW_PREFIX = '/usr/local'
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
