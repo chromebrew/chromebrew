@@ -10,14 +10,14 @@ class Cppunit < Package
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cppunit-1.12.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cppunit-1.12.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cppunit-1.12.1-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cppunit-1.12.1-chromeos-x86_64.tar.xz',
-    i686: 'file:///home/chronos/user/chromebrew/release/i686/cppunit-1.12.1-chromeos-i686.tar.xz'
   })
   binary_sha256 ({
     aarch64: '5629277d1bb357eb5a1f0cf6a0febe1078b67c63030ecf9c51cf885704c76107',
      armv7l: '5629277d1bb357eb5a1f0cf6a0febe1078b67c63030ecf9c51cf885704c76107',
+       i686: '3c6ccb427841faf098fc43520f1f288c23c34aadce01f5aa843e35a19100f54a',
      x86_64: 'e5f432ecd193119cb7201eec9881f3e89dd7bccbb78f3ba4cc8374471acbe236',
-       i686: '3a4a325fb9e1ef07883f08dfe0dd97f09505bf8b3189540a5b8a1c13902ab7b9',
   })
 
   depends_on 'doxygen' => :build
