@@ -20,6 +20,7 @@ class Spacefm < Package
      x86_64: '9a347033bb9eb459beddbc793b86f9462f523a28e45250072def822e91adcdf7',
   })
 
+  depends_on 'gtk2'
   depends_on 'gtk3'
   depends_on 'ffmpegthumbnailer'
   depends_on 'hicolor_icon_theme'

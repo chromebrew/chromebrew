@@ -3,7 +3,7 @@ require 'package'
 class Ffmpegthumbnailer < Package
   description 'FFmpegthumbnailer is a lightweight video thumbnailer that can be used by file managers to create thumbnails for your video files.'
   homepage 'https://github.com/dirkvdb/ffmpegthumbnailer'
-  version '2.2.0'
+  version '2.2.0-1'
   source_url 'https://github.com/dirkvdb/ffmpegthumbnailer/releases/download/2.2.0/ffmpegthumbnailer-2.2.0.tar.bz2'
   source_sha256 'e5c31299d064968198cd378f7488e52cd5e738fac998eea780bc77d7f32238c2'
 
@@ -17,7 +17,7 @@ class Ffmpegthumbnailer < Package
     aarch64: '747253e634463bd56136959ba3d9af7a2471dab0b6ea25942c2393e63c8c2a32',
      armv7l: 'd87b2c125e50ecc2556594995889eba190dff239f3e3d9707f7cb73dc4a6adc8',
        i686: 'e47f302bf25775143bd1e7b0a62af36dfe734d7f9766c5e9a13c4eee54b69701',
-     x86_64: '61cb62cb5162ebae8ab981bf14e0187cef4529ebf100f68c4ddf2ba15b39de31',
+     x86_64: '1ca2b6e0d414f56c48952814a8470e01c012d11434ab3c26fa28dfbb39b13890',
   })
 
   depends_on 'ffmpeg'
