@@ -1,124 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The missing package manager for Chrome OS">
-    <meta name="author" content="Michal Siwek">
-    <link rel="shortcut icon" href="favicon.png">
-
+<!-- saved from url=(0016)https://brew.sh/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    
     <title>Chromebrew - the software source you missed so much</title>
-
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="jumbotron-narrow.css" rel="stylesheet">
-    <link href="bs-example.css" rel="stylesheet">
-    <link href="crew-specific.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
+    
+  
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/x-icon" href="brew.png">
+    <link rel="apple-touch-icon" href="brew.png">
+    <link rel="stylesheet" href="styles.css" type="text/css" media="screen">
+    
 
   <body>
+    <div id="wrap"></div>
+      <div id="header" class="">
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
+
+        <ul class="nav nav-pills pull-right"></ul>
           <!--<iframe src="http://ghbtns.com/github-btn.html?user=skycocker&repo=chromebrew&type=watch&size=large"
-            allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30"></iframe>-->
-
-          <a href="https://github.com/skycocker/chromebrew"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+                allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30"></iframe>-->
+    
+          <a href="https://github.com/skycocker/chromebrew"><img width="200" hight="200"style="position: absolute; top: 0; right: 0; border: 0;"
+              src="grey.png" alt="Fork me on GitHub"></a>
         </ul>
-        <h3 class="text-muted">Chromebrew</h3>
+    
       </div>
-
-      <div class="jumbotron">
+    <div class="verticalhorizontal">
+      <img src="brew.png" alt="centered image" width="139.7142857143" hight="167.4285714286"/>
+    </div>
+    </p>
+     
         <h1>Chromebrew</h1>
         <p class="lead">The missing package manager for Chrome OS</p>
       </div>
 
-      <div class="row marketing">
-        <div class="col-12">
-          <div class="bs-example bs-example-type">
-            <h4>Chromebrew installs what you need with its dependencies:</h4>
-          </div>
-          <div class="highlight">
-            <pre><code>$ crew install vim</code></pre>
-          </div>
-          <div class="bs-example bs-example-type">
-            <h4>It also registers the changes being made, so you can easily remove anything:</h4>
-          </div>
-          <div class="highlight">
-            <pre><code>$ crew remove vim</code></pre>
-          </div>
-          <div class="bs-example bs-example-type">
-            <h4>See which packages are currently available:</h4>
-          </div>
-          <div class="highlight">
-            <pre><code>$ crew search</code></pre>
-          </div>
-          <div class="bs-example bs-example-type">
-            <h4>Look for a package:</h4>
-          </div>
-          <div class="highlight">
-            <pre><code>$ crew search vim</code></pre>
-          </div>
-          <div class="bs-example bs-example-type">
-            <h4>Update software lists:</h4>
-          </div>
-          <div class="highlight">
-            <pre><code>$ crew update</code></pre>
-          </div>
-          <div class="bs-example bs-example-type">
-            <h4>Update Chromebrew packages:</h4>
-          </div>
-          <div class="highlight">
-            <pre><code>$ crew upgrade</code></pre>
-          </div>
-        </div>
-      </div>
+<div id="information">
+  <ul>
+    <li>
+      <div class="group row">
+        <h2 id="install">Install Chromebrew</h2>
+        <br>
+        <pre style="clear:both;text-align:center;margin-bottom:0.9em"><code id="selectable" onclick="selectText(this)">curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
+<div class="row marketing">
+  
+    <div class="bs-example bs-example-type">
+      <h4>Chromebrew installs what you need with its dependencies:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew install vim</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>It also registers the changes being made, so you can easily remove anything:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew remove vim</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>See which packages are currently available:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew search</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>Look for a package:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew search vim</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>Update software lists:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew update</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>Update Chromebrew packages:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew upgrade</code></pre>
+    </div>
+  </div>
+</div>
 
-      <div class="row marketing">
-        <div class="col-12">
-          <div class="bs-example bs-example-type">
-            <h4>Install Chromebrew (along with Ruby and Git).</h4>
-            <h5>Available on aarch64, armv7l, i686 and x86_64.</h5>
-          </div>
-          <div class="highlight">
-            <pre><code>curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
-          </div>
-        </div>
-      </div>
+<div class="row marketing">
+  <div class="col-12">
+    <div class="bs-example bs-example-type">
+      <h4>Install Chromebrew (along with Ruby and Git).</h4>
+      <h5>Available on aarch64, armv7l, i686 and x86_64.</h5>
+    </div>
+    <div class="highlight">
+      <pre><code>curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
+    </div>
+  </div>
+</div>
 
-      <div class="row marketing">
-        <h3>What is it?</h3>
-        <p>Chromebrew is an <a href="https://github.com/skycocker/chromebrew/blob/master/LICENSE">open source</a> package manager / source builder hybrid targeting Chromebooks and Chrome OS.</p>
+<div class="row marketing">
+  <h3>What is it?</h3>
+  <p>Chromebrew is an <a href="https://github.com/skycocker/chromebrew/blob/master/LICENSE">open source</a> package
+    manager / source builder hybrid targeting Chromebooks and Chrome OS.</p>
 
-        <h3>What does it do?</h3>
-        <p>
-          It installs the software you need that hasn't been provided by Google. Many important packages are already precompiled and it's enough to just type <code>crew install package_name</code>, but if something's not already there, you can easily build and install it from source.
-        </p>
+  <h3>What does it do?</h3>
+  <p>
+    It installs the software you need that hasn't been provided by Google. Many important packages are already
+    precompiled and it's enough to just type <code>crew install package_name</code>, but if something's not already
+    there, you can easily build and install it from source.
+  </p>
 
-        <h3>How does it work?</h3>
-        <p>
-          In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install into your system during installation. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git and a package manager dedicated just for your Chromebook. Cool, huh?
-        </p>
+  <h3>How does it work?</h3>
+  <p>
+    In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to
+    run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install into your system during
+    installation. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git
+    and a package manager dedicated just for your Chromebook. Cool, huh?
+  </p>
 
-        <h3>How is it different from Crouton?</h3>
-        <p>
-          Well, Chromebrew doesn't install an operating system. :p
-        </p>
-        <p>
-          The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have Crouton and need just a few small packages. Also, you may be on a good internet connection and need just a few small packages. Also, why not use Chrome OS as the operating system?
-        </p>
+  <h3>How is it different from Crouton?</h3>
+  <p>
+    Well, Chromebrew doesn't install an operating system. :p
+  </p>
+  <p>
+    The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have
+    Crouton and need just a few small packages. Also, you may be on a good internet connection and need just a few
+    small packages. Also, why not use Chrome OS as the operating system?
+  </p>
 
-        <h3 id="howcanihelp">How can I help?</h3>
-        <p>
-          If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
-        </p>
-<pre>
-# It is recommended that you investigate other files in the 'packages/' directory
+  <h3 id="howcanihelp">How can I help?</h3>
+      <div class="group row">
+        
+                  <p>
+                    If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages</code>
+                    directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files
+                    - here is an example:
+                  </p>
+        
+<pre># It is recommended that you investigate other files in the 'packages/' directory
 # to help get an idea of how existing packages are being installed through Chromebrew.
 
 require 'package'
@@ -189,13 +206,13 @@ class Template &lt; Package
 
 end
 </pre>
-        </p>
-      </div>
+        
 
-      <div class="footer">
-        <pre>&copy; 2013 Michal Siwek</pre>
-      </div>
+<div class="footer">
+  <pre>Improved By SajjaadF</pre>
+  <p>© 2018 Michal Siwek</p>
 
-    </div> <!-- /container -->
-  </body>
+
+
+
 </html>
