@@ -3,21 +3,21 @@ require 'package'
 class Php5 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.38'
-  source_url 'http://php.net/distributions/php-5.6.38.tar.xz'
-  source_sha256 'c2fac47dc6316bd230f0ea91d8a5498af122fb6a3eb43f796c9ea5f59b04aa1e'
+  version '5.6.39'
+  source_url 'http://php.net/distributions/php-5.6.39.tar.xz'
+  source_sha256 '8147576001a832ff3d03cb2980caa2d6b584a10624f87ac459fcd3948c6e4a10'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.38-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.38-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.38-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.38-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.39-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.39-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.39-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.39-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6fa6a12b50a565c1934f2556011aa9107058adc7af2b8cf44567d3c324c34ce7',
-     armv7l: '6fa6a12b50a565c1934f2556011aa9107058adc7af2b8cf44567d3c324c34ce7',
-       i686: '7e652da5133743cc170a1bd2ecc2ecc9c2f14ff66580cfc7e84c5daba96922f3',
-     x86_64: 'ce5b6e291a502f632a125ada7693f423cab96ed137bd52ac3a0538523b3caf01',
+    aarch64: '5a0be4837ee67281c647a74b98e9d893dda07266bfc542ef1b87b5143791fb19',
+     armv7l: '5a0be4837ee67281c647a74b98e9d893dda07266bfc542ef1b87b5143791fb19',
+       i686: '383ac377bd617182bbca5a41ddac52105bbccd3754268ca0c4d04556848965a7',
+     x86_64: 'fe93b5fd684e10bac3b6e74c8a4150c9231e6febfe80061917130a94b6f1e094',
   })
 
   depends_on 'readline7'
