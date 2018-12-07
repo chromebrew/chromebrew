@@ -3,21 +3,21 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.12'
-  source_url 'https://php.net/distributions/php-7.2.12.tar.xz'
-  source_sha256 '989c04cc879ee71a5e1131db867f3c5102f1f7565f805e2bb8bde33f93147fe1'
+  version '7.2.13'
+  source_url 'https://php.net/distributions/php-7.2.13.tar.xz'
+  source_sha256 '14b0429abdb46b65c843e5882c9a8c46b31dfbf279c747293b8ab950c2644a4b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '09132b4326e34418695af2566c356591048583b1c286b1235aac3a1030431161',
-     armv7l: '09132b4326e34418695af2566c356591048583b1c286b1235aac3a1030431161',
-       i686: '206b65c8b6051dbabbc4c97f08c95d79bea8e9a35f7eca671dacdee7eaf3cffb',
-     x86_64: '156a3d95387a2ea0bf6367935b71b63c281e1d663370d3ba2848717db956e3f3',
+    aarch64: '1eba303d85b10189ca84d7004dba52dfbf77599e972d41350c9d5b0d109c0868',
+     armv7l: '1eba303d85b10189ca84d7004dba52dfbf77599e972d41350c9d5b0d109c0868',
+       i686: 'dca4240c6530c0b05956259bf352fdfbf4de96993a1e87bea518b98e3338e54e',
+     x86_64: '816e2a00a31b200b668cfe4da1a4ad5a015e478d4f2af6b5c41a47875c6f6e25',
   })
 
   depends_on 'readline7'
