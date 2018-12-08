@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://skycocker.github.io/chromebrew/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="brew.png"" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The missing package manager for Chrome OS">
+    <meta name="author" content="Michal Siwek">
+    <link rel="shortcut icon" href="https://skycocker.github.io/chromebrew/favicon.png">
+
+    <title>Chromebrew - the software source you missed so much</title>
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <link href="bs-example.css" rel="stylesheet">
+    <link href="crew-specific.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+
+          <a href="https://github.com/skycocker/chromebrew"><img style="position: absolute; top: 0; right: 0; border: 0;" src="./Chromebrew - the software source you missed so much_files/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+        </ul>
+      </div>
+
+      <div class="jumbotron">
+        <div class="center">
+          <img src="brew.png" alt="centered image" width="139.7142857143" hight="167.4285714286">
+        </div>
+        <h1>Chromebrew</h1>
+        <p class="lead">The missing package manager for Chrome OS</p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-12">
+          <div class="bs-example bs-example-type">
+            <h4>Chromebrew installs what you need with its dependencies:</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ crew install vim</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>It also registers the changes being made, so you can easily remove anything:</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ crew remove vim</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>See which packages are currently available:</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ crew search</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>Look for a package:</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ crew search vim</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>Update software lists:</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ crew update</code></pre>
+          </div>
+          <div class="bs-example bs-example-type">
+            <h4>Update Chromebrew packages:</h4>
+          </div>
+          <div class="highlight">
+            <pre><code>$ crew upgrade</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-12">
+          <div class="bs-example bs-example-type">
+            <h4>Install Chromebrew (along with Ruby and Git).</h4>
+            <h5>Available on aarch64, armv7l, i686 and x86_64.</h5>
+          </div>
+          <div class="highlight">
+            <pre><code>curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="row marketing">
+        <h3>What is it?</h3>
+        <p>Chromebrew is an <a href="https://github.com/skycocker/chromebrew/blob/master/LICENSE">open source</a> package manager / source builder hybrid targeting Chromebooks and Chrome OS.</p>
+
+        <h3>What does it do?</h3>
+        <p>
+          It installs the software you need that hasn't been provided by Google. Many important packages are already precompiled and it's enough to just type <code>crew install package_name</code>, but if something's not already there, you can easily build and install it from source.
+        </p>
+
+        <h3>How does it work?</h3>
+        <p>
+          In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install into your system during installation. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git and a package manager dedicated just for your Chromebook. Cool, huh?
+        </p>
+
+        <h3>How is it different from Crouton?</h3>
+        <p>
+          Well, Chromebrew doesn't install an operating system. :p
+        </p>
+        <p>
+          The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have Crouton and need just a few small packages. Also, you may be on a good internet connection and need just a few small packages. Also, why not use Chrome OS as the operating system?
+        </p>
+<h3>Is GUI supported?</h3>
+<p>
+  In fact, Chromebrew supports GUI, but i686 is not supported for GUI apps.
+</p>
+        <h3 id="howcanihelp">How can I help?</h3>
+        <p>
+          If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
+        </p>
+<pre># It is recommended that you investigate other files in the 'packages/' directory
+# to help get an idea of how existing packages are being installed through Chromebrew.
+
+require 'package'
+
+class Template &lt; Package
+  description ''
+  homepage ''
+  version ''
+  source_url '*.tar.gz'
+  source_sha256 ''
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '',
+     armv7l: '',
+       i686: '',
+     x86_64: '',
+  })
+
+
+  # Register dependencies (use the following line as a basis)
+  #
+  # depends_on '*'
+  #
+
+
+  # Function to perform pre-install operations prior to install for both source build and binary distribution.
+  def self.preinstall
+
+  end
+
+
+  # Function to perform patch operations prior to build from source.
+  def self.patch
+
+  end
+
+
+  # Function to perform build from source.
+  def self.build
+
+  end
+
+
+  # Function to perform install from source build.
+  def self.install
+
+  end
+
+
+  # Function to perform post-install for both source build and binary distribution
+  def self.postinstall
+
+  end
+
+
+  # Function to perform check from source build.
+  # This is execute if and only if `crew build`.
+  def self.check
+
+  end
+
+
+end
+</pre>
+        <p></p>
+      
+      <div class="footer">
+        <pre>                               © 2013 - 2018 Michal Siwek</pre>
+      </div>
+    </div> <!-- /container -->
+  
+
+</body></html>
