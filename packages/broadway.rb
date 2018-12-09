@@ -2,7 +2,7 @@ require 'package'
 
 class Broadway < Package
   description 'Run GTK applications in a browser window.'
-  homepage 'http://127.0.0.1:8085'
+  homepage 'https://developer.gnome.org/gtk3/stable/gtk-broadway.html'
   version 'gtk3.22'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -64,15 +64,16 @@ class Broadway < Package
     puts "echo 'startbroadwayd' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
+    puts "To start the broadwayd daemon, run 'startbroadwayd'".lightblue
     puts "To stop the broadwayd daemon, run 'stopbroadwayd'".lightblue
     puts
     puts "Please be aware that gtk applications may not work without the broadwayd daemon running.".orange
-    puts "Broadway may also not work if Sommelier is installed; If you have any issues, run these commands:".orange
+    puts "Broadway may not work if the sommelier daemon is running. To fix, run stopsommelier. If some things don't work, as last option, run these commands:".orange
     puts
     puts "sed -i 's,^export GDK_BACKEND=wayland,#&,g' ~/.bashrc".orange
     puts "unset GDK_BACKEND && source ~/.bashrc".orange
     puts
-    puts "Navigate your browser to http://127.0.0.1:8085 while the broadwayd".lightblue
+    puts "Navigate your browser to http://127.0.0.1:8085 while the broadwayd is running".lightblue
     puts "daemon is running to run GTK applications in the browser window.".lightblue
     puts
   end
