@@ -1,4 +1,4 @@
-![](https://sajjaadf.github.io/chromebrew-Dev/images/brew.png) <br>
+<img src="/images/brew.png" alt="brew" /><br>
 Chromebrew
 ==========
 
