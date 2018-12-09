@@ -1,13 +1,14 @@
-chromebrew
+![](https://sajjaadf.github.io/chromebrew-Dev/images/brew.png) <br>
+Chromebrew
 ==========
 
 Package manager for Chrome OS
 
 Chat with us!
 -------------
-Messages are synced between services for your convenience. 😊
-
-<a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank"><img src="/images/slack.png" alt="Slack Invite" /></a><a href="https://discord.gg/QRrzBXN" target="_blank"><img src="/images/discord.png" alt="Discord Invite" /></a>
+<p><em></p>Discord is not currently syncing messages with Slack</em></p><br><br>
+<a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank"><img src="/images/slack.png" alt="Slack Invite" />
+    <a href="https://discord.gg/QRrzBXN" target="_blank"><img src="/images/discord.png" alt="Discord Invite" /></a>
 
 Supported Systems
 -----------------
@@ -22,7 +23,7 @@ Supported Systems
 Overview
 --------
 
-Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use them as full-featured Linux distro were gcc and make with their dependencies. Well, these pieces aren't missing anymore. Say hello to chromebrew!
+Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use them as full-featured Linux distro were gcc and make with their dependencies. Well, these pieces aren't missing anymore. Say hello to chromebrew! <i>Most gui apps are working with sommelier. We don't support i686, however.</i>
 
 Prerequisites
 -------------
