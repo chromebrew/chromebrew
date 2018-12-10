@@ -68,7 +68,10 @@ class Broadway < Package
     puts "To stop the broadwayd daemon, run 'stopbroadwayd'".lightblue
     puts
     puts "Please be aware that gtk applications may not work without the broadwayd daemon running.".orange
-    puts "Broadway may not work if the sommelier daemon is running. To fix, run stopsommelier. ".orange
+    puts "Broadway may also not work if Sommelier is installed; If you have any issues, run these commands:".orange
+    puts
+    puts "sed -i 's,^export GDK_BACKEND=wayland,#&,g' ~/.bashrc".orange
+    puts "unset GDK_BACKEND && source ~/.bashrc".orange
     puts
     puts "Navigate your browser to http://127.0.0.1:8085 while the broadwayd".lightblue
     puts "daemon is running to run GTK applications in the browser window.".lightblue
