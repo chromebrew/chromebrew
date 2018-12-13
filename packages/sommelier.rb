@@ -24,39 +24,33 @@ class Sommelier < Package
       system "sed -i 's,/lib/,/#{ARCH_LIB}/,g' Makefile"
       system "sed -i 's,-I.,-I. -I#{CREW_PREFIX}/include/pixman-1,g' Makefile"
       system "make PREFIX=#{CREW_PREFIX} SYSCONFDIR=#{CREW_PREFIX}/etc"
-      system "echo 'GDK_BACKEND=wayland' > .sommelier.env"
-      system "echo 'CLUTTER_BACKEND=wayland' >> .sommelier.env"
-      system "echo 'XDG_RUNTIME_DIR=/var/run/chrome' >> .sommelier.env"
-      system "echo 'WAYLAND_DISPLAY=wayland-0' >> .sommelier.env"
-      system "echo 'DISPLAY=:0' >> .sommelier.env"
-      system "echo 'SCALE=1' >> .sommelier.env"
+      system "echo 'export GDK_BACKEND=wayland' > .sommelier.env"
+      system "echo 'export CLUTTER_BACKEND=wayland' >> .sommelier.env"
+      system "echo 'export XDG_RUNTIME_DIR=/var/run/chrome' >> .sommelier.env"
+      system "echo 'export WAYLAND_DISPLAY=wayland-0' >> .sommelier.env"
+      system "echo 'export DISPLAY=:0' >> .sommelier.env"
+      system "echo 'export SCALE=1' >> .sommelier.env"
       system "echo '#!/bin/bash' > sommelierd"
-      system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\"' >> sommelierd"
+      system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
       system "echo '#!/bin/bash' > initsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
+      system "echo 'SOMM=\$(pidof sommelier 2>/dev/null)' >> initsommelier"
       system "echo 'if [ -z \"\$SOMM\" ]; then' >> initsommelier"
       system "echo '  [ -f #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway' >> initsommelier"
       system "echo '  #{CREW_PREFIX}/sbin/sommelierd &' >> initsommelier"
       system "echo '  sleep 3' >> initsommelier"
       system "echo 'fi' >> initsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
-      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> initsommelier"
-      system "echo '  echo \"sommelier process \$SOMM is running\"' >> initsommelier"
-      system "echo 'else' >> initsommelier"
-      system "echo '  echo \"sommelier failed to start\"' >> initsommelier"
+      system "echo 'SOMM=\$(pidof sommelier 2>/dev/null)' >> initsommelier"
+      system "echo 'if [ -z \"\$SOMM\" ]; then' >> initsommelier"
       system "echo '  exit 1' >> initsommelier"
       system "echo 'fi' >> initsommelier"
       system "echo '#!/bin/bash' > stopsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
+      system "echo 'SOMM=\$(pidof sommelier 2>/dev/null)' >> stopsommelier"
       system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
-      system "echo '  sudo killall sommelier' >> stopsommelier"
+      system "echo '  sudo killall sommelier &>/dev/null' >> stopsommelier"
       system "echo '  sleep 3' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
-      system "echo 'if [ -z \"\$SOMM\" ]; then' >> stopsommelier"
-      system "echo '  echo \"sommelier process stopped\"' >> stopsommelier"
-      system "echo 'else' >> stopsommelier"
-      system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
+      system "echo 'SOMM=\$(pidof sommelier 2>/dev/null)' >> stopsommelier"
+      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
       system "echo '  exit 1' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
     end
@@ -69,7 +63,6 @@ class Sommelier < Package
       system "install -Dm755 initsommelier #{CREW_DEST_PREFIX}/bin/initsommelier"
       system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
       system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
-      system "cp .sommelier.env ~/"
     end
   end
 
@@ -79,10 +72,10 @@ class Sommelier < Package
     puts "echo '# Sommelier environment variables + daemon' >> ~/.bashrc".lightblue
     puts "echo '# See https://github.com/dnschneid/crouton/wiki/Sommelier-(A-more-native-alternative-to-xiwi)' >> ~/.bashrc".lightblue
     puts "echo 'if [ ! -d /tmp/.X11-unix ]; then' >> ~/.bashrc".lightblue
-    puts "echo 'mkdir /tmp/.X11-unix' >> ~/.bashrc".lightblue
+    puts "echo '  mkdir /tmp/.X11-unix' >> ~/.bashrc".lightblue
+    puts "echo '  sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
+    puts "echo '  sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'alias startsommelier=\"source ~/.sommelier.env && initsommelier\"' >> ~/.bashrc".lightblue
     puts "echo 'startsommelier' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
