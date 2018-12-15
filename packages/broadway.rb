@@ -3,7 +3,7 @@ require 'package'
 class Broadway < Package
   description 'Run GTK applications in a browser window.'
   homepage 'https://developer.gnome.org/gtk3/stable/gtk-broadway.html'
-  version 'gtk3.22-1'
+  version 'gtk3.22-2'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
@@ -19,7 +19,6 @@ class Broadway < Package
     system "echo 'XDG_RUNTIME_DIR=/var/run/chrome' >> .broadway.env"
     system "echo 'BROADWAY_DISPLAY=:5' >> .broadway.env"
     system "echo '#!/bin/bash' > initbroadway"
-    system "echo 'source ~/.broadway.env' >> initbroadway"
     system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> initbroadway"
     system "echo 'if [ -z \"\${BROADWAYD}\" ]; then' >> initbroadway"
     system "echo '  [ -f #{CREW_PREFIX}/bin/stopsommelier ] && stopsommelier' >> initbroadway"
@@ -61,7 +60,7 @@ class Broadway < Package
     puts "To complete the installation, execute the following:".lightblue
     puts "echo '# Broadway environment variables + daemon' >> ~/.bashrc".lightblue
     puts "echo '# See https://developer.gnome.org/gtk3/stable/gtk-broadway.html' >> ~/.bashrc".lightblue
-    puts "echo 'alias startbroadway=\"source ~/.broadway.env && initbroadway\"' >> ~/.bashrc".lightblue
+    puts "echo 'alias startbroadway=\"set -a && source ~/.broadway.env && set +a && initbroadway\"' >> ~/.bashrc".lightblue
     puts "echo 'startbroadway' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
