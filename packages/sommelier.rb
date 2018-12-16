@@ -3,7 +3,7 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/containers/sommelier'
-  version '1382ce084c'
+  version '1382ce084cc'
   source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
   source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
 
@@ -49,7 +49,7 @@ class Sommelier < Package
       system "echo '#!/bin/bash' > stopsommelier"
       system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
       system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
-      system "echo '  sudo killall sommelier' >> stopsommelier"
+      system "echo '  killall -g sommelier' >> stopsommelier"
       system "echo '  sleep 3' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
       system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
@@ -83,7 +83,7 @@ class Sommelier < Package
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'alias startsommelier=\"source ~/.sommelier.env && initsommelier\"' >> ~/.bashrc".lightblue
+    puts "echo 'alias startsommelier=\"set -a && source ~/.sommelier.env && set +a && initsommelier\"' >> ~/.bashrc".lightblue
     puts "echo 'startsommelier' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
