@@ -108,10 +108,10 @@ function extract_install () {
 
     #extract and install
     echo "Extracting $1 (this may take a while)..."
-    rm -rf ./usr
+    rm -rf ./usr ./home
     tar -xf $2
     echo "Installing $1 (this may take a while)..."
-    tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)
+    tar cf - ./usr ./home | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist $CREW_CONFIG_PATH/meta/$1.directorylist
     mv ./filelist $CREW_CONFIG_PATH/meta/$1.filelist
 }
