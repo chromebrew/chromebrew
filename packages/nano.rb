@@ -3,9 +3,9 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '3.1-1'
-  source_url 'https://www.nano-editor.org/dist/v3/nano-3.1.tar.xz'
-  source_sha256 '14c02ca40a5bc61c580ce2f9cb7f9fc72d5ccc9da17ad044f78f6fb3fdb7719e'
+  version '3.2'
+  source_url 'https://www.nano-editor.org/dist/v3/nano-3.2.tar.xz'
+  source_sha256 'd12773af3589994b2e4982c5792b07c6240da5b86c5aef2103ab13b401fe6349'
 
   binary_url ({
   })
