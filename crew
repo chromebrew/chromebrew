@@ -584,13 +584,13 @@ def install_package (pkgdir)
     strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     if @opt_verbose then
-      if [ -d "#{pkgdir}/home" ]; then
+      if Dir.exists "#{pkgdir}/home" then
         system "tar cvf - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
       else
         system "tar cvf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
       fi
     else
-      if [ -d "#{pkgdir}/home" ]; then
+      if Dir.exists "#{pkgdir}/home" then
         system "tar cf - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
       else
         system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
