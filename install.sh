@@ -111,7 +111,11 @@ function extract_install () {
     rm -rf ./usr ./home
     tar -xf $2
     echo "Installing $1 (this may take a while)..."
-    tar cf - ./usr ./home | (cd /; tar xp --keep-directory-symlink -f -)
+    if [ -d "${CREW_BREW_DIR}/home" ]; then
+      tar cf - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)
+    else
+      tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)
+    fi
     mv ./dlist $CREW_CONFIG_PATH/meta/$1.directorylist
     mv ./filelist $CREW_CONFIG_PATH/meta/$1.filelist
 }
