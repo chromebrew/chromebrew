@@ -3,21 +3,21 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '2.5.1'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.1.tar.xz'
-  source_sha256 '886ac5eed41e3b5fc699be837b0087a6a5a3d10f464087560d2d21b3e71b754d'
+  version '2.5.3'
+  source_url 'https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.3.tar.gz'
+  source_sha256 '9828d03852c37c20fa333a0264f2490f07338576734d910ee3fd538c9520846c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b03154f57e2599f71b0bdd42ba3a126397eca451ccb99485615b5b0429955152',
-     armv7l: 'b03154f57e2599f71b0bdd42ba3a126397eca451ccb99485615b5b0429955152',
-       i686: 'de1d30b89fd09b6e544fe537cbbc4cdc76f4f1610b0f801ab82ce90c1dc04999',
-     x86_64: '2e60c9b84968f17ac796e92992a5e32b4c39291d5a0b1bb0183f43d1c784303f',
+    aarch64: '5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a',
+     armv7l: '5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a',
+       i686: '8c2b4479eac4f23f8ef57b2f5fe011c4f5d8bf91a7a83c0e0ad3d3ca30ff785a',
+     x86_64: '87509c7c108fd30a280d428dea890bb522e6a5374a8ef705fc4bd3d05372b0fc',
   })
 
   depends_on 'readline'
@@ -27,8 +27,11 @@ class Ruby < Package
   # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
 
   def self.build
-    system "CC='gcc' ./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --enable-shared"
-    system "make"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--enable-shared'
+    system 'make'
   end
 
   def self.install
