@@ -588,13 +588,13 @@ def install_package (pkgdir)
         system "tar cvf - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
       else
         system "tar cvf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
-      fi
+      end
     else
       if Dir.exists "#{pkgdir}/home" then
         system "tar cf - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
       else
         system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
-      fi
+      end
     end
   end
 end
