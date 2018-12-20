@@ -3,21 +3,21 @@ require 'package'
 class Bison < Package
   description 'Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.'
   homepage 'http://www.gnu.org/software/bison/'
-  version '3.1'
-  source_url 'https://ftpmirror.gnu.org/bison/bison-3.1.tar.xz'
-  source_sha256 '7c2464ad6cb7b513b2c350a092d919327e1f63d12ff024836acbb504475da5c6'
+  version '3.2.3'
+  source_url 'https://ftpmirror.gnu.org/gnu/bison/bison-3.2.3.tar.xz'
+  source_sha256 '3cb07a84ff698b205ea244e36eccb4979dd4e10f2120ebbf58c5f1f700023f29'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.2.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.2.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.2.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.2.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '20ca51ab529fdddad6f00cd32e0e5b8f2824be4f150d3337403ae6050825b0d3',
-     armv7l: '20ca51ab529fdddad6f00cd32e0e5b8f2824be4f150d3337403ae6050825b0d3',
-       i686: '1c14341e113a500e651383a5197e422d09cc56714bbb00e44f2f217f3ca7c1c8',
-     x86_64: 'ce6e119ab793ec25b80af20b14243f408430a28172f4b23dbc23cca8b6811cae',
+    aarch64: '4cdc57fdbba01e5b1854c9c2ca84b616835575b5c73232528688b414162a333a',
+     armv7l: '4cdc57fdbba01e5b1854c9c2ca84b616835575b5c73232528688b414162a333a',
+       i686: '120e83f2906a36d6ce31c4b8ecb1ef7bab63d987b3392a5613b49bc655420178',
+     x86_64: '141fd756fb765dda1d110033360be9b4e582ed002d3f6bf895f8df9e5890d43b',
   })
 
   def self.build
