@@ -3,18 +3,18 @@ require 'package'
 class Xdg_base < Package
   description 'XDG Base Directory Specification Configuration'
   homepage 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
-  version '0.7-1'
+  version '0.7-2'
   source_url 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
   source_sha256 '342289ad33b48b8f643278f74cafa182f4471d490b82dc5e442e2e720fa4080f'
 
   def self.preinstall
     # Save any previous configuration, if it exists.
     if Dir.exists? "$HOME/.config"
-      system "cp -r $HOME/.config #{CREW_PREFIX} && rm -rf $HOME/.config"
+      system "cp -a $HOME/.config #{CREW_PREFIX} && rm -rf $HOME/.config"
     end
     if Dir.exists? "$HOME/.local"
       system "mkdir -p #{CREW_PREFIX}/.config" unless Dir.exists? "#{CREW_PREFIX}/.config"
-      system "cp -r $HOME/.local/* #{CREW_PREFIX}/.config && rm -rf $HOME/.local"
+      system "cp -a $HOME/.local/. #{CREW_PREFIX}/.config && rm -rf $HOME/.local"
     end
   end
 
@@ -25,8 +25,6 @@ class Xdg_base < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/.config"
     system "ln -s #{CREW_PREFIX}/.config #{CREW_DEST_HOME}/.config"
     system "ln -s #{CREW_PREFIX}/.config #{CREW_DEST_HOME}/.local"
-    system "ln -sf #{CREW_PREFIX}/.config $HOME/.config"
-    system "ln -sf #{CREW_PREFIX}/.config $HOME/.local"
   end
 
   def self.postinstall
