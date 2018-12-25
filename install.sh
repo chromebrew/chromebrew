@@ -98,7 +98,7 @@ function download_check () {
 
     #download
     echo "Downloading $1..."
-    curl -C - -# -L --ssl $2 -o "$3"
+    curl --progress-bar -C - -# -L --ssl $2 -o "$3"
 
     #verify
     echo "Verifying $1..."
