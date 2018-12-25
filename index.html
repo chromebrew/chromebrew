@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="shortcut icon" href="images/brew-title.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The missing package manager for Chrome OS">
+  <meta name="author" content="Michal Siwek">
+  <link rel="shortcut icon" href="https://skycocker.github.io/chromebrew/favicon.png">
+
+  <title>Chromebrew - the software source you missed so much</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Chromebrew</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="demo-ribbon"></div>
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <div class="demo-crumbs mdl-color-text--grey-500">    
+            </div>
+            <center>
+            <img src="images/brew.png" alt="centered image">
+            <h1>Chromebrew</h1>
+            <p>The missing package manager for Chrome OS</p>
+            </center>
+<div class="row marketing">
+  <div class="col-12">
+    <div class="bs-example bs-example-type">
+      <h4>Chromebrew installs what you need with its dependencies:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew install vim</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>It also registers the changes being made, so you can easily remove anything:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew remove vim</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>See which packages are currently available:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew search</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>Look for a package:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew search vim</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>Update software lists:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew update</code></pre>
+    </div>
+    <div class="bs-example bs-example-type">
+      <h4>Update Chromebrew packages:</h4>
+    </div>
+    <div class="highlight">
+      <pre><code>$ crew upgrade</code></pre>
+    </div>
+  </div>
+</div>
+
+<div class="row marketing">
+  <div class="col-12">
+    <div class="bs-example bs-example-type">
+      <h4>Install Chromebrew (along with Ruby and Git).</h4>
+      <h5>Available on aarch64, armv7l, i686 and x86_64.</h5>
+    </div>
+    <div class="highlight">
+      <pre><code>curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
+    </div>
+  </div>
+</div>
+
+<div class="row marketing">
+  <h3>What is it?</h3>
+  <p>Chromebrew is an <a href="https://github.com/skycocker/chromebrew/blob/master/LICENSE">open source</a> package
+    manager / source builder hybrid targeting Chromebooks and Chrome OS.</p>
+
+  <h3>What does it do?</h3>
+  <p>
+    It installs the software you need that hasn't been provided by Google. Many important packages are already
+    precompiled and it's enough to just type <code>crew install package_name</code>, but if something's not already
+    there, you can easily build and install it from source.
+  </p>
+
+  <h3>How does it work?</h3>
+  <p>
+    In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to
+    run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install into your system during
+    installation. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git
+    and a package manager dedicated just for your Chromebook. Cool, huh?
+  </p>
+
+  <h3>How is it different from Crouton?</h3>
+  <p>
+    Well, Chromebrew doesn't install an operating system. :p
+  </p>
+  <p>
+    The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have
+    Crouton and need just a few small packages. Also, you may be on a good internet connection and need just a few
+    small packages. Also, why not use Chrome OS as the operating system?
+  </p>
+  <h3>Is GUI supported?</h3>
+  <p>
+    Chromebrew supports most GUI apps with help from the sommelier daemon. We don't support i686 architecture, however,
+    since Google has dropped support.
+  </p>
+  <h3 id="howcanihelp">How can I help?</h3>
+  <p>
+    If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages</code>
+    directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby
+    files<p></p>
+           
+            
+          </div>
+        </div>
+        <footer class="demo-footer mdl-mini-footer">
+          <div class="mdl-mini-footer--left-section">
+            <ul class="mdl-mini-footer--link-list">
+              <li><a>© 2013-2018 Michal Siwek</a></li>
+              
+            </ul>
+          </div>
+        </footer>
+      </main>
+    </div>
+    <a href="https://github.com/skycocker/chromebrew/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Fork Me On Github</a>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </body>
+</html>
