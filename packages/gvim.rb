@@ -3,21 +3,21 @@ require 'package'
 class Gvim < Package
   description 'gVim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  version '8.1'
+  version '8.1-1'
   source_url 'ftp://ftp.vim.org/pub/vim/unix/vim-8.1.tar.bz2'
   source_sha256 '8b69fbd01c877dd8ecbbeca1dc66e5e927228d631ac4c2174b9307eb5c827c86'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '38214e7c175c449f2f0918436de73442972b7e7207fa81a9baf98050393dccd1',
-     armv7l: '38214e7c175c449f2f0918436de73442972b7e7207fa81a9baf98050393dccd1',
-       i686: '898790d171557a46128eae1df18e8121c22c78a3a114f7b651c19883cd4852e5',
-     x86_64: '366e9f29c198cfe34737ff6f644c928e124880455178e52b0d2c1c45c8121c8a',
+    aarch64: 'fdda85b0be941d9043acf35f166b7c95457ab96d04c8a3c82b96c7bc6314f99e',
+     armv7l: 'fdda85b0be941d9043acf35f166b7c95457ab96d04c8a3c82b96c7bc6314f99e',
+       i686: 'dcf0668bbabdd5623ed6481c3e1503a52df398771fe3c9fa64a1f58d1cb0ed95',
+     x86_64: 'd8fb8c1ee73295d0e7646235c012f1785c38a67c46db18846faf33b89384cdfc',
   })
 
   depends_on 'vim'
@@ -67,7 +67,6 @@ class Gvim < Package
     FileUtils.mkdir_p "#{CREW_DEST_HOME}"
     system "touch #{configdir}/gvimrc #{configdestdir}/gvimrc"
     system "ln -s #{configdir}/gvimrc #{CREW_DEST_HOME}/.gvimrc"
-    system "ln -sf #{configdir}/gvimrc $HOME/.gvimrc"
   end
 
   def self.postinstall
