@@ -3,18 +3,18 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/en/stable/README/'
-  version '1.9.0.1'
+  version '1.9.3'
 
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.0.1/stack-1.9.0.1-linux-arm.tar.gz'
-    source_sha256 'd5401e11e5419ff8f30a88dcec8864c66067b01f36b3e32e279b48335b0ffd70'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-arm.tar.gz'
+    source_sha256 '96394b616e29b3bd2479a3712e2c0c375a7cfd748b613f7c6c3186d7ae92977b'
   when 'i686'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.0.1/stack-1.9.0.1-linux-i386.tar.gz'
-    source_sha256 '8e7802340d8c820a89bb0c670b635e2286f48fb8175f89e7205fee92408715bb'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-i386.tar.gz'
+    source_sha256 'c7a45fcf782fcc9b2bbac38f9e1b41afec5e940c6e26936a51652f246e226505'
   when 'x86_64'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.0.1/stack-1.9.0.1-linux-x86_64.tar.gz'
-    source_sha256 '92e7b2c8cf607c8554cefb168fbb31f45eb8b08f8021d33af9bc11971abed0d3'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-x86_64.tar.gz'
+    source_sha256 'e2363728e5818ccc68db9371c15af892a9a1fc86d808d0a9a77257f13696e946'
   end
 
   binary_url ({
@@ -23,13 +23,10 @@ class Stack < Package
   })
 
   def self.install
-    FileUtils.mkdir "#{ENV['HOME']}/.stack"
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.stack"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/stack"
     system "install -Dm755 stack #{CREW_DEST_PREFIX}/bin/stack"
-    system "echo 'local-bin-path: #{CREW_PREFIX}/bin' > #{ENV['HOME']}/.stack/config.yaml"
-    system "echo 'local-programs-path: #{CREW_PREFIX}/share/stack' >> #{ENV['HOME']}/.stack/config.yaml"
-    system "cp #{ENV['HOME']}/.stack/config.yaml #{CREW_DEST_HOME}/.stack"
+    system "echo 'local-bin-path: #{CREW_PREFIX}/bin' > #{CREW_DEST_HOME}/.stack/config.yaml"
+    system "echo 'local-programs-path: #{CREW_PREFIX}/share/stack' >> #{CREW_DEST_HOME}/.stack/config.yaml"
   end
 
   def self.postinstall

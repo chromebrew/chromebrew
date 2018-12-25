@@ -3,21 +3,21 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  version '8.1'
+  version '8.1-1'
   source_url 'ftp://ftp.vim.org/pub/vim/unix/vim-8.1.tar.bz2'
   source_sha256 '8b69fbd01c877dd8ecbbeca1dc66e5e927228d631ac4c2174b9307eb5c827c86'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b8a982519a4f0b01410e42a5bb5ed915fca1847d10aca1d17cd7c85c9ef1f8d8',
-     armv7l: 'b8a982519a4f0b01410e42a5bb5ed915fca1847d10aca1d17cd7c85c9ef1f8d8',
-       i686: '18fa5898517801da4307f60e4e8ed1e74cd6ee46820f49a8c2cac0ee0458e1c9',
-     x86_64: '89c090299914ffe373e3d25f42be5e85b888696da4bdb0d21256157cc00cf9ee',
+    aarch64: '7dea736a534604b7356a2056097b13bb67804a9b7281ffae6d8462daa4596096',
+     armv7l: '7dea736a534604b7356a2056097b13bb67804a9b7281ffae6d8462daa4596096',
+       i686: '67422ff9eed379c72a8ce63ee214a5141aee420f187752838efc9c4ade8ffce9',
+     x86_64: '6ebd581a5d978985b1eb8c5fe12fafb8e659e94a311a46a047f0eab2d6e4251b',
   })
 
   depends_on 'python3'
@@ -65,9 +65,7 @@ class Vim < Package
     FileUtils.mkdir_p "#{configdir}" unless Dir.exists? "#{configdir}"
     system "ln -s #{configdir} #{CREW_DEST_HOME}/.vim"
     system "ln -s #{configdir}/vimrc #{CREW_DEST_HOME}/.vimrc"
-    system "ln -sf #{configdir} $HOME/.vim"
     system "touch #{configdir}/vimrc #{configdestdir}/vimrc"
-    system "ln -sf #{configdir}/vimrc $HOME/.vimrc"
   end
 
   def self.postinstall
