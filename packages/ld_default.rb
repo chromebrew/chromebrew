@@ -3,7 +3,7 @@ require 'package'
 class Ld_default < Package
   description 'Select the default ld executable and check for libraries in #{CREW_LIB_PREFIX} first'
   homepage 'https://github.com/skycocker/chromebrew/wiki/FAQ'
-  version '1.1'
+  version '1.2'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
@@ -21,28 +21,42 @@ class Ld_default < Package
 
   type=\$(file ld | cut -d' ' -f2 | tr -d '\\n')
 
-  if [ \"\${type}\" == \"ELF\" ]; then
-    current=\$(find . -inum \$(ls -i ld | cut -d' ' -f1) | fgrep 'ld.')
-  elif [ \"${type}\" == \"symbolic\" ]; then	
+  if [[ \"\${type}\" == \"ELF\" ]]; then
+    current=\$(basename $(find . -inum \$(ls -i ld | cut -d' ' -f1) | fgrep 'ld.'))
+  elif [[ \"${type}\" == \"symbolic\" ]]; then	
     current=\$(basename \$(readlink ld))
-  else
+  elif [[ \"${type}\" == \"Bourne-Again\" ]]; then
     current=\$(basename \$(tail -1 ld | cut -d' ' -f1))
+  else # Fall back to \"Unknown\" if linker was not identified
+    current=\"Unknown\"
   fi
 
-  echo
-  echo \"  Current default linker: \${current}\"
-  echo
-  echo '  Enter the new default linker:'
-  echo
-  echo '  b = ld.bfd'
-  echo '  g = ld.gold'
-  echo '  l = ld.lld'
-  echo '  0 = Cancel'
-  echo
+  if [[ -z \"\${1}\" ]]; then
+    echo
+    echo \"  Current default linker: \${current}\"
+    echo
+    echo '  Enter the new default linker:'
+    echo
+    echo '  b = ld.bfd'
+    echo '  g = ld.gold'
+    echo '  l = ld.lld'
+    echo '  0 = Cancel'
+    echo
+  else
+    echo \"\${current}\" | cut -d'.' -f2 | cut -c1
+  fi
 
   while true; do
-    read default
-    case \${default} in
+    if [[ -z \"\${1}\" ]]; then
+      read default
+    else
+      default=\"\${1}\"
+      if [[ \"\${default}\" != 'b' ]] && [[ \"\${default}\" != 'g' ]] && [[ \"\${default}\" != 'l' ]]; then
+        echo \"Invalid linker configuration: \${default}\"
+        exit 1
+      fi
+    fi
+    case \"\${default}\" in
       b)
         new='ld.bfd'
         break;;
@@ -76,6 +90,10 @@ EOF"
   def self.postinstall
     puts
     puts "To change the default linker, execute `ld_default`.".lightblue
+    puts
+    puts "To change the default linker without any user interaction,".lightblue
+    puts "execute `ld_default <letter>` where '<letter>' is b, g, or l".lightblue
+    puts "for BFD, Gold, or LLD, respectively.".lightblue
     puts
   end
 end
