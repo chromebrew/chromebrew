@@ -1,29 +1,41 @@
 require 'package'
 
 class Xterm < Package
+
+  @version = 341
+
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '333'
-  source_url 'https://invisible-mirror.net/archives/xterm/xterm-333.tgz'
-  source_sha256 '2f1d42014e55c8036c6b29a847b31d3b5c1a3a35b126993ae6d3f05e8da0ef78'
+  version '341'
+  source_url "https://invisible-mirror.net/archives/xterm/xterm-#{@version}.tgz"
+  source_sha256 '63a07dfa2b5d501a9e1da0e05772bff7ad431ac2065127c77eebe392ef33cb44'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-333-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-333-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-333-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-333-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '90ab39740d658445bca5c4368cce5f112b7572a667211a5498fa78f01ec72671',
-     armv7l: '90ab39740d658445bca5c4368cce5f112b7572a667211a5498fa78f01ec72671',
-       i686: '97bfadabd2ac88155db24befc32a68f7f5213e25dd2481cf10dc0d1ce64ae67e',
-     x86_64: '27454e6a81b865fb7f75ad92a472b3823cb3f1f18c4fbb40a287bc3296384d61',
   })
 
+  depends_on 'pcre2'
   depends_on 'sommelier'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure",
+           "--with-x",
+           "--with-pcre2",
+           "--with-xinerama",
+           "--enable-dabbrev",
+           "--enable-toolbar",
+           "--with-pkg-config",
+           "--enable-exec-xterm",
+           "--enable-16bit-chars",
+           "--enable-dec-locator",
+           "--enable-double-buffer",
+           "--enable-readline-mouse",
+           "--enable-regis-graphics",
+           "--enable-sixel-graphics",
+           "--prefix=#{CREW_PREFIX}",
+           "--with-xpm=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
 
