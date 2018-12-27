@@ -1,54 +1,63 @@
 require 'package'
 
 class Code < Package
-  description 'Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS.'
-  homepage 'https://code.visualstudio.com/'
-  version '1.25.1'
+
+  @version = "1.30.1"
+
   case ARCH
   when 'x86_64'
-    source_url 'https://vscode-update.azurewebsites.net/1.25.1/linux-x64/stable'
-    source_sha256 '5856bbebf38aa05d584da4722869bbe507cf123f69f7ffab5f1532d73dbf3438'
+    @arch = 'x64'
   when 'i686'
-    source_url 'https://vscode-update.azurewebsites.net/1.25.1/linux-ia32/stable'
-    source_sha256 'af6adc2e2500e50bfebe7ee7b97d661b6e774a590136bf5f89334132a5b292e2'
-  else
-    source_url 'https://raw.githubusercontent.com/Microsoft/vscode/1.25.1/README.md'
-    source_sha256 'c1c5e6ec903730a4e116c1cfd83bb29acd227195d97f2ec8944452808232c310'
+    @arch = 'ia32'
+  when 'armv7l', 'aarch64'
+    @arch = 'arm'
   end
+
+  description 'Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS.'
+  homepage 'https://code.visualstudio.com/'
+  version '1.30.1'
+  source_url "https://github.com/Microsoft/vscode/archive/#{@version}.tar.gz"
+  source_sha256 'bf558c2818159fd2a47fa80c882794505b5d73d118f94f46d09c98b388d9e203'
 
   binary_url ({
   })
   binary_sha256 ({
   })
 
+  depends_on 'nodebrew'
+  depends_on 'yarn' => :build
   depends_on 'gtk2'
+  depends_on 'libsecret'
   depends_on 'libgconf'
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
+  ENV['PATH'] = "#{ENV['HOME']}/.nodebrew/current/bin:#{ENV['PATH']}"
+
+  def self.build
+    node_old = `nodebrew ls | fgrep 'current: ' | cut -d' ' -f2`
+    system "nodebrew install 8.15.0 || true"
+    system "nodebrew use 8.15.0"
+    system "npm install gulp"
+    system "yarn install"
+    system "yarn run gulp vscode-linux-#{@arch}"
+    system "nodebrew use #{node_old}"
+  end
+
   def self.install
-    case ARCH
-    when 'x86_64', 'i686'
-      system "mkdir", "-p", "#{CREW_DEST_PREFIX}/share/code"
-      system "mkdir", "-p", "#{CREW_DEST_PREFIX}/bin"
-      system "cp", "-rpa", ".", "#{CREW_DEST_PREFIX}/share/code/"
-      system "ln", "-s", "#{CREW_PREFIX}/share/code/bin/code", "#{CREW_DEST_PREFIX}/bin/code"
-    else
-      puts
-      puts 'Visual Studio Code is currently not supported on ARM and AArch64.'.lightred
-      puts 'Please try HeadMelted.'.lightred
-      puts 'https://code.headmelted.com'.lightred
-      puts
-      puts 'Happy coding!'.lightgreen
-      puts
-      exit 1
-    end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    system "mv", "../VSCode-linux-#{@arch}", "#{CREW_DEST_PREFIX}/share/code"
+    system "sed -i -e 's,ELECTRON_RUN_AS_NODE=1 ,,g' #{CREW_DEST_PREFIX}/share/code/bin/code-oss"
+    # ^^^ Do not remove this line.
+    system "ln", "-s", "../share/code/bin/code-oss", "#{CREW_DEST_PREFIX}/bin/code"
+    system "ln", "-s", "../share/code/bin/code-oss", "#{CREW_DEST_PREFIX}/bin/code-oss"
   end
 
   def self.postinstall
     puts
     puts 'Congratulations! You have installed Visual Studio Code on Chrome OS!'.lightgreen
-    puts 'Now, please run \'code\' to start Visual Studio.'.lightgreen
+    puts 'Now, please run \'code-oss\' to start Visual Studio.'.lightgreen
     puts 'Happy coding!'.lightgreen
     puts
   end
