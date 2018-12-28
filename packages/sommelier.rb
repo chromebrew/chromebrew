@@ -24,6 +24,7 @@ class Sommelier < Package
   depends_on 'xkbcomp'
   depends_on 'xwayland'
   depends_on 'psmisc'
+  depends_on 'xsetroot'
 
   def self.build
     system 'git clone https://chromium.googlesource.com/chromiumos/containers/sommelier'
