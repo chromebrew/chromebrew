@@ -1,13 +1,10 @@
 require 'package'
 
 class Xterm < Package
-
-  @version = 341
-
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '341'
-  source_url "https://invisible-mirror.net/archives/xterm/xterm-#{@version}.tgz"
+  version '341-1'
+  source_url "https://invisible-mirror.net/archives/xterm/xterm-341.tgz"
   source_sha256 '63a07dfa2b5d501a9e1da0e05772bff7ad431ac2065127c77eebe392ef33cb44'
 
   binary_url ({
@@ -15,13 +12,13 @@ class Xterm < Package
   binary_sha256 ({
   })
 
-  depends_on 'pcre2'
+  depends_on 'pcre'
   depends_on 'sommelier'
 
   def self.build
     system "./configure",
            "--with-x",
-           "--with-pcre2",
+           "--with-pcre",
            "--with-xinerama",
            "--enable-dabbrev",
            "--enable-toolbar",
