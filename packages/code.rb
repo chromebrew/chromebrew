@@ -2,8 +2,6 @@ require 'package'
 
 class Code < Package
 
-  @version = "1.30.1"
-
   case ARCH
   when 'x86_64'
     @arch = 'x64'
@@ -15,8 +13,8 @@ class Code < Package
 
   description 'Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS.'
   homepage 'https://code.visualstudio.com/'
-  version '1.30.1'
-  source_url "https://github.com/Microsoft/vscode/archive/#{@version}.tar.gz"
+  version '1.30.1-1'
+  source_url "https://github.com/Microsoft/vscode/archive/1.30.1.tar.gz"
   source_sha256 'bf558c2818159fd2a47fa80c882794505b5d73d118f94f46d09c98b388d9e203'
 
   binary_url ({
@@ -35,13 +33,16 @@ class Code < Package
   ENV['PATH'] = "#{ENV['HOME']}/.nodebrew/current/bin:#{ENV['PATH']}"
 
   def self.build
-    node_old = `nodebrew ls | fgrep 'current: ' | cut -d' ' -f2`
-    system "nodebrew install 8.15.0 || true"
-    system "nodebrew use 8.15.0"
+    node_ver = "v8.15.0"
+    node_old = `nodebrew ls | fgrep 'current: ' | cut -d' ' -f2`.chomp
+    node_ver_installed = `nodebrew ls | grep -o #{node_ver} | head -1`.chomp
+    system "nodebrew install #{node_ver}" unless "#{node_ver_installed}" == "#{node_ver}"
+    system "nodebrew use #{node_ver}" unless "#{node_old}" == "#{node_ver}"
     system "npm install gulp"
     system "yarn install"
     system "yarn run gulp vscode-linux-#{@arch}"
-    system "nodebrew use #{node_old}"
+    system "nodebrew uninstall #{node_ver}" unless "#{node_ver_installed}" == "#{node_ver}"
+    system "nodebrew use #{node_old}" unless "#{node_old}" == "none"
   end
 
   def self.install
