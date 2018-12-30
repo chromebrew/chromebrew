@@ -17,8 +17,8 @@ class Libticonv < Package
   def self.build
     system 'autoreconf -i'
     system "/usr/bin/env",
-      "CC=clang -fuse-ld=lld",
-      "CXX=clang++ -fuse-ld=lld",
+      "CC=clc -fuse-ld=lld",
+      "CXX=clc++ -fuse-ld=lld",
       "./configure",
       "--enable-iconv",
       "--prefix=#{CREW_PREFIX}",
