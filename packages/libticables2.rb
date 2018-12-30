@@ -18,8 +18,8 @@ class Libticables2 < Package
   def self.build
     system 'autoreconf -i'
     system "/usr/bin/env",
-      "CC=clang -fuse-ld=lld",
-      "CXX=clang++ -fuse-ld=lld",
+      "CC=clc -fuse-ld=lld",
+      "CXX=clc++ -fuse-ld=lld",
       "./configure",
       "--prefix=#{CREW_PREFIX}",
       "--enable-libusb10",
