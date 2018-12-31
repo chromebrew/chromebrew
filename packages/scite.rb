@@ -25,6 +25,8 @@ class Scite < Package
   depends_on 'hicolor_icon_theme'
   depends_on 'shared_mime_info'
   depends_on 'sommelier'
+  depends_on 'libxcursor' 
+  depends_on 'xcb_util_cursor'
 
 
   def self.build
