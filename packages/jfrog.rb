@@ -3,35 +3,31 @@ require 'package'
 class Jfrog < Package
   description 'JFrog CLI is a compact and smart client that provides a simple interface that automates access to Artifactory, Bintray and Mission Control through their respective REST APIs.'
   homepage 'https://github.com/JFrogDev/jfrog-cli-go'
-  version '1.12.0'
-  source_url 'https://github.com/JFrogDev/jfrog-cli-go/archive/1.12.0.tar.gz'
-  source_sha256 '8f961f6a6bb79608a8a50ac17f9298633cfd115265ac61f040cda84874336abb'
+  version '1.23.1'
+  source_url 'https://github.com/jfrog/jfrog-cli-go/archive/1.23.1.tar.gz'
+  source_sha256 'a5200552acdf55592a6972900f2f658cb25dd6508793bc52fb3386a310a75414'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.12.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.23.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.23.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.23.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jfrog-1.23.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '8f4c4ab9916d827cb543a683cd6ae6ef49a8c7c809b6288f36a18caceefe436f',
-     armv7l: '8f4c4ab9916d827cb543a683cd6ae6ef49a8c7c809b6288f36a18caceefe436f',
-       i686: '44c977eb46708202359d1a495e99a5eee0f1e1725b26036790eb1a3cc89c779b',
-     x86_64: '19ce3e127f359ff9054ce48b8f879676c3d968789203719a27823e913164c056',
+    aarch64: '2a34fcd0e785f273a6e877e0f157636b58a0677b1785f5a976450c31b4cf3ac5',
+     armv7l: '2a34fcd0e785f273a6e877e0f157636b58a0677b1785f5a976450c31b4cf3ac5',
+       i686: '4f56688d44178682c7b0edf56a92ccad324ae771a84a562ae019e65f46f4096b',
+     x86_64: '7c5bb6f662dc8ea1ae59ad19926d2eab9590ccefd12b131cbc65a5081dbb1ad3',
   })
 
   depends_on 'go' => :build
 
+  def self.build
+    system "git clone https://github.com/jfrog/jfrog-cli-go.git"
+    system "cd jfrog-cli-go/jfrog-cli/jfrog/ && git checkout #{version} && go build"
+  end
+
   def self.install
-    system "SAVEGOPATH=$GOPATH && \
-            export GOPATH=#{CREW_DEST_PREFIX}/share/jfrog && \
-            go get -v github.com/jfrogdev/jfrog-cli-go/jfrog-cli/jfrog && \
-            export GOPATH=$SAVEGOPATH"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "ln -s #{CREW_PREFIX}/share/jfrog/bin/jfrog jfrog"
-    end
-    system "rm -rf #{CREW_DEST_PREFIX}/share/jfrog/pkg"
-    system "rm -rf #{CREW_DEST_PREFIX}/share/jfrog/src"
+    system "install -Dm755 jfrog-cli-go/jfrog-cli/jfrog/jfrog #{CREW_DEST_PREFIX}/bin/jfrog"
   end
 end
