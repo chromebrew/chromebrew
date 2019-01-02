@@ -33,17 +33,20 @@ class Mesa < Package
     system "pip uninstall -y Mako MarkupSafe || :"
     system "pip install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako==1.0.7"
     system "pip install --prefix \"#{CREW_PREFIX}\" Mako==1.0.7"
-    if "#{ARCH}" == "x86_64"
-      r600 = "r600,"
-    else
-      r600 = ""
-    fi
+    case ARCH
+      when 'i686', 'x86_64'
+      gallium_drivers = 'i915,nouveau,r300,r600,radeonsi,pl111,svga,swrast,swr,vc4,virgl'
+      dri_drivers = 'i915,i965,nouveau,radeon,r200,swrast'
+    when 'aarch64', 'armv7l'
+      gallium_drivers = 'nouveau,r300,freedreno,pl111,swrast,tegra,vc4,virgl'
+      dri_drivers = 'nouveau,radeon,r200,swrast'
+    end
     system "./configure",
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
            "--enable-shared-glapi",
-           "--with-gallium-drivers=i915,nouveau,r300,#{r600}radeonsi,pl111,svga,swrast,swr,tegra,vc4,virgl,freedreno",
-           "--with-dri-drivers=i915,i965,nouveau,radeon,r200,swrast",
+           "--with-gallium-drivers=#{gallium_drivers}",
+           "--with-dri-drivers=#{dri_drivers}",
            "--enable-osmesa",
            "--enable-opengl",
            "--enable-egl",
