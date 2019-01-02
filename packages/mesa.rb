@@ -34,7 +34,7 @@ class Mesa < Package
     system "pip install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako==1.0.7"
     system "pip install --prefix \"#{CREW_PREFIX}\" Mako==1.0.7"
     case ARCH
-      when 'i686', 'x86_64'
+    when 'i686', 'x86_64'
       gallium_drivers = 'i915,nouveau,r300,r600,radeonsi,pl111,svga,swrast,swr,vc4,virgl'
       dri_drivers = 'i915,i965,nouveau,radeon,r200,swrast'
     when 'aarch64', 'armv7l'
