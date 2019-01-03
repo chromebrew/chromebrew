@@ -85,6 +85,7 @@ Available packages are listed in the [packages directory](https://github.com/sky
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
 
     crew install --keep <package1> [<package2> ...]
+If you are looking for [Homebrew](https://brew.sh/), the package manager for **macOS**, and our sister project [click here](https://brew.sh/)
 
 License
 -------
