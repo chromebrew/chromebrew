@@ -63,9 +63,9 @@ On a rooted Google OnHub, the command needs to be run with the "chronos" user. I
 Compatablity
 ------------
 
-If you I Crouton installed, Do I get support too?
+_Q:_ If you I Crouton installed, Do I get support too?
 
-We will try to help, but we may not be able to. We will not give any extreme effort to provide support for Crouton (e.g. Removing or modifying packages in Chromebrew)
+_A:_ We will try to help, but we may not be able to. We will not give any extreme effort to provide support for Crouton (e.g. Removing or modifying packages in Chromebrew)
 
 Usage
 -----
