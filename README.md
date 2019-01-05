@@ -60,8 +60,8 @@ On a rooted Google OnHub, the command needs to be run with the "chronos" user. I
     Password:
     $ curl -Ls git.io/vddgY | bash
     
-Compatablity
-------------
+Compatibility
+-------------
 
 _Q:_ If you I Crouton installed, Do I get support too?
 
