@@ -38,6 +38,11 @@ Please be aware of the fact that developer mode is insecure if not properly conf
 
 Installation
 ------------
+
+The beta, dev, and Canary channels are ***not*** supported and should ***not*** be used with Chromebrew.
+Failure to take notice of this will cause major issues with your Chromebrew installation.
+See issue [#2890](https://github.com/skycocker/chromebrew/issues/2890) and the [FAQ](https://github.com/skycocker/chromebrew/wiki/FAQ) for more details.
+
 Open the terminal with Ctrl+Alt+T and type `shell`.
 
 If this command returns `ERROR: unknown command: shell`, please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
