@@ -20,7 +20,7 @@ class Libsdl < Package
      x86_64: '528be8eff53afff1c1cd7973ecda09fc68adbcbea0c22453764ebf0cb7ce0a59',
   })
 
-  depends_on 'xwayland'
+  depends_on 'xorg_server'
   depends_on 'alsa_lib'
   depends_on 'pulseaudio'
   depends_on 'mesa'
