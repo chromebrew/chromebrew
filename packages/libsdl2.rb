@@ -20,7 +20,7 @@ class Libsdl2 < Package
      x86_64: '4a7cf8e0c57bb8485eb1cade392ca919aff3e71b811464adf6a51e1f98488a00',
   })
 
-  depends_on 'xwayland'
+  depends_on 'xorg_server'
   depends_on 'alsa_lib'
   depends_on 'pulseaudio'
   depends_on 'nasm' => :build

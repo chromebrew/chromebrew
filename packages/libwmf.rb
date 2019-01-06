@@ -23,7 +23,7 @@ class Libwmf < Package
   depends_on 'gtk2'
   depends_on 'libgd'
   depends_on 'libjpeg'
-  depends_on 'xwayland'
+  depends_on 'xorg_server'
 
   def self.build
     system './configure',

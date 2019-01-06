@@ -16,7 +16,7 @@ class Xinit < Package
   depends_on 'xterm'
   depends_on 'xauth'
   depends_on 'twm'
-  depends_on 'xwayland'
+  depends_on 'xorg_server'
 
   def self.build
     system "./configure",
