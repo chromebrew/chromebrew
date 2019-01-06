@@ -22,7 +22,7 @@ class Sommelier < Package
 
   depends_on 'mesa'
   depends_on 'xkbcomp'
-  depends_on 'xwayland'
+  depends_on 'xorg_server'
   depends_on 'psmisc'
   depends_on 'xsetroot'
 
