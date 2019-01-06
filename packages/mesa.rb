@@ -13,22 +13,14 @@ class Mesa < Package
   })
 
   depends_on 'libdrm'
-  depends_on 'xorg_proto'
-  depends_on 'libx11'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxdamage'
-  depends_on 'libxcb'
-  depends_on 'libxvmc'
-  depends_on 'libxtrans'
-  depends_on 'libxkbfile'
   depends_on 'wayland'
-  depends_on 'python27'
-  depends_on 'bison'
-  depends_on 'libxshmfence'
   depends_on 'elfutils'
   depends_on 'llvm'
-  
+
+  def self.patch
+    system "wget -O- https://patchwork.freedesktop.org/patch/257229/raw | patch -Rp1"
+  end
+
   def self.build
     system "pip uninstall -y Mako MarkupSafe || :"
     system "pip install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako==1.0.7"
