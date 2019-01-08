@@ -3,16 +3,25 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '18.3.1'
+  version '18.3.1-1'
   source_url 'https://mesa.freedesktop.org/archive/mesa-18.3.1.tar.xz'
   source_sha256 '5b1f827d28684a25f6657289f8b7d47ac56395988c7ac23e0ec9a62b644bdc63'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-18.3.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-18.3.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-18.3.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-18.3.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'd51c117379b69128d7c0e6f9a0554c8d4f9666cf3fb13b5ecdd0897214873192',
+     armv7l: 'd51c117379b69128d7c0e6f9a0554c8d4f9666cf3fb13b5ecdd0897214873192',
+       i686: '2568b9ad11f52b1554c5720f4b513c26a5ded8d141e97ee01b1eede13e2052bb',
+     x86_64: '7d633a3f7e772fc527ec70ab01d8a53126e1ccee204c5c1fb58efdc8ff438b39',
   })
 
-  depends_on 'libdrm'
+  depends_on 'libva'
+  depends_on 'libvdpau'
   depends_on 'wayland'
   depends_on 'elfutils'
   depends_on 'llvm'
@@ -22,11 +31,14 @@ class Mesa < Package
   end
 
   def self.build
-    system "pip uninstall -y Mako MarkupSafe || :"
-    system "pip install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako==1.0.7"
-    system "pip install --prefix \"#{CREW_PREFIX}\" Mako==1.0.7"
+    system "pip3 uninstall -y Mako MarkupSafe || :"
+    system "pip3 install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako==1.0.7"
+    system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako==1.0.7"
     case ARCH
-    when 'i686', 'x86_64'
+    when 'i686'
+      gallium_drivers = 'i915,nouveau,pl111,svga,swrast,vc4,virgl'
+      dri_drivers = 'i915,i965,nouveau,radeon,r200,swrast'
+    when 'x86_64'
       gallium_drivers = 'i915,nouveau,r300,r600,radeonsi,pl111,svga,swrast,swr,vc4,virgl'
       dri_drivers = 'i915,i965,nouveau,radeon,r200,swrast'
     when 'aarch64', 'armv7l'
