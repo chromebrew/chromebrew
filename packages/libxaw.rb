@@ -23,7 +23,7 @@ class Libxaw < Package
   depends_on 'libxmu'
   depends_on 'libxpm'
   depends_on 'libx11'
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
