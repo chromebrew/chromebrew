@@ -3,19 +3,21 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '3.0.0'
-  source_url 'https://download.qemu.org/qemu-3.0.0.tar.xz'
-  source_sha256 '8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713'
+  version '3.1.0'
+  source_url 'https://download.qemu.org/qemu-3.1.0.tar.xz'
+  source_sha256 '6a0508df079a0a33c2487ca936a56c12122f105b8a96a44374704bef6c69abfc'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.0.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.0.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qemu-3.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c5358ff14b2271b5863a9234d57c4cc8af119f80b490e036fc0c5f9eef0fe98f',
-     armv7l: 'c5358ff14b2271b5863a9234d57c4cc8af119f80b490e036fc0c5f9eef0fe98f',
-     x86_64: '3f5e0ad3cae968281e720a3351157e7e72ee275a403d89cce4dc0090f13a08dc',
+    aarch64: '23aa474b3f63e9f5825a77323b4bf7b5b710022e055ea97c524fa3d32cfc36cb',
+     armv7l: '23aa474b3f63e9f5825a77323b4bf7b5b710022e055ea97c524fa3d32cfc36cb',
+       i686: '600b31eaeb4a55c8fe73a1a8e2645ad44bfa166c34893a24383acd76f25c1579',
+     x86_64: 'fe691d318fb71461e3ce85a733165bea3d56749bf4fa572185dd086c9d7e97bd',
   })
 
   depends_on 'bz2'
@@ -33,7 +35,7 @@ class Qemu < Package
   depends_on 'hicolor_icon_theme'
 
   def self.build
-    system "./configure",
+    system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
            "--disable-stack-protector"
