@@ -3,10 +3,10 @@ require 'package'
 class Xorg_lib < Package
   description 'A collection of xorg libraries.'
   homepage ''
-  version '0.1-0'  
-  
+  version '0.1-0'
+
   is_fake
- 
+
   depends_on 'libxtrans'
   depends_on 'libx11'
   depends_on 'libxext'
@@ -21,7 +21,7 @@ class Xorg_lib < Package
   depends_on 'libxcursor'
   depends_on 'libxrender'
   depends_on 'libxfixes'
-  
+
   # new
   depends_on 'libdmx'
   depends_on 'libfs'
@@ -41,5 +41,4 @@ class Xorg_lib < Package
   depends_on 'libxxf86vm'
   depends_on 'libxcomposite'
   depends_on 'libxscrnsaver'
-  
 end

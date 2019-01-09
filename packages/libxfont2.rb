@@ -24,7 +24,7 @@ class Libxfont2 < Package
   depends_on 'libfontenc'
   depends_on 'libx11'
   depends_on 'freetype'
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"

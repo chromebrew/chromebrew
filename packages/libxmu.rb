@@ -23,8 +23,8 @@ class Libxmu < Package
   depends_on 'libxt'
   depends_on 'libxext'
   depends_on 'util_macros'
-  depends_on 'libx11' 
-  
+  depends_on 'libx11'
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"

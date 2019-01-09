@@ -20,10 +20,9 @@ class Libfs < Package
      x86_64: '98f7cc48a3a2406ea1d110b051b3f18f5682b2096cfdb7f4f4f9c4b2255f2f42',
   })
 
-
   depends_on 'xorg_proto'
   depends_on 'libxtrans'
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
