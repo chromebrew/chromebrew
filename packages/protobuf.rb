@@ -3,28 +3,29 @@ require 'package'
 class Protobuf < Package
   description 'Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.'
   homepage 'https://developers.google.com/protocol-buffers/'
-  version '3.5.1'
-  source_url 'https://github.com/google/protobuf/archive/v3.5.1.tar.gz'
-  source_sha256 '826425182ee43990731217b917c5c3ea7190cfda141af4869e6d4ad9085a740f'
+  version '3.6.1.3'
+  source_url 'https://github.com/google/protobuf/archive/v3.6.1.3.tar.gz'
+  source_sha256 '73fdad358857e120fd0fa19e071a96e15c0f23bb25f85d3f7009abfd4f264a2a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.5.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c9f90e5821643761acf7aabb0e60a9d2d295071b1f3a06664e78ff071483edb3',
-     armv7l: 'c9f90e5821643761acf7aabb0e60a9d2d295071b1f3a06664e78ff071483edb3',
-       i686: '9df9e1d3deb47a836193f72385eaf383fd2a49e0246e0259fea856a59290097c',
-     x86_64: '5da67b574e7df6c9e58b2bcee98b3b78cf7c95d6458350a3a1036981b0ad4f99',
+    aarch64: 'f6c96a5727d6fbbc5ab2573b4c8abe375834be889e8faf6adc3c0a66e6fd09f9',
+     armv7l: 'f6c96a5727d6fbbc5ab2573b4c8abe375834be889e8faf6adc3c0a66e6fd09f9',
+       i686: '44593389c51701e0d9c4387f2d8daa34012c7ef8be32fea4cc0b445978ece14e',
+     x86_64: 'bdd16eaf57b8745332d19d794e4d039885afc78e5ac4061503e3815096ea211f',
   })
-
-  depends_on 'unzip' => :build
 
   def self.build
     system './autogen.sh'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure",
+           "--disable-static",
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
@@ -33,6 +34,6 @@ class Protobuf < Package
   end
 
   def self.check
-    system 'make check'
+    #system 'make check'
   end
 end

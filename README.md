@@ -1,13 +1,15 @@
-chromebrew
+<p><img src="/images/brew.png" alt="Chromebrew logo" /></p>
+
+Chromebrew
 ==========
 
 Package manager for Chrome OS
 
 Chat with us!
 -------------
-Messages are synced between services for your convenience. 😊
-
-<a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank"><img src="/images/slack.png" alt="Slack Invite" /></a><a href="https://discord.gg/QRrzBXN" target="_blank"><img src="/images/discord.png" alt="Discord Invite" /></a>
+<p><em>Discord is not currently syncing messages with Slack</em></p>
+<p><a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank"><img src="/images/slack.png" alt="Slack Invite" />
+<a href="https://discord.gg/QRrzBXN" target="_blank"><img src="/images/discord.png" alt="Discord Invite" /></a></p>
 
 Supported Systems
 -----------------
@@ -15,14 +17,16 @@ Supported Systems
 | Architecture | Supported? |
 |:---:|:---:|
 | x86_64 | Yes |
-| i686 | Yes |
+| i686 | Yes<sup>*</sup> |
 | armv7l | Yes |
 | aarch64 | Yes |
+
+<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support gui apps, we will try and continue to support cli programs.</em>
 
 Overview
 --------
 
-Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use them as full-featured Linux distro were gcc and make with their dependencies. Well, these pieces aren't missing anymore. Say hello to chromebrew!
+Chromebooks with Chrome OS run a Linux kernel. The only missing pieces to use them as full-featured Linux distro were gcc and make with their dependencies. Well, these pieces aren't missing anymore. Say hello to Chromebrew!
 
 Prerequisites
 -------------
@@ -34,9 +38,14 @@ Please be aware of the fact that developer mode is insecure if not properly conf
 
 Installation
 ------------
+
+The beta, dev, and Canary channels are ***not*** supported and should ***not*** be used with Chromebrew.
+Failure to take notice of this will cause major issues with your Chromebrew installation.
+See issue [#2890](https://github.com/skycocker/chromebrew/issues/2890) and the [FAQ](https://github.com/skycocker/chromebrew/wiki/FAQ) for more details.
+
 Open the terminal with Ctrl+Alt+T and type `shell`.
 
-If this command returns `ERROR: unknown command: shell` please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
+If this command returns `ERROR: unknown command: shell`, please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
 
 Then download and run the installation script below:
 
@@ -54,7 +63,7 @@ On a rooted Google OnHub, the command needs to be run with the "chronos" user. I
     Retype new UNIX password:
     # su - chronos
     Password:
-    $ curl -Ls git.io/vddgY -o install.sh && yes | bash install.sh
+    $ curl -Ls git.io/vddgY | bash
 
 Usage
 -----
@@ -85,10 +94,10 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 License
 -------
 
-Copyright 2013-2018 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
+Copyright 2013-2019 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
 
-Our binary packages are hosted on [bintray](https://bintray.com/chromebrew/chromebrew).
+Our binary packages are hosted on [Bintray](https://bintray.com/chromebrew/chromebrew).
 
 <a href="https://bintray.com/chromebrew/chromebrew" target="_blank"><img src="https://github.com/skycocker/chromebrew/blob/master/images/Powered-by-Bintray_Banner_16-6-16-green.png" alt="Powered by Bintray" /></a>

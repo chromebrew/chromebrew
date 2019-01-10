@@ -22,7 +22,7 @@ class Libsm < Package
 
   depends_on 'libice'
   depends_on 'libx11'
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
