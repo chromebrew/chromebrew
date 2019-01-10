@@ -3,21 +3,21 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  version '1.6.3'
-  source_url 'https://download.filezilla-project.org/client/FileZilla_3.38.1_src.tar.bz2'
-  source_sha256 '1a86becc4a8bb70ff316522217818364028b95224fc728e3bb676ebee98d0cde'
+  version '3.39.0'
+  source_url 'https://download.filezilla-project.org/client/FileZilla_3.39.0_src.tar.bz2'
+  source_sha256 'fb515e93775e5ad94ff2755b39605b62b3e8fcfc1125757f411d8f580d16444f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-1.6.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-1.6.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-1.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-1.6.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.39.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.39.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.39.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.39.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1d00ac0692973757937dfc29a9feed883b28e211ed700bda64d360e21d0cf5c8',
-     armv7l: '1d00ac0692973757937dfc29a9feed883b28e211ed700bda64d360e21d0cf5c8',
-       i686: '7157a9d2aa5899fcd9a21148f56daa3b01e70623d1d55d1256abf4e4043797f4',
-     x86_64: '683cb597524c179fff8e0f2748a296d633c8429cdb948eaab70069609b2379f3',
+    aarch64: '7da4e0d6fc406bfd0e321ebd9058a2346ac50c182c62b201355be1c65f80e3f1',
+     armv7l: '7da4e0d6fc406bfd0e321ebd9058a2346ac50c182c62b201355be1c65f80e3f1',
+       i686: 'd6a0fd020e660b70bd64f1068c349e5cbe01e99255b9d931ad36d3b5c0937d06',
+     x86_64: 'b3cd0a4569aa2396003683e824381f9856d1353fb79b47564f8887644b0cc170',
   })
 
   depends_on 'dbus'
