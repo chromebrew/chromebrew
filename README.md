@@ -65,6 +65,11 @@ On a rooted Google OnHub, the command needs to be run with the "chronos" user. I
     Password:
     $ curl -Ls git.io/vddgY | bash
 
+Help
+----
+
+Please check out the [wiki](https://github.com/skycocker/chromebrew/wiki) to find out more information about Chromebrew including helpful tips, resource links and frequently asked questions. Also please check existing [issues](https://github.com/skycocker/chromebrew/issues) before submitting a new one.
+
 Usage
 -----
 
