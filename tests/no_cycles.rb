@@ -20,17 +20,18 @@ end
 # @state will store :on_path for vertices on the current dependency path
 # and :visited for vertices that have already been checked not to lead to
 # cycles.
+@failed = 0
 @state = {}
 @path = []
 def dfs(pkg)
   @path.push(pkg.name)
   if @state[pkg] == :on_path
-    puts "Found dependency cycle!".lightred
+    puts "\nFound dependency cycle!".lightred
     while @path.first != @path.last
       @path.shift
     end
     puts @path.to_s
-    exit 1
+    @failed += 1
   elsif @state[pkg] == nil
     @state[pkg] = :on_path
     if pkg.dependencies
@@ -50,4 +51,11 @@ end
   dfs(pkg)
 end
 
-puts "No dependency cycles found.".lightgreen
+@cycles = "cycles"
+@cycles = "cycle" if @failed == 1
+
+if @failed > 0
+abort "\n#{@failed} dependency #{@cycles} found.".lightred
+else
+puts "\nNo dependency cycles found.".lightgreen
+end
