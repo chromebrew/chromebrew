@@ -20,7 +20,6 @@ class Libiconv < Package
      x86_64: '8689ee2b4acc0440df6eec9eb0fb19aa8393b68bd64517cbca65d98041a2c7cc',
   })
   
-  depends_on 'glibc'
   depends_on 'manpages'
 
   def self.build

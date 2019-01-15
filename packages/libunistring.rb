@@ -20,7 +20,6 @@ class Libunistring < Package
      x86_64: 'd0fccb9b680e38517ce95483fcbac289ba835aa79e5c106bc21ec8de7872a13b',
   })
 
-  depends_on 'glibc'
 
   def self.build
     system './configure',

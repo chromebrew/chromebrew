@@ -21,7 +21,6 @@ class Libuv < Package
   })
 
   depends_on 'automake'
-  depends_on 'glibc'
   depends_on 'libtool'
 
   def self.build

@@ -20,7 +20,6 @@ class Unrtf < Package
      x86_64: '905c08e45a27b7a40aa2986ce9576f24fc36118f185dad78cd728cef51af8e54',
   })
 
-  depends_on 'glibc'
 
   def self.build
     system './bootstrap'

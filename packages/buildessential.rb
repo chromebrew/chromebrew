@@ -8,8 +8,9 @@ class Buildessential < Package
   is_fake
 
   depends_on 'gcc7'
-  depends_on 'linuxheaders'
+  depends_on 'wget'
   depends_on 'make'
+  depends_on 'linux_sources' # includes Linux headers; linuxheaders is a metapackage now.
   depends_on 'pkgconfig'
 
   # compress man pages
@@ -37,7 +38,6 @@ class Buildessential < Package
   depends_on 'flex'
   depends_on 'util_macros'
   depends_on 'gettext'
-  depends_on 'wget' # in some cases, patches might be required and can be downloaded using wget
   depends_on 'gawk'
 
   # compression utilities
