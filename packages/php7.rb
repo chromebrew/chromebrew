@@ -3,31 +3,37 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.13'
-  source_url 'https://php.net/distributions/php-7.2.13.tar.xz'
-  source_sha256 '14b0429abdb46b65c843e5882c9a8c46b31dfbf279c747293b8ab950c2644a4b'
+  version '7.2.14'
+  source_url 'https://php.net/distributions/php-7.2.14.tar.xz'
+  source_sha256 'ee3f1cc102b073578a3c53ba4420a76da3d9f0c981c02b1664ae741ca65af84f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.13-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1eba303d85b10189ca84d7004dba52dfbf77599e972d41350c9d5b0d109c0868',
-     armv7l: '1eba303d85b10189ca84d7004dba52dfbf77599e972d41350c9d5b0d109c0868',
-       i686: 'dca4240c6530c0b05956259bf352fdfbf4de96993a1e87bea518b98e3338e54e',
-     x86_64: '816e2a00a31b200b668cfe4da1a4ad5a015e478d4f2af6b5c41a47875c6f6e25',
+    aarch64: 'dc076b2e07da99b8ae26dd75b74e0dd39e23a6df8e82dfc2060b8a03f884ddd7',
+     armv7l: 'dc076b2e07da99b8ae26dd75b74e0dd39e23a6df8e82dfc2060b8a03f884ddd7',
+       i686: 'e75f54e42bb686ab2f8c49bd9c4cf080d507bc5e780515523453482667421fc1',
+     x86_64: 'a13f6063587b19f9cc64dd9fcd9f96149033f184476c9282a38da7e855f4d900',
   })
 
   depends_on 'readline7'
   depends_on 'libgcrypt'
   depends_on 'libpng'
   depends_on 'libxslt'
+  depends_on 'libzip'
   depends_on 'curl'
+  depends_on 'exif'
+  depends_on 'freetype'
   depends_on 'pcre'
+  depends_on 'tidy'
+  depends_on 'unixodbc'
 
   def self.patch
+    # Configuration
     system "sed -i 's,;pid = run/php-fpm.pid,pid = #{CREW_PREFIX}/tmp/run/php-fpm.pid,' sapi/fpm/php-fpm.conf.in"
     system "sed -i 's,;error_log = log/php-fpm.log,error_log = #{CREW_PREFIX}/log/php-fpm.log,' sapi/fpm/php-fpm.conf.in"
     system "sed -i 's,include=@php_fpm_sysconfdir@/php-fpm.d,include=#{CREW_PREFIX}/etc/php-fpm.d,' sapi/fpm/php-fpm.conf.in"
@@ -53,17 +59,32 @@ class Php7 < Package
       --sbindir=#{CREW_PREFIX}/bin \
       --with-config-file-path=#{CREW_PREFIX}/etc \
       --with-libdir=#{ARCH_LIB} \
+      --with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype \
+      --enable-exif \
       --enable-fpm \
+      --enable-ftp \
       --enable-mbstring \
       --enable-opcache \
+      --enable-pcntl \
+      --enable-sockets \
+      --enable-shared \
+      --enable-shmop \
+      --enable-zip \
+      --with-bz2 \
       --with-curl \
       --with-gd \
-      --with-xsl \
+      --with-gettext \
+      --with-gmp \
+      --with-libzip \
       --with-mysqli \
       --with-openssl \
       --with-pdo-mysql \
+      --with-pear \
       --with-pcre-regex \
       --with-readline \
+      --with-tidy \
+      --with-unixODBC \
+      --with-xsl \
       --with-zlib"
     system 'make'
   end
