@@ -8,10 +8,16 @@ class Lzo < Package
   source_sha256 'c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '6427640990d44d3e8d9c16856a40de6442624e821e64dc8441373bbcd34f71f1',
+    aarch64: '8909723551598aea2da661c6e327d42ede4eedef60351113b2ee7923e45523d4',
+     armv7l: '8909723551598aea2da661c6e327d42ede4eedef60351113b2ee7923e45523d4',
+       i686: 'cec4de5d184f57d18660b4ea8a8ca5f69a8d80cc620e79dedc617f9fab04d63f',
+     x86_64: '04c5e6c4405569793a8681869376ee5144258ced7c39eb06742f891fed741ff7',
   })
 
   def self.build
