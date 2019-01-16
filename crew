@@ -10,6 +10,7 @@ require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
+require 'set'
 require_relative 'lib/const'
 require_relative 'lib/util'
 
@@ -359,18 +360,17 @@ def upgrade
     end
   else
     # Make a installed packages list belong to the dependency order
-    dependencies = []
+    dependencies = Set.new
     @device[:installed_packages].each do |package|
       # skip package if it is dependent other packages previously checked
       next if dependencies.include? package[:name]
       # add package itself
-      dependencies = [ package[:name] ].concat(dependencies)
+      dependencies.add(package[:name])
       # expand depencencies and add it to the dependencies list
       search package[:name], true
       exp_dep = expand_dependencies
-      dependencies = exp_dep.concat(dependencies)
+      dependencies.merge(exp_dep)
     end
-    dependencies.uniq!
 
     # Check version number of installed package and make a target list
     toBeUpdated = []
@@ -626,7 +626,9 @@ def resolve_dependencies_and_install
 end
 
 def expand_dependencies
-  @dependencies = []
+  # sets use hash table for lookup and members are guaranteed to be unique
+  @dependencies = Set.new
+  @dontRecheck = Set.new
 
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
@@ -644,19 +646,23 @@ def expand_dependencies
     # remove a dependent package which is equal to the target
     check_deps.select! {|name| @pkgName != name}
 
-    # add new dependencies at the beginning of array
-    @dependencies = check_deps.clone.concat(@dependencies)
+    # merge new dependencies into set
+    @dependencies.merge(check_deps)
 
     # check all dependencies recursively
     check_deps.each do |dep|
+      # skip a dependency if it's been checked already
+      next if @dontRecheck.include?(dep)
       search dep, true
       push_dependencies
+      # Add dep to set so we can skip checking it from now on
+      @dontRecheck << dep
     end
   end
 
   push_dependencies
 
-  @dependencies.uniq
+  @dependencies  # Already unique
 end
 
 def resolve_dependencies
