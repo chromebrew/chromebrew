@@ -1,11 +1,16 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.0.6'
+CREW_VERSION = '1.1.0'
 
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 
-CREW_PREFIX = '/usr/local'
+if ENV['CREW_PREFIX'].to_s == ''
+  CREW_PREFIX = '/usr/local'
+else
+  CREW_PREFIX = ENV['CREW_PREFIX']
+  @pkg.build_from_source = true
+end
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
 
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
@@ -15,6 +20,7 @@ CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
 CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_HOME = CREW_DEST_DIR + ENV['HOME']
+HOME = ENV['HOME']
 
 # Set CREW_NPROC from environment variable or `nproc`
 if ENV["CREW_NPROC"].to_s == ''
