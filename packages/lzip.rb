@@ -2,27 +2,27 @@ require 'package'
 
 class Lzip < Package
   description 'Lzip is a lossless data compressor with a user interface similar to the one of gzip or bzip2.'
-  homepage 'http://www.nongnu.org/lzip/lzip.html'
-  version '1.20'
-  source_url 'http://download.savannah.gnu.org/releases/lzip/lzip-1.20.tar.gz'
-  source_sha256 'c93b81a5a7788ef5812423d311345ba5d3bd4f5ebf1f693911e3a13553c1290c'
+  homepage 'https://www.nongnu.org/lzip/lzip.html'
+  version '1.21'
+  source_url 'https://download.savannah.gnu.org/releases/lzip/lzip-1.21.tar.lz'
+  source_sha256 '68c703c7b5198b3fd7a0c3f20011e9a8c938b8dec14824c4c873922fdb01719f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.20-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.20-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.20-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.21-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.21-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lzip-1.21-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7cbe7a366aed4da37ffe6fe1cbae057917879559f794803d613d0421f71a92e8',
-     armv7l: '7cbe7a366aed4da37ffe6fe1cbae057917879559f794803d613d0421f71a92e8',
-       i686: 'e64bad3920d72f7e5e5c952c5ee3870f40448c0d833377631dd67e54a3de2c37',
-     x86_64: 'dbbc38602aaeb84e11d971aeb35d64b49fc30d44354b902b767e0529a3ce7d04',
+    aarch64: '09f94e775a908f77177ee4657940e62e8a223b50210d66b581b4ee823416cac9',
+     armv7l: '09f94e775a908f77177ee4657940e62e8a223b50210d66b581b4ee823416cac9',
+       i686: '6ec82131cdda0a15c8b78bc5602fdfa84b52336d76b4fd1c70d710e99b9ed3cc',
+     x86_64: '3e79f5606033b8dde418900d6957d06b606a9bffb240eb67e7166e38dcdfe699',
   })
 
   def self.build
-    # default of -O2 causes a run-time segmentation fault on armv7l
-    system "./configure", "CXXFLAGS=-Wall -W -O1"
+    system "./configure",
+           "--prefix=#{CREW_PREFIX}"
     system "make"
   end
 
