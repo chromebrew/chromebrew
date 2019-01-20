@@ -627,6 +627,7 @@ end
 
 def expand_dependencies
   @dependencies = []
+  @dontRecheck = []
 
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
@@ -649,8 +650,12 @@ def expand_dependencies
 
     # check all dependencies recursively
     check_deps.each do |dep|
+      # skip a dependency if it's been checked already
+      next if @dontRecheck.include?(dep)
       search dep, true
       push_dependencies
+      # Remember dep so we can skip it from now on
+      @dontRecheck << dep
     end
   end
 
