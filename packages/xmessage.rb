@@ -10,7 +10,6 @@ class Xmessage < Package
   depends_on 'xorg_lib'
 
   def self.build
-    system "bash --norc"
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}"
