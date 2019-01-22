@@ -8,14 +8,22 @@ class Cairo < Package
   source_sha256 '5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.16.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.16.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.16.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.16.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '8c6ac7612bd9aac77a38fa2a6bc519ff3f0bc94e46cd3fd5d0f75c68e41876e4',
+     armv7l: '8c6ac7612bd9aac77a38fa2a6bc519ff3f0bc94e46cd3fd5d0f75c68e41876e4',
+       i686: '93e54aec50db4895b4897745b89d7f3876ba25fb1941333063fd1ec335a0977a',
+     x86_64: '0f0655202da77ecbcd2259a0f6367ac5f33fffb8e2af3698ea652967b2926461',
   })
 
   depends_on 'libpng'
+  depends_on 'librsvg'
+  depends_on 'lzo'
   depends_on 'pixman'
-  depends_on 'fontconfig'
-  depends_on 'libtool'
   depends_on 'mesa'
 
   def self.build
