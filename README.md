@@ -84,6 +84,7 @@ Where available commands are:
   * help - `get information about command usage`
   * install - `install package(s) along with dependencies after prompting for confirmation`
   * list - `available or installed packages`
+  * postinstall - `display postinstall messages of package(s)`
   * remove - `remove package(s)`
   * search - `look for package(s)`
   * update - `update crew itself`
