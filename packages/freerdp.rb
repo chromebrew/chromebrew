@@ -13,6 +13,7 @@ class Freerdp < Package
   depends_on 'xmlto'
   depends_on 'libxslt'
   depends_on 'ninja'
+  depends_on 'xprop'
   depends_on 'sommelier'
 
   def self.build
