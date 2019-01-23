@@ -11,12 +11,14 @@ class Freerdp < Package
   depends_on 'gst_plugins_base'
   depends_on 'cups'
   depends_on 'xmlto'
+  depends_on 'libxslt'
   depends_on 'ninja'
   depends_on 'sommelier'
 
   def self.build
     system 'cmake', "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}", '-DWITH_SERVER=yes', '-DWITH_CLIENT=yes', '-DWITH_CHANNELS=yes',
-      '-DBUILD_SHARED_LIBS=yes', '-DWITH_GSSAPI=yes', '-DWITH_DSP_FFMPEG=yes', '-G "Unix Makefiles"', '.'
+      '-DBUILD_SHARED_LIBS=yes', '-DWITH_GSSAPI=yes', '-DWITH_DSP_FFMPEG=yes', '-DWITH_LIBSYSTEMD=OFF', '-DWITH_CUPS=ON',
+      '-DWITH_PULSE=ON', "-DDOCBOOKXSL_DIR=#{CREW_PREFIX}/share/doc/docbook-xsl-1.79.2", '-GUnix Makefiles', '.'
     system 'make'
   end
 
