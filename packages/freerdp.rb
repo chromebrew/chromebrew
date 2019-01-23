@@ -12,12 +12,7 @@ class Freerdp < Package
   depends_on 'gst_plugins_base'
   depends_on 'cups'
   depends_on 'pulseaudio'
-  depends_on 'xorg_lib'
-  depends_on 'openssl'
-  depends_on 'cmake'
-  depends_on 'xorg_proto'
-  depends_on 'docbook_xsl'
-  depends_on 'krb5'
+  depends_on 'cmake' => :build
   depends_on 'xmlto'
   depends_on 'ninja'
   depends_on 'sommelier'
