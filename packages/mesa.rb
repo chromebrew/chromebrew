@@ -22,7 +22,7 @@ class Mesa < Package
 
   depends_on 'libva'
   depends_on 'libvdpau'
-  depends_on 'wayland'
+  depends_on 'wayland_protocols'
   depends_on 'elfutils'
   depends_on 'llvm'
 
