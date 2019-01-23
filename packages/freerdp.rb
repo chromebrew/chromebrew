@@ -15,7 +15,8 @@ class Freerdp < Package
   depends_on 'sommelier'
 
   def self.build
-    system 'cmake', "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_DEST_PREFIX}", '.'
+    system 'cmake', "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_DEST_PREFIX}", '-DWITH_SERVER=yes', '-DWITH_CLIENT=yes',
+      '-DWITH_CHANNELS=yes', '-DBUILD_SHARED_LIBS=yes', '-DWITH_GSSAPI=yes', '-DWITH_DSP_FFMPEG=yes', '.'
     system 'cmake', '--build', '.'
   end
 
