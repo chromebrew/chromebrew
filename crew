@@ -27,6 +27,7 @@ Usage:
   crew help [<command>]
   crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew list (available|installed)
+  crew postinstall <name> ...
   crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
   crew update
@@ -201,6 +202,10 @@ def help (pkgName)
   when "list"
     puts "List available or installed packages"
     puts "Usage: crew list (available|installed)"
+  when "postinstall"
+    puts "Display postinstall messages of package(s)."
+    puts "Usage: crew postinstall <package1> [<package2> ...]"
+    puts "The package(s) must be currently installed."
   when "remove"
     puts "Remove package(s)."
     puts "Usage: crew remove [-v|--verbose] <package1> [<package2> ...]"
@@ -477,7 +482,7 @@ end
 
 def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
-    puts "Building from source, this may take a while..."    
+    puts "Building from source, this may take a while..."
 
     # Rename *.la files temporily to *.la_tmp to avoid
     # libtool: link: '*.la' is not a valid libtool archive.
@@ -924,6 +929,17 @@ def list_command (args)
     list_available
   elsif args['installed']
     list_installed
+  end
+end
+
+def postinstall_command (args)
+  args["<name>"].each do |name|
+    set_package name, true
+    if @device[:installed_packages].any? do |elem| elem[:name] == name end
+      @pkg.postinstall
+    else
+      puts "Package #{name} is not installed. :(".lightred
+    end
   end
 end
 
