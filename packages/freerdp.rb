@@ -23,12 +23,12 @@ class Freerdp < Package
   depends_on 'sommelier'
 
   def self.build
-    system "cmake ."
-    system "cmake --build ."
+    system 'cmake', "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_DEST_PREFIX}", '.'
+    system 'cmake', '--build', '.'
   end
 
   def self.install
-    system "CMAKE_INSTALL_PREFIX=#{CREW_DEST_DIR} cmake --build . --target install"
+    system 'cmake', '--build', '.', '--target', 'install'
   end
 
   def self.postinstall
