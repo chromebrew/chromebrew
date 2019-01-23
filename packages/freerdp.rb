@@ -27,8 +27,10 @@ class Freerdp < Package
   end
 
   def self.postinstall
+    puts
     puts 'To test this package, try the following command to connect to the Windows server at https://www.secure-od.com/:'.lightblue
     puts 'xfreerdp -g 800x600 -u demo2 -p D3m02014*Test 109.168.97.222'.lightblue
     puts 'If you don\'t have the Sommelier daemon running, you may need to prepend that with "sommelier -X ".'.lightblue
+    puts
   end
 end
