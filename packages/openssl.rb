@@ -52,9 +52,8 @@ class Openssl < Package
     system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man7"
 
     # Move manpages
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/man/"
-    system "cp -a #{CREW_DEST_PREFIX}/man/* #{CREW_DEST_PREFIX}/share/man/"
-    system "rm -rf #{CREW_DEST_PREFIX}/man"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share"
+    system "mv #{CREW_DEST_PREFIX}/man #{CREW_DEST_PREFIX}/share/"
   end
 
   def self.check
