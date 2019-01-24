@@ -3,7 +3,7 @@ require 'package'
 class Openssl < Package
   description 'OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.'
   homepage 'https://www.openssl.org/'
-  version '1.0.2p'
+  version '1.0.2p-2'
   source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2p.tar.gz'
   source_sha256 '95ca65a25bdd41e127e5f4054539e8532a46be602b43b44af7c7100172e7cd50'
 
