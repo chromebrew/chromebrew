@@ -16,10 +16,10 @@ class Rsu_client < Package
   def self.patch
     Dir.chdir 'runescape' do
       system "for f in \$(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
-                sed -i 's,#{CREW_PREFIX},/usr,gw /dev/stdout' $f
+                sed -i 's,#{CREW_PREFIX},/usr,g' \${f}
               done"
       system "for f in \$(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
-                sed -i 's,/usr,#{CREW_PREFIX},gw /dev/stdout' $f
+                sed -i 's,/usr,#{CREW_PREFIX},g' \${f}
               done"
     end
   end
@@ -29,9 +29,9 @@ class Rsu_client < Package
   end
 
   def self.install
-    system 'mkdir', '-pv', "#{CREW_DEST_PREFIX}/share"
-    system 'cp', '-rv', 'runescape', "#{CREW_DEST_PREFIX}/share/"
-    system 'mkdir', '-pv', "#{CREW_DEST_PREFIX}/bin"
-    system 'ln', '-sv', "#{CREW_PREFIX}/share/runescape/runescape", "#{CREW_DEST_PREFIX}/bin/runescape"
+    system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/share"
+    system 'cp', '-a', 'runescape', "#{CREW_DEST_PREFIX}/share/"
+    system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/bin"
+    system 'ln', '-s', "#{CREW_PREFIX}/share/runescape/runescape", "#{CREW_DEST_PREFIX}/bin/runescape"
   end
 end
