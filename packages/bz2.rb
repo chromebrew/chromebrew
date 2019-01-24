@@ -3,7 +3,7 @@ require 'package'
 class Bz2 < Package
   description 'bzip2 is a freely available, patent free, high-quality data compressor.'
   homepage 'http://www.bzip.org/'
-  version '1.0.6-2'
+  version '1.0.6-3'
   source_url 'https://fossies.org/linux/misc/bzip2-1.0.6.tar.xz'
   source_sha256 '4bbea71ae30a0e5a8ddcee8da750bc978a479ba11e04498d082fa65c2f8c1ad5'
 
