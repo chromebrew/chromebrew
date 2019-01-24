@@ -9,8 +9,16 @@ class Libmetalink < Package
   source_sha256 '86312620c5b64c694b91f9cc355eabbd358fa92195b3e99517504076bf9fe33a'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libmetalink-0.1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libmetalink-0.1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libmetalink-0.1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libmetalink-0.1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '29e31d4461af785016c7fc39dad45479e943488cdcf60a77ed06bb09ec61ea82',
+     armv7l: '29e31d4461af785016c7fc39dad45479e943488cdcf60a77ed06bb09ec61ea82',
+       i686: 'd289f088f022b0ebd91585afb9a8f12f5ffd2ad86efacfdf13aaffdfb0cb9634',
+     x86_64: '26c796170ae70679c0cc6ba510b5fd94594e2436b8ae14733226e6b294762fc3',
   })
 
   depends_on 'libxml2'
