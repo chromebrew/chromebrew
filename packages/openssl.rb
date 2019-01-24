@@ -3,9 +3,9 @@ require 'package'
 class Openssl < Package
   description 'OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.'
   homepage 'https://www.openssl.org/'
-  version '1.0.2p-2'
-  source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2p.tar.gz'
-  source_sha256 '95ca65a25bdd41e127e5f4054539e8532a46be602b43b44af7c7100172e7cd50'
+  version '1.0.2q'
+  source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2q.tar.gz'
+  source_sha256 'a8531541d93bb4486bc07abdc0018c4d759643d6e30dfc514c5939364b3230ca'
 
   depends_on 'bc' => :build             # required for `make test`
 
