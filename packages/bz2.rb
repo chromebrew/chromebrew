@@ -51,9 +51,8 @@ class Bz2 < Package
     system "ln -s libbz2.so.1.0.6 #{CREW_DEST_LIB_PREFIX}/libbz2.so"
 
     # Move manpages
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/man/"
-    system "cp -a #{CREW_DEST_PREFIX}/man/* #{CREW_DEST_PREFIX}/share/man/"
-    system "rm -rf #{CREW_DEST_PREFIX}/man"
+    system "mkdir -p #{CREW_DEST_PREFIX}/share"
+    system "mv #{CREW_DEST_PREFIX}/man #{CREW_DEST_PREFIX}/share/"
   end
 
   def self.check
