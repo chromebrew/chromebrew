@@ -39,21 +39,18 @@ class Openssl < Package
     system "make", "INSTALL_PREFIX=#{CREW_DEST_DIR}", "install"
     system "find #{CREW_DEST_PREFIX} -name 'lib*.a' -print | xargs rm"
 
-    # move man to #{CREW_PREFIX}/man
-    system "mv", "#{CREW_DEST_DIR}/etc/ssl/man", "#{CREW_DEST_PREFIX}/man"
+    # move man to #{CREW_PREFIX}/share/man
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    system "mv", "#{CREW_DEST_DIR}/etc/ssl/man", "#{CREW_DEST_PREFIX}/share/man"
 
     # remove all files under /etc/ssl (use system's /etc/ssl as is)
     system "rm", "-rf", "#{CREW_DEST_DIR}/etc"
 
     # compress man pages
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man1"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man3"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man5"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man7"
-
-    # Move manpages
-    system "mkdir -p #{CREW_DEST_PREFIX}/share"
-    system "mv #{CREW_DEST_PREFIX}/man #{CREW_DEST_PREFIX}/share/"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man3"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man5"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man7"
   end
 
   def self.check
