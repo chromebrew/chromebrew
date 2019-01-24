@@ -40,7 +40,7 @@ class Openssl < Package
     system "find #{CREW_DEST_PREFIX} -name 'lib*.a' -print | xargs rm"
 
     # move man to #{CREW_PREFIX}/share/man
-    system "mkdir", "-p", "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share")
     system "mv", "#{CREW_DEST_DIR}/etc/ssl/man", "#{CREW_DEST_PREFIX}/share/man"
 
     # remove all files under /etc/ssl (use system's /etc/ssl as is)
