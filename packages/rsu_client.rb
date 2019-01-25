@@ -16,7 +16,7 @@ class Rsu_client < Package
   def self.patch
     Dir.chdir 'runescape' do
       system "for f in \$(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
-                sed -i 's,#{CREW_PREFIX},/usr,g' \${f}
+                sed -i 's,/usr/local,/usr,g' \${f}
               done"
       system "for f in \$(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
                 sed -i 's,/usr,#{CREW_PREFIX},g' \${f}
