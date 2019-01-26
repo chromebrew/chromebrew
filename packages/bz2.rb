@@ -7,6 +7,19 @@ class Bz2 < Package
   source_url 'https://fossies.org/linux/misc/bzip2-1.0.6.tar.xz'
   source_sha256 '4bbea71ae30a0e5a8ddcee8da750bc978a479ba11e04498d082fa65c2f8c1ad5'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'abfa979b02b0f587c65b7bebb1bc97ba9eda57aec1cb5f3657b6d4f92b90ee65',
+     armv7l: 'abfa979b02b0f587c65b7bebb1bc97ba9eda57aec1cb5f3657b6d4f92b90ee65',
+       i686: '426ec6778bb285ac377f43581a06391ca5a23b533dcfc02cc5c3e03d4239af9f',
+     x86_64: '3ec7418e132350c4989ff2a6856b320d68fbec02913043a6c19f2c025732217f',
+  })
+
   def self.build
     system "make -f Makefile-libbz2_so"
   end

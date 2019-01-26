@@ -7,6 +7,19 @@ class Openssl < Package
   source_url 'https://github.com/openssl/openssl/archive/OpenSSL_1_0_2p.tar.gz'
   source_sha256 '95ca65a25bdd41e127e5f4054539e8532a46be602b43b44af7c7100172e7cd50'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2p-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2p-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2p-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.0.2p-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '9d2a1bdeac0d26ec7a22a91e017064edf1799f1783ebb7bce89e92e95b68f043',
+     armv7l: '9d2a1bdeac0d26ec7a22a91e017064edf1799f1783ebb7bce89e92e95b68f043',
+       i686: '0329163f9f9c78433d8b3d22d5a94eccc067ff557810c0fc85d4a8090cacb494',
+     x86_64: 'b61308c6d0cddb3a6e0713e9d47b95382b1c5f0f9495766cec1afa6a07ccf56c',
+  })
+
   depends_on 'bc' => :build             # required for `make test`
 
   def self.build
@@ -47,10 +60,10 @@ class Openssl < Package
     system "rm", "-rf", "#{CREW_DEST_DIR}/etc"
 
     # compress man pages
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man1"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man3"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man5"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man7"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man3"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man5"
+    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man7"
   end
 
   def self.check
