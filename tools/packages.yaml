@@ -1734,11 +1734,6 @@ url: http://www.exiv2.org/builds/
 activity: none
 ---
 kind: url
-name: libfdkaac
-url: https://github.com/mstorsjo/fdk-aac/releases
-activity: low
----
-kind: url
 name: libffi
 url: http://sourceware.org/pub/libffi
 activity: none
