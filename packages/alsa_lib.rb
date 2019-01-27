@@ -8,8 +8,16 @@ class Alsa_lib < Package
   source_sha256 '3cdc3a93a6427a26d8efab4ada2152e64dd89140d981f6ffa003e85be707aedf'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.1.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.1.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.1.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.1.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'd94c01b609084242a81ba4c2427434cbc1a6ae47964906f153226b14ec23e2fb',
+     armv7l: 'd94c01b609084242a81ba4c2427434cbc1a6ae47964906f153226b14ec23e2fb',
+       i686: '2ed364d08fd327fc73d9d885fc0612c9e15c6af0de3864f6aab8e2b640b9a851',
+     x86_64: '8fbcdb011920f27fabec31ef9e2057ccbdb26ae14ba3ac468a83c6ca767bf7cc',
   })
 
   depends_on 'python3'
