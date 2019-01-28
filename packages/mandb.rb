@@ -55,10 +55,6 @@ class Mandb < Package
 
   def self.postinstall
     puts
-    puts "To finish the installation, set the default MANPATH environment variable:".lightblue
-    puts "echo \"export MANPATH=#{CREW_PREFIX}/man:$MANPATH\" >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
     puts "To create the man databases and get apropos working, type 'mandb -c'.".lightblue
     puts
   end
