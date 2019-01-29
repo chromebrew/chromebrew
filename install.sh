@@ -43,13 +43,13 @@ for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"
 done
 
 # prepare url and sha256
-# install only gcc7, ruby, libiconv, git and libssh2 (order matters)
+# install only gcc8, ruby, libiconv, git and libssh2 (order matters)
 urls=()
 sha256s=()
 case "${ARCH}" in
 "aarch64")
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-armv7l.tar.xz')
-  sha256s+=('c9dd2a2b2d195f0f2021dc673d6317e46b5dfaef582f496b4cea1f3c5c2c17ad')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc8-8.2.0-chromeos-armv7l.tar.xz')
+  sha256s+=('536323fc5dd35e53665a19e65c636f288153efe4cdf31617c32103c64593b285')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-armv7l.tar.xz')
   sha256s+=('5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-armv7l.tar.xz')
@@ -61,11 +61,11 @@ case "${ARCH}" in
   ;;
 "armv7l")
   if ! type "xz" > /dev/null; then
-    urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
-    sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
+    urls+=('https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.3-2-chromeos-armv7l.tar.xz')
+    sha256s+=('839ead7097adee016986a9992d8cf8f4c91554ade2b6e111f7d0379c595be366')
   fi
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-armv7l.tar.xz')
-  sha256s+=('c9dd2a2b2d195f0f2021dc673d6317e46b5dfaef582f496b4cea1f3c5c2c17ad')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc8-8.2.0-chromeos-armv7l.tar.xz')
+  sha256s+=('536323fc5dd35e53665a19e65c636f288153efe4cdf31617c32103c64593b285')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-armv7l.tar.xz')
   sha256s+=('5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-armv7l.tar.xz')
@@ -76,8 +76,8 @@ case "${ARCH}" in
   sha256s+=('6fa84296583273dd9e749a2c54cb1cf688a7dab032e2528de5944a4d9777f037')
   ;;
 "i686")
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-i686.tar.xz')
-  sha256s+=('4202ea5e9d703d39c522e5f1d7145b8d682a0380baf53b98309b94816408e0b6')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc8-8.2.0-chromeos-i686.tar.xz')
+  sha256s+=('e37ca8d49198beaa9ba582fc25fa598ab3cd5ed7e46f96a03176fb9002cc6f7b')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-i686.tar.xz')
   sha256s+=('6f4a5b96c31ef5ee4f09ac15da4c7a4a9d838ed5233038136ead1e155d17f342')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-i686.tar.xz')
@@ -88,8 +88,8 @@ case "${ARCH}" in
   sha256s+=('771b2d30a49dd691db8456f773da404753d368f3c31d03c682c552ea0b5eb65e')
   ;;
 "x86_64")
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-x86_64.tar.xz')
-  sha256s+=('992fa6556e3c4b45ae548b0ce64e1c5cafaffd109fe9aba5d857c6c569e5b33e')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc8-8.2.0-chromeos-x86_64.tar.xz')
+  sha256s+=('6d982f3c35acd3a738e176a3f3b8c4ea093c7be86882153a7711841cf0c80737')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-x86_64.tar.xz')
   sha256s+=('352b78fc883cf8936136991fda9ca5d49e90b2951626158d6af8ef4b58d67f97')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-x86_64.tar.xz')
@@ -213,18 +213,26 @@ if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
   echo 'source ~/.bashrc'
   echo
 fi
-echo "To set the default PAGER environment variable to be able to use less:"
+echo "To set the default PAGER environment variable to use less:"
 echo "echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc"
 echo
 echo "Alternatively, you could use most.  Why settle for less, right?"
 echo "echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc"
 echo
-echo "You may wish to set the EDITOR environment variable."
-echo "For example, to set 'vim' as the default editor, execute the following:"
+echo "Below are some text editor suggestions."
+echo
+echo "To install 'nano', execute:"
+echo "crew install nano"
+echo
+echo "Or, to get an updated version of 'vim', execute:"
+echo "crew install vim"
+echo
+echo "You may wish to set the EDITOR environment variable for an editor default."
+echo
+echo "For example, to set 'nano' as the default editor, execute:"
+echo "echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc"
+echo
+echo "To set 'vim' as the default editor, execute:"
 echo "echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc"
-echo "Nano is a simple text editor that is the default on Chrome OS,"
-echo " and is recommended."
-echo "To install 'nano', run 'crew install nano'."
-echo "Or, to get an updated version of 'vim', run 'crew install vim'."
 echo
 echo "Chromebrew installed successfully and package lists updated."

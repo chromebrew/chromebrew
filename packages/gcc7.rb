@@ -3,27 +3,27 @@ require 'package'
 class Gcc7 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '7.3.0-3'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/gcc-7_3_0-release.tar.gz'
-  source_sha256 'af11c397296cab69996723b9d828c98a9bb749447ac8f7ed67458bcdb60311ed'
+  version '7.4.0'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-7.4.0/gcc-7.4.0.tar.xz'
+  source_sha256 'eddde28d04f334aec1604456e536416549e9b1aa137fc69204e65eb0c009fe51'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.3.0-3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c9dd2a2b2d195f0f2021dc673d6317e46b5dfaef582f496b4cea1f3c5c2c17ad',
-     armv7l: 'c9dd2a2b2d195f0f2021dc673d6317e46b5dfaef582f496b4cea1f3c5c2c17ad',
-       i686: '4202ea5e9d703d39c522e5f1d7145b8d682a0380baf53b98309b94816408e0b6',
-     x86_64: '992fa6556e3c4b45ae548b0ce64e1c5cafaffd109fe9aba5d857c6c569e5b33e',
+    aarch64: '07126320a193d947aeac51f1827ff954c322a8f43014f3cff146715b72f9d7f8',
+     armv7l: '07126320a193d947aeac51f1827ff954c322a8f43014f3cff146715b72f9d7f8',
+       i686: '72cd956d055ad418b052dab407ec3a2b16663b09c396073a23bd12828fcf03c3',
+     x86_64: '6cce57e98836ccc3c6773df1627bca2102b4f89c7abf64dc47f7b97120b0e01b',
   })
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
   depends_on 'dejagnu' => :build # for test
-  #depends_on 'gcc' => :build   # gcc version 4.9.4
+  depends_on 'gcc8' => :build # gcc version 8.2.0
   depends_on 'icu4c' => :build # icu version 62.1
   depends_on 'python27' => :build
   depends_on 'python3' => :build
@@ -51,7 +51,6 @@ class Gcc7 < Package
                  "--host=armv7l-cros-linux-gnueabihf",
                  "--target=armv7l-cros-linux-gnueabihf",
                  "--enable-checking=release",
-                 "--enable-languages=c,c++,fortran",
                  "--disable-multilib",
                  "--enable-threads=posix",
                  "--disable-bootstrap",
@@ -65,7 +64,7 @@ class Gcc7 < Package
                  "--with-fpu=neon",
                  "--with-float=hard",
                  "--with-default-libstdcxx-abi=gcc4-compatible"
-        when "x86_64"
+        when 'x86_64'
           system "../configure",
                  "--prefix=#{CREW_PREFIX}",
                  "--libdir=#{CREW_LIB_PREFIX}",
@@ -73,7 +72,6 @@ class Gcc7 < Package
                  "--host=#{ARCH}-cros-linux-gnu",
                  "--target=#{ARCH}-cros-linux-gnu",
                  "--enable-checking=release",
-                 "--enable-languages=c,c++,fortran",
                  "--disable-multilib",
                  "--enable-threads=posix",
                  "--disable-bootstrap",
@@ -84,7 +82,7 @@ class Gcc7 < Package
                  "--program-suffix=-7.3",
                  "--with-arch-64=x86-64",
                  "--with-default-libstdcxx-abi=gcc4-compatible"
-        when "i686"
+        when 'i686'
           system "../configure",
                  "--prefix=#{CREW_PREFIX}",
                  "--libdir=#{CREW_LIB_PREFIX}",
@@ -92,7 +90,6 @@ class Gcc7 < Package
                  "--host=#{ARCH}-cros-linux-gnu",
                  "--target=#{ARCH}-cros-linux-gnu",
                  "--enable-checking=release",
-                 "--enable-languages=c,c++,fortran",
                  "--disable-multilib",
                  "--enable-threads=posix",
                  "--disable-bootstrap",
