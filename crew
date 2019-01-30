@@ -25,7 +25,7 @@ Usage:
   crew download [-v|--verbose] <name> ...
   crew files <name> ...
   crew help [<command>]
-  crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
+  crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] [-c|--check] <name> ...
   crew list (available|installed)
   crew postinstall <name> ...
   crew remove [-v|--verbose] <name> ...
@@ -36,6 +36,7 @@ Usage:
 
   -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
   -s --build-from-source  Build from source even if pre-compiled binary exists.
+  -c --check              Run checks on the package before installing
   -S --recursive-build    Build from source, including all dependencies, even if pre-compiled binaries exist.
   -V --version            Display the crew version.
   -v --verbose            Show extra information.
@@ -79,9 +80,10 @@ rescue Docopt::Exit => e
   exit 1
 end
 
-@opt_keep = args["--keep"]
-@opt_verbose = args["--verbose"]
-@opt_src = args["--build-from-source"]
+@opt_keep      = args["--keep"]
+@opt_verbose   = args["--verbose"]
+@opt_src       = args["--build-from-source"]
+@opt_check     = args["--check"]
 @opt_recursive = args["--recursive-build"]
 
 @device = JSON.parse(File.read(CREW_CONFIG_PATH + 'device.json'), symbolize_names: true)
@@ -716,6 +718,14 @@ def install
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy
       build_and_preconfigure target_dir
+
+      if @opt_check && Dir.exist?(target_dir)
+        Dir.chdir target_dir do
+          puts "Running post-build checks for package #{@pkg.name}..."
+          abort("#{@pkg.name} failed post-build checks. Aborting.") unless @pkg.check
+          puts "Checks for #{@pkg.name} have passed successfully."
+        end
+      end
 
       # prepare filelist and dlist at CREW_DEST_DIR
       prepare_package CREW_DEST_DIR
