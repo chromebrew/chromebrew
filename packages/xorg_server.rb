@@ -21,19 +21,15 @@ class Xorg_server < Package
   })
 
   depends_on 'pixman'
-  depends_on 'mesa'
   depends_on 'xorg_lib'
   depends_on 'xorg_proto'
   depends_on 'libepoxy'
   depends_on 'libtirpc'
   depends_on 'font_util'
   depends_on 'libunwind'
-  depends_on 'wayland_protocols'
-  depends_on 'nettle'
   depends_on 'libbsd'
   depends_on 'dbus'
   depends_on 'lzma' => :build
-  depends_on 'font_util'
   depends_on 'libxkbcommon'
   depends_on 'xkbcomp'
   depends_on 'glproto'
