@@ -8,7 +8,7 @@ class Freedos < Package
   source_sha256 '460a6be669a24223e0b0ff7a92502624eb45d1271a535f345b24d5562b29b467'
 
   depends_on 'libjpeg'
-  depends_on 'libwayland'
+  depends_on 'wayland_protocols'
   depends_on 'hicolor_icon_theme'
   depends_on 'gtk3'
   depends_on 'qemu'
