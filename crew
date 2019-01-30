@@ -722,8 +722,8 @@ def install
       if @opt_check && Dir.exist?(target_dir)
         Dir.chdir target_dir do
           puts "Running post-build checks for package #{@pkg.name}..."
-          abort("#{@pkg.name} failed post-build checks. Aborting.") unless @pkg.check
-          puts "Checks for #{@pkg.name} have passed successfully."
+          abort("#{@pkg.name} failed post-build checks. Aborting.".lightred) unless @pkg.check
+          puts "Checks for #{@pkg.name} have passed successfully.".lightgreen
         end
       end
 
