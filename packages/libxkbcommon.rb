@@ -21,7 +21,7 @@ class Libxkbcommon < Package
   })
 
   depends_on 'bison'
-  depends_on 'libwayland'
+  depends_on 'wayland_protocols'
   depends_on 'xkeyboard_config'
 
   def self.build
