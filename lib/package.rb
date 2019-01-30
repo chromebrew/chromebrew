@@ -97,7 +97,9 @@ class Package
   # Function to perform check from source build.
   # This is execute if and only if `crew build`.
   def self.check
-
+    # blindly assume the package is OK
+    # if it has no checks at all
+    true
   end
 
   def self.system(*args)
