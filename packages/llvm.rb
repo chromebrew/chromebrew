@@ -21,7 +21,6 @@ class Llvm < Package
   })
 
   depends_on 'python27' => :build # for test suite
-  depends_on 'graphviz' => :build
   depends_on 'sphinx' => :build
   depends_on 'libedit'
   depends_on 'libtirpc'
