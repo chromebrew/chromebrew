@@ -8,6 +8,7 @@ class Buildessential < Package
   is_fake
 
   depends_on 'gcc8'
+  depends_on 'wget'
   depends_on 'make'
   depends_on 'linux_sources' # includes Linux headers; linuxheaders is a metapackage now.
   depends_on 'pkgconfig'
