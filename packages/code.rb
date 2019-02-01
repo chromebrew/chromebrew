@@ -25,6 +25,7 @@ class Code < Package
   depends_on 'nodebrew'
   depends_on 'yarn' => :build
   depends_on 'gtk2'
+  depends_on 'xauth'
   depends_on 'ld_default'
   depends_on 'libsecret'
   depends_on 'libgconf'
