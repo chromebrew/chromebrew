@@ -7,16 +7,27 @@ class Freerdp < Package
   source_url 'https://github.com/FreeRDP/FreeRDP/archive/2.0.0-rc4.tar.gz'
   source_sha256 '3406f3bfab63f81c1533029a5bf73949ff60f22f6e155c5a08005b8b8afe6d49'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.0.0-rc4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.0.0-rc4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.0.0-rc4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.0.0-rc4-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '47473dda58b59aa8e278b695c12d0639638e6071a856e1acc27f1abcda8ef3ca',
+     armv7l: '47473dda58b59aa8e278b695c12d0639638e6071a856e1acc27f1abcda8ef3ca',
+       i686: '93612031e2fbddcc09ce7338a631783b39c7518946b9d8ee09b148c7774ed93c',
+     x86_64: 'a029e77ed6c8d47ebcd7c74a8b1430b158f6ebdb04384697abe7c8da613526cf',
+  })
+
   depends_on 'cups'
-  depends_on 'mesa'
   depends_on 'xmlto'
-  depends_on 'ninja'
   depends_on 'xprop'
   depends_on 'ffmpeg'
   depends_on 'linux_pam'
-  depends_on 'pulseaudio'
-  depends_on 'libmp3lame'
   depends_on 'gst_plugins_base'
+  depends_on 'xdg_base'
+  depends_on 'sommelier'
 
   def self.build
     FileUtils.mkdir('build')
