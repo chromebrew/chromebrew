@@ -20,7 +20,6 @@ class Weston < Package
   depends_on 'libxcursor'
   depends_on 'libinput'
   depends_on 'libxkbcommon'
-  depends_on 'libwayland'
   depends_on 'wayland_protocols'
   depends_on 'libjpeg'
   depends_on 'libunwind'
