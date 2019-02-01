@@ -21,7 +21,6 @@ class Cairo < Package
   })
 
   depends_on 'libpng'
-  depends_on 'librsvg'
   depends_on 'lzo'
   depends_on 'pixman'
   depends_on 'mesa'
