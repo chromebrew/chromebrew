@@ -653,21 +653,19 @@ def expand_dependencies
     end
   end
   push_dependencies
-  # resolve_dependencies needs expand_dependencies to return @dependencies
-  return @dependencies
 end
 
 def resolve_dependencies
-  dependencies = expand_dependencies
+  expand_dependencies
 
   # leave only not installed packages in dependencies
-  dependencies.select! {|name| @device[:installed_packages].none? {|pkg| pkg[:name] == name}}
+  @dependencies.select! {|name| @device[:installed_packages].none? {|pkg| pkg[:name] == name}}
 
-  return if dependencies.empty?
+  return if @dependencies.empty?
 
   puts "The following packages also need to be installed: "
 
-  dependencies.each do |dep|
+  @dependencies.each do |dep|
     print dep + " "
   end
 
@@ -686,7 +684,7 @@ def resolve_dependencies
   end
 
   if proceed
-    dependencies.each do |dep|
+    @dependencies.each do |dep|
       search dep
       install
     end
