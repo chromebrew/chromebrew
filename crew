@@ -633,36 +633,28 @@ end
 
 def expand_dependencies
   @dependencies = []
-
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
        (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
       check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
-    elsif @pkg.is_fake?
-      # retrieve name of all dependencies
-      check_deps = @pkg.dependencies.map {|k, v| k}
     else
       # retrieve name of all dependencies
       check_deps = @pkg.dependencies.map {|k, v| k}
     end
-
-    # remove a dependent package which is equal to the target
-    check_deps.select! {|name| @pkgName != name}
-
-    # add new dependencies at the beginning of array
-    @dependencies = check_deps.clone.concat(@dependencies)
-
     # check all dependencies recursively
     check_deps.each do |dep|
-      search dep, true
-      push_dependencies
+      # build unique dependencies list
+      unless @dependencies.include?(dep) || dep == @pkgName
+        @dependencies << dep
+        search dep, true
+        push_dependencies
+      end
     end
   end
-
   push_dependencies
-
-  @dependencies.uniq
+  # resolve_dependencies needs expand_dependencies to return @dependencies
+  return @dependencies
 end
 
 def resolve_dependencies
