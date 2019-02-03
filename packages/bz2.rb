@@ -19,11 +19,13 @@ class Bz2 < Package
        i686: '426ec6778bb285ac377f43581a06391ca5a23b533dcfc02cc5c3e03d4239af9f',
      x86_64: '3ec7418e132350c4989ff2a6856b320d68fbec02913043a6c19f2c025732217f',
   })
-
+  
+  depends_on 'gcc8'
+  
   def self.build
     system "make -f Makefile-libbz2_so"
   end
-
+  
   def self.install
     # bz2 Makefile doesn't have DESTDIR, so we need several tricks
     # to make it install files correctly.
