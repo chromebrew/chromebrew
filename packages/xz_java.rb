@@ -8,10 +8,16 @@ class Xz_java < Package
   source_sha256 '86be97adf59d19c000c5bac8c77f2fa2f84fa082d608c7ad2d07a007dce76160'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xz_java-1.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xz_java-1.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xz_java-1.8-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xz_java-1.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '911b67621907a1fca84fbdf3fce3cb3910a508bdf0b73731e0bf9c9a76920c29',
+    aarch64: '927cfb38e52c280911da4d872725adabb5ccdb441e6ba6e863a9b0749949c8d2',
+     armv7l: '927cfb38e52c280911da4d872725adabb5ccdb441e6ba6e863a9b0749949c8d2',
+       i686: '86f8b69472e938a45ca86748e9807d16d1cbe533702d46e172a1c14e8e8c24ef',
+     x86_64: 'eb2980fe8486f6ecc571eb194368bd354bd544ec7f035bd4177bfdb68c239b74',
   })
 
   depends_on 'jdk8'
