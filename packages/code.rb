@@ -13,7 +13,7 @@ class Code < Package
 
   description 'Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS.'
   homepage 'https://code.visualstudio.com/'
-  version '1.30.2'
+  version '1.30.2-1'
   source_url 'https://github.com/Microsoft/vscode/archive/1.30.2.tar.gz'
   source_sha256 '7bf1c9c3c2814146906a6e38188d2f3284e128929e27c2c2dd0bcd7c6422be5e'
 
@@ -25,7 +25,6 @@ class Code < Package
   depends_on 'nodebrew'
   depends_on 'yarn' => :build
   depends_on 'gtk2'
-  depends_on 'xauth'
   depends_on 'ld_default'
   depends_on 'libsecret'
   depends_on 'libgconf'
@@ -54,7 +53,7 @@ class Code < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     system 'mv', "../VSCode-linux-#{@arch}", "#{CREW_DEST_PREFIX}/share/code"
-    system "sed -i -e 's,ELECTRON_RUN_AS_NODE=1 ,,g' #{CREW_DEST_PREFIX}/share/code/bin/code-oss"
+    system "sed -i -e '/CLI=/d' -e 's,\"\\$CLI\" ,,g' -e 's,ELECTRON_RUN_AS_NODE=1 ,,g' #{CREW_DEST_PREFIX}/share/code/bin/code-oss"
     # ^^^ Do not remove this line.
     system 'ln', '-s', '../share/code/bin/code-oss', "#{CREW_DEST_PREFIX}/bin/code"
     system 'ln', '-s', '../share/code/bin/code-oss', "#{CREW_DEST_PREFIX}/bin/code-oss"
@@ -63,7 +62,7 @@ class Code < Package
   def self.postinstall
     puts
     puts 'Congratulations! You have installed Visual Studio Code on Chrome OS!'.lightgreen
-    puts 'Now, please run \'code-oss\' to start Visual Studio.'.lightgreen
+    puts 'Now, please run \'code-oss\' to start Code.'.lightgreen
     puts 'Happy coding!'.lightgreen
     puts
   end
