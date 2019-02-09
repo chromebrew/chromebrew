@@ -20,11 +20,8 @@ class Get_iplayer < Package
      x86_64: '04383b2db0fd7dd810d01a3145c240cad3e66a8fd8bcbe2c3c60c622262ec42d',
   })
 
-  depends_on 'perl'
   depends_on 'ffmpeg'
   depends_on 'atomicparsley'
-  depends_on 'libxml2'
-  depends_on 'zlibpkg'
 
   def self.build
     system "wget http://search.cpan.org/CPAN/authors/id/W/WI/WIMV/Math-LP-0.03.tar.gz"

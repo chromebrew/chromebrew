@@ -30,7 +30,6 @@ class Libtiff < Package
 
   depends_on 'compressdoc' => :build
   depends_on 'libjpeg'
-  depends_on 'zlibpkg'
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"

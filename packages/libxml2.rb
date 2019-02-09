@@ -20,7 +20,7 @@ class Libxml2 < Package
      x86_64: '2b1ecd272734fd960d79d75187313e581911971466ad99f360e24a5fc0e19e6a',
   })
  
-  depends_on 'zlibpkg'
+  depends_on 'libz'
 
   def self.build
     system './autogen.sh'

@@ -20,11 +20,8 @@ class Testdisk < Package
      x86_64: '852cf726e057917fc7056c7828db350ba4ee79df4ed2e0423885a1781e52e206',
   })
 
-  depends_on 'compressdoc' => :build
-  depends_on 'ncurses'
   depends_on 'apriconv'
   depends_on 'libjpeg'
-  depends_on 'zlibpkg'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

@@ -20,10 +20,6 @@ class Atomicparsley < Package
      x86_64: '9dc15a38e01fd81e25e515ff69ac7a89fb07ff9771ff85e54e4da29adc523ba8',
   })
 
-  depends_on 'autoconf'
-  depends_on 'automake'
-  depends_on 'zlibpkg'
-
   def self.build
     system "./autogen.sh"
     system "./configure"

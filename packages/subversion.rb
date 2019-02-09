@@ -21,12 +21,8 @@ class Subversion < Package
   })
 
   depends_on 'aprutil'
-  depends_on 'autoconf'
-  depends_on 'libtool'
   depends_on 'serf'
-  depends_on 'filecmd'
   depends_on 'sqlite'
-  depends_on 'zlibpkg'
 
   def self.build
     system './configure', '--disable-static', "--libdir=#{CREW_LIB_PREFIX}"

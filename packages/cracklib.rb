@@ -20,10 +20,6 @@ class Cracklib < Package
      x86_64: 'b849e7c6f03b14c88c6fdeac85faf3b2a3dbc8004573034e1779f0fe4592490f',
   })
 
-  depends_on 'glibc'
-  depends_on 'zlibpkg'
-    
-       
   def self.build
     system "sed -i '/skipping/d' util/packer.c"
     system "./configure \

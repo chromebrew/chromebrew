@@ -24,7 +24,6 @@ class Libxft < Package
   depends_on 'libx11'
   depends_on 'fontconfig'
   depends_on 'util_macros'
-  depends_on 'zlibpkg'
   depends_on 'harfbuzz'
 
   def self.build

@@ -20,11 +20,8 @@ class Librsync < Package
      x86_64: '7b997d55a11e5709a33f90e6b392b388f56ea7be1f6683027e27fb349eacdbef',
   })
 
-  depends_on 'cmake' => :build
   depends_on 'bz2'
-  depends_on 'perl'
   depends_on 'popt'
-  depends_on 'zlibpkg'
 
   def self.build
     system "cmake . -DPREFIX=#{CREW_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{CREW_DEST_LIB_PREFIX} -DCMAKE_C_FLAGS='-fPIC'"

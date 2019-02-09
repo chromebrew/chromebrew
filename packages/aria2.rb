@@ -22,10 +22,7 @@ class Aria2 < Package
 
   depends_on 'c_ares'
   depends_on 'libgcrypt'
-  depends_on 'libssh2'
-  depends_on 'libxml2'
   depends_on 'sqlite'
-  depends_on 'zlibpkg'
 
   def self.build
     system './configure',

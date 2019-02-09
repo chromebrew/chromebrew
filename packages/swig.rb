@@ -21,7 +21,6 @@ class Swig < Package
   })
 
   depends_on 'pcre'
-  depends_on 'zlibpkg'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

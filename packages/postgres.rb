@@ -20,10 +20,6 @@ class Postgres < Package
      x86_64: '7c6725c690d0118f53ca0c60cd96a38afd764cc38b1109e07b566d12f2c7a9bf',
   })
 
-  depends_on 'buildessential'
-  depends_on 'readline'
-  depends_on 'zlibpkg'
-
   # Feel free to change this directory prior to compiling.
   PGDATA = "#{CREW_PREFIX}/data/pgsql"
 

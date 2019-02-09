@@ -20,12 +20,8 @@ class Ag < Package
      x86_64: '7a0e7295bb5d28d9b9d620ae1d21823000666cfe32ef203e0055472ab94b726f',
   })
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
-  depends_on "pkgconfig" => :build
-  depends_on "pcre"
-  depends_on "xzutils"
-  depends_on "zlibpkg"
+  depends_on 'pcre'
+  depends_on 'xzutils'
 
   def self.build
     system "autoreconf", "-fiv"

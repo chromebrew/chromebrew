@@ -20,12 +20,11 @@ class Squashfs < Package
      x86_64: 'b9f8bb91f7ab76540d0a8484cd3bc7ce64f90bea6279474d1e4a8f32c79f990f',
   })
 
-  depends_on 'compressdoc' => :build
   depends_on 'help2man' => :build
   depends_on 'lz4'
   depends_on 'lzo'
   depends_on 'xzutils'
-  depends_on 'zlibpkg'
+  depends_on 'libz'
 
   def self.build
     FileUtils.cd('squashfs-tools') do

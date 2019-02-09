@@ -20,8 +20,6 @@ class Potrace < Package
      x86_64: '3afcffc9b2d9db5e880ce55119de7e67295d599ef8fc7837a446f18c67f5ca31',
   })
 
-  depends_on 'zlibpkg'
-
   def self.build
     system './configure'
     system 'make'

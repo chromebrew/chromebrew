@@ -26,7 +26,6 @@ class Aircrack_ng < Package
   depends_on 'libpcap'
   depends_on 'sqlite'
   depends_on 'rfkill'
-  depends_on 'zlibpkg'
 
   def self.build
     # Need to specify TMPDIR to run automatic configuration tool correctly

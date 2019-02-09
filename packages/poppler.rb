@@ -20,14 +20,11 @@ class Poppler < Package
      x86_64: 'e32bb8caf1dfea59b8c295d0e0c02c60e2917b18f1c667a1765d5cebb62a59be',
   })
 
-  depends_on 'automake' => :build
   depends_on 'cairo'
   depends_on 'harfbuzz'
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'openjpeg'
-  depends_on 'zlibpkg'
-  depends_on 'cmake' => :build
 
   def self.build
     system "mkdir -p builddir"
