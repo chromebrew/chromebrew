@@ -15,6 +15,7 @@ class Sommelier < Package
   depends_on 'mesa'
   depends_on 'xkbcomp'
   depends_on 'xsetroot'
+  depends_on 'xdg_base'
   depends_on 'xorg_server'
 
   def self.build
@@ -46,14 +47,14 @@ class Sommelier < Package
     puts 'echo "WAYLAND_DISPLAY=wayland-0" >> ~/.bashrc'.lightblue
     puts "echo 'alias sommelierd=\"sommelier -X --x-display=\\\${DISPLAY} --scale=${SCALE} --no-exit-with-child #{CREW_PREFIX}/etc/sommelierrc &>/dev/null &\"' >> ~/.bashrc".lightblue
     puts
-    puts 'If you want to use Sommelier as your default graphical display, run this (also not recommended for `code`):'.lightblue
+    puts 'If you want to use Sommelier as your default graphical display, run this (not recommended for `code`):'.lightblue
     puts
     puts 'echo "export DISPLAY" >> ~/.bashrc'.lightblue
     puts 'echo "export GDK_BACKEND" >> ~/.bashrc'
     puts 'echo "export CLUTTER_BACKEND" >> ~/.bashrc'
     puts 'echo "export WAYLAND_DISPLAY" >> ~/.bashrc'
     puts
-    puts 'If you would like to run Sommelier on startup (not recommended for `code`), run the above commands and then run this:'.lightblue
+    puts 'If you would like to run Sommelier on startup (Also not recommended for `code`), run the above commands and then run this:'.lightblue
     puts
     puts 'echo "sommelierd" >> ~/.bashrc'.lightblue
     puts
