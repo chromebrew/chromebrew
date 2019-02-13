@@ -53,7 +53,7 @@ class Code < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     system 'mv', "../VSCode-linux-#{@arch}", "#{CREW_DEST_PREFIX}/share/code"
-    system "sed -i -e '/CLI=/d' -e 's,\"\\$CLI\" ,,g' -e 's,ELECTRON_RUN_AS_NODE=1 ,,g' #{CREW_DEST_PREFIX}/share/code/bin/code-oss"
+    system "sed -i -e '/CLI=/d' -e 's,\"\\$CLI\" ,,g' -e 's,ELECTRON_RUN_AS_NODE=1,sommelier -X,g' #{CREW_DEST_PREFIX}/share/code/bin/code-oss"
     # ^^^ Do not remove this line.
     system 'ln', '-s', '../share/code/bin/code-oss', "#{CREW_DEST_PREFIX}/bin/code"
     system 'ln', '-s', '../share/code/bin/code-oss', "#{CREW_DEST_PREFIX}/bin/code-oss"
@@ -64,6 +64,9 @@ class Code < Package
     puts 'Congratulations! You have installed Visual Studio Code on Chrome OS!'.lightgreen
     puts 'Now, please run \'code-oss\' to start Code.'.lightgreen
     puts 'Happy coding!'.lightgreen
+    puts
+    puts 'If you\'re having issues with your installation, comment out the Sommelier'.orange
+    puts ' configuration in `~/.bashrc` and try again.'
     puts
   end
 end
