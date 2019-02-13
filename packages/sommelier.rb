@@ -57,11 +57,5 @@ class Sommelier < Package
     puts
     puts 'echo "sommelierd" >> ~/.bashrc'.lightblue
     puts
-    puts 'If you are having issues with your installation,'.lightblue
-    puts ' remove the `Sommelier configuration` section from `~/.bashrc`'.lightblue
-    puts ' and try removing and reinstalling Sommelier from source, like this:'.lightblue
-    puts
-    puts 'crew remove sommelier && crew install -s sommelier'
-    puts
   end
 end
