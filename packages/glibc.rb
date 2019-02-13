@@ -4,36 +4,25 @@ class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
   version '2.27'
-  case LIBC_VERSION
-  when '2.23'
-    source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
-    source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
-    binary_url ({
-      aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.23-chromeos-armv7l.tar.xz',
-       armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.23-chromeos-armv7l.tar.xz',
-         i686: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.23-chromeos-i686.tar.xz',
-       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.23-chromeos-x86_64.tar.xz',
-    })
-    binary_sha256 ({
-      aarch64: 'acbecc4c5824653a1aca66da9856970fa4ae0ad97179747047e1a72fc2c2bac7',
-       armv7l: 'acbecc4c5824653a1aca66da9856970fa4ae0ad97179747047e1a72fc2c2bac7',
-         i686: '52145b65cb49c2751f69d4c46636f0685f2abb6685d8a080b71b2f091595a950',
-       x86_64: '2d09f88f6de0f3fbd9f01ffcf9d61d43df688826bf1df63d8f193d6ed69ded11',
-    })
-  when '2.27'
-    source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
-    source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
-    binary_url ({
-      aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-armv7l.tar.xz',
-       armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-armv7l.tar.xz',
-       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-x86_64.tar.xz',
-    })
-    binary_sha256 ({
-      aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
-       armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
-       x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997',
-    })
+  source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
+  source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
+
+  if ARGV[0] != 'search' && ARCH != 'i686' && LIBC_VERSION == 2.23 && CHROMEOS_RELEASE < 72
+    abort "Cannot update to glibc 2.27 with system libc version 2.23.".lightred
   end
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.23-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+     armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+       i686: '52145b65cb49c2751f69d4c46636f0685f2abb6685d8a080b71b2f091595a950',
+     x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997',
+  })
 
   depends_on 'gawk' => :build
   depends_on 'libgd' => :build
