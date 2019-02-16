@@ -68,7 +68,7 @@ class Qt < Package
       system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x86-online.run"
     when 'x86_64'
       system 'wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x64-online.run') ) == '3926eff634f7a798bd8f7f8a3625d8e9db8179e7efaf4c59eeff9f1eae7e95f5'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x64-online.run') ) == '7e28fe65cc4b90998ed84839bb856331306b227047e8add36919b89dc8aae312'
       system "install -Dm755 qt-unified-linux-x64-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x64-online.run"
       system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-online.run --script qt-installer-script.qs"
       system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x64-online.run"
