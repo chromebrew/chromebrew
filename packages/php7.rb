@@ -3,32 +3,32 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.14'
-  source_url 'https://php.net/distributions/php-7.2.14.tar.xz'
-  source_sha256 'ee3f1cc102b073578a3c53ba4420a76da3d9f0c981c02b1664ae741ca65af84f'
+  version '7.2.15'
+  source_url 'https://php.net/distributions/php-7.2.15.tar.xz'
+  source_sha256 '75e90012faef700dffb29311f3d24fa25f1a5e0f70254a9b8d5c794e25e938ce'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'dc076b2e07da99b8ae26dd75b74e0dd39e23a6df8e82dfc2060b8a03f884ddd7',
-     armv7l: 'dc076b2e07da99b8ae26dd75b74e0dd39e23a6df8e82dfc2060b8a03f884ddd7',
-       i686: 'e75f54e42bb686ab2f8c49bd9c4cf080d507bc5e780515523453482667421fc1',
-     x86_64: 'a13f6063587b19f9cc64dd9fcd9f96149033f184476c9282a38da7e855f4d900',
+    aarch64: 'f00628c247207dc2b17660507886609a332cc83a4aa29f4dd7e375cb3531c89e',
+     armv7l: 'f00628c247207dc2b17660507886609a332cc83a4aa29f4dd7e375cb3531c89e',
+       i686: '5e75ee1fe0b0da399c1f55b7ae0f45101ebf0275f1d14c9eaf6b55f8d43aaa7c',
+     x86_64: 'a3ae79b8b427152365bff1009677d4036c627211cc85a44562019da5540f1b44',
   })
 
   depends_on 'readline7'
   depends_on 'libgcrypt'
-  depends_on 'libpng'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
   depends_on 'exif'
   depends_on 'freetype'
   depends_on 'pcre'
+  depends_on 're2c'
   depends_on 'tidy'
   depends_on 'unixodbc'
 
@@ -46,47 +46,57 @@ class Php7 < Package
     system "sed -i 's,post_max_size = 8M,post_max_size = 128M,' php.ini-development"
     system "sed -i 's,upload_max_filesize = 2M,upload_max_filesize = 128M,' php.ini-development"
     system "sed -i 's,;opcache.enable=0,opcache.enable=1,' php.ini-development"
+    # Fix cc: error: ext/standard/.libs/type.o: No such file or directory
+    #system "sed -i '98303d' configure"
+    #system "sed -i '98295,98296d' configure"
+    # Fix /usr/bin/file: No such file or directory
+    system 'filefix'
   end
 
   def self.build
-    system "./configure \
-      --prefix=#{CREW_PREFIX} \
-      --docdir=#{CREW_PREFIX}/doc \
-      --infodir=#{CREW_PREFIX}/info \
-      --libdir=#{CREW_LIB_PREFIX} \
-      --localstatedir=#{CREW_PREFIX}/tmp \
-      --mandir=#{CREW_PREFIX}/man \
-      --sbindir=#{CREW_PREFIX}/bin \
-      --with-config-file-path=#{CREW_PREFIX}/etc \
-      --with-libdir=#{ARCH_LIB} \
-      --with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype \
-      --enable-exif \
-      --enable-fpm \
-      --enable-ftp \
-      --enable-mbstring \
-      --enable-opcache \
-      --enable-pcntl \
-      --enable-sockets \
-      --enable-shared \
-      --enable-shmop \
-      --enable-zip \
-      --with-bz2 \
-      --with-curl \
-      --with-gd \
-      --with-gettext \
-      --with-gmp \
-      --with-libzip \
-      --with-mysqli \
-      --with-openssl \
-      --with-pdo-mysql \
-      --with-pear \
-      --with-pcre-regex \
-      --with-readline \
-      --with-tidy \
-      --with-unixODBC \
-      --with-xsl \
-      --with-zlib"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--docdir=#{CREW_PREFIX}/doc",
+           "--infodir=#{CREW_PREFIX}/info",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           "--localstatedir=#{CREW_PREFIX}/tmp",
+           "--mandir=#{CREW_PREFIX}/man",
+           "--sbindir=#{CREW_PREFIX}/bin",
+           "--with-config-file-path=#{CREW_PREFIX}/etc",
+           "--with-libdir=#{ARCH_LIB}",
+           "--with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype",
+           "--with-png-dir=#{CREW_LIB_PREFIX}",
+           '--enable-exif',
+           '--enable-fpm',
+           '--enable-ftp',
+           '--enable-mbstring',
+           '--enable-opcache',
+           '--enable-pcntl',
+           '--enable-shared',
+           '--enable-shmop',
+           '--enable-sockets',
+           '--enable-zip',
+           '--with-bz2',
+           '--with-curl',
+           '--with-gd',
+           '--with-gettext',
+           '--with-gmp',
+           '--with-libzip',
+           '--with-mysqli',
+           '--with-openssl',
+           '--with-pcre-regex',
+           '--with-pdo-mysql',
+           '--with-pear',
+           '--with-readline',
+           '--with-tidy',
+           '--with-unixODBC',
+           '--with-xsl',
+           '--with-zlib'
     system 'make'
+  end
+
+  def self.check
+    #system 'make', 'test'
   end
 
   def self.install

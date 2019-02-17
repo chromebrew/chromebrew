@@ -3,7 +3,7 @@ require 'package'
 class Php < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.40-7.3.1'
+  version '5.6.40-7.3.2'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,8 +13,8 @@ class Php < Package
     puts "5.6 = PHP 5.6.40"
     puts "7.0 = PHP 7.0.33"
     puts "7.1 = PHP 7.1.26"
-    puts "7.2 = PHP 7.2.14"
-    puts "7.3 = PHP 7.3.1"
+    puts "7.2 = PHP 7.2.15"
+    puts "7.3 = PHP 7.3.2"
     puts "  0 = Cancel"
 
     while version = STDIN.gets.chomp
@@ -66,31 +66,31 @@ class Php < Package
         break
       when '7.2'
         binary_url ({
-          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-armv7l.tar.xz',
-           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-armv7l.tar.xz',
-             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-i686.tar.xz',
-           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.14-chromeos-x86_64.tar.xz',
+          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-armv7l.tar.xz',
+           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-armv7l.tar.xz',
+             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-i686.tar.xz',
+           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-x86_64.tar.xz',
         })
         binary_sha256 ({
-          aarch64: 'dc076b2e07da99b8ae26dd75b74e0dd39e23a6df8e82dfc2060b8a03f884ddd7',
-           armv7l: 'dc076b2e07da99b8ae26dd75b74e0dd39e23a6df8e82dfc2060b8a03f884ddd7',
-             i686: 'e75f54e42bb686ab2f8c49bd9c4cf080d507bc5e780515523453482667421fc1',
-           x86_64: 'a13f6063587b19f9cc64dd9fcd9f96149033f184476c9282a38da7e855f4d900',
+          aarch64: 'f00628c247207dc2b17660507886609a332cc83a4aa29f4dd7e375cb3531c89e',
+           armv7l: 'f00628c247207dc2b17660507886609a332cc83a4aa29f4dd7e375cb3531c89e',
+             i686: '5e75ee1fe0b0da399c1f55b7ae0f45101ebf0275f1d14c9eaf6b55f8d43aaa7c',
+           x86_64: 'a3ae79b8b427152365bff1009677d4036c627211cc85a44562019da5540f1b44',
         })
         $ver = 7
         break
       when '7.3'
         binary_url ({
-          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.1-chromeos-armv7l.tar.xz',
-           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.1-chromeos-armv7l.tar.xz',
-             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.1-chromeos-i686.tar.xz',
-           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.1-chromeos-x86_64.tar.xz',
+          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.2-chromeos-armv7l.tar.xz',
+           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.2-chromeos-armv7l.tar.xz',
+             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.2-chromeos-i686.tar.xz',
+           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.2-chromeos-x86_64.tar.xz',
         })
         binary_sha256 ({
-          aarch64: '49214ca99d98c7ff9a17a97a96df976d2b20f406ac0737a8d22ae16a3486774b',
-           armv7l: '49214ca99d98c7ff9a17a97a96df976d2b20f406ac0737a8d22ae16a3486774b',
-             i686: '58481f39c04d98d199e8864a5c28a68e45f94daa87ba3cfbdb8d8663733d096f',
-           x86_64: 'b2fce9ddd14abb740e180bd1c0deeb46fe93f0c236a78dd0ee3f93da896b7b51',
+          aarch64: 'a572d287dafd36593aa5808fcd13e7221ce329220267b85a0f92b6dd4612bec0',
+           armv7l: 'a572d287dafd36593aa5808fcd13e7221ce329220267b85a0f92b6dd4612bec0',
+             i686: '64259ad36b4f8a5e08639e2f84b12a163f821aaa267f2dce26deb9fe0db0c5eb',
+           x86_64: 'c438ee7d4867d154bb6bbb834a6425fd01757c7a344d2181e3e3427043cf7691',
         })
         $ver = 7
         break
@@ -105,13 +105,13 @@ class Php < Package
 
   depends_on 'readline7'
   depends_on 'libgcrypt'
-  depends_on 'libpng'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
   depends_on 'exif'
   depends_on 'freetype'
   depends_on 'pcre'
+  depends_on 're2c'
   depends_on 'tidy'
   depends_on 'unixodbc'
 
