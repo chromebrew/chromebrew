@@ -3,9 +3,9 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.8.0'
-  source_url 'https://github.com/composer/composer/archive/1.8.0.tar.gz'
-  source_sha256 'e51374c9946ee85896f8c570feef29fdfc8da08cd24f2e1fdec34b2713fe3a89'
+  version '1.8.4'
+  source_url 'https://github.com/composer/composer/archive/1.8.4.tar.gz'
+  source_sha256 '288ab33c8f11f0db4b5883d4a115a8ead8ef1a74c924f3accadc61d220ca22de'
 
   binary_url ({
   })
@@ -27,7 +27,7 @@ class Composer < Package
 
   def self.install
     system "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\""
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA384.hexdigest( File.read('composer-setup.php') ) == '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA384.hexdigest( File.read('composer-setup.php') ) == '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5'
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "php composer-setup.php --install-dir=#{CREW_DEST_PREFIX}/bin --filename=composer --version=#{version}"
     system "mkdir -p #{CREW_DEST_PREFIX}/.config"
