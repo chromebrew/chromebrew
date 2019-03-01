@@ -3,33 +3,33 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version '1.16.25'
-  source_url 'https://github.com/aws/aws-cli/archive/1.16.25.tar.gz'
-  source_sha256 '7c785969c320d8f00c5f4b6daee9e7f1377ec0de045ff811a645b709f534fd82'
+  version '1.16.115'
+  source_url 'https://github.com/aws/aws-cli/archive/1.16.115.tar.gz'
+  source_sha256 '7ef52afac9f424a8693fdecad9ec2e4d752c2cb471cd7cbf3dcdc98ea017e08a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.25-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.25-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.25-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.25-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '73277b0e0432e94a3333a4a30910d61c8981f6855ec5b5332ad615b8612d1f72',
-     armv7l: '73277b0e0432e94a3333a4a30910d61c8981f6855ec5b5332ad615b8612d1f72',
-       i686: '539e4ca588ed1e08e40fc43545c3571f0918ca1535edd51d003a78f414705463',
-     x86_64: 'a4b818f502f67f96ff727736304cef7db926384ee3baf4405890033480d6c110',
+    aarch64: '00f028140dd82e1c42d8897996c05a735df1fc7f345bb6dbd361979e7c1acca3',
+     armv7l: '00f028140dd82e1c42d8897996c05a735df1fc7f345bb6dbd361979e7c1acca3',
+       i686: '4e7964fcca3a9b0911dd3f08b6257e3c6a7d1869fb8d4ae091cfa1c16048413e',
+     x86_64: 'e12e295100e9f71db4e8e77f75de976f1d7964bb35bae27953216b2e4aab8b95',
   })
 
-  depends_on 'python3'
+  depends_on 'six'
 
   def self.build
-    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore==1.12.15,' requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer==0.1.13,' requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/jmespath.git@develop#egg=jmespath,jmespath==0.9.3,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore==1.12.105,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer==0.2.0,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/jmespath.git@develop#egg=jmespath,jmespath==0.9.4,' requirements.txt"
   end
 
   def self.install
-    system "pip3 install awscli==1.16.25 -r requirements.txt --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "pip install awscli==#{version} -r requirements.txt --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
     system "chmod +x #{CREW_DEST_PREFIX}/bin/aws"
     system "chmod +x #{CREW_DEST_PREFIX}/bin/aws_completer"
   end
