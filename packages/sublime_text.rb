@@ -18,6 +18,7 @@ class Sublime_text < Package
   binary_sha256 ({
   })
 
+  depends_on 'gtk2'
   depends_on 'sommelier'
 
   def self.install
