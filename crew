@@ -444,22 +444,17 @@ def unpack (meta)
   extract_dir = "#{meta[:filename]}.dir"
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
-    puts "Unpacking archive, this may take awhile..."
     Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
-    case File.extname meta[:filename]
-    when '.zip'
-      if @opt_verbose then
-        system "unzip", "-v", "-d", "#{extract_dir}", meta[:filename]
-      else
-        system "unzip", "-qq", "-d", "#{extract_dir}", meta[:filename]
-      end
-    else
-      if @opt_verbose then
-        system "tar", "xvf", meta[:filename], "-C", "#{extract_dir}"
-      else
-        system "tar", "xf", meta[:filename], "-C", "#{extract_dir}"
-      end
-    end
+    case File.basename meta[:filename]
+    when /\.zip$/i
+      puts "Unpacking archive using 'unzip', this may take awhile..."
+      _verbopt = @opt_verbose ? 'v' : 'qq'
+      system "unzip", _verbopt, "-d", "#{extract_dir}", meta[:filename]
+    when /\.(tar(\.(gz|bz2|xz))?|tgz|tbz)$/i
+      puts "Unpacking archive using 'tar', this may take awhile..."
+      _verbopt = @opt_verbose ? 'v' : ''
+      system "tar", "x#{_verbopt}f", meta[:filename], "-C", "#{extract_dir}"
+   end
     if meta[:source] == true
       # Check the number of directories in the archive
       entries = Dir["#{extract_dir}/*"]
