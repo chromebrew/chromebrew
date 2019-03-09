@@ -3,21 +3,13 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.15'
-  source_url 'https://php.net/distributions/php-7.2.15.tar.xz'
-  source_sha256 '75e90012faef700dffb29311f3d24fa25f1a5e0f70254a9b8d5c794e25e938ce'
+  version '7.1.27'
+  source_url 'https://php.net/distributions/php-7.1.27.tar.xz'
+  source_sha256 '25672a3a6060eff37c865a0c84e284da50b7ee8cd57174c78f0ae244b90a96a8'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f00628c247207dc2b17660507886609a332cc83a4aa29f4dd7e375cb3531c89e',
-     armv7l: 'f00628c247207dc2b17660507886609a332cc83a4aa29f4dd7e375cb3531c89e',
-       i686: '5e75ee1fe0b0da399c1f55b7ae0f45101ebf0275f1d14c9eaf6b55f8d43aaa7c',
-     x86_64: 'a3ae79b8b427152365bff1009677d4036c627211cc85a44562019da5540f1b44',
   })
 
   depends_on 'readline7'
