@@ -8,8 +8,16 @@ class Php7 < Package
   source_sha256 '7d91ed3c1447c6358a3d53f84599ef854aca4c3622de7435e2df115bf196e482'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.16-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.16-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '369005b949a43d6c2206e92d3cf9509f3adcc82aedc183282cdaae75531c1af0',
+     armv7l: '369005b949a43d6c2206e92d3cf9509f3adcc82aedc183282cdaae75531c1af0',
+       i686: '565ee9d8e5eb4dc6a4c7b5f20a5f879a63d4493d60af0fcbc12e58b2502cd886',
+     x86_64: 'e88d57c9ae18d50f3e91bc4973efb2f5d253cfdd764da894305254e20ab91b4d',
   })
 
   depends_on 'readline7'
