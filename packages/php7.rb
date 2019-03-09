@@ -3,9 +3,9 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.1.27'
-  source_url 'https://php.net/distributions/php-7.1.27.tar.xz'
-  source_sha256 '25672a3a6060eff37c865a0c84e284da50b7ee8cd57174c78f0ae244b90a96a8'
+  version '7.3.3'
+  source_url 'https://php.net/distributions/php-7.3.3.tar.xz'
+  source_sha256 '6bb03e79a183d0cb059a6d117bbb2e0679cab667fb713a13c6a16f56bebab9b3'
 
   binary_url ({
   })
