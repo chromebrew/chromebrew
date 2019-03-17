@@ -447,11 +447,11 @@ def unpack (meta)
     Dir.mkdir("#{extract_dir}") unless Dir.exist?("#{extract_dir}")
     case File.basename meta[:filename]
     when /\.zip$/i
-      puts "Unpacking archive using 'unzip', this may take awhile..."
+      puts "Unpacking archive using 'unzip', this may take a while..."
       _verbopt = @opt_verbose ? 'v' : 'qq'
       system "unzip", _verbopt, "-d", "#{extract_dir}", meta[:filename]
     when /\.(tar(\.(gz|bz2|xz))?|tgz|tbz)$/i
-      puts "Unpacking archive using 'tar', this may take awhile..."
+      puts "Unpacking archive using 'tar', this may take a while..."
       _verbopt = @opt_verbose ? 'v' : ''
       system "tar", "x#{_verbopt}f", meta[:filename], "-C", "#{extract_dir}"
    end
