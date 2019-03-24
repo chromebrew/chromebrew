@@ -54,8 +54,8 @@ case "${ARCH}" in
   sha256s+=('5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-armv7l.tar.xz')
   sha256s+=('047163a67f3ea9e143b465087d5ea4a3d17b963c8ad3579bc27a21934d4a17ab')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.20.1-chromeos-armv7l.tar.xz')
-  sha256s+=('149a43937a9be2a8af9ebc1ab9b14fb90ff361acf1c9641959fa1c6731f842a7')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-armv7l.tar.xz')
+  sha256s+=('b75f477d3831241a03dc72a130d64ca1755bb0cd8d8a56fac24940de6f12ae87')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-armv7l.tar.xz')
   sha256s+=('d8fae766d77818ef95ae8a993bda0c03730d773cfb8392ceaaf6c8697206409c')
   ;;
@@ -70,8 +70,8 @@ case "${ARCH}" in
   sha256s+=('5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-armv7l.tar.xz')
   sha256s+=('047163a67f3ea9e143b465087d5ea4a3d17b963c8ad3579bc27a21934d4a17ab')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.20.1-chromeos-armv7l.tar.xz')
-  sha256s+=('149a43937a9be2a8af9ebc1ab9b14fb90ff361acf1c9641959fa1c6731f842a7')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-armv7l.tar.xz')
+  sha256s+=('b75f477d3831241a03dc72a130d64ca1755bb0cd8d8a56fac24940de6f12ae87')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-armv7l.tar.xz')
   sha256s+=('d8fae766d77818ef95ae8a993bda0c03730d773cfb8392ceaaf6c8697206409c')
   ;;
@@ -82,8 +82,8 @@ case "${ARCH}" in
   sha256s+=('6f4a5b96c31ef5ee4f09ac15da4c7a4a9d838ed5233038136ead1e155d17f342')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-i686.tar.xz')
   sha256s+=('28de005b59407d5343775296814e10272c53aedd860e0208f396cc873045c095')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.20.1-chromeos-i686.tar.xz')
-  sha256s+=('c1dc78e8f51c3ccba54fc6791b05e40002d85eeb7c1b011b0f456e53a64f9fa5')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-i686.tar.xz')
+  sha256s+=('20e4a91ebace3b2d7f1744e80007cef5726a43b65b2a218c6ca0ab282e1333b8')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-i686.tar.xz')
   sha256s+=('ccdea94d6dcc0bdd27b364cd99f53e9aba6f90f0b8272a5f3856bf2a9a32beb6')
   ;;
@@ -94,8 +94,8 @@ case "${ARCH}" in
   sha256s+=('352b78fc883cf8936136991fda9ca5d49e90b2951626158d6af8ef4b58d67f97')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-chromeos-x86_64.tar.xz')
   sha256s+=('8689ee2b4acc0440df6eec9eb0fb19aa8393b68bd64517cbca65d98041a2c7cc')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.20.1-chromeos-x86_64.tar.xz')
-  sha256s+=('316842c20bf24202c794eb9c21e46d14bb95069d3667dc5d32e5058bdcdebd89')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-x86_64.tar.xz')
+  sha256s+=('d3a74f5cb87e17c6108fd4a1fa297f34ce154f56301b63911ee3f603a0faa756')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-x86_64.tar.xz')
   sha256s+=('1025b413f30c5ac27bfa340e41cb437bf19311e72b95030f64020e25be4cda31')
   ;;
