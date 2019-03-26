@@ -448,8 +448,8 @@ def unpack (meta)
     case File.basename meta[:filename]
     when /\.zip$/i
       puts "Unpacking archive using 'unzip', this may take a while..."
-      _verbopt = @opt_verbose ? 'v' : 'qq'
-      system "unzip", '-' + _verbopt, "-d", "#{extract_dir}", meta[:filename]
+      _verbopt = @opt_verbose ? '-v' : '-qq'
+      system "unzip", _verbopt, "-d", "#{extract_dir}", meta[:filename]
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
       _verbopt = @opt_verbose ? 'v' : ''
