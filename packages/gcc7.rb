@@ -23,7 +23,6 @@ class Gcc7 < Package
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'gcc8' => :build # gcc version 8.2.0
   depends_on 'icu4c' => :build # icu version 62.1
   depends_on 'python27' => :build
   depends_on 'python3' => :build
