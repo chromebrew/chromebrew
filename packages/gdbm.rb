@@ -20,7 +20,7 @@ class Gdbm < Package
      x86_64: 'b52cde5502c9bf35fe485776d976d1a44a872e2ffee8964297ac2fe3ef0d064e',
   })
 
-  depends_on 'readline7'
+  depends_on 'readline'
 
   def self.build
     system './configure',

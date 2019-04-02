@@ -20,13 +20,9 @@ class Gdb < Package
      x86_64: '95fe8fac708e2c28b4c8c8453bfbd7d85d5fe795d80ceaf86ff255d574b2c5b1',
   })
 
-  depends_on 'texinfo'
   depends_on 'libx11'
-  depends_on 'expat'
   depends_on 'python3'
   depends_on 'python27'
-  depends_on 'ncurses'
-  depends_on 'readline7'
 
   def self.build
     system './configure',

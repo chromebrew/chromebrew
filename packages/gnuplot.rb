@@ -20,18 +20,11 @@ class Gnuplot < Package
      x86_64: '59bebf199e3de46e405b1ef27b0037f7a05d59cd97f53fa36e32878a3eb677c7',
   })
 
-  depends_on 'groff'
   depends_on 'libcerf'
   depends_on 'libxrender'
   depends_on 'libxxf86vm'
   depends_on 'lua'
   depends_on 'pango'
-  case ARCH
-  when 'x86_64'
-    depends_on 'readline7'
-  else
-    depends_on 'readline'
-  end
 
   def self.build
     system './configure',
