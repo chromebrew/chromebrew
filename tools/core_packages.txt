@@ -12,7 +12,7 @@ expat
 filecmd
 flex
 gawk
-gcc7
+gcc8
 gdbm
 gettext
 git
