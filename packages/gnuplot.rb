@@ -3,21 +3,21 @@ require 'package'
 class Gnuplot < Package
   description 'Gnuplot is a portable command-line driven graphing utility'
   homepage 'http://gnuplot.sourceforge.net/'
-  version '5.2.4'
-  source_url 'http://downloads.sourceforge.net/project/gnuplot/gnuplot/5.2.4/gnuplot-5.2.4.tar.gz'
-  source_sha256 '1515f000bd373aaa53b16183f274189d4f5e0ae47d22f434857933d16a4770cb'
+  version '5.2.6'
+  source_url 'https://downloads.sourceforge.net/project/gnuplot/gnuplot/5.2.6/gnuplot-5.2.6.tar.gz'
+  source_sha256 '35dd8f013139e31b3028fac280ee12d4b1346d9bb5c501586d1b5a04ae7a94ee'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnuplot-5.2.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7f9af59b0427fdd1af077f7d7520f74cf3c146c6d2463f7f35263e89bef2095b',
-     armv7l: '7f9af59b0427fdd1af077f7d7520f74cf3c146c6d2463f7f35263e89bef2095b',
-       i686: 'be055c10aaedf2813151cf9b0998f77779021510759d5eefc126dbfdb43b1f19',
-     x86_64: '59bebf199e3de46e405b1ef27b0037f7a05d59cd97f53fa36e32878a3eb677c7',
+    aarch64: '52d2a8b203fff954f4304294cb51c41d26d65fb071f13bb6020be7ca767028f9',
+     armv7l: '52d2a8b203fff954f4304294cb51c41d26d65fb071f13bb6020be7ca767028f9',
+       i686: '9c635ed8cd0386c877f9bc8801e709a2825730614f71c3b397217c13ed8a9bd8',
+     x86_64: '13dec5a3289609f06c963ce97dfe5157c34fd816e71842806401e6d9727cc7b0',
   })
 
   depends_on 'libcerf'
