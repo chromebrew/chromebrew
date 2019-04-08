@@ -25,7 +25,6 @@ class R < Package
   depends_on 'xzutils'
   depends_on 'bz2'
   depends_on 'curl'
-  depends_on 'readline7'
 
   def self.build
     system './configure',
