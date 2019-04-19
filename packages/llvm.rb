@@ -274,18 +274,19 @@ class Llvm < Package
   def self.build
     puts 'Change to GOLD linker.'.orange
     original_default = `ld_default g`.chomp
-    gcc_ver = '8.2.0'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system "echo '#!/bin/bash
 machine=\$(gcc -dumpmachine)
-gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/#{gcc_ver}
+version=\$(gcc -dumpversion)
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc"
       system "echo '#!/bin/bash
 machine=\$(gcc -dumpmachine)
-cxx_sys=#{CREW_PREFIX}/include/c++/#{gcc_ver}
-cxx_inc=#{CREW_PREFIX}/include/c++/#{gcc_ver}/\${machine}
-gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/#{gcc_ver}
+version=\$(gcc -dumpversion)
+cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
+cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
       case ARCH
       when "x86_64"
