@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi and openmp are included.'
   homepage 'http://llvm.org/'
-  version '8.0.0'
+  version '8.0.0-1'
   source_url 'https://releases.llvm.org/8.0.0/llvm-8.0.0.src.tar.xz'
   source_sha256 '8872be1b12c61450cacc82b3d153eab02be2546ef34fa3580ed14137bb26224c'
 
@@ -14,10 +14,10 @@ class Llvm < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-8.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6bd8d139f2a3b5cc6279ced8f4d812a6cc3f7f546cd624aeefe7a2e3827321d0',
-     armv7l: '6bd8d139f2a3b5cc6279ced8f4d812a6cc3f7f546cd624aeefe7a2e3827321d0',
-       i686: '523c470af763d5a5c4e437fbfb7d34274f390e77e53d7422633882377abebd73',
-     x86_64: 'fafbc33d4635f50819ade2f184c618d70abceb6d17bd39e758a31158bbe2766f',
+    aarch64: '50eb2b5e524a90ae21361fa5fcc986f2766852464aab7db390f217403f9bf8f8',
+     armv7l: '50eb2b5e524a90ae21361fa5fcc986f2766852464aab7db390f217403f9bf8f8',
+       i686: 'a5e6de6a037cfb7a7a197b5478c226fc83456ae71fcb8935f0c67d36c68d5938',
+     x86_64: '7f476d4b2300e337d6ac98c4116dc481964d5939fe459126737992b121eaf885',
   })
 
   depends_on 'ld_default' => :build
