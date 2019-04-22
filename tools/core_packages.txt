@@ -12,6 +12,7 @@ expat
 filecmd
 flex
 gawk
+gcc_tools
 gcc8
 gdbm
 gettext
