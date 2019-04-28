@@ -14,7 +14,7 @@ class Gemacs < Package
 
   })
 
-  depends_on 'emacs'
+  depends_on 'lcms'
   depends_on 'giflib'
   depends_on 'libjpeg'
   depends_on 'libpng'
@@ -37,7 +37,6 @@ class Gemacs < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "rm -rf #{CREW_DEST_DIR}"
     system "install -Dm755 src/emacs #{CREW_DEST_PREFIX}/bin/gemacs"
     system "install -Dm755 src/emacs-26.2.1 #{CREW_DEST_PREFIX}/bin/gemacs-26.2.1"
   end
