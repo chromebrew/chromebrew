@@ -3,21 +3,21 @@ require 'package'
 class Lua < Package
   description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
   homepage 'https://www.lua.org/'
-  version '5.3.5'
+  version '5.3.5-1'
   source_url 'https://www.lua.org/ftp/lua-5.3.5.tar.gz'
   source_sha256 '0c2eed3f960446e1a3e4b9a1ca2f3ff893b6ce41942cf54d5dd59ab4b3b058ac'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lua-5.3.5-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4221d4178982208fe3fa4951a957b7ea49a5e9b4c2e36c1c659b5a7f3641d488',
-     armv7l: '4221d4178982208fe3fa4951a957b7ea49a5e9b4c2e36c1c659b5a7f3641d488',
-       i686: '1b400d13a757b4bfe4290587c7e6c3e9be386f5966efbe4e90f8cad44194154f',
-     x86_64: '0c8aa3d1cda909e7f8a9f28c36acc459bdcae9091e300980fc6e7dcf2caf1313',
+    aarch64: 'e7637922564311eddb467373ce87a1220399ee38ada304d5e66555835959e9da',
+     armv7l: 'e7637922564311eddb467373ce87a1220399ee38ada304d5e66555835959e9da',
+       i686: '7062884ea29cc4b87620ce1cb4228f81cd1427684378f50e4b539aae030d95ca',
+     x86_64: '43b7e0de02fa42251c7881884c48b6593c9c78387356e1b2ea346a4487838671',
   })
 
   def self.build
