@@ -11,8 +11,6 @@ class Android_studio < Package
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
-  abort 'Only x86_64 architecture is supported.'.lightred unless ARGV[0] == 'search' || ARCH == 'x86_64'
-
   if ARGV[0] == 'install' || ARGV[0] == 'upgrade' then
     free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp
     abort 'Not enough free disk space.  You need at least 6 GB to install.'.lightred if free_space < '6442450944'
