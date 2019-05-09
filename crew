@@ -240,7 +240,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, const, download, files, install, list ,remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, const, download, files, install, list, remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -371,11 +371,11 @@ def upgrade
       # skip package if it is dependent other packages previously checked
       next if dependencies.include? package[:name]
       # add package itself
-      dependencies = [ package[:name] ].concat(dependencies)
+      dependencies = [ package[:name] ].unshift(dependencies)
       # expand depencencies and add it to the dependencies list
       search package[:name], true
       exp_dep = expand_dependencies
-      dependencies = exp_dep.concat(dependencies)
+      dependencies = exp_dep.unshift(dependencies)
     end
     dependencies.uniq!
 
