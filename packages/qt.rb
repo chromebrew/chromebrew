@@ -3,9 +3,9 @@ require 'package'
 class Qt < Package
   description 'Qt is a comprehensive cross-platform framework and toolkit that helps you create and build native applications and user interfaces for all the screens of your end user.'
   homepage 'https://info.qt.io/download-qt-for-application-development'
-  version '5.11.2'
-  source_url 'http://download.qt.io/official_releases/qt/5.11/5.11.2/md5sums.txt'
-  source_sha256 '89b15d7fc584511b3eb9be22f409f750b9208325017b85cb3e2b354115c5ed9b'
+  version '5.12.3'
+  source_url 'http://download.qt.io/official_releases/qt/5.12/5.12.3/md5sums.txt'
+  source_sha256 '7562395316ed1cfea7c6276bb80b4de14cab34475ced3ae7549eedf6e94da5d9'
 
   depends_on 'xdg_base'
   depends_on 'sommelier'
@@ -68,7 +68,7 @@ class Qt < Package
       system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x86-online.run"
     when 'x86_64'
       system 'wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x64-online.run') ) == '7e28fe65cc4b90998ed84839bb856331306b227047e8add36919b89dc8aae312'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x64-online.run') ) == 'a90c2f1cfb38bf9ab6f8757837c757342fcafdc8ca339e0288d7ac80c5e48de7'
       system "install -Dm755 qt-unified-linux-x64-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x64-online.run"
       system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-online.run --script qt-installer-script.qs"
       system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x64-online.run"
