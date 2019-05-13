@@ -659,7 +659,20 @@ def resolve_dependencies
 
   return if @dependencies.empty?
 
+
   puts "The following packages also need to be installed: "
+
+  i = 0
+  last_deps = []
+  last_packages = ["curl", "gtk3", "sommelier"]
+  @dependencies.each do |dep|
+    if last_packages.include?(dep)
+      @dependencies.delete_at(i)
+      last_deps.push(dep)
+    end
+    i += 1
+  end
+  @dependencies.concat last_deps.sort
 
   @dependencies.each do |dep|
     print dep + " "
