@@ -3,21 +3,21 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.13.2'
-  source_url 'https://cmake.org/files/v3.13/cmake-3.13.2.tar.gz'
-  source_sha256 'c925e7d2c5ba511a69f43543ed7b4182a7d446c274c7480d0e42cd933076ae25'
+  version '3.14.3'
+  source_url 'https://cmake.org/files/v3.14/cmake-3.14.3.tar.gz'
+  source_sha256 '215d0b64e81307182b29b63e562edf30b3875b834efdad09b3fcb5a7d2f4b632'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.13.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.13.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.13.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.13.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.14.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.14.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.14.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.14.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c51a1a850e928be59e5c3ad5ab708fc1511001597f03413a3861e7bb5b42603d',
-     armv7l: 'c51a1a850e928be59e5c3ad5ab708fc1511001597f03413a3861e7bb5b42603d',
-       i686: 'b6362623145ffd0060d56db8b08f9a17b913c7e8a9012b9cd54d7924ab0fea84',
-     x86_64: '266148894803c26d92a0aef1126b3cfe8c025e4d3336a3338e81f63f41c63241',
+    aarch64: '53ff9ffbb8894a4fa0951125223001085f3854058c83485baa99305b37a40f10',
+     armv7l: '53ff9ffbb8894a4fa0951125223001085f3854058c83485baa99305b37a40f10',
+       i686: '720e5aeafd1435966efe5979a1a88025540c792a71227473a351be61aabd8362',
+     x86_64: '68bb956136478169cc74d43e59a3c055d9e565c6f0b93a1fcbf7e56f3912d580',
   })
 
   def self.build
