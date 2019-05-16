@@ -14,10 +14,10 @@ class V2ray < Package
     x86_64: 'https://github.com/dx0eu/v2rew/releases/download/v4.18.0/v2ray-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7a9c6f6d97e164e155f517b506b441881a5d56bac4b757231141119abcc848f7',
-    armv7l: '4a607a00c51f38716f2fa15e2f7c811bfa1719ff8360d29b71b02abfbba91dc7',
-      i686: 'be1446d0c0070cab519a8a19f92b06e3837c8b054be043497422cbf8d80df36d',
-    x86_64: '13a145949ac1d29bcce45b5ec1dccf0ecbcbb254c14d208b3d845616188e9e4e',
+    aarch64: 'ef0da5acfe0512d9b8d21d10b93ed7e5ef3d490df77f884d8f13af33f20c4879',
+    armv7l: 'dcab9210822e614ee497444ca44fcadfc9c3db084ba3566e09bdd8ac13286466',
+      i686: '6f1fb32a74732f2c8271897aa92f00dea941bdc1998e9a5b44d578e62c0cdc1e',
+    x86_64: '7bc56c99362d2dfa846c067d9a842e67c0912eb89c5708f9929b6c9866eea91d',
   })
 
   def self.postinstall
