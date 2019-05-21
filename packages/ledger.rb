@@ -20,16 +20,14 @@ class Ledger < Package
      x86_64: '',
   })
 
-  depends_on 'gmp' => :build
   depends_on 'boost' => :build
-  depends_on 'mpfr' => :build
 
   def self.build
-    system "./acprep"
+    system './acprep', "--prefix=#{CREW_PREFIX}"
     system 'make'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install/strip'
   end
 end
