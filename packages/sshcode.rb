@@ -8,8 +8,16 @@ class Sshcode < Package
   source_sha256 '5bd544d9d7e8ebf0b48934a04b55b64802e23189a70410ccab2833c2435e6736'
   
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sshcode-0.8.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sshcode-0.8.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sshcode-0.8.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sshcode-0.8.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '1b78a1aa63a27ba45913de2cd1b647a3834fff5a8bc7f0be568d86095f9cae3f',
+     armv7l: '1b78a1aa63a27ba45913de2cd1b647a3834fff5a8bc7f0be568d86095f9cae3f',
+       i686: 'c6c78d1bf9fea74282f5b0af1a46e540fa5b6456409e5edf5fbc59917a547cf2',
+     x86_64: 'cfa83667f73510c33fa4b39b1e0da17b5d43137290a00756361ae915807516c8',
   })
 
   depends_on 'go' => :build
