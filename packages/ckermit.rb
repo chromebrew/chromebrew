@@ -14,7 +14,6 @@ class Ckermit < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/usr/local"
-    system 'make', "DESTDIR=#{CREW_DEST_PREFIX}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
