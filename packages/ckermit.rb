@@ -10,10 +10,12 @@ class Ckermit < Package
   depends_on 'ncurses'
 
   def self.build
-    system 'make KFLAGS="-DCK_NCURSES -I/usr/local/include/ncurses" LNKFLAGS="-lresolv -lcrypt" linux'
+    system "make KFLAGS='-DCK_NCURSES -I#{CREW_PREFIX}/include/ncurses' LNKFLAGS='-lresolv -lcrypt' linux"
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "mkdir -p #{CREW_DEST_PREFIX}"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "LIBDIR=#{CREW_LIB_PREFIX}", 'install'
+    system "sed -i \"s:#{CREW_DEST_PREFIX}:#{CREW_PREFIX}:g\" #{CREW_DEST_PREFIX}/bin/ckermit.ini"
   end
 end
