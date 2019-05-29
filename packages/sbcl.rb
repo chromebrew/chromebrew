@@ -4,21 +4,8 @@ class Sbcl < Package
   description 'Steel Bank Common Lisp (SBCL) is a high performance Common Lisp compiler.'
   homepage 'http://www.sbcl.org/index.html'
   version '1.5.3'
-  source_url 'http://prdownloads.sourceforge.net/sbcl/sbcl-1.5.3-source.tar.bz2?download'
+  source_url 'http://prdownloads.sourceforge.net/sbcl/sbcl-1.5.3-source.tar.bz2'
   source_sha256 'd2a7901144d227a7194661dc3ccee28873c8d5cbbd167013660c78b9ad63640c'
-
-  binary_url ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
-  })
-  binary_sha256 ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
-  })
 
   depends_on 'clisp' => :build
 
@@ -27,6 +14,6 @@ class Sbcl < Package
   end
 
   def self.install
-    system "INSTALL_ROOT=#{CREW_DEST_DIR}#{CREW_PREFIX} sh install.sh"
+    system "INSTALL_ROOT=#{CREW_DEST_PREFIX} sh install.sh"
   end
 end
