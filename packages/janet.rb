@@ -27,6 +27,5 @@ class Janet < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/share/doc/janet/"
     system "cp -a test/* #{CREW_DEST_PREFIX}/share/doc/janet/"
     system "rm #{CREW_DEST_PREFIX}/share/doc/janet/install/.gitignore"
-    system "mv #{CREW_DEST_PREFIX}/bin/jpm #{CREW_DEST_PREFIX}/share/doc/janet/install"
   end
 end
