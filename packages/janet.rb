@@ -9,19 +9,17 @@ class Janet < Package
 
   def self.build
     system 'make',"PREFIX=#{CREW_PREFIX}"
-    system 'sed -i "s#-ldconfig#/usr/local/sbin/ldconfig#g" Makefile'
   end
 
   def self.install
+    system 'sed -i "s#-ldconfig#/usr/local/sbin/ldconfig#g" Makefile'
     system 'make', "PREFIX=#{CREW_PREFIX}",
            "LIBDIR=#{CREW_DEST_LIB_PREFIX}",
            "BINDIR=#{CREW_DEST_PREFIX}/bin/",
            "MANPATH=#{CREW_DEST_PREFIX}/share/man/man1/",
+           "INCLUDEDIR=#{CREW_DEST_PREFIX}/include/",
            "JANET_PATH=#{CREW_DEST_PREFIX}/lib/janet",
-           'install'
-    system 'make', "PREFIX=#{CREW_PREFIX}",
            "PKG_CONFIG_PATH=#{CREW_DEST_LIB_PREFIX}/pkgconfig",
-           "LIBDIR=#{CREW_LIB_PREFIX}",
-           "#{CREW_DEST_LIB_PREFIX}/pkgconfig/janet.pc"
+           'install'
   end
 end
