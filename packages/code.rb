@@ -13,9 +13,9 @@ class Code < Package
 
   description 'Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS.'
   homepage 'https://code.visualstudio.com/'
-  version '1.34.0'
-  source_url 'https://github.com/microsoft/vscode/archive/1.34.0.tar.gz'
-  source_sha256 '8c0f784c08cbbf8877338238f96ebb52686b7545667196f2839428bebb05bde9'
+  version '1.35.0'
+  source_url 'https://github.com/microsoft/vscode/archive/1.35.0.tar.gz'
+  source_sha256 '8bbf959691f6bc20e787c1aa26fb8331462e74f83e861fbe6632f2de6a1bb099'
 
   binary_url ({
   })
@@ -36,7 +36,7 @@ class Code < Package
 
   def self.build
     old_ld = `ld_default b`.chomp
-    node_ver = 'v8.15.0'
+    node_ver = 'v10.16.0'
     node_old = `nodebrew ls | fgrep 'current: ' | cut -d' ' -f2`.chomp
     node_ver_installed = `nodebrew ls | grep -o #{node_ver} | head -1`.chomp
     system "nodebrew install #{node_ver}" unless node_ver_installed == node_ver
