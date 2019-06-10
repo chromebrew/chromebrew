@@ -7,6 +7,17 @@ class Cras < Package
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/adhd/+/refs/heads/stabilize-12249.B/cras/README?format=TEXT'
   source_sha256 'b65b959f4ad842a219a637413b8702676378a0b5d18b5e413c78c211b3fb133c'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cras-stabilize-12249.B-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cras-stabilize-12249.B-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cras-stabilize-12249.B-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '88dde49090fbd16244b5c3fd260634e2b1852ea53a37e3aa3d71d64ae1b20551',
+     armv7l: '88dde49090fbd16244b5c3fd260634e2b1852ea53a37e3aa3d71d64ae1b20551',
+     x86_64: 'c37202a1909d5c593ad39c929ab4d6e7ac3cfcb51daaea032698644f59bb5d51',
+  })
+
   depends_on 'alsa_lib'
   depends_on 'ladspa'
   depends_on 'iniparser'
