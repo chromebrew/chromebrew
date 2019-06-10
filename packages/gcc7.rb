@@ -9,7 +9,7 @@ class Gcc7 < Package
 
   if ARGV[0] == 'install'
     gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
-    abort "GCC version #{gccver} already installed.".lightgreen unless "#{gccver}" == "No" || "#{gccver}" == "gcc:"
+    abort "GCC version #{gccver} already installed.".lightgreen unless "#{gccver}" == "No" || "#{gccver}" == "not" || "#{gccver}" == "gcc:" || "#{gccver}" == "#{version}"
   end
 
   binary_url ({
