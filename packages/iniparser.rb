@@ -7,6 +7,19 @@ class Iniparser < Package
   source_url 'https://github.com/ndevilla/iniparser/archive/v4.1.tar.gz'
   source_sha256 '960daa800dd31d70ba1bacf3ea2d22e8ddfc2906534bf328319495966443f3ae'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '712e6e63ea2aa696666a53ba354a5108f158241ce806f1eda5b27a577cc7bd58',
+     armv7l: '712e6e63ea2aa696666a53ba354a5108f158241ce806f1eda5b27a577cc7bd58',
+       i686: 'e48a36dd2464e406f43e301bcee25592b225f7eb7a7ab90bbfbfa2ea19c2ad86',
+     x86_64: '9a00066ad86da206832d1c9c024fa83e0cb0da923332581342a32dcc748254dd',
+  })
+
   def self.patch
     # Fix buffer overflow vulnerabilities
     system 'wget', 'https://github.com/ndevilla/iniparser/commit/a249509544972d60f5077bfde554af480bd82594.patch'
