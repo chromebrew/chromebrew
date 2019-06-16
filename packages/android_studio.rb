@@ -3,9 +3,9 @@ require 'package'
 class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
-  version '3.4.0.18'
-  source_url 'https://dl.google.com/dl/android/studio/ide-zips/3.4.0.18/android-studio-ide-183.5452501-linux.tar.gz'
-  source_sha256 'ad2bd4be87a55cfaeee6f28d40d925691314c11862b303d411f9776b76fa1c45'
+  version '3.4.1.0'
+  source_url 'https://dl.google.com/dl/android/studio/ide-zips/3.4.1.0/android-studio-ide-183.5522156-linux.tar.gz'
+  source_sha256 '60488b63302fef657367105d433321de248f1fb692d06dba6661efec434b9478'
 
   depends_on 'jdk8'
   depends_on 'xdg_base'
