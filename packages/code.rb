@@ -13,9 +13,9 @@ class Code < Package
 
   description 'Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS.'
   homepage 'https://code.visualstudio.com/'
-  version '1.35.1'
-  source_url 'https://github.com/microsoft/vscode/archive/1.35.1.tar.gz'
-  source_sha256 '6a5bab018f35727897140d410a3d0ebaa640d6c75ee8053a1cd5e02ece5714e9'
+  version '1.36.0'
+  source_url 'https://github.com/microsoft/vscode/archive/1.36.0.tar.gz'
+  source_sha256 'c88ad3b41374b4d43fc92eb2bcffba33458f58ccc9b88c26d76028a61c4eb9c8'
 
   binary_url ({
   })
