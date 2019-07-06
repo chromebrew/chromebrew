@@ -3,21 +3,21 @@ require 'package'
 class Scite < Package
   description 'A free source code editing component for Win32, GTK+, and OS X'
   homepage 'https://www.scintilla.org/'
-  version '4.1.2'
-  source_url 'https://www.scintilla.org/scite412.tgz'
-  source_sha256 '01eceecb4cfe80415bd1488900ada32340850cf3bba80f25f004da4811e3fcc8'
+  version '4.2.0'
+  source_url 'https://www.scintilla.org/scite420.tgz'
+  source_sha256 '2e0b95842bbc875a9224416fad3a9179ec329b3af2ca1abdd8e64c008068bb99'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.1.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '552468f6e1649d044e96ef8023c8bba8b04fd0fd5deec9c3e2c174427bf8c345',
-     armv7l: '552468f6e1649d044e96ef8023c8bba8b04fd0fd5deec9c3e2c174427bf8c345',
-       i686: '69d69f86e272e0855cf91748a02449beb7db7e0ef5adf04230402d8d7f17bef8',
-     x86_64: 'a8c9d0bd57906313ba42997e72d377d69113ba3e88bb6add6df20f07f508961a',
+    aarch64: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
+     armv7l: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',
+       i686: 'b0e95f29a380e9fe2dc71216aa36c7902210f59f9041b92700c556c927e57049',
+     x86_64: '1fcbc9d13a7c7bc5b7473631281fdea5302c8e55b88bdb8d25159b70890dfcec',
   })
 
   depends_on 'gtk3'
@@ -26,11 +26,7 @@ class Scite < Package
   depends_on 'shared_mime_info'
   depends_on 'sommelier'
 
-
   def self.build
-    system 'wget https://www.scintilla.org/scintilla412.tgz'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('scintilla412.tgz') ) == '8c54787600fbefa5240ff3c4ac1c84fa186a445091377dde8194a4f1e1471d52'
-    system 'tar xvf scintilla412.tgz'
     Dir.chdir 'scintilla/gtk' do
       system "make", "GTK3=1", "prefix=#{CREW_PREFIX}"
     end
