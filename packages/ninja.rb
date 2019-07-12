@@ -3,24 +3,25 @@ require 'package'
 class Ninja < Package
   description 'a small build system with a focus on speed'
   homepage 'https://ninja-build.org'
-  version '1.7.2'
-  source_url 'https://github.com/ninja-build/ninja/archive/v1.7.2.tar.gz'
-  source_sha256 '2edda0a5421ace3cf428309211270772dd35a91af60c96f93f90df6bc41b16d9'
+  version '1.9.0'
+  source_url 'https://github.com/ninja-build/ninja/archive/v1.9.0.tar.gz'
+  source_sha256 '5d7ec75828f8d3fd1a0c2f31b5b0cea780cdfe1031359228c428c1a48bfcd5b9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.7.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ninja-1.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3ff2fc875e7fce5f69880d0db463afe580aa2c963c36e07301348b3ea597f469',
-     armv7l: '3ff2fc875e7fce5f69880d0db463afe580aa2c963c36e07301348b3ea597f469',
-       i686: '45c4ea8662459b4846c09bf440982b3431162556b6d955268ebd2d7e5d2ba157',
-     x86_64: '1dbb0af40656a2dda2d2e0c157f3860ee8ea9b79edff4a28b90f34d08d3f81d5',
+    aarch64: 'b9f89afdefe5747802c7ccd5184775c2a18f8f66f380cf68213c3c86833f0822',
+     armv7l: 'b9f89afdefe5747802c7ccd5184775c2a18f8f66f380cf68213c3c86833f0822',
+       i686: 'c1a6a31fec8fd4185ab6c7e478f7cc935c3f836c7e399f2a74725946e9d23d98',
+     x86_64: 'a1b8db9d11211ece355c2d4d7a1fecffb719d0d47b1c5c48276a2cb22f505f62',
   })
 
   depends_on 'python3'
+  depends_on 're2c'
   depends_on 'unzip'
 
   def self.build
