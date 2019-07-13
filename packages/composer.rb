@@ -3,9 +3,9 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.8.5'
-  source_url 'https://github.com/composer/composer/archive/1.8.5.tar.gz'
-  source_sha256 '923e87df4617de6cfed53c5a190623d3801cffe6178ac77c6ca559841967f714'
+  version '1.8.6'
+  source_url 'https://github.com/composer/composer/archive/1.8.6.tar.gz'
+  source_sha256 'abd42546a0af0c4daf78b49925dc9855b06a4ed726db6c2a43161e3b5dc12436'
 
   binary_url ({
   })
