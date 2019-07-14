@@ -3,21 +3,21 @@ require 'package'
 class Ffmpeg < Package
   description 'A complete, cross-platform solution to record, convert and stream audio and video.'
   homepage 'https://ffmpeg.org/'
-  version '4.1.3'
-  source_url 'https://ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz'
-  source_sha256 '0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
+  version '4.1.4'
+  source_url 'https://ffmpeg.org/releases/ffmpeg-4.1.4.tar.xz'
+  source_sha256 'f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ef37a9baa19fa8f6a1f5a7e37f71dbcbc931e53dd2c9bd4cac0d1971536b9d44',
-     armv7l: 'ef37a9baa19fa8f6a1f5a7e37f71dbcbc931e53dd2c9bd4cac0d1971536b9d44',
-       i686: 'bf9377f810525fd10befceb044dbe4693c269ccc457820f4bd2f75bbb0aab51d',
-     x86_64: 'c7b7a20ec40f89e5881aaa45beca98c933f07669f4aa1b57eba222bce4f89240',
+    aarch64: '185c183888292e2d7093a142abbfdccd6968de441672fd4648ca14d592dac906',
+     armv7l: '185c183888292e2d7093a142abbfdccd6968de441672fd4648ca14d592dac906',
+       i686: 'bfd0823311a54a727de88b9b335f8ff4ed1ed29ceb99fa9f92166ca467db2727',
+     x86_64: '12b4d5665988c1fce74e92b3f67562a850092b5ee0c4e7bd2ac7e37a007b0b16',
   })
 
   depends_on 'libopencoreamr'
@@ -41,6 +41,7 @@ class Ffmpeg < Package
   depends_on 'gnutls'
   depends_on 'libass'
   depends_on 'libva'
+  depends_on 'libvpx'
   depends_on 'speex'
   depends_on 'nasm' => :build
 
@@ -71,6 +72,7 @@ class Ffmpeg < Package
            '--enable-libx264',
            '--enable-libx265',
            '--enable-libxvid',
+           '--enable-libvpx',
            '--enable-shared',
            '--disable-debug',
            '--enable-frei0r',
@@ -82,6 +84,6 @@ class Ffmpeg < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
