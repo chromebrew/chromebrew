@@ -3,21 +3,21 @@ require 'package'
 class Libsodium < Package
   description 'A modern, portable, easy to use crypto library'
   homepage 'https://libsodium.org'
-  version '1.0.16'
-  source_url 'https://github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz'
-  source_sha256 'eeadc7e1e1bcef09680fb4837d448fbdf57224978f865ac1c16745868fbd0533'
+  version '1.0.18'
+  source_url 'https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz'
+  source_sha256 '6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.18-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.18-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsodium-1.0.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3c3899e082014a5fd32ee2736d7c0a9d0cb8256247da9723a31e4dc85ddb5a6e',
-     armv7l: '3c3899e082014a5fd32ee2736d7c0a9d0cb8256247da9723a31e4dc85ddb5a6e',
-       i686: 'a36f6638877150233722e11c8d669fc2044edcb6da83f6b9e1b56d1288cda2d8',
-     x86_64: 'a24fc250462688409af619df906a7e83a2a27d923cc51fe332e316fb580eb676',
+    aarch64: 'fa8d8b5496d8d1ae4e98a7c8f118898efdcb2c4b92f235ea12f73b12b36ff80e',
+     armv7l: 'fa8d8b5496d8d1ae4e98a7c8f118898efdcb2c4b92f235ea12f73b12b36ff80e',
+       i686: '5b2161327ebf6573fc0660bea7ef75702cd593bf3c0da0cab11a007a89567fbb',
+     x86_64: 'a2dfec82f2c2c4feba5b6c3b64e61977e5f69d4ea2279266443c69ebfcddc3a7',
   })
 
   def self.build

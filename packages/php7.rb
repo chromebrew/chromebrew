@@ -3,24 +3,25 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.4'
-  source_url 'https://php.net/distributions/php-7.3.4.tar.xz'
-  source_sha256 '6fe79fa1f8655f98ef6708cde8751299796d6c1e225081011f4104625b923b83'
+  version '7.3.6'
+  source_url 'https://php.net/distributions/php-7.3.6.tar.xz'
+  source_sha256 'fefc8967daa30ebc375b2ab2857f97da94ca81921b722ddac86b29e15c54a164'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c947e49208bf12a9ff30fc271d049c3207bee9f66b79f4b1baaf11c82b88255c',
-     armv7l: 'c947e49208bf12a9ff30fc271d049c3207bee9f66b79f4b1baaf11c82b88255c',
-       i686: '9549a8c69b3c3a31a47d29c188d41fbe3566682f8780bf357c4be3123a674b03',
-     x86_64: '483cc2241d4aec2d4d236dc5383096db99c4d2c53b65399503edf455499de2ca',
+    aarch64: '8483fc02476688ae24151ee5c68a4232d27db4666bf8b38c96ede735348b5305',
+     armv7l: '8483fc02476688ae24151ee5c68a4232d27db4666bf8b38c96ede735348b5305',
+       i686: '0ed0f04f51244e2177a553a57bc78d38685213628cc0dbc645e142d15b3c58f7',
+     x86_64: '20ee5c4bfab8385ebb67494628d5fc9acb72bfc68ff0f26a1411f57e3b0d8827',
   })
 
   depends_on 'libgcrypt'
+  depends_on 'libwebp'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
@@ -64,7 +65,12 @@ class Php7 < Package
            "--with-config-file-path=#{CREW_PREFIX}/etc",
            "--with-libdir=#{ARCH_LIB}",
            "--with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype",
+           "--with-pcre-regex=#{CREW_LIB_PREFIX}",
+           "--with-jpeg-dir=#{CREW_LIB_PREFIX}",
+           "--with-kerberos=#{CREW_LIB_PREFIX}",
            "--with-png-dir=#{CREW_LIB_PREFIX}",
+           "--with-webp-dir=#{CREW_LIB_PREFIX}",
+           "--with-xpm-dir=#{CREW_LIB_PREFIX}",
            '--enable-exif',
            '--enable-fpm',
            '--enable-ftp',

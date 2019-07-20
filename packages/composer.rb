@@ -3,9 +3,9 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.8.4'
-  source_url 'https://github.com/composer/composer/archive/1.8.4.tar.gz'
-  source_sha256 '288ab33c8f11f0db4b5883d4a115a8ead8ef1a74c924f3accadc61d220ca22de'
+  version '1.8.6'
+  source_url 'https://github.com/composer/composer/archive/1.8.6.tar.gz'
+  source_sha256 'abd42546a0af0c4daf78b49925dc9855b06a4ed726db6c2a43161e3b5dc12436'
 
   binary_url ({
   })
@@ -16,7 +16,7 @@ class Composer < Package
   depends_on 'xdg_base'
 
   def self.preinstall
-    if Dir.exists? "#{HOME}/.config"
+    if Dir.exists?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
       # Save any existing configuration
       system "cp -r #{HOME}/.config #{CREW_PREFIX}" unless Dir.empty? "#{HOME}/.config"
     else

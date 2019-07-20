@@ -3,7 +3,7 @@ require 'package'
 class Php < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.40-7.3.4'
+  version '5.6.40-7.3.6'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -12,9 +12,9 @@ class Php < Package
     puts "Enter the PHP version to install:"
     puts "5.6 = PHP 5.6.40"
     puts "7.0 = PHP 7.0.33"
-    puts "7.1 = PHP 7.1.28"
-    puts "7.2 = PHP 7.2.17"
-    puts "7.3 = PHP 7.3.4"
+    puts "7.1 = PHP 7.1.30"
+    puts "7.2 = PHP 7.2.19"
+    puts "7.3 = PHP 7.3.6"
     puts "  0 = Cancel"
 
     while version = STDIN.gets.chomp
@@ -51,46 +51,46 @@ class Php < Package
         break
       when '7.1'
         binary_url ({
-          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.28-chromeos-armv7l.tar.xz',
-           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.28-chromeos-armv7l.tar.xz',
-             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.28-chromeos-i686.tar.xz',
-           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.28-chromeos-x86_64.tar.xz',
+          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.30-chromeos-armv7l.tar.xz',
+           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.30-chromeos-armv7l.tar.xz',
+             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.30-chromeos-i686.tar.xz',
+           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.30-chromeos-x86_64.tar.xz',
         })
         binary_sha256 ({
-          aarch64: '9ea62e3401003510c4ac490859d1f68a8e5464eed9eb80b2ef46d58931b88808',
-           armv7l: '9ea62e3401003510c4ac490859d1f68a8e5464eed9eb80b2ef46d58931b88808',
-             i686: 'e1039b896be6b3abbaebac5a21bb99b07cc7525305362a1fb0727d736cf321be',
-           x86_64: '27bf2057cb6b9d060f50f76c06f50c09c08c7f9d754f95d5e2b2d64bcd513750',
+          aarch64: 'f3bf42a534b4b56b07884d3df14e09ea093affcf9ccca3540f47fe909b141a21',
+           armv7l: 'f3bf42a534b4b56b07884d3df14e09ea093affcf9ccca3540f47fe909b141a21',
+             i686: 'de038c6cd6d67a7ae07cf8b0abacc215f799a4d731fb5560df93910c6472cf94',
+           x86_64: 'c3a4e1dd85c0f383fbf868e7877421fba9848c4b6d1900612ba141cba968d2bc',
         })
         $ver = 7
         break
       when '7.2'
         binary_url ({
-          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.17-chromeos-armv7l.tar.xz',
-           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.17-chromeos-armv7l.tar.xz',
-             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.17-chromeos-i686.tar.xz',
-           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.17-chromeos-x86_64.tar.xz',
+          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.19-chromeos-armv7l.tar.xz',
+           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.19-chromeos-armv7l.tar.xz',
+             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.19-chromeos-i686.tar.xz',
+           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.2.19-chromeos-x86_64.tar.xz',
         })
         binary_sha256 ({
-          aarch64: 'aba9f4b68ac33a105bb135d71a40bc7f777aa27d6f8199ed3f8fa52dd2e7caf8',
-           armv7l: 'aba9f4b68ac33a105bb135d71a40bc7f777aa27d6f8199ed3f8fa52dd2e7caf8',
-             i686: '1a43bd9bade0d298840eb2cc4f6f84ad060b5ba36da3dba50d9170fcee803cec',
-           x86_64: '828c4a9f5960e7fd9bce9b7dccc4256520120deb36ac9aa8c6ffb4a947836ee1',
+          aarch64: '21d98536ddaffc63ae6dd8b620f278e0a2886b21a11789584a391ae09b95a554',
+           armv7l: '21d98536ddaffc63ae6dd8b620f278e0a2886b21a11789584a391ae09b95a554',
+             i686: 'e3c7ebd67a95348f4213cf0f87af80fba9213161e978c349edbda9ea55831799',
+           x86_64: 'd45341eac77d57f91d72509de9c98a0bfc0018b74e3ac0103075a2e66118b87c',
         })
         $ver = 7
         break
       when '7.3'
         binary_url ({
-          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-armv7l.tar.xz',
-           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-armv7l.tar.xz',
-             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-i686.tar.xz',
-           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.4-chromeos-x86_64.tar.xz',
+          aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-armv7l.tar.xz',
+           armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-armv7l.tar.xz',
+             i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-i686.tar.xz',
+           x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-x86_64.tar.xz',
         })
         binary_sha256 ({
-          aarch64: 'c947e49208bf12a9ff30fc271d049c3207bee9f66b79f4b1baaf11c82b88255c',
-           armv7l: 'c947e49208bf12a9ff30fc271d049c3207bee9f66b79f4b1baaf11c82b88255c',
-             i686: '9549a8c69b3c3a31a47d29c188d41fbe3566682f8780bf357c4be3123a674b03',
-           x86_64: '483cc2241d4aec2d4d236dc5383096db99c4d2c53b65399503edf455499de2ca',
+          aarch64: '8483fc02476688ae24151ee5c68a4232d27db4666bf8b38c96ede735348b5305',
+           armv7l: '8483fc02476688ae24151ee5c68a4232d27db4666bf8b38c96ede735348b5305',
+             i686: '0ed0f04f51244e2177a553a57bc78d38685213628cc0dbc645e142d15b3c58f7',
+           x86_64: '20ee5c4bfab8385ebb67494628d5fc9acb72bfc68ff0f26a1411f57e3b0d8827',
         })
         $ver = 7
         break
@@ -104,6 +104,7 @@ class Php < Package
   end
 
   depends_on 'libgcrypt'
+  depends_on 'libwebp'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'

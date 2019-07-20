@@ -3,21 +3,21 @@ require 'package'
 class Tree < Package
   description 'Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.'
   homepage 'http://mama.indstate.edu/users/ice/tree/'
-  version '1.7.0'
-  source_url 'http://mama.indstate.edu/users/ice/tree/src/tree-1.7.0.tgz'
-  source_sha256 '6957c20e82561ac4231638996e74f4cfa4e6faabc5a2f511f0b4e3940e8f7b12'
+  version '1.8.0'
+  source_url 'http://mama.indstate.edu/users/ice/tree/src/tree-1.8.0.tgz'
+  source_sha256 '715d5d4b434321ce74706d0dd067505bb60c5ea83b5f0b3655dae40aa6f9b7c2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.7.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.8.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.8.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.8.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tree-1.8.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd02021fe3f0dba5e093b8124eb2fbf06daf207e26ab0f1ebf18c211418465d79',
-     armv7l: 'd02021fe3f0dba5e093b8124eb2fbf06daf207e26ab0f1ebf18c211418465d79',
-       i686: '81a4cb42cb1be8daf590628fe732903dd3cb048569e26224aebc1b8e2a5433da',
-     x86_64: 'b17546851d8bc23cb0d21ec6fd0bf7a73fff74206f9fbb58e088d6ba6df58a4d',
+    aarch64: 'a7505aeb61a91e3735cd89e139632af5229a41d693e7b088fcdd6b5db630504a',
+     armv7l: 'a7505aeb61a91e3735cd89e139632af5229a41d693e7b088fcdd6b5db630504a',
+       i686: '648c1628521180d65f0ccdd12a9e1a90c3571988dc9debda621878dd06d9eef6',
+     x86_64: '32d029842308d0d237c09109248bb9244a6a2cac38eba679674b7b26555f11a2',
   })
 
   def self.build

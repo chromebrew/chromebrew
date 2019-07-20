@@ -3,25 +3,26 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.21.0'
-  source_url 'https://github.com/git/git/archive/v2.21.0.tar.gz'
-  source_sha256 '7a601275abcc6ff51cc79a6d402e83c90ae37d743b0b8d073aa009dd4b22d432'
+  version '2.22.0'
+  source_url 'https://github.com/git/git/archive/v2.22.0.tar.gz'
+  source_sha256 'd2557e9d6a90819cca463b7f2a7b30fd62d8ccc9760c8453f078e936559cb017'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.21.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b75f477d3831241a03dc72a130d64ca1755bb0cd8d8a56fac24940de6f12ae87',
-     armv7l: 'b75f477d3831241a03dc72a130d64ca1755bb0cd8d8a56fac24940de6f12ae87',
-       i686: '20e4a91ebace3b2d7f1744e80007cef5726a43b65b2a218c6ca0ab282e1333b8',
-     x86_64: 'd3a74f5cb87e17c6108fd4a1fa297f34ce154f56301b63911ee3f603a0faa756',
+    aarch64: '1e52aff31745a6ad134e807f151e8e6fd519bdd69c2f5ec9069661f7c66561a2',
+     armv7l: '1e52aff31745a6ad134e807f151e8e6fd519bdd69c2f5ec9069661f7c66561a2',
+       i686: '11d522ecb99eb1ddb78166f30a635012107e6688da1c686263a4135dbf928dcd',
+     x86_64: 'ce8aee90b5d8c477d12f9e99f541180375aaf5af2d4e9c2b8a2598d2d8e53565',
   })
 
   depends_on 'curl' => :build
   depends_on 'python27' => :build     # requires python2
+  depends_on 'libiconv'
 
   # need to build using single core
   @make_cmd = "make -j1"
