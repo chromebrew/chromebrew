@@ -7,8 +7,7 @@ class Exa < Package
   source_url 'https://github.com/ogham/exa/archive/v0.9.0.tar.gz'
   source_sha256 '96e743ffac0512a278de9ca3277183536ee8b691a46ff200ec27e28108fef783'
 
-  depends_on 'cmake'
-  depends_on 'rust'
+  depends_on 'rust' => :build
   depends_on 'libgit2'
 
   def self.build
