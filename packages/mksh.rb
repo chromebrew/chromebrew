@@ -25,4 +25,10 @@ class Mksh < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man1"
     system "install -c -m 444 lksh.1 mksh.1 #{CREW_DEST_PREFIX}/share/man/man1/"
   end
+
+  def self.postinstall
+    puts 'Please note: mksh cannot be set as the default shell in Chrome OS, as by default /etc' .lightgreen
+    puts 'is mounted as read-only, so mksh cannot be added to the list of valid login shells in /etc/shells.' .lightgreen
+    puts "To use mksh, copy #{CREW_PREFIX}/share/doc/mksh/examples/dot.mkshrc to #{HOME}/.mkshrc" .lightblue
+  end
 end
