@@ -29,6 +29,6 @@ class Mksh < Package
   def self.postinstall
     puts 'Please note: mksh cannot be set as the default shell in Chrome OS, as by default /etc' .lightgreen
     puts 'is mounted as read-only, so mksh cannot be added to the list of valid login shells in /etc/shells.' .lightgreen
-    puts "To use mksh, copy #{CREW_PREFIX}/share/doc/mksh/examples/dot.mkshrc to #{HOME}/.mkshrc" .lightblue
+    puts "For an example ~/.mkshrc file, copy #{CREW_PREFIX}/share/doc/mksh/examples/dot.mkshrc to #{HOME}/.mkshrc" .lightblue
   end
 end
