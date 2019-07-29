@@ -199,6 +199,16 @@ url: http://download.savannah.gnu.org/releases/attr
 activity: medium
 ---
 kind: url
+name: audacious
+url: https://distfiles.audacious-media-player.org/
+activity: low
+---
+kind: url
+name: audacious_plugins
+url: https://distfiles.audacious-media-player.org/
+activity: low
+---
+kind: url
 name: autoconf
 url: http://ftp.gnu.org/gnu/autoconf
 activity: none
@@ -526,6 +536,11 @@ activity: none
 kind: url
 name: code
 url: https://code.visualstudio.com/
+activity: high
+---
+kind: url
+name: codium
+url: https://github.com/VSCodium/vscodium/releases
 activity: high
 ---
 kind: url
@@ -862,6 +877,11 @@ kind: url
 name: eventstat
 url: http://kernel.ubuntu.com/~cking/tarballs/eventstat
 activity: medium
+---
+kind: url
+name: exa
+url: https://github.com/ogham/exa/releases
+activity: low
 ---
 kind: url
 name: exif
@@ -2974,6 +2994,11 @@ url: http://www.hyperrealm.com/packages/
 activity: none
 ---
 kind: url
+name: mksh
+url: http://www.mirbsd.org/MirOS/dist/mir/mksh/
+activity: medium
+---
+kind: url
 name: mlocate
 url: https://releases.pagure.org/mlocate
 activity: none
@@ -3157,6 +3182,11 @@ kind: url
 name: neofetch
 url: https://github.com/dylanaraps/neofetch/releases
 activity: medium
+---
+kind: url
+name: neon
+url: http://www.webdav.org/neon/
+activity: none
 ---
 kind: url
 name: neovim
@@ -3452,6 +3482,11 @@ kind: url
 name: pdfgrep
 url: https://pdfgrep.org/download.html
 activity: medium
+---
+kind: url
+name: peek
+url: https://github.com/phw/peek/releases
+activity: low
 ---
 kind: url
 name: percona_boost
@@ -4567,6 +4602,11 @@ kind: url
 name: waf
 url: https://github.com/waf-project/waf/releases
 activity: medium
+---
+kind: url
+name: wavpack
+url: https://github.com/dbry/WavPack/releases
+activity: none
 ---
 kind: url
 name: wayland
