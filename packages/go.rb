@@ -3,21 +3,21 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  version '1.11.1'
-  source_url 'https://dl.google.com/go/go1.11.1.src.tar.gz'
-  source_sha256 '558f8c169ae215e25b81421596e8de7572bd3ba824b79add22fba6e284db1117'
+  version '1.12'
+  source_url 'https://dl.google.com/go/go1.12.src.tar.gz'
+  source_sha256 '09c43d3336743866f2985f566db0520b36f4992aea2b4b2fd9f52f17049e88f2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.11.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.11.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.11.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.12-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.12-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3a2c84b284794c22dfcf18181e0daa7db64c697b5b08bc357d96c5dda4234f4c',
-     armv7l: '3a2c84b284794c22dfcf18181e0daa7db64c697b5b08bc357d96c5dda4234f4c',
-       i686: 'c9abb02e4ff93d2ed181079a43387e6222667c5aaf36cd865159f19db9bcb424',
-     x86_64: '5bccebc7b426d01ddfb9919b9ac7e2ab3e47776a131a21da70a54d2639c361c0',
+    aarch64: 'ba79eb1b8d48ce92d1a31d9f173941cc55fa55ff847cc5fab36a66c1ce77938b',
+     armv7l: 'ba79eb1b8d48ce92d1a31d9f173941cc55fa55ff847cc5fab36a66c1ce77938b',
+       i686: 'a96ebc21fbe093d956e06c3f977ecadc8a0840830585eec08aecbd629250beb6',
+     x86_64: '2620b266c38b8a9dce103886346a40d66b9a8eaccf98e1cff7f0e958f2a53cb2',
   })
 
   # Tests requires perl

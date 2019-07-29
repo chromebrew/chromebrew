@@ -34,7 +34,12 @@ Prerequisites
 You will need a Chromebook with developer mode enabled.  To do so, select your device on
 [the ChromiumOS Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) and follow the instructions listed there.
 
-Please be aware of the fact that developer mode is insecure if not properly configured. Setting a password as instructed in the VT-2 login screen is essential.
+Please be aware of the fact that developer mode is insecure if not properly configured. Setting a password as instructed in the VT-2 login screen is essential. It is also recommended to enable signed boot:
+
+```bash
+sudo chromeos-setdevpasswd
+sudo crossystem dev_boot_signed_only=1
+```
 
 Installation
 ------------

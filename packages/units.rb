@@ -3,21 +3,21 @@ require 'package'
 class Units < Package
   description 'GNU Units converts quantities expressed in various systems of measurement to their equivalents in other systems of measurement.'
   homepage 'https://www.gnu.org/software/units/units.html'
-  version '2.16'
-  source_url 'https://ftp.gnu.org/gnu/units/units-2.16.tar.gz'
-  source_sha256 'dcf3f78482a13b150fc6bf0f8d611510816a3424bc2b26229b85b1cadeb81686'
+  version '2.19'
+  source_url 'https://ftpmirror.gnu.org/units/units-2.19.tar.gz'
+  source_sha256 '4262136bdfc152b63ff5a9b93a7d80ce18b5e8bebdcffddc932dda769e306556'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.19-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.19-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/units-2.19-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b2eb014f6c3c3c2b5d7c238c7b3be53707e01e78154feff8af599d183a8ac524',
-     armv7l: 'b2eb014f6c3c3c2b5d7c238c7b3be53707e01e78154feff8af599d183a8ac524',
-       i686: '2f9a42090de1462c5c072e49a74fca296975c6cd32fd82d4572dcd672a792c62',
-     x86_64: 'db36428275e1b1d9bcaf702f527e4b9d7dd5cba83c2cdaff8191f60924777ef9',
+    aarch64: 'e49576db081d5ea2e78fffbae17b0140895b8956bc21707519f2a240bf6ae149',
+     armv7l: 'e49576db081d5ea2e78fffbae17b0140895b8956bc21707519f2a240bf6ae149',
+       i686: 'b4ac65ba8c5961a8e3f3f9d9fa4a38ebb988aee06cfe5d17cc3861d1ec77572a',
+     x86_64: 'a2aaaa83951b519431e14738d5eebd4caea2a16375f195efb5240b34a2789981',
   })
 
   def self.build

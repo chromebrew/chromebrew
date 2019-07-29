@@ -3,9 +3,14 @@ require 'package'
 class Gcc7 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '7.4.0'
+  version '7.4.0-1'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-7.4.0/gcc-7.4.0.tar.xz'
   source_sha256 'eddde28d04f334aec1604456e536416549e9b1aa137fc69204e65eb0c009fe51'
+
+  if ARGV[0] == 'install'
+    gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
+    abort "GCC version #{gccver} already installed.".lightgreen unless "#{gccver}" == "No" || "#{gccver}" == "not" || "#{gccver}" == "gcc:" || "#{gccver}" == "#{version}"
+  end
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-armv7l.tar.xz',
@@ -14,17 +19,16 @@ class Gcc7 < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '07126320a193d947aeac51f1827ff954c322a8f43014f3cff146715b72f9d7f8',
-     armv7l: '07126320a193d947aeac51f1827ff954c322a8f43014f3cff146715b72f9d7f8',
-       i686: '72cd956d055ad418b052dab407ec3a2b16663b09c396073a23bd12828fcf03c3',
-     x86_64: '6cce57e98836ccc3c6773df1627bca2102b4f89c7abf64dc47f7b97120b0e01b',
+    aarch64: '864e1edf328aca17f4caa9dc1698cf8b1927c9231790b76e2d68bff16065466c',
+     armv7l: '864e1edf328aca17f4caa9dc1698cf8b1927c9231790b76e2d68bff16065466c',
+       i686: '94dfbccb7ccefb5b7515549de2fe1a770cd0bf85293d37fc162986fcbbfcf6b5',
+     x86_64: '0374021c26ffc10b65547b7e86f729ec4e966ce66a429e23189ea6e20fb8fcd4',
   })
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'gcc8' => :build # gcc version 8.2.0
-  depends_on 'icu4c' => :build # icu version 62.1
+  depends_on 'icu4c' => :build
   depends_on 'python27' => :build
   depends_on 'python3' => :build
 
@@ -58,7 +62,7 @@ class Gcc7 < Package
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
-                 "--program-suffix=-7.3",
+                 "--program-suffix=-#{version}",
                  "--with-arch=armv7-a",
                  "--with-tune=cortex-a15",
                  "--with-fpu=neon",
@@ -79,7 +83,7 @@ class Gcc7 < Package
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
-                 "--program-suffix=-7.3",
+                 "--program-suffix=-#{version}",
                  "--with-arch-64=x86-64",
                  "--with-default-libstdcxx-abi=gcc4-compatible"
         when 'i686'
@@ -97,7 +101,7 @@ class Gcc7 < Package
                  "--disable-libmpx",
                  "--enable-static",
                  "--enable-shared",
-                 "--program-suffix=-7.3",
+                 "--program-suffix=-#{version}",
                  "--with-arch-32=i686",
                  "--with-default-libstdcxx-abi=gcc4-compatible"
       end
@@ -112,8 +116,7 @@ class Gcc7 < Package
   # preserve for check, skip check for current version
   def self.check
     Dir.chdir("objdir") do
-      #system "ulimit -s 32768"
-      #system "make -k check -j8"
+      #system "make -k check -j#{CREW_NPROC}"
       #system "../contrib/test_summary"
     end
   end
@@ -121,6 +124,10 @@ class Gcc7 < Package
   def self.install
     Dir.chdir("objdir") do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+
+      gcc_arch = `gcc -dumpmachine`.chomp
+      gcc_dir = "gcc/#{gcc_arch}/#{version}"
+      gcc_libdir = "#{CREW_LIB_PREFIX}/#{gcc_dir}"
 
       # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
       # move a misplaced file
@@ -132,29 +139,42 @@ class Gcc7 < Package
       system "install -v -dm755 #{CREW_DEST_LIB_PREFIX}/bfd-plugins"
 
       # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)
-      system "ln -sfv #{CREW_PREFIX}/libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      system "ln -sfv #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+
+      # Fix for clang
+      Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
+        system "find . -type f -maxdepth 1 -exec ln -sfv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
+      end
 
       # Make symbolic links
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/cc"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-7.3 #{CREW_DEST_PREFIX}/bin/gcc"
-      system "ln -sv #{CREW_PREFIX}/bin/c++-7.3 #{CREW_DEST_PREFIX}/bin/c++"
-      system "ln -sv #{CREW_PREFIX}/bin/g++-7.3 #{CREW_DEST_PREFIX}/bin/g++"
-      system "ln -sv #{CREW_PREFIX}/bin/cpp-7.3 #{CREW_DEST_PREFIX}/bin/cpp"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ar"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/gcc-nm"
-      system "ln -sv #{CREW_PREFIX}/bin/gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/gcc-ranlib"
-      system "ln -sv #{CREW_PREFIX}/bin/gcov-7.3 #{CREW_DEST_PREFIX}/bin/gcov"
-      system "ln -sv #{CREW_PREFIX}/bin/gcov-dump-7.3 #{CREW_DEST_PREFIX}/bin/gcov-dump"
-      system "ln -sv #{CREW_PREFIX}/bin/gcov-tool-7.3 #{CREW_DEST_PREFIX}/bin/gcov-tool"
-      system "ln -sv #{CREW_PREFIX}/bin/gfortran-7.3 #{CREW_DEST_PREFIX}/bin/gfortran"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-#{version} #{CREW_DEST_PREFIX}/bin/cc"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-#{version} #{CREW_DEST_PREFIX}/bin/gcc"
+      system "ln -sv #{CREW_PREFIX}/bin/c++-#{version} #{CREW_DEST_PREFIX}/bin/c++"
+      system "ln -sv #{CREW_PREFIX}/bin/g++-#{version} #{CREW_DEST_PREFIX}/bin/g++"
+      system "ln -sv #{CREW_PREFIX}/bin/cpp-#{version} #{CREW_DEST_PREFIX}/bin/cpp"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-ar-#{version} #{CREW_DEST_PREFIX}/bin/gcc-ar"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-nm-#{version} #{CREW_DEST_PREFIX}/bin/gcc-nm"
+      system "ln -sv #{CREW_PREFIX}/bin/gcc-ranlib-#{version} #{CREW_DEST_PREFIX}/bin/gcc-ranlib"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-#{version} #{CREW_DEST_PREFIX}/bin/gcov"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-dump-#{version} #{CREW_DEST_PREFIX}/bin/gcov-dump"
+      system "ln -sv #{CREW_PREFIX}/bin/gcov-tool-#{version} #{CREW_DEST_PREFIX}/bin/gcov-tool"
+      system "ln -sv #{CREW_PREFIX}/bin/gfortran-#{version} #{CREW_DEST_PREFIX}/bin/gfortran"
 
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-c++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-c++"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-g++-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-g++"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ar"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-nm"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gcc-ranlib"
-      system "ln -sv #{CREW_PREFIX}/bin/$(gcc -dumpmachine)-gfortran-7.3 #{CREW_DEST_PREFIX}/bin/$(gcc -dumpmachine)-gfortran"
+      system "ln -sv #{CREW_PREFIX}/bin/#{gcc_arch}-c++-#{version} #{CREW_DEST_PREFIX}/bin/#{gcc_arch}-c++"
+      system "ln -sv #{CREW_PREFIX}/bin/#{gcc_arch}-g++-#{version} #{CREW_DEST_PREFIX}/bin/#{gcc_arch}-g++"
+      system "ln -sv #{CREW_PREFIX}/bin/#{gcc_arch}-gcc-#{version} #{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc"
+      system "ln -sv #{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ar-#{version} #{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ar"
+      system "ln -sv #{CREW_PREFIX}/bin/#{gcc_arch}-gcc-nm-#{version} #{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-nm"
+      system "ln -sv #{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ranlib-#{version} #{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ranlib"
+      system "ln -sv #{CREW_PREFIX}/bin/#{gcc_arch}-gfortran-#{version} #{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gfortran"
+
+      system "ln -sv #{CREW_PREFIX}/share/man/man1/cpp-#{version}.1.gz #{CREW_DEST_PREFIX}/share/man/man1/cpp.1.gz"
+      system "ln -sv #{CREW_PREFIX}/share/man/man1/g++-#{version}.1.gz #{CREW_DEST_PREFIX}/share/man/man1/g++.1.gz"
+      system "ln -sv #{CREW_PREFIX}/share/man/man1/gcc-#{version}.1.gz #{CREW_DEST_PREFIX}/share/man/man1/gcc.1.gz"
+      system "ln -sv #{CREW_PREFIX}/share/man/man1/gcov-#{version}.1.gz #{CREW_DEST_PREFIX}/share/man/man1/gcov.1.gz"
+      system "ln -sv #{CREW_PREFIX}/share/man/man1/gcov-dump-#{version}.1.gz #{CREW_DEST_PREFIX}/share/man/man1/gcov-dump.1.gz"
+      system "ln -sv #{CREW_PREFIX}/share/man/man1/gcov-tool-#{version}.1.gz #{CREW_DEST_PREFIX}/share/man/man1/gcov-tool.1.gz"
+      system "ln -sv #{CREW_PREFIX}/share/man/man1/gfortran-#{version}.1.gz #{CREW_DEST_PREFIX}/share/man/man1/gfortran.1.gz"
     end
   end
 end
