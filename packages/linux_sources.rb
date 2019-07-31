@@ -7,6 +7,19 @@ class Linux_sources < Package
   source_url 'https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz'
   source_sha256 'f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '7dfea20067015e59a2b4b1006b0beddaa6873a01470cee8007647d990da5bf57',
+     armv7l: '7dfea20067015e59a2b4b1006b0beddaa6873a01470cee8007647d990da5bf57',
+       i686: 'fae80d1d113eb4e2d9bc84daee4b398c2064730234df74b09edfc85fb9a696b4',
+     x86_64: '3051229ae81224a038795eecd6d21dfd9dad2c5f8711137016bb8a4bb28852c9',
+  })
+
   def self.install
     linux_src_dir = CREW_DEST_PREFIX + '/src/linux'
     pdir = 'chromiumos-overlay/sys-kernel/linux-headers/files'
