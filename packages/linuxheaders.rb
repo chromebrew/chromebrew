@@ -10,11 +10,13 @@ class Linuxheaders < Package
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-4.14-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-4.14-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-3.18-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-4.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4960ced072202049c4f90350ebfa6b13a3fe6750ae8a1f0d79c63ad976b66391',
      armv7l: '4960ced072202049c4f90350ebfa6b13a3fe6750ae8a1f0d79c63ad976b66391',
+       i686: 'df0178926e599e8a6bb54a74c7c7cda734751e007a2bbb2e59f17a8fb3d4489f',
      x86_64: '1cbc54cf8c1af9996039c5aec487ed3f047c9c870341b08418c0d93fb40233a0',
   })
 
