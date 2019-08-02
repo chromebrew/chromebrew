@@ -13,9 +13,9 @@ class Codium < Package
 
   description 'Vscodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.36.0'
-  source_url 'https://github.com/VSCodium/vscodium/archive/1.36.0.tar.gz'
-  source_sha256  'd6a74770058ee6829ef788390e258f8abef4b85ab7869cbcec6122a957aa9745'
+  version '1.36.1'
+  source_url 'https://github.com/VSCodium/vscodium/archive/1.36.1.tar.gz'
+  source_sha256  'a2858f76abc4da57a0db4f8127b42b12f065d96dad172bb9f4f2b04c2805f82b'
 
   binary_url ({
   })
@@ -48,7 +48,7 @@ class Codium < Package
     system 'bash ./update_settings.sh'
     system 'yarn install'
     system 'mv product.json product.json.bak'
-  # set fields in product.json
+    # set fields in product.json
     tipsAndTricksUrl='setpath(["tipsAndTricksUrl"]; "https://go.microsoft.com/fwlink/?linkid=852118")'
     twitterUrl='setpath(["twitterUrl"]; "https://go.microsoft.com/fwlink/?LinkID=533687")'
     requestFeatureUrl='setpath(["requestFeatureUrl"]; "https://go.microsoft.com/fwlink/?LinkID=533482")'
@@ -75,12 +75,10 @@ class Codium < Package
     win32x64UserAppId='setpath (["win32x64UserAppId"]; "{{2E1F05D1-C245-4562-81EE-28188DB6FD17}")'
     urlProtocol='setpath(["urlProtocol"]; "vscodium")'
     extensionAllowedProposedApi='setpath(["extensionAllowedProposedApi"]; getpath(["extensionAllowedProposedApi"]) + ["ms-vsliveshare.vsliveshare"])'
-
     product_json_changes="#{tipsAndTricksUrl} | #{twitterUrl} | #{requestFeatureUrl} | #{documentationUrl} | #{introductoryVideosUrl} | #{extensionAllowedBadgeProviders} | #{updateUrl} | #{releaseNotesUrl} | #{keyboardShortcutsUrlMac} | #{keyboardShortcutsUrlLinux} | #{keyboardShortcutsUrlWin} | #{quality} | #{extensionsGallery} | #{nameShort} | #{nameLong} | #{linuxIconName} | #{applicationName} | #{win32MutexName} | #{win32DirName} | #{win32NameVersion} | #{win32RegValueName} | #{win32AppUserModelId} | #{win32ShellNameShort} | #{win32x64UserAppId} | #{urlProtocol} | #{extensionAllowedProposedApi}"
     system "cat product.json.bak | jq '#{product_json_changes}' > product.json"
     system "bash ./undo_telemetry.sh"
     ENV['NODE_ENV'] = 'production'
-    
 
     system "yarn run gulp vscode-linux-#{@arch}"
     system "nodebrew uninstall #{node_ver}" unless node_ver_installed == node_ver
