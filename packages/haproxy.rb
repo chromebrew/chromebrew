@@ -2,28 +2,31 @@ require 'package'
 
 class Haproxy < Package
   description 'The Reliable, High Performance TCP/HTTP Load Balancer.'
-  homepage 'http://www.haproxy.org/'
-  version '1.9.8'
-  source_url 'http://www.haproxy.org/download/1.9/src/haproxy-1.9.8.tar.gz'
-  source_sha256 '2d9a3300dbd871bc35b743a83caaf50fecfbf06290610231ca2d334fd04c2aee'
+  homepage 'https://www.haproxy.org/'
+  version '2.0.3'
+  source_url 'https://www.haproxy.org/download/2.0/src/haproxy-2.0.3.tar.gz'
+  source_sha256 'aac1ff3e5079997985b6560f46bf265447d0cd841f11c4d77f15942c9fe4b770'
 
   binary_url ({
-      i686: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-1.9.8-chromeos-i686.tar.xz',
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-1.9.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-      i686: '895f482eb4f01aa8b846f253064280c6b42b886add6432b65e228b07593d8508',
-    x86_64: 'a3db1613a3c363a4f09de71efcecbc70fc08efff257f1dd74fd6863c429d59a3',
+    aarch64: 'a39b9aed16ef1c7847900c7e4d35deaf7fa3bb704f95a15544db010798b276c0',
+     armv7l: 'a39b9aed16ef1c7847900c7e4d35deaf7fa3bb704f95a15544db010798b276c0',
+       i686: '44b553dcc063d51b090a51c67c2755a5d6412215cc8c8804348d783fe1195cac',
+     x86_64: '4de3e8213ea510996e81039fbd6dd9e5d4b15de6728cded2a0a12763a56d5f2a',
   })
 
-  depends_on 'openssl'
-  depends_on 'pcre'
+  depends_on 'pcre2'
 
   def self.build
-    system "make TARGET=linux26 USE_OPENSSL=1 USE_PCRE=1 USE_ZLIB=1"
+    system 'make', 'TARGET=linux-glibc', 'USE_OPENSSL=1', 'USE_PCRE2_JIT=1', 'USE_ZLIB=1', 'DEBUG=-s'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

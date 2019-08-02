@@ -3,21 +3,21 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.14.4'
-  source_url 'https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.14.4.tar.xz'
-  source_sha256 'f94f6696c5f05a3b3a9183e39c5f5c0b779f75a04c0efa497e7920afa985ffc7'
+  version '1.16.0'
+  source_url 'https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.16.0.tar.xz'
+  source_sha256 '0e8e2f7118be437cba879353970cf83c2acced825ecb9275ba05d9186ef07c00'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.14.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.16.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.16.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.16.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gstreamer-1.16.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd0d13f431c7dd2300538c99fa7346eb731a82e71ee637caa93ef5181c3c7cff4',
-     armv7l: 'd0d13f431c7dd2300538c99fa7346eb731a82e71ee637caa93ef5181c3c7cff4',
-       i686: '88cdb5e2d96c18da5e8168897309e463617888a0227fa1994c62a6dbdba054c7',
-     x86_64: 'ffef3b7e782be4821276a5f75c4b75e096a145901193b962b3e94b6ac63252ca',
+    aarch64: '893b56afd71e7b245fe73899569579d9eb9f7f580612b1f35516045d8ac0ff88',
+     armv7l: '893b56afd71e7b245fe73899569579d9eb9f7f580612b1f35516045d8ac0ff88',
+       i686: 'c99a01dc6368256e71bda4b73c01b59ea989a176f07ebb16144999c5f825c77a',
+     x86_64: '5e54e1d4fb7b4468f7dc8ecfb0bcdeb06b96796d5b5425e46f45fb3545ccb7a1',
   })
 
   depends_on 'glib'
@@ -32,6 +32,7 @@ class Gstreamer < Package
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
+           '--disable-maintainer-mode',
            '--enable-failing-tests',
            '--disable-gst-debug',
            '--disable-debug'
@@ -39,10 +40,10 @@ class Gstreamer < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    # system "make", "check" # The 'gst/gsttracerrecord' test fails.
+    # system 'make', 'check' # The 'gst/gsttracerrecord' test fails.
   end
 end

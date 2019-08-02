@@ -8,10 +8,10 @@ if [ ! -f packages.yaml ]; then
 fi
 if test $1; then
   grep -1 "^activity: $1" packages.yaml > /tmp/activity.txt
-  grep ^url: /tmp/activity.txt | cut -d' ' -f2 > /tmp/urls.txt
+  grep ^url: /tmp/activity.txt | cut -d' ' -f2 | sort | uniq > /tmp/urls.txt
   rm -f /tmp/activity.txt
 else
-  grep ^url: packages.yaml | cut -d' ' -f2 > /tmp/urls.txt
+  grep ^url: packages.yaml | cut -d' ' -f2 | sort | uniq > /tmp/urls.txt
 fi
 if test $2; then
   lines=$(wc -l /tmp/urls.txt | cut -d' ' -f1)
