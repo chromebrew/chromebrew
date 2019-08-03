@@ -15,6 +15,6 @@ class Youtubedl < Package
   depends_on 'setuptools'
 
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I youtube-dl==2019.08.02"
+    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I youtube-dl==#{version}"
   end
 end
