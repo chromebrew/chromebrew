@@ -18,13 +18,14 @@ class Gn < Package
   def self.build
     system "git clone https://gn.googlesource.com/gn"
     system 'set C_INCLUDE_PATH /usr/local/include/'
-    Dir.chdir ("gn")
-    system "python build/gen.py"
-    system "ninja -C out"
+    Dir.chdir ("gn") do
+      system "python build/gen.py"
+      system "ninja -C out"
+    end
   end
 
   def self.install
-    system "cp out/gn #{CREW_PREFIX}/bin/."
+    system "install -Dm755 out/gn #{CREW_DEST_PREFIX}/bin/gn"
   end
 
   def self.postinstall
