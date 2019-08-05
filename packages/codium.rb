@@ -1,6 +1,28 @@
 require 'package'
 
 class Codium < Package
+  description 'Vscodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
+  homepage 'https://vscodium.com/'
+  version '1.36.1'
+  source_url 'https://github.com/VSCodium/vscodium/archive/1.36.1.tar.gz'
+  source_sha256 'a2858f76abc4da57a0db4f8127b42b12f065d96dad172bb9f4f2b04c2805f82b'
+
+  binary_url ({
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/codium-1.36.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+     x86_64: 'fcb7f36f5be299ece9473e082105cfa843bd011e595b1c7545d7b4acef572aa5',
+  })
+
+  depends_on 'nodebrew'
+  depends_on 'yarn' => :build
+  depends_on 'gtk2'
+  depends_on 'jq'
+  depends_on 'ld_default'
+  depends_on 'libsecret'
+  depends_on 'libgconf'
+  depends_on 'xdg_base'
+  depends_on 'sommelier'
 
   case ARCH
   when 'x86_64'
@@ -8,29 +30,8 @@ class Codium < Package
   when 'i686'
     @arch = 'ia32'
   when 'armv7l', 'aarch64'
-    @arch = 'arm'
+    @arch = 'arm64'
   end
-
-  description 'Vscodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
-  homepage 'https://vscodium.com/'
-  version '1.36.1'
-  source_url 'https://github.com/VSCodium/vscodium/archive/1.36.1.tar.gz'
-  source_sha256  'a2858f76abc4da57a0db4f8127b42b12f065d96dad172bb9f4f2b04c2805f82b'
-
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
-
-  depends_on 'nodebrew'
-  depends_on 'yarn' => :build
-  depends_on 'gtk2'
-  depends_on 'ld_default'
-  depends_on 'libsecret'
-  depends_on 'libgconf'
-  depends_on 'xdg_base'
-  depends_on 'sommelier'
-  depends_on 'jq'
 
   ENV['PATH'] = "#{ENV['HOME']}/.yarn/bin:#{ENV['PATH']}"
   ENV['LIBRARY_PATH'] = CREW_LIB_PREFIX
@@ -38,6 +39,7 @@ class Codium < Package
   def self.build
     old_ld = `ld_default b`.chomp
     node_ver = 'v10.16.0'
+    node_ver = 'v9.11.2' if ARCH == 'i686'
     node_old = `nodebrew ls | fgrep 'current: ' | cut -d' ' -f2`.chomp
     node_ver_installed = `nodebrew ls | grep -o #{node_ver} | head -1`.chomp
     system "bash ./get_repo.sh"
@@ -80,11 +82,21 @@ class Codium < Package
     system "bash ./undo_telemetry.sh"
     ENV['NODE_ENV'] = 'production'
 
+    # Fix for segfault while running 'yarn'.  See https://github.com/Microsoft/vscode/issues/53634.
+    system "sed -i 's,--max_old_space_size=4095,--max_old_space_size=2048,g' package.json" unless ARCH == 'x86_64'
+
     system "yarn run gulp vscode-linux-#{@arch}"
     system "nodebrew uninstall #{node_ver}" unless node_ver_installed == node_ver
     system "nodebrew use #{node_old}" unless node_old == "none"
     system 'ld_default', "#{old_ld}"
-
+    # Add the Marketplace for extensions.
+    system "cat << 'EOF' >> product.json
+\"extensionsGallery\": {
+    \"serviceUrl\": \"https://marketplace.visualstudio.com/_apis/public/gallery\",
+    \"cacheUrl\": \"https://vscode.blob.core.windows.net/gallery/index\",
+    \"itemUrl\": \"https://marketplace.visualstudio.com/items\"
+}
+EOF"
   end
 
   def self.install
@@ -92,7 +104,7 @@ class Codium < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     system 'mv', "../VSCode-linux-#{@arch}", "#{CREW_DEST_PREFIX}/share/codium"
     system "sed -i -e '/CLI=/d' -e 's,\"\\$CLI\" ,,g' -e 's,ELECTRON_RUN_AS_NODE=1 ,,g' #{CREW_DEST_PREFIX}/share/codium/bin/codium"
-    # ^^^ Do not remove this line.
+    system "sed -i '42iGDK_BACKEND=x11' #{CREW_DEST_PREFIX}/share/codium/bin/codium"
     system 'ln', '-s', '../share/codium/bin/codium', "#{CREW_DEST_PREFIX}/bin/codium"
   end
 
@@ -104,5 +116,3 @@ class Codium < Package
     puts
   end
 end
-
-
