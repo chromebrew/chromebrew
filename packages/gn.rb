@@ -12,6 +12,8 @@ class Gn < Package
   binary_sha256 ({
   })
 
+  depends_on 'python27' => :build
+  depends_on 'meson' => :build
 
   def self.build
     system "git clone https://gn.googlesource.com/gn"
