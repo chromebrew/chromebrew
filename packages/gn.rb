@@ -4,9 +4,9 @@ class Gn < Package
   description 'GN is a meta-build system that generates build files for Ninja.'
   homepage 'https://gn.googlesource.com/gn/'
   version 'dca877f'
-  source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
-  source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
-
+  source_url 'file:///dev/null'
+  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  
   binary_url ({
   })
   binary_sha256 ({
