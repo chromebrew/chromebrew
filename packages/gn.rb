@@ -14,7 +14,6 @@ class Gn < Package
 
   depends_on 'python27' => :build
   depends_on 'meson' => :build
-  depends_on 'gcc8' => :build
 
   def self.build
     system "git clone https://gn.googlesource.com/gn"
@@ -27,7 +26,7 @@ class Gn < Package
   end
 
   def self.install
-    system "install -Dm755 out/gn #{CREW_DEST_PREFIX}/bin/gn"
+    system "install -Dm755 gn/out/gn #{CREW_DEST_PREFIX}/bin/gn"
   end
 
   def self.postinstall
