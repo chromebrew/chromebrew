@@ -14,10 +14,12 @@ class Gn < Package
 
   depends_on 'python27' => :build
   depends_on 'meson' => :build
+  depends_on 'gcc8' => :build
 
   def self.build
     system "git clone https://gn.googlesource.com/gn"
-    system 'set C_INCLUDE_PATH /usr/local/include/'
+    ENV['C_INCLUDE_PATH']="#{CREW_PREFIX}/include/"
+    ENV['CXX']="g++"
     Dir.chdir ("gn") do
       system "python build/gen.py"
       system "ninja -C out"
