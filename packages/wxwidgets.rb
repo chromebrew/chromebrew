@@ -3,21 +3,21 @@ require 'package'
 class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.1.2'
-  source_url 'https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.2/wxWidgets-3.1.2.tar.bz2'
-  source_sha256 '4cb8d23d70f9261debf7d6cfeca667fc0a7d2b6565adb8f1c484f9b674f1f27a'
+  version '3.0.4'
+  source_url 'https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2'
+  source_sha256 '96157f988d261b7368e5340afa1a0cad943768f35929c22841f62c25b17bf7f0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.1.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '96580aec6fe20137f5eee84a576cc748c0335315366ab4936cee018a9aed8b24',
-     armv7l: '96580aec6fe20137f5eee84a576cc748c0335315366ab4936cee018a9aed8b24',
-       i686: 'dc1e2b57c6a3fe3629dc1d214608a27a75c46170ad2888a074c04549ee46350b',
-     x86_64: 'bbc30d233c7a63aa6ebfe0d49e835a918731f964b0774e0ac87e4ae0025ad15a',
+    aarch64: 'b91d482d148f8132c67e40e8b3c33d7d2e29744cade8f39b2797c3a8bef52081',
+     armv7l: 'b91d482d148f8132c67e40e8b3c33d7d2e29744cade8f39b2797c3a8bef52081',
+       i686: 'aba2a4d219b45436427b01d8e6f1b245971966b946e906668595710a63b74f01',
+     x86_64: '56a888743624497531f4896cc9c3de3feb041c2c963f2ce08c770c5745e9c983',
   })
 
   depends_on 'gst_plugins_base'
@@ -28,23 +28,13 @@ class Wxwidgets < Package
   depends_on 'mesa'
 
   def self.build
-    Dir.mkdir 'wxwidgets'
-    Dir.chdir 'wxwidgets' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '-DCMAKE_BUILD_TYPE=Release',
-             '-DwxBUILD_TOOLKIT=gtk3',
-             '..'
-      system 'make'
-    end
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    Dir.chdir 'wxwidgets' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      if ARCH == 'x86_64'
-        FileUtils.mv "#{CREW_DEST_PREFIX}/lib", "#{CREW_DEST_LIB_PREFIX}"
-      end
-    end
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
