@@ -8,8 +8,16 @@ class Filecmd < Package
   source_sha256 'e9c13967f7dd339a3c241b7710ba093560b9a33013491318e88e6b8b57bae07f'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '26c0e8ccc7d7d64e422d7f4deae71550646f16f3228cdd9dcc926c5dbea5eb8e',
+     armv7l: '26c0e8ccc7d7d64e422d7f4deae71550646f16f3228cdd9dcc926c5dbea5eb8e',
+       i686: '495d8a50dabff55cf4bf288aa9e8a4ab3ceadf18de20aacd96a79d0bb42219ae',
+     x86_64: '5df86414a61540346de2712eb7eb553a5562d17f4c3d325f4a42aa8a2bf43829',
   })
 
   def self.build
