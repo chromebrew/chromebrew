@@ -8,8 +8,16 @@ class Httpd < Package
   source_sha256 '8b95fe249f3a6c50aad3ca125eef3e02d619116cde242e1bc3c266b7b5c37c30'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/httpd-2.4.39-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/httpd-2.4.39-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/httpd-2.4.39-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/httpd-2.4.39-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '15fa2c35305494c0c3b24a71ec3789de9c8fe4336e7c0b034a86b7b373826561',
+     armv7l: '15fa2c35305494c0c3b24a71ec3789de9c8fe4336e7c0b034a86b7b373826561',
+       i686: '3d8937240110d1ae00cd8d5470c75eb8befa04156dd3f849a667f126d3d7d767',
+     x86_64: '77bacdd6568a4f1e92eee142f3cce379bc71f3228fb5459ef53580e80676714a',
   })
 
   depends_on 'apr'
