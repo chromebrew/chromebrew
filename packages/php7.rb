@@ -3,21 +3,21 @@ require 'package'
 class Php7 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.6'
-  source_url 'https://php.net/distributions/php-7.3.6.tar.xz'
-  source_sha256 'fefc8967daa30ebc375b2ab2857f97da94ca81921b722ddac86b29e15c54a164'
+  version '7.3.8'
+  source_url 'https://php.net/distributions/php-7.3.8.tar.xz'
+  source_sha256 'f6046b2ae625d8c04310bda0737ac660dc5563a8e04e8a46c1ee24ea414ad5a5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.3.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '8483fc02476688ae24151ee5c68a4232d27db4666bf8b38c96ede735348b5305',
-     armv7l: '8483fc02476688ae24151ee5c68a4232d27db4666bf8b38c96ede735348b5305',
-       i686: '0ed0f04f51244e2177a553a57bc78d38685213628cc0dbc645e142d15b3c58f7',
-     x86_64: '20ee5c4bfab8385ebb67494628d5fc9acb72bfc68ff0f26a1411f57e3b0d8827',
+    aarch64: 'f0a83bcb630ecd90ac72eceab0cc6698e91460bff074ef9181da5605c029b2ab',
+     armv7l: 'f0a83bcb630ecd90ac72eceab0cc6698e91460bff074ef9181da5605c029b2ab',
+       i686: 'ce2ab2ccacd4322a8e9f7c157154f5592eb6743c190664d30c4cc9c3ca71f22a',
+     x86_64: '7a12b3b29928cb72d2e1542cfc5dc1a84e2e7c41f065c133e9f8da778a3886a1',
   })
 
   depends_on 'libgcrypt'
@@ -60,7 +60,7 @@ class Php7 < Package
            "--infodir=#{CREW_PREFIX}/info",
            "--libdir=#{CREW_LIB_PREFIX}",
            "--localstatedir=#{CREW_PREFIX}/tmp",
-           "--mandir=#{CREW_PREFIX}/man",
+           "--mandir=#{CREW_PREFIX}/share/man",
            "--sbindir=#{CREW_PREFIX}/bin",
            "--with-config-file-path=#{CREW_PREFIX}/etc",
            "--with-libdir=#{ARCH_LIB}",
