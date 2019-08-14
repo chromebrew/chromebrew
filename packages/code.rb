@@ -24,8 +24,8 @@ class Code < Package
   depends_on 'sommelier'
 
   case ARCH
-  when 'aarch64', 'armv7l'
-    @arch = 'arm64'
+  when 'armv7l', 'aarch64'
+    @arch = 'arm'
   when 'i686'
     @arch = 'ia32'
   when 'x86_64'
