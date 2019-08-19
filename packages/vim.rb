@@ -60,6 +60,10 @@ class Vim < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "VIMRCLOC=#{CREW_PREFIX}/etc", "install"
 
+    # remove desktop and icon files for the cli package
+    FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/applications"
+    FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/icons"
+
     # these are provided by 'vim_runtime'
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/vim"
   end
