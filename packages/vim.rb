@@ -3,21 +3,26 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  version '8.1.0648'
-  source_url 'https://github.com/vim/vim/archive/v8.1.0648.tar.gz'
-  source_sha256 '7e6ad44dbb8fda0aca91c22fa0dcaed2d845cf00c26d6d3df3bfaa38c9da222a'
+  version '8.1.1915'
+  source_url 'https://github.com/vim/vim/archive/v8.1.1915.tar.gz'
+  source_sha256 '508bcffd340497d6279fb2d5aa98ff43190cf7983a87fe4838fb780446f900a9'
+
+  if ARGV[0] == 'install'
+    gvim = `which gvim 2> /dev/null`.chomp
+    abort "gvim version #{version} already installed.".lightgreen unless "#{gvim}" == ""
+  end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.0648-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.0648-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.0648-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.0648-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3ad8a65a09ee223bd7ac08026617eb1738ea9f00263a588840d3bc94f804aec6',
-     armv7l: '3ad8a65a09ee223bd7ac08026617eb1738ea9f00263a588840d3bc94f804aec6',
-       i686: '9e94cb4b28b8b7e6a3cd70081d85b4a2950209aa085611aa5def722f9ae585fa',
-     x86_64: '03d46bc71c2785601e95b5e898b198dac56fae7810907d0beab0f08fe7c576f2',
+    aarch64: '7e9139cbb1940f272ea3414facfbe34e37f59e476868d8ceb7fe2419ac1261e1',
+     armv7l: '7e9139cbb1940f272ea3414facfbe34e37f59e476868d8ceb7fe2419ac1261e1',
+       i686: 'a3714ab96726d3630f6903b535b4af5808fdcc1101aabf08b0d79544d676e984',
+     x86_64: 'b5eeeb48785b05e94227747138b72b8ea48502b32aa0b6b7559e6582fab85a99',
   })
 
   depends_on 'python27' => :build
@@ -55,23 +60,21 @@ class Vim < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "VIMRCLOC=#{CREW_PREFIX}/etc", "install"
 
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
-
     # these are provided by 'vim_runtime'
-    system "rm", "-r", "#{CREW_DEST_PREFIX}/share/vim"
+    FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/vim"
 
-    # remove desktop and icon files for the cli package
-    system "rm", "-r", "#{CREW_DEST_PREFIX}/share/applications"
-    system "rm", "-r", "#{CREW_DEST_PREFIX}/share/icons"
+    # remove desktop and icon files for the terminal package
+    FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/applications"
+    FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/icons"
   end
 
   def self.postinstall
     puts
-    puts "The config files are located in #{CREW_PREFIX}/etc".lightblue
-    puts "User-specific configuration should go in ~/.vimrc".lightblue
+    puts "The config files are located in #{CREW_PREFIX}/etc.".lightblue
+    puts "User-specific configuration should go in ~/.vimrc.".lightblue
     puts
     puts "If you are upgrading from an earlier version, edit ~/.bashrc".orange
-    puts "and remove the 'export VIMRUNTIME' line.".orange
+    puts "and remove the 'export VIMRUNTIME' and 'export LC_ALL=C' lines.".orange
     puts
   end
 end

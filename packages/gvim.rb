@@ -3,21 +3,21 @@ require 'package'
 class Gvim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  version '8.1.0648'
-  source_url 'https://github.com/vim/vim/archive/v8.1.0648.tar.gz'
-  source_sha256 '7e6ad44dbb8fda0aca91c22fa0dcaed2d845cf00c26d6d3df3bfaa38c9da222a'
+  version '8.1.1915'
+  source_url 'https://github.com/vim/vim/archive/v8.1.1915.tar.gz'
+  source_sha256 '508bcffd340497d6279fb2d5aa98ff43190cf7983a87fe4838fb780446f900a9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.0648-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.0648-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.0648-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.0648-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c45090038eea4923238023236849b34366da1e6b9a50db3dc6ef8b409c4c075d',
-     armv7l: 'c45090038eea4923238023236849b34366da1e6b9a50db3dc6ef8b409c4c075d',
-       i686: 'a7e9a2c05d77784b6da46ee40b7bbc8365a0ea4840b1979e05abe4cbc69aa1c6',
-     x86_64: '7e6c36e7602a62d615899cdc3230aacea3a08c908f1927ba2f44ff31bd09fe4f',
+    aarch64: 'b31573015a9c31dd256555db8d75634e40cdfe79f3141540558887c6fe29b851',
+     armv7l: 'b31573015a9c31dd256555db8d75634e40cdfe79f3141540558887c6fe29b851',
+       i686: '655cf5e0076da4b7d52d7ecfe87f02b5b2ba48d1b5366652ebd08fa0288b546d',
+     x86_64: '07be8e948923b2c2b81acd1ee343da7c4f221825ee3dc14bea488149cc5fef18',
   })
 
   depends_on 'python27' => :build
@@ -57,10 +57,8 @@ class Gvim < Package
   def self.install
     system "make", "VIMRCLOC=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", "install"
 
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
-
     # these are provided by 'vim_runtime'
-    system "rm", "-r", "#{CREW_DEST_PREFIX}/share/vim"
+    FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/vim"
   end
 
   def self.postinstall
