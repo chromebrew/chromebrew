@@ -12,11 +12,8 @@ class Libspng < Package
   binary_sha256 ({
   })
 
-  depends_on 'cmake' => :build
-  depends_on 'zlibpkg'
-
   def self.build
-    system 'mkdir -p build'
+    Dir.mkdir 'build'
     Dir.chdir('build') do
       system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} .."
       system "sed -i 's,build\/tests\/libspng\.pc,build\/libspng.pc,' cmake_install.cmake"
