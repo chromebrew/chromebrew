@@ -14,7 +14,6 @@ class Subversion < Package
 
   depends_on 'aprutil'
   depends_on 'serf'
-  depends_on 'filecmd'
   depends_on 'sqlite'
 
   def self.build
