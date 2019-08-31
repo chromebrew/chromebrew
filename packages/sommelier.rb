@@ -3,21 +3,21 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/containers/sommelier'
-  version '1382ce084cc4'
+  version '1382ce084cc40'
   source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
   source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4d0c30b98a82340e43e3e8f32d9914e1726465b3c8ca961c0f764aaa967f8cd7',
-     armv7l: '4d0c30b98a82340e43e3e8f32d9914e1726465b3c8ca961c0f764aaa967f8cd7',
-       i686: '20fb398592c4a8368fd2292faaa599632f5df717d30a8c27cd2a67631563e0dd',
-     x86_64: '29813316bbb6421f5a54ca45ccb52d0ab88f2a4c84bb84b823bb08fc50dd8216',
+    aarch64: 'e92036ee5c9e2fedbe9535a27f8f84fcbf525ce44f380bab570373ae76446fd5',
+     armv7l: 'e92036ee5c9e2fedbe9535a27f8f84fcbf525ce44f380bab570373ae76446fd5',
+       i686: 'd8497cdcd814445e1881e9719162cbeb9693f9376134dc25db32bb0891532fa5',
+     x86_64: '4a84a148fd1209b9196a331b17aec91a971c8f538d49cd764f3425c2d14217d4',
   })
 
   depends_on 'mesa'
@@ -33,7 +33,7 @@ class Sommelier < Package
       system "sed -i 's,/lib/,/#{ARCH_LIB}/,g' Makefile"
       system "sed -i 's,-I.,-I. -I#{CREW_PREFIX}/include/pixman-1,g' Makefile"
       system "make PREFIX=#{CREW_PREFIX} SYSCONFDIR=#{CREW_PREFIX}/etc"
-      system "echo 'GDK_BACKEND=wayland' > .sommelier.env"
+      system "echo 'GDK_BACKEND=x11' > .sommelier.env"
       system "echo 'CLUTTER_BACKEND=wayland' >> .sommelier.env"
       system "echo 'XDG_RUNTIME_DIR=/var/run/chrome' >> .sommelier.env"
       system "echo 'WAYLAND_DISPLAY=wayland-0' >> .sommelier.env"
@@ -104,8 +104,8 @@ class Sommelier < Package
     puts
     puts "Please be aware that gui applications may not work without the sommelier daemon running.".orange
     puts
-    puts "If you are upgrading from an earlier version of sommelier, edit ~/.bashrc".orange
-    puts "and remove the former 'Sommelier environment variables + daemon' section.".orange
+    puts "If you are upgrading from an earlier version of sommelier, run".orange
+    puts "'stopsommelier && startsommelier' or logout and login again.".orange
     puts
   end
 end
