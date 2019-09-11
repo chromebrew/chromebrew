@@ -4,7 +4,7 @@ require 'package'
 
 class Arduino_ide < Package
 
-  @version = "1.8.8"
+  @version = "1.8.9"
 
   case ARCH
   when 'x86_64'
@@ -17,9 +17,9 @@ class Arduino_ide < Package
 
   description 'Arduino is an open-source physical computing platform based on a simple I/O board and a development environment that implements the Processing/Wiring language.'
   homepage 'https://www.arduino.cc/'
-  version '1.8.8'
+  version '1.8.9'
   source_url "https://github.com/arduino/Arduino/releases/download/#{@version}/arduino-#{@version}.tar.xz"
-  source_sha256 '05bbed313f12801ed37c5a38d642ec142ed8e7ccb34dd77815b45e663f1c0c7a'
+  source_sha256 '49e9c3a3a04c8dae8c2ffbfd39cf83b77d4908a09e29c2b3bfa4697c59ea1bf2'
 
   binary_url ({
   })
