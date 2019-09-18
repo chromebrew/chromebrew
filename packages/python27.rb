@@ -8,8 +8,16 @@ class Python27 < Package
   source_sha256 'f222ef602647eecb6853681156d32de4450a2c39f4de93bd5b20235f2e660ed7'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.16-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.16-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '16265a3e01624006c7446d4e0f59ff8b497f351bad14d3d326e17511c2711095',
+     armv7l: '16265a3e01624006c7446d4e0f59ff8b497f351bad14d3d326e17511c2711095',
+       i686: 'b098571da5c664c9e777d48b0f50ef9c3bf4ffd1aebf5edcdad48ef60a940d6c',
+     x86_64: '4987e4e3fd77e1db8233c2d2652174c519001b6ab2cd2989c3329268e093d701',
   })
 
   depends_on 'bz2' => :build
