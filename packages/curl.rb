@@ -8,8 +8,16 @@ class Curl < Package
   source_sha256 'dbb48088193016d079b97c5c3efde8efa56ada2ebf336e8a97d04eb8e2ed98c1'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.66.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.66.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.66.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.66.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '135488fd75e5127645d4ffe07d67e635229e5bfdb238852e5d8af9c10fd5f15d',
+     armv7l: '135488fd75e5127645d4ffe07d67e635229e5bfdb238852e5d8af9c10fd5f15d',
+       i686: 'c03cb9fe9b2d30e106a96a686ce79e367281cea8296241c6151938fcecde27e0',
+     x86_64: 'aa67936bd49b3722c356c5fd5137f5b3b350f6085a8da19d70e03ee58f428e60',
   })
 
   depends_on 'groff' => :build
