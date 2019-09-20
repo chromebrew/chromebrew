@@ -3,21 +3,13 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version '1.16.115'
-  source_url 'https://github.com/aws/aws-cli/archive/1.16.115.tar.gz'
-  source_sha256 '7ef52afac9f424a8693fdecad9ec2e4d752c2cb471cd7cbf3dcdc98ea017e08a'
+  version '1.16.241'
+  source_url 'https://github.com/aws/aws-cli/archive/1.16.241.tar.gz'
+  source_sha256 'c0c503379ec30e576d6c88b15c9d9a820fc085c15b14744291081ab55f3d855c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.115-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '00f028140dd82e1c42d8897996c05a735df1fc7f345bb6dbd361979e7c1acca3',
-     armv7l: '00f028140dd82e1c42d8897996c05a735df1fc7f345bb6dbd361979e7c1acca3',
-       i686: '4e7964fcca3a9b0911dd3f08b6257e3c6a7d1869fb8d4ae091cfa1c16048413e',
-     x86_64: 'e12e295100e9f71db4e8e77f75de976f1d7964bb35bae27953216b2e4aab8b95',
   })
 
   depends_on 'six'
