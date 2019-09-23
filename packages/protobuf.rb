@@ -3,21 +3,21 @@ require 'package'
 class Protobuf < Package
   description 'Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.'
   homepage 'https://developers.google.com/protocol-buffers/'
-  version '3.6.1.3'
-  source_url 'https://github.com/google/protobuf/archive/v3.6.1.3.tar.gz'
-  source_sha256 '73fdad358857e120fd0fa19e071a96e15c0f23bb25f85d3f7009abfd4f264a2a'
+  version '3.9.2'
+  source_url 'https://github.com/protocolbuffers/protobuf/archive/v3.9.2.tar.gz'
+  source_sha256 '1fbf1c2962af287607232b2eddeaec9b4f4a7a6f5934e1a9276e9af76952f7e0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.6.1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/protobuf-3.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f6c96a5727d6fbbc5ab2573b4c8abe375834be889e8faf6adc3c0a66e6fd09f9',
-     armv7l: 'f6c96a5727d6fbbc5ab2573b4c8abe375834be889e8faf6adc3c0a66e6fd09f9',
-       i686: '44593389c51701e0d9c4387f2d8daa34012c7ef8be32fea4cc0b445978ece14e',
-     x86_64: 'bdd16eaf57b8745332d19d794e4d039885afc78e5ac4061503e3815096ea211f',
+    aarch64: '7b3f225eebd40ce365b40d98ea7eaef74705a2801f50c83a4bc84cdd7f0a5cf6',
+     armv7l: '7b3f225eebd40ce365b40d98ea7eaef74705a2801f50c83a4bc84cdd7f0a5cf6',
+       i686: '11088f5231b60bddcb902bfc9b72363d67c668384063f31e24a37244cc34cf60',
+     x86_64: '7e6016f3c4b2c50db0e7b285a3f4fbc384b80f9cf367a68fda8de15d4fb8fcc3',
   })
 
   def self.build
