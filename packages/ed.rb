@@ -16,7 +16,8 @@ class Ed < Package
   depends_on 'lzip' => :build
 
   def self.build
-    system './configure'
+    system "./configure",
+	   "--prefix=#{CREW_PREFIX}"
     system 'make'
   end
 
