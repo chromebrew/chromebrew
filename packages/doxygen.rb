@@ -16,7 +16,7 @@ class Doxygen < Package
   depends_on 'python27' => :build
 
   def self.build
-    system 'mkdir -p build'
+    Dir.mkdir('build')
     Dir.chdir('build') do
       system 'cmake',
              "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}",
