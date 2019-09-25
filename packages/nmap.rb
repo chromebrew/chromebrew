@@ -12,9 +12,6 @@ class Nmap < Package
   binary_sha256 ({
   })
 
-  depends_on 'buildessential' => :build
-  depends_on 'filecmd' => :build
-
   def self.build
     #fixup "/usr/bin/file" -> "#{CREW_PREFIX}/bin/file" in the configure scripts
     system "sed -i s#/usr/bin/file##{CREW_DEST_PREFIX}/bin/file#g libdnet-stripped/configure" 
