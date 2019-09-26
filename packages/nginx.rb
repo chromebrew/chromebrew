@@ -13,7 +13,6 @@ class Nginx < Package
   })
 
   depends_on 'pcre'
-  depends_on 'zlibpkg'
 
   def self.build
     system './configure',
@@ -23,7 +22,7 @@ class Nginx < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "ln -s #{CREW_PREFIX}/share/nginx/sbin/nginx nginx"
       system "echo '#!/bin/bash' > startnginx"
