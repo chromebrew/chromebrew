@@ -4,7 +4,7 @@ class Config < Package
   description 'The GNU config.guess and config.sub scripts.'
   homepage 'https://savannah.gnu.org/projects/config'
   version '1912ca5'
-  source_url 'http://git.savannah.gnu.org/cgit/config.git/snapshot/config-1912ca5.tar.gz'
+  source_url 'https://git.savannah.gnu.org/cgit/config.git/snapshot/config-1912ca5.tar.gz'
   source_sha256 '3b9142de353991dada446a1bc55599838c0e066091ed63a184a9abce50f54724'
 
   def self.build
