@@ -3,13 +3,21 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialise or manually update index database caches that are usually maintained by man.'
   homepage 'http://savannah.nongnu.org/projects/man-db'
-  version '2.8.6'
+  version '2.8.6.1'
   source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.8.6.tar.xz'
   source_sha256 'a8baebeb1e1de770a08bbbb0bd50f4c00a2ed7fed07aafd917c7ddf92178a955'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '4ab54543270e692f94ac50235b1518824aa1bdb09a45745991848e9c30dc6469',
+     armv7l: '4ab54543270e692f94ac50235b1518824aa1bdb09a45745991848e9c30dc6469',
+       i686: 'c8378e0ca6622c336bf3e8cfab8a85aff1f49a498008221a06be74dc5509311d',
+     x86_64: '5d830ca395acb5b7ab78fef4e44669bc1c5066196d139bcfcabd91c5b51055a8',
   })
 
   def self.build
