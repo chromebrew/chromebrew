@@ -39,7 +39,7 @@ class Mandb < Package
     ].each { |file|
       system "sed -i 's,/var/cache/man,#{CREW_PREFIX}/cache/man,g' #{file}"
     }
-    system "sed -i 's,/var/cache/man,#{CREW_PREFIX}/share/man,g' tools/chconfig"
+    system "sed -i 's,/usr/share/man,#{CREW_PREFIX}/share/man,g' tools/chconfig"
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
