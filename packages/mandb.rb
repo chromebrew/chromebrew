@@ -8,8 +8,16 @@ class Mandb < Package
   source_sha256 '2c77a2bb9dbf06f72417a6f63063e204888a22a5020ff77334d304d55f813a28'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '4ab54543270e692f94ac50235b1518824aa1bdb09a45745991848e9c30dc6469',
+     armv7l: '4ab54543270e692f94ac50235b1518824aa1bdb09a45745991848e9c30dc6469',
+       i686: 'c8378e0ca6622c336bf3e8cfab8a85aff1f49a498008221a06be74dc5509311d',
+     x86_64: '5d830ca395acb5b7ab78fef4e44669bc1c5066196d139bcfcabd91c5b51055a8',
   })
 
   def self.build
