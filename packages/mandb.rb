@@ -4,8 +4,8 @@ class Mandb < Package
   description 'mandb is used to initialise or manually update index database caches that are usually maintained by man.'
   homepage 'http://savannah.nongnu.org/projects/man-db'
   version '2.8.6.1'
-  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.8.6.tar.xz'
-  source_sha256 'a8baebeb1e1de770a08bbbb0bd50f4c00a2ed7fed07aafd917c7ddf92178a955'
+  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.8.6.1.tar.xz'
+  source_sha256 '2c77a2bb9dbf06f72417a6f63063e204888a22a5020ff77334d304d55f813a28'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.8.6.1-chromeos-armv7l.tar.xz',
