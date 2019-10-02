@@ -3,21 +3,21 @@ require 'package'
 class Nss < Package
   description 'Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.'
   homepage 'https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS'
-  version '3.42'
-  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_42_RTM/src/nss-3.42-with-nspr-4.20.tar.gz'
-  source_sha256 '59a0f6f4209b4066702c20c75d6b5531c92b6b3a7bc938b56aa3891c808860dd'
+  version '3.46'
+  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_46_RTM/src/nss-3.46-with-nspr-4.22.tar.gz'
+  source_sha256 '3d4197196e870ab2dccc6ee497e0ec83f45ea070fee929dd931491c024d69f31'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.42-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.42-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.42-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.42-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.46-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.46-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.46-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.46-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9181501ed99d339989be2aaa11fe69cc0a5317b13bfadf95e6924d497e8d13c7',
-     armv7l: '9181501ed99d339989be2aaa11fe69cc0a5317b13bfadf95e6924d497e8d13c7',
-       i686: '69644e80b3127dcfc4a20e3353dd194297c427c9a37bbbbae1a9482c9cb45961',
-     x86_64: 'b7444bf704022a0bf2f6efe785bbf65b5ed12479a0c1d03e89500b1d19652e00',
+    aarch64: '70857c150acf4e50ab20f1108c89c1be22189953ecbcabb13816d92d7473854f',
+     armv7l: '70857c150acf4e50ab20f1108c89c1be22189953ecbcabb13816d92d7473854f',
+       i686: '7693bc01a39e8a15a7f1a5c5be28194cdd65c2592155401952d14a8376b80ac5',
+     x86_64: '5d15892323a46a0d4c4cf709f615e2243adb1ade44d7118773b3a057cf11aa9a',
   })
 
   depends_on 'gyp' => :build
