@@ -8,8 +8,16 @@ class Aws < Package
   source_sha256 'dfe2021ac11641aa30bf0245f1be9ffcca54af5af6d66a1ed64a96b7bdf43690'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.252-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.252-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.252-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.252-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '9fcc0324a91701d843c57a0313c2f69a861db5e24edd1a47718c9d25bd36e63a',
+     armv7l: '9fcc0324a91701d843c57a0313c2f69a861db5e24edd1a47718c9d25bd36e63a',
+       i686: 'b2b31ba38141dac4baef15cb15fd54ac50ad1ccd261b961425b0d6630617c772',
+     x86_64: '6bb9bbf1fef058b191ade5a3feb4309afc61288ebbafea79231861f9418b0519',
   })
 
   depends_on 'six'
