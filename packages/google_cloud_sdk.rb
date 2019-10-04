@@ -3,15 +3,15 @@ require 'package'
 class Google_cloud_sdk < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/'
-  version '236.0.0'
+  version '265.0.0'
 
   case ARCH
   when 'i686'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-236.0.0-linux-x86.tar.gz'
-    source_sha256 '6ea8595dff4926318e408879ef2ac46329b470d6ed76010ae19bfa6aaad5cdee'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-265.0.0-linux-x86.tar.gz'
+    source_sha256 'a2dd835e5b61da234eb3c17b965b2a8eecafd695838ac10865136eade7d9cafc'
   when 'x86_64'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-236.0.0-linux-x86_64.tar.gz'
-    source_sha256 'cfa7ff7c67d58d5b1bd2ae623a007c23d94937d8bc898b7933c647c660860659'
+    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-265.0.0-linux-x86_64.tar.gz'
+    source_sha256 '9633769d58d757ac7888efbe704772bc41113004c428222cad692e69b8fb27b1'
   end
 
   binary_url ({
