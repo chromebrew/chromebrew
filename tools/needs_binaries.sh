@@ -12,7 +12,7 @@ exclusions+=' qt.rb sl.rb spark.rb stack.rb sublime_merge.rb sublime_text.rb the
 exclusions+=' neofetch.rb perl_gcstring_linebreak.rb perl_io_socket_ssl.rb perl_locale_gettext.rb perl_locale_messages.rb perl_module_build.rb'
 exclusions+=' perl_read_key.rb perl_sgmls.rb perl_term_ansicolor.rb perl_text_charwidth.rb perl_text_unidecode.rb perl_text_wrapi18n.rb'
 exclusions+=' perl_time_hires.rb perl_unicode_eastasianwidth.rb perl_xml_parser.rb perl_xml_sax_parserfactory.rb perl_xml_simple.rb'
-exclusions+=' leiningen.rb tkdiff.rb v2ray.rb'
+exclusions+=' elixir.rb leiningen.rb tkdiff.rb v2ray.rb'
 if [[ "${arch}" == 'aarch64' || "${arch}" == 'armv7l' ]]; then
   exclusions+=' az.rb cf.rb clisp.rb dropbox.rb freebasic.rb miniconda3.rb misctools.rb oci.rb wkhtmltox.rb xorg_intel_driver.rb xorg_vmmouse_driver.rb'
 fi
