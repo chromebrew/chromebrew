@@ -3,15 +3,13 @@ require 'package'
 class Code < Package
   description 'Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS.'
   homepage 'https://code.visualstudio.com/'
-  version '1.36.1'
-  source_url 'https://github.com/microsoft/vscode/archive/1.36.1.tar.gz'
-  source_sha256 '24b9f4046bd8ef7edb663429a58bf7dbe3acc22487a2946a4e5ead216415c065'
+  version '1.39.0'
+  source_url 'https://github.com/microsoft/vscode/archive/1.39.0.tar.gz'
+  source_sha256 'a2e3a718e3b10af4b4022315e35e6e144beea37b03deb3874054acbc9f86b514'
 
   binary_url ({
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/code-1.36.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: 'cf2b7204aab182cffeafee59972dabf3306754c3d158811492dff39f0959e2ab',
   })
 
   depends_on 'nodebrew'
