@@ -3,14 +3,14 @@ require 'package'
 class Sublime_text < Package
   description 'A sophisticated text editor for code, markup and prose.'
   homepage 'https://www.sublimetext.com/'
-  version '3.2'
+  version '3.2.2'
   case ARCH
   when 'x86_64'		  
-    source_url 'https://download.sublimetext.com/sublime_text_3_build_3200_x64.tar.bz2'
-    source_sha256 'b9d5297c65bd14a8ba3394e74dbd9a5013b3fed5a5a2f8f5120d2cec40614fbd'
+    source_url 'https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2'
+    source_sha256 '0b3c8ca5e6df376c3c24a4b9ac2e3b391333f73b229bc6e87d0b4a5f636d74ee'
   when 'i686'
-    source_url 'https://download.sublimetext.com/sublime_text_3_build_3200_x32.tar.bz2'
-    source_sha256 'f94772aa6313f228a930ae85573bb18411e96c60c3c14027e9c27c14e5aa7906'
+    source_url 'https://download.sublimetext.com/sublime_text_3_build_3211_x32.tar.bz2'
+    source_sha256 '480609962bbbd12128b5332c7831372b8851c13e160512730d1b0a6a835a3071'
   end
   
   binary_url ({
