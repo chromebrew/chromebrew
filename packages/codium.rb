@@ -12,13 +12,17 @@ class Codium < Package
   binary_sha256 ({
   })
 
+  if ARGV[0] == 'install' || ARGV[0] == 'upgrade'
+    abort "#{ARCH} architecture not supported.".lightred unless ARCH == 'x86_64'
+  end
+
+  @arch = 'x64'
+
   depends_on 'gtk2'
   depends_on 'libsecret'
   depends_on 'libgconf'
   depends_on 'xdg_base'
   depends_on 'sommelier'
-
-  @arch = 'x64'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/VSCodium-linux-#{@arch}"
