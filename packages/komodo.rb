@@ -3,14 +3,14 @@ require 'package'
 class Komodo < Package
   description 'Komodo Edit is a great editor if you\'re looking for something powerful, yet simple.'
   homepage 'https://www.activestate.com/products/komodo-edit/'
-  version '11.1.0'
+  version '11.1.1'
   case ARCH
   when 'i686'
-    source_url 'https://downloads.activestate.com/Komodo/releases/11.1.0/Komodo-Edit-11.1.0-18196-linux-x86.tar.gz'
-    source_sha256 '3f3dcbb145c3bbf4df354049a014876a983d8fd2651283741982637a5903b8a4'
+    source_url 'https://downloads.activestate.com/Komodo/releases/11.1.1/Komodo-Edit-11.1.1-18206-linux-x86.tar.gz'
+    source_sha256 'b2879342b3fcda0688bd461ad9545b178a3315c6ab7229b350db58b794f7c9a5'
   when 'x86_64'
-    source_url 'https://downloads.activestate.com/Komodo/releases/11.1.0/Komodo-Edit-11.1.0-18196-linux-x86_64.tar.gz'
-    source_sha256 'f68a87a0d8c486a749c97de2d64fc07a633e7b32d13b685b18824caae9908bd0'
+    source_url 'https://downloads.activestate.com/Komodo/releases/11.1.1/Komodo-Edit-11.1.1-18206-linux-x86_64.tar.gz'
+    source_sha256 '649d5375ea963ac9211ca7ae294d61d07292f017a1852a804c8507b836c74fa6'
   end
 
   binary_url ({
