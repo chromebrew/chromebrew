@@ -3,21 +3,21 @@ require 'package'
 class Fnotifystat < Package
   description 'Fnotifystat is a program that dumps the file system activity in a given period of time.'
   homepage 'http://kernel.ubuntu.com/~cking/fnotifystat/'
-  version '0.01.17'
-  source_url 'http://kernel.ubuntu.com/~cking/tarballs/fnotifystat/fnotifystat-0.01.17.tar.gz'
-  source_sha256 'a3ee20e76b39c51f4ac7ee471a50d0c90a04f8588ce4966d22538de56f5e8e59'
+  version '0.02.02'
+  source_url 'https://kernel.ubuntu.com/~cking/tarballs/fnotifystat/fnotifystat-0.02.02.tar.gz'
+  source_sha256 'a57034f8b8db3f43b28bfd2e15a27b599a5705809c59c3983b36276f6764a691'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.01.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.01.17-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.01.17-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.01.17-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.02.02-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.02.02-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.02.02-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fnotifystat-0.02.02-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '177c8ac969de43371c96834b49d5bcfc35fb7d3e07ddeb63cc474730605d022d',
-     armv7l: '177c8ac969de43371c96834b49d5bcfc35fb7d3e07ddeb63cc474730605d022d',
-       i686: '18a7ca4fc7d7792e8182396fcab20c1219f22fe8303738ce4673ae6c2f465eac',
-     x86_64: 'eaec7dd57a936028af07522923cfd5b9c893499106751f811be3b70683d2120f',
+    aarch64: '8a316ded5cb90ac39118ca8b1741b6dcae7401a761a1bbe97a024a161938f693',
+     armv7l: '8a316ded5cb90ac39118ca8b1741b6dcae7401a761a1bbe97a024a161938f693',
+       i686: '78a5878a685c18d2f87bdc9d4f31d7023862c4f30a9552a005bd85f393a5f335',
+     x86_64: '2303d784fb7d21510324999f1c1f8e0b67891b98be2441ea48bbbcf2938d5f31',
   })
 
   def self.build

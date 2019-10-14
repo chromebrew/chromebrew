@@ -63,6 +63,7 @@ sed
 slang
 texinfo
 trousers
+uchardet
 unzip
 util_macros
 wget

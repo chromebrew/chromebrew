@@ -3,36 +3,37 @@ require 'package'
 class Ed < Package
   description 'GNU ed is a line-oriented text editor.'
   homepage 'http://www.gnu.org/software/ed/ed.html'
-  version '1.14.2-1'
-  source_url 'http://ftpmirror.gnu.org/ed/ed-1.14.2.tar.lz'
-  source_sha256 'f57962ba930d70d02fc71d6be5c5f2346b16992a455ab9c43be7061dec9810db'
+  version '1.15'
+  source_url 'https://ftpmirror.gnu.org/ed/ed-1.15.tar.lz'
+  source_sha256 'ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.14.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.14.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.14.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.14.2-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.15-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.15-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ed-1.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '37fd6bd94df54bb20826ef58131893506bed51b2307fed0924481e53697b093c',
-     armv7l: '37fd6bd94df54bb20826ef58131893506bed51b2307fed0924481e53697b093c',
-       i686: 'f26afff59244acacd5ee74ff8b194350053c68b4c314142b43a0f664303bd474',
-     x86_64: '3f50a5390f50083ab4e3619792b65892637efe1675e8b65effe09404343d347a',
+    aarch64: '7191a1f8ade2fc029dc0d82783dbcbc2e6176af3cd779756c21e10ca32cd146f',
+     armv7l: '7191a1f8ade2fc029dc0d82783dbcbc2e6176af3cd779756c21e10ca32cd146f',
+       i686: 'e97ac61ce4cdc2ab518ae2ddd8932500c089e48a8c10f757c456dd2fa7989d3b',
+     x86_64: 'b85eb1539017207621a2f6361c760738c1f965889f2691e711a13574f5528925',
   })
 
   # only lz archive is available for ed and it requires lzip.
   depends_on 'lzip' => :build
 
   def self.build
-    system "./configure"
-    system "make"
+    system "./configure",
+	   "--prefix=#{CREW_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
   end
 end

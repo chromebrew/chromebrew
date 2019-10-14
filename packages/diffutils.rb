@@ -2,22 +2,22 @@ require 'package'
 
 class Diffutils < Package
   description 'GNU Diffutils is a package of several programs related to finding differences between files.'
-  homepage 'http://www.gnu.org/software/diffutils/'
-  version '3.6'
-  source_url 'https://ftp.gnu.org/gnu/diffutils/diffutils-3.6.tar.xz'
-  source_sha256 'd621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6'
+  homepage 'https://www.gnu.org/software/diffutils/'
+  version '3.7'
+  source_url 'https://ftpmirror.gnu.org/diffutils/diffutils-3.7.tar.xz'
+  source_sha256 'b3a7a6221c3dc916085f0d205abf6b8e1ba443d4dd965118da364a1dc1cb3a26'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/diffutils-3.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '77a30765496cd1c8c81c5494f0d271723fe8594ba32cd97e956548cc113fe4a4',
-     armv7l: '77a30765496cd1c8c81c5494f0d271723fe8594ba32cd97e956548cc113fe4a4',
-       i686: 'a571f4a127d616f216dce43e72bdb746243b90516a3aa2a3c441c5c7130a5726',
-     x86_64: 'd1d6cfc14b969ffb340b99c5fb66791745209ad43198ef1b990ffccb3ac2cb3e',
+    aarch64: '814cec97d84c6558bff0cf5d92b048e76ec4b9cd1fdbff01890e0bfd8b7c261d',
+     armv7l: '814cec97d84c6558bff0cf5d92b048e76ec4b9cd1fdbff01890e0bfd8b7c261d',
+       i686: 'ac29008e6b865b39e33bfb05cf5d93f39b6e25cdb93a1994faa408e11965bbc6',
+     x86_64: '7cd6726e32b667fb62a7a43189ca9677c3b21fd35cec8bd3d7051855605c9fce',
   })
 
   depends_on 'libsigsegv'

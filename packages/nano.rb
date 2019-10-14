@@ -3,21 +3,21 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '3.2-1'
-  source_url 'https://www.nano-editor.org/dist/v3/nano-3.2.tar.xz'
-  source_sha256 'd12773af3589994b2e4982c5792b07c6240da5b86c5aef2103ab13b401fe6349'
+  version '4.4'
+  source_url 'https://www.nano-editor.org/dist/v4/nano-4.4.tar.xz'
+  source_sha256 '2af222e0354848ffaa3af31b5cd0a77917e9cb7742cd073d762f3c32f0f582c7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-3.2-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'db96c75313fda53faea0e9a0ee4690f9f24079fc457c48e09626ac1651ee18ca',
-     armv7l: 'db96c75313fda53faea0e9a0ee4690f9f24079fc457c48e09626ac1651ee18ca',
-       i686: '0715e4858cd3eecfaaee253d7a720f35b57bfb25f9cb0c1f845f65f69fbfe4be',
-     x86_64: '1c7fef9ce6e3d4a3a1e77824dba8f8ac3f96bcb6c581faf8ae5092186923e091',
+    aarch64: 'd90750f2218b77a4ddaf02915c8d06ff4f32868273a2709eb2906949c9bea3c6',
+     armv7l: 'd90750f2218b77a4ddaf02915c8d06ff4f32868273a2709eb2906949c9bea3c6',
+       i686: '61e9a1790d99f2f8edcceea2bd10ae8a092166e4da9f648ff1a1083360f9bdda',
+     x86_64: '29e8f79fa4e1d93a14373249036428859d7a2e80c319854bb2266f441634a1a6',
   })
 
   depends_on 'xdg_base'
@@ -27,9 +27,9 @@ class Nano < Package
   end
 
   def self.build
-    system "./configure",
-           "--prefix=#{CREW_PREFIX}",
-           "--enable-utf8"
+    system './configure',
+           '--enable-utf8',
+           "--prefix=#{CREW_PREFIX}"
     system 'make'
     open('nanorc', 'w') { |f|
       f << "set constantshow\n"
@@ -49,9 +49,8 @@ class Nano < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
     system "install -Dm644 nanorc #{CREW_DEST_HOME}/.nanorc"
-    # Fix Unable to create directory /home/chronos/user/.local/share/nano/: No such file or directory
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.local/share"
-    system "ln -sf #{CREW_PREFIX}/share/nano #{CREW_DEST_HOME}/.local/share/nano"
+    FileUtils.ln_sf("#{CREW_PREFIX}/share/nano", "#{CREW_DEST_HOME}/.local/share/")
   end
 
   def self.postinstall

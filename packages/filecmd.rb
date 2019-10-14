@@ -3,21 +3,21 @@ require 'package'
 class Filecmd < Package
   description 'file command determines the file type.'
   homepage 'ftp://ftp.astron.com/pub/file'
-  version '5.35'
-  source_url 'ftp://ftp.astron.com/pub/file/file-5.35.tar.gz'
-  source_sha256 '30c45e817440779be7aac523a905b123cba2a6ed0bf4f5439e1e99ba940b5546'
+  version '5.37'
+  source_url 'ftp://ftp.astron.com/pub/file/file-5.37.tar.gz'
+  source_sha256 'e9c13967f7dd339a3c241b7710ba093560b9a33013491318e88e6b8b57bae07f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.35-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.35-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.35-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.35-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.37-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1b18c244b4f38a931cb3647782325e34b1345d7ecbb4aca03294cc7a9a066052',
-     armv7l: '1b18c244b4f38a931cb3647782325e34b1345d7ecbb4aca03294cc7a9a066052',
-       i686: '39efe5224d49ff887a7aac593b0532e7fb8e4618418342d438383030a69eee68',
-     x86_64: '277f3393963a2c5c897f02c46832d15bea5a3b994e422f8a8278e81d9997115c',
+    aarch64: '26c0e8ccc7d7d64e422d7f4deae71550646f16f3228cdd9dcc926c5dbea5eb8e',
+     armv7l: '26c0e8ccc7d7d64e422d7f4deae71550646f16f3228cdd9dcc926c5dbea5eb8e',
+       i686: '495d8a50dabff55cf4bf288aa9e8a4ab3ceadf18de20aacd96a79d0bb42219ae',
+     x86_64: '5df86414a61540346de2712eb7eb553a5562d17f4c3d325f4a42aa8a2bf43829',
   })
 
   def self.build

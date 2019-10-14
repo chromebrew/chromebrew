@@ -3,28 +3,30 @@ require 'package'
 class Musl < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
   homepage 'https://www.musl-libc.org/'
-  version '1.1.21'
-  source_url 'https://www.musl-libc.org/releases/musl-1.1.21.tar.gz'
-  source_sha256 'c742b66f6f49c9e5f52f64d8b79fecb5a0f6e0203fca176c70ca20f6be285f44'
+  version '1.1.23'
+  source_url 'https://www.musl-libc.org/releases/musl-1.1.23.tar.gz'
+  source_sha256 '8a0feb41cef26c97dde382c014e68b9bb335c094bbc1356f6edaaf6b79bd14aa'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.21-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.21-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.21-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4ecca2c16ee80892028f740da1e18141c0dd5a618723d48e9386c8dd3b8baecf',
-     armv7l: '4ecca2c16ee80892028f740da1e18141c0dd5a618723d48e9386c8dd3b8baecf',
-       i686: '40af8e0b75a42f599f5de5002240bf43eb03df134a6356a7c22cd5e92dc94984',
-     x86_64: 'f205355013debc9b33ca9fffd46c5dda61eb74998f6ef6c310c4e2805619f83f',
+    aarch64: 'd4fdc8b8d4bbe495283cfcaa0bf3574439d972dfbe4a1e1aa28927cc672f2089',
+     armv7l: 'd4fdc8b8d4bbe495283cfcaa0bf3574439d972dfbe4a1e1aa28927cc672f2089',
+       i686: 'cb4834f91df4afcbe7eccaf85abbbf4c80afa15d7e6ea9a220889c42e719ee8f',
+     x86_64: '1d65413f0d246a3a350c354c03080e007a831552678d24ca4e125b515793bef8',
   })
 
   def self.build
-    if ARCH == 'armv7l'
+    if ARCH == 'armv7l' or ARCH == 'aarch64'
       abi = 'eabihf'
+      arch = 'armv7l'
     else
       abi = ''
+      arch = ARCH
     end
     system 'env',
            'CC=cc',
@@ -32,7 +34,7 @@ class Musl < Package
            '--disable-debug',
            '--enable-warnings',
            "--bindir=#{CREW_PREFIX}/bin",
-           "--host=#{ARCH}-cros-linux-musl#{abi}",
+           "--host=#{arch}-cros-linux-musl#{abi}",
            "--syslibdir=#{CREW_PREFIX}/lib",
            "--prefix=#{CREW_PREFIX}/#{ARCH}-cros-linux-musl#{abi}"
     system "sed -i '/CROSS_COMPILE/d' config.mak"
