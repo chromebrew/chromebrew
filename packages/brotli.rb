@@ -3,21 +3,13 @@ require 'package'
 class Brotli < Package
   description 'Brotli compression format'
   homepage 'https://github.com/google/brotli'
-  version '1.0.4'
-  source_url 'https://github.com/google/brotli/archive/v1.0.4.tar.gz'
-  source_sha256 '2268a3dff1cc36e18549e89a51ee0cd9513908a977d56d6a1f9d4c61c2af37c3'
+  version '1.0.7'
+  source_url 'https://github.com/google/brotli/archive/v1.0.7.tar.gz'
+  source_sha256 '4c61bfb0faca87219ea587326c467b95acb25555b53d1a421ffa3c8a9296ee2c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/brotli-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/brotli-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/brotli-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/brotli-1.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6a66cda96e663f581bbddab3b1b57907583aa46911a94a96224de906adc4b544',
-     armv7l: '6a66cda96e663f581bbddab3b1b57907583aa46911a94a96224de906adc4b544',
-       i686: 'be77cf61c923ff19842c58c4979bf1c53b09eded39a02106b4d67bd164ad7049',
-     x86_64: 'ab048b601fdbeb5b73f113517adb500e8c42164dcceb9450cc039b376762f546',
   })
 
   def self.build
