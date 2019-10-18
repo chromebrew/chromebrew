@@ -17,8 +17,16 @@ class Ccl < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ccl-1.11.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ccl-1.11.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ccl-1.11.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ccl-1.11.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'c76d7ef3a190d6f5df52b00de5b520e96c63e07d1703bc5325a8f692dc85342c',
+     armv7l: 'c76d7ef3a190d6f5df52b00de5b520e96c63e07d1703bc5325a8f692dc85342c',
+       i686: '57617fc472305b926781c61248fb10e6732454eaf89022e0583d7f1cea42a87f',
+     x86_64: '3d2632f8390c449f3ecee54d9101e4779590b676533d2b17b759e37db815a275',
   })
 
   def self.install
