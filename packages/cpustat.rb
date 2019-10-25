@@ -2,22 +2,22 @@ require 'package'
 
 class Cpustat < Package
   description 'cpustat periodically dumps out the current CPU utilisation statistics of running processes.'
-  homepage 'http://kernel.ubuntu.com/~cking/cpustat/'
-  version '0.02.04'
-  source_url 'http://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.04.tar.gz'
-  source_sha256 '10fbe56a17161094818be779127f635dc65262b305e5a5614d9e46536a9d92c7'
+  homepage 'https://kernel.ubuntu.com/~cking/cpustat/'
+  version '0.02.09'
+  source_url 'https://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.09.tar.xz'
+  source_sha256 'fe48369cf031ecf5edd77f585c66b66d3c6e71a0933230502e1a665fcc86aa8b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.04-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.09-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.09-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.09-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cpustat-0.02.09-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '20a5e9e09f2e3bd704f17c14b7f260ccbeac1111418cc837e904c05a700dae67',
-     armv7l: '20a5e9e09f2e3bd704f17c14b7f260ccbeac1111418cc837e904c05a700dae67',
-       i686: '21670c81a422830e149287936be6c10e58bcbb39fe9c94810677ba8f93949f5d',
-     x86_64: 'b505ca257198a54ee256f85fee63fb14d2275572b37af287aad8a47d1ba2b6b8',
+    aarch64: '14b4aa6110904b31c0259f3bc6aeba5efeca97b8c8d95a6342fd1bbf2b81f426',
+     armv7l: '14b4aa6110904b31c0259f3bc6aeba5efeca97b8c8d95a6342fd1bbf2b81f426',
+       i686: '7eab479cc88afe2a1336f5a0c091bcf44751a561c911f77fce86e3b29abe2e59',
+     x86_64: 'aa9a721eaa7cd8c54306e744cf40d40db278742a9542a69956b68d3c7f42fdae',
   })
 
   def self.build

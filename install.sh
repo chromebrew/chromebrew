@@ -54,10 +54,10 @@ case "${ARCH}" in
   sha256s+=('5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-armv7l.tar.xz')
   sha256s+=('cfa05a46d37d49479047f205e3d4ab2a8c11f953ed91e11465a1195ff2d95d01')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-armv7l.tar.xz')
-  sha256s+=('1e52aff31745a6ad134e807f151e8e6fd519bdd69c2f5ec9069661f7c66561a2')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-armv7l.tar.xz')
-  sha256s+=('d8fae766d77818ef95ae8a993bda0c03730d773cfb8392ceaaf6c8697206409c')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.23.0-chromeos-armv7l.tar.xz')
+  sha256s+=('b89d3e83fe9c797c69b4ec90c6f88004270437fbdd4fd378a6a31d66ee7cb276')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-chromeos-armv7l.tar.xz')
+  sha256s+=('497e146e4d769aa85b0d547889784d7552e2aadbbaa448df5bbe9515cd94c182')
   ;;
 "armv7l")
   if ! type "xz" > /dev/null; then
@@ -70,10 +70,10 @@ case "${ARCH}" in
   sha256s+=('5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-armv7l.tar.xz')
   sha256s+=('cfa05a46d37d49479047f205e3d4ab2a8c11f953ed91e11465a1195ff2d95d01')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-armv7l.tar.xz')
-  sha256s+=('1e52aff31745a6ad134e807f151e8e6fd519bdd69c2f5ec9069661f7c66561a2')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-armv7l.tar.xz')
-  sha256s+=('d8fae766d77818ef95ae8a993bda0c03730d773cfb8392ceaaf6c8697206409c')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.23.0-chromeos-armv7l.tar.xz')
+  sha256s+=('b89d3e83fe9c797c69b4ec90c6f88004270437fbdd4fd378a6a31d66ee7cb276')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-chromeos-armv7l.tar.xz')
+  sha256s+=('497e146e4d769aa85b0d547889784d7552e2aadbbaa448df5bbe9515cd94c182')
   ;;
 "i686")
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc8-8.3.0-chromeos-i686.tar.xz')
@@ -82,10 +82,10 @@ case "${ARCH}" in
   sha256s+=('6f4a5b96c31ef5ee4f09ac15da4c7a4a9d838ed5233038136ead1e155d17f342')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-i686.tar.xz')
   sha256s+=('b080cd1e667dd9efba1a4392c7c177f5b8292f1b6fc29e862634b7ad41d29ab5')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-i686.tar.xz')
-  sha256s+=('11d522ecb99eb1ddb78166f30a635012107e6688da1c686263a4135dbf928dcd')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-i686.tar.xz')
-  sha256s+=('ccdea94d6dcc0bdd27b364cd99f53e9aba6f90f0b8272a5f3856bf2a9a32beb6')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.23.0-chromeos-i686.tar.xz')
+  sha256s+=('b02bb5d57315a2c620ecf177ac19fdadf03139136d7bc864e86b08d26e08472b')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-chromeos-i686.tar.xz')
+  sha256s+=('dd2172bf82e3ffc1cfd06463108a36de55ba5e4bc2eb283852b54a737e087fe4')
   ;;
 "x86_64")
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc8-8.3.0-chromeos-x86_64.tar.xz')
@@ -94,10 +94,10 @@ case "${ARCH}" in
   sha256s+=('352b78fc883cf8936136991fda9ca5d49e90b2951626158d6af8ef4b58d67f97')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-x86_64.tar.xz')
   sha256s+=('7ac97b03fff5d1befecb26ac471daa239c2c23ab1bc774a5366e6c46d1bb9ad3')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.22.0-chromeos-x86_64.tar.xz')
-  sha256s+=('ce8aee90b5d8c477d12f9e99f541180375aaf5af2d4e9c2b8a2598d2d8e53565')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.8.1-chromeos-x86_64.tar.xz')
-  sha256s+=('1025b413f30c5ac27bfa340e41cb437bf19311e72b95030f64020e25be4cda31')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.23.0-chromeos-x86_64.tar.xz')
+  sha256s+=('a67df6819289a4acb87e07c9f84300c1856c9116691318bf440cab7f8eb044e6')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-chromeos-x86_64.tar.xz')
+  sha256s+=('d02623da747ecc95acdba69a056220ef579b01dae82a0cbfec2aa96c2ea8e914')
   ;;
 esac
 
@@ -183,6 +183,9 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   extract_install "${name}" "${tarfile}"
   update_device_json "${name}" "${version}"
 done
+
+# workaround https://github.com/skycocker/chromebrew/issues/3305
+sudo ldconfig > /dev/null 2> /dev/null || true
 
 # create symlink to 'crew' in ${CREW_PREFIX}/bin/
 rm -f "${CREW_PREFIX}/bin/crew"

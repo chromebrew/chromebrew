@@ -3,11 +3,11 @@ require 'package'
 class Sublime_merge < Package
   description 'A snappy UI, three-way merge tool,side-by-side diffs, syntax highlighting, and more.'
   homepage 'https://www.sublimemerge.com/'
-  version 'Build 1097'
+  version 'Build 1119'
   case ARCH
   when 'x86_64'		  
-	source_url 'https://download.sublimetext.com/sublime_merge_build_1097_x64.tar.xz'
-	source_sha256 'f4ac60d49e24ff0aaa184fc339a90fe18bdfa6115ba53029a787211bbe3414d6'
+	source_url 'https://download.sublimetext.com/sublime_merge_build_1119_x64.tar.xz'
+	source_sha256 '64b06320c0300923ade0901493cfd78e7f28598324f99d4c3609b3c85c5f1cea'
   end
   
   binary_url ({

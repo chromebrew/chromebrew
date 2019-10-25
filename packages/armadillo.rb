@@ -3,35 +3,40 @@ require 'package'
 class Armadillo < Package
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
   homepage 'http://arma.sourceforge.net/'
-  version '8.400.0'
-  source_url 'https://downloads.sourceforge.net/project/arma/armadillo-8.400.0.tar.xz'
-  source_sha256 '5cb6bc2f457a9d6a0758cfb15c418d48289909daccd79d0e428452029285dd9b'
+  version '9.600.5'
+  source_url 'https://downloads.sourceforge.net/project/arma/armadillo-9.600.5.tar.xz'
+  source_sha256 'dd9cd664282f2c3483af194ceedc2fba8559e0d20f8782c640fd6f3ac7cac2bf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-8.400.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-8.400.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-8.400.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-8.400.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '97a7f23c22e8dcd9b92806918bd2a5f7a72230f8b16033ca3dfc6ebebc8fc2f5',
-     armv7l: '97a7f23c22e8dcd9b92806918bd2a5f7a72230f8b16033ca3dfc6ebebc8fc2f5',
-       i686: 'bbefa4f2c66db16180c367d4e6bb568cbcf9abd5d26b19266f9d744e93ebda9c',
-     x86_64: 'd2dc68a222aa585676e5ea325970ded3015ad817027aca890199bc7f5c090799',
+    aarch64: 'cabc00c9184da1185c0fcbe834c1447e0e31a9ff34b9c2ede39f7419b95768cc',
+     armv7l: 'cabc00c9184da1185c0fcbe834c1447e0e31a9ff34b9c2ede39f7419b95768cc',
+       i686: 'cead7ef29533291a9070b8b1cddf6d909c224463e0e984a4d5bf49a208f17590',
+     x86_64: '313502ef0f2c9c701c4e5c59d456a6105c8aba4c63bc0a77a829649ffa2e9e78',
   })
 
-  depends_on 'openblas'
+  depends_on 'arpack_ng'
+  depends_on 'hdf5'
+  depends_on 'superlu'
 
   def self.build
-    system "./configure",
+    suffix = ''
+    suffix = '64' if ARCH == 'x86_64'
+    system 'cmake',
+           '-DCMAKE_BUILD_TYPE=Release',
            "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-           "-DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX}"
-    system "make"
+           "-DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB}",
+           "-DARPACK_LIBRARY=#{CREW_LIB_PREFIX}/libarpack#{suffix}.so",
+           '.'
+    system 'make'
   end
 
   def self.install
-    system "make",
-           "DESTDIR=#{CREW_DEST_DIR}",
-           "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -14,23 +14,27 @@ class Wxwidgets < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f4ccfde2ce01be971af64b1a76cce5b8748352c30ac67d51085dba02d8d60060',
-     armv7l: 'f4ccfde2ce01be971af64b1a76cce5b8748352c30ac67d51085dba02d8d60060',
-       i686: '2b0024005566d7d45de96f2fe8a417859cbccd2f9061039adfcd782e0165426d',
-     x86_64: 'c24c461c76af35ce55fe34b442d31ed090afe45c971902287c44d8d77f332e22',
+    aarch64: 'b91d482d148f8132c67e40e8b3c33d7d2e29744cade8f39b2797c3a8bef52081',
+     armv7l: 'b91d482d148f8132c67e40e8b3c33d7d2e29744cade8f39b2797c3a8bef52081',
+       i686: 'aba2a4d219b45436427b01d8e6f1b245971966b946e906668595710a63b74f01',
+     x86_64: '56a888743624497531f4896cc9c3de3feb041c2c963f2ce08c770c5745e9c983',
   })
 
-  depends_on 'gtk3'
+  depends_on 'gst_plugins_base'
+  depends_on 'libnotify'
+  depends_on 'libsdl'
+  depends_on 'libsecret'
+  depends_on 'libsoup'
+  depends_on 'mesa'
 
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+           "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

@@ -254,6 +254,7 @@ def const (var)
       'ARCH_LIB',
       'CHROMEOS_RELEASE',
       'CREW_BREW_DIR',
+      'CREW_BUILD',
       'CREW_CONFIG_PATH',
       'CREW_DEST_DIR',
       'CREW_DEST_HOME',
