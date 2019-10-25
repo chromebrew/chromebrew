@@ -3,21 +3,21 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.7.1'
-  source_url 'https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz'
-  source_sha256 'fa7e2b8e8c9402f192ad56dc4f814089d1c4466c97d780f5e5acc02c04243d6d'
+  version '3.8.0'
+  source_url 'https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz'
+  source_sha256 'b356244e13fb5491da890b35b13b2118c3122977c2cd825e3eb6e7d462030d84'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.7.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c6ad3a008510f5cbafc94d23e2470fe350b75bd4dcce4c20bce69d5ba3dc7f15',
-     armv7l: 'c6ad3a008510f5cbafc94d23e2470fe350b75bd4dcce4c20bce69d5ba3dc7f15',
-       i686: '51c94f7be089b8515bb03eacb5812c4080f93201565406d438fb2cd9e2a4cb50',
-     x86_64: '434f8f1156f89cb15dcbbdbf3a6e0448c931e5f5480dc1c5550694f014aab315',
+    aarch64: '4afa8ecd1a9ecf6d1285df6bc4b84257ac5c4e2f7bc9e54e18800396496f8fa1',
+     armv7l: '4afa8ecd1a9ecf6d1285df6bc4b84257ac5c4e2f7bc9e54e18800396496f8fa1',
+       i686: '06d3a325588df096ffedab12bc7ea8161cb50676f68a29c70bfc0da7ed66796c',
+     x86_64: '18e5f2e63ee96dc2bbe4908a0b97016615eb11cf029f1fb748db74f33932ffe5',
   })
 
   depends_on 'bz2'

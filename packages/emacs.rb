@@ -3,26 +3,24 @@ require 'package'
 class Emacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'http://www.gnu.org/software/emacs/'
-  version '26.2'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-26.2.tar.xz'
-  source_sha256 '151ce69dbe5b809d4492ffae4a4b153b2778459de6deb26f35691e1281a9c58e'
+  version '26.3'
+  source_url 'https://ftpmirror.gnu.org/emacs/emacs-26.3.tar.xz'
+  source_sha256 '4d90e6751ad8967822c6e092db07466b9d383ef1653feb2f95c93e7de66d3485'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/emacs-26.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e87f63d8952e1675ec40d34f836403fd9afe3990da059583f861f4bf31b57d0d',
-     armv7l: 'e87f63d8952e1675ec40d34f836403fd9afe3990da059583f861f4bf31b57d0d',
-       i686: '371b943a131d8f789b7d65dffd21fc0e2831bf60b3599e434db852c9bafe2e9d',
-     x86_64: 'a32d38360b671f6bf54def9db590d3687896449a1a4f335a98b1c9fba22a1693',
+    aarch64: 'cb3fbd500feee768ab1925d9a62c587563a5dbb362dea8fec72017e17990454b',
+     armv7l: 'cb3fbd500feee768ab1925d9a62c587563a5dbb362dea8fec72017e17990454b',
+       i686: 'ef10c17c31286f47a0ae03204a406421501f452184b37fc6411d4c6cfa88381b',
+     x86_64: 'd32ea23bb1c6ecc1588f2665da8c5f47367cf78b4dc9cefabed36a9386c748a2',
   })
 
   depends_on 'lcms'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
 
   def self.build
     system "./configure \
@@ -35,6 +33,6 @@ class Emacs < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

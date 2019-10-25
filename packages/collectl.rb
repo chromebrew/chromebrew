@@ -3,24 +3,22 @@ require 'package'
 class Collectl < Package
   description 'Collectl is a light-weight performance monitoring tool capable of reporting interactively as well as logging to disk.'
   homepage 'http://collectl.sourceforge.net/'
-  version '4.3.0'
-  source_url 'https://downloads.sourceforge.net/project/collectl/collectl/collectl-4.3.0/collectl-4.3.0.src.tar.gz'
-  source_sha256 'df7c7179963e05b8195519729e35eedd8ea8333a787cf9c5549b7b18228aa987'
+  version '4.3.1'
+  source_url 'https://downloads.sourceforge.net/project/collectl/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz'
+  source_sha256 '2187264d974b36a653c8a4b028ac6eeab23e1885f8b2563a33f06358f39889f1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/collectl-4.3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '50a37619c46570ff71cd1154825cde479c3077f8b6e294ca132bf0122d379a79',
-     armv7l: '50a37619c46570ff71cd1154825cde479c3077f8b6e294ca132bf0122d379a79',
-       i686: '5f245a5d828ddf020fc07850cd0b941c1cab7645eec0a0ad66019933989fa924',
-     x86_64: 'b6969809ec05e685dae42ef0345a2c3375e2d12ea2f4cfbcf1d37878d329484a',
+    aarch64: 'c7dfcb941c97ae272b888d9c6257f931285ce51d453c08bc53cfcfb419b02486',
+     armv7l: 'c7dfcb941c97ae272b888d9c6257f931285ce51d453c08bc53cfcfb419b02486',
+       i686: '9df81b18774e4f086d53b646da72a3fb3c2dd0abc574b2d71728d77857dc80b2',
+     x86_64: '3726cff22c73deab81018a66b27e75696db94ab3de9a40239407077f07a885b3',
   })
-
-  depends_on 'perl'
 
   def self.build
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' colmux"
@@ -32,6 +30,6 @@ class Collectl < Package
   end
 
   def self.install
-    system "./INSTALL"
+    system './INSTALL'
   end
 end

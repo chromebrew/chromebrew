@@ -15,11 +15,13 @@ class Libtool < Package
   depends_on 'm4'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "./configure",
+             "--prefix=#{CREW_PREFIX}",
+             "--libdir=#{CREW_LIB_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
