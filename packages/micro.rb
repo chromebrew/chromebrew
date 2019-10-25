@@ -18,8 +18,16 @@ class Micro < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.4.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.4.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.4.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/micro-1.4.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '305c70b8ae3ff6e8e80baf8d9af09db29b11fd3e40d381c787ee1f88406cc166',
+     armv7l: '305c70b8ae3ff6e8e80baf8d9af09db29b11fd3e40d381c787ee1f88406cc166',
+       i686: 'f92d08c76dc125b24674754b3a29ae94bccbfe2bcfca68ae21384e2215054a74',
+     x86_64: '64028544e15314a6a576521a7d21e156b9e82eda91fda40033ec19e2c75d1881',
   })
 
   def self.install
