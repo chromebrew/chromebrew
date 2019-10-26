@@ -13,7 +13,9 @@ class Neovim < Package
   })
 
   def self.build
-    system "make", "CMAKE_BUILD_TYPE=RelWithDebInfo", "CFLAGS=-fstack-protector-all"
+    system "sed -i 's,add_compile_options(-fstack-protector-strong),add_compile_options(-fstack-protector-strong)\\n    link_libraries(-fstack-protector-strong),g' CMakeLists.txt"
+    system "sed -i 's,add_compile_options(-fstack-protector --param ssp-buffer-size=4),add_compile_options(-fstack-protector --param ssp-buffer-size=4)\\n    link_libraries(-fstack-protector --param ssp-buffer-size=4),g' CMakeLists.txt"
+    system "make", "CMAKE_BUILD_TYPE=RelWithDebInfo"
   end
 
   def self.install
