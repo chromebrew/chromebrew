@@ -1,11 +1,11 @@
 require 'package'
 
-class Aspell_en < Package
-  description 'English Aspell Dictionary'
+class Aspell_fr < Package
+  description 'French Aspell Dictionary'
   homepage 'https://ftpmirror.gnu.org/aspell/dict/0index.html'
-  version '2019.10.06-0'
-  source_url 'https://ftpmirror.gnu.org/aspell/dict/en/aspell6-en-2019.10.06-0.tar.bz2'
-  source_sha256 '24334b4daac6890a679084f4089e1ce7edbe33c442ace776fa693d8e334f51fd'
+  version '0.50-3'
+  source_url 'https://ftpmirror.gnu.org/aspell/dict/fr/aspell-fr-0.50-3.tar.bz2'
+  source_sha256 'f9421047519d2af9a7a466e4336f6e6ea55206b356cd33c8bd18cb626bf2ce91'
 
   binary_url ({
   })
