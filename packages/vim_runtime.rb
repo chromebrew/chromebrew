@@ -12,6 +12,7 @@ class Vim_runtime < Package
   binary_sha256 ({
   })
 
+  depends_on 'python27' => :build
   depends_on 'python3' => :build
 
   def self.patch
@@ -35,6 +36,7 @@ class Vim_runtime < Package
               "--enable-cscope",
               "--enable-fontset",
               "--enable-perlinterp=dynamic",
+              "--enable-pythoninterp=dynamic",
               "--enable-python3interp=dynamic",
               "--enable-rubyinterp=dynamic",
               "--disable-selinux"

@@ -17,6 +17,7 @@ class Vim < Package
   binary_sha256 ({
   })
 
+  depends_on 'python27' => :build
   depends_on 'python3' => :build
   depends_on 'vim_runtime'
 
@@ -41,6 +42,7 @@ class Vim < Package
               "--enable-cscope",
               "--enable-fontset",
               "--enable-perlinterp=dynamic",
+              "--enable-pythoninterp=dynamic",
               "--enable-python3interp=dynamic",
               "--enable-rubyinterp=dynamic",
               "--disable-selinux"
