@@ -1,7 +1,7 @@
 require 'package'
 
-class Hunspell_fr < Package
-  description 'Hunspell French dictionary'
+class Hunspell_en < Package
+  description 'Hunspell English dictionary'
   homepage 'http://hunspell.github.io/'
   version '1.7.0'
   source_url 'https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz'
@@ -17,18 +17,18 @@ class Hunspell_fr < Package
   def self.install
     system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
     system 'mkdir -p $HOME/Library/Spelling'
-    system "install -Dm644 dictionaries/fr_FR/*.aff $HOME/Library/Spelling/."
-    system "install -Dm644 dictionaries/fr_FR/*.dic $HOME/Library/Spelling/."
+    system "install -Dm644 dictionaries/en/*.aff $HOME/Library/Spelling/."
+    system "install -Dm644 dictionaries/en/*.dic $HOME/Library/Spelling/."
   end
 
   def self.postinstall
     system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
-    FileUtils.cp Dir.glob('dictionaries/fr_FR/*.{aff,dic}'), "#{HOME}/Library/Spelling/"
+    FileUtils.cp Dir.glob('dictionaries/en/*.{aff,dic}'), "#{HOME}/Library/Spelling/"
     FileUtils.rm_rf 'dictionaries/'
     puts
-    puts "To update the dictionaries periodically, execute 'crew postinstall hunspell_fr'.".lightblue
+    puts "To update the dictionaries periodically, execute 'crew postinstall hunspell_en'.".lightblue
     puts "To change to another language for example, execute:".lightblue
-    puts "echo 'export DICTIONARY=en_US' >> ~/.bashrc && source ~/.bashrc".lightblue
+    puts "echo 'export DICTIONARY=fr_FR' >> ~/.bashrc && source ~/.bashrc".lightblue
     puts
   end
 end

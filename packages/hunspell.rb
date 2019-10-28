@@ -13,6 +13,7 @@ class Hunspell < Package
   })
 
   depends_on 'readline'
+  depends_on 'hunspell_en'
 
   def self.build
     system 'autoreconf -vfi'
@@ -30,19 +31,9 @@ class Hunspell < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
-    system "install -Dm644 dictionaries/en/en_US.aff #{CREW_DEST_HOME}/Library/Spelling/en_US.aff"
-    system "install -Dm644 dictionaries/en/en_US.dic #{CREW_DEST_HOME}/Library/Spelling/en_US.dic"
-    system "install -Dm644 dictionaries/en/en_US.aff $HOME/Library/Spelling/en_US.aff"
-    system "install -Dm644 dictionaries/en/en_US.dic $HOME/Library/Spelling/en_US.dic"
   end
 
   def self.postinstall
-    system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
-    FileUtils.cp Dir.glob('dictionaries/en/*'), "#{HOME}/Library/Spelling/"
-    FileUtils.rm_rf 'dictionaries/'
-    puts
-    puts "To update the dictionaries periodically, execute 'crew postinstall hunspell'.".lightblue
     puts
     puts "To complete the installation, execute the following:".lightblue
     puts "echo 'export DICTIONARY=en_US' >> ~/.bashrc && source ~/.bashrc".lightblue
