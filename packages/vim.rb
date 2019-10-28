@@ -3,9 +3,9 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  version '8.1.1915'
-  source_url 'https://github.com/vim/vim/archive/v8.1.1915.tar.gz'
-  source_sha256 '508bcffd340497d6279fb2d5aa98ff43190cf7983a87fe4838fb780446f900a9'
+  version '8.1.2225'
+  source_url 'https://github.com/vim/vim/archive/v8.1.2225.tar.gz'
+  source_sha256 'a88cf5fb07701d92ea79a3cc8f6e020e6b9bf07c0dfa72f0dde8a65f87e30f2d'
 
   if ARGV[0] == 'install'
     gvim = `which gvim 2> /dev/null`.chomp
@@ -13,16 +13,8 @@ class Vim < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.1915-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7e9139cbb1940f272ea3414facfbe34e37f59e476868d8ceb7fe2419ac1261e1',
-     armv7l: '7e9139cbb1940f272ea3414facfbe34e37f59e476868d8ceb7fe2419ac1261e1',
-       i686: 'a3714ab96726d3630f6903b535b4af5808fdcc1101aabf08b0d79544d676e984',
-     x86_64: 'b5eeeb48785b05e94227747138b72b8ea48502b32aa0b6b7559e6582fab85a99',
   })
 
   depends_on 'python27' => :build
