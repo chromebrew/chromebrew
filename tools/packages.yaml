@@ -134,6 +134,11 @@ url: https://sourceforge.net/projects/arma/files/
 activity: high
 ---
 kind: url
+name: arpack_ng
+url: https://github.com/opencollab/arpack-ng/releases
+activity: medium
+---
+kind: url
 name: ascii
 url: http://www.catb.org/~esr/ascii
 activity: low
@@ -207,6 +212,11 @@ kind: url
 name: audacious_plugins
 url: https://distfiles.audacious-media-player.org/
 activity: low
+---
+kind: url
+name: augeas
+url: http://download.augeas.net/
+activity: medium
 ---
 kind: url
 name: autoconf
@@ -469,6 +479,11 @@ url: https://github.com/geier/choose/releases
 activity: none
 ---
 kind: url
+name: chromaprint
+url: https://github.com/acoustid/chromaprint/releases/
+activity: none
+---
+kind: url
 name: chromebrew_scripts
 url: https://github.com/uberhacker/chromebrew-scripts/releases
 activity: none
@@ -534,9 +549,9 @@ url: https://github.com/cmus/cmus/releases
 activity: none
 ---
 kind: url
-name: code
-url: https://code.visualstudio.com/
-activity: high
+name: codelite
+url: https://github.com/eranif/codelite/releases/
+activity: medium
 ---
 kind: url
 name: codium
@@ -679,6 +694,11 @@ url: https://ftpmirror.gnu.org/datamash
 activity: medium
 ---
 kind: url
+name: dav1d
+url: https://get.videolan.org/dav1d/
+activity: high
+---
+kind: url
 name: dbus
 url: https://dbus.freedesktop.org/releases/dbus
 activity: medium
@@ -727,6 +747,11 @@ kind: url
 name: dia
 url: https://github.com/GNOME/dia/releases
 activity: none
+---
+kind: url
+name: diffuse
+url: https://downloads.sourceforge.net/project/diffuse/diffuse/
+activity: low
 ---
 kind: url
 name: diffutils
@@ -922,6 +947,11 @@ kind: url
 name: fasd
 url: https://github.com/clvv/fasd/releases
 activity: none
+---
+kind: url
+name: faultstat
+url: https://kernel.ubuntu.com/~cking/tarballs/faultstat/
+activity: low
 ---
 kind: url
 name: feh
@@ -1304,9 +1334,19 @@ url: https://github.com/sahib/glyr/releases
 activity: none
 ---
 kind: url
+name: gmime
+url: https://github.com/jstedfast/gmime/releases/
+activity: low
+---
+kind: url
 name: gmp
 url: https://gmplib.org/#DOWNLOAD
 activity: low
+---
+kind: url
+name: gn
+url: https://gn.googlesource.com/gn/
+activity: high
 ---
 kind: url
 name: gnome_common
@@ -1559,6 +1599,11 @@ url: https://github.com/kdabir/has/releases
 activity: low
 ---
 kind: url
+name: hdf5
+url: https://support.hdfgroup.org/ftp/HDF5/releases/
+activity: low
+---
+kind: url
 name: hdparm
 url: http://www.ibiblio.org/pub/Linux/system/hardware
 activity: none
@@ -1626,6 +1671,11 @@ activity: low
 kind: url
 name: hub
 url: https://github.com/github/hub/releases
+activity: medium
+---
+kind: url
+name: hugo
+url: https://github.com/gohugoio/hugo/releases/
 activity: medium
 ---
 kind: url
@@ -1746,6 +1796,11 @@ activity: none
 kind: url
 name: jansson
 url: https://github.com/akheron/jansson/releases
+activity: low
+---
+kind: url
+name: jasper
+url: https://github.com/mdadams/jasper/releases
 activity: low
 ---
 kind: url
@@ -1874,6 +1929,11 @@ url: https://www.ladspa.org/download/
 activity: none
 ---
 kind: url
+name: lapack
+url: https://www.netlib.org/lapack/
+activity: none
+---
+kind: url
 name: lcms
 url: https://sourceforge.net/projects/lcms/files/lcms/
 activity: low
@@ -1914,6 +1974,11 @@ url: https://github.com/jca02266/lha
 activity: none
 ---
 kind: url
+name: libaacs
+url: https://get.videolan.org/libaacs/
+activity: low
+---
+kind: url
 name: libaio
 url: http://libaio.sourcearchive.com/downloads/
 activity: low
@@ -1944,9 +2009,19 @@ url: https://github.com/ivmai/libatomic_ops/releases
 activity: low
 ---
 kind: url
+name: libavc1394
+url: https://sourceforge.net/projects/libavc1394/files/libavc1394/
+activity: none
+---
+kind: url
 name: libbsd
 url: https://libbsd.freedesktop.org/releases
 activity: medium
+---
+kind: url
+name: libbluray
+url: https://get.videolan.org/libbluray/
+activity: low
 ---
 kind: url
 name: libcaca
@@ -2009,6 +2084,16 @@ url: http://www.oracle.com/technetwork/database/database-technologies/berkeleydb
 activity: low
 ---
 kind: url
+name: libdc1394
+url: https://sourceforge.net/projects/libdc1394/files/libdc1394-2/
+activity: low
+---
+kind: url
+name: libdca
+url: https://get.videolan.org/libdca/
+activity: none
+---
+kind: url
 name: libde265
 url: https://github.com/strukturag/libde265/releases/
 activity: medium
@@ -2026,6 +2111,21 @@ activity: none
 kind: url
 name: libdrm
 url: https://dri.freedesktop.org/libdrm
+activity: medium
+---
+kind: url
+name: libdsm
+url: https://github.com/videolabs/libdsm/releases/
+activity: none
+---
+kind: url
+name: libdvdnav
+url: http://get.videolan.org/libdvdnav/
+activity: medium
+---
+kind: url
+name: libdvdread
+url: https://get.videolan.org/libdvdread/
 activity: medium
 ---
 kind: url
@@ -2339,6 +2439,16 @@ url: https://www.freedesktop.org/software/libqmi/
 activity: low
 ---
 kind: url
+name: libraw1394
+url: https://sourceforge.net/projects/libraw1394/files/libraw1394/
+activity: none
+---
+kind: url
+name: libressl
+url: https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/
+activity: high
+---
+kind: url
 name: librhash
 url: https://github.com/rhash/RHash/releases
 activity: low
@@ -2417,6 +2527,11 @@ kind: url
 name: libsoxr
 url: https://sourceforge.net/projects/soxr/files
 activity: low
+---
+kind: url
+name: libspng
+url: https://gitlab.com/randy408/libspng/-/releases
+activity: medium
 ---
 kind: url
 name: libssh
@@ -2782,6 +2897,16 @@ kind: url
 name: linux_pam
 url: https://github.com/linux-pam/linux-pam/releases/
 activity: low
+---
+kind: url
+name: linux_sources
+url: https://www.kernel.org/pub/linux/kernel/v4.x/
+activity: medium
+---
+kind: url
+name: live555
+url: http://www.live555.com/liveMedia/public/
+activity: high
 ---
 kind: url
 name: llvm
@@ -3504,6 +3629,11 @@ url: https://www.percona.com/downloads/percona-toolkit/
 activity: medium
 ---
 kind: url
+name: perf
+url: https://www.kernel.org/pub/linux/kernel/v4.x/
+activity: medium
+---
+kind: url
 name: perl
 url: http://www.cpan.org/src
 activity: medium
@@ -3814,9 +3944,19 @@ url: http://download.qt.io/official_releases/qt/
 activity: high
 ---
 kind: url
+name: qtdeclarative
+url: http://download.qt.io/official_releases/qt/
+activity: high
+---
+kind: url
 name: qtfm
 url: https://github.com/rodlie/qtfm/releases
 activity: medium
+---
+kind: url
+name: qtsvg
+url: http://download.qt.io/official_releases/qt/
+activity: high
 ---
 kind: url
 name: qttools
@@ -4274,6 +4414,11 @@ url: http://www-us.apache.org/dist/subversion
 activity: low
 ---
 kind: url
+name: superlu
+url: https://github.com/xiaoyeli/superlu/releases/
+activity: none
+---
+kind: url
 name: swatchdog
 url: https://sourceforge.net/projects/swatch/files/swatchdog/
 activity: none
@@ -4309,6 +4454,11 @@ url: https://ftpmirror.gnu.org/ncurses/
 activity: low
 ---
 kind: url
+name: taglib
+url: https://taglib.org/
+activity: none
+---
+kind: url
 name: tcl
 url: https://sourceforge.net/projects/tcl/files/Tcl/
 activity: medium
@@ -4317,6 +4467,11 @@ kind: url
 name: tcpdump
 url: http://www.tcpdump.org/release
 activity: low
+---
+kind: url
+name: tcpflow
+url: https://github.com/simsong/tcpflow/releases/
+activity: none
 ---
 kind: url
 name: tcpstat
@@ -4402,6 +4557,11 @@ kind: url
 name: tk
 url: https://sourceforge.net/projects/tcl/files/Tcl/
 activity: low
+---
+kind: url
+name: tkdiff
+url: https://sourceforge.net/projects/tkdiff/files/tkdiff/
+activity: none
 ---
 kind: url
 name: tldr
@@ -4679,6 +4839,11 @@ url: https://github.com/wkhtmltopdf/wkhtmltopdf/releases
 activity: low
 ---
 kind: url
+name: wl_clipboard
+url: https://github.com/bugaevc/wl-clipboard/releases/
+activity: medium
+---
+kind: url
 name: wol
 url: https://sourceforge.net/projects/wake-on-lan/files/wol/
 activity: none
@@ -4691,6 +4856,11 @@ activity: low
 kind: url
 name: wput
 url: https://sourceforge.net/projects/wput/files/wput/
+activity: none
+---
+kind: url
+name: wxformbuilder
+url: https://github.com/wxFormBuilder/wxFormBuilder/releases
 activity: none
 ---
 kind: url
@@ -4961,4 +5131,9 @@ activity: medium
 kind: url
 name: zsync
 url: http://zsync.moria.org.uk/downloads
+activity: none
+---
+kind: url
+name: zvbi
+url: https://sourceforge.net/projects/zapping/files/zvbi/
 activity: none
