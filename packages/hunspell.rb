@@ -13,7 +13,30 @@ class Hunspell < Package
   })
 
   depends_on 'readline'
-  depends_on 'hunspell_en'
+  if ARGV[0] == 'install'
+    puts
+    puts "Enter your preferred language:"
+    puts "1 = English (US)"
+    puts "2 = French (FR)"
+    puts "3 = Spanish (ANY)"
+    puts "0 = Cancel"
+
+    while version = STDIN.gets.chomp
+      case version
+        when '1'
+          depends_on 'hunspell_en_us'
+          break
+        when '2'
+          depends_on 'hunspell_fr_fr'
+          break
+        when '3'
+          depends_on 'hunspell_es_any'
+          break
+        when '0'
+          abort
+      end
+    end
+  end
 
   def self.build
     system 'autoreconf -vfi'
