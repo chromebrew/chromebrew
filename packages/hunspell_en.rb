@@ -27,8 +27,9 @@ class Hunspell_en < Package
     FileUtils.rm_rf 'dictionaries/'
     puts
     puts "To update the dictionaries periodically, execute 'crew postinstall hunspell_en'.".lightblue
-    puts "To change to another language for example, execute:".lightblue
-    puts "echo 'export DICTIONARY=fr_FR' >> ~/.bashrc && source ~/.bashrc".lightblue
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts "echo 'export DICTIONARY=en_US' >> ~/.bashrc && source ~/.bashrc".lightblue
     puts
   end
 end

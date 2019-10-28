@@ -33,10 +33,4 @@ class Hunspell < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 
-  def self.postinstall
-    puts
-    puts "To complete the installation, execute the following:".lightblue
-    puts "echo 'export DICTIONARY=en_US' >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts
-  end
 end
