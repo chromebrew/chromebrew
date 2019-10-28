@@ -1,6 +1,6 @@
 require 'package'
 
-class Hunspell_FR < Package
+class Hunspell_fr < Package
   description 'Hunspell French dictionary'
   homepage 'http://hunspell.github.io/'
   version '1.7.0'
