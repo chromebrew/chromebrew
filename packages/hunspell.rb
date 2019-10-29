@@ -12,7 +12,6 @@ class Hunspell < Package
   binary_sha256 ({
   })
 
-  depends_on 'readline'
   if ARGV[0] == 'install'
     puts
     puts "Enter your preferred language:"
