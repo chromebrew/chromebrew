@@ -16,7 +16,7 @@ class Ghc < Package
   depends_on 'libtinfo'
 
   def self.build
-    system "stack setup ghc-8.6.5"
+    system "stack setup ghc-#{version}"
     system "echo '#!/bin/bash' > ghc"
     system "echo 'stack ghc \"\$@\"' >> ghc"
   end
