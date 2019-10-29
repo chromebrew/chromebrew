@@ -38,6 +38,7 @@ class Hunspell < Package
     end
   end
 
+  
   def self.build
     system 'autoreconf -vfi'
     system './configure',
@@ -55,5 +56,4 @@ class Hunspell < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
-
 end

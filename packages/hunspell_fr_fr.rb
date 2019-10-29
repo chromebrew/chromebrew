@@ -16,7 +16,6 @@ class Hunspell_fr_fr < Package
 
   def self.install
     system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
-    system 'mkdir -p $HOME/Library/Spelling'
     system "install -Dm644 dictionaries/fr_FR/fr.aff #{CREW_DEST_HOME}/Library/Spelling/fr_FR.aff"
     system "install -Dm644 dictionaries/fr_FR/fr.dic #{CREW_DEST_HOME}/Library/Spelling/fr_FR.dic"
   end
@@ -27,7 +26,7 @@ class Hunspell_fr_fr < Package
     FileUtils.cp 'dictionaries/fr_FR/fr.dic', "#{HOME}/Library/Spelling/fr_FR.dic"
     FileUtils.rm_rf 'dictionaries/'
     puts
-    puts "To update the dictionaries periodically, execute 'crew postinstall hunspell_fr'".lightblue
+    puts "To update the dictionaries periodically, execute 'crew postinstall hunspell_fr_fr'".lightblue
     puts
     puts "To complete the installation, execute the following:".lightblue
     puts "echo 'export DICTIONARY=fr_FR' >> ~/.bashrc && source ~/.bashrc".lightblue

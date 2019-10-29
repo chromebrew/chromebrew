@@ -16,7 +16,6 @@ class Hunspell_es_any < Package
 
   def self.install
     system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
-    system 'mkdir -p $HOME/Library/Spelling'
     system "install -Dm644 dictionaries/es/es_ANY.aff #{CREW_DEST_HOME}/Library/Spelling/es_ANY.aff"
     system "install -Dm644 dictionaries/es/es_ANY.dic #{CREW_DEST_HOME}/Library/Spelling/es_ANY.dic"
   end
