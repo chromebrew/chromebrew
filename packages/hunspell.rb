@@ -38,22 +38,4 @@ class Hunspell < Package
     end
   end
 
-  
-  def self.build
-    system 'autoreconf -vfi'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--include=#{CREW_PREFIX}/include",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-ui',
-           '--with-readline'
-    system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' man/hunspell.1"
-    system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' src/tools/hunspell.cxx"
-    system "sed -i 's,ncurses.h,#{CREW_PREFIX}/include/ncursesw/ncurses.h,' src/tools/hunspell.cxx"
-    system 'make'
-  end
-
-  def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
 end

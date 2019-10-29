@@ -12,7 +12,7 @@ class Hunspell_en_us < Package
   binary_sha256 ({
   })
 
-  depends_on 'hunspell'
+  depends_on 'hunspell_base'
 
   def self.install
     system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
