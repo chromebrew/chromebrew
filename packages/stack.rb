@@ -3,18 +3,21 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/en/stable/README/'
-  version '1.9.3'
+  version '2.1.3'
 
   case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-arm.tar.gz'
+  when 'aarch64'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-aarch64.tar.gz'
     source_sha256 '96394b616e29b3bd2479a3712e2c0c375a7cfd748b613f7c6c3186d7ae92977b'
+  when 'armv7l'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-arm.tar.gz'
+    source_sha256 '6c8a2100183368d0fe8298bc99260681f10c81838423884be885baaa2e096e78'
   when 'i686'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-i386.tar.gz'
-    source_sha256 'c7a45fcf782fcc9b2bbac38f9e1b41afec5e940c6e26936a51652f246e226505'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-i386.tar.gz'
+    source_sha256 '4acd97f4c91b1d1333c8d84ea38f690f0b5ac5224ba591f8cdd1b9d0e8973807'
   when 'x86_64'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-x86_64.tar.gz'
-    source_sha256 'e2363728e5818ccc68db9371c15af892a9a1fc86d808d0a9a77257f13696e946'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-x86_64.tar.gz'
+    source_sha256 'c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673'
   end
 
   binary_url ({
