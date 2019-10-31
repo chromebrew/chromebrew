@@ -3,9 +3,9 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  version '8.1.2233'
-  source_url 'https://github.com/vim/vim/archive/v8.1.2233.tar.gz'
-  source_sha256 'd27da89a918418f423d0651d21e61fcda8b1fa18cdcb80baced2ad7468b5a836'
+  version '8.1.2234'
+  source_url 'https://github.com/vim/vim/archive/v8.1.2234.tar.gz'
+  source_sha256 '08c8f8cdc41583e1604fdb27697f5cce7cf6ca01506b7ad3c6fe6d5ea722878b'
 
   binary_url ({
   })
