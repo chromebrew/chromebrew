@@ -13,8 +13,16 @@ class Vim < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.2234-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.2234-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.2234-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.1.2234-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '7cc653078f9418cb0e792a60722235acb7fe365d32a4dfa6e79fb82cdb5c5e7b',
+     armv7l: '7cc653078f9418cb0e792a60722235acb7fe365d32a4dfa6e79fb82cdb5c5e7b',
+       i686: 'c390fb82b8e94516a9d4a2982e490f32256a787b28805e277d7266db03ba427f',
+     x86_64: '8badba752b1feeba5ee285c015dc52e95e29514afa3b317e7fd87390e42bbc02',
   })
 
   depends_on 'python27' => :build
