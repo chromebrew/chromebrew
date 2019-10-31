@@ -3,9 +3,9 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  version '8.1.2225'
-  source_url 'https://github.com/vim/vim/archive/v8.1.2225.tar.gz'
-  source_sha256 'a88cf5fb07701d92ea79a3cc8f6e020e6b9bf07c0dfa72f0dde8a65f87e30f2d'
+  version '8.1.2234'
+  source_url 'https://github.com/vim/vim/archive/v8.1.2234.tar.gz'
+  source_sha256 '08c8f8cdc41583e1604fdb27697f5cce7cf6ca01506b7ad3c6fe6d5ea722878b'
 
   if ARGV[0] == 'install'
     gvim = `which gvim 2> /dev/null`.chomp
