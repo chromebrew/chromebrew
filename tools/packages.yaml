@@ -160,12 +160,17 @@ activity: low
 ---
 kind: url
 name: aspell_en
-url: http://ftp.gnu.org/gnu/aspell/dict/en
+url: https://ftpmirror.gnu.org/aspell/dict/en/
 activity: low
 ---
 kind: url
+name: aspell_fr
+url: https://ftpmirror.gnu.org/aspell/dict/fr/
+activity: none
+---
+kind: url
 name: aspell_es
-url: http://ftp.gnu.org/gnu/aspell/dict/es
+url: https://ftpmirror.gnu.org/aspell/dict/es/
 activity: none
 ---
 kind: url
@@ -1679,7 +1684,22 @@ url: https://github.com/gohugoio/hugo/releases/
 activity: medium
 ---
 kind: url
-name: hunspell
+name: hunspell_base
+url: https://github.com/hunspell/hunspell/releases
+activity: low
+---
+kind: url
+name: hunspell_en_us
+url: https://github.com/hunspell/hunspell/releases
+activity: low
+---
+kind: url
+name: hunspell_es_any
+url: https://github.com/hunspell/hunspell/releases
+activity: low
+---
+kind: url
+name: hunspell_fr_fr
 url: https://github.com/hunspell/hunspell/releases
 activity: low
 ---
@@ -3334,6 +3354,11 @@ url: http://nethack4.org/
 activity: none
 ---
 kind: url
+name: netpbm
+url: https://sourceforge.net/projects/netpbm/files/super_stable/
+activity: medium
+---
+kind: url
 name: nettle
 url: https://ftp.gnu.org/gnu/nettle
 activity: low
@@ -3437,6 +3462,11 @@ kind: url
 name: ondir
 url: https://swapoff.org/ondir.html
 activity: low
+---
+kind: url
+name: oniguruma
+url: https://github.com/kkos/oniguruma/releases
+activity: medium
 ---
 kind: url
 name: openblas
