@@ -12,9 +12,6 @@ class Newlisp < Package
   binary_sha256 ({
   })
 
-  depends_on 'readline'
-  #depends_on 'libffi'
-
   def self.build
     # This works but readline and ffi are disabled. When using the
     #  standard ./configure it's looking in the wrong place for ffi.h
@@ -27,6 +24,9 @@ class Newlisp < Package
     # system "./configure --prefix=#{CREW_PREFIX} --enable-readline --enable-ffi"
     system "./configure-alt --prefix=#{CREW_PREFIX} --enable-readline"
     system 'make'
+  end
+
+  def self.check
     system 'make', 'check'
   end
 
