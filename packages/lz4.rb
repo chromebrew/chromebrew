@@ -13,10 +13,10 @@ class Lz4 < Package
   })
 
   def self.build
-    system 'make', 'BUILD_STATIC=no'
+    system 'make', "PREFIX=#{CREW_PREFIX}"
   end
 
   def self.install
-    system 'make', 'BUILD_STATIC=no', "DESTDIR=#{CREW_DEST_DIR}", "LIBDIR=#{CREW_LIB_PREFIX}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "LIBDIR=#{CREW_LIB_PREFIX}", 'install'
   end
 end
