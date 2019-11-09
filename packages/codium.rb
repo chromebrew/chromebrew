@@ -3,9 +3,9 @@ require 'package'
 class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.39.1'
-  source_url 'https://github.com/VSCodium/vscodium/releases/download/1.39.1/VSCodium-linux-x64-1.39.1.tar.gz'
-  source_sha256 '56bc17bfba771d1db655e6d6b0517df912eabb6532955094a2c77865c67719ee'
+  version '1.40.0'
+  source_url 'https://github.com/VSCodium/vscodium/releases/download/1.40.0/VSCodium-linux-x64-1.40.0.tar.gz'
+  source_sha256 '4482f533bc639d0462a0b98f1a5a13f0adf50a4e7bb75102280bee18297c217a'
 
   binary_url ({
   })
