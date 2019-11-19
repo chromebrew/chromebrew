@@ -8,8 +8,14 @@ class Neovim < Package
   source_sha256 '91a0b5d32204a821bf414690e6b48cf69224d1961d37158c2b383f6a6cf854d2'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/neovim-0.4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/neovim-0.4.3-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/neovim-0.4.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '3a984f1e22e7a401e81b3acf0af68c19f42fe9bd6c9c3496f80f27b7fac38bfb',
+     armv7l: '3a984f1e22e7a401e81b3acf0af68c19f42fe9bd6c9c3496f80f27b7fac38bfb',
+     x86_64: 'a0164cb3b46076bb0723b90fec6234dbb478b4067d657aa096cc765a91888464',
   })
 
   depends_on 'meson' => :build
