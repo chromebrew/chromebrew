@@ -13,8 +13,16 @@ class Php73 < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.12-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.12-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '9286ee547ff8122df84dc859a3ee33e75aca8049a1fc845cc23dda8e9e584eb6',
+     armv7l: '9286ee547ff8122df84dc859a3ee33e75aca8049a1fc845cc23dda8e9e584eb6',
+       i686: 'e38e68c4d0fd3209202cb91a757529fa5a9606e4f56480cbe8f4c15df39c68e2',
+     x86_64: 'cf4690e251f780ba0f52af9d330fb07991785ace037e1f7edc220c4b51afc15b',
   })
 
   depends_on 'libgcrypt'

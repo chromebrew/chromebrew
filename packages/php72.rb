@@ -13,8 +13,16 @@ class Php72 < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.25-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.25-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.25-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.25-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'e9c2888f04243257a29996d6c922d29e66d051f2025a6e50dd752dd073d1f388',
+     armv7l: 'e9c2888f04243257a29996d6c922d29e66d051f2025a6e50dd752dd073d1f388',
+       i686: 'ad0cff4dcf95500b2157fbf98c5aabe5b6ae5bf26e8ca627e0e149673eec2b38',
+     x86_64: '959b97e577daae8c0eb569f00976b7355c2b8a2edf58f3b304fdfedca15c8920',
   })
 
   depends_on 'libgcrypt'
