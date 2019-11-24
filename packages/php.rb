@@ -5,6 +5,8 @@ class Php < Package
   homepage 'http://www.php.net/'
   version '5.6.40-7.3.12'
 
+  is_fake
+
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
     abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
