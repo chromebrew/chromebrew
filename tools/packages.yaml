@@ -384,6 +384,11 @@ url: https://github.com/box-project/box2/releases
 activity: none
 ---
 kind: url
+name: broadway
+url: https://developer.gnome.org/gtk3/stable/gtk-broadway.html
+activity: none
+---
+kind: url
 name: brotli
 url: https://github.com/google/brotli/releases
 activity: medium
@@ -474,6 +479,11 @@ url: http://asic-linux.com.mx/~izto/checkinstall/files/source/
 activity: low
 ---
 kind: url
+name: chibi_scheme
+url: https://github.com/ashinn/chibi-scheme/releases
+activity: none
+---
+kind: url
 name: chicken
 url: https://code.call-cc.org/releases
 activity: low
@@ -496,6 +506,11 @@ activity: none
 kind: url
 name: chruby
 url: https://github.com/postmodern/chruby/releases
+activity: none
+---
+kind: url
+name: ck4up
+url: http://jue.li/crux/ck4up/
 activity: none
 ---
 kind: url
@@ -1149,6 +1164,11 @@ url: https://github.com/junegunn/fzf/releases
 activity: low
 ---
 kind: url
+name: gambit
+url: https://github.com/gambit/gambit/releases/
+activity: low
+---
+kind: url
 name: gawk
 url: https://ftp.gnu.org/gnu/gawk
 activity: medium
@@ -1402,6 +1422,11 @@ kind: url
 name: go
 url: https://golang.org/dl/
 activity: medium
+---
+kind: url
+name: go_bootstrap
+url: https://golang.org/doc/install/source#bootstrapFromSource
+activity: none
 ---
 kind: url
 name: goaccess
@@ -2174,6 +2199,11 @@ url: https://github.com/libevent/libevent/releases
 activity: none
 ---
 kind: url
+name: libewf
+url: https://github.com/libyal/libewf/releases
+activity: none
+---
+kind: url
 name: libexif
 url: https://github.com/libexif/libexif/releases
 activity: none
@@ -2302,11 +2332,6 @@ kind: url
 name: libksba
 url: https://www.gnupg.org/ftp/gcrypt/libksba
 activity: none
----
-kind: url
-name: liblapack
-url: http://www.netlib.org/lapack/
-activity: low
 ---
 kind: url
 name: libmad
@@ -2651,11 +2676,6 @@ activity: low
 kind: url
 name: libusbmuxd
 url: http://www.libimobiledevice.org/downloads/
-activity: none
----
-kind: url
-name: libuuid
-url: https://downloads.sourceforge.net/project/libuuid/
 activity: none
 ---
 kind: url
@@ -3494,6 +3514,11 @@ url: ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release
 activity: low
 ---
 kind: url
+name: openmpi
+url: https://www.open-mpi.org/software/ompi/v4.0/
+activity: medium
+---
+kind: url
 name: openpam
 url: https://www.openpam.org/downloads/
 activity: none
@@ -3512,11 +3537,6 @@ kind: url
 name: openssh
 url: https://github.com/openssh/openssh-portable/releases
 activity: none
----
-kind: url
-name: openssl
-url: https://github.com/openssl/openssl/releases
-activity: medium
 ---
 kind: url
 name: optipng
@@ -4559,11 +4579,6 @@ url: https://github.com/jonas/tig/releases
 activity: low
 ---
 kind: url
-name: tilp
-url: https://www.ticalc.org/pub/unix/
-activity: none
----
-kind: url
 name: tilp2
 url: https://sourceforge.net/projects/tilp/files/tilp2-linux/
 activity: none
@@ -4636,6 +4651,11 @@ activity: none
 kind: url
 name: trousers
 url: https://sourceforge.net/projects/trousers/files/trousers/
+activity: none
+---
+kind: url
+name: ttf2pt1
+url: https://sourceforge.net/projects/ttf2pt1/files/ttf2pt1/
 activity: none
 ---
 kind: url
