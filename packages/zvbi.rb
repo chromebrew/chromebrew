@@ -20,14 +20,13 @@ class Zvbi < Package
      x86_64: 'df144f5bf127aad35537b7874fbeddf60847e2d8e956bea44fdd4d6b1ab4eece',
   })
 
-  depends_on 'sommelier'
+  depends_on 'libpng'
 
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--with-x'
+           '--disable-maintainer-mode'
     system 'make'
   end
 
