@@ -3,18 +3,18 @@ require 'package'
 class Hugo < Package
   description 'Hugo is one of the most popular open-source static site generators.'
   homepage 'https://gohugo.io'
-  version '0.59.1'
+  version '0.60.1'
 
   case ARCH
   when 'aarch64','armv7l'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.59.1/hugo_0.59.1_Linux-ARM.tar.gz'
-    source_sha256 'e724d51908461bc2d88dbba6ca59dc8325dc6f28b437a04b668cc54ee3e243fb'
+    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.60.1/hugo_0.60.1_Linux-ARM.tar.gz'
+    source_sha256 '84ff6846cd39c6650e70528d4f318a664572e65f1dbbc8f42b779ed2f352b798'
   when 'i686'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.59.1/hugo_0.59.1_Linux-32bit.tar.gz'
-    source_sha256 '0ef610f0aeb8a6bf25a0744fc462ac7da00dcb01853ab9d65444fb9691fcfdc5'
+    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.60.1/hugo_0.60.1_Linux-32bit.tar.gz'
+    source_sha256 '610c39e6dd4b7bb25ad5b3e175cc36f62f2674cac4c768ae865be3e47083caa7'
   when 'x86_64'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.59.1/hugo_0.59.1_Linux-64bit.tar.gz'
-    source_sha256 'b92c47a705ad372887454644f8bee76caa6234be13c073834827b58f73fb7adb'
+    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.60.1/hugo_0.60.1_Linux-64bit.tar.gz'
+    source_sha256 '54efec73f8aca18a3fa90e539dbe3b3b53e5d0c802ee724b2cbc63dae2fc17d3'
   end
 
   binary_url ({
