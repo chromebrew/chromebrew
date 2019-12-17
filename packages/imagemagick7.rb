@@ -8,14 +8,8 @@ class Imagemagick7 < Package
   source_sha256 '73398cc626ebbb060d0df552b0db75de0c334f9626286284b627a6eb2a66ed19'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-7-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '234aa27aeb1f8bb7cdcfb9d9d84d4d249aa2346d00206d79df708de784115f17',
-     armv7l: '234aa27aeb1f8bb7cdcfb9d9d84d4d249aa2346d00206d79df708de784115f17',
-     x86_64: '515e0c51741e5ffe791f456ae0a5fcc090d0dce6799d2d4f96d858ddc612da83',
   })
 
   if ARGV[0] == 'install'
@@ -64,12 +58,8 @@ class Imagemagick7 < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "ln -s #{CREW_LIB_PREFIX}/libMagickWand-7.Q16HDRI.so.6 #{CREW_LIB_PREFIX}/libMagickWand-7.Q16.so.6"
-    system "ln -s #{CREW_LIB_PREFIX}/libMagickCore-7.Q16HDRI.so.6 #{CREW_LIB_PREFIX}/libMagickCore-7.Q16.so.6"
+    FileUtils.ln_s "#{CREW_LIB_PREFIX}/libMagickWand-7.Q16HDRI.so.6", "#{CREW_DEST_LIB_PREFIX}/libMagickWand-7.Q16.so.6"
+    FileUtils.ln_s "#{CREW_LIB_PREFIX}/libMagickCore-7.Q16HDRI.so.6", "#{CREW_DEST_LIB_PREFIX}/libMagickCore-7.Q16.so.6"
   end
 
-  def self.remove
-    system "rm #{CREW_LIB_PREFIX}/libMagickWand-7.Q16.so.6"
-    system "rm #{CREW_LIB_PREFIX}/libMagickCore-7.Q16.so.6"
-  end
 end
