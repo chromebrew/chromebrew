@@ -64,5 +64,12 @@ class Imagemagick6 < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "ln -s #{CREW_LIB_PREFIX}/libMagickWand-6.Q16HDRI.so.6 #{CREW_LIB_PREFIX}/libMagickWand-6.Q16.so.6"
+    system "ln -s #{CREW_LIB_PREFIX}/libMagickCore-6.Q16HDRI.so.6 #{CREW_LIB_PREFIX}/libMagickCore-6.Q16.so.6"
+  end
+  
+  def self.remove
+    system "rm #{CREW_LIB_PREFIX}/libMagickWand-6.Q16.so.6"
+    system "rm #{CREW_LIB_PREFIX}/libMagickCore-6.Q16.so.6"
   end
 end
