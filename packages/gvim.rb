@@ -8,8 +8,16 @@ class Gvim < Package
   source_sha256 '5e433abdebf36855bcec38b4e195a1281d04309b72523a265a21288717061845'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '0a03d59fe6790574ae83b36aa5da4bdadd5a2c6097dcc671933323400f2e1352',
+     armv7l: '0a03d59fe6790574ae83b36aa5da4bdadd5a2c6097dcc671933323400f2e1352',
+       i686: '3a1f848861f0faccb30d95bdd4657abbdbc80b4654d13ecfb3502559ae014e91',
+     x86_64: 'ef77b6f6a7d2ab6adf04148ede4ad1682d1ab0eefd59208d729bfe9d6a2023d0',
   })
 
   depends_on 'python27' => :build
