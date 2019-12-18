@@ -8,8 +8,16 @@ class Vim_runtime < Package
   source_sha256 '5e433abdebf36855bcec38b4e195a1281d04309b72523a265a21288717061845'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '3911f7fb1bcc8ba9d7d8afdb9d70b7b86865b5f232bec647470db45fe84d87e2',
+     armv7l: '3911f7fb1bcc8ba9d7d8afdb9d70b7b86865b5f232bec647470db45fe84d87e2',
+       i686: 'c2859e2221137ad5bcb0583cadac66318915671e42ca9bca6b2e29219b06bf43',
+     x86_64: '801a6f930cf20529c5339a280566865646dad3c94681cf85d6b5f25d95ac80fa',
   })
 
   depends_on 'python27' => :build
