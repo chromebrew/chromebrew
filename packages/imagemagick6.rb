@@ -3,13 +3,19 @@ require 'package'
 class Imagemagick6 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '6.9.10-77'
-  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-6.9.10-77.tar.xz'
-  source_sha256 '55b3ef6281056c728a25e178434f1e7a2e491cbd99e44dc090a82967a2df6e11'
+  version '6.9.10-79'
+  source_url 'https://imagemagick.org/download/ImageMagick-6.9.10-79.tar.xz'
+  source_sha256 '52b7bf07175feca8da112a093661baa7fe7453eb8c576d8f904135cc3c15567e'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.10-79-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.10-79-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.10-79-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'e9a0befa3e96a9a42ec9bcc66b597aefd6ff6e4d68f3138772a6deadfa2ce769',
+     armv7l: 'e9a0befa3e96a9a42ec9bcc66b597aefd6ff6e4d68f3138772a6deadfa2ce769',
+     x86_64: '16dec45ba5036a192c42ac1c46bd8744682e6a6cd1e19c576c911e9511fbc078',
   })
 
   if ARGV[0] == 'install'
@@ -18,6 +24,7 @@ class Imagemagick6 < Package
   end
 
   depends_on 'flif'
+  depends_on 'freeimage'
   depends_on 'freetype'
   depends_on 'ghostscript'
   depends_on 'graphviz'

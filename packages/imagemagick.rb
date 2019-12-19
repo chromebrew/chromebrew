@@ -3,7 +3,7 @@ require 'package'
 class Imagemagick < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '6.9.10-77-7.0.9-7'
+  version '6.9.10-79-7.0.9-9'
 
   is_fake
 
@@ -12,8 +12,8 @@ class Imagemagick < Package
     abort "ImageMagick version #{imver} already installed.".lightgreen unless "#{imver}" == ""
     puts
     puts "  Select the version to install:"
-    puts "  6 = ImageMagick 6.9.10-77"
-    puts "  7 = ImageMagick 7.0.9-7"
+    puts "  6 = ImageMagick 6.9.10-79"
+    puts "  7 = ImageMagick 7.0.9-9"
     puts "  0 = Cancel"
 
     while version = STDIN.gets.chomp

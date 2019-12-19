@@ -3,13 +3,19 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.9-7'
-  source_url 'https://www.imagemagick.org/download/releases/ImageMagick-7.0.9-7.tar.xz'
-  source_sha256 '73398cc626ebbb060d0df552b0db75de0c334f9626286284b627a6eb2a66ed19'
+  version '7.0.9-9'
+  source_url 'https://imagemagick.org/download/ImageMagick-7.0.9-9.tar.xz'
+  source_sha256 '257c9e11480aef95ea98d13495e3beb360d48c26fa8bd3da2d21c61907111d81'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '9588b1c173c83031099a4a201862d599be6915712c23d6ade1b61b926c25db32',
+     armv7l: '9588b1c173c83031099a4a201862d599be6915712c23d6ade1b61b926c25db32',
+     x86_64: '71026f3fc591cad77b66977ff01a230b4b08e16c23e880b53b2e2dbdeb4b41ae',
   })
 
   if ARGV[0] == 'install'
@@ -18,6 +24,7 @@ class Imagemagick7 < Package
   end
 
   depends_on 'flif'
+  depends_on 'freeimage'
   depends_on 'freetype'
   depends_on 'ghostscript'
   depends_on 'graphviz'
