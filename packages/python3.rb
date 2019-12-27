@@ -8,8 +8,16 @@ class Python3 < Package
   source_sha256 '75894117f6db7051c1b34f37410168844bbb357c139a8a10a352e9bf8be594e8'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '715ad0ba8d650343a9f1bbf3b38c9b0585f81a129c85cdfea2e0ef5e3f261333',
+     armv7l: '715ad0ba8d650343a9f1bbf3b38c9b0585f81a129c85cdfea2e0ef5e3f261333',
+       i686: '1fe57de9127102f6512ae6dee9d411206c2da5ca0562493a1dc13831cd3c1c72',
+     x86_64: 'eace7a58c7414a7a5f2fc277098781c5474747032f654d5b8bf69303238f5992',
   })
 
   depends_on 'bz2'
