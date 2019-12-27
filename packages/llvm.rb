@@ -3,21 +3,21 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi and openmp are included.'
   homepage 'http://llvm.org/'
-  version '8.0.0-1'
-  source_url 'https://releases.llvm.org/8.0.0/llvm-8.0.0.src.tar.xz'
-  source_sha256 '8872be1b12c61450cacc82b3d153eab02be2546ef34fa3580ed14137bb26224c'
+  version '9.0.0'
+  source_url 'https://releases.llvm.org/9.0.0/llvm-9.0.0.src.tar.xz'
+  source_sha256 'd6a0565cf21f22e9b4353b2eb92622e8365000a9e90a16b09b56f8157eabfe84'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-8.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-8.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-8.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-8.0.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '50eb2b5e524a90ae21361fa5fcc986f2766852464aab7db390f217403f9bf8f8',
-     armv7l: '50eb2b5e524a90ae21361fa5fcc986f2766852464aab7db390f217403f9bf8f8',
-       i686: 'a5e6de6a037cfb7a7a197b5478c226fc83456ae71fcb8935f0c67d36c68d5938',
-     x86_64: '7f476d4b2300e337d6ac98c4116dc481964d5939fe459126737992b121eaf885',
+    aarch64: 'c33a3b92a7038784b4ff4231171a17cf556143f9b5d875aee64aeabc0ab458ab',
+     armv7l: 'c33a3b92a7038784b4ff4231171a17cf556143f9b5d875aee64aeabc0ab458ab',
+       i686: '2f93321ba8228faefa513fefdb2ce974874e99a24d7aaf2f672fb99791e0e3db',
+     x86_64: '1dd75d41f5188bd598bbe77a059698cc27627c4bc24602061a90f62f9cf39294',
   })
 
   depends_on 'ld_default' => :build
@@ -35,7 +35,7 @@ class Llvm < Package
     url_clang = "https://releases.llvm.org/#{version}/cfe-#{version}.src.tar.xz"
     uri_clang = URI.parse url_clang
     filename_clang = File.basename(uri_clang.path)
-    sha256sum_clang = '084c115aab0084e63b23eee8c233abb6739c399e29966eaeccfc6e088e0b736b'
+    sha256sum_clang = '7ba81eef7c22ca5da688fdf9d88c20934d2d6b40bfe150ffd338900890aa4610'
 
     if File.exist?(filename_clang) && Digest::SHA256.hexdigest( File.read("./#{filename_clang}") ) == sha256sum_clang
       puts "Unpacking clang source code".yellow
@@ -56,7 +56,7 @@ class Llvm < Package
     url_lld = "https://releases.llvm.org/#{version}/lld-#{version}.src.tar.xz"
     uri_lld = URI.parse url_lld
     filename_lld = File.basename(uri_lld.path)
-    sha256sum_lld = '9caec8ec922e32ffa130f0fb08e4c5a242d7e68ce757631e425e9eba2e1a6e37'
+    sha256sum_lld = '31c6748b235d09723fb73fea0c816ed5a3fab0f96b66f8fbc546a0fcc8688f91'
 
     if File.exist?(filename_lld) && Digest::SHA256.hexdigest( File.read("./#{filename_lld}") ) == sha256sum_lld
       puts "Unpacking lld source code".yellow
@@ -77,7 +77,7 @@ class Llvm < Package
     url_lldb = "https://releases.llvm.org/#{version}/lldb-#{version}.src.tar.xz"
     uri_lldb = URI.parse url_lldb
     filename_lldb = File.basename(uri_lldb.path)
-    sha256sum_lldb = '49918b9f09816554a20ac44c5f85a32dc0a7a00759b3259e78064d674eac0373'
+    sha256sum_lldb = '1e4c2f6a1f153f4b8afa2470d2e99dab493034c1ba8b7ffbbd7600de016d0794'
 
     if File.exist?(filename_lldb) && Digest::SHA256.hexdigest( File.read("./#{filename_lldb}") ) == sha256sum_lldb
       puts "Unpacking lldb source code".yellow
@@ -98,7 +98,7 @@ class Llvm < Package
     url_polly = "https://releases.llvm.org/#{version}/polly-#{version}.src.tar.xz"
     uri_polly = URI.parse url_polly
     filename_polly = File.basename(uri_polly.path)
-    sha256sum_polly = 'e3f5a3d6794ef8233af302c45ceb464b74cdc369c1ac735b6b381b21e4d89df4'
+    sha256sum_polly = 'a4fa92283de725399323d07f18995911158c1c5838703f37862db815f513d433'
 
     if File.exist?(filename_polly) && Digest::SHA256.hexdigest( File.read("./#{filename_polly}") ) == sha256sum_polly
       puts "Unpacking polly source code".yellow
@@ -120,7 +120,7 @@ class Llvm < Package
     #url_extra_tools = "https://releases.llvm.org/#{version}/clang-tools-extra-#{version}.src.tar.xz"
     #uri_extra_tools = URI.parse url_extra_tools
     #filename_extra_tools = File.basename(uri_extra_tools.path)
-    #sha256sum_extra_tools = '4f00122be408a7482f2004bcf215720d2b88cf8dc78b824abb225da8ad359d4b'
+    #sha256sum_extra_tools = 'ea1c86ce352992d7b6f6649bc622f6a2707b9f8b7153e9f9181a35c76aa3ac10'
 
     #if File.exist?(filename_extra_tools) && Digest::SHA256.hexdigest( File.read("./#{filename_extra_tools}") ) == sha256sum_extra_tools
     #  puts "Unpacking extra_tools source code".yellow
@@ -143,7 +143,7 @@ class Llvm < Package
     url_compiler_rt = "https://releases.llvm.org/#{version}/compiler-rt-#{version}.src.tar.xz"
     uri_compiler_rt = URI.parse url_compiler_rt
     filename_compiler_rt = File.basename(uri_compiler_rt.path)
-    sha256sum_compiler_rt = 'b435c7474f459e71b2831f1a4e3f1d21203cb9c0172e94e9d9b69f50354f21b1'
+    sha256sum_compiler_rt = '56e4cd96dd1d8c346b07b4d6b255f976570c6f2389697347a6c3dcb9e820d10e'
 
     if File.exist?(filename_compiler_rt) && Digest::SHA256.hexdigest( File.read("./#{filename_compiler_rt}") ) == sha256sum_compiler_rt
       puts "Unpacking compiler-rt source code".yellow
@@ -164,7 +164,7 @@ class Llvm < Package
     url_libcxx = "https://releases.llvm.org/#{version}/libcxx-#{version}.src.tar.xz"
     uri_libcxx = URI.parse url_libcxx
     filename_libcxx = File.basename(uri_libcxx.path)
-    sha256sum_libcxx = 'c2902675e7c84324fb2c1e45489220f250ede016cc3117186785d9dc291f9de2'
+    sha256sum_libcxx = '3c4162972b5d3204ba47ac384aa456855a17b5e97422723d4758251acf1ed28c'
 
     if File.exist?(filename_libcxx) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxx}") ) == sha256sum_libcxx
       puts "Unpacking libcxx source code".yellow
@@ -185,7 +185,7 @@ class Llvm < Package
     url_libcxxabi = "https://releases.llvm.org/#{version}/libcxxabi-#{version}.src.tar.xz"
     uri_libcxxabi = URI.parse url_libcxxabi
     filename_libcxxabi = File.basename(uri_libcxxabi.path)
-    sha256sum_libcxxabi = 'c2d6de9629f7c072ac20ada776374e9e3168142f20a46cdb9d6df973922b07cd'
+    sha256sum_libcxxabi = '675041783565c906ac2f7f8b2bc5c40f14d871ecfa8ade34855aa18de95530e9'
 
     if File.exist?(filename_libcxxabi) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxxabi}") ) == sha256sum_libcxxabi
       puts "Unpacking libcxxabi source code".yellow
@@ -206,7 +206,7 @@ class Llvm < Package
     url_openmp = "https://releases.llvm.org/#{version}/openmp-#{version}.src.tar.xz"
     uri_openmp = URI.parse url_openmp
     filename_openmp = File.basename(uri_openmp.path)
-    sha256sum_openmp = 'f7b1705d2f16c4fc23d6531f67d2dd6fb78a077dd346b02fed64f4b8df65c9d5'
+    sha256sum_openmp = '9979eb1133066376cc0be29d1682bc0b0e7fb541075b391061679111ae4d3b5b'
 
     if File.exist?(filename_openmp) && Digest::SHA256.hexdigest( File.read("./#{filename_openmp}") ) == sha256sum_openmp
       puts "Unpacking openmp source code".yellow
@@ -227,7 +227,7 @@ class Llvm < Package
     url_libunwind = "https://releases.llvm.org/#{version}/libunwind-#{version}.src.tar.xz"
     uri_libunwind = URI.parse url_libunwind
     filename_libunwind = File.basename(uri_libunwind.path)
-    sha256sum_libunwind = 'ff243a669c9cef2e2537e4f697d6fb47764ea91949016f2d643cb5d8286df660'
+    sha256sum_libunwind = '976a8d09e1424fb843210eecec00a506b956e6c31adda3b0d199e945be0d0db2'
 
     if File.exist?(filename_libunwind) && Digest::SHA256.hexdigest( File.read("./#{filename_libunwind}") ) == sha256sum_libunwind
       puts "Unpacking libunwind source code".yellow
@@ -248,7 +248,7 @@ class Llvm < Package
     #url_testsuite = "https://releases.llvm.org/#{version}/test-suite-#{version}.src.tar.xz"
     #uri_testsuite = URI.parse url_testsuite
     #filename_testsuite = File.basename(uri_testsuite.path)
-    #sha256sum_testsuite = 'b567d761189e172650ec733fb9bcc4eeabf3f58ae97d85dec9e66392bb37b7ea'
+    #sha256sum_testsuite = '2ba3cde840c1c0ef744c93ae6a921207dbb9ccbb39f93f7ace9252e5203307cf'
 
     #if File.exist?(filename_testsuite) && Digest::SHA256.hexdigest( File.read("./#{filename_testsuite}") ) == sha256sum_testsuite
     #  puts "Unpacking test-suite source code".yellow
@@ -290,25 +290,27 @@ gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
       case ARCH
       when "x86_64"
-        system "cmake",
+        system 'cmake',
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
                "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-               "-DLLVM_LIBDIR_SUFFIX=64",
-               "-DBUILD_SHARED_LIBS=ON",
-               "-DCMAKE_BUILD_TYPE=Release",
-               "-Wno-dev",
-               ".."
+               '-DCMAKE_BUILD_TYPE=Release',
+               '-DLLVM_LIBDIR_SUFFIX=64',
+               '-DBUILD_SHARED_LIBS=ON',
+               '-DLLVM_ENABLE_RTTI=ON',
+               '-Wno-dev',
+               '..'
                # Fix for file INSTALL cannot find ".../lib64/python2.7" error.
                # See http://lists.llvm.org/pipermail/lldb-dev/2015-June/007633.html.
                system "sed -i '40,43d' tools/lldb/scripts/cmake_install.cmake"
       else # armv7l, aarch64 or i686
-        system "cmake",
+        system 'cmake',
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
                "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-               "-DBUILD_SHARED_LIBS=ON",
-               "-DCMAKE_BUILD_TYPE=Release",
-               "-Wno-dev",
-               ".."
+               '-DCMAKE_BUILD_TYPE=Release',
+               '-DBUILD_SHARED_LIBS=ON',
+               '-DLLVM_ENABLE_RTTI=ON',
+               '-Wno-dev',
+               '..'
       end
       system 'make'
     end
@@ -319,7 +321,7 @@ clang++ -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc
     Dir.chdir("builddir") do
       system "install -Dm755 clc #{CREW_DEST_PREFIX}/bin/clc"
       system "install -Dm755 clc++ #{CREW_DEST_PREFIX}/bin/clc++"
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
   end
   
