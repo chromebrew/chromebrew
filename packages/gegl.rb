@@ -22,6 +22,7 @@ class Gegl < Package
   depends_on 'libwebp'
   depends_on 'lua'
   depends_on 'vala'
+  depends_on 'meson' => :build
 
   def self.build
     system 'meson',

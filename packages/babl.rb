@@ -12,6 +12,8 @@ class Babl < Package
   binary_sha256 ({
   })
 
+  depends_on 'meson' => :build
+  
   def self.build
     system 'meson',
            "--prefix=#{CREW_PREFIX}",
