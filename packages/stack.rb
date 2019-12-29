@@ -3,13 +3,13 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/en/stable/README/'
-  version '2.1.3'
+  version '2.1.3-1'
 
   case ARCH
   when 'aarch64'
     source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-aarch64.tar.gz'
     source_sha256 '96394b616e29b3bd2479a3712e2c0c375a7cfd748b613f7c6c3186d7ae92977b'
-  when 'armv7l'
+  when 'armv7l', 'armv8'
     source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-arm.tar.gz'
     source_sha256 '6c8a2100183368d0fe8298bc99260681f10c81838423884be885baaa2e096e78'
   when 'i686'
@@ -21,16 +21,8 @@ class Stack < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/stack-2.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/stack-2.1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/stack-2.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/stack-2.1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'fc7da39bc31870079388f77b9410c582103d160fa3bbdfddd7d3a168da9caa7e',
-     armv7l: 'fc7da39bc31870079388f77b9410c582103d160fa3bbdfddd7d3a168da9caa7e',
-       i686: 'd5e1452abdf115ac7452f2508ff8b367300fc18075af918bba5e1b9544e6337f',
-     x86_64: '96a7fd13f475e3465a35b5cd70082abfb2b1cef72474851952b9e2dda048a3c9',
   })
 
   def self.install
