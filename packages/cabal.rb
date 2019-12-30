@@ -3,10 +3,10 @@ require 'package'
 class Cabal < Package
   description 'Common Architecture for Building Applications and Libraries'
   homepage 'https://www.haskell.org/cabal/'
-  version '2.4.1.0'
+  version '2.4.1.0-1'
   case ARCH
   when 'i686'
-    source_url 'hhttps://downloads.haskell.org/~cabal/cabal-install-2.4.1.0/cabal-install-2.4.1.0-i386-unknown-linux.tar.xz'
+    source_url 'https://downloads.haskell.org/~cabal/cabal-install-2.4.1.0/cabal-install-2.4.1.0-i386-unknown-linux.tar.xz'
     source_sha256 'b2da736cc27609442b10f77fc1a687aba603a7a33045b722dbf1a0066fade198'
   when 'x86_64'
     source_url 'https://downloads.haskell.org/~cabal/cabal-install-2.4.1.0/cabal-install-2.4.1.0-x86_64-unknown-linux.tar.xz'
