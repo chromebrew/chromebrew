@@ -28,6 +28,7 @@ Usage:
   crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew list (available|installed)
   crew postinstall <name> ...
+  crew reinstall [-v|--verbose] <name> ...
   crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
   crew update
@@ -206,6 +207,10 @@ def help (pkgName)
     puts "Display postinstall messages of package(s)."
     puts "Usage: crew postinstall <package1> [<package2> ...]"
     puts "The package(s) must be currently installed."
+  when "reinstall"
+    puts "Remove and install package(s)."
+    puts "Usage: crew reinstall [-v|--verbose] <package1> [<package2> ...]"
+    puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "remove"
     puts "Remove package(s)."
     puts "Usage: crew remove [-v|--verbose] <package1> [<package2> ...]"
@@ -240,7 +245,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, const, download, files, install, list ,remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, const, download, files, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -940,6 +945,15 @@ def postinstall_command (args)
     else
       puts "Package #{name} is not installed. :(".lightred
     end
+  end
+end
+
+def reinstall_command (args)
+  args["<name>"].each do |name|
+    remove name
+    @pkgName = name
+    search @pkgName
+    install
   end
 end
 
