@@ -3,21 +3,21 @@ require 'package'
 class Whois < Package
   description 'Intelligent WHOIS client'
   homepage 'https://github.com/rfc1036/whois'
-  version '5.2.20-1'
-  source_url 'https://github.com/rfc1036/whois/archive/v5.2.20.tar.gz'
-  source_sha256 '1812b9c64a41d8ed70507bb1161a18a0a7b2f29ba5b442ca7828a5acb1e44c7e'
+  version '5.5.2'
+  source_url 'https://github.com/rfc1036/whois/archive/v5.5.2.tar.gz'
+  source_sha256 '9e007306bc0a5e0da4fe9abd52bc79aa8202af5ee6e852fb4f130cf362340b40'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.2.20-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.5.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.5.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.5.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/whois-5.5.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0f540befde8dc78202a0c7c30e73b15bf7e3db6bf108e762e231a58bf7f2f8eb',
-     armv7l: '0f540befde8dc78202a0c7c30e73b15bf7e3db6bf108e762e231a58bf7f2f8eb',
-       i686: '543cd5034dce8928a35d03c90d9f1357b98321b4135c93f3b0bd1c92e51edd64',
-     x86_64: 'b8125e4f3ab2652c45069d0e56ea7eb9118f7555e4b1deafb057f43ac42b691b',
+    aarch64: 'e1fb23bf6dc47d2504f8452f33668599ab039b32bbe6b70c3b4cf0f9c529a424',
+     armv7l: 'e1fb23bf6dc47d2504f8452f33668599ab039b32bbe6b70c3b4cf0f9c529a424',
+       i686: '737063cadba182cd240e01a64b5380c781472877b7f2dfec91c33e9049dde4a2',
+     x86_64: 'b788ba9c31a33dcc7b3dafcb4984117527e1dd802994f05519631f75a14d4378',
   })
 
   depends_on 'gettext'

@@ -3,26 +3,22 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '9.6.5'
-  source_url 'https://ftp.postgresql.org/pub/source/v9.6.5/postgresql-9.6.5.tar.bz2'
-  source_sha256 '06da12a7e3dddeb803962af8309fa06da9d6989f49e22865335f0a14bad0744c'
+  version '9.6.16'
+  source_url 'https://ftp.postgresql.org/pub/source/v9.6.16/postgresql-9.6.16.tar.bz2'
+  source_sha256 '5c6cba9cc0df70ba2b128c4a87d0babfce7c0e2b888f70a9c8485745f66b22e7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.16-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.16-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/postgres-9.6.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9e0004789da8e05332b53e050df96ca73659e4f94c9715ef53162959b6b8a3e7',
-     armv7l: '9e0004789da8e05332b53e050df96ca73659e4f94c9715ef53162959b6b8a3e7',
-       i686: '6aa981708ff298e1b423fbcff6f17faa52aca9cb1dfe7cda278b50fd09c6acd2',
-     x86_64: '7c6725c690d0118f53ca0c60cd96a38afd764cc38b1109e07b566d12f2c7a9bf',
+    aarch64: '867751a956524f30cb1f56d5f047eabcbf2602d3528872c20a1a75814c1d9cdd',
+     armv7l: '867751a956524f30cb1f56d5f047eabcbf2602d3528872c20a1a75814c1d9cdd',
+       i686: '949fad150bc9ee82d1b261ff9c58eb52cc71d47ce78a3a51594121b0d9504f40',
+     x86_64: '99943c68314298f96c9cf43644b7092963e503ee03b6828067da12add581352e',
   })
-
-  depends_on 'buildessential'
-  depends_on 'readline'
-  depends_on 'zlibpkg'
 
   # Feel free to change this directory prior to compiling.
   PGDATA = "#{CREW_PREFIX}/data/pgsql"

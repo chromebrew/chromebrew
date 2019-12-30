@@ -2,27 +2,25 @@ require 'package'
 
 class Tmux < Package
   description 'tmux is a terminal multiplexer'
-  homepage 'http://tmux.github.io/'
-  version '2.6'
-  source_url 'https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz'
-  source_sha256 'b17cd170a94d7b58c0698752e1f4f263ab6dc47425230df7e53a6435cc7cd7e8'
+  homepage 'https://tmux.github.io/'
+  version '2.9'
+  source_url 'https://github.com/tmux/tmux/releases/download/2.9/tmux-2.9.tar.gz'
+  source_sha256 '34901232f486fd99f3a39e864575e658b5d49f43289ccc6ee57c365f2e2c2980'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tmux-2.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '76ca89c630b2be0ed3ed0820d92329b78e0d0ef7ad61a94e3dfbfdcdb9b5cc9f',
-     armv7l: '76ca89c630b2be0ed3ed0820d92329b78e0d0ef7ad61a94e3dfbfdcdb9b5cc9f',
-       i686: '54e86a02043ca23793838da5d605a3131800c2bfffaec46be3b7a8e0add3f5bb',
-     x86_64: '85790c069f950e16d001391a737f67389baa90f3fc44e4eccfd382ed43f8311d',
+    aarch64: '99938a59550bdbc0354332c6960a8648fc5096d611ae0b595c1b806d6fbe9064',
+     armv7l: '99938a59550bdbc0354332c6960a8648fc5096d611ae0b595c1b806d6fbe9064',
+       i686: 'b8266f980bb84415518a129aa816486e76a518fe52766fbb683d2c3144ef106b',
+     x86_64: 'd16ffdb0c0cc7378587e43a06823404061e7db65a4fcbcaf7f59548c3eb3646f',
   })
 
-  depends_on 'readline'
   depends_on 'libevent'
-  depends_on 'ncurses'
 
   def self.build
     system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure --prefix=#{CREW_PREFIX}"

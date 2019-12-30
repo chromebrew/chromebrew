@@ -3,21 +3,21 @@ require 'package'
 class Xe < Package
   description 'simple xargs and apply replacement.'
   homepage 'https://github.com/chneukirchen/xe/'
-  version '0.10'
-  source_url 'https://github.com/chneukirchen/xe/archive/v0.10.tar.gz'
-  source_sha256 '8993cea06b2c664195df2a6124d0386d1bce7c27eb6ecbf968866bfd05cb9d7a'
+  version '0.11'
+  source_url 'https://github.com/chneukirchen/xe/archive/v0.11.tar.gz'
+  source_sha256 '4087d40be2db3df81a836f797e1fed17d6ac1c788dcf0fd6a904f2d2178a6f1a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.11-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.11-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xe-0.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'a8abe1abf912587ec016f7bdeab423c7a60f750c2da52bc298e4b64006affd97',
-     armv7l: 'a8abe1abf912587ec016f7bdeab423c7a60f750c2da52bc298e4b64006affd97',
-       i686: '346d26cca7c6baf20a2fa375f5c8078c602b1cd472a47b0acca5ce12c507d4cd',
-     x86_64: 'd19c870b8a7671d590b7f383507d384e6a8d0591c50b72af8f12cb0eca01aec5',
+    aarch64: '731178af47f83d6918dfd9967d57113f6552c48dc68a98c0c11837469f044540',
+     armv7l: '731178af47f83d6918dfd9967d57113f6552c48dc68a98c0c11837469f044540',
+       i686: 'b0db75159f9e4462852175ac47cf07f0f9e3f2962ac262df3daaa90b6f792e0b',
+     x86_64: '7ce6835e608e0638f5604eef58007735b42f9fcdc0e2d9f6811c93cf844aac27',
   })
 
   def self.build

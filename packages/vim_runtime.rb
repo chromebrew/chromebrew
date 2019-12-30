@@ -3,21 +3,21 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  version '8.1.1915'
-  source_url 'https://github.com/vim/vim/archive/v8.1.1915.tar.gz'
-  source_sha256 '508bcffd340497d6279fb2d5aa98ff43190cf7983a87fe4838fb780446f900a9'
+  version '8.2.0014'
+  source_url 'https://github.com/vim/vim/archive/v8.2.0014.tar.gz'
+  source_sha256 '5e433abdebf36855bcec38b4e195a1281d04309b72523a265a21288717061845'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.1.1915-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.1.1915-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.1.1915-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.1.1915-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '84e607539c05688d675e8d283180f9035c494daf63cc7d34928eafc918f4430b',
-     armv7l: '84e607539c05688d675e8d283180f9035c494daf63cc7d34928eafc918f4430b',
-       i686: 'fd6b087f6651ca377859c1f158356cf4df808e3afb66754f73d1095b19444851',
-     x86_64: '0e9a254b9ccce8f8ced83a025800f980de2ba4dc17967afc69458d420d5f68c6',
+    aarch64: '3911f7fb1bcc8ba9d7d8afdb9d70b7b86865b5f232bec647470db45fe84d87e2',
+     armv7l: '3911f7fb1bcc8ba9d7d8afdb9d70b7b86865b5f232bec647470db45fe84d87e2',
+       i686: 'c2859e2221137ad5bcb0583cadac66318915671e42ca9bca6b2e29219b06bf43',
+     x86_64: '801a6f930cf20529c5339a280566865646dad3c94681cf85d6b5f25d95ac80fa',
   })
 
   depends_on 'python27' => :build

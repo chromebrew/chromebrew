@@ -3,21 +3,21 @@ require 'package'
 class Screenfetch < Package
   description 'Fetches system/theme information in terminal for Linux desktop screenshots.'
   homepage 'https://github.com/KittyKatt/screenFetch'
-  version '3.8.0-1'
-  source_url 'https://github.com/KittyKatt/screenFetch/archive/v3.8.0.tar.gz'
-  source_sha256 '248283ee3c24b0dbffb79ed685bdd518554073090c1c167d07ad2a729db26633'
+  version '3.9.0'
+  source_url 'https://github.com/KittyKatt/screenFetch/archive/v3.9.0.tar.gz'
+  source_sha256 'd6df4ef7763f9761d818c878465d78ef701b71002a50d4f150f65a31cc1bea37'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.8.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.8.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.8.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.8.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5d7f1f55c7638e2991bc634de5b8bf7af4aa47321bb304cdcebfa3fa30bcb0bf',
-     armv7l: '5d7f1f55c7638e2991bc634de5b8bf7af4aa47321bb304cdcebfa3fa30bcb0bf',
-       i686: '4841e28fff7332962646ab481405e3cad106224a673398e6292703533c85f63e',
-     x86_64: '0263d3a55d4d86358aac7a8f828b7747a57c13b78daee3a355b729ea8c8e7f54',
+    aarch64: '1a4f6205d1b5404524cd23242ebe476fb11074b72974908bd4e7250a35a3209b',
+     armv7l: '1a4f6205d1b5404524cd23242ebe476fb11074b72974908bd4e7250a35a3209b',
+       i686: 'f59b9a43ca298cdddfaba8fc7be3e0c4f2b172ff4c27e32e2879cafe0621cfd6',
+     x86_64: 'f91a00be5514342fb734eb55ef5448f0da5c7d31538e04721f114c94625bfa15',
   })
 
   depends_on 'bc'

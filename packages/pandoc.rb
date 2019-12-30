@@ -3,22 +3,22 @@ require 'package'
 class Pandoc < Package
   description 'Universal markup converter'
   homepage 'https://github.com/jgm/pandoc/'
-  version '2.2.1'
+  version '2.7.3'
   
-  source_url 'https://github.com/jgm/pandoc/releases/download/2.2.1/pandoc-2.2.1-linux.tar.gz'
-  source_sha256 '3b1b573cdf957b4102c42ce6f5a641787267a55a5e88dcca942fd471c25793cb'
+  source_url 'https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz'
+  source_sha256 'eb775fd42ec50329004d00f0c9b13076e707cdd44745517c8ce2581fb8abdb75'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.7.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.7.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.7.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pandoc-2.7.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '878badef0e0f83923cfaa342f07af0df7e5c8bd5bf035315349bd4a057ed864e',
-     armv7l: '878badef0e0f83923cfaa342f07af0df7e5c8bd5bf035315349bd4a057ed864e',
-       i686: '57d09f7f0d47143fac22322dafa0cc8f5de100be95f6f1eff677d136405ea842',
-     x86_64: 'd1f7f66ff580870e815178a4b7bcd7848444268a6a904db2829a5b8891b8b2ee',
+    aarch64: '2bdd58244cb9044771e1ef36adcb9749c56c045c8f040c3e199e6bbb047a78f5',
+     armv7l: '2bdd58244cb9044771e1ef36adcb9749c56c045c8f040c3e199e6bbb047a78f5',
+       i686: '7dd73da7ef9bcb0f9a2380a7e72b3906101bde0e99091483aeaa047b8e6c8808',
+     x86_64: '7a6382e0dacaea978eb348feebaf02d8b58addc8cc14db179b68dcf552b7e260',
   })
 
   def self.install

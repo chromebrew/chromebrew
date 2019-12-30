@@ -3,29 +3,29 @@ require 'package'
 class Iperf3 < Package
   description 'iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks.'
   homepage 'https://iperf.fr'
-  version '3.2'
-  source_url 'https://github.com/esnet/iperf/archive/3.2.tar.gz'
-  source_sha256 'cb20d3a33e07a3b45a49a358b044f4998f452ef9d1a8a5cbde476b6ab9e9b526'
+  version '3.7'
+  source_url 'https://github.com/esnet/iperf/archive/3.7.tar.gz'
+  source_sha256 'c349924a777e8f0a70612b765e26b8b94cc4a97cc21a80ed260f65e9823c8fc5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/iperf3-3.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b6639e92af758fc912b98cf5bf0d8a6493809ce6f19bff1996e78b5c5847dda6',
-     armv7l: 'b6639e92af758fc912b98cf5bf0d8a6493809ce6f19bff1996e78b5c5847dda6',
-       i686: '4f8ff2a571c31bff3c61a2d2f40a34946f70146cc581a4a06a7dcf47e44bbf09',
-     x86_64: '85870ca894afe74c83aeb6ffeab38da027a6a75eae6451f16afb964c0063a653',
+    aarch64: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',
+     armv7l: 'b58c66a6ac474fff36e1336194fb0e8b9fac68ccd7bcb8b083e85c48d4d7011e',
+       i686: 'ddf4ec2075b93914bb9d05054d825d988d0c539cc520ba7af271e151597b6b94',
+     x86_64: '790a85d3e616b4e02b05c43c6e2ae31d0f8e100a6020f060279ba7dec427c8f5',
   })
 
   def self.build
-    system "./configure",
+    system './configure',
       "--libdir=#{CREW_LIB_PREFIX}",
       "--prefix=#{CREW_PREFIX}",
-      "--disable-dependency-tracking",
-      "--disable-maintainer-mode"
+      '--disable-dependency-tracking',
+      '--disable-maintainer-mode'
     system 'make'
   end
 

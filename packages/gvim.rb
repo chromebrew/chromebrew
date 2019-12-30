@@ -3,21 +3,21 @@ require 'package'
 class Gvim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  version '8.1.1915'
-  source_url 'https://github.com/vim/vim/archive/v8.1.1915.tar.gz'
-  source_sha256 '508bcffd340497d6279fb2d5aa98ff43190cf7983a87fe4838fb780446f900a9'
+  version '8.2.0014'
+  source_url 'https://github.com/vim/vim/archive/v8.2.0014.tar.gz'
+  source_sha256 '5e433abdebf36855bcec38b4e195a1281d04309b72523a265a21288717061845'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.1.1915-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0014-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b31573015a9c31dd256555db8d75634e40cdfe79f3141540558887c6fe29b851',
-     armv7l: 'b31573015a9c31dd256555db8d75634e40cdfe79f3141540558887c6fe29b851',
-       i686: '655cf5e0076da4b7d52d7ecfe87f02b5b2ba48d1b5366652ebd08fa0288b546d',
-     x86_64: '07be8e948923b2c2b81acd1ee343da7c4f221825ee3dc14bea488149cc5fef18',
+    aarch64: '0a03d59fe6790574ae83b36aa5da4bdadd5a2c6097dcc671933323400f2e1352',
+     armv7l: '0a03d59fe6790574ae83b36aa5da4bdadd5a2c6097dcc671933323400f2e1352',
+       i686: '3a1f848861f0faccb30d95bdd4657abbdbc80b4654d13ecfb3502559ae014e91',
+     x86_64: 'ef77b6f6a7d2ab6adf04148ede4ad1682d1ab0eefd59208d729bfe9d6a2023d0',
   })
 
   depends_on 'python27' => :build
