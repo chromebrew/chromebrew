@@ -731,13 +731,15 @@ def install
       # use extracted binary directory
       dest_dir = target_dir
     end
+  end
 
-    # remove it just before the file copy
-    if @pkg.in_upgrade
-      puts "Removing since upgrade..."
-      remove @pkg.name
-    end
+  # remove it just before the file copy
+  if @pkg.in_upgrade
+    puts "Removing since upgrade..."
+    remove @pkg.name
+  end
 
+  unless @pkg.is_fake?
     # install filelist, dlist and binary files
     puts "Installing..."
     install_package dest_dir

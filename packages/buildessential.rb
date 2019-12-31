@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.5'
+  version '1.6'
 
   is_fake
 
@@ -12,6 +12,9 @@ class Buildessential < Package
   depends_on 'linuxheaders'
   depends_on 'make'
   depends_on 'pkgconfig'
+
+  # install man pages
+  depends_on 'manpages'
 
   # compress man pages
   depends_on 'compressdoc'
@@ -53,7 +56,7 @@ class Buildessential < Package
   #depends_on 'xorg_proto'
 
   # maybe meson build system ?
-  # depends_on 'meson'        ## With python binary fixed, this chould be included here.
+  depends_on 'meson'
 
   # perl module build ?
   # depends_on 'perl_module_build'
