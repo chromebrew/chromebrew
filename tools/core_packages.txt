@@ -16,11 +16,13 @@ flex
 gawk
 gcc8
 gcc_tools
+gdbm
 gettext
 git
 glibc
 gmp
 gnutls
+groff
 icu4c
 intltool
 isl
@@ -31,6 +33,7 @@ libffi
 libiconv
 libidn2
 libmetalink
+libpipeline
 libpsl
 libressl
 libsigsegv
@@ -73,6 +76,7 @@ slang
 sqlite
 texinfo
 trousers
+uchardet
 unzip
 util_macros
 wget
