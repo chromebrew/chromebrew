@@ -106,7 +106,7 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 License
 -------
 
-Copyright 2013-2019 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
+Copyright 2013-2020 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
 
