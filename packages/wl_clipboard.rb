@@ -16,8 +16,8 @@ class Wl_clipboard < Package
   depends_on 'xdg_utils' # content type inference in wl-copy
 
   def self.build
-    system 'meson', 'build'
-    system 'ninja', '-C', 'build'
+    system "meson build --prefix #{CREW_PREFIX}"
+    system 'ninja -C build'
   end
 
   def self.install
