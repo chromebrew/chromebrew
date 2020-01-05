@@ -7,21 +7,11 @@ class Dnsmasq < Package
   source_url 'http://thekelleys.org.uk/dnsmasq/dnsmasq-2.80.tar.xz'
   source_sha256 'cdaba2785e92665cf090646cba6f94812760b9d7d8c8d0cfb07ac819377a63bb'
 
-  depends_on 'glibc'
-  depends_on 'gmp'
-  depends_on 'libidn2'
-  depends_on 'nettle'
-  #depends_on 'make' => :build
-
   def self.build
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
-
-  def self.check
-    system "make", "check"
+    system 'make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
