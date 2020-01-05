@@ -3,9 +3,9 @@ require 'package'
 class Yarn < Package
   description 'Yarn is a new package manager for JavaScript and an alternative to npm.'
   homepage 'https://yarnpkg.com/en/'
-  version '1.21.0'
-  source_url 'https://github.com/yarnpkg/yarn/releases/download/v1.21.0/yarn-v1.21.0.tar.gz'
-  source_sha256 'dd17d4e5bc560aa28140038a31fa50603ef76b710fee44e5ec5efbea7ad24c61'
+  version '1.21.1'
+  source_url 'https://github.com/yarnpkg/yarn/releases/download/v1.21.1/yarn-v1.21.1.tar.gz'
+  source_sha256 'd1d9f4a0f16f5ed484e814afeb98f39b82d4728c6c8beaafb5abc99c02db6674'
 
   binary_url ({
   })
