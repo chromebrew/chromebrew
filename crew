@@ -134,14 +134,9 @@ def list_available
 end
 
 def list_installed
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-      packageName = File.basename filename, '.rb'
-      if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
-        puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
-      end
-    end
-  end
+  Dir["#{CREW_CONFIG_PATH}/meta/*.directorylist"].sort.map { |f|
+    File.basename(f, ".directorylist")
+  }
 end
 
 def search (pkgName, silent = false)
@@ -935,7 +930,7 @@ def list_command (args)
   if args['available']
     list_available
   elsif args['installed']
-    list_installed
+    puts list_installed
   end
 end
 
