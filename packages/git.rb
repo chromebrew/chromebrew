@@ -3,21 +3,21 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.24.0'
-  source_url 'https://github.com/git/git/archive/v2.24.0.tar.gz'
-  source_sha256 '6b96ba03bc9e3ae5b8fb32b4bd8546298bdd792995a5d4c87f1f92c3c08aedb5'
+  version '2.25.0'
+  source_url 'https://github.com/git/git/archive/v2.25.0.tar.gz'
+  source_sha256 '99d336613ca3f1d689349330178e7ad67945aae206552905340ac8f4f904979d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.24.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.24.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.24.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.24.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.25.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.25.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.25.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.25.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6bc2c92505a198a56a1da26cb29d0ac94672ee7659efa32a14633ebf7a7a2915',
-     armv7l: '6bc2c92505a198a56a1da26cb29d0ac94672ee7659efa32a14633ebf7a7a2915',
-       i686: '426aae2dff8c2b0d19858b293c8e3ead63ba5040de8b0b29e9c6c659bd3173cd',
-     x86_64: 'e2896c439c74afad22b01f022fead0ee9142abcf66c346059aa53acf97f526ab',
+    aarch64: 'fa8607a7314095e4b164b80a38f2ce3d2fc38b20b94725f49144813e45a2528a',
+     armv7l: 'fa8607a7314095e4b164b80a38f2ce3d2fc38b20b94725f49144813e45a2528a',
+       i686: '45d03c624429a6b5948fb6344f737f37a3cdf149e06b75c4623d565a94314d3e',
+     x86_64: '498fc3cafd8f23dff28480064c54c0da3d44a78541ea57bf4dbc584658f05aca',
   })
 
   depends_on 'curl' => :build
