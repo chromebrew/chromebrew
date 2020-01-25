@@ -3,9 +3,9 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.13'
-  source_url 'https://php.net/distributions/php-7.3.13.tar.xz'
-  source_sha256 '57ac55fe442d2da650abeb9e6fa161bd3a98ba6528c029f076f8bba43dd5c228'
+  version '7.3.14'
+  source_url 'https://php.net/distributions/php-7.3.14.tar.xz'
+  source_sha256 'cc05dd373ca5d36652800762f65c10e828a17de35aaf246262e3efa99d00cdb0'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,16 +13,16 @@ class Php73 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.13-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.13-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.13-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4f4dd5605013e5057a97ada6c470e6deb4caf72396112fe13539907bc4fb9849',
-     armv7l: '4f4dd5605013e5057a97ada6c470e6deb4caf72396112fe13539907bc4fb9849',
-       i686: '556d246ccb45c65744d73c4fe45e52b474e9d0b40e5a4e1a1c399d40fb5133f2',
-     x86_64: '5e64b330ec9404b659f53d161c272e80a4d00a16a8e73e8e6273600e866ecc03',
+    aarch64: '0155c17c10baa03c36e9e43ab9249b994eda6477a210d8bce7a40ac23c623a4d',
+     armv7l: '0155c17c10baa03c36e9e43ab9249b994eda6477a210d8bce7a40ac23c623a4d',
+       i686: '03efd2ecd997bf5e0d8e4a3ed7a16bcbf29d4cee7c43d4277775c22902ba9f31',
+     x86_64: '9247dc95950d33454a41a4477513b2e0ec48b20dcb59a510472714925a1be0d2',
   })
 
   depends_on 'libgcrypt'
