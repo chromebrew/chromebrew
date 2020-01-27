@@ -4,8 +4,8 @@ class Pycharm < Package
   description 'The Python IDE for Professional Developers'
   homepage 'https://www.jetbrains.com/pycharm/'
   version '2019.3.2'
-  source_url 'https://download.jetbrains.com/python/pycharm-community-2019.3.2.tar.gz'
-  source_sha256 '2262e37adbf00a65c9d672c2fa338aa97e4a17a853ffa915da0f4b83b5c4bf19'
+  source_url 'https://download.jetbrains.com/python/pycharm-community-anaconda-2019.3.2.tar.gz'
+  source_sha256 'fc38a10642cc14c71cbd45da18d97e517a8b2d7605df160819145f73e3d79b9e'
 
   depends_on 'jdk8'
   depends_on 'xdg_base'
