@@ -3,32 +3,32 @@ require 'package'
 class Gobject_introspection < Package
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  version '1.52.1'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.52/gobject-introspection-1.52.1.tar.xz'
-  source_sha256 '2ed0c38d52fe1aa6fc4def0c868fe481cb87b532fc694756b26d6cfab29faff4'
+  version '1.64.0'
+  source_url 'https://ftp.acc.umu.se/pub/gnome/sources/gobject-introspection/1.64/gobject-introspection-1.64.0.tar.xz'
+  source_sha256 'eac05a63091c81adfdc8ef34820bcc7e7778c5b9e34734d344fc9e69ddf4fc82'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.52.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.52.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.52.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.52.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.64.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.64.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.64.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.64.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'cef6d20359ec63d73eb2f4f9446f4a2d9d10ddce89a3101bb2689dca59f1c3ec',
-     armv7l: 'cef6d20359ec63d73eb2f4f9446f4a2d9d10ddce89a3101bb2689dca59f1c3ec',
-       i686: 'a01838c57af9d90964c2cf4c9efa13f21cf639cae38e7fe0c34f2bc59797c3d6',
-     x86_64: '1579109ca32ff57a7b8dd4aeac198d09f4131998bf9127e992fb4df81f4967eb',
+    aarch64: '38781ac9905d88ebfcd5f776cdec1d7ff79b45b0f03dbf7e72e729a232175389',
+     armv7l: '38781ac9905d88ebfcd5f776cdec1d7ff79b45b0f03dbf7e72e729a232175389',
+       i686: '0244b19fa91d0524eceb40b1694ee3473d212d5cd9d3147fcb3e59406d98dbd6',
+     x86_64: '10e3f341d3bbe14d741062463bc6eb0631051db075cef3782b3273191aea098b',
   })
 
   depends_on 'glib'
   depends_on 'cairo'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

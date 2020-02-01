@@ -28,7 +28,7 @@ Usage:
   crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew list (available|installed)
   crew postinstall <name> ...
-  crew reinstall [-v|--verbose] <name> ...
+  crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
   crew update
@@ -65,7 +65,7 @@ rescue Docopt::Exit => e
     end
     if ARGV[0] != '-h' and ARGV[0] != '--help' then
       puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-      cmds = ["build", "download", "files", "help", "install", "list", "remove", "search", "update", "upgrade", "whatprovides"]
+      cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
       # Looking for similar commands
       if not cmds.include?(ARGV[0]) then
         similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
@@ -204,7 +204,10 @@ def help (pkgName)
     puts "The package(s) must be currently installed."
   when "reinstall"
     puts "Remove and install package(s)."
-    puts "Usage: crew reinstall [-v|--verbose] <package1> [<package2> ...]"
+    puts "Usage: crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]"
+    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
+    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
+    puts "If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary."
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "remove"
     puts "Remove package(s)."
@@ -240,7 +243,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, const, download, files, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, const, download, files, help, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -265,6 +268,7 @@ def const (var)
       'CREW_NOT_COMPRESS',
       'CREW_NOT_STRIP',
       'CREW_NPROC',
+      'CREW_OPTIONS',
       'CREW_PREFIX',
       'CREW_VERSION',
       'HOME',
@@ -283,7 +287,7 @@ def files (pkgName)
   if File.exists? "#{filelist}"
     system "sort #{filelist}"
     lines = `wc -l "#{filelist}"`.strip.split(' ')[0].to_i
-    size = `du -ch $(cat #{filelist}) | tail -1 | cut -f 1`
+    size = `cat #{filelist} | xargs -I {} du -b '{}' | awk '{ print; total += $1 }; END { print total }' | numfmt --suffix B --to=si | tail -1`
     puts "Total found: #{lines}".lightgreen
     puts "Disk usage: #{size}".lightgreen
   else
@@ -451,7 +455,7 @@ def unpack (meta)
       puts "Unpacking archive using 'unzip', this may take a while..."
       _verbopt = @opt_verbose ? '-v' : '-qq'
       system "unzip", _verbopt, "-d", "#{extract_dir}", meta[:filename]
-    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz)$/i
+    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
       _verbopt = @opt_verbose ? 'v' : ''
       system "tar", "x#{_verbopt}f", meta[:filename], "-C", "#{extract_dir}"
@@ -546,12 +550,12 @@ def prepare_package (destdir)
     compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
     compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
 
-    # create directory list
+    # create file list
     system "find . -type f > ../filelist"
     system "find . -type l >> ../filelist"
     system "cut -c2- ../filelist > filelist"
 
-    # create file list
+    # create directory list
     system "find . -type d > ../dlist"
     system "cut -c2- ../dlist > dlistcut"
     system "tail -n +2 dlistcut > dlist"
@@ -808,7 +812,12 @@ def build_package (pwd)
 end
 
 def archive_package (pwd)
-  pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
+  arch = "#{@device[:architecture]}"
+  case arch
+  when 'aarch64'
+    arch = 'armv7l'
+  end
+  pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{arch}.tar.xz"
   Dir.chdir CREW_DEST_DIR do
     if @opt_verbose then
       system "tar cJvf #{pwd}/#{pkg_name} *"
@@ -950,7 +959,8 @@ def reinstall_command (args)
     remove name
     @pkgName = name
     search @pkgName
-    install
+    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    resolve_dependencies_and_install
   end
 end
 

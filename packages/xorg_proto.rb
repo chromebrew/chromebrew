@@ -3,21 +3,21 @@ require 'package'
 class Xorg_proto < Package
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/'
-  version '2018.4'
-  source_url 'https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2018.4.tar.bz2'
-  source_sha256 'fee885e0512899ea5280c593fdb2735beb1693ad170c22ebcc844470eec415a0'
+  version '2019.2'
+  source_url 'https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2019.2.tar.bz2'
+  source_sha256 '46ecd0156c561d41e8aa87ce79340910cdf38373b759e737fcbba5df508e7b8e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2018.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2018.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2018.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2018.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2019.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2019.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2019.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2019.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '92f1d6ea6ef2c905f2ae1749c57e0d6b962145f9936ce726b64624af4e835549',
-     armv7l: '92f1d6ea6ef2c905f2ae1749c57e0d6b962145f9936ce726b64624af4e835549',
-       i686: 'f9b2d6bd821fbac154f818ebe43eb5c5b07b4bfacb8ab66a141c7e7fcd6feaef',
-     x86_64: '1285c5962d32f9ca776261cd0a7ccf78b8fda8878d11032673932892c98e5b88',
+    aarch64: 'd9e18300bfff03320a890f93f3596ef598c072384bc364bde913d5ff707dc6f2',
+     armv7l: 'd9e18300bfff03320a890f93f3596ef598c072384bc364bde913d5ff707dc6f2',
+       i686: '265aed098ec9396c8f8944412c1cf1c83d8268fe4c5a663567cb845ff64eb7be',
+     x86_64: '14fec9e0ec5ad52bbf1035a080f2c16be9533e2090b78f3d06336990ebd2b99f',
   })
 
   def self.build

@@ -3,21 +3,21 @@ require 'package'
 class Libva < Package
   description 'Libva is an implementation for VA-API (VIdeo Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  version '2.3.0'
-  source_url 'https://github.com/intel/libva/releases/download/2.3.0/libva-2.3.0.tar.bz2'
-  source_sha256 '60840e50da6932ee2111e15fc8911180ff8a0d6f18bb9cc6ba8c1030098fdce4'
+  version '2.6.1'
+  source_url 'https://github.com/intel/libva/releases/download/2.6.1/libva-2.6.1.tar.bz2'
+  source_sha256 '6c57eb642d828af2411aa38f55dc10111e8c98976dbab8fd62e48629401eaea5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.3.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '867f6254b17be1fa9fec487767d559b097577ff7984efed98bb9c81af2190552',
-     armv7l: '867f6254b17be1fa9fec487767d559b097577ff7984efed98bb9c81af2190552',
-       i686: 'b517990ffb952a847de93c2fe9ba9221776bb26e83218e82dfdb86f4ab3ea972',
-     x86_64: '2bb0f970dc79c3f4a1046f6b1ef6b30c2bd10e3b5a86d17efdb5eb1ac35f2dbf',
+    aarch64: '29fa0f07bfd42af85d748a7e3824ef0dc87d8c13ea39f834350ce049412fb074',
+     armv7l: '29fa0f07bfd42af85d748a7e3824ef0dc87d8c13ea39f834350ce049412fb074',
+       i686: '0023ca0203c0d44922f86d4f72fb5ab836ad99565ace968d6e5f925fc93f99d2',
+     x86_64: '67b40e1c110c7fbcf55944ff45e1bb1a39fc9bc81e95b0e52726516376f272a6',
   })
 
   depends_on 'libdrm'

@@ -3,9 +3,9 @@ require 'package'
 class Pycharm < Package
   description 'The Python IDE for Professional Developers'
   homepage 'https://www.jetbrains.com/pycharm/'
-  version '2019.3.2'
-  source_url 'https://download.jetbrains.com/python/pycharm-community-anaconda-2019.3.2.tar.gz'
-  source_sha256 'fc38a10642cc14c71cbd45da18d97e517a8b2d7605df160819145f73e3d79b9e'
+  version '2019.3.3'
+  source_url 'https://download.jetbrains.com/python/pycharm-community-anaconda-2019.3.3.tar.gz'
+  source_sha256 'e84d392bfaeaf8b382ce7948261be2ff6d8bade5351b392571eb4c243aa88a61'
 
   depends_on 'jdk8'
   depends_on 'xdg_base'

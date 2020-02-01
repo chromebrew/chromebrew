@@ -3,21 +3,21 @@ require 'package'
 class Alsa_plugins < Package
   description 'alsa-plugins contains plugins for various ALSA needs (e.g. Jack).'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.1.8'
-  source_url 'ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.1.8.tar.bz2'
-  source_sha256 '7f77df171685ccec918268477623a39db4d9f32d5dc5e76874ef2467a2405994'
+  version '1.2.2'
+  source_url 'ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.2.2.tar.bz2'
+  source_sha256 '1c0f06450c928d711719686c9dbece2d480184f36fab11b8f0534cb7b41e337d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.1.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.1.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.1.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.1.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_plugins-1.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '223803ef01f3365babc184abad7f257ac664db4599294e1538d01a8af8794907',
-     armv7l: '223803ef01f3365babc184abad7f257ac664db4599294e1538d01a8af8794907',
-       i686: '8e9c4a2a69727f1e7872022fb24f97f6f6ec41f83eaa81b3298104dbaab477da',
-     x86_64: '590df0d75d5680b5da817feedb7f163ce5e7a4c60809adab298168dda09697b9',
+    aarch64: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
+     armv7l: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
+       i686: '2e363fbae56a4dc05af716316f6465b36655663a5953437af4c996e22eece8bc',
+     x86_64: '2c0108843697c8711160defebbf6db421a2b6fe1aa582b9567e8cbb9b124bf02',
   })
 
   depends_on 'dbus'
@@ -34,7 +34,11 @@ class Alsa_plugins < Package
     system 'make'
   end
 
+  def self.check
+    system 'make', 'check'
+  end
+
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

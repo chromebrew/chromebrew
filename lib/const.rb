@@ -1,10 +1,10 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.2.9'
+CREW_VERSION = '1.3.3'
 
 ARCH = `uname -m`.strip
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
-LIBC_VERSION = if File.exists? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
+LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
 
 if ENV['CREW_PREFIX'].to_s == ''
   CREW_PREFIX = '/usr/local'
@@ -46,4 +46,12 @@ USER = `whoami`.chomp
 
 CHROMEOS_RELEASE = `grep CHROMEOS_RELEASE_CHROME_MILESTONE= /etc/lsb-release | cut -d'=' -f2`.chomp
 
-CREW_BUILD = `gcc -dumpmachine`
+case ARCH
+when 'aarch64', 'armv7l'
+  CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
+when 'i686'
+  CREW_BUILD = 'i686-cros-linux-gnu'
+when 'x86_64'
+  CREW_BUILD = 'x86_64-cros-linux-gnu'
+end
+CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"

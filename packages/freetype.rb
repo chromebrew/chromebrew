@@ -3,21 +3,21 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.9.1'
-  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.9.1.tar.gz'
-  source_sha256 'ec391504e55498adceb30baceebd147a6e963f636eb617424bcfc47a169898ce'
+  version '2.10'
+  source_url 'https://namesdir.com/mirrors/nongnu/freetype/freetype-2.10.0.tar.gz'
+  source_sha256 '955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b1f0356d2f51ea825abd4d9b3204b9aa5cc3e660451c94222284f71abd73ec7d',
-     armv7l: 'b1f0356d2f51ea825abd4d9b3204b9aa5cc3e660451c94222284f71abd73ec7d',
-       i686: '757f41d0bed65abdcf8a86345a54fe6a3e69a81b9d5fb7a93d78e4612ee0d1f6',
-     x86_64: '2474ed8846e36917b2a1864416affb6de8dde1f8a61b1fc0a587ada3a7592fca',
+    aarch64: '3cdfc1eae6ee52f0d3c046e2a3bc01d8383d830ea48cb2f84db94caced32b2a9',
+     armv7l: '3cdfc1eae6ee52f0d3c046e2a3bc01d8383d830ea48cb2f84db94caced32b2a9',
+       i686: 'b3a195210ba9bc95a863956c69218b99bdcac6a276b27648ff043d5e7bf64b39',
+     x86_64: '0c761037a91633e1371974ced873e59c1f847ead4416f338119761be1bbe21c7',
   })
 
   depends_on 'expat'

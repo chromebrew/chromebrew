@@ -3,21 +3,21 @@ require 'package'
 class Freetype_sub < Package
   description 'Freetype_sub is a version without harfbuzz. It is intended to handle circular dependency betwwen freetype and harfbuzz.'
   homepage 'https://www.freetype.org/'
-  version '2.9'
-  source_url 'http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz'
-  source_sha256 'bf380e4d7c4f3b5b1c1a7b2bf3abb967bda5e9ab480d0df656e0e08c5019c5e6'
+  version '2.10'
+  source_url 'https://namesdir.com/mirrors/nongnu/freetype/freetype-2.10.0.tar.gz'
+  source_sha256 '955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f180b27eb703e0e7680f53ee4396a7e9cfb4093d9f29b7d16fffad6c6476c912',
-     armv7l: 'f180b27eb703e0e7680f53ee4396a7e9cfb4093d9f29b7d16fffad6c6476c912',
-       i686: '71fb1bace0552659cfc86ef6ed88bbb1ce5c618061107381618f1a1060c47397',
-     x86_64: '3ccd3b201456c5d9f2dac55311ed3f337edd230a894fae5e821072515a3d5d5f',
+    aarch64: 'b2d3c0d50a433d0ffc1fbada114b76bc4147d2a67664155ac3d91342e501d557',
+     armv7l: 'b2d3c0d50a433d0ffc1fbada114b76bc4147d2a67664155ac3d91342e501d557',
+       i686: '9bd721ac92d77e19686c6e39f283a5d434b7649483b99ea01ae562c8d1b14e45',
+     x86_64: 'b69cbd236ddc7ba3ee01719131832c174b345e12ea8df9ead43ebc1a8b622805',
   })
 
   depends_on 'expat'

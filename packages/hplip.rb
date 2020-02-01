@@ -3,17 +3,31 @@ require 'package'
 class Hplip < Package
   description 'Print, Scan and Fax Drivers for Linux'
   homepage 'https://developers.hp.com/hp-linux-imaging-and-printing/'
-  version '3.18.7'
-  source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.18.7/hplip-3.18.7.tar.gz'
-  source_sha256 '55b879e1d6d0d88c32d79486b748a21759cab404036d883be4ea9fcb55bfeb1d'
+  version '3.20.2'
+  case ARCH
+  when 'i686', 'x86_64'
+    source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.20.2/hplip-3.20.2.tar.gz'
+    source_sha256 '90c49d74688b4d745a739a6db9bf8dbdfa134c24e921e31909bffe9d84f471c2'
+  end
 
   binary_url ({
+      i686: 'https://dl.bintray.com/chromebrew/chromebrew/hplip-3.20.2-chromeos-i686.tar.xz',
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/hplip-3.20.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+      i686: '3665d159fe1684d280689e09546a9f6cb0ab7be68d4e670f40c4111ae015d8b7',
+    x86_64: '05b80f04ea8ac68ffad990ed86140932f6353d25f7fd116df5190e8484385f09',
   })
 
-  depends_on 'libjpeg'
   depends_on 'cups'
+  depends_on 'dbus'
+  depends_on 'libjpeg_turbo'
+  depends_on 'sane_backends'
+
+  def self.preinstall
+    system "curl -Ls -o config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
+    system "curl -Ls -o config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'"
+  end
 
   def self.build
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' hpijs-drv"

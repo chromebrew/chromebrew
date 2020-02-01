@@ -3,11 +3,11 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.9.2-1'
-  source_url 'https://github.com/composer/composer/archive/1.9.2.tar.gz'
-  source_sha256 'bb855149a0c691c11aeb563bbe185bc0de3988c4e678c803762ee4d76dcb3436'
+  version '1.10.1'
+  source_url 'https://github.com/composer/composer/archive/1.10.1.tar.gz'
+  source_sha256 '9d19d87a63a4927c20ed8e21dc2dd472eaf86deaf529917591557945464d5573'
 
-  depends_on 'php7' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php' unless File.exists? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
 
   def self.preinstall
@@ -22,7 +22,8 @@ class Composer < Package
 
   def self.install
     system "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\""
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA384.hexdigest( File.read('composer-setup.php') ) == 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976'
+    system 'curl -Ls -o installer.sig https://composer.github.io/installer.sig'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA384.hexdigest( File.read('composer-setup.php') ) == File.read('installer.sig')
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "php composer-setup.php --install-dir=#{CREW_DEST_PREFIX}/bin --filename=composer --version=#{version}"
     system "mkdir -p #{CREW_DEST_PREFIX}/.config"

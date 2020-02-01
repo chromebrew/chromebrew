@@ -3,21 +3,21 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  version '8.2.0014'
-  source_url 'https://github.com/vim/vim/archive/v8.2.0014.tar.gz'
-  source_sha256 '5e433abdebf36855bcec38b4e195a1281d04309b72523a265a21288717061845'
+  version '8.2.0346'
+  source_url 'https://github.com/vim/vim/archive/v8.2.0346.tar.gz'
+  source_sha256 '418d1cbc9f53f31cb19869b6df0294ca5c377ca2824c759e3f6796edc60e5628'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0014-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0346-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0346-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0346-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.0346-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3911f7fb1bcc8ba9d7d8afdb9d70b7b86865b5f232bec647470db45fe84d87e2',
-     armv7l: '3911f7fb1bcc8ba9d7d8afdb9d70b7b86865b5f232bec647470db45fe84d87e2',
-       i686: 'c2859e2221137ad5bcb0583cadac66318915671e42ca9bca6b2e29219b06bf43',
-     x86_64: '801a6f930cf20529c5339a280566865646dad3c94681cf85d6b5f25d95ac80fa',
+    aarch64: 'c8b5083a493b85eea835b164dbd69e5d9487f1c18f066e76c3ba180b8e4de469',
+     armv7l: 'c8b5083a493b85eea835b164dbd69e5d9487f1c18f066e76c3ba180b8e4de469',
+       i686: '0e39577626ae0a4204782ea561a68f44fe260a34928f39b92cb6922905cde594',
+     x86_64: 'f2f37414827f3ea16de09fbdfe39831a6c8a485ce5db8790858077da24ebe545',
   })
 
   depends_on 'python27' => :build
@@ -28,7 +28,7 @@ class Vim_runtime < Package
     FileUtils.cd('src') do
       system "sed", "-i", "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|", "feature.h"
       system "sed", "-i", "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|", "feature.h"
-      system "autoconf"
+      system 'autoconf'
     end
   end
 
@@ -36,23 +36,23 @@ class Vim_runtime < Package
     system "./configure",
               "--prefix=#{CREW_PREFIX}",
               "--localstatedir=#{CREW_PREFIX}/var/lib/vim",
-              "--with-features=huge",
+              '--with-features=huge',
               "--with-compiledby='Chromebrew'",
-              "--with-x=no",
-              "--disable-gui",
-              "--enable-multibyte",
-              "--enable-cscope",
-              "--enable-fontset",
-              "--enable-perlinterp=dynamic",
-              "--enable-pythoninterp=dynamic",
-              "--enable-python3interp=dynamic",
-              "--enable-rubyinterp=dynamic",
-              "--disable-selinux"
-    system "make"
+              '--with-x=no',
+              '--disable-gui',
+              '--enable-multibyte',
+              '--enable-cscope',
+              '--enable-fontset',
+              '--enable-perlinterp=dynamic',
+              '--enable-pythoninterp=dynamic',
+              '--enable-python3interp=dynamic',
+              '--enable-rubyinterp=dynamic',
+              '--disable-selinux'
+    system 'make'
   end
 
   def self.install
-    system "make", "VIMRCLOC=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "VIMRCLOC=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     # bin and man will be provided by the 'vim' packages
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/bin"

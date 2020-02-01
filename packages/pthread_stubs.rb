@@ -3,21 +3,21 @@ require 'package'
 class Pthread_stubs < Package
   description 'pthread stubs to get libX11 working'
   homepage 'https://x.org'
-  version '0.3'
-  source_url 'https://xcb.freedesktop.org/dist/libpthread-stubs-0.3.tar.bz2'
-  source_sha256 '35b6d54e3cc6f3ba28061da81af64b9a92b7b757319098172488a660e3d87299'
+  version '0.4'
+  source_url 'https://xcb.freedesktop.org/dist/libpthread-stubs-0.4.tar.bz2'
+  source_sha256 'e4d05911a3165d3b18321cc067fdd2f023f06436e391c6a28dff618a78d2e733'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '12a930c63c5e155059b74c057b342ea4c94f5c1533dd27af55386cd72f920716',
-     armv7l: '12a930c63c5e155059b74c057b342ea4c94f5c1533dd27af55386cd72f920716',
-       i686: 'a832fa2df7eb69c355a13b2d910230c6dcfd1c49cb263cd787d225c6c751b5a6',
-     x86_64: '6d38609d0e19a07642e1e463f68101dffa20b505cb88a443497fbe985cc1e852',
+    aarch64: '85fd777e81a2dd5e3954e82465291c2c889567b7ae8bbb7a3e51b196c8ed35dd',
+     armv7l: '85fd777e81a2dd5e3954e82465291c2c889567b7ae8bbb7a3e51b196c8ed35dd',
+       i686: '3fa0eb953101a37c924a22fa28699d1cb7e4a85bd79b7c492f087df91e108e42',
+     x86_64: '74d475f18422369cea3e5ca5591c55aa2caaac2ad23abaf17e5678daec534cf9',
   })
 
   def self.build

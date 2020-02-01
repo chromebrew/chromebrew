@@ -3,21 +3,21 @@ require 'package'
 class Libgcrypt < Package
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.8.1-1'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.1.tar.bz2'
-  source_sha256 '7a2875f8b1ae0301732e878c0cca2c9664ff09ef71408f085c50e332656a78b3'
+  version '1.8.5'
+  source_url 'https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.5.tar.bz2'
+  source_sha256 '3b4a2a94cb637eff5bdebbcaf46f4d95c4f25206f459809339cdada0eb577ac3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.1-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgcrypt-1.8.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '32e9f0384e87daaec7b030d2a4cb351f7ad62c03ef3f3f2fc26c7d69ba642eb1',
-     armv7l: '32e9f0384e87daaec7b030d2a4cb351f7ad62c03ef3f3f2fc26c7d69ba642eb1',
-       i686: 'a0661c7e1ce7467adcfbbb2b9bfe4e5522726a0d15d8a37d2ecdea55991e7380',
-     x86_64: '448844bb855035f2e5f843f5fa8108e5371b9b9e02bee0b4cf66395388836b4f',
+    aarch64: '94018f0c7542235ef7fba73a4fbcd67e415f1c5f9cc6116fa2075638c472448c',
+     armv7l: '94018f0c7542235ef7fba73a4fbcd67e415f1c5f9cc6116fa2075638c472448c',
+       i686: '7c7a857f964a2af40a45ae63d1241e40f03bbf917e609febd222e095db22c80e',
+     x86_64: '6c0cbecc94b4cd9615844e45733a0ef92f197ec6ab7a41d1733a19d168db3a3f',
   })
 
   depends_on 'libgpgerror'

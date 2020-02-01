@@ -3,29 +3,29 @@ require 'package'
 class Powerstat < Package
   description 'Powerstat measures the power consumption of a laptop using the ACPI battery information.'
   homepage 'http://kernel.ubuntu.com/~cking/powerstat/'
-  version '0.02.20'
-  source_url 'https://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.20.tar.gz'
-  source_sha256 '679305b3a6d2cc9820d19247e9acc1fb2fa48e96a65bc253b358ba5b0a985de3'
+  version '0.02.22'
+  source_url 'https://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.22.tar.gz'
+  source_sha256 'ef74e023353a24a0a52068a0e474041b9556bcef5b4fe41db44261afd32a6564'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.20-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.20-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.20-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.22-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.22-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/powerstat-0.02.22-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '40781457dd33d5bbf4372dec0b0f23544e04c8545b54a6734e135ca3502c0e65',
-     armv7l: '40781457dd33d5bbf4372dec0b0f23544e04c8545b54a6734e135ca3502c0e65',
-       i686: 'a64eb0f7eef06b749f0ca89905e731102763e6bd1f7373a708664da5978df748',
-     x86_64: 'b345616591b185396594420bb43f193b56c450a964c847302ef5e72538ec7d5e',
+    aarch64: 'a80779c88fd6ba1d192530ce6fa281aad82237b3067f251815a2f2f2ad5aa51d',
+     armv7l: 'a80779c88fd6ba1d192530ce6fa281aad82237b3067f251815a2f2f2ad5aa51d',
+       i686: '2cf7b359839f8feedb8c41d976a196dfc0194edbc51e281e1ac7aa233e7974ad',
+     x86_64: 'cf5f0e425a5b4a0bfbcf4e3747ccd4f5edcd6489ae0bbb9db873cec95ba30406',
   })
 
   def self.build
     system "sed -i 's,/usr,#{CREW_PREFIX},g' Makefile"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

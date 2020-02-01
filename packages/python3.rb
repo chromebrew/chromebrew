@@ -3,21 +3,21 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.8.1'
-  source_url 'https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tar.xz'
-  source_sha256 '75894117f6db7051c1b34f37410168844bbb357c139a8a10a352e9bf8be594e8'
+  version '3.8.2'
+  source_url 'https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz'
+  source_sha256 '2646e7dc233362f59714c6193017bb2d6f7b38d6ab4a0cb5fbac5c36c4d845df'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '715ad0ba8d650343a9f1bbf3b38c9b0585f81a129c85cdfea2e0ef5e3f261333',
-     armv7l: '715ad0ba8d650343a9f1bbf3b38c9b0585f81a129c85cdfea2e0ef5e3f261333',
-       i686: '1fe57de9127102f6512ae6dee9d411206c2da5ca0562493a1dc13831cd3c1c72',
-     x86_64: 'eace7a58c7414a7a5f2fc277098781c5474747032f654d5b8bf69303238f5992',
+    aarch64: '24a9d5c66ecb9889fab72ee5173c051e3ccb915e29787913bd70829695f6bd46',
+     armv7l: '24a9d5c66ecb9889fab72ee5173c051e3ccb915e29787913bd70829695f6bd46',
+       i686: '562d85cd5741021b00beacf85d80db6d9fd11583b16aea367789bca062e7de4f',
+     x86_64: '6858a8d9e7c85f0261a1feb98c09237d969f9ae2f4bd039259842c5f9a2c4e33',
   })
 
   depends_on 'bz2'
@@ -26,26 +26,39 @@ class Python3 < Package
   depends_on 'krb5'
   depends_on 'libtirpc'
 
+  if ARGV[0] == 'install' || ARGV[0] == 'reinstall' || ARGV[0] == 'upgrade'
+    # Fix ImportError: cannot import name 'PackageFinder'.
+    # See https://stackoverflow.com/questions/59887436/importerror-cannot-import-name-packagefinder.
+    FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/python3.8/site-packages/pip*")
+  end
+
   def self.build
     # IMPORTANT: Do not build with python3 already installed or pip3 will not be included.
     # python requires /usr/local/lib, so leave as is but specify -rpath
-    system "./configure", "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
+    system './configure', "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
       "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
-      "--with-ensurepip=install", "--enable-shared"
+      '--with-ensurepip=install', '--enable-shared'
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     # remove static libraries
     system "find #{CREW_DEST_PREFIX} -name 'libpython*.a' -print | xargs -r rm"
 
     # create symbolic links in lib64 for other applications which use libpython
     unless Dir.exist? "#{CREW_DEST_LIB_PREFIX}"
-      system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
+      FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
       system "cd #{CREW_DEST_LIB_PREFIX} && ln -s ../lib/libpython*.so* ."
     end
+  end
+
+  def self.postinstall
+    puts
+    puts "Upgrading pip...".lightblue
+    system 'pip3 install --upgrade pip'
+    puts
   end
 
   def self.check
