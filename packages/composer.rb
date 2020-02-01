@@ -3,7 +3,7 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.9.2'
+  version '1.9.2-1'
   source_url 'https://github.com/composer/composer/archive/1.9.2.tar.gz'
   source_sha256 'bb855149a0c691c11aeb563bbe185bc0de3988c4e678c803762ee4d76dcb3436'
 
@@ -22,7 +22,7 @@ class Composer < Package
 
   def self.install
     system "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\""
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA384.hexdigest( File.read('composer-setup.php') ) == 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA384.hexdigest( File.read('composer-setup.php') ) == 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976'
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "php composer-setup.php --install-dir=#{CREW_DEST_PREFIX}/bin --filename=composer --version=#{version}"
     system "mkdir -p #{CREW_DEST_PREFIX}/.config"
