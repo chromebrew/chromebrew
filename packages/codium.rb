@@ -3,20 +3,17 @@ require 'package'
 class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.41.1'
-  source_url 'https://github.com/VSCodium/vscodium/releases/download/1.41.1/VSCodium-linux-x64-1.41.1.tar.gz'
-  source_sha256 '3d50cedad289730301ddbb6cc5f754753e3fc58b0c812da5390b2871c0639c58'
-
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
-
-  if ARGV[0] == 'install' || ARGV[0] == 'upgrade'
-    abort "#{ARCH} architecture not supported.".lightred unless ARCH == 'x86_64'
+  version '1.42.0'
+  case ARCH
+  when 'aarch64', 'armv7l'
+    source_url 'https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-arm-1.42.0.tar.gz'
+    source_sha256 '85745764ea7f541f9adb76d98a6675563fcc02d0cf8515f58600867f5f1fc377'
+    @arch = 'arm'
+  when 'x86_64'
+    source_url 'https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-x64-1.42.0.tar.gz'
+    source_sha256 '3d50cedad289730301ddbb6cc5f754753e3fc58b0c812da5390b2871c0639c58'
+    @arch = 'x64'
   end
-
-  @arch = 'x64'
 
   depends_on 'gtk2'
   depends_on 'libsecret'
