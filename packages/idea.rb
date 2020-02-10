@@ -3,9 +3,9 @@ require 'package'
 class Idea < Package
   description 'Capable and Ergonomic IDE for JVM'
   homepage 'https://www.jetbrains.com/idea/'
-  version '2019.3.1'
-  source_url 'https://download.jetbrains.com/idea/ideaIC-2019.3.1.tar.gz'
-  source_sha256 'b67cc055d7ab18b2a864d05956407ae1f910eb295e2a73e6a6aa813260930509'
+  version '2019.3.2'
+  source_url 'https://download.jetbrains.com/idea/ideaIC-2019.3.2.tar.gz'
+  source_sha256 'c38f18a2b2246b9a53fd62d454ccf67996bf59adc0b7e3843be0a9cf44637127'
 
   binary_url ({
   })
