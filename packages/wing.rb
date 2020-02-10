@@ -11,8 +11,10 @@ class Wing < Package
   end
 
   binary_url ({
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wing-7.2.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    x86_64: '8be03ea9bcfa884c4f4a324190ecf6cbefd7b82389e264b6a35e318f30ec7ed3',
   })
 
   depends_on 'python27'
