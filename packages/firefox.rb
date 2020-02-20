@@ -3,14 +3,14 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '70.0.1'
+  version '73.0.1'
   case ARCH
-  when 'x86_64'
-    source_url 'https://archive.mozilla.org/pub/firefox/releases/70.0.1/linux-x86_64/en-US/firefox-70.0.1.tar.bz2'
-    source_sha256 'bc1ef29799f15d1fe709a430203d16c12d5ae0899f1c01ba4461062392a2e77e'
   when 'i686'
-    source_url 'https://archive.mozilla.org/pub/firefox/releases/70.0.1/linux-i686/en-US/firefox-70.0.1.tar.bz2'
-    source_sha256 '4981bae093177f3ae705bbf9119a2e9149dbfa3d931157a724fb1b294c099811'
+    source_url 'https://archive.mozilla.org/pub/firefox/releases/73.0.1/linux-i686/en-US/firefox-73.0.1.tar.bz2'
+    source_sha256 '0cf4ed94739979f5c7fce0a94152911079722cc0118edab9a8f6a573bdf06c3a'
+  when 'x86_64'
+    source_url 'https://archive.mozilla.org/pub/firefox/releases/73.0.1/linux-x86_64/en-US/firefox-73.0.1.tar.bz2'
+    source_sha256 'd5a2c93844763b2e7f7f555eab239b71442cd87205c40a8ad287c38208a2a513'
   end
 
   depends_on 'gtk3'
@@ -24,7 +24,7 @@ class Firefox < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/firefox"
-    FileUtils.cp_r Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/firefox"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/firefox"
     system "install -Dm755 firefox.sh #{CREW_DEST_PREFIX}/bin/firefox"
   end
 end
