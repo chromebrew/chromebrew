@@ -3,21 +3,21 @@ require 'package'
 class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.6.3-1'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.3.tar.xz'
-  source_sha256 'ed642b66a4ecf4851ab2d809cd1475c297b6201d8e8bd14b4d1c08b53ffca993'
+  version '3.6.12'
+  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.12.tar.xz'
+  source_sha256 'bfacf16e342949ffd977a9232556092c47164bd26e166736cf3459a870506c4b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.3-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.12-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.12-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.6.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7b8f451dcc136eafc149196998494173200d4c0e6e44484c6cdedfaccb1e32fe',
-     armv7l: '7b8f451dcc136eafc149196998494173200d4c0e6e44484c6cdedfaccb1e32fe',
-       i686: 'b23d185954cb6e28ff20918a54ce573700686e25193d2921acb18dd017d629ba',
-     x86_64: '70a7b1753ab61e09249f599bbad21e16e8eff71848787c8ad4e77c90582a6f1b',
+    aarch64: 'ef7aac519396162958750c83622781f8f9e4c30cee06b911271a8ae3d8cb44a4',
+     armv7l: 'ef7aac519396162958750c83622781f8f9e4c30cee06b911271a8ae3d8cb44a4',
+       i686: 'd403e4200b18dfafba3c46bdf3c95e3e59088499b8fae5e22085f65b8a99fc49',
+     x86_64: '261a3766026d916bdb4a68fd1b55a9409e52ac06e2949310371bf9a13dea3751',
   })
 
   depends_on 'zlibpkg'
