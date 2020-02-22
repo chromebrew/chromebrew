@@ -3,9 +3,9 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.4.2'
-  source_url 'https://www.php.net/distributions/php-7.4.2.tar.xz'
-  source_sha256 '98284deac017da0d426117ecae7599a1f1bf62ae3911e8bc16c4403a8f4bdf13'
+  version '7.4.3'
+  source_url 'https://www.php.net/distributions/php-7.4.3.tar.xz'
+  source_sha256 'cf1f856d877c268124ded1ede40c9fb6142b125fdaafdc54f855120b8bc6982a'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,23 +13,23 @@ class Php74 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1772f9875a24d504c367a3aaef3574906c746babccf0e951da5e0f016e72175c',
-     armv7l: '1772f9875a24d504c367a3aaef3574906c746babccf0e951da5e0f016e72175c',
-       i686: 'f5c0e82ece2a9d9c2fa259f644eca699e6eacedf6566fdd7f7b8fce9416d2510',
-     x86_64: '9ce8fb964eca402de3072e061e8bc48e4cf6438abd72031299f5db2f30156304',
+    aarch64: '9e350ad837fd7817904e367ca0e6369c8a449ce0333b9fd58b0d0230d42afbc3',
+     armv7l: '9e350ad837fd7817904e367ca0e6369c8a449ce0333b9fd58b0d0230d42afbc3',
+       i686: 'e2129fedb5909c8c1312a3f5e807a9898c0d1fb9395818595ab85ca8c052d58e',
+     x86_64: 'f75435a6d55c616243ed84ace3623a9b7ec22e118f593b2826e1fee69271d46f',
   })
 
   depends_on 'aspell_en'
   depends_on 'libedit'
   depends_on 'libgcrypt'
+  depends_on 'libjpeg_turbo'
   depends_on 'libsodium'
-  depends_on 'libwebp'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
@@ -74,13 +74,7 @@ class Php74 < Package
            "--sbindir=#{CREW_PREFIX}/bin",
            "--with-config-file-path=#{CREW_PREFIX}/etc",
            "--with-libdir=#{ARCH_LIB}",
-           "--with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype",
-           "--with-pcre-regex=#{CREW_LIB_PREFIX}",
-           "--with-jpeg-dir=#{CREW_LIB_PREFIX}",
            "--with-kerberos=#{CREW_LIB_PREFIX}",
-           "--with-png-dir=#{CREW_LIB_PREFIX}",
-           "--with-webp-dir=#{CREW_LIB_PREFIX}",
-           "--with-xpm-dir=#{CREW_LIB_PREFIX}",
            '--enable-bcmath',
            '--enable-calendar',
            '--enable-dba=shared',
@@ -120,9 +114,7 @@ class Php74 < Package
            '--with-sodium',
            '--with-tidy',
            '--with-unixODBC',
-           '--with-webp',
            '--with-xmlrpc',
-           '--with-xpm',
            '--with-xsl',
            '--with-zip',
            '--with-zlib'

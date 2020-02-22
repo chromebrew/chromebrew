@@ -3,9 +3,9 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.14'
-  source_url 'https://php.net/distributions/php-7.3.14.tar.xz'
-  source_sha256 'cc05dd373ca5d36652800762f65c10e828a17de35aaf246262e3efa99d00cdb0'
+  version '7.3.15'
+  source_url 'https://php.net/distributions/php-7.3.15.tar.xz'
+  source_sha256 'de7ae7cf3d1dbb2824975b26b32991dac2b732886ec22075b8c53b261b018166'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,20 +13,20 @@ class Php73 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.15-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.15-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0155c17c10baa03c36e9e43ab9249b994eda6477a210d8bce7a40ac23c623a4d',
-     armv7l: '0155c17c10baa03c36e9e43ab9249b994eda6477a210d8bce7a40ac23c623a4d',
-       i686: '03efd2ecd997bf5e0d8e4a3ed7a16bcbf29d4cee7c43d4277775c22902ba9f31',
-     x86_64: '9247dc95950d33454a41a4477513b2e0ec48b20dcb59a510472714925a1be0d2',
+    aarch64: '00a0dcd74ada06ab58d1f648c029523f53992db3d39ffd2f86260a3fcb6c7421',
+     armv7l: '00a0dcd74ada06ab58d1f648c029523f53992db3d39ffd2f86260a3fcb6c7421',
+       i686: 'ef4a22a0be11cd0d87eb6f183c4c4c532ae54d4a7693c3fdd46f942153997254',
+     x86_64: '9bdeb1365963887b254ef15b3d11c918acc7741e0eba624dda8ef7ef3ae0180e',
   })
 
   depends_on 'libgcrypt'
-  depends_on 'libwebp'
+  depends_on 'libjpeg_turbo'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
@@ -69,13 +69,7 @@ class Php73 < Package
            "--sbindir=#{CREW_PREFIX}/bin",
            "--with-config-file-path=#{CREW_PREFIX}/etc",
            "--with-libdir=#{ARCH_LIB}",
-           "--with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype",
-           "--with-pcre-regex=#{CREW_LIB_PREFIX}",
-           "--with-jpeg-dir=#{CREW_LIB_PREFIX}",
            "--with-kerberos=#{CREW_LIB_PREFIX}",
-           "--with-png-dir=#{CREW_LIB_PREFIX}",
-           "--with-webp-dir=#{CREW_LIB_PREFIX}",
-           "--with-xpm-dir=#{CREW_LIB_PREFIX}",
            '--enable-exif',
            '--enable-fpm',
            '--enable-ftp',
