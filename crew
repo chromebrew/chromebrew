@@ -65,7 +65,7 @@ rescue Docopt::Exit => e
     end
     if ARGV[0] != '-h' and ARGV[0] != '--help' then
       puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-      cmds = ["build", "download", "files", "help", "install", "list", "remove", "search", "update", "upgrade", "whatprovides"]
+      cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
       # Looking for similar commands
       if not cmds.include?(ARGV[0]) then
         similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
@@ -240,7 +240,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, const, download, files, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, const, download, files, help, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -283,7 +283,7 @@ def files (pkgName)
   if File.exists? "#{filelist}"
     system "sort #{filelist}"
     lines = `wc -l "#{filelist}"`.strip.split(' ')[0].to_i
-    size = `du -ch $(cat #{filelist}) | tail -1 | cut -f 1`
+    size = `cat #{filelist} | xargs -I {} du -b '{}' | awk '{ print; total += $1 }; END { print total }' | numfmt --suffix B --to=si | tail -1`
     puts "Total found: #{lines}".lightgreen
     puts "Disk usage: #{size}".lightgreen
   else
@@ -546,12 +546,12 @@ def prepare_package (destdir)
     compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
     compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
 
-    # create directory list
+    # create file list
     system "find . -type f > ../filelist"
     system "find . -type l >> ../filelist"
     system "cut -c2- ../filelist > filelist"
 
-    # create file list
+    # create directory list
     system "find . -type d > ../dlist"
     system "cut -c2- ../dlist > dlistcut"
     system "tail -n +2 dlistcut > dlist"
