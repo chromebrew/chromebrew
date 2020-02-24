@@ -11,13 +11,13 @@ class Libgphoto < Package
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-i686.tar.xz',
-    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/libgphoto-2.5.23-chromeos-x86_64.tar.xz'
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'dfb2080fbbd42cfffdc05a6bb6d52775b807825d1b3b7ca18934c70d88beb1be',
      armv7l: 'dfb2080fbbd42cfffdc05a6bb6d52775b807825d1b3b7ca18934c70d88beb1be',
        i686: '9f33a1541717bf823171eef395dd8fe32aacf3804c120591e771c08034ea374a',
-     x86_64: 'f427fa32d155986cd13cdf9eebf9efc8d3adb6e1d5f478a9d6658be0bf0052e1',
+     x86_64: '5993b9961a3b8dd1129186aa05370b72c3fd24cd6eaef0b33377a288be713609',
   })
 
   depends_on 'gtk_doc'
