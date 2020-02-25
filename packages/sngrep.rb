@@ -17,13 +17,13 @@ class Sngrep < Package
 
   def self.build
     system 'AUTOCONF_VERSION=2.69 AUTOMAKE_VERSION=1.16 ./bootstrap.sh'
-    system "./configure CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw",
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-openssl',
-           '--with-pcre',
-           '--disable-logo',
-           '--enable-ipv6'
+    system "./configure CPPFLAGS=\"-I#{CREW_PREFIX}/include/ncursesw -I#{CREW_PREFIX}/include/libpcap\" \
+          --prefix=#{CREW_PREFIX} \
+          --libdir=#{CREW_LIB_PREFIX} \
+          --with-openssl \
+          --with-pcre \
+          --disable-logo \
+          --enable-ipv6"
     system 'make'
   end
 
