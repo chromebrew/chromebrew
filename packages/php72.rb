@@ -3,9 +3,9 @@ require 'package'
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.27'
-  source_url 'https://php.net/distributions/php-7.2.27.tar.xz'
-  source_sha256 '7bd0fb9e3b63cfe53176d1f3565cd686f90b3926217158de5ba57091f49e4c32'
+  version '7.2.28'
+  source_url 'https://php.net/distributions/php-7.2.28.tar.xz'
+  source_sha256 'afe1863301da572dee2e0bad8014813bcced162f980ddc8ec8e41fd72263eb2d'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,20 +13,20 @@ class Php72 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.27-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.28-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.28-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.28-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.28-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '200c2376c4dcd3435a8813d13ff14dcd9dd28b849822841c40a2ef1d27516d0f',
-     armv7l: '200c2376c4dcd3435a8813d13ff14dcd9dd28b849822841c40a2ef1d27516d0f',
-       i686: 'aa8177e8f6e9f58d07b35a68c83103552d585aaa4ec2abbcbe34b7b067a6b493',
-     x86_64: '18c012beea8876a2d4820698ba0ab533cbea191c32a048f9d93457cfda4fbcf5',
+    aarch64: '22228720dcbcd3d18db17090dc5132ee17c66616be3341a76276f9c57f17e6af',
+     armv7l: '22228720dcbcd3d18db17090dc5132ee17c66616be3341a76276f9c57f17e6af',
+       i686: 'fddca73852fea1bea599cd8faae6eb948407380f0cbb652e91b04a489deb1bc5',
+     x86_64: '0a2de5b5d4087a12e8bfb602dd998ff7e9069fd265b2563515be96b9b515d604',
   })
 
   depends_on 'libgcrypt'
-  depends_on 'libwebp'
+  depends_on 'libjpeg_turbo'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
@@ -69,13 +69,7 @@ class Php72 < Package
            "--sbindir=#{CREW_PREFIX}/bin",
            "--with-config-file-path=#{CREW_PREFIX}/etc",
            "--with-libdir=#{ARCH_LIB}",
-           "--with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype",
-           "--with-pcre-regex=#{CREW_LIB_PREFIX}",
-           "--with-jpeg-dir=#{CREW_LIB_PREFIX}",
            "--with-kerberos=#{CREW_LIB_PREFIX}",
-           "--with-png-dir=#{CREW_LIB_PREFIX}",
-           "--with-webp-dir=#{CREW_LIB_PREFIX}",
-           "--with-xpm-dir=#{CREW_LIB_PREFIX}",
            '--enable-exif',
            '--enable-fpm',
            '--enable-ftp',
