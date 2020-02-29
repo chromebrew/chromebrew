@@ -12,7 +12,7 @@ class Alpine < Package                 # The first character of the class name m
     "--prefix=#{CREW_PREFIX}",
     "--libdir=#{CREW_LIB_PREFIX}",
     "--with-ssl-dir=/etc/ssl",
-    "--with-ssl-include-dir=/usr/local/include",
+    "--with-ssl-include-dir=#{CREW_PREFIX}/include",
     "--with-ssl-lib-dir=#{CREW_LIB_PREFIX}", "--disable-nls",
     "--with-system-pinerc=#{CREW_PREFIX}/etc/alpine.d/pine.conf",
     "--with-system-fixed-pinerc=#{CREW_PREFIX}/etc/alpine/pine.conf.fixed"
