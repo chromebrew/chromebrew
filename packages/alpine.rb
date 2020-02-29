@@ -2,7 +2,7 @@ require 'package'
 
 class Alpine < Package                 # The first character of the class name must be upper case
   description 'The continuation of the Alpine email client from University of Washington.'
-  homepage 'http://alpine.x10host.com/alpine/'
+  homepage 'http://alpine.x10host.com/alpine'
   version '2.22'
   source_url 'http://alpine.x10host.com/alpine/release/src/alpine-2.22.tar.xz'
   source_sha256 '849567c1b6f71fde3aaa1c97cf0577b12a525d9e22c0ea47797c4bf1cd2bbfdb'   # Use the command "sha256sum"
