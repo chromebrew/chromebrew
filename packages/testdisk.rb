@@ -25,6 +25,5 @@ class Testdisk < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man8"
   end
 end
