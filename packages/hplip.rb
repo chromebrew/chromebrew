@@ -4,12 +4,19 @@ class Hplip < Package
   description 'Print, Scan and Fax Drivers for Linux'
   homepage 'https://developers.hp.com/hp-linux-imaging-and-printing/'
   version '3.20.2'
-  source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.20.2/hplip-3.20.2.tar.gz'
-  source_sha256 '90c49d74688b4d745a739a6db9bf8dbdfa134c24e921e31909bffe9d84f471c2'
+  case ARCH
+  when 'i686', 'x86_64'
+    source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.20.2/hplip-3.20.2.tar.gz'
+    source_sha256 '90c49d74688b4d745a739a6db9bf8dbdfa134c24e921e31909bffe9d84f471c2'
+  end
 
   binary_url ({
+      i686: 'https://dl.bintray.com/chromebrew/chromebrew/hplip-3.20.2-chromeos-i686.tar.xz',
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/hplip-3.20.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+      i686: '3665d159fe1684d280689e09546a9f6cb0ab7be68d4e670f40c4111ae015d8b7',
+    x86_64: '05b80f04ea8ac68ffad990ed86140932f6353d25f7fd116df5190e8484385f09',
   })
 
   depends_on 'cups'
