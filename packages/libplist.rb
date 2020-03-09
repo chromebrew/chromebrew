@@ -23,10 +23,9 @@ class Libplist < Package
   depends_on 'glib'
 
   def self.build
-    system './configure',
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}",
-      '--disable-dependency-tracking'
+    system "./configure CC=gcc CXX=g++ \
+      --prefix=#{CREW_PREFIX} \
+      --libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 
