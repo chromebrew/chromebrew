@@ -28,7 +28,7 @@ Usage:
   crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew list (available|installed)
   crew postinstall <name> ...
-  crew reinstall [-v|--verbose] <name> ...
+  crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
   crew update
@@ -204,7 +204,10 @@ def help (pkgName)
     puts "The package(s) must be currently installed."
   when "reinstall"
     puts "Remove and install package(s)."
-    puts "Usage: crew reinstall [-v|--verbose] <package1> [<package2> ...]"
+    puts "Usage: crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]"
+    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
+    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
+    puts "If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary."
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "remove"
     puts "Remove package(s)."
@@ -950,7 +953,8 @@ def reinstall_command (args)
     remove name
     @pkgName = name
     search @pkgName
-    install
+    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    resolve_dependencies_and_install
   end
 end
 
