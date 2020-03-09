@@ -54,8 +54,23 @@ url: https://ftpmirror.gnu.org/alive/
 activity: none
 ---
 kind: url
+name: alpine
+url: http://alpine.x10host.com/alpine/release
+activity: none
+---
+kind: url
 name: alsa_lib
-url: ftp://ftp.alsa-project.org/pub/lib
+url: https://github.com/alsa-project/alsa-lib/releases
+activity: medium
+---
+kind: url
+name: alsa_tools
+url: https://github.com/alsa-project/alsa-tools/releases
+activity: medium
+---
+kind: url
+name: alsa_utils
+url: https://github.com/alsa-project/alsa-utils/releases
 activity: medium
 ---
 kind: url
@@ -904,6 +919,11 @@ url: https://launchpad.net/duplicity/+download
 activity: medium
 ---
 kind: url
+name: ecasound
+url: https://nosignal.fi/download/
+activity: medium
+---
+kind: url
 name: ed
 url: http://ftpmirror.gnu.org/ed
 activity: low
@@ -1084,6 +1104,11 @@ url: https://github.com/FLIF-hub/FLIF/releases
 activity: none
 ---
 kind: url
+name: fltk
+url: https://github.com/fltk/fltk/releases
+activity: medium
+---
+kind: url
 name: fly
 url: http://www.w3perl.com/fly/installation.html
 activity: none
@@ -1262,6 +1287,11 @@ kind: url
 name: gdrive
 url: https://github.com/prasmussen/gdrive/releases
 activity: none
+---
+kind: url
+name: geany
+url: https://download.geany.org/
+activity: medium
 ---
 kind: url
 name: gegl
@@ -1516,6 +1546,11 @@ activity: low
 kind: url
 name: gpgme
 url: https://www.gnupg.org/ftp/gcrypt/gpgme
+activity: low
+---
+kind: url
+name: gphoto
+url: https://github.com/gphoto/gphoto2/releases
 activity: low
 ---
 kind: url
@@ -1899,6 +1934,11 @@ url: https://swarm.workshop.perforce.com/downloads/guest/perforce_software/jam/
 activity: none
 ---
 kind: url
+name: janet
+url: https://github.com/janet-lang/janet/releases
+activity: medium
+---
+kind: url
 name: jansson
 url: https://github.com/akheron/jansson/releases
 activity: low
@@ -2117,6 +2157,11 @@ kind: url
 name: libatomic_ops
 url: https://github.com/ivmai/libatomic_ops/releases
 activity: low
+---
+kind: url
+name: libaudiofile
+url: https://github.com/mpruett/audiofile/releases
+activity: none
 ---
 kind: url
 name: libavc1394
@@ -2347,6 +2392,11 @@ kind: url
 name: libgpgerror
 url: https://www.gnupg.org/ftp/gcrypt/libgpg-error/
 activity: high
+---
+kind: url
+name: libgphoto
+url: https://github.com/gphoto/libgphoto2/releases
+activity: medium
 ---
 kind: url
 name: libgsf
@@ -4014,6 +4064,11 @@ url: https://www.x.org/archive/individual/lib/
 activity: none
 ---
 kind: url
+name: pugixml
+url: https://github.com/zeux/pugixml/releases
+activity: low
+---
+kind: url
 name: pulseaudio
 url: https://freedesktop.org/software/pulseaudio/releases
 activity: high
@@ -4087,6 +4142,11 @@ kind: url
 name: qpdf
 url: https://github.com/qpdf/qpdf/releases
 activity: medium
+---
+kind: url
+name: qrencode
+url: https://github.com/fukuchi/libqrencode/releases
+activity: none
 ---
 kind: url
 name: qtbase
@@ -4462,6 +4522,11 @@ kind: url
 name: snappy
 url: https://github.com/google/snappy/releases
 activity: high
+---
+kind: url
+name: sngrep
+url: https://github.com/irontec/sngrep/releases
+activity: none
 ---
 kind: url
 name: snooze
