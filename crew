@@ -454,7 +454,7 @@ def unpack (meta)
       puts "Unpacking archive using 'unzip', this may take a while..."
       _verbopt = @opt_verbose ? '-v' : '-qq'
       system "unzip", _verbopt, "-d", "#{extract_dir}", meta[:filename]
-    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz)$/i
+    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
       _verbopt = @opt_verbose ? 'v' : ''
       system "tar", "x#{_verbopt}f", meta[:filename], "-C", "#{extract_dir}"
