@@ -23,7 +23,11 @@ class Usbutils < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.postinstall
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/hwdata/"
     system "wget http://www.linux-usb.org/usb.ids -O #{CREW_DEST_PREFIX}/share/hwdata/usb.ids"
+    puts "It's recommended that you setup a cron job to update this file regularly.".lightblue
   end
 end
