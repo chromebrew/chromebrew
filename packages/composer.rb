@@ -3,9 +3,9 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.9.3'
-  source_url 'https://github.com/composer/composer/archive/1.9.3.tar.gz'
-  source_sha256 '6d2f36c556bb18294f70b7c2e102dabc5009949bab2b74a137886115693065e5'
+  version '1.10.1'
+  source_url 'https://github.com/composer/composer/archive/1.10.1.tar.gz'
+  source_sha256 '9d19d87a63a4927c20ed8e21dc2dd472eaf86deaf529917591557945464d5573'
 
   depends_on 'php' unless File.exists? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
