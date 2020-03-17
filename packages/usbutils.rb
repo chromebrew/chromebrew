@@ -8,8 +8,16 @@ class Usbutils < Package
   source_sha256 '88634625f91840bc1993d2731cc081ee8d3b13d56069a95bdd6ac6ef0e063e46'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-012-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-012-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-012-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-012-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '84309375b4d635563a2bdc47e55c5a95841d18a937fcb3af646b51f5e1af5b53',
+     armv7l: '84309375b4d635563a2bdc47e55c5a95841d18a937fcb3af646b51f5e1af5b53',
+       i686: 'a174fbc8d94512af2591505a790226ec4230ea2236afe06f1ed119a33982b7c9',
+     x86_64: '483f60e4d8dd5f44a2fabe7840e560c1d5eb67ae4eddca08f209dc8b30b9d4bc',
   })
 
   depends_on 'libusb'
