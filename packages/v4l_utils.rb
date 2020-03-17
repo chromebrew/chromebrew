@@ -3,21 +3,21 @@ require 'package'
 class V4l_utils < Package
   description 'The v4l-utils are a series of packages for handling media devices.'
   homepage 'https://www.linuxtv.org/wiki/index.php/V4l-utils'
-  version '1.16.3'
-  source_url 'https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.16.3.tar.bz2'
-  source_sha256 '7c5c0d49c130cf65d384f28e9f3a53c5f7d17bf18740c48c40810e0fbbed5b54'
+  version '1.18.0'
+  source_url 'https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.18.0.tar.bz2'
+  source_sha256 '6cb60d822eeed20486a03cc23e0fc65956fbc1e85e0c1a7477f68bbd9802880d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.16.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.16.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.16.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.16.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.18.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.18.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.18.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.18.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c73a40d699272e3526c6e949953f2cd910b67ec4641c2ed17a97945e35c7c6ae',
-     armv7l: 'c73a40d699272e3526c6e949953f2cd910b67ec4641c2ed17a97945e35c7c6ae',
-       i686: '261ccca7ffd43a12b4085f68ce5f223574bf7300f5f01960bfeb76f12c4fc59b',
-     x86_64: 'dc893b16e6fd881d6199b0bf0e6febae1ac36a48b775e0e1e159f07274dd1d14',
+    aarch64: 'baf11b08999b753b4b874b5fd5eebecb85f78679f0912350bffc8a27c558dc08',
+     armv7l: 'baf11b08999b753b4b874b5fd5eebecb85f78679f0912350bffc8a27c558dc08',
+       i686: '8c12cad6c323d2448c6dcb9b8c68c6b1c5aea6889c1c99fdbeea616529e8d38a',
+     x86_64: '17414e347092d411b24c3caa5f306f881996b639435c82d1a7aac9d693aa64d2',
   })
 
   depends_on 'sdl2_image'
@@ -30,7 +30,7 @@ class V4l_utils < Package
   end
 
   def self.build
-    puts "Forcing GOLD linker to be used.".orange
+    puts 'Switch to the gold linker.'.orange
     original_default = `ld_default g`.chomp
     system "./configure",
            "--disable-bpf",
