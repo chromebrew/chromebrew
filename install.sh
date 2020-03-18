@@ -128,7 +128,7 @@ function extract_install () {
 
     #extract and install
     
-    if [ "${3}" == "$(cat \"${CREW_CONFIG_PATH}/meta/${1}.current.sha256\")" ]; then
+    if [ "${3}" == "$(cat "${CREW_CONFIG_PATH}/meta/${1}.current.sha256")" ]; then
       echo "Current version is already extracted."
     else 
       echo "Extracting ${1} (this may take a while)..."
