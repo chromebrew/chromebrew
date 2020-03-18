@@ -220,7 +220,8 @@ if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
   echo "echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
   echo "echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
   echo "echo 'export PATH=\"\${CREW_PREFIX}/usr/local/bin:\${CREW_PREFIX}/usr/local/sbin:\${PATH}\"' >> ~/.bashrc"
-  echo "echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
+  echo "echo 'export LD_LIBRARY_PATH=\"\${CREW_PREFIX}/lib\${LIB_SUFFIX}:\${LD_LIBRARY_PATH}\"' >> ~/.bashrc"
+  echo "echo 'export LD_LIBRARY_PATH=\"\${CREW_PREFIX}/usr/local/lib\${LIB_SUFFIX}:\${LD_LIBRARY_PATH}\"' >> ~/.bashrc"
   echo 'source ~/.bashrc'
   echo
 fi
