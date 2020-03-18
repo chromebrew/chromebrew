@@ -138,7 +138,6 @@ function extract_install () {
       mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
       mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
       echo "${3}" > "${CREW_CONFIG_PATH}/meta/${1}.current.sha256"
-      exit 1;;
     fi
 }
 
