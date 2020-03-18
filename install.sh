@@ -127,12 +127,19 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo "Extracting ${1} (this may take a while)..."
-    tar xpf ../"${2}"
-    echo "Installing ${1} (this may take a while)..."
-    tar cpf - ./*/* | (cd "${CREW_PREFIX}"; tar xp --keep-directory-symlink -f -)
-    mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
-    mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
+    
+    if [ "${3}" == "$(cat ${CREW_CONFIG_PATH}/meta/${1}.current.sha256)" ]; then
+      echo "Current version is already extracted."
+    else 
+      echo "Extracting ${1} (this may take a while)..."
+      tar xpf ../"${2}"
+      echo "Installing ${1} (this may take a while)..."
+      tar cpf - ./*/* | (cd "${CREW_PREFIX}"; tar xp --keep-directory-symlink -f -)
+      mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
+      mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
+      echo "${3}" > "${CREW_CONFIG_PATH}/meta/${1}.current.sha256"
+      exit 1;;
+    fi
 }
 
 function update_device_json () {
@@ -180,7 +187,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
                         # extract string between first '-' and "-chromeos"
 
   download_check "${name}" "${url}" "${tarfile}" "${sha256}"
-  extract_install "${name}" "${tarfile}"
+  extract_install "${name}" "${tarfile}" "${sha256}"
   update_device_json "${name}" "${version}"
 done
 
