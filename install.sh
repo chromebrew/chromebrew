@@ -130,7 +130,7 @@ function extract_install () {
     echo "Extracting ${1} (this may take a while)..."
     tar xpf ../"${2}"
     echo "Installing ${1} (this may take a while)..."
-    tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
+    tar cpf - ./*/* | (cd "${CREW_PREFIX}"; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
@@ -212,6 +212,7 @@ if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
   echo "you need to run these commands to complete your installation:"
   echo "echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
   echo "echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
+  echo "echo 'export PATH=\"\${CREW_PREFIX}/usr/local/bin:\${CREW_PREFIX}/usr/local/sbin:\${PATH}\"' >> ~/.bashrc"
   echo "echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
   echo 'source ~/.bashrc'
   echo
