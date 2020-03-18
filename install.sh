@@ -204,6 +204,7 @@ rm -rf .git
 git init
 git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
 git config core.sparsecheckout true
+mkdir -p "${CREW_LIB_PATH}/.git/info"
 echo packages >> .git/info/sparse-checkout
 echo lib >> .git/info/sparse-checkout
 echo crew >> .git/info/sparse-checkout
