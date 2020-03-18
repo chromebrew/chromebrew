@@ -490,9 +490,9 @@ def build_and_preconfigure (target_dir)
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts "Rename all *.la files to *.la_tmp".lightblue
     if @opt_verbose then
-      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
+      system "find \"#{CREW_LIB_PREFIX}\" -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
     else
-      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
+      system "find \"#{CREW_LIB_PREFIX}\" -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
     end
 
     @pkg.in_build = true
@@ -502,9 +502,9 @@ def build_and_preconfigure (target_dir)
     @pkg.in_build = false
     # wipe crew destdir
     if @opt_verbose then
-      system "rm -rvf #{CREW_DEST_DIR}/*"
+      system "rm -rvf \"#{CREW_DEST_DIR}/*\""
     else
-      system "rm -rf #{CREW_DEST_DIR}/*"
+      system "rm -rf \"#{CREW_DEST_DIR}/*\""
     end
     puts "Preconfiguring package..."
     @pkg.install
@@ -513,9 +513,9 @@ def build_and_preconfigure (target_dir)
     # cannot access '*.la': No such file or directory
     puts "Rename all *.la_tmp files back to *.la".lightblue
     if @opt_verbose then
-      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+      system "find \"#{CREW_LIB_PREFIX}\" -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     else
-      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+      system "find \"#{CREW_LIB_PREFIX}\" -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     end
   end
 end
@@ -532,11 +532,11 @@ def compress_doc (dir)
   return if CREW_NOT_COMPRESS || ENV['CREW_NOT_COMPRESS'] || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
 
   if Dir.exist? dir
-    system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
+    system "find \"#{dir}\" -type f ! -perm -200 | xargs -r chmod u+w"
     if @opt_verbose then
-      system "compressdoc -v --gzip -9 #{dir}"
+      system "compressdoc -v --gzip -9 \"#{dir}\""
     else
-      system "compressdoc --gzip -9 #{dir}"
+      system "compressdoc --gzip -9 \"#{dir}\""
     end
   end
 end
