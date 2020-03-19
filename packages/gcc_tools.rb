@@ -118,8 +118,8 @@ EOF'
   end
 
   def self.install
-    system "install -Dm755 crewfix #{CREW_DEST_PREFIX}/bin/crewfix"
-    system "install -Dm755 gcc_switcher #{CREW_DEST_PREFIX}/bin/gcc_switcher"
+    system "install -Dm755 crewfix \"#{CREW_DEST_PREFIX}/bin/crewfix\""
+    system "install -Dm755 gcc_switcher \"#{CREW_DEST_PREFIX}/bin/gcc_switcher\""
   end
 
   def self.postinstall
