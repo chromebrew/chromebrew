@@ -10,7 +10,10 @@ if ENV['CREW_PREFIX'].to_s == ''
   CREW_PREFIX = '/usr/local'
 else
   CREW_PREFIX = ENV['CREW_PREFIX']
-  @pkg.build_from_source = true
+  
+  if @pkg.respond_to? :build_from_source=
+    @pkg.build_from_source = true
+  end
 end
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
 
