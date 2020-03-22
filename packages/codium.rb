@@ -7,11 +7,11 @@ class Codium < Package
   case ARCH
   when 'aarch64', 'armv7l'
     source_url 'https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-arm-1.43.0.tar.gz'
-    source_sha256 '8c7d4cb7c75285d028ec1edcaeee2a25b1a945064308abd0dbed6a9bf91888a6'
+    source_sha256 'c60424348f65e091119a4248a88478b53887945b0d5a66bc86c52f3e7d881f5b'
     @arch = 'arm'
   when 'x86_64'
     source_url 'https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-x64-1.43.0.tar.gz'
-    source_sha256 '6ae5c32f0968d93570a7acf3262cb44fb2dd5dba6c6e6133bb1433daa3c23a8d'
+    source_sha256 '3cbe41b19f7997f180e95db451b63fe28f338c67576e1d1dc022d6beea757a97'
     @arch = 'x64'
   end
 
