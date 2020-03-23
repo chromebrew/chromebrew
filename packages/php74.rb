@@ -3,9 +3,9 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.4.3'
-  source_url 'https://www.php.net/distributions/php-7.4.3.tar.xz'
-  source_sha256 'cf1f856d877c268124ded1ede40c9fb6142b125fdaafdc54f855120b8bc6982a'
+  version '7.4.4'
+  source_url 'https://www.php.net/distributions/php-7.4.4.tar.xz'
+  source_sha256 '1873c4cefdd3df9a78dcffb2198bba5c2f0464f55c9c960720c84df483fca74c'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,16 +13,16 @@ class Php74 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9e350ad837fd7817904e367ca0e6369c8a449ce0333b9fd58b0d0230d42afbc3',
-     armv7l: '9e350ad837fd7817904e367ca0e6369c8a449ce0333b9fd58b0d0230d42afbc3',
-       i686: 'e2129fedb5909c8c1312a3f5e807a9898c0d1fb9395818595ab85ca8c052d58e',
-     x86_64: 'f75435a6d55c616243ed84ace3623a9b7ec22e118f593b2826e1fee69271d46f',
+    aarch64: 'e37c0e97eca8ed5b8b56d6228861cf833b4f7d0837e06c1f00672a2d2b34f6aa',
+     armv7l: 'e37c0e97eca8ed5b8b56d6228861cf833b4f7d0837e06c1f00672a2d2b34f6aa',
+       i686: 'f33f3b551c177447bda9a9ce7b6cbe5299fe387886a1c1e2124732d917b7b30f',
+     x86_64: '2398c5678b37df12e6ac4bb05d4d91ad304b5ffe5a8b1a02846aaef96c64caa9',
   })
 
   depends_on 'aspell_en'
