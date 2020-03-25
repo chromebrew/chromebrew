@@ -3,18 +3,18 @@ require 'package'
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'https://www.v2ray.com/'
-  version 'v4.22.1'
+  version 'V4.23.1'
 
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.22.1/v2ray-linux-arm.zip'
-    source_sha256 '8fa800ee4a8d62d3d9970cfe6883c39b22637ac902d73391973cb2c9c08fed07'
+    source_url 'https://github.com/v2ray/v2ray-core/releases/download/V4.23.1/v2ray-linux-arm.zip'
+    source_sha256 '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
   when 'i686'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.22.1/v2ray-linux-32.zip'
-    source_sha256 '27194ae58ab74096c77c99a7ed40c727eced7fd17b523cfc8295985134605691'
+    source_url 'https://github.com/v2ray/v2ray-core/releases/download/V4.23.1/v2ray-linux-32.zip'
+    source_sha256 '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
   when 'x86_64'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.22.1/v2ray-linux-64.zip'
-    source_sha256 '4a93d05127deb1f921ad88dca0c5cde5d7e664531a1b6bfdebfa4d4bac1c6348'
+    source_url 'https://github.com/v2ray/v2ray-core/releases/download/V4.23.1/v2ray-linux-64.zip'
+    source_sha256 '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
   end
 
   def self.install
