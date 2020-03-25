@@ -8,8 +8,16 @@ class Libxml2 < Package
   source_sha256 'd598e907b5f3efa992b65094f7113d9d8cc87238f32e4e1ddf8beff01b60a653'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2-2.9.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '8f7a474b5d0f8f800faa8e585662561dc4a0db3a494b2a949e96e63becf84262',
+     armv7l: '8f7a474b5d0f8f800faa8e585662561dc4a0db3a494b2a949e96e63becf84262',
+       i686: 'b248be959d940cb499e4692973865770a74fe1e10dfd7706cca36cc3ef3a0067',
+     x86_64: 'd2a31a3c95de67b23488340deea7025cdf953700e141a629de11711d17d3794a',
   })
  
   depends_on 'zlibpkg'
