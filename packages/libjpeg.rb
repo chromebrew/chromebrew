@@ -3,21 +3,13 @@ require 'package'
 class Libjpeg < Package
   description 'JPEG is a free library for image compression.'
   homepage 'http://www.ijg.org/'
-  version '9.0-c'
-  source_url 'https://www.ijg.org/files/jpegsrc.v9c.tar.gz'
-  source_sha256 '650250979303a649e21f87b5ccd02672af1ea6954b911342ea491f351ceb7122'
+  version '9.0-d'
+  source_url 'https://www.ijg.org/files/jpegsrc.v9d.tar.gz'
+  source_sha256 '99cb50e48a4556bc571dadd27931955ff458aae32f68c4d9c39d624693f69c32'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '46d6bf16c5b1cc601bbf7c81de56b8451ccfe15b8660a0f61a5dc882e8f68dec',
-     armv7l: '46d6bf16c5b1cc601bbf7c81de56b8451ccfe15b8660a0f61a5dc882e8f68dec',
-       i686: 'a1afb706120d5396f34536e8613e0a1c81e927d8d0dbc6d910e03563dd1be029',
-     x86_64: 'd60d7686e7f8b5808bc5f96518da10061c507d0f1da59021d2869ff1662432b6',
   })
 
   def self.build
