@@ -8,8 +8,16 @@ class Bz2 < Package
   source_sha256 'ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '11fbd7bb0897446cfda34be28db698ecdcbfbcb70e23311fe405edf1aa9abec4',
+     armv7l: '11fbd7bb0897446cfda34be28db698ecdcbfbcb70e23311fe405edf1aa9abec4',
+       i686: '82f0c8f531c14cef34d9b2a7b1c3a8f1783d43fad87a3da19a12da91abf03857',
+     x86_64: '418cff679b9753a9f247a77bf0d61994fc73ee473e6eaed49cd8aa4a159166a7',
   })
 
   def self.build

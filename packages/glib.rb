@@ -8,8 +8,16 @@ class Glib < Package
   source_sha256 '17967603bcb44b6dbaac47988d80c29a3d28519210b28157c2bd10997595bbc7'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.64.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.64.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.64.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.64.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'ba601edad8d81993f486184431f1951e47e8300366e7655c2ea164e923fcc056',
+     armv7l: 'ba601edad8d81993f486184431f1951e47e8300366e7655c2ea164e923fcc056',
+       i686: '532128e2b88f76fd80cad43e0804e5d6549dfe02f21579158261357c9a4be159',
+     x86_64: '9f0d347094230086b43f7535bd980d1a0efb4b9e5704e74acff9c1eb584dcd04',
   })
 
   depends_on 'util_linux'
