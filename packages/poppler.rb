@@ -3,21 +3,13 @@ require 'package'
 class Poppler < Package
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  version '0.63.0'
-  source_url 'https://poppler.freedesktop.org/poppler-0.63.0.tar.xz'
-  source_sha256 '27cc8addafc791e1a26ce6acc2b490926ea73a4f89196dd8a7742cff7cf8a111'
+  version '0.86.1'
+  source_url 'https://poppler.freedesktop.org/poppler-0.86.1.tar.xz'
+  source_sha256 'af630a277c8e194c31339c5446241834aed6ed3d4b4dc7080311e51c66257f6c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-0.63.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-0.63.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-0.63.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-0.63.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '327284b83bcd2b5ab97ba2d471fd25bbc7da95704f1d766bb85c56232b2d84df',
-     armv7l: '327284b83bcd2b5ab97ba2d471fd25bbc7da95704f1d766bb85c56232b2d84df',
-       i686: '06c135358dcdef45c53460c0724b8a565348e4ccc5053ad29eb605b6bc1ff31d',
-     x86_64: 'e32bb8caf1dfea59b8c295d0e0c02c60e2917b18f1c667a1765d5cebb62a59be',
   })
 
   depends_on 'automake' => :build
@@ -33,6 +25,7 @@ class Poppler < Package
     system "mkdir -p builddir"
     Dir.chdir("builddir") do
       system "cmake",
+        "-DCMAKE_CXX_FLAGS='-I#{CREW_PREFIX}/include/openjpeg-2.3 -I#{CREW_PREFIX}/include'",
              "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
              "-DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX}",
              "-DCMAKE_BUILD_TYPE=Release",
