@@ -12,8 +12,6 @@ class Ocaml < Package
   binary_sha256 ({
   })
 
-  depends_on 'buildessential' => :build
-  depends_on 'gdbm'
 
   def self.build
     system "./configure -prefix #{CREW_PREFIX} -libdir #{CREW_LIB_PREFIX}"
