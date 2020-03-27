@@ -18,10 +18,6 @@ class Mesa < Package
   depends_on 'elfutils'
   depends_on 'llvm'
 
-  def self.patch
-   # system "wget -O- https://patchwork.freedesktop.org/patch/257229/raw | patch -Rp1"
-  end
-
   def self.build
     system "pip3 uninstall -y Mako MarkupSafe || :"
     system "pip3 install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako==1.0.7"
