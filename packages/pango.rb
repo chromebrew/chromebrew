@@ -8,8 +8,16 @@ class Pango < Package
   source_sha256 '66a5b6cc13db73efed67b8e933584509f8ddb7b10a8a40c3850ca4a985ea1b1f'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.44.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.44.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.44.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.44.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'ec4d228e60636eaeae2f60a9d15d30685dfaba9b9664b633956bd2cf910f4aa1',
+     armv7l: 'ec4d228e60636eaeae2f60a9d15d30685dfaba9b9664b633956bd2cf910f4aa1',
+       i686: '6393f959ff12bafce05ba84eb60a1143bdd78cd2afdc56477d663f8ddd914db4',
+     x86_64: '535b15a6d6f7f0433b697565f1490901606803dc9af598655cb69aaf4da616b1',
   })
 
   depends_on 'harfbuzz'
