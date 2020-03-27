@@ -23,12 +23,9 @@ class Libvdpau < Package
   def self.build
     system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
     system "ninja -C builddir"
-    #system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    #system 'make'
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    #system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
