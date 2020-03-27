@@ -13,7 +13,12 @@ class Lua < Package
   })
 
   def self.build
-    system "make -C src all PLAT=linux SYSCFLAGS=\"-DLUA_USE_LINUX  -fPIC\" SYSLIBS=\"-Wl,-E -ldl -lreadline -lncurses -fPIC\""
+    system 'make',
+      '-C', 'src',
+      'all',
+      'PLAT=linux',
+      'SYSCFLAGS=-DLUA_USE_LINUX -fPIC',
+      'SYSLIBS=-Wl,-E -ldl -lreadline -lncurses -fPIC'
   end
 
   def self.check
@@ -21,7 +26,11 @@ class Lua < Package
   end
 
   def self.install
-    system 'make', 'linux', "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}",
-           "INSTALL_TOP=#{CREW_DEST_PREFIX}", 'install'
+    system 'make', 
+      'linux', 
+      "PREFIX=#{CREW_PREFIX}",
+      "LIBDIR=#{CREW_LIB_PREFIX}",
+      "INSTALL_TOP=#{CREW_DEST_PREFIX}", 
+      'install'
   end
 end
