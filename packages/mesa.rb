@@ -12,6 +12,7 @@ class Mesa < Package
   binary_sha256 ({
   })
 
+  depends_on 'setuptools' => :build
   depends_on 'libva'
   depends_on 'libvdpau'
   depends_on 'wayland_protocols'
@@ -20,8 +21,8 @@ class Mesa < Package
 
   def self.build
     system "pip3 uninstall -y Mako MarkupSafe || :"
-    system "pip3 install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako==1.0.7"
-    system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako==1.0.7"
+    system "pip3 install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
+    system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako"
     system "meson",
       "--prefix=#{CREW_PREFIX}",
       "--libdir=#{CREW_LIB_PREFIX}",
