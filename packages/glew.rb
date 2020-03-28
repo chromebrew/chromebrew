@@ -15,7 +15,9 @@ class Glew < Package
   depends_on 'mesa'
 
   def self.build
-    system "make"
+    system "make",
+      "PREFIX=#{CREW_PREFIX}",
+      "LIBDIR=#{CREW_LIB_PREFIX}"
   end
 
   def self.install
