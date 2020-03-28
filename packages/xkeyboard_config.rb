@@ -19,7 +19,7 @@ class Xkeyboard_config < Package
   depends_on "gettext" => :build
 
   def self.build
-    system "sed -i 's,/usr/bin/python3,/usr/local/bin/python3,' ./rules/compat/map-variants.py"
+    system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,' ./rules/compat/map-variants.py"i
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
