@@ -544,6 +544,11 @@ url: https://github.com/uberhacker/chromebrew-scripts/releases
 activity: none
 ---
 kind: url
+name: chrpath
+url: http://ftp.debian.org/debian/pool/main/c/chrpath/
+activity: none
+---
+kind: url
 name: chruby
 url: https://github.com/postmodern/chruby/releases
 activity: none
@@ -1054,6 +1059,11 @@ url: https://github.com/dirkvdb/ffmpegthumbnailer/releases/
 activity: none
 ---
 kind: url
+name: fftw
+url: ftp://ftp.fftw.org/pub/fftw/
+activity: none
+---
+kind: url
 name: figlet
 url: ftp://ftp.figlet.org/pub/figlet/program/unix
 activity: none
@@ -1391,6 +1401,11 @@ activity: low
 kind: url
 name: gittools
 url: https://github.com/internetwache/GitTools/
+activity: none
+---
+kind: url
+name: glew
+url: https://github.com/nigels-com/glew/releases/
 activity: none
 ---
 kind: url
@@ -1926,6 +1941,11 @@ activity: low
 kind: url
 name: itstool
 url: https://github.com/itstool/itstool/releases
+activity: low
+---
+kind: url
+name: jack
+url: https://github.com/jackaudio/jack2/releases/
 activity: low
 ---
 kind: url
@@ -2629,6 +2649,11 @@ url: https://github.com/librsync/librsync/releases
 activity: low
 ---
 kind: url
+name: libsamplerate
+url: http://www.mega-nerd.com/libsamplerate/download.html
+activity: none
+---
+kind: url
 name: libsass
 url: https://github.com/sass/libsass/releases
 activity: medium
@@ -3244,6 +3269,11 @@ url: https://mesa.freedesktop.org/archive/
 activity: high
 ---
 kind: url
+name: mesa_utils
+url: https://gitlab.freedesktop.org/mesa/demos/-/tags
+activity: none
+---
+kind: url
 name: meson
 url: https://github.com/mesonbuild/meson/releases
 activity: high
@@ -3377,6 +3407,11 @@ kind: url
 name: mtools
 url: https://ftp.gnu.org/gnu/mtools
 activity: none
+---
+kind: url
+name: mtr
+url: ftp://ftp.bitwizard.nl/mtr/
+activity: low
 ---
 kind: url
 name: multitail
@@ -4309,8 +4344,18 @@ url: http://rsync.samba.org/ftp/rsync/src
 activity: low
 ---
 kind: url
+name: rtaudio
+url: http://www.music.mcgill.ca/~gary/rtaudio/release/
+activity: low
+---
+kind: url
 name: rtmpdump
 url: https://git.ffmpeg.org/gitweb/rtmpdump.git
+activity: none
+---
+kind: url
+name: rubberband
+url: https://breakfastquay.com/files/releases/
 activity: none
 ---
 kind: url
@@ -4972,6 +5017,11 @@ kind: url
 name: valgrind
 url: http://sourceware.org/pub/valgrind
 activity: none
+---
+kind: url
+name: vamp_sdk
+url: https://code.soundsoftware.ac.uk/projects/vamp-plugin-sdk/files
+activity: medium
 ---
 kind: url
 name: vdev
