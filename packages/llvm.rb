@@ -8,8 +8,16 @@ class Llvm < Package
   source_sha256 'df83a44b3a9a71029049ec101fb0077ecbbdf5fe41e395215025779099a98fdf'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '0498ed55a9d3171c3f523c156822508f1b2a2d506ca87d6961427ae5165f6a34',
+     armv7l: '0498ed55a9d3171c3f523c156822508f1b2a2d506ca87d6961427ae5165f6a34',
+       i686: '8c4173f7de0525948ce60fed8d7fef7a3f1cb4632b650e6623eed6b4a0db7cce',
+     x86_64: 'b4751906ff72b3e4e2fcfbf3380bdc17907e3463c86ba059113369c459c7783f',
   })
 
   depends_on 'ld_default' => :build
