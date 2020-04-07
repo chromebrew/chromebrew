@@ -164,6 +164,11 @@ url: https://github.com/opencollab/arpack-ng/releases
 activity: medium
 ---
 kind: url
+name: arping
+url: https://github.com/ThomasHabets/arping/releases
+activity: low
+---
+kind: url
 name: ascii
 url: http://www.catb.org/~esr/ascii
 activity: low
@@ -809,6 +814,11 @@ url: https://projects.gw-computing.net/
 activity: low
 ---
 kind: url
+name: dfu_util
+url: http://dfu-util.sourceforge.net/releases/
+activity: none
+---
+kind: url
 name: di
 url: https://sourceforge.net/projects/diskinfo-di/files/
 activity: medium
@@ -967,6 +977,11 @@ kind: url
 name: entr
 url: http://entrproject.org/code/
 activity: medium
+---
+kind: url
+name: epydoc
+url: https://sourceforge.net/projects/epydoc/files/epydoc/
+activity: none
 ---
 kind: url
 name: erlang
@@ -2139,6 +2154,11 @@ url: https://fossies.org/linux/privat/
 activity: low
 ---
 kind: url
+name: lftp
+url: https://lftp.yar.ru/ftp/
+activity: medium
+---
+kind: url
 name: lha
 url: https://github.com/jca02266/lha
 activity: none
@@ -2511,6 +2531,11 @@ activity: low
 kind: url
 name: libmypaint
 url: https://github.com/mypaint/libmypaint/releases
+activity: low
+---
+kind: url
+name: libnet
+url: https://github.com/libnet/libnet/releases/
 activity: low
 ---
 kind: url
@@ -3549,6 +3574,11 @@ url: https://sourceforge.net/projects/netpbm/files/super_stable/
 activity: medium
 ---
 kind: url
+name: netperf
+url: https://github.com/HewlettPackard/netperf/releases
+activity: medium
+---
+kind: url
 name: nettle
 url: https://ftp.gnu.org/gnu/nettle
 activity: low
@@ -4077,6 +4107,11 @@ kind: url
 name: proj4
 url: http://download.osgeo.org/proj
 activity: none
+---
+kind: url
+name: projectlibre
+url: https://sourceforge.net/projects/projectlibre/files/ProjectLibre/
+activity: low
 ---
 kind: url
 name: protobuf
@@ -4717,6 +4752,11 @@ kind: url
 name: swig1
 url: https://sourceforge.net/projects/swig/files/swig/
 activity: none
+---
+kind: url
+name: symfony
+url: https://github.com/symfony/cli/releases/
+activity: high
 ---
 kind: url
 name: syncthing
