@@ -491,7 +491,7 @@ def build_and_preconfigure (target_dir)
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts "Rename all *.la files to *.la_tmp".lightblue
     if @opt_verbose then
-      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
+      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv -v {} {}_tmp"
     else
       system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
     end
@@ -514,7 +514,7 @@ def build_and_preconfigure (target_dir)
     # cannot access '*.la': No such file or directory
     puts "Rename all *.la_tmp files back to *.la".lightblue
     if @opt_verbose then
-      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv -v \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     else
       system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     end
@@ -545,10 +545,10 @@ end
 def prepare_package (destdir)
   Dir.chdir destdir do
     # compress manual files
-    compress_doc "#{destdir}#{CREW_PREFIX}/man"
-    compress_doc "#{destdir}#{CREW_PREFIX}/info"
-    compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
-    compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
+    compress_doc "#{CREW_DEST_PREFIX}/man"
+    compress_doc "#{CREW_DEST_PREFIX}/info"
+    compress_doc "#{CREW_DEST_PREFIX}/share/man"
+    compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
     # create file list
     system "find . -type f > ../filelist"
@@ -588,7 +588,7 @@ def install_package (pkgdir)
     strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
 
     # Strip binaries but not compressed archives
-    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tbz' ! -iname '*\.tgz' ! -iname '\*.txz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     if @opt_verbose then
       if Dir.exists? "#{pkgdir}/home" then
