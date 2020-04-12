@@ -3,7 +3,7 @@ require 'package'
 class Freebasic < Package
   description 'FreeBASIC is a free/open source (GPL), BASIC compiler for Microsoft Windows, DOS and Linux.'
   homepage 'https://www.freebasic.net/'
-  version '1.07.1'
+  version '1.07.1-1'
   case ARCH
   when 'i686'
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.07.1-linux-x86.tar.gz'
@@ -16,7 +16,8 @@ class Freebasic < Package
   depends_on 'libtinfo'
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     system "./install.sh -i #{CREW_DEST_PREFIX}"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/man", "#{CREW_DEST_PREFIX}/share"
   end
 end
