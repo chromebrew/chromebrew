@@ -40,10 +40,6 @@ class Gegl < Package
     system 'ninja -v -C _build'
   end
   
-#  def self.check
-#    system 'ninja -C _build test'
-#  end
-
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end
