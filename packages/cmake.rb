@@ -3,21 +3,21 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.16.3'
-  source_url 'https://cmake.org/files/v3.16/cmake-3.16.3.tar.gz'
-  source_sha256 'e54f16df9b53dac30fd626415833a6e75b0e47915393843da1825b096ee60668'
+  version '3.17.1'
+  source_url 'https://cmake.org/files/v3.17/cmake-3.17.1.tar.gz'
+  source_sha256 '3aa9114485da39cbd9665a0bfe986894a282d5f0882b1dea960a739496620727'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.16.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.16.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.16.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.16.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.17.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.17.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.17.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.17.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ad08eeacaf54d48e0e926667bde7138225f0559e24c31d894547bf2e5369ab01',
-     armv7l: 'ad08eeacaf54d48e0e926667bde7138225f0559e24c31d894547bf2e5369ab01',
-       i686: '5902f1320df14c8140669fc01c042463e3592691958793650f220601dfab6c22',
-     x86_64: 'c00f519bdd2cc7c9553f28c3af690320ab81cacf8b95644bfd1a4021114e9ba3',
+    aarch64: '6ebfeed065e9a823bfbd070e6d02535623320cc3322d22c862078a4501258bc8',
+     armv7l: '6ebfeed065e9a823bfbd070e6d02535623320cc3322d22c862078a4501258bc8',
+       i686: '8abe180a6b867916ece6d368690a93014e571010595b70fd0266c2be41abe2c6',
+     x86_64: '844675c631ce4ab9bd1df28d746aad298699822a4c807dc8e1ea3f3edd1e70b7',
   })
 
   def self.patch
