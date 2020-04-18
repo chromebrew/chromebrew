@@ -8,8 +8,16 @@ class Gegl < Package
   source_sha256 '1888ec41dfd19fe28273795c2209efc1a542be742691561816683990dc642c61'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'b96e1964c8b842c855ad08a8fa12c1ca1df48745b75c8a7210e4e91e55f1bbd6',
+     armv7l: 'b96e1964c8b842c855ad08a8fa12c1ca1df48745b75c8a7210e4e91e55f1bbd6',
+       i686: 'f47a712d92c1cd4b3293eac5a9cf6d5597162b73f4f7879dea18273b679da4b0',
+     x86_64: '04bb398c76229e19c6936d1d3e5fea733345db9055b517257f6f39b73201e0a6',
   })
 
   depends_on 'asciidoc'
