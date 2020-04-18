@@ -3,9 +3,9 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.4.4'
-  source_url 'https://www.php.net/distributions/php-7.4.4.tar.xz'
-  source_sha256 '1873c4cefdd3df9a78dcffb2198bba5c2f0464f55c9c960720c84df483fca74c'
+  version '7.4.5'
+  source_url 'https://www.php.net/distributions/php-7.4.5.tar.xz'
+  source_sha256 'd059fd7f55bdc4d2eada15a00a2976697010d3631ef6f83149cc5289e1f23c2c'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,16 +13,16 @@ class Php74 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e37c0e97eca8ed5b8b56d6228861cf833b4f7d0837e06c1f00672a2d2b34f6aa',
-     armv7l: 'e37c0e97eca8ed5b8b56d6228861cf833b4f7d0837e06c1f00672a2d2b34f6aa',
-       i686: 'f33f3b551c177447bda9a9ce7b6cbe5299fe387886a1c1e2124732d917b7b30f',
-     x86_64: '2398c5678b37df12e6ac4bb05d4d91ad304b5ffe5a8b1a02846aaef96c64caa9',
+    aarch64: 'a0714a550c3578c2c0e01a9bdc42a31cf6cf41aaea226eed68984db0d48b6dff',
+     armv7l: 'a0714a550c3578c2c0e01a9bdc42a31cf6cf41aaea226eed68984db0d48b6dff',
+       i686: '07b0e9ba0497f6dee71ea6c70aafee5da2b4e61fa3bcf8e9f08b22bb0e1e3e41',
+     x86_64: '56c593546b0e8e9f09d528165bcbbcd2b4086314fb0218855d445b76a951b2a4',
   })
 
   depends_on 'aspell_en'
@@ -64,6 +64,7 @@ class Php74 < Package
   end
 
   def self.build
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--docdir=#{CREW_PREFIX}/doc",

@@ -13,16 +13,16 @@ class Php71 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.33-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.33-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.33-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.1.33-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php71-7.1.33-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php71-7.1.33-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php71-7.1.33-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php71-7.1.33-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1a25458dca5188809187c717fc76864c71c896ac51032b4b5395875310f9bd6c',
-     armv7l: '1a25458dca5188809187c717fc76864c71c896ac51032b4b5395875310f9bd6c',
-       i686: 'ee2de86e059df317fff885d5e0df2db944890a675be5c23d81291779e23ac23a',
-     x86_64: '4a61fb06d921969bf16d8154d68f34c2f5f0e2195503cb62fc964f7908ed962e',
+    aarch64: '3e4a5a3099512d1dcd676d44b689d26e5322239ec72fdffe32b5e5520dea13c5',
+     armv7l: '3e4a5a3099512d1dcd676d44b689d26e5322239ec72fdffe32b5e5520dea13c5',
+       i686: 'dad3b1186679c8765dd3649d6dee08817623399fe103986670b628b239335da5',
+     x86_64: 'c87d21538feb6e74c13a598a75e3a942c2b56d9c0a2f05ba00bd182585d3e22d',
   })
 
   depends_on 'libgcrypt'
@@ -59,6 +59,7 @@ class Php71 < Package
   end
 
   def self.build
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--docdir=#{CREW_PREFIX}/doc",
