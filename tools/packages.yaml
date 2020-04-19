@@ -639,6 +639,11 @@ url: https://www.colordiff.org/
 activity: low
 ---
 kind: url
+name: comgt
+url: https://downloads.sourceforge.net/project/comgt/comgt/
+activity: none
+---
+kind: url
 name: commacd
 url: https://github.com/shyiko/commacd/releases
 activity: low
@@ -792,6 +797,11 @@ kind: url
 name: dejagnu
 url: https://ftpmirror.gnu.org/dejagnu/
 activity: low
+---
+kind: url
+name: deployer
+url: https://github.com/deployphp/deployer/releases/
+activity: medium
 ---
 kind: url
 name: depot_tools
@@ -1284,6 +1294,11 @@ url: http://www.hboehm.info/gc/gc_source
 activity: low
 ---
 kind: url
+name: gcalculator
+url: https://gitlab.gnome.org/GNOME/gnome-calculator/-/tags
+activity: high
+---
+kind: url
 name: gcc
 url: https://github.com/gcc-mirror/gcc/releases
 activity: low
@@ -1679,6 +1694,11 @@ url: https://ftp.gnome.org/pub/gnome/sources/gtkmm/
 activity: medium
 ---
 kind: url
+name: gtksourceview
+url: https://github.com/GNOME/gtksourceview/releases
+activity: high
+---
+kind: url
 name: gtkvte
 url: https://ftp.gnome.org/pub/gnome/sources/vte/
 activity: medium
@@ -1860,7 +1880,7 @@ activity: none
 ---
 kind: url
 name: icu4c
-url: http://download.icu-project.org/files/icu4c
+url: https://github.com/unicode-org/icu/releases/
 activity: medium
 ---
 kind: url
@@ -2270,7 +2290,7 @@ activity: none
 ---
 kind: url
 name: libcyrussasl
-url: ftp://ftp.cyrusimap.org/cyrus-sasl/
+url: https://github.com/cyrusimap/cyrus-imapd/releases
 activity: medium
 ---
 kind: url
@@ -2407,6 +2427,11 @@ kind: url
 name: libgd
 url: https://github.com/libgd/libgd/releases
 activity: low
+---
+kind: url
+name: libgee
+url: https://download.gnome.org/sources/libgee/
+activity: medium
 ---
 kind: url
 name: libgit2
@@ -3310,7 +3335,7 @@ activity: high
 ---
 kind: url
 name: mg
-url: https://devio.us/~bcallah/mg
+url: https://github.com/troglobit/mg/releases/
 activity: medium
 ---
 kind: url
@@ -3330,7 +3355,7 @@ activity: low
 ---
 kind: url
 name: miniupnpc
-url: http://miniupnp.free.fr/files
+url: https://github.com/miniupnp/miniupnp/releases
 activity: high
 ---
 kind: url
@@ -4089,6 +4114,11 @@ url: https://github.com/powerline/fonts/releases
 activity: none
 ---
 kind: url
+name: powershell
+url: https://github.com/PowerShell/PowerShell/releases/
+activity: high
+---
+kind: url
 name: powerstat
 url: http://kernel.ubuntu.com/~cking/tarballs/powerstat
 activity: medium
@@ -4395,7 +4425,7 @@ activity: none
 ---
 kind: url
 name: ruby
-url: http://cache.ruby-lang.org/pub/ruby
+url: http://www.ruby-lang.org/en/downloads/
 activity: medium
 ---
 kind: url
@@ -4662,6 +4692,11 @@ kind: url
 name: sqlite
 url: https://www.sqlite.org
 activity: medium
+---
+kind: url
+name: sqlitebrowser
+url: https://github.com/sqlitebrowser/sqlitebrowser/releases
+activity: low
 ---
 kind: url
 name: sqlmap
