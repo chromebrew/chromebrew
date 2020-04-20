@@ -26,11 +26,6 @@ class Python3 < Package
   depends_on 'krb5'
   depends_on 'libtirpc'
 
-  if ARGV[0] == 'install' || ARGV[0] == 'reinstall' || ARGV[0] == 'upgrade'
-    # Fix ImportError: cannot import name 'PackageFinder'.
-    # See https://stackoverflow.com/questions/59887436/importerror-cannot-import-name-packagefinder.
-    FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/python3.8/site-packages/pip*")
-  end
 
   def self.build
     # IMPORTANT: Do not build with python3 already installed or pip3 will not be included.
@@ -42,6 +37,11 @@ class Python3 < Package
   end
 
   def self.install
+    if ARGV[0] == 'install' || ARGV[0] == 'reinstall' || ARGV[0] == 'upgrade'
+      # Fix ImportError: cannot import name 'PackageFinder'.
+      # See https://stackoverflow.com/questions/59887436/importerror-cannot-import-name-packagefinder.
+      FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/python3.8/site-packages/pip*")
+    end
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     # remove static libraries
