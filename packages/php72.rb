@@ -3,9 +3,9 @@ require 'package'
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.29'
-  source_url 'https://www.php.net/distributions/php-7.2.29.tar.xz'
-  source_sha256 'b117de74136bf4b439d663be9cf0c8e06a260c1f340f6b75ccadb609153a7fe8'
+  version '7.2.30'
+  source_url 'https://www.php.net/distributions/php-7.2.30.tar.xz'
+  source_sha256 'aa93df27b58a45d6c9800ac813245dfdca03490a918ebe515b3a70189b1bf8c3'
 
   if ARGV[0] == 'install'
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -13,16 +13,16 @@ class Php72 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.29-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.29-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.29-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.30-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.30-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.30-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.30-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'dfaf1cf9fe5bb4faec843c1f4c3d6a67b76965ead087c5e3eff899dc3c6935de',
-     armv7l: 'dfaf1cf9fe5bb4faec843c1f4c3d6a67b76965ead087c5e3eff899dc3c6935de',
-       i686: '9a13f49ecd640cc1beeb38e14496b0dabed6f7090913bf847e180fc33fc72cc5',
-     x86_64: '45805e9ec6fade956e1dcbdfe60fc7453e192cf0038a120fc189346009131421',
+    aarch64: 'a29a79d5f8084e545784daef471b29f0f7b7cb5933438ec4be18fec22a6c5fce',
+     armv7l: 'a29a79d5f8084e545784daef471b29f0f7b7cb5933438ec4be18fec22a6c5fce',
+       i686: '39fe4f71f0473df4687c8e4dd03a6e04e6feaa24f2da52fa973c6e18277fdd4c',
+     x86_64: '6f8bbe0949f2d7e5d9aec35c7fc173bec38dd7a784e994d6e8f6d956921feeef',
   })
 
   depends_on 'libgcrypt'
@@ -59,6 +59,7 @@ class Php72 < Package
   end
 
   def self.build
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--docdir=#{CREW_PREFIX}/doc",

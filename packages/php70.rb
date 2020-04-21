@@ -59,6 +59,7 @@ class Php70 < Package
   end
 
   def self.build
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--docdir=#{CREW_PREFIX}/doc",
