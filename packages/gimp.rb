@@ -8,8 +8,14 @@ class Gimp < Package
   source_sha256 '65bfe111e8eebffd3dde3016ccb507f9948d2663d9497cb438d9bb609e11d716'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gimp-2.10.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gimp-2.10.18-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gimp-2.10.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '079527b6bb35dbbb7a5b70a8aaae03bb9e90341d1f638e82114c254a35074c9e',
+     armv7l: '079527b6bb35dbbb7a5b70a8aaae03bb9e90341d1f638e82114c254a35074c9e',
+     x86_64: '976807fa73b0f6f3c69750aab669e4ab095f237cdc3970b63e1df50b98f2d619',
   })
 
   depends_on 'aalib'
@@ -34,7 +40,8 @@ class Gimp < Package
   depends_on 'sommelier'
 
   def self.build
-    system "LIBS='-lm' ./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-maintainer-mode"
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
+    system "LIBS='-lm' ./configure #{CREW_OPTIONS} --disable-maintainer-mode"
     system 'make'
   end
 
