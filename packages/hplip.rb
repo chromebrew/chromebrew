@@ -24,18 +24,18 @@ class Hplip < Package
   depends_on 'libjpeg_turbo'
   depends_on 'sane_backends'
 
-  def self.preinstall
+  def self.patch
     system "curl -Ls -o config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
     system "curl -Ls -o config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'"
-  end
-
-  def self.build
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' hpijs-drv"
     system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' Makefile.in Makefile.am config.guess installer/core_install.py installer/dcheck.py"
     system 'sed -i "s,return(true);,return TRUE;,g" prnt/hpcups/genPCLm.cpp'
     system 'sed -i "s,return true;,return TRUE;,g" prnt/hpcups/genPCLm.cpp'
     system "sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' configure"
-    system "./configure --disable-network-build --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+  end
+
+  def self.build
+    system "./configure #{CREW_OPTIONS} --disable-network-build"
     system 'make'
   end
 

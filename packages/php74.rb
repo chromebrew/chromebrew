@@ -7,11 +7,6 @@ class Php74 < Package
   source_url 'https://www.php.net/distributions/php-7.4.5.tar.xz'
   source_sha256 'd059fd7f55bdc4d2eada15a00a2976697010d3631ef6f83149cc5289e1f23c2c'
 
-  if ARGV[0] == 'install'
-    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
-  end
-
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.5-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.5-chromeos-armv7l.tar.xz',
@@ -41,6 +36,11 @@ class Php74 < Package
   depends_on 'tidy'
   depends_on 'unixodbc'
   depends_on 'oniguruma'
+
+  def self.preinstall
+    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
+    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
+  end
 
   def self.patch
     # Configuration

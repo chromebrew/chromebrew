@@ -14,7 +14,7 @@ class Android_studio < Package
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
-  if ARGV[0] == 'install' || ARGV[0] == 'upgrade' then
+  def self.preinstall
     free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp.to_i
     abort 'Not enough free disk space.  You need at least 6 GB to install.'.lightred if free_space < 6442450944
   end

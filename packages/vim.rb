@@ -7,11 +7,6 @@ class Vim < Package
   source_url 'https://github.com/vim/vim/archive/v8.2.0346.tar.gz'
   source_sha256 '418d1cbc9f53f31cb19869b6df0294ca5c377ca2824c759e3f6796edc60e5628'
 
-  if ARGV[0] == 'install'
-    gvim = `which gvim 2> /dev/null`.chomp
-    abort "gvim version #{version} already installed.".lightgreen unless "#{gvim}" == ""
-  end
-
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.0346-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.0346-chromeos-armv7l.tar.xz',
@@ -29,6 +24,11 @@ class Vim < Package
   depends_on 'python3' => :build
   depends_on 'vim_runtime'
 
+  def self.preinstall
+    gvim = `which gvim 2> /dev/null`.chomp
+    abort "gvim version #{version} already installed.".lightgreen unless "#{gvim}" == ""
+  end
+
   def self.patch
     # set the system-wide vimrc path
     FileUtils.cd('src') do
@@ -39,7 +39,7 @@ class Vim < Package
   end
 
   def self.build
-    system "./configure",
+    system './configure',
               "--prefix=#{CREW_PREFIX}",
               "--localstatedir=#{CREW_PREFIX}/var/lib/vim",
               '--with-features=huge',

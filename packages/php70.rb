@@ -7,11 +7,6 @@ class Php70 < Package
   source_url 'https://php.net/distributions/php-7.0.33.tar.xz'
   source_sha256 'ab8c5be6e32b1f8d032909dedaaaa4bbb1a209e519abb01a52ce3914f9a13d96'
 
-  if ARGV[0] == 'install'
-    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
-  end
-
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.0.33-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php7-7.0.33-1-chromeos-armv7l.tar.xz',
@@ -36,6 +31,11 @@ class Php70 < Package
   depends_on 're2c'
   depends_on 'tidy'
   depends_on 'unixodbc'
+
+  def self.preinstall
+    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
+    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
+  end
 
   def self.patch
     # Configuration
