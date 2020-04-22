@@ -29,8 +29,7 @@ class Llvm < Package
   depends_on 'libtirpc'
   depends_on 'swig'
 
-  def self.preinstall
-
+  def self.build
     ############################# Download clang (tools) ###########################################
     url_clang = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/clang-#{version}.src.tar.xz"
     uri_clang = URI.parse url_clang
@@ -269,9 +268,6 @@ class Llvm < Package
     puts "Optional packages are ready".lightgreen
     ############################################################
 
-  end
-
-  def self.build
     puts 'Change to GOLD linker.'.orange
     original_default = `ld_default g`.chomp
     Dir.mkdir 'builddir'

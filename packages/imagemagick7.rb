@@ -18,11 +18,6 @@ class Imagemagick7 < Package
      x86_64: '71026f3fc591cad77b66977ff01a230b4b08e16c23e880b53b2e2dbdeb4b41ae',
   })
 
-  if ARGV[0] == 'install'
-    imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
-    abort "ImageMagick version #{imver} already installed.".lightgreen unless "#{imver}" == ""
-  end
-
   depends_on 'flif'
   depends_on 'freeimage'
   depends_on 'freetype'
@@ -42,6 +37,11 @@ class Imagemagick7 < Package
   depends_on 'python27'
   depends_on 'zstd'
   depends_on 'sommelier'
+
+  def self.preinstall
+    imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
+    abort "ImageMagick version #{imver} already installed.".lightgreen unless "#{imver}" == ""
+  end
 
   def self.patch
     system 'filefix'
@@ -68,5 +68,4 @@ class Imagemagick7 < Package
     FileUtils.ln_s "#{CREW_LIB_PREFIX}/libMagickWand-7.Q16HDRI.so.6", "#{CREW_DEST_LIB_PREFIX}/libMagickWand-7.Q16.so.6"
     FileUtils.ln_s "#{CREW_LIB_PREFIX}/libMagickCore-7.Q16HDRI.so.6", "#{CREW_DEST_LIB_PREFIX}/libMagickCore-7.Q16.so.6"
   end
-
 end

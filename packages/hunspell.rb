@@ -7,10 +7,7 @@ class Hunspell < Package
   source_url 'https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz'
   source_sha256 'bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a'
 
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
+  is_fake
 
   if ARGV[0] == 'install'
     puts
