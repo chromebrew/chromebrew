@@ -3,21 +3,21 @@ require 'package'
 class Freetype_sub < Package
   description 'Freetype_sub is a version without harfbuzz. It is intended to handle circular dependency betwwen freetype and harfbuzz.'
   homepage 'https://www.freetype.org/'
-  version '2.10'
-  source_url 'https://namesdir.com/mirrors/nongnu/freetype/freetype-2.10.0.tar.gz'
-  source_sha256 '955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a'
+  version '2.10.1'
+  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.xz'
+  source_sha256 '16dbfa488a21fe827dc27eaf708f42f7aa3bb997d745d31a19781628c36ba26f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype_sub-2.10.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b2d3c0d50a433d0ffc1fbada114b76bc4147d2a67664155ac3d91342e501d557',
-     armv7l: 'b2d3c0d50a433d0ffc1fbada114b76bc4147d2a67664155ac3d91342e501d557',
-       i686: '9bd721ac92d77e19686c6e39f283a5d434b7649483b99ea01ae562c8d1b14e45',
-     x86_64: 'b69cbd236ddc7ba3ee01719131832c174b345e12ea8df9ead43ebc1a8b622805',
+    aarch64: '61decfc0ca8f0e58eb496856b6ed89e124f5223ba95bcc1afdc21eca1a647b74',
+     armv7l: '61decfc0ca8f0e58eb496856b6ed89e124f5223ba95bcc1afdc21eca1a647b74',
+       i686: '78d772a1a74ae57272edf940bdbcf348a6e2abe7aa6f552c4176b9fd46311f72',
+     x86_64: '8726f91f8884fe8875098d6cf2e323dcc79d50adeaa927d1092f87c4af961f44',
   })
 
   depends_on 'expat'
@@ -25,19 +25,18 @@ class Freetype_sub < Package
   depends_on 'bz2'
   
   def self.build
-    system "./configure \
-            CFLAGS=\" -fPIC\" \
-            --prefix=#{CREW_PREFIX} \
-            --libdir=#{CREW_LIB_PREFIX} \
-            --without-harfbuzz"
-    system "make"
+    system 'pip3 install docwriter'
+    system "./configure CFLAGS=' -fPIC' #{CREW_OPTIONS} --enable-freetype-config --without-harfbuzz"
+    system 'make'
+    system 'pip3 uninstall docwriter -y'
+    system "pip3 install docwriter --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
   
   def self.postinstall
-    system "find #{CREW_BREW_DIR}/* -name freetype*.tar |xargs rm -rf"  # make sure to delete downloaded files
+    system "find #{CREW_BREW_DIR}/* -name freetype*.tar | xargs rm -rf"  # make sure to delete downloaded files
   end
 end
