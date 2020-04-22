@@ -20,16 +20,13 @@ class Zsync < Package
      x86_64: 'ce5a3c89fec4f13638ade49db7c2c45ca169e86b34687b3c55710f534789aba6',
   })
 
-  def self.preinstall
+  def self.patch
     system "curl -Ls -o autotools/config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
     system "curl -Ls -o autotools/config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'"
   end
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "./configure #{CREW_OPTIONS} --disable-maintainer-mode"
     system 'make'
   end
 

@@ -497,7 +497,6 @@ def build_and_preconfigure (target_dir)
     end
 
     @pkg.in_build = true
-    @pkg.preinstall
     @pkg.patch
     @pkg.build
     @pkg.in_build = false
@@ -518,6 +517,13 @@ def build_and_preconfigure (target_dir)
     else
       system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     end
+  end
+end
+
+def pre_install (dest_dir)
+  Dir.chdir dest_dir do
+    puts "Performing pre-install..."
+    @pkg.preinstall
   end
 end
 
@@ -741,6 +747,11 @@ def install
   unless @pkg.is_fake?
     # install filelist, dlist and binary files
     puts "Installing..."
+
+    # perform pre-install process
+    pre_install dest_dir
+
+    # perform install process
     install_package dest_dir
 
     # perform post-install process

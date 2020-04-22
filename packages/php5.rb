@@ -7,11 +7,6 @@ class Php5 < Package
   source_url 'http://php.net/distributions/php-5.6.40.tar.xz'
   source_sha256 '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
 
-  if ARGV[0] == 'install'
-    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
-  end
-
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.40-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php5-5.6.40-1-chromeos-armv7l.tar.xz',
@@ -35,6 +30,11 @@ class Php5 < Package
   depends_on 'pcre'
   depends_on 'tidy'
   depends_on 'unixodbc'
+
+  def self.preinstall
+    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
+    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
+  end
 
   def self.patch
     # Fix for tidy

@@ -7,11 +7,6 @@ class Gcc7 < Package
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-7.4.0/gcc-7.4.0.tar.xz'
   source_sha256 'eddde28d04f334aec1604456e536416549e9b1aa137fc69204e65eb0c009fe51'
 
-  if ARGV[0] == 'install'
-    gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
-    abort "GCC version #{gccver} already installed.".lightgreen unless "#{gccver}" == "No" || "#{gccver}" == "not" || "#{gccver}" == "gcc:" || "#{gccver}" == "#{version}"
-  end
-
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc7-7.4.0-chromeos-armv7l.tar.xz',
@@ -38,6 +33,11 @@ class Gcc7 < Package
   depends_on 'mpc'
   depends_on 'isl'
   depends_on 'glibc'
+
+  def self.preinstall
+    gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
+    abort "GCC version #{gccver} already installed.".lightgreen unless "#{gccver}" == "No" || "#{gccver}" == "not" || "#{gccver}" == "gcc:" || "#{gccver}" == "#{version}"
+  end
 
   def self.build
     # previous compile issue
