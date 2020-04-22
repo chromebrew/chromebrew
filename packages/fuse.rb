@@ -5,22 +5,14 @@ class Fuse < Package
   homepage 'https://github.com/libfuse/libfuse'
   # The version of libfuse need to be matched with ChromeOS /usr/lib/libfuse.so since we must use
   # /sbin/mount.fuse which is not possible to be overwritten.  If we use different version of
-  # libfuse, it may cause errors.  Chrome OS 59 and 60 use libfuse 2.8.6.
-  version '2.8.6'
-  source_url 'https://github.com/libfuse/libfuse/releases/download/fuse_2_9_4/fuse-2.8.6.tar.gz'
-  source_sha256 '1ec1913e38f09b2a9ec1579e1800805b5e2c747d1dce515e316dbb665ca139d6'
+  # libfuse, it may cause errors.  Chrome OS 81 use libfuse 2.9.8.
+  version '2.9.8'
+  source_url 'https://github.com/libfuse/libfuse/releases/download/fuse-2.9.8/fuse-2.9.8.tar.gz'
+  source_sha256 '5e84f81d8dd527ea74f39b6bc001c874c02bad6871d7a9b0c14efb57430eafe3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-2.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-2.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-2.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-2.8.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9c72f6cfa101f59fc44052f7ccb3b49bf89ab69df47a965ba382b058d96db1ad',
-     armv7l: '9c72f6cfa101f59fc44052f7ccb3b49bf89ab69df47a965ba382b058d96db1ad',
-       i686: 'c2d3b90b071d6b9124dbf9eb464964ed1920d42bdd6dc8ed3734d2b5d6fedcf4',
-     x86_64: 'c7a29efb8445804c05b642e102db77e3b1660e74b89fc200572a03a8a7aa5bd1',
   })
 
   def self.build
