@@ -3,15 +3,15 @@ require 'package'
 class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.44.0'
+  version '1.44.2'
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://github.com/VSCodium/vscodium/releases/download/1.44.0/VSCodium-linux-arm-1.44.0.tar.gz'
-    source_sha256 '314ee25c1c8f86eb1d144b36b9f251de875fe2807c86bf5564a452662c3deac2'
+    source_url 'https://github.com/VSCodium/vscodium/releases/download/1.44.2/VSCodium-linux-arm-1.44.2.tar.gz'
+    source_sha256 'f1030cde63153f67bf301e646cfd43e915499dff1eb4eede1180ded63ee3bfe5'
     @arch = 'arm'
   when 'x86_64'
-    source_url 'https://github.com/VSCodium/vscodium/releases/download/1.44.0/VSCodium-linux-x64-1.44.0.tar.gz'
-    source_sha256 '0f842932e6a4db3510a171a54aac457f96fc4f6a75562b8d2e20fd927f263bdf'
+    source_url 'https://github.com/VSCodium/vscodium/releases/download/1.44.2/VSCodium-linux-x64-1.44.2.tar.gz'
+    source_sha256 '4e856de6ba89a4e9e9c54ff7a1b503602af2aab58d9431ddfd4f2fa182e43090'
     @arch = 'x64'
   end
 
