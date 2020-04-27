@@ -67,11 +67,12 @@ perl_text_unidecode
 perl_unicode_eastasianwidth
 perl_xml_parser
 pkgconfig
+python27
 python3
-re2c
 readline
 ruby
 sed
+setuptools
 slang
 sqlite
 texinfo
