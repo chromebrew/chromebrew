@@ -3,21 +3,13 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.36.0'
-  source_url 'https://raw.githubusercontent.com/rust-lang/rust/1.36.0/RELEASES.md'
-  source_sha256 '62b5a3f4ffaa57660478b3aab8b6f5bf317f56c0383d6319a857d14b578266c4'
+  version '1.43.1'
+  source_url 'https://github.com/rust-lang/rust/archive/1.43.1.tar.gz'
+  source_sha256 'f4347087837a566bef5b9252428bbd92c7e12f31e601868acaa62ec2adb1b1c2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.36.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.36.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.36.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.36.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9b55ca1105496ba207481714886de91c6f58f73cb32574909cd8b6d134250fe7',
-     armv7l: '9b55ca1105496ba207481714886de91c6f58f73cb32574909cd8b6d134250fe7',
-       i686: 'c4c9b73f3524cd0d6eb825349805ac610cb855bc4ccf305fbe6238af5e672de5',
-     x86_64: '925811fd3709aa42d90173d75422f0869e6738ade8fedcf8820ae748f0c5363d',
   })
 
   def self.install
@@ -32,7 +24,7 @@ class Rust < Package
       default_host = ARCH + '-unknown-linux-gnu'
     end
     system 'curl -Ls https://sh.rustup.rs -o rustup.sh'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('rustup.sh') ) == '9bbf4987fc0b46658249c176004271bebc3126530cb2aff347776a9549a48321'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('rustup.sh') ) == '79552216b4ccab5f773a981bc156b38b004a4f94ac5d2b83f8e127020a4d0bfe'
     system "sed -i 's,\$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup.sh"
     FileUtils.mkdir_p(CREW_DEST_HOME)
     FileUtils.mkdir_p(CREW_DEST_PREFIX + '/bin')
