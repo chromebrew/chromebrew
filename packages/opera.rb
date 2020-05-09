@@ -3,27 +3,26 @@ require 'package'
 class Opera < Package
   description "Opera isn't just a browser. It's an awesome browser."
   homepage 'https://www.opera.com/'
-  version '66.0.3515.103'
+  version '68.0.3618.63'
   case ARCH
   when 'x86_64'
     source_url 'file:///dev/null'
     source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+    depends_on 'alien' => :build
+    depends_on 'gtk3'
+    depends_on 'sommelier'
   end
 
   binary_url ({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/opera-66.0.3515.103-chromeos-x86_64.tar.xz',
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/opera-68.0.3618.63-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    x86_64: 'b128d632850931f8c4eb49a532c7350ccdadeb1746fc8ca95c9c1f06eff2cc69',
+    x86_64: '37db703800136f9ae5f356f3e4fa4d6b60b0dfc3bf87f58d0655b3a1d24ea018',
   })
-
-  depends_on 'alien' => :build
-  depends_on 'gtk3'
-  depends_on 'sommelier'
 
   def self.build
     system "wget https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera-stable_#{version}_amd64.deb") ) == '6d561ef2bb8383bf3181d2e51343d94dfd1c71941da21c703d2064b3f424e9a0'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera-stable_#{version}_amd64.deb") ) == 'adcba36cfc627d837ff38b768cf2e47114ecf23cdcf793bde8247dee07018398'
     system "alien -tc opera-stable_#{version}_amd64.deb"
     system "tar xvf opera-stable-#{version}.tgz"
   end
