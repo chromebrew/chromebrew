@@ -3,18 +3,21 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '75.0'
+  version '76.0.1'
   case ARCH
   when 'i686'
-    source_url 'https://archive.mozilla.org/pub/firefox/releases/75.0/linux-i686/en-US/firefox-75.0.tar.bz2'
-    source_sha256 '1ea6efedd36293239a66a91c502ef7b24cccb8fdbde1f72763706f07f99fb057'
+    source_url 'https://archive.mozilla.org/pub/firefox/releases/76.0.1/linux-i686/en-US/firefox-76.0.1.tar.bz2'
+    source_sha256 'f355704f2ccd0bfca2b6de07613262272f37a03b90948e9d6bd5024079819004'
   when 'x86_64'
-    source_url 'https://archive.mozilla.org/pub/firefox/releases/75.0/linux-x86_64/en-US/firefox-75.0.tar.bz2'
-    source_sha256 'c5d9700381c4ad1bde4282735593d5726d9869e3db69ac2e0c24e40597ca4aa6'
+    source_url 'https://archive.mozilla.org/pub/firefox/releases/76.0.1/linux-x86_64/en-US/firefox-76.0.1.tar.bz2'
+    source_sha256 '315faf03a9a06ff561c3d911100739eedeb9f02a7861cbc4613177a072df45ca'
   end
 
-  depends_on 'gtk3'
-  depends_on 'sommelier'
+  case ARCH
+  when 'i686', 'x86_64'
+    depends_on 'gtk3'
+    depends_on 'sommelier'
+  end
 
   def self.build
     system "echo '#!/bin/bash' > firefox.sh"
