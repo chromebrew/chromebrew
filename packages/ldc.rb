@@ -4,6 +4,7 @@ class Ldc < Package                 # The first character of the class name must
   description 'D language compiler using LLVM.'
   homepage 'https://github.com/ldc-developers/ldc'
   version '1.7.0'
+  compatibility 'all'
   source_url 'https://github.com/ldc-developers/ldc/releases/download/v1.7.0/ldc-1.7.0-src.tar.gz'
   source_sha256 '7cd46140ca3e4ca0d52c352e5b694d4d5336898ed4f02c3e18e0eafd69dd18bd'
 

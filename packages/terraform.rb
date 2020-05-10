@@ -4,6 +4,7 @@ class Terraform < Package
   description 'Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.'
   homepage 'https://www.terraform.io/'
   version '0.11.1'
+  compatibility 'all'
   source_url 'https://github.com/hashicorp/terraform/archive/v0.11.1.tar.gz'
   source_sha256 'da804e69e990226ee14dadbf33850c8b074d5e0782d56522b71d62c4c5c82cba'
 

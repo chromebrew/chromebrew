@@ -4,6 +4,7 @@ class Cscope < Package
   description 'Cscope is a developer\'s tool for browsing source code.'
   homepage 'http://cscope.sourceforge.net/'
   version '15.9'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/cscope/cscope/v15.9/cscope-15.9.tar.gz'
   source_sha256 'c5505ae075a871a9cd8d9801859b0ff1c09782075df281c72c23e72115d9f159'
 

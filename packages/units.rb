@@ -4,6 +4,7 @@ class Units < Package
   description 'GNU Units converts quantities expressed in various systems of measurement to their equivalents in other systems of measurement.'
   homepage 'https://www.gnu.org/software/units/units.html'
   version '2.19'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/units/units-2.19.tar.gz'
   source_sha256 '4262136bdfc152b63ff5a9b93a7d80ce18b5e8bebdcffddc932dda769e306556'
 

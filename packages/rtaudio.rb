@@ -4,6 +4,7 @@ class Rtaudio < Package
   description 'RtAudio is a set of C++ classes that provide a common API (Application Programming Interface) for realtime audio input/output'
   homepage 'http://www.music.mcgill.ca/~gary/rtaudio/'
   version '5.1.0'
+  compatibility 'all'
   source_url 'http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.1.0.tar.gz'
   source_sha256 'ff138b2b6ed2b700b04b406be718df213052d4c952190280cf4e2fab4b61fe09'
 

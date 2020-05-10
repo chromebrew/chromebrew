@@ -4,6 +4,7 @@ class Transmission < Package
   description 'A fast, easy, and free BitTorrent client.'
   homepage 'https://transmissionbt.com/'
   version '2.94'
+  compatibility 'all'
   source_url 'https://github.com/transmission/transmission-releases/raw/master/transmission-2.94.tar.xz'
   source_sha256 '35442cc849f91f8df982c3d0d479d650c6ca19310a994eccdaa79a4af3916b7d'
 

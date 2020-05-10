@@ -4,6 +4,7 @@ class Broadway < Package
   description 'Run GTK applications in a browser window.'
   homepage 'https://developer.gnome.org/gtk3/stable/gtk-broadway.html'
   version 'gtk3.22-3'
+  compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 

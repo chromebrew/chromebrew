@@ -4,6 +4,7 @@ class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'https://www.v2ray.com/'
   version 'v4.22.1'
+  compatibility 'all'
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -39,5 +40,4 @@ class V2ray < Package
     puts 'crew remove v2ray'.lightblue
     puts
   end
-
 end

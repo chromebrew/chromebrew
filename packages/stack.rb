@@ -4,12 +4,9 @@ class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/en/stable/README/'
   version '2.1.3'
-
+  compatibility 'all'
   case ARCH
-  when 'aarch64'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-aarch64.tar.gz'
-    source_sha256 '96394b616e29b3bd2479a3712e2c0c375a7cfd748b613f7c6c3186d7ae92977b'
-  when 'armv7l'
+  when 'aarch64', 'armv7l'
     source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-arm.tar.gz'
     source_sha256 '6c8a2100183368d0fe8298bc99260681f10c81838423884be885baaa2e096e78'
   when 'i686'

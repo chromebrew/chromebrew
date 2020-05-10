@@ -4,6 +4,7 @@ class Iptables < Package
   description 'iptables is the userspace command line program used to configure the Linux 2.4.x and later packet filtering ruleset.'
   homepage 'https://www.netfilter.org/projects/iptables/'
   version '1.8.3'
+  compatibility 'all'
   source_url 'https://www.netfilter.org/projects/iptables/files/iptables-1.8.3.tar.bz2'
   source_sha256 'a23cac034181206b4545f4e7e730e76e08b5f3dd78771ba9645a6756de9cdd80'
 

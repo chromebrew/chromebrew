@@ -4,6 +4,7 @@ class Libxfont < Package
   description 'library for the X window system'
   homepage 'https://x.org'
   version '2.0.1'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXfont2-2.0.1.tar.gz'
   source_sha256 '381b6b385a69343df48a082523c856aed9042fbbc8ee0a6342fb502e4321230a'
 

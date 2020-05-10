@@ -4,6 +4,7 @@ class Libconfuse < Package
   description 'Small configuration file parser library for C.'
   homepage 'https://github.com/martinh/libconfuse'
   version '3.2.1'
+  compatibility 'all'
   source_url 'https://github.com/martinh/libconfuse/releases/download/v3.2.1/confuse-3.2.1.tar.xz'
   source_sha256 '23c63272baf2ef4e2cbbafad2cf57de7eb81f006ec347c00b954819824add25e'
 

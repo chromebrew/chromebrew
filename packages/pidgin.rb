@@ -4,6 +4,7 @@ class Pidgin < Package
   description 'Pidgin is a chat program which lets you log in to accounts on multiple chat networks simultaneously.'
   homepage 'http://pidgin.im/'
   version '2.13.0'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/pidgin/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2'
   source_sha256 '2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f'
 

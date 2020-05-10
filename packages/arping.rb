@@ -4,6 +4,7 @@ class Arping < Package
   description 'ARP Ping'
   homepage 'https://github.com/ThomasHabets/arping'
   version '2.21'
+  compatibility 'all'
   source_url 'https://github.com/ThomasHabets/arping/archive/arping-2.21.tar.gz'
   source_sha256 '7bf550571aa1d4a2b00878bb2f6fb857a09d30bf65411c90d62afcd86755bd81'
 

@@ -4,6 +4,7 @@ class Inetutils < Package
   description 'The Inetutils package contains programs for basic networking. Such as dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp, traceroute'
   homepage 'https://www.gnu.org/software/inetutils/'
   version '1.9.4'
+  compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/inetutils/inetutils-1.9.4.tar.xz'
   source_sha256 '849d96f136effdef69548a940e3e0ec0624fc0c81265296987986a0dd36ded37'
 

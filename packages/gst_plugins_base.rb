@@ -4,6 +4,7 @@ class Gst_plugins_base < Package
   description 'An essential, exemplary set of elements for GStreamer'
   homepage 'https://gstreamer.freedesktop.org/modules/gst-plugins-base.html'
   version '1.16.0'
+  compatibility 'all'
   source_url 'https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.16.0.tar.xz'
   source_sha256 '4093aa7b51e28fb24dfd603893fead8d1b7782f088b05ed0f22a21ef176fb5ae'
 

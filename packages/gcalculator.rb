@@ -4,6 +4,7 @@ class Gcalculator < Package
   description 'Calculator for solving mathematical equations'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-calculator'
   version '3.36.0'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator/-/archive/3.36.0/gnome-calculator-3.36.0.tar.bz2'
   source_sha256 '9d82e8b32cd3c41517d9bfc234b88359b1bef8f1bfa02994b622788272846b3a'
 

@@ -4,6 +4,7 @@ class Glproto < Package
   description 'This extension defines a protocol for the client to send 3D rendering commands to the X server.'
   homepage 'https://github.com/freedesktop/glproto'
   version '1.4.17'
+  compatibility 'all'
   source_url 'https://github.com/freedesktop/glproto/archive/glproto-1.4.17.tar.gz'
   source_sha256 'b419c969412ad5c02dd53a0169041766c151ef599bf58b8dad70686fa1001c58'
 

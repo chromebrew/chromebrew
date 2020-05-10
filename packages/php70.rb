@@ -4,6 +4,7 @@ class Php70 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '7.0.33'
+  compatibility 'all'
   source_url 'https://php.net/distributions/php-7.0.33.tar.xz'
   source_sha256 'ab8c5be6e32b1f8d032909dedaaaa4bbb1a209e519abb01a52ce3914f9a13d96'
 

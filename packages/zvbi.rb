@@ -4,6 +4,7 @@ class Zvbi < Package
   description 'The Zapping VBI library, in short ZVBI, provides functions to capture and decode VBI data.'
   homepage 'http://zapping.sourceforge.net/ZVBI/'
   version '0.2.35'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/zapping/zvbi/0.2.35/zvbi-0.2.35.tar.bz2'
   source_sha256 'fc883c34111a487c4a783f91b1b2bb5610d8d8e58dcba80c7ab31e67e4765318'
 

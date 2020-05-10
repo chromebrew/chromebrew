@@ -4,6 +4,7 @@ class Tox < Package
   description 'tox aims to automate and standardize testing in Python.'
   homepage 'https://tox.readthedocs.io/en/latest/'
   version '3.4.0'
+  compatibility 'all'
   source_url 'https://github.com/tox-dev/tox/archive/3.4.0.tar.gz'
   source_sha256 '01171065c1628b5549c370a160979a04fef1de32aa9e39203aaa998057c03d11'
 
@@ -19,8 +20,6 @@ class Tox < Package
        i686: '2ff92015a93f1b8764d8b718fc74a8876090dd3ef3c847a90d400271cbfa2a47',
      x86_64: '42f63319cae5fe4d78c217a5d3326b735b42503cd5a431198aafcece31dbc60f',
   })
-
-  depends_on 'setuptools'
 
   def self.install
     system 'git clone https://github.com/tox-dev/tox.git'

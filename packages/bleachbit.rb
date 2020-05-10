@@ -4,6 +4,7 @@ class Bleachbit < Package
   description 'Clean Your System and Free Disk Space'
   homepage 'https://www.bleachbit.org/'
   version '2.2'
+  compatibility 'all'
   source_url 'https://download.bleachbit.org/bleachbit-2.2.tar.bz2'
   source_sha256 '0318cd1bc83655971c9ffd6bf27f4866bbe57381e92cfbcf8a2a6833075b49fa'
 

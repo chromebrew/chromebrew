@@ -4,6 +4,7 @@ class Graphene < Package
   description 'A thin layer of graphic data types'
   homepage 'https://github.com/ebassi/graphene'
   version '1.8.0'
+  compatibility 'all'
   source_url 'https://github.com/ebassi/graphene/archive/1.8.0.tar.gz'
   source_sha256 '410f2e848952cc5830f39b6f6ea7f9b0a487cfe99dad86eec6f22ccbb3ec635b'
 

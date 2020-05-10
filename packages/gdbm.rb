@@ -4,6 +4,7 @@ class Gdbm < Package
   description 'GNU dbm is a set of database routines that use extensible hashing.'
   homepage 'https://www.gnu.org/software/gdbm/'
   version '1.18.1'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gdbm/gdbm-1.18.1.tar.gz'
   source_sha256 '86e613527e5dba544e73208f42b78b7c022d4fa5a6d5498bf18c8d6f745b91dc'
 

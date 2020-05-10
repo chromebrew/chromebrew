@@ -4,6 +4,7 @@ class Libtasn1 < Package
   description 'Libtasn1 is the ASN.1 library used by GnuTLS, GNU Shishi and some other packages.'
   homepage 'https://www.gnu.org/software/libtasn1/'
   version '4.13'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libtasn1/libtasn1-4.13.tar.gz'
   source_sha256 '7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca'
 

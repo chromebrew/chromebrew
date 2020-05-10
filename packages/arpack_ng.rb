@@ -4,6 +4,7 @@ class Arpack_ng < Package
   description 'Collection of Fortran77 subroutines designed to solve large scale eigenvalue problems.'
   homepage 'https://github.com/opencollab/arpack-ng'
   version '3.7.0'
+  compatibility 'all'
   source_url 'https://github.com/opencollab/arpack-ng/archive/3.7.0.tar.gz'
   source_sha256 '972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6'
 

@@ -4,6 +4,7 @@ class Libssh < Package
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
   version '0.8.1'
+  compatibility 'all'
   source_url 'https://www.libssh.org/files/0.8/libssh-0.8.1.tar.xz'
   source_sha256 'd17f1267b4a5e46c0fbe66d39a3e702b8cefe788928f2eb6e339a18bb00b1924'
 

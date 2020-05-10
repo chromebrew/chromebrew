@@ -4,6 +4,7 @@ class Atool < Package
   description 'A script for managing file archives of various types.'
   homepage 'http://www.nongnu.org/atool/'
   version '0.39'
+  compatibility 'all'
   source_url 'http://download.savannah.gnu.org/releases/atool/atool-0.39.0.tar.gz'
   source_sha256 'aaf60095884abb872e25f8e919a8a63d0dabaeca46faeba87d12812d6efc703b'
 

@@ -4,6 +4,7 @@ class Unzip < Package
   description 'UnZip is an extraction utility for archives compressed in .zip format (also called \'zipfiles\').'
   homepage 'http://www.info-zip.org/UnZip.html'
   version '1.6_1-1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/unzip60.tar.gz'
   source_sha256 '036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
 

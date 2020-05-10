@@ -4,6 +4,7 @@ class Libfs < Package
   description 'X.org library interface to the X Font Server.'
   homepage 'http://www.x.org'
   version '1.0.7-0'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libFS-1.0.7.tar.gz'
   source_sha256 '91bf1c5ce4115b7dbf4e314fdbee54052708e8f7b6a2ec6e82c309bcbe40ef3d'
 

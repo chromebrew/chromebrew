@@ -4,6 +4,7 @@ class Charm < Package
   description 'Charm is a full-featured, cross-platfom blogging client for LiveJournal, Atom (Movable Type, Blogger), and MetaWeb (WordPress).'
   homepage 'http://ljcharm.sourceforge.net/'
   version '1.9.2'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/ljcharm/charm/charm-1.9.2/charm-1.9.2.tar.gz'
   source_sha256 'ae2d536303e770ceb002f69c1e71f6a8532c8d5dd075d2f5c1bf09ad02c3c015'
 

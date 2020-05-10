@@ -4,6 +4,7 @@ class Feh < Package
   description 'feh is an X11 image viewer aimed mostly at console users.'
   homepage 'https://feh.finalrewind.org/'
   version '3.1.1'
+  compatibility 'all'
   source_url 'https://feh.finalrewind.org/feh-3.1.1.tar.bz2'
   source_sha256 '61d0242e3644cf7c5db74e644f0e8a8d9be49b7bd01034265cc1ebb2b3f9c8eb'
 

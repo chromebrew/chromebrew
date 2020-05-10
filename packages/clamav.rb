@@ -4,6 +4,7 @@ class Clamav < Package
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
   version '0.100.0'
+  compatibility 'all'
   source_url 'https://www.clamav.net/downloads/production/clamav-0.100.0.tar.gz'
   source_sha256 'c5c5edaf75a3c53ac0f271148fd6447310bce53f448ec7e6205124a25918f65c'
 

@@ -4,6 +4,7 @@ class Freetds < Package
   description 'FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.'
   homepage 'http://www.freetds.org/'
   version '1.00.109'
+  compatibility 'all'
   source_url 'ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.109.tar.bz2'
   source_sha256 '3e93b2bcdddc7246147398b9bc3b989c6e7ffed54acbce18f4f34b745c8f0034'
 

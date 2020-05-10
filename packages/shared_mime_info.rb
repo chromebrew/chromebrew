@@ -4,6 +4,7 @@ class Shared_mime_info < Package
   description 'The shared-mime-info package contains the core database of common types and the update-mime-database command used to extend it.'
   homepage 'https://freedesktop.org/wiki/Software/shared-mime-info/'
   version '1.10'
+  compatibility 'all'
   source_url 'http://freedesktop.org/~hadess/shared-mime-info-1.10.tar.xz'
   source_sha256 'c625a83b4838befc8cafcd54e3619946515d9e44d63d61c4adf7f5513ddfbebf'
 

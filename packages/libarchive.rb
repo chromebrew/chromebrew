@@ -4,6 +4,7 @@ class Libarchive < Package
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
   version '3.4.2'
+  compatibility 'all'
   source_url 'https://www.libarchive.org/downloads/libarchive-3.4.2.tar.gz'
   source_sha256 'b60d58d12632ecf1e8fad7316dc82c6b9738a35625746b47ecdcaf4aed176176'
 

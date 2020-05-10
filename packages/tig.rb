@@ -4,6 +4,7 @@ class Tig < Package
   description 'Tig is an ncurses-based text-mode interface for git.'
   homepage 'https://jonas.github.io/tig/'
   version '2.4.1'
+  compatibility 'all'
   source_url 'https://github.com/jonas/tig/releases/download/tig-2.4.1/tig-2.4.1.tar.gz'
   source_sha256 'b6b6aa183e571224d0e1fab3ec482542c1a97fa7a85b26352dc31dbafe8558b8'
 
@@ -19,9 +20,6 @@ class Tig < Package
        i686: '70ed711fb304a329f256e5802983110587e9f3e7c6378a12b73d5a0a6d5f5d36',
      x86_64: '16aa53a2087362bfacb86aada31eccd4614b347b7b3202849c0ce790efc0cfcb',
   })
-
-  depends_on 'readline'
-  depends_on 'ncurses'
 
   def self.build
     system './configure', "--prefix=#{CREW_PREFIX}"

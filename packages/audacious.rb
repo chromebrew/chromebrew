@@ -4,6 +4,7 @@ class Audacious < Package
   description 'Audacious is an open source audio player.'
   homepage 'https://audacious-media-player.org/'
   version '3.10.1'
+  compatibility 'all'
   source_url 'https://distfiles.audacious-media-player.org/audacious-3.10.1.tar.bz2'
   source_sha256 '8366e840bb3c9448c2cf0cf9a0800155b0bd7cc212a28ba44990c3d2289c6b93'
 

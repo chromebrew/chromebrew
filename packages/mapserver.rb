@@ -4,6 +4,7 @@ class Mapserver < Package
   description 'MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.'
   homepage 'http://mapserver.org/'
   version '7.0.6'
+  compatibility 'all'
   source_url 'http://download.osgeo.org/mapserver/mapserver-7.0.6.tar.gz'
   source_sha256 'dcbebd62976deef1490b084d8f6a0b2f2a1a25407efb6e058390025375539507'
 

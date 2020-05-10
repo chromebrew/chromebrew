@@ -4,6 +4,7 @@ class Atom < Package
   description 'The hackable text editor'
   homepage 'https://atom.io/'
   version '1.46.0'
+  compatibility 'x86_64'
   case ARCH
   when 'x86_64'
     source_url 'file:///dev/null'

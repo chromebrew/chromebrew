@@ -4,6 +4,7 @@ class Imlib2 < Package
   description 'library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, etc.'
   homepage 'https://sourceforge.net/projects/enlightenment/'
   version '1.5.1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/enlightenment/imlib2-1.5.1.tar.bz2'
   source_sha256 'fa4e57452b8843f4a70f70fd435c746ae2ace813250f8c65f977db5d7914baae'
 

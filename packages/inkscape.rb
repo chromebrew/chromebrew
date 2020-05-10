@@ -4,6 +4,7 @@ class Inkscape < Package
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
   version '0.92.3'
+  compatibility 'all'
   source_url 'https://inkscape.org/gallery/item/12187/inkscape-0.92.3.tar.bz2'
   source_sha256 '063296c05a65d7a92a0f627485b66221487acfc64a24f712eb5237c4bd7816b2'
 

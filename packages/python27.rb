@@ -4,6 +4,7 @@ class Python27 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
   version '2.7.17'
+  compatibility 'all'
   source_url 'https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tar.xz'
   source_sha256 '4d43f033cdbd0aa7b7023c81b0e986fd11e653b5248dac9144d508f11812ba41'
 

@@ -4,6 +4,7 @@ class Xsetroot < Package
   description 'Root window parameter setting utility for X'
   homepage 'https://www.x.org/archive/X11R7.5/doc/man/man1/xsetroot.1.html'
   version '1.1.2'
+  compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/xsetroot-1.1.2.tar.bz2'
   source_sha256 '10c442ba23591fb5470cea477a0aa5f679371f4f879c8387a1d9d05637ae417c'
 
@@ -30,6 +31,6 @@ class Xsetroot < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

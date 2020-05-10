@@ -4,6 +4,7 @@ class Gzip < Package
   description 'GNU Gzip is a popular data compression program originally written by Jean-loup Gailly for the GNU project.'
   homepage 'https://www.gnu.org/software/gzip/'
   version '1.10'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gzip/gzip-1.10.tar.xz'
   source_sha256 '8425ccac99872d544d4310305f915f5ea81e04d0f437ef1a230dc9d1c819d7c0'
 

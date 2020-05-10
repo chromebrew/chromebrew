@@ -4,6 +4,7 @@ class Fakeroot < Package
   description 'Run a command in an environment faking root privileges for file manipulation.'
   homepage 'https://wiki.debian.org/FakeRoot'
   version '1.23'
+  compatibility 'all'
   source_url 'http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.23.orig.tar.xz'
   source_sha256 '009cd6696a931562cf1c212bb57ca441a4a2d45cd32c3190a35c7ae98506f4f6'
 

@@ -4,6 +4,7 @@ class Vidstab < Package
   description 'Transcode video stabilization plugin.'
   homepage 'http://public.hronopik.de/vid.stab/'
   version '1.1.0-1'
+  compatibility 'all'
   source_url 'https://github.com/georgmartius/vid.stab/archive/v1.1.0.tar.gz'
   source_sha256 '14d2a053e56edad4f397be0cb3ef8eb1ec3150404ce99a426c4eb641861dc0bb'
 

@@ -4,6 +4,7 @@ class Gittools < Package
   description 'Tools for analyzing .git repositories'
   homepage 'https://github.com/internetwache/GitTools'
   version '37487'
+  compatibility 'all'
   source_url 'https://github.com/internetwache/GitTools/archive/37487f603d1ba1bc5d7f7c94e9aa4b8e3beec413.tar.gz'
   source_sha256 'f445be1294a2b22dda860c8e9f8a3e891d24150b0dd591d9a0373711bf9f8b7c'
 

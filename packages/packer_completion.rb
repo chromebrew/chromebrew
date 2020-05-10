@@ -4,6 +4,7 @@ class Packer_completion < Package
   description 'Add bash autocompletion for packer.'
   homepage 'https://github.com/mrolli/packer-bash-completion'
   version '1.0.0'
+  compatibility 'all'
   source_url 'https://github.com/mrolli/packer-bash-completion/archive/1.0.0.tar.gz'
   source_sha256 '20ebfacd3f3a60f8dbd09e25b97d3b6e5049cbdf00a2d607fe79eaaef39e1eea'
 

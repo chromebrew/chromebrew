@@ -4,6 +4,7 @@ class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
   version '2.6.4'
+  compatibility 'all'
   source_url 'https://github.com/harfbuzz/harfbuzz/releases/download/2.6.4/harfbuzz-2.6.4.tar.xz'
   source_sha256 '9413b8d96132d699687ef914ebb8c50440efc87b3f775d25856d7ec347c03c12'
 

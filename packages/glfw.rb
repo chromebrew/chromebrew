@@ -4,6 +4,7 @@ class Glfw < Package                 # The first character of the class name mus
   description 'GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.'
   homepage 'http://www.glfw.org/'
   version '3.2.1-1'
+  compatibility 'all'
   source_url 'https://github.com/glfw/glfw/archive/3.2.1.zip'
   source_sha256 '0c623f65a129c424d0fa45591694fde3719ad4a0955d4835182fda71b255446f'   # Use the command "sha256sum"
 
