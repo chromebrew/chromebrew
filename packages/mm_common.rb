@@ -4,6 +4,7 @@ class Mm_common < Package
   description 'Common build files of the C++ bindings'
   homepage 'http://www.gtkmm.org/'
   version '0.9.11'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/mm-common/archive/0.9.11.tar.gz'
   source_sha256 'dbc06ffe4645f13565f13a2d526a14095b21906a4a13db146062052dbd683887'
 

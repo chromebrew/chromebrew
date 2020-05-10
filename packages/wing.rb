@@ -4,10 +4,12 @@ class Wing < Package
   description 'Wing Personal is a free Python IDE designed for students and hobbyists.'
   homepage 'https://wingware.com/'
   version '7.2.1.0'
+  compatibility 'x86_64'
   case ARCH
   when 'x86_64'
     source_url 'https://wingware.com/pub/wing-personal/7.2.1.0/wing-personal-7.2.1.0-linux-x64.tar.bz2'
     source_sha256 'e42a8269a08c8bff6a91d021dcc11de8ab0b007a5a267bdeb870e7369f155064'
+    depends_on 'sommelier'
   end
 
   binary_url ({
@@ -16,9 +18,6 @@ class Wing < Package
   binary_sha256 ({
     x86_64: '8be03ea9bcfa884c4f4a324190ecf6cbefd7b82389e264b6a35e318f30ec7ed3',
   })
-
-  depends_on 'python27'
-  depends_on 'sommelier'
 
   def self.patch
     system "sed -i 's,/usr/bin/python,#{CREW_PREFIX}/bin/python,' wing-install.py"

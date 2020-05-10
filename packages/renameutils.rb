@@ -4,6 +4,7 @@ class Renameutils < Package
   description 'The file renaming utilities (renameutils for short) are a set of programs designed to make renaming of files faster and less cumbersome.'
   homepage 'http://www.nongnu.org/renameutils/'
   version '0.12.0'
+  compatibility 'all'
   source_url 'http://download.savannah.gnu.org/releases/renameutils/renameutils-0.12.0.tar.gz'
   source_sha256 'cbd2f002027ccf5a923135c3f529c6d17fabbca7d85506a394ca37694a9eb4a3'
 

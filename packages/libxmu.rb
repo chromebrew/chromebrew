@@ -4,6 +4,7 @@ class Libxmu < Package
   description 'X.org X interface library for miscellaneous utilities not part of the Xlib standard'
   homepage 'http://www.x.org'
   version '1.1.2'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXmu-1.1.2.tar.gz'
   source_sha256 'e5fd4bacef068f9509b8226017205040e38d3fba8d2de55037200e7176c13dba'
 

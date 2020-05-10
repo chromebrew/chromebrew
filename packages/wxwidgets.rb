@@ -4,6 +4,7 @@ class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
   version '3.0.4'
+  compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2'
   source_sha256 '96157f988d261b7368e5340afa1a0cad943768f35929c22841f62c25b17bf7f0'
 

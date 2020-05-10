@@ -4,15 +4,15 @@ class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
   version '3.5.3.0'
+  compatibility 'x86_64'
   case ARCH
   when 'x86_64'
     source_url 'https://dl.google.com/dl/android/studio/ide-zips/3.5.3.0/android-studio-ide-191.6010548-linux.tar.gz'
     source_sha256 'af630d40f276b0d169c6ac8c7663a989f562b0ac48a1d3f0d720f5b6472355db'
+    depends_on 'jdk8'
+    depends_on 'xdg_base'
+    depends_on 'sommelier'
   end
-
-  depends_on 'jdk8'
-  depends_on 'xdg_base'
-  depends_on 'sommelier'
 
   def self.preinstall
     free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp.to_i

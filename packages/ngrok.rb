@@ -4,6 +4,7 @@ class Ngrok < Package
   description 'ngrok exposes local servers behind NATs and firewalls to the public internet over secure tunnels.'
   homepage 'https://ngrok.com/'
   version '2.3.15'
+  compatibility 'all'
   case ARCH
   when 'aarch64'
     source_url 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip'

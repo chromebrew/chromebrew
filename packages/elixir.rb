@@ -4,6 +4,7 @@ class Elixir < Package
   description 'Elixir is a dynamic, functional language designed for building scalable and maintainable applications.'
   homepage 'https://elixir-lang.org/'
   version '1.9.1-1'
+  compatibility 'all'
   source_url 'https://github.com/elixir-lang/elixir/releases/download/v1.9.1/Precompiled.zip'
   source_sha256 '17e43cb1627a0fa5625bc370cec0964ad6471ef242f1549e316db73c0d94fcc6'
 

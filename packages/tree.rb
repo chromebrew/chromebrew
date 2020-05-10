@@ -4,6 +4,7 @@ class Tree < Package
   description 'Tree is a recursive directory listing command that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.'
   homepage 'http://mama.indstate.edu/users/ice/tree/'
   version '1.8.0'
+  compatibility 'all'
   source_url 'http://mama.indstate.edu/users/ice/tree/src/tree-1.8.0.tgz'
   source_sha256 '715d5d4b434321ce74706d0dd067505bb60c5ea83b5f0b3655dae40aa6f9b7c2'
 

@@ -4,6 +4,7 @@ class Mono < Package
   description 'Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.'
   homepage 'http://www.mono-project.com/'
   version '5.10.1.47'
+  compatibility 'all'
   source_url 'https://download.mono-project.com/sources/mono/mono-5.10.1.47.tar.bz2'
   source_sha256 '90c237b5288f95f6fdab4ace1e36ab64a6369e2c9fddd462d604fd788e2545da'
 

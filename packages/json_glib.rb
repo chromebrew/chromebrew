@@ -4,6 +4,7 @@ class Json_glib < Package
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
   homepage 'https://wiki.gnome.org/Projects/JsonGlib'
   version '1.4.2'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/json-glib/1.4/json-glib-1.4.2.tar.xz'
   source_sha256 '2d7709a44749c7318599a6829322e081915bdc73f5be5045882ed120bb686dc8'
 

@@ -4,6 +4,7 @@ class Libgsf < Package
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
   version '1.14.44'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/libgsf/1.14/libgsf-1.14.44.tar.xz'
   source_sha256 '68bede10037164764992970b4cb57cd6add6986a846d04657af9d5fac774ffde'
 

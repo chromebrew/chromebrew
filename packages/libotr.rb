@@ -4,6 +4,7 @@ class Libotr < Package
   description 'Portable OTR Messaging Library, as well as the toolkit to help you forge messages.'
   homepage 'https://otr.im/'
   version '4.1.1'
+  compatibility 'all'
   source_url 'https://otr.im/dist/libotr/4.1.1/libotr-4.1.1.tar.gz'
   source_sha256 '8b3b182424251067a952fb4e6c7b95a21e644fbb27fbd5f8af2b2ed87ca419f5'
 

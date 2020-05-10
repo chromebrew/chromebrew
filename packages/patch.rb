@@ -4,6 +4,7 @@ class Patch < Package
   description 'Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.'
   homepage 'http://savannah.gnu.org/projects/patch/'
   version '2.7.6'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/patch/patch-2.7.6.tar.xz'
   source_sha256 'ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd'
 

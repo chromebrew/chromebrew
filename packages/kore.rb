@@ -4,6 +4,7 @@ class Kore < Package
   description 'An easy to use, scalable and secure web application framework for writing web APIs in C. '
   homepage 'https://kore.io'
   version '2.0.0'
+  compatibility 'all'
   source_url 'https://github.com/jorisvink/kore/archive/2.0.0-release.tar.gz'
   source_sha256 'e9573a3bd986bc7d91ce3fb8898cb542523d6ed274761281cea72a81963549c1'
 

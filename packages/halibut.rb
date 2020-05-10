@@ -4,6 +4,7 @@ class Halibut < Package
   description 'Halibut is a documentation production system, with elements similar to TeX, debiandoc-sgml, TeXinfo, and others.'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/halibut/'
   version '1.2'
+  compatibility 'all'
   source_url 'https://www.chiark.greenend.org.uk/~sgtatham/halibut/halibut-1.2/halibut-1.2.tar.gz'
   source_sha256 '1aedfb6240f27190c36a390fcac9ce732edbdbaa31c85ee675b994e2b083163f'
 

@@ -4,6 +4,7 @@ class Libpcap < Package
   description 'A portable C/C++ library for network traffic capture.'
   homepage 'http://www.tcpdump.org/'
   version '1.9.1'
+  compatibility 'all'
   source_url 'https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz'
   source_sha256 '635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094'
 

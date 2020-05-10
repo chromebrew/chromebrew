@@ -4,6 +4,7 @@ class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
   version '3.46.3'
+  compatibility 'all'
   source_url 'https://download.filezilla-project.org/client/FileZilla_3.46.3_src.tar.bz2'
   source_sha256 'f1c5bff0a99c39447a5ea9fdfcc16cc408876ef52fa8d5e7bf041ea0717a7395'
 

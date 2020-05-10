@@ -4,6 +4,7 @@ class Peek < Package
   description 'Simple animated GIF screen recorder with an easy to use interface'
   homepage 'https://github.com/phw/peek'
   version '1.3.1'
+  compatibility 'all'
   source_url 'https://github.com/phw/peek/archive/1.3.1.tar.gz'
   source_sha256 '8104b65b041858b7f7f482e1425f8f22d429524340ad341f95f08b08fe4e8602'
 

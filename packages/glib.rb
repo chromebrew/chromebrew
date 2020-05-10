@@ -4,6 +4,7 @@ class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
   version '2.64.1'
+  compatibility 'all'
   source_url 'https://ftp.acc.umu.se/pub/gnome/sources/glib/2.64/glib-2.64.1.tar.xz'
   source_sha256 '17967603bcb44b6dbaac47988d80c29a3d28519210b28157c2bd10997595bbc7'
 

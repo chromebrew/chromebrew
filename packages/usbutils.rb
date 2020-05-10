@@ -4,6 +4,7 @@ class Usbutils < Package
   description 'Tools for examining usb devices'
   homepage 'http://linux-usb.sourceforge.net/'
   version '012'
+  compatibility 'all'
   source_url 'https://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-012.tar.xz'
   source_sha256 '88634625f91840bc1993d2731cc081ee8d3b13d56069a95bdd6ac6ef0e063e46'
 

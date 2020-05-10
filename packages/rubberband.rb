@@ -4,6 +4,7 @@ class Rubberband < Package
   description 'Rubber Band Library is a high quality software library for audio time-stretching and pitch-shifting.'
   homepage 'https://breakfastquay.com/rubberband/'
   version '1.8.2'
+  compatibility 'all'
   source_url 'https://breakfastquay.com/files/releases/rubberband-1.8.2.tar.bz2'
   source_sha256 '86bed06b7115b64441d32ae53634fcc0539a50b9b648ef87443f936782f6c3ca'
 

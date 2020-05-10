@@ -4,6 +4,7 @@ class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
   version '3.24.9'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.9.tar.xz'
   source_sha256 '577eb0270d9adf2eb2aa4b03f9c7873fadb20cf265194d0139570f738493e635'
 

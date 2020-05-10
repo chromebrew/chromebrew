@@ -4,6 +4,7 @@ class Wavpack < Package
   description 'WavPack is a completely open audio compression format providing lossless, high-quality lossy, and a unique hybrid compression mode.'
   homepage 'http://www.wavpack.com/'
   version '5.1.0'
+  compatibility 'all'
   source_url 'https://github.com/dbry/WavPack/archive/5.1.0.tar.gz'
   source_sha256 '1af7eaccbf560271013d4179d98ef6fc681a2bb3603382577eeba73d438785f4'
 

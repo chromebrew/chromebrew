@@ -4,6 +4,7 @@ class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
   version '4.16'
+  compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-4.16.tar.xz'
   source_sha256 '47ffcc0d27d50e497e290b27e8d76dbed4550db14c881f25b771bcaf28354db4'
 

@@ -4,6 +4,7 @@ class Hub < Package
   description 'hub is a command-line wrapper for git that makes you better at GitHub.'
   homepage 'https://hub.github.com/'
   version '2.4.0'
+  compatibility 'all'
   source_url 'https://github.com/github/hub/archive/v2.4.0.tar.gz'
   source_sha256 '894eb112be9aa0464fa2c63f48ae8e573ef9e32a00bad700e27fd09a0cb3be4b'
 

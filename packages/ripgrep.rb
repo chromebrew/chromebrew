@@ -4,6 +4,7 @@ class Ripgrep < Package
   description 'ripgrep recursively searches directories for a regex pattern'
   homepage 'https://github.com/BurntSushi/ripgrep'
   version '12.0.1'
+  compatibility 'all'
   source_url 'https://github.com/BurntSushi/ripgrep/archive/12.0.1.tar.gz'
   source_sha256 '5be34aa77a36ac9d8f1297a0d97069e4653e03f61c67d192cee32944cd2b6329'
 

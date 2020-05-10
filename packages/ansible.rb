@@ -4,6 +4,7 @@ class Ansible < Package
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
   version '2.8.5'
+  compatibility 'all'
   source_url 'https://releases.ansible.com/ansible/ansible-2.8.5.tar.gz'
   source_sha256 '8e9403e755ce8ef27b6066cdd7a4c567aa80ebe2fd90d0ff8efa0a725d246986'
 

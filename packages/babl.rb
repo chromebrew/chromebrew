@@ -4,6 +4,7 @@ class Babl < Package
   description 'babl is a dynamic, any to any, pixel format translation library.'
   homepage 'http://gegl.org/babl/'
   version '0.1.74'
+  compatibility 'all'
   source_url 'https://download.gimp.org/pub/babl/0.1/babl-0.1.74.tar.xz'
   source_sha256 '9a710b6950da37ada94cd9e2046cbce26de12473da32a7b79b7d1432fc66ce0e'
 

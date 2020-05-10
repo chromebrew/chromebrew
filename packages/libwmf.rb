@@ -4,6 +4,7 @@ class Libwmf < Package
   description 'libwmf is a library for reading vector images in Microsoft\'s native Windows Metafile Format (WMF)'
   homepage 'http://wvware.sourceforge.net/libwmf.html'
   version '0.2.8.4'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz'
   source_sha256 '5b345c69220545d003ad52bfd035d5d6f4f075e65204114a9e875e84895a7cf8'
 

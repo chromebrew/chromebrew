@@ -4,6 +4,7 @@ class Byobu < Package
   description 'Byobu is a GPLv3 open source text-based window manager and terminal multiplexer.'
   homepage 'http://byobu.org/'
   version '5.125'
+  compatibility 'all'
   source_url 'https://launchpad.net/byobu/trunk/5.125/+download/byobu_5.125.orig.tar.gz'
   source_sha256 '5022c82705a5d57f1d4e8dcb1819fd04628af2d4b4618b7d44fa27ebfcdda9db'
 

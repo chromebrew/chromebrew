@@ -4,6 +4,7 @@ class Socat < Package
   description 'SOcket CAT is a multipurpose relay \'netcat++\' (extended design, new implementation).'
   homepage 'http://www.dest-unreach.org/socat/'
   version '1.7.3.2'
+  compatibility 'all'
   source_url 'http://www.dest-unreach.org/socat/download/socat-1.7.3.2.tar.gz'
   source_sha256 'ce3efc17e3e544876ebce7cd6c85b3c279fda057b2857fcaaf67b9ab8bdaf034'
 

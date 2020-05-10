@@ -4,6 +4,7 @@ class Scrot < Package
   description 'scrot, an acronym for (SCReen shOT) is a simple, freely distributed and open source command-line screen capture utility'
   homepage 'https://github.com/resurrecting-open-source-projects/scrot'
   version '1.2'
+  compatibility 'all'
   source_url 'https://github.com/resurrecting-open-source-projects/scrot/archive/1.2.tar.gz'
   source_sha256 'e9b41d4cb9b5ab3747d6718c4eb51d5aaf35b6cac23c9ff68af15fc1c9ce187c'
 

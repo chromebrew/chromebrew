@@ -4,6 +4,7 @@ class Libpth < Package
   description 'Pth is a very portable POSIX/ANSI-C based library for Unix platforms'
   homepage 'https://www.gnu.org/software/pth/'
   version '2.0.7'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/pth/pth-2.0.7.tar.gz'
   source_sha256 '72353660c5a2caafd601b20e12e75d865fd88f6cf1a088b306a3963f0bc77232'
 

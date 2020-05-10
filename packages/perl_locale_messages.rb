@@ -4,6 +4,7 @@ class Perl_locale_messages < Package
   description 'Perl Locale::Messages - Gettext Like Message Retrieval.'
   homepage 'https://metacpan.org/pod/Locale::Messages'
   version '1.29'
+  compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.29.tar.gz'
   source_sha256 '78935f10db6d6a080c3160b4ae02c3f6ed07ef6bf624623295a87545e0cbfbb1'
 
