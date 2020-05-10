@@ -17,14 +17,8 @@ class Acpica < Package
   end
 
   def self.install
-    system "install -Dm755 generate/unix/bin/iasl #{CREW_DEST_PREFIX}/bin/iasl"
-    system "install -Dm755 generate/unix/bin/acpixtract #{CREW_DEST_PREFIX}/bin/acpixtract"
-    system "install -Dm755 generate/unix/bin/acpisrc #{CREW_DEST_PREFIX}/bin/acpisrc"
-    system "install -Dm755 generate/unix/bin/acpinames #{CREW_DEST_PREFIX}/bin/acpinames"
-    system "install -Dm755 generate/unix/bin/acpihelp #{CREW_DEST_PREFIX}/bin/acpihelp"
-    system "install -Dm755 generate/unix/bin/acpiexec #{CREW_DEST_PREFIX}/bin/acpiexec"
-    system "install -Dm755 generate/unix/bin/acpiexamples #{CREW_DEST_PREFIX}/bin/acpiexamples"
-    system "install -Dm755 generate/unix/bin/acpidump #{CREW_DEST_PREFIX}/bin/acpidump"
-    system "install -Dm755 generate/unix/bin/acpibin #{CREW_DEST_PREFIX}/bin/acpibin"
+    Dir.chdir 'generate/unix/bin' do
+      system "for f in \$(ls | xargs); do install -Dm755 \$f #{CREW_DEST_PREFIX}/bin/\$f; done"
+    end
   end
 end
