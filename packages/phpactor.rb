@@ -15,18 +15,13 @@ class Phpactor < Package
   depends_on 'composer'
   depends_on 'php73'
 
-  def self.preinstall
-  end
-
-  def self.build
-  end
-
 
   def self.install
     system "composer install"
-    FileUtils.mkdir_p "#{CREW_PREFIX}/share/phpactor"
-    FileUtils.cp_r '.', "#{CREW_PREFIX}/share/phpactor/."
-    FileUtils.ln_s "#{CREW_PREFIX}/share/phpactor/bin/phpactor", "#{CREW_PREFIX}/bin/phpactor"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/phpactor"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/phpactor/."
+    FileUtils.ln_s "#{CREW_PREFIX}/share/phpactor/bin/phpactor", "#{CREW_DEST_PREFIX}/bin/phpactor"
   end
 
 end
