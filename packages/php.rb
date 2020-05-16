@@ -3,7 +3,7 @@ require 'package'
 class Php < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.40-7.4.5'
+  version '5.6.40-7.4.6'
 
   is_fake
 
@@ -15,9 +15,9 @@ class Php < Package
     puts "  5.6 = PHP 5.6.40"
     puts "  7.0 = PHP 7.0.33"
     puts "  7.1 = PHP 7.1.33"
-    puts "  7.2 = PHP 7.2.30"
-    puts "  7.3 = PHP 7.3.17"
-    puts "  7.4 = PHP 7.4.5"
+    puts "  7.2 = PHP 7.2.31"
+    puts "  7.3 = PHP 7.3.18"
+    puts "  7.4 = PHP 7.4.6"
     puts "    0 = Cancel"
 
     while version = STDIN.gets.chomp
