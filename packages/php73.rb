@@ -3,21 +3,21 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.17'
-  source_url 'https://www.php.net/distributions/php-7.3.17.tar.xz'
-  source_sha256 '6a30304c27f7e7a94538f5ffec599f600ee93aedbbecad8aa4f8bec539b10ad8'
+  version '7.3.18'
+  source_url 'https://www.php.net/distributions/php-7.3.18.tar.xz'
+  source_sha256 '7b3e2479a8d6fd7666dcdef8aec50d49c4599cc6ee86e48d41724cfd99cc9e58'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.17-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.17-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.17-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.18-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.18-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '35dfebb5948218ac8e139eb2dff1a8acf8a0addd21b16ca7d0c6ab04ddef5c64',
-     armv7l: '35dfebb5948218ac8e139eb2dff1a8acf8a0addd21b16ca7d0c6ab04ddef5c64',
-       i686: '1286b0b674d2e33673d0ce41ec376528235ed7d4b8a3365a092e1c257c7174e6',
-     x86_64: 'd23ff9a018f71a083dd937006668bcfadf62eb48e597eafdc5985dea45158e5f',
+    aarch64: 'a2a40dab453973996b69b6dac2f40aec89a45e71efa0073c126722dbb803d47a',
+     armv7l: 'a2a40dab453973996b69b6dac2f40aec89a45e71efa0073c126722dbb803d47a',
+       i686: 'ce32894fb6f6af7f6ab52fd98452c80deeb776598a9f40692b2439bf5261142e',
+     x86_64: '3ec6afe7b36dd5153dd39670b36b84a6fc3209842bfa72aae1137e3644e79113',
   })
 
   depends_on 'libgcrypt'
