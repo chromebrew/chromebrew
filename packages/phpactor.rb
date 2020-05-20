@@ -13,8 +13,9 @@ class Phpactor < Package
   })
 
   depends_on 'composer'
-  depends_on 'php73'
-
+  php73 = `crew list installed | grep "php73" 2> /dev/null`.chomp
+  php74 = `crew list installed | grep "php74" 2> /dev/null`.chomp
+  depends_on 'php73' unless "#{php73}" != "" and "#{php74}" != ""
 
   def self.install
     system "composer install"
