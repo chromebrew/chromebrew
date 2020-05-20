@@ -13,15 +13,18 @@ class Phpactor < Package
   })
 
   depends_on 'composer'
-  php73 = `crew list installed | grep "php73" 2> /dev/null`.chomp
-  php74 = `crew list installed | grep "php74" 2> /dev/null`.chomp
-  if "#{php74}" != ""  or not(File.exists? "#{CREW_PREFIX}/bin/php") 
-    depends_on 'php74'
-  elsif "#{php73}" != ""
-    depends_on 'php73'
+  
+  phpMinimalVersion = "7.3"
+  phpDefaultVersion = "7.4"
+  phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
+  if "#{phpver}" == ""
+    depends_on "php"+"#{phpDefaultVersion}".split(".").take(2).join
+  elsif Gem::Version.new("#{phpver}") >= Gem::Version.new("#{phpMinimalVersion}")
+    depends_on "php"+"#{phpver}".split(".").take(2).join
   else
     abort "Minimum version of php73 required".lightred 
   end
+
 
   def self.install
     system "composer install"
