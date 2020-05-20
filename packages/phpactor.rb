@@ -15,7 +15,13 @@ class Phpactor < Package
   depends_on 'composer'
   php73 = `crew list installed | grep "php73" 2> /dev/null`.chomp
   php74 = `crew list installed | grep "php74" 2> /dev/null`.chomp
-  depends_on 'php73' unless "#{php73}" != "" or "#{php74}" != "" or not(File.exists? "#{CREW_PREFIX}/bin/php")
+  if "#{php74}" != ""  or not(File.exists? "#{CREW_PREFIX}/bin/php") 
+    depends_on 'php74'
+  elsif "#{php73}" != ""
+    depends_on 'php73'
+  else
+    abort "Minimum version of php73 required".lightred 
+  end
 
   def self.install
     system "composer install"
