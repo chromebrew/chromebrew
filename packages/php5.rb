@@ -33,7 +33,7 @@ class Php5 < Package
 
   def self.preinstall
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
+    abort "PHP version #{phpver} already installed.".lightred unless "#{phpver}" == ""
   end
 
   def self.patch
