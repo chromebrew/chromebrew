@@ -78,13 +78,13 @@ Please check out the [wiki](https://github.com/skycocker/chromebrew/wiki) to fin
 Usage
 -----
 
-    crew <command> [-k|--keep] <package1> [<package2> ...]
+    chnew <command> [-k|--keep] <package1> [<package2> ...]
 
 Where available commands are:
 
   * build - `build package(s) from source and store the archive and checksum in the current working directory`
   * const - `display constant(s)`
-  * download - `download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install`
+  * download - `download package(s) to CREW_BREW_DIR (/usr/local/tmp/chnew by default), but don't install`
   * files - `display installed files of package(s)`
   * help - `get information about command usage`
   * install - `install package(s) along with dependencies after prompting for confirmation`
@@ -93,15 +93,15 @@ Where available commands are:
   * reinstall - `remove and install package(s)`
   * remove - `remove package(s)`
   * search - `look for package(s)`
-  * update - `update crew itself`
+  * update - `update chnew itself`
   * upgrade - `update all or specific package(s)`
   * whatprovides - `regex search for package(s) that contains file(s)`
 
 Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
 
-Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
+Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/chnew` by default) after installation unless you pass `-k` or `--keep` when running `chnew install`.
 
-    crew install --keep <package1> [<package2> ...]
+    chnew install --keep <package1> [<package2> ...]
 
 License
 -------
@@ -113,3 +113,4 @@ This project including all of its source files is released under the terms of [G
 Our binary packages are hosted on [Bintray](https://bintray.com/chromebrew/chromebrew).
 
 <a href="https://bintray.com/chromebrew/chromebrew" target="_blank"><img src="https://github.com/skycocker/chromebrew/blob/master/images/Powered-by-Bintray_Banner_16-6-16-green.png" alt="Powered by Bintray" /></a>
+
