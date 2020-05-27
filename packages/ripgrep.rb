@@ -3,9 +3,9 @@ require 'package'
 class Ripgrep < Package
   description 'ripgrep recursively searches directories for a regex pattern'
   homepage 'https://github.com/BurntSushi/ripgrep'
-  version '12.0.1'
-  source_url 'https://github.com/BurntSushi/ripgrep/archive/12.0.1.tar.gz'
-  source_sha256 '5be34aa77a36ac9d8f1297a0d97069e4653e03f61c67d192cee32944cd2b6329'
+  version '12.1.0'
+  source_url 'https://github.com/BurntSushi/ripgrep/archive/12.1.0.tar.gz'
+  source_sha256 'ca2d11dd7b7346734d47ad8073468e9c409fbe85842a608d372b8d4fb36be291'
 
   binary_url ({
   })
@@ -16,12 +16,9 @@ class Ripgrep < Package
 
   def self.build
     case ARCH
-    when 'aarch64'
-      system 'rustup toolchain install 1.25.0-aarch64-unknown-linux-gnu'
-      system 'rustup default 1.25.0-aarch64-unknown-linux-gnu'
-    when 'armv7l'
-      system 'rustup toolchain install 1.25.0-armv7-unknown-linux-gnueabihf'
-      system 'rustup default 1.25.0-armv7-unknown-linux-gnueabihf'
+    when 'aarch64', 'armv7l'
+      system 'rustup toolchain install 1.43.1-armv7-unknown-linux-gnueabihf'
+      system 'rustup default 1.43.1-armv7-unknown-linux-gnueabihf'
     else
       system 'rustup toolchain install stable'
       system 'rustup default stable'
