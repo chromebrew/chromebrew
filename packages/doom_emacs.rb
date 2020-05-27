@@ -1,8 +1,8 @@
 require 'package'
 
 class Doom_emacs < Package
-  description 'An extensible, customizable, free/libre text editor - and more.'
-  homepage 'https://www.gnu.org/software/emacs/'
+  description 'An Emacs framework for the stubborn martian hacker'
+  homepage 'https://github.com/hlissner/doom-emacs'
   version '27.0.91'
   source_url 'http://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-27.0.91.tar.gz'
   source_sha256 'ac7b71927dfdfa3b9c034da82e827ee28e7467d58953dafed69e9ce9d700cebd'
