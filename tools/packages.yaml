@@ -29,6 +29,16 @@ url: https://download.savannah.gnu.org/releases/acl
 activity: medium
 ---
 kind: url
+name: acpi
+url: https://sourceforge.net/projects/acpiclient/files/acpiclient/
+activity: none
+---
+kind: url
+name: acpica
+url: https://acpica.org/downloads
+activity: medium
+---
+kind: url
 name: ag
 url: https://github.com/ggreer/the_silver_searcher/releases
 activity: medium
@@ -369,6 +379,11 @@ url: https://github.com/ivmai/bdwgc/releases
 activity: medium
 ---
 kind: url
+name: beav
+url: https://deb.debian.org/debian/pool/main/b/beav/
+activity: none
+---
+kind: url
 name: biew
 url: https://sourceforge.net/projects/beye/files/biew/
 activity: none
@@ -427,6 +442,11 @@ kind: url
 name: brackets
 url: https://github.com/adobe/brackets/releases/
 activity: medium
+---
+kind: url
+name: brave
+url: https://github.com/brave/brave-browser/releases/
+activity: high
 ---
 kind: url
 name: broadway
@@ -517,11 +537,6 @@ kind: url
 name: charm
 url: https://sourceforge.net/projects/ljcharm/files/charm/
 activity: none
----
-kind: url
-name: checkinstall
-url: http://asic-linux.com.mx/~izto/checkinstall/files/source/
-activity: low
 ---
 kind: url
 name: chibi_scheme
@@ -902,6 +917,11 @@ kind: url
 name: dos2unix
 url: https://sourceforge.net/projects/dos2unix/files/dos2unix/
 activity: low
+---
+kind: url
+name: dosbox_x
+url: https://github.com/joncampbell123/dosbox-x/releases
+activity: medium
 ---
 kind: url
 name: doxygen
@@ -1429,6 +1449,11 @@ url: https://github.com/aktau/github-release/releases
 activity: low
 ---
 kind: url
+name: gitkraken
+url: https://www.gitkraken.com/download
+activity: high
+---
+kind: url
 name: gittools
 url: https://github.com/internetwache/GitTools/
 activity: none
@@ -1742,6 +1767,11 @@ kind: url
 name: gzip
 url: https://ftpmirror.gnu.org/gzip/
 activity: low
+---
+kind: url
+name: gzrt
+url: https://www.urbanophile.com/arenn/hacking/gzrt/
+activity: none
 ---
 kind: url
 name: gzsize
@@ -2474,6 +2504,11 @@ url: https://download.gnome.org/sources/libgudev/
 activity: low
 ---
 kind: url
+name: libharu
+url: https://github.com/libharu/libharu/releases
+activity: none
+---
+kind: url
 name: libheif
 url: https://github.com/strukturag/libheif/releases
 activity: low
@@ -2522,6 +2557,11 @@ kind: url
 name: libmad
 url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
+---
+kind: url
+name: libmbedtls
+url: https://tls.mbed.org/download-archive
+activity: high
 ---
 kind: url
 name: libmbim
@@ -3689,6 +3729,11 @@ url: https://github.com/creationix/nvm/releases
 activity: medium
 ---
 kind: url
+name: obs
+url: https://github.com/obsproject/obs-studio/releases
+activity: medium
+---
+kind: url
 name: oc
 url: https://github.com/openshift/origin/releases
 activity: medium
@@ -4064,6 +4109,11 @@ url: http://pkgconfig.freedesktop.org/releases
 activity: none
 ---
 kind: url
+name: pkgsrc
+url: https://github.com/NetBSD/pkgsrc
+activity: high
+---
+kind: url
 name: platformsh
 url: https://github.com/platformsh/platformsh-cli/releases
 activity: high
@@ -4071,6 +4121,11 @@ activity: high
 kind: url
 name: plowshare
 url: https://github.com/mcrapet/plowshare/releases
+activity: low
+---
+kind: url
+name: plplot
+url: https://sourceforge.net/projects/plplot/files/plplot/
 activity: low
 ---
 kind: url
@@ -4237,6 +4292,11 @@ kind: url
 name: qemu
 url: https://download.qemu.org
 activity: medium
+---
+kind: url
+name: qhull
+url: https://github.com/qhull/qhull/releases
+activity: low
 ---
 kind: url
 name: qpdf
