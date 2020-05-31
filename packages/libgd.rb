@@ -3,21 +3,21 @@ require 'package'
 class Libgd < Package
   description 'GD is an open source code library for the dynamic creation of images by programmers.'
   homepage 'https://libgd.github.io/'
-  version '2.2.5'
-  source_url 'https://github.com/libgd/libgd/archive/gd-2.2.5.tar.gz'
-  source_sha256 '199874fdb006de0911819234104ffa84338e98e82fefbac042a58a3f8272a7df'
+  version '2.3.0'
+  source_url 'https://github.com/libgd/libgd/releases/download/gd-2.3.0/libgd-2.3.0.tar.gz'
+  source_sha256 '32590e361a1ea6c93915d2448ab0041792c11bae7b18ee812514fe08b2c6a342'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.2.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgd-2.3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e7f9d0fe0c1ea968a4c18cd47277fc80ac04bd4b53a5bb16fd7ed146d638266d',
-     armv7l: 'e7f9d0fe0c1ea968a4c18cd47277fc80ac04bd4b53a5bb16fd7ed146d638266d',
-       i686: 'f50d37624fa239829735acef46ba4c96972df68dba9cca4df480af38004e9168',
-     x86_64: 'a3497051dc1dfe8cbc764d21097288bf49a491688e4f960ac41d11c1f6d39942',
+    aarch64: 'f08ad9e3eea1b99d9c1528337d1a6fb0e764c35abcc82908acfd8d7635aa5890',
+     armv7l: 'f08ad9e3eea1b99d9c1528337d1a6fb0e764c35abcc82908acfd8d7635aa5890',
+       i686: 'ae9c98c5282c68e9f1e089281669c9e3e8a02c92a4398bb7725b9fe32ee92a65',
+     x86_64: '8e5ade77f722c7e76e8448483d1f6dc9119269173a642368f15fca9322cba14e',
   })
 
   depends_on 'cmake'

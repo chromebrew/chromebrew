@@ -3,21 +3,21 @@ require 'package'
 class Bz2 < Package
   description 'bzip2 is a freely available, patent free, high-quality data compressor.'
   homepage 'http://www.bzip.org/'
-  version '1.0.6-3'
-  source_url 'https://fossies.org/linux/misc/bzip2-1.0.6.tar.xz'
-  source_sha256 '4bbea71ae30a0e5a8ddcee8da750bc978a479ba11e04498d082fa65c2f8c1ad5'
+  version '1.0.8'
+  source_url 'https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz'
+  source_sha256 'ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.6-3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bz2-1.0.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'abfa979b02b0f587c65b7bebb1bc97ba9eda57aec1cb5f3657b6d4f92b90ee65',
-     armv7l: 'abfa979b02b0f587c65b7bebb1bc97ba9eda57aec1cb5f3657b6d4f92b90ee65',
-       i686: '426ec6778bb285ac377f43581a06391ca5a23b533dcfc02cc5c3e03d4239af9f',
-     x86_64: '3ec7418e132350c4989ff2a6856b320d68fbec02913043a6c19f2c025732217f',
+    aarch64: '11fbd7bb0897446cfda34be28db698ecdcbfbcb70e23311fe405edf1aa9abec4',
+     armv7l: '11fbd7bb0897446cfda34be28db698ecdcbfbcb70e23311fe405edf1aa9abec4',
+       i686: '82f0c8f531c14cef34d9b2a7b1c3a8f1783d43fad87a3da19a12da91abf03857',
+     x86_64: '418cff679b9753a9f247a77bf0d61994fc73ee473e6eaed49cd8aa4a159166a7',
   })
 
   def self.build
@@ -45,10 +45,10 @@ class Bz2 < Package
     system "ln -sf bzip2 #{CREW_DEST_PREFIX}/bin/bzcat"
 
     # Install shared library by hand
-    system "install -Dm644 libbz2.so.1.0.6 #{CREW_DEST_LIB_PREFIX}/libbz2.so.1.0.6"
-    system "ln -s libbz2.so.1.0.6 #{CREW_DEST_LIB_PREFIX}/libbz2.so.1.0"
-    system "ln -s libbz2.so.1.0.6 #{CREW_DEST_LIB_PREFIX}/libbz2.so.1"
-    system "ln -s libbz2.so.1.0.6 #{CREW_DEST_LIB_PREFIX}/libbz2.so"
+    system "install -Dm644 libbz2.so.1.0.8 #{CREW_DEST_LIB_PREFIX}/libbz2.so.1.0.8"
+    system "ln -s libbz2.so.1.0.8 #{CREW_DEST_LIB_PREFIX}/libbz2.so.1.0"
+    system "ln -s libbz2.so.1.0.8 #{CREW_DEST_LIB_PREFIX}/libbz2.so.1"
+    system "ln -s libbz2.so.1.0.8 #{CREW_DEST_LIB_PREFIX}/libbz2.so"
 
     # Move manpages
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share")

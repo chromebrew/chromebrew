@@ -3,21 +3,21 @@ require 'package'
 class Eudev < Package
   description 'Gentoo standalone udev'
   homepage 'https://wiki.gentoo.org/wiki/Project:Eudev'
-  version '3.2.7'
-  source_url 'https://github.com/gentoo/eudev/archive/v3.2.7.tar.gz'
-  source_sha256 'ce2fda4dea129bbcf824c947aab23504bcd26911481b47dbaf10646f723083a4'
+  version '3.2.9'
+  source_url 'https://github.com/gentoo/eudev/archive/v3.2.9.tar.gz'
+  source_sha256 '7d281276b480da3935d1acb239748c2c9db01a8043aad7e918ce57a223d8cd24'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/eudev-3.2.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '27be58c328302b73da3627c3415515be0cc592fbabce38bcff5f5da6ccdf1837',
-     armv7l: '27be58c328302b73da3627c3415515be0cc592fbabce38bcff5f5da6ccdf1837',
-       i686: '20a8f053b84bce5fa389a0a1cca5648fd34ab92f06cbe440aecdea2ef4dbc0ab',
-     x86_64: 'ad95ed97aedd8939ed8c06c5773d923de025544d10e41627758a82cd5ee0d1cc',
+    aarch64: '014949c46459aca47f5a28e71c01e55ef075cda8f8a00a35dbb3fec924dbcdeb',
+     armv7l: '014949c46459aca47f5a28e71c01e55ef075cda8f8a00a35dbb3fec924dbcdeb',
+       i686: '9702fec818cda9719b72e98e1421a151665a3e1f6a06d54ba427ce286d6ad065',
+     x86_64: '8bfd928443202d834e78e5eea5b7325dcd47e04126cbfb96f61e6e8a30c61f7d',
   })
 
   depends_on 'libxslt'
@@ -27,9 +27,9 @@ class Eudev < Package
   def self.build
     system 'sed -i s,/usr/bin/xsltproc,xsltproc,g man/make.sh'
     system './autogen.sh'
-    system "./configure",
-           "--enable-hwdb",
-           "--enable-rule-generator",
+    system './configure',
+           '--enable-hwdb',
+           '--enable-rule-generator',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
            "--with-rootprefix=#{CREW_PREFIX}",
@@ -40,6 +40,6 @@ class Eudev < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

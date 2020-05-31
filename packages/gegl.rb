@@ -3,21 +3,21 @@ require 'package'
 class Gegl < Package
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'http://gegl.org/'
-  version '0.4.18'
-  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.18.tar.xz'
-  source_sha256 'c946dfb45beb7fe0fb95b89a25395b449eda2b205ba3e8a1ffb1ef992d9eca64'
+  version '0.4.22'
+  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.22.tar.xz'
+  source_sha256 '1888ec41dfd19fe28273795c2209efc1a542be742691561816683990dc642c61'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.18-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.18-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.18-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ba5f9bed975025247a806682574df74ae7f18ea2d76e52c66a5f852fca8dfb38',
-     armv7l: 'ba5f9bed975025247a806682574df74ae7f18ea2d76e52c66a5f852fca8dfb38',
-       i686: '6d810e8b8bf7ede0936d2027b946645106737108ff29d784d81ba0970e54335f',
-     x86_64: '5b5e18ae18dd26b7e4c315e9e612d5838d7e4189c7830e5b8a286bce4155faa7',
+    aarch64: 'b96e1964c8b842c855ad08a8fa12c1ca1df48745b75c8a7210e4e91e55f1bbd6',
+     armv7l: 'b96e1964c8b842c855ad08a8fa12c1ca1df48745b75c8a7210e4e91e55f1bbd6',
+       i686: 'f47a712d92c1cd4b3293eac5a9cf6d5597162b73f4f7879dea18273b679da4b0',
+     x86_64: '04bb398c76229e19c6936d1d3e5fea733345db9055b517257f6f39b73201e0a6',
   })
 
   depends_on 'asciidoc'
@@ -48,10 +48,6 @@ class Gegl < Package
     system 'ninja -v -C _build'
   end
   
-#  def self.check
-#    system 'ninja -C _build test'
-#  end
-
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end

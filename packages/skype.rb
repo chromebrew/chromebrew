@@ -3,7 +3,7 @@ require 'package'
 class Skype < Package
   description 'Skype is a telecommunications application that specializes in providing video chat and voice calls between devices'
   homepage 'https://www.skype.com/en/'
-  version '8.55.0.141'
+  version '8.56.0.103'
   case ARCH
   when 'x86_64'
     source_url 'file:///dev/null'
@@ -11,10 +11,10 @@ class Skype < Package
   end
 
   binary_url ({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/skype-8.55.0.141-chromeos-x86_64.tar.xz'
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/skype-8.56.0.103-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    x86_64: '2d86530386eee57efd8a83848171d84cfefe9d1f31ebed133c699d25f074eef9'
+    x86_64: '1670a0c74ac08b224034aefbd27f3d03b89529e7168dc84ac095944a1aa93736',
   })
 
   depends_on 'alien' => :build
@@ -23,9 +23,9 @@ class Skype < Package
 
   def self.build
     system 'wget https://go.skype.com/skypeforlinux-64.deb'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('skypeforlinux-64.deb') ) == '3ae2915428c94fccd7b86ee9e347812e0fd8d70c2883bb75865156e16ceecb79'
-    system 'alien -t -c skypeforlinux-64.deb'
-    system 'tar xvf skypeforlinux-8.55.0.141.tgz'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('skypeforlinux-64.deb') ) == '20b1b1b85c76cac9d224dccf5748cf21f954fe1a36c98fd5a7aa13d8448a1e07'
+    system 'alien -tc skypeforlinux-64.deb'
+    system "tar xvf skypeforlinux-#{version}.tgz"
   end
 
   def self.install

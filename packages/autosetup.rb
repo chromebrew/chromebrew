@@ -3,9 +3,9 @@ require 'package'
 class Autosetup < Package
   description 'autosetup is a tool, similar to autoconf, to configure a build system'
   homepage 'http://msteveb.github.io/autosetup/'
-  version '0.6.7'
-  source_url 'https://github.com/msteveb/autosetup/archive/v0.6.7.tar.gz'
-  source_sha256 'a8f852e10374261bf96bd19f03fac667b7332ff6ceef858e5199112d1f2782ce'
+  version '0.6.9'
+  source_url 'https://github.com/msteveb/autosetup/archive/v0.6.9.tar.gz'
+  source_sha256 '4620bf17508e3c00e028d3376350e48372c6945b8ac29e0528c0ece0ac978bce'
 
   binary_url ({
   })

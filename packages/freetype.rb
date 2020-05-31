@@ -3,21 +3,21 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.9.1'
-  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.9.1.tar.gz'
-  source_sha256 'ec391504e55498adceb30baceebd147a6e963f636eb617424bcfc47a169898ce'
+  version '2.10.1'
+  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.xz'
+  source_sha256 '16dbfa488a21fe827dc27eaf708f42f7aa3bb997d745d31a19781628c36ba26f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.9.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b1f0356d2f51ea825abd4d9b3204b9aa5cc3e660451c94222284f71abd73ec7d',
-     armv7l: 'b1f0356d2f51ea825abd4d9b3204b9aa5cc3e660451c94222284f71abd73ec7d',
-       i686: '757f41d0bed65abdcf8a86345a54fe6a3e69a81b9d5fb7a93d78e4612ee0d1f6',
-     x86_64: '2474ed8846e36917b2a1864416affb6de8dde1f8a61b1fc0a587ada3a7592fca',
+    aarch64: '227d47ee4d7b5cb50cbe4be8cec8be7125ebd28d96e649972aa8ba2e947a5fa2',
+     armv7l: '227d47ee4d7b5cb50cbe4be8cec8be7125ebd28d96e649972aa8ba2e947a5fa2',
+       i686: 'de195bd3d95afa2ba8e0ef7bf137d957037d41b356ee482f6b270e6cf0780780',
+     x86_64: 'ccadfa7f9242639930dd5ae0fd9ac1609901ffefb33842c4dbd63f729f853a74',
   })
 
   depends_on 'expat'
@@ -26,16 +26,15 @@ class Freetype < Package
   depends_on 'harfbuzz'
 
   def self.build
-	system "sed -i 's,/usr/include/freetype2,#{CREW_PREFIX}/include/freetype2,g' configure"
-    system "./configure \
-            CFLAGS=\" -fPIC\" \
-            --prefix=#{CREW_PREFIX} \
-            --libdir=#{CREW_LIB_PREFIX} \
-            --with-harfbuzz"
-    system "make"
+    system 'pip3 install docwriter'
+    system "sed -i 's,/usr/include/freetype2,#{CREW_PREFIX}/include/freetype2,g' configure"
+    system "./configure CFLAGS=' -fPIC' #{CREW_OPTIONS} --enable-freetype-config --with-harfbuzz"
+    system 'make'
+    system 'pip3 uninstall docwriter -y'
+    system "pip3 install docwriter --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

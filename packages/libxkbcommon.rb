@@ -3,21 +3,21 @@ require 'package'
 class Libxkbcommon < Package
   description 'Keymap handling library for toolkits and window systems'
   homepage 'http:s//xkbcommon.org'
-  version '0.9.1'
-  source_url 'https://xkbcommon.org/download/libxkbcommon-0.9.1.tar.xz'
-  source_sha256 'd4c6aabf0a5c1fc616f8a6a65c8a818c03773b9a87da9fbc434da5acd1199be0'
+  version '0.10.0'
+  source_url 'https://xkbcommon.org/download/libxkbcommon-0.10.0.tar.xz'
+  source_sha256 '57c3630cdc38fb4734cd57fa349e92244f5ae3862813e533cedbd86721a0b6f2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.9.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.10.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.10.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.10.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-0.10.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '92f859886c013e1e4d707c9ba5f8c24416ef90176f8c890a6bd695dc5c963072',
-     armv7l: '92f859886c013e1e4d707c9ba5f8c24416ef90176f8c890a6bd695dc5c963072',
-       i686: 'e829130c0953c012a04605ec8b81f96efc151834dd39dc76a161c373698615b9',
-     x86_64: 'ebc0379107a731b6077e8a6d6ae5d1a002671f34048c4e31423a69fcf55f6644',
+    aarch64: '342916012da771abfb4d99034b6f07d11d098e53e250976f173a2f516e5b4f99',
+     armv7l: '342916012da771abfb4d99034b6f07d11d098e53e250976f173a2f516e5b4f99',
+       i686: '30520eda6f63031b9909870502cad6ea874e2a2858a7c0e9130c2318a81b1bc4',
+     x86_64: 'b9ca070f8a5cc0a171f4ae6552e56eb4edf80826efb850d514bd523524da9643',
   })
 
   depends_on 'bison'

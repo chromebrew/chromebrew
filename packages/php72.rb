@@ -3,30 +3,25 @@ require 'package'
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.26'
-  source_url 'https://php.net/distributions/php-7.2.26.tar.xz'
-  source_sha256 '1dd3bc875e105f5c9d21fb4dc240670bd2c22037820ff03890f5ab883c88b78d'
-
-  if ARGV[0] == 'install'
-    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless "#{phpver}" == ""
-  end
+  version '7.2.31'
+  source_url 'https://www.php.net/distributions/php-7.2.31.tar.xz'
+  source_sha256 '8beaa634bb878a96af9bc8643811ea46973f5f41ad2bfb6ab4cfd290e5a39806'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.26-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.26-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.26-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.26-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bb0369a0541a9d232a9120e0c8aba4c1e1e1ce3447386ca686674a0fd682dad0',
-     armv7l: 'bb0369a0541a9d232a9120e0c8aba4c1e1e1ce3447386ca686674a0fd682dad0',
-       i686: 'f9b36ad6c59341dbf0e838a1ed5a7f574c8423851d6a7c797ec33b0ae6960af7',
-     x86_64: 'bd1290df89dabfedd37cbf48297491230cc23d43bdb1c222714117b9d3696cfd',
+    aarch64: '19f7b0a248c3a2bcaa1c1aaf6ae3b0183a7cc264e3b8bf8a1f85c5a96fb17caf',
+     armv7l: '19f7b0a248c3a2bcaa1c1aaf6ae3b0183a7cc264e3b8bf8a1f85c5a96fb17caf',
+       i686: '7ccfacca9aab6c072fa2aa5d8018d48a57dbb18ef84c1f2baea7ab93144fc2e8',
+     x86_64: '070717ba5e5f43bbe7e132fd8a5df03148696f941cfda4ccc29f6ef84a4d2d05',
   })
 
   depends_on 'libgcrypt'
-  depends_on 'libwebp'
+  depends_on 'libjpeg_turbo'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'
@@ -36,6 +31,11 @@ class Php72 < Package
   depends_on 're2c'
   depends_on 'tidy'
   depends_on 'unixodbc'
+
+  def self.preinstall
+    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
+    abort "PHP version #{phpver} already installed.".lightred unless "#{phpver}" == ""
+  end
 
   def self.patch
     # Configuration
@@ -59,6 +59,7 @@ class Php72 < Package
   end
 
   def self.build
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--docdir=#{CREW_PREFIX}/doc",
@@ -69,13 +70,7 @@ class Php72 < Package
            "--sbindir=#{CREW_PREFIX}/bin",
            "--with-config-file-path=#{CREW_PREFIX}/etc",
            "--with-libdir=#{ARCH_LIB}",
-           "--with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype",
-           "--with-pcre-regex=#{CREW_LIB_PREFIX}",
-           "--with-jpeg-dir=#{CREW_LIB_PREFIX}",
            "--with-kerberos=#{CREW_LIB_PREFIX}",
-           "--with-png-dir=#{CREW_LIB_PREFIX}",
-           "--with-webp-dir=#{CREW_LIB_PREFIX}",
-           "--with-xpm-dir=#{CREW_LIB_PREFIX}",
            '--enable-exif',
            '--enable-fpm',
            '--enable-ftp',

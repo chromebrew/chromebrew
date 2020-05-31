@@ -20,21 +20,17 @@ class Mp4v2 < Package
      x86_64: '0c65a40cbef64c0d33c3d2e7d2b46ea83d0a14f053de873f0efa62dc79f8841b',
   })
 
-  def self.preinstall
+  def self.patch
     system "curl -Ls -o autoaux/config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
     system "curl -Ls -o autoaux/config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'"
   end
 
   def self.build
-    system "./configure \
-            --prefix=#{CREW_PREFIX} \
-            --libdir=#{CREW_LIB_PREFIX} \
-            --disable-dependency-tracking \
-            --disable-debug"
-    system "make"
+    system "./configure #{CREW_OPTIONS} --disable-dependency-tracking --disable-debug"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

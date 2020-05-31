@@ -3,21 +3,21 @@ require 'package'
 class Libjpeg < Package
   description 'JPEG is a free library for image compression.'
   homepage 'http://www.ijg.org/'
-  version '9.0-c'
-  source_url 'http://www.ijg.org/files/jpegsrc.v9c.tar.gz'
-  source_sha256 '1f3a3f610f57e88ff3f1f9db530c605f3949ee6e78002552e324d493cf086ad4'
+  version '9.0-d'
+  source_url 'https://www.ijg.org/files/jpegsrc.v9d.tar.gz'
+  source_sha256 '99cb50e48a4556bc571dadd27931955ff458aae32f68c4d9c39d624693f69c32'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-c-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-d-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-d-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-d-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libjpeg-9.0-d-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '46d6bf16c5b1cc601bbf7c81de56b8451ccfe15b8660a0f61a5dc882e8f68dec',
-     armv7l: '46d6bf16c5b1cc601bbf7c81de56b8451ccfe15b8660a0f61a5dc882e8f68dec',
-       i686: 'a1afb706120d5396f34536e8613e0a1c81e927d8d0dbc6d910e03563dd1be029',
-     x86_64: 'd60d7686e7f8b5808bc5f96518da10061c507d0f1da59021d2869ff1662432b6',
+    aarch64: '1d0248976ed26493bf18231df01cb42eff81792440cf6cb517679b609804a44e',
+     armv7l: '1d0248976ed26493bf18231df01cb42eff81792440cf6cb517679b609804a44e',
+       i686: '3291fe256b305b2ee3de0fe8d4c455012ba92545ef3bfd155c25d5d86b8977c4',
+     x86_64: '6c166e006cbb47be453f41f1e6e6d452df0a6b0b8f3675e29d290f20bfdcf3ef',
   })
 
   def self.build

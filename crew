@@ -28,7 +28,7 @@ Usage:
   crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew list (available|installed)
   crew postinstall <name> ...
-  crew reinstall [-v|--verbose] <name> ...
+  crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew remove [-v|--verbose] <name> ...
   crew search [-v|--verbose] [<name> ...]
   crew update
@@ -65,7 +65,7 @@ rescue Docopt::Exit => e
     end
     if ARGV[0] != '-h' and ARGV[0] != '--help' then
       puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-      cmds = ["build", "download", "files", "help", "install", "list", "remove", "search", "update", "upgrade", "whatprovides"]
+      cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
       # Looking for similar commands
       if not cmds.include?(ARGV[0]) then
         similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
@@ -134,14 +134,9 @@ def list_available
 end
 
 def list_installed
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-      packageName = File.basename filename, '.rb'
-      if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
-        puts File.basename filename, '.rb' if File.extname(filename) == '.rb'
-      end
-    end
-  end
+  Dir["#{CREW_CONFIG_PATH}/meta/*.directorylist"].sort.map { |f|
+    File.basename(f, ".directorylist")
+  }
 end
 
 def search (pkgName, silent = false)
@@ -209,7 +204,10 @@ def help (pkgName)
     puts "The package(s) must be currently installed."
   when "reinstall"
     puts "Remove and install package(s)."
-    puts "Usage: crew reinstall [-v|--verbose] <package1> [<package2> ...]"
+    puts "Usage: crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]"
+    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
+    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
+    puts "If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary."
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "remove"
     puts "Remove package(s)."
@@ -245,7 +243,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, const, download, files, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
+    puts "Available commands: build, const, download, files, help, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
   end
 end
 
@@ -264,12 +262,15 @@ def const (var)
       'CREW_DEST_DIR',
       'CREW_DEST_HOME',
       'CREW_DEST_LIB_PREFIX',
+      'CREW_DEST_MAN_PREFIX',
       'CREW_DEST_PREFIX',
       'CREW_LIB_PATH',
       'CREW_LIB_PREFIX',
+      'CREW_MAN_PREFIX',
       'CREW_NOT_COMPRESS',
       'CREW_NOT_STRIP',
       'CREW_NPROC',
+      'CREW_OPTIONS',
       'CREW_PREFIX',
       'CREW_VERSION',
       'HOME',
@@ -288,7 +289,7 @@ def files (pkgName)
   if File.exists? "#{filelist}"
     system "sort #{filelist}"
     lines = `wc -l "#{filelist}"`.strip.split(' ')[0].to_i
-    size = `du -ch $(cat #{filelist}) | tail -1 | cut -f 1`
+    size = `cat #{filelist} | xargs -I {} du -b '{}' | awk '{ print; total += $1 }; END { print total }' | numfmt --suffix B --to=si | tail -1`
     puts "Total found: #{lines}".lightgreen
     puts "Disk usage: #{size}".lightgreen
   else
@@ -456,7 +457,7 @@ def unpack (meta)
       puts "Unpacking archive using 'unzip', this may take a while..."
       _verbopt = @opt_verbose ? '-v' : '-qq'
       system "unzip", _verbopt, "-d", "#{extract_dir}", meta[:filename]
-    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz)$/i
+    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
       _verbopt = @opt_verbose ? 'v' : ''
       system "tar", "x#{_verbopt}f", meta[:filename], "-C", "#{extract_dir}"
@@ -492,13 +493,12 @@ def build_and_preconfigure (target_dir)
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts "Rename all *.la files to *.la_tmp".lightblue
     if @opt_verbose then
-      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
+      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv -v {} {}_tmp"
     else
       system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
     end
 
     @pkg.in_build = true
-    @pkg.preinstall
     @pkg.patch
     @pkg.build
     @pkg.in_build = false
@@ -515,10 +515,17 @@ def build_and_preconfigure (target_dir)
     # cannot access '*.la': No such file or directory
     puts "Rename all *.la_tmp files back to *.la".lightblue
     if @opt_verbose then
-      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv -v \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     else
       system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     end
+  end
+end
+
+def pre_install (dest_dir)
+  Dir.chdir dest_dir do
+    puts "Performing pre-install..."
+    @pkg.preinstall
   end
 end
 
@@ -546,17 +553,17 @@ end
 def prepare_package (destdir)
   Dir.chdir destdir do
     # compress manual files
-    compress_doc "#{destdir}#{CREW_PREFIX}/man"
-    compress_doc "#{destdir}#{CREW_PREFIX}/info"
-    compress_doc "#{destdir}#{CREW_PREFIX}/share/man"
-    compress_doc "#{destdir}#{CREW_PREFIX}/share/info"
+    compress_doc "#{CREW_DEST_PREFIX}/man"
+    compress_doc "#{CREW_DEST_PREFIX}/info"
+    compress_doc "#{CREW_DEST_PREFIX}/share/man"
+    compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
-    # create directory list
+    # create file list
     system "find . -type f > ../filelist"
     system "find . -type l >> ../filelist"
     system "cut -c2- ../filelist > filelist"
 
-    # create file list
+    # create directory list
     system "find . -type d > ../dlist"
     system "cut -c2- ../dlist > dlistcut"
     system "tail -n +2 dlistcut > dlist"
@@ -589,7 +596,7 @@ def install_package (pkgdir)
     strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
 
     # Strip binaries but not compressed archives
-    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tgz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tbz' ! -iname '*\.tgz' ! -iname '\*.txz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     if @opt_verbose then
       if Dir.exists? "#{pkgdir}/home" then
@@ -742,6 +749,11 @@ def install
   unless @pkg.is_fake?
     # install filelist, dlist and binary files
     puts "Installing..."
+
+    # perform pre-install process
+    pre_install dest_dir
+
+    # perform install process
     install_package dest_dir
 
     # perform post-install process
@@ -935,7 +947,7 @@ def list_command (args)
   if args['available']
     list_available
   elsif args['installed']
-    list_installed
+    puts list_installed
   end
 end
 
@@ -955,7 +967,8 @@ def reinstall_command (args)
     remove name
     @pkgName = name
     search @pkgName
-    install
+    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    resolve_dependencies_and_install
   end
 end
 

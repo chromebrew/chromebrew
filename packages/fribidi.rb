@@ -3,21 +3,21 @@ require 'package'
 class Fribidi < Package
   description 'GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi).'
   homepage 'https://www.fribidi.org/'
-  version '1.0.1'
-  source_url 'https://github.com/fribidi/fribidi/releases/download/v1.0.1/fribidi-1.0.1.tar.bz2'
-  source_sha256 'c1b182d70590b6cdb5545bab8149de33b966800f27f2d9365c68917ed5a174e4'
+  version '1.0.9'
+  source_url 'https://github.com/fribidi/fribidi/releases/download/v1.0.9/fribidi-1.0.9.tar.xz'
+  source_sha256 'c5e47ea9026fb60da1944da9888b4e0a18854a0e2410bbfe7ad90a054d36e0c7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd2c2acf788e0fc1c3d5330ead4bf2f184c7667847c51fe6e8da183cba9e77748',
-     armv7l: 'd2c2acf788e0fc1c3d5330ead4bf2f184c7667847c51fe6e8da183cba9e77748',
-       i686: '0b0515f77ac80bfd3cf9332b3bc5980e04e3664e9b2f5957f4f12ba48f9dd02a',
-     x86_64: 'f408ec87bb6df6e4d375ba9b90d5d79cbdef7180e6fb69bdf31610756ae31f7d',
+    aarch64: '9726846e950c5aa4ba2587a7e2a4057ca36718e606980fcef18a47990a967e5e',
+     armv7l: '9726846e950c5aa4ba2587a7e2a4057ca36718e606980fcef18a47990a967e5e',
+       i686: 'a19caf91d86c53eb02398361e93ac8afdb042e661a22222d7ca63caab92fe205',
+     x86_64: '17c2146657860ec4664fb7d247383c40859d3adf87fdf3c9f343e989cefcafb3',
   })
 
   def self.build

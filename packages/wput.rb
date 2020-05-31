@@ -22,15 +22,13 @@ class Wput < Package
 
   depends_on 'gnutls'
 
-  def self.preinstall
+  def self.patch
     system "curl -Ls -o config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"
     system "curl -Ls -o config.sub 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'"
   end
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

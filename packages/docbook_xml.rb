@@ -5,21 +5,21 @@ require 'package'
 class Docbook_xml < Package
   description 'document type definitions for verification of XML data files against the DocBook rule set'
   homepage 'http://www.docbook.org'
-  version '4.3-1'
-  source_url 'http://www.docbook.org/xml/4.3/docbook-xml-4.3.zip'
-  source_sha256 '23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464'
+  version '5.1'
+  source_url 'https://docbook.org/xml/5.1/docbook-v5.1-os.zip'
+  source_sha256 'b3f3413654003c1e773360d7fc60ebb8abd0e8c9af8e7d6c4b55f124f34d1e7f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-4.3-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd3008b147f80217982def39e17e04ab9dd32774932322685ae54e5310c70787b',
-     armv7l: 'd3008b147f80217982def39e17e04ab9dd32774932322685ae54e5310c70787b',
-       i686: '2650849c66d4838eb91c679dcd18792583e848a11073b8f60fdc2f5c9f81a7dd',
-     x86_64: '2479e13c8b04434b51a07a96d8500a753042e08ed68dac8b692a267b44372001',
+    aarch64: '9f3ef8937e0b9f16158d66fe97fea777065790f9999e24e4dc295f461efe9b4b',
+     armv7l: '9f3ef8937e0b9f16158d66fe97fea777065790f9999e24e4dc295f461efe9b4b',
+       i686: '118a652d4b192525f2400ec121747b1824292b874941b04da037b4a031107148',
+     x86_64: '19aefa5a44bdd6a0ff77072f2fe45e1b032a06d9a72faeb51ac3cae2d49e992c',
   })
 
   depends_on 'docbook'
@@ -27,7 +27,7 @@ class Docbook_xml < Package
 
   def self.install
 
-    xml_version = '4.3'
+    xml_version = '5.1'
     xml_dtd = "xml-dtd-#{xml_version}"
 
     system "install -v -d -m755 #{CREW_DEST_PREFIX}/share/xml/docbook/#{xml_dtd}"

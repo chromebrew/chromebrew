@@ -3,21 +3,21 @@ require 'package'
 class Xkbcomp < Package
   description 'Compile XKB keyboard'
   homepage 'https://www.x.org'
-  version '1.4.2'
-  source_url 'https://www.x.org/archive/individual/app/xkbcomp-1.4.2.tar.bz2'
-  source_sha256 '6dd8bcb9be7e85bd7294abe261b8c7b0539d2fc93e41b80fb8bd013767ce8424'
+  version '1.4.3'
+  source_url 'https://www.x.org/archive/individual/app/xkbcomp-1.4.3.tar.bz2'
+  source_sha256 '06242c169fc11caf601cac46d781d467748c6a330e15b36dce46520b8ac8d435'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xkbcomp-1.4.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b986448256860bea87fec75ffcb92011b3be9c05f1d64c92a64291b514395900',
-     armv7l: 'b986448256860bea87fec75ffcb92011b3be9c05f1d64c92a64291b514395900',
-       i686: '878d5307237f7b84f1cd2a50ff8bc154c3e3b0f2300cb666fbe609e81ec30ce3',
-     x86_64: '0742f2c242ca42e98a7a938a2bbc891220aea671ea1f60ea8f9390d33abcc479',
+    aarch64: '711ac4cd7c2b87345fc7ba1e7ba9b961c17985e636de5aa628ae6ed0c40eff80',
+     armv7l: '711ac4cd7c2b87345fc7ba1e7ba9b961c17985e636de5aa628ae6ed0c40eff80',
+       i686: '8c7651c05a5d690b06ce52e45b9742109ed9481ac482e27accded5c88bf651de',
+     x86_64: '17f0570519a3a9e8da6cb8443fe33491b70900fcd2a420b2af0ab37ea029f07e',
   })
 
   depends_on 'mesa'

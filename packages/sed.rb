@@ -3,21 +3,21 @@ require 'package'
 class Sed < Package
   description 'sed (stream editor) is a non-interactive command-line text editor.'
   homepage 'https://www.gnu.org/software/sed/'
-  version '4.7'
-  source_url 'https://ftpmirror.gnu.org/sed/sed-4.7.tar.xz'
-  source_sha256 '2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a'
+  version '4.8'
+  source_url 'https://ftpmirror.gnu.org/sed/sed-4.8.tar.xz'
+  source_sha256 'f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sed-4.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5d00ca35b334ed7bc07e7e123418384941ed6a694f4246584c9c921775d61eae',
-     armv7l: '5d00ca35b334ed7bc07e7e123418384941ed6a694f4246584c9c921775d61eae',
-       i686: 'c5c0b651dd7226dbd1ac4e6cf734c825e2ba92ec2efeddfac66bd160304438cf',
-     x86_64: '201529831d7b7d138bf29c6779b1377f2d1cddbf98b4f157c320fec078a11af5',
+    aarch64: '362e263677dcf8ac059f1bbc27b5193f4ce05e52fff1295f8faae559778e5b50',
+     armv7l: '362e263677dcf8ac059f1bbc27b5193f4ce05e52fff1295f8faae559778e5b50',
+       i686: 'eb6cda5a3cd77cf5a155f6593afefe4417ab8a679f197c9706e4ae3ef16b01dc',
+     x86_64: 'f0179b4feee9f5f130fdd6af0718c91de52c606343d1672e2b229c8581b9914f',
   })
 
   depends_on 'acl'
@@ -30,12 +30,12 @@ class Sed < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
     # Remove selinux tests since we're building without it.
     system "sed -i 's,testsuite/inplace-selinux.sh ,,' Makefile"
-    system "make", "check"
+    system 'make', 'check'
   end
 end

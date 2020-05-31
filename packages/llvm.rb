@@ -3,21 +3,21 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi and openmp are included.'
   homepage 'http://llvm.org/'
-  version '9.0.0'
-  source_url 'https://releases.llvm.org/9.0.0/llvm-9.0.0.src.tar.xz'
-  source_sha256 'd6a0565cf21f22e9b4353b2eb92622e8365000a9e90a16b09b56f8157eabfe84'
+  version '10.0.0'
+  source_url 'https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/llvm-10.0.0.src.tar.xz'
+  source_sha256 'df83a44b3a9a71029049ec101fb0077ecbbdf5fe41e395215025779099a98fdf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-9.0.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-10.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c33a3b92a7038784b4ff4231171a17cf556143f9b5d875aee64aeabc0ab458ab',
-     armv7l: 'c33a3b92a7038784b4ff4231171a17cf556143f9b5d875aee64aeabc0ab458ab',
-       i686: '2f93321ba8228faefa513fefdb2ce974874e99a24d7aaf2f672fb99791e0e3db',
-     x86_64: '1dd75d41f5188bd598bbe77a059698cc27627c4bc24602061a90f62f9cf39294',
+    aarch64: '0498ed55a9d3171c3f523c156822508f1b2a2d506ca87d6961427ae5165f6a34',
+     armv7l: '0498ed55a9d3171c3f523c156822508f1b2a2d506ca87d6961427ae5165f6a34',
+       i686: '8c4173f7de0525948ce60fed8d7fef7a3f1cb4632b650e6623eed6b4a0db7cce',
+     x86_64: 'b4751906ff72b3e4e2fcfbf3380bdc17907e3463c86ba059113369c459c7783f',
   })
 
   depends_on 'ld_default' => :build
@@ -29,13 +29,12 @@ class Llvm < Package
   depends_on 'libtirpc'
   depends_on 'swig'
 
-  def self.preinstall
-
+  def self.build
     ############################# Download clang (tools) ###########################################
-    url_clang = "https://releases.llvm.org/#{version}/cfe-#{version}.src.tar.xz"
+    url_clang = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/clang-#{version}.src.tar.xz"
     uri_clang = URI.parse url_clang
     filename_clang = File.basename(uri_clang.path)
-    sha256sum_clang = '7ba81eef7c22ca5da688fdf9d88c20934d2d6b40bfe150ffd338900890aa4610'
+    sha256sum_clang = '885b062b00e903df72631c5f98b9579ed1ed2790f74e5646b4234fa084eacb21'
 
     if File.exist?(filename_clang) && Digest::SHA256.hexdigest( File.read("./#{filename_clang}") ) == sha256sum_clang
       puts "Unpacking clang source code".yellow
@@ -47,16 +46,16 @@ class Llvm < Package
       puts "Clang archive downloaded".lightgreen
     end
 
-    system "tar", "xf", "cfe-#{version}.src.tar.xz", "-C", "tools"
+    system "tar", "xf", "clang-#{version}.src.tar.xz", "-C", "tools"
     puts "Clang source code unpacked".lightgreen
     system "rm -rf tools/clang"  # remove possible existing folder
-    system "mv -v tools/cfe-#{version}.src tools/clang"
+    system "mv -v tools/clang-#{version}.src tools/clang"
 
     ############################# Download lld (tools) ###########################################
-    url_lld = "https://releases.llvm.org/#{version}/lld-#{version}.src.tar.xz"
+    url_lld = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/lld-#{version}.src.tar.xz"
     uri_lld = URI.parse url_lld
     filename_lld = File.basename(uri_lld.path)
-    sha256sum_lld = '31c6748b235d09723fb73fea0c816ed5a3fab0f96b66f8fbc546a0fcc8688f91'
+    sha256sum_lld = 'b9a0d7c576eeef05bc06d6e954938a01c5396cee1d1e985891e0b1cf16e3d708'
 
     if File.exist?(filename_lld) && Digest::SHA256.hexdigest( File.read("./#{filename_lld}") ) == sha256sum_lld
       puts "Unpacking lld source code".yellow
@@ -74,10 +73,10 @@ class Llvm < Package
     system "mv -v tools/lld-#{version}.src tools/lld"
 
     ############################# Download lldb (tools) ###########################################
-    url_lldb = "https://releases.llvm.org/#{version}/lldb-#{version}.src.tar.xz"
+    url_lldb = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/lldb-#{version}.src.tar.xz"
     uri_lldb = URI.parse url_lldb
     filename_lldb = File.basename(uri_lldb.path)
-    sha256sum_lldb = '1e4c2f6a1f153f4b8afa2470d2e99dab493034c1ba8b7ffbbd7600de016d0794'
+    sha256sum_lldb = 'dd1ffcb42ed033f5167089ec4c6ebe84fbca1db4a9eaebf5c614af09d89eb135'
 
     if File.exist?(filename_lldb) && Digest::SHA256.hexdigest( File.read("./#{filename_lldb}") ) == sha256sum_lldb
       puts "Unpacking lldb source code".yellow
@@ -95,10 +94,10 @@ class Llvm < Package
     system "mv -v tools/lldb-#{version}.src tools/lldb"
 
     ############################# Download polly (tools) ###########################################
-    url_polly = "https://releases.llvm.org/#{version}/polly-#{version}.src.tar.xz"
+    url_polly = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/polly-#{version}.src.tar.xz"
     uri_polly = URI.parse url_polly
     filename_polly = File.basename(uri_polly.path)
-    sha256sum_polly = 'a4fa92283de725399323d07f18995911158c1c5838703f37862db815f513d433'
+    sha256sum_polly = '35fba6ed628896fe529be4c10407f1b1c8a7264d40c76bced212180e701b4d97'
 
     if File.exist?(filename_polly) && Digest::SHA256.hexdigest( File.read("./#{filename_polly}") ) == sha256sum_polly
       puts "Unpacking polly source code".yellow
@@ -140,10 +139,10 @@ class Llvm < Package
     #end
 
     ############################# Download compiler-rt (projects) ####################################
-    url_compiler_rt = "https://releases.llvm.org/#{version}/compiler-rt-#{version}.src.tar.xz"
+    url_compiler_rt = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/compiler-rt-#{version}.src.tar.xz"
     uri_compiler_rt = URI.parse url_compiler_rt
     filename_compiler_rt = File.basename(uri_compiler_rt.path)
-    sha256sum_compiler_rt = '56e4cd96dd1d8c346b07b4d6b255f976570c6f2389697347a6c3dcb9e820d10e'
+    sha256sum_compiler_rt = '6a7da64d3a0a7320577b68b9ca4933bdcab676e898b759850e827333c3282c75'
 
     if File.exist?(filename_compiler_rt) && Digest::SHA256.hexdigest( File.read("./#{filename_compiler_rt}") ) == sha256sum_compiler_rt
       puts "Unpacking compiler-rt source code".yellow
@@ -161,10 +160,10 @@ class Llvm < Package
     system "mv -v projects/compiler-rt-#{version}.src projects/compiler-rt"
 
     ############################# Download libcxx (procjects) ####################################
-    url_libcxx = "https://releases.llvm.org/#{version}/libcxx-#{version}.src.tar.xz"
+    url_libcxx = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/libcxx-#{version}.src.tar.xz"
     uri_libcxx = URI.parse url_libcxx
     filename_libcxx = File.basename(uri_libcxx.path)
-    sha256sum_libcxx = '3c4162972b5d3204ba47ac384aa456855a17b5e97422723d4758251acf1ed28c'
+    sha256sum_libcxx = '270f8a3f176f1981b0f6ab8aa556720988872ec2b48ed3b605d0ced8d09156c7'
 
     if File.exist?(filename_libcxx) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxx}") ) == sha256sum_libcxx
       puts "Unpacking libcxx source code".yellow
@@ -182,10 +181,10 @@ class Llvm < Package
     system "mv -v projects/libcxx-#{version}.src projects/libcxx"
 
     ############################# Download libcxxabi (procjects) ####################################
-    url_libcxxabi = "https://releases.llvm.org/#{version}/libcxxabi-#{version}.src.tar.xz"
+    url_libcxxabi = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/libcxxabi-#{version}.src.tar.xz"
     uri_libcxxabi = URI.parse url_libcxxabi
     filename_libcxxabi = File.basename(uri_libcxxabi.path)
-    sha256sum_libcxxabi = '675041783565c906ac2f7f8b2bc5c40f14d871ecfa8ade34855aa18de95530e9'
+    sha256sum_libcxxabi = 'e71bac75a88c9dde455ad3f2a2b449bf745eafd41d2d8432253b2964e0ca14e1'
 
     if File.exist?(filename_libcxxabi) && Digest::SHA256.hexdigest( File.read("./#{filename_libcxxabi}") ) == sha256sum_libcxxabi
       puts "Unpacking libcxxabi source code".yellow
@@ -203,10 +202,10 @@ class Llvm < Package
     system "mv -v projects/libcxxabi-#{version}.src projects/libcxxabi"
 
     ############################# Download libomp (procjects) ####################################
-    url_openmp = "https://releases.llvm.org/#{version}/openmp-#{version}.src.tar.xz"
+    url_openmp = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/openmp-#{version}.src.tar.xz"
     uri_openmp = URI.parse url_openmp
     filename_openmp = File.basename(uri_openmp.path)
-    sha256sum_openmp = '9979eb1133066376cc0be29d1682bc0b0e7fb541075b391061679111ae4d3b5b'
+    sha256sum_openmp = '3b9ff29a45d0509a1e9667a0feb43538ef402ea8cfc7df3758a01f20df08adfa'
 
     if File.exist?(filename_openmp) && Digest::SHA256.hexdigest( File.read("./#{filename_openmp}") ) == sha256sum_openmp
       puts "Unpacking openmp source code".yellow
@@ -224,10 +223,10 @@ class Llvm < Package
     system "mv -v projects/openmp-#{version}.src projects/openmp"
 
     ############################# Download libunwind (procjects) ####################################
-    url_libunwind = "https://releases.llvm.org/#{version}/libunwind-#{version}.src.tar.xz"
+    url_libunwind = "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/libunwind-#{version}.src.tar.xz"
     uri_libunwind = URI.parse url_libunwind
     filename_libunwind = File.basename(uri_libunwind.path)
-    sha256sum_libunwind = '976a8d09e1424fb843210eecec00a506b956e6c31adda3b0d199e945be0d0db2'
+    sha256sum_libunwind = '09dc5ecc4714809ecf62908ae8fe8635ab476880455287036a2730966833c626'
 
     if File.exist?(filename_libunwind) && Digest::SHA256.hexdigest( File.read("./#{filename_libunwind}") ) == sha256sum_libunwind
       puts "Unpacking libunwind source code".yellow
@@ -269,9 +268,6 @@ class Llvm < Package
     puts "Optional packages are ready".lightgreen
     ############################################################
 
-  end
-
-  def self.build
     puts 'Change to GOLD linker.'.orange
     original_default = `ld_default g`.chomp
     Dir.mkdir 'builddir'
@@ -287,12 +283,13 @@ version=\$(gcc -dumpversion)
 cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
 cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
 gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
-clang++ -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
+clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
       case ARCH
       when "x86_64"
         system 'cmake',
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
                "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
+               '-DCMAKE_CXX_FLAGS="-fPIC"',
                '-DCMAKE_BUILD_TYPE=Release',
                '-DLLVM_LIBDIR_SUFFIX=64',
                '-DBUILD_SHARED_LIBS=ON',
@@ -301,11 +298,12 @@ clang++ -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc
                '..'
                # Fix for file INSTALL cannot find ".../lib64/python2.7" error.
                # See http://lists.llvm.org/pipermail/lldb-dev/2015-June/007633.html.
-               system "sed -i '40,43d' tools/lldb/scripts/cmake_install.cmake"
+               system "sed -i '40,43d' tools/lldb/cmake_install.cmake"
       else # armv7l, aarch64 or i686
         system 'cmake',
                "-DCURSES_INCLUDE_PATH='#{CREW_PREFIX}/include/ncursesw'",
                "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
+               '-DCMAKE_CXX_FLAGS="-fPIC"',
                '-DCMAKE_BUILD_TYPE=Release',
                '-DBUILD_SHARED_LIBS=ON',
                '-DLLVM_ENABLE_RTTI=ON',

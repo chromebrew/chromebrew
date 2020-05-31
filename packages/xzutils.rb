@@ -3,21 +3,21 @@ require 'package'
 class Xzutils < Package
   description 'XZ Utils is free general-purpose data compression software with a high compression ratio.'
   homepage 'http://tukaani.org/xz/'
-  version '5.2.3-2'
-  source_url 'http://tukaani.org/xz/xz-5.2.3.tar.gz'
-  source_sha256 '71928b357d0a09a12a4b4c5fafca8c31c19b0e7d3b8ebb19622e96f26dbf28cb'
+  version '5.2.5'
+  source_url 'https://tukaani.org/xz/xz-5.2.5.tar.gz'
+  source_sha256 'f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.3-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.3-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.3-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.3-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xzutils-5.2.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '839ead7097adee016986a9992d8cf8f4c91554ade2b6e111f7d0379c595be366',
-     armv7l: '839ead7097adee016986a9992d8cf8f4c91554ade2b6e111f7d0379c595be366',
-       i686: 'f64e279259996234dc193e8dee3a55738e3b85a299ed952920691942112d4fec',
-     x86_64: '933c51b479c58e277b6354913c76be9a021f2436df86b37e8eb3d328b9cd5fc2',
+    aarch64: 'bbb38dfbc5f7845dde5d4e6c1aa46be40d4d94f5db26b0aa20f1603a14c6e61d',
+     armv7l: 'bbb38dfbc5f7845dde5d4e6c1aa46be40d4d94f5db26b0aa20f1603a14c6e61d',
+       i686: '34db46c8dc58db4c212ba83e36eba17c8852eab14964a6a1d7ab75aaf23be91c',
+     x86_64: '05f0e86514ed8fefa240e0fc2d40cb2b95414d628f670b19a230a3867e992a24',
   })
 
   def self.build

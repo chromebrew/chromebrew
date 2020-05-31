@@ -24,7 +24,7 @@ class Xmlclitools < Package
   depends_on 'pcre'
   depends_on 'libxml2'
 
-  def self.preinstall
+  def self.patch
     system "sed -i 's,/usr/local,#{CREW_DEST_PREFIX},g' Makefile"
     system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' Makefile"
     system "sed -i 's,/usr/lib,#{CREW_LIB_PREFIX},g' Makefile"

@@ -3,29 +3,29 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version '1.16.268'
-  source_url 'https://github.com/aws/aws-cli/archive/1.16.268.tar.gz'
-  source_sha256 'fde1ad4206fe92b27277ba6a21ff3879a0a390ee29679d2b4c9bfb47a7c7ce78'
+  version '1.17.13'
+  source_url 'https://github.com/aws/aws-cli/archive/1.17.13.tar.gz'
+  source_sha256 '4dc8ff38ca67341021f6e2971084d7ed8b87968443e089e758b5531f1381205f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.268-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.268-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.268-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.16.268-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.17.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.17.13-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.17.13-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws-1.17.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1e34d559b3d0025a4ffa8d06d729970b32647b2fd06d7c25fd75afb434718964',
-     armv7l: '1e34d559b3d0025a4ffa8d06d729970b32647b2fd06d7c25fd75afb434718964',
-       i686: 'be9cc4591ee69024f10408adf76ab953022f2a271205489dab98c3d2067f450f',
-     x86_64: '0ec34be425dc06028ab9423d1c0a3914f796e440e76d84e0fe3c436f8bb509d5',
+    aarch64: '8f291de2ee2c9766dedb1b60ef178fdf4fa7554e3a305c6035decbce2661fb91',
+     armv7l: '8f291de2ee2c9766dedb1b60ef178fdf4fa7554e3a305c6035decbce2661fb91',
+       i686: 'ba5feb2b679177d47da9c08b482990be1259559bfa0cc005acfcaf429412a0f0',
+     x86_64: '1a52ec06dd1e471b64e14f27a14a783ca7488bb6016b245b20ef29d4cbceb833',
   })
 
+  depends_on 'setuptools' => :build
   depends_on 'six'
 
   def self.build
-    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore==1.13.4,' requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer==0.2.0,' requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/jmespath.git@develop#egg=jmespath,jmespath==0.9.4,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore==1.14.13,' requirements.txt"
+    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer==0.3.3,' requirements.txt"
   end
 
   def self.install
