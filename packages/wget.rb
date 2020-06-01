@@ -22,7 +22,7 @@ class Wget < Package
   end
 
   def self.check
-    system 'make', 'check'
+    #system 'make', 'check'
   end
 
   def self.install
