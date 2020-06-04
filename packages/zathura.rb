@@ -25,4 +25,9 @@ class Zathura < Package
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 
+  def self.postinstall
+    puts
+    puts "Please add plugins such as : zathura_poppler_pdf".lightblue
+    puts
+  end
 end
