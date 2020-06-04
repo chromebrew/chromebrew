@@ -12,8 +12,6 @@ class Zathura < Package
   binary_sha256 ({
   })
 
-  depends_on 'meson' => :build
-  depends_on 'gettext' => :build
   depends_on 'girara'
 
   def self.build
@@ -28,6 +26,7 @@ class Zathura < Package
   def self.postinstall
     puts
     puts "Please add plugins such as : zathura_poppler_pdf".lightblue
+    puts "Use command like : 'crew install zathura_poppler_pdf'".lightblue
     puts
   end
 end

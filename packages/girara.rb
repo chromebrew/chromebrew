@@ -12,8 +12,6 @@ class Girara < Package
   binary_sha256 ({
   })
 
-  depends_on 'meson' => :build
-  depends_on 'gettext' => :build
   depends_on 'gtk3'
   depends_on 'glib'
 

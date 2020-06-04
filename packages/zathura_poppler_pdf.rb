@@ -12,8 +12,6 @@ class Zathura_poppler_pdf < Package
   binary_sha256 ({
   })
 
-  depends_on 'meson' => :build
-  depends_on 'gettext' => :build
   depends_on 'zathura'
   depends_on 'poppler'
 
