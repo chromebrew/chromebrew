@@ -588,6 +588,9 @@ end
 
 def install_package (pkgdir)
   Dir.chdir pkgdir do
+    # install filelist, dlist and binary files
+    puts "Performing install..."
+
     FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
 
@@ -677,7 +680,7 @@ def resolve_dependencies
 
   i = 0
   last_deps = []
-  last_packages = ["curl", "mandb", "gtk3", "sommelier"]
+  last_packages = ["curl", "ghc", "mandb", "gtk3", "sommelier"]
   @dependencies.each do |dep|
     if last_packages.include?(dep)
       @dependencies.delete_at(i)
@@ -747,9 +750,6 @@ def install
   end
 
   unless @pkg.is_fake?
-    # install filelist, dlist and binary files
-    puts "Installing..."
-
     # perform pre-install process
     pre_install dest_dir
 
