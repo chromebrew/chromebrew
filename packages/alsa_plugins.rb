@@ -4,6 +4,7 @@ class Alsa_plugins < Package
   description 'alsa-plugins contains plugins for various ALSA needs (e.g. Jack).'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
   version '1.2.2'
+  compatibility 'all'
   source_url 'ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.2.2.tar.bz2'
   source_sha256 '1c0f06450c928d711719686c9dbece2d480184f36fab11b8f0534cb7b41e337d'
 

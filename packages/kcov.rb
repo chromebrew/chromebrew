@@ -4,6 +4,7 @@ class Kcov < Package
   description 'Kcov is a code coverage tester for compiled programs, Python scripts and shell scripts.'
   homepage 'http://simonkagstrom.github.io/kcov/'
   version 'v36'
+  compatibility 'all'
   source_url 'https://github.com/SimonKagstrom/kcov/archive/v36.tar.gz'
   source_sha256 '29ccdde3bd44f14e0d7c88d709e1e5ff9b448e735538ae45ee08b73c19a2ea0b'
 

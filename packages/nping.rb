@@ -4,6 +4,7 @@ class Nping < Package
   description 'Nping is part of the nmap suite - a network diagnostics tool`.'
   homepage 'https://nmap.org/nping/'
   version '7.60'
+  compatibility 'all'
   source_url 'https://nmap.org/dist/nmap-7.60.tar.bz2'
   source_sha256 'a8796ecc4fa6c38aad6139d9515dc8113023a82e9d787e5a5fb5fa1b05516f21'
 

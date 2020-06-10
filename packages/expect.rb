@@ -4,6 +4,7 @@ class Expect < Package
   description 'Expect is a tool for automating interactive applications such as telnet, ftp, passwd, fsck, rlogin, tip, etc.'
   homepage 'http://expect.sourceforge.net/'
   version '5.45.4'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/expect/Expect/5.45.4/expect5.45.4.tar.gz'
   source_sha256 '49a7da83b0bdd9f46d04a04deec19c7767bb9a323e40c4781f89caf760b92c34'
 

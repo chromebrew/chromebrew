@@ -4,6 +4,7 @@ class Iptraf < Package
   description 'IPTraf is a console-based network statistics utility for Linux.'
   homepage 'http://iptraf.seul.org/'
   version '3.0.0'
+  compatibility 'all'
   source_url 'ftp://iptraf.seul.org/pub/iptraf/iptraf-3.0.0.tar.gz'
   source_sha256 '9ee433d95573d612539da4b452e6cdcbca6ab6674a88bfbf6eaf12d4902b5163'
 

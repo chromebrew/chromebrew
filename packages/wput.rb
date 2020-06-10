@@ -4,6 +4,7 @@ class Wput < Package
   description 'wput is a command line file upload tool, the opposite of wget'
   homepage 'http://wput.sourceforge.net/'
   version '0.6.2-1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/wput/wput/0.6.2/wput-0.6.2.tgz'
   source_sha256 '229d8bb7d045ca1f54d68de23f1bc8016690dc0027a16586712594fbc7fad8c7'
 

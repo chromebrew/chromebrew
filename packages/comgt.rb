@@ -4,6 +4,7 @@ class Comgt < Package
   description 'Comgt is a command line tool for controlling, configuring and interacting with Option Wireless 3G and 2G (HSDPA, UMTS, EDGE, GPRS, GSM) data devices within the Linux environment.'
   homepage 'https://sourceforge.net/projects/comgt/'
   version '0.32'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/comgt/comgt/0.32/comgt.0.32.tgz'
   source_sha256 '0cedb2a5aa608510da66a99aab74df3db363df495032e57e791a2ff55f1d7913'
 

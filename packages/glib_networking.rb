@@ -4,6 +4,7 @@ class Glib_networking < Package
   description 'Network extensions for GLib'
   homepage 'https://github.com/GNOME/glib-networking'
   version '2.57.3'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/glib-networking/archive/2.57.3.tar.gz'
   source_sha256 '7e45263dc9ece73e6370db4f61ccbac14a37f68d66f487417bc319e5f948a82d'
 

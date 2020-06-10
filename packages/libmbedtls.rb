@@ -4,6 +4,7 @@ class Libmbedtls < Package
   description 'An open source, portable, easy to use, readable and flexible SSL library'
   homepage 'https://tls.mbed.org/'
   version '2.16.5'
+  compatibility 'all'
   source_url 'https://tls.mbed.org/download/mbedtls-2.16.5-apache.tgz'
   source_sha256 '65b4c6cec83e048fd1c675e9a29a394ea30ad0371d37b5742453f74084e7b04d'
 

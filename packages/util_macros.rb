@@ -4,6 +4,7 @@ class Util_macros < Package
   description 'The util-macros package contains the m4 macros used by all of the Xorg packages'
   homepage 'https://www.linuxfromscratch.org/blfs/view/svn/util-macros.html'
   version '1.19.2'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/util/util-macros-1.19.2.tar.bz2'
   source_sha256 'd7e43376ad220411499a79735020f9d145fdc159284867e99467e0d771f3e712'
 
@@ -25,6 +26,6 @@ class Util_macros < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

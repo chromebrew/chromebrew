@@ -4,6 +4,7 @@ class Textract < Package
   description 'Extract text from any document.'
   homepage 'http://textract.readthedocs.io/en/stable/'
   version '1.6.1'
+  compatibility 'all'
   source_url 'https://github.com/deanmalmgren/textract/archive/v1.6.1.tar.gz'
   source_sha256 '9e5e2132db126646031134f7a84efbf10f631a3d0fb56bc8881f67998890dfac'
 

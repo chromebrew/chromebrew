@@ -4,6 +4,7 @@ class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://github.com/qt/qtbase'
   version '5.12.3'
+  compatibility 'all'
   source_url 'http://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qtbase-everywhere-src-5.12.3.tar.xz'
   source_sha256 'fddfd8852ef7503febeed67b876d1425160869ae2b1ae8e10b3fb0fedc5fe701'
 

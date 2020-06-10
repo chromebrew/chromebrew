@@ -4,6 +4,7 @@ class Aircrack_ng < Package
   description 'Key cracker for the 802.11 WEP and WPA-PSK protocols.'
   homepage 'https://www.aircrack-ng.org'
   version '1.2-rc4-3'
+  compatibility 'all'
   source_url 'http://download.aircrack-ng.org/aircrack-ng-1.2-rc4.tar.gz'
   source_sha256 'd93ac16aade5b4d37ab8cdf6ce4b855835096ccf83deb65ffdeff6d666eaff36'
 

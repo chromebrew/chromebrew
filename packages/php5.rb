@@ -4,6 +4,7 @@ class Php5 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '5.6.40-1'
+  compatibility 'all'
   source_url 'http://php.net/distributions/php-5.6.40.tar.xz'
   source_sha256 '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
 

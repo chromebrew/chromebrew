@@ -4,6 +4,7 @@ class Netperf < Package
   description 'Netperf is a benchmark that can be used to measure the performance of many different types of networking. It provides tests for both unidirectional throughput, and end-to-end latency.'
   homepage 'https://hewlettpackard.github.io/netperf/'
   version '2.7.0'
+  compatibility 'all'
   source_url 'https://github.com/HewlettPackard/netperf/archive/netperf-2.7.0.tar.gz'
   source_sha256 '4569bafa4cca3d548eb96a486755af40bd9ceb6ab7c6abd81cc6aa4875007c4e'
 

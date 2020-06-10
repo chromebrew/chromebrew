@@ -4,6 +4,7 @@ class Tcpwrappers < Package
   description 'The tcpwrappers package provides daemon wrapper programs that report the name of the client requesting network services and the requested service.'
   homepage 'http://www.linuxfromscratch.org/blfs/view/6.1/basicnet/tcpwrappers.html'
   version '7.6'
+  compatibility 'all'
   source_url 'ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz'
   source_sha256 '9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d'
 

@@ -4,6 +4,7 @@ require 'package'
 
 class Docbook_xml < Package
   description 'document type definitions for verification of XML data files against the DocBook rule set'
+  compatibility 'all'
   homepage 'http://www.docbook.org'
   version '5.1'
   source_url 'https://docbook.org/xml/5.1/docbook-v5.1-os.zip'

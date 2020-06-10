@@ -4,6 +4,7 @@ class Jam < Package
   description 'Jam is a software build tool that makes building simple things simple and building complicated things manageable.'
   homepage 'https://www.perforce.com/documentation/jam-documentation'
   version '2.6'
+  compatibility 'all'
   source_url 'https://swarm.workshop.perforce.com/downloads/guest/perforce_software/jam/jam-2.6.zip'
   source_sha256 '7c510be24dc9d0912886c4364dc17a013e042408386f6b937e30bd9928d5223c'
 

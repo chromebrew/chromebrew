@@ -4,6 +4,7 @@ class Fetch < Package
   description 'fetch makes it easy to download files, folders, or release assets from a specific commit, branch, or tag of a public or private GitHub repo.'
   homepage 'https://github.com/gruntwork-io/fetch'
   version '0.1.1'
+  compatibility 'all'
   source_url 'https://github.com/gruntwork-io/fetch/archive/v0.1.1.tar.gz'
   source_sha256 'ff3072da89c36a5031a3585ec6898113005185e76f626cf4ca8cffee4b62446d'
 

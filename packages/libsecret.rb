@@ -4,6 +4,7 @@ class Libsecret < Package
   description 'GObject based library for accessing the Secret Service API.'
   homepage 'https://github.com/GNOME/libsecret'
   version '0.18.6'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/libsecret/archive/0.18.6.tar.gz'
   source_sha256 'f4fa198d4e131f94d9ec84cfeaf6c124245e7ff3c0af11c76cc35332bfae5585'
 

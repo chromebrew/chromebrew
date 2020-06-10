@@ -4,6 +4,7 @@ class Cairomm < Package
   description 'The Cairomm package provides a C++ interface to Cairo.'
   homepage 'https://www.cairographics.org/'
   version '1.12.2-1'
+  compatibility 'all'
   source_url 'https://www.cairographics.org/releases/cairomm-1.12.2.tar.gz'
   source_sha256 '45c47fd4d0aa77464a75cdca011143fea3ef795c4753f6e860057da5fb8bd599'
 

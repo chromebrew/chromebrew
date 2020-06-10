@@ -4,6 +4,7 @@ class Aprutil < Package
   description 'APR-util provides a number of helpful abstractions on top of APR.'
   homepage 'http://apr.apache.org/'
   version '1.6.1'
+  compatibility 'all'
   source_url 'https://apache.claz.org/apr/apr-util-1.6.1.tar.bz2'
   source_sha256 'd3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b'
 

@@ -4,8 +4,17 @@ class Aqemu < Package
   description 'AQEMU is a GUI for virtual machines using QEMU as the backend.'
   homepage 'https://sourceforge.net/projects/aqemu/'
   version '0.9.2'
-  source_url 'https://downloads.sourceforge.net/project/aqemu/aqemu/0.9.2/aqemu-0.9.2.tar.gz'
-  source_sha256 'e3d54de00ebdce3754f97f7e0e7cce8cebb588e8ce6bc249401cc909281b08de'
+  compatibility 'aarch64,armv7l,x86_64'
+  case ARCH
+  when 'aarch64', 'armv7l', 'x86_64'
+    source_url 'https://downloads.sourceforge.net/project/aqemu/aqemu/0.9.2/aqemu-0.9.2.tar.gz'
+    source_sha256 'e3d54de00ebdce3754f97f7e0e7cce8cebb588e8ce6bc249401cc909281b08de'
+    depends_on 'libvncserver'
+    depends_on 'qemu'
+    depends_on 'qtbase'
+    depends_on 'xdg_base'
+    depends_on 'sommelier'
+  end
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aqemu-0.9.2-chromeos-armv7l.tar.xz',
@@ -17,12 +26,6 @@ class Aqemu < Package
      armv7l: '9b660d4e0ed420f0a74c5df33e7221042fc87764d9f8e70856a1aa31d14ea71c',
      x86_64: '99544f65ac97a48e5f7e4c25eb26113db8301b25a5bbdd41d2fbfe52a5bdcd26',
   })
-
-  depends_on 'libvncserver'
-  depends_on 'qemu'
-  depends_on 'qtbase'
-  depends_on 'xdg_base'
-  depends_on 'sommelier'
 
   def self.build
     Dir.mkdir 'build'

@@ -4,6 +4,7 @@ class Ffmpeg < Package
   description 'A complete, cross-platform solution to record, convert and stream audio and video.'
   homepage 'https://ffmpeg.org/'
   version '4.2.1'
+  compatibility 'all'
   source_url 'https://ffmpeg.org/releases/ffmpeg-4.2.1.tar.xz'
   source_sha256 'cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4'
 

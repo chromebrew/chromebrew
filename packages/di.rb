@@ -4,6 +4,7 @@ class Di < Package
   description '\'di\' is a disk information utility, displaying everything (and more) that your \'df\' command does.'
   homepage 'http://gentoo.com/di/'
   version '4.47.1'
+  compatibility 'all'
   source_url 'https://gentoo.com/di/di-4.47.1.tar.gz'
   source_sha256 'eea8ad94197d9f11790afea0924d8bf29ec001c32eb6209e81c4e13766a2abad'
 

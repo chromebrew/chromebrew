@@ -4,6 +4,7 @@ class Heroku < Package
   description 'The Heroku Command Line Interface (CLI), formerly known as the Heroku Toolbelt, is a tool for creating and managing Heroku apps from the command line / shell of various operating systems.'
   homepage 'https://devcenter.heroku.com/articles/heroku-cli'
   version '7.33.3'
+  compatibility 'all'
   source_url 'https://github.com/heroku/cli/archive/v7.33.3.tar.gz'
   source_sha256 'ce0efe5df44b59467586c0b4a7b4421ca11bb254829eecc35788bc204e90a627'
 

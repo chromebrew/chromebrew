@@ -4,6 +4,7 @@ class Weechat < Package
   description "WeeChat is a fast, light and extensible chat client."
   homepage 'http://www.weechat.org/'
   version '2.1'
+  compatibility 'all'
   source_url 'https://weechat.org/files/src/weechat-2.1.tar.xz'
   source_sha256 'cda0f81ff8243fd25cca76c8e490e2fdb5b8fbb2554d7aa87cb3b0beda16ed38'
 
@@ -20,24 +21,22 @@ class Weechat < Package
      x86_64: '4ab72526832466b8d2166ab093951fe87cf2e4faba1e29361c95c6bc966210bd',
   })
 
-  depends_on 'icu4c'
   depends_on 'libgcrypt'
   depends_on 'aspell' => :build
   depends_on 'curl' => :build
   depends_on 'lua' => :build
-  depends_on 'python27' => :build
   depends_on 'tcl' => :build
 
   def self.build
-    system "cmake",
+    system 'cmake',
            "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-           "-DCMAKE_BUILD_TYPE=Release",
-           "-DENABLE_MAN=ON",
+           '-DCMAKE_BUILD_TYPE=Release',
+           '-DENABLE_MAN=ON',
            "-DPYTHON_EXECUTABLE=#{CREW_PREFIX}/bin/python2"
     system 'make'
   end
 
   def self.install
-    system "make", "LIBDIR=#{CREW_LIB_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "LIBDIR=#{CREW_LIB_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

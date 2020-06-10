@@ -4,6 +4,7 @@ class Ccl < Package
   description 'Clozure CL is a fast, mature, open source Common Lisp implementation.'
   homepage 'https://ccl.clozure.com'
   version '1.11.5'
+  compatibility 'all'
 
   # arm only has a 32-bit build in the archive
   # intel has both 32-bit and 64-bit in the archive

@@ -4,6 +4,7 @@ class Mpg123 < Package
   description 'Fast console MPEG Audio Player and decoder library'
   homepage 'http://www.mpg123.org/'
   version '1.25.10'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/mpg123/mpg123/1.25.10/mpg123-1.25.10.tar.bz2'
   source_sha256 '6c1337aee2e4bf993299851c70b7db11faec785303cfca3a5c3eb5f329ba7023'
 

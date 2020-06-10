@@ -4,6 +4,7 @@ class Doxygen < Package
   description 'Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.'
   homepage 'http://www.doxygen.nl/'
   version '1.8.17'
+  compatibility 'all'
   source_url 'https://github.com/doxygen/doxygen/archive/Release_1_8_17.tar.gz'
   source_sha256 '1b5d337e4b73ef1357a88cbd06fc4c301f08f279dac0adb99e876f4d72361f4f'
 

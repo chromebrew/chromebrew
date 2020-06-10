@@ -4,6 +4,7 @@ class Re2c < Package
   description 're2c is a free and open-source lexer generator for C and C++.'
   homepage 'http://re2c.org/'
   version '1.3'
+  compatibility 'all'
   source_url 'https://github.com/skvadrik/re2c/releases/download/1.3/re2c-1.3.tar.xz'
   source_sha256 'f37f25ff760e90088e7d03d1232002c2c2672646d5844fdf8e0d51a5cd75a503'
 

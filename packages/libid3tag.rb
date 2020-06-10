@@ -4,6 +4,7 @@ class Libid3tag < Package
   description 'libid3tag is a library for reading and (eventually) writing ID3 tags'
   homepage 'https://www.underbit.com/products/mad/'
   version '0.15.1b'
+  compatibility 'all'
   source_url 'ftp://ftp.mars.org/pub/mpeg/libid3tag-0.15.1b.tar.gz'
   source_sha256 '63da4f6e7997278f8a3fef4c6a372d342f705051d1eeb6a46a86b03610e26151'
 

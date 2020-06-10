@@ -4,6 +4,7 @@ class Libx11 < Package
   description 'C interface to the X window system'
   homepage 'https://x.org'
   version '1.6.9'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libX11-1.6.9.tar.bz2'
   source_sha256 '9cc7e8d000d6193fa5af580d50d689380b8287052270f5bb26a5fb6b58b2bed1'
 

@@ -4,6 +4,7 @@ class Libsoup < Package
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
   version '2.63.90'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libsoup/2.63/libsoup-2.63.90.tar.xz'
   source_sha256 '77b91be36717fb57144aa4222753fa7b7d81312439d59ac47486d675a3deae1a'
 

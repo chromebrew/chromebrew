@@ -4,6 +4,7 @@ class Libcdio < Package
   description 'The GNU Compact Disc Input and Control library (libcdio) contains a library for CD-ROM and CD image access.'
   homepage 'http://www.gnu.org/software/libcdio/'
   version '2.0.0'
+  compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/libcdio/libcdio-2.0.0.tar.gz'
   source_sha256 '1b481b5da009bea31db875805665974e2fc568e2b2afa516f4036733657cf958'
 

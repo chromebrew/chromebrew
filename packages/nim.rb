@@ -4,6 +4,7 @@ class Nim < Package
   description 'Nim is a statically typed compiled systems programming language.'
   homepage 'https://nim-lang.org/'
   version '1.0.4'
+  compatibility 'all'
   source_url 'https://nim-lang.org/download/nim-1.0.4.tar.xz'
   source_sha256 '89841545a14475911bb84616bcd5a1b93a3268e1a6a0089f54642e405eeaaee0'
 

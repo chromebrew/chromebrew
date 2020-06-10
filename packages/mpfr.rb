@@ -4,6 +4,7 @@ class Mpfr < Package
   description 'The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.'
   homepage 'http://www.mpfr.org/'
   version '4.0.1'
+  compatibility 'all'
   source_url 'http://www.mpfr.org/mpfr-current/mpfr-4.0.1.tar.xz'
   source_sha256 '67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e'
 

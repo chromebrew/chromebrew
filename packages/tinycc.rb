@@ -4,6 +4,7 @@ class Tinycc < Package
   description 'TinyCC (aka TCC) is a small but hyper fast C compiler.'
   homepage 'https://bellard.org/tcc/'
   version '0.9.27'
+  compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/tinycc/tcc-0.9.27.tar.bz2'
   source_sha256 'de23af78fca90ce32dff2dd45b3432b2334740bb9bb7b05bf60fdbfc396ceb9c'
 

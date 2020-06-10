@@ -4,6 +4,7 @@ class Less < Package
   description 'GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.'
   homepage 'https://www.gnu.org/software/less/'
   version '530'
+  compatibility 'all'
   source_url 'http://www.greenwoodsoftware.com/less/less-530.tar.gz'
   source_sha256 '503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2'
 

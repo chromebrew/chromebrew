@@ -4,6 +4,7 @@ class Mp4v2 < Package
   description 'MP4v2 Library: This library provides functions to read, create, and modify mp4 files'
   homepage 'https://code.google.com/archive/p/mp4v2/'
   version '2.0.0'
+  compatibility 'all'
   source_url 'https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2'
   source_sha256 '0319b9a60b667cf10ee0ec7505eb7bdc0a2e21ca7a93db96ec5bd758e3428338'
 

@@ -4,6 +4,7 @@ class Mandb < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'http://man-db.nongnu.org/'
   version '2.9.0'
+  compatibility 'all'
   source_url 'http://download.savannah.gnu.org/releases/man-db/man-db-2.9.0.tar.xz'
   source_sha256 '5d4aacd9e8876d6a3203a889860c3524c293c38f04111a3350deab8a6cd3e261'
 

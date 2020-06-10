@@ -4,6 +4,7 @@ class Libvncserver < Package
   description 'LibVNCServer/LibVNCClient are cross-platform C libraries that allow you to easily implement VNC server or client functionality in your program.'
   homepage 'https://github.com/LibVNC/libvncserver'
   version '0.9.12'
+  compatibility 'all'
   source_url 'https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.12.tar.gz'
   source_sha256 '33cbbb4e15bb390f723c311b323cef4a43bcf781984f92d92adda3243a116136'
 

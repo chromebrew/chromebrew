@@ -4,6 +4,7 @@ class Memcached < Package
   description 'Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.'
   homepage 'https://memcached.org/'
   version '1.5.16'
+  compatibility 'all'
   source_url 'https://memcached.org/files/memcached-1.5.16.tar.gz'
   source_sha256 '45a22c890dc1edb27db567fb4c9c25b91bfd578477c08c5fb10dca93cc62cc5a'
 

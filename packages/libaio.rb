@@ -4,6 +4,7 @@ class Libaio < Package
   description 'Linux-native asynchronous I/O access library'
   homepage 'https://pagure.io/libaio'
   version '0.3.110-2'
+  compatibility 'all'
   source_url 'http://libaio.sourcearchive.com/downloads/0.3.110-2/libaio_0.3.110.orig.tar.gz'
   source_sha256 'e019028e631725729376250e32b473012f7cb68e1f7275bfc1bbcdd0f8745f7e'
 

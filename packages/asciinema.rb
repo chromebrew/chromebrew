@@ -4,6 +4,7 @@ class Asciinema < Package
   description 'Terminal session recorder'
   homepage 'https://asciinema.org/'
   version '2.0.2'
+  compatibility 'all'
   source_url 'https://github.com/asciinema/asciinema/archive/v2.0.2.tar.gz'
   source_sha256 '2578a1b5611e5375771ef6582a6533ef8d40cdbed1ba1c87786fd23af625ab68'
 
