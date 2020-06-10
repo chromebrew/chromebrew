@@ -4,6 +4,7 @@ class Desktop_file_utilities < Package
   description 'contains a few command line utilities for working with desktop entries'
   homepage 'https://www.freedesktop.org/wiki/Software/desktop-file-utils/'
   version '0.23'
+  compatibility 'all'
   source_url 'https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.23.tar.xz'
   source_sha256 '6c094031bdec46c9f621708f919084e1cb5294e2c5b1e4c883b3e70cb8903385'
 

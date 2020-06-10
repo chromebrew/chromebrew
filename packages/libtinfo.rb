@@ -4,6 +4,7 @@ class Libtinfo < Package
   description 'Missing ncurses library reference.'
   homepage 'https://www.gnu.org/software/ncurses/'
   version '0.22-1'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/karthas/release/0.22/libtinfo.so.5'
   source_sha256 'e503d6c9fd549bbcac64645d3e4491401f906bd7f10d36bc32390e058066a520'
 

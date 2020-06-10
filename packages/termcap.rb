@@ -4,6 +4,7 @@ class Termcap < Package
   description 'A library for sending terminal control codes.'
   homepage 'https://www.gnu.org/software/termutils/'
   version '1.3.1-1'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/termcap/termcap-1.3.1.tar.gz'
   source_sha256 '91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100'
 

@@ -4,6 +4,7 @@ class Pulseaudio < Package
   description 'PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for your sound applications.'
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
   version '13.0-1'
+  compatibility 'all'
   source_url 'https://freedesktop.org/software/pulseaudio/releases/pulseaudio-13.0.tar.xz'
   source_sha256 '961b23ca1acfd28f2bc87414c27bb40e12436efcf2158d29721b1e89f3f28057'
 

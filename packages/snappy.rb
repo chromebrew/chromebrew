@@ -4,6 +4,7 @@ class Snappy < Package
   description 'Snappy, a fast compressor/decompressor.'
   homepage 'https://github.com/google/snappy'
   version '1.1.7'
+  compatibility 'all'
   source_url 'https://github.com/google/snappy/archive/1.1.7.tar.gz'
   source_sha256 '3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4'
 

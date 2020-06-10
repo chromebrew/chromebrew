@@ -4,6 +4,7 @@ class Cracklib < Package
   description 'The CrackLib package contains a library used to enforce strong passwords by comparing user selected passwords to words in chosen word lists.'
   homepage 'https://github.com/cracklib/cracklib'
   version '2.9.7'
+  compatibility 'all'
   source_url 'https://github.com/cracklib/cracklib/archive/v2.9.7.tar.gz'
   source_sha256 'ff4e6c3f86494c93719f5e4186e2c3ea9e265f41972ec21f7b87852aced704e6'
 

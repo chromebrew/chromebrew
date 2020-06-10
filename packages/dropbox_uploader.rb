@@ -4,6 +4,7 @@ class Dropbox_uploader < Package
   description 'Dropbox Uploader is a BASH script which can be used to upload, download, list or delete files from Dropbox, an online file sharing, synchronization and backup service.'
   homepage 'https://github.com/andreafabrizi/Dropbox-Uploader'
   version '1.0'
+  compatibility 'all'
   source_url 'https://github.com/andreafabrizi/Dropbox-Uploader/archive/1.0.tar.gz'
   source_sha256 '8c9be8bd38fb3b0f0b4d1a863132ad38c8299ac62ecfbd1e818addf32b48d84c'
 

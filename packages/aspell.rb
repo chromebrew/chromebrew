@@ -4,6 +4,7 @@ class Aspell < Package
   description 'GNU Aspell is a Free and Open Source spell checker designed to eventually replace Ispell.'
   homepage 'http://aspell.net/'
   version '0.60.8'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/aspell/aspell-0.60.8.tar.gz'
   source_sha256 'f9b77e515334a751b2e60daab5db23499e26c9209f5e7b7443b05235ad0226f2'
 

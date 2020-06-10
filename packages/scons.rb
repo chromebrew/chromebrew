@@ -4,6 +4,7 @@ class Scons < Package
   description 'SCons is an Open Source software construction tool that is, a next-generation build tool.'
   homepage 'http://scons.org/'
   version '3.0.5'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/scons/scons-3.0.5.tar.gz'
   source_sha256 'df676f23dc6d4bfa384fc389d95dcd21ab907e6349d4c848958ba4befb73c73e'
 

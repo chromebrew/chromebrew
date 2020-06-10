@@ -4,6 +4,7 @@ class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi and openmp are included.'
   homepage 'http://llvm.org/'
   version '10.0.0'
+  compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/llvm-10.0.0.src.tar.xz'
   source_sha256 'df83a44b3a9a71029049ec101fb0077ecbbdf5fe41e395215025779099a98fdf'
 

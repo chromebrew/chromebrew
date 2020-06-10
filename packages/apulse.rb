@@ -4,6 +4,7 @@ class Apulse < Package
   description 'PulseAudio emulation for ALSA'
   homepage 'https://github.com/i-rinat/apulse'
   version '0.1.12'
+  compatibility 'all'
   source_url 'https://github.com/i-rinat/apulse/archive/v0.1.12.tar.gz'
   source_sha256 'cfcadfe971abd785ed3ca24e576fcbaade185525c1eda76daf32dbf298e52892'
 

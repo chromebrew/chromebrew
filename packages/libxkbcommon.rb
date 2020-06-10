@@ -4,6 +4,7 @@ class Libxkbcommon < Package
   description 'Keymap handling library for toolkits and window systems'
   homepage 'http:s//xkbcommon.org'
   version '0.10.0'
+  compatibility 'all'
   source_url 'https://xkbcommon.org/download/libxkbcommon-0.10.0.tar.xz'
   source_sha256 '57c3630cdc38fb4734cd57fa349e92244f5ae3862813e533cedbd86721a0b6f2'
 

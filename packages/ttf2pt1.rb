@@ -4,6 +4,7 @@ class Ttf2pt1 < Package
   description 'Converter of various scalable font formats (most notably TTF) and of the bitmapped BDF format into PostScript Type 1 fonts and metrics (.pfa, .pfb, .afm).'
   homepage 'http://ttf2pt1.sourceforge.net/'
   version '3.4.4'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/ttf2pt1/ttf2pt1/3.4.4/ttf2pt1-3.4.4.tgz'
   source_sha256 'ae926288be910073883b5c8a3b8fc168fde52b91199fdf13e92d72328945e1d0'
 

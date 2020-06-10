@@ -4,6 +4,7 @@ class Shmux < Package
   description 'shell multiplexor'
   homepage 'https://github.com/shmux/shmux'
   version '1.0.2'
+  compatibility 'all'
   source_url 'https://github.com/shmux/shmux/archive/v1.0.2.tar.gz'
   source_sha256 '4b84dc3e0d72d054ed4730d130a509f43441fb61561c11a444d6ee65cbff9c04'
 

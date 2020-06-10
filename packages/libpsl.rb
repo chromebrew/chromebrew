@@ -4,6 +4,7 @@ class Libpsl < Package
   description 'C library for the Public Suffix List'
   homepage 'https://github.com/rockdaboot/libpsl'
   version '0.20.2'
+  compatibility 'all'
   source_url 'https://github.com/rockdaboot/libpsl/releases/download/libpsl-0.20.2/libpsl-0.20.2.tar.gz'
   source_sha256 'f8fd0aeb66252dfcc638f14d9be1e2362fdaf2ca86bde0444ff4d5cc961b560f'
 

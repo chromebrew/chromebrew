@@ -4,6 +4,7 @@ class Epydoc < Package
   description 'Epydoc is a tool for generating API documentation for Python modules, based on their docstrings.'
   homepage 'http://epydoc.sourceforge.net/'
   version '3.0.1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/epydoc/epydoc/3.0.1/epydoc-3.0.1.tar.gz'
   source_sha256 'd4e5c8d90937d01b05170f592c1fa9b29e9ed0498dfe7f0eb2a3af61725b6ad1'
 

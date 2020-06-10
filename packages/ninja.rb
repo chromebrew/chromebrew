@@ -4,6 +4,7 @@ class Ninja < Package
   description 'a small build system with a focus on speed'
   homepage 'https://ninja-build.org'
   version '1.10.0'
+  compatibility 'all'
   source_url 'https://github.com/ninja-build/ninja/archive/v1.10.0.tar.gz'
   source_sha256 '3810318b08489435f8efc19c05525e80a993af5a55baa0dfeae0465a9d45f99f'
 

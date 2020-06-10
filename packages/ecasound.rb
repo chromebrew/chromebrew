@@ -4,6 +4,7 @@ class Ecasound < Package
   description 'Ecasound is a software package designed for multitrack audio processing.'
   homepage 'https://ecasound.seul.org/ecasound/'
   version '1.0.21'
+  compatibility 'all'
   source_url 'https://nosignal.fi/download/ecasound-2.9.3.tar.gz'
   source_sha256 '468bec44566571043c655c808ddeb49ae4f660e49ab0072970589fd5a493f6d4'
 

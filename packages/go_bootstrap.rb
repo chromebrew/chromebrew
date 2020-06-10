@@ -4,6 +4,7 @@ class Go_bootstrap < Package
   description 'Bootstrap tool chain for the Go programming language.'
   homepage 'https://golang.org/'
   version '1.4-1'
+  compatibility 'all'
   source_url 'https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz'
   source_sha256 'f4ff5b5eb3a3cae1c993723f3eab519c5bae18866b5e5f96fe1102f0cb5c3e52'
 

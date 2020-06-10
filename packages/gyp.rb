@@ -4,6 +4,7 @@ class Gyp < Package
   description 'GYP is a Meta-Build system: a build system that generates other build systems.'
   homepage 'https://gyp.gsrc.io/'
   version '81286d'
+  compatibility 'all'
   source_url 'https://github.com/bnoordhuis/gyp/archive/81286d388abf5c8f946f3f4be274bd987a690952.tar.gz'
   source_sha256 'c99f4fb0ba0798492713cd19579af8140e9a65d32af62c56bd6d447cf1ab7f6a'
 

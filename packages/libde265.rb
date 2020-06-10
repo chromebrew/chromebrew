@@ -4,6 +4,7 @@ class Libde265 < Package
   description 'Open h.265 video codec implementation.'
   homepage 'https://github.com/strukturag/libde265'
   version '1.0.3'
+  compatibility 'all'
   source_url 'https://github.com/strukturag/libde265/releases/download/v1.0.3/libde265-1.0.3.tar.gz'
   source_sha256 'e4206185a7c67d3b797d6537df8dcaa6e5fd5a5f93bd14e65a755c33cd645f7a'
 

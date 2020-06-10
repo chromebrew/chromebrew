@@ -4,6 +4,7 @@ class Flex < Package
   description 'Flex (The Fast Lexical Analyzer) is a fast lexical analyser generator tool for generating programs that perform pattern-matching on text.'
   homepage 'https://www.gnu.org/software/flex/'
   version '2.6.4'
+  compatibility 'all'
   source_url 'https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz'
   source_sha256 'e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995'
 

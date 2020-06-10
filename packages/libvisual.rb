@@ -4,6 +4,7 @@ class Libvisual < Package
   description 'Libvisual is a library that comes between applications and audio visualisation plugins.'
   homepage 'http://libvisual.org/'
   version '0.4.0'
+  compatibility 'all'
   source_url 'https://github.com/Libvisual/libvisual/archive/libvisual-0.4.0.tar.gz'
   source_sha256 'c004e88ae55872b19dc651b0e465b1e57c07e75eacb1bff8a43b6ceb75671850'
 

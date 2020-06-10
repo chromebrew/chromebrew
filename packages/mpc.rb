@@ -4,6 +4,7 @@ class Mpc < Package
   description 'Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.'
   homepage 'http://www.multiprecision.org/'
   version '1.1.0'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/mpc/mpc-1.1.0.tar.gz'
   source_sha256 '6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e'
 

@@ -4,6 +4,7 @@ class Spacefm < Package
   description 'SpaceFM is a multi-panel tabbed file and desktop manager for Linux with built-in VFS, udev- or HAL-based device manager, customisable menu system, and bash-GTK integration.'
   homepage 'https://ignorantguru.github.io/spacefm/'
   version '1.0.6'
+  compatibility 'all'
   source_url 'https://github.com/IgnorantGuru/spacefm/archive/1.0.6.tar.gz'
   source_sha256 'fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9'
 

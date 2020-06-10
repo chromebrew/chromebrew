@@ -4,6 +4,7 @@ class Libjpeg < Package
   description 'JPEG is a free library for image compression.'
   homepage 'http://www.ijg.org/'
   version '9.0-d'
+  compatibility 'all'
   source_url 'https://www.ijg.org/files/jpegsrc.v9d.tar.gz'
   source_sha256 '99cb50e48a4556bc571dadd27931955ff458aae32f68c4d9c39d624693f69c32'
 

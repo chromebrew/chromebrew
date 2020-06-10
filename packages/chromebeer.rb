@@ -4,6 +4,7 @@ class Chromebeer < Package
   description 'An opinionated bundle of "essential" Chromebrew packages.'
   homepage ''
   version '1.0'
+  compatibility 'all'
 
   is_fake
 

@@ -4,6 +4,7 @@ class Libdmx < Package
   description 'X.org X Window System DMX (Distributed Multihead X) extension library'
   homepage 'http://www.x.org'
   version '1.1.3-0'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libdmx-1.1.3.tar.gz'
   source_sha256 'c4b24d7e13e5a67ead7a18f0b4cc9b7b5363c9d04cd01b83b5122ff92b3b4996'
 

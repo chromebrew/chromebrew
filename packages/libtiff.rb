@@ -4,6 +4,7 @@ class Libtiff < Package
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
   version '4.0.9'
+  compatibility 'all'
   source_url 'ftp://download.osgeo.org/libtiff/tiff-4.0.9.tar.gz'
   source_sha256 '6e7bdeec2c310734e734d19aae3a71ebe37a4d842e0e23dbb1b8921c0026cfcd'
 

@@ -4,6 +4,7 @@ class Live555 < Package
   description 'This code forms a set of C++ libraries for multimedia streaming, using open standard protocols (RTP/RTCP, RTSP, SIP).'
   homepage 'http://www.live555.com/liveMedia/'
   version '2019.08.28'
+  compatibility 'all'
   source_url 'http://www.live555.com/liveMedia/public/live.2019.08.28.tar.gz'
   source_sha256 'a3dcd157865186cf883c3a80b4bb09637e91fff96b234b2c780a7f7dcc7a35dc'
 

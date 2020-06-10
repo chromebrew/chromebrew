@@ -4,6 +4,7 @@ class Fswatch < Package
   description 'fswatch is a file change monitor that receives notifications when the contents of the specified files or directories are modified.'
   homepage 'https://github.com/emcrisostomo/fswatch'
   version '1.11.2'
+  compatibility 'all'
   source_url 'https://github.com/emcrisostomo/fswatch/releases/download/1.11.2/fswatch-1.11.2.tar.gz'
   source_sha256 'b7dadb84848ce666aac0311f9b4c739fbfee6a90c6097807a1f45ad4367294c2'
 

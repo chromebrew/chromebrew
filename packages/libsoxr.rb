@@ -4,6 +4,7 @@ class Libsoxr < Package
   description 'High quality, one-dimensional sample-rate conversion library.'
   homepage 'https://sourceforge.net/projects/soxr/'
   version '0.1.3-1'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/soxr/soxr-0.1.3-Source.tar.xz'
   source_sha256 'b111c15fdc8c029989330ff559184198c161100a59312f5dc19ddeb9b5a15889'
 

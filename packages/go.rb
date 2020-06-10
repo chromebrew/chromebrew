@@ -4,6 +4,7 @@ class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
   version '1.14.2'
+  compatibility 'all'
   source_url 'https://dl.google.com/go/go1.14.2.src.tar.gz'
   source_sha256 '98de84e69726a66da7b4e58eac41b99cbe274d7e8906eeb8a5b7eb0aadee7f7c'
 

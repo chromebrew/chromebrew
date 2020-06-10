@@ -4,6 +4,7 @@ class Libdvdread < Package
   description 'libdvdnav is a library that allows easy use of sophisticated DVD navigation features such as DVD menus, multiangle playback and even interactive DVD games.'
   homepage 'http://dvdnav.mplayerhq.hu/'
   version '6.0.1'
+  compatibility 'all'
   source_url 'https://get.videolan.org/libdvdread/6.0.1/libdvdread-6.0.1.tar.bz2'
   source_sha256 '28ce4f0063883ca4d37dfd40a2f6685503d679bca7d88d58e04ee8112382d5bd'
 

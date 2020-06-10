@@ -4,6 +4,7 @@ class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
   version '3.8.2'
+  compatibility 'all'
   source_url 'https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz'
   source_sha256 '2646e7dc233362f59714c6193017bb2d6f7b38d6ab4a0cb5fbac5c36c4d845df'
 

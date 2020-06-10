@@ -4,6 +4,7 @@ class Pigz < Package
   description 'A parallel implementation of gzip for modern multi-processor, multi-core machines'
   homepage 'https://zlib.net/pigz/'
   version '2.4'
+  compatibility 'all'
   source_url 'https://zlib.net/pigz/pigz-2.4.tar.gz'
   source_sha256 'a4f816222a7b4269bd232680590b579ccc72591f1bb5adafcd7208ca77e14f73'
 

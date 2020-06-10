@@ -4,6 +4,7 @@ class Libnl3 < Package
   description 'Library for applications dealing with netlink sockets.'
   homepage 'http://www.infradead.org/~tgr/libnl/'
   version '3.2.25-0'
+  compatibility 'all'
   source_url 'https://www.infradead.org/~tgr/libnl/files/libnl-3.2.25.tar.gz'
   source_sha256 '8beb7590674957b931de6b7f81c530b85dc7c1ad8fbda015398bc1e8d1ce8ec5'
 

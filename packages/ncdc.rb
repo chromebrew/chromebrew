@@ -4,6 +4,7 @@ class Ncdc < Package
   description 'Ncdc is a modern and lightweight direct connect client with a friendly ncurses interface.'
   homepage 'https://dev.yorhel.nl/ncdc'
   version '1.20'
+  compatibility 'all'
   source_url 'https://dev.yorhel.nl/download/ncdc-1.20.tar.gz'
   source_sha256 '8a998857df6289b6bd44287fc06f705b662098189f2a8fe95b1a5fbc703b9631'
 

@@ -4,6 +4,7 @@ class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/en/stable/README/'
   version '2.1.3-1'
+  compatibility 'all'
 
   case ARCH
   when 'x86_64'
