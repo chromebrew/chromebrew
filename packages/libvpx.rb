@@ -4,6 +4,7 @@ class Libvpx < Package
   description 'VP8/VP9 Codec SDK'
   homepage 'http://www.webmproject.org/code/'
   version '1.8.0'
+  compatibility 'all'
   source_url 'https://github.com/webmproject/libvpx/archive/v1.8.0.tar.gz'
   source_sha256 '86df18c694e1c06cc8f83d2d816e9270747a0ce6abe316e93a4f4095689373f6'
 

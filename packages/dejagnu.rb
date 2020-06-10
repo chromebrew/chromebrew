@@ -4,6 +4,7 @@ class Dejagnu < Package
   description 'DejaGnu is a framework for running test suites on GNU tools.'
   homepage 'http://www.gnu.org/s/dejagnu/'
   version '1.6.1'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/dejagnu/dejagnu-1.6.1.tar.gz'
   source_sha256 'bf5b28bb797e0ace4cfc0766a996339c795d8223bef54158be7887046bc01692'
 

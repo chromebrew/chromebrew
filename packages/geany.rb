@@ -4,8 +4,15 @@ class Geany < Package
   description 'Geany is a small and lightweight Integrated Development Environment.'
   homepage 'https://www.geany.org/'
   version '1.36'
-  source_url 'https://download.geany.org/geany-1.36.tar.bz2'
-  source_sha256 '9184dd3dd40b7b84fca70083284bb9dbf2ee8022bf2be066bdc36592d909d53e'
+  compatibility 'aarch64,armv7l,x86_64'
+  case ARCH
+  when 'aarch64', 'armv7l', 'x86_64'
+    source_url 'https://download.geany.org/geany-1.36.tar.bz2'
+    source_sha256 '9184dd3dd40b7b84fca70083284bb9dbf2ee8022bf2be066bdc36592d909d53e'
+    depends_on 'gtk3'
+    depends_on 'xdg_base'
+    depends_on 'sommelier'
+  end
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/geany-1.36-chromeos-armv7l.tar.xz',
@@ -17,11 +24,6 @@ class Geany < Package
      armv7l: 'e89045825ce51fbb6f4705f3d408d1dada843bc54ff24ad35f18cea61b4b03b3',
      x86_64: '3d99c7c90b6ea63856fd9b469cdbdb4c2f00db6a549d7f3973e5efea25b65536',
   })
-
-  depends_on 'gtk3'
-  depends_on 'python27'
-  depends_on 'xdg_base'
-  depends_on 'sommelier'
 
   def self.build
     system './configure',

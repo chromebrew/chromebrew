@@ -4,6 +4,7 @@ class Setuptools < Package
   description 'Easily download, build, install, upgrade, and uninstall Python packages'
   homepage 'https://pypi.org/project/setuptools/'
   version '46.1.3'
+  compatibility 'all'
   source_url 'https://github.com/pypa/setuptools/archive/v46.1.3.tar.gz'
   source_sha256 '984eeb7909fa610a441711c00dc4fa5bbf3c49f9b4b5204b56b7362bdd04f397'
 

@@ -4,7 +4,7 @@ class Dosbox_x < Package
   description 'An x86 emulator with DOS.'
   homepage 'https://dosbox-x.com/'
   version '0.83.1'
-  #compatibility 'all'
+  compatibility 'all'
   source_url 'https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.1.tar.gz'
   source_sha256 '222c6c4e2ec15bfab0e327b9ba4af92a3fcdd0ff76f1917529a11503ab4a2833'
 

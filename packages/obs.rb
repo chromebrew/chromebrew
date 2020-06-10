@@ -4,11 +4,11 @@ class Obs < Package
   description 'Free and open source software for video recording and live streaming.'
   homepage 'https://obsproject.com/'
   version '24.0.5'
+  compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'
     source_url 'https://github.com/obsproject/obs-studio/archive/24.0.5.tar.gz'
     source_sha256 'b3d65f36ad2bfcd6ffde1771be64662ce8e8771349fab82bb49f80dbb1f5f2e6'
-
     depends_on 'curl'
     depends_on 'ffmpeg'
     depends_on 'jack'

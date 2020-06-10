@@ -4,6 +4,7 @@ class Popt < Package
   description 'Library for parsing command line options'
   homepage 'https://directory.fsf.org/wiki/Popt'
   version '1.16'
+  compatibility 'all'
   source_url 'http://rpm5.org/files/popt/popt-1.16.tar.gz'
   source_sha256 'e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8'
 

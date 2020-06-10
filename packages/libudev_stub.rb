@@ -4,6 +4,7 @@ class Libudev_stub < Package
   description 'A libudev stub and proxy library for WSL'
   homepage 'https://github.com/therealkenc/libudev-stub'
   version '0.9.0'
+  compatibility 'all'
   source_url 'https://github.com/therealkenc/libudev-stub/archive/v0.9.0.tar.gz'
   source_sha256 '4bc4479b8297bfd6449f245e09106600af1b3af657dd1472d9fd4c920b673660'
 

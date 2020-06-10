@@ -4,6 +4,7 @@ class Libnftnl < Package
   description 'libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.'
   homepage 'https://netfilter.org/projects/libnftnl/'
   version '1.1.1'
+  compatibility 'all'
   source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.1.1.tar.bz2'
   source_sha256 '5d6a65413f27ec635eedf6aba033f7cf671d462a2afeacc562ba96b19893aff2'
 

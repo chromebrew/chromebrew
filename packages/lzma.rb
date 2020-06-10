@@ -4,6 +4,7 @@ class Lzma < Package
   description 'LZMA Utils are legacy data compression software with high compression ratio.'
   homepage 'https://tukaani.org/lzma/'
   version '4.32.7-1'
+  compatibility 'all'
   source_url 'https://tukaani.org/lzma/lzma-4.32.7.tar.bz2'
   source_sha256 '618e54513993b3a153fa1c150fccdf25788c72b36e84ab4db71911083531cf6a'
 

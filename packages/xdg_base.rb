@@ -4,6 +4,7 @@ class Xdg_base < Package
   description 'XDG Base Directory Specification Configuration'
   homepage 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
   version '0.7-5'
+  compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 

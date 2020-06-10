@@ -4,6 +4,7 @@ class Wol < Package
   description 'Wake up hardware that is Magic Packet compliant'
   homepage 'http://ahh.sourceforge.net/wol/'
   version '0.7.1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/ahh/wol-0.7.1.tar.gz'
   source_sha256 'e0086c9b9811df2bdf763ec9016dfb1bcb7dba9fa6d7858725b0929069a12622'
 
@@ -20,16 +21,12 @@ class Wol < Package
      x86_64: '27cf6ed4e02b068ffc59b650d165b575a921403c64fe74be8875860c96357c13',
   })
 
-  depends_on 'compressdoc' => :build
-
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--mandir=#{CREW_PREFIX}/share/man"
-    system "make"
+    system './configure', "--prefix=#{CREW_PREFIX}", "--mandir=#{CREW_MAN_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "MANDIR=#{CREW_DEST_PREFIX}/share/man/man1", "install"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "MANDIR=#{CREW_DEST_MAN_PREFIX}/man1", 'install'
   end
-
 end

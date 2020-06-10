@@ -4,6 +4,7 @@ class Openexr < Package
   description 'OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications.'
   homepage 'http://www.openexr.com/'
   version '2.3.0'
+  compatibility 'all'
   source_url 'https://github.com/openexr/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz'
   source_sha256 'fd6cb3a87f8c1a233be17b94c74799e6241d50fc5efd4df75c7a4b9cf4e25ea6'
 

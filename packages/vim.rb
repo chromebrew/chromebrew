@@ -4,6 +4,7 @@ class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
   version '8.2.0346'
+  compatibility 'all'
   source_url 'https://github.com/vim/vim/archive/v8.2.0346.tar.gz'
   source_sha256 '418d1cbc9f53f31cb19869b6df0294ca5c377ca2824c759e3f6796edc60e5628'
 
@@ -20,8 +21,6 @@ class Vim < Package
      x86_64: '2673362a6b1fef2f31c7a87ca45ec8dd045201e8331c86ec32d5f86fcca6acfb',
   })
 
-  depends_on 'python27' => :build
-  depends_on 'python3' => :build
   depends_on 'vim_runtime'
 
   def self.preinstall

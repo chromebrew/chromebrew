@@ -4,12 +4,9 @@ class S < Package
   description 'Open a web search in your terminal.'
   homepage 'https://github.com/zquestz/s'
   version '0.5.10'
-
+  compatibility 'all'
   case ARCH
-  when 'aarch64'
-    source_url 'https://github.com/zquestz/s/releases/download/v0.5.10/s-linux_arm.zip'
-    source_sha256 '4d31cbb3f81a52946d9e40e1d3ebb650d7112c5c3d45c07ae29435bfea2c0dea'
-  when 'armv7l'
+  when 'aarch64', 'armv7l'
     source_url 'https://github.com/zquestz/s/releases/download/v0.5.10/s-linux_arm.zip'
     source_sha256 '4d31cbb3f81a52946d9e40e1d3ebb650d7112c5c3d45c07ae29435bfea2c0dea'
   when 'i686'

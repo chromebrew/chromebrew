@@ -4,6 +4,7 @@ class Libdsm < Package
   description 'Defective SMb: A minimalist implementation of a client library for SMB using Plain\'Ol C'
   homepage 'https://videolabs.github.io/libdsm/'
   version '0.3.0'
+  compatibility 'all'
   source_url 'https://github.com/videolabs/libdsm/releases/download/v0.3.0/libdsm-0.3.0.tar.gz'
   source_sha256 '96caef854a1f7aa61ab6fdfca9c36a1813b37d23d013db0bc4ec7cd38a570b1c'
 

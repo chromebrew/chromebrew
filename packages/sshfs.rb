@@ -4,6 +4,7 @@ class Sshfs < Package
   description 'A network filesystem client to connect to SSH servers.'
   homepage 'https://github.com/libfuse/sshfs'
   version '2.10'
+  compatibility 'all'
   source_url 'https://github.com/libfuse/sshfs/releases/download/sshfs-2.10/sshfs-2.10.tar.gz'
   source_sha256 '70845dde2d70606aa207db5edfe878e266f9c193f1956dd10ba1b7e9a3c8d101'
 

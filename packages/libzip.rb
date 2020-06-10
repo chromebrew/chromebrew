@@ -4,6 +4,7 @@ class Libzip < Package
   description 'libzip is a C library for reading, creating, and modifying zip archives.'
   homepage 'https://libzip.org/'
   version '1.5.1'
+  compatibility 'all'
   source_url 'https://libzip.org/download/libzip-1.5.1.tar.xz'
   source_sha256 '04ea35b6956c7b3453f1ed3f3fe40e3ddae1f43931089124579e8384e79ed372'
 

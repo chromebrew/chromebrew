@@ -4,6 +4,7 @@ class Gawk < Package
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
   version '5.1.0'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.1.0.tar.lz'
   source_sha256 '8a13d0adfacde9540acbb2e0ad9867ef17890b3fd4c2af288fe3c4f7b507a274'
 

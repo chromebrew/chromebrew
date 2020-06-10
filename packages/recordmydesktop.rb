@@ -4,6 +4,7 @@ class Recordmydesktop < Package
   description 'desktop session recorder for GNU / Linux that attempts to be easy to use'
   homepage 'http://recordmydesktop.sourceforge.net/about.php'
   version '0.3.8.1'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/recordmydesktop/recordmydesktop/0.3.8.1/recordmydesktop-0.3.8.1.tar.gz'
   source_sha256 '33a2e208186ae78e2db2a27b0f5047b50fb7819c47fe15483b0765200b9d738c'
 

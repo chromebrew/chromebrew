@@ -4,6 +4,7 @@ class Mercurial < Package
   description 'Mercurial is a free, distributed source control management tool. It efficiently handles projects of any size and offers an easy and intuitive interface.'
   homepage 'https://www.mercurial-scm.org/'
   version '4.2.2'
+  compatibility 'all'
   source_url 'https://www.mercurial-scm.org/release/mercurial-4.2.2.tar.gz'
   source_sha256 'b20132dec5ae6d27ee43a133144069895befe09f7e454bfa9e39950a185f0afe'
 

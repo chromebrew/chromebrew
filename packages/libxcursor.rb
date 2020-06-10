@@ -4,6 +4,7 @@ class Libxcursor < Package
   description 'X.org X Cursor management library'
   homepage 'http://www.x.org'
   version '1.1.15-0'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXcursor-1.1.15.tar.gz'
   source_sha256 '449befea2b11dde58ba3323b2c1ec30550013bd84d80501eb56d0048e62251a1'
 

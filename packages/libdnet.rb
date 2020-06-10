@@ -4,6 +4,7 @@ class Libdnet < Package
   description 'libdnet provides a simplified, portable interface to several low-level networking routines.'
   homepage 'https://github.com/dugsong/libdnet'
   version '1.12'
+  compatibility 'all'
   source_url 'https://github.com/dugsong/libdnet/archive/libdnet-1.12.tar.gz'
   source_sha256 'b6360659c93fa2e3cde9e0a1fc9c07bc4111f3448c5de856e095eb98315dd424'
 

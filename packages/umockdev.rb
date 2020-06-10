@@ -4,6 +4,7 @@ class Umockdev < Package
   description 'Mock hardware devices for creating unit tests and bug reporting'
   homepage 'https://github.com/martinpitt/umockdev/'
   version '0.9.4'  # stable version
+  compatibility 'all'
   source_url 'https://github.com/martinpitt/umockdev/archive/0.9.4.tar.gz'
   source_sha256 '9f13e8a836ef36158e2cc2b679cb99639e1f68a430b04fbe4dd07d3cb2b32a75'
 

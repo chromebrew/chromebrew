@@ -4,6 +4,7 @@ class Metasploit < Package
   description 'The Metasploit Framework is a tool for developing and executing exploit code against a remote target machine.'
   homepage 'https://www.metasploit.com/'
   version '4.16.19'
+  compatibility 'all'
   source_url 'https://github.com/rapid7/metasploit-framework/archive/4.16.19.tar.gz'
   source_sha256 'd42d950da520586cf2e3b4f0a86e895250a95e2cd6ec3aff972e3b24492bfd2a'
 

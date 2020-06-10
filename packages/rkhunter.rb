@@ -4,6 +4,7 @@ class Rkhunter < Package
   description 'Rootkit Hunter, security monitoring and analyzing tool for POSIX compliant systems.'
   homepage 'http://rkhunter.sourceforge.net/'
   version '1.4.4-1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/rkhunter/rkhunter/1.4.4/rkhunter-1.4.4.tar.gz'
   source_sha256 'a8807c83f9f325312df05aa215fa75ad697c7a16163175363c2066baa26dda77'
 

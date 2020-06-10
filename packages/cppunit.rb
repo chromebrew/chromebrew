@@ -4,6 +4,7 @@ class Cppunit < Package
   description 'CppUnit is the C++ port of the famous JUnit framework for unit testing.'
   homepage 'https://sourceforge.net/projects/cppunit/'
   version '1.12.1'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/cppunit/cppunit/1.12.1/cppunit-1.12.1.tar.gz'
   source_sha256 'ac28a04c8e6c9217d910b0ae7122832d28d9917fa668bcc9e0b8b09acb4ea44a'
 

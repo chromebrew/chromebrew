@@ -6,6 +6,7 @@ class Sgml_common < Package
   description 'The sgml-common package gathers very basic stuff necessary to work with SGML and XML.'
   homepage 'https://sourceware.org/docbook-tools/'
   version '0.6.3'
+  compatibility 'all'
   source_url 'https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz'
   source_sha256 '7dc418c1d361123ffc5e45d61f1b97257940a8eb35d0bfbbc493381cc5b1f959'
 

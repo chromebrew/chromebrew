@@ -4,6 +4,7 @@ class Gpart < Package
   description 'Partition table rescue/guessing tool.'
   homepage 'https://github.com/baruch/gpart'
   version '0.3'
+  compatibility 'all'
   source_url 'https://github.com/baruch/gpart/archive/0.3.tar.gz'
   source_sha256 'ec56d12ec9ffdb9877c12692ea6e51620b1ae44473d3d253b27fc31ed9ebb4dd'
 

@@ -4,6 +4,7 @@ class Msttcorefonts < Package
   description "An easy way to install Microsoft's TrueType core fonts on Linux"
   homepage 'http://corefonts.sourceforge.net/'
   version '3.6'
+  compatibility 'all'
   source_url 'http://http.debian.net/debian/pool/contrib/m/msttcorefonts/msttcorefonts_3.6.tar.gz'
   source_sha256 'c23a2c519acad44fb65dfdd5b6f7de7b351ec15394df52cc744e3c6deb51d42f'
 

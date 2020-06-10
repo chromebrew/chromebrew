@@ -7,6 +7,7 @@ class Mongodb < Package
   #  - 3.2 branch works well with gcc-4.9.4
   #  - master 3.4 branch requires gcc-5.4.0
   version '3.2.16-1'
+  compatibility 'all'
   source_url 'https://fastdl.mongodb.org/src/mongodb-src-r3.2.16.tar.gz'
   source_sha256 '7a8b1b16f3fa545af16f48aeef1f918f57d96a80e1ceb6e669cdb81fab6511d0'
 

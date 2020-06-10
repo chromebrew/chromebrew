@@ -4,6 +4,7 @@ class Poppler < Package
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
   version '0.86.1'
+  compatibility 'all'
   source_url 'https://poppler.freedesktop.org/poppler-0.86.1.tar.xz'
   source_sha256 'af630a277c8e194c31339c5446241834aed6ed3d4b4dc7080311e51c66257f6c'
 

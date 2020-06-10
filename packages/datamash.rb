@@ -4,6 +4,7 @@ class Datamash < Package
   description 'GNU Datamash is a command-line program which performs basic numeric,textual and statistical operations on input textual data files.'
   homepage 'http://savannah.gnu.org/projects/datamash'
   version '1.3'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/datamash/datamash-1.3.tar.gz'
   source_sha256 'eebb52171a4353aaad01921384098cf54eb96ebfaf99660e017f6d9fc96657a6'
 

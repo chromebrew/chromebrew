@@ -4,6 +4,7 @@ class Proxychains < Package
   description 'a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy.'
   homepage 'https://github.com/haad/proxychains'
   version '4.2.0'
+  compatibility 'all'
   source_url 'https://github.com/haad/proxychains/archive/proxychains-4.2.0.tar.gz'
   source_sha256 '225284e5553fb062d09ed425d2815387eda9c1c0d6e2bc24ea95393a71601619'
 
@@ -20,12 +21,12 @@ class Proxychains < Package
      x86_64: 'f5de3f217b624363140f63e68bf188ff8b8de93f18b3af946b51a62a8c0c3271',
   })
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system "install -Dm644 src/proxychains.conf #{CREW_DEST_PREFIX}/$HOME/.proxychains/proxychains.conf"
     system "install -Dm644 src/proxychains.conf #{CREW_DEST_PREFIX}/etc/proxychains.conf"
     system "mkdir -p HOME/.proxychains && cp src/proxychains.conf $HOME/.proxychains"

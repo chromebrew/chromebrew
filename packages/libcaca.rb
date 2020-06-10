@@ -4,6 +4,7 @@ class Libcaca < Package
   description 'libcaca is a graphics library that outputs text instead of pixels, so that it can work on older video cards or text terminals.'
   homepage 'http://caca.zoy.org/wiki/libcaca'
   version '0.99.beta19-1'
+  compatibility 'all'
   source_url 'http://caca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz'
   source_sha256 '128b467c4ed03264c187405172a4e83049342cc8cc2f655f53a2d0ee9d3772f4'
 

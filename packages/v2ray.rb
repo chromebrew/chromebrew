@@ -3,18 +3,19 @@ require 'package'
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'https://www.v2ray.com/'
-  version 'v4.23.3'
+  version 'v4.23.4'
+  compatibility 'all'
 
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.23.3/v2ray-linux-arm.zip'
-    source_sha256 '0b5f2dc349739d1e712798c04ef5cf94156729329dd66ff2c4c3e9927dd3f255'
+    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.23.4/v2ray-linux-arm.zip'
+    source_sha256 '96ea08331b4f61208810c26263fc828c115d7eee863f9cd6f35e89890d10535f'
   when 'i686'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.23.3/v2ray-linux-32.zip'
-    source_sha256 '0657b335261edd6ffb24a29f1f594e92414901cc56e09711d9532e94a03f395b'
+    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.23.4/v2ray-linux-32.zip'
+    source_sha256 '78f98992e4bff6f44d1c7bc493c5e82d183a8510f555f65fa359995282c99249'
   when 'x86_64'
-    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.23.3/v2ray-linux-64.zip'
-    source_sha256 'ad3c272b03cd682a427c70c4ea6079bfbf614bf5978f69a0d1b77d673aa913ae'
+    source_url 'https://github.com/v2ray/v2ray-core/releases/download/v4.23.4/v2ray-linux-64.zip'
+    source_sha256 '38f02c2d3f054ec228f0f29a4185431b89f06f7b6a7a8f795e12ae48eaa591ba'
   end
 
   def self.install
@@ -39,5 +40,4 @@ class V2ray < Package
     puts 'crew remove v2ray'.lightblue
     puts
   end
-
 end

@@ -4,6 +4,7 @@ class Libmp3lame < Package
   description 'LAME is a high quality MPEG Audio Layer III (MP3) encoder licensed under the LGPL.'
   homepage 'http://lame.sourceforge.net/'
   version '3.100'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz'
   source_sha256 'ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e'
 

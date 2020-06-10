@@ -4,6 +4,7 @@ class Libunistring < Package
   description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
   homepage 'https://www.gnu.org/software/libunistring/'
   version '0.9.10'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
   source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
 

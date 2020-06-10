@@ -4,6 +4,7 @@ class Perl_text_unidecode < Package
   description 'Perl Text::Unidecode -- plain ASCII transliterations of Unicode text.'
   homepage 'https://metacpan.org/pod/Text::Unidecode'
   version '1.30'
+  compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBURKE/Text-Unidecode-1.30.tar.gz'
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
 
