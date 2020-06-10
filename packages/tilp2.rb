@@ -4,6 +4,7 @@ class Tilp2 < Package
   description 'TiLP 2 is a linking program for Texas Instruments\' graphing calculators.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
   version '1.18'
+  compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/tilp2-1.18.tar.bz2'
   source_sha256 '7b3ab363eeb52504d6ef5811c5d264f8016060bb7bd427be5a064c2ed7384e47'
 

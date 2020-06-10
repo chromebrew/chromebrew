@@ -4,6 +4,7 @@ class Dav1d < Package
   description '**dav1d** is a new **AV1** cross-platform **d**ecoder, open-source, and focused on speed and correctness.'
   homepage 'https://code.videolan.org/videolan/dav1d'
   version '0.4.0'
+  compatibility 'all'
   source_url 'http://get.videolan.org/dav1d/0.4.0/dav1d-0.4.0.tar.xz'
   source_sha256 '2553b2e65081c0ec799c11a752ea43ad8f2d11b2fb36a83375972d1a00add823'
 

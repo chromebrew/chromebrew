@@ -4,6 +4,7 @@ class Libaacs < Package
   description 'This library is simply a tool for playback of Blu-ray movies.'
   homepage 'https://www.videolan.org/developers/libaacs.html'
   version '0.9.0'
+  compatibility 'all'
   source_url 'https://get.videolan.org/libaacs/0.9.0/libaacs-0.9.0.tar.bz2'
   source_sha256 '47e0bdc9c9f0f6146ed7b4cc78ed1527a04a537012cf540cf5211e06a248bace'
 

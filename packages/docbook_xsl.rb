@@ -4,6 +4,7 @@ require 'package'
 
 class Docbook_xsl < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
+  compatibility 'all'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   version '1.79.2'
   source_url 'https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-1.79.2.tar.bz2'

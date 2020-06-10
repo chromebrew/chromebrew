@@ -4,6 +4,7 @@ class Madplay < Package
   description 'Decode and play MPEG audio files'
   homepage 'https://www.underbit.com/products/mad/'
   version '0.15.2b'
+  compatibility 'all'
   source_url 'ftp://ftp.mars.org/pub/mpeg/madplay-0.15.2b.tar.gz'
   source_sha256 '5a79c7516ff7560dffc6a14399a389432bc619c905b13d3b73da22fa65acede0'
 

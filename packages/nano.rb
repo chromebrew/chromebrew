@@ -4,6 +4,7 @@ class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
   version '4.4'
+  compatibility 'all'
   source_url 'https://www.nano-editor.org/dist/v4/nano-4.4.tar.xz'
   source_sha256 '2af222e0354848ffaa3af31b5cd0a77917e9cb7742cd073d762f3c32f0f582c7'
 

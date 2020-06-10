@@ -4,6 +4,7 @@ class Libfdk_aac < Package
   description 'Modified library of Fraunhofer AAC decoder and encoder.'
   homepage 'https://sourceforge.net/projects/opencore-amr/'
   version '2.0.1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-2.0.1.tar.gz'
   source_sha256 '840133aa9412153894af03b27b03dde1188772442c316a4ce2a24ed70093f271'
 

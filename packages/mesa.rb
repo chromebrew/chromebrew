@@ -4,6 +4,7 @@ class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
   version '20.0.2'
+  compatibility 'all'
   source_url 'https://mesa.freedesktop.org/archive/mesa-20.0.2.tar.xz'
   source_sha256 'aa54f1cb669550606aab8ceb475105d15aeb814fca5a778ce70d0fd10e98e86f'
 

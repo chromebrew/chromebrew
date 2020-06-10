@@ -4,6 +4,7 @@ class Collectl < Package
   description 'Collectl is a light-weight performance monitoring tool capable of reporting interactively as well as logging to disk.'
   homepage 'http://collectl.sourceforge.net/'
   version '4.3.1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/collectl/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz'
   source_sha256 '2187264d974b36a653c8a4b028ac6eeab23e1885f8b2563a33f06358f39889f1'
 

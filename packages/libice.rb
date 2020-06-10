@@ -4,6 +4,7 @@ class Libice < Package
   description 'X.org X Inter Client Exchange Library'
   homepage 'http://www.x.org'
   version '1.0.9-0'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libICE-1.0.9.tar.gz'
   source_sha256 '7812a824a66dd654c830d21982749b3b563d9c2dfe0b88b203cefc14a891edc0'
 

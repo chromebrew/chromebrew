@@ -4,6 +4,7 @@ class Qtdeclarative < Package
   description 'Provides QML and Quick declaratives.'
   homepage 'https://www.qt.io/'
   version '5.12.3'
+  compatibility 'all'
   source_url 'http://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qtdeclarative-everywhere-src-5.12.3.tar.xz'
   source_sha256 '839881cd6996e35c351bc7d560372ebb91e61f3688957c33248c4f31ea007fa7'
 

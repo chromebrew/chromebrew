@@ -4,6 +4,7 @@ class Cronie < Package
   description 'Cronie contains the standard UNIX daemon crond that runs specified programs at scheduled times and related tools.'
   homepage 'https://github.com/cronie-crond/cronie'
   version '1.5.2'
+  compatibility 'all'
   source_url 'https://github.com/cronie-crond/cronie/releases/download/cronie-1.5.2/cronie-1.5.2.tar.gz'
   source_sha256 '370bf34641691489330e708bd4cdbd779267296a030668a12f77b7e36872fd75'
 

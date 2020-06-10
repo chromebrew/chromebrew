@@ -4,6 +4,7 @@ class Swig1 < Package
   description 'Simplified Wrapper and Interface Generator'
   homepage 'http://www.swig.org'
   version '1.3.40'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/swig/swig/swig-1.3.40/swig-1.3.40.tar.gz'
   source_sha256 '1945b3693bcda6777bd05fef1015a0ad1a4604cde4a4a0a368b61ccfd143ac09'
 

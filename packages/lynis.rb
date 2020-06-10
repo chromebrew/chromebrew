@@ -4,6 +4,7 @@ class Lynis < Package
   description 'Lynis is a security auditing tool for UNIX derivatives like Linux, macOS, BSD, Solaris, AIX, and others.'
   homepage 'https://cisofy.com/download/lynis/'
   version '2.5.7'
+  compatibility 'all'
   source_url 'https://cisofy.com/files/lynis-2.5.7.tar.gz'
   source_sha256 '95a6b8249b729d6c431377015c53724d3d267b74c2c9e5596a4d1c59c15df64c'
 

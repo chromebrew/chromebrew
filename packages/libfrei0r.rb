@@ -4,6 +4,7 @@ class Libfrei0r < Package
   description 'Minimalistic API for a collection of free video effect plugins.'
   homepage 'https://frei0r.dyne.org/'
   version '1.6.1'
+  compatibility 'all'
   source_url 'https://github.com/dyne/frei0r/archive/v1.6.1.tar.gz'
   source_sha256 'dae0ca623c83173788ce4fc74cb67ac7e50cf33a4412ee3d33bed284da1a8437'
 

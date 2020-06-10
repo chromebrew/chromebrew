@@ -4,6 +4,7 @@ class Clib < Package
   description 'C package manager-ish'
   homepage 'https://github.com/clibs/clib'
   version '1.8.1'
+  compatibility 'all'
   source_url 'https://github.com/clibs/clib/archive/1.8.1.tar.gz'
   source_sha256 'f5718e316771571971cb4e5a0142f91b47c6bfe32997fd869fc5a90ec091a066'
 

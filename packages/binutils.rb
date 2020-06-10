@@ -4,6 +4,7 @@ class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
   version '2.34'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/binutils/binutils-2.34.tar.lz'
   source_sha256 '5cec79823ef596817aa57a3f470a1afa9827bf14e3583a4e445dc046cc38d29c'
 

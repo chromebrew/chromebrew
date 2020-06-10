@@ -4,6 +4,7 @@ class R < Package
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
   version '3.6.1'
+  compatibility 'all'
   source_url 'https://cran.r-project.org/src/base/R-3/R-3.6.1.tar.gz'
   source_sha256 '5baa9ebd3e71acecdcc3da31d9042fb174d55a42829f8315f2457080978b1389'
 

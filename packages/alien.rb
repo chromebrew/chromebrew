@@ -4,6 +4,7 @@ class Alien < Package
   description 'This program converts linux packages between the rpm, deb, tgz and slp packages.'
   homepage 'https://sourceforge.net/projects/alien-pkg-convert/'
   version '8.95'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/alien-pkg-convert/release/alien_8.95.tar.xz'
   source_sha256 '37a22587c33810feab323474bdadbf969fda2eb4e720b2ca01b40d82d6f71a17'
 

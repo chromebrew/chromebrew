@@ -4,6 +4,7 @@ class Fltk < Package
   description 'Fast Light Toolkit or FLTK (pronounced "fulltick") is a cross-platform C++ GUI toolkit'
   homepage 'https://www.fltk.org/'
   version '1.3.5'
+  compatibility 'all'
   source_url 'https://www.fltk.org/pub/fltk/1.3.5/fltk-1.3.5-source.tar.bz2'
   source_sha256 '2933c72400f9e7c0f4c3a81a1ce98bc9582b2a3edc44b8597ccd26e240e32c3c'
 

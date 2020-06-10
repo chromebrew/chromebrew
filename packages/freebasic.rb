@@ -4,6 +4,7 @@ class Freebasic < Package
   description 'FreeBASIC is a free/open source (GPL), BASIC compiler for Microsoft Windows, DOS and Linux.'
   homepage 'https://www.freebasic.net/'
   version '1.07.1-1'
+  compatibility 'i686,x86_64'
   case ARCH
   when 'i686'
     source_url 'https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Linux/FreeBASIC-1.07.1-linux-x86.tar.gz'
@@ -13,7 +14,10 @@ class Freebasic < Package
     source_sha256 'd5034e81201760de7fd7bc563d8c33213a9530da3d15d4907e52d47278a00243'
   end
 
-  depends_on 'libtinfo'
+  case ARCH
+  when 'i686', 'x86_64'
+    depends_on 'libtinfo'
+  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"

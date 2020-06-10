@@ -4,6 +4,7 @@ class Libusb < Package
   description 'A cross-platform library that gives apps easy access to USB devices'
   homepage 'https://sourceforge.net/projects/libusb/'
   version '1.0.23'
+  compatibility 'all'
   source_url 'https://github.com/libusb/libusb/releases/download/v1.0.23/libusb-1.0.23.tar.bz2'
   source_sha256 'db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d'
 

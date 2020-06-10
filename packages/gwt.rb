@@ -4,6 +4,7 @@ class Gwt < Package
   description 'Google Web Toolkit'
   homepage 'http://www.gwtproject.org/'
   version '2.8.2'
+  compatibility 'all'
   source_url 'https://storage.googleapis.com/gwt-releases/gwt-2.8.2.zip'
   source_sha256 '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
 

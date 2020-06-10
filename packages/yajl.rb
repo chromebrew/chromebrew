@@ -4,6 +4,7 @@ class Yajl < Package
   description 'A fast streaming JSON parsing library in C.'
   homepage 'http://lloyd.github.io/yajl/'
   version '2.1.0-1'
+  compatibility 'all'
   source_url 'https://github.com/lloyd/yajl/archive/2.1.0.tar.gz'
   source_sha256 '3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a'
 
@@ -20,8 +21,6 @@ class Yajl < Package
      x86_64: 'c16902c4da5b807783a9002566328c1e6545c0f5eb4d673b5fbb0d028bdb0513',
   })
 
-  depends_on 'cmake' => :build
-
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
@@ -32,7 +31,7 @@ class Yajl < Package
 
   def self.install
     Dir.chdir 'build' do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
   end
 end

@@ -4,6 +4,7 @@ class Zathura < Package
   description 'zathura is a highly customizable and functional PDF document viewer'
   homepage 'https://pwmt.org/projects/zathura/'
   version '0.4.5'
+  compatibility 'all'
   source_url 'https://pwmt.org/projects/zathura/download/zathura-0.4.5.tar.xz'
   source_sha256 '0c3997aafbcdaaae60a4522f208adadfdd2758b432ce94ea16fbcee937cb762c'
 

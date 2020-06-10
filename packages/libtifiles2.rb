@@ -4,6 +4,7 @@ class Libtifiles2 < Package
   description 'Libtifiles2 offers the library used to properly manipulate files on TI calculators.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
   version '1.1.7'
+  compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libtifiles2-1.1.7.tar.bz2'
   source_sha256 '9ac63b49e97b09b30b37bbc84aeb15fa7967bceb944e56141c5cd5a528acc982'
 

@@ -4,6 +4,7 @@ class Hugo < Package
   description 'Hugo is one of the most popular open-source static site generators.'
   homepage 'https://gohugo.io'
   version '0.70.0'
+  compatibility 'all'
 
   case ARCH
   when 'aarch64','armv7l'

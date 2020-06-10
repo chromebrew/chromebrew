@@ -4,6 +4,7 @@ class Gnucobol < Package
   description 'GnuCOBOL (formerly OpenCOBOL) is a free COBOL compiler.'
   homepage 'https://open-cobol.sourceforge.io/'
   version '3.0-rc1'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/open-cobol/gnu-cobol/3.0/gnucobol-3.0-rc1.tar.gz'
   source_sha256 'e55aeea6b1f77e763b4cd4b520c78eb06da7671b4dcc76463fd0237dbf2e4816'
 

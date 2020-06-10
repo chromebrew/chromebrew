@@ -4,6 +4,7 @@ class Parted < Package
   description 'Create, destroy, resize, check, copy partitions and file systems.'
   homepage 'https://www.gnu.org/software/parted'
   version '3.2'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/parted/parted-3.2.tar.xz'
   source_sha256 '858b589c22297cacdf437f3baff6f04b333087521ab274f7ab677cb8c6bb78e4'
 

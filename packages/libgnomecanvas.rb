@@ -4,6 +4,7 @@ class Libgnomecanvas < Package
   description 'The GnomeCanvas widget provides a flexible widget for creating interactive structured graphics.'
   homepage 'https://developer.gnome.org/libgnomecanvas/'
   version '2.30.3'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.30/libgnomecanvas-2.30.3.tar.bz2'
   source_sha256 '859b78e08489fce4d5c15c676fec1cd79782f115f516e8ad8bed6abcb8dedd40'
 

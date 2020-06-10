@@ -4,6 +4,7 @@ class Axel < Package
   description 'Light command line download accelerator for Linux and Unix'
   homepage 'https://github.com/axel-download-accelerator/axel'
   version '2.17.6'
+  compatibility 'all'
   source_url 'https://github.com/axel-download-accelerator/axel/releases/download/v2.17.6/axel-2.17.6.tar.xz'
   source_sha256 '24ab549021bdfca01ad5e8e95b706869dd30fe9ab1043da4cbb9dff89edc267d'
 

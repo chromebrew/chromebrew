@@ -4,6 +4,7 @@ class Libmng < Package
   description 'A PNG-like Image Format Supporting Multiple Images, Animation and Transparent JPEG'
   homepage 'http://www.libpng.org/pub/mng/'
   version '2.0.3'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/libmng/libmng-devel/2.0.3/libmng-2.0.3.tar.xz'
   source_sha256 '4a462fdd48d4bc82c1d7a21106c8a18b62f8cc0042454323058e6da0dbb57dd3'
 

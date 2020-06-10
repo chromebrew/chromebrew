@@ -4,6 +4,7 @@ class Plplot < Package
   description 'PLplot is a cross-platform software package for creating scientific plots'
   homepage 'http://plplot.sourceforge.net/'
   version '5.15.0'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/plplot/plplot/5.15.0%20Source/plplot-5.15.0.tar.gz'
   source_sha256 'b92de4d8f626a9b20c84fc94f4f6a9976edd76e33fb1eae44f6804bdcc628c7b'
 

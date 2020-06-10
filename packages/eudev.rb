@@ -4,6 +4,7 @@ class Eudev < Package
   description 'Gentoo standalone udev'
   homepage 'https://wiki.gentoo.org/wiki/Project:Eudev'
   version '3.2.9'
+  compatibility 'all'
   source_url 'https://github.com/gentoo/eudev/archive/v3.2.9.tar.gz'
   source_sha256 '7d281276b480da3935d1acb239748c2c9db01a8043aad7e918ce57a223d8cd24'
 

@@ -4,6 +4,7 @@ class Squashfs < Package
   description 'Squashfs is a compressed read-only filesystem for Linux.'
   homepage 'http://squashfs.sourceforge.net/'
   version '4.3'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/squashfs/squashfs/squashfs4.3/squashfs4.3.tar.gz'
   source_sha256 '0d605512437b1eb800b4736791559295ee5f60177e102e4d4ccd0ee241a5f3f6'
 

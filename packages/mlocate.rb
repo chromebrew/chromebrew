@@ -4,6 +4,7 @@ class Mlocate < Package
   description 'mlocate is a locate/updatedb implementation.'
   homepage 'https://pagure.io/mlocate'
   version '0.26-1'
+  compatibility 'all'
   source_url 'https://releases.pagure.org/mlocate/mlocate-0.26.tar.xz'
   source_sha256 '3063df79fe198fb9618e180c54baf3105b33d88fe602ff2d8570aaf944f1263e'
 

@@ -4,6 +4,7 @@ class Sshuttle < Package
   description 'Full-featured VPN over an SSH tunnel'
   homepage 'https://github.com/sshuttle/sshuttle'
   version '0.78.3'
+  compatibility 'all'
   source_url 'https://github.com/sshuttle/sshuttle/archive/v0.78.3.tar.gz'
   source_sha256 '62c18b4d89e654687247a334e0ebaec675d38dfbedc6863d8d65044d37241b0f'
 
@@ -19,12 +20,6 @@ class Sshuttle < Package
        i686: '5ffe9107c4521deeda7a3923badad164b022bdaa9dcfa2b42b6a03577c1bfb26',
      x86_64: '190a0ae5caaf93289b624a7dacbbeb22bcba4c4987bedf5d04e5e7d65323f4fa',
   })
-
-  depends_on 'python3'
-
-  def self.build
-    nil
-  end
 
   def self.install
     system "pip3 install sshuttle --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
