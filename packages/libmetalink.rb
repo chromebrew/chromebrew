@@ -4,12 +4,8 @@ require 'package'
 class Libmetalink < Package
   description 'libmetalink is a Metalink library written in C language.'
   homepage 'https://launchpad.net/libmetalink/'
-<<<<<<< HEAD
   compatibility 'all'
-  version '0.1.3'
-=======
   version '0.1.3-1'
->>>>>>> master
   source_url 'https://launchpad.net/libmetalink/trunk/libmetalink-0.1.3/+download/libmetalink-0.1.3.tar.xz'
   source_sha256 '86312620c5b64c694b91f9cc355eabbd358fa92195b3e99517504076bf9fe33a'
 
