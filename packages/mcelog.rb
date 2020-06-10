@@ -4,6 +4,7 @@ class Mcelog < Package
   description 'logs and accounts machine checks (in particular memory, IO, and CPU hardware errors) on modern x86 Linux systems.'
   homepage 'https://www.mcelog.org/'
   version '165'
+  compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-165.tar.gz'
   source_sha256 'a18fdef9cfe2dfaefa09087c616c376a301dc87b1fa14a37476d97370962c668'
 

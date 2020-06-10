@@ -4,6 +4,7 @@ class Json2xml < Package
   description 'json to xml converter'
   homepage 'https://github.com/vinitkumar/json2xml'
   version '2.1.0-1'
+  compatibility 'all'
   source_url 'https://github.com/vinitkumar/json2xml/archive/v2.1.0.tar.gz'
   source_sha256 '61c7c848f7dc74d09ecc10badaa69902859483ea4e3b13148a83173af564aeea'
 

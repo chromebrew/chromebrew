@@ -4,6 +4,7 @@ class Iniparser < Package
   description 'stand-alone ini parser library in ANSI C'
   homepage 'http://ndevilla.free.fr/iniparser/'
   version '4.1'
+  compatibility 'all'
   source_url 'https://github.com/ndevilla/iniparser/archive/v4.1.tar.gz'
   source_sha256 '960daa800dd31d70ba1bacf3ea2d22e8ddfc2906534bf328319495966443f3ae'
 

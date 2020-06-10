@@ -4,6 +4,7 @@ class Aspell_en < Package
   description 'English Aspell Dictionary'
   homepage 'https://ftpmirror.gnu.org/aspell/dict/0index.html'
   version '2019.10.06-0'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/aspell/dict/en/aspell6-en-2019.10.06-0.tar.bz2'
   source_sha256 '24334b4daac6890a679084f4089e1ce7edbe33c442ace776fa693d8e334f51fd'
 

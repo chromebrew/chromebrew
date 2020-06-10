@@ -4,6 +4,7 @@ class Augeas < Package
   description 'Augeas is a configuration editing tool that parses native formats and transforms them into a tree.'
   homepage 'http://augeas.net/'
   version '1.12.0'
+  compatibility 'all'
   source_url 'http://download.augeas.net/augeas-1.12.0.tar.gz'
   source_sha256 '321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87'
 

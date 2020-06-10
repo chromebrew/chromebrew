@@ -4,6 +4,7 @@ class Freeimage < Package
   description 'FreeImage is an Open Source library project for developers who would like to support popular graphics image formats like PNG, BMP, JPEG, TIFF and others as needed by today\'s multimedia applications.'
   homepage 'http://freeimage.sourceforge.net/'
   version '3.18.0'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/3.18.0/FreeImage3180.zip'
   source_sha256 'f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd'
 

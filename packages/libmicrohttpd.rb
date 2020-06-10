@@ -4,6 +4,7 @@ class Libmicrohttpd < Package
   description 'GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application.'
   homepage 'https://www.gnu.org/software/libmicrohttpd/'
   version '0.9.58'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-0.9.58.tar.gz'
   source_sha256 '7a11e1376c62ff95bd6d2dfe6799d57ac7cdbcb32f70bfbd5e47c71f373e01f3'
 

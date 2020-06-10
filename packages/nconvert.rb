@@ -4,6 +4,7 @@ class Nconvert < Package
   description 'Command Line Batch utility for images'
   homepage 'https://www.xnview.com/en/nconvert/'
   version '6.88'
+  compatibility 'i686,x86_64'
   case ARCH
   when 'x86_64'
     source_url 'https://download.xnview.com/NConvert-linux64.tgz'

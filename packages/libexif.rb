@@ -4,6 +4,7 @@ class Libexif < Package
   description 'A library for parsing, editing, and saving EXIF data'
   homepage 'https://libexif.github.io/'
   version '0.6.21'
+  compatibility 'all'
   source_url 'https://github.com/libexif/libexif/archive/libexif-0_6_21-release.tar.gz'
   source_sha256 '8cb37aa1745ca9050403c501ad4da2924e98ec5460bbd5c9d09bd57f0c746636'
 

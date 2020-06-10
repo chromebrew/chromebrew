@@ -4,6 +4,7 @@ class Banner < Package
   description 'An implementation of the traditional Unix-program used to display large characters.'
   homepage 'http://shh.thathost.com/pub-unix/#banner'
   version '1.3.2'
+  compatibility 'all'
   source_url 'http://shh.thathost.com/pub-unix/files/banner-1.3.2.tar.gz'
   source_sha256 '0dc0ac0667b2e884a7f5ad3e467af68cd0fd5917f8c9aa19188e6452aa1fc6d5'
 

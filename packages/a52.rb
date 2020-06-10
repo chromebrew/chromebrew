@@ -4,6 +4,7 @@ class A52 < Package
   description 'liba52 is a free library for decoding ATSC A/52 streams.'
   homepage 'http://liba52.sourceforge.net/'
   version '0.7.4'
+  compatibility 'all'
   source_url 'http://liba52.sourceforge.net/files/a52dec-0.7.4.tar.gz'
   source_sha256 'a21d724ab3b3933330194353687df82c475b5dfb997513eef4c25de6c865ec33'
 

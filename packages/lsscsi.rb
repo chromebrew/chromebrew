@@ -4,6 +4,7 @@ class Lsscsi < Package
   description 'The lsscsi command lists information about SCSI devices in Linux.'
   homepage 'http://sg.danny.cz/scsi/lsscsi.html'
   version '0.28'
+  compatibility 'all'
   source_url 'https://github.com/hreinecke/lsscsi/archive/v0.28.tar.gz'
   source_sha256 'eec0c2c10b30d58aa8d7c7703ccbca92215939632ce3fea599f280f8390553e6'
 

@@ -4,6 +4,7 @@ class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '7.4.6'
+  compatibility 'all'
   source_url 'https://www.php.net/distributions/php-7.4.6.tar.xz'
   source_sha256 'd740322f84f63019622b9f369d64ea5ab676547d2bdcf12be77a5a4cffd06832'
 

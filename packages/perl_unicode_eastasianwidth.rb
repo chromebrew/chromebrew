@@ -4,6 +4,7 @@ class Perl_unicode_eastasianwidth < Package
   description 'Perl Unicode::EastAsianWidth - East Asian Width properties.'
   homepage 'https://metacpan.org/pod/Unicode::EastAsianWidth'
   version '1.33'
+  compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-1.33.tar.gz'
   source_sha256 '41c9f0b50c45dd806a97de73f9fe93516b6c63255e2a5174e5fb2d89635c7797'
 

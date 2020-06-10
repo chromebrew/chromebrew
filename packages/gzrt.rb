@@ -4,6 +4,7 @@ class Gzrt < Package
   description 'The gzip Recovery Toolkit'
   homepage 'https://www.urbanophile.com/arenn/hacking/gzrt/gzrt.html'
   version '0.8'
+  compatibility 'all'
   source_url 'https://www.urbanophile.com/arenn/hacking/gzrt/gzrt-0.8.tar.gz'
   source_sha256 'b0b7dc53dadd8309ad9f43d6d6be7ac502c68ef854f1f9a15bd7f543e4571fee'
 

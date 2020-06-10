@@ -4,6 +4,7 @@ class Icon_naming_utils < Package
   description 'Icon naming utils'
   homepage 'http://tango-project.org/'
   version '0.8.90'
+  compatibility 'all'
   source_url 'https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/icon-naming-utils/0.8.90-2/icon-naming-utils_0.8.90.orig.tar.gz'
   source_sha256 '044ab2199ed8c6a55ce36fd4fcd8b8021a5e21f5bab028c0a7cdcf52a5902e1c'
 

@@ -4,6 +4,7 @@ class Gpgme < Package
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
   version '1.11.1'
+  compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.11.1.tar.bz2'
   source_sha256 '2d1b111774d2e3dd26dcd7c251819ce4ef774ec5e566251eb9308fa7542fbd6f'
 

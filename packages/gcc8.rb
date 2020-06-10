@@ -4,6 +4,7 @@ class Gcc8 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
   version '8.3.0'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz'
   source_sha256 '64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c'
 

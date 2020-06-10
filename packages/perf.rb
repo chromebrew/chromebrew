@@ -4,6 +4,7 @@ class Perf < Package
   description 'Linux profiling with performance counters'
   homepage 'https://perf.wiki.kernel.org/index.php/Main_Page'
   version '4.14'
+  compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 

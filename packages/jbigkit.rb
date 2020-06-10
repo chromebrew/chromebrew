@@ -4,6 +4,7 @@ class Jbigkit < Package
   description 'JBIG-KIT is a software implementation of the JBIG1 data compression standard'
   homepage 'https://www.cl.cam.ac.uk/~mgk25/jbigkit/'
   version '2.1'
+  compatibility 'all'
   source_url 'https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-2.1.tar.gz'
   source_sha256 'de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932'
 

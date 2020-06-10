@@ -4,8 +4,12 @@ class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
   version '1.43.1'
-  source_url 'https://github.com/rust-lang/rust/archive/1.43.1.tar.gz'
-  source_sha256 'f4347087837a566bef5b9252428bbd92c7e12f31e601868acaa62ec2adb1b1c2'
+  compatibility 'aarch64,armv7l,x86_64'
+  case ARCH
+  when 'aarch64', 'armv7l', 'x86_64'
+    source_url 'https://github.com/rust-lang/rust/archive/1.43.1.tar.gz'
+    source_sha256 'f4347087837a566bef5b9252428bbd92c7e12f31e601868acaa62ec2adb1b1c2'
+  end
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.43.1-chromeos-armv7l.tar.xz',

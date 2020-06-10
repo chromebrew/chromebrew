@@ -4,6 +4,7 @@ class Pdfcrack < Package
   description 'pdfcrack is a command line, password recovery tool for PDF-files.'
   homepage 'https://sourceforge.net/projects/pdfcrack'
   version '0.16'
+  compatibility 'all'
   source_url 'https://sourceforge.net/projects/pdfcrack/files/pdfcrack/pdfcrack-0.16/pdfcrack-0.16.tar.gz'
   source_sha256 '7865b203074ccfd5c612c8ce00c46ffcb4fabaa26154ce9304dfc668c7cb73ef'
 

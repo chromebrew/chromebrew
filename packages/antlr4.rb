@@ -4,6 +4,7 @@ class Antlr4 < Package
   description 'ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files.'
   homepage 'http://www.antlr.org/'
   version '4.7.1'
+  compatibility 'all'
   source_url 'https://raw.githubusercontent.com/antlr/antlr4/4.7.1/README.md'
   source_sha256 '70a58ea4c4f5ed23306313782bc13f36c3529d9a990e95ab273d5deed9286d4f'
 

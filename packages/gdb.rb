@@ -4,6 +4,7 @@ class Gdb < Package
   description 'GDB, the GNU Project debugger, allows you to see what is going on \'inside\' another program while it executes -- or what another program was doing at the moment it crashed.'
   homepage 'https://www.gnu.org/software/gdb/'
   version '8.3'
+  compatibility 'all'
   source_url 'http://ftpmirror.gnu.org/gdb/gdb-8.3.tar.xz'
   source_sha256 '802f7ee309dcc547d65a68d61ebd6526762d26c3051f52caebe2189ac1ffd72e'
 

@@ -4,6 +4,7 @@ class Libstrophe < Package
   description 'A simple, lightweight C library for writing XMPP clients'
   homepage 'http://strophe.im/libstrophe/'
   version '0.9.2'
+  compatibility 'all'
   source_url 'https://github.com/strophe/libstrophe/archive/0.9.2.tar.gz'
   source_sha256 '158145bc1565a5fd0bbd7f57e3e15d768e58b8a460897ab5918a5a689d67ae6f'
 

@@ -4,6 +4,7 @@ class Keychain < Package
   description 'Keychain helps you to manage SSH and GPG keys in a convenient and secure manner.'
   homepage 'https://www.funtoo.org/Keychain'
   version '2.8.5'
+  compatibility 'all'
   source_url 'https://github.com/funtoo/keychain/archive/2.8.5.tar.gz'
   source_sha256 'dcce703e5001211c8ebc0528f45b523f84d2bceeb240600795b4d80cb8475a0b'
 

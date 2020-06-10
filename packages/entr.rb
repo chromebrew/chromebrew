@@ -4,6 +4,7 @@ class Entr < Package
   description 'Run arbitrary commands when files change'
   homepage 'http://entrproject.org/'
   version '4.0'
+  compatibility 'all'
   source_url 'http://entrproject.org/code/entr-4.0.tar.gz'
   source_sha256 '4ad4fe9108b179199951cfc78a581a8a69602b073dae59bcae4b810f6e1f6c8b'
 

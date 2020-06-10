@@ -4,6 +4,7 @@ class Texinfo < Package
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
   version '6.7'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/texinfo/texinfo-6.7.tar.xz'
   source_sha256 '988403c1542d15ad044600b909997ba3079b10e03224c61188117f3676b02caa'
 

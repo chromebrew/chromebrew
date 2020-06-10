@@ -4,6 +4,7 @@ class Gnuplot < Package
   description 'Gnuplot is a portable command-line driven graphing utility'
   homepage 'http://gnuplot.sourceforge.net/'
   version '5.2.6'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/gnuplot/gnuplot/5.2.6/gnuplot-5.2.6.tar.gz'
   source_sha256 '35dd8f013139e31b3028fac280ee12d4b1346d9bb5c501586d1b5a04ae7a94ee'
 

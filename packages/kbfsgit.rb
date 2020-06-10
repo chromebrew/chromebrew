@@ -4,6 +4,7 @@ class Kbfsgit < Package
   description 'Keybase encrypted git repositories.'
   homepage 'https://keybase.io/docs/kbfs'
   version '1.0.40'
+  compatibility 'all'
   source_url 'https://github.com/keybase/kbfs/archive/v1.0.40.tar.gz'
   source_sha256 '2bbbfd2eb7ed12295375a182656af6dcc509827f7ed83c2b1dd0f72f56853fa5'
 

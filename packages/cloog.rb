@@ -4,6 +4,7 @@ class Cloog < Package
   description 'The CLooG Code Generator in the Polytope Model'
   homepage 'https://github.com/periscop/cloog'
   version '0.20.0'
+  compatibility 'all'
   source_url 'https://github.com/periscop/cloog/releases/download/cloog-0.20.0/cloog-0.20.0.tar.gz'
   source_sha256 '835c49951ff57be71dcceb6234d19d2cc22a3a5df84aea0a9d9760d92166fc72'
 

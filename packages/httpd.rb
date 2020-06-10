@@ -4,6 +4,7 @@ class Httpd < Package
   description 'The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.'
   homepage 'https://httpd.apache.org/'
   version '2.4.39'
+  compatibility 'all'
   source_url 'https://www-us.apache.org/dist/httpd/httpd-2.4.39.tar.gz'
   source_sha256 '8b95fe249f3a6c50aad3ca125eef3e02d619116cde242e1bc3c266b7b5c37c30'
 

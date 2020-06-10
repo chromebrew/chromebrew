@@ -4,6 +4,7 @@ class Sphinx < Package
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation'
   homepage 'http://www.sphinx-doc.org/en/master/'
   version '2.4.4'
+  compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinx/archive/v2.4.4.tar.gz'
   source_sha256 '1b011dd7e965a87e93766dc64aaee2f08f800cb32a412b5bd2582b7e5660000c'
 

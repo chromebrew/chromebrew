@@ -4,6 +4,7 @@ class Q < Package
   description 'q is a command line tool that allows direct execution of SQL-like queries on CSVs/TSVs (and any other tabular text files).'
   homepage 'http://harelba.github.io/q/'
   version '1.7.1'
+  compatibility 'all'
   source_url 'https://github.com/harelba/q/archive/1.7.1.tar.gz'
   source_sha256 'cf0f2ca3ecb88fedf6232d5ce5931afc90eae1db8fdef78b17933d46e9f9f678'
 

@@ -4,6 +4,7 @@ class Bacula < Package
   description 'Bacula is a set of computer programs that permits the system administrator to manage backup, recovery, and verification of computer data across a network of computers of different kinds.'
   homepage 'https://www.bacula.org/'
   version '9.4.2'
+  compatibility 'all'
   source_url 'https://www.bacula.org/download/7471/bacula-9.4.2.tar.gz'
   source_sha256 'a40d04d2c48135972cecb6578405e835c4b9d798c0950017de0fad40ca94e8a0'
 

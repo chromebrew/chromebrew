@@ -4,6 +4,7 @@ class Xorg_wacom_driver < Package
   description 'The Xorg Wacom Driver package contains the X.Org X11 driver and SDK for Wacom and Wacom-like tablets. It is not required to use a Wacom tablet, the xf86-input-evdev driver can handle these devices without problems.'
   homepage 'https://www.x.org'
   version '0.36.0'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/linuxwacom/xf86-input-wacom-0.36.0.tar.bz2'
   source_sha256 'eae7c5d2872b1433c8d679bb42b00213403eb2a0544c514f4df2b586284c23f6'
 
@@ -23,13 +24,13 @@ class Xorg_wacom_driver < Package
   depends_on 'xorg_server' => :build
 
   def self.build
-    system "./configure",
+    system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           "--enable-shared",
-           "--disable-static",
-           "--with-systemd-unit-dir=no"
-    system "make"
+           '--enable-shared',
+           '--disable-static',
+           '--with-systemd-unit-dir=no'
+    system 'make'
   end
 
   def self.check
@@ -37,6 +38,6 @@ class Xorg_wacom_driver < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
   end
 end

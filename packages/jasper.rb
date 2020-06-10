@@ -4,6 +4,7 @@ class Jasper < Package
   description 'The JasPer Project is an open-source initiative to provide a free software-based reference implementation of the codec specified in the JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1).'
   homepage 'http://www.ece.uvic.ca/~frodo/jasper/'
   version '2.0.16'
+  compatibility 'all'
   source_url 'https://github.com/mdadams/jasper/archive/version-2.0.16.tar.gz'
   source_sha256 'f1d8b90f231184d99968f361884e2054a1714fdbbd9944ba1ae4ebdcc9bbfdb1'
 

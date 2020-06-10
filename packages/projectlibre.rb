@@ -4,6 +4,7 @@ class Projectlibre < Package
   description 'ProjectLibre is project management software, the leading alternative to Microsoft Project.'
   homepage 'https://www.projectlibre.com/'
   version '1.9.1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/1.9.1/projectlibre-1.9.1.tar.gz'
   source_sha256 '65ca96728eb5a31c3e23eb43181dde367d785a86b82f330ca52bc7b51c74a5bb'
 

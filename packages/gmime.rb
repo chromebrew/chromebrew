@@ -4,6 +4,7 @@ class Gmime < Package
   description 'GMime is a powerful MIME (Multipurpose Internet Mail Extension) utility library. It is meant for creating, editing, and parsing MIME messages and structures.'
   homepage 'https://developer.gnome.org/gmime/'
   version '3.2.3'
+  compatibility 'all'
   source_url 'https://github.com/jstedfast/gmime/archive/3.2.3.tar.gz'
   source_sha256 '5190dd45e297e2bdeca4b14b7055d37ec07b0fa1fe936159bdb69ddb7c91dd53'
 

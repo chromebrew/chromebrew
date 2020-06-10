@@ -4,6 +4,7 @@ class Libdb < Package
   description 'Berkeley DB is a family of embedded key-value database libraries providing scalable high-performance data management services to applications.'
   homepage 'http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html'
   version '6.2.32'
+  compatibility 'all'
   source_url 'https://download.oracle.com/berkeley-db/db-6.2.32.tar.gz'
   source_sha256 'a9c5e2b004a5777aa03510cfe5cd766a4a3b777713406b02809c17c8e0e7a8fb'
 

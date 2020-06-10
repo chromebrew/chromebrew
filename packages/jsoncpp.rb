@@ -4,6 +4,7 @@ class Jsoncpp < Package
   description 'A C++ library for interacting with JSON.'
   homepage 'https://github.com/open-source-parsers/jsoncpp'
   version '1.8.4'
+  compatibility 'all'
   source_url 'https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz'
   source_sha256 'c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6'
 
