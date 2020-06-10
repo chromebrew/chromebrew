@@ -4,6 +4,7 @@ class Tk < Package
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'http://www.tcl.tk/'
   version '8.6.10'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/tcl/Tcl/8.6.10/tk8.6.10-src.tar.gz'
   source_sha256 '63df418a859d0a463347f95ded5cd88a3dd3aaa1ceecaeee362194bc30f3e386'
 

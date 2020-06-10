@@ -4,6 +4,7 @@ class Libxaw < Package
   description 'X.org X Athena Widgets Library'
   homepage 'http://www.x.org'
   version '1.0.13'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXaw-1.0.13.tar.gz'
   source_sha256 '7e74ac3e5f67def549722ff0333d6e6276b8becd9d89615cda011e71238ab694'
 

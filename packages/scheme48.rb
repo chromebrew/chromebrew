@@ -4,6 +4,7 @@ class Scheme48 < Package
   description 'Scheme byte-code interpreter'
   homepage 'http://s48.org/'
   version '1.9.2'
+  compatibility 'all'
   source_url 'http://s48.org/1.9.2/scheme48-1.9.2.tgz'
   source_sha256 '9c4921a90e95daee067cd2e9cc0ffe09e118f4da01c0c0198e577c4f47759df4'
 

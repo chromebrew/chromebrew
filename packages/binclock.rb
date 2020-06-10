@@ -4,6 +4,7 @@ class Binclock < Package
   description 'Ncurses clock, with time displayed in colourful binary'
   homepage 'https://github.com/JohnAnthony/Binary-Clock'
   version '3883e8'
+  compatibility 'all'
   source_url 'https://github.com/JohnAnthony/Binary-Clock/archive/3883e8876576a45162b9a128d8317b20f98c5140.tar.gz'
   source_sha256 'e8caa26437301c70bf9840901db9e46d32b99c0ec8b442562f96390e28f35408'
 

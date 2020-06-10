@@ -4,6 +4,7 @@ class Libuv < Package
   description 'libuv is a multi-platform support library with a focus on asynchronous I/O.'
   homepage 'http://libuv.org/'
   version '1.33.1'
+  compatibility 'all'
   source_url 'https://dist.libuv.org/dist/v1.33.1/libuv-v1.33.1.tar.gz'
   source_sha256 'b4b5dc15103f7bbfecb81a0a9575841fdb7217b9f709634be8118972c1c8ce27'
 

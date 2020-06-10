@@ -4,6 +4,7 @@ class Freeglut < Package
   description 'FreeGLUT is a free-software/open-source alternative to the OpenGL Utility Toolkit (GLUT) library.'
   homepage 'http://freeglut.sourceforge.net/'
   version '3.0.0'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/freeglut/freeglut/3.0.0/freeglut-3.0.0.tar.gz'
   source_sha256 '2a43be8515b01ea82bcfa17d29ae0d40bd128342f0930cd1f375f1ff999f76a2'
 

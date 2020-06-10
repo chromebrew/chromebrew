@@ -4,6 +4,7 @@ class Libaudiofile < Package
   description 'The Audio File Library is a C-based library for reading and writing audio files in many common formats.'
   homepage 'https://audiofile.68k.org/'
   version 'b62c90'
+  compatibility 'all'
   source_url 'https://github.com/mpruett/audiofile/archive/b62c902dd258125cac86cd2df21fc898035a43d3.tar.gz'
   source_sha256 '808aff989a24ee3b60d3f08897d90ca45a031c95c42fe22d4fd913042c1ce307'
 

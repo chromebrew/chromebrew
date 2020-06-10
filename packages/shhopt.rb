@@ -4,6 +4,7 @@ class Shhopt < Package
   description 'C-functions for parsing command line options, both traditional one-character options, and GNU\'ish --long-options.'
   homepage 'http://shh.thathost.com/pub-unix/#sshopt'
   version '1.1.7-2'
+  compatibility 'all'
   source_url 'http://shh.thathost.com/pub-unix/files/shhopt-1.1.7.tar.gz'
   source_sha256 'bae94335124efa6fcc2f0a55cabd68c9c90be935bcdb8054d7e5188e0d5da679'
 

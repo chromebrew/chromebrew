@@ -4,6 +4,7 @@ class Mypaint_brushes < Package
   description 'Brushes used by MyPaint and other software using libmypaint.'
   homepage 'https://github.com/Jehan/mypaint-brushes'
   version '1.3.0'
+  compatibility 'all'
   source_url 'https://github.com/Jehan/mypaint-brushes/archive/v1.3.0/mypaint-brushes-v1.3.0.tar.gz'
   source_sha256 '704bb6420e65085acfd7a61d6050e96b0395c5eab078433f11406c355f16b214'
 

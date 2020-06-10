@@ -4,6 +4,7 @@ class Xcb_util_image < Package
   description 'The xcb-util-image package provides additional extensions to the XCB library.'
   homepage 'http://xcb.freedesktop.org'
   version '0.4.0'
+  compatibility 'all'
   source_url 'https://xcb.freedesktop.org/dist/xcb-util-image-0.4.0.tar.bz2'
   source_sha256 '2db96a37d78831d643538dd1b595d7d712e04bdccf8896a5e18ce0f398ea2ffc'
 
@@ -24,11 +25,10 @@ class Xcb_util_image < Package
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-
 end

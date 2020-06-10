@@ -4,6 +4,7 @@ class Sejda_console < Package
   description 'Sejda SDK is an open source, task oriented Java library to edit PDF files.'
   homepage 'http://sejda.org/'
   version '3.2.46'
+  compatibility 'all'
   source_url 'https://github.com/torakiki/sejda/releases/download/v3.2.46/sejda-console-3.2.46-bin.zip'
   source_sha256 '11654d11f15f41d9f3c54ee90efd8477687193c1cb7b1f40db69d901e9cbde2f'
 

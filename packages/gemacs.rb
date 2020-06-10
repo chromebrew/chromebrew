@@ -4,6 +4,7 @@ class Gemacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'https://www.gnu.org/software/emacs/'
   version '26.3'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/emacs/emacs-26.3.tar.xz'
   source_sha256 '4d90e6751ad8967822c6e092db07466b9d383ef1653feb2f95c93e7de66d3485'
 

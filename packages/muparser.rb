@@ -4,6 +4,7 @@ class Muparser < Package
   description 'muParser is an extensible high performance math expression parser library written in C++.'
   homepage 'http://beltoforion.de/article.php?a=muparser'
   version '2.6.1'
+  compatibility 'all'
   source_url 'https://github.com/beltoforion/muparser/archive/v2.2.6.1.tar.gz'
   source_sha256 'd2562853d972b6ddb07af47ce8a1cdeeb8bb3fa9e8da308746de391db67897b3'
 

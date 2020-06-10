@@ -4,6 +4,7 @@ class Genstats < Package
   description 'genstats is a general statistics generator.'
   homepage 'https://www.vanheusden.com/genstats/'
   version '1.2'
+  compatibility 'all'
   source_url 'https://www.vanheusden.com/genstats/genstats-1.2.tgz'
   source_sha256 'f0fb9f29750cdaa85dba648709110c0bc80988dd6a98dd18a53169473aaa6ad3'
 

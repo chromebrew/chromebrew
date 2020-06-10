@@ -4,6 +4,7 @@ class Ibmonitor < Package
   description 'ibmonitor is an interactive bandwidth monitor console application.'
   homepage 'http://ibmonitor.sourceforge.net/'
   version '1.4'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/ibmonitor/ibmonitor/v1.4/ibmonitor-1.4.tar.gz'
   source_sha256 '331dac4553b5c336d1db3d35176ecebeaf15b39ad0432372cba583324a222e28'
 

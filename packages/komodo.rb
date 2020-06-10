@@ -4,6 +4,7 @@ class Komodo < Package
   description 'Komodo Edit is a great editor if you\'re looking for something powerful, yet simple.'
   homepage 'https://www.activestate.com/products/komodo-edit/'
   version '11.1.1'
+  compatibility 'all'
   case ARCH
   when 'i686'
     source_url 'https://downloads.activestate.com/Komodo/releases/11.1.1/Komodo-Edit-11.1.1-18206-linux-x86.tar.gz'

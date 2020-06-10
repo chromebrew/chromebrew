@@ -4,6 +4,7 @@ class Vamp_sdk < Package
   description 'Vamp is an audio processing plugin system for plugins that extract descriptive information from audio data — typically referred to as audio analysis plugins or audio feature extraction plugins.'
   homepage 'https://vamp-plugins.org/'
   version '2.9.0'
+  compatibility 'all'
   source_url 'https://code.soundsoftware.ac.uk/attachments/download/2588/vamp-plugin-sdk-2.9.0.tar.gz'
   source_sha256 'b72a78ef8ff8a927dc2ed7e66ecf4c62d23268a5d74d02da25be2b8d00341099'
 

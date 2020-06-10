@@ -4,6 +4,7 @@ class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.haxx.se/'
   version '7.70.0'
+  compatibility 'all'
   source_url 'https://curl.haxx.se/download/curl-7.70.0.tar.xz'
   source_sha256 '032f43f2674008c761af19bf536374128c16241fb234699a55f9fb603fcfbae7'
 

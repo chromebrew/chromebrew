@@ -4,6 +4,7 @@ class Librsvg < Package
   description 'Scalable Vector Graphics (SVG) rendering library.'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
   version '2.42.3'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/librsvg/2.42/librsvg-2.42.3.tar.xz'
   source_sha256 '704f2c44b9b170fc5498de36a161d01ca8f584ba9c42654b98565a7b7bcbe657'
 

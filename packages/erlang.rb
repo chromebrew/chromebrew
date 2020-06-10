@@ -4,6 +4,7 @@ class Erlang < Package
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
   homepage 'http://www.erlang.org/'
   version '20.3'
+  compatibility 'all'
   source_url 'http://erlang.org/download/otp_src_20.3.tar.gz'
   source_sha256 '4e19e6c403d5255531c0b870f19511c8b8e3b080618e4f9efcb44d905935b2a1'
 

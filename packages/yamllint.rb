@@ -4,6 +4,7 @@ class Yamllint < Package
   description 'A linter for YAML files.'
   homepage 'https://github.com/adrienverge/yamllint'
   version '1.11.1'
+  compatibility 'all'
   source_url 'https://github.com/adrienverge/yamllint/archive/v1.11.1.tar.gz'
   source_sha256 '56221b7c0a50b1619e491eb157624a5d1b160c1a4f019d64f117268f42fe4ca4'
 
@@ -19,8 +20,6 @@ class Yamllint < Package
        i686: '5cf8682e924268a750cd34433bb2a99698d8c31460c25495be924210617ba40f',
      x86_64: 'fa88bcfa61c580b18e421518bd1f2078dcd2f8fc050e6c564643fdf46c074191',
   })
-
-  depends_on 'setuptools'
 
   def self.build
     system 'python3 setup.py sdist'

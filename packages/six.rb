@@ -4,6 +4,7 @@ class Six < Package
   description 'Six is a Python 2 and 3 compatibility library.'
   homepage 'https://github.com/benjaminp/six'
   version '1.14.0'
+  compatibility 'all'
   source_url 'https://github.com/benjaminp/six/archive/1.14.0.tar.gz'
   source_sha256 '6efff7289d1d369f0a25180433aba83ec2584e489e90f115b52ba69e4816cfb4'
 

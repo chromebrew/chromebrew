@@ -4,10 +4,14 @@ class Skype < Package
   description 'Skype is a telecommunications application that specializes in providing video chat and voice calls between devices'
   homepage 'https://www.skype.com/en/'
   version '8.56.0.103'
+  compatibility 'x86_64'
   case ARCH
   when 'x86_64'
     source_url 'file:///dev/null'
     source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+    depends_on 'alien' => :build
+    depends_on 'gtk3'
+    depends_on 'sommelier'
   end
 
   binary_url ({
@@ -16,10 +20,6 @@ class Skype < Package
   binary_sha256 ({
     x86_64: '1670a0c74ac08b224034aefbd27f3d03b89529e7168dc84ac095944a1aa93736',
   })
-
-  depends_on 'alien' => :build
-  depends_on 'gtk3'
-  depends_on 'sommelier'
 
   def self.build
     system 'wget https://go.skype.com/skypeforlinux-64.deb'

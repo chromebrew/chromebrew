@@ -4,7 +4,7 @@ class Gdrive < Package
   description 'Google Drive CLI Client'
   homepage 'https://www.google.com/drive/'
   version '2.1.0'
-
+  compatibility 'all'
   source_url 'https://github.com/prasmussen/gdrive/archive/2.1.0.tar.gz'
   source_sha256 'a1ea624e913e258596ea6340c8818a90c21962b0a75cf005e49a0f72f2077b2e'
 

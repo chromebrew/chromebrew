@@ -4,6 +4,7 @@ class Github_cli < Package
   description 'Official Github CLI tool'
   homepage 'https://cli.github.com/'
   version '0.9.0'
+  compatibility 'all'
   source_url 'https://github.com/cli/cli/archive/v0.9.0.tar.gz'
   source_sha256 '318295e5a662f785662751f1e2cd4b1f613ec3aced1c4e7f1755d27922dbfdbf'
 

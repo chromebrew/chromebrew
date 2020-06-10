@@ -4,6 +4,7 @@ class Nss_mdns < Package
   description 'NSS module for Multicast DNS name resolution'
   homepage 'https://salsa.debian.org/debian/nss-mdns'
   version '0.14.1'
+  compatibility 'all'
   source_url 'http://http.debian.net/debian/pool/main/n/nss-mdns/nss-mdns_0.14.1.orig.tar.gz'
   source_sha256 'a2094101b735cade45048764ea594bdae2bfa9399837f3c852a5b264416e9c8c'
 

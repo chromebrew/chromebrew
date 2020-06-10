@@ -4,6 +4,7 @@ class Libofx < Package
   description 'The LibOFX library is a parser and an API designed to allow applications to very easily support OFX command responses, usually provided by financial institutions for statement downloads.'
   homepage 'http://libofx.sourceforge.net/'
   version '0.9.13'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/libofx/libofx/libofx-0.9.13.tar.gz'
   source_sha256 '57eaf97cddbaf82c24f26b8f5cf8b2fbfd4969c74500a2c9acc9082b83bcc0e4'
 

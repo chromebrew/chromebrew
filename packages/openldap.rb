@@ -4,6 +4,7 @@ class Openldap < Package
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
   version '2.4.48'
+  compatibility 'all'
   source_url 'ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.48.tgz'
   source_sha256 'd9523ffcab5cd14b709fcf3cb4d04e8bc76bb8970113255f372bc74954c6074d'
 

@@ -4,6 +4,7 @@ class Qemacs < Package
   description 'QEmacs (for Quick Emacs) is a very small but powerful UNIX editor.'
   homepage 'http://bellard.org/qemacs/'
   version '0.3.3'
+  compatibility 'all'
   source_url 'http://bellard.org/qemacs/qemacs-0.3.3.tar.gz'
   source_sha256 '2ffba66a44783849282199acfcc08707debc7169394a8fd0902626222f27df94'
 

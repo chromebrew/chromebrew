@@ -4,10 +4,9 @@ class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
   version '1.0.1'
+  compatibility 'all'
   source_url 'https://github.com/hokaccha/nodebrew/archive/v1.0.1.tar.gz'
   source_sha256 'c34e7186d4fd493c5417ad5563ad39fd493a42695bd9a7758c3df10380e43399'
-
-  depends_on 'perl'
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/share/nodebrew"

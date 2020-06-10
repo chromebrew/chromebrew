@@ -4,6 +4,7 @@ class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '7.2.31'
+  compatibility 'all'
   source_url 'https://www.php.net/distributions/php-7.2.31.tar.xz'
   source_sha256 '8beaa634bb878a96af9bc8643811ea46973f5f41ad2bfb6ab4cfd290e5a39806'
 

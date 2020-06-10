@@ -4,6 +4,7 @@ class Oniguruma < Package
   description 'Oniguruma is a modern and flexible regular expressions library.'
   homepage 'https://github.com/kkos/oniguruma'
   version '6.9.3'
+  compatibility 'all'
   source_url 'https://github.com/kkos/oniguruma/archive/v6.9.3.tar.gz'
   source_sha256 'dc6dec742941e24b761cea1b9a2f12e750879107ae69fd80ae1046459d4fb1db'
 

@@ -4,6 +4,7 @@ class Far < Package
   description 'Search and replace operations on file content across multiple files.'
   homepage 'http://findandreplace.sourceforge.net'
   version '2.0.2'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/findandreplace/findandreplace/2.0.2/FAR-2.0.2-x.tar.gz'
   source_sha256 '0b2c796bdcc088be960f15cb4e348f8af62f74afbdacc188c3c101c2f502204d'
 

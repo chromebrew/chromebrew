@@ -4,6 +4,7 @@ class Proj4 < Package
   description 'proj.4 is a standard Unix filter function which converts geographic longitude and latitude coordinates into cartesian coordinates (and vice versa), and it is a C API for software developers to include coordinate transformation in their own software.'
   homepage 'http://proj4.org/'
   version '5.0.1'
+  compatibility 'all'
   source_url 'https://download.osgeo.org/proj/proj-5.0.1.tar.gz'
   source_sha256 'a792f78897482ed2c4e2af4e8a1a02e294c64e32b591a635c5294cb9d49fdc8c'
 

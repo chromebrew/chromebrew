@@ -4,6 +4,7 @@ class Libwacom < Package
   description 'libwacom is a wrapper library for evdev devices.'
   homepage 'http://linuxwacom.sourceforge.net/wiki/index.php/Libwacom'
   version '0.28-0'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/linuxwacom/libwacom-0.28.tar.bz2'
   source_sha256 'e7d632301288b221cb5af69b4c5e57fd062bafd9a9acd6f9ce271570103267ef'
 

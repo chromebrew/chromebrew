@@ -4,6 +4,7 @@ class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
   version '3.6.12'
+  compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.12.tar.xz'
   source_sha256 'bfacf16e342949ffd977a9232556092c47164bd26e166736cf3459a870506c4b'
 
