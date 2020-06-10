@@ -4,6 +4,7 @@ class Gnome_icon_theme < Package
   description 'GNOME Icon Theme'
   homepage 'https://ftp.gnome.org/pub/GNOME/sources/gnome-icon-theme/'
   version '3.12.0-1'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz'
   source_sha256 '359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a'
 

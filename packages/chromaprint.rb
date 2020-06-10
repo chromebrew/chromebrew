@@ -4,6 +4,7 @@ class Chromaprint < Package
   description 'Chromaprint is a client-side library that implements a custom algorithm for extracting fingerprints from any audio source.'
   homepage 'https://acoustid.org/chromaprint'
   version '1.4.3'
+  compatibility 'all'
   source_url 'https://github.com/acoustid/chromaprint/releases/download/v1.4.3/chromaprint-1.4.3.tar.gz'
   source_sha256 'ea18608b76fb88e0203b7d3e1833fb125ce9bb61efe22c6e169a50c52c457f82'
 

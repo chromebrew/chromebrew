@@ -4,6 +4,7 @@ class Gradle < Package
   description 'From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.'
   homepage 'https://gradle.org/'
   version '4.10'
+  compatibility 'all'
   source_url 'https://services.gradle.org/distributions/gradle-4.10-bin.zip'
   source_sha256 '248cfd92104ce12c5431ddb8309cf713fe58de8e330c63176543320022f59f18'
 

@@ -4,6 +4,7 @@ class Fribidi < Package
   description 'GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi).'
   homepage 'https://www.fribidi.org/'
   version '1.0.9'
+  compatibility 'all'
   source_url 'https://github.com/fribidi/fribidi/releases/download/v1.0.9/fribidi-1.0.9.tar.xz'
   source_sha256 'c5e47ea9026fb60da1944da9888b4e0a18854a0e2410bbfe7ad90a054d36e0c7'
 

@@ -4,6 +4,7 @@ class Irssi < Package
   description 'Modular text mode IRC client with Perl scripting'
   homepage 'https://irssi.org/'
   version '1.2.2'
+  compatibility 'all'
   source_url 'https://github.com/irssi/irssi/releases/download/1.2.2/irssi-1.2.2.tar.xz'
   source_sha256 '6727060c918568ba2ff4295ad736128dba0b995d7b20491bca11f593bd857578'
 

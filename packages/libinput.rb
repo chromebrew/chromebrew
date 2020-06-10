@@ -4,6 +4,7 @@ class Libinput < Package
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput'
   version '1.10.2'
+  compatibility 'all'
   source_url 'https://www.freedesktop.org/software/libinput/libinput-1.10.2.tar.xz'
   source_sha256 '1509766d348efe8c6da4285efad3acff4a4c955defb43309e3e4851849197bb9'
 

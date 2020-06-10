@@ -4,6 +4,7 @@ class Pciutils < Package
   description 'The PCI Utilities are a collection of programs for inspecting and manipulating configuration of PCI devices, all based on a common portable library libpci which offers access to the PCI configuration space on a variety of operating systems.'
   homepage 'https://mj.ucw.cz/sw/pciutils/'
   version '3.6.2'
+  compatibility 'all'
   source_url 'https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.6.2.tar.xz'
   source_sha256 'db452ec986edefd88af0d222d22f6102f8030a8633fdfe846c3ae4bde9bb93f3'
 

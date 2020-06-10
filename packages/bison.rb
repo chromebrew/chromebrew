@@ -4,6 +4,7 @@ class Bison < Package
   description 'Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.'
   homepage 'http://www.gnu.org/software/bison/'
   version '3.5.3'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/bison/bison-3.5.3.tar.xz'
   source_sha256 '2bf85b5f88a5f2fa8069aed2a2dfc3a9f8d15a97e59c713e3906e5fdd982a7c4'
 

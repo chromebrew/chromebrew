@@ -4,6 +4,7 @@ class Bmon < Package
   description 'bandwidth monitor and rate estimator'
   homepage 'https://github.com/tgraf/bmon/'
   version '4.0'
+  compatibility 'all'
   source_url 'https://github.com/tgraf/bmon/releases/download/v4.0/bmon-4.0.tar.gz'
   source_sha256 '02fdc312b8ceeb5786b28bf905f54328f414040ff42f45c83007f24b76cc9f7a'
 

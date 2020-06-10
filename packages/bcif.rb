@@ -4,6 +4,7 @@ class Bcif < Package
   description 'The BCIF compression algorithm is an open source method for lossless image compression.'
   homepage 'http://www.researchandtechnology.net/bcif/index.php'
   version '1.0-beta'
+  compatibility 'all'
   source_url 'http://www.researchandtechnology.net/bcif/downloads/bcif_sources_1_0_beta.zip'
   source_sha256 'fe1dde329fa60160d9ac8a0b9e4b9360a9377bc26177eab1a31e07479839d812'
 

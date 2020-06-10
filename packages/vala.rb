@@ -4,6 +4,7 @@ class Vala < Package
   description 'Vala is a programming language that aims to bring modern programming language features to GNOME developers.'
   homepage 'https://wiki.gnome.org/Projects/Vala'
   version '0.46.2'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/vala/0.46/vala-0.46.2.tar.xz'
   source_sha256 '92070393e8102da29e07b29fcb808d021600a25f8a2a69c852470ec8d97740bc'
 

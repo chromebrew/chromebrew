@@ -4,6 +4,7 @@ class Flac < Package
   description 'FLAC stands for Free Lossless Audio Codec, an audio format similar to MP3, but lossless, meaning that audio is compressed in FLAC without any loss in quality.'
   homepage 'https://xiph.org/flac/'
   version '1.3.2'
+  compatibility 'all'
   source_url 'https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz'
   source_sha256 '91cfc3ed61dc40f47f050a109b08610667d73477af6ef36dcad31c31a4a8d53f'
 

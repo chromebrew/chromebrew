@@ -4,6 +4,7 @@ class Lzop < Package
   description 'lzop is a file compressor which is very similar to gzip.'
   homepage 'http://www.lzop.org/'
   version '1.04-1'
+  compatibility 'all'
   source_url 'https://www.lzop.org/download/lzop-1.04.tar.gz'
   source_sha256 '7e72b62a8a60aff5200a047eea0773a8fb205caf7acbe1774d95147f305a2f41'
 

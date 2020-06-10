@@ -4,6 +4,7 @@ class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
   version '8.2.0346'
+  compatibility 'all'
   source_url 'https://github.com/vim/vim/archive/v8.2.0346.tar.gz'
   source_sha256 '418d1cbc9f53f31cb19869b6df0294ca5c377ca2824c759e3f6796edc60e5628'
 
@@ -19,9 +20,6 @@ class Vim_runtime < Package
        i686: '0e39577626ae0a4204782ea561a68f44fe260a34928f39b92cb6922905cde594',
      x86_64: 'f2f37414827f3ea16de09fbdfe39831a6c8a485ce5db8790858077da24ebe545',
   })
-
-  depends_on 'python27' => :build
-  depends_on 'python3' => :build
 
   def self.patch
     # set the system-wide vimrc path

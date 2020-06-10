@@ -4,6 +4,7 @@ class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://www.cups.org/'
   version '2.2.8'
+  compatibility 'all'
   source_url 'https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz'
   source_sha256 '3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4'
 

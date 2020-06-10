@@ -4,6 +4,7 @@ class Mate_calc < Package
   description 'Calculator for MATE.'
   homepage 'https://mate-desktop.org'
   version '1.21'
+  compatibility 'all'
   source_url 'https://pub.mate-desktop.org/releases/1.21/mate-calc-1.21.0.tar.xz'
   source_sha256 'c6b2c4d832f67d5f3d1293cb143e428365077e3cdfe4fc4bb80b3fce5362b51e'
 

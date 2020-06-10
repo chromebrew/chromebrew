@@ -4,6 +4,7 @@ class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
   homepage 'https://www.dartlang.org'
   version '2.7.0'
+  compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/2.7.0/sdk/dartsdk-linux-arm-release.zip'

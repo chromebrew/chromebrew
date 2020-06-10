@@ -6,6 +6,7 @@ class Packer < Package
   description 'Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.'
   homepage 'https://www.packer.io/'
   version '1.4.4'
+  compatibility 'all'
 
   case ARCH
   when 'aarch64'
@@ -21,13 +22,6 @@ class Packer < Package
     source_url 'https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_amd64.zip'
     source_sha256 'b4dc37877a0fd00fc72ebda98977c2133be9ba6b26bcdd13b1b14a369e508948'
   end
-
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
-
-  depends_on 'unzip' => :build
 
   def self.install
     system "install -Dm755 packer #{CREW_DEST_PREFIX}/bin/packer"

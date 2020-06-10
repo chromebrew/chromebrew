@@ -4,6 +4,7 @@ class Rng_tools < Package
   description 'This is a random number generator daemon.'
   homepage 'https://github.com/nhorman/rng-tools'
   version '6.5'
+  compatibility 'all'
   source_url 'https://github.com/nhorman/rng-tools/archive/v6.5.tar.gz'
   source_sha256 '5fecd904f7d01262b3209ff78dd3b9594aac8daa41badd5a1e6438658e80c36e'
 

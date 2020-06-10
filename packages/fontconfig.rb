@@ -4,6 +4,7 @@ class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
   version '2.13.0'
+  compatibility 'all'
   source_url 'https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.13.0.tar.gz'
   source_sha256 'a6ca290637d8b2c4e1dd40549b179202977593f7481ec83ddfb1765ad90037ba'
 

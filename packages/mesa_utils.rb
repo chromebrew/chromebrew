@@ -4,6 +4,7 @@ class Mesa_utils< Package
   description 'Open-source implementation of the OpenGL specification - Provides tools such as glxinfo, glxgears'
   homepage 'https://www.mesa3d.org'
   version '8.4.0'
+  compatibility 'all'
   source_url 'https://mesa.freedesktop.org/archive/demos/mesa-demos-8.4.0.tar.bz2'
   source_sha256 '01e99c94a0184e63e796728af89bfac559795fb2a0d6f506fa900455ca5fff7d'
 

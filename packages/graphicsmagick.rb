@@ -4,6 +4,7 @@ class Graphicsmagick < Package
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
   version '1.3.30'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.30/GraphicsMagick-1.3.30.tar.xz'
   source_sha256 'd965e5c6559f55eec76c20231c095d4ae682ea0cbdd8453249ae8771405659f1'
 

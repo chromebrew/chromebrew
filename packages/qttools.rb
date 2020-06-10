@@ -4,6 +4,7 @@ class Qttools < Package
   description 'Qt Tools'
   homepage 'https://github.com/qt/qttools'
   version '5.12.3'
+  compatibility 'all'
   source_url 'http://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qttools-everywhere-src-5.12.3.tar.xz'
   source_sha256 'c9e92d2f0d369e44bb1a60e9fa6d970f8d9893d653212305e04be5e6daec2cd8'
 

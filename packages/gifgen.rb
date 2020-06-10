@@ -4,6 +4,7 @@ class Gifgen < Package
   description 'Simple high quality GIF encoding'
   homepage 'https://github.com/lukechilds/gifgen'
   version '1.1.2'
+  compatibility 'all'
   source_url 'https://github.com/lukechilds/gifgen/archive/1.1.2.tar.gz'
   source_sha256 '95f69c63158315ad869ff36611026cce1a7d03f8c84716b1c21a44e71e8d6aee'
 

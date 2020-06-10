@@ -4,8 +4,31 @@ class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
   version '7.0.9-9'
-  source_url 'https://imagemagick.org/download/ImageMagick-7.0.9-9.tar.xz'
-  source_sha256 '257c9e11480aef95ea98d13495e3beb360d48c26fa8bd3da2d21c61907111d81'
+  compatibility 'aarch64,armv7l,x86_64'
+  case ARCH
+  when 'aarch64', 'armv7l', 'x86_64'
+    source_url 'https://imagemagick.org/download/ImageMagick-7.0.9-9.tar.xz'
+    source_sha256 '257c9e11480aef95ea98d13495e3beb360d48c26fa8bd3da2d21c61907111d81'
+    depends_on 'flif'
+    depends_on 'freeimage'
+    depends_on 'freetype'
+    depends_on 'ghostscript'
+    depends_on 'graphviz'
+    depends_on 'jbigkit'
+    depends_on 'jemalloc'
+    depends_on 'lzma'
+    depends_on 'libheif'
+    depends_on 'librsvg'
+    depends_on 'libwebp'
+    depends_on 'libwmf'
+    depends_on 'msttcorefonts'
+    depends_on 'openexr'
+    depends_on 'openjpeg'
+    depends_on 'pango'
+    depends_on 'python27'
+    depends_on 'zstd'
+    depends_on 'sommelier'
+  end
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-armv7l.tar.xz',
@@ -17,26 +40,6 @@ class Imagemagick7 < Package
      armv7l: '9588b1c173c83031099a4a201862d599be6915712c23d6ade1b61b926c25db32',
      x86_64: '71026f3fc591cad77b66977ff01a230b4b08e16c23e880b53b2e2dbdeb4b41ae',
   })
-
-  depends_on 'flif'
-  depends_on 'freeimage'
-  depends_on 'freetype'
-  depends_on 'ghostscript'
-  depends_on 'graphviz'
-  depends_on 'jbigkit'
-  depends_on 'jemalloc'
-  depends_on 'lzma'
-  depends_on 'libheif'
-  depends_on 'librsvg'
-  depends_on 'libwebp'
-  depends_on 'libwmf'
-  depends_on 'msttcorefonts'
-  depends_on 'openexr'
-  depends_on 'openjpeg'
-  depends_on 'pango'
-  depends_on 'python27'
-  depends_on 'zstd'
-  depends_on 'sommelier'
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp

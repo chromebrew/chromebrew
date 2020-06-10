@@ -4,6 +4,7 @@ class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
   version '2017'
+  compatibility 'all'
   source_url 'ftp://tug.org/historic/systems/texlive/2017/texlive-20170524-extra.tar.xz'
   source_sha256 'afe49758c26fb51c2fae2e958d3f0c447b5cc22342ba4a4278119d39f5176d7f'
 

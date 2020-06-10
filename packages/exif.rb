@@ -4,6 +4,7 @@ class Exif < Package
   description 'A small command-line utility to show EXIF information hidden in JPEG files'
   homepage 'https://libexif.github.io/'
   version '0.6.21'
+  compatibility 'all'
   source_url 'https://github.com/libexif/exif/archive/exif-0_6_21-release.tar.gz'
   source_sha256 'f55e125eee6c2a75d367d3b388bcd7bea75dc944fabe8671bb32e889192f4b77'
 

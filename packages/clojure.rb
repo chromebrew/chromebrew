@@ -4,6 +4,7 @@ class Clojure < Package
   description 'Clojure is a robust, practical, and fast programming language with a set of useful features that together form a simple, coherent, and powerful tool.'
   homepage 'https://clojure.org/'
   version '1.10.1.469'
+  compatibility 'all'
   source_url 'https://raw.githubusercontent.com/clojure/clojure/clojure-1.10.1/readme.txt'
   source_sha256 '3487545874a31b2c568397be221eb5c9070e220cbf741f1eb4819937200d21a5'
 

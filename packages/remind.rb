@@ -4,6 +4,7 @@ class Remind < Package
   description 'Remind is a sophisticated calendar and alarm program.'
   homepage 'https://www.roaringpenguin.com/products/remind'
   version '03.01.15'
+  compatibility 'all'
   source_url 'https://www.roaringpenguin.com/files/download/remind-03.01.15.tar.gz'
   source_sha256 '8adab4c0b30a556c34223094c5c74779164d5f3b8be66b8039f44b577e678ec1'
 

@@ -4,6 +4,7 @@ class Megatools < Package
   description 'Megatools is a collection of programs for accessing Mega.nz service from a command line of your desktop or server.'
   homepage 'https://megatools.megous.com/'
   version '1.9.98'
+  compatibility 'all'
   source_url 'https://megatools.megous.com/builds/megatools-1.9.98.tar.gz'
   source_sha256 '9b0521a4d27dbc417fc8e12610ac1e1da729bf6d6eb5bef927ef3670b372a16f'
 

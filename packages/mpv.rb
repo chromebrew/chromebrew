@@ -4,6 +4,7 @@ class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
   version '0.30.0'
+  compatibility 'all'
   source_url 'https://github.com/mpv-player/mpv/archive/v0.30.0.tar.gz'
   source_sha256 '33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35'
 

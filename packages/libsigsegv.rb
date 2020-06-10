@@ -4,6 +4,7 @@ class Libsigsegv < Package
   description 'GNU libsigsegv is a library for handling page faults in user mode.'
   homepage 'https://www.gnu.org/software/libsigsegv/'
   version '2.12'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libsigsegv/libsigsegv-2.12.tar.gz'
   source_sha256 '3ae1af359eebaa4ffc5896a1aee3568c052c99879316a1ab57f8fe1789c390b6'
 

@@ -4,6 +4,7 @@ class Disktype < Package
   description 'Detects the content format of a disk or disk image by checking for signatures of file systems, partition tables, and boot codes.'
   homepage 'https://sourceforge.net/projects/disktype/'
   version '9'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/disktype/disktype/9/disktype-9.tar.gz'
   source_sha256 'b6701254d88412bc5d2db869037745f65f94b900b59184157d072f35832c1111'
 

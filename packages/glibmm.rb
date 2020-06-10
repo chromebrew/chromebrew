@@ -4,6 +4,7 @@ class Glibmm < Package
   description 'Glibmm package is a set of C++ bindings for GLib'
   homepage 'https://www.gtkmm.org/en/'
   version '2.56.0-0'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/glibmm/2.56/glibmm-2.56.0.tar.xz'
   source_sha256 '6e74fcba0d245451c58fc8a196e9d103789bc510e1eee1a9b1e816c5209e79a9'
 

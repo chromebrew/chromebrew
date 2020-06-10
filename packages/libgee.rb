@@ -4,6 +4,7 @@ class Libgee < Package
   description 'Libgee is an utility library providing GObject-based interfaces and classes for commonly used data structures.'
   homepage 'https://wiki.gnome.org/Projects/Libgee'
   version '0.20.3'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/libgee/0.20/libgee-0.20.3.tar.xz'
   source_sha256 'd0b5edefc88cbca5f1709d19fa62aef490922c6577a14ac4e7b085507911a5de'
 

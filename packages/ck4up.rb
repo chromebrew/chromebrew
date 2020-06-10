@@ -4,6 +4,7 @@ class Ck4up < Package
   description 'Check for Updates, a utility to monitor web pages for updates'
   homepage 'http://jue.li/crux/ck4up'
   version '1.4'
+  compatibility 'all'
   source_url 'http://jue.li/crux/ck4up/ck4up-1.4.tar.gz'
   source_sha256 '37f2f981cfdb6811a906e5520cb27203cb5ecb725d2180aaac59d377c1ac9fbf'
 

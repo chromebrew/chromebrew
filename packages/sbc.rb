@@ -4,6 +4,7 @@ class Sbc < Package
   description 'SBC is a digital audio encoder and decoder used to transfer data to Bluetooth audio output devices.'
   homepage 'http://www.linuxfromscratch.org/blfs/view/svn/multimedia/sbc.html'
   version '1.4'
+  compatibility 'all'
   source_url 'https://www.kernel.org/pub/linux/bluetooth/sbc-1.4.tar.xz'
   source_sha256 '518bf46e6bb3dc808a95e1eabad26fdebe8a099c1e781c27ed7fca6c2f4a54c9'
 
