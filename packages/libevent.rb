@@ -4,6 +4,7 @@ class Libevent < Package
   description 'The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.'
   homepage 'http://libevent.org/'
   version '2.1.8-0'
+  compatibility 'all'
   source_url 'https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz'
   source_sha256 '965cc5a8bb46ce4199a47e9b2c9e1cae3b137e8356ffdad6d94d3b9069b71dc2'
 

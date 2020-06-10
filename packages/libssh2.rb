@@ -4,6 +4,7 @@ class Libssh2 < Package
   description 'libssh2 is a client-side C library implementing the SSH2 protocol.'
   homepage 'https://www.libssh2.org/'
   version '1.9.0'
+  compatibility 'all'
   source_url 'https://www.libssh2.org/download/libssh2-1.9.0.tar.gz'
   source_sha256 'd5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd'
 

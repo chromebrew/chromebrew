@@ -4,6 +4,7 @@ class Xorg_evdev_driver < Package
   description 'The Xorg Evdev Driver package contains a Generic Linux input driver for the Xorg X server. It handles keyboard, mouse, touchpads and wacom devices, though for touchpad and wacom advanced handling, additional drivers are required.'
   homepage 'https://www.x.org'
   version '2.10.5'
+  compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-input-evdev-2.10.5.tar.bz2'
   source_sha256 '9edaa6205baf6d2922cc4db3d8e54a7e7773b5f733b0ae90f6be7725f983b70d'
 
@@ -25,15 +26,15 @@ class Xorg_evdev_driver < Package
   depends_on 'xorg_server' => :build
 
   def self.build
-    system "./configure",
+    system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           "--enable-shared",
-           "--disable-static"
-    system "make"
+           '--enable-shared',
+           '--disable-static'
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
   end
 end

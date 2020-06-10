@@ -4,6 +4,7 @@ class Libglu < Package
   description 'Mesa OpenGL Utility library'
   homepage 'https://www.mesa3d.org/'
   version '9.0.0'
+  compatibility 'all'
   source_url 'https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2'
   source_sha256 '1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12'
 

@@ -4,6 +4,7 @@ class Pango < Package
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'http://www.pango.org/'
   version '1.44.7'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/pango/1.44/pango-1.44.7.tar.xz'
   source_sha256 '66a5b6cc13db73efed67b8e933584509f8ddb7b10a8a40c3850ca4a985ea1b1f'
 

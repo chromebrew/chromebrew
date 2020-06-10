@@ -4,6 +4,7 @@ class Alsa_tools < Package
   description 'The Advanced Linux Sound Architecture (ALSA) - tools'
   homepage 'https://github.com/alsa-project/alsa-tools'
   version '1.2.2'
+  compatibility 'all'
   source_url 'https://github.com/alsa-project/alsa-tools/archive/v1.2.2.tar.gz'
   source_sha256 '7242cfb3493461b2a28c9c3a6a69dbc2e9ee236a5dc46400cbb0d1d87c27b453'
 

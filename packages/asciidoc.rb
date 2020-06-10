@@ -4,6 +4,7 @@ class Asciidoc < Package
   description 'AsciiDoc is a presentable text document format for writing articles, UNIX man pages and other small to medium sized documents.'
   homepage 'http://asciidoc.org/'
   version '8.6.9-1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/asciidoc/asciidoc/8.6.9/asciidoc-8.6.9.tar.gz'
   source_sha256 '78db9d0567c8ab6570a6eff7ffdf84eadd91f2dfc0a92a2d0105d323cab4e1f0'
 

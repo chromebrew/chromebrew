@@ -4,6 +4,7 @@ class Spark < Package
   description 'sparklines for your shell'
   homepage 'https://zachholman.com/spark/'
   version 'ab88ac'
+  compatibility 'all'
   source_url 'https://raw.githubusercontent.com/holman/spark/ab88ac6f8f33698f39ece2f109b1117ef39a68eb/README.md'
   source_sha256 '85a153beeafea5637615644f2e92e47e71c621ffa1b0d995acadf51d1c9bbd0d'
 

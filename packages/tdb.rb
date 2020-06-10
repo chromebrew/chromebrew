@@ -4,6 +4,7 @@ class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
   version '1.4.2'
+  compatibility 'all'
   source_url 'https://www.samba.org/ftp/tdb/tdb-1.4.2.tar.gz'
   source_sha256 '9040b2cce4028e392f063f91bbe76b8b28fecc2b7c0c6071c67b5eb3168e004a'
 

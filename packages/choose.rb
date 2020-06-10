@@ -4,6 +4,7 @@ class Choose < Package
   description 'make choices on the command line'
   homepage 'https://github.com/geier/choose'
   version '0.1.0'
+  compatibility 'all'
   source_url 'https://github.com/geier/choose/archive/v0.1.0.tar.gz'
   source_sha256 'd09a679920480e66bff36c76dd4d33e8ad739a53eace505d01051c114a829633'
 

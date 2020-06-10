@@ -4,6 +4,7 @@ class Gsettings_desktop_schemas < Package
   description 'Collection of GSettings schemas for GNOME desktop.'
   homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
   version '3.28.0'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/gsettings-desktop-schemas/archive/3.28.0.tar.gz'
   source_sha256 '7e816d73a6a206c470adaf94a5a713e7f7d1b50f97615d017d19dfdd1e23394d'
 

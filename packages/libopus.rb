@@ -4,6 +4,7 @@ class Libopus < Package
   description 'Opus is a totally open, royalty-free, highly versatile audio codec.'
   homepage 'http://opus-codec.org/'
   version '1.2.1'
+  compatibility 'all'
   source_url 'https://archive.mozilla.org/pub/opus/opus-1.2.1.tar.gz'
   source_sha256 'cfafd339ccd9c5ef8d6ab15d7e1a412c054bf4cb4ecbbbcc78c12ef2def70732'
 

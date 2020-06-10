@@ -4,6 +4,7 @@ class Selenium_server_standalone < Package
   description 'Selenium is a set of different software tools each with a different approach to supporting test automation.'
   homepage 'https://www.seleniumhq.org/'
   version '3.11.0'
+  compatibility 'all'
   source_url 'https://raw.githubusercontent.com/SeleniumHQ/selenium/selenium-3.11.0/README.md'
   source_sha256 '662789e2508babe0be2d5b3b84630834b7727ed1960b66567be1c73eed08433b'
 

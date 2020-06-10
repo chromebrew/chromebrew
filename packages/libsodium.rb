@@ -4,6 +4,7 @@ class Libsodium < Package
   description 'A modern, portable, easy to use crypto library'
   homepage 'https://libsodium.org'
   version '1.0.18'
+  compatibility 'all'
   source_url 'https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz'
   source_sha256 '6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1'
 

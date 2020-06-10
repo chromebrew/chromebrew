@@ -4,6 +4,7 @@ class Ipfs < Package
   description 'A peer-to-peer hypermedia protocol'
   homepage 'https://ipfs.io'
   version '0.4.13'
+  compatibility 'all'
   source_url 'https://github.com/ipfs/go-ipfs/archive/v0.4.13.tar.gz'
   source_sha256 '9d5f2ef17a8bd4040fb4246c694034ec0ff323bc07d3f1469ce0877892695f31'
 

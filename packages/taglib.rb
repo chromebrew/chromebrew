@@ -4,6 +4,7 @@ class Taglib < Package
   description 'TagLib is a library for reading and editing the meta-data of several popular audio formats.'
   homepage 'https://taglib.org'
   version '1.11.1'
+  compatibility 'all'
   source_url 'https://taglib.org/releases/taglib-1.11.1.tar.gz'
   source_sha256 'b6d1a5a610aae6ff39d93de5efd0fdc787aa9e9dc1e7026fa4c961b26563526b'
 

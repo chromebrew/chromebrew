@@ -4,6 +4,7 @@ class Armadillo < Package
   description 'Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use'
   homepage 'http://arma.sourceforge.net/'
   version '9.600.5'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/arma/armadillo-9.600.5.tar.xz'
   source_sha256 'dd9cd664282f2c3483af194ceedc2fba8559e0d20f8782c640fd6f3ac7cac2bf'
 

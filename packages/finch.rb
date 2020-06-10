@@ -4,6 +4,7 @@ class Finch < Package
   description 'Finch is a chat program which lets you log in to accounts on multiple chat networks simultaneously.'
   homepage 'http://pidgin.im/'
   version '2.12.0-1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2'
   source_sha256 '8c3d3536d6d3c971bd433ff9946678af70a0f6aa4e6969cc2a83bb357015b7f8'
 

@@ -4,6 +4,7 @@ class Libxrender < Package
   description 'X Rendering Extension client library.'
   homepage 'http://www.x.org'
   version '0.9.10-0'
+  compatibility 'all'
   source_url 'https://www.x.org/releases/individual/lib/libXrender-0.9.10.tar.gz'
   source_sha256 '770527cce42500790433df84ec3521e8bf095dfe5079454a92236494ab296adf'
 

@@ -4,6 +4,7 @@ class Nftables < Package
   description 'nftables replaces the popular {ip,ip6,arp,eb}tables.'
   homepage 'https://netfilter.org/projects/nftables/'
   version '0.9.0'
+  compatibility 'all'
   source_url 'https://netfilter.org/projects/nftables/files/nftables-0.9.0.tar.bz2'
   source_sha256 'ad8181b5fcb9ca572f444bed54018749588522ee97e4c21922648bb78d7e7e91'
 

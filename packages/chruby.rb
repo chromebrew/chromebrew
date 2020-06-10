@@ -4,6 +4,7 @@ class Chruby < Package
   description 'Changes the current Ruby'
   homepage 'https://github.com/postmodern/chruby'
   version '0.3.9'
+  compatibility 'all'
   source_url 'https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz'
   source_sha256 '7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd'
 

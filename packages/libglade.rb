@@ -4,6 +4,7 @@ class Libglade < Package
   description 'Libglade is a library that performs a similar job to the C source output routines in the GLADE user interface builder.'
   homepage 'http://www.jamesh.id.au/software/libglade/'
   version '2.6.4'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libglade/2.6/libglade-2.6.4.tar.bz2'
   source_sha256 '64361e7647839d36ed8336d992fd210d3e8139882269bed47dc4674980165dec'
 

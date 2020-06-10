@@ -4,6 +4,7 @@ class Unrar < Package
   description 'UnRAR is a powerful archive extractor.'
   homepage 'http://www.rarlab.com/'
   version '5.6.3'
+  compatibility 'all'
   source_url 'https://www.rarlab.com/rar/unrarsrc-5.6.3.tar.gz'
   source_sha256 'c590e70a745d840ae9b9f05ba6c449438838c8280d76ce796a26b3fcd0a1972e'
 

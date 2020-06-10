@@ -4,6 +4,7 @@ class Nmon < Package
   description "nmon is short for Nigel's performance MONitor for Linux"
   homepage 'http://nmon.sourceforge.net/pmwiki.php'
   version '16g'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/nmon/lmon16g.c'
   source_sha256 'da82dd693b503b062854dfe7dbb5d36b347872ab44a4aa05b97e9d577747f688'
 

@@ -4,6 +4,7 @@ class Vdev < Package
   description 'A device-file manager for *nix'
   homepage 'https://github.com/jcnelson/vdev'
   version 'ceb7a6c'
+  compatibility 'all'
   source_url 'https://github.com/jcnelson/vdev/archive/ceb7a6c4f44dec542dc1c3c3d5abd27dec7f3e0e.tar.gz'
   source_sha256 'dbf561890aa70a8619506d166803a72d0c2a5b7590226feef784ec623bcb4739'
 

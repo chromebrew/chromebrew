@@ -4,6 +4,7 @@ class Enscript < Package
   description 'GNU Enscript is a free replacement for Adobe\'s enscript program.'
   homepage 'https://www.gnu.org/software/enscript/'
   version '1.6.6'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/enscript/enscript-1.6.6.tar.gz'
   source_sha256 '6d56bada6934d055b34b6c90399aa85975e66457ac5bf513427ae7fc77f5c0bb'
 

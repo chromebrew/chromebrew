@@ -4,6 +4,7 @@ class Mywanip < Package
   description 'Script to grab your WAN IP address using various means.'
   homepage 'https://gist.github.com/DennisLfromGA/ab40940d37be84ae3a88'
   version 'ab4094'
+  compatibility 'all'
   source_url 'https://gist.github.com/DennisLfromGA/ab40940d37be84ae3a88/archive/b583835e8b2cb7edefc7ccbb911cb8eaf172d341.zip'
   source_sha256 '789d22cfa60a40cf60d59e561500cd27e39ac03ecff2e948111a2a07f830fd67'
 

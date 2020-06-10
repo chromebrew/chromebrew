@@ -4,6 +4,7 @@ class Mksh < Package
   description 'The MirBSD Korn Shell'
   homepage 'https://www.mirbsd.org/mksh.htm'
   version '0.57'
+  compatibility 'all'
   source_url 'http://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R57.tgz'
   source_sha256 '3d101154182d52ae54ef26e1360c95bc89c929d28859d378cc1c84f3439dbe75'
 

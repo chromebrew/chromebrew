@@ -4,6 +4,7 @@ class Libgconf < Package
   description 'GConf is a system for storing application preferences.'
   homepage 'https://projects-old.gnome.org/gconf/'
   version '3.2.6'
+  compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-3.2.6.tar.xz'
   source_sha256 '1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c'
 

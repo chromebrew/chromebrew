@@ -4,6 +4,7 @@ class Wireless_tools < Package
   description 'Wireless Tools for Linux'
   homepage 'https://github.com/HewlettPackard/wireless-tools'
   version '2.9'
+  compatibility 'all'
   source_url 'https://github.com/HewlettPackard/wireless-tools/archive/v29.tar.gz'
   source_sha256 '69c5face9ac9d3273042436408a9a057d3416a814253dedeaaef210fcbc42d40'
 

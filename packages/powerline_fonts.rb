@@ -4,6 +4,7 @@ class Powerline_fonts < Package
   description 'Patched fonts for Powerline users.'
   homepage 'https://github.com/powerline/fonts'
   version '2015-12-04'
+  compatibility 'all'
   source_url 'https://github.com/powerline/fonts/archive/2015-12-04.tar.gz'
   source_sha256 '3a0b73abca6334b5e6bddefab67f6eb1b2fac1231817d95fc79126c8998c4844'
 

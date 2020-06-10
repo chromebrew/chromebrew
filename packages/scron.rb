@@ -4,6 +4,7 @@ class Scron < Package
   description 'Simple cron daemon.'
   homepage 'https://git.2f30.org/scron/'
   version '0.4'
+  compatibility 'all'
   source_url 'https://git.2f30.org/scron/log.html'
   source_sha256 'e37c93d910cc5e0793a6d354d5a3de6f1e963656e7546abb7bca5410c90792df'
 

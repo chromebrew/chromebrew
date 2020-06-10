@@ -4,6 +4,7 @@ class Waf < Package
   description 'The Waf build system'
   homepage 'https://waf.io/'
   version '1.9.13'
+  compatibility 'all'
   source_url 'https://github.com/waf-project/waf/archive/waf-1.9.13.tar.gz'
   source_sha256 '08d41e9e50398b2f07d74b0cef7b9f02d33787d6d27d2a0e6df5732bbd95bebc'
 
