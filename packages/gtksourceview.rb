@@ -4,6 +4,7 @@ class Gtksourceview < Package
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '4.6.0'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/gtksourceview/archive/4.6.0.tar.gz'
   source_sha256 '34008d2e2fa07355e58f6bb6e9ae970b1370fe95e17ba4b0650b473b4d41860c'
 

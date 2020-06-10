@@ -4,6 +4,7 @@ class Openpam < Package
   description 'OpenPAM is an open source PAM library that focuses on simplicity, correctness, and cleanliness.'
   homepage 'https://www.openpam.org/'
   version '20170430'
+  compatibility 'all'
   source_url 'https://www.openpam.org/downloads/35'
   source_sha256 '22f65222e9faf5729ee5d2db7796d81f95df1a54b03e89ae4713c85e939be85f'
 

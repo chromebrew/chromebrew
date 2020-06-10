@@ -4,6 +4,7 @@ class Kwiml < Package
   description 'The Kitware Information Macro Library'
   homepage 'https://gitlab.kitware.com/utils/kwiml'
   version 'a079af'
+  compatibility 'all'
   source_url 'https://gitlab.kitware.com/utils/kwiml/-/archive/a079afc646f46b81686676bec91fb0a8e3799e4a/kwiml-a079afc646f46b81686676bec91fb0a8e3799e4a.tar.bz2'
   source_sha256 '09607a32224091cb6deb605382772c69a4f51d16a5ccf065688e6e7d80e6f822'
 

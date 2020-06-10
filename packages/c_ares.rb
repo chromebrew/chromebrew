@@ -4,6 +4,7 @@ class C_ares < Package
   description 'c-ares is a C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.haxx.se/'
   version '1.15.0'
+  compatibility 'all'
   source_url 'https://c-ares.haxx.se/download/c-ares-1.15.0.tar.gz'
   source_sha256 '6cdb97871f2930530c97deb7cf5c8fa4be5a0b02c7cea6e7c7667672a39d6852'
 

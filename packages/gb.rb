@@ -4,6 +4,7 @@ class Gb < Package
   description 'A project based build tool for the Go programming language.'
   homepage 'https://getgb.io/'
   version '0.4.4'
+  compatibility 'all'
   source_url 'https://github.com/constabulary/gb/archive/v0.4.4.tar.gz'
   source_sha256 'c7993ae1994ad85cbe35b833d36a137772599fe7ed720edec2d76ebf3fc4313b'
 

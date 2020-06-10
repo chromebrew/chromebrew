@@ -4,6 +4,7 @@ class Pugixml < Package
   description 'Light-weight, simple and fast XML parser for C++ with XPath support'
   homepage 'https://pugixml.org/'
   version '1.10'
+  compatibility 'all'
   source_url 'https://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1.10.tar.gz'
   source_sha256 '55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a'
 

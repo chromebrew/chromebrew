@@ -4,6 +4,7 @@ class Sane_backends < Package
   description 'Scanner Access Now Easy - Backends'
   homepage 'http://www.sane-project.org/'
   version '1.0.27'
+  compatibility 'all'
   source_url 'https://gitlab.com/sane-project/backends/-/archive/RELEASE_1_0_27/backends-RELEASE_1_0_27.tar.bz2'
   source_sha256 '6a4034a9d29255bb40cf5a19f3d85dd7ba4fe6452eb9b1ae4385bc8175493ec4'
 

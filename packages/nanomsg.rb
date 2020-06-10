@@ -4,6 +4,7 @@ class Nanomsg < Package
   description 'nanomsg is a socket library that provides several common communication patterns.'
   homepage 'https://nanomsg.org/'
   version '1.1.5'
+  compatibility 'all'
   source_url 'https://github.com/nanomsg/nanomsg/archive/1.1.5.tar.gz'
   source_sha256 '218b31ae1534ab897cb5c419973603de9ca1a5f54df2e724ab4a188eb416df5a'
 

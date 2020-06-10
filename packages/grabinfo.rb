@@ -4,6 +4,7 @@ class Grabinfo < Package
   description 'Navigates the /proc filesystem and executes commands in order to gather information about the state of your machine.'
   homepage 'https://sourceforge.net/projects/grabinfo/'
   version '1.71-1'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/grabinfo/grabinfo/1.71/grabinfo-1.71.tar.gz'
   source_sha256 '3cf1e56aff10ef182065943a10ab815f2e8bf5ab77716dd97c2e91feb8db4278'
 

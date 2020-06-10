@@ -4,6 +4,7 @@ class Libcap < Package
   description 'Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.'
   homepage 'https://directory.fsf.org/wiki/Libcap'
   version '2.25-1'
+  compatibility 'all'
   source_url 'https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.25.tar.xz'
   source_sha256 '693c8ac51e983ee678205571ef272439d83afe62dd8e424ea14ad9790bc35162'
 

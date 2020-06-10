@@ -4,6 +4,7 @@ class Meson < Package
   description 'The Meson Build System'
   homepage 'http://mesonbuild.com/'
   version '0.54.0'
+  compatibility 'all'
   source_url 'https://github.com/mesonbuild/meson/releases/download/0.54.0/meson-0.54.0.tar.gz'
   source_sha256 'dde5726d778112acbd4a67bb3633ab2ee75d33d1e879a6283a7b4a44c3363c27'
 

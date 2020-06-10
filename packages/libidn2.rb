@@ -4,6 +4,7 @@ class Libidn2 < Package
   description 'GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications.'
   homepage 'https://www.gnu.org/software/libidn/'
   version '2.0.5'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libidn/libidn2-2.0.5.tar.gz'
   source_sha256 '53f69170886f1fa6fa5b332439c7a77a7d22626a82ef17e2c1224858bb4ca2b8'
 

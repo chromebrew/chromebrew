@@ -18,6 +18,7 @@ class Arduino_ide < Package
   description 'Arduino is an open-source physical computing platform based on a simple I/O board and a development environment that implements the Processing/Wiring language.'
   homepage 'https://www.arduino.cc/'
   version '1.8.10'
+  compatibility 'all'
   source_url 'https://github.com/arduino/Arduino/releases/download/1.8.10/arduino-1.8.10.tar.xz'
   source_sha256 '862e4b100d5214ca51d501edcc095467d7a4e3dc39b306146001da8b0c63343e'
 

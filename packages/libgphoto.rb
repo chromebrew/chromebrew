@@ -4,6 +4,7 @@ class Libgphoto < Package
   description 'The libgphoto2 camera access and control library.'
   homepage 'http://www.gphoto.org/'
   version '2.5.23'
+  compatibility 'all'
   source_url 'https://github.com/gphoto/libgphoto2/archive/libgphoto2-2_5_23-release.tar.gz'
   source_sha256 '8de52fd997aceda895abad5d8d95a888bce24a1c739079cff64dae1da7039dde'
 

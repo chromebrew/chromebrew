@@ -4,6 +4,7 @@ class Libxcb < Package
   description 'library for the X window system'
   homepage 'https://x.org'
   version '1.14'
+  compatibility 'all'
   source_url 'https://xcb.freedesktop.org/dist/libxcb-1.14.tar.xz'
   source_sha256 'a55ed6db98d43469801262d81dc2572ed124edc3db31059d4e9916eb9f844c34'
 

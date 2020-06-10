@@ -4,6 +4,7 @@ class Pcre2 < Package
   description 'The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries.'
   homepage 'http://pcre.org/'
   version '10.34'
+  compatibility 'all'
   source_url 'https://ftp.pcre.org/pub/pcre/pcre2-10.34.tar.gz'
   source_sha256 'da6aba7ba2509e918e41f4f744a59fa41a2425c59a298a232e7fe85691e00379'
 

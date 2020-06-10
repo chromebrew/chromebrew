@@ -4,6 +4,7 @@ class Xorg_fbdev_driver < Package
   description 'The Xorg Fbdev Driver package contains the X.Org Video Driver for framebuffer devices. This driver is often used as fallback driver if the hardware specific and VESA drivers fail to load or are not present.'
   homepage 'https://www.x.org'
   version '0.4.4'
+  compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.4.4.tar.bz2'
   source_sha256 '9dd4b326498223abbfdf786089a46ea3db4fa6bbd341308eb48a9e00bc3fd51b'
 
@@ -23,15 +24,15 @@ class Xorg_fbdev_driver < Package
   depends_on 'xorg_server' => :build
   
   def self.build
-    system "./configure",
-             "--prefix=#{CREW_PREFIX}",
-             "--libdir=#{CREW_LIB_PREFIX}",
-             "--enable-shared",
-             "--disable-static"
-    system "make"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--enable-shared',
+           '--disable-static'
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
   end
 end

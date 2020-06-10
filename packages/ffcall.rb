@@ -4,6 +4,7 @@ class Ffcall < Package
   description 'GNU libffcall is a library which can be used to build foreign function call interfaces in embedded interpreters.'
   homepage 'https://www.gnu.org/software/libffcall/'
   version '2.0'
+  compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/libffcall/libffcall-2.0.tar.gz'
   source_sha256 '41aad2b449d90a5308e72267829db006dc9f9cc8736807082e1f2daef680196c'
 

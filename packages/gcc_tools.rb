@@ -4,6 +4,7 @@ class Gcc_tools < Package
   description 'Tools for working with gcc packages'
   homepage 'https://github.com/skycocker/chromebrew'
   version '1.0'
+  compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 

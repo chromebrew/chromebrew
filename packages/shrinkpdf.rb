@@ -4,6 +4,7 @@ class Shrinkpdf < Package
   description 'A simple wrapper around Ghostscript to shrink PDFs (as in reduce filesize) under Linux.'
   homepage 'http://alfredklomp.com/programming/shrinkpdf/'
   version '2014'
+  compatibility 'all'
   source_url 'http://alfredklomp.com/programming/shrinkpdf/index.html'
   source_sha256 'cdc74b28d8ad757fa2cc9d8782031fe2325a17d3f4fd6080c05ca62790e5c690'
 

@@ -4,6 +4,7 @@ class Protobuf < Package
   description 'Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.'
   homepage 'https://developers.google.com/protocol-buffers/'
   version '3.9.2'
+  compatibility 'all'
   source_url 'https://github.com/protocolbuffers/protobuf/archive/v3.9.2.tar.gz'
   source_sha256 '1fbf1c2962af287607232b2eddeaec9b4f4a7a6f5934e1a9276e9af76952f7e0'
 

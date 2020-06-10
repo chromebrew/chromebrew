@@ -4,6 +4,7 @@ class Libconfig < Package
   description 'C/C++ Configuration File Library.'
   homepage 'https://hyperrealm.github.io/libconfig/'
   version '1.7.2'
+  compatibility 'all'
   source_url 'https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz'
   source_sha256 '7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9'
 

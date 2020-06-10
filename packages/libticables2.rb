@@ -4,6 +4,7 @@ class Libticables2 < Package
   description 'Libticables2 offers the library used to connect to and perform read/write operations on TI Calculators via. USB.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
   version '1.3.5'
+  compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libticables2-1.3.5.tar.bz2'
   source_sha256 '0c6fb6516e72ccab081ddb3aecceff694ed93aec689ddd2edba9c7c7406c4522'
 

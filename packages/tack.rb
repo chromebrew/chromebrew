@@ -4,6 +4,7 @@ class Tack < Package
   description 'terminfo action checker'
   homepage 'https://www.gnu.org/software/ncurses/'
   version '1.08'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/ncurses/tack-1.08.tar.gz'
   source_sha256 '60f8515eed87176e1f74ac81372645df14dcffbf200d778353e56f640d55b1f2'
 

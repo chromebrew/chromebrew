@@ -4,6 +4,7 @@ class Wget < Package
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
   version '1.20.3-2'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/wget/wget-1.20.3.tar.lz'
   source_sha256 '69607ce8216c2d1126b7a872db594b3f21e511e660e07ca1f81be96650932abb'
 

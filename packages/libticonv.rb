@@ -4,6 +4,7 @@ class Libticonv < Package
   description 'Libticonv offers support for performing operations on TI calculators involving charsets.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
   version '1.1.5'
+  compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libticonv-1.1.5.tar.bz2'
   source_sha256 '316da6a73bf26b266dd23443882abc4c9fe7013edc3a53e5e301d525c2060878'
 

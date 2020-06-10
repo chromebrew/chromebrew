@@ -4,6 +4,7 @@ class Gengetopt < Package
   description 'This program generates a C function that uses getopt_long function to parse the command line options, to validate them and fills a struct .'
   homepage 'https://www.gnu.org/software/gengetopt/'
   version '2.22.6'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gengetopt/gengetopt-2.22.6.tar.gz'
   source_sha256 '30b05a88604d71ef2a42a2ef26cd26df242b41f5b011ad03083143a31d9b01f7'
 

@@ -4,6 +4,7 @@ class Dehtml < Package
   description 'Dehtml removes HTML constructs from documents for indexing, spell checking and so on.'
   homepage 'http://www.moria.de/~michael/dehtml/'
   version '1.8'
+  compatibility 'all'
   source_url 'http://www.moria.de/~michael/dehtml/dehtml-1.8.tar.gz'
   source_sha256 'a00e86643b0aa73861e9d8d619a80370f0f99519d34ce12459fab77f5f6b5bde'
 

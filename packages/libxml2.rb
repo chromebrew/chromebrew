@@ -4,6 +4,7 @@ class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
   version '2.9.10'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.9.10/libxml2-v2.9.10.tar.bz2'
   source_sha256 '5f1cc19c849cccabb983881cf1ebf833f42db5d7b8afba7a7763a2ac3101715c'
 
@@ -19,7 +20,7 @@ class Libxml2 < Package
        i686: '9baf9a41ad01e2b6d09f09c9a65a74b37ac839e53ce00c0ebf048bc1d1d7b01f',
      x86_64: '4c1305434bbac822e6d08234d3058e94bca0ab95591ca25a0ccc8675cd16c48e',
   })
- 
+
   depends_on 'zlibpkg'
 
   def self.build

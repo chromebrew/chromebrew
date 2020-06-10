@@ -4,6 +4,7 @@ class Gambit < Package
   description 'Efficient implementation of the Scheme programming language'
   homepage 'http://gambitscheme.org/wiki/index.php/Main_Page'
   version '4.9.3'
+  compatibility 'all'
   source_url 'https://github.com/gambit/gambit/archive/v4.9.3.tar.gz'
   source_sha256 'a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca'
 

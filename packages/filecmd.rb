@@ -4,6 +4,7 @@ class Filecmd < Package
   description 'file command determines the file type.'
   homepage 'ftp://ftp.astron.com/pub/file'
   version '5.37'
+  compatibility 'all'
   source_url 'ftp://ftp.astron.com/pub/file/file-5.37.tar.gz'
   source_sha256 'e9c13967f7dd339a3c241b7710ba093560b9a33013491318e88e6b8b57bae07f'
 

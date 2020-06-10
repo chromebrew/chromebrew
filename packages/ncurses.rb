@@ -4,6 +4,7 @@ class Ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.'
   homepage 'https://www.gnu.org/software/ncurses/'
   version '6.2'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/ncurses/ncurses-6.2.tar.gz'
   source_sha256 '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
 

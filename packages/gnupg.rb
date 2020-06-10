@@ -4,6 +4,7 @@ class Gnupg < Package
   description 'GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP).'
   homepage 'https://gnupg.org/'
   version '2.2.7'
+  compatibility 'all'
   source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.7.tar.bz2'
   source_sha256 'd95b361ee6ef7eff86af40c8c72bf9313736ac9f7010d6604d78bf83818e976e'
 

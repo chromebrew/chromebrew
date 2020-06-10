@@ -4,6 +4,7 @@ class Tina < Package
   description 'Tina is a personal information manager with a curses interface.'
   homepage 'http://devel.ringlet.net/misc/tina/'
   version '0.1.12'
+  compatibility 'all'
   source_url 'https://devel.ringlet.net/files/misc/tina/tina-0.1.12.tar.xz'
   source_sha256 '108cec9d1dbd938c67f3fae2e4238e12d064f1d12bd0d9debd0ee3ac79553edf'
 

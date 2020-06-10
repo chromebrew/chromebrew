@@ -4,6 +4,7 @@ class Expat < Package
   description 'James Clark\'s Expat XML parser library in C.'
   homepage 'https://sourceforge.net/projects/expat/'
   version '2.2.9'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.2.9/expat-2.2.9.tar.bz2'
   source_sha256 'f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237'
 
