@@ -4,6 +4,7 @@ class Glog < Package
   description 'A C++ implementation of the Google logging module.'
   homepage 'https://github.com/google/glog'
   version '0.3.5'
+  compatibility 'all'
   source_url 'https://github.com/google/glog/archive/v0.3.5.zip'
   source_sha256 '267103f8a1e9578978aa1dc256001e6529ef593e5aea38193d31c2872ee025e8'
 

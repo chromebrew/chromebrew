@@ -4,6 +4,7 @@ class Miniupnpc < Package
   description 'UPnP IGD client lightweight library'
   homepage 'http://miniupnp.free.fr/'
   version '2.1'
+  compatibility 'all'
   source_url 'https://github.com/miniupnp/miniupnp/archive/miniupnpc_2_1.tar.gz'
   source_sha256 '19c5b6cf8f3fc31d5e641c797b36ecca585909c7f3685a5c1a64325340537c94'
 

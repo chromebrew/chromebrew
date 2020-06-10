@@ -4,6 +4,7 @@ class Libticalcs2 < Package
   description 'Libticalcs2 offers the library used to communicate with TI calculators. It implements the TI protocol for each type of calculator, independently of the link cable used to establish the link.'
   homepage 'http://lpg.ticalc.org/prj_tilp/'
   version '1.1.9'
+  compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libticalcs2-1.1.9.tar.bz2'
   source_sha256 '76780788bc309b647f97513d38dd5f01611c335a72855e0bd10c7bdbf2e38921'
 

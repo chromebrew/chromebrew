@@ -4,6 +4,7 @@ class Gusb < Package
   description 'GUsb is a GObject wrapper for libusb1'
   homepage 'https://www.openhub.net/p/gusb'
   version '0.2.11-0'
+  compatibility 'all'
   source_url 'https://github.com/hughsie/libgusb/archive/gusb_0_2_11.tar.gz'
   source_sha256 '090eb605e75f8a5b0b3df7ff29d96dd51730850ac89417378d4a8d39fab13702'
 

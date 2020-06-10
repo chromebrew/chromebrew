@@ -4,6 +4,7 @@ class Qhull < Package
   description 'Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram, halfspace intersection about a point, furthest-site Delaunay triangulation, and furthest-site Voronoi diagram.'
   homepage 'http://www.qhull.org/'
   version '7.3.2'
+  compatibility 'all'
   source_url 'http://www.qhull.org/download/qhull-2019-src-7.3.2.tgz'
   source_sha256 '2b7990558c363076261564f61b74db4d0d73b71869755108a469038c07dc43fb'
 

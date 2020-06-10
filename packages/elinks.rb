@@ -4,6 +4,7 @@ class Elinks < Package
   description 'Full-Featured Text WWW Browser'
   homepage 'http://elinks.or.cz/'
   version '0.11.7'
+  compatibility 'all'
   source_url 'http://elinks.or.cz/download/elinks-0.11.7.tar.bz2'
   source_sha256 '456db6f704c591b1298b0cd80105f459ff8a1fc07a0ec1156a36c4da6f898979'
 

@@ -4,6 +4,7 @@ class Libxscrnsaver < Package
   description 'X.org the X11 Screen Saver extension client library'
   homepage 'http://www.x.org'
   version '1.2.2-0'
+  compatibility 'all'
   source_url 'https://www.x.org/archive//individual/lib/libXScrnSaver-1.2.2.tar.gz'
   source_sha256 'e12ba814d44f7b58534c0d8521e2d4574f7bf2787da405de4341c3b9f4cc8d96'
 

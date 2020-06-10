@@ -4,6 +4,7 @@ class Clmystery < Package
   description 'A command-line murder mystery'
   homepage 'https://github.com/veltman/clmystery'
   version '6dd30f'
+  compatibility 'all'
   source_url 'https://github.com/veltman/clmystery/archive/6dd30f8762c9319a3613eadd05fdf783baa4d7d9.tar.gz'
   source_sha256 '911bc77225bcacc8fc1a7b17b21fbc4ede371513c729b4b663989ab627604d33'
 

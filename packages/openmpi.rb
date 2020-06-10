@@ -4,6 +4,7 @@ class Openmpi < Package
   description 'The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners.'
   homepage 'https://www.open-mpi.org/'
   version '4.0.1'
+  compatibility 'all'
   source_url 'https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.bz2'
   source_sha256 'cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709'
 

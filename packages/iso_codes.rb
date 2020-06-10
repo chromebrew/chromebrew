@@ -4,6 +4,7 @@ class Iso_codes < Package
   description 'Provides lists of various ISO standards (countries, languages, language scripts, and currency names)'
   homepage 'https://salsa.debian.org/iso-codes-team/iso-codes'
   version '4.1'
+  compatibility 'all'
   source_url 'https://salsa.debian.org/iso-codes-team/iso-codes/uploads/049ce6aac94d842be809f4063950646c/iso-codes-4.1.tar.xz'
   source_sha256 '67117fb76f32c8fb5e37d2d60bce238f1f8e865cc7b569a57cbc3017ca15488a'
 

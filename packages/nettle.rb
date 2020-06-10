@@ -4,6 +4,7 @@ class Nettle < Package
   description 'Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.'
   homepage 'http://www.lysator.liu.se/~nisse/nettle/'
   version '3.5.1'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/nettle/nettle-3.5.1.tar.gz'
   source_sha256 '75cca1998761b02e16f2db56da52992aef622bf55a3b45ec538bc2eedadc9419'
 

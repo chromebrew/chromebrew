@@ -4,6 +4,7 @@ class Fslint < Package
   description 'FSlint is a utility to find and clean various forms of lint on a filesystem.'
   homepage 'http://www.pixelbeat.org/fslint/'
   version '2.46'
+  compatibility 'all'
   source_url 'http://www.pixelbeat.org/fslint/fslint-2.46.tar.xz'
   source_sha256 'f15daebfecfd2eea0d3b48a0193e25974b71dcf1e4b4a33d5a3dcfb7bb9c90cc'
 

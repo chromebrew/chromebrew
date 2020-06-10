@@ -4,6 +4,7 @@ class Gexiv2 < Package
   description 'gexiv2 is a GObject wrapper around the Exiv2 photo metadata library.'
   homepage 'https://wiki.gnome.org/Projects/gexiv2/'
   version '0.10.8'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/gexiv2/0.10/gexiv2-0.10.8.tar.xz'
   source_sha256 '81c528fd1e5e03577acd80fb77798223945f043fd1d4e06920c71202eea90801'
 

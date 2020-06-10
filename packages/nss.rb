@@ -4,6 +4,7 @@ class Nss < Package
   description 'Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.'
   homepage 'https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS'
   version '3.46'
+  compatibility 'all'
   source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_46_RTM/src/nss-3.46-with-nspr-4.22.tar.gz'
   source_sha256 '3d4197196e870ab2dccc6ee497e0ec83f45ea070fee929dd931491c024d69f31'
 

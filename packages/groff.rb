@@ -4,6 +4,7 @@ class Groff < Package
   description 'Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.'
   homepage 'https://www.gnu.org/software/groff/'
   version '1.22.4'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/groff/groff-1.22.4.tar.gz'
   source_sha256 'e78e7b4cb7dec310849004fa88847c44701e8d133b5d4c13057d876c1bad0293'
 

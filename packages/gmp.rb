@@ -4,6 +4,7 @@ class Gmp < Package
   description 'GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.'
   homepage 'https://gmplib.org/'
   version '6.2.0'
+  compatibility 'all'
   source_url 'https://gmplib.org/download/gmp/gmp-6.2.0.tar.lz'
   source_sha256 '3f33f127bcb6b2c3601676cd3281df45824b148cbf688b73c0fc8248793667d9'
 

@@ -4,6 +4,7 @@ class Gnome_common < Package
   description 'Common files for development of Gnome packages.'
   homepage 'https://git.gnome.org/browse/gnome-common'
   version '3.18.0'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/gnome-common/archive/3.18.0.tar.gz'
   source_sha256 '8407fd8786a44c9ce47987de0906d9266492195df9251a089afaa06cc65c72d8'
 

@@ -4,6 +4,7 @@ class Diffuse < Package
   description 'graphical tool for merging and comparing text files'
   homepage 'http://diffuse.sourceforge.net/'
   version '0.4.8'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/diffuse/diffuse/0.4.8/diffuse-0.4.8.tar.bz2'
   source_sha256 'c1d3b79bba9352fcb9aa4003537d3fece248fb824781c5e21f3fcccafd42df2b'
 

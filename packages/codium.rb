@@ -4,6 +4,7 @@ class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
   version '1.45.1'
+  compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url 'https://github.com/VSCodium/vscodium/releases/download/1.45.1/VSCodium-linux-arm-1.45.1.tar.gz'

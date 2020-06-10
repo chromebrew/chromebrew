@@ -4,6 +4,7 @@ class Xorg_lib < Package
   description 'A collection of xorg libraries.'
   homepage ''
   version '0.1-0'
+  compatibility 'all'
 
   is_fake
 

@@ -4,6 +4,7 @@ class Grive < Package
   description 'Google Drive client with support for new Drive REST API and partial sync'
   homepage 'https://github.com/vitalif/grive2'
   version '0.5.0-1'
+  compatibility 'all'
   source_url 'https://github.com/vitalif/grive2/archive/v0.5.0.tar.gz'
   source_sha256 '24641ef4802eb93bb55e7069bca55c4fb8aa17fd88833b9c89a1b2ee7d266567'
 

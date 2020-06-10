@@ -4,6 +4,7 @@ class Aide < Package
   description 'Advanced Intrusion Detection Environment'
   homepage 'http://aide.sourceforge.net/'
   version '0.15.1'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/aide/aide/0.15.1/aide-0.15.1.tar.gz'
   source_sha256 '303e5c186257df8c86e418193199f4ea2183fc37d3d4a9098a614f61346059ef'
 

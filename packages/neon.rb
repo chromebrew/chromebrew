@@ -4,6 +4,7 @@ class Neon < Package
   description 'neon is an HTTP and WebDAV client library, with a C interface.'
   homepage 'http://www.webdav.org/neon/'
   version '0.30.2'
+  compatibility 'all'
   source_url 'http://www.webdav.org/neon/neon-0.30.2.tar.gz'
   source_sha256 'db0bd8cdec329b48f53a6f00199c92d5ba40b0f015b153718d1b15d3d967fbca'
 

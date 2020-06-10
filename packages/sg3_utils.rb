@@ -4,6 +4,7 @@ class Sg3_utils < Package
   description 'The sg3_utils package contains utilities that send SCSI commands to devices.'
   homepage 'http://sg.danny.cz/sg/sg3_utils.html'
   version '1.44'
+  compatibility 'all'
   source_url 'http://sg.danny.cz/sg/p/sg3_utils-1.44.tar.xz'
   source_sha256 'ca94ac106510742cd8ff5ead4a7e5c89d410653291401daf4632d2bef2a35b05'
 

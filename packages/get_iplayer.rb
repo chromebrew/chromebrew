@@ -4,6 +4,7 @@ class Get_iplayer < Package
   description 'A utility for downloading TV and radio programmes from BBC iPlayer'
   homepage 'https://github.com/get-iplayer/get_iplayer'
   version '3.01'
+  compatibility 'all'
   source_url 'https://github.com/get-iplayer/get_iplayer/archive/v3.01.tar.gz'
   source_sha256 '0e1e16f3706efa98893e33b1602cc00bb3d8e22e269bfc5a1a078559e4c21ce6'
 

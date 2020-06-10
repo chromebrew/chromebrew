@@ -4,6 +4,7 @@ class Openblas < Package
   description 'OpenBLAS is an optimized BLAS library'
   homepage 'http://www.openblas.net/'
   version '0.2.20'
+  compatibility 'all'
   source_url 'https://github.com/xianyi/OpenBLAS/archive/v0.2.20.tar.gz'
   source_sha256 '5ef38b15d9c652985774869efd548b8e3e972e1e99475c673b25537ed7bcf394'
 

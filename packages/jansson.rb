@@ -4,6 +4,7 @@ class Jansson < Package
   description 'Jansson is a C library for encoding, decoding and manipulating JSON data.'
   homepage 'http://www.digip.org/jansson/'
   version '2.12'
+  compatibility 'all'
   source_url 'https://github.com/akheron/jansson/archive/v2.12.tar.gz'
   source_sha256 '76260d30e9bbd0ef392798525e8cd7fe59a6450c54ca6135672e3cd6a1642941'
 

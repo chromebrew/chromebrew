@@ -4,6 +4,7 @@ class Xhost < Package
   description 'Server access control program for X'
   homepage 'https://github.com/freedesktop/xorg-xhost'
   version '1.0.7'
+  compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/xhost-1.0.7.tar.bz2'
   source_sha256 '93e619ee15471f576cfb30c663e18f5bc70aca577a63d2c2c03f006a7837c29a'
 
@@ -23,18 +24,18 @@ class Xhost < Package
   depends_on 'xorg_lib'
 
   def self.build
-    system "./configure",
-           "--enable-ipv6",
-           "--enable-tcp-transport",
-           "--enable-unix-transport",
+    system './configure',
+           '--enable-ipv6',
+           '--enable-tcp-transport',
+           '--enable-unix-transport',
            "--prefix=#{CREW_PREFIX}",
-           "--enable-local-transport",
+           '--enable-local-transport',
            "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
 

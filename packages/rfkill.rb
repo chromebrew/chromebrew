@@ -4,6 +4,7 @@ class Rfkill < Package
   description 'Tool for enabling and disabling wireless devices.'
   homepage 'http://linuxwireless.org/en/users/Documentation/rfkill'
   version '0.5'
+  compatibility 'all'
   source_url 'https://www.kernel.org/pub/software/network/rfkill/rfkill-0.5.tar.xz'
   source_sha256 'e0ae3004215e39a6c5c36e0726558740728d16f67ebdb8bea621250f6091d86a'
 

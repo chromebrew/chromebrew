@@ -4,6 +4,7 @@ class Speedtest < Package
   description 'Command line interface for testing internet bandwidth using speedtest.net'
   homepage 'https://github.com/sivel/speedtest-cli'
   version '2.0.2'
+  compatibility 'all'
   source_url 'https://github.com/sivel/speedtest-cli/archive/v2.0.2.tar.gz'
   source_sha256 '5e22f2dcce1c9020f33faf559b22727483f022008a2912b85d573e578374b6a0'
 
