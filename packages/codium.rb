@@ -4,6 +4,7 @@ class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
   version '1.44.2'
+  compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url 'https://github.com/VSCodium/vscodium/releases/download/1.44.2/VSCodium-linux-arm-1.44.2.tar.gz'
@@ -15,11 +16,14 @@ class Codium < Package
     @arch = 'x64'
   end
 
-  depends_on 'gtk2'
-  depends_on 'libsecret'
-  depends_on 'libgconf'
-  depends_on 'xdg_base'
-  depends_on 'sommelier'
+  case ARCH
+  when 'aarch64', 'armv7l', 'x86_64'
+    depends_on 'gtk2'
+    depends_on 'libsecret'
+    depends_on 'libgconf'
+    depends_on 'xdg_base'
+    depends_on 'sommelier'
+  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"

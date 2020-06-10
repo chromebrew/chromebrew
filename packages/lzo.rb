@@ -4,6 +4,7 @@ class Lzo < Package
   description 'LZO is a portable lossless data compression library written in ANSI C.'
   homepage 'http://www.oberhumer.com/opensource/lzo/'
   version '2.10-1'
+  compatibility 'all'
   source_url 'https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz'
   source_sha256 'c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072'
 

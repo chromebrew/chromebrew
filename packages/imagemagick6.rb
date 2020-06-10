@@ -4,8 +4,31 @@ class Imagemagick6 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
   version '6.9.10-79'
-  source_url 'https://imagemagick.org/download/ImageMagick-6.9.10-79.tar.xz'
-  source_sha256 '52b7bf07175feca8da112a093661baa7fe7453eb8c576d8f904135cc3c15567e'
+  compatibility 'aarch64,armv7l,x86_64'
+  case ARCH
+  when 'aarch64', 'armv7l', 'x86_64'
+    source_url 'https://imagemagick.org/download/ImageMagick-6.9.10-79.tar.xz'
+    source_sha256 '52b7bf07175feca8da112a093661baa7fe7453eb8c576d8f904135cc3c15567e'
+    depends_on 'flif'
+    depends_on 'freeimage'
+    depends_on 'freetype'
+    depends_on 'ghostscript'
+    depends_on 'graphviz'
+    depends_on 'jbigkit'
+    depends_on 'jemalloc'
+    depends_on 'lzma'
+    depends_on 'libheif'
+    depends_on 'librsvg'
+    depends_on 'libwebp'
+    depends_on 'libwmf'
+    depends_on 'msttcorefonts'
+    depends_on 'openexr'
+    depends_on 'openjpeg'
+    depends_on 'pango'
+    depends_on 'python27'
+    depends_on 'zstd'
+    depends_on 'sommelier'
+  end
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.10-79-chromeos-armv7l.tar.xz',
@@ -17,26 +40,6 @@ class Imagemagick6 < Package
      armv7l: 'e9a0befa3e96a9a42ec9bcc66b597aefd6ff6e4d68f3138772a6deadfa2ce769',
      x86_64: '16dec45ba5036a192c42ac1c46bd8744682e6a6cd1e19c576c911e9511fbc078',
   })
-
-  depends_on 'flif'
-  depends_on 'freeimage'
-  depends_on 'freetype'
-  depends_on 'ghostscript'
-  depends_on 'graphviz'
-  depends_on 'jbigkit'
-  depends_on 'jemalloc'
-  depends_on 'lzma'
-  depends_on 'libheif'
-  depends_on 'librsvg'
-  depends_on 'libwebp'
-  depends_on 'libwmf'
-  depends_on 'msttcorefonts'
-  depends_on 'openexr'
-  depends_on 'openjpeg'
-  depends_on 'pango'
-  depends_on 'python27'
-  depends_on 'zstd'
-  depends_on 'sommelier'
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp

@@ -4,6 +4,7 @@ class Vifm < Package
   description 'Vifm is an ncurses based file manager with vi like keybindings/modes/options/commands/configuration, which also borrows some useful ideas from mutt.'
   homepage 'https://vifm.info/'
   version '0.9'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/vifm/vifm/vifm-0.9.tar.bz2'
   source_sha256 'ab10c99d1e4c24ff8a03c20be1c202cc15874750cc47a1614e6fe4f8d816a7fd'
 
@@ -19,8 +20,6 @@ class Vifm < Package
        i686: '3611f9a8b5740242b672b9c91efca3c537a63c2fbfb0d3ab9f4f3b1e5a91b701',
      x86_64: 'bf9c7b3328428b50247c9ae6d5386f055357a8f6919efc03174666440b1b923e',
   })
-
-  depends_on 'ncurses'
 
   def self.build
     system "./configure", \

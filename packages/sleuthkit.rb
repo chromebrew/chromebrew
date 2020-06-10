@@ -4,6 +4,7 @@ class Sleuthkit < Package
   description 'The Sleuth Kit® (TSK) is a library and collection of command line tools that allow you to investigate disk images.'
   homepage 'https://www.sleuthkit.org/sleuthkit/'
   version '4.6.0'
+  compatibility 'all'
   source_url 'https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.6.0/sleuthkit-4.6.0.tar.gz'
   source_sha256 'f52a08ab0de078182c0f2d19d3e1b341424a9e0c1633a61c3b892fb38f9acb97'
 

@@ -4,10 +4,11 @@ class Platformsh < Package
   description 'The unified tool for managing your Platform.sh services from the command line.'
   homepage 'https://docs.platform.sh/overview/cli.html'
   version '3.52.2'
+  compatibility 'all'
   source_url 'https://github.com/platformsh/platformsh-cli/archive/v3.52.2.tar.gz'
   source_sha256 '574e3b4b99224b39833409ce2972a6738844b22e3d4f035ce6f6e8cef527dfea'
 
-  depends_on 'php' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
 
   def self.install
     system "wget https://github.com/platformsh/platformsh-cli/releases/download/v#{version}/platform.phar"

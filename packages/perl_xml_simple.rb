@@ -4,6 +4,7 @@ class Perl_xml_simple < Package
   description 'XML::Simple - An API for simple XML files'
   homepage 'https://metacpan.org/pod/XML::Simple'
   version '2.25'
+  compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz'
   source_sha256 '531fddaebea2416743eb5c4fdfab028f502123d9a220405a4100e68fc480dbf8'
 

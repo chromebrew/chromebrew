@@ -4,6 +4,7 @@ class Xorg_synaptics_driver < Package
   description 'The Xorg Synaptics Driver package contains the X.Org Input Driver, support programs and SDK for Synaptics touchpads.'
   homepage 'https://www.x.org'
   version '1.9.0'
+  compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-input-synaptics-1.9.0.tar.bz2'
   source_sha256 'afba3289d7a40217a19d90db98ce181772f9ca6d77e1898727b0afcf02073b5a'
 
@@ -24,15 +25,15 @@ class Xorg_synaptics_driver < Package
   depends_on 'xorg_server' => :build
 
   def self.build
-    system "./configure",
+    system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           "--enable-shared",
-           "--disable-static"
-    system "make"
+           '--enable-shared',
+           '--disable-static'
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
   end
 end

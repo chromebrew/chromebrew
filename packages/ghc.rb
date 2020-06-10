@@ -4,6 +4,7 @@ class Ghc < Package
   description 'The Glasgow Haskell Compiler is a state-of-the-art, open source compiler and interactive environment for the functional language Haskell.'
   homepage 'https://www.haskell.org/ghc/'
   version '8.6.5'
+  compatibility 'all'
   source_url 'https://downloads.haskell.org/~ghc/8.6.5/ghc-8.6.5-src.tar.xz.sig'
   source_sha256 '0535eaee892010244bcb686b6ad45941da5b233e729669bef87ad667164ae4ed'
 

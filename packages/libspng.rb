@@ -4,6 +4,7 @@ class Libspng < Package
   description 'libspng is a C library for reading and writing Portable Network Graphics (PNG) format files with a focus on security and ease of use.'
   homepage 'https://libspng.org'
   version '0.5.0'
+  compatibility 'all'
   source_url 'https://gitlab.com/randy408/libspng/uploads/3d980bac86c51368f40af2f1ac79a057/libspng-0.5.0.tar.xz'
   source_sha256 '220a653802559943ae43fd48f03ba6ff3935a5243766d9ee5ff905240d4399a7'
 

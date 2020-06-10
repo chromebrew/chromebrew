@@ -4,6 +4,7 @@ class Gphoto < Package
   description 'The gphoto2 commandline tool for accessing and controlling digital cameras.'
   homepage 'http://www.gphoto.org/'
   version '2.5.23'
+  compatibility 'all'
   source_url 'https://github.com/gphoto/gphoto2/archive/gphoto2-2_5_23-release.tar.gz'
   source_sha256 'dc78b7f8a88803937301d157b5b32cd45f6defcc771564438a477a7fb05f4489'
 

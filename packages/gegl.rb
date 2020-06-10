@@ -4,6 +4,7 @@ class Gegl < Package
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'http://gegl.org/'
   version '0.4.22'
+  compatibility 'all'
   source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.22.tar.xz'
   source_sha256 '1888ec41dfd19fe28273795c2209efc1a542be742691561816683990dc642c61'
 

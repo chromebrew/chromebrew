@@ -4,6 +4,7 @@ class Flif < Package
   description 'FLIF is a novel lossless image format which outperforms PNG, lossless WebP, lossless BPG, lossless JPEG2000, and lossless JPEG XR in terms of compression ratio.'
   homepage 'https://flif.info/'
   version '0.3'
+  compatibility 'all'
   source_url 'https://github.com/FLIF-hub/FLIF/archive/v0.3.tar.gz'
   source_sha256 'aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498'
 

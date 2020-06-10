@@ -4,6 +4,7 @@ class Beav < Package
   description 'BEAV (Binary Editor And Viewer), is a full featured binary file editor.'
   homepage 'https://packages.debian.org/sid/beav'
   version '1.40-18-b3'
+  compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 

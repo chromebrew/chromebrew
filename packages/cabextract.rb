@@ -4,6 +4,7 @@ class Cabextract < Package
   description 'cabextract is Free Software for extracting Microsoft cabinet files, also called .CAB files.'
   homepage 'https://www.cabextract.org.uk/'
   version '1.9.1'
+  compatibility 'all'
   source_url 'https://www.cabextract.org.uk/cabextract-1.9.1.tar.gz'
   source_sha256 'afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7'
 

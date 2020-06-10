@@ -4,6 +4,7 @@ class Wdiff < Package
   description 'The GNU wdiff program is a front end to diff for comparing files on a word per word basis.'
   homepage 'https://www.gnu.org/software/wdiff/'
   version '1.2.2'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/wdiff/wdiff-1.2.2.tar.gz'
   source_sha256 '34ff698c870c87e6e47a838eeaaae729fa73349139fc8db12211d2a22b78af6b'
 
@@ -20,15 +21,13 @@ class Wdiff < Package
      x86_64: '091e34045534f4f777172e1f4a3c9e966377efa9158304f1bb15f31a3edc2dac',
   })
 
-  depends_on 'texinfo'
-
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check

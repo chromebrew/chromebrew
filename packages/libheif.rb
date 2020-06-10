@@ -4,6 +4,7 @@ class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
   version '1.3.2'
+  compatibility 'all'
   source_url 'https://github.com/strukturag/libheif/releases/download/v1.3.2/libheif-1.3.2.tar.gz'
   source_sha256 'a9e12a693fc172baa16669f427063edd7bf07964a1cb623ee57cd056c06ee3fc'
 

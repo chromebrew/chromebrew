@@ -4,6 +4,7 @@ class Librsync < Package
   description 'remote delta-compression library'
   homepage 'https://librsync.github.io/'
   version '2.0.1-1'
+  compatibility 'all'
   source_url 'https://github.com/librsync/librsync/archive/v2.0.1.tar.gz'
   source_sha256 '6fce69041aa4fc72a21f1ab280a7299b82df2b1fa0a25d8695fd527e6752625e'
 

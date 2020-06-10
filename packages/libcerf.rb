@@ -4,6 +4,7 @@ class Libcerf < Package
   description 'a self-contained numeric library that provides an efficient and accurate implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.'
   homepage 'http://apps.jcns.fz-juelich.de/doku/sc/libcerf'
   version '1.5'
+  compatibility 'all'
   source_url 'http://apps.jcns.fz-juelich.de/src/libcerf/libcerf-1.5.tgz'
   source_sha256 'e36dc147e7fff81143074a21550c259b5aac1b99fc314fc0ae33294231ca5c86'
 

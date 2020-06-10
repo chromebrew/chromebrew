@@ -4,6 +4,7 @@ class Gettext < Package
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://www.gnu.org/software/gettext/'
   version '0.20.1'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/gettext/gettext-0.20.1.tar.xz'
   source_sha256 '53f02fbbec9e798b0faaf7c73272f83608e835c6288dd58be6c9bb54624a3800'
 

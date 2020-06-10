@@ -4,6 +4,7 @@ class Qtfm < Package
   description 'Lightweight desktop independent Qt file manager'
   homepage 'https://qtfm.eu/'
   version '6.1.9'
+  compatibility 'all'
   source_url 'https://github.com/rodlie/qtfm/archive/6.1.9.tar.gz'
   source_sha256 'ff7ab3244999653fd7f8fb9dc1bd06a599d18faaa7c17b1bc4e2d8830ba9feb5'
 

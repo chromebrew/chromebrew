@@ -4,6 +4,7 @@ class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '7.3.18'
+  compatibility 'all'
   source_url 'https://www.php.net/distributions/php-7.3.18.tar.xz'
   source_sha256 '7b3e2479a8d6fd7666dcdef8aec50d49c4599cc6ee86e48d41724cfd99cc9e58'
 

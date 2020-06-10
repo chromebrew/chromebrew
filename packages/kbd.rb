@@ -4,6 +4,7 @@ class Kbd < Package
   description 'The kbd project contains tools for managing Linux console'
   homepage 'http://kbd-project.org/'
   version '2.0.4'
+  compatibility 'all'
   source_url 'https://github.com/legionus/kbd/archive/2.0.4.tar.gz'
   source_sha256 '18f45ee8790ddb18363fcb98d60e715528b1c04aa4501bd69111609d43240d3e'
 

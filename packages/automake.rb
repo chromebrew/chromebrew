@@ -4,6 +4,7 @@ class Automake < Package
   description 'Automake is a tool for automatically generating Makefile.in files compliant with the GNU Coding Standards.'
   homepage 'http://www.gnu.org/software/automake/'
   version '1.16.2'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/automake/automake-1.16.2.tar.xz'
   source_sha256 'ccc459de3d710e066ab9e12d2f119bd164a08c9341ca24ba22c9adaa179eedd0'
 

@@ -4,6 +4,7 @@ class Sngrep < Package
   description 'An Ncurses SIP Messages flow viewer'
   homepage 'https://github.com/irontec/sngrep'
   version '1.4.6-1'
+  compatibility 'all'
   source_url 'https://github.com/irontec/sngrep/archive/v1.4.6.tar.gz'
   source_sha256 '638d6557dc68db401b07d73b2e7f8276800281f021fe0c942992566d6b59a48a'
 

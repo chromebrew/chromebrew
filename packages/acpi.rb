@@ -4,7 +4,7 @@ class Acpi < Package
   description 'Attempts to replicate the functionality of the \'old\' apm command on ACPI systems, including battery and thermal information.'
   homepage 'https://sourceforge.net/projects/acpiclient/'
   version '1.7'
-  #compatibility 'all'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/acpiclient/acpiclient/1.7/acpi-1.7.tar.gz'
   source_sha256 'd7a504b61c716ae5b7e81a0c67a50a51f06c7326f197b66a4b823de076a35005'
 

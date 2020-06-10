@@ -4,6 +4,7 @@ class Qb64 < Package
   description 'QB64 is a modern extended BASIC+OpenGL language that retains QB4.5/QBasic compatibility and compiles native binaries for Windows, Linux and macOS.'
   homepage 'https://www.qb64.org/'
   version '1.2'
+  compatibility 'all'
   source_url 'https://www.qb64.org/autobuilds/master/qb64_2018-02-28-12-16-57_c3ad985-master_lnx.tar.gz'
   source_sha256 '47c739847e3f0d517150eae28e459e4c2cc1f904c1ab11eb7d089810d56e044a'
 

@@ -4,6 +4,7 @@ class Zip < Package
   description 'Zip is a compression and file packaging/archive utility for archives compressed in .zip format (also called \'zipfiles\').'
   homepage 'http://www.info-zip.org/Zip.html'
   version '3.0-11'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz'
   source_sha256 'f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369'
 
@@ -20,8 +21,6 @@ class Zip < Package
      x86_64: 'c78a63d3630f3dbf637127e1a5a08942fd1da213cde296d33e77823e8547a56c',
   })
 
-  depends_on 'compressdoc' => :build
-  depends_on 'patch' => :build
   depends_on 'wget' => :build
 
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-core/blob/master/Formula/zip.rb
@@ -35,16 +34,14 @@ class Zip < Package
     abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest( File.read("./zippatches.tar.xz") ) == patch_sha256
     system("tar","-xf","zippatches.tar.xz")
 
-    system("for i in `cat debian/patches/series`; do  patch -p 1 < debian/patches/$i; done")
+    system("for i in `cat debian/patches/series`; do patch -p 1 < debian/patches/$i; done")
   end
 
   def self.build
-    system "make -f unix/Makefile generic"
+    system 'make -f unix/Makefile generic'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "BINDIR=#{CREW_DEST_PREFIX}/bin", "MANDIR=#{CREW_DEST_PREFIX}/share/man/man1", "-f", "unix/Makefile", "install"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "BINDIR=#{CREW_DEST_PREFIX}/bin", "MANDIR=#{CREW_DEST_MAN_PREFIX}/man1", '-f', 'unix/Makefile', 'install'
   end
-
 end

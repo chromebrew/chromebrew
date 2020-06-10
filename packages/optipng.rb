@@ -4,6 +4,7 @@ class Optipng < Package
   description 'OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.'
   homepage 'http://optipng.sourceforge.net/'
   version '0.7.7'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.7/optipng-0.7.7.tar.gz'
   source_sha256 '4f32f233cef870b3f95d3ad6428bfe4224ef34908f1b42b0badf858216654452'
 

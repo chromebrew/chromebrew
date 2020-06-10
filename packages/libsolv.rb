@@ -4,7 +4,7 @@ class Libsolv < Package
   description 'Library for solving packages and reading repositories'
   homepage 'https://en.opensuse.org/openSUSE:Libzypp_satsolver'
   version '0.7.14'
-  #compatibility 'all'
+  compatibility 'all'
   source_url 'https://github.com/openSUSE/libsolv/archive/0.7.14.tar.gz'
   source_sha256 '34a67c23cedd38a949607d8cdbd867aa4b07556f18a57e17162ac962bbdbbf54'
 

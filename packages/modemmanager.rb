@@ -4,6 +4,7 @@ class Modemmanager < Package
   description 'ModemManager is a DBus-activated daemon which controls mobile broadband (2G/3G/4G) devices and connections.'
   homepage 'https://www.freedesktop.org/wiki/Software/ModemManager/'
   version '1.8.2'
+  compatibility 'all'
   source_url 'https://www.freedesktop.org/software/ModemManager/ModemManager-1.8.2.tar.xz'
   source_sha256 '96f2a5f0ed15532b4c4c185b756fdc0326e7c2027cea26a1264f91e098260f80'
 

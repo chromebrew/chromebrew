@@ -4,6 +4,7 @@ class Ed < Package
   description 'GNU ed is a line-oriented text editor.'
   homepage 'http://www.gnu.org/software/ed/ed.html'
   version '1.15'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/ed/ed-1.15.tar.lz'
   source_sha256 'ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174'
 

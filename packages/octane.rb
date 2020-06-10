@@ -4,6 +4,7 @@ class Octane < Package
   description 'The JavaScript Benchmark Suite for the modern web https://developers.google.com/octane/.'
   homepage 'https://github.com/chromium/octane'
   version '2.0'
+  compatibility 'all'
   source_url 'https://github.com/chromium/octane/archive/570ad1ccfe86e3eecba0636c8f932ac08edec517.tar.gz'
   source_sha256 'c355dd9a37df421826f3d8028d89e8c8b58faa12a49da88fa2641788f9482fe7'
 

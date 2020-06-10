@@ -4,6 +4,7 @@ class Lua < Package
   description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
   homepage 'https://www.lua.org/'
   version '5.3.5-2'
+  compatibility 'all'
   source_url 'https://www.lua.org/ftp/lua-5.3.5.tar.gz'
   source_sha256 '0c2eed3f960446e1a3e4b9a1ca2f3ff893b6ce41942cf54d5dd59ab4b3b058ac'
 

@@ -4,6 +4,7 @@ class Libpeas < Package
   description 'libpeas is a gobject-based plugins engine'
   homepage 'https://gitlab.gnome.org/GNOME/libpeas'
   version '1.22.0'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libpeas/-/archive/libpeas-1.22.0/libpeas-libpeas-1.22.0.tar.bz2'
   source_sha256 '8400f330f3ccc48e9d1702a40731e4deaa11310862a6a61cc25b67d375e2e572'
 
