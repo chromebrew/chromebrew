@@ -4,6 +4,7 @@ class Librhash < Package
   description 'RHash is a console utility for computing and verifying hash sums of files.'
   homepage 'http://rhash.anz.ru/'
   version '1.3.6'
+  compatibility 'all'
   source_url 'https://github.com/rhash/RHash/archive/v1.3.6.tar.gz'
   source_sha256 '964df972b60569b5cb35ec989ced195ab8ea514fc46a74eab98e86569ffbcf92'
 

@@ -4,6 +4,7 @@ class Rgb < Package
   description 'X color name database'
   homepage 'https://gitlab.freedesktop.org/xorg/app/rgb'
   version '1.0.6'
+  compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/app/rgb/-/archive/rgb-1.0.6/rgb-rgb-1.0.6.tar.bz2'
   source_sha256 'ad054b6cc040ee52610fcb7a895cf00351fda4e703f7ce7f474c1bf7577ecfca'
 

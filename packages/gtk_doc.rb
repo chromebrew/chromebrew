@@ -4,6 +4,7 @@ class Gtk_doc < Package
   description 'GTK-Doc is a project which was started to generate API documentation from comments added to C code.'
   homepage 'https://www.gtk.org/gtk-doc'
   version '1.29'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/gtk-doc/archive/GTK_DOC_1_29.tar.gz'
   source_sha256 'fdf5051e1f164fc1454a4530d217ee2c09dcc2c8e42b93cd5d68645493319ce5'
 

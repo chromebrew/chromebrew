@@ -4,6 +4,7 @@ class Libdrm < Package
   description 'Cross-driver middleware for DRI protocol.'
   homepage 'https://dri.freedesktop.org'
   version '2.4.100'
+  compatibility 'all'
   source_url 'https://dri.freedesktop.org/libdrm/libdrm-2.4.100.tar.gz'
   source_sha256 '6a5337c054c0c47bc16607a21efa2b622e08030be4101ef4a241c5eb05b6619b'
 

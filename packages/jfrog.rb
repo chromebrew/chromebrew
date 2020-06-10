@@ -4,6 +4,7 @@ class Jfrog < Package
   description 'JFrog CLI is a compact and smart client that provides a simple interface that automates access to Artifactory, Bintray and Mission Control through their respective REST APIs.'
   homepage 'https://github.com/JFrogDev/jfrog-cli-go'
   version '1.23.1'
+  compatibility 'all'
   source_url 'https://github.com/jfrog/jfrog-cli-go/archive/1.23.1.tar.gz'
   source_sha256 'a5200552acdf55592a6972900f2f658cb25dd6508793bc52fb3386a310a75414'
 

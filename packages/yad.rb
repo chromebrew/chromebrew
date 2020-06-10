@@ -4,6 +4,7 @@ class Yad < Package
   description 'display graphical dialogs from shell scripts or command line.'
   homepage 'https://sourceforge.net/projects/yad-dialog/'
   version '0.40.0'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/yad-dialog/yad-0.40.0.tar.xz'
   source_sha256 'c2d0b7d1b6d3a0877299faa00db75d58c974f81fce72d520a3a84e67d1d60ef4'
 
@@ -36,6 +37,6 @@ class Yad < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

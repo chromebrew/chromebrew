@@ -4,6 +4,7 @@ class Dub < Package
   description 'Developer package manager for D programming language'
   homepage 'https://github.com/D-Programming-Language/dub'
   version '1.7.1'
+  compatibility 'all'
   source_url 'https://github.com/dlang/dub/archive/v1.7.1.tar.gz'
   source_sha256 'baa8c533f59d83f74e89c06f5ec7e52daf3becb227c7177a9eeab7159ba86dbc'
 

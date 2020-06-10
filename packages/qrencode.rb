@@ -4,6 +4,7 @@ class Qrencode < Package
   description 'Libqrencode is a fast and compact library for encoding data in a QR Code symbol'
   homepage 'https://fukuchi.org/works/qrencode/'
   version '4.0.2'
+  compatibility 'all'
   source_url 'https://fukuchi.org/works/qrencode/qrencode-4.0.2.tar.gz'
   source_sha256 'dbabe79c07614625d1f74d8c0ae2ee5358c4e27eab8fd8fe31f9365f821a3b1d'
 
@@ -19,7 +20,6 @@ class Qrencode < Package
        i686: 'a71bbdf13f9a57930d3d0064becdaa57613d3e16fe446e40698bc377881c9175',
      x86_64: '20d0f46764c934a1d32f114c0488fb9b79a1761dbb757d51a009a2547b3cd682',
   })
-
 
   depends_on 'libpng'
 

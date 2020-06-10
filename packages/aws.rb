@@ -4,6 +4,7 @@ class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
   version '1.17.13'
+  compatibility 'all'
   source_url 'https://github.com/aws/aws-cli/archive/1.17.13.tar.gz'
   source_sha256 '4dc8ff38ca67341021f6e2971084d7ed8b87968443e089e758b5531f1381205f'
 

@@ -4,6 +4,7 @@ class Dbus < Package
   description 'D-Bus is a message bus system, a simple way for applications to talk to one another.'
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
   version '1.13.12'
+  compatibility 'all'
   source_url 'https://dbus.freedesktop.org/releases/dbus/dbus-1.13.12.tar.xz'
   source_sha256 '7588649b56dd257c6a5f85a8c45aa2dfdf9e99f4de3983710f452081ca43eca6'
 

@@ -4,6 +4,7 @@ class Libgpgerror < Package
   description 'Libgpg-error is a small library that defines common error values for all GnuPG components.'
   homepage 'https://www.gnupg.org/related_software/libgpg-error/index.html'
   version '1.37'
+  compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.37.tar.bz2'
   source_sha256 'b32d6ff72a73cf79797f7f2d039e95e9c6f92f0c1450215410840ab62aea9763'
 

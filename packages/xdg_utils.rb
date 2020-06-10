@@ -4,6 +4,7 @@ class Xdg_utils < Package
   description 'xdg-utils is a set of tools that allows applications to easily integrate with the desktop environment of the user, regardless of the specific desktop environment that the user runs.'
   homepage 'https://www.freedesktop.org/wiki/Software/xdg-utils/'
   version '1.1.3-1'
+  compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.1.3/xdg-utils-v1.1.3.tar.bz2'
   source_sha256 'deac55c48aa2902023c96a4bea2f1778441ce9c59e60ed52c6ce5d8b3e90ba64'
 
@@ -37,6 +38,6 @@ class Xdg_utils < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

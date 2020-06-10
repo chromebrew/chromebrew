@@ -4,6 +4,7 @@ class Gucharmap < Package
   description 'GNOME Character Map, based on the Unicode Character Database.'
   homepage 'https://wiki.gnome.org/Apps/Gucharmap'
   version '10.0.4'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/gucharmap/10.0/gucharmap-10.0.4.tar.xz'
   source_sha256 'bb266899266b2f2dcdbaf9f45cafd74c6f4e540132d3f0b068d37343291df001'
 

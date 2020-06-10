@@ -4,6 +4,7 @@ class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
   version '67.1'
+  compatibility 'all'
   source_url 'https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.tgz'
   source_sha256 '94a80cd6f251a53bd2a997f6f1b5ac6653fe791dfab66e1eb0227740fb86d5dc'
 

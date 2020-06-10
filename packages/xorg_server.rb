@@ -4,6 +4,7 @@ class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
   version '1.20.7'
+  compatibility 'all'
   source_url 'https://www.x.org/releases/individual/xserver/xorg-server-1.20.7.tar.bz2'
   source_sha256 'bd5986f010f34f5b3d6bc99fe395ecb1e0dead15a26807e0c832701809a06ea1'
 

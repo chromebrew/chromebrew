@@ -4,6 +4,7 @@ class Netpbm < Package
   description 'Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats.'
   homepage 'http://netpbm.sourceforge.net/'
   version '10.73.28'
+  compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/netpbm/super_stable/10.73.28/netpbm-10.73.28.tgz'
   source_sha256 'c0d32d4b9a53fde47dd9a36f45653e0ef51f6c390517f10b0c5056d1a8a844bd'
 

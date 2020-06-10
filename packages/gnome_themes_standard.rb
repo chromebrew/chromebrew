@@ -4,6 +4,7 @@ class Gnome_themes_standard < Package
   description 'Standard Themes for GNOME Applications.'
   homepage 'https://git.gnome.org/browse/gnome-themes-standard/'
   version '3.27.92-0'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/gnome-themes-extra/archive/3.27.92.tar.gz'
   source_sha256 'c2c2b02e6826d51de4e6e53afffbdb0ec301ef776df91944574fdc42b558cecb'
 

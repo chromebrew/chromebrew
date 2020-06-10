@@ -4,6 +4,7 @@ class Julia < Package
   description 'Julia is a flexible dynamic language, appropriate for scientific and numerical computing'
   homepage 'https://julialang.org/'
   version '1.3.1'
+  compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
    source_url 'https://julialang-s3.julialang.org/bin/linux/armv7l/1.3/julia-1.3.1-linux-armv7l.tar.gz'

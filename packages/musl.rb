@@ -4,6 +4,7 @@ class Musl < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
   homepage 'https://www.musl-libc.org/'
   version '1.1.23'
+  compatibility 'all'
   source_url 'https://www.musl-libc.org/releases/musl-1.1.23.tar.gz'
   source_sha256 '8a0feb41cef26c97dde382c014e68b9bb335c094bbc1356f6edaaf6b79bd14aa'
 

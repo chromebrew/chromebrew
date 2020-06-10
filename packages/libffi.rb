@@ -4,6 +4,7 @@ class Libffi < Package
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
   homepage 'https://sourceware.org/libffi/'
   version '3.2.1-2'
+  compatibility 'all'
   source_url 'ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz'
   source_sha256 'd06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37'
 

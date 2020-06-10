@@ -4,6 +4,7 @@ class Chromebrew_scripts < Package
   description 'Useful bash utility scripts for Chrome/Chromium OS systems.'
   homepage 'https://github.com/uberhacker/chromebrew-scripts'
   version '1.1.0'
+  compatibility 'all'
   source_url 'https://github.com/uberhacker/chromebrew-scripts/archive/1.1.0.tar.gz'
   source_sha256 'acf8f89ef3b8a04fc33bb5a94188687d0fdd2dd7b05102ad442a91019cab20fb'
 

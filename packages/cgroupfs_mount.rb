@@ -4,6 +4,7 @@ class Cgroupfs_mount < Package
   description 'Simple scripts to properly mount the cgroupfs hierarchy.'
   homepage 'https://github.com/tianon/cgroupfs-mount'
   version '1.4'
+  compatibility 'all'
   source_url 'https://github.com/tianon/cgroupfs-mount/archive/1.4.tar.gz'
   source_sha256 'd6c8aff7af59c7d0082ee3018c97f73b0421e81a49bb28ad9f66a36da5cd6ec7'
 

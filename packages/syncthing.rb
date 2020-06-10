@@ -4,6 +4,7 @@ class Syncthing < Package
   description 'An application that lets you synchronize your files across multiple devices'
   homepage 'https://github.com/syncthing/syncthing'
   version '0.14.41'
+  compatibility 'all'
   source_url 'https://github.com/syncthing/syncthing/archive/v0.14.41.tar.gz'
   source_sha256 '9c406897443465e03d3259df1dda10bd86e49ae4286f8c855d9f35e47026af2f'
 

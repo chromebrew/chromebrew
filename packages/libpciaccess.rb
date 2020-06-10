@@ -4,6 +4,7 @@ class Libpciaccess < Package
   description 'Generic PCI access library'
   homepage 'https://x.org'
   version '0.16'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libpciaccess-0.16.tar.gz'
   source_sha256 '84413553994aef0070cf420050aa5c0a51b1956b404920e21b81e96db6a61a27'
 

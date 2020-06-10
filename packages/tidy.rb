@@ -4,6 +4,7 @@ class Tidy < Package
   description 'The granddaddy of HTML tools, with support for modern standards'
   homepage 'http://www.html-tidy.org/'
   version '5.6.0'
+  compatibility 'all'
   source_url 'https://github.com/htacg/tidy-html5/archive/5.6.0.tar.gz'
   source_sha256 '08a63bba3d9e7618d1570b4ecd6a7daa83c8e18a41c82455b6308bc11fe34958'
 

@@ -4,6 +4,7 @@ class Argon2 < Package
   description 'The password hash Argon2, winner of PHC'
   homepage 'https://github.com/P-H-C/phc-winner-argon2'
   version '20190702'
+  compatibility 'all'
   source_url 'https://github.com/P-H-C/phc-winner-argon2/archive/20190702.tar.gz'
   source_sha256 'daf972a89577f8772602bf2eb38b6a3dd3d922bf5724d45e7f9589b5e830442c'
 

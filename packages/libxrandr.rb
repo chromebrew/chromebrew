@@ -4,6 +4,7 @@ class Libxrandr < Package
   description 'X.org X Resize, Rotate and Reflection extension library'
   homepage 'http://www.x.org'
   version '1.5.1-0'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXrandr-1.5.1.tar.gz'
   source_sha256 '2baa7fb3eca78fe7e11a09b373ba898b717f7eeba4a4bfd68187e04b4789b0d3'
 

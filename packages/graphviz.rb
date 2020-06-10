@@ -4,6 +4,7 @@ class Graphviz < Package
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
   version '2.44.0-1'
+  compatibility 'all'
   source_url 'https://gitlab.com/graphviz/graphviz/-/archive/2.44.0/graphviz-2.44.0.tar.bz2'
   source_sha256 'eaff61ce05bf8196c596097bab6310fa6e7e96ee908a199a4bc83fbd5e7082d6'
 

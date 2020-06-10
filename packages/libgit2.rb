@@ -4,6 +4,7 @@ class Libgit2 < Package
   description 'A portable, pure C implementation of the Git core methods'
   homepage 'https://libgit2.org/'
   version '0.28.2'
+  compatibility 'all'
   source_url 'https://github.com/libgit2/libgit2/archive/v0.28.2.tar.gz'
   source_sha256 '42b5f1e9b9159d66d86fff0394215c5733b6ef8f9b9d054cdd8c73ad47177fc3'
 

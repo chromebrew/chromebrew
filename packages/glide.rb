@@ -4,6 +4,7 @@ class Glide < Package
   description 'Package Management for Golang'
   homepage 'https://glide.sh/'
   version '0.12.3'
+  compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url 'https://github.com/Masterminds/glide/releases/download/v0.12.3/glide-v0.12.3-linux-armv7.tar.gz'

@@ -4,6 +4,7 @@ class Fish < Package
   description 'fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.'
   homepage 'http://fishshell.com/'
   version '2.7.1-1'
+  compatibility 'all'
   source_url 'https://github.com/fish-shell/fish-shell/releases/download/2.7.1/fish-2.7.1.tar.gz'
   source_sha256 'e42bb19c7586356905a58578190be792df960fa81de35effb1ca5a5a981f0c5a'
 

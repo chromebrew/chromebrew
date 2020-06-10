@@ -4,6 +4,7 @@ class Libbluray < Package
   description 'This library is simply a tool for playback of Blu-ray movies.'
   homepage 'https://www.videolan.org/developers/libbluray.html'
   version '1.1.2'
+  compatibility 'all'
   source_url 'https://get.videolan.org/libbluray/1.1.2/libbluray-1.1.2.tar.bz2'
   source_sha256 'a3dd452239b100dc9da0d01b30e1692693e2a332a7d29917bf84bb10ea7c0b42'
 

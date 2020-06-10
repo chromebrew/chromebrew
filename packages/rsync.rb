@@ -4,6 +4,7 @@ class Rsync < Package
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
   version '3.1.3'
+  compatibility 'all'
   source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.1.3.tar.gz'
   source_sha256 '55cc554efec5fdaad70de921cd5a5eeb6c29a95524c715f3bbf849235b0800c0'
 
@@ -20,15 +21,12 @@ class Rsync < Package
      x86_64: '7d443ccd165fa47273dcad879c598ee3c024edc57c6ce2d56206aa7d1724c287',
   })
 
-  depends_on 'buildessential'
-  depends_on 'perl' => :build
-
   def self.build
-    system "./configure"
-    system "make"
+    system './configure'
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

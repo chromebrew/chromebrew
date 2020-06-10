@@ -4,6 +4,7 @@ class Qtchooser < Package
   description 'a wrapper used to select between Qt development binary versions'
   homepage 'https://www.qt.io/'
   version '66'
+  compatibility 'all'
   source_url 'http://download.qt.io/official_releases/qtchooser/qtchooser-66.tar.xz'
   source_sha256 'b22c21df135d48fc775d26d771170c2c70555704d4625605383be2cd149c7cea'
 

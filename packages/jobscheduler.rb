@@ -4,6 +4,7 @@ class Jobscheduler < Package
   description 'The JobScheduler is an Open Source solution for enterprise level workload automation.'
   homepage 'http://www.sos-berlin.com/jobscheduler'
   version '1.12.3'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/jobscheduler/jobscheduler_unix_universal_agent.1.12.3.tar.gz'
   source_sha256 '079819463d1e64300fd4f2231e84a62d282b4319dd5585fcbf6ca6014484352b'
 

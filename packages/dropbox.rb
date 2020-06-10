@@ -4,6 +4,7 @@ class Dropbox < Package
   description 'Dropbox simplifies the way you create, share and collaborate.  Bring your photos, docs, and videos anywhere and keep your files safe.'
   homepage 'https://www.dropbox.com/'
   version '48.4.58'
+  compatibility 'i686,x86_64'
   case ARCH
   when 'i686'
     source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-48.4.58.tar.gz'
@@ -14,12 +15,12 @@ class Dropbox < Package
   end
 
   binary_url ({
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-48.4.58-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-48.4.58-chromeos-x86_64.tar.xz',
+      i686: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-48.4.58-chromeos-i686.tar.xz',
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-48.4.58-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-       i686: '1d272702286bd31f3235ba0eb8369946f45fb4ea919b35d1ec4ed060a1578b69',
-     x86_64: 'c2c699372e4646ce5ed542fa189c08dc44dea1ae312f7401f1f385279e1b2ded',
+      i686: '1d272702286bd31f3235ba0eb8369946f45fb4ea919b35d1ec4ed060a1578b69',
+    x86_64: 'c2c699372e4646ce5ed542fa189c08dc44dea1ae312f7401f1f385279e1b2ded',
   })
 
   case ARCH

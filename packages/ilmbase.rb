@@ -4,6 +4,7 @@ class Ilmbase < Package
   description 'Supporting libraries for OpenEXR'
   homepage 'http://www.openexr.com/'
   version '2.3.0'
+  compatibility 'all'
   source_url 'https://github.com/openexr/openexr/releases/download/v2.3.0/ilmbase-2.3.0.tar.gz'
   source_sha256 '456978d1a978a5f823c7c675f3f36b0ae14dba36638aeaa3c4b0e784f12a3862'
 

@@ -4,6 +4,7 @@ class Anagram < Package
   description 'finds anagrams or permutations of words in the target phrase'
   homepage 'http://www.fourmilab.ch/anagram/'
   version '1.4'
+  compatibility 'all'
   source_url 'http://www.fourmilab.ch/anagram/anagram-1.4.tar.gz'
   source_sha256 'd046fd5accd3c62267c0ef81b56cd05c59ec92b37cdb73f69d031879dba308bd'
 

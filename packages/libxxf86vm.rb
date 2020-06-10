@@ -4,6 +4,7 @@ class Libxxf86vm < Package
   description 'X.org the client library for the XFree86-VidMode X extension.'
   homepage 'http://www.x.org'
   version '1.1.4-0'
+  compatibility 'all'
   source_url 'https://www.x.org/archive//individual/lib/libXxf86vm-1.1.4.tar.gz'
   source_sha256 '5108553c378a25688dcb57dca383664c36e293d60b1505815f67980ba9318a99'
 

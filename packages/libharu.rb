@@ -4,6 +4,7 @@ class Libharu < Package
   description 'libHaru is a free, cross platform, open source library for generating PDF files.'
   homepage 'http://libharu.org/'
   version '2.3.0'
+  compatibility 'all'
   source_url 'https://github.com/libharu/libharu/archive/RELEASE_2_3_0.tar.gz'
   source_sha256 '8f9e68cc5d5f7d53d1bc61a1ed876add1faf4f91070dbc360d8b259f46d9a4d2'
 

@@ -4,6 +4,7 @@ class Xbitmaps < Package
   description 'The xbitmaps package contains bitmap images used by multiple applications built in Xorg chapter.'
   homepage 'http://www.x.org'
   version '1.1.1'
+  compatibility 'all'
   source_url 'https://www.x.org/pub/individual/data/xbitmaps-1.1.1.tar.bz2'
   source_sha256 '3671b034356bbc4d32d052808cf646c940ec8b2d1913adac51b1453e41aa1e9d'
 
@@ -20,16 +21,14 @@ class Xbitmaps < Package
      x86_64: '161b342836f77df11606c5fa965b38912022d108569313d504a0bc5d1bce4c16',
   })
 
-  depends_on "util_macros" => :build
-
+  depends_on 'util_macros' => :build
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-
 end

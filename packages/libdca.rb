@@ -4,6 +4,7 @@ class Libdca < Package
   description 'libdca is a free library for decoding DTS Coherent Acoustics streams.'
   homepage 'https://www.videolan.org/developers/libdca.html'
   version '0.0.6'
+  compatibility 'all'
   source_url 'https://get.videolan.org/libdca/0.0.6/libdca-0.0.6.tar.bz2'
   source_sha256 '98f98a9aa000a26b927c6facd15d18dcf664238adfc5db24f533c5932cdb1f40'
 

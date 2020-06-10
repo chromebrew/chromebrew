@@ -4,7 +4,7 @@ class Rtmpdump < Package
   description 'rtmpdump is a toolkit for RTMP streams.'
   homepage 'https://rtmpdump.mplayerhq.hu/'
   version 'c5f04a58'
-  #compatibility 'all'
+  compatibility 'all'
   source_url 'https://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/c5f04a58fc2aeea6296ca7c44ee4734c18401aa3.tar.gz'
   source_sha256 'fd8c21263d93fbde8bee8aa6c5f6a657789674bb0f9e74f050651504d5f43b46'
 

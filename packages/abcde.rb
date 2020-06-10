@@ -4,6 +4,7 @@ class Abcde < Package
   description 'Grab an entire CD and compress it to Ogg/Vorbis, MP3, FLAC, AAC, Ogg/Speex and/or MPP/MP+(Musepack) format.'
   homepage 'https://abcde.einval.com/wiki/'
   version '2.9.1'
+  compatibility 'all'
   source_url 'https://abcde.einval.com/download/abcde-2.9.1.tar.gz'
   source_sha256 '70ec6e06b791115fbe88dee313f58f691f9b559ee992f2af5ed64fe6ad2e55d7'
 

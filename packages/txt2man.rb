@@ -4,6 +4,7 @@ class Txt2man < Package
   description 'Txt2man converts flat ASCII text to man page format.'
   homepage 'http://mvertes.free.fr/'
   version '1.5.6-1'
+  compatibility 'all'
   source_url 'http://mvertes.free.fr/download/txt2man-1.5.6.tar.gz'
   source_sha256 '984825c5fd0cb3495160bf3277f327078081a8dc219dc466509e307ec9a2b52a'
 
@@ -19,9 +20,6 @@ class Txt2man < Package
        i686: '188870876c03bdd218e4a7bbd542dd5006d961a2bd8640714a8981b8d89d2532',
      x86_64: 'e0776d50fcdc817d6646b9424029ab244bcfcfaa4a16c209bfb7b29bb5e14dab',
   })
-
-  depends_on 'gawk'
-  depends_on 'mandb'
 
   def self.build
     system "gzip -9 *.1"

@@ -4,6 +4,7 @@ class Libxshmfence < Package
   description 'A library that exposes a event API on top of Linux futexes'
   homepage 'http://t2sde.org/packages/libxshmfence.html'
   version '1.2'
+  compatibility 'all'
   source_url 'https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.2.tar.bz2'
   source_sha256 'd21b2d1fd78c1efbe1f2c16dae1cb23f8fd231dcf891465b8debe636a9054b0c'
 

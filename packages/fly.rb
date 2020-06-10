@@ -4,6 +4,7 @@ class Fly < Package
   description 'fly is a C program that creates PNG, JPEG or GIF images on the fly from CGI and other programs.'
   homepage 'http://martin.gleeson.com/fly/index.html'
   version '1.6.5'
+  compatibility 'all'
   source_url 'http://www.w3perl.com/fly/dist/fly-1.6.5.tar.gz'
   source_sha256 '8411915a9acd9a3d86896db5a53ac6bd4e35b44106c0f180cc0f96a6f02a62c9'
 

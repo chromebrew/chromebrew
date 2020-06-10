@@ -4,6 +4,7 @@ class Openjpeg < Package
   description 'OpenJPEG is an open-source JPEG 2000 codec written in C language.'
   homepage 'https://github.com/uclouvain/openjpeg/'
   version '2.3.1'
+  compatibility 'all'
   source_url 'https://github.com/uclouvain/openjpeg/archive/v2.3.1.tar.gz'
   source_sha256 '63f5a4713ecafc86de51bfad89cc07bb788e9bba24ebbf0c4ca637621aadb6a9'
 
