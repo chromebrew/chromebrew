@@ -210,6 +210,7 @@ echo lib >> .git/info/sparse-checkout
 echo crew >> .git/info/sparse-checkout
 git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
+crew update
 
 # install a base set of essential packages
 yes | crew install buildessential less most
