@@ -3,22 +3,22 @@ require 'package'
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.31'
+  version '7.2.31-1'
   compatibility 'all'
   source_url 'https://www.php.net/distributions/php-7.2.31.tar.xz'
   source_sha256 '8beaa634bb878a96af9bc8643811ea46973f5f41ad2bfb6ab4cfd290e5a39806'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '19f7b0a248c3a2bcaa1c1aaf6ae3b0183a7cc264e3b8bf8a1f85c5a96fb17caf',
-     armv7l: '19f7b0a248c3a2bcaa1c1aaf6ae3b0183a7cc264e3b8bf8a1f85c5a96fb17caf',
-       i686: '7ccfacca9aab6c072fa2aa5d8018d48a57dbb18ef84c1f2baea7ab93144fc2e8',
-     x86_64: '070717ba5e5f43bbe7e132fd8a5df03148696f941cfda4ccc29f6ef84a4d2d05',
+    aarch64: '198692f930728393d8564873907bd705183c53e02c09694474db49e1fd8b5854',
+     armv7l: '198692f930728393d8564873907bd705183c53e02c09694474db49e1fd8b5854',
+       i686: 'bd20441b7f73bbb72e745c5aeaa66610b576f063cd62264c9e48e61cbe37ce36',
+     x86_64: '0f714f860c1220d8e2bf49931c1b876c20800a9c001c66c61d581743baec96c4',
   })
 
   depends_on 'libgcrypt'
