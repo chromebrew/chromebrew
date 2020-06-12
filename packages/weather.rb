@@ -4,6 +4,7 @@ class Weather < Package
   description 'This command-line utility is intended to provide quick access to current weather conditions and forecasts.'
   homepage 'http://fungi.yuggoth.org/weather/'
   version '2.3'
+  compatibility 'all'
   source_url 'http://fungi.yuggoth.org/weather/src/weather-2.3.tar.xz'
   source_sha256 '86148d2f1d59867f637f52558cc2a6b3280fac94df55c6e5af0ce37cc190d146'
 
@@ -19,8 +20,6 @@ class Weather < Package
        i686: '8d6458b01ac471cde9b77bc5de55ba647896317d98b4d75de8fe6bd0751130cc',
      x86_64: '1c4e0246d00a2fd2511153582862d4b9dccc5a1afb6e7ffd0763a485d60b4490',
   })
-
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.build
     system "echo 'setpath = $HOME/.weather:#{CREW_PREFIX}/data/weather' >> weatherrc"

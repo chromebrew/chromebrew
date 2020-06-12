@@ -4,6 +4,7 @@ class Giflib < Package
   description 'giflib is a library for reading and writing gif images.'
   homepage 'http://giflib.sourceforge.net/'
   version '5.1.4'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/giflib/giflib-5.1.4.tar.bz2'
   source_sha256 'df27ec3ff24671f80b29e6ab1c4971059c14ac3db95406884fc26574631ba8d5'
 

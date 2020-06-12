@@ -4,6 +4,7 @@ class Janet < Package
   description 'Janet is a functional and imperative programming language and bytecode interpreter.'
   homepage 'https://janet-lang.org'
   version '1.7.0'
+  compatibility 'all'
   source_url 'https://github.com/janet-lang/janet/archive/v1.7.0.tar.gz'
   source_sha256 '2a119f3a79b209a858864e73ca3efda57ac044df3c89762a31480bbea386d2a3'
 

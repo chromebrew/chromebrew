@@ -4,7 +4,7 @@ class Google_cloud_sdk < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/'
   version '236.0.0'
-
+  compatibility 'i686,x86_64'
   case ARCH
   when 'i686'
     source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-236.0.0-linux-x86.tar.gz'
@@ -14,13 +14,10 @@ class Google_cloud_sdk < Package
     source_sha256 'cfa7ff7c67d58d5b1bd2ae623a007c23d94937d8bc898b7933c647c660860659'
   end
 
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
-
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
-  depends_on 'xdg_base'
+  case ARCH
+  when 'i686', 'x86_64'
+    depends_on 'xdg_base'
+  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"

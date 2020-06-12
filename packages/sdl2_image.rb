@@ -4,6 +4,7 @@ class Sdl2_image < Package
   description 'SDL2_image is an image loading library that is used with the SDL2 library.'
   homepage 'https://www.libsdl.org/projects/SDL_image/'
   version '2.0.4'
+  compatibility 'all'
   source_url 'https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.4.tar.gz'
   source_sha256 'e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac'
 

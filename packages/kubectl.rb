@@ -4,6 +4,7 @@ class Kubectl < Package
   description 'Kubernetes command line tool'
   homepage 'https://kubernetes.io'
   version '1.7.0'
+  compatibility 'all'
   source_url 'https://github.com/kubernetes/kubernetes/archive/v1.7.0.tar.gz'
   source_sha256 '0fe34180a4bb61384894616b1d348cc6350d1ebcbc071c67748864ffd2deb026'
 

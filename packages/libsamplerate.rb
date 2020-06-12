@@ -4,6 +4,7 @@ class Libsamplerate < Package
   description 'Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio.'
   homepage 'http://www.mega-nerd.com/libsamplerate/'
   version '0.1.9'
+  compatibility 'all'
   source_url 'http://www.mega-nerd.com/libsamplerate/libsamplerate-0.1.9.tar.gz'
   source_sha256 '0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1'
 

@@ -4,6 +4,7 @@ class Aria2 < Package
   description 'aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.'
   homepage 'https://aria2.github.io/'
   version '1.35.0'
+  compatibility 'all'
   source_url 'https://github.com/aria2/aria2/releases/download/release-1.35.0/aria2-1.35.0.tar.xz'
   source_sha256 '1e2b7fd08d6af228856e51c07173cfcf987528f1ac97e04c5af4a47642617dfd'
 

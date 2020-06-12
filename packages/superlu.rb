@@ -4,6 +4,7 @@ class Superlu < Package
   description 'SuperLU is a general purpose library for the direct solution of large, sparse, nonsymmetric systems of linear equations.'
   homepage 'https://portal.nersc.gov/project/sparse/superlu/'
   version '5.2.1'
+  compatibility 'all'
   source_url 'https://github.com/xiaoyeli/superlu/archive/v5.2.1.tar.gz'
   source_sha256 '77582501dedef295eb74e4dc9433e2816d2d8be211eae307379c13d93c65bc71'
 

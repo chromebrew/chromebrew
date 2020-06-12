@@ -4,6 +4,7 @@ class Libsm < Package
   description 'X.org X Session Management Library'
   homepage 'http://www.x.org'
   version '1.2.2'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libSM-1.2.2.tar.gz'
   source_sha256 '14bb7c669ce2b8ff712fbdbf48120e3742a77edcd5e025d6b3325ed30cf120f4'
 

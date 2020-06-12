@@ -26,7 +26,7 @@ Usage:
   crew files <name> ...
   crew help [<command>]
   crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
-  crew list (available|installed)
+  crew list (available|installed|compatible|incompatible)
   crew postinstall <name> ...
   crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <name> ...
   crew remove [-v|--verbose] <name> ...
@@ -93,10 +93,17 @@ end
 
 def print_package(pkgName, extra = false)
   search pkgName, true
-  print '(i) '.lightgreen if @device[:installed_packages].any? do |elem|
-    elem[:name] == pkgName
+  status = ''
+  status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == pkgName end
+  status = 'incompatible' unless @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
+  case status
+  when 'installed'
+    print @pkg.name.lightgreen
+  when 'incompatible'
+    print @pkg.name.lightred
+  else
+    print @pkg.name
   end
-  print @pkg.name
   print ": #{@pkg.description}" if @pkg.description
   if extra
     puts ""
@@ -129,14 +136,62 @@ def list_available
       packageName = File.basename filename, '.rb'
       @notInstalled = nil if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
     end
-    puts File.basename filename, '.rb' if File.extname(filename) == '.rb' if @notInstalled
+    if @notInstalled and File.extname(filename) == '.rb'
+      pkgName = File.basename filename, '.rb'
+      set_package pkgName, true
+      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+        puts pkgName
+      else
+        puts pkgName.lightred
+      end
+    end
   end
 end
 
 def list_installed
   Dir["#{CREW_CONFIG_PATH}/meta/*.directorylist"].sort.map { |f|
-    File.basename(f, ".directorylist")
+    File.basename(f, ".directorylist").lightgreen
   }
+end
+
+def list_compatible(compat = true)
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    if File.extname(filename) == '.rb'
+      pkgName = File.basename filename, '.rb'
+      set_package pkgName, true
+      if compat
+        if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+          if File.exist? CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
+            puts pkgName.lightgreen
+          else
+            puts pkgName
+          end
+        end
+      else
+        unless @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+          puts pkgName.lightred
+        end
+      end
+    end
+  end
+end
+
+def generate_compatible
+  @device[:compatible_packages] = []
+  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+    if File.extname(filename) == '.rb'
+      pkgName = File.basename filename, '.rb'
+      set_package pkgName, true
+      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+        #add to compatible packages
+        @device[:compatible_packages].push(name: @pkg.name)
+      end
+    end
+  end
+  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
+    output = JSON.parse @device.to_json
+    file.write JSON.pretty_generate(output)
+  end
 end
 
 def search (pkgName, silent = false)
@@ -196,8 +251,8 @@ def help (pkgName)
     puts "If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary."
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "list"
-    puts "List available or installed packages"
-    puts "Usage: crew list (available|installed)"
+    puts "List packages"
+    puts "Usage: crew list available|installed|compatible|incompatible"
   when "postinstall"
     puts "Display postinstall messages of package(s)."
     puts "Usage: crew postinstall <package1> [<package2> ...]"
@@ -218,14 +273,14 @@ def help (pkgName)
     puts "Look for package(s)."
     puts "Usage: crew search [-v|--verbose] [<pattern> ...]"
     puts "If <pattern> is omitted, all packages will be returned."
-    puts "(i)".lightgreen + " in front of the name means the package is installed."
+    puts "If the package color is " + "green".lightgreen + ", it means the package is installed."
+    puts "If the package color is " + "red".lightred + ", it means the architecture is not supported."
     puts "The <pattern> string can also contain regular expressions."
     puts "If `-v` or `--verbose` is present, homepage and version will be displayed."
     puts "Examples:"
-    puts "  crew search | grep '(i)'".lightblue + " will display all installed packages."
-    puts "  crew search | grep -v '(i)'".lightblue + " will display all available packages not already installed."
     puts "  crew search ^lib".lightblue + " will display all packages that start with `lib`."
-    puts "  crew search audio".lightblue + " will display all packages with `audio` in the description."
+    puts "  crew search audio".lightblue + " will display all packages with `audio` in the name."
+    puts "  crew search | grep -i audio".lightblue + " will display all packages with `audio` in the name or description."
     puts "  crew search git -v".lightblue + " will display packages with `git` in the name along with homepage and version."
   when "update"
     puts "Update crew."
@@ -333,9 +388,12 @@ def update
   end
   puts "Package lists, crew, and library updated."
 
+  #update compatible packages
+  puts "Generating compatible packages..."
+  generate_compatible
+
   #check for outdated installed packages
   puts "Checking for package updates..."
-  puts ""
 
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
@@ -588,6 +646,9 @@ end
 
 def install_package (pkgdir)
   Dir.chdir pkgdir do
+    # install filelist, dlist and binary files
+    puts "Performing install..."
+
     FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
     FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
 
@@ -677,7 +738,7 @@ def resolve_dependencies
 
   i = 0
   last_deps = []
-  last_packages = ["curl", "mandb", "gtk3", "sommelier"]
+  last_packages = ["curl", "ghc", "mandb", "gtk3", "sommelier"]
   @dependencies.each do |dep|
     if last_packages.include?(dep)
       @dependencies.delete_at(i)
@@ -747,9 +808,6 @@ def install
   end
 
   unless @pkg.is_fake?
-    # install filelist, dlist and binary files
-    puts "Installing..."
-
     # perform pre-install process
     pre_install dest_dir
 
@@ -948,6 +1006,10 @@ def list_command (args)
     list_available
   elsif args['installed']
     puts list_installed
+  elsif args['compatible']
+    list_compatible true
+  elsif args['incompatible']
+    list_compatible false
   end
 end
 

@@ -4,6 +4,7 @@ class Virtualenv < Package
   description 'Virtual Python Environment builder'
   homepage 'http://virtualenv.pypa.io/'
   version '16.0.0'
+  compatibility 'all'
   source_url 'https://github.com/pypa/virtualenv/archive/16.0.0.tar.gz'
   source_sha256 '5a597f845cf785d46c3ae39d6cb18ef0b6af4ca366da40682364f78f7fe00d22'
 
@@ -19,8 +20,6 @@ class Virtualenv < Package
        i686: '74d7b88a32424d818b5c9ef4d8dfbdf7e3db7b422f84ed440e7c13f6ab1517a9',
      x86_64: 'bd8b5a48aadf9457287f95b5c99f33f0263fb3fbb026b1509affe46ed21faa9d',
   })
-
-  depends_on 'python3'
 
   def self.install
     system "python3 setup.py install --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"

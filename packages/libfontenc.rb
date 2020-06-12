@@ -4,6 +4,7 @@ class Libfontenc < Package
   description 'library for the X window system'
   homepage 'https://x.org'
   version '1.1.3'
+  compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libfontenc-1.1.3.tar.gz'
   source_sha256 '6fba26760ca8d5045f2b52ddf641c12cedc19ee30939c6478162b7db8b6220fb'
 

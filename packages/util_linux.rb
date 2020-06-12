@@ -4,6 +4,7 @@ class Util_linux < Package
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
   version '2.35.1'
+  compatibility 'all'
   source_url 'https://kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.1.tar.xz'
   source_sha256 'd9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9'
 
@@ -20,7 +21,6 @@ class Util_linux < Package
      x86_64: '7b4ab11425c7e70d4addf48a71048fcd89197899cae254ee4e6cdbdccc93eed1',
   })
 
-  depends_on 'python27'
   depends_on 'libcap_ng'
   depends_on 'vdev'
 

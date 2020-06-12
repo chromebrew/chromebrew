@@ -4,6 +4,7 @@ class Dbus_glib < Package
   description 'The D-Bus GLib package contains GLib interfaces to the D-Bus API.'
   homepage 'http://www.linuxfromscratch.org/blfs/view/svn/general/dbus-glib.html'
   version '0.110'
+  compatibility 'all'
   source_url 'https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.110.tar.gz'
   source_sha256 '7ce4760cf66c69148f6bd6c92feaabb8812dee30846b24cd0f7395c436d7e825'
 

@@ -4,6 +4,7 @@ class Phive < Package
   description 'The PHAR Installation and Verification Environment (PHIVE)'
   homepage 'https://phar.io/'
   version '0.9.0'
+  compatibility 'all'
   source_url 'https://github.com/phar-io/phive/archive/0.9.0.tar.gz'
   source_sha256 '711659b2293015c1bc81755bb56746fc86f1c6c6c3b87eaaddaa56d29c86c0ad'
 

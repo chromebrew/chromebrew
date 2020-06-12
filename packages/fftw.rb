@@ -4,6 +4,7 @@ class Fftw < Package
   description 'FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data'
   homepage 'http://www.fftw.org/'
   version '3.3.8'
+  compatibility 'all'
   source_url 'http://www.fftw.org/fftw-3.3.8.tar.gz'
   source_sha256 '6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303'
 

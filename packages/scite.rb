@@ -4,6 +4,7 @@ class Scite < Package
   description 'A free source code editing component for Win32, GTK+, and OS X'
   homepage 'https://www.scintilla.org/'
   version '4.2.0'
+  compatibility 'all'
   source_url 'https://www.scintilla.org/scite420.tgz'
   source_sha256 '2e0b95842bbc875a9224416fad3a9179ec329b3af2ca1abdd8e64c008068bb99'
 

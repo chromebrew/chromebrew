@@ -4,6 +4,7 @@ class Nvm < Package
   description 'Node Version Manager - Simple bash script to manage multiple active node.js versions.'
   homepage 'https://github.com/creationix/nvm'
   version '0.33.8'
+  compatibility 'all'
   source_url 'https://github.com/creationix/nvm/archive/v0.33.8.tar.gz'
   source_sha256 '59429f4bf3da7c2b7bcac06c488054dd774ae6962bdcefe249015d3590704b0b'
 

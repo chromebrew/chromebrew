@@ -4,6 +4,7 @@ class Avocado < Package
   description 'Avocado is a next generation testing framework inspired by Autotest and modern development tools such as git.'
   homepage 'http://avocado-framework.github.io/'
   version '67.0'
+  compatibility 'all'
   source_url 'https://github.com/avocado-framework/avocado/archive/67.0.tar.gz'
   source_sha256 'ae96466e2c19da3c6044ae59e05b235f6d211cfc4de8cbecfcaf0b59dc61332a'
 

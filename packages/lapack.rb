@@ -4,6 +4,7 @@ class Lapack < Package
   description 'Lapack is a linear algebra package.'
   homepage 'https://www.netlib.org/lapack/'
   version '3.8.0-1'
+  compatibility 'all'
   source_url 'https://www.netlib.org/lapack/lapack-3.8.0.tar.gz'
   source_sha256 'deb22cc4a6120bff72621155a9917f485f96ef8319ac074a7afbc68aab88bcf6'
 

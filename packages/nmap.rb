@@ -4,6 +4,7 @@ class Nmap < Package
   description 'Nmap (\'Network Mapper\') is a free and open source (license) utility for network discovery and security auditing.'
   homepage 'https://nmap.org/'
   version '7.80'
+  compatibility 'all'
   source_url 'https://nmap.org/dist/nmap-7.80.tar.bz2'
   source_sha256 'fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa'
 

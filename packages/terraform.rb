@@ -4,6 +4,7 @@ class Terraform < Package
   description 'Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.'
   homepage 'https://www.terraform.io/'
   version '0.12.25'
+  compatibility 'all'
 
   case ARCH
     when 'x86_64'

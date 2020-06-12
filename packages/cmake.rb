@@ -4,6 +4,7 @@ class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
   version '3.17.1'
+  compatibility 'all'
   source_url 'https://cmake.org/files/v3.17/cmake-3.17.1.tar.gz'
   source_sha256 '3aa9114485da39cbd9665a0bfe986894a282d5f0882b1dea960a739496620727'
 

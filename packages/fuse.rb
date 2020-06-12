@@ -4,6 +4,7 @@ class Fuse < Package
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse'
   # The version of libfuse need to be matched with ChromeOS /usr/lib/libfuse.so since we must use
+  compatibility 'all'
   # /sbin/mount.fuse which is not possible to be overwritten.  If we use different version of
   # libfuse, it may cause errors.  Chrome OS 81 use libfuse 2.9.8.
   version '2.9.8'

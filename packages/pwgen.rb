@@ -4,6 +4,7 @@ class Pwgen < Package
   description 'Pwgen is a small, GPL\'ed password generator which creates passwords which can be easily memorized by a human.'
   homepage 'https://sourceforge.net/projects/pwgen/'
   version '2.07'
+  compatibility 'all'
   source_url 'https://pilotfiber.dl.sourceforge.net/project/pwgen/pwgen/2.07/pwgen-2.07.tar.gz'
   source_sha256 'eb74593f58296c21c71cd07933e070492e9222b79cedf81d1a02ce09c0e11556'
 
@@ -22,10 +23,10 @@ class Pwgen < Package
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

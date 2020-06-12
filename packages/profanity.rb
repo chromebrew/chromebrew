@@ -4,6 +4,7 @@ class Profanity < Package
   description 'A console based XMPP client'
   homepage 'https://profanity-im.github.io/'
   version '0.6.0'
+  compatibility 'all'
   source_url 'https://profanity-im.github.io/profanity-0.6.0.tar.gz'
   source_sha256 'f1b2773b79eb294297686f3913e9489c20effae5e3a335c8956db18f6ee2f660'
 

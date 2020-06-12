@@ -4,6 +4,7 @@ class Libemf < Package
   description 'libEMF is a C/C++ library which provides a drawing toolkit based on ECMA-234.'
   homepage 'http://libemf.sourceforge.net/'
   version '1.0.9'
+  compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/libemf/libemf/1.0.9/libemf-1.0.9.tar.gz'
   source_sha256 'dcc1f7dc09597a7e20fa808fbef03f0c5cbdd99d65a4fddd981d7f1dd6e28b81'
 

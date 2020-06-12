@@ -4,6 +4,7 @@ class Libart < Package
   description 'Libart is a library for high-performance 2D graphics.'
   homepage 'http://www.levien.com/libart/'
   version '2.3.20'
+  compatibility 'all'
   source_url 'http://freshmeat.sourceforge.net/urls/c708afeabd0b69b5e3c21401b26ae447'
   source_sha256 'd5531ae3a206a9b5cc74e9a20d89d61b2ba3ba03d342d6a2ed48d2130ad3d847'
 

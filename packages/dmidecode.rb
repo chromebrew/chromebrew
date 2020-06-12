@@ -4,6 +4,7 @@ class Dmidecode < Package
   description "Dmidecode reports information about your system's hardware as described in your system BIOS according to the SMBIOS/DMI standard (see a sample output)."
   homepage 'http://www.nongnu.org/dmidecode/'
   version '3.2'
+  compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.2.tar.xz'
   source_sha256 '077006fa2da0d06d6383728112f2edef9684e9c8da56752e97cd45a11f838edd'
 

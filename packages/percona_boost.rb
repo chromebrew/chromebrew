@@ -4,6 +4,7 @@ class Percona_boost < Package
   description 'Boost provides free peer-reviewed portable C++ source libraries.'
   homepage 'http://www.boost.org/'
   version '1.59.0'
+  compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.tar.bz2'
   source_sha256 '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
 

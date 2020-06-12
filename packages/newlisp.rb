@@ -4,6 +4,7 @@ class Newlisp < Package
   description 'newLISP is a Lisp-like, general-purpose scripting language.'
   homepage 'http://www.newlisp.org/'
   version '10.7.5'
+  compatibility 'all'
   source_url 'https://github.com/kosh04/newlisp/archive/10.7.5.tar.gz'
   source_sha256 'bc3272600510fe78d32a85b23e0793c16f9f9ee05605d28ca537bdc322c25dc2'
 

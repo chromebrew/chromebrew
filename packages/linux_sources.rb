@@ -4,6 +4,7 @@ class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
   version '4.14'
+  compatibility 'all'
   source_url 'https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz'
   source_sha256 'f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
 

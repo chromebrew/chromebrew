@@ -4,6 +4,7 @@ class Guile < Package
   description 'Guile is designed to help programmers create flexible applications that can be extended by users or other programmers with plug-ins, modules, or scripts.'
   homepage 'http://www.gnu.org/software/guile/'
   version '2.2.3-1'
+  compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/guile/guile-2.2.3.tar.xz'
   source_sha256 '8353a8849cd7aa77be66af04bd6bf7a6207440d2f8722e46672232bb9f0a4086'
 

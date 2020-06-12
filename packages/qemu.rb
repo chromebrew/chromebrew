@@ -4,6 +4,7 @@ class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
   version '3.1.0'
+  compatibility 'all'
   source_url 'https://download.qemu.org/qemu-3.1.0.tar.xz'
   source_sha256 '6a0508df079a0a33c2487ca936a56c12122f105b8a96a44374704bef6c69abfc'
 
