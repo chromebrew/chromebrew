@@ -9,17 +9,16 @@ class Roswell < Package
   source_sha256 '798b96fdcb8c89445b36692b31570bb99882d83719d6310d969ccfcb2a35a1d4'
 
   binary_url ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
   })
   binary_sha256 ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
   })
+
+  depends_on 'brotli'
+  depends_on 'curl'
+  depends_on 'libcyrussasl'
+  depends_on 'libnghttp2'
+  depends_on 'openldap'
+  depends_on 'rtmpdump'
 
   def self.build
     system 'sh bootstrap'
