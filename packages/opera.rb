@@ -3,7 +3,7 @@ require 'package'
 class Opera < Package
   description "Opera isn't just a browser. It's an awesome browser."
   homepage 'https://www.opera.com/'
-  version '68.0.3618.63'
+  version '69.0.3686.36'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
@@ -23,7 +23,7 @@ class Opera < Package
 
   def self.build
     system "wget https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera-stable_#{version}_amd64.deb") ) == 'adcba36cfc627d837ff38b768cf2e47114ecf23cdcf793bde8247dee07018398'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera-stable_#{version}_amd64.deb") ) == 'aa7fcd532feae92fca4e347b0a19f6a9363d7bd0735d9fea0e0f95a7aa6e9029'
     system "alien -tc opera-stable_#{version}_amd64.deb"
     system "tar xvf opera-stable-#{version}.tgz"
   end
