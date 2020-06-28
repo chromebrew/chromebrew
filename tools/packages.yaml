@@ -349,6 +349,11 @@ url: http://shh.thathost.com/pub-unix/
 activity: none
 ---
 kind: url
+name: baobab
+url: https://ftp.gnome.org/pub/gnome/sources/baobab/
+activity: medium
+---
+kind: url
 name: bash_completion
 url: https://github.com/scop/bash-completion/releases
 activity: medium
@@ -1434,6 +1439,11 @@ url: https://download.gimp.org/pub/gimp/
 activity: high
 ---
 kind: url
+name: girara
+url: https://pwmt.org/projects/girara/download/
+activity: low
+---
+kind: url
 name: git
 url: https://github.com/git/git/releases
 activity: high
@@ -1441,6 +1451,11 @@ activity: high
 kind: url
 name: git_lfs
 url: https://github.com/git-lfs/git-lfs/releases
+activity: medium
+---
+kind: url
+name: github_cli
+url: https://github.com/cli/cli/releases
 activity: medium
 ---
 kind: url
@@ -1836,6 +1851,11 @@ activity: high
 kind: url
 name: hexedit
 url: http://rigaux.org/hexedit.html
+activity: none
+---
+kind: url
+name: hget
+url: https://github.com/huydx/hget
 activity: none
 ---
 kind: url
@@ -2804,6 +2824,11 @@ url: https://github.com/jedisct1/libsodium/releases
 activity: low
 ---
 kind: url
+name: libsolv
+url: https://github.com/openSUSE/libsolv/releases
+activity: medium
+---
+kind: url
 name: libsoup
 url: https://ftp.gnome.org/pub/GNOME/sources/libsoup
 activity: high
@@ -3459,6 +3484,11 @@ url: https://www.jedsoft.org/snapshots/
 activity: medium
 ---
 kind: url
+name: motif
+url: https://sourceforge.net/projects/motif/files/
+activity: none
+---
+kind: url
 name: mp4v2
 url: https://code.google.com/archive/p/mp4v2/downloads
 activity: none
@@ -3596,6 +3626,11 @@ activity: low
 kind: url
 name: ndisc6
 url: https://www.remlab.net/files/ndisc6/
+activity: none
+---
+kind: url
+name: nedit
+url: https://sourceforge.net/projects/nedit/files/nedit-source/
 activity: none
 ---
 kind: url
@@ -3799,6 +3834,11 @@ url: ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release
 activity: low
 ---
 kind: url
+name: openlibm
+url: https://github.com/JuliaMath/openlibm/releases
+activity: low
+---
+kind: url
 name: openmpi
 url: https://www.open-mpi.org/software/ompi/v4.0/
 activity: medium
@@ -3822,6 +3862,11 @@ kind: url
 name: openssh
 url: https://github.com/openssh/openssh-portable/releases
 activity: none
+---
+kind: url
+name: openvpn
+url: https://openvpn.net/community-downloads/
+activity: medium
 ---
 kind: url
 name: opera
@@ -4459,6 +4504,11 @@ url: https://github.com/nhorman/rng-tools/releases
 activity: low
 ---
 kind: url
+name: roswell
+url: https://github.com/roswell/roswell/releases
+activity: medium
+---
+kind: url
 name: rsu_client
 url: https://github.com/rsu-client/rsu-client/releases
 activity: low
@@ -4769,6 +4819,11 @@ url: https://sourceforge.net/projects/squashfs/files/squashfs/
 activity: none
 ---
 kind: url
+name: squeak
+url: http://files.squeak.org/
+activity: medium
+---
+kind: url
 name: sshcode
 url: https://github.com/cdr/sshcode/releases
 activity: medium
@@ -4827,6 +4882,11 @@ kind: url
 name: subversion
 url: http://www-us.apache.org/dist/subversion
 activity: low
+---
+kind: url
+name: suitesparse
+url: https://github.com/DrTimothyAldenDavis/SuiteSparse/releases
+activity: medium
 ---
 kind: url
 name: superlu
@@ -5542,6 +5602,16 @@ kind: url
 name: youtubedl
 url: https://github.com/rg3/youtube-dl/releases
 activity: high
+---
+kind: url
+name: zathura
+url: https://pwmt.org/projects/zathura/download/
+activity: low
+---
+kind: url
+name: zathura_poppler_pdf
+url: https://pwmt.org/projects/zathura-pdf-poppler/download/
+activity: low
 ---
 kind: url
 name: zeromq
