@@ -3,10 +3,10 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '1.10.7'
+  version '1.10.8'
   compatibility 'all'
-  source_url 'https://github.com/composer/composer/archive/1.10.7.tar.gz'
-  source_sha256 '7b115ba22940b3b8f814dfca479b4efaa39bbb471f25cc7b734525dab618754d'
+  source_url 'https://github.com/composer/composer/archive/1.10.8.tar.gz'
+  source_sha256 '094aea611d33506e4b681b5bf8eb2452c1cf1bc4c2183399d3ab5027e202525b'
 
   depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
