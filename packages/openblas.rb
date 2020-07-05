@@ -3,22 +3,22 @@ require 'package'
 class Openblas < Package
   description 'OpenBLAS is an optimized BLAS library'
   homepage 'http://www.openblas.net/'
-  version '0.2.20'
+  version '0.3.10'
   compatibility 'all'
-  source_url 'https://github.com/xianyi/OpenBLAS/archive/v0.2.20.tar.gz'
-  source_sha256 '5ef38b15d9c652985774869efd548b8e3e972e1e99475c673b25537ed7bcf394'
+  source_url 'https://github.com/xianyi/OpenBLAS/archive/v0.3.10.tar.gz'
+  source_sha256 '0484d275f87e9b8641ff2eecaa9df2830cbe276ac79ad80494822721de6e1693'
 
   binary_url ({
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.2.20-chromeos-x86_64.tar.xz',
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.2.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.2.20-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.2.20-chromeos-i686.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.3.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.3.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.3.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openblas-0.3.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     x86_64: '4f26162240cb8dd302093465f0820f5f19b173664f024bd4fde041f0e7814889',
-    aarch64: '5240dd476ce2151fd6d8b8a249905c86985da6511cf0266afc0bf1b0385a6873',
-     armv7l: '5240dd476ce2151fd6d8b8a249905c86985da6511cf0266afc0bf1b0385a6873',
-       i686: 'b0ef5a6983cbff487c88de790888c48b1aca6720be6b129a8f19b0a7303f56b9',
+    aarch64: '0d21d2d1b5de2552db9b2b3f40acf217b1e634181fe052e430d8e7421d53f4c3',
+     armv7l: '0d21d2d1b5de2552db9b2b3f40acf217b1e634181fe052e430d8e7421d53f4c3',
+       i686: 'f4ce053cc07aa55bd77f4078eaf7875f5f9dfb266e2faa450ed823e62cc0ef16',
+     x86_64: '5ff79ee03d58af432aa664986c4128cc3e8ec95b9e16ced015f48acb8edb4f3c',
   })
 
   def self.build
