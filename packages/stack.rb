@@ -3,13 +3,13 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/en/stable/README/'
-  version '2.1.3-1'
+  version '2.3.1'
   compatibility 'all'
 
   case ARCH
   when 'x86_64'
-    source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-x86_64.tar.gz'
-    source_sha256 'c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673'
+    source_url 'https://github.com/commercialhaskell/stack/releases/download/v2.3.1/stack-2.3.1-linux-x86_64.tar.gz'
+    source_sha256 'b753cd21d446aea16a221326ec686e3acdf1b146c714a77b5d27fd855475554d'
   end
 
   def self.install
