@@ -3,10 +3,10 @@ require 'package'
 class Ghc < Package
   description 'The Glasgow Haskell Compiler is a state-of-the-art, open source compiler and interactive environment for the functional language Haskell.'
   homepage 'https://www.haskell.org/ghc/'
-  version '8.6.5'
+  version '8.8.3'
   compatibility 'all'
-  source_url 'https://downloads.haskell.org/~ghc/8.6.5/ghc-8.6.5-src.tar.xz.sig'
-  source_sha256 '0535eaee892010244bcb686b6ad45941da5b233e729669bef87ad667164ae4ed'
+  source_url 'https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-src.tar.xz.sig'
+  source_sha256 'fcdb99dabdf74c5a0607df5276df2cd12b8b7bedcac4079546bb9418c8438f02'
 
   binary_url ({
   })
@@ -19,7 +19,7 @@ class Ghc < Package
   def self.build
     system "stack setup ghc-#{version}"
     system "echo '#!/bin/bash' > ghc"
-    system "echo 'stack ghc \"\$@\"' >> ghc"
+    system "echo 'stack exec -- ghc \"\$@\"' >> ghc"
   end
 
   def self.install
