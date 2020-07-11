@@ -3,22 +3,22 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.19'
+  version '7.3.20'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.3.19.tar.xz'
-  source_sha256 '6402faa19b1a8c4317c7612632bce985684a5bbae0980a5779a4019439882422'
+  source_url 'https://www.php.net/distributions/php-7.3.20.tar.xz'
+  source_sha256 '43292046f6684eb13acb637276d4aa1dd9f66b0b7045e6f1493bc90db389b888'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.19-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.19-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.19-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2526a50f40ae4c58fb573d7a8ec68ab4fa974c0d1d5398acae75adfb00f54054',
-     armv7l: '2526a50f40ae4c58fb573d7a8ec68ab4fa974c0d1d5398acae75adfb00f54054',
-       i686: '28155326f3e6c4d162c42290689b0bc5be720717ee6c721aa63b96721f53d004',
-     x86_64: 'fef2343c2376d2504012e0147661f834e08a50d0e16bcb981f5d102d33e7ef83',
+    aarch64: '7068a4cda0bf4da133f64d4dafadf6c5aa01e781d7c0e5d925436098f5793d07',
+     armv7l: '7068a4cda0bf4da133f64d4dafadf6c5aa01e781d7c0e5d925436098f5793d07',
+       i686: 'bda54b64380565cbf414f52eea6b19de6e13771f7c3ed44e845b8553a8487496',
+     x86_64: 'c293c738a82b6757a2e21d99688a5922f6ebaf6fa46baee865cf518133e81f41',
   })
 
   depends_on 'libgcrypt'
@@ -61,6 +61,7 @@ class Php73 < Package
 
   def self.build
     ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
+    ENV['CFLAGS'] = ' -liconv'
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--docdir=#{CREW_PREFIX}/doc",
