@@ -3,22 +3,22 @@ require 'package'
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.31-1'
+  version '7.2.32'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.2.31.tar.xz'
-  source_sha256 '8beaa634bb878a96af9bc8643811ea46973f5f41ad2bfb6ab4cfd290e5a39806'
+  source_url 'https://www.php.net/distributions/php-7.2.32.tar.xz'
+  source_sha256 '050fc16ca56d8d2365d980998220a4eb06439da71dfd38de49b42fea72310ef1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.31-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.32-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.32-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.32-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.32-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '198692f930728393d8564873907bd705183c53e02c09694474db49e1fd8b5854',
-     armv7l: '198692f930728393d8564873907bd705183c53e02c09694474db49e1fd8b5854',
-       i686: 'bd20441b7f73bbb72e745c5aeaa66610b576f063cd62264c9e48e61cbe37ce36',
-     x86_64: '0f714f860c1220d8e2bf49931c1b876c20800a9c001c66c61d581743baec96c4',
+    aarch64: '87e09bf968e2bce629ef910540f094c3f08552199ae0c02e840f8641b5d9bd48',
+     armv7l: '87e09bf968e2bce629ef910540f094c3f08552199ae0c02e840f8641b5d9bd48',
+       i686: 'eaa84a1cfc43d1f885ae8035fd840f8a574876fcc25c09396659b3d426c5604b',
+     x86_64: '35e5be73b305bb50c631941ef6c192eed282dc3acdf487b7517d17feba78a2e7',
   })
 
   depends_on 'libgcrypt'
@@ -61,6 +61,7 @@ class Php72 < Package
 
   def self.build
     ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
+    ENV['CFLAGS'] = ' -liconv'
     system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--docdir=#{CREW_PREFIX}/doc",
