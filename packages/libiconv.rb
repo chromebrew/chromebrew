@@ -3,32 +3,26 @@ require 'package'
 class Libiconv < Package
   description 'GNU charset conversion library for libc which does not implement it.'
   homepage 'https://www.gnu.org/software/libiconv/'
-  version '1.15-1'
+  version '1.16'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libiconv/libiconv-1.15.tar.gz'
-  source_sha256 'ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178'
+  source_url 'https://ftpmirror.gnu.org/libiconv/libiconv-1.16.tar.gz'
+  source_sha256 'e6a1b1b589654277ee790cce3734f07876ac4ccfaecbee8afa0b649cf529cc04'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.15-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'cfa05a46d37d49479047f205e3d4ab2a8c11f953ed91e11465a1195ff2d95d01',
-     armv7l: 'cfa05a46d37d49479047f205e3d4ab2a8c11f953ed91e11465a1195ff2d95d01',
-       i686: 'b080cd1e667dd9efba1a4392c7c177f5b8292f1b6fc29e862634b7ad41d29ab5',
-     x86_64: '7ac97b03fff5d1befecb26ac471daa239c2c23ab1bc774a5366e6c46d1bb9ad3',
+    aarch64: 'daee13f0eef96fb2d65a06d129f702cacbf8c70747d7f0dd2d27a9df977372b7',
+     armv7l: 'daee13f0eef96fb2d65a06d129f702cacbf8c70747d7f0dd2d27a9df977372b7',
+       i686: 'a7afa407d80bc94038711a636f10cf9af7fae7fce5b68220f4d9c51eca44849e',
+     x86_64: 'cc29b28830c4bc496b2ef495e9dd43d96e596f879d02d7176222575bb83b5088',
   })
 
   def self.build
-    system './configure',
-           '--enable-shared',
-           '--enable-static',
-           '--enable-relocatable',
-           "--prefix=#{CREW_PREFIX}",
-           '--enable-extra-encodings',
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS} --enable-static --enable-relocatable --enable-extra-encodings"
     system 'make'
   end
 
