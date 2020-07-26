@@ -1799,6 +1799,11 @@ url: https://www.chiark.greenend.org.uk/~sgtatham/halibut
 activity: none
 ---
 kind: url
+name: handbrake
+url: https://github.com/HandBrake/HandBrake/releases
+activity: medium
+---
+kind: url
 name: haproxy
 url: http://www.haproxy.org/download/
 activity: none
@@ -2566,6 +2571,11 @@ activity: none
 kind: url
 name: libjpeg_turbo
 url: https://sourceforge.net/projects/libjpeg-turbo/files/
+activity: low
+---
+kind: url
+name: libkmod
+url: https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod
 activity: low
 ---
 kind: url
@@ -3549,6 +3559,11 @@ url: https://www.musl-libc.org/releases/
 activity: low
 ---
 kind: url
+name: mutagen
+url: https://github.com/mutagen-io/mutagen/releases/
+activity: low
+---
+kind: url
 name: mutt
 url: http://ftp.mutt.org/pub/mutt
 activity: medium
@@ -3667,6 +3682,11 @@ kind: url
 name: nethack4
 url: http://nethack4.org/
 activity: none
+---
+kind: url
+name: nethogs
+url: https://github.com/raboof/nethogs/releases
+activity: low
 ---
 kind: url
 name: netpbm
@@ -4024,6 +4044,31 @@ url: http://www.cpan.org/src
 activity: medium
 ---
 kind: url
+name: perl_carp_clan
+url: https://metacpan.org/pod/Carp::Clan
+activity: low
+---
+kind: url
+name: perl_date_calc
+url: https://metacpan.org/pod/Date::Calc
+activity: low
+---
+kind: url
+name: perl_date_format
+url: https://metacpan.org/pod/Date::Format
+activity: low
+---
+kind: url
+name: perl_date_manip
+url: https://metacpan.org/pod/Date::Manip
+activity: low
+---
+kind: url
+name: perl_file_tail
+url: https://metacpan.org/pod/File::Tail
+activity: low
+---
+kind: url
 name: perl_gcstring_linebreak
 url: https://github.com/hatukanezumi/Unicode-LineBreak/releases
 activity: none
@@ -4222,6 +4267,11 @@ kind: url
 name: powerstat
 url: http://kernel.ubuntu.com/~cking/tarballs/powerstat
 activity: medium
+---
+kind: url
+name: procps
+url: https://gitlab.com/procps-ng/procps/-/tags
+activity: low
 ---
 kind: url
 name: profanity
@@ -5372,6 +5422,11 @@ kind: url
 name: wxwidgets
 url: https://github.com/wxWidgets/wxWidgets/releases/
 activity: low
+---
+kind: url
+name: xa
+url: https://www.floodgap.com/retrotech/xa/dists/
+activity: none
 ---
 kind: url
 name: xauth
