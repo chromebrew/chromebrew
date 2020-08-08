@@ -3,22 +3,22 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.20'
+  version '7.3.21'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.3.20.tar.xz'
-  source_sha256 '43292046f6684eb13acb637276d4aa1dd9f66b0b7045e6f1493bc90db389b888'
+  source_url 'https://www.php.net/distributions/php-7.3.21.tar.xz'
+  source_sha256 '4c8b065746ef776d84b7ae47908c21a79e3d4704b86b60d816716b8697c58ce9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.20-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.21-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.21-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.21-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7068a4cda0bf4da133f64d4dafadf6c5aa01e781d7c0e5d925436098f5793d07',
-     armv7l: '7068a4cda0bf4da133f64d4dafadf6c5aa01e781d7c0e5d925436098f5793d07',
-       i686: 'bda54b64380565cbf414f52eea6b19de6e13771f7c3ed44e845b8553a8487496',
-     x86_64: 'c293c738a82b6757a2e21d99688a5922f6ebaf6fa46baee865cf518133e81f41',
+    aarch64: '433d47a626599b6edc895af9195b74f65c1e687251b19824d093022a525ce52d',
+     armv7l: '433d47a626599b6edc895af9195b74f65c1e687251b19824d093022a525ce52d',
+       i686: '99a49c4a476f24796da30f13e7189affb45212cb0798049daac6e0b2f9135297',
+     x86_64: 'dbb4ced7d14f3eb4d44054ffa741242ddcf2ee9bf6b54d1b38476876bb633879',
   })
 
   depends_on 'libgcrypt'
