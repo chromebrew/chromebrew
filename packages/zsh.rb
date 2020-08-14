@@ -3,26 +3,26 @@ require 'package'
 class Zsh < Package
   description 'Zsh is a shell designed for interactive use, although it is also a powerful scripting language.'
   homepage 'http://zsh.sourceforge.net/'
-  version '5.0.7-1'
+  version '5.8'
   compatibility 'all'
-  source_url 'http://sourceforge.net/projects/zsh/files/zsh/5.0.7/zsh-5.0.7.tar.gz/download'
-  source_sha256 '43f0a4c179ef79bb8c9153575685f7f45f28a3615c8cf96345f503d5b9e7b919'
+  source_url 'https://downloads.sourceforge.net/project/zsh/zsh/5.8/zsh-5.8.tar.xz'
+  source_sha256 'dcc4b54cc5565670a65581760261c163d720991f0d06486da61f8d839b52de27'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.0.7-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'daaecbc646bada9365f22f26ba7de4a835079fd10a5353f3fa1c67beb27d5881',
-     armv7l: 'daaecbc646bada9365f22f26ba7de4a835079fd10a5353f3fa1c67beb27d5881',
-       i686: '2e138f7ddfc2252c81a379e379837ebd69f19e001184729180b9c43b979301aa',
-     x86_64: '132f36ade3c10430d8f702112f82065fab8449ebd8dc409542930de5cc95e3c2',
+    aarch64: '8f06f08ffefdbe17a1026eab0140c74a103c3dc4b710fad9f9a158a215ba3376',
+     armv7l: '8f06f08ffefdbe17a1026eab0140c74a103c3dc4b710fad9f9a158a215ba3376',
+       i686: '7a1748369c926f9296b3cd9f2bfd4866c6ccdacd179882adce875f3b8ac54709',
+     x86_64: '1d2aca16006b4e79c2c5d438eee0503f21933c61c7c1daeccd4995750b171ab4',
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
