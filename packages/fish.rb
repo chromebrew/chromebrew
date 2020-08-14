@@ -3,33 +3,45 @@ require 'package'
 class Fish < Package
   description 'fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.'
   homepage 'http://fishshell.com/'
-  version '2.7.1-1'
+  version '3.1.2'
   compatibility 'all'
-  source_url 'https://github.com/fish-shell/fish-shell/releases/download/2.7.1/fish-2.7.1.tar.gz'
-  source_sha256 'e42bb19c7586356905a58578190be792df960fa81de35effb1ca5a5a981f0c5a'
+  source_url 'https://github.com/fish-shell/fish-shell/releases/download/3.1.2/fish-3.1.2.tar.gz'
+  source_sha256 'd5b927203b5ca95da16f514969e2a91a537b2f75bec9b21a584c4cd1c7aa74ed'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fish-2.7.1-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fish-3.1.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fish-3.1.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fish-3.1.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fish-3.1.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b9cc7f130de93e55605660f7fd8b98283ef1877ed8968d5889d0ecaa041b476e',
-     armv7l: 'b9cc7f130de93e55605660f7fd8b98283ef1877ed8968d5889d0ecaa041b476e',
-       i686: '0cfe2d362b929264ec3a487d51cba511313c8f20a81067b37c76f84ae864a1a7',
-     x86_64: '56dd0139ed8a13d178151863cf79521a676e7e3778cd75790dac5f6e48e7bfa0',
+    aarch64: '1247991fb1785e9c5eede833c1f2dcc7c38c738b6d7a87a06fcdb752d9a246b8',
+     armv7l: '1247991fb1785e9c5eede833c1f2dcc7c38c738b6d7a87a06fcdb752d9a246b8',
+       i686: '3f5430b6e269025d8ed31324916b3eee89121fc3dab5cfd47486d41838efa764',
+     x86_64: '12b58c3c7a4bdfb45b4286a98fd5254ef4641489c3b582c7fcbf2e571fe31839',
   })
 
-  depends_on 'ncurses'
+  depends_on 'pcre2'
+  depends_on 'termcap'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}"
-    system "make"
+    Dir.mkdir 'build'
+    Dir.chdir 'build' do
+      system 'cmake',
+             '-DBUILD_DOCS=OFF',
+             '-DBUILD_SHARED_LIBS=ON',
+             '-DCMAKE_BUILD_TYPE=Release',
+             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
+             "-DCMAKE_CXX_FLAGS='-lncurses -ltermcap -I#{CREW_PREFIX}/include/ncurses'",
+             '..'
+      system 'make'
+    end
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    Dir.chdir 'build' do
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    end
   end
 
   def self.postinstall
