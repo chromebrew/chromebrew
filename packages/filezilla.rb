@@ -3,22 +3,14 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  version '3.48.1'
+  version '3.49.1'
   compatibility 'all'
-  source_url 'https://download.filezilla-project.org/client/FileZilla_3.48.1_src.tar.bz2'
-  source_sha256 'abffd877ff9006e8e50ce4957393f0a27cc0a7360e626123ef15974eee13ef5d'
+  source_url 'https://download.filezilla-project.org/client/FileZilla_3.49.1_src.tar.bz2'
+  source_sha256 '4ecc8c0cf1a790d17ba1daa3abdeeb999809548b20a804172ae0f80dd8e5b3b6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.48.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.48.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.48.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filezilla-3.48.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c513db2c717525df2ef6736ef4c4f04244fbb4a972b0ac3f4cd68b315a26799b',
-     armv7l: 'c513db2c717525df2ef6736ef4c4f04244fbb4a972b0ac3f4cd68b315a26799b',
-       i686: '29d47a963482a86e3aa8a1b93e0cb333fa1760e885b7c6d074916bf8a694d9c3',
-     x86_64: '7dbc80bf57b891a2165eb601b0abe2f5079129f8171c17622e4ce2dcd1aa18e8',
   })
 
   depends_on 'dbus'
