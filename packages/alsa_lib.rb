@@ -5,8 +5,8 @@ class Alsa_lib < Package
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
   version '1.2.3.2'
   compatibility 'all'
-  source_url 'ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.3.tar.bz2'
-  source_sha256 '02f00922fc511eaf37b037197afa930d5ff0912c1a86f333393f91f3426f678e'
+  source_url 'ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.3.2.tar.bz2'
+  source_sha256 'e81fc5b7afcaee8c9fd7f64a1e3043e88d62e9ad2c4cff55f578df6b0a9abe15'
 
   binary_url ({
   })
