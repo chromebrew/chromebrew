@@ -16,6 +16,7 @@ class Cras < Package
     depends_on 'sbc'
     depends_on 'dbus'
     depends_on 'rust' => ':build'
+    depends_on 'llvm' => ':build'
   end
 
   binary_url ({
@@ -64,7 +65,7 @@ _EOF_'
              '--enable-avx',
              '--enable-avx2',
              '--enable-fma'
-      system "make -j$(nproc)"
+      system "make -j#{CREW_NPROC}"
     end
   end
 
