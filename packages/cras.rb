@@ -20,8 +20,14 @@ class Cras < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cras-stabilize-13360.B-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cras-stabilize-13360.B-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cras-stabilize-13360.B-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'b6f00eaca8ce6b3df30539bfd9b41f611fd8e215842b3b785cc4ba58452f7cf9',
+     armv7l: 'b6f00eaca8ce6b3df30539bfd9b41f611fd8e215842b3b785cc4ba58452f7cf9',
+     x86_64: '816885e44dec95ca74e887d8fe57e164ef3a3ce1e2e5d9499a199b5513367e6b',
   })
 
   def self.build
