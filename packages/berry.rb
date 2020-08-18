@@ -8,6 +8,19 @@ class Berry < Package
   source_url 'https://github.com/JLErvin/berry/archive/0.1.5.tar.gz'
   source_sha256 '3d2fa52aeba6ed05d3cc0e8308604c5a83e94a8623f3e66ed53fd5e0fdabfabf'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/berry-0.1.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/berry-0.1.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/berry-0.1.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/berry-0.1.5-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'cec62b31daf5040990846378b214c0856b590a9cf84873cb5f44c67a90382bc1',
+     armv7l: 'cec62b31daf5040990846378b214c0856b590a9cf84873cb5f44c67a90382bc1',
+       i686: 'ed7257e3a11a68f3e21b2546d55bed20364df8d08522a008b002452e784b5f9d',
+     x86_64: '68c0aef9dc4654a7abb36c1bbe3a0a9d213840f8f847a21ea40658f7fc56a28e',
+  })
+
   depends_on 'libx11'
   depends_on 'freetype'
   depends_on 'sommelier'
