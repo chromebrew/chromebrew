@@ -3,10 +3,10 @@ require 'package'
 class Pulseaudio < Package
   description 'PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for your sound applications.'
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
-  version '13.99.1'
+  version '13.99.1-1'
   compatibility 'all'
   source_url 'https://freedesktop.org/software/pulseaudio/releases/pulseaudio-13.99.1.tar.gz'
-  source_sha256 '961b23ca1acfd28f2bc87414c27bb40e12436efcf2158d29721b1e89f3f28057'
+  source_sha256 '80d3a217567e6eb52234e638765f0e0e7fe8feee89c2e532a15250ed6a8bfd30'
 
   depends_on 'gsettings_desktop_schemas'
   depends_on 'alsa_plugins' => :build
@@ -25,8 +25,8 @@ class Pulseaudio < Package
   depends_on 'tdb'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} -j#{CREW_NPROC}"
-    system 'make'
+    system "./configure #{CREW_OPTIONS}"
+    system "make -j#{CREW_NPROC}"
   end
 
   def self.install
