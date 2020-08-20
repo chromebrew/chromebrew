@@ -9,7 +9,8 @@ class Xfconf < Package
   source_sha256 '589052a0efc6151c5fb5f438da463502a4fd91848cae7b9376d417be4c5a0c02'
     
   depends_on 'gobject_introspection' # For --enable-gsettings-backend
-    
+  depends_on 'libxfce4util' 
+ 
   def self.build
      system "./configure #{CREW_OPTIONS} --enable-gsettings-backend"
      system "make -j#{CREW_NPROC}"
