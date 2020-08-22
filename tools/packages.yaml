@@ -299,6 +299,11 @@ url: https://github.com/jonhiggs/autossh
 activity: none
 ---
 kind: url
+name: avahi
+url: https://github.com/lathiat/avahi/releases
+activity: low
+---
+kind: url
 name: aview
 url: https://sourceforge.net/projects/aa-project/files/aview/
 activity: none
@@ -387,6 +392,11 @@ kind: url
 name: beav
 url: https://deb.debian.org/debian/pool/main/b/beav/
 activity: none
+---
+kind: url
+name: berry
+url: https://github.com/JLErvin/berry/releases
+activity: low
 ---
 kind: url
 name: biew
@@ -1051,6 +1061,11 @@ activity: low
 kind: url
 name: expect
 url: https://sourceforge.net/projects/expect/files/Expect/
+activity: low
+---
+kind: url
+name: exo
+url: https://archive.xfce.org/src/xfce/exo/
 activity: low
 ---
 kind: url
@@ -1924,6 +1939,11 @@ url: https://github.com/hunspell/hunspell/releases
 activity: low
 ---
 kind: url
+name: i3
+url: https://i3wm.org/downloads/
+activity: medium
+---
+kind: url
 name: ibmonitor
 url: https://sourceforge.net/projects/ibmonitor/files/ibmonitor/
 activity: none
@@ -2299,6 +2319,11 @@ url: http://caca.zoy.org/files/libcaca/
 activity: none
 ---
 kind: url
+name: libcanberra
+url: https://src.fedoraproject.org/repo/pkgs/libcanberra/
+activity: none
+---
+kind: url
 name: libcap
 url: https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2
 activity: none
@@ -2347,6 +2372,11 @@ kind: url
 name: libcyrussasl
 url: https://github.com/cyrusimap/cyrus-imapd/releases
 activity: medium
+---
+kind: url
+name: libdaemon
+url: http://0pointer.de/lennart/projects/libdaemon/
+activity: none
 ---
 kind: url
 name: libdb
@@ -2412,6 +2442,11 @@ kind: url
 name: libepoxy
 url: https://github.com/anholt/libepoxy/releases
 activity: high
+---
+kind: url
+name: libev
+url: http://dist.schmorp.de/libev/
+activity: low
 ---
 kind: url
 name: libevdev
@@ -2749,6 +2784,11 @@ url: https://sourceforge.net/projects/libraw1394/files/libraw1394/
 activity: none
 ---
 kind: url
+name: librespot
+url: https://github.com/librespot-org/librespot/releases
+activity: high
+---
+kind: url
 name: libressl
 url: https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/
 activity: high
@@ -3067,6 +3107,16 @@ kind: url
 name: libxext
 url: https://www.x.org/archive/individual/lib
 activity: none
+---
+kind: url
+name: libxfce4ui
+url: https://archive.xfce.org/src/xfce/libxfce4ui/
+activity: low
+---
+kind: url
+name: libxfce4util
+url: https://archive.xfce.org/src/xfce/libxfce4util/
+activity: low
 ---
 kind: url
 name: libxfixes
@@ -3984,6 +4034,11 @@ url: http://cyberelk.net/tim/data/patchutils/stable
 activity: none
 ---
 kind: url
+name: pavucontrol
+url: https://freedesktop.org/software/pulseaudio/pavucontrol/
+activity: low
+---
+kind: url
 name: pavuk
 url: https://sourceforge.net/projects/pavuk/files/pavuk/
 activity: none
@@ -4514,6 +4569,11 @@ url: https://www.roaringpenguin.com/products/remind
 activity: none
 ---
 kind: url
+name: remmina
+url: https://github.com/FreeRDP/Remmina/releases
+activity: high
+---
+kind: url
 name: renameutils
 url: http://download.savannah.gnu.org/releases/renameutils
 activity: none
@@ -4899,6 +4959,11 @@ url: https://github.com/commercialhaskell/stack/releases
 activity: medium
 ---
 kind: url
+name: startup_notification
+url: https://freedesktop.org/software/startup-notification/releases
+activity: none
+---
+kind: url
 name: stow
 url: https://ftp.gnu.org/gnu/stow
 activity: none
@@ -4957,6 +5022,11 @@ kind: url
 name: swig1
 url: https://sourceforge.net/projects/swig/files/swig/
 activity: none
+---
+kind: url
+name: sxhkd
+url: https://github.com/baskerville/sxhkd/releases
+activity: low
 ---
 kind: url
 name: symfony
@@ -5474,6 +5544,11 @@ url: https://xcb.freedesktop.org/dist/
 activity: none
 ---
 kind: url
+name: xcb_util_xrm
+url: https://github.com/Airblader/xcb-util-xrm/releases
+activity: none
+---
+kind: url
 name: xclock
 url: https://www.x.org/pub/individual/app/
 activity: low
@@ -5486,6 +5561,21 @@ activity: none
 kind: url
 name: xe
 url: https://github.com/chneukirchen/xe/releases
+activity: low
+---
+kind: url
+name: xfce4_dev_tools
+url: https://archive.xfce.org/src/xfce/xfce4-dev-tools/
+activity: low
+---
+kind: url
+name: xfce4_terminal
+url: https://archive.xfce.org/src/apps/xfce4-terminal/
+activity: low
+---
+kind: url
+name: xfconf
+url: https://archive.xfce.org/src/xfce/xfconf/
 activity: low
 ---
 kind: url
