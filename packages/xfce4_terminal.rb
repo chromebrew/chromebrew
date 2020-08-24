@@ -25,6 +25,7 @@ class Xfce4_terminal < Package
   depends_on 'gtkvte'
   depends_on 'exo' => :build
   depends_on 'hicolor_icon_theme'
+  depends_on 'libxfce4ui'
   depends_on 'startup_notification'
   depends_on 'sommelier'
 
