@@ -558,6 +558,7 @@ def build_and_preconfigure (target_dir)
 
     @pkg.in_build = true
     @pkg.patch
+    @pkg.prebuild
     @pkg.build
     @pkg.in_build = false
     # wipe crew destdir
