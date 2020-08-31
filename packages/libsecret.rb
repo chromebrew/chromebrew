@@ -3,22 +3,22 @@ require 'package'
 class Libsecret < Package
   description 'GObject based library for accessing the Secret Service API.'
   homepage 'https://github.com/GNOME/libsecret'
-  version '0.18.6'
+  version '0.20.3'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/libsecret/archive/0.18.6.tar.gz'
-  source_sha256 'f4fa198d4e131f94d9ec84cfeaf6c124245e7ff3c0af11c76cc35332bfae5585'
+  source_url 'https://github.com/GNOME/libsecret/archive/0.20.3.tar.gz'
+  source_sha256 '9a90f733d4cac1c5a937af1fc44ddfc52458a4bcb015891247ca75037f446f6d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.18.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.18.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.18.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.18.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.20.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.20.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.20.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsecret-0.20.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '6bf08022d4db47fd7faf57c2fdbfb13ae3d66ccf7ebfa7a36ad6637d70705f3c',
-     armv7l: '6bf08022d4db47fd7faf57c2fdbfb13ae3d66ccf7ebfa7a36ad6637d70705f3c',
-       i686: 'e72fb2a7ddda1aa4abb22ea521b6e698667d6f1aee5d2fc7774cd25cb8acebe4',
-     x86_64: '86dc9e5d3b2b360cb5f3396fcc0a83e3805dfcc877e583bf1a962ebf05d72d6f',
+    aarch64: '10ef4b1b1c1ba36e61b9322a1fc67b971de4d1db66ed3e47ac7af7e539e8d15b',
+     armv7l: '10ef4b1b1c1ba36e61b9322a1fc67b971de4d1db66ed3e47ac7af7e539e8d15b',
+       i686: '97f1219df2e796774fb98fb8d37b89731e34b2ab0896df4a560f59e7e05ef216',
+     x86_64: '8f0b57c10555bb07c6f869f69bea1c8f4f6ccdedc5175c34506416a2db17343b',
   })
 
   depends_on 'gobject_introspection' => :build
@@ -26,18 +26,11 @@ class Libsecret < Package
   depends_on 'vala' => :build
 
   def self.build
-    system './autogen.sh',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--disable-gtk-doc',
-           '--disable-gtk-doc-html',
-           '--disable-gtk-doc-pdf',
-           '--disable-manpages'
-    system 'make'
+    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --buildtype=release -Dgtk_doc=false -Dmanpage=false _build"
+    system 'ninja -v -C _build'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end
 end
