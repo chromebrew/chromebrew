@@ -30,10 +30,11 @@ class Poppler < Package
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system 'cmake',
-             "-DCMAKE_CXX_FLAGS='-I#{CREW_PREFIX}/include/GL -I#{CREW_PREFIX}/include/openjpeg-2.3 -I#{CREW_PREFIX}/include'",
+             "-DCMAKE_CXX_FLAGS='-std=c++11 -I#{CREW_PREFIX}/include/GL -I#{CREW_PREFIX}/include/openjpeg-2.3 -I#{CREW_PREFIX}/include'",
              "-DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX}",
              "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
              '-DCMAKE_BUILD_TYPE=Release',
+             '-DENABLE_UNSTABLE_API_ABI_HEADERS=on',
              '..'
       system 'make'
     end
