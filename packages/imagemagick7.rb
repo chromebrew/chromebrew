@@ -3,12 +3,12 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.9-9'
+  version '7.0.10-28'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
-    source_url 'https://imagemagick.org/download/ImageMagick-7.0.9-9.tar.xz'
-    source_sha256 '257c9e11480aef95ea98d13495e3beb360d48c26fa8bd3da2d21c61907111d81'
+    source_url 'https://imagemagick.org/download/ImageMagick-7.0.10-28.tar.xz'
+    source_sha256 '6a6b32f04fa508f198eb0e3677d95729121796cbe156add05d3eb8070c7569b0'
     depends_on 'flif'
     depends_on 'freeimage'
     depends_on 'freetype'
@@ -31,14 +31,8 @@ class Imagemagick7 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9588b1c173c83031099a4a201862d599be6915712c23d6ade1b61b926c25db32',
-     armv7l: '9588b1c173c83031099a4a201862d599be6915712c23d6ade1b61b926c25db32',
-     x86_64: '71026f3fc591cad77b66977ff01a230b4b08e16c23e880b53b2e2dbdeb4b41ae',
   })
 
   def self.preinstall
@@ -51,6 +45,7 @@ class Imagemagick7 < Package
   end
 
   def self.build
+    FileUtils.ln_s "#{CREW_PREFIX}/include/locale.h", "#{CREW_PREFIX}/include/xlocale.h" 
     system "CFLAGS=' -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
            ./configure \
            --prefix=#{CREW_PREFIX} \
