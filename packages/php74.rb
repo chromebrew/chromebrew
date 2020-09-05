@@ -3,22 +3,22 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.4.9'
+  version '7.4.10'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.4.9.tar.xz'
-  source_sha256 '23733f4a608ad1bebdcecf0138ebc5fd57cf20d6e0915f98a9444c3f747dc57b'
+  source_url 'https://www.php.net/distributions/php-7.4.10.tar.xz'
+  source_sha256 'c2d90b00b14284588a787b100dee54c2400e7db995b457864d66f00ad64fb010'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4abce7974d30f75e5d2a31bd66ecbcc14ca294b9512f2b12809d240658164e97',
-     armv7l: '4abce7974d30f75e5d2a31bd66ecbcc14ca294b9512f2b12809d240658164e97',
-       i686: '84f36ecc0677c2cd39d191264762d8ca551e5221dff90a8e1591fdd870aa44b9',
-     x86_64: '20a5c58fdfd7e3047abd013e849ba5c818a5bf72dd610b7a8619ca0ca2b445ce',
+    aarch64: '3cb44ed47a3f23f3e38ce7856fb39f7043a48e0aa4196aef0c961fbf86db8f1a',
+     armv7l: '3cb44ed47a3f23f3e38ce7856fb39f7043a48e0aa4196aef0c961fbf86db8f1a',
+       i686: 'c59024ac3a31d62ffb04ecd753524ab838f0d1e2fc0fc3a9e582b31d86e0dd0f',
+     x86_64: '67d3009b2a9e71c4bd70079fa4380306aeb96f07732dd0f4fc8066347273898d',
   })
 
   depends_on 'aspell_en'
