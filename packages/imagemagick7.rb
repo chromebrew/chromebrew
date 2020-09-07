@@ -47,17 +47,17 @@ class Imagemagick7 < Package
   def self.build
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
     FileUtils.ln_s "#{CREW_PREFIX}/include/locale.h", "#{CREW_PREFIX}/include/xlocale.h", force: true
-    system './configure',
-           "CFLAGS=' -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale'",
-           "#{CREW_OPTIONS}",
-           "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
-           '--disable-dependency-tracking',
-           '--with-jemalloc',
-           '--with-modules',
-           '--enable-hdri',
-           '--with-perl',
-           '--with-rsvg',
-           '--with-x'
+    system "./configure \
+            CFLAGS='-I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
+            #{CREW_OPTIONS} \
+           --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
+           --disable-dependency-tracking \
+           --with-jemalloc \
+           --with-modules \
+           --enable-hdri \
+           --with-perl \
+           --with-rsvg \
+           --with-x"
     system 'make'
   end
 
