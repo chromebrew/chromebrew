@@ -18,14 +18,17 @@ class Qtfm < Package
   depends_on 'ffmpeg'
   depends_on 'sommelier'
 
+  def self.patch
+    system "sed -i 's/#include <QPainter>/#include <QPainter>\\n#include <QPainterPath>/g' libfm/iconlist.h"
+    system "sed -i 's/#include <QPainter>/#include <QPainter>\\n#include <QPainterPath>/g' libfm/iconview.h"
+  end
+
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
       system 'qmake',
              "PREFIX=#{CREW_PREFIX}",
              "LIBDIR=#{CREW_LIB_PREFIX}",
-             "INCLUDEPATH+=/usr/local/Qt-5/include",
-             "INCLUDEPATH+=/usr/local/Qt-5/include/QtGui",
              'CONFIG+=with_includes',
              'CONFIG+=with_magick',
              'CONFIG+=magick7',
