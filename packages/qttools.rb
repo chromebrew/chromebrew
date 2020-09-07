@@ -28,7 +28,6 @@ class Qttools < Package
     FileUtils.cp_r 'examples', "#{CREW_DEST_PREFIX}/share/Qt-5"
     FileUtils.cp_r 'include', "#{CREW_DEST_PREFIX}/share/Qt-5"
     FileUtils.cp_r 'mkspecs', "#{CREW_DEST_PREFIX}/share/Qt-5"
-    FileUtils.cp_r 'plugins', "#{CREW_DEST_PREFIX}/share/Qt-5"
     FileUtils.cp_r 'src/linguist/phrasebooks', "#{CREW_DEST_PREFIX}/share/Qt-5"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     Dir.chdir "#{CREW_DEST_PREFIX}/share/Qt-5/bin" do
