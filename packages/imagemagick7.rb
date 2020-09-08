@@ -45,8 +45,12 @@ class Imagemagick7 < Package
   end
 
   def self.build
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
-    FileUtils.ln_s "#{CREW_PREFIX}/include/locale.h", "#{CREW_PREFIX}/include/xlocale.h", force: true
+    system "sed -i 's,xlocale.h,locale.h,g' ./configure"
+    system "sed -i 's,xlocale.h,locale.h,g' ./config/config.h.in"
+    system "sed -i 's,xlocale.h,locale.h,g' ./MagickCore/studio.h"
+    system "sed -i 's,xlocale.h,locale.h,g' ./MagickCore/magick-baseconfig.h"
+    system "sed -i 's,xlocale.h,locale.h,g' ./configure.ac"
+    system "sed -i 's,xlocale.h,locale.h,g' ./MagickWand/studio.h"
     system "./configure \
             CFLAGS='-I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
             #{CREW_OPTIONS} \
@@ -62,8 +66,6 @@ class Imagemagick7 < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
-    FileUtils.ln_s "#{CREW_PREFIX}/include/locale.h", "#{CREW_PREFIX}/include/xlocale.h", force: true
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.ln_s "#{CREW_LIB_PREFIX}/libMagickWand-7.Q16HDRI.so.6", "#{CREW_DEST_LIB_PREFIX}/libMagickWand-7.Q16.so.6"
     FileUtils.ln_s "#{CREW_LIB_PREFIX}/libMagickCore-7.Q16HDRI.so.6", "#{CREW_DEST_LIB_PREFIX}/libMagickCore-7.Q16.so.6"
