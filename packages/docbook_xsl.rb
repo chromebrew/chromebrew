@@ -11,6 +11,19 @@ class Docbook_xsl < Package
   source_url 'https://downloads.sourceforge.net/sourceforge/docbook/docbook-xsl-1.79.1.tar.bz2'
   source_sha256 '725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'c13af861d61b6fa028f9226b7bf162d16806dde5defb6de159c2783f07823dd5',
+     armv7l: 'c13af861d61b6fa028f9226b7bf162d16806dde5defb6de159c2783f07823dd5',
+       i686: '185c090525ab3928fd6403fd3704bb21e2ebfbec6bdb78d802a253a25df3b570',
+     x86_64: '49941481dcefe3b2c570ee916e478c33c25f36694d5d028356defcaa3401f882',
+  })
+
 
   depends_on 'docbook_xml'
 
@@ -44,6 +57,6 @@ class Docbook_xsl < Package
   <delegateURI uriStartString="http://www.oasis-open.org/docbook/" catalog="file:///usr/local/etc/xml/docbook"/>
 </catalog>
 EOF'
-    system "install -v -Dm644 catalog.xml \"#{CREW_DEST_PREFIX}/etc/xml/catalog.xml\""
+    system "install -v -Dm644 catalog.xml #{CREW_DEST_PREFIX}/etc/xml/catalog.xml"
   end
 end
