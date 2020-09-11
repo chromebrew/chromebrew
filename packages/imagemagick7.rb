@@ -7,8 +7,8 @@ class Imagemagick7 < Package
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
-    source_url 'https://imagemagick.org/download/ImageMagick-7.0.10-29.tar.xz'
-    source_sha256 '0d2b0da5bcc4b4de82d25dc641a51c36bc59b73c847e0407468373a4bb989779'
+    source_url 'https://github.com/ImageMagick/ImageMagick/archive/7.0.10-29.tar.gz'
+    source_sha256 '7a3a3347e8b0dae2396663c879644cebcb8d4ed115645b4c9dba66494022b2fd'
     depends_on 'flif'
     depends_on 'freeimage'
     depends_on 'freetype'
@@ -45,23 +45,19 @@ class Imagemagick7 < Package
   end
 
   def self.build
-    system "sed -i 's,xlocale.h,locale.h,g' ./configure"
-    system "sed -i 's,xlocale.h,locale.h,g' ./config/config.h.in"
-    system "sed -i 's,xlocale.h,locale.h,g' ./MagickCore/studio.h"
-    system "sed -i 's,xlocale.h,locale.h,g' ./MagickCore/magick-baseconfig.h"
-    system "sed -i 's,xlocale.h,locale.h,g' ./configure.ac"
-    system "sed -i 's,xlocale.h,locale.h,g' ./MagickWand/studio.h"
-    system "./configure \
-            CFLAGS='-I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
-            #{CREW_OPTIONS} \
-           --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
-           --disable-dependency-tracking \
-           --with-jemalloc \
-           --with-modules \
-           --enable-hdri \
-           --with-perl \
-           --with-rsvg \
-           --with-x"
+    system "./configure",
+           "CFLAGS=-I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale",
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           "--mandir=#{CREW_PREFIX}/share/man",
+           "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
+           '--disable-dependency-tracking',
+           '--with-jemalloc',
+           '--with-modules',
+           '--enable-hdri',
+           '--with-perl',
+           '--with-rsvg',
+           '--with-x'
     system 'make'
   end
 
