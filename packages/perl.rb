@@ -29,7 +29,6 @@ class Perl < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     system "install -Dm755 cpanm #{CREW_DEST_PREFIX}/bin/cpanm"
   end
 
