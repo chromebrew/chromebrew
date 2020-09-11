@@ -20,7 +20,7 @@ class Perl < Package
     # Use system zlib and bzip2
     # Create shared library
     # Install manual files into #{CREW_PREFIX}/share/man/man* even if groff is not installed.
-    system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_PREFIX}/share/man/man1 -Dman3dir=#{CREW_PREFIX}/share/man/man3"
+    system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_MAN_PREFIX}/man1 -Dman3dir=#{CREW_MAN_PREFIX}/man3"
     system "make"
     system "curl -o cpanm https://cpanmin.us"
     system "chmod +x cpanm"
