@@ -16,7 +16,7 @@ class Perl < Package
   depends_on 'patch' => :build
 
   def self.build
-    FileUtils.ln_sf '/usr/local/lib64/libnsl.so.1', '/usr/local/lib64/libnsl.so'
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
     # Use system zlib and bzip2
     # Create shared library
     # Install manual files into #{CREW_PREFIX}/share/man/man* even if groff is not installed.
@@ -27,10 +27,10 @@ class Perl < Package
   end
 
   def self.install
-    FileUtils.ln_sf '/usr/local/lib64/libnsl.so.1', '/usr/local/lib64/libnsl.so'
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin/"
-    system "cp cpanm #{CREW_DEST_PREFIX}/bin/"
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
+    system "install -Dm755 cpanm #{CREW_DEST_PREFIX}/bin/cpanm"
   end
 
   def self.check
