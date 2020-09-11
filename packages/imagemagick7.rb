@@ -49,7 +49,7 @@ class Imagemagick7 < Package
            "CFLAGS=-I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale",
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           "--mandir=#{CREW_PREFIX}/share/man",
+           "--mandir=#{CREW_MAN_PREFIX}",
            "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
            '--disable-dependency-tracking',
            '--with-jemalloc',
@@ -58,7 +58,7 @@ class Imagemagick7 < Package
            '--with-perl',
            '--with-rsvg',
            '--with-x'
-    system 'make'
+    system "make -j#{CREW_NPROC}"
   end
 
   def self.install
