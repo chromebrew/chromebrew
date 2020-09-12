@@ -20,9 +20,10 @@ class Sass < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dart-sass"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/dart-sass"
     system "echo '#!/bin/bash' >> sass" 
-    system "echo 'dart #{CREW_PREFIX}/share/dart-sass/bin/sass.dart' >> sass"
+    system "echo 'dart #{CREW_PREFIX}/share/dart-sass/bin/sass.dart $@' >> sass"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r 'sass', "#{CREW_DEST_PREFIX}/bin/."
     FileUtils.chmod 0755, "#{CREW_DEST_PREFIX}/bin/sass"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/sass", "#{CREW_PREFIX}/bin/scss"
   end
 end
