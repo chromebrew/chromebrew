@@ -3,40 +3,41 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.26.1'
+  version '5.32.0'
   compatibility 'all'
-  source_url 'http://www.cpan.org/src/5.0/perl-5.26.1.tar.gz'
-  source_sha256 'e763aa485e8dc1a70483dbe6d615986bbf32b977f38016480d68c99237e701dd'
+  source_url 'http://www.cpan.org/src/5.0/perl-5.32.0.tar.gz'
+  source_sha256 'efeb1ce1f10824190ad1cadbcccf6fdb8a5d37007d0100d2d9ae5f2b5900c0b4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.26.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.26.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.26.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.26.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.32.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.32.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.32.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl-5.32.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd905b33e42f8825063eebe17a34bc8011ed9e7a88374373187d55f879453ccc4',
-     armv7l: 'd905b33e42f8825063eebe17a34bc8011ed9e7a88374373187d55f879453ccc4',
-       i686: 'a1394c4caafbca33de118521f850fa4162834f70c4bacbca9b576048a420ffb2',
-     x86_64: 'd6f71ac89fae67ce77d097075b52683cc5bb6367f87ad2dc86c383b4024b4186',
+    aarch64: '736d8284c6f70e2a166df6761eec557c191244a8ea9c7ad610151dd210cba68b',
+     armv7l: '736d8284c6f70e2a166df6761eec557c191244a8ea9c7ad610151dd210cba68b',
+       i686: '76294f4fb6ebf3d93d4181396ae82518b04fdf3ddcf6e56f2d3d7d685ace939b',
+     x86_64: '8c6fbecce88351a4d0bf80edcf6e5a50ea4f8240f19ab8140238d67ab390c586',
   })
 
   depends_on 'patch' => :build
 
   def self.build
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
     # Use system zlib and bzip2
     # Create shared library
     # Install manual files into #{CREW_PREFIX}/share/man/man* even if groff is not installed.
-    system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_PREFIX}/share/man/man1 -Dman3dir=#{CREW_PREFIX}/share/man/man3"
-    system "make"
-    system "curl -o cpanm https://cpanmin.us"
-    system "chmod +x cpanm"
+    system "BUILD_ZLIB=False BUILD_BZIP2=0 ./Configure -de -Duseshrplib -Dman1dir=#{CREW_MAN_PREFIX}/man1 -Dman3dir=#{CREW_MAN_PREFIX}/man3"
+    system 'make'
+    system 'curl -o cpanm https://cpanmin.us'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin/"
-    system "cp cpanm #{CREW_DEST_PREFIX}/bin/"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX if ARCH == 'x86_64'
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
+    system "install -Dm755 cpanm #{CREW_DEST_PREFIX}/bin/cpanm"
   end
 
   def self.check
