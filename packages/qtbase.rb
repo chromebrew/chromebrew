@@ -3,10 +3,10 @@ require 'package'
 class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://github.com/qt/qtbase'
-  version '5.15.0'
+  version '5.15.1'
   compatibility 'all'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtbase-everywhere-src-5.15.0.tar.xz'
-  source_sha256 '9e7af10aece15fa9500369efde69cb220eee8ec3a6818afe01ce1e7d484824c5'
+  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtbase-everywhere-src-5.15.1.tar.xz'
+  source_sha256 '33960404d579675b7210de103ed06a72613bfc4305443e278e2d32a3eb1f3d8c'
 
   binary_url ({
   })

@@ -3,10 +3,10 @@ require 'package'
 class Qtx11extras < Package
   description 'Provides classes for developing for the X11 platform.'
   homepage 'https://www.qt.io/'
-  version '5.15.0'
+  version '5.15.1'
   compatibility 'all'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtx11extras-everywhere-src-5.15.0.tar.xz'
-  source_sha256 'c72b6c188284facddcf82835af048240e721dc8d6d9e8a7bd71d76fd876881a1'
+  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtx11extras-everywhere-src-5.15.1.tar.xz'
+  source_sha256 'f7cd7c475a41840209808bf8b1de1c6587c3c74e5ae3b0969760b9ed35159e59'
 
   binary_url ({
   })

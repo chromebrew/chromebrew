@@ -3,10 +3,10 @@ require 'package'
 class Qtsvg < Package
   description 'Provides classes for displaying the contents of SVG files.'
   homepage 'https://www.qt.io/'
-  version '5.15.0'
+  version '5.15.1'
   compatibility 'all'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtsvg-everywhere-src-5.15.0.tar.xz'
-  source_sha256 'ee4d287e2e205ca8c08921b9cbe0fc58bf46be080b5359ad4d7fbdee44aeee0d'
+  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtsvg-everywhere-src-5.15.1.tar.xz'
+  source_sha256 '308160223c0bd7492d56fb5d7b7f705bfb130947ac065bf39280ec6d7cbe4f6a'
 
   binary_url ({
   })

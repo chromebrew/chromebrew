@@ -3,10 +3,10 @@ require 'package'
 class Qttools < Package
   description 'Qt Tools'
   homepage 'https://github.com/qt/qttools'
-  version '5.15.0'
+  version '5.15.1'
   compatibility 'all'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qttools-everywhere-src-5.15.0.tar.xz'
-  source_sha256 'ddbcb49aab3a2e3672582c6e2e7bec0058feff790f67472343c79e2895e0e437'
+  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qttools-everywhere-src-5.15.1.tar.xz'
+  source_sha256 'c98ee5f0f980bf68cbf0c94d62434816a92441733de50bd9adbe9b9055f03498'
 
   binary_url ({
   })
