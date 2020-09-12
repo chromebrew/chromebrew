@@ -3,12 +3,12 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.9-9'
+  version '7.0.10-29'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
-    source_url 'https://imagemagick.org/download/ImageMagick-7.0.9-9.tar.xz'
-    source_sha256 '257c9e11480aef95ea98d13495e3beb360d48c26fa8bd3da2d21c61907111d81'
+    source_url 'https://github.com/ImageMagick/ImageMagick/archive/7.0.10-29.tar.gz'
+    source_sha256 '7a3a3347e8b0dae2396663c879644cebcb8d4ed115645b4c9dba66494022b2fd'
     depends_on 'flif'
     depends_on 'freeimage'
     depends_on 'freetype'
@@ -31,14 +31,8 @@ class Imagemagick7 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.9-9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9588b1c173c83031099a4a201862d599be6915712c23d6ade1b61b926c25db32',
-     armv7l: '9588b1c173c83031099a4a201862d599be6915712c23d6ade1b61b926c25db32',
-     x86_64: '71026f3fc591cad77b66977ff01a230b4b08e16c23e880b53b2e2dbdeb4b41ae',
   })
 
   def self.preinstall
@@ -51,19 +45,20 @@ class Imagemagick7 < Package
   end
 
   def self.build
-    system "CFLAGS=' -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
-           ./configure \
-           --prefix=#{CREW_PREFIX} \
-           --libdir=#{CREW_LIB_PREFIX} \
-           --disable-dependency-tracking \
-           --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
-           --with-jemalloc \
-           --with-modules \
-           --enable-hdri \
-           --with-perl \
-           --with-rsvg \
-           --with-x"
-    system 'make'
+    system "./configure",
+           "CFLAGS=-I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale",
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           "--mandir=#{CREW_MAN_PREFIX}",
+           "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
+           '--disable-dependency-tracking',
+           '--with-jemalloc',
+           '--with-modules',
+           '--enable-hdri',
+           '--with-perl',
+           '--with-rsvg',
+           '--with-x'
+    system 'make' 
   end
 
   def self.install
