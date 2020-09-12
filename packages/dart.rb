@@ -3,18 +3,18 @@ require 'package'
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
   homepage 'https://www.dartlang.org'
-  version '2.9.1'
+  version '2.9.3'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/2.9.1/sdk/dartsdk-linux-arm-release.zip'
-    source_sha256 'e393c05136571bf7c4879a2bfe207a768be449a3d0bcc8a7ff700b01c4330109'
+    source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/2.9.3/sdk/dartsdk-linux-arm-release.zip'
+    source_sha256 'fe5e180c901b4a6bf802211bf7b4918d321c3924f55088339f7fe3a01a8cc735'
   when 'i686'
-    source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/2.9.1/sdk/dartsdk-linux-ia32-release.zip'
-    source_sha256 '8492ec94a07c6100f1a097864668e4b9063f3b1ed9f05c01dee2d59158ae6a04'
+    source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/2.9.3/sdk/dartsdk-linux-ia32-release.zip'
+    source_sha256 '82116dbc7e16ca4bd04c090be2bb6014bce8d0a71823a1ffdc5842b658b6132c'
   when 'x86_64'
-    source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/2.9.1/sdk/dartsdk-linux-x64-release.zip'
-    source_sha256 '8e092105482e3e1be90af44962e3b7973a20cd8f71aa9f6e07199174a58e0eed'
+    source_url 'https://storage.googleapis.com/dart-archive/channels/stable/release/2.9.3/sdk/dartsdk-linux-x64-release.zip'
+    source_sha256 '6719026f526f3171274dc9d8322c33fd9ec22e659e8dd833c587038211b83b04'
   end
 
   binary_url ({
