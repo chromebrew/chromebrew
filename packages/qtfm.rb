@@ -35,7 +35,7 @@ class Qtfm < Package
              'CONFIG+=with_ffmpeg',
              'CONFIG+=sharedlib',
              '..'
-      system 'make', "-j#{CREW_NPROC}"
+      system 'make'
     end
   end
 
