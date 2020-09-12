@@ -3,12 +3,12 @@ require 'package'
 class Imagemagick6 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '6.9.10-79'
+  version '6.9.11-29'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
-    source_url 'https://imagemagick.org/download/ImageMagick-6.9.10-79.tar.xz'
-    source_sha256 '52b7bf07175feca8da112a093661baa7fe7453eb8c576d8f904135cc3c15567e'
+    source_url 'https://github.com/ImageMagick/ImageMagick6/archive/6.9.11-29.tar.gz'
+    source_sha256 'f425e31f64cb481a1416a037d88d04eb44236bef83334e55b7ad692f71c61270'
     depends_on 'flif'
     depends_on 'freeimage'
     depends_on 'freetype'
@@ -31,14 +31,8 @@ class Imagemagick6 < Package
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.10-79-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.10-79-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.10-79-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e9a0befa3e96a9a42ec9bcc66b597aefd6ff6e4d68f3138772a6deadfa2ce769',
-     armv7l: 'e9a0befa3e96a9a42ec9bcc66b597aefd6ff6e4d68f3138772a6deadfa2ce769',
-     x86_64: '16dec45ba5036a192c42ac1c46bd8744682e6a6cd1e19c576c911e9511fbc078',
   })
 
   def self.preinstall
@@ -55,6 +49,7 @@ class Imagemagick6 < Package
            ./configure \
            --prefix=#{CREW_PREFIX} \
            --libdir=#{CREW_LIB_PREFIX} \
+           --mandir=#{CREW_MAN_PREFIX} \
            --disable-dependency-tracking \
            --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
            --with-jemalloc \
