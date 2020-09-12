@@ -19,8 +19,8 @@ class Qtfm < Package
   depends_on 'sommelier'
 
   def self.patch
-    system "sed -i 's/#include <QPainter>/#include <QPainter>\\n#include <QPainterPath>/g' libfm/iconlist.h"
-    system "sed -i 's/#include <QPainter>/#include <QPainter>\\n#include <QPainterPath>/g' libfm/iconview.h"
+    system "sed -i '12i#include <QPainterPath>' libfm/iconlist.h"
+    system "sed -i '14i#include <QPainterPath>' libfm/iconview.h"
   end
 
   def self.build
