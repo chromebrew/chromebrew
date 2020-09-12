@@ -7,8 +7,8 @@ class Qtcreator < Package
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'
-    source_url 'http://download.qt.io/official_releases/qt/5.12/5.12.3/md5sums.txt'
-    source_sha256 '7562395316ed1cfea7c6276bb80b4de14cab34475ced3ae7549eedf6e94da5d9'
+    source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/md5sums.txt'
+    source_sha256 '50ea8bf9728b8ceb3a92044745edd55fd02783b8733da7fd57e044bc21980bf6'
     depends_on 'xdg_base'
     depends_on 'sommelier'
   end
@@ -65,11 +65,11 @@ class Qtcreator < Package
       system "#{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run --script qt-installer-script.qs"
       system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run"
     when 'x86_64'
-      system 'wget http://qt.mirror.constant.com/archive/online_installers/3.1/qt-unified-linux-x64-3.1.1-online.run'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x64-3.1.1-online.run') ) == '931ee9506128e778a0167341a55b9ea76b46d695e8e8f0d9a1ecd58987b53488'
-      system "install -Dm755 qt-unified-linux-x64-3.1.1-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.1.1-online.run"
-      system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.1.1-online.run --script qt-installer-script.qs"
-      system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.1.1-online.run"
+      system 'wget http://qt.mirror.constant.com/archive/online_installers/3.2/qt-unified-linux-x64-3.2.3-online.run'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x64-3.2.3-online.run') ) == 'b724dabc0e7bfde1e078de3edcdd87c94b60031f9896d7119099a66191d75eec'
+      system "install -Dm755 qt-unified-linux-x64-3.2.3-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run"
+      system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run --script qt-installer-script.qs"
+      system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run"
     end
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "mkdir -p #{CREW_DEST_PREFIX}/share"
