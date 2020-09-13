@@ -9,8 +9,16 @@ class Qtbase < Package
   source_sha256 '33960404d579675b7210de103ed06a72613bfc4305443e278e2d32a3eb1f3d8c'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qtbase-5.15.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qtbase-5.15.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/qtbase-5.15.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qtbase-5.15.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '435c4acd25637c6d7f547ca12ff327f5019abe2fda9ba2e27babbe5d7da41abc',
+     armv7l: '435c4acd25637c6d7f547ca12ff327f5019abe2fda9ba2e27babbe5d7da41abc',
+       i686: 'b0c8d00a7330421b3ee08bd25d4db907119a50a70006f145b61f34fadc850169',
+     x86_64: 'bacd7fe55f8eb855ad3c09769f588c69185971269c3ec845e15f7163a2300c35',
   })
 
   depends_on 'alsa_plugins'
