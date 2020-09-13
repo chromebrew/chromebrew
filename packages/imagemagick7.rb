@@ -31,8 +31,14 @@ class Imagemagick7 < Package
   end
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.10-29-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.10-29-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.10-29-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '2b36714b61050e4da65ccaf8860cf654d13f530122edbb21edd5e633f07db297',
+     armv7l: '2b36714b61050e4da65ccaf8860cf654d13f530122edbb21edd5e633f07db297',
+     x86_64: '8557c63c17dcfe443d9ed6e8d78aa555cf032b4165ec39157bb209581c0daf41',
   })
 
   def self.preinstall
