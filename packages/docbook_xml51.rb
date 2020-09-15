@@ -9,20 +9,7 @@ class Docbook_xml51 < Package
   version '5.1'
   source_url 'https://docbook.org/xml/5.1/docbook-v5.1-os.zip'
   source_sha256 'b3f3413654003c1e773360d7fc60ebb8abd0e8c9af8e7d6c4b55f124f34d1e7f'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml-5.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '9f3ef8937e0b9f16158d66fe97fea777065790f9999e24e4dc295f461efe9b4b',
-     armv7l: '9f3ef8937e0b9f16158d66fe97fea777065790f9999e24e4dc295f461efe9b4b',
-       i686: '118a652d4b192525f2400ec121747b1824292b874941b04da037b4a031107148',
-     x86_64: '19aefa5a44bdd6a0ff77072f2fe45e1b032a06d9a72faeb51ac3cae2d49e992c',
-  })
-
+  
   depends_on 'docbook'
   depends_on 'sgml_common'
 

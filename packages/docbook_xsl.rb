@@ -30,8 +30,8 @@ class Docbook_xsl < Package
             cp -v -R . #{CREW_DEST_PREFIX}/share/xml/#{xsl_stylesheets}/"
     system "install -v -m644 -D README #{CREW_DEST_PREFIX}/share/doc/#{docbook_xsl}/README.txt &&
             install -v -m644 RELEASE-NOTES* NEWS* #{CREW_DEST_PREFIX}/share/doc/#{docbook_xsl}"
-    system "sed -i -e 's,<!-- .* -->,,g' #{CREW_PREFIX}/etc/xml/catalog.xml"
     system "cat << EOF > ./remove_add.sh
+sed -i -e 's,<!-- .* -->,,g' #{CREW_PREFIX}/etc/xml/catalog.xml
 xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml remove rewriteSystem 'http://docbook.sourceforge.net/release/xsl/snapshot_9899/'
 xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml remove rewriteURI 'http://docbook.sourceforge.net/release/xsl/current/'
 xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml remove rewriteURI 'http://docbook.sourceforge.net/release/xsl/snapshot_9899/'

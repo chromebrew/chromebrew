@@ -12,8 +12,8 @@ class Docbook_xml45 < Package
   depends_on 'docbook_xsl'
   
   def self.prebuild
-    system "sed -i -e 's,<!-- .* -->,,g' #{CREW_PREFIX}/etc/xml/catalog.xml"
     system "cat << EOF > ./remove_add.sh
+sed -i -e 's,<!-- .* -->,,g' #{CREW_PREFIX}/etc/xml/catalog.xml
 xmlcatmgr -c #{CREW_PREFIX}/etc/xml/docbook remove public '-//OASIS//DTD DocBook XML V4.5//EN'
 xmlcatmgr -c #{CREW_PREFIX}/etc/xml/docbook add public '-//OASIS//DTD DocBook XML V4.5//EN' '#{CREW_PREFIX}/share/xml/docbook/4.5/catalog.xml'
 EOF"
