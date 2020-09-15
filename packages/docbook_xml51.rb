@@ -87,5 +87,6 @@ class Docbook_xml51 < Package
                 'file://#{CREW_PREFIX}/etc/xml/docbook' \
                 #{CREW_DEST_PREFIX}/etc/xml/catalog"
     system "install -v -Dm755 #{CREW_DEST_PREFIX}/etc/xml/catalog #{CREW_DEST_PREFIX}/etc/xml/catalog.xml"
+    system "install -v -Dm755 #{CREW_DEST_PREFIX}/etc/xml/catalog.xml #{CREW_DEST_PREFIX}/etc/xml/catalog"
   end
 end
