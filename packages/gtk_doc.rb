@@ -10,11 +10,23 @@ class Gtk_doc < Package
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/gtk-doc/1.32/gtk-doc-1.32.tar.xz'
   source_sha256 'de0ef034fb17cb21ab0c635ec730d19746bce52984a6706e7bbec6fb5e0b907c'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_doc-1.32-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_doc-1.32-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_doc-1.32-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_doc-1.32-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '49133e1cd655aab18ea109fde3d5496f76e5e4443f5a11e2241bfc4256d782f8',
+     armv7l: '49133e1cd655aab18ea109fde3d5496f76e5e4443f5a11e2241bfc4256d782f8',
+       i686: '4a925e816c2c222ea973525be6dab5ee90d1524f541b30166ca57b07b5e99eec',
+     x86_64: 'cabae34fc1c371a929052a3611be30164d2961eb0b203f5239c91d8cb5480a96',
+  })
+
   depends_on 'docbook_xml'
-  depends_on 'docbook_xsl'
+  depends_on 'fop'
   depends_on 'itstool'
   depends_on 'libxslt'
-  depends_on 'docbook_xml43'
 
   def self.patch
     puts
@@ -41,11 +53,13 @@ class Gtk_doc < Package
     system 'patch -Np1 -i output-reproducible.patch'
     puts
   end
+
   def self.build
-      system "./configure #{CREW_OPTIONS} --with-xml-catalog=#{CREW_PREFIX}/etc/xml/catalog.xml"
-      system 'make'
+    system "./configure #{CREW_OPTIONS} --with-xml-catalog=#{CREW_PREFIX}/etc/xml/catalog.xml"
+    system 'make'
   end
+
   def self.install
-      system "make install DESTDIR=#{CREW_DEST_DIR}"
+    system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
 end
