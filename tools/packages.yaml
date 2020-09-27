@@ -649,6 +649,11 @@ url: https://www.bastoul.net/cloog/download.php
 activity: none
 ---
 kind: url
+name: clutter
+url: https://ftp.gnome.org/pub/GNOME/sources/clutter/
+activity: low
+---
+kind: url
 name: cmake
 url: https://cmake.org/files
 activity: high
@@ -672,6 +677,11 @@ kind: url
 name: codium
 url: https://github.com/VSCodium/vscodium/releases
 activity: high
+---
+kind: url
+name: cogl
+url: https://ftp.gnome.org/pub/GNOME/sources/cogl/
+activity: low
 ---
 kind: url
 name: collectl
@@ -904,6 +914,11 @@ url: https://sourceforge.net/projects/disktype/files/disktype/
 activity: none
 ---
 kind: url
+name: diy
+url: https://github.com/diatomic/diy/releases
+activity: none
+---
+kind: url
 name: dmidecode
 url: http://download.savannah.gnu.org/releases/dmidecode
 activity: low
@@ -954,6 +969,11 @@ url: https://github.com/joncampbell123/dosbox-x/releases
 activity: medium
 ---
 kind: url
+name: double_conversion
+url: https://github.com/google/double-conversion/releases
+activity: none
+---
+kind: url
 name: doxygen
 url: https://github.com/doxygen/doxygen/releases
 activity: low
@@ -1001,6 +1021,11 @@ activity: medium
 kind: url
 name: ed
 url: http://ftpmirror.gnu.org/ed
+activity: low
+---
+kind: url
+name: eigen
+url: https://gitlab.com/libeigen/eigen/-/tags
 activity: low
 ---
 kind: url
@@ -1384,6 +1409,11 @@ url: https://github.com/gcc-mirror/gcc/releases
 activity: low
 ---
 kind: url
+name: gcr
+url: https://ftp.gnome.org/pub/GNOME/sources/gcr/
+activity: medium
+---
+kind: url
 name: gdal
 url: http://download.osgeo.org/gdal
 activity: medium
@@ -1532,6 +1562,11 @@ kind: url
 name: gittools
 url: https://github.com/internetwache/GitTools/
 activity: none
+---
+kind: url
+name: gl2ps
+url: http://geuz.org/gl2ps/src/
+activity: low
 ---
 kind: url
 name: glew
@@ -1777,6 +1812,11 @@ kind: url
 name: gtk_engines_adwaita
 url: https://github.com/GNOME/gnome-themes-extra/releases/
 activity: low
+---
+kind: url
+name: gtk_vnc
+url: https://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/
+activity: none
 ---
 kind: url
 name: gtk2
@@ -2602,6 +2642,11 @@ kind: url
 name: libgee
 url: https://download.gnome.org/sources/libgee/
 activity: medium
+---
+kind: url
+name: libgeotiff
+url: https://github.com/OSGeo/libgeotiff/releases/
+activity: low
 ---
 kind: url
 name: libgit2
@@ -3894,6 +3939,11 @@ url: https://sourceforge.net/projects/netcat/files/netcat/
 activity: none
 ---
 kind: url
+name: netcdf
+url: https://www.unidata.ucar.edu/downloads/netcdf/
+activity: low
+---
+kind: url
 name: nethack
 url: https://github.com/NetHack/NetHack/releases
 activity: low
@@ -4121,6 +4171,11 @@ activity: none
 kind: url
 name: openvpn
 url: https://openvpn.net/community-downloads/
+activity: medium
+---
+kind: url
+name: openvr
+url: https://github.com/ValveSoftware/openvr/releases
 activity: medium
 ---
 kind: url
@@ -4872,6 +4927,11 @@ kind: url
 name: sane_frontends
 url: https://gitlab.com/sane-project/frontends/-/tags
 activity: none
+---
+kind: url
+name: sass
+url: https://github.com/sass/dart-sass/releases
+activity: high
 ---
 kind: url
 name: sbc
@@ -5799,6 +5859,11 @@ url: https://github.com/chneukirchen/xe/releases
 activity: low
 ---
 kind: url
+name: xercesc
+url: https://downloads.apache.org/xerces/c/3/sources/
+activity: low
+---
+kind: url
 name: xfce4_dev_tools
 url: https://archive.xfce.org/src/xfce/xfce4-dev-tools/
 activity: low
@@ -5841,6 +5906,11 @@ activity: medium
 kind: url
 name: xmessage
 url: https://www.x.org/pub/individual/app/
+activity: none
+---
+kind: url
+name: xmlcatmgr
+url: https://sourceforge.net/projects/xmlcatmgr/files/xmlcatmgr/
 activity: none
 ---
 kind: url
