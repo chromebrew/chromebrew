@@ -12,7 +12,7 @@ class Diy < Package
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-i686.tar.xz',
-    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/diy-3.5.0-chromeos-x86_64.tar.xz'
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1f7e1d0b9c3f4c3675a243ad85082057be425544a1e2a84eb7bd0a1c1f5f059d',
