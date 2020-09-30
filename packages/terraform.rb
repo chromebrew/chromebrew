@@ -3,19 +3,19 @@ require 'package'
 class Terraform < Package
   description 'Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.'
   homepage 'https://www.terraform.io/'
-  version '0.12.25'
+  version '0.13.4'
   compatibility 'all'
 
   case ARCH
     when 'x86_64'
-      source_url 'https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip'
-      source_sha256 'e95daabd1985329f87e6d40ffe7b9b973ff0abc07a403f767e8658d64d733fb0'
+      source_url "https://releases.hashicorp.com/terraform/#{self.version}/terraform_#{self.version}_linux_amd64.zip"
+      source_sha256 'a92df4a151d390144040de5d18351301e597d3fae3679a814ea57554f6aa9b24'
     when 'aarch64', 'armv7l'
-      source_url 'https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_arm.zip'
-      source_sha256 '20979f0f53a0931cd23332cd2c52ed4ec8257797e8050e5b794ad53c791a7e85'
+      source_url "https://releases.hashicorp.com/terraform/#{self.version}/terraform_#{self.version}_linux_arm.zip"
+      source_sha256 '28f90802515d2ef8468eafbe4b0125fe812ab383d7707429adb2c8f9ff8aab7d'
     when 'i686'
-      source_url 'https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_386.zip'
-      source_sha256 '51a4653dfdbee000bc47f05606ca8f328a1d31ebd6a3b6569230bcd303883571'
+      source_url 'https://releases.hashicorp.com/terraform/#{self.version}/terraform_#{self.version}_linux_386.zip'
+      source_sha256 '16225f17149505a42751599acd8e12d01690324f680e7fa2099afed581876916'
   end
 
   def self.install
