@@ -3,22 +3,22 @@ require 'package'
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.33'
+  version '7.2.34'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.2.33.tar.xz'
-  source_sha256 '0f160a3483ffce36be5962fab7bcf09d605ee66c5707df83e4195cb796bbb03a'
+  source_url 'https://www.php.net/distributions/php-7.2.34.tar.xz'
+  source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.33-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.33-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.33-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.33-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '22af81dc3cf9e9a05a6abb19f641d49e6a4241b7f55b057865cdffb1b83be8b9',
-     armv7l: '22af81dc3cf9e9a05a6abb19f641d49e6a4241b7f55b057865cdffb1b83be8b9',
-       i686: 'f4273a7e100395a01de1fd241d404b388521f0bfe307e634922c93576a2f0adb',
-     x86_64: '8d0fff4fad3c6647ca0b22c2d1407dd379676fb829edc3bb8784024b682e1c4a',
+    aarch64: 'ee7dbcd989ee0b44d7b06e6536d8c24ec071cc6354df7d2c35247cd653100bef',
+     armv7l: 'ee7dbcd989ee0b44d7b06e6536d8c24ec071cc6354df7d2c35247cd653100bef',
+       i686: '4ba6dde5b655d6b137aba2101d28ae5f85a414c6de8e6c286b3d6f62f1b386fb',
+     x86_64: 'de333cd9ba603c053a7773cc16b567a584a14ed90d9a955c5fee34c96c6be21b',
   })
 
   depends_on 'libgcrypt'

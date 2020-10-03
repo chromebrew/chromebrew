@@ -3,22 +3,22 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.4.10'
+  version '7.4.11'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.4.10.tar.xz'
-  source_sha256 'c2d90b00b14284588a787b100dee54c2400e7db995b457864d66f00ad64fb010'
+  source_url 'https://www.php.net/distributions/php-7.4.11.tar.xz'
+  source_sha256 '5d31675a9b9c21b5bd03389418218c30b26558246870caba8eb54f5856e2d6ce'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.11-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.11-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3cb44ed47a3f23f3e38ce7856fb39f7043a48e0aa4196aef0c961fbf86db8f1a',
-     armv7l: '3cb44ed47a3f23f3e38ce7856fb39f7043a48e0aa4196aef0c961fbf86db8f1a',
-       i686: 'c59024ac3a31d62ffb04ecd753524ab838f0d1e2fc0fc3a9e582b31d86e0dd0f',
-     x86_64: '67d3009b2a9e71c4bd70079fa4380306aeb96f07732dd0f4fc8066347273898d',
+    aarch64: '9e5bdb26317753f961b85f430571ad4da9b2782a78a642c380602fbd124de41e',
+     armv7l: '9e5bdb26317753f961b85f430571ad4da9b2782a78a642c380602fbd124de41e',
+       i686: '8645a834ebd919db92d00a0fe9aecc596faac8afffcc0ea744cbb4d5c3d03d37',
+     x86_64: 'd18946adc74db7e73446f44fc748cc60e8fd54a7608bef9eca863c59676b4286',
   })
 
   depends_on 'aspell_en'
