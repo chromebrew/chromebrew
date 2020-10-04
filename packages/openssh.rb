@@ -3,16 +3,16 @@ require 'package'
 class Openssh < Package
   description 'OpenSSH is the premier connectivity tool for remote login with the SSH protocol.'
   homepage 'https://www.openssh.com/'
-  version '7.6'
+  version '8.4'
   compatibility 'all'
-  source_url 'https://github.com/openssh/openssh-portable/archive/V_7_6_P1.tar.gz'
-  source_sha256 'b358ed7afa55bfed9ddc618e3c24ca6de5cd9d64b0e347b8262934038ec82a1a'
+  source_url 'https://github.com/openssh/openssh-portable/archive/V_8_4_P1.tar.gz'
+  source_sha256 '5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-7.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-7.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-7.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-7.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '929ce84481704dcb7ffc18d7b86b955753adc5ec8b6d3b73142d68fceb972aad',
