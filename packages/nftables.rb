@@ -3,23 +3,9 @@ require 'package'
 class Nftables < Package
   description 'nftables replaces the popular {ip,ip6,arp,eb}tables.'
   homepage 'https://netfilter.org/projects/nftables/'
-  version '0.9.0'
-  compatibility 'all'
-  source_url 'https://netfilter.org/projects/nftables/files/nftables-0.9.0.tar.bz2'
-  source_sha256 'ad8181b5fcb9ca572f444bed54018749588522ee97e4c21922648bb78d7e7e91'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nftables-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nftables-0.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nftables-0.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nftables-0.9.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '5245548bfb5081d7a25291d3cc82052ace323d235eba1a73638cff83152e5a06',
-     armv7l: '5245548bfb5081d7a25291d3cc82052ace323d235eba1a73638cff83152e5a06',
-       i686: '5129603a7f40d072f8746430f6b1b14e0f77b50b3495154de7408c49ca891c87',
-     x86_64: '60cb68a70ecc066d7c6b92617db9f38593692f056c3620a3a42c7df0dd6a2ae7',
-  })
+  version '0.9.6'
+  source_url 'https://netfilter.org/projects/nftables/files/nftables-0.9.6.tar.bz2'
+  source_sha256 '68d6fdfe8ab02303e6b1f13968a4022da5b0120110eaee3233d806857937b66e'
 
   depends_on 'help2man'
   depends_on 'jansson'
