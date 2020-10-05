@@ -8,18 +8,6 @@ class Openssh < Package
   source_url 'https://github.com/openssh/openssh-portable/archive/V_8_4_P1.tar.gz'
   source_sha256 'b924181983a77cb10e61530960e818ccae075e5c457ea6b9f67e4946009563db'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '929ce84481704dcb7ffc18d7b86b955753adc5ec8b6d3b73142d68fceb972aad',
-     armv7l: '929ce84481704dcb7ffc18d7b86b955753adc5ec8b6d3b73142d68fceb972aad',
-       i686: '752f4c864ffb5fbacd158d8f0c6fc32f457027434522efa4bdc2beaa37888e87',
-     x86_64: '22e4e13c61d74f4b49737031644ce1d5e22a131c5f3c9e32e4b769e27092d188',
-  })
 
   depends_on 'autoconf' => :build
   depends_on 'compressdoc' => :build
