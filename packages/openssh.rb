@@ -6,7 +6,7 @@ class Openssh < Package
   version '8.4'
   compatibility 'all'
   source_url 'https://github.com/openssh/openssh-portable/archive/V_8_4_P1.tar.gz'
-  source_sha256 '5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24'
+  source_sha256 'b924181983a77cb10e61530960e818ccae075e5c457ea6b9f67e4946009563db'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-chromeos-armv7l.tar.xz',
