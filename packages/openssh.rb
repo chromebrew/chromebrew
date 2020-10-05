@@ -25,7 +25,7 @@ class Openssh < Package
   depends_on 'compressdoc' => :build
 
   def self.build
-    system "autoconf"
+    system "autoreconf -fiv"
     system "autoheader"
     system "./configure --prefix=#{CREW_PREFIX}"
     system "make"
