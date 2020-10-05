@@ -3,23 +3,11 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '2.7.1'
+  version '2.7.2'
   compatibility 'all'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.1.tar.xz'
-  source_sha256 'b224f9844646cc92765df8288a46838511c1cec5b550d8874bd4686a904fcee7'
+  source_url 'https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.2.tar.xz'
+  source_sha256 '1b95ab193cc8f5b5e59d2686cb3d5dcf1ddf2a86cb6950e0b4bdaae5040ec0d6'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '8808b9bc9b55206781ea706008f405a12083af15839ff69d96434674004baee8',
-     armv7l: '8808b9bc9b55206781ea706008f405a12083af15839ff69d96434674004baee8',
-       i686: '5544e722fb76733df5fb3734db4bed818668b11fbb01f9484b1c85f78fd442c6',
-     x86_64: 'bcce410dc64861dcb57c7e72e5eedc3df79ca94d6e0d0ee32e0d14d1fd3712c0',
-  })
 
   depends_on 'readline'
   depends_on 'ncurses'
