@@ -8,6 +8,7 @@ class Zstd < Package
   source_url 'https://github.com/facebook/zstd/archive/v1.4.5.tar.gz'
   source_sha256 '734d1f565c42f691f8420c8d06783ad818060fc390dee43ae0a89f86d0a4f8c2'
 
+  depends_on 'lz4'
   
   def self.build
     system 'make'
