@@ -3,23 +3,11 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '20.0.2'
+  version '20.2.0'
   compatibility 'all'
-  source_url 'https://mesa.freedesktop.org/archive/mesa-20.0.2.tar.xz'
-  source_sha256 'aa54f1cb669550606aab8ceb475105d15aeb814fca5a778ce70d0fd10e98e86f'
+  source_url 'https://mesa.freedesktop.org/archive/mesa-20.2.0.tar.xz'
+  source_sha256 '63f0359575d558ef98dd78adffc0df4c66b76964ebf603b778b7004964191d30'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.0.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '1032dfef942c6fba1862daf15e2f9a3f6221d68b125e11cba953f27393059004',
-     armv7l: '1032dfef942c6fba1862daf15e2f9a3f6221d68b125e11cba953f27393059004',
-       i686: 'd59403d96e51bd16af361792732e6065b58b56b71ae621884f47d30f3e2a4a1c',
-     x86_64: 'f7017c11eb0671f0ca9d0368e7c03d7668673c824af96f6238f183e72b033202',
-  })
 
   depends_on 'setuptools' => :build
   depends_on 'libva'
@@ -27,6 +15,7 @@ class Mesa < Package
   depends_on 'wayland_protocols'
   depends_on 'elfutils'
   depends_on 'llvm'
+  depends_on 'libdrm'
 
   def self.build
     system "pip3 uninstall -y Mako MarkupSafe || :"
