@@ -3,23 +3,11 @@ require 'package'
 class Gst_plugins_base < Package
   description 'An essential, exemplary set of elements for GStreamer'
   homepage 'https://gstreamer.freedesktop.org/modules/gst-plugins-base.html'
-  version '1.16.0'
+  version '1.18.0'
   compatibility 'all'
-  source_url 'https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.16.0.tar.xz'
-  source_sha256 '4093aa7b51e28fb24dfd603893fead8d1b7782f088b05ed0f22a21ef176fb5ae'
+  source_url 'https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.0.tar.xz'
+  source_sha256 '762abdd1a950809a1cea62fff7f86b5f7d6bd5f6841e3e585c700b823cdb7897'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.16.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'b46852219eace8316a2eaffdf322e167273c91a11d25c5fec9b1a43c5661b04b',
-     armv7l: 'b46852219eace8316a2eaffdf322e167273c91a11d25c5fec9b1a43c5661b04b',
-       i686: 'a14548969b4cccd4136b048cd7cfd7aa92958280e3fccdb3685b2f8beb8a5d3b',
-     x86_64: '874b7bad0bf9149e7aa3f5524c0ecb858ef5278d836927b0a168284ecbe552a3',
-  })
 
   depends_on 'gstreamer'
   depends_on 'libtheora'
@@ -37,19 +25,23 @@ class Gst_plugins_base < Package
   depends_on 'libglu'
   depends_on 'libgudev'
   depends_on 'gdk_pixbuf'
+  depends_on 'llvm' => :build
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--disable-examples',
-           '--with-plugins'
-    system 'make'
+    # Use lld to enable compatibility with ChromeOS libraries
+    ENV['CFLAGS'] = "-fuse-ld=lld"
+    ENV['CXXFLAGS'] = "-fuse-ld=lld"
+    system "meson",
+    "--prefix=#{CREW_PREFIX}",
+    "--libdir=#{CREW_LIB_PREFIX}",
+    "-Dgst_debug=false",
+    "-Dexamples=disabled",
+    "build"
+    system "ninja -C build" 
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 
   def self.check
