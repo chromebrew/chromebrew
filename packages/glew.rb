@@ -10,7 +10,7 @@ class Glew < Package
 
 
   depends_on 'mesa'
-  depends_on 'llvm'
+  depends_on 'llvm' => :build
 
   def self.patch
     system 'tar fxv ../download'
