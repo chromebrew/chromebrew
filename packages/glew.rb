@@ -12,16 +12,21 @@ class Glew < Package
   depends_on 'mesa'
   depends_on 'llvm'
 
-  def self.build
+  def self.patch
     system 'tar fxv ../download'
+    Dir.chdir 'glew-2.2.0/build' do
+      # As per https://github.com/nigels-com/glew/pull/268
+      system "sed -i 's/OpenGL::EGL/NOT OpenGL_EGL_FOUND/' cmake/CMakeLists.txt"
+      system "sed -i 's/endif()/endif ()/g' cmake/CMakeLists.txt"
+    end
+  end
+  
+  def self.build
     ENV['CFLAGS.EXTRA'] = "-fuse-ld=lld"
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     ENV['GLEW_DEST'] = "#{CREW_PREFIX}"
     Dir.chdir 'glew-2.2.0/build' do
-      # As per https://github.com/nigels-com/glew/pull/268
-      system "sed -i 's/OpenGL::EGL/NOT OpenGL_EGL_FOUND/' cmake/CMakeLists.txt"
-      system "sed -i 's/endif()/endif ()/g' cmake/CMakeLists.txt"
       system 'cmake',
              '-DCMAKE_BUILD_TYPE=Release',
              "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
