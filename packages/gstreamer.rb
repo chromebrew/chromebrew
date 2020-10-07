@@ -15,7 +15,7 @@ class Gstreamer < Package
   depends_on 'elfutils'
   depends_on 'libunwind'
   depends_on 'python27'
-  depends_on 'llvm'
+  depends_on 'llvm' => :build
 
   def self.build
     # Use lld for ChromOS library compatibility
