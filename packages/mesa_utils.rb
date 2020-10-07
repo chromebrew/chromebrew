@@ -10,7 +10,7 @@ class Mesa_utils< Package
 
   depends_on 'mesa'
   depends_on 'glew'
-  depends_on 'llvm'
+  depends_on 'llvm' => :build
 
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
