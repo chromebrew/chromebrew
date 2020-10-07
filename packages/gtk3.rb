@@ -22,7 +22,7 @@ class Gtk3 < Package
   depends_on 'shared_mime_info'
   depends_on 'six' => :build
   depends_on 'xdg_base'
-  depends_on 'llvm'
+  depends_on 'llvm' => :build
 
   def self.build
     # Using clang enables the lld linker, hopefully allowing ChromeOS libs like libgles to be used.
