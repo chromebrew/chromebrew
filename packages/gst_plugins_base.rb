@@ -25,6 +25,7 @@ class Gst_plugins_base < Package
   depends_on 'libglu'
   depends_on 'libgudev'
   depends_on 'gdk_pixbuf'
+  depends_on 'llvm' => :build
 
   def self.build
     # Use lld to enable compatibility with ChromeOS libraries
