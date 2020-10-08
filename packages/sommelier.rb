@@ -60,7 +60,7 @@ class Sommelier < Package
       system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
       system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
       system "echo '  killall -g sommelier' >> stopsommelier"
-      system "echo '  pkill Xwayland' >> stopsommelier"
+      system "echo '  if pgrep "Xwayland"; then killall Xwayland; fi"
       system "echo '  sleep 3' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
       system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
