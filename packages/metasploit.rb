@@ -3,22 +3,16 @@ require 'package'
 class Metasploit < Package
   description 'The Metasploit Framework is a tool for developing and executing exploit code against a remote target machine.'
   homepage 'https://www.metasploit.com/'
-  version '4.16.19'
+  version '6.0.9'
   compatibility 'all'
-  source_url 'https://github.com/rapid7/metasploit-framework/archive/4.16.19.tar.gz'
-  source_sha256 'd42d950da520586cf2e3b4f0a86e895250a95e2cd6ec3aff972e3b24492bfd2a'
+  source_url 'https://github.com/rapid7/metasploit-framework/archive/6.0.9.tar.gz'
+  source_sha256 '69a12a089fcd130a40f3f973a53057a948a7f2b6df6a3a64613ee22aa3d53016'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/metasploit-4.16.19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/metasploit-4.16.19-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/metasploit-4.16.19-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/metasploit-4.16.19-chromeos-x86_64.tar.xz',
+    
   })
   binary_sha256 ({
-    aarch64: '048ec59ec22c011b0493fff042e159bf2a7a74ed8583ecc06713b8fe14f63235',
-     armv7l: '048ec59ec22c011b0493fff042e159bf2a7a74ed8583ecc06713b8fe14f63235',
-       i686: '641b577192692e7a108764eff4917eb34ca26873c9456abf2ddbd2e81586742a',
-     x86_64: 'd3e70602086ffd04438aa6543318e5dc5e78995fe1eabfcfeb94fc7642372974',
+    
   })
 
   depends_on 'ruby'
