@@ -3,22 +3,16 @@ require 'package'
 class Pmd < Package
   description 'An extensible cross-language static code analyzer.'
   homepage 'https://pmd.github.io/'
-  version '5.8.1'
+  version '6.28.0'
   compatibility 'all'
-  source_url 'https://github.com/pmd/pmd/releases/download/pmd_releases%2F5.8.1/pmd-bin-5.8.1.zip'
-  source_sha256 '2d854e30717b66e253213f36d4bcd202b83b180ea427836797d13a857c19a6b4'
+  source_url 'https://github.com/pmd/pmd/releases/download/pmd_releases%2F5.8.1/pmd-bin-6.28.0.zip'
+  source_sha256 '71912ee24f28b3607f6b3aabfc7cab13bbff84d43a319a78a05f0eca7c4ba4dc'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pmd-5.8.1-chromeos-x86_64.tar.xz',
+    
   })
   binary_sha256 ({
-    aarch64: '3a67cbb0aa75d9b5bb6b30d54029cf8598810045e10cc5b8622c52ae0f0f67a4',
-     armv7l: '3a67cbb0aa75d9b5bb6b30d54029cf8598810045e10cc5b8622c52ae0f0f67a4',
-       i686: '8271fa0b8d53652830d7d791dbc859d298f1dc573cf956c6029e5f52edd15435',
-     x86_64: '0faf4b05cbaad158d8776b7229e85fce484e9c9d1245c4977647bdb653c2e1b8',
+    
   })
 
   depends_on 'jdk8'
