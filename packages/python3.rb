@@ -3,22 +3,22 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.8.2'
+  version '3.8.6'
   compatibility 'all'
-  source_url 'https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz'
-  source_sha256 '2646e7dc233362f59714c6193017bb2d6f7b38d6ab4a0cb5fbac5c36c4d845df'
+  source_url 'https://www.python.org/ftp/python/3.8.6/Python-3.8.6.tar.xz'
+  source_sha256 'a9e0b79d27aa056eb9cce8d63a427b5f9bab1465dee3f942dcfdb25a82f4ab8a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '24a9d5c66ecb9889fab72ee5173c051e3ccb915e29787913bd70829695f6bd46',
-     armv7l: '24a9d5c66ecb9889fab72ee5173c051e3ccb915e29787913bd70829695f6bd46',
-       i686: '562d85cd5741021b00beacf85d80db6d9fd11583b16aea367789bca062e7de4f',
-     x86_64: '6858a8d9e7c85f0261a1feb98c09237d969f9ae2f4bd039259842c5f9a2c4e33',
+    aarch64: 'eba6c478f3560887eddffb7d0cf919d919fcce9f69422844f124f5871d35ed21',
+     armv7l: 'eba6c478f3560887eddffb7d0cf919d919fcce9f69422844f124f5871d35ed21',
+       i686: 'e547b40c0d37330308a1dce7a38c3149ffbbbb8fe28b96688e91fc3e1e491290',
+     x86_64: 'e00af2fe0ac111fb00ae4809e6b21dcf9f44c100d81f8459ed4b8304e16ab34c',
   })
 
   depends_on 'bz2'
@@ -49,8 +49,8 @@ class Python3 < Package
     system "find #{CREW_DEST_PREFIX} -name 'libpython*.a' -print | xargs -r rm"
 
     # create symbolic links in lib64 for other applications which use libpython
-    unless Dir.exist? "#{CREW_DEST_LIB_PREFIX}"
-      FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
+    unless Dir.exist? CREW_DEST_LIB_PREFIX
+      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
       system "cd #{CREW_DEST_LIB_PREFIX} && ln -s ../lib/libpython*.so* ."
     end
   end
