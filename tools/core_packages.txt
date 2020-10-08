@@ -4,10 +4,13 @@ autoconf
 automake
 binutils
 bison
+brotli
 bz2
+c_ares
 cloog
 cmake
 compressdoc
+curl
 diffutils
 doxygen
 expat
@@ -28,11 +31,14 @@ intltool
 isl
 krb5
 less
+libcyrussasl
 libedit
 libffi
 libiconv
 libidn2
+libmbedtls
 libmetalink
+libnghttp2
 libpipeline
 libpsl
 libressl
@@ -57,6 +63,7 @@ mpfr
 ncurses
 nettle
 ninja
+openldap
 openssl
 osl
 p11kit
@@ -70,6 +77,7 @@ pkgconfig
 python27
 python3
 readline
+rtmpdump
 ruby
 sed
 setuptools
