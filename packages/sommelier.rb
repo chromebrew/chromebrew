@@ -3,23 +3,11 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/containers/sommelier'
-  version '1382ce084cc40'
+  version '1382ce084cc407'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
   source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc40-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e92036ee5c9e2fedbe9535a27f8f84fcbf525ce44f380bab570373ae76446fd5',
-     armv7l: 'e92036ee5c9e2fedbe9535a27f8f84fcbf525ce44f380bab570373ae76446fd5',
-       i686: 'd8497cdcd814445e1881e9719162cbeb9693f9376134dc25db32bb0891532fa5',
-     x86_64: '4a84a148fd1209b9196a331b17aec91a971c8f538d49cd764f3425c2d14217d4',
-  })
 
   depends_on 'mesa'
   depends_on 'xkbcomp'
@@ -60,6 +48,7 @@ class Sommelier < Package
       system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
       system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
       system "echo '  killall -g sommelier' >> stopsommelier"
+      system "echo '  if pgrep "Xwayland"; then killall Xwayland; fi"
       system "echo '  sleep 3' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
       system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
