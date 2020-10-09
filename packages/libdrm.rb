@@ -8,6 +8,18 @@ class Libdrm < Package
   source_url 'https://dri.freedesktop.org/libdrm/libdrm-2.4.102.tar.xz'
   source_sha256 '8bcbf9336c28e393d76c1f16d7e79e394a7fce8a2e929d52d3ad7ad8525ba05b'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.102-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.102-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.102-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.102-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'd02b90125434ef5bd9f1bd86514929edc09a08089792cafdfaf2b678d3dc2ed5',
+     armv7l: 'd02b90125434ef5bd9f1bd86514929edc09a08089792cafdfaf2b678d3dc2ed5',
+       i686: '9d0cd25cdc0a2193ef30b1549d6d2979c94dd941a95c7a07f5ed84413da89cbe',
+     x86_64: '5f67dd18f9bf9653addbf2989b9179fa9c3d55fe855a3b1681243239a32987c4',
+  })
 
   depends_on 'libpciaccess'
   depends_on 'xorg_lib'

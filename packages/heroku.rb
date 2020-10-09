@@ -14,9 +14,9 @@ class Heroku < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/heroku-7.44.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '60c419195c5a9c40b9bccc18d9da7d50a122e6609784a85c3fd5ea9f882bcf26',
-     armv7l: '60c419195c5a9c40b9bccc18d9da7d50a122e6609784a85c3fd5ea9f882bcf26',
-     x86_64: 'fa9b538dd683248d3e892f8a74c16c2a124dc189e4b9b0b18c17e57897b93096',
+    aarch64: 'c97d289b8e06b35552f49c2da468a883292a8bd29f40d5bf110b0e3632cfc102',
+     armv7l: 'c97d289b8e06b35552f49c2da468a883292a8bd29f40d5bf110b0e3632cfc102',
+     x86_64: '2e98fdebcbe61a6819e7066da0152a1da1cabaa456d4d6f869d4ec582b5e8555',
   })
 
   depends_on 'yarn' => :build
