@@ -8,6 +8,18 @@ class Mesa < Package
   source_url 'https://mesa.freedesktop.org/archive/mesa-20.2.0.tar.xz'
   source_sha256 '63f0359575d558ef98dd78adffc0df4c66b76964ebf603b778b7004964191d30'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.2.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '48ea7803900737f3cb039916a194803df7c74350856baf1e32867f4c7dbaffc4',
+     armv7l: '48ea7803900737f3cb039916a194803df7c74350856baf1e32867f4c7dbaffc4',
+       i686: '09e41a089c50399f2b5667d19214df84e7542c1e35a9f2a48e3b1d1c844df69e',
+     x86_64: '8dc082dc17b1ba23d3e6590b7696dbdfcb63ed5a03fb22c7682ecd6fce529642',
+  })
 
   depends_on 'setuptools' => :build
   depends_on 'libva'
