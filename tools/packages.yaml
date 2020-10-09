@@ -4634,6 +4634,11 @@ url: https://freedesktop.org/software/pulseaudio/releases
 activity: high
 ---
 kind: url
+name: pup
+url: https://github.com/ericchiang/pup/releases
+activity: low
+---
+kind: url
 name: putty
 url: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 activity: none
