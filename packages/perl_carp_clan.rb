@@ -15,11 +15,13 @@ class Perl_carp_clan < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_carp_clan-6.08-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '34f5a19b0f6d50b9c808b706aacac94c851608545f253ee812f1c34baea93b92',
-     armv7l: '34f5a19b0f6d50b9c808b706aacac94c851608545f253ee812f1c34baea93b92',
-       i686: '38300c01e5721e453e498a09037d5e6ca5e221544eeca93dbbdd5fefcbfff6dc',
-     x86_64: '777456ea1e8bde75969472f97838926b3ed40a5c02c1bad27d5416f87488e86d',
+    aarch64: 'dc90c4812e8dc89fbdc37173fc5e28bdbbf2d4b7ef4e5a1848cafa3b93c92a0e',
+     armv7l: 'dc90c4812e8dc89fbdc37173fc5e28bdbbf2d4b7ef4e5a1848cafa3b93c92a0e',
+       i686: '937964b41cd2e593626e588c850f402eeea22c0cd0c26621590026599dca70db',
+     x86_64: '64a770bb270702be5eaab0092f20d2fdf3176cd73d73710e112f568f9df449eb',
   })
+
+  depends_on 'perl'
 
   def self.build
     system 'perl', 'Makefile.PL'

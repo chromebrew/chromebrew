@@ -15,11 +15,13 @@ class Perl_file_tail < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_file_tail-1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'b229def8b897d284dbb4358272c80d66efcf5a07a5a754af6845667b57296fb3',
-     armv7l: 'b229def8b897d284dbb4358272c80d66efcf5a07a5a754af6845667b57296fb3',
-       i686: 'e3a076ec4e1fa188338a6830cb88f13dd99b7dcc1863010a79a441ee32525d65',
-     x86_64: '3ddfb4ca1947794e63e375a7b68bab4e676f565ac2b7b1ceca3bcb6c4f45d9aa',
+    aarch64: 'f01dfbccd682bd74baea061f0143963cfd7271219eedfbd4ee659e7561096923',
+     armv7l: 'f01dfbccd682bd74baea061f0143963cfd7271219eedfbd4ee659e7561096923',
+       i686: '9cb02093a16544f73b266b6f6ca112a336ad2b0453e2a1e3f20f7e1087b973aa',
+     x86_64: '16fef92f4059a8a047a8fc859f0297fbe2f7a056e7ab3f20a8d9a73c91334eda',
   })
+
+  depends_on 'perl'
 
   def self.build
     system 'perl', 'Makefile.PL'
