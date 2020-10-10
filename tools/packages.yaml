@@ -5934,6 +5934,11 @@ url: https://releases.pagure.org/xmlto
 activity: none
 ---
 kind: url
+name: xmltoman
+url: https://sourceforge.net/projects/xmltoman/files/xmltoman/
+activity: none
+---
+kind: url
 name: xorg_evdev_driver
 url: https://www.x.org/pub/individual/driver/
 activity: low
