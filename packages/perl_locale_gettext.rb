@@ -5,21 +5,21 @@ class Perl_locale_gettext < Package
   description 'Locale::gettext - message handling functions'
   homepage 'https://metacpan.org/pod/Locale::gettext'
   compatibility 'all'
-  version '1.07'
+  version '1.07-1'
   source_url 'https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/gettext-1.07.tar.gz'
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_locale_gettext-1.07-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '39aad2115541343c8dd71cfaae94b3d000101b5674b8deff6a0b5be74c3d8382',
-     armv7l: '39aad2115541343c8dd71cfaae94b3d000101b5674b8deff6a0b5be74c3d8382',
-       i686: '577de273943d0f5f4991989c3d677bae5bfbe0af87b4ddaa3d969ce11fc683dc',
-     x86_64: '034808aee7e907baa2cd7d46c9892cd12e1f6be4932444ee272575e527d6176e',
+    aarch64: '2ca25cdafbe78b4d6b5e01c8985c20a2341c06c3b6969c50fa57f5dda2980e07',
+     armv7l: '2ca25cdafbe78b4d6b5e01c8985c20a2341c06c3b6969c50fa57f5dda2980e07',
+       i686: 'cf09ba00b54abf698b8c90e08c0de4f99856179551033f81e7984b4f1ae99e8f',
+     x86_64: '1183aaa19a065dcc5578276614e4e42f178b76e629d52285f68a12dae87f9232',
   })
 
   depends_on 'perl'
@@ -29,17 +29,16 @@ class Perl_locale_gettext < Package
 
   def self.install
     # install files to build directory
-    system 'cpanm', '-l', "build", '--self-contained', '.'
+    system 'cpanm', '-l', 'build', '--self-contained', '.'
 
     # install lib
-    libdir = `perl -e 'require Config; print $Config::Config{'"'installsitelib'"'};'`
-    system "mkdir -p #{CREW_DEST_DIR}#{libdir}"
-    system "(cd build/lib/perl5; tar cf - .) | (cd #{CREW_DEST_DIR}#{libdir}; tar xfp -)"
+    libdir = CREW_DEST_DIR + `perl -e 'require Config; print $Config::Config{'"'installsitelib'"'};'`
+    FileUtils.mkdir_p libdir
+    system "(cd build/lib/perl5; tar cf - .) | (cd #{libdir}; tar xfp -)"
 
     # install man
-    mandir = "#{CREW_PREFIX}/share/man"
-    system "mkdir -p #{CREW_DEST_DIR}#{mandir}"
-    system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_DIR}#{mandir}; tar xfp -)"
+    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
+    system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
   end
 
   def self.check

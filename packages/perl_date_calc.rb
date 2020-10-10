@@ -15,11 +15,13 @@ class Perl_date_calc < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_date_calc-6.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '90ad46018f2e5c87be03c6af856c5dcb0b7a48374be980be47c6e1a79c5c36d8',
-     armv7l: '90ad46018f2e5c87be03c6af856c5dcb0b7a48374be980be47c6e1a79c5c36d8',
-       i686: '0d4b3245024b920cc13334882bdd005c40acc291d4c7cd9791497aed63b404df',
-     x86_64: '9ef0460ae307268e3855b9060bb424a158afc59f15ed6c88c2b6d9fdaa908e99',
+    aarch64: '3814f76c7a5a978752feaeda8e8b69b2cd6464e862749c28c9db9984a573f9c9',
+     armv7l: '3814f76c7a5a978752feaeda8e8b69b2cd6464e862749c28c9db9984a573f9c9',
+       i686: 'e32643c29b7a584b795d798b04f43fa1dce5709e0b5aa640ea0d1377115b3e29',
+     x86_64: '41473868421126d03723e7abb31183e1bd7dfa4178cbd6c6065f4cbe2712dee4',
   })
+
+  depends_on 'perl'
 
   def self.build
     system 'perl', 'Makefile.PL'
