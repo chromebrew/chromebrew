@@ -15,11 +15,13 @@ class Perl_date_format < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_date_format-2.33-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '74d7cd93d8ab1f1f143be489f57d4379be75524cbf0423a486986d363e64d4ac',
-     armv7l: '74d7cd93d8ab1f1f143be489f57d4379be75524cbf0423a486986d363e64d4ac',
-       i686: '4833d86c673142afde1cf51e83f852d626c7e0adca756ac4ba0cb565b05984ed',
-     x86_64: '4098fabdb8fc6d0ba4011c984a1f1d1b1e7247526e19ee57da9933625d3ccee4',
+    aarch64: 'e12636b27086aab2d0726826041b3b2765b6b5e6f83de7b65e8da61164faeff7',
+     armv7l: 'e12636b27086aab2d0726826041b3b2765b6b5e6f83de7b65e8da61164faeff7',
+       i686: 'ea76e2d8a143358d2813861b9cd89a5e80078d172310b321bd3a05f6af36094e',
+     x86_64: '3af38627d41d1e3536fa9d7c3db4e0d4a6573a579ee1eac9af10384ac19a1d95',
   })
+
+  depends_on 'perl'
 
   def self.build
     system 'perl', 'Makefile.PL'
