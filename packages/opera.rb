@@ -16,7 +16,7 @@ class Opera < Package
   end
 
   binary_url ({
-    x86_64: 'http://download853.mediafire.com/lym5ki15gmcg/yclsyvu6eq91yxv/opera-71.0.3770.271-chromeos-x86_64.tar.xz',
+    x86_64: 'http://download1493.mediafire.com/abkrt1rsf18g/l4fb88pshu0aauq/opera-71.0.3770.271-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     x86_64: 'c1ba7aedfce2823b479958bd706f0be87e5240e635096622b70a28b5faef4c06',
