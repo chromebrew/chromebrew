@@ -28,6 +28,7 @@ class Opera < Package
     system "sudo chmod -R 777 * "
     system "alien -tc opera-stable_#{version}_amd64.deb"
     system "sudo chmod -R 777 * "
+    system "chmod -R +x *"
     system "tar xvf opera-stable-#{version}.tgz"
     system "sudo chmod -R 777 * "
   end
