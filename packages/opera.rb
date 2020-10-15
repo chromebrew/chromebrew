@@ -15,12 +15,6 @@ class Opera < Package
     depends_on 'sommelier'
   end
 
-  binary_url ({
-    x86_64: 'file:\\\',
-  })
-  binary_sha256 ({
-    x86_64: 'a0000000000000000000000000000000000',
-  })
 
   def self.build
     system "wget https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
