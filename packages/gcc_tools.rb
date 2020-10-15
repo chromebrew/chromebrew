@@ -3,7 +3,7 @@ require 'package'
 class Gcc_tools < Package
   description 'Tools for working with gcc packages'
   homepage 'https://github.com/skycocker/chromebrew'
-  version '1.0'
+  version '1.1'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -66,16 +66,16 @@ if [ ! -f "${CREW_PREFIX}/bin/ruby" ]; then
   # prepare ruby url and sha256
   case "${ARCH}" in
   "aarch64"|"armv7l")
-    url="https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-armv7l.tar.xz"
-    sha256="5e485a0320b298e1f5c4ff50d98c6fe6d06ad9a38d9119d580a8b469418e1e6a"
+    url="https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.2-chromeos-armv7l.tar.xz"
+    sha256="a435e6bf7965e1a82e8842e5ea66bdd670ec9b627d785bd720d3d2652fc89f6d"
     ;;
   "i686")
-    url="https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-i686.tar.xz"
-    sha256="6f4a5b96c31ef5ee4f09ac15da4c7a4a9d838ed5233038136ead1e155d17f342"
+    url="https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.2-chromeos-i686.tar.xz"
+    sha256="81865864d3ba93b6cbd5dc8e1b6cb51bd2ebe854f6c01e282c1b73f379fb7caf"
     ;;
   "x86_64")
-    url="https://dl.bintray.com/chromebrew/chromebrew/ruby-2.5.3-chromeos-x86_64.tar.xz"
-    sha256="352b78fc883cf8936136991fda9ca5d49e90b2951626158d6af8ef4b58d67f97"
+    url="https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.2-chromeos-x86_64.tar.xz"
+    sha256="658808516b7a2e58f8102fd131e765aaa79f2a7c906d0330b7e883fbdc12d1a9"
     ;;
   esac
   tarfile="$(basename ${url})"
@@ -89,28 +89,52 @@ EOF'
     system 'cat << "EOF" > gcc_switcher
 #!/bin/bash
 gccver=$(gcc -v 2>&1 | tail -1 | cut -d" " -f3)
-if [[ "$gccver" == "No" || "$gccver" == "gcc:" ]]; then
-  echo "Enter the GCC version to install:"
-  echo "7 = GCC 7.4.0"
-  echo "8 = GCC 8.3.0"
+v=$(echo $gccver | cut -d"." -f1)
+if test $1; then
+  valid=
+  gv="7 8 10"
+  for g in $gv; do
+    [ $1 == $g ] && valid=1
+  done
+  [ ! $valid ] && echo "Usage: $(basename $0) [version] where [version] is one of $gv" && exit 1
+  [ $1 == $v ] && echo "GCC version $gccver currently installed." && exit 1
+  version=$1
 else
-  echo "GCC version $gccver currently installed."
-  echo "Enter the GCC version to install:"
-  if [ "$gccver" == "8.3.0" ]; then
-    echo "7 = GCC 7.4.0"
+  if [[ "$gccver" == "No" || "$gccver" == "gcc:" ]]; then
+    echo "Enter the GCC version to install:"
+    echo " 7 = GCC 7.4.0"
+    echo " 8 = GCC 8.3.0"
+    echo "10 = GCC 10.2.0"
+  else
+    echo "GCC version $gccver currently installed."
+    echo "Enter the GCC version to install:"
+    case $v in
+      7)
+        echo " 8 = GCC 8.3.0"
+        echo "10 = GCC 10.2.0"
+        ;;
+      8)
+        echo " 7 = GCC 7.4.0"
+        echo "10 = GCC 10.2.0"
+        ;;
+      10)
+        echo " 7 = GCC 7.4.0"
+        echo " 8 = GCC 8.3.0"
+        ;;
+    esac
   fi
-  if [ "$gccver" == "7.4.0" ]; then
-    echo "8 = GCC 8.3.0"
-  fi
+  echo " 0 = Cancel"
+  read version
 fi
-echo "0 = Cancel"
-read version
 case $version in
   7)
-    crew remove gcc8 && crewfix && crew install gcc7
+    crew remove curl gcc$v && crewfix && crew install curl gcc7
     ;;
   8)
-    crew remove gcc7 && crewfix && crew install gcc8
+    crew remove curl gcc$v && crewfix && crew install curl gcc8
+    ;;
+  10)
+    crew remove curl gcc$v && crewfix && crew install curl gcc10
     ;;
   *)
     ;;

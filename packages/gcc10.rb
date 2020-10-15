@@ -8,6 +8,18 @@ class Gcc10 < Package
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz'
   source_sha256 'b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '832a12c3db18537775d174c4188cf4bc14aeed72b243a1099e8f1715f6575dbc',
+     armv7l: '832a12c3db18537775d174c4188cf4bc14aeed72b243a1099e8f1715f6575dbc',
+       i686: 'c319f3a643f23b409fef6baffa91eea8afc43936d95ca467f0f26945cde6e5cf',
+     x86_64: 'fc3b15e4b499548131389f38b67cc4ab35e32a4fe9d21f96b108c7a3d20598de',
+  })
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
@@ -28,7 +40,6 @@ class Gcc10 < Package
     gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
     abort "GCC version #{gccver} already installed.".lightgreen unless "#{gccver}" == "No" || "#{gccver}" == "not" || "#{gccver}" == "gcc:" || "#{gccver}" == "#{version}"
   end
-
 
   def self.build
     # previous compile issue
