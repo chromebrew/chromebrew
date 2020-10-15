@@ -19,7 +19,7 @@ class Opera < Package
     x86_64: 'http://download1493.mediafire.com/abkrt1rsf18g/l4fb88pshu0aauq/opera-71.0.3770.271-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    x86_64: 'c1ba7aedfce2823b479958bd706f0be87e5240e635096622b70a28b5faef4c06',
+    x86_64: 'fd583e3ed5159b028b45af46defc8b2e1f0652b3b1ad0646ac1479fdeb163427',
   })
 
   def self.build
