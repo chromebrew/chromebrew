@@ -3,20 +3,14 @@ require 'package'
 class Poppler < Package
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  version '20.08.0'
+  version '20.10.0'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://poppler.freedesktop.org/poppler-20.08.0.tar.xz'
-  source_sha256 'ae65fef04bbf63259a6352e7b620719115d4fb97f5079b0b8b00a8eb0c86eca5'
+  source_url 'https://poppler.freedesktop.org/poppler-20.10.0.tar.xz'
+  source_sha256 '434ecbbb539c1a75955030a1c9b24c7b58200b7f68d2e4269e29acf2f8f13336'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-20.08.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-20.08.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-20.08.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'defc7c9fc0961e514c9c78c838e2acbf627b613ec3d0b1c0b16e7ffb9f55c04d',
-     armv7l: 'defc7c9fc0961e514c9c78c838e2acbf627b613ec3d0b1c0b16e7ffb9f55c04d',
-     x86_64: '69e2e8d06d22a11684aeb2a43980e75a4e9fccee29fc53961ca7a990ca218ce9',
   })
 
   depends_on 'boost'
