@@ -19,8 +19,5 @@ class Xxhash < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install' 
-    FileUtils.mkdir_p ["#{CREW_DEST_PREFIX}/bin", "#{CREW_DEST_MAN_PREFIX}/man1"]
-    FileUtils.cp 'xxhsum', "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp 'xxhsum.1', "#{CREW_DEST_MAN_PREFIX}/man1/"
   end
 end
