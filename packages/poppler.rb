@@ -9,8 +9,14 @@ class Poppler < Package
   source_sha256 '434ecbbb539c1a75955030a1c9b24c7b58200b7f68d2e4269e29acf2f8f13336'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-20.10.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-20.10.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-20.10.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '18bcbd800629d2d04750a6a3837fc9bff16dcea458e90a7e0e2d06d04a05917d',
+     armv7l: '18bcbd800629d2d04750a6a3837fc9bff16dcea458e90a7e0e2d06d04a05917d',
+     x86_64: '3d61a2ad5cff366fab3f502159cd5bd042d690ca18a8a289dd2423ed862a745c',
   })
 
   depends_on 'boost'
