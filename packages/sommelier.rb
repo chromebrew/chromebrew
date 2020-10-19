@@ -5,6 +5,7 @@ class Sommelier < Package
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
   version '2237607'
   compatibility 'all'
+  #source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2333733/revisions/31/patch?zip&path=%2FCOMMIT_MSG'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2237607/revisions/10/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 '0dda9635fe947383e0a4abc573a289acbd81e07115dbb1aaafcc7f3b85a35d6a'
 
@@ -27,17 +28,17 @@ class Sommelier < Package
       system 'curl "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/master/include/uapi/linux/virtwl.h?format=TEXT" | base64 --decode > virtwl.h'
       system "sed -i '/virtwl.h/d' sommelier.c"
       system "sed -i '/linux-dmabuf-unstable-v1-client-protocol.h/a #include \"virtwl.h\"' sommelier.c"
-      #system 'sed -i "0,/xkbcommon\'),/!b;//a\ declare_dependency (link_args: \[ \'\/usr\/lib64\/libgbm.so\' \])" meson.build'
-      #system 'sed -i "\$i link_args: \[ \'\/usr\/local/lib64-test\/libgbm.so\' \]" meson.build'
-      # Clang is needed so system libraries are used for graphics acceleration.
+      # Clang is needed so system libraries can be linked against, since those are required for graphics acceleration.
       ENV['CC'] = 'clang'
-      ENV['CXX'] = 'clang++'
+      ENV['CXX'] = 'clang'
+
       system "meson",
 		"-Dprefix=#{CREW_PREFIX}",
 		"-Dlibdir=#{CREW_LIB_PREFIX}-test",
 		"-Ddatadir=#{CREW_LIB_PREFIX}-test",
 		"-Dsysconfdir=#{CREW_PREFIX}/etc",
 		"-Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland",
+		"-Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri",
 		"-Dsharedstatedir=#{CREW_LIB_PREFIX}",
 		"-Dlocalstatedir=#{CREW_LIB_PREFIX}",
 		"-Dvirtwl_device=/dev/null",
@@ -55,8 +56,8 @@ class Sommelier < Package
 	      # Changing this to 0.5 since otherwise everything looks small on a HiDPI screen.
 	      system "echo 'SCALE=0.5' >> .sommelier.env"
 		  case ARCH
-				  when 'x86_64'
-				  system "echo '# Following is only needed when kernel < 4.16 on x86_64' >> .sommelier.env"
+				  when 'i686', 'x86_64'
+				  system "echo '# Following is only needed when kernel < 4.16' >> .sommelier.env"
 				  system "echo '# since the mesa iris driver no longer supports earlier kernels.' >> .sommelier.env"
 				  system "echo 'MESA_LOADER_DRIVER_OVERRIDE=i965' >> .sommelier.env"
 		  end
@@ -64,8 +65,8 @@ class Sommelier < Package
 		  # As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
 		  # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
 		  # in ChromeOS's wayland compositor. But the following isn't working, so disable for now.
-		  system "#echo 'sommelier --master --peer-cmd-prefix=#{ARCH_LIB}/ld-linux-x86-64.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
-	      system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/lib64/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
+              system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
+	      system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
 	      system "echo '#!/bin/bash' > initsommelier"
 	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
 	      system "echo 'if [ -z \"\$SOMM\" ]; then' >> initsommelier"
@@ -135,7 +136,7 @@ class Sommelier < Package
     puts "Please be aware that gui applications may not work without the sommelier daemon running.".orange
     puts
     puts "If you are upgrading from an earlier version of sommelier, run".orange
-    puts "'restartsommelier' or logout and login again.".orange
+    puts "'stopsommelier && startsommelier' or logout and login again.".orange
     puts
   end
 end
