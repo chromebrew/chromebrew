@@ -9,16 +9,18 @@ class Harfbuzz < Package
   source_sha256 'b8c048d7c2964a12f2c80deb6634dfc836b603dd12bf0d0a3df1627698e220ce'
 
 
-  depends_on 'cairo' => ':build'
+#  depends_on 'cairo' => ':build'
   depends_on 'glib' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+#  depends_on 'gobject_introspection' => ':build'
   depends_on 'ragel' => ':build'
   depends_on 'freetype_sub'
   depends_on 'six' => ':build'
   depends_on 'meson' => ':build'
-  depends_on 'graphite' => ':build'
+#  depends_on 'graphite' => ':build'
 
   def self.build
+    ENV['CFLAGS'] = "-fuse-ld=lld"
+    ENV['CXXFLAGS'] = "-fuse-ld=lld"
     system "meson",
       "-Dprefix=#{CREW_PREFIX}",
       "-Dlibdir=#{CREW_LIB_PREFIX}",
