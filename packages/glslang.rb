@@ -10,10 +10,6 @@ class Glslang < Package
   source_url 'https://github.com/KhronosGroup/glslang/archive/8.13.3743.tar.gz'
   source_sha256 '639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f'
 
-  depends_on 'python3'
-  depends_on 'cmake' => ':build'
-  depends_on 'ninja' => ':build'
-
   def self.build
     system "./update_glslang_sources.py"
     
