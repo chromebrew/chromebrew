@@ -6,6 +6,7 @@ require 'package'
 class Glslang < Package
   description 'OpenGL and OpenGL ES shader front end and validator'
   version '8.13.3743'
+  compatibility 'all'
   source_url 'https://github.com/KhronosGroup/glslang/archive/8.13.3743.tar.gz'
   source_sha256 '639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f'
 
