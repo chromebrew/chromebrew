@@ -14,7 +14,7 @@ class Libxdmcp < Package
   def self.build
     ENV['CC'] = 'clang'
     ENV['CXX'] = 'clang'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system "make"
   end
 
