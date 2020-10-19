@@ -12,12 +12,6 @@ class Xorg_proto < Package
   depends_on 'meson' => ':build'
   depends_on 'llvm' => ':build'
   
-   def self.patch
-	  # XKB: Mark key name arrays as not NUL-terminated strings
-	  patch_url = 'https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/commit/21e05da99c855481b638a7789ad5600b5b283680.patch'
-	  patch_sha256 = 'd3c39abc92c098107b21081ff5f2971a6e43b616e2e268057f1f89e49d65856f'
-  end
-  
   def self.build
     ENV['CC'] = 'clang'
     ENV['CXX'] = 'clang'
