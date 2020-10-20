@@ -124,6 +124,11 @@ url: https://www.antlr.org/download
 activity: low
 ---
 kind: url
+name: appstream_glib
+url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/
+activity: medium
+---
+kind: url
 name: apr
 url: https://apache.claz.org/apr
 activity: low
@@ -1396,6 +1401,11 @@ activity: low
 kind: url
 name: gc
 url: http://www.hboehm.info/gc/gc_source
+activity: low
+---
+kind: url
+name: gcab
+url: https://gitlab.gnome.org/GNOME/gcab/-/tags
 activity: low
 ---
 kind: url
@@ -3084,6 +3094,11 @@ url: https://www.libssh2.org/download
 activity: none
 ---
 kind: url
+name: libstemmer
+url: https://github.com/zvelo/libstemmer/
+activity: none
+---
+kind: url
 name: libstrophe
 url: https://github.com/strophe/libstrophe/releases
 activity: medium
@@ -3452,6 +3467,11 @@ kind: url
 name: libxxf86vm
 url: https://www.x.org/archive/individual/lib
 activity: none
+---
+kind: url
+name: libyaml
+url: https://github.com/yaml/libyaml/releases/
+activity: medium
 ---
 kind: url
 name: libzip
