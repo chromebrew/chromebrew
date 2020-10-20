@@ -17,9 +17,11 @@ class Firefox < Package
   case ARCH
   when 'i686', 'x86_64'
     depends_on 'gtk3'
-    depends_on 'sommelier'
     depends_on 'apulse'
+    depends_on 'sommelier'
   end
+
+# To get sound working, used : https://codelab.wordpress.com/2017/12/11/firefox-drops-alsa-apulse-to-the-rescue/
 
   def self.build
     system "echo '#!/bin/bash' > firefox.sh"
