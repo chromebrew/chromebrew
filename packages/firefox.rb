@@ -25,13 +25,6 @@ class Firefox < Package
     system "echo '#!/bin/bash' > firefox.sh"
     system "echo 'cd #{CREW_PREFIX}/firefox' >> firefox.sh"
     system "echo 'apulse ./firefox \"\$@\"' >> firefox.sh"
-
-    FileUtils.mkdir_p "defaults/profile/"
-    system "echo 'user_pref(\"security.sandbox.content.level\", 2);' > defaults/profile/user.js"
-    system "echo 'user_pref(\"security.sandbox.content.read_path_whitelist\", \"/dev/snd/,/home/chronos/user/.asoundrc\");' >> defaults/profile/user.js"
-    system "echo 'user_pref(\"security.sandbox.content.syscall_whitelist\", \"16\");' >> defaults/profile/user.js"
-    system "echo 'user_pref(\"security.sandbox.content.tempDirSuffix\", \"f7640509-8875-4b18-85d8-0da0696df65b\");' >> defaults/profile/user.js"
-    system "echo 'user_pref(\"security.sandbox.content.write_path_whitelist\", \"/dev/snd/\");' >> defaults/profile/user.js"
   end
 
   def self.install
