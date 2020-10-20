@@ -5,7 +5,7 @@ class Librsvg < Package
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
   version '2.50.1'
   compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/GNOME/sources/librsvg/2.50/librsvg-2.50.1.tar.xz'
+  source_url 'https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.1.tar.xz'
   source_sha256 '9bd9799322e06cf5db19b9f7afb728edac6efcf0110baafc44f0f96f45df9a09'
 
   depends_on 'cairo'
