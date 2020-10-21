@@ -20,7 +20,6 @@ class Librsvg < Package
   depends_on 'gdk_pixbuf'
   depends_on 'vala' => ':build'
   depends_on 'six' => ':build'
-  depends_on 'vala' => ':build'
   
   def self.build
   # Following rustup modification as per 
