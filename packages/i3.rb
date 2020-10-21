@@ -42,4 +42,16 @@ class I3 < Package
       system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
     end
   end
+  
+  def self.postinstall
+      puts
+      puts "To use this package, you need to download XServer XSDL from Google Play Store".lightblue
+      puts "Use 'starti3' instead of 'i3' to execute this package".lightblue
+      system "touch /usr/local/bin/starti3"
+      system "echo '#!/bin/sh' >> /usr/local/bin/starti3"
+      system "echo 'stopsommelier' >> /usr/local/bin/starti3"
+      system "echo 'export DISPLAY=100.115.92.2:0' >> /usr/local/bin/starti3"
+      system "echo 'i3 & $1 $2 $3 $4' >> /usr/local/bin/starti3"
+      system "chmod +x /usr/local/bin/starti3"
+  end
 end
