@@ -27,12 +27,13 @@ class I3 < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
-     system "touch /usr/local/bin/starti3"
-     system "echo '#!/bin/sh' >> /usr/local/bin/starti3"
-     system "echo 'stopsommelier' >> /usr/local/bin/starti3"
-     system "echo 'export DISPLAY=100.115.92.2:0' >> /usr/local/bin/starti3"
-     system "echo 'i3 & $1 $2 $3 $4' >> /usr/local/bin/starti3"
-     system "chmod +x /usr/local/bin/starti3"
+     system "echo '#!/bin/sh' > starti3"
+     system "echo 'stopsommelier' >> starti3"
+     system "echo 'export DISPLAY=100.115.92.2:0' >> starti3"
+     system "echo 'i3 \"$@\"' >> starti3"
+     system "echo 'export DISPLAY=:0' >> starti3"
+     system "echo 'initsommelier' >> starti3"
+     system "chmod +x starti3"
     end
   end
   
