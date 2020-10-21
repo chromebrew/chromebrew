@@ -14,6 +14,13 @@ class Vala < Package
   depends_on 'glib'
   depends_on 'dbus'
 
+  # Configure failure causes build issues on arm7l with 0.50.1
+  # See https://web.archive.org/web/20141023144118/http://www.graphviz.org/bugs/b1966.html
+  # for discussion of why this might be happening.
+  if ARCH =~ /^(arm7l|aarch64)$/
+    ENV['LDFLAGS'] = '-lm'
+  end
+  
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"
