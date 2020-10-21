@@ -9,8 +9,16 @@ class Apulse < Package
   source_sha256 '9234ec4e10e408b9c01d5f4ea768ad1fc15494217c932db2c435202a9c7b5efd'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/apulse-0.1.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/apulse-0.1.13-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/apulse-0.1.13-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/apulse-0.1.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: 'f5c79d86e9b448988428783b19faaf6f1d1ed3547d2ecd3667557530bb35ceda',
+     armv7l: 'f5c79d86e9b448988428783b19faaf6f1d1ed3547d2ecd3667557530bb35ceda',
+       i686: 'd471be802d11b38a24b55de9f6d095611e91f467c8b6850db043dab9c9ce89a6',
+     x86_64: '30b5533b7da5d2aeb8be93caf3e9a02db3a2f8479634d89c3dd38a290b2b6c90',
   })
 
 

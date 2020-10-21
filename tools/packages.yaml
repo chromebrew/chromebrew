@@ -1619,6 +1619,11 @@ url: https://github.com/g-truc/glm/releases/
 activity: medium
 ---
 kind: url
+name: glmark2
+url: https://github.com/glmark2/glmark2/releases/
+activity: medium
+---
+kind: url
 name: glog
 url: https://github.com/google/glog/releases
 activity: low
@@ -1627,6 +1632,11 @@ kind: url
 name: glproto
 url: https://github.com/freedesktop/glproto/releases
 activity: none
+---
+kind: url
+name: glslang
+url: https://github.com/KhronosGroup/glslang/releases/
+activity: medium
 ---
 kind: url
 name: glyr
@@ -1771,6 +1781,11 @@ activity: medium
 kind: url
 name: graphicsmagick
 url: https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/
+activity: medium
+---
+kind: url
+name: graphite
+url: https://github.com/silnrsi/graphite/releases
 activity: medium
 ---
 kind: url
@@ -4514,6 +4529,11 @@ url: https://github.com/pipeseroni/pipesX.sh/releases
 activity: none
 ---
 kind: url
+name: pipewire
+url: https://gitlab.freedesktop.org/pipewire/pipewire/-/tags
+activity: high
+---
+kind: url
 name: pixman
 url: https://www.cairographics.org/releases/
 activity: none
@@ -5674,6 +5694,11 @@ url: https://github.com/pypa/virtualenv/releases
 activity: low
 ---
 kind: url
+name: vivaldi
+url: https://vivaldi.com/download/
+activity: medium
+---
+kind: url
 name: vpnc
 url: https://www.unix-ag.uni-kl.de/~massar/vpnc
 activity: none
@@ -5682,6 +5707,16 @@ kind: url
 name: vtable_dumper
 url: https://github.com/lvc/vtable-dumper/releases
 activity: none
+---
+kind: url
+name: vulkan_headers
+url: https://github.com/KhronosGroup/Vulkan-Headers/releases
+activity: high
+---
+kind: url
+name: vulkan_icd_loader
+url: https://github.com/KhronosGroup/Vulkan-Loader/releases
+activity: high
 ---
 kind: url
 name: waf

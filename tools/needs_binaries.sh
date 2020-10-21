@@ -23,7 +23,7 @@ fi
 if [[ "${arch}" == 'i686' ]]; then
   exclusions+=' aqemu.rb atom.rb codelite.rb cras.rb dia.rb exa.rb fakeroot_ng.rb fzf.rb gcr.rb geany.rb gemacs.rb gimp.rb gitkraken.rb gnome_keyring.rb gtk_engines_adwaita.rb'
   exclusions+=' handbrake.rb imagemagick6.rb imagemagick7.rb libgnome_keyring.rb librespot.rb libvncserver.rb neovim.rb opera.rb poppler.rb ripgrep.rb rust.rb skype.rb tcpflow.rb'
-  exclusions+=' wing.rb xorg_intel_driver.rb'
+  exclusions+=' wing.rb xorg_intel_driver.rb zathura.rb'
 fi
 packages=$(grep -L "${arch}:" *.rb)
 for p in ${packages}; do
