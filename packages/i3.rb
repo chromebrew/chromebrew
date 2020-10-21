@@ -47,6 +47,7 @@ class I3 < Package
       puts
       puts "To use this package, you need to download XServer XSDL from Google Play Store".lightblue
       puts "Use 'starti3' instead of 'i3' to execute this package".lightblue
+      puts "Open XServer XSDL before running 'starti3'"
       system "touch /usr/local/bin/starti3"
       system "echo '#!/bin/sh' >> /usr/local/bin/starti3"
       system "echo 'stopsommelier' >> /usr/local/bin/starti3"
