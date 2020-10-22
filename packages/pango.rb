@@ -23,8 +23,7 @@ class Pango < Package
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     system "meson",
-      "-Dprefix=#{CREW_PREFIX}",
-      "-Dlibdir=#{CREW_LIB_PREFIX}",
+      #{CREW_MESON_OPTIONS},
       "-Dinstall-tests=false",
       "builddir"
     system "ninja -C builddir"
