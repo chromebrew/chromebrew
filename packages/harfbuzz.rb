@@ -10,20 +10,19 @@ class Harfbuzz < Package
 
 
 #  depends_on 'cairo' => ':build'
-  depends_on 'glib' => ':build'
+  depends_on 'glib' => :build
 #  depends_on 'gobject_introspection' => ':build'
-  depends_on 'ragel' => ':build'
+  depends_on 'ragel' => :build
   depends_on 'freetype_sub'
-  depends_on 'six' => ':build'
-  depends_on 'meson' => ':build'
-#  depends_on 'graphite' => ':build'
+  depends_on 'six' => :build
+  depends_on 'meson' => :build
+  depends_on 'graphite' => :build
 
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     system "meson",
-      "-Dprefix=#{CREW_PREFIX}",
-      "-Dlibdir=#{CREW_LIB_PREFIX}",
+      #{CREW_MESON_OPTIONS},
       "-Dintrospection=enabled",
       "-Dbenchmark=disabled",
       "-Dtests=disabled",
