@@ -10,6 +10,19 @@ class Vulkan_icd_loader < Package
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader/archive/v1.2.153.tar.gz'
   source_sha256 '5fb906b2dc968f2256f2d09b093ec8cc7f19812d656c649de8ed709a6da63d4a'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.153-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.153-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.153-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.153-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '5756b62ea74988eef3cbf9e189ded23fb826848f086b5f809309276c7556d5eb',
+     armv7l: '5756b62ea74988eef3cbf9e189ded23fb826848f086b5f809309276c7556d5eb',
+       i686: '0505cb5556abb969fca4378f7d16979fa38739a6804c4dce7f2e3965cea0eeb6',
+     x86_64: 'f234c7327d2044847bd39d354aa0769997da8797162f2ae7b818de6b53de9a1a',
+  })
+
   depends_on 'libx11'
   depends_on 'libxrandr'
   depends_on 'vulkan_headers'
