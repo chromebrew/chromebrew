@@ -325,6 +325,8 @@ def const (var)
       'CREW_NOT_COMPRESS',
       'CREW_NOT_STRIP',
       'CREW_NPROC',
+      'CREW_CMAKE_OPTIONS',
+      'CREW_MESON_OPTIONS',
       'CREW_OPTIONS',
       'CREW_PREFIX',
       'CREW_VERSION',
