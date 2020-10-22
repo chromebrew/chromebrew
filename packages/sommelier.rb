@@ -34,17 +34,18 @@ class Sommelier < Package
       ENV['CXX'] = 'clang'
 
       system "meson",
-		"-Dprefix=#{CREW_PREFIX}",
-		"-Dlibdir=#{CREW_LIB_PREFIX}-test",
-		"-Ddatadir=#{CREW_LIB_PREFIX}-test",
-		"-Dsysconfdir=#{CREW_PREFIX}/etc",
-		"-Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland",
-		"-Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri",
-		"-Dsharedstatedir=#{CREW_LIB_PREFIX}",
-		"-Dlocalstatedir=#{CREW_LIB_PREFIX}",
-		"-Dvirtwl_device=/dev/null",
-		"-Dbuildtype=release",
-		"build"
+        "-Dprefix=#{CREW_PREFIX}",
+        "-Ddatadir=#{CREW_LIB_PREFIX}",
+        "-Dsysconfdir=#{CREW_PREFIX}/etc",
+        "-Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland",
+        "-Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri",
+        "-Dsharedstatedir=#{CREW_LIB_PREFIX}",
+        "-Dlocalstatedir=#{CREW_LIB_PREFIX}",
+        '-Dxwayland_shm_driver=dmabuf',
+        '-Dshm_driver=dmabuf',
+        "-Dvirtwl_device=/dev/null",
+        "-Dbuildtype=release",
+        "build"
       system "meson configure build"
       system "ninja -C build"
       Dir.chdir ("build") do
