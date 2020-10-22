@@ -41,8 +41,8 @@ class Sommelier < Package
         "-Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri",
         "-Dsharedstatedir=#{CREW_LIB_PREFIX}",
         "-Dlocalstatedir=#{CREW_LIB_PREFIX}",
-        '-Dxwayland_shm_driver=dmabuf',
-        '-Dshm_driver=dmabuf',
+        '-Dxwayland_shm_driver=noop',
+        '-Dshm_driver=noop',
         "-Dvirtwl_device=/dev/null",
         "-Dbuildtype=release",
         "build"
