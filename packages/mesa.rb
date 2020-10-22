@@ -9,19 +9,19 @@ class Mesa < Package
   source_sha256 'd1a46d9a3f291bc0e0374600bdcb59844fa3eafaa50398e472a36fc65fd0244a'
   
 
-  depends_on 'setuptools' => ':build'
+  depends_on 'setuptools' => :build
   depends_on 'libva'
   depends_on 'libvdpau'
   depends_on 'wayland_protocols'
   depends_on 'elfutils'
-  depends_on 'llvm' => ':build'
-  depends_on 'meson' => ':build'
+  depends_on 'llvm' => :build
+  depends_on 'meson' => :build
   depends_on 'libdrm'
-  depends_on 'libunwind' => ':build'
-  depends_on 'vulkan_headers' => ':build'
-  depends_on 'vulkan_icd_loader' => ':build'
-  depends_on 'glslang' => ':build'
-  depends_on 'zstd' => ':build'
+  depends_on 'libunwind' => :build
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' => :build
+  depends_on 'glslang' => :build
+  depends_on 'zstd' => :build
 
   def self.build
     system "pip3 uninstall -y Mako MarkupSafe || :"
