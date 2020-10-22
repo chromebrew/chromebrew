@@ -2,7 +2,11 @@
 
 CREW_VERSION = '1.4.4'
 
-ARCH = `uname -m`.strip
+ARCH_ACTUAL = `uname -m`.strip
+# This helps with virtualized builds on aarch64 machines
+# which report armv8l when linux32 is run.
+ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
+
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
 
