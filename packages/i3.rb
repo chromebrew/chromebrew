@@ -3,23 +3,10 @@ require 'package'
 class I3 < Package
   description 'Improved tiling window manager'
   homepage 'https://i3wm.org/'
-  version '4.18.2'
+  version '4.18.3'
   compatibility 'all'
-  source_url 'https://i3wm.org/downloads/i3-4.18.2.tar.bz2'
-  source_sha256 'b28617d62f308b93817fc9949daffee74cf4a001685de389f3072cb44cf5120c'  
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/i3-4.18.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/i3-4.18.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/i3-4.18.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/i3-4.18.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '07ce3141085991bc04c5af3bba743822e03de73ae3b21783e32cefbeecd689fc',
-     armv7l: '07ce3141085991bc04c5af3bba743822e03de73ae3b21783e32cefbeecd689fc',
-       i686: '58cf75589a6afcfba39453b3d381ef0674795173c953f9cf9e9bf6d5aa004fbe',
-     x86_64: 'c7771c90f1c02daac5b9a2a53fbc9c21cd6088fb3e74048c2308724ef05374e8',
-  })
+  source_url 'https://i3wm.org/downloads/i3-4.18.3.tar.bz2'
+  source_sha256 '53ae7903fad6eea830d58e949698e4a502c432c0d0a582659a0a59b1b995b10d'  
   
   depends_on 'libev'
   depends_on 'startup_notification'
@@ -40,6 +27,20 @@ class I3 < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
+     system "echo '#!/bin/sh' > starti3"
+     system "echo 'stopsommelier' >> starti3"
+     system "echo 'export DISPLAY=100.115.92.2:0' >> starti3"
+     system "echo 'i3 \"$@\"' >> starti3"
+     system "echo 'export DISPLAY=:0' >> starti3"
+     system "echo 'startsommelier' >> starti3"
+     system "chmod +x starti3"
     end
+  end
+  
+  def self.postinstall
+      puts
+      puts "To use this package, you need to download XServer XSDL from Google Play Store".lightblue
+      puts "Use 'starti3' instead of 'i3' to execute this package".lightblue
+      puts "Open XServer XSDL before running 'starti3'"
   end
 end
