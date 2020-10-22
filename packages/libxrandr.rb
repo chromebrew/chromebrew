@@ -16,7 +16,7 @@ class Libxrandr < Package
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system "make"
   end
 
