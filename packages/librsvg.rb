@@ -15,11 +15,9 @@ class Librsvg < Package
   depends_on 'libcroco'
   depends_on 'pango'
   depends_on 'rust' => :build
-  depends_on 'python3'
   depends_on 'glib'
-  depends_on 'gdk_pixbuf'
   depends_on 'vala' => :build
-  depends_on 'six' => ':build'
+  depends_on 'six' => :build
   
   def self.build
   # Following rustup modification as per 
