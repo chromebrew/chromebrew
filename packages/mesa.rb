@@ -9,6 +9,7 @@ class Mesa < Package
   source_sha256 'd1a46d9a3f291bc0e0374600bdcb59844fa3eafaa50398e472a36fc65fd0244a'
   
 
+  depends_on 'gcc10' => :build
   depends_on 'setuptools' => :build
   depends_on 'libva'
   depends_on 'libvdpau'
@@ -27,11 +28,10 @@ class Mesa < Package
     system "pip3 uninstall -y Mako MarkupSafe || :"
     system "pip3 install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
     system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako"
-    # Workaround for lld having issues with gcc(8?) on arm7l.
-    if ARCH =~ /^(x86_64|i686|aarch64)$/
-      ENV['CFLAGS'] = "-fuse-ld=lld"
-      ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    end
+    
+    ENV['CFLAGS'] = "-fuse-ld=lld"
+    ENV['CXXFLAGS'] = "-fuse-ld=lld"
+
     # Just use mostly defaults.
     system "meson",
       "-Dprefix=#{CREW_PREFIX}",
