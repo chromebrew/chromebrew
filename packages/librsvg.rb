@@ -14,21 +14,20 @@ class Librsvg < Package
   depends_on 'gdk_pixbuf'
   depends_on 'libcroco'
   depends_on 'pango'
-  depends_on 'rust' => ':build'
+  depends_on 'rust' => :build
   depends_on 'python3'
   depends_on 'glib'
   depends_on 'gdk_pixbuf'
-  depends_on 'vala' => ':build'
+  depends_on 'vala' => :build
   depends_on 'six' => ':build'
   
   def self.build
   # Following rustup modification as per 
   # https://github.com/rust-lang/rustup/issues/1167#issuecomment-367061388
-    system "rustup install stable || (rm -frv ~/.rustup/toolchains/* && rustup install stable)"
+    system "rustup install stable --profile minimal || (rm -frv ~/.rustup/toolchains/* && rustup install stable --profile minimal)"
     system "rustup default stable"
     system "./configure",
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}",
+      #{CREW_OPTIONS},
       "--enable-introspection=yes",
       "--enable-vala=yes",
       "--disable-static",
