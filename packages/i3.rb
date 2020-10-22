@@ -32,7 +32,7 @@ class I3 < Package
      system "echo 'export DISPLAY=100.115.92.2:0' >> starti3"
      system "echo 'i3 \"$@\"' >> starti3"
      system "echo 'export DISPLAY=:0' >> starti3"
-     system "echo 'initsommelier' >> starti3"
+     system "echo 'startsommelier' >> starti3"
      system "chmod +x starti3"
     end
   end
