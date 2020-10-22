@@ -50,6 +50,7 @@ class Sommelier < Package
       system "ninja -C build"
       Dir.chdir ("build") do
 	      system 'curl "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
+
 	      system "echo 'GDK_BACKEND=x11' > .sommelier.env"
 	      system "echo 'CLUTTER_BACKEND=wayland' >> .sommelier.env"
 	      system "echo 'XDG_RUNTIME_DIR=/var/run/chrome' >> .sommelier.env"
@@ -57,19 +58,28 @@ class Sommelier < Package
 	      system "echo 'DISPLAY=:0' >> .sommelier.env"
 	      # Changing this to 0.5 since otherwise everything looks small on a HiDPI screen.
 	      system "echo 'SCALE=0.5' >> .sommelier.env"
-		  case ARCH
-				  when 'i686', 'x86_64'
-				  system "echo '# Following is only needed when kernel < 4.16' >> .sommelier.env"
-				  system "echo '# since the mesa iris driver no longer supports earlier kernels.' >> .sommelier.env"
-				  system "echo 'MESA_LOADER_DRIVER_OVERRIDE=i965' >> .sommelier.env"
-		  end
-	      system "echo '#!/bin/bash' > sommelierd"
-              # As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
-              # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
-	      # in ChromeOS's wayland compositor. But the following isn't working, so disable for now.
+        case ARCH
+          when 'i686', 'x86_64'
+            system "echo '# Following is only needed when kernel < 4.16' >> .sommelier.env"
+            system "echo '# since the mesa iris driver no longer supports earlier kernels.' >> .sommelier.env"
+            system "echo 'MESA_LOADER_DRIVER_OVERRIDE=i965' >> .sommelier.env"
+        end
+
+        system "echo '#!/bin/bash' > sommelierd"
+        # As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
+        # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
+        # in ChromeOS's wayland compositor. But the following isn't working, so disable for now.
+        case ARCH
+            when 'x86_64'
               system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
-	      
-	      system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
+              system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
+            when 'arm7l', 'aarch64'
+              system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-armhf.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
+              system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-armhf.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
+            when 'i686'
+              system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-i686.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
+              system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-i686.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
+        end
 	      
 	      system "echo '#!/bin/bash' > initsommelier"
 	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
@@ -85,6 +95,7 @@ class Sommelier < Package
 	      system "echo '  echo \"sommelier failed to start\"' >> initsommelier"
 	      system "echo '  exit 1' >> initsommelier"
 	      system "echo 'fi' >> initsommelier"
+
 	      system "echo '#!/bin/bash' > stopsommelier"
 	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
 	      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
@@ -106,11 +117,11 @@ class Sommelier < Package
     Dir.chdir ("vm_tools/sommelier") do
       system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
       Dir.chdir ("build") do
-	      system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
-	      system "install -Dm755 initsommelier #{CREW_DEST_PREFIX}/bin/initsommelier"
-	      system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
-	      system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
-              system "install -Dm755 sommelierrc #{CREW_DEST_PREFIX}/etc/sommelierrc"
+        system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
+        system "install -Dm755 initsommelier #{CREW_DEST_PREFIX}/bin/initsommelier"
+        system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
+        system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
+        system "install -Dm755 sommelierrc #{CREW_DEST_PREFIX}/etc/sommelierrc"
       end
     end
   end
@@ -140,7 +151,8 @@ class Sommelier < Package
     puts "Please be aware that gui applications may not work without the sommelier daemon running.".orange
     puts
     puts "If you are upgrading from an earlier version of sommelier, run".orange
-    puts "'stopsommelier && startsommelier' or logout and login again.".orange
+    puts "'stopsommelier && restartsommelier' or logout and login again.".orange
+    puts "After logging back in 'restartsommelier' will also work.".orange
     puts
   end
 end
