@@ -22,7 +22,6 @@ class Adwaita_icon_theme < Package
     ENV['GDK_PIXBUF_MODULE_FILE'] = "#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache"
     ENV['LIBRARY_PATH'] = "#{CREW_LIB_PREFIX}:/usr/#{ARCH_LIB}:/#{ARCH_LIB}"
     # Need to make sure svg support is properly loaded otherwise build fails.
-    system "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:/usr/#{ARCH_LIB}:/#{ARCH_LIB} #{CREW_PREFIX}/sbin/ldconfig"
     system "gdk-pixbuf-query-loaders > #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache"
     system "./configure #{CREW_OPTIONS} "
     system 'make'
