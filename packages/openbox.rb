@@ -16,13 +16,13 @@ class Openbox < Package                 # The first character of the class name 
   depends_on 'xcb_util_xrm'
   depends_on 'yajl'
   depends_on 'wayland' => :build
-  depends_on 'sommelier'
   depends_on 'xorg_proto'
   depends_on 'glib'
   depends_on 'libxfixes'
   depends_on 'libsm'
   depends_on 'pango' => :build
   depends_on 'libx11' => :build
+  depends_on 'sommelier'
 
   ENV['CFLAGS'] = "-lX11 -lXau"
   def self.build                   # the steps required to build the package
@@ -41,8 +41,8 @@ class Openbox < Package                 # The first character of the class name 
     system "echo 'openbox' >> startopenbox"
     system "echo 'echo XServer closed or logged out session' >> startopenbox"
     system "echo 'initsommelier' >> startopenbox"
-    system "chmod +x startopenbox"
-    system "cp startopenbox /usr/local/bin"
+    system "echo 'export DISPLAY=:0' >> startopenbox"
+    system "install -Dm755 startopenbox #{CREW_DEST_PREFIX}/bin/startopenbox"
   end
 
   def self.check                   # the steps required to check if the package was built ok
