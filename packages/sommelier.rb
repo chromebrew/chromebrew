@@ -20,7 +20,7 @@ class Sommelier < Package
   depends_on 'llvm' => ':build'
   depends_on 'meson' => ':build'
 
-  LD_SO_ARCH = if ARCH == 'armvll' || ARCH == 'aarch64' then 'armhf' else ARCH end
+  LD_SO_ARCH = if ARCH == 'armv7l' || ARCH == 'aarch64' then 'armhf' else ARCH end
 
   def self.build
 
