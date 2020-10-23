@@ -11,6 +11,7 @@ class Libxrandr < Package
 
   depends_on 'libxrender'
   depends_on 'libx11'
+  depends_on 'libxext'
   depends_on 'llvm' => ':build'
 
   def self.build
