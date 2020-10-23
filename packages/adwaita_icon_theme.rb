@@ -12,15 +12,17 @@ class Adwaita_icon_theme < Package
   depends_on 'librsvg'
   depends_on 'gdk_pixbuf' 
   depends_on 'vala' => :build
+  depends_on 'llvm' => :build
+  depends_on 'xdg_base'
   
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     ENV['GDK_PIXBUF_MODULEDIR'] = "#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders"
     ENV['GDK_PIXBUF_MODULE_FILE'] = "#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache"
-    ENV['LIBRARY_PATH'] = "#{CREW_LIB_PREFIX}:/usr/$ARCH_LIB:/$ARCH_LIB:/usr/lib:/lib"
+    ENV['LIBRARY_PATH'] = "#{CREW_LIB_PREFIX}:/usr/#{ARCH_LIB}:/#{ARCH_LIB}"
     # Need to make sure svg support is properly loaded otherwise build fails.
-    system "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:/usr/#{ARCH_LIB}:/#{ARCH_LIB}:/usr/lib:/lib #{CREW_PREFIX}/sbin/ldconfig"
+    system "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:/usr/#{ARCH_LIB}:/#{ARCH_LIB} #{CREW_PREFIX}/sbin/ldconfig"
     system "gdk-pixbuf-query-loaders > #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache"
     system "./configure #{CREW_OPTIONS} "
     system 'make'
@@ -31,6 +33,8 @@ class Adwaita_icon_theme < Package
   
     def self.postinstall
     puts "To add basic settings, execute the following:".lightblue
+    puts "Note that this will overwrite any existing ~/.config/gtk-3.0/settings.ini file!".lightred
+    puts
     puts "mkdir #{HOME}/.config/gtk-3.0".lightblue
     puts "cat << 'EOF' > #{HOME}/.config/gtk-3.0/settings.ini
 [Settings]
