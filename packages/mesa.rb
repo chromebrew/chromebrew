@@ -3,26 +3,28 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '20.2.1'
+  version '20.2.1-1'
   compatibility 'all'
   source_url 'https://mesa.freedesktop.org/archive/mesa-20.2.1.tar.xz'
   source_sha256 'd1a46d9a3f291bc0e0374600bdcb59844fa3eafaa50398e472a36fc65fd0244a'
-  
 
-  depends_on 'gcc10' => :build
   depends_on 'setuptools' => :build
+  depends_on 'elfutils'
+  depends_on 'gcc10' => :build
+  depends_on 'glslang'
+  depends_on 'libdrm'
+  depends_on 'libunwind'
   depends_on 'libva'
   depends_on 'libvdpau'
-  depends_on 'wayland_protocols'
-  depends_on 'elfutils'
+  depends_on 'libxv'
+  depends_on 'libxvmc'
   depends_on 'llvm' => :build
   depends_on 'meson' => :build
-  depends_on 'libdrm'
-  depends_on 'libunwind' => :build
+  depends_on 'valgrind'
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' => :build
-  depends_on 'glslang' => :build
-  depends_on 'zstd' => :build
+  depends_on 'vulkan_icd_loader'
+  depends_on 'wayland_protocols'
+  depends_on 'zstd'
 
   def self.build
     system "pip3 uninstall -y Mako MarkupSafe || :"
