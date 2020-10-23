@@ -20,31 +20,51 @@ class Sommelier < Package
   depends_on 'llvm' => ':build'
   depends_on 'meson' => ':build'
 
+  LD_SO_ARCH = if ARCH == 'armvll' || ARCH == 'aarch64' then 'armhf' else ARCH end
+
   def self.build
 
   system 'curl https://chromium.googlesource.com/chromiumos/platform2/+archive/be4e16feb380360cabbb5d6199a09592ecaf4a42.tar.gz | tar mzx --warning=no-timestamp'
   Dir.chdir ("vm_tools/sommelier") do
       # Using method here to download single file from googlesource in lieu of 
       # checking out the ChromeOS kernel tree submodule:
-      system 'curl "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/master/include/uapi/linux/virtwl.h?format=TEXT" | base64 --decode > virtwl.h'
+      #system 'curl "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/master/include/uapi/linux/virtwl.h?format=TEXT" | base64 --decode > virtwl.h'
+
+
+    ######################### Download virtwl.h from Chromium 5.4 kernel tree ###########################################
+    url_virtwl = "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d641a7b7b64664230d2fd2aa1e74dd792b8b7bf/include/uapi/linux/virtwl.h?format=TEXT"
+    uri_virtwl = URI.parse url_virtwl
+    #filename_virtwl = File.basename(uri_virtwl.path)
+    filename_virtwl = 'virtwl.h_base64'
+    sha256sum_virtwl = 'a8215f4946ccf30cbd61fcf2ecc4edfe6d05bffeee0bacadd910455274955446'
+
+    if File.exist?(filename_virtwl) && Digest::SHA256.hexdigest( File.read("./#{filename_virtwl}") ) == sha256sum_virtwl
+      puts "Unpacking virtwl source code".yellow
+    else
+      puts "Downloading virtwl".yellow
+      system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless
+        Digest::SHA256.hexdigest( File.read("./#{filename_virtwl}") ) == sha256sum_virtwl
+      puts "virtwl archive downloaded".lightgreen
+      system 'base64 --decode virtwl.h_base64 > virtwl.h'
+    end
+
       system "sed -i '/virtwl.h/d' sommelier.c"
       system "sed -i '/linux-dmabuf-unstable-v1-client-protocol.h/a #include \"virtwl.h\"' sommelier.c"
-      # Clang is needed so system libraries can be linked against, since those are required for graphics acceleration.
-      ENV['CC'] = 'clang'
-      ENV['CXX'] = 'clang'
+      
+      # lld is needed so system libraries can be linked against, since those are required for graphics acceleration.
+      ENV['CFLAGS'] = "-fuse-ld=lld"
+      ENV['CXXFLAGS'] = "-fuse-ld=lld"
 
       system "meson",
-        "-Dprefix=#{CREW_PREFIX}",
-        "-Ddatadir=#{CREW_LIB_PREFIX}",
-        "-Dsysconfdir=#{CREW_PREFIX}/etc",
+        #{CREW_MESON_OPTIONS},
         "-Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland",
         "-Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri",
-        "-Dsharedstatedir=#{CREW_LIB_PREFIX}",
-        "-Dlocalstatedir=#{CREW_LIB_PREFIX}",
         '-Dxwayland_shm_driver=noop',
         '-Dshm_driver=noop',
         "-Dvirtwl_device=/dev/null",
         "-Dbuildtype=release",
+        "-Dpeer_cmd_prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2",
         "build"
       system "meson configure build"
       system "ninja -C build"
@@ -69,17 +89,8 @@ class Sommelier < Package
         # As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
         # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
         # in ChromeOS's wayland compositor. But the following isn't working, so disable for now.
-        case ARCH
-            when 'x86_64'
-              system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
-              system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
-            when 'arm7l', 'aarch64'
-              system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-armhf.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
-              system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-armhf.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
-            when 'i686'
-              system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-i686.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
-              system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-i686.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
-        end
+        system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
+        system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
 	      
 	      system "echo '#!/bin/bash' > initsommelier"
 	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
@@ -143,16 +154,17 @@ class Sommelier < Package
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
     puts "To stop the sommelier daemon, run 'stopsommelier'".lightblue
+    puts "To restart the sommelier daemon, run 'restartsommelier'".lightblue
     puts
     puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
     puts
     puts "You may need to adjust the SCALE environment variable to get the correct screen size.".lightblue
-    puts
     puts "Please be aware that gui applications may not work without the sommelier daemon running.".orange
     puts
+    puts "The sommelier daemon may also have to be restarted with 'restartsommelier' after waking your device.".red
+    puts
     puts "If you are upgrading from an earlier version of sommelier, run".orange
-    puts "'stopsommelier && restartsommelier' or logout and login again.".orange
-    puts "After logging back in 'restartsommelier' will also work.".orange
+    puts "'restartsommelier' or logout and login again.".orange
     puts
   end
 end
