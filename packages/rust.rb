@@ -3,24 +3,11 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.43.1'
-  compatibility 'aarch64,armv7l,x86_64'
-  case ARCH
-  when 'aarch64', 'armv7l', 'x86_64'
-    source_url 'https://github.com/rust-lang/rust/archive/1.43.1.tar.gz'
-    source_sha256 'f4347087837a566bef5b9252428bbd92c7e12f31e601868acaa62ec2adb1b1c2'
-  end
+  version '1.47.0'
+  compatibility 'all'
+  source_url 'https://github.com/rust-lang/rust/archive/1.47.0.tar.gz'
+  source_sha256 'fb63501399742c9302684a2dbeffbf2d9020ab2f7f2256ea2545545ae05cf914'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.43.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.43.1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.43.1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '7d9f5cfd434539e4a03a3076daa3b4ba43cc65e824df94a5e6f5fa71824d5179',
-     armv7l: '7d9f5cfd434539e4a03a3076daa3b4ba43cc65e824df94a5e6f5fa71824d5179',
-     x86_64: '2ff5658c2a3ec4098ec866920b139f7d94d93303cecdfe97efcb4ec40ee1e167',
-  })
 
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
@@ -34,13 +21,13 @@ class Rust < Package
       default_host = ARCH + '-unknown-linux-gnu'
     end
     system 'curl -Ls https://sh.rustup.rs -o rustup.sh'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('rustup.sh') ) == '79552216b4ccab5f773a981bc156b38b004a4f94ac5d2b83f8e127020a4d0bfe'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('rustup.sh') ) == '8928261388c8fae83bfd79b08d9030dfe21d17a8b59e9dcabda779213f6a3d14'
     system "sed -i 's,\$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup.sh"
     FileUtils.mkdir_p(CREW_DEST_HOME)
     FileUtils.mkdir_p(CREW_DEST_PREFIX + '/bin')
     FileUtils.mkdir_p(CREW_DEST_PREFIX + '/share/cargo')
     FileUtils.mkdir_p(CREW_DEST_PREFIX + '/share/rustup')
-    system "bash ./rustup.sh -y --no-modify-path --default-host #{default_host} --default-toolchain stable"
+    system "bash ./rustup.sh -y --no-modify-path --default-host #{default_host} --default-toolchain stable --profile minimal"
     FileUtils.cd(CREW_DEST_PREFIX + '/share/cargo/bin') do
       system "find -type f -exec ln -s #{CREW_PREFIX}/share/cargo/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
     end

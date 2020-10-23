@@ -3,26 +3,28 @@ require 'package'
 class R < Package
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
-  version '3.6.1'
+  version '4.0.3'
   compatibility 'all'
-  source_url 'https://cran.r-project.org/src/base/R-3/R-3.6.1.tar.gz'
-  source_sha256 '5baa9ebd3e71acecdcc3da31d9042fb174d55a42829f8315f2457080978b1389'
+  source_url 'https://cran.r-project.org/src/base/R-4/R-4.0.3.tar.gz'
+  source_sha256 '09983a8a78d5fb6bc45d27b1c55f9ba5265f78fa54a55c13ae691f87c5bb9e0d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/r-3.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/r-3.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/r-3.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/r-3.6.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/r-4.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/r-4.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/r-4.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/r-4.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'c04d57704db615dae4c7b702f34631eb8584c700a5fdc066a071324d21dba395',
-     armv7l: 'c04d57704db615dae4c7b702f34631eb8584c700a5fdc066a071324d21dba395',
-       i686: '1b0a23d3170a4b0d1062662d504c0a35ec91de032c14d7e53b215e1f3755a943',
-     x86_64: '2b3dbede3f2eb97ffd3f158dd039df87f223e985ef69eb6330ee3b8d1f0835b2',
+    aarch64: 'a02c0c2dbc2550b88ca84a733340f1059dc3b419c79628181a51855209340063',
+     armv7l: 'a02c0c2dbc2550b88ca84a733340f1059dc3b419c79628181a51855209340063',
+       i686: 'c6ed99b4cafa87e7cf02b39f8433ce556a88c99dc6065cc46e9f3273f15f07d7',
+     x86_64: '925dfcc3add3c3039ff56135d483417581a7ba04449c1aff7d10149e2f5fad36',
   })
 
+
+
   # depends_on 'gfortran'       # require gfortran enabled gcc
-  depends_on 'pcre'             # need to use pcre not pcre2
+  depends_on 'pcre2'            
   depends_on 'libjpeg'
   depends_on 'libtiff'
   depends_on 'xzutils'
@@ -31,6 +33,7 @@ class R < Package
   depends_on 'tk'
   depends_on 'xdg_utils'
   depends_on 'sommelier'
+  depends_on 'libiconv' => ':build' #if iconv error then reinstall libiconv
 
   def self.build
     system './configure',
