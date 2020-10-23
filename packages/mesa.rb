@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '20.2.1-1'
+  version '20.2.1-2'
   compatibility 'all'
   source_url 'https://mesa.freedesktop.org/archive/mesa-20.2.1.tar.xz'
   source_sha256 'd1a46d9a3f291bc0e0374600bdcb59844fa3eafaa50398e472a36fc65fd0244a'
