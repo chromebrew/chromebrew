@@ -28,7 +28,7 @@ class Opera < Package
     FileUtils.mv 'usr/bin', "#{CREW_DEST_PREFIX}"
     FileUtils.mv 'usr/lib', "#{CREW_DEST_PREFIX}"
     FileUtils.mv 'usr/share', "#{CREW_DEST_PREFIX}"
-    system "echo 'if [[ $(ls /usr/bin/ | grep x-www-browser) = x-www-browser ]]; then echo x-www-browser is already set; else sudo ln -s #{CREW_PREFIX}/bin/opera /usr/bin/x-www-browser; fi' > script.la.tmp"
+    system "echo 'if [[ $(ls /usr/bin/ | grep x-www-browser) = x-www-browser ]]; then echo x-www-browser is already set; else sudo ln -s #{CREW_PREFIX}/bin/opera #{CREW_PREFIX}/bin/x-www-browser; fi' > script.la.tmp"
     system "bash script.la.tmp"
   end
 end
