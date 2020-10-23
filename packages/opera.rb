@@ -18,6 +18,7 @@ class Opera < Package
 
   def self.build
     system "wget https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera-stable_#{version}_amd64.deb") ) == '08ec3d1f1b142db4acaea9961687ad95db123f8567c07b0157e350aeed26a56d'
     system "alien -tc opera-stable_#{version}_amd64.deb"
     system "tar xvf opera-stable-#{version}.tgz"
   end
