@@ -15,7 +15,6 @@ class Harfbuzz < Package
   depends_on 'ragel' => :build
   depends_on 'freetype_sub'
   depends_on 'six' => :build
-  depends_on 'meson' => :build
   depends_on 'graphite' => :build
 
   def self.build
