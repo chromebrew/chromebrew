@@ -3,7 +3,7 @@ require 'package'
 class Pango < Package
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'http://www.pango.org/'
-  version '1.47.0'
+  version '1.47.0-1'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/pango/1.47/pango-1.47.0.tar.xz'
   source_sha256 '730db8652fc43188e03218c3374db9d152351f51fc7011b9acae6d0a6c92c367'
@@ -23,7 +23,13 @@ class Pango < Package
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     system "meson",
-      #{CREW_MESON_OPTIONS},
+      "-Dprefix=#{CREW_PREFIX}",
+      "-Dlibdir=#{CREW_LIB_PREFIX}",
+      "-DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}",
+      "-Dmandir=#{CREW_MAN_PREFIX}",
+      "-DSYSCONFDIR=#{CREW_PREFIX}/etc",
+      "-Ddatadir=#{CREW_LIB_PREFIX}",
+      '-Dbuildtype=release',
       "-Dinstall-tests=false",
       "builddir"
     system "ninja -C builddir"
