@@ -38,20 +38,20 @@ class Gtk3 < Package
   depends_on 'llvm' => :build
 
   def self.build
-    # Using clang enables the lld linker, hopefully allowing ChromeOS libs like libgles to be used.
-    ENV['CC'] = "clang"
+    # The lld linker allows linking against system ChromeOS libs.
+    ENV['CFLAGS'] = "-fuse-ld=lld"
+    ENV['CXXFLAGS'] = "-fuse-ld=lld"
     system './configure',
+           #{CREW_OPTIONS},
            '--with-x',
            '--enable-cups',
            '--disable-debug',
            '--enable-x11-backend',
            '--enable-introspection',
            '--disable-gtk-doc-html',
-           "--prefix=#{CREW_PREFIX}",
            '--enable-wayland-backend',
            '--enable-broadway-backend',
            '--disable-maintainer-mode',
-           "--libdir=#{CREW_LIB_PREFIX}",
            "--with-xml-catalog=#{CREW_PREFIX}/etc/xml/catalog"
     system 'make'
   end
