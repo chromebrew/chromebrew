@@ -36,7 +36,13 @@ class Mesa < Package
 
     # Just use mostly defaults.
     system "meson",
-      #{CREW_MESON_OPTIONS},
+      "-Dprefix=#{CREW_PREFIX}",
+      "-Dlibdir=#{CREW_LIB_PREFIX}",
+      "-DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}",
+      "-Dmandir=#{CREW_MAN_PREFIX}",
+      "-DSYSCONFDIR=#{CREW_PREFIX}/etc",
+      "-Ddatadir=#{CREW_LIB_PREFIX}",
+      '-Dbuildtype=release',
       "builddir"
     system "ninja -C builddir"
   end
