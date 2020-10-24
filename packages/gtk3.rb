@@ -3,7 +3,7 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  version '3.24.23-1'
+  version '3.24.23-2'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.23.tar.xz'
   source_sha256 '5d864d248357a2251545b3387b35942de5f66e4c66013f0962eb5cb6f8dae2b1'
@@ -30,23 +30,26 @@ class Gtk3 < Package
     # The lld linker allows linking against system ChromeOS libs.
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system './configure',
-           #{CREW_OPTIONS},
-           '--with-x',
-           '--enable-cups',
-           '--disable-debug',
-           '--enable-x11-backend',
-           '--enable-introspection',
-           '--disable-gtk-doc-html',
-           '--enable-wayland-backend',
-           '--enable-broadway-backend',
-           '--disable-maintainer-mode',
-           "--with-xml-catalog=#{CREW_PREFIX}/etc/xml/catalog"
-    system 'make'
+    system "meson",
+         '-Dbuildtype=release',
+         '-Dbroadway_backend=true',
+         '-Dgtk_doc=false',
+         '-Ddemos=false',
+         '-Dexamples=false',
+         "-Dprefix=#{CREW_PREFIX}",
+         "-Dlibdir=#{CREW_LIB_PREFIX}",
+         "-DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}",
+         "-Dmandir=#{CREW_MAN_PREFIX}",
+         "-DSYSCONFDIR=#{CREW_PREFIX}/etc",
+         "-Ddatadir=#{CREW_LIB_PREFIX}",
+         '-Dbuildtype=release',
+         'build'
+    system "meson configure build"
+    system 'ninja -C build'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 
   def self.postinstall
