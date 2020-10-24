@@ -3,7 +3,7 @@ require 'package'
 class Librsvg < Package
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.50.1'
+  version '2.50.1-1'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.1.tar.xz'
   source_sha256 '9bd9799322e06cf5db19b9f7afb728edac6efcf0110baafc44f0f96f45df9a09'
@@ -25,7 +25,12 @@ class Librsvg < Package
     system "rustup install stable --profile minimal || (rm -frv ~/.rustup/toolchains/* && rustup install stable --profile minimal)"
     system "rustup default stable"
     system "./configure",
-      #{CREW_OPTIONS},
+      "--prefix=#{CREW_PREFIX}",
+      "--libdir=#{CREW_LIB_PREFIX}",
+      "--mandir=#{CREW_MAN_PREFIX}",
+      "--build=#{CREW_BUILD}",
+      "--host=#{CREW_BUILD}",
+      "--target=#{CREW_BUILD}",
       "--enable-introspection=yes",
       "--enable-vala=yes",
       "--disable-static",
