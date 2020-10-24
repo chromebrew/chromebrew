@@ -17,8 +17,8 @@ class Sommelier < Package
   depends_on 'xorg_server' # Miminal xwayland package also works.
   depends_on 'psmisc'
   depends_on 'xsetroot'
-  depends_on 'llvm' => ':build'
-  depends_on 'meson' => ':build'
+  depends_on 'llvm' => :build
+  depends_on 'meson' => :build
 
   LD_SO_ARCH = if ARCH == 'armv7l' || ARCH == 'aarch64' then 'armhf' else ARCH end
 
