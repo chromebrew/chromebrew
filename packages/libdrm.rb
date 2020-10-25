@@ -22,7 +22,6 @@ class Libdrm < Package
   })
 
   depends_on 'libpciaccess'
-  depends_on 'xorg_lib'
   depends_on 'eudev'
   depends_on 'libxslt'
 
