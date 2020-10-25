@@ -70,7 +70,8 @@ class Sommelier < Package
       system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
       system "echo '  exit 1' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
-      system "echo 'set -a && source ~/.sommelier.env && set +a && initsommelier' > startsommelier"
+      system "echo '#!/bin/bash' > startsommelier"
+      system "echo 'set -a && source ~/.sommelier.env && set +a && initsommelier' >> startsommelier"
     end
   end
 
