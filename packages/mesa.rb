@@ -20,6 +20,10 @@ class Mesa < Package
   depends_on 'libxvmc'
   depends_on 'llvm' => :build
   depends_on 'meson' => :build
+  depends_on 'libxrender'
+  depends_on 'libxdamage'
+  depends_on 'libxshmfence'
+  depends_on 'libxxf86vm'
   depends_on 'valgrind'
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
