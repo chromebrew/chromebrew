@@ -3,7 +3,7 @@ require 'package'
 class Graphite < Package
   description 'Reimplementation of the SIL Graphite text processing engine'
   homepage 'https://github.com/silnrsi/graphite'
-  version '1.3.14'
+  version '1.3.14-1'
   compatibility 'all'
   source_url 'https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz'
   source_sha256 'f99d1c13aa5fa296898a181dff9b82fb25f6cc0933dbaa7a475d8109bd54209d'
