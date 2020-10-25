@@ -40,7 +40,7 @@ class Openbox < Package                 # The first character of the class name 
     system "echo 'export DISPLAY=100.115.92.2:0' >> startopenbox"
     system "echo 'openbox' >> startopenbox"
     system "echo 'echo XServer closed or logged out session' >> startopenbox"
-    system "echo 'initsommelier' >> startopenbox"
+    system "echo 'startsommelier' >> startopenbox"
     system "echo 'export DISPLAY=:0' >> startopenbox"
     system "install -Dm755 startopenbox #{CREW_DEST_PREFIX}/bin/startopenbox"
   end
