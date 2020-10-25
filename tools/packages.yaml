@@ -124,6 +124,11 @@ url: https://www.antlr.org/download
 activity: low
 ---
 kind: url
+name: appstream_glib
+url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/
+activity: medium
+---
+kind: url
 name: apr
 url: https://apache.claz.org/apr
 activity: low
@@ -1399,6 +1404,11 @@ url: http://www.hboehm.info/gc/gc_source
 activity: low
 ---
 kind: url
+name: gcab
+url: https://gitlab.gnome.org/GNOME/gcab/-/tags
+activity: low
+---
+kind: url
 name: gcalculator
 url: https://gitlab.gnome.org/GNOME/gnome-calculator/-/tags
 activity: high
@@ -1609,6 +1619,11 @@ url: https://github.com/g-truc/glm/releases/
 activity: medium
 ---
 kind: url
+name: glmark2
+url: https://github.com/glmark2/glmark2/releases/
+activity: medium
+---
+kind: url
 name: glog
 url: https://github.com/google/glog/releases
 activity: low
@@ -1617,6 +1632,11 @@ kind: url
 name: glproto
 url: https://github.com/freedesktop/glproto/releases
 activity: none
+---
+kind: url
+name: glslang
+url: https://github.com/KhronosGroup/glslang/releases/
+activity: medium
 ---
 kind: url
 name: glyr
@@ -1761,6 +1781,11 @@ activity: medium
 kind: url
 name: graphicsmagick
 url: https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/
+activity: medium
+---
+kind: url
+name: graphite
+url: https://github.com/silnrsi/graphite/releases
 activity: medium
 ---
 kind: url
@@ -3084,6 +3109,11 @@ url: https://www.libssh2.org/download
 activity: none
 ---
 kind: url
+name: libstemmer
+url: https://github.com/zvelo/libstemmer/
+activity: none
+---
+kind: url
 name: libstrophe
 url: https://github.com/strophe/libstrophe/releases
 activity: medium
@@ -3452,6 +3482,11 @@ kind: url
 name: libxxf86vm
 url: https://www.x.org/archive/individual/lib
 activity: none
+---
+kind: url
+name: libyaml
+url: https://github.com/yaml/libyaml/releases/
+activity: medium
 ---
 kind: url
 name: libzip
@@ -4492,6 +4527,11 @@ kind: url
 name: pipesx_sh
 url: https://github.com/pipeseroni/pipesX.sh/releases
 activity: none
+---
+kind: url
+name: pipewire
+url: https://gitlab.freedesktop.org/pipewire/pipewire/-/tags
+activity: high
 ---
 kind: url
 name: pixman
@@ -5654,6 +5694,11 @@ url: https://github.com/pypa/virtualenv/releases
 activity: low
 ---
 kind: url
+name: vivaldi
+url: https://vivaldi.com/download/
+activity: medium
+---
+kind: url
 name: vpnc
 url: https://www.unix-ag.uni-kl.de/~massar/vpnc
 activity: none
@@ -5662,6 +5707,16 @@ kind: url
 name: vtable_dumper
 url: https://github.com/lvc/vtable-dumper/releases
 activity: none
+---
+kind: url
+name: vulkan_headers
+url: https://github.com/KhronosGroup/Vulkan-Headers/releases
+activity: high
+---
+kind: url
+name: vulkan_icd_loader
+url: https://github.com/KhronosGroup/Vulkan-Loader/releases
+activity: high
 ---
 kind: url
 name: waf

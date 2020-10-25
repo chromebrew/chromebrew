@@ -313,6 +313,7 @@ def const (var)
       'CHROMEOS_RELEASE',
       'CREW_BREW_DIR',
       'CREW_BUILD',
+      'CREW_CMAKE_OPTIONS',
       'CREW_CONFIG_PATH',
       'CREW_DEST_DIR',
       'CREW_DEST_HOME',
@@ -322,6 +323,7 @@ def const (var)
       'CREW_LIB_PATH',
       'CREW_LIB_PREFIX',
       'CREW_MAN_PREFIX',
+      'CREW_MESON_OPTIONS',
       'CREW_NOT_COMPRESS',
       'CREW_NOT_STRIP',
       'CREW_NPROC',
@@ -494,9 +496,9 @@ def download
   end
   Dir.chdir CREW_BREW_DIR do
     if @opt_verbose then
-      system('curl', '-v', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
+      system('/usr/bin/curl', '-v', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     else
-      system('curl', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
+      system('/usr/bin/curl', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
