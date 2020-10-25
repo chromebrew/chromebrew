@@ -21,7 +21,7 @@ class Graphite < Package
      x86_64: '4fa9b76604330c23c0cf84650698c21e2715a42238841f963bbd6dcf4785ba77',
   })
 
-  depends_on 'freetype'
+  depends_on 'freetype_sub' => :build
   
   def self.build
     Dir.mkdir 'build'
