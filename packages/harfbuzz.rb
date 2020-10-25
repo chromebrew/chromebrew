@@ -11,7 +11,7 @@ class Harfbuzz < Package
 
 #  depends_on 'cairo' => ':build'
   depends_on 'glib' => :build
-#  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gobject_introspection'
   depends_on 'ragel' => :build
   depends_on 'freetype_sub'
   depends_on 'six' => :build
