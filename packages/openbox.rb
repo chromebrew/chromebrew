@@ -22,6 +22,7 @@ class Openbox < Package                 # The first character of the class name 
   depends_on 'libsm'
   depends_on 'pango' => :build
   depends_on 'libx11' => :build
+  depends_on 'adwaita_icon_theme'
   depends_on 'sommelier'
 
   ENV['CFLAGS'] = "-lX11 -lXau"
