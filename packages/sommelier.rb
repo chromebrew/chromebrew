@@ -70,6 +70,8 @@ class Sommelier < Package
       system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
       system "echo '  exit 1' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
+      system "echo '#!/bin/bash' > startsommelier"
+      system "echo 'set -a && source ~/.sommelier.env && set +a && initsommelier' >> startsommelier"
     end
   end
 
@@ -79,6 +81,7 @@ class Sommelier < Package
       system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
       system "install -Dm755 initsommelier #{CREW_DEST_PREFIX}/bin/initsommelier"
       system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
+      system "install -Dm755 startsommelier #{CREW_DEST_PREFIX}/bin/startsommelier"
       system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
     end
   end
@@ -93,7 +96,6 @@ class Sommelier < Package
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'alias startsommelier=\"set -a && source ~/.sommelier.env && set +a && initsommelier\"' >> ~/.bashrc".lightblue
     puts "echo 'startsommelier' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
