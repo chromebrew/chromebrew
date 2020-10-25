@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.4.6'
+CREW_VERSION = '1.4.7'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -61,5 +61,5 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
-CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -DSYSCONFDIR=#{CREW_PREFIX}/etc -Ddatadir=#{CREW_LIB_PREFIX}  -Dbuildtype=release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
+CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -DSYSCONFDIR=#{CREW_PREFIX}/etc -Ddatadir=#{CREW_LIB_PREFIX} -Dbuildtype=release"
 CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_INSTALL_MANDIR=#{CREW_MAN_PREFIX} -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc -DCMAKE_INSTALL_DATADIR=#{CREW_PREFIX}/share -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
