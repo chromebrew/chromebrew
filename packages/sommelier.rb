@@ -3,18 +3,16 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '2237607'
+  version '20201025'
   compatibility 'all'
-  # Later version has workaround for debian issue we don't need to bother with.
-  #source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2333733/revisions/31/patch?zip&path=%2FCOMMIT_MSG'
-  source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2237607/revisions/10/patch?zip&path=%2FCOMMIT_MSG'
-  source_sha256 '0dda9635fe947383e0a4abc573a289acbd81e07115dbb1aaafcc7f3b85a35d6a'
+  source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
+  source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
 
 # See merged at in source url to goto find actual tgz url used, which for some reason doesn't seem to have a stable sha256sum.
 
   depends_on 'mesa'
   depends_on 'xkbcomp'
-  depends_on 'xorg_server' # Miminal xwayland package also works.
+  depends_on 'xorg_server' 
   depends_on 'psmisc'
   depends_on 'xsetroot'
   depends_on 'llvm' => :build
@@ -24,7 +22,7 @@ class Sommelier < Package
 
   def self.build
 
-  system 'curl https://chromium.googlesource.com/chromiumos/platform2/+archive/be4e16feb380360cabbb5d6199a09592ecaf4a42.tar.gz | tar mzx --warning=no-timestamp'
+  system 'curl https://chromium.googlesource.com/chromiumos/platform2/+archive/c6f85a3472584df37fcf2d3d99474081f29256cd.tar.gz | tar mzx --warning=no-timestamp'
   Dir.chdir ("vm_tools/sommelier") do
       # Using method here to download single file from googlesource in lieu of 
       # checking out the ChromeOS kernel tree submodule:
@@ -49,23 +47,20 @@ class Sommelier < Package
       system 'base64 --decode virtwl.h_base64 > virtwl.h'
     end
 
-      system "sed -i '/virtwl.h/d' sommelier.c"
-      system "sed -i '/linux-dmabuf-unstable-v1-client-protocol.h/a #include \"virtwl.h\"' sommelier.c"
+      system "sed -i '/virtwl.h/d' sommelier.cc"
+      system "sed -i '/virtwl.h/d' sommelier-compositor.cc"
+      system "sed -i '/virtwl.h/d' sommelier-data-device-manager.cc"
+      
+      system "sed -i '/linux-dmabuf-unstable-v1-client-protocol.h/a #include \"virtwl.h\"' sommelier.cc"
+      system "sed -i '/linux-dmabuf-unstable-v1-client-protocol.h/a #include \"virtwl.h\"' sommelier-compositor.cc"
+      system "sed -i '/wayland-client.h/a #include \"virtwl.h\"' sommelier-data-device-manager.cc"
+
       
       # lld is needed so system libraries can be linked against, since those are required for graphics acceleration.
       ENV['CFLAGS'] = "-fuse-ld=lld"
       ENV['CXXFLAGS'] = "-fuse-ld=lld"
 
-      system "meson",
-        #{CREW_MESON_OPTIONS},
-        "-Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland",
-        "-Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri",
-        '-Dxwayland_shm_driver=noop',
-        '-Dshm_driver=noop',
-        "-Dvirtwl_device=/dev/null",
-        "-Dbuildtype=release",
-        "-Dpeer_cmd_prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2",
-        "build"
+      system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri -Ddefault_library=both -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null -Dpeer_cmd_prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 build"
       system "meson configure build"
       system "ninja -C build"
       Dir.chdir ("build") do
@@ -91,35 +86,41 @@ class Sommelier < Package
         # in ChromeOS's wayland compositor. But the following isn't working, so disable for now.
         system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
         system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
-	      
-	      system "echo '#!/bin/bash' > initsommelier"
-	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
-	      system "echo 'if [ -z \"\$SOMM\" ]; then' >> initsommelier"
-	      system "echo '  [ -f #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway' >> initsommelier"
-	      system "echo '  #{CREW_PREFIX}/sbin/sommelierd &' >> initsommelier"
-	      system "echo '  sleep 3' >> initsommelier"
-	      system "echo 'fi' >> initsommelier"
-	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
-	      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> initsommelier"
-	      system "echo '  echo \"sommelier process \$SOMM is running\"' >> initsommelier"
-	      system "echo 'else' >> initsommelier"
-	      system "echo '  echo \"sommelier failed to start\"' >> initsommelier"
-	      system "echo '  exit 1' >> initsommelier"
-	      system "echo 'fi' >> initsommelier"
-
-	      system "echo '#!/bin/bash' > stopsommelier"
-	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
-	      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
-	      system "echo '  killall -g sommelier' >> stopsommelier"
-	      system "echo '  sleep 3' >> stopsommelier"
-	      system "echo 'fi' >> stopsommelier"
-	      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
-	      system "echo 'if [ -z \"\$SOMM\" ]; then' >> stopsommelier"
-	      system "echo '  echo \"sommelier process stopped\"' >> stopsommelier"
-	      system "echo 'else' >> stopsommelier"
-	      system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
-	      system "echo '  exit 1' >> stopsommelier"
-	      system "echo 'fi' >> stopsommelier"
+        
+        system "echo '#!/bin/bash' > initsommelier"
+        system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
+        system "echo 'if [ -z \"\$SOMM\" ]; then' >> initsommelier"
+        system "echo '  [ -f #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway' >> initsommelier"
+        system "echo '  #{CREW_PREFIX}/sbin/sommelierd &' >> initsommelier"
+        system "echo '  sleep 3' >> initsommelier"
+        system "echo 'fi' >> initsommelier"
+        system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> initsommelier"
+        system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> initsommelier"
+        system "echo '  echo \"sommelier process \$SOMM is running\"' >> initsommelier"
+        system "echo 'else' >> initsommelier"
+        system "echo '  echo \"sommelier failed to start\"' >> initsommelier"
+        system "echo '  exit 1' >> initsommelier"
+        system "echo 'fi' >> initsommelier"
+        
+        system "echo '#!/bin/bash' > startsommelier"
+        system "echo 'set -a && source ~/.sommelier.env && set +a && initsommelier' >> startsommelier"
+        
+        system "echo '#!/bin/bash' > stopsommelier"
+        system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
+        system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
+        system "echo '  killall -g sommelier' >> stopsommelier"
+        system "echo '  sleep 3' >> stopsommelier"
+        system "echo 'fi' >> stopsommelier"
+        system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
+        system "echo 'if [ -z \"\$SOMM\" ]; then' >> stopsommelier"
+        system "echo '  echo \"sommelier process stopped\"' >> stopsommelier"
+        system "echo 'else' >> stopsommelier"
+        system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
+        system "echo '  exit 1' >> stopsommelier"
+        system "echo 'fi' >> stopsommelier"
+        
+        system "echo '#!/bin/bash' > restartsommelier"
+        system "echo 'stopsommelier && startsommelier' >> restartsommelier"
       end
     end
   end
@@ -130,7 +131,9 @@ class Sommelier < Package
       Dir.chdir ("build") do
         system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
         system "install -Dm755 initsommelier #{CREW_DEST_PREFIX}/bin/initsommelier"
+        system "install -Dm755 startsommelier #{CREW_DEST_PREFIX}/bin/startsommelier"
         system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
+        system "install -Dm755 restartsommelier #{CREW_DEST_PREFIX}/bin/restartsommelier"
         system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
         system "install -Dm755 sommelierrc #{CREW_DEST_PREFIX}/etc/sommelierrc"
       end
@@ -147,8 +150,6 @@ class Sommelier < Package
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'alias startsommelier=\"set -a && source ~/.sommelier.env && set +a && initsommelier\"' >> ~/.bashrc".lightblue
-    puts "echo 'alias restartsommelier=\"stopsommelier && startsommelier\"'  >> ~/.bashrc".lightblue
     puts "echo 'startsommelier' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
@@ -163,8 +164,7 @@ class Sommelier < Package
     puts
     puts "The sommelier daemon may also have to be restarted with 'restartsommelier' after waking your device.".red
     puts
-    puts "If you are upgrading from an earlier version of sommelier, run".orange
-    puts "'restartsommelier' or logout and login again.".orange
+    puts "If you are upgrading from an earlier version of sommelier, run 'restartsommelier' .".orange
     puts
   end
 end
