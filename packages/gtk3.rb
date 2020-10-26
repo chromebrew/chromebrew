@@ -30,20 +30,7 @@ class Gtk3 < Package
     # The lld linker allows linking against system ChromeOS libs.
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson",
-         '-Dbuildtype=release',
-         '-Dbroadway_backend=true',
-         '-Dgtk_doc=false',
-         '-Ddemos=false',
-         '-Dexamples=false',
-         "-Dprefix=#{CREW_PREFIX}",
-         "-Dlibdir=#{CREW_LIB_PREFIX}",
-         "-DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}",
-         "-Dmandir=#{CREW_MAN_PREFIX}",
-         "-DSYSCONFDIR=#{CREW_PREFIX}/etc",
-         "-Ddatadir=#{CREW_LIB_PREFIX}",
-         '-Dbuildtype=release',
-         'build'
+    system "meson #{CREW_MESON_OPTIONS} -Dbroadway_backend=true -Dgtk_doc=false -Ddemos=false -Dexamples=false build"
     system "meson configure build"
     system 'ninja -C build'
   end
