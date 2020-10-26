@@ -22,16 +22,7 @@ class Pango < Package
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson",
-      "-Dprefix=#{CREW_PREFIX}",
-      "-Dlibdir=#{CREW_LIB_PREFIX}",
-      "-DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}",
-      "-Dmandir=#{CREW_MAN_PREFIX}",
-      "-DSYSCONFDIR=#{CREW_PREFIX}/etc",
-      "-Ddatadir=#{CREW_LIB_PREFIX}",
-      '-Dbuildtype=release',
-      "-Dinstall-tests=false",
-      "builddir"
+    system "meson #{CREW_MESON_OPTIONS} -Dinstall-tests=false builddir"
     system "ninja -C builddir"
   end
 
