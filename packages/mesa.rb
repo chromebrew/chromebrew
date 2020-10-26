@@ -16,8 +16,11 @@ class Mesa < Package
   depends_on 'libunwind'
   depends_on 'libva'
   depends_on 'libvdpau'
+  depends_on 'libxdamage'
+  depends_on 'libxshmfence'
   depends_on 'libxv'
   depends_on 'libxvmc'
+  depends_on 'libxxf86vm'
   depends_on 'llvm' => :build
   depends_on 'meson' => :build
   depends_on 'valgrind'
@@ -35,15 +38,7 @@ class Mesa < Package
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
 
     # Just use mostly defaults.
-    system "meson",
-      "-Dprefix=#{CREW_PREFIX}",
-      "-Dlibdir=#{CREW_LIB_PREFIX}",
-      "-DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}",
-      "-Dmandir=#{CREW_MAN_PREFIX}",
-      "-DSYSCONFDIR=#{CREW_PREFIX}/etc",
-      "-Ddatadir=#{CREW_LIB_PREFIX}",
-      '-Dbuildtype=release',
-      "builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system "ninja -C builddir"
   end
 
