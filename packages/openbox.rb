@@ -37,7 +37,7 @@ class Openbox < Package                 # The first character of the class name 
     system "echo 'stopsommelier' >> startopenbox"
     system "echo 'echo am start x.org.server/.MainActivity | sudo android-sh' >> startopenbox"
     system "echo 'echo Starting XServer XSDL' >> startopenbox"
-    system "echo 'sleep 10' >> startopenbox"
+    system "echo 'sleep 7' >> startopenbox"
     system "echo 'export DISPLAY=100.115.92.2:0' >> startopenbox"
     system "echo 'openbox' >> startopenbox"
     system "echo 'echo XServer closed or logged out session' >> startopenbox"
