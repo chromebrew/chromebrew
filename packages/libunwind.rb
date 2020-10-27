@@ -3,10 +3,10 @@ require 'package'
 class Libunwind < Package
   description 'libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
   homepage 'https://www.nongnu.org/libunwind/'
-  version '1.3.1'
+  version '1.5.0-rc2'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/libunwind/libunwind-1.3.1.tar.gz'
-  source_sha256 '43997a3939b6ccdf2f669b50fdb8a4d3205374728c2923ddc2354c65260214f8'
+  source_url 'https://github.com/libunwind/libunwind/archive/v1.5-rc2.tar.gz'
+  source_sha256 '94b8d0bb3057ef73c39bdd451590f6d20595cbba333654cc220c79db7a9e2dc9'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.3.1-chromeos-armv7l.tar.xz',
@@ -24,10 +24,8 @@ class Libunwind < Package
   depends_on 'xzutils' => :build
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-ptrace'
+    system './autogen.sh'
+    system "./configure #{CREW_OPTIONS} --enable-ptrace"
     system 'make'
   end
 
