@@ -6,6 +6,7 @@ require 'package'
 class Peg < Package
   description 'recursive-descent parser generators for C'
   version '0.1.18-2'
+  compatibility 'all'
   source_url 'http://piumarta.com/software/peg/peg-0.1.18.tar.gz'
   source_sha256 '20193bdd673fc7487a38937e297fff08aa73751b633a086ac28c3b34890f9084'
 
