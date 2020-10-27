@@ -3,7 +3,7 @@
 
 require 'package'
 
-class Xorg_xdpyinfo < Package
+class Xdpyinfo < Package
   description 'Display information utility for X'
   version '1.3.2'
   compatibility 'all'
