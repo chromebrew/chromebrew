@@ -10,10 +10,9 @@ class Peg < Package
   source_sha256 '20193bdd673fc7487a38937e297fff08aa73751b633a086ac28c3b34890f9084'
 
   def self.build
-    system "sed -i 's/PREFIX  = \\/usr\\/local/PREFIX =/g' Makefile"
     system "PREFIX=#{CREW_PREFIX} make"
   end
   def self.install
-    system "make ROOT=#{CREW_DEST_DIR} install"
+    system "PREFIX=#{CREW_PREFIX} ROOT=#{CREW_DEST_DIR} make install"
   end
 end
