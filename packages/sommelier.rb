@@ -14,6 +14,7 @@ class Sommelier < Package
   depends_on 'xkbcomp'
   depends_on 'xorg_server' 
   depends_on 'psmisc'
+  depends_on 'xdpyinfo'
   depends_on 'xsetroot'
   depends_on 'llvm' => :build
   depends_on 'meson' => :build
@@ -158,7 +159,7 @@ class Sommelier < Package
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'startsommelier' >> ~/.bashrc".lightblue
+    puts "echo 'if ! xdpyinfo -display :0 &>/dev/null ; then restartsommelier ; fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
     puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
