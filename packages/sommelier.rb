@@ -14,6 +14,7 @@ class Sommelier < Package
   depends_on 'xkbcomp'
   depends_on 'xorg_server' 
   depends_on 'psmisc'
+  depends_on 'vim' # Until there is a standalone package providing xxd
   depends_on 'xdpyinfo'
   depends_on 'xsetroot'
   depends_on 'llvm' => :build
@@ -90,7 +91,7 @@ class Sommelier < Package
           # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
           # in ChromeOS's wayland compositor. But the following isn't working, so disable for now.
           system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
-          system "echo 'sommelier -X --x-display=\$DISPLAY --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"#{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
+          system "echo 'sommelier -X --x-display=\$DISPLAY -sd-notify=READY=1 --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add \$DISPLAY . \$(xxd -l 16 -p /dev/urandom); #{CREW_PREFIX}/etc/sommelierrc\" &>/dev/null' >> sommelierd"
           
           # initsommelier
           system "echo '#!/bin/bash' > initsommelier"
