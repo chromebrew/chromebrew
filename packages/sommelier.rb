@@ -96,8 +96,8 @@ class Sommelier < Package
       system "echo '#!/bin/bash' > sommelierd"
       # As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
       # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
-      # in ChromeOS's wayland compositor. But the following isn't working, so disable for now.
-      system "echo '#sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /dev/null 2>&1 &' >> sommelierd"
+      # in ChromeOS's wayland compositor.
+      system "echo 'sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --socket=wayland-0 --virtwl-device=/dev/null >> /tmp/sommelier.log 2>&1 &' >> sommelierd"
       system "echo 'sommelier -X --x-display=\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add \$DISPLAY . \$(xxd -l 16 -p /dev/urandom); #{CREW_PREFIX}/etc/sommelierrc\" &>/tmp/sommelier.log' >> sommelierd"
       
       # startsommelier
@@ -188,7 +188,7 @@ class Sommelier < Package
     puts "echo 'if ! xdpyinfo -display \$DISPLAY &>/dev/null ; then stopsommelier && startsommelier; else startsommelier; fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
-    puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
+    puts "To adjust environment variables, edit files in ~/.sommelier/".lightblue
     puts "e.g. You may need to adjust the SCALE environment variable to get the correct screen size.".lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
