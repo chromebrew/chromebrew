@@ -34,7 +34,6 @@ class Openbox < Package                 # The first character of the class name 
 
   def self.install                 # the steps required to install the package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "sudo ld /bin/bash /bin/sh"
     # For Chrome OS/Fyde OS with android arc container support
     # Use XServer XSDL
     system "echo '#!/bin/bash' > startopenbox"
@@ -66,7 +65,9 @@ class Openbox < Package                 # The first character of the class name 
     system "echo 'startsommelier' >> startopenbox"
     # For Chrome OS/Chromium OS/Cloudready without android arc container support
     # Use 'xinit'
-    system "if [[ cat /etc/lsb-release | grep ARC != "" ]]; then echo 'Your OS have Android Support :)'; else if [[ whereis xinit | grep /usr/local/bin/xinit != /usr/local/bin/xinit ]]; then echo 'To use this package, You need to install `xinit` package'; else echo 'pkill twm && openbox &' >> /usr/local/etc/X11/xinit/xinitrc; fi"
+    system "echo #!/bin/bash"
+    system "echo \"if [[ cat /etc/lsb-release | grep ARC != "" ]]; then echo 'Your OS have Android Support :)'; else if [[ whereis xinit | grep /usr/local/bin/xinit != /usr/local/bin/xinit ]]; then echo 'To use this package, You need to install `xinit` package'; else echo 'pkill twm && openbox &' >> /usr/local/etc/X11/xinit/xinitrc; fi\" >> cloudready.sh "
+    system "cloudready.sh && rm cloudready.sh"
     ## For i686 user
     # system "echo 'The unstable method, feel free to test it:)'"
     ## Download ARChon Runtime for Chrome
@@ -100,7 +101,9 @@ class Openbox < Package                 # The first character of the class name 
     #EOF"
     # system "unzip *.zip && mv */ ~/Downloads"
     # puts "Install the two unpack extension to chrome with entension developer mode on".lightblue  
-    # system "if [[ $(uname -m) = i686 ]]; then 'install -Dm755 startopenbox_arc-extension #{CREW_DEST_PREFIX}/bin/startopenbox'; else 'install -Dm755 startopenbox #{CREW_DEST_PREFIX}/bin/startopenbox'; fi"
+    # system "echo \"if [[ $(uname -m) = i686 ]]; then 'install -Dm755 startopenbox_arc-extension #{CREW_DEST_PREFIX}/bin/startopenbox'; else 'install -Dm755 startopenbox #{CREW_DEST_PREFIX}/bin/startopenbox'; fi\" > install.sh "
+    # system "install.sh"
+    # system "rm install.sh"
     system "install -Dm755 startopenbox #{CREW_DEST_PREFIX}/bin/startopenbox'"
   end
     
