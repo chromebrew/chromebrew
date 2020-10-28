@@ -1,6 +1,6 @@
-require 'package'
+#require 'package'
 
-class Openbox < Package                 # The first character of the class name must be upper case
+#class Openbox < Package                 # The first character of the class name must be upper case
   description 'Openbox is a highly configurable, next generation window manager with extensive standards support.'
   homepage 'http://openbox.org/'
   version '3.6.1'
