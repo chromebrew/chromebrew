@@ -46,19 +46,11 @@ class Sommelier < Package
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read("./#{filename_virtwl}") ) == sha256sum_virtwl
       puts "virtwl archive downloaded".lightgreen
-      system 'base64 --decode virtwl.h_base64 > virtwl.h'
-    end
+      system 'mkdir -p build/linux'
+      system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'
+    end    
     
-    # Patch local source to look for virtwl.h locally
-    system "sed -i '/virtwl.h/d' sommelier.cc"
-    system "sed -i '/virtwl.h/d' sommelier-compositor.cc"
-    system "sed -i '/virtwl.h/d' sommelier-data-device-manager.cc"
-    system "sed -i '/linux-dmabuf-unstable-v1-client-protocol.h/a #include \"virtwl.h\"' sommelier.cc"
-    system "sed -i '/linux-dmabuf-unstable-v1-client-protocol.h/a #include \"virtwl.h\"' sommelier-compositor.cc"
-    system "sed -i '/wayland-client.h/a #include \"virtwl.h\"' sommelier-data-device-manager.cc"
-    
-    
-    # lld is needed so system libraries can be linked against, since those are required for graphics acceleration.
+    # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     
@@ -122,7 +114,7 @@ pkill -f sommelier.elf &>/dev/null
 # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
 # in ChromeOS's wayland compositor.      
 sommelier --master --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --socket=wayland-1 --virtwl-device=/dev/null > /tmp/sommelier.log 2>&1 &
-sommelier -X --x-display=\\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add $DISPLAY . $(xxd -l 16 -p /dev/urandom); #{CREW_PREFIX}/etc/sommelierrc\" &>>/tmp/sommelier.log
+sommelier -X --x-display=\\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --x-auth=~/.Xauthority --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add $DISPLAY . $(xxd -l 16 -p /dev/urandom); #{CREW_PREFIX}/etc/sommelierrc\" &>>/tmp/sommelier.log
 EOF"
 
       # startsommelier
