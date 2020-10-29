@@ -496,9 +496,9 @@ def download
   end
   Dir.chdir CREW_BREW_DIR do
     if @opt_verbose then
-      system('/usr/bin/curl', '-v', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
+      system('curl', '-v', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     else
-      system('/usr/bin/curl', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
+      system('curl', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
