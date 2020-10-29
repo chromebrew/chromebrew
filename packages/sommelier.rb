@@ -20,7 +20,7 @@ class Sommelier < Package
   depends_on 'xsetroot'
   depends_on 'llvm' => :build
 
-  LD_SO_ARCH = if ARCH == 'armv7l' || ARCH == 'aarch64' then 'armhf' else ARCH end
+  PEER_CMD_PREFIX = if ARCH == 'armv7l' || ARCH == 'aarch64' then '/lib/ld-linux-armhf.so.3' elsif ARCH == 'i686' then '/lib/ld-linux-i686.so.2' else '/lib64/ld-linux-x86-64.so.2' end
 
   def self.build
     # There is no good way to checksum the googlesource tgz file, as they appear to be generated on the fly
@@ -62,7 +62,7 @@ class Sommelier < Package
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     
-    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri -Ddefault_library=both -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null -Dpeer_cmd_prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 build"
+    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri -Ddefault_library=both -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" build"
     system "meson configure build"
     system "ninja -C build"
     
@@ -76,9 +76,8 @@ class Sommelier < Package
       system "echo 'wayland' >> .sommelier/CLUTTER_BACKEND"
       system "echo ':0' >> .sommelier/DISPLAY"
       system "echo 'x11' > .sommelier/GDK_BACKEND"
-      system "echo 'wayland-0' >> .sommelier/WAYLAND_DISPLAY"
+      system "echo 'wayland-1' >> .sommelier/WAYLAND_DISPLAY"
       system "echo '/var/run/chrome' >> .sommelier/XDG_RUNTIME_DIR"
-      
       # Changing this to 0.5 since otherwise everything looks small on a HiDPI screen.
       system "echo '0.5' >> .sommelier/SCALE"
       
@@ -92,56 +91,85 @@ class Sommelier < Package
       
       #Create local startup and shutdown scripts
       
+      # sommelier_sh 
+      # This file via:
+      # crostini: /opt/google/cros-containers/bin/sommelier
+      # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
+      system "cat <<'EOF'> sommelier_sh
+#!/bin/bash
+if base=$(readlink \"$0\" 2>/dev/null); then
+  case $base in
+  /*) base=$(readlink -f \"$0\" 2>/dev/null);; # if $0 is abspath symlink, make symlink fully resolved.
+  *)  base=$(dirname \"$0\")/\"${base}\";;
+  esac
+else
+  case $0 in
+  /*) base=$0;;
+  *)  base=${PWD:-`pwd`}/$0;;
+  esac
+fi
+basedir=${base%/*}
+# TODO(crbug/1003841): Remove LD_ARGV0 once
+# ld.so supports forwarding the binary name.
+LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/sommelier\" exec   \"${basedir}/..#{PEER_CMD_PREFIX}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
+EOF"
+
       # sommelierd
-      system "echo '#!/bin/bash' > sommelierd"
-      # As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
-      # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
-      # in ChromeOS's wayland compositor.
-      system "echo 'sommelier --master --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-#{LD_SO_ARCH}.so.2 --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --socket=wayland-0 --virtwl-device=/dev/null >> /tmp/sommelier.log 2>&1 &' >> sommelierd"
-      system "echo 'sommelier -X --x-display=\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=/#{ARCH_LIB}/ld-linux-x86-64.so.2 --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add \$DISPLAY . \$(xxd -l 16 -p /dev/urandom); #{CREW_PREFIX}/etc/sommelierrc\" &>/tmp/sommelier.log' >> sommelierd"
-      
+      system "cat <<'EOF'> sommelierd
+#!/bin/bash
+pkill -f sommelier.elf &>/dev/null
+# As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
+# One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
+# in ChromeOS's wayland compositor.      
+sommelier --master --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --socket=wayland-1 --virtwl-device=/dev/null > /tmp/sommelier.log 2>&1 &
+sommelier -X --x-display=\\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add $DISPLAY . $(xxd -l 16 -p /dev/urandom); #{CREW_PREFIX}/etc/sommelierrc\" &>>/tmp/sommelier.log
+EOF"
+
       # startsommelier
-      system "echo '#!/bin/bash' > startsommelier"
-      system "echo 'for i in \$(ls ~/.sommelier)'  >> startsommelier"
-      system "echo 'do'  >> startsommelier"
-      system "echo 'export \$i=\"\$(cat ~/.sommelier/\$i 2>/dev/null || :)\"'  >> startsommelier"
-      system "echo 'done'  >> startsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> startsommelier"
-      system "echo 'if [ -z \"\$SOMM\" ]; then' >> startsommelier"
-      system "echo '  [ -f #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway' >> startsommelier"
-      system "echo '  #{CREW_PREFIX}/sbin/sommelierd &' >> startsommelier"
-      system "echo 'fi' >> startsommelier"
-      system "echo 'wait=3' >> startsommelier"
-      system "echo 'until pids=\$(pidof sommelier)' >> startsommelier"
-      system "echo 'do'  >> startsommelier"
-      system "echo '  [[ \"\$wait\" -le \"0\" ]] && break'  >> startsommelier"
-      system "echo '  (( wait = wait - 1 ))'  >> startsommelier"
-      system "echo 'sleep 1'  >> startsommelier"
-      system "echo 'done'  >> startsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> startsommelier"
-      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> startsommelier"
-      system "echo '  echo \"sommelier process \$SOMM is running\"' >> startsommelier"
-      system "echo 'else' >> startsommelier"
-      system "echo '  echo \"sommelier failed to start\"' >> startsommelier"
-      system "echo '  exit 1' >> startsommelier"
-      system "echo 'fi' >> startsommelier"
+       system "cat <<'EOF'> startsommelier
+#!/bin/bash
+for i in $(ls ~/.sommelier)
+do
+export $i=\"$(cat ~/.sommelier/\$i 2>/dev/null || :)\"
+done
+SOMM=$(pgrep -fc sommelier.elf 2> /dev/null)
+if [[ \"$SOMM\" == \"0\" ]]; then
+  [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
+  #{CREW_PREFIX}/sbin/sommelierd > /dev/null 2>&1 &
+fi
+wait=3
+until [[ \"$(pgrep -fc sommelier.elf)\" == \"2\" ]]
+do
+  [[ \"$wait\" -le \"0\" ]] && break
+  (( wait = wait - 1 ))
+sleep 1
+done
+SOMMPIDS=$(pgrep -f sommelier.elf 2> /dev/null)
+if [[ \"$(pgrep -fc sommelier.elf 2> /dev/null)\" == \"2\" ]]; then
+  echo \"sommelier processes running: $(echo $SOMMPIDS)\"
+else
+  echo \"sommelier failed to start\"
+  exit 1
+fi
+EOF"
 
       # stopsommelier
-      system "echo '#!/bin/bash' > stopsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
-      system "echo 'if [ ! -z \"\$SOMM\" ]; then' >> stopsommelier"
-      system "echo '  killall -g sommelier' >> stopsommelier"
-      system "echo 'else' >> stopsommelier"
-      system "echo 'exit 0' >> stopsommelier"
-      system "echo 'fi' >> stopsommelier"
-      system "echo 'SOMM=\$(pidof sommelier 2> /dev/null)' >> stopsommelier"
-      system "echo 'if [ -z \"\$SOMM\" ]; then' >> stopsommelier"
-      system "echo '  echo \"sommelier process stopped\"' >> stopsommelier"
-      system "echo 'else' >> stopsommelier"
-      system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
-      system "echo '  exit 1' >> stopsommelier"
-      system "echo 'fi' >> stopsommelier"
-      
+      system "cat <<'EOF'> stopsommelier
+#!/bin/bash
+SOMM=$(pgrep -fc sommelier.elf 2> /dev/null)
+if [[ \"$SOMM\" -gt \"0\" ]]; then
+  pkill -f sommelier.elf &>/dev/null
+else
+  exit 0
+fi
+if [[ \"$(pgrep -fc sommelier.elf 2> /dev/null)\" -gt \"0\" ]]; then
+  echo \"sommelier failed to stop\"
+  exit 1
+else
+  echo \"sommelier stopped\"
+fi
+EOF"
+
       # restartsommelier
       system "echo '#!/bin/bash' > restartsommelier"
       system "echo 'stopsommelier && startsommelier' >> restartsommelier"
@@ -153,6 +181,8 @@ class Sommelier < Package
     Dir.chdir ("vm_tools/sommelier") do
       system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
       Dir.chdir ("build") do
+        FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
+        system "install -Dm755 sommelier_sh #{CREW_DEST_PREFIX}/bin/sommelier"
         system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
         system "install -Dm755 startsommelier #{CREW_DEST_PREFIX}/bin/startsommelier"
         FileUtils.ln_sf 'startsommelier', "#{CREW_DEST_PREFIX}/bin/initsommelier"
