@@ -808,7 +808,7 @@ def install
 
   # remove it just before the file copy
   if @pkg.in_upgrade
-    puts "Removing since upgrade..."
+    puts "Removing since upgrade or reinstall..."
     remove @pkg.name
   end
 
@@ -829,6 +829,8 @@ def install
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
+  # Update shared library cache after install is complete.
+  system "#{CREW_PREFIX}/sbin/ldconfig || true"
 end
 
 def resolve_dependencies_and_build
@@ -1031,11 +1033,14 @@ end
 
 def reinstall_command (args)
   args["<name>"].each do |name|
-    remove name
     @pkgName = name
     search @pkgName
     @pkg.build_from_source = true if @opt_src or @opt_recursive
-    resolve_dependencies_and_install
+    if @pkgName
+      @pkg.in_upgrade = true
+      resolve_dependencies_and_install
+      @pkg.in_upgrade = false
+    end
   end
 end
 
