@@ -36,7 +36,8 @@ esac
 sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
 # prepare directories
-for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"; do
+DIRLIST="${CREW_CONFIG_PATH}/meta ${CREW_DEST_DIR} ${CREW_PACKAGES_PATH} ${CREW_PREFIX}/bin ${CREW_PREFIX}/lib ${CREW_PREFIX}/lib${LIB_SUFFIX} ${CREW_PREFIX}/libexec ${CREW_PREFIX}/man ${CREW_PREFIX}/share ${CREW_PREFIX}/tmp ${CREW_PREFIX}/var"
+for dir in ${DIRLIST}; do
   if [ ! -d "${dir}" ]; then
     mkdir -p "${dir}"
   fi
