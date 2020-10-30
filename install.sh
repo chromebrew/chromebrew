@@ -315,18 +315,18 @@ ln -s "../lib/crew/crew" "${CREW_PREFIX}/bin/"
 # prepare sparse checkout .rb packages directory and do it
 cd "${CREW_LIB_PATH}"
 rm -rf .git
-git init
-git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
-git config core.sparsecheckout true
+$CREW_PREFIX/bin/git init
+$CREW_PREFIX/bin/git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
+$CREW_PREFIX/bin/git config core.sparsecheckout true
 echo packages >> .git/info/sparse-checkout
 echo lib >> .git/info/sparse-checkout
 echo crew >> .git/info/sparse-checkout
-git fetch origin "${BRANCH}"
-git reset --hard origin/"${BRANCH}"
-crew update
+$CREW_PREFIX/bin/git fetch origin "${BRANCH}"
+$CREW_PREFIX/bin/git reset --hard origin/"${BRANCH}"
+$CREW_PREFIX/bin/crew update
 
 # install a base set of essential packages
-yes | crew install buildessential less most
+yes | $CREW_PREFIX/bin/crew install buildessential less most
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
