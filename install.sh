@@ -251,7 +251,7 @@ function extract_install () {
     echo "Extracting ${1} (this may take a while)..."
     tar xpf ../"${2}"
     echo "Installing ${1} (this may take a while)..."
-    tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
+    tar cpf - ./*/* | (cd "${CREW_PREFIX}/"; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
