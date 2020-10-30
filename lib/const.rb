@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.4.8'
+CREW_VERSION = '1.5.0'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -68,6 +68,6 @@ CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmand
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640 
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
 # Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
-CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}  -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
-CMAKELIBSUFFIX = if ARCH == 'x86_64' then '64' else '' end
-CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}  -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX}  -DLIB_SUFFIX=#{CMAKELIBSUFFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
+CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
+CREW_LIB_SUFFIX = if ARCH == 'x86_64' then '64' else '' end
+CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"

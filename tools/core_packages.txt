@@ -92,3 +92,4 @@ wget
 xzutils
 zip
 zlibpkg
+zstd
