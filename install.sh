@@ -256,8 +256,8 @@ function extract_install () {
       find * -type l -print | while read link; do
         linktarget=$(readlink "$link")
         default_prefix="/usr/local"
-        if [[ $linktarget == *"$default_prefix"* ]]; then
-          reltarget="${linktarget/${default_prefix}/${CREW_PREFIX}}"
+        if [[ $link == *"$default_prefix"* ]]; then
+          reltarget="${link/${default_prefix}/${CREW_PREFIX}}"
           ln -sfr "$reltarget" "$link"
           #echo "$linktarget => $reltarget"
           #readlink "$link"
