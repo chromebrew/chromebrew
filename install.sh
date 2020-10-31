@@ -249,7 +249,7 @@ function extract_install () {
 
     #extract and install
     echo "Extracting & Installing ${1} (this may take a while)..."
-    if [[ ! "${CREW_PREFIX}" = "/usr/local" ]] ; then
+    if [[ "${CREW_PREFIX}" != "/usr/local" ]] ; then
       tar xpf ../"${2}" --keep-directory-symlink --strip-components=2 -C "${CREW_PREFIX}/"
       tar xpf ../"${2}" dlist
       tar xpf ../"${2}" filelist
