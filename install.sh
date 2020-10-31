@@ -259,7 +259,7 @@ function extract_install () {
         if [[ $link == *"$default_prefix"* ]]; then
           reltarget="${link/${default_prefix}/${CREW_PREFIX}}"
           ln -sfr "$reltarget" "$link"
-          #echo "$linktarget => $reltarget"
+          echo "$linktarget => $reltarget"
           #readlink "$link"
         fi
       done
