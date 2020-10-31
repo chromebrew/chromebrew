@@ -4,9 +4,9 @@
 set -e
 
 #chromebrew directories
-OWNER="skycocker"
-REPO="chromebrew"
-BRANCH="master"
+OWNER="${CREW_OWNER:-skycocker}"
+REPO="${CREW_REPO:-chromebrew}"
+BRANCH="${CREW_BRANCH:-master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew/"
