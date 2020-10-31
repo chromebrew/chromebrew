@@ -678,7 +678,7 @@ def install_package (pkgdir)
       end
     if CREW_PREFIX != '/usr/local' then
         system "cat<<'EOF'>fixsymlinks
-#!/bin/bash
+#!/bin/bash -x
 cd \"${CREW_PREFIX}\" || exit 1
 find * -type l -print | while read link; do
 linktarget=$(readlink \"$link\")
@@ -692,6 +692,7 @@ fi
 done
 EOF"
         system "chmod +x ./fixsymlinks"
+        puts "fixing symlinks"
         system "CREW_PREFIX=#{CREW_PREFIX} ./fixsymlinks"
     end
     end
