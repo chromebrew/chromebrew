@@ -256,10 +256,12 @@ function extract_install () {
       find * -type l -print | while read link; do
         linktarget=$(readlink "$link")
         default_prefix="/usr/local"
-        if [[ $link == *"$default_prefix"* ]]; then
-          reltarget="${link/${default_prefix}/${CREW_PREFIX}}"
+        unslash_defprefix=${default_prefix/\//}
+        unslash_crewprefix=${CREW_PREFIX/\//}
+        if [[ $linktarget == *"$default_prefix"* ]]; then
+          reltarget="${linktarget/${unslash_defprefix}/${unslash_crewprefix}}"
           ln -sfr "$reltarget" "$link"
-          echo "$linktarget => $reltarget"
+          echo "$link,$linktarget => $reltarget"
           #readlink "$link"
         fi
       done
