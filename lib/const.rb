@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.5.1'
+CREW_VERSION = '1.5.2'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -14,9 +14,13 @@ if ENV['CREW_PREFIX'].to_s == ''
   CREW_PREFIX = '/usr/local'
 else
   CREW_PREFIX = ENV['CREW_PREFIX']
-  @pkg.build_from_source = true
+  ENV['PATH'] = "${CREW_PREFIX}/bin:/usr/bin:/bin:/opt/bin"
+  if @pkgName
+    @pkg.build_from_source = true
+  end
 end
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
+ENV['LD_LIBRARY_PATH'] = "#{CREW_LIB_PREFIX}"
 CREW_MAN_PREFIX = CREW_PREFIX + '/share/man'
 
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
