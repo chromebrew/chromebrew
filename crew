@@ -676,6 +676,24 @@ def install_package (pkgdir)
       else
         system "tar cf - usr/local/* | (cd \"#{CREW_PREFIX}/\"; tar xp --keep-directory-symlink -f -)"
       end
+    if CREW_PREFIX != '/usr/local' then
+        system "cat<<'EOF'>fixsymlinks
+#!/bin/bash
+cd \"${CREW_PREFIX}\" || exit 1
+find * -type l -print | while read link; do
+linktarget=$(readlink \"$link\")
+default_prefix=\"/usr/local\"
+if [[ $linktarget == *\"$default_prefix\"* ]]; then
+ reltarget=\"${linktarget/${default_prefix}/${CREW_PREFIX}}\"
+ ln -sfr \"$reltarget\" \"$link\"
+ #echo \"$linktarget => $reltarget\"
+ #readlink \"$link\"
+fi
+done
+EOF"
+        system "chmod +x ./fixsymlinks"
+        system "CREW_PREFIX=#{CREW_PREFIX} ./fixsymlinks"
+    end
     end
   end
 end
