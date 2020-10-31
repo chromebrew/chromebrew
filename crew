@@ -666,15 +666,15 @@ def install_package (pkgdir)
 
     if @opt_verbose then
       if Dir.exists? "#{pkgdir}/home" then
-        system "tar cvf - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
+        system "tar cvf - usr/local/* ./home/* | (cd \"#{CREW_PREFIX}/\"; tar xp --keep-directory-symlink -f -)"
       else
-        system "tar cvf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+        system "tar cvf - usr/local/* | (cd \"#{CREW_PREFIX}/\"; tar xp --keep-directory-symlink -f -)"
       end
     else
       if Dir.exists? "#{pkgdir}/home" then
-        system "tar cf - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
+        system "tar cf - usr/local/* ./home/* | (cd \"#{CREW_PREFIX}/\"; tar xp --keep-directory-symlink -f -)"
       else
-        system "tar cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+        system "tar cf - usr/local/* | (cd \"#{CREW_PREFIX}/\"; tar xp --keep-directory-symlink -f -)"
       end
     end
   end
