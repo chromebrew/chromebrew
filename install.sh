@@ -251,8 +251,19 @@ function extract_install () {
     echo "Extracting & Installing ${1} (this may take a while)..."
     if [[ "${CREW_PREFIX}" != "/usr/local" ]] ; then
       tar xpf ../"${2}" --keep-directory-symlink --strip-components=2 -C "${CREW_PREFIX}/"
-      tar xpf ../"${2}" dlist
-      tar xpf ../"${2}" filelist
+      tar xpf ../"${2}" dlist filelist
+      cd "${CREW_PREFIX}" || exit 1
+      find * -type l -print | while read link; do
+        linktarget=$(readlink "$link")
+        default_prefix="/usr/local"
+        if [[ $linktarget == *"$default_prefix"* ]]; then
+          reltarget="${linktarget/${default_prefix}/${CREW_PREFIX}}"
+          ln -sfr "$reltarget" "$link"
+          #echo "$linktarget => $reltarget"
+          #readlink "$link"
+        fi
+      done
+      cd "${CREW_DEST_DIR}"
     else
       echo "Extracting ${1} (this may take a while)..."
       tar xpf ../"${2}"
