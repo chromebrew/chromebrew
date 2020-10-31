@@ -671,7 +671,7 @@ linktarget=$(readlink \"$link\")
 default_prefix=\"/usr/local\"
 unslash_defprefix=\"${default_prefix/\\//}\"
 unslash_crewprefix=\"${CREW_PREFIX/\\//}\"
-if [[ $link == *\"${default_prefix/\\//}\"* ]]; then
+if [[ $linktarget == *\"${default_prefix/\\//}\"* ]]; then
   echo \"link is $link, linktarget is $linktarget\"
   reltarget=\"${linktarget/${unslash_defprefix}/${unslash_crewprefix}}\"
   ln -sfr \"$reltarget\" \"$link\"
