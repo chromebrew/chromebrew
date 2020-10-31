@@ -678,14 +678,14 @@ def install_package (pkgdir)
       end
     if CREW_PREFIX != '/usr/local' then
         system "cat<<'EOF'>fixsymlinks
-#!/bin/bash -x
+#!/bin/bash
 cd \"${CREW_PREFIX}\" || exit 1
 find * -type l -print | while read link; do
 linktarget=$(readlink \"$link\")
 default_prefix=\"/usr/local\"
-unslash_defprefix=\"${default_prefix/\//}\"
+unslash_defprefix=\"${default_prefix/\\//}\"
 unslash_crewprefix=\"${CREW_PREFIX/\//}\"
-if [[ $link == *\"$default_prefix\"* ]]; then
+if [[ $link == *\"${default_prefix/\\//}\"* ]]; then
   echo \"link is $link\"
   reltarget=\"${link/${unslash_defprefix}/${unslash_crewprefix}}\"
   ln -sfr \"$reltarget\" \"$link\"
