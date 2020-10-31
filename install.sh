@@ -248,10 +248,17 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo "Extracting ${1} (this may take a while)..."
-    tar xpf ../"${2}"
-    echo "Installing ${1} (this may take a while)..."
-    tar cpf - ./*/* | (cd "${CREW_PREFIX}/"; tar xp --keep-directory-symlink -f -)
+    echo "Extracting & Installing ${1} (this may take a while)..."
+    if [[ ! "${CREW_PREFIX}" = "/usr/local" ]] ; then
+      tar xpf ../"${2}" --keep-directory-symlink --strip-components=2 -C "${CREW_PREFIX}/"
+      tar xpf ../"${2}" dlist
+      tar xpf ../"${2}" filelist
+    else
+      echo "Extracting ${1} (this may take a while)..."
+      tar xpf ../"${2}"
+      echo "Installing ${1} (this may take a while)..."
+      tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
+    fi
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
