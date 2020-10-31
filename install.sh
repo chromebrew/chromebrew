@@ -344,6 +344,7 @@ echo crew >> .git/info/sparse-checkout
 $CREW_PREFIX/bin/git fetch origin "${BRANCH}"
 $CREW_PREFIX/bin/git reset --hard origin/"${BRANCH}"
 export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}
+export PATH="${CREW_PREFIX}/bin:${CREW_PREFIX}/sbin:${PATH}"
 $CREW_PREFIX/bin/crew update
 
 # install a base set of essential packages
