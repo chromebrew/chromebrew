@@ -8,6 +8,18 @@ class Rust < Package
   source_url 'https://github.com/rust-lang/rust/archive/1.47.0.tar.gz'
   source_sha256 'fb63501399742c9302684a2dbeffbf2d9020ab2f7f2256ea2545545ae05cf914'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.47.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.47.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.47.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.47.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '64f9602aab40ba27eb76983c5b41ad909934d322230af7f9db961fdb75635fa6',
+     armv7l: '64f9602aab40ba27eb76983c5b41ad909934d322230af7f9db961fdb75635fa6',
+       i686: '2ac7f529289f85104c855048b9187c408201c6a12e986d4366f40a93f733dff2',
+     x86_64: '87c0ed348981773b411cc6e12fdcea7426fc2a48753680bbbe3cd78e7148e453',
+  })
 
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
