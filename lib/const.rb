@@ -14,10 +14,7 @@ if ENV['CREW_PREFIX'].to_s == ''
   CREW_PREFIX = '/usr/local'
 else
   CREW_PREFIX = ENV['CREW_PREFIX']
-  ENV['PATH'] = "${CREW_PREFIX}/bin:/usr/bin:/bin:/opt/bin"
-  default_system_path = ("#{CREW_PREFIX}/bin:/usr/bin:/bin:/opt/bin")
-  puts `echo $PATH`
-  puts system_path
+  ENV['PATH'] = "#{CREW_PREFIX}/bin:/usr/bin:/bin:/opt/bin"
   if @pkgName
     @pkg.build_from_source = true
   end
