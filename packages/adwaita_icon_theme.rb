@@ -8,6 +8,19 @@ class Adwaita_icon_theme < Package
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/adwaita-icon-theme/3.38/adwaita-icon-theme-3.38.0.tar.xz'
   source_sha256 '6683a1aaf2430ccd9ea638dd4bfe1002bc92b412050c3dba20e480f979faaf97'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '14e772b1659a40a0021bc31592c844109514a5193af60771bdde68619d401773',
+     armv7l: '14e772b1659a40a0021bc31592c844109514a5193af60771bdde68619d401773',
+       i686: '80b7ddd46eab62bb102415ce354e8931362a0757cf498c6eefc1d80bcf55cb63',
+     x86_64: '049d7fdb6a435484ae5a2cca69b203dd6b8ee6bae088edb3a04c6de2c2c13ecf',
+  })
+
   depends_on 'gtk3'
   depends_on 'librsvg'
   depends_on 'gdk_pixbuf' 
