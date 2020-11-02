@@ -248,30 +248,14 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
+    NOSLASH_CREW_PREFIX=${CREW_PREFIX/\//}
     echo "Extracting & Installing ${1} (this may take a while)..."
-    if [[ "${CREW_PREFIX}" != "/usr/local" ]] ; then
-      tar xpf ../"${2}" --keep-directory-symlink --strip-components=2 -C "${CREW_PREFIX}/"
-      tar xpf ../"${2}" dlist filelist
-      cd "${CREW_PREFIX}" || exit 1
-      find * -type l -print | while read link; do
-        linktarget=$(readlink "$link")
-        default_prefix="/usr/local"
-        unslash_defprefix=${default_prefix/\//}
-        unslash_crewprefix=${CREW_PREFIX/\//}
-        if [[ $linktarget == *"$default_prefix"* ]]; then
-          reltarget="${linktarget/${unslash_defprefix}/${unslash_crewprefix}}"
-          ln -sfr "$reltarget" "$link"
-          echo "$link,$linktarget => $reltarget"
-          #readlink "$link"
-        fi
-      done
-      cd "${CREW_DEST_DIR}"
-    else
-      echo "Extracting ${1} (this may take a while)..."
-      tar xpf ../"${2}"
-      echo "Installing ${1} (this may take a while)..."
-      tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
-    fi
+    echo "Extracting ${1} (this may take a while)..."
+    tar xpf ../"${2}"
+    echo "Installing ${1} (this may take a while)..."
+    tar cpf - --transform=s,usr/local,${NOSLASH_CREW_PREFIX}, ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
+    sed -i "s,usr/local,${NOSLASH_CREW_PREFIX}," ./dlist
+    sed -i "s,usr/local,${NOSLASH_CREW_PREFIX}," ./filelist
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
