@@ -9,8 +9,16 @@ class Freetds < Package
   source_sha256 '90d7c2553d86fcca0029f118a2d61b48d69eed193549c4ff7306c5f8e132c2f5'
 
   binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetds-1.2.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetds-1.2.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetds-1.2.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetds-1.2.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
+    aarch64: '94f48cce54a8548a73f5a387eea6ad90ffcbc6c1f5003d3066a1c7a9f8bdc2b4',
+     armv7l: '94f48cce54a8548a73f5a387eea6ad90ffcbc6c1f5003d3066a1c7a9f8bdc2b4',
+       i686: 'df276d4a6252b9723a594450d07849371188a136b9a106a1f3924a40b3e504cc',
+     x86_64: '5f272856bfc561fd1fd848b1487e41ce69e19d80af72cbec53076442733702b0',
   })
 
   depends_on 'unixodbc'
