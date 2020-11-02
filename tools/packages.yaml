@@ -39,6 +39,11 @@ url: https://acpica.org/downloads
 activity: medium
 ---
 kind: url
+name: adwaita_icon_theme
+url: https://ftp.gnome.org/pub/GNOME/sources/adwaita-icon-theme/
+activity: medium
+---
+kind: url
 name: ag
 url: https://github.com/ggreer/the_silver_searcher/releases
 activity: medium
@@ -607,6 +612,11 @@ kind: url
 name: chruby
 url: https://github.com/postmodern/chruby/releases
 activity: none
+---
+kind: url
+name: chrx
+url: https://github.com/reynhout/chrx
+activity: low
 ---
 kind: url
 name: ck4up
@@ -4354,6 +4364,11 @@ url: https://github.com/phw/peek/releases
 activity: low
 ---
 kind: url
+name: peg
+url: https://www.piumarta.com/software/peg/
+activity: none
+---
+kind: url
 name: percona_boost
 url: https://sourceforge.net/projects/boost/files/boost/
 activity: medium
@@ -5911,6 +5926,16 @@ activity: low
 kind: url
 name: xdg_utils
 url: https://gitlab.freedesktop.org/xdg/xdg-utils/-/tags
+activity: none
+---
+kind: url
+name: xdotool
+url: https://github.com/jordansissel/xdotool/releases/
+activity: none
+---
+kind: url
+name: xdpyinfo
+url: https://xorg.freedesktop.org/archive/individual/app/
 activity: none
 ---
 kind: url
