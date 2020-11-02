@@ -5,6 +5,7 @@ require 'package'
 
 class Xdotool < Package
   description 'Command-line X11 automation tool'
+  homepage 'https://www.semicomplete.com/projects/xdotool'
   version '3.20160805.1'
   compatibility 'all'
   source_url 'https://github.com/jordansissel/xdotool/releases/download/v3.20160805.1/xdotool-3.20160805.1.tar.gz'

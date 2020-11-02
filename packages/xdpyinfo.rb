@@ -5,6 +5,7 @@ require 'package'
 
 class Xdpyinfo < Package
   description 'Display information utility for X'
+  homepage 'https://gitlab.freedesktop.org/xorg/app/xdpyinfo'
   version '1.3.2'
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/archive/individual/app/xdpyinfo-1.3.2.tar.bz2'
@@ -30,13 +31,13 @@ class Xdpyinfo < Package
   depends_on 'libxrender'
   depends_on 'libxcomposite'
   depends_on 'libxinerama'
-  depends_on 'xorg_proto' 
+  depends_on 'xorg_proto'
 
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
-  
+
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
