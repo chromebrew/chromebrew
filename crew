@@ -672,17 +672,16 @@ default_prefix=\"/usr/local\"
 unslash_defprefix=\"${default_prefix/\\//}\"
 unslash_crewprefix=\"${CREW_PREFIX/\\//}\"
 if [[ $linktarget == *\"${default_prefix/\\//}\"* ]]; then
-  echo \"link is $link, linktarget is $linktarget\"
+  #echo \"link is $link, linktarget is $linktarget\"
   reltarget=\"${linktarget/${unslash_defprefix}/${unslash_crewprefix}}\"
   ln -sfr \"$reltarget\" \"$link\"
-  echo \"$link,$linktarget => $reltarget\"
+  #echo \"$link,$linktarget => $reltarget\"
   #readlink \"$link\"
 fi
 done
 EOF"
         system "chmod +x ./fixsymlinks"
         puts "fixing symlinks"
-        system "cat ./fixsymlinks"
         system "CREW_PREFIX=#{CREW_PREFIX} ./fixsymlinks"
     end
     if @opt_verbose then
