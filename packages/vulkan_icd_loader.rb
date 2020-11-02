@@ -5,6 +5,7 @@ require 'package'
 
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
+  homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
   version '1.2.153-2'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader/archive/v1.2.153.tar.gz'
@@ -23,6 +24,7 @@ class Vulkan_icd_loader < Package
      x86_64: 'f234c7327d2044847bd39d354aa0769997da8797162f2ae7b818de6b53de9a1a',
   })
 
+  depends_on 'llvm' => ':build'
   depends_on 'libx11'
   depends_on 'libxrandr'
   depends_on 'vulkan_headers'
@@ -30,13 +32,12 @@ class Vulkan_icd_loader < Package
   depends_on 'libxrandr' => ':build'
   depends_on 'wayland' => ':build'
   depends_on 'vulkan_headers' => ':build'
-  depends_on 'llvm' => ':build'
 
   def self.build
-      ENV['CC'] = 'clang'
-      ENV['CXX'] = 'clang'
-      system 'mkdir build'
-      Dir.chdir ('build') do
+    ENV['CC'] = 'clang'
+    ENV['CXX'] = 'clang'
+    Dir.mkdir 'build'
+    Dir.chdir 'build' do
       system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
         -DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
         -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
@@ -49,14 +50,14 @@ class Vulkan_icd_loader < Package
         -DBUILD_WSI_WAYLAND_SUPPORT=On \
         -DCMAKE_BUILD_TYPE=Release \
         .. && make"
-        end
+    end
   end
 
   def self.install
-    Dir.chdir ('build') do
+    Dir.chdir 'build' do
       system 'make',
-      "DESTDIR=#{CREW_DEST_DIR}",
-      'install'
-      end
+        "DESTDIR=#{CREW_DEST_DIR}",
+        'install'
+    end
   end
 end

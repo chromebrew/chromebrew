@@ -5,6 +5,7 @@ require 'package'
 
 class Glmark2 < Package
   description 'OpenGL ES 2.0 benchmark'
+  homepage 'https://github.com/glmark2/glmark2'
   version '2020.04'
   compatibility 'all'
   source_url 'https://github.com/glmark2/glmark2/archive/2020.04.tar.gz'
@@ -28,13 +29,12 @@ class Glmark2 < Package
   depends_on 'libx11'
   depends_on 'libxcb'
 
-
   def self.build
-      system "python2 ./waf configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-flavors x11-gl,x11-glesv2"
-      system "python2 ./waf"
+    system "python2 ./waf configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-flavors x11-gl,x11-glesv2"
+    system "python2 ./waf"
   end
-  
+
   def self.install
-      system "python2 ./waf install --destdir=#{CREW_DEST_DIR}/"
+    system "python2 ./waf install --destdir=#{CREW_DEST_DIR}/"
   end
 end
