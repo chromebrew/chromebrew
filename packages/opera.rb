@@ -17,9 +17,10 @@ class Opera < Package
 
 
   def self.build
-    system "curl https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb --output opera.deb"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera.deb") ) == `curl -L https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`
-    system "alien -tc opera.deb > /dev/null"
+    system "curl https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb -#o opera.deb"
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera.deb") ) == `curl -Ls https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`
+    puts "Archive downloaded".lightgreen
+    system "alien -tc opera.deb"
     system "tar xvf opera-stable-#{version}.tgz > /dev/null"
   end
 
