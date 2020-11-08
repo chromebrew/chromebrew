@@ -18,8 +18,7 @@ class Buildessential < Package
   depends_on 'pkgconfig'
 
   # install man pages
-  # manpages breaks installs with nonstandard CREW_PREFIX
-  # depends_on 'manpages'
+  depends_on 'manpages'
 
   # compress man pages
   depends_on 'compressdoc'
