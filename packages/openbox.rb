@@ -22,7 +22,7 @@ class Openbox < Package
   depends_on 'libsm'
   depends_on 'pango' => :build
   depends_on 'libx11' => :build
-  #depends_on 'adwaita_icon_theme'
+  depends_on 'adwaita_icon_theme'
   depends_on 'xdpyinfo'
   depends_on 'sommelier'
 
