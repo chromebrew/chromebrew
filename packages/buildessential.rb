@@ -8,6 +8,9 @@ class Buildessential < Package
 
   is_fake
 
+  #install first to get ldconfig
+  depends_on 'glibc'
+  
   depends_on 'gcc10'
   depends_on 'gcc_tools'
   depends_on 'linuxheaders'
@@ -15,7 +18,8 @@ class Buildessential < Package
   depends_on 'pkgconfig'
 
   # install man pages
-  depends_on 'manpages'
+  # manpages breaks installs with nonstandard CREW_PREFIX
+  # depends_on 'manpages'
 
   # compress man pages
   depends_on 'compressdoc'
