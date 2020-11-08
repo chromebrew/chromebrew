@@ -21,7 +21,7 @@ class Opera < Package
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("opera.deb") ) == `curl -Ls https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`
     puts "Archive downloaded".lightgreen
     system "alien -tc opera.deb"
-    system "tar xvf opera-stable-#{version}.tgz"
+    system "tar xvf opera-stable-#{version}.tgz > /dev/null"
   end
 
   def self.install
