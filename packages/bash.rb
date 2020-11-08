@@ -8,7 +8,7 @@ class Bash < Package
   source_sha256 'f3274290260e2c74a2ec61606cc932cc0e093028d55c779cf2c7907bdb60abc0'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure", "#{CREW_OPTIONS}"
     system "make"
   end
 
