@@ -11,8 +11,8 @@ class Xterm < Package
   depends_on 'sommelier'
 
   def self.build
-    system "TEMP=$PATH"
-    system "export PATH=/bin:/sbin:/usr/local/bin" # The /usr/bin need to remove from PATH as bash will point 'tic' to /usr/bin/tic 
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
+    ENV['PATH'] = '/bin:/sbin:/usr/local/bin' # The /usr/bin need to remove from PATH as bash will point 'tic' to /usr/bin/tic 
     system "./configure",
            "--with-x",
            "--with-pcre",
@@ -32,8 +32,6 @@ class Xterm < Package
            "--libdir=#{CREW_LIB_PREFIX}",
            "--with-ticlib"
     system "make"
-    system "export PATH=$TEMP"
-    system "export TEMP=''"
   end
 
   def self.install
