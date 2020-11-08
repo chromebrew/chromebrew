@@ -19,7 +19,7 @@ class Skype < Package
     puts "Archive downloaded".lightgreen
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('skype.deb') ) == '9026f043697d7d0783e7232701a868229d9a91e91dc0ae86509732c1c7bf0c13'
     system 'alien -tc skype.deb'
-    system "tar xvf skypeforlinux-#{version}.tgz > /dev/null"
+    system "tar xvf skypeforlinux-#{version}.tgz"
   end
 
   def self.install
