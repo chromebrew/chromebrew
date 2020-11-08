@@ -1,0 +1,18 @@
+require 'package'
+
+class Bash < Package
+  description 'The Bourne Again SHell'
+  homepage 'http://www.gnu.org/software/bash/'
+  version '5.1-rc2'
+  source_url 'http://ftp.gnu.org/gnu/bash/bash-5.1-rc2.tar.gz'
+  source_sha256 'f3274290260e2c74a2ec61606cc932cc0e093028d55c779cf2c7907bdb60abc0'
+
+  def self.build
+    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system "make"
+  end
+
+  def self.install
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+end
