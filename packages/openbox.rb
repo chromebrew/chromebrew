@@ -34,8 +34,8 @@ class Openbox < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "echo '#!/bin/bash' > startopenbox"
     system "cat <<'EOF'> startopenbox
+#!/bin/bash
 stopsommelier
 echo am start x.org.server/.MainActivity | sudo android-sh
 echo Starting XServer XSDL
