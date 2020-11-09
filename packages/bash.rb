@@ -13,6 +13,15 @@ class Bash < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+     FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
+  end
+  
+  def self.postinstall
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts "echo '# Make newer version of bash startup automatically' >> ~/.bashrc".lightblue
+    puts "echo '#{CREW_PREFIX}/bin/sh' >> ~/.bashrc".lightblue
+    puts "echo 'source ~/.bashrc' >> ~/.bashrc".lightblue
   end
 end
