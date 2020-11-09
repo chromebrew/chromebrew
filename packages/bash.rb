@@ -22,6 +22,6 @@ class Bash < Package
     puts "To complete the installation, execute the following:".lightblue
     puts "echo '# Make newer version of bash startup automatically' >> ~/.bashrc".lightblue
     puts "echo '#{CREW_PREFIX}/bin/sh' >> ~/.bashrc".lightblue
-    puts "echo 'source ~/.bashrc' >> ~/.bashrc".lightblue
+    puts "source ~/.bashrc".lightblue
   end
 end
