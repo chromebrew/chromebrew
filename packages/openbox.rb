@@ -74,7 +74,7 @@ EOF"
   def self.postinstall
       system "echo '#!/bin/bash' > cloudready.sh"
       system "temp=\"echo 'pkill twm && openbox &' >> /usr/local/etc/X11/xinit/xinitrc\" && echo \"if [[ '$(cat /etc/lsb-release | grep CHROMEOS_ARC_ANDROID_SDK_VERSION)' = '' ]]; then crew install xinit && $temp ; fi\" >> cloudready.sh"
-      system "bash cloudready.sh && rm cloudready.sh"
+      system "bash cloudready.sh"
       puts
       puts "For Chrome OS/Fyde OS user:".lightblue
       puts "To use this package, you need to download XServer XSDL from Google Play Store".lightblue
