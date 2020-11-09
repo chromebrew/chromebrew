@@ -12,6 +12,8 @@ class Opera < Package
     depends_on 'alien' => :build
     depends_on 'gtk3'
     depends_on 'gsettings_desktop_schemas'
+    depends_on 'harfbuzz'
+    depends_on 'graphite'
     depends_on 'sommelier'
   end
 
