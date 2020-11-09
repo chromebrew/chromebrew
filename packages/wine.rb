@@ -5,14 +5,9 @@ class Wine < Package
   description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD.'
   homepage 'https://www.winehq.org/'
   compatibility 'all'
-  version '3.13'
-  source_url 'https://dl.winehq.org/wine/source/3.x/wine-3.13.tar.xz'
-  source_sha256 '0785d74852232c1f6e07ac081875e92219a4428ddcc8931632fcf1924941bbd4'
-
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
+  version '5.0.2-stable'
+  source_url 'https://dl.winehq.org/wine/source/5.0/wine-5.0.2.tar.xz'
+  source_sha256 'c2c284f470874b35228327c3972bc29c3a9d8d98abd71dbf81c288b8642becbc'
 
   depends_on 'bison'
   depends_on 'sommelier'
@@ -24,9 +19,11 @@ class Wine < Package
     when "i686", "armv7l", "aarch64"
       system "./configure"
     when "x86_64"
-      system "./configure --enable-win64"
+      system "./configure", 
+             "--enable-win64",
+             "--without-freetype"
     else
-      abort 'Error getting your device configuration.'.lightred
+      abort 'Error getting your device configuration. :/'.lightred
     end
     system 'make'
   end
