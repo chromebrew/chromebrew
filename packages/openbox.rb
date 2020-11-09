@@ -20,7 +20,10 @@ class Openbox < Package
   depends_on 'glib'
   depends_on 'libxfixes'
   depends_on 'libsm'
-  depends_on 'pango' => :build
+  depends_on 'pango'
+  depends_on 'pangomm'
+  depends_on 'graphite'
+  depends_on 'harfbuzz'
   depends_on 'libx11' => :build
   depends_on 'adwaita_icon_theme'
   depends_on 'xdpyinfo'
