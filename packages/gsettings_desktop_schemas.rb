@@ -14,15 +14,16 @@ class Gsettings_desktop_schemas < Package
 
   def self.build
     system "sed -i -r 's:\"(/system):\"/org/gnome\1:g' schemas/*.in"
-    system "./autogen.sh"
-    system "./configure",
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    ENV['CFLAGS'] = "-fuse-ld=lld"
+    ENV['CXXFLAGS'] = "-fuse-ld=lld"
+    system "meson",
+      #{CREW_MESON_OPTIONS}
+    system "meson compile -C builddir"
+    
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} meson install -C builddir"
   end
 
   def self.postinstall
