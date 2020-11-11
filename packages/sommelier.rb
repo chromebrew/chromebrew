@@ -20,8 +20,15 @@ class Sommelier < Package
   depends_on 'xsetroot'
   depends_on 'llvm' => :build
 
-  PEER_CMD_PREFIX = if ARCH == 'armv7l' || ARCH == 'aarch64' then '/lib/ld-linux-armhf.so.3' elsif ARCH == 'i686' then '/lib/ld-linux-i686.so.2' else '/lib64/ld-linux-x86-64.so.2' end
-
+  case ARCH
+   when 'armv7l', 'aarch64'
+      PEER_CMD_PREFIX='/lib/ld-linux-armhf.so.3'
+   when 'i686'
+      PEER_CMD_PREFIX='/lib/ld-linux-i686.so.2'
+   when 'x86_64'
+      PEER_CMD_PREFIX='/lib64/ld-linux-x86-64.so.2'
+  end
+    
   def self.build
     # There is no good way to checksum the googlesource tgz file, as they appear to be generated on the fly
     # and checksums vary with each download.
@@ -54,32 +61,37 @@ class Sommelier < Package
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     
-    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri -Ddefault_library=both -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" build"
+    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" build"
     system "meson configure build"
     system "ninja -C build"
     
     Dir.chdir ("build") do
       system 'curl "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
       
-      # Following is to try to adhere to ChromeOS noexec
-      # set on the home dir as per 
-      # https://chromium.googlesource.com/chromiumos/docs/+/master/security/noexec_shell_scripts.md
-      system 'mkdir -p .sommelier'
-      system "echo 'wayland' >> .sommelier/CLUTTER_BACKEND"
-      system "echo ':0' >> .sommelier/DISPLAY"
-      system "echo 'x11' > .sommelier/GDK_BACKEND"
-      system "echo 'wayland-1' >> .sommelier/WAYLAND_DISPLAY"
-      system "echo '/var/run/chrome' >> .sommelier/XDG_RUNTIME_DIR"
-      # Changing this to 0.5 since otherwise everything looks small on a HiDPI screen.
-      system "echo '0.5' >> .sommelier/SCALE"
-      
-      system "touch .sommelier/MESA_LOADER_DRIVER_OVERRIDE"
-      case ARCH
-        when 'i686', 'x86_64'
-        # Following is only needed when kernel < 4.16
-        # since the mesa iris driver no longer supports earlier kernels.
-        system "echo 'i965' >> .sommelier/MESA_LOADER_DRIVER_OVERRIDE"
-      end
+      system "cat <<'EOF'> .sommelier.env
+#!/bin/bash
+export CLUTTER_BACKEND=wayland
+export DISPLAY=:0
+export GDK_BACKEND=x11
+export SCALE=0.5
+export SOMMELIER_ACCELERATORS=Super_L,<Alt>bracketleft,<Alt>bracketright
+export WAYLAND_DISPLAY=wayland-1
+export XDG_RUNTIME_DIR=/var/run/chrome
+UNAME_ARCH=$(uname -m)
+if [[ \"$UNAME_ARCH\" == 'x86_64' ]] || [[ \"$UNAME_ARCH\" == 'i686' ]]
+then
+  declare -a TEMP2
+  TEMP1=$(uname -r)
+  TEMP2=(${TEMP1//[.-]/ })
+  VERSION=$(((${TEMP2[0]} * 1000000)\
+        + (${TEMP2[1]} * 10000)\
+        + ${TEMP2[2]}))
+  if [[ \"$VERSION\" -lt '4160000' ]]
+  then
+      export MESA_LOADER_DRIVER_OVERRIDE=i965
+  fi
+fi
+EOF"     
       
       #Create local startup and shutdown scripts
       
@@ -110,20 +122,17 @@ EOF"
       system "cat <<'EOF'> sommelierd
 #!/bin/bash
 pkill -f sommelier.elf &>/dev/null
+set -a && source ~/.sommelier.env && set +a
 # As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
 # One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
 # in ChromeOS's wayland compositor.      
 sommelier --master --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > /tmp/sommelier.log 2>&1 &
-sommelier -X --x-display=\\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-1 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --x-auth=~/.Xauthority --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add $DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>/tmp/sommelier.log
+sommelier -X --x-display=\\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --x-auth=~/.Xauthority --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add $DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>/tmp/sommelier.log
 EOF"
 
       # startsommelier
        system "cat <<'EOF'> startsommelier
 #!/bin/bash
-for i in $(ls ~/.sommelier)
-do
-export $i=\"$(cat ~/.sommelier/\$i 2>/dev/null || :)\"
-done
 SOMM=$(pgrep -fc sommelier.elf 2> /dev/null)
 if [[ \"$SOMM\" == \"0\" ]]; then
   [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
@@ -181,13 +190,7 @@ EOF"
         system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
         system "install -Dm755 restartsommelier #{CREW_DEST_PREFIX}/bin/restartsommelier"
         system "install -Dm755 sommelierrc #{CREW_DEST_PREFIX}/etc/sommelierrc"
-        system "install -Dm644 .sommelier/CLUTTER_BACKEND #{CREW_DEST_HOME}/.sommelier/CLUTTER_BACKEND"
-        system "install -Dm644 .sommelier/DISPLAY #{CREW_DEST_HOME}/.sommelier/DISPLAY"
-        system "install -Dm644 .sommelier/GDK_BACKEND #{CREW_DEST_HOME}/.sommelier/GDK_BACKEND"
-        system "install -Dm644 .sommelier/MESA_LOADER_DRIVER_OVERRIDE #{CREW_DEST_HOME}/.sommelier/MESA_LOADER_DRIVER_OVERRIDE"
-        system "install -Dm644 .sommelier/SCALE #{CREW_DEST_HOME}/.sommelier/SCALE"
-        system "install -Dm644 .sommelier/WAYLAND_DISPLAY #{CREW_DEST_HOME}/.sommelier/WAYLAND_DISPLAY"
-        system "install -Dm644 .sommelier/XDG_RUNTIME_DIR #{CREW_DEST_HOME}/.sommelier/XDG_RUNTIME_DIR"
+        system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
 
       end
     end
@@ -203,10 +206,7 @@ EOF"
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'for i in \$(ls ~/.sommelier)'  >> ~/.bashrc".lightblue
-    puts "echo 'do'  >> ~/.bashrc".lightblue
-    puts "echo 'export \$i=\"\$(cat ~/.sommelier/\$i 2>/dev/null || :)\"'  >> ~/.bashrc".lightblue
-    puts "echo 'done'  >> ~/.bashrc".lightblue
+    puts "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc".lightblue
     puts "echo 'if ! xdpyinfo -display \$DISPLAY &>/dev/null ; then stopsommelier && startsommelier; else startsommelier; fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
