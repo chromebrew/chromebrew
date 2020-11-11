@@ -27,6 +27,8 @@ class Openbox < Package
   depends_on 'libx11' => :build
   depends_on 'adwaita_icon_theme'
   depends_on 'xdpyinfo'
+  depends_on 'gtk2'
+  depends_on 'gtk3'
   depends_on 'sommelier'
 
   ENV['CFLAGS'] = "-lX11 -lXau"
