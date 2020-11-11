@@ -14,7 +14,8 @@ class Obconf < Package
 
   def self.build
     system "./configure",
-           "--mandir=/usr/local/share/man"
+           "--mandir=#{CREW_PREFIX}/share/man",
+           "--prefix=#{CREW_PREFIX}"
     system "make"
   end
 
