@@ -16,8 +16,7 @@ class Gsettings_desktop_schemas < Package
     system "sed -i -r 's:\"(/system):\"/org/gnome\1:g' schemas/*.in"
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson",
-      #{CREW_MESON_OPTIONS}
+    system "meson #{CREW_MESON_OPTIONS}"
     system "meson compile -C builddir"
     
   end
