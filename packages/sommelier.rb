@@ -8,19 +8,6 @@ class Sommelier < Package
   source_url 'https://chromium.googlesource.com/chromiumos/containers/sommelier/+/0.20/README?format=TEXT'
   source_sha256 'b58d799b16d20abf92369fe0749c73f7398996f0afa9933517051778a8bb16c3'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc407-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc407-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc407-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-1382ce084cc407-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '52c7940172194b786440ea9482835dfdab06df027e91e2e2ca1401acff397e94',
-     armv7l: '52c7940172194b786440ea9482835dfdab06df027e91e2e2ca1401acff397e94',
-       i686: '80c4866b627479b5469cfa04abecc297080b6b330ed9cf8484d2964ed11bfe94',
-     x86_64: '1b33ebc3d0201e1b700b4d55dc53951c77f5f1491af9c24e1c70e66d64107b40',
-  })
-
   depends_on 'mesa'
   depends_on 'xkbcomp'
   depends_on 'xorg_server'
@@ -70,13 +57,13 @@ class Sommelier < Package
       system "echo '  echo \"sommelier process \$SOMM is running\"' >> stopsommelier"
       system "echo '  exit 1' >> stopsommelier"
       system "echo 'fi' >> stopsommelier"
-      system "echo '#!/bin/bash' > startsommelier"
-      system "echo 'set -a && source ~/.sommelier.env && set +a && initsommelier' >> startsommelier"
     end
   end
 
   def self.install
     Dir.chdir ("sommelier") do
+      system "echo '#!/bin/bash' > startsommelier"
+      system "echo 'set -a && source ~/.sommelier.env && set +a && initsommelier' >> startsommelier"
       system "make", "PREFIX=#{CREW_PREFIX}", "SYSCONFDIR=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", "install"
       system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
       system "install -Dm755 initsommelier #{CREW_DEST_PREFIX}/bin/initsommelier"
