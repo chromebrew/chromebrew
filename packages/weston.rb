@@ -45,5 +45,9 @@ class Weston < Package
     puts "echo '[terminal]' >> ~/.config/weston.ini".lightblue
     # Cousine is the defaut ChromeOS monospace font.
     puts "echo 'font=Cousine' >> ~/.config/weston.ini".lightblue
+    puts
+    puts "To run weston with xwayland try something like this:".lightred
+    puts "export WAYLAND_DISPLAY=wayland-1".lightred
+    puts "WAYLAND_DISPLAY=wayland-0 weston -Swayland-1 --xwayland".lightred
   end
 end
