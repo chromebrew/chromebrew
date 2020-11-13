@@ -3,26 +3,24 @@ require 'package'
 class Gvim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  version '8.2.0346'
+  version '8.2.1976'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.0346.tar.gz'
-  source_sha256 '418d1cbc9f53f31cb19869b6df0294ca5c377ca2824c759e3f6796edc60e5628'
+  source_url 'https://github.com/vim/vim/archive/v8.2.1976.tar.gz'
+  source_sha256 'd2d8bc28e28e9c5a63be570cdb44be39470621bb57dcbace5abbd86e15690678'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0346-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0346-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0346-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.0346-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.1976-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.1976-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.1976-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.1976-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0470196bc08f2217d4621b513797fe472aea4b426c987361739ef978ba2b654b',
-     armv7l: '0470196bc08f2217d4621b513797fe472aea4b426c987361739ef978ba2b654b',
-       i686: 'c3c8b0ae067acff18ef3167c79694cb99f91170e0091ae9ca2e5d51cfd8a8385',
-     x86_64: 'b0427f0c3fdb2cbb892be3de830515171457899ace33758538a9313f375abe9f',
+    aarch64: '3bec0434e49ab556c45b6755e858d8a1bf917f238e2906a35a7fbcffebe575bb',
+     armv7l: '3bec0434e49ab556c45b6755e858d8a1bf917f238e2906a35a7fbcffebe575bb',
+       i686: '62a0405196e9e701f54025447bfe23e59554e5c5abe298d080246384378a6a28',
+     x86_64: '087edd65ce9f13039ab9d8d9a8c6a5c9d6c02f47ad9a2c519970085d8999473f',
   })
 
-  depends_on 'python27' => :build
-  depends_on 'python3' => :build
   depends_on 'vim_runtime'
   depends_on 'gtk3'
   depends_on 'sommelier'
@@ -38,21 +36,21 @@ class Gvim < Package
 
   def self.build
     system "./configure",
-              "--prefix=#{CREW_PREFIX}",
-              "--localstatedir=#{CREW_PREFIX}/var/lib/vim",
-              '--with-features=huge',
-              "--with-compiledby='Chromebrew'",
-              '--with-x=yes',
-              '--enable-gui=gtk3',
-              '--enable-multibyte',
-              '--enable-cscope',
-              '--enable-fontset',
-              '--enable-perlinterp=dynamic',
-              '--enable-pythoninterp=dynamic',
-              '--enable-python3interp=dynamic',
-              '--enable-rubyinterp=dynamic',
-              '--disable-selinux'
-    system "make"
+           "--prefix=#{CREW_PREFIX}",
+           "--localstatedir=#{CREW_PREFIX}/var/lib/vim",
+           '--with-features=huge',
+           "--with-compiledby='Chromebrew'",
+           '--with-x=yes',
+           '--enable-gui=gtk3',
+           '--enable-multibyte',
+           '--enable-cscope',
+           '--enable-fontset',
+           '--enable-perlinterp=dynamic',
+           '--enable-pythoninterp=dynamic',
+           '--enable-python3interp=dynamic',
+           '--enable-rubyinterp=dynamic',
+           '--disable-selinux'
+    system 'make'
   end
 
   def self.install
