@@ -5,6 +5,7 @@ require 'package'
 
 class Vulkan_headers < Package
   description 'Vulkan header files'
+  homepage 'https://github.com/KhronosGroup/Vulkan-Headers'
   version '1.2.157'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.2.157.tar.gz'
@@ -23,26 +24,21 @@ class Vulkan_headers < Package
      x86_64: '6bc64672860d7c8dc181d730b892ade24003e28b86102be78df28a6025d390b6',
   })
 
-  depends_on 'cmake'
-  depends_on 'git'
-  depends_on 'cmake' => ':build'
-  depends_on 'git' => ':build'
+  def self.build
+    Dir.mkdir 'build'
+    Dir.chdir 'build' do
+    system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
+      -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
+      -DCMAKE_BUILD_TYPE=Release \
+      .. && make"
+    end
+  end
 
-	def self.build
-		system 'mkdir build'
-		Dir.chdir ("build") do
-		system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-			-DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
-			-DCMAKE_BUILD_TYPE=Release \
-			.. && make"
-		end
-	end
-	
-	def self.install
-	Dir.chdir ("build") do
-		system 'make',
-			"DESTDIR=#{CREW_DEST_DIR}",
-			'install'
-		end
-	end
+  def self.install
+    Dir.chdir 'build' do
+      system 'make',
+        "DESTDIR=#{CREW_DEST_DIR}",
+        'install'
+    end
+  end
 end

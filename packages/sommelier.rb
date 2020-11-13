@@ -8,8 +8,6 @@ class Sommelier < Package
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
 
-# See merged at in source url to goto find actual tgz url used, which for some reason doesn't seem to have a stable sha256sum.
-
   depends_on 'mesa'
   depends_on 'xkbcomp'
   depends_on 'xorg_server' 

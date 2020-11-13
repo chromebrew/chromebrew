@@ -15,14 +15,13 @@ class Libfontenc < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libfontenc-1.1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '61404455c82859773af6254eeb7f7fa046535b153633598058514f8947bdf215',
-     armv7l: '61404455c82859773af6254eeb7f7fa046535b153633598058514f8947bdf215',
-       i686: '32ec43ea215a88f9419cad14cddb91bc47c3674aa010217b5891e5703fa94615',
-     x86_64: 'cce2468f805c856b31762a8e58e06516c6aa5c178c1fcb11ed1efe85b854c9ed',
+    aarch64: '435c3bc5faa5f9884f72b9d2e18ab9c5df8c20d4fbcde9f0fe56044f46c8282c',
+     armv7l: '435c3bc5faa5f9884f72b9d2e18ab9c5df8c20d4fbcde9f0fe56044f46c8282c',
+       i686: '8ec003098172eac92ac155ef84e6486df46f62a012dee51fc548ff4358559f73',
+     x86_64: '60dd2330462bd37bc69ba4ecafc2a0410e6eeeeffce41f6733f8b9ff7bf1d0b5',
   })
 
   depends_on 'xorg_proto'
-  depends_on 'zlibpkg'
 
   def self.build
     system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts/X11"

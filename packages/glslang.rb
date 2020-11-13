@@ -5,6 +5,7 @@ require 'package'
 
 class Glslang < Package
   description 'OpenGL and OpenGL ES shader front end and validator'
+  homepage 'https://github.com/KhronosGroup/glslang'
   version '8.13.3743'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/glslang/archive/8.13.3743.tar.gz'
@@ -25,7 +26,6 @@ class Glslang < Package
 
   def self.build
     system "./update_glslang_sources.py"
-    
     Dir.mkdir 'build-shared'
     Dir.chdir 'build-shared' do
       system "cmake .. \
@@ -36,7 +36,6 @@ class Glslang < Package
       -DBUILD_SHARED_LIBS=ON"
     end
     system 'ninja -C build-shared'
-    
     Dir.mkdir 'build-static'
     Dir.chdir 'build-static' do
     system "cmake .. \
@@ -50,7 +49,7 @@ class Glslang < Package
   end
 
   def self.install
-  system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-shared install"
-  system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-static install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-shared install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-static install"
   end
 end

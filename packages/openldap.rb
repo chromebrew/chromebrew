@@ -3,22 +3,22 @@ require 'package'
 class Openldap < Package
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  version '2.4.50'
+  version '2.4.55'
   compatibility 'all'
-  source_url 'https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.50.tgz'
-  source_sha256 '5cb57d958bf5c55a678c6a0f06821e0e5504d5a92e6a33240841fbca1db586b8'
+  source_url 'https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.55.tgz'
+  source_sha256 '97357bd6ba8ff73d204c1f8208c5e6ab97d60c9e779f989057aa1229bbe98434'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.50-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.50-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.50-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.50-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.55-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.55-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.55-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.55-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0267ada9d7a13d09de9ca7503f1fe6623262de74dd364cb3998e6ae30d583808',
-     armv7l: '0267ada9d7a13d09de9ca7503f1fe6623262de74dd364cb3998e6ae30d583808',
-       i686: '71df836d0590e3ab3c27b7bc0debac785b112615f2138a5e13e4d901b2b40413',
-     x86_64: '1c71f56cdecc230eaa5a5188b4141d71e84e61c77033b7c9f7aa5a0c60799049',
+    aarch64: '74dc2829acce8fdcbe7311e891cce3289023a78bca8989bec31af67094d9108b',
+     armv7l: '74dc2829acce8fdcbe7311e891cce3289023a78bca8989bec31af67094d9108b',
+       i686: '9015aa6b9ac67d7ad468ca39785a178a53a4aa71542b09529ab0708541086ecf',
+     x86_64: '9a98e25d5591422be9810c8fc61a58914dacaca6a99bee842ed2347a3364ca57',
   })
 
   depends_on 'libcyrussasl'

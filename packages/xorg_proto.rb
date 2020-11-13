@@ -15,25 +15,18 @@ class Xorg_proto < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '08d973f150fb2c4b421f50d2f9e960be4f23b8a096437a2e6b6c88ad15ea6138',
-     armv7l: '08d973f150fb2c4b421f50d2f9e960be4f23b8a096437a2e6b6c88ad15ea6138',
-       i686: '6c3b8c73f47cde6f77eaaec3bd25c5b9d9fdceb6c8a0e117ef35a32c3e7bc973',
-     x86_64: '57daeddeec66badd0a0090624cbd86ac16c6599a5cbeb2977546881ae45a0edb',
+    aarch64: '8c99dae5e47ef5735389580f52d19069ab720c7f652ecb92d82a02281c9cfbb9',
+     armv7l: '8c99dae5e47ef5735389580f52d19069ab720c7f652ecb92d82a02281c9cfbb9',
+       i686: '151dc0b0702a12d98ce943cd674c292580679a83b1419abed6e6f4f0f63b6223',
+     x86_64: 'd12a45f902322b2a5dbcf4aa5fffdd08dd8fb71eca4cb850f88237e81d202d21',
   })
 
-
-  depends_on 'meson' => ':build'
   depends_on 'llvm' => ':build'
   
   def self.build
     ENV['CC'] = 'clang'
     ENV['CXX'] = 'clang'
-    system "meson",
-	    "-Dprefix=#{CREW_PREFIX}",
-	    "-Dlibdir=#{CREW_LIB_PREFIX}",
-	    "-Ddatadir=#{CREW_LIB_PREFIX}",
-	    '-Dbuildtype=release',
-	    "build"
+    system "meson #{CREW_MESON_OPTIONS} build"
     system "meson configure build"
     system "ninja -C build"
   end
