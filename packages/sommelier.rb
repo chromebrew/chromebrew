@@ -80,12 +80,11 @@ export XDG_RUNTIME_DIR=/var/run/chrome
 UNAME_ARCH=$(uname -m)
 if [[ \"$UNAME_ARCH\" == 'x86_64' ]] || [[ \"$UNAME_ARCH\" == 'i686' ]]
 then
-  declare -a TEMP2
-  TEMP1=$(uname -r)
-  TEMP2=(${TEMP1//[.-]/ })
-  VERSION=$(((${TEMP2[0]} * 1000000)\
-        + (${TEMP2[1]} * 10000)\
-        + ${TEMP2[2]}))
+  declare -a VERTEMP
+  VERTEMP=$(uname -r | cut -d'-' -f1)
+  VERSION=$(((${VERTEMP2[0]} * 1000000)\
+        + (${VERTEMP2[1]} * 10000)\
+        + ${VERTEMP2[2]}))
   if [[ \"$VERSION\" -lt '4160000' ]]
   then
       export MESA_LOADER_DRIVER_OVERRIDE=i965
@@ -210,7 +209,7 @@ EOF"
     puts "echo 'if ! xdpyinfo -display \$DISPLAY &>/dev/null ; then stopsommelier && startsommelier; else startsommelier; fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
-    puts "To adjust environment variables, edit files in ~/.sommelier/".lightblue
+    puts "To adjust environment variables, edit files in ~/.sommelier.env".lightblue
     puts "e.g. You may need to adjust the SCALE environment variable to get the correct screen size.".lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
