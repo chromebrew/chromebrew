@@ -10,9 +10,25 @@ class Wine < Package
   source_sha256 'c2c284f470874b35228327c3972bc29c3a9d8d98abd71dbf81c288b8642becbc'
 
   depends_on 'bison'
-  depends_on 'sommelier'
   depends_on 'flex'
+  depends_on 'harfbuzz'
   depends_on 'freetype'
+  depends_on 'glib'
+  depends_on 'zlibpkg'
+  depends_on 'ncurses'
+  depends_on 'libgphoto'
+  depends_on 'libxext'
+  depends_on 'eudev'
+  depends_on 'libxml2'
+  depends_on 'gstreamer'
+  depends_on 'lcms'
+  depends_on 'openldap'
+  depends_on 'libpcap'
+  depends_on 'apulse'
+  depends_on 'pulseaudio'
+  depends_on 'mpg123'
+  depends_on 'sommelier'
+
 
   def self.build
     case ARCH
