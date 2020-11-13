@@ -32,7 +32,7 @@ class Sommelier < Package
   def self.build
     # There is no good way to checksum the googlesource tgz file, as they appear to be generated on the fly
     # and checksums vary with each download.
-    system 'curl https://chromium.googlesource.com/chromiumos/platform2/+archive/c6f85a3472584df37fcf2d3d99474081f29256cd.tar.gz | tar mzx --warning=no-timestamp'
+    system 'curl -L https://chromium.googlesource.com/chromiumos/platform2/+archive/c6f85a3472584df37fcf2d3d99474081f29256cd.tar.gz | tar mzx --warning=no-timestamp'
     Dir.chdir ("vm_tools/sommelier") do
     
     # Google's sommelier expects to find virtwl.h in their kernel source includes, but we may not have
@@ -66,7 +66,7 @@ class Sommelier < Package
     system "ninja -C build"
     
     Dir.chdir ("build") do
-      system 'curl "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
+      system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
       
       system "cat <<'EOF'> .sommelier.env
 #!/bin/bash
