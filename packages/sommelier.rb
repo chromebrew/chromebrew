@@ -208,7 +208,7 @@ EOF"
     puts "echo 'if ! xdpyinfo -display \$DISPLAY &>/dev/null ; then stopsommelier && startsommelier; else startsommelier; fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
-    puts "To adjust environment variables, edit files in ~/.sommelier.env".lightblue
+    puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
     puts "e.g. You may need to adjust the SCALE environment variable to get the correct screen size.".lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
