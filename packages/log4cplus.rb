@@ -3,30 +3,30 @@ require 'package'
 class Log4cplus < Package
   description 'log4cplus is a simple to use C++ logging API providing thread-safe, flexible, and arbitrarily granular control over log management and configuration.'
   homepage 'https://sourceforge.net/projects/log4cplus/'
-  version '1.2.1-rc2'
+  version '2.0.5'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/log4cplus/log4cplus-stable/1.2.1/log4cplus-1.2.1-rc2.tar.xz'
-  source_sha256 '44119e4406f22007580fd0c9504cf4c4bf1ed365aef42b177c48267aa1a45178'
+  source_url 'https://downloads.sourceforge.net/project/log4cplus/log4cplus-stable/2.0.5/log4cplus-2.0.5.tar.xz'
+  source_sha256 '6046f0867ce4734f298418c7b7db0d35c27403090bb751d98e6e76aa4935f1af'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-1.2.1-rc2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-1.2.1-rc2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-1.2.1-rc2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-1.2.1-rc2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0951d2e004cc0e4d1f229b6fe488dd352dd7807260c0cbc3a74080e750434b8a',
-     armv7l: '0951d2e004cc0e4d1f229b6fe488dd352dd7807260c0cbc3a74080e750434b8a',
-       i686: 'b84046cf5bb25cdac7981c8c546d22a3b84004a6ea5f5d823e7e665afdbfbd26',
-     x86_64: '55f88fa25c4a676d8ef07cd32228cfcb552b643fc6437a400cbb56e6e358b385',
+    aarch64: '4bab42054f71f29b8c3f6711ed6ca465de3a4a82b796f598f1a39d3af5187dd6',
+     armv7l: '4bab42054f71f29b8c3f6711ed6ca465de3a4a82b796f598f1a39d3af5187dd6',
+       i686: 'b4ccfd3eb86de7a875e4168b39221c338321262054a16d01eda42a3dec5a484a',
+     x86_64: '543f5fd76ecaeeb6dcad62035fd8bb32f3f95a2afef36bca971da22e208557d0',
   })
 
   def self.build
-    system "./configure --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
