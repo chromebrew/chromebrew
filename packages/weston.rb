@@ -33,7 +33,7 @@ class Weston < Package
     system 'ninja -C build'
     system "cat <<'EOF'> weston.ini
 [core]
-'xwayland=true
+xwayland=true
 
 [terminal]
 font=Cousine
