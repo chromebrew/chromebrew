@@ -11,6 +11,7 @@ class Sommelier < Package
   depends_on 'mesa'
   depends_on 'xkbcomp'
   depends_on 'xorg_server' unless File.exists? "#{CREW_PREFIX}/bin/Xwayland.elf"
+  depends_on 'xwayland'
   depends_on 'psmisc'
   depends_on 'vim' # Until there is a standalone package providing xxd
   depends_on 'xdpyinfo'
