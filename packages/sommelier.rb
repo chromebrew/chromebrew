@@ -121,7 +121,7 @@ EOF"
 #!/bin/bash
 pkill -f sommelier.elf &>/dev/null
 set -a && source ~/.sommelier.env && set +a
-sudo rm /var/run/chrome/wayland-1*
+sudo rm \${XDG_RUNTIME_DIR}/wayland-1*
 DISPLAY=\"\${DISPLAY//:}\"
 DISPLAY=\"\${DISPLAY:0:2}\"
 sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
