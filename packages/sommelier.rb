@@ -81,9 +81,9 @@ if [[ \"$UNAME_ARCH\" == 'x86_64' ]] || [[ \"$UNAME_ARCH\" == 'i686' ]]
 then
   declare -a VERTEMP
   VERTEMP=$(uname -r | cut -d'-' -f1)
-  VERSION=$(((${VERTEMP2[0]} * 1000000)\
-        + (${VERTEMP2[1]} * 10000)\
-        + ${VERTEMP2[2]}))
+  VERSION=$(((${VERTEMP[0]} * 1000000)\
+        + (${VERTEMP[1]} * 10000)\
+        + ${VERTEMP[2]}))
   if [[ \"$VERSION\" -lt '4160000' ]]
   then
       export MESA_LOADER_DRIVER_OVERRIDE=i965
