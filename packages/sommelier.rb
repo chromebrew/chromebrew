@@ -82,8 +82,8 @@ then
   declare -a VERTEMP
   TEMP1=$(uname -r)
   VERTEMP=(${TEMP1//[.-]/ })
-  VERSION=$(((${VERTEMP[0]} * 1000000)\
-        + (${VERTEMP[1]} * 10000)\
+  VERSION=$(((${VERTEMP[0]} * 1000000)\\
+        + (${VERTEMP[1]} * 10000)\\
         + ${VERTEMP[2]}))
   if [[ \"$VERSION\" -lt '4160000' ]]
   then
