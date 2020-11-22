@@ -2219,6 +2219,11 @@ url: https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/
 activity: none
 ---
 kind: url
+name: jdk11
+url: http://www.oracle.com/technetwork/java/javase/downloads/
+activity: low
+---
+kind: url
 name: jdk8
 url: http://www.oracle.com/technetwork/java/javase/downloads/
 activity: low
@@ -3529,6 +3534,11 @@ url: https://releases.llvm.org/
 activity: low
 ---
 kind: url
+name: log4c
+url: https://sourceforge.net/projects/log4c/files/log4c/
+activity: none
+---
+kind: url
 name: log4cplus
 url: https://sourceforge.net/projects/log4cplus/files/log4cplus-stable/
 activity: medium
@@ -4114,6 +4124,11 @@ url: https://github.com/creationix/nvm/releases
 activity: medium
 ---
 kind: url
+name: obconf
+url: http://openbox.org/wiki/Openbox:Download
+activity: none
+---
+kind: url
 name: obs
 url: https://github.com/obsproject/obs-studio/releases
 activity: medium
@@ -4162,6 +4177,11 @@ kind: url
 name: openblas
 url: https://github.com/xianyi/OpenBLAS/releases
 activity: medium
+---
+kind: url
+name: openbox
+url: http://openbox.org/wiki/Openbox:Download
+activity: none
 ---
 kind: url
 name: openconnect
