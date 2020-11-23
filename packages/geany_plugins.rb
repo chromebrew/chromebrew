@@ -1,7 +1,7 @@
 require 'package'
 
 class Geany_plugins < Package
-  description 'Geany is a small and lightweight Integrated Development Environment.'
+  description 'Geany plugins.'
   homepage 'https://www.geany.org/'
   version '1.37'
   compatibility 'aarch64,armv7l,x86_64'
