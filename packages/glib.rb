@@ -11,7 +11,6 @@ class Glib < Package
 
   depends_on 'util_linux'
   depends_on 'six'
-  depends_on 'libiconv'
   
   ENV['LDFLAGS'] = "-liconv"
 
