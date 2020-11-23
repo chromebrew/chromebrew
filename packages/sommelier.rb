@@ -69,13 +69,15 @@ class Sommelier < Package
       
       system "cat <<'EOF'> .sommelier.env
 #!/bin/bash
-export CLUTTER_BACKEND=wayland
-export DISPLAY=:0
-export GDK_BACKEND=x11
-export SCALE=0.5
-export SOMMELIER_ACCELERATORS=\"Super_L,<Alt>bracketleft,<Alt>bracketright\"
-export WAYLAND_DISPLAY=wayland-1
-export XDG_RUNTIME_DIR=/var/run/chrome
+shopt -os allexport
+CLUTTER_BACKEND=wayland
+DISPLAY=:0
+GDK_BACKEND=x11
+SCALE=0.5
+SOMMELIER_ACCELERATORS=\"Super_L,<Alt>bracketleft,<Alt>bracketright\"
+WAYLAND_DISPLAY=wayland-1
+XDG_RUNTIME_DIR=/var/run/chrome
+shopt -ou allexport
 UNAME_ARCH=$(uname -m)
 if [[ \"$UNAME_ARCH\" == 'x86_64' ]] || [[ \"$UNAME_ARCH\" == 'i686' ]]
 then
