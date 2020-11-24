@@ -5,8 +5,8 @@ class Xwayland < Package
   homepage 'https://x.org'
   version '1.20.9-1'
   # Using xorg ToT due to large number of recent xwayland commits.
-  source_url 'https://github.com/freedesktop/xorg-xserver/archive/28ed4b95e90fb225fc32cfdce16df603ab600fcd.zip'
-  source_sha256 'e1311bdcaaf0fc61103804c5b4698679f4bac7a0dae97c2ac03dd32cb3cd0640'
+  source_url 'https://github.com/freedesktop/xorg-xserver/archive/d18dcecbe08a9ff22e43f12b6b7679a6ef1a6eb0.zip'
+  source_sha256 '091edf47059adfa09242906db97e1d9d44dc6557efde4af861a7055975fa55ce'
 
   
   depends_on 'libepoxy'
@@ -41,73 +41,41 @@ class Xwayland < Package
     filename_patch1 = 'patch1_base64'
     sha256sum_patch1 = '16f5d5d1986daf07b4e0f01eb0e68b53d8ef301d169f3cc9493158c8b4987f16'
 
-    if File.exist?(filename_patch1) && Digest::SHA256.hexdigest( File.read("./#{filename_patch1}") ) == sha256sum_patch1
-      puts "Unpacking patch1 source code".yellow
-    else
-      puts "Downloading patch1".yellow
-      system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch1, '-o', filename_patch1)
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read("./#{filename_patch1}") ) == sha256sum_patch1
-      puts "patch1 archive downloaded".lightgreen
-      system 'base64 --decode patch1_base64 > patch1'
-      system 'patch -p 1 < patch1'
-    end
-    
+    puts "Downloading patch1".yellow
+    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch1, '-o', filename_patch1)
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless
+      Digest::SHA256.hexdigest( File.read( filename_patch1 ) ) == sha256sum_patch1
+    puts "patch1 archive downloaded".lightgreen
+    system 'base64 --decode patch1_base64 > patch1'
+    system 'patch -p 1 < patch1'
 
     url_patch2 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-Fall-back-to-gbm_bo_create-if-no-modifiers-.patch?format=TEXT"
     uri_patch2 = URI.parse url_patch2
     filename_patch2 = 'patch2_base64'
     sha256sum_patch2 = 'd44bfca0e26ca06892b37b12faca2a6756cdc2455aac36ac7607bfa188856b35'
 
-    if File.exist?(filename_patch2) && Digest::SHA256.hexdigest( File.read("./#{filename_patch2}") ) == sha256sum_patch2
-      puts "Unpacking patch2 source code".yellow
-    else
-      puts "Downloading patch2".yellow
-      system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch2, '-o', filename_patch2)
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read("./#{filename_patch2}") ) == sha256sum_patch2
-      puts "patch2 archive downloaded".lightgreen
-      system 'base64 --decode patch2_base64 > patch2'
-      system 'patch -p 1 < patch2'
-    end
+    puts "Downloading patch2".yellow
+    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch2, '-o', filename_patch2)
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless
+      Digest::SHA256.hexdigest( File.read( filename_patch2 ) ) == sha256sum_patch2
+    puts "patch2 archive downloaded".lightgreen
+    system 'base64 --decode patch2_base64 > patch2'
+    system 'patch -p 1 < patch2'
+
     
     url_patch3 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-sysmacros.patch?format=TEXT"
     uri_patch3 = URI.parse url_patch3
     filename_patch3 = 'patch3_base64'
     sha256sum_patch3 = 'b66eb66cc8023ab2170db91e4d6038dca99b814addfcb0977d30479a2e514ab8'
 
-    if File.exist?(filename_patch3) && Digest::SHA256.hexdigest( File.read("./#{filename_patch3}") ) == sha256sum_patch3
-      puts "Unpacking patch3 source code".yellow
-    else
-      puts "Downloading patch3".yellow
-      system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch3, '-o', filename_patch3)
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read("./#{filename_patch3}") ) == sha256sum_patch3
-      puts "patch3 archive downloaded".lightgreen
-      system 'base64 --decode patch3_base64 > patch3'
-      system 'patch -F 10 --force -p 1 < patch3'
-    end
-
-    url_patch4 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-virtwl-with-dmabuf-for-1.20.1.patch?format=TEXT"
-    uri_patch4 = URI.parse url_patch4
-    filename_patch4 = 'patch4_base64'
-    sha256sum_patch4 = '4d17671d40ccc4788bc977c82c5f2cda74a0c15d1d7c6a1c58ebe0357c4273cd'
-
-    if File.exist?(filename_patch4) && Digest::SHA256.hexdigest( File.read("./#{filename_patch4}") ) == sha256sum_patch4
-      puts "Unpacking patch4 source code".yellow
-    else
-      puts "Downloading patch4".yellow
-      system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch4, '-o', filename_patch4)
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read("./#{filename_patch4}") ) == sha256sum_patch4
-      puts "patch4 archive downloaded".lightgreen
-      system 'base64 --decode patch4_base64 > patch4'
-      system "sed -i \"s/xwayland.c\\b/xwayland-screen.c/\" patch4"
-      system "sed -i \"s/xwayland.h\\b/xwayland-glamor.h/\" patch4"
-      system "cat patch4"
-      system 'patch --dry-run --force -F 100 -p 1 < patch4 || true'
-      system "sed -i \"/Bool (\*allow_commits)(struct xwl_window \*xwl_window)/a struct wl_drm \*(*get_wl_drm_interface)(struct xwl_screen \*xwl_screen);\" hw/xwayland/xwayland-glamor.h"
-    end
+    puts "Downloading patch3".yellow
+    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch3, '-o', filename_patch3)
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless
+      Digest::SHA256.hexdigest( File.read( filename_patch3 ) ) == sha256sum_patch3
+    puts "patch3 archive downloaded".lightgreen
+    system 'base64 --decode patch3_base64 > patch3'
+    system 'patch -F 10 --force -p 1 < patch3'
+  
   end
 
   case ARCH
@@ -118,7 +86,6 @@ class Xwayland < Package
    when 'x86_64'
       PEER_CMD_PREFIX='/lib64/ld-linux-x86-64.so.2'
   end
-    
 
   def self.build
       ENV['CFLAGS'] = "-fuse-ld=lld"
