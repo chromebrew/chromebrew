@@ -40,21 +40,16 @@ class Sommelier < Package
     ######################### Download virtwl.h from Chromium 5.4 kernel tree ###########################################
     url_virtwl = "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d641a7b7b64664230d2fd2aa1e74dd792b8b7bf/include/uapi/linux/virtwl.h?format=TEXT"
     uri_virtwl = URI.parse url_virtwl
-    #filename_virtwl = File.basename(uri_virtwl.path)
     filename_virtwl = 'virtwl.h_base64'
     sha256sum_virtwl = 'a8215f4946ccf30cbd61fcf2ecc4edfe6d05bffeee0bacadd910455274955446'
     
-    if File.exist?(filename_virtwl) && Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
-      puts "Unpacking virtwl source code".yellow
-    else
-      puts "Downloading virtwl".yellow
-      system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
-      puts "virtwl archive downloaded".lightgreen
-      FileUtils.mkdir_p 'build/linux'
-      system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'
-    end    
+    puts "Downloading virtwl".yellow
+    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless
+      Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
+    puts "virtwl archive downloaded".lightgreen
+    FileUtils.mkdir_p 'build/linux'
+    system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'   
     
     # Patch to avoid error with GCC > 9.x
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
