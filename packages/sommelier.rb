@@ -122,40 +122,67 @@ EOF"
       # sommelierd
       system "cat <<'EOF'> sommelierd
 #!/bin/bash
-pkill -f sommelier.elf &>/dev/null
 set -a && source ~/.sommelier.env && set +a
+mkdir -p #{CREW_PREFIX}/var/{log,run}
+checksommelierwayland () {
+  /sbin/ss --unix -a -p | grep \$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid) &>/dev/null
+}
+checksommelierxwayland () {
+  xdpyinfo -display \$DISPLAY &>/dev/null
+}
+# As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
+# One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
+# in ChromeOS's wayland compositor.
+if ! checksommelierwayland ; then
+pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
 sudo rm \${XDG_RUNTIME_DIR}/wayland-1*
+sommelier --master --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
+echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
+fi
+if ! checksommelierxwayland; then
+pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
+[[ ! -d /tmp/.X11-unix ]] && mkdir /tmp/.X11-unix
+sudo chmod -R 1777 /tmp/.X11-unix
+sudo chown root:root /tmp/.X11-unix
 DISPLAY=\"\${DISPLAY//:}\"
 DISPLAY=\"\${DISPLAY:0:2}\"
 sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
-mkdir -p #{CREW_PREFIX}/var/log
-# As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
-# One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
-# in ChromeOS's wayland compositor.   
-sommelier --master --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
 sommelier -X --x-display=:\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add :$DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>#{CREW_PREFIX}/var/log/sommelier.log
+echo \$! >#{CREW_PREFIX}/var/run/sommelier-xwayland.pid
+xhost +si:localuser:root &>/dev/null
+fi
 EOF"
 
       # startsommelier
        system "cat <<'EOF'> startsommelier
 #!/bin/bash
-SOMM=$(pgrep -fc sommelier.elf 2> /dev/null)
-if [[ \"$SOMM\" == \"0\" ]]; then
+set -a && source ~/.sommelier.env &>/dev/null && set +a
+checksommelierwayland () {
+  /sbin/ss --unix -a -p | grep \$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid) &>/dev/null
+}
+checksommelierxwayland () {
+  xdpyinfo -display \$DISPLAY &>/dev/null
+}
+if ! checksommelierwayland || ! checksommelierxwayland ; then
   [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
   #{CREW_PREFIX}/sbin/sommelierd > /dev/null 2>&1 &
 fi
 wait=3
-until [[ \"$(pgrep -fc sommelier.elf)\" == \"2\" ]]
+until checksommelierwayland && checksommelierxwayland
 do
   [[ \"$wait\" -le \"0\" ]] && break
   (( wait = wait - 1 ))
-sleep 1
+  sleep 1
 done
-SOMMPIDS=$(pgrep -f sommelier.elf 2> /dev/null)
-if [[ \"$(pgrep -fc sommelier.elf 2> /dev/null)\" == \"2\" ]]; then
-  echo \"sommelier processes running: $(echo $SOMMPIDS)\"
+SOMMWPIDS=\$(pgrep -f \"sommelier.elf --master\" 2> /dev/null)
+SOMMWPROCS=\$(pgrep -fa \"sommelier.elf --master\" 2> /dev/null)
+SOMMXPIDS=\$(pgrep -f \"sommelier.elf -X\" 2> /dev/null)
+SOMMXPROCS=\$(pgrep -fa \"sommelier.elf -X\" 2> /dev/null)
+if checksommelierwayland && checksommelierxwayland ; then
+  echo -e \"sommelier processes running: \$(echo \$SOMMWPIDS \$SOMMXPIDS)\"
 else
-  echo \"sommelier failed to start\"
+  echo \"some sommelier processes failed to start\"
+  echo -e \"sommelier processes running: \$SOMMWPROCS \\n \$SOMMXPROCS\"
   exit 1
 fi
 EOF"
@@ -163,9 +190,11 @@ EOF"
       # stopsommelier
       system "cat <<'EOF'> stopsommelier
 #!/bin/bash
-SOMM=$(pgrep -fc sommelier.elf 2> /dev/null)
+SOMM=\$(pgrep -fc sommelier.elf 2> /dev/null)
 if [[ \"$SOMM\" -gt \"0\" ]]; then
   pkill -f sommelier.elf &>/dev/null
+  pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
+  pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
 else
   exit 0
 fi
@@ -205,15 +234,10 @@ EOF"
   def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
-    puts "echo '# Sommelier environment variables + daemon' >> ~/.bashrc".lightblue
+    puts "echo '# Sommelier envronment variables + daemon' >> ~/.bashrc".lightblue
     puts "echo '# See https://github.com/dnschneid/crouton/wiki/Sommelier-(A-more-native-alternative-to-xiwi)' >> ~/.bashrc".lightblue
-    puts "echo 'if [ ! -d /tmp/.X11-unix ]; then' >> ~/.bashrc".lightblue
-    puts "echo 'mkdir /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "echo 'sudo chmod -R 1777 /tmp/.X11-unix' >> ~/.bashrc".lightblue
-    puts "echo 'sudo chown root:root /tmp/.X11-unix' >> ~/.bashrc".lightblue
     puts "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc".lightblue
-    puts "echo 'if ! xdpyinfo -display \$DISPLAY &>/dev/null ; then stopsommelier && startsommelier; else startsommelier; fi' >> ~/.bashrc".lightblue
+    puts "echo 'startsommelier' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
     puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
