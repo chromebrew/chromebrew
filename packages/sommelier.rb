@@ -44,23 +44,30 @@ class Sommelier < Package
     filename_virtwl = 'virtwl.h_base64'
     sha256sum_virtwl = 'a8215f4946ccf30cbd61fcf2ecc4edfe6d05bffeee0bacadd910455274955446'
     
-    if File.exist?(filename_virtwl) && Digest::SHA256.hexdigest( File.read("./#{filename_virtwl}") ) == sha256sum_virtwl
+    if File.exist?(filename_virtwl) && Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
       puts "Unpacking virtwl source code".yellow
     else
       puts "Downloading virtwl".yellow
       system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read("./#{filename_virtwl}") ) == sha256sum_virtwl
+        Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
       puts "virtwl archive downloaded".lightgreen
-      system 'mkdir -p build/linux'
+      FileUtils.mkdir_p 'build/linux'
       system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'
     end    
+    
+    # Patch to avoid error with GCC > 9.x
+    # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
+    system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
     
     # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     
-    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" build"
+    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
+    -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
+    -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
+    -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" build"
     system "meson configure build"
     system "ninja -C build"
     
@@ -228,30 +235,33 @@ EOF"
         system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
 
       end
-    end
+    en
   end
   
   def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
-    puts "echo '# Sommelier envronment variables + daemon' >> ~/.bashrc".lightblue
+    puts "echo '# Sommelier environment variables + daemon' >> ~/.bashrc".lightblue
     puts "echo '# See https://github.com/dnschneid/crouton/wiki/Sommelier-(A-more-native-alternative-to-xiwi)' >> ~/.bashrc".lightblue
     puts "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc".lightblue
     puts "echo 'startsommelier' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
     puts
     puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
-    puts "e.g. You may need to adjust the SCALE environment variable to get the correct screen size.".lightblue
+    puts "e.g. You may need to adjust the SCALE environment variable to".lightblue
+    puts "get the correct screen size.".lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
     puts "To stop the sommelier daemon, run 'stopsommelier'".lightblue
     puts "To restart the sommelier daemon, run 'restartsommelier'".lightblue
     puts
-    puts "Please be aware that gui applications may not work without the sommelier daemon running.".orange
+    puts "Please be aware that gui applications may not work without the".orange
+    puts "sommelier daemon running.".orange
     puts
-    puts "The sommelier daemon may also have to be restarted with 'restartsommelier' after waking your device.".red
+    puts "The sommelier daemon may also have to be restarted with".orange
+    puts "'restartsommelier'after waking your device.".orange
     puts
-    puts "If you are upgrading from an earlier version of sommelier, run 'restartsommelier' .".orange
-    puts
+    puts "(If you are upgrading from an earlier version of sommelier,".orange
+    puts "also run 'restartsommelier'.)".orange
   end
 end
