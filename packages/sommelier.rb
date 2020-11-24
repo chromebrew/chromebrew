@@ -47,7 +47,7 @@ class Sommelier < Package
     system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
-    puts "virtwl archive downloaded".lightgreen
+    puts "virtwl base64 downloaded".lightgreen
     FileUtils.mkdir_p 'build/linux'
     system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'   
     
@@ -230,7 +230,7 @@ EOF"
         system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
 
       end
-    en
+    end
   end
   
   def self.postinstall
