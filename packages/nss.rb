@@ -15,13 +15,14 @@ class Nss < Package
 
   def self.build
     Dir.chdir 'nss' do
-      system "CPPFLAGS='-I#{CRW_PREFIX}/include/nspr' ./build.sh --opt --gcc --system-nspr --system-sqlite --disable-tests"
+      system "CPPFLAGS='-I#{CREW_PREFIX}/include/nspr' ./build.sh --opt --gcc --system-nspr --system-sqlite --disable-tests"
     end
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/nss"
-    system "mv dist/Release/lib dist/Release/#{ARCH_LIB}" unless "#{ARCH_LIB}" == "lib"
+    system "rm dist/Release/lib/*.so.TOC"
+    FileUtils.mv "dist/Release/lib","dist/Release/#{ARCH_LIB}" unless "#{ARCH_LIB}" == "lib"
     system "cp -a dist/Release/* #{CREW_DEST_PREFIX}"
     system "cp -a dist/public/nss/* #{CREW_DEST_PREFIX}/include/nss/"
   end
