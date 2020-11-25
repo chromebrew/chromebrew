@@ -86,6 +86,12 @@ if [ ! -f "${CREW_PREFIX}/bin/ruby" ]; then
 fi
 EOF'
 
+    system 'cat << "EOF" > ruby_safe
+#!/bin/bash
+ruby --version &>/dev/null || crewfix
+exec ruby "$@"
+EOF'
+    
     system 'cat << "EOF" > gcc_switcher
 #!/bin/bash
 gccver=$(gcc -v 2>&1 | tail -1 | cut -d" " -f3)
@@ -143,13 +149,15 @@ EOF'
 
   def self.install
     system "install -Dm755 crewfix #{CREW_DEST_PREFIX}/bin/crewfix"
+    system "install -Dm755 ruby_safe #{CREW_DEST_PREFIX}/bin/ruby_safe"
     system "install -Dm755 gcc_switcher #{CREW_DEST_PREFIX}/bin/gcc_switcher"
   end
 
   def self.postinstall
-    puts "This package contains two scripts:".lightblue
+    puts "This package contains three scripts:".lightblue
     puts
     puts "crewfix - Repairs the crew command if gcc is removed".lightblue
+    puts "ruby_safe - Runs crewfix if gcc is removed & ruby is invoked".lightblue
     puts "gcc_switcher - Allows switching between gcc versions".lightblue
     puts
     puts "In most cases, you will only need to use the gcc_switcher command.".lightblue
