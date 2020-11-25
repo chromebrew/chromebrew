@@ -14,6 +14,17 @@ class Geany < Package
     depends_on 'sommelier'
   end
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/geany-1.37-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/geany-1.37-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/geany-1.37-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'bbdb1255d7ce63c4261ebfd53bae0639f898e71adaba836783c429ea962e071b',
+     armv7l: 'bbdb1255d7ce63c4261ebfd53bae0639f898e71adaba836783c429ea962e071b',
+     x86_64: 'eb7e491ae1c62a634ce3a28f3ecf55dacce765ed2140098d1236799f15383380',
+  })
+
   def self.build
     system "./configure #{CREW_OPTIONS} --enable-api-docs=no --enable-html-docs=no --enable-pdf-docs=no"
     system 'make'
