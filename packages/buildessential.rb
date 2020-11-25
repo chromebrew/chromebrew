@@ -9,8 +9,6 @@ class Buildessential < Package
   is_fake
 
 
-  #use a newer version of bash
-  depends_on 'bash'
   #install first to get ldconfig
   depends_on 'glibc'
   depends_on 'gcc10'
