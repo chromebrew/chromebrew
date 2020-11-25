@@ -3,7 +3,7 @@ require 'package'
 class Wayland < Package
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  version '1.18.0'
+  version '1.18.0-1'
   compatibility 'all'
   source_url 'https://wayland.freedesktop.org/releases/wayland-1.18.0.tar.xz'
   source_sha256 '4675a79f091020817a98fd0484e7208c8762242266967f55a67776936c2e294d'
@@ -23,6 +23,7 @@ class Wayland < Package
 
   depends_on 'libpng'
   depends_on 'libxslt'
+  depends_on 'libffi'
   # depends_on 'graphviz' => :build # GraphViz doesn't have PNG support enabled
 
   def self.build
