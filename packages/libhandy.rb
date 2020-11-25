@@ -21,3 +21,4 @@ class Libhandy < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
+end
