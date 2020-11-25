@@ -10,9 +10,9 @@ class Mpfr < Package
 
   def self.build
     system "./configure", # don't use CREW_OPTIONS as --libdir will cause error
-           "--build=x86_64-cros-linux-gnu", 
-           "--host=x86_64-cros-linux-gnu",
-           "--target=x86_64-cros-linux-gnu/lib/libmpfr.so.6.1.0",
+           "--build=`uname -m`-cros-linux-gnu", 
+           "--host=`uname -m`-cros-linux-gnu",
+           "--target=`uname -m`-cros-linux-gnu/lib/libmpfr.so.6.1.0",
            "--disable-static",
            "--enable-shared"
     system 'make'
