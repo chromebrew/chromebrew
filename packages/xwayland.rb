@@ -9,6 +9,16 @@ class Xwayland < Package
   source_url 'https://github.com/freedesktop/xorg-xserver/archive/d18dcecbe08a9ff22e43f12b6b7679a6ef1a6eb0.zip'
   source_sha256 '091edf47059adfa09242906db97e1d9d44dc6557efde4af861a7055975fa55ce'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.9-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.9-1-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.9-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '09a2f25dadcdf4d04bd7939daccef4286540dc17da05f96dd27001d5e29e64bd',
+     armv7l: '09a2f25dadcdf4d04bd7939daccef4286540dc17da05f96dd27001d5e29e64bd',
+     x86_64: '5d88e6eead59c165464489aee67fa8a28005ec2e407d5d3e042bde27beeb1c9a',
+  })
   
   depends_on 'libepoxy'
   depends_on 'xorg_proto'
