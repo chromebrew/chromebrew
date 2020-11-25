@@ -4,6 +4,7 @@ class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
   version '1.20.9-1'
+  compatibility 'all'
   # Using xorg ToT due to large number of recent xwayland commits.
   source_url 'https://github.com/freedesktop/xorg-xserver/archive/d18dcecbe08a9ff22e43f12b6b7679a6ef1a6eb0.zip'
   source_sha256 '091edf47059adfa09242906db97e1d9d44dc6557efde4af861a7055975fa55ce'
