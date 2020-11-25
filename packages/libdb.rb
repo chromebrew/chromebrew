@@ -2,10 +2,10 @@ require 'package'
 
 class Libdb < Package
   description 'Berkeley DB is a family of embedded key-value database libraries providing scalable high-performance data management services to applications.'
-  homepage 'http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html'
+  homepage 'https://github.com/berkeleydb/libdb'
   version '5.3.28'
   compatibility 'all'
-  source_url 'http://deb.debian.org/debian/pool/main/d/db5.3/db5.3_5.3.28+dfsg1.orig.tar.xz'
+  source_url 'https://github.com/berkeleydb/libdb/releases/download/v5.3.28/db-5.3.28.tar.gz'
   source_sha256 'b19bf3dd8ce74b95a7b215be9a7c8489e8e8f18da60d64d6340a06e75f497749'
 
 
