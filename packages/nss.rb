@@ -23,7 +23,7 @@ class Nss < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/nss"
     system "rm dist/Release/lib/*.so.TOC"
     FileUtils.mv "dist/Release/lib","dist/Release/#{ARCH_LIB}" unless "#{ARCH_LIB}" == "lib"
-    system "cp -a dist/Release/* #{CREW_DEST_PREFIX}"
-    system "cp -a dist/public/nss/* #{CREW_DEST_PREFIX}/include/nss/"
+    FileUtils.cp_r Dir.glob('dist/Release/*'), "#{CREW_DEST_PREFIX}"
+    FileUtils.cp_r Dir.glob('dist/public/nss/*'), "#{CREW_DEST_PREFIX}/include/nss/"
   end
 end
