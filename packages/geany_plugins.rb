@@ -12,7 +12,16 @@ class Geany_plugins < Package
     depends_on 'geany'
   end
 
-
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/geany_plugins-1.37-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/geany_plugins-1.37-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/geany_plugins-1.37-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '08e0bf95bf7dbf8accb343c29f574513fbcd27259ec967fc4254fe9a8ec2c726',
+     armv7l: '08e0bf95bf7dbf8accb343c29f574513fbcd27259ec967fc4254fe9a8ec2c726',
+     x86_64: 'b18fe4b41730a581e3c3611887d64e44f0514af7e79070a3b3256c7933e05167',
+  })
 
   def self.build
     system "./configure #{CREW_OPTIONS}"
@@ -26,5 +35,4 @@ class Geany_plugins < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-
 end
