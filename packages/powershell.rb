@@ -6,12 +6,9 @@ class Powershell < Package
   version '7.0.3'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
-  when 'armv7l'
+  when 'armv7l', 'aarch64'
     source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell-7.0.3-linux-arm32.tar.gz'
     source_sha256 'fe6da9f90fd5026c4ab446a31f565144342a8d507a73d428305bc36c1ad92644'
-  when 'aarch64'
-    source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell-7.0.3-linux-arm64.tar.gz'
-    source_sha256 'b5b6db3e5605a6a7675809cd49573f352e1eb6ca9d65890edda1b3f27a8ada56'
   when 'x86_64'
     source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell-7.0.3-linux-x64.tar.gz'
     source_sha256 'a9c023940c77a96a9f5135309e44c93ed627983bb1a66ecf5beb42bbba54ead6'
