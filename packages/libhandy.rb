@@ -9,6 +9,8 @@ class Libhandy < Package
   source_sha256 '5b1ceebf80a82bb56804370d88481b8a4affe5d33f13a7fd06905135cceaaf88'
 
 
+  depends_on 'vala'
+  
   def self.prebuild
     system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
   end
