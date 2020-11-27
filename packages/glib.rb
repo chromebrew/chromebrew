@@ -15,7 +15,7 @@ class Glib < Package
   depends_on 'util_linux'
   depends_on 'six'
   
-  ENV['CFLAGS'] = "-fno-stack-protector"
+  ENV['CFLAGS'] = "-fstack-protector"
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
     -Dselinux=disabled \
