@@ -1,24 +1,24 @@
 require 'package'
 
-class Php74 < Package
+class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.4.14'
+  version '8.0.1'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.4.14.tar.xz'
-  source_sha256 'f9f3c37969fcd9006c1dbb1dd76ab53f28c698a1646fa2dde8547c3f45e02886'
+  source_url 'https://www.php.net/distributions/php-8.0.1.tar.xz'
+  source_sha256 '208b3330af881b44a6a8c6858d569c72db78dab97810332978cc65206b0ec2dc'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '373b05eba1f007ded360c8defecd2332fdf3ae2f7d414df99bf8a4ee30b73c87',
-     armv7l: '373b05eba1f007ded360c8defecd2332fdf3ae2f7d414df99bf8a4ee30b73c87',
-       i686: '82bd8cbd7310d263d1b8b8bfe119e7c4e0691e59592f3013e9a29aa64f230266',
-     x86_64: '935023f34aab603a46407fc46ebaf20bb113b46c8dc94215e6b28e5c23dfe905',
+    aarch64: '306a4aab3a2c6a2205dbdc2b46d7c2273213a241aac1d5b1c2688565446857f4',
+     armv7l: '306a4aab3a2c6a2205dbdc2b46d7c2273213a241aac1d5b1c2688565446857f4',
+       i686: 'd13cef8c05f4047ade9ad999d141001aeeb59de811538164a9f61ac4200a086f',
+     x86_64: '83d1745513cf409f040ace6cf56c20d37891c9b17bd57ba089f04303aeb39927',
   })
 
   depends_on 'aspell_en'
@@ -136,7 +136,7 @@ class Php74 < Package
     system "install -Dm755 sapi/fpm/init.d.php-fpm.in #{CREW_DEST_PREFIX}/etc/init.d/php-fpm"
     system "install -Dm644 sapi/fpm/php-fpm.conf.in #{CREW_DEST_PREFIX}/etc/php-fpm.conf"
     system "install -Dm644 sapi/fpm/www.conf.in #{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf"
-    system "ln -s #{CREW_PREFIX}/etc/init.d/php-fpm #{CREW_DEST_PREFIX}/bin/php7-fpm"
+    system "ln -s #{CREW_PREFIX}/etc/init.d/php-fpm #{CREW_DEST_PREFIX}/bin/php8-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
     system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
@@ -147,17 +147,17 @@ class Php74 < Package
   def self.postinstall
     puts
     puts "To start the php-fpm service, execute:".lightblue
-    puts "php7-fpm start".lightblue
+    puts "php8-fpm start".lightblue
     puts
     puts "To stop the php-fpm service, execute:".lightblue
-    puts "php7-fpm stop".lightblue
+    puts "php8-fpm stop".lightblue
     puts
     puts "To restart the php-fpm service, execute:".lightblue
-    puts "php7-fpm restart".lightblue
+    puts "php8-fpm restart".lightblue
     puts
     puts "To start php-fpm on login, execute the following:".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/php7-fpm ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/php7-fpm start' >> ~/.bashrc".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/php8-fpm ]; then' >> ~/.bashrc".lightblue
+    puts "echo '  #{CREW_PREFIX}/bin/php8-fpm start' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
   end
