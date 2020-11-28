@@ -17,6 +17,8 @@ class Gcr < Package
   depends_on 'gnupg'
   depends_on 'libxslt'
   depends_on 'vala' => :build
+  depends_on 'gtk3'
+  depends_on 'graphite'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} build -Dgtk_doc=false"
