@@ -127,6 +127,7 @@ EOF"
 set -a && source ~/.sommelier.env && set +a
 mkdir -p #{CREW_PREFIX}/var/{log,run}
 checksommelierwayland () {
+  [[ -f \"#{CREW_PREFIX}/var/run/sommelier-wayland.pid\" ]] || return 1
   /sbin/ss --unix -a -p | grep \"\\b\$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)\" | grep wayland &>/dev/null
 }
 checksommelierxwayland () {
@@ -160,6 +161,7 @@ EOF"
 #!/bin/bash
 set -a && source ~/.sommelier.env &>/dev/null && set +a
 checksommelierwayland () {
+  [[ -f \"#{CREW_PREFIX}/var/run/sommelier-wayland.pid\" ]] || return 1
   /sbin/ss --unix -a -p | grep \"\\b\$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)\" | grep wayland &>/dev/null
 }
 checksommelierxwayland () {
