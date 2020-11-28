@@ -28,6 +28,7 @@ class Wine < Package
   depends_on 'pulseaudio'
   depends_on 'mpg123'
   depends_on 'sommelier'
+  depends_on 'ffmpeg'
 
 
   def self.build
