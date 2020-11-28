@@ -10,6 +10,7 @@ class Mpfr < Package
 
   def self.build
     system "./configure", # don't use CREW_OPTIONS as --libdir will cause error
+           "--prefix=#{CREW_PREFIX}",
            "--build=`uname -m`-cros-linux-gnu", 
            "--host=`uname -m`-cros-linux-gnu",
            "--target=`uname -m`-cros-linux-gnu/lib/libmpfr.so.6.1.0",
