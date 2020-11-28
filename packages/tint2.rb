@@ -15,7 +15,7 @@ class Tint2 < Package
 
   def self.build
     system "mkdir build"
-    system "cmake . -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_LIBRARY_PATH=/usr/local/lib64"
+    system "cmake . -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_PREFIX}/lib64"
     system "make -j4"
   end
 
