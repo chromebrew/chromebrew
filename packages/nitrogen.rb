@@ -4,6 +4,7 @@ class Nitrogen < Package
   description 'Background browser and setter for X windows.'
   homepage 'https://github.com/l3ib/nitrogen'
   version '1.6.1'
+  compatibility 'all'
   source_url 'https://github.com/l3ib/nitrogen/archive/1.6.1.tar.gz'
   source_sha256 '12ad31c1e2c44f486b5ca7f7d48bc5b07fb92bf15977e1793624e9e64c38b9a7'
     
