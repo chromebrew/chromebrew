@@ -11,18 +11,20 @@ class Linux_pam < Package
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '50f55a3858081ca4748fba9f731310b81c9ed6ed85597c1fd715a5c2ae1f56d4',
      armv7l: '50f55a3858081ca4748fba9f731310b81c9ed6ed85597c1fd715a5c2ae1f56d4',
+       i686: '5017e846407cb9692a915b1b513616515a45a6143303904125d29f0a43348ab6',
      x86_64: 'af1b7e6212444ba310b0441a5f32697f6478a1b62f79b78153fd49718a4e8465',
   })
 
   depends_on 'libdb' # libdb needs to be built with "--enable-dbm"
   
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-static"
+    system "./configure #{CREW_OPTIONS} --enable-static --disable-nis"
     system 'make'
   end
 
