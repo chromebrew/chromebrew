@@ -14,18 +14,18 @@ class Libical < Package
   depends_on 'gobject_introspection' => ':build'
 
   def self.build
-  Dir.mkdir 'build'
+    Dir.mkdir 'build'
     Dir.chdir 'build' do
-    system "cmake #{CREW_CMAKE_OPTIONS} .. -G Ninja \
-    -DGOBJECT_INTROSPECTION=true \
-    -DICAL_GLIB_VAPI=true \
-    -DICAL_BUILD_DOCS=false \
-    -DLIBICAL_BUILD_TESTING=false"
+      system "cmake #{CREW_CMAKE_OPTIONS} .. -G Ninja \
+        -DGOBJECT_INTROSPECTION=true \
+        -DICAL_GLIB_VAPI=true \
+        -DICAL_BUILD_DOCS=false \
+        -DLIBICAL_BUILD_TESTING=false"
     end
-  system "ninja -C build"
+    system "ninja -C build"
   end
-  
+
   def self.install
-  system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 end
