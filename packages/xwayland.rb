@@ -12,14 +12,16 @@ class Xwayland < Package
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.9-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.9-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.9-1-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.9-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '09a2f25dadcdf4d04bd7939daccef4286540dc17da05f96dd27001d5e29e64bd',
      armv7l: '09a2f25dadcdf4d04bd7939daccef4286540dc17da05f96dd27001d5e29e64bd',
+       i686: '3ad7dc7bc50cb4dbb9951b730fb1b12b1974a1942716110ceb66ed3a4607342a',
      x86_64: '5d88e6eead59c165464489aee67fa8a28005ec2e407d5d3e042bde27beeb1c9a',
   })
-  
+
   depends_on 'libepoxy'
   depends_on 'xorg_proto'
   depends_on 'libxtrans'
@@ -72,7 +74,6 @@ class Xwayland < Package
     puts "patch2 archive downloaded".lightgreen
     system 'base64 --decode patch2_base64 > patch2'
     system 'patch -p 1 < patch2'
-
     
     url_patch3 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-sysmacros.patch?format=TEXT"
     uri_patch3 = URI.parse url_patch3
@@ -90,19 +91,22 @@ class Xwayland < Package
   end
 
   case ARCH
-   when 'armv7l', 'aarch64'
+    when 'armv7l', 'aarch64'
       PEER_CMD_PREFIX='/lib/ld-linux-armhf.so.3'
-   when 'i686'
+    when 'i686'
       PEER_CMD_PREFIX='/lib/ld-linux-i686.so.2'
-   when 'x86_64'
+    when 'x86_64'
       PEER_CMD_PREFIX='/lib64/ld-linux-x86-64.so.2'
   end
 
   def self.build
-      ENV['CFLAGS'] = "-fuse-ld=lld"
-      ENV['CXXFLAGS'] = "-fuse-ld=lld"
-      system "meson setup build"
-      system "meson configure #{CREW_MESON_OPTIONS} \
+    case ARCH
+    when 'aarch64', 'armv7l', 'x86_64'
+      ENV['CFLAGS'] = '-fuse-ld=lld'
+      ENV['CXXFLAGS'] = '-fuse-ld=lld'
+    end
+    system 'meson setup build'
+    system "meson configure #{CREW_MESON_OPTIONS} \
               -Dipv6=true \
               -Dxvfb=true \
               -Dxnest=true \
@@ -119,10 +123,10 @@ class Xwayland < Package
               -Dint10=false \
               -Dlog_dir=#{CREW_PREFIX}/var/log \
               build"
-      system "meson configure build"
-      system "ninja -C build"
+    system 'meson configure build'
+    system 'ninja -C build'
 
-      system "cat <<'EOF'> Xwayland_sh
+    system "cat <<'EOF'> Xwayland_sh
 #!/bin/bash
 if base=$(readlink \"$0\" 2>/dev/null); then
   case $base in
@@ -148,5 +152,5 @@ EOF"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/Xwayland.elf"
     system "install -Dm755 Xwayland_sh #{CREW_DEST_PREFIX}/bin/Xwayland"
     FileUtils.ln_sf "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/X"
-    end
+  end
 end
