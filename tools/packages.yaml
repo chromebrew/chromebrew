@@ -1074,6 +1074,11 @@ url: https://github.com/AbiWord/enchant/releases/
 activity: high
 ---
 kind: url
+name: encodings
+url: https://www.x.org/releases/individual/font
+activity: none
+---
+kind: url
 name: enlightenment
 url: https://download.enlightenment.org/rel/apps/enlightenment/
 activity: medium
@@ -1264,7 +1269,107 @@ url: http://kernel.ubuntu.com/~cking/tarballs/fnotifystat/
 activity: medium
 ---
 kind: url
+name: font_adobe_100dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_adobe_75dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_adobe_utopia_100dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_adobe_utopia_75dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_adobe_utopia_type1
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bh_100dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bh_75dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bh_lucidatypewriter_100dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bh_lucidatypewriter_75dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bh_ttf
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bh_type1
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bitstream_100dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bitstream_75dpi
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_bitstream_type1
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_cursor_misc
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_daewoo_misc
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_dec_misc
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_isas_misc
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_jis_misc
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
 name: font_misc_misc
+url: https://www.x.org/releases/individual/font/
+activity: none
+---
+kind: url
+name: font_mutt_misc
 url: https://www.x.org/releases/individual/font/
 activity: none
 ---
@@ -1460,6 +1565,11 @@ activity: none
 ---
 kind: url
 name: geany
+url: https://download.geany.org/
+activity: medium
+---
+kind: url
+name: geany_plugins
 url: https://download.geany.org/
 activity: medium
 ---
@@ -5014,6 +5124,11 @@ url: https://github.com/sass/dart-sass/releases
 activity: high
 ---
 kind: url
+name: sassc
+url: https://github.com/sass/sassc/releases
+activity: none
+---
+kind: url
 name: sbc
 url: https://www.kernel.org/pub/linux/bluetooth/
 activity: low
@@ -6111,6 +6226,11 @@ activity: none
 kind: url
 name: xterm
 url: https://invisible-mirror.net/archives/xterm/
+activity: medium
+---
+kind: url
+name: xwayland
+url: https://github.com/freedesktop/xorg-xserver/releases
 activity: medium
 ---
 kind: url
