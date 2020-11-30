@@ -33,7 +33,7 @@ class Python3 < Package
       "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
       '--enable-shared',
       "--enable-optimizations"
-    system 'make'
+    system "make -j#{CREW_NPROC}"
   end
 
   def self.install
