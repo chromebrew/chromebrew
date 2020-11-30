@@ -3,7 +3,7 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20201025'
+  version '20201025-1'
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
@@ -237,12 +237,17 @@ EOF"
   
   def self.postinstall
     puts
-    puts "To complete the installation, execute the following:".lightblue
-    puts "echo '# Sommelier environment variables + daemon' >> ~/.bashrc".lightblue
-    puts "echo '# See https://github.com/dnschneid/crouton/wiki/Sommelier-(A-more-native-alternative-to-xiwi)' >> ~/.bashrc".lightblue
-    puts "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc".lightblue
-    puts "echo 'startsommelier' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    # Having ~/.bashrc load sommelier environment variables by default.
+    sommelier_in_bashrc = `grep -c "set -a && source ~/.sommelier.env && set +a" ~/.bashrc || true`
+    unless sommelier_in_bashrc.to_i > 0
+      puts "Putting sommelier loading code in ~/.bashrc".lightblue
+      system "echo '# Sommelier environment variables + daemon' >> ~/.bashrc"
+      system "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc"
+      system "echo 'startsommelier' >> ~/.bashrc"
+      puts "To complete the installation, execute the following:".orange
+      puts "source ~/.bashrc".orange
+    end
+
     puts
     puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
     puts "e.g. You may need to adjust the SCALE environment variable to".lightblue
