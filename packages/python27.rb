@@ -3,10 +3,10 @@ require 'package'
 class Python27 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '2.7.17-1'
+  version '2.7.18'
   compatibility 'all'
-  source_url 'https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tar.xz'
-  source_sha256 '4d43f033cdbd0aa7b7023c81b0e986fd11e653b5248dac9144d508f11812ba41'
+  source_url 'https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz'
+  source_sha256 'b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43'
 
 
   depends_on 'bz2' => :build
