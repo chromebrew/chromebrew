@@ -3,23 +3,11 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.8.6'
+  version '3.9.0'
   compatibility 'all'
-  source_url 'https://www.python.org/ftp/python/3.8.6/Python-3.8.6.tar.xz'
-  source_sha256 'a9e0b79d27aa056eb9cce8d63a427b5f9bab1465dee3f942dcfdb25a82f4ab8a'
+  source_url 'https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tar.xz'
+  source_sha256 '9c73e63c99855709b9be0b3cc9e5b072cb60f37311e8c4e50f15576a0bf82854'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.8.6-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'eba6c478f3560887eddffb7d0cf919d919fcce9f69422844f124f5871d35ed21',
-     armv7l: 'eba6c478f3560887eddffb7d0cf919d919fcce9f69422844f124f5871d35ed21',
-       i686: 'e547b40c0d37330308a1dce7a38c3149ffbbbb8fe28b96688e91fc3e1e491290',
-     x86_64: 'e00af2fe0ac111fb00ae4809e6b21dcf9f44c100d81f8459ed4b8304e16ab34c',
-  })
 
   depends_on 'bz2'
   depends_on 'xzutils'
@@ -30,15 +18,21 @@ class Python3 < Package
   def self.preinstall
     # Fix ImportError: cannot import name 'PackageFinder'.
     # See https://stackoverflow.com/questions/59887436/importerror-cannot-import-name-packagefinder.
-    FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/python3.8/site-packages/pip*")
+    FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/python3.9/site-packages/pip*")
   end
 
-  def self.build
+    # Using /tmp breaks test_distutils, test_subprocess.
+    # Proxy setting breaks test_httpservers, test_ssl,
+    # test_urllib, test_urllib2, test_urllib2_localnet.
+    # So, modifying environment variable to make pass tests.
+    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
+    def self.build
     # IMPORTANT: Do not build with python3 already installed or pip3 will not be included.
     # python requires /usr/local/lib, so leave as is but specify -rpath
     system './configure', "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
       "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
-      '--with-ensurepip=install', '--enable-shared'
+      '--enable-shared',
+      "--enable-optimizations"
     system 'make'
   end
 
@@ -53,13 +47,16 @@ class Python3 < Package
       FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
       system "cd #{CREW_DEST_LIB_PREFIX} && ln -s ../lib/libpython*.so* ."
     end
+    # Install pip
+    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
+    system "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_DEST_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/python3 ./get-pip.py --prefix=#{CREW_PREFIX} --root=#{CREW_DEST_DIR}"
   end
 
   def self.postinstall
-    puts
-    puts "Upgrading pip...".lightblue
-    system 'pip3 install --upgrade pip'
-    puts
+    #puts
+    #puts "Upgrading pip...".lightblue
+    #system 'pip3 install --upgrade pip'
+    #puts
   end
 
   def self.check
