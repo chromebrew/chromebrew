@@ -15,6 +15,7 @@ class Tint2 < Package
 
 
   def self.build
+   Dir.mkdir 'build'
    Dir.chdir 'build' do
      system "cmake .. -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX}"
      system 'make'
