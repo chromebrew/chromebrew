@@ -24,7 +24,7 @@ class Nss < Package
     ENV['USEABSPATH'] = 'NO'
     ENV['NSS_GYP_PREFIX'] = CREW_PREFIX
     Dir.chdir 'nss' do
-      system "./build.sh --opt --gcc --gyp --with-nspr=#{CREW_PREFIX}/include/nspr --system-nspr --system-sqlite --disable-tests"
+      system "./build.sh -v --opt --gcc --gyp --with-nspr=#{CREW_PREFIX}/include/nspr --system-nspr --system-sqlite --disable-tests"
     end
   end
 
