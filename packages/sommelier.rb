@@ -237,12 +237,17 @@ EOF"
   
   def self.postinstall
     puts
-    puts "To complete the installation, execute the following:".lightblue
-    puts "echo '# Sommelier environment variables + daemon' >> ~/.bashrc".lightblue
-    puts "echo '# See https://github.com/dnschneid/crouton/wiki/Sommelier-(A-more-native-alternative-to-xiwi)' >> ~/.bashrc".lightblue
-    puts "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc".lightblue
-    puts "echo 'startsommelier' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    # Having ~/.bashrc load sommelier environment variables by default.
+    sommelier_in_bashrc = `grep -c "set -a && source ~/.sommelier.env && set +a" ~/.bashrc || true`
+    unless sommelier_in_bashrc.to_i > 0
+      puts "Putting sommelier loading code in ~/.bashrc".lightblue
+      system "echo '# Sommelier environment variables + daemon' >> ~/.bashrc"
+      system "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc"
+      system "echo 'startsommelier' >> ~/.bashrc"
+      puts "To complete the installation, execute the following:".orange
+      puts "source ~/.bashrc".orange
+    end
+
     puts
     puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
     puts "e.g. You may need to adjust the SCALE environment variable to".lightblue
