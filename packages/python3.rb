@@ -31,7 +31,7 @@ class Python3 < Package
     # python requires /usr/local/lib, so leave as is but specify -rpath
     system './configure', "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
       "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
-      '--enable-shared',
+      "--enable-shared",
       "--enable-optimizations"
     system "make -j#{CREW_NPROC}"
   end
