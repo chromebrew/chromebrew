@@ -46,6 +46,9 @@ class Python27 < Package
     system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
     # Set maximum version of setuptools compatible with python 2.7.
     system "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_DEST_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/python ./get-pip.py setuptools==44.1.1 --prefix=#{CREW_PREFIX} --root=#{CREW_DEST_DIR}"
+    # pip is in python3. Remove python2 pip since deprecated and leave pip2
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/pip"
+    system "sed -i \"s%#{CREW_DEST_PREFIX}/bin/python%#{CREW_PREFIX}/bin/python%g\" #{CREW_DEST_PREFIX}/bin/pip2"
   end
 
   def self.check
