@@ -50,6 +50,8 @@ class Python3 < Package
     # Install pip
     system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
     system "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_DEST_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/python3 ./get-pip.py --prefix=#{CREW_PREFIX} --root=#{CREW_DEST_DIR}"
+    system "sed -i \"s%#{CREW_DEST_PREFIX}/bin/python3%#{CREW_PREFIX}/bin/python3%g\" #{CREW_DEST_PREFIX}/bin/pip"
+    system "sed -i \"s%#{CREW_DEST_PREFIX}/bin/python3%#{CREW_PREFIX}/bin/python3%g\" #{CREW_DEST_PREFIX}/bin/pip3"
   end
 
   def self.postinstall
