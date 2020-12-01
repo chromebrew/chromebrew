@@ -36,9 +36,7 @@ class Wine < Package
     when "i686", "armv7l", "aarch64"
       system "./configure #{CREW_OPTIONS}"
     when "x86_64"
-      system "./configure #{CREW_OPTIONS}",
-             "--enable-win64",
-             "--without-freetype"
+      system "./configure #{CREW_OPTIONS} --enable-win64 --without-freetype"
     else
       abort 'Error getting your device configuration. :/'.lightred
     end
