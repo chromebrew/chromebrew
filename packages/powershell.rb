@@ -3,15 +3,15 @@ require 'package'
 class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
   homepage 'https://docs.microsoft.com/en-us/powershell/'
-  version '7.0.2'
+  version '7.0.3'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/powershell-7.0.2-linux-arm32.tar.gz'
-    source_sha256 '3f884c8eb97cbf28402d5ee5c64c50c556c87779f08a7eb01062c5b7567f9246'
+  when 'armv7l', 'aarch64'
+    source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell-7.0.3-linux-arm32.tar.gz'
+    source_sha256 'fe6da9f90fd5026c4ab446a31f565144342a8d507a73d428305bc36c1ad92644'
   when 'x86_64'
-    source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/powershell-7.0.2-linux-x64.tar.gz'
-    source_sha256 'e7e458a32c51c6ce43647b8a0eb7fbd9da1b67850c18e389f0eef7c7109891fb'
+    source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell-7.0.3-linux-x64.tar.gz'
+    source_sha256 'a9c023940c77a96a9f5135309e44c93ed627983bb1a66ecf5beb42bbba54ead6'
   end
 
   case ARCH
