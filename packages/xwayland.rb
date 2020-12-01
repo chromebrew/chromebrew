@@ -3,11 +3,10 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  version '1.20.9-2'
+  version '1.20.10'
   compatibility 'all'
-  # Using xorg ToT due to large number of recent xwayland commits.
-  source_url 'https://github.com/freedesktop/xorg-xserver/archive/d18dcecbe08a9ff22e43f12b6b7679a6ef1a6eb0.zip'
-  source_sha256 '091edf47059adfa09242906db97e1d9d44dc6557efde4af861a7055975fa55ce'
+  source_url 'https://gitlab.freedesktop.org/xorg/xserver/-/archive/bc111a2e67e16d4e6d4f3196ab86c22c1e278c45/xserver-bc111a2e67e16d4e6d4f3196ab86c22c1e278c45.tar.bz2'
+  source_sha256 '357e6edb0d7c6107e9e1d5bc4e86ced4f96cad25282b9d1c86796fe3fe60bfa7'
 
   depends_on 'libepoxy'
   depends_on 'xorg_proto'
@@ -20,7 +19,7 @@ class Xwayland < Package
   depends_on 'nettle'
   depends_on 'libtirpc'
   depends_on 'pixman'
-  depends_on 'xinit'
+  depends_on 'graphite'
   depends_on 'libxkbcommon'
   depends_on 'libunwind'
   depends_on 'font_util'
@@ -42,7 +41,7 @@ class Xwayland < Package
     sha256sum_patch1 = '16f5d5d1986daf07b4e0f01eb0e68b53d8ef301d169f3cc9493158c8b4987f16'
 
     puts "Downloading patch1".yellow
-    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch1, '-o', filename_patch1)
+    system('curl', '-s', '--insecure', '-L', '-#', url_patch1, '-o', filename_patch1)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read( filename_patch1 ) ) == sha256sum_patch1
     puts "patch1 archive downloaded".lightgreen
@@ -55,7 +54,7 @@ class Xwayland < Package
     sha256sum_patch2 = 'd44bfca0e26ca06892b37b12faca2a6756cdc2455aac36ac7607bfa188856b35'
 
     puts "Downloading patch2".yellow
-    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch2, '-o', filename_patch2)
+    system('curl', '-s', '--insecure', '-L', '-#', url_patch2, '-o', filename_patch2)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read( filename_patch2 ) ) == sha256sum_patch2
     puts "patch2 archive downloaded".lightgreen
@@ -68,7 +67,7 @@ class Xwayland < Package
     sha256sum_patch3 = 'b66eb66cc8023ab2170db91e4d6038dca99b814addfcb0977d30479a2e514ab8'
 
     puts "Downloading patch3".yellow
-    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_patch3, '-o', filename_patch3)
+    system('curl', '-s', '--insecure', '-L', '-#', url_patch3, '-o', filename_patch3)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read( filename_patch3 ) ) == sha256sum_patch3
     puts "patch3 archive downloaded".lightgreen
@@ -103,10 +102,8 @@ class Xwayland < Package
               -Dxwayland=true \
               -Dglamor=true \
               -Dudev=true \
-              -Ddocs=false \
               -Dxwin=false \
               -Dsystemd_logind=false \
-              -Dlibunwind=true \
               -Dint10=false \
               -Dlog_dir=#{CREW_PREFIX}/var/log \
               build"
