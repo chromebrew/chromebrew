@@ -27,18 +27,16 @@ class Wine < Package
   depends_on 'apulse'
   depends_on 'pulseaudio'
   depends_on 'mpg123'
-  depends_on 'sommelier'
   depends_on 'ffmpeg'
+  depends_on 'sommelier'
 
 
   def self.build
     case ARCH
     when "i686", "armv7l", "aarch64"
-      system "./configure",
-             "#{CREW_OPTIONS}"
+      system "./configure #{CREW_OPTIONS}"
     when "x86_64"
-      system "./configure", 
-             "#{CREW_OPTIONS}"
+      system "./configure #{CREW_OPTIONS}",
              "--enable-win64",
              "--without-freetype"
     else
