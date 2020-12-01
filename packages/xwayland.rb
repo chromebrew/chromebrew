@@ -151,6 +151,6 @@ EOF"
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/Xwayland.elf"
     system "install -Dm755 Xwayland_sh #{CREW_DEST_PREFIX}/bin/Xwayland"
-    FileUtils.ln_sf "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/X"
+    system "ln -sfr #{CREW_DEST_PREFIX}/bin/Xwayland #{CREW_DEST_PREFIX}/bin/X"
   end
 end
