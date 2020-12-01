@@ -52,7 +52,19 @@ class Cups < Package
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system "make",
+        "DESTDIR=#{CREW_DEST_DIR}",
+        "DATADIR=#{CREW_DEST_PREFIX}/share/cups",
+        "DOCDIR=#{CREW_DEST_PREFIX}/share/doc/cups",
+        "MANDIR=#{CREW_DEST_PREFIX}/share/man",
+        "ICONDIR=#{CREW_PREFIX}/share/icons",
+        "MENUDIR=#{CREW_PREFIX}/share/applications",
+        "INITDIR=#{CREW_PREFIX}/etc/init.d",
+        "SERVERROOT=#{CREW_DEST_PREFIX}/etc/cups",
+        "SERVERBIN=#{CREW_DEST_PREFIX}/libexec/cups",
+        "CACHEDIR=#{CREW_DEST_PREFIX}/var/cache/cups",
+        "LOCALEDIR=#{CREW_DEST_PREFIX}/share/locale",
+        "install"
     system "install -Dm755 startcupsd #{CREW_DEST_PREFIX}/bin/startcupsd"
     system "install -Dm755 stopcupsd #{CREW_DEST_PREFIX}/bin/stopcupsd"
   end
