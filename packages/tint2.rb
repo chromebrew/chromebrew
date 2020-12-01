@@ -15,13 +15,16 @@ class Tint2 < Package
 
 
   def self.build
-     Dir.chdir 'build' do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-     end
+   Dir.mkdir 'build'
+   Dir.chdir 'build' do
+     system "cmake .. -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX}"
      system 'make'
+   end
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+     Dir.chdir 'build' do
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+     end
   end
 end
