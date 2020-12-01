@@ -3,7 +3,7 @@ require 'package'
 class Opera < Package
   description "Opera isn't just a browser. It's an awesome browser."
   homepage 'https://www.opera.com/'
-  version '72.0.3815.211'
+  version '72.0.3815.400'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
