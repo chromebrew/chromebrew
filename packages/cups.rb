@@ -67,6 +67,7 @@ class Cups < Package
         "install"
     system "install -Dm755 startcupsd #{CREW_DEST_PREFIX}/bin/startcupsd"
     system "install -Dm755 stopcupsd #{CREW_DEST_PREFIX}/bin/stopcupsd"
+    FileUtils.rm "#{CREW_DEST_DIR}/etc/dbus-1/system.d/cups.conf"
   end
 
   def self.postinstall
