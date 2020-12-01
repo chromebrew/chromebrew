@@ -3,23 +3,10 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '4.4'
+  version '5.3'
   compatibility 'all'
-  source_url 'https://www.nano-editor.org/dist/v4/nano-4.4.tar.xz'
-  source_sha256 '2af222e0354848ffaa3af31b5cd0a77917e9cb7742cd073d762f3c32f0f582c7'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-4.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'd90750f2218b77a4ddaf02915c8d06ff4f32868273a2709eb2906949c9bea3c6',
-     armv7l: 'd90750f2218b77a4ddaf02915c8d06ff4f32868273a2709eb2906949c9bea3c6',
-       i686: '61e9a1790d99f2f8edcceea2bd10ae8a092166e4da9f648ff1a1083360f9bdda',
-     x86_64: '29e8f79fa4e1d93a14373249036428859d7a2e80c319854bb2266f441634a1a6',
-  })
+  source_url 'https://www.nano-editor.org/dist/v5/nano-5.3.tar.xz'
+  source_sha256 'c5c1cbcf622d9a96b6030d66409ed12b204e8bc01ef5e6554ebbe6fb1d734352'
 
   depends_on 'xdg_base'
 
