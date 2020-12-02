@@ -25,6 +25,13 @@ class Icu4c < Package
   def self.install
     FileUtils.cd('source') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+      # Backwards compatibility symlinks
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicudata.so.68", "#{CREW_DEST_LIB_PREFIX}/libicudata.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicui18n.so.68", "#{CREW_DEST_LIB_PREFIX}/libicui18n.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicuio.so.68", "#{CREW_DEST_LIB_PREFIX}/libicuio.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicutest.so.68", "#{CREW_DEST_LIB_PREFIX}/libicutest.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicutu.so.68", "#{CREW_DEST_LIB_PREFIX}/libicutu.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicuuc.so.68", "#{CREW_DEST_LIB_PREFIX}/libicuuc.so.67"
     end
   end
 end
