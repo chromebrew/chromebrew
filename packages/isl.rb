@@ -18,8 +18,8 @@ class Isl < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
     # For backwards compatibility:
-    system "ln -sfr #{CREW_DEST_LIB_PREFIX}/libisl.so.23.0.0 #{CREW_DEST_LIB_PREFIX}/libisl.so.15"
-    system "ln -sfr #{CREW_DEST_LIB_PREFIX}/libisl.so.23.0.0 #{CREW_DEST_LIB_PREFIX}/libisl.so.19"
+    FileUtils.ln_sf "#{CREW_PREFIX}/libisl.so.23.0.0", "#{CREW_DEST_LIB_PREFIX}/libisl.so.15"
+    FileUtils.ln_sf "#{CREW_PREFIX}/libisl.so.23.0.0", "#{CREW_DEST_LIB_PREFIX}/libisl.so.19"
   end
 
   def self.check
