@@ -2,38 +2,24 @@ require 'package'
 
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
-  homepage 'https://www.cups.org/'
-  version '2.2.8'
+  homepage 'https://github.com/OpenPrinting/cups'
+  version '2.3.3op1'
   compatibility 'all'
-  source_url 'https://github.com/apple/cups/releases/download/v2.2.8/cups-2.2.8-source.tar.gz'
-  source_sha256 '3968fc1d26fc48727508db1c1380e36c6694ab90177fd6920aec5f6cc73af9e4'
+  source_url 'https://github.com/OpenPrinting/cups/archive/v2.3.3op1.tar.gz'
+  source_sha256 '64148c7f7c0d2b2715db1be2fb557042ccb0b0f19a03456a83fbf6353bb73c89'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cups-2.2.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cups-2.2.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cups-2.2.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cups-2.2.8-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'aeec9f3bb343b9f70359d8fa5c1c3074a03998bc802a04377cbc01506bcef242',
-     armv7l: 'aeec9f3bb343b9f70359d8fa5c1c3074a03998bc802a04377cbc01506bcef242',
-       i686: '5f9ff3495d40570cf8882a8a53f3815289c091c34bc2ab7b75185d38256ee280',
-     x86_64: '59cdd35b557c5828c5ac58cc3173c96816ef525e0776ed107efe6c108ca98721',
-  })
+
 
   depends_on 'acl'
   depends_on 'krb5'
   depends_on 'libusb'
-  depends_on 'openpam'
+  depends_on 'linux_pam'
   depends_on 'psmisc'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-launchd',
-           '--disable-systemd',
-           '--enable-libusb'
+    system "./configure #{CREW_OPTIONS} \
+    --disable-launchd --disable-systemd \
+    --enable-libusb"
     system 'make'
     system "echo '#!/bin/bash' > startcupsd"
     system "echo 'CUPSD=#{CREW_PREFIX}/sbin/cupsd' >> startcupsd"
@@ -66,25 +52,22 @@ class Cups < Package
   end
 
   def self.install
-    system 'make',
-           "PREFIX=#{CREW_DEST_PREFIX}",
-           "LIBDIR=#{CREW_DEST_LIB_PREFIX}",
-           "BINDIR=#{CREW_DEST_PREFIX}/bin",
-           "SBINDIR=#{CREW_DEST_PREFIX}/sbin",
-           "INCLUDEDIR=#{CREW_DEST_PREFIX}/include",
-           "DATADIR=#{CREW_DEST_PREFIX}/share/cups",
-           "DOCDIR=#{CREW_DEST_PREFIX}/share/doc/cups",
-           "MANDIR=#{CREW_DEST_PREFIX}/share/man",
-           "ICONDIR=#{CREW_DEST_PREFIX}/share/icons",
-           "MENUDIR=#{CREW_DEST_PREFIX}/share/applications",
-           "INITDIR=#{CREW_DEST_PREFIX}/etc/init.d",
-           "SERVERROOT=#{CREW_DEST_PREFIX}/etc/cups",
-           "SERVERBIN=#{CREW_DEST_PREFIX}/libexec/cups",
-           "CACHEDIR=#{CREW_DEST_PREFIX}/var/cache/cups",
-           "LOCALEDIR=#{CREW_DEST_PREFIX}/share/locale",
-           'install'
+    system "make",
+        "DESTDIR=#{CREW_DEST_DIR}",
+        "DATADIR=#{CREW_DEST_PREFIX}/share/cups",
+        "DOCDIR=#{CREW_DEST_PREFIX}/share/doc/cups",
+        "MANDIR=#{CREW_DEST_PREFIX}/share/man",
+        "ICONDIR=#{CREW_PREFIX}/share/icons",
+        "MENUDIR=#{CREW_PREFIX}/share/applications",
+        "INITDIR=#{CREW_PREFIX}/etc/init.d",
+        "SERVERROOT=#{CREW_DEST_PREFIX}/etc/cups",
+        "SERVERBIN=#{CREW_DEST_PREFIX}/libexec/cups",
+        "CACHEDIR=#{CREW_DEST_PREFIX}/var/cache/cups",
+        "LOCALEDIR=#{CREW_DEST_PREFIX}/share/locale",
+        "install"
     system "install -Dm755 startcupsd #{CREW_DEST_PREFIX}/bin/startcupsd"
     system "install -Dm755 stopcupsd #{CREW_DEST_PREFIX}/bin/stopcupsd"
+    FileUtils.rm "#{CREW_DEST_DIR}/etc/dbus-1/system.d/cups.conf"
   end
 
   def self.postinstall
