@@ -14,7 +14,6 @@ class Parsec < Package
     depends_on 'gdk_pixbuf'
     depends_on 'gtk2'
     depends_on 'sommelier'
-  end
 
   def self.build
     case ARCH
@@ -27,8 +26,8 @@ class Parsec < Package
     	puts "Archive downloaded".lightgreen
     	abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('parsec.deb') ) == '0c7207f419377fc35e30448acd00d8701300ac5a44936ac6d87a468c9afccdc1'
     end
-    system 'alien -tc *.deb'
-    system "tar xvf *.tgz"
+    system 'alien -tc parsec.deb'
+    system "tar xvf parsec*.tgz"
   end
 
   def self.install
