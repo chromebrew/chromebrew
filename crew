@@ -523,6 +523,11 @@ def unpack (meta)
       puts "Unpacking archive using 'tar', this may take a while..."
       _verbopt = @opt_verbose ? 'v' : ''
       system "tar", "x#{_verbopt}f", meta[:filename], "-C", "#{extract_dir}"
+    when /\.deb$/i
+      puts "Unpacking deb using 'ar' 'tar', this may take a while..."
+      _verbopt = @opt_verbose ? 'v' : ''
+      system "ar", "x", meta[:filename]
+      system "tar", "#{_verbopt}f", "data.tar*", "-C", "#{extract_dir}"
    end
     if meta[:source] == true
       # Check the number of directories in the archive
@@ -547,7 +552,7 @@ end
 
 def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
-    puts "Building from source, this may take a while..."
+    puts "Building from source or installing from '.deb' file, this may take a while..."
 
     # Rename *.la files temporily to *.la_tmp to avoid
     # libtool: link: '*.la' is not a valid libtool archive.
