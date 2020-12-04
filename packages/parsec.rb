@@ -31,8 +31,8 @@ class Parsec < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}"
-    FileUtils.mv 'usr/bin', "#{CREW_DEST_PREFIX}"
-    FileUtils.mv 'usr/share', "#{CREW_DEST_PREFIX}"
+    FileUtils.mkdir_p CREW_DEST_PREFIX
+    FileUtils.mv 'usr/bin', CREW_DEST_PREFIX
+    FileUtils.mv 'usr/share', CREW_DEST_PREFIX
   end
 end
