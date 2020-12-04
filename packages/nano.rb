@@ -8,6 +8,19 @@ class Nano < Package
   source_url 'https://www.nano-editor.org/dist/v5/nano-5.3.tar.xz'
   source_sha256 'c5c1cbcf622d9a96b6030d66409ed12b204e8bc01ef5e6554ebbe6fb1d734352'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'c088b2e58da273d13b81f811e29ea8947f53b1b35fc35247c65d238599e70e2f',
+     armv7l: 'c088b2e58da273d13b81f811e29ea8947f53b1b35fc35247c65d238599e70e2f',
+       i686: '6fcb71493680e38de8dfc0339203ef432599253a2a1f0f6d34cfbd6839c01eec',
+     x86_64: 'd9a04eeb1624ccbcf1823a95b00ff6487a04cb49a749abf19a2014a00871e876',
+  })
+
   depends_on 'xdg_base'
 
   def self.patch
