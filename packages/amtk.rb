@@ -3,7 +3,7 @@ require 'package'
 class Amtk < Package
   description 'Actions, Menus and Toolbars Kit for GTK+ applications'
   homepage 'https://wiki.gnome.org/Projects/Amtk'
-  version '5.2.1'
+  version '5.2.0-33ec'
   compatibility 'all'
   source_url 'https://github.com/GNOME/amtk/archive/33ec171156ebc49d6dad568e6ba39470edb272e1.zip'
   source_sha256 'fc9bad18bbd5421da52e0548f9e91eda180539bb568d1e7116ca65f4f73f4b67'
