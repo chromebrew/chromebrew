@@ -1,27 +1,20 @@
 require 'package'
 
-class Libsoup < Package
-  description 'libsoup is an HTTP client/server library for GNOME.'
-  homepage 'https://wiki.gnome.org/Projects/libsoup'
-  version '2.72'
+class Glib_networking < Package
+  description 'Network extensions for GLib'
+  homepage 'https://github.com/GNOME/glib-networking'
+  version '2.66.0'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz'
-  source_sha256 '170c3f8446b0f65f8e4b93603349172b1085fb8917c181d10962f02bb85f5387'
+  source_url 'https://github.com/GNOME/glib-networking/archive/2.66.0.tar.gz'
+  source_sha256 '186a670c00525d62aa160bc3e492d9efd2f59c540c50477982eb732ed62ee96c'
 
 
-  depends_on 'glib_networking'
-  depends_on 'libpsl'
-  depends_on 'sqlite'
-  depends_on 'vala'
-  depends_on 'llvm'
+  depends_on 'libproxy'
+  depends_on 'gsettings_desktop_schemas'
+  depends_on 'meson' => :build
 
-  ENV['CC'] = 'clang'
-  ENV['CXX'] = 'clang'
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} -Dtests=false \
-    -Dsysprof=disabled \
-    -Dintrospection=disabled \
-    builddir"
+    system "meson #{CREW_MESON_OPTIONS} -Dstatic_modules=true builddir"
     system "meson configure builddir"
     system "ninja -C builddir"
   end
