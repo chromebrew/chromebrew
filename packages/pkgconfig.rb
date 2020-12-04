@@ -3,7 +3,7 @@ require 'package'
 class Pkgconfig < Package
   description 'pkg-config is a helper tool used when compiling applications and libraries.'
   homepage 'https://www.freedesktop.org/wiki/Software/pkg-config/'
-  version '0.29.2-0'
+  version '0.29.2-1'
   compatibility 'all'
   source_url 'http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz'
   source_sha256 '6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591'
@@ -35,7 +35,8 @@ class Pkgconfig < Package
              "--with-system-library-path=#{CREW_PREFIX}/lib:#{CREW_PREFIX}/lib64",
              "--disable-static",
              "--enable-shared",
-             "--disable-host-tool"
+             "--disable-host-tool",
+             "--with-libiconv=gnu"
     when "i686","armv7l","aarch64"
       system "./configure",
              "--prefix=#{CREW_PREFIX}",
@@ -46,7 +47,8 @@ class Pkgconfig < Package
              "--with-system-library-path=#{CREW_PREFIX}/lib",
              "--disable-static",
              "--enable-shared",
-             "--disable-host-tool"
+             "--disable-host-tool",
+             "--with-libiconv=gnu"
     end
     system "make"
 
