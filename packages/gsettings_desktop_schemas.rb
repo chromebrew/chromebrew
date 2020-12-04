@@ -16,13 +16,13 @@ class Gsettings_desktop_schemas < Package
     system "sed -i -r 's:\"(/system):\"/org/gnome\1:g' schemas/*.in"
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson #{CREW_MESON_OPTIONS}"
-    system "meson compile -C builddir"
-    
+    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} meson install -C builddir"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 
   def self.postinstall
