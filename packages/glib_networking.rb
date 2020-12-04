@@ -1,33 +1,29 @@
 require 'package'
 
-class Glib_networking < Package
-  description 'Network extensions for GLib'
-  homepage 'https://github.com/GNOME/glib-networking'
-  version '2.57.3'
+class Libsoup < Package
+  description 'libsoup is an HTTP client/server library for GNOME.'
+  homepage 'https://wiki.gnome.org/Projects/libsoup'
+  version '2.72'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/glib-networking/archive/2.57.3.tar.gz'
-  source_sha256 '7e45263dc9ece73e6370db4f61ccbac14a37f68d66f487417bc319e5f948a82d'
+  source_url 'https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz'
+  source_sha256 '170c3f8446b0f65f8e4b93603349172b1085fb8917c181d10962f02bb85f5387'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.57.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.57.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.57.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.57.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'f2a9ca1aa951dc280c405252f7a0d52fa61ff6f0d4452e2c91ee5e46d8d1221b',
-     armv7l: 'f2a9ca1aa951dc280c405252f7a0d52fa61ff6f0d4452e2c91ee5e46d8d1221b',
-       i686: 'e0e0e3327b782cb8a3e9126c7fa3264bdb5e006c30597da66438735087fa3e16',
-     x86_64: '1cc6f98c79144848a68189470e195518348a997673a01474ec41f0cc63b72134',
-  })
 
-  depends_on 'libproxy'
-  depends_on 'gsettings_desktop_schemas'
-  depends_on 'meson' => :build
+  depends_on 'glib_networking'
+  depends_on 'libpsl'
+  depends_on 'sqlite'
+  depends_on 'vala'
+  depends_on 'llvm'
 
+  ENV['CC'] = 'clang'
+  ENV['CXX'] = 'clang'
   def self.build
-    system 'meson builddir'
-    system 'ninja -v -C builddir'
+    system "meson #{CREW_MESON_OPTIONS} -Dtests=false \
+    -Dsysprof=disabled \
+    -Dintrospection=disabled \
+    builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
