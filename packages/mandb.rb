@@ -56,6 +56,6 @@ class Mandb < Package
   end
 
   def self.postinstall
-    system 'mandb -c'
+    system "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} mandb -c"
   end
 end
