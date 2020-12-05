@@ -8,6 +8,19 @@ class Xwayland < Package
   source_url 'https://gitlab.freedesktop.org/xorg/xserver/-/archive/bc111a2e67e16d4e6d4f3196ab86c22c1e278c45/xserver-bc111a2e67e16d4e6d4f3196ab86c22c1e278c45.tar.bz2'
   source_sha256 '357e6edb0d7c6107e9e1d5bc4e86ced4f96cad25282b9d1c86796fe3fe60bfa7'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '8235123cf2269d5b69528739ca055100156654452e74126454cb34a0823c8bbb',
+     armv7l: '8235123cf2269d5b69528739ca055100156654452e74126454cb34a0823c8bbb',
+       i686: 'e6e305bd7f6f0e93fa670b403a600e06278391ae2fe731638007197b3ae7e404',
+     x86_64: '3fc26b39b410c9bff20be53f2017cd4e21d2fa4b2c1a320be6632a6139f72189',
+  })
+
   depends_on 'libepoxy'
   depends_on 'xorg_proto'
   depends_on 'libxtrans'
@@ -73,7 +86,6 @@ class Xwayland < Package
     puts "patch3 archive downloaded".lightgreen
     system 'base64 --decode patch3_base64 > patch3'
     system 'patch -F 10 --force -p 1 < patch3'
-  
   end
 
   case ARCH
@@ -128,7 +140,6 @@ basedir=${base%/*}
 # ld.so supports forwarding the binary name.
 LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/Xwayland.sh\" exec   \"${basedir}/..#{PEER_CMD_PREFIX}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
 EOF"
-
   end
 
   def self.install
