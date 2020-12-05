@@ -8,7 +8,18 @@ class Xterm < Package
   source_url "https://invisible-mirror.net/archives/xterm/xterm-362.tgz"
   source_sha256 '1d4ffe226fa8f021859bbc3007788ff63a46a31242d9bd9a7bd7ebe24e81aca2'
 
-
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-362-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-362-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-362-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xterm-362-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'e61f8a1bfc06e700ec42b0d3f7e97b9b1e0f8120a33fbfc6efeba3eabda24126',
+     armv7l: 'e61f8a1bfc06e700ec42b0d3f7e97b9b1e0f8120a33fbfc6efeba3eabda24126',
+       i686: '7912500763cca0d85c1f6d84ec4cce6cbd5b4c9a70090dfe49cc94a395b7b84b',
+     x86_64: 'c6dd0a0eebbe9a84af571c79ad1ecb925b1a16333bb6e75280f5818c86faedb5',
+  })
 
   depends_on 'pcre'
   depends_on 'sommelier'
