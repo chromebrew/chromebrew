@@ -16,7 +16,6 @@ class Meson < Package
   end
   
   def self.postinstall
-    system "pip3 install --upgrade pip"
     system "pip3 install --upgrade --force-reinstall meson"
   end 
 end
