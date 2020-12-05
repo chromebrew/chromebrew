@@ -16,6 +16,7 @@ class Meson < Package
   end
   
   def self.postinstall
+    system "pip3 install --upgrade pip"
     system "pip3 install meson==#{version} --prefix=#{CREW_PREFIX} --root=#{CREW_DEST_DIR}"
   end 
 end
