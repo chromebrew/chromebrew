@@ -11,6 +11,7 @@ class Enchant < Package
 
   depends_on 'aspell_en'
   depends_on 'hunspell'
+  depends_on 'gnupg'
 
   def self.build
     system "./bootstrap" 
