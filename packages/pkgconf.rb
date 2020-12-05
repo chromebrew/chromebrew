@@ -2,11 +2,11 @@ require 'package'
 
 class Pkgconf < Package
   description 'Package compiler and linker metadata toolkit'
-  homepage 'https://git.sr.ht/~kaniini/pkgconf'
+  homepage 'https://github.com/pkgconf/pkgconf'
   version '1.7.3'
   compatibility 'all'
-  source_url 'https://git.sr.ht/~kaniini/pkgconf/archive/pkgconf-1.7.3.tar.gz'
-  source_sha256 '88e93bbd1d4dc81fc08bfc7a39b3eca241aee3131091c9ba0684531ee4d9d2b3'
+  source_url 'https://github.com/pkgconf/pkgconf/archive/pkgconf-1.7.3.tar.gz'
+  source_sha256 '8f2c6e9f08adc5773d7fa3c1db1ed03f5fa02ceed037a537ce1195f7c93700ed'
 
   depends_on 'glibc'
 
