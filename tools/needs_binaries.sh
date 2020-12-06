@@ -17,12 +17,12 @@ exclusions+=' squeak.rb stack.rb sublime_merge.rb sublime_text.rb symfony.rb ter
 exclusions+=' v2ray.rb wp_cli.rb xdg_base.rb xz_java.rb yarn.rb'
 if [[ "${arch}" == 'aarch64' || "${arch}" == 'armv7l' ]]; then
   exclusions+=' atom.rb az.rb cf.rb brackets.rb clisp.rb dropbox.rb fakeroot_ng.rb ghostscript.rb gitkraken.rb handbrake.rb hplip.rb jdk11.rb miniconda3.rb'
-  exclusions+=' misctools.rb oci.rb nethack4.rb obs.rb opera.rb sbcl.rb skype.rb weston.rb wing.rb wkhtmltox.rb xorg_intel_driver.rb xorg_vmmouse_driver.rb'
+  exclusions+=' misctools.rb oci.rb nethack4.rb obs.rb opera.rb sbcl.rb shotcut.rb skype.rb weston.rb wing.rb wkhtmltox.rb xorg_intel_driver.rb xorg_vmmouse_driver.rb'
 fi
 if [[ "${arch}" == 'i686' ]]; then
   exclusions+=' aqemu.rb atom.rb codelite.rb cras.rb dia.rb exa.rb fakeroot_ng.rb fzf.rb gcr.rb geany.rb geany_plugins.rb gemacs.rb gimp.rb gitkraken.rb gnome_keyring.rb'
   exclusions+=' gtk_engines_adwaita.rb handbrake.rb heroku.rb imagemagick6.rb imagemagick7.rb jdk11.rb libgnome_keyring.rb librespot.rb libvncserver.rb neovim.rb opera.rb'
-  exclusions+=' pipewire.rb poppler.rb qtdeclarative.rb qtfm.rb qttools.rb ripgrep.rb skype.rb tcpflow.rb vivaldi.rb wing.rb xorg_intel_driver.rb zathura.rb'
+  exclusions+=' pipewire.rb poppler.rb qtdeclarative.rb qtfm.rb qttools.rb ripgrep.rb sass.rb shotcut.rb skype.rb tcpflow.rb vivaldi.rb wing.rb xorg_intel_driver.rb zathura.rb'
 fi
 packages=$(grep -L "${arch}:" *.rb)
 for p in ${packages}; do
