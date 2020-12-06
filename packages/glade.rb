@@ -13,12 +13,14 @@ class Glade < Package
   depends_on 'pygobject'
 
   def self.build
-  system "meson setup #{CREW_MESON_OPTIONS} -Dgtk_doc=false -Dman=false build"
-  system "meson configure build"
-  system "ninja -C build"
+    ENV['CFLAGS'] = "-fuse-ld=lld"
+    ENV['CXXFLAGS'] = "-fuse-ld=lld"
+    system "meson setup #{CREW_MESON_OPTIONS} -Dgtk_doc=false -Dman=false build"
+    system "meson configure build"
+    system "ninja -C build"
   end
   
   def self.install
-  system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 end
