@@ -16,6 +16,10 @@ class Setuptools < Package
   end
 
   def self.install
+    # Install pip for python2 first using last supported systemtools version (<=v45) for python27.
+    system "curl -Lf https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    python2 ./get-pip.py setuptools==44.1.1 --root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} "
+    # Now let python3 pip install and overwrite pip, leaving pip2 for python27
     system "python3 setup.py install --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
   end
 end
