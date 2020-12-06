@@ -24,12 +24,20 @@ class Weston < Package
     depends_on 'xdg_base'
   end
 
+  binary_url ({
+      i686: 'https://dl.bintray.com/chromebrew/chromebrew/weston-9.0.0-chromeos-i686.tar.xz',
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/weston-9.0.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+      i686: '8c685a9d0ae049ed457b32a5513aeb170496fe6c534542d4742092cc62673da4',
+    x86_64: '3f391f699eb4e4da0cbb54865d21cf828850889403ad0e99f1065d382ab97f71',
+  })
 
   def self.build
-    ENV['CFLAGS'] = "-fuse-ld=lld"
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
+    ENV['CFLAGS'] = '-fuse-ld=lld'
+    ENV['CXXFLAGS'] = '-fuse-ld=lld'
     system "meson #{CREW_MESON_OPTIONS} -Dshell-ivi=false -Dremoting=false -Dbackend-default=wayland -Dbackend-drm=false -Dpipewire=false -Dcolor-management-colord=false -Dcolor-management-lcms=false -Dbackend-rdp=false -Dlauncher-logind=false -Dweston-launch=false -Dsystemd=false -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland build"
-    system "meson configure build"
+    system 'meson configure build'
     system 'ninja -C build'
     system "cat <<'EOF'> weston.ini
 [core]
@@ -46,8 +54,10 @@ EOF"
   end
   
   def self.postinstall
-    puts "To run weston with xwayland try something like this:".lightred
-    puts "export WAYLAND_DISPLAY=wayland-1".lightred
-    puts "WAYLAND_DISPLAY=wayland-0 weston -Swayland-1 --xwayland".lightred
+    puts
+    puts "To run weston with xwayland try something like this:".lightblue
+    puts "export WAYLAND_DISPLAY=wayland-1".lightblue
+    puts "WAYLAND_DISPLAY=wayland-0 weston -Swayland-1 --xwayland".lightblue
+    puts
   end
 end

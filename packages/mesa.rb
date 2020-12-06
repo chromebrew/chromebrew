@@ -8,7 +8,18 @@ class Mesa < Package
   source_url 'https://mesa.freedesktop.org/archive/mesa-20.3.0.tar.xz'
   source_sha256 '2999738e888731531cd62b27519fa37566cc0ea2cd7d4d97f46abaa3e949c630'
 
-
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'cce8cade434faa8ac5aeba8ff9d5c8a141fad2758cbec45b7932f735f7249c3b',
+     armv7l: 'cce8cade434faa8ac5aeba8ff9d5c8a141fad2758cbec45b7932f735f7249c3b',
+       i686: '6a727c773fcf12b7f9755451ee99620d13b7589a62684b370a1392f00006cd8f',
+     x86_64: '0638cf75f48e08d9f86ebcec3f2374212c64ba2a621449a883e7816b85459657',
+  })
 
   depends_on 'llvm' => :build
   depends_on 'elfutils'
