@@ -23,7 +23,7 @@ class Bash < Package
     puts "To complete the installation, execute the following:".lightblue
     puts "echo '# Make newer version of bash startup automatically' >> ~/.bashrc".lightblue
     puts "echo '#{CREW_PREFIX}/bin/sh' >> ~/.bashrc".lightblue
-    puts "echo 'PS1=$PS1' >> ~/.bashrc".lightblue
+    puts "echo \"PS1=$PS1\" >> ~/.bashrc".lightblue
     puts "source ~/.bashrc".lightblue
   end
 end
