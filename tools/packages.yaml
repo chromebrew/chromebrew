@@ -94,6 +94,11 @@ url: ftp://ftp.alsa-project.org/pub/plugins
 activity: medium
 ---
 kind: url
+name: amtk
+url: https://github.com/GNOME/amtk/releases
+activity: medium
+---
+kind: url
 name: android_studio
 url: https://developer.android.com/studio#downloads
 activity: high
@@ -127,6 +132,11 @@ kind: url
 name: antlr4
 url: https://www.antlr.org/download
 activity: low
+---
+kind: url
+name: appres
+url: https://x.org/archive/individual/app/
+activity: none
 ---
 kind: url
 name: appstream_glib
@@ -369,6 +379,11 @@ url: https://ftp.gnome.org/pub/gnome/sources/baobab/
 activity: medium
 ---
 kind: url
+name: bash
+url: https://ftpmirror.gnu.org/bash/
+activity: high
+---
+kind: url
 name: bash_completion
 url: https://github.com/scop/bash-completion/releases
 activity: medium
@@ -437,6 +452,11 @@ kind: url
 name: bison
 url: https://ftp.gnu.org/gnu/bison/
 activity: medium
+---
+kind: url
+name: bitmap
+url: https://x.org/archive/individual/app
+activity: none
 ---
 kind: url
 name: bitpocket
@@ -1037,6 +1057,11 @@ kind: url
 name: ed
 url: http://ftpmirror.gnu.org/ed
 activity: low
+---
+kind: url
+name: editres
+url: https://x.org/archive/individual/app
+activity: none
 ---
 kind: url
 name: eigen
@@ -1699,6 +1724,11 @@ url: http://geuz.org/gl2ps/src/
 activity: low
 ---
 kind: url
+name: glade
+url: https://download.gnome.org/sources/glade/
+activity: high
+---
+kind: url
 name: glew
 url: https://github.com/nigels-com/glew/releases/
 activity: none
@@ -1937,6 +1967,11 @@ kind: url
 name: gsl
 url: https://ftpmirror.gnu.org/gsl/
 activity: low
+---
+kind: url
+name: gspell
+url: https://download.gnome.org/sources/gspell/
+activity: medium
 ---
 kind: url
 name: gst_plugins_base
@@ -2302,6 +2337,11 @@ kind: url
 name: jack
 url: https://github.com/jackaudio/jack2/releases/
 activity: low
+---
+kind: url
+name: jack1
+url: https://github.com/jackaudio/jack1/releases
+activity: none
 ---
 kind: url
 name: jam
@@ -2861,6 +2901,11 @@ activity: low
 kind: url
 name: libhubbub
 url: https://download.netsurf-browser.org/libs/releases/
+activity: low
+---
+kind: url
+name: libical
+url: https://github.com/libical/libical/releases
 activity: low
 ---
 kind: url
@@ -3644,6 +3689,11 @@ url: https://releases.llvm.org/
 activity: low
 ---
 kind: url
+name: lm_sensors
+url: https://github.com/lm-sensors/lm-sensors/releases
+activity: none
+---
+kind: url
 name: log4c
 url: https://sourceforge.net/projects/log4c/files/log4c/
 activity: none
@@ -4179,6 +4229,11 @@ url: https://github.com/ninja-build/ninja/releases
 activity: low
 ---
 kind: url
+name: nitrogen
+url: https://github.com/l3ib/nitrogen/releases
+activity: none
+---
+kind: url
 name: nmap
 url: https://nmap.org/dist
 activity: low
@@ -4426,6 +4481,11 @@ activity: low
 kind: url
 name: papirus_icon_theme
 url: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/releases
+activity: high
+---
+kind: url
+name: parsec
+url: https://parsecgaming.com/downloads/
 activity: high
 ---
 kind: url
@@ -4682,6 +4742,11 @@ kind: url
 name: pixman
 url: https://www.cairographics.org/releases/
 activity: none
+---
+kind: url
+name: pkgconf
+url: https://github.com/pkgconf/pkgconf/releases
+activity: low
 ---
 kind: url
 name: pkgconfig
@@ -5024,6 +5089,11 @@ url: http://download.savannah.gnu.org/releases/renameutils
 activity: none
 ---
 kind: url
+name: rendercheck
+url: https://x.org/archive/individual/app
+activity: none
+---
+kind: url
 name: rfkill
 url: https://www.kernel.org/pub/software/network/rfkill
 activity: none
@@ -5252,6 +5322,11 @@ kind: url
 name: shmux
 url: https://github.com/shmux/shmux/releases
 activity: none
+---
+kind: url
+name: shotcut
+url: https://github.com/mltframework/shotcut/releases
+activity: high
 ---
 kind: url
 name: shrinkpdf
@@ -5616,6 +5691,11 @@ activity: none
 kind: url
 name: tina
 url: https://devel.ringlet.net/files/misc/tina/
+activity: none
+---
+kind: url
+name: tint2
+url: https://gitlab.com/o9000/tint2/-/tags
 activity: none
 ---
 kind: url
