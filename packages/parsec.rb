@@ -19,10 +19,10 @@ class Parsec < Package
     case ARCH
     when 'aarch64', 'armv7l'
     	system 'curl https://builds.parsecgaming.com/package/parsec-linux.deb -#o parsec.deb'
- 	puts "Archive downloaded".lightgreen
-   	abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('parsec.deb') ) == '0c7207f419377fc35e30448acd00d8701300ac5a44936ac6d87a468c9afccdc1'
+ 	    puts "Archive downloaded".lightgreen
+   	  abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('parsec.deb') ) == '0c7207f419377fc35e30448acd00d8701300ac5a44936ac6d87a468c9afccdc1'
     when 'x86_64', 'i686'
-        system 'curl https://builds.parsecgaming.com/package/parsec-rpi.deb -#o parsec.deb'
+      system 'curl https://builds.parsecgaming.com/package/parsec-rpi.deb -#o parsec.deb'
     	puts "Archive downloaded".lightgreen
     	abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('parsec.deb') ) == 'a98e840dc44f4762018895bd0da704c88887815de0e74e0f39aa7737f5b0e802'
     end
