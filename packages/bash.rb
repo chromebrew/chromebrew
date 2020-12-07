@@ -3,26 +3,27 @@ require 'package'
 class Bash < Package
   description 'The Bourne Again SHell'
   homepage 'https://www.gnu.org/software/bash/'
-  version '5.1-rc2'
+  version '5.1'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/bash/bash-5.1-rc2.tar.gz'
-  source_sha256 'f3274290260e2c74a2ec61606cc932cc0e093028d55c779cf2c7907bdb60abc0'
+  source_url 'https://ftpmirror.gnu.org/bash/bash-5.1.tar.gz'
+  source_sha256 'cc012bc860406dcf42f64431bcd3d2fa7560c02915a601aba9cd597a39329baa'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bash-5.1-rc2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bash-5.1-rc2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bash-5.1-rc2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bash-5.1-rc2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '562213c4787968ce3288bbf1d2386da08f4c91b0138a4f4837de5cfc7f10eabc',
-     armv7l: '562213c4787968ce3288bbf1d2386da08f4c91b0138a4f4837de5cfc7f10eabc',
-       i686: '534048335a150bec1db6c7c3a717b550bc3fd80c8693aa2eb5b30298d5df3a85',
-     x86_64: '8637084b5d2d0d33c6f4df06f9fa99624f59de4f845ef4b1e68335790e881eb0',
-  })
+  depends_on 'llvm' => :build # Needed only for lld, which appears to allow linking libiconv where ld does not.
+  depends_on 'ncurses' => :build # A static enabled ncurses build w/o "--without-normal" is required to build.
 
   def self.build
-    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    ENV['LD'] = 'lld'
+    system "./configure #{CREW_OPTIONS} --with-curses --enable-readline \
+      --with-gnu-malloc --enable-mem-scramble --enable-usg-echo-default \
+      --enable-single-help-strings --enable-select \
+      --enable-restricted --enable-progcomp --enable-process-substitution \
+      --enable-net-redirections --enable-multibyte --enable-job-control \
+      --enable-history --enable-help-builtin --enable-dparen-arithmetic \
+      --enable-directory-stack --enable-coprocesses --enable-cond-regexp \
+      --enable-cond-command --enable-command-timing --enable-casemod-expansions \
+      --enable-casemod-attributes --enable-brace-expansion --enable-bang-history \
+      --enable-array-variables --enable-arith-for-command --enable-alias \
+      --enable-static-link"
     system 'make'
   end
 
