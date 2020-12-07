@@ -5,8 +5,8 @@ class Libtinfo < Package
   homepage 'https://www.gnu.org/software/ncurses/'
   version '0.22-1'
   compatibility 'all'
-  source_url 'https://sourceforge.net/projects/karthas/files/release/0.22/libtinfo.so.5/download?use_mirror=deac-riga&download=&failedmirror=kumisystems.dl.sourceforge.net#'
-  source_sha256 'e503d6c9fd549bbcac64645d3e4491401f906bd7f10d36bc32390e058066a520'
+  source_url 'file:///dev/null'
+  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url ({
   })
