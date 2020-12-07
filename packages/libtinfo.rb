@@ -3,10 +3,10 @@ require 'package'
 class Libtinfo < Package
   description 'Missing ncurses library reference.'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '0.22-1'
+  version '6.2'
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/karthas/release/0.22/libtinfo.so.5'
-  source_sha256 'e503d6c9fd549bbcac64645d3e4491401f906bd7f10d36bc32390e058066a520'
+  source_url 'file:///dev/null'
+  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url ({
   })
@@ -18,8 +18,8 @@ class Libtinfo < Package
   def self.install
     # See https://forums.opensuse.org/showthread.php/446927-missing-library-libtinfo-so-5.
     # See also http://www.linuxforums.org/forum/installation/6251-libtinfo-so-5-a.html.
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
-    system "ln -sf #{CREW_LIB_PREFIX}/libncurses.so.6 #{CREW_DEST_LIB_PREFIX}/libtinfo.so.5"
-    system "ln -sf #{CREW_LIB_PREFIX}/libncurses.so.6 #{CREW_DEST_LIB_PREFIX}/libtinfo.so.6"
+    FileUtils.mkdir_p #{CREW_DEST_LIB_PREFIX}
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libncurses.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfo.so.5"
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libncurses.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfo.so.6"
   end
 end
