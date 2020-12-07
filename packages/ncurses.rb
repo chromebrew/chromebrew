@@ -3,10 +3,10 @@ require 'package'
 class Ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6.2'
+  version '6.2-20201205'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/ncurses/ncurses-6.2.tar.gz'
-  source_sha256 '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
+  source_url 'https://github.com/mirror/ncurses/archive/42259b594b5dabd37fe2bc294051d2db82e873a2.zip'
+  source_sha256 '782bd5e77fb795f505d6ffd3e443da1cd0ffd6ebb36588a3b7e81e7da34bf340'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-chromeos-armv7l.tar.xz',
@@ -28,13 +28,13 @@ class Ncurses < Package
       system "../configure",
              "--prefix=#{CREW_PREFIX}",
              "--libdir=#{CREW_LIB_PREFIX}",
-             "--without-normal",
              "--with-shared",
              "--with-cxx-shared",
              "--without-debug",
              "--enable-pc-files",
              "--with-pkg-config-libdir=#{CREW_LIB_PREFIX}/pkgconfig",
-             "--enable-widec"
+             "--enable-widec",
+             "--without-tests"
       system "make"
     end
 
@@ -44,7 +44,6 @@ class Ncurses < Package
       system "../configure",
              "--prefix=#{CREW_PREFIX}",
              "--libdir=#{CREW_LIB_PREFIX}",
-             "--without-normal",
              "--with-shared",
              "--with-cxx-shared",
              "--without-debug",
@@ -53,7 +52,8 @@ class Ncurses < Package
              "--disable-db-install",
              "--without-manpages",
              "--without-progs",
-             "--without-tack"
+             "--without-tack",
+             "--without-tests"
       system "make"
     end
   end
