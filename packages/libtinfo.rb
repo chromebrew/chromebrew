@@ -18,7 +18,7 @@ class Libtinfo < Package
   def self.install
     # See https://forums.opensuse.org/showthread.php/446927-missing-library-libtinfo-so-5.
     # See also http://www.linuxforums.org/forum/installation/6251-libtinfo-so-5-a.html.
-    FileUtils.mkdir_p #{CREW_DEST_LIB_PREFIX}
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libncurses.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfo.so.5"
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libncurses.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfo.so.6"
   end
