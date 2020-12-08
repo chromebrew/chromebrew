@@ -11,7 +11,7 @@ class Ncurses < Package
 
   def self.build
     # build libncursesw
-    system "mkdir -p ncursesw_build"
+    FileUtils.mkdir_p "ncursesw_build"
     Dir.chdir("ncursesw_build") do
       system "../configure",
              "--prefix=#{CREW_PREFIX}",
@@ -28,7 +28,7 @@ class Ncurses < Package
     end
 
     # build libncurses
-    system "mkdir -p ncurses_build"
+    FileUtils.mkdir_p "ncurses_build"
     Dir.chdir("ncurses_build") do
       system "../configure",
              "--prefix=#{CREW_PREFIX}",
