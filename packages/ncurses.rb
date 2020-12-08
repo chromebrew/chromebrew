@@ -8,18 +8,6 @@ class Ncurses < Package
   source_url 'https://github.com/mirror/ncurses/archive/42259b594b5dabd37fe2bc294051d2db82e873a2.zip'
   source_sha256 '782bd5e77fb795f505d6ffd3e443da1cd0ffd6ebb36588a3b7e81e7da34bf340'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e040d9c065046e107be2712904f0452720724254cc36aa7f04056246967b41b5',
-     armv7l: 'e040d9c065046e107be2712904f0452720724254cc36aa7f04056246967b41b5',
-       i686: '715c277f836a8f8f6c40736c667f63913d6e8ee005b4eb258a7a156a6b6db95a',
-     x86_64: '7ac9b423de77550b4ac2fc82ce4d42fc694352d3911918ba265ca2472d595f38',
-  })
 
   def self.build
     # build libncursesw
@@ -34,7 +22,8 @@ class Ncurses < Package
              "--enable-pc-files",
              "--with-pkg-config-libdir=#{CREW_LIB_PREFIX}/pkgconfig",
              "--enable-widec",
-             "--without-tests"
+             "--without-tests",
+             "--with-termlib"
       system "make"
     end
 
@@ -53,7 +42,8 @@ class Ncurses < Package
              "--without-manpages",
              "--without-progs",
              "--without-tack",
-             "--without-tests"
+             "--without-tests",
+             "--with-termlib"
       system "make"
     end
   end
@@ -61,9 +51,11 @@ class Ncurses < Package
   def self.install
     Dir.chdir("ncursesw_build") do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libtinfow.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfow.so.5"
     end
     Dir.chdir("ncurses_build") do
       system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libtinfo.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfo.so.5"
     end
   end
 end
