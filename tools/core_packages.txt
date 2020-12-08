@@ -7,7 +7,6 @@ bison
 brotli
 bz2
 c_ares
-cloog
 cmake
 compressdoc
 curl
@@ -17,7 +16,7 @@ expat
 filecmd
 flex
 gawk
-gcc8
+gcc10
 gcc_tools
 gdbm
 gettext
@@ -49,8 +48,11 @@ libtirpc
 libtool
 libunbound
 libunistring
+libxdmcp
 libxml2
 linuxheaders
+llvm
+lz4
 lzip
 m4
 make
@@ -65,9 +67,10 @@ nettle
 ninja
 openldap
 openssl
-osl
 p11kit
 patch
+pcre
+pcre2
 perl
 perl_locale_messages
 perl_text_unidecode
@@ -83,12 +86,14 @@ sed
 setuptools
 slang
 sqlite
+swig
 texinfo
 trousers
 uchardet
 unzip
 util_macros
 wget
+xorg_proto
 xzutils
 zip
 zlibpkg
