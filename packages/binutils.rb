@@ -28,7 +28,7 @@ class Binutils < Package
               --enable-lto \
               --enable-vtable-verify \
               --disable-werror"
-      system "make -j#{CREW_NPROC}"
+      system 'make'
     end
   end
 
