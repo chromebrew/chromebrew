@@ -3,9 +3,9 @@ require 'package'
 class Pwashortcut < Package
   description 'Scripts to create a PWA shortcut on ChromeOS dock for Chromebrew GUI Apps.'
   homepage 'https://github.com/supechicken666/pwashortcut/'
-  version '1.0'
-  source_url 'https://github.com/supechicken666/pwashortcut/raw/master/brew_transparent.png'
-  source_sha256 'dedaa7b9dda61413ff03c823f035bebf5a006dc6a4c37eb8bbd27363e676fd56'
+  version '1.1'
+  source_url 'https://github.com/supechicken666/pwashortcut/archive/1.0-stable.tar.gz'
+  source_sha256 '9e028cb35ce6b0ba840b476d4641be496686d4ee16c73935c48d1fb30ca70d07'
 
   def self.build
     system "pip install flask"
@@ -47,14 +47,14 @@ EOF"
 v1
   \"name\"v4 \"linuxapp\"v6
   \"short_name\"v4 \"linuxapp\"v6
-  \"display\"v4 \"minimal-ui\"v6
+  \"display\"v4 \"standalone\"v6
   \"start_url\"v4 \"unixapp.app\"v6
   \"theme_color\"v4 \"#000000\"v6
   \"background_color\"v4 \"#000000\"v6
   \"icons\"v4 v2
     v1
-      \"src\"v4 \"brew.png\"v6
-      \"sizes\"v4 \"200x200\"v6
+      \"src\"v4 \"icon/brew.png\"v6
+      \"sizes\"v4 \"546x546\"v6
       \"type\"v4 \"image/png\"
     v9
   v8
@@ -72,13 +72,15 @@ EOF"
 # A simple start script
 export CREW_PREFIX=#{CREW_PREFIX}
 export PYTHONPATH=$CREW_PREFIX/lib/python3.9/site-packages/
-export tools=$CREW_PREFIX/lib/pwa/tools
-export PREFIX=$CREW_PREFIX/lib/pwa
-export FLASK_APP=$PREFIX/main.py
+export PWA_PREFIX=$CREW_PREFIX/lib/pwa
+export tools=$PWA_PREFIX/tools
+export FLASK_APP=$PWA_PREFIX/main.py
 export FLASK_ENV=development
+
 pkill flask
-if [[ $1 = '-h' ]]; then
-    echo  '
+case ${1} in
+    -h)
+          echo  '
 ===================================
     Shortcut Server Starter
   -s (Default option) Start shortcut server
@@ -87,81 +89,95 @@ if [[ $1 = '-h' ]]; then
   -p                  Set py script path
   -y                  Set PYTHONPATH
   -f                  Pass option to Flask
+  -g                  PWA icon chooser
+  -i                  Available preinstalled icons for PWA icon chooser
 ==================================='
-elif [[ $1 = '-n' ]]; then
-    mkdir $PREFIX/templates
-    mkdir $PREFIX/$2
-    mkdir $PREFIX/$2/templates
-    cp -r $tools/* $PREFIX/$2/templates
-    cp -r $tools/* $PREFIX/templates
-    mv $PREFIX/templates/manifest.json.bak $PREFIX/templates/manifest.json
-    mv $PREFIX/templates/installer.html.bak $PREFIX/templates/installer.html
-    mv $PREFIX/$2/templates/manifest.json.bak $PREFIX/$2/templates/manifest.json
-    mv $PREFIX/$2/templates/installer.html.bak $PREFIX/$2/templates/installer.html
-    sed -i \"s/linuxapp/${2^}/g\" $PREFIX/$2/templates/manifest.json
-    sed -i \"s/unixapp/$2/g\" $PREFIX/$2/templates/manifest.json
-    #######################
-    echo \" \" >> $FLASK_APP
-    echo \"@app.route('/$2/$2.app')\" >> $FLASK_APP
-    echo \"def $2():\" >> $FLASK_APP
-    echo \"    os.system('$2')\" >> $FLASK_APP
-    echo \"    return 'You can close this window now'\" >> $FLASK_APP
-    echo \"@app.route('/$2/')\" >> $FLASK_APP
-    echo \"def installer_$2():\" >> $FLASK_APP
-    echo \"    return render_template('installer.html')\" >> $FLASK_APP
-    echo \"@app.route('/$2/<path:path>')\" >> $FLASK_APP
-    echo \"def $2_path(path):\" >> $FLASK_APP
-    echo \"    if path.endswith(('brew.png', 'manifest.json')):\" >> $FLASK_APP
-    echo \"        return send_from_directory('$2/templates', path)\" >> $FLASK_APP
-    echo \" \" >> $FLASK_APP
-    #######################
-    echo \"Shortcut for ${2^} deployed!\"
-    echo \"Wait for server start and go to localhost:5000/$2/ for installing shortcut.\"
-    sleep 2
-    flask run
-elif [[ $1 = '-s' ]]; then
-    flask run
-else
-    while getopts \"p:y:f:*\" arg; do
-        OPTARG=$(echo ${OPTARG} | sed 's/\=//')
-        RUN=NO
-        case ${arg} in
-           p)
-               echo $OPTARG
-               export FLASK_APP=$OPTARG
-               ;;
-           y)
-               echo $OPTARG
-               export PYTHONPATH=$OPTARG
-               ;;
-           f)  
-               RUN=YES
-               flask run $OPTARG
-               ;;
-           *)  echo \"Error: unknown option '$arg'\"
-               ;;
-        esac
-    done
-    if [[ $RUN != YES ]]; then
-      flask run
-    fi
-fi
+          ;;
+    -i)
+          bash $tools/customize.sh -i
+          ;;
+    -g)   
+          bash $tools/customize.sh $tools/icon/ $PWA_PREFIX
+          ;;
+    -n)
+          mkdir -p $PWA_PREFIX/$2/templates
+          cp -r $tools/* $PWA_PREFIX/$2/templates
+          mv $PWA_PREFIX/$2/templates/manifest.json.bak $PWA_PREFIX/$2/templates/manifest.json
+          sed -i \"s/linuxapp/${2^}/g\" $PWA_PREFIX/$2/templates/manifest.json
+          sed -i \"s/unixapp/$2/g\" $PWA_PREFIX/$2/templates/manifest.json
+          #######################
+          echo \" \" >> $FLASK_APP
+          echo \"@app.route('/$2/$2.app')\" >> $FLASK_APP
+          echo \"def $2():\" >> $FLASK_APP
+          echo \"    os.system('$2')\" >> $FLASK_APP
+          echo \"    return 'You can close this window now'\" >> $FLASK_APP
+          echo \"@app.route('/$2/')\" >> $FLASK_APP
+          echo \"def installer_$2():\" >> $FLASK_APP
+          echo \"    return render_template('installer.html')\" >> $FLASK_APP
+          echo \"@app.route('/$2/<path:path>')\" >> $FLASK_APP
+          echo \"def $2_path(path):\" >> $FLASK_APP
+          echo \"    if path.endswith(('.png', 'manifest.json')):\" >> $FLASK_APP
+          echo \"        return send_from_directory('$2/templates', path)\" >> $FLASK_APP
+          echo \" \" >> $FLASK_APP
+          #######################
+          echo \"Shortcut for ${2^} deployed!\"
+          echo \"Wait for server start and go to localhost:5000/$2/ for installing shortcut.\"
+          sleep 2
+          flask run
+          ;;
+    -s)
+          flask run
+          ;;
+    *)
+          while getopts \"p:y:f:*\" arg; do
+              OPTARG=$(echo ${OPTARG} | sed 's/\=//')
+              RUN=NO
+              case ${arg} in
+                 p)
+                     RUN=YES
+                     export FLASK_APP=$OPTARG
+                     flask run
+                     ;;
+                 y)
+                     RUN=YES
+                     export PYTHONPATH=$OPTARG
+                     flask run
+                     ;;
+                 f)  
+                     RUN=YES
+                     flask run $OPTARG
+                     ;;
+                 *)  
+                     echo \"Error: unknown option '$arg'\"
+                     echo \"Try 'pwashortcut -h' for more options.\"
+                     break
+                     ;;
+              esac
+          done
+          if [[ $RUN != YES ]]; then pwashortcut -h; fi
+          ;;
+esac
 EOF"
     #########################################
   end
 
   def self.install
-    FileUtils.mkdir "#{CREW_PREFIX}/lib/pwa/" unless File.exists? "#{CREW_PREFIX}/lib/pwa/"
-    FileUtils.mkdir "#{CREW_PREFIX}/lib/pwa/tools/" unless File.exists? "#{CREW_PREFIX}/lib/pwa/tools/"
-    FileUtils.mv "../brew_transparent.png", "#{CREW_PREFIX}/lib/pwa/tools/brew.png"
     system "install -Dm755 pwashortcut #{CREW_PREFIX}/bin/pwashortcut"
-    system "cp * #{CREW_PREFIX}/lib/pwa/tools/"
-    FileUtils.mv "main.py.bak", "#{CREW_PREFIX}/lib/pwa/main.py"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/pwa/templates"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/pwa/tools/icon"
+    FileUtils.cp "installer.html.bak", "#{CREW_DEST_PREFIX}/lib/pwa/templates/installer.html"
+    FileUtils.cp "main.py.bak", "#{CREW_DEST_PREFIX}/lib/pwa/main.py"
+    Dir.chdir("icon") do
+      FileUtils.mv "brew_transparent_546x546.png", "brew.png"
+      FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/lib/pwa/tools/icon"
+    end
+    FileUtils.rm_rf "icon"
+    FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/lib/pwa/tools/"
   end
   def self.postinstall
       puts 
       puts "To complete the installation, execute the following:".lightblue
-      puts "echo 'nohup pwashortcut &> /dev/null' >> ~/.bashrc".libhtblue
+      puts "echo 'nohup pwashortcut &' >> ~/.bashrc".lightblue
       puts 
       puts "Run 'pwashortcut -h' for more usage of this package".lightblue
       puts 
