@@ -129,10 +129,10 @@ case ${1} in
           flask run
           ;;
     *)
-          while getopts \"p:y:f:*\" arg; do
-              OPTARG=$(echo ${OPTARG} | sed 's/\=//')
-              RUN=NO
-              case ${arg} in
+          getopts \"p:y:f:*\" arg
+          OPTARG=$(echo ${OPTARG} | sed 's/\=//')
+          RUN=NO
+          case ${arg} in
                  p)
                      RUN=YES
                      export FLASK_APP=$OPTARG
@@ -150,10 +150,8 @@ case ${1} in
                  *)  
                      echo \"Error: unknown option '$arg'\"
                      echo \"Try 'pwashortcut -h' for more options.\"
-                     break
                      ;;
-              esac
-          done
+          esac
           if [[ $RUN != YES ]]; then pwashortcut -h; fi
           ;;
 esac
@@ -162,11 +160,10 @@ EOF"
   end
 
   def self.install
-    system "install -Dm755 pwashortcut #{CREW_PREFIX}/bin/pwashortcut"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/pwa/templates"
+    system "install -Dm755 pwashortcut #{CREW_DEST_PREFIX}/bin/pwashortcut"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/pwa/tools/icon"
-    FileUtils.cp "installer.html.bak", "#{CREW_DEST_PREFIX}/lib/pwa/templates/installer.html"
-    FileUtils.cp "main.py.bak", "#{CREW_DEST_PREFIX}/lib/pwa/main.py"
+    system "install -Dm644 installer.html.bak #{CREW_DEST_PREFIX}/lib/pwa/templates/installer.html"
+    system "install -m644 main.py.bak #{CREW_DEST_PREFIX}/lib/pwa/main.py"
     Dir.chdir("icon") do
       FileUtils.mv "brew_transparent_546x546.png", "brew.png"
       FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/lib/pwa/tools/icon"
