@@ -3,22 +3,22 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
-  version '67.1'
+  version '68.1'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.tgz'
-  source_sha256 '94a80cd6f251a53bd2a997f6f1b5ac6653fe791dfab66e1eb0227740fb86d5dc'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-68-1/icu4c-68_1-src.tgz'
+  source_sha256 'a9f2e3d8b4434b8e53878b4308bd1e6ee51c9c7042e2b1a376abefb6fbb29f2d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-67.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-67.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-67.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-67.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ce53eb65aa3a48d328bfd117ff19d442dfb585d024ed88a194753da4f57d982e',
-     armv7l: 'ce53eb65aa3a48d328bfd117ff19d442dfb585d024ed88a194753da4f57d982e',
-       i686: '1a561f7e4e7d1b2f5ddc5af5e75367451c16ac0370a23b379f235b8d00f85098',
-     x86_64: '7ef9cec7a0b06d27b6dcd92c3509ff6bfb0376d5adc710b1095965843b7ed4a6',
+    aarch64: 'b49e0c6c754f3b019d769d9c9eb54aa04f6374e25481b3c01611d886a791caed',
+     armv7l: 'b49e0c6c754f3b019d769d9c9eb54aa04f6374e25481b3c01611d886a791caed',
+       i686: 'cd5f09ba3b1b9f12fe553f8b52f8cacec9d5541c4f0d1fad74f6f8137c09ed99',
+     x86_64: '07ddbfffe6b0790289c741f4da5f2e8d341b5194f069ec5a5026ba85bbcfcee2',
   })
 
   def self.build
@@ -37,6 +37,13 @@ class Icu4c < Package
   def self.install
     FileUtils.cd('source') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+      # Backwards compatibility symlinks
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicudata.so.68", "#{CREW_DEST_LIB_PREFIX}/libicudata.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicui18n.so.68", "#{CREW_DEST_LIB_PREFIX}/libicui18n.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicuio.so.68", "#{CREW_DEST_LIB_PREFIX}/libicuio.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicutest.so.68", "#{CREW_DEST_LIB_PREFIX}/libicutest.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicutu.so.68", "#{CREW_DEST_LIB_PREFIX}/libicutu.so.67"
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libicuuc.so.68", "#{CREW_DEST_LIB_PREFIX}/libicuuc.so.67"
     end
   end
 end
