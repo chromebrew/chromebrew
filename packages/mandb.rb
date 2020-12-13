@@ -3,22 +3,22 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'http://man-db.nongnu.org/'
-  version '2.9.0'
+  version '2.9.3'
   compatibility 'all'
-  source_url 'http://download.savannah.gnu.org/releases/man-db/man-db-2.9.0.tar.xz'
-  source_sha256 '5d4aacd9e8876d6a3203a889860c3524c293c38f04111a3350deab8a6cd3e261'
+  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.9.3.tar.xz'
+  source_sha256 'fa5aa11ab0692daf737e76947f45669225db310b2801a5911bceb7551c5597b8'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mandb-2.9.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '7545fe308e8b643c6c289650770392ff7499f08cf2be63f98b753c990c1d0b9b',
-     armv7l: '7545fe308e8b643c6c289650770392ff7499f08cf2be63f98b753c990c1d0b9b',
-       i686: 'e400afbddd2f8564e4cdee38ae17447d632c7fb9bdbd35c53b0ed653830c373d',
-     x86_64: '3e898c4771564163d80eb207acbeec8ec04c8c7de25ae572c9a4de163cfa28af',
+    aarch64: '8bad5f96c6b1259cf8c13e72759bf13ddbd74cb76d3ea03a330b9b3b2da7bce6',
+     armv7l: '8bad5f96c6b1259cf8c13e72759bf13ddbd74cb76d3ea03a330b9b3b2da7bce6',
+       i686: '336d1b5cd1b6d0abfafd0b9c12e925ccd3e239acca9c55b09835fe9ada917736',
+     x86_64: 'e6023a153a255916cda39d0598c8cfa7b38345b6c69d5bf61babd54fec66f624',
   })
 
   depends_on 'gdbm'
