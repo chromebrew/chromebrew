@@ -27,8 +27,4 @@ class Meson < Package
   def self.install
     system "python3 setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
   end
-
-  def self.postinstall
-    system "pip3 install --upgrade --force-reinstall meson==#{version}"
-  end
 end
