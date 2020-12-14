@@ -3,44 +3,22 @@ require 'package'
 class Pwashortcut < Package
   description 'Scripts to create a PWA shortcut on ChromeOS dock for Chromebrew GUI Apps.'
   homepage 'https://github.com/supechicken666/pwashortcut/'
-  version '1.1'
-  source_url 'https://github.com/supechicken666/pwashortcut/archive/1.0-stable.tar.gz'
-  source_sha256 '9e028cb35ce6b0ba840b476d4641be496686d4ee16c73935c48d1fb30ca70d07'
+  version '1.3.1'
+  source_url 'https://github.com/supechicken666/pwashortcut/archive/1.3.1-debug.tar.gz'
+  source_sha256 'ec4d3e728733550a8cdaa8b8f19c5df01982f9e39dfc1a456e39d52934bf9d89'
 
+  HOME = Dir.home
+    
   def self.build
     system "pip install flask"
+    #######################################
     system "cat <<'EOF'> main.py.bak
 from flask import Flask, render_template, redirect, url_for, send_from_directory
+from threading import Thread
 import os
 
 app = Flask(__name__)
 
-EOF"
-    #######################################
-    system "cat <<'EOF'> installer.html.bak
-<!DOCTYPE html>
-<html>
-<head>
-<title>Shortcut Installer</title>
-<link rel=\"manifest\" href=\"manifest.json\" />
-</head>
-<body style=\"background-color:powderblue;\">
-    <h1>Shortcut Installer</h1>
-    <p>Add Linux GUI App shortcut to your dock</p>
-    <h2>HowTo</h2>
-    <h3>Step 1</h3>
-    <p>Click the ••• icon in the right corner of the screen</p>
-    <h3>Step 2</h3>
-    <p>Select 'Create shortcut...' under 'More tools'</p>
-    <h3>Step 3</h3>
-    <p>Tick the 'Open as window' checkbox</p>
-    <h3>Step 4</h3>
-    <p>Simply click the blue 'Create' button!</p>
-    <h3>Step 5</h3>
-    <p>Close this window and reopen it by the new shortcut</p>
-    <h2>That's all:) </h2>
-</body>
-</html>
 EOF"
     #######################################
     system "cat <<'EOF'> manifest.json.bak
@@ -76,9 +54,11 @@ export PWA_PREFIX=$CREW_PREFIX/lib/pwa
 export tools=$PWA_PREFIX/tools
 export FLASK_APP=$PWA_PREFIX/main.py
 export FLASK_ENV=development
-
 pkill flask
 case ${1} in
+    -d)
+          bash $tools/find.sh $CREW_PREFIX
+          ;;
     -h)
           echo  '
 ===================================
@@ -91,10 +71,11 @@ case ${1} in
   -f                  Pass option to Flask
   -g                  PWA icon chooser
   -i                  Available preinstalled icons for PWA icon chooser
+  -d                  Generate shortcuts from .desktop files (stable but not recommended)
 ==================================='
           ;;
     -i)
-          bash $tools/customize.sh -i
+          bash $tools/customize.sh -i $tools/icon/
           ;;
     -g)   
           bash $tools/customize.sh $tools/icon/ $PWA_PREFIX
@@ -109,18 +90,26 @@ case ${1} in
           echo \" \" >> $FLASK_APP
           echo \"@app.route('/$2/$2.app')\" >> $FLASK_APP
           echo \"def $2():\" >> $FLASK_APP
+          echo \"  def $2_run():\" >> $FLASK_APP
           echo \"    os.system('$2')\" >> $FLASK_APP
-          echo \"    return 'You can close this window now'\" >> $FLASK_APP
+          echo \"  start_$2 = Thread(target=$2_run)\" >> $FLASK_APP
+          echo \"  start_$2.start()\" >> $FLASK_APP
+          echo \"  return redirect('chrome-extension://eabaombiainalffcbinoffnbjeaefhle/exit.html')\" >> $FLASK_APP
           echo \"@app.route('/$2/')\" >> $FLASK_APP
           echo \"def installer_$2():\" >> $FLASK_APP
           echo \"    return render_template('installer.html')\" >> $FLASK_APP
           echo \"@app.route('/$2/<path:path>')\" >> $FLASK_APP
           echo \"def $2_path(path):\" >> $FLASK_APP
-          echo \"    if path.endswith(('.png', 'manifest.json')):\" >> $FLASK_APP
+          echo \"    if path.endswith(('.svg', '.png', 'manifest.json')):\" >> $FLASK_APP
           echo \"        return send_from_directory('$2/templates', path)\" >> $FLASK_APP
           echo \" \" >> $FLASK_APP
           #######################
           echo \"Shortcut for ${2^} deployed!\"
+          if [[ $(pwashortcut -i | grep $2) != \"\" ]]
+          then
+          echo \"${2^} has a preinstalled customize theme, using preinstalled configuration\"
+          cp $tools/icon/$2.json $PWA_PREFIX/$2/templates/manifest.json
+          fi
           echo \"Wait for server start and go to localhost:5000/$2/ for installing shortcut.\"
           sleep 2
           flask run
@@ -160,15 +149,14 @@ EOF"
   end
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/pwa/tools"
     system "install -Dm755 pwashortcut #{CREW_DEST_PREFIX}/bin/pwashortcut"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/pwa/tools/icon"
-    system "install -Dm644 installer.html.bak #{CREW_DEST_PREFIX}/lib/pwa/templates/installer.html"
+    system "install -Dm644 installer.html #{CREW_DEST_PREFIX}/lib/pwa/templates/installer.html"
     system "install -m644 main.py.bak #{CREW_DEST_PREFIX}/lib/pwa/main.py"
     Dir.chdir("icon") do
       FileUtils.mv "brew_transparent_546x546.png", "brew.png"
-      FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/lib/pwa/tools/icon"
     end
-    FileUtils.rm_rf "icon"
+    FileUtils.mv "extension/", "#{HOME}/Downloads/extension/"
     FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/lib/pwa/tools/"
   end
   def self.postinstall
@@ -176,6 +164,17 @@ EOF"
       puts "To complete the installation, execute the following:".lightblue
       puts "echo 'nohup pwashortcut &' >> ~/.bashrc".lightblue
       puts 
+      puts "To complete the installation, install the exit extension by following:".lightgreen
+      puts "Go to chrome://extensions/".lightgreen
+      puts "Switch on Developer Mode".lightgreen
+      puts "Click 'Load Unpacked'".lightgreen
+      puts "Select the 'unpacked' folder under 'extension' in 'Downloads'".lightgreen
+      puts "Copy the ID of the extension".lightgreen
+      puts "Execute the following:".lightgreen
+      puts "id=*REPLACE-WITH-YOUR-COPIED-ID*".lightgreen
+      puts "sed -i \"s/eabaombiainalffcbinoffnbjeaefhle/$id/g\" #{CREW_PREFIX}/bin/pwashortcut".lightgreen
+      puts "sed -i \"s/eabaombiainalffcbinoffnbjeaefhle/$id/g\" #{CREW_PREFIX}/lib/pwa/tools/*.sh".lightgreen
+      puts
       puts "Run 'pwashortcut -h' for more usage of this package".lightblue
       puts 
   end
