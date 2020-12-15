@@ -6,6 +6,8 @@ class Pwashortcut < Package
   version '1.3.1'
   source_url 'https://github.com/supechicken666/pwashortcut/archive/1.3.1-debug.tar.gz'
   source_sha256 'ec4d3e728733550a8cdaa8b8f19c5df01982f9e39dfc1a456e39d52934bf9d89'
+  
+  depends_on "graphicsmagick"
 
   HOME = Dir.home
     
