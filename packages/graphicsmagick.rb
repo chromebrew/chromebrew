@@ -18,7 +18,7 @@ class Graphicsmagick < Package
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_PREFIX}/lib64",
+           "--libdir=#{CREW_LIB_PREFIX}",
            "--mandir=#{CREW_PREFIX}/share/man",
            "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
            "--with-perl=#{CREW_PREFIX}/bin/perl",
