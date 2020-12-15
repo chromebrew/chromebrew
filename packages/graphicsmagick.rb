@@ -16,18 +16,11 @@ class Graphicsmagick < Package
   depends_on 'msttcorefonts'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--mandir=#{CREW_PREFIX}/share/man",
-           "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
-           "--with-perl=#{CREW_PREFIX}/bin/perl",
-           '--disable-maintainer-mode',
-           '--enable-magick-compat',
-           '--enable-shared=yes',
-           '--enable-static=no',
-           '--with-modules',
-           '--with-xml'
+    system "./configure #{CREW_OPTIONS} \
+--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
+--with-perl=#{CREW_PREFIX}/bin/perl --disable-maintainer-mode \
+--enable-magick-compat --enable-shared=yes --enable-static=no \
+--with-modules --with-xml"
     system 'make'
   end
 
