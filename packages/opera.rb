@@ -3,7 +3,7 @@ require 'package'
 class Opera < Package
   description "Opera isn't just a browser. It's an awesome browser."
   homepage 'https://www.opera.com/'
-  version '72.0.3815.400'
+  version `curl -Ls https://get.geo.opera.com/pub/opera/desktop/ | grep -r 'a' index.html | tail -1 | cut -d '"' -f 2 | sed -e 's|\/||' | perl -e 'while(<>) { $_ =~ s/[\r\n]//g; print "$_" }'`
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
