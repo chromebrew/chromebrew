@@ -17,9 +17,9 @@ class Graphicsmagick < Package
 
   def self.build
     system './configure',
-           "--prefix=/usr/local",
-           "--libdir=/usr/local/lib64",
-           "--mandir=/usr/local/share/man",
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_PREFIX}/lib64",
+           "--mandir=#{CREW_PREFIX}/share/man",
            "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
            "--with-perl=#{CREW_PREFIX}/bin/perl",
            '--disable-maintainer-mode',
