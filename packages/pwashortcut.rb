@@ -57,12 +57,7 @@ export tools=$PWA_PREFIX/tools
 export FLASK_APP=$PWA_PREFIX/main.py
 export FLASK_ENV=development
 pkill flask
-case ${1} in
-    -d)
-          bash $tools/find.sh $CREW_PREFIX
-          ;;
-    -h)
-          echo  '
+help='
 ===================================
     Shortcut Server Starter
   -s (Default option) Start shortcut server
@@ -75,6 +70,12 @@ case ${1} in
   -i                  Available preinstalled icons for PWA icon chooser
   -d                  Generate shortcuts from .desktop files (stable but not recommended)
 ==================================='
+case ${1} in
+    -d)
+          bash $tools/find.sh $CREW_PREFIX
+          ;;
+    -h)
+          echo \"$help\"
           ;;
     -i)
           bash $tools/customize.sh -i $tools/icon/
@@ -143,7 +144,7 @@ case ${1} in
                      echo \"Try 'pwashortcut -h' for more options.\"
                      ;;
           esac
-          if [[ $RUN != YES ]]; then pwashortcut -h; fi
+          if [[ $RUN != YES ]]; then echo \"$help\"; fi
           ;;
 esac
 EOF"
