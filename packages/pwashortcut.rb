@@ -162,7 +162,7 @@ EOF"
   def self.postinstall
       puts 
       puts "To complete the installation, execute the following:".lightblue
-      puts "echo 'nohup pwashortcut &' >> ~/.bashrc".lightblue
+      puts "echo 'nohup pwashortcut -s &' >> ~/.bashrc".lightblue
       puts 
       puts "To complete the installation, install the exit extension by following:".lightgreen
       puts "Go to chrome://extensions/".lightgreen
