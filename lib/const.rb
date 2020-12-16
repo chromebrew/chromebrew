@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.5.1'
+CREW_VERSION = '1.5.2'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -22,6 +22,7 @@ CREW_MAN_PREFIX = CREW_PREFIX + '/share/man'
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
+CREW_CACHE_DIR = CREW_PREFIX + '/tmp/cache/'
 CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
 CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
