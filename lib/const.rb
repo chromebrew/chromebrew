@@ -19,7 +19,6 @@ end
 
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
 CREW_MAN_PREFIX = CREW_PREFIX + '/share/man'
-
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
@@ -40,7 +39,6 @@ else
   CREW_CACHE_DIR = ENV['CREW_CACHE_DIR']
   @pkg.build_from_source = true
 end
-
 
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
 
