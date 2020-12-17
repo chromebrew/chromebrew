@@ -497,15 +497,36 @@ def download
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
+    unless ENV["CREW_CACHE_OPT"].to_s == ''
+      unless File.directory?(CREW_CACHE_DIR)
+        FileUtils.mkdir_p(CREW_CACHE_DIR) 
+      end
+      if File.file?("#{CREW_CACHE_DIR}#{filename}")
+        if Digest::SHA256.hexdigest( File.read("#{CREW_CACHE_DIR}#{filename}") ) == sha256sum then
+          FileUtils.cp "#{CREW_CACHE_DIR}#{filename}", "#{CREW_BREW_DIR}"
+          puts "Archive found in cache".lightgreen
+          return {source: source, filename: filename}
+          else
+          puts 'Cached archive checksum mismatch. :/ Will download.'.lightred
+        end
+      end
+    end
+
     if @opt_verbose then
       system('curl', '-v', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     else
       system('curl', '--retry', '3', '--progress-bar', '-C', '-', '--insecure', '-L', '-#', url, '-o', filename)
     end
+
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read("./#{filename}") ) == sha256sum
+    puts "Archive downloaded".lightgreen
+
+    unless ENV["CREW_CACHE_OPT"].to_s == ''
+      puts "Caching downloaded archive".lightgreen
+      FileUtils.cp filename, CREW_CACHE_DIR
+    end
   end
-  puts "Archive downloaded".lightgreen
   return {source: source, filename: filename}
 end
 
