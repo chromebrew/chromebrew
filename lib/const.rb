@@ -34,7 +34,7 @@ else
 end
 
 if ENV['CREW_CACHE_DIR'].to_s == ''
-  CREW_CACHE_DIR = HOME + '.cache/crewcache'
+  CREW_CACHE_DIR = HOME + '/.cache/crewcache/'
 else
   CREW_CACHE_DIR = ENV['CREW_CACHE_DIR']
 end
