@@ -524,7 +524,7 @@ def download
 
     unless ENV["CREW_CACHE_OPT"].to_s == ''
       puts "Caching downloaded archive".lightgreen
-      FileUtils.cp "#{filename}", "#{CREW_CACHE_DIR}" 
+      FileUtils.cp filename, CREW_CACHE_DIR
     end
   end
   return {source: source, filename: filename}
