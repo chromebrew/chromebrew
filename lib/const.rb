@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.5.1'
+CREW_VERSION = '1.5.2'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -16,9 +16,9 @@ else
   CREW_PREFIX = ENV['CREW_PREFIX']
   @pkg.build_from_source = true
 end
+
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
 CREW_MAN_PREFIX = CREW_PREFIX + '/share/man'
-
 CREW_LIB_PATH = CREW_PREFIX + '/lib/crew/'
 CREW_CONFIG_PATH = CREW_PREFIX + '/etc/crew/'
 CREW_BREW_DIR = CREW_PREFIX + '/tmp/crew/'
@@ -31,6 +31,12 @@ if ENV['CREW_PREFIX'].to_s == ''
   HOME = ENV['HOME']
 else
   HOME = CREW_PREFIX + ENV['HOME']
+end
+
+if ENV['CREW_CACHE_DIR'].to_s == ''
+  CREW_CACHE_DIR = HOME + '/.cache/crewcache/'
+else
+  CREW_CACHE_DIR = ENV['CREW_CACHE_DIR']
 end
 
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
