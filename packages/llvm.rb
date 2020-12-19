@@ -19,9 +19,9 @@ class Llvm < Package
   ARCH_ACTUAL = `uname -m`.strip
   case ARCH_ACTUAL
   when 'armv8l', 'aarch64', 'armv7l'
-    LLVM_TARGETS_TO_BUILD = 'ARM'
+    LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
   when 'i686','x86_64'
-    LLVM_TARGETS_TO_BUILD = 'X86'
+    LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
   end
   LLVM_VERSION = version.split("-")[0]
 
