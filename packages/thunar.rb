@@ -29,7 +29,6 @@ class Thunar < Package
   depends_on 'desktop_file_utilities'
   depends_on 'hicolor_icon_theme'
   depends_on 'xdg_base'
-  depends_on 'wayland'
   depends_on 'wayland_protocols'
   depends_on 'mesa'
 
