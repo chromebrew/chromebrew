@@ -3,7 +3,7 @@ require 'package'
 class Gcc_tools < Package
   description 'Tools for working with gcc packages'
   homepage 'https://github.com/skycocker/chromebrew'
-  version '1.1'
+  version '1.2'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -17,16 +17,18 @@ set -e
 
 # define constants
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
-ARCH="$(uname -m)"
+ARCH_ACTUAL="$(uname -m)"
+ARCH="${ARCH:-$ARCH_ACTUAL}"
 LIB_SUFFIX=""
 [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX="64"
+CURL="LD_LIBRARY_PATH=/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} /usr/bin/curl"
 
 function download_check () {
   cd /tmp
 
   #download
   echo "Downloading ${1}..."
-  curl --progress-bar -C - -L --ssl "${2}" -o "${3}"
+  "${CURL}" --progress-bar -C - -L --ssl "${2}" -o "${3}"
 
   #verify
   echo "Verifying ${1}..."
