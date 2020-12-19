@@ -15,7 +15,7 @@ CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew/"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 
-ARCH="$(uname -m)"
+ARCH="${ARCH:-$(uname -m)}"
 
 if [ "${EUID}" == "0" ]; then
   echo 'Chromebrew should not be installed or run as root.'
