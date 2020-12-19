@@ -42,7 +42,7 @@ class Openbox < Package
   depends_on 'xdpyinfo'
   depends_on 'gtk2'
   depends_on 'gtk3'
-  depends_on 'sommelier'
+  depends_on 'xorg_server'
 
   ENV['CFLAGS'] = "-lX11 -lXau"
   def self.build
