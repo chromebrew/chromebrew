@@ -79,7 +79,7 @@ class Python3 < Package
   def self.postinstall
     puts
     puts "Upgrading pip...".lightblue
-    system 'pip3 install --upgrade pip'
+    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} python3 get-pip.py -U"
     puts
   end
 end
