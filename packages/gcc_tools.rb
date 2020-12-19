@@ -18,6 +18,7 @@ set -e
 # define constants
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
 ARCH_ACTUAL="$(uname -m)"
+[[ "$ARCH_ACTUAL" == "armv8l" ]] && ARCH_ACTUAL="armv7l"
 ARCH="${ARCH:-$ARCH_ACTUAL}"
 LIB_SUFFIX=""
 [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX="64"
