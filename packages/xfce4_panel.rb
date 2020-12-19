@@ -36,4 +36,8 @@ class Xfce4_panel < Package
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
+  
+  def self.postinstall
+    puts
+    puts "You need a window manager like 'openbox' to use with this package.".lightblue
 end
