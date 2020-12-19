@@ -29,7 +29,8 @@ class Thunar < Package
   depends_on 'desktop_file_utilities'
   depends_on 'hicolor_icon_theme'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'wayland'
+  depends_on 'wayland_protocols'
 
   def self.build
     system "./configure #{CREW_OPTIONS} --enable-gio-unix --enable-gudev --enable-exif --enable-pcre --disable-static --enable-notifications"
