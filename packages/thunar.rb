@@ -39,12 +39,13 @@ class Thunar < Package
 
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
-    system "cat <<'EOF'> #{CREW_DEST_PREFIX}/bin/Thunar
+    system "cat <<'EOF'> Thunar
 WAYLAND_DISPLAY=wayland-0
 GDK_BACKEND=wayland
 DISPLAY=
 #{CREW_PREFIX}/bin/#{CREW_BUILD}-thunar $@
 EOF"
+    system "install -Dm755 Thunar #{CREW_DEST_PREFIX}/bin/Thunar"
     # FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{CREW_BUILD}-thunar", "#{CREW_DEST_PREFIX}/bin/Thunar"
   end    
 end
