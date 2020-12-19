@@ -22,6 +22,6 @@ class Pygments < Package
   })
 
   def self.install
-    system "pip3 install pygments --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "pip3 install pygments --no-warn-script-location --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
   end
 end
