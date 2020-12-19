@@ -17,12 +17,14 @@ set -e
 
 # define constants
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
-ARCH_ACTUAL="$(uname -m)"
-[[ "$ARCH_ACTUAL" == "armv8l" ]] && ARCH_ACTUAL="armv7l"
-ARCH="${ARCH:-$ARCH_ACTUAL}"
+ARCH="$(uname -m)"
 LIB_SUFFIX=""
 [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX="64"
-CURL="LD_LIBRARY_PATH=/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} /usr/bin/curl"
+if curl --version &>/dev/null; then
+  CURL=curl
+else
+  CURL="LD_LIBRARY_PATH=/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} /usr/bin/curl"
+fi
 
 function download_check () {
   cd /tmp
@@ -45,7 +47,7 @@ function download_check () {
 if [ ! -f "${CREW_PREFIX}/lib${LIB_SUFFIX}/libssp.so.0" ]; then
   # prepare gcc8 url and sha256
   case "${ARCH}" in
-  "aarch64"|"armv7l")
+  "aarch64"|"armv7l"|"armv8l")
     url="https://dl.bintray.com/chromebrew/chromebrew/gcc8-8.3.0-chromeos-armv7l.tar.xz"
     sha256="fbd8a589befb3d10400af6e4975d02a6940bab4907628f8fc0d6913ea89f70ae"
     ;;
@@ -68,7 +70,7 @@ fi
 if [ ! -f "${CREW_PREFIX}/bin/ruby" ]; then
   # prepare ruby url and sha256
   case "${ARCH}" in
-  "aarch64"|"armv7l")
+  "aarch64"|"armv7l"|"armv8l")
     url="https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.2-chromeos-armv7l.tar.xz"
     sha256="a435e6bf7965e1a82e8842e5ea66bdd670ec9b627d785bd720d3d2652fc89f6d"
     ;;
