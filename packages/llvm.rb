@@ -16,7 +16,13 @@ class Llvm < Package
   depends_on 'swig'
   depends_on 'pygments'
 
-  LLVM_TARGETS_TO_BUILD = if ARCH == 'armv7l' then 'ARM' else 'X86' end
+  ARCH_ACTUAL = `uname -m`.strip
+  case ARCH_ACTUAL
+  when 'armv8l', 'aarch64', 'armv7l'
+    LLVM_TARGETS_TO_BUILD = 'ARM'
+  when 'i686','x86_64'
+    LLVM_TARGETS_TO_BUILD = 'X86'
+  end
   LLVM_VERSION = version.split("-")[0]
 
   def self.build
