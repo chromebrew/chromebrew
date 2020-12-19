@@ -8,6 +8,8 @@ class Llvm < Package
   source_url 'https://github.com/llvm/llvm-project/archive/llvmorg-11.0.1-rc2.tar.gz'
   source_sha256 'c217780b9903eabf0fdb8ed227ae50b623d3f82afb9ac36beffbc81acbc6ff6c'
 
+
+
   depends_on 'ld_default' => :build
 
   depends_on 'ocaml' => :build
@@ -16,13 +18,14 @@ class Llvm < Package
   depends_on 'swig'
   depends_on 'pygments'
 
-  ARCH_ACTUAL = `uname -m`.strip
-  case ARCH_ACTUAL
-  when 'armv8l', 'aarch64', 'armv7l'
-    LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
-  when 'i686','x86_64'
-    LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
-  end
+  #ARCH_ACTUAL = `uname -m`.strip
+  #case ARCH_ACTUAL
+  #when 'armv8l', 'aarch64', 'armv7l'
+    #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
+  #when 'i686','x86_64'
+    #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
+  #end
+  LLVM_TARGETS_TO_BUILD = 'all'
   LLVM_VERSION = version.split("-")[0]
 
   def self.build
@@ -53,11 +56,10 @@ cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
 cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
 gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
-
         system "cmake -G Ninja \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DLLVM_DEFAULT_TARGET_TRIPLE=#{ARCH}-cros-linux-gnu \
-            -DLLVM_TARGETS_TO_BUILD=#{LLVM_TARGETS_TO_BUILD} \
+            -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
@@ -85,13 +87,13 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
     end
   end
   
-  #def self.check
-    #Dir.chdir("builddir") do
-      #system "ninja check-llvm"
-      #system "ninja check-clang"
-      #system "ninja check-lld"
-    #end
-  #end
+  def self.check
+    Dir.chdir("builddir") do
+      system "ninja check-llvm || true"
+      system "ninja check-clang || true"
+      system "ninja check-lld || true"
+    end
+  end
 
   def self.postinstall
     puts
