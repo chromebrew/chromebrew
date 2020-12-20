@@ -80,10 +80,10 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
       system "install -Dm755 clc++ #{CREW_DEST_PREFIX}/bin/clc++"
       system "DESTDIR=#{CREW_DEST_DIR} ninja install"
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
-      #FileUtils.cp lib#{CREW_LIB_SUFFIX}/LLVMgold.so "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-      #FileUtils.cp lib#{CREW_LIB_SUFFIX}/libLTO.* "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-      system "cp lib#{CREW_LIB_SUFFIX}/LLVMgold.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-      system "cp lib#{CREW_LIB_SUFFIX}/libLTO.* #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      FileUtils.cp "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      FileUtils.cp Dir.glob("lib#{CREW_LIB_SUFFIX}/libLTO.*"), "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      #system "cp lib#{CREW_LIB_SUFFIX}/LLVMgold.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      #system "cp lib#{CREW_LIB_SUFFIX}/libLTO.* #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
     end
   end
   
