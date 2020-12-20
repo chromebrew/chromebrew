@@ -38,6 +38,7 @@ class Xfce4_terminal < Package
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
     system "cat <<'EOF'> xfce4-terminal
+#!/bin/bash
 WAYLAND_DISPLAY=wayland-0
 GDK_BACKEND=wayland
 DISPLAY=
