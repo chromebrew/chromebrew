@@ -2,23 +2,23 @@ require 'package'
 
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
-  homepage 'https://curl.haxx.se/'
-  version '7.73.0'
+  homepage 'https://curl.se/'
+  version '7.74.0'
   compatibility 'all'
-  source_url 'https://curl.haxx.se/download/curl-7.73.0.tar.xz'
-  source_sha256 '7c4c7ca4ea88abe00fea4740dcf81075c031b1d0bb23aff2d5efde20a3c2408a'
+  source_url 'https://curl.se/download/curl-7.74.0.tar.xz'
+  source_sha256 '999d5f2c403cf6e25d58319fdd596611e455dd195208746bc6e6d197a77e878b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.73.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.73.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.73.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.73.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0f75d8a211f66cf27c0f9bfe35b10761f21c6f6d71665d10d5511c1c72017c58',
-     armv7l: '0f75d8a211f66cf27c0f9bfe35b10761f21c6f6d71665d10d5511c1c72017c58',
-       i686: '3109622744ec710f5f7d37678f108f382f481a7297fbecc01902fb5933a0cfa1',
-     x86_64: 'ab8fc3bdc5f2495067b979105b21fc684952beb463a356051fb5736d70f5e1da',
+    aarch64: '6c817cc8f2043982148a08713fd5439efc26e80f44788788b58bde6d5a86186c',
+     armv7l: '6c817cc8f2043982148a08713fd5439efc26e80f44788788b58bde6d5a86186c',
+       i686: '77b6af733566a22e9eb1187470190b9c48e2480dd13589efc452da589530630d',
+     x86_64: '137ee2aadee4e1fad6a4f80b361bdbbb7181baea32cc0b8326aa693a1d3916d4',
   })
 
   depends_on 'groff' => :build
@@ -26,7 +26,6 @@ class Curl < Package
   depends_on 'c_ares'
   depends_on 'libiconv'
   depends_on 'libidn2'
-  depends_on 'libmbedtls'
   depends_on 'libmetalink'
   depends_on 'libnghttp2'
   depends_on 'libtirpc'
