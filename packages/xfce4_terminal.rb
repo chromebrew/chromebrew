@@ -42,7 +42,7 @@ class Xfce4_terminal < Package
 WAYLAND_DISPLAY=wayland-0
 GDK_BACKEND=wayland
 DISPLAY=
-#{CREW_PREFIX}/bin/xfce4_terminal $@
+#{CREW_PREFIX}/bin/xfce4_terminal \"$@\"
 EOF"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/xfce4-terminal", "#{CREW_DEST_PREFIX}/bin/xfce4_terminal"
     system "install -Dm755 xfce4-terminal #{CREW_DEST_PREFIX}/bin/xfce4-terminal"
