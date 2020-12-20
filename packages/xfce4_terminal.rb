@@ -27,7 +27,8 @@ class Xfce4_terminal < Package
   depends_on 'hicolor_icon_theme'
   depends_on 'libxfce4ui'
   depends_on 'startup_notification'
-  depends_on 'sommelier'
+  depends_on 'wayland_protocols'
+  depends_on 'mesa'
 
   def self.build
     system "./configure #{CREW_OPTIONS}"
@@ -36,5 +37,14 @@ class Xfce4_terminal < Package
 
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
+    system "cat <<'EOF'> xfce4-terminal
+#!/bin/bash
+WAYLAND_DISPLAY=wayland-0
+GDK_BACKEND=wayland
+DISPLAY=
+#{CREW_PREFIX}/bin/xfce4_terminal \"$@\"
+EOF"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/xfce4-terminal", "#{CREW_DEST_PREFIX}/bin/xfce4_terminal"
+    system "install -Dm755 xfce4-terminal #{CREW_DEST_PREFIX}/bin/xfce4-terminal"
   end
 end
