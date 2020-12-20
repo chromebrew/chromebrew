@@ -3,22 +3,22 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.9.0'
+  version '3.9.1'
   compatibility 'all'
-  source_url 'https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tar.xz'
-  source_sha256 '9c73e63c99855709b9be0b3cc9e5b072cb60f37311e8c4e50f15576a0bf82854'
+  source_url 'https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tar.xz'
+  source_sha256 '991c3f8ac97992f3d308fefeb03a64db462574eadbff34ce8bc5bb583d9903ff'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'afd80fd6f5f187c946ed112eeac7a881686d1efdc4ac1287e833ab1069ca800b',
-     armv7l: 'afd80fd6f5f187c946ed112eeac7a881686d1efdc4ac1287e833ab1069ca800b',
-       i686: '1f332e7b195d5e62a1dd9f7d648f7c4af058c1eaba9ac497772f05f7dbf622c1',
-     x86_64: '78dbbe2f8735a165e052da3fb7cdf14f80e0a88c9d4adcb2a47b930f1ded9ac5',
+    aarch64: '4c91d1eb34a67add83acd1c533d09b023e3ed76c32c719bf4c8fc868fc2b4ba8',
+     armv7l: '4c91d1eb34a67add83acd1c533d09b023e3ed76c32c719bf4c8fc868fc2b4ba8',
+       i686: '7230c721be1b39e398644c40321ca6f98fe675e425ebaf08e36c49f3cc6ba0ec',
+     x86_64: 'dfa075d498816991e837ec738c3f9d981c75421a995f4322003d74edb0da62fb',
   })
 
   depends_on 'bz2'
@@ -91,7 +91,7 @@ class Python3 < Package
   def self.postinstall
     puts
     puts "Upgrading pip...".lightblue
-    system 'pip3 install --upgrade pip'
+    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} python3 get-pip.py -U"
     puts
   end
 end
