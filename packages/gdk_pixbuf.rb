@@ -28,7 +28,6 @@ class Gdk_pixbuf < Package
   depends_on 'libtiff'
   depends_on 'libjpeg_turbo'
   depends_on 'six'
-  depends_on 'sommelier'
 
   def self.build
     Dir.mkdir 'build'
