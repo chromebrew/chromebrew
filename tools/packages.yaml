@@ -2009,6 +2009,11 @@ url: https://download.gnome.org/sources/gtk+/
 activity: medium
 ---
 kind: url
+name: gtk4
+url: https://download.gnome.org/sources/gtk/
+activity: medium
+---
+kind: url
 name: gtkdialog
 url: https://code.google.com/archive/p/gtkdialog/downloads
 activity: none
@@ -4484,11 +4489,6 @@ url: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/releases
 activity: high
 ---
 kind: url
-name: parsec
-url: https://parsecgaming.com/downloads/
-activity: high
----
-kind: url
 name: parted
 url: https://ftpmirror.gnu.org/parted/
 activity: none
@@ -4911,6 +4911,11 @@ activity: none
 kind: url
 name: pycharm
 url: https://www.jetbrains.com/pycharm/download/other.html
+activity: medium
+---
+kind: url
+name: pygments
+url: https://pygments.org/
 activity: medium
 ---
 kind: url
