@@ -499,7 +499,7 @@ def download
   Dir.chdir CREW_BREW_DIR do
     unless ENV["CREW_CACHE_OPT"].to_s == ''
       unless File.directory?(CREW_CACHE_DIR)
-        FileUtils.mkdir_p(CREW_CACHE_DIR) 
+        FileUtils.mkdir_p(CREW_CACHE_DIR)
       end
       if File.file?("#{CREW_CACHE_DIR}#{filename}")
         if Digest::SHA256.hexdigest( File.read("#{CREW_CACHE_DIR}#{filename}") ) == sha256sum then
@@ -973,8 +973,10 @@ def remove (pkgName)
     file.write JSON.pretty_generate(out)
   end
 
-  puts "#{pkgName.capitalize} removed!".lightgreen
+  set_package pkgName, true
+  @pkg.remove
 
+  puts "#{pkgName.capitalize} removed!".lightgreen
 end
 
 def build_command (args)
