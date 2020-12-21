@@ -8,28 +8,20 @@ class Llvm < Package
   source_url 'https://github.com/llvm/llvm-project/archive/llvmorg-11.0.1-rc2.tar.gz'
   source_sha256 'c217780b9903eabf0fdb8ed227ae50b623d3f82afb9ac36beffbc81acbc6ff6c'
 
-  binary_url ({
-    armv7l: 'file:///usr/local/tmp/packages/llvm-11.0.1-rc2-chromeos-armv7l.tar.xz',
-    x86_64: 'file:///usr/local/tmp/packages/llvm-11.0.1-rc2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    armv7l: 'ea1cdad46621a0e23c3ec10052d1ac3ca6c873d760a63fd3b7e365423917994b',
-    x86_64: '54ade27cc98675d7a4dd70bf6ee4bcd494c4ee56dc147fb88e1e89a9a9c5f00c',
-  })
-
-
 
   depends_on 'ld_default' => :build
-
   depends_on 'ocaml' => :build
   depends_on 'libedit'
   depends_on 'libtirpc'
   depends_on 'swig'
   depends_on 'pygments'
 
+  # Using Targets 'all' because otherwise mesa complains.
+  # This may be patched upstream as per 
+  # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   #ARCH_ACTUAL = `uname -m`.strip
   #case ARCH_ACTUAL
-  #when 'armv8l', 'aarch64', 'armv7l'
+  #when 'armv8l', 'aarch64',  'armv7l'
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
   #when 'i686','x86_64'
     #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
@@ -96,8 +88,6 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
       FileUtils.cp "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
       FileUtils.cp Dir.glob("lib#{CREW_LIB_SUFFIX}/libLTO.*"), "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-      #system "cp lib#{CREW_LIB_SUFFIX}/LLVMgold.so #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-      #system "cp lib#{CREW_LIB_SUFFIX}/libLTO.* #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
     end
   end
   
