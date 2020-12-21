@@ -8,6 +8,15 @@ class Llvm < Package
   source_url 'https://github.com/llvm/llvm-project/archive/llvmorg-11.0.1-rc2.tar.gz'
   source_sha256 'c217780b9903eabf0fdb8ed227ae50b623d3f82afb9ac36beffbc81acbc6ff6c'
 
+  binary_url ({
+    armv7l: 'file:///usr/local/tmp/packages/llvm-11.0.1-rc2-chromeos-armv7l.tar.xz',
+    x86_64: 'file:///usr/local/tmp/packages/llvm-11.0.1-rc2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    armv7l: 'ea1cdad46621a0e23c3ec10052d1ac3ca6c873d760a63fd3b7e365423917994b',
+    x86_64: '54ade27cc98675d7a4dd70bf6ee4bcd494c4ee56dc147fb88e1e89a9a9c5f00c',
+  })
+
 
 
   depends_on 'ld_default' => :build
@@ -29,6 +38,10 @@ class Llvm < Package
   LLVM_VERSION = version.split("-")[0]
 
   def self.build
+    ############################################################
+    puts "Building LLVM Targets: #{LLVM_TARGETS_TO_BUILD}".lightgreen
+    ############################################################
+
     ############################################################
     puts "Setting compile to use python3".lightgreen
     ############################################################
@@ -63,6 +76,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
+            -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_ENABLE_RTTI=ON \
             -DLLVM_USE_LINKER=gold \
             -DLLVM_INSTALL_UTILS=ON \
