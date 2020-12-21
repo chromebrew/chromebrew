@@ -105,6 +105,11 @@ class Package
 
   end
 
+  # Function to perform after package removal.
+  def self.remove
+
+  end
+
   def self.system(*args)
     # add "-j#" argument to "make" at compile-time, if necessary
 
