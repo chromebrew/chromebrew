@@ -11,6 +11,7 @@ class Glade < Package
   depends_on 'libxml2'
   depends_on 'gobject_introspection'
   depends_on 'pygobject'
+  depends_on 'graphite'
 
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
