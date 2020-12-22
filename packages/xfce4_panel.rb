@@ -47,5 +47,5 @@ EOF"
   
   def self.postinstall
     puts
-    puts "You need a window manager like 'openbox' to use with this package.".lightblue
+    puts "You need a window manager like 'weston' to use with this package.".lightblue
 end
