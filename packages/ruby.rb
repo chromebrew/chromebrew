@@ -19,10 +19,7 @@ class Ruby < Package
     ENV['CFLAGS'] = '-ltinfo -fstack-protector-all'
     system "./configure #{CREW_OPTIONS} \
     --enable-shared \
-    --disable-fortify-source \
-    --disable-install-doc \
-    --disable-install-rdoc \
-    --disable-install-capi"
+    --disable-fortify-source"
     system 'make'
   end
 
