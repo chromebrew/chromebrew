@@ -156,41 +156,41 @@ class Gcc10 < Package
       system "install -v -dm755 #{CREW_DEST_LIB_PREFIX}/bfd-plugins"
 
       # Add a compatibility symlink to enable building programs with Link Time Optimization (LTO)
-      FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      FileUtils.ln_s "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
 
       # Make symbolic links
       Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
         system "find . -type f -maxdepth 1 -exec ln -sv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
       end
 
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcc-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/cc"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcc-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/c++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/c++"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/g++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/g++"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/cpp-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/cpp"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc-ar"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc-nm"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc-ranlib"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcov-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcov"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcov-dump-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcov-dump"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gcov-tool-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcov-tool"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/gfortran-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gfortran"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/cc"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/c++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/c++"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/g++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/g++"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/cpp-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/cpp"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc-ar"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc-nm"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcc-ranlib"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcov-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcov"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcov-dump-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcov-dump"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcov-tool-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gcov-tool"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gfortran-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/gfortran"
 
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{gcc_arch}-c++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-c++"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{gcc_arch}-g++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-g++"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ar"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-nm"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ranlib"
-      FileUtils.ln_sf "#{CREW_PREFIX}/bin/#{gcc_arch}-gfortran-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gfortran"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-c++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-c++"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-g++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-g++"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ar"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-nm"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ranlib"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gfortran-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gfortran"
 
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/man/man1/cpp-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/cpp.1.gz"
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/man/man1/g++-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/g++.1.gz"
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/man/man1/gcc-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcc.1.gz"
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/man/man1/gcov-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov.1.gz"
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/man/man1/gcov-dump-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov-dump.1.gz"
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/man/man1/gcov-tool-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov-tool.1.gz"
-      FileUtils.ln_sf "#{CREW_PREFIX}/share/man/man1/gfortran-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gfortran.1.gz"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/cpp-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/cpp.1.gz"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/g++-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/g++.1.gz"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcc-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcc.1.gz"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcov-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov.1.gz"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcov-dump-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov-dump.1.gz"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcov-tool-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov-tool.1.gz"
+      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gfortran-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gfortran.1.gz"
     end
   end
 end
