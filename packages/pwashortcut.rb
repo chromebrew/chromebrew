@@ -14,16 +14,21 @@ class Pwashortcut < Package
   def self.build
     system "pip install flask"
     #######################################
-    system "cat <<'EOF'> main.py.bak
+    py = "File.open('main.py.bak', 'w')"
+    json = "File.open('manifest.json.bak', 'w')"
+    main = "File.open('pwashortcut', 'w')"
+    
+    
+    py.puts "
 from flask import Flask, render_template, redirect, url_for, send_from_directory
 from threading import Thread
 import os
 
 app = Flask(__name__)
-
-EOF"
+"
+    py.close
     #######################################
-    system "cat <<'EOF'> manifest.json.bak
+    manifest.puts "
 v1
   \"name\"v4 \"linuxapp\"v6
   \"short_name\"v4 \"linuxapp\"v6
@@ -38,8 +43,9 @@ v1
       \"type\"v4 \"image/png\"
     v9
   v8
-v9
-EOF"
+v9"
+    manifest.close
+    
     system "sed -i 's/v6/,/g' manifest.json.bak"
     system "sed -i 's/v4/:/g' manifest.json.bak"
     system "sed -i 's/v1/\{/g' manifest.json.bak"
@@ -47,7 +53,7 @@ EOF"
     system "sed -i 's/v9/\}/g' manifest.json.bak"
     system "sed -i 's/v8/]/g' manifest.json.bak"
     #######################################
-    system "cat <<'EOF'> pwashortcut
+    main.puts "
 #!/bin/bash
 # A simple start script
 export CREW_PREFIX=#{CREW_PREFIX}
@@ -146,9 +152,10 @@ case ${1} in
           esac
           if [[ $RUN != YES ]]; then echo \"$help\"; fi
           ;;
-esac
-EOF"
+esac"
     #########################################
+    main.close
+    
   end
 
   def self.install
