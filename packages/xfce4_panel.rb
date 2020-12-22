@@ -35,12 +35,13 @@ class Xfce4_panel < Package
 
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
-    system "cat <<'EOF'> tmp
+    file = File.open("tmp", "w")
+    file.puts "
 #!/bin/bash
 WAYLAND_DISPLAY=wayland-0
 GDK_BACKEND=wayland
-xfce4_panel \"$@\"
-EOF"
+xfce4_panel \"$@\""
+    file.close
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/xfce4-panel", "#{CREW_DEST_PREFIX}/bin/xfce4_panel"
     system "install -Dm755 xfce4-panel #{CREW_DEST_PREFIX}/bin/xfce4-panel"
   end
