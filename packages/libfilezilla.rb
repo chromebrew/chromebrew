@@ -8,6 +8,8 @@ class Libfilezilla < Package
   source_url 'https://download.filezilla-project.org/libfilezilla/libfilezilla-0.26.0.tar.bz2'
   source_sha256 '17ed226593e8e466ce3c3f8ce583b36c79f163189ead54d631613cc3da5c80bd'
 
+  depends_on 'p11kit'
+  
   def self.patch
     system 'filefix'
   end
