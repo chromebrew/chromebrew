@@ -3,10 +3,12 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.2.1-65fc'
+  version '10.2.1-a5bc'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/65fcf1c2d7f192dc7fda621e27d6c17d08e89352.zip'
-  source_sha256 'fc3cd8d70beb7e0d910f4e0006d95a60e9dee60de7dd3544e92229591372b8ea'
+  source_url 'https://github.com/gcc-mirror/gcc/archive/a5bcb9487dd62b853a6813387309e5f83a47ce0d.zip'
+  source_sha256 '86b301b834dc38cac8160ea2a18c17b8075dfb2a3ba257578ced30df522136db'
+
+
 
 
 
@@ -52,7 +54,12 @@ class Gcc10 < Package
     system "grep  -q 4096 libsanitizer/asan/asan_linux.cpp || (sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
+    # Fix "crtbeginT.o: relocation R_X86_64_32 against hidden symbol `__TMC_END__' can not be used when making a shared object"
+    # when building static llvm
+    system "sed -i 's/-fbuilding-libgcc -fno-stack-protector/-fbuilding-libgcc -fPIC -fno-stack-protector/g' libgcc/Makefile.in"
     Dir.chdir("objdir") do
+      ENV['CFLAGS'] = '-fPIC'
+      ENV['CXXFLAGS'] = '-fPIC'
       case ARCH
       when 'armv7l', 'aarch64'
         system "../configure #{CREW_OPTIONS} \
@@ -157,9 +164,14 @@ class Gcc10 < Package
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-g++-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-g++"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ar"
+
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-nm"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ranlib"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gfortran-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gfortran"
+      
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-ar"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-nm"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-ranlib"
 
       FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/cpp-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/cpp.1.gz"
       FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/g++-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/g++.1.gz"
