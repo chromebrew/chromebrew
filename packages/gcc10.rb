@@ -3,23 +3,12 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.2.1-07fe'
+  version '10.2.1-65fc'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/07fed10b19e1d88ad111fd27b4181e53d1aa6778.zip'
-  source_sha256 '455b11e3e82118d8b026cb1a8cb0e7b8331f1f9d76551c60e6792d488b4f1f12'
+  source_url 'https://github.com/gcc-mirror/gcc/archive/65fcf1c2d7f192dc7fda621e27d6c17d08e89352.zip'
+  source_sha256 'fc3cd8d70beb7e0d910f4e0006d95a60e9dee60de7dd3544e92229591372b8ea'
 
-  binary_url ({
-     aarch64: 'file:///usr/local/tmp/packages/gcc10-10.2.1-07fe-chromeos-armv7l.tar.xz',
-      armv7l: 'file:///usr/local/tmp/packages/gcc10-10.2.1-07fe-chromeos-armv7l.tar.xz',
-        i686: 'file:///usr/local/tmp/packages/gcc10-10.2.1-07fe-chromeos-i686.tar.xz',
-      x86_64: 'file:///usr/local/tmp/packages/gcc10-10.2.1-07fe-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: 'e5405c03363f2e1feff695da2c29320665698b41877bfc32bdb670b330d7099b',
-      armv7l: 'e5405c03363f2e1feff695da2c29320665698b41877bfc32bdb670b330d7099b',
-        i686: '8562773de8265d440a6b4de987676959dfd5c46a7153bb0c1cb24776ba500c03',
-      x86_64: '40fe0391e7cb070e1f3fe7d140dcefdcb64cd6f3063784ae93aa309cce479bc4',
-  })
+
 
 
 
@@ -65,63 +54,51 @@ class Gcc10 < Package
     sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
     Dir.chdir("objdir") do
       case ARCH
-      when 'armv7l', 'armv8l', 'aarch64'
-        system "../configure",
-        "--prefix=#{CREW_PREFIX}",
-        "--libdir=#{CREW_LIB_PREFIX}",
-        "--build=armv7l-cros-linux-gnueabihf",
-        "--host=armv7l-cros-linux-gnueabihf",
-        "--target=armv7l-cros-linux-gnueabihf",
-        "--enable-checking=release",
-        "--disable-multilib",
-        "--enable-lto",
-        "--enable-threads=posix",
-        "--disable-bootstrap",
-        "--disable-werror",
-        "--disable-libmpx",
-        "--enable-static",
-        "--enable-shared",
-        "--program-suffix=-#{gcc_version}",
-        "--with-arch=armv7-a",
-        "--with-tune=cortex-a15",
-        "--with-fpu=neon",
-        "--with-float=hard"
-      when 'x86_64'
-        system "../configure",
-        "--prefix=#{CREW_PREFIX}",
-        "--libdir=#{CREW_LIB_PREFIX}",
-        "--build=#{ARCH}-cros-linux-gnu",
-        "--host=#{ARCH}-cros-linux-gnu",
-        "--target=#{ARCH}-cros-linux-gnu",
-        "--enable-checking=release",
-        "--enable-lto",
-        "--disable-multilib",
-        "--enable-threads=posix",
-        "--disable-bootstrap",
-        "--disable-werror",
-        "--disable-libmpx",
-        "--enable-static",
-        "--enable-shared",
-        "--program-suffix=-#{gcc_version}",
-        "--with-arch-64=x86-64"
+      when 'armv7l', 'aarch64'
+        system "../configure #{CREW_OPTIONS} \
+        --enable-checking=release \
+        --disable-multilib \
+        --enable-lto \
+        --enable-threads=posix \
+        --disable-bootstrap \
+        --disable-werror \
+        --disable-libmpx \
+        --enable-static \
+        --enable-shared \
+        --with-pic \
+        --program-suffix=-#{gcc_version} \
+        --with-arch=armv7-a \
+        --with-tune=cortex-a15 \
+        --with-fpu=neon \
+        --with-float=hard"
+      when 'x86_64', 'i686'
+        system "../configure  #{CREW_OPTIONS} \
+        --enable-checking=release \
+        --enable-lto \
+        --disable-multilib \
+        --enable-threads=posix \
+        --disable-bootstrap \
+        --disable-werror \
+        --disable-libmpx \
+        --enable-static \
+        --enable-shared \
+        --with-pic \
+        --program-suffix=-#{gcc_version} \
+        --with-arch-64=x86-64"
       when 'i686'
-        system "../configure",
-        "--prefix=#{CREW_PREFIX}",
-        "--libdir=#{CREW_LIB_PREFIX}",
-        "--build=#{ARCH}-cros-linux-gnu",
-        "--host=#{ARCH}-cros-linux-gnu",
-        "--target=#{ARCH}-cros-linux-gnu",
-        "--enable-checking=release",
-        "--enable-lto",
-        "--disable-multilib",
-        "--enable-threads=posix",
-        "--disable-bootstrap",
-        "--disable-werror",
-        "--disable-libmpx",
-        "--enable-static",
-        "--enable-shared",
-        "--program-suffix=-#{gcc_version}",
-        "--with-arch-32=i686"
+        system "../configure  #{CREW_OPTIONS} \
+        --enable-checking=release \
+        --enable-lto \
+        --disable-multilib \
+        --enable-threads=posix \
+        --disable-bootstrap \
+        --disable-werror \
+        --disable-libmpx \
+        --enable-static \
+        --enable-shared \
+        --with-pic \
+        --program-suffix=-#{gcc_version} \
+        --with-arch-32=#{ARCH}"
       end
       system 'make'
     end
