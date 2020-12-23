@@ -3,11 +3,11 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20201025-2'
+  version '20201222'
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
-
+  
   depends_on 'mesa'
   depends_on 'xkbcomp'
   depends_on 'xorg_server' unless File.exists? "#{CREW_PREFIX}/bin/Xwayland.elf"
@@ -31,7 +31,7 @@ class Sommelier < Package
   def self.build
     # There is no good way to checksum the googlesource tgz file, as they appear to be generated on the fly
     # and checksums vary with each download.
-    system 'curl -L https://chromium.googlesource.com/chromiumos/platform2/+archive/c6f85a3472584df37fcf2d3d99474081f29256cd.tar.gz | tar mzx --warning=no-timestamp'
+    system 'curl -L https://chromium.googlesource.com/chromiumos/platform2/+archive/c6c3e7aac940d34d3f195bc60d7be2ec19d67d03.tar.gz | tar mzx --warning=no-timestamp'
     Dir.chdir ("vm_tools/sommelier") do
     
     # Google's sommelier expects to find virtwl.h in their kernel source includes, but we may not have
@@ -139,7 +139,7 @@ checksommelierxwayland () {
 if ! checksommelierwayland ; then
 pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
 sudo rm \${XDG_RUNTIME_DIR}/wayland-1*
-sommelier --master --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
+sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
 echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
 fi
 if ! checksommelierxwayland; then
@@ -178,8 +178,8 @@ do
   (( wait = wait - 1 ))
   sleep 1
 done
-SOMMWPIDS=\$(pgrep -f \"sommelier.elf --master\" 2> /dev/null)
-SOMMWPROCS=\$(pgrep -fa \"sommelier.elf --master\" 2> /dev/null)
+SOMMWPIDS=\$(pgrep -f \"sommelier.elf --parent\" 2> /dev/null)
+SOMMWPROCS=\$(pgrep -fa \"sommelier.elf --parent\" 2> /dev/null)
 SOMMXPIDS=\$(pgrep -f \"sommelier.elf -X\" 2> /dev/null)
 SOMMXPROCS=\$(pgrep -fa \"sommelier.elf -X\" 2> /dev/null)
 if checksommelierwayland && checksommelierxwayland ; then
