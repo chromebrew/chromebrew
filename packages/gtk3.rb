@@ -3,23 +3,12 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  version '3.24.23-2'
+  version '3.24.24'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.23.tar.xz'
-  source_sha256 '5d864d248357a2251545b3387b35942de5f66e4c66013f0962eb5cb6f8dae2b1'
+  source_url 'https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.24.tar.xz'
+  source_sha256 'cc9d4367c55b724832f6b09ab85481738ea456871f0381768a6a99335a98378a'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.23-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.23-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.23-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.23-2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '9cfddfc665be791a74270db78d8c7ac54ba838081c3be5538aee710083aa9e87',
-     armv7l: '9cfddfc665be791a74270db78d8c7ac54ba838081c3be5538aee710083aa9e87',
-       i686: 'e00ec78fbb38a63fcf9394d4f18e7d4ac471fb0a4aa713157377f254643d99f5',
-     x86_64: 'b14d2df7d270e48b41674d5339a205572bc7dd3b77fa36a27c226c1ebd6258e6',
-  })
+
 
   depends_on 'cups'
   depends_on 'at_spi2_atk'
