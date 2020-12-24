@@ -26,6 +26,7 @@ class Gtk3 < Package
   depends_on 'shared_mime_info'
   depends_on 'six' => :build
   depends_on 'xdg_base'
+  depends_on 'atk'
 
   def self.build
     # The lld linker allows linking against system ChromeOS libs.
