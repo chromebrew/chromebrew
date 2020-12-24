@@ -3,17 +3,10 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.2.1-a5bc'
+  version '10.2.1-e73c'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/a5bcb9487dd62b853a6813387309e5f83a47ce0d.zip'
-  source_sha256 '86b301b834dc38cac8160ea2a18c17b8075dfb2a3ba257578ced30df522136db'
-
-
-
-
-
-
-
+  source_url 'https://github.com/gcc-mirror/gcc/archive/e73caa0fc12e4b33563d68ee58b8af882b2341e6.zip'
+  source_sha256 '61b3e87c52e232c0e6c07b054c215d6c5bda09b910655b00080fa7cc634a436f'
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
@@ -29,8 +22,6 @@ class Gcc10 < Package
   depends_on 'isl'
   depends_on 'glibc'
   depends_on 'zstd'
-
-  
   
   def self.preinstall
     installed_gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
@@ -78,7 +69,7 @@ class Gcc10 < Package
         --with-tune=cortex-a15 \
         --with-fpu=neon \
         --with-float=hard"
-      when 'x86_64', 'i686'
+      when 'x86_64'
         system "../configure  #{CREW_OPTIONS} \
         --enable-checking=release \
         --enable-lto \
@@ -172,6 +163,7 @@ class Gcc10 < Package
       FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-ar"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-nm"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-ranlib"
+
 
       FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/cpp-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/cpp.1.gz"
       FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/g++-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/g++.1.gz"
