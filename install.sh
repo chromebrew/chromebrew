@@ -33,7 +33,12 @@ case "${ARCH}" in
 esac
 
 # This will allow things to work without sudo
-sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}/*/*"
+# Delete 'var' symlink on Cloudready platform
+if [[ $(cat /etc/lsb-release | grep neverware) != "" ]]; then
+  sudo rm -rf /usr/local/var
+  sudo rm -rf /usr/local/local
+fi
 
 # prepare directories
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"; do
