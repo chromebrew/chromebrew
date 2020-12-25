@@ -33,7 +33,7 @@ case "${ARCH}" in
 esac
 
 # This will allow things to work without sudo
-sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}/*/*"
+sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 # Delete 'var' symlink on Cloudready platform
 if [[ $(cat /etc/lsb-release | grep neverware) != "" ]]; then
   sudo rm -rf /usr/local/var
