@@ -34,6 +34,11 @@ esac
 
 # This will allow things to work without sudo
 sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+# Delete 'var' symlink on Cloudready platform
+if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
+  sudo rm -rf /usr/local/var
+  sudo rm -rf /usr/local/local
+fi
 
 # prepare directories
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"; do
