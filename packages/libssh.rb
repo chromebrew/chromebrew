@@ -10,17 +10,12 @@ class Libssh < Package
 
   depends_on 'libgcrypt'
     
-  def self.patch
-      `echo "$(sed '/\# global needed variable/a set\(CMAKE_C_FLAGS \"-fstack-protector-strong\"\)~\
-add_compile_options\(-fstack-protector-strong\)~\
-link_libraries\(-fstack-protector-strong\)' CMakeLists.txt)" > ./CMakeLists.txt`
-      `echo "$(tr '~' '\n' < CMakeLists.txt)" > CMakeLists.txt`
-  end
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "cmake \
              #{CREW_CMAKE_OPTIONS} \
+             -DCMAKE_C_FLAGS='-fstack-protector-strong' \
              -DWITH_GCRYPT=ON \
              .."
       system 'make'
