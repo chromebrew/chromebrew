@@ -54,6 +54,11 @@ class Ccache < Package
   end
   
   def self.postinstall
-      system "ccache --set-config=sloppiness=file_macro,locale,time_macros"
+    system "ccache --set-config=sloppiness=file_macro,locale,time_macros"
+    puts "To compile using ccache you need to add the ccache bin folder to your path".lightblue
+    puts "e.g.  put this in your ~/bashrc:".lightblue
+    puts "export PATH=#{CREW_LIB_PREFIX}/ccache/bin::#{CREW_PREFIX}/bin:/usr/bin:/bin".lightblue
+    # To modify a package use the following:
+    # ENV['PATH'] = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
   end
 end
