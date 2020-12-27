@@ -9,10 +9,10 @@ class Ccache < Package
   source_sha256 '5fdc804056632d722a1182e15386696f0ea6c59cb4ab4d65a54f0b269ae86f99'
 
   binary_url ({
-     aarch64: 'file:///usr/local/tmp/packages/ccache-4.1-chromeos-armv7l.tar.xz',
-      armv7l: 'file:///usr/local/tmp/packages/ccache-4.1-chromeos-armv7l.tar.xz',
-        i686: 'file:///usr/local/tmp/packages/ccache-4.1-chromeos-i686.tar.xz',
-      x86_64: 'file:///usr/local/tmp/packages/ccache-4.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '525bce425116fadb8ffaf352df87bde4f424380a1d4a98915d52de005aa0663d',
@@ -20,9 +20,6 @@ class Ccache < Package
         i686: '14ebe59db9eb33c86f867153bda9340fa5732a2ad19f48fe0e8900f238b43015',
       x86_64: '5c4c9e014f23977f2f031eb9f9b367881a20fa8effeac9e38289cd723aa11e62',
   })
-
-
-
 
 
   depends_on 'zlibpkg'
