@@ -3,10 +3,10 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.2.1-e73c'
+  version '10.2.1-e731'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/e73caa0fc12e4b33563d68ee58b8af882b2341e6.zip'
-  source_sha256 '61b3e87c52e232c0e6c07b054c215d6c5bda09b910655b00080fa7cc634a436f'
+  source_url 'https://github.com/gcc-mirror/gcc/archive/e731714eb2b4844771fa6f2a7a80d863490b8e6d.zip'
+  source_sha256 '20d5e2d12bd237151ba5be0d2f192de12fe0ea0db71b3f3dfd52b4828ea4267f'
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
@@ -14,6 +14,7 @@ class Gcc10 < Package
   depends_on 'icu4c' => :build
   depends_on 'python27' => :build
   depends_on 'python3' => :build
+  depends_on 'ccache' => :build
 
   depends_on 'binutils'
   depends_on 'gmp'
@@ -30,6 +31,12 @@ class Gcc10 < Package
   end
 
   def self.build
+    # Set ccache sloppiness as per
+    # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
+    system "ccache --set-config=sloppiness=file_macro,locale,time_macros"
+    # Prefix ccache to path.
+    ENV['PATH'] = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
+    
     gcc_version = version.split("-")[0]
     
     # previous compile issue
