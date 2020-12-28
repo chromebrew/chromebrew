@@ -1,4 +1,4 @@
-equire 'package'
+require 'package'
 
 class Readline < Package
   description 'The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in.'
@@ -15,15 +15,16 @@ class Readline < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/readline-8.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '3df33883be2751b151e39c3e17905104002b078fd4e53f11048649c8a34a796f',
-      armv7l: '3df33883be2751b151e39c3e17905104002b078fd4e53f11048649c8a34a796f',
-        i686: '15526e871c958dff346de263d40775be55b00a248599dab227e3ebab39e0ac1f',
-      x86_64: 'bb4452115aca711846392413c50093f813ce68b112780dc7807446f446ab49a4',
+     aarch64: '4c2e3ab6488be4b58a28975f4e9f2fa7fb8649402cf4268c15c708bce9667f20',
+      armv7l: '4c2e3ab6488be4b58a28975f4e9f2fa7fb8649402cf4268c15c708bce9667f20',
+        i686: '9033816a26e04eb5c846ecb18f7354b1bbabf9cf5b8710e8843868dfee9d8a80',
+      x86_64: 'ddd7cf950d05c8492834b60ff0dbb124f07158c671784eb78118e0fa71691d1b',
   })
+
+
 
   def self.build
     system "./configure #{CREW_OPTIONS} \
-    --disable-install-examples \
     --with-curses"
     system 'make'
   end
