@@ -22,7 +22,6 @@ class Ccache < Package
   })
 
 
-  depends_on 'zlibpkg'
   depends_on 'asciidoc' => :build
 
   def self.build
