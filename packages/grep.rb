@@ -23,10 +23,6 @@ class Grep < Package
   })
 
 
-  depends_on 'glibc'
-  depends_on 'pcre'
-  depends_on 'texinfo' => ':build'
-
   def self.build
     ENV['CFLAGS'] = '-flto'
     system "./configure #{CREW_OPTIONS}\
