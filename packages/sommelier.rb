@@ -7,6 +7,19 @@ class Sommelier < Package
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
+ 
+  binary_url ({
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+     aarch64: '40ad38667c4cb77a8fb22ac5ec958c7caa152d694c78a9f5b91bde1e17d185f4',
+      armv7l: '40ad38667c4cb77a8fb22ac5ec958c7caa152d694c78a9f5b91bde1e17d185f4',
+        i686: 'c873d8c561ad79d863295f06689240887be8a263b02ba3aa2af8ce6d6cfede50',
+      x86_64: '278ba78616063ead88dc8d0394d372c2ad71d3545a0a1185c124d5983b0ca74d',
+  })
   
   depends_on 'mesa'
   depends_on 'xkbcomp'
