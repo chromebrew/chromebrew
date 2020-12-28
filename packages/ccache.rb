@@ -25,9 +25,9 @@ class Ccache < Package
   depends_on 'asciidoc' => :build
 
   def self.build
-  ENV['CFLAGS'] = '-flto'
-  ENV['CXXFLAGS'] = '-flto'
-  Dir.mkdir 'build'
+    ENV['CFLAGS'] = '-flto'
+    ENV['CXXFLAGS'] = '-flto'
+    Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "cmake -G Ninja \
       #{CREW_CMAKE_OPTIONS} \
@@ -39,7 +39,7 @@ class Ccache < Package
   end
   
   def self.install
-  system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     Dir.chdir 'build' do
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/ccache/bin"
       system "for _prog in gcc g++ c++; do
