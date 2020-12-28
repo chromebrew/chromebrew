@@ -3,22 +3,22 @@ require 'package'
 class Libtasn1 < Package
   description 'Libtasn1 is the ASN.1 library used by GnuTLS, GNU Shishi and some other packages.'
   homepage 'https://www.gnu.org/software/libtasn1/'
-  version '4.13'
+  version '4.16'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libtasn1/libtasn1-4.13.tar.gz'
-  source_sha256 '7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca'
+  source_url 'https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.16.0.tar.gz'
+  source_sha256 '0e0fb0903839117cb6e3b56e68222771bebf22ad7fc2295a0ed7d576e8d4329d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.13-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5b445e57a2882b410e6b8493c7997a34d01bec701f67eb0654aa92d114c61ed8',
-     armv7l: '5b445e57a2882b410e6b8493c7997a34d01bec701f67eb0654aa92d114c61ed8',
-       i686: '89e4bf3ab1bd6c561209dd3e1cf298af0a8498cdae6a0b3c270ecfc84392bc4a',
-     x86_64: '51009ec44bf8f51a3fc0432d78f14716b18d99eb99ad9b3b073079b5d168d1b9',
+     aarch64: '18ae0df459ba32ee41fc2efbfbe2934b6a7f44d2cdfda7da417503cb604ff040',
+      armv7l: '18ae0df459ba32ee41fc2efbfbe2934b6a7f44d2cdfda7da417503cb604ff040',
+        i686: 'a3090be3dcf8aba5107339f405af889ed1e2b67c0728ff53086ed879e5172d9b',
+      x86_64: 'd6c37f27c28eed8720445a9dba40780230f7a3b824bf0787e67739714a2bf34a',
   })
 
   # bison, diff, cmp are required at compile-time
@@ -26,8 +26,9 @@ class Libtasn1 < Package
   depends_on 'diffutils' => :build
 
   def self.build
-    system "./configure", "--enable-shared", "--disable-static", "--with-pic",
-      "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS} \
+      --enable-shared \
+      --with-pic"
     system "make"
   end
 
