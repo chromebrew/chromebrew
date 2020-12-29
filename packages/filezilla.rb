@@ -29,8 +29,9 @@ class Filezilla < Package
   depends_on 'sqlite'
   depends_on 'wxwidgets'
   depends_on 'xdg_utils'
-  depends_on 'sommelier'
   depends_on 'libwebp'
+  depends_on 'sommelier'
+  
 
   def self.patch
     system 'filefix'
