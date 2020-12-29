@@ -3,22 +3,22 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  version '3.24.24'
+  version '3.24.24-1'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.24.tar.xz'
   source_sha256 'cc9d4367c55b724832f6b09ab85481738ea456871f0381768a6a99335a98378a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.24-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e210c917b0effc58d588dacda8f8db7897ce9699323001a21f732d053ef5c285',
-     armv7l: 'e210c917b0effc58d588dacda8f8db7897ce9699323001a21f732d053ef5c285',
-       i686: 'e71c8b765f76138543aca2cdbbc57904da3dbe6360a51f586b5b6dc6f7d2b599',
-     x86_64: '7ecd9650e74bce60e27df07be49b89aee56da89795b63ac3f894aac8542ec69a',
+     aarch64: '41067ff7cb6dd415c1ffaee6d9016388323a51d7bc7183fe0ef99749bf95dbea',
+      armv7l: '41067ff7cb6dd415c1ffaee6d9016388323a51d7bc7183fe0ef99749bf95dbea',
+        i686: 'e338cd7188bdd23b6675db7013098b8a13cd7fe52e9d3903560037588156f8e8',
+      x86_64: 'c9a7c3e02a3b1f283076e4dfba0e470161c3c701d0649fe5873a27f6a87b365e',
   })
 
   depends_on 'cups'
@@ -38,6 +38,7 @@ class Gtk3 < Package
   depends_on 'six' => :build
   depends_on 'xdg_base'
   depends_on 'atk'
+  depends_on 'graphite'
 
   def self.build
     # The lld linker allows linking against system ChromeOS libs.
@@ -50,6 +51,7 @@ class Gtk3 < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
   end
 
   def self.postinstall
