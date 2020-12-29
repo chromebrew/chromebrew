@@ -21,9 +21,6 @@ class Vulkan_headers < Package
       x86_64: 'f4a32c518e378b6ec9c6d7535df7b7269a04ee0bdff98c50435219fbf6610788',
   })
 
-
-
-
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
