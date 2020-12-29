@@ -6,7 +6,7 @@ class Libepoxy < Package
   version '1.5.5'
   compatibility 'all'
   source_url 'https://github.com/anholt/libepoxy/releases/download/1.5.5/libepoxy-1.5.5.tar.xz'
-  source_sha256 '0b808a06c9685a62fca34b680abb8bc7fb2fda074478e329b063c1f872b826f6'
+  source_sha256 '261663db21bcc1cc232b07ea683252ee6992982276536924271535875f5b0556'
 
   depends_on 'mesa'
   depends_on 'python3'
