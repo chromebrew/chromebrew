@@ -8,7 +8,18 @@ class Unzip < Package
   source_url 'https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/unzip60.tar.gz'
   source_sha256 '036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
 
-
+  binary_url ({
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-6.0-2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-6.0-2-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-6.0-2-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/unzip-6.0-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+     aarch64: '116ed2b03bcaeaa7ccd339e58b67519361933490d1469a72b3c9e12808fc4797',
+      armv7l: '116ed2b03bcaeaa7ccd339e58b67519361933490d1469a72b3c9e12808fc4797',
+        i686: '488891584f8cf53bcd3969140ab0baffeec4cffb4964c6b836d745afd17a86fe',
+      x86_64: 'a58e8a34a46721674ba16198fa943297c6fa80c5933b956bd1ebb6fe91ac6b89',
+  })
 
   depends_on 'compressdoc' => :build
   depends_on 'patch' => :build
