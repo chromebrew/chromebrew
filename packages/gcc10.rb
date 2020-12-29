@@ -3,10 +3,23 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.2.1-e731'
+  version '10.2.1-67cb'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/e731714eb2b4844771fa6f2a7a80d863490b8e6d.zip'
-  source_sha256 '20d5e2d12bd237151ba5be0d2f192de12fe0ea0db71b3f3dfd52b4828ea4267f'
+  source_url 'https://github.com/gcc-mirror/gcc/archive/67cbe5c8e68299442552f18139e0689646f9729d.zip'
+  source_sha256 '59793cd37021aefeb1152a85dee3e97c443d66a6798907346b2e63678ce0eff6'
+
+  binary_url ({
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+     aarch64: 'fb98eccd98a78ff5b61bc56ac5a039f18c59e8aa232b90973e6d38b023a32bd8',
+      armv7l: 'fb98eccd98a78ff5b61bc56ac5a039f18c59e8aa232b90973e6d38b023a32bd8',
+        i686: '24e9130977ab9b9879c3be71b058cd168ed43271aaa0ac363c578074914ad12b',
+      x86_64: '9a349f9766c82746d44a8a1bffd3295295ff2ef955da23ee1f67915ec20d3ccd',
+  })
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
