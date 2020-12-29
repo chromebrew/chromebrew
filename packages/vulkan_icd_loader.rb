@@ -21,7 +21,6 @@ class Vulkan_icd_loader < Package
       x86_64: '067011ff594dff5c3fff6b4bc32d0275656d685011fcf498c93b5b78a55b8198',
   })
 
-
   depends_on 'llvm' => ':build'
   depends_on 'libx11'
   depends_on 'libxrandr'
