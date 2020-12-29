@@ -130,7 +130,7 @@ case "${ARCH}" in
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-2.7.2-chromeos-i686.tar.xz')
   sha256s+=('81865864d3ba93b6cbd5dc8e1b6cb51bd2ebe854f6c01e282c1b73f379fb7caf')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.29.2-chromeos-i686.tar.xz')
-  sha256s+=('45af562bfd02b45839a92e5b14f67c267b5ddf60a526828b9a0567750d8eb08')
+  sha256s+=('45af562bfd02b45839a92e5b14f67c267b5ddf60a526828b9a0567750d8eb085')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libressl-3.2.3-chromeos-i686.tar.xz')
   sha256s+=('d6962728e73894df3382ad17035b838f213f246edb6dc4aa54522c3bc5c59dd8')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-chromeos-i686.tar.xz')
