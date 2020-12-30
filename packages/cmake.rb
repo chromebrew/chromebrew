@@ -3,22 +3,22 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.18.3'
+  version '3.19.2'
   compatibility 'all'
-  source_url 'https://cmake.org/files/v3.18/cmake-3.18.3.tar.gz'
-  source_sha256 '2c89f4e30af4914fd6fb5d00f863629812ada848eee4e2d29ec7e456d7fa32e5'
+  source_url 'https://github.com/Kitware/CMake/releases/download/v3.19.2/cmake-3.19.2.tar.gz'
+  source_sha256 'e3e0fd3b23b7fb13e1a856581078e0776ffa2df4e9d3164039c36d3315e0c7f0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.18.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.18.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.18.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.18.3-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.2-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.2-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4f70a81794bd2262f94783f07cba30c763d33831dd8543bc6071f2cafbb10ed0',
-     armv7l: '4f70a81794bd2262f94783f07cba30c763d33831dd8543bc6071f2cafbb10ed0',
-       i686: '238aff93e40dd21e7bbde3f3642dccaaf212b932dade2015b7bd3106ce23c2ad',
-     x86_64: 'c9abf8e948ef06d62f5b2f4924e2e057833d0c805fd009cd75190b910d0fdaa3',
+     aarch64: 'ba16050036e58a4b3c5fa23865608e850eb9de865e9f5a6fac163c84adeca261',
+      armv7l: 'ba16050036e58a4b3c5fa23865608e850eb9de865e9f5a6fac163c84adeca261',
+        i686: 'd7d39b576dd92448b9c1440d9c35e4c4284513cb72f3576af1e282f0c5c58f22',
+      x86_64: '6c0737c9d2cea24bfb4bbbb7ff0fa6139488d6f19866fd799fe5b89adaf36f7a',
   })
 
   depends_on 'llvm' => :build

@@ -15,12 +15,11 @@ class Ccache < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '525bce425116fadb8ffaf352df87bde4f424380a1d4a98915d52de005aa0663d',
-      armv7l: '525bce425116fadb8ffaf352df87bde4f424380a1d4a98915d52de005aa0663d',
-        i686: '14ebe59db9eb33c86f867153bda9340fa5732a2ad19f48fe0e8900f238b43015',
+     aarch64: '6ac906edece6c4ec603f9b5816f67a8863352f43f6a9814cc0db53da351e2a79',
+      armv7l: '6ac906edece6c4ec603f9b5816f67a8863352f43f6a9814cc0db53da351e2a79',
+        i686: '3e76036380a5f5c18856788c82a2c9a56cb1c5321b9ae8ed78a18d164fe4b80f',
       x86_64: '5c4c9e014f23977f2f031eb9f9b367881a20fa8effeac9e38289cd723aa11e62',
   })
-
 
   depends_on 'asciidoc' => :build
 
