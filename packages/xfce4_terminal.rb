@@ -29,6 +29,7 @@ class Xfce4_terminal < Package
   depends_on 'startup_notification'
   depends_on 'wayland_protocols'
   depends_on 'mesa'
+  depends_on 'xcb_util'
 
   def self.build
     system "./configure #{CREW_OPTIONS}"
