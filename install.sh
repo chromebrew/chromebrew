@@ -24,7 +24,7 @@ YELLOW='\e[1;33m';
 RESET='\e[0m'
 
 if [ "${EUID}" == "0" ]; then
-  echo -e "${RED}Chromebrew should not be installed or run as root."
+  echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
   exit 1;
 fi
 
@@ -34,7 +34,7 @@ case "${ARCH}" in
   [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
   ;;
 *)
-  echo -e "${RED}Your device is not supported by Chromebrew yet :/"
+  echo -e "${RED}Your device is not supported by Chromebrew yet :/${RESET}"
   exit 1;;
 esac
 
@@ -233,7 +233,7 @@ function download_check () {
     curl --progress-bar -C - -L --ssl "${2}" -o "${3}"
 
     #verify
-    echo -e "${BLUE}Verifying ${1}..."
+    echo -e "${BLUE}Verifying ${1}...${RESET}"
     echo -e ${GREEN}`echo "${4}" "${3}" | sha256sum -c -`${RESET}
     case "${?}" in
     0) ;;
@@ -250,7 +250,7 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo -e "Extracting ${1} (this may take a while)..."
+    echo -e "Extracting ${1} (this may take a while)...${RESET}"
     tar xpf ../"${2}"
     echo -e "Installing ${1} (this may take a while)...${RESET}"
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
@@ -272,7 +272,7 @@ function update_device_json () {
       "version": "'"${2}"'"\
     }/'
   else
-    echo -e "${RESET}Adding new information on ${1} to device.json...${RESET}"
+    echo -e "Adding new information on ${1} to device.json...${RESET}"
     sed -i device.json -e '/^  "installed_packages": \[$/s/$/\
     {\
       "name": "'"${1}"'",\
@@ -284,7 +284,7 @@ function update_device_json () {
 # create the device.json file if it doesn't exist
 cd "${CREW_CONFIG_PATH}"
 if [ ! -f device.json ]; then
-  echo -e "${YELLOW}Creating new device.json..."
+  echo -e "${YELLOW}Creating new device.json...${RESET}"
   echo '{' > device.json
   echo '  "architecture": "'"${ARCH}"'",' >> device.json
   echo '  "installed_packages": [' >> device.json
@@ -333,7 +333,7 @@ yes | crew install buildessential less most
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
   echo -e "${YELLOW}Since you have installed Chromebrew in a directory other than '/usr/local',"
-  echo -e "${YELLOW}you need to run these commands to complete your installation:"
+  echo -e "${YELLOW}you need to run these commands to complete your installation:${RESET}"
   echo -e "${BLUE}echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
   echo -e "${BLUE}echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
   echo -e "${BLUE}echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
@@ -360,6 +360,6 @@ echo -e "${BLUE}For example, to set 'nano' as the default editor, execute:"
 echo -e "${BLUE}echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc"
 echo
 echo -e "${BLUE}To set 'vim' as the default editor, execute:"
-echo -e "${BLUE}echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc"
+echo -e "${BLUE}echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc${RESET}"
 echo
 echo -e "${GREEN}Chromebrew installed successfully and package lists updated."
