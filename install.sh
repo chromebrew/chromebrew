@@ -25,7 +25,7 @@ RESET='\e[0m'
 alias echo='echo -e'
 
 if [ "${EUID}" == "0" ]; then
-  echo "${RED}Chromebrew should not be installed or run as root."
+  echo -e "${RED}Chromebrew should not be installed or run as root."
   exit 1;
 fi
 
@@ -35,7 +35,7 @@ case "${ARCH}" in
   [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
   ;;
 *)
-  echo "${RED}Your device is not supported by Chromebrew yet :/"
+  echo -e "${RED}Your device is not supported by Chromebrew yet :/"
   exit 1;;
 esac
 
