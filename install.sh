@@ -22,7 +22,6 @@ RED='\e[1;31m';
 BLUE='\e[1;34m';
 YELLOW='\e[1;33m';
 RESET='\e[0m'
-alias echo='echo -e'
 
 if [ "${EUID}" == "0" ]; then
   echo -e "${RED}Chromebrew should not be installed or run as root."
