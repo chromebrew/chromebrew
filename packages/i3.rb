@@ -29,7 +29,7 @@ class I3 < Package
   depends_on 'xcb_util_xrm'
   depends_on 'yajl'
   depends_on 'wayland' => :build
-  depends_on 'sommelier'
+  depends_on 'xorg_server'
   
   def self.build
     system "./configure #{CREW_OPTIONS} --disable-builddir --disable-maintainer-mode --enable-mans"
