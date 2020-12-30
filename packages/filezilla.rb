@@ -29,14 +29,24 @@ class Filezilla < Package
   depends_on 'sqlite'
   depends_on 'wxwidgets'
   depends_on 'xdg_utils'
-  depends_on 'sommelier'
+  depends_on 'wayland_protocols'
+  depends_on 'mesa'
+  depends_on 'xcb_util'
 
   def self.build
     system "./configure #{CREW_OPTIONS} --disable-maintainer-mode --with-pugixml=builtin"
     system 'make'
+    FileUtils.mv 'bin/filezilla', 'bin/filezilla_orig'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "cat <<'EOF'> filezilla
+WAYLAND_DISPLAY=wayland-0
+GDK_BACKEND=wayland
+DISPLAY=
+#{CREW_PREFIX}/bin/filezilla_orig $@
+EOF"
+    system "install -Dm755 filezilla #{CREW_DEST_PREFIX}/bin/filezilla"
   end
 end
