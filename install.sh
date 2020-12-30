@@ -262,17 +262,17 @@ function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
 
   if grep '"name": "'"${1}"'"' device.json > /dev/null; then
-    echo -e "Updating version number of ${1} in device.json..."
+    echo "Updating version number of ${1} in device.json..."
     sed -i device.json -e '/"name": "'"${1}"'"/N;//s/"version": ".*"/"version": "'"${2}"'"/'
   elif grep '^    }$' device.json > /dev/null; then
-    echo -e "${RESET}Adding new information on ${1} to device.json..."
+    echo "Adding new information on ${1} to device.json..."
     sed -i device.json -e '/^    }$/s/$/,\
     {\
       "name": "'"${1}"'",\
       "version": "'"${2}"'"\
     }/'
   else
-    echo -e "Adding new information on ${1} to device.json..."
+    echo "Adding new information on ${1} to device.json..."
     sed -i device.json -e '/^  "installed_packages": \[$/s/$/\
     {\
       "name": "'"${1}"'",\
