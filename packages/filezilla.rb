@@ -36,11 +36,11 @@ class Filezilla < Package
   def self.build
     system "./configure #{CREW_OPTIONS} --disable-maintainer-mode --with-pugixml=builtin"
     system 'make'
-    FileUtils.mv 'bin/filezilla', 'bin/filezilla_orig'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/filezilla', '#{CREW_DEST_PREFIX}/bin/filezilla_orig'
     system "cat <<'EOF'> filezilla
 WAYLAND_DISPLAY=wayland-0
 GDK_BACKEND=wayland
