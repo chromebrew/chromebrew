@@ -17,8 +17,14 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 
 ARCH="$(uname -m)"
 
+GREEN='\e[1;32m';
+RED='\e[1;31m';
+BLUE='\e[1;34m';
+YELLOW='\e[1;33m';
+RESET='\e[0m'
+
 if [ "${EUID}" == "0" ]; then
-  echo 'Chromebrew should not be installed or run as root.'
+  echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
   exit 1;
 fi
 
@@ -28,7 +34,7 @@ case "${ARCH}" in
   [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
   ;;
 *)
-  echo 'Your device is not supported by Chromebrew yet.'
+  echo -e "${RED}Your device is not supported by Chromebrew yet :/${RESET}"
   exit 1;;
 esac
 
@@ -183,16 +189,16 @@ function download_check () {
     cd "${CREW_BREW_DIR}"
 
     #download
-    echo "Downloading ${1}..."
-    curl --progress-bar -C - -L --ssl "${2}" -o "${3}"
+    echo -e "${BLUE}Downloading ${1}...${RESET}"
+    curl '-#' -C - -L --ssl "${2}" -o "${3}"
 
     #verify
-    echo "Verifying ${1}..."
-    echo "${4}" "${3}" | sha256sum -c -
+    echo -e "${BLUE}Verifying ${1}...${RESET}"
+    echo -e ${GREEN}`echo "${4}" "${3}" | sha256sum -c -`${RESET}
     case "${?}" in
     0) ;;
     *)
-      echo "Verification failed, something may be wrong with the download."
+      echo -e "${RED}Verification failed, something may be wrong with the download.${RESET}"
       exit 1;;
     esac
 }
@@ -238,7 +244,7 @@ function update_device_json () {
 # create the device.json file if it doesn't exist
 cd "${CREW_CONFIG_PATH}"
 if [ ! -f device.json ]; then
-  echo "Creating new device.json..."
+  echo -e "${YELLOW}Creating new device.json...${RESET}"
   echo '{' > device.json
   echo '  "architecture": "'"${ARCH}"'",' >> device.json
   echo '  "installed_packages": [' >> device.json
@@ -261,7 +267,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   update_device_json "${name}" "${version}"
 done
 
-# workaround https://github.com/skycocker/chromebrew/issues/3305
+## workaround https://github.com/skycocker/chromebrew/issues/3305
 sudo ldconfig > /dev/null 2> /dev/null || true
 
 # create symlink to 'crew' in ${CREW_PREFIX}/bin/
@@ -286,34 +292,39 @@ yes | crew install buildessential less most
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
-  echo "Since you have installed Chromebrew in a directory other than '/usr/local',"
-  echo "you need to run these commands to complete your installation:"
-  echo "echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
-  echo "echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
-  echo "echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
-  echo 'source ~/.bashrc'
-  echo
+  echo -e "${YELLOW}
+Since you have installed Chromebrew in a directory other than '/usr/local',
+you need to run these commands to complete your installation:
+${RESET}"
+
+  echo -e "${BLUE}
+echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc
+echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
+source ~/.bashrc
+${RESET}"
 fi
-echo "To set the default PAGER environment variable to use less:"
-echo "echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc"
-echo
-echo "Alternatively, you could use most.  Why settle for less, right?"
-echo "echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc"
-echo
-echo "Below are some text editor suggestions."
-echo
-echo "To install 'nano', execute:"
-echo "crew install nano"
-echo
-echo "Or, to get an updated version of 'vim', execute:"
-echo "crew install vim"
-echo
-echo "You may wish to set the EDITOR environment variable for an editor default."
-echo
-echo "For example, to set 'nano' as the default editor, execute:"
-echo "echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc"
-echo
-echo "To set 'vim' as the default editor, execute:"
-echo "echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc"
-echo
-echo "Chromebrew installed successfully and package lists updated."
+echo -e "${BLUE}
+To set the default PAGER environment variable to use less:
+echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc
+
+Alternatively, you could use most.  Why settle for less, right?
+echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc
+
+Below are some text editor suggestions.
+
+To install 'nano', execute:
+crew install nano
+
+Or, to get an updated version of 'vim', execute:
+crew install vim
+
+You may wish to set the EDITOR environment variable for an editor default.
+
+For example, to set 'nano' as the default editor, execute:
+echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc
+
+To set 'vim' as the default editor, execute:
+echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc
+${RESET}"
+echo -e "${GREEN}Chromebrew installed successfully and package lists updated.${RESET}"
