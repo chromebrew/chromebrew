@@ -17,8 +17,14 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 
 ARCH="$(uname -m)"
 
+GREEN='\e[1;32m';
+RED='\e[1;31m';
+BLUE='\e[1;34m';
+YELLOW='\e[1;33m';
+alias echo='echo -e'
+
 if [ "${EUID}" == "0" ]; then
-  echo 'Chromebrew should not be installed or run as root.'
+  echo "${RED}Chromebrew should not be installed or run as root."
   exit 1;
 fi
 
@@ -28,7 +34,7 @@ case "${ARCH}" in
   [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
   ;;
 *)
-  echo 'Your device is not supported by Chromebrew yet.'
+  echo "${RED}Your device is not supported by Chromebrew yet :/"
   exit 1;;
 esac
 
@@ -232,7 +238,7 @@ function download_check () {
     case "${?}" in
     0) ;;
     *)
-      echo "Verification failed, something may be wrong with the download."
+      echo "${RED}Verification failed, something may be wrong with the download."
       exit 1;;
     esac
 }
@@ -278,7 +284,7 @@ function update_device_json () {
 # create the device.json file if it doesn't exist
 cd "${CREW_CONFIG_PATH}"
 if [ ! -f device.json ]; then
-  echo "Creating new device.json..."
+  echo "${BLUE}Creating new device.json..."
   echo '{' > device.json
   echo '  "architecture": "'"${ARCH}"'",' >> device.json
   echo '  "installed_packages": [' >> device.json
@@ -326,7 +332,7 @@ yes | crew install buildessential less most
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
-  echo "Since you have installed Chromebrew in a directory other than '/usr/local',"
+  echo "${YELLOW}Since you have installed Chromebrew in a directory other than '/usr/local',"
   echo "you need to run these commands to complete your installation:"
   echo "echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
   echo "echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
