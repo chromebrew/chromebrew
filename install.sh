@@ -230,7 +230,7 @@ function download_check () {
 
     #download
     echo -e "${BLUE}Downloading ${1}...${RESET}"
-    curl --progress-bar -C - -L --ssl "${2}" -o "${3}"
+    curl '-#' -C - -L --ssl "${2}" -o "${3}"
 
     #verify
     echo -e "${BLUE}Verifying ${1}...${RESET}"
@@ -262,7 +262,7 @@ function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
 
   if grep '"name": "'"${1}"'"' device.json > /dev/null; then
-    echo -e "Updating version number of ${1} in device.json...${RESET}"
+    echo -e "Updating version number of ${1} in device.json..."
     sed -i device.json -e '/"name": "'"${1}"'"/N;//s/"version": ".*"/"version": "'"${2}"'"/'
   elif grep '^    }$' device.json > /dev/null; then
     echo -e "${RESET}Adding new information on ${1} to device.json..."
@@ -272,7 +272,7 @@ function update_device_json () {
       "version": "'"${2}"'"\
     }/'
   else
-    echo -e "Adding new information on ${1} to device.json...${RESET}"
+    echo -e "Adding new information on ${1} to device.json..."
     sed -i device.json -e '/^  "installed_packages": \[$/s/$/\
     {\
       "name": "'"${1}"'",\
@@ -332,34 +332,39 @@ yes | crew install buildessential less most
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
-  echo -e "${YELLOW}Since you have installed Chromebrew in a directory other than '/usr/local',"
-  echo -e "${YELLOW}you need to run these commands to complete your installation:${RESET}"
-  echo -e "${BLUE}echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
-  echo -e "${BLUE}echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
-  echo -e "${BLUE}echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
-  echo -e "${BLUE}source ~/.bashrc${RESET}"
-  echo
+  echo -e "${YELLOW}
+Since you have installed Chromebrew in a directory other than '/usr/local',
+you need to run these commands to complete your installation:
+${RESET}"
+
+  echo -e "${BLUE}
+echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc
+echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
+source ~/.bashrc
+${RESET}"
 fi
-echo -e "${BLUE}To set the default PAGER environment variable to use less:"
-echo -e "${BLUE}echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc"
-echo
-echo -e "${BLUE}Alternatively, you could use most.  Why settle for less, right?"
-echo -e "echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc"
-echo
-echo -e "${BLUE}Below are some text editor suggestions."
-echo
-echo -e "${BLUE}To install 'nano', execute:"
-echo -e "${BLUE}crew install nano"
-echo
-echo -e "${BLUE}Or, to get an updated version of 'vim', execute:"
-echo -e "${BLUE}crew install vim"
-echo
-echo -e "${BLUE}You may wish to set the EDITOR environment variable for an editor default."
-echo
-echo -e "${BLUE}For example, to set 'nano' as the default editor, execute:"
-echo -e "${BLUE}echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc"
-echo
-echo -e "${BLUE}To set 'vim' as the default editor, execute:"
-echo -e "${BLUE}echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc${RESET}"
-echo
+echo -e "${BLUE}
+To set the default PAGER environment variable to use less:
+echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc
+
+Alternatively, you could use most.  Why settle for less, right?
+echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc
+
+Below are some text editor suggestions.
+
+To install 'nano', execute:
+crew install nano
+
+Or, to get an updated version of 'vim', execute:
+crew install vim
+
+You may wish to set the EDITOR environment variable for an editor default.
+
+For example, to set 'nano' as the default editor, execute:
+echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc
+
+To set 'vim' as the default editor, execute:
+echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc
+${RESET}"
 echo -e "${GREEN}Chromebrew installed successfully and package lists updated.${RESET}"
