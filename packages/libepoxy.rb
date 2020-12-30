@@ -12,12 +12,12 @@ class Libepoxy < Package
   depends_on 'python3'
 
   def self.build
-    Dir.mkdir 'build'
-    system "meson #{CREW_MESON_OPTIONS} build"
-    system "ninja -C build"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-      system "meson install -C build"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
