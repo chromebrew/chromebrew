@@ -29,7 +29,9 @@ class Bluefish < Package
   depends_on 'python3'
   depends_on 'shared_mime_info'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'wayland_protocols'
+  depends_on 'mesa'
+  depends_on 'xcb_util'
 
   def self.build
     system './configure',
@@ -41,6 +43,14 @@ class Bluefish < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/bluefish', '#{CREW_DEST_PREFIX}/bin/bluefish_orig'
+    system "cat <<'EOF'> bluefish
+WAYLAND_DISPLAY=wayland-0
+GDK_BACKEND=wayland
+DISPLAY=
+#{CREW_PREFIX}/bin/bluefish_orig $@
+EOF"
+    system "install -Dm755 bluefish #{CREW_DEST_PREFIX}/bin/bluefish"
   end
 
   def self.postinstall
