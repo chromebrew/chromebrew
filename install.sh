@@ -250,9 +250,9 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo -e "Extracting ${1} (this may take a while)...${RESET}"
+    echo "Extracting ${1} (this may take a while)..."
     tar xpf ../"${2}"
-    echo -e "Installing ${1} (this may take a while)...${RESET}"
+    echo "Installing ${1} (this may take a while)..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
