@@ -15,11 +15,14 @@ class Gcc10 < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'fb98eccd98a78ff5b61bc56ac5a039f18c59e8aa232b90973e6d38b023a32bd8',
-      armv7l: 'fb98eccd98a78ff5b61bc56ac5a039f18c59e8aa232b90973e6d38b023a32bd8',
-        i686: '24e9130977ab9b9879c3be71b058cd168ed43271aaa0ac363c578074914ad12b',
-      x86_64: '9a349f9766c82746d44a8a1bffd3295295ff2ef955da23ee1f67915ec20d3ccd',
+     aarch64: 'e8f28370ad3a9b762602b9b3d70ae4ddad013a2dc8609a4a9dddb0ed929de35d',
+      armv7l: 'e8f28370ad3a9b762602b9b3d70ae4ddad013a2dc8609a4a9dddb0ed929de35d',
+        i686: 'a2eb1e7cd7acbff4e55417d6b8381bde8e203d70bcbf849a729f80d2bcfca2b2',
+      x86_64: '878be29dd3a2409c28b1d2c1e71774ceb23d9849b9242387148c0ca19f60c6a2',
   })
+
+
+
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
@@ -78,7 +81,6 @@ class Gcc10 < Package
         --disable-multilib \
         --enable-lto \
         --enable-threads=posix \
-        --disable-bootstrap \
         --disable-werror \
         --disable-libmpx \
         --enable-static \
@@ -88,35 +90,36 @@ class Gcc10 < Package
         --with-arch=armv7-a \
         --with-tune=cortex-a15 \
         --with-fpu=neon \
-        --with-float=hard"
+        --with-float=hard \
+        --with-build-config=bootstrap-lto-lean"
       when 'x86_64'
         system "../configure  #{CREW_OPTIONS} \
         --enable-checking=release \
         --enable-lto \
         --disable-multilib \
         --enable-threads=posix \
-        --disable-bootstrap \
         --disable-werror \
         --disable-libmpx \
         --enable-static \
         --enable-shared \
         --with-pic \
         --program-suffix=-#{gcc_version} \
-        --with-arch-64=x86-64"
+        --with-arch-64=x86-64 \
+        --with-build-config=bootstrap-lto-lean"
       when 'i686'
         system "../configure  #{CREW_OPTIONS} \
         --enable-checking=release \
         --enable-lto \
         --disable-multilib \
         --enable-threads=posix \
-        --disable-bootstrap \
         --disable-werror \
         --disable-libmpx \
         --enable-static \
         --enable-shared \
         --with-pic \
         --program-suffix=-#{gcc_version} \
-        --with-arch-32=#{ARCH}"
+        --with-arch-32=#{ARCH} \
+        --with-build-config=bootstrap-lto-lean"
       end
       system 'make'
     end
