@@ -19,13 +19,6 @@ class Handbrake < Package
     depends_on 'xcb_util'
   end
 
-  binary_url ({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/handbrake-1.3.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    x86_64: '0d18c1ba42efce8b8566ac0752cb46cc8e87ba422b5729bcd6558cd1d7e4c5e1',
-  })
-
   def self.patch
     system "for f in \$(find -name '*.*'); do sed -i 's,/usr/include/libxml2,#{CREW_PREFIX}/include/libxml2,g' \$f; done"
   end
