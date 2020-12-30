@@ -238,7 +238,7 @@ function download_check () {
     case "${?}" in
     0) ;;
     *)
-      echo -e "${RED}Verification failed, something may be wrong with the download."
+      echo -e "${RED}Verification failed, something may be wrong with the download.${RESET}"
       exit 1;;
     esac
 }
