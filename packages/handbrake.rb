@@ -14,7 +14,9 @@ class Handbrake < Package
     depends_on 'jansson'
     depends_on 'nasm' => :build
     depends_on 'numactl'
-    depends_on 'sommelier'
+    depends_on 'wayland_protocols'
+    depends_on 'mesa'
+    depends_on 'xcb_util'
   end
 
   binary_url ({
@@ -40,6 +42,14 @@ class Handbrake < Package
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
+    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/ghb', '#{CREW_DEST_PREFIX}/bin/ghb_orig'
+    system "cat <<'EOF'> ghb
+WAYLAND_DISPLAY=wayland-0
+GDK_BACKEND=wayland
+DISPLAY=
+#{CREW_PREFIX}/bin/ghb_orig $@
+EOF"
+    system "install -Dm755 ghb #{CREW_DEST_PREFIX}/bin/ghb"
   end
 
   def self.postinstall
