@@ -38,12 +38,12 @@ class Homebank < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/homebank', '#{CREW_DEST_PREFIX}/bin/hb_orig'
+    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/homebank', '#{CREW_DEST_PREFIX}/bin/homebank_orig'
     system "cat <<'EOF'> homebank
 WAYLAND_DISPLAY=wayland-0
 GDK_BACKEND=wayland
 DISPLAY=
-#{CREW_PREFIX}/bin/hb_orig $@
+#{CREW_PREFIX}/bin/homebank_orig $@
 EOF"
     system "install -Dm755 homebank #{CREW_DEST_PREFIX}/bin/homebank"
   end
