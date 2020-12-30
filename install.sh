@@ -337,7 +337,7 @@ if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
   echo -e "${BLUE}echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
   echo -e "${BLUE}echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
   echo -e "${BLUE}echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
-  echo -e "${BLUE}source ~/.bashrc"
+  echo -e "${BLUE}source ~/.bashrc${RESET}"
   echo
 fi
 echo -e "${BLUE}To set the default PAGER environment variable to use less:"
@@ -362,4 +362,4 @@ echo
 echo -e "${BLUE}To set 'vim' as the default editor, execute:"
 echo -e "${BLUE}echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc${RESET}"
 echo
-echo -e "${GREEN}Chromebrew installed successfully and package lists updated."
+echo -e "${GREEN}Chromebrew installed successfully and package lists updated.${RESET}"
