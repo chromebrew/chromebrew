@@ -21,6 +21,7 @@ GREEN='\e[1;32m';
 RED='\e[1;31m';
 BLUE='\e[1;34m';
 YELLOW='\e[1;33m';
+RESET='\e[0m'
 alias echo='echo -e'
 
 if [ "${EUID}" == "0" ]; then
@@ -229,16 +230,16 @@ function download_check () {
     cd "${CREW_BREW_DIR}"
 
     #download
-    echo "Downloading ${1}..."
+    echo -e "${BLUE}Downloading ${1}...${RESET}"
     curl --progress-bar -C - -L --ssl "${2}" -o "${3}"
 
     #verify
-    echo "Verifying ${1}..."
-    echo "${4}" "${3}" | sha256sum -c -
+    echo -e "${BLUE}Verifying ${1}..."
+    echo -e ${GREEN}`echo "${4}" "${3}" | sha256sum -c -`${RESET}
     case "${?}" in
     0) ;;
     *)
-      echo "${RED}Verification failed, something may be wrong with the download."
+      echo -e "${RED}Verification failed, something may be wrong with the download."
       exit 1;;
     esac
 }
@@ -250,9 +251,9 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo "Extracting ${1} (this may take a while)..."
+    echo -e "Extracting ${1} (this may take a while)..."
     tar xpf ../"${2}"
-    echo "Installing ${1} (this may take a while)..."
+    echo -e "Installing ${1} (this may take a while)...${RESET}"
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
@@ -262,17 +263,17 @@ function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
 
   if grep '"name": "'"${1}"'"' device.json > /dev/null; then
-    echo "Updating version number of ${1} in device.json..."
+    echo -e "Updating version number of ${1} in device.json...${RESET}"
     sed -i device.json -e '/"name": "'"${1}"'"/N;//s/"version": ".*"/"version": "'"${2}"'"/'
   elif grep '^    }$' device.json > /dev/null; then
-    echo "Adding new information on ${1} to device.json..."
+    echo -e "${RESET}Adding new information on ${1} to device.json..."
     sed -i device.json -e '/^    }$/s/$/,\
     {\
       "name": "'"${1}"'",\
       "version": "'"${2}"'"\
     }/'
   else
-    echo "Adding new information on ${1} to device.json..."
+    echo -e "${RESET}Adding new information on ${1} to device.json...${RESET}"
     sed -i device.json -e '/^  "installed_packages": \[$/s/$/\
     {\
       "name": "'"${1}"'",\
@@ -284,7 +285,7 @@ function update_device_json () {
 # create the device.json file if it doesn't exist
 cd "${CREW_CONFIG_PATH}"
 if [ ! -f device.json ]; then
-  echo "${BLUE}Creating new device.json..."
+  echo -e "${YELLOW}Creating new device.json..."
   echo '{' > device.json
   echo '  "architecture": "'"${ARCH}"'",' >> device.json
   echo '  "installed_packages": [' >> device.json
@@ -307,7 +308,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   update_device_json "${name}" "${version}"
 done
 
-# workaround https://github.com/skycocker/chromebrew/issues/3305
+## workaround https://github.com/skycocker/chromebrew/issues/3305
 sudo ldconfig > /dev/null 2> /dev/null || true
 
 # create symlink to 'crew' in ${CREW_PREFIX}/bin/
@@ -332,34 +333,34 @@ yes | crew install buildessential less most
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
-  echo "${YELLOW}Since you have installed Chromebrew in a directory other than '/usr/local',"
-  echo "you need to run these commands to complete your installation:"
-  echo "echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
-  echo "echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
-  echo "echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
-  echo 'source ~/.bashrc'
+  echo -e "${YELLOW}Since you have installed Chromebrew in a directory other than '/usr/local',"
+  echo -e "${YELLOW}you need to run these commands to complete your installation:"
+  echo -e "${BLUE}echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc"
+  echo -e "${BLUE}echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc"
+  echo -e "${BLUE}echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc"
+  echo -e "${BLUE}source ~/.bashrc"
   echo
 fi
-echo "To set the default PAGER environment variable to use less:"
-echo "echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc"
+echo -e "${BLUE}To set the default PAGER environment variable to use less:"
+echo -e "${BLUE}echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc"
 echo
-echo "Alternatively, you could use most.  Why settle for less, right?"
-echo "echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc"
+echo -e "${BLUE}Alternatively, you could use most.  Why settle for less, right?"
+echo -e "echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc"
 echo
-echo "Below are some text editor suggestions."
+echo -e "${BLUE}Below are some text editor suggestions."
 echo
-echo "To install 'nano', execute:"
-echo "crew install nano"
+echo -e "${BLUE}To install 'nano', execute:"
+echo -e "${BLUE}crew install nano"
 echo
-echo "Or, to get an updated version of 'vim', execute:"
-echo "crew install vim"
+echo -e "${BLUE}Or, to get an updated version of 'vim', execute:"
+echo -e "${BLUE}crew install vim"
 echo
-echo "You may wish to set the EDITOR environment variable for an editor default."
+echo -e "${BLUE}You may wish to set the EDITOR environment variable for an editor default."
 echo
-echo "For example, to set 'nano' as the default editor, execute:"
-echo "echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc"
+echo -e "${BLUE}For example, to set 'nano' as the default editor, execute:"
+echo -e "${BLUE}echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc"
 echo
-echo "To set 'vim' as the default editor, execute:"
-echo "echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc"
+echo -e "${BLUE}To set 'vim' as the default editor, execute:"
+echo -e "${BLUE}echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc"
 echo
-echo "Chromebrew installed successfully and package lists updated."
+echo -e "${GREEN}Chromebrew installed successfully and package lists updated."
