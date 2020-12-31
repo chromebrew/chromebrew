@@ -3,7 +3,7 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  version '3.51.0'
+  version '3.51.0-1'
   compatibility 'all'
   source_url 'https://download.filezilla-project.org/client/FileZilla_3.51.0_src.tar.bz2'
   source_sha256 '82be1c4a4f51bb32a599d0b4cc3a24127ba948c0af0f957233cc6a13ea3b6c4c'
