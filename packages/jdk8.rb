@@ -24,6 +24,7 @@ class Jdk8 < Package
   case ARGV[0]
   when 'install', 'reinstall'
     abort "JDK11 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk11"
+    abort "JDK15 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk15"
   end
 
   def self.install
