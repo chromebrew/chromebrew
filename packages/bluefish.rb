@@ -21,10 +21,7 @@ class Bluefish < Package
   depends_on 'xcb_util'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "./configure #{CREW_OPTIONS}"
     system "make"
   end
 
