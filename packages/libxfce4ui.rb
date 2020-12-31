@@ -3,7 +3,7 @@ require 'package'
 class Libxfce4ui < Package
   description 'Replacement of the old libxfcegui4 library'
   homepage 'https://xfce.org/'
-  version '4.16.0-1'
+  version '4.16.0'
   compatibility 'all'
   source_url "https://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.0.tar.bz2"
   source_sha256 '8b06c9e94f4be88a9d87c47592411b6cbc32073e7af9cbd64c7b2924ec90ceaa'
