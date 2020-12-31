@@ -7,7 +7,7 @@ class Handbrake < Package
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
-    source_url 'https://github.com/HandBrake/HandBrake/releases/download/1.3.3/HandBrake-1.3.3-source.tar.bz2'
+    source_url "https://github.com/HandBrake/HandBrake/releases/download/#{version}/HandBrake-#{version}-source.tar.bz2"
     source_sha256 '218a37d95f48b5e7cf285363d3ab16c314d97627a7a710cab3758902ae877f85'
     depends_on 'gtk3'
     depends_on 'ffmpeg'
