@@ -3,7 +3,7 @@ require 'package'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.3.3'
+  version '1.3.3-1'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
@@ -14,15 +14,10 @@ class Handbrake < Package
     depends_on 'jansson'
     depends_on 'nasm' => :build
     depends_on 'numactl'
-    depends_on 'sommelier'
+    depends_on 'wayland_protocols'
+    depends_on 'mesa'
+    depends_on 'xcb_util'
   end
-
-  binary_url ({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/handbrake-1.3.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    x86_64: '0d18c1ba42efce8b8566ac0752cb46cc8e87ba422b5729bcd6558cd1d7e4c5e1',
-  })
 
   def self.patch
     system "for f in \$(find -name '*.*'); do sed -i 's,/usr/include/libxml2,#{CREW_PREFIX}/include/libxml2,g' \$f; done"
@@ -40,6 +35,14 @@ class Handbrake < Package
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
+    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/ghb', '#{CREW_DEST_PREFIX}/bin/ghb_orig'
+    system "cat <<'EOF'> ghb
+WAYLAND_DISPLAY=wayland-0
+GDK_BACKEND=wayland
+DISPLAY=
+#{CREW_PREFIX}/bin/ghb_orig $@
+EOF"
+    system "install -Dm755 ghb #{CREW_DEST_PREFIX}/bin/ghb"
   end
 
   def self.postinstall
