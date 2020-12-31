@@ -21,7 +21,7 @@ class Bluefish < Package
   depends_on 'xcb_util'
 
   def self.build
-    system "./configure #{CREW_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system "make"
   end
 
