@@ -3,10 +3,10 @@ require 'package'
 class Thunar < Package
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '1.8.16'
+  version '4.16.1'
   compatibility 'all'
-  source_url "https://archive.xfce.org/src/xfce/thunar/1.8/thunar-#{version}.tar.bz2"
-  source_sha256 '221338b1cbf14cbee2b9091f9b4e4f47cf6bc9513bbb113762da7ca4f8173c4c'
+  source_url "https://archive.xfce.org/src/xfce/thunar/4.16/thunar-#{version}.tar.bz2"
+  source_sha256 'da2d17d2cb69eb33768690b714cc232ed367cbd71eb9543aaa2a805d05dc3ce1'
 
   depends_on 'exo'
   depends_on 'libexif'
@@ -18,7 +18,6 @@ class Thunar < Package
   depends_on 'xdg_base'
   depends_on 'wayland_protocols'
   depends_on 'mesa'
-  depends_on 'xcb_util'
 
   def self.build
     system "./configure #{CREW_OPTIONS} --enable-gio-unix --enable-gudev --enable-exif --enable-pcre --disable-static --enable-notifications"
