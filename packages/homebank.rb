@@ -17,7 +17,7 @@ class Homebank < Package
   depends_on 'xcb_util'
 
   def self.build
-    system "./configure #{CREW_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
     FileUtils.mv '#{CREW_DEST_PREFIX}/bin/homebank', '#{CREW_DEST_PREFIX}/bin/homebank_orig'
     system "cat <<'EOF'> homebank
