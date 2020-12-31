@@ -6,7 +6,7 @@ class Homebank < Package
   version '5.4.3'
   compatibility 'all'
   source_url "http://homebank.free.fr/public/homebank-#{version}.tar.gz"
-  source_sha256 '79a89ab8816a5973fa6afe75157fa375953795c79c224d510e8af0afed2512d2'
+  source_sha256 '9222d7ed7cc44fcfff3f1fe20935a1b7fe91bb4d9f90003cb3c6f3b893298d0b'
 
   depends_on 'libofx'
   depends_on 'libsoup'
