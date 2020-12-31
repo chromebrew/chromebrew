@@ -8,6 +8,19 @@ class Thunar < Package
   source_url "https://archive.xfce.org/src/xfce/thunar/4.16/thunar-#{version}.tar.bz2"
   source_sha256 'da2d17d2cb69eb33768690b714cc232ed367cbd71eb9543aaa2a805d05dc3ce1'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'f72859ef9d34c9f53b027e3ff4f939d53dfd02e2e14fa1ccba7272857dff6846',
+     armv7l: 'f72859ef9d34c9f53b027e3ff4f939d53dfd02e2e14fa1ccba7272857dff6846',
+       i686: 'a9968a493f18165318d3c1580e7aef64af66872290eb9f80d3164b3a1d4f06bd',
+     x86_64: 'a07083925abfeb69f6e960869a61da8039b8afa0a79c9601f312cdb750ccfb86',
+  })
+
   depends_on 'exo'
   depends_on 'libexif'
   depends_on 'libgudev'
