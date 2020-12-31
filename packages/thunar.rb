@@ -3,23 +3,10 @@ require 'package'
 class Thunar < Package
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  version '1.8.15'
+  version '1.8.16'
   compatibility 'all'
-  source_url 'https://archive.xfce.org/src/xfce/thunar/1.8/thunar-1.8.15.tar.bz2'
-  source_sha256 '7624560cf21f13869804947042610aab22075146b711593f11ceb9e494277c93'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-1.8.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-1.8.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-1.8.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-1.8.15-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '8cffe1931cc432eeeb479c1543166c82198bb8b7d7a135bbb134c0d57f13eeca',
-     armv7l: '8cffe1931cc432eeeb479c1543166c82198bb8b7d7a135bbb134c0d57f13eeca',
-       i686: '81334057f9499543189c6b9814d72f5c2c2459345ad49ea952e4eced09b1fb6e',
-     x86_64: '09fb04bf7b2b5576ae94c300d1d03bf1d853904b75391a26779e1b4bf69b66a9',
-  })
+  source_url "https://archive.xfce.org/src/xfce/thunar/1.8/thunar-#{version}.tar.bz2"
+  source_sha256 '221338b1cbf14cbee2b9091f9b4e4f47cf6bc9513bbb113762da7ca4f8173c4c'
 
   depends_on 'exo'
   depends_on 'libexif'
