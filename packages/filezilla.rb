@@ -40,4 +40,5 @@ class Filezilla < Package
     puts
     puts "To complete the installation, execute the following:".lightblue
     puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc".lightblue
+  end
 end
