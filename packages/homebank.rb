@@ -32,4 +32,9 @@ EOF"
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
+  def self.postinstall
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc".lightblue
+  end
 end
