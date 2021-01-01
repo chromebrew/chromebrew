@@ -35,13 +35,9 @@ class Filezilla < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/filezilla', '#{CREW_DEST_PREFIX}/bin/filezilla_orig'
-    system "cat <<'EOF'> filezilla
-WAYLAND_DISPLAY=wayland-0
-GDK_BACKEND=wayland
-DISPLAY=
-#{CREW_PREFIX}/bin/filezilla_orig $@
-EOF"
-    system "install -Dm755 filezilla #{CREW_DEST_PREFIX}/bin/filezilla"
   end
+  def self.postinstall
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc".lightblue
 end
