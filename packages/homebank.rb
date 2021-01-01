@@ -27,6 +27,6 @@ class Homebank < Package
   def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
-    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland homebank\"' >> ~/.bashrc".lightblue
+    puts "echo 'alias homebank=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland homebank\"' >> ~/.bashrc".lightblue
   end
 end
