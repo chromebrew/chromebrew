@@ -44,7 +44,7 @@ class Handbrake < Package
     puts "Type 'HandBrakeCLI' for the command line.".lightblue
     puts
     puts "To complete the installation, execute the following:".lightblue
-    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland ghb\"' >> ~/.bashrc".lightblue
+    puts "echo 'alias ghb=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland ghb\"' >> ~/.bashrc".lightblue
     puts
   end
 end
