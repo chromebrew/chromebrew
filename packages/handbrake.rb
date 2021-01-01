@@ -3,7 +3,7 @@ require 'package'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.3.3'
+  version '1.3.3-1'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
@@ -14,15 +14,10 @@ class Handbrake < Package
     depends_on 'jansson'
     depends_on 'nasm' => :build
     depends_on 'numactl'
-    depends_on 'sommelier'
+    depends_on 'wayland_protocols'
+    depends_on 'mesa'
+    depends_on 'xcb_util'
   end
-
-  binary_url ({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/handbrake-1.3.3-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    x86_64: '0d18c1ba42efce8b8566ac0752cb46cc8e87ba422b5729bcd6558cd1d7e4c5e1',
-  })
 
   def self.patch
     system "for f in \$(find -name '*.*'); do sed -i 's,/usr/include/libxml2,#{CREW_PREFIX}/include/libxml2,g' \$f; done"
@@ -47,6 +42,9 @@ class Handbrake < Package
     puts "To get started, type 'ghb'.".lightblue
     puts
     puts "Type 'HandBrakeCLI' for the command line.".lightblue
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts "echo 'alias ghb=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland ghb\"' >> ~/.bashrc".lightblue
     puts
   end
 end
