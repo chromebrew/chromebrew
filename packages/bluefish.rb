@@ -27,20 +27,13 @@ class Bluefish < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/bluefish', '#{CREW_DEST_PREFIX}/bin/bluefish_orig'
-    system "cat <<'EOF'> bluefish
-WAYLAND_DISPLAY=wayland-0
-GDK_BACKEND=wayland
-DISPLAY=
-#{CREW_PREFIX}/bin/bluefish_orig $@
-EOF"
-    system "install -Dm755 bluefish #{CREW_DEST_PREFIX}/bin/bluefish"
   end
 
   def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
     puts "update-mime-database #{CREW_PREFIX}/share/mime".lightblue
+    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc"
     puts
   end
 end
