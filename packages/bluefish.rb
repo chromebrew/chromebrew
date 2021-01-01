@@ -33,7 +33,7 @@ class Bluefish < Package
     puts
     puts "To complete the installation, execute the following:".lightblue
     puts "update-mime-database #{CREW_PREFIX}/share/mime".lightblue
-    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc"
+    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc".lightblue
     puts
   end
 end
