@@ -35,14 +35,6 @@ class Handbrake < Package
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
-    FileUtils.mv '#{CREW_DEST_PREFIX}/bin/ghb', '#{CREW_DEST_PREFIX}/bin/ghb_orig'
-    system "cat <<'EOF'> ghb
-WAYLAND_DISPLAY=wayland-0
-GDK_BACKEND=wayland
-DISPLAY=
-#{CREW_PREFIX}/bin/ghb_orig $@
-EOF"
-    system "install -Dm755 ghb #{CREW_DEST_PREFIX}/bin/ghb"
   end
 
   def self.postinstall
@@ -50,6 +42,9 @@ EOF"
     puts "To get started, type 'ghb'.".lightblue
     puts
     puts "Type 'HandBrakeCLI' for the command line.".lightblue
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc".lightblue
     puts
   end
 end
