@@ -42,7 +42,7 @@ class Crew_integration < Package
   end
   def self.postinstall
       case ARGV[0]
-      when 'reinstall', 'install'
+      when 'reinstall', 'install', 'upgrade', 'postinstall'
         require 'em-websocket'
         `echo "export PATH=#{ENV['PATH']}" >> ~/.bashrc`
         `echo 'if [ -w /usr/bin/crosh ]; then sudo umount /usr/bin/crosh; else crew_integration -s; fi' >> ~/.bashrc`
@@ -64,12 +64,12 @@ class Crew_integration < Package
            }
          end
         }
-        puts "This package contain a terminal shortcut, execute the following to install".lightblue
-        puts "crew_integration -i".lightblue
-        puts
-        puts "Run 'crew_integration -h' for more usage of this package".lightblue
-        puts "Remember to run crosh shell every startup or reboot to activate installed shortcuts"
       end
+      puts "This package contain a terminal shortcut, execute the following to install".lightblue
+      puts "crew_integration -i".lightblue
+      puts
+      puts "Run 'crew_integration -h' for more usage of this package".lightblue
+      puts "Remember to run crosh shell every startup or reboot to activate installed shortcuts"
   end
   def self.remove
       FileUtils.rm_rf "#{CREW_LIB_PREFIX}/pwa/"
