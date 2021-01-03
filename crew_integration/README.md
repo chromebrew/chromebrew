@@ -13,7 +13,7 @@
 ## Installation
 - This package is available at `crew`, install it by execute the following:
 ```bash
-crew install crew_integration
+crew install integration
 ```
 ## Help needed?
 - Submit an new issues [here](https://github.com/skycocker/chromebrew/issues)<sup>*</sup>
