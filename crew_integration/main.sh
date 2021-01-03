@@ -13,14 +13,12 @@ SENDER=${PWA_PREFIX}/send.rb
 app_path=${EXTENSION_PREFIX}/apps/${2}
 extension_id=id_id
 help='
-===================================
-    Chromebrew integration
   -s                  Start shortcut server
   -n (App Name)       Make a new shortcut
   -h                  Show this message
   -u (URL)            Open URL
   -t                  Open Chrome terminal
-==================================='
+'
 if [[ $extension_id = '' ]]; then echo -e "${BLUE}$(crew postinstall crew_integration)${RESET}" && exit 1; fi
 case ${1} in
   -s)
