@@ -1,6 +1,6 @@
 require 'package'
 
-class Crew_integration < Package
+class Integration < Package
   description 'Improves integration with Chrome OS shell and Chromebrew GUI applications.'
   homepage 'https://github.com/skycocker/chromebrew/crew_integration'
   version '2.0'
@@ -35,8 +35,7 @@ class Crew_integration < Package
     end 
   end
   def self.postinstall
-      case ARGV[0]
-      when 'reinstall', 'install', 'upgrade', 'postinstall'
+      unless ARGV[0] = "upgrade"
         require 'em-websocket'
         `echo "export PATH=#{ENV['PATH']}" >> ~/.bashrc`
         `echo 'if [ -w /usr/bin/crosh ]; then sudo umount /usr/bin/crosh; else crew_integration -s; fi' >> ~/.bashrc`
