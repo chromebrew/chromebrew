@@ -1,7 +1,7 @@
 require 'package'
 
 class Crew_integration < Package
-  description 'Scripts to create a PWA shortcut on ChromeOS dock for Chromebrew GUI Apps.'
+  description 'Improves integration with Chrome OS shell and Chromebrew GUI applications.'
   homepage 'https://github.com/skycocker/chromebrew/crew_integration'
   version '2.0'
   source_url 'file:///dev/null'
