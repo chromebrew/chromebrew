@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Chromebrew Integration",
+  "version": "2.0",
+  "description": "Improves integration with Chrome OS shell.",
+  "author": "supechicken666",
+  "icons": { "228": "images/brew228.png" },
+  "browser_action": {
+    "default_icon": {
+      "28": "images/brew28.png"
+    },
+    "default_title": "Chromebrew Integration"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "homepage_url": "https://github.com/supechicken666/pwashortcut",
+  "minimum_chrome_version": "84.0",
+  "offline_enabled": true,
+  "permissions": ["tabs", "activeTab"],
+  "content_security_policy": "script-src 'self' 'sha256-jqxtvDkBbRAl9Hpqv68WdNOieepg8tJSYu1xIy7zT34='; object-src 'self'"
+}
