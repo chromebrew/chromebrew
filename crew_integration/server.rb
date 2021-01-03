@@ -11,7 +11,7 @@ EM.run {
                  system "sudo mount -io bind #{PWA_PREFIX}/crosh.sh #{CROSH}"
                  ws.send 'Ready'
              else
-                 system message
+                 system "#{message} &"
              end
          }
 end
