@@ -10,12 +10,6 @@ class Crew_integration < Package
   depends_on "graphicsmagick"
     
   case ARGV[0]
-  when 'reinstall', 'install'
-     FileUtils.rm_rf "#{CREW_PREFIX}/lib/pwa/"
-     FileUtils.rm_rf "#{HOME}/MyFiles/.extension"
-  end
-    
-  case ARGV[0]
   when 'reinstall'
      puts "Since you are reinstalling this package, please run 'pkill ruby' if installation failed".lightblue
   when 'upgrade'
