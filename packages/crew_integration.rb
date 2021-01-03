@@ -44,7 +44,8 @@ class Crew_integration < Package
       case ARGV[0]
       when 'reinstall', 'install'
         require 'em-websocket'
-        `echo 'if [ -w /usr/share/crosh/dev.d/50-crosh.sh ]; then sudo umount /usr/share/crosh/dev.d/50-crosh.sh; else crew_integration -s; fi' >> ~/.bashrc`
+        `echo "export PATH=#{ENV['PATH']}" >> ~/.bashrc`
+        `echo 'if [ -w /usr/bin/crosh ]; then sudo umount /usr/bin/crosh; else crew_integration -s; fi' >> ~/.bashrc`
         puts 
         puts "To complete the installation, install the extension by following:".lightgreen
         puts "Go to chrome://extensions/".lightgreen
