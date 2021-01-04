@@ -3,34 +3,34 @@ require 'package'
 class Alsa_lib < Package
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.2.3.2'
+  version '1.2.4'
   compatibility 'all'
-  source_url 'ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.2.3.2.tar.bz2'
-  source_sha256 'e81fc5b7afcaee8c9fd7f64a1e3043e88d62e9ad2c4cff55f578df6b0a9abe15'
+  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version}.tar.gz"
+  source_sha256 '0c6ab052d7ea980a01d0208da5e5e10849bd16c4c9961bbd5d2665083b74a6c0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.3.2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.4-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.4-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_lib-1.2.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ba12c44ff01c904da7270ced35819e490f53b95c15199c36ae5f02867a9fc421',
-     armv7l: 'ba12c44ff01c904da7270ced35819e490f53b95c15199c36ae5f02867a9fc421',
-       i686: '014fcfc110e79c9f0c527c74fe30876da5080308c611710fff4d7d630339a7a2',
-     x86_64: 'c7beca12335def6dd0f0e25a7d5748236dc04b63adf7a7a5a066bf73ebbdbee8',
+     aarch64: '07cb624cc829dc5f17dcc5d6a9f0a7ea67798bdbc4c27a7a4e075149be91143f',
+      armv7l: '07cb624cc829dc5f17dcc5d6a9f0a7ea67798bdbc4c27a7a4e075149be91143f',
+        i686: '3baa9db99ab259ba52b8769fd5720da076620a30981133b4143b9e5907698227',
+      x86_64: '20132936d9c3ba6fa0126aad6926996f47886ace79548be152cb8aa6975c626d',
   })
 
   depends_on 'python3'
 
   def self.build
-    system './configure',
-           '--without-debug',
-           '--disable-maintainer-mode',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-pythonlibs=-lpython3.8',
-           "--with-pythonincludes=-I#{CREW_PREFIX}/include/python3.8"
+    system 'autoreconf -fiv'
+    system "./configure #{CREW_OPTIONS} \
+       --with-alsalconfdir=#{CREW_PREFIX}/etc/alsa/conf.d \
+       --without-debug \
+       --disable-maintainer-mode \
+       --with-pythonlibs=-lpython3.9 \
+       --with-pythonincludes=-I#{CREW_PREFIX}/include/python3.9"
     system 'make'
   end
 
