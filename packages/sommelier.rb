@@ -3,10 +3,24 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20201222'
+  version '20201222-3'
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
+
+  binary_url ({
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+     aarch64: 'd5d3790503673368cd882379d07bab0152c6a8e0aae7a390229b4748121c0345',
+      armv7l: 'd5d3790503673368cd882379d07bab0152c6a8e0aae7a390229b4748121c0345',
+        i686: 'a2ee97b81a19958dd79ebd8cd58e40319ea570b73113e477781542026e5ec148',
+      x86_64: '58c024732ad5bf0cda4f15ca5104c0dff94837a3eae34408a2bd7457a18a0161',
+  })
+
   
   depends_on 'mesa'
   depends_on 'xkbcomp'
@@ -56,26 +70,26 @@ class Sommelier < Package
     system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
     
     # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
-    ENV['CFLAGS'] = "-fuse-ld=lld"
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
     
-    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
+    system "meson #{CREW_MESON_OPTIONS} \
+    -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
     -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
     -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
-    -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" build"
+    -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" \
+    build"
     system "meson configure build"
     system "ninja -C build"
     
     Dir.chdir ("build") do
       system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
       
-      system "cat <<'EOF'> .sommelier.env
+      system "cat <<'EOF'> .sommelier-default.env
 #!/bin/bash
 shopt -os allexport
 CLUTTER_BACKEND=wayland
 DISPLAY=:0
 GDK_BACKEND=x11
-SCALE=0.5
+SCALE=1
 SOMMELIER_ACCELERATORS=\"Super_L,<Alt>bracketleft,<Alt>bracketright\"
 WAYLAND_DISPLAY=wayland-1
 XDG_RUNTIME_DIR=/var/run/chrome
@@ -124,7 +138,10 @@ EOF"
       # sommelierd
       system "cat <<'EOF'> sommelierd
 #!/bin/bash
-set -a && source ~/.sommelier.env && set +a
+set -a
+source ~/.sommelier-default.env &>/dev/null
+source ~/.sommelier.env &>/dev/null
+set +a
 mkdir -p #{CREW_PREFIX}/var/{log,run}
 checksommelierwayland () {
   [[ -f \"#{CREW_PREFIX}/var/run/sommelier-wayland.pid\" ]] || return 1
@@ -138,18 +155,18 @@ checksommelierxwayland () {
 # in ChromeOS's wayland compositor.
 if ! checksommelierwayland ; then
 pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
-sudo rm \${XDG_RUNTIME_DIR}/wayland-1*
+rm \${XDG_RUNTIME_DIR}/wayland-1*
 sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
 echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
 fi
 if ! checksommelierxwayland; then
 pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
-[[ ! -d /tmp/.X11-unix ]] && mkdir /tmp/.X11-unix
-sudo chmod -R 1777 /tmp/.X11-unix
-sudo chown root:root /tmp/.X11-unix
+#[[ ! -d /tmp/.X11-unix ]] && mkdir /tmp/.X11-unix
+#sudo chmod -R 1777 /tmp/.X11-unix
+#sudo chown root:root /tmp/.X11-unix
 DISPLAY=\"\${DISPLAY//:}\"
 DISPLAY=\"\${DISPLAY:0:2}\"
-sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
+#sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
 sommelier -X --x-display=:\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add :$DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>#{CREW_PREFIX}/var/log/sommelier.log
 echo \$! >#{CREW_PREFIX}/var/run/sommelier-xwayland.pid
 xhost +si:localuser:root &>/dev/null
@@ -159,7 +176,10 @@ EOF"
       # startsommelier
        system "cat <<'EOF'> startsommelier
 #!/bin/bash
-set -a && source ~/.sommelier.env &>/dev/null && set +a
+set -a
+source ~/.sommelier-default.env &>/dev/null
+source ~/.sommelier.env &>/dev/null
+set +a
 checksommelierwayland () {
   [[ -f \"#{CREW_PREFIX}/var/run/sommelier-wayland.pid\" ]] || return 1
   /sbin/ss --unix -a -p | grep \"\\b\$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)\" | grep wayland &>/dev/null
@@ -229,7 +249,7 @@ EOF"
         system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
         system "install -Dm755 restartsommelier #{CREW_DEST_PREFIX}/bin/restartsommelier"
         system "install -Dm755 sommelierrc #{CREW_DEST_PREFIX}/etc/sommelierrc"
-        system "install -Dm644 .sommelier.env #{CREW_DEST_HOME}/.sommelier.env"
+        system "install -Dm644 .sommelier-default.env #{CREW_DEST_HOME}/.sommelier-default.env"
 
       end
     end
@@ -249,9 +269,8 @@ EOF"
     end
 
     puts
-    puts "To adjust environment variables, edit ~/.sommelier.env".lightblue
-    puts "e.g. You may need to adjust the SCALE environment variable to".lightblue
-    puts "get the correct screen size.".lightblue
+    puts "To adjust sommelier environment variables, create ~/.sommelier.env".lightblue
+    puts "Default values are in ~/.sommelier-default.env".lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
     puts "To stop the sommelier daemon, run 'stopsommelier'".lightblue
