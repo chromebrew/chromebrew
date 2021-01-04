@@ -3,23 +3,24 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20201222'
+  version '20201222-2'
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
- 
+
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-2-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-2-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '40ad38667c4cb77a8fb22ac5ec958c7caa152d694c78a9f5b91bde1e17d185f4',
-      armv7l: '40ad38667c4cb77a8fb22ac5ec958c7caa152d694c78a9f5b91bde1e17d185f4',
-        i686: 'c873d8c561ad79d863295f06689240887be8a263b02ba3aa2af8ce6d6cfede50',
-      x86_64: '278ba78616063ead88dc8d0394d372c2ad71d3545a0a1185c124d5983b0ca74d',
+     aarch64: '161925c681b4e45918d2982701900d845a257b50e9a6393f6939778ad10d78a0',
+      armv7l: '161925c681b4e45918d2982701900d845a257b50e9a6393f6939778ad10d78a0',
+        i686: 'f5b1a8826e72733c634be5ee72dd6d2e3b03cb060e616430f1eba2af7a817eba',
+      x86_64: '6a468aff607b87eac7ef0e3d1a51861f028b0427cab333da514711e59f5d2108',
   })
+
   
   depends_on 'mesa'
   depends_on 'xkbcomp'
@@ -69,13 +70,13 @@ class Sommelier < Package
     system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
     
     # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
-    ENV['CFLAGS'] = "-fuse-ld=lld"
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
     
-    system "meson #{CREW_MESON_OPTIONS} -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
+    system "meson #{CREW_MESON_OPTIONS} \
+    -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
     -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
     -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
-    -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" build"
+    -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" \
+    build"
     system "meson configure build"
     system "ninja -C build"
     
@@ -151,18 +152,18 @@ checksommelierxwayland () {
 # in ChromeOS's wayland compositor.
 if ! checksommelierwayland ; then
 pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
-sudo rm \${XDG_RUNTIME_DIR}/wayland-1*
+rm \${XDG_RUNTIME_DIR}/wayland-1*
 sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
 echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
 fi
 if ! checksommelierxwayland; then
 pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
-[[ ! -d /tmp/.X11-unix ]] && mkdir /tmp/.X11-unix
-sudo chmod -R 1777 /tmp/.X11-unix
-sudo chown root:root /tmp/.X11-unix
+#[[ ! -d /tmp/.X11-unix ]] && mkdir /tmp/.X11-unix
+#sudo chmod -R 1777 /tmp/.X11-unix
+#sudo chown root:root /tmp/.X11-unix
 DISPLAY=\"\${DISPLAY//:}\"
 DISPLAY=\"\${DISPLAY:0:2}\"
-sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
+#sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
 sommelier -X --x-display=:\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add :$DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>#{CREW_PREFIX}/var/log/sommelier.log
 echo \$! >#{CREW_PREFIX}/var/run/sommelier-xwayland.pid
 xhost +si:localuser:root &>/dev/null
