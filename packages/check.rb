@@ -27,7 +27,7 @@ class Check < Package
     Dir.chdir 'build' do
       system "env CC=gcc LD=ld \
       cmake -G Ninja \
-      -DCMAKE_INSTALL_PREFIX=/usr/local \
+      -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
       -DCMAKE_BUILD_TYPE=Release \
       -DCHECK_ENABLE_TIMEOUT_TESTS=OFF \
       -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
