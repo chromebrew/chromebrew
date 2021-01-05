@@ -3,26 +3,23 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.2.1-67cb'
+  version '10.2.1-0f64'
   compatibility 'all'
-  source_url 'https://github.com/gcc-mirror/gcc/archive/67cbe5c8e68299442552f18139e0689646f9729d.zip'
-  source_sha256 '59793cd37021aefeb1152a85dee3e97c443d66a6798907346b2e63678ce0eff6'
+  source_url 'https://github.com/gcc-mirror/gcc/archive/0f64123bde80a37c8d9aced69405e71848a23b95.zip'
+  source_sha256 '87f1b3344db6cdcb7295e63c031e00f2c7755c2656cf9603aeb32cf5a5539ec7'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-67cb-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-0f64-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-0f64-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-0f64-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-0f64-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'e8f28370ad3a9b762602b9b3d70ae4ddad013a2dc8609a4a9dddb0ed929de35d',
-      armv7l: 'e8f28370ad3a9b762602b9b3d70ae4ddad013a2dc8609a4a9dddb0ed929de35d',
-        i686: 'a2eb1e7cd7acbff4e55417d6b8381bde8e203d70bcbf849a729f80d2bcfca2b2',
-      x86_64: '878be29dd3a2409c28b1d2c1e71774ceb23d9849b9242387148c0ca19f60c6a2',
+     aarch64: 'dc0760c6fc123a48a72a6f5492f56d2be4273c29be3dfce6e7b202521c659365',
+      armv7l: 'dc0760c6fc123a48a72a6f5492f56d2be4273c29be3dfce6e7b202521c659365',
+        i686: '52850f19acb5c7def3b7116a5873a5c68c4f9a7fa254b5198deacff36f1e15aa',
+      x86_64: '438ae78481cbbfcc38c6d917498f6b6f0681627a798b263bb9b8ef222ee38b35',
   })
-
-
-
 
   depends_on 'unzip' => :build
   depends_on 'gawk' => :build
@@ -139,8 +136,6 @@ class Gcc10 < Package
 
       gcc_arch = `gcc/xgcc -dumpmachine`.chomp
       gcc_version = version.split("-")[0]
-      #gcc_version = `cat ../gcc/BASE-VER`
-      #gcc_version = `gcc/xgcc -dumpversion`.chomp
       gcc_dir = "gcc/#{gcc_arch}/#{gcc_version}"
       gcc_libdir = "#{CREW_LIB_PREFIX}/#{gcc_dir}"
 
