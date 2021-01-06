@@ -40,10 +40,13 @@ class Llvm < Package
   # OpenMP was having issues compiling with -flto
   LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'
   LLVM_VERSION = version.split("-")[0]
+  
+  BINUTILS_BRANCH = 'gdb-10.1-release'
 
   def self.build
     ############################################################
     puts "Building LLVM Targets: #{LLVM_TARGETS_TO_BUILD}".lightgreen
+    puts "Building LLVM Projects: #{LLVM_PROJECTS_TO_BUILD}".lightgreen
     ############################################################
 
     ############################################################
@@ -52,10 +55,10 @@ class Llvm < Package
     system "grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'"
     
     ############################################################
-    puts "Downloading binutils src to enable gold plugin build".lightgreen
+    puts "Downloading binutils #{BINUTILS_BRANCH} src to enable gold plugin build".lightgreen
     ############################################################
     # As per https://github.com/SVF-tools/SVF/wiki/Install-LLVM-Gold-Plugin-on-Ubuntu
-    system "git clone --depth 1 git://sourceware.org/git/binutils-gdb.git binutils"
+    system "git clone --depth 1 --branch #{BINUTILS_BRANCH} git://sourceware.org/git/binutils-gdb.git binutils"
     
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
