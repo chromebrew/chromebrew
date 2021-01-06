@@ -258,11 +258,19 @@ EOF"
   def self.postinstall
     puts
     # Having ~/.bashrc load sommelier environment variables by default.
-    sommelier_in_bashrc = `grep -c "set -a && source ~/.sommelier.env && set +a" ~/.bashrc || true`
+    oldsommelier_in_bashrc = `grep -c "set -a && source ~/.sommelier.env && set +a" ~/.bashrc || true`
+    unless oldsommelier_in_bashrc.to_i < 1
+      puts "Replacing old sommelier env variable loading code in ~/.bashrc".lightblue
+      system "sed -i \"s,set -a && source ~/.sommelier.env && set +a,set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a,g\" -i.backup ~/.bashrc"
+      puts "To complete the installation, execute the following:".orange
+      puts "source ~/.bashrc".orange
+    end
+    
+    sommelier_in_bashrc = `grep -c "set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a" ~/.bashrc || true`
     unless sommelier_in_bashrc.to_i > 0
       puts "Putting sommelier loading code in ~/.bashrc".lightblue
       system "echo '# Sommelier environment variables + daemon' >> ~/.bashrc"
-      system "echo 'set -a && source ~/.sommelier.env && set +a' >> ~/.bashrc"
+      system "echo 'set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a' >> ~/.bashrc"
       system "echo 'startsommelier' >> ~/.bashrc"
       puts "To complete the installation, execute the following:".orange
       puts "source ~/.bashrc".orange
