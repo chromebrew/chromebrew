@@ -4,6 +4,7 @@ class Check < Package
   description 'A unit testing framework for C'
   homepage 'https://libcheck.github.io/check/'
   version '0.15.2'
+  compatibility 'all'
   source_url 'https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz'
   source_sha256 'a8de4e0bacfb4d76dd1c618ded263523b53b85d92a146d8835eb1a52932fa20a'
 
