@@ -86,7 +86,7 @@
             <h5>Available on aarch64, armv7l, i686 and x86_64.</h5>
           </div>
           <div class="highlight">
-            <pre><code>curl -Ls https://raw.github.com/skycocker/chromebrew/master/install.sh | bash</code></pre>
+            <pre><code>curl -Ls git.io/vddgY | bash</code></pre>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
           In fact, Chromebrew is a simple Ruby script. There's also some Git involved, so we needed both of these things to run it on a bare Chrome OS. We have prebuilt them along with their dependencies to install into your system during installation. So, basically, after installing Chromebrew, you will have fully functional Ruby with Rubygems, Git and a package manager dedicated just for your Chromebook. Cool, huh?
         </p>
 
-        <h3>How is it different from Crouton?</h3>
+        <h3>How is it different from Crouton/Linux (Beta)?</h3>
         <p>
           Well, Chromebrew doesn't install an operating system. :p
         </p>
@@ -129,21 +129,23 @@ class Template &lt; Package
   description ''
   homepage ''
   version ''
+  compatibility '' # Package compatibility
   source_url '*.tar.gz'
   source_sha256 ''
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '',
-     armv7l: '',
-       i686: '',
-     x86_64: '',
-  })
+# Optional: Prebuilt binary
+#  binary_url ({
+#    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
+#     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
+#       i686: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-i686.tar.xz',
+#     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-x86_64.tar.xz',
+#  })
+#  binary_sha256 ({
+#    aarch64: '',
+#     armv7l: '',
+#       i686: '',
+#     x86_64: '',
+#  })
 
 
   # Register dependencies (use the following line as a basis)
@@ -194,7 +196,7 @@ end
         <p></p>
       
       <div class="footer">
-        <pre>© 2013-2020 Michal Siwek</pre>
+        <pre>© 2013-2021 Michal Siwek</pre>
       </div>
     </div> <!-- /container -->
   
