@@ -8,6 +8,7 @@ class Llvm < Package
   source_url 'https://github.com/llvm/llvm-project/archive/llvmorg-11.0.1.tar.gz'
   source_sha256 '9c7ad8e8ec77c5bde8eb4afa105a318fd1ded7dff3747d14f012758719d7171b'
 
+
   depends_on 'ld_default' => :build
   depends_on 'ocaml' => :build
   depends_on 'libedit'
@@ -16,21 +17,28 @@ class Llvm < Package
   depends_on 'pygments' => :build
   depends_on 'ccache' => :build
 
+
   ARCH_ACTUAL = `uname -m`.strip
   case ARCH_ACTUAL
   when 'armv8l', 'aarch64',  'armv7l'
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
-    ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto'
-    ARCH_CXX_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto'
+    ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard'
+    ARCH_C_LTO_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto'
+    ARCH_CXX_FLAGS = '-march=armv7-a -mfloat-abi=hard'
+    ARCH_CXX_LTO_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto'
   when 'i686','x86_64'
     #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
-    ARCH_C_FLAGS = '-flto'
-    ARCH_CXX_FLAGS = '-flto'
+    ARCH_C_FLAGS = ''
+    ARCH_C_LTO_FLAGS = '-flto'
+    ARCH_CXX_FLAGS = ''
+    ARCH_CXX_LTO_FLAGS = '-flto'
   end
   # Using Targets 'all' because otherwise mesa complains.
   # This may be patched upstream as per 
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   LLVM_TARGETS_TO_BUILD = 'all'
+  # OpenMP was having issues compiling with -flto
+  LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'
   LLVM_VERSION = version.split("-")[0]
 
   def self.build
@@ -75,8 +83,8 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_ENABLE_FFI=ON \
             -DLLVM_ENABLE_RTTI=ON \
-            -DCMAKE_C_FLAGS='#{ARCH_C_FLAGS}' \
-            -DCMAKE_CXX_FLAGS='#{ARCH_CXX_FLAGS}' \
+            -DCMAKE_C_FLAGS='#{ARCH_C_LTO_FLAGS}' \
+            -DCMAKE_CXX_FLAGS='#{ARCH_CXX_LTO_FLAGS}' \
             -DLLVM_PARALLEL_LINK_JOBS=1 \
             -DPYTHON_EXECUTABLE=$(which python3) \
             -DLLVM_INSTALL_UTILS=ON \
@@ -86,7 +94,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DLIBUNWIND_SUPPORTS_FUNWIND_TABLES_FLAG=ON \
             -DLIBUNWIND_SUPPORTS_FNO_EXCEPTIONS_FLAG=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
-            -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp' \
+            -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
             -Wno-dev \
             ../llvm"
       system 'ninja'
@@ -106,9 +114,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
   
   def self.check
     Dir.chdir("builddir") do
-      #system "ninja check-llvm || true"
-      #system "ninja check-clang || true"
-      #system "ninja check-lld || true"
+      system "ninja check-llvm || true"
+      system "ninja check-clang || true"
+      system "ninja check-lld || true"
     end
   end
 
