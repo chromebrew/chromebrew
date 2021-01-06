@@ -183,13 +183,13 @@ class Gcc10 < Package
       FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-ranlib"
 
 
-      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/cpp-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/cpp.1.gz"
-      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/g++-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/g++.1.gz"
-      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcc-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcc.1.gz"
-      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcov-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov.1.gz"
-      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcov-dump-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov-dump.1.gz"
-      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gcov-tool-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gcov-tool.1.gz"
-      FileUtils.ln_s "#{CREW_PREFIX}/share/man/man1/gfortran-#{gcc_version}.1.gz", "#{CREW_DEST_PREFIX}/share/man/man1/gfortran.1.gz"
+      FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/cpp-#{gcc_version}.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/cpp.1.gz"
+      FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/g++-#{gcc_version}.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/g++.1.gz"
+      FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/gcc-#{gcc_version}.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/gcc.1.gz"
+      FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/gcov-#{gcc_version}.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/gcov.1.gz"
+      FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/gcov-dump-#{gcc_version}.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/gcov-dump.1.gz"
+      FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/gcov-tool-#{gcc_version}.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/gcov-tool.1.gz"
+      FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/gfortran-#{gcc_version}.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/gfortran.1.gz"
     end
   end
 end
