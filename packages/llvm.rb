@@ -17,24 +17,23 @@ class Llvm < Package
   depends_on 'pygments' => :build
   depends_on 'ccache' => :build
 
-
   case ARCH
   when 'aarch64','armv7l'
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard'
-    ARCH_C_LTO_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto -lsupc++'
+    ARCH_C_LTO_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto=2 -ffat-lto-objects -lsupc++'
     ARCH_CXX_FLAGS = '-march=armv7-a -mfloat-abi=hard'
     # -lsupc++ added to work around "/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/10.2.1/../../../../armv7l-cros-linux-gnueabihf/bin/ld: /tmp/libc++abi.so.1.0.4h5EHa.ltrans0.ltrans.o: in function `__cxa_end_cleanup':"
-    ARCH_CXX_LTO_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto -lsupc++'
+    ARCH_CXX_LTO_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto=2 -ffat-lto-objects -lsupc++'
     # OpenMP was having issues compiling with -flto
     # libcxx not listed as working on linux arm as per https://libcxx.llvm.org/
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libunwind;lldb;compiler-rt;lld;polly'
   when 'i686','x86_64'
     #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     ARCH_C_FLAGS = ''
-    ARCH_C_LTO_FLAGS = '-flto'
+    ARCH_C_LTO_FLAGS = '-flto=2 -ffat-lto-objects'
     ARCH_CXX_FLAGS = ''
-    ARCH_CXX_LTO_FLAGS = '-flto'
+    ARCH_CXX_LTO_FLAGS = '-flto=2 -ffat-lto-objects'
     # OpenMP was having issues compiling with -flto
     # Remove libcxx;libcxxabi to try to avoid issues with 
     # CommandLine Error: Option 'O' registered more than once!
@@ -48,7 +47,7 @@ class Llvm < Package
   
   LLVM_VERSION = version.split("-")[0]
   
-  BINUTILS_BRANCH = 'binutils-2_35_1'
+  BINUTILS_BRANCH = 'gdb-10.1-release'
 
   def self.build
     ############################################################
@@ -122,7 +121,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
       system "DESTDIR=#{CREW_DEST_DIR} ninja install"
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
       FileUtils.ln_s "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-      FileUtils.ln_s Dir.glob("lib#{CREW_LIB_SUFFIX}/libLTO.*"), "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      #FileUtils.ln_s Dir.glob("lib#{CREW_LIB_SUFFIX}/libLTO.*"), "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
     end
   end
   
