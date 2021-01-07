@@ -18,9 +18,8 @@ class Llvm < Package
   depends_on 'ccache' => :build
 
 
-  ARCH_ACTUAL = `uname -m`.strip
-  case ARCH_ACTUAL
-  when 'armv8l', 'aarch64',  'armv7l'
+  case ARCH
+  when 'aarch64','armv7l'
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard'
     ARCH_C_LTO_FLAGS = '-march=armv7-a -mfloat-abi=hard -flto -lsupc++'
@@ -37,7 +36,10 @@ class Llvm < Package
     ARCH_CXX_FLAGS = ''
     ARCH_CXX_LTO_FLAGS = '-flto'
     # OpenMP was having issues compiling with -flto
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'
+    # Remove libcxx;libcxxabi to try to avoid issues with 
+    # CommandLine Error: Option 'O' registered more than once!
+    # LLVM ERROR: inconsistency in registered CommandLine options
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'
   end
   # Using Targets 'all' because otherwise mesa complains.
   # This may be patched upstream as per 
@@ -46,7 +48,7 @@ class Llvm < Package
   
   LLVM_VERSION = version.split("-")[0]
   
-  BINUTILS_BRANCH = 'gdb-10.1-release'
+  BINUTILS_BRANCH = 'binutils-2_35_1'
 
   def self.build
     ############################################################
@@ -89,6 +91,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DCMAKE_LINKER=$(which ld.gold) \
+            -D_CMAKE_TOOLCHAIN_PREFIX=gcc- \
             -DLLVM_BUILD_LLVM_DYLIB=ON \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_ENABLE_FFI=ON \
@@ -118,8 +121,8 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
       system "install -Dm755 clc++ #{CREW_DEST_PREFIX}/bin/clc++"
       system "DESTDIR=#{CREW_DEST_DIR} ninja install"
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
-      FileUtils.cp "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-      FileUtils.cp Dir.glob("lib#{CREW_LIB_SUFFIX}/libLTO.*"), "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      FileUtils.ln_s "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+      FileUtils.ln_s Dir.glob("lib#{CREW_LIB_SUFFIX}/libLTO.*"), "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
     end
   end
   
