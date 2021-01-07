@@ -82,7 +82,6 @@ gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
         # LIBRARY_PATH added since on x86_64 a link to /lib64/ncurses is attempted.
         system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} \
             cmake -G Ninja \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DLLVM_DEFAULT_TARGET_TRIPLE=#{ARCH}-cros-linux-gnu \
@@ -105,6 +104,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DLIBUNWIND_SUPPORTS_FUNWIND_TABLES_FLAG=ON \
             -DLIBUNWIND_SUPPORTS_FNO_EXCEPTIONS_FLAG=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
+            -DLLVM_ENABLE_TERMINFO=ON \
             -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
             -Wno-dev \
             ../llvm"
