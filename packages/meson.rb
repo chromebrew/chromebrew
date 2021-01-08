@@ -21,8 +21,6 @@ class Meson < Package
       x86_64: 'b4eca2d237740bfafbc211adc8b352685335c46db29f3609e848c1931f137e1a',
   })
 
-
-
   depends_on 'ninja'
   depends_on 'setuptools'
 
