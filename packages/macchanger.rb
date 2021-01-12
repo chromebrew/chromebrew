@@ -5,8 +5,8 @@ class Macchanger < Package
   homepage 'http://www.gnu.org/software/macchanger/'
   version '1.7.0'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/macchanger/macchanger-1.6.0.tar.gz'
-  source_sha256 '31534f138f1d21fa247be74ba6bef3fbfa47bbcd5033e99bd10c432fe58e51f7'
+  source_url 'https://github.com/alobbs/macchanger/releases/download/1.7.0/macchanger-1.7.0.tar.gz'
+  source_sha256 'dae2717c270fd5f62d790dbf80c19793c651b1b26b62c101b82d5fdf25a845bf'
 
   def self.build
     system "./configure", "--prefix=#{CREW_PREFIX}"
