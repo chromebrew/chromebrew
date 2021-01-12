@@ -9,7 +9,7 @@ class Macchanger < Package
   source_sha256 'dae2717c270fd5f62d790dbf80c19793c651b1b26b62c101b82d5fdf25a845bf'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system "make"
   end
 
