@@ -3,22 +3,22 @@ require 'package'
 class Meson < Package
   description 'The Meson Build System'
   homepage 'http://mesonbuild.com/'
-  version '0.56.1'
+  version '0.56.2'
   compatibility 'all'
-  source_url 'https://github.com/mesonbuild/meson/archive/0.56.1.tar.gz'
-  source_sha256 'db3545231bb8f3ae3186a1a0f49f0acd239724af91781b783e843b80400f10ec'
+  source_url 'https://github.com/mesonbuild/meson/archive/0.56.2.tar.gz'
+  source_sha256 'aaae961c3413033789248ffe6762589e80b6cf487c334d0b808e31a32c48f35f'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.2-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.2-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.56.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'af7616839ef04f824be003d0a534a5a774ef53ed51ff6cafdd678c4744b09787',
-      armv7l: 'af7616839ef04f824be003d0a534a5a774ef53ed51ff6cafdd678c4744b09787',
-        i686: '6ad48fdd56b57d8fbbdf11a7c4a76d684937f5868dec8ebf1afe41b60a3d9655',
-      x86_64: 'b4eca2d237740bfafbc211adc8b352685335c46db29f3609e848c1931f137e1a',
+     aarch64: 'c463376e6d041ec860ea6ca4a02d852260ca289805e3822442173fc007fb9e43',
+      armv7l: 'c463376e6d041ec860ea6ca4a02d852260ca289805e3822442173fc007fb9e43',
+        i686: '78bb992b3336d189ee5f73fc9b19697b630974913d906d2d86ef71dd963736f4',
+      x86_64: 'c44b86828e222b236133d4e27c0437616bf9bb1503b3acfcd48ca7b655cdf50d',
   })
 
   depends_on 'ninja'
