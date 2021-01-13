@@ -9,6 +9,6 @@ class Nuitka < Package
   source_sha256 'e29f150b308d2c388c4faa2b14bf4e2ea5259b3ba996e50a7dbc9ceb0f97cae4'
 
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I nuitka==#{version} --no-warn-script-location"
+    system "python3 -m pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I nuitka==#{version} --no-warn-script-location"
   end
 end
