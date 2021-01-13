@@ -9,7 +9,7 @@ class Dosfstools < Package
   source_sha256 'e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS} --enable-compat-symlinks"
     system "make"
   end
 
