@@ -64,5 +64,8 @@ class Buildessential < Package
 
   # perl module build ?
   # depends_on 'perl_module_build'
+  
+  # archive utilities
+  depends_on 'tar'
 
 end
