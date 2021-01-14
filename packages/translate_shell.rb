@@ -8,10 +8,8 @@ class Translate_shell < Package
   source_url 'https://github.com/soimort/translate-shell/archive/v0.9.6.12.tar.gz'
   source_sha256 '4c4843a8c66276190535b8435775ecb5d9c8286083a33cdbe2db608eba93ca97'
 
-  depends_on 'gawk'
   depends_on 'rlwrap'
   depends_on 'aspell' #Can also depend on hunspell instead of aspell
-  depends_on 'curl'
 
   def self.build
     system "make"
