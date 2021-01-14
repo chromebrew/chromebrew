@@ -26,6 +26,6 @@ class Wayland < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system 'libtool --finish /usr/local/lib64'
+    system 'libtool --finish #{CREW_LIB_PREFIX}'
   end
 end
