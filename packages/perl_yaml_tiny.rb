@@ -3,16 +3,13 @@ require 'package'
 class Perl_yaml_tiny < Package
   description 'YAML::Tiny - Read/Write YAML files with as little code as possible'
   homepage 'https://metacpan.org/pod/YAML::Tiny'
-  version '1.63'
+  version '1.73'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/YAML-Tiny-1.73.tar.gz'
   source_sha256 'bc315fa12e8f1e3ee5e2f430d90b708a5dc7e47c867dba8dce3a6b8fbe257744'
 
   depends_on 'perl'
-
-  def self.build
-  end
-
+  
   def self.install
     # install files to build directory
     system 'cpanm', '-l', 'build', '--self-contained', '--force', '.'
