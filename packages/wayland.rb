@@ -4,6 +4,7 @@ class Wayland < Package
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
   version '1.18.0'
+  compatibility 'all'
   source_url 'https://wayland.freedesktop.org/releases/wayland-1.18.0.tar.xz'
   source_sha256 '4675a79f091020817a98fd0484e7208c8762242266967f55a67776936c2e294d'
 
