@@ -19,5 +19,12 @@ class Brave < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/brave"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/brave"
     FileUtils.ln_s "#{CREW_PREFIX}/share/brave/brave", "#{CREW_DEST_PREFIX}/bin/brave"
+    FileUtils.ln_s CREW_LIB_PREFIX, "#{CREW_DEST_PREFIX}/share/#{ARCH_LIB}"
   end
+  #def self.postinstall # The hardware acceleration with Wayland is broken 
+  #  puts
+  #  puts "To complete the installation, execute the following:".lightblue
+  #  puts "echo \'alias brave='brave --enable-features=UseOzonePlatform --ozone-platform=wayland --disable-gpu'\'".lightblue
+  #  puts
+  #end
 end
