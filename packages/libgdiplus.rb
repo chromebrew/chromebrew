@@ -12,7 +12,6 @@ class Libgdiplus < Package
   depends_on 'cairo'
   depends_on 'graphite'
   depends_on 'libexif'
-  depends_on 'libjpeg'
   depends_on 'libtiff'
   
   def self.build
