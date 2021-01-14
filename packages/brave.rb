@@ -11,7 +11,7 @@ class Brave < Package
     source_sha256 '64518ab54608f667aabc8c6d9e20feaf0ab489b04e9f21dd8fcf353e4ad388c4'
     depends_on 'gtk3'
     depends_on 'xdg_base'
-    depends_on 'sommelier'
+    depends_on 'sommelier' # The hardware acceleration with Wayland is broken, so use x11
   end
 
   def self.install
@@ -21,10 +21,4 @@ class Brave < Package
     FileUtils.ln_s "#{CREW_PREFIX}/share/brave/brave", "#{CREW_DEST_PREFIX}/bin/brave"
     FileUtils.ln_s CREW_LIB_PREFIX, "#{CREW_DEST_PREFIX}/share/#{ARCH_LIB}"
   end
-  #def self.postinstall # The hardware acceleration with Wayland is broken 
-  #  puts
-  #  puts "To complete the installation, execute the following:".lightblue
-  #  puts "echo \'alias brave='brave --enable-features=UseOzonePlatform --ozone-platform=wayland --disable-gpu'\'".lightblue
-  #  puts
-  #end
 end
