@@ -27,26 +27,26 @@ class Openssl < Package
 
   case ARCH
   when 'aarch64','armv7l'
-    ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard'
-    ARCH_CXX_FLAGS = '-march=armv7-a -mfloat-abi=hard'
+    @ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard'
+    @ARCH_CXX_FLAGS = '-march=armv7-a -mfloat-abi=hard'
     OPENSSL_CONFIGURE_TARGET = 'linux-generic32'
   when 'i686'
-    ARCH_C_FLAGS = ''
-    ARCH_CXX_FLAGS = ''
+    @ARCH_C_FLAGS = ''
+    @ARCH_CXX_FLAGS = ''
     OPENSSL_CONFIGURE_TARGET = 'linux-x86'
   when 'x86_64'
-    ARCH_C_FLAGS = ''
-    ARCH_CXX_FLAGS = ''
+    @ARCH_C_FLAGS = ''
+    @ARCH_CXX_FLAGS = ''
     OPENSSL_CONFIGURE_TARGET = 'linux-x86_64'
   end
-  ARCH_C_LTO_FLAGS = "#{ARCH_C_FLAGS} -flto=auto"
-  ARCH_CXX_LTO_FLAGS = "#{ARCH_CXX_FLAGS} -flto=auto"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=auto"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=auto"
 
   def self.build
     # This gives you the list of OpenSSL configure targets
     system "./Configure LIST"
     system "env  PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
-    CFLAGS=\"#{ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{ARCH_CXX_LTO_FLAGS}\" \
+    CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
     ./Configure --prefix=#{CREW_PREFIX} \
     --libdir=#{CREW_LIB_PREFIX} \
     --openssldir=#{CREW_PREFIX}/etc/ssl \
