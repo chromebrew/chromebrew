@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # Busybox version: 1.33.0
-# Thu Jan 14 12:47:27 2021
+# Thu Jan 14 13:22:21 2021
 #
 CONFIG_HAVE_DOT_CONFIG=y
 
@@ -66,7 +66,7 @@ CONFIG_INSTALL_APPLET_DONT=y
 # CONFIG_INSTALL_SH_APPLET_SYMLINK is not set
 # CONFIG_INSTALL_SH_APPLET_HARDLINK is not set
 # CONFIG_INSTALL_SH_APPLET_SCRIPT_WRAPPER is not set
-CONFIG_PREFIX="${CREW_DEST_DIR}"
+CONFIG_PREFIX="./_install"
 
 #
 # Debugging Options
