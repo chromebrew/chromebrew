@@ -3,30 +3,33 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.29.2'
+  @_ver = '2.30.0'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/git/git/archive/v2.29.2.tar.gz'
-  source_sha256 '8cc15abf2bc1cfa4b8acc37025cf92ec73c20efdb3f243793fef71dfe87478be'
+  source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"
+  source_sha256 '8db4edd1a0a74ebf4b78aed3f9e25c8f2a7db3c00b1aaee94d1e9834fae24e61'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.29.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.29.2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.29.2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.29.2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '892ed67dfc19d0f5056836d3a707c1f4d5717bdf82e0d6d0facd11f9eb964fa4',
-      armv7l: '892ed67dfc19d0f5056836d3a707c1f4d5717bdf82e0d6d0facd11f9eb964fa4',
-        i686: '45af562bfd02b45839a92e5b14f67c267b5ddf60a526828b9a0567750d8eb085',
-      x86_64: '652c8df51f2862f15e60f4e01e9308d25c5d7944cf51f7bd9a6dc922e7366a82',
+     aarch64: '530242b602699db7a4f649c47ec44e81586128629b24b3e7fb7e1a9f877e8353',
+      armv7l: '530242b602699db7a4f649c47ec44e81586128629b24b3e7fb7e1a9f877e8353',
+        i686: 'fa19e5276870d4347259daf6b8c4c001eafdaabb0c02b7846014558cf6ca90a5',
+      x86_64: '70adb89d9f1e1a250cc84f0e1b3e98d7ed5c82ceb413f4ae451ef9cd748b9398',
   })
+
 
   depends_on 'curl' => :build
   depends_on 'python3' => :build
 
   def self.build
     system 'autoreconf -i'
-    system "./configure \
+    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
+    ./configure \
     --with-openssl=#{CREW_PREFIX}/etc/ssl \
     --without-tcltk #{CREW_OPTIONS} \
     --with-perl=#{CREW_PREFIX}/bin/perl \
