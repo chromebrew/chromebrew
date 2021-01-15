@@ -16,12 +16,11 @@ class Coreutils < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.32-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'dad8c4a7b6fe38114c099b0e1c7c7130a1f9bddfc80c8d56df978b3bb68e7250',
-      armv7l: 'dad8c4a7b6fe38114c099b0e1c7c7130a1f9bddfc80c8d56df978b3bb68e7250',
-        i686: 'e4b0c9478c2ffb15c7be9aa7219f7e4af334dd260363a497efdd6f5f8d2dfd9e',
-      x86_64: 'd4eb950bb753789b837f9238fbd28cc8ea4e5e84f63a27b92ed676cb5fb418c4',
+     aarch64: 'a1be275b2b5f26c724b73550c30a5e2e58c9267c2af853e660293d4e33138453',
+      armv7l: 'a1be275b2b5f26c724b73550c30a5e2e58c9267c2af853e660293d4e33138453',
+        i686: 'b45b19f985acb4429d6c0be54c8a60171afeac88c21cdac0434ab19475f815b3',
+      x86_64: '1384d230561d78c1f87037a1422dfe04a4823bbbe5348370a319eb6c08e852a1',
   })
-
 
   def self.build
     system "env CFLAGS='-flto' ./configure #{CREW_OPTIONS}"
@@ -30,11 +29,11 @@ class Coreutils < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "echo '#!/bin/bash' > arch"
-      system "echo '#{ARCH}' >> arch"
-      system 'chmod +x arch'
-    end
+    system "cat <<'EOF'> #{CREW_DEST_PREFIX}/bin/arch
+#!/bin/bash
+echo \"#{ARCH}\"
+EOF"
+    system "chmod +x #{CREW_DEST_PREFIX}/bin/arch"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end
