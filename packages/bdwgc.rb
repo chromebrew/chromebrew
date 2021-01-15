@@ -2,7 +2,7 @@ require 'package'
 
 class Bdwgc < Package
   description 'The Boehm-Demers-Weiser conservative C/C++ Garbage Collector'
-  homepage 'https://github.com/ivmai/bdwgc'
+  homepage 'https://www.hboehm.info/gc/'
   version '8.0.4'
   compatibility 'all'
   source_url 'https://github.com/ivmai/bdwgc/releases/download/v8.0.4/gc-8.0.4.tar.gz'
