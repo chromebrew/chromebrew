@@ -40,7 +40,6 @@ class Mesa < Package
   depends_on 'wayland_protocols'
   depends_on 'zstd'
   depends_on 'lm_sensors'
-  depends_on 'ld_default' => :build
 
   def self.build
     system "pip3 uninstall -y Mako MarkupSafe || :"
