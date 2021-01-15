@@ -319,16 +319,23 @@ fi
 echo -e "${BLUE}
 To set the default PAGER environment variable to use less:
 echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc
+
 Alternatively, you could use most.  Why settle for less, right?
 echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc
+
 Below are some text editor suggestions.
+
 To install 'nano', execute:
 crew install nano
+
 Or, to get an updated version of 'vim', execute:
 crew install vim
+
 You may wish to set the EDITOR environment variable for an editor default.
+
 For example, to set 'nano' as the default editor, execute:
 echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc
+
 To set 'vim' as the default editor, execute:
 echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc
 ${RESET}"
