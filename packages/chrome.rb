@@ -22,9 +22,10 @@ class Chrome < Package
   end
 
   def self.build
-    FileUtils.mv "../#{@_deb}", '.'
-    system "alien -tc #{@_deb}"
-    system "tar xvf google-chrome-stable-#{@_ver}.tgz > /dev/null"
+    Dir.chdir '..' do
+      system "alien -tc #{@_deb}"
+      system "tar xvf google-chrome-stable-#{@_ver}.tgz > /dev/null"
+    end
   end
 
   def self.install
