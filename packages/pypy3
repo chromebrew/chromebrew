@@ -4,63 +4,40 @@ class Pypy3 < Package
   description 'pypy is fast, drop-in replacement of cpython that can execute code over 4 times faster.'
   homepage 'https://www.pypy.org/'
   version '7.3.3'
-  compatibility 'x86_64, x86, aarch64'
-  source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-src.tar.bz2'
-  source_sha256 'f6c96401f76331e474cca2d14437eb3b2f68a0f27220a6dcbc537445fe9d5b78'
-
-  def self.prebuild
-			# Delete original tarball contents
-			system "rm * -rf"
-      # Download prebuilt tarball
-      if `uname -m` == "x86_64\n"
-          system "curl -#LO https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux64.tar.bz2"
-          if `sha256sum pypy3.7-v7.3.3-linux64.tar.bz2` != "37e2804c4661c86c857d709d28c7de716b000d31e89766599fdf5a98928b7096  pypy3.7-v7.3.3-linux64.tar.bz2\n"
-              puts "Checksum mismatch. :/ Try again.".red
-              system "exit 1"
-          end
-      elsif `uname -m` == "x86\n"
-          system "curl -#LO https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux32.tar.bz2"
-          if `sha256sum pypy3.7-v7.3.3-linux32.tar.bz2` != "7d81b8e9fcd07c067cfe2f519ab770ec62928ee8787f952cadf2d2786246efc8  pypy3.7-v7.3.3-linux32.tar.bz2\n"
-              puts "Checksum mismatch. :/ Try again.".red
-              system "exit 1"
-          end
-      elsif `uname -m` == "aarch64\n"
-          system "curl -#LO https://downloads.python.org/pypy/pypy3.7-v7.3.3-aarch64.tar.bz2"
-          if `sha256sum pypy3.7-v7.3.3-aarch64.tar.bz2` != "ee4aa041558b58de6063dd6df93b3def221c4ca4c900d6a9db5b1b52135703a8  pypy3.7-v7.3.3-aarch64.tar.bz2\n"
-              puts "Checksum mismatch. :/ Try again.".red
-              system "exit 1"
-          end
-      else
-          puts "Could not find prebuild binary for your architecture or another error occured.".red
-          system "exit 1"
-      end
+  compatibility 'x86_64, i686, aarch64'
+  
+  case ARCH
+  when 'aarch64'
+    source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux64.tar.bz2'
+    source_sha256 '37e2804c4661c86c857d709d28c7de716b000d31e89766599fdf5a98928b7096'
+  when 'i686'
+    source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux32.tar.bz2'
+    source_sha256 '7d81b8e9fcd07c067cfe2f519ab770ec62928ee8787f952cadf2d2786246efc8'
+  when 'x86_64'
+    source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-aarch64.tar.bz2'
+    source_sha256 'ee4aa041558b58de6063dd6df93b3def221c4ca4c900d6a9db5b1b52135703a8'
   end
 
   def self.build
-			# Extract and move around material for install
-			system "tar xf pypy3.7-v7.3.3-*.tar.bz2"
-			system "mv pypy3.7-v7.3.3-*/* ."
-			system "rm -rf pypy3.7-v7.3.3-*.tar.bz2 pypy3.7-v7.3.3-*/ LICENSE README.rst"
+    # Remove unnecessary files
+    system "rm -vf LICENSE README.rst"
   end
 
   def self.install
-			system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/ #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
-      system "mv * #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/"
-			# Create temporary symbolic links for pip installation that will become stale after postinstall
-			system "ln -s #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/bin/pypy3* #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
+	  system "mkdir -vp #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/ #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
+    system "mv -v * #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/"
   end
 
   def self.postinstall
-		# Upgrade pip
+    # Upgrade pip
     puts
     puts "Upgrading pip...".lightblue
-    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && pypy3 get-pip.py -U --no-warn-script-location"
-		puts
-		puts "You now have two python interpreters installed.\nNow when you install things with pip, be sure to use \"python3 -m pip\" or \"pypy3 -m pip\" to ensure you're using the right instance of pip.".lightblue
-		# Add pypy to your path
-		puts
-		puts "To complete the installation, execute the following:".lightblue
-		puts
-		puts "echo 'export PATH=\"$PATH:#{CREW_PREFIX}/opt/pypy3/bin\"' >> ~/.bashrc && source ~/.bashrc".lightblue
-	end
+    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/bin/pypy3 get-pip.py -U --no-warn-script-location"
+    puts "You now have two python interpreters installed.\nNow when you install things with pip, be sure to use \"python3 -m pip\" or \"pypy3 -m pip\" to ensure you're using the right instance of pip.".lightblue
+    # Add pypy to your path
+    puts
+    puts "To complete the installation, execute the following:".lightblue
+    puts
+    puts "echo 'export PATH=\"$PATH:#{CREW_PREFIX}/opt/pypy3/bin\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+  end
 end
