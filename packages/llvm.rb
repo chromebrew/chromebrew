@@ -18,14 +18,14 @@ class Llvm < Package
   binary_sha256 ({
      aarch64: '5ecb72e60483b15c7588446a7ac424d64cdd3f21ca0fa5ffea4737a25dedca89',
       armv7l: '5ecb72e60483b15c7588446a7ac424d64cdd3f21ca0fa5ffea4737a25dedca89',
-        i686: 'f05e50a98192259b74a51b2994eb9906c7d3b8c7d6c6ae00942c08a830f9184d',
+        i686: '5595ca097aa454bd54b8a336d467ee266f8afd4bd8100d1a3831e3face9b4f43',
       x86_64: '031f6f3510ebbc5a1270fac07934d7efa9126c8e89f98695505b1376d6d233a5',
   })
-
+  
   # llvm_stage1 is compiled with gcc, without -flto
   # Then in stage 2 (llvm.rb) everything is compiled with clang built in stage 1, with -flto=thin
   # FYI LLVM 11.1.0 is a tiny rebuild of 11.0.1 fixing ABI compatibility with LLVM 10.0.0 & LLVM 12
-  
+
   depends_on 'ocaml' => :build
   depends_on 'libedit'
   depends_on 'libtirpc'
@@ -38,13 +38,14 @@ class Llvm < Package
   when 'aarch64','armv7l'
     LLVM_DEFAULT_TARGET_TRIPLE = "armv7l-cros-linux-gnueabihf"
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
+    LLVM_TARGETS_TO_BUILD = 'all'
     @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
     @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
     @ARCH_LDFLAGS=''
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'
   when 'i686'
     LLVM_DEFAULT_TARGET_TRIPLE = "#{ARCH}-cros-linux-gnu"
-    #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
+    LLVM_TARGETS_TO_BUILD = 'X86'
     # Because ld.lld: error: undefined symbol: __atomic_store
     # Polly demands fPIC
     @ARCH_C_FLAGS = '-latomic -fPIC'
@@ -57,19 +58,18 @@ class Llvm < Package
   when 'x86_64'
     LLVM_DEFAULT_TARGET_TRIPLE = "#{ARCH}-cros-linux-gnu"
     #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
+    LLVM_TARGETS_TO_BUILD = 'all'
     @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS=''
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'
   end
-  
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -fuse-ld=lld"
   @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -fuse-ld=lld"
-  
   # Using Targets 'all' because otherwise mesa complains.
   # This may be patched upstream as per 
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
-  LLVM_TARGETS_TO_BUILD = 'all'
+  #LLVM_TARGETS_TO_BUILD = 'all'
   LLVM_VERSION = version.split("-")[0]
   BINUTILS_BRANCH = 'gdb-10.1-release'
 
@@ -166,6 +166,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
     end
   end
   
+
   def self.check
     Dir.chdir("builddir") do
       #system "ninja check-llvm || true"
