@@ -1,7 +1,7 @@
 require 'package'
 
 class Llvm_stage1 < Package
-  description 'THIS IS NOT THE LLVM PACKAGE. This is only a Tri^H^H^H Limited Stage 1 compile of LLVM.'
+  description 'THIS IS NOT THE LLVM PACKAGE. This is only a Limited Stage 1 compile of LLVM.'
   homepage 'http://llvm.org/'
   @_ver = '11.1.0-rc1'
   version @_ver
