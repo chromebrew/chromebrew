@@ -4,9 +4,9 @@ class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
   @_ver = '11.1.0'
-  version @_ver
+  version @_ver + '-rc1'
   compatibility 'all'
-  source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}-rc1.tar.gz"
+  source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
   source_sha256 'e610297041129a5c5b24355a988c99c7452ee7105ee2355334a8c521b988eb3c'
 
   binary_url ({
@@ -33,6 +33,7 @@ class Llvm < Package
   depends_on 'pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'llvm_stage1' => :build
+  depends_on 'binutils' => :build
 
   case ARCH
   when 'aarch64','armv7l'
@@ -42,7 +43,6 @@ class Llvm < Package
     @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
     @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
     @ARCH_LDFLAGS=''
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'
   when 'i686'
     LLVM_DEFAULT_TARGET_TRIPLE = "#{ARCH}-cros-linux-gnu"
     LLVM_TARGETS_TO_BUILD = 'X86'
@@ -54,7 +54,6 @@ class Llvm < Package
     # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
     # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
     @ARCH_LDFLAGS='-Wl,-znotext'
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'
   when 'x86_64'
     LLVM_DEFAULT_TARGET_TRIPLE = "#{ARCH}-cros-linux-gnu"
     #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
@@ -62,11 +61,12 @@ class Llvm < Package
     @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS=''
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'
   end
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -fuse-ld=lld"
   @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -fuse-ld=lld"
-  # Using Targets 'all' because otherwise mesa complains.
+  LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'
+  
+  # Using Targets 'all' for non-i686 because otherwise mesa complains.
   # This may be patched upstream as per 
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   #LLVM_TARGETS_TO_BUILD = 'all'
@@ -93,11 +93,11 @@ class Llvm < Package
     system "grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'"
     
     ############################################################
-    puts "Downloading binutils #{BINUTILS_BRANCH} src to enable gold plugin build".lightgreen
+    # puts "Downloading binutils #{BINUTILS_BRANCH} src to enable gold plugin build".lightgreen
     ############################################################
-    system "git config --global advice.detachedHead false"
+    # system "git config --global advice.detachedHead false"
     # As per https://github.com/SVF-tools/SVF/wiki/Install-LLVM-Gold-Plugin-on-Ubuntu
-    system "git clone --depth 1 --branch #{BINUTILS_BRANCH} git://sourceware.org/git/binutils-gdb.git binutils"
+    # system "git clone --depth 1 --branch #{BINUTILS_BRANCH} git://sourceware.org/git/binutils-gdb.git binutils"
     
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
@@ -138,7 +138,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DLLVM_PARALLEL_LINK_JOBS=1 \
             -DPYTHON_EXECUTABLE=$(which python3) \
             -DLLVM_INSTALL_UTILS=ON \
-            -DLLVM_BINUTILS_INCDIR='../binutils/include' \
+            -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
             -DLLVM_ENABLE_TERMINFO=ON \
             -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
