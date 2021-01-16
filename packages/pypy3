@@ -20,7 +20,7 @@ class Pypy3 < Package
 
   def self.build
     # Remove unnecessary files
-    system "rm -vf LICENSE README.rst"
+    system "rm -vf LICENSE README.rst site-packages/README"
   end
 
   def self.install
@@ -39,5 +39,7 @@ class Pypy3 < Package
     puts "To complete the installation, execute the following:".lightblue
     puts
     puts "echo 'export PATH=\"$PATH:#{CREW_PREFIX}/opt/pypy3/bin\"' >> ~/.bashrc && source ~/.bashrc".lightblue
+    puts "pypy3 -m ensurepip"
+    puts
   end
 end
