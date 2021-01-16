@@ -21,13 +21,15 @@ class Chrome < Package
     depends_on 'sommelier'
   end
 
-  Dir.chdir '..' do
-    def self.build
+  def self.build
+    Dir.chdir '..' do
       system "alien -tc #{@_deb}"
       system "tar xvf google-chrome-stable-#{@_ver}.tgz > /dev/null"
     end
+  end
 
-    def self.install
+  def self.install
+    Dir.chdir '..' do
       ENV['CREW_NOT_STRIP'] = '1'
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
       FileUtils.mv 'opt/', CREW_DEST_PREFIX
