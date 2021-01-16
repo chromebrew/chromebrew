@@ -15,10 +15,10 @@ class Pygobject < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pygobject-3.38-0a16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '5124d5109eb258b51096120bbe3a3c56cb0e7d8cc2a5489ff88f24ac09cc790c',
-      armv7l: '5124d5109eb258b51096120bbe3a3c56cb0e7d8cc2a5489ff88f24ac09cc790c',
-        i686: '2fe8b9a1e55979e386c4e828eac1bb291c5fdce811c6c4ef506bd6aa112d6b5f',
-      x86_64: 'f0ce44968f0f7bf36dfe99484a97965ab66530f120b47a789a7c58cdfe43c1cf',
+     aarch64: '25288827bdc2116b0afabca5b4016a3d53feb884dbb4514281e1ac2eb50212bb',
+      armv7l: '25288827bdc2116b0afabca5b4016a3d53feb884dbb4514281e1ac2eb50212bb',
+        i686: 'e85370c34c4beb590b8bf9695dfcbc8107b958d37fec6a49d39c445b30e7cfc2',
+      x86_64: '65a8a2138b1ddae9cf90782515295577219bee5e26c41f3285077d92ddffd10f',
   })
 
   depends_on 'glib'
@@ -36,5 +36,6 @@ class Pygobject < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     system 'pip3 uninstall --yes pycairo'
+    system "pip3 install pycairo --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
   end
 end
