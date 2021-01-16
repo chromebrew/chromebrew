@@ -24,7 +24,7 @@ class Chrome < Package
   def self.build
     Dir.chdir '..' do
       system "alien -tc #{@_deb}"
-      system "tar xvf google-chrome-stable-#{@_ver}.tgz > /dev/null"
+      system "tar xf google-chrome-stable-#{@_ver}.tgz"
     end
   end
 
