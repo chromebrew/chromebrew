@@ -3,6 +3,7 @@ require 'package'
 class Chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome'
+  compatibility 'all'
   @_ver = '87.0.4280.141'
   version @_ver
 
@@ -27,14 +28,11 @@ class Chrome < Package
   end
 
   def self.install
+    ENV['CREW_NOT_STRIP'] = '1'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cp_r 'opt/', CREW_PREFIX
+    FileUtils.cp_r 'opt/', CREW_DEST_PREFIX
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX
     FileUtils.mv 'etc', CREW_DEST_PREFIX
     FileUtils.ln_s "#{CREW_PREFIX}/opt/google/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
-  end
-    
-  def self.remove
-    FileUtils.rm_rf "#{CREW_PREFIX}/opt/google/chrome"
   end
 end
