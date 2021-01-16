@@ -10,7 +10,7 @@ class Chrome < Package
 
   case ARCH
   when 'x86_64'
-    source_url "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/#{_deb}"
+    source_url "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/#{@_deb}"
     source_sha256 'b7edb7cd5c166bf3c0a1d245baa5924e242c3b81b97090468bec778f41f40373'
     depends_on 'alien' => :build
     depends_on 'nspr'
