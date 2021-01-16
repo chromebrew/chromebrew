@@ -21,19 +21,19 @@ class Chrome < Package
     depends_on 'sommelier'
   end
 
-  def self.build
-    Dir.chdir '..' do
+  Dir.chdir '..' do
+    def self.build
       system "alien -tc #{@_deb}"
       system "tar xvf google-chrome-stable-#{@_ver}.tgz > /dev/null"
     end
-  end
 
-  def self.install
-    ENV['CREW_NOT_STRIP'] = '1'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mv 'opt/', CREW_DEST_PREFIX
-    FileUtils.mv 'usr/share', CREW_DEST_PREFIX
-    FileUtils.mv 'etc', CREW_DEST_PREFIX
-    FileUtils.ln_s "#{CREW_PREFIX}/opt/google/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
+    def self.install
+      ENV['CREW_NOT_STRIP'] = '1'
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+      FileUtils.mv 'opt/', CREW_DEST_PREFIX
+      FileUtils.mv 'usr/share', CREW_DEST_PREFIX
+      FileUtils.mv 'etc', CREW_DEST_PREFIX
+      FileUtils.ln_s "#{CREW_PREFIX}/opt/google/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
+    end
   end
 end
