@@ -7,13 +7,13 @@ class Pypy3 < Package
   compatibility 'x86_64, i686, aarch64'
   
   case ARCH
-  when 'aarch64'
+  when 'x86_64'
     source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux64.tar.bz2'
     source_sha256 '37e2804c4661c86c857d709d28c7de716b000d31e89766599fdf5a98928b7096'
   when 'i686'
     source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux32.tar.bz2'
     source_sha256 '7d81b8e9fcd07c067cfe2f519ab770ec62928ee8787f952cadf2d2786246efc8'
-  when 'x86_64'
+  when 'aarch64'
     source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-aarch64.tar.bz2'
     source_sha256 'ee4aa041558b58de6063dd6df93b3def221c4ca4c900d6a9db5b1b52135703a8'
   end
@@ -24,7 +24,7 @@ class Pypy3 < Package
   end
 
   def self.install
-	  system "mkdir -vp #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/ #{CREW_DEST_DIR}#{CREW_PREFIX}/bin/"
+	  system "mkdir -vp #{CREW_DEST_PREFIX}/opt/pypy3/ #{CREW_DEST_PREFIX}/bin/"
     system "mv -v * #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/"
   end
 
@@ -32,7 +32,7 @@ class Pypy3 < Package
     # Upgrade pip
     puts
     puts "Upgrading pip...".lightblue
-    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/bin/pypy3 get-pip.py -U --no-warn-script-location"
+    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && #{CREW_DEST_PREFIX}/opt/pypy3/bin/pypy3 get-pip.py -U --no-warn-script-location"
     puts "You now have two python interpreters installed.\nNow when you install things with pip, be sure to use \"python3 -m pip\" or \"pypy3 -m pip\" to ensure you're using the right instance of pip.".lightblue
     # Add pypy to your path
     puts
