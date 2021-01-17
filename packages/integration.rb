@@ -23,6 +23,7 @@ class Integration < Package
     system "unzip crew_integration.zip > /dev/null"
     system "gem install em-websocket"
     system "chmod -R +rw ./"
+    #Dir.chdir "chromebrew-master/integration" do
     Dir.chdir "chromebrew-supechicken-patch-1/integration" do
       system "install -Dm755 main.sh #{CREW_DEST_PREFIX}/bin/crew_integration"
       system "install -Dm755 x-terminal-emulator.sh #{CREW_DEST_PREFIX}/bin/x-terminal-emulator"
