@@ -17,12 +17,12 @@ class Integration < Package
   end
 
   def self.install
-    system "curl https://codeload.github.com/skycocker/chromebrew/zip/master -#o crew_integration.zip"
+    system "curl https://codeload.github.com/supechicken/chromebrew/zip/supechicken-patch-1 -#o crew_integration.zip"
     puts 'Archive downloaded'.lightgreen
     system "unzip crew_integration.zip > /dev/null"
     system "gem install em-websocket"
     system "chmod -R +rw ./"
-    Dir.chdir 'chromebrew-master/crew_integration' do
+    Dir.chdir "chromebrew-supechicken-patch-1/integration" do
       system "install -Dm755 main.sh #{CREW_DEST_PREFIX}/bin/crew_integration"
       system "install -Dm755 x-terminal-emulator.sh #{CREW_DEST_PREFIX}/bin/x-terminal-emulator"
       system "install -Dm755 x-www-browser.sh #{CREW_DEST_PREFIX}/bin/x-www-browser"
@@ -35,10 +35,8 @@ class Integration < Package
     end 
   end
   def self.postinstall
-      unless ARGV[0] = "upgrade"
+      unless ARGV[0] == "upgrade"
         require 'em-websocket'
-        `echo "export PATH=#{ENV['PATH']}" >> ~/.bashrc`
-        `echo 'if [ -w /usr/bin/crosh ]; then sudo umount /usr/bin/crosh; else crew_integration -s; fi' >> ~/.bashrc`
         puts 
         puts "To complete the installation, install the extension by following:".lightgreen
         puts "Go to chrome://extensions/".lightgreen
@@ -62,7 +60,7 @@ class Integration < Package
       puts "crew_integration -i".lightblue
       puts
       puts "Run 'crew_integration -h' for more usage of this package".lightblue
-      puts "Remember to run crosh shell every startup or reboot to activate installed shortcuts"
+      puts
   end
   def self.remove
       FileUtils.rm_rf "#{CREW_LIB_PREFIX}/pwa/"
