@@ -124,9 +124,9 @@ if [ -d usr/local/sbin/ ]; then echo '      FileUtils.mv "usr/local/sbin/", CREW
 if [ -d usr/share/ ]; then echo '      FileUtils.mv "usr/share/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d usr/local/share/ ]; then echo '      FileUtils.mv "usr/local/share/", CREW_DEST_PREFIX' >> ${out}; fi
 
-if [ -d usr/opt/ ]; then echo '      FileUtils.mv "usr/opt/", CREW_DEST_PREFIX}/opt/' >> ${out}; fi
+if [ -d usr/opt/ ]; then echo '      FileUtils.mv "usr/opt/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d opt/ ]; then echo '      FileUtils.mv "opt/", CREW_DEST_PREFIX' >> ${out}; fi
-if [ -d usr/local/opt/ ]; then echo '      FileUtils.mv "usr/local/opt/", CREW_DEST_PREFIX}' >> ${out}; fi
+if [ -d usr/local/opt/ ]; then echo '      FileUtils.mv "usr/local/opt/", CREW_DEST_PREFIX' >> ${out}; fi
 
 if [ -d usr/lib/ ]; then echo '      FileUtils.mv "usr/lib/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d lib/ ]; then echo '      FileUtils.mv "lib/", CREW_DEST_PREFIX' >> ${out}; fi
