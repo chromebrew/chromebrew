@@ -27,7 +27,7 @@ class Integration < Package
     system "gem install em-websocket"
     FileUtils.safe_unlink "#{CREW_PREFIX}/bin/mkdir"
     FileUtils.safe_unlink "#{CREW_PREFIX}/bin/install"
-    FileUtils.chmod_R 0644, './'
+    system "chmod -R 0644 ./"
     #Dir.chdir "chromebrew-master/integration" do
     Dir.chdir "chromebrew-supechicken-patch-1/integration" do
       FileUtils.install 'main.sh', "#{CREW_DEST_PREFIX}/bin/crew_integration", '-Dm755'
