@@ -85,6 +85,7 @@ deps=($( sed '/Pre-Depends: /d' ./control |\
     filter[9]=lib${filter[1]}
     filter[10]=$(echo ${filter[5]} | sed -e 's/[0-9]//g')
     for filters in ${filter[*]}; do filter[11]=$( echo ${filters} | sed -e s/[0-9]$//g ); done
+    for filters in ${filter[*]}; do filter[11]=$( echo ${filters} | sed -e s/[2-9]//g ); done
   
     for filters in ${filter[*]}; do
       if [ -f ${pkg_prefix}/${filters}.rb ]; then 
