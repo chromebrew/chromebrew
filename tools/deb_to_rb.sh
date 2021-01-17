@@ -26,7 +26,7 @@ curl '-#' ${1} -o deb
 ar x deb
 
 
-tar xvf control.tar.*
+tar xf control.tar.*
   
 name=$(grep "Package: " ./control | sed -e 's/Package: //')
 pkgname=$(echo ${name} | sed -e 's/-/_/g')
@@ -38,7 +38,6 @@ out=${2}/${pkgname}.rb
   
 cat <<EOF> ${out}
 require 'package'
-
 class ${pkgname^} < Package
   description '${info}'
   homepage ''
@@ -51,7 +50,6 @@ class ${pkgname^} < Package
     source_url '${1}'
     source_sha256 '${sha256sum}'
 EOF
-
 deps=($( sed '/Pre-Depends: /d' ./control |\
          grep 'Depends: ' |\
          sed -e 's/Depends: //g' |\
@@ -66,9 +64,11 @@ deps=($( sed '/Pre-Depends: /d' ./control |\
          sed -e 's/libglib/glib/g' |\
          sed -e 's/libgtk_2/gtk2/g' |\
          sed -e 's/libatspi...../at_spi2_core/g' |\
+         sed -e 's/libqt5core5a/qtbase/g' |\
          sed -e 's/\.//g' |\
          sed -e 's/\,//g'))
-
+         
+  echo -e "${BLUE}Searching dependencies, this may take a while...${RESET}"
   for dep in ${deps[*]}; do
     echo -e "${YELLOW}
   ${dep}${RESET}"
@@ -76,27 +76,33 @@ deps=($( sed '/Pre-Depends: /d' ./control |\
   
     filter[1]=$(echo ${dep} | sed -e 's/[0-9].*/ /g')
     filter[2]=$(echo ${filter[1]} | sed -e 's/lib//g')
-    filter[3]=$(echo ${filter[2]} | sed -e 's/_ //g')
-    filter[4]=$(echo ${dep} | sed -e 's/_[0-9].*/ /g')
-    filter[5]=$(echo ${filter[4]} | sed -e 's/lib//g')
-    filter[6]=$(echo ${filter[5]} | sed -e 's/_//g')
-    filter[7]=$(echo ${filter[6]} | sed -e 's/_.*//')
-    filter[8]=${dep}
-    filter[9]=lib${filter[1]}
-    filter[10]=$(echo ${filter[5]} | sed -e 's/[0-9]//g')
-    for filters in ${filter[*]}; do filter[11]=$( echo ${filters} | sed -e s/[0-9]$//g ); done
-    for filters in ${filter[*]}; do filter[11]=$( echo ${filters} | sed -e s/[2-9]//g ); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$(echo ${filter[${i}]} | sed -e 's/_ //g'); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$(echo ${dep} | sed -e 's/_[0-9].*/ /g'); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$(echo ${filter[${i}]} | sed -e 's/lib//g'); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$(echo ${filter[${i}]} | sed -e 's/_//g'); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$(echo ${filter[${i}]} | sed -e 's/_.*//'); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=${dep}; done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=lib${filter[${i}]}; done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$( echo ${filter[${i}]} | sed -e 's/[0-9]//g'); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$( echo ${filter[${i}]} | sed -e s/[0-9]$//g ); done
+    for i in ${!filter[*]}; do filter[$((${#filter[*]}+1))]=$( echo ${filter[${i}]} | sed -e s/[2-9]//g ); done
   
     for filters in ${filter[*]}; do
       if [ -f ${pkg_prefix}/${filters}.rb ]; then 
         if [[ $(grep "depends_on '${filters}'" ${out}) = '' ]]; then
           echo -e "${GREEN}Package ${filters} found${RESET}"
-          echo "    depends_on '${filters}'" >> ${out}
+          echo "    depends_on '${filters}' # ${dep} dependency" >> ${out}
+        elif [ -v verbose ] || [[ $(grep "depends_on '${filters}' # ${dep} dependency" ${out}) = '' ]] && [[ ${getdep} != 1 ]]; then
+          echo -e "${GREEN}Dependency ${filters} already added!${RESET}"
+          getdep=1
         fi
+      elif [ -v verbose ]; then
+        echo -e "${RED}No such package: ${filters}${RESET}"
       fi
     done
+    unset filter
+    unset getdep
   done
-
 echo -e "
   end
     
@@ -111,36 +117,28 @@ echo -e "
     Dir.chdir '..' do
       FileUtils.mkdir_p CREW_DEST_PREFIX
       ENV['CREW_NOT_STRIP'] = '1'" >> ${out}
-
 echo -e "${YELLOW}Unpacking 'data.tar' using 'tar', this may take a while...${RESET}"
 tar xvf data.tar.* > /dev/null
-
 if [ -d usr/bin ]; then echo '      FileUtils.mv "usr/bin/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d bin/ ]; then echo '      FileUtils.mv "bin/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d usr/local/bin/ ]; then echo '      FileUtils.mv "usr/local/bin/", CREW_DEST_PREFIX' >> ${out}; fi
-
 if [ -d usr/sbin/ ]; then echo '      FileUtils.mv "usr/sbin/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d sbin/ ]; then echo '      FileUtils.mv "sbin/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d usr/local/sbin/ ]; then echo '      FileUtils.mv "usr/local/sbin/", CREW_DEST_PREFIX' >> ${out}; fi
-
 if [ -d usr/share/ ]; then echo '      FileUtils.mv "usr/share/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d usr/local/share/ ]; then echo '      FileUtils.mv "usr/local/share/", CREW_DEST_PREFIX' >> ${out}; fi
-
 if [ -d usr/opt/ ]; then echo '      FileUtils.mv "usr/opt/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d opt/ ]; then echo '      FileUtils.mv "opt/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d usr/local/opt/ ]; then echo '      FileUtils.mv "usr/local/opt/", CREW_DEST_PREFIX' >> ${out}; fi
-
 if [ -d usr/lib/ ]; then echo '      FileUtils.mv "usr/lib/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d lib/ ]; then echo '      FileUtils.mv "lib/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d usr/local/lib/ ]; then echo '      FileUtils.mv "usr/local/lib/", CREW_DEST_PREFIX' >> ${out}; fi
-
 if [ -d usr/lib64/ ]; then echo '      FileUtils.mv "usr/lib64/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d lib64/ ]; then echo '      FileUtils.mv "lib64/", CREW_DEST_PREFIX' >> ${out}; fi
 if [ -d usr/local/lib64/ ]; then echo '      FileUtils.mv "usr/local/lib64/", CREW_DEST_PREFIX' >> ${out}; fi
-
 echo '    end
   end
 end' >> ${out}
 
-
+echo
 echo -e "${GREEN}Package ${name^} generated${RESET}"
