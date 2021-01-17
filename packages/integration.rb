@@ -21,7 +21,12 @@ class Integration < Package
     system "curl https://codeload.github.com/supechicken/chromebrew/zip/supechicken-patch-1 -#o crew_integration.zip"
     puts 'Archive downloaded'.lightgreen
     system "unzip crew_integration.zip > /dev/null"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.ln_s '/bin/mkdir', "#{CREW_PREFIX}/bin/mkdir" unless File.exist? "#{CREW_PREFIX}/bin/mkdir"
+    FileUtils.ln_s '/usr/bin/install', "#{CREW_PREFIX}/bin/install" unless File.exist? "#{CREW_PREFIX}/bin/install"
     system "gem install em-websocket"
+    FileUtils.safe_unlink "#{CREW_PREFIX}/bin/mkdir"
+    FileUtils.safe_unlink "#{CREW_PREFIX}/bin/install"
     system "chmod -R +rw ./"
     #Dir.chdir "chromebrew-master/integration" do
     Dir.chdir "chromebrew-supechicken-patch-1/integration" do
