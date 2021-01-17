@@ -25,8 +25,6 @@ class Integration < Package
     FileUtils.ln_s '/bin/mkdir', "#{CREW_PREFIX}/bin/mkdir" unless File.exist? "#{CREW_PREFIX}/bin/mkdir"
     FileUtils.ln_s '/usr/bin/install', "#{CREW_PREFIX}/bin/install" unless File.exist? "#{CREW_PREFIX}/bin/install"
     system "gem install em-websocket"
-    FileUtils.safe_unlink "#{CREW_PREFIX}/bin/mkdir"
-    FileUtils.safe_unlink "#{CREW_PREFIX}/bin/install"
     FileUtils.chmod_R '+rwrwrw', './'
     #Dir.chdir "chromebrew-master/integration" do
     Dir.chdir "chromebrew-supechicken-patch-1/integration" do
