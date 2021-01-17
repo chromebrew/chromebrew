@@ -27,12 +27,12 @@ class Integration < Package
     system "gem install em-websocket"
     FileUtils.safe_unlink "#{CREW_PREFIX}/bin/mkdir"
     FileUtils.safe_unlink "#{CREW_PREFIX}/bin/install"
-    system "chmod -R +rw ./"
+    FileUtils.chmod_R 0644, './'
     #Dir.chdir "chromebrew-master/integration" do
     Dir.chdir "chromebrew-supechicken-patch-1/integration" do
-      system "install -Dm755 main.sh #{CREW_DEST_PREFIX}/bin/crew_integration"
-      system "install -Dm755 x-terminal-emulator.sh #{CREW_DEST_PREFIX}/bin/x-terminal-emulator"
-      system "install -Dm755 x-www-browser.sh #{CREW_DEST_PREFIX}/bin/x-www-browser"
+      FileUtils.install 'main.sh', "#{CREW_DEST_PREFIX}/bin/crew_integration", '-Dm755'
+      FileUtils.install 'x-terminal-emulator.sh', "#{CREW_DEST_PREFIX}/bin/x-terminal-emulator", '-Dm755'
+      FileUtils.install 'x-www-browser.sh', "#{CREW_DEST_PREFIX}/bin/x-www-browser", '-Dm755'
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/pwa/"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/crew_integration", "#{CREW_DEST_PREFIX}/bin/pwashortcut"
       FileUtils.mkdir_p "#{CREW_DEST_HOME}/MyFiles/.extension/"
