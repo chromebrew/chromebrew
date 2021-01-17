@@ -17,6 +17,7 @@ class Integration < Package
   end
 
   def self.install
+    # system "curl https://codeload.github.com/skycocker/chromebrew/zip/master -#o crew_integration.zip"
     system "curl https://codeload.github.com/supechicken/chromebrew/zip/supechicken-patch-1 -#o crew_integration.zip"
     puts 'Archive downloaded'.lightgreen
     system "unzip crew_integration.zip > /dev/null"
