@@ -25,7 +25,7 @@ class Pypy3 < Package
 
   def self.install
 	  system "mkdir -vp #{CREW_DEST_PREFIX}/opt/pypy3/ #{CREW_DEST_PREFIX}/bin/"
-    system "mv -v * #{CREW_DEST_DIR}#{CREW_PREFIX}/opt/pypy3/"
+    system "mv -v * #{CREW_DEST_PREFIX}/opt/pypy3/"
   end
 
   def self.postinstall
@@ -33,7 +33,8 @@ class Pypy3 < Package
     puts
     puts "Upgrading pip...".lightblue
     system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && #{CREW_DEST_PREFIX}/opt/pypy3/bin/pypy3 get-pip.py -U --no-warn-script-location"
-    puts "You now have two python interpreters installed.\nNow when you install things with pip, be sure to use \"python3 -m pip\" or \"pypy3 -m pip\" to ensure you're using the right instance of pip.".lightblue
+    puts "You now have two python interpreters installed."
+    puts "Now when you install things with pip, be sure to use \"python3 -m pip\" or \"pypy3 -m pip\" to ensure you're using the right instance of pip.".lightblue
     # Add pypy to your path
     puts
     puts "To complete the installation, execute the following:".lightblue
