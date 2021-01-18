@@ -6,7 +6,7 @@ class Filecmd < Package
   version '5.39'
   compatibility 'all'
   source_url 'http://ftp.astron.com/pub/file/file-5.39.tar.gz'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_sha256 'f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1'
 
   def self.build
     # The filefix command changes the full path of the file command in configure scripts.
