@@ -28,6 +28,7 @@ done
   end
   
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.install 'filefix', "#{CREW_DEST_PREFIX}/bin/filefix", mode: 0755
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"
   end
