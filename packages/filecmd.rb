@@ -32,6 +32,7 @@ done
     FileUtils.install 'filefix', "#{CREW_DEST_PREFIX}/bin/filefix", mode: 0755
     system "make DESTDIR=#{CREW_DEST_DIR} install-strip | sed -e \"s,libtool: warning: remember to run 'libtool --finish #{CREW_LIB_PREFIX}',,g\""
   end
+  
   def self.postinstall
     system "libtool --finish #{CREW_LIB_PREFIX}"
   end
