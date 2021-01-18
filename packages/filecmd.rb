@@ -14,7 +14,7 @@ class Filecmd < Package
     system "cat <<'EOF'> filefix
 #!/bin/bash
 for f in $(find . -name configure); do
-sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' ${f}
+  sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' ${f}
 done
 'EOF'"
     system "./configure \
