@@ -9,7 +9,7 @@ class Gettext_tiny < Package
   source_sha256 'a9a72cfa21853f7d249592a3c6f6d36f5117028e24573d092f9184ab72bbe187'
 
   def self.preinstall
-    abort "gettext already installed. gettext_tiny conflics with gettext.".lightred if File.exist? "#{CREW_PREFIX}/bin/msgcomm"
+    abort "gettext already installed. gettext_tiny conflicts with gettext.".lightred if File.exist? "#{CREW_PREFIX}/bin/msgcomm"
   end
 
   def self.build
