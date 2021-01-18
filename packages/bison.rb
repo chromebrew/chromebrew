@@ -2,7 +2,7 @@ require 'package'
 
 class Bison < Package
   description 'Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.'
-  homepage 'http://www.gnu.org/software/bison/'
+  homepage 'https://www.gnu.org/software/bison/'
   version '3.7.4'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/bison/bison-3.7.4.tar.xz'
