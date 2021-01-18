@@ -2,7 +2,7 @@ require 'package'
 
 class Filecmd < Package
   description 'file command determines the file type.'
-  homepage 'http://ftp.astron.com/pub/file'
+  homepage 'http://ftp.astron.com/'
   @_ver = '5.39'
   version @_ver
   compatibility 'all'
