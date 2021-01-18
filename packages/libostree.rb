@@ -4,6 +4,7 @@ class Libostree < Package
   description 'libostree manages operating system and container binary deployment and upgrades.'
   homepage 'https://ostreedev.github.io/ostree/'
   version '2020.8'
+  compatibility 'all'
   source_url 'https://github.com/ostreedev/ostree/releases/download/v2020.8/libostree-2020.8.tar.xz'
   source_sha256 'fdaa5992d0a6f62157152355449ac8476c50df6602be398e9ad10438cc1e679b'
 
