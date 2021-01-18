@@ -3,9 +3,10 @@ require 'package'
 class Filecmd < Package
   description 'file command determines the file type.'
   homepage 'http://ftp.astron.com/pub/file'
-  version '5.39'
+  @_ver = '5.39'
+  version @_ver
   compatibility 'all'
-  source_url 'http://ftp.astron.com/pub/file/file-5.39.tar.gz'
+  source_url "http://ftp.astron.com/pub/file/file-#{@_ver}.tar.gz"
   source_sha256 'f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1'
 
   def self.build
