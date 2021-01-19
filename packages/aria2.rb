@@ -16,10 +16,10 @@ class Aria2 < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '29b2e520194d7ed596ea0bfa4f75d46d2e74462ea5dc8fd21d4638bdc8e7b932',
-      armv7l: '29b2e520194d7ed596ea0bfa4f75d46d2e74462ea5dc8fd21d4638bdc8e7b932',
-        i686: 'eb3ceec16c9bc7f07f0a5ebf51753545b3ff0c57fc1af7ab3e9e95bdc13ba164',
-      x86_64: 'f8a4926df1f68968bddd3cae7784842a94b39e200bfc6e0332a73389b775dd08',
+     aarch64: '423e0f0ce0893269aca65177a9eaee299eef8b1be2e728c77988ae3e9e741037',
+      armv7l: '423e0f0ce0893269aca65177a9eaee299eef8b1be2e728c77988ae3e9e741037',
+        i686: 'a083bbc6d31677f4eb795433bffbe75468783f0d2d3fe9d95db9140f09ab7ce2',
+      x86_64: '2a7c0fc6c91b8b4217d7b69b0fa607a963ecbf17c689008c989841c89a610160',
   })
 
   depends_on 'c_ares'
@@ -29,6 +29,13 @@ class Aria2 < Package
   depends_on 'sqlite'
   depends_on 'zlibpkg'
 
+  case ARCH
+  when 'aarch64', 'armv7l'
+  @gnuabi = 'gnueabihf'
+  when 'x86_64', 'i686'
+  @gnuabi = 'gnu'
+  end
+  
   def self.build
     system "env CFLAGS='-fuse-ld=gold -flto' CXXFLAGS='-fuse-ld=gold -flto' \
      ./configure #{CREW_OPTIONS} \
@@ -40,6 +47,6 @@ class Aria2 < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/#{ARCH}-cros-linux-gnu-aria2c", "#{CREW_DEST_PREFIX}/bin/aria2c"
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/#{ARCH}-cros-linux-#{@gnuabi}-aria2c", "#{CREW_DEST_PREFIX}/bin/aria2c"
   end
 end
