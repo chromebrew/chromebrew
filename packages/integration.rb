@@ -43,11 +43,11 @@ class Integration < Package
       unless ARGV[0] == "upgrade"
         require 'em-websocket'
         puts 
-        puts "To complete the installation, install the extension by following:".lightgreen
+        puts "To complete the installation, execute the following:".lightgreen
         puts "Go to chrome://extensions/".lightgreen
         puts "Switch on Developer Mode".lightgreen
         puts "Click 'Load Unpacked'".lightgreen
-        puts "Click the 'More' button (icon with three dots) in top-right side of the new window".lightgreen
+        puts "Click the 'More' button (icon with three dots) in the top right corner of the new window".lightgreen
         puts "Select 'Display hidden files'".lightgreen
         puts "Select the '.extension' folder under 'MyFiles'".lightgreen
         puts
@@ -61,10 +61,10 @@ class Integration < Package
          end
         }
       end
-      puts "This package contain a terminal shortcut, execute the following to install".lightblue
+      puts "This package contains a terminal shortcut. To install, execute the following:".lightblue
       puts "crew_integration -i".lightblue
       puts
-      puts "Run 'crew_integration -h' for more usage of this package".lightblue
+      puts "Run 'crew_integration -h' for help.".lightblue
       puts
   end
   def self.remove
