@@ -4,6 +4,7 @@ class Integration < Package
   description 'Improves integration with Chrome OS shell and Chromebrew GUI applications.'
   homepage 'https://github.com/skycocker/chromebrew/crew_integration'
   version '3.0'
+  compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
   
