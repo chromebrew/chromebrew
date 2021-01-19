@@ -20,19 +20,19 @@ class Pypy3 < Package
 
   def self.build
     # Remove unnecessary files
-    system "rm -vf LICENSE README.rst site-packages/README"
+    FileUtils.rm_rf ['LICENSE', 'README.rst', 'site-packages/README']
   end
 
   def self.install
-	  system "mkdir -vp #{CREW_DEST_PREFIX}/opt/pypy3/ #{CREW_DEST_PREFIX}/bin/"
-    system "mv -v * #{CREW_DEST_PREFIX}/opt/pypy3/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/opt/pypy3/", "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/opt/pypy3/"
   end
 
   def self.postinstall
     # Upgrade pip
     puts
     puts "Upgrading pip...".lightblue
-    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && #{CREW_DEST_PREFIX}/opt/pypy3/bin/pypy3 get-pip.py -U --no-warn-script-location"
+    system "curl https://bootstrap.pypa.io/get-pip.py | #{CREW_DEST_PREFIX}/opt/pypy3/bin/pypy3 -U --no-warn-script-location"
     puts "You now have two python interpreters installed."
     puts "Now when you install things with pip, be sure to use \"python3 -m pip\" or \"pypy3 -m pip\" to ensure you're using the right instance of pip.".lightblue
     # Add pypy to your path
