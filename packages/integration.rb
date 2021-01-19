@@ -21,7 +21,7 @@ class Integration < Package
     # system "curl https://codeload.github.com/skycocker/chromebrew/zip/master -#o crew_integration.zip"
     system "curl https://codeload.github.com/supechicken/chromebrew/zip/supechicken-patch-1 -#o crew_integration.zip"
     puts 'Archive downloaded'.lightgreen
-    system "unzip crew_integration.zip > /dev/null"
+    system 'unzip crew_integration.zip'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s '/bin/mkdir', "#{CREW_PREFIX}/bin/mkdir" unless File.exist? "#{CREW_PREFIX}/bin/mkdir"
     FileUtils.ln_s '/usr/bin/install', "#{CREW_PREFIX}/bin/install" unless File.exist? "#{CREW_PREFIX}/bin/install"
