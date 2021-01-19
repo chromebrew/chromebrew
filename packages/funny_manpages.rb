@@ -8,11 +8,9 @@ class Funny_manpages < Package
   source_url 'https://github.com/ltworf/funny-manpages/releases/download/2.3/funny-manpages_2.3.orig.tar.gz'
   source_sha256 'b3459487abf375d0925494f1c015103e2f3198977b68640bb29bc2c3a8f89c83'
 
-  depends_on 'mandb'
-
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "mkdir #{CREW_DEST_PREFIX} -p"
-    system "mv #{CREW_DEST_DIR}/usr/share #{CREW_DEST_PREFIX}/ -v"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mv "#{CREW_DEST_DIR}/usr/share/man", "#{CREW_DEST_PREFIX}/share", verbose: true
   end
 end
