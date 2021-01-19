@@ -45,7 +45,7 @@ case ${1} in
              echo -e "${GREEN}Found an preinstalled icon for ${APPNAME^}, using it.${RESET}"
              convert ${CREW_PREFIX}/share/pixmaps/$(icon) ${APPICON_PATH}/${2}.png
            else
-             echo -e "${BLUE}${num} icons were found for ${APPNAME^}, here is the path of them${RESET}"
+             echo -e "${BLUE}${NUM} icons were found for ${APPNAME^}, here is the path of them${RESET}"
              icon
              read -r -p "Which icon do you want to use (Enter the path): " icon_path
              echo -e "${RESET}"
