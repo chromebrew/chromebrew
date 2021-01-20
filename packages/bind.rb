@@ -25,7 +25,6 @@ class Bind < Package
   depends_on 'libseccomp'
   depends_on 'libuv'
   depends_on 'libidn2'
-  depends_on 'libidn2'
 
   def self.build
     system "git config --global advice.detachedHead false"
