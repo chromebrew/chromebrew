@@ -22,19 +22,7 @@ class Aria2 < Package
       x86_64: '2a7c0fc6c91b8b4217d7b69b0fa607a963ecbf17c689008c989841c89a610160',
   })
 
-  depends_on 'c_ares'
   depends_on 'libgcrypt'
-  depends_on 'libssh2'
-  depends_on 'libxml2'
-  depends_on 'sqlite'
-  depends_on 'zlibpkg'
-
-  case ARCH
-  when 'aarch64', 'armv7l'
-  @gnuabi = 'gnueabihf'
-  when 'x86_64', 'i686'
-  @gnuabi = 'gnu'
-  end
 
   def self.build
     system "env CFLAGS='-fuse-ld=gold -flto' CXXFLAGS='-fuse-ld=gold -flto' \
@@ -47,6 +35,6 @@ class Aria2 < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/#{ARCH}-cros-linux-#{@gnuabi}-aria2c", "#{CREW_DEST_PREFIX}/bin/aria2c"
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/#{CREW_BUILD}-aria2c", "#{CREW_DEST_PREFIX}/bin/aria2c"
   end
 end
