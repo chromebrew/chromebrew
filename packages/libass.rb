@@ -25,8 +25,8 @@ class Libass < Package
   #depends_on 'autoconf' => :build
   #depends_on 'libtool' => :build
   depends_on 'fribidi'
-  depends_on 'fontconfig'  
-  
+  depends_on 'fontconfig'
+
   def self.build
     system "autoconf"
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

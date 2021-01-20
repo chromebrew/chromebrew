@@ -9,7 +9,7 @@ class Nethack < Package
   source_sha256 '5735e4d132d8aec0c49f0e2a72156c7cbe84ea7b5a3153531da61aa660c668a1'
 
   def self.patch
-    # Apply a patch to set a hints file that will work for the current build environment. 
+    # Apply a patch to set a hints file that will work for the current build environment.
     system "curl -L 'https://gist.githubusercontent.com/anonymous/77b05c6cd87628ab3cb944e75ecc45b7/raw/d5f327450aa6b4d50cafb5352fad06ed60f91b69/nethack_chromebrew.patch' | patch -p0"
   end
 

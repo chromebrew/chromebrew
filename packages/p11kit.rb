@@ -1,5 +1,5 @@
 require 'package'
-  
+
 class P11kit < Package
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
   homepage 'https://p11-glue.freedesktop.org/p11-kit.html'

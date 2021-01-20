@@ -28,7 +28,7 @@ class Alsa_utils < Package
   def self.patch
     system "sed -i 's/export CFLAGS=/export CFLAGS+=/g' gitcompile"
   end
-  
+
   def self.build
     system "CFLAGS='-fuse-ld=lld ' ./gitcompile #{CREW_OPTIONS}"
   end

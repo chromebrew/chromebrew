@@ -6,7 +6,7 @@ class I3 < Package
   version '4.18.3'
   compatibility 'all'
   source_url 'https://i3wm.org/downloads/i3-4.18.3.tar.bz2'
-  source_sha256 '53ae7903fad6eea830d58e949698e4a502c432c0d0a582659a0a59b1b995b10d'  
+  source_sha256 '53ae7903fad6eea830d58e949698e4a502c432c0d0a582659a0a59b1b995b10d'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/i3-4.18.3-chromeos-armv7l.tar.xz',
@@ -20,7 +20,7 @@ class I3 < Package
        i686: '7583a48fa03974296c0c27a25b44ec2b1fe6aebdce42f98918e3a9981fb5f24c',
      x86_64: '4af8555c05da78e9c24e81475b411c6397fc3afbca733016d422dc00dfc0402e',
   })
-  
+
   depends_on 'libev'
   depends_on 'startup_notification'
   depends_on 'xcb_util_cursor'
@@ -30,7 +30,7 @@ class I3 < Package
   depends_on 'yajl'
   depends_on 'wayland' => :build
   depends_on 'sommelier'
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS} --disable-builddir --disable-maintainer-mode --enable-mans"
     system "make -j#{CREW_NPROC}"
@@ -49,7 +49,7 @@ class I3 < Package
      system "chmod +x starti3"
     end
   end
-  
+
   def self.postinstall
       puts
       puts "To use this package, you need to download XServer XSDL from Google Play Store".lightblue

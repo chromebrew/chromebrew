@@ -20,9 +20,9 @@ class Zstd < Package
         i686: '192b17e599990e94d2d8343095c90be85e0013fe92c8933c6795c51f8ba39d89',
       x86_64: '017e2d9e5fa613bb50385f6b49bb9642f7b3e6f10453e46b89ea3e4701a39ae7',
   })
-  
+
   depends_on 'lz4' => ':build'
-  
+
   def self.build
     system 'make'
   end

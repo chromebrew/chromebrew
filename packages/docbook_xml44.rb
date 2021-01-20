@@ -23,7 +23,7 @@ class Docbook_xml44 < Package
 
   depends_on 'docbook_xml51'
   depends_on 'docbook_xsl'
-  
+
   def self.prebuild
     system "cat << EOF > ./remove_add.sh
 sed -i -e 's,<!-- .* -->,,g' #{CREW_PREFIX}/etc/xml/catalog.xml

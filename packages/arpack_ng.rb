@@ -41,7 +41,7 @@ class Arpack_ng < Package
         suffix = '64'
         interface = 'ON'
       end
-      # Use the gold linker. 
+      # Use the gold linker.
       old_ld = `ld_default g`.chomp
       system 'cmake',
              '-DCMAKE_BUILD_TYPE=Release',

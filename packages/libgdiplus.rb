@@ -13,7 +13,7 @@ class Libgdiplus < Package
   depends_on 'graphite'
   depends_on 'libexif'
   depends_on 'libtiff'
-  
+
   def self.build
     system "env NOCONFIGURE=1 ./autogen.sh"
     system "./configure #{CREW_OPTIONS} \

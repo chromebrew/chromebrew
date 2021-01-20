@@ -24,7 +24,7 @@ class R < Package
 
 
   # depends_on 'gfortran'       # require gfortran enabled gcc
-  depends_on 'pcre2'            
+  depends_on 'pcre2'
   depends_on 'libjpeg'
   depends_on 'libtiff'
   depends_on 'xzutils'

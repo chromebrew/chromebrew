@@ -20,7 +20,7 @@ class Xcb_util_xrm < Package
        i686: '17f7ef76c78653b8b8b4829dca2b79a3de46e5e78ac1c144b738619a13a96553',
      x86_64: '681cec04642aee7c712d36207605771a660e487f671d4811fb39c311e91fc2f1',
   })
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system "make"

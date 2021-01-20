@@ -23,7 +23,7 @@ class Libxcursor < Package
 
   depends_on 'libxrender'
   depends_on 'libxfixes'
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"

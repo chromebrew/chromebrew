@@ -33,7 +33,7 @@ def self.build
     --with-system-includedir=#{CREW_PREFIX}/include"
     system "make"
   end
-  
+
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end

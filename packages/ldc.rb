@@ -35,7 +35,7 @@ class Ldc < Package                 # The first character of the class name must
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('ldc-0.17.5-src.tar.gz') ) == '7aa540a135f9fa1ee9722cad73100a8f3600a07f9a11d199d8be68887cc90008'
     system "tar xzf ldc-0.17.5-src.tar.gz -C build"
     system "cmake", "-Bbuild/ldc-0.17.5-src", "-Hbuild/ldc-0.17.5-src"
-    system "make", "-C", "build/ldc-0.17.5-src", "-j#{CREW_NPROC}" 
+    system "make", "-C", "build/ldc-0.17.5-src", "-j#{CREW_NPROC}"
     system "cmake", "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_SKIP_RPATH=ON", "-DBUILD_SHARED_LIBS=BOTH",
                     "-DLDC_WITH_LLD=OFF", "-DD_COMPILER=build/ldc-0.17.5-src/bin/ldmd2",
                     "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}", "-Bbuild", "-H."

@@ -24,7 +24,7 @@ class Font_bh_ttf < Package
   depends_on 'bdftopcf'
   depends_on 'font_util'
   depends_on 'mkfontscale'
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
     system 'make'
