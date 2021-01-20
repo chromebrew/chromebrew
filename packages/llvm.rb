@@ -3,17 +3,17 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '11.1.0'
-  version @_ver + '-rc1'
+  @_ver = '11.1.0-rc1'
+  version @_ver
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
   source_sha256 'e610297041129a5c5b24355a988c99c7452ee7105ee2355334a8c521b988eb3c'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-rc1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-rc1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-rc1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-rc1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '5ecb72e60483b15c7588446a7ac424d64cdd3f21ca0fa5ffea4737a25dedca89',
