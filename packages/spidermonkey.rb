@@ -41,8 +41,8 @@ class Spidermonkey < Package
       system "#{CREW_PREFIX}/bin/python3 \
             ../configure.py --prefix=#{CREW_DEST_PREFIX} \
             --libdir=#{CREW_DEST_LIB_PREFIX} \
-            --host=#{CREW_BUILD } \
-            --target=#{CREW_BUILD } \
+            --host=#{CREW_BUILD} \
+            --target=#{CREW_BUILD} \
             --enable-application=js \
             --enable-release \
             --enable-optimize \
