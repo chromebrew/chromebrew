@@ -19,6 +19,13 @@ class Spidermonkey < Package
     sleep(5)
   end
 
+  case ARCH
+    when 'aarch64', 'armv7l'
+     @gnuabi = 'gnueabihf'
+    when 'x86_64', 'i686'
+      @gnuabi = 'gnu'
+  end
+
   def self.build
     ENV['LC_ALL'] = 'C' # https://bugs.gentoo.org/746215
     ENV['MACH_USE_SYSTEM_PYTHON'] = "#{CREW_PREFIX}/bin/python3"
@@ -31,10 +38,10 @@ class Spidermonkey < Package
     ENV['LD'] = 'ld.gold'
     Dir.chdir 'build' do
       system "#{CREW_PREFIX}/bin/python3 \
-            ../configure.py --prefix=/usr/local \
-            --libdir=/usr/local/lib64 \
-            --host=x86_64-cros-linux-gnu \
-            --target=x86_64-cros-linux-gnu \
+            ../configure.py --prefix=#{CREW_DEST_PREFIX} \
+            --libdir=#{CREW_DEST_LIB_PREFIX} \
+            --host=#{ARCH}-cros-linux-#{@gnuabi} \
+            --target=#{ARCH}-cros-linux-#{@gnuabi} \
             --enable-application=js \
       		  --enable-release \
       		  --enable-optimize \
@@ -42,7 +49,7 @@ class Spidermonkey < Package
       		  --with-intl-api \
 	      	  --with-system-icu \
 		        --enable-jit \
-		        --enable-strip" # Mozilla's configure.py doesn't recognize --mandir and --build from CREW_OPTIONS
+		        --enable-strip" # Mozilla's configure.py doesn't recognize --mandir and --build
       system "make"
     end
   end
