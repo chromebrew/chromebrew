@@ -18,16 +18,7 @@ class Spidermonkey < Package
     puts
     sleep(5)
   end
-
-  case ARCH
-  when 'aarch64', 'armv7l'
-    CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
-  when 'i686'
-    CREW_BUILD = 'i686-cros-linux-gnu'
-  when 'x86_64'
-    CREW_BUILD = 'x86_64-cros-linux-gnu'
-  end
-
+ 
   def self.build
     ENV['LC_ALL'] = 'C' # https://bugs.gentoo.org/746215
     ENV['MACH_USE_SYSTEM_PYTHON'] = "#{CREW_PREFIX}/bin/python3"
