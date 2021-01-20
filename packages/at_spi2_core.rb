@@ -29,7 +29,7 @@ class At_spi2_core < Package
   depends_on 'libxcb'
   depends_on 'gtk_doc'
   depends_on 'libtool'
-  
+
   def self.build
     system "./autogen.sh"
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

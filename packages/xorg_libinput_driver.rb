@@ -32,7 +32,7 @@ class Xorg_libinput_driver < Package
            '--disable-static'
     system 'make'
   end
-  
+
   def self.check
     system "make -j#{CREW_NPROC} check"
   end

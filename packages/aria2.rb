@@ -23,7 +23,7 @@ class Aria2 < Package
   })
 
   depends_on 'libgcrypt'
-  
+
   def self.build
     system "env CFLAGS='-fuse-ld=gold -flto' CXXFLAGS='-fuse-ld=gold -flto' \
      ./configure #{CREW_OPTIONS} \

@@ -26,7 +26,7 @@ class Dconf < Package
   depends_on 'glib'  # version 2
   depends_on 'meson'  => :build
   depends_on 'vala'  => :build
-  
+
   def self.build
     system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
     system "ninja -C builddir"
@@ -35,5 +35,5 @@ class Dconf < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
-  
+
 end

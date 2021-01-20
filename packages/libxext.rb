@@ -22,7 +22,7 @@ class Libxext < Package
   })
 
   depends_on 'llvm' => ':build'
-  
+
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"

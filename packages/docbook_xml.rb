@@ -12,7 +12,7 @@ class Docbook_xml < Package
   depends_on 'docbook_xml44'
   depends_on 'docbook_xml43'
   depends_on 'docbook_xml42'
-  
+
   is_fake
 
 end

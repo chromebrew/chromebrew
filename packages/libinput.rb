@@ -25,29 +25,29 @@ class Libinput < Package
   depends_on 'libevdev'
   depends_on 'libwacom'
   depends_on 'libunwind'
-  depends_on 'libcheck'    
+  depends_on 'libcheck'
   depends_on 'valgrind' => :build
   depends_on 'meson' => :build
-    
+
   # If debug-gui feature is required, uncomment following lines and remove "-Ddebug-gui=false" to enable it
   #depends_on 'graphviz' => :build
   #depends_on 'gtk3' => :build
 
-    
+
   def self.build
     system "meson \
                 --prefix=#{CREW_PREFIX} \
                 --libdir=#{CREW_LIB_PREFIX} \
                 -Ddebug-gui=false \
                 -Ddocumentation=false \
-                _build"          
-    system "ninja -v -C _build"   
+                _build"
+    system "ninja -v -C _build"
   end
 
   def self.check
     system 'ninja -C _build test'
-  end  
-  
+  end
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end

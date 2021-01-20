@@ -38,7 +38,7 @@ class Netsurf < Package
   depends_on 'pygtk'
   depends_on 'shared_mime_info'
   depends_on 'vim'
-  depends_on 'nsgenbind' 
+  depends_on 'nsgenbind'
   depends_on 'xdg_base'
 
   def self.patch

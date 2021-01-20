@@ -36,7 +36,7 @@ class Get_iplayer < Package
  	    system "make install"
  	    system "make DESTIDR=#{CREW_DEST_DIR} install"
     end
-    
+
     system "cpanm JSON::PP --force"
     system "cpanm LWP --force"
     system "cpanm LWP::Protocol::https --force"
@@ -51,7 +51,7 @@ class Get_iplayer < Package
  	    system "make install"
  	    system "make DESTIDR=#{CREW_DEST_DIR} install"
     end
-    
+
     system "cpanm CGI --force"
   end
 

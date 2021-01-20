@@ -22,7 +22,7 @@ class Linux_pam < Package
   })
 
   depends_on 'libdb' # libdb needs to be built with "--enable-dbm"
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS} --enable-static --disable-nis"
     system 'make'

@@ -33,7 +33,7 @@ class Glade < Package
     system "meson configure build"
     system "ninja -C build"
   end
-  
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
