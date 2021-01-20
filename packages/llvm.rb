@@ -70,8 +70,6 @@ class Llvm < Package
   # This may be patched upstream as per 
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   #LLVM_TARGETS_TO_BUILD = 'all'
-  LLVM_VERSION = version.split("-")[0]
-  BINUTILS_BRANCH = 'gdb-10.1-release'
 
   def self.patch
     # This keeps system libraries from being linked in as dependencies on a build host image, such as in docker.
