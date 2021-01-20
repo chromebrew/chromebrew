@@ -29,7 +29,7 @@ class Elogind < Package
             -Dhalt-path=/sbin/halt \
             -Drootlibexecdir=#{CREW_PREFIX}/libexec/elogind \
             -Dreboot-path=/sbin/reboot \
-            _build" # Manpages fail to build, keeping them disabled
+            _build"
     Dir.chdir '_build' do
       system 'meson', 'compile'
     end
@@ -43,9 +43,9 @@ class Elogind < Package
     system "mv #{CREW_DEST_DIR}/lib64/* #{CREW_DEST_DIR}/usr/local/lib64" # Please help rubyize
   end
   
-  def self.check
-    Dir.chdir '_build' do
-      system 'meson', 'test'
-    end
-  end
+#  def self.check
+#    Dir.chdir '_build' do
+#      system 'meson', 'test'
+#    end
+#  end
 end
