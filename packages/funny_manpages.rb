@@ -11,6 +11,6 @@ class Funny_manpages < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv "#{CREW_DEST_DIR}/usr/share/man", "#{CREW_DEST_PREFIX}/share", verbose: true
+    FileUtils.mv "usr/share/man", "#{CREW_DEST_PREFIX}/share", verbose: true
   end
 end
