@@ -3,28 +3,29 @@ require 'package'
 class Libtirpc < Package
   description 'Libtirpc is a port of Suns Transport-Independent RPC library to Linux.'
   homepage 'https://sourceforge.net/projects/libtirpc'
-  version '1.0.2-0'
+  @_ver = '1.3.1'
+  version @_ver
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.2/libtirpc-1.0.2.tar.bz2'
-  source_sha256 '723c5ce92706cbb601a8db09110df1b4b69391643158f20ff587e20e7c5f90f5'
+  source_url "http://downloads.sourceforge.net/project/libtirpc/libtirpc/#{@_ver}/libtirpc-#{@_ver}.tar.bz2"
+  source_sha256 '245895caf066bec5e3d4375942c8cb4366adad184c29c618d97f724ea309ee17'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.0.2-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.0.2-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.0.2-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.0.2-0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.3.1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.3.1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.3.1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'f2af84d80968a7b7271d7ed00e9fa771157530a237282c9c0cea0eea39fea167',
-     armv7l: 'f2af84d80968a7b7271d7ed00e9fa771157530a237282c9c0cea0eea39fea167',
-       i686: '3f484468cba8c5e69bff19eaa5c326dbb7e2e44d7e41c1c7ce3f570d0a7eb526',
-     x86_64: '6d4a7b558189ac4b78c24f6d5aa5904ed2dfe960ff3a6b1a4019294e2c051fc7',
+     aarch64: '489870e43cd86ca9aa252f3639f54e8af9bc6b33e16ef96aa66f0114bef8ee90',
+      armv7l: '489870e43cd86ca9aa252f3639f54e8af9bc6b33e16ef96aa66f0114bef8ee90',
+        i686: '987de099b04760d251425554071d505ec001818a152a782cd51b92ae6edf9dc5',
+      x86_64: '982db8c305a1c2859ab9954a18e03e5500a277fa00717e7646bf69b95a744213',
   })
 
   depends_on 'krb5'
-  
+
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system "make"
   end
 
