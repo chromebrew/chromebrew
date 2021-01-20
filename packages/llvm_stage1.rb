@@ -35,13 +35,11 @@ class Llvm_stage1 < Package
 
   case ARCH
   when 'aarch64','armv7l'
-    LLVM_DEFAULT_TARGET_TRIPLE = "armv7l-cros-linux-gnueabihf"
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     @ARCH_C_FLAGS = '-march=armv7-a -mfloat-abi=hard'
     @ARCH_CXX_FLAGS = '-march=armv7-a -mfloat-abi=hard'
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;lld'
   when 'i686','x86_64'
-    LLVM_DEFAULT_TARGET_TRIPLE = "#{ARCH}-cros-linux-gnu"
     #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
@@ -92,7 +90,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
         system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin FC= \
             cmake -G Ninja \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-            -DLLVM_DEFAULT_TARGET_TRIPLE=#{LLVM_DEFAULT_TARGET_TRIPLE} \
+            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
             -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
