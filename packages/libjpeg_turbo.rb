@@ -35,7 +35,7 @@ class Libjpeg_turbo < Package
   def self.check
     system "make -j#{CREW_NPROC} test"
   end
-  
+
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end

@@ -7,7 +7,7 @@ class Gn < Package
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-  
+
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gn-dca877f-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gn-dca877f-chromeos-armv7l.tar.xz',

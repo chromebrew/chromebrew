@@ -35,7 +35,7 @@ class Aria2 < Package
   when 'x86_64', 'i686'
   @gnuabi = 'gnu'
   end
-  
+
   def self.build
     system "env CFLAGS='-fuse-ld=gold -flto' CXXFLAGS='-fuse-ld=gold -flto' \
      ./configure #{CREW_OPTIONS} \

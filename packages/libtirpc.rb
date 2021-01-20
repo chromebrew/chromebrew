@@ -22,7 +22,7 @@ class Libtirpc < Package
   })
 
   depends_on 'krb5'
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"

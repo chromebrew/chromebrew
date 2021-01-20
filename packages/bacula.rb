@@ -49,7 +49,7 @@ class Bacula < Package
            '--enable-smartalloc',
            '--with-mysql',
            '--with-x'
-    system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' Makefile" 
+    system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' Makefile"
     system 'make'
   end
 

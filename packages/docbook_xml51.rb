@@ -80,7 +80,7 @@ class Docbook_xml51 < Package
                 'http://www.oasis-open.org/docbook/xml/#{xml_version}' \
                 'file://#{CREW_PREFIX}/share/xml/docbook/#{xml_dtd}' \
                 #{CREW_DEST_PREFIX}/etc/xml/docbook.xml"
-    
+
     system "rm -f #{CREW_PREFIX}/etc/xml/catalog* && \
                 xmlcatalog --noout --create #{CREW_DEST_PREFIX}/etc/xml/catalog.xml && \
             xmlcatalog --noout --add 'delegatePublic' \

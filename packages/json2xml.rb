@@ -1,4 +1,4 @@
-require 'package' 
+require 'package'
 
 class Json2xml < Package
   description 'json to xml converter'

@@ -20,7 +20,7 @@ class Parted < Package
        i686: '60127a02617336101f252388725f3dc472432f7e6bdbb6c8b97344ab051cf08d',
      x86_64: 'c5972a1b389e4a9454a6e6ea0e4eb2d30f5f294131d3bb97ccaff523fdbe08f9',
   })
-  
+
   depends_on 'lvm2'
   depends_on 'ncurses'
   depends_on 'readline'
@@ -33,5 +33,5 @@ class Parted < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
   end
-  
+
 end

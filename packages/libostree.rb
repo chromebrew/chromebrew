@@ -17,7 +17,7 @@ class Libostree < Package
   depends_on 'avahi'
   depends_on 'gtk_doc' => :build
   depends_on 'libxml2' => :build
-  
+
   def self.build
     system "./autogen.sh #{CREW_OPTIONS} \
             --with-curl \

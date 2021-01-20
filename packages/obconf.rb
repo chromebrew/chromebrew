@@ -6,7 +6,7 @@ class Obconf < Package
   version '2.0.4'
   compatibility 'all'
   source_url 'http://openbox.org/dist/obconf/obconf-2.0.4.tar.gz'
-  source_sha256 '71a3e5f4ee246a27421ba85044f09d449f8de22680944ece9c471cd46a9356b9' 
+  source_sha256 '71a3e5f4ee246a27421ba85044f09d449f8de22680944ece9c471cd46a9356b9'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/obconf-2.0.4-chromeos-armv7l.tar.xz',

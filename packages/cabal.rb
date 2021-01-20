@@ -13,7 +13,7 @@ class Cabal < Package
     source_url 'https://downloads.haskell.org/~cabal/cabal-install-2.4.1.0/cabal-install-2.4.1.0-x86_64-unknown-linux.tar.xz'
     source_sha256 '6136c189ffccaa39916f9cb5788f757166444a2d0c473b987856a79ecbf0c714'
   end
-  
+
   case ARCH
   when 'i686', 'x86_64'
     depends_on 'ghc'

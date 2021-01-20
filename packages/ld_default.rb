@@ -24,7 +24,7 @@ class Ld_default < Package
 
   if [[ \"\${type}\" == \"ELF\" ]]; then
     current=\$(basename $(find . -inum \$(ls -i ld | cut -d' ' -f1) | fgrep 'ld.'))
-  elif [[ \"${type}\" == \"symbolic\" ]]; then	
+  elif [[ \"${type}\" == \"symbolic\" ]]; then
     current=\$(basename \$(readlink ld))
   elif [[ \"${type}\" == \"Bourne-Again\" ]]; then
     current=\$(basename \$(tail -1 ld | cut -d' ' -f1))

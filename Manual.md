@@ -17,16 +17,16 @@ The crew build life-cycle consists of the stages as follows:
 1. `fetch` - During the fetch phase `crew` uses `curl --ssl`  to fetch the package
 2. `extract` - Once the the package has been fetched, `crew` extracts the package
 3. `self.prebuild` - Ony `sed` commands should be run during this stage - if provided
-    - During this stage `crew` `cd`'s into the extracted directory, and stays there until the `preinstall` stage 
+    - During this stage `crew` `cd`'s into the extracted directory, and stays there until the `preinstall` stage
 3. `self.patch` - Only `patch` commands should be used during this stage	- If provided
 4. `self.build` - Package is compiled and/or configured
 5. `self.check` - Package is then checked - If provided
-6. `self.preinstall` - Pre-install checks/edits are done - If provided 
+6. `self.preinstall` - Pre-install checks/edits are done - If provided
 7. `self.install` - Commands to install to `#{CREW_DEST_DIR}` are run
-	- ONLY required function 
+	- ONLY required function
 8. `self.postinstall` - Post-install checks/edits are done - If provided
-9. Package 
-	 - Only binary packages call this stage 
+9. Package
+	 - Only binary packages call this stage
 		 - Contents are checked and packaged, then installed to `#{CREW_PREFIX}`
 ***
 ## Binary
@@ -38,7 +38,7 @@ Only the functions `self.preinstall` and `self.postinstall` are run during a bin
 - `dlist` a list of directories used/installed to by the package
 - `filelist` a list of all files included in the package
 ***
-## Variables 
+## Variables
 
 The required package variables are as follows: - [Rundown](#rundown)
 
@@ -83,7 +83,7 @@ Optional functions are as follows:
 
 - `self.prebuild` - Can be used to define functions<sup>(Or commands)</sup> that should be used to edit various files.
 - `def self.patch` - Can be used to define functions<sup>(Or commands)</sup> that should be used to `patch` various files.
-- `def self.preinstall` - Can be used to define functions<sup>(Or commands)</sup> that should happen `pre`-install. 
+- `def self.preinstall` - Can be used to define functions<sup>(Or commands)</sup> that should happen `pre`-install.
 - `def self.check` - Can be used to define functions<sup>(Or commands)</sup> that should be used to check the compile binary.
 - `def self.postinstall` - Can be used to define functions<sup>(Or commands)</sup> that should happen `post`-install.
 - `is_fake` - Cane be used to label package as meta.
@@ -92,7 +92,7 @@ Optional functions are as follows:
 
 The rundown of what each function and variable are/(can be) used for follows.
 
-A simple example ruby script can be found on the [Wiki](https://github.com/skycocker/chromebrew/wiki/Creating-a-package). 
+A simple example ruby script can be found on the [Wiki](https://github.com/skycocker/chromebrew/wiki/Creating-a-package).
 ```ruby
 require 'package' # must occour within each `.rb`
 			      # Notice the newline
@@ -105,7 +105,7 @@ class Template < Package # Notice the capitals, EG: 'I3' - would be used for an 
   source_sha256 '#' # The `sha256` checksum of the downloaded source package
                   # Notice the newline
   depends_on '#' # Soft where this package depends on
-  depends_on '#' => :build # Only required when the package 
+  depends_on '#' => :build # Only required when the package
   is built from source
             # Notice the newline
   def self.prebuild # For sed operations, not required
@@ -114,18 +114,18 @@ class Template < Package # Notice the capitals, EG: 'I3' - would be used for an 
   def self.patch # For patch operations, not required
     system '#' # Replace '#' with a patch operation
   end
-				  
+
   def self.build # Contains the commands which compile the package, required if package con be compiled
-    system '#' # Replace '#' with commands to compile the package 
+    system '#' # Replace '#' with commands to compile the package
     system '#' # Should contain something like, "./configure --prefix=/usr/local"
     system '#' # Use in case additions commands are required
     system '#' # Should contain something like, "'make -j$(nproc)'"
   end
 
-  def self.check # For commands to check the build quality, called by 'crew build' 
+  def self.check # For commands to check the build quality, called by 'crew build'
     system '#'
   end
-				  
+
   def self.preinstall # For pre-install conditions, not required
     system '#'
   end
@@ -133,9 +133,9 @@ class Template < Package # Notice the capitals, EG: 'I3' - would be used for an 
   def self.install # For make install, required if package can be installed
     system '#' # Should contain something like, "'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'"
   end
-				 
+
   def self.postinstall # For post-install messages or operations, not required
-    system '#' 
+    system '#'
   end
 end
 ```
@@ -146,7 +146,7 @@ end
 
 <a name="Arch">**Arch**</a>: Chromebrew packages for `x86_64`, `i686`, `armv7l`, and `aarch64`.
 
-<a name="More">**More**</a>: Must come from an official source, not a distro's source archive. Should contain the version number<sup>(Which must be equal to the version variable)</sup> `https` is preferred over `http` or `ftp` - When possible.  
+<a name="More">**More**</a>: Must come from an official source, not a distro's source archive. Should contain the version number<sup>(Which must be equal to the version variable)</sup> `https` is preferred over `http` or `ftp` - When possible.
 
 NOTE: All rules can have exceptions, if ***REQUIRED***, exceptions to the rules should be avoided at all costs.
 

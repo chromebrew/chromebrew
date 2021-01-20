@@ -9,7 +9,7 @@ class Perl_term_readkey < Package
   source_sha256 '5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290'
 
   depends_on 'perl'
-  
+
   def self.install
     # install files to build directory
     system 'cpanm', '-l', 'build', '--self-contained', '--force', '.'

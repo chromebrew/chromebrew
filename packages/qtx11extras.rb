@@ -28,7 +28,7 @@ class Qtx11extras < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"	
+    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
     system "cp -a lib/* #{CREW_DEST_LIB_PREFIX}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/Qt-5"
     FileUtils.cp_r 'include', "#{CREW_DEST_PREFIX}/share/Qt-5"

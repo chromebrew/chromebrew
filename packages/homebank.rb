@@ -20,7 +20,7 @@ class Homebank < Package
        i686: 'cecfc9b0b8e6952ab81ab38213c648a4c475843b264f55fa0067163a533108e9',
      x86_64: 'c8d1b25d778c7bfbecc9b2704e1e5d166213be5d6fe760c624f1adf86df327de',
   })
-  
+
   depends_on 'libofx'
   depends_on 'libsoup'
   depends_on 'gtk3'

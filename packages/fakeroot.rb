@@ -22,7 +22,7 @@ class Fakeroot < Package
   })
 
   depends_on 'libcap'
-  
+
   def self.build
     system './bootstrap'
     system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"

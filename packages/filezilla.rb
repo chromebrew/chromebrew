@@ -20,7 +20,7 @@ class Filezilla < Package
   depends_on 'wayland_protocols'
   depends_on 'mesa'
   depends_on 'xcb_util'
-  
+
 
   def self.patch
     system 'filefix'

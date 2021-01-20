@@ -22,11 +22,11 @@ class Ncat < Package
   })
 
   depends_on 'buildessential' => :build
-  depends_on 'filecmd' => :build   #configure uses file 
+  depends_on 'filecmd' => :build   #configure uses file
 
   def self.build
     #fixup "/usr/bin/file" -> "file" in the configure script
-    
+
     system "sed -i s#/usr/bin/file##{CREW_PREFIX}/bin/file#g libdnet-stripped/configure"
 
     #without-zenmap in configure removes openssl dependency

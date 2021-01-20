@@ -35,7 +35,7 @@ class Valgrind < Package
           (Addr)&VG_(x86_linux_REDIR_FOR_strlen), mandatory);
 +#endif
     }
- 
+
  #  elif defined(VGP_amd64_linux)
 @@ -1367,6 +1369,7 @@
        add_hardwired_spec(
@@ -48,10 +48,10 @@ class Valgrind < Package
 @@ -1378,6 +1381,7 @@
           complain_about_stripped_glibc_ldso
  #        endif
-       );   
+       );
 +#endif
     }
- 
+
  #  elif defined(VGP_ppc32_linux)
 @@ -1452,6 +1456,7 @@
        distros, ld.so\'s soname is ld-linux.so.3, but Ubuntu 14.04 on
@@ -67,7 +67,7 @@ class Valgrind < Package
        );
 +#endif
     }
- 
+
  #  elif defined(VGP_arm64_linux)
 EOF'
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

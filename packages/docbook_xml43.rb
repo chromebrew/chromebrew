@@ -25,7 +25,7 @@ class Docbook_xml43 < Package
   depends_on 'xmlcatmgr'
   depends_on 'docbook_xml'
   depends_on 'docbook_xsl'
-  
+
   def self.prebuild
     system "cat << EOF > ./remove_add.sh
 sed -i -e 's,<!-- .* -->,,g' #{CREW_PREFIX}/etc/xml/catalog.xml

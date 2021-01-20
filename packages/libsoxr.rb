@@ -38,7 +38,7 @@ class Libsoxr < Package
     end
     system "make"
   end
-  
+
   def self.check
     system "make check"
   end
