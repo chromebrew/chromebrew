@@ -8,7 +8,7 @@ class Spidermonkey < Package
   source_url 'https://archive.mozilla.org/pub/firefox/releases/84.0/source/firefox-84.0.source.tar.xz'
   source_sha256 '23273ef0165b243f5d0908c38e7854d38070282c9b526e8d93b7503cd5f69138'
 
-  depends_on 'yasm'
+  depends_on 'yasm' # Might be a build dependency, undergoing testing
   depends_on 'rust' => :build
   
   def self.prebuild
@@ -20,10 +20,12 @@ class Spidermonkey < Package
   end
 
   case ARCH
-    when 'aarch64', 'armv7l'
-     @gnuabi = 'gnueabihf'
-    when 'x86_64', 'i686'
-      @gnuabi = 'gnu'
+  when 'aarch64', 'armv7l'
+    CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
+  when 'i686'
+    CREW_BUILD = 'i686-cros-linux-gnu'
+  when 'x86_64'
+    CREW_BUILD = 'x86_64-cros-linux-gnu'
   end
 
   def self.build
@@ -35,21 +37,20 @@ class Spidermonkey < Package
     ENV['AS'] = 'as'
     ENV['RANLIB'] = 'ranlib'
     ENV['NM'] = 'nm'
-    ENV['LD'] = 'ld.gold'
     Dir.chdir 'build' do
       system "#{CREW_PREFIX}/bin/python3 \
             ../configure.py --prefix=#{CREW_DEST_PREFIX} \
             --libdir=#{CREW_DEST_LIB_PREFIX} \
-            --host=#{ARCH}-cros-linux-#{@gnuabi} \
-            --target=#{ARCH}-cros-linux-#{@gnuabi} \
+            --host=#{CREW_BUILD } \
+            --target=#{CREW_BUILD } \
             --enable-application=js \
-      		  --enable-release \
-      		  --enable-optimize \
-      		  --enable-gold \
-      		  --with-intl-api \
-	      	  --with-system-icu \
-		        --enable-jit \
-		        --enable-strip" # Mozilla's configure.py doesn't recognize --mandir and --build
+            --enable-release \
+            --enable-optimize \
+            --enable-gold \
+            --with-intl-api \
+            --with-system-icu \
+            --enable-jit \
+            --enable-strip" # Mozilla's configure.py doesn't recognize --mandir and --build
       system "make"
     end
   end
