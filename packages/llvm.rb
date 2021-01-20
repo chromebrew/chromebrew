@@ -37,14 +37,12 @@ class Llvm < Package
 
   case ARCH
   when 'aarch64','armv7l'
-    LLVM_DEFAULT_TARGET_TRIPLE = "armv7l-cros-linux-gnueabihf"
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     LLVM_TARGETS_TO_BUILD = 'all'
     @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
     @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
     @ARCH_LDFLAGS=''
   when 'i686'
-    LLVM_DEFAULT_TARGET_TRIPLE = "#{ARCH}-cros-linux-gnu"
     LLVM_TARGETS_TO_BUILD = 'X86'
     # Because ld.lld: error: undefined symbol: __atomic_store
     # Polly demands fPIC
@@ -55,7 +53,6 @@ class Llvm < Package
     # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
     @ARCH_LDFLAGS='-Wl,-znotext'
   when 'x86_64'
-    LLVM_DEFAULT_TARGET_TRIPLE = "#{ARCH}-cros-linux-gnu"
     #LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     LLVM_TARGETS_TO_BUILD = 'all'
     @ARCH_C_FLAGS = '-fPIC'
@@ -117,9 +114,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DCMAKE_C_COMPILER=$(which clang) \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-            -DLLVM_DEFAULT_TARGET_TRIPLE=#{LLVM_DEFAULT_TARGET_TRIPLE} \
-            -DCMAKE_C_COMPILER_TARGET=#{LLVM_DEFAULT_TARGET_TRIPLE} \
-            -DCMAKE_ASM_COMPILER_TARGET=#{LLVM_DEFAULT_TARGET_TRIPLE} \
+            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
+            -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
+            -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
             -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
