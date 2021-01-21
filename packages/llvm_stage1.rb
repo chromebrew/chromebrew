@@ -54,7 +54,6 @@ class Llvm_stage1 < Package
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   LLVM_TARGETS_TO_BUILD = 'all'
   LLVM_VERSION = version.split("-")[0]
-  BINUTILS_BRANCH = 'gdb-10.1-release'
 
   def self.build
     ############################################################
@@ -65,13 +64,6 @@ class Llvm_stage1 < Package
     puts "Setting compile to use python3".lightgreen
     ############################################################
     system "grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'"
-    
-    ############################################################
-    puts "Downloading binutils #{BINUTILS_BRANCH} src to enable gold plugin build".lightgreen
-    ############################################################
-    system "git config --global advice.detachedHead false"
-    # As per https://github.com/SVF-tools/SVF/wiki/Install-LLVM-Gold-Plugin-on-Ubuntu
-    system "git clone --depth 1 --branch #{BINUTILS_BRANCH} git://sourceware.org/git/binutils-gdb.git binutils"
     
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
@@ -104,7 +96,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_FLAGS}' \
             -DLLVM_PARALLEL_LINK_JOBS=1 \
             -DPYTHON_EXECUTABLE=$(which python3) \
-            -DLLVM_BINUTILS_INCDIR='../binutils/include' \
+            -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
             -DLLVM_ENABLE_TERMINFO=ON \
             -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
@@ -124,8 +116,8 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
 
   def self.install
     Dir.chdir("builddir") do
-      system "install -Dm755 clc #{CREW_DEST_PREFIX}/bin/clc"
-      system "install -Dm755 clc++ #{CREW_DEST_PREFIX}/bin/clc++"
+      FileUtils.install 'clc', "#{CREW_DEST_PREFIX}/bin/clc", mode: 0755
+      FileUtils.install 'clc++', "#{CREW_DEST_PREFIX}/bin/clc++", mode: 0755
       system "DESTDIR=#{CREW_DEST_DIR} ninja install"
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
       FileUtils.ln_s "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
