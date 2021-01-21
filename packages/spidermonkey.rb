@@ -8,7 +8,7 @@ class Spidermonkey < Package
   source_url 'https://archive.mozilla.org/pub/firefox/releases/84.0/source/firefox-84.0.source.tar.xz'
   source_sha256 '23273ef0165b243f5d0908c38e7854d38070282c9b526e8d93b7503cd5f69138'
 
-  depends_on 'yasm' # Might be a build dependency, undergoing testing
+  depends_on 'yasm' => :build
   depends_on 'rust' => :build
   
   def self.prebuild
