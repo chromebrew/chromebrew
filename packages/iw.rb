@@ -11,7 +11,7 @@ class Iw < Package
   depends_on 'libnl3'
   
   def self.patch
-    system "sed -i 's:usr:#{CREW_PREFIX}:g' Makefile" # Change prefix to CREW_PREFIX
+    system "sed -i 's:/usr:#{CREW_PREFIX}:g' Makefile" # Change prefix to CREW_PREFIX
   end
 
   def self.build
