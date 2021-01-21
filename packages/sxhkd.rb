@@ -1,5 +1,5 @@
 require 'package'
-    
+
 class Sxhkd < Package
   description 'Simple X HotKey Daemon'
   homepage "https://github.com/baskerville/sxhkd"

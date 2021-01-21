@@ -9,7 +9,7 @@ class Perl_yaml_tiny < Package
   source_sha256 'bc315fa12e8f1e3ee5e2f430d90b708a5dc7e47c867dba8dce3a6b8fbe257744'
 
   depends_on 'perl'
-  
+
   def self.install
     # install files to build directory
     system 'cpanm', '-l', 'build', '--self-contained', '--force', '.'

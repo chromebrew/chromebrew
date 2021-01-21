@@ -23,7 +23,7 @@ class Libhandy < Package
 
 
   depends_on 'vala'
-  
+
   def self.prebuild
     system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
   end

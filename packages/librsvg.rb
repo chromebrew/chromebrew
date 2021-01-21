@@ -32,7 +32,7 @@ class Librsvg < Package
   depends_on 'glib'
   depends_on 'vala' => :build
   depends_on 'six' => :build
-  
+
   def self.build
     # Following rustup modification as per https://github.com/rust-lang/rustup/issues/1167#issuecomment-367061388
     system "rustup install stable --profile minimal || (rm -frv ~/.rustup/toolchains/* && rustup install stable --profile minimal)"

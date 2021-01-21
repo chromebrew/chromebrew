@@ -20,7 +20,7 @@ class Gnome_common < Package
        i686: 'c979f4542bb8b87fb4883787005a1ccbec9e752829885cd5e3c66a385336a15c',
      x86_64: 'c04053bbe47296b90c22a3d5767d54645f819ef73ee362a60e1e179a8ce836cd',
   })
-  
+
   def self.build
     system "sh autogen.sh"
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"

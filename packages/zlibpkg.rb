@@ -20,8 +20,8 @@ class Zlibpkg < Package
         i686: 'd74959077aadf86030e2acd969923d23fa042d67bf5f1fe1cc91af09816f70e6',
       x86_64: '8fab32aaf18449efe4140af1cd2af1abaf7543314524508b888d7ef4019d581f',
   })
-  
-  
+
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",

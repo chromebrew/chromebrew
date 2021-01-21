@@ -22,7 +22,7 @@ class Libnsgif < Package
   })
 
   depends_on 'netsurf_buildsystem' => :build
-  
+
   def self.build
     system "make PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared"
   end

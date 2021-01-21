@@ -1,9 +1,8 @@
-<p><img src="/images/brew.png" alt="Chromebrew logo" /></p>
+<p align="center"><img src="/images/brew.png" alt="Chromebrew logo" /></p>
 
-Chromebrew
-==========
+<h1 align="center">Chromebrew</h1>
 
-Package manager for Chrome OS
+<p align="center">Package manager for Chrome OS</p>
 
 Chat with us!
 -------------

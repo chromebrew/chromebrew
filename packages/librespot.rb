@@ -6,7 +6,7 @@ class Librespot < Package
   version '0.1.3'
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/librespot-org/librespot/archive/v0.1.3.tar.gz'
-  source_sha256 '2d28a63c6dda08ecbc1245c7cfe34c9b3b29e8c5304f4aa8b65aedb899056b25'  
+  source_sha256 '2d28a63c6dda08ecbc1245c7cfe34c9b3b29e8c5304f4aa8b65aedb899056b25'
 
   binary_url ({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/librespot-0.1.3-chromeos-armv7l.tar.xz',
@@ -18,11 +18,11 @@ class Librespot < Package
      armv7l: 'ecfcbfaf8f71b1a4442535a0dc97e2d3db4dd5c67c7200deb040da74db56c099',
      x86_64: '0ba9038b2e38df1d684328050885b050959ae10df0028dc390c442da647d4228',
   })
-  
+
   depends_on 'rust' => :build
   depends_on 'alsa_lib'
   depends_on 'alsa_utils'
-  
+
   def self.build
     system 'cargo build --release --no-default-features --features "alsa-backend"'
   end

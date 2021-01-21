@@ -6,7 +6,7 @@ def check_version(hash = {})
   pkg_ver_f = "crew(#{pkg_version})".ljust(14)
   cur_ver_f = "latest(#{cur_version})"
 
-  fmt_s = "#{pkg_name_f}  ->  #{pkg_ver_f} #{cur_ver_f}" 
+  fmt_s = "#{pkg_name_f}  ->  #{pkg_ver_f} #{cur_ver_f}"
   if pkg_version < cur_version || hash[:pkg_name] == 'jdk8'
     puts fmt_s
   end

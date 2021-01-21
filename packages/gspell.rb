@@ -38,7 +38,7 @@ class Gspell < Package
     # Fixes ./configure: /usr/bin/file: No such file or directory
     system 'filefix'
   end
-  
+
   def self.build
     system "CFLAGS=-fuse-ld=lld \
     CXXFLAGS=-fuse-ld=lld \

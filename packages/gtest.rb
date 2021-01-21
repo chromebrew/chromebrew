@@ -29,7 +29,7 @@ class Gtest < Package
     ARCH_C_FLAGS = ''
     ARCH_CXX_FLAGS = ''
   end
-  
+
     def self.build
       system "sed -E \"s|(GOOGLETEST_VERSION) [0-9\\.]+|\\1 1.10.0|\" -i CMakeLists.txt"
       system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} cmake -G Ninja \
@@ -46,7 +46,7 @@ class Gtest < Package
        -Bbuilddir"
       system 'ninja -C builddir'
     end
-    
+
     def self.install
       system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     end

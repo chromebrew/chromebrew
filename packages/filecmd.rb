@@ -36,7 +36,7 @@ class Filecmd < Package
   def self.check
     system "make", "check"
   end
-  
+
   def self.install
     system "install -Dm755 filefix #{CREW_DEST_PREFIX}/bin/filefix"
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-strip"

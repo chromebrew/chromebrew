@@ -34,14 +34,14 @@ class Wxwidgets < Package
   def self.build
     # Keeps an abicheck error from derailing compile on multiple versions of wxwidgets, including 3.1
     # This may be useful when moving to the next 3.1 based stable version, so keep it in.
-    system "cat <<'EOF'> make-abicheck-non-fatal.patch 
+    system "cat <<'EOF'> make-abicheck-non-fatal.patch
 diff -up wxGTK-2.8.12/src/common/appbase.cpp.abicheck wxGTK-2.8.12/src/common/appbase.cpp
 --- wxGTK-2.8.12/src/common/appbase.cpp.abicheck	2015-03-12 17:15:18.000000000 +0100
 +++ wxGTK-2.8.12/src/common/appbase.cpp	2015-03-12 17:15:57.000000000 +0100
 @@ -424,10 +424,7 @@ bool wxAppConsole::CheckBuildOptions(con
          msg.Printf(_T(\"Mismatch between the program and library build versions detected.\nThe library used %s,\nand %s used %s.\"),
                     lib.c_str(), progName.c_str(), prog.c_str());
- 
+
 -        wxLogFatalError(msg.c_str());
 -
 -        // normally wxLogFatalError doesn't return

@@ -34,7 +34,7 @@ class Json_glib < Package
   def self.check
     system "meson test -C _build"
   end
-  
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end
