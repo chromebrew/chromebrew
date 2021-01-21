@@ -8,6 +8,19 @@ class Filecmd < Package
   compatibility 'all'
   source_url "http://ftp.astron.com/pub/file/file-#{@_ver}.tar.gz"
   source_sha256 'f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1'
+  
+  binary_url ({
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+     aarch64: 'e87bec0e97e45cdf47a1badf36157c4c11565b2a4da081c653d79a26fb4099f6',
+      armv7l: 'e87bec0e97e45cdf47a1badf36157c4c11565b2a4da081c653d79a26fb4099f6',
+        i686: '85396091dd796294e2b586036153df826bfa5e7007327779fa8972c828cdc445',
+      x86_64: 'a27d190d2032ce8c378b7ee902e9532b6be55498bd4b6e7bb48e65d492239159',
+  })
 
   def self.build
     # The filefix command changes the full path of the file command in configure scripts.
