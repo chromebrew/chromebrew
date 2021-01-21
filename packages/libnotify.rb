@@ -37,5 +37,5 @@ class Libnotify < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
   end
-  
+
 end

@@ -37,7 +37,7 @@ class Picom < Package
     system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} _build -Dopengl=false" # Glx backend cannot be used yet
     system 'ninja -v -C _build'
   end
-  
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end

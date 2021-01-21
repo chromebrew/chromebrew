@@ -64,7 +64,7 @@ class Imagemagick7 < Package
            '--with-perl',
            '--with-rsvg',
            '--with-x'
-    system 'make' 
+    system 'make'
   end
 
   def self.install

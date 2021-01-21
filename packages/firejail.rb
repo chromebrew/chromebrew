@@ -21,7 +21,7 @@ class Firejail < Package
        i686: 'b5e81766f7cd14ea389ed9b767178d113e4073e021c67b6cf7a2ab26a8dcc00f',
      x86_64: 'c6c490e1955926bebba1a01bac60472fc9d1a536ad4339b6ab1c5ac278be2b53',
   })
-  
+
   def self.build
     system "sed -i 's,-fstack-protector-all,,g' src/common.mk.in"
     system "sed -i 's,-fstack-protector-all,,g' src/libtrace/Makefile.in"

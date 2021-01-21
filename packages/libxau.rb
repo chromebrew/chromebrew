@@ -20,9 +20,9 @@ class Libxau < Package
        i686: '4343e16f6c9bf01c4234a194e7478b45542c58abb0affa1032c2ae9c5abe802c',
      x86_64: '6fe73440b9a5a242617a8a0a4e55a5c2e18fe070e6842852a89b95e23fcd1aa5',
   })
-  
+
   depends_on 'xorg_proto'
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"

@@ -20,7 +20,7 @@ class Sejda_console < Package
        i686: '377228a512d3f78a487f34843169fe5f9e829ee64d24f4f87e795de3221e2966',
      x86_64: 'd59742c678df678145d00a86e82dca8ffa180299f099eafbc674d76641ea9506',
   })
-  
+
   depends_on 'help2man' => :build
   depends_on 'unzip' => :build
   depends_on 'jdk8'

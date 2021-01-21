@@ -22,7 +22,7 @@ class Eventstat < Package
   })
 
   def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses make" 
+    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses make"
   end
 
   def self.install

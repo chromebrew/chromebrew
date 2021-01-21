@@ -20,7 +20,7 @@ class Atool < Package
        i686: '690926e3c631340d2e3f0a91390d4a0c4c8ab1dd9001dc0aaf8eff019eaeb3d7',
      x86_64: 'e8e9a3db6efd80ad3b5b18725c4c5c4816e56fc101ca273de072af489f8c0d1e',
   })
-  
+
   depends_on 'perl'
 
   def self.build
@@ -31,5 +31,5 @@ class Atool < Package
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
   end
-  
+
 end

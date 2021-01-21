@@ -3,34 +3,34 @@ require 'package'
 class Libssh < Package
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
-  version '0.8.1'
+  version '0.9.5'
   compatibility 'all'
-  source_url 'https://www.libssh.org/files/0.8/libssh-0.8.1.tar.xz'
-  source_sha256 'd17f1267b4a5e46c0fbe66d39a3e702b8cefe788928f2eb6e339a18bb00b1924'
+  source_url 'https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz'
+  source_sha256 'acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.8.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.9.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.9.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.9.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh-0.9.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '0928c31849b027b3188b765c4ee7434cad046523cf4a54355e125421baaf64c5',
-     armv7l: '0928c31849b027b3188b765c4ee7434cad046523cf4a54355e125421baaf64c5',
-       i686: 'ee40bfa70d6b0fd644ab58f081dd3c82f29ca0f28586698eed55c79d79656c47',
-     x86_64: '8cca9b0403091a838e65b2306cb5bb3b8ed549502d7e54c442af0fac1a3fc671',
+    aarch64: '45e7c8962944c4ac002e9cc979dbd2cf489bb83c7a655c7d06765eebb92fee14',
+     armv7l: '45e7c8962944c4ac002e9cc979dbd2cf489bb83c7a655c7d06765eebb92fee14',
+       i686: '84bb42a662fa7c7c4e7e74e014f9fa489c48150ec24c89da7b44241b4da7dae8',
+     x86_64: '1e288d85f122cf5fbce82464aa665bf453fdb70eb306eb891f39a4ef61b4de43',
   })
 
   depends_on 'libgcrypt'
 
   def self.build
-    FileUtils.mkdir 'build'
+    Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "cmake \
+             #{CREW_CMAKE_OPTIONS} \
+             -DCMAKE_C_FLAGS='-fstack-protector-strong' \
              -DWITH_GCRYPT=ON \
-             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-             -DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX} \
-             -DCMAKE_BUILD_TYPE=Release .."
+             .."
       system 'make'
     end
   end

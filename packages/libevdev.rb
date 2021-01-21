@@ -23,7 +23,7 @@ class Libevdev < Package
 
   depends_on 'doxygen' => :build
   depends_on 'python27' => :build
-  
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"

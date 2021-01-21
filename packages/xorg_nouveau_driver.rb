@@ -22,9 +22,9 @@ class Xorg_nouveau_driver < Package
   })
 
   depends_on 'xorg_server' => :build
-  
+
   # The new “Maxwell” and “Pascal” GPUs require Glamor to be built with the Xorg server.
-  
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",

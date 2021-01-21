@@ -73,7 +73,7 @@ class Xwayland < Package
     puts "patch2 archive downloaded".lightgreen
     system 'base64 --decode patch2_base64 > patch2'
     system 'patch -p 1 < patch2'
-    
+
     url_patch3 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-sysmacros.patch?format=TEXT"
     uri_patch3 = URI.parse url_patch3
     filename_patch3 = 'patch3_base64'

@@ -20,7 +20,7 @@ class Libev < Package
        i686: 'd079e81b116054cf936fe1d3396582911432b8acc203cbdf3babd1df6e4dac9f',
      x86_64: 'dfb18c0c4dbee0bb6b0ca5cdacbb77ba1fb40f8b77e93f02f791b79871e467c2',
   })
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system "make -j#{CREW_NPROC}"

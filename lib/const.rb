@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.5.2'
+CREW_VERSION = '1.5.6'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -68,10 +68,11 @@ when 'x86_64'
 end
 
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
-CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release"
+CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Dc_args='-fuse-ld=lld' -Dcpp_args='-fuse-ld=lld'"
+CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release   -Dcpp_args='-flto -fuse-ld=gold' -Dcpp_link_args='-flto' -Dc_args='-flto -fuse-ld=gold' -Dc_link_args='-flto'"
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
-# This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640 
+# This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
 # Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
 CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"

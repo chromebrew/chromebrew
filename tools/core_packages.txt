@@ -35,7 +35,6 @@ libedit
 libffi
 libiconv
 libidn2
-libmbedtls
 libmetalink
 libnghttp2
 libpipeline

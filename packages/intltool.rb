@@ -25,7 +25,7 @@ class Intltool < Package
   depends_on 'perl_xml_parser'
   depends_on 'patch' => :build
   depends_on 'wget' => :build
-  
+
   def self.patch
     system "wget https://raw.githubusercontent.com/Alexpux/MSYS2-packages/master/intltool/perl-5.22-compatibility.patch"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('perl-5.22-compatibility.patch') ) == '9c6527072aada6e3cb9aceb6e07cfdf51d58839a2beb650168da0601a85ebda3'

@@ -3,22 +3,23 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  version '20.3.0'
+  @_ver = '20.3.3'
+  version @_ver
   compatibility 'all'
-  source_url 'https://mesa.freedesktop.org/archive/mesa-20.3.0.tar.xz'
-  source_sha256 '2999738e888731531cd62b27519fa37566cc0ea2cd7d4d97f46abaa3e949c630'
+  source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
+  source_sha256 'f74e212d4838e982a10c203ffa998817d1855c5cf448ae87b58f96edea61d156'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'cce8cade434faa8ac5aeba8ff9d5c8a141fad2758cbec45b7932f735f7249c3b',
-     armv7l: 'cce8cade434faa8ac5aeba8ff9d5c8a141fad2758cbec45b7932f735f7249c3b',
-       i686: '6a727c773fcf12b7f9755451ee99620d13b7589a62684b370a1392f00006cd8f',
-     x86_64: '0638cf75f48e08d9f86ebcec3f2374212c64ba2a621449a883e7816b85459657',
+     aarch64: '6831a61a10ae5ad851a1de731d49f26d9131afa94c2c41d4686c846b2b4a588b',
+      armv7l: '6831a61a10ae5ad851a1de731d49f26d9131afa94c2c41d4686c846b2b4a588b',
+        i686: 'f41ddb3e53293fc0432a5ce347c8555c0e63cf78a48620d55391d7fb0fd52de5',
+      x86_64: '59d6d87f66a5ae4c1c540ad57e95d970d5ab691a73eefceffa59d27f798ed69f',
   })
 
   depends_on 'llvm' => :build
@@ -42,14 +43,16 @@ class Mesa < Package
 
   def self.build
     system "pip3 uninstall -y Mako MarkupSafe || :"
-    system "pip3 install --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
+    system "pip3 install --no-warn-script-location --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
     system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako"
-    
-    ENV['CFLAGS'] = "-fuse-ld=lld"
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
 
-    # Just use mostly defaults.
-    system "meson #{CREW_MESON_OPTIONS} builddir"
+    # With llvm 11.1 b_asneeded=false appears to be needed to get lld to be used.
+    #
+    system "meson #{CREW_MESON_OPTIONS} \
+    -Dc_link_args='-fuse-ld=lld' \
+    -Dcpp_link_args='-fuse-ld=lld' \
+    -Db_asneeded=false \
+     builddir"
     system "meson configure builddir"
     system "ninja -C builddir"
   end

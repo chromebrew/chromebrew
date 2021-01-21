@@ -17,7 +17,7 @@
 #   4. Install jfrog:
 #      $ crew install jfrog
 #   5. Configure jfrog:
-#      $ jfrog bt c --user <bintray_username> --key <api_key> --licences GPL-3.0
+#      $ jfrog bt c --user <bintray_username> --key <api_key> --licenses GPL-3.0
 #      See https://www.jfrog.com/confluence/display/CLI/CLI+for+JFrog+Bintray#CLIforJFrogBintray-Configuration
 #
 # Note: OSS free account has limitation of the number of REST API uses by a day.
@@ -80,13 +80,13 @@ function error () {
   exit 1
 }
 
-for name in "$@"; do 
+for name in "$@"; do
   name=`basename -s .rb $name`
   pkg=`echo $name | sed -e 's/-.*//'`
-  
+
   # check file existence
   files=
-  for path in $LOCALPATHS; do 
+  for path in $LOCALPATHS; do
     for file in $path/$name-*.tar.?z; do
       [ -f $file ] && files="$file $files"
     done

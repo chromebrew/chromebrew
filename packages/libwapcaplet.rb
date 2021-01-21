@@ -20,7 +20,7 @@ class Libwapcaplet < Package
        i686: '3b621c7937f5b69a7875d611ec6cd441c65764432af794d9b8c942b5c250c07a',
      x86_64: '44bd2c72b15c9d059b51b4dc598fd5b9044b12a10ca55b0dfc561b1d71e36073',
   })
-  
+
   depends_on 'netsurf_buildsystem' => :build
 
   def self.build
