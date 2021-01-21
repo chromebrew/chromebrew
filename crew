@@ -14,7 +14,7 @@ require_relative 'lib/const'
 require_relative 'lib/util'
 
 # Add lib to LOAD_PATH
-$LOAD_PATH.unshift "#{CREW_PREFIX}/lib/crew/lib"
+$LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
