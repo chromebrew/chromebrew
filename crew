@@ -688,7 +688,7 @@ def resolve_dependencies_and_install
     # cleanup
     unless @opt_keep
       FileUtils.rm_rf Dir.glob("#{CREW_BREW_DIR}/*")
-      FileUtils.mkdir_p 'dest' # this is a little ugly, feel free to find a better way
+      FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" # this is a little ugly, feel free to find a better way
     end
   end
   puts "#{@pkg.name.capitalize} installed!".lightgreen
