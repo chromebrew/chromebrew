@@ -3,22 +3,23 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  version '1.20.10'
+  @_ver = '1.20.10'
+  version @_ver + '-1'
   compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/xorg/xserver/-/archive/bc111a2e67e16d4e6d4f3196ab86c22c1e278c45/xserver-bc111a2e67e16d4e6d4f3196ab86c22c1e278c45.tar.bz2'
-  source_sha256 '357e6edb0d7c6107e9e1d5bc4e86ced4f96cad25282b9d1c86796fe3fe60bfa7'
+  source_url "https://github.com/freedesktop/xorg-xserver/archive/xorg-server-#{@_ver}.tar.gz"
+  source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '8235123cf2269d5b69528739ca055100156654452e74126454cb34a0823c8bbb',
-     armv7l: '8235123cf2269d5b69528739ca055100156654452e74126454cb34a0823c8bbb',
-       i686: '4b60240cfef6a103b2398fc477defff93f51753ba2bec078e7477defc4d493f9',
-     x86_64: '3fc26b39b410c9bff20be53f2017cd4e21d2fa4b2c1a320be6632a6139f72189',
+     aarch64: 'c0a7dc97b292c4e0b4f656e287662cc42d9f5d9faa153121af2febc6646b685d',
+      armv7l: 'c0a7dc97b292c4e0b4f656e287662cc42d9f5d9faa153121af2febc6646b685d',
+        i686: 'ebecd2f9921810166ffac629fb4a38c8157e5b675174ef514e2e386ad8b27f18',
+      x86_64: '2423bbd76b41e395066641ba7cb889ca70a32a4b002226b6d0fc00bf0604d903',
   })
 
   depends_on 'libepoxy'
@@ -45,14 +46,13 @@ class Xwayland < Package
   depends_on 'xkbcomp'
   depends_on 'glproto'
   depends_on 'mesa'
-
   # Patches are from Google xwayland overlay at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/chromiumos-overlay/x11-base/xwayland/files/
+
   def self.patch
     url_patch1 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-Eliminate-conflict-with-X11-Xlib.h-with-khronos-eglp.patch?format=TEXT"
     uri_patch1 = URI.parse url_patch1
     filename_patch1 = 'patch1_base64'
     sha256sum_patch1 = '16f5d5d1986daf07b4e0f01eb0e68b53d8ef301d169f3cc9493158c8b4987f16'
-
     puts "Downloading patch1".yellow
     system('curl', '-s', '--insecure', '-L', '-#', url_patch1, '-o', filename_patch1)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
@@ -60,12 +60,10 @@ class Xwayland < Package
     puts "patch1 archive downloaded".lightgreen
     system 'base64 --decode patch1_base64 > patch1'
     system 'patch -p 1 < patch1'
-
     url_patch2 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-Fall-back-to-gbm_bo_create-if-no-modifiers-.patch?format=TEXT"
     uri_patch2 = URI.parse url_patch2
     filename_patch2 = 'patch2_base64'
     sha256sum_patch2 = 'd44bfca0e26ca06892b37b12faca2a6756cdc2455aac36ac7607bfa188856b35'
-
     puts "Downloading patch2".yellow
     system('curl', '-s', '--insecure', '-L', '-#', url_patch2, '-o', filename_patch2)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
@@ -78,7 +76,6 @@ class Xwayland < Package
     uri_patch3 = URI.parse url_patch3
     filename_patch3 = 'patch3_base64'
     sha256sum_patch3 = 'b66eb66cc8023ab2170db91e4d6038dca99b814addfcb0977d30479a2e514ab8'
-
     puts "Downloading patch3".yellow
     system('curl', '-s', '--insecure', '-L', '-#', url_patch3, '-o', filename_patch3)
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
@@ -98,13 +95,11 @@ class Xwayland < Package
   end
 
   def self.build
-    case ARCH
-    when 'aarch64', 'armv7l', 'x86_64'
-      ENV['CFLAGS'] = '-fuse-ld=lld'
-      ENV['CXXFLAGS'] = '-fuse-ld=lld'
-    end
     system 'meson setup build'
     system "meson configure #{CREW_MESON_OPTIONS} \
+              -Dc_link_args='-fuse-ld=lld' \
+              -Dcpp_link_args='-fuse-ld=lld' \
+              -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
               -Dxnest=true \
@@ -121,7 +116,6 @@ class Xwayland < Package
               build"
     system 'meson configure build'
     system 'ninja -C build'
-
     system "cat <<'EOF'> Xwayland_sh
 #!/bin/bash
 if base=$(readlink \"$0\" 2>/dev/null); then

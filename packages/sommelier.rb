@@ -3,24 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20201222-3'
+  version '20201222-4'
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-3-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'd5d3790503673368cd882379d07bab0152c6a8e0aae7a390229b4748121c0345',
-      armv7l: 'd5d3790503673368cd882379d07bab0152c6a8e0aae7a390229b4748121c0345',
-        i686: 'a2ee97b81a19958dd79ebd8cd58e40319ea570b73113e477781542026e5ec148',
-      x86_64: '58c024732ad5bf0cda4f15ca5104c0dff94837a3eae34408a2bd7457a18a0161',
+     aarch64: '948b0cf4b09622fe91318bd410b633c621675252b2884a82fc107d718d24cb5f',
+      armv7l: '948b0cf4b09622fe91318bd410b633c621675252b2884a82fc107d718d24cb5f',
+        i686: '8ab9cc1429903fef93f2e09ca984de936f8b5769b48404e4b06eecbf5935ecde',
+      x86_64: '3aa985686796cf13d23f974533682deb001d78bf88bc0bbdf710689359024b68',
   })
-
 
   depends_on 'mesa'
   depends_on 'xkbcomp'
@@ -70,8 +69,10 @@ class Sommelier < Package
     system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
 
     # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
-
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "env CC=clang CXX=clang++ \
+    meson #{CREW_MESON_OPTIONS} \
+    -Dc_args='-flto=thin -fuse-ld=lld' \
+    -Dcpp_args='-flto=thin -fuse-ld=lld' \
     -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
     -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
     -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
@@ -134,7 +135,6 @@ basedir=${base%/*}
 # ld.so supports forwarding the binary name.
 LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/sommelier\" exec   \"${basedir}/..#{PEER_CMD_PREFIX}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
 EOF"
-
       # sommelierd
       system "cat <<'EOF'> sommelierd
 #!/bin/bash
@@ -172,7 +172,6 @@ echo \$! >#{CREW_PREFIX}/var/run/sommelier-xwayland.pid
 xhost +si:localuser:root &>/dev/null
 fi
 EOF"
-
       # startsommelier
        system "cat <<'EOF'> startsommelier
 #!/bin/bash
@@ -210,7 +209,6 @@ else
   exit 1
 fi
 EOF"
-
       # stopsommelier
       system "cat <<'EOF'> stopsommelier
 #!/bin/bash
@@ -229,7 +227,6 @@ else
   echo \"sommelier stopped\"
 fi
 EOF"
-
       # restartsommelier
       system "echo '#!/bin/bash' > restartsommelier"
       system "echo 'stopsommelier && startsommelier' >> restartsommelier"
@@ -250,7 +247,6 @@ EOF"
         system "install -Dm755 restartsommelier #{CREW_DEST_PREFIX}/bin/restartsommelier"
         system "install -Dm755 sommelierrc #{CREW_DEST_PREFIX}/etc/sommelierrc"
         system "install -Dm644 .sommelier-default.env #{CREW_DEST_HOME}/.sommelier-default.env"
-
       end
     end
   end
@@ -275,7 +271,6 @@ EOF"
       puts "To complete the installation, execute the following:".orange
       puts "source ~/.bashrc".orange
     end
-
     puts
     puts "To adjust sommelier environment variables, create ~/.sommelier.env".lightblue
     puts "Default values are in ~/.sommelier-default.env".lightblue
@@ -288,7 +283,7 @@ EOF"
     puts "sommelier daemon running.".orange
     puts
     puts "The sommelier daemon may also have to be restarted with".orange
-    puts "'restartsommelier'after waking your device.".orange
+    puts "'restartsommelier' after waking your device.".orange
     puts
     puts "(If you are upgrading from an earlier version of sommelier,".orange
     puts "also run 'restartsommelier'.)".orange
