@@ -153,8 +153,8 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
 
   def self.install
     Dir.chdir("builddir") do
-      system "install -Dm755 clc #{CREW_DEST_PREFIX}/bin/clc"
-      system "install -Dm755 clc++ #{CREW_DEST_PREFIX}/bin/clc++"
+      FileUtils.install 'clc', "#{CREW_DEST_PREFIX}/bin/clc", mode: 0755
+      FileUtils.install 'clc++', "#{CREW_DEST_PREFIX}/bin/clc++", mode: 0755
       system "DESTDIR=#{CREW_DEST_DIR} ninja install"
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
       FileUtils.ln_s "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
