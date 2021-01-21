@@ -20,9 +20,9 @@ class Libparserutils < Package
        i686: 'cf81d606dddc0f9c0667d5b53f656f4e282fcf1aefd7d0e7e75a35d467faf88f',
      x86_64: '3f571ae3599d8623b433faf79944f3be1598fc1aaefdfd555cde4882bcc4936c',
   })
-  
+
   depends_on 'netsurf_buildsystem' => :build
-  
+
   def self.build
     system "make PREFIX=#{CREW_PREFIX} COMPONENT_TYPE=lib-shared"
   end

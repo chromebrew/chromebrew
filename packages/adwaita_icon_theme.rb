@@ -23,11 +23,11 @@ class Adwaita_icon_theme < Package
 
   depends_on 'gtk3'
   depends_on 'librsvg'
-  depends_on 'gdk_pixbuf' 
+  depends_on 'gdk_pixbuf'
   depends_on 'vala' => :build
   depends_on 'llvm' => :build
   depends_on 'xdg_base'
-  
+
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
@@ -42,7 +42,7 @@ class Adwaita_icon_theme < Package
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
-  
+
     def self.postinstall
     puts "To add basic settings, execute the following:".lightblue
     puts "Note that this will overwrite any existing ~/.config/gtk-3.0/settings.ini file!".lightred

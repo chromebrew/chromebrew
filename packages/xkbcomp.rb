@@ -24,7 +24,7 @@ class Xkbcomp < Package
 
   depends_on 'mesa'
   depends_on 'xcb_util'
-    
+
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system 'make'
@@ -33,7 +33,7 @@ class Xkbcomp < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-  
+
   def self.postinstall
     puts
     puts "xkb configuration files are located in #{CREW_PREFIX}/share/X11/xkb".lightblue

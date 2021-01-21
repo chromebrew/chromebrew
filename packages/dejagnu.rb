@@ -42,5 +42,5 @@ class Dejagnu < Package
     system "install -v -m644 doc/dejagnu.html #{CREW_DEST_PREFIX}/share/doc/dejagnu-1.6.1"
     system "install -v -m644 doc/dejagnu.txt  #{CREW_DEST_PREFIX}/share/doc/dejagnu-1.6.1"
   end
-  
+
 end

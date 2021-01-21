@@ -20,9 +20,9 @@ class At_spi2_atk < Package
        i686: '165854bff7a99fcfaf7a807e41eaa6d889c10998250f0c706dcb9eee3d198aba',
      x86_64: '01c66589188a81499b7ac4424f937f3adbe7265bb1c55d8d0d8746df8d302061',
   })
-  
+
   depends_on 'automake' => :build
-  depends_on 'at_spi2_core'  
+  depends_on 'at_spi2_core'
   depends_on 'atk'
 
   def self.build

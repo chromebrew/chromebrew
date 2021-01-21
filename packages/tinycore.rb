@@ -41,7 +41,7 @@ if file #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN | grep \"text exec
 else
   LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/lib /#{ARCH_LIB}/ld-linux-x86-64.so.2 #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN $OPT
 fi
-' > tinycore" 
+' > tinycore"
     else
     system "echo '#!/bin/bash
 

@@ -38,7 +38,7 @@ class Gemacs < Package
             --with-gif=yes \
             --with-jpeg=yes \
             --with-png=yes \
-            --with-rsvg=yes" 
+            --with-rsvg=yes"
     system 'make'
   end
 

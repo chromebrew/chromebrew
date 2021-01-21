@@ -39,7 +39,7 @@ class Cvs < Package
            "--libdir=#{CREW_LIB_PREFIX}"
     system "make"
   end
-  
+
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end

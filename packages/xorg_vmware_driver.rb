@@ -22,7 +22,7 @@ class Xorg_vmware_driver < Package
   })
 
   depends_on 'xorg_server' => :build
-  
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",

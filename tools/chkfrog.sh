@@ -47,10 +47,10 @@ function check_url () {
     curl --output /dev/null --silent --header -L --fail $1
 }
 
-for name in "$@"; do 
+for name in "$@"; do
     name=`basename -s .rb $name`
     pkg=`echo $name | sed -e 's/-.*//'`
-  
+
     if ! grep -q binary_url packages/$pkg.rb; then
         sed -e '/source_sha256/ a\
 \
@@ -75,7 +75,7 @@ for name in "$@"; do
         echo $url : $sha256
         case x$url in
         x)  ;;
-        *)  
+        *)
             update_url $pkg $arch $url
             update_sha256 $pkg $arch $sha256
             case $arch in

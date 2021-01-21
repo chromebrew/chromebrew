@@ -29,7 +29,7 @@ class Graphite < Package
       system "cmake #{CREW_CMAKE_LIBSUFFIX_OPTIONS} .."
     end
   end
-  
+
   def self.install
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

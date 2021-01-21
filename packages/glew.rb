@@ -31,7 +31,7 @@ class Glew < Package
       system "sed -i 's/endif()/endif ()/g' cmake/CMakeLists.txt"
     end
   end
-  
+
   def self.build
     #ENV['CFLAGS.EXTRA'] = "-fuse-ld=lld"
     #ENV['CFLAGS'] = "-fuse-ld=lld"

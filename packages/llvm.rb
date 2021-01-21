@@ -323,7 +323,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
   end
-  
+
   #def self.check
   #  Dir.chdir("builddir") do
   #    system "make -k -j#{CREW_NPROC} check-llvm"

@@ -22,7 +22,7 @@ class Libssh < Package
   })
 
   depends_on 'libgcrypt'
-    
+
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do

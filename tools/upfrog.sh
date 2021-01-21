@@ -80,13 +80,13 @@ function error () {
   exit 1
 }
 
-for name in "$@"; do 
+for name in "$@"; do
   name=`basename -s .rb $name`
   pkg=`echo $name | sed -e 's/-.*//'`
-  
+
   # check file existence
   files=
-  for path in $LOCALPATHS; do 
+  for path in $LOCALPATHS; do
     for file in $path/$name-*.tar.?z; do
       [ -f $file ] && files="$file $files"
     done

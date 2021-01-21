@@ -20,7 +20,7 @@ class Clojure < Package
        i686: '5a1db6246686b0485d62032530f069aa8f1a201c26aa34e09375395b0a4dffe1',
      x86_64: '24966018c4e0d9ab94fe91a6094c03da6e95673de5c9a5a4a0b413a54027332e',
   })
-  
+
   depends_on 'jdk8'
   depends_on 'rlwrap'
 

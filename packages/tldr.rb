@@ -1,5 +1,5 @@
 require 'package'
-  
+
 class Tldr < Package
   description 'A collection of simplified and community-driven man pages.'
   homepage 'http://tldr.sh/'

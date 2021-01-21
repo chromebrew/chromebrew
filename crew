@@ -96,8 +96,14 @@ end
   @device[key] = @device[key].to_sym rescue @device[key]
 end
 
-def print_package(pkgName, extra = false)
-  search pkgName, true
+def print_package(pkgPath, extra = false)
+  pkgName = File.basename pkgPath, '.rb'
+  set_package pkgName, pkgPath
+  print_current_package extra
+end
+
+def print_current_package (extra = false)
+  pkgName = @pkg.name
   status = ''
   status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == pkgName end
   status = 'incompatible' unless @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
@@ -118,18 +124,17 @@ def print_package(pkgName, extra = false)
   puts ""
 end
 
-def set_package (pkgName, silent = false)
-  require CREW_LIB_PATH + 'packages/' + pkgName
+def set_package (pkgName, pkgPath)
+  require pkgPath
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.build_from_source = true if @opt_recursive
   @pkg.name = pkgName
-  print_package(pkgName, true) unless silent
 end
 
 def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     if File.extname(filename) == '.rb'
-      print_package File.basename filename, '.rb'
+      print_package filename
     end
   end
 end
@@ -143,7 +148,7 @@ def list_available
     end
     if @notInstalled and File.extname(filename) == '.rb'
       pkgName = File.basename filename, '.rb'
-      set_package pkgName, true
+      set_package pkgName, filename
       if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
         puts pkgName
       else
@@ -163,7 +168,7 @@ def list_compatible(compat = true)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     if File.extname(filename) == '.rb'
       pkgName = File.basename filename, '.rb'
-      set_package pkgName, true
+      set_package pkgName, filename
       if compat
         if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
           if File.exist? CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
@@ -186,7 +191,7 @@ def generate_compatible
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     if File.extname(filename) == '.rb'
       pkgName = File.basename filename, '.rb'
-      set_package pkgName, true
+      set_package pkgName, filename
       if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
         #add to compatible packages
         @device[:compatible_packages].push(name: @pkg.name)
@@ -201,29 +206,29 @@ end
 
 def search (pkgName, silent = false)
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return set_package(pkgName, silent) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+    return set_package(pkgName, filename) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
   end
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
-def regexp_search(pkgName)
+def regexp_search(pkgPat)
+  re = Regexp.new(pkgPat, true)
   results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
-    .select  { |f| File.basename(f, '.rb') =~ Regexp.new(pkgName, true) } \
-    .collect { |f| File.basename(f, '.rb') } \
+    .select  { |f| File.basename(f, '.rb') =~ re } \
     .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
-    Find.find ("#{CREW_LIB_PATH}packages/") do |packageName|
-      if File.file? packageName
-        package = File.basename packageName, '.rb'
-        search package, true
-        if ( @pkg.description =~ /#{pkgName}/i )
-          print_package(package, @opt_verbose)
-          results.push(package)
+    Find.find ("#{CREW_LIB_PATH}packages/") do |packagePath|
+      if File.file? packagePath and File.extname(packagePath) == '.rb'
+        packageName = File.basename packagePath, '.rb'
+        set_package packageName, packagePath
+        if ( @pkg.description =~ /#{pkgPat}/i )
+          print_current_package @opt_verbose
+          results.push(packageName)
         end
       end
     end
   end
-  abort "Package #{pkgName} not found. :(".lightred unless results.length > 0
+  abort "Package #{pkgPat} not found. :(".lightred unless results.length > 0
 end
 
 def help (pkgName)
@@ -469,6 +474,7 @@ def upgrade
       puts 'Updating packages...'
       toBeUpdated.each do |package|
         search package
+        print_current_package
         puts "Updating " + @pkg.name + "..." if @opt_verbose
         @pkg.in_upgrade = true
         resolve_dependencies_and_install
@@ -762,6 +768,7 @@ def resolve_dependencies
   if proceed
     @dependencies.each do |dep|
       search dep
+      print_current_package
       install
     end
   end
@@ -926,7 +933,7 @@ def remove (pkgName)
     file.write JSON.pretty_generate(out)
   end
 
-  set_package pkgName, true
+  search pkgName, true
   @pkg.remove
 
   puts "#{pkgName.capitalize} removed!".lightgreen
@@ -936,6 +943,7 @@ def build_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
+    print_current_package
     resolve_dependencies_and_build
   end
 end
@@ -944,6 +952,7 @@ def download_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
+    print_current_package
     download
   end
 end
@@ -962,6 +971,7 @@ def files_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
+    print_current_package
     files name
   end
 end
@@ -979,6 +989,7 @@ def install_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
+    print_current_package
     @pkg.build_from_source = true if @opt_src or @opt_recursive
     resolve_dependencies_and_install
   end
@@ -998,7 +1009,7 @@ end
 
 def postinstall_command (args)
   args["<name>"].each do |name|
-    set_package name, true
+    search name, true
     if @device[:installed_packages].any? do |elem| elem[:name] == name end
       @pkg.postinstall
     else
@@ -1011,6 +1022,7 @@ def reinstall_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
+    print_current_package
     @pkg.build_from_source = true if @opt_src or @opt_recursive
     if @pkgName
       @pkg.in_upgrade = true
@@ -1042,6 +1054,7 @@ def upgrade_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
+    print_current_package
     @pkg.build_from_source = true if @opt_src
     upgrade
   end.empty? and begin

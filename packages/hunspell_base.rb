@@ -22,7 +22,7 @@ class Hunspell_base < Package
   })
 
   depends_on 'readline'
-  
+
   def self.build
     system 'autoreconf -vfi'
     system "./configure",
