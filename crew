@@ -14,7 +14,7 @@ require_relative 'lib/const'
 require_relative 'lib/util'
 
 # Add lib to LOAD_PATH
-$LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
+$LOAD_PATH.unshift "#{CREW_PREFIX}/lib/crew/lib"
 
 DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
@@ -80,11 +80,11 @@ end
 @opt_verbose = args["--verbose"]
 
 if @opt_verbose then
-  fileutils_verbose = ', verbose: true'
-  verbose = '-v'
+  @fileutils_verbose = ', verbose: true'
+  @verbose = '-v'
 else
-  fileutils_verbose = ''
-  verbose = ''
+  @fileutils_verbose = ''
+  @verbose = ''
 end
 
 @opt_src = args["--build-from-source"]
@@ -503,7 +503,7 @@ def download
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
   end
   Dir.chdir CREW_BREW_DIR do
-    unless ENV['CREW_CACHE_OPT']
+    if ENV['CREW_CACHE_OPT']
       FileUtils.mkdir_p CREW_CACHE_DIR
       cachefile = CREW_CACHE_DIR + filename
       if File.file?(cachefile)
@@ -517,13 +517,13 @@ def download
       end
     end
 
-    system "curl #{verbose} --retry 3 --progress-bar -C - --insecure -L #{url} '-o' #{filename}"
+    system "curl #{@verbose} --retry 3 --progress-bar -C - --insecure -L #{url} '-o' #{filename}"
 
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
     puts "Archive downloaded".lightgreen
 
-    unless ENV['CREW_CACHE_OPT']
+    if ENV['CREW_CACHE_OPT']
       puts 'Caching downloaded archive'.lightgreen
       FileUtils.cp filename, CREW_CACHE_DIR
     end
@@ -576,7 +576,7 @@ def build_and_preconfigure (target_dir)
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts 'Rename all *.la files to *.la_tmp'.lightblue
-    system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{verbose} {} {}_tmp"
+    system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@verbose} {} {}_tmp"
 
     @pkg.in_build = true
     @pkg.patch
@@ -584,14 +584,14 @@ def build_and_preconfigure (target_dir)
     @pkg.build
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf Dir.glob("#{CREW_DEST_DIR}/*") fileutils_verbose
+    "FileUtils.rm_rf Dir.glob('#{CREW_DEST_DIR}/*')#{@fileutils_verbose}"
     puts 'Preconfiguring package...'
     @pkg.install
 
     # Rename all *.la_tmp back to *.la to avoid
     # cannot access '*.la': No such file or directory
     puts 'Rename all *.la_tmp files back to *.la'.lightblue
-    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
   end
 end
 
@@ -615,7 +615,7 @@ def compress_doc (dir)
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "compressdoc #{verbose} --gzip -9 #{dir}"
+    system "compressdoc #{@verbose} --gzip -9 #{dir}"
   end
 end
 
@@ -638,7 +638,7 @@ def prepare_package (destdir)
     system 'tail -n +2 dlistcut > dlist'
 
     # remove temporary files
-    FileUtils.rm_rf ['dlistcut', '../dlist', '../filelist'] fileutils_verbose
+    "FileUtils.rm_rf ['dlistcut', '../dlist', '../filelist']#{@fileutils_verbose}"
   end
 end
 
@@ -667,9 +667,9 @@ def install_package (pkgdir)
     strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tbz' ! -iname '*\.tgz' ! -iname '\*.txz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     if Dir.exists? "#{pkgdir}/home" then
-      system "tar -cf #{verbose} - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      system "tar -cf #{@verbose} - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
     else
-      system "tar -cf #{verbose} - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      system "tar -cf #{@verbose} - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
       end
   end
 end
@@ -836,7 +836,7 @@ def resolve_dependencies_and_build
   ensure
     #cleanup
     unless @opt_keep
-      FileUtils.rm_rf Dir.glob("#{CREW_BREW_DIR}/*") fileutils_verbose
+      "FileUtils.rm_rf Dir.glob('#{CREW_BREW_DIR}/*')#{@fileutils_verbose}"
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" #this is a little ugly, feel free to find a better way
     end
   end
@@ -873,7 +873,7 @@ end
 
 def archive_package (pwd)
   pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-  system "tar -cJf #{verbose} #{CREW_DEST_DIR}/#{pwd}/#{pkg_name} *"
+  system "tar -cJf #{@verbose} #{CREW_DEST_DIR}/#{pwd}/#{pkg_name} *"
   system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
 end
 
