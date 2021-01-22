@@ -943,7 +943,7 @@ def build_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    print_current_package, true
+    print_current_package true
     resolve_dependencies_and_build
   end
 end
@@ -952,7 +952,7 @@ def download_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    print_current_package, true
+    print_current_package true
     download
   end
 end
@@ -989,7 +989,7 @@ def install_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    print_current_package, true
+    print_current_package true
     @pkg.build_from_source = true if @opt_src or @opt_recursive
     resolve_dependencies_and_install
   end
