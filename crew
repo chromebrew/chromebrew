@@ -134,7 +134,7 @@ end
 def list_packages
   Find.find (CREW_LIB_PATH + 'packages') do |filename|
     if File.extname(filename) == '.rb'
-      print_package filename, false
+      print_package filename
     end
   end
 end
