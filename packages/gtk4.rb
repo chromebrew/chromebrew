@@ -9,10 +9,10 @@ class Gtk4 < Package
   source_sha256 '626707ac6751426ed76fed49c5b2d052dfee45757ce3827088ba87ca7f1dbc84'
 
   binary_url ({
-     aarch64: 'file:///usr/local/tmp/packages/gtk4-4.0.2-chromeos-armv7l.tar.xz',
-      armv7l: 'file:///usr/local/tmp/packages/gtk4-4.0.2-chromeos-armv7l.tar.xz',
-        i686: 'file:///usr/local/tmp/packages/gtk4-4.0.2-chromeos-i686.tar.xz',
-      x86_64: 'file:///usr/local/tmp/packages/gtk4-4.0.2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '80abb64172b377862591c608196ac945bd1f9ba81e2304d180d4f1129cb310f7',
