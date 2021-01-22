@@ -4,7 +4,7 @@ class Pypy3 < Package
   description 'pypy is fast, drop-in replacement of cpython that can execute code over 4 times faster.'
   homepage 'https://www.pypy.org/'
   version '7.3.3'
-  compatibility 'x86_64, i686, aarch64'
+  compatibility 'x86_64, i686'
   
   case ARCH
   when 'x86_64'
@@ -13,10 +13,6 @@ class Pypy3 < Package
   when 'i686'
     source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-linux32.tar.bz2'
     source_sha256 '7d81b8e9fcd07c067cfe2f519ab770ec62928ee8787f952cadf2d2786246efc8'
-  when 'aarch64'
-    source_url 'https://downloads.python.org/pypy/pypy3.7-v7.3.3-aarch64.tar.bz2'
-    source_sha256 'ee4aa041558b58de6063dd6df93b3def221c4ca4c900d6a9db5b1b52135703a8'
-  end
 
   def self.build
     # Remove unnecessary files
