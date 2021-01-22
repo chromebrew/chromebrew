@@ -943,7 +943,7 @@ def build_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    print_current_package true
+    print_current_package @opt_verbose
     resolve_dependencies_and_build
   end
 end
@@ -952,7 +952,7 @@ def download_command (args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    print_current_package true
+    print_current_package @opt_verbose
     download
   end
 end
