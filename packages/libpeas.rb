@@ -1,39 +1,41 @@
 require 'package'
 
 class Libpeas < Package
-  description 'libpeas is a gobject-based plugins engine'
-  homepage 'https://gitlab.gnome.org/GNOME/libpeas'
-  version '1.22.0'
+  description 'A GObject plugins library'
+  homepage 'https://wiki.gnome.org/Projects/Libpeas'
+  version '1.28.0'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libpeas/-/archive/libpeas-1.22.0/libpeas-libpeas-1.22.0.tar.bz2'
-  source_sha256 '8400f330f3ccc48e9d1702a40731e4deaa11310862a6a61cc25b67d375e2e572'
+  source_url 'https://github.com/GNOME/libpeas/archive/libpeas-1.28.0.tar.gz'
+  source_sha256 '93d2826330a5e943dcfe8d059c5885a808494ee44c0b04f72f2bb2283b4d515b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.22.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.22.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.22.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.22.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.28.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.28.0-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.28.0-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpeas-1.28.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bf06c86dfa448a3e4848fb0c80c4f4611683fd1b631e27d4e3266148a8a9451e',
-     armv7l: 'bf06c86dfa448a3e4848fb0c80c4f4611683fd1b631e27d4e3266148a8a9451e',
-       i686: '7cd0e0a6aea97863d9bb3bb3735e53f4223cb33f59cfe1a8fe870dcb38675af1',
-     x86_64: '1e5dab28a55d3e2209ed4535b0cbaf94c5260a79792a987d6ca9de19c3168952',
+     aarch64: '1e304a55ad539257c0ff2e1caa48671ee0c8749eb438d344d27025bc8b48c435',
+      armv7l: '1e304a55ad539257c0ff2e1caa48671ee0c8749eb438d344d27025bc8b48c435',
+        i686: '2fb94c73ed674c002632cc4dfd4d32ade44ed5798e13c2cb01a8ff63966169dd',
+      x86_64: '1333e5f9ba1e4b516a81dfbd41cc4bf0502d4d735b250a61ef95c7c0f60073c0',
   })
 
-  depends_on 'gobject_introspection'
-  depends_on 'gnome_common'
-  depends_on 'gtk_doc'
   depends_on 'gtk3'
-  depends_on 'lua'
-  depends_on 'pygobject'
+  depends_on 'gobject_introspection'
+  depends_on 'gtk_doc' => ':build'
+  depends_on 'pygobject' => ':build'
+  depends_on 'glade' => ':build'
+  depends_on 'gobject_introspection' => ':build'
+  depends_on 'vala' => ':build'
 
   def self.build
-    system "./autogen.sh --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
+    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
