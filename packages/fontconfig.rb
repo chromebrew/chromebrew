@@ -30,16 +30,13 @@ class Fontconfig < Package
   depends_on 'graphite' => :build
   # Remove freetype and fontconfig before rebuilding this package.
 
-  def self.patch
-  # Fix failure from font directories not being writable.
+  def self.build
+    # Fix failure from font directories not being writable.
     system "cat <<'EOF'> install-cache.py
 #!/usr/bin/env python3
 import sys
 sys.exit() 
 EOF"
-  end
-
-  def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
     --localstatedir=#{CREW_PREFIX}/cache \
     --default-library=both \
