@@ -2,9 +2,13 @@
 
 set -e
 
+if [[ ${1} != 'http*' ]]; then echo -e "#{RED}Missing deb downloading URL#{RESET}" && exit 1; fi
+
 CREW_PREFIX=${CREW_PREFIX:-/usr/local}
 CREW_LIB_PREFIX=${CREW_PREFIX}/lib
 PKG_PREFIX=${CREW_LIB_PREFIX}/crew/packages
+OUT=${2:-"${CREW_PREFIX}/${PKGNAME}.rb"}
+
 GREEN='\e[1;32m';
 RED='\e[1;31m';
 BLUE='\e[1;34m';
@@ -29,21 +33,26 @@ VER=$(grep "Version: " ./control | sed -e 's/Version: //' | sed -e 's/-/_/g')
 INFO=$(grep "Description: " ./control | sed -e 's/Description: //' | sed -e 's/-/_/g')
 SHA256SUM=$(sha256sum ./deb | cut -d ' ' -f1)
 
-OUT=${2}/${PKGNAME}.rb
-  
+read -p "Package homepage (Press 'Enter' for default): " homepage
+if [[ ${homepage} != '' ]]; then
+  homepage=${homepage}
+else
+  unset homepage
+fi
+
 cat <<EOF> ${OUT}
 require 'package'
 class ${PKGNAME^} < Package
-  description '${INFO}'
-  homepage ''
-  compatibility 'all'
-  @_ver = '${VER}'
+  description "${INFO}"
+  ${homepage}
+  compatibility "${deb_arch:-x86_64}"
+  @_ver = "${VER}"
   version @_ver
   
   case ARCH
-  when 'x86_64'
-    source_url '${1}'
-    source_sha256 '${SHA256SUM}'
+  when "${deb_arch:-x86_64}"
+    source_url "${1}"
+    source_sha256 "${SHA256SUM}"
 EOF
 DEPS=($( sed '/Pre-Depends: /d' ./control |\
          grep 'Depends: ' |\
@@ -98,13 +107,14 @@ DEPS=($( sed '/Pre-Depends: /d' ./control |\
     unset filter
     unset GETDEP
   done
-cat <<'EOF'> ${OUT} "
+  
+cat <<EOF> ${OUT}
   end
     
   def self.build
     Dir.chdir '..' do
-      system \"alien -tc *.deb\"
-      system \"tar xf *.tgz\"
+      system 'alien -tc *.deb'
+      system 'tar xf *.tgz'
     end
   end
     
@@ -112,7 +122,8 @@ cat <<'EOF'> ${OUT} "
     Dir.chdir '..' do
       FileUtils.mkdir_p CREW_DEST_PREFIX
       ENV['CREW_NOT_STRIP'] = '1'
-EOF"
+EOF
+
 echo -e "${YELLOW}Unpacking 'data.tar' using 'tar', this may take a while...${RESET}"
 tar xvf data.tar.* > /dev/null
 if [ -d usr/bin ]; then echo '      FileUtils.mv "usr/bin/", CREW_DEST_PREFIX' >> ${OUT}; fi
@@ -132,7 +143,8 @@ if [ -d usr/local/lib/ ]; then echo '      FileUtils.mv "usr/local/lib/", CREW_D
 if [ -d usr/lib64/ ]; then echo '      FileUtils.mv "usr/lib64/", CREW_DEST_PREFIX' >> ${OUT}; fi
 if [ -d lib64/ ]; then echo '      FileUtils.mv "lib64/", CREW_DEST_PREFIX' >> ${OUT}; fi
 if [ -d usr/local/lib64/ ]; then echo '      FileUtils.mv "usr/local/lib64/", CREW_DEST_PREFIX' >> ${OUT}; fi
-echo '    end
+echo '
+    end
   end
 end' >> ${OUT}
 
