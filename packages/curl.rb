@@ -4,23 +4,24 @@ class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
   @_ver = "7.74.0"
-  version @_ver + '-1'
+  version @_ver + '-2'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
   source_sha256 '999d5f2c403cf6e25d58319fdd596611e455dd195208746bc6e6d197a77e878b'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-2-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-2-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'f54a7ff2c3521535af5873b061d26514005e3e080e5b444888e25dce95981201',
-      armv7l: 'f54a7ff2c3521535af5873b061d26514005e3e080e5b444888e25dce95981201',
-        i686: 'ba7b7abeda8592135d2ea851f906636716b1f1d577fdcc75ad68bd6f0b67e5e0',
-      x86_64: '7696a5014d09eaff0864ee36fe4a7f8032c99e7eeb56baf0e04a87427e0114c6',
+     aarch64: '48caa978643acd326ffdf3e3f4bc502d48c8aafc73b1e39e47d710174fad2145',
+      armv7l: '48caa978643acd326ffdf3e3f4bc502d48c8aafc73b1e39e47d710174fad2145',
+        i686: 'fed721a267a16a27df602b6116d0be04423bb58194d567dbf42727e6d61afdf2',
+      x86_64: 'e8a8120132ce90acda8cc2b9f87c609dd4eca1851a8ef990b2d99eebf84372b1',
   })
+
 
   depends_on 'groff' => :build
   depends_on 'brotli'
