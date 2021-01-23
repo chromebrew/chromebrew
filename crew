@@ -880,8 +880,12 @@ end
 
 def archive_package (pwd)
   pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-  system "tar -cJf #{@verbose} #{CREW_DEST_DIR}/#{pwd}/#{pkg_name} *"
-  system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
+  Dir.chdir CREW_DEST_DIR do
+    system "tar cJf #{pwd}/#{pkg_name} *"
+  end
+  Dir.chdir pwd do
+    system "sha256sum #{pkg_name} > #{pkg_name}.sha256"
+  end
 end
 
 def remove (pkgName)
