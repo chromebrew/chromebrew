@@ -27,6 +27,12 @@ class Dpkg < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "rm #{CREW_DEST_PREFIX}/Dpkg* -rf"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/dpkg", "#{CREW_DEST_PREFIX}/bin/dpkg~"
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
+      system "curl -#LO https://raw.github.com/saltedcoffii/chromebrew-dpkg-noinstall/master/dpkg"
+      system "chmod +x dpkg"
+    end
   end
 
   def self.check
