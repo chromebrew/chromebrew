@@ -39,9 +39,9 @@ class Llvm < Package
   when 'aarch64','armv7l'
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     LLVM_TARGETS_TO_BUILD = 'all'
-    #@ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
-    #@ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
-    @ARCH_LDFLAGS=''
+    @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_LDFLAGS = ''
   when 'i686'
     LLVM_TARGETS_TO_BUILD = 'X86'
     # Because ld.lld: error: undefined symbol: __atomic_store
@@ -57,7 +57,7 @@ class Llvm < Package
     LLVM_TARGETS_TO_BUILD = 'all'
     @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
-    @ARCH_LDFLAGS=''
+    @ARCH_LDFLAGS = ''
   end
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -fuse-ld=lld"
   @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -fuse-ld=lld"
