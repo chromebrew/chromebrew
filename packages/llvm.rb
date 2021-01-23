@@ -39,8 +39,8 @@ class Llvm < Package
   when 'aarch64','armv7l'
     #LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     LLVM_TARGETS_TO_BUILD = 'all'
-    @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
-    @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
+    #@ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
+    #@ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{LLVM_DEFAULT_TARGET_TRIPLE}"
     @ARCH_LDFLAGS=''
   when 'i686'
     LLVM_TARGETS_TO_BUILD = 'X86'
