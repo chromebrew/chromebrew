@@ -582,7 +582,7 @@ def build_and_preconfigure (target_dir)
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts 'Rename all *.la files to *.la_tmp'.lightblue
-    if @verbose
+    if @opt_verbose
       system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv -#{@verbose} {} {}_tmp"
     else
       system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
