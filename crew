@@ -761,7 +761,7 @@ def resolve_dependencies
   case response
   when 'n'
     abort 'No changes made.'
-  when '\n', 'y', 'Y'
+  when "\n", "y", "Y"
     puts 'Proceeding...'
     proceed = true
   else
