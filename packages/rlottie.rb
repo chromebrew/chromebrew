@@ -11,7 +11,6 @@ class Rlottie < Package
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} build"
     system "meson configure build"
-    system "ninja -C build"
   end
 
   def self.install
