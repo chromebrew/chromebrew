@@ -11,7 +11,7 @@ class Rpm < Package
   depends_on 'openssl' # Could also be libgcrypt but I chose openssl because it's a base package
   depends_on 'popt' => :build
   depends_on 'libarchive' => :build
-  depends_on 'libdb' => :build # I'm assuming these are build dependencies because the configure script was looking for header files not libraries or binaries, I could be wrong
+  depends_on 'libdb' => :build # I'm assuming these are build dependencies because the configure script was looking for header files not libraries or binaries, I could be wrong.
 
   def self.build
     system "./configure #{CREW_OPTIONS} \
@@ -24,6 +24,11 @@ class Rpm < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/rpm", "#{CREW_DEST_PREFIX}/bin/rpm~"
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
+      system "curl -#LO https://raw.github.com/saltedcoffii/chromebrew-rpm-noinstall/master/rpm"
+      system "chmod +x rpm"
+    end
   end
 
   def self.check
