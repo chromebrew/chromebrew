@@ -18,13 +18,14 @@ class Git < Package
   binary_sha256 ({
      aarch64: '4386bc951eaa7311b8c828fb76b030410f63686c9c86f6288b2a1025594166f1',
       armv7l: '4386bc951eaa7311b8c828fb76b030410f63686c9c86f6288b2a1025594166f1',
-        i686: '6587e0c07c7808d9b2931bab4ac51ad03c3a346a02dbb30eb69e89538521ea45',
-      x86_64: 'd1fd72aecf0e250e84f6c9f03f7226b4e501954c50949e04b7f57873f0d0683f',
+        i686: '9e4765bc56e32cb0c49809385ff638cf184aabe8a7e0461f5415ef1cc6e9e8ff',
+      x86_64: '32822611c4b6058a183cd0c740ae2664ece139c36177be0603595dcc4b08922c',
   })
-
 
   depends_on 'curl' => :build
   depends_on 'python3' => :build
+  depends_on 'autoconf' => :build
+  depends_on 'isl' => :build
 
   def self.build
     system 'autoreconf -i'
