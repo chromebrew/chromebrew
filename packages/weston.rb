@@ -52,7 +52,7 @@ EOF"
     system "DESTDIR=#{CREW_DEST_DIR} ninja install -C build"
     system "install -Dm644 weston.ini #{CREW_DEST_HOME}/.config/weston.ini"
   end
-  
+
   def self.postinstall
     puts
     puts "To run weston with xwayland try something like this:".lightblue

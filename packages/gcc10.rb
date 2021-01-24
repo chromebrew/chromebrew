@@ -36,7 +36,7 @@ class Gcc10 < Package
   depends_on 'isl'
   depends_on 'glibc'
   depends_on 'zstd'
-  
+
   def self.preinstall
     installed_gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
     gcc_version = version.split("-")[0]
@@ -49,9 +49,9 @@ class Gcc10 < Package
     system "ccache --set-config=sloppiness=file_macro,locale,time_macros"
     # Prefix ccache to path.
     ENV['PATH'] = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
-    
+
     gcc_version = version.split("-")[0]
-    
+
     # previous compile issue
     # /usr/local/bin/ld: cannot find crti.o: No such file or directory
     # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
@@ -177,7 +177,7 @@ class Gcc10 < Package
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-nm"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gcc-ranlib"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/#{gcc_arch}-gfortran-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-gfortran"
-      
+
       FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ar-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-ar"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-nm-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-nm"
       FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc-ranlib-#{gcc_version}", "#{CREW_DEST_PREFIX}/bin/#{gcc_arch}-ranlib"

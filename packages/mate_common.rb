@@ -20,7 +20,7 @@ class Mate_common < Package
        i686: 'f7a9d18c6c0a7f10828d0bc4528dd0b67405e0388287123516b04e6d80361223',
      x86_64: 'd04c069aee911be73e5c80675e15a6bdfe3381432fc8bf293d6c29a592412694',
   })
-  
+
   depends_on 'gtk_doc'
 
   def self.build

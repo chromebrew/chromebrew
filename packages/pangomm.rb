@@ -24,7 +24,7 @@ class Pangomm < Package
   depends_on 'glibmm'
   depends_on 'cairomm'
   depends_on 'pango'
-  
+
   def self.build
     system "sed -e '/^libdocdir =/ s/$(book_name)/pangomm-2.40.1/' \
     -i docs/Makefile.in"
@@ -39,6 +39,6 @@ class Pangomm < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     #system "pip uninstall --yes six"
   end
-  
+
 
 end

@@ -43,8 +43,8 @@ class Libdrm < Package
            "--libdir=#{CREW_LIB_PREFIX}",
            "--prefix=#{CREW_PREFIX}",
            "builddir/"
- 
-    system "ninja -C builddir/" 
+
+    system "ninja -C builddir/"
   end
 
   def self.install

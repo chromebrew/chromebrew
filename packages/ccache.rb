@@ -36,13 +36,13 @@ class Ccache < Package
       system "ninja"
     end
   end
-  
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     Dir.chdir 'build' do
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/ccache/bin"
       system "for _prog in gcc g++ c++; do
-        ln -s #{CREW_PREFIX}/bin/ccache #{CREW_DEST_LIB_PREFIX}/ccache/bin/$_prog 
+        ln -s #{CREW_PREFIX}/bin/ccache #{CREW_DEST_LIB_PREFIX}/ccache/bin/$_prog
         ln -s #{CREW_PREFIX}/bin/ccache #{CREW_DEST_LIB_PREFIX}/ccache/bin/${CHOST}-$_prog
       done
       for _prog in cc clang clang++; do
@@ -50,7 +50,7 @@ class Ccache < Package
       done"
     end
   end
-  
+
   def self.postinstall
     system "ccache --set-config=sloppiness=file_macro,locale,time_macros"
     puts "To compile using ccache you need to add the ccache bin folder to your path".lightblue

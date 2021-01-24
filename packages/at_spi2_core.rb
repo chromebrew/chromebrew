@@ -1,24 +1,24 @@
 require 'package'
-
+  
 class At_spi2_core < Package
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'http://www.freedesktop.org/'
-  version '2.26.1'
+  version '2.39.1'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/at-spi2-core/archive/AT_SPI2_CORE_2_26_1.tar.gz'
-  source_sha256 '30cafdcce582cf7fc57d760ef36293344b8a29370f96b300ff56fe24cdb4a0a2'
+  source_url 'https://github.com/GNOME/at-spi2-core/archive/AT_SPI2_CORE_2_39_1.tar.gz'
+  source_sha256 '01db93c5f145492e973ddbace66ce85f6487a1e0cdd1b0ecdb8b67e0fbda5a45'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.26.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.26.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.26.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.26.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '1ddf25b1d1c22517ecfcc571a5e674ea4ae9c371ceb8ad4f0959d928f8d5050e',
-     armv7l: '1ddf25b1d1c22517ecfcc571a5e674ea4ae9c371ceb8ad4f0959d928f8d5050e',
-       i686: '657e8745c754c86d2d217ee61b1303c8e369fde41ad456a0297270cdf32956c1',
-     x86_64: '340e21fedd23e3a18f470512b6109aecd307722b1cfa56970e7c99a51aa2f7d1',
+     aarch64: '601ffb2a4fa4d39fb0d91778b6d51e5b8cb6f1d594d816f663185bbc41946b64',
+      armv7l: '601ffb2a4fa4d39fb0d91778b6d51e5b8cb6f1d594d816f663185bbc41946b64',
+        i686: '212e32fbb4d303f51519b0f83673ad763b9e06eff185f6fffe2ce621068d68b3',
+      x86_64: '43d3d871bb8ee30719b69a740ec6be0e005a6e10acf6858abf250de5e0f38832',
   })
 
   depends_on 'automake' => :build
@@ -29,14 +29,14 @@ class At_spi2_core < Package
   depends_on 'libxcb'
   depends_on 'gtk_doc'
   depends_on 'libtool'
-  
+
   def self.build
-    system "./autogen.sh"
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

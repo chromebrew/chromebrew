@@ -48,7 +48,7 @@ class Gst_plugins_base < Package
     "-Dgst_debug=false",
     "-Dexamples=disabled",
     "build"
-    system "ninja -C build" 
+    system "ninja -C build"
   end
 
   def self.install

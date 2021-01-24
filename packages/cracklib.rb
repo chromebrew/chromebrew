@@ -36,7 +36,7 @@ class Cracklib < Package
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
   end
-    
+
   def self.test
     Dir.chdir 'src' do
       system 'make test'

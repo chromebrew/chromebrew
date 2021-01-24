@@ -24,7 +24,7 @@ class Babl < Package
   depends_on 'meson' => :build
   depends_on 'lcms'
   depends_on 'pango'
-  
+
   def self.build
     system 'meson',
            "--prefix=#{CREW_PREFIX}",
@@ -32,7 +32,7 @@ class Babl < Package
            '_build'
     system 'ninja -v -C _build'
   end
-  
+
   def self.check
     system 'ninja -C _build test'
   end

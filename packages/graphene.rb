@@ -30,12 +30,12 @@ class Graphene < Package
       -Darm_neon=false \
       -Dinstalled_tests=false \
       -Dtests=false \
-      _build"  
-    system "meson configure _build"         
+      _build"
+    system "meson configure _build"
     system "ninja -v -C _build"
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
-  end 
+  end
 end

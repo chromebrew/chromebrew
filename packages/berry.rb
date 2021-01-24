@@ -35,23 +35,23 @@ diff config.mk.orig config.mk -u
 @@ -12,8 +12,8 @@
  PREFIX = /usr/local
  MANPREFIX = ${PREFIX}/share/man
- 
+
 -X11INC = /usr/X11R6/include
 -X11LIB = /usr/X11R6/lib
 +X11INC = /usr/local/include
 +X11LIB = /usr/local/lib
- 
+
  # Xinerama, comment if you don't want it
  XINERAMALIBS  = -lXinerama
 @@ -21,7 +21,7 @@
- 
+
  # freetype
  FREETYPELIBS = -lfontconfig -lXft
 -FREETYPEINC = /usr/include/freetype2
 +FREETYPEINC = /usr/local/include/freetype2
  # OpenBSD (uncomment)
  #FREETYPEINC = ${X11INC}/freetype2
- 
+
 @@ -36,7 +36,7 @@
  # flags
  CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${DEBUG_CPPFLAGS}
@@ -59,11 +59,11 @@ diff config.mk.orig config.mk -u
 -CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os ${INCS} ${CPPFLAGS} ${DEBUG_CFLAGS} $(NAME_DEFINES)
 +CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os ${INCS} ${CPPFLAGS} ${DEBUG_CFLAGS}
  LDFLAGS  = ${LIBS}
- 
+
  # Solaris
 @@ -44,4 +44,4 @@
  #LDFLAGS = ${LIBS}
- 
+
  # compiler and linker
 -CC = cc
 +#CC = cc

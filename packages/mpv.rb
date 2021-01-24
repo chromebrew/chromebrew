@@ -13,14 +13,14 @@ class Mpv < Package
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mpv-0.32.0-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/mpv-0.32.0-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mpv-0.32.0-chromeos-x86_64.tar.xz',
-    
+
   })
   binary_sha256 ({
     aarch64: 'ae9f812ccb3239ca85d25a6e919e1ded6e459867ba00d2027ea832782a38f9f1',
      armv7l: 'ae9f812ccb3239ca85d25a6e919e1ded6e459867ba00d2027ea832782a38f9f1',
        i686: '41f96ce28132e2d60978c3e7450594b58b03fda67edbb8fa2e56ce6442d3d1ee',
      x86_64: 'e9623b3fdd06ab5bb762a15a3d7ef9b7875a10d4f0a5baaed5f83b9250b9fbe4',
-    
+
   })
 
   depends_on 'ld_default' => :build

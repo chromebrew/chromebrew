@@ -23,7 +23,7 @@ class Libwacom < Package
 
   depends_on 'libgudev'
   depends_on 'eudev'
-       
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system "make"

@@ -24,7 +24,7 @@ class Freetype_sub < Package
   depends_on 'expat'
   depends_on 'libpng'   # freetype needs zlib optionally. zlib is also the dependency of libpng
   depends_on 'bz2'
-  
+
   def self.build
     system 'pip3 install docwriter'
     system "./configure CFLAGS=' -fPIC' #{CREW_OPTIONS} --enable-freetype-config --without-harfbuzz"
@@ -36,7 +36,7 @@ class Freetype_sub < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-  
+
   def self.postinstall
     system "find #{CREW_BREW_DIR}/* -name freetype*.tar | xargs rm -rf"  # make sure to delete downloaded files
   end

@@ -22,7 +22,7 @@ class Xorg_proto < Package
   })
 
   depends_on 'llvm' => ':build'
-  
+
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
       -Dc_args='-fuse-ld=lld' \
@@ -30,7 +30,7 @@ class Xorg_proto < Package
     system "meson configure builddir"
     system "ninja -C builddir"
   end
-  
+
   def self.install
    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end

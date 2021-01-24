@@ -27,7 +27,7 @@ class Sassc < Package
     system "./configure #{CREW_OPTIONS}"
     system "make"
   end
-  
+
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end

@@ -23,7 +23,7 @@ class Nmap < Package
 
   def self.build
     #fixup "/usr/bin/file" -> "#{CREW_PREFIX}/bin/file" in the configure scripts
-    system "sed -i s#/usr/bin/file##{CREW_DEST_PREFIX}/bin/file#g libdnet-stripped/configure" 
+    system "sed -i s#/usr/bin/file##{CREW_DEST_PREFIX}/bin/file#g libdnet-stripped/configure"
     system "./configure --with-pcap=linux --without-zenmap --prefix=#{CREW_PREFIX}"
     system 'make'
   end

@@ -66,7 +66,7 @@ _EOF_'
           --disable-webrtc-apm \
           --enable-sse42 \
           --enable-avx \
-          --enable-avx2 
+          --enable-avx2
           --enable-fma"
       else
         system "CFLAGS='-fuse-ld=lld' ./configure #{CREW_OPTIONS} \

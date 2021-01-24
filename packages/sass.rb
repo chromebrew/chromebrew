@@ -22,7 +22,7 @@ class Sass < Package
   depends_on 'dart'
 
   def self.build
-    system "echo '#!/bin/bash' >> sass" 
+    system "echo '#!/bin/bash' >> sass"
     system "echo 'dart #{CREW_PREFIX}/share/dart-sass/bin/sass.dart $@' >> sass"
   end
 

@@ -31,7 +31,7 @@ class Bash < Package
      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
      FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
   end
-  
+
   def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue
