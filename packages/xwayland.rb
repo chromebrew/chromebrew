@@ -4,23 +4,24 @@ class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
   @_ver = '1.20.10'
-  version @_ver + '-1'
+  version @_ver + '-2'
   compatibility 'all'
   source_url "https://github.com/freedesktop/xorg-xserver/archive/xorg-server-#{@_ver}.tar.gz"
   source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'c0a7dc97b292c4e0b4f656e287662cc42d9f5d9faa153121af2febc6646b685d',
-      armv7l: 'c0a7dc97b292c4e0b4f656e287662cc42d9f5d9faa153121af2febc6646b685d',
-        i686: 'ebecd2f9921810166ffac629fb4a38c8157e5b675174ef514e2e386ad8b27f18',
-      x86_64: '2423bbd76b41e395066641ba7cb889ca70a32a4b002226b6d0fc00bf0604d903',
+     aarch64: '56870da84a58bd14ac55464f7f0363de30c924fb4853d29d1c5c987ee5164914',
+      armv7l: '56870da84a58bd14ac55464f7f0363de30c924fb4853d29d1c5c987ee5164914',
+        i686: '5832302f0eed9f41e3eca584b9c3df401c3c5b551db087d9cc8e6d43d19056cf',
+      x86_64: 'acaa00da4c1c6200fa3c6ffa3f833e5d13bcd240bc0d6cb5277ee0c01299ba47',
   })
+
 
   depends_on 'libepoxy'
   depends_on 'xorg_proto'
@@ -71,7 +72,7 @@ class Xwayland < Package
     puts "patch2 archive downloaded".lightgreen
     system 'base64 --decode patch2_base64 > patch2'
     system 'patch -p 1 < patch2'
-
+    
     url_patch3 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-sysmacros.patch?format=TEXT"
     uri_patch3 = URI.parse url_patch3
     filename_patch3 = 'patch3_base64'
@@ -95,6 +96,11 @@ class Xwayland < Package
   end
 
   def self.build
+    #case ARCH
+    #when 'aarch64', 'armv7l', 'x86_64'
+    #  ENV['CFLAGS'] = '-fuse-ld=lld'
+    #  ENV['CXXFLAGS'] = '-fuse-ld=lld'
+    #end
     system 'meson setup build'
     system "meson configure #{CREW_MESON_OPTIONS} \
               -Dc_link_args='-fuse-ld=lld' \

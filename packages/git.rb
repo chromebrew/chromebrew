@@ -4,24 +4,23 @@ class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
   @_ver = '2.30.0'
-  version @_ver
+  version @_ver + '-1'
   compatibility 'all'
   source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"
   source_sha256 '8db4edd1a0a74ebf4b78aed3f9e25c8f2a7db3c00b1aaee94d1e9834fae24e61'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '530242b602699db7a4f649c47ec44e81586128629b24b3e7fb7e1a9f877e8353',
-      armv7l: '530242b602699db7a4f649c47ec44e81586128629b24b3e7fb7e1a9f877e8353',
-        i686: 'fa19e5276870d4347259daf6b8c4c001eafdaabb0c02b7846014558cf6ca90a5',
-      x86_64: '70adb89d9f1e1a250cc84f0e1b3e98d7ed5c82ceb413f4ae451ef9cd748b9398',
+     aarch64: '4386bc951eaa7311b8c828fb76b030410f63686c9c86f6288b2a1025594166f1',
+      armv7l: '4386bc951eaa7311b8c828fb76b030410f63686c9c86f6288b2a1025594166f1',
+        i686: '6dd0fc056dd3cdca76596603c1a161724e8f81d68c50bf18f25877e4df8dc9e4',
+      x86_64: 'ae2a5001e272fdf4a1f212ed31f38b62e2fd20205f8ab0c77ab7226b8a94b6ac',
   })
-
 
   depends_on 'curl' => :build
   depends_on 'python3' => :build
