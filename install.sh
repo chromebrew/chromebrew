@@ -206,7 +206,7 @@ case "${ARCH}" in
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-2-chromeos-x86_64.tar.xz')
   sha256s+=('e8a8120132ce90acda8cc2b9f87c609dd4eca1851a8ef990b2d99eebf84372b1')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-1-chromeos-x86_64.tar.xz')
-  sha256s+=('32822611c4b6058a183cd0c740ae2664ece139c36177be0603595dcc4b08922c')
+  sha256s+=('ae2a5001e272fdf4a1f212ed31f38b62e2fd20205f8ab0c77ab7226b8a94b6ac')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-x86_64.tar.xz')
   sha256s+=('ae2a5001e272fdf4a1f212ed31f38b62e2fd20205f8ab0c77ab7226b8a94b6ac')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libedit-3.1-0-chromeos-x86_64.tar.xz')
