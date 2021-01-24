@@ -847,7 +847,7 @@ def resolve_dependencies_and_build
     #cleanup
     unless @opt_keep
       FileUtils.rm_rf "#{Dir.glob('#{CREW_BREW_DIR}/*')}#{@fileutils_verbose}"
-      FileUtils.mkdir_p '#{CREW_BREW_DIR}/dest'#{@fileutils_verbose}" #this is a little ugly, feel free to find a better way
+      FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest#{@fileutils_verbose}" #this is a little ugly, feel free to find a better way
     end
   end
   puts "#{@pkg.name} is built!".lightgreen
