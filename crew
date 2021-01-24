@@ -82,9 +82,11 @@ end
 if @opt_verbose then
   @fileutils_verbose = ', verbose: true'
   @verbose = 'v'
+  @mv_verbose = '-v'
 else
   @fileutils_verbose = ''
   @verbose = ''
+  @mv_verbose = ''
 end
 
 @opt_src = args["--build-from-source"]
@@ -582,11 +584,8 @@ def build_and_preconfigure (target_dir)
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts 'Rename all *.la files to *.la_tmp'.lightblue
-    if @opt_verbose
-      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv -#{@verbose} {} {}_tmp"
-    else
-      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv {} {}_tmp"
-    end
+    
+    system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@mv_verbose} {} {}_tmp"
 
     @pkg.in_build = true
     @pkg.patch
@@ -601,7 +600,7 @@ def build_and_preconfigure (target_dir)
     # Rename all *.la_tmp back to *.la to avoid
     # cannot access '*.la': No such file or directory
     puts 'Rename all *.la_tmp files back to *.la'.lightblue
-    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv -#{@verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@mv_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
   end
 end
 
