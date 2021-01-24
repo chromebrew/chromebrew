@@ -81,7 +81,7 @@ end
 
 if @opt_verbose then
   @fileutils_verbose = ', verbose: true'
-  @verbose = '-v'
+  @verbose = 'v'
 else
   @fileutils_verbose = ''
   @verbose = ''
@@ -315,7 +315,7 @@ end
 def const (var)
   if var
     value = eval(var)
-    puts "#{var}=#{value}"
+    puts var + '=' + value
   else
     vars = [
       'ARCH',
@@ -349,7 +349,7 @@ def const (var)
     ]
     vars.each { |var|
       value = eval(var)
-      puts "#{var}=#{value}"
+      puts var + '=' + value
     }
   end
 end
@@ -510,11 +510,11 @@ def download
   end
   Dir.chdir CREW_BREW_DIR do
     if ENV['CREW_CACHE_OPT']
-      FileUtils.mkdir_p CREW_CACHE_DIR
+      FileUtils.mkdir_p "#{CREW_CACHE_DIR}#{@fileutils_verbose}"
       cachefile = CREW_CACHE_DIR + filename
       if File.file?(cachefile)
         if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum then
-          FileUtils.cp cachefile, CREW_BREW_DIR
+          FileUtils.cp cachefile, "#{CREW_BREW_DIR}#{@fileutils_verbose}"
           puts "Archive found in cache".lightgreen
           return {source: source, filename: filename}
           else
@@ -523,7 +523,7 @@ def download
       end
     end
 
-    system "curl #{@verbose} --retry 3 --progress-bar -C - --insecure -L #{url} '-o' #{filename}"
+    system('curl', '--retry', '3', "-#{@verbose}#LC", '-', '--insecure', url, '-o', filename)
 
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
@@ -531,7 +531,7 @@ def download
 
     if ENV['CREW_CACHE_OPT']
       puts 'Caching downloaded archive'.lightgreen
-      FileUtils.cp filename, CREW_CACHE_DIR
+      FileUtils.cp filename, "#{CREW_CACHE_DIR}#{@fileutils_verbose}"
     end
   end
   return {source: source, filename: filename}
@@ -541,7 +541,7 @@ def unpack (meta)
   extract_dir = meta[:filename] + '.dir'
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
-    FileUtils.mkdir_p extract_dir
+    FileUtils.mkdir_p "#{extract_dir}#{@fileutils_verbose}"
     case File.basename meta[:filename]
     when /\.zip$/i
       puts "Unpacking archive using 'unzip', this may take a while..."
@@ -549,9 +549,9 @@ def unpack (meta)
       system 'unzip', _verbopt, '-d', extract_dir, meta[:filename]
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
-      _verbopt = @opt_verbose ? 'v' : ''
-      system 'tar', "x#{_verbopt}f", meta[:filename], '-C', extract_dir
-   end
+      FileUtils.mkdir extract_dir
+      system "tar x#{@verbose}f #{meta[:filename]} -C #{extract_dir}"
+    end
     if meta[:source] == true
       # Check the number of directories in the archive
       entries = Dir["#{extract_dir}/*"]
@@ -582,7 +582,7 @@ def build_and_preconfigure (target_dir)
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts 'Rename all *.la files to *.la_tmp'.lightblue
-    system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@verbose} {} {}_tmp"
+    system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv -#{@verbose} {} {}_tmp"
 
     @pkg.in_build = true
     @pkg.patch
@@ -590,14 +590,14 @@ def build_and_preconfigure (target_dir)
     @pkg.build
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf Dir.glob("#{CREW_DEST_DIR}/*")
+    FileUtils.rm_rf "#{Dir.glob('#{CREW_DEST_DIR}/*')}#{@fileutils_verbose}"
     puts 'Preconfiguring package...'
     @pkg.install
 
     # Rename all *.la_tmp back to *.la to avoid
     # cannot access '*.la': No such file or directory
     puts 'Rename all *.la_tmp files back to *.la'.lightblue
-    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv -#{@verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
   end
 end
 
@@ -621,7 +621,7 @@ def compress_doc (dir)
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "compressdoc #{@verbose} --gzip -9 #{dir}"
+    system "compressdoc --gzip -9#{@verbose} #{dir}"
   end
 end
 
@@ -644,17 +644,17 @@ def prepare_package (destdir)
     system 'tail -n +2 dlistcut > dlist'
 
     # remove temporary files
-    "FileUtils.rm_rf ['dlistcut', '../dlist', '../filelist']#{@fileutils_verbose}"
+    FileUtils.rm_rf "['dlistcut', '../dlist', '../filelist']#{@fileutils_verbose}"
   end
 end
 
 def strip_find_files (find_cmd, strip_option = "")
   # check whether crew should strip
-  return if CREW_NOT_STRIP || ENV['CREW_NOT_STRIP'] || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
+  return if CREW_NOT_STRIP || ENV['CREW_NOT_STRIP'] || !File.exist?("#{CREW_PREFIX}/bin/strip")
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
-  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r llvm-strip #{strip_option}"
+  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r strip #{strip_option}"
 end
 
 def install_package (pkgdir)
@@ -662,8 +662,8 @@ def install_package (pkgdir)
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist"
-    FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist"
+    FileUtils.mv 'dlist', "#{CREW_CONFIG_PATH}meta/#{@pkg.name}.directorylist#{@fileutils_verbose}"
+    FileUtils.mv 'filelist', "#{CREW_CONFIG_PATH}meta/#{@pkg.name}.filelist#{@fileutils_verbose}"
 
     # Strip libraries with -S
     strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
@@ -673,9 +673,9 @@ def install_package (pkgdir)
     strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tbz' ! -iname '*\.tgz' ! -iname '\*.txz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
 
     if Dir.exists? "#{pkgdir}/home" then
-      system "tar -cf #{@verbose} - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
     else
-      system "tar -cf #{@verbose} - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      system "tar -#{@verbose}cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
       end
   end
 end
@@ -843,8 +843,8 @@ def resolve_dependencies_and_build
   ensure
     #cleanup
     unless @opt_keep
-      FileUtils.rm_rf Dir.glob("#{CREW_BREW_DIR}/*")
-      FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" #this is a little ugly, feel free to find a better way
+      FileUtils.rm_rf "#{Dir.glob('#{CREW_BREW_DIR}/*')}#{@fileutils_verbose}"
+      FileUtils.mkdir_p '#{CREW_BREW_DIR}/dest'#{@fileutils_verbose}" #this is a little ugly, feel free to find a better way
     end
   end
   puts "#{@pkg.name} is built!".lightgreen
@@ -880,12 +880,8 @@ end
 
 def archive_package (pwd)
   pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-  Dir.chdir CREW_DEST_DIR do
-    system "tar cJf #{pwd}/#{pkg_name} *"
-  end
-  Dir.chdir pwd do
-    system "sha256sum #{pkg_name} > #{pkg_name}.sha256"
-  end
+  system "tar -c#{@verbose}Jf #{CREW_DEST_DIR}/#{pwd}/#{pkg_name} *"
+  system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
 end
 
 def remove (pkgName)
