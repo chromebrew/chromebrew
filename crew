@@ -315,7 +315,7 @@ end
 def const (var)
   if var
     value = eval(var)
-    puts var + '=' + value
+    puts "#{var}=#{value}"
   else
     vars = [
       'ARCH',
@@ -349,7 +349,7 @@ def const (var)
     ]
     vars.each { |var|
       value = eval(var)
-      puts var + '=' + value
+      puts "#{var}=#{value}"
     }
   end
 end
