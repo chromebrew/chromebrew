@@ -317,10 +317,6 @@ git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
 crew update
 
-# install supporting packages for llvm-strip 
-# (The install for these above doesn't seem to work properly.)
-# yes | crew install libffi icu4c
-
 # install a base set of essential packages
 yes | crew install buildessential less most
 
