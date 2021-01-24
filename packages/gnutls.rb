@@ -3,22 +3,22 @@ require 'package'
 class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.7.0'
+  version '3.7.0-1'
   compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.0.tar.xz'
   source_sha256 '49e2a22691d252c9f24a9829b293a8f359095bc5a818351f05f1c0a5188a1df8'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '4e7f7e7314732e4716817f541e408a76489a53a9bb3b98e0c4072bb290c50cf5',
-      armv7l: '4e7f7e7314732e4716817f541e408a76489a53a9bb3b98e0c4072bb290c50cf5',
-        i686: 'c3ebd7f90ca13365f208afd7384f6979de959c38fd7cc2ea780b4f951e743b36',
-      x86_64: '74ede0950a89488bf91cc9e144f7318d8e26b4a522d50db557f182cef66ced39',
+     aarch64: '7a80e48b97bb721ee3b6805d5863d61800a230c9b598a511a07df3af5d49dfdb',
+      armv7l: '7a80e48b97bb721ee3b6805d5863d61800a230c9b598a511a07df3af5d49dfdb',
+        i686: 'b3f8597ad7173e9721bd5bc5dbb6fd6385fac9cc748fc7e5d1871dc7161ccff8',
+      x86_64: 'd9fb0a59c22d64d629a7fcd868450b0c862a2bbe66c8940d854331da738ba4c3',
   })
 
   depends_on 'zlibpkg'
