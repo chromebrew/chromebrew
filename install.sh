@@ -154,7 +154,7 @@ case "${ARCH}" in
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/curl-7.74.0-2-chromeos-i686.tar.xz')
   sha256s+=('fed721a267a16a27df602b6116d0be04423bb58194d567dbf42727e6d61afdf2')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-1-chromeos-i686.tar.xz')
-  sha256s+=('6587e0c07c7808d9b2931bab4ac51ad03c3a346a02dbb30eb69e89538521ea45')
+  sha256s+=('9e4765bc56e32cb0c49809385ff638cf184aabe8a7e0461f5415ef1cc6e9e8ff')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-i686.tar.xz')
   sha256s+=('1c45fb6c19db175fba61dd9925b648955c5081ad7dea31feb7b613b5ca0a97c9')
   ;;
