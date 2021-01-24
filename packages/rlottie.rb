@@ -11,6 +11,7 @@ class Rlottie < Package
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
     system "meson configure builddir"
+    system "meson compile -C builddir"
   end
 
   def self.install
