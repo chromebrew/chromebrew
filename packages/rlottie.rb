@@ -9,11 +9,11 @@ class Rlottie < Package
   source_sha256 '030ccbc270f144b4f3519fb3b86e20dd79fb48d5d55e57f950f12bab9b65216a'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} build"
-    system "meson configure build"
+    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson configure builddir"
   end
 
   def self.install
-    system "env DESTDIR=#{CREW_DEST_DIR} meson install -C build"
+    system "env DESTDIR=#{CREW_DEST_DIR} meson install -C builddir"
   end
 end
