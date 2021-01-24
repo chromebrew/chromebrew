@@ -24,8 +24,6 @@ class Git < Package
 
   depends_on 'curl' => :build
   depends_on 'python3' => :build
-  depends_on 'autoconf' => :build
-  depends_on 'isl' => :build
 
   def self.build
     system 'autoreconf -i'
