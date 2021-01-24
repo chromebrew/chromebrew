@@ -549,7 +549,7 @@ def unpack (meta)
       system 'unzip', _verbopt, '-d', extract_dir, meta[:filename]
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
-      FileUtils.mkdir extract_dir
+      FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{extract_dir}"
     end
     if meta[:source] == true
