@@ -80,11 +80,11 @@ end
 @opt_verbose = args["--verbose"]
 
 if @opt_verbose then
-  @fileutils_verbose = ', verbose: true'
+  @fileutils_verbose = true
   @verbose = 'v'
   @mv_verbose = '-v'
 else
-  @fileutils_verbose = ''
+  @fileutils_verbose = false
   @verbose = ''
   @mv_verbose = ''
 end
@@ -512,11 +512,11 @@ def download
   end
   Dir.chdir CREW_BREW_DIR do
     if ENV['CREW_CACHE_OPT']
-      FileUtils.mkdir_p "#{CREW_CACHE_DIR}#{@fileutils_verbose}"
+      FileUtils.mkdir_p CREW_CACHE_DIR, verbose: @fileutils_verbose
       cachefile = CREW_CACHE_DIR + filename
       if File.file?(cachefile)
         if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum then
-          FileUtils.cp cachefile, "#{CREW_BREW_DIR}#{@fileutils_verbose}"
+          FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
           puts "Archive found in cache".lightgreen
           return {source: source, filename: filename}
           else
@@ -533,7 +533,7 @@ def download
 
     if ENV['CREW_CACHE_OPT']
       puts 'Caching downloaded archive'.lightgreen
-      FileUtils.cp filename, "#{CREW_CACHE_DIR}#{@fileutils_verbose}"
+      FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
     end
   end
   return {source: source, filename: filename}
@@ -543,7 +543,7 @@ def unpack (meta)
   extract_dir = meta[:filename] + '.dir'
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
-    FileUtils.mkdir_p "#{extract_dir}#{@fileutils_verbose}"
+    FileUtils.mkdir_p extract_dir, verbose: @fileutils_verbose
     case File.basename meta[:filename]
     when /\.zip$/i
       puts "Unpacking archive using 'unzip', this may take a while..."
@@ -593,7 +593,7 @@ def build_and_preconfigure (target_dir)
     @pkg.build
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf "#{Dir.glob('#{CREW_DEST_DIR}/*')}#{@fileutils_verbose}"
+    FileUtils.rm_rf Dir.glob('#{CREW_DEST_DIR}/*'), verbose: @fileutils_verbose
     puts 'Preconfiguring package...'
     @pkg.install
 
@@ -647,7 +647,7 @@ def prepare_package (destdir)
     system 'tail -n +2 dlistcut > dlist'
 
     # remove temporary files
-    FileUtils.rm_rf "['dlistcut', '../dlist', '../filelist']#{@fileutils_verbose}"
+    FileUtils.rm_rf ['dlistcut', '../dlist', '../filelist'], verbose: @fileutils_verbose
   end
 end
 
@@ -665,8 +665,8 @@ def install_package (pkgdir)
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', "#{CREW_CONFIG_PATH}meta/#{@pkg.name}.directorylist#{@fileutils_verbose}"
-    FileUtils.mv 'filelist', "#{CREW_CONFIG_PATH}meta/#{@pkg.name}.filelist#{@fileutils_verbose}"
+    FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist", verbose: @fileutils_verbose
+    FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist", verbose: @fileutils_verbose
 
     # Strip libraries with -S
     strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
@@ -846,8 +846,8 @@ def resolve_dependencies_and_build
   ensure
     #cleanup
     unless @opt_keep
-      FileUtils.rm_rf "#{Dir.glob('#{CREW_BREW_DIR}/*')}#{@fileutils_verbose}"
-      FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest#{@fileutils_verbose}" #this is a little ugly, feel free to find a better way
+      FileUtils.rm_rf Dir.glob('#{CREW_BREW_DIR}/*'), verbose: @fileutils_verbose
+      FileUtils.mkdir_p CREW_BREW_DIR + '/dest', verbose: @fileutils_verbose #this is a little ugly, feel free to find a better way
     end
   end
   puts "#{@pkg.name} is built!".lightgreen
