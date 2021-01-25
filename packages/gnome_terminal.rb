@@ -2,6 +2,7 @@ require 'package'
 
 class Gnome_terminal < Package
   description 'The GNOME Terminal Emulator'
+  homepage 'https://wiki.gnome.org/Apps/Terminal'
   @_ver = '3.38.2'
   version @_ver
   compatibility 'all'
