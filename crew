@@ -883,7 +883,9 @@ end
 
 def archive_package (pwd)
   pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-  system "tar -c#{@verbose}Jf #{CREW_DEST_DIR}/#{pwd}/#{pkg_name} *"
+  Dir.chdir CREW_DEST_DIR do
+    system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
+  end
   system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
 end
 
