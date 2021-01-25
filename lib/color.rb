@@ -1,7 +1,17 @@
 # Colorization for strings
 class String
+  @use_color = STDOUT.isatty
+
+  class << self
+    attr_accessor :use_color
+  end
+
   def colorize(color_code, shade)
-    "\e[#{shade};#{color_code}m#{self}\e[0m"
+    if self.class.use_color
+      return "\e[#{shade};#{color_code}m#{self}\e[0m"
+    else
+      return self
+    end
   end
 
   def black
