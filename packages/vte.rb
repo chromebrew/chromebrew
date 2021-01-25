@@ -22,7 +22,6 @@ class Vte < Package
   })
 
   depends_on 'gobject_introspection' => ':build'
-  depends_on 'icu4c'
   depends_on 'fribidi'
   depends_on 'gtk3'
   depends_on 'gtk4'
