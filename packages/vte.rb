@@ -2,6 +2,7 @@ require 'package'
 
 class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
+  homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
   version '0.62.2'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/vte/0.62/vte-0.62.2.tar.xz'
