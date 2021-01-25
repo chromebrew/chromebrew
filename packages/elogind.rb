@@ -1,13 +1,13 @@
 require 'package'
 
 class Elogind < Package
-  description 'Standalone logind fork'
+  description 'Standalone systemd-logind fork'
   homepage 'https://github.com/elogind/elogind'
   version '243.4'
   compatibility 'all'
   source_url 'https://github.com/elogind/elogind/archive/v243.4.tar.gz'
   source_sha256 'f1098745863138e6270ea22e78a39baef9a0356b48246c5a53b34211992dc7db'
-
+  
   depends_on 'eudev'
   depends_on 'libcap'
   depends_on 'libseccomp'
@@ -27,25 +27,18 @@ class Elogind < Package
             -Ddefault-hierarchy=legacy \
             -Ddefault-kill-user-processes=false \
             -Dhalt-path=/sbin/halt \
+            -Drootlibdir=#{CREW_PREFIX}/#{ARCH_LIB} \
             -Drootlibexecdir=#{CREW_PREFIX}/libexec/elogind \
+            -Drootbindir=#{CREW_PREFIX}/bin \
             -Dreboot-path=/sbin/reboot \
-            _build"
-    Dir.chdir '_build' do
-      system 'meson', 'compile'
-    end
+            builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
-    system "mv #{CREW_DEST_DIR}/bin/* #{CREW_DEST_DIR}/usr/local/bin/"
-    system "mv #{CREW_DEST_DIR}/etc #{CREW_DEST_DIR}/usr/local/etc"
-    system "mv #{CREW_DEST_DIR}/lib/* #{CREW_DEST_DIR}/usr/local/lib/"
-    system "mv #{CREW_DEST_DIR}/lib64/* #{CREW_DEST_DIR}/usr/local/lib64" # Please help rubyize
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    FileUtils.mv Dir.glob('bin/*'), "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mv etc, "#{CREW_DEST_PREFIX}/etc"
+    FileUtils.mv Dir.glob("#{ARCH_LIB}/*"), CREW_DEST_LIB_PREFIX
   end
-  
-#  def self.check
-#    Dir.chdir '_build' do
-#      system 'meson', 'test'
-#    end
-#  end
 end
