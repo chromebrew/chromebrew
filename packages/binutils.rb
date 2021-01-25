@@ -7,7 +7,7 @@ class Binutils < Package
   version @_ver
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
-  source_sha256 '173738b732af5d474f1809af0f5a84454a4fc20d620e931e080697e85f802312'
+  source_sha256 '5788292cc5bbcca0848545af05986f6b17058b105be59e99ba7d0f9eb5336fb8'
 
   binary_url ({
      aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-armv7l.tar.xz',
