@@ -3,22 +3,23 @@ require 'package'
 class Vulkan_headers < Package
   description 'Vulkan header files'
   homepage 'https://github.com/KhronosGroup/Vulkan-Headers'
-  version '1.2.165'
+  @_ver = '1.2.168'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.2.165.tar.gz'
-  source_sha256 '3f9435a93ba13d94d0c3265a47e0436579e46bb9ca085e9b16a753458e4d79d2'
+  source_url "https://github.com/KhronosGroup/Vulkan-Headers/archive/v#{@_ver}.tar.gz"
+  source_sha256 'ec6a69836a8cd413f89071a9b978d0547849192538550c706a8e560089d59cb2'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.165-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.165-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.165-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.165-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.168-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.168-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.168-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.168-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '03d07ab7485d23e1c0018f2ec02c877997382db4abf3ae80a43cda6a494c5383',
-      armv7l: '03d07ab7485d23e1c0018f2ec02c877997382db4abf3ae80a43cda6a494c5383',
-        i686: '66ec66419c0725af304b422462364449785c92c2599f392044b31d39d4d4ce4b',
-      x86_64: 'f4a32c518e378b6ec9c6d7535df7b7269a04ee0bdff98c50435219fbf6610788',
+     aarch64: '288faae9c1b306bdc0cc1d5f2828557daeb2b19d5eb195b0b413933612aad4a9',
+      armv7l: '288faae9c1b306bdc0cc1d5f2828557daeb2b19d5eb195b0b413933612aad4a9',
+        i686: '9c0b47c0c75ba355ead9e62164ba2506fd49f8bae172430d0b9c8caf44077b08',
+      x86_64: '9036ea7177c6d7f3529e936820c50df0f813cc454a68af0c33215f3ddd6f71da',
   })
 
   def self.build
