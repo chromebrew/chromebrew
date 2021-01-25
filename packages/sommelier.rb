@@ -1,7 +1,7 @@
 require 'package'
 
 class Sommelier < Package
-  description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
+  description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
   version '20210109'
   compatibility 'all'
