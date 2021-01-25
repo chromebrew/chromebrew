@@ -678,7 +678,7 @@ def install_package (pkgdir)
     if Dir.exists? "#{pkgdir}/home" then
       system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
     else
-      system "tar -#{@verbose}cf - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
       end
   end
 end
