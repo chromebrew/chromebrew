@@ -27,11 +27,15 @@ class Trousers < Package
 
   def self.build
     system './configure', '--disable-static', '--with-gui=none',
-      "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+      "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}", 'CFLAGS=-fcommon'
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end
