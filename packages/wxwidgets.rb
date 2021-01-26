@@ -49,7 +49,6 @@ diff -up wxGTK-2.8.12/src/common/appbase.cpp.abicheck wxGTK-2.8.12/src/common/ap
  #undef wxCMP
 EOF"
     system "patch -Np1 -i make-abicheck-non-fatal.patch || true"
-    system "./configure --help"
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       ./configure #{CREW_OPTIONS} \
       --with-gtk=3 \
