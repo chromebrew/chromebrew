@@ -2,6 +2,7 @@ require 'package'
 
 class Gparted < Package
   description 'A Partition Magic clone, frontend to GNU Parted'
+  homepage 'https://gparted.org/'
   @_ver = '1.2.0'
   version @_ver
   compatibility 'all'
