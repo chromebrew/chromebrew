@@ -21,8 +21,6 @@ class Sommelier < Package
       x86_64: '5348afbfceeed2ddf5078d4d325f50ad736ea89c8249db263009c3d23cd05db9',
   })
 
-
-
   depends_on 'mesa'
   depends_on 'xkbcomp'
   depends_on 'xorg_server' unless File.exists? "#{CREW_PREFIX}/bin/Xwayland.elf"
@@ -48,7 +46,7 @@ class Sommelier < Package
     # and checksums vary with each download.
     system 'curl -L https://chromium.googlesource.com/chromiumos/platform2/+archive/f3b2e2b6a8327baa2e62ef61036658c258ab4a09.tar.gz | tar mzx --warning=no-timestamp'
     Dir.chdir ("vm_tools/sommelier") do
-    
+
     ## Google's sommelier expects to find virtwl.h in their kernel source includes, but we may not have
     ## set of kernel headers which match, so we just download virtwl.h and then patch the sommelier source
     ## to look for the file locally.
@@ -57,7 +55,7 @@ class Sommelier < Package
     #uri_virtwl = URI.parse url_virtwl
     #filename_virtwl = 'virtwl.h_base64'
     #sha256sum_virtwl = 'a8215f4946ccf30cbd61fcf2ecc4edfe6d05bffeee0bacadd910455274955446'
-    
+
     #puts "Downloading virtwl".yellow
     #system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
     #abort 'Checksum mismatch. :/ Try again.'.lightred unless
@@ -65,13 +63,13 @@ class Sommelier < Package
     #puts "virtwl base64 downloaded".lightgreen
     #FileUtils.mkdir_p 'build/linux'
     #system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'   
-    
+
     # Patch to avoid error with GCC > 9.x
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
     system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
-    
+
     # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
-    
+
     system "env CC=clang CXX=clang++ \
     meson #{CREW_MESON_OPTIONS} \
     -Db_asneeded=false \
@@ -115,9 +113,9 @@ then
   fi
 fi
 EOF"     
-      
+
       #Create local startup and shutdown scripts
-      
+
       # sommelier_sh 
       # This file via:
       # crostini: /opt/google/cros-containers/bin/sommelier
@@ -239,7 +237,6 @@ EOF"
       end
     end
   end
-    
 
   def self.install
     Dir.chdir ("vm_tools/sommelier") do
@@ -257,7 +254,6 @@ EOF"
       end
     end
   end
-  
 
   def self.postinstall
     puts
@@ -269,7 +265,7 @@ EOF"
       puts "To complete the installation, execute the following:".orange
       puts "source ~/.bashrc".orange
     end
-    
+
     sommelier_in_bashrc = `grep -c "set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a" ~/.bashrc || true`
     unless sommelier_in_bashrc.to_i > 0
       puts "Putting sommelier loading code in ~/.bashrc".lightblue
