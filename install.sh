@@ -42,8 +42,8 @@ esac
 sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 # Delete 'var' symlink on Cloudready platform
 if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
-  sudo unlink /usr/local/var
-  sudo unlink /usr/local/local
+  if [ -L /usr/local/var ]; then sudo unlink /usr/local/var; fi
+  [ -L /usr/local/local ] && sudo unlink /usr/local/local
 fi
 
 # prepare directories
