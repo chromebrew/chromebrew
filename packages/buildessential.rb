@@ -8,6 +8,9 @@ class Buildessential < Package
 
   is_fake
 
+  # For libtool patching
+  # /bin/grep: support for the -P option is not compiled into this --disable-perl-regexp binary
+  depends_on 'grep'
 
   #install first to get ldconfig
   depends_on 'glibc'
