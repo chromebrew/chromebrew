@@ -31,6 +31,7 @@ class Gparted < Package
   depends_on 'gpart'
   depends_on 'mtools'
   depends_on 'libsigcplusplus'
+  depends_on 'librsvg'
 
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
