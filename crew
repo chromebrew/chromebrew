@@ -18,7 +18,6 @@ $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
-
 Usage:
   crew build [options] [-k|--keep] <name> ...
   crew const [options] [<name> ...]
@@ -34,7 +33,6 @@ Usage:
   crew update [options]
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides [options] <name> ...
-
   -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
   -s --build-from-source  Build from source even if pre-compiled binary exists.
   -S --recursive-build    Build from source, including all dependencies, even if pre-compiled binaries exist.
@@ -43,7 +41,6 @@ Usage:
   -d --no-color           Disable colors even if standard out is a tty.
   -v --verbose            Show extra information.
   -h --help               Show this screen.
-
 version #{CREW_VERSION}
 DOCOPT
 
@@ -618,6 +615,13 @@ def post_install (dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing post-install...'
     @pkg.postinstall
+  end
+  # Run libtool warning commands
+  @warning = 'libtool: warning: remember to run '
+      @out = "#{CREW_BREW_DIR}/libtool.txt"
+  if File.exist? "#{CREW_BREW_DIR}/libtool.txt" then
+    system "grep -oP \"(?<=#{@warning}\').*?(?=\')\" #{@out} | bash"
+    FileUtils.rm "#{CREW_BREW_DIR}/libtool.txt"
   end
 end
 
