@@ -3,26 +3,24 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipwire.org'
-  version '0.3.18'
+  @_ver = '0.3.20'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/PipeWire/pipewire/archive/0.3.18.tar.gz'
-  source_sha256 'a7317de8e54f57190a2e2fe5f469ed332b9a12151fade03bf984765a55e5e24b'
+  source_url "https://github.com/PipeWire/pipewire/archive/#{@_ver}.tar.gz"
+  source_sha256 '7da6d8283aea6b37480e626b57f23b2bf70d6b73470105a5853b213786d1c097'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.18-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.18-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.18-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.18-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.20-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.20-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.20-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.20-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '503afbafc6c6add7d84a5ca1d026057f6f67f7d8b27498febf7d887f58d59937',
-      armv7l: '503afbafc6c6add7d84a5ca1d026057f6f67f7d8b27498febf7d887f58d59937',
-        i686: '485cfec97ba76d9dd3147e5c0dce95a55d189f6a40f15f19f1ed9db9743b75ca',
-      x86_64: 'f7ef32d34e699a50cf729ef8d7c633bcc066669fa571140e7a64cc39f828780e',
+     aarch64: '1ffffd3f745591bd1b5e28032a7eec6c022e00822d1e42759f395a3a74b345c8',
+      armv7l: '1ffffd3f745591bd1b5e28032a7eec6c022e00822d1e42759f395a3a74b345c8',
+        i686: 'ca8a88acbadcaf93644f12e6c64eb120547e01c1139006a690aa8b21c2304314',
+      x86_64: 'd5ada28c243897abcd44677f2c31531bdb06dcf9503f2fbc85aec2fcdd2b4546',
   })
-
-
-
 
   depends_on 'gsettings_desktop_schemas'
   depends_on 'alsa_plugins' => :build
@@ -30,24 +28,26 @@ class Pipewire < Package
   depends_on 'gstreamer'
   depends_on 'jack'
   depends_on 'eudev'
+  depends_on 'vulkan_headers'
+  depends_on 'mesa'
 
   def self.build
     system "meson \
-      #{CREW_MESON_OPTIONS} \
+      #{CREW_MESON_LTO_OPTIONS} \
       -Dbluez5=false \
       -Dbluez5-backend-native=false \
       -Dbluez5-backend-ofono=false \
       -Dbluez5-backend-hsphfpd=false \
-      -Dvulkan=false \
+      -Dvulkan=true \
       -Dv4l2=false \
       -Dexamples=false \
-      build"
-    system "meson configure build"
-    system "ninja -C build"
+      builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-   system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+   system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 
 end
