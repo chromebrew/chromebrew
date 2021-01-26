@@ -3,25 +3,23 @@ require 'package'
 class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.0.5.1'
+  version '3.0.5.1-1'
   compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets/archive/v3.0.5.1.tar.gz'
   source_sha256 'bae4d9f289e33a05fb8553fcc580564d30efe6a882ff08e3d4e09ef01f5f6578'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wxwidgets-3.0.5.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '440d312b479a90ffd73e84c396b9d54a76a01f8049adb820535236845b8b2acb',
-      armv7l: '440d312b479a90ffd73e84c396b9d54a76a01f8049adb820535236845b8b2acb',
-        i686: 'aed2e2b7577f820dcb2f6eddaa39b6b602d47249b5dc8f5d0b2b18c6093b9c30',
-      x86_64: '3e3df3560a084dfe8e100728ae77ebcb68548186e05d7c787d162e015d71245c',
+     aarch64: '6831092ab33fdc4c10df52bdc779652f26f8d7c8a1e48097768a3892eea164f7',
+      armv7l: '6831092ab33fdc4c10df52bdc779652f26f8d7c8a1e48097768a3892eea164f7',
+        i686: '71f57c87fb5f1256a811e241ecc8db54a6042d4a9941128b09fff1e3192a8fa7',
+      x86_64: '04c515d5f4280c78e50ac0e79577f862ef3d526473e096e6ee8f731f43055135',
   })
-
-
 
   depends_on 'gst_plugins_base'
   depends_on 'libnotify'
@@ -51,15 +49,15 @@ diff -up wxGTK-2.8.12/src/common/appbase.cpp.abicheck wxGTK-2.8.12/src/common/ap
  #undef wxCMP
 EOF"
     system "patch -Np1 -i make-abicheck-non-fatal.patch || true"
-    system "unset CC CXX CXXFLAGS CFLAGS && \
-      export LIBRARY_PATH=#{CREW_LIB_PREFIX} && \
-      export LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} && \
-      export CC=gcc && \
-      export CXX=g++ && \
-      export CFLAGS= && \
+    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       ./configure #{CREW_OPTIONS} \
-      --with-gtk=3 --with-opengl --enable-unicode \
-      --enable-graphics_ctx --enable-mediactrl --enable-webview --with-regex=builtin \
+      --with-gtk=3 \
+      --with-opengl \
+      --enable-unicode \
+      --enable-graphics_ctx \
+      --enable-mediactrl \
+      --enable-webview \
+      --with-regex=builtin \
       --with-libpng=sys \
       --with-libjpeg=sys \
       --with-libtiff=sys \
