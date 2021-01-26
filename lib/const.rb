@@ -69,8 +69,7 @@ end
 
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
 CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Dc_args='-fuse-ld=lld -pipe' -Dcpp_args='-fuse-ld=lld -pipe'"
-CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release   -Dcpp_args='-flto -fuse-ld=gold -pipe' -Dcpp_link_args='-flto' -Dc_arg
-s='-flto -fuse-ld=gold -pipe' -Dc_link_args='-flto'"
+CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release   -Dcpp_args='-flto -fuse-ld=gold -pipe' -Dcpp_link_args='-flto' -Dc_args='-flto -fuse-ld=gold -pipe' -Dc_link_args='-flto'"
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
