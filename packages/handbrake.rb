@@ -9,6 +9,13 @@ class Handbrake < Package
   when 'x86_64'
     source_url 'https://github.com/HandBrake/HandBrake/releases/download/1.3.3/HandBrake-1.3.3-source.tar.bz2'
     source_sha256 '218a37d95f48b5e7cf285363d3ab16c314d97627a7a710cab3758902ae877f85'
+
+  binary_url ({
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/handbrake-1.3.3-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+      x86_64: '13e06c6458fe918ab1a46deeadcea9415c00be877a333b9bfbe5969c1ca1ba2a',
+  })
     depends_on 'gtk3'
     depends_on 'ffmpeg'
     depends_on 'jansson'
@@ -17,6 +24,7 @@ class Handbrake < Package
     depends_on 'wayland_protocols'
     depends_on 'mesa'
     depends_on 'xcb_util'
+    depends_on 'freetype'
   end
 
   def self.patch
@@ -25,7 +33,8 @@ class Handbrake < Package
 
   def self.build
     ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
-    system "./configure --prefix=#{CREW_PREFIX} --enable-x265 --enable-numa --enable-fdk-aac --harden"
+    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+      ./configure --prefix=#{CREW_PREFIX} --enable-x265 --enable-numa --enable-fdk-aac --harden"
     Dir.chdir 'build' do
       system 'make'
     end
