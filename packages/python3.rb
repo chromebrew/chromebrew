@@ -3,22 +3,22 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.9.1'
+  version '3.9.1-1'
   compatibility 'all'
   source_url 'https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tar.xz'
   source_sha256 '991c3f8ac97992f3d308fefeb03a64db462574eadbff34ce8bc5bb583d9903ff'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '4c91d1eb34a67add83acd1c533d09b023e3ed76c32c719bf4c8fc868fc2b4ba8',
-     armv7l: '4c91d1eb34a67add83acd1c533d09b023e3ed76c32c719bf4c8fc868fc2b4ba8',
-       i686: '7230c721be1b39e398644c40321ca6f98fe675e425ebaf08e36c49f3cc6ba0ec',
-     x86_64: 'dfa075d498816991e837ec738c3f9d981c75421a995f4322003d74edb0da62fb',
+     aarch64: '5c2ba15dd9a1faf833650194d581edeccfd026bc3d0dcfabb4f91d67bc2bd4a6',
+      armv7l: '5c2ba15dd9a1faf833650194d581edeccfd026bc3d0dcfabb4f91d67bc2bd4a6',
+        i686: 'aa8499cf18b0879e0912ff8890389a2a6f3b242e92af23b53466b8f107da707b',
+      x86_64: 'cdad81e681b3dc40ef54e7190ef23167e1036ecd3c0530fca9cf9666c93234bd',
   })
 
   depends_on 'bz2'

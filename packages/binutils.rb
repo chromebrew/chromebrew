@@ -3,22 +3,23 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version '2.35.1-1'
+  @_ver = '2.36'
+  version @_ver
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/binutils/binutils-2.35.1.tar.xz'
-  source_sha256 '3ced91db9bf01182b7e420eab68039f2083aed0a214c0424e257eae3ddee8607'
+  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
+  source_sha256 '5788292cc5bbcca0848545af05986f6b17058b105be59e99ba7d0f9eb5336fb8'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.35.1-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.35.1-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.35.1-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.35.1-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'ccadf54533ef07715dfe17e4dec9639a0c6e1c34e1df780f936ede7d7233db27',
-      armv7l: 'ccadf54533ef07715dfe17e4dec9639a0c6e1c34e1df780f936ede7d7233db27',
-        i686: '5fda35d6de84ae32d29d7369a36b4e8220a1304ed978d76b9fdcc5bc17961565',
-      x86_64: '20fd8355151fd24dab6a82123a1d04c7a9dcb94cb2841df2795c6bc21a1107df',
+     aarch64: 'fd86f02633b27be6d0eaf1ca5f30c0d1e93b4b6e0c08311972bf9f74892b1dcf',
+      armv7l: 'fd86f02633b27be6d0eaf1ca5f30c0d1e93b4b6e0c08311972bf9f74892b1dcf',
+        i686: '1ce06b9e18bd84abe16156e61a68f67e35c749d88733e8d6d69d8b4a14f1aa70',
+      x86_64: '10738895b575f9a41a463c8d0a67a18ba0c134bdf71c9388c1a7d6706e5479fd',
   })
 
   depends_on 'filecmd'
@@ -28,18 +29,18 @@ class Binutils < Package
     system 'filefix'
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "../configure \
-              #{CREW_OPTIONS} \
-              --disable-maintainer-mode \
-              --enable-shared \
-              --enable-gold \
-              --enable-ld=default \
-              --enable-plugins \
-              --disable-bootstrap \
-              --enable-64-bit-bfd \
-              --enable-lto \
-              --enable-vtable-verify \
-              --enable-install-libiberty"
+      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+        ../configure #{CREW_OPTIONS} \
+        --disable-maintainer-mode \
+        --enable-shared \
+        --enable-gold \
+        --enable-ld=default \
+        --enable-plugins \
+        --disable-bootstrap \
+        --enable-64-bit-bfd \
+        --enable-lto \
+        --enable-vtable-verify \
+        --enable-install-libiberty"
       system 'make'
     end
   end
