@@ -619,7 +619,7 @@ def post_install (dest_dir)
     puts 'Performing post-install...'
     @pkg.postinstall
   end
-  system "source #{CREW_BREW_DIR}/libtool.txt && rm -f #{CREW_BREW_DIR}/libtool.txt" if File.exist? "#{CREW_BREW_DIR}/libtool.txt"
+  system "bash -c \"source #{CREW_BREW_DIR}/libtool.txt && rm -f #{CREW_BREW_DIR}/libtool.txt\"" if File.exist? "#{CREW_BREW_DIR}/libtool.txt"
 end
 
 def compress_doc (dir)
