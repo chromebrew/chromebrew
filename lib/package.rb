@@ -161,7 +161,5 @@ class Package
     system "make DESTDIR=#{destdir} install #{opt} 2>&1 |\
             tee #{@out} |\
             grep -v \"#{@warning}\""
-
-    system "grep -oP \"(?<=#{@warning}\').*?(?=\')\" #{@out} | bash"
   end
 end
