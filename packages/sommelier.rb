@@ -1,24 +1,24 @@
 require 'package'
 
 class Sommelier < Package
-  description 'Sommelier works by redirecting X11 and Wayland programs to the built-in ChromeOS wayland server.'
+  description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20201222-4'
+  version '20210109'
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20201222-4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '948b0cf4b09622fe91318bd410b633c621675252b2884a82fc107d718d24cb5f',
-      armv7l: '948b0cf4b09622fe91318bd410b633c621675252b2884a82fc107d718d24cb5f',
-        i686: '8ab9cc1429903fef93f2e09ca984de936f8b5769b48404e4b06eecbf5935ecde',
-      x86_64: '3aa985686796cf13d23f974533682deb001d78bf88bc0bbdf710689359024b68',
+     aarch64: 'f7c8a2ceed9ba558b847b74648e0cf3b9911f52f535131ed4f4c6537158986f8',
+      armv7l: 'f7c8a2ceed9ba558b847b74648e0cf3b9911f52f535131ed4f4c6537158986f8',
+        i686: 'e280ae66333a01f6406333aa6a7836b6d2638ca25aeb81378f55e1bd9df9f339',
+      x86_64: '5348afbfceeed2ddf5078d4d325f50ad736ea89c8249db263009c3d23cd05db9',
   })
 
   depends_on 'mesa'
@@ -44,35 +44,38 @@ class Sommelier < Package
   def self.build
     # There is no good way to checksum the googlesource tgz file, as they appear to be generated on the fly
     # and checksums vary with each download.
-    system 'curl -L https://chromium.googlesource.com/chromiumos/platform2/+archive/c6c3e7aac940d34d3f195bc60d7be2ec19d67d03.tar.gz | tar mzx --warning=no-timestamp'
+    system 'curl -L https://chromium.googlesource.com/chromiumos/platform2/+archive/f3b2e2b6a8327baa2e62ef61036658c258ab4a09.tar.gz | tar mzx --warning=no-timestamp'
     Dir.chdir ("vm_tools/sommelier") do
 
-    # Google's sommelier expects to find virtwl.h in their kernel source includes, but we may not have
-    # set of kernel headers which match, so we just download virtwl.h and then patch the sommelier source
-    # to look for the file locally.
-    ######################### Download virtwl.h from Chromium 5.4 kernel tree ###########################################
-    url_virtwl = "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d641a7b7b64664230d2fd2aa1e74dd792b8b7bf/include/uapi/linux/virtwl.h?format=TEXT"
-    uri_virtwl = URI.parse url_virtwl
-    filename_virtwl = 'virtwl.h_base64'
-    sha256sum_virtwl = 'a8215f4946ccf30cbd61fcf2ecc4edfe6d05bffeee0bacadd910455274955446'
+    ## Google's sommelier expects to find virtwl.h in their kernel source includes, but we may not have
+    ## set of kernel headers which match, so we just download virtwl.h and then patch the sommelier source
+    ## to look for the file locally.
+    ########################## Download virtwl.h from Chromium 5.4 kernel tree ###########################################
+    #url_virtwl = "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d641a7b7b64664230d2fd2aa1e74dd792b8b7bf/include/uapi/linux/virtwl.h?format=TEXT"
+    #uri_virtwl = URI.parse url_virtwl
+    #filename_virtwl = 'virtwl.h_base64'
+    #sha256sum_virtwl = 'a8215f4946ccf30cbd61fcf2ecc4edfe6d05bffeee0bacadd910455274955446'
 
-    puts "Downloading virtwl".yellow
-    system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
-    puts "virtwl base64 downloaded".lightgreen
-    FileUtils.mkdir_p 'build/linux'
-    system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'
+    #puts "Downloading virtwl".yellow
+    #system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
+    #abort 'Checksum mismatch. :/ Try again.'.lightred unless
+      #Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
+    #puts "virtwl base64 downloaded".lightgreen
+    #FileUtils.mkdir_p 'build/linux'
+    #system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'   
 
     # Patch to avoid error with GCC > 9.x
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
     system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
 
     # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
+
     system "env CC=clang CXX=clang++ \
     meson #{CREW_MESON_OPTIONS} \
+    -Db_asneeded=false \
     -Dc_args='-flto=thin -fuse-ld=lld' \
     -Dcpp_args='-flto=thin -fuse-ld=lld' \
+    -Dcpp_link_args='-flto=thin -fuse-ld=lld' \
     -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
     -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
     -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
@@ -80,10 +83,10 @@ class Sommelier < Package
     build"
     system "meson configure build"
     system "ninja -C build"
-
+    
     Dir.chdir ("build") do
       system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
-
+      
       system "cat <<'EOF'> .sommelier-default.env
 #!/bin/bash
 shopt -os allexport
@@ -92,7 +95,7 @@ DISPLAY=:0
 GDK_BACKEND=x11
 SCALE=1
 SOMMELIER_ACCELERATORS=\"Super_L,<Alt>bracketleft,<Alt>bracketright\"
-WAYLAND_DISPLAY=wayland-1
+WAYLAND_DISPLAY=wayland-0
 XDG_RUNTIME_DIR=/var/run/chrome
 shopt -ou allexport
 UNAME_ARCH=$(uname -m)
@@ -109,11 +112,11 @@ then
       export MESA_LOADER_DRIVER_OVERRIDE=i965
   fi
 fi
-EOF"
+EOF"     
 
       #Create local startup and shutdown scripts
 
-      # sommelier_sh
+      # sommelier_sh 
       # This file via:
       # crostini: /opt/google/cros-containers/bin/sommelier
       # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
@@ -150,15 +153,15 @@ checksommelierwayland () {
 checksommelierxwayland () {
   xdpyinfo -display \$DISPLAY &>/dev/null
 }
-# As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
-# One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
-# in ChromeOS's wayland compositor.
-if ! checksommelierwayland ; then
-pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
-rm \${XDG_RUNTIME_DIR}/wayland-1*
-sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
-echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
-fi
+## As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
+## One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
+## in ChromeOS's wayland compositor.
+#if ! checksommelierwayland ; then
+#pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
+#rm \${XDG_RUNTIME_DIR}/wayland-1*
+#sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
+#echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
+#fi
 if ! checksommelierxwayland; then
 pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
 #[[ ! -d /tmp/.X11-unix ]] && mkdir /tmp/.X11-unix
@@ -180,8 +183,9 @@ source ~/.sommelier-default.env &>/dev/null
 source ~/.sommelier.env &>/dev/null
 set +a
 checksommelierwayland () {
-  [[ -f \"#{CREW_PREFIX}/var/run/sommelier-wayland.pid\" ]] || return 1
-  /sbin/ss --unix -a -p | grep \"\\b\$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)\" | grep wayland &>/dev/null
+  #[[ -f \"#{CREW_PREFIX}/var/run/sommelier-wayland.pid\" ]] || return 1
+  #/sbin/ss --unix -a -p | grep \"\\b\$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)\" | grep wayland &>/dev/null
+  return 0
 }
 checksommelierxwayland () {
   xdpyinfo -display \$DISPLAY &>/dev/null
