@@ -9,6 +9,9 @@ class Buildessential < Package
   is_fake
 
 
+  # For libtool patching
+  depends_on 'grep'
+
   #install first to get ldconfig
   depends_on 'glibc'
   depends_on 'gcc10'
