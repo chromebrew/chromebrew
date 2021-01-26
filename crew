@@ -622,8 +622,10 @@ def post_install (dest_dir)
   # Run libtool warning commands
   @warning = 'libtool: warning: remember to run '
       @out = "#{CREW_BREW_DIR}/libtool.txt"
-  system "grep -oP \"(?<=#{@warning}\').*?(?=\')\" #{@out} | bash" if File.exist? "#{CREW_BREW_DIR}/libtool.txt"
-  FileUtils.rm "#{CREW_BREW_DIR}/libtool.txt"
+  if File.exist? "#{CREW_BREW_DIR}/libtool.txt" then
+    system "grep -oP \"(?<=#{@warning}\').*?(?=\')\" #{@out} | bash"
+    FileUtils.rm "#{CREW_BREW_DIR}/libtool.txt"
+  end
 end
 
 def compress_doc (dir)
