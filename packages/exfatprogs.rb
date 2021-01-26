@@ -10,10 +10,10 @@ class Exfatprogs < Package
   source_sha256 '3f755d35785a74138348b3a22dfcda5afc8a69e66a6a0c79be48225e6ca321ce'
 
   binary_url ({
-     aarch64: 'file:///usr/local/tmp/packages/exfatprogs-1.0.4-chromeos-armv7l.tar.xz',
-      armv7l: 'file:///usr/local/tmp/packages/exfatprogs-1.0.4-chromeos-armv7l.tar.xz',
-        i686: 'file:///usr/local/tmp/packages/exfatprogs-1.0.4-chromeos-i686.tar.xz',
-      x86_64: 'file:///usr/local/tmp/packages/exfatprogs-1.0.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/exfatprogs-1.0.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/exfatprogs-1.0.4-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/exfatprogs-1.0.4-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/exfatprogs-1.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '0fb0f5a16c09f11c912016a73d0002e252737106a3c2c31fd838b5057bee02b8',
