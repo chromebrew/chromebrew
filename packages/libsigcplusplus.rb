@@ -2,31 +2,37 @@ require 'package'
 
 class Libsigcplusplus < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
-  homepage 'http://libsigc.sourceforge.net/'
-  version '2.10.0'
+  homepage 'https://github.com/libsigcplusplus/libsigcplusplus/'
+  @_ver = '2.10.6'
+  version @_ver
   compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz'
-  source_sha256 'f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81'
+  source_url "https://github.com/libsigcplusplus/libsigcplusplus/archive/#{@_ver}.tar.gz"
+  source_sha256 '3458b027f44204571a3a7091ebb94e5b1b5ecc7fbab89ce2bada25543645993f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.6-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus-2.10.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '526748e3a15fcd316fefc8c0359880b5c89640ad89a01de8c3f6210251e229f4',
-     armv7l: '526748e3a15fcd316fefc8c0359880b5c89640ad89a01de8c3f6210251e229f4',
-       i686: 'cbdf640dbf2462b3b8f24bb5f7cd2345f1ff3f46c983191e7ee31482213d24cd',
-     x86_64: 'c32ff29b0f4a8394b69502cd3dc030848f84c5c3df048beb88966f7b1b6c6935',
+     aarch64: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
+      armv7l: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
+        i686: '4fa4524d137e1d7a78b166808923fb1470664fd0523ea23320d951859f0bc5c4',
+      x86_64: '5fca09ea7258aa2edfba573da8366f40ab5aae476b3df248fb556cfe4bcdd8a0',
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    -Dmaintainer-mode=true \
+    -Dbuild-deprecated-api=true \
+    -Dbuild-examples=false \
+    builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
