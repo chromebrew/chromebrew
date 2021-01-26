@@ -2,6 +2,7 @@ require 'package'
 
 class Xfsprogs < Package
   description 'XFS filesystem utilities'
+  homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
   @_ver = '5.10.0'
   version @_ver
   compatibility 'all'
