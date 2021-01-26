@@ -154,4 +154,14 @@ class Package
     exitstatus = $?.exitstatus
     raise InstallError.new("`#{args.join(" ")}` exited with #{exitstatus}") unless exitstatus == 0
   end
+  def self.make_install (destdir = CREW_DEST_PREFIX, opt = '')
+    @warning = 'libtool: warning: remember to run '
+        @out = "#{CREW_BREW_DIR}/libtool.txt"
+
+    system "make DESTDIR=#{destdir} install #{opt} 2>&1 |\
+            tee #{@out} |\
+            grep -v \"#{@warning}\""
+
+    system "grep -oP \"(?<=#{@warning}\').*?(?=\')\" #{@out} | bash"
+  end
 end
