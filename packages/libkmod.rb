@@ -3,22 +3,23 @@ require 'package'
 class Libkmod < Package
   description 'Linux kernel module handling library'
   homepage 'https://kernel.org'
-  version '27'
+  @_ver = '28'
+  version @_ver
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-27.tar.xz'
-  source_sha256 'c1d3fbf16ca24b95f334c1de1b46f17bbe5a10b0e81e72668bdc922ebffbbc0c'
+  source_url "https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-#{@_ver}.tar.xz"
+  source_sha256 '3969fc0f13daa98084256337081c442f8749310089e48aa695c9b4dfe1b3a26c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libkmod-27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libkmod-27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libkmod-27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libkmod-27-chromeos-x86_64.tar.xz',
+     aarch64: 'file:///usr/local/tmp/packages/libkmod-28-chromeos-armv7l.tar.xz',
+      armv7l: 'file:///usr/local/tmp/packages/libkmod-28-chromeos-armv7l.tar.xz',
+        i686: 'file:///usr/local/tmp/packages/libkmod-28-chromeos-i686.tar.xz',
+      x86_64: 'file:///usr/local/tmp/packages/libkmod-28-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '852023187ef8d31a0854ba5dfe0383eb06f492411a2c2e36cddb7fdf5377acde',
-     armv7l: '852023187ef8d31a0854ba5dfe0383eb06f492411a2c2e36cddb7fdf5377acde',
-       i686: 'dd511bb365310f101a649f043530524a184ea39cdd42eea9dbf0ff1182e69b22',
-     x86_64: 'd4a0b2379cb57cd28f0410eb2abe3e151fb7dcbdb645ddfb90119e553632670d',
+     aarch64: '57c5726cd378bf3e1458cdfebead52b9279557af8229550d5f91f0a3e04d4f10',
+      armv7l: '57c5726cd378bf3e1458cdfebead52b9279557af8229550d5f91f0a3e04d4f10',
+        i686: '95c805d62289d8751682d4bb1c8046deeae68958e0f06f6863e30eb74e941864',
+      x86_64: '258578c242a793bfda78e9dc98a9e029a8788e9971a809d0c6e42c2abe10b317',
   })
 
   depends_on 'xzutils'
