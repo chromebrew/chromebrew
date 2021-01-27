@@ -3,32 +3,31 @@ require 'package'
 class Krb5 < Package
   description 'Kerberos is a network authentication protocol.'
   homepage 'https://web.mit.edu/kerberos'
-  version '1.16'
+  version '1.18.3'
   compatibility 'all'
-  source_url 'http://web.mit.edu/kerberos/dist/krb5/1.16/krb5-1.16.tar.gz'
-  source_sha256 'faeb125f83b0fb4cdb2f99f088140631bb47d975982de0956d18c85842969e08'
+  source_url 'http://web.mit.edu/kerberos/dist/krb5/1.18/krb5-1.18.3.tar.gz'
+  source_sha256 'e61783c292b5efd9afb45c555a80dd267ac67eebabca42185362bee6c4fbd719'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.16-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.18.3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.18.3-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.18.3-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/krb5-1.18.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'bcb8897583e93562cc1fc0c16fdb712dfa464d833c6aac83a668201763d6deeb',
-     armv7l: 'bcb8897583e93562cc1fc0c16fdb712dfa464d833c6aac83a668201763d6deeb',
-       i686: '15ce6e5b300eb7b050c3495b99aaa91c07166144783a20d9278457215bf22c52',
-     x86_64: 'fb5fb9ad6e393104a31c1ef29208840720b796555fa9f7ccd0bbd0412e44495e',
+     aarch64: '3e67fe4422bf86829978f6a1b3ceb2dc62975d1a7eb9a3c6158f6f6deb09cbf1',
+      armv7l: '3e67fe4422bf86829978f6a1b3ceb2dc62975d1a7eb9a3c6158f6f6deb09cbf1',
+        i686: '60cb4f6e17bac1ce4b92c2c4c5e010101e6855db6b5cb8f5da7368cf793b12fe',
+      x86_64: 'f1d105384743a241f172c4d267a35e1ffb49159f4bc76c3ca5e5dbc27f69cc28',
   })
 
   depends_on 'gawk'
 
   def self.build
     Dir.chdir "src" do
-      system "./configure",
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}",
-      "--without-system-verto"
+      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --without-system-verto"
       system "make"
     end
   end
