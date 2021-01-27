@@ -4,7 +4,7 @@ class Gparted < Package
   description 'A Partition Magic clone, frontend to GNU Parted'
   homepage 'https://gparted.org/'
   @_ver = '1.2.0'
-  version @_ver
+  version @_ver + '-1'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{@_ver}/gparted-#{@_ver}.tar.gz"
   source_sha256 '6c90715d254d7a7ec0208b29007b64160dd9fb7df4c4aa7f8ec2c9d23114c719'
@@ -33,6 +33,8 @@ class Gparted < Package
   depends_on 'mtools'
   depends_on 'libsigcplusplus'
   depends_on 'librsvg'
+  depends_on 'xhost'
+  depends_on 'sommelier'
 
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
@@ -45,12 +47,24 @@ class Gparted < Package
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
   
   def self.postinstall
-    puts "To run gparted, execute the following:".orange
-    puts "xhost si:localuser:root".lightblue
-    puts "sudo gparted".lightblue
+    bashrc = "#{HOME}/.bashrc"
+    puts 'Performing script-injection...'
+    unless `grep -c "# Added by gparted package" #{bashrc} || true`.to_i > 0
+      system "cat <<'EOF'>> #{bashrc}
+# Added by gparted package
+alias sudo='sudo '
+alias gparted='xhost si:localuser:root; sudo gparted'
+
+EOF"
+    end
+    puts
+    puts 'To complete the installation, execute the following:'.lightblue
+    puts
+    puts "source #{bashrc}".lightblue
+    puts
   end
 end
