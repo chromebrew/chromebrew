@@ -12,10 +12,10 @@ class Handbrake < Package
 
     binary_url ({
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/handbrake-1.3.3-1-chromeos-x86_64.tar.xz',
-  })
+    })
     binary_sha256 ({
       x86_64: '13e06c6458fe918ab1a46deeadcea9415c00be877a333b9bfbe5969c1ca1ba2a',
-  })
+    })
     
     depends_on 'gtk3'
     depends_on 'ffmpeg'
