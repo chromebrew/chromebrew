@@ -12,7 +12,6 @@ class Libxi < Package
   depends_on 'libx11'
 
   def self.build
-    system './autogen.sh'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
