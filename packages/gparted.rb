@@ -39,6 +39,7 @@ class Gparted < Package
     system "cat <<'EOF'> gparted
 #!/bin/bash
 DISPLAY=:0
+LD_LIBRARY_PATH=/usr/local/lib64
 xhost si:localuser:root
 sudo gparted.orig
 EOF"
