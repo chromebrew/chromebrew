@@ -39,9 +39,8 @@ class Gparted < Package
     system "cat <<'EOF'> gparted
 #!/bin/bash
 DISPLAY=:0
-LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}
 xhost si:localuser:root
-sudo gparted.orig
+sudo LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} gparted.orig
 EOF"
     FileUtils.install 'gparted', "#{CREW_DEST_PREFIX}/bin/gparted", mode: 0755
   end
