@@ -51,7 +51,7 @@ class Gparted < Package
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/gparted", "#{CREW_DEST_PREFIX}/bin/gparted.orig"
   end
   def self.postinstall
-        system "cat <<'EOF'> gparted
+    system "cat <<'EOF'> gparted
 #!/bin/bash
 DISPLAY=:0
 xhost si:localuser:root
