@@ -49,13 +49,12 @@ class Gparted < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/gparted", "#{CREW_DEST_PREFIX}/bin/gparted.orig"
-  end
-  def self.postinstall
     system "cat <<'EOF'> gparted
 #!/bin/bash
 DISPLAY=:0
 xhost si:localuser:root
 sudo gparted.orig
 EOF"
-    FileUtils.install 'gparted', "#{CREW_PREFIX}/bin/gparted", mode: 0755
+    FileUtils.install 'gparted', "#{CREW_DEST_PREFIX}/bin/gparted", mode: 0755
+  end
 end
