@@ -109,8 +109,8 @@ case "${ARCH}" in
   sha256s+=('4386bc951eaa7311b8c828fb76b030410f63686c9c86f6288b2a1025594166f1')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-armv7l.tar.xz')
   sha256s+=('35dfc0e95c0d6c09a323fd6ec393dc48e33940fc7815a4f51adff5a63f99416a')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libedit-3.1-0-chromeos-armv7l.tar.xz')
-  sha256s+=('90f9db2636bdcae5cb4c8d6a0d020398b13c6290164c27776507689bc5fc85be')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libedit-20191231-3.1-chromeos-armv7l.tar.xz')
+  sha256s+=('610986dcb014c2079b2b355628ee6f7b867076974cf751b891a926f0a0d9d5b8')
   ;;
 "i686")
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-0f64-chromeos-i686.tar.xz')
@@ -159,8 +159,8 @@ case "${ARCH}" in
   sha256s+=('6dd0fc056dd3cdca76596603c1a161724e8f81d68c50bf18f25877e4df8dc9e4')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-i686.tar.xz')
   sha256s+=('1c45fb6c19db175fba61dd9925b648955c5081ad7dea31feb7b613b5ca0a97c9')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libedit-3.1-0-chromeos-i686.tar.xz')
-  sha256s+=('0590ee8aa7923a29332aa436ff42b909cf968c7ab50121df43539d968e3c496f')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libedit-20191231-3.1-chromeos-i686.tar.xz')
+  sha256s+=('dc3d211fd649803d0dd89c3f82163a8bf67eeebaea9629b14bd9e570ba545933')
   ;;
 "x86_64")
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/gcc10-10.2.1-0f64-chromeos-x86_64.tar.xz')
@@ -209,8 +209,8 @@ case "${ARCH}" in
   sha256s+=('ae2a5001e272fdf4a1f212ed31f38b62e2fd20205f8ab0c77ab7226b8a94b6ac')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-x86_64.tar.xz')
   sha256s+=('290087e9c03a94eaf5d33a82b76dc3b5bb11be1dff5a6e57aa190ec5439bcfb2')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libedit-3.1-0-chromeos-x86_64.tar.xz')
-  sha256s+=('6f6ed8dd83aad5895b5e3927c673d66c5d676a345f3bc6913e94392a74db929a')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libedit-20191231-3.1-chromeos-x86_64.tar.xz')
+  sha256s+=('834915020f3fd98b0e3ca8609ae0b915b47ca77ea5877fa7b758a85571401e8e')
   ;;
 esac
 
