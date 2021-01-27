@@ -44,27 +44,17 @@ class Gparted < Package
       --enable-libparted-dmraid \
       --enable-xhost-root"
     system "make"
+    system "cat <<'EOF'> gparted
+#!/bin/bash
+DISPLAY=:0
+xhost si:localuser:root
+sudo gparted.orig
+EOF"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-  
-  def self.postinstall
-    bashrc = "#{HOME}/.bashrc"
-    puts 'Performing script-injection...'
-    unless `grep -c "# Added by gparted package" #{bashrc} || true`.to_i > 0
-      system "cat <<'EOF'>> #{bashrc}
-# Added by gparted package
-alias sudo='sudo '
-alias gparted='xhost si:localuser:root; sudo gparted'
-
-EOF"
-    end
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts
-    puts "source #{bashrc}".lightblue
-    puts
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/gparted", "#{CREW_DEST_PREFIX}/bin/gparted.orig"
+    FileUtils.install 'gparted', "#{CREW_DEST_PREFIX}/bin/gparted", mode: 0755
   end
 end
