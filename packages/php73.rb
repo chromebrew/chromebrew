@@ -3,22 +3,23 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.3.24'
+  @_ver = '7.3.26'
+  version @_ver
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-7.3.24.tar.xz'
-  source_sha256 '78b0b417a147ab7572c874334d11654e3c61ec5b3f2170098e5db02fb0c89888'
+  source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
+  source_sha256 'd93052f4cb2882090b6a37fd1e0c764be1605a2461152b7f6b8f04fa48875208'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.24-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.24-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.24-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ae2b5cd918dd02524c6b333ad227a51c5475e7c36de1cf13436c9fe8c0b7df28',
-     armv7l: 'ae2b5cd918dd02524c6b333ad227a51c5475e7c36de1cf13436c9fe8c0b7df28',
-       i686: '7584c8eab9ffb66894b513b09d94aa2bb679d6095e6f5f6dc7dc4b86a84b2c0e',
-     x86_64: 'b0482f91cd558175f1509ee6e8a12313fb5665640682d9776715307d89378641',
+     aarch64: 'fb205e50aa2349be17b0272b8c8db09c1c2d25a938c402cc1615155c0353ddd6',
+      armv7l: 'fb205e50aa2349be17b0272b8c8db09c1c2d25a938c402cc1615155c0353ddd6',
+        i686: '9d9d8c2b2b58613e32a2d251eb9810c1bedb5104ccd105ded4a9d0ec4e1a79aa',
+      x86_64: '1ee211bdc217440d09902efdcbdec9f560e08778f56dc318e8ba94881dddac68',
   })
 
   depends_on 'libgcrypt'
@@ -60,45 +61,44 @@ class Php73 < Package
   end
 
   def self.build
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
-    ENV['CFLAGS'] = ' -liconv'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--docdir=#{CREW_PREFIX}/doc",
-           "--infodir=#{CREW_PREFIX}/info",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--localstatedir=#{CREW_PREFIX}/tmp",
-           "--mandir=#{CREW_PREFIX}/share/man",
-           "--sbindir=#{CREW_PREFIX}/bin",
-           "--with-config-file-path=#{CREW_PREFIX}/etc",
-           "--with-libdir=#{ARCH_LIB}",
-           "--with-kerberos=#{CREW_LIB_PREFIX}",
-           '--enable-exif',
-           '--enable-fpm',
-           '--enable-ftp',
-           '--enable-mbstring',
-           '--enable-opcache',
-           '--enable-pcntl',
-           '--enable-shared',
-           '--enable-shmop',
-           '--enable-sockets',
-           '--enable-zip',
-           '--with-bz2',
-           '--with-curl',
-           '--with-gd',
-           '--with-gettext',
-           '--with-gmp',
-           '--with-libzip',
-           '--with-mysqli',
-           '--with-openssl',
-           '--with-pcre-regex',
-           '--with-pdo-mysql',
-           '--with-pear',
-           '--with-readline',
-           '--with-tidy',
-           '--with-unixODBC',
-           '--with-xsl',
-           '--with-zlib'
+    system "env TMPDIR='#{CREW_PREFIX}/tmp' CFLAGS='-pipe -ltinfo' \
+      ./configure \
+       --prefix=#{CREW_PREFIX} \
+       --docdir=#{CREW_PREFIX}/doc \
+       --infodir=#{CREW_PREFIX}/info \
+       --libdir=#{CREW_LIB_PREFIX} \
+       --localstatedir=#{CREW_PREFIX}/tmp \
+       --mandir=#{CREW_PREFIX}/share/man \
+       --sbindir=#{CREW_PREFIX}/bin \
+       --with-config-file-path=#{CREW_PREFIX}/etc \
+       --with-libdir=#{ARCH_LIB} \
+       --with-kerberos=#{CREW_LIB_PREFIX} \
+       --enable-exif \
+       --enable-fpm \
+       --enable-ftp \
+       --enable-mbstring \
+       --enable-opcache \
+       --enable-pcntl \
+       --enable-shared \
+       --enable-shmop \
+       --enable-sockets \
+       --enable-zip \
+       --with-bz2 \
+       --with-curl \
+       --with-gd \
+       --with-gettext \
+       --with-gmp \
+       --with-libzip \
+       --with-mysqli \
+       --with-openssl \
+       --with-pcre-regex \
+       --with-pdo-mysql \
+       --with-pear \
+       --with-readline \
+       --with-tidy \
+       --with-unixODBC \
+       --with-xsl \
+       --with-zlib"
     system 'make'
   end
 
