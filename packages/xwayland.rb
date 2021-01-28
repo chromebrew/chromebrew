@@ -4,24 +4,23 @@ class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
   @_ver = '1.20.10'
-  version @_ver + '-2'
+  version @_ver + '-3'
   compatibility 'all'
   source_url "https://github.com/freedesktop/xorg-xserver/archive/xorg-server-#{@_ver}.tar.gz"
   source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '56870da84a58bd14ac55464f7f0363de30c924fb4853d29d1c5c987ee5164914',
-      armv7l: '56870da84a58bd14ac55464f7f0363de30c924fb4853d29d1c5c987ee5164914',
-        i686: '5832302f0eed9f41e3eca584b9c3df401c3c5b551db087d9cc8e6d43d19056cf',
-      x86_64: 'acaa00da4c1c6200fa3c6ffa3f833e5d13bcd240bc0d6cb5277ee0c01299ba47',
+     aarch64: 'ac87ced50d92c75f578bd5738b81012b46bbcf4721c8b3c8074cb2963ca64d5c',
+      armv7l: 'ac87ced50d92c75f578bd5738b81012b46bbcf4721c8b3c8074cb2963ca64d5c',
+        i686: 'bdc936c7d24301256867aeb17200c669a424adeb9f009aeb602f205c228d5cf9',
+      x86_64: 'd20e78d4a44203eeeb7d6c3d33e7d50d777eb9a8016370f064f29a5b6be64e91',
   })
-
 
   depends_on 'libepoxy'
   depends_on 'xorg_proto'
@@ -96,15 +95,8 @@ class Xwayland < Package
   end
 
   def self.build
-    #case ARCH
-    #when 'aarch64', 'armv7l', 'x86_64'
-    #  ENV['CFLAGS'] = '-fuse-ld=lld'
-    #  ENV['CXXFLAGS'] = '-fuse-ld=lld'
-    #end
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS} \
-              -Dc_link_args='-fuse-ld=lld' \
-              -Dcpp_link_args='-fuse-ld=lld' \
+    system "meson configure #{CREW_MESON_LTO_OPTIONS} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
