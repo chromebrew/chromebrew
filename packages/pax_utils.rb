@@ -15,17 +15,18 @@ class Pax_utils < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pax_utils-1.2.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'e7140bfffd7af0f75c3d95bf40626f2f83a855b7cdbe3d9e019424a6d356f293',
-      armv7l: 'e7140bfffd7af0f75c3d95bf40626f2f83a855b7cdbe3d9e019424a6d356f293',
-        i686: 'a818331f5f3f431fbdcfadf9418ad4e99cdf3bfa2271a1d921c4e30ad5dc0e63',
-      x86_64: '712f217975226bbb33e2ddb16d049f389618bf48bea5410aeb389043c1ab06a3',
+     aarch64: 'edc856ff6cc451358da1fb46a2a1023594f3d243cb1c30e5aa67c9ee9ed4dac6',
+      armv7l: 'edc856ff6cc451358da1fb46a2a1023594f3d243cb1c30e5aa67c9ee9ed4dac6',
+        i686: '9254843237e4bba47da7c4ec63ca7109e32ad7fee5822a1862fdddc789c280bb',
+      x86_64: '836d8627d96ed61608cb7bee423db753fc00c67600c62386e1df98d4529c35c9',
   })
 
+  depends_on 'pyelftools'
   depends_on 'libcap' => ':build'
   depends_on 'libseccomp' => ':build'
 
   def self.build
-    #system "sed -E 's|(  paths =) \[\]|\1 [#{CREW_LIB_PREFIX}]|g' -i lddtree.py"
+    system "sed -i 's|/usr/bin/env python|/usr/bin/env python3|g' lddtree.py"
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
     ./configure \
     #{CREW_OPTIONS} \
@@ -36,6 +37,7 @@ class Pax_utils < Package
   end
   
   def self.install
+  
   system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
