@@ -41,6 +41,11 @@ class Integration < Package
     end 
   end
   def self.postinstall
+      @cmd = 'nohup crew_integration -s'
+      @check = `grep -c "#{@cmd}" #{HOME}/.bashrc`
+      unless @check.to_i > 0
+        system "echo \"#{@cmd}\" >> #{HOME}/.bashrc"
+      end
       unless ARGV[0] == "upgrade"
         require 'em-websocket'
         puts 

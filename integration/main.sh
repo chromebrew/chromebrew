@@ -33,34 +33,35 @@ case ${1} in
        if [[ ${DESKTOP_FILE} != '' ]]; then
          APPNAME=$(grep 'Name=' ${DESKTOP_FILE} | cut -d'=' -f2 | sed -n '1p' )
        else
-         APPNAME=${2^}
+         APPNAME=${CMD^}
        fi
-       if [ -f "${APPICON_PATH}/${APPNAME}.png" ]; then
-         echo -e "${GREEN}Found an icon for ${APPNAME^}, using it.${RESET}"
+       if [ -f "${APPICON_PATH}/${CMD}.png" ]; then
+         echo -e "${GREEN}Found an icon for ${APPNAME}, using it.${RESET}"
        else
          icon () { ls -1 ${CREW_PREFIX}/share/pixmaps/ | grep ${CMD}; }
          if [[ $(icon) != '' ]]; then
            NUM=$(icon | wc -l)
            if [[ $NUM = 1 ]]; then
-             echo -e "${GREEN}Found an preinstalled icon for ${APPNAME^}, using it.${RESET}"
-             convert ${CREW_PREFIX}/share/pixmaps/$(icon) ${APPICON_PATH}/${2}.png
+             echo -e "${GREEN}Found an preinstalled icon for ${APPNAME}, using it.${RESET}"
+             ICON_PATH=${CREW_PREFIX}/share/pixmaps/$(icon)
            else
-             echo -e "${BLUE}${NUM} icons were found for ${APPNAME^}, here is the path of them${RESET}"
+             echo -e "${BLUE}${NUM} icons were found for ${APPNAME}, here is the path of them${RESET}"
              icon
-             read -r -p "Which icon do you want to use (Enter the path): " icon_path
+             read -r -p "Which icon do you want to use (Enter the path): " ICON_PATH
              echo -e "${RESET}"
            fi
          else
-           echo -e "${YELLOW}${2^} does not provide any icon :/ Using default Chromebrew icon.${RESET}"
+           echo -e "${YELLOW}${APPNAME} does not provide any icon :/ Using default Chromebrew icon.${RESET}"
+           cp ${APPICON_PATH}/brew546.png ${APPICON_PATH}/${CMD}.png
          fi
        fi
        if [[ ${ICON_PATH} = '' ]]; then
-           icon_path="${APPICON_PATH}/${2}.png"
+           ICON_PATH="${APPICON_PATH}/${CMD}.png"
        fi
-       convert ${ICON_PATH} -resize 1024x1024 ${APPICON_PATH}/${2}.png
-       echo -e "${GREEN}Shortcut for ${2^} deployed!${RESET}"
+       convert ${ICON_PATH} -resize 1024x1024 ${APPICON_PATH}/${CMD}.png
+       echo -e "${GREEN}Shortcut for ${APPNAME} deployed!${RESET}"
        pkill ruby
-       ruby ${PWA_PREFIX}/sender.rb "chrome-extension://${ID}/main.html?cmd=${2}&friendly_name=${APPNAME}"
+       ruby ${PWA_PREFIX}/sender.rb "chrome-extension://${ID}/main.html?cmd=${CMD}&friendly_name=${APPNAME}"
        sleep 5
        exec ruby ${SERVER} &
        ;;
