@@ -3,40 +3,41 @@ require 'package'
 class Libgit2 < Package
   description 'A portable, pure C implementation of the Git core methods'
   homepage 'https://libgit2.org/'
-  version '0.28.2'
+  @_ver = '1.1.0'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/libgit2/libgit2/archive/v0.28.2.tar.gz'
-  source_sha256 '42b5f1e9b9159d66d86fff0394215c5733b6ef8f9b9d054cdd8c73ad47177fc3'
+  source_url "https://github.com/libgit2/libgit2/releases/download/v#{@_ver}/libgit2-#{@_ver}.tar.gz"
+  source_sha256 'ad73f845965cfd528e70f654e428073121a3fa0dc23caac81a1b1300277d4dba'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-0.28.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-0.28.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-0.28.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-0.28.2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ea0358650faf4cf70c1daeb6faaddf456fee8a2230b7854ca1a57f81abcca2e9',
-     armv7l: 'ea0358650faf4cf70c1daeb6faaddf456fee8a2230b7854ca1a57f81abcca2e9',
-       i686: '18d4c0cb5fbaffcbd720c33879c3ddad327d3b926181911aa94636cb77679f36',
-     x86_64: 'fe5e80b43e166d1dd28a4f8543c509c84ed1e8f32193b5012cc6a0e354bd5990',
+     aarch64: '6ace517ea3525066a11071ed20e02eda6862bd944ceaf4f704c2f28b5f0bc6ac',
+      armv7l: '6ace517ea3525066a11071ed20e02eda6862bd944ceaf4f704c2f28b5f0bc6ac',
+        i686: '560685b52825f1bd4c3e6e45b328dec6a68f31d4d8c91ea2129626c0a7b39e9d',
+      x86_64: 'a12810a16d4a054a1a7d05925743562bf28e2b6e5f1c5f0db22f82a87208f7e9',
   })
 
   depends_on 'python3'
+  depends_on 'libssh2'
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             "-DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}",
-             '..'
-      system 'cmake --build .'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+        cmake \
+        -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        .."
+      system 'ninja'
     end
   end
-
+  
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
