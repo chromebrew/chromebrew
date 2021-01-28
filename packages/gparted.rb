@@ -16,6 +16,7 @@ class Gparted < Package
   depends_on 'yelp_tools' => ':build'
   depends_on 'xfsprogs'
   depends_on 'exfatprogs'
+  depends_on 'f2fs_tools'
   depends_on 'gpart'
   depends_on 'mtools'
   depends_on 'libsigcplusplus'
