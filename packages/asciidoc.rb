@@ -22,10 +22,6 @@ class Asciidoc < Package
       x86_64: 'a9fabec30cf8243847e065188568f048d3323f2cc52e47cc8a8aa516b68957cb',
   })
 
-  depends_on 'autoconf' => :build
-  depends_on 'compressdoc' => :build
-  depends_on 'python3'
-
   def self.build
     system "autoconf"
     system "sed -i 's,/etc/vim,#{CREW_PREFIX}/etc/vim,g' Makefile.in"
