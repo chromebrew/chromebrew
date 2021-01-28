@@ -3,23 +3,23 @@ require 'package'
 class Wayland < Package
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  @_ver = '1.18.93'
+  @_ver = '1.19.0'
   version @_ver
   compatibility 'all'
   source_url "https://wayland.freedesktop.org/releases/wayland-#{@_ver}.tar.xz"
-  source_sha256 '6df611caec469d05564c8cacda8d4df368c318f0336ebd2fbef27fb59db26927'
+  source_sha256 'baccd902300d354581cd5ad3cc49daa4921d55fb416a5883e218750fef166d15'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.18.93-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.18.93-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.18.93-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.18.93-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'cec31727a1aab8b4a24a412fe48f2653022d907740dde88b26831ae9688628ec',
-      armv7l: 'cec31727a1aab8b4a24a412fe48f2653022d907740dde88b26831ae9688628ec',
-        i686: '155100efa8567cab4d2eff45cac6fe58e578fb506b6b2efa84a7b18842fb7a09',
-      x86_64: '3536fe7d389c55e2a3c8c1d7bf2f4c21482523ebbe8245d692d08d598cfc3822',
+     aarch64: 'ff5f655f517f263a92c0416f25bb6a16168cd7adf7fb1dcaec752b293068fa9a',
+      armv7l: 'ff5f655f517f263a92c0416f25bb6a16168cd7adf7fb1dcaec752b293068fa9a',
+        i686: '35a7c95bab108da2483b99d7a63703b2e2f65d202cab699d1cfc721f0c4a172e',
+      x86_64: 'fc509f738cb90e5f67e612389d209b94018751b87dd37452d9ed1762bd54f8f3',
   })
 
   depends_on 'expat'
