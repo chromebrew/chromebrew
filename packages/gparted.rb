@@ -34,13 +34,13 @@ class Gparted < Package
     system "cat <<'EOF'> gparted_
 #!/bin/sh
 xhost si:localuser:root
-sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} gparted.orig
+sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} gparted.elf
 EOF"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/gparted", "#{CREW_DEST_PREFIX}/bin/gparted.orig"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/gparted", "#{CREW_DEST_PREFIX}/bin/gparted.elf"
     FileUtils.install 'gparted_', "#{CREW_DEST_PREFIX}/bin/gparted", mode: 0755
   end
 end
