@@ -9,6 +9,19 @@ class Gparted < Package
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{@_ver}/gparted-#{@_ver}.tar.gz"
   source_sha256 '6c90715d254d7a7ec0208b29007b64160dd9fb7df4c4aa7f8ec2c9d23114c719'
 
+  binary_url ({
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gparted-1.2.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gparted-1.2.0-1-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+     aarch64: '86ffa5a47aa41a0c7a443c122d70e7754c7ddf8347ccbf70f378048071c6808b',
+      armv7l: '86ffa5a47aa41a0c7a443c122d70e7754c7ddf8347ccbf70f378048071c6808b',
+        i686: '0518eface50e9f8b91ba9c0fd685823975b2d1773cdb0144cadb852ddb97f28e',
+      x86_64: 'a784a3d8481f6eff5de5474cd3d1baab160ace7ac907124b0d7f48caee6b684d',
+  })
+
   depends_on 'parted'
   depends_on 'gtkmm3'
   depends_on 'intltool' => ':build'
