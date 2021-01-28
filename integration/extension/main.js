@@ -8,7 +8,7 @@ command(cmd)
 function command(cmd) {
     if (cmd === 'terminal') {
         ws.onopen = function() {
-            chrome.windows.create({url: '/html/crosh.html'});
+            chrome.windows.create({url: '/html/crosh.html', type: 'popup'});
             self.close()
         }
     } else {
