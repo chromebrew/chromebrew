@@ -21,8 +21,6 @@ class Libunwind < Package
       x86_64: 'a759499690b70258e91d8ac7cd32047a3cf3308364b04f062e8fc60a33782ec6',
   })
 
-  depends_on 'xzutils' => :build
-
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
     ./configure #{CREW_OPTIONS} --enable-ptrace"
