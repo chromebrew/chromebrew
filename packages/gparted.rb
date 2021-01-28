@@ -31,17 +31,16 @@ class Gparted < Package
       --enable-libparted-dmraid \
       --enable-xhost-root"
     system "make"
+    system "cat <<'EOF'> gparted
+#!/bin/bash
+xhost si:localuser:root
+sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} gparted.orig
+EOF"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/gparted", "#{CREW_DEST_PREFIX}/bin/gparted.orig"
-    system "cat <<'EOF'> gparted
-#!/bin/bash
-DISPLAY=:0
-xhost si:localuser:root
-sudo LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} gparted.orig
-EOF"
     FileUtils.install 'gparted', "#{CREW_DEST_PREFIX}/bin/gparted", mode: 0755
   end
 end
