@@ -18,8 +18,8 @@ class Parted < Package
   binary_sha256 ({
      aarch64: 'ede8edf189c6a15f7f73c5473230e183e658515392727cf263bcec6f6e7a3145',
       armv7l: 'ede8edf189c6a15f7f73c5473230e183e658515392727cf263bcec6f6e7a3145',
-        i686: '0105eb1b9b74e671c2a8e2798ecbf45aa52cddc2a7a9c92de57716f6652a5229',
-      x86_64: '516dcdcb2ff040ed538a79f74d5f409b6059641620f6b8b239b584637513ec3e',
+        i686: '4df150824d0b15cbbd57e3d053dfdb7ae636165e61082ec294981abf96dacf58',
+      x86_64: 'c5dbafb2ff514b1eec1f9cdb5cffae0659120151ecb6d3552230a2a5054c95dc',
   })
 
   depends_on 'lvm2'
