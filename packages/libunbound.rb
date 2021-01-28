@@ -3,38 +3,38 @@ require 'package'
 class Libunbound < Package
   description 'Unbound is a validating, recursive, and caching DNS resolver.'
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
-  version '1.9.4'
+  @_ver = '1.13.0'
+  version @_ver
   compatibility 'all'
-  source_url 'https://nlnetlabs.nl/downloads/unbound/unbound-1.9.4.tar.gz'
-  source_sha256 '3d3e25fb224025f0e732c7970e5676f53fd1764c16d6a01be073a13e42954bb0'
+  source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{@_ver}.tar.gz"
+  source_sha256 'a954043a95b0326ca4037e50dace1f3a207a0a19e9a4a22f4c6718fc623db2a1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.9.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.9.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.9.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.9.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'd8951bc3aea52562d64b899ec99e8e12ed4a53b186b2631557ff182da14724f0',
-     armv7l: 'd8951bc3aea52562d64b899ec99e8e12ed4a53b186b2631557ff182da14724f0',
-       i686: '2fc4b02d55f38c63ae4a4070774b50ebe17a724a9ba3232321a1f82f135210ea',
-     x86_64: '47007cc2efc1962ea0e6b5eb03c2e768faa95af16f92e7e7de52cb2638c211cd',
+     aarch64: '6a233948f7d41046dc23d1cc500cf87b604b6d99861d0806b12393e090bd034a',
+      armv7l: '6a233948f7d41046dc23d1cc500cf87b604b6d99861d0806b12393e090bd034a',
+        i686: '93afb3cb2cbdd9e3fa293b6f04475a7f5cf4e0f713d7eba3538f2547c4547d1a',
+      x86_64: 'b270594cf7ac23a675280e20807730ae437f155a41c4f015b17db51c4bb360de',
   })
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static',
-           '--with-pic'
-    system 'make'
+  system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    ./configure \
+    #{CREW_OPTIONS} \
+    --enable-shared \
+    --with-pic"
+    system "make"
   end
-
+  
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
-
+  
   def self.check
     system 'make', 'test'
   end
