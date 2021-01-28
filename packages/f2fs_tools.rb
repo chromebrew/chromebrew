@@ -16,10 +16,10 @@ class F2fs_tools < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/f2fs_tools-1.14.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '6ad97e1adad7137bf83a14b949829e9ac409d03142cb09f0e189e58894d2b0e5',
-      armv7l: '6ad97e1adad7137bf83a14b949829e9ac409d03142cb09f0e189e58894d2b0e5',
-        i686: '2eab1c80dc532c63057f522f475f73c894d15675d229fe93fa9193c49bf2cc16',
-      x86_64: '1b5dfc370d91ad8f8aa0ca9e9ff088656b46a69510ceb6876d02e5e0fe32e07d',
+     aarch64: '68b0d173285b156e90e7b8ef1283c0ce5b3b6b7273161baa7db8dc6a331d4e4a',
+      armv7l: '68b0d173285b156e90e7b8ef1283c0ce5b3b6b7273161baa7db8dc6a331d4e4a',
+        i686: '356f89bcbcc2fc12a91cfd7e63d86042cfd194554d34921c18b3c302e7277713',
+      x86_64: '133257b9d9544223b40995c810154f806697ace336e4ef5ed6e51e29811d2aab',
   })
 
   depends_on 'util_linux'
@@ -28,17 +28,18 @@ class F2fs_tools < Package
     # /usr/bin/sg_write_buffer is provided in sg3_utils"
     system "sed -i '/sg_write_buffer/d' tools/Makefile.am"
   end
-  
+
   def self.build
     system "autoreconf -fi"
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
       ./configure \
       #{CREW_OPTIONS} \
-      --sbindir=/usr/bin"
+      --sbindir=#{CREW_PREFIX}/bin"
     system "make"
   end
   
+
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} sbindir=/usr/bin install"
+    system "make DESTDIR=#{CREW_DEST_DIR} sbindir=#{CREW_PREFIX}/bin install"
   end
 end
