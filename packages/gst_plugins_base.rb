@@ -3,22 +3,23 @@ require 'package'
 class Gst_plugins_base < Package
   description 'An essential, exemplary set of elements for GStreamer'
   homepage 'https://gstreamer.freedesktop.org/modules/gst-plugins-base.html'
-  version '1.18.0'
+  @_ver = '1.18.3'
+  version @_ver
   compatibility 'all'
-  source_url 'https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.0.tar.xz'
-  source_sha256 '762abdd1a950809a1cea62fff7f86b5f7d6bd5f6841e3e585c700b823cdb7897'
+  source_url "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-#{@_ver}.tar.xz"
+  source_sha256 'dbfa20283848f0347a223dd8523dfb62e09e5220b21b1d157a8b0c8b67ba9f52'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.3-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.3-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'a53d2597a9779c17677a600ac0cd669a8ce3079ac62ab87627880f2148fab970',
-     armv7l: 'a53d2597a9779c17677a600ac0cd669a8ce3079ac62ab87627880f2148fab970',
-       i686: 'b2ac2d8f40199531e304c35659ecbd48107297072114967011feb8b12a48ebba',
-     x86_64: 'f2ea971bba4cf271d4f36b7eb743065cc53ce00973afebb1076d996ff4e04170',
+     aarch64: 'a74c3d06cc2b1b573eee605d5a8ef130260321a3df0e062789bbb40f64b0b3ae',
+      armv7l: 'a74c3d06cc2b1b573eee605d5a8ef130260321a3df0e062789bbb40f64b0b3ae',
+        i686: '16ab2127284b14a75b5fda4e00640fd10d79e98f8bf2806e62d5b0c47a933853',
+      x86_64: '8417eb837eb1af2ad6d1bdebd6f79b4466628d80140ec6b38d0880a1f89e723e',
   })
 
   depends_on 'gstreamer'
@@ -39,23 +40,19 @@ class Gst_plugins_base < Package
   depends_on 'gdk_pixbuf'
 
   def self.build
-    # Use lld to enable compatibility with ChromeOS libraries
-    #ENV['CFLAGS'] = "-fuse-ld=lld"
-    #ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson",
-    "--prefix=#{CREW_PREFIX}",
-    "--libdir=#{CREW_LIB_PREFIX}",
-    "-Dgst_debug=false",
-    "-Dexamples=disabled",
-    "build"
-    system "ninja -C build"
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    -Dgst_debug=false \
+    -Dexamples=disabled \
+    builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 
   def self.check
-    # system "make", "check" # All the GL tests fail, as an X terminal is not running.
+    # system 'make', 'check' # All the GL tests fail, as an X terminal is not running.
   end
 end
