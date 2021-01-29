@@ -3,6 +3,7 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://www.balena.io/etcher/'
+  compatibility 'x86_64, i686'
   @_ver = '1.5.115'
   version @_ver
   case ARCH
