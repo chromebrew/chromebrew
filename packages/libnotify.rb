@@ -3,22 +3,23 @@ require 'package'
 class Libnotify < Package
   description 'A library for sending desktop notifications.'
   homepage 'https://git.gnome.org/browse/libnotify'
-  version '0.7.7'
+  @_ver = '0.7.9'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/GNOME/libnotify/archive/0.7.7.tar.gz'
-  source_sha256 '8ff216938a47df591b454ad062465f6d91d7a83496a1ba8eb755df8952cf48f2'
+  source_url "https://github.com/GNOME/libnotify/archive/#{@_ver}.tar.gz"
+  source_sha256 '9bd4f5fa911d27567e7cc2d2d09d69356c16703c4e8d22c0b49a5c45651f3af0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.7-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.9-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.9-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.9-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libnotify-0.7.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'cdb253d6ded556e1ddf6c7a98b516861eadfdb73904455e6757349c5a79c815f',
-     armv7l: 'cdb253d6ded556e1ddf6c7a98b516861eadfdb73904455e6757349c5a79c815f',
-       i686: '583eed9e963a64f6ba1ca6fd65bf94c4c1b04fb63a763defc8a5c195b51fc253',
-     x86_64: '1aac27b842844b8d171517261c043a28b1d1ae06b6fdef9c74e03767a21f77bd',
+     aarch64: '06d8ab2630fbfae249c5bfb1e9dbd51cc57a7e1fe7c9b5297926cff9a9e4592b',
+      armv7l: '06d8ab2630fbfae249c5bfb1e9dbd51cc57a7e1fe7c9b5297926cff9a9e4592b',
+        i686: 'a12e7df177e5621731b8de4cdc714e6cc57a734e631445e4a501e7a81b90162b',
+      x86_64: '23b869cb69ff53a1eee4d2b6cd6f622400f10030404a882471f5ecdb354b38ee',
   })
 
   depends_on 'gtk_doc'
@@ -26,16 +27,17 @@ class Libnotify < Package
   depends_on 'gnome_common'
 
   def self.build
-    system "./autogen.sh"
-    system "./configure",
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--disable-static"
-    system "make"
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    -Dman=false \
+    -Ddocbook_docs=disabled \
+    -Dtests=false \
+    -Dgtk_doc=false \
+    builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
-
 end
