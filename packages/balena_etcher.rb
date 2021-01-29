@@ -31,6 +31,11 @@ class Balena_etcher < Package
       system "alien -tc balena-etcher-electron_#{@_ver}_*.deb"
       system "tar xf balena-etcher-electron-#{@_ver}.tgz"
     end
+    system "cat <<'EOF'> balena-etcher
+#!/bin/sh
+xhost si:localuser:root
+sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} balena-etcher-electron
+EOF"
   end
     
   def self.install
@@ -41,11 +46,12 @@ class Balena_etcher < Package
       FileUtils.mv 'opt/', CREW_DEST_PREFIX
       FileUtils.ln_s "#{CREW_PREFIX}/opt/balenaEtcher/balena-etcher-electron", "#{CREW_DEST_PREFIX}/bin/balena-etcher-electron"
     end
+    FileUtils.install 'balena-etcher', "#{CREW_DEST_PREFIX}/bin/balena-etcher", mode: 0755
   end
     
   def self.postinstall
     puts
-    puts "To get started, type 'balena-etcher-electron'.".lightblue
+    puts "To get started, type 'balena-etcher'.".lightblue
     puts
   end
 end
