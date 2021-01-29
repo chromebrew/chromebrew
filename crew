@@ -949,7 +949,7 @@ end
 
 def build_command (args)
   args["<name>"].each do |name|
-    @pkgName = name
+    @pkgName = name.gsub('-', '_')
     search @pkgName
     print_current_package @opt_verbose
     resolve_dependencies_and_build
@@ -958,7 +958,7 @@ end
 
 def download_command (args)
   args["<name>"].each do |name|
-    @pkgName = name
+    @pkgName = name.gsub('-', '_')
     search @pkgName
     print_current_package @opt_verbose
     download
@@ -977,7 +977,7 @@ end
 
 def files_command (args)
   args["<name>"].each do |name|
-    @pkgName = name
+    @pkgName = name.gsub('-', '_')
     search @pkgName
     print_current_package
     files name
@@ -1017,18 +1017,19 @@ end
 
 def postinstall_command (args)
   args["<name>"].each do |name|
-    search name, true
-    if @device[:installed_packages].any? do |elem| elem[:name] == name end
+    @pkgName = name.gsub('-', '_')
+    search @pkgName, true
+    if @device[:installed_packages].any? do |elem| elem[:name] == @pkgName end
       @pkg.postinstall
     else
-      puts "Package #{name} is not installed. :(".lightred
+      puts "Package #{@pkgName} is not installed. :(".lightred
     end
   end
 end
 
 def reinstall_command (args)
   args["<name>"].each do |name|
-    @pkgName = name
+    @pkgName = name.gsub('-', '_')
     search @pkgName
     print_current_package
     @pkg.build_from_source = true if @opt_src or @opt_recursive
@@ -1042,13 +1043,13 @@ end
 
 def remove_command (args)
   args["<name>"].each do |name|
-    remove name
+    remove name.gsub('-', '_')
   end
 end
 
 def search_command (args)
   args["<name>"].each do |name|
-    regexp_search name
+    regexp_search name.gsub('-', '_')
   end.empty? and begin
     list_packages
   end
@@ -1060,7 +1061,7 @@ end
 
 def upgrade_command (args)
   args["<name>"].each do |name|
-    @pkgName = name
+    @pkgName = name.gsub('-', '_')
     search @pkgName
     print_current_package
     @pkg.build_from_source = true if @opt_src
