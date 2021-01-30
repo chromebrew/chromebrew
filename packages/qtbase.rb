@@ -23,7 +23,7 @@ class Qtbase < Package
   })
 
   depends_on 'alsa_plugins'
-  depends_on 'cups'a
+  depends_on 'cups'
   depends_on 'ffmpeg'
   depends_on 'fontconfig'
   depends_on 'freetds'
