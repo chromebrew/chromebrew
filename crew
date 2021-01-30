@@ -55,6 +55,7 @@ ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
 require_relative 'lib/docopt'
 begin
   args = Docopt::docopt(DOC)
+  args['<name>'] = args['<name>'].map { |arg| arg.gsub('-','_') } if args['<name>']
 rescue Docopt::Exit => e
   if ARGV[0] then
     if ARGV[0] == '-V' or ARGV[0] == '--version' then
@@ -949,7 +950,7 @@ end
 
 def build_command (args)
   args["<name>"].each do |name|
-    @pkgName = name.gsub('-', '_')
+    @pkgName = name
     search @pkgName
     print_current_package @opt_verbose
     resolve_dependencies_and_build
@@ -958,7 +959,7 @@ end
 
 def download_command (args)
   args["<name>"].each do |name|
-    @pkgName = name.gsub('-', '_')
+    @pkgName = name
     search @pkgName
     print_current_package @opt_verbose
     download
@@ -977,7 +978,7 @@ end
 
 def files_command (args)
   args["<name>"].each do |name|
-    @pkgName = name.gsub('-', '_')
+    @pkgName = name
     search @pkgName
     print_current_package
     files name
@@ -995,7 +996,7 @@ end
 
 def install_command (args)
   args["<name>"].each do |name|
-    @pkgName = name.gsub('-', '_')
+    @pkgName = name
     search @pkgName
     print_current_package true
     @pkg.build_from_source = true if @opt_src or @opt_recursive
@@ -1017,7 +1018,7 @@ end
 
 def postinstall_command (args)
   args["<name>"].each do |name|
-    @pkgName = name.gsub('-', '_')
+    @pkgName = name
     search @pkgName, true
     if @device[:installed_packages].any? do |elem| elem[:name] == @pkgName end
       @pkg.postinstall
@@ -1029,7 +1030,7 @@ end
 
 def reinstall_command (args)
   args["<name>"].each do |name|
-    @pkgName = name.gsub('-', '_')
+    @pkgName = name
     search @pkgName
     print_current_package
     @pkg.build_from_source = true if @opt_src or @opt_recursive
@@ -1043,13 +1044,13 @@ end
 
 def remove_command (args)
   args["<name>"].each do |name|
-    remove name.gsub('-', '_')
+    remove name
   end
 end
 
 def search_command (args)
   args["<name>"].each do |name|
-    regexp_search name.gsub('-', '_')
+    regexp_search name
   end.empty? and begin
     list_packages
   end
@@ -1061,7 +1062,7 @@ end
 
 def upgrade_command (args)
   args["<name>"].each do |name|
-    @pkgName = name.gsub('-', '_')
+    @pkgName = name
     search @pkgName
     print_current_package
     @pkg.build_from_source = true if @opt_src
