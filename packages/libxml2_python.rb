@@ -21,7 +21,6 @@ class Libxml2_python < Package
       x86_64: '1cdba7d1e69a31876eabab8f84f61a883486140a9acc09f57c2f9ed27a3f912f',
   })
 
-  depends_on 'libxml2'
   depends_on 'libxslt'
 
   def self.build
