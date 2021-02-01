@@ -3,7 +3,7 @@ require 'package'
 class Libarchive < Package
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  @_ver '3.5.1'
+  @_ver = '3.5.1'
   version @_ver
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{@_ver}.tar.xz"
