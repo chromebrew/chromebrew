@@ -5,6 +5,7 @@ class Gtk3 < Package
   homepage 'https://developer.gnome.org/gtk3/3.0/'
   version '3.24.24-1'
   compatibility 'all'
+  aka ['libgtk_3_0']
   source_url 'https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.24.tar.xz'
   source_sha256 'cc9d4367c55b724832f6b09ab85481738ea456871f0381768a6a99335a98378a'
 

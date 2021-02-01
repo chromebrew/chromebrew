@@ -6,6 +6,7 @@ class Mesa < Package
   @_ver = '20.3.3'
   version @_ver
   compatibility 'all'
+  aka ['mesa-vdpau-drivers', 'mesa-vulkan-drivers', 'mesa-va-drivers']
   source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
   source_sha256 'f74e212d4838e982a10c203ffa998817d1855c5cf448ae87b58f96edea61d156'
 

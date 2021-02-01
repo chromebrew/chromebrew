@@ -5,6 +5,7 @@ class Libx11 < Package
   homepage 'https://x.org'
   version '1.7.0'
   compatibility 'all'
+  aka ['libx11_6']
   source_url 'https://www.x.org/archive/individual/lib/libX11-1.7.0.tar.bz2'
   source_sha256 '36c8f93b6595437c8cfbc9f08618bcb3041cbd303e140a0013f88e4c2977cb54'
 

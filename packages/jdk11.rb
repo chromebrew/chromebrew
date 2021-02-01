@@ -18,9 +18,9 @@ class Jdk11 < Package
     x86_64: 'aa768cfbd031d021d6df4dc5da90db385ac144ea4d6868447a14d2b3ace058b4',
   })
 
-  case ARGV[0]
-  when 'install', 'reinstall'
+  def self.preinstall
     abort "JDK8 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk8"
+    abort "JDK15 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk15"
   end
 
   def self.install

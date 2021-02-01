@@ -211,8 +211,19 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return set_package(pkgName, filename) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+  return set_package(pkgName, "#{CREW_LIB_PATH}/packages/#{pkgName}.rb") if File.exist?("#{CREW_LIB_PATH}/packages/#{pkgName}.rb")
+  Find.find ("#{CREW_LIB_PATH}/packages/") do |filename|
+    if File.extname(filename) == '.rb'
+      packageName = File.basename filename, '.rb'
+      case packageName
+      when 'hunspell', 'php', 'imagemagick'
+      else
+      set_package packageName, filename
+      end
+      if @pkg.aka
+        return set_package(packageName, filename) if @pkg.aka.include?(pkgName)
+      end
+    end
   end
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end

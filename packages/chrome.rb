@@ -7,6 +7,7 @@ class Chrome < Package
   @_ver = '87.0.4280.141'
   @_deb = "google-chrome-stable_#{@_ver}-1_amd64.deb"
   version @_ver
+  aka ['google_chrome']
 
   case ARCH
   when 'x86_64'
