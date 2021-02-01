@@ -33,7 +33,6 @@ class Curl < Package
   depends_on 'libtirpc'
   depends_on 'libunbound'
   depends_on 'openldap'
-  depends_on 'rtmpdump'
   depends_on 'zstd'
 
   def self.build
@@ -41,8 +40,10 @@ class Curl < Package
     ./configure #{CREW_OPTIONS} \
     --disable-maintainer-mode \
     --enable-ares \
-    --with-ldap-lib=#{CREW_LIB_PREFIX}/libldap.so \
-    --with-lber-lib=#{CREW_LIB_PREFIX}/liblber.so"
+    --with-ldap-lib=ldap \
+    --with-lber-lib=lber \
+    --with-libmetalink \
+    --without-librtmp"
     system 'make'
   end
 
