@@ -3,22 +3,23 @@ require 'package'
 class Libssh2 < Package
   description 'libssh2 is a client-side C library implementing the SSH2 protocol.'
   homepage 'https://www.libssh2.org/'
-  version '1.9.0-2'
+  @_ver = '1.9.0'
+  version @_ver + '-3'
   compatibility 'all'
-  source_url 'https://www.libssh2.org/download/libssh2-1.9.0.tar.gz'
+  source_url "https://www.libssh2.org/download/libssh2-#{@_ver}.tar.gz"
   source_sha256 'd5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'bdada70629d2c0e8dd021c0d6ddbed2c255e4ed675a4f46b7e7dd87c366f45c0',
-      armv7l: 'bdada70629d2c0e8dd021c0d6ddbed2c255e4ed675a4f46b7e7dd87c366f45c0',
-        i686: 'a07e1633070e0774db5c45eb9d45ae3aca0c906661d042f5ebf3c5c2281f513e',
-      x86_64: '686ca66e0392c6a4d4906d8ab468df00950f0c7dcbcdcd886fdb0dba1c49ce12',
+     aarch64: 'a8b26892821ee9fae80de1c93d3f33171826e81849977227654d0ab91067ec25',
+      armv7l: 'a8b26892821ee9fae80de1c93d3f33171826e81849977227654d0ab91067ec25',
+        i686: '8004bd36ae1af0c9a2897881ad279f774b8dd72bf67b33f5e8ed7d792f36ba0b',
+      x86_64: 'aa7e4634d65400f17ab064ce8b9cd43703d3dd9393426e1155ea8627876cda8b',
   })
 
   def self.patch
@@ -30,7 +31,6 @@ class Libssh2 < Package
       ./configure \
       #{CREW_OPTIONS} \
       --with-libz"
-
     system 'make'
   end
 
