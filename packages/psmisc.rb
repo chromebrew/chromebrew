@@ -27,7 +27,8 @@ class Psmisc < Package
   def self.build
     system './autogen.sh'
     system './configure --help'
-    system "env CFLAGS='-pipe -flto=auto -I#{CREW_PREFIX}/include/ncurses -fno-stack-protector' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto -I#{CREW_PREFIX}/include/ncurses' \
+    system "env CFLAGS='-pipe -flto=auto -I#{CREW_PREFIX}/include/ncurses -fno-stack-protector' \
+      CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto -I#{CREW_PREFIX}/include/ncurses' \
       ./configure #{CREW_OPTIONS}"
     system 'make'
   end
