@@ -21,8 +21,6 @@ class Autoconf213 < Package
      x86_64: '732cdb8cc6bd9be3847fca42713da472f83032a13322efb9eb19e4a23a9e9338'
   })
 
-  depends_on 'perl'
-
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
       ./configure #{CREW_OPTIONS} \
