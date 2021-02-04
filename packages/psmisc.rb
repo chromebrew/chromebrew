@@ -2,28 +2,34 @@ require 'package'
 
 class Psmisc < Package
   description 'PSmisc is a set of some small useful utilities that use the proc filesystem.'
-  homepage 'http://psmisc.sourceforge.net/'
-  version '23.1'
+  homepage 'https://gitlab.com/psmisc/psmisc'
+  @_ver = '23.3'
+  version @_ver
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/psmisc/psmisc/psmisc-23.1.tar.xz'
-  source_sha256 '2e84d474cf75dfbe3ecdacfb797bbfab71a35c7c2639d1b9f6d5f18b2149ba30'
+  source_url "https://gitlab.com/psmisc/psmisc/-/archive/v#{@_ver}/psmisc-v#{@_ver}.tar.bz2"
+  source_sha256 'fe530b0a29902f8660481248fc19f6994927282b4fe0cd992121016144b95fa6'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/psmisc-23.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'd757c2abb4b2fe8bc0bd935798cd3520bf211bd0ec260f2b92da049ec4504b17',
-     armv7l: 'd757c2abb4b2fe8bc0bd935798cd3520bf211bd0ec260f2b92da049ec4504b17',
-       i686: 'dcd49176e24d1b3a193f102594e7385cb73be2ba840a5df2a9c316ce01160341',
-     x86_64: '96138e37ff581ce0015c2b592cbcb9aef8b1a86a96109c3e0e686ba7160f2cf5',
+  binary_sha256({
+    aarch64: 'd951db8224299af61b2ca8fb78d64f93667f52df0901928927d8c743216a629f',
+     armv7l: 'd951db8224299af61b2ca8fb78d64f93667f52df0901928927d8c743216a629f',
+       i686: '00181538fdcdb8922a07ff68f046a1d5333866f76bb241ae628d369179a931c2',
+     x86_64: '61880a1987c8295f18c44c8472a953179510318082ed92ac1ade306dbda96bd1'
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system "make CFLAGS=' -I#{CREW_PREFIX}/include/ncurses'"
+    system './autogen.sh'
+    system './configure --help'
+    system "env CFLAGS='-pipe -flto=auto -I#{CREW_PREFIX}/include/ncurses -fno-stack-protector' \
+      CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto -I#{CREW_PREFIX}/include/ncurses' \
+      ./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
