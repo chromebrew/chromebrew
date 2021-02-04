@@ -48,7 +48,6 @@ class Webkit2gtk < Package
     Dir.chdir 'builddir' do
       # -flto breaks x86_64 builds
       # system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
-
       system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
