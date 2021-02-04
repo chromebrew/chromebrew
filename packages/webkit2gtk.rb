@@ -42,14 +42,13 @@ class Webkit2gtk < Package
   depends_on 'libseccomp'
   depends_on 'openjpeg'
   depends_on 'libsoup'
-  depends_on 'ccache' => :build
 
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       # -flto breaks x86_64 builds
       # system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
-      # system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
+
       system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
