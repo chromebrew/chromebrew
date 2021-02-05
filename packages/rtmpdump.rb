@@ -7,7 +7,7 @@ class Rtmpdump < Package
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/c5f04a58fc2aeea6296ca7c44ee4734c18401aa3.tar.gz'
   source_sha256 'fd8c21263d93fbde8bee8aa6c5f6a657789674bb0f9e74f050651504d5f43b46'
-  @make_common_opts = ["prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}", 'CRYPTO=GNUTLS']
+  @make_common_opts = ['SYS=posix', "prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}", 'CRYPTO=GNUTLS']
 
   binary_url ({
      aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rtmpdump-c5f04a58f-1-chromeos-armv7l.tar.xz',
@@ -23,7 +23,7 @@ class Rtmpdump < Package
   })
 
   def self.build
-    system 'make', *@make_common_opts
+    system "make", *@make_common_opts
   end
 
   def self.install
