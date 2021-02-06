@@ -3,33 +3,35 @@ require 'package'
 class Libevdev < Package
   description 'libevdev is a wrapper library for evdev devices.'
   homepage 'https://www.freedesktop.org/wiki/Software/libevdev'
-  version '1.5.9-0'
+  version '1.11.0'
   compatibility 'all'
-  source_url 'https://www.freedesktop.org/software/libevdev/libevdev-1.5.9.tar.xz'
-  source_sha256 'e1663751443bed9d3e76a4fe2caf6fa866a79705d91cacad815c04e706198a75'
+  source_url 'https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz'
+  source_sha256 '63f4ea1489858a109080e0b40bd43e4e0903a1e12ea888d581db8c495747c2d0'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.5.9-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.5.9-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.5.9-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.5.9-0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.11.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.11.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libevdev-1.11.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'ee50da24a54da6574d50571871052104ed46256280f4bc7c5698e76d7ecf4fd3',
-     armv7l: 'ee50da24a54da6574d50571871052104ed46256280f4bc7c5698e76d7ecf4fd3',
-       i686: 'af2583a717277459bd65c27b994a36ef2fc1e018278773c831153abc871e567d',
-     x86_64: '6f113678d99a5f4fc52db49702bb209e845de505c1bb456b4f2d1c862e9ff7ed',
+  binary_sha256({
+    aarch64: '3b4008a79759fdb098e2e93a5455aed90965d670d5a4328b67b49f4936584eb6',
+     armv7l: '3b4008a79759fdb098e2e93a5455aed90965d670d5a4328b67b49f4936584eb6',
+       i686: 'c4d8bad0f712c1cfacc725e7d317be45aa15bb67d281f8d73ca92a9e803dd116',
+     x86_64: '6afbae9d141ced6da39edb73127c4e247afd9abeae8a681b3dc8b62b7edc818d'
   })
 
   depends_on 'doxygen' => :build
-  depends_on 'python27' => :build
+  depends_on 'python3' => :build
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+      builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

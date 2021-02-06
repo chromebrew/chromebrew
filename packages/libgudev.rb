@@ -3,33 +3,34 @@ require 'package'
 class Libgudev < Package
   description 'libgudev is a library with GObject bindings to libudev'
   homepage 'https://wiki.gnome.org/Projects/libgudev'
-  version '0.232'
+  version '234-1c7e'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/libgudev/232/libgudev-232.tar.xz'
-  source_sha256 'ee4cb2b9c573cdf354f6ed744f01b111d4b5bed3503ffa956cefff50489c7860'
+  source_url 'https://github.com/GNOME/libgudev/archive/1c7e05b40b92b67dac7a6cd27b70ba08956e4815.zip'
+  source_sha256 '5ecb0c8ca76b6da7c7ad01f947c407f3670362bf5d3244075928dd86e040fcc4'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-0.232-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-0.232-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-0.232-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-0.232-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'd45d9087a7128ca0b5c39dac0858728cd01f711dd57c3e8b1e716a85945cc7b8',
-     armv7l: 'd45d9087a7128ca0b5c39dac0858728cd01f711dd57c3e8b1e716a85945cc7b8',
-       i686: '8c9b9115d790ff7ba9d7ab4cc48aa9312c07c273141174acc02a546d20db25eb',
-     x86_64: '3c41340787b2f362448cf8c32b2a00814e190bd2028605a6b925589d1fb177a1',
+  binary_sha256({
+    aarch64: 'e636f1df415de3dddf08c3326d633b8bdf0223130e50cb2f62c5916b641c152a',
+     armv7l: 'e636f1df415de3dddf08c3326d633b8bdf0223130e50cb2f62c5916b641c152a',
+       i686: 'f4fb01f5d16cd38b890a85c501bfb9c22a29b8ad7a759430275b6a490d798795',
+     x86_64: '0980fde25a7a552e3f672d63c50e350a369667b9dbc69191635341ca64937f76'
   })
 
   depends_on 'gobject_introspection'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-umockdev"   # umockdev is only for tests
-    system "make"
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+      builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
-
 end
