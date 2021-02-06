@@ -42,6 +42,6 @@ class Usbutils < Package
     puts
     puts 'Add a cron job with something like the following:'.lightblue
     puts '# Update usb.ids at 6pm daily.'.lightblue
-    puts '0 18 * * * /usr/local/bin/crew postinstall usbutils >/dev/null 2>&1'.lightblue
+    puts "0 18 * * * #{CREW_PREFIX}/bin/crew postinstall usbutils >/dev/null 2>&1".lightblue
   end
 end
