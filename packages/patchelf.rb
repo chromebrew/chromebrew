@@ -15,19 +15,20 @@ class Patchelf < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/patchelf-0.12-f347-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '034a54878ec827f1ccc3544da727351aad90a609850429e6005942722d68752a',
-      armv7l: '034a54878ec827f1ccc3544da727351aad90a609850429e6005942722d68752a',
-        i686: 'ff9e45a2bdd883de56a4098f10f2e0ea8d8006dcdbf0c1f928252be5d1b921ab',
-      x86_64: '085b74a502d3e4cd4ab7977ecbc885c4b08e2dea395d6543f89def8f25e60541',
+     aarch64: 'e2b7945b1a842076b60347516561d29af99bc450ef66732d41086bb15bc8374d',
+      armv7l: 'e2b7945b1a842076b60347516561d29af99bc450ef66732d41086bb15bc8374d',
+        i686: '9496ae8276c538a798adcbf86816dab573c7ded0e96cd9e678991d7bd5ae54fe',
+      x86_64: 'c234ee6df670e7d1405ff57c607d529a0c9bed6815fd900a51059796620e1fdc',
   })
 
   def self.build
-    system "./bootstrap.sh"
-    system "./configure #{CREW_OPTIONS}"
-    system "make"
+    system './bootstrap.sh'
+    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+             ./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
