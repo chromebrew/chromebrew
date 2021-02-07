@@ -304,6 +304,11 @@ url: https://ftpmirror.gnu.org/autoconf-archive
 activity: medium
 ---
 kind: url
+name: autoconf213
+url: https://ftp.gnu.org/gnu/autoconf
+activity: none
+---
+kind: url
 name: automake
 url: https://ftp.gnu.org/gnu/automake
 activity: medium
@@ -1079,6 +1084,11 @@ url: https://launchpad.net/duplicity/+download
 activity: medium
 ---
 kind: url
+name: e2fsprogs
+url: https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs
+activity: medium
+---
+kind: url
 name: ecasound
 url: https://nosignal.fi/download/
 activity: medium
@@ -1767,6 +1777,11 @@ kind: url
 name: gittools
 url: https://github.com/internetwache/GitTools/
 activity: none
+---
+kind: url
+name: gjs
+url: https://download.gnome.org/sources/gjs/
+activity: medium
 ---
 kind: url
 name: gl2ps
@@ -2487,6 +2502,11 @@ kind: url
 name: jq
 url: https://github.com/stedolan/jq/releases
 activity: none
+---
+kind: url
+name: js78
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
 ---
 kind: url
 name: json_glib
@@ -4739,11 +4759,6 @@ url: https://metacpan.org/pod/Date::Manip
 activity: low
 ---
 kind: url
-name: perl_file_replace
-url: https://metacpan.org/pod/File::Replace
-activity: none
----
-kind: url
 name: perl_file_tail
 url: https://metacpan.org/pod/File::Tail
 activity: low
@@ -6174,6 +6189,11 @@ url: https://wayland.freedesktop.org/releases.html
 activity: high
 ---
 kind: url
+name: waypipe
+url: https://gitlab.freedesktop.org/mstoeckl/waypipe/-/tags
+activity: medium
+---
+kind: url
 name: wbox
 url: http://www.hping.org/wbox
 activity: none
@@ -6187,6 +6207,11 @@ kind: url
 name: weather
 url: http://fungi.yuggoth.org/weather/src
 activity: none
+---
+kind: url
+name: webkit2gtk
+url: https://webkitgtk.org/releases/
+activity: medium
 ---
 kind: url
 name: weechat
