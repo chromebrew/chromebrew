@@ -26,3 +26,9 @@ Style/FrozenStringLiteralComment:
 
 Documentation:
   Enabled: false
+  
+Naming/VariableNumber:
+  Enabled: false
+  
+Naming/ClassAndModuleCamelCase:
+  Enabled: false
