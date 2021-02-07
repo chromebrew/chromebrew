@@ -9,21 +9,9 @@ class Inetutils < Package
   source_url "https://ftp.gnu.org/gnu/inetutils/inetutils-#{@_ver}.tar.xz"
   source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/inetutils-2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/inetutils-2.0-1-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '9761fd87ab7276ef701071a52cea3eed86819c4cb6a6bbd01a0062cc51a2a6d3',
-     armv7l: '9761fd87ab7276ef701071a52cea3eed86819c4cb6a6bbd01a0062cc51a2a6d3',
-       i686: '254bdff9f045a1909111b71c248483b86671a0564ad3fd273168ef6f1f6dc595',
-     x86_64: 'bc795eea585ce49e7f041ba850450b67c74e49d9141ba1f27d58614597af208d'
-  })
-
   depends_on 'linux_pam'
   depends_on 'patchelf'
+  depends_on 'libcap'
 
   def self.build
     system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
@@ -38,6 +26,24 @@ class Inetutils < Package
       --enable-authentication \
       --disable-servers"
     system 'make'
+    system "cat <<'EOF'> ping_
+#!/bin/bash
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps=\"cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep\" \\
+    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+    -c \"#{CREW_PREFIX}/bin/ping.elf \$@\"
+EOF"
+    system "cat <<'EOF'> ping6_
+#!/bin/bash
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps=\"cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep\" \\
+    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+    -c \"#{CREW_PREFIX}/bin/ping6.elf \$@\"
+EOF"
+    system "cat <<'EOF'> traceroute_
+#!/bin/bash
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps=\"cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep\" \\
+    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+    -c \"#{CREW_PREFIX}/bin/traceroute.elf \$@\"
+EOF"
   end
 
   def self.install
@@ -45,24 +51,11 @@ class Inetutils < Package
     system "patchelf --set-rpath #{CREW_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/ping"
     system "patchelf --set-rpath #{CREW_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/ping6"
     system "patchelf --set-rpath #{CREW_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/traceroute"
-  end
-
-  def self.preinstall
-    system "sudo chown chronos #{CREW_PREFIX}/bin/ping" \
-      if File.exist? "#{CREW_PREFIX}/bin/ping"
-    system "sudo chown chronos #{CREW_PREFIX}/bin/ping6" \
-      if File.exist? "#{CREW_PREFIX}/bin/ping6"
-    system "sudo chown chronos #{CREW_PREFIX}/bin/traceroute" \
-      if File.exist? "#{CREW_PREFIX}/bin/traceroute"
-  end
-
-  def self.postinstall
-    puts 'Settings permissions for utilities using sudo'.orange
-    system "sudo chown root #{CREW_PREFIX}/bin/ping"
-    system "sudo chown root #{CREW_PREFIX}/bin/ping6"
-    system "sudo chown root #{CREW_PREFIX}/bin/traceroute"
-    system "sudo chmod 4755 #{CREW_PREFIX}/bin/ping"
-    system "sudo chmod 4755 #{CREW_PREFIX}/bin/ping6"
-    system "sudo chmod 4755 #{CREW_PREFIX}/bin/traceroute"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/ping", "#{CREW_DEST_PREFIX}/bin/ping.elf"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/ping6", "#{CREW_DEST_PREFIX}/bin/ping6.elf"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/traceroute", "#{CREW_DEST_PREFIX}/bin/traceroute.elf"
+    FileUtils.install 'ping_', "#{CREW_DEST_PREFIX}/bin/ping", mode: 0o755
+    FileUtils.install 'ping6_', "#{CREW_DEST_PREFIX}/bin/ping6", mode: 0o755
+    FileUtils.install 'traceroute_', "#{CREW_DEST_PREFIX}/bin/traceroute", mode: 0o755
   end
 end
