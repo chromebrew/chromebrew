@@ -24,7 +24,7 @@ Layout/FirstHashElementIndentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Documentation:
+Style/Documentation:
   Enabled: false
   
 Naming/VariableNumber:
