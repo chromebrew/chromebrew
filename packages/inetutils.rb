@@ -39,24 +39,27 @@ class Inetutils < Package
       --enable-authentication \
       --disable-servers"
     system 'make'
-    system "cat <<'EOF'> ping_
+    PING_SH = <<EOF
 #!/bin/bash
-sudo -E #{CREW_PREFIX}/sbin/capsh --caps=\"cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep\" \\
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
     --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-    -c \"#{CREW_PREFIX}/bin/ping.elf \$@\"
-EOF"
-    system "cat <<'EOF'> ping6_
+    -c "#{CREW_PREFIX}/bin/ping.elf \$@"
+EOF
+IO.write('ping_', PING_SH, perm: 0755)
+    PING6_SH = <<EOF
 #!/bin/bash
-sudo -E #{CREW_PREFIX}/sbin/capsh --caps=\"cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep\" \\
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
     --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-    -c \"#{CREW_PREFIX}/bin/ping6.elf \$@\"
-EOF"
-    system "cat <<'EOF'> traceroute_
+    -c "#{CREW_PREFIX}/bin/ping6.elf \$@"
+EOF
+IO.write('ping6_', PING6_SH, perm: 0755)
+    TRACEROUTE_SH = <<EOF
 #!/bin/bash
-sudo -E #{CREW_PREFIX}/sbin/capsh --caps=\"cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep\" \\
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
     --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-    -c \"#{CREW_PREFIX}/bin/traceroute.elf \$@\"
-EOF"
+    -c "#{CREW_PREFIX}/bin/traceroute.elf \$@"
+EOF
+IO.write('traceroute_', TRACEROUTE_SH, perm: 0755)
   end
 
   def self.install
