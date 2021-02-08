@@ -63,11 +63,9 @@ class Ncurses < Package
   def self.install
     Dir.chdir 'ncursesw_build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libtinfow.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfow.so.5"
     end
     Dir.chdir 'ncurses_build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libtinfo.so.6", "#{CREW_DEST_LIB_PREFIX}/libtinfo.so.5"
     end
   end
 end
