@@ -39,39 +39,37 @@ class Inetutils < Package
       --enable-authentication \
       --disable-servers"
     system 'make'
-    PING_SH = <<EOF
-#!/bin/bash
-sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
-    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-    -c "#{CREW_PREFIX}/bin/ping.elf \$@"
-EOF
-IO.write('ping_', PING_SH, perm: 0755)
-    PING6_SH = <<EOF
-#!/bin/bash
-sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
-    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-    -c "#{CREW_PREFIX}/bin/ping6.elf \$@"
-EOF
-IO.write('ping6_', PING6_SH, perm: 0755)
-    TRACEROUTE_SH = <<EOF
-#!/bin/bash
-sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
-    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-    -c "#{CREW_PREFIX}/bin/traceroute.elf \$@"
-EOF
-IO.write('traceroute_', TRACEROUTE_SH, perm: 0755)
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    
     system "patchelf --set-rpath #{CREW_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/ping"
     system "patchelf --set-rpath #{CREW_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/ping6"
     system "patchelf --set-rpath #{CREW_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/traceroute"
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/ping", "#{CREW_DEST_PREFIX}/bin/ping.elf", mode: 0o755
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/ping6", "#{CREW_DEST_PREFIX}/bin/ping6.elf", mode: 0o755
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/traceroute", "#{CREW_DEST_PREFIX}/bin/traceroute.elf", mode: 0o755
-    FileUtils.install 'ping_', "#{CREW_DEST_PREFIX}/bin/ping", mode: 0o755
-    FileUtils.install 'ping6_', "#{CREW_DEST_PREFIX}/bin/ping6", mode: 0o755
-    FileUtils.install 'traceroute_', "#{CREW_DEST_PREFIX}/bin/traceroute", mode: 0o755
+    PING_SH = <<EOF
+#!/bin/bash
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
+    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+    -c "#{CREW_PREFIX}/bin/ping.elf \$@"
+EOF
+IO.write("#{CREW_DEST_PREFIX}/bin/ping", PING_SH, perm: 0755)
+    PING6_SH = <<EOF
+#!/bin/bash
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
+    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+    -c "#{CREW_PREFIX}/bin/ping6.elf \$@"
+EOF
+IO.write("#{CREW_DEST_PREFIX}/bin/ping6", PING6_SH, perm: 0755)
+    TRACEROUTE_SH = <<EOF
+#!/bin/bash
+sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
+    --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+    -c "#{CREW_PREFIX}/bin/traceroute.elf \$@"
+EOF
+IO.write("#{CREW_DEST_PREFIX}/bin/traceroute", TRACEROUTE_SH, perm: 0755)
   end
 end
