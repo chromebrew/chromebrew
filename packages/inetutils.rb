@@ -50,26 +50,23 @@ class Inetutils < Package
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/ping", "#{CREW_DEST_PREFIX}/bin/ping.elf", mode: 0o755
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/ping6", "#{CREW_DEST_PREFIX}/bin/ping6.elf", mode: 0o755
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/traceroute", "#{CREW_DEST_PREFIX}/bin/traceroute.elf", mode: 0o755
-    PING_SH = <<~EOF
-  #!/bin/bash
-  sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
-      --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-      -c "#{CREW_PREFIX}/bin/ping.elf \$@"
+    "#{CREW_DEST_PREFIX}/bin/ping" = <~EOF
+      #!/bin/bash
+      sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
+          --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+          -c "#{CREW_PREFIX}/bin/ping.elf \$@"
 EOF
-IO.write("#{CREW_DEST_PREFIX}/bin/ping", PING_SH, perm: 0755)
-    PING6_SH = <<~EOF
-  #!/bin/bash
-  sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
-      --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-      -c "#{CREW_PREFIX}/bin/ping6.elf \$@"
+    "#{CREW_DEST_PREFIX}/bin/ping6" = <~EOF
+      #!/bin/bash
+      sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
+          --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+          -c "#{CREW_PREFIX}/bin/ping6.elf \$@"
 EOF
-IO.write("#{CREW_DEST_PREFIX}/bin/ping6", PING6_SH, perm: 0755)
-    TRACEROUTE_SH = <<~EOF
-  #!/bin/bash
-  sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
-      --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-      -c "#{CREW_PREFIX}/bin/traceroute.elf \$@"
+    "#{CREW_DEST_PREFIX}/bin/traceroute" = <~EOF
+      #!/bin/bash
+      sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
+          --keep=1 --user=nobody --addamb=cap_net_raw -- \\
+          -c "#{CREW_PREFIX}/bin/traceroute.elf \$@"
 EOF
-IO.write("#{CREW_DEST_PREFIX}/bin/traceroute", TRACEROUTE_SH, perm: 0755)
   end
 end
