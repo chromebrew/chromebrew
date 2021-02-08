@@ -21,6 +21,7 @@ class Elogind < Package
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
+            -Drootprefix=#{CREW_PREFIX} \
             --strip \
             -Dcgroup-controller=elogind \
             -Dman=false \
@@ -37,8 +38,5 @@ class Elogind < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    FileUtils.mv Dir.glob('bin/*'), "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mv etc, "#{CREW_DEST_PREFIX}/etc"
-    FileUtils.mv Dir.glob("#{ARCH_LIB}/*"), CREW_DEST_LIB_PREFIX
   end
 end
