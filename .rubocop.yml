@@ -26,9 +26,21 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: false
-  
+
 Naming/VariableNumber:
   Enabled: false
   
 Naming/ClassAndModuleCamelCase:
   Enabled: false
+
+# ncurses.rb:11:3: C: Metrics/MethodLength: Method has too many lines. [31/10]
+#  def self.build ...
+#  ^^^^^^^^^^^^^^
+Metrics/MethodLength:
+  Enabled: false
+
+# ncurses.rb:4:121: C: Layout/LineLength: Line is too long. [129/120]
+#  description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.'
+#                                                                                                                        ^^^^^^^^^
+Layout/LineLength:
+  IgnoredPatterns: ['description']
