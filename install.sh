@@ -39,7 +39,8 @@ case "${ARCH}" in
 esac
 
 # This will allow things to work without sudo
-crew_folders="bin cache doc docbook etc include lib lib64 libexec man sbin share tmp var"
+crew_folders="bin cache doc docbook etc include lib libexec man sbin share tmp var"
+[ "${ARCH}" == "x86_64" ] && crew_folders="bin cache doc docbook etc include lib lib64 libexec man sbin share tmp var"
 for folder in $crew_folders ; do sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"$folder" ; done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 # Delete 'var' symlink on Cloudready platform
