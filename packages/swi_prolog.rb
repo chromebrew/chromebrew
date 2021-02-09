@@ -5,7 +5,7 @@ class Swi_prolog < Package
   homepage 'https://www.swi-prolog.org/'
   @_ver = '8.2.4'
   version @_ver
-  compatibility 'x86_64', 'i686'
+  compatibility 'i686,x86_64'
   source_url "https://www.swi-prolog.org/download/stable/src/swipl-#{@_ver}.tar.gz"
   source_sha256 'f4bcc78437f9080ab089762e9e6afa7071df7f584c14999b92b9a90a4efbd7d8'
 
