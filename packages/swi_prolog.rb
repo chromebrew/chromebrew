@@ -18,10 +18,13 @@ class Swi_prolog < Package
   x86_64: 'cbb431b0bd28fa1c581071aeb1eeda79b70b4ec3c28c2d07b509054e810cb62b'
   })
 
-  depends_on 'libyaml'
-  depends_on 'libarchive'
-  depends_on 'libdb'
-  depends_on 'jdk8'
+  case ARCH
+  when 'i686', 'x86_64'
+    depends_on 'libyaml'
+    depends_on 'libarchive'
+    depends_on 'libdb'
+    depends_on 'jdk8'
+  end
 
   def self.build
     Dir.mkdir 'builddir'
