@@ -26,7 +26,7 @@ class Pcre < Package
   --enable-shared \
   --disable-static \
   --with-pic \
-  --enable-utf \
+  --enable-unicode-properties \
   --enable-pcre16 \
   --enable-pcre32 \
   --enable-jit \
@@ -35,7 +35,9 @@ class Pcre < Package
   end
 
   def self.check
-#    system 'make', 'check'
+    # `make check` fails because of an issue with locale.
+    # All but one test passes.
+    #system 'make', 'check'
   end
 
   def self.install
