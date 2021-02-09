@@ -3,22 +3,18 @@ require 'package'
 class Ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more.'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6.2-20201205'
+  version '6.2-20201205-1'
   compatibility 'all'
   source_url 'https://github.com/mirror/ncurses/archive/42259b594b5dabd37fe2bc294051d2db82e873a2.zip'
   source_sha256 '782bd5e77fb795f505d6ffd3e443da1cd0ffd6ebb36588a3b7e81e7da34bf340'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20201205-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '780763658f32364cdc24bef4fb8efcb14d2beba989c7c0a894bf73f3e4fccc9b',
-     armv7l: '780763658f32364cdc24bef4fb8efcb14d2beba989c7c0a894bf73f3e4fccc9b',
-       i686: '3119323613fefd0c8c4d6f0ec6d55d2ae3ec6390aeb19eb01ca47bff4903322f',
-     x86_64: 'd342c29d70e7bb4405555954ee376ff72782b419025b673ee750fe7d0c9efa1f',
   })
 
   def self.build
