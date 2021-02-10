@@ -1,59 +1,121 @@
 require 'package'
 
-# Note: due to issues with catalog.xml caused by 1.79.2 not existing on the sourceforge server we have reverted to 1.79.1
-# from Void Linux https://git.io/JUZ02
-
 class Docbook_xsl < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   compatibility 'all'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
-  version '1.79.1-2'
-  source_url 'https://downloads.sourceforge.net/sourceforge/docbook/docbook-xsl-1.79.1.tar.bz2'
-  source_sha256 '725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968'
+  @_ver = '1.79.2'
+  version @_ver
+  source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
+  source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.1-2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'd7a0dc1bcfb4a670ca50f70c34d479f887ef918317babaca146b412e2bbc4c44',
-     armv7l: 'd7a0dc1bcfb4a670ca50f70c34d479f887ef918317babaca146b412e2bbc4c44',
-       i686: '92b5c7a3b696123ec9c19b3686910176127fd4c23dcfe3f47ea305e17d393a17',
-     x86_64: 'ac55be955bd36b0d7f6481bbc2e4a58bdff336fdc536d29156963bc4f5e3b949',
+  binary_sha256({
+    aarch64: '78f0e12c3db339ebd0d9f7d78016c89aaaa94d0649d9dc8ac342211cf09f25ad',
+     armv7l: '78f0e12c3db339ebd0d9f7d78016c89aaaa94d0649d9dc8ac342211cf09f25ad',
+       i686: '1e125577e569c168d646544bc8547eecc76e21b6ad6f85088e74711b8421d88d',
+     x86_64: 'dbba4c5f2c095d0254664db90aaf921d1f182f570a66fb7cf1e4f36732e58e54'
   })
 
-  depends_on 'docbook_xml51'
   depends_on 'xmlcatmgr'
+  depends_on 'docbook_xsl_nons'
+  depends_on 'bash'
 
   def self.patch
-    system 'wget -O "non-recursive_string_subst.patch" "https://git.io/JUZ02"'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('non-recursive_string_subst.patch') ) == '1efc7c0a67d3c655f9e6df78aa6cec2583b4c94792bf5112925cd9b2086914fd'
-    system 'patch -Np1 -i non-recursive_string_subst.patch ./lib/lib.xsl'
+    system 'curl -OLf "https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch"'
+    unless Digest::SHA256.hexdigest(File.read('765567_non-recursive_string_subst.patch')) == '193ec26dcb37bdf12037ed4ea98d68bd550500c8e96b719685d76d7096c3f9b3'
+      abort 'Checksum mismatch. :/ Try again.'.lightred
+    end
+    system 'patch -Np2 -i 765567_non-recursive_string_subst.patch'
   end
 
   def self.install
+    ENV['XML_CATALOG_FILES'] = "#{CREW_DEST_PREFIX}/etc/xml/catalog"
+    @pkgroot = "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}"
+    @ADDFILES_SH = <<~ADDFILES_HEREDOC
+      install -Dt @pkgroot -m644 VERSION{,.xsl}
+      (
+        shopt -s nullglob  # ignore missing files
+        echo "ignore missing files"
+        for fn in assembly catalog.xml common docsrc eclipse epub epub3 \
+        extensions fo highlighting html htmlhelp images javahelp lib log \
+        manpages params profiling roundtrip slides template tests tools \
+        webhelp website xhtml xhtml-1_1 xhtml5
+        do
+        install -Dt "#{@pkgroot}"/"$fn" -m644 "$fn"/*.{xml,xsl,dtd,ent}
+        done
+      )
+    ADDFILES_HEREDOC
+    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
+    system "#{CREW_PREFIX}/bin/bash ./add_files.sh || true"
+    system "install -Dt #{@pkgroot} -m644 VERSION.xsl"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
+                   "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/"
+    # For moreutils
+    FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
+                   "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook-xsl"
+  end
 
-    xsl_version = '1.79.1'
-    xsl_stylesheets = "xsl-stylesheets-#{xsl_version}"
-    docbook_xsl = "docbook-xsl-#{xsl_version}"
+  def self.preinstall
+    # Docbook common preinstall block
+    FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
 
-    system "install -v -m755 -d #{CREW_DEST_PREFIX}/share/xml/#{xsl_stylesheets} &&
-            cp -v -R . #{CREW_DEST_PREFIX}/share/xml/#{xsl_stylesheets}/"
-    system "install -v -m644 -D README #{CREW_DEST_PREFIX}/share/doc/#{docbook_xsl}/README.txt &&
-            install -v -m644 RELEASE-NOTES* NEWS* #{CREW_DEST_PREFIX}/share/doc/#{docbook_xsl}"
-    system "cat << EOF > ./remove_add.sh
-sed -i -e 's,<!-- .* -->,,g' #{CREW_PREFIX}/etc/xml/catalog.xml
-xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml remove rewriteSystem 'http://docbook.sourceforge.net/release/xsl/snapshot_9899/'
-xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml remove rewriteURI 'http://docbook.sourceforge.net/release/xsl/current/'
-xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml remove rewriteURI 'http://docbook.sourceforge.net/release/xsl/snapshot_9899/'
-xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml add rewriteSystem 'http://docbook.sourceforge.net/release/xsl/snapshot_9899/' './'
-xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml add rewriteURI 'http://docbook.sourceforge.net/release/xsl/current/' './'
-xmlcatmgr -c #{CREW_PREFIX}/etc/xml/catalog.xml add rewriteURI 'http://docbook.sourceforge.net/release/xsl/snapshot_9899/' './'
-EOF"
-    system "bash ./remove_add.sh"
+    if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.zero?("#{CREW_PREFIX}/etc/xml/catalog")
+      puts "#{CREW_PREFIX}/etc/xml/catalog exists"
+    else
+      puts "Creating #{CREW_PREFIX}/etc/xml/catalog"
+      FileUtils.rm_f "#{CREW_PREFIX}/etc/xml/catalog"
+      system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog"
+    end
+
+    if File.exist?("#{CREW_PREFIX}/etc/xml/docbook-xml") && !File.zero?("#{CREW_PREFIX}/etc/xml/docbook-xml")
+      puts "#{CREW_PREFIX}/etc/xml/docbook-xml not empty"
+    else
+      puts "Creating #{CREW_PREFIX}/etc/xml/docbook-xml"
+      FileUtils.rm_f "#{CREW_PREFIX}/etc/xml/docbook-xml"
+      system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/docbook-xml"
+    end
+
+    # End Docbook common preinstall block
+  end
+
+  def self.postinstall
+    # Docbook common postinstall block
+    ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
+
+    xml_catalog_files_in_bashrc = `grep -c "XML_CATALOG_FILES" ~/.bashrc || true`
+    unless xml_catalog_files_in_bashrc.to_i.positive?
+      puts "Putting \"export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog\" in ~/.bashrc".lightblue
+      system "echo 'export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog' >> ~/.bashrc"
+      puts 'To complete the installation, execute the following:'.orange
+      puts 'source ~/.bashrc'.orange
+    end
+    # End Docbook common postinstall block
+
+    system "xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl-ns/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl-ns/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl-ns/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    system "xmlcatalog --noout --add rewriteURI http://docbook.sourceforge.net/release/xsl-ns/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
+    # Check:
+    system 'xmlcatalog', "#{CREW_PREFIX}/etc/xml/catalog", 'https://cdn.docbook.org/release/xsl/current/'
+    system 'xmlcatalog', "#{CREW_PREFIX}/etc/xml/catalog", "https://cdn.docbook.org/release/xsl/#{@_ver}/"
+    system 'xmlcatalog', "#{CREW_PREFIX}/etc/xml/catalog", 'http://docbook.sourceforge.net/release/xsl/current/'
+    system 'xmlcatalog', "#{CREW_PREFIX}/etc/xml/catalog", "http://docbook.sourceforge.net/release/xsl/#{@_ver}/"
+    system 'xmlcatalog', "#{CREW_PREFIX}/etc/xml/catalog", 'http://docbook.sourceforge.net/release/xsl-ns/current/'
+    system 'xmlcatalog', "#{CREW_PREFIX}/etc/xml/catalog", "http://docbook.sourceforge.net/release/xsl-ns/#{@_ver}/"
   end
 end
-
-# NOTE:
