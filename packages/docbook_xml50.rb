@@ -26,8 +26,6 @@ class Docbook_xml50 < Package
   depends_on 'xmlcatmgr'
   depends_on 'bash'
 
-  def self.build; end
-
   def self.install
     system "xmlcatalog --noout --create docbook-#{@_ver}.xml"
     # DTD
