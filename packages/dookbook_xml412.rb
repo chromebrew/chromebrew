@@ -1,25 +1,25 @@
 require 'package'
 
-class Docbook_xml44 < Package
+class Docbook_xml412 < Package
   description 'A widely used XML scheme for writing documentation and help'
   homepage 'https://www.oasis-open.org/docbook/'
-  @_ver = '4.4'
-  version "#{@_ver}-1"
+  @_ver = '4.1.2'
+  version @_ver
   compatibility 'all'
-  source_url "https://docbook.org/xml/#{@_ver}/docbook-xml-#{@_ver}.zip"
-  source_sha256 '02f159eb88c4254d95e831c51c144b1863b216d909b5ff45743a1ce6f5273090'
+  source_url 'https://docbook.org/xml/4.1.2/docbkx412.zip'
+  source_sha256 '30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0781dda33ce4845ca3f18d533469ca888c5823f8b1c5b41fa9c633e25569d971',
-     armv7l: '0781dda33ce4845ca3f18d533469ca888c5823f8b1c5b41fa9c633e25569d971',
-       i686: 'f681134f0aa6bee29744c33612c5d5b71d52601777a00af170fc3528d9af9474',
-     x86_64: '46f1158d117549d339ace891d87e2ac27a0cc5d778f75991c462201e57f11e0b'
+    aarch64: '7a71988ef51b7480522c314559f76c3c9334c1a55f6981dcea536badafe3ffd9',
+     armv7l: '7a71988ef51b7480522c314559f76c3c9334c1a55f6981dcea536badafe3ffd9',
+       i686: 'a760d0c0a67601560012cc48bd88c5e45b853d6f8636a20ab8532729cbcfeb5b',
+     x86_64: 'e61afc55e0d7d2e4b09df2185f64edb55e0cbea828fed2ac682906589911cfaf'
   })
 
   depends_on 'libxml2'
@@ -67,8 +67,36 @@ class Docbook_xml44 < Package
     # End Docbook common postinstall block
 
     system "xmlcatalog --noout --add 'public' \
-      '-//OASIS//ELEMENTS DocBook XML HTML Tables V#{@_ver}//EN' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/htmltblx.mod' \
+      '-//OASIS//DTD DocBook XML V#{@_ver}//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/docbookx.dtd' \
+      '#{CREW_PREFIX}/etc/xml/docbook-xml'"
+    system "xmlcatalog --noout --add 'public' \
+      '-//OASIS//DTD DocBookXML CALS Table Model V#{@_ver}//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/calstblx.dtd' \
+      '#{CREW_PREFIX}/etc/xml/docbook-xml'"
+    system "xmlcatalog --noout --add 'public' \
+      '-//OASIS//DTD XML Exchange Table Model 19990315//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/soextblx.dtd' \
+      '#{CREW_PREFIX}/etc/xml/docbook-xml'"
+    system "xmlcatalog --noout --add 'public' \
+      '-//OASIS//ELEMENTS DocBookXML Information Pool V#{@_ver}//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/dbpoolx.mod' \
+      '#{CREW_PREFIX}/etc/xml/docbook-xml'"
+    system "xmlcatalog --noout --add 'public' \
+      '-//OASIS//ELEMENTS DocBookXML Document Hierarchy V#{@_ver}//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/dbhierx.mod' \
+      '#{CREW_PREFIX}/etc/xml/docbook-xml'"
+    system "xmlcatalog --noout --add 'public' \
+      '-//OASIS//ENTITIES DocBookXML Additional General Entities V#{@_ver}//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/dbgenent.mod' \
+      '#{CREW_PREFIX}/etc/xml/docbook-xml'"
+    system "xmlcatalog --noout --add 'public' \
+      '-//OASIS//ENTITIES DocBookXML Notations V#{@_ver}//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/dbnotnx.mod' \
+      '#{CREW_PREFIX}/etc/xml/docbook-xml'"
+    system "xmlcatalog --noout --add 'public' \
+      '-//OASIS//ENTITIES DocBookXML Character Entities V#{@_ver}//EN' \
+      'http://www.oasis-open.org/docbook/xml/#{@_ver}/dbcentx.mod' \
       '#{CREW_PREFIX}/etc/xml/docbook-xml'"
 
     system "xmlcatalog --noout --add rewriteSystem \
@@ -89,21 +117,21 @@ class Docbook_xml44 < Package
     system "xmlcatalog --noout --add \"delegatePublic\" \
         \"-//OASIS//ENTITIES DocBook XML\" \
         \"file://#{CREW_PREFIX}/etc/xml/docbook-xml\" \
-        '#{CREW_PREFIX}/etc/xml/catalog'"
+        #{CREW_PREFIX}/etc/xml/catalog"
 
     system "xmlcatalog --noout --add \"delegatePublic\" \
         \"-//OASIS//DTD DocBook XML\" \
         \"file://#{CREW_PREFIX}/etc/xml/docbook-xml\" \
-        '#{CREW_PREFIX}/etc/xml/catalog'"
+        #{CREW_PREFIX}/etc/xml/catalog"
 
     system "xmlcatalog --noout --add \"delegateSystem\" \
         \"http://www.oasis-open.org/docbook/\" \
         \"file://#{CREW_PREFIX}/etc/xml/docbook-xml\" \
-        '#{CREW_PREFIX}/etc/xml/catalog'"
+        #{CREW_PREFIX}/etc/xml/catalog"
 
     system "xmlcatalog --noout --add \"delegateURI\" \
         \"http://www.oasis-open.org/docbook/\" \
         \"file://#{CREW_PREFIX}/etc/xml/docbook-xml\" \
-        '#{CREW_PREFIX}/etc/xml/catalog'"
+        #{CREW_PREFIX}/etc/xml/catalog"
   end
 end
