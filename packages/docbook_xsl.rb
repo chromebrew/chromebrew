@@ -2,28 +2,27 @@ require 'package'
 
 class Docbook_xsl < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
-  compatibility 'all'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
-  version @_ver
+  version "#{@_ver}-1"
+  compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '78f0e12c3db339ebd0d9f7d78016c89aaaa94d0649d9dc8ac342211cf09f25ad',
-     armv7l: '78f0e12c3db339ebd0d9f7d78016c89aaaa94d0649d9dc8ac342211cf09f25ad',
-       i686: '1e125577e569c168d646544bc8547eecc76e21b6ad6f85088e74711b8421d88d',
-     x86_64: 'dbba4c5f2c095d0254664db90aaf921d1f182f570a66fb7cf1e4f36732e58e54'
+    aarch64: '7cf8ba8618ed326bec14312fd16d60df6ecaf64d93f4e366936a0631969244bd',
+     armv7l: '7cf8ba8618ed326bec14312fd16d60df6ecaf64d93f4e366936a0631969244bd',
+       i686: '99b4735572497dc97dc37ea1d84da16be4994508ea7293f1fca678b17a3419a8',
+     x86_64: '508cfde5de02091ea5d26aec1e50bd5faff48493a4036d5014f9b3e71bfefa71'
   })
 
   depends_on 'xmlcatmgr'
-  depends_on 'docbook_xsl_nons'
   depends_on 'bash'
 
   def self.patch
