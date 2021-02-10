@@ -2,10 +2,10 @@ require 'package'
 
 class Docbook_xsl_nons < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
-  compatibility 'all'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
   version @_ver
+  compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-nons-#{@_ver}.zip"
   source_sha256 'ba41126fbf4021e38952f3074dc87cdf1e50f3981280c7a619f88acf31456822'
 
