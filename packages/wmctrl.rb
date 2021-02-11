@@ -3,7 +3,7 @@ require 'package'
 class Wmctrl < Package
   description 'Control your EWMH compliant window manager from command line'
   homepage 'http://tripie.sweb.cz/utils/wmctrl/'
-  @_ver '1.07'
+  @_ver = '1.07'
   version @_ver
   compatibility 'all'
   source_url "http://tripie.sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
@@ -29,10 +29,9 @@ class Wmctrl < Package
     patch_url = 'http://archive.debian.org/debian/pool/main/w/wmctrl/wmctrl_1.07-6.diff.gz'
     patch_sha256 = 'c6560ba645652eab0b16d46c9dbd8e5c9881c1f9d3ac6fa3da2ee3c865b5e6a0'
 
-    system('wget', '--continue', '--no-check-certificate', patch_url, '-O', 'patch.gz')
+    system('curl', '-Lf', patch_url, '-o', 'patch.gz')
     abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('./patch.gz')) == patch_sha256
-    system('gunzip', 'patch.gz')
-    system 'patch -p 1 < patch'
+    system 'zcat patch.gz | patch -p1'
   end
 
   def self.build
