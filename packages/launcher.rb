@@ -15,7 +15,7 @@ class Launcher < Package
   def self.postinstall
     puts 'Performing code-injection...'
     @code = 'launcher start'
-    system "echo #{@code} >> #{HOME}/.bashrc" unless `grep -c '#{@code}' #{HOME}/.bashrc`.to_i > 0
+    system "echo 'nohup #{@code}' >> #{HOME}/.bashrc" unless `grep -c '#{@code}' #{HOME}/.bashrc`.to_i > 0
     puts
     puts "To get started, execute 'launcher help'.".lightblue
     puts
