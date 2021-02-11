@@ -13,7 +13,7 @@ class Crew_profile < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     FileUtils.mkdir_p CREW_DEST_HOME
-    FileUtils.ln_s "#{Dir.home}/.profile", "#{CREW_DEST_PREFIX}/etc/profile"
+    FileUtils.ln_s "#{HOME}/.profile", "#{CREW_DEST_PREFIX}/etc/profile"
   end
 
   def self.postinstall
