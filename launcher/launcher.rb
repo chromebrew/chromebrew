@@ -14,7 +14,7 @@ PORT = 25500
 PATH = "#{CREW_PREFIX}/share/pixmaps " + "/usr/local/share/icons " + "#{Dir.home}/.local/ " + PWA_PREFIX
 
 HELP = <<EOF
-launcher: Chromebrew GUI application shortcut maker
+launcher: Add GUI applications shortcut to Chrome/Chromium OS launcher
 
 Usage:
   stop            stop the launcher server if running
