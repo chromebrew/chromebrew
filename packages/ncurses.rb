@@ -9,8 +9,16 @@ class Ncurses < Package
   source_sha256 'e5e83965329c85d8d28f9a35a71ab785fce015f42f491e7dcafbb9f36ad1eaea'
 
   binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
+    aarch64: 'f87816a803fdbb6403ecb03ea4faec04da8c3a829a1455a2c9e0a0686818ebb6',
+     armv7l: 'f87816a803fdbb6403ecb03ea4faec04da8c3a829a1455a2c9e0a0686818ebb6',
+       i686: 'ad1fb3a7d832d4fcf4e695cd5f5f7e023581c2d0529a2bf9729acd2cd96e44cd',
+     x86_64: 'd81416072e4e4454b585495db8b7e0767867c851e512afd4655fa8174d244c02'
   })
 
   def self.build
