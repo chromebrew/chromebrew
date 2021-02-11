@@ -24,6 +24,8 @@ class Nss < Package
 
   depends_on 'gyp_next' => :build
   depends_on 'nspr'
+  depends_on 'sqlite'
+  depends_on 'pkgconfig' => :build
 
   def self.build
     ENV['opt_build'] = '1'
@@ -37,11 +39,7 @@ class Nss < Package
                    else
                      '-flto=auto'
                    end
-    @ARCH_LDFLAGS = if ARCH == 'armv7l'
-                      ''
-                    else
-                      '-flto=auto'
-                    end
+    @ARCH_LDFLAGS = @ARCH_CFLAGS
 
     ENV['NS_USE_GCC'] = '1'
     ENV['CPPFLAGS'] = "-I#{CREW_PREFIX}/include/nspr"
@@ -56,17 +54,17 @@ class Nss < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/nss"
     FileUtils.rm Dir.glob('dist/Release/lib/*.so.TOC')
-    FileUtils.mv 'dist/Release/lib', "dist/Release/#{ARCH_LIB}" unless ARCH_LIB.to_s == 'lib'
-    FileUtils.cp_r Dir.glob('dist/Release/*'), CREW_DEST_PREFIX.to_s
+    FileUtils.mv 'dist/Release/lib', "dist/Release/#{ARCH_LIB}" unless ARCH_LIB == 'lib'
+    FileUtils.cp_r Dir.glob('dist/Release/*'), CREW_DEST_PREFIX
     FileUtils.cp_r Dir.glob('dist/public/nss/*'), "#{CREW_DEST_PREFIX}/include/nss/"
 
     system "sed nss/pkg/pkg-config/nss.pc.in \
-    -e \"s,%libdir%,#{CREW_LIB_PREFIX},g\" \
-    -e \"s,%prefix%,#{CREW_PREFIX},g\" \
-    -e \"s,%exec_prefix%,#{CREW_PREFIX}/bin,g\" \
-    -e \"s,%includedir%,#{CREW_PREFIX}/include/nss,g\" \
-    -e \"s,%NSPR_VERSION%,$(pkg-config --modversion nspr),g\" \
-    -e \"s,%NSS_VERSION%,#{@_ver},g\" | \
+    -e 's,%libdir%,#{CREW_LIB_PREFIX},g' \
+    -e 's,%prefix%,#{CREW_PREFIX},g' \
+    -e 's,%exec_prefix%,#{CREW_PREFIX}/bin,g' \
+    -e 's,%includedir%,#{CREW_PREFIX}/include/nss,g' \
+    -e 's,%NSPR_VERSION%,$(pkg-config --modversion nspr),g' \
+    -e 's,%NSS_VERSION%,#{@_ver},g' | \
     install -Dm644 /dev/stdin #{CREW_DEST_LIB_PREFIX}/pkgconfig/nss.pc"
     FileUtils.ln_s "#{CREW_LIB_PREFIX}/pkgconfig/nss.pc",
                    "#{CREW_DEST_LIB_PREFIX}/pkgconfig/mozilla-nss.pc"
