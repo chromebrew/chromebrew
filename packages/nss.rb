@@ -24,8 +24,6 @@ class Nss < Package
 
   depends_on 'gyp_next' => :build
   depends_on 'nspr'
-  depends_on 'sqlite'
-  depends_on 'pkgconfig' => :build
 
   def self.build
     ENV['opt_build'] = '1'
