@@ -3,49 +3,71 @@ require 'package'
 class Nss < Package
   description 'Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.'
   homepage 'https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS'
-  version '3.59'
+  @_ver = '3.61'
+  version @_ver
   compatibility 'all'
-  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_59_RTM/src/nss-3.59-with-nspr-4.29.tar.gz'
-  source_sha256 '2e2c09c17b1c9f43a2f0a5d83a30a712bff3016d2b7cf5a3dd904847292607ae'
+  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_61_RTM/src/nss-3.61-with-nspr-4.29.tar.gz'
+  source_sha256 '812468f3cf22917f9647fec7997f4ab27ae4167811d9cbdc831f41f5ed281c5d'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.59-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.59-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.59-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.59-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.61-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.61-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.61-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nss-3.61-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '9f1ab2d6fbaa5d94e51fa485c9325ae7ddd4d8df13ddfd87cb51aa89133c5feb',
-     armv7l: '9f1ab2d6fbaa5d94e51fa485c9325ae7ddd4d8df13ddfd87cb51aa89133c5feb',
-       i686: 'c54d6fbf8d44db101797e5d5b610baef75de5c92a37dec48cc6cb810e1d14f1c',
-     x86_64: '41ff455950be5e96a72c494c4a1993f5efbbe9d8a1c747682bc279fd7bd156eb',
+  binary_sha256({
+    aarch64: '812f36d5c1875cf8803097265483b8a558194c6f0778977d55637407682ba51c',
+     armv7l: '812f36d5c1875cf8803097265483b8a558194c6f0778977d55637407682ba51c',
+       i686: 'e724b986a9a2edce790a8bef0b89d096ff46cb93815fc2d7bf8beb950af851f5',
+     x86_64: 'ba50721b2e968c49fbd5d4a90112ff27374903d33dbcfc3f1877b2c7074adbcd'
   })
 
-  depends_on 'gyp' => :build
+  depends_on 'gyp_next' => :build
   depends_on 'nspr'
-  depends_on 'sqlite'
 
   def self.build
-    ENV['BUILD_OPT'] = '1'
-    if ARCH == 'x86_64'
-      ENV['USE_64'] = '1'
-    else
-      ENV['USE_X32'] = '1'
-    end
+    ENV['opt_build'] = '1'
+    ENV['build_64'] = if ARCH == 'x86_64'
+                        '1'
+                      else
+                        '0'
+                      end
+    @arch_cflags = if ARCH == 'armv7l'
+                     ''
+                   else
+                     '-flto=auto'
+                   end
+    @arch_ldflags = @arch_cflags
+
     ENV['NS_USE_GCC'] = '1'
     ENV['CPPFLAGS'] = "-I#{CREW_PREFIX}/include/nspr"
     ENV['USEABSPATH'] = 'NO'
     ENV['NSS_GYP_PREFIX'] = CREW_PREFIX
     Dir.chdir 'nss' do
-      system "./build.sh -v --opt --gcc --gyp --with-nspr=#{CREW_PREFIX}/include/nspr --system-nspr --system-sqlite --disable-tests"
+      system "env CFLAGS='-pipe #{@arch_cflags}' \
+        CXXFLAGS='-pipe #{@arch_cflags}' LDFLAGS='#{@arch_ldflags}' \
+        ./build.sh -v --opt --gcc --gyp \
+        --with-nspr=#{CREW_PREFIX}/include/nspr --system-nspr \
+        --system-sqlite --disable-tests"
     end
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/nss"
     FileUtils.rm Dir.glob('dist/Release/lib/*.so.TOC')
-    FileUtils.mv "dist/Release/lib","dist/Release/#{ARCH_LIB}" unless "#{ARCH_LIB}" == "lib"
-    FileUtils.cp_r Dir.glob('dist/Release/*'), "#{CREW_DEST_PREFIX}"
+    FileUtils.mv 'dist/Release/lib', "dist/Release/#{ARCH_LIB}" unless ARCH_LIB == 'lib'
+    FileUtils.cp_r Dir.glob('dist/Release/*'), CREW_DEST_PREFIX
     FileUtils.cp_r Dir.glob('dist/public/nss/*'), "#{CREW_DEST_PREFIX}/include/nss/"
+
+    system "sed nss/pkg/pkg-config/nss.pc.in \
+    -e 's,%libdir%,#{CREW_LIB_PREFIX},g' \
+    -e 's,%prefix%,#{CREW_PREFIX},g' \
+    -e 's,%exec_prefix%,#{CREW_PREFIX}/bin,g' \
+    -e 's,%includedir%,#{CREW_PREFIX}/include/nss,g' \
+    -e 's,%NSPR_VERSION%,$(pkg-config --modversion nspr),g' \
+    -e 's,%NSS_VERSION%,#{@_ver},g' | \
+    install -Dm644 /dev/stdin #{CREW_DEST_LIB_PREFIX}/pkgconfig/nss.pc"
+    FileUtils.ln_s "#{CREW_LIB_PREFIX}/pkgconfig/nss.pc",
+                   "#{CREW_DEST_LIB_PREFIX}/pkgconfig/mozilla-nss.pc"
   end
 end
