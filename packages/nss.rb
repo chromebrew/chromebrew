@@ -24,8 +24,6 @@ class Nss < Package
 
   depends_on 'gyp_next' => :build
   depends_on 'nspr'
-  depends_on 'sqlite'
-  depends_on 'pkgconfig' => :build
 
   def self.build
     ENV['opt_build'] = '1'
@@ -34,20 +32,23 @@ class Nss < Package
                       else
                         '0'
                       end
-    @ARCH_CFLAGS = if ARCH == 'armv7l'
+    @arch_cflags = if ARCH == 'armv7l'
                      ''
                    else
                      '-flto=auto'
                    end
-    @ARCH_LDFLAGS = @ARCH_CFLAGS
+    @arch_ldflags = @arch_cflags
 
     ENV['NS_USE_GCC'] = '1'
     ENV['CPPFLAGS'] = "-I#{CREW_PREFIX}/include/nspr"
     ENV['USEABSPATH'] = 'NO'
     ENV['NSS_GYP_PREFIX'] = CREW_PREFIX
     Dir.chdir 'nss' do
-      system "env CFLAGS='-pipe #{@ARCH_CFLAGS}' CXXFLAGS='-pipe #{@ARCH_CFLAGS}' LDFLAGS='#{@ARCH_LDFLAGS}' \
-        ./build.sh -v --opt --gcc --gyp --with-nspr=#{CREW_PREFIX}/include/nspr --system-nspr --system-sqlite --disable-tests"
+      system "env CFLAGS='-pipe #{@arch_cflags}' \
+        CXXFLAGS='-pipe #{@arch_cflags}' LDFLAGS='#{@arch_ldflags}' \
+        ./build.sh -v --opt --gcc --gyp \
+        --with-nspr=#{CREW_PREFIX}/include/nspr --system-nspr \
+        --system-sqlite --disable-tests"
     end
   end
 
