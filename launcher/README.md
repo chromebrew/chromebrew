@@ -17,4 +17,4 @@ crew install launcher
 
 ## Screenshots
 ### Launcher
-<p align="center"><img src="/launcher/screenshots/launcher.png" alt="Launcher Screenshot" /></p>
+<p align="center"><img src="/launcher/screenshot/launcher.png" alt="Launcher Screenshot" /></p>
