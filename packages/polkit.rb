@@ -21,9 +21,7 @@ class Polkit < Package
      x86_64: '3dd185d450d343bb6c4c1a073497fe50cd2afd1b380b8f682ee50ab7030177f5'
   })
 
-  depends_on 'expat'
   depends_on 'js78'
-  depends_on 'intltool' => ':build'
   depends_on 'gtk_doc' => ':build'
   depends_on 'gobject_introspection' => ':build'
 
