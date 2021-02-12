@@ -7,6 +7,7 @@ bison
 brotli
 bz2
 c_ares
+ca_certificates
 cmake
 compressdoc
 curl
@@ -49,6 +50,7 @@ libunbound
 libunistring
 libxdmcp
 libxml2
+libyaml
 linuxheaders
 llvm
 lz4
