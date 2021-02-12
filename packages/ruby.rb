@@ -47,6 +47,6 @@ class Ruby < Package
   end
 
   def self.postinstall
-    system 'gem update -N --system'
+    system 'gem update --silent -N --system'
   end
 end
