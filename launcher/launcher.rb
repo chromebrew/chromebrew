@@ -96,7 +96,8 @@ end
 
 def new (app)
   # abort when command not found
-  abort "#{app}: command not found".lightred unless system("which #{app} > /dev/null 2>1")
+  abort "Error: no application name provided".lightred unless app
+  abort "#{app}: application not installed".lightred unless system("which #{app} > /dev/null 2>1")
 
   desktop_icon_name_finder(app)
   
