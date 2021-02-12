@@ -13,7 +13,7 @@
 crew install launcher
 ```
 ## Help needed?
-- Submit an new issues [here](https://github.com/skycocker/chromebrew/issues)<sup>*</sup>
+- Submit new issues [here](https://github.com/skycocker/chromebrew/issues)<sup>*</sup>
 <br>
 <sup>*</sup> <em>Please check existing issues before submitting a new one.</em>
 
