@@ -71,6 +71,19 @@ temp_url=
 sha256s=()
 temp_sha256=
 k=0
+
+case "${ARCH}" in
+"armv7l"|"aarch64")
+  if ! type "xz" > /dev/null; then
+    temp_url='https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz'
+    temp_sha256='4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7'
+    urls[k]="$temp_url"
+    sha256s[k]="$temp_sha256"
+    k=$((k+1))
+  fi
+  ;;
+esac
+
 for package in $EARLY_PACKAGES; do
   pkgfile="$(curl -Lsf "${URL}"/packages/"$package".rb)"
   temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | awk '{print $2}' | tr -d \' | sed 's/,//g')"
@@ -79,15 +92,6 @@ for package in $EARLY_PACKAGES; do
   sha256s[k]="$temp_sha256"
   k=$((k+1))
 done
-
-
-#case "${ARCH}" in
-#"armv7l"|"aarch64")
-  #if ! type "xz" > /dev/null; then
-    #urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
-    #sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
-  #fi
-
 
 # functions to maintain packages
 function download_check () {
