@@ -193,7 +193,7 @@ git reset --hard origin/"${BRANCH}"
 crew update
 
 # run postinstall on early packages
-crew postinstall $EARLY_PACKAGES
+env ; crew postinstall $EARLY_PACKAGES
 
 # install a base set of essential packages
 yes | crew install buildessential less most
