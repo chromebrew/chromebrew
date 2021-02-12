@@ -22,8 +22,6 @@ class Ca_certificates < Package
       x86_64: 'f2fa591a9ec3aa7c43a1fd58081f1f6a1b9ef9f8ee4ae0c520b17202648fd395',
   })
 
-  depends_on 'bash' => :build
-
   def self.patch
     url_patch1 = 'https://gitweb.gentoo.org/repo/gentoo.git/plain/app-misc/ca-certificates/files/ca-certificates-20150426-root.patch'
     filename_patch1 = 'ca-certificates-20150426-root.patch'
