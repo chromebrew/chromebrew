@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
-CREW = `dirname $(which crew)`
 
 # use chromebrew variable
-require "#{CREW}/../lib/crew/lib/const"
-require "#{CREW}/../lib/crew/lib/color"
+require 'CREW_PREFIX_/lib/crew/lib/const'
+require 'CREW_PREFIX_/lib/crew/lib/color'
 require 'em-websocket'
 require 'fileutils'
 
@@ -11,7 +10,7 @@ PID = CREW_PREFIX + '/tmp/server.pid'
 LOG = CREW_PREFIX + '/tmp/server.log'
 PWA_PREFIX = CREW_PREFIX + '/lib/pwa'
 PORT = 25500
-PATH = "#{CREW_PREFIX}/share/pixmaps " + "/usr/local/share/icons " + "#{Dir.home}/.local/ " + PWA_PREFIX
+PATH = "#{CREW_PREFIX}/share/pixmaps " + "/usr/local/share/icons " + "#{HOME}/.local/ " + PWA_PREFIX
 
 HELP = <<EOF
 launcher: Add GUI applications shortcut to Chrome/Chromium OS launcher
@@ -66,10 +65,10 @@ end
 def desktop_icon_name_finder (app)
   # find out the info, name and icon of the command
     
-  @desktop = `find / -name #{app}.desktop 2> /dev/null | sed -e '/stateful_partition/d' | tail -n1`.tr("\n", '')
+  @desktop_path = [ "#{CREW_PREFIX}/share/applications/", "#{HOME}/.local/share/applications/" ]
     
   # abort if a desktop file not found for the command
-  if @desktop == '' then
+  unless File.exists? @desktop_path[0] + "#{app}.desktop" or File.exists? @desktop_path[1] + "#{app}.desktop"
     puts "Cannot find the .desktop file for #{app}, using default Chromebrew icon... 
 (If you want to use customize icon, put the icon file to #{CREW_PREFIX}/lib/pwa/ and name it to '#{app}.png')".yellow
     FileUtils.mkdir_p PWA_PREFIX
@@ -78,8 +77,13 @@ def desktop_icon_name_finder (app)
     @icon = PWA_PREFIX + "/#{app}.png" if File.exist?(PWA_PREFIX + "/#{app}.png")
     @name = app.capitalize
   else
+    for var in @desktop_path
+      p var
+      @desktop = "#{var}/#{app}.desktop" if File.exist?("#{var}/#{app}.desktop")
+    end
+    
     @icon = File.readlines(@desktop).select { |line| line =~ /^Icon/ }[0].partition('=')[2].tr("\n", '')
-    @icon = `find #{PATH} -iname #{@icon}.png -o -iname #{@icon}.xpm 2> /dev/null | sed -e '/stateful_partition/d' |\
+    @icon = `find #{PATH} -iname #{@icon}.png -o -iname #{@icon}.xpm 2> /dev/null |\
              sed -e 's:/usr/local/share/icons/hicolor/::g' | sort -n | sed -e 's:^:/usr/local/share/icons/hicolor/:g' |\
              tail -n1`.tr("\n", '')
   
@@ -96,7 +100,7 @@ def new (app)
 
   desktop_icon_name_finder(app)
   
-  @working_on_dir = "#{Dir.home}/MyFiles/#{app}.launcher/"
+  @working_on_dir = "#{HOME}/MyFiles/#{app}.launcher/"
   FileUtils.mkdir_p(@working_on_dir)
   
   system('convert', @icon, '-resize', '1024x1024', @working_on_dir + 'icon.png')
@@ -111,15 +115,30 @@ def start_server
     
   stop_server
     
-  system('startsommelier > /dev/null') or abort "Failed to start graphical environment: sommelier exited with status #{$?.exitstatus.to_s}".lightred
+  system('startsommelier > /dev/null') or abort "Failed to start graphical environment: sommelier exited with status #{$?.exitstatus}".lightred
   ENV['DISPLAY'] = ':0'
   ENV['GDK_BACKEND'] = 'x11'
   Process.fork do
+    puts "Server daemon running with PID #{Process.pid}".lightgreen
+    puts "Appending process output to '#{LOG}'".lightblue
+    
     # write current fork process pid to a file
     File.write(PID, Process.pid)
+
+    # ignore SIGHUP, make us be a daemon
+    Signal.trap('HUP') do
+      puts "Received HUP, ignoring..."
+    end
+    Signal.trap('TERM') do
+      puts "Received TERM, terminating..."
+      exit(0)
+    end
+
     EM.run {
       EM::WebSocket.run(:host => "0.0.0.0", :port => 25500) do |ws|
         ws.onmessage { |message|
+          # redirect STDOUT and STDERR to log file
+        
           File.open(LOG, 'w') { |file|
             $stdout.sync = true
             $stdout.reopen(file)
@@ -137,8 +156,13 @@ case ARGV[0]
 when 'start'
   start_server
 when 'new'
-  new ARGV[1]
-  start_server
+  if ARGV[1] then
+    new ARGV[1]
+    start_server
+  else
+    puts 'launcher: missing command name'.lightred
+    puts HELP
+  end
 when 'stop'
   stop_server
   puts 'Server stopped'.lightgreen
