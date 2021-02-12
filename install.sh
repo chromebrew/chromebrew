@@ -86,8 +86,8 @@ esac
 
 for package in $EARLY_PACKAGES; do
   pkgfile="$(curl -Lsf "${URL}"/packages/"$package".rb)"
-  temp_url="$(grep -m 3 "$ARCH": "$pkgfile" | head -n 1 | cut -d\' -f2 | tr -d \' | sed 's/,//g')"
-  temp_sha256="$(grep -m 3 "$ARCH": "$pkgfile" | tail -n 1 | cut -d\' -f2 | tr -d \' | sed 's/,//g')"
+  temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
+  temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   urls[k]="$temp_url"
   sha256s[k]="$temp_sha256"
   k=$((k+1))
