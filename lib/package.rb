@@ -17,23 +17,35 @@ class Package
     @dependencies
   end
 
-  def self.depends_on (dependency = nil)
+  def self.depends_on (dependency = nil, pkgmanager = nil, pkgopt = nil)
+    return unless dependency
     @dependencies = Hash.new unless @dependencies
-    if dependency
-      # add element in "[ name, [ tag1, tag2, ... ] ]" format
-      if dependency.is_a?(Hash)
-        if dependency.first[1].is_a?(Array)
-          # parse "depends_on name => [ tag1, tag2 ]"
-          @dependencies.store(dependency.first[0], dependency.first[1])
-        else
-          # parse "depends_on name => tag"
-          @dependencies.store(dependency.first[0], [ dependency.first[1] ])
-        end
+    # add element in "[ name, [ tag1, tag2, ... ] ]" format
+    if dependency.is_a?(Hash)
+      if dependency.first[1].is_a?(Array)
+        # parse "depends_on name => [ tag1, tag2 ]"
+        @dependencies.store(dependency.first[0], dependency.first[1])
       else
-        # parse "depends_on name"
-        @dependencies.store(dependency, [])
+        # parse "depends_on name => tag"
+        @dependencies.store(dependency.first[0], [ dependency.first[1] ])
       end
+    else
+      # parse "depends_on name"
+      @dependencies.store(dependency, []) unless pkgmanager
     end
+    
+    if pkgmanager and pkgopt then
+      puts "Installing dependencies using '#{pkgmanager}', please wait..."
+      puts
+      system "yes | #{pkgmanager} install #{dependency} #{pkgopt}"
+      puts
+    elsif pkgmanager
+      puts "Installing dependencies using '#{pkgmanager}', please wait..."
+      puts
+      system "yes | #{pkgmanager} install #{dependency}"
+      puts
+    end
+      
     @dependencies
   end
 
