@@ -42,7 +42,7 @@ esac
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
-  if [ -d "${CREW_PREFIX}"/"${folder}" ] || [ -L "${CREW_PREFIX}"/"${folder}" ]; then 
+  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then 
     sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
   fi
 done
