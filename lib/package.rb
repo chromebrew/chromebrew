@@ -34,15 +34,14 @@ class Package
       @dependencies.store(dependency, []) unless pkgmanager
     end
     
-    if pkgmanager and pkgopt then
+    if pkgmanager then
       puts "Installing dependencies using '#{pkgmanager}', please wait..."
       puts
-      system "yes | #{pkgmanager} install #{dependency} #{pkgopt}"
-      puts
-    elsif pkgmanager
-      puts "Installing dependencies using '#{pkgmanager}', please wait..."
-      puts
-      system "yes | #{pkgmanager} install #{dependency}"
+      if pkgopt then
+        system "yes | #{pkgmanager} install #{dependency} #{pkgopt}"
+      else
+        system "yes | #{pkgmanager} install #{dependency}"
+      end
       puts
     end
       
