@@ -21,6 +21,7 @@ class Ruby < Package
      x86_64: '20d4d18d1a184a088abb5547bc94e7f6189229565157bb35c5691cf0f1264f9f'
   })
 
+  depends_on 'ca_certificates'
   depends_on 'libyaml' # This is needed to install gems
   # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
 
