@@ -40,7 +40,7 @@ esac
 
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
-for folder in $crew_folders ; do sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"$folder" ; done
+for folder in $crew_folders ; do sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"$folder" || true ; done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 # Delete 'var' symlink on Cloudready platform
 if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
