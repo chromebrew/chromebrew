@@ -1,8 +1,8 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.7.4'
+CREW_VERSION = '1.7.5'
 
-ARCH_ACTUAL = `uname -m`.strip
+ARCH_ACTUAL = `arch`.strip
 # This helps with virtualized builds on aarch64 machines
 # which report armv8l when linux32 is run.
 ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
