@@ -40,7 +40,12 @@ esac
 
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
-for folder in $crew_folders ; do sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"$folder" ; done
+for folder in $crew_folders
+do
+  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then 
+    sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
+  fi
+done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 # Delete 'var' symlink on Cloudready platform
 if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
@@ -97,8 +102,10 @@ case "${ARCH}" in
   sha256s+=('47e67bbdb93c72136630dfc35c37ddd7d37c242fbd3446f67ff40b52376fa3e6')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/zstd-1.4.7-chromeos-armv7l.tar.xz')
   sha256s+=('4a917969893ff2d985aa498d989219b2c569dd01ff1b198d3e6bd2a770b7d34c')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-chromeos-armv7l.tar.xz')
-  sha256s+=('a91b249cdad5de1d9d12497b721f6ce88c1be445e9c40c915a93046ddb21e400')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-armv7l.tar.xz')
+  sha256s+=('f87816a803fdbb6403ecb03ea4faec04da8c3a829a1455a2c9e0a0686818ebb6')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ca_certificates-20210119-chromeos-armv7l.tar.xz')
+  sha256s+=('75d332ca6053e5e12d34eb5d72da6daab50d650f6733d1bd9668bed9af802e30')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.0-2-chromeos-armv7l.tar.xz')
   sha256s+=('6e2d40ea5d1bafbe0b79e1a0ae644911f33a9ceb94716d3e4c05d91884850b28')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libffi-3.3-chromeos-armv7l.tar.xz')
@@ -146,11 +153,20 @@ case "${ARCH}" in
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.57-chromeos-i686.tar.xz')
   sha256s+=('e981259b1c30688d15c3b8ca83ea87fe83bd41f1923322b274df04e6e10611f0')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/rtmpdump-c5f04a58f-1-chromeos-i686.tar.xz')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libtirpc-1.3.1-chromeos-i686.tar.xz')
+  sha256s+=('987de099b04760d251425554071d505ec001818a152a782cd51b92ae6edf9dc5')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/libunistring-0.9.10-chromeos-i686.tar.xz')
+  sha256s+=('88cb3cbfdf6c108045cf63d5aa70b2d036fceacc93f0ead76858381db4268c76')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/openldap-2.4.57-chromeos-i686.tar.xz')
+  sha256s+=('e981259b1c30688d15c3b8ca83ea87fe83bd41f1923322b274df04e6e10611f0')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/rtmpdump-c5f04a58f-1-chromeos-i686.tar.xz')
   sha256s+=('109fb6fa70409f8ba274fa452c2e04dc1ff3ba740f618525c188139c1ddce363')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/zstd-1.4.7-chromeos-i686.tar.xz')
   sha256s+=('192b17e599990e94d2d8343095c90be85e0013fe92c8933c6795c51f8ba39d89')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-chromeos-i686.tar.xz')
-  sha256s+=('2918cff85ec7730463ba5950d2039e09c1d8579238c8b0e6d9257b5bb1f7812f')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-i686.tar.xz')
+  sha256s+=('ad1fb3a7d832d4fcf4e695cd5f5f7e023581c2d0529a2bf9729acd2cd96e44cd')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ca_certificates-20210119-chromeos-i686.tar.xz')
+  sha256s+=('e61ae07f85f64f0c53fa922714ac30579c77db5f2e9fa266e4e6059b502f5475')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.0-2-chromeos-i686.tar.xz')
   sha256s+=('44422c2fbe7c1d4d8d0088d12c1691d33de19fbe10a1461d9b3ce8cf1e2e7e1e')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libffi-3.3-chromeos-i686.tar.xz')
@@ -201,8 +217,10 @@ case "${ARCH}" in
   sha256s+=('0212408c6faad92b5909d77188d8c27e68ce955f61dcb5597603303e31e601ce')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/zstd-1.4.7-chromeos-x86_64.tar.xz')
   sha256s+=('017e2d9e5fa613bb50385f6b49bb9642f7b3e6f10453e46b89ea3e4701a39ae7')
-  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-chromeos-x86_64.tar.xz')
-  sha256s+=('1fe01aa702bdba80d34a55f9596c60e577e54d93c0334a9e109a627210537185')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-x86_64.tar.xz')
+  sha256s+=('d81416072e4e4454b585495db8b7e0767867c851e512afd4655fa8174d244c02')
+  urls+=('https://dl.bintray.com/chromebrew/chromebrew/ca_certificates-20210119-chromeos-x86_64.tar.xz')
+  sha256s+=('7a782fdba9f89b077004dab99c15367bb999ed1b19485e32a22be2e79c4f3ac3')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.0-2-chromeos-x86_64.tar.xz')
   sha256s+=('20d4d18d1a184a088abb5547bc94e7f6189229565157bb35c5691cf0f1264f9f')
   urls+=('https://dl.bintray.com/chromebrew/chromebrew/libffi-3.3-chromeos-x86_64.tar.xz')
