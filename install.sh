@@ -17,7 +17,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 
 EARLY_PACKAGES="gcc10 llvm brotli c_ares libcyrussasl libiconv libidn2 \
 libmetalink libnghttp2 libpsl libssh2 libtirpc libunistring openldap \
-rtmpdump zstd ncurses ca_certificates ruby libffi openssl nettle curl \
+rtmpdump zstd ncurses ruby libffi openssl nettle curl \
 git icu4c libedit"
 
 ARCH="$(uname -m)"
@@ -72,7 +72,7 @@ sha256s=()
 temp_sha256=
 k=0
 for package in $EARLY_PACKAGES; do
-  pkgfile="$(curl -Lsf https://github.com/skycocker/chromebrew/raw/master/packages/"$package".rb)"
+  pkgfile="$(curl -Lsf "${URL}"/packages/"$package".rb)"
   temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | awk '{print $2}' | tr -d \' | sed 's/,//g')"
   temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | awk '{print $2}' | tr -d \' | sed 's/,//g')"
   urls[k]="$temp_url"
