@@ -17,7 +17,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 
 EARLY_PACKAGES="gcc10 llvm brotli c_ares libcyrussasl libiconv libidn2 \
 libmetalink libnghttp2 libpsl libssh2 libtirpc libunistring openldap \
-rtmpdump zstd ncurses ca_certificates ruby libffi openssl nettle curl \
+rtmpdump zstd ncurses ca_certificates ruby libffi openssl nettle krb5 curl \
 git icu4c libedit"
 
 ARCH="$(uname -m)"
