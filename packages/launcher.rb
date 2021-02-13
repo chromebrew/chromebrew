@@ -7,7 +7,7 @@ class Launcher < Package
   source_url 'https://github.com/supechicken/chromebrew/raw/master/launcher/launcher.rb'
   source_sha256 'be8c29ab3f96780b5287e52dabd5bf1fd28febdcffd959b688f2d4bf06d55791'
   
-  depends_on 'em-websocket', 'gem'
+  depends_on 'em_websocket'
   depends_on 'imagemagick7'
 
   def self.patch
