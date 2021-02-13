@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 # use chromebrew variable
-require "CREW_PREFIX_/lib/crew/lib/const".gsub('CREW_PREFIX_', '/usr/local')
-require "CREW_PREFIX_/lib/crew/lib/color".gsub('CREW_PREFIX_', '/usr/local')
+require 'CREW_PREFIX_/lib/crew/lib/const'
+require 'CREW_PREFIX_/lib/crew/lib/color'
 require 'em-websocket'
 require 'fileutils'
 
