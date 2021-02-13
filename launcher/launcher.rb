@@ -141,7 +141,7 @@ def desktop_icon_name_finder (app)
 (If you want to use customize icon, put the icon file to #{PWA_PREFIX} and name it to '#{app}.png')".yellow
 
     FileUtils.mkdir_p PWA_PREFIX
-    system('curl', '-L#', 'https://github.com/supechicken/chromebrew/raw/master/images/brew546.png', '-o', PWA_PREFIX + '/brew.png')
+    system('curl', '-L#', 'https://github.com/skycocker/chromebrew/raw/master/images/brew546.png', '-o', PWA_PREFIX + '/brew.png')
     @icon = PWA_PREFIX + 'brew.png'
     @icon = PWA_PREFIX + "#{app}.png" if File.exist?(PWA_PREFIX + "#{app}.png")
   end
