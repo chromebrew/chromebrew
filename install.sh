@@ -43,7 +43,8 @@ case "${ARCH}" in
   exit 1;;
 esac
 
-# This will allow things to work without sudo
+# This will allow things to work without sudo, and the following line 
+# whitelists folders in CREW_PREFIX for write by the Chromebrew installer.
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
@@ -122,7 +123,14 @@ function extract_install () {
     echo "Extracting ${1} (this may take a while)..."
     tar xpf ../"${2}"
     echo "Installing ${1} (this may take a while)..."
-    tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
+    local TarPaths=()
+    for folder in $crew_folders; do
+      if [ -d ."${CREW_PREFIX}"/"$folder" ]; then
+        TarPaths+=(".${CREW_PREFIX}/${folder}")
+      fi
+    done
+    # The following array expansion is intentionally unquoted.
+    tar cpf - ${TarPaths[@]} | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
@@ -165,10 +173,10 @@ fi
 for i in $(seq 0 $((${#urls[@]} - 1))); do
   url="${urls["${i}"]}"
   sha256="${sha256s["${i}"]}"
-  tarfile="$(basename ${url})"
+  tarfile="$(basename "${url}")"
   name="${tarfile%%-*}"   # extract string before first '-'
   rest="${tarfile#*-}"    # extract string after first '-'
-  version="$(echo ${rest} | sed -e 's/-chromeos.*$//')"
+  version="$(echo "${rest}" | sed -e 's/-chromeos.*$//')"
                         # extract string between first '-' and "-chromeos"
 
   download_check "${name}" "${url}" "${tarfile}" "${sha256}"
