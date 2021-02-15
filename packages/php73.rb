@@ -3,40 +3,39 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.3.26'
+  @_ver = '7.3.27'
   version @_ver
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'd93052f4cb2882090b6a37fd1e0c764be1605a2461152b7f6b8f04fa48875208'
+  source_sha256 '65f616e2d5b6faacedf62830fa047951b0136d5da34ae59e6744cbaf5dca148d'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.26-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'fb205e50aa2349be17b0272b8c8db09c1c2d25a938c402cc1615155c0353ddd6',
-      armv7l: 'fb205e50aa2349be17b0272b8c8db09c1c2d25a938c402cc1615155c0353ddd6',
-        i686: '9d9d8c2b2b58613e32a2d251eb9810c1bedb5104ccd105ded4a9d0ec4e1a79aa',
-      x86_64: '1ee211bdc217440d09902efdcbdec9f560e08778f56dc318e8ba94881dddac68',
+  binary_sha256({
+    aarch64: '7bd308b90ec61c6d1f03bfa97cc5883a9e963fab9d63d9922493d6ca5dceefcc',
+     armv7l: '7bd308b90ec61c6d1f03bfa97cc5883a9e963fab9d63d9922493d6ca5dceefcc',
+       i686: 'd3b0be456454fd98673477769c31b240c8fff997740239d1465d14434fde47ca',
+     x86_64: 'fc2d093bc2ba1ab0169c6d0f644649d952b4cb32286a2aa82331dfa5d5cc05ed'
   })
 
   depends_on 'libgcrypt'
   depends_on 'libjpeg_turbo'
   depends_on 'libxslt'
   depends_on 'libzip'
-  depends_on 'curl'
   depends_on 'exif'
   depends_on 'freetype'
-  depends_on 'pcre'
   depends_on 're2c'
   depends_on 'tidy'
   depends_on 'unixodbc'
+  depends_on 'pygments'
 
   def self.preinstall
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless "#{phpver}" == ""
+    abort "PHP version #{phpver} already installed.".lightred unless phpver.to_s == ''
   end
 
   def self.patch
@@ -54,8 +53,8 @@ class Php73 < Package
     system "sed -i 's,upload_max_filesize = 2M,upload_max_filesize = 128M,' php.ini-development"
     system "sed -i 's,;opcache.enable=0,opcache.enable=1,' php.ini-development"
     # Fix cc: error: ext/standard/.libs/type.o: No such file or directory
-    #system "sed -i '98303d' configure"
-    #system "sed -i '98295,98296d' configure"
+    # system "sed -i '98303d' configure"
+    # system "sed -i '98295,98296d' configure"
     # Fix /usr/bin/file: No such file or directory
     system 'filefix'
   end
@@ -68,7 +67,7 @@ class Php73 < Package
        --infodir=#{CREW_PREFIX}/info \
        --libdir=#{CREW_LIB_PREFIX} \
        --localstatedir=#{CREW_PREFIX}/tmp \
-       --mandir=#{CREW_PREFIX}/share/man \
+       --mandir=#{CREW_MAN_PREFIX} \
        --sbindir=#{CREW_PREFIX}/bin \
        --with-config-file-path=#{CREW_PREFIX}/etc \
        --with-libdir=#{ARCH_LIB} \
@@ -103,13 +102,13 @@ class Php73 < Package
   end
 
   def self.check
-    #system 'make', 'test'
+    # system 'make', 'test'
   end
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/log"
     system "mkdir -p #{CREW_DEST_PREFIX}/tmp/run"
-    system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"
+    system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
     system "install -Dm644 php.ini-development #{CREW_DEST_PREFIX}/etc/php.ini"
     system "install -Dm755 sapi/fpm/init.d.php-fpm.in #{CREW_DEST_PREFIX}/etc/init.d/php-fpm"
     system "install -Dm644 sapi/fpm/php-fpm.conf.in #{CREW_DEST_PREFIX}/etc/php-fpm.conf"
@@ -117,26 +116,27 @@ class Php73 < Package
     system "ln -s #{CREW_PREFIX}/etc/init.d/php-fpm #{CREW_DEST_PREFIX}/bin/php7-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
-    system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
-    system "mv", "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
-    system "rm", "-rf", "#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock", "#{CREW_DEST_DIR}/.registry"
+    system 'mv', "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
+    system 'mv', "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
+    system 'rm', '-rf', "#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock",
+           "#{CREW_DEST_DIR}/.registry"
   end
 
   def self.postinstall
     puts
-    puts "To start the php-fpm service, execute:".lightblue
-    puts "php7-fpm start".lightblue
+    puts 'To start the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm start'.lightblue
     puts
-    puts "To stop the php-fpm service, execute:".lightblue
-    puts "php7-fpm stop".lightblue
+    puts 'To stop the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm stop'.lightblue
     puts
-    puts "To restart the php-fpm service, execute:".lightblue
-    puts "php7-fpm restart".lightblue
+    puts 'To restart the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm restart'.lightblue
     puts
-    puts "To start php-fpm on login, execute the following:".lightblue
+    puts 'To start php-fpm on login, execute the following:'.lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/php7-fpm ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/php7-fpm start' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
   end
 end
