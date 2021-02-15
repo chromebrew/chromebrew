@@ -3,25 +3,25 @@ require 'package'
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  version '1.2.165'
+  @_ver = '1.2.169'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/KhronosGroup/Vulkan-Loader/archive/v1.2.165.tar.gz'
-  source_sha256 'cee0bca20c1665d944bdb310795e92401062228012f503e0b89d1ca5ac9a85d2'
+  source_url "https://github.com/KhronosGroup/Vulkan-Loader/archive/v#{@_ver}.tar.gz"
+  source_sha256 'e8413d6244245e5322a91fa204415115941c5396b892ef28a13152af635c5ca4'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.165-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.165-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.165-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.165-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '111892eecd85e7df76077ba8dd3856da3da6f33b733fa29fb01aa468e954d84e',
-      armv7l: '111892eecd85e7df76077ba8dd3856da3da6f33b733fa29fb01aa468e954d84e',
-        i686: 'ecdd392d03a787e2196201247cd46412accea070a13d79f2eb00ffa452d64ff1',
-      x86_64: '067011ff594dff5c3fff6b4bc32d0275656d685011fcf498c93b5b78a55b8198',
+  binary_sha256({
+    aarch64: 'b5e441f3f7c9959ae0fc2a9b00bbcc4d5861068687c4174f500b3d1769f08e19',
+     armv7l: 'b5e441f3f7c9959ae0fc2a9b00bbcc4d5861068687c4174f500b3d1769f08e19',
+       i686: '965450506c352b43d05fe88fb2e60ebd9c0080cfd321e59f392a4f32daeddaff',
+     x86_64: 'ba071a6f4a1536b5c5237270c836dd89cd0bb041567f942a71e39adaacd32d87'
   })
 
-  depends_on 'llvm' => ':build'
   depends_on 'libx11'
   depends_on 'libxrandr'
   depends_on 'vulkan_headers'
@@ -31,10 +31,11 @@ class Vulkan_icd_loader < Package
   depends_on 'vulkan_headers' => ':build'
 
   def self.build
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+        cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
         -DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
         -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
         -DCMAKE_INSTALL_DATADIR=#{CREW_PREFIX}/share \
@@ -43,15 +44,12 @@ class Vulkan_icd_loader < Package
         -DBUILD_WSI_XCB_SUPPORT=On \
         -DBUILD_WSI_XLIB_SUPPORT=On \
         -DBUILD_WSI_WAYLAND_SUPPORT=On \
-        .. && make"
+        .."
     end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make',
-        "DESTDIR=#{CREW_DEST_DIR}",
-        'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
