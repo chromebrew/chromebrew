@@ -118,8 +118,10 @@ class Php73 < Package
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
     FileUtils.mv "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
-    system 'rm', '-rf', "#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock",
-           "#{CREW_DEST_DIR}/.registry"
+    FileUtils.rm_rf "#{CREW_DEST_DIR}/.channels"
+    FileUtils.rm_rf "#{CREW_DEST_DIR}/.filemap"
+    FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
+    FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
   end
 
   def self.postinstall
