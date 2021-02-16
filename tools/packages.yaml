@@ -544,6 +544,11 @@ url: https://github.com/c-ares/c-ares/releases
 activity: medium
 ---
 kind: url
+name: ca_certificates
+url: https://salsa.debian.org/debian/ca-certificates/-/tags
+activity: medium
+---
+kind: url
 name: cabal
 url: https://www.haskell.org/cabal/release/
 activity: medium
@@ -1006,7 +1011,12 @@ activity: none
 kind: url
 name: docbook_xsl
 url: https://github.com/docbook/xslt10-stylesheets/releases/
-activity: none
+activity: low
+---
+kind: url
+name: docbook_xsl_nons
+url: https://github.com/docbook/xslt10-stylesheets/releases/
+activity: low
 ---
 kind: url
 name: docbook2x
@@ -2162,6 +2172,11 @@ kind: url
 name: gyp
 url: https://github.com/bnoordhuis/gyp/
 activity: none
+---
+kind: url
+name: gyp_next
+url: https://github.com/nodejs/gyp-next/releases
+activity: medium
 ---
 kind: url
 name: gzip
@@ -3869,6 +3884,11 @@ url: https://sourceforge.net/projects/lxde/files/LXAppearance/
 activity: none
 ---
 kind: url
+name: lxml
+url: https://lxml.de/index.html#download
+activity: low
+---
+kind: url
 name: lynis
 url: https://github.com/CISOfy/lynis/releases
 activity: high
@@ -4954,6 +4974,11 @@ url: https://sourceforge.net/projects/png-mng/files/pngcheck/
 activity: none
 ---
 kind: url
+name: polkit
+url: https://gitlab.freedesktop.org/polkit/polkit/-/tags
+activity: low
+---
+kind: url
 name: poppler
 url: https://poppler.freedesktop.org
 activity: medium
@@ -5739,6 +5764,11 @@ url: https://sourceforge.net/projects/swatch/files/swatchdog/
 activity: none
 ---
 kind: url
+name: swi_prolog
+url: https://www.swi-prolog.org/download/stable/src/
+activity: medium
+---
+kind: url
 name: swig
 url: https://sourceforge.net/projects/swig/files/swig/
 activity: none
@@ -6272,6 +6302,11 @@ kind: url
 name: wl_clipboard
 url: https://github.com/bugaevc/wl-clipboard/releases/
 activity: medium
+---
+kind: url
+name: wmctrl
+url: http://tripie.sweb.cz/utils/wmctrl/#download
+activity: none
 ---
 kind: url
 name: woff2
