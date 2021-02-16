@@ -18,7 +18,7 @@ class Flatpak < Package
   def self.build
     system "env NOCONFIGURE=1 ./autogen.sh"
     system "./configure #{CREW_OPTIONS} \
-            --with-system-install-dir=/usr/local/var/lib/flatpak \
+            --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
             --enable-sudo \
             --with-priv-mode=setuid \
             --without-systemd \
