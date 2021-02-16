@@ -19,7 +19,8 @@ class Libostree < Package
   depends_on 'libxml2' => :build
 
   def self.build
-    system "./autogen.sh #{CREW_OPTIONS} \
+    system "env NOCONFIGURE=1 ./autogen.sh"
+    system "./configure #{CREW_OPTIONS} \
             --with-curl \
             --without-libsystemd \
             --with-avahi \
