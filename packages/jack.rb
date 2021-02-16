@@ -16,8 +16,8 @@ class Jack < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jack-1.9.17-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '790e0a69c09a6e87e094f8cd8cf2bc6627f8fbb3c7b4718f35b466e04fb13d1a',
-     armv7l: '790e0a69c09a6e87e094f8cd8cf2bc6627f8fbb3c7b4718f35b466e04fb13d1a',
+    aarch64: 'd18c47ae88f28ada701a4938cf26db6659ed9425006e0a81b887be1f8868a280',
+     armv7l: 'd18c47ae88f28ada701a4938cf26db6659ed9425006e0a81b887be1f8868a280',
        i686: '0946a39b386d3f4434e1a4d735342918537f302acfba6641ed888e76c058fae0',
      x86_64: 'f8cf79f4a8402e8c4cdcfe8d31cc9357ba3404d5bfe57a8dea7fac4ec12bd091'
   })
