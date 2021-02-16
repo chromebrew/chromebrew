@@ -3,23 +3,23 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.49.0'
+  @_ver = '1.50.0'
   version @_ver
   compatibility 'all'
   source_url "https://github.com/rust-lang/rust/archive/#{@_ver}.tar.gz"
-  source_sha256 'cfa4c9bb38237ffdd90d9956c030222734f4a8cb5c82b1871131ece609be5b8f'
+  source_sha256 '112114380a4f4ec98c30313ce9047183ee0c95ef2b28beeb7b77e6cd47a9294e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.49.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.49.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.49.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.49.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.50.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.50.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.50.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.50.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5cbf198ee275ad76dfd135bf8840b5a254d14807d0dad6455e17406922f11dc1',
-     armv7l: '5cbf198ee275ad76dfd135bf8840b5a254d14807d0dad6455e17406922f11dc1',
-       i686: 'e4892bac42d8dab3e942c6e2b273dff291cf87c7afdd82cdf9461a0fdf10354e',
-     x86_64: '5e7e8489b26bae08c8f8907d816e7d1b528b5d5b55d77ffc80ad8a7ccfb05f08'
+    aarch64: 'd2418d5a95549dbff1f00c766d10ec5659c5454d3a2c9714e06da2506dbd7338',
+     armv7l: 'd2418d5a95549dbff1f00c766d10ec5659c5454d3a2c9714e06da2506dbd7338',
+       i686: 'a0edbe5d75b58110109121cc4ecc8864379486cf239f0c1871fc0fc5a89271f2',
+     x86_64: '788595312dcba26702aacaebc9978bd6de95c475b9cb01cf408ee773a41a5abe'
   })
 
   def self.install
