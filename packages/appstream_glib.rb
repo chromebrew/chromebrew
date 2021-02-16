@@ -15,10 +15,10 @@ class Appstream_glib < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'fb88bafd2af9c6ee4c41a66b9f1004e57894dfe29d26a7fa04f38618e19a10f8',
-     armv7l: 'fb88bafd2af9c6ee4c41a66b9f1004e57894dfe29d26a7fa04f38618e19a10f8',
-       i686: '060c3a65ddaecbb8db18d84f58676ec56c390ec3d30dcba1580acf94981d0f40',
-     x86_64: 'e3d8b538cd64ef79b4efd8c77142f1b6de1b861072ca5d9d5441effe66aac846',
+    aarch64: '64c32d204000c109d1b1d822bf510c9e96f0c0387c462604a2fa6f6da842180f',
+     armv7l: '64c32d204000c109d1b1d822bf510c9e96f0c0387c462604a2fa6f6da842180f',
+       i686: '8111ff1a640b4a5b9c6c0176a5b3cf4351f7d859a3953239555dcf6c1de16144',
+     x86_64: '25a3e745b200df518a0b77bc5e9f7c1133a378a060329d5766167ce5a137c5f4',
   })
 
   depends_on 'docbook' => :build
