@@ -28,6 +28,7 @@ class Flatpak < Package
   depends_on 'appstream_glib'
   depends_on 'libseccomp'
   depends_on 'pyparsing'
+  depends_on 'dconf'
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
