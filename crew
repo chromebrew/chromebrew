@@ -725,6 +725,7 @@ def expand_dependencies
         @dependencies << dep
         search dep, true
         push_dependencies
+        @dependencies = @dependencies - [dep] + [dep]
       end
     end
   end
@@ -739,26 +740,20 @@ def resolve_dependencies
 
   return if @dependencies.empty?
 
+  puts "\nThe following packages also need to be installed:\n\n"
 
-  puts 'The following packages also need to be installed: '
-
-  i = 0
-  last_deps = []
-  last_packages = ["curl", "ghc", "mandb", "gtk3", "sommelier"]
+  last_packages = ['curl', 'ghc', 'mandb', 'gtk3', 'gtk4', 'sommelier']
+  
   @dependencies.each do |dep|
-    if last_packages.include?(dep)
-      @dependencies.delete_at(i)
-      last_deps.push(dep)
+    if last_packages.include?(dep) then
+      @dependencies = (@dependencies - [dep] + [dep])
+      print dep + '* '
+    else
+      print dep + ' '
     end
-    i += 1
-  end
-  @dependencies.concat last_deps.sort
-
-  @dependencies.each do |dep|
-    print dep + ' '
   end
 
-  puts
+  puts "\n\n"
   print 'Do you agree? [Y/n] '
   response = STDIN.getc
   case response
