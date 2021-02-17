@@ -16,14 +16,15 @@ class Bubblewrap < Package
       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: 'a7a003bbb434206346b0e5cf068e0d2cf6231dcafd47c2d4774e0514b04d26d4',
-      armv7l: 'a7a003bbb434206346b0e5cf068e0d2cf6231dcafd47c2d4774e0514b04d26d4',
-        i686: '32bcaff9feccd26cf1379212ea8050d99a271a4e097923aab48638d29d0aef90',
-      x86_64: '30b1458d68567c43b23251167a3488b7b05f7542b4b8b5d0278b026646e01d24',
+     aarch64: '5bb3cca606a888b7881821eeff96aa28408cb820a6acf1ad788ede5b3ded6fce',
+      armv7l: '5bb3cca606a888b7881821eeff96aa28408cb820a6acf1ad788ede5b3ded6fce',
+        i686: '071ccd273b04892dc2a633784b6cdb04edded34f9f664bf09d3b2b8228a023d5',
+      x86_64: '1fda7e2d705a6f9ef55d2158de6c172d4d78e562566b0a8177d269b3c6df520e',
   })
 
 
   depends_on 'libcap' => :build
+  depends_on 'dconf'
 
   def self.patch
     system "sed -i '/SUDO_BIN/d' Makefile.in"
@@ -35,7 +36,7 @@ class Bubblewrap < Package
       ./configure \
       --disable-maintainer-mode \
       --disable-man \
-      --with-priv-mode=none \
+      --with-priv-mode=setuid \
       --enable-sudo"
     system 'make'
   end
@@ -45,8 +46,10 @@ class Bubblewrap < Package
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/bwrap", "#{CREW_DEST_PREFIX}/bin/bwrap.elf", mode: 0o755
     @bwrap_sh = <<~BWRAP_HEREDOC
       #!/bin/bash
-      sudo setcap cap_sys_admin+eip "#{CREW_PREFIX}/bin/bwrap.elf"
-      sudo -E  "#{CREW_PREFIX}/bin/bwrap.elf" -- "\$*"
+      sudo chown root "#{CREW_PREFIX}/bin/bwrap.elf"
+      sudo chmod +s "#{CREW_PREFIX}/bin/bwrap.elf"
+      #{CREW_PREFIX}/bin/bwrap.elf "\$@"
+      sudo chown chronos "#{CREW_PREFIX}/bin/bwrap.elf"
     BWRAP_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/bin/bwrap", @bwrap_sh, perm: 0o755)
   end
