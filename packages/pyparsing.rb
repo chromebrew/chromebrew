@@ -22,7 +22,6 @@ class Pyparsing < Package
   })
 
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I pyparsing==#{version}"
     system "pip3 install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I pyparsing==#{version}"
   end
 end
