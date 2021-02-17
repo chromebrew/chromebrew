@@ -21,6 +21,8 @@ class Bubblewrap < Package
      x86_64: '4bdc8a377adb978ddd56a3600e07eed238837e39011b3c8c72f69ef1cf9dc6a8',
   })
 
+  depends_on 'libcap' => :build
+  
   def self.build
     system "./configure #{CREW_OPTIONS} --disable-maintainer-mode --disable-man"
     system 'make'
