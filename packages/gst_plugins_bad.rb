@@ -5,6 +5,7 @@ class Gst_plugins_bad < Package
   homepage 'https://gstreamer.freedesktop.org/'
   @_ver = '1.18.3'
   version @_ver
+  compatibikity 'all'
   source_url "https://github.com/GStreamer/gst-plugins-bad/archive/#{@_ver}.tar.gz"
   source_sha256 '3e8b145850ade47e9fe09632c4b7bddfe35d2c53f5c6055183cfc62276010f46'
 
