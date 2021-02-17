@@ -22,7 +22,6 @@ class Gst_plugins_good < Package
      x86_64: '8d90148635f3be03ff8086e93dce7bcebc76c218c1fc71db9d07fed0f5c4acdf'
   })
 
-  # depends_on 'libpulse'
   depends_on 'pulseaudio'
   depends_on 'libsoup'
   depends_on 'gst_plugins_base'
@@ -30,11 +29,9 @@ class Gst_plugins_good < Package
   depends_on 'aalib'
   depends_on 'taglib'
   depends_on 'libdv'
-  # depends_on 'libshout'
   depends_on 'libvpx'
   depends_on 'jack' => ':build'
   depends_on 'gtk3' => ':build'
-  # depends_on 'qt5_{tools,declarative,x11extras,wayland}' => ':build'
   depends_on 'nasm' => ':build'
 
   def self.build
