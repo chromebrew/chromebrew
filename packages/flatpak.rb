@@ -10,12 +10,16 @@ class Flatpak < Package
   source_sha256 'c70215792b7cbece83c489dab86adc9bfaf9b140c506affe2a48c92afa3d69b7'
 
   binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-       i686: 'eafdafb2a081f6818c321b275b9e18212698baff612f2b4228a04a10f60035b7',
-     x86_64: 'a7fad9146de586006d4d5fd860d2627331fc6cb011fb819038dccd49553ce581'
+    aarch64: 'ee4cf9fe437d1aa7b6804d0b323c81c9df25cd14a6124bc5d624ad3238df6875',
+     armv7l: 'ee4cf9fe437d1aa7b6804d0b323c81c9df25cd14a6124bc5d624ad3238df6875',
+       i686: '6cfa3ece1b485369f16fb62c5b17744d56a7aa162a95aab49d3d9663026cbd60',
+     x86_64: 'ac8e6a92a18862201c12563036f206804547d2a1d350f548d130bb38b9dfea5b'
   })
 
   depends_on 'bubblewrap'
@@ -65,8 +69,8 @@ class Flatpak < Package
       if [ -L "~/.local/share/fonts" ] && [ ! -e "~/.local/share/fonts" ]; then
       rm -f ~/.local/share/fonts
       fi
-      if [ !  -e "~/.local/share/fonts" ]; then
-      ln -s #{CREW_PREFIX}/share/fonts ~/.local/share/fonts
+      if [ !  \\( -e ~/.local/share/fonts \\)  ]; then
+      ln -s #{CREW_PREFIX}/share/fonts ~/.local/share/
       fi
       unset GDK_PIXBUF_MODULE_FILE
       unset GDK_PIXBUF_MODULEDIR
