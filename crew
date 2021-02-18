@@ -753,8 +753,7 @@ def resolve_dependencies
     end
   end
 
-  puts "\n\n"
-  print 'Do you agree? [Y/n] '
+  puts "\n\nDo you agree? [Y/n] "
   response = STDIN.getc
   case response
   when 'n'
@@ -763,7 +762,7 @@ def resolve_dependencies
     puts 'Proceeding...'
     proceed = true
   else
-    puts "I don't understand `#{response}`. :(".lightred
+    puts "\nI don't understand `#{response}`. :(".lightred
     abort 'No changes made.'
   end
 
