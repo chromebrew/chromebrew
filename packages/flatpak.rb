@@ -7,7 +7,7 @@ class Flatpak < Package
   version @_ver
   compatibility 'all'
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
-  source_sha256 'c70215792b7cbece83c489dab86adc9bfaf9b140c506affe2a48c92afa3d69b7'
+  source_sha256 'c1354f42bf3b5d51aeb4028c9b62fd4ffc673ef2ff6e583c17777f5dafdbdcb7'
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
