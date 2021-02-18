@@ -3,7 +3,7 @@ require 'package'
 class Xdg_base < Package
   description 'XDG Base Directory Specification Configuration'
   homepage 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
-  version '0.7-5'
+  version '0.7-6'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -29,18 +29,19 @@ class Xdg_base < Package
   end
 
   def self.postinstall
-    puts
-    puts 'The following environment variables should be set as shown below:'.lightblue
-    puts
-    puts "echo '# XDG Base Directory Specification Environment Variables' >> ~/.bashrc".lightblue
-    puts "echo '# See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html' >> ~/.bashrc".lightblue
-    puts "echo 'export XDG_DATA_HOME=#{HOME}/.local/share' >> ~/.bashrc".lightblue
-    puts "echo 'export XDG_CONFIG_HOME=#{HOME}/.config' >> ~/.bashrc".lightblue
-    puts "echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share' >> ~/.bashrc".lightblue
-    puts "echo 'export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg' >> ~/.bashrc".lightblue
-    puts "echo 'export XDG_CACHE_HOME=#{HOME}/.cache' >> ~/.bashrc".lightblue
-    puts "echo 'export XDG_RUNTIME_DIR=/var/run/chrome' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
-    puts
-  end
+    xdgconfig_in_bashrc = `grep -c "XDG_CONFIG_HOME" ~/.bashrc || true`
+    unless xdgconfig_in_bashrc.to_i.positive?
+      puts 'Putting XDG Environment Variables in ~/.bashrc'.lightblue
+      system "echo '# XDG Base Directory Specification Environment Variables' >> ~/.bashrc"
+      system "echo '# See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html' >> ~/.bashrc"
+      system "echo 'export XDG_DATA_HOME=#{HOME}/.local/share' >> ~/.bashrc"
+      system "echo 'export XDG_CONFIG_HOME=#{HOME}/.config' >> ~/.bashrc"
+      system "echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share' >> ~/.bashrc"
+      system "echo 'export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg' >> ~/.bashrc"
+      system "echo 'export XDG_CACHE_HOME=#{HOME}/.cache' >> ~/.bashrc"
+      system "echo 'export XDG_RUNTIME_DIR=/var/run/chrome' >> ~/.bashrc"
+      puts 'To complete the installation, execute the following:'.orange
+      puts 'source ~/.bashrc'.orange
+    end
+   end
 end
