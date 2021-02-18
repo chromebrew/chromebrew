@@ -47,6 +47,7 @@ class Bubblewrap < Package
       #!/bin/bash
       sudo chown root "#{CREW_PREFIX}/bin/bwrap.elf"
       sudo chmod +s "#{CREW_PREFIX}/bin/bwrap.elf"
+      unset GDK_PIXBUF_MODULE_FILE
       #{CREW_PREFIX}/bin/bwrap.elf "\$@"
       sudo chown chronos "#{CREW_PREFIX}/bin/bwrap.elf"
     BWRAP_HEREDOC
