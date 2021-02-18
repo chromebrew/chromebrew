@@ -16,10 +16,10 @@ class Flatpak < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '4347861920c16c6ae610d08574a7000a57310bb70a60dd15840accc636a96167',
-     armv7l: '4347861920c16c6ae610d08574a7000a57310bb70a60dd15840accc636a96167',
-       i686: 'ba6a92d2607c511c6c78f006c77216e820c2c776017a849991a539d199c95bf7',
-     x86_64: 'e115b1d3b779a67402e9ff00b8c92b9acd885ef39fcc710f8e0bd02b40b21925'
+    aarch64: '5d9e7a7ff6194304d517fd1d445abdda57da46cfd2ceaba04537f5e8f1a0ef1c',
+     armv7l: '5d9e7a7ff6194304d517fd1d445abdda57da46cfd2ceaba04537f5e8f1a0ef1c',
+       i686: 'c6414b513c46a59f84010e006f803030db57c557ed463c7b241d440db2a94fb1',
+     x86_64: '8050ea3f1ad7b39c7c3e25854431ee939c9ba9386b3181e244e57824183919d3'
   })
 
   depends_on 'bubblewrap'
@@ -36,8 +36,8 @@ class Flatpak < Package
     system "env BWRAP=#{CREW_PREFIX}/bin/bwrap CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
       ./configure #{CREW_OPTIONS} \
       --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
-      --enable-sudo \
-      --with-priv-mode=setuid \
+      --enable-sandboxed-triggers \
+      --with-priv-mode=none \
       --enable-san \
       --without-systemd \
       --with-system-fonts-dir=#{CREW_PREFIX}/share/fonts:/usr/share/fonts \
