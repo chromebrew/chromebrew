@@ -10,16 +10,12 @@ class Flatpak < Package
   source_sha256 'c70215792b7cbece83c489dab86adc9bfaf9b140c506affe2a48c92afa3d69b7'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
        i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5d9e7a7ff6194304d517fd1d445abdda57da46cfd2ceaba04537f5e8f1a0ef1c',
-     armv7l: '5d9e7a7ff6194304d517fd1d445abdda57da46cfd2ceaba04537f5e8f1a0ef1c',
-       i686: 'c6414b513c46a59f84010e006f803030db57c557ed463c7b241d440db2a94fb1',
-     x86_64: '8050ea3f1ad7b39c7c3e25854431ee939c9ba9386b3181e244e57824183919d3'
+       i686: 'eafdafb2a081f6818c321b275b9e18212698baff612f2b4228a04a10f60035b7',
+     x86_64: 'a7fad9146de586006d4d5fd860d2627331fc6cb011fb819038dccd49553ce581'
   })
 
   depends_on 'bubblewrap'
@@ -29,6 +25,18 @@ class Flatpak < Package
   depends_on 'libseccomp'
   depends_on 'pyparsing'
   depends_on 'dconf'
+
+  def self.patch
+    patch_description = 'backported fixes'
+    patch_url = 'https://patch-diff.githubusercontent.com/raw/flatpak/flatpak/pull/4132.patch'
+    patch_sha256 = '8230491be909a027fdb5a03ff0fa638331c940289fa6d68a21489d78c6f7f6b0'
+    patch_filename = 'patch'
+    puts "Downloading patch: #{patch_description}".yellow
+    system('curl', '-s', '--insecure', '-L', '-#', patch_url, '-o', patch_filename)
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless
+    Digest::SHA256.hexdigest(File.read(patch_filename)) == patch_sha256
+    puts 'patch downloaded'.lightgreen
+  end
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
@@ -50,6 +58,23 @@ class Flatpak < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.install "#{CREW_DEST_PREFIX}/bin/flatpak", "#{CREW_DEST_PREFIX}/bin/flatpak.elf", mode: 0o755
+    @flatpak_sh = <<~FLATPAK_HEREDOC
+      #!/bin/bash
+      # Flatpak needs to be able to see fonts in #{CREW_PREFIX}/share/fonts
+      if [ -L "~/.local/share/fonts" ] && [ ! -e "~/.local/share/fonts" ]; then
+      rm -f ~/.local/share/fonts
+      fi
+      if [ !  -e "~/.local/share/fonts" ]; then
+      ln -s #{CREW_PREFIX}/share/fonts ~/.local/share/fonts
+      fi
+      unset GDK_PIXBUF_MODULE_FILE
+      unset GDK_PIXBUF_MODULEDIR
+      unset GDK_BACKEND
+      unset FONTCONFIG_PATH
+      #{CREW_PREFIX}/bin/flatpak.elf "\$@"
+    FLATPAK_HEREDOC
+    IO.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
   end
 
   def self.postinstall
