@@ -4,10 +4,23 @@ class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
   @_ver = '2.13.93'
-  version "#{@_ver}-2"
+  version "#{@_ver}-1"
   compatibility 'all'
   source_url "https://github.com/freedesktop/fontconfig/archive/#{@_ver}.tar.gz"
   source_sha256 'f8452c78d1a12f6966455b0d584f89553b13e970b40644c3650f690ec0b3b4fe'
+
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'fac3629221d8a54bba8a1a8e1fc151706a434320c2a92726508234c799cecade',
+     armv7l: 'fac3629221d8a54bba8a1a8e1fc151706a434320c2a92726508234c799cecade',
+       i686: '668b4e389a105b91ed6b75416cea01e84856eaa8d7902448c9907670e1acf13b',
+     x86_64: 'd38e7415b0dad534c2bdfc66a8460c6a5ba00153dade7033e757ffd8be8ea30a'
+  })
 
   depends_on 'gperf'
   depends_on 'freetype_sub'
