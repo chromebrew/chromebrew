@@ -26,7 +26,7 @@ class Fontconfig < Package
   depends_on 'freetype_sub'
   depends_on 'jsonc'
   depends_on 'util_linux'
-  depends_on 'graphite' => :build
+  depends_on 'graphite'
 
   # Remove freetype and fontconfig before rebuilding this package.
 
