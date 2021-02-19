@@ -9,11 +9,24 @@ class Libfmt < Package
   source_sha256 '5d98c504d0205f912e22449ecdea776b78ce0bb096927334f80781e720084c9f'
 
   def self.build
-    system "cmake #{CREW_CMAKE_OPTIONS} ."
-    system "make"
+    Dir.mkdir "builddir"
+    Dir.chdir "builddir" do
+      system "cmake #{CREW_CMAKE_OPTIONS} \
+              -DBUILD_SHARED_LIBS=TRUE \
+              .."
+      system "make"
+    end
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    Dir.chdir "builddir" do
+      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    end
+  end
+
+  def self.check
+    Dir.chdir "builddir" do
+      system "make", "test"
+    end
   end
 end
