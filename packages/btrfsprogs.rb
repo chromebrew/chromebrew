@@ -2,7 +2,7 @@ require 'package'
 
 class Btrfsprogs < Package
   description 'BTRFS is a modern copy on write filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.'
-  homepage 'https://github.com/kdave/btrfs-progs'
+  homepage 'https://btrfs.wiki.kernel.org/index.php/Main_Page'
   version '5.10.1'
   compatibility 'all'
   source_url 'https://github.com/kdave/btrfs-progs/archive/v5.10.1.tar.gz'
