@@ -2,10 +2,10 @@ require 'package'
 
 class Findutils < Package
   description 'the basic directory searching utilities of the GNU operating system'
-  homepage 'https://gnu.org/software/findutils'
+  homepage 'https://www.gnu.org/software/findutils/'
   version '4.8.0'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/findutils/findutils-4.8.0.tar.xz'
+  source_url 'https://ftpmirror.gnu.org/findutils/findutils-4.8.0.tar.xz'
   source_sha256 '57127b7e97d91282c6ace556378d5455a9509898297e46e10443016ea1387164'
 
   depends_on 'python3'
