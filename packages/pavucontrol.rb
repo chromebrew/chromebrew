@@ -3,37 +3,43 @@ require 'package'
 class Pavucontrol < Package
   description 'PulseAudio Volume Control'
   homepage 'https://freedesktop.org/software/pulseaudio/pavucontrol/'
-  version '4.0'
+  version "4.0-381b"
   compatibility 'all'
-  source_url 'https://freedesktop.org/software/pulseaudio/pavucontrol//pavucontrol-4.0.tar.xz'
-  source_sha256 '8fc45bac9722aefa6f022999cbb76242d143c31b314e2dbb38f034f4069d14e2'
+  source_url 'https://github.com/pulseaudio/pavucontrol/archive/381b708202e87e40347a57f8a627014199cde266.zip'
+  source_sha256 'aa6c5814e77a8f36d8ed50b70381fbfbab2ebbf0fb62548ec8b8b935527d527e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '97f4ff801cdca8a12c665e5d1467e1749f06803fb7f2ac4423be95c057fc8e13',
-     armv7l: '97f4ff801cdca8a12c665e5d1467e1749f06803fb7f2ac4423be95c057fc8e13',
-       i686: '1b536d2c99e5466a4939b82b25cd94f105ce2ca24cece37f868df3bc30078496',
-     x86_64: '91919320ed61fdc26730f8a7d1d19dbc712b158b16ddd2de4d77ad029b461b52',
+     aarch64: '55d3cc7504a483f9af794daccea92fcd261cbc8f1a4d4332f99c8a28226ea63d',
+      armv7l: '55d3cc7504a483f9af794daccea92fcd261cbc8f1a4d4332f99c8a28226ea63d',
+        i686: '2cd937784abe38291a6c0fbc7bd4a6e18626909390b4b1d0f460274dc0fce26d',
+      x86_64: 'b9ca4e77191fc33eda5a2dc15e9329862c33af5b096bd5c8dc9ebc7778da69ad',
   })
 
-  depends_on 'gtkmm2'
-  depends_on 'gtkmm3'
+
   depends_on 'libcanberra'
+  depends_on 'gtkmm3'
+  depends_on 'libsigcplusplus'
+  depends_on 'pulseaudio'
   depends_on 'pygtk'
   depends_on 'pulseaudio'
   depends_on 'glibmm'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system "make -j#{CREW_NPROC} -lgtkmm-3.24" # Issue with gtkmm - gtk::builder
+    system 'NOCONFIGURE=1 ./bootstrap.sh'
+    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+    ./configure \
+    #{CREW_OPTIONS} \
+    --disable-lynx"
+    system 'make'
   end
 
   def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
