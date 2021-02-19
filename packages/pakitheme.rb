@@ -7,11 +7,10 @@ class Pakitheme < Package
   compatibility 'all'
   source_url 'https://github.com/saltedcoffii/pakitheme/archive/1.0.tar.gz'
   source_sha256 '32446ecc73ae95d699d6e14e5fa3dc3a8b3a9cfae02457b2b7f38fdd7d7524f3'
-
+  
   depends_on 'flatpak'
 
   def self.install
-    system "mkdir #{CREW_DEST_PREFIX}/bin -pv"
-    system "install -v ./pakitheme #{CREW_DEST_PREFIX}/bin/pakitheme"
+    system "install -Dm755 ./pakitheme #{CREW_DEST_PREFIX}/bin/pakitheme"
   end
 end
