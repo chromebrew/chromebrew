@@ -519,6 +519,11 @@ url: https://github.com/google/brotli/releases
 activity: medium
 ---
 kind: url
+name: btrfsprogs
+url: https://github.com/kdave/btrfs-progs/releases
+activity: medium
+---
+kind: url
 name: bubblewrap
 url: https://github.com/containers/bubblewrap/releases/
 activity: low
@@ -999,11 +1004,6 @@ url: http://thekelleys.org.uk/dnsmasq/
 activity: none
 ---
 kind: url
-name: docbook
-url: https://sourceforge.net/projects/docbook/files/docbook-xsl/
-activity: none
----
-kind: url
 name: docbook_xml
 url: http://www.docbook.org/xml
 activity: none
@@ -1227,6 +1227,11 @@ kind: url
 name: f3
 url: https://github.com/AltraMayor/f3/releases
 activity: medium
+---
+kind: url
+name: faad2
+url: https://github.com/knik0/faad2/releases
+activity: low
 ---
 kind: url
 name: fakeroot
@@ -2064,8 +2069,23 @@ url: https://download.gnome.org/sources/gspell/
 activity: medium
 ---
 kind: url
+name: gst_editing_services
+url: https://gstreamer.freedesktop.org/src/gst-editing-services/
+activity: medium
+---
+kind: url
+name: gst_plugins_bad
+url: https://github.com/GStreamer/gst-plugins-bad/releases/
+activity: medium
+---
+kind: url
 name: gst_plugins_base
 url: https://gstreamer.freedesktop.org/src/gst-plugins-base/
+activity: medium
+---
+kind: url
+name: gst_plugins_good
+url: https://github.com/GStreamer/gst-plugins-good/releases/
 activity: medium
 ---
 kind: url
@@ -2849,6 +2869,11 @@ url: https://github.com/videolabs/libdsm/releases/
 activity: none
 ---
 kind: url
+name: libdv
+url: https://sourceforge.net/projects/libdv/files/libdv/
+activity: none
+---
+kind: url
 name: libdvdnav
 url: http://get.videolan.org/libdvdnav/
 activity: medium
@@ -3117,6 +3142,11 @@ kind: url
 name: libmicrohttpd
 url: https://ftpmirror.gnu.org/libmicrohttpd/
 activity: low
+---
+kind: url
+name: libmms
+url: https://sourceforge.net/projects/libmms/files/libmms/
+activity: none
 ---
 kind: url
 name: libmng
@@ -3502,6 +3532,11 @@ kind: url
 name: libunwind
 url: http://download.savannah.gnu.org/releases/libunwind
 activity: none
+---
+kind: url
+name: liburing
+url: https://github.com/axboe/liburing/releases
+activity: low
 ---
 kind: url
 name: libusb
@@ -4074,6 +4109,11 @@ url: http://www.hyperrealm.com/packages/
 activity: none
 ---
 kind: url
+name: mjpegtools
+url: https://sourceforge.net/projects/mjpeg/files/mjpegtools/
+activity: medium
+---
+kind: url
 name: mkfontscale
 url: https://www.x.org/releases/individual/app/
 activity: none
@@ -4586,6 +4626,11 @@ activity: medium
 kind: url
 name: optipng
 url: https://sourceforge.net/projects/optipng/files/OptiPNG/
+activity: low
+---
+kind: url
+name: orc
+url: https://github.com/GStreamer/orc/releases/
 activity: low
 ---
 kind: url
@@ -6677,6 +6722,11 @@ kind: url
 name: zlibpkg
 url: http://www.zlib.net
 activity: none
+---
+kind: url
+name: zoneinfo
+url: https://data.iana.org/time-zones/releases/
+activity: high
 ---
 kind: url
 name: zsh
