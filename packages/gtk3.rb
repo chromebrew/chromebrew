@@ -54,13 +54,13 @@ class Gtk3 < Package
     puts 'Performing configuration...'
     FileUtils.mkdir_p("#{HOME}/.config/gtk-3.0")
     @ini = "#{HOME}/.config/gtk-3.0/settings.ini"
-    @file = <<EOF
-[Settings]
-gtk-application-prefer-dark-theme = false
-gtk-icon-theme-name = hicolor
-gtk-fallback-icon-theme = gnome
-gtk-font-name = Arial 10
-EOF 
+    @file = <<~EOF
+      [Settings]
+      gtk-application-prefer-dark-theme = false
+      gtk-icon-theme-name = hicolor
+      gtk-fallback-icon-theme = gnome
+      gtk-font-name = Arial 10
+    EOF
     File.write(@ini, @file) unless File.exist?(@ini)
   end
 end
