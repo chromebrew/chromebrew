@@ -742,7 +742,7 @@ def resolve_dependencies
 
   puts "\nThe following packages also need to be installed:\n\n"
 
-  last_packages = ['curl', 'ghc', 'mandb', 'gtk3', 'gtk4', 'sommelier']
+  last_packages = ['curl', 'ghc', 'mandb', 'gtk3', 'sommelier']
   
   @dependencies.each do |dep|
     if last_packages.include?(dep) then
