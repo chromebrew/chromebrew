@@ -20,7 +20,7 @@ Supported Systems
 | armv7l | Yes |
 | aarch64 | Yes |
 
-<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support gui apps, we will try and continue to support cli programs.</em>
+<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support gui apps, we will try to continue to support cli programs.</em>
 
 Overview
 --------
