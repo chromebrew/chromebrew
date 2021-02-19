@@ -7,7 +7,7 @@ class Gtk3 < Package
   version @_ver
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gtk+/3.24/gtk+-#{@_ver}.tar.xz"
-  source_sha256 `curl -Ls https://download.gnome.org/sources/gtk+/3.24/gtk%2B-3.24.25.sha256sum | tail -n1 | cut -d ' ' -f1`
+  source_sha256 `curl -Ls https://download.gnome.org/sources/gtk+/3.24/gtk+-#{@_ver}.sha256sum | tail -n1 | cut -d ' ' -f1`
 
   depends_on 'cups'
   depends_on 'at_spi2_atk'
