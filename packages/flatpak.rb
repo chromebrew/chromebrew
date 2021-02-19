@@ -22,6 +22,7 @@ class Flatpak < Package
      x86_64: 'ac8e6a92a18862201c12563036f206804547d2a1d350f548d130bb38b9dfea5b'
   })
 
+  depends_on 'xdg_base'
   depends_on 'bubblewrap'
   depends_on 'libostree'
   depends_on 'polkit'
