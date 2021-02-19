@@ -8,6 +8,8 @@ class Meson < Package
   compatibility 'all'
   source_url "https://github.com/mesonbuild/meson/archive/#{@_ver}.tar.gz"
   source_sha256 'fd26a27c1a509240c668ebd29d280649d9239cf8684ead51d5cb499d1e1188bd'
+  
+  depends_on 'ninja'
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.57.0-chromeos-armv7l.tar.xz',
