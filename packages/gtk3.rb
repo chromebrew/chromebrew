@@ -41,7 +41,7 @@ class Gtk3 < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
   end
 
