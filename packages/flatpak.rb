@@ -16,10 +16,10 @@ class Flatpak < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '7f5e0963404adecb152f78d1cfe927ddafd51922457c915aba085273b018bf5a',
-     armv7l: '7f5e0963404adecb152f78d1cfe927ddafd51922457c915aba085273b018bf5a',
-       i686: '8f6f7db757c93f62b52effdc7e2460d19a59737714465fe66f60d8510a22ec5e',
-     x86_64: '49db0379a744d5e8dca87f480a2c4754bda7890629a4a5da7d6e8cccd8c88660'
+    aarch64: 'a73486a7abe624e3bfe0624d86be6db16a6249040024f4c80c671a0249926b22',
+     armv7l: 'a73486a7abe624e3bfe0624d86be6db16a6249040024f4c80c671a0249926b22',
+       i686: '583b80fc54b800052d4a6ab25c1ad0e35df72d7bdf585d116ac4a4a4930f8751',
+     x86_64: '2084acc05a5f9897f3f4539b942c13dd0f8106dc9211fdf50cc5c1b2d999183a'
   })
 
   depends_on 'xdg_base'
@@ -77,7 +77,7 @@ class Flatpak < Package
       then
           FLATPAK_FLAGS='--socket=wayland'
       else
-          FLATPAK_FLAGS=''
+          FLATPAK_FLAGS='--user'
       fi
       unset GDK_PIXBUF_MODULE_FILE
       unset GDK_PIXBUF_MODULEDIR
