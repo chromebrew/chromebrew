@@ -12,12 +12,12 @@ class Webrtc_audio_processing < Package
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/webrtc_audio_processing-1.0-8ac0-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/webrtc_audio_processing-1.0-8ac0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/webrtc_audio_processing-1.0-8ac0-chromeos-x86_64.tar.xz'
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew//webrtc_audio_processing-1.0-8ac0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e912396b63680e7a7fc0608310e420d6968a8cd0405e1bfea3111afd40d6786c',
      armv7l: 'e912396b63680e7a7fc0608310e420d6968a8cd0405e1bfea3111afd40d6786c',
-     x86_64: '800d2d86e111b34191d0c29ebb33a6e0d9b09e3334363c7a7bb926fe4734c308'
+     x86_64: '8570e9f6c376a0dd0b477ab87d80f65ebc3f5ab0414af499aeb82a4467876a1c'
   })
 
   depends_on 'abseil_cpp'
