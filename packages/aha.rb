@@ -10,6 +10,7 @@ class Aha < Package
 
   def self.patch
     system "sed -i 's:-Wextra:-Wextra -pipe -flto -O2:g' Makefile"
+    system "sed -i 's:PREFIX?=/usr/local:PREFIX?=#{CREW_PREFIX}:g' Makefile"
   end
 
   def self.build
