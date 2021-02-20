@@ -91,7 +91,7 @@ class Flatpak < Package
   def self.postinstall
     puts
     puts 'Configuring flathub'.lightblue
-    system 'flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
+    system 'flatpak.elf remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
     puts
   end
 end
