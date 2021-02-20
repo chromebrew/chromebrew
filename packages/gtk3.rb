@@ -8,7 +8,7 @@ class Gtk3 < Package
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gtk+/3.24/gtk+-#{@_ver}.tar.xz"
   source_sha256 `curl -Ls https://download.gnome.org/sources/gtk+/3.24/gtk+-#{@_ver}.sha256sum |\
-                 tail -n1 | cut -d ' ' -f1`.tr("\n", '') if (ARGV[0] == 'install' or ARGV[0] == 'reinstall')
+                 tail -n1 | cut -d ' ' -f1`.chomp
   
   depends_on 'cups'
   depends_on 'at_spi2_atk'
@@ -44,17 +44,7 @@ class Gtk3 < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
-  end
-
-  def self.postinstall
-    # generate schemas
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    # update mime database
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
-    
-    puts 'Performing configuration...'
-    FileUtils.mkdir_p("#{HOME}/.config/gtk-3.0")
-    @ini = "#{HOME}/.config/gtk-3.0/settings.ini"
+    FileUtils.mkdir_p("#{CREW_DEST_HOME}/.config/gtk-3.0")
     @file = <<~EOF
       [Settings]
       gtk-application-prefer-dark-theme = false
@@ -62,6 +52,13 @@ class Gtk3 < Package
       gtk-fallback-icon-theme = gnome
       gtk-font-name = Arial 10
     EOF
-    File.write(@ini, @file) unless File.exist?(@ini)
+    File.write("#{CREW_DEST_HOME}/.config/gtk-3.0/settings.ini", @file)
+  end
+
+  def self.postinstall
+    # generate schemas
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+    # update mime database
+    system "update-mime-database #{CREW_PREFIX}/share/mime"
   end
 end
