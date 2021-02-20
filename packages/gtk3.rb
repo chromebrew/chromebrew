@@ -39,12 +39,6 @@ class Gtk3 < Package
             builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
-    FileUtils.mkdir_p("#{CREW_DEST_HOME}/.config/gtk-3.0")
     @file = <<~EOF
       [Settings]
       gtk-application-prefer-dark-theme = false
@@ -52,6 +46,12 @@ class Gtk3 < Package
       gtk-fallback-icon-theme = gnome
       gtk-font-name = Arial 10
     EOF
+  end
+
+  def self.install
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
+    FileUtils.mkdir_p("#{CREW_DEST_HOME}/.config/gtk-3.0")
     File.write("#{CREW_DEST_HOME}/.config/gtk-3.0/settings.ini", @file)
   end
 
