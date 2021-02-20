@@ -9,12 +9,12 @@ class Gnome_terminal < Package
   source_sha256 '68bbd2b20c533f1648d4ba5625dbcb35270e5c958713faaad30ea0167c3d8199'
 
   depends_on 'gtk3'
-  depends_on 'sommelier'
   depends_on 'vte'
   depends_on 'dconf'
   depends_on 'desktop_file_utilities'
   depends_on 'gsettings_desktop_schemas'
   depends_on 'yelp_tools'
+  depends_on 'sommelier'
   
   def self.build
     ENV['CFLAGS'] = '-pipe -flto'
