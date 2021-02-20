@@ -29,7 +29,7 @@ class Opera < Package
     Dir.chdir('../') do
       FileUtils.mkdir_p CREW_DEST_PREFIX
       FileUtils.mv Dir.glob('usr/*'), CREW_DEST_PREFIX
-      FileUtils.ln_s "#{CREW_PREFIX}/bin/opera", "#{CREW_DEST_PREFIX}/bin/x-www-browser" unless File.symlink?("#{CREW_PREFIX}/bin/x-www-browser")
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/opera", "#{CREW_DEST_PREFIX}/bin/x-www-browser" unless File.exist?("#{CREW_PREFIX}/bin/x-www-browser")
     end
   end
 end
