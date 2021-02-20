@@ -12,7 +12,6 @@ class Gtk3 < Package
   
   depends_on 'cups'
   depends_on 'at_spi2_atk'
-  depends_on 'gcc10' => :build
   depends_on 'gnome_icon_theme'
   depends_on 'gobject_introspection'
   depends_on 'gdk_pixbuf'
@@ -22,7 +21,6 @@ class Gtk3 < Package
   depends_on 'json_glib'
   depends_on 'libepoxy'
   depends_on 'libxkbcommon'
-  depends_on 'llvm' => :build
   depends_on 'shared_mime_info'
   depends_on 'six' => :build
   depends_on 'xdg_base'
