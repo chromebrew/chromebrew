@@ -51,7 +51,6 @@ class Pulseaudio < Package
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
     --default-library=both \
-    -Dcpp_args='-I#{CREW_PREFIX}/include' \
     -Dsystem_user=chronos \
     -Dsystem_group=cras \
     -Daccess_group=cras \
