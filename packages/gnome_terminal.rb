@@ -19,7 +19,9 @@ class Gnome_terminal < Package
   def self.build
     ENV['CFLAGS'] = '-pipe -flto'
     ENV['CXXFLAGS'] ='-pipe -flto'
-    system "./configure #{CREW_OPTIONS} \
+    system "env CFLAGS = '-pipe -flto' \
+                CXXFLAGS = '-pipe -flto' \
+            ./configure #{CREW_OPTIONS} \
               --disable-search-provider \
               --without-nautilus-extension \
               --with-gtk=3.0"
