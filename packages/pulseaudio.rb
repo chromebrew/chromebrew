@@ -44,7 +44,6 @@ class Pulseaudio < Package
   depends_on 'gst_plugins_base'
   depends_on 'gst_plugins_good'
   depends_on 'gst_plugins_bad'
-  depends_on 'gst_plugins_bad'
   depends_on 'check' => :build
   depends_on 'webrtc_audio_processing'
 
