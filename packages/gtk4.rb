@@ -3,22 +3,22 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.0.2'
+  version '4.1.0'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gtk/4.0/gtk-4.0.2.tar.xz'
-  source_sha256 '626707ac6751426ed76fed49c5b2d052dfee45757ce3827088ba87ca7f1dbc84'
+  source_url 'https://download.gnome.org/sources/gtk/4.1/gtk-4.1.0.tar.xz'
+  source_sha256 '973f651722a847e91e12be0a1c1c610aae0961f2f8d55c5d1fa39e17267d7ada'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.0.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '80abb64172b377862591c608196ac945bd1f9ba81e2304d180d4f1129cb310f7',
-      armv7l: '80abb64172b377862591c608196ac945bd1f9ba81e2304d180d4f1129cb310f7',
-        i686: 'cdbb821b6bf8d6965022b0f8e8b52c750db13c40134a1704cf27bfcd753087cb',
-      x86_64: '496f28133a2541843b4cdd08db8a941c7513a19ba9621212e635bf3ec6bc0284',
+  binary_sha256({
+    aarch64: '660d77d46cd96bc0a9c444d0731e84c6a0e9d36b5df9b27f0214891f5e2c99ca',
+     armv7l: '660d77d46cd96bc0a9c444d0731e84c6a0e9d36b5df9b27f0214891f5e2c99ca',
+       i686: 'e800d434423310eee5e81f1973ec51be376a4e3b0cac040da68da4c5e53919ea',
+     x86_64: '873b3c26ecaf958476f782ae62c10291649f41e1d533aa6381340617beb5aae3'
   })
 
   depends_on 'cups'
@@ -32,17 +32,16 @@ class Gtk4 < Package
   depends_on 'json_glib'
   depends_on 'libepoxy'
   depends_on 'libxkbcommon'
-  depends_on 'llvm' => :build
   depends_on 'shared_mime_info'
   depends_on 'six' => :build
   depends_on 'xdg_base'
   depends_on 'pygments' => :build
-  
+
   def self.patch
-  case ARCH
+    case ARCH
     when 'i686'
-    system "sed -i 's,#include <fcntl.h>,#include <linux/fcntl.h>,' gdk/wayland/cursor/os-compatibility.c"
-    system "sed -i 's/#define HAVE_MEMFD_CREATE/#define HAVE_MEMFD_CREATE_NO/' gdk/wayland/cursor/os-compatibility.c"
+      system "sed -i 's,#include <fcntl.h>,#include <linux/fcntl.h>,' gdk/wayland/cursor/os-compatibility.c"
+      system "sed -i 's/#define HAVE_MEMFD_CREATE/#define HAVE_MEMFD_CREATE_NO/' gdk/wayland/cursor/os-compatibility.c"
     end
   end
 
@@ -70,9 +69,9 @@ class Gtk4 < Package
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
     system "update-mime-database #{CREW_PREFIX}/share/mime"
-    if !File.exists?("#{HOME}/.config/gtk-4.0/settings.ini")
+    unless File.exist?("#{HOME}/.config/gtk-4.0/settings.ini")
       puts
-      puts "Adding basic gtk4 settings to ~/.config/gtk-4.0/settings.ini".lightblue
+      puts 'Adding basic gtk4 settings to ~/.config/gtk-4.0/settings.ini'.lightblue
       FileUtils.mkdir_p "#{HOME}/.config/gtk-4.0"
       system "cat << 'EOF' > #{HOME}/.config/gtk-4.0/settings.ini
 [Settings]
