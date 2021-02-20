@@ -16,10 +16,10 @@ class Flatpak < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '655168a4864ef41e48fbfa8f80a41cefd88f3f990679b58492f4acf713c5ba20',
-     armv7l: '655168a4864ef41e48fbfa8f80a41cefd88f3f990679b58492f4acf713c5ba20',
-       i686: '848b942a478e371df6303160e309b3c95914253bf4bfd2650889897991871b27',
-     x86_64: '26252dcee455001824b4af0d448d8962e9786f52f17bd7a5bf1afee5f2cd7f44'
+    aarch64: '7f5e0963404adecb152f78d1cfe927ddafd51922457c915aba085273b018bf5a',
+     armv7l: '7f5e0963404adecb152f78d1cfe927ddafd51922457c915aba085273b018bf5a',
+       i686: '8f6f7db757c93f62b52effdc7e2460d19a59737714465fe66f60d8510a22ec5e',
+     x86_64: '49db0379a744d5e8dca87f480a2c4754bda7890629a4a5da7d6e8cccd8c88660'
   })
 
   depends_on 'xdg_base'
@@ -52,7 +52,6 @@ class Flatpak < Package
       --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
       --enable-sandboxed-triggers \
       --with-priv-mode=none \
-      --enable-san \
       --without-systemd \
       --with-system-fonts-dir=#{CREW_PREFIX}/share/fonts:/usr/share/fonts \
       --with-system-font-cache-dirs=/usr/share/cache/fontconfig:#{CREW_PREFIX}/cache/fontconfig \
@@ -74,11 +73,17 @@ class Flatpak < Package
       if [ !  \\( -e ~/.local/share/fonts \\)  ]; then
       ln -s #{CREW_PREFIX}/share/fonts ~/.local/share/
       fi
+      if [[ "\$*" == *run* ]]
+      then
+          FLATPAK_FLAGS='--socket=wayland'
+      else
+          FLATPAK_FLAGS=''
+      fi
       unset GDK_PIXBUF_MODULE_FILE
       unset GDK_PIXBUF_MODULEDIR
       unset GDK_BACKEND
       unset FONTCONFIG_PATH
-      #{CREW_PREFIX}/bin/flatpak.elf "\$@"
+      #{CREW_PREFIX}/bin/flatpak.elf \$FLATPAK_FLAGS  "\$@"
     FLATPAK_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
   end
