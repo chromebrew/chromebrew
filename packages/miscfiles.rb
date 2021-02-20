@@ -1,7 +1,7 @@
 require 'package'
 
 class Miscfiles < Package
-  description 'A collection of files not of crucial importance for system administration or operation, but which have come to be common on various systems over the years..'
+  description 'A collection of files not of crucial importance for system administration or operation, but which have come to be common on various systems over the years.'
   homepage 'https://www.gnu.org/software/miscfiles/'
   version '1.5'
   compatibility 'all'
