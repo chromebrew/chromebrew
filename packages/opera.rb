@@ -20,7 +20,7 @@ class Opera < Package
 
   def self.build
     Dir.chdir('../') do
-      system "alien -tc opera.deb"
+      system "alien -tc opera-stable_#{version}_amd64.deb"
       system "tar xf opera-stable-#{version}.tgz"
     end
   end
