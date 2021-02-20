@@ -7,7 +7,7 @@ class Flatpak < Package
   version @_ver
   compatibility 'all'
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
-  source_sha256 'c1354f42bf3b5d51aeb4028c9b62fd4ffc673ef2ff6e583c17777f5dafdbdcb7'
+  source_sha256 'c70215792b7cbece83c489dab86adc9bfaf9b140c506affe2a48c92afa3d69b7'
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
@@ -16,10 +16,10 @@ class Flatpak < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'ee4cf9fe437d1aa7b6804d0b323c81c9df25cd14a6124bc5d624ad3238df6875',
-     armv7l: 'ee4cf9fe437d1aa7b6804d0b323c81c9df25cd14a6124bc5d624ad3238df6875',
-       i686: '6cfa3ece1b485369f16fb62c5b17744d56a7aa162a95aab49d3d9663026cbd60',
-     x86_64: 'ac8e6a92a18862201c12563036f206804547d2a1d350f548d130bb38b9dfea5b'
+    aarch64: '655168a4864ef41e48fbfa8f80a41cefd88f3f990679b58492f4acf713c5ba20',
+     armv7l: '655168a4864ef41e48fbfa8f80a41cefd88f3f990679b58492f4acf713c5ba20',
+       i686: '848b942a478e371df6303160e309b3c95914253bf4bfd2650889897991871b27',
+     x86_64: '26252dcee455001824b4af0d448d8962e9786f52f17bd7a5bf1afee5f2cd7f44'
   })
 
   depends_on 'xdg_base'
@@ -41,6 +41,7 @@ class Flatpak < Package
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
     Digest::SHA256.hexdigest(File.read(patch_filename)) == patch_sha256
     puts 'patch downloaded'.lightgreen
+    system 'patch  -p 1 --forward < patch || true'
   end
 
   def self.build
