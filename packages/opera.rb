@@ -14,6 +14,7 @@ class Opera < Package
     depends_on 'gsettings_desktop_schemas'
     depends_on 'harfbuzz'
     depends_on 'graphite'
+    depends_on 'cras'
     depends_on 'sommelier'
   end
 
