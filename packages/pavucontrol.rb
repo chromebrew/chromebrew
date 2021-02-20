@@ -3,36 +3,35 @@ require 'package'
 class Pavucontrol < Package
   description 'PulseAudio Volume Control'
   homepage 'https://freedesktop.org/software/pulseaudio/pavucontrol/'
-  version "4.0-381b"
+  @_ver = '4.0'
+  version "#{@_ver}-381b-1"
   compatibility 'all'
   source_url 'https://github.com/pulseaudio/pavucontrol/archive/381b708202e87e40347a57f8a627014199cde266.zip'
   source_sha256 'aa6c5814e77a8f36d8ed50b70381fbfbab2ebbf0fb62548ec8b8b935527d527e'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pavucontrol-4.0-381b-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '55d3cc7504a483f9af794daccea92fcd261cbc8f1a4d4332f99c8a28226ea63d',
-      armv7l: '55d3cc7504a483f9af794daccea92fcd261cbc8f1a4d4332f99c8a28226ea63d',
-        i686: '2cd937784abe38291a6c0fbc7bd4a6e18626909390b4b1d0f460274dc0fce26d',
-      x86_64: 'b9ca4e77191fc33eda5a2dc15e9329862c33af5b096bd5c8dc9ebc7778da69ad',
+  binary_sha256({
+    aarch64: '2773e569e8fef5cbc3d2adadf9d94abdbb7122393baff840e6f743ebe669f1b9',
+     armv7l: '2773e569e8fef5cbc3d2adadf9d94abdbb7122393baff840e6f743ebe669f1b9',
+       i686: '7854e1bc1d712dff60a60e91fdaeaf29ddc11cb558245e91aaebdb10cf9893bc',
+     x86_64: '01f0d27fac88490d8d4b149a3396e8e0fd85e2c5763a08f4367245e10b6ea303'
   })
-
 
   depends_on 'libcanberra'
   depends_on 'gtkmm3'
   depends_on 'libsigcplusplus'
   depends_on 'pulseaudio'
   depends_on 'pygtk'
-  depends_on 'pulseaudio'
   depends_on 'glibmm'
 
   def self.build
     system 'NOCONFIGURE=1 ./bootstrap.sh'
-    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
     ./configure \
     #{CREW_OPTIONS} \
     --disable-lynx"
