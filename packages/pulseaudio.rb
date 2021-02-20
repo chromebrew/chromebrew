@@ -86,7 +86,7 @@ class Pulseaudio < Package
       exit-idle-time = 10 # Exit as soon as unneeded
       flat-volumes = yes # Prevent messing with the master volume
     PAUDIO_DAEMON_CONF_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/daemon.conf", @pulseaudio_daemon_conf, perm: 0o555)
+    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/daemon.conf", @pulseaudio_daemon_conf, perm: 0o666)
     @pulseaudio_client_conf = <<~PAUDIO_CLIENT_CONF_HEREDOC
       # Replace these with the proper values
 
@@ -95,7 +95,7 @@ class Pulseaudio < Package
       # exit-idle-time setting in daemon.conf
       autospawn = yes
     PAUDIO_CLIENT_CONF_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/client.conf", @pulseaudio_client_conf, perm: 0o555)
+    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/client.conf", @pulseaudio_client_conf, perm: 0o666)
     @pulseaudio_default_pa = <<~PAUDIO_DEFAULT_PA_HEREDOC
       # Replace the *entire* content of this file with these few lines and
       # read the comments
@@ -123,6 +123,6 @@ class Pulseaudio < Package
           load-module module-x11-publish
       .endif
     PAUDIO_DEFAULT_PA_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", @pulseaudio_default_pa, perm: 0o555)
+    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", @pulseaudio_default_pa, perm: 0o666)
   end
 end
