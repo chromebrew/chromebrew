@@ -27,6 +27,8 @@ class Opera < Package
 
   def self.install
     Dir.chdir('../') do
+      # llvm-strip doesn't works with opera
+      ENV['CREW_NOT_STRIP'] = '1'
       FileUtils.mkdir_p CREW_DEST_PREFIX
       FileUtils.mv Dir.glob('usr/*'), CREW_DEST_PREFIX
       FileUtils.ln_s "#{CREW_PREFIX}/bin/opera", "#{CREW_DEST_PREFIX}/bin/x-www-browser" unless File.exist?("#{CREW_PREFIX}/bin/x-www-browser")
