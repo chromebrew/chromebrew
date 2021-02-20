@@ -5,8 +5,7 @@ class Opera < Package
   homepage 'https://www.opera.com/'
   version '74.0.3911.154'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
+  if ARCH == 'x86_64'
     source_url "https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
     source_sha256 `curl -Ls https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`.chomp
     depends_on 'alien' => :build
