@@ -16,10 +16,10 @@ class Flatpak < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'a73486a7abe624e3bfe0624d86be6db16a6249040024f4c80c671a0249926b22',
-     armv7l: 'a73486a7abe624e3bfe0624d86be6db16a6249040024f4c80c671a0249926b22',
-       i686: '583b80fc54b800052d4a6ab25c1ad0e35df72d7bdf585d116ac4a4a4930f8751',
-     x86_64: '2084acc05a5f9897f3f4539b942c13dd0f8106dc9211fdf50cc5c1b2d999183a'
+    aarch64: '6927a9717a15f4d52e1b2316e159a2f43026431bc91a68627bc6fce5f9634b31',
+     armv7l: '6927a9717a15f4d52e1b2316e159a2f43026431bc91a68627bc6fce5f9634b31',
+       i686: '56abe90a29219a9937b2939a71b4413d90198d7eabc1cb802b3fc6a759a93335',
+     x86_64: '588c3a2c502e0cc6088b4d17e3b133103fdeb0dc653bad0bef79674709b7bf22'
   })
 
   depends_on 'xdg_base'
@@ -30,6 +30,7 @@ class Flatpak < Package
   depends_on 'libseccomp'
   depends_on 'pyparsing'
   depends_on 'dconf'
+  depends_on 'pulseaudio'
 
   def self.patch
     patch_description = 'backported fixes'
@@ -73,6 +74,8 @@ class Flatpak < Package
       if [ !  \\( -e ~/.local/share/fonts \\)  ]; then
       ln -s #{CREW_PREFIX}/share/fonts ~/.local/share/
       fi
+      # Start pulseaudio if it is not running.
+      pgrep -x pulseaudio >/dev/null || pulseaudio -D
       if [[ "\$*" == *run* ]]
       then
           FLATPAK_FLAGS='--socket=wayland'
