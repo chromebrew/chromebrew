@@ -16,8 +16,7 @@ class Codium < Package
     @arch = 'x64'
   end
 
-  case ARCH
-  when 'aarch64', 'armv7l', 'x86_64'
+  unless ARCH == 'i686'
     depends_on 'gtk2'
     depends_on 'libsecret'
     depends_on 'libgconf'
