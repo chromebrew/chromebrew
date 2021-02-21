@@ -24,6 +24,11 @@ url: https://abcde.einval.com/download/
 activity: medium
 ---
 kind: url
+name: abseil_cpp
+url: https://github.com/abseil/abseil-cpp/releases
+activity: medium
+---
+kind: url
 name: acl
 url: https://download.savannah.gnu.org/releases/acl
 activity: medium
@@ -47,6 +52,11 @@ kind: url
 name: ag
 url: https://github.com/ggreer/the_silver_searcher/releases
 activity: medium
+---
+kind: url
+name: aha
+url: https://github.com/theZiz/aha/releases
+activity: low
 ---
 kind: url
 name: aide
@@ -519,6 +529,11 @@ url: https://github.com/google/brotli/releases
 activity: medium
 ---
 kind: url
+name: btrfsprogs
+url: https://github.com/kdave/btrfs-progs/releases
+activity: medium
+---
+kind: url
 name: bubblewrap
 url: https://github.com/containers/bubblewrap/releases/
 activity: low
@@ -914,6 +929,16 @@ url: https://download.gnome.org/sources/dconf/
 activity: medium
 ---
 kind: url
+name: dconf_editor
+url: https://download.gnome.org/sources/dconf-editor/
+activity: medium
+---
+kind: url
+name: ddrescue
+url: https://ftpmirror.gnu.org/ddrescue/
+activity: low
+---
+kind: url
 name: dehtml
 url: http://www.moria.de/~michael/dehtml/
 activity: none
@@ -996,11 +1021,6 @@ activity: low
 kind: url
 name: dnsmasq
 url: http://thekelleys.org.uk/dnsmasq/
-activity: none
----
-kind: url
-name: docbook
-url: https://sourceforge.net/projects/docbook/files/docbook-xsl/
 activity: none
 ---
 kind: url
@@ -1229,6 +1249,11 @@ url: https://github.com/AltraMayor/f3/releases
 activity: medium
 ---
 kind: url
+name: faad2
+url: https://github.com/knik0/faad2/releases
+activity: low
+---
+kind: url
 name: fakeroot
 url: http://ftp.debian.org/debian/pool/main/f/fakeroot/
 activity: low
@@ -1301,6 +1326,11 @@ activity: high
 kind: url
 name: finch
 url: https://sourceforge.net/projects/pidgin/files/Pidgin/
+activity: low
+---
+kind: url
+name: findutils
+url: https://ftpmirror.gnu.org/findutils/
 activity: low
 ---
 kind: url
@@ -1624,6 +1654,11 @@ url: https://github.com/gcc-mirror/gcc/releases
 activity: low
 ---
 kind: url
+name: gccmakedep
+url: https://www.x.org/releases/individual/util/
+activity: none
+---
+kind: url
 name: gcr
 url: https://ftp.gnome.org/pub/GNOME/sources/gcr/
 activity: medium
@@ -1712,6 +1747,11 @@ kind: url
 name: gettext
 url: https://ftp.gnu.org/gnu/gettext/
 activity: none
+---
+kind: url
+name: gettext_tiny
+url: https://ftp.barfooze.de/pub/sabotage/tarballs/
+activity: low
 ---
 kind: url
 name: gexiv2
@@ -1919,6 +1959,11 @@ url: https://github.com/GNOME/gnome-themes-extra/releases/
 activity: medium
 ---
 kind: url
+name: gnuchess
+url: https://ftpmirror.gnu.org/chess/
+activity: low
+---
+kind: url
 name: gnucobol
 url: https://sourceforge.net/projects/open-cobol/files/gnu-cobol/
 activity: low
@@ -2064,8 +2109,23 @@ url: https://download.gnome.org/sources/gspell/
 activity: medium
 ---
 kind: url
+name: gst_editing_services
+url: https://gstreamer.freedesktop.org/src/gst-editing-services/
+activity: medium
+---
+kind: url
+name: gst_plugins_bad
+url: https://github.com/GStreamer/gst-plugins-bad/releases/
+activity: medium
+---
+kind: url
 name: gst_plugins_base
 url: https://gstreamer.freedesktop.org/src/gst-plugins-base/
+activity: medium
+---
+kind: url
+name: gst_plugins_good
+url: https://github.com/GStreamer/gst-plugins-good/releases/
 activity: medium
 ---
 kind: url
@@ -2219,6 +2279,11 @@ url: https://github.com/kdabir/has/releases
 activity: low
 ---
 kind: url
+name: haveged
+url: https://github.com/jirka-h/haveged/releases
+activity: low
+---
+kind: url
 name: hdf5
 url: https://support.hdfgroup.org/ftp/HDF5/releases/
 activity: low
@@ -2237,6 +2302,11 @@ kind: url
 name: healthcheck
 url: https://github.com/SimplyLinuxFAQ/health-check-script/releases
 activity: low
+---
+kind: url
+name: hello
+url: https://ftpmirror.gnu.org/hello/
+activity: none
 ---
 kind: url
 name: help2info
@@ -2372,6 +2442,11 @@ kind: url
 name: imagemagick
 url: https://www.imagemagick.org/download/releases
 activity: high
+---
+kind: url
+name: imake
+url: https://www.x.org/releases/individual/util/
+activity: none
 ---
 kind: url
 name: imgur
@@ -2849,6 +2924,11 @@ url: https://github.com/videolabs/libdsm/releases/
 activity: none
 ---
 kind: url
+name: libdv
+url: https://sourceforge.net/projects/libdv/files/libdv/
+activity: none
+---
+kind: url
 name: libdvdnav
 url: http://get.videolan.org/libdvdnav/
 activity: medium
@@ -2922,6 +3002,11 @@ kind: url
 name: libfilezilla
 url: https://download.filezilla-project.org/libfilezilla/
 activity: medium
+---
+kind: url
+name: libfmt
+url: https://github.com/fmtlib/fmt/releases/
+activity: low
 ---
 kind: url
 name: libfontenc
@@ -3117,6 +3202,11 @@ kind: url
 name: libmicrohttpd
 url: https://ftpmirror.gnu.org/libmicrohttpd/
 activity: low
+---
+kind: url
+name: libmms
+url: https://sourceforge.net/projects/libmms/files/libmms/
+activity: none
 ---
 kind: url
 name: libmng
@@ -3502,6 +3592,11 @@ kind: url
 name: libunwind
 url: http://download.savannah.gnu.org/releases/libunwind
 activity: none
+---
+kind: url
+name: liburing
+url: https://github.com/axboe/liburing/releases
+activity: low
 ---
 kind: url
 name: libusb
@@ -3934,6 +4029,11 @@ url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
 ---
 kind: url
+name: mailutils
+url: https://ftpmirror.gnu.org/mailutils/
+activity: high
+---
+kind: url
 name: make
 url: https://ftp.gnu.org/gnu/make
 activity: none
@@ -4069,9 +4169,19 @@ url: https://github.com/miniupnp/miniupnp/releases
 activity: high
 ---
 kind: url
+name: miscfiles
+url: https://ftpmirror.gnu.org/miscfiles/
+activity: none
+---
+kind: url
 name: misctools
 url: http://www.hyperrealm.com/packages/
 activity: none
+---
+kind: url
+name: mjpegtools
+url: https://sourceforge.net/projects/mjpeg/files/mjpegtools/
+activity: medium
 ---
 kind: url
 name: mkfontscale
@@ -4136,6 +4246,11 @@ activity: medium
 kind: url
 name: motif
 url: https://sourceforge.net/projects/motif/files/
+activity: none
+---
+kind: url
+name: motti
+url: https://ftpmirror.gnu.org/motti/
 activity: none
 ---
 kind: url
@@ -4494,6 +4609,11 @@ url: https://swapoff.org/ondir.html
 activity: low
 ---
 kind: url
+name: oneko
+url: https://httpredir.debian.org/debian/pool/main/o/oneko/
+activity: low
+---
+kind: url
 name: oniguruma
 url: https://github.com/kkos/oniguruma/releases
 activity: medium
@@ -4586,6 +4706,11 @@ activity: medium
 kind: url
 name: optipng
 url: https://sourceforge.net/projects/optipng/files/OptiPNG/
+activity: low
+---
+kind: url
+name: orc
+url: https://github.com/GStreamer/orc/releases/
 activity: low
 ---
 kind: url
@@ -5109,6 +5234,11 @@ url: https://www.jetbrains.com/pycharm/download/other.html
 activity: medium
 ---
 kind: url
+name: pyconfigure
+url: https://ftpmirror.gnu.org/pyconfigure/
+activity: none
+---
+kind: url
 name: pyelftools
 url: https://github.com/eliben/pyelftools/releases
 activity: low
@@ -5132,6 +5262,11 @@ kind: url
 name: pygtk
 url: https://ftp.gnome.org/pub/GNOME/sources/pygtk/
 activity: none
+---
+kind: url
+name: pyparsing
+url: https://github.com/pyparsing/pyparsing/releases/
+activity: low
 ---
 kind: url
 name: python
@@ -5372,6 +5507,11 @@ kind: url
 name: ruby
 url: http://www.ruby-lang.org/en/downloads/
 activity: medium
+---
+kind: url
+name: rush
+url: https://ftpmirror.gnu.org/rush/
+activity: none
 ---
 kind: url
 name: rust
@@ -6244,6 +6384,11 @@ url: https://webkitgtk.org/releases/
 activity: medium
 ---
 kind: url
+name: webrtc_audio_processing
+url: https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/tags
+activity: low
+---
+kind: url
 name: weechat
 url: https://weechat.org/files/src/
 activity: medium
@@ -6509,6 +6654,11 @@ url: https://sourceforge.net/projects/xmltoman/files/xmltoman/
 activity: none
 ---
 kind: url
+name: xorg_cf_files
+url: https://www.x.org/releases/individual/util/
+activity: none
+---
+kind: url
 name: xorg_evdev_driver
 url: https://www.x.org/pub/individual/driver/
 activity: low
@@ -6677,6 +6827,11 @@ kind: url
 name: zlibpkg
 url: http://www.zlib.net
 activity: none
+---
+kind: url
+name: zoneinfo
+url: https://data.iana.org/time-zones/releases/
+activity: high
 ---
 kind: url
 name: zsh

@@ -3,7 +3,7 @@ require 'package'
 class Symfony < Package
   description 'Symfony is a set of PHP Components, a Web Application framework'
   homepage 'https://symfony.com/'
-  version '4.20.3'
+  version '4.22.0'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -14,17 +14,18 @@ class Symfony < Package
     case ARCH
     when 'aarch64', 'armv7l'
       arch = 'arm'
-      sha256 = 'd5113c6eaf24debbc1fe2734d97c80a8929a134e992c3e82095b3839c4d282a9'
+      sha256 = '046556c80a484a099163d1234f3ee7d6ee87ac4f6b227f56310f8c3a9141da9c'
     when 'i686'
       arch = '386'
-      sha256 = '1f2dfb4a51f3cd3ecece702f9639fd9510694307df0dc882c72cbad4a05c73b5'
+      sha256 = '07d48c26714b8c6775a0b079d33ac386c142ff0bd91e1c6647ad6b1a76b532ee'
     when 'x86_64'
       arch = 'amd64'
-      sha256 = 'd593f2da39bdcdb753fc81721613c2ad0db5c0a01d1e31fb63324d95384afa12'
+      sha256 = '99cb1834bba250ccfaf0ad0689c124977d36ae03a7805d78e36c79b8da0da118'
     end
-    system "wget https://github.com/symfony/cli/releases/download/v#{version}/symfony_linux_#{arch}"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("symfony_linux_#{arch}") ) == sha256
-    system "install -Dm755 symfony_linux_#{arch} #{CREW_DEST_PREFIX}/bin/symfony"
+    symfony_file = "symfony_linux_#{arch}"
+    system "wget https://github.com/symfony/cli/releases/download/v#{version}/#{symfony_file}"
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(symfony_file) ) == sha256
+    system "install -Dm755 #{symfony_file} #{CREW_DEST_PREFIX}/bin/symfony"
   end
 
   def self.postinstall

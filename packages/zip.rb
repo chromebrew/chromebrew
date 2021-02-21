@@ -5,7 +5,7 @@ class Zip < Package
   homepage 'http://www.info-zip.org/Zip.html'
   version '3.0-11'
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz'
+  source_url 'https://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz'
   source_sha256 'f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369'
 
   binary_url ({

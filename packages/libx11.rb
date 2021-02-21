@@ -28,9 +28,9 @@ class Libx11 < Package
   depends_on 'libxtrans'
 
   def self.build
-    ENV['CFLAGS'] = "-fuse-ld=lld"
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "./configure #{CREW_OPTIONS}"
+    system "env CFLAGS='-fuse-ld=lld' \
+                CXXFLAGS='-fuse-ld=lld' \
+            ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
