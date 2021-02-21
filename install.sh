@@ -197,7 +197,7 @@ git reset --hard origin/"${BRANCH}"
 crew update
 
 # install a base set of essential packages
-yes | crew install buildessential less most
+yes | crew install buildessential less
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
