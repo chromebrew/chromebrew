@@ -62,9 +62,9 @@ class Gomoku < Package
     system "echo bsd_games_cfg_sbindir='#{CREW_PREFIX}/sbin' >> config.params"
     system "echo bsd_games_cfg_usrbindir='#{CREW_PREFIX}/bin' >> config.params"
     system "echo bsd_games_cfg_libexecdir='#{CREW_PREFIX}/libexec' >> config.params"
-    system "echo bsd_games_cfg_man6dir='#{CREW_PREFIX}/share/man/man6' >> config.params"
-    system "echo bsd_games_cfg_man8dir='#{CREW_PREFIX}/share/man/man8' >> config.params"
-    system "echo bsd_games_cfg_man5dir='#{CREW_PREFIX}/share/man/man5' >> config.params"
+    system "echo bsd_games_cfg_man6dir='#{CREW_MAN_PREFIX}/man6' >> config.params"
+    system "echo bsd_games_cfg_man8dir='#{CREW_MAN_PREFIX}/man8' >> config.params"
+    system "echo bsd_games_cfg_man5dir='#{CREW_MAN_PREFIX}/man5' >> config.params"
     system "echo bsd_games_cfg_do_chown='n' >> config.params" # Use chronos not root
     system "echo bsd_games_cfg_use_dot_so='symlinks' >> config.params"
     system "echo bsd_games_cfg_sharedir='#{CREW_PREFIX}/share/games' >> config.params"
