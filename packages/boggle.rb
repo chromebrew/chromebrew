@@ -1,7 +1,7 @@
 require 'package'
 
-class Battlestar < Package
-  description 'A stellar-tropical adventure game'
+class Boggle < Package
+  description 'A cli version of Boggle inspired by the Boggle Hasbro game'
   homepage 'https://www.polyomino.org.uk/computer/software/bsd-games/'
   version '2.17'
   compatibility 'all'
@@ -12,7 +12,7 @@ class Battlestar < Package
   depends_on 'words'
   depends_on 'less'
   
-  @_bsdgame = 'battlestar'
+  @_bsdgame = 'boggle'
   
   def self.patch
     FileUtils.mkdir 'patches'
