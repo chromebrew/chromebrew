@@ -1,7 +1,7 @@
 require 'package'
 
 class Countmail < Package
-  description 'Informs the user of the loneliness. Perfect for a pandemic.'
+  description 'Informs the user of their loneliness or lack of friends. Perfect for a pandemic.'
   homepage 'https://www.polyomino.org.uk/computer/software/bsd-games/'
   version '2.17'
   compatibility 'all'
