@@ -5,8 +5,7 @@ class Bsdgames < Package
   homepage 'https://www.polyomino.org.uk/computer/software/bsd-games/'
   version '2.17'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  is_fake
 
   depends_on 'adventure'
   depends_on 'arithmetic'
