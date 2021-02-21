@@ -10,10 +10,10 @@ class Libgdiplus < Package
 
   depends_on 'pcre'
   depends_on 'glib'
-#  depends_on 'cairo'
-#  depends_on 'graphite'
-#  depends_on 'libexif'
-#  depends_on 'libtiff'
+  depends_on 'cairo'
+  depends_on 'graphite'
+  depends_on 'libexif'
+  depends_on 'libtiff'
   depends_on 'libpng'
   depends_on 'libwebp'
   depends_on 'imake' => :build
