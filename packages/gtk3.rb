@@ -7,9 +7,21 @@ class Gtk3 < Package
   version @_ver
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gtk+/3.24/gtk+-#{@_ver}.tar.xz"
-  source_sha256 `curl -Ls https://download.gnome.org/sources/gtk+/3.24/gtk+-#{@_ver}.sha256sum |\
-                 tail -n1 | cut -d ' ' -f1`.chomp
-  
+  source_sha256 '87e26b111d3b8a85ff218980a56f3e814257b8dd11e5c4d9a2803b423b08297c'
+
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '2ac48ac4e7afae50082113a5ee02887e8e275a63caa551308009e4778eef8509',
+     armv7l: '2ac48ac4e7afae50082113a5ee02887e8e275a63caa551308009e4778eef8509',
+       i686: '6295abdfb026ea717b3e46b5cf86b42228e223c2e92160263cc36974eaf0a340',
+     x86_64: '274d6fd9d16cd2a4dc60a07b9212fb643851c37fe788f373ba46b644ba5272dc'
+  })
+
   depends_on 'cups'
   depends_on 'at_spi2_atk'
   depends_on 'gnome_icon_theme'
@@ -28,8 +40,7 @@ class Gtk3 < Package
   depends_on 'graphite'
 
   def self.build
-    system "env CFLAGS='-fuse-ld=lld' CXXFLAGS='-fuse-ld=lld' \
-            meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
             -Dbroadway_backend=true \
             -Dgtk_doc=false \
             -Ddemos=false \
@@ -37,13 +48,13 @@ class Gtk3 < Package
             builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
-    @file = <<~EOF
+    @file = <<~GTK3_CONFIG_HEREDOC
       [Settings]
       gtk-application-prefer-dark-theme = false
       gtk-icon-theme-name = hicolor
       gtk-fallback-icon-theme = gnome
       gtk-font-name = Arial 10
-    EOF
+    GTK3_CONFIG_HEREDOC
   end
 
   def self.install
