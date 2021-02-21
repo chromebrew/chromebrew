@@ -96,8 +96,26 @@ class Flatpak < Package
     puts 'Configuring flathub'.lightblue
     system 'flatpak.elf remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
     puts
-    xdgconfig_in_bashrc = `grep -c "#{CREW_PREFIX}/var/lib/flatpak/exports/share" ~/.bashrc || true`
-    unless xdgconfig_in_bashrc.to_i.positive?
+    # Check to see if xdg_base put variables in ~/.bashrc. If not, put
+    # them in.
+    xdgbaseconfig_in_bashrc = `grep -c "XDG_CONFIG_HOME" ~/.bashrc || true`
+    unless xdgbaseconfig_in_bashrc.to_i.positive?
+      puts 'Putting XDG Environment Variables in ~/.bashrc'.lightblue
+      system "echo '# XDG Base Directory Specification Environment Variables' >> ~/.bashrc"
+      system "echo '# See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html' >> ~/.bashrc"
+      system "echo 'export XDG_DATA_HOME=#{HOME}/.local/share' >> ~/.bashrc"
+      system "echo 'export XDG_CONFIG_HOME=#{HOME}/.config' >> ~/.bashrc"
+      system "echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{HOME}/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share' >> ~/.bashrc"
+      system "echo 'export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg' >> ~/.bashrc"
+      system "echo 'export XDG_CACHE_HOME=#{HOME}/.cache' >> ~/.bashrc"
+      system "echo 'export XDG_RUNTIME_DIR=/var/run/chrome' >> ~/.bashrc"
+      puts 'To complete the installation, execute the following:'.orange
+      puts 'source ~/.bashrc'.orange
+    end
+    # If xdg_base put in variables without flatpak modifications, add
+    # them.
+    flatpak_xdgdirconfig_in_bashrc = `grep -c "#{CREW_PREFIX}/var/lib/flatpak/exports/share" ~/.bashrc || true`
+    unless flatpak_xdgdirconfig_in_bashrc.to_i.positive?
       system "sed -i 's,XDG_DATA_DIRS=.*,XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{HOME}/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share,g' ~/.bashrc"
     end
   end
