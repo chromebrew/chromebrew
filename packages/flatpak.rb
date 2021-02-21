@@ -96,5 +96,9 @@ class Flatpak < Package
     puts 'Configuring flathub'.lightblue
     system 'flatpak.elf remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
     puts
+    xdgconfig_in_bashrc = `grep -c "#{CREW_PREFIX}/var/lib/flatpak/exports/share" ~/.bashrc || true`
+    unless xdgconfig_in_bashrc.to_i.positive?
+      system "sed -i 's,XDG_DATA_DIRS=.*,XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{HOME}/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share,g' ~/.bashrc"
+    end
   end
 end
