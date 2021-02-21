@@ -16,10 +16,10 @@ class Bubblewrap < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5bb3cca606a888b7881821eeff96aa28408cb820a6acf1ad788ede5b3ded6fce',
-     armv7l: '5bb3cca606a888b7881821eeff96aa28408cb820a6acf1ad788ede5b3ded6fce',
-       i686: '071ccd273b04892dc2a633784b6cdb04edded34f9f664bf09d3b2b8228a023d5',
-     x86_64: '1fda7e2d705a6f9ef55d2158de6c172d4d78e562566b0a8177d269b3c6df520e'
+    aarch64: '7c3f2c4a332342b9d7aa15d6aa776a38d1dc94a8c4c904a81a64f7e7ca45cedd',
+     armv7l: '7c3f2c4a332342b9d7aa15d6aa776a38d1dc94a8c4c904a81a64f7e7ca45cedd',
+       i686: '75795e2c15720ad488335de59b94c3577102b8ba3ca5e855b5b132f3f213cce7',
+     x86_64: '4c3f0aaec3afc4a1ba48d10dfb87208b47d11f2047fe11d6dce5056ff4dce79f'
   })
 
   depends_on 'libcap' => :build
@@ -32,7 +32,7 @@ class Bubblewrap < Package
   def self.build
     system './configure --help'
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
-      ./configure \
+      ./configure #{CREW_OPTIONS} \
       --disable-maintainer-mode \
       --disable-man \
       --with-priv-mode=setuid \
