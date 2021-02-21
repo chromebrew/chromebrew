@@ -218,6 +218,7 @@ To set the default PAGER environment variable to use less:
 echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc
 
 Alternatively, you could use most.  Why settle for less, right?
+crew install most
 echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc
 
 Below are some text editor suggestions.
