@@ -9,9 +9,9 @@ class Words < Package
   source_sha256 '61168093e1ff4f88d838e09e40530cc0c192672ad0dbc01806534e9def296c3b'
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_DIR}/usr/local/share"
-    FileUtils.cp_r 'dict', "#{CREW_DEST_DIR}/usr/local/share"
-    Dir.chdir "#{CREW_DEST_DIR}/usr/local/share/dict" do
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.cp_r 'dict', "#{CREW_DEST_PREFIX}/share"
+    Dir.chdir "#{CREW_DEST_PREFIX}/share/dict" do
       FileUtils.symlink 'american-english', 'words'
     end
   end
