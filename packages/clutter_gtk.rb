@@ -3,6 +3,7 @@ require 'package'
 class Clutter_gtk < Package
   description 'The Clutter Gtk package is a library providing facilities to integrate Clutter into GTK+ applications.'
   homepage 'https://wiki.gnome.org/Projects/Clutter'
+  compatibility 'all'
   @_app = 'clutter-gtk'
   @_ver = '1.8'
   @_patch = '.4'
