@@ -65,5 +65,9 @@ class Python27 < Package
     #puts "Upgrading pip...".lightblue
     #system 'pip2 install --upgrade pip'
     #puts
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/python3", "#{CREW_PREFIX}/bin/python" \
+      if File.exist? "#{CREW_PREFIX}/bin/python3"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/pip3", "#{CREW_PREFIX}/bin/pip" \
+      if File.exist? "#{CREW_PREFIX}/bin/pip3"
   end
 end
