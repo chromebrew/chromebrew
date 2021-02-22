@@ -1,6 +1,6 @@
 require 'package'
 
-class Name < Package
+class Xclip < Package
   description 'Provides an interface to X selections ("the clipboard") from the command line.'
   homepage 'https://github.com/astrand/xclip'
   version '0.13'
