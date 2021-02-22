@@ -3,6 +3,7 @@ require 'package'
 class Gnome_mines < Package
   description 'GNOME Mines (formerly known as Gnomine) is minesweeper clone for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Mines'
+  compatibility 'all'
   @_app = 'gnome-mines'
   @_ver = '3.36'
   @_patch = '.1'
