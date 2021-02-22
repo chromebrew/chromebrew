@@ -32,23 +32,23 @@ class Tk < Package
           CXXFLAGS='-flto=auto -pipe -fuse-ld=gold' \
           LDFLAGS='-flto=auto' \
           ./configure \
-                 --prefix=#{CREW_PREFIX} \
-                 --libdir=#{CREW_LIB_PREFIX} \
-                 --mandir=#{CREW_PREFIX}/share/man \
-                 --with-tcl=#{CREW_LIB_PREFIX} \
-                 --enable-threads \
-                 --enable-64bit"
+          --prefix=#{CREW_PREFIX} \
+          --libdir=#{CREW_LIB_PREFIX} \
+          --mandir=#{CREW_PREFIX}/share/man \
+          --with-tcl=#{CREW_LIB_PREFIX} \
+          --enable-threads \
+          --enable-64bit"
       else
         system "env CFLAGS='-flto=auto -pipe -fuse-ld=gold' \
           CXXFLAGS='-flto=auto -pipe -fuse-ld=gold' \
           LDFLAGS='-flto=auto' \
           ./configure \
-                 --prefix=#{CREW_PREFIX} \
-                 --libdir=#{CREW_LIB_PREFIX} \
-                 --mandir=#{CREW_PREFIX}/share/man \
-                 --with-tcl=#{CREW_LIB_PREFIX} \
-                 --enable-threads \
-                 --disable-64bit"
+          --prefix=#{CREW_PREFIX} \
+          --libdir=#{CREW_LIB_PREFIX} \
+          --mandir=#{CREW_PREFIX}/share/man \
+          --with-tcl=#{CREW_LIB_PREFIX} \
+          --enable-threads \
+          --disable-64bit"
       end
       system 'make'
     end
