@@ -6,11 +6,10 @@ class Libgnome_games_support < Package
   @_app = 'libgnome-games-support'
   @_ver = '1.8'
   @_patch = '.0'
-  @_fullver = @_ver + @_patch
-  version @_fullver
-  source_url "https://download.gnome.org/sources/#{@_app}/#{@_ver}/#{@_app}-#{@_fullver}.tar.xz"
-  source_sha256 `curl -Ls https://download.gnome.org/sources/#{@_app}/#{@_ver}/#{@_app}-#{@_fullver}.sha256sum |\
-                 tail -n1 | cut -d ' ' -f1`.chomp
+  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_ver}/#{@_app}-#{@_ver}#{@_patch}"
+  version @_ver + @_patch
+  source_url "#{@_url}.tar.xz"
+  source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
   
   depends_on 'gtk3'
   depends_on 'libgee'
