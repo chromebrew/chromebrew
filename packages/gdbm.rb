@@ -3,31 +3,30 @@ require 'package'
 class Gdbm < Package
   description 'GNU dbm is a set of database routines that use extensible hashing.'
   homepage 'https://www.gnu.org/software/gdbm/'
-  version '1.18.1'
+  @_ver = '1.19'
+  version @_ver
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gdbm/gdbm-1.18.1.tar.gz'
-  source_sha256 '86e613527e5dba544e73208f42b78b7c022d4fa5a6d5498bf18c8d6f745b91dc'
+  source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{@_ver}.tar.gz"
+  source_sha256 '37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.18.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.18.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.18.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.18.1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.19-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.19-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gdbm-1.19-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'b7d1eefc792b5250b4a1e1c6cf7845cb965944c5f2f4468b63201e6dc7374d66',
-     armv7l: 'b7d1eefc792b5250b4a1e1c6cf7845cb965944c5f2f4468b63201e6dc7374d66',
-       i686: '60deef61ee53f9aab9a94767a8902ee29920302e113ca115567f3b2d428ae582',
-     x86_64: 'b52cde5502c9bf35fe485776d976d1a44a872e2ffee8964297ac2fe3ef0d064e',
+  binary_sha256({
+    aarch64: '34ed01ff6f5ce4af6e8d89f54acbd74cd2b33c585c4409d5d6d77fcbedf0562b',
+     armv7l: '34ed01ff6f5ce4af6e8d89f54acbd74cd2b33c585c4409d5d6d77fcbedf0562b',
+       i686: '1042907927b4b62f49ec959f317273b27a380d264a5ea690070b4643528e33f8',
+     x86_64: '79ffa73dfefefdec13bfd9ccaac27f24e6bd6b86da4efd6b0544f45a6828ad51'
   })
-
-  depends_on 'readline'
 
   def self.build
-    system './configure',
-           '--disable-static',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
+      LDFLAGS='-flto=auto' \
+      ./configure \
+      #{CREW_OPTIONS}"
     system 'make'
   end
 
