@@ -3,6 +3,7 @@ require 'package'
 class Gnome_klotski < Package
   description 'A puzzle game for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Klotski'
+  compatibility 'all'
   @_app = 'gnome-klotski'
   @_ver = '3.38'
   @_patch = '.2'
