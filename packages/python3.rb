@@ -108,8 +108,7 @@ class Python3 < Package
     puts 'Upgrading pip...'.lightblue
     system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} python3 get-pip.py -U"
     puts 'Setting Python3 as default python...'.lightblue
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/python3", "#{CREW_PREFIX}/bin/python"
-    FileUtils.rm "#{CREW_PREFIX}/bin/pip"
-    FileUtils.cp "#{CREW_PREFIX}/bin/pip3", "#{CREW_PREFIX}/bin/pip"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/python3", "#{CREW_PREFIX}/bin/python"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/pip3", "#{CREW_PREFIX}/bin/pip"
   end
 end
