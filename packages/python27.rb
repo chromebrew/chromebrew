@@ -67,7 +67,7 @@ class Python27 < Package
     #puts
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/python3", "#{CREW_PREFIX}/bin/python" \
       if File.exist? "#{CREW_PREFIX}/bin/python3"
-    FileUtils.cp "#{CREW_PREFIX}/bin/pip3", "#{CREW_PREFIX}/bin/pip" \
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/pip3", "#{CREW_PREFIX}/bin/pip" \
       if File.exist? "#{CREW_PREFIX}/bin/pip3"
   end
 end
