@@ -6,11 +6,10 @@ class Gnome_sudoku < Package
   @_app = 'gnome-sudoku'
   @_ver = '3.38'
   @_patch = '.0'
-  @_fullver = @_ver + @_patch
-  version @_fullver
-  source_url "https://download.gnome.org/sources/#{@_app}/#{@_ver}/#{@_app}-#{@_fullver}.tar.xz"
-  source_sha256 `curl -Ls https://download.gnome.org/sources/#{@_app}/#{@_ver}/#{@_app}-#{@_fullver}.sha256sum |\
-                 tail -n1 | cut -d ' ' -f1`.chomp
+  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_ver}/#{@_app}-#{@_ver}#{@_patch}"
+  version @_ver + @_patch
+  source_url "#{@_url}.tar.xz"
+  source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 
   depends_on 'clutter_gtk'
   depends_on 'gsound'
