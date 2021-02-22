@@ -20,6 +20,8 @@ class Ninja < Package
        i686: 'ec2996217bdf7c57d0528a8ba0eefabda15c17e59f958daebc3fe1eda6a8a9bc',
      x86_64: 'e74f2b1d374edd0ff0877939b3afb8fa80240774bf3c9126278e5a965c7a5d0b',
   })
+  
+  depends_on 'python3'
 
   def self.build
     system 'python3 configure.py --bootstrap'
