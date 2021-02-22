@@ -3,6 +3,7 @@ require 'package'
 class Gnome_nibbles < Package
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
+  compatibility 'all'
   @_app = 'gnome-nibbles'
   @_ver = '3.38'
   @_patch = '.2'
