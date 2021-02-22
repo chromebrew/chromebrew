@@ -32,9 +32,7 @@ class Tk < Package
           CXXFLAGS='-flto=auto -pipe -fuse-ld=gold' \
           LDFLAGS='-flto=auto' \
           ./configure \
-          --prefix=#{CREW_PREFIX} \
-          --libdir=#{CREW_LIB_PREFIX} \
-          --mandir=#{CREW_PREFIX}/share/man \
+          #{CREW_OPTIONS} \
           --with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \
           --enable-64bit"
@@ -43,9 +41,7 @@ class Tk < Package
           CXXFLAGS='-flto=auto -pipe -fuse-ld=gold' \
           LDFLAGS='-flto=auto' \
           ./configure \
-          --prefix=#{CREW_PREFIX} \
-          --libdir=#{CREW_LIB_PREFIX} \
-          --mandir=#{CREW_PREFIX}/share/man \
+          #{CREW_OPTIONS} \
           --with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \
           --disable-64bit"
