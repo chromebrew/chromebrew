@@ -20,12 +20,14 @@ class Libgdiplus < Package
   depends_on 'imake' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
-            --with-libexif \
-            --with-libtiff \
-            --with-jpeg \
-            --with-libgif \
-            --with-x11"
+    system  "CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'
+      LDFLAGS='-flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --with-libexif \
+      --with-libtiff \
+      --with-jpeg \
+      --with-libgif \
+      --with-x11"
     system "make"
   end
 
