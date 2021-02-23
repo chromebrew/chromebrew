@@ -25,6 +25,7 @@ class Util_linux < Package
   depends_on 'eudev'
   depends_on 'libtinfo'
   depends_on 'linux_pam'
+  depends_on 'pcre2'
   depends_on 'libeconf'
 
   def self.build
