@@ -3,26 +3,29 @@ require 'package'
 class Xcb_proto < Package
   description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
   homepage 'https://x.org'
-  version '1.14'
+  version '1.14.1'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/xcb/xcb-proto-1.14.tar.xz'
+  source_url 'https://gitlab.freedesktop.org/xorg/proto/xcbproto/-/archive/xcb-proto-1.14.1/xcbproto-xcb-proto-1.14.1.tar.bz2'
   source_sha256 '186a3ceb26f9b4a015f5a44dcc814c93033a5fc39684f36f1ecc79834416a605'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_proto-1.14.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '5b8707e7904fcbc6cbbc2ca2c8fa87cad36c354eb1055e912ae127f5cfd4163c',
-     armv7l: '5b8707e7904fcbc6cbbc2ca2c8fa87cad36c354eb1055e912ae127f5cfd4163c',
-       i686: 'ecd7091cf0089fcb0b3b66c431a607e441cb9029d4e37f272ac548857b50b80a',
-     x86_64: 'a4de2e1bdf7aacee5904d9854d365e87f87eff754fc8201341595788bd5bb686',
+  binary_sha256({
+    aarch64: '44acc3a13eef02910837f702f2375cfe9b4ec84b29b21901dde05a20bb03cd5f',
+     armv7l: '44acc3a13eef02910837f702f2375cfe9b4ec84b29b21901dde05a20bb03cd5f',
+       i686: '43bd2fe4d681f2a13deef0eeb5b1e22850dc53c836613a18fe73f1c77267a03a',
+     x86_64: '6f7ccb0abc93a0b8156993ab46aa096bc087ae1c82eac33ef8924d7d69f3027f'
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
+        LDFLAGS='-flto=auto' \
+        ./autogen.sh \
+        #{CREW_OPTIONS}"
     system 'make'
   end
 
