@@ -16,7 +16,6 @@ doxygen
 expat
 filecmd
 flex
-gawk
 gcc10
 gcc_tools
 gdbm
@@ -59,6 +58,7 @@ m4
 make
 mandb
 manpages
+mawk
 meson
 most
 mpc
