@@ -38,8 +38,7 @@ class Libmetalink < Package
       LDFLAGS='-flto=auto' \
       ./configure #{CREW_OPTIONS} \
       --with-libxml2\
-      --without-libexpat \
-      --program-prefix='' --program-suffix='' "
+      --without-libexpat"
     system 'make'
   end
 
