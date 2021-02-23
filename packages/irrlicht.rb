@@ -23,12 +23,12 @@ class Irrlicht < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/irrlicht"
     FileUtils.cp Dir.glob("include/*"), "#{CREW_DEST_PREFIX}/include/irrlicht"
-    FileUtils.cp 'lib/Linux/libIrrlicht.a', "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}" 
-    FileUtils.cp 'lib/Linux/libIrrlicht.so.1.8.4', "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}"
-    Dir.chdir "#{CREW_DEST_DIR}#{CREW_LIB_PREFIX}" do
+    FileUtils.cp 'lib/Linux/libIrrlicht.a', CREW_DEST_LIB_PREFIX
+    FileUtils.cp 'lib/Linux/libIrrlicht.so.1.8.4', CREW_DEST_LIB_PREFIX
+    Dir.chdir CREW_DEST_LIB_PREFIX do
       FileUtils.symlink 'libIrrlicht.so.1.8.4', 'libIrrlicht.so.1'
       FileUtils.symlink 'libIrrlicht.so.1.8.4', 'libIrrlicht.so'
     end
