@@ -28,8 +28,7 @@ class Libffi < Package
       --enable-shared \
       --with-pic \
       --disable-debug \
-      --disable-dependency-tracking \
-      --program-prefix='' --program-suffix='' "
+      --disable-dependency-tracking"
     system 'make'
   end
 
