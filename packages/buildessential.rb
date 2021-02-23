@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.8-1'
+  version '1.9'
   compatibility 'all'
 
   is_fake
