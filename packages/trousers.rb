@@ -28,8 +28,7 @@ class Trousers < Package
       LDFLAGS='-flto=auto' \
       ./configure \
       #{CREW_OPTIONS} \
-      --with-gui=none \
-      --program-prefix='' --program-suffix='' "
+      --with-gui=none"
     system 'make'
   end
 
