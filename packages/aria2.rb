@@ -4,29 +4,31 @@ class Aria2 < Package
   description 'aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.'
   homepage 'https://aria2.github.io/'
   @_ver = '1.35.0'
-  version @_ver + '-1'
+  version "#{@_ver}-2"
   compatibility 'all'
   source_url "https://github.com/aria2/aria2/releases/download/release-#{@_ver}/aria2-#{@_ver}.tar.xz"
   source_sha256 '1e2b7fd08d6af228856e51c07173cfcf987528f1ac97e04c5af4a47642617dfd'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '423e0f0ce0893269aca65177a9eaee299eef8b1be2e728c77988ae3e9e741037',
-      armv7l: '423e0f0ce0893269aca65177a9eaee299eef8b1be2e728c77988ae3e9e741037',
-        i686: 'a083bbc6d31677f4eb795433bffbe75468783f0d2d3fe9d95db9140f09ab7ce2',
-      x86_64: '2a7c0fc6c91b8b4217d7b69b0fa607a963ecbf17c689008c989841c89a610160',
+  binary_sha256({
+    aarch64: 'b8082b1a4f9b8941f2891564046415abf544f113a452650d139c64253f4378f1',
+     armv7l: 'b8082b1a4f9b8941f2891564046415abf544f113a452650d139c64253f4378f1',
+       i686: '0e3b881cd0505eed0edb1ab898e5a272a3d9d950f9e9c9fd5ebc4d1d9a8c66d9',
+     x86_64: '20cb509c94ac4776c39172fbf8b13c80088249ab6deffce4c4eb6d40081bbd71'
   })
 
   depends_on 'libgcrypt'
 
   def self.build
     system "env CFLAGS='-fuse-ld=gold -flto' CXXFLAGS='-fuse-ld=gold -flto' \
+     LDFLAGS='-flto' \
      ./configure #{CREW_OPTIONS} \
+      --program-prefix='' --program-suffix='' \
       --without-libnettle \
       --with-libgcrypt \
       --disable-dependency-tracking"
@@ -35,6 +37,5 @@ class Aria2 < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/#{CREW_BUILD}-aria2c", "#{CREW_DEST_PREFIX}/bin/aria2c"
   end
 end
