@@ -17,16 +17,18 @@ class Libwebp < Package
 
   def self.build
     system "env NOCONFIGURE=1 ./autogen.sh"
-    system "./configure #{CREW_OPTIONS} \
-           --enable-libwebpmux \
-           --enable-libwebpdemux \
-           --enable-libwebpdecoder \
-           --enable-libwebpextras \
-           --enable-sdl \
-           --enable-tiff \
-           --enable-jpeg \
-           --enable-png \
-           --enable-gif"
+    system  "CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'
+      LDFLAGS='-flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --enable-libwebpmux \
+      --enable-libwebpdemux \
+      --enable-libwebpdecoder \
+      --enable-libwebpextras \
+      --enable-sdl \
+      --enable-tiff \
+      --enable-jpeg \
+      --enable-png \
+      --enable-gif"
     system 'make'
   end
 
