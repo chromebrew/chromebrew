@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.7.7'
+CREW_VERSION = '1.7.8'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -67,7 +67,7 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
+CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD} --program-prefix='' --program-suffix=''"
 CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Dc_args='-fuse-ld=lld -pipe' -Dcpp_args='-fuse-ld=lld -pipe'"
 CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Db_lto=true -Dcpp_args='-fuse-ld=gold -pipe' -Dc_args='-fuse-ld=gold -pipe'"
 
