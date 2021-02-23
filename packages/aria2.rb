@@ -28,7 +28,6 @@ class Aria2 < Package
     system "env CFLAGS='-fuse-ld=gold -flto' CXXFLAGS='-fuse-ld=gold -flto' \
      LDFLAGS='-flto' \
      ./configure #{CREW_OPTIONS} \
-      --program-prefix='' --program-suffix='' \
       --without-libnettle \
       --with-libgcrypt \
       --disable-dependency-tracking"
