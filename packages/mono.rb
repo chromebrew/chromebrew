@@ -24,8 +24,7 @@ class Mono < Package
               --disable-maintainer-mode \
               --enable-ninja \
               --with-x \
-              --with-libgdiplus \
-              --program-prefix='' --program-suffix='' "
+              --with-libgdiplus"
     system 'make || make' # Make might fail the first time. This is a known upstream bug.
   end
 
