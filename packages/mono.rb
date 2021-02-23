@@ -14,17 +14,18 @@ class Mono < Package
   depends_on 'imake' => :build
 
   def self.prebuild
-    system "if [ ! -f /proc/config.gz ]; then sudo modprobe configs -v; fi"
-    system "cat /proc/config.gz | gunzip | grep SYSVIPC=y || false" # Mono build hangs without this feature enabled.
+    system 'if [ ! -f /proc/config.gz ]; then sudo modprobe configs -v; fi'
+    system 'cat /proc/config.gz | gunzip | grep SYSVIPC=y || false' # Mono build hangs without this feature enabled.
   end
-  
+
   def self.build
     system "env XMKMF=#{CREW_PREFIX}/bin/xmkmf \
             ./configure #{CREW_OPTIONS} \
               --disable-maintainer-mode \
               --enable-ninja \
               --with-x \
-              --with-libgdiplus"
+              --with-libgdiplus \
+              --program-prefix='' --program-suffix='' "
     system 'make || make' # Make might fail the first time. This is a known upstream bug.
   end
 
