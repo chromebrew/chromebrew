@@ -557,6 +557,10 @@ def unpack (meta)
       puts "Unpacking archive using 'tar', this may take a while..."
       FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{extract_dir}"
+    when /\.deb$/i
+      puts "Unpacking archive using 'ar', this may take a while..."
+      FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
+      system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{extract_dir}"
     end
     if meta[:source] == true
       # Check the number of directories in the archive
