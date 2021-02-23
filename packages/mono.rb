@@ -31,15 +31,5 @@ class Mono < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
-      FileUtils.ln_sf "#{CREW_BUILD}-mono-sgen", 'mono'
-    end
-    Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
-      system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
-    end
-    Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man5" do
-      system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
-    end
   end
 end
