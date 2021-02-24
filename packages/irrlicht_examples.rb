@@ -23,10 +23,11 @@ class Irrlicht_examples < Package
     system "dos2unix include/IrrCompileConfig.h"
     system "tar xvf irrlicht-1.8.4-patchset.tar.bz2"
     system "for patch in irrlicht-1.8.4-patchset/*; do patch -p 1 -i ${patch}; done"
-    system "sed -i 's:-I/usr/include/freetype2/:-I#{CREW_PREFIX}/include/freetype2:g' $(find -name Makefile)"
-    system "sed -i 's:-I/usr/X11R6/include:-I#{CREW_PREFIX}/X11R6/include:g' $(find -name Makefile)"
-    system "sed -i 's:-L/usr/X11R6/lib$(LIBSELECT):-L/usr/local/X11R6/lib$(LIBSELECT):g' $(find -name Makefile)"
-    system "sed -i 's:-I/usr/include:-I#{CREW_PREFIX}/include:g' $(find -name Makefile)"
+    system "for m in \$(find -name Makefile); do \
+      sed -i 's:-I/usr/include/freetype2/:-I#{CREW_PREFIX}/include/freetype2:g' \$m; \
+      sed -i 's:-I/usr/X11R6/include:-I#{CREW_PREFIX}/X11R6/include:g' \$m; \
+      sed -i 's:-L/usr/X11R6/lib\$(LIBSELECT):-L/usr/local/X11R6/lib\$(LIBSELECT):g' \$m; \
+      sed -i 's:-I/usr/include:-I#{CREW_PREFIX}/include:g' \$m; done"
   end
   
   def self.build
