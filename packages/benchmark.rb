@@ -47,6 +47,6 @@ class Benchmark < Package
   end
 
   def self.check
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir test"
+    system "ninja -C builddir test"
   end
 end
