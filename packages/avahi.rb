@@ -24,7 +24,7 @@ class Avahi < Package
   depends_on 'gtk3'
   depends_on 'libdaemon'
   depends_on 'libevent'
-  depends_on 'mono'
+  depends_on 'mono' => :build
   depends_on 'qtbase'
 
   def self.build
