@@ -26,8 +26,7 @@ class Libdv < Package
 
   def self.build
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
-    ./configure #{CREW_OPTIONS} \
-    --program-prefix='' --program-suffix='' "
+    ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
