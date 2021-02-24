@@ -77,6 +77,8 @@ class Fontconfig < Package
       puts 'To complete the installation, execute the following:'.orange
       puts 'source ~/.bashrc'.orange
     end
-    system "env FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv"
+    # The following postinstall fails if graphite isn't installed when fontconfig
+    # is being installed.
+    system "env FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv || true"
   end
 end
