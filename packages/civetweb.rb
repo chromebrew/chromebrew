@@ -3,12 +3,10 @@ require 'package'
 class Civetweb < Package
   description 'Embedded C/C++ web server'
   homepage 'https://github.com/civetweb/civetweb/'
-  version '0.12.1'
+  version '1.13'
   compatibility 'all'
   source_url 'https://github.com/civetweb/civetweb/archive/v1.13.tar.gz'
   source_sha256 'a7ccc76c2f1b5f4e8d855eb328ed542f8fe3b882a6da868781799a98f4acdedc'
-
-  depends_on 'openssl'
   
   def self.build
     Dir.mkdir "builddir"
