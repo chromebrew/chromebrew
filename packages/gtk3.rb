@@ -3,23 +3,23 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.25'
+  @_ver = '3.24.26'
   version @_ver
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gtk+/3.24/gtk+-#{@_ver}.tar.xz"
-  source_sha256 '87e26b111d3b8a85ff218980a56f3e814257b8dd11e5c4d9a2803b423b08297c'
+  source_sha256 '2cc1b2dc5cad15d25b6abd115c55ffd8331e8d4677745dd3ce6db725b4fff1e9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.25-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.26-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.26-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.26-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.26-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '2ac48ac4e7afae50082113a5ee02887e8e275a63caa551308009e4778eef8509',
-     armv7l: '2ac48ac4e7afae50082113a5ee02887e8e275a63caa551308009e4778eef8509',
-       i686: '6295abdfb026ea717b3e46b5cf86b42228e223c2e92160263cc36974eaf0a340',
-     x86_64: '274d6fd9d16cd2a4dc60a07b9212fb643851c37fe788f373ba46b644ba5272dc'
+    aarch64: 'f53f6e97f2929af71f497f14869d83ce20f62469aa387d460b43c94105ecd0d1',
+     armv7l: 'f53f6e97f2929af71f497f14869d83ce20f62469aa387d460b43c94105ecd0d1',
+       i686: '9402509ba5d7af3da372b804e28f9c8213768e3bc3a16f811162dd278e0900d4',
+     x86_64: '0e594d1b3661938b5d586670588ffd0b3a6327e697fc01a68e77d101192d9962'
   })
 
   depends_on 'cups'
@@ -38,6 +38,7 @@ class Gtk3 < Package
   depends_on 'xdg_base'
   depends_on 'atk'
   depends_on 'graphite'
+  depends_on 'libdeflate'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

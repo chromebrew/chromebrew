@@ -3,23 +3,23 @@ require 'package'
 class Webkit2gtk < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  @_ver = '2.30.4'
+  @_ver = '2.30.5'
   version @_ver
   compatibility 'all'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{@_ver}.tar.xz"
-  source_sha256 'd595a37c5001ff787266b155e303a5f2e5b48a6d466f2714c2f30c11392f7b24'
+  source_sha256 '7d0dab08e3c5ae07bec80b2822ef42e952765d5724cac86eb23999bfed5a7f1f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.5-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.5-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/webkit2gtk-2.30.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '436805dc8bc10da1f84fd9874fb79b98ee56b433e78eba6b668e523c28c87f83',
-     armv7l: '436805dc8bc10da1f84fd9874fb79b98ee56b433e78eba6b668e523c28c87f83',
-       i686: '754535d0b5e01e458052800e28f9ccdf6b5f10a07c8c08903201f369ef19eb8d',
-     x86_64: '415da1b2619e82937d52364e16308d72f1f6e99c4305443f11e0b97ed5bf3c6b'
+    aarch64: 'b7124c084ab583574893195e4d295d4fd79c2468770d29ca524474c1a5b8bb33',
+     armv7l: 'b7124c084ab583574893195e4d295d4fd79c2468770d29ca524474c1a5b8bb33',
+       i686: 'b6f3fac281c5ddfed66957f210ba226b422b8ffe1935c844d4e9934a32347f78',
+     x86_64: '6c4dd4d6c1625f87950d8d38e99398b670edf1deb758f4efdf53dca7b9b1e57d'
   })
 
   depends_on 'cairo'

@@ -3,22 +3,22 @@ require 'package'
 class Librsvg < Package
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.50.2'
+  version '2.50.3'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.2.tar.xz'
-  source_sha256 '6211f271ce4cd44a7318190d36712e9cea384a933d3e3570004edeb210a056d3'
+  source_url 'https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.3.tar.xz'
+  source_sha256 'a4298a98e3a95fdd73c858c17d4dd018525fb09dbb13bbd668a0c2243989e958'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '4ae81db4da7f1a37c0be24d6539326726364d4226b2ca43c583aac4b8a62af4c',
-      armv7l: '4ae81db4da7f1a37c0be24d6539326726364d4226b2ca43c583aac4b8a62af4c',
-        i686: '84acfe19e47585b1698cb1cd4ba9f4a8a6ccf45007baccaedf72a94e8bf91b52',
-      x86_64: '54a837bd7569101d7ef3151d8832729a8f5bdadd00ded2bc34f67b9df85247ef',
+  binary_sha256({
+    aarch64: '308cf9f89ed04934bf1e1c7e492b51bf57d5adbb023d4830e4fb2122d8fd796d',
+     armv7l: '308cf9f89ed04934bf1e1c7e492b51bf57d5adbb023d4830e4fb2122d8fd796d',
+       i686: '7b4b1fa2ec312b13267b7b1100e65f5e5da783c7dd2f973deb09382005b35c1f',
+     x86_64: '3879b9088e910dc7bd3fa2499ac247a20edbcbd8f90dd76f4975c7993f8b49cd'
   })
 
   depends_on 'cairo'
@@ -35,8 +35,8 @@ class Librsvg < Package
 
   def self.build
     # Following rustup modification as per https://github.com/rust-lang/rustup/issues/1167#issuecomment-367061388
-    system "rustup install stable --profile minimal || (rm -frv ~/.rustup/toolchains/* && rustup install stable --profile minimal)"
-    system "rustup default stable"
+    system 'rustup install stable --profile minimal || (rm -frv ~/.rustup/toolchains/* && rustup install stable --profile minimal)'
+    system 'rustup default stable'
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       ./configure \
       --prefix=#{CREW_PREFIX} \
@@ -56,9 +56,9 @@ class Librsvg < Package
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
-  
+
   def self.postinstall
     # gdk_pixbuf should be setting the correct env variables
-    system "gdk-pixbuf-query-loaders"
+    system 'gdk-pixbuf-query-loaders'
   end
 end
