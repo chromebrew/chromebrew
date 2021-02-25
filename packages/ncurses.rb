@@ -34,6 +34,11 @@ class Ncurses < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # See https://forums.opensuse.org/showthread.php/446927-missing-library-libtinfo-so-5.
+    # See also http://www.linuxforums.org/forum/installation/6251-libtinfo-so-5-a.html.
+    Dir.chdir CREW_DEST_LIB_PREFIX do
+      FileUtils.ln_s "libtinfo.so.6", "libtinfo.so.5"
+    end
   end
   
   def self.check
