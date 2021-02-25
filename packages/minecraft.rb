@@ -4,7 +4,7 @@ class Minecraft < Package
   description 'A sandbox video game developed by Mojang Studios AB.'
   homepage 'https://minecraft.net'
   version '**filler**' # Not sure what to put here since its the launcher version not the game version.
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url 'https://launcher.mojang.com/download/Minecraft.deb'
   source_sha256 '9a8b6b75db199461ae241fbee6adf65fc6636204c58eb79feff968e307464727'
 
