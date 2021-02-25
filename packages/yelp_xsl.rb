@@ -3,8 +3,8 @@ require 'package'
 class Yelp_xsl < Package
   description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documentation'
   homepage 'https://github.com/GNOME/yelp-xsl'
-  compatibility 'all'
   version '40.beta'
+  compatibility 'all'
   source_url 'https://github.com/GNOME/yelp-xsl/archive/40.beta.tar.gz'
   source_sha256 'f9145e36148ff473d501a5393e9d3b34c4450281cd6d6b8dac2c24aad4883d03'
 
