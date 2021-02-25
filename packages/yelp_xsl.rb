@@ -1,25 +1,24 @@
-
 require 'package'
 
 class Yelp_xsl < Package
   description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documentation'
   homepage 'https://github.com/GNOME/yelp-xsl'
+  version '40.beta'
   compatibility 'all'
-  version '3.38.2'
-  source_url 'https://github.com/GNOME/yelp-xsl/archive/3.38.2.tar.gz'
-  source_sha256 'd9e9cc02fc7bb442601515c68fccc4bfbee69860166ca318be9e6b37525943ad'
+  source_url 'https://github.com/GNOME/yelp-xsl/archive/40.beta.tar.gz'
+  source_sha256 'f9145e36148ff473d501a5393e9d3b34c4450281cd6d6b8dac2c24aad4883d03'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-3.38.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-3.38.2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-3.38.2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-3.38.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '3dfe0bdcddbbdc0bd1cd85890919bdec6962d24894fe39db49686c5655d61674',
-      armv7l: '3dfe0bdcddbbdc0bd1cd85890919bdec6962d24894fe39db49686c5655d61674',
-        i686: 'f3a4d2c7155e43b8a43e8188686abfa3e5a195e6479325f5172fa2192ef84977',
-      x86_64: '652e4331e8a136bf3f492618c372063ae86b9feddb407f1edca24fec4362027b',
+  binary_sha256({
+    aarch64: '74ffc820d0c3cea9be8d2f299f6552223668226174aebba9a9d5921df56ba8ca',
+     armv7l: '74ffc820d0c3cea9be8d2f299f6552223668226174aebba9a9d5921df56ba8ca',
+       i686: '836738f78988eb6ca1331d08da02b365f4840001e3a131e15ea36516ec6ba55b',
+     x86_64: '1bce675f4168fa9f44b7fc10ca7b33c7f6139b02671d891290c94f1f5069795e'
   })
 
   depends_on 'itstool'
@@ -27,6 +26,7 @@ class Yelp_xsl < Package
   def self.build
     system './autogen.sh'
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
       ./configure #{CREW_OPTIONS}"
     system 'make'
   end

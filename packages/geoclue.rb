@@ -1,39 +1,47 @@
 require 'package'
 
 class Geoclue < Package
-  description 'GeoClue location framework'
-  homepage 'https://gitlab.freedesktop.org/geoclue/geoclue'
-  version '2.5.3'
+  description 'Modular geoinformation service built on the D-Bus messaging system'
+  homepage 'https://www.freedesktop.org/wiki/Software/GeoClue/'
+  version '2.5.7'
   compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.5.3/geoclue-2.5.3.tar.bz2'
-  source_sha256 'a626f6adaff15d88fd0561344e614e371900e4a64a1fe9ddfcdd40d39712e78b'
+  source_url 'https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.5.7/geoclue-2.5.7.tar.bz2'
+  source_sha256 '6cc7dbe4177b4e7f3532f7fe42262049789a3cd6c55afe60a3564d7394119c27'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '9a4e92261cfe8cf57ca41164eb36956cff8f4c7ac1be4e4369939a75a5448a25',
-     armv7l: '9a4e92261cfe8cf57ca41164eb36956cff8f4c7ac1be4e4369939a75a5448a25',
-       i686: 'c881ab65cd5fc0d0468312d59f521b9c4add00cc79eff2fbda1bcf83610c2b6f',
-     x86_64: '38a2a7982d13e84597fb0745800e8204a7ba7a1309e3cce5a5cb30a623926270',
+  binary_sha256({
+    aarch64: 'ca4c050657f094f10ccf46f4cba13d309d0757830c4be084e8190d72e3ca8949',
+     armv7l: 'ca4c050657f094f10ccf46f4cba13d309d0757830c4be084e8190d72e3ca8949',
+       i686: 'cb9adf521670add9b3d4d0e4491daa10965ab2638f0b5da89ea81a8df0870688',
+     x86_64: '85a1879573e68dea80192fade6cdd52934ea0b2c02c22e959ec3a88b029f144b'
   })
 
-  depends_on 'avahi'
-  depends_on 'json_glib'
-  depends_on 'libnotify'
   depends_on 'libsoup'
+  depends_on 'json_glib'
+  depends_on 'avahi'
+  depends_on 'geocode_glib'
+  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => ':build'
+  depends_on 'libnotify' => ':build'
   depends_on 'modemmanager'
-  depends_on 'meson' => :build
 
   def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --sysconfdir #{CREW_PREFIX}/etc -Ddbus-srv-user=#{USER} -Dgtk-doc=false build"
-    system 'ninja -C build'
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+      -Dsystemd=disabled \
+      -D3g-source=false \
+      -Dcdma-source=false \
+      -Dmodem-gps-source=false \
+      builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
