@@ -29,9 +29,7 @@ class Wmctrl < Package
     patch_sha256 = '205c54538c9a20321af3621e00957317b3a4a3aea473b78a74e8f64632f8b958'
 
     system('curl', '-Lf', patch_url, '-o', 'zippatches.tar.xz')
-    unless Digest::SHA256.hexdigest(File.read('./zippatches.tar.xz')) == patch_sha256
-      abort 'Checksum mismatch :/ try again'
-    end
+    abort 'Checksum mismatch :/ try again'.lightred unless Digest::SHA256.hexdigest(File.read('./zippatches.tar.xz')) == patch_sha256
     system('tar', '-xf', 'zippatches.tar.xz')
 
     system('for i in `cat debian/patches/series`; do patch -p 1 < debian/patches/$i; done')
