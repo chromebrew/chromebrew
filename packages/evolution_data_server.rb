@@ -25,7 +25,6 @@ class Evolution_data_server < Package
   depends_on 'gobject_introspection' => ':build'
   depends_on 'vala' => ':build'
   depends_on 'gtk_doc' => ':build'
-  depends_on 'nspr'
   depends_on 'libsoup'
   depends_on 'gcr'
   depends_on 'libical'
