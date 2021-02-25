@@ -23,7 +23,6 @@ class Qqwing < Package
     FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so"
     FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so.2"
     FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so.2.1.0"
-    FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.la", "#{CREW_DEST_LIB_PREFIX}/libqqwing.la"
   end
 
   def self.check
@@ -32,6 +31,6 @@ class Qqwing < Package
     
   def self.remove
     # since qqwing doesn't fully support custom prefix and DESTDIR, we need to remove them manually
-    FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/libqqwing.*") if ARGV[1] == 'remove'
+    FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/libqqwing.*")
   end
 end
