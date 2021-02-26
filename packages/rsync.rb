@@ -3,30 +3,31 @@ require 'package'
 class Rsync < Package
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
-  version '3.2.3'
+  @_ver = '3.2.3'
+  version "#{@_ver}-1"
   compatibility 'all'
-  source_url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.2.3.tar.gz'
+  source_url "http://rsync.samba.org/ftp/rsync/src/rsync-#{@_ver}.tar.gz"
   source_sha256 'becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rsync-3.2.3-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'cc3dafbe2332746b08f3c3c88ae5ec72ad33e0889055264cceae90905e368f14',
-     armv7l: 'cc3dafbe2332746b08f3c3c88ae5ec72ad33e0889055264cceae90905e368f14',
-       i686: 'f107cf84d70674007a950b9cfef59e5e7683713f8b02ed8d4aaedb4225a032d9',
-     x86_64: 'b6c07acfcfc6b71b508ca1068d3374af6ed4858a7aed638628fa5ca6c1ddb071',
+  binary_sha256({
+    aarch64: 'a005ade8a7e03d1fcfb7b122c7db6ffd48ca759ff21d70dbf5d57eee26661f34',
+     armv7l: 'a005ade8a7e03d1fcfb7b122c7db6ffd48ca759ff21d70dbf5d57eee26661f34',
+       i686: '0c1b8db87c84c849710705b4f07fc75edf78d998056c97025dcc6e55de775a8f',
+     x86_64: '507cbeaafce02f9c0c55f378abae7e4fe7814ac29ad000f99aae1f2978caa1bd'
   })
 
-  depends_on 'zstd'
-  depends_on 'lz4'
   depends_on 'xxhash'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-maintainer-mode"
+    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
+      ./configure #{CREW_OPTIONS} --disable-maintainer-mode"
     system 'make'
   end
 
