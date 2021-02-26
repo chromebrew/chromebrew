@@ -24,11 +24,11 @@ class Dart < Package
   })
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
-    FileUtils.cp_r 'bin/', CREW_DEST_PREFIX.to_s
-    FileUtils.cp_r 'include/', CREW_DEST_PREFIX.to_s
-    FileUtils.cp_r Dir.glob('lib/*'), CREW_DEST_LIB_PREFIX.to_s
-    FileUtils.cp 'version', CREW_DEST_PREFIX.to_s # This stops 'pub get' from throwing errors
+    FileUtils.mkdir_p CREW_DEST_PREFIX
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+    FileUtils.cp_r 'bin/', CREW_DEST_PREFIX
+    FileUtils.cp_r 'include/', CREW_DEST_PREFIX
+    FileUtils.cp_r Dir.glob('lib/*'), CREW_DEST_LIB_PREFIX
+    FileUtils.cp 'version', CREW_DEST_PREFIX # This stops 'pub get' from throwing errors
   end
 end
