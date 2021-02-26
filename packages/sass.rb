@@ -3,20 +3,22 @@ require 'package'
 class Sass < Package
   description 'A Dart implementation of Sass. Sass makes CSS fun again.'
   homepage 'https://sass-lang.com/'
-  version '1.26.10'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://github.com/sass/dart-sass/archive/1.26.10.tar.gz'
-  source_sha256 '9131be72e3eb6d32265e354d6da9f9162d9b28ed5b4910f03744c31509be894f'
+  version '1.32.8'
+  compatibility 'all'
+  source_url 'https://github.com/sass/dart-sass/archive/1.32.8.tar.gz'
+  source_sha256 '1b7679f55bd621af878265ce8b07e3de404779b5f390b6f74ef76c9bacf292b2'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sass-1.26.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sass-1.26.10-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sass-1.26.10-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sass-1.32.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sass-1.32.8-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sass-1.32.8-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sass-1.32.8-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '8383f0b0ceb0cd6193bd029bba483bc427fa150ecf2753180a5d75b2f16f4c72',
-     armv7l: '8383f0b0ceb0cd6193bd029bba483bc427fa150ecf2753180a5d75b2f16f4c72',
-     x86_64: 'c7bfe1b6caf87fd1f78d7ce0cc9e4ec68633d80f150470e751885df2fe0a0781',
+  binary_sha256({
+    aarch64: '12ea3b5e50d909b9375b9e2ae4063f73dd073716d6dc431ee10e0bbdd9eaacfc',
+     armv7l: '12ea3b5e50d909b9375b9e2ae4063f73dd073716d6dc431ee10e0bbdd9eaacfc',
+       i686: '3713b8427deb027e3559f340aaeb0bd1b049f7c71f45c770f02cfcf11ae9a7e9',
+     x86_64: 'cf675aae3203699f6169e42bd342ce8579ca93b920e8675873af7a374006ab6f'
   })
 
   depends_on 'dart'
