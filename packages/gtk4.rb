@@ -3,22 +3,22 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.1.0'
+  version '4.1.1'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gtk/4.1/gtk-4.1.0.tar.xz'
-  source_sha256 '973f651722a847e91e12be0a1c1c610aae0961f2f8d55c5d1fa39e17267d7ada'
+  source_url 'https://download.gnome.org/sources/gtk/4.1/gtk-4.1.1.tar.xz'
+  source_sha256 'f7e1789f6c637b091cffb17de08bd9c3986543282eecdff0750dd04f1673b737'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '660d77d46cd96bc0a9c444d0731e84c6a0e9d36b5df9b27f0214891f5e2c99ca',
-     armv7l: '660d77d46cd96bc0a9c444d0731e84c6a0e9d36b5df9b27f0214891f5e2c99ca',
-       i686: 'e800d434423310eee5e81f1973ec51be376a4e3b0cac040da68da4c5e53919ea',
-     x86_64: '873b3c26ecaf958476f782ae62c10291649f41e1d533aa6381340617beb5aae3'
+    aarch64: 'dcce3aeb6954b2010a867f2bf84b11995d6d0433a1ece96313ee36d27af4819c',
+     armv7l: 'dcce3aeb6954b2010a867f2bf84b11995d6d0433a1ece96313ee36d27af4819c',
+       i686: '182fa221219f0a2b25b5ebe902e86dde0ed09e3e741bb1e52acdd120e8bcb308',
+     x86_64: '81fbb2bd61ff6c1f0729f686e9c1a21f39c24bfaf8d2bd0a92adb929e3f32475'
   })
 
   depends_on 'cups'
@@ -55,6 +55,7 @@ class Gtk4 < Package
     -Dlibsass:default_library=both \
     -Dmutest:default_library=both \
     -Dsassc:default_library=both \
+    -Dsassc=enabled \
     build"
     system 'meson configure build'
     system 'ninja -C build'
