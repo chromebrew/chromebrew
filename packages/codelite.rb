@@ -21,7 +21,7 @@ class Codelite < Package
      x86_64: '8a3cb05597521854499fd7f69287ed82a68853a11bda85621c16456b1dc1c081'
   })
 
-  depends_on 'gtk3'
+  depends_on 'webkit2gtk'
   depends_on 'hunspell'
   depends_on 'libssh'
   depends_on 'wxwidgets'
