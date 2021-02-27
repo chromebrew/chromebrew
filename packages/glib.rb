@@ -21,6 +21,7 @@ class Glib < Package
      x86_64: 'b4e806b51a601a6fd68cad72e1b450059da5ec015fd5e227518c100f41fadae1'
   })
 
+  depends_on 'pcre'
   depends_on 'shared_mime_info'
   depends_on 'util_linux'
   depends_on 'six'
