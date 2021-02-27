@@ -7,10 +7,13 @@ class Qqwing < Package
   version @_ver
   source_url "https://github.com/stephenostermiller/qqwing/archive/v#{@_ver}.tar.gz"
   source_sha256 'dc5d61b4470862b190d437f8143d4090639c164d34461c4caa5c081c5c91e6cc'
+  
+  depends_on 'perl'
 
   def self.patch
-    system 'sed -i s:@build/src-copyright-check.sh::g Makefile'
-    system 'echo > build/src_neaten.pl && chmod +x build/src_neaten.pl'
+    system 'sed -i s:/bin/sh:#/bin/bash:g build/src-copyright-fix.sh'
+    system 'sed -i s:/usr/bin/perl:/usr/local/bin/perl:g build/src-first-comment.pl'
+    FileUtils.install '/dev/null', 'build/src_neaten.pl', mode: 0755
   end
     
   def self.build
@@ -19,10 +22,12 @@ class Qqwing < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so"
-    FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so.2"
-    FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so.2.1.0"
+    if Dir.exist?("#{CREW_PREFIX}/lib64") then
+      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+      FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so"
+      FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so.2"
+      FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so.2.1.0"
+    end
   end
 
   def self.check
