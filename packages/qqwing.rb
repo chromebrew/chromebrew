@@ -8,7 +8,7 @@ class Qqwing < Package
   source_url "https://github.com/stephenostermiller/qqwing/archive/v#{@_ver}.tar.gz"
   source_sha256 'dc5d61b4470862b190d437f8143d4090639c164d34461c4caa5c081c5c91e6cc'
   
-  depends_on 'perl'
+  depends_on 'perl' => :build
 
   def self.patch
     system 'sed -i s:/bin/sh:#/bin/bash:g build/src-copyright-fix.sh'
