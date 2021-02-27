@@ -26,9 +26,10 @@ class Swi_prolog < Package
   end
 
   def self.build
+    FileUtils.rm_rf 'builddir'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "cmake -G Ninja \
+      system "LC_ALL=en_US.utf8 cmake -G Ninja \
       #{CREW_CMAKE_OPTIONS} \
       -DCURSES_CURSES_LIBRARY=#{CREW_LIB_PREFIX}/libncurses.so.6 \
       -DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncurses  \
@@ -36,19 +37,23 @@ class Swi_prolog < Package
       -DCMAKE_CXX_FLAGS=-flto=auto \
       -DCMAKE_EXE_LINKER_FLAGS=-flto=auto \
       -DINSTALL_TESTS=ON \
+      -DUSE_TCMALLOC=OFF \
+      -DSWIPL_PACKAGES_JAVA=OFF \
+      -DSWIPL_PACKAGES_X=OFF \
+      -DSWIPL_PACKAGES_QT=OFF \
       .."
-      system '../scripts/pgo-compile.sh'
-      system 'ninja'
+      system 'LC_ALL=en_US.utf8 ../scripts/pgo-compile.sh'
+      system 'LC_ALL=en_US.utf8 ninja'
     end
   end
 
   def self.check
     Dir.chdir 'builddir' do
-      system 'ctest -j 2'
+      system 'LC_ALL=en_US.utf8 ctest -j 2'
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "LC_ALL=en_US.utf8 DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
