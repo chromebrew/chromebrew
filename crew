@@ -510,7 +510,7 @@ def download
 
   uri = URI.parse url
   filename = File.basename(uri.path)
-  if source
+  if source and !external
     sha256sum = @pkg.source_sha256
   else
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
