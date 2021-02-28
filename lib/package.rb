@@ -1,10 +1,10 @@
 require 'package_helpers'
 
 class Package
-  property :description, :homepage, :version, :compatibility, :binary_url, :binary_sha1, :binary_sha256, :source_url, :source_sha1, :source_sha256, :is_fake
+  property :description, :homepage, :version, :compatibility, :binary_url, :binary_sha1, :binary_sha256, :source_url, :source_sha1, :source_sha256, :is_fake, :is_external
 
   class << self
-    attr_reader :is_fake
+    attr_reader :is_fake, :is_external
     attr_accessor :name, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
@@ -38,7 +38,7 @@ class Package
   end
 
   def self.get_url (architecture)
-    if !@build_from_source && @binary_url && @binary_url.has_key?(architecture)
+    if !@build_from_source and @binary_url and @binary_url.has_key?(architecture)
       return @binary_url[architecture]
     else
       return @source_url
@@ -46,7 +46,7 @@ class Package
   end
 
   def self.is_binary? (architecture)
-    if !@build_from_source && @binary_url && @binary_url.has_key?(architecture)
+    if !@build_from_source and @binary_url and @binary_url.has_key?(architecture) and !@is_external
       return true
     else
       return false
@@ -54,7 +54,7 @@ class Package
   end
 
   def self.is_source? (architecture)
-    if is_binary?(architecture) || is_fake?
+    if (is_binary?(architecture) or is_fake?) and !@is_external
       return false
     else
       return true
@@ -64,9 +64,17 @@ class Package
   def self.is_fake
     @is_fake = true
   end
-
+  
+  def self.is_external
+    @is_external = true
+  end
+  
   def self.is_fake?
-    @is_fake
+    return @is_fake
+  end
+  
+  def self.is_external?
+    return @is_external
   end
 
   # Function to perform patch operations prior to build from source.
