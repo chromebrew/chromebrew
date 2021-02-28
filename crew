@@ -495,7 +495,7 @@ end
 
 def download
   url = @pkg.get_url(@device[:architecture])
-  external = @pkg.is_external(@device[:architecture])
+  external = @pkg.is_external
   source = @pkg.is_source?(@device[:architecture])
 
   if !url
