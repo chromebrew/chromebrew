@@ -495,11 +495,12 @@ end
 
 def download
   url = @pkg.get_url(@device[:architecture])
+  external = @pkg.is_external(@device[:architecture])
   source = @pkg.is_source?(@device[:architecture])
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
-  elsif !source
+  elsif !source or external
     puts "Precompiled binary available, downloading..."
   elsif @pkg.build_from_source
     puts "Downloading source..."
