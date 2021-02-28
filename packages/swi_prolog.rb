@@ -10,12 +10,12 @@ class Swi_prolog < Package
   source_sha256 'f4bcc78437f9080ab089762e9e6afa7071df7f584c14999b92b9a90a4efbd7d8'
 
   binary_url({
-    i686: 'https://dl.bintray.com/chromebrew/chromebrew/swi_prolog-8.2.4-chromeos-i686.tar.xz',
-  x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/swi_prolog-8.2.4-chromeos-x86_64.tar.xz'
+    i686: 'https://dl.bintray.com/chromebrew/chromebrew/swi_prolog-8.2.4-1-chromeos-i686.tar.xz',
+  x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/swi_prolog-8.2.4-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    i686: 'd8985a0a160baca9d6565d4177a43a840450ef4bb96eefae476a51ce27fec063',
-  x86_64: 'cbb431b0bd28fa1c581071aeb1eeda79b70b4ec3c28c2d07b509054e810cb62b'
+    i686: 'b0a31e97f541b9dd7d7c2c873941afafefba5193438a7dc4e9e8689f5c3b7205',
+  x86_64: '0f235b7fa550e879d3ff54d73e15b071edeeb7c6af9a4ff7a55bf2768e5b7ee4'
   })
 
   case ARCH
