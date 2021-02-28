@@ -3,30 +3,32 @@ require 'package'
 class Libusb < Package
   description 'A cross-platform library that gives apps easy access to USB devices'
   homepage 'https://sourceforge.net/projects/libusb/'
-  version '1.0.23'
+  @_ver = '1.0.24'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/libusb/libusb/releases/download/v1.0.23/libusb-1.0.23.tar.bz2'
-  source_sha256 'db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d'
+  source_url "https://github.com/libusb/libusb/releases/download/v#{@_ver}/libusb-#{@_ver}.tar.bz2"
+  source_sha256 '7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.23-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.23-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.23-chromeos-x86_64.tar.xz',
+     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-armv7l.tar.xz',
+      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-armv7l.tar.xz',
+        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-i686.tar.xz',
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '25b18e0f7bec888d717dd466c8fbbd0fe67e6bce54d052dcc52d9a004179fd0f',
-     armv7l: '25b18e0f7bec888d717dd466c8fbbd0fe67e6bce54d052dcc52d9a004179fd0f',
-       i686: 'eb3b3152a972b4849e28328a2d7d170ab7c795375def2173f77bf2a024a3dde9',
-     x86_64: 'b59a07eb8cfbb17d6d3ba7586e360b037f4ff7f96630ea4cf9ebc8a295ae7bd6',
+     aarch64: 'ded8613e843afa15f3cee5cebfd443b46cd628184de64564df93104ceff11de2',
+      armv7l: 'ded8613e843afa15f3cee5cebfd443b46cd628184de64564df93104ceff11de2',
+        i686: '492b39ccfc194a917db879576b50d0b888c9036c70e7f0f15c39c7b427a75d4f',
+      x86_64: 'ceb4addc8cbb3e1e6a72549ef699514ed20ecb2b40d4277a42702b2c13f24491',
   })
 
   depends_on 'eudev'
 
   def self.build
-    system './configure',
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}"
+    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
+      ./configure \
+      #{CREW_OPTIONS}"
     system 'make'
   end
 
