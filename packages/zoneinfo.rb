@@ -49,7 +49,7 @@ class Zoneinfo < Package
     puts "Add `TZ='<timezone>'` to your ~/.bashrc file".lightblue
     puts 'Where <timezone> is the timezone displayed above'.lightblue
     puts 'e.g. `TZ=America/New_York` or `TZ=Etc/UTC`'.lightblue
-    puts "This won't affect the timezone of non-chromebrew ChromeOS apps."
+    puts "This won't affect the timezone of non-chromebrew ChromeOS apps.".lightblue
     puts
   end
 end
