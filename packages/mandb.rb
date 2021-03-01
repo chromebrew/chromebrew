@@ -22,9 +22,30 @@ class Mandb < Package
      x86_64: '30939c206bd1adc66a33a8157d749b288a3726a995a8eb318c057104807c138d'
   })
 
-  depends_on 'gdbm'
-  depends_on 'groff'
-  depends_on 'libpipeline'
+  def self.patch
+    system "sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' src/man_db.conf.in"
+    [
+      'src/man_db.conf.in',
+      'tools/chconfig'
+    ].each do |file|
+      system "sed -i 's,/usr/share/man,#{CREW_PREFIX}/share/man,g' #{file}"
+    end
+    [
+      'include/manconfig.h.in',
+      'src/manp.c',
+      'src/man_db.conf.in',
+      'manual/db.me',
+      'manual/files.me',
+      'man/man1/whatis.man1',
+      'man/man1/apropos.man1',
+      'man/man1/man.man1',
+      'man/man8/accessdb.man8',
+      'man/man8/mandb.man8',
+      'tools/chconfig'
+    ].each do |file|
+      system "sed -i 's,/var/cache/man,#{CREW_PREFIX}/cache/man,g' #{file}"
+    end
+  end
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
@@ -50,25 +71,7 @@ class Mandb < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/cache/man"
-    [
-      'include/manconfig.h.in',
-      'src/manp.c',
-      'src/man_db.conf.in',
-      'manual/db.me',
-      'manual/files.me',
-      'man/man1/whatis.man1',
-      'man/man1/apropos.man1',
-      'man/man1/man.man1',
-      'man/man8/accessdb.man8',
-      'man/man8/mandb.man8',
-      'tools/chconfig'
-    ].each do |file|
-      system "sed -i 's,/var/cache/man,#{CREW_PREFIX}/cache/man,g' #{file}"
-    end
-    system "sed -i 's,/usr/share/man,#{CREW_PREFIX}/share/man,g' tools/chconfig"
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "sed -i 's,/usr/share/man,#{CREW_PREFIX}/share/man,g' #{CREW_DEST_PREFIX}/etc/man_db.conf"
-    system "sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' #{CREW_DEST_PREFIX}/etc/man_db.conf"
   end
 
   def self.postinstall
