@@ -12,13 +12,12 @@ class Chrome < Package
     x86_64: "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/#{@_deb}"
   })
   binary_sha256 ({
-    x86_64: 'b7edb7cd5c166bf3c0a1d245baa5924e242c3b81b97090468bec778f41f40373'
+    x86_64: 'ab00e9412f5f20e30c7db5dc987473248f4adf9ebf2c3f928ef62e1ffb104fe6'
   })
   
   is_external
 
-  case ARCH
-  when 'x86_64'
+  if ARCH == 'x86_64' then
     depends_on 'alien' => :build
     depends_on 'nspr'
     depends_on 'cairo'
