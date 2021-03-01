@@ -3,34 +3,33 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.36'
+  @_ver = '2.36.1'
   version @_ver
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
-  source_sha256 '5788292cc5bbcca0848545af05986f6b17058b105be59e99ba7d0f9eb5336fb8'
+  source_sha256 'e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/binutils-2.36.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'fd86f02633b27be6d0eaf1ca5f30c0d1e93b4b6e0c08311972bf9f74892b1dcf',
-      armv7l: 'fd86f02633b27be6d0eaf1ca5f30c0d1e93b4b6e0c08311972bf9f74892b1dcf',
-        i686: '1ce06b9e18bd84abe16156e61a68f67e35c749d88733e8d6d69d8b4a14f1aa70',
-      x86_64: '10738895b575f9a41a463c8d0a67a18ba0c134bdf71c9388c1a7d6706e5479fd',
+  binary_sha256({
+    aarch64: '22a88c3eb29672805441c78fa2c37414a4d49bec790252391c1caf45edc20426',
+     armv7l: '22a88c3eb29672805441c78fa2c37414a4d49bec790252391c1caf45edc20426',
+       i686: '7f47210024759db0485292d7695f46532ae0c4c579c03ba0c6450a5174ce9f6f',
+     x86_64: '624fb52ce022d6caea7c99a8c6a08f872e51fe0c8be09bb3c3f72e186ad60d3a'
   })
-
-  depends_on 'filecmd'
-  depends_on 'texinfo'
 
   def self.build
     system 'filefix'
     Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+        LDFLAGS='-flto=auto' \
         ../configure #{CREW_OPTIONS} \
+        --with-system-zlib \
         --disable-maintainer-mode \
         --enable-shared \
         --enable-gold \
