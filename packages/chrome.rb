@@ -32,5 +32,6 @@ class Chrome < Package
       ENV['CREW_NOT_STRIP'] = '1'
       FileUtils.ln_sf "#{CREW_PREFIX}/opt/google/chrome/google-chrome", 'bin/google-chrome'
       FileUtils.mv Dir.glob('*'), CREW_DEST_PREFIX
+    end
   end
 end
