@@ -495,7 +495,7 @@ end
 
 def download
   url = @pkg.get_url(@device[:architecture])
-  external = @pkg.is_external?
+  @external = @pkg.is_external?
   source = @pkg.is_source?(@device[:architecture])
 
   if !url
@@ -586,30 +586,33 @@ end
 
 def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
-    puts 'Building from source, this may take a while...'
+    unless @external then
+      puts 'Building from source, this may take a while...'
 
-    # Rename *.la files temporily to *.la_tmp to avoid
-    # libtool: link: '*.la' is not a valid libtool archive.
-    # See https://gnunet.org/faq-la-files and
-    # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
-    puts 'Rename all *.la files to *.la_tmp'.lightblue
+      # Rename *.la files temporily to *.la_tmp to avoid
+      # libtool: link: '*.la' is not a valid libtool archive.
+      # See https://gnunet.org/faq-la-files and
+      # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
+      puts 'Rename all *.la files to *.la_tmp'.lightblue
+      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@mv_verbose} {} {}_tmp"
+    end
     
-    system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@mv_verbose} {} {}_tmp"
-
     @pkg.in_build = true
     @pkg.patch
-    @pkg.prebuild
-    @pkg.build
+    @pkg.prebuild unless @external
+    @pkg.build unless @external
     @pkg.in_build = false
     # wipe crew destdir
     FileUtils.rm_rf Dir.glob("#{CREW_DEST_DIR}/*"), verbose: @fileutils_verbose
     puts 'Preconfiguring package...'
     @pkg.install
 
-    # Rename all *.la_tmp back to *.la to avoid
-    # cannot access '*.la': No such file or directory
-    puts 'Rename all *.la_tmp files back to *.la'.lightblue
-    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@mv_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    unless @external then
+      # Rename all *.la_tmp back to *.la to avoid
+      # cannot access '*.la': No such file or directory
+      puts 'Rename all *.la_tmp files back to *.la'.lightblue
+      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@mv_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    end
   end
 end
 
