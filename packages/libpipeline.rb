@@ -3,9 +3,9 @@ require 'package'
 class Libpipeline < Package
   description 'libpipeline is a C library for manipulating pipelines of subprocesses in a flexible and convenient way.'
   homepage 'http://libpipeline.nongnu.org/'
-  compatibility 'all'
   @_ver = '1.5.3'
   version @_ver
+  compatibility 'all'
   source_url "https://mirror.csclub.uwaterloo.ca/nongnu/libpipeline/libpipeline-#{@_ver}.tar.gz"
   source_sha256 '5dbf08faf50fad853754293e57fd4e6c69bb8e486f176596d682c67e02a0adb0'
 
