@@ -18,7 +18,6 @@ class Chrome < Package
   is_external
 
   if ARCH == 'x86_64' then
-    depends_on 'alien' => :build
     depends_on 'nspr'
     depends_on 'cairo'
     depends_on 'gtk3'
