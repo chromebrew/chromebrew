@@ -500,7 +500,7 @@ def download
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
-  elsif !source or external
+  elsif !source or @external
     puts "Precompiled binary available, downloading..."
   elsif @pkg.build_from_source
     puts "Downloading source..."
@@ -510,7 +510,7 @@ def download
 
   uri = URI.parse url
   filename = File.basename(uri.path)
-  if source and !external
+  if source and !@external
     sha256sum = @pkg.source_sha256
   else
     sha256sum = @pkg.binary_sha256[@device[:architecture]]
