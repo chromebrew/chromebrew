@@ -28,15 +28,16 @@ class Chrome < Package
 
   def self.install
     ENV['CREW_NOT_STRIP'] = '1'
-    FileUtils.mkdir_p CREW_DEST_PREFIX
-    FileUtils.mkdir_p 'bin'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     
-    FileUtils.mv 'usr/share', 'share'
-    FileUtils.rm_rf 'usr'
+    FileUtils.mv Dir.glob('usr/share/*'), './'
+    FileUtils.mv Dir.glob('opt/google/chrome/*'), './'
+    FileUtils.rm_rf ['usr', 'opt']
     
-    FileUtils.ln_s "#{CREW_PREFIX}/opt/google/chrome/google-chrome", 'bin/google-chrome-stable'
-    FileUtils.ln_s "#{CREW_PREFIX}/opt/google/chrome/google-chrome", 'bin/google-chrome'
+    FileUtils.ln_s "#{CREW_PREFIX}/share/chrome/google-chrome", '#{CREW_DEST_PREFIX}/bin/google-chrome-stable'
+    FileUtils.ln_s "#{CREW_PREFIX}/share/chrome/google-chrome", '#{CREW_DEST_PREFIX}/bin/google-chrome'
     
-    FileUtils.mv Dir.glob('*'), CREW_DEST_PREFIX
+    FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share"
   end
 end
