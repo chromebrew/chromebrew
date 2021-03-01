@@ -35,6 +35,6 @@ class Symlinks < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man8"
     FileUtils.install 'symlinks', "#{CREW_DEST_PREFIX}/bin/symlinks", mode: 0o755
-    FileUtils.install 'symlinks.8', "#{CREW_DEST_PREFIX}/share/man/man8/symlinks.8", mode: 0o644
+    FileUtils.install 'symlinks.8', "#{CREW_DEST_MAN_PREFIX}/man8/symlinks.8", mode: 0o644
   end
 end
