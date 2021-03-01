@@ -799,7 +799,9 @@ def install
     meta = download
     target_dir = unpack meta
     if meta[:source] == true
-      (abort "You don't have a working C compiler. Run `crew install buildessential` to get one and try again.".lightred unless @external) unless system('gcc --version')
+      unless @external or system('gcc --version') then
+        abort "You don't have a working C compiler. Run `crew install buildessential` to get one and try again.".lightred
+      end
 
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy
