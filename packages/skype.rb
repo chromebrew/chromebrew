@@ -20,9 +20,12 @@ class Skype < Package
     
   is_external
 
+  def self.preinstall
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/skypeforlinux", 'usr/bin/skype'
+  end
+  
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/skypeforlinux", 'usr/bin/skype'
     FileUtils.mv Dir.glob('usr/*'), CREW_DEST_PREFIX
   end
 end
