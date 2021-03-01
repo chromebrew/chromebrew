@@ -30,6 +30,7 @@ class Chrome < Package
   def self.install
     Dir.chdir('../') do
       ENV['CREW_NOT_STRIP'] = '1'
+      FileUtils.mkdir_p CREW_DEST_PREFIX
       FileUtils.ln_sf "#{CREW_PREFIX}/opt/google/chrome/google-chrome", 'bin/google-chrome'
       FileUtils.mv Dir.glob('*'), CREW_DEST_PREFIX
     end
