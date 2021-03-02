@@ -4,22 +4,22 @@ class Flatpak < Package
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
   @_ver = '1.10.1'
-  version @_ver
+  version "#{@_ver}-1"
   compatibility 'all'
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
-  source_sha256 'c70215792b7cbece83c489dab86adc9bfaf9b140c506affe2a48c92afa3d69b7'
+  source_sha256 'c1354f42bf3b5d51aeb4028c9b62fd4ffc673ef2ff6e583c17777f5dafdbdcb7'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6927a9717a15f4d52e1b2316e159a2f43026431bc91a68627bc6fce5f9634b31',
-     armv7l: '6927a9717a15f4d52e1b2316e159a2f43026431bc91a68627bc6fce5f9634b31',
-       i686: '56abe90a29219a9937b2939a71b4413d90198d7eabc1cb802b3fc6a759a93335',
-     x86_64: '588c3a2c502e0cc6088b4d17e3b133103fdeb0dc653bad0bef79674709b7bf22'
+    aarch64: '83e2e39dc010f7c028f7bbc882c5c00284b1be854aeeba1bd5a2dcd35753a2ca',
+     armv7l: '83e2e39dc010f7c028f7bbc882c5c00284b1be854aeeba1bd5a2dcd35753a2ca',
+       i686: 'e727e2e071eecd24664d3f8ff0e605c503be6caccbe90b24b4245fda9824e528',
+     x86_64: '35163e768a7a3295c00adb45c7a2ca39d35c86b41d3fb44e0a20292cf375aee2'
   })
 
   depends_on 'xdg_base'
@@ -43,12 +43,16 @@ class Flatpak < Package
     Digest::SHA256.hexdigest(File.read(patch_filename)) == patch_sha256
     puts 'patch downloaded'.lightgreen
     system 'patch  -p 1 --forward < patch || true'
+    # Source has libglnx repo as submodule
+    FileUtils.rm_rf('libglnx')
+    system 'git clone --depth=1 https://gitlab.gnome.org/GNOME/libglnx.git libglnx '
   end
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap CFLAGS='-flto=auto' \
+      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
       ./configure #{CREW_OPTIONS} \
       --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
       --enable-sandboxed-triggers \
@@ -89,6 +93,9 @@ class Flatpak < Package
       #{CREW_PREFIX}/bin/flatpak.elf \$FLATPAK_FLAGS  "\$@"
     FLATPAK_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf",
+                 "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf"
   end
 
   def self.postinstall
