@@ -22,6 +22,8 @@ class Mandb < Package
      x86_64: '30939c206bd1adc66a33a8157d749b288a3726a995a8eb318c057104807c138d'
   })
 
+  depends_on 'libseccomp'
+  
   def self.patch
     system "sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' src/man_db.conf.in"
     [
