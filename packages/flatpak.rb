@@ -19,7 +19,7 @@ class Flatpak < Package
     aarch64: '83e2e39dc010f7c028f7bbc882c5c00284b1be854aeeba1bd5a2dcd35753a2ca',
      armv7l: '83e2e39dc010f7c028f7bbc882c5c00284b1be854aeeba1bd5a2dcd35753a2ca',
        i686: 'e727e2e071eecd24664d3f8ff0e605c503be6caccbe90b24b4245fda9824e528',
-     x86_64: '35163e768a7a3295c00adb45c7a2ca39d35c86b41d3fb44e0a20292cf375aee2'
+     x86_64: '1827d8327cc2986bb1928dfe9de2f74e05d7149b6ebe86c04ca27cf0264ad993'
   })
 
   depends_on 'xdg_base'
@@ -44,8 +44,17 @@ class Flatpak < Package
     puts 'patch downloaded'.lightgreen
     system 'patch  -p 1 --forward < patch || true'
     # Source has libglnx repo as submodule
-    FileUtils.rm_rf('libglnx')
-    system 'git clone --depth=1 https://gitlab.gnome.org/GNOME/libglnx.git libglnx '
+    @git_dir = 'libglnx'
+    @git_hash = '4c9055ac08bb64dca146724f488cce4c1ce4c628'
+    @git_url = 'https://gitlab.gnome.org/GNOME/libglnx.git'
+    FileUtils.rm_rf(@git_dir)
+    FileUtils.mkdir_p(@git_dir)
+    Dir.chdir @git_dir do
+      system 'git init'
+      system "git remote add origin #{@git_url}"
+      system "git fetch --depth 1 origin #{@git_hash}"
+      system 'git checkout FETCH_HEAD'
+    end
   end
 
   def self.build
