@@ -4,22 +4,22 @@ class Pulseaudio < Package
   description 'PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for your sound applications.'
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
   @_ver = '14.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   compatibility 'all'
   source_url "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-#{@_ver}.tar.xz"
   source_sha256 '75d3f7742c1ae449049a4c88900e454b8b350ecaa8c544f3488a2562a9ff66f1'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pulseaudio-14.2-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '9f10feb9805320b1c710d93a78a706d0ecc9c8a2b06e82008369b938c7fa6ea7',
-     armv7l: '9f10feb9805320b1c710d93a78a706d0ecc9c8a2b06e82008369b938c7fa6ea7',
-       i686: '816c9dae258d6c3f10fd72bbf621253891cb01915746460d8b806784fe6647c0',
-     x86_64: '89be113223767b5c7af0b6f064efbb65338aac39208018b489152e1654185a33'
+    aarch64: 'b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2',
+     armv7l: 'b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2',
+       i686: '557c79d8841fbdb52c8289e8e174a4f68a1db477a8a1ec7e1a352de8f60ecd95',
+     x86_64: 'cbb4cd934818825e7bc006a82c02e67179d17c25922a04574853374c4760a095'
   })
 
   depends_on 'gsettings_desktop_schemas'
@@ -41,6 +41,9 @@ class Pulseaudio < Package
   depends_on 'jack'
   depends_on 'avahi'
   depends_on 'gstreamer'
+  depends_on 'valgrind'
+  depends_on 'elogind'
+  depends_on 'eudev'
   depends_on 'gst_plugins_base'
   depends_on 'gst_plugins_good'
   depends_on 'gst_plugins_bad'
@@ -56,6 +59,7 @@ class Pulseaudio < Package
     -Dbluez5=false \
     -Dalsa=enabled \
     -Dgstreamer=enabled \
+    -Delogind=enabled \
     -Dtests=true \
     -Dudevrulesdir=#{CREW_PREFIX}/libexec/rules.d \
     -Dalsadatadir=#{CREW_PREFIX}/share/alsa-card-profile \
@@ -76,7 +80,7 @@ class Pulseaudio < Package
     # stderr:
     # loop-init
     # once!
-    system 'ninja -C builddir test || true'
+    # system 'ninja -C builddir test || true'
   end
 
   def self.install
@@ -124,5 +128,8 @@ class Pulseaudio < Package
       .endif
     PAUDIO_DEFAULT_PA_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", @pulseaudio_default_pa, perm: 0o666)
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/pulseaudio-system.conf",
+                 "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/pulseaudio-system.conf"
   end
 end
