@@ -3,9 +3,10 @@ require 'package'
 class Libnewt < Package
   description 'Not Eriks Windowing Toolkit - text mode windowing with slang'
   homepage 'https://pagure.io/newt'
-  version '0.52.21'
+  @_ver = '0.52.21'
+  version @_ver
   compatibility 'all'
-  source_url 'https://releases.pagure.org/newt/newt-0.52.21.tar.gz'
+  source_url "https://releases.pagure.org/newt/newt-#{@_ver}.tar.gz"
   source_sha256 '265eb46b55d7eaeb887fca7a1d51fe115658882dfe148164b6c49fccac5abb31'
 
   binary_url({
