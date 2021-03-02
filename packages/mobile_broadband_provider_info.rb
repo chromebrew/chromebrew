@@ -3,9 +3,10 @@ require 'package'
 class Mobile_broadband_provider_info < Package
   description 'Network Management daemon'
   homepage 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info'
-  version '20201225'
+  @_ver = '20201225'
+  version @_ver
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/-/archive/20201225/mobile-broadband-provider-info-20201225.tar.bz2'
+  source_url "https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/-/archive/#{@_ver}/mobile-broadband-provider-info-#{@_ver}.tar.bz2"
   source_sha256 '0616b3d0580575741d4319ac71ca67c9a378879943d32a67ac0460615767bcdf'
 
   binary_url({
