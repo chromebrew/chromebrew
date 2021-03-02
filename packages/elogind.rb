@@ -3,22 +3,23 @@ require 'package'
 class Elogind < Package
   description 'Standalone systemd-logind fork'
   homepage 'https://github.com/elogind/elogind'
-  version '246.9.2-4c20'
+  @_ver = '246.10'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/elogind/elogind/archive/4c2042edeb73823c5e7c831c34bea942b9525027.zip'
+  source_url "https://github.com/elogind/elogind/archive/v#{@_ver}.tar.gz"
   source_sha256 '9a6285c077f3345c69fc21d1902226966ef6dc6e40d0eba259ee882c5b766eca'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.9.2-4c20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.9.2-4c20-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.9.2-4c20-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.9.2-4c20-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.10-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.10-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/elogind-246.10-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '4978fe7be484892e87a570c6fb8bc4d37c0f75f498178b298f320af25667fb0a',
-     armv7l: '4978fe7be484892e87a570c6fb8bc4d37c0f75f498178b298f320af25667fb0a',
-       i686: '0b95082c824a6234a2bdd292c741a8c614f1c58afc16375bab9e7091f8f63126',
-     x86_64: '9ba1128c658fcb39a903986ad10ed37121f6e0281b081987a8e6fe0a65dc14f4'
+    aarch64: '757fc7dc87b8699b51abdbc3b5b7e7dc505cc3bf1934aabe356d7bfff6712d2d',
+     armv7l: '757fc7dc87b8699b51abdbc3b5b7e7dc505cc3bf1934aabe356d7bfff6712d2d',
+       i686: '8e1c7f42275654fe1a3010c8631be0b5095f6bdcad3020f5ed4b3dd68289eee7',
+     x86_64: '186e7ec40bded8ae9624b8dd3ff90880cd6d0de98016413745d2f672a43cbfa7'
   })
 
   depends_on 'eudev'
@@ -31,6 +32,7 @@ class Elogind < Package
   depends_on 'libxslt'
   depends_on 'shadow'
   depends_on 'glib'
+  depends_on 'polkit'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
