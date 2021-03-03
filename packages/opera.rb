@@ -7,13 +7,6 @@ class Opera < Package
   compatibility 'x86_64'
   version '74.0.3911.160'
   
-  binary_url ({
-    x86_64: "https://get.geo.opera.com/pub/opera/desktop/74.0.3911.160/linux/opera-stable_#{version}_amd64.deb"
-  })
-  binary_sha256 ({
-    x86_64: `curl -Ls https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`.chomp
-  })
-  
   is_external
   
   if ARCH == 'x86_64'
@@ -23,6 +16,8 @@ class Opera < Package
     depends_on 'graphite'
     depends_on 'cras'
     depends_on 'sommelier'
+    source_url "https://get.geo.opera.com/pub/opera/desktop/74.0.3911.160/linux/opera-stable_#{version}_amd64.deb"
+    source_sha256 `curl -Ls https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`.chomp
   end
 
   def self.install
