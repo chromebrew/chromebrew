@@ -51,7 +51,6 @@ class Pipewire < Package
       GETRANDOM_FREEBSD_EOF
       IO.write('getrandom.c', @getrandom_freebsd)
       system "sed -i '/random.h/ r getrandom.c' src/pipewire/impl-core.c"
-      system 'grep -4 "ssize_t getrandom" src/pipewire/impl-core.c'
       system "sed -i '/random.h/d' src/pipewire/impl-core.c"
     end
   end
