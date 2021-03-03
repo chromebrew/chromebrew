@@ -73,7 +73,7 @@ class Gpm < Package
     GPM_SERVICE_EOF
     IO.write("#{CREW_DEST_PREFIX}/systemd/system/gpm.service", @gpm_service)
     FileUtils.chmod 0o644, "#{CREW_DEST_PREFIX}/systemd/system/gpm.service"
-    Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
+    Dir.chdir CREW_DEST_LIB_PREFIX do
       system 'ln -sfr libgpm.so.2.* libgpm.so'
     end
     FileUtils.chmod 0o755, Dir.glob("#{CREW_DEST_LIB_PREFIX}/libgpm.so.*")
