@@ -40,13 +40,6 @@ class Gpm < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
     # via https://github.com/archlinux/svntogit-packages/tree/master/gpm/trunk
-    @gpm_sh = <<~GPM_SH_EOF
-      case \$( /usr/bin/tty ) in
-      /dev/tty[0-9]*) [ -n "\$(pidof -s gpm)" ] && disable-paste ;;
-      esac
-    GPM_SH_EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/profile.d/gpm.sh", @gpm_sh)
-    FileUtils.chmod 0o755, "#{CREW_DEST_PREFIX}/etc/profile.d/gpm.sh"
     @gpm_path = <<~'GPM_PATH_EOF'
       [Unit]
       Description=Virtual console mouse server
