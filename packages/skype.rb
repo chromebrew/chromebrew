@@ -9,15 +9,10 @@ class Skype < Package
   if ARCH == 'x86_64' then
     depends_on 'gtk3'
     depends_on 'sommelier'
+    source_url "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_#{version}_amd64.deb"
+    source_sha256 '30182e5d940993061956a7fd188ca56fbf3bc0852f7c6e8e6a46d44460db63c4'
   end
-
-  binary_url ({
-     x86_64: "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_#{version}_amd64.deb"
-  })
-  binary_sha256 ({
-     x86_64: '30182e5d940993061956a7fd188ca56fbf3bc0852f7c6e8e6a46d44460db63c4'
-  })
-    
+  
   is_external
 
   def self.preinstall
