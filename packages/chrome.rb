@@ -8,13 +8,6 @@ class Chrome < Package
   @_deb = "google-chrome-stable_#{@_ver}-1_amd64.deb"
   version @_ver
   
-  binary_url ({
-    x86_64: "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/#{@_deb}"
-  })
-  binary_sha256 ({
-    x86_64: 'ab00e9412f5f20e30c7db5dc987473248f4adf9ebf2c3f928ef62e1ffb104fe6'
-  })
-  
   is_external
 
   if ARCH == 'x86_64' then
@@ -24,6 +17,8 @@ class Chrome < Package
     depends_on 'expat'
     depends_on 'cras'
     depends_on 'sommelier'
+    source_url "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/#{@_deb}"
+    source_sha256 'ab00e9412f5f20e30c7db5dc987473248f4adf9ebf2c3f928ef62e1ffb104fe6'
   end
 
   def self.install
