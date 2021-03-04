@@ -23,6 +23,7 @@ class Mandb < Package
   })
 
   depends_on 'libseccomp'
+  depends_on 'gdbm'
   
   def self.patch
     system "sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' src/man_db.conf.in"
