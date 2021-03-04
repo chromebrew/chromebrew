@@ -4,22 +4,23 @@ class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
   compatibility 'x86_64'
-  @_ver = '10.0.12'
+  @_ver = '10.0.13'
   version @_ver
 
   case ARCH
   when 'x86_64'
-    source_url "https://www.torproject.org/dist/torbrowser/#{@_ver}/tor-browser-linux64-#{@_ver}_en-US.tar.xz"
-    source_sha256 `curl -Ls #{@source_url} | sha256sum | cut -d ' ' -f1`.chomp
+    @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}/"
+    @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
+    source_url @_url + @_name
+    source_sha256 `curl -Ls #{@_url}/sha256sums-signed-build.txt | grep '#{@_name}'`.chomp
     depends_on 'gtk3'
     depends_on 'sommelier'
   end
 
   def self.build
     system "cat <<'EOF'> tor
-#!/bin/bash
-cd #{CREW_PREFIX}/share
-./start-tor-browser.desktop \"\$@\"
+#!/bin/sh
+#{CREW_PREFIX}/share/start-tor-browser.desktop \"\$@\"
 EOF"
   end
 
