@@ -12,7 +12,7 @@ class Torbrowser < Package
     @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}/"
     @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
     source_url @_url + @_name
-    source_sha256 `curl -Ls #{@_url}/sha256sums-signed-build.txt | grep '#{@_name}'`.chomp
+    source_sha256 `curl -Ls #{@_url}/sha256sums-signed-build.txt | grep '#{@_name}' | cut -d' ' -f1`.chomp
     depends_on 'gtk3'
     depends_on 'sommelier'
   end
