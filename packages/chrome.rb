@@ -7,8 +7,6 @@ class Chrome < Package
   @_ver = '88.0.4324.182'
   @_deb = "google-chrome-stable_#{@_ver}-1_amd64.deb"
   version @_ver
-  
-  is_external
 
   if ARCH == 'x86_64' then
     depends_on 'nspr'
