@@ -17,16 +17,17 @@ class Torbrowser < Package
     depends_on 'sommelier'
   end
 
-  def self.build
-    system "cat <<'EOF'> tor
-#!/bin/sh
-#{CREW_PREFIX}/share/start-tor-browser.desktop \"\$@\"
-EOF"
+  def self.patch
+    @tor = <<~EOF
+      #!/bin/sh -e
+      cd #{CREW_PREFIX}/share/
+      ./start-tor-browser.desktop "$@"
+    EOF
+    File.write('tor', @tor)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     FileUtils.mv 'Browser/', "#{CREW_DEST_PREFIX}/share"
     FileUtils.mv 'start-tor-browser.desktop', "#{CREW_DEST_PREFIX}/share"
     FileUtils.install 'tor', "#{CREW_DEST_PREFIX}/bin/tor", mode: 0755
