@@ -12,8 +12,6 @@ class Skype < Package
     source_url "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_#{version}_amd64.deb"
     source_sha256 '30182e5d940993061956a7fd188ca56fbf3bc0852f7c6e8e6a46d44460db63c4'
   end
-  
-  is_external
 
   def self.preinstall
     FileUtils.ln_s "#{CREW_PREFIX}/bin/skypeforlinux", 'usr/bin/skype'
