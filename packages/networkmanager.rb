@@ -5,6 +5,7 @@ class Networkmanager < Package
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
   @_ver = '1.30.0'
   version @_ver
+  compatibility 'all'
   source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{@_ver}/NetworkManager#{@_ver}.tar.bz2"
   source_sha256 'aa2bc84a3d60ef2b4f1182429ec5f0421ccd2495d88ee91b575cae015aae2f64'
 
