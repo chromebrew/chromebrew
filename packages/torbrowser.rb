@@ -28,7 +28,8 @@ class Torbrowser < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mv 'Browser/', "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mv 'Browser/', "#{CREW_DEST_PREFIX}/share/Browser"
     FileUtils.mv 'start-tor-browser.desktop', "#{CREW_DEST_PREFIX}/share"
     FileUtils.install 'tor', "#{CREW_DEST_PREFIX}/bin/tor", mode: 0755
   end
