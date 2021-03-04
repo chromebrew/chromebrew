@@ -5,6 +5,7 @@ class Ibus < Package
   homepage 'https://github.com/ibus/ibus/wiki'
   @_ver = '1.5.24'
   version @_ver
+  compatibility 'all'
   source_url "https://github.com/ibus/ibus/releases/download/#{@_ver}/ibus-#{@_ver}.tar.gz"
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
