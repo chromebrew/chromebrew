@@ -46,17 +46,6 @@ class Tcl < Package
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-private-headers'
       FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{@_ver_prelastdot}", "#{CREW_DEST_PREFIX}/bin/tclsh"
-      # FileUtils.ln_s "#{CREW_LIB_PREFIX}/itcl4.2.0/libitcl4.2.0.so", "#{CREW_DEST_LIB_PREFIX}/libitcl4.2.0.so"
-      # FileUtils.ln_s "#{CREW_LIB_PREFIX}/tdbc1.1.1/libtdbc1.1.1.so", "#{CREW_DEST_LIB_PREFIX}/libtdbc1.1.1.so"
-      # FileUtils.ln_s "#{CREW_LIB_PREFIX}/thread2.8.5/libthread2.8.5.so", "#{CREW_DEST_LIB_PREFIX}/libthread2.8.5.so"
-      # FileUtils.ln_s "#{CREW_LIB_PREFIX}/tdbcodbc1.1.1/libtdbcodbc1.1.1.so",
-      # "#{CREW_DEST_LIB_PREFIX}/libtdbcodbc1.1.1.so"
-      # FileUtils.ln_s "#{CREW_LIB_PREFIX}/sqlite3.30.1.2/libsqlite3.30.1.2.so",
-      # "#{CREW_DEST_LIB_PREFIX}/libsqlite3.30.1.2.so"
-      # FileUtils.ln_s "#{CREW_LIB_PREFIX}/tdbcmysql1.1.1/libtdbcmysql1.1.1.so",
-      # "#{CREW_DEST_LIB_PREFIX}/libtdbcmysql1.1.1.so"
-      # FileUtils.ln_s "#{CREW_LIB_PREFIX}/tdbcpostgres1.1.1/libtdbcpostgres1.1.1.so",
-      # "#{CREW_DEST_LIB_PREFIX}/libtdbcpostgres1.1.1.so"
     end
   end
 end
