@@ -8,7 +8,7 @@ class Mutter < Package
   homepage 'https://gitlab.gnome.org/GNOME/mutter'
   version '40.beta'
   compatibility 'x86_64 , aarch64, armv7l'
-  source_url 'https://download.gnome.org/core/40/40.beta/sources/mutter-40.beta.tar.xz'
+  source_url "https://download.gnome.org/core/40/#{version}/sources/mutter-#{version}.tar.xz"
   source_sha256 '22aa7f8a57dbef865bc4e9b88f8fb91f45f18157d70f218199238bc10c25b1a6'
 
   binary_url({
