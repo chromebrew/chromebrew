@@ -5,7 +5,7 @@ class Sane_backends < Package
   homepage 'http://www.sane-project.org/'
   version '1.0.32'
   compatibility 'all'
-  source_url 'https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz'
+  source_url "https://gitlab.com/sane-project/backends/-/archive/#{version}/backends-#{version}.tar.bz2"
   source_sha256 '3a28c237c0a72767086202379f6dc92dbb63ec08dfbab22312cba80e238bb114'
 
   binary_url({

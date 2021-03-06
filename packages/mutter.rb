@@ -1,13 +1,10 @@
-# Adapted from Arch Linux mutter PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/mutter/trunk/PKGBUILD
-
 require 'package'
 
 class Mutter < Package
   description 'A window manager for GNOME'
   homepage 'https://gitlab.gnome.org/GNOME/mutter'
   version '40.beta'
-  compatibility 'x86_64 , aarch64, armv7l'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://download.gnome.org/core/40/#{version}/sources/mutter-#{version}.tar.xz"
   source_sha256 '22aa7f8a57dbef865bc4e9b88f8fb91f45f18157d70f218199238bc10c25b1a6'
 
@@ -35,7 +32,6 @@ class Mutter < Package
   depends_on 'ccache' => :build
 
   def self.build
-    # system "env CFLAGS='-fno-stack-protector' \
     system "meson #{CREW_MESON_LTO_OPTIONS} \
     -Dtests=false \
     -Dprofiler=false \

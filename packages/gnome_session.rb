@@ -1,6 +1,3 @@
-# Adapted from Arch Linux gnome-session PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/gnome-session/trunk/PKGBUILD
-
 require 'package'
 
 class Gnome_session < Package
@@ -8,7 +5,7 @@ class Gnome_session < Package
   homepage 'https://gitlab.gnome.org/GNOME/gnome-session'
   @_ver = '40.beta'
   version @_ver
-  compatibility 'x86_64 , aarch64, armv7l'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/gnome-session/-/archive/#{@_ver}/gnome-session-#{@_ver}.tar.bz2"
   source_sha256 '0dd8c38c29568db6ffbd2a788f12b9e93262296ffd6d4c40fc2a830099d46883'
 

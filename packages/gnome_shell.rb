@@ -1,13 +1,10 @@
-# Adapted from Arch Linux gnome-shell PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/gnome-shell/trunk/PKGBUILD
-
 require 'package'
 
 class Gnome_shell < Package
   description 'Next generation desktop shell'
   homepage 'https://wiki.gnome.org/Projects/GnomeShell'
   version '40.beta'
-  compatibility 'x86_64 , aarch64, armv7l'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/GNOME/gnome-shell/archive/#{version}.tar.gz"
   source_sha256 'fd929eba43ca52c1f620460be02de0c116ea7ba792e504329eb85c83e5800ada'
 
