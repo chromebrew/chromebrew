@@ -5,8 +5,8 @@ class Sane_backends < Package
   homepage 'http://www.sane-project.org/'
   version '1.0.32'
   compatibility 'all'
-  source_url "https://gitlab.com/sane-project/backends/-/archive/#{version}/backends-#{version}.tar.bz2"
-  source_sha256 'c0425aad44e4f79dbf2f123d3060d690c5c328ef58316e0ad0322c61d63a4783'
+  source_url 'https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz'
+  source_sha256 '3a28c237c0a72767086202379f6dc92dbb63ec08dfbab22312cba80e238bb114'
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sane_backends-1.0.32-chromeos-armv7l.tar.xz',
