@@ -5,10 +5,7 @@ class Opera < Package
   homepage 'https://www.opera.com/'
   version '74.0.3911.160'
   compatibility 'x86_64'
-  version '74.0.3911.160'
-  
-  is_external
-  
+
   if ARCH == 'x86_64'
     depends_on 'gtk3'
     depends_on 'gsettings_desktop_schemas'
@@ -33,6 +30,25 @@ class Opera < Package
     
     FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.mv Dir.glob('*'), CREW_DEST_PREFIX
-    FileUtils.ln_s "#{CREW_PREFIX}/share/opera/opera", "#{CREW_DEST_PREFIX}/bin/x-www-browser" unless File.exist?("#{CREW_PREFIX}/bin/x-www-browser")
+  end
+  
+  def self.postinstall
+    puts
+    puts 'Set Opera as your default browser? [Y/n]: '
+    case STDIN.gets.chomp
+    when "\n", 'Y', 'y', 'yes'
+      Dir.chdir("#{CREW_PREFIX}/bin") do
+        FileUtils.ln_sf "#{CREW_LIB_PREFIX}/opera/opera", 'x-www-browser'
+      end
+    else
+      puts 'No change has been made.'
+      puts
+    end
+  end
+
+  def self.remove
+    Dir.chdir("#{CREW_PREFIX}/bin") do
+      FileUtils.rm 'x-www-browser' if File.realpath('x-www-browser') == "#{CREW_LIB_PREFIX}/opera/opera"
+    end    
   end
 end
