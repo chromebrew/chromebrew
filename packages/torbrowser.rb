@@ -43,7 +43,7 @@ class Torbrowser < Package
         FileUtils.ln_sf 'tor', 'x-www-browser'
       end
     else
-      puts 'No change have been made.'
+      puts 'No change has been made.'
       puts
     end
     
@@ -54,7 +54,7 @@ class Torbrowser < Package
   
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      FileUtils.rm_rf 'x-www-browser' if File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
+      FileUtils.rm 'x-www-browser' if File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
     end    
   end
 end
