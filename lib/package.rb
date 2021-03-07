@@ -69,6 +69,11 @@ class Package
     @is_fake
   end
 
+  # Function to perform pre-unpack operations prior to binary or source extraction.
+  def self.preunpack
+
+  end
+
   # Function to perform patch operations prior to build from source.
   def self.patch
 
