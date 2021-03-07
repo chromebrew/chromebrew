@@ -740,6 +740,7 @@ def expand_dependencies
 end
 
 def resolve_dependencies
+  @pkg.prestart
   expand_dependencies
 
   # leave only not installed packages in dependencies

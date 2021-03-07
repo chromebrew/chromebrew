@@ -69,6 +69,11 @@ class Package
     @is_fake
   end
 
+  # Function to perform pre-start operations prior to dependency checks.
+  def self.prestart
+
+  end
+
   # Function to perform patch operations prior to build from source.
   def self.patch
 
