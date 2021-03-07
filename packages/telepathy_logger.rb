@@ -12,7 +12,6 @@ class Telepathy_logger < Package
   depends_on 'libx11'
   depends_on 'gobject_introspection'
   depends_on 'telepathy_glib'
-  depends_on 'sqlite'
   depends_on 'python27' => :build
   
   def self.build
