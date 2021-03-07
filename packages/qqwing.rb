@@ -22,6 +22,10 @@ class Qqwing < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    for file in Dir.glob("#{CREW_PREFIX}/lib/libqqwing.*") do
+      system "echo '#{file}' >> #{CREW_CONFIG_PATH}/meta/qqwing.filelist"
+    end
+    
     if Dir.exist?("#{CREW_PREFIX}/lib64") then
       FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
       FileUtils.ln_s "#{CREW_PREFIX}/lib/libqqwing.so", "#{CREW_DEST_LIB_PREFIX}/libqqwing.so"
@@ -32,10 +36,5 @@ class Qqwing < Package
 
   def self.check
     system "make", "check"
-  end
-    
-  def self.remove
-    # since qqwing doesn't fully support custom prefix and DESTDIR, we need to remove them manually
-    FileUtils.rm_rf Dir.glob("#{CREW_PREFIX}/lib/libqqwing.*")
   end
 end
