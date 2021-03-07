@@ -384,7 +384,7 @@ def whatprovides (pkgName)
       if packageList[/\.filelist$/]
         packageName = File.basename packageList, '.filelist'
         File.readlines(packageList).each do |line|
-          found = line[/#{Regexp.new(pkgName)}/]
+          found = line[/#{pkgName}/] if line.ascii_only?
           if found
             fileLine = packageName + ': ' + line
             if not fileArray.include? fileLine
