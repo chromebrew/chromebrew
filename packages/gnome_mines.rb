@@ -28,12 +28,10 @@ class Gnome_mines < Package
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     @_wrapper = <<~EOF
       #!/bin/sh
-      app="#{@_app}"
-
       WAYLAND_DISPLAY=wayland-0
       GDK_BACKEND=wayland
       CLUTTER_BACKEND=wayland
-      exec ${app}.elf "$@"
+      exec #{@_app}.elf "$@"
     EOF
     File.write(@_app, @_wrapper)
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/#{@_app}", "#{CREW_DEST_PREFIX}/bin/#{@_app}.elf"
