@@ -3,7 +3,7 @@ require 'package'
 class Libgnome_games_support < Package
   description 'libgnome-games-support is a small library intended for internal use by GNOME Games.'
   homepage 'https://gitlab.gnome.org/GNOME/libgnome-games-support'
-  @_app = File.basename(__FILE__, '.rb').tr('_', '-')
+  @_app = name.tr('_', '-')
   @_fullver = '1.8.0'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
