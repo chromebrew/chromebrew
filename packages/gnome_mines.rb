@@ -4,7 +4,7 @@ class Gnome_mines < Package
   description 'GNOME Mines (formerly known as Gnomine) is minesweeper clone for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Mines'
   compatibility 'all'
-  @_app = name.tr('_', '-')
+  @_app = File.basename(__FILE__, '.rb').tr('_', '-')
   @_fullver = '3.36.1'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
