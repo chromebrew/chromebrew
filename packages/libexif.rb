@@ -3,35 +3,38 @@ require 'package'
 class Libexif < Package
   description 'A library for parsing, editing, and saving EXIF data'
   homepage 'https://libexif.github.io/'
-  version '0.6.21'
+  @_ver = '0.6.22'
+  @_ver_ = @_ver.gsub(/[.]/, '_')
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/libexif/libexif/archive/libexif-0_6_21-release.tar.gz'
-  source_sha256 '8cb37aa1745ca9050403c501ad4da2924e98ec5460bbd5c9d09bd57f0c746636'
+  source_url "https://github.com/libexif/libexif/releases/download/libexif-#{@_ver_}-release/libexif-#{@_ver}.tar.xz"
+  source_sha256 '5048f1c8fc509cc636c2f97f4b40c293338b6041a5652082d5ee2cf54b530c56'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.21-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.21-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.21-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.22-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.22-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libexif-0.6.22-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'c4d28a7a1a806559be725e264daf15759921281cd53d584fc66a2de955c4b48a',
-     armv7l: 'c4d28a7a1a806559be725e264daf15759921281cd53d584fc66a2de955c4b48a',
-       i686: '7b03b0d97715f99eebdeac70afe4d3562309eda01523d648a6680b02107eb5cf',
-     x86_64: 'ffe068550dd1f366252762ee529a8bd10984f1036d11984bfefabb468893da21',
+  binary_sha256({
+    aarch64: '4294ea1bb5c87281c0033466c28213309c29888b7b38dc31ca7952399eb05bf1',
+     armv7l: '4294ea1bb5c87281c0033466c28213309c29888b7b38dc31ca7952399eb05bf1',
+       i686: '0065d20692bdf287574972b3e4f3b03d18c63e4cfdc53196565d75d977132afd',
+     x86_64: 'd8d0f76f087122ac63d088ec1233e45f6b88880f80ab08bea72f2461bd4e2aa4'
   })
 
   def self.build
     system 'autoreconf -i -f'
     system "sed -i '69,70d' po/Makefile.in.in"
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+     --disable-maintainer-mode"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
