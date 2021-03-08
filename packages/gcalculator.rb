@@ -43,9 +43,9 @@ class Gcalculator < Package
     system 'gdk-pixbuf-query-loaders --update-cache'
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     puts
-    puts "To use the gui calculator, execute 'gnome-calculator'".lightblue
+    puts "To use the graphical calculator, execute 'gnome-calculator'".lightblue
     puts
-    puts "To use the cli calculator, execute 'gcalccmd'".lightblue
+    puts "To use the command line calculator, execute 'gcalccmd'".lightblue
     puts
   end
 end
