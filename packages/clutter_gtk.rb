@@ -4,7 +4,7 @@ class Clutter_gtk < Package
   description 'The Clutter Gtk package is a library providing facilities to integrate Clutter into GTK+ applications.'
   homepage 'https://wiki.gnome.org/Projects/Clutter'
   compatibility 'all'
-  @_app = name.tr('_', '-')
+  @_app = File.basename(__FILE__, '.rb').tr('_', '-')
   @_fullver = '1.8.4'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
