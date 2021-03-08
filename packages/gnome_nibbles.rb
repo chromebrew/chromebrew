@@ -4,7 +4,7 @@ class Gnome_nibbles < Package
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
   compatibility 'all'
-  @_app = name.tr('_', '-')
+  @_app = File.basename(__FILE__, '.rb').tr('_', '-')
   @_fullver = '3.38.2'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
