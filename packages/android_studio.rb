@@ -39,11 +39,10 @@ class Android_studio < Package
     puts
     puts 'To start using Android Studio, type `studio`.'.lightblue
     puts
-    puts 'To completely remove Android Studio, including the'.lightblue
-    puts 'settings, SDK and tools, execute the following:'.lightblue
-    puts 'crew remove android_studio'.lightblue
-    puts "rm -rf #{CREW_PREFIX}/.config/Android".lightblue
-    puts "rm -rf #{CREW_PREFIX}/.config/.AndroidStudio4.1".lightblue
-    puts
+  end
+
+  def self.remove
+    FileUtils.rm_rf "#{CREW_PREFIX}/.config/Android"
+    FileUtils.rm_rf "#{CREW_PREFIX}/.config/.AndroidStudio4.1"
   end
 end
