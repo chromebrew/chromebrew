@@ -4,7 +4,7 @@ class Gnome_klotski < Package
   description 'A puzzle game for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Klotski'
   compatibility 'all'
-  @_app = name.tr('_', '-')
+  @_app = File.basename(__FILE__, '.rb').tr('_', '-')
   @_fullver = '3.38.2'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
