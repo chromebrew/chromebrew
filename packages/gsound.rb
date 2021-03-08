@@ -3,6 +3,7 @@ require 'package'
 class Gsound < Package
   description 'GSound is a small library for playing system sounds.'
   homepage 'https://wiki.gnome.org/Projects/GSound'
+  compatibility 'all'
   @_app = name.tr('_', '-')
   @_fullver = '1.0.2'
   @_mainver = @_fullver.rpartition('.')[0]
