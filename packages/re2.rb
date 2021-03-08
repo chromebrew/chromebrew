@@ -1,9 +1,7 @@
 require 'package'
 
 class Re2 < Package
-  description 'RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines 
-like those used in PCRE, Perl, and Python.'
-
+  description 'RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python.'
   homepage 'https://github.com/google/re2/'
   compatibility 'all'
   @_ver = '2021-02-02'
