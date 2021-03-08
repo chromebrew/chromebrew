@@ -56,9 +56,21 @@ class Nodebrew < Package
     puts 'nodebrew install-binary latest'.lightblue
     puts 'nodebrew use latest'.lightblue
     puts
-    puts 'To uninstall, execute the following:'.lightblue
-    puts 'crew remove nodebrew'.lightblue
-    puts "rm -rf #{CREW_PREFIX}/share/nodebrew".lightblue
-    puts
   end
+  
+  def self.remove
+    if Dir.exists? "#{CREW_PREFIX}/share/nodebrew"
+      puts
+      print "Would you like to remove #{CREW_PREFIX}/share/nodebrew? [y/N] "
+      response = STDIN.getc
+      case response
+      when "y", "Y"
+        FileUtils.rm_rf "#{CREW_PREFIX}/share/nodebrew"
+        puts "#{CREW_PREFIX}/share/nodebrew removed.".lightred
+      else
+        puts "#{CREW_PREFIX}/share/nodebrew saved.".lightgreen
+      end
+      puts
+    end
+  end  
 end
