@@ -42,7 +42,19 @@ class Android_studio < Package
   end
 
   def self.remove
-    FileUtils.rm_rf "#{CREW_PREFIX}/.config/Android"
-    FileUtils.rm_rf "#{CREW_PREFIX}/.config/.AndroidStudio4.1"
+    config_dirs = ["#{CREW_PREFIX}/.config/Android", "#{CREW_PREFIX}/.config/.AndroidStudio4.1"]
+    config_dirs.each { |config_dir|
+      if Dir.exists? config_dir
+        puts
+        print "Would you like to remove #{config_dir}? [y/N] "
+        case STDIN.getc
+        when "y", "Y"
+          FileUtils.rm_rf config_dir
+          puts "#{config_dir} removed.".lightred
+        else
+          puts "#{config_dir} saved.".lightgreen
+        end
+      end
+    }
   end
 end
