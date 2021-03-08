@@ -4,10 +4,9 @@ class Gnome_klotski < Package
   description 'A puzzle game for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Klotski'
   compatibility 'all'
-  @_app = File.basename(__FILE__, '.rb').tr('_', '-')
   @_fullver = '3.38.2'
   @_mainver = @_fullver.rpartition('.')[0]
-  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
+  @_url = "https://download.gnome.org/sources/#{name}/#{@_mainver}/#{name}-#{@_fullver}"
   version @_fullver
   source_url "#{@_url}.tar.xz"
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
@@ -30,11 +29,11 @@ class Gnome_klotski < Package
       WAYLAND_DISPLAY=wayland-0
       GDK_BACKEND=wayland
       CLUTTER_BACKEND=wayland
-      exec #{@_app}.elf "$@"
+      exec #{name}.elf "$@"
     EOF
     File.write(@_app, @_wrapper)
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/#{@_app}", "#{CREW_DEST_PREFIX}/bin/#{@_app}.elf"
-    FileUtils.install @_app, "#{CREW_DEST_PREFIX}/bin/#{@_app}", mode: 0755
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/#{name}", "#{CREW_DEST_PREFIX}/bin/#{name}.elf"
+    FileUtils.install name, "#{CREW_DEST_PREFIX}/bin/#{name}", mode: 0755
   end
 
   def self.postinstall
