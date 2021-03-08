@@ -42,10 +42,5 @@ class Cargo_c < Package
       --no-track \
       --path . \
       --root #{CREW_DEST_PREFIX}"
-    # Dir.glob("#{CREW_DEST_PREFIX}/bin/*") do |filename|
-    # new_filename = filename.sub('cargo-', '')
-    # puts "Renaming #{filename} to #{new_filename} ..."
-    # File.rename(filename, new_filename)
-    # end
   end
 end
