@@ -16,12 +16,17 @@ class Intel_media_driver < Package
     abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i > 0
   end
   
+  def self.patch
+    system "find . -type f -exec sed -e 's,LD_LIBRARY_PATH=,LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:,g' \
+            -e 's,-fstack-protector,-flto=auto,g' -i {} +"
+  end
+  
   def self.build
     FileUtils.mkdir('builddir')
     Dir.chdir('builddir') do
-      system "env CFLAGS='-pipe -fstack-protector-strong -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-            CXXFLAGS='-pipe -fstack-protector-strong -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-            LDFLAGS='-fstack-protector-strong -U_FORTIFY_SOURCE -flto=auto' \
+      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
+            CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
+            LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
             cmake #{CREW_CMAKE_OPTIONS} ../ -G Ninja"
     end
     system 'ninja -C builddir'
