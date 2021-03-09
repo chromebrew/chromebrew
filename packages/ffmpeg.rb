@@ -7,7 +7,7 @@ class Ffmpeg < Package
   version @_ver
   compatibility 'all'
   source_url "https://ffmpeg.org/releases/ffmpeg-#{@_ver}.tar.xz"
-  source_sha256 'cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4'
+  source_sha256 '46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb'
 
   depends_on 'ld_default' => :build
   depends_on 'libopencoreamr'
