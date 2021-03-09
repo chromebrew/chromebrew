@@ -25,7 +25,7 @@ class Vim < Package
   depends_on 'vim_runtime'
 
   def self.preflight
-    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so"
+    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
     gvim = `which gvim 2> /dev/null`.chomp
     abort "gvim version #{version} already installed.".lightgreen unless gvim.to_s == ''
   end
