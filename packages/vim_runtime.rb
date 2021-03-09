@@ -16,10 +16,10 @@ class Vim_runtime < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '89f2375c66810417550d4ab2d2fbf90a6953e3c585b8e0baaa1240b7e0187c99',
-     armv7l: '89f2375c66810417550d4ab2d2fbf90a6953e3c585b8e0baaa1240b7e0187c99',
-       i686: '0b7505d98e974e45d621f33fcaa19f14d907422d3b04f41bfdb0d9143776d61d',
-     x86_64: 'a2ee9fcb92bc566200d21a176ea7bfec6ef7d5b3fbe3fc3c0244ed31e6168d14'
+    aarch64: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
+     armv7l: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
+       i686: '1cefc1026dfdac9d039bb82629ab9287c2bd9a6704f4929f120766d436e7c237',
+     x86_64: '9b8e3d8e1e7455d049000342972c9dfb09ad1fb0b98ef665dde381aa646f9951'
   })
 
   def self.preflight
