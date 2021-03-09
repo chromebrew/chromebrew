@@ -23,7 +23,7 @@ class Vim_runtime < Package
   })
 
   def self.preflight
-    raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
+    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
   end
 
   def self.patch
