@@ -1,29 +1,34 @@
+# Adapted from Arch Linux libva-intel-driver-hybrid PKGBUILD at:
+# https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libva-intel-driver-hybrid
+
 require 'package'
 
-class Intel_vaapi_driver < Package
-  description 'VA-API user mode driver for Intel GEN Graphics family'
-  homepage 'https://github.com/intel/intel-vaapi-driver'
-  compatibility 'i686, x86_64'
-  @_ver = '2.4.1'
-  version @_ver
-  source_url "https://github.com/intel/intel-vaapi-driver/releases/download/#{@_ver}/intel-vaapi-driver-#{@_ver}.tar.bz2"
-  source_sha256 '0081fce08eb3a83f7d99c3b853c8fdfa0af437b8f5b0fb7c66faeb83bcbe0c19'
+class Libva_intel_driver_hybrid < Package
+  description 'VA-API implementation for Intel G45 and HD Graphics family'
+  version '2.4.1'
+  compatibility 'x86_64'
+  source_url 'https://github.com/intel/intel-vaapi-driver/archive/2.4.1.tar.gz'
+  source_sha256 '03cd7e16acc94f828b6e7f3087863d8ca06e99ffa3385588005b1984bdd56157'
+
+
+  depends_on 'igt_gpu_tools'
   
-  depends_on 'libva'
-  
-  def self.preflight
-    abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i > 0
+  def self.patch
+    system "sed -i '1s/python\$/&2/' src/shaders/gpp.py"
   end
   
   def self.build
-    system "env CFLAGS='-pipe -fstack-protector-strong -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-            CXXFLAGS='-pipe -fstack-protector-strong -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-            LDFLAGS='-fstack-protector-strong -U_FORTIFY_SOURCE -flto=auto' \
-            ./configure #{CREW_OPTIONS}"
+    # Only relevant if intel-gpu-tools is installed,
+    # since then the shaders will be recompiled
+    system "sed -i '1s/python\$/&2/' src/shaders/gpp.py"
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+            -Denable_hybrid_codec=true builddir"
+    system "meson configure builddir"
+    system "ninja -C builddir"
   end
-
+  
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
   
   def self.postinstall
