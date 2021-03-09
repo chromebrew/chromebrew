@@ -28,7 +28,7 @@ class Gnome_weather < Package
   depends_on 'gnome_desktop'
   depends_on 'gobject_introspection' => ':build'
   depends_on 'appstream_glib' => ':build'
-  depends_on 'libhandy1'
+  depends_on 'libhandy'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
