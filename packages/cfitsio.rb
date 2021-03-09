@@ -1,6 +1,3 @@
-# Adapted from Arch Linux cfitsio PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/cfitsio/trunk/PKGBUILD
-
 require 'package'
 
 class Cfitsio < Package
@@ -24,8 +21,11 @@ class Cfitsio < Package
      x86_64: '9957f638dd3ea9188ded8bbee7970955947784d51633033a3693ebb746158330'
   })
 
+  def self.patch
+     system "sed -e 's|LDFLAGS=.*|LDFLAGS=$LDFLAGS|g' -i configure.in # Fix LDFLAGS"
+  end
+  
   def self.build
-    system "sed -e 's|LDFLAGS=.*|LDFLAGS=$LDFLAGS|g' -i configure.in # Fix LDFLAGS"
     system 'autoreconf -vi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
