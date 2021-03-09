@@ -16,10 +16,10 @@ class Util_macros < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/util_macros-1.19.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '42bfc95875cfcee649d1a66cfea163f64d3426cbc07b37c05af920a0d5e54cf9',
-     armv7l: '42bfc95875cfcee649d1a66cfea163f64d3426cbc07b37c05af920a0d5e54cf9',
-       i686: 'ab596326234a9a8be37027980f9c63abda60705a85ae2edfc6e891a862f74519',
-     x86_64: 'c2fe3d08599cb0a2b4a0a23b5647f2e8e9959073c0d817157814d05be49ddc83'
+    aarch64: 'e97980e3df0457a1067a42e907f68c31b6be5fa7199cd259ab2ff318c0358246',
+     armv7l: 'e97980e3df0457a1067a42e907f68c31b6be5fa7199cd259ab2ff318c0358246',
+       i686: 'd1d50eb7b3cdbec100fd3d91a3e86400e9abc8fbc648c97423b5678a783cf5f2',
+     x86_64: 'fdf6e08157bac20b6bae42bd63b3ddbe99d67604a63fee47bd405e2c5fac71ec'
   })
 
   def self.build
