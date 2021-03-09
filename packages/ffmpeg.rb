@@ -55,7 +55,7 @@ class Ffmpeg < Package
             CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
             LDFLAGS='-flto=auto' \
             ./configure \
-            #{CREW_OPTIONS}
+            #{CREW_OPTIONS.sub('--build=x86_64-cros-linux-gnu --host=x86_64-cros-linux-gnu --target=x86_64-cros-linux-gnu', '')}
             --enable-libopencore-amrnb \
             --enable-libopencore-amrwb \
             --enable-libvo-amrwbenc \
