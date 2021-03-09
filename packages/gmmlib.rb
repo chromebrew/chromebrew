@@ -11,7 +11,7 @@ class Gmmlib < Package
   
   depends_on 'libva'
   
-  def self.prebuild
+  def self.patch
     system "find . -type f -exec sed -i 's,LD_LIBRARY_PATH=,LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:,g' {} +"
   end
   
