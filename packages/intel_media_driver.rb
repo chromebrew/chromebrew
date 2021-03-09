@@ -32,12 +32,14 @@ class Intel_media_driver < Package
   end
     
   def self.postinstall
-    puts 'Performing env-setup'
     @_str = 'export LIBVA_DRIVER_NAME=iHD'
-    system "echo '#{@_str}' >> #{HOME}/.bashrc" if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i == 0
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts 'source ~/.bashrc'.lightblue
-    puts
+    if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i == 0    
+      puts 'Performing env-setup...'
+      system "echo '#{@_str}' >> #{HOME}/.bashrc"
+      puts
+      puts 'To complete the installation, execute the following:'.lightblue
+      puts 'source ~/.bashrc'.lightblue
+      puts
+    end
   end
 end
