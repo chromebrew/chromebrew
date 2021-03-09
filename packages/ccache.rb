@@ -21,6 +21,7 @@ class Ccache < Package
       x86_64: '5c4c9e014f23977f2f031eb9f9b367881a20fa8effeac9e38289cd723aa11e62',
   })
 
+  depends_on 'xdg_base'
   depends_on 'asciidoc' => :build
 
   def self.build
