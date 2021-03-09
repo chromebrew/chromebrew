@@ -56,6 +56,7 @@ class Ffmpeg < Package
   depends_on 'zeromq'
   depends_on 'dav1d'
   depends_on 'libva'
+  depends_on 'intel_media_driver' if `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i > 0
   depends_on 'speex'
   depends_on 'nasm' => :build
   depends_on 'zvbi'
