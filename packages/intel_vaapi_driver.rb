@@ -12,7 +12,7 @@ class Intel_vaapi_driver < Package
   depends_on 'libva'
   
   def self.preflight
-    abort 'Not an Intel processor, aborting.'.lightred unless Kernel.system("grep 'GenuineIntel' /proc/cpuinfo")
+    abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i > 0
   end
   
   def self.build

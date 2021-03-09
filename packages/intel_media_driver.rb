@@ -2,7 +2,7 @@ require 'package'
 
 class Intel_media_driver < Package
   description 'The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.'
-  homepage 'https://github.com/intel/intel-vaapi-driver'
+  homepage 'https://github.com/intel/media-driver'
   compatibility 'i686, x86_64'
   @_ver = '20.4.5'
   version @_ver
@@ -13,7 +13,7 @@ class Intel_media_driver < Package
   depends_on 'gmmlib'
   
   def self.preflight
-    abort 'Not an Intel processor, aborting.'.lightred unless Kernel.system("grep 'GenuineIntel' /proc/cpuinfo")
+    abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i > 0
   end
   
   def self.build
