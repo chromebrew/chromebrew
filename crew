@@ -214,7 +214,8 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  return set_package(pkgName, filename) if File.exist?(CREW_LIB_PATH + 'packages/' + pkgName + '.rb')
+  pkgPath = CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+  return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
