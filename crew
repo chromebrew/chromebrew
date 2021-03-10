@@ -739,7 +739,7 @@ def expand_dependencies
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
   @pkg.preflight
   expand_dependencies
 
