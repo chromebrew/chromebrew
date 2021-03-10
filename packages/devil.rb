@@ -27,8 +27,7 @@ class Devil < Package
   depends_on 'libjpeg_turbo'
 
   def self.patch
-    system "find . -type f -exec sed -e 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' \
-             -i {} +"
+    system "find -type f -exec sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' {} +"
   end
 
   def self.build

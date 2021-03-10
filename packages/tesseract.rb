@@ -1,7 +1,7 @@
 require 'package'
 
 class Tesseract < Package
-  description 'An OCR program'
+  description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
   @_ver = '4.1.1'
   version @_ver
