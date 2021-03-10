@@ -27,12 +27,12 @@ class Gvim < Package
   depends_on 'sommelier'
   
   def self.preflight
-    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
-    vim = `which vim 2> /dev/null`.chomp
+    vim = `which #{CREW_PREFIX}/bin/vim 2> /dev/null`.chomp
     abort "vim version #{version} already installed.".lightgreen unless vim.to_s == ''
   end
 
   def self.patch
+    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
     # set the system-wide vimrc path
     FileUtils.cd('src') do
       system 'sed', '-i', "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|",
