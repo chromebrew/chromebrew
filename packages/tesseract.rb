@@ -45,6 +45,6 @@ class Tesseract < Package
     system "make DESTDIR=#{CREW_DEST_DIR} install"
     system "make DESTDIR=#{CREW_DEST_DIR} training-install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/tessdata"
-    system "curl -Ls https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata -o #{CREW_DEST_PREFIX}/share/tessdata/osd.traineddata"
+    system "curl -Ls https://github.com/tesseract-ocr/tessdata/raw/4767ea922bcc460e70b87b1d303ebdfed0897da8/eng.traineddata -o #{CREW_DEST_PREFIX}/share/tessdata/osd.traineddata"
   end
 end
