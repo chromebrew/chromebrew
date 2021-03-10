@@ -5,8 +5,12 @@ class Libmfx < Package
   homepage 'https://github.com/lu-zero/mfx_dispatch/'
   version '1.25'
   compatibility 'x86_64 i686'
-  source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.25.tar.gz'
-  source_sha256 '853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42'
+  case ARCH
+  when 'i686', 'x86_64'
+    source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.25.tar.gz'
+    source_sha256 '853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42'
+    depends_on 'libva'
+  end
 
   binary_url({
     i686: 'https://dl.bintray.com/chromebrew/chromebrew/libmfx-1.25-chromeos-i686.tar.xz',
