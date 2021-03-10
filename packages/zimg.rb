@@ -16,17 +16,17 @@ class Zimg < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zimg-3.0.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c126a5ad58d44627a05e02677fcfb008ce2872eef683610b3a8a57ca5f422cbb',
-     armv7l: 'c126a5ad58d44627a05e02677fcfb008ce2872eef683610b3a8a57ca5f422cbb',
-       i686: '0f4e5dd4c3c1c0c3e7298a92cf2c2cd5680840bd9f9b79b417255cdf4c79011a',
-     x86_64: '4f23cf56015009519e5d1692ea17aa71c785a38df99b5a8895dec305d3db223d'
+    aarch64: 'c94a5d596cdc50049c842d01603a1facb61eab365f359c260c1ea4a3b19635e6',
+     armv7l: 'c94a5d596cdc50049c842d01603a1facb61eab365f359c260c1ea4a3b19635e6',
+       i686: '3fa552e994ef9e26ed7668c90b5f7b6dcfac935530a4d219bb4f43f37e6ab43e',
+     x86_64: 'b9aac8627b714d48e9d46a63a674e173f53ee4f4e74834b3141fcdfe94cf0f84'
   })
 
   @lto = ARCH == 'i686' || ARCH == 'x86_64' ? '-flto=auto' : ''
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'
-    system "[ -f Makefile ] || env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
+    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE  #{@lto}' \
       ./configure #{CREW_OPTIONS}"
