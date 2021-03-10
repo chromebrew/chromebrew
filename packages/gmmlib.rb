@@ -22,8 +22,6 @@ class Gmmlib < Package
   x86_64: '7d846916ab47e45d4d85dc41c08c718d0c4e4e774769886f8b452af8b041de92'
   })
 
-  depends_on 'libva'
-
   def self.patch
     system "find . -type f -exec sed -e 's,LD_LIBRARY_PATH=,LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:,g' \
             -e 's,-fstack-protector,-fno-stack-protector,g' -i {} +"
