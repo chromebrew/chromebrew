@@ -45,6 +45,12 @@ class Xorg_server < Package
   depends_on 'lzma' => :build
   depends_on 'xkbcomp'
   depends_on 'glproto'
+  depends_on 'xcb_util_renderutil' => :build
+  depends_on 'xcb_util_image' => :build
+  depends_on 'xcb_util_keysyms' => :build
+  depends_on 'xcb_util_wm' => :build
+  depends_on 'xcb_util_xrm' => :build
+  depends_on 'xcb_util_cursor' => :build
   depends_on 'mesa'
 
   case ARCH
@@ -65,13 +71,13 @@ class Xorg_server < Package
               -Dxnest=true \
               -Dxcsecurity=true \
               -Dxorg=true \
-              -Dxephyr=false \
+              -Dxephyr=true \
               -Dxwayland=true \
               -Dglamor=true \
               -Dudev=true \
               -Dxwin=false \
               -Dsystemd_logind=false \
-              -Dint10=false \
+              -Dint10=auto \
               -Dlog_dir=#{CREW_PREFIX}/var/log \
               build"
     system 'meson configure build'
