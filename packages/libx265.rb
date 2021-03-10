@@ -6,8 +6,11 @@ class Libx265 < Package
   @_ver = '3.4'
   version @_ver
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://github.com/videolan/x265/archive/#{@_ver}.tar.gz"
-  source_sha256 '544d147bf146f8994a7bf8521ed878c93067ea1c7c6e93ab602389be3117eaaf'
+  unless ARCH == 'i686'
+    source_url "https://github.com/videolan/x265/archive/#{@_ver}.tar.gz"
+    source_sha256 '544d147bf146f8994a7bf8521ed878c93067ea1c7c6e93ab602389be3117eaaf'
+    depends_on 'nasm' => :build
+  end
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libx265-3.4-chromeos-armv7l.tar.xz',
@@ -19,8 +22,6 @@ class Libx265 < Package
      armv7l: 'cf7548c97fb5774a3fea30a580ba1719f7b4efdfb4e5f6db91fac20d651d8442',
      x86_64: 'fc7647ea5a73c0fdbc2cea1f2c842de8a4a72db11b1fce5907ed79669e598ab4'
   })
-
-  depends_on 'nasm' => :build
 
   def self.build
     Dir.mkdir 'build-12'
