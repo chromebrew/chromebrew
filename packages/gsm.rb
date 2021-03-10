@@ -23,7 +23,7 @@ class Gsm < Package
   })
 
   def self.patch
-    # Patch from https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/gsm/trunk/gsm-shared.patch
+    # Patch from https://github.com/archlinux/svntogit-packages/blob/master/gsm/trunk/gsm-shared.patch
     @gsm_patch = <<~'GSM_PATCH_EOF'
       --- Makefile	2006-04-26 15:14:26.000000000 -0400
       +++ Makefile	2010-06-19 16:53:25.000000000 -0400
@@ -217,7 +217,7 @@ class Gsm < Package
     GSM_PATCH_EOF
     IO.write('gsm-shared.patch', @gsm_patch)
     # system 'patch -p0 -i gsm-shared.patch'
-    system 'curl -Ls https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/gsm/trunk/gsm-shared.patch | patch -b'
+    system 'curl -Ls https://github.com/archlinux/svntogit-packages/raw/c5a7dd7fe79daea817539ae8315a7cd8eb9cced7/gsm/trunk/gsm-shared.patch | patch -b'
   end
 
   def self.build
