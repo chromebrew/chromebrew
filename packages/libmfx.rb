@@ -21,8 +21,6 @@ class Libmfx < Package
   x86_64: '65246a1f81384d7b241800f406013a7e13920c82d9d136beb74a4edfd924dd59'
   })
 
-  depends_on 'libva'
-
   def self.build
     system 'autoreconf -i'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
