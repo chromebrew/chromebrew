@@ -214,9 +214,8 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return set_package(pkgName, filename) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
-  end
+  pkgPath = CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+  return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
@@ -740,6 +739,7 @@ def expand_dependencies
 end
 
 def resolve_dependencies
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
   @pkg.preflight
   expand_dependencies
 
