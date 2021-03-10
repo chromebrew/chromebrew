@@ -4,23 +4,10 @@ class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
   @_ver = '1.20.10'
-  version @_ver
+  version @_ver + '-1'
   compatibility 'all'
   source_url "https://github.com/freedesktop/xorg-xserver/archive/xorg-server-#{@_ver}.tar.gz"
   source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'
-
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: '8edf7fc935a34813a0fe13b648f4d1a34b3cd81a36d6f4d9ce3da1d5a31491bb',
-      armv7l: '8edf7fc935a34813a0fe13b648f4d1a34b3cd81a36d6f4d9ce3da1d5a31491bb',
-        i686: 'bbdda323bac7ddf8ab2431cdbf4f17e625589fad6faf82427f10aa94ece011e1',
-      x86_64: '58d115ea4b80448055099284a27c4c794ecdaa7aa24ade44c456b180532e0fee',
-  })
 
   depends_on 'libepoxy'
   depends_on 'xorg_proto'
@@ -45,6 +32,12 @@ class Xorg_server < Package
   depends_on 'lzma' => :build
   depends_on 'xkbcomp'
   depends_on 'glproto'
+  depends_on 'xcb_util_renderutil' => :build
+  depends_on 'xcb_util_image' => :build
+  depends_on 'xcb_util_keysyms' => :build
+  depends_on 'xcb_util_wm' => :build
+  depends_on 'xcb_util_xrm' => :build
+  depends_on 'xcb_util_cursor' => :build
   depends_on 'mesa'
 
   case ARCH
@@ -65,13 +58,13 @@ class Xorg_server < Package
               -Dxnest=true \
               -Dxcsecurity=true \
               -Dxorg=true \
-              -Dxephyr=false \
+              -Dxephyr=true \
               -Dxwayland=true \
               -Dglamor=true \
               -Dudev=true \
               -Dxwin=false \
               -Dsystemd_logind=false \
-              -Dint10=false \
+              -Dint10=auto \
               -Dlog_dir=#{CREW_PREFIX}/var/log \
               build"
     system 'meson configure build'
