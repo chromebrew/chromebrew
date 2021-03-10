@@ -3,10 +3,24 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '5.5'
+  @_ver = '5.6'
+  version @_ver
   compatibility 'all'
-  source_url 'https://www.nano-editor.org/dist/v5/nano-5.5.tar.xz'
-  source_sha256 '390b81bf9b41ff736db997aede4d1f60b4453fbd75a519a4ddb645f6fd687e4a'
+  source_url "https://nano-editor.org/dist/v5/nano-#{@_ver}.tar.xz"
+  source_sha256 'fce183e4a7034d07d219c79aa2f579005d1fd49f156db6e50f53543a87637a32'
+
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '591c7d34de17429fe24e2c72b298c23791e6e87da58f914359d8152ec70b00ab',
+     armv7l: '591c7d34de17429fe24e2c72b298c23791e6e87da58f914359d8152ec70b00ab',
+       i686: '42c85d4a27d9c99a85661385dbbaacc95e09e7ab7878ca7665e17c7527582695',
+     x86_64: 'cb60149f951bd3cbff70a5d097c6d422591cc48dabe40552e59404f48b4cc866'
+  })
 
   depends_on 'xdg_base'
 
@@ -15,30 +29,33 @@ class Nano < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
-            --enable-threads=posix \
-            --enable-nls \
-            --enable-rpath \
-            --enable-browser \
-            --enable-color \
-            --enable-comment \
-            --enable-extra \
-            --enable-help \
-            --enable-histories \
-            --enable-justify \
-            --enable-libmagic \
-            --enable-linenumbers \
-            --enable-mouse \
-            --enable-multibuffer \
-            --enable-nanorc \
-            --enable-operatingdir \
-            --enable-speller \
-            --enable-tabcomp \
-            --enable-wordcomp \
-            --enable-wrapping \
-            --enable-utf8"
+    system "env CFLAGS='-pipe -flto=auto' \
+      CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --enable-threads=posix \
+      --enable-nls \
+      --enable-rpath \
+      --enable-browser \
+      --enable-color \
+      --enable-comment \
+      --enable-extra \
+      --enable-help \
+      --enable-histories \
+      --enable-justify \
+      --enable-libmagic \
+      --enable-linenumbers \
+      --enable-mouse \
+      --enable-multibuffer \
+      --enable-nanorc \
+      --enable-operatingdir \
+      --enable-speller \
+      --enable-tabcomp \
+      --enable-wordcomp \
+      --enable-wrapping \
+      --enable-utf8"
     system 'make'
-    open('nanorc', 'w') { |f|
+    open('nanorc', 'w') do |f|
       f << "set constantshow\n"
       f << "set fill 72\n"
       f << "set historylog\n"
@@ -50,7 +67,7 @@ class Nano < Package
       f << "set regexp\n"
       f << "set smooth\n"
       f << "set suspend\n"
-    }
+    end
   end
 
   def self.install
@@ -62,9 +79,9 @@ class Nano < Package
 
   def self.postinstall
     puts
-    puts "Personal configuration file is located in $HOME/.nanorc".lightblue
+    puts 'Personal configuration file is located in $HOME/.nanorc'.lightblue
     puts
-    puts "To make nano your default editor, execute the following:".lightblue
+    puts 'To make nano your default editor, execute the following:'.lightblue
     puts
     puts "echo 'EDITOR=#{CREW_PREFIX}/bin/nano' >> ~/.bashrc && source ~/.bashrc".lightblue
     puts

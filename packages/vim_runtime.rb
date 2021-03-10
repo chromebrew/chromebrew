@@ -3,49 +3,66 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  version '8.2.1976'
+  @_ver = '8.2.2580'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.1976.tar.gz'
-  source_sha256 'd2d8bc28e28e9c5a63be570cdb44be39470621bb57dcbace5abbd86e15690678'
+  source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
+  source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.1976-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.1976-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.1976-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.1976-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '681fbb6f06cfb300a1a1ba529bc9596ae3fc183e5ccc5e77a8bfb5869da4c281',
-     armv7l: '681fbb6f06cfb300a1a1ba529bc9596ae3fc183e5ccc5e77a8bfb5869da4c281',
-       i686: 'd6c5b6b3518c4a7856df53fac5f18af5bf6d48094bf1dc11d46018ba92cb2298',
-     x86_64: '588ce10bf392d363ce9de709f763ab79ef35a5e8e5eb67e278eec894b6fa04ed',
+  binary_sha256({
+    aarch64: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
+     armv7l: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
+       i686: '1cefc1026dfdac9d039bb82629ab9287c2bd9a6704f4929f120766d436e7c237',
+     x86_64: '9b8e3d8e1e7455d049000342972c9dfb09ad1fb0b98ef665dde381aa646f9951'
   })
+
+  def self.preflight
+    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
+  end
 
   def self.patch
     # set the system-wide vimrc path
     FileUtils.cd('src') do
-      system "sed", "-i", "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|", "feature.h"
-      system "sed", "-i", "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|", "feature.h"
+      system 'sed', '-i', "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|",
+             'feature.h'
+      system 'sed', '-i', "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|",
+             'feature.h'
       system 'autoconf'
     end
   end
 
   def self.build
-    system "./configure",
-           "--prefix=#{CREW_PREFIX}",
-           "--localstatedir=#{CREW_PREFIX}/var/lib/vim",
-           '--with-features=huge',
-           "--with-compiledby='Chromebrew'",
-           '--with-x=no',
-           '--disable-gui',
-           '--enable-multibyte',
-           '--enable-cscope',
-           '--enable-fontset',
-           '--enable-perlinterp=dynamic',
-           '--enable-pythoninterp=dynamic',
-           '--enable-python3interp=dynamic',
-           '--enable-rubyinterp=dynamic',
-           '--disable-selinux'
+    system './configure --help'
+    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      ./configure \
+      #{CREW_OPTIONS} \
+      --localstatedir=#{CREW_PREFIX}/var/lib/vim \
+      --with-features=huge \
+      --with-compiledby='Chromebrew' \
+      --enable-gpm \
+      --enable-acl \
+      --with-x=no \
+      --disable-gui \
+      --enable-multibyte \
+      --enable-cscope \
+      --enable-netbeans \
+      --enable-perlinterp=dynamic \
+      --enable-pythoninterp=dynamic \
+      --enable-python3interp=dynamic \
+      --enable-rubyinterp=dynamic \
+      --enable-luainterp=dynamic \
+      --enable-tclinterp=dynamic \
+      --disable-canberra \
+      --disable-selinux \
+      --disable-nls"
     system 'make'
   end
 
@@ -107,7 +124,7 @@ class Vim_runtime < Package
   def self.postinstall
     vimrc = "#{CREW_PREFIX}/etc/vimrc"
     # keep user changes by writing to a new file
-    vimrc += ".new" if File.exists?(vimrc)
+    vimrc += '.new' if File.exist?(vimrc)
     # by default we will load the global config
     File.write(vimrc, <<~EOF)
       " System-wide defaults are in #{CREW_PREFIX}/share/vim/vimfiles/chromebrew.vim
