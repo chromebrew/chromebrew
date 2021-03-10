@@ -5,7 +5,7 @@ class Intel_media_sdk < Package
   homepage 'https://software.intel.com/en-us/media-sdk/'
   version '20.5.1'
   compatibility 'x86_64'
-  if ARCH == 'i686', 'x86_64'
+  if ARCH == 'x86_64'
     source_url 'https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-20.5.1.tar.gz'
     source_sha256 '047986646f185313df2159fd44bccd870e173bb1cae9c2501ac6b9774bfd424b'
     depends_on 'intel_media_driver'
