@@ -4,9 +4,9 @@
 set -e
 
 #chromebrew directories
-OWNER="skycocker"
-REPO="chromebrew"
-BRANCH="master"
+OWNER="${OWNER:-skycocker}"
+REPO="${REPO:-chromebrew}"
+BRANCH="${BRANCH:-master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew/"
@@ -14,6 +14,7 @@ CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew/"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew/"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
+CURL="${CURL:-curl}"
 
 EARLY_PACKAGES="gcc10 llvm brotli c_ares libcyrussasl libiconv libidn2 \
 libmetalink libnghttp2 libpsl libssh2 libtirpc libunistring openldap \
@@ -85,7 +86,7 @@ case "${ARCH}" in
 esac
 
 for package in $EARLY_PACKAGES; do
-  pkgfile="$(curl -Lsf "${URL}"/packages/"$package".rb)"
+  pkgfile="$($CURL -Lsf "${URL}"/packages/"$package".rb)"
   temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   urls[k]="$temp_url"
@@ -99,7 +100,7 @@ function download_check () {
 
     #download
     echo -e "${BLUE}Downloading ${1}...${RESET}"
-    curl '-#' -C - -L --ssl "${2}" -o "${3}"
+    $CURL '-#' -C - -L --ssl "${2}" -o "${3}"
 
     #verify
     echo -e "${BLUE}Verifying ${1}...${RESET}"

@@ -69,6 +69,11 @@ class Package
     @is_fake
   end
 
+  # Function to perform pre-flight operations prior to dependency checks.
+  def self.preflight
+
+  end
+
   # Function to perform patch operations prior to build from source.
   def self.patch
 
