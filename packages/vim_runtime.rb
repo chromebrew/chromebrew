@@ -22,11 +22,10 @@ class Vim_runtime < Package
      x86_64: '9b8e3d8e1e7455d049000342972c9dfb09ad1fb0b98ef665dde381aa646f9951'
   })
 
-  def self.preflight
-    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
-  end
+  depends_on 'gpm'
 
   def self.patch
+    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
     # set the system-wide vimrc path
     FileUtils.cd('src') do
       system 'sed', '-i', "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|",
