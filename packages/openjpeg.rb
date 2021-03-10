@@ -1,7 +1,7 @@
 require 'package'
 
 class Openjpeg < Package
-  description 'An open source JPEG 2000 codec, version ${pkgver}'
+  description 'An open source JPEG 2000 codec, written in C.'
   homepage 'https://github.com/uclouvain/openjpeg'
   version '2.4.0'
   compatibility 'all'
