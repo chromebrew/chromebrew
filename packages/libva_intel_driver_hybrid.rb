@@ -20,13 +20,12 @@ class Libva_intel_driver_hybrid < Package
   })
 
   def self.patch
+    # Only relevant if intel-gpu-tools is installed,
+    # since then the shaders will be recompiled
     system "sed -i '1s/python\$/&2/' src/shaders/gpp.py"
   end
 
   def self.build
-    # Only relevant if intel-gpu-tools is installed,
-    # since then the shaders will be recompiled
-    system "sed -i '1s/python\$/&2/' src/shaders/gpp.py"
     system "meson #{CREW_MESON_LTO_OPTIONS} \
             -Denable_hybrid_codec=true builddir"
     system 'meson configure builddir'
