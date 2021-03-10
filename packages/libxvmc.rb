@@ -12,7 +12,9 @@ class Libxvmc < Package
   depends_on 'libx11'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
+            LDFLAGS='-flto=auto' \
+            ./configure #{CREW_OPTIONS}"
     system "make"
   end
 
