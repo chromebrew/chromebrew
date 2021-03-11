@@ -211,7 +211,7 @@ class Ffmpeg < Package
   def self.install
     Dir.chdir @git_dir do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      system "install -Dm 755 tools/qt-faststart #{CREW_DEST_PREFIX}/bin/"
+      FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0755
     end
   end
 end
