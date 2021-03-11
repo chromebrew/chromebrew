@@ -351,6 +351,7 @@ def const (var)
       'CREW_NPROC',
       'CREW_OPTIONS',
       'CREW_PREFIX',
+      'CREW_TGT',
       'CREW_VERSION',
       'HOME',
       'LIBC_VERSION',
