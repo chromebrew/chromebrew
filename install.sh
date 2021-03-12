@@ -20,12 +20,6 @@ EARLY_PACKAGES=(gcc10 libiconv libssh2 ncurses ruby openssl git)
 ARCH="$(uname -m)"
 BREW=🍺
 
-GREEN='\e[1;32m';
-RED='\e[1;31m';
-BLUE='\e[1;34m';
-YELLOW='\e[1;33m';
-RESET='\e[0m'
-
 function puts() {
   reset='\e[0m'
   
