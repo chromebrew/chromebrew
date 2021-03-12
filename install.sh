@@ -56,7 +56,7 @@ function puts() {
 function rootchecker() {
   if [ ${EUID} == 0 ]; then
     puts 'Chromebrew should not be installed or run as root.' yellow
-    puts "Trying to switch to user ${USER}..." yellow
+    puts "Trying to switch to user chronos..." yellow
     su chronos - <<< "$(curl -L# ${URL}/install.sh)" ||\
       (puts "Failed to switch to user chronos or installation failed" lightred; exit 1)
   fi
