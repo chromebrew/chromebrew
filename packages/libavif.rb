@@ -21,13 +21,13 @@ class Libavif < Package
   binary_sha256({
     aarch64: '1f61a3c2509df65e7206ddc4ac79c5e4328f5f369d59da384c3f76fef87aa287',
      armv7l: '1f61a3c2509df65e7206ddc4ac79c5e4328f5f369d59da384c3f76fef87aa287',
-       i686: 'd519816e462351cb38c44734dd9ce82fc8ed553614ca40a2683e88c710bd15fd',
+       i686: 'e89beabee4674e52e0abbc9db96462a6f2ccbd23db440ac054144c90101601f1',
      x86_64: '639ba89c4a63d68f714bcf1bb56314594bd5eb5e41ba764424a5e115c97ce6c7'
   })
 
   depends_on 'libaom'
   depends_on 'dav1d'
-  depends_on 'rav1e' unless ARCH == 'i686'
+  depends_on 'rav1e'
   depends_on 'svt_av1' if ARCH == 'x86_64'
   depends_on 'libpng'
   depends_on 'libjpeg'
@@ -37,7 +37,6 @@ class Libavif < Package
   depends_on 'gdk_pixbuf' => ':build'
 
   def self.build
-    ARCH == 'i686' ? (@rav1e = 'OFF') : (@rav1e = 'ON')
     ARCH == 'x86_64' ? (@svt = 'ON') : (@svt = 'OFF')
 
     Dir.mkdir 'builddir'
@@ -51,7 +50,7 @@ class Libavif < Package
         -DAVIF_BUILD_APPS=ON \
         -DAVIF_CODEC_AOM=ON \
         -DAVIF_CODEC_DAV1D=ON \
-        -DAVIF_CODEC_RAV1E=#{@rav1e} \
+        -DAVIF_CODEC_RAV1E=ON \
         -DAVIF_CODEC_SVT=#{@svt} \
         -DAVIF_BUILD_GDK_PIXBUF=ON \
         .."
