@@ -51,11 +51,11 @@ class Xorg_server < Package
 
   case ARCH
   when 'armv7l', 'aarch64'
-    PEER_CMD_PREFIX = '/lib/ld-linux-armhf.so.3'.freeze
+    @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
   when 'i686'
-    PEER_CMD_PREFIX = '/lib/ld-linux-i686.so.2'.freeze
+    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
   when 'x86_64'
-    PEER_CMD_PREFIX = '/lib64/ld-linux-x86-64.so.2'.freeze
+    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end
 
   def self.build
@@ -94,7 +94,7 @@ fi
 basedir=${base%/*}
 # TODO(crbug/1003841): Remove LD_ARGV0 once
 # ld.so supports forwarding the binary name.
-LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/Xwayland.sh\" exec   \"${basedir}/..#{PEER_CMD_PREFIX}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
+LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/Xwayland.sh\" exec   \"${basedir}/..#{@peer_cmd_prefix}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
 EOF"
   end
 
