@@ -3,38 +3,51 @@ require 'package'
 class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  version '1.3.2'
+  @_ver = '1.11.0'
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/strukturag/libheif/releases/download/v1.3.2/libheif-1.3.2.tar.gz'
-  source_sha256 'a9e12a693fc172baa16669f427063edd7bf07964a1cb623ee57cd056c06ee3fc'
+  source_url "https://github.com/strukturag/libheif/releases/download/v#{@_ver}/libheif-#{@_ver}.tar.gz"
+  source_sha256 'c550938f56ff6dac83702251a143f87cb3a6c71a50d8723955290832d9960913'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.3.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '1a4a0c34e2e35401d321c4bc0cf2a358faa64faca7d10f42f83d8d8b36af31a2',
-     armv7l: '1a4a0c34e2e35401d321c4bc0cf2a358faa64faca7d10f42f83d8d8b36af31a2',
-       i686: '03927285a07e05f8f5f30f4d8c40b2cdc18af13cc2ae6be65ecf2a168cd89453',
-     x86_64: 'd676736b107aa2245707d64afa0fe49eca476671a44dc34a6a8b013220b72ad0',
+  binary_sha256({
+    aarch64: '6895e7a1367487e59d771e82498f9f4c6c1c0408099e878716e40ebc27bb2cc6',
+     armv7l: '6895e7a1367487e59d771e82498f9f4c6c1c0408099e878716e40ebc27bb2cc6',
+       i686: '570e56cbe7ad4ed99872cd8e12f2e461d103e9fcb6c8b942c798e14dca2d484a',
+     x86_64: '28fccd530636486eadbc579ce29b6d25ab5e86355e891d070cc485f606dc8f18'
   })
 
   depends_on 'libde265'
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libx265'
+  depends_on 'libaom'
+  depends_on 'dav1d'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-dependency-tracking'
-    system 'make'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      cmake \
+        -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        .."
+    end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    system 'gdk-pixbuf-query-loaders --update-cache'
   end
 end

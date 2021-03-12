@@ -3,47 +3,45 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '7.0.10-29'
-  compatibility 'aarch64,armv7l,x86_64'
-  case ARCH
-  when 'aarch64', 'armv7l', 'x86_64'
-    source_url 'https://github.com/ImageMagick/ImageMagick/archive/7.0.10-29.tar.gz'
-    source_sha256 '7a3a3347e8b0dae2396663c879644cebcb8d4ed115645b4c9dba66494022b2fd'
-    depends_on 'flif'
-    depends_on 'freeimage'
-    depends_on 'freetype'
-    depends_on 'ghostscript'
-    depends_on 'graphviz'
-    depends_on 'jbigkit'
-    depends_on 'jemalloc'
-    depends_on 'lzma'
-    depends_on 'libheif'
-    depends_on 'librsvg'
-    depends_on 'libwebp'
-    depends_on 'libwmf'
-    depends_on 'msttcorefonts'
-    depends_on 'openexr'
-    depends_on 'openjpeg'
-    depends_on 'pango'
-    depends_on 'python27'
-    depends_on 'zstd'
-    depends_on 'sommelier'
-  end
+  @_ver = '7.0.11-2'
+  version @_ver
+  compatibility 'all'
+  source_url "https://github.com/ImageMagick/ImageMagick/archive/#{@_ver}.tar.gz"
+  source_sha256 '936959ba77bb9d8fdab4d9c69f90316c02a7e2467dea3790ad36b4d500c31a22'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.10-29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.10-29-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.10-29-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.11-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.11-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.11-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick7-7.0.11-2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '2b36714b61050e4da65ccaf8860cf654d13f530122edbb21edd5e633f07db297',
-     armv7l: '2b36714b61050e4da65ccaf8860cf654d13f530122edbb21edd5e633f07db297',
-     x86_64: '8557c63c17dcfe443d9ed6e8d78aa555cf032b4165ec39157bb209581c0daf41',
+  binary_sha256({
+    aarch64: '04025f5ae6e216cf6e79f2c1a6eccc79ee4a3228eb4d13d9475938a031bb1986',
+     armv7l: '04025f5ae6e216cf6e79f2c1a6eccc79ee4a3228eb4d13d9475938a031bb1986',
+       i686: '2a8cae3b4c308c75078f199e8bb9b005baf0babfdce0ff9f5b5f52b23ca71fa0',
+     x86_64: '8bc32c289e65e5499660cda89afab1dfb68b14de9c70b4f3e82924fa3dafe80a'
   })
+
+  depends_on 'flif'
+  depends_on 'freeimage'
+  depends_on 'freetype'
+  depends_on 'ghostscript'
+  depends_on 'graphviz'
+  depends_on 'jbigkit'
+  depends_on 'jemalloc'
+  depends_on 'lzma'
+  depends_on 'libheif'
+  depends_on 'librsvg'
+  depends_on 'libwebp'
+  depends_on 'libwmf'
+  depends_on 'msttcorefonts'
+  depends_on 'openexr'
+  depends_on 'openjpeg'
+  depends_on 'pango'
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
-    abort "ImageMagick version #{imver} already installed.".lightgreen unless "#{imver}" == ""
+    abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
   end
 
   def self.patch
@@ -51,19 +49,24 @@ class Imagemagick7 < Package
   end
 
   def self.build
-    system "./configure",
-           "CFLAGS=-I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale",
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--mandir=#{CREW_MAN_PREFIX}",
-           "--with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts",
-           '--disable-dependency-tracking',
-           '--with-jemalloc',
-           '--with-modules',
-           '--enable-hdri',
-           '--with-perl',
-           '--with-rsvg',
-           '--with-x'
+    system "env CFLAGS='-pipe -flto=auto -fno-stack-protector -U_FORTIFY_SOURCE \
+      -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 \
+      -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
+      CXXFLAGS='-pipe -flto=auto -fno-stack-protector -U_FORTIFY_SOURCE' \
+      LDFLAGS='-flto=auto -fno-stack-protector -U_FORTIFY_SOURCE' \
+      ./configure \
+      #{CREW_OPTIONS} \
+      --mandir=#{CREW_MAN_PREFIX} \
+      --program-prefix='' \
+      --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
+      --disable-dependency-tracking \
+      --enable-hugepages \
+      --with-jemalloc \
+      --with-modules \
+      --enable-hdri \
+      --with-perl \
+      --with-rsvg \
+      --with-x"
     system 'make'
   end
 

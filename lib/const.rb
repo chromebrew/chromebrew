@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.7.8'
+CREW_VERSION = '1.7.13'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -60,14 +60,16 @@ CHROMEOS_RELEASE = `grep CHROMEOS_RELEASE_CHROME_MILESTONE= /etc/lsb-release | c
 
 case ARCH
 when 'aarch64', 'armv7l'
-  CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
+  CREW_TGT = 'armv7l-cros-linux-gnueabihf'
 when 'i686'
-  CREW_BUILD = 'i686-cros-linux-gnu'
+  CREW_TGT = 'i686-cros-linux-gnu'
 when 'x86_64'
-  CREW_BUILD = 'x86_64-cros-linux-gnu'
+  CREW_TGT = 'x86_64-cros-linux-gnu'
 end
 
-CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD} --program-prefix='' --program-suffix=''"
+CREW_BUILD = `#{CREW_PREFIX}/share/automake-*/config.guess`.strip # strip to remove newline
+
+CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT} --program-prefix='' --program-suffix=''"
 CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Dc_args='-fuse-ld=lld -pipe' -Dcpp_args='-fuse-ld=lld -pipe'"
 CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Db_lto=true -Dcpp_args='-fuse-ld=gold -pipe' -Dc_args='-fuse-ld=gold -pipe'"
 
@@ -75,6 +77,6 @@ CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -D
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
 # Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
-CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
+CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"
 CREW_LIB_SUFFIX = if ARCH == 'x86_64' then '64' else '' end
-CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_BUILD} --target=#{CREW_BUILD}"
+CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"

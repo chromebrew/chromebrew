@@ -7,6 +7,19 @@ class Irrlicht_examples < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip'
   source_sha256 'f42b280bc608e545b820206fe2a999c55f290de5c7509a02bdbeeccc1bf9e433'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_examples-1.8.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_examples-1.8.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_examples-1.8.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_examples-1.8.4-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '016e609af12216dbb79dded23cf223d668eefbee5c33087921ac9a2faf99fddb',
+     armv7l: '016e609af12216dbb79dded23cf223d668eefbee5c33087921ac9a2faf99fddb',
+       i686: '8653b1d919a602d0269484daec98047d0e4b5e655b50bae8d49341b04b4a0e2e',
+     x86_64: '6c366e0e444594fe94ef29cf6bcf309940d1a3daa2e0c0f151329e73fc142990',
+  })
   
   depends_on 'irrlicht'
   depends_on 'dos2unix' => :build

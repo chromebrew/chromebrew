@@ -51,6 +51,9 @@ DOCOPT
 # If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
 ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
 
+# If CURL environment variable exists use it in lieu of curl.
+CURL = ENV['CURL'] || 'curl'
+
 # Parse arguments using docopt
 require_relative 'lib/docopt'
 begin
@@ -211,9 +214,8 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    return set_package(pkgName, filename) if filename == CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
-  end
+  pkgPath = CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+  return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
@@ -327,6 +329,7 @@ def const (var)
       'ARCH',
       'ARCH_LIB',
       'CHROMEOS_RELEASE',
+      'CURL',
       'CREW_BREW_DIR',
       'CREW_BUILD',
       'CREW_CMAKE_LIBSUFFIX_OPTIONS',
@@ -348,6 +351,7 @@ def const (var)
       'CREW_NPROC',
       'CREW_OPTIONS',
       'CREW_PREFIX',
+      'CREW_TGT',
       'CREW_VERSION',
       'HOME',
       'LIBC_VERSION',
@@ -380,7 +384,7 @@ def whatprovides (pkgName)
       if packageList[/\.filelist$/]
         packageName = File.basename packageList, '.filelist'
         File.readlines(packageList).each do |line|
-          found = line[/#{Regexp.new(pkgName)}/]
+          found = line[/#{pkgName}/] if line.ascii_only?
           if found
             fileLine = packageName + ': ' + line
             if not fileArray.include? fileLine
@@ -529,7 +533,7 @@ def download
       end
     end
 
-    system "curl --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+    system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
 
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
       Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
@@ -736,6 +740,8 @@ def expand_dependencies
 end
 
 def resolve_dependencies
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
+  @pkg.preflight
   expand_dependencies
 
   # leave only not installed packages in dependencies
@@ -836,7 +842,8 @@ def install
     file.write JSON.pretty_generate(output)
   end
   # Update shared library cache after install is complete.
-  system "#{CREW_PREFIX}/sbin/ldconfig || true"
+  system "echo #{CREW_LIB_PREFIX} > #{CREW_PREFIX}/etc/ld.so.conf"
+  system "#{CREW_PREFIX}/sbin/ldconfig -f #{CREW_PREFIX}/etc/ld.so.conf -C #{CREW_PREFIX}/etc/ld.so.cache"
 end
 
 def resolve_dependencies_and_build

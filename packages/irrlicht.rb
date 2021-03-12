@@ -7,6 +7,19 @@ class Irrlicht < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip'
   source_sha256 'f42b280bc608e545b820206fe2a999c55f290de5c7509a02bdbeeccc1bf9e433'
+
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht-1.8.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht-1.8.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht-1.8.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht-1.8.4-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'e98dcd9e79dda539dcc77a4aa5da24fa59f8a465e5f4a42704f2840ad0ddcc9f',
+     armv7l: 'e98dcd9e79dda539dcc77a4aa5da24fa59f8a465e5f4a42704f2840ad0ddcc9f',
+       i686: '33c6fe1559e924ef6c3ebe75d9bcf5b27d419fe6d31c6989cec84637cd586c93',
+     x86_64: 'cad40fccc5ca753ff9d2044bfc720e2d00f775d58691401771eaa731076e4651',
+  })
   
   depends_on 'libxrandr'
   depends_on 'libglvnd'

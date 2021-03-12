@@ -3,26 +3,25 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '20.3.3'
+  @_ver = '21.0.0'
   version @_ver
   compatibility 'all'
   source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
-  source_sha256 'f74e212d4838e982a10c203ffa998817d1855c5cf448ae87b58f96edea61d156'
+  source_sha256 'e6204e98e6a8d77cf9dc5d34f99dd8e3ef7144f3601c808ca0dd26ba522e0d84'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-20.3.3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '6831a61a10ae5ad851a1de731d49f26d9131afa94c2c41d4686c846b2b4a588b',
-      armv7l: '6831a61a10ae5ad851a1de731d49f26d9131afa94c2c41d4686c846b2b4a588b',
-        i686: 'f41ddb3e53293fc0432a5ce347c8555c0e63cf78a48620d55391d7fb0fd52de5',
-      x86_64: '59d6d87f66a5ae4c1c540ad57e95d970d5ab691a73eefceffa59d27f798ed69f',
+  binary_sha256({
+    aarch64: '98e8f7551123894e27cba186b902e907d4d4676628f0c6c293c66339512b79da',
+     armv7l: '98e8f7551123894e27cba186b902e907d4d4676628f0c6c293c66339512b79da',
+       i686: 'e9d7a58868a977a3eba49aea0012b80fa01bcf2185b79e809b612d1c3d0e4e01',
+     x86_64: '65464f8aa7a9d88ef46326463654c86fcd882446d686585e92e5d546932acf8e'
   })
 
-  depends_on 'llvm' => :build
   depends_on 'elfutils'
   depends_on 'glslang'
   depends_on 'libdrm'
@@ -38,23 +37,27 @@ class Mesa < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland_protocols'
-  depends_on 'zstd'
   depends_on 'lm_sensors'
 
   def self.build
-    system "pip3 uninstall -y Mako MarkupSafe || :"
+    case ARCH
+    when 'i686'
+      @vk = 'intel,swrast'
+      @galliumdrivers = 'swrast,svga,virgl,swr,lima,zink,d3d12'
+    when 'x86_64', 'aarch64', 'armv7l'
+      @vk = 'auto'
+      @galliumdrivers = 'auto'
+    end
+    system 'pip3 uninstall -y Mako MarkupSafe || :'
     system "pip3 install --no-warn-script-location --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
     system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako"
-
-    # With llvm 11.1 b_asneeded=false appears to be needed to get lld to be used.
-    #
-    system "meson #{CREW_MESON_OPTIONS} \
-    -Dc_link_args='-fuse-ld=lld' \
-    -Dcpp_link_args='-fuse-ld=lld' \
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
     -Db_asneeded=false \
+    -Dvulkan-drivers=#{@vk} \
+    -Dgallium-drivers=#{@galliumdrivers} \
      builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
