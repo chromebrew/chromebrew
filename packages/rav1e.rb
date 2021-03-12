@@ -5,18 +5,20 @@ class Rav1e < Package
   homepage 'https://github.com/xiph/rav1e/'
   @_ver = '0.5.0-alpha'
   version @_ver
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url "https://github.com/xiph/rav1e/archive/v#{@_ver}.tar.gz"
   source_sha256 'fd884fa387d01860eaf22a0a97353525221eb32bf6b9154bbfa21b6cce5988c8'
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rav1e-0.5.0-alpha-chromeos-i686.tar.xz',
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rav1e-0.5.0-alpha-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd02192b1152145b31bb1192d79ca40cb722d3c550b7471020e30bfac69448571',
      armv7l: 'd02192b1152145b31bb1192d79ca40cb722d3c550b7471020e30bfac69448571',
+       i686: 'f17b429706232d8cd66e9b3368afd7211966dc23b11f8d448dada93cca8460db',
      x86_64: '2c05f46c0361e5fc0b2e40fbd62561c0383eb2dd2b140a3d77a1fd3fc263a07f'
   })
 
