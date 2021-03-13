@@ -32,6 +32,7 @@ class Ffmpeg < Package
   depends_on 'fribidi'
   depends_on 'gsm'
   depends_on 'intel_media_driver' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
+  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
   depends_on 'jack'
   depends_on 'ladspa'
   depends_on 'libaom'
