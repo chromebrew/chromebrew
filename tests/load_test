@@ -4,16 +4,12 @@ require 'find'
 require_relative '../lib/const'
 require_relative '../lib/color'
 
-PKG_DIR = '../packages'
-
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift '../lib'
 
-Find.find(PKG_DIR) do |filename|
-  if File.extname(filename) == '.rb'
-    puts "Loading #{File.basename(filename, ".rb")}..."
-    load filename
-  end
+Dir.glob('../packages/*.rb').each do |filename|
+  puts "Loading #{File.basename(filename, '.rb')}..."
+  load filename
 end
 
 puts "\nAll load tests successful.".lightgreen

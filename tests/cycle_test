@@ -13,14 +13,12 @@ $LOAD_PATH.unshift '../lib'
 puts "Running dependency cycle tests...\n".yellow
 
 # Loads all packages
-Find.find('../packages') do |filename|
-  if File.extname(filename) == '.rb'
-    name = File.basename(filename, '.rb')
-    require_relative("../packages/#{name}")
-    pkg = Object.const_get(name.capitalize)
-    pkg.name = name
-    @all_pkgs[name] = pkg
-  end
+Dir.glob('../packages/*.rb').each do |filename|
+  name = File.basename(filename, '.rb')
+  require_relative("../packages/#{name}")
+  pkg = Object.const_get(name.capitalize)
+  pkg.name = name
+  @all_pkgs[name] = pkg
 end
 
 # Looking for cycles. @path will keep the current dependency path.
