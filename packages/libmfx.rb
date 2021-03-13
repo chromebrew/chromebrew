@@ -4,9 +4,9 @@ class Libmfx < Package
   description 'Intel Media SDK dispatcher library'
   homepage 'https://github.com/lu-zero/mfx_dispatch/'
   version '1.25'
-  compatibility 'x86_64 i686'
+  compatibility 'i686'
   case ARCH
-  when 'i686', 'x86_64'
+  when 'i686'
     source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.25.tar.gz'
     source_sha256 '853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42'
     depends_on 'libva'
@@ -14,11 +14,9 @@ class Libmfx < Package
 
   binary_url({
     i686: 'https://dl.bintray.com/chromebrew/chromebrew/libmfx-1.25-chromeos-i686.tar.xz',
-  x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libmfx-1.25-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     i686: '3eab119d8be510a2786d31419c20c551a0629f3b8d8d4fa58a2fb31b3f66a960',
-  x86_64: '65246a1f81384d7b241800f406013a7e13920c82d9d136beb74a4edfd924dd59'
   })
 
   def self.build

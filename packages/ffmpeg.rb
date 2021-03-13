@@ -31,8 +31,7 @@ class Ffmpeg < Package
   depends_on 'freetype'
   depends_on 'fribidi'
   depends_on 'gsm'
-  depends_on 'intel_media_driver' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
-  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
+  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive? # This provides libmfx for x86_64
   depends_on 'jack'
   depends_on 'ladspa'
   depends_on 'libaom'
@@ -44,7 +43,7 @@ class Ffmpeg < Package
   depends_on 'libfdk_aac'
   depends_on 'libfrei0r'
   depends_on 'libiec61883'
-  depends_on 'libmfx' if ARCH == 'i686' || ARCH == 'x86_64'
+  depends_on 'libmfx' if ARCH == 'i686' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
   depends_on 'libmodplug'
   depends_on 'libmp3lame'
   depends_on 'libopencoreamr'
