@@ -25,6 +25,7 @@ class Libsoup < Package
 
   depends_on 'glib_networking'
   depends_on 'vala'
+  depends_on 'libsoup2' # This way we make sure packages which need the older libsoup-2.4 library get it too.
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
