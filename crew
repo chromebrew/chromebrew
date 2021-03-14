@@ -141,21 +141,17 @@ def set_package (pkgName, pkgPath)
 end
 
 def list_packages
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    if File.extname(filename) == '.rb'
-      print_package filename
-    end
+  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+    print_package filename
   end
 end
 
 def list_available
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
+  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     @notInstalled = true
-    Find.find(CREW_CONFIG_PATH + 'meta/') do |packageList|
-      packageName = File.basename filename, '.rb'
-      @notInstalled = nil if packageList == CREW_CONFIG_PATH + 'meta/' + packageName + '.filelist'
-    end
-    if @notInstalled and File.extname(filename) == '.rb'
+    packageName = File.basename filename, '.rb'
+    @notInstalled = nil if File.exists? CREW_META_PATH + packageName + '.filelist'
+    if @notInstalled
       pkgName = File.basename filename, '.rb'
       set_package pkgName, filename
       if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
@@ -168,28 +164,26 @@ def list_available
 end
 
 def list_installed
-  Dir["#{CREW_CONFIG_PATH}/meta/*.directorylist"].sort.map { |f|
+  Dir[CREW_META_PATH + '*.directorylist'].sort.map { |f|
     File.basename(f, '.directorylist').lightgreen
   }
 end
 
 def list_compatible(compat = true)
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    if File.extname(filename) == '.rb'
-      pkgName = File.basename filename, '.rb'
-      set_package pkgName, filename
-      if compat
-        if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
-          if File.exist? CREW_CONFIG_PATH + 'meta/' + pkgName + '.filelist'
-            puts pkgName.lightgreen
-          else
-            puts pkgName
-          end
+  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+    pkgName = File.basename filename, '.rb'
+    set_package pkgName, filename
+    if compat
+      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+        if File.exist? CREW_META_PATH + pkgName + '.filelist'
+          puts pkgName.lightgreen
+        else
+          puts pkgName
         end
-      else
-        unless @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
-          puts pkgName.lightred
-        end
+      end
+    else
+      unless @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+        puts pkgName.lightred
       end
     end
   end
@@ -197,14 +191,12 @@ end
 
 def generate_compatible
   @device[:compatible_packages] = []
-  Find.find (CREW_LIB_PATH + 'packages') do |filename|
-    if File.extname(filename) == '.rb'
-      pkgName = File.basename filename, '.rb'
-      set_package pkgName, filename
-      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
-        #add to compatible packages
-        @device[:compatible_packages].push(name: @pkg.name)
-      end
+  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+    pkgName = File.basename filename, '.rb'
+    set_package pkgName, filename
+    if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+      #add to compatible packages
+      @device[:compatible_packages].push(name: @pkg.name)
     end
   end
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
@@ -214,25 +206,23 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  pkgPath = CREW_LIB_PATH + 'packages/' + pkgName + '.rb'
+  pkgPath = CREW_PACKAGES_PATH + pkgName + '.rb'
   return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
-  results = Dir["#{CREW_LIB_PATH}packages/*.rb"].sort \
+  results = Dir[CREW_PACKAGES_PATH + '.rb'].sort \
     .select  { |f| File.basename(f, '.rb') =~ re } \
     .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
-    Find.find ("#{CREW_LIB_PATH}packages/") do |packagePath|
-      if File.file? packagePath and File.extname(packagePath) == '.rb'
-        packageName = File.basename packagePath, '.rb'
-        set_package packageName, packagePath
-        if ( @pkg.description =~ /#{pkgPat}/i )
-          print_current_package @opt_verbose
-          results.push(packageName)
-        end
+    Dir[CREW_PACKAGES_PATH + '*.rb'].each do |packagePath|
+      packageName = File.basename packagePath, '.rb'
+      set_package packageName, packagePath
+      if ( @pkg.description =~ /#{pkgPat}/i )
+        print_current_package @opt_verbose
+        results.push(packageName)
       end
     end
   end
@@ -346,10 +336,12 @@ def const (var)
       'CREW_MAN_PREFIX',
       'CREW_MESON_LTO_OPTIONS',
       'CREW_MESON_OPTIONS',
+      'CREW_META_PATH',
       'CREW_NOT_COMPRESS',
       'CREW_NOT_STRIP',
       'CREW_NPROC',
       'CREW_OPTIONS',
+      'CREW_PACKAGES_PATH',
       'CREW_PREFIX',
       'CREW_TGT',
       'CREW_VERSION',
@@ -364,33 +356,56 @@ def const (var)
   end
 end
 
+def human_size (bytes)
+  kilobyte = 1024.0
+  megabyte = kilobyte * kilobyte
+  gigabyte = megabyte * kilobyte
+  if bytes < kilobyte
+    units = 'B'
+    size = bytes
+  end
+  if bytes >= kilobyte and bytes < megabyte
+    units = 'KB'
+    size = bytes / kilobyte
+  end
+  if bytes >= megabyte and bytes < gigabyte
+    units = 'MB'
+    size = bytes / megabyte
+  end
+  if bytes >= gigabyte
+    units = 'GB'
+    size = bytes / gigabyte
+  end
+  return sprintf('%.2f', size.to_s) + units
+end
+
 def files (pkgName)
-  filelist = "#{CREW_PREFIX}/etc/crew/meta/#{pkgName}.filelist"
+  filelist = "#{CREW_META_PATH}#{pkgName}.filelist"
   if File.exists? filelist
     system "sort #{filelist}"
-    lines = `wc -l "#{filelist}"`.strip.split(' ')[0].to_i
-    size = `cat #{filelist} | xargs -I {} du -b '{}' | awk '{ print; total += $1 }; END { print total }' | numfmt --suffix B --to=si | tail -1`
+    lines = File.readlines(filelist).size
+    size = 0
+    File.readlines(filelist).each do |filename|
+      size += File.size(filename.chomp) if File.exists? filename.chomp
+    end
+    humansize = human_size(size)
     puts "Total found: #{lines}".lightgreen
-    puts "Disk usage: #{size}".lightgreen
+    puts "Disk usage: #{humansize}".lightgreen
   else
     puts "Package #{pkgName} is not installed. :(".lightred
   end
 end
 
-def whatprovides (pkgName)
+def whatprovides (regexPat)
   fileArray = []
-  Find.find (CREW_CONFIG_PATH + 'meta/') do |packageList|
-    if File.file? packageList
-      if packageList[/\.filelist$/]
-        packageName = File.basename packageList, '.filelist'
-        File.readlines(packageList).each do |line|
-          found = line[/#{pkgName}/] if line.ascii_only?
-          if found
-            fileLine = packageName + ': ' + line
-            if not fileArray.include? fileLine
-              fileArray.push(fileLine)
-            end
-          end
+  Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
+    packageName = File.basename packageList, '.filelist'
+    File.readlines(packageList).each do |line|
+      found = line[/#{regexPat}/] if line.ascii_only?
+      if found
+        fileLine = packageName + ': ' + line
+        if not fileArray.include? fileLine
+          fileArray.push(fileLine)
         end
       end
     end
@@ -596,7 +611,7 @@ def build_and_preconfigure (target_dir)
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
     puts 'Rename all *.la files to *.la_tmp'.lightblue
-    
+
     system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@mv_verbose} {} {}_tmp"
 
     @pkg.in_build = true
@@ -677,8 +692,8 @@ def install_package (pkgdir)
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.directorylist", verbose: @fileutils_verbose
-    FileUtils.mv 'filelist', CREW_CONFIG_PATH + "meta/#{@pkg.name}.filelist", verbose: @fileutils_verbose
+    FileUtils.mv 'dlist', CREW_META_PATH + @pkg.name + '.directorylist', verbose: @fileutils_verbose
+    FileUtils.mv 'filelist', CREW_META_PATH + @pkg.name + '.filelist', verbose: @fileutils_verbose
 
     # Strip libraries with -S
     strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
@@ -913,7 +928,7 @@ def remove (pkgName)
   end
 
   #if the filelist exists, remove the files and directories installed by the package
-  if File.file?("#{CREW_CONFIG_PATH}meta/#{pkgName}.filelist")
+  if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
 
       #remove all files installed by the package
