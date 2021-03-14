@@ -148,11 +148,10 @@ end
 
 def list_available
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
-    @notInstalled = true
-    packageName = File.basename filename, '.rb'
-    @notInstalled = nil if File.exists? CREW_META_PATH + packageName + '.filelist'
-    if @notInstalled
-      pkgName = File.basename filename, '.rb'
+    notInstalled = true
+    pkgName = File.basename filename, '.rb'
+    notInstalled = false if File.exists? CREW_META_PATH + pkgName + '.filelist'
+    if notInstalled
       set_package pkgName, filename
       if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
         puts pkgName
@@ -164,9 +163,9 @@ def list_available
 end
 
 def list_installed
-  Dir[CREW_META_PATH + '*.directorylist'].sort.map { |f|
+  Dir[CREW_META_PATH + '*.directorylist'].sort.map do |f|
     File.basename(f, '.directorylist').lightgreen
-  }
+  end
 end
 
 def list_compatible(compat = true)
@@ -213,7 +212,7 @@ end
 
 def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
-  results = Dir[CREW_PACKAGES_PATH + '.rb'].sort \
+  results = Dir[CREW_PACKAGES_PATH + '*.rb'].sort \
     .select  { |f| File.basename(f, '.rb') =~ re } \
     .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
