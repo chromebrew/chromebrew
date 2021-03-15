@@ -11,9 +11,24 @@ class Gtk4 < Package
   # source_url "https://download.gnome.org/sources/gtk/#{@_ver_prelastdot}/gtk-#{@_ver}.tar.xz"
   source_sha256 '64b042592ba48c63535a47ed087d161290620e1de9e577ff89ea3afabf1a4edb'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '771dd5ef30a4daadfd1d1c1c8a592c70158924ae1cb18d25677723d62e0efec2',
+     armv7l: '771dd5ef30a4daadfd1d1c1c8a592c70158924ae1cb18d25677723d62e0efec2',
+       i686: 'eca9a807e1ea3308f54213d836df9ddb3ca0c0c085db2e928e60e774368ef2db',
+     x86_64: 'b8bf6a435d4e361f96f30d254f199a9d8bf3bd20c90d78ae701c661b0d29b784'
+  })
+
+  depends_on 'adwaita_icon_theme'
   depends_on 'at_spi2_atk'
   depends_on 'cantarell_fonts'
   depends_on 'cups'
+  depends_on 'ffmpeg'
   depends_on 'gdk_pixbuf'
   depends_on 'gnome_icon_theme'
   depends_on 'gobject_introspection'
