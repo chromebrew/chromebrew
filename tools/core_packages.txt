@@ -24,6 +24,7 @@ git
 glibc
 gmp
 gnutls
+groff
 icu4c
 intltool
 isl
@@ -81,6 +82,7 @@ sed
 slang
 sqlite
 trousers
+uchardet
 unzip
 util_macros
 wget
