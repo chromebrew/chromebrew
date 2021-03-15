@@ -24,22 +24,22 @@ class Gtk4 < Package
      x86_64: '3d715f42be186839b936929deaec180a3bf13f3fb2f7e89dc21421d6b19988fa'
   })
 
-  depends_on 'cups'
   depends_on 'at_spi2_atk'
   depends_on 'cantarell_fonts'
+  depends_on 'cups'
+  depends_on 'gdk_pixbuf'
   depends_on 'gnome_icon_theme'
   depends_on 'gobject_introspection'
-  depends_on 'gdk_pixbuf'
   depends_on 'graphene'
   depends_on 'hicolor_icon_theme'
   depends_on 'iso_codes'
   depends_on 'json_glib'
   depends_on 'libepoxy'
   depends_on 'libxkbcommon'
+  depends_on 'pygments' => :build
   depends_on 'shared_mime_info'
   depends_on 'six' => :build
   depends_on 'xdg_base'
-  depends_on 'pygments' => :build
 
   def self.patch
     case ARCH
@@ -51,22 +51,30 @@ class Gtk4 < Package
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
-    -Dbroadway-backend=true \
-    -Ddemos=false\
-    -Dbuild-examples=false \
-    -Dbuild-tests=false \
-    -Dgraphene:default_library=both \
-    -Dlibsass:default_library=both \
-    -Dmutest:default_library=both \
-    -Dsassc:default_library=both \
-    -Dsassc=enabled \
-    build"
+      -Dbroadway-backend=true \
+      -Dbuild-examples=false \
+      -Dbuild-tests=false \
+      -Ddemos=false\
+      -Dgraphene:default_library=both \
+      -Dlibsass:default_library=both \
+      -Dmutest:default_library=both \
+      -Dsassc:default_library=both \
+      -Dsassc=enabled \
+      build"
     system 'meson configure build'
     system 'ninja -C build'
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    @gtk4settings = <<~GTK4_CONFIG_HEREDOC
+      [Settings]
+      gtk-icon-theme-name = Adwaita
+      gtk-theme-name = Adwaita
+      gtk-font-name = Cantarell 11
+    GTK4_CONFIG_HEREDOC
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-4.0"
+    File.write("#{CREW_DEST_PREFIX}/etc/gtk-4.0/settings.ini", @gtk4settings)
   end
 
   def self.postinstall
@@ -74,18 +82,5 @@ class Gtk4 < Package
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
     system "update-mime-database #{CREW_PREFIX}/share/mime"
-    @xdg_config_home = ENV['XDG_CONFIG_HOME']
-    @gtk4settings = <<~GTK4_CONFIG_HEREDOC
-      [Settings]
-      gtk-icon-theme-name = Adwaita
-      gtk-theme-name = Adwaita
-      gtk-font-name = Cantarell 11
-    GTK4_CONFIG_HEREDOC
-    unless File.exist?("#{@xdg_config_home}/gtk-4.0/settings.ini")
-      puts
-      puts 'Adding basic gtk4 settings to XDG_CONFIG_HOME/gtk-4.0/settings.ini'.lightblue
-      FileUtils.mkdir_p "#{@xdg_config_home}/gtk-4.0"
-      File.write("#{@xdg_config_home}/gtk-4.0/settings.ini", @gtk4settings)
-    end
   end
 end
