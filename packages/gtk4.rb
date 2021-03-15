@@ -11,19 +11,6 @@ class Gtk4 < Package
   # source_url "https://download.gnome.org/sources/gtk/#{@_ver_prelastdot}/gtk-#{@_ver}.tar.xz"
   source_sha256 '64b042592ba48c63535a47ed087d161290620e1de9e577ff89ea3afabf1a4edb'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.1.2-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'f04e726a8c2a71d04c1a274a67b0727aa6ae318b40d9325f20546ca29064e37e',
-     armv7l: 'f04e726a8c2a71d04c1a274a67b0727aa6ae318b40d9325f20546ca29064e37e',
-       i686: '690f527ac11a4af784b299159350323e726a5be18b3443fabdfc41f83dcd10a4',
-     x86_64: '3d715f42be186839b936929deaec180a3bf13f3fb2f7e89dc21421d6b19988fa'
-  })
-
   depends_on 'at_spi2_atk'
   depends_on 'cantarell_fonts'
   depends_on 'cups'
