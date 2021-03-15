@@ -26,6 +26,7 @@ class Gtk4 < Package
 
   depends_on 'cups'
   depends_on 'at_spi2_atk'
+  depends_on 'cantarell_fonts'
   depends_on 'gnome_icon_theme'
   depends_on 'gobject_introspection'
   depends_on 'gdk_pixbuf'
@@ -78,7 +79,7 @@ class Gtk4 < Package
       [Settings]
       gtk-icon-theme-name = Adwaita
       gtk-theme-name = Adwaita
-      gtk-font-name = Arimo 10
+      gtk-font-name = Cantarell 11
     GTK4_CONFIG_HEREDOC
     unless File.exist?("#{@xdg_config_home}/gtk-4.0/settings.ini")
       puts
