@@ -3,42 +3,37 @@ require 'package'
 class Gexiv2 < Package
   description 'gexiv2 is a GObject wrapper around the Exiv2 photo metadata library.'
   homepage 'https://wiki.gnome.org/Projects/gexiv2/'
-  version '0.10.8'
+  @_ver = '0.12.2'
+  @_ver_prelastdot = @_ver.rpartition('.')[0]
+  version @_ver
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gexiv2/0.10/gexiv2-0.10.8.tar.xz'
-  source_sha256 '81c528fd1e5e03577acd80fb77798223945f043fd1d4e06920c71202eea90801'
+  source_url "https://download.gnome.org/sources/gexiv2/#{@_ver_prelastdot}/gexiv2-#{@_ver}.tar.xz"
+  source_sha256 '2322b552aca330eef79724a699c51a302345d5e074738578b398b7f2ff97944c'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.10.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.10.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.10.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.10.8-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '237da7c428e80aabb82fe529cc54d51912656c43356096b43e24e44a5a8784d2',
-     armv7l: '237da7c428e80aabb82fe529cc54d51912656c43356096b43e24e44a5a8784d2',
-       i686: '4f74a753cfc4286e93d65f96e046661957f5b0bfef54732b20a8793f514d1fb8',
-     x86_64: 'bda3197ee000806a1151f44587eb422b0afedc3b8b6b28c9def8ca490ff8db6a',
+  binary_sha256({
+    aarch64: '305a56146c461035262b294710aacb8e5401d2bcee8e1828661e35e78b5bf47e',
+     armv7l: '305a56146c461035262b294710aacb8e5401d2bcee8e1828661e35e78b5bf47e',
+       i686: '278e97c62e7dbc3e8f68fffd8c7ac0802ddf07db1dd9f623ce309f598173db12',
+     x86_64: '81500e05e77186cad22c4e000af94395e760b502913920245015417fae5ba94c'
   })
 
   depends_on 'libexiv2'
   depends_on 'gobject_introspection'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--with-python2-girdir',
-           '--with-python3-girdir'
-    system 'make'
-  end
-
-  def self.check
-#    system "make check"
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

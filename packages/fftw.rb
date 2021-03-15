@@ -3,30 +3,32 @@ require 'package'
 class Fftw < Package
   description 'FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data'
   homepage 'http://www.fftw.org/'
-  version '3.3.8'
+  @_ver = '3.3.9'
+  version @_ver
   compatibility 'all'
-  source_url 'http://www.fftw.org/fftw-3.3.8.tar.gz'
-  source_sha256 '6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303'
+  source_url "http://www.fftw.org/fftw-#{@_ver}.tar.gz"
+  source_sha256 'bf2c7ce40b04ae811af714deb512510cc2c17b9ab9d6ddcf49fe4487eea7af3d'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.8-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fftw-3.3.9-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'f3e94c3a07e8966eafe02daa3673de462bab1fbbb0f1aefcc844ffbc53c84307',
-     armv7l: 'f3e94c3a07e8966eafe02daa3673de462bab1fbbb0f1aefcc844ffbc53c84307',
-       i686: '03800193d0be4a716331a27a948022d0a6ac94183a6b2fe0a988f5d94e3e8ff9',
-     x86_64: '47c9b73133cf16339ab6c229ba74ec73155f0fc1bf01bfd0e4e2c6ac7c46f78e',
+  binary_sha256({
+    aarch64: '6c5328195b9c1fccaa1ed40c642706d4681bc7cf77429cefcab3b44280db1428',
+     armv7l: '6c5328195b9c1fccaa1ed40c642706d4681bc7cf77429cefcab3b44280db1428',
+       i686: 'dab931ee59bb137e8a8f644670cc3d645a59cc2ca765b055aa35a8dc51a52344',
+     x86_64: '095ec26abe2d9ede1c9c3016850b5e5be43706a102a184de26f93928014e7740'
   })
 
   def self.build
-    system './configure',
-           '--enable-shared=yes',
-           '--disable-maintainer-mode',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --enable-shared=yes \
+      --disable-maintainer-mode"
     system 'make'
   end
 

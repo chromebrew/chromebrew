@@ -8,6 +8,19 @@ class Benchmark < Package
   source_url 'https://github.com/google/benchmark/archive/v1.5.2.tar.gz'
   source_sha256 'dccbdab796baa1043f04982147e67bb6e118fe610da2c65f88912d73987e700c'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/benchmark-1.5.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/benchmark-1.5.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/benchmark-1.5.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/benchmark-1.5.2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '9aa663f4068a79d821bc556f6dc60b0e6ee2278505cd747e94a0fd7750258711',
+     armv7l: '9aa663f4068a79d821bc556f6dc60b0e6ee2278505cd747e94a0fd7750258711',
+       i686: 'e8f37ed6c926979e2c13949f3cf8eaeb9e7e9eedbc751d550ead9680e0a87a5c',
+     x86_64: '71f73a3dc296d91b2a5ed685396cbad25ad69e0d231cbed59a5d44391e98aa31',
+  })
+
   def self.patch
     @limitsh = <<~EOF
       --- a/src/benchmark_register.h

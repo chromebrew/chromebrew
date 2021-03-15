@@ -39,7 +39,7 @@ libmetalink
 libnghttp2
 libpipeline
 libpsl
-libressl
+libseccomp
 libsigsegv
 libssh2
 libtasn1
@@ -49,7 +49,6 @@ libunbound
 libunistring
 libxdmcp
 libxml2
-libyaml
 linuxheaders
 llvm
 lz4
@@ -70,12 +69,8 @@ openldap
 openssl
 p11kit
 patch
-pcre
 pcre2
 perl
-perl_locale_messages
-perl_text_unidecode
-perl_unicode_eastasianwidth
 perl_xml_parser
 pkgconfig
 python27
@@ -84,11 +79,8 @@ readline
 rtmpdump
 ruby
 sed
-setuptools
 slang
 sqlite
-swig
-texinfo
 trousers
 uchardet
 unzip

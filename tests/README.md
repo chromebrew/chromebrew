@@ -2,22 +2,23 @@
 
 ## Why to run tests
 
-Running these tests will make sure that crew is working correctly, or explain the problem if it's not.
+Running tests will make sure that crew is working correctly or explain the problem if it's not.
 
 ## When to run tests
 
-The tests can be used at any time to help with developing, but make sure to run them before submitting a Pull Request.
+The tests can be used at any time to help with development but make sure to run them before submitting a Pull Request.
 
 ## Preparing new tests
 
-To prepare a new test, create a `.rb` file. It may use crew constants (created in `lib/const.rb`) and import packages (be sure to use `require_relative`).
+To prepare a new test, create a ruby script. It may use crew constants (created in `lib/const.rb`) and import packages (be sure to use `require_relative`).
 
-It should finish normally if the test passed, or finish with `exit 1` otherwise, preferably explaining why the test failed.
-All `.rb` files in this directory will automatically be run by the `all_tests` script.
+It should finish normally if the test passed, otherwise abort with `exit 1` and preferably explain why the test failed.
 
-Here is a simple example of a test:
+A simple example of a test script called `my_test` is below:
 
 ```ruby
+#!/usr/bin/env ruby
+
 # Makes sure buildessential package depends on gcc
 
 require_relative("../packages/buildessential")
@@ -29,9 +30,10 @@ else
 	exit 1
 end
 ```
+Make sure the script is executable with `chmod +x my_test`. Note: This will only work in directories with execute permission.
 
 ## How to run tests
 
-Execute `ruby test_all` from this directory (`tests/`). If all tests pass, it will print `All tests successful.`, otherwise it will show what went wrong.
+Execute `ruby my_test` from this directory (`tests/`). If all tests pass, it should display a message similar to `All tests successful.`, otherwise it should indicate what went wrong.
 
 Running tests manually may not work!

@@ -3,22 +3,24 @@ require 'package'
 class Libgphoto < Package
   description 'The libgphoto2 camera access and control library.'
   homepage 'http://www.gphoto.org/'
-  version '2.5.23'
+  @_ver = '2.5.27'
+  @_ver_ = @_ver.gsub(/[.]/, '_')
+  version @_ver
   compatibility 'all'
-  source_url 'https://github.com/gphoto/libgphoto2/archive/libgphoto2-2_5_23-release.tar.gz'
-  source_sha256 '8de52fd997aceda895abad5d8d95a888bce24a1c739079cff64dae1da7039dde'
+  source_url "https://github.com/gphoto/libgphoto2/archive/libgphoto2-#{@_ver_}-release.tar.gz"
+  source_sha256 '9ac1ab84fc5070d40194181efd0775044220c8d5cdee830386d528710e864ec9'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.23-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.27-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.27-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.27-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgphoto-2.5.27-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'dfb2080fbbd42cfffdc05a6bb6d52775b807825d1b3b7ca18934c70d88beb1be',
-     armv7l: 'dfb2080fbbd42cfffdc05a6bb6d52775b807825d1b3b7ca18934c70d88beb1be',
-       i686: '9f33a1541717bf823171eef395dd8fe32aacf3804c120591e771c08034ea374a',
-     x86_64: '5993b9961a3b8dd1129186aa05370b72c3fd24cd6eaef0b33377a288be713609',
+  binary_sha256({
+    aarch64: 'f3111fd01e63280e864e24c38ac199bff329766a305b8c2b7009c600078bf66b',
+     armv7l: 'f3111fd01e63280e864e24c38ac199bff329766a305b8c2b7009c600078bf66b',
+       i686: '9f732d1e5202630f789a45645eadf4a7ea012c9acda7db31d1ad92627cf9578a',
+     x86_64: '5edaedd9d40c26c2c8462794288b499e72f64b2ce89b42fdc571a64187991110'
   })
 
   depends_on 'gtk_doc'
@@ -27,10 +29,11 @@ class Libgphoto < Package
 
   def self.build
     system 'autoreconf --install --symlink'
-    system './configure',
-           '--with-camlibs=all,outdated',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --with-camlibs=all,outdated"
     system 'make'
   end
 

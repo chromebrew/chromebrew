@@ -3,52 +3,80 @@ require 'package'
 class Flatpak < Package
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
-  @_ver = '1.10.1'
+  @_ver = '1.10.2'
   version @_ver
   compatibility 'all'
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
-  source_sha256 'c70215792b7cbece83c489dab86adc9bfaf9b140c506affe2a48c92afa3d69b7'
+  source_sha256 'db152739d072f8ff299e4e888d8963a1b4538da7b10e0b86525be438f2e1dde4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6927a9717a15f4d52e1b2316e159a2f43026431bc91a68627bc6fce5f9634b31',
-     armv7l: '6927a9717a15f4d52e1b2316e159a2f43026431bc91a68627bc6fce5f9634b31',
-       i686: '56abe90a29219a9937b2939a71b4413d90198d7eabc1cb802b3fc6a759a93335',
-     x86_64: '588c3a2c502e0cc6088b4d17e3b133103fdeb0dc653bad0bef79674709b7bf22'
+    aarch64: 'c75d3704f54b035af47b13aec034e762f55ef01de3193f9948af9c2f94240160',
+     armv7l: 'c75d3704f54b035af47b13aec034e762f55ef01de3193f9948af9c2f94240160',
+       i686: '5d379657448f6186f23ed5e47ccebbfc1e5b03ad930886c093451b32f0734390',
+     x86_64: '6b35bbf60cc693be3dd808dd697d0a5d62cbe2f830d6a856fa32aa1e15d7210b'
   })
 
-  depends_on 'xdg_base'
-  depends_on 'bubblewrap'
-  depends_on 'libostree'
-  depends_on 'polkit'
   depends_on 'appstream_glib'
-  depends_on 'libseccomp'
-  depends_on 'pyparsing'
+  depends_on 'bubblewrap'
   depends_on 'dconf'
+  depends_on 'libevent'
+  depends_on 'libostree'
+  depends_on 'libsoup2'
+  depends_on 'polkit'
   depends_on 'pulseaudio'
+  depends_on 'pyparsing'
+  depends_on 'xdg_base'
 
   def self.patch
-    patch_description = 'backported fixes'
-    patch_url = 'https://patch-diff.githubusercontent.com/raw/flatpak/flatpak/pull/4132.patch'
-    patch_sha256 = '8230491be909a027fdb5a03ff0fa638331c940289fa6d68a21489d78c6f7f6b0'
-    patch_filename = 'patch'
-    puts "Downloading patch: #{patch_description}".yellow
-    system('curl', '-s', '--insecure', '-L', '-#', patch_url, '-o', patch_filename)
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless
-    Digest::SHA256.hexdigest(File.read(patch_filename)) == patch_sha256
-    puts 'patch downloaded'.lightgreen
-    system 'patch  -p 1 --forward < patch || true'
+    # Source has libglnx repo as submodule
+    @git_dir = 'libglnx'
+    @git_hash = '4c9055ac08bb64dca146724f488cce4c1ce4c628'
+    @git_url = 'https://gitlab.gnome.org/GNOME/libglnx.git'
+    FileUtils.rm_rf(@git_dir)
+    FileUtils.mkdir_p(@git_dir)
+    Dir.chdir @git_dir do
+      system 'git init'
+      system "git remote add origin #{@git_url}"
+      system "git fetch --depth 1 origin #{@git_hash}"
+      system 'git checkout FETCH_HEAD'
+    end
+    # Source has bubblewrap repo as submodule
+    @git_dir = 'bubblewrap'
+    @git_hash = 'e1b11e65929f425815f2924489d3fefd453dedd9'
+    @git_url = 'https://github.com/containers/bubblewrap.git'
+    FileUtils.rm_rf(@git_dir)
+    FileUtils.mkdir_p(@git_dir)
+    Dir.chdir @git_dir do
+      system 'git init'
+      system "git remote add origin #{@git_url}"
+      system "git fetch --depth 1 origin #{@git_hash}"
+      system 'git checkout FETCH_HEAD'
+    end
+    # Source has variant-schema-compiler repo as submodule
+    @git_dir = 'variant-schema-compiler'
+    @git_hash = 'd9af1f4324d912634216d69118100583fc1dcd26'
+    @git_url = 'https://gitlab.gnome.org/alexl/variant-schema-compiler.git'
+    FileUtils.rm_rf(@git_dir)
+    FileUtils.mkdir_p(@git_dir)
+    Dir.chdir @git_dir do
+      system 'git init'
+      system "git remote add origin #{@git_url}"
+      system "git fetch --depth 1 origin #{@git_hash}"
+      system 'git checkout FETCH_HEAD'
+    end
   end
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap CFLAGS='-flto=auto' \
+      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
       ./configure #{CREW_OPTIONS} \
       --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
       --enable-sandboxed-triggers \
@@ -89,6 +117,9 @@ class Flatpak < Package
       #{CREW_PREFIX}/bin/flatpak.elf \$FLATPAK_FLAGS  "\$@"
     FLATPAK_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf",
+                 "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf"
   end
 
   def self.postinstall
@@ -96,27 +127,15 @@ class Flatpak < Package
     puts 'Configuring flathub'.lightblue
     system 'flatpak.elf remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
     puts
-    # Check to see if xdg_base put variables in ~/.bashrc. If not, put
-    # them in.
-    xdgbaseconfig_in_bashrc = `grep -c "XDG_CONFIG_HOME" ~/.bashrc || true`
-    unless xdgbaseconfig_in_bashrc.to_i.positive?
+    # Check to see if XDG_DATA_DIRS for flatpak is in ~/.bashrc. If not, put
+    # it in.
+    @_str = "XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share"
+    if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
       puts 'Putting XDG Environment Variables in ~/.bashrc'.lightblue
-      system "echo '# XDG Base Directory Specification Environment Variables' >> ~/.bashrc"
-      system "echo '# See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html' >> ~/.bashrc"
-      system "echo 'export XDG_DATA_HOME=#{HOME}/.local/share' >> ~/.bashrc"
-      system "echo 'export XDG_CONFIG_HOME=#{HOME}/.config' >> ~/.bashrc"
-      system "echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{HOME}/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share' >> ~/.bashrc"
-      system "echo 'export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg' >> ~/.bashrc"
-      system "echo 'export XDG_CACHE_HOME=#{HOME}/.cache' >> ~/.bashrc"
-      system "echo 'export XDG_RUNTIME_DIR=/var/run/chrome' >> ~/.bashrc"
+      system "sed -i '/XDG_DATA_DIRS/d' ~/.bashrc"
+      system "echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share' >> ~/.bashrc"
       puts 'To complete the installation, execute the following:'.orange
       puts 'source ~/.bashrc'.orange
-    end
-    # If xdg_base put in variables without flatpak modifications, add
-    # them.
-    flatpak_xdgdirconfig_in_bashrc = `grep -c "#{CREW_PREFIX}/var/lib/flatpak/exports/share" ~/.bashrc || true`
-    unless flatpak_xdgdirconfig_in_bashrc.to_i.positive?
-      system "sed -i 's,XDG_DATA_DIRS=.*,XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{HOME}/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share,g' ~/.bashrc"
     end
   end
 end

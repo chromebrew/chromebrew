@@ -3,36 +3,39 @@ require 'package'
 class Modemmanager < Package
   description 'ModemManager is a DBus-activated daemon which controls mobile broadband (2G/3G/4G) devices and connections.'
   homepage 'https://www.freedesktop.org/wiki/Software/ModemManager/'
-  version '1.8.2'
+  @_ver = '1.16.2'
+  version @_ver
   compatibility 'all'
-  source_url 'https://www.freedesktop.org/software/ModemManager/ModemManager-1.8.2.tar.xz'
-  source_sha256 '96f2a5f0ed15532b4c4c185b756fdc0326e7c2027cea26a1264f91e098260f80'
+  source_url "https://www.freedesktop.org/software/ModemManager/ModemManager-#{@_ver}.tar.xz"
+  source_sha256 'efa9a963499e0885f3f163096d433334143c4937545134ecd682e0157fa591e3'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.8.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.8.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.8.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.16.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.16.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.16.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/modemmanager-1.16.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'fafa7f2a98d6d68491db64205063c636a24662a8097c303d73e0b2ab660d0800',
-     armv7l: 'fafa7f2a98d6d68491db64205063c636a24662a8097c303d73e0b2ab660d0800',
-       i686: '18c4897f2fa06868b3b39c1b06c7351ef42f05629c33011f17c837d9c6206593',
-     x86_64: 'bb5304352a96304749c0f969e24dde97e2c58a307f73ed53882afdb293648f55',
+  binary_sha256({
+    aarch64: '63659ccd41a81696e3ac2036d21bcb2279bd3b9aff60de09ef2fbd443712c711',
+     armv7l: '63659ccd41a81696e3ac2036d21bcb2279bd3b9aff60de09ef2fbd443712c711',
+       i686: 'be289c76c0103c0a66017f52dbb5c61bcee619f1fca8f160195adfb8d4d8b07f',
+     x86_64: '290c162bd314ba5d52cdc5f3a9d8abe1efc78349214392c237885653cfdf76a2'
   })
 
   depends_on 'libmbim'
   depends_on 'libqmi'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
+      ./configure \
+      #{CREW_OPTIONS} \
+      --with-dbus-sys-dir=#{CREW_PREFIX}/share/dbus-1 \
+      --disable-maintainer-mode"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

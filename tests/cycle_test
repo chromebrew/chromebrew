@@ -1,19 +1,24 @@
+#!/usr/bin/env ruby
+
 # This test checks whether the packages create a dependency cycle.
 
 require 'find'
+require_relative '../lib/const'
 require_relative '../lib/color'
 
 @all_pkgs = {}
 
+$LOAD_PATH.unshift '../lib'
+
+puts "Running dependency cycle tests...\n".yellow
+
 # Loads all packages
-Find.find("#{CUR_DIR}/../packages") do |filename|
-  if File.extname(filename) == '.rb'
-    name = File.basename(filename, '.rb')
-    require_relative("../packages/#{name}")
-    pkg = Object.const_get(name.capitalize)
-    pkg.name = name
-    @all_pkgs[name] = pkg
-  end
+Dir.glob('../packages/*.rb').each do |filename|
+  name = File.basename(filename, '.rb')
+  require_relative("../packages/#{name}")
+  pkg = Object.const_get(name.capitalize)
+  pkg.name = name
+  @all_pkgs[name] = pkg
 end
 
 # Looking for cycles. @path will keep the current dependency path.
@@ -23,15 +28,17 @@ end
 @failed = 0
 @state = {}
 @path = []
+@uniq_path = []
 def dfs(pkg)
   @path.push(pkg.name)
   if @state[pkg] == :on_path
-    puts "\nFound dependency cycle!".lightred
     while @path.first != @path.last
       @path.shift
     end
-    puts @path.to_s
-    @failed += 1
+    if not @uniq_path.include? @path.to_s and @path.to_s.include? ','
+      @uniq_path.push(@path.to_s)
+      @failed += 1
+    end
   elsif @state[pkg] == nil
     @state[pkg] = :on_path
     if pkg.dependencies
@@ -51,11 +58,16 @@ end
   dfs(pkg)
 end
 
+# Display dependency cycles
+@uniq_path.sort.each do |path|
+  puts path.lightred
+end
+
 @cycles = "cycles"
 @cycles = "cycle" if @failed == 1
 
 if @failed > 0
-abort "\n#{@failed} dependency #{@cycles} found.".lightred
+  abort "\n#{@failed} dependency #{@cycles} found.".lightred
 else
-puts "\nNo dependency cycles found.".lightgreen
+  puts "\nNo dependency cycles found.".lightgreen
 end
