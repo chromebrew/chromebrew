@@ -24,9 +24,10 @@ class Libotf < Package
 
   depends_on 'libxaw'
   depends_on 'freetype'
+  depends_on 'hashpipe'
 
   def self.patch
-    system 'curl -Ls https://github.com/archlinux/svntogit-packages/raw/a67b940a19f1e7e47e7d8553ed31158ed70f1286/libotf/trunk/replace-freetype-config.patch | patch -p1 -b'
+    system 'curl -Ls https://github.com/archlinux/svntogit-packages/raw/a67b940a19f1e7e47e7d8553ed31158ed70f1286/libotf/trunk/replace-freetype-config.patch | hashpipe sha256 edd0f86332f4d809dfb0ab66da547c946e5d79a907a7eaddc4d2166c78205668 | patch -p1 -b'
   end
 
   def self.build
