@@ -4,22 +4,22 @@ class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
   @_ver = '1.11.0'
-  version @_ver
+  version "#{@_ver}-1"
   compatibility 'all'
   source_url "https://github.com/strukturag/libheif/releases/download/v#{@_ver}/libheif-#{@_ver}.tar.gz"
   source_sha256 'c550938f56ff6dac83702251a143f87cb3a6c71a50d8723955290832d9960913'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6895e7a1367487e59d771e82498f9f4c6c1c0408099e878716e40ebc27bb2cc6',
-     armv7l: '6895e7a1367487e59d771e82498f9f4c6c1c0408099e878716e40ebc27bb2cc6',
-       i686: '570e56cbe7ad4ed99872cd8e12f2e461d103e9fcb6c8b942c798e14dca2d484a',
-     x86_64: '28fccd530636486eadbc579ce29b6d25ab5e86355e891d070cc485f606dc8f18'
+    aarch64: '6541e90af54adca5af1a1c390fe6d9c48a5641e8a82e34fdd2aee4da48dae5fe',
+     armv7l: '6541e90af54adca5af1a1c390fe6d9c48a5641e8a82e34fdd2aee4da48dae5fe',
+       i686: '474eb4e10bdfd58bdd55d6cc0e60dcb964eda7c0038772d4a2e1b633642ab816',
+     x86_64: '80496abc0efd38ce60d2a257e5f9d1b5095e291f8f37046dcf66462442f06714'
   })
 
   depends_on 'libde265'
