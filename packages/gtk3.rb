@@ -11,6 +11,20 @@ class Gtk3 < Package
   # source_url "https://download.gnome.org/sources/gtk/#{@_ver_prelastdot}/gtk-#{@_ver}.tar.xz"
   source_sha256 'dbc3b14ae0d8e44bc8caeac91d62b4d2403a881d837cb4e9bcfb8d138712c3a3'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '29a4642e0887f09c4d9950fd9ca7ac7246c455ae91aeed25268658857c66a39e',
+     armv7l: '29a4642e0887f09c4d9950fd9ca7ac7246c455ae91aeed25268658857c66a39e',
+       i686: '0022f857e4697bad885232d246de0e12403ec6a99e63ef43f292882c0becc467',
+     x86_64: '59e5324c659a0c9803e906717eebd82c6a3818539d1336beae603fd591ca0e9c'
+  })
+
+  depends_on 'adwaita_icon_theme'
   depends_on 'atk'
   depends_on 'at_spi2_atk'
   depends_on 'cantarell_fonts'
