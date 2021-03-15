@@ -53,11 +53,6 @@ class Gtk3 < Package
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
     @gtk3settings = <<~GTK3_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
@@ -66,6 +61,11 @@ class Gtk3 < Package
       gtk-font-name = Cantarell 11
       gtk-application-prefer-dark-theme = false
     GTK3_CONFIG_HEREDOC
+  end
+
+  def self.install
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-3.0"
     File.write("#{CREW_DEST_PREFIX}/etc/gtk-3.0/settings.ini", @gtk3settings)
   end
