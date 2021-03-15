@@ -65,16 +65,16 @@ class Gtk4 < Package
       build"
     system 'meson configure build'
     system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     @gtk4settings = <<~GTK4_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
       gtk-theme-name = Adwaita
       gtk-font-name = Cantarell 11
     GTK4_CONFIG_HEREDOC
+  end
+
+  def self.install
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-4.0"
     File.write("#{CREW_DEST_PREFIX}/etc/gtk-4.0/settings.ini", @gtk4settings)
   end
