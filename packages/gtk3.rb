@@ -56,8 +56,6 @@ class Gtk3 < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
-    FileUtils.mkdir_p("#{CREW_DEST_HOME}/.config/gtk-3.0")
-    File.write("#{CREW_DEST_HOME}/.config/gtk-3.0/settings.ini", @gtk3settings)
   end
 
   def self.postinstall
