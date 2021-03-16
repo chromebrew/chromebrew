@@ -3,23 +3,23 @@ require 'package'
 class Networkmanager < Package
   description 'Network connection manager and user applications'
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
-  @_ver = '1.30.0'
+  @_ver = '1.30.2'
   version @_ver
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{@_ver}/NetworkManager#{@_ver}.tar.bz2"
-  source_sha256 'aa2bc84a3d60ef2b4f1182429ec5f0421ccd2495d88ee91b575cae015aae2f64'
+  source_sha256 '9fab930be75a2dc4fcfdacdaf9a870580d2969b64aec019dbfc63f4cab491485'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '41fb2980b3f959983c4b58cdd51724a29c63f866b569169660068e4d2b1427bf',
-     armv7l: '41fb2980b3f959983c4b58cdd51724a29c63f866b569169660068e4d2b1427bf',
-       i686: '7bd4cccdce0016f6d2eedb6e073c736b146e7e77923f52928cd410014a1358c4',
-     x86_64: 'c81c09662d3b72055424087b845613a8cf1e7f1856ce3ff6b389e81f5c2bf4b3'
+    aarch64: '69bf115544cf9735cbbddb8b24d3b10991b3ee430856f8d8ac36b26e4e192f13',
+     armv7l: '69bf115544cf9735cbbddb8b24d3b10991b3ee430856f8d8ac36b26e4e192f13',
+       i686: '11c10ff9926abbe5ec47a0015d4922d7d33216dd7b2afd3777fca4d43f966c15',
+     x86_64: 'b0be77ef463fe109b9b55bfe39997a1611f3243fcf3451da370e358088e8c943'
   })
 
   depends_on 'gobject_introspection'
