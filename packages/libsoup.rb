@@ -3,24 +3,24 @@ require 'package'
 class Libsoup < Package
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  @_ver = '2.99.1'
+  @_ver = '2.99.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   compatibility 'all'
   source_url "https://download.gnome.org/sources/libsoup/#{@_ver_prelastdot}/libsoup-#{@_ver}.tar.xz"
-  source_sha256 '9703c09e1b41d413bc17b5a3b8baac7cd8be1aa89ebd628de802d9a572dc8d44'
+  source_sha256 '664fa1b78a15cc0aa1fa65efb3b281a888417530f9f56a219571c0630f942ba5'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '94593ee64f8dfa68a432dd827f81ab189016a375541c5b52408ba6cd941fdcc6',
-     armv7l: '94593ee64f8dfa68a432dd827f81ab189016a375541c5b52408ba6cd941fdcc6',
-       i686: 'c1aac13d94d0a7ab3621a8d8cf75ce3d16afbab6de2452314913136b86213efc',
-     x86_64: 'e471e82d56d33f1ea7765d287184c481528b1c7277bc703f00bca36a8c928400'
+    aarch64: '7b0fd36b36395b4949af7915af3eab02ab1842ba085f7c1858c977aca4af0534',
+     armv7l: '7b0fd36b36395b4949af7915af3eab02ab1842ba085f7c1858c977aca4af0534',
+       i686: '994478c3f30ed64b0ec04dc13b1383086806c8607f644a541bb4f25de2440a15',
+     x86_64: '2226f557f9d63cf666a17edd10c0831589cd3bdd652774f77b8ae73d0caa6440'
   })
 
   depends_on 'glib_networking'

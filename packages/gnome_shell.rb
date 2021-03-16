@@ -3,20 +3,20 @@ require 'package'
 class Gnome_shell < Package
   description 'Next generation desktop shell'
   homepage 'https://wiki.gnome.org/Projects/GnomeShell'
-  version '40.beta'
+  version '40.rc'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/GNOME/gnome-shell/archive/#{version}.tar.gz"
-  source_sha256 'fd929eba43ca52c1f620460be02de0c116ea7ba792e504329eb85c83e5800ada'
+  source_sha256 '76fcbb7d4ac829a1a1287feea40f3bcebc8e5ba225bb8231707cee09f53d44a0'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.beta-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.rc-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c033e58da3bd7f34d3bdb49dea3254aa18a5bd9093ed6c516e23c413aac58ac9',
-     armv7l: 'c033e58da3bd7f34d3bdb49dea3254aa18a5bd9093ed6c516e23c413aac58ac9',
-     x86_64: '3bffb1ccc2ca22a72c37599ece8b61c01f75fc7e3157d1e7c0ef2e7a2f47dd88'
+    aarch64: '6bdc526bcf41f9348522a17ca9aefe8f437b87ba06bdb552dfc22607b5256f77',
+     armv7l: '6bdc526bcf41f9348522a17ca9aefe8f437b87ba06bdb552dfc22607b5256f77',
+     x86_64: '30b92776aaa8345bb32084d14675ffe60a01d985cee4eeecd304fdc27d693f8b'
   })
 
   depends_on 'gcr'
@@ -29,14 +29,16 @@ class Gnome_shell < Package
   depends_on 'gnome_autoar'
   depends_on 'upower'
   depends_on 'gnome_session'
+  depends_on 'gnome_settings_daemon'
   depends_on 'gtk_doc' => ':build'
   depends_on 'evolution_data_server' => ':build'
   depends_on 'gobject_introspection' => ':build'
+  depends_on 'mutter'
 
   def self.patch
     # Source has libgnome-volume-control repo as submodule
     @git_dir = 'subprojects/gvc'
-    @git_hash = '7a621180b46421e356b33972e3446775a504139c'
+    @git_hash = 'c5ab6037f460406ac9799b1e5765de3ce0097a8b'
     @git_url = 'https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
     FileUtils.rm_rf(@git_dir)
     FileUtils.mkdir_p(@git_dir)

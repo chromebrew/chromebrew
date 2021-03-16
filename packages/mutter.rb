@@ -3,20 +3,21 @@ require 'package'
 class Mutter < Package
   description 'A window manager for GNOME'
   homepage 'https://gitlab.gnome.org/GNOME/mutter'
-  version '40.beta'
+  version '40.rc'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://download.gnome.org/core/40/#{version}/sources/mutter-#{version}.tar.xz"
-  source_sha256 '22aa7f8a57dbef865bc4e9b88f8fb91f45f18157d70f218199238bc10c25b1a6'
+  source_url "https://gitlab.gnome.org/GNOME/mutter/-/archive/#{version}/mutter-#{version}.tar.bz2"
+  # source_url "https://download.gnome.org/core/#{version}/sources/mutter-#{version}.tar.xz"
+  source_sha256 '8652c2d4c95a845d26b37d8fc8edbfa1261273405317103dbc3216d1ee66db99'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.beta-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.rc-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6120122d259d3309e5244e06d793d67c7f41327ab1c177422adf0940c1f58c72',
-     armv7l: '6120122d259d3309e5244e06d793d67c7f41327ab1c177422adf0940c1f58c72',
-     x86_64: '213c59512a34b6fdc0f2e3f709be654c826742dc50ef20e3d796d92188914900'
+    aarch64: '7432e3824c27a0f92351e7f9888ddba7416b0513ec6e103bffa9f2f6a70b01bd',
+     armv7l: '7432e3824c27a0f92351e7f9888ddba7416b0513ec6e103bffa9f2f6a70b01bd',
+     x86_64: 'bc61662e93ad4e540f957efce8b3af3183422b19b838f87878931e9e35a87dd5'
   })
 
   depends_on 'dconf'
