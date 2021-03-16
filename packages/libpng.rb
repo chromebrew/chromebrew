@@ -22,6 +22,8 @@ class Libpng < Package
      x86_64: '703cb00f75ecdab4918029aa57ee9ed53f027d0a4be6cd6c29b9e4fbd25f7dfe'
   })
 
+  depends_on 'zlibpkg'
+
   def self.patch
     system 'filefix'
   end
