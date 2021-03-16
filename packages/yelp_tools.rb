@@ -3,22 +3,22 @@ require 'package'
 class Yelp_tools < Package
   description 'yelp-tools is a collection of scripts and build utilities to help create, manage, and publish documentation for Yelp and the web'
   homepage 'https://github.com/GNOME/yelp-tools'
-  version '40.beta'
+  version '40.rc'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/yelp-tools/archive/40.beta.tar.gz'
-  source_sha256 '57f80c0853a3bb44249e5febe39424876bb08f7c58650133dd5bc1a0b9a40808'
+  source_url 'https://github.com/GNOME/yelp-tools/archive/40.rc.tar.gz'
+  source_sha256 '072420dbbec6a7b5b3647fcfc15c284b02a21220c78ba140d727cd2992500902'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.beta-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.beta-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.rc-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.rc-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c8f68b2451729b757df1c9638cf96011590bda3964053784a0e70b02f3448df7',
-     armv7l: 'c8f68b2451729b757df1c9638cf96011590bda3964053784a0e70b02f3448df7',
-       i686: '3a10cfae2a539cd99705fb39b4e3f76fa8d9ffe149e4fa45b8ae23168f1fde7d',
-     x86_64: 'cce94aa4c0dfd87c505e1194976fd59eb0c0654f36748fa3fad3ece67e5a1ed1'
+    aarch64: '5dca4c043e28eb89a87a56cf4518c9d3e67f6ff0522c52cf7ce3cff38d4c8920',
+     armv7l: '5dca4c043e28eb89a87a56cf4518c9d3e67f6ff0522c52cf7ce3cff38d4c8920',
+       i686: '8cd244466690065e37ff4c5b2aea2680a506fb70195c30b0bde916b3f70bf3ba',
+     x86_64: '57b5663d5fcd6755d35fdf0973be36997cc22129b3d1ca7d2a4e4812d2922b01'
   })
 
   depends_on 'yelp_xsl'

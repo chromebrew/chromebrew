@@ -3,22 +3,22 @@ require 'package'
 class Pango < Package
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'http://www.pango.org/'
-  version '1.48.2'
+  version '1.48.3'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/pango/1.48/pango-1.48.2.tar.xz'
-  source_sha256 '08c2d550a96559f15fb317d7167b96df57ef743fef946f4e274bd8b6f2918058'
+  source_sha256 'd21f8b30dc8abdfc55de25656ecb88dc1105eeeb315e5e2a980dcef8010c2c80'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '48c6277c278e0bc48c09dd3e688a0ca2e36f79765c90ecddfd6d5b46869feff9',
-     armv7l: '48c6277c278e0bc48c09dd3e688a0ca2e36f79765c90ecddfd6d5b46869feff9',
-       i686: 'acef25d5de3d7c3f5c889a04cc29dff6192a66244fdce95306da40319b06cd1b',
-     x86_64: '16c912f1381ecdf1fd5329ee8fd9e5c18cec87b91e714a899f17384b7ae5684b'
+    aarch64: 'c4bc39bde5db09cb6762d6fda0e9d454302f9484c71a3df677562b2db1407716',
+     armv7l: 'c4bc39bde5db09cb6762d6fda0e9d454302f9484c71a3df677562b2db1407716',
+       i686: '09b5c60ba73ebea3a95c0b7d2676e4ae5a7647825ffacebf6b0195c944680f36',
+     x86_64: '0e334cadaaa118649dec9a8a35a6982f349338bed3c974fa3992786bf329b906'
   })
 
   depends_on 'harfbuzz'

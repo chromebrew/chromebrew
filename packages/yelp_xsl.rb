@@ -3,22 +3,22 @@ require 'package'
 class Yelp_xsl < Package
   description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documentation'
   homepage 'https://github.com/GNOME/yelp-xsl'
-  version '40.beta'
+  version '40.rc'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/yelp-xsl/archive/40.beta.tar.gz'
-  source_sha256 'f9145e36148ff473d501a5393e9d3b34c4450281cd6d6b8dac2c24aad4883d03'
+  source_url 'https://github.com/GNOME/yelp-xsl/archive/40.rc.tar.gz'
+  source_sha256 'f158b5c899b32267dee796146deb8c2831272aa66bbe3cc103031b2ddd182fc8'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.rc-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.rc-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '74ffc820d0c3cea9be8d2f299f6552223668226174aebba9a9d5921df56ba8ca',
-     armv7l: '74ffc820d0c3cea9be8d2f299f6552223668226174aebba9a9d5921df56ba8ca',
-       i686: '836738f78988eb6ca1331d08da02b365f4840001e3a131e15ea36516ec6ba55b',
-     x86_64: '1bce675f4168fa9f44b7fc10ca7b33c7f6139b02671d891290c94f1f5069795e'
+    aarch64: '945153ad9d4bea36d348411382dfbd5a6d492c491e17afb7f059901c6805d486',
+     armv7l: '945153ad9d4bea36d348411382dfbd5a6d492c491e17afb7f059901c6805d486',
+       i686: 'b5c6b4ac0658eac4717204b3c0a99d947a884a470b34b04251bb8214ce831547',
+     x86_64: '5f03c4a1a5606b16cfc8bdd4d421b01b222fe6368c04c9837eaeb9671598aed9'
   })
 
   depends_on 'itstool'
