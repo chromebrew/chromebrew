@@ -3,42 +3,38 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '1.20.10'
-  version @_ver + '-3'
+  @_ver = '21.1.0'
+  version @_ver
   compatibility 'all'
-  source_url "https://github.com/freedesktop/xorg-xserver/archive/xorg-server-#{@_ver}.tar.gz"
-  source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'
+  source_url "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-#{@_ver}.tar.xz"
+  source_sha256 '8a71c3e8b95c43bb91bc3d7a4ff9075456a0cfe297721dbc8d4a76cf241d82fb'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-1.20.10-3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'ac87ced50d92c75f578bd5738b81012b46bbcf4721c8b3c8074cb2963ca64d5c',
-      armv7l: 'ac87ced50d92c75f578bd5738b81012b46bbcf4721c8b3c8074cb2963ca64d5c',
-        i686: 'bdc936c7d24301256867aeb17200c669a424adeb9f009aeb602f205c228d5cf9',
-      x86_64: 'd20e78d4a44203eeeb7d6c3d33e7d50d777eb9a8016370f064f29a5b6be64e91',
+  binary_sha256({
+    aarch64: 'c6951e26f866c161171598257d8f56ee94ca180d2d3dfb45d92871be230050eb',
+     armv7l: 'c6951e26f866c161171598257d8f56ee94ca180d2d3dfb45d92871be230050eb',
+       i686: 'aec35c04079a6187f9e637d09715bbea03343dded024672693cf6f49c21bd180',
+     x86_64: '584edc98ad46aa38da43d5174d533e4407b68f5f8fe7608a98bbcba72912c3e4'
   })
 
   depends_on 'libepoxy'
-  depends_on 'xorg_proto'
   depends_on 'libxtrans'
   depends_on 'libxkbfile'
   depends_on 'wayland'
   depends_on 'eudev'
   depends_on 'libxfont'
   depends_on 'libbsd'
-  depends_on 'nettle'
-  depends_on 'libtirpc'
   depends_on 'pixman'
   depends_on 'graphite'
   depends_on 'libxkbcommon'
   depends_on 'libunwind'
   depends_on 'font_util'
   depends_on 'xorg_lib'
-  depends_on 'libtirpc'
   depends_on 'font_util'
   depends_on 'libbsd'
   depends_on 'dbus'
@@ -46,52 +42,14 @@ class Xwayland < Package
   depends_on 'xkbcomp'
   depends_on 'glproto'
   depends_on 'mesa'
-  # Patches are from Google xwayland overlay at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/chromiumos-overlay/x11-base/xwayland/files/
-
-  def self.patch
-    url_patch1 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-Eliminate-conflict-with-X11-Xlib.h-with-khronos-eglp.patch?format=TEXT"
-    uri_patch1 = URI.parse url_patch1
-    filename_patch1 = 'patch1_base64'
-    sha256sum_patch1 = '16f5d5d1986daf07b4e0f01eb0e68b53d8ef301d169f3cc9493158c8b4987f16'
-    puts "Downloading patch1".yellow
-    system('curl', '-s', '--insecure', '-L', '-#', url_patch1, '-o', filename_patch1)
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      Digest::SHA256.hexdigest( File.read( filename_patch1 ) ) == sha256sum_patch1
-    puts "patch1 archive downloaded".lightgreen
-    system 'base64 --decode patch1_base64 > patch1'
-    system 'patch -p 1 < patch1'
-    url_patch2 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-Fall-back-to-gbm_bo_create-if-no-modifiers-.patch?format=TEXT"
-    uri_patch2 = URI.parse url_patch2
-    filename_patch2 = 'patch2_base64'
-    sha256sum_patch2 = 'd44bfca0e26ca06892b37b12faca2a6756cdc2455aac36ac7607bfa188856b35'
-    puts "Downloading patch2".yellow
-    system('curl', '-s', '--insecure', '-L', '-#', url_patch2, '-o', filename_patch2)
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      Digest::SHA256.hexdigest( File.read( filename_patch2 ) ) == sha256sum_patch2
-    puts "patch2 archive downloaded".lightgreen
-    system 'base64 --decode patch2_base64 > patch2'
-    system 'patch -p 1 < patch2'
-    
-    url_patch3 = "https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/067ac4b5060c16e6687a97cbb4bcdbaf5a0b5639/x11-base/xwayland/files/0001-xwayland-sysmacros.patch?format=TEXT"
-    uri_patch3 = URI.parse url_patch3
-    filename_patch3 = 'patch3_base64'
-    sha256sum_patch3 = 'b66eb66cc8023ab2170db91e4d6038dca99b814addfcb0977d30479a2e514ab8'
-    puts "Downloading patch3".yellow
-    system('curl', '-s', '--insecure', '-L', '-#', url_patch3, '-o', filename_patch3)
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      Digest::SHA256.hexdigest( File.read( filename_patch3 ) ) == sha256sum_patch3
-    puts "patch3 archive downloaded".lightgreen
-    system 'base64 --decode patch3_base64 > patch3'
-    system 'patch -F 10 --force -p 1 < patch3'
-  end
 
   case ARCH
-    when 'armv7l', 'aarch64'
-      PEER_CMD_PREFIX='/lib/ld-linux-armhf.so.3'
-    when 'i686'
-      PEER_CMD_PREFIX='/lib/ld-linux-i686.so.2'
-    when 'x86_64'
-      PEER_CMD_PREFIX='/lib64/ld-linux-x86-64.so.2'
+  when 'armv7l', 'aarch64'
+    PEER_CMD_PREFIX = '/lib/ld-linux-armhf.so.3'.freeze
+  when 'i686'
+    PEER_CMD_PREFIX = '/lib/ld-linux-i686.so.2'.freeze
+  when 'x86_64'
+    PEER_CMD_PREFIX = '/lib64/ld-linux-x86-64.so.2'.freeze
   end
 
   def self.build
@@ -100,17 +58,8 @@ class Xwayland < Package
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
-              -Dxnest=true \
               -Dxcsecurity=true \
-              -Dxorg=true \
-              -Dxephyr=false \
-              -Dxwayland=true \
               -Dglamor=true \
-              -Dudev=true \
-              -Dxwin=false \
-              -Dsystemd_logind=false \
-              -Dint10=false \
-              -Dlog_dir=#{CREW_PREFIX}/var/log \
               build"
     system 'meson configure build'
     system 'ninja -C build'
