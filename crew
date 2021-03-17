@@ -397,10 +397,11 @@ end
 
 def whatprovides (regexPat)
   fileArray = []
+  needle = regexPat.gsub(/-/,'_').gsub(/_/,'\-')
   Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
     packageName = File.basename packageList, '.filelist'
     File.readlines(packageList).each do |line|
-      found = line[/#{regexPat}/] if line.ascii_only?
+      found = line[/#{needle}/] if line.ascii_only?
       if found
         fileLine = packageName + ': ' + line
         if not fileArray.include? fileLine
