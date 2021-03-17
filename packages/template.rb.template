@@ -7,6 +7,7 @@ class Template < Package
   description ''
   homepage ''
   version ''
+  license ''
   compatibility ''
   source_url '*.tar.gz'
   source_sha256 ''
