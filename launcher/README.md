@@ -3,6 +3,7 @@
 ## Add X/Wayland applications shortcut to Chrome/Chromium OS launcher
 
 ## Supported Systems
+- Crouton chroot is supported
 - All architecture supported by Chromebrew
 - Chrome/Chromium OS based system (CloudReady) with 56+ version
 - Stable channel (recommend)
