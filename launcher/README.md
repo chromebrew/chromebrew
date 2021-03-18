@@ -1,6 +1,7 @@
 # Chromebrew Launcher
 
 ## Add X/Wayland applications shortcut to Chrome/Chromium OS launcher
+### Crouton chroots are also supported
 
 ## Supported Systems
 - Crouton chroot is supported
@@ -9,6 +10,12 @@
 - Stable channel (recommend)
 
 ## Installation
+### With crouton
+```shell
+sudo apt install ruby-dev imagemagick
+sudo gem install em-websocket
+wget -O /usr/local/bin/launcher https://github.com/supechicken/chromebrew/raw/master/launcher/launcher.rb 
+### With chromebrew
 - This package is available at `crew`, install it by execute the following:
 ```bash
 crew install launcher
