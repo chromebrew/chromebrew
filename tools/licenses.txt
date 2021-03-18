@@ -11,6 +11,8 @@
 # If a project is under three or more licenses, use commas and and, e.g.:
 # "MIT, LGPL-2 and Apache-2.0"
 
+# If a package is_fake or is a script packaged with chromebrew, use GPL-3+.
+
 # GNU General Public License compatible licenses approved by the Free Software Foundation
 GPL-COMPATIBLE
 AGPL-3

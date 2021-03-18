@@ -5,6 +5,7 @@ class Bind < Package
   homepage 'https://www.isc.org/downloads/bind/'
   @_ver = '9.17.10'
   version @_ver
+  license 'Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

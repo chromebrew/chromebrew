@@ -4,6 +4,7 @@ class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
   version '1.9'
+  license 'GPL-3+'
   compatibility 'all'
 
   is_fake
@@ -57,7 +58,7 @@ class Buildessential < Package
 
   # xorg protocols headers
   #depends_on 'xorg_proto'
-  
+
   # Python
   depends_on 'python27'
   depends_on 'python3'
