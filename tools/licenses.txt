@@ -1,10 +1,15 @@
-# A list of valid licenses for the license field
+# A list of valid licenses for the license field. Note the American English of license.
 # DISCLAIMER: This is not legal advice. We are not laywers.
 
 # If you need to add a package that doesn't have a license listed,
 # add it alphabetically, numbers first.
 # If you aren't sure what license a package has, Gentoo ebuilds
 # are a good reference.
+
+# If projects are multilicensed, use 'or'.
+# If different parts of a project are under different licenses, use 'and'.
+# If a project is under three or more licenses, use commas and and, e.g.:
+# "MIT, LGPL-2 and Apache-2.0"
 
 # GNU General Public License compatible licenses approved by the Free Software Foundation
 GPL-COMPATIBLE
@@ -433,3 +438,7 @@ Vivaldi
 worklog-assistant
 WPS-EULA
 zi-labone
+
+# Other licenses
+custom
+unlicensed

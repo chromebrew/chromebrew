@@ -4,6 +4,7 @@ class Atom < Package
   description 'The hackable text editor'
   homepage 'https://atom.io/'
   version '1.48.0'
+  license 'MIT'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

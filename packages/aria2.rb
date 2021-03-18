@@ -5,6 +5,7 @@ class Aria2 < Package
   homepage 'https://aria2.github.io/'
   @_ver = '1.35.0'
   version "#{@_ver}-2"
+  license 'GPL-2+-with-openssl-exception'
   compatibility 'all'
   source_url "https://github.com/aria2/aria2/releases/download/release-#{@_ver}/aria2-#{@_ver}.tar.xz"
   source_sha256 '1e2b7fd08d6af228856e51c07173cfcf987528f1ac97e04c5af4a47642617dfd'

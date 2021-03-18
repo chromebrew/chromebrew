@@ -4,6 +4,7 @@ class At_spi2_core < Package
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'http://www.freedesktop.org/'
   version '2.39.90.1'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://download.gnome.org/core/40/40.beta/sources/at-spi2-core-2.39.90.1.tar.xz'
   source_sha256 '2e8a9098e64dc66478ca095d3ca91657626eb778dc75e64bff6294be7ceaa4ba'
