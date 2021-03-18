@@ -2,7 +2,7 @@ require 'package'
 
 class Launcher < Package
   description 'Add GUI applications shortcut to Chrome/Chromium OS launcher'
-  homepage 'https://github.com/supechicken/chromebrew/tree/master/launcher'
+  homepage 'https://github.com/skycocker/chromebrew/tree/master/launcher'
   version '5.1'
   compatibility 'all'
   source_url 'https://github.com/supechicken/chromebrew/raw/master/launcher/launcher.rb'
@@ -10,10 +10,6 @@ class Launcher < Package
   
   depends_on 'em_websocket'
   depends_on 'imagemagick7'
-
-  def self.patch
-    system('sed', '-i', "s;CREW_PREFIX_;#{CREW_PREFIX};g", '../launcher.rb')
-  end
     
   def self.install
     FileUtils.mkdir_p(CREW_DEST_PREFIX + '/bin')
