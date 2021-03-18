@@ -5,6 +5,7 @@ class Binutils < Package
   homepage 'https://www.gnu.org/software/binutils/'
   @_ver = '2.36.1'
   version @_ver
+  license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
   source_sha256 'e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'

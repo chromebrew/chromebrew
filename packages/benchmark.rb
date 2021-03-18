@@ -4,6 +4,7 @@ class Benchmark < Package
   description 'A microbenchmark support library from Google'
   homepage 'https://github.com/google/benchmark/'
   version '1.5.2'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/google/benchmark/archive/v1.5.2.tar.gz'
   source_sha256 'dccbdab796baa1043f04982147e67bb6e118fe610da2c65f88912d73987e700c'
@@ -28,20 +29,20 @@ class Benchmark < Package
       @@ -1,6 +1,7 @@
        #ifndef BENCHMARK_REGISTER_H
        #define BENCHMARK_REGISTER_H
- 
+
       +#include <limits>
        #include <vector>
- 
+
        #include "check.h"
     EOF
     IO.write("limitsh.patch", @limitsh)
     system 'patch -p 1 -i limitsh.patch'
   end
-  
+
   def self.prebuild
     system "git clone git://github.com/google/googletest.git -b release-1.10.0 --depth 1" # Required for build, won't interfere with the gtest package
   end
-    
+
   def self.build
     Dir.mkdir "builddir"
     Dir.chdir "builddir" do

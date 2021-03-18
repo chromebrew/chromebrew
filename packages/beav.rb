@@ -4,6 +4,7 @@ class Beav < Package
   description 'BEAV (Binary Editor And Viewer), is a full featured binary file editor.'
   homepage 'https://packages.debian.org/sid/beav'
   version '1.40-18-b3'
+  license 'GPL-1+'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -37,7 +38,7 @@ class Beav < Package
       sha256 = '93b59b1c494048af7fcb01fd6cd058346ff491d36dab1537b7545eb4b5d35a85'
     end
     package = "beav_#{version}_#{arch}.deb"
-    system "wget http://ftp.debian.org/debian/pool/main/b/beav/#{package}"
+    system "curl -#LO https://httpredir.debian.org/debian/pool/main/b/beav/#{package}"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(package) ) == sha256
     system "alien -tc #{package}"
     system "tar xvf beav-1.40.tgz"
