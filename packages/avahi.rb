@@ -4,6 +4,7 @@ class Avahi < Package
   description 'Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite.'
   homepage 'http://www.avahi.org/'
   version '0.8-2'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz'
   source_sha256 '060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda'

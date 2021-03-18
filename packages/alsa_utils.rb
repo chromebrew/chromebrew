@@ -4,6 +4,7 @@ class Alsa_utils < Package
   description 'The Advanced Linux Sound Architecture (ALSA) - utilities'
   homepage 'https://github.com/alsa-project/alsa-utils'
   version '1.2.4'
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/alsa-project/alsa-utils/archive/v#{version}.tar.gz"
   source_sha256 '4fdd1745d6ad339be596ba66c12c0ee513aab19050bd48439f91edafbd8688b0'

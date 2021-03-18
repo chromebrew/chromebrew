@@ -5,6 +5,7 @@ class Asciidoc < Package
   homepage 'http://asciidoc.org/'
   @_ver = '9.0.5'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/asciidoc/asciidoc-py3/releases/download/#{@_ver}/asciidoc-#{@_ver}.tar.gz"
   source_sha256 '1a20647eb62ca37bc8107affab968caa0f674f0e962b497d1674391f636c7038'
