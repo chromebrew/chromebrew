@@ -4,6 +4,7 @@ class Editres < Package
   description 'Editres is a tool that allows users and application developers to view the full widget hierarchy of any Xt Toolkit application that speaks the Editres protocol.'
   homepage 'https://www.x.org'
   version '1.0.7'
+  license 'custom'
   compatibility 'all'
   source_url 'https://x.org/archive/individual/app/editres-1.0.7.tar.bz2'
   source_sha256 '089ad34628e55a779b97e369f55fb12caefc96d684b508d9022eb9e12b775c11'

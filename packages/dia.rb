@@ -4,6 +4,7 @@ class Dia < Package
   description 'Dia Diagram Editor is free Open Source drawing software for Windows, Mac OS X and Linux.'
   homepage 'http://dia-installer.de/'
   version '0.97.2-1'
+  license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

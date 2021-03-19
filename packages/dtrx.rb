@@ -1,11 +1,12 @@
 require 'package'
 
 class Dtrx < Package
-  description "Intelligent archive extraction. dtrx stands for 'Do The Right Extraction.' It's a tool for Unix-like systems that takes all the hassle out of extracting archives."
-  homepage 'https://brettcsmith.org/2007/dtrx/'
+  description "An intelligent archive extraction tool for UNIX-like systems standing for 'Do The Right Extraction.'"
+  homepage 'https://brettcsmith.org/2007/dtrx/' # 404 Not Found
   version '7.1'
+  license '' # Can't find license for project
   compatibility 'all'
-  source_url 'https://brettcsmith.org/2007/dtrx/dtrx-7.1.tar.gz'
+  source_url 'https://brettcsmith.org/2007/dtrx/dtrx-7.1.tar.gz' # 404 Not Found
   source_sha256 '1c9afe48e9d9d4a1caa4c9b0c50593c6fe427942716ce717d81bae7f8425ce97'
 
   binary_url ({

@@ -4,6 +4,7 @@ class Eigen < Package
   description 'Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.'
   homepage 'http://eigen.tuxfamily.org/'
   version '3.3.7'
+  license 'MPL-2.0'
   compatibility 'all'
   source_url 'https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2'
   source_sha256 '685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11'

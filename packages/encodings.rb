@@ -4,6 +4,7 @@ class Encodings < Package
   description 'X11 Font Index Generator'
   homepage 'https://xorg.freedesktop.org'
   version '1.0.5'
+  license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/encodings-1.0.5.tar.bz2'
   source_sha256 'bd96e16143a044b19e87f217cf6a3763a70c561d1076aad6f6d862ec41774a31'

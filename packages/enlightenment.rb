@@ -4,6 +4,7 @@ class Enlightenment < Package
   description 'Enlightenment desktop shell'
   homepage 'https://enlightenment.org'
   version '0.24.1'
+  license 'BSD-2'
   compatibility 'all'
   source_url 'https://download.enlightenment.org/rel/apps/enlightenment/enlightenment-0.24.1.tar.xz'
   source_sha256 'aee2b6178c918d71ebe661129f4008d773e70e5784651dadbcf56eec0a6d4a09'

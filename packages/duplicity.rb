@@ -5,6 +5,7 @@ class Duplicity < Package
   homepage 'http://duplicity.nongnu.org/'
   version '0.7.15'
   compatibility 'all'
+  license 'GPL-3'
   source_url 'https://code.launchpad.net/duplicity/0.7-series/0.7.15/+download/duplicity-0.7.15.tar.gz'
   source_sha256 '50bf7d14413284ecb036146ab9ba0e271937f2fa7826f8c8300b2965eb450a6c'
 
