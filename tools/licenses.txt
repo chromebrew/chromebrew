@@ -164,7 +164,8 @@ MPL-1.1
 MPL-2.0
 Ms-PL
 nethack
-NOSA OFL-1.1
+NOSA
+OFL-1.1
 OSL-2.1
 PHP-3
 PHP-3.01

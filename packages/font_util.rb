@@ -4,6 +4,7 @@ class Font_util < Package
   description 'Tools for truncating and subseting of ISO10646-1 BDF fonts'
   homepage 'https://xorg.freedesktop.org'
   version '1.3.2'
+  license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-util-1.3.2.tar.bz2'
   source_sha256 '3ad880444123ac06a7238546fa38a2a6ad7f7e0cc3614de7e103863616522282'

@@ -5,6 +5,7 @@ class F2fs_tools < Package
   homepage 'https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/'
   @_ver = '1.14.0'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-#{@_ver}.tar.gz"
   source_sha256 '619263d4e2022152a1472c1d912eaae104f20bd227ce0bb9d41d1d6608094bd1'
@@ -37,7 +38,7 @@ class F2fs_tools < Package
       --sbindir=#{CREW_PREFIX}/bin"
     system "make"
   end
-  
+
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} sbindir=#{CREW_PREFIX}/bin install"
