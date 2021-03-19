@@ -4,7 +4,7 @@ class Avisynthplus < Package
   description 'An improved version of the AviSynth frameserver'
   homepage 'https://avs-plus.net/'
   version '3.7.0'
-  license 'unlicensed'          # https://github.com/AviSynth/AviSynthPlus/issues/211
+  license 'GPL-2 and GPL-2-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/AviSynth/AviSynthPlus/archive/v3.7.0/avisynthplus-3.7.0.tar.gz'
   source_sha256 '8906d9e46dc90a194413d69b710e3106c0aafddc0c5c62004885d0c3beb79862'
