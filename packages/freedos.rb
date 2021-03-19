@@ -2,10 +2,11 @@ require 'package'
 
 class Freedos < Package
   description 'FreeDOS is a free DOS-compatible operating system.'
-  homepage 'http://www.freedos.org/'
+  homepage 'https://www.freedos.org/'
   version '1.2'
+  license 'GPL-2'
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/freedos/Kernel/2042/ke2042_86f32.zip'
+  source_url 'https://downloads.sourceforge.net/project/freedos/Kernel/2042/ke2042_86f32.zip'
   source_sha256 '460a6be669a24223e0b0ff7a92502624eb45d1271a535f345b24d5562b29b467'
 
   depends_on 'libjpeg'

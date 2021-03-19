@@ -4,6 +4,7 @@ class Freerdp < Package
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
   version '2.2.0'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/FreeRDP/FreeRDP/archive/2.2.0.tar.gz'
   source_sha256 '883bc0396c6be9aba6bc07ebc8ff08457125868ada0f06554e62ef072f90cf59'
