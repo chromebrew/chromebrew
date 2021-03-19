@@ -22,8 +22,8 @@ class Moreutils < Package
       x86_64: '55222b8e4293e548f812542fa7447e5420c1b7098c0ae481e1f0a0357dd84ed9',
   })
 
-  depends_on 'docbook_xml'
-  depends_on 'libxslt'
+  depends_on 'docbook_xml' => :build
+  depends_on 'libxslt' => :build
 
   def self.build
     system "sed -i 's,PREFIX?=/usr,PREFIX?=#{CREW_PREFIX},' Makefile"

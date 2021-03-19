@@ -22,6 +22,7 @@ class Libxml2 < Package
   })
 
   depends_on 'zlibpkg'
+  depends_on 'readline'
 
   def self.patch
     # Fix encoding.c:1961:31: error: ‘TRUE’ undeclared (first use in this function)
