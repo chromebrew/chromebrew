@@ -22,11 +22,11 @@ class Pygments < Package
   })
 
   def self.install
-    system 'pip3 uninstall -y pygments'
-    system "pip3 install --upgrade --no-warn-script-location pygments --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system 'pip uninstall -y pygments'
+    system "pip install --upgrade --no-warn-script-location pygments --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
   end
 
   def self.postinstall
-    system 'pip3 install --upgrade pygments'
+    system 'pip install --upgrade pygments'
   end
 end
