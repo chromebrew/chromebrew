@@ -5,6 +5,7 @@ class Dropbox_uploader < Package
   homepage 'https://github.com/andreafabrizi/Dropbox-Uploader'
   version '1.0'
   compatibility 'all'
+  license 'GPL-3'
   source_url 'https://github.com/andreafabrizi/Dropbox-Uploader/archive/1.0.tar.gz'
   source_sha256 '8c9be8bd38fb3b0f0b4d1a863132ad38c8299ac62ecfbd1e818addf32b48d84c'
 

@@ -2,9 +2,10 @@ require 'package'
 
 class Docbook_xml < Package
   description 'Meta package for all versions of docbook_xml'
-  compatibility 'all'
   homepage 'http://www.docbook.org'
   version '5.1-2'
+  license 'MIT'
+  compatibility 'all'
 
   is_fake
 

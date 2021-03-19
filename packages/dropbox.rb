@@ -4,6 +4,7 @@ class Dropbox < Package
   description 'Dropbox simplifies the way you create, share and collaborate.  Bring your photos, docs, and videos anywhere and keep your files safe.'
   homepage 'https://www.dropbox.com/'
   version '48.4.58'
+  license 'Dropbox-TOS'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686'

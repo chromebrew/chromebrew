@@ -4,6 +4,7 @@ class Dconf < Package
   description 'The DConf package contains a low-level configuration system.'
   homepage 'https://wiki.gnome.org/Projects/dconf'
   version '0.39.1'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://download.gnome.org/core/40/40.beta/sources/dconf-0.39.1.tar.xz'
   source_sha256 '9a3870bf07b8e0452e22ce068d51c7f19c1e1cfeacd9883c03523822afdff665'

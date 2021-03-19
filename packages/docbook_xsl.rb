@@ -5,6 +5,7 @@ class Docbook_xsl < Package
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
   version "#{@_ver}-1"
+  license 'custom'
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'

@@ -390,6 +390,7 @@ BCS
 bestcrypt
 CAPYBARA-EULA
 Coherent-Graphics
+Dropbox-TOS
 ETQW
 f.lux
 FAH-EULA-2014
@@ -442,5 +443,5 @@ WPS-EULA
 zi-labone
 
 # Other licenses
-custom
+custom                      # A license cannot be 'custom' the source code is unavailable. Instead, find the license and add it under the EULA section of this file.
 unlicensed
