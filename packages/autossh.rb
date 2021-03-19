@@ -10,13 +10,13 @@ class Autossh < Package
   source_sha256 '5fc3cee3361ca1615af862364c480593171d0c54ec156de79fc421e31ae21277'
 
   depends_on 'openssh'
-
+  
   def self.build
     system "./configure #{CREW_OPTIONS} \
             --with-ssh=$(which ssh)"
     system "make"
   end
-
+  
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "mkdir -p #{CREW_DEST_PREFIX}/share/doc/autossh"
