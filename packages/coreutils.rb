@@ -2,9 +2,10 @@ require 'package'
 
 class Coreutils < Package
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
-  homepage 'http://www.gnu.org/software/coreutils/coreutils.html'
+  homepage 'https://www.gnu.org/software/coreutils/coreutils.html'
   @_ver = '8.32'
   version @_ver
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/coreutils/coreutils-#{@_ver}.tar.xz"
   source_sha256 '4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'

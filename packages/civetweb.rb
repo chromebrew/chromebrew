@@ -4,6 +4,7 @@ class Civetweb < Package
   description 'Embedded C/C++ web server'
   homepage 'https://github.com/civetweb/civetweb/'
   version '1.13'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/civetweb/civetweb/archive/v1.13.tar.gz'
   source_sha256 'a7ccc76c2f1b5f4e8d855eb328ed542f8fe3b882a6da868781799a98f4acdedc'
@@ -20,7 +21,7 @@ class Civetweb < Package
        i686: '856eeb6d5543fe03baec996f21324ad0bb14bc0a2e9c080d61cf33614697a36d',
      x86_64: 'a314284c9ea9b1f3190174645c5c13872387520dc1877a3fb7eb5397916b8bed',
   })
-  
+
   def self.build
     Dir.mkdir "builddir"
     Dir.chdir "builddir" do

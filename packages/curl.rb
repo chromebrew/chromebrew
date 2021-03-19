@@ -5,6 +5,7 @@ class Curl < Package
   homepage 'https://curl.se/'
   @_ver = '7.75.0'
   version "#{@_ver}-1"
+  license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
   source_sha256 'fe0c49d8468249000bda75bcfdf9e30ff7e9a86d35f1a21f428d79c389d55675'
@@ -34,7 +35,7 @@ class Curl < Package
   depends_on 'zstd'
   depends_on 'rtmpdump'
   depends_on 'ca_certificates'
-  
+
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 

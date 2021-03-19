@@ -4,6 +4,7 @@ class Ccache < Package
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.samba.org/'
   version '4.1'
+  license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/ccache/ccache/releases/download/v4.1/ccache-4.1.tar.xz'
   source_sha256 '5fdc804056632d722a1182e15386696f0ea6c59cb4ab4d65a54f0b269ae86f99'

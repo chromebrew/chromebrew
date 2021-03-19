@@ -4,6 +4,7 @@ class Cairo < Package
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
   version '1.17.4'
+  license 'LGPL-2.1 or MPL-1.1'
   compatibility 'all'
   source_url 'https://cairographics.org/snapshots/cairo-1.17.4.tar.xz'
   source_sha256 '74b24c1ed436bbe87499179a3b27c43f4143b8676d8ad237a6fa787401959705'
