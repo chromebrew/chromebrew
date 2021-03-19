@@ -5,6 +5,7 @@ class Cantarell_fonts < Package
   homepage 'https://gitlab.gnome.org/GNOME/cantarell-fonts'
   @_ver = '0.301'
   version @_ver
+  license 'OFL-1.1'
   compatibility 'all'
   source_url "https://download.gnome.org/sources/cantarell-fonts/#{@_ver}/cantarell-fonts-#{@_ver}.tar.xz"
   source_sha256 '3d35db0ac03f9e6b0d5a53577591b714238985f4cfc31a0aa17f26cd74675e83'

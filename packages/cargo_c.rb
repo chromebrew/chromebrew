@@ -7,6 +7,7 @@ class Cargo_c < Package
   description 'A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
   version '0.7.3'
+  license 'LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/lu-zero/cargo-c/archive/v0.7.3/cargo-c-0.7.3.tar.gz'
   source_sha256 '533c65d555330e86b91415753efc140ffdb900abd59b5b6403352c4264941a99'
