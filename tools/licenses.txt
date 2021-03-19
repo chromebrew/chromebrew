@@ -443,5 +443,5 @@ WPS-EULA
 zi-labone
 
 # Other licenses
-custom                      # A license cannot be 'custom' the source code is unavailable. Instead, find the license and add it under the EULA section of this file.
+custom                      # A license cannot be 'custom' if the source code is unavailable. Instead, find the license and add it under the EULA section of this file.
 unlicensed
