@@ -4,6 +4,7 @@ class Libdom < Package
   description 'Implementation of the W3C DOM, written in C'
   homepage 'https://www.netsurf-browser.org'
   version '0.4.1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libdom-0.4.1-src.tar.gz'
   source_sha256 '98ee072471e55e208c9878e515c410ad462ca36f87b4afcbecad023f3a2cef4a'

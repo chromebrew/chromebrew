@@ -5,6 +5,7 @@ class Libinput < Package
   homepage 'https://www.freedesktop.org/wiki/Software/libinput'
   @_ver = '1.17.0'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/libinput/libinput-#{@_ver}.tar.xz"
   source_sha256 'c560cfca14cb5c50d2a1b7551df06bc5d4306e32c128f3e3d37e137285dedbad'

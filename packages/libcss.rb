@@ -4,6 +4,7 @@ class Libcss < Package
   description 'CSS parser and selection engine, written in C'
   homepage 'https://www.netsurf-browser.org'
   version '0.9.1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libcss-0.9.1-src.tar.gz'
   source_sha256 'd2dce16e93392e8d6a7209420d47c2d56a3811701a0e81a724fc541c63d3c6dc'

@@ -5,6 +5,7 @@ class Libde265 < Package
   homepage 'https://github.com/strukturag/libde265'
   @_ver = '1.0.8'
   version @_ver
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://github.com/strukturag/libde265/releases/download/v#{@_ver}/libde265-#{@_ver}.tar.gz"
   source_sha256 '24c791dd334fa521762320ff54f0febfd3c09fc978880a8c5fbc40a88f21d905'

@@ -5,6 +5,7 @@ class Lcms < Package
   homepage 'http://www.littlecms.com/'
   @_ver = '2.12'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/mm2/Little-CMS/releases/download/lcms#{@_ver}/lcms2-#{@_ver}.tar.gz"
   source_sha256 '18663985e864100455ac3e507625c438c3710354d85e5cbb7cd4043e11fe10f5'

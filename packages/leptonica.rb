@@ -5,6 +5,7 @@ class Leptonica < Package
   homepage 'http://www.leptonica.com/'
   @_ver = '1.80.0'
   version @_ver
+  license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/DanBloomberg/leptonica/archive/#{@_ver}.tar.gz"
   source_sha256 '3952b974ec057d24267aae48c54bca68ead8275604bf084a73a4b953ff79196e'

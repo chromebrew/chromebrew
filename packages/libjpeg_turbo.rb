@@ -5,6 +5,7 @@ class Libjpeg_turbo < Package
   homepage 'https://libjpeg-turbo.org'
   @_ver = '2.0.6'
   version @_ver
+  license 'BSD, IJG and ZLIB'
   compatibility 'all'
   source_url "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/#{@_ver}.tar.gz"
   source_sha256 '005aee2fcdca252cee42271f7f90574dda64ca6505d9f8b86ae61abc2b426371'

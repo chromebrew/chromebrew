@@ -4,6 +4,7 @@ class Libgweather < Package
   description 'Location and timezone database and weather-lookup library'
   homepage 'https://wiki.gnome.org/Projects/LibGWeather'
   version '40.beta'
+  license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/libgweather/archive/40.beta.tar.gz'
   source_sha256 '89eebe5a83177f094c017a484be3a27b5e418fec2d9aaea1937bdc6ddc430627'
