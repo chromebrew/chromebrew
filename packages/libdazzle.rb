@@ -4,6 +4,7 @@ class Libdazzle < Package
   description 'The libdazzle library is a companion library to GObject and Gtk+.'
   homepage 'https://gitlab.gnome.org/GNOME/libdazzle/'
   version '3.37.1'
+  license 'GPL-3+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libdazzle/-/archive/3.37.1/libdazzle-3.37.1.tar.bz2'
   source_sha256 'f786a9c3007011a03c721c3402f86ec69642797f64a4bdaa6f1a9c10628aa0cf'

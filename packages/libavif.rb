@@ -8,6 +8,7 @@ class Libavif < Package
   homepage 'https://github.com/AOMediaCodec/libavif'
   @_ver = '0.9.0'
   version @_ver
+  license 'BSD-2'
   compatibility 'all'
   source_url "https://github.com/AOMediaCodec/libavif/archive/v#{@_ver}.tar.gz"
   source_sha256 'ea1603fc18e7dd20cf01f0b405156576886ecb5df84db8c0e87187cd2f8a00f4'

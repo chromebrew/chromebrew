@@ -5,6 +5,7 @@ class Libexiv2 < Package
   homepage 'http://exiv2.org/'
   @_ver = '0.27.3-d8dd'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/Exiv2/exiv2/archive/d8dd632ad511db37245e4fe644a3cd399d770399.zip'
   source_sha256 '4cf76787b665186c7a484f16aaf92b306be3fa34feb1edbda79442811dd4287e'

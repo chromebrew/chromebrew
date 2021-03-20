@@ -5,6 +5,7 @@ class Libcap < Package
   homepage 'https://directory.fsf.org/wiki/Libcap'
   @_ver = '2.48'
   version @_ver
+  license 'GPL-2 or BSD'
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-#{@_ver}.tar.xz"
   source_sha256 '4de9590ee09a87c282d558737ffb5b6175ccbfd26d580add10df44d0f047f6c2'
