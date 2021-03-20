@@ -4,6 +4,7 @@ class Gnome_weather < Package
   description 'Access current weather conditions and forecasts'
   homepage 'https://wiki.gnome.org/Apps/Weather'
   version '40.beta'
+  license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
   compatibility 'all'
   source_url 'https://github.com/GNOME/gnome-weather/archive/40.beta.tar.gz'
   source_sha256 '281b35ab677a143d0aa0118a2c7c3be6a76837d01ea0dd5f862c628b8ef1579a'

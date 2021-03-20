@@ -5,6 +5,7 @@ class Gobject_introspection < Package
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
   @_ver = '1.67.1'
   version @_ver
+  license 'LGPL-2+ and GPL-2+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/#{@_ver}/gobject-introspection-#{@_ver}.tar.bz2"
   source_sha256 '4cd840eb3a9b5f6cddda96f79e9f186b1da4b93343a0c82e0ab185beccb25a6b'

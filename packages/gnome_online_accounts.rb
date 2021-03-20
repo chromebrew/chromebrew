@@ -5,6 +5,7 @@ class Gnome_online_accounts < Package
   homepage 'https://wiki.gnome.org/Projects/GnomeOnlineAccounts'
   @_ver = '3.38.1'
   version @_ver
+  license 'LGPL-2+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/archive/#{@_ver}/gnome-online-accounts-#{@_ver}.tar.bz2"
   source_sha256 '8547314b6e6b4c2296100f6962e30f13f583b0dad73e32a45b592f751a8f77f3'

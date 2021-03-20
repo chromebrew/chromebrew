@@ -4,6 +4,7 @@ class Gnome_terminal < Package
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
   version '3.39.90'
+  license 'GPL-3+'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gnome-terminal/3.39/gnome-terminal-3.39.90.tar.xz'
   source_sha256 '68bbd2b20c533f1648d4ba5625dbcb35270e5c958713faaad30ea0167c3d8199'

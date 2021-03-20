@@ -5,6 +5,7 @@ class Gsettings_desktop_schemas < Package
   homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
   @_ver = '40.rc'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/archive/#{@_ver}/gsettings-desktop-schemas-#{@_ver}.tar.bz2"
   source_sha256 '555613c51b149053eba790a47b9f8cab1bb5a3a9263af0b6c3e1ac357b0913da'

@@ -2,7 +2,7 @@ require 'package'
 
 class Fly < Package
   description 'fly is a C program that creates PNG, JPEG or GIF images on the fly from CGI and other programs.'
-  homepage 'http://www.unimelb.edu.au/fly/fly.html' # 403 Forbidden
+  homepage 'http://www.w3perl.com/fly/'
   version '1.6.5'
   license 'custom'
   compatibility 'all'

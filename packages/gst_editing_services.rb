@@ -5,6 +5,7 @@ class Gst_editing_services < Package
   homepage 'https://gstreamer.freedesktop.org/modules/gst-editing-services.html'
   @_ver = '1.18.3'
   version @_ver
+  license 'LGPL-2.0+'
   compatibility 'all'
   source_url "https://gstreamer.freedesktop.org/src/gst-editing-services/gst-editing-services-#{@_ver}.tar.xz"
   source_sha256 '8ae139b13b1646a20ba63b0b90877d35813e24cd87642d325e751fc7cb175e20'

@@ -4,6 +4,7 @@ class Gdal < Package
   description 'The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.'
   homepage 'http://www.gdal.org/'
   version '3.1.3'
+  license 'BSD, Info-ZIP and MIT'
   compatibility 'all'
   source_url 'https://download.osgeo.org/gdal/3.1.3/gdal-3.1.3.tar.xz'
   source_sha256 '161cf55371a143826f1d76ce566db1f0a666496eeb4371aed78b1642f219d51d'

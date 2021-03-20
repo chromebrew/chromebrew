@@ -1,8 +1,10 @@
 require 'package'
-  
+
 class Gedit < Package
   description 'GNOME Text Editor'
+  homepage 'https://wiki.gnome.org/Apps/Gedit'
   version '3.38.1'
+  license 'GPL-2+ CC-BY-SA-3.0'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gedit/3.38/gedit-3.38.1.tar.xz'
   source_sha256 '0053853d2cd59cad8a1662f5b4fdcfab47b4c0940063bacd6790a9948642844d'

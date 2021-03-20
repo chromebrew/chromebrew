@@ -6,6 +6,7 @@ class Gtk3 < Package
   @_ver = '3.24.27'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gtk/-/archive/#{@_ver}/gtk-#{@_ver}.tar.bz2"
   # source_url "https://download.gnome.org/sources/gtk/#{@_ver_prelastdot}/gtk-#{@_ver}.tar.xz"
