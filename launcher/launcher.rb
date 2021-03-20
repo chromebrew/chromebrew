@@ -1,11 +1,9 @@
 #!/usr/bin/env ruby
 
 # use chromebrew variable if exist
-if File.exist?('/usr/local/lib/crew/lib/const.rb')
-  require_relative '/usr/local/lib/crew/lib/const'
-  CREW = true
-elsif File.exist?("#{ENV['CREW_PREFIX']}/lib/crew/lib/const.rb")
-  require_relative ENV['CREW_PREFIX'] + '/lib/crew/lib/const'
+# follow CREW_PREFIX env variable if set
+if File.exist?("#{ENV['CREW_PREFIX'] || '/usr/local'}/lib/crew/lib/const.rb")
+  require_relative "#{ENV['CREW_PREFIX'] || '/usr/local'}/lib/crew/lib/const.rb"
   CREW = true
 else
   CREW_PREFIX = ''
