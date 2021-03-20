@@ -5,6 +5,7 @@ class Libxkbcommon < Package
   homepage 'https://xkbcommon.org'
   @_ver = '1.0.3'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://xkbcommon.org/download/libxkbcommon-#{@_ver}.tar.xz"
   source_sha256 'a2202f851e072b84e64a395212cbd976ee18a8ee602008b0bad02a13247dbc52'

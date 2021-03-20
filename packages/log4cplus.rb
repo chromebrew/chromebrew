@@ -4,6 +4,7 @@ class Log4cplus < Package
   description 'log4cplus is a simple to use C++ logging API providing thread-safe, flexible, and arbitrarily granular control over log management and configuration.'
   homepage 'https://sourceforge.net/projects/log4cplus/'
   version '2.0.5'
+  license 'Apache-2.0 or BSD-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/log4cplus/log4cplus-stable/2.0.5/log4cplus-2.0.5.tar.xz'
   source_sha256 '6046f0867ce4734f298418c7b7db0d35c27403090bb751d98e6e76aa4935f1af'

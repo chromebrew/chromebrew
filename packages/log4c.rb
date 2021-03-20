@@ -4,6 +4,7 @@ class Log4c < Package
   description 'Log4c is a library of C for flexible logging to files, syslog and other destinations.'
   homepage 'http://log4c.sourceforge.net/'
   version '1.2.4'
+  license 'LGPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/log4c/log4c/1.2.4/log4c-1.2.4.tar.gz'
   source_sha256 '5991020192f52cc40fa852fbf6bbf5bd5db5d5d00aa9905c67f6f0eadeed48ea'

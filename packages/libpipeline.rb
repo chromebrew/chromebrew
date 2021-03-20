@@ -5,6 +5,7 @@ class Libpipeline < Package
   homepage 'http://libpipeline.nongnu.org/'
   @_ver = '1.5.3'
   version @_ver
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://mirror.csclub.uwaterloo.ca/nongnu/libpipeline/libpipeline-#{@_ver}.tar.gz"
   source_sha256 '5dbf08faf50fad853754293e57fd4e6c69bb8e486f176596d682c67e02a0adb0'

@@ -4,6 +4,7 @@ class Libtiff < Package
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
   version '4.2.0'
+  license 'libtiff'
   compatibility 'all'
   source_url 'https://download.osgeo.org/libtiff/tiff-4.2.0.tar.gz'
   source_sha256 'eb0484e568ead8fa23b513e9b0041df7e327f4ee2d22db5a533929dfc19633cb'
@@ -26,7 +27,7 @@ class Libtiff < Package
   depends_on 'libwebp'
   depends_on 'libdeflate'
   depends_on 'imake' => :build
-  
+
   def self.build
     system "env NOCONFIGURE=1 ./autogen.sh"
     system "./configure #{CREW_OPTIONS} \

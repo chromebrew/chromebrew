@@ -4,6 +4,7 @@ class Libspatialindex < Package
   description 'C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API'
   homepage 'https://libspatialindex.org/'
   version '1.9.3'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libspatialindex/libspatialindex/archive/1.9.3.tar.gz'
   source_sha256 '7b44340a3edc55c11abfc453bb60f148b29f569cef9e1148583e76132e9c7379'

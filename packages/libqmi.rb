@@ -5,6 +5,7 @@ class Libqmi < Package
   homepage 'https://www.freedesktop.org/wiki/Software/libqmi/'
   @_ver = '1.28.2'
   version @_ver
+  license 'LGPL-2'
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/libqmi/libqmi-#{@_ver}.tar.xz"
   source_sha256 '8c8c3ee719874d2529bce9b35b028fe435b36f003979a360d3ad0938449db783'
