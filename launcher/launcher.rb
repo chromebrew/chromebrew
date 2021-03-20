@@ -274,16 +274,17 @@ def start_server
       end
     }
   end
+  return true
 end
 
     
 case ARGV[0]
 when 'start'
-  start_server
+  puts 'Server failed to start'.lightred unless start_server
 when 'new'
   if ARGV[1] then
     new ARGV[1]
-    start_server
+    puts 'Server failed to start'.lightred unless start_server
   else
     puts 'launcher: missing command name'.lightred
     puts HELP
