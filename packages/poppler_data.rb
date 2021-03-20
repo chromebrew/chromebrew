@@ -5,6 +5,7 @@ class Poppler_data < Package
   homepage 'https://poppler.freedesktop.org/'
   @_ver = '0.4.10'
   version @_ver
+  license 'BSD, GPL-2 and MIT'
   compatibility 'all'
   source_url "https://poppler.freedesktop.org/poppler-data-#{@_ver}.tar.gz"
   source_sha256 '6e2fcef66ec8c44625f94292ccf8af9f1d918b410d5aa69c274ce67387967b30'

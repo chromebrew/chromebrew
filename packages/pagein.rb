@@ -2,10 +2,11 @@ require 'package'
 
 class Pagein < Package
   description 'Pagein is a tool that forces pages that are in swap to be paged in back to memory.'
-  homepage 'http://kernel.ubuntu.com/~cking/pagein/'
+  homepage 'https://kernel.ubuntu.com/~cking/pagein/'
   version '0.00.05'
+  license 'GPL-2'
   compatibility 'all'
-  source_url 'http://kernel.ubuntu.com/~cking/tarballs/pagein/pagein-0.00.05.tar.gz'
+  source_url 'https://kernel.ubuntu.com/~cking/tarballs/pagein/pagein-0.00.05.tar.gz'
   source_sha256 '3f81409f6227887212083c585abf5143a082dde2bbcab1d2ae8c74b6d294e8b3'
 
   binary_url ({

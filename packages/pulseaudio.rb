@@ -5,6 +5,7 @@ class Pulseaudio < Package
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
   @_ver = '14.2'
   version "#{@_ver}-2"
+  license 'LGPL-2.1 and GPL-2'
   compatibility 'all'
   source_url "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-#{@_ver}.tar.xz"
   source_sha256 '75d3f7742c1ae449049a4c88900e454b8b350ecaa8c544f3488a2562a9ff66f1'

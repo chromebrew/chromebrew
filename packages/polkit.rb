@@ -4,6 +4,7 @@ class Polkit < Package
   description 'Application development toolkit for controlling system-wide privileges'
   homepage 'https://www.freedesktop.org/wiki/Software/polkit/'
   version '0.118-265f'
+  license 'LGPL-2'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/polkit/polkit/-/archive/265f0d54b83f0c9f0d66c88f132ef385117e1b97/polkit-265f0d54b83f0c9f0d66c88f132ef385117e1b97.tar.bz2'
   source_sha256 '48cf39b1113f22a79a2ad3c901aa5d495b1ead780ca9be99ca4d4bb39cc25619'

@@ -47,6 +47,7 @@ GPL-3+-with-autoconf-exception
 GPL-3-with-font-exception
 GPL-3+-with-font-exception
 GPL-3-with-openssl-exception
+GPL-3-with-qt-exception
 HPND
 IJG
 ISC

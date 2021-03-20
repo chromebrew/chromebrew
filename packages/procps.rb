@@ -4,6 +4,7 @@ class Procps < Package
   description 'procps is a set of command line and full-screen utilities that provide information out of the pseudo-filesystem most commonly located at /proc.'
   homepage 'https://gitlab.com/procps-ng/procps'
   version '3.3.16'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.com/procps-ng/procps/-/archive/v3.3.16/procps-v3.3.16.tar.bz2'
   source_sha256 '720caf307ab5dfe6d1cf4fc3e6ce786d749c69baa088627dbe1b01828f2528b1'
