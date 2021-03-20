@@ -5,6 +5,7 @@ class Libuv < Package
   homepage 'http://libuv.org/'
   @_ver = '1.39.0'
   version @_ver
+  license 'BSD, BSD-2, ISC and MIT'
   compatibility 'all'
   source_url "https://dist.libuv.org/dist/v#{@_ver}/libuv-v#{@_ver}.tar.gz"
   source_sha256 '5c52de5bdcfb322dbe10f98feb56e45162e668ad08bc28ab4b914d4f79911697'

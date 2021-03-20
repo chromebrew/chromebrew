@@ -5,6 +5,7 @@ class Libsigcplusplus3 < Package
   homepage 'https://github.com/libsigcplusplus/libsigcplusplus/'
   @_ver = '3.0.6'
   version @_ver
+  license 'LGPL-3'
   compatibility 'all'
   source_url "https://github.com/libsigcplusplus/libsigcplusplus/archive/#{@_ver}.tar.gz"
   source_sha256 '25ff9bf59c28e185c3901963f11bbdac58ce866281c65c870145b119e59a0836'
@@ -21,7 +22,7 @@ class Libsigcplusplus3 < Package
         i686: '497f109d9d2c97bb13ce0df424cb8ec6eb7fa46e34b96e585b9831bb2d75f69c',
       x86_64: 'f5c843178b73298dc190a48f3dabdf5626121aeb436ba05b26a481160b909bb7',
   })
-  
+
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
     -Dbuild-examples=false \

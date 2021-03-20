@@ -5,6 +5,7 @@ class Libxcursor < Package
   homepage 'http://www.x.org'
   @_ver = '1.2.0'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://www.x.org/archive/individual/lib/libXcursor-#{@_ver}.tar.gz"
   source_sha256 'ad5b2574fccaa4c3fa67b9874fbed863d29ad230c784e9a08b20692418f6a1f8'

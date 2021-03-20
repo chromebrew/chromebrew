@@ -5,6 +5,7 @@ class Libnewt < Package
   homepage 'https://pagure.io/newt'
   @_ver = '0.52.21'
   version @_ver
+  license 'LGPL-2'
   compatibility 'all'
   source_url "https://releases.pagure.org/newt/newt-#{@_ver}.tar.gz"
   source_sha256 '265eb46b55d7eaeb887fca7a1d51fe115658882dfe148164b6c49fccac5abb31'

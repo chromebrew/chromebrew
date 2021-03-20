@@ -5,6 +5,7 @@ class Libostree < Package
   homepage 'https://ostreedev.github.io/ostree/'
   @_ver = '2020.8'
   version @_ver
+  license 'LGPL-2+'
   compatibility 'all'
   source_url "https://github.com/ostreedev/ostree/releases/download/v#{@_ver}/libostree-#{@_ver}.tar.xz"
   source_sha256 'fdaa5992d0a6f62157152355449ac8476c50df6602be398e9ad10438cc1e679b'

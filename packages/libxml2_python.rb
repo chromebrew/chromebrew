@@ -4,6 +4,7 @@ class Libxml2_python < Package
   description 'Libxml2 (python module) is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
   version '2.9.10-f93c'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/GNOME/libxml2/archive/f93ca3e140a371b26366f747a408588c631e0fd1.zip'
   source_sha256 '0faa7455354a724e3d07c37177cbf125b3e04da91073fa0858806cb5376f2c55'

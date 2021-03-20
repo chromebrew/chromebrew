@@ -5,6 +5,7 @@ class Libseccomp < Package
   homepage 'https://github.com/seccomp/libseccomp'
   @_ver = '2.5.1'
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/seccomp/libseccomp/archive/v#{@_ver}.tar.gz"
   source_sha256 '76ad54e31d143b39a99083564045212a965e026a1010a742edd793d26d699829'

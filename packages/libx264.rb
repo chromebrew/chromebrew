@@ -4,6 +4,7 @@ class Libx264 < Package
   description 'x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format.'
   homepage 'http://www.videolan.org/developers/x264.html'
   version 'b86a'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://code.videolan.org/videolan/x264/-/archive/b86ae3c66f51ac9eab5ab7ad09a9d62e67961b8a/x264-b86ae3c66f51ac9eab5ab7ad09a9d62e67961b8a.tar.bz2'
   source_sha256 '6d4eacd1e735f1670a84f56802023fce9a68f19a6186440281fff7757810297d'

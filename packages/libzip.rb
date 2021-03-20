@@ -4,6 +4,7 @@ class Libzip < Package
   description 'libzip is a C library for reading, creating, and modifying zip archives.'
   homepage 'https://libzip.org/'
   version '1.7.3-1'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://libzip.org/download/libzip-1.7.3.tar.xz'
   source_sha256 'a60473ffdb7b4260c08bfa19c2ccea0438edac11193c3afbbb1f17fbcf6c6132'
@@ -38,7 +39,7 @@ class Libzip < Package
   def self.check
     system "ninja -C builddir test"
   end
-  
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end

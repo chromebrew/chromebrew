@@ -5,6 +5,7 @@ class Libxss < Package
   homepage 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver'
   @_ver = '1.2.3'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://xorg.freedesktop.org/releases/individual/lib/libXScrnSaver-#{@_ver}.tar.bz2"
   source_sha256 'f917075a1b7b5a38d67a8b0238eaab14acd2557679835b154cf2bca576e89bf8'
