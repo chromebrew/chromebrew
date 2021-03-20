@@ -21,6 +21,9 @@ class Launcher < Package
     @code = 'launcher start'
     system "echo '#{@code}' >> #{HOME}/.bashrc" unless `grep -c '#{@code}' #{HOME}/.bashrc`.to_i > 0
     puts
+    puts "To finish the installation, execute the following:".lightblue
+    puts "source ~/.bashrc".lightblue
+    puts
     puts "To get started, execute 'launcher help'.".lightblue
     puts
   end
