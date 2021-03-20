@@ -300,6 +300,7 @@ torque-2.5
 totd
 Toyoda
 UCAR-Unidata
+UPL-1.0
 URT
 VTK
 w3m
@@ -416,6 +417,7 @@ Mojang
 microsoft-edge
 ms-teams-pre
 MTA-0.5
+NConvert-EULA
 NVIDIA-CODEC-SDK
 NVIDIA-CUDA
 OPERA-2018

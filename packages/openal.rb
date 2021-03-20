@@ -4,6 +4,7 @@ class Openal < Package
   description 'OpenAL Soft is a software implementation of the cross-platform OpenAL 3D audio API appropriate for use with gaming applications and many other types of audio applications.'
   homepage 'https://openal-soft.org/'
   version '1.20.1'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/kcat/openal-soft/archive/openal-soft-1.20.1.tar.gz'
   source_sha256 'c32d10473457a8b545aab50070fe84be2b5b041e1f2099012777ee6be0057c13'

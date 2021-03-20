@@ -5,6 +5,7 @@ class Orc < Package
   homepage 'https://gitlab.freedesktop.org/gstreamer/orc'
   @_ver = '0.4.32'
   version @_ver
+  license 'BSD and BSD-2'
   compatibility 'all'
   source_url "https://github.com/GStreamer/orc/archive/#{@_ver}.tar.gz"
   source_sha256 '6a7349d2ab4a73476cd4de36212e8c3c6524998081aaa04cf3a891ef792dd50f'
