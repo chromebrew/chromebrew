@@ -5,6 +5,7 @@ class Igt_gpu_tools < Package
   homepage 'https://gitlab.freedesktop.org/drm/igt-gpu-tools'
   @_ver = '1.25'
   version "#{@_ver}-1"
+  license 'MIT'
   compatibility 'x86_64 i686'
   source_url "https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-#{@_ver}.tar.xz"
   source_sha256 '40454d8f0484ea2477862007398a08eef78a6c252c4defce1c934548593fdd11'

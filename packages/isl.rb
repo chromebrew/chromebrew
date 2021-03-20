@@ -4,6 +4,7 @@ class Isl < Package
   description 'Integer Set Library for manipulating sets and relations of integer points bounded by linear constraints'
   homepage 'http://isl.gforge.inria.fr/'
   version '0.23'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url 'http://isl.gforge.inria.fr/isl-0.23.tar.xz'
   source_sha256 '5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2'

@@ -4,6 +4,7 @@ class Hello < Package
   description 'GNU Hello is another implementation of the classic program that prints “Hello, world!”'
   homepage 'https://www.gnu.org/software/hello/'
   version '2.10'
+  license 'FDL-1.3 GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/hello/hello-2.10.tar.gz'
   source_sha256 '31e066137a962676e89f69d1b65382de95a7ef7d914b8cb956f41ea72e0f516b'

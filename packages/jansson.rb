@@ -5,6 +5,7 @@ class Jansson < Package
   homepage 'http://www.digip.org/jansson/'
   @_ver = '2.13.1'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/akheron/jansson/archive/v#{@_ver}.tar.gz"
   source_sha256 'f22901582138e3203959c9257cf83eba9929ac41d7be4a42557213a22ebcc7a0'

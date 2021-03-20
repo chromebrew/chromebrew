@@ -5,6 +5,7 @@ class Imagemagick7 < Package
   homepage 'http://www.imagemagick.org/script/index.php'
   @_ver = '7.0.11-2'
   version @_ver
+  license 'imagemagick'
   compatibility 'all'
   source_url "https://github.com/ImageMagick/ImageMagick/archive/#{@_ver}.tar.gz"
   source_sha256 '936959ba77bb9d8fdab4d9c69f90316c02a7e2467dea3790ad36b4d500c31a22'

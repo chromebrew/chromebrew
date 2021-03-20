@@ -4,6 +4,7 @@ class Intel_media_sdk < Package
   description 'API to access hardware-accelerated video on Intel Gen graphics hardware platforms'
   homepage 'https://software.intel.com/en-us/media-sdk/'
   version '20.5.1'
+  license 'MIT'
   compatibility 'x86_64'
   if ARCH == 'x86_64'
     source_url 'https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-20.5.1.tar.gz'

@@ -4,6 +4,7 @@ class Hplip < Package
   description 'Print, Scan and Fax Drivers for Linux'
   homepage 'https://developers.hp.com/hp-linux-imaging-and-printing/'
   version '3.20.2'
+  license 'GPL-2'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

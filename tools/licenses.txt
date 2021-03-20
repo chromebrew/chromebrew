@@ -234,6 +234,7 @@ inner-net
 Interbase-1.0
 ipadic
 Ispell
+JasPer-2.0
 JDOM
 JNIC
 JOVE
@@ -404,6 +405,7 @@ Gitkracken-EULA
 GOG-EULA
 google-chrome
 Google-TOS
+Heroku-TOS
 Intel-SDP
 Introversion
 LastPass
@@ -445,5 +447,6 @@ WPS-EULA
 zi-labone
 
 # Other licenses
+all-rights-reserved         # Use when a package specifically states it is all rights reserved
 custom                      # A license cannot be 'custom' if the source code is unavailable. Instead, find the license and add it under the EULA section of this file.
-unlicensed
+unlicensed                  # Assumed to be all rights reserved.
