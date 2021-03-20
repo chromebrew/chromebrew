@@ -4,6 +4,7 @@ class Pmd < Package
   description 'An extensible cross-language static code analyzer.'
   homepage 'https://pmd.github.io/'
   version '6.28.0'
+  license 'custom'
   compatibility 'all'
   source_url 'https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.28.0/pmd-bin-6.28.0.zip'
   source_sha256 '9a19365f2e107ae801b39be04c5c03cdca2d352c450faac639a6dd95b5c3ab0c'

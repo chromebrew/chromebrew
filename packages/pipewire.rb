@@ -5,6 +5,7 @@ class Pipewire < Package
   homepage 'https://pipewire.org'
   @_ver = '0.3.22'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/PipeWire/pipewire/archive/#{@_ver}.tar.gz"
   source_sha256 '5db2caf41af79cd9e343d07a3804c63b8b243c1d74e926181058e29771d4b691'

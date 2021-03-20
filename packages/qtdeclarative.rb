@@ -4,8 +4,9 @@ class Qtdeclarative < Package
   description 'Provides QML and Quick declaratives.'
   homepage 'https://www.qt.io/'
   version '5.15.1'
+  license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtdeclarative-everywhere-src-5.15.1.tar.xz'
+  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtdeclarative-everywhere-src-5.15.1.tar.xz'
   source_sha256 '7e30f0ccba61f9d71720b91d7f7523c23677f23cd96065cb71df1b0df329d768'
 
   binary_url ({

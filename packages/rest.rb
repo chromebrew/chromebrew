@@ -5,6 +5,7 @@ class Rest < Package
   homepage 'https://wiki.gnome.org/Projects/Librest'
   @_ver = '0.8.1'
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/librest/-/archive/#{@_ver}/librest-#{@_ver}.tar.bz2"
   source_sha256 '9063b9906c3a4684bef6ccaad9462e8409e1025fe37b7c9596fcf2f5f7507904'
