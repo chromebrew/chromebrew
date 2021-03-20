@@ -4,6 +4,7 @@ class Nethack < Package
   description 'Nethack is a classic roguelike. Descend through the dungeon and retrieve the Amulet of Yendor.'
   homepage 'https://www.nethack.org/'
   version '3.6.0'
+  license 'nethack'
   compatibility 'all'
   source_url 'https://github.com/NetHack/NetHack/archive/NetHack-3.6.0_Release.tar.gz'
   source_sha256 '5735e4d132d8aec0c49f0e2a72156c7cbe84ea7b5a3153531da61aa660c668a1'

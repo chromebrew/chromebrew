@@ -4,6 +4,7 @@ class Oneko < Package
   description 'A cat chases around your mouse cursor.'
   homepage 'http://www.daidouji.com/oneko/'
   version '1.2.sakura.6'
+  license 'public-domain'
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/o/oneko/oneko_1.2.sakura.6.orig.tar.gz'
   source_sha256 'd89cee8b81cdb40ef23b3457c9a7fe1b0ff130081b21a41ec6c41cda01391d25'
@@ -20,7 +21,7 @@ class Oneko < Package
        i686: '68469cb17415e9088f966a3b6551b52dcfcd15f3cec905e91fa4c7eca16dc3a0',
      x86_64: 'abcfe89e40fb13c5df22abcbae616892d9f9917ef931520a80dbbd067bb0775d',
   })
-  
+
   depends_on 'libx11'
   depends_on 'libxext'
   depends_on 'sommelier'
@@ -46,7 +47,7 @@ class Oneko < Package
     # Patch the patches
     system "for patch in $(cat debian/patches/series); do patch -p 1 -i debian/patches/${patch}; done"
   end
-  
+
   def self.prebuild
     # Turn the Imakefile into a Makefile
     system "xmkmf -a"

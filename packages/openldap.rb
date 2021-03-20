@@ -5,6 +5,7 @@ class Openldap < Package
   homepage 'https://www.openldap.org/'
   @_ver = '2.4.57'
   version @_ver
+  license 'OpenLDAP and GPL-2'
   compatibility 'all'
   source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{@_ver}.tgz"
   source_sha256 'c7ba47e1e6ecb5b436f3d43281df57abeffa99262141aec822628bc220f6b45a'
