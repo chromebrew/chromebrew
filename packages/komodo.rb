@@ -4,6 +4,7 @@ class Komodo < Package
   description 'Komodo Edit is a great editor if you\'re looking for something powerful, yet simple.'
   homepage 'https://www.activestate.com/products/komodo-edit/'
   version '11.1.1'
+  license '' # Can't find license for project
   compatibility 'all'
   case ARCH
   when 'i686'

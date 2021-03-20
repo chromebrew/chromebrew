@@ -5,6 +5,7 @@ class Intel_media_driver < Package
   homepage 'https://github.com/intel/media-driver'
   @_ver = '20.4.5'
   version @_ver
+  license 'BSD-3, and MIT'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
