@@ -4,6 +4,7 @@ class Mailutils < Package
   description 'GNU Mailutils is the swiss army knife of electronic mail handling.'
   homepage 'https://mailutils.org'
   version '3.12'
+  license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/mailutils/mailutils-3.12.tar.xz'
   source_sha256 '6d43fa217c4ac63f057de87890c562d170bb92bc402368b5fbc579e4c2b3a158'
@@ -24,7 +25,7 @@ class Mailutils < Package
   depends_on 'libdb'
   depends_on 'emacs'
   depends_on 'tcpwrappers'
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
             --enable-ipv6 \

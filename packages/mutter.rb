@@ -2,8 +2,9 @@ require 'package'
 
 class Mutter < Package
   description 'A window manager for GNOME'
-  homepage 'https://gitlab.gnome.org/GNOME/mutter'
+  homepage 'https://wiki.gnome.org/Projects/Mutter'
   version '40.rc'
+  license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/mutter/-/archive/#{version}/mutter-#{version}.tar.bz2"
   # source_url "https://download.gnome.org/core/#{version}/sources/mutter-#{version}.tar.xz"

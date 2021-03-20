@@ -5,6 +5,7 @@ class Mobile_broadband_provider_info < Package
   homepage 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info'
   @_ver = '20201225'
   version @_ver
+  license 'CC-PD'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/-/archive/#{@_ver}/mobile-broadband-provider-info-#{@_ver}.tar.bz2"
   source_sha256 '0616b3d0580575741d4319ac71ca67c9a378879943d32a67ac0460615767bcdf'

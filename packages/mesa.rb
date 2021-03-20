@@ -5,6 +5,7 @@ class Mesa < Package
   homepage 'https://www.mesa3d.org'
   @_ver = '21.0.0'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
   source_sha256 'e6204e98e6a8d77cf9dc5d34f99dd8e3ef7144f3601c808ca0dd26ba522e0d84'
