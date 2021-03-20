@@ -5,6 +5,7 @@ class Gnome_settings_daemon < Package
   homepage 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon'
   @_ver = '40.rc'
   version @_ver
+  license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/archive/#{@_ver}/gnome-settings-daemon-#{@_ver}.tar.bz2"
   source_sha256 'dc057f3c73112bae2b74207bf764258019acd2f40109a43ee163b95feceb9187'

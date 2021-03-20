@@ -5,6 +5,7 @@ class Graphviz < Package
   homepage 'https://www.graphviz.org/'
   @_ver = '2.46.1'
   version "#{@_ver}-1"
+  license 'BSD'
   compatibility 'all'
   source_url "https://gitlab.com/graphviz/graphviz/-/archive/#{@_ver}/graphviz-#{@_ver}.tar.bz2"
   source_sha256 'e5d7580b3dfcbeb0b86f28dd3c2df76f32086bb428f67c8ae8512e5fd969324d'
@@ -44,14 +45,14 @@ class Graphviz < Package
       +++ CMakeLists.txt	2021-03-10 16:59:26.696413066 +0000
       @@ -2,6 +2,7 @@ cmake_minimum_required (VERSION 3.1 FATA
        project (Graphviz)
-       
+
        include(FeatureSummary)
       +include(GNUInstallDirs)
-       
+
        # =============================== Build options ================================
        option(enable_ltdl     "Support on-demand plugin loading" ON)
       @@ -48,11 +49,11 @@ find_package(Perl REQUIRED)
-       
+
        # ================== Convenient values for CMake configuration =================
        set(BINARY_INSTALL_DIR      bin)
       -set(LIBRARY_INSTALL_DIR     lib)
@@ -71,7 +72,7 @@ class Graphviz < Package
       -    list(APPEND CMAKE_INCLUDE_PATH /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu)
       +    list(APPEND CMAKE_INCLUDE_PATH /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu "${CMAKE_INSTALL_PREFIX}")
        endif()
-       
+
        find_package(ANN)
       @@ -211,7 +212,7 @@ set(GVPLUGIN_VERSION "${GRAPHVIZ_PLUGIN_
        set(VERSION "${GRAPHVIZ_VERSION_STRING}")
@@ -91,7 +92,7 @@ class Graphviz < Package
       -  set(ENV{LD_LIBRARY_PATH} "${ROOT}/lib")
       +  set(ENV{LD_LIBRARY_PATH} "${ROOT}/${CMAKE_INSTALL_LIBDIR}")
        endif()
-       
+
        execute_process(
     CMAKE_PATCH_EOF
     IO.write('graphviz_cmake.patch', @graphviz_cmake_patch)

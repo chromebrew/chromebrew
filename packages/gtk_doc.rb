@@ -4,6 +4,7 @@ class Gtk_doc < Package
   description 'Documentation tool for public library API'
   homepage 'https://www.gtk.org/gtk-doc/'
   version '1.33.2'
+  license 'GPL-2 and FDL-1.1'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk-doc/1.33/gtk-doc-1.33.2.tar.xz'
   source_sha256 'cc1b709a20eb030a278a1f9842a362e00402b7f834ae1df4c1998a723152bf43'

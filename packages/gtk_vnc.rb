@@ -4,6 +4,7 @@ class Gtk_vnc < Package
   description 'VNC viewer widget for GTK'
   homepage 'https://wiki.gnome.org/Projects/gtk-vnc'
   version '1.0.0'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/1.0/gtk-vnc-1.0.0.tar.xz'
   source_sha256 'a81a1f1a79ad4618027628ffac27d3391524c063d9411c7a36a5ec3380e6c080'

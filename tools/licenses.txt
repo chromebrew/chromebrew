@@ -400,6 +400,7 @@ Gameplay-Group-EULA
 geekbench
 genymotion
 GIMPS
+Gitkracken-EULA
 GOG-EULA
 google-chrome
 Google-TOS

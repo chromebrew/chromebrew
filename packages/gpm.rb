@@ -4,6 +4,7 @@ class Gpm < Package
   description 'A mouse server for the console and xterm'
   homepage 'https://www.nico.schottelius.org/software/gpm/'
   version '1.20.7-e82d'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/telmich/gpm/archive/e82d1a653ca94aa4ed12441424da6ce780b1e530.zip'
   source_sha256 'd3a693fde3eb1176fdcbee78768f18115e0b634c4ce29a3c3ccc953ba20e10bf'
@@ -43,7 +44,7 @@ class Gpm < Package
     @gpm_path = <<~'GPM_PATH_EOF'
       [Unit]
       Description=Virtual console mouse server
-      
+
       [Path]
       PathExists=/dev/input/mice
     GPM_PATH_EOF

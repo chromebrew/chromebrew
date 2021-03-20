@@ -5,6 +5,7 @@ class Gnome_autoar < Package
   homepage 'https://wiki.gnome.org/TingweiLan/GSoC2013Final'
   @_ver = '0.3.0'
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-autoar/-/archive/#{@_ver}/gnome-autoar-#{@_ver}.tar.bz2"
   source_sha256 '6cf0cd7ce7f3ba959d1501701fdb65eeb8c90f6b3a194456df59c3488bb44ef3'

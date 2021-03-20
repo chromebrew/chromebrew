@@ -4,6 +4,7 @@ class Glide < Package
   description 'Package Management for Golang'
   homepage 'https://glide.sh/'
   version '0.12.3'
+  license 'MIT'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'

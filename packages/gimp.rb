@@ -4,6 +4,7 @@ class Gimp < Package
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
   version '2.10.18'
+  license 'GPL-3 and LGPL-3'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

@@ -4,6 +4,7 @@ class Gnome_desktop < Package
   description 'Library with common API for various GNOME modules'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
   version '40.beta'
+  license 'GPL-2+, LGPL-2+ and FDL-1.1+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/gnome-desktop/archive/40.beta.tar.gz'
   source_sha256 'a982cbaa68aabfcaef0d6db69c936ee45d8f23475a4dd2bad60a49f0bb920451'

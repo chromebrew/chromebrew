@@ -4,6 +4,7 @@ class Gradle < Package
   description 'From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.'
   homepage 'https://gradle.org/'
   version '6.5'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://services.gradle.org/distributions/gradle-6.5-bin.zip'
   source_sha256 '23e7d37e9bb4f8dabb8a3ea7fdee9dd0428b9b1a71d298aefd65b11dccea220f'

@@ -5,6 +5,7 @@ class Gjs < Package
   @_ver = '1.67.3'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gjs/#{@_ver_prelastdot}/gjs-#{@_ver}.tar.xz"
   source_sha256 '12df0c0ff2dd4c944ad27477ee8053e1363c4ad499542686bba21e06d38c6733'

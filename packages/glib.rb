@@ -6,6 +6,7 @@ class Glib < Package
   @_ver = '2.67.6'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://download.gnome.org/sources/glib/#{@_ver_prelastdot}/glib-#{@_ver}.tar.xz"
   source_sha256 'dd7f563509b410e8f94ef2d4cc7f74620a6b29d7c5d529fedec53c5e8018d9c5'

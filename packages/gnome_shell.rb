@@ -4,6 +4,7 @@ class Gnome_shell < Package
   description 'Next generation desktop shell'
   homepage 'https://wiki.gnome.org/Projects/GnomeShell'
   version '40.rc'
+  license 'GPL-2+ and LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/GNOME/gnome-shell/archive/#{version}.tar.gz"
   source_sha256 '76fcbb7d4ac829a1a1287feea40f3bcebc8e5ba225bb8231707cee09f53d44a0'
