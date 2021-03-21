@@ -26,7 +26,7 @@ class Balena_etcher < Package
     depends_on 'nspr'
     depends_on 'libgconf'
     depends_on 'alien' => :build
-    depends_on 'libxscrnsaver'
+    depends_on 'libxss'
     depends_on 'xhost'
     depends_on 'sommelier'
   end
