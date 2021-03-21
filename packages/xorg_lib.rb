@@ -42,5 +42,5 @@ class Xorg_lib < Package
   depends_on 'libxxf86dga'
   depends_on 'libxxf86vm'
   depends_on 'libxcomposite'
-  depends_on 'libxscrnsaver'
+  depends_on 'libxss'
 end
