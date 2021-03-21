@@ -4,6 +4,7 @@ class Wxformbuilder < Package
   description 'RAD tool for wxWidgets GUI design'
   homepage 'https://github.com/wxFormBuilder/wxFormBuilder'
   version '3.9.0'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/wxFormBuilder/wxFormBuilder/archive/v3.9.0.tar.gz'
   source_sha256 'e63532e71828d5e168388380fe627225f997267495da4bf6c55ef592738bdc88'

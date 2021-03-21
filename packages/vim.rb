@@ -5,6 +5,7 @@ class Vim < Package
   homepage 'http://www.vim.org/'
   @_ver = '8.2.2580'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
   source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'

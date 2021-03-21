@@ -5,6 +5,7 @@ class Weston < Package
   homepage 'http://wayland.freedesktop.org'
   @_ver = '9.0.0'
   version "#{@_ver}-1"
+  license 'MIT and CC-BY-SA-3.0'
   compatibility 'all'
   source_url "https://github.com/wayland-project/weston/archive/#{@_ver}.tar.gz"
   source_sha256 '82b17ab1766f13557fc620c21e3c89165342d3a3ead79ba01181b4f7d2144487'

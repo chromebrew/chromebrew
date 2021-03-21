@@ -4,6 +4,7 @@ class Waypipe < Package
   description 'A proxy for Wayland protocol applications. WARNING: different versions are incompatible'
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
   version '0.7.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v0.7.2/waypipe-v0.7.2.tar.gz'
   source_sha256 'b280079b05aef9b243be3644fc803e3feaa2fc2952d11a6c02ab33257fb52479'

@@ -4,6 +4,7 @@ class Tpp < Package
   description 'tpp stands for text presentation program and is an ncurses-based presentation tool.'
   homepage 'http://www.ngolde.de/tpp.html'
   version '1.3.1'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'http://www.ngolde.de/download/tpp-1.3.1.tar.gz'
   source_sha256 '68e3de94fbfb62bd91a6d635581bcf8671a306fffe615d00294d388ad91e1b5f'

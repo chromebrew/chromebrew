@@ -4,6 +4,7 @@ class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'https://www.v2ray.com/'
   version 'v4.24.2'
+  license 'MIT'
   compatibility 'all'
 
   case ARCH

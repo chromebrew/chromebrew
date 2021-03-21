@@ -4,6 +4,7 @@ class Xhost < Package
   description 'Server access control program for X'
   homepage 'https://github.com/freedesktop/xorg-xhost'
   version '1.0.7'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/xhost-1.0.7.tar.bz2'
   source_sha256 '93e619ee15471f576cfb30c663e18f5bc70aca577a63d2c2c03f006a7837c29a'
@@ -38,4 +39,3 @@ class Xhost < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
-

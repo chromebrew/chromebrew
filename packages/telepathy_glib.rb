@@ -5,6 +5,7 @@ class Telepathy_glib < Package
   homepage 'https://telepathy.freedesktop.org'
   @_ver = '0.24.2'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-#{@_ver}.tar.gz"
   source_sha256 'b0a374d771cdd081125f38c3abd079657642301c71a543d555e2bf21919273f0'
