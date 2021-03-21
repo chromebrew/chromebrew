@@ -4,8 +4,9 @@ class Qttools < Package
   description 'Qt Tools'
   homepage 'https://github.com/qt/qttools'
   version '5.15.2'
+  license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qttools-everywhere-src-5.15.2.tar.xz'
+  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qttools-everywhere-src-5.15.2.tar.xz'
   source_sha256 'c189d0ce1ff7c739db9a3ace52ac3e24cb8fd6dbf234e49f075249b38f43c1cc'
 
   binary_url({

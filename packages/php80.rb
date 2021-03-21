@@ -5,6 +5,7 @@ class Php80 < Package
   homepage 'http://www.php.net/'
   @_ver = '8.0.2'
   version @_ver
+  license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
   source_sha256 `curl -Ls #{source_url} | sha256sum | cut -d' ' -f1`.chomp

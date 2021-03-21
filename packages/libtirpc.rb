@@ -5,6 +5,7 @@ class Libtirpc < Package
   homepage 'https://sourceforge.net/projects/libtirpc'
   @_ver = '1.3.1'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "http://downloads.sourceforge.net/project/libtirpc/libtirpc/#{@_ver}/libtirpc-#{@_ver}.tar.bz2"
   source_sha256 '245895caf066bec5e3d4375942c8cb4366adad184c29c618d97f724ea309ee17'

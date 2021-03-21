@@ -4,6 +4,7 @@ class Libmbedtls < Package
   description 'An open source, portable, easy to use, readable and flexible SSL library'
   homepage 'https://tls.mbed.org/'
   version '2.16.8'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/ARMmbed/mbedtls/archive/v2.16.8.tar.gz'
   source_sha256 'fe9e3b15c3375943bdfebbbb20dd6b4f1147b3b5d926248bd835d73247407430'

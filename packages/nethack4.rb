@@ -4,6 +4,7 @@ class Nethack4 < Package
   description 'NetHack is a \'roguelike\' game following in the same tradition; the player controls an adventurer delving into a randomly generated dungeon to retrieve the Amulet of Yendor from its depths.'
   homepage 'http://nethack4.org/'
   version '4.3.0-beta2-1'
+  license 'nethack'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

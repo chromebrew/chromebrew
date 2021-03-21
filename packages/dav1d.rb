@@ -5,6 +5,7 @@ class Dav1d < Package
   homepage 'https://code.videolan.org/videolan/dav1d'
   @_ver = '0.8.2'
   version @_ver
+  license 'BSD-2'
   compatibility 'all'
   source_url "https://get.videolan.org/dav1d/#{@_ver}/dav1d-#{@_ver}.tar.xz"
   source_sha256 '3dd91d96b44e9d8ba7e82ad9e730d6c579ab5e19edca0db857a60f5ae6a0eb13'

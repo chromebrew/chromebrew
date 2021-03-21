@@ -4,6 +4,7 @@ class Xorg_nouveau_driver < Package
   description 'The Xorg Nouveau Driver package contains the X.Org Video Driver for NVidia Cards including RIVA TNT, RIVA TNT2, GeForce 256, QUADRO, GeForce2, QUADRO2, GeForce3, QUADRO DDC, nForce, nForce2, GeForce4, QUADRO4, GeForce FX, QUADRO FX, GeForce 6XXX and GeForce 7xxx chipsets.'
   homepage 'https://01.org/linuxgraphics/'
   version '1.0.15'
+  license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.15.tar.bz2'
   source_sha256 'aede10fd395610a328697adca3434fb14e9afbd79911d6c8545cfa2c0e541d4c'

@@ -5,6 +5,7 @@ class Libimagequant < Package
   homepage 'https://pngquant.org/lib/'
   @_ver = '2.14.1'
   version "#{@_ver}-1"
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://github.com/ImageOptim/libimagequant/archive/#{@_ver}/libimagequant-#{@_ver}.tar.gz"
   source_sha256 'b5fa27da1f3cf3e8255dd02778bb6a51dc71ce9f99a4fc930ea69b83200a7c74'

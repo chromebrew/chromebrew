@@ -4,6 +4,7 @@ class Evolution_data_server < Package
   description 'Centralized access to appointments and contacts'
   @_ver = '3.39.3'
   version @_ver
+  license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'all'
   source_url "https://github.com/GNOME/evolution-data-server/archive/#{@_ver}.tar.gz"
   source_sha256 'd789b6dc403d35902b3b6cdcebff31880d2773b1829fbdc561c59a71453eaab9'

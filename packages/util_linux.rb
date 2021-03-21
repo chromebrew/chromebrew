@@ -4,6 +4,7 @@ class Util_linux < Package
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
   version '2.36.2'
+  license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.2.tar.xz'
   source_sha256 'f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f'

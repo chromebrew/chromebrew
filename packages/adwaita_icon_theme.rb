@@ -4,6 +4,7 @@ class Adwaita_icon_theme < Package
   description 'Theme consisting of a set of icons for GTK+'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
   version '40.rc'
+  license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
   source_url 'https://download.gnome.org/core/40/40.rc/sources/adwaita-icon-theme-40.rc.tar.xz'
   source_sha256 'd794a492e8e7db33bdc19898effabc1f1205302e166da522c5351a8eba9da404'

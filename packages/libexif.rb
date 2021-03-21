@@ -5,6 +5,7 @@ class Libexif < Package
   homepage 'https://libexif.github.io/'
   @_ver = '0.6.22'
   @_ver_ = @_ver.gsub(/[.]/, '_')
+  license 'LGPL-2+'
   version @_ver
   compatibility 'all'
   source_url "https://github.com/libexif/libexif/releases/download/libexif-#{@_ver_}-release/libexif-#{@_ver}.tar.xz"

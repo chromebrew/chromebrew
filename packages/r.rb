@@ -4,6 +4,7 @@ class R < Package
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
   version '4.0.3'
+  license 'GPL-2 or GPL-3 and LGPL-2.1'
   compatibility 'all'
   source_url 'https://cran.r-project.org/src/base/R-4/R-4.0.3.tar.gz'
   source_sha256 '09983a8a78d5fb6bc45d27b1c55f9ba5265f78fa54a55c13ae691f87c5bb9e0d'

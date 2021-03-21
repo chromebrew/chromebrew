@@ -5,6 +5,7 @@ class Libxdamage < Package
   homepage 'https://x.org'
   @_ver = '1.1.5'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://www.x.org/archive/individual/lib/libXdamage-#{@_ver}.tar.gz"
   source_sha256 '630ec53abb8c2d6dac5cd9f06c1f73ffb4a3167f8118fdebd77afd639dbc2019'
@@ -33,7 +34,7 @@ class Libxdamage < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-  
+
   def self.check
     system 'make', 'check'
   end

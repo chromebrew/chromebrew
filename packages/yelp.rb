@@ -5,6 +5,7 @@ class Yelp < Package
   homepage 'https://wiki.gnome.org/Apps/Yelp'
   @_ver = '40.rc'
   version @_ver
+  license 'GPL-2+'
   compatibility 'all'
   source_url "https://github.com/GNOME/yelp/archive/#{@_ver}.tar.gz"
   source_sha256 '57cecf29edbe7b5701e5c21c345fe4492503e2c87fb7cc5ef4257b5fd77f8bde'

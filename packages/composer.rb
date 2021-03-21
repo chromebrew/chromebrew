@@ -4,6 +4,7 @@ class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
   version '2.0.11'
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/composer/composer/archive/#{version}.tar.gz"
   source_sha256 '025d332242b696ec5d10dcc4d9ad9460321d9740b09e967849017f3e67d3fcb2'

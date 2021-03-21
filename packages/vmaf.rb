@@ -5,6 +5,7 @@ class Vmaf < Package
   homepage 'https://github.com/Netflix/vmaf/'
   @_ver = '2.1.1'
   version @_ver
+  license 'BSD-2'
   compatibility 'all'
   source_url "https://github.com/Netflix/vmaf/archive/v#{@_ver}.tar.gz"
   source_sha256 'e7fc00ae1322a7eccfcf6d4f1cdf9c67eec8058709887c8c6c3795c617326f77'

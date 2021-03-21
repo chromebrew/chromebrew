@@ -5,6 +5,7 @@ class Libhandy < Package
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
   @_ver = '1.2.0'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libhandy/-/archive/#{@_ver}/libhandy-#{@_ver}.tar.bz2"
   source_sha256 'b2e08210a6b0c6b08e6c46848024cbcf44973e40377a1373d7cbb0bde7131b56'

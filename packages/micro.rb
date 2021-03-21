@@ -4,6 +4,7 @@ class Micro < Package
   description 'A modern and intuitive terminal-based text editor'
   homepage 'https://micro-editor.github.io/'
   version '1.4.1'
+  license 'MIT'
   compatibility 'all'
 
   case ARCH

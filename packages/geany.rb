@@ -4,6 +4,7 @@ class Geany < Package
   description 'Geany is a small and lightweight Integrated Development Environment.'
   homepage 'https://www.geany.org/'
   version '1.37.1'
+  license 'GPL-2+ HPND'
   compatibility 'all'
     source_url 'https://download.geany.org/geany-1.37.1.tar.bz2'
     source_sha256 '18c5756444c1d8bcd737c8ecfd4ef0b3607c924fc02560d4e8b78f6121531a18'

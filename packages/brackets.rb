@@ -4,6 +4,7 @@ class Brackets < Package
   description 'A modern, open source text editor that understands web design.'
   homepage 'http://brackets.io/'
   version '1.14.1-1'
+  license 'MPL-2.0'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'
@@ -35,7 +36,7 @@ class Brackets < Package
       sha256 = '6ef1567b75a197236b3d35785afa744752a28b74cfa51b93b7b78d0a50acbfd4'
     end
     package = "Brackets.Release.#{version}.#{arch}.deb"
-    system "wget https://github.com/adobe/brackets/releases/download/release-#{version}/#{package}"
+    system "curl -#LO https://github.com/adobe/brackets/releases/download/release-#{version}/#{package}"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(package) ) == sha256
     system "alien -tc #{package}"
     system "tar xvf brackets-#{version}.tgz"

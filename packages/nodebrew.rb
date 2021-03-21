@@ -5,6 +5,7 @@ class Nodebrew < Package
   homepage 'https://github.com/hokaccha/nodebrew'
   @_ver = '1.0.1'
   version "#{@_ver}-1"
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"
   source_sha256 'c34e7186d4fd493c5417ad5563ad39fd493a42695bd9a7758c3df10380e43399'
@@ -57,7 +58,7 @@ class Nodebrew < Package
     puts 'nodebrew use latest'.lightblue
     puts
   end
-  
+
   def self.remove
     if Dir.exists? "#{CREW_PREFIX}/share/nodebrew"
       puts
@@ -72,5 +73,5 @@ class Nodebrew < Package
       end
       puts
     end
-  end  
+  end
 end

@@ -5,6 +5,7 @@ class Gemacs < Package
   homepage 'https://www.gnu.org/software/emacs/'
   @_ver = '28.0.50.1'
   version "#{@_ver}-7a7b"
+  license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

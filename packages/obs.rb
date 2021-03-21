@@ -4,6 +4,7 @@ class Obs < Package
   description 'Free and open source software for video recording and live streaming.'
   homepage 'https://obsproject.com/'
   version '24.0.5'
+  license 'GPL-2'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

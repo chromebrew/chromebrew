@@ -4,6 +4,7 @@ class Vpnc < Package
   description 'client for cisco vpn concentrator'
   homepage 'https://www.unix-ag.uni-kl.de/~massar/vpnc/'
   version '0.5.3'
+  license 'GPL-2 and BSD'
   compatibility 'all'
   source_url 'https://www.unix-ag.uni-kl.de/~massar/vpnc/vpnc-0.5.3.tar.gz'
   source_sha256 '46cea3bd02f207c62c7c6f2f22133382602baeda1dc320747809e94881414884'

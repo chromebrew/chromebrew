@@ -4,6 +4,7 @@ class Chrx < Package
   description 'Install Linux onto your Chromebook. Dual-boot alongside ChromeOS for maximum flexibility.'
   homepage 'https://chrx.org/'
   version '3.0.2'
+  license 'unlicensed'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

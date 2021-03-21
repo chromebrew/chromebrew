@@ -4,6 +4,7 @@ class Irrlicht_tools < Package
   description 'An open source realtime 3D engine written in C++ — Tools'
   homepage 'http://irrlicht.sourceforge.net/'
   version '1.8.4'
+  license 'ZLIB'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip'
   source_sha256 'f42b280bc608e545b820206fe2a999c55f290de5c7509a02bdbeeccc1bf9e433'
@@ -20,10 +21,10 @@ class Irrlicht_tools < Package
        i686: 'bfd76b9b6a999d06581b48103e2c3b603333e7df5186d03e75621b1160cf09f1',
      x86_64: 'e988f9c00466346b85df68d01290763d0f8a43e824e59a1d836978eb55b6f900',
   })
-  
+
   depends_on 'irrlicht'
   depends_on 'dos2unix' => :build
-  
+
   def self.patch
     system "curl -#LO https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2"
     @sha256sums = <<~EOF
@@ -42,7 +43,7 @@ class Irrlicht_tools < Package
       sed -i 's:-L/usr/X11R6/lib\$(LIBSELECT):-L/usr/local/X11R6/lib\$(LIBSELECT):g' \$m; \
       sed -i 's:-I/usr/include:-I#{CREW_PREFIX}/include:g' \$m; done"
   end
-  
+
   def self.build
     Dir.chdir 'tools/FileToHeader' do
       system 'make'

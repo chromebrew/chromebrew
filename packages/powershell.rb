@@ -4,6 +4,7 @@ class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
   homepage 'https://docs.microsoft.com/en-us/powershell/'
   version '7.0.3'
+  license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'armv7l', 'aarch64'

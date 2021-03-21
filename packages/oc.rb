@@ -4,6 +4,7 @@ class Oc < Package
   description 'Enterprise Kubernetes for Developers'
   homepage 'https://github.com/openshift/origin'
   version '3.11.0'
+  license 'Apache-2.0'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

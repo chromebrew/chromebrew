@@ -5,6 +5,7 @@ class Rsync < Package
   homepage 'https://rsync.samba.org/'
   @_ver = '3.2.3'
   version "#{@_ver}-1"
+  license 'GPL-3'
   compatibility 'all'
   source_url "http://rsync.samba.org/ftp/rsync/src/rsync-#{@_ver}.tar.gz"
   source_sha256 'becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e'

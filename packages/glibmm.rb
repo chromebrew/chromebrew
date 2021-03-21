@@ -4,6 +4,7 @@ class Glibmm < Package
   description 'C++ bindings for GLib'
   homepage 'https://www.gtkmm.org'
   version '2.68.0'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/glibmm/2.68/glibmm-2.68.0.tar.xz'
   source_sha256 'c1f38573191dceed85a05600888cf4cf4695941f339715bd67d51c2416f4f375'

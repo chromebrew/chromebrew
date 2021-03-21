@@ -5,6 +5,7 @@ class Unicode_character_database < Package
   homepage 'https://www.unicode.org/'
   @_ver = '13.0.0'
   version @_ver
+  license 'Unicode-DFS-2015'
   compatibility 'all'
   source_url "https://www.unicode.org/Public/zipped/#{@_ver}/UCD.zip"
   source_sha256 '2f76973b4d36ae45584f5a45ec65b47138932d777dd23a5669c89535ef3da951'

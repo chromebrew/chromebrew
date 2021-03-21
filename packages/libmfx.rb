@@ -4,6 +4,7 @@ class Libmfx < Package
   description 'Intel Media SDK dispatcher library'
   homepage 'https://github.com/lu-zero/mfx_dispatch/'
   version '1.25'
+  license 'BSD'
   compatibility 'i686'
   case ARCH
   when 'i686'

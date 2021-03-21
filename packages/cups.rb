@@ -5,6 +5,7 @@ class Cups < Package
   homepage 'https://github.com/OpenPrinting/cups'
   @_ver = '2.3.3op2'
   version @_ver
+  license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/OpenPrinting/cups/releases/download/v#{@_ver}/cups-#{@_ver}-source.tar.gz"
   source_sha256 'deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'

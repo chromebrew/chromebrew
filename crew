@@ -129,6 +129,7 @@ def print_current_package (extra = false)
     puts ""
     puts @pkg.homepage if @pkg.homepage
     print "Version: #{@pkg.version}"
+    puts @pkg.license if @pkg.license
   end
   puts ""
 end
@@ -283,12 +284,12 @@ def help (pkgName)
     puts "If the package color is " + "green".lightgreen + ", it means the package is installed."
     puts "If the package color is " + "red".lightred + ", it means the architecture is not supported."
     puts "The <pattern> string can also contain regular expressions."
-    puts "If `-v` or `--verbose` is present, homepage and version will be displayed."
+    puts "If `-v` or `--verbose` is present, homepage, version and license will be displayed."
     puts "Examples:"
     puts "  crew search ^lib".lightblue + " will display all packages that start with `lib`."
     puts "  crew search audio".lightblue + " will display all packages with `audio` in the name."
     puts "  crew search | grep -i audio".lightblue + " will display all packages with `audio` in the name or description."
-    puts "  crew search git -v".lightblue + " will display packages with `git` in the name along with homepage and version."
+    puts "  crew search git -v".lightblue + " will display packages with `git` in the name along with homepage, version and license."
   when "update"
     puts "Update crew."
     puts "Usage: crew update"

@@ -2,8 +2,9 @@ require 'package'
 
 class Libxvmc < Package
   description 'X.org X-Video Motion Compensation Library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org'
   version '1.0.12'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXvMC-1.0.12.tar.gz'
   source_sha256 '024c9ec4f001f037eeca501ee724c7e51cf287eb69ced8c6126e16e7fa9864b5'

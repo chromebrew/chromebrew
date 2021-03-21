@@ -4,6 +4,7 @@ class Gcr < Package
   description 'GNOME crypto package'
   homepage 'https://www.gnome.org'
   version '3.38.1'
+  license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gcr/3.38/gcr-3.38.1.tar.xz'
   source_sha256 '17fcaf9c4a93a65fb1c72b82643bb102c13344084687d5886ea66313868d9ec9'

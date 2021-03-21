@@ -4,6 +4,7 @@ class Zoneinfo < Package
   description 'Code and data that represent the history of local time for many representative locations around the globe.'
   homepage 'https://www.iana.org/time-zones'
   version '2021a'
+  license 'public-domain'
   compatibility 'all'
   source_url 'https://data.iana.org/time-zones/releases/tzdb-2021a.tar.lz'
   source_sha256 '21bf125de7b0c486cb57f1ba61b39584c949b2e6cac0a03a6425435d9bff37d0'

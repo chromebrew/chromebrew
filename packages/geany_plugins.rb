@@ -4,6 +4,7 @@ class Geany_plugins < Package
   description 'Geany plugins.'
   homepage 'https://www.geany.org/'
   version '1.37'
+  license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

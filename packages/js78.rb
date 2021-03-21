@@ -1,9 +1,10 @@
 require 'package'
 
 class Js78 < Package
-  description 'JavaScript interpreter and libraries - Version 78'
+  description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 78'
   @_ver = '78.7.0'
   version @_ver
+  license 'MPL-2.0'
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'

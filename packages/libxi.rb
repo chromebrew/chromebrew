@@ -5,6 +5,7 @@ class Libxi < Package
   homepage 'https://x.org'
   @_ver = '1.7.10'
   version @_ver
+  license 'MIT and custom'
   compatibility 'all'
   source_url "https://www.x.org/archive/individual/lib/libXi-#{@_ver}.tar.gz"
   source_sha256 'b51e106c445a49409f3da877aa2f9129839001b24697d75a54e5c60507e9a5e3'

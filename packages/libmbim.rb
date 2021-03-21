@@ -5,6 +5,7 @@ class Libmbim < Package
   homepage 'https://www.freedesktop.org/wiki/Software/libmbim/'
   @_ver = '1.24.6'
   version @_ver
+  license 'LGPL-2'
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/libmbim/libmbim-#{@_ver}.tar.xz"
   source_sha256 '760465caaa1ccd699c14290e9791da456d5300dd11ebf4c1486151033e875dfd'

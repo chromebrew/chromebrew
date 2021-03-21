@@ -4,6 +4,7 @@ class Irrlicht_examples < Package
   description 'An open source realtime 3D engine written in C++ — Examples'
   homepage 'http://irrlicht.sourceforge.net/'
   version '1.8.4'
+  license 'ZLIB'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip'
   source_sha256 'f42b280bc608e545b820206fe2a999c55f290de5c7509a02bdbeeccc1bf9e433'
@@ -20,10 +21,10 @@ class Irrlicht_examples < Package
        i686: '8653b1d919a602d0269484daec98047d0e4b5e655b50bae8d49341b04b4a0e2e',
      x86_64: '6c366e0e444594fe94ef29cf6bcf309940d1a3daa2e0c0f151329e73fc142990',
   })
-  
+
   depends_on 'irrlicht'
   depends_on 'dos2unix' => :build
-  
+
   def self.patch
     system "curl -#LO https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2"
     @sha256sums = <<~EOF
@@ -42,7 +43,7 @@ class Irrlicht_examples < Package
       sed -i 's:-L/usr/X11R6/lib\$(LIBSELECT):-L/usr/local/X11R6/lib\$(LIBSELECT):g' \$m; \
       sed -i 's:-I/usr/include:-I#{CREW_PREFIX}/include:g' \$m; done"
   end
-  
+
   def self.build
     Dir.chdir 'examples' do
       system 'make'

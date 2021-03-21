@@ -4,6 +4,7 @@ class Imagemagick < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
   version '6.9.11-29-7.0.11-2'
+  license 'imagemagick'
   compatibility 'all'
 
   is_fake

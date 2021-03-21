@@ -6,6 +6,7 @@ class Unicode_cldr < Package
   @_ver = '38.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'unicode'
   compatibility 'all'
   source_url "https://unicode.org/Public/cldr/#{@_ver_prelastdot}/cldr-common-#{@_ver}.zip"
   source_sha256 '19689be1352eafc2f034f065d4f70fe55136aed381c2d1e506d9ed49333ee9f8'

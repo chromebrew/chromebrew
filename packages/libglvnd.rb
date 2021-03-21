@@ -4,6 +4,7 @@ class Libglvnd < Package
   description 'The GL Vendor-Neutral Dispatch library'
   homepage 'https://gitlab.freedesktop.org/glvnd/libglvnd'
   version '1.3.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/glvnd/libglvnd/-/archive/v1.3.2/libglvnd-v1.3.2.tar.bz2'
   source_sha256 '8eb697a879245c6246ffabf2c1ed72a5ae335769f0772f55cbe4fee3e50223fe'

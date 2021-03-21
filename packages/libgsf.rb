@@ -6,6 +6,7 @@ class Libgsf < Package
   @_ver = '1.14.47'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'GPL-2 and LGPL-2'
   compatibility 'all'
   source_url "https://download.gnome.org/sources/libgsf/#{@_ver_prelastdot}/libgsf-#{@_ver}.tar.xz"
   source_sha256 'd188ebd3787b5375a8fd38ee6f761a2007de5e98fa0cf5623f271daa67ba774d'

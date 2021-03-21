@@ -3,10 +3,11 @@ require 'package'
 class Chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome'
-  compatibility 'x86_64'
   @_ver = '88.0.4324.182'
   @_deb = "google-chrome-stable_#{@_ver}-1_amd64.deb"
   version @_ver
+  license 'google-chrome'
+  compatibility 'x86_64'
 
   if ARCH == 'x86_64' then
     depends_on 'nspr'
@@ -23,14 +24,14 @@ class Chrome < Package
     ENV['CREW_NOT_STRIP'] = '1'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    
+
     FileUtils.mv Dir.glob('usr/share/*'), './'
     FileUtils.mv Dir.glob('opt/google/chrome/*'), './'
     FileUtils.rm_rf ['usr', 'opt']
-    
+
     FileUtils.ln_s "#{CREW_PREFIX}/share/chrome/google-chrome", '#{CREW_DEST_PREFIX}/bin/google-chrome-stable'
     FileUtils.ln_s "#{CREW_PREFIX}/share/chrome/google-chrome", '#{CREW_DEST_PREFIX}/bin/google-chrome'
-    
+
     FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share"
   end
 end

@@ -2,9 +2,10 @@ require 'package'
 
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
-  homepage 'https://www.dartlang.org'
+  homepage 'https://dart.dev/'
   @_ver = '2.10.5'
   version @_ver
+  license 'BSD-3'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'

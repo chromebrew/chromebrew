@@ -6,6 +6,7 @@ class Balena_etcher < Package
   compatibility 'x86_64, i686'
   @_ver = '1.5.115'
   version @_ver
+  license 'Apache-2.0'
   case ARCH
   when 'x86_64'
     source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balena-etcher-electron_#{@_ver}_amd64.deb"
@@ -41,7 +42,7 @@ xhost si:localuser:root
 sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} balena-etcher-electron
 EOF"
   end
-    
+
   def self.install
     ENV['CREW_NOT_STRIP'] = '1'
     Dir.chdir('../') do
@@ -52,7 +53,7 @@ EOF"
     end
     FileUtils.install 'balena-etcher', "#{CREW_DEST_PREFIX}/bin/balena-etcher", mode: 0755
   end
-    
+
   def self.postinstall
     puts
     puts "To get started, type 'balena-etcher'.".lightblue

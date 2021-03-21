@@ -5,6 +5,7 @@ class Exfatprogs < Package
   homepage 'https://github.com/exfatprogs/exfatprogs'
   @_ver = '1.1.0'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/exfatprogs/exfatprogs/archive/#{@_ver}/exfatprogs-#{@_ver}.tar.gz"
   source_sha256 '88c12a2f9cbe4f12129f3b7fa2cd42f24dbed3f579e61bac2ca699ca79fad4e0'

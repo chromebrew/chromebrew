@@ -4,6 +4,7 @@ class Pax_utils < Package
   description 'ELF utils that can check files for security relevant properties'
   homepage 'https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities'
   version '1.2.5'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://dev.gentoo.org/~slyfox/distfiles/pax-utils-1.2.5.tar.xz'
   source_sha256 '7ce7170ceed255bb47cac03b88bcbc636b0e412cac974e213e8017a1dae292ec'
@@ -35,7 +36,7 @@ class Pax_utils < Package
     --with-python"
     system "make"
   end
-  
+
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end

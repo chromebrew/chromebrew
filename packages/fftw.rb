@@ -5,6 +5,7 @@ class Fftw < Package
   homepage 'http://www.fftw.org/'
   @_ver = '3.3.9'
   version @_ver
+  license 'GPL-2+'
   compatibility 'all'
   source_url "http://www.fftw.org/fftw-#{@_ver}.tar.gz"
   source_sha256 'bf2c7ce40b04ae811af714deb512510cc2c17b9ab9d6ddcf49fe4487eea7af3d'

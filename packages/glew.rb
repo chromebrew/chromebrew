@@ -4,6 +4,7 @@ class Glew < Package
   description 'GLEW provides efficient run-time mechanisms for determining which OpenGL extensions are supported on the target platform'
   homepage 'http://glew.sourceforge.net/'
   version '2.2.0-rc3'
+  license 'BSD and MIT'
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/glew/files/glew/snapshots/glew-20200115.tgz/download'
   source_sha256 '314219ba1db50d49b99705e8eb00e83b230ee7e2135289a00b5b570e4a4db43a'

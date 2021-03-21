@@ -4,6 +4,7 @@ class Fpc < Package
   description 'Free Pascal is a 32, 64 and 16 bit professional Pascal compiler.'
   homepage 'https://www.freepascal.org/'
   version '3.2.0'
+  license 'GPL-2 and LGPL-2.1-with-linking-exception'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'

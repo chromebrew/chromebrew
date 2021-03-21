@@ -4,6 +4,7 @@ class Jack1 < Package
   description 'JACK (JACK Audio Connection Kit) refers to an API that provides a basic infrastructure for audio applications to communicate with each other and with audio hardware.'
   homepage 'https://jackaudio.org/'
   version 'b04083'
+  license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/jackaudio/jack1/archive/b04083761496410a52126cdbcd35c557ee82f2e5.tar.gz'
   source_sha256 '376f2cd292ec285e53dbd5fe30a151d8a45dd7be5034a5b05dbb7e8a4735d7b1'

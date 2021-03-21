@@ -5,6 +5,7 @@ class Libinih < Package
   homepage 'https://github.com/benhoyt/inih'
   @_ver = '52'
   version @_ver
+  license 'BSD'
   compatibility 'all'
   source_url "https://github.com/benhoyt/inih/archive/r#{@_ver}.tar.gz"
   source_sha256 '439cff9ce9a8afc52d08772ac3e93b3cecd79c7707f871fb4534fb3a48201880'

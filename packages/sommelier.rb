@@ -4,6 +4,7 @@ class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
   version '20210109'
+  license '' # Can't find license. Probably BSD-Google or BSD-3
   compatibility 'all'
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
@@ -44,7 +45,7 @@ class Sommelier < Package
   def self.build
     # There is no good way to checksum the googlesource tgz file, as they appear to be generated on the fly
     # and checksums vary with each download.
-    system 'curl -L https://chromium.googlesource.com/chromiumos/platform2/+archive/f3b2e2b6a8327baa2e62ef61036658c258ab4a09.tar.gz | tar mzx --warning=no-timestamp'
+    system 'curl -#L https://chromium.googlesource.com/chromiumos/platform2/+archive/f3b2e2b6a8327baa2e62ef61036658c258ab4a09.tar.gz | tar mzx --warning=no-timestamp'
     Dir.chdir ("vm_tools/sommelier") do
 
     ## Google's sommelier expects to find virtwl.h in their kernel source includes, but we may not have
@@ -62,7 +63,7 @@ class Sommelier < Package
       #Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
     #puts "virtwl base64 downloaded".lightgreen
     #FileUtils.mkdir_p 'build/linux'
-    #system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'   
+    #system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'
 
     # Patch to avoid error with GCC > 9.x
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
@@ -83,10 +84,10 @@ class Sommelier < Package
     build"
     system "meson configure build"
     system "ninja -C build"
-    
+
     Dir.chdir ("build") do
       system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
-      
+
       system "cat <<'EOF'> .sommelier-default.env
 #!/bin/bash
 shopt -os allexport
@@ -112,11 +113,11 @@ then
       export MESA_LOADER_DRIVER_OVERRIDE=i965
   fi
 fi
-EOF"     
+EOF"
 
       #Create local startup and shutdown scripts
 
-      # sommelier_sh 
+      # sommelier_sh
       # This file via:
       # crostini: /opt/google/cros-containers/bin/sommelier
       # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146

@@ -4,6 +4,7 @@ class Libstemmer < Package
   description 'Snowball Stemming Algorithms'
   homepage 'https://snowballstem.org/'
   version '78c149'
+  license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/zvelo/libstemmer/archive/78c149a3a6f262a35c7f7351d3f77b725fc646cf.tar.gz'
   source_sha256 '9bbd1bd2b7829f6bdafba97667fc795b3a80785c2285a5b73c3006b0bf3db688'
