@@ -55,7 +55,7 @@ EOF"
       system 'rm -f *'
     end
     FileUtils.chdir "#{CREW_DEST_PREFIX}" do
-      system "wget ftp://ftp.netbsd.org/pub/pkgsrc/pkgsrc-#{version}/pkgsrc-#{version}.tar.xz"
+      system "curl -#LO ftp://ftp.netbsd.org/pub/pkgsrc/pkgsrc-#{version}/pkgsrc-#{version}.tar.xz"
       abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("pkgsrc-#{version}.tar.xz") ) == '133d2f79115c87ad7dbf6f7ab604ddc0d09afe3b1d3c4cda5670c1fb758eb283'
       system "tar xvf pkgsrc-#{version}.tar.xz"
       FileUtils.rm_f "pkgsrc-#{version}.tar.xz"

@@ -25,7 +25,7 @@ class Atom < Package
   })
 
   def self.build
-    system "wget https://github.com/atom/atom/releases/download/v#{version}/atom-amd64.deb"
+    system "curl -#LO https://github.com/atom/atom/releases/download/v#{version}/atom-amd64.deb"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('atom-amd64.deb') ) == '41a717bb3749a77f1b55f9262417c5dc8cf9e22d99b5951a85d238ea575f2399'
     system "alien -tc atom-amd64.deb"
     system "tar xvf atom-#{version}.tgz"

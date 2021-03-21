@@ -33,18 +33,18 @@ class Geoip < Package
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/GeoIP"
     # Version 1 - GeoLite Legacy (see https://dev.maxmind.com/geoip/legacy/geolite/)
-    system 'wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz'
-    system 'wget http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz'
-    system 'wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz'
-    system 'wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz'
-    system 'wget http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz'
-    system 'wget http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz'
+    system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz'
+    system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz'
+    system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz'
+    system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz'
+    system 'curl -#LO http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz'
+    system 'curl -#LO http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz'
     system 'gunzip Geo*.gz'
     system "cp Geo*.dat #{CREW_DEST_PREFIX}/share/GeoIP/"
     # Version 2 - GeoLite2 for future use (see https://dev.maxmind.com/geoip/geoip2/geolite2/)
-    #system 'wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz'
-    #system 'wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz'
-    #system 'wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN.tar.gz'
+    #system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz'
+    #system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz'
+    #system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN.tar.gz'
     #system 'tar xvf GeoLite2-City.tar.gz'
     #system 'tar xvf GeoLite2-Country.tar.gz'
     #system 'tar xvf GeoLite2-ASN.tar.gz'

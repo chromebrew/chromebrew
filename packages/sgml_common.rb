@@ -25,7 +25,7 @@ class Sgml_common < Package
   })
 
   def self.patch
-    system 'wget http://www.linuxfromscratch.org/patches/blfs/svn/sgml-common-0.6.3-manpage-1.patch'
+    system 'curl -#LO http://www.linuxfromscratch.org/patches/blfs/svn/sgml-common-0.6.3-manpage-1.patch'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('sgml-common-0.6.3-manpage-1.patch') ) == '50d93af704a0869faf8fedf5d23b1a9f90fff6499f4c11cf4addb5e460b7b58b'
     system 'patch -Np1 -i sgml-common-0.6.3-manpage-1.patch && autoreconf -f -i'
   end

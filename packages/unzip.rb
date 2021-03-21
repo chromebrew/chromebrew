@@ -32,7 +32,7 @@ class Unzip < Package
     patch_url = "http://archive.ubuntu.com/ubuntu/pool/main/u/unzip/unzip_6.0-25ubuntu1.debian.tar.xz"
     patch_sha256 = '6a22b0d23cf8b9e1a74626d7d9af5efe1257e157f20006272dc68693a13f3b45'
 
-    system('wget', '--continue', '--no-check-certificate', patch_url, '-O', 'unzippatches.tar.xz')
+    system('curl -#L', patch_url, '-o', 'unzippatches.tar.xz')
     abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest( File.read("./unzippatches.tar.xz") ) == patch_sha256
     system("tar","-xf","unzippatches.tar.xz")
 

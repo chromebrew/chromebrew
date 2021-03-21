@@ -22,8 +22,6 @@ class Zip < Package
      x86_64: 'c78a63d3630f3dbf637127e1a5a08942fd1da213cde296d33e77823e8547a56c',
   })
 
-  depends_on 'wget' => :build
-
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-core/blob/master/Formula/zip.rb
   # Upstream is unmaintained so we use the Debian patchset:
   # https://packages.debian.org/sid/zip
@@ -31,7 +29,7 @@ class Zip < Package
     patch_url = "https://mirrors.ocf.berkeley.edu/debian/pool/main/z/zip/zip_3.0-11.debian.tar.xz"
     patch_sha256 = "c5c0714a88592f9e02146bfe4a8d26cd9bd97e8d33b1efc8b37784997caa40ed"
 
-    system('wget', '--continue', '--no-check-certificate', patch_url, '-O', 'zippatches.tar.xz')
+    system('curl -#L', patch_url, '-o', 'zippatches.tar.xz')
     abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest( File.read("./zippatches.tar.xz") ) == patch_sha256
     system("tar","-xf","zippatches.tar.xz")
 

@@ -41,7 +41,7 @@ class Vivaldi < Package
       arch = 'amd64'
       sha256 = 'f9d457943b40e2bd4edd6d7d6cf069bd9cb690b5da60f7ec314837840194abfa'
     end
-    system "wget https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}-1_#{arch}.deb"
+    system "curl -#LO https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}-1_#{arch}.deb"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("vivaldi-stable_#{version}-1_#{arch}.deb") ) == sha256
     system "alien -tc vivaldi-stable_#{version}-1_#{arch}.deb"
     system "tar xvf vivaldi-stable-#{version}.tgz"
