@@ -3,23 +3,24 @@ require 'package'
 class Yaru < Package
   description 'Yaru default ubuntu theme'
   homepage 'https://github.com/ubuntu/yaru'
-  version '20.10.6.1-c80b'
+  @_ver = '21.04.1'
+  version @_ver
   license 'GPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
-  source_url 'https://github.com/ubuntu/yaru/archive/c80b62c991b98be235dee97c4fc657de6bf23895.zip'
-  source_sha256 '70571c88f193b5f371352f0cc93cf4b941f2e6cf6a85bb4b250561b16dbfdfe8'
+  source_url "https://github.com/ubuntu/yaru/archive/refs/tags/#{@_ver}.tar.gz"
+  source_sha256 '8cbbb1fcc7fa1e46e48d870cc1f941069e8213ac53200001aa9548ad79086836'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-20.10.6.1-c80b-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-20.10.6.1-c80b-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-20.10.6.1-c80b-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-20.10.6.1-c80b-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'a9fd00aec4d18c30b19e83d053100d853196a7a915b05f58e06e58a3e1265969',
-     armv7l: 'a9fd00aec4d18c30b19e83d053100d853196a7a915b05f58e06e58a3e1265969',
-       i686: 'd51f3c148cfab707d59a261162a2aa4f279cc678a078262069756fa09aeff8e9',
-     x86_64: '2ddef44b4a62611ce21890cc34ac4da45d39cbcd03c721f34b2bd5de02dc804f'
+    aarch64: 'b13e932b15e3867f2243d230cc6cdb36c475227a7167e298634cb72a48e37d0c',
+     armv7l: 'b13e932b15e3867f2243d230cc6cdb36c475227a7167e298634cb72a48e37d0c',
+       i686: 'e80256dad9b7a6cb34c3316a8138a038f7cfd8ff31ab0f5d062a11d553aebc61',
+     x86_64: '8642491d0f1fc9a77047bc7ff348b8f8af381255e1b40dfb1226f0855c40176c'
   })
 
   depends_on 'sassc'
