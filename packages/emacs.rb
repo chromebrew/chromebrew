@@ -4,6 +4,7 @@ class Emacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'http://www.gnu.org/software/emacs/'
   version '27.1'
+  license 'GPL-3+, FPL-1.3+, BSD, HPND, MIT, W3C, unicode and PSF-2'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/emacs/emacs-27.1.tar.xz'
   source_sha256 '4a4c128f915fc937d61edfc273c98106711b540c9be3cd5d2e2b9b5b2f172e41'

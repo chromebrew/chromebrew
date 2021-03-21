@@ -4,6 +4,7 @@ class Aqemu < Package
   description 'AQEMU is a GUI for virtual machines using QEMU as the backend.'
   homepage 'https://sourceforge.net/projects/aqemu/'
   version '0.9.2'
+  license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

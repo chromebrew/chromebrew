@@ -5,6 +5,7 @@ class Nettle < Package
   homepage 'http://www.lysator.liu.se/~nisse/nettle/'
   @_ver = '3.7'
   version @_ver + '-1'
+  license 'LGPL-3 or LGPL-2.1'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/nettle/nettle-#{@_ver}.tar.gz"
   source_sha256 'f001f64eb444bf13dd91bceccbc20acbc60c4311d6e2b20878452eb9a9cec75a'

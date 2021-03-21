@@ -4,6 +4,7 @@ class Librsvg < Package
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
   version '2.50.3'
+  license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.3.tar.xz'
   source_sha256 'a4298a98e3a95fdd73c858c17d4dd018525fb09dbb13bbd668a0c2243989e958'

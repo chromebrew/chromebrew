@@ -5,6 +5,7 @@ class E2fsprogs < Package
   homepage 'http://e2fsprogs.sourceforge.net/'
   @_ver = '1.45.7'
   version @_ver
+  license 'GPL-2 and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v#{@_ver}/e2fsprogs-#{@_ver}.tar.xz"
   source_sha256 '62d49c86d9d4becf305093edd65464484dc9ea41c6ff9ae4f536e4a341b171a2'

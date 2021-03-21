@@ -5,6 +5,7 @@ class Libpsl < Package
   homepage 'https://github.com/rockdaboot/libpsl'
   @_ver = '0.21.1'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/rockdaboot/libpsl/releases/download/#{@_ver}/libpsl-#{@_ver}.tar.lz"
   source_sha256 '644375d557bb3b84c485df2dae98ee388fe1e11fb75230004e4b8623b3b833a9'

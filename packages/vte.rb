@@ -4,6 +4,7 @@ class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
   version '0.63.91'
+  licene 'LGPL-2+ and GPL-3+'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/vte/0.63/vte-0.63.91.tar.xz'
   source_sha256 '2a6f58470148d2a16bac387da12525d061e5984b68fc1ff8d068d10d4f1716ab'

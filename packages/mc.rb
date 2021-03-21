@@ -4,6 +4,7 @@ class Mc < Package
   description 'GNU Midnight Commander is a visual file manager'
   homepage 'http://midnight-commander.org/'
   version '4.8.25'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/MidnightCommander/mc/archive/4.8.25.tar.gz'
   source_sha256 '8a4aa1556a528fbe9140c47aa3d0665155187468a17c3b80a824de5fcbbebae1'

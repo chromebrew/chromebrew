@@ -4,6 +4,7 @@ class Terraform < Package
   description 'Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.'
   homepage 'https://www.terraform.io/'
   version '0.13.4'
+  license 'Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode'
   compatibility 'all'
 
   case ARCH

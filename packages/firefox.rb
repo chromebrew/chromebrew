@@ -4,6 +4,7 @@ class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
   version '85.0.2'
+  license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686'

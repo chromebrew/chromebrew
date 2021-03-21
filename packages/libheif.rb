@@ -5,6 +5,7 @@ class Libheif < Package
   homepage 'https://github.com/strukturag/libheif'
   @_ver = '1.11.0'
   version "#{@_ver}-1"
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://github.com/strukturag/libheif/releases/download/v#{@_ver}/libheif-#{@_ver}.tar.gz"
   source_sha256 'c550938f56ff6dac83702251a143f87cb3a6c71a50d8723955290832d9960913'

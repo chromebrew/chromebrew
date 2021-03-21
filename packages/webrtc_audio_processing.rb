@@ -5,6 +5,7 @@ class Webrtc_audio_processing < Package
   homepage 'https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/'
   @_ver = '0.3.1'
   version @_ver
+  license 'BSD'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/archive/v0.3.1/webrtc-audio-processing-v0.3.1.tar.bz2'
   source_sha256 '70d56051f73e8e4ac95fb392ce15de6c633b2c3ae492359aecc72fc663c9bdda'

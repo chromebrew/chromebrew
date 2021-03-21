@@ -4,6 +4,7 @@ class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
   version '362'
+  license 'MIT'
   compatibility 'all'
   source_url "https://invisible-mirror.net/archives/xterm/xterm-362.tgz"
   source_sha256 '1d4ffe226fa8f021859bbc3007788ff63a46a31242d9bd9a7bd7ebe24e81aca2'

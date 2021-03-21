@@ -5,10 +5,11 @@ class Automake < Package
   homepage 'https://www.gnu.org/software/automake/'
   @_ver = '1.16.3'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/automake/automake-#{@_ver}.tar.gz"
   source_sha256 'ce010788b51f64511a1e9bb2a1ec626037c6d0e7ede32c1c103611b9d3cba65f'
-  
+
   binary_url ({
      aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.16.3-chromeos-armv7l.tar.xz',
       armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/automake-1.16.3-chromeos-armv7l.tar.xz',

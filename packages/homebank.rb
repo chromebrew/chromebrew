@@ -4,6 +4,7 @@ class Homebank < Package
   description 'HomeBank is a free software that will assist you to manage your personal accounting.'
   homepage 'http://homebank.free.fr/en/index.php'
   version '5.4.3'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'http://homebank.free.fr/public/homebank-5.4.3.tar.gz'
   source_sha256 '9222d7ed7cc44fcfff3f1fe20935a1b7fe91bb4d9f90003cb3c6f3b893298d0b'

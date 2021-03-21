@@ -5,6 +5,7 @@ class Libx265 < Package
   homepage 'http://x265.org/'
   @_ver = '3.4'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/videolan/x265/archive/#{@_ver}.tar.gz"
   source_sha256 '544d147bf146f8994a7bf8521ed878c93067ea1c7c6e93ab602389be3117eaaf'

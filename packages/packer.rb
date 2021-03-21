@@ -6,6 +6,7 @@ class Packer < Package
   description 'Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.'
   homepage 'https://www.packer.io/'
   version '1.4.4'
+  license 'Apache-2.0, BSD-2, BSD-4, MIT, MPL-2.0 and unicode'
   compatibility 'all'
 
   case ARCH

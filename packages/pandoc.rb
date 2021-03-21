@@ -4,6 +4,7 @@ class Pandoc < Package
   description 'Universal markup converter'
   homepage 'https://github.com/jgm/pandoc/'
   version '2.7.3'
+  license 'GPL-2+'
   compatibility 'all'
 
   source_url 'https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz'

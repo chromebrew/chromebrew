@@ -7,6 +7,7 @@ class Xdotool < Package
   description 'Command-line X11 automation tool'
   homepage 'https://www.semicomplete.com/projects/xdotool'
   version '3.20160805.1'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/jordansissel/xdotool/releases/download/v3.20160805.1/xdotool-3.20160805.1.tar.gz'
   source_sha256 '35be5ff6edf0c620a0e16f09ea5e101d5173280161772fca18657d83f20fcca8'

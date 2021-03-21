@@ -4,6 +4,7 @@ class Libndp < Package
   description 'Library for Neighbor Discovery Protocol'
   homepage 'http://libndp.org/'
   version '1.7-3fc2'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/jpirko/libndp/archive/3fc2ed78edb5deae0381d022bedc22ffd00d50cb.zip'
   source_sha256 '53fd7da8fc840900238f1699e98a7e3e60cd6c68489015303e84b19c9dd2bb3a'

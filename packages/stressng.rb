@@ -4,6 +4,7 @@ class Stressng < Package
   description 'stress-ng will stress test a computer system in various selectable ways.'
   homepage 'https://kernel.ubuntu.com/~cking/stress-ng/'
   version '0.11.22'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.11.22.tar.xz'
   source_sha256 '408153d64be1d8a8d584e5f48d9fd09602adf4095a17c0b542cb41e636cf0464'

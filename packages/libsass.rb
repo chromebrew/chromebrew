@@ -4,6 +4,7 @@ class Libsass < Package
   description 'LibSass is a C/C++ port of the Sass engine'
   homepage 'https://sass-lang.com/libsass'
   version '3.6.4'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sass/libsass/archive/3.6.4.tar.gz'
   source_sha256 'f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889'

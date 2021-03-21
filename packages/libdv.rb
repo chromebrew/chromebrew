@@ -4,6 +4,7 @@ class Libdv < Package
   description 'The Quasar DV codec libdv is a software codec for DV video'
   homepage 'http://libdv.sourceforge.net/'
   version '1.0.0-1'
+  license 'libdv'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/libdv/libdv-1.0.0.tar.gz'
   source_sha256 'a305734033a9c25541a59e8dd1c254409953269ea7c710c39e540bd8853389ba'

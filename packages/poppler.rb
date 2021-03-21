@@ -5,6 +5,7 @@ class Poppler < Package
   homepage 'https://poppler.freedesktop.org/'
   @_ver = '21.03.0'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://poppler.freedesktop.org/poppler-#{@_ver}.tar.xz"
   source_sha256 'fd51ead4aac1d2f4684fa6e7b0ec06f0233ed21667e720a4e817e4455dd63d27'

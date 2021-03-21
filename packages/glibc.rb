@@ -4,6 +4,7 @@ class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
   version '2.2x'
+  license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
   case LIBC_VERSION
   when '2.23'

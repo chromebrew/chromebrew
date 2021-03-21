@@ -4,6 +4,7 @@ class Openssh < Package
   description 'OpenSSH is the premier connectivity tool for remote login with the SSH protocol.'
   homepage 'https://www.openssh.com/'
   version '8.4-1'
+  license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/openssh/openssh-portable/archive/V_8_4_P1.tar.gz'
   source_sha256 'b924181983a77cb10e61530960e818ccae075e5c457ea6b9f67e4946009563db'

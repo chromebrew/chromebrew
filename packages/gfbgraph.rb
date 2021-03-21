@@ -6,6 +6,7 @@ class Gfbgraph < Package
   @_ver = '0.2.4'
   @_ver_ = @_ver.gsub(/[.]/, '_')
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libgfbgraph/-/archive/v_#{@_ver_}/libgfbgraph-v_#{@_ver_}.tar.bz2"
   source_sha256 'e55bb497daabfcd7e68e216ac5c695f03319f660ff524d0b6659e42089853516'

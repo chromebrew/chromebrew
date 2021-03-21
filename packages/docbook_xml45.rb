@@ -5,6 +5,7 @@ class Docbook_xml45 < Package
   homepage 'https://www.oasis-open.org/docbook/'
   @_ver = '4.5'
   version "#{@_ver}-1"
+  license 'MIT'
   compatibility 'all'
   source_url "https://docbook.org/xml/#{@_ver}/docbook-xml-#{@_ver}.zip"
   source_sha256 '4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4'

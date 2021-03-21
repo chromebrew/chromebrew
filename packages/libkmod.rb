@@ -5,6 +5,7 @@ class Libkmod < Package
   homepage 'https://kernel.org'
   @_ver = '28'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-#{@_ver}.tar.xz"
   source_sha256 '3969fc0f13daa98084256337081c442f8749310089e48aa695c9b4dfe1b3a26c'

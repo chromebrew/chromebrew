@@ -2,8 +2,9 @@ require 'package'
 
 class Xmlclitools < Package
   description 'xmlclitools provides four command-line tools for searching, modifying, and formating XML data. The tools are designed to work in conjunction with standard *nix utilities such as grep, sort, and shell scripts.'
-  homepage 'http://freecode.com/projects/xmlclitools'
+  homepage 'http://freshmeat.sourceforge.net/projects/xmlclitools'
   version '1.61-1'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'ftp://ftp.nstu.ru/pub/sources/langs/xml/xmlclitools-1.61.tar.gz'
   source_sha256 '262ce2f119a278ee2f965722f4d23b6b67f8baaa594858b9a0124849726e5a63'

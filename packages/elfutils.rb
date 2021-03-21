@@ -5,6 +5,7 @@ class Elfutils < Package
   homepage 'https://sourceware.org/elfutils/'
   @_ver = '0.183'
   version @_ver
+  license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
   source_url "https://sourceware.org/elfutils/ftp/#{@_ver}/elfutils-#{@_ver}.tar.bz2"
   source_sha256 'c3637c208d309d58714a51e61e63f1958808fead882e9b607506a29e5474f2c5'

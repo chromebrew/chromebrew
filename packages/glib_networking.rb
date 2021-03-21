@@ -4,6 +4,7 @@ class Glib_networking < Package
   description 'Network extensions for GLib'
   homepage 'https://github.com/GNOME/glib-networking'
   version '2.68.0'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://download.gnome.org/core/40/40.rc/sources/glib-networking-2.68.rc.tar.xz'
   source_sha256 '5f2f62db8a75e2ec5462af12cb59157fb17500dca172c637a88c59053d52115b'

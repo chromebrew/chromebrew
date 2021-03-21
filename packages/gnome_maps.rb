@@ -5,6 +5,7 @@ class Gnome_maps < Package
   homepage 'https://wiki.gnome.org/Apps/Maps'
   @_ver = '40.rc'
   version @_ver
+  license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-maps/-/archive/v#{@_ver}/gnome-maps-v#{@_ver}.tar.bz2"
   source_sha256 'db00e0c8e5ce3c3fb3801ecf522f76751cc1f0b1d5007c6169207260143f163b'
@@ -45,7 +46,7 @@ class Gnome_maps < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
-  
+
   def self.postinstall
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end

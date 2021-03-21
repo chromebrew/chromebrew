@@ -4,6 +4,7 @@ class Gcab < Package
   description 'A GObject library to create cabinet files'
   homepage 'https://gitlab.gnome.org/GNOME/gcab'
   version '1.4'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gcab/-/archive/v1.4/gcab-v1.4.tar.bz2'
   source_sha256 '597dd7d0ddee9065412abf0ee15ae73e913daf967f43af5dd55ea9b87b514188'

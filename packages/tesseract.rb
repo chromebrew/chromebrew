@@ -5,6 +5,7 @@ class Tesseract < Package
   homepage 'https://github.com/tesseract-ocr/tesseract'
   @_ver = '4.1.1'
   version @_ver
+  license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/tesseract-ocr/tesseract/archive/#{@_ver}.tar.gz"
   source_sha256 '2a66ff0d8595bff8f04032165e6c936389b1e5727c3ce5a27b3e059d218db1cb'

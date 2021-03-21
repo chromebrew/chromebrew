@@ -5,6 +5,7 @@ class Gpgme < Package
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
   @_ver = '1.15.1'
   version @_ver
+  license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{@_ver}.tar.bz2"
   source_sha256 'eebc3c1b27f1c8979896ff361ba9bb4778b508b2496c2fc10e3775a40b1de1ad'

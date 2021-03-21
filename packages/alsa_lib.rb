@@ -4,6 +4,7 @@ class Alsa_lib < Package
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
   version '1.2.4'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version}.tar.gz"
   source_sha256 '0c6ab052d7ea980a01d0208da5e5e10849bd16c4c9961bbd5d2665083b74a6c0'

@@ -6,6 +6,7 @@ class Libgphoto < Package
   @_ver = '2.5.27'
   @_ver_ = @_ver.gsub(/[.]/, '_')
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/gphoto/libgphoto2/archive/libgphoto2-#{@_ver_}-release.tar.gz"
   source_sha256 '9ac1ab84fc5070d40194181efd0775044220c8d5cdee830386d528710e864ec9'

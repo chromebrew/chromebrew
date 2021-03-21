@@ -5,6 +5,7 @@ class Gtksourceview < Package
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   @_ver = '4.8.1'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/GNOME/gtksourceview/archive/#{@_ver}.tar.gz"
   source_sha256 'cbfde42161662525805be4a38102b085db5e991fe1263171a28a78c7da253760'

@@ -4,6 +4,7 @@ class Wp_cli < Package
   description 'The command line interface for WordPress'
   homepage 'https://wp-cli.org/'
   version '2.4.0'
+  license 'LGPL-3'
   compatibility 'all'
   source_url 'https://raw.githubusercontent.com/wp-cli/wp-cli/v2.4.0/VERSION'
   source_sha256 '2ad7b0c3f0ede58c3165b7a8a5479e890a758d39bfe8683eaef50ce6afad7232'

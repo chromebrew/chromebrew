@@ -5,6 +5,7 @@ class Zstd < Package
   homepage 'http://www.zstd.net'
   @_ver = '1.4.9'
   version @_ver
+  license 'BSD or GPL-2'
   compatibility 'all'
   source_url "https://github.com/facebook/zstd/archive/v#{@_ver}.tar.gz"
   source_sha256 'acf714d98e3db7b876e5b540cbf6dee298f60eb3c0723104f6d3f065cd60d6a8'

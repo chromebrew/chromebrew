@@ -4,6 +4,7 @@ class Phpsysinfo < Package
   description 'phpSysInfo is a customizable PHP Script that parses /proc, and formats information nicely.'
   homepage 'https://phpsysinfo.github.io/phpsysinfo/'
   version '3.3.3'
+  license 'GPL-2+'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/phpsysinfo/phpsysinfo/3.3.3/phpsysinfo-3.3.3.tar.gz'
   source_sha256 '08f083b73cdb35a17449a4d771b65b8439b05ab5f4982782a53275d345dea30f'

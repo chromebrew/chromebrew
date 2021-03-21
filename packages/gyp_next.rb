@@ -4,6 +4,7 @@ class Gyp_next < Package
   description 'GYP can Generate Your Projects.'
   homepage 'https://github.com/nodejs/gyp-next'
   version '0.8.0'
+  license 'BSD'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

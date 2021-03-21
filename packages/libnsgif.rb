@@ -4,6 +4,7 @@ class Libnsgif < Package
   description 'Decoding library for the GIF image file format, written in C'
   homepage 'https://www.netsurf-browser.org'
   version '0.2.1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libnsgif-0.2.1-src.tar.gz'
   source_sha256 '9eaea534cd70b53c5aaf45317ae957701685a6b4a88dbe34ed26f4faae879a4b'

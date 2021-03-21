@@ -5,6 +5,7 @@ class Libarchive < Package
   homepage 'https://www.libarchive.org/'
   @_ver = '3.5.1'
   version "#{@_ver}-1"
+  license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{@_ver}.tar.xz"
   source_sha256 '0e17d3a8d0b206018693b27f08029b598f6ef03600c2b5d10c94ce58692e299b'

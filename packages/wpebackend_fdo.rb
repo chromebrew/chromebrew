@@ -5,6 +5,7 @@ class Wpebackend_fdo < Package
   homepage 'https://wpewebkit.org'
   @_ver = '1.8.0'
   version @_ver
+  license 'BSD-2'
   compatibility 'all'
   source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{@_ver}/wpebackend-fdo-#{@_ver}.tar.xz"
   source_sha256 '9652a99c75fe1c6eab0585b6395f4e104b2427e4d1f42969f1f77df29920d253'

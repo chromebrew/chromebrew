@@ -4,6 +4,7 @@ class Cabal < Package
   description 'Common Architecture for Building Applications and Libraries'
   homepage 'https://www.haskell.org/cabal/'
   version '2.4.1.0-1'
+  license 'BSD'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686'

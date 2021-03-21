@@ -5,6 +5,7 @@ class Php74 < Package
   homepage 'http://www.php.net/'
   @_ver = '7.4.15'
   version @_ver
+  license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
   source_sha256 '9b859c65f0cf7b3eff9d4a28cfab719fb3d36a1db3c20d874a79b5ec44d43cb8'

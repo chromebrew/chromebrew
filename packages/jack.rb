@@ -5,6 +5,7 @@ class Jack < Package
   homepage 'https://jackaudio.org/'
   @_ver = '1.9.17'
   version @_ver
+  license 'GPL-2+'
   compatibility 'all'
   source_url "https://github.com/jackaudio/jack2/archive/v#{@_ver}.tar.gz"
   source_sha256 '38f674bbc57852a8eb3d9faa1f96a0912d26f7d5df14c11005ad499c8ae352f2'

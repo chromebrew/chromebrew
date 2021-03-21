@@ -4,6 +4,7 @@ class Cfitsio < Package
   description 'A library of C and Fortran subroutines for reading and writing data files in FITS Flexible Image Transport System data format'
   homepage 'https://heasarc.gsfc.nasa.gov/fitsio/'
   version '3.49'
+  license 'ISC'
   compatibility 'all'
   source_url 'https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-3.49.tar.gz'
   source_sha256 '5b65a20d5c53494ec8f638267fca4a629836b7ac8dd0ef0266834eab270ed4b3'
@@ -24,7 +25,7 @@ class Cfitsio < Package
   def self.patch
      system "sed -e 's|LDFLAGS=.*|LDFLAGS=$LDFLAGS|g' -i configure.in # Fix LDFLAGS"
   end
-  
+
   def self.build
     system 'autoreconf -vi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \

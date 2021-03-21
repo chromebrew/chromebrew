@@ -5,6 +5,7 @@ class Nftables < Package
   homepage 'https://netfilter.org/projects/nftables/'
   compatibility 'all'
   version '0.9.6-1'
+  license 'GPL-2'
   source_url 'https://netfilter.org/projects/nftables/files/nftables-0.9.6.tar.bz2'
   source_sha256 '68d6fdfe8ab02303e6b1f13968a4022da5b0120110eaee3233d806857937b66e'
 

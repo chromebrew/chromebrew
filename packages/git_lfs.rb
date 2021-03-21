@@ -5,6 +5,7 @@ class Git_lfs < Package
   homepage 'https://git-lfs.github.com'
   @_ver = '2.13.2'
   version @_ver
+  license 'AGPL-3'
   compatibility 'all'
   source_url "https://github.com/git-lfs/git-lfs/releases/download/v#{@_ver}/git-lfs-v#{@_ver}.tar.gz"
   source_sha256 '782e6275df9ca370730945112e16a0b8c64b9819f0b61fae52ba1ebbc8dce2d5'

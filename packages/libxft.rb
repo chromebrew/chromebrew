@@ -2,8 +2,9 @@ require 'package'
 
 class Libxft < Package
   description 'X.org X FreeType interface library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org'
   version '2.3.3'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXft-2.3.3.tar.bz2'
   source_sha256 '225c68e616dd29dbb27809e45e9eadf18e4d74c50be43020ef20015274529216'

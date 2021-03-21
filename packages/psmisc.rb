@@ -5,6 +5,7 @@ class Psmisc < Package
   homepage 'https://gitlab.com/psmisc/psmisc'
   @_ver = '23.3'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://gitlab.com/psmisc/psmisc/-/archive/v#{@_ver}/psmisc-v#{@_ver}.tar.bz2"
   source_sha256 'fe530b0a29902f8660481248fc19f6994927282b4fe0cd992121016144b95fa6'

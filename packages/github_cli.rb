@@ -4,6 +4,7 @@ class Github_cli < Package
   description 'Official Github CLI tool'
   homepage 'https://cli.github.com/'
   version '1.0.0'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/cli/cli/archive/v1.0.0.tar.gz'
   source_sha256 'e3d1c341829f5b885dce9aa2bf4bc84db48072752250f6fdb2d62903caf07cfb'

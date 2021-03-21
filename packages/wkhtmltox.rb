@@ -4,6 +4,7 @@ class Wkhtmltox < Package
   description 'Convert HTML to PDF using Webkit (QtWebKit)'
   homepage 'https://wkhtmltopdf.org/'
   version '0.12.4-1'
+  license 'LGPL-3'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'
