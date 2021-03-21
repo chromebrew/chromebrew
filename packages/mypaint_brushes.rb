@@ -25,7 +25,7 @@ class Mypaint_brushes < Package
   depends_on 'libmypaint'
 
   def self.patch
-    system "wget http://www.linuxfromscratch.org/patches/blfs/svn/mypaint-brushes-1.3.0-automake_1.16-1.patch"
+    system "curl -#LO http://www.linuxfromscratch.org/patches/blfs/svn/mypaint-brushes-1.3.0-automake_1.16-1.patch"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('mypaint-brushes-1.3.0-automake_1.16-1.patch') ) == '789f9233a31227c1acc2f81a5348a2d5bc7f656ae69044c0b33d0032d1f93ae2'
     system "patch -Np1 -i mypaint-brushes-1.3.0-automake_1.16-1.patch"
   end

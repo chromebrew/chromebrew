@@ -25,7 +25,7 @@ class Shrinkpdf < Package
   depends_on 'ghostscript'
 
   def self.install
-    system 'wget http://alfredklomp.com/programming/shrinkpdf/shrinkpdf.sh'
+    system 'curl -#LO http://alfredklomp.com/programming/shrinkpdf/shrinkpdf.sh'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('shrinkpdf.sh') ) == 'bf313e47e81ce4c088704840554f2f643597db1b3d6937a0af5ed43368b1ccc7'
     system "install -Dm755 shrinkpdf.sh #{CREW_DEST_PREFIX}/bin/shrinkpdf"
   end

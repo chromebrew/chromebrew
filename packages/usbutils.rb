@@ -37,7 +37,7 @@ class Usbutils < Package
 
   def self.postinstall
     FileUtils.mkdir_p "#{CREW_PREFIX}/share/hwdata/" unless Dir.exist? "#{CREW_PREFIX}/share/hwdata/"
-    system "wget http://www.linux-usb.org/usb.ids -O #{CREW_PREFIX}/share/hwdata/usb.ids"
+    system "curl -#LO http://www.linux-usb.org/usb.ids -O #{CREW_PREFIX}/share/hwdata/usb.ids"
     puts "It's recommended that you setup a cron job to update this file regularly.".lightblue
     puts 'You can install a cron package by executing `crew install cronie`'.lightblue
     puts

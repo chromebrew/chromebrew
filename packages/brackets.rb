@@ -36,7 +36,7 @@ class Brackets < Package
       sha256 = '6ef1567b75a197236b3d35785afa744752a28b74cfa51b93b7b78d0a50acbfd4'
     end
     package = "Brackets.Release.#{version}.#{arch}.deb"
-    system "wget https://github.com/adobe/brackets/releases/download/release-#{version}/#{package}"
+    system "curl -#LO https://github.com/adobe/brackets/releases/download/release-#{version}/#{package}"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(package) ) == sha256
     system "alien -tc #{package}"
     system "tar xvf brackets-#{version}.tgz"

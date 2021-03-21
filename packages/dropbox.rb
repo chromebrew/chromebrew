@@ -31,7 +31,7 @@ class Dropbox < Package
   end
 
   def self.build
-    system "wget https://linux.dropbox.com/packages/dropbox.py"
+    system "curl -#LO https://linux.dropbox.com/packages/dropbox.py"
     system "sed -i 's,~/.dropbox-dist,#{CREW_LIB_PREFIX}/dropbox,g' dropbox.py"
     system "echo '#!/bin/bash' > dropboxd"
     system "echo 'PWD=$(pwd)' >> dropboxd"

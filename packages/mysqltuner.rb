@@ -12,7 +12,7 @@ class Mysqltuner < Package
   depends_on 'perl'
 
   def self.install
-    system "wget https://raw.githubusercontent.com/major/MySQLTuner-perl/1c51f442822a170fb2eaafb088f22c8f4baacd9d/mysqltuner.pl"
+    system "curl -#LO https://raw.githubusercontent.com/major/MySQLTuner-perl/1c51f442822a170fb2eaafb088f22c8f4baacd9d/mysqltuner.pl"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('mysqltuner.pl') ) == '26ad914fff4afca883a6a4d2bc69c142316144888c45e46e0fa56ad2b5a98a34'
     system "install -Dm755 mysqltuner.pl #{CREW_DEST_PREFIX}/bin/mysqltuner"
   end
