@@ -4,6 +4,7 @@ class Yelp_tools < Package
   description 'yelp-tools is a collection of scripts and build utilities to help create, manage, and publish documentation for Yelp and the web'
   homepage 'https://github.com/GNOME/yelp-tools'
   version '40.rc'
+  license 'GPL-2+ or freedist and GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/yelp-tools/archive/40.rc.tar.gz'
   source_sha256 '072420dbbec6a7b5b3647fcfc15c284b02a21220c78ba140d727cd2992500902'

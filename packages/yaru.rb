@@ -2,7 +2,9 @@ require 'package'
 
 class Yaru < Package
   description 'Yaru default ubuntu theme'
+  homepage 'https://github.com/ubuntu/yaru'
   version '20.10.6.1-c80b'
+  license 'GPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
   source_url 'https://github.com/ubuntu/yaru/archive/c80b62c991b98be235dee97c4fc657de6bf23895.zip'
   source_sha256 '70571c88f193b5f371352f0cc93cf4b941f2e6cf6a85bb4b250561b16dbfdfe8'

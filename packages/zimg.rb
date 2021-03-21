@@ -5,6 +5,7 @@ class Zimg < Package
   homepage 'https://github.com/sekrit-twc/zimg'
   @_ver = '3.0.1'
   version @_ver
+  license 'WTFPL-2'
   compatibility 'all'
   source_url "https://github.com/sekrit-twc/zimg/archive/release-#{@_ver}.tar.gz"
   source_sha256 'c50a0922f4adac4efad77427d13520ed89b8366eef0ef2fa379572951afcc73f'

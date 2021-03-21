@@ -4,6 +4,7 @@ class Yajl < Package
   description 'A fast streaming JSON parsing library in C.'
   homepage 'http://lloyd.github.io/yajl/'
   version '2.1.0-2'
+  license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/lloyd/yajl/archive/2.1.0.tar.gz'
   source_sha256 '3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a'

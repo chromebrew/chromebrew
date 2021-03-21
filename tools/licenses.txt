@@ -346,7 +346,8 @@ OPL
 BAEKMUK
 BitstreamVera
 CC-BY-SA-1.0
-CC-PD CC-SA-1.0
+CC-PD
+CC-SA-1.0
 LDP-1
 LDP-1a
 man-pages
