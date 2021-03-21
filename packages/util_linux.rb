@@ -23,7 +23,6 @@ class Util_linux < Package
   })
 
   depends_on 'libcap_ng'
-  depends_on 'eudev'
   depends_on 'libtinfo'
   depends_on 'linux_pam'
   depends_on 'pcre2'

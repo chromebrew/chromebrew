@@ -3,23 +3,25 @@ require 'package'
 class Gnome_desktop < Package
   description 'Library with common API for various GNOME modules'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
-  version '40.beta'
+  @_ver = '40.rc'
+  @_ver_prelastdot = @_ver.rpartition('.')[0]
+  version @_ver
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/gnome-desktop/archive/40.beta.tar.gz'
-  source_sha256 'a982cbaa68aabfcaef0d6db69c936ee45d8f23475a4dd2bad60a49f0bb920451'
+  source_url "https://download.gnome.org/core/#{@_ver_prelastdot}/#{@_ver}/sources/gnome-desktop-#{@_ver}.tar.xz"
+  source_sha256 'bd5bc1ab9640301efc7cc1dbfc5965fcb7dcadabb6f6f395ae8b571aed84f448'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.beta-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.beta-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.rc-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.rc-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'd93d85cfdd762b023f8815be575e84707564aa7c279b92e4d1812253db13b964',
-     armv7l: 'd93d85cfdd762b023f8815be575e84707564aa7c279b92e4d1812253db13b964',
-       i686: '7f810e184dc981a419942ba4fe18070fb4b51be23044f9632da9b3fee66224c8',
-     x86_64: '60d206c6594c4da2c9081784d7d4fec46553aa8f92ce228187de72dfec1e40fe'
+    aarch64: 'c01944da1742882b92b43878c1cd478862f0b2a38e7ded7389c2613b7fda65f5',
+     armv7l: 'c01944da1742882b92b43878c1cd478862f0b2a38e7ded7389c2613b7fda65f5',
+       i686: '0ac5ecf9d14c6186073929b637d076a10bb70691b298d629a2ef9c50a8954681',
+     x86_64: '2a1f551996fc7540dfcba2e74229d7e20301af0c748f80b6f111fac6ee330757'
   })
 
   depends_on 'gsettings_desktop_schemas'

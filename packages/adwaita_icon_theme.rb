@@ -3,23 +3,23 @@ require 'package'
 class Adwaita_icon_theme < Package
   description 'Theme consisting of a set of icons for GTK+'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
-  version '3.38.0-c5be'
+  version '40.rc'
   license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/archive/c5bed6840332a7539b175feb4ec7ecf957fb1399/adwaita-icon-theme-c5bed6840332a7539b175feb4ec7ecf957fb1399.tar.bz2'
-  source_sha256 '54d67549cb7b295dd649460a22af9d2f436dd73386068eb20ce888f6f4bee0fb'
+  source_url 'https://download.gnome.org/core/40/40.rc/sources/adwaita-icon-theme-40.rc.tar.xz'
+  source_sha256 'd794a492e8e7db33bdc19898effabc1f1205302e166da522c5351a8eba9da404'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-c5be-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-c5be-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-c5be-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-3.38.0-c5be-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c2d4e312434a6ee7ece0a044d16e36a2b582e54c1a4bbad246bc7e6f1c327271',
-     armv7l: 'c2d4e312434a6ee7ece0a044d16e36a2b582e54c1a4bbad246bc7e6f1c327271',
-       i686: 'f5e0d629d2b99eb18cfa2a6d991a33e0efb4efe206b6510d884bf8d96ee3d9af',
-     x86_64: 'bd03ca46fc6310ea449362b95e0032e800fdda4f86252e02f64502407cd29adc'
+    aarch64: 'f8cd7b689fb6debe871906165b0f0e93542db14b23b7f9f26fce30cbdec48246',
+     armv7l: 'f8cd7b689fb6debe871906165b0f0e93542db14b23b7f9f26fce30cbdec48246',
+       i686: 'b400562bbdbf9f0b97dfd259de529882c97548d726334d57f15e9876fdce28d4',
+     x86_64: '91da1bc30615a25d9d239eb05e8782ca2a4efbffafe6da7693976dcb1cb2c6fa'
   })
 
   depends_on 'cantarell_fonts'
@@ -34,7 +34,7 @@ class Adwaita_icon_theme < Package
     system "env GDK_PIXBUF_MODULEDIR='#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders' \
     GDK_PIXBUF_MODULE_FILE='#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache' \
     gdk-pixbuf-query-loaders > #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache"
-    system 'NOCONFIGURE=1 ./autogen.sh'
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
