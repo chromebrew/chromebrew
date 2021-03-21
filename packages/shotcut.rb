@@ -4,6 +4,7 @@ class Shotcut < Package
   description 'Shotcut is a free, open source, cross-platform video editor.'
   homepage 'https://www.shotcut.org/'
   version '20.11.25'
+  license 'GPL-3+'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
