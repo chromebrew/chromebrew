@@ -4,6 +4,7 @@ class Sublime_merge < Package
   description 'A snappy UI, three-way merge tool,side-by-side diffs, syntax highlighting, and more.'
   homepage 'https://www.sublimemerge.com/'
   version 'Build 1119'
+  license '' # Can't find license
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

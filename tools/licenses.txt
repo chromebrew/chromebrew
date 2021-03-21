@@ -431,9 +431,11 @@ Q3AEULA-20000111
 QUAKE4
 Quartus-prime-megacore
 RAR
+Skype-TOS
 Sourcetrail
 SPS
 supermicro
+Symphony-cli-EULA
 Synology
 teamspeak3
 teamspeak5

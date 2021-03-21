@@ -4,6 +4,7 @@ class Stow < Package
   description 'Manage installation of multiple softwares in the same directory tree'
   homepage 'https://www.gnu.org/software/stow/'
   version '2.2.2'
+  license 'GPL-3+'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/stow/stow-2.2.2.tar.gz'
   source_sha256 'e2f77649301b215b9adbc2f074523bedebad366812690b9dc94457af5cf273df'

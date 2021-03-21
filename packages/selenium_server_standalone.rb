@@ -4,6 +4,7 @@ class Selenium_server_standalone < Package
   description 'Selenium is a set of different software tools each with a different approach to supporting test automation.'
   homepage 'https://www.seleniumhq.org/'
   version '3.11.0'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://raw.githubusercontent.com/SeleniumHQ/selenium/selenium-3.11.0/README.md'
   source_sha256 '662789e2508babe0be2d5b3b84630834b7727ed1960b66567be1c73eed08433b'
@@ -53,7 +54,7 @@ class Selenium_server_standalone < Package
   end
 
   def self.install
-    system 'wget http://selenium-release.storage.googleapis.com/3.11/selenium-server-standalone-3.11.0.jar'
+    system 'curl -#LO http://selenium-release.storage.googleapis.com/3.11/selenium-server-standalone-3.11.0.jar'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('selenium-server-standalone-3.11.0.jar') ) == '5e6c9ed11e94bfb87407f7da2ebe0d1d609c1fa4d34c82108fc94b2509797312'
     system "install -Dm644 selenium-server-standalone-3.11.0.jar #{CREW_DEST_PREFIX}/share/selenium-server/selenium-server-standalone-3.11.0.jar"
     system "install -Dm755 startselenium #{CREW_DEST_PREFIX}/bin/startselenium"

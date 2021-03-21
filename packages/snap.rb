@@ -1,9 +1,10 @@
 require 'package'
 
 class Snap < Package
-  description 'Server stack which includes sqlite, nginx and php'
+  description 'Server stack which includes sqlite, nginx and php. Not to be confused with snapd.'
   homepage ''
   version '1.0'
+  license 'GPL-3+'
   compatibility 'all'
 
   is_fake
