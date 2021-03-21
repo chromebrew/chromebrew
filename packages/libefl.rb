@@ -49,7 +49,7 @@ class Libefl < Package
   depends_on 'libxcursor'
   depends_on 'libxp'
   depends_on 'libxrandr'
-  depends_on 'libxscrnsaver'
+  depends_on 'libxss'
   depends_on 'libxdamage'
   depends_on 'libxrender'
   depends_on 'libxi'
