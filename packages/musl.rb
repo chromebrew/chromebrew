@@ -2,24 +2,11 @@ require 'package'
 
 class Musl < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
-  homepage 'https://www.musl-libc.org/'
-  version '1.1.23'
+  homepage 'https://www.musl.libc.org/'
+  version '1.2.2'
   compatibility 'all'
-  source_url 'https://www.musl-libc.org/releases/musl-1.1.23.tar.gz'
-  source_sha256 '8a0feb41cef26c97dde382c014e68b9bb335c094bbc1356f6edaaf6b79bd14aa'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.1.23-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'd4fdc8b8d4bbe495283cfcaa0bf3574439d972dfbe4a1e1aa28927cc672f2089',
-     armv7l: 'd4fdc8b8d4bbe495283cfcaa0bf3574439d972dfbe4a1e1aa28927cc672f2089',
-       i686: 'cb4834f91df4afcbe7eccaf85abbbf4c80afa15d7e6ea9a220889c42e719ee8f',
-     x86_64: '1d65413f0d246a3a350c354c03080e007a831552678d24ca4e125b515793bef8',
-  })
+  source_url 'https://musl.libc.org/releases/musl-1.2.2.tar.gz'
+  source_sha256 '9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd'
 
   def self.build
     if ARCH == 'armv7l' or ARCH == 'aarch64'
