@@ -4,6 +4,7 @@ class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
   version '3.0.5.1-2'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets/archive/v3.0.5.1.tar.gz'
   source_sha256 'bae4d9f289e33a05fb8553fcc580564d30efe6a882ff08e3d4e09ef01f5f6578'
@@ -39,7 +40,7 @@ class Wxwidgets < Package
       @@ -424,10 +424,7 @@ bool wxAppConsole::CheckBuildOptions(con
                msg.Printf(_T("Mismatch between the program and library build versions detected.\nThe library used %s,\nand %s used %s."),
                           lib.c_str(), progName.c_str(), prog.c_str());
-       
+
       -        wxLogFatalError(msg.c_str());
       -
       -        // normally wxLogFatalError doesn't return

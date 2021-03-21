@@ -4,6 +4,7 @@ class Xzutils < Package
   description 'XZ Utils is free general-purpose data compression software with a high compression ratio.'
   homepage 'http://tukaani.org/xz/'
   version '5.2.5'
+  license 'public-domain, LGPL-2.1+ and GPL-2+'
   compatibility 'all'
   source_url 'https://tukaani.org/xz/xz-5.2.5.tar.gz'
   source_sha256 'f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10'

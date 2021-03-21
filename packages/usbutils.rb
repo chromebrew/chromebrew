@@ -5,6 +5,7 @@ class Usbutils < Package
   homepage 'http://linux-usb.sourceforge.net/'
   @_ver = '013'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/utils/usb/usbutils/usbutils-#{@_ver}.tar.xz"
   source_sha256 '9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338'

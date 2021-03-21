@@ -447,6 +447,7 @@ ut2003
 ut2003-demo
 ValveSoftware
 Vivaldi
+Wingware-EULA
 worklog-assistant
 WPS-EULA
 zi-labone

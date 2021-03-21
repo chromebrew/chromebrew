@@ -5,6 +5,7 @@ class Xfsprogs < Package
   homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
   @_ver = '5.10.0'
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/snapshot/xfsprogs-dev-#{@_ver}.tar.gz"
   source_sha256 'e807ca9fd8f01e45c9ec8ffb3c123bdb7dfcfd8e05340520d2ff1ddbc3bd7c88'
@@ -30,7 +31,7 @@ class Xfsprogs < Package
       DEBUG=-DNDEBUG ./configure #{CREW_OPTIONS} --sbindir=#{CREW_PREFIX}/bin"
     system "make"
   end
-  
+
   def self.install
     system "make DIST_ROOT=#{CREW_DEST_DIR} PKG_ROOT_SBIN_DIR=#{CREW_PREFIX}/bin install install-dev"
   end

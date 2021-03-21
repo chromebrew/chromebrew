@@ -4,6 +4,7 @@ class Which < Package
   description 'which shows the full path of (shell) commands.'
   homepage 'https://carlowood.github.io/which/'
   version '2.21'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://carlowood.github.io/which/which-2.21.tar.gz'
   source_sha256 'f4a245b94124b377d8b49646bf421f9155d36aa7614b6ebf83705d3ffc76eaad'

@@ -6,6 +6,7 @@ class Upower < Package
   @_ver = '0.99.11'
   @_ver_ = @_ver.gsub(/[.]/, '_')
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/upower/upower/-/archive/UPOWER_#{@_ver_}/upower-UPOWER_#{@_ver_}.tar.bz2"
   source_sha256 'd50961ff6d2c5bc5e9b8ef6611a12dc8933f722ebf7de245b97fbe72999ebd9b'

@@ -4,6 +4,7 @@ class Tepl < Package
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
   homepage 'https://wiki.gnome.org/Projects/Tepl'
   version '5.0.1'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/tepl/archive/5.0.1.tar.gz'
   source_sha256 '2dda3ed2bd16742f6d0fc6d602448eaa2e40b9c967b88599add2338d6fa590e7'

@@ -6,6 +6,7 @@ class Tk < Package
   @_ver = '8.6.11'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version "#{@_ver}-1"
+  license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tk#{@_ver}-src.tar.gz"
   source_sha256 '5228a8187a7f70fa0791ef0f975270f068ba9557f57456f51eb02d9d4ea31282'
