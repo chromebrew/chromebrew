@@ -4,6 +4,7 @@ class Zathura < Package
   description 'zathura is a highly customizable and functional PDF document viewer'
   homepage 'https://pwmt.org/projects/zathura/'
   version '0.4.7'
+  license 'ZLIB'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
