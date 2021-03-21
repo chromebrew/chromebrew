@@ -128,8 +128,8 @@ def print_current_package (extra = false)
   if extra
     puts ""
     puts @pkg.homepage if @pkg.homepage
-    print "Version: #{@pkg.version}"
-    puts @pkg.license if @pkg.license
+    puts "Version: #{@pkg.version}"
+    print "License: #{@pkg.license}" if @pkg.license
   end
   puts ""
 end
