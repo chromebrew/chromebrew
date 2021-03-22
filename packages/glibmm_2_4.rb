@@ -6,6 +6,7 @@ class Glibmm_2_4 < Package
   @_ver = '2.66.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://ftp.gnome.org/pub/GNOME/sources/glibmm/#{@_ver_prelastdot}/glibmm-#{@_ver}.tar.xz"
   source_sha256 '9e1db7d43d2e2d4dfa2771354e21a69a6beec7c446b711619cf8c779e13a581e'

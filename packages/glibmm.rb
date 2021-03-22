@@ -4,6 +4,7 @@ class Glibmm < Package
   description 'C++ bindings for GLib'
   homepage 'https://www.gtkmm.org'
   version '1.0'
+  license 'LGPL-2.1+'
   compatibility 'all'
 
   is_fake

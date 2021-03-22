@@ -4,6 +4,7 @@ class Gnome_tweaks < Package
   description 'Graphical interface for advanced GNOME 3 settings Tweak Tool'
   @_ver = '40.beta-4cbb'
   version @_ver
+  license 'GPL-3+ and CC0-1.0'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/4cbb4a44743b64df5c688e84f28befe28da012ba/gnome-tweaks-4cbb4a44743b64df5c688e84f28befe28da012ba.tar.bz2'
   # source_url "https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/#{@_ver}/gnome-tweaks-#{@_ver}.tar.bz2"
