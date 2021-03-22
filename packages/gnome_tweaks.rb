@@ -2,22 +2,24 @@ require 'package'
 
 class Gnome_tweaks < Package
   description 'Graphical interface for advanced GNOME 3 settings Tweak Tool'
-  @_ver = '40.beta'
+  @_ver = '40.beta-4cbb'
   version @_ver
-  license 'GPL-3+ and CC0-1.0'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/#{@_ver}/gnome-tweaks-#{@_ver}.tar.bz2"
-  source_sha256 'b274a4a9bf93405bd487f5a2bb93fc15bfe0312b21dbebfe5088b8d477d63416'
+  compatibility 'all'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/4cbb4a44743b64df5c688e84f28befe28da012ba/gnome-tweaks-4cbb4a44743b64df5c688e84f28befe28da012ba.tar.bz2'
+  # source_url "https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/#{@_ver}/gnome-tweaks-#{@_ver}.tar.bz2"
+  source_sha256 '4b0548176772ce999531f6f873ee147420f9dc95980a11a3c2faa052b76119e5'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'fb04b6ae9e7bc37672bd78e1c4776d98d4b0e9dce170d0c68efbb06cc779b684',
-     armv7l: 'fb04b6ae9e7bc37672bd78e1c4776d98d4b0e9dce170d0c68efbb06cc779b684',
-     x86_64: 'b6088a18bd9568a8b6c6a6f983e85e3e8df5efc084283035eff6b6d5cbbe2f28'
+    aarch64: '490cce3a691eef0f388a464bb18900da5fa1f898a10d2d39fa59d023a89e229e',
+     armv7l: '490cce3a691eef0f388a464bb18900da5fa1f898a10d2d39fa59d023a89e229e',
+       i686: '16cab78294026cdc82fe297a3e1ec0fb2e9fa918d6e4c5bea75152bf18ead989',
+     x86_64: '32c252ce5bc50847b2552a2625dce0aa89f48f568c9d3fc6cdd3e1d4d241fc06'
   })
 
   depends_on 'gnome_settings_daemon'
