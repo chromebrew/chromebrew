@@ -5,6 +5,7 @@ class Cairomm_1_16 < Package
   homepage 'https://www.cairographics.org/'
   @_ver = '1.16.0'
   version @_ver
+  license 'LGPL-2+'
   compatibility 'all'
   source_url "https://www.cairographics.org/releases/cairomm-#{@_ver}.tar.xz"
   source_sha256 '7e881492c5f9f546688c31160deb742c166fc4c68b6b8eb9920c00a0f0f144f9'

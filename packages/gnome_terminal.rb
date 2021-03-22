@@ -5,6 +5,7 @@ class Gnome_terminal < Package
   homepage 'https://wiki.gnome.org/Apps/Terminal'
   @_ver = '3.41.0-3b79'
   version @_ver
+  license 'GPL-3+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3b79354a357970147ae276a02ca2222db98a0d28/gnome-terminal-3b79354a357970147ae276a02ca2222db98a0d28.tar.bz2'
   source_sha256 'ad56dc0f1c6d75ed9ef6a1238e963141d7ba609ad3bffb376bfe43a37f0d308e'
