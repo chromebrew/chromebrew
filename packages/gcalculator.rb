@@ -2,7 +2,7 @@ require 'package'
 
 class Gcalculator < Package
   description 'GNOME desktop calculator'
-  homepage 'https://wiki.gnome.org/Apps/Calculator'compatibility 'all'
+  homepage 'https://wiki.gnome.org/Apps/Calculator'
   @_app = 'gnome-calculator'
   @_fullver = '3.38.2'
   @_mainver = @_fullver.rpartition('.')[0]
