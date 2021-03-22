@@ -5,6 +5,7 @@ class Pangomm_2_48 < Package
   homepage 'https://developer.gnome.org/pangomm/stable/'
   @_ver = '2.48.0'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/pangomm/-/archive/#{@_ver}/pangomm-#{@_ver}.tar.bz2"
   source_sha256 '744ba9156ca642f6cbbe049f965c741319c9f71629b153b6888dbca239fa770b'
