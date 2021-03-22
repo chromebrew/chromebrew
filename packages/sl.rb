@@ -24,4 +24,5 @@ class Sl < Package
     puts 'To disable this "feature", run'
     puts 'echo "alias sl=\'sl -e\'" >> ~/.bashrc && source ~/.bashrc'
     puts
+  end
 end
