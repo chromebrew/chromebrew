@@ -3,23 +3,24 @@ require 'package'
 class Gnome_terminal < Package
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
-  version '3.39.90'
+  @_ver = '3.41.0-3b79'
+  version @_ver
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gnome-terminal/3.39/gnome-terminal-3.39.90.tar.xz'
-  source_sha256 '68bbd2b20c533f1648d4ba5625dbcb35270e5c958713faaad30ea0167c3d8199'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3b79354a357970147ae276a02ca2222db98a0d28/gnome-terminal-3b79354a357970147ae276a02ca2222db98a0d28.tar.bz2'
+  source_sha256 'ad56dc0f1c6d75ed9ef6a1238e963141d7ba609ad3bffb376bfe43a37f0d308e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.39.90-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.39.90-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.39.90-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.39.90-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '64e9b60071ff95ecca092aa1468a8c2c4f82913e531b2ea456c525007634e426',
-     armv7l: '64e9b60071ff95ecca092aa1468a8c2c4f82913e531b2ea456c525007634e426',
-       i686: '22c50f78a594fded61c48656aaae5e8b378086ca1a339c2ceebb6838ffaed425',
-     x86_64: '9745dded864e889d64e5e3e04215240765ee0be748fbad5a9c3db84f58ec91c5'
+    aarch64: '127a7ebff88b54baca1e813e7a46b3b649e99e4c8395e47320ef9e534931d73a',
+     armv7l: '127a7ebff88b54baca1e813e7a46b3b649e99e4c8395e47320ef9e534931d73a',
+       i686: '8312ce51a47c2ced1d38700c18ade1ab65f471f989ac0d5336065865059e906a',
+     x86_64: '7439c90a81a8ee6951021254a7d5ce1540b1aea95779fdcbf55ca507dbbd6cb6'
   })
 
   depends_on 'gtk3'
@@ -28,20 +29,21 @@ class Gnome_terminal < Package
   depends_on 'desktop_file_utilities'
   depends_on 'gsettings_desktop_schemas'
   depends_on 'yelp_tools'
-  depends_on 'sommelier'
+  depends_on 'gtk_doc'
 
   def self.build
-    system "env CFLAGS='-pipe -flto' \
-      CXXFLAGS='-pipe -flto' \
-      LDFLAGS='-flto' \
-      ./configure #{CREW_OPTIONS} \
-      --disable-search-provider \
-      --without-nautilus-extension \
-      --with-gtk=3.0"
-    system 'make'
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    --default-library=both \
+    -Dsearch_provider=false \
+    -Dnautilus_extension=false \
+    -Dc_args='-flto -fno-stack-protector -U_FORTIFY_SOURCE -fuse-ld=gold -pipe' \
+    -Dcpp_args='-flto -fno-stack-protector -U_FORTIFY_SOURCE -fuse-ld=gold -pipe' \
+    builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
