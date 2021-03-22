@@ -1,4 +1,4 @@
-lrequire 'package'
+require 'package'
 
 class Pyconfigure < Package
   description 'GNU pyconfigure provides developers with file templates for implementing standard configure scripts and Makefile recipes for their Python packages.'
