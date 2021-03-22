@@ -15,4 +15,5 @@ class Libressl < Package
     puts
     puts 'Chromebrew\'s libressl is a fake package pointing to openssl.'.lightblue
     puts
+  end
 end
