@@ -4,9 +4,9 @@ class Yelp_xsl < Package
   description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documentation'
   homepage 'https://github.com/GNOME/yelp-xsl'
   version '40.0'
-  compatibility 'all'
   license 'GPL-2+, LGPL-2.1+, MIT and FDL-1.1+'
   license 'GPL-2+ or freedist and GPL-2+'
+  compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/yelp-xsl/-/archive/#{version}/yelp-xsl-#{version}.tar.bz2"
   source_sha256 '3938ae88880cdcc3bbd20db25a05bac03cd1324d60c2940ed85e56259725e7f7'
 
