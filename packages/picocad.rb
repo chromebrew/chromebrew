@@ -8,6 +8,7 @@ class Picocad < Package                 # The first character of the class name 
   license 'Proprietary'
   depends_on 'libx11'            # packages required by this package
   depends_on 'sommelier'            # packages required by this package
+  depends_on 'libsdl2'
   source_url 'https://cdn.discordapp.com/attachments/768193037708558427/823684213093171220/picocad-101.zip'
   source_sha256 '13da7c39d4c78d4878bc00fbe59ac3865852c60b4ad72b97cfd33f5619b6feb6'   # Use the command "sha256sum"
 
