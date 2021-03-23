@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.9'
+  version '1.10'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -45,7 +45,7 @@ class Buildessential < Package
   depends_on 'flex'
   depends_on 'util_macros'
   depends_on 'gettext'
-  depends_on 'wget' # in some cases, patches might be required and can be downloaded using wget
+#  depends_on 'wget' # use 'curl -#LO' instead
   depends_on 'mawk'
 
   # compression utilities
