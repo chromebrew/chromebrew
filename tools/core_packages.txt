@@ -85,7 +85,6 @@ trousers
 uchardet
 unzip
 util_macros
-wget
 xorg_proto
 xzutils
 zip

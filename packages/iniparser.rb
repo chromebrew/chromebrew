@@ -24,7 +24,7 @@ class Iniparser < Package
 
   def self.patch
     # Fix buffer overflow vulnerabilities
-    system 'wget', 'https://github.com/ndevilla/iniparser/commit/a249509544972d60f5077bfde554af480bd82594.patch'
+    system 'curl -#LO https://github.com/ndevilla/iniparser/commit/a249509544972d60f5077bfde554af480bd82594.patch'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('a249509544972d60f5077bfde554af480bd82594.patch') ) == '1b1fe5d2faf6eb5bed51b80b046d4699c09b14b3e5e5277aed790a8741fcad8b'
     system 'patch', '-Np1', '-i', 'a249509544972d60f5077bfde554af480bd82594.patch'
     # Fix libdir
