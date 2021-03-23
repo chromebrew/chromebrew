@@ -57,7 +57,6 @@ m4
 make
 mandb
 manpages
-mawk
 meson
 most
 mpc
