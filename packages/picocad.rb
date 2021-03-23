@@ -3,7 +3,7 @@ require 'package'
 class Picocad < Package                 # The first character of the class name must be upper case
   description 'picoCAD is a program to build and texture lowpoly 3D models.'
   homepage 'https://johanpeitz.itch.io/picocad'
-  version '1.01'
+  version '1.0.1'
   compatibility 'all'
   license 'Proprietary'
   depends_on 'libx11'            # packages required by this package
