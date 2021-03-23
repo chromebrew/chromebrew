@@ -9,6 +9,6 @@ class Tepl < Package
 
   is_fake
 
-  depends_on 'tepl5'
-  depends_on 'tepl6'
+  depends_on 'tepl_5'
+  depends_on 'tepl_6'
 end
