@@ -594,7 +594,12 @@ url: https://www.cairographics.org/releases
 activity: low
 ---
 kind: url
-name: cairomm
+name: cairomm_1_0
+url: https://www.cairographics.org/releases
+activity: low
+---
+kind: url
+name: cairomm_1_16
 url: https://www.cairographics.org/releases
 activity: low
 ---
@@ -999,7 +1004,7 @@ url: https://chromium.googlesource.com/chromium/tools/depot_tools.git
 activity: high
 ---
 kind: url
-name: desktop_file_utilities
+name: desktop_file_utils
 url: https://www.freedesktop.org/software/desktop-file-utils/releases/
 activity: none
 ---
@@ -1939,7 +1944,12 @@ url: https://sourceware.org/glibc/wiki/Glibc%20Timeline
 activity: low
 ---
 kind: url
-name: glibmm
+name: glibmm_2_4
+url: https://ftp.gnome.org/pub/gnome/sources/glibmm/
+activity: low
+---
+kind: url
+name: glibmm_2_68
 url: https://ftp.gnome.org/pub/gnome/sources/glibmm/
 activity: low
 ---
@@ -2354,8 +2364,13 @@ url: https://download.mono-project.com/sources/gtk-sharp212/
 activity: none
 ---
 kind: url
-name: gtksourceview
-url: https://github.com/GNOME/gtksourceview/releases
+name: gtksourceview_4
+url: https://gitlab.gnome.org/GNOME/gtksourceview/-/tags
+activity: high
+---
+kind: url
+name: gtksourceview_5
+url: https://gitlab.gnome.org/GNOME/gtksourceview/-/tags
 activity: high
 ---
 kind: url
@@ -2619,8 +2634,13 @@ url: https://github.com/openexr/openexr/releases
 activity: low
 ---
 kind: url
-name: imagemagick
-url: https://www.imagemagick.org/download/releases
+name: imagemagick6
+url: https://github.com/ImageMagick/ImageMagick6/releases
+activity: high
+---
+kind: url
+name: imagemagick7
+url: https://github.com/ImageMagick/ImageMagick/releases
 activity: high
 ---
 kind: url
@@ -2972,6 +2992,11 @@ kind: url
 name: libaacs
 url: https://get.videolan.org/libaacs/
 activity: low
+---
+kind: url
+name: libadwaita
+url: https://gitlab.gnome.org/exalm/libadwaita/
+activity: high
 ---
 kind: url
 name: libaio
@@ -5144,9 +5169,14 @@ url: https://ftp.gnome.org/pub/gnome/sources/pango
 activity: medium
 ---
 kind: url
-name: pangomm
-url: https://ftp.gnome.org/pub/GNOME/sources/pangomm/
+name: pangomm_1_4
+url: https://gitlab.gnome.org/GNOME/pangomm/-/tags
 activity: low
+---
+kind: url
+name: pangomm_2_48
+url: https://gitlab.gnome.org/GNOME/pangomm/-/tags
+activity: medium
 ---
 kind: url
 name: papirus_icon_theme
@@ -6234,9 +6264,9 @@ url: http://files.squeak.org/
 activity: medium
 ---
 kind: url
-name: sscache
-url: https://github.com/mozilla/sccache/releases
-activity: medium
+name: srt
+url: https://github.com/Haivision/srt/releases
+activity: low
 ---
 kind: url
 name: sshcode
@@ -6429,9 +6459,14 @@ url: https://telepathy.freedesktop.org/releases/telepathy-glib/
 activity: low
 ---
 kind: url
-name: tepl
+name: tepl_5
 url: https://github.com/GNOME/tepl/releases
-activity: medium
+activity: low
+---
+kind: url
+name: tepl_6
+url: https://github.com/GNOME/tepl/releases
+activity: low
 ---
 kind: url
 name: termcap
