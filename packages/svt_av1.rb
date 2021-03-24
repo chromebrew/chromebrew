@@ -9,9 +9,12 @@ class Svt_av1 < Package
   version @_ver
   license 'BSD-2, Apache-2.0, BSD, ISC, MIT and LGPG-2.1+'
   compatibility 'x86_64'
-  source_url "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v#{@_ver}/SVT-AV1-v#{@_ver}.tar.bz2"
-  source_sha256 'e942959be6b062f4adea33fd5dbfbd5581b178ce87b4baf9bd84283fbc8203e1'
-
+  case ARCH
+  when 'x86_64'
+    source_url "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v#{@_ver}/SVT-AV1-v#{@_ver}.tar.bz2"
+    source_sha256 'e942959be6b062f4adea33fd5dbfbd5581b178ce87b4baf9bd84283fbc8203e1'
+  end
+  
   binary_url({
     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/svt_av1-0.8.6-chromeos-x86_64.tar.xz'
   })
