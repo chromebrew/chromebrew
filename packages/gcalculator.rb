@@ -22,9 +22,7 @@ class Gcalculator < Package
   end
 
   def self.build
-    @_prefix = "#{CREW_PREFIX}/Applications/#{self.name}/"
-    
-    system "meson #{CREW_MESON_LTO_OPTIONS.gsub(CREW_PREFIX, @_prefix)} builddir"
+    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end
@@ -39,13 +37,8 @@ class Gcalculator < Package
       exec #{@_app}.elf "$@"
     EOF
     File.write(@_app, @_wrapper)
-    FileUtils.mv "#{CREW_DEST_DIR}/#{@_prefix}/bin/#{@_app}", "#{CREW_DEST_DIR}/#{@_prefix}/bin/#{@_app}.elf"
-    FileUtils.install @_app, "#{CREW_DEST_DIR}/#{@_prefix}/bin/#{@_app}", mode: 0755
-    # create symlinks
-    Dir.chdir "#{CREW_DEST_DIR}/#{@_prefix}" do
-      system "find . -type d -exec mkdir -p #{CREW_DEST_PREFIX}/{} \\;"
-      system "find . -type f -exec ln -s \"/#{@_prefix}/\"{} \"#{CREW_DEST_PREFIX}/\"{} \\;"
-    end
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/#{@_app}", "#{CREW_DEST_PREFIX}/bin/#{@_app}.elf"
+    FileUtils.install @_app, "#{CREW_DEST_PREFIX}/bin/#{@_app}", mode: 0755
   end
 
   def self.postinstall
