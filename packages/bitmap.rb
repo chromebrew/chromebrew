@@ -4,6 +4,7 @@ class Bitmap < Package
   description 'bitmap, bmtoa, atobm - X bitmap (XBM) editor and converter utilities'
   homepage 'https://www.x.org'
   version '1.0.9'
+  license 'custom'
   compatibility 'all'
   source_url 'https://x.org/archive/individual/app/bitmap-1.0.9.tar.bz2'
   source_sha256 'e0f3afad5272d796f54c33fa1b5bd1fb3f62843a54b28c87196d06a35123e5f5'

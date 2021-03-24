@@ -9,6 +9,7 @@ class Clutter_gtk < Package
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
   version @_fullver
+  license 'LGPL-2.1+'
   source_url "#{@_url}.tar.xz"
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 
@@ -24,7 +25,7 @@ class Clutter_gtk < Package
        i686: '499108e196161dffd762aff54ffa8bbd338863c9d9cc8c2af54fd5728d11cb7d',
      x86_64: '3b5b60ce00a67815def67ff992aac8caf89fb4ee0ef68d7a51c857ce30a3461e'
   })
-  
+
   depends_on 'gtk3'
   depends_on 'libgee'
   depends_on 'clutter'

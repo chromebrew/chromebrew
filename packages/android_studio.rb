@@ -4,6 +4,7 @@ class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
   version '4.1.2.0'
+  license 'Apache-2.0'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

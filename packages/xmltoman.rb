@@ -4,6 +4,7 @@ class Xmltoman < Package
   description 'xmltoman and xmlmantohtml are two small scripts to convert xml to man pages in groff format or html.'
   homepage 'https://sourceforge.net/projects/xmltoman/'
   version '0.4'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/xmltoman/xmltoman/xmltoman-0.4.tar.gz/xmltoman-0.4.tar.gz'
   source_sha256 '948794a316aaecd13add60e17e476beae86644d066cb60171fc6b779f2df14b0'

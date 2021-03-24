@@ -5,6 +5,7 @@ class Git < Package
   homepage 'https://git-scm.com/'
   @_ver = '2.31.0'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"
   source_sha256 '13b3efb8eca3e3ef6e7eea6839600c37636dbac28069907beafd075ef7f45f0b'

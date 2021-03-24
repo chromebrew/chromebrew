@@ -6,6 +6,7 @@ class Libsoup < Package
   @_ver = '2.99.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://download.gnome.org/sources/libsoup/#{@_ver_prelastdot}/libsoup-#{@_ver}.tar.xz"
   source_sha256 '664fa1b78a15cc0aa1fa65efb3b281a888417530f9f56a219571c0630f942ba5'

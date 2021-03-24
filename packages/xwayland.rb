@@ -5,6 +5,7 @@ class Xwayland < Package
   homepage 'https://x.org'
   @_ver = '21.1.0'
   version @_ver
+  license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
   source_url "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-#{@_ver}.tar.xz"
   source_sha256 '8a71c3e8b95c43bb91bc3d7a4ff9075456a0cfe297721dbc8d4a76cf241d82fb'

@@ -4,6 +4,7 @@ class Font_bh_ttf < Package
   description 'Standard Bigelow and Holmes TrueType fonts'
   homepage 'https://xorg.freedesktop.org/'
   version '1.0.3'
+  license 'bh-luxi'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-bh-ttf-1.0.3.tar.bz2'
   source_sha256 '1b4bea63271b4db0726b5b52c97994c3313b6023510349226908090501abd25f'

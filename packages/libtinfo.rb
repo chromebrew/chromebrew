@@ -4,6 +4,7 @@ class Libtinfo < Package
   description 'Missing ncurses library reference.'
   homepage 'https://www.gnu.org/software/ncurses/'
   version '6.2-1'
+  license 'MIT' # Ncurses license
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

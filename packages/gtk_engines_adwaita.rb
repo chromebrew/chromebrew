@@ -4,6 +4,7 @@ class Gtk_engines_adwaita < Package
   description 'Adwaita GTK+2 theme engine.'
   homepage 'https://git.gnome.org/browse/gnome-themes-standard/'
   version '3.27.92'
+  license 'LGPL-2.1+'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

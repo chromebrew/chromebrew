@@ -5,6 +5,7 @@ class Harfbuzz < Package
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
   @_ver = '2.7.4'
   version @_ver
+  license 'Old-MIT, ISC and icu'
   compatibility 'all'
   source_url "https://github.com/harfbuzz/harfbuzz/archive/#{@_ver}.tar.gz"
   source_sha256 'daff8a4003ac420a8550760ed303ce33b310c8ea17b7f15b307d1969cabcebcb'

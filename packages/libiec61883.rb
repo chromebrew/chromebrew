@@ -4,6 +4,7 @@ class Libiec61883 < Package
   description 'A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394'
   homepage 'https://www.kernel.org/pub/linux/libs/ieee1394/'
   version '1.2.0'
+  license 'LGPL-2.1 or GPL-2'
   compatibility 'all'
   source_url 'https://www.kernel.org/pub/linux/libs/ieee1394/libiec61883-1.2.0.tar.xz'
   source_sha256 'd1e02c7e276fac37313a2f8c1c33d7a9e19282ff16f32e72435428ff5121f09e'

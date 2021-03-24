@@ -5,6 +5,7 @@ class Mjpegtools < Package
   homepage 'https://mjpeg.sourceforge.io/'
   @_ver = '2.2.0_beta'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/sourceforge/mjpeg/mjpegtools-#{@_ver}.tar.gz"
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

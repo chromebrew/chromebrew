@@ -2,8 +2,9 @@ require 'package'
 
 class Proj4 < Package
   description 'proj.4 is a standard Unix filter function which converts geographic longitude and latitude coordinates into cartesian coordinates (and vice versa), and it is a C API for software developers to include coordinate transformation in their own software.'
-  homepage 'http://proj4.org/'
+  homepage 'https://proj4.org/'
   version '6.3.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://download.osgeo.org/proj/proj-6.3.2.zip'
   source_sha256 '5ef90382d1d57e7185d13064fa46c1f6350a079f4f7ad67c862b6075ca7b88ec'

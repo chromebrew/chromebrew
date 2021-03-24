@@ -2,7 +2,9 @@ require 'package'
 
 class Sassc < Package
   description 'C implementation of Sass CSS preprocessor.'
+  homepage 'https://github.com/sass/sassc'
   version '3.6.1-66f0'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sass/sassc/archive/66f0ef37e7f0ad3a65d2f481eff09d09408f42d0.zip'
   source_sha256 'a2077ae439f29c45ce76c81b9b4e63aed1b7f41e9f5fc82881c2d52752c6f440'

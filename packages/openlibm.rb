@@ -4,6 +4,7 @@ class Openlibm < Package
   description 'A high quality system independent, portable, open source libm implementation'
   homepage 'https://openlibm.org/'
   version '0.7.0'
+  license 'public-domain, MIT, ISC, BSD-2 and LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/JuliaMath/openlibm/archive/v0.7.0.tar.gz'
   source_sha256 '1699f773198018b55b12631db9c1801fe3ed191e618a1ee1be743f4570ae06a3'

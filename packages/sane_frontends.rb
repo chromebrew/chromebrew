@@ -4,6 +4,7 @@ class Sane_frontends < Package
   description 'Scanner Access Now Easy - Frontends'
   homepage 'http://www.sane-project.org/'
   version '5729'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.com/sane-project/frontends/-/archive/572980c81586c114fd66fc473c634b4b2780cda2/frontends-572980c81586c114fd66fc473c634b4b2780cda2.tar.bz2'
   source_sha256 'c58a2066891428c6e6c6f625b595e3ada8b36dfe69250b1bbdaded91d76b094f'

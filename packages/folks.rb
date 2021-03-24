@@ -5,6 +5,7 @@ class Folks < Package
   homepage 'https://wiki.gnome.org/Projects/Folks'
   @_ver = '0.15.2'
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/folks/-/archive/#{@_ver}/folks-#{@_ver}.tar.bz2"
   source_sha256 'fc793ac48add708bf95b65060e74d66c016ea6077297f3329c59fee83cc415ed'

@@ -5,6 +5,7 @@ class Pavucontrol < Package
   homepage 'https://freedesktop.org/software/pulseaudio/pavucontrol/'
   @_ver = '4.0'
   version "#{@_ver}-381b-1"
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/pulseaudio/pavucontrol/archive/381b708202e87e40347a57f8a627014199cde266.zip'
   source_sha256 'aa6c5814e77a8f36d8ed50b70381fbfbab2ebbf0fb62548ec8b8b935527d527e'

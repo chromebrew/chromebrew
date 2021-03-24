@@ -5,6 +5,7 @@ class Openssl < Package
   homepage 'https://www.openssl.org'
   @_ver = '1.1.1i'
   version @_ver + '-1'
+  license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
   source_sha256 'e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242'
@@ -53,12 +54,12 @@ class Openssl < Package
     #{OPENSSL_CONFIGURE_TARGET}"
     system "make"
   end
-  
+
 
   def self.check
     system "make test"
   end
-  
+
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install_sw install_ssldirs"

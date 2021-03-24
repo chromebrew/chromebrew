@@ -5,6 +5,7 @@ class Ffmpeg < Package
   homepage 'https://ffmpeg.org/'
   @_ver = '4.3.2'
   version @_ver
+  license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is stil accurate,
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -120,7 +121,7 @@ class Ffmpeg < Package
         +++ b/libavfilter/vf_libvmaf.c
         @@ -72,7 +72,7 @@ typedef struct LIBVMAFContext {
          #define FLAGS AV_OPT_FLAG_FILTERING_PARAM|AV_OPT_FLAG_VIDEO_PARAM
-         
+
          static const AVOption libvmaf_options[] = {
         -    {"model_path",  "Set the model to be used for computing vmaf.",                     OFFSET(model_path), AV_OPT_TYPE_STRING, {.str="/usr/local/share/model/vmaf_v0.6.1.pkl"}, 0, 1, FLAGS},
         +    {"model_path",  "Set the model to be used for computing vmaf.",                     OFFSET(model_path), AV_OPT_TYPE_STRING, {.str="/usr/share/model/vmaf_v0.6.1.pkl"}, 0, 1, FLAGS},

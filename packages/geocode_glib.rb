@@ -4,6 +4,7 @@ class Geocode_glib < Package
   description 'Helper library for geocoding services'
   homepage 'https://gitlab.gnome.org/GNOME/geocode-glib'
   version '3.26.2'
+  license 'LGPL-2'
   compatibility 'all'
   source_url 'https://github.com/GNOME/geocode-glib/archive/3.26.2.tar.gz'
   source_sha256 '589ed8cf890fb47619ad1062b7117d16104554078b837344496d603d0896ec20'

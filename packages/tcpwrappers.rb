@@ -4,6 +4,7 @@ class Tcpwrappers < Package
   description 'The tcpwrappers package provides daemon wrapper programs that report the name of the client requesting network services and the requested service.'
   homepage 'http://www.linuxfromscratch.org/blfs/view/6.1/basicnet/tcpwrappers.html'
   version '7.6'
+  license 'tcp_wrappers_license'
   compatibility 'all'
   source_url 'ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz'
   source_sha256 '9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d'
@@ -22,7 +23,7 @@ class Tcpwrappers < Package
   })
 
   def self.patch
-    system 'wget http://www.linuxfromscratch.org/blfs/downloads/6.1/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch'
+    system 'curl -#LO http://www.linuxfromscratch.org/blfs/downloads/6.1/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('tcp_wrappers-7.6-shared_lib_plus_plus-1.patch') ) == 'c88af3bc83ad032e58be47cf53a1941c281b7fe4690d2c23ce2923e26146d42a'
     system 'patch -Np1 -i ./tcp_wrappers-7.6-shared_lib_plus_plus-1.patch'
     system 'sed -i -e "s,^extern char \*malloc();,/* & */," scaffold.c'

@@ -1,9 +1,12 @@
+# This package should definitely be split into its consituent parts sometime.
+
 require 'package'
 
 class Libefl < Package
   description 'Enlightenment Foundation Libraries'
   homepage 'https://enlightenment.org'
   version '1.24.3'
+  license 'BSD, BSD-2, BSD-3, LGPL-2.1, GPL-2, freetype, MIT, Apache-2.0' # Needs verifiying
   compatibility 'all'
   source_url 'https://download.enlightenment.org/rel/libs/efl/efl-1.24.3.tar.xz'
   source_sha256 'de95c6e673c170c1e21382918b122417c091c643e7dcaced89aa785529625c2a'
@@ -46,7 +49,7 @@ class Libefl < Package
   depends_on 'libxcursor'
   depends_on 'libxp'
   depends_on 'libxrandr'
-  depends_on 'libxscrnsaver'
+  depends_on 'libxss'
   depends_on 'libxdamage'
   depends_on 'libxrender'
   depends_on 'libxi'

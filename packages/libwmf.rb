@@ -4,6 +4,7 @@ class Libwmf < Package
   description 'libwmf is a library for reading vector images in Microsoft\'s native Windows Metafile Format (WMF)'
   homepage 'https://github.com/caolanm/libwmf'
   version '0.2.12-ffc8'
+  license 'LGPL-2'
   compatibility 'all'
   source_url 'https://github.com/caolanm/libwmf/archive/ffc8f5aaf9ac33d5d2fe67e777c018e057fdfd71.zip'
   source_sha256 'cdde9db1a0bc22a529f55aa60c2c7b85d1adb1e16e15b1d0b8906c04667b851a'

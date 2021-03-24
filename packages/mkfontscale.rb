@@ -4,6 +4,7 @@ class Mkfontscale < Package
   description 'X11 Scalable Font Index Generator'
   homepage 'https://www.x.org/wiki'
   version '1.2.1-1'
+  license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/mkfontscale-1.2.1.tar.bz2'
   source_sha256 'ca0495eb974a179dd742bfa6199d561bda1c8da4a0c5a667f21fd82aaab6bac7'

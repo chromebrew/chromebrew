@@ -3,12 +3,13 @@ require 'package'
 class Gcalculator < Package
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
-  compatibility 'all'
   @_app = 'gnome-calculator'
   @_fullver = '3.38.2'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
   version @_fullver
+  license 'LGPL-2.1+'
+  compatibility 'all'
   source_url "#{@_url}.tar.xz"
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 

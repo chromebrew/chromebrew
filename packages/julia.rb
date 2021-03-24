@@ -4,6 +4,7 @@ class Julia < Package
   description 'Julia is a flexible dynamic language, appropriate for scientific and numerical computing'
   homepage 'https://julialang.org/'
   version '1.3.1'
+  license 'MIT'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'

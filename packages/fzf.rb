@@ -4,6 +4,7 @@ class Fzf < Package
   description 'A command-line fuzzy finder'
   homepage 'https://github.com/junegunn/fzf'
   version '0.23.1'
+  license 'MIT and BSD-with-disclosure'
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/junegunn/fzf/archive/0.23.1.tar.gz'
   source_sha256 '07576e47d2d446366eb7806fd9f825a2340cc3dc7f799f1f53fe038ca9bf30f6'

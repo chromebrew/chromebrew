@@ -3,12 +3,13 @@ require 'package'
 class Gnome_klotski < Package
   description 'A puzzle game for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Klotski'
-  compatibility 'all'
   @_app = File.basename(__FILE__, '.rb').tr('_', '-')
   @_fullver = '3.38.2'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
   version @_fullver
+  license 'GPL-3+ and FDL-1.1+'
+  compatibility 'all'
   source_url "#{@_url}.tar.xz"
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 

@@ -4,6 +4,7 @@ class Acpica < Package
   description 'ACPI tools, including Intel ACPI Source Language compiler'
   homepage 'https://acpica.org/'
   version '20200925'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://acpica.org/sites/acpica/files/acpica-unix-20200925.tar.gz'
   source_sha256 'd44388e21e3d2e47c6d39e9c897935d3f775f04fec76271dcba072c74f834589'

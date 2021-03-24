@@ -5,6 +5,7 @@ class Shadow < Package
   homepage 'https://github.com/shadow-maint/shadow'
   @_ver = '4.8.1'
   version "#{@_ver}-1"
+  license 'BSD and GPL-2'
   compatibility 'all'
   source_url "https://github.com/shadow-maint/shadow/releases/download/#{@_ver}/shadow-#{@_ver}.tar.xz"
   source_sha256 'a3ad4630bdc41372f02a647278a8c3514844295d36eefe68ece6c3a641c1ae62'

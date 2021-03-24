@@ -4,6 +4,7 @@ class Libportal < Package
   description 'libportal provides GIO-style async APIs for most Flatpak portals.'
   homepage 'https://github.com/flatpak/libportal'
   version '0.3'
+  license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/flatpak/libportal/releases/download/0.3/libportal-0.3.tar.xz'
   source_sha256 'fd35d66357169e63e33ef46c43fdf22ddc07dbd960ec3462b58ca9ef15a65bd7'

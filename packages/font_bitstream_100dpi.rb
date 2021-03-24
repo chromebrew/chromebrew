@@ -4,6 +4,7 @@ class Font_bitstream_100dpi < Package
   description 'Standard 100dpi Bitstream PCF fonts'
   homepage 'https://xorg.freedesktop.org/'
   version '1.0.3'
+  license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-bitstream-100dpi-1.0.3.tar.bz2'
   source_sha256 'ebe0d7444e3d7c8da7642055ac2206f0190ee060700d99cd876f8fc9964cb6ce'

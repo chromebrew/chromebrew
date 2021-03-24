@@ -5,6 +5,7 @@ class Libpng < Package
   homepage 'http://libpng.org/pub/png/libpng.html'
   @_ver = '1.6.37'
   version "#{@_ver}-1"
+  license 'libpng2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/libpng/libpng16/#{@_ver}/libpng-#{@_ver}.tar.xz"
   source_sha256 '505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca'

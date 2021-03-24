@@ -4,6 +4,7 @@ class Gtksharp2 < Package
   description 'GTK2 bindings for mono'
   homepage 'https://www.mono-project.com/GtkSharp'
   version '2.12.45'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.45.tar.gz'
   source_sha256 '02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a'

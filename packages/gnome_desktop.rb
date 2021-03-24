@@ -6,6 +6,7 @@ class Gnome_desktop < Package
   @_ver = '40.rc'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'GPL-2+, LGPL-2+ and FDL-1.1+'
   compatibility 'all'
   source_url "https://download.gnome.org/core/#{@_ver_prelastdot}/#{@_ver}/sources/gnome-desktop-#{@_ver}.tar.xz"
   source_sha256 'bd5bc1ab9640301efc7cc1dbfc5965fcb7dcadabb6f6f395ae8b571aed84f448'

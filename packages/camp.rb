@@ -4,6 +4,7 @@ class Camp < Package
   description 'Server stack which includes httpd, percona_server and php'
   homepage ''
   version '1.0'
+  license 'GPL-3+'
   compatibility 'all'
 
   is_fake

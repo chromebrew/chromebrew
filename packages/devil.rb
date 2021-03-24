@@ -4,6 +4,7 @@ class Devil < Package
   description 'Library for reading several different image formats'
   homepage 'http://openil.sourceforge.net/'
   version '1.8.0-e342'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/DentonW/DevIL/archive/e34284a7e07763769f671a74b4fec718174ad862.zip'
   source_sha256 '73728ff9f877b9247728ae46148866eea81092ccefb538a28640fe31b73d74ac'

@@ -5,6 +5,7 @@ class Fontconfig < Package
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
   @_ver = '2.13.93'
   version "#{@_ver}-1"
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/freedesktop/fontconfig/archive/#{@_ver}.tar.gz"
   source_sha256 'f8452c78d1a12f6966455b0d584f89553b13e970b40644c3650f690ec0b3b4fe'

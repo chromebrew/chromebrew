@@ -4,6 +4,7 @@ class Printproto < Package
   description 'Xprint build headers'
   homepage 'https://xorg.freedesktop.org'
   version '1.0.5-1'
+  license 'MIT-with-advertising'
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/releases/individual/proto/printproto-1.0.5.tar.bz2'
   source_sha256 '1298316cf43b987365ab7764d61b022a3d7f180b67b423eed3456862d155911a'

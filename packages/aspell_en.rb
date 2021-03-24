@@ -4,6 +4,7 @@ class Aspell_en < Package
   description 'English Aspell Dictionary'
   homepage 'https://ftpmirror.gnu.org/aspell/dict/0index.html'
   version '2020.12.07-0'
+  license 'myspell-en_CA-KevinAtkinson, public-domain, Princeton, and Ispell'
   compatibility 'all'
   source_url 'https://gnu.askapache.com/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2'
   source_sha256 '4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3'

@@ -3,15 +3,16 @@ require 'package'
 class Gsound < Package
   description 'GSound is a small library for playing system sounds.'
   homepage 'https://wiki.gnome.org/Projects/GSound'
-  compatibility 'all'
   @_app = File.basename(__FILE__, '.rb').tr('_', '-')
   @_fullver = '1.0.2'
   @_mainver = @_fullver.rpartition('.')[0]
   @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
   version @_fullver
+  license 'LGPL-2.1+'
+  compatibility 'all'
   source_url "#{@_url}.tar.xz"
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
-  
+
   depends_on 'gobject_introspection'
   depends_on 'libcanberra'
 

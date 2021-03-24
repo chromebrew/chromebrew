@@ -5,6 +5,7 @@ class Gstreamer < Package
   homepage 'https://gstreamer.freedesktop.org/'
   @_ver = '1.18.3'
   version @_ver
+  license 'LGPL-2+'
   compatibility 'all'
   source_url "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-#{@_ver}.tar.xz"
   source_sha256 '0c2e09e18f2df69a99b5cb3bd53c597b3cc2e35cf6c98043bb86a66f3d312100'

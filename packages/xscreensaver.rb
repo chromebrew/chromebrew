@@ -4,6 +4,7 @@ class Xscreensaver < Package
   description 'XScreenSaver is the standard screen saver collection shipped on most Linux and Unix systems running the X11 Window System.'
   homepage 'https://www.jwz.org/xscreensaver/download.html'
   version '5.44'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://www.jwz.org/xscreensaver/xscreensaver-5.44.tar.gz'
   source_sha256 '73d8089cfc7d7363b5dac99b5b01dffb3429d0a855e6af16ce9a4b7777017b95'

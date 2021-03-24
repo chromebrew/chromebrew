@@ -5,6 +5,7 @@ class Libva < Package
   homepage 'https://01.org/linuxmedia'
   @_ver = '2.10.0'
   version "#{@_ver}-1"
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/intel/libva/releases/download/#{@_ver}/libva-#{@_ver}.tar.bz2"
   source_sha256 'fa81e35b50d9818fce5ec9eeeeff08a24a8864ceeb9a5c8e7ae4446eacfc0236'

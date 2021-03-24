@@ -4,6 +4,7 @@ class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
   version '1.20.108'
+  license 'MPL-2'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

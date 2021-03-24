@@ -4,6 +4,7 @@ class Appstream_glib < Package
   description 'Objects and methods for reading and writing AppStream metadata'
   homepage 'https://people.freedesktop.org/~hughsient/appstream-glib/'
   version '0.7.18-1'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/hughsie/appstream-glib/archive/appstream_glib_0_7_18.tar.gz'
   source_sha256 '73b8c10273c4cdd8f6de03c2524fedad64e34ccae08ee847dba804bb15461f6e'

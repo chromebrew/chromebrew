@@ -3,23 +3,24 @@ require 'package'
 class Gnome_settings_daemon < Package
   description 'GNOME Settings Daemon'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon'
-  @_ver = '40.rc'
+  @_ver = '40.0'
   version @_ver
+  license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/archive/#{@_ver}/gnome-settings-daemon-#{@_ver}.tar.bz2"
-  source_sha256 'dc057f3c73112bae2b74207bf764258019acd2f40109a43ee163b95feceb9187'
+  source_sha256 'ea6351b9f82c507e431cea15a69e7bb0574b8003618c48ff8c07e04969516e7f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.rc-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.rc-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.rc-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.rc-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_settings_daemon-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '8e7277690364585e888e6accfddb83baf15c3c8d66ce70c050aac68949ea5af5',
-     armv7l: '8e7277690364585e888e6accfddb83baf15c3c8d66ce70c050aac68949ea5af5',
-       i686: 'e9ba7c3c497d399bf6ab0230c31aa1accd6399cfa14cf20d0c5e23096207ce49',
-     x86_64: '2c92223eb1a97973cdd4d3b0be828be63ac17103afa72004bc6c3dcc07adbe48'
+    aarch64: 'ae054caa58411bbf1f00729e748aaf0974913bff99ff77d24797f3814e4c5387',
+     armv7l: 'ae054caa58411bbf1f00729e748aaf0974913bff99ff77d24797f3814e4c5387',
+       i686: '90a5725eb84e76c5a23bd80fb670a569e63315a6ae8a599ef92cf8ec499f3aec',
+     x86_64: '294b8c533a037a62c14971e49d909b5a48c62b7717734bdc3b0ab20ee981be11'
   })
 
   depends_on 'dconf'

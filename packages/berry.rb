@@ -4,6 +4,7 @@ class Berry < Package
   description 'Healthy, bite-sized window manager'
   homepage 'https://github.com/JLErvin/berry'
   version '0.1.5'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/JLErvin/berry/archive/0.1.5.tar.gz'
   source_sha256 '3d2fa52aeba6ed05d3cc0e8308604c5a83e94a8623f3e66ed53fd5e0fdabfabf'
@@ -84,4 +85,3 @@ EOF"
     puts 'A hoykey system such as sxhkd is needed in order to use berry as a WM'.lightblue
   end
 end
-
