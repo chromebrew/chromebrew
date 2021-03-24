@@ -4,31 +4,30 @@ class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
   @_ver = '1.11.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/strukturag/libheif/releases/download/v#{@_ver}/libheif-#{@_ver}.tar.gz"
   source_sha256 'c550938f56ff6dac83702251a143f87cb3a6c71a50d8723955290832d9960913'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libheif-1.11.0-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6541e90af54adca5af1a1c390fe6d9c48a5641e8a82e34fdd2aee4da48dae5fe',
-     armv7l: '6541e90af54adca5af1a1c390fe6d9c48a5641e8a82e34fdd2aee4da48dae5fe',
-       i686: '474eb4e10bdfd58bdd55d6cc0e60dcb964eda7c0038772d4a2e1b633642ab816',
-     x86_64: '80496abc0efd38ce60d2a257e5f9d1b5095e291f8f37046dcf66462442f06714'
+    aarch64: '741663915e39e3f343c5d084423597484477eb49dc719f1395c62f84501ba8d9',
+     armv7l: '741663915e39e3f343c5d084423597484477eb49dc719f1395c62f84501ba8d9',
+     x86_64: '00cdd26729e9af1d85ca26edd0094195cab10c53bb07158a892293ef94e033af'
   })
 
+  depends_on 'dav1d'
+  depends_on 'libaom'
   depends_on 'libde265'
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libx265'
-  depends_on 'libaom'
-  depends_on 'dav1d'
+  depends_on 'rav1e'
 
   def self.build
     Dir.mkdir 'builddir'
