@@ -3,30 +3,30 @@ require 'package'
 class Libaom < Package
   description 'AV1 video codec from Alliance for Open Media'
   homepage 'https://aomedia.org/'
-  version '1.0.0'
+  version '3.0.0'
   license 'BSD-2'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-1.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-1.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-1.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-1.0.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-3.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-3.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-3.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libaom-3.0.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '333119009f00f96ab6fda4ea900eb19bf81bd8c446775d6b073a4ac56a0d2066',
-     armv7l: '333119009f00f96ab6fda4ea900eb19bf81bd8c446775d6b073a4ac56a0d2066',
-       i686: 'cdece1990fc30a8f45847ae13aa2e6dab6f9321365bb9412283d00586f23489f',
-     x86_64: 'c7bb9de577e4ff32458c47d9bf2c3a329a6011368f3f3bbde8e072fd9530d5c8'
+    aarch64: '72f877cc765100e7fcde222405861a42c9193d715fb2c068854ad4caf9d2d48c',
+     armv7l: '72f877cc765100e7fcde222405861a42c9193d715fb2c068854ad4caf9d2d48c',
+       i686: 'a73111242ed76bf16ec0c638095ef304437e1330ae489108153e43eec5fc3a85',
+     x86_64: 'aae749ceebb4a126c85f80c2864253d8377893d225d26045e6838f7cb35a1cbe'
   })
 
   depends_on 'yasm' => ':build'
 
   def self.prebuild
     @git_dir = 'aom_git'
-    @git_hash = '8b6eaa4d37b992efffe432fa513889e6d11ae04f'
+    @git_hash = '307ce06ed82d93885ee8ed53e152c9268ac0d98d'
     @git_url = 'https://aomedia.googlesource.com/aom'
     FileUtils.rm_rf(@git_dir)
     FileUtils.mkdir_p(@git_dir)
