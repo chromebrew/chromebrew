@@ -3,28 +3,26 @@ require 'package'
 class Libcap < Package
   description 'Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.'
   homepage 'https://directory.fsf.org/wiki/Libcap'
-  @_ver = '2.48'
+  @_ver = '2.49'
   version @_ver
-  license 'GPL-2 or BSD'
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-#{@_ver}.tar.xz"
-  source_sha256 '4de9590ee09a87c282d558737ffb5b6175ccbfd26d580add10df44d0f047f6c2'
+  source_sha256 'e98bc4d93645082ec787730b0fd1a712b38882465c505777de17c338831ee181'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.48-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.48-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.48-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.48-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '106370bd011b5275a149acd944f2a2f06ed016c9cf177460d11eec27739c198f',
-     armv7l: '106370bd011b5275a149acd944f2a2f06ed016c9cf177460d11eec27739c198f',
-       i686: 'efff029eb82405b068585b990adecdd8d4f16cf44fe3d09da6881c9904570b36',
-     x86_64: '409ae3d9206df71754817d0c49317e6533936e071b26c053141115fdd8dfb56c'
+    aarch64: 'a70c7ce2ce27a15a294ce7229c10a1c2227c2705a8b0e0be88cf8bb5eed73e77',
+     armv7l: 'a70c7ce2ce27a15a294ce7229c10a1c2227c2705a8b0e0be88cf8bb5eed73e77',
+       i686: 'ff41b92eeeb4c068086e67322b6a3fa9609b883a84c29f5a10c51dc3d38aa09c',
+     x86_64: 'bc72fba8169275a4e7a78ee90eea47a20b42fa0544eb321d2c1c1549640982b6'
   })
 
   depends_on 'gperf' => :build
-  depends_on 'perl' => :build
   depends_on 'linux_pam'
   depends_on 'patchelf' => :build
 
@@ -40,7 +38,7 @@ class Libcap < Package
     system "sed -i 's,^exec_prefix=,exec_prefix=\$(prefix),' Make.Rules"
     # http://git.yoctoproject.org/cgit.cgi/poky/plain/meta/recipes-support/libcap/files/0001-ensure-the-XATTR_NAME_CAPS-is-defined-when-it-is-use.patch
     system 'sed -i "s,^\#ifdef VFS_CAP_U32,\#if defined (VFS_CAP_U32) \&\& defined (XATTR_NAME_CAPS),g" libcap/cap_file.c'
-    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' \
+    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
         LDFLAGS='-flto=auto' make"
   end
 
