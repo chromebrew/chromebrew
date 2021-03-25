@@ -34,9 +34,9 @@ class Php73 < Package
   depends_on 'unixodbc'
   depends_on 'pygments'
 
-  def self.preinstall
+  def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless phpver.to_s == ''
+    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
   end
 
   def self.patch
