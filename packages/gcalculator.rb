@@ -31,10 +31,10 @@ class Gcalculator < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     @_wrapper = <<~EOF
-      #!/bin/sh
-      WAYLAND_DISPLAY=wayland-0
-      GDK_BACKEND=wayland
-      CLUTTER_BACKEND=wayland
+      #!/bin/bash
+      WAYLAND_DISPLAY=${WAYLAND_DISPLAY:-wayland-0}
+      GDK_BACKEND=${GDK_BACKEND:-wayland}
+      CLUTTER_BACKEND=${CLUTTER_BACKEND:-wayland}
       exec #{@_app}.elf "$@"
     EOF
     File.write(@_app, @_wrapper)
