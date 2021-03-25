@@ -24,14 +24,14 @@ class Mesa < Package
   })
 
   depends_on 'elfutils'
-  depends_on 'glslang'
+  depends_on 'glslang' => :build
   depends_on 'libdrm'
-  depends_on 'libomxil_bellagio'
+  depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind'
-  depends_on 'libvdpau'
+  depends_on 'libvdpau' => :build
   depends_on 'libx11'
   depends_on 'libxcb'
-  depends_on 'libxdamage'
+  depends_on 'libxdamage' => :build
   depends_on 'libxext'
   depends_on 'libxfixes'
   depends_on 'libxrandr'
@@ -40,11 +40,11 @@ class Mesa < Package
   depends_on 'libxvmc'
   depends_on 'libxxf86vm'
   depends_on 'lm_sensors'
-  depends_on 'valgrind'
+  depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
+  depends_on 'vulkan_icd_loader' => :build
   depends_on 'wayland'
-  depends_on 'wayland_protocols'
+  depends_on 'wayland_protocols' => :build
 
   def self.build
     case ARCH
