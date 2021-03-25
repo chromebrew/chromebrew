@@ -6,8 +6,8 @@ class Crew_profile_base < Package
   version '0.0.1-pre1'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://github.com/chromebrew/crew-profile-base/releases/download/0.0.1-pre1/crew-profile-base-0.0.1-pre1.tar.xz'
-  source_sha256 '22c41f65b2d6c3b858242216703230354f2697b4d6f410826f4a633da155dd98'
+  source_url 'https://github.com/chromebrew/crew-profile-base/releases/download/0.0.1-pre2/crew-profile-base-0.0.1-pre2.tar.xz'
+  source_sha256 '8cb774e48faa6ad3f813ef96de52cbf89f7ba512a9e9b843314f1bbc58973212'
 
   binary_url ({
 
@@ -31,10 +31,8 @@ class Crew_profile_base < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_HOME}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
-    FileUtils.mv "env.d", "#{CREW_DEST_PREFIX}/etc/"
-    FileUtils.mv "profile.d", "#{CREW_DEST_PREFIX}/etc/"
-    FileUtils.mv "profile", "#{CREW_DEST_PREFIX}/etc/"
-    FileUtils.mv ".bashrc", "#{CREW_DEST_HOME}"
-    FileUtils.mv ".zshrc", "#{CREW_DEST_HOME}"
+    FileUtils.cp_r Dir.glob('./src/*'), "#{CREW_DEST_PREFIX}/etc/"
+    FileUtils.cp ".bashrc", "#{CREW_DEST_HOME}"
+    FileUtils.cp ".zshrc", "#{CREW_DEST_HOME}"
   end
 end
