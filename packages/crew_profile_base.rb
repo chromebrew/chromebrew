@@ -19,8 +19,8 @@ class Crew_profile_base < Package
   def self.preinstall
     @rcfile = <<~EOF
       # DO NOT DELETE THIS LINE
-      # See /usr/local/etc/profile for further details
-      source /usr/local/etc/profile
+      # See #{CREW_PREFIX}/etc/profile for further details
+      source #{CREW_PREFIX}/etc/profile
 
       # Put your stuff under this comment
     EOF
