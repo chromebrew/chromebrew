@@ -17,32 +17,8 @@ class Codium < Package
     @arch = 'x64'
   end
 
-  depends_on 'alsa_lib'
-  depends_on 'atk'
-  depends_on 'at_spi2_atk'
-  depends_on 'at_spi2_core'
-  depends_on 'cairo'
-  depends_on 'cups'
-  depends_on 'dbus'
-  depends_on 'firefox'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'libdrm'
-  depends_on 'libx11'
-  depends_on 'libxcb'
-  depends_on 'libxcomposite'
-  depends_on 'libxdamage'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxkbcommon'
-  depends_on 'libxkbfile'
-  depends_on 'libxrandr'
-  depends_on 'mesa'
-  depends_on 'nspr'
   depends_on 'nss'
-  depends_on 'pango'
-  depends_on 'sommelier'
+  depends_on 'gtk2'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
