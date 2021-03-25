@@ -41,11 +41,11 @@ class Sommelier < Package
 
   case ARCH
   when 'armv7l', 'aarch64'
-    PEER_CMD_PREFIX = '/lib/ld-linux-armhf.so.3'.freeze
+    @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
   when 'i686'
-    PEER_CMD_PREFIX = '/lib/ld-linux-i686.so.2'.freeze
+    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
   when 'x86_64'
-    PEER_CMD_PREFIX = '/lib64/ld-linux-x86-64.so.2'.freeze
+    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end
 
   def self.prebuild
@@ -81,7 +81,7 @@ class Sommelier < Package
         -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
         -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
         -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
-        -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" \
+        -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" \
         builddir"
       system 'meson configure builddir'
       system 'ninja -C builddir'
@@ -138,7 +138,7 @@ fi
 basedir=${base%/*}
 # TODO(crbug/1003841): Remove LD_ARGV0 once
 # ld.so supports forwarding the binary name.
-LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/sommelier\" exec   \"${basedir}/..#{PEER_CMD_PREFIX}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
+LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/sommelier\" exec   \"${basedir}/..#{@peer_cmd_prefix}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
 EOF"
         # sommelierd
         system "cat <<'EOF'> sommelierd
@@ -161,7 +161,7 @@ checksommelierxwayland () {
 #if ! checksommelierwayland ; then
 #pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
 #rm \${XDG_RUNTIME_DIR}/wayland-1*
-#sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
+#sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
 #echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
 #fi
 if ! checksommelierxwayland; then
@@ -172,7 +172,7 @@ pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
 DISPLAY=\"\${DISPLAY//:}\"
 DISPLAY=\"\${DISPLAY:0:2}\"
 #sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
-sommelier -X --x-display=:\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add :$DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>#{CREW_PREFIX}/var/log/sommelier.log
+sommelier -X --x-display=:\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri --peer-cmd-prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add :$DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>#{CREW_PREFIX}/var/log/sommelier.log
 echo \$! >#{CREW_PREFIX}/var/run/sommelier-xwayland.pid
 xhost +si:localuser:root &>/dev/null
 fi
