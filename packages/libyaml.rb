@@ -4,6 +4,7 @@ class Libyaml < Package
   description 'LibYAML is a YAML parser and emitter library.'
   homepage 'https://pyyaml.org/wiki/LibYAML'
   version '0.2.5'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz'
   source_sha256 'c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4'

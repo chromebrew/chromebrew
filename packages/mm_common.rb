@@ -5,6 +5,7 @@ class Mm_common < Package
   homepage 'http://www.gtkmm.org/'
   @_ver = '1.0.2'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/GNOME/mm-common/archive/#{@_ver}.tar.gz"
   source_sha256 'd4a85f5bc4ec160c6f4120fd31bcf37041271d7a699b506bc368df57b0e2434c'

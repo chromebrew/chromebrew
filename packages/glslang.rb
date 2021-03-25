@@ -7,6 +7,7 @@ class Glslang < Package
   description 'OpenGL and OpenGL ES shader front end and validator'
   homepage 'https://github.com/KhronosGroup/glslang'
   version '8.13.3743'
+  license 'BSD-3, MIT, BSD-2, Apache-2.0 and NVIDIA'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/glslang/archive/8.13.3743.tar.gz'
   source_sha256 '639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f'

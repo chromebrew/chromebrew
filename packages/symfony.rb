@@ -4,6 +4,7 @@ class Symfony < Package
   description 'Symfony is a set of PHP Components, a Web Application framework'
   homepage 'https://symfony.com/'
   version '4.22.0'
+  license 'Symfony-cli-EULA'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -23,7 +24,7 @@ class Symfony < Package
       sha256 = '99cb1834bba250ccfaf0ad0689c124977d36ae03a7805d78e36c79b8da0da118'
     end
     symfony_file = "symfony_linux_#{arch}"
-    system "wget https://github.com/symfony/cli/releases/download/v#{version}/#{symfony_file}"
+    system "curl -#LO https://github.com/symfony/cli/releases/download/v#{version}/#{symfony_file}"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(symfony_file) ) == sha256
     system "install -Dm755 #{symfony_file} #{CREW_DEST_PREFIX}/bin/symfony"
   end

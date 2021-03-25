@@ -5,6 +5,7 @@ class Rav1e < Package
   homepage 'https://github.com/xiph/rav1e/'
   @_ver = '0.5.0-alpha'
   version @_ver
+  license 'BSD-2, Apache-2.0, MIT and Unlicense'
   compatibility 'all'
   source_url "https://github.com/xiph/rav1e/archive/v#{@_ver}.tar.gz"
   source_sha256 'fd884fa387d01860eaf22a0a97353525221eb32bf6b9154bbfa21b6cce5988c8'

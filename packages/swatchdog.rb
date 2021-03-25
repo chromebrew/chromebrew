@@ -4,6 +4,7 @@ class Swatchdog < Package
   description 'The "simple watchdog" for activity monitoring log files produced by UNIX\'s syslog facility.'
   homepage 'http://swatch.sourceforge.net/'
   version '3.2.4-1'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/swatch/swatchdog/swatchdog-3.2.4.tar.gz'
   source_sha256 '5bb644d3750ee89b9aecab797df66b28b9fd174a5f0f96cd62367af8975b4f63'

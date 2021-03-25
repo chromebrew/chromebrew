@@ -5,6 +5,7 @@ class Libssh2 < Package
   homepage 'https://www.libssh2.org/'
   @_ver = '1.9.0'
   version @_ver + '-3'
+  license 'BSD'
   compatibility 'all'
   source_url "https://www.libssh2.org/download/libssh2-#{@_ver}.tar.gz"
   source_sha256 'd5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd'

@@ -4,6 +4,7 @@ class Openjpeg < Package
   description 'An open source JPEG 2000 codec, written in C.'
   homepage 'https://github.com/uclouvain/openjpeg'
   version '2.4.0'
+  license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/uclouvain/openjpeg/archive/v2.4.0.tar.gz'
   source_sha256 '8702ba68b442657f11aaeb2b338443ca8d5fb95b0d845757968a7be31ef7f16d'

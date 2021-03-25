@@ -4,6 +4,7 @@ class Perl_term_readkey < Package
   description 'Term::ReadKey - A perl module for simple terminal control'
   homepage 'https://metacpan.org/pod/Term::ReadKey'
   version '2.38'
+  license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/J/JS/JSTOWE/TermReadKey-2.38.tar.gz'
   source_sha256 '5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290'

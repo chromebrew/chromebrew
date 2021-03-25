@@ -5,6 +5,7 @@ class Xorg_server < Package
   homepage 'https://www.x.org'
   @_ver = '1.20.10'
   version "#{@_ver}-1"
+  license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
   source_url "https://github.com/freedesktop/xorg-xserver/archive/xorg-server-#{@_ver}.tar.gz"
   source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'

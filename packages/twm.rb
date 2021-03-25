@@ -2,8 +2,9 @@ require 'package'
 
 class Twm < Package
   description 'The twm package contains a very minimal window manager.'
-  homepage 'http://www.linuxfromscratch.org/blfs/view/svn/x/twm.html'
+  homepage 'https://xorg.freedesktop.org/'
   version '1.0.11'
+  license 'MIT-with-advertising, MIT and ISC'
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/app/twm-1.0.11.tar.xz'
   source_sha256 'f4e8a842dec410e79741f25ed4dfac09df080835d0bba2e3983b5914569b68c7'

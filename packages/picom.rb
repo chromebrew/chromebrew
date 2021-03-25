@@ -4,6 +4,7 @@ class Picom < Package
   description 'Lightweight compositor for X11 (previously a compton fork)'
   homepage 'https://github.com/yshui/picom/'
   version '8'
+  license 'MPL-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/yshui/picom/archive/v8.tar.gz'
   source_sha256 'f839a3c058ca90f463eae3973a9381cf2fe93be7d0e58db1c28ea72acd10480f'

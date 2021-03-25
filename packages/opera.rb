@@ -1,9 +1,10 @@
 require 'package'
 
 class Opera < Package
-  description "Opera isn't just a browser. It's an awesome browser."
+  description "Opera is a multi-platform web browser based on Chromium and developed by Opera Software."
   homepage 'https://www.opera.com/'
   version '74.0.3911.160'
+  license 'OPERA-2018'
   compatibility 'x86_64'
 
   if ARCH == 'x86_64'
@@ -20,18 +21,18 @@ class Opera < Package
   def self.install
     # llvm-strip doesn't works with opera
     ENV['CREW_NOT_STRIP'] = '1'
-    
+
     # since opera put the executable to library, we need to link it to CREW_PREFIX
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/opera/opera", 'bin/opera'
-      
+
     # place all stuff to lib64 instead of lib
     FileUtils.mv 'lib/x86_64-linux-gnu/', 'share/'
     FileUtils.rm_rf 'lib/'
-    
+
     FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.mv Dir.glob('*'), CREW_DEST_PREFIX
   end
-  
+
   def self.postinstall
     puts
     puts 'Set Opera as your default browser? [Y/n]: '
@@ -49,6 +50,6 @@ class Opera < Package
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
       FileUtils.rm 'x-www-browser' if File.realpath('x-www-browser') == "#{CREW_LIB_PREFIX}/opera/opera"
-    end    
+    end
   end
 end

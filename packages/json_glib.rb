@@ -4,6 +4,7 @@ class Json_glib < Package
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
   homepage 'https://wiki.gnome.org/Projects/JsonGlib'
   version '1.6.2'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://download.gnome.org/core/40/40.beta/sources/json-glib-1.6.2.tar.xz'
   source_sha256 'a33d66c6d038bda46b910c6c6d59c4e15db014e363dc997a0414c2e07d134f24'
@@ -32,7 +33,7 @@ class Json_glib < Package
     system 'ninja -C builddir'
   end
 
-  # Ticket opened at 
+  # Ticket opened at
   # https://gitlab.gnome.org/GNOME/json-glib/-/issues/59
   # def self.check
   # system 'ninja test -C builddir'

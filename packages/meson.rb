@@ -5,12 +5,13 @@ class Meson < Package
   homepage 'http://mesonbuild.com/'
   @_ver = '0.57.1'
   version @_ver
+  license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/mesonbuild/meson/archive/#{@_ver}.tar.gz"
   source_sha256 '0c043c9b5350e9087cd4f6becf6c0d10b1d618ca3f919e0dcca2cdf342360d5d'
 
   depends_on 'ninja'
-  
+
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.57.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/meson-0.57.1-chromeos-armv7l.tar.xz',

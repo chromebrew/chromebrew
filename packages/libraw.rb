@@ -4,6 +4,7 @@ class Libraw < Package
   description 'Raw image decoder library'
   homepage 'https://www.libraw.org'
   version '0.19.5'
+  license 'LGPL-2.1 and CDDL'
   compatibility 'all'
   source_url 'https://www.libraw.org/data/LibRaw-0.19.5.tar.gz'
   source_sha256 '40a262d7cc71702711a0faec106118ee004f86c86cc228281d12d16da03e02f5'

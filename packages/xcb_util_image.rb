@@ -4,6 +4,7 @@ class Xcb_util_image < Package
   description 'The xcb-util-image package provides additional extensions to the XCB library.'
   homepage 'http://xcb.freedesktop.org'
   version '0.4.0'
+  license 'MIT-with-advertising'
   compatibility 'all'
   source_url 'https://xcb.freedesktop.org/dist/xcb-util-image-0.4.0.tar.bz2'
   source_sha256 '2db96a37d78831d643538dd1b595d7d712e04bdccf8896a5e18ce0f398ea2ffc'

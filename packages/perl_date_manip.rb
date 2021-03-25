@@ -4,6 +4,7 @@ class Perl_date_manip < Package
   description 'Date manipulation routines'
   homepage 'https://metacpan.org/pod/Date::Manip'
   version '6.82'
+  license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBECK/Date-Manip-6.82.tar.gz'
   source_sha256 'fa96bcf94c6b4b7d3333f073f5d0faad59f546e5aec13ac01718f2e6ef14672a'

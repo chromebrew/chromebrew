@@ -4,22 +4,23 @@ class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
   @_ver = '4.3.2'
-  version @_ver
+  version "#{@_ver}-1"
+  license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is stil accurate,
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '1db43d0c9a06a9b1d5974635aa393a49c98f70d4e5efe2ca9e03711b334e83ea',
-     armv7l: '1db43d0c9a06a9b1d5974635aa393a49c98f70d4e5efe2ca9e03711b334e83ea',
-       i686: 'b98609042769bcb508cef9c9848a31cb43b0ca69092996fc9542f25834fefe36',
-     x86_64: 'b2143b516399e780184f52be821ad40644443d037d30d4e444342e8d1182c34f'
+    aarch64: '085808a1a7840dc8939d7b2740671e0e1e4927494c2bcf573b88f0b60b93cfff',
+     armv7l: '085808a1a7840dc8939d7b2740671e0e1e4927494c2bcf573b88f0b60b93cfff',
+       i686: '9b07e143d3cc679f9888260a8b392611c4c7f88aacf2adc668c3e47ce6232369',
+     x86_64: 'a8ef187fe830505b2a7240db4efe39dddcababf9df3ae94add3918b722fb9622'
   })
 
   depends_on 'alsa_lib'
@@ -31,7 +32,7 @@ class Ffmpeg < Package
   depends_on 'freetype'
   depends_on 'fribidi'
   depends_on 'gsm'
-  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive? # This provides libmfx for x86_64
+  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
   depends_on 'jack'
   depends_on 'ladspa'
   depends_on 'libaom'
@@ -70,6 +71,7 @@ class Ffmpeg < Package
   depends_on 'nasm' => :build
   depends_on 'openal'
   depends_on 'openjpeg'
+  depends_on 'pipewire'
   depends_on 'pulseaudio'
   depends_on 'rav1e'
   depends_on 'rubberband'
@@ -85,7 +87,6 @@ class Ffmpeg < Package
   depends_on 'zeromq'
   depends_on 'zimg'
   depends_on 'zvbi'
-
 
   def self.build
     case ARCH
@@ -120,7 +121,7 @@ class Ffmpeg < Package
         +++ b/libavfilter/vf_libvmaf.c
         @@ -72,7 +72,7 @@ typedef struct LIBVMAFContext {
          #define FLAGS AV_OPT_FLAG_FILTERING_PARAM|AV_OPT_FLAG_VIDEO_PARAM
-         
+
          static const AVOption libvmaf_options[] = {
         -    {"model_path",  "Set the model to be used for computing vmaf.",                     OFFSET(model_path), AV_OPT_TYPE_STRING, {.str="/usr/local/share/model/vmaf_v0.6.1.pkl"}, 0, 1, FLAGS},
         +    {"model_path",  "Set the model to be used for computing vmaf.",                     OFFSET(model_path), AV_OPT_TYPE_STRING, {.str="/usr/share/model/vmaf_v0.6.1.pkl"}, 0, 1, FLAGS},
@@ -211,7 +212,7 @@ class Ffmpeg < Package
   def self.install
     Dir.chdir @git_dir do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0755
+      FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
     end
   end
 end

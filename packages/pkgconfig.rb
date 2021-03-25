@@ -4,6 +4,7 @@ class Pkgconfig < Package
   description 'pkg-config is a helper tool used when compiling applications and libraries.'
   homepage 'https://gitlab.freedesktop.org/pkg-config/pkg-config'
   version '0.29.2-d97d'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pkg-config/pkg-config/-/archive/d97db4fae4c1cd099b506970b285dc2afd818ea2/pkg-config-d97db4fae4c1cd099b506970b285dc2afd818ea2.tar.bz2'
   source_sha256 'beeeb23b4581241517e45e57d901459022376c3143f415fac1a1216d583b1796'

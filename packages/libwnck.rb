@@ -4,6 +4,7 @@ class Libwnck < Package
   description 'Library for layout and rendering of text'
   homepage 'http://www.gnome.org/'
   version '3.32.0'
+  license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libwnck/3.32/libwnck-3.32.0.tar.xz'
   source_sha256 '9595835cf28d0fc6af5526a18f77f2fcf3ca8c09e36741bb33915b6e69b8e3ca'

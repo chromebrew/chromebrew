@@ -5,6 +5,7 @@ class Gdbm < Package
   homepage 'https://www.gnu.org/software/gdbm/'
   @_ver = '1.19'
   version @_ver
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{@_ver}.tar.gz"
   source_sha256 '37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc'

@@ -4,6 +4,7 @@ class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
   version '10.2.1-0f64'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc/archive/0f64123bde80a37c8d9aced69405e71848a23b95.zip'
   source_sha256 '87f1b3344db6cdcb7295e63c031e00f2c7755c2656cf9603aeb32cf5a5539ec7'
@@ -22,7 +23,7 @@ class Gcc10 < Package
   })
 
   depends_on 'unzip' => :build
-  depends_on 'gawk' => :build
+  depends_on 'mawk' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'icu4c' => :build
   depends_on 'python27' => :build

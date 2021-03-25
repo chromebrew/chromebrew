@@ -4,6 +4,7 @@ class Jdk11 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/javase-jdk11-downloads.html'
   version '11.0.10'
+  license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

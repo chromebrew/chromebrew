@@ -5,6 +5,7 @@ class Gmmlib < Package
   homepage 'https://github.com/intel/gmmlib/'
   @_ver = '20.4.1'
   version @_ver
+  license 'MIT'
   compatibility 'i686 x86_64'
   case ARCH
   when 'i686', 'x86_64'

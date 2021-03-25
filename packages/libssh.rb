@@ -5,6 +5,7 @@ class Libssh < Package
   homepage 'https://www.libssh.org/'
   @_ver = '0.9.5'
   version "#{@_ver}-1"
+  license 'LGPL-2.1'
   compatibility 'all'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   source_url "https://www.libssh.org/files/#{@_ver_prelastdot}/libssh-#{@_ver}.tar.xz"

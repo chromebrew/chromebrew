@@ -5,6 +5,7 @@ class Libxcrypt < Package
   homepage 'https://github.com/besser82/libxcrypt/'
   @_ver = '4.4.18'
   version @_ver
+  license 'LGPL-2.1+, public-domain, BSD and BSD-2'
   compatibility 'all'
   source_url "https://github.com/besser82/libxcrypt/archive/v#{@_ver}.tar.gz"
   source_sha256 '3801f0263a8596b15ec466343fc1fdc4ad4ec7416c51e038a3528fd47f3be01a'

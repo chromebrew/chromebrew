@@ -3,16 +3,17 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  compatibility 'x86_64'
   @_ver = '10.0.13'
   version @_ver
+  license 'BSD, custom, MPL-2.0 and MIT'
+  compatibility 'x86_64'
 
   case ARCH
   when 'x86_64'
     @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}"
     @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
     source_url "#{@_url}/#{@_name}"
-    source_sha256 `curl -Ls '#{@_url}/sha256sums-signed-build.txt' | grep '#{@_name}' | cut -d' ' -f1`.chomp
+    source_sha256 `curl -#L '#{@_url}/sha256sums-signed-build.txt' | grep '#{@_name}' | cut -d' ' -f1`.chomp
     depends_on 'gtk3'
     depends_on 'sommelier'
   end
@@ -46,15 +47,15 @@ class Torbrowser < Package
       puts 'No change has been made.'
       puts
     end
-    
+
     puts
     puts "Type 'tor' to get started.".lightblue
     puts
   end
-  
+
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
       FileUtils.rm 'x-www-browser' if File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
-    end    
+    end
   end
 end

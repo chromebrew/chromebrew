@@ -5,6 +5,7 @@ class Qtbase < Package
   homepage 'https://code.qt.io/cgit/qt/qtbase'
   @_ver = '5.15.2'
   version @_ver + '-1'
+  license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

@@ -4,6 +4,7 @@ class Exo < Package
   description 'Extension library for the Xfce desktop environment'
   homepage 'https://xfce.org/'
   version '4.16.0'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url "https://archive.xfce.org/src/xfce/exo/4.16/exo-#{version}.tar.bz2"
   source_sha256 '1975b00eed9a8aa1f899eab2efaea593731c19138b83fdff2f13bdca5275bacc'

@@ -4,8 +4,9 @@ class Skype < Package
   description 'Skype is a telecommunications application that specializes in providing video chat and voice calls between devices'
   homepage 'https://www.skype.com/'
   version '8.69.76.76'
+  license 'Skype-TOS'
   compatibility 'x86_64'
-  
+
   if ARCH == 'x86_64' then
     depends_on 'gtk3'
     depends_on 'sommelier'
@@ -16,7 +17,7 @@ class Skype < Package
   def self.preinstall
     FileUtils.ln_s "#{CREW_PREFIX}/bin/skypeforlinux", 'usr/bin/skype'
   end
-  
+
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.mv Dir.glob('usr/*'), CREW_DEST_PREFIX

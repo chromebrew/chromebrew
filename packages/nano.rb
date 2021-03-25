@@ -5,6 +5,7 @@ class Nano < Package
   homepage 'https://www.nano-editor.org/'
   @_ver = '5.6'
   version @_ver
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://nano-editor.org/dist/v5/nano-#{@_ver}.tar.xz"
   source_sha256 'fce183e4a7034d07d219c79aa2f579005d1fd49f156db6e50f53543a87637a32'

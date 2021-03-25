@@ -5,6 +5,7 @@ class Gst_plugins_base < Package
   homepage 'https://gstreamer.freedesktop.org/modules/gst-plugins-base.html'
   @_ver = '1.18.3'
   version @_ver
+  license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
   source_url "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-#{@_ver}.tar.xz"
   source_sha256 'dbfa20283848f0347a223dd8523dfb62e09e5220b21b1d157a8b0c8b67ba9f52'

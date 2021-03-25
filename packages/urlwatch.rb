@@ -4,6 +4,7 @@ class Urlwatch < Package
   description 'A tool for monitoring webpages for updates'
   homepage 'https://thp.io/2008/urlwatch/'
   version '2.7-1'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/thp/urlwatch/archive/2.7.tar.gz'
   source_sha256 '0a7b46d161501463dda99a1d82daf00237e2627616beaa6ccbf04d6c70c68ded'

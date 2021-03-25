@@ -4,6 +4,7 @@ class Gtk2 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
   version '2.24.33'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz'
   source_sha256 'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'

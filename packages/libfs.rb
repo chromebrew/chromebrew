@@ -3,6 +3,7 @@ require 'package'
 class Libfs < Package
   description 'X.org library interface to the X Font Server.'
   homepage 'http://www.x.org'
+  license 'custom'
   version '1.0.7-0'
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libFS-1.0.7.tar.gz'

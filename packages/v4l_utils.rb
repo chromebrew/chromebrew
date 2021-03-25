@@ -5,6 +5,7 @@ class V4l_utils < Package
   homepage 'https://www.linuxtv.org/wiki/index.php/V4l-utils'
   @_ver = '1.20.0'
   version @_ver
+  license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://linuxtv.org/downloads/v4l-utils/v4l-utils-#{@_ver}.tar.bz2"
   source_sha256 '956118713f7ccb405c55c7088a6a2490c32d54300dd9a30d8d5008c28d3726f7'

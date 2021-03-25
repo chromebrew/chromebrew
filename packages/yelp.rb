@@ -3,43 +3,49 @@ require 'package'
 class Yelp < Package
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
-  @_ver = '40.beta'
+  @_ver = '40.0'
   version @_ver
+  license 'GPL-2+'
   compatibility 'all'
-  source_url "https://github.com/GNOME/yelp/archive/#{@_ver}.tar.gz"
-  source_sha256 '7e4716182f368be298c0cf8c6963c2731a21b8def17612b5b05f36230747e6dd'
+  source_url "https://gitlab.gnome.org/GNOME/yelp/-/archive/#{@_ver}/yelp-#{@_ver}.tar.bz2"
+  source_sha256 'ec640d7a56970ab3ac6283d6c3a90ae45b7676c739671b303cbfb2f4323bf7af'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.beta-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.beta-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '9adf9c294d016bb777e5e9cfff6a38edc44ee26fd6b68900db05df01e7f63ad0',
-     armv7l: '9adf9c294d016bb777e5e9cfff6a38edc44ee26fd6b68900db05df01e7f63ad0',
-       i686: 'a84bde1a08b64269c8a29f70538c869bb8fa8a7890df74b2a0535063279310a5',
-     x86_64: 'e0c245e4c2683219ba37118040a1c2dfc60e71a4d45a21aa611633291f0e1121'
+    aarch64: '021a5a25255e9bd5c5f44fe170abc70bb18ecd6b72a5a312da295c1c2831420b',
+     armv7l: '021a5a25255e9bd5c5f44fe170abc70bb18ecd6b72a5a312da295c1c2831420b',
+       i686: '7425444ffefcb107ac34fb8d8bb12d0a3117e7aaae83f44f938ba37a732e7a8d',
+     x86_64: '33ef261b6056265b6fa65b81c3fef50f8c5792f7e70ace0639d65f453a7f2f69'
   })
 
+  depends_on 'appstream_glib'
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gtk3'
+  depends_on 'harfbuzz'
+  depends_on 'libsoup2'
+  depends_on 'libxslt'
+  depends_on 'pango'
   depends_on 'webkit2gtk'
   depends_on 'yelp_xsl'
-  depends_on 'libxslt'
-  depends_on 'appstream_glib'
-
   depends_on 'gtk_doc' => ':build'
   depends_on 'itstool' => ':build'
   depends_on 'xorg_server' => ':build'
 
   def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
     ./configure #{CREW_OPTIONS} \
     --enable-compile-warnings=minimum \
     --enable-debug=no \
     --disable-dependency-tracking"
-    # Documentation generation segfaults without X11"
-    # system "xvfb-run -s '-screen 0 1920x1080x24 -nolisten local' make"
     system 'make'
   end
 

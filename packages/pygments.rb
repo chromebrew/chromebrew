@@ -4,6 +4,7 @@ class Pygments < Package
   description 'Python Syntax Highlighter'
   homepage 'https://pygments.org/'
   version '2.8.0'
+  license 'BSD'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -22,11 +23,11 @@ class Pygments < Package
   })
 
   def self.install
-    system 'pip3 uninstall -y pygments'
-    system "pip3 install --upgrade --no-warn-script-location pygments --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system 'pip uninstall -y pygments'
+    system "pip install --upgrade --no-warn-script-location pygments --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
   end
 
   def self.postinstall
-    system 'pip3 install --upgrade pygments'
+    system 'pip install --upgrade pygments'
   end
 end

@@ -4,6 +4,7 @@ class Gnuchess < Package
   description 'GNU Chess is a chess-playing program.'
   homepage 'https://www.gnu.org/software/chess/'
   version '6.2.7'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/chess/gnuchess-6.2.7.tar.gz'
   source_sha256 'e536675a61abe82e61b919f6b786755441d9fcd4c21e1c82fb9e5340dd229846'

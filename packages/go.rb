@@ -5,6 +5,7 @@ class Go < Package
   homepage 'https://golang.org/'
   @_ver = '1.16'
   version @_ver
+  license 'BSD'
   compatibility 'all'
   source_url "https://dl.google.com/go/go#{@_ver}.src.tar.gz"
   source_sha256 '7688063d55656105898f323d90a79a39c378d86fe89ae192eb3b7fc46347c95a'

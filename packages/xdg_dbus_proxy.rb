@@ -4,6 +4,7 @@ class Xdg_dbus_proxy < Package
   description 'xdg-dbus-proxy is a filtering proxy for D-Bus connections.'
   homepage 'https://github.com/flatpak/xdg-dbus-proxy'
   version '0.1.2'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.2/xdg-dbus-proxy-0.1.2.tar.xz'
   source_sha256 '1749d6f9f46dcc9edc87725641cf56cf91dcad1b01707891ea0850c1000c520f'

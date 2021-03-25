@@ -3,23 +3,24 @@ require 'package'
 class Libhandy < Package
   description 'The aim of the handy library is to help with developing UI for mobile devices using GTK/GNOME.'
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
-  @_ver = '1.1.90'
+  @_ver = '1.2.0'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libhandy/-/archive/#{@_ver}/libhandy-#{@_ver}.tar.bz2"
-  source_sha256 '6ddac98a287e4e9b31e3ec3d72dae756c4ef6e12f3b1150db7ec2ee339750bde'
+  source_sha256 'b2e08210a6b0c6b08e6c46848024cbcf44973e40377a1373d7cbb0bde7131b56'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.1.90-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.1.90-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.1.90-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.1.90-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '55c875283be39533c6683a967e1857ad844c4e8cdf6d638852118ba8e2b61d16',
-     armv7l: '55c875283be39533c6683a967e1857ad844c4e8cdf6d638852118ba8e2b61d16',
-       i686: '5cba24d72415faa55c8064c0693ad79051ad88545d9b55b2ad2f5deede171921',
-     x86_64: '89e363e201acb5c7040ceb5f4b34d0800996816c3559059b8a8abb0b3d341b38'
+    aarch64: '402449264e9ba6e35d2346fb0f3b5999c404281d73d60dfb4aa953c8e017b93b',
+     armv7l: '402449264e9ba6e35d2346fb0f3b5999c404281d73d60dfb4aa953c8e017b93b',
+       i686: '599fbe3faa80ca1ac1666bb49576624c5d667b56582df727a73613d29d0537ff',
+     x86_64: 'a611807332097568b87cf04af35042940c505e693e5b6970969b93634fd7db0f'
   })
 
   depends_on 'vala'

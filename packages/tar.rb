@@ -4,6 +4,7 @@ class Tar < Package
   description 'GNU Tar provides the ability to create tar archives, as well as various other kinds of manipulation.'
   homepage 'https://www.gnu.org/software/tar/'
   version '1.33'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/tar/tar-1.33.tar.xz'
   source_sha256 '66a8344b1dc83a411d311bd1547e0176e56cc311f28ee94a30f84dafb3d9067e'

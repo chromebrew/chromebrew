@@ -6,6 +6,7 @@ class Gexiv2 < Package
   @_ver = '0.12.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'LGPL-2.1+ and GPL-2'
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gexiv2/#{@_ver_prelastdot}/gexiv2-#{@_ver}.tar.xz"
   source_sha256 '2322b552aca330eef79724a699c51a302345d5e074738578b398b7f2ff97944c'

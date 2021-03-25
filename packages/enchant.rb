@@ -5,6 +5,7 @@ class Enchant < Package
   homepage 'https://abiword.github.io/enchant/'
   @_ver = '2.2.15'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/AbiWord/enchant/archive/v#{@_ver}.tar.gz"
   source_sha256 '85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d'

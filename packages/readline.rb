@@ -5,6 +5,7 @@ class Readline < Package
   homepage 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
   @_ver = '8.1'
   version "#{@_ver}-1"
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://gnu.askapache.com/readline/readline-#{@_ver}.tar.gz"
   source_sha256 'f8ceb4ee131e3232226a17f51b164afc46cd0b9e6cef344be87c65962cb82b02'

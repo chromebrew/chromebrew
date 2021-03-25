@@ -4,6 +4,7 @@ class Xorg_vmmouse_driver < Package
   description 'The Xorg VMMouse Driver package contains the VMMouse input driver for the Xorg X server. The VMMouse driver enables support for the special VMMouse protocol that is provided by VMware virtual machines to give absolute pointer positioning.'
   homepage 'https://www.x.org'
   version '13.1.0'
+  license 'MIT-with-advertising and ISC'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

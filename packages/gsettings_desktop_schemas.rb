@@ -3,22 +3,24 @@ require 'package'
 class Gsettings_desktop_schemas < Package
   description 'Collection of GSettings schemas for GNOME desktop.'
   homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
-  version '40.beta'
+  @_ver = '40.0'
+  version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/gsettings-desktop-schemas/archive/40.beta.tar.gz'
-  source_sha256 '885170738e15afe1a4dc60b2b9c006fce37e2b220f26ecf35f13fec8ef84657e'
+  source_url "https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/archive/#{@_ver}/gsettings-desktop-schemas-#{@_ver}.tar.bz2"
+  source_sha256 'ce1d57e98ba6e460f9764e4a48a28ebe1866423e54c1eeceff6a3c90feb41bc6'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.beta-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.beta-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'eae7ad09c2366645c76c215ed299ee7094de9312ba0cde263ad2f55c9a2a3dda',
-     armv7l: 'eae7ad09c2366645c76c215ed299ee7094de9312ba0cde263ad2f55c9a2a3dda',
-       i686: '3dcde7b6d32af1899840ced478120c06fe681274d618fa933fbc32c088468e1b',
-     x86_64: '2707ac29a96c529759e7ac6a46725f1b474c0aca2c5dcab59372ec9d8429e16d'
+    aarch64: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',
+     armv7l: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',
+       i686: '1e109b5a0d7bb4fbe8e81135835a3916acc0b6a73b18c837df16e11e87ef1d48',
+     x86_64: 'dc5237b94506cbf20080be7d1af759053dbdabde617329f08714a849eb4fc7c3'
   })
 
   depends_on 'gnome_common'

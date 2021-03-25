@@ -5,6 +5,7 @@ class Wget < Package
   homepage 'https://www.gnu.org/software/wget/'
   @_ver = '1.21.1'
   version "#{@_ver}-1"
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/wget/wget-#{@_ver}.tar.lz"
   source_sha256 'db9bbe5347e6faa06fc78805eeb808b268979455ead9003a608569c9d4fc90ad'
@@ -28,7 +29,7 @@ class Wget < Package
   depends_on 'libmetalink'
   depends_on 'pcre2'
   depends_on 'ca_certificates'
-  
+
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 

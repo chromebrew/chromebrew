@@ -3,12 +3,14 @@ require 'package'
 class Gcalculator < Package
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
-  compatibility 'all'
   @_app = 'gnome-calculator'
-  @_ver = '3.38.2'
-  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_ver.rpartition('.')[0]}/#{@_app}-#{@_ver}"
-  version @_ver + '-1'
-  source_url @_url + '.tar.xz'
+  @_fullver = '3.38.2'
+  @_mainver = @_fullver.rpartition('.')[0]
+  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
+  version @_fullver
+  license 'LGPL-2.1+'
+  compatibility 'all'
+  source_url "#{@_url}.tar.xz"
 
   depends_on 'setuptools' => :build
   depends_on 'gtk3'

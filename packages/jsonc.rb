@@ -2,8 +2,9 @@ require 'package'
 
 class Jsonc < Package
   description 'JSON-C implements a reference counting object model that allows you to easily construct JSON objects in C, output them as JSON formatted strings and parse JSON formatted strings back into the C representation of JSON objects.'
-  homepage 'https://github.com/json-c/json-c/wiki'
+  homepage 'https://github.com/json-c/json-c'
   version '0.13.1-20180305-1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/json-c/json-c/archive/json-c-0.13.1-20180305.tar.gz'
   source_sha256 '5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90'

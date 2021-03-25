@@ -4,6 +4,7 @@ class Irrlicht < Package
   description 'An open source realtime 3D engine written in C++ — Libraries and headers'
   homepage 'http://irrlicht.sourceforge.net/'
   version '1.8.4'
+  license 'ZLIB'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip'
   source_sha256 'f42b280bc608e545b820206fe2a999c55f290de5c7509a02bdbeeccc1bf9e433'
@@ -20,14 +21,14 @@ class Irrlicht < Package
        i686: '33c6fe1559e924ef6c3ebe75d9bcf5b27d419fe6d31c6989cec84637cd586c93',
      x86_64: 'cad40fccc5ca753ff9d2044bfc720e2d00f775d58691401771eaa731076e4651',
   })
-  
+
   depends_on 'libxrandr'
   depends_on 'libglvnd'
   depends_on 'libxxf86vm'
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'dos2unix' => :build
-  
+
   def self.patch
     system "curl -#LO https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2"
     @sha256sums = <<~EOF
@@ -46,7 +47,7 @@ class Irrlicht < Package
       sed -i 's:-L/usr/X11R6/lib\$(LIBSELECT):-L/usr/local/X11R6/lib\$(LIBSELECT):g' \$m; \
       sed -i 's:-I/usr/include:-I#{CREW_PREFIX}/include:g' \$m; done"
   end
-  
+
   def self.build
     Dir.chdir 'source/Irrlicht' do
       system 'make sharedlib staticlib'

@@ -3,22 +3,23 @@ require 'package'
 class Dconf_editor < Package
   description 'A graphical viewer and editor of applications internal settings.'
   homepage 'https://wiki.gnome.org/Apps/DconfEditor'
-  version '3.38.2'
+  version '3.38.3'
+  license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/dconf-editor/3.38/dconf-editor-3.38.2.tar.xz'
-  source_sha256 '1253dad87e6213fbf313ff9ec9dc4358aa1b10261f28072c1dc0e0997b92f835'
+  source_url "https://gitlab.gnome.org/GNOME/dconf-editor/-/archive/#{version}/dconf-editor-#{version}.tar.bz2"
+  source_sha256 '558408f2abac1129cd010be17db7df3b976d51206b17df603ee7aae4d0f6dd52'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '8bfd917985fb8c86527f8ff364b76c8187e5512871056e9b2ea7c920020284c0',
-     armv7l: '8bfd917985fb8c86527f8ff364b76c8187e5512871056e9b2ea7c920020284c0',
-       i686: 'b64e5b7c35b406b80f6da0a2f17d2367030f3c32112956b4b08985113cad066a',
-     x86_64: 'c830d27b810f93efc7990127f39743b34e9599835832a061a41a6055f1f107f5',
+  binary_sha256({
+    aarch64: 'a54f46627b350bd3af6c5430e1a7d73a8318a33c132802d7898795156cb0f954',
+     armv7l: 'a54f46627b350bd3af6c5430e1a7d73a8318a33c132802d7898795156cb0f954',
+       i686: '094ab1f041159d42988818c3c4f2386e7839605c1cf542060d95e76d1c5268c8',
+     x86_64: '7467194d01f384f5dfcff57e190c5df92bef0e35be0a2fd257bb9255f3683cc4'
   })
 
   depends_on 'dconf'
@@ -29,7 +30,7 @@ class Dconf_editor < Package
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
             builddir"
-    system "ninja -C builddir"
+    system 'ninja -C builddir'
   end
 
   def self.install
@@ -37,6 +38,10 @@ class Dconf_editor < Package
   end
 
   def self.check
-    system "ninja -C builddir test"
+    system 'ninja -C builddir test'
+  end
+  
+  def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end

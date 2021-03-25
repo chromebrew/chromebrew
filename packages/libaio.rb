@@ -5,6 +5,7 @@ class Libaio < Package
   homepage 'https://pagure.io/libaio'
   @_ver = '0.3.112'
   version @_ver
+  license 'LGPL-2'
   compatibility 'all'
   source_url "https://pagure.io/libaio/archive/libaio-#{@_ver}/libaio-libaio-#{@_ver}.tar.gz"
   source_sha256 'b7cf93b29bbfb354213a0e8c0e82dfcf4e776157940d894750528714a0af2272'
