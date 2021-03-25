@@ -4,10 +4,9 @@ class Gcalculator < Package
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
   @_app = 'gnome-calculator'
-  @_fullver = '3.38.2'
-  @_mainver = @_fullver.rpartition('.')[0]
-  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
-  version @_fullver
+  @_ver = '3.38.2'
+  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_ver.rpartition('.')[0]}/#{@_app}-#{@_ver}"
+  version @_ver + '-1'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "#{@_url}.tar.xz"
