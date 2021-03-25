@@ -3,71 +3,53 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  @_ver = '0.3.22'
+  @_ver = '0.3.24'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/PipeWire/pipewire/archive/#{@_ver}.tar.gz"
-  source_sha256 '5db2caf41af79cd9e343d07a3804c63b8b243c1d74e926181058e29771d4b691'
+  source_sha256 'aeca2b44660c4f36eed29cc9c6ccb093ea2778fd0e4ed7665cdfc40b2a49873f'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '8641411382ca539208681a9fcc0e4c4449c317020c28a7f95a1b4d3fee6a04a4',
-      armv7l: '8641411382ca539208681a9fcc0e4c4449c317020c28a7f95a1b4d3fee6a04a4',
-        i686: 'd8d093f9cabf7881daaa746af3c7d0a44604c55caf732272a04817b8593bf2ba',
-      x86_64: 'af44f8765b24d423555db5ac00324c8c73c597144af404a28551bbcae595a405',
+  binary_sha256({
+    aarch64: '008b5f294106edf2a3c02e682a127dc2e89e246e697dc73d642f374aeb241c80',
+     armv7l: '008b5f294106edf2a3c02e682a127dc2e89e246e697dc73d642f374aeb241c80',
+       i686: '547acc0cc83406d33343111580906e888e665e1343f3a208d1e65990f5f264d7',
+     x86_64: '01a5b2a919a8e28ab8bd429c95f91a51897c6e04e68821328f8ee56055d75657'
   })
 
-
-  depends_on 'gsettings_desktop_schemas'
+  depends_on 'alsa_lib'
   depends_on 'alsa_plugins' => :build
+  depends_on 'dbus'
+  depends_on 'eudev'
+  depends_on 'glib'
+  depends_on 'gsettings_desktop_schemas'
   depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
-  depends_on 'jack'
-  depends_on 'eudev'
-  depends_on 'vulkan_headers'
-  depends_on 'mesa'
+  depends_on 'jack' => :build
+  depends_on 'libsndfile'
+  depends_on 'vulkan_headers' => :build
 
   def self.patch
-    case ARCH
-    when 'i686'
-      # Patch from https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/9f53057b51c9d7ce68c240c21b459dc0b7d6acaf
-      # getrandom was introduced to glibc 2.25, and i686 has 2.23.
-      @getrandom_freebsd = <<~'GETRANDOM_FREEBSD_EOF'
-        #include <sys/param.h>
-        #include <fcntl.h>
-        ssize_t getrandom(void *buf, size_t buflen, unsigned int flags) {
-          int fd = open("/dev/random", O_CLOEXEC);
-          if (fd < 0)
-            return -1;
-          ssize_t bytes = read(fd, buf, buflen);
-          close(fd);
-          return bytes;
-        }
-      GETRANDOM_FREEBSD_EOF
-      IO.write('getrandom.c', @getrandom_freebsd)
-      system "sed -i '/random.h/ r getrandom.c' src/pipewire/impl-core.c"
-      system "sed -i '/random.h/d' src/pipewire/impl-core.c"
-    end
+    # As per https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/833
+    system "sed -i 's/ifdef __FreeBSD__/if defined(__FreeBSD__) || defined(__linux__)/g' src/pipewire/impl-core.c"
   end
 
   def self.build
     system "meson \
       #{CREW_MESON_LTO_OPTIONS} \
-      -Dbluez5=false \
-      -Dbluez5-backend-native=false \
-      -Dbluez5-backend-ofono=false \
-      -Dbluez5-backend-hsphfpd=false \
-      -Dvulkan=true \
-      -Dv4l2=false \
-      -Dexamples=false \
+      -Dbluez5-backend-hsphfpd=disabled \
+      -Dbluez5-backend-ofono=disabled \
+      -Dbluez5=disabled \
+      -Dexamples=disabled \
       -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d \
-      -Dvolume=true \
+      -Dv4l2=disabled \
+      -Dvolume=auto \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
