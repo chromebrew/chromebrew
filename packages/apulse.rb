@@ -3,7 +3,7 @@ require 'package'
 class Apulse < Package
   description 'PulseAudio emulation for ALSA'
   homepage 'https://github.com/i-rinat/apulse'
-  version '0.1.13'
+  version '0.1.13-1'
   license 'MIT and LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/i-rinat/apulse/archive/v0.1.13.tar.gz'
@@ -32,10 +32,13 @@ class Apulse < Package
     FileUtils.cd('build') do
       system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_BUILD_TYPE=Release .."
       system 'make'
-      system "echo 'pcm.plugdmix {' > asoundrc"
-      system "echo '  type plug' >> asoundrc"
-      system "echo '  slave.pcm \"dmix\"' >> asoundrc"
-      system "echo '}' >> asoundrc"
+      @asoundrc = <<~EOF
+        pcm.plugdmix {
+          type plug
+          slave.pcm "dmix"
+        }
+      EOF
+      IO.write(".asoundrc", @asoundrc)
     end
   end
 
@@ -44,11 +47,12 @@ class Apulse < Package
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       system "install -Dm755 asoundrc ~/.asoundrc"
     end
-  end
 
-  def self.postinstall
-    puts "To use apulse, please run the following lines :".lightblue
-    puts "echo 'export APULSE_PLAYBACK_DEVICE=plugdmix' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # ALSA PulseAudio emulation configuration
+      APULSE_PLAYBACK_DEVICE=plugdmix
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/apulse", @env)
   end
 end

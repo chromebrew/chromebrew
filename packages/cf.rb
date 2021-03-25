@@ -39,6 +39,13 @@ class Cf < Package
       system "curl -#L -o cf.bash https://raw.githubusercontent.com/cloudfoundry/cli/v6.36.1/ci/installers/completion/cf"
       abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('cf.bash') ) == 'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e'
       system "install -Dm644 cf.bash #{CREW_DEST_PREFIX}/share/cf/bash-completion/cf.bash"
+
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+      @env = <<~EOF
+        # Cloud Foundry CLI configuration
+        source #{CREW_PREFIX}/share/cf/bash-completion/cf.bash
+      EOF
+      IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/cf", @env)
     end
   end
 

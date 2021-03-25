@@ -50,15 +50,15 @@ class Ccache < Package
       for _prog in cc clang clang++; do
         ln -s #{CREW_PREFIX}/bin/ccache #{CREW_DEST_LIB_PREFIX}/ccache/bin/$_prog
       done"
-    end
-  end
 
-  def self.postinstall
-    system "ccache --set-config=sloppiness=file_macro,locale,time_macros"
-    puts "To compile using ccache you need to add the ccache bin folder to your path".lightblue
-    puts "e.g.  put this in your ~/bashrc:".lightblue
-    puts "export PATH=#{CREW_LIB_PREFIX}/ccache/bin::#{CREW_PREFIX}/bin:/usr/bin:/bin".lightblue
-    # To modify a package use the following:
-    # ENV['PATH'] = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+      @env = <<~EOF
+        # ccache configuration
+        if [ "$PATH" -eq "*ccache/bin*" ]; then
+          PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
+        fi
+      EOF
+      IO.write("#{CREW_DEST_PREFIX}/etc/env.d/ccache", @env)
+    end
   end
 end
