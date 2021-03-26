@@ -22,10 +22,6 @@ class Unixodbc < Package
      x86_64: '705488db5fc32fe2062da25e4650ac090983404525c9d06f32646058a76cfb2a'
   })
   
-  depends_on 'libtool'
-  depends_on 'glibc'
-  depends_on 'readline'
-  
   def self.build
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
