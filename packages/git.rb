@@ -10,19 +10,6 @@ class Git < Package
   source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"
   source_sha256 '13b3efb8eca3e3ef6e7eea6839600c37636dbac28069907beafd075ef7f45f0b'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '3eb7bfa293ab60c72ba430e81323979720d7d101413067d4df5fd64ed7ffcf83',
-     armv7l: '3eb7bfa293ab60c72ba430e81323979720d7d101413067d4df5fd64ed7ffcf83',
-       i686: '716d376ce2d8548d81ab2c88c3868e1eb8125dda656470509558b14b1bd5fbd5',
-     x86_64: '287d1307cfd7a42be9f64e2acf98447e9d6b6b640905539b60e11533506fa507'
-  })
-
   def self.build
     abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
@@ -44,19 +31,12 @@ class Git < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
-  end
 
-  def self.postinstall
-    puts
-    puts 'Git completion support is available for the following shells:'.lightblue
-    system "ls #{CREW_PREFIX}/share/git-completion"
-    puts
-    puts 'To add git completion for bash, execute the following:'.lightblue
-    puts "echo '# git completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/share/git-completion/git-completion.bash ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/share/git-completion/git-completion.bash' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @env = <<~EOF
+      # git bash completion
+      source #{CREW_PREFIX}/share/git-completion/git-completion.bash
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/git", @env)
   end
 end

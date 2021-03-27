@@ -37,17 +37,12 @@ class Libva_intel_driver_hybrid < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 
-  def self.postinstall
-    @_str = 'export LIBVA_DRIVER_NAME=i965'
-    if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
-      puts 'Performing env-setup...'
-      system "echo '#{@_str}' >> #{HOME}/.bashrc"
-      puts
-      puts 'To complete the installation, execute the following:'.lightblue
-      puts 'source ~/.bashrc'.lightblue
-      puts
-    end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # libva_intel_driver_hybrid configuration
+      export LIBVA_DRIVER_NAME=i965
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/libva_intel_driver_hybrid", @env)
   end
 end

@@ -28,6 +28,13 @@ class Hunspell_es_any < Package
     system 'git clone -b libreoffice-6-1 --depth 1 git://anongit.freedesktop.org/libreoffice/dictionaries.git'
     system "install -Dm644 dictionaries/es/es_ANY.aff #{CREW_DEST_HOME}/Library/Spelling/es_ANY.aff"
     system "install -Dm644 dictionaries/es/es_ANY.dic #{CREW_DEST_HOME}/Library/Spelling/es_ANY.dic"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # Configuración de hunspell
+      export DICTIONARY=es_ANY
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/hunspell_es_any", @env)
   end
 
   def self.postinstall
@@ -36,10 +43,7 @@ class Hunspell_es_any < Package
     FileUtils.cp 'dictionaries/es/es_ANY.dic', "#{HOME}/Library/Spelling/es_ANY.dic"
     FileUtils.rm_rf 'dictionaries/'
     puts
-    puts "To update the dictionaries periodically, execute 'crew postinstall hunspell_es_any'".lightblue
-    puts
-    puts "To complete the installation, execute the following:".lightblue
-    puts "echo 'export DICTIONARY=es_ANY' >> ~/.bashrc && source ~/.bashrc".lightblue
+    puts "Para actualizar los diccionarios periódicamente, ejecute 'crew postinstall hunspell_es_any'".lightblue
     puts
   end
 end

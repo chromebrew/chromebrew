@@ -33,10 +33,4 @@ class Github_cli < Package
   def self.install
     system "install -Dm755 bin/gh #{CREW_DEST_PREFIX}/bin/gh"
   end
-
-  def self.postinstall
-    puts
-    puts "Type 'gh' to get started.".lightblue
-    puts
-  end
 end

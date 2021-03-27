@@ -27,9 +27,5 @@ class Hub < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     system "script/build -o #{CREW_DEST_PREFIX}/bin/hub"
-    puts
-    puts "You will need to add an alias in order to use hub as a git wrapper:".lightblue
-    puts "echo \"alias git=hub\" >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts
   end
 end

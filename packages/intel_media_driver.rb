@@ -15,14 +15,6 @@ class Intel_media_driver < Package
     depends_on 'libva'
   end
 
-  binary_url({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_driver-20.4.5-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    x86_64: '0710ad9dd76b97b62849cfe6179dae0e884e56c475332b03f889d5eaa121ffff'
-  })
-
-
   def self.preflight
     abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
   end
@@ -46,17 +38,12 @@ class Intel_media_driver < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 
-  def self.postinstall
-    @_str = 'export LIBVA_DRIVER_NAME=iHD'
-    if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
-      puts 'Performing env-setup...'
-      system "echo '#{@_str}' >> #{HOME}/.bashrc"
-      puts
-      puts 'To complete the installation, execute the following:'.lightblue
-      puts 'source ~/.bashrc'.lightblue
-      puts
-    end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # intel_media_driver configuration
+      export LIBVA_DRIVER_NAME=iHD
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/intel_media_driver", @env)
   end
 end
