@@ -3,7 +3,7 @@ require 'package'
 class S < Package
   description 'Open a web search in your terminal.'
   homepage 'https://github.com/zquestz/s'
-  version '0.5.10'
+  version '0.5.10-1'
   license 'GPL-3+'
   compatibility 'all'
   case ARCH

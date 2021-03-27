@@ -3,7 +3,7 @@ require 'package'
 class Mutt < Package
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '1.9.2'
+  version '1.9.2-1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-1.9.2.tar.gz'

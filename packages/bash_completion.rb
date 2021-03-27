@@ -3,7 +3,7 @@ require 'package'
 class Bash_completion < Package
   description 'Programmable completion functions for bash'
   homepage 'https://github.com/scop/bash-completion'
-  version '2.9-1'
+  version '2.9-1-1'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/scop/bash-completion/archive/2.9.tar.gz'

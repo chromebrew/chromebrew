@@ -3,7 +3,7 @@ require 'package'
 class Pkgsrc < Package
   description 'pkgsrc is a framework for building third-party software on NetBSD and other UNIX-like systems'
   homepage 'https://github.com/NetBSD/pkgsrc'
-  version '2020Q1'
+  version '2020Q1-1'
   license '' # Can't find license
   compatibility 'all'
   source_url 'https://github.com/NetBSD/pkgsrc/archive/6ba7d2a6ee1388ad515177f5964681f2f6c13f13.tar.gz'

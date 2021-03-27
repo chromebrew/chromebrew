@@ -3,7 +3,7 @@ require 'package'
 class Depot_tools < Package
   description 'Chromium uses a package of scripts, the depot_tools, to manage interaction with the Chromium source code repository and the Chromium development process.'
   homepage 'https://dev.chromium.org/developers/how-tos/depottools'
-  version '906bfde9'
+  version '906bfde9-1'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'file:///dev/null'

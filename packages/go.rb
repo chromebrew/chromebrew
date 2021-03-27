@@ -4,7 +4,7 @@ class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
   @_ver = '1.16'
-  version @_ver
+  version "#{@_ver}-1"
   license 'BSD'
   compatibility 'all'
   source_url "https://dl.google.com/go/go#{@_ver}.src.tar.gz"
@@ -82,20 +82,30 @@ class Go < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/go", "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/gofmt", "#{CREW_DEST_PREFIX}/bin"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @gorun = <<~EOF
+      # Uncomment the line starting with "export" below to use `go run`
+      # Don't forget to uncomment it when you're done
+      # export TMPDIR=#{CREW_PREFIX}/tmp
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/go-run", @gorun)
+    @godev = <<~EOF
+      # Go development configuration
+      if [ ! -e #{CREW_PREFIX}/work/go ]; then
+        mkdir -vp #{CREW_PREFIX}/work/go
+      fi
+      if [ ! -e #{HOME}/go ]; then
+        ln -sv #{CREW_PREFIX}/work/go #{HOME}/go
+      fi
+      export PATH="$PATH:$HOME/go/bin"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/go-dev", @godev)
   end
 
   def self.postinstall
     puts
-    puts "Installed Go for #{ARCH} in #{CREW_PREFIX}/share/go".lightblue
-    puts
-    puts 'To use `go run`, execute the following:'.lightblue
-    puts "export TMPDIR=#{CREW_PREFIX}/tmp".lightblue
-    puts
-    puts 'To develop with `go`, execute the following:'.lightblue
-    puts "mkdir -p #{CREW_PREFIX}/work/go".lightblue
-    puts "ln -s #{CREW_PREFIX}/work/go $HOME/go".lightblue
-    puts 'export PATH="$HOME/go/bin:$PATH"'.lightblue
-    puts "export TMPDIR=#{CREW_PREFIX}/tmp".lightblue
+    puts "Edit #{CREW_PREFIX}/etc/env.d/go-run to be able to use go-run".lightblue
     puts
   end
 end

@@ -4,7 +4,7 @@ class Intel_media_driver < Package
   description 'The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.'
   homepage 'https://github.com/intel/media-driver'
   @_ver = '20.4.5'
-  version @_ver
+  version "#{@ver}-1"
   license 'BSD-3, and MIT'
   compatibility 'x86_64'
   case ARCH

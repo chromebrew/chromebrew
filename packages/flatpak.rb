@@ -3,7 +3,7 @@ require 'package'
 class Flatpak < Package
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
-  @_ver = '1.10.2'
+  @_ver = '1.10.2-1'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
@@ -80,7 +80,8 @@ class Flatpak < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.install "#{CREW_DEST_PREFIX}/bin/flatpak", "#{CREW_DEST_PREFIX}/bin/flatpak.elf", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec/flatpak/"
+    FileUtils.install "#{CREW_DEST_PREFIX}/bin/flatpak", "#{CREW_DEST_PREFIX}/libexec/flatpak/flatpak", mode: 0o755
     @flatpak_sh = <<~FLATPAK_HEREDOC
       #!/bin/bash
       # Flatpak needs to be able to see fonts in #{CREW_PREFIX}/share/fonts
@@ -102,7 +103,7 @@ class Flatpak < Package
       unset GDK_PIXBUF_MODULEDIR
       unset GDK_BACKEND
       unset FONTCONFIG_PATH
-      #{CREW_PREFIX}/bin/flatpak.elf \$FLATPAK_FLAGS  "\$@"
+      #{CREW_PREFIX}/libexec/flatpak/flatpak \$FLATPAK_FLAGS  "\$@"
     FLATPAK_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
@@ -120,7 +121,7 @@ class Flatpak < Package
   def self.postinstall
     puts
     puts 'Configuring flathub'.lightblue
-    system 'flatpak.elf remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
+    system "#{CREW_PREFIX}/libexec/flatpak/flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo"
     puts
   end
 end

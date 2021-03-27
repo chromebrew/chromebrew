@@ -3,7 +3,7 @@ require 'package'
 class Xdg_base < Package
   description 'XDG Base Directory Specification Configuration'
   homepage 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
-  version '0.7-7'
+  version '0.7-7-1'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'file:///dev/null'

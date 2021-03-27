@@ -3,7 +3,7 @@ require 'package'
 class Libva_intel_driver_hybrid < Package
   description 'VA-API implementation for Intel G45 and HD Graphics family'
   homepage 'https://github.com/intel/intel-vaapi-driver'
-  version '2.4.1'
+  version '2.4.1-1'
   license 'MIT'
   compatibility 'i686 x86_64'
   case ARCH

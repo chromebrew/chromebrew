@@ -3,7 +3,7 @@ require 'package'
 class Plowshare < Package
   description 'Command-line tool and engine for managing sharing websites'
   homepage 'https://github.com/mcrapet/plowshare'
-  version '2.1.7'
+  version '2.1.7-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/mcrapet/plowshare/archive/v2.1.7.tar.gz'

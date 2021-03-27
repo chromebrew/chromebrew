@@ -4,7 +4,7 @@ class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
   @_ver = '2.31.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"

@@ -4,7 +4,7 @@ class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
   @_ver = '1.50.0'
-  version @_ver
+  version "#{@ver}-1"
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/rust-lang/rust/archive/#{@_ver}.tar.gz"

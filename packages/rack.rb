@@ -3,7 +3,7 @@ require 'package'
 class Rack < Package
   description 'The Rackspace Command Line Interface (rack CLI) is a unified tool for managing your Rackspace services.'
   homepage 'https://github.com/rackspace/rack'
-  version '1.2'
+  version '1.2-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://raw.githubusercontent.com/rackspace/rack/1.2/README.md'

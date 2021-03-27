@@ -4,7 +4,7 @@ class Docbook_xml412 < Package
   description 'A widely used XML scheme for writing documentation and help'
   homepage 'https://www.oasis-open.org/docbook/'
   @_ver = '4.1.2'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url 'https://docbook.org/xml/4.1.2/docbkx412.zip'

@@ -3,7 +3,7 @@ require 'package'
 class Cowsay < Package
   description 'cowsay is a program that generates ASCII pictures of a cow with a message.'
   homepage 'https://github.com/tnalpgge/rank-amateur-cowsay/'
-  version '3.04'
+  version '3.04-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/tnalpgge/rank-amateur-cowsay/archive/cowsay-3.04.tar.gz'

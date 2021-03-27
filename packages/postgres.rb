@@ -3,7 +3,7 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '9.6.16'
+  version '9.6.16-1'
   license 'PostgreSQL and GPL-2'
   compatibility 'all'
   source_url 'https://ftp.postgresql.org/pub/source/v9.6.16/postgresql-9.6.16.tar.bz2'

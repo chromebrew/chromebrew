@@ -3,7 +3,7 @@ require 'package'
 class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
-  version '20201101'
+  version '20201101-1'
   license 'metapackage'
   compatibility 'all'
   source_url 'file:///dev/null'

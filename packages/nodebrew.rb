@@ -4,7 +4,7 @@ class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
   @_ver = '1.0.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"

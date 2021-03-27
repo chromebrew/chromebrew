@@ -3,7 +3,7 @@ require 'package'
 class Fasd < Package
   description 'Command-line productivity booster, offers quick access to files and directories, inspired by autojump, z and v.'
   homepage 'https://github.com/clvv/fasd'
-  version '1.0.1'
+  version '1.0.1-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/clvv/fasd/archive/1.0.1.tar.gz'

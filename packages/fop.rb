@@ -3,7 +3,7 @@ require 'package'
 class Fop < Package
   description 'Apache FOP (Formatting Objects Processor) is a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter.'
   homepage 'https://xmlgraphics.apache.org/fop/'
-  version '2.2'
+  version '2.2-1'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'http://apache.forsale.plus/xmlgraphics/fop/binaries/fop-2.2-bin.tar.gz'

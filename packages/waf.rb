@@ -3,7 +3,7 @@ require 'package'
 class Waf < Package
   description 'The Waf build system'
   homepage 'https://waf.io/'
-  version '1.9.13'
+  version '1.9.13-1'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/waf-project/waf/archive/waf-1.9.13.tar.gz'

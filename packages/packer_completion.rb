@@ -3,7 +3,7 @@ require 'package'
 class Packer_completion < Package
   description 'Add bash autocompletion for packer.'
   homepage 'https://github.com/mrolli/packer-bash-completion'
-  version '1.0.0'
+  version '1.0.0-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/mrolli/packer-bash-completion/archive/1.0.0.tar.gz'

@@ -3,7 +3,7 @@ require 'package'
 class Bash < Package
   description 'The Bourne Again SHell'
   homepage 'https://www.gnu.org/software/bash/'
-  version '5.1-1'
+  version '5.1-1-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/bash/bash-5.1.tar.gz'
@@ -38,7 +38,7 @@ class Bash < Package
   def self.install
      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
      FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
-     
+
      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
      @env = <<~EOF
        # Make Chromebrew's version of bash start automatically
