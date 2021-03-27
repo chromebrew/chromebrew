@@ -3,11 +3,11 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  version '0.0.1-pre3'
+  version '0.0.1-pre4'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://github.com/chromebrew/crew-profile-base/archive/refs/tags/0.0.1-pre3.tar.gz'
-  source_sha256 '01308b9342107a08f076f8c10e6844f03ff7301d28012ca8374e4f0f1bc431c8'
+  source_url 'https://github.com/chromebrew/crew-profile-base/archive/refs/tags/0.0.1-pre4.tar.gz'
+  source_sha256 '37f9e603baec1f4b5af2f33c0dd0842d8952f87bd530593c5a2d268822698cd0'
 
   # This package shouldn't have binaries.
   binary_url ({
@@ -18,6 +18,11 @@ class Crew_profile_base < Package
   })
 
   def self.preinstall
+    # Don't overwrite custom changes
+    FileUtils.rm "./src/env.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/env.d/99-custom"
+    FileUtils.rm "./src/profile.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/profile.d/99-custom"
+
+    # Don't overwrite a custom shell rc
     @_str = "source #{CREW_PREFIX}/etc/profile"
     FileUtils.mv "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak" unless `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
     FileUtils.mv "#{HOME}/.zshrc", "#{HOME}/.zshrc.bak" unless `grep -c '#{@_str}' #{HOME}/.zshrc`.to_i.zero?
@@ -41,13 +46,15 @@ class Crew_profile_base < Package
   end
 
   def self.postinstall
+    # Don't overwrite a custom shell rc part 2
     system "cat #{HOME}/.bashrc.bak >> #{HOME}/.bashrc" if File.exists? "#{HOME}/.bashrc.bak"
     system "cat #{HOME}/.zshrc.bak >> #{HOME}/.zshrc" if File.exists? "#{HOME}/.zshrc.bak"
+
     puts
-    puts "IT IS IMPERATIVE TO THE FUNCTION OF CHROMEBREW FOR"
-    puts "#{HOME}/.bashrc to contain the line 'source #{CREW_PREFIX}/etc/profile'."
-    puts "This should have happened automatically unless you already have a #{HOME}/.bashrc file."
-    puts "If the line doesn't exist, add it now."
+    puts "IT IS IMPERATIVE TO THE FUNCTION OF CHROMEBREW FOR".lightblue
+    puts "#{HOME}/.bashrc to contain the line 'source #{CREW_PREFIX}/etc/profile'.".lightblue
+    puts "This should have happened automatically.".lightblue
+    puts "If the line doesn't exist, add it now and report a bug at https://github.com/chromebrew/crew-profile-base/issues.".lightblue
     puts
   end
 end

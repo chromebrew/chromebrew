@@ -29,12 +29,12 @@ class Xdg_base < Package
       # Chromebrew's XDG configuration
       # See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
       # XDG Base Directory Specification Environment Variables
-      echo 'export XDG_CACHE_HOME=#{CREW_PREFIX}/.cache
-      echo 'export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg
-      echo 'export XDG_CONFIG_HOME=#{CREW_PREFIX}/.config
-      echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share
-      echo 'export XDG_DATA_HOME=#{CREW_PREFIX}/.config/.local/share
-      echo 'export XDG_RUNTIME_DIR=/var/run/chrome
+      export XDG_CACHE_HOME=#{CREW_PREFIX}/.cache
+      export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg
+      export XDG_CONFIG_HOME=#{CREW_PREFIX}/.config
+      export XDG_DATA_DIRS=#{CREW_PREFIX}/share
+      export XDG_DATA_HOME=#{CREW_PREFIX}/.config/.local/share
+      export XDG_RUNTIME_DIR=/var/run/chrome
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", @env)
   end
