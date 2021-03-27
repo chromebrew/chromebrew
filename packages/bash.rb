@@ -1,7 +1,7 @@
 require 'package'
 
 class Bash < Package
-  description 'The Bourne Again SHell'
+  description 'The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.'
   homepage 'https://www.gnu.org/software/bash/'
   version '5.1-1-2'
   license 'GPL-3'
