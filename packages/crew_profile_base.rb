@@ -21,6 +21,9 @@ class Crew_profile_base < Package
     # Don't overwrite custom changes
     FileUtils.rm "./src/env.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/env.d/99-custom"
     FileUtils.rm "./src/profile.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/profile.d/99-custom"
+    FileUtils.rm "./src/env.d/00-locale" if File.exists? "#{CREW_PREFIX}/etc/env.d/00-locale"
+    FileUtils.rm "./src/env.d/01-editor" if File.exists? "#{CREW_PREFIX}/etc/env.d/01-editor"
+    FileUtils.rm "./src/env.d/02-pager" if File.exists? "#{CREW_PREFIX}/etc/env.d/02-pager"
   end
 
   def self.install
@@ -32,7 +35,7 @@ class Crew_profile_base < Package
     # Remove stale files from the last install
     FileUtils.rm "#{HOME}/.bashrc.bak" if File.exists? "#{HOME}/.bashrc.bak"
     FileUtils.rm "#{HOME}/.zshrc.bak" if File.exists? "#{HOME}/.zshrc.bak"
-    
+
     # Don't overwrite a custom shell rc
     @_str = "source #{CREW_PREFIX}/etc/profile"
     FileUtils.touch "#{HOME}/.bashrc" unless File.exists? "#{HOME}/.bashrc"
