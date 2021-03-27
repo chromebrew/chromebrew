@@ -10,19 +10,7 @@ class Docbook_xml50 < Package
   source_url "https://docbook.org/xml/#{@_ver}/docbook-#{@_ver}.zip"
   source_sha256 '3dcd65e1f5d9c0c891b3be204fa2bb418ce485d32310e1ca052e81d36623208e'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-1-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '51e16312877f682c6b57120323e4102a02daf4220758eec6282f6ace6102dcbe',
-     armv7l: '51e16312877f682c6b57120323e4102a02daf4220758eec6282f6ace6102dcbe',
-       i686: 'd9460092816d125fdfc9cdabefef96756a0d7aa02edbb266193f33c2c8ec22c0',
-     x86_64: '990c2eff642a37031031a31d349e977788ba9aab72e76885c88cfec7f201a4c0'
-  })
-
+  depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
   depends_on 'bash'
@@ -229,18 +217,6 @@ class Docbook_xml50 < Package
   end
 
   def self.postinstall
-    # Docbook common postinstall block
-    ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
-
-    xml_catalog_files_in_bashrc = `grep -c "XML_CATALOG_FILES" ~/.bashrc || true`
-    unless xml_catalog_files_in_bashrc.to_i.positive?
-      puts "Putting \"export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog\" in ~/.bashrc".lightblue
-      system "echo 'export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
-    # End Docbook common postinstall block
-
     system "xmlcatalog --noout --add \"delegatePublic\" \
         \"-//OASIS//ENTITIES DocBook XML\" \
         \"file://#{CREW_PREFIX}/etc/xml/docbook-xml\" \
