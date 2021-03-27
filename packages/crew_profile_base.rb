@@ -49,4 +49,5 @@ class Crew_profile_base < Package
     puts "This should have happened automatically unless you already have a #{HOME}/.bashrc file."
     puts "If the line doesn't exist, add it now."
     puts
+  end
 end
