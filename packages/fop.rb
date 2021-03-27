@@ -7,7 +7,7 @@ class Fop < Package
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'http://apache.forsale.plus/xmlgraphics/fop/binaries/fop-2.2-bin.tar.gz'
-  source_sha256 '9dc1f9d1cb9acf5b3352116924c0b7678a88703b1214d537bc027c6867ec4dfe'
+  source_sha256 'd5a89e26beae0bc03ad18a0b0d1d3d75f87c32047879d25da11970cb5c4662a3'
 
   depends_on 'jdk8'
 
