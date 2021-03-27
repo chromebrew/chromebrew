@@ -28,15 +28,12 @@ class Chruby < Package
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
 
-  def self.postinstall
-    puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/share/chruby/chruby.sh ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/share/chruby/chruby.sh' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # chruby configuration
+      source #{CREW_PREFIX}/share/chruby/chruby.sh
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/chruby", @env)
   end
 end

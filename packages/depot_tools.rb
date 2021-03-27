@@ -23,26 +23,24 @@ class Depot_tools < Package
       FileUtils.rm_rf 'man/src'
       FileUtils.rm_rf Dir.glob('.git*')
       system 'find -name \'*.bat\' -exec rm {} +'
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/depot_tools"
-      FileUtils.mv 'man/', "#{CREW_DEST_PREFIX}/share"
-      FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/depot_tools"
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec/depot_tools"
+      FileUtils.mv 'man/', "#{CREW_DEST_PREFIX}/libexec"
+      FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/libexec/depot_tools"
       FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/.vpython-root"
       FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/.vpython_cipd_cache"
       FileUtils.ln_s "#{HOME}/.config/.vpython-root/", "#{CREW_DEST_HOME}/.vpython-root"
       FileUtils.ln_s "#{HOME}/.config/.vpython_cipd_cache/", "#{CREW_DEST_HOME}/.vpython_cipd_cache"
     end
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # Add depot-tools to path
+      PATH="$PATH:#{CREW_PREFIX}/libexec/depot_tools"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/depot_tools", @env)
   end
 
-  def self.postinstall
-    puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "echo 'export PATH=\$PATH:#{CREW_PREFIX}/share/depot_tools' >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts
-    puts "To get started, type 'man depot_tools_tutorial'.".lightblue
-    puts
-    puts "To completely remove, execute the following:".lightblue
-    puts "crew remove depot_tools".lightblue
-    puts "sudo rm -rf ~/.config/.vpython*".lightblue
-    puts
+  def self.remove
+    system "sudo rm -rf ~/.config/.vpython*"
   end
 end
