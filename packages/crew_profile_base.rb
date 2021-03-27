@@ -21,15 +21,22 @@ class Crew_profile_base < Package
     # Don't overwrite custom changes
     FileUtils.rm "./src/env.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/env.d/99-custom"
     FileUtils.rm "./src/profile.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/profile.d/99-custom"
-
-    # Don't overwrite a custom shell rc
-    @_str = "source #{CREW_PREFIX}/etc/profile"
-    FileUtils.mv "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak" if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
-    FileUtils.mv "#{HOME}/.zshrc", "#{HOME}/.zshrc.bak" if `grep -c '#{@_str}' #{HOME}/.zshrc`.to_i.zero?
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
+    FileUtils.cp_r Dir.glob('./src/*'), "#{CREW_DEST_PREFIX}/etc/"
+  end
+
+  def self.postinstall
+    # Don't overwrite a custom shell rc
+    @_str = "source #{CREW_PREFIX}/etc/profile"
+    FileUtils.touch "#{HOME}/.bashrc" unless File.exists? "#{HOME}/.bashrc"
+    FileUtils.touch "#{HOME}/.zshrc" unless File.exists? "#{HOME}/.zshrc"
+    FileUtils.mv "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak" if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
+    FileUtils.mv "#{HOME}/.zshrc", "#{HOME}/.zshrc.bak" if `grep -c '#{@_str}' #{HOME}/.zshrc`.to_i.zero?
+
+    # Write our rc files
     @rcfile = <<~EOF
       # DO NOT DELETE THIS LINE
       # See #{CREW_PREFIX}/etc/profile for further details
@@ -37,15 +44,10 @@ class Crew_profile_base < Package
 
       # Put your stuff under this comment
     EOF
-    IO.write("#{CREW_DEST_HOME}/.bashrc", @rcfile)
-    IO.write("#{CREW_DEST_HOME}/.zshrc", @rcfile)
+    # Must write directly to HOME and not CREW_DEST_HOME to prevent chromebrew from removing ~/.bashrc during reinstall
+    IO.write("#{HOME}/.bashrc", @rcfile) unless File.exists? "#{HOME}/.bashrc"
+    IO.write("#{HOME}/.zshrc", @rcfile) unless File.exists? "#{HOME}/.zshrc"
 
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
-    FileUtils.cp_r Dir.glob('./src/*'), "#{CREW_DEST_PREFIX}/etc/"
-  end
-
-  def self.postinstall
     # Don't overwrite a custom shell rc part 2
     system "cat #{HOME}/.bashrc.bak >> #{HOME}/.bashrc" if File.exists? "#{HOME}/.bashrc.bak"
     system "cat #{HOME}/.zshrc.bak >> #{HOME}/.zshrc" if File.exists? "#{HOME}/.zshrc.bak"
