@@ -24,8 +24,8 @@ class Crew_profile_base < Package
 
     # Don't overwrite a custom shell rc
     @_str = "source #{CREW_PREFIX}/etc/profile"
-    FileUtils.mv "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak" unless `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
-    FileUtils.mv "#{HOME}/.zshrc", "#{HOME}/.zshrc.bak" unless `grep -c '#{@_str}' #{HOME}/.zshrc`.to_i.zero?
+    FileUtils.mv "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak" if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
+    FileUtils.mv "#{HOME}/.zshrc", "#{HOME}/.zshrc.bak" if `grep -c '#{@_str}' #{HOME}/.zshrc`.to_i.zero?
   end
 
   def self.install
