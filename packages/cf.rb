@@ -48,17 +48,4 @@ class Cf < Package
       IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/cf", @env)
     end
   end
-
-  def self.postinstall
-    case ARCH
-    when 'i686', 'x86_64'
-      puts
-      puts "To add bash completion, execute the following:".lightblue
-      puts "echo 'if [ -f #{CREW_PREFIX}/share/cf/bash-completion/cf.bash ]; then' >> ~/.bashrc".lightblue
-      puts "echo '  source #{CREW_PREFIX}/share/cf/bash-completion/cf.bash' >> ~/.bashrc".lightblue
-      puts "echo 'fi' >> ~/.bashrc".lightblue
-      puts "source ~/.bashrc".lightblue
-      puts
-    end
-  end
 end

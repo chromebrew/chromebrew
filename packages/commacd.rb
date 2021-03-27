@@ -24,16 +24,12 @@ class Commacd < Package
 
   def self.install
     system "install -Dm644 commacd.bash #{CREW_DEST_PREFIX}/share/commacd/commacd.bash"
-  end
 
-  def self.postinstall
-    puts
-    puts "To complete installation, execute the following:".lightblue
-    puts "echo '# commacd completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/share/commacd/commacd.bash ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/share/commacd/commacd.bash' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @env = <<~EOF
+      # Commacd configuration
+      source #{CREW_PREFIX}/share/commacd/commacd.bash
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/commacd", @env)
   end
 end
