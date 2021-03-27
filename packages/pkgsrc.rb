@@ -65,6 +65,7 @@ EOF"
   end
 
   def self.postinstall
+    # This needs more help than saltedcoffii can do right now
     puts
     puts "You may wish to have the vulnerabilities file downloaded daily so that it"
     puts "remains current. This may be done by adding an appropriate entry to the root"

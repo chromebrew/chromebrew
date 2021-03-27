@@ -23,6 +23,8 @@ class Postgres < Package
   })
 
   # Feel free to change this directory prior to compiling.
+
+  # Future work: this directory isn't FHS compliant
   PGDATA = "#{CREW_PREFIX}/data/pgsql"
 
   def self.build
@@ -40,6 +42,13 @@ class Postgres < Package
       system "chmod", "700", "#{PGDATA}"
     end
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install-world"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # PostgreSQL configuration
+      export PGDATA="#{PGDATA}"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/postgres", @env)
   end
 
   def self.postinstall
@@ -47,9 +56,6 @@ class Postgres < Package
     # there is no need to initialize the data directory and display messages again.
     unless File.exists? "#{PGDATA}/PG_VERSION"
       system "initdb -D #{PGDATA}"
-      puts
-      puts "To complete the installation, execute the following:".lightblue
-      puts "echo 'export PGDATA=\"#{PGDATA}\"' >> ~/.bashrc && source ~/.bashrc".lightblue
       puts
       puts "To start postgres: pg_ctl -l logfile start".lightblue
       puts "To stop postgres: pg_ctl stop".lightblue

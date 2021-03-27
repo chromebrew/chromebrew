@@ -10,19 +10,6 @@ class Nano < Package
   source_url "https://nano-editor.org/dist/v5/nano-#{@_ver}.tar.xz"
   source_sha256 'fce183e4a7034d07d219c79aa2f579005d1fd49f156db6e50f53543a87637a32'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '591c7d34de17429fe24e2c72b298c23791e6e87da58f914359d8152ec70b00ab',
-     armv7l: '591c7d34de17429fe24e2c72b298c23791e6e87da58f914359d8152ec70b00ab',
-       i686: '42c85d4a27d9c99a85661385dbbaacc95e09e7ab7878ca7665e17c7527582695',
-     x86_64: 'cb60149f951bd3cbff70a5d097c6d422591cc48dabe40552e59404f48b4cc866'
-  })
-
   depends_on 'xdg_base'
 
   def self.patch
@@ -81,10 +68,6 @@ class Nano < Package
   def self.postinstall
     puts
     puts 'Personal configuration file is located in $HOME/.nanorc'.lightblue
-    puts
-    puts 'To make nano your default editor, execute the following:'.lightblue
-    puts
-    puts "echo 'EDITOR=#{CREW_PREFIX}/bin/nano' >> ~/.bashrc && source ~/.bashrc".lightblue
     puts
   end
 end

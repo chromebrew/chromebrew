@@ -16,15 +16,10 @@ class Nvm < Package
     system "rm -rf #{CREW_DEST_PREFIX}/share/nvm/test"
   end
 
-  def self.postinstall
+  def self.remove
     puts
-    puts "To complete the installation, execute:".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
-    puts "To uninstall, execute the following:".lightblue
-    puts "crew remove nvm".lightblue
+    puts "Don't forget to run:"
     puts "rm -rf #{CREW_PREFIX}/share/nvm".lightblue
-    puts "Delete any lines with NVM_DIR in ~/.bashrc.".lightblue
     puts
   end
 end
