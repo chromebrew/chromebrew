@@ -3,24 +3,24 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.2'
+  @_ver = '8.0.3'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 `curl -Ls #{source_url} | sha256sum | cut -d' ' -f1`.chomp
+  source_sha256 'c9816aa9745a9695672951eaff3a35ca5eddcb9cacf87a4f04b9fb1169010251'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php80-8.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '80f18af7f6ec59aa3b7062ebcbfe903d8a083b63579e4fbb20821ec86dc7e4d2',
-     armv7l: '80f18af7f6ec59aa3b7062ebcbfe903d8a083b63579e4fbb20821ec86dc7e4d2',
-       i686: '56d3288868864e2ce89a712dbbe33be35ea6b598587c9372af9b5290889ca7af',
-     x86_64: '688318b7e49fed6b56cecc8692755e2d8325b9e0d5b814824adfdb017c28d06b',
+    aarch64: '476ce8403fffce634600922e811cd71bedce3d8a8fdff5041450b1f73f3e9ab0',
+     armv7l: '476ce8403fffce634600922e811cd71bedce3d8a8fdff5041450b1f73f3e9ab0',
+       i686: '16818b4073cc89b69378a02716d04305697e134b0da9883ccdf9aab4559586ea',
+     x86_64: 'bab671116f916ab2eb6c7423d8c313e28632a01ca6be8fcac29699f13b01cc8c',
   })
 
   depends_on 'aspell_en'
@@ -39,9 +39,9 @@ class Php80 < Package
   depends_on 'oniguruma'
   depends_on 'pygments'
 
-  def self.preinstall
+  def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless phpver.to_s == ''
+    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
   end
 
   def self.patch

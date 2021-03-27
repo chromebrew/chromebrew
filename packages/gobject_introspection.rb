@@ -3,24 +3,24 @@ require 'package'
 class Gobject_introspection < Package
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  @_ver = '1.67.1'
+  @_ver = '1.68.0'
   version @_ver
   license 'LGPL-2+ and GPL-2+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/#{@_ver}/gobject-introspection-#{@_ver}.tar.bz2"
-  source_sha256 '4cd840eb3a9b5f6cddda96f79e9f186b1da4b93343a0c82e0ab185beccb25a6b'
+  source_sha256 'b22035bd3e7ea27cc29b0c19ec5da8dd6cafe88a08392ecd06b41d4025406b4c'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.67.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.67.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.67.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.67.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '07f5085fba9f5d6ef6ad5be8f19d977b27a4ba869819f92fd52d230c6b68cfb4',
-     armv7l: '07f5085fba9f5d6ef6ad5be8f19d977b27a4ba869819f92fd52d230c6b68cfb4',
-       i686: '277e24570f9dccdc644e5398ca92538af71cbedcf000b61eb702f4563071ebe2',
-     x86_64: '845bce3214bddc6008d384f31efb210578aa97e4b50dff9017aa12b54f8a2963'
+    aarch64: '7f19992ebfb2efd6890b80aa13975b5052b62018359dfd3d6d4f504d88f5cfb8',
+     armv7l: '7f19992ebfb2efd6890b80aa13975b5052b62018359dfd3d6d4f504d88f5cfb8',
+       i686: '8b65be9e83ef90cd7442c1bc0fa54f7e781cd77193eea98550bcb9f98ba044a1',
+     x86_64: 'c150f71e67bb0dcb9f00b9d22442bc572097c6c2612725d56dd7537bb7619402'
   })
 
   depends_on 'glib'

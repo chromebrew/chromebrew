@@ -3,79 +3,80 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-1'
-  license '' # Can't find license. Probably BSD-Google or BSD-3
+  version '20210109-2'
+  license 'BSD-Google'
   compatibility 'all'
-  source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
-  source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
+  source_url 'file:///dev/null'
+  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
-  depends_on 'mesa'
-  depends_on 'xkbcomp'
-  depends_on 'xorg_server' unless File.exists? "#{CREW_PREFIX}/bin/Xwayland.elf"
-  depends_on 'xwayland'
-  depends_on 'psmisc'
-  depends_on 'vim' # Until there is a standalone package providing xxd
-  depends_on 'xdpyinfo'
-  depends_on 'xauth'
-  depends_on 'xsetroot'
+  depends_on 'coreutils' # for readlink in wrapper script
+  depends_on 'libdrm'
+  depends_on 'libxcb'
+  depends_on 'libxcomposite' => :build
+  depends_on 'libxfixes' => :build
+  depends_on 'libxkbcommon'
   depends_on 'llvm' => :build
+  depends_on 'mesa'
+  depends_on 'pixman'
+  depends_on 'procps' # for pgrep in wrapper script
+  depends_on 'psmisc'
+  depends_on 'wayland'
+  depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
+  depends_on 'xsetroot' # for xsetroot in sommelierrc script
+  depends_on 'xwayland'
+  depends_on 'xxd_standalone' # for xxd in wrapper script
 
   case ARCH
-   when 'armv7l', 'aarch64'
-      PEER_CMD_PREFIX='/lib/ld-linux-armhf.so.3'
-   when 'i686'
-      PEER_CMD_PREFIX='/lib/ld-linux-i686.so.2'
-   when 'x86_64'
-      PEER_CMD_PREFIX='/lib64/ld-linux-x86-64.so.2'
+  when 'armv7l', 'aarch64'
+    @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
+  when 'i686'
+    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
+  when 'x86_64'
+    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
+  end
+
+  def self.prebuild
+    @git_dir = 'platform2_git'
+    @git_hash = 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
+    @git_url = 'https://chromium.googlesource.com/chromiumos/platform2'
+    FileUtils.rm_rf(@git_dir)
+    FileUtils.mkdir_p(@git_dir)
+    Dir.chdir @git_dir do
+      system 'git init'
+      system "git remote add origin #{@git_url}"
+      system "git fetch --depth 1 origin #{@git_hash}"
+      system 'git checkout FETCH_HEAD'
+    end
   end
 
   def self.build
-    # There is no good way to checksum the googlesource tgz file, as they appear to be generated on the fly
-    # and checksums vary with each download.
-    system 'curl -#L https://chromium.googlesource.com/chromiumos/platform2/+archive/f3b2e2b6a8327baa2e62ef61036658c258ab4a09.tar.gz | tar mzx --warning=no-timestamp'
-    Dir.chdir ("vm_tools/sommelier") do
+    Dir.chdir('platform2_git/vm_tools/sommelier') do
+      # Patch to avoid error with GCC > 9.x
+      # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
+      system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
 
-    ## Google's sommelier expects to find virtwl.h in their kernel source includes, but we may not have
-    ## set of kernel headers which match, so we just download virtwl.h and then patch the sommelier source
-    ## to look for the file locally.
-    ########################## Download virtwl.h from Chromium 5.4 kernel tree ###########################################
-    #url_virtwl = "https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d641a7b7b64664230d2fd2aa1e74dd792b8b7bf/include/uapi/linux/virtwl.h?format=TEXT"
-    #uri_virtwl = URI.parse url_virtwl
-    #filename_virtwl = 'virtwl.h_base64'
-    #sha256sum_virtwl = 'a8215f4946ccf30cbd61fcf2ecc4edfe6d05bffeee0bacadd910455274955446'
+      # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
-    #puts "Downloading virtwl".yellow
-    #system('curl', '-s', '-C', '-', '--insecure', '-L', '-#', url_virtwl, '-o', filename_virtwl)
-    #abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      #Digest::SHA256.hexdigest( File.read( filename_virtwl ) ) == sha256sum_virtwl
-    #puts "virtwl base64 downloaded".lightgreen
-    #FileUtils.mkdir_p 'build/linux'
-    #system 'base64 --decode virtwl.h_base64 > build/linux/virtwl.h'
+      system "env CC=clang CXX=clang++ \
+        meson #{CREW_MESON_OPTIONS} \
+        -Db_asneeded=false \
+        -Db_lto=true \
+        -Db_lto_mode=thin \
+        -Dc_args='-fuse-ld=lld' \
+        -Dcpp_args='-fuse-ld=lld' \
+        -Dcpp_link_args='-fuse-ld=lld' \
+        -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
+        -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
+        -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
+        -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" \
+        builddir"
+      system 'meson configure builddir'
+      system 'ninja -C builddir'
 
-    # Patch to avoid error with GCC > 9.x
-    # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
-    system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
+      Dir.chdir('builddir') do
+        system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
 
-    # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
-
-    system "env CC=clang CXX=clang++ \
-    meson #{CREW_MESON_OPTIONS} \
-    -Db_asneeded=false \
-    -Dc_args='-flto=thin -fuse-ld=lld' \
-    -Dcpp_args='-flto=thin -fuse-ld=lld' \
-    -Dcpp_link_args='-flto=thin -fuse-ld=lld' \
-    -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-    -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
-    -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
-    -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" \
-    build"
-    system "meson configure build"
-    system "ninja -C build"
-
-    Dir.chdir ("build") do
-      system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/refs/heads/master/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
-
-      system "cat <<'EOF'> .sommelier-default.env
+        system "cat <<'EOF'> .sommelier-default.env
 #!/bin/bash
 shopt -os allexport
 CLUTTER_BACKEND=wayland
@@ -102,13 +103,13 @@ then
 fi
 EOF"
 
-      #Create local startup and shutdown scripts
+        # Create local startup and shutdown scripts
 
-      # sommelier_sh
-      # This file via:
-      # crostini: /opt/google/cros-containers/bin/sommelier
-      # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
-      system "cat <<'EOF'> sommelier_sh
+        # sommelier_sh
+        # This file via:
+        # crostini: /opt/google/cros-containers/bin/sommelier
+        # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
+        system "cat <<'EOF'> sommelier_sh
 #!/bin/bash
 if base=$(readlink \"$0\" 2>/dev/null); then
   case $base in
@@ -124,10 +125,10 @@ fi
 basedir=${base%/*}
 # TODO(crbug/1003841): Remove LD_ARGV0 once
 # ld.so supports forwarding the binary name.
-LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/sommelier\" exec   \"${basedir}/..#{PEER_CMD_PREFIX}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
+LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/sommelier\" exec   \"${basedir}/..#{@peer_cmd_prefix}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
 EOF"
-      # sommelierd
-      system "cat <<'EOF'> sommelierd
+        # sommelierd
+        system "cat <<'EOF'> sommelierd
 #!/bin/bash
 set -a
 source ~/.sommelier-default.env &>/dev/null
@@ -147,7 +148,7 @@ checksommelierxwayland () {
 #if ! checksommelierwayland ; then
 #pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
 #rm \${XDG_RUNTIME_DIR}/wayland-1*
-#sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
+#sommelier --parent --peer-cmd-prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" --drm-device=/dev/dri/renderD128 --shm-driver=noop --data-driver=noop --display=wayland-0 --socket=wayland-1 --virtwl-device=/dev/null > #{CREW_PREFIX}/var/log/sommelier.log 2>&1 &
 #echo \$! >#{CREW_PREFIX}/var/run/sommelier-wayland.pid
 #fi
 if ! checksommelierxwayland; then
@@ -158,13 +159,13 @@ pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
 DISPLAY=\"\${DISPLAY//:}\"
 DISPLAY=\"\${DISPLAY:0:2}\"
 #sudo rm /tmp/.X11-unix/X\"\${DISPLAY}\"
-sommelier -X --x-display=:\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri --peer-cmd-prefix=\"#{CREW_PREFIX}#{PEER_CMD_PREFIX}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add :$DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>#{CREW_PREFIX}/var/log/sommelier.log
+sommelier -X --x-display=:\$DISPLAY  --scale=\$SCALE --glamor --drm-device=/dev/dri/renderD128 --virtwl-device=/dev/null --shm-driver=noop --data-driver=noop --display=wayland-0 --xwayland-path=/usr/local/bin/Xwayland --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri --peer-cmd-prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" --no-exit-with-child /bin/sh -c \"touch ~/.Xauthority; xauth -f ~/.Xauthority add :$DISPLAY . $(xxd -l 16 -p /dev/urandom); . #{CREW_PREFIX}/etc/sommelierrc\" &>>#{CREW_PREFIX}/var/log/sommelier.log
 echo \$! >#{CREW_PREFIX}/var/run/sommelier-xwayland.pid
 xhost +si:localuser:root &>/dev/null
 fi
 EOF"
-      # startsommelier
-       system "cat <<'EOF'> startsommelier
+        # startsommelier
+        system "cat <<'EOF'> startsommelier
 #!/bin/bash
 set -a
 source ~/.sommelier-default.env &>/dev/null
@@ -201,8 +202,8 @@ else
   exit 1
 fi
 EOF"
-      # stopsommelier
-      system "cat <<'EOF'> stopsommelier
+        # stopsommelier
+        system "cat <<'EOF'> stopsommelier
 #!/bin/bash
 SOMM=\$(pgrep -fc sommelier.elf 2> /dev/null)
 if [[ \"$SOMM\" -gt \"0\" ]]; then
@@ -219,17 +220,17 @@ else
   echo \"sommelier stopped\"
 fi
 EOF"
-      # restartsommelier
-      system "echo '#!/bin/bash' > restartsommelier"
-      system "echo 'stopsommelier && startsommelier' >> restartsommelier"
+        # restartsommelier
+        system "echo '#!/bin/bash' > restartsommelier"
+        system "echo 'stopsommelier && startsommelier' >> restartsommelier"
       end
     end
   end
 
   def self.install
-    Dir.chdir ("vm_tools/sommelier") do
-      system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-      Dir.chdir ("build") do
+    Dir.chdir('platform2_git/vm_tools/sommelier') do
+      system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+      Dir.chdir('builddir') do
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         system "install -Dm755 sommelier_sh #{CREW_DEST_PREFIX}/bin/sommelier"
         system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
@@ -259,19 +260,19 @@ EOF"
     # Having ~/.bashrc load sommelier environment variables by default.
     oldsommelier_in_bashrc = `grep -c "set -a && source ~/.sommelier.env && set +a" ~/.bashrc || true`
     unless oldsommelier_in_bashrc.to_i < 1
-      puts "Replacing old sommelier env variable loading code in ~/.bashrc".lightblue
-      system "sed -i \"s,set -a && source ~/.sommelier.env && set +a,set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a,g\" -i.backup ~/.bashrc"
-      puts "To complete the installation, execute the following:".orange
-      puts "source ~/.bashrc".orange
+      puts 'Replacing old sommelier env variable loading code in ~/.bashrc'.lightblue
+      system 'sed -i "s,set -a && source ~/.sommelier.env && set +a,set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a,g" -i.backup ~/.bashrc'
+      puts 'To complete the installation, execute the following:'.orange
+      puts 'source ~/.bashrc'.orange
     end
 
     sommelier_in_bashrc = `grep -c "set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a" ~/.bashrc || true`
-    unless sommelier_in_bashrc.to_i > 0
+    unless sommelier_in_bashrc.to_i.positive?
       puts "Putting sommelier loading code in ~/.bashrc".lightblue
       system "echo '# Sommelier daemon' >> ~/.bashrc"
       system "echo 'startsommelier' >> ~/.bashrc"
-      puts "To complete the installation, execute the following:".orange
-      puts "source ~/.bashrc".orange
+      puts 'To complete the installation, execute the following:'.orange
+      puts 'source ~/.bashrc'.orange
     end
     puts
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exists? "#{HOME}/.sommelier.env"
@@ -282,13 +283,13 @@ EOF"
     puts "To stop the sommelier daemon, run 'stopsommelier'".lightblue
     puts "To restart the sommelier daemon, run 'restartsommelier'".lightblue
     puts
-    puts "Please be aware that gui applications may not work without the".orange
-    puts "sommelier daemon running.".orange
+    puts 'Please be aware that gui applications may not work without the'.orange
+    puts 'sommelier daemon running.'.orange
     puts
-    puts "The sommelier daemon may also have to be restarted with".orange
+    puts 'The sommelier daemon may also have to be restarted with'.orange
     puts "'restartsommelier' after waking your device.".orange
     puts
-    puts "(If you are upgrading from an earlier version of sommelier,".orange
+    puts '(If you are upgrading from an earlier version of sommelier,'.orange
     puts "also run 'restartsommelier'.)".orange
   end
 end
