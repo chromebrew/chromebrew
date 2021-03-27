@@ -15,7 +15,7 @@ class Cowsay < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # Set COWPATH for cowsay
-      COWPATH=#{CREW_PREFIX}/share/cows
+      export COWPATH=#{CREW_PREFIX}/share/cows
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/cowsay", @env)
   end

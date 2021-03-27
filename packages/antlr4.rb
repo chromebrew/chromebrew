@@ -24,7 +24,7 @@ class Antlr4 < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # ANTLR (ANother Tool for Language Recognition) configuration
-      CLASSPATH=\".:#{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar:$CLASSPATH\"
+      export CLASSPATH=\".:#{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar:$CLASSPATH\"
       alias antlr4=\"java -jar #{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar\"
       alias grun=\"java org.antlr.v4.gui.TestRig\"
     EOF

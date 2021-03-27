@@ -51,7 +51,7 @@ class Apulse < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # ALSA PulseAudio emulation configuration
-      APULSE_PLAYBACK_DEVICE=plugdmix
+      export APULSE_PLAYBACK_DEVICE=plugdmix
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/apulse", @env)
   end

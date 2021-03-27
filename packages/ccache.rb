@@ -55,7 +55,7 @@ class Ccache < Package
       @env = <<~EOF
         # ccache configuration
         if [ "$PATH" -eq "*ccache/bin*" ]; then
-          PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
+          export PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
         fi
       EOF
       IO.write("#{CREW_DEST_PREFIX}/etc/env.d/ccache", @env)

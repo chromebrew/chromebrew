@@ -10,19 +10,6 @@ class Flatpak < Package
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
   source_sha256 'db152739d072f8ff299e4e888d8963a1b4538da7b10e0b86525be438f2e1dde4'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'c75d3704f54b035af47b13aec034e762f55ef01de3193f9948af9c2f94240160',
-     armv7l: 'c75d3704f54b035af47b13aec034e762f55ef01de3193f9948af9c2f94240160',
-       i686: '5d379657448f6186f23ed5e47ccebbfc1e5b03ad930886c093451b32f0734390',
-     x86_64: '6b35bbf60cc693be3dd808dd697d0a5d62cbe2f830d6a856fa32aa1e15d7210b'
-  })
-
   depends_on 'appstream_glib'
   depends_on 'bubblewrap'
   depends_on 'dconf'
@@ -121,6 +108,13 @@ class Flatpak < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
     FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf",
                  "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # Flatpak configuration
+      export XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share'
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/flatpak", @env)
   end
 
   def self.postinstall
@@ -128,15 +122,5 @@ class Flatpak < Package
     puts 'Configuring flathub'.lightblue
     system 'flatpak.elf remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
     puts
-    # Check to see if XDG_DATA_DIRS for flatpak is in ~/.bashrc. If not, put
-    # it in.
-    @_str = "XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share"
-    if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
-      puts 'Putting XDG Environment Variables in ~/.bashrc'.lightblue
-      system "sed -i '/XDG_DATA_DIRS/d' ~/.bashrc"
-      system "echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
   end
 end

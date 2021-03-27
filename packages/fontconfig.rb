@@ -68,16 +68,16 @@ class Fontconfig < Package
       </fontconfig>
     FONTCONF_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/etc/fonts/conf.d/52-chromebrew.conf", @fonts_conf, perm: 0o666)
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # Fontconfig configuration
+      export FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/fontconfig", @env)
   end
 
   def self.postinstall
-    fontconfig_in_bashrc = `grep -c "FONTCONFIG_PATH" ~/.bashrc || true`
-    unless fontconfig_in_bashrc.to_i.positive?
-      puts 'Putting fontconfig code in ~/.bashrc'.lightblue
-      system "echo 'export FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
     # The following postinstall fails if graphite isn't installed when fontconfig
     # is being installed.
     system "env FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv || true"

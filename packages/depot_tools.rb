@@ -35,7 +35,7 @@ class Depot_tools < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # Add depot-tools to path
-      PATH="$PATH:#{CREW_PREFIX}/libexec/depot_tools"
+      export PATH="$PATH:#{CREW_PREFIX}/libexec/depot_tools"
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/depot_tools", @env)
   end

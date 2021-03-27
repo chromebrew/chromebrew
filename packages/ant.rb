@@ -28,8 +28,8 @@ class Ant < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # Apache Ant configuration
-      JAVA_HOME=#{CREW_PREFIX}/share/jdk8'
-      ANT_HOME=$JAVA_HOME
+      export JAVA_HOME=#{CREW_PREFIX}/share/jdk8'
+      export ANT_HOME=$JAVA_HOME
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/ant", @env)
   end

@@ -15,7 +15,6 @@ class Docbook_xml < Package
     XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
   EOF
   IO.write("#{CREW_DEST_PREFIX}/etc/env.d/docbook_xml", @env)
-  # End Docbook common postinstall block
 
   depends_on 'xmlcatmgr'
   depends_on 'docbook_xml412'
