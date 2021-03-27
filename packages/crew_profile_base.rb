@@ -29,6 +29,10 @@ class Crew_profile_base < Package
   end
 
   def self.postinstall
+    # Remove stale files from the last install
+    FileUtils.rm "#{HOME}/.bashrc.bak" if File.exists? "#{HOME}/.bashrc.bak"
+    FileUtils.rm "#{HOME}/.zshrc.bak" if File.exists? "#{HOME}/.zshrc.bak"
+    
     # Don't overwrite a custom shell rc
     @_str = "source #{CREW_PREFIX}/etc/profile"
     FileUtils.touch "#{HOME}/.bashrc" unless File.exists? "#{HOME}/.bashrc"
