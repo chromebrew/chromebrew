@@ -9,19 +9,6 @@ class Texlive < Package
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '99138e8f8ebe9757f4e8a01a477f3d7a96a6120b7932370becad051888668c4e',
-     armv7l: '99138e8f8ebe9757f4e8a01a477f3d7a96a6120b7932370becad051888668c4e',
-       i686: '2fdecfceeb8138757eed544186fb888569f6dbb6e4eb44db5a6b449034f06e82',
-     x86_64: '4628da71f94b1aeded431efdf7136b605702af9b01b4377d8c6c42e9e98dc61d',
-  })
-
   def self.build
     system "curl -#LO ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz"
     system "curl -#LO ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz.sha512"
@@ -43,14 +30,20 @@ class Texlive < Package
     system "find #{dir} -iname '*.pdf' -delete" # saving some space
     system "find #{dir}/20*/texmf-dist/doc -type f -and -not -path '*man*' -delete"
     system "find #{dir} -name 'tlmgr' -exec {} init-usertree ';'"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    path = `echo #{CREW_PREFIX}/share/texlive/20*`.chomp
+    @env = <<~EOF
+      # texlive configuration
+      export PATH="$PATH:#{path}/bin/#{ARCH}-linux"
+      export MANPATH="$MANPATH:#{path}/bin/texmf-dist/doc/man"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/FIXME", @env)
   end
 
   def self.postinstall
-    path = `echo #{CREW_PREFIX}/share/texlive/20*`.chomp
-    puts "\nPlease add texlive to your PATH and MANPATH to be able to use the executables and manpages. Use the following commands:".lightblue
-    puts " echo \"export PATH=\$PATH:#{path}/bin/#{ARCH}-linux\" >> ~/.bashrc".lightblue
-    puts " echo \"export MANPATH=\$MANPATH:#{path}/bin/texmf-dist/doc/man\" >> ~/.bashrc".lightblue
-    puts " source ~/.bashrc".lightblue
+    puts
     puts "\nThis is a very small installation, with only the basic packages. To install more, use `tlmgr install <package>`.".lightblue
+    puts
   end
 end

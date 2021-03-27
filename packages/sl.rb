@@ -17,12 +17,4 @@ class Sl < Package
   def self.install
     system "install -Dm755 sl #{CREW_DEST_PREFIX}/bin/sl"
   end
-
-  def self.postinstall
-    puts
-    puts 'sl does this annoying thing where it doesn\'t allow you to cancel with ^C.'
-    puts 'To disable this "feature", run'
-    puts 'echo "alias sl=\'sl -e\'" >> ~/.bashrc && source ~/.bashrc'
-    puts
-  end
 end

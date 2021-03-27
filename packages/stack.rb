@@ -20,17 +20,18 @@ class Stack < Package
     system "echo 'local-bin-path: #{CREW_PREFIX}/bin' > #{CREW_DEST_PREFIX}/.stack/config.yaml"
     system "echo 'local-programs-path: #{CREW_PREFIX}/share/stack' >> #{CREW_DEST_PREFIX}/.stack/config.yaml"
     FileUtils.ln_s "#{CREW_PREFIX}/.stack", "#{CREW_DEST_HOME}/.stack"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @env = <<~EOF
+      # Haskell stack bash completion
+      eval "$(stack --bash-completion-script stack)"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/stack", @env)
   end
 
-  def self.postinstall
-    puts
-    puts "To enable stack auto-completion, execute the following:".lightblue
-    puts "echo '# enable stack auto-completion' >> ~/.bashrc".lightblue
-    puts "echo 'eval \"\$(stack --bash-completion-script stack)\"' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+  def self.remove
     puts
     puts "To completely uninstall stack, execute the following:".lightblue
-    puts "crew remove stack".lightblue
     puts "rm -rf #{CREW_PREFIX}/share/stack".lightblue
     puts "rm -rf ~/.stack".lightblue
     puts
