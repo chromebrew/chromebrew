@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.7.17'
+CREW_VERSION = '1.7.18'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -63,13 +63,15 @@ CHROMEOS_RELEASE = `grep CHROMEOS_RELEASE_CHROME_MILESTONE= /etc/lsb-release | c
 case ARCH
 when 'aarch64', 'armv7l'
   CREW_TGT = 'armv7l-cros-linux-gnueabihf'
+  CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
 when 'i686'
   CREW_TGT = 'i686-cros-linux-gnu'
+  CREW_BUILD = 'i686-cros-linux-gnu'
 when 'x86_64'
   CREW_TGT = 'x86_64-cros-linux-gnu'
+  CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_BUILD = `#{CREW_PREFIX}/share/automake-*/config.guess`.strip # strip to remove newline
 
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT} --program-prefix='' --program-suffix=''"
 CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Dc_args='-fuse-ld=lld -pipe' -Dcpp_args='-fuse-ld=lld -pipe'"
