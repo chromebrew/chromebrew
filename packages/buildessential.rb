@@ -9,6 +9,9 @@ class Buildessential < Package
 
   is_fake
 
+  # Some package installs won't work without this
+  depends_on 'crew_profile_base'
+
   #install first to get ldconfig
   depends_on 'glibc'
   depends_on 'gcc10'

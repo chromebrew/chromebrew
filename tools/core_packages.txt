@@ -10,6 +10,7 @@ c_ares
 ca_certificates
 cmake
 compressdoc
+crew_profile_base
 curl
 diffutils
 doxygen
