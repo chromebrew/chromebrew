@@ -9,19 +9,6 @@ class Sommelier < Package
   source_url 'https://chromium-review.googlesource.com/changes/chromiumos%2Fplatform2~2476815/revisions/5/patch?zip&path=%2FCOMMIT_MSG'
   source_sha256 'd1850e1d4a1e1ec873b9e4add7a881e981f6c0bc17dfd2a1b85efd7df6dd84b4'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-     aarch64: 'f7c8a2ceed9ba558b847b74648e0cf3b9911f52f535131ed4f4c6537158986f8',
-      armv7l: 'f7c8a2ceed9ba558b847b74648e0cf3b9911f52f535131ed4f4c6537158986f8',
-        i686: 'e280ae66333a01f6406333aa6a7836b6d2638ca25aeb81378f55e1bd9df9f339',
-      x86_64: '5348afbfceeed2ddf5078d4d325f50ad736ea89c8249db263009c3d23cd05db9',
-  })
-
   depends_on 'mesa'
   depends_on 'xkbcomp'
   depends_on 'xorg_server' unless File.exists? "#{CREW_PREFIX}/bin/Xwayland.elf"
@@ -254,6 +241,16 @@ EOF"
         system "install -Dm644 .sommelier-default.env #{CREW_DEST_HOME}/.sommelier-default.env"
       end
     end
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    @env = <<~EOF
+      # Sommelier loading code
+      set -a
+      source ~/.sommelier-default.env
+      source ~/.sommelier.env
+      set +a
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/s", @env)
   end
 
   def self.postinstall
@@ -271,14 +268,14 @@ EOF"
     sommelier_in_bashrc = `grep -c "set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a" ~/.bashrc || true`
     unless sommelier_in_bashrc.to_i > 0
       puts "Putting sommelier loading code in ~/.bashrc".lightblue
-      system "echo '# Sommelier environment variables + daemon' >> ~/.bashrc"
-      system "echo 'set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a' >> ~/.bashrc"
+      system "echo '# Sommelier daemon' >> ~/.bashrc"
       system "echo 'startsommelier' >> ~/.bashrc"
       puts "To complete the installation, execute the following:".orange
       puts "source ~/.bashrc".orange
     end
     puts
-    puts "To adjust sommelier environment variables, create ~/.sommelier.env".lightblue
+    FileUtils.touch "#{HOME}/.sommelier.env" unless File.exists? "#{HOME}/.sommelier.env"
+    puts "To adjust sommelier environment variables, edit ~/.sommelier.env".lightblue
     puts "Default values are in ~/.sommelier-default.env".lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue

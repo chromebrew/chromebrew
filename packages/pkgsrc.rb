@@ -9,25 +9,13 @@ class Pkgsrc < Package
   source_url 'https://github.com/NetBSD/pkgsrc/archive/6ba7d2a6ee1388ad515177f5964681f2f6c13f13.tar.gz'
   source_sha256 'fe2cf98d294cdd298c9191c33c5223860f73e9bed8b9d137f0c32a579ea49803'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pkgsrc-2020Q1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pkgsrc-2020Q1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pkgsrc-2020Q1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pkgsrc-2020Q1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '3e5874fdcfe1f9bbc4379c408ea2c306938b8b81aab05a733b0431cd4560c777',
-     armv7l: '3e5874fdcfe1f9bbc4379c408ea2c306938b8b81aab05a733b0431cd4560c777',
-       i686: 'cc7393a04bcb20413e773d265c8855554bb38d4e16bb3b802029a21d9f8a2708',
-     x86_64: 'b461407fd6f86a40d4c5edae331096e57c2d9cdd0fff2e2de6f2d6ab06f53b6a',
-  })
-
   def self.build
-    system "cat << 'EOF' > pkglocate
-#!/bin/bash
-cd #{CREW_PREFIX}/pkgsrc
-./pkglocate \"\$@\"
-EOF"
+    @pkglocate = <<~EOF
+      #!/bin/bash
+      cd #{CREW_PREFIX}/pkgsrc
+      ./pkglocate "$@"
+    EOF
+    IO.write("pkglocate", @pkglocate)
   end
 
   def self.install
@@ -62,6 +50,15 @@ EOF"
       FileUtils.rm_rf 'wrk'
     end
     system "install -Dm755 pkglocate #{CREW_DEST_PREFIX}/pkg/sbin/pkglocate"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @env = <<~EOF
+      # NetBSD pkgsrc configuration
+      source #{CREW_PREFIX}/share/s/s-completion.bash
+      export PATH="$PATH:#{CREW_PREFIX}/pkg/bin:#{CREW_PREFIX}/pkg/gnu/bin:#{CREW_PREFIX}/pkg/sbin"
+      export MANPATH="$MANPATH:#{CREW_PREFIX}/pkg/man"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/pkgsrc", @env)
   end
 
   def self.postinstall
@@ -113,11 +110,6 @@ EOF"
     puts
     puts "Thank you for using pkgsrc!".lightgreen
     puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "echo 'export PATH=\"#{CREW_PREFIX}/pkg/bin:#{CREW_PREFIX}/pkg/gnu/bin:#{CREW_PREFIX}/pkg/sbin:\$PATH\"' >> ~/.bashrc".lightblue
-    puts "echo 'export MANPATH=\"#{CREW_PREFIX}/pkg/man:\$MANPATH\"' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
     puts "To install packages, execute the following:".lightblue
     puts "cd #{CREW_PREFIX}/pkgsrc/<category>/<package>".lightblue
     puts "bmake package-install".lightblue
@@ -126,8 +118,11 @@ EOF"
     puts
     puts "To search packages, execute 'pkglocate <string>'.".lightblue
     puts
+  end
+
+  def self.remove
+    puts
     puts "To completely remove pkgsrc and all packages, execute the following:".lightblue
-    puts "crew remove pkgsrc".lightblue
     puts "rm -rf #{CREW_PREFIX}/pkg #{CREW_PREFIX}/pkgsrc".lightblue
     puts
   end
