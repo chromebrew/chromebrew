@@ -250,7 +250,7 @@ EOF"
       source ~/.sommelier.env
       set +a
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/s", @env)
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @env)
   end
 
   def self.postinstall
