@@ -10,19 +10,7 @@ class Docbook_xsl < Package
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-1-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '7cf8ba8618ed326bec14312fd16d60df6ecaf64d93f4e366936a0631969244bd',
-     armv7l: '7cf8ba8618ed326bec14312fd16d60df6ecaf64d93f4e366936a0631969244bd',
-       i686: '99b4735572497dc97dc37ea1d84da16be4994508ea7293f1fca678b17a3419a8',
-     x86_64: '508cfde5de02091ea5d26aec1e50bd5faff48493a4036d5014f9b3e71bfefa71'
-  })
-
+  depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
   depends_on 'bash'
 
@@ -86,18 +74,6 @@ class Docbook_xsl < Package
   end
 
   def self.postinstall
-    # Docbook common postinstall block
-    ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
-
-    xml_catalog_files_in_bashrc = `grep -c "XML_CATALOG_FILES" ~/.bashrc || true`
-    unless xml_catalog_files_in_bashrc.to_i.positive?
-      puts "Putting \"export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog\" in ~/.bashrc".lightblue
-      system "echo 'export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
-    # End Docbook common postinstall block
-
     system "xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
     system "xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
     system "xmlcatalog --noout --add rewriteSystem http://docbook.sourceforge.net/release/xsl/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver} '#{CREW_PREFIX}/etc/xml/catalog'"
