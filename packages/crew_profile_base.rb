@@ -24,15 +24,13 @@ class Crew_profile_base < Package
 
       # Put your stuff under this comment
     EOF
-    IO.write(".bashrc", @rcfile)
-    IO.write(".zshrc", @rcfile)
+    IO.write("#{CREW_DEST_HOME}/.bashrc", @rcfile)
+    IO.write("#{CREW_DEST_HOME}/.zshrc", @rcfile)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_HOME}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
     FileUtils.cp_r Dir.glob('./src/*'), "#{CREW_DEST_PREFIX}/etc/"
-    FileUtils.cp ".bashrc", "#{CREW_DEST_HOME}"
-    FileUtils.cp ".zshrc", "#{CREW_DEST_HOME}"
   end
 end
