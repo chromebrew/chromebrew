@@ -6,8 +6,8 @@ class Fop < Package
   version '2.2-1'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'http://apache.forsale.plus/xmlgraphics/fop/binaries/fop-2.2-bin.tar.gz'
-  source_sha256 'd5a89e26beae0bc03ad18a0b0d1d3d75f87c32047879d25da11970cb5c4662a3'
+  source_url 'https://mirror.olnevhost.net/pub/apache/xmlgraphics/fop/binaries/fop-2.6-bin.tar.gz'
+  source_sha256 'ccfd7a1d4e5a04e76723946efa1147ffa9a8715ce2b58d2a27085a8e744520f8'
 
   depends_on 'jdk8'
 
@@ -15,10 +15,8 @@ class Fop < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "mkdir -p #{CREW_DEST_LIB_PREFIX}/fop"
     system "cp -r . #{CREW_DEST_LIB_PREFIX}/fop"
-    system "chmod +x #{CREW_DEST_LIB_PREFIX}/fop/fop/fop"
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "echo '#!/bin/bash' > fop"
-      system "echo 'PWD=$(pwd)' >> fop"
       system "echo 'cd #{CREW_LIB_PREFIX}/fop/fop' >> fop"
       system "echo './fop \"$@\"' >> fop"
       system "echo 'cd $PWD' >> fop"
