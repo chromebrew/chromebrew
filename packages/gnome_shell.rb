@@ -31,9 +31,9 @@ class Gnome_shell < Package
   depends_on 'upower'
   depends_on 'gnome_session'
   depends_on 'gnome_settings_daemon'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'evolution_data_server' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'evolution_data_server' => :build
+  depends_on 'gobject_introspection' => :build
   depends_on 'mutter'
 
   def self.patch

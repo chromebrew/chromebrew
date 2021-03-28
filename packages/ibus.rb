@@ -42,14 +42,14 @@ class Ibus < Package
   depends_on 'unicode_emoji'
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'vala' => ':build'
-  depends_on 'gnome_common' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'gtk2' => ':build'
-  depends_on 'gtk3' => ':build'
-  depends_on 'gtk4' => ':build'
-  depends_on 'qtbase' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'vala' => :build
+  depends_on 'gnome_common' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'gtk2' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'gtk4' => :build
+  depends_on 'qtbase' => :build
 
   def self.patch
     system "sed -i 's|/usr/bin/python|#{CREW_PREFIX}/bin/python3|' engine/gensimple.py"

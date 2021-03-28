@@ -22,7 +22,7 @@ class Vte < Package
      x86_64: '0d51c8ac7090fb7b427bd963d71ad2b6f47cb459cae447548760973c60dbf7a6'
   })
 
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gobject_introspection' => :build
   depends_on 'fribidi'
   depends_on 'gtk3'
   depends_on 'gtk4'

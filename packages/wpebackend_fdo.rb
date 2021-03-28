@@ -26,8 +26,8 @@ class Wpebackend_fdo < Package
   depends_on 'libwpe'
   depends_on 'wayland'
   depends_on 'libepoxy'
-  depends_on 'mesa' => ':build'
-  depends_on 'wayland_protocols' => ':build'
+  depends_on 'mesa' => :build
+  depends_on 'wayland_protocols' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

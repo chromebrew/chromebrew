@@ -28,8 +28,8 @@ class Igt_gpu_tools < Package
   depends_on 'libxv'
   depends_on 'libunwind'
   depends_on 'peg'
-  depends_on 'swig' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'swig' => :build
+  depends_on 'gtk_doc' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

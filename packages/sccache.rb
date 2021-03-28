@@ -23,7 +23,7 @@ class Sccache < Package
      x86_64: 'abbede3efe1a1cdee32be218ec2b86781da6074a262d7c07ac23b247610b8262'
   })
 
-  depends_on 'rust' => ':build'
+  depends_on 'rust' => :build
 
   def self.build
     system "cargo fetch \

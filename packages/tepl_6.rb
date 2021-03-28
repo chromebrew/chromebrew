@@ -27,9 +27,9 @@ class Tepl_6 < Package
   depends_on 'glib'
   depends_on 'gtk3'
   depends_on 'gtksourceview'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'vala' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'vala' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} builddir"

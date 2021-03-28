@@ -25,10 +25,10 @@ class Gfbgraph < Package
   })
 
   depends_on 'gnome_online_accounts'
-  depends_on 'rest' => ':build'
-  depends_on 'json_glib' => ':build'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'rest' => :build
+  depends_on 'json_glib' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'

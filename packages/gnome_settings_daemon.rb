@@ -28,10 +28,10 @@ class Gnome_settings_daemon < Package
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libcanberra'
   depends_on 'libnotify'
-  depends_on 'libxslt' => ':build'
-  depends_on 'networkmanager' => ':build'
-  depends_on 'nss' => ':build'
-  depends_on 'docbook_xsl' => ':build'
+  depends_on 'libxslt' => :build
+  depends_on 'networkmanager' => :build
+  depends_on 'nss' => :build
+  depends_on 'docbook_xsl' => :build
   depends_on 'geocode_glib'
   depends_on 'polkit'
   depends_on 'upower'

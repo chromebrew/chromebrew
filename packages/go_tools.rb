@@ -23,7 +23,7 @@ class Go_tools < Package
      x86_64: '61c25f3eae11e32d625f917f8d853e134a24581a555b5edd47e76fcef96f565d'
   })
 
-  depends_on 'go' => ':build'
+  depends_on 'go' => :build
 
   def self.install
     @git_dir = 'go_tools_git'

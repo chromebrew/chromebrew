@@ -24,8 +24,8 @@ class Cantarell_fonts < Package
   })
 
   depends_on 'appstream_glib'
-  depends_on 'fontconfig' => ':build'
-  depends_on 'graphite' => ':build'
+  depends_on 'fontconfig' => :build
+  depends_on 'graphite' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

@@ -25,10 +25,10 @@ class Gnome_autoar < Package
 
   depends_on 'libarchive'
   depends_on 'gtk3'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'vala' => ':build'
-  depends_on 'autoconf_archive' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'vala' => :build
+  depends_on 'autoconf_archive' => :build
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'

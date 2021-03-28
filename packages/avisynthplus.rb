@@ -22,7 +22,7 @@ class Avisynthplus < Package
      x86_64: '84f41b0ea157e9f53267f9e9212c9ad5eea5ee31d2cb1dc7cd516475e10e04ba'
   })
 
-  depends_on 'devil' => ':build'
+  depends_on 'devil' => :build
 
   def self.build
     Dir.mkdir 'builddir'

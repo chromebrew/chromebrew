@@ -31,9 +31,9 @@ class Gst_plugins_good < Package
   depends_on 'taglib'
   depends_on 'libdv'
   depends_on 'libvpx'
-  depends_on 'jack' => ':build'
-  depends_on 'gtk3' => ':build'
-  depends_on 'nasm' => ':build'
+  depends_on 'jack' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'nasm' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

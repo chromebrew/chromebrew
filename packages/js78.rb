@@ -22,8 +22,8 @@ class Js78 < Package
      x86_64: '4cb92c9bd6d44208816cf8bbfb6504795766544a509e06ee2f792a8c44d99beb'
   })
 
-  depends_on 'autoconf213' => ':build'
-  depends_on 'rust' => ':build'
+  depends_on 'autoconf213' => :build
+  depends_on 'rust' => :build
   depends_on 'llvm'
   depends_on 'nspr'
 
