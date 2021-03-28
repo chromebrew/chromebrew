@@ -6,7 +6,7 @@ class Fop < Package
   version '2.6'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://mirror.olnevhost.net/pub/apache/xmlgraphics/fop/binaries/fop-2.6-bin.tar.gz'
+  source_url 'https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.6-bin.tar.gz'
   source_sha256 'ccfd7a1d4e5a04e76723946efa1147ffa9a8715ce2b58d2a27085a8e744520f8'
 
   depends_on 'jdk8'
