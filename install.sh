@@ -16,7 +16,7 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
 
-# EARLY_PACKAGES cannot depend on crew_profile_base
+# EARLY_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 EARLY_PACKAGES="gcc10 llvm brotli c_ares libcyrussasl libiconv libidn2 \
 libmetalink libnghttp2 libpsl libssh2 libtirpc libunistring lz4 openldap \
 rtmpdump zstd ncurses ca_certificates ruby libffi openssl nettle krb5 \

@@ -3,11 +3,24 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-2'
+  version '20210109-1'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'c076c1f99a018eb4c75de3768445e322bcfbc2221942b967a928924ec798e6b0',
+     armv7l: 'c076c1f99a018eb4c75de3768445e322bcfbc2221942b967a928924ec798e6b0',
+       i686: '98d5f94ef0f633da694b1525d1e01ad8ddf82fbb14996c52eec6b7ef51f5fed7',
+     x86_64: '45cf6f34a6fc6bd1bb5238eba9fb7dfbf5e528c6496dcad2d9048aeec4ac20ed'
+  })
 
   depends_on 'coreutils' # for readlink in wrapper script
   depends_on 'libdrm'
@@ -242,20 +255,9 @@ EOF"
         system "install -Dm644 .sommelier-default.env #{CREW_DEST_HOME}/.sommelier-default.env"
       end
     end
-
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
-    @env = <<~EOF
-      # Sommelier loading code
-      set -a
-      source ~/.sommelier-default.env
-      source ~/.sommelier.env
-      set +a
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @env)
   end
 
   def self.postinstall
-    # This needs more help than saltedcoffii can do right now
     puts
     # Having ~/.bashrc load sommelier environment variables by default.
     oldsommelier_in_bashrc = `grep -c "set -a && source ~/.sommelier.env && set +a" ~/.bashrc || true`
@@ -268,16 +270,16 @@ EOF"
 
     sommelier_in_bashrc = `grep -c "set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a" ~/.bashrc || true`
     unless sommelier_in_bashrc.to_i.positive?
-      puts "Putting sommelier loading code in ~/.bashrc".lightblue
-      system "echo '# Sommelier daemon' >> ~/.bashrc"
+      puts 'Putting sommelier loading code in ~/.bashrc'.lightblue
+      system "echo '# Sommelier environment variables + daemon' >> ~/.bashrc"
+      system "echo 'set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a' >> ~/.bashrc"
       system "echo 'startsommelier' >> ~/.bashrc"
       puts 'To complete the installation, execute the following:'.orange
       puts 'source ~/.bashrc'.orange
     end
     puts
-    FileUtils.touch "#{HOME}/.sommelier.env" unless File.exists? "#{HOME}/.sommelier.env"
-    puts "To adjust sommelier environment variables, edit ~/.sommelier.env".lightblue
-    puts "Default values are in ~/.sommelier-default.env".lightblue
+    puts 'To adjust sommelier environment variables, create ~/.sommelier.env'.lightblue
+    puts 'Default values are in ~/.sommelier-default.env'.lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
     puts "To stop the sommelier daemon, run 'stopsommelier'".lightblue
