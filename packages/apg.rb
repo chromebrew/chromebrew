@@ -15,7 +15,7 @@ class Apg < Package
     system "tar xf apg_2.2.3.dfsg.1-5.debian.tar.xz"
     FileUtils.rm "debian/patches/series"
     system "sed -i '10,16d' debian/patches/Makefile"
-    system "for i in debian/patches/*; do patch -Np1 -i \"${i}\"; done"
+    system "for i in debian/patches/*; do patch -Np1 -i \"\${i}\"; done"
     system "sed -i 's:INSTALL_PREFIX = /usr/local:INSTALL_PREFIX = #{CREW_DEST_PREFIX}:' Makefile"
     system "sed -i 's:FLAGS = -Wall:FLAGS = -Wall -O2 -pipe -flto=auto:' Makefile"
     system "sed -i 's:root:$(whoami):g' Makefile"
