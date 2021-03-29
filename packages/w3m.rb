@@ -3,7 +3,7 @@ require 'package'
 class W3m < Package
   description 'w3m is a text-based browser, pager and HTML typesetter'
   homepage 'http://w3m.sourceforge.net/'
-  version '0.5.3'
+  version '0.5.3-38'
   license 'MIT'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/w3m/-/archive/debian/0.5.3-38/w3m-debian-0.5.3-38.tar.bz2'

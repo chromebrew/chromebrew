@@ -3,7 +3,7 @@ require 'package'
 class Speedometer < Package
   description 'Measure and display the rate of data across a network connection or data being stored in a file.'
   homepage 'https://excess.org/speedometer/'
-  version '2.8'
+  version '2.8-3'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/s/speedometer/speedometer_2.8-3_all.deb'
