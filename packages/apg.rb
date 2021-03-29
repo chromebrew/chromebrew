@@ -1,8 +1,7 @@
 require 'package'
 
 class Apg < Package
-  description 'APG (Automated Password Generator) is a toolset for random
- password generation.'
+  description 'APG (Automated Password Generator) is a toolset for random password generation.'
   homepage 'http://www.adel.nursat.kz/apg/'
   version '2.2.3.dfsg.1'
   license 'BSD-3'
@@ -21,7 +20,7 @@ class Apg < Package
     system "sed -i 's:FLAGS = -Wall:FLAGS = -Wall -O2 -pipe -flto=auto:' Makefile"
     system "sed -i 's:root:$(whoami):g' Makefile"
   end
-  
+
   def self.build
     system "make"
   end
