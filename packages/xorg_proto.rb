@@ -22,7 +22,7 @@ class Xorg_proto < Package
       x86_64: '1ab0f6074972bafa33e78e945958b70c7886c0abff146bc8a020bfc499c7e14f',
   })
 
-  depends_on 'llvm' => ':build'
+  depends_on 'llvm' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

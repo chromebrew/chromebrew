@@ -30,12 +30,12 @@ class Gst_plugins_bad < Package
   depends_on 'libgudev'
   depends_on 'libusb'
   depends_on 'libvdpau'
-  depends_on 'mjpegtools' => ':build'
-  depends_on 'chromaprint' => ':build'
-  depends_on 'libmms' => ':build'
-  depends_on 'faad2' => ':build'
-  depends_on 'libdca' => ':build'
-  depends_on 'libdvdnav' => ':build'
+  depends_on 'mjpegtools' => :build
+  depends_on 'chromaprint' => :build
+  depends_on 'libmms' => :build
+  depends_on 'faad2' => :build
+  depends_on 'libdca' => :build
+  depends_on 'libdvdnav' => :build
 
   def self.build
     system "meson \

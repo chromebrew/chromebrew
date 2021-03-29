@@ -25,8 +25,8 @@ class Networkmanager < Package
 
   depends_on 'gobject_introspection'
   depends_on 'gtk_doc'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
   depends_on 'modemmanager'
   depends_on 'libndp'
   depends_on 'jansson'

@@ -23,7 +23,7 @@ class Harfbuzz < Package
       x86_64: 'bdcb5b9ab85752b8f8ce46b919e6739754e369fd807a5f52d85afb43ca815153',
   })
 
-  depends_on 'cairo' => ':build'
+  depends_on 'cairo' => :build
   depends_on 'glib' => :build
   depends_on 'gobject_introspection'
   depends_on 'ragel' => :build

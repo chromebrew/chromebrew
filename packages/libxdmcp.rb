@@ -23,7 +23,7 @@ class Libxdmcp < Package
   })
 
   depends_on "xorg_proto"
-  depends_on "llvm" => ':build'
+  depends_on "llvm" => :build
 
   def self.build
     ENV['CXXFLAGS'] = "-fuse-ld=lld"

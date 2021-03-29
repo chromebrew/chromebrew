@@ -30,9 +30,9 @@ class Libavif < Package
   depends_on 'libpng'
   depends_on 'libjpeg'
   depends_on 'libyuv'
-  depends_on 'nasm' => ':build'
-  depends_on 'pkgconf' => ':build'
-  depends_on 'gdk_pixbuf' => ':build'
+  depends_on 'nasm' => :build
+  depends_on 'pkgconf' => :build
+  depends_on 'gdk_pixbuf' => :build
 
   def self.build
     ARCH == 'x86_64' ? (@svt = 'ON') : (@svt = 'OFF')

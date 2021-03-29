@@ -28,7 +28,7 @@ class Consolekit < Package
   depends_on 'polkit'
   depends_on 'linux_pam'
   depends_on 'eudev'
-  depends_on 'xmlto' => ':build'
+  depends_on 'xmlto' => :build
 
   def self.build
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \

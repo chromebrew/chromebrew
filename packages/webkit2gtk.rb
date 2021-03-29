@@ -28,8 +28,8 @@ class Webkit2gtk < Package
   depends_on 'freetype'
   depends_on 'gtk3'
   depends_on 'harfbuzz'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'gobject_introspection' => :build
   depends_on 'libsoup'
   depends_on 'libwpe'
   depends_on 'wpebackend_fdo'

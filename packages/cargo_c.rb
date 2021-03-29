@@ -25,7 +25,7 @@ class Cargo_c < Package
      x86_64: 'de92ff24a09ed7d26f0b8490e174c83ff9941ab33b417a8d20243d0f85d18ef3'
   })
 
-  depends_on 'rust' => ':build'
+  depends_on 'rust' => :build
 
   def self.build
     system "cargo fetch \
