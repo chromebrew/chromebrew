@@ -27,8 +27,8 @@ class Gnome_weather < Package
   depends_on 'libgweather'
   depends_on 'geoclue'
   depends_on 'gnome_desktop'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'appstream_glib' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'appstream_glib' => :build
   depends_on 'libhandy'
 
   def self.build

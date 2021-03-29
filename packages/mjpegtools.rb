@@ -27,7 +27,7 @@ class Mjpegtools < Package
   depends_on 'libpng'
   depends_on 'libdv'
   depends_on 'libsdl2'
-  depends_on 'v4l_utils' => ':build'
+  depends_on 'v4l_utils' => :build
 
   def self.build
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \

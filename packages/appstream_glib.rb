@@ -25,10 +25,10 @@ class Appstream_glib < Package
   depends_on 'docbook'
   depends_on 'gcab'
   depends_on 'gdk_pixbuf'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gperf' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gperf' => :build
   depends_on 'gtk3'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'gtk_doc' => :build
   depends_on 'json_glib'
   depends_on 'libarchive'
   depends_on 'libsoup'

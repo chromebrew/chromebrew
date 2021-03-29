@@ -23,7 +23,7 @@ class Libx11 < Package
   })
 
 
-  depends_on 'llvm' => ':build'
+  depends_on 'llvm' => :build
   depends_on 'xorg_proto'
   depends_on 'libxcb'
   depends_on 'libxtrans'

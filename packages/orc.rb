@@ -23,8 +23,8 @@ class Orc < Package
      x86_64: '31c20cfc000b15c7bffceb6aec67bb337a7240eef8c62d74349cd553ed615b6d'
   })
 
-  depends_on 'valgrind' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'valgrind' => :build
+  depends_on 'gtk_doc' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

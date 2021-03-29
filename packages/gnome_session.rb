@@ -26,11 +26,11 @@ class Gnome_session < Package
   depends_on 'gsettings_desktop_schemas'
   depends_on 'gtk3'
   depends_on 'gnome_desktop'
-  depends_on 'mesa' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'libxtrans' => ':build'
-  depends_on 'xmlto' => ':build'
-  depends_on 'docbook_xsl' => ':build'
+  depends_on 'mesa' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'libxtrans' => :build
+  depends_on 'xmlto' => :build
+  depends_on 'docbook_xsl' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS}\

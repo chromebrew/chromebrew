@@ -23,8 +23,8 @@ class Git_lfs < Package
      x86_64: '6078b2db1ac18189f96da4aa5cd9ddd78db5575e89080e85824a08b2dc21e958'
   })
 
-  depends_on 'go' => ':build'
-  depends_on 'go_tools' => ':build'
+  depends_on 'go' => :build
+  depends_on 'go_tools' => :build
 
   def self.build
     system 'gem install -N ronn'

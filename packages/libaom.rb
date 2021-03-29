@@ -22,7 +22,7 @@ class Libaom < Package
      x86_64: 'aae749ceebb4a126c85f80c2864253d8377893d225d26045e6838f7cb35a1cbe'
   })
 
-  depends_on 'yasm' => ':build'
+  depends_on 'yasm' => :build
 
   def self.prebuild
     @git_dir = 'aom_git'

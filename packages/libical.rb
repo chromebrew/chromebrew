@@ -24,9 +24,9 @@ class Libical < Package
 
   depends_on 'glib'
   depends_on 'icu4c'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'vala' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'vala' => :build
+  depends_on 'gobject_introspection' => :build
 
   def self.build
     Dir.mkdir 'builddir'

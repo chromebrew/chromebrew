@@ -24,9 +24,9 @@ class Telepathy_glib < Package
   })
 
   depends_on 'dbus_glib'
-  depends_on 'libxslt' => ':build'
-  depends_on 'vala' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'libxslt' => :build
+  depends_on 'vala' => :build
+  depends_on 'gobject_introspection' => :build
 
   def self.build
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \

@@ -23,8 +23,8 @@ class Pax_utils < Package
   })
 
   depends_on 'pyelftools'
-  depends_on 'libcap' => ':build'
-  depends_on 'libseccomp' => ':build'
+  depends_on 'libcap' => :build
+  depends_on 'libseccomp' => :build
 
   def self.build
     system "sed -i 's|/usr/bin/env python|/usr/bin/env python3|g' lddtree.py"
