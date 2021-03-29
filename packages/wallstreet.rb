@@ -9,7 +9,7 @@ class Wallstreet < Package
   source_url "https://httpredir.debian.org/debian/pool/main/h/hollywood/hollywood_1.21.orig.tar.gz"
   source_sha256 '793ef1f022b376e131c75e05ff1b55a010c0f4193225bb79018855cb9ab89acb'
 
-  # Hollywood doesn't need binaries
+  # Wallstreet doesn't need binaries
   
   depends_on 'byobu'
   depends_on 'libcaca'
@@ -17,21 +17,13 @@ class Wallstreet < Package
   depends_on 'ticker'
   depends_on 'wget'
   depends_on 'w3m'
-
-  def self.patch
-    system "sed -i 's:WIDGET_DIR=\"$(dirname $0)/../lib/$PKG\":WIDGET_DIR=\"$(dirname $0)/../libexec/$PKG\":' ./bin/hollywood"
-  end
-  
-  def self.build
-    FileUtils.cp_r "./lib", "./libexec"
-  end
   
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man1"
     FileUtils.cp "./bin/wallstreet", "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp_r "./libexec/wallstreet/", "#{CREW_DEST_PREFIX}/libexec/"
+    FileUtils.cp_r "./lib/wallstreet/", "#{CREW_DEST_PREFIX}/lib/"
     FileUtils.cp_r "./share/wallstreet/", "#{CREW_DEST_PREFIX}/share/"
     FileUtils.cp "./share/man/man1/wallstreet.1", "#{CREW_DEST_PREFIX}/share/man/man1/"
   end

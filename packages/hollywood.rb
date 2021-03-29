@@ -23,20 +23,12 @@ class Hollywood < Package
   depends_on 'tree'
   depends_on 'util_linux'
 
-  def self.patch
-    system "sed -i 's:WIDGET_DIR=\"$(dirname $0)/../lib/$PKG\":WIDGET_DIR=\"$(dirname $0)/../libexec/$PKG\":' ./bin/hollywood"
-  end
-  
-  def self.build
-    FileUtils.cp_r "./lib", "./libexec"
-  end
-  
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man1"
     FileUtils.cp "./bin/hollywood", "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp_r "./libexec/hollywood/", "#{CREW_DEST_PREFIX}/libexec/"
+    FileUtils.cp_r "./lib/hollywood/", "#{CREW_DEST_PREFIX}/lib/"
     FileUtils.cp_r "./share/hollywood/", "#{CREW_DEST_PREFIX}/share/"
     FileUtils.cp "./share/man/man1/hollywood.1", "#{CREW_DEST_PREFIX}/share/man/man1/"
   end
