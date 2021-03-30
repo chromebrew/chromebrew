@@ -23,7 +23,6 @@ class Qttools < Package
   })
 
   depends_on 'qtbase'
-  depends_on 'libtinfo'
 
   def self.build
     # Note: This MAY NOT COMPILE with llvm installed on x86. Install dependencies,
