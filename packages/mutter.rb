@@ -23,8 +23,8 @@ class Mutter < Package
   depends_on 'dconf'
   depends_on 'gnome_settings_daemon'
   depends_on 'gsettings_desktop_schemas'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'xorg_server' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'xorg_server' => :build
   depends_on 'libinput'
   depends_on 'libwacom'
   depends_on 'startup_notification'

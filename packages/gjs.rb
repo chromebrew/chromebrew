@@ -27,8 +27,8 @@ class Gjs < Package
   depends_on 'gobject_introspection'
   depends_on 'js78'
   depends_on 'dconf'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'dbus' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'dbus' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

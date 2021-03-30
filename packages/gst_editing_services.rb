@@ -24,9 +24,9 @@ class Gst_editing_services < Package
   })
 
   depends_on 'gst_plugins_base'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'pygobject' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'pygobject' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

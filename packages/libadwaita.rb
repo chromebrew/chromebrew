@@ -25,11 +25,11 @@ class Libadwaita < Package
   depends_on 'cairo'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gobject_introspection' => :build
   depends_on 'graphene'
   depends_on 'gtk4'
   depends_on 'pango'
-  depends_on 'vala' => ':build'
+  depends_on 'vala' => :build
 
   def self.patch
     system "sed -i 's/-fstack-protector-strong/-flto/g' meson.build"

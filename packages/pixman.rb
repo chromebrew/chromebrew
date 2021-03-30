@@ -22,7 +22,7 @@ class Pixman < Package
      x86_64: 'a3c1b4c722e598ae10571fe8ef00dddc431ac6d833980f6f859b093a9ac385d1',
   })
 
-  depends_on 'llvm' => ':build'
+  depends_on 'llvm' => :build
   depends_on 'libpng'
 
   def self.build

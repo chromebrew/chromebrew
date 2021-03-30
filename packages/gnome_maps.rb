@@ -33,8 +33,8 @@ class Gnome_maps < Package
   depends_on 'libhandy'
   depends_on 'folks'
   depends_on 'gfbgraph'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'yelp_tools' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'yelp_tools' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

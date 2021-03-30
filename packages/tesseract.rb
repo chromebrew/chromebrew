@@ -28,9 +28,9 @@ class Tesseract < Package
   depends_on 'libjpeg_turbo'
   depends_on 'giflib'
   depends_on 'leptonica'
-  depends_on 'cairo' => ':build'
-  depends_on 'pango' => ':build'
-  depends_on 'asciidoc' => ':build'
+  depends_on 'cairo' => :build
+  depends_on 'pango' => :build
+  depends_on 'asciidoc' => :build
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'

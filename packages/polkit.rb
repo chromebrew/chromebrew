@@ -23,8 +23,8 @@ class Polkit < Package
   })
 
   depends_on 'js78'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'gobject_introspection' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

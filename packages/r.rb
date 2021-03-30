@@ -34,7 +34,7 @@ class R < Package
   depends_on 'tk'
   depends_on 'xdg_utils'
   depends_on 'sommelier'
-  depends_on 'libiconv' => ':build' #if iconv error then reinstall libiconv
+  depends_on 'libiconv' => :build #if iconv error then reinstall libiconv
 
   def self.build
     system './configure',

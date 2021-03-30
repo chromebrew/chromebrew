@@ -35,9 +35,9 @@ class Yelp < Package
   depends_on 'pango'
   depends_on 'webkit2gtk'
   depends_on 'yelp_xsl'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'itstool' => ':build'
-  depends_on 'xorg_server' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'itstool' => :build
+  depends_on 'xorg_server' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

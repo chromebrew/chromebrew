@@ -27,9 +27,9 @@ class Geoclue < Package
   depends_on 'json_glib'
   depends_on 'avahi'
   depends_on 'geocode_glib'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'libnotify' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'libnotify' => :build
   depends_on 'modemmanager'
 
   def self.build

@@ -36,10 +36,10 @@ class Gedit < Package
   depends_on 'pango'
   depends_on 'pygobject'
   depends_on 'tepl_6'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'vala' => ':build'
-  depends_on 'yelp_tools' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'vala' => :build
+  depends_on 'yelp_tools' => :build
 
   def self.patch
     # Source has libgd repo as submodule

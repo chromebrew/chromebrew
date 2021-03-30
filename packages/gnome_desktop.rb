@@ -29,9 +29,9 @@ class Gnome_desktop < Package
   depends_on 'libxkbfile'
   depends_on 'xkeyboard_config'
   depends_on 'iso_codes'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'yelp_tools' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'yelp_tools' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

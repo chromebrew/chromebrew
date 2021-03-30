@@ -35,6 +35,7 @@ class Xwayland < Package
   depends_on 'libxkbcommon'
   depends_on 'libxkbfile'
   depends_on 'libxtrans'
+  depends_on 'libxdmcp'
   depends_on 'lzma' => :build
   depends_on 'mesa'
   depends_on 'pixman'
