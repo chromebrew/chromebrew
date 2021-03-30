@@ -7,6 +7,7 @@ class Libcdio_paranoia < Package
   description 'CD paranoia libraries from libcdio'
   homepage 'https://www.gnu.org/software/libcdio/'
   version '10.2-2.0.1'
+  license 'GPLv3'
   compatibility 'all'
   source_url 'https://github.com/rocky/libcdio-paranoia/archive/release-10.2+2.0.1.tar.gz'
   source_sha256 '7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95'
