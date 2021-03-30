@@ -1,9 +1,9 @@
 require 'package'
 
 class Libnxml < Package
-  description 'libmRSS is a C library for parsing, writing and creating RSS files or streams.'
+  description 'libnXML is a C library for parsing, writing and creating XML 1.0 and 1.1 files or streams.'
   homepage 'https://www.autistici.org/bakunin/libnxml/doc/'
-  version '2.1'
+  version '0.18.3-8'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/libnxml/-/archive/debian/0.18.3-8/libnxml-debian-0.18.3-8.tar.bz2'

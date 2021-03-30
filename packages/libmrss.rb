@@ -3,7 +3,7 @@ require 'package'
 class Libmrss < Package
   description 'libmRSS is a C library for parsing, writing and creating RSS files or streams.'
   homepage 'https://www.autistici.org/bakunin/libmrss/doc/'
-  version '2.1'
+  version '0.19.2-7'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/libmrss/-/archive/debian/0.19.2-7/libmrss-debian-0.19.2-7.tar.bz2'
