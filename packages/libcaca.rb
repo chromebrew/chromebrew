@@ -24,7 +24,7 @@ class Libcaca < Package
 
   depends_on 'imlib2'
   depends_on 'libx11'
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
   depends_on 'slang'
 
   def self.build
