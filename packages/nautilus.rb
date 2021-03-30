@@ -78,5 +78,6 @@ class Nautilus < Package
   
   def self.postinstall
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas/"
+    FileUtils.touch "#{CREW_DEST_HOME}/.gtk-bookmarks"
   end
 end
