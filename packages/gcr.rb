@@ -3,24 +3,25 @@ require 'package'
 class Gcr < Package
   description 'GNOME crypto package'
   homepage 'https://www.gnome.org'
-  version '3.38.1'
+  version '3.40.0'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gcr/3.38/gcr-3.38.1.tar.xz'
-  source_sha256 '17fcaf9c4a93a65fb1c72b82643bb102c13344084687d5886ea66313868d9ec9'
+  source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{version}/gcr-#{version}.tar.bz2"
+  source_sha256 '659a49bac1c713a743894845c82ef53ccc7326dcce1879b1af0ab502ec10e7ab'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.38.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.38.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.38.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.38.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'a61f2009bc3bc00b18480b3f79954c4963bba4829f898e8247d1222322277fc5',
-     armv7l: 'a61f2009bc3bc00b18480b3f79954c4963bba4829f898e8247d1222322277fc5',
-       i686: '3790b41ac9f7e88192a1f59199d62c2d31d4f09edd60ce04f7d4f0a71750f1d4',
-     x86_64: '9ed6176ff86030e47818c147ff2d54fa16aab1da29997caff364387b7858a7a5'
+    aarch64: '0756d3e389d6414442a8991cf59fe2bc9b08aaea009ef271608da7fb0da37c0e',
+     armv7l: '0756d3e389d6414442a8991cf59fe2bc9b08aaea009ef271608da7fb0da37c0e',
+       i686: '70b81b9f78daf7a22cd7489819428fd48df8630e81289b3fe255a5c3b4b7dd6c',
+     x86_64: '4f27f7bb81abadf2a044637b0afb286ec252107c1380291bb82e6c3d7e230aa1'
   })
+
   depends_on 'libgcrypt'
   depends_on 'libxslt'
   depends_on 'desktop_file_utilities'
