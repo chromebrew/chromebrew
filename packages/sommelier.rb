@@ -255,7 +255,6 @@ EOF"
   end
 
   def self.postinstall
-    # This needs more help than saltedcoffii can do right now
     puts
     # Having ~/.bashrc load sommelier environment variables by default.
     oldsommelier_in_bashrc = `grep -c "set -a && source ~/.sommelier.env && set +a" ~/.bashrc || true`
