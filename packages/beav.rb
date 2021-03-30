@@ -42,7 +42,9 @@ class Beav < Package
   end
 
   def self.install
-    system "install -Dm 755 beav #{CREW_DEST_PREFIX}/bin/beav"
-    system "install -Dm 755 beav.1 #{CREW_DEST_MAN_PREFIX}/man1/beav.1"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.install 'beav', "#{CREW_DEST_PREFIX}/bin/beav", mode: 0755
+    FileUtils.install 'beav.1' "#{CREW_DEST_MAN_PREFIX}/man1/beav.1", mode: 0755
   end
 end
