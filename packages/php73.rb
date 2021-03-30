@@ -3,25 +3,12 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.3.27'
+  @_ver = '7.3.27-1'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
   source_sha256 '65f616e2d5b6faacedf62830fa047951b0136d5da34ae59e6744cbaf5dca148d'
-
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '7bd308b90ec61c6d1f03bfa97cc5883a9e963fab9d63d9922493d6ca5dceefcc',
-     armv7l: '7bd308b90ec61c6d1f03bfa97cc5883a9e963fab9d63d9922493d6ca5dceefcc',
-       i686: 'd3b0be456454fd98673477769c31b240c8fff997740239d1465d14434fde47ca',
-     x86_64: 'fc2d093bc2ba1ab0169c6d0f644649d952b4cb32286a2aa82331dfa5d5cc05ed'
-  })
 
   depends_on 'libgcrypt'
   depends_on 'libjpeg_turbo'
@@ -61,7 +48,7 @@ class Php73 < Package
   end
 
   def self.build
-    system "env TMPDIR='#{CREW_PREFIX}/tmp' CFLAGS='-pipe -ltinfo' \
+    system "env TMPDIR='#{CREW_PREFIX}/tmp' CFLAGS='-pipe -ltinfow' \
       ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \

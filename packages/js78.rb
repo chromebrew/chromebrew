@@ -1,26 +1,13 @@
 require 'package'
 
 class Js78 < Package
-  description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 78'
-  @_ver = '78.7.0'
+  description 'Spidermonkey is a JavaScript interpreter with libraries from Mozilla — Version 78'
+  @_ver = '78.7.0-1'
   version @_ver
   license 'MPL-2.0'
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'
-
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'bf8e6afa9277745bad6e9d4f16f86e4b5bb41357ef502c9776968d0a4ecbe008',
-     armv7l: 'bf8e6afa9277745bad6e9d4f16f86e4b5bb41357ef502c9776968d0a4ecbe008',
-       i686: '68e098b895ecd069ed0f2eb0fec321a03caded6cbc426daec7d2e63e8572f2e3',
-     x86_64: '4cb92c9bd6d44208816cf8bbfb6504795766544a509e06ee2f792a8c44d99beb'
-  })
 
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
@@ -67,7 +54,7 @@ class Js78 < Package
             CXXFLAGS='-I#{CREW_PREFIX}/include/c++/v1/ -flto=thin'
             CXX='clang++ -stdlib=libc++ -I#{CREW_PREFIX}/include/c++/v1/ -flto=thin' \
             AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib \
-            LDFLAGS='-lreadline -ltinfo -flto=thin' \
+            LDFLAGS='-lreadline -ltinfow -flto=thin' \
             ../js/src/configure --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --disable-debug \

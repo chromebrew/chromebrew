@@ -22,7 +22,7 @@ class Iptraf < Package
      x86_64: '3b1c16b812628599c72e853783eec2b7f144b18c3c5b3d2eda1ecacd8e006b0e',
   })
 
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
 
   def self.build
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Setup"

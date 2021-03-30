@@ -3,24 +3,11 @@ require 'package'
 class Percona_server < Package
   description 'Percona Server for MySQL® is a free, fully compatible, enhanced, open source drop-in replacement for MySQL that provides superior performance, scalability and instrumentation.'
   homepage 'https://www.percona.com/software/mysql-database/percona-server'
-  version '5.7.20-19'
+  version '5.7.20-20'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://www.percona.com/downloads/Percona-Server-LATEST/Percona-Server-5.7.20-19/source/tarball/percona-server-5.7.20-19.tar.gz'
   source_sha256 '17f06c07165954e7eacc3ba2cac0e1d4ba65b0b568f2437298d3c17a6a0940fd'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',
-     armv7l: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',
-       i686: '757706998388bf559a70f53567af4518c523f1236a500e228210ce023ef41a5c',
-     x86_64: '47431d59582a5be3361cbfd571de3da9a557b76cea40a01f4b58347988e7aa2c',
-  })
 
   depends_on 'cmake' => :build
   depends_on 'percona_boost'
@@ -33,7 +20,7 @@ class Percona_server < Package
     system "cmake . \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DINSTALL_LIBDIR=#{ARCH_LIB} \
-            -DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncurses \
+            -DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncursesw \
             -DCMAKE_BUILD_TYPE=Release \
             -DBUILD_CONFIG=mysql_release \
             -DCOMMUNITY_BUILD=ON \

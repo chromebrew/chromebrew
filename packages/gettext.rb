@@ -23,7 +23,7 @@ class Gettext < Package
      x86_64: 'de490d13276f5b9a48e007b57c08c64aac21730b1091be453c1373a0e1c26c52'
   })
 
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
   depends_on 'libxml2'
   depends_on 'icu4c'
   depends_on 'jdk8' => :build
@@ -32,15 +32,15 @@ class Gettext < Package
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto'\
-    ./configure #{CREW_OPTIONS} \
-    --disable-static \
-    --enable-shared \
-    --with-pic"
+            ./configure #{CREW_OPTIONS} \
+              --enable-static \
+              --enable-shared \
+              --with-pic"
     system 'make'
   end
 
   def self.check
-    # system 'make', 'check'
+    system 'make check || true'
   end
 
   def self.install

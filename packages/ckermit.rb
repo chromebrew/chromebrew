@@ -22,10 +22,10 @@ class Ckermit < Package
      x86_64: '4740c149d172a854b916912da26d7afdaf61a91a20642fc8aa568cf734cde194',
   })
 
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
 
   def self.build
-    system "make KFLAGS='-DCK_NCURSES -I#{CREW_PREFIX}/include/ncurses' LNKFLAGS='-lresolv -lcrypt' linux"
+    system "make KFLAGS='-DCK_NCURSES -I#{CREW_PREFIX}/include/ncursesw' LNKFLAGS='-lresolv -lcrypt' linux"
   end
 
   def self.install

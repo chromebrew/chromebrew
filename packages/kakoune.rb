@@ -23,7 +23,7 @@ class Kakoune < Package
      x86_64: 'daed7d68e53f1f2751dc6a9a59c3efaab0a89651ff690b2cb5ac8be02e4d95f1',
   })
 
-  depends_on 'ncurses'  => :build
+  depends_on 'ncursesw'  => :build
   depends_on 'asciidoc' => :build
   depends_on 'libxslt'  => :build
 

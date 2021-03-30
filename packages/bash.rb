@@ -23,14 +23,17 @@ class Bash < Package
   })
 
   depends_on 'llvm' => :build # Needed only for lld, which appears to allow linking libiconv where ld does not.
-  depends_on 'ncurses' => :build # A static enabled ncurses build w/o "--without-normal" is required to build.
+  depends_on 'ncursesw' => :build # A static enabled ncurses build w/o "--without-normal" is required to build.
 
-  case ARCH
-  when 'i686'
+# glibc's malloc is significantly more stable than bash's malloc
+#  case ARCH
+#  when 'i686'
+#  @CONFIGUREFLAGS = '--without-bash-malloc'
+#  when 'aarch64','armv7l','x86_64'
+#  @CONFIGUREFLAGS = '--with-bash-malloc'
+#  end
+
   @CONFIGUREFLAGS = '--without-bash-malloc'
-  when 'aarch64','armv7l','x86_64'
-  @CONFIGUREFLAGS = '--with-bash-malloc'
-  end
 
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \

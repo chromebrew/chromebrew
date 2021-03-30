@@ -26,13 +26,10 @@ class Hunspell_base < Package
 
   def self.build
     system 'autoreconf -vfi'
-    system "./configure",
-           "CPPFLAGS=-I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw -I#{CREW_PREFIX}/include/ncurses",
-           "--prefix=#{CREW_PREFIX}",
-           "--include=#{CREW_PREFIX}/include",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-ui',
-           '--with-readline'
+    system "./configure #{CREW_OPTIONS} \
+              CPPFLAGS=-I#{CREW_PREFIX}/include -I#{CREW_PREFIX}/include/ncursesw \
+              --with-ui
+              --with-readline"
     system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' man/hunspell.1"
     system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' src/tools/hunspell.cxx"
     system "sed -i 's,ncurses.h,#{CREW_PREFIX}/include/ncursesw/ncurses.h,' src/tools/hunspell.cxx"

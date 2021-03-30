@@ -3,24 +3,11 @@ require 'package'
 class Python27 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '2.7.18'
+  version '2.7.18-1'
   license 'custom'
   compatibility 'all'
   source_url 'https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz'
   source_sha256 'b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43'
-
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.18-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.18-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python27-2.7.18-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'c3f95252f2a2ebcf7659d1d38ef25752aa7cb1495c90d2baf69f1e91d51ad472',
-     armv7l: 'c3f95252f2a2ebcf7659d1d38ef25752aa7cb1495c90d2baf69f1e91d51ad472',
-       i686: '5219b6078f2ae15b32de827215b707e2efc166dbd7b9304772eb0716467b9ad9',
-     x86_64: '6572621e821f572eb9f60b604c5f578339e6dca1f618601c61970095cc06b675',
-  })
 
   depends_on 'bz2' => :build
   depends_on 'sqlite' => :build
@@ -33,10 +20,11 @@ class Python27 < Package
 
   def self.build
     # IMPORTANT: Do not build with python27 already installed or pip will not be included.
+    raise StandardError, 'Please remove python27 before building.' if File.exist?("#{CREW_PREFIX}/bin/python2.7")
     # python requires #{CREW_LIB_PREFIX}, so leave as is but specify -rpath
     # SSL errors in test may require a 2021 version of libressl.
 
-    system './configure', "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses -I#{CREW_PREFIX}/include/ncursesw",
+    system './configure', " -I#{CREW_PREFIX}/include/ncursesw",
         "LDFLAGS=-Wl,-rpath,-L#{CREW_LIB_PREFIX}",
         '--with-ensurepip=install',
         '--enable-optimizations',

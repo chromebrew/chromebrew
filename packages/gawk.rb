@@ -24,7 +24,7 @@ class Gawk < Package
 
   depends_on 'libsigsegv'
   depends_on 'readline' => :build
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
   depends_on 'mpfr'
   depends_on 'gmp'
 

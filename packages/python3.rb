@@ -3,25 +3,12 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.9.2'
+  @_ver = '3.9.2-1'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
   source_sha256 '3c2034c54f811448f516668dce09d24008a0716c3a794dd8639b5388cbde247d'
-
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '83b292381a6fcda63f3c8c6c4b682694be673b42ed14eb1482e5cfe6f1c0f835',
-     armv7l: '83b292381a6fcda63f3c8c6c4b682694be673b42ed14eb1482e5cfe6f1c0f835',
-       i686: '8f3ba22ea8824a958aafe9127e8fa078406323a6d9785e2986d3dc4ac45f671a',
-     x86_64: 'd3195034ad9d26e9e4c0c08c35bff6f551cc5661b970284c96deb81f32d34fb8'
-  })
 
   depends_on 'bz2'
   depends_on 'xzutils'

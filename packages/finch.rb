@@ -23,14 +23,14 @@ class Finch < Package
   })
 
   depends_on 'glib'
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
   depends_on 'tcl'
   depends_on 'perl'
   depends_on 'gnutls'
 
   def self.build
     system "sed -i 's,/usr/include,#{CREW_PREFIX}/include,g' configure"
-    system './configure',
+    system "./configure #{CREW_OPTIONS}",
       '--disable-avahi',
       '--disable-dbus',
       '--disable-gtkui',
@@ -48,7 +48,6 @@ class Finch < Package
       "--includedir=#{CREW_PREFIX}/include",
       "--oldincludedir=#{CREW_PREFIX}/include",
       "--with-tclconfig=#{CREW_LIB_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}",
       '--without-x'
     system 'make'
   end

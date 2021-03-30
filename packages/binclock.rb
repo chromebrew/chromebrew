@@ -22,10 +22,10 @@ class Binclock < Package
      x86_64: 'aae91be20e29e463d85d419c19ba534a0533f3b5b035a93a3060c18bf22f7c3f',
   })
 
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
 
   def self.build
-    system "sed -i 's,#include <ncurses.h>,#include <#{CREW_PREFIX}/include/ncurses/ncurses.h>,' binclock.c"
+    system "sed -i 's,#include <ncurses.h>,#include <#{CREW_PREFIX}/include/ncursesw/ncurses.h>,' binclock.c"
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' Makefile"
     system "sed -i 's,/usr/share,#{CREW_PREFIX}/share,g' Makefile"
     system "make"

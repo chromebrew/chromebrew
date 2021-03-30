@@ -1,6 +1,6 @@
 require 'package'
 
-class Ldc < Package                 # The first character of the class name must be upper case
+class Ldc < Package
   description 'D language compiler using LLVM.'
   homepage 'https://github.com/ldc-developers/ldc'
   version '1.7.0'
@@ -24,13 +24,13 @@ class Ldc < Package                 # The first character of the class name must
 
   depends_on 'llvm'
   depends_on 'curl'
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
   depends_on 'zlibpkg'
   depends_on 'libconfig' => :build
   depends_on 'cmake' => :build
   depends_on 'libedit' => :build
 
-  def self.build                   # the steps required to build the package
+  def self.build
     system "mkdir", "build"
     system "curl -L https://github.com/ldc-developers/ldc/releases/download/v0.17.5/{ldc-0.17.5-src.tar.gz} -o \"#1\""
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('ldc-0.17.5-src.tar.gz') ) == '7aa540a135f9fa1ee9722cad73100a8f3600a07f9a11d199d8be68887cc90008'
@@ -43,7 +43,7 @@ class Ldc < Package                 # The first character of the class name must
     system "make", "-C", "build", "-j#{CREW_NPROC}"
   end
 
-  def self.install                 # the steps required to install the package
+  def self.install
     system "make", "-C", "build", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

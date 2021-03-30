@@ -22,13 +22,13 @@ class Gtypist < Package
      x86_64: '6ff05a34f4ce9f20bb6dbaef93ff55ecdee9fe9c5ede12d39e561886469a4b7d',
   })
 
-  depends_on "emacs" => :build
-  depends_on "ncurses"
-  depends_on "perl"
+  depends_on 'emacs' => :build
+  depends_on 'ncursesw'
+  depends_on 'perl'
 
   def self.build
-    system "autoreconf"
-    system "./configure", "--prefix=#{CREW_PREFIX}"
+    system "autoreconf -fiv"
+    system "./configure #{CREW_OPTIONS}"
     system "make"
   end
 

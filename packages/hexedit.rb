@@ -22,11 +22,11 @@ class Hexedit < Package
      x86_64: 'ff405baf2783242b6af5d3e7a86268ebbe51ab3cf1a3dedd33e1fe1e46dcd74b',
   })
 
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}"
-    system "make", "CFLAGS=-I#{CREW_PREFIX}/include/ncurses"
+    system "./configure #{CREW_OPTIONS}"
+    system "make", "CFLAGS=-I#{CREW_PREFIX}/include/ncursesw"
   end
 
   def self.install

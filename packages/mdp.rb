@@ -22,7 +22,7 @@ class Mdp < Package
      x86_64: 'a444f58edb9b973d4274e99e31c9e339fe1c88cf0641c55bb7d7f10413f761a4',
   })
 
-  depends_on 'ncurses'
+  depends_on 'ncursesw'
 
   def self.build
     system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncursesw PREFIX=#{CREW_PREFIX} make"

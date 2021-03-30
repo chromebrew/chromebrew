@@ -33,7 +33,7 @@ class Cmake < Package
 
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
-      ./bootstrap --prefix=#{CREW_PREFIX}"
+      ./bootstrap #{CREW_OPTIONS}"
     system 'make'
   end
 

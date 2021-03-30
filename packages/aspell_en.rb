@@ -25,8 +25,9 @@ class Aspell_en < Package
   depends_on 'aspell'
 
   def self.build
-    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' \
-        LDFLAGS='-flto=auto' ./configure"
+    system "env CFLAGS='-flto=auto -ltinfow' CXXFLAGS='-flto=auto' \
+              LDFLAGS='-flto=auto' \
+            ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
