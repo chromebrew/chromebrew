@@ -16,10 +16,10 @@ class Beav < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/beav-1.40-18-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'fac8efa93e9de76a5911f697643196d5aa02ec1df1865679c1e9eab57bef2aa0',
-     armv7l: 'fac8efa93e9de76a5911f697643196d5aa02ec1df1865679c1e9eab57bef2aa0',
-       i686: '37929bc862c17eecb5cbcdffd38c5e14cf46c88f871585ede0990a89b62acc93',
-     x86_64: 'a206053a68383e261ba61e11fc7aded3f42d2dc1b8a432da4fb9ac479a250511'
+    aarch64: '5cc00778439b0fc1a73085ce7d0b32c9c755720bcd0d74a21fa8c317280e25f1',
+     armv7l: '5cc00778439b0fc1a73085ce7d0b32c9c755720bcd0d74a21fa8c317280e25f1',
+       i686: '3daab25a1384ddc87a83967b265cb19e905e474a24fa3eded9a32d45df57f2ef',
+     x86_64: 'a7c7a9e5a3399af8bcab01bb927855415370d6f6f3f7374633c5592010e0a089'
   })
 
   def self.patch
@@ -44,7 +44,7 @@ class Beav < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
-    FileUtils.install 'beav', "#{CREW_DEST_PREFIX}/bin/beav", mode: 0755
-    FileUtils.install 'beav.1' "#{CREW_DEST_MAN_PREFIX}/man1/beav.1", mode: 0644
+    FileUtils.install 'beav', "#{CREW_DEST_PREFIX}/bin/beav", mode: 0o755
+    FileUtils.install 'beav.1', "#{CREW_DEST_MAN_PREFIX}/man1/beav.1", mode: 0o644
   end
 end
