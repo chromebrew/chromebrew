@@ -9,6 +9,12 @@ class Ruby < Package
   source_url 'https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.tar.gz'
   source_sha256 'a13ed141a1c18eb967aac1e33f4d6ad5f21be1ac543c344e0d6feeee54af8e28'
 
+  binary_url ({
+    x86_64: 'https://github.com/chromebrew/binaries/raw/master/r/ruby/3.0.0-3/ruby-3.0.0-3-chromeos-x86_64.tar.xz'
+    })
+  binary_sha256 ({
+    x86_64 'ff2c85c66802c264d14de451a9ccbb77530dde773b3d81209329c14ad49f2572'
+    })
   depends_on 'ca_certificates'
   depends_on 'libyaml' # This is needed to install gems
   depends_on 'ncursesw'
