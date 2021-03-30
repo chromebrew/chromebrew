@@ -6,11 +6,11 @@ class Apg < Package
   version '2.2.3.dfsg.1'
   license 'BSD-3'
   compatibility 'all'
-  source_url "https://ftp.debian.org/debian/pool/main/a/apg/apg_2.2.3.dfsg.1.orig.tar.gz"
+  source_url "https://httpredir.debian.org/debian/pool/main/a/apg/apg_2.2.3.dfsg.1.orig.tar.gz"
   source_sha256 'c7e3c556426e2d5d2f599873a71100c5f6d14fa8784e0b1d879916784de801df'
 
   def self.patch
-    system "curl -#LO https://ftp.debian.org/debian/pool/main/a/apg/apg_2.2.3.dfsg.1-5.debian.tar.xz"
+    system "curl -#LO https://httpredir.debian.org/debian/pool/main/a/apg/apg_2.2.3.dfsg.1-5.debian.tar.xz"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("apg_2.2.3.dfsg.1-5.debian.tar.xz") ) == '8305fdb424d934f4d217b7910e0b971cff205b28857b9dc9df95e38bd1aaa9a0'
     system "tar xf apg_2.2.3.dfsg.1-5.debian.tar.xz"
     FileUtils.rm "debian/patches/series"
