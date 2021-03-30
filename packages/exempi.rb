@@ -7,6 +7,7 @@ class Exempi < Package
   description 'A library to parse XMP metadata'
   homepage 'https://libopenraw.freedesktop.org/wiki/Exempi'
   version '2.5.2'
+  license 'BSD'
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{version}/exempi-#{version}.tar.bz2"
   source_sha256 'dff105f53bdd971e633b7fcb3bcfb22276716228a9e6063c1fd241a8542b9cec'
