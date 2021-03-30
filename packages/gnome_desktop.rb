@@ -24,13 +24,18 @@ class Gnome_desktop < Package
      x86_64: 'ea296854348498177dc068c611418b5bfe580153c440b3ca6173793bfac028c0'
   })
 
+  depends_on 'cairo'
+  depends_on 'eudev'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gobject_introspection' => :build
   depends_on 'gsettings_desktop_schemas'
   depends_on 'gtk3'
+  depends_on 'gtk_doc' => :build
+  depends_on 'iso_codes'
+  depends_on 'libxkbcommon'
   depends_on 'libxkbfile'
   depends_on 'xkeyboard_config'
-  depends_on 'iso_codes'
-  depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
   depends_on 'yelp_tools' => :build
 
   def self.build

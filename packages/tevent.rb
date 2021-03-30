@@ -25,6 +25,8 @@ class Tevent < Package
      x86_64: 'd7a762d732c98a074eabfc1367e7ce0330511a8713a4cea36c262d62c31c89f0'
   })
 
+  depends_on 'libbsd'
+  depends_on 'libxcrypt'
   depends_on 'talloc'
 
   def self.build

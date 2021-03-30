@@ -29,16 +29,22 @@ class Gvfs < Package
   depends_on 'elogind' => :build
   depends_on 'fuse'
   depends_on 'gcr'
+  depends_on 'glib'
   depends_on 'gtk3' => :build
   depends_on 'libarchive'
+  depends_on 'libcdio'
   depends_on 'libcdio_paranoia'
-  depends_on 'libgphoto' => :build
-  depends_on 'libgudev' => :build
-  depends_on 'libimobiledevice' => :build
+  depends_on 'libgcrypt'
+  depends_on 'libgphoto'
+  depends_on 'libgudev'
+  depends_on 'libimobiledevice'
   depends_on 'libnfs'
+  depends_on 'libplist'
   depends_on 'libsecret'
   depends_on 'libsoup'
-  depends_on 'smbclient' => :build
+  depends_on 'libsoup2'
+  depends_on 'polkit'
+  depends_on 'smbclient'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

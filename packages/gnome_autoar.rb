@@ -23,12 +23,19 @@ class Gnome_autoar < Package
      x86_64: 'd50fd612eceffa4124a67bb5018b3360712d33b2c981d557c0aacab951b89c01'
   })
 
-  depends_on 'libarchive'
-  depends_on 'gtk3'
-  depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'vala' => :build
+  depends_on 'atk'
   depends_on 'autoconf_archive' => :build
+  depends_on 'cairo'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk3'
+  depends_on 'gtk_doc' => :build
+  depends_on 'harfbuzz'
+  depends_on 'libarchive'
+  depends_on 'pango'
+  depends_on 'vala' => :build
+
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'

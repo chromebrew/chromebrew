@@ -25,9 +25,13 @@ class Libgrss < Package
      x86_64: 'cf9f47cce02e43332117ce05f76c0c61aa7bf35154261e6d175fc4711024a3eb'
   })
 
-  depends_on 'libsoup'
-  depends_on 'gtk_doc' => :build
+  depends_on 'glib'
+  depends_on 'glibc'
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'libsoup'
+  depends_on 'libsoup2'
+  depends_on 'libxml2'
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'

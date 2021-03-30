@@ -25,15 +25,21 @@ class Tracker3_miners < Package
      x86_64: '9b7ab266f7dfbb99157379b1eecd2cc10d828cb19e1a25fcff936be9171296ff'
   })
 
-  depends_on 'tracker3'
-  depends_on 'gst_plugins_base'
+  depends_on 'asciidoc' => :build
   depends_on 'exempi'
-  depends_on 'libexif'
+  depends_on 'giflib'
+  depends_on 'glib'
+  depends_on 'gst_plugins_base'
+  depends_on 'gstreamer'
   depends_on 'libcue'
+  depends_on 'libexif'
   depends_on 'libgrss'
   depends_on 'libgsf'
+  depends_on 'libjpeg_turbo'
+  depends_on 'libpng'
+  depends_on 'libtiff'
+  depends_on 'tracker3'
   depends_on 'vala' => :build
-  depends_on 'asciidoc' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

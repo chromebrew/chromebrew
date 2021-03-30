@@ -25,9 +25,10 @@ class Libimobiledevice < Package
      x86_64: '11462fab4814036224fb3078792bad480627ead538309afcd93abfbb85121d65'
   })
 
-  depends_on 'libusbmuxd'
-  depends_on 'libplist' => :build
   depends_on 'autoconf_archive' => :build
+  depends_on 'libgcrypt'
+  depends_on 'libplist'
+  depends_on 'libusbmuxd'
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

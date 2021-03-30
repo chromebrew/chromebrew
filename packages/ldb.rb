@@ -25,14 +25,15 @@ class Ldb < Package
      x86_64: '509439aae3a82f99825414bac49b704d6fec0f95c67e8b2532001e011ce2d288'
   })
 
-  depends_on 'talloc'
-  depends_on 'tevent'
-  depends_on 'tdb'
-  depends_on 'popt'
-  depends_on 'lmdb'
   depends_on 'cmocka' => :build
   depends_on 'docbook_xsl' => :build
-  depends_on 'tevent' => :build
+  depends_on 'libbsd'
+  depends_on 'libxcrypt'
+  depends_on 'lmdb'
+  depends_on 'popt'
+  depends_on 'talloc'
+  depends_on 'tdb'
+  depends_on 'tevent'
 
   def self.build
     system "env CFLAGS='-flto=auto' \

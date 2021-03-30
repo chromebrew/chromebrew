@@ -26,18 +26,26 @@ class Nautilus < Package
      x86_64: 'bae97c6259459844e5cf945160e162734edbc66ce50eb3965e1c55b9932a6564'
   })
 
+  depends_on 'appstream_glib' => :build
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'dconf'
+  depends_on 'gdk_pixbuf'
   depends_on 'gexiv2'
+  depends_on 'glib'
   depends_on 'gnome_autoar'
   depends_on 'gnome_desktop'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gst_plugins_base'
+  depends_on 'gstreamer'
+  depends_on 'gtk3'
+  depends_on 'gtk_doc' => :build
   depends_on 'gvfs'
-  depends_on 'dconf'
   depends_on 'libhandy'
   depends_on 'libportal'
+  depends_on 'pango'
   depends_on 'tracker3'
   depends_on 'tracker3_miners'
-  depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'appstream_glib' => :build
 
   def self.patch
     # Source has libgnome-volume-control repo as submodule

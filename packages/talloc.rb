@@ -25,6 +25,7 @@ class Talloc < Package
      x86_64: '0b22a9f1ce28259ba8d4fd046d00677c6b2590f2a0951a004d1f9d6173e592b6'
   })
 
+  depends_on 'libbsd'
   depends_on 'libxcrypt'
   depends_on 'docbook_xsl' => :build
 

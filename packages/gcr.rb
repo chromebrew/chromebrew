@@ -22,17 +22,18 @@ class Gcr < Package
      x86_64: '4f27f7bb81abadf2a044637b0afb286ec252107c1380291bb82e6c3d7e230aa1'
   })
 
-  depends_on 'libgcrypt'
-  depends_on 'libxslt'
+  depends_on 'cairo'
   depends_on 'desktop_file_utilities'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'gnupg'
+  depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gnupg'
-  depends_on 'libxslt'
-  depends_on 'vala' => :build
-  depends_on 'gtk3'
   depends_on 'graphite'
+  depends_on 'gtk3'
+  depends_on 'hicolor_icon_theme'
+  depends_on 'libgcrypt'
+  depends_on 'libxslt'
+  depends_on 'pango'
+  depends_on 'vala' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
