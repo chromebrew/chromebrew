@@ -45,6 +45,6 @@ class Beav < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
     FileUtils.install 'beav', "#{CREW_DEST_PREFIX}/bin/beav", mode: 0755
-    FileUtils.install 'beav.1' "#{CREW_DEST_MAN_PREFIX}/man1/beav.1", mode: 0755
+    FileUtils.install 'beav.1' "#{CREW_DEST_MAN_PREFIX}/man1/beav.1", mode: 0644
   end
 end
