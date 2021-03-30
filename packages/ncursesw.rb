@@ -10,10 +10,10 @@ class Ncursesw < Package
   source_sha256 '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
 
   binary_url ({
-  x86_64: 'https://github.com/chromebrew/binaries/raw/master/n/ncursesw/6.2/ncursesw-6.2-chromeos-x86_64.tar.xz'
+    x86_64: 'https://github.com/chromebrew/binaries/raw/master/n/ncursesw/6.2/ncursesw-6.2-chromeos-x86_64.tar.xz'
   })
-binary_sha256 ({
-  x86_64 '119e8fa43785c6791d3cc969fbbfe23b0a4bc5c3d84e9313292638a9a11f60d8'
+  binary_sha256 ({
+    x86_64: '119e8fa43785c6791d3cc969fbbfe23b0a4bc5c3d84e9313292638a9a11f60d8'
   })
 
   def self.build
