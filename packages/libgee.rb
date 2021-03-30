@@ -6,6 +6,7 @@ class Libgee < Package
   @_ver = '0.20.4'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libgee/-/archive/#{@_ver}/libgee-#{@_ver}.tar.bz2"
   source_sha256 'bf1e5840809e34e07b253e1363ec58c8844dac7400bc75c450e1c7aa13019c51'
