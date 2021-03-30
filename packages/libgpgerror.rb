@@ -16,10 +16,10 @@ class Libgpgerror < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgpgerror-1.42-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '8cffadf3c6dcdb64739bf74fe14e5d369dea42697f63be5e22c95db51b0b0570',
-     armv7l: '8cffadf3c6dcdb64739bf74fe14e5d369dea42697f63be5e22c95db51b0b0570',
-       i686: 'b60cfadd29f2e42bcec05e4f47a52fdcaa519011aa079914c96622c2bdd8013d',
-     x86_64: '495665be0c2a6628d7202a91d7c74b28ca1dfb81603d16a529936e1b19af2ed6'
+    aarch64: '9864ed50574b3830c7e613392e6bdccf1be8857d5e40263b8d31f535481db547',
+     armv7l: '9864ed50574b3830c7e613392e6bdccf1be8857d5e40263b8d31f535481db547',
+       i686: 'fe6ff6e681c9d7730ef69f696d759528b67fa5a5e2f5be584c1277b0ee0498a0',
+     x86_64: '041069951d95c281c22e1f50e06d8402d35c6682d16483da1881e4c20691e6b9'
   })
 
   def self.build
@@ -27,7 +27,7 @@ class Libgpgerror < Package
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
-      ./configure \
+      ./configure #{CREW_OPTIONS} \
       --disable-maintainer-mode"
     system 'make'
   end
