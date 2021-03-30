@@ -26,7 +26,7 @@ class Talloc < Package
   })
 
   depends_on 'libxcrypt'
-  depends_on 'docbook_xsl' => ':build'
+  depends_on 'docbook_xsl' => :build
 
   def self.build
     system "env CFLAGS='-flto=auto' \

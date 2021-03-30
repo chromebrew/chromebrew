@@ -30,9 +30,9 @@ class Ldb < Package
   depends_on 'tdb'
   depends_on 'popt'
   depends_on 'lmdb'
-  depends_on 'cmocka' => ':build'
-  depends_on 'docbook_xsl' => ':build'
-  depends_on 'tevent' => ':build'
+  depends_on 'cmocka' => :build
+  depends_on 'docbook_xsl' => :build
+  depends_on 'tevent' => :build
 
   def self.build
     system "env CFLAGS='-flto=auto' \

@@ -29,7 +29,7 @@ class Smbclient < Package
   depends_on 'cmocka'
   depends_on 'cups'
   depends_on 'docbook_xsl'
-  depends_on 'gpgme' => ':build'
+  depends_on 'gpgme' => :build
   depends_on 'jansson'
   depends_on 'ldb'
   depends_on 'libarchive'
@@ -37,10 +37,10 @@ class Smbclient < Package
   depends_on 'libcap'
   depends_on 'libdb'
   depends_on 'libunwind'
-  depends_on 'liburing' => ':build'
+  depends_on 'liburing' => :build
   depends_on 'linux_pam'
-  depends_on 'lmdb' => ':build'
-  depends_on 'perl_parse_yapp' => ':build'
+  depends_on 'lmdb' => :build
+  depends_on 'perl_parse_yapp' => :build
   depends_on 'popt'
   depends_on 'talloc'
   depends_on 'tdb'

@@ -35,9 +35,9 @@ class Nautilus < Package
   depends_on 'libportal'
   depends_on 'tracker3'
   depends_on 'tracker3_miners'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'appstream_glib' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'appstream_glib' => :build
 
   def self.patch
     # Source has libgnome-volume-control repo as submodule

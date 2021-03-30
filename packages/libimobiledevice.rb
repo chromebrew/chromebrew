@@ -26,8 +26,8 @@ class Libimobiledevice < Package
   })
 
   depends_on 'libusbmuxd'
-  depends_on 'libplist' => ':build'
-  depends_on 'autoconf_archive' => ':build'
+  depends_on 'libplist' => :build
+  depends_on 'autoconf_archive' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

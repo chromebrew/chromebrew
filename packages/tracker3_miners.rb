@@ -32,8 +32,8 @@ class Tracker3_miners < Package
   depends_on 'libcue'
   depends_on 'libgrss'
   depends_on 'libgsf'
-  depends_on 'vala' => ':build'
-  depends_on 'asciidoc' => ':build'
+  depends_on 'vala' => :build
+  depends_on 'asciidoc' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

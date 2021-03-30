@@ -27,12 +27,12 @@ class Tracker3 < Package
 
   depends_on 'asciidoc'
   depends_on 'docbook_xml'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
   depends_on 'libsoup'
   depends_on 'libstemmer'
   depends_on 'util_linux'
-  depends_on 'vala' => ':build'
+  depends_on 'vala' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
