@@ -16,10 +16,10 @@ class Libassuan < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libassuan-2.5.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'b4be3da9f16aface28732f3edd20af5bc888cef9897a950484dc073d87793963',
-     armv7l: 'b4be3da9f16aface28732f3edd20af5bc888cef9897a950484dc073d87793963',
-       i686: '0ef14cd312f4dc8208fb6942571e5352c7867a067b006df56bac18c0fea75193',
-     x86_64: '87943e7a7b0433246e913380b5e5c895385e5cf8325ed47a33d637050a72a76c'
+    aarch64: '853b20547fd035aa2b8e8e3653cfbbd1adc70f6b1f453a41776fa4799519a4d5',
+     armv7l: '853b20547fd035aa2b8e8e3653cfbbd1adc70f6b1f453a41776fa4799519a4d5',
+       i686: '6cb8279e8d9df539022f5b64cfdf42cccea3aea6f482b2fcd7a875c3a4ffac09',
+     x86_64: '9db3d46f74bf1446748f29165a163ee2c87bfcc6b7074b060fb8221146be85ec'
   })
 
   depends_on 'libgpgerror'
@@ -30,7 +30,7 @@ class Libassuan < Package
     system "env CFLAGS='-flto=auto' \
       CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
-      ./configure"
+      ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
