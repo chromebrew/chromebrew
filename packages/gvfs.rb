@@ -4,6 +4,7 @@ class Gvfs < Package
   description 'Virtual filesystem implementation for GIO'
   homepage 'https://wiki.gnome.org/Projects/gvfs'
   version '1.48.0'
+  license 'GPLv2'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gvfs/-/archive/#{version}/gvfs-#{version}.tar.bz2"
   source_sha256 'acde26bee8a04e8432b0946b0fd36bc831ccc4f58c32fbcee6a3f525a595f5e9'
