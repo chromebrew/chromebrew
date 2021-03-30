@@ -24,16 +24,16 @@ class Libstfl < Package
     system "patch -Np1 -i ruby_extconf.patch"
     system "sed -i 's,all: libstfl.so.$(VERSION) libstfl.a example,all: libstfl.so.$(VERSION) libstfl.a,' Makefile"
   end
-    
+
   def self.build
     system "make libstfl.a"
     system "make libstfl.so.0.23"
   end
-  
+
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir "#{CREW_DEST_PREFIX}" do
-      FileUtils.mv 'lib', "#{CREW_DEST_LIB_PREFIX}"
+      FileUtils.mv 'lib', "#{CREW_DEST_LIB_PREFIX}" if "#{CREW_LIB_SUFFIX}" == '64'
     end
     Dir.chdir "#{CREW_DEST_LIB_PREFIX}" do
       FileUtils.symlink 'libstfl.so.0.23', 'libstfl.so.0'
