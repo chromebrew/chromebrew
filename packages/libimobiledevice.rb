@@ -7,6 +7,7 @@ class Libimobiledevice < Package
   description 'Library that talks the protocols to support iPhone and iPod Touch devices on Linux'
   homepage 'https://libimobiledevice.org/'
   version '1.3.0'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/libimobiledevice/libimobiledevice/archive/refs/tags/#{version}.tar.gz"
   source_sha256 'acbfb73eabee162e64c0d9de207d71c0a5f47c40cd5ad32a5097f734328ce10a'
