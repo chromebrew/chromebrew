@@ -10,19 +10,6 @@ class Llvm < Package
   source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
   source_sha256 '53a0719f3f4b0388013cfffd7b10c7d5682eece1929a9553c722348d1f866e79'
 
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'ba0520a8d5bfa90efb3eb13a530c8d4052f9e7572aa30dd42dfc624b88a0251e',
-     armv7l: 'ba0520a8d5bfa90efb3eb13a530c8d4052f9e7572aa30dd42dfc624b88a0251e',
-       i686: '3a514f96c846d777c838fef6c585d2278abf2a586bfaeacfd3e2bccc9ffce838',
-     x86_64: '5b9e01c2411ea174293fc1d33b2dbf91f7001eb3cc3eda2e849b80f6f0dcb3c8'
-  })
-
   depends_on 'ocaml' => :build
   depends_on 'pygments' => :build
   depends_on 'ccache' => :build
