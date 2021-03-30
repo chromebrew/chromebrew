@@ -26,14 +26,10 @@ class Libimobiledevice < Package
   })
 
   depends_on 'libusbmuxd'
-  # depends_on 'usbmuxd'
-  # depends_on 'cython' => ':build'
   depends_on 'libplist' => ':build'
   depends_on 'autoconf_archive' => ':build'
 
   def self.build
-    # '# Update ac_python_devel.m4 to newer ax_python_devel.m4'
-    # 'git cherry-pick -n eea4f1be91'
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system './configure --help'
     system "./configure #{CREW_OPTIONS} --disable-openssl"
