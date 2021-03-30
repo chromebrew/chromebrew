@@ -26,8 +26,8 @@ class Libgrss < Package
   })
 
   depends_on 'libsoup'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'gobject_introspection' => :build
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
