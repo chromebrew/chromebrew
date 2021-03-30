@@ -3,11 +3,11 @@ require 'package'
 class Ncursesw < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6.2-20210206-2'
+  version '6.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/mirror/ncurses/archive/b724cdc89cf31757ab43262ecefe5242b0edc450.zip'
-  source_sha256 'e5e83965329c85d8d28f9a35a71ab785fce015f42f491e7dcafbb9f36ad1eaea'
+  source_url 'https://ftpmirror.gnu.org/ncurses/ncurses-6.2.tar.gz'
+  source_sha256 '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
 
   def self.build
     # build libncursesw
