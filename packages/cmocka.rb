@@ -7,6 +7,7 @@ class Cmocka < Package
   description 'Elegant unit testing framework for C with support for mock objects'
   homepage 'https://cmocka.org/'
   version '1.1.5'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz'
   source_sha256 'f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6'
