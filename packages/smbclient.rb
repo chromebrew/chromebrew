@@ -7,6 +7,7 @@ class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
   version '4.14.2'
+  license 'GPLv3'
   compatibility 'all'
   source_url "https://us1.samba.org/samba/ftp/stable/samba-#{version}.tar.gz"
   source_sha256 '95651da478743f7cb407aec81287536c096e3e18bb4981dbe47ca70bf6181f96'
