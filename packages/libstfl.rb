@@ -16,18 +16,19 @@ class Libstfl < Package
       @@ -1,2 +1,5 @@
        require 'mkmf'
       +`swig -ruby stfl.i`
-      +$LIBS << " ../libstfl.a -lncursesw"
+      +$LIBS << " ../libstfl.a -ltinfow"
       +$CFLAGS << " -I.. -fPIC"
        create_makefile('stfl')
     EOF
     IO.write("ruby_extconf.patch", @ruby_extconf)
     system "patch -Np1 -i ruby_extconf.patch"
-    system "sed -i 's,all: libstfl.so.$(VERSION) libstfl.a example,all: libstfl.so.$(VERSION) libstfl.a,' Makefile"
+#    system "sed -i 's,all: libstfl.so.$(VERSION) libstfl.a example,all: libstfl.so.$(VERSION) libstfl.a,' Makefile"
   end
 
   def self.build
     system "make libstfl.a"
     system "make libstfl.so.0.23"
+    system "make example"
   end
 
   def self.install
