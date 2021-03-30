@@ -90,8 +90,10 @@ class Gtk3 < Package
 
   def self.postinstall
     # generate schemas
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+    system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
+    system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
+    # update icon cache
+    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end
 end
