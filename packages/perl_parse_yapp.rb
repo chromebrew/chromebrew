@@ -7,6 +7,7 @@ class Perl_parse_yapp < Package
   description 'Yapp : Generates OO LALR parser modules'
   homepage 'https://search.cpan.org/dist/Parse-Yapp'
   version '1.21'
+  license 'GPL'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz'
   source_sha256 '3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5'
