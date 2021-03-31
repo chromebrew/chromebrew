@@ -1,25 +1,25 @@
 require 'package'
 
 class Libadwaita < Package
-  description 'Library full of GTK+ widgets for mobile phones'
-  homepage 'https://gitlab.gnome.org/exalm/libadwaita'
-  version '1.1.0-73c1'
+  description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
+  homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
+  version '1.1.0-aab6'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/exalm/libadwaita/-/archive/73c17e0b36ad882d1a25e90926fe648e326e6b41/libadwaita-73c17e0b36ad882d1a25e90926fe648e326e6b41.tar.bz2'
-  source_sha256 '99730e57870ffc0f5e801ae5dac074e1a5b6f7d8e622f837b4f6a8439a328604'
+  source_url 'https://gitlab.gnome.org/GNOME/libadwaita/-/archive/aab6c89993dbf9231e0aeec9d31ce35c52ea04a2/libadwaita-aab6c89993dbf9231e0aeec9d31ce35c52ea04a2.tar.bz2'
+  source_sha256 'af4e34b811c18f2e42f76764c33f835b63110f8a1d471156befcd500d062daab'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-73c1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-73c1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-73c1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-73c1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-aab6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-aab6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-aab6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libadwaita-1.1.0-aab6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '22ea80100a4e12c031c09f62abbf54341950fa80801f458676e7d0146f11be11',
-     armv7l: '22ea80100a4e12c031c09f62abbf54341950fa80801f458676e7d0146f11be11',
-       i686: '63712e4bb09455822116e346132b6b64ab660b212c48a600bb611025e1b3fc2d',
-     x86_64: 'daaa26d53f8c8b3e3f15724eaa16122e4b3358185342df7a66160c229caf4d0c'
+    aarch64: '50e69b5c70875b5d938f9d578fd786eed3ce1de4ca4ab0d788eac24dcf63788c',
+     armv7l: '50e69b5c70875b5d938f9d578fd786eed3ce1de4ca4ab0d788eac24dcf63788c',
+       i686: 'd68dd1fb68393dbeed3f7537a81d5812cc3cdff659dc74dfd07592a1cacad297',
+     x86_64: '94333fb7762274507f2b03424fc740ac68e67279a398fc1d948c796cabf9c275'
   })
 
   depends_on 'cairo'

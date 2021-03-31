@@ -3,54 +3,57 @@ require 'package'
 class Gegl < Package
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'http://gegl.org/'
-  version '0.4.22'
+  version '0.4.30'
   license 'GPL-3+ and LGPL-3'
   compatibility 'all'
-  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.22.tar.xz'
-  source_sha256 '1888ec41dfd19fe28273795c2209efc1a542be742691561816683990dc642c61'
+  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.30.tar.xz'
+  source_sha256 'c112782cf4096969e23217ccdfabe42284e35d5435ff0c43d40e4c70faeca8dd'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.22-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.30-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.30-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.30-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.30-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'b96e1964c8b842c855ad08a8fa12c1ca1df48745b75c8a7210e4e91e55f1bbd6',
-     armv7l: 'b96e1964c8b842c855ad08a8fa12c1ca1df48745b75c8a7210e4e91e55f1bbd6',
-       i686: 'f47a712d92c1cd4b3293eac5a9cf6d5597162b73f4f7879dea18273b679da4b0',
-     x86_64: '04bb398c76229e19c6936d1d3e5fea733345db9055b517257f6f39b73201e0a6',
+  binary_sha256({
+    aarch64: '6212adedc85ad44daa58b5e28a9f1e9b17d7e5d60df15725e8c25ac42b569494',
+     armv7l: '6212adedc85ad44daa58b5e28a9f1e9b17d7e5d60df15725e8c25ac42b569494',
+       i686: 'b0c4381f1b9e05fa0669fad5b71b41dcfced9eeec53f40a8abb6b489c081ae0e',
+     x86_64: '29bc96a65f770b73386e571612213d7d7cfedfdaec54a9a32de9d5ffc29acf34'
   })
 
   depends_on 'asciidoc'
   depends_on 'babl'
+  depends_on 'cairo'
   depends_on 'enscript'
+  depends_on 'ffmpeg'
+  depends_on 'gdk_pixbuf'
   depends_on 'gexiv2'
+  depends_on 'glib'
   depends_on 'graphviz'
+  depends_on 'jasper'
   depends_on 'json_glib'
   depends_on 'lcms'
   depends_on 'libjpeg_turbo'
+  depends_on 'libpng'
   depends_on 'librsvg'
+  depends_on 'libsdl2'
+  depends_on 'libtiff'
   depends_on 'libwebp'
   depends_on 'luajit'
   depends_on 'openexr'
+  depends_on 'pango'
+  depends_on 'poppler'
   depends_on 'vala'
-  depends_on 'meson' => :build
-
-  def self.patch
-    # Fix meson.build:92:2: ERROR: Problem encountered: Unknown host architecture for arm builds.
-    system "sed -i '91,92d' meson.build"
-  end
 
   def self.build
-    system 'meson',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '_build'
-    system 'ninja -v -C _build'
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
