@@ -76,7 +76,6 @@ class Gimp < Package
   depends_on 'sommelier'
   depends_on 'xdg_base'
 
-
   def self.build
     system "env TMPDIR=#{CREW_PREFIX}/tmp \
       CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
