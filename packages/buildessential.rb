@@ -69,4 +69,6 @@ class Buildessential < Package
   # perl module build ?
   # depends_on 'perl_module_build'
 
+  depends_on 'slang'
+
 end

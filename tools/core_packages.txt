@@ -59,7 +59,6 @@ mandb
 manpages
 mawk
 meson
-most
 mpc
 mpfr
 ncurses

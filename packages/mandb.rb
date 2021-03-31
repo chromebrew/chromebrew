@@ -27,6 +27,7 @@ class Mandb < Package
   depends_on 'groff'
   depends_on 'libpipeline'
   depends_on 'libseccomp'
+  depends_on 'less' => :build
 
   def self.patch
     system "sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' src/man_db.conf.in"
@@ -71,7 +72,7 @@ class Mandb < Package
       --enable-static \
       --without-libiconv-prefix \
       --disable-rpath \
-      --with-pager=#{CREW_PREFIX}/bin/most"
+      --with-pager=#{CREW_PREFIX}/bin/less"
     system 'make'
   end
 
@@ -84,8 +85,8 @@ class Mandb < Package
     system "env MANPATH=#{CREW_MAN_PREFIX} mandb -psc"
     pager_in_bashrc = `grep -c "PAGER" ~/.bashrc || true`
     unless pager_in_bashrc.to_i.positive?
-      puts 'Putting PAGER=most in ~/.bashrc'.lightblue
-      system "echo 'export PAGER=most' >> ~/.bashrc"
+      puts 'Putting PAGER=less in ~/.bashrc'.lightblue
+      system "echo 'export PAGER=less' >> ~/.bashrc"
       puts 'To complete the installation, execute the following:'.orange
       puts 'source ~/.bashrc'.orange
     end

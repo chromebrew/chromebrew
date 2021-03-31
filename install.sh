@@ -48,7 +48,7 @@ esac
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
-  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then 
+  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then
     sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
   fi
 done
@@ -198,7 +198,7 @@ git reset --hard origin/"${BRANCH}"
 crew update
 
 # install a base set of essential packages
-yes | crew install buildessential less most
+yes | crew install buildessential less
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
@@ -215,9 +215,7 @@ source ~/.bashrc
 ${RESET}"
 fi
 echo -e "${BLUE}
-To set the default PAGER environment variable to use less:
-echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc
-
+Your default PAGER is less.
 Alternatively, you could use most.  Why settle for less, right?
 echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc
 
