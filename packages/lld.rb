@@ -1,6 +1,6 @@
 require 'package'
 
-class Lld_11 < Package
+class Lld < Package
   description 'lld is a drop in replacement for the system linker that runs much faster.'
   homepage 'https://lld.llvm.org/'
   version '11.1.0'

@@ -167,9 +167,6 @@ class Glibc < Package
       system "localedef --prefix=#{CREW_DEST_DIR} -i tr_TR -f UTF-8 tr_TR.UTF-8"
       system "localedef --prefix=#{CREW_DEST_DIR} -i zh_CN -f GB18030 zh_CN.GB18030"
     end
-
-    FileUtils.mkdir "#{CREW_DEST_PREFIX}/include/malloc"
-    FileUtils.symlink "../malloc.h", "#{CREW_DEST_PREFIX}/include/malloc/malloc.h"
   end
 
   #def self.check

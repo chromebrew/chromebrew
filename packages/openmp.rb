@@ -1,6 +1,6 @@
 require 'package'
 
-class Openmp_11 < Package
+class Openmp < Package
   description 'LLVM OpenMP provides an OpenMP runtime for use with the OpenMP implementation in Clang.'
   homepage 'https://openmp.llvm.org/'
   version '11.1.0'

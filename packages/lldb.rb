@@ -1,6 +1,6 @@
 require 'package'
 
-class Lldb_11 < Package
+class Lldb < Package
   description 'The LLVM Debugger builds on libraries provided by LLVM and Clang to provide a great native debugger.'
   homepage 'https://lldb.llvm.org/'
   version '11.1.0'

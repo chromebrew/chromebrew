@@ -1,6 +1,6 @@
 require 'package'
 
-class Libclc_11 < Package
+class Libclc < Package
   description 'libclc implements the OpenCL standard library.'
   homepage 'https://libclc.llvm.org/'
   version '11.1.0'

@@ -1,7 +1,7 @@
 require 'package'
 
-class Llvm_11 < Package
-  description 'The LLVM Core libraries provide a modern source- and target-independent optimizer, along with code generation support.'
+class Llvm < Package
+  description 'The LLVM Core libraries provide a modern source and target-independent optimizer, along with code generation support.'
   homepage 'https://llvm.org/'
   version '11.1.0'
   license 'Apache-2.0-with-llvm-exceptions'
@@ -45,8 +45,8 @@ class Llvm_11 < Package
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=auto"
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=auto -fuse-ld=gold"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=auto -fuse-ld=gold"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=auto"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=auto"
 
   @LLVM_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
                       -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
@@ -57,7 +57,8 @@ class Llvm_11 < Package
                       -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
                       -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_TGT} \
                       -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
-                      -DCMAKE_LINKER=$(which ld.gold) \
+                      -DCMAKE_LINKER=gold \
+                      -DLLVM_USE_LINKER=gold \
                       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
                       -DLLVM_BUILD_LLVM_DYLIB=ON \
                       -DLLVM_LINK_LLVM_DYLIB=ON \
@@ -82,19 +83,7 @@ class Llvm_11 < Package
     end
   end
 
-  def self.check
-    Dir.chdir "builddir" do
-      system 'ninja', 'test'
-    end
-  end
-
   def self.install
-    Dir.chdir "builddir" do
-      system "DESTDIR=#{CREW_DEST_DIR}", 'ninja', 'install'
-    end
-  end
-
-  def self.postinstall
-
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

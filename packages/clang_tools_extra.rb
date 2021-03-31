@@ -1,6 +1,6 @@
 require 'package'
 
-class Clang_tools_extra_11 < Package
+class Clang_tools_extra < Package
   description 'The Clang Static Analyzer and clang-tidy are tools that automatically find bugs in your code.'
   homepage 'https://clang.llvm.org/'
   version '11.1.0'

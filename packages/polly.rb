@@ -1,6 +1,6 @@
 require 'package'
 
-class Polly_11 < Package
+class Polly < Package
   description 'LLVM Polly implements a suite of cache-locality optimizations as well as auto-parallelism and vectorization using a polyhedral model.'
   homepage 'https://polly.llvm.org/'
   version '11.1.0'

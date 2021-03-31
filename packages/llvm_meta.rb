@@ -1,10 +1,10 @@
 require 'package'
 
-class Llvm_meta_11 < Package
+class Llvm_meta < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. Metapackage.'
   homepage 'https://llvm.org/'
-  version '11.1.0
-  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
+  version '11.1.0'
+  license 'Apache-2.0-with-LLVM-exceptions'
   compatibility 'all'
 
   is_fake
@@ -15,7 +15,6 @@ class Llvm_meta_11 < Package
   depends_on 'flang'
   depends_on 'libclc'
   depends_on 'libcxx'
-  depends_on 'libcxxabi'
   depends_on 'lld'
   depends_on 'llvm'
   depends_on 'llvm_libunwind'

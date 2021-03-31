@@ -1,6 +1,6 @@
 require 'package'
 
-class Flang_11 < Package
+class Flang < Package
   description 'Flang is a Fortran language compiler designed for integration with LLVM. '
   homepage 'https://github.com/flang-compiler/flang'
   version '11.1.0'

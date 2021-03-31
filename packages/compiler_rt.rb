@@ -1,6 +1,6 @@
 require 'package'
 
-class Compiler_rt_11 < Package
+class Compiler_rt < Package
   description 'Compiler-rt provides highly tuned implementations of the low-level code generator support routines.'
   homepage 'https://compiler-rt.llvm.org/'
   version '11.1.0'
