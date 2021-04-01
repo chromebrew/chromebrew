@@ -24,10 +24,9 @@ class Shaderc < Package
      x86_64: '9e32e0db031138d5ead88e9e6a99f1a14d1d07e6c89999f0d336d105462b1306'
   })
 
-  @asciidoctor_installed = `gem list | grep ^asciidoctor`
+  depends_on 'asciidoctor' => :build
 
   def self.build
-    system 'gem install -N asciidoctor' unless @asciidoctor_installed.to_s != ''
     system './utils/git-sync-deps'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
@@ -50,6 +49,5 @@ class Shaderc < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    system 'gem uninstall asciidoctor -x --force' unless @asciidoctor_installed.to_s != ''
   end
 end

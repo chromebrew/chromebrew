@@ -18,8 +18,8 @@ class Gimp < Package
   binary_sha256({
     aarch64: '6867db24428a1509ac14459f29944a2fbb0a81e8a509b39cd2b7c837fd48fd00',
      armv7l: '6867db24428a1509ac14459f29944a2fbb0a81e8a509b39cd2b7c837fd48fd00',
-       i686: '8518afdf423e2730e33496e9b8a24ee6010655fbea791bfa13a29b31dfe1d36d',
-     x86_64: 'af5204eac47440a4f42549e5a4205892272b880b7492d37d4411cd2c4ac404a0'
+       i686: '6e8faf363dca5a4ae3e1f9eedf05c771016c24256ee67df5a39c586fe565ff0d',
+     x86_64: 'a930aebb265c21d07c8ed0d3e754ca60fe98232335089647d49b294832cdd3d4'
   })
 
   depends_on 'aalib'
@@ -48,7 +48,7 @@ class Gimp < Package
   depends_on 'libgudev'
   depends_on 'libheif'
   depends_on 'libice'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
   depends_on 'libmng'
   depends_on 'libmypaint'
   depends_on 'libpng'
@@ -73,8 +73,8 @@ class Gimp < Package
   depends_on 'poppler_data'
   depends_on 'pygtk'
   depends_on 'shared_mime_info'
-  depends_on 'sommelier'
   depends_on 'xdg_base'
+  depends_on 'sommelier'
 
   def self.build
     system "env TMPDIR=#{CREW_PREFIX}/tmp \

@@ -26,7 +26,6 @@ class Gst_plugins_bad < Package
   depends_on 'cairo'
   depends_on 'chromaprint' => :build
   depends_on 'faad2'
-  depends_on 'faad2' => :build
   depends_on 'glib'
   depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
@@ -35,12 +34,10 @@ class Gst_plugins_bad < Package
   depends_on 'libdca' => :build
   depends_on 'libdrm'
   depends_on 'libdvdnav'
-  depends_on 'libdvdnav' => :build
   depends_on 'libdvdread'
   depends_on 'libfdk_aac'
   depends_on 'libgudev'
   depends_on 'libmms'
-  depends_on 'libmms' => :build
   depends_on 'librsvg'
   depends_on 'libsndfile'
   depends_on 'libusb'
@@ -49,7 +46,6 @@ class Gst_plugins_bad < Package
   depends_on 'libwebp'
   depends_on 'libx11'
   depends_on 'mjpegtools'
-  depends_on 'mjpegtools' => :build
   depends_on 'openal'
   depends_on 'openjpeg'
   depends_on 'orc'

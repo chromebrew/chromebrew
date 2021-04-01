@@ -22,7 +22,7 @@ class Tracker3_miners < Package
     aarch64: '0809348f22bc74b6af7e5e1566017feee21c2094cc6cc338d0ac070a1eba3931',
      armv7l: '0809348f22bc74b6af7e5e1566017feee21c2094cc6cc338d0ac070a1eba3931',
        i686: 'c358f7e2a05d3f3cae8dfa09bf48fcaaaa4fb1b5c2eef23602a49832faaeaa03',
-     x86_64: '9b7ab266f7dfbb99157379b1eecd2cc10d828cb19e1a25fcff936be9171296ff'
+     x86_64: '3fce496bea0b469198d0994c959c981fa18d9cd0541cd14dad5568fed7701c72'
   })
 
   depends_on 'asciidoc' => :build
@@ -35,7 +35,7 @@ class Tracker3_miners < Package
   depends_on 'libexif'
   depends_on 'libgrss'
   depends_on 'libgsf'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'tracker3'

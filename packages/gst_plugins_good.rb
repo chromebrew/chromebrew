@@ -30,12 +30,10 @@ class Gst_plugins_good < Package
   depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'gtk3'
-  depends_on 'gtk3' => :build
   depends_on 'jack'
-  depends_on 'jack' => :build
   depends_on 'libdv'
   depends_on 'libgudev'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
   depends_on 'libmp3lame'
   depends_on 'libpng'
   depends_on 'libsoup'

@@ -23,7 +23,7 @@ class Nautilus < Package
     aarch64: '98663fed405335be9b9e297f641bd7e14edc631f43702e17a6477ba5b43368b3',
      armv7l: '98663fed405335be9b9e297f641bd7e14edc631f43702e17a6477ba5b43368b3',
        i686: '41b42d30a12e0e6597d994e8d159828ba68861b8336e46f2288451de08dc2948',
-     x86_64: '8258f00664df5ff4b17bed2422e50fadf22a76222ce635b6cae6060cbac293b9'
+     x86_64: 'b3412b0b281875a9cd1a9433e25e345246351f9a2eedc2e91e55f4cb4259a40c'
   })
 
   depends_on 'appstream_glib' => :build
@@ -42,6 +42,7 @@ class Nautilus < Package
   depends_on 'gtk_doc' => :build
   depends_on 'gvfs'
   depends_on 'libhandy'
+  depends_on 'libjpeg'
   depends_on 'libportal'
   depends_on 'pango'
   depends_on 'tracker3'

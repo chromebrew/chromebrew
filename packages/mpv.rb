@@ -18,12 +18,12 @@ class Mpv < Package
   binary_sha256({
     aarch64: '834b7660f6c44bc5a52236828f6451e03da7f80ce7dcaef84aa5bf539209a0fb',
      armv7l: '834b7660f6c44bc5a52236828f6451e03da7f80ce7dcaef84aa5bf539209a0fb',
-       i686: 'e0bdd8907d0f3673397adcc6d042e878510a6657e347fcc4c30db9bdf40af33d',
-     x86_64: 'ae78493b16e21e2c9b8ac6ff794a4a89305f9f3686392961b4277bcd5175d109'
+       i686: '366454030a9d1f348b093aa796bfebff802dbc7cf3ec5b31f6d92c415bda7a37',
+     x86_64: 'c025f912ee5e3596fcf5009386ce75690b7b19544a798811bb276a4458c557df'
   })
 
   depends_on 'alsa_lib'
-  depends_on 'docutils'
+  depends_on 'docutils' => :build
   depends_on 'ffmpeg'
   depends_on 'jack'
   depends_on 'lcms'
@@ -37,7 +37,6 @@ class Mpv < Package
   depends_on 'libdvdnav'
   depends_on 'libdvdread'
   depends_on 'libjpeg'
-  depends_on 'libjpeg_turbo'
   depends_on 'libva'
   depends_on 'libvdpau'
   depends_on 'libx11'
@@ -54,12 +53,12 @@ class Mpv < Package
   depends_on 'pulseaudio'
   depends_on 'rubberband'
   depends_on 'shaderc'
-  depends_on 'sommelier'
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland'
   depends_on 'xdg_base'
   depends_on 'zimg'
+  depends_on 'sommelier'
 
   def self.build
     system 'pip install docutils'

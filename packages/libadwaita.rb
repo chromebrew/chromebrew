@@ -19,7 +19,7 @@ class Libadwaita < Package
     aarch64: '50e69b5c70875b5d938f9d578fd786eed3ce1de4ca4ab0d788eac24dcf63788c',
      armv7l: '50e69b5c70875b5d938f9d578fd786eed3ce1de4ca4ab0d788eac24dcf63788c',
        i686: 'd68dd1fb68393dbeed3f7537a81d5812cc3cdff659dc74dfd07592a1cacad297',
-     x86_64: '94333fb7762274507f2b03424fc740ac68e67279a398fc1d948c796cabf9c275'
+     x86_64: 'c6e0ebffb33a5c57fb9dfcd94e66e9c4c2a7c354427405ab424c9f205a97e4aa'
   })
 
   depends_on 'cairo'
@@ -28,6 +28,7 @@ class Libadwaita < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene'
   depends_on 'gtk4'
+  depends_on 'libjpeg'
   depends_on 'pango'
   depends_on 'vala' => :build
 
