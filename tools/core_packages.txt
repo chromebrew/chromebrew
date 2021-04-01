@@ -78,6 +78,7 @@ python3
 readline
 rtmpdump
 ruby
+samurai
 sed
 slang
 sqlite
