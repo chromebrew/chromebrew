@@ -3,38 +3,46 @@ require 'package'
 class Appstream_glib < Package
   description 'Objects and methods for reading and writing AppStream metadata'
   homepage 'https://people.freedesktop.org/~hughsient/appstream-glib/'
-  version '0.7.18-1'
+  version '0.7.18-dbd6'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/hughsie/appstream-glib/archive/appstream_glib_0_7_18.tar.gz'
-  source_sha256 '73b8c10273c4cdd8f6de03c2524fedad64e34ccae08ee847dba804bb15461f6e'
+  source_url 'https://github.com/hughsie/appstream-glib/archive/dbd62f6e054aab8ad8fd36a81023a247fdd543d8.zip'
+  source_sha256 'e6532620fde20df56d121f692ab24a28a4389b2aa37d5199d676eda37baf1fd4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-dbd6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-dbd6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-dbd6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/appstream_glib-0.7.18-dbd6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '88ca689a99806c8b5f8a5c23462ada7b13fd82d438a584d882e75b85d78e1a32',
-     armv7l: '88ca689a99806c8b5f8a5c23462ada7b13fd82d438a584d882e75b85d78e1a32',
-       i686: 'f67b2a08196652dc38c067a4bbf902891bb48ccf009eb6ba66c945766b579db8',
-     x86_64: '31fc4c20d8c02a96c479d5e4e17bbb5afda0e671a5ac0dda1a254efd7d606893'
+    aarch64: 'e917ad02dce4cfcf29f82a6f5a6af91bb1d26493aefeec0a14ecaf71c274821c',
+     armv7l: 'e917ad02dce4cfcf29f82a6f5a6af91bb1d26493aefeec0a14ecaf71c274821c',
+       i686: 'eb36d8dc0e3543d23b6c9a0ec4f05b246f9b6552882a6c387e79a05eaaea72af',
+     x86_64: 'bde94624a342e2db10151ec317e0d719a99638e76385be0b42f4b691f19949d5'
   })
 
+  depends_on 'cairo'
   depends_on 'docbook'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
   depends_on 'gcab'
   depends_on 'gdk_pixbuf'
+  depends_on 'glib'
   depends_on 'gobject_introspection' => :build
   depends_on 'gperf' => :build
   depends_on 'gtk3'
   depends_on 'gtk_doc' => :build
   depends_on 'json_glib'
   depends_on 'libarchive'
+  depends_on 'libjpeg'
   depends_on 'libsoup'
+  depends_on 'libsoup2'
   depends_on 'libstemmer'
   depends_on 'libuuid'
   depends_on 'libyaml'
+  depends_on 'pango'
+  depends_on 'util_linux'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

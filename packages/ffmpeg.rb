@@ -4,23 +4,23 @@ class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
   @_ver = '4.3.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is stil accurate,
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '085808a1a7840dc8939d7b2740671e0e1e4927494c2bcf573b88f0b60b93cfff',
-     armv7l: '085808a1a7840dc8939d7b2740671e0e1e4927494c2bcf573b88f0b60b93cfff',
-       i686: '9b07e143d3cc679f9888260a8b392611c4c7f88aacf2adc668c3e47ce6232369',
-     x86_64: 'a8ef187fe830505b2a7240db4efe39dddcababf9df3ae94add3918b722fb9622'
+    aarch64: 'd38e1ba9bde45dd24db6b244c6739d8238ef118e0103853ed93beabf28749a94',
+     armv7l: 'd38e1ba9bde45dd24db6b244c6739d8238ef118e0103853ed93beabf28749a94',
+       i686: '803e33ef7cce3b8cbddc543e7b3c0c6682ec8a87ea74b9a6fae0596fb9b2199d',
+     x86_64: 'a9f554a7ddb5dc9d151be6bf09ec0bdaa01b33de7a024d9976987a34ed39a904'
   })
 
   depends_on 'alsa_lib'
