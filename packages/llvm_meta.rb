@@ -11,7 +11,6 @@ class Llvm_meta < Package
 
   depends_on 'clang'
   depends_on 'compiler_rt'
-  depends_on 'flang'
   depends_on 'libclc'
   depends_on 'libcxx'
   depends_on 'lld'
