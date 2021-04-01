@@ -34,7 +34,7 @@ class Libsoup2 < Package
       -Dintrospection=enabled \
       builddir"
     system 'meson configure builddir'
-    system "sed -i 's#-R#-Wl,-rpath=#g' builddir/build.samu"
+    system "sed -i 's#-R#-Wl,-rpath=#g' builddir/build.ninja"
     system 'samu -C builddir'
   end
 
