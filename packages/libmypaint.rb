@@ -26,10 +26,6 @@ class Libmypaint < Package
   depends_on 'jsonc'
 
   def self.build
-    # system "sed -i 's,gegl-0.3,gegl-0.4,' gegl/Makefile.am"
-    # system "sed -i 's,Gegl-0.3,Gegl-0.4,' gegl/Makefile.am"
-    # system "sed -i 's,gegl-0.3,gegl-0.4,' gegl/Makefile.in"
-    # system "sed -i 's,Gegl-0.3,Gegl-0.4,' gegl/Makefile.in"
     system "env CFLAGS='-pipe -flto=auto' \
       CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \

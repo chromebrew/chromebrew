@@ -61,7 +61,6 @@ class Mpv < Package
   depends_on 'sommelier'
 
   def self.build
-    system 'pip install docutils'
     system './bootstrap.py'
     system "env CFLAGS='-flto=auto -fuse-ld=gold' \
       CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
@@ -81,7 +80,6 @@ class Mpv < Package
   def self.install
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     system './waf', "--destdir=#{CREW_DEST_DIR}", 'install'
-    system 'pip uninstall -y docutils'
   end
 
   def self.postinstall

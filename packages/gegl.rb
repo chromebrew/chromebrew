@@ -16,10 +16,10 @@ class Gegl < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gegl-0.4.30-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6212adedc85ad44daa58b5e28a9f1e9b17d7e5d60df15725e8c25ac42b569494',
-     armv7l: '6212adedc85ad44daa58b5e28a9f1e9b17d7e5d60df15725e8c25ac42b569494',
-       i686: 'b0c4381f1b9e05fa0669fad5b71b41dcfced9eeec53f40a8abb6b489c081ae0e',
-     x86_64: '29bc96a65f770b73386e571612213d7d7cfedfdaec54a9a32de9d5ffc29acf34'
+    aarch64: '25258b3592ddf748f011e3fc0a44ccb3ce0ba24ae33d030df592f34210eef04b',
+     armv7l: '25258b3592ddf748f011e3fc0a44ccb3ce0ba24ae33d030df592f34210eef04b',
+       i686: 'a941d0bf5b9bfcd10affa27e9fa16f1d359ded89ee5c3c20d8bc8f5b8afb90aa',
+     x86_64: '1a3f632903fc5586708ea179d3f55d7255ccb716025187aa1740289e513c4ea1'
   })
 
   depends_on 'asciidoc'
@@ -34,7 +34,7 @@ class Gegl < Package
   depends_on 'jasper'
   depends_on 'json_glib'
   depends_on 'lcms'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'librsvg'
   depends_on 'libsdl2'
