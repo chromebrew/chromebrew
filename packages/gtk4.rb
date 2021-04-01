@@ -5,23 +5,23 @@ class Gtk4 < Package
   homepage 'https://developer.gnome.org/gtk4/'
   @_ver = '4.2.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gtk/-/archive/#{@_ver}/gtk-#{@_ver}.tar.bz2"
   source_sha256 'ea817483d35cd5f5d949a61b15c904ee3157fe5befb98e084a241921562f1838'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'e1fd8f30f7f5c8f5e0032939746fdc5daa35d2bea56ff6d4829cdd6a84a86e20',
-     armv7l: 'e1fd8f30f7f5c8f5e0032939746fdc5daa35d2bea56ff6d4829cdd6a84a86e20',
-       i686: 'e03f5b99a2b39a579ac6e6cb936116b2fa4518f17bc5b4f5ed754959143b6d32',
-     x86_64: '1515611d769fbd1c95e9a5c5ffccab9116f1d793d0df98076ae60610e7d03fab'
+    aarch64: 'e6d12870ed535be19d04aff0eb4659e94728faa4464fd1d26de0dc51fec049d2',
+     armv7l: 'e6d12870ed535be19d04aff0eb4659e94728faa4464fd1d26de0dc51fec049d2',
+       i686: '26bba0fa27efbc129c81077260ae15adc03cd02dd4ebf664fb3b99082816510d',
+     x86_64: '68c169e9112531c9fc41f9bed15a542867500846a16eedc6f103cfbcd99c668b'
   })
 
   depends_on 'adwaita_icon_theme'

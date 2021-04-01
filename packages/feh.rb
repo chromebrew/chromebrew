@@ -3,28 +3,31 @@ require 'package'
 class Feh < Package
   description 'feh is an X11 image viewer aimed mostly at console users.'
   homepage 'https://feh.finalrewind.org/'
-  version '3.1.1'
+  version '3.6.3'
   license 'feh'
   compatibility 'all'
-  source_url 'https://feh.finalrewind.org/feh-3.1.1.tar.bz2'
-  source_sha256 '61d0242e3644cf7c5db74e644f0e8a8d9be49b7bd01034265cc1ebb2b3f9c8eb'
+  source_url "https://feh.finalrewind.org/feh-#{version}.tar.bz2"
+  source_sha256 '437420f37f11614e008d066e2a3bdefcfc78144c8212998b2bacdd5d21ea23b4'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.1.1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.6.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.6.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.6.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/feh-3.6.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '3078205c170c198443f34de67e203553706e37d2e0e6922a6da19eab2a6fc01b',
-     armv7l: '3078205c170c198443f34de67e203553706e37d2e0e6922a6da19eab2a6fc01b',
-       i686: '607aa603469570597246fbb5e4947546eede0cc86856b3da93ad366b1d038ce2',
-     x86_64: '4183106490b301341bb7d8c4cf37f6071e61231580c5d2d6ff1e108874c681f7',
+  binary_sha256({
+    aarch64: '396e94fde7cc62de565076329fc8e197daa257e15e8804dcc24d602d6399f07c',
+     armv7l: '396e94fde7cc62de565076329fc8e197daa257e15e8804dcc24d602d6399f07c',
+       i686: '29950c19c3f81a31c318e5525310e21de75bc0bc93950f35a00f67d53981f272',
+     x86_64: '5cc0e413b32dadd731173e3dd3aabbc97788cd27903f1b4d5f8c61cb8b181356'
   })
 
-  depends_on 'curl'
   depends_on 'gtk3'
   depends_on 'imlib2'
+  depends_on 'libexif'
+  depends_on 'libpng'
+  depends_on 'libx11'
+  depends_on 'libxinerama'
   depends_on 'sommelier'
 
   def self.build
@@ -33,11 +36,14 @@ class Feh < Package
   end
 
   def self.install
-    system "make",
-           "PREFIX=#{CREW_PREFIX}",
-           "ICON_PREFIX=#{CREW_DEST_PREFIX}/share/icons",
-           "DESTDIR=#{CREW_DEST_DIR}",
-           "install",
-           "app=1"
+    system "env CFLAGS='-flto=auto -fuse-ld=gold' \
+      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+      LDFLAGS='-flto=auto' exif=1 \
+      make \
+      PREFIX=#{CREW_PREFIX}"
+    system "make ICON_PREFIX=#{CREW_DEST_PREFIX}/share/icons \
+      PREFIX=#{CREW_PREFIX} \
+      DESTDIR=#{CREW_DEST_DIR} \
+      install app=1"
   end
 end

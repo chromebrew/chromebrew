@@ -16,16 +16,22 @@ class Devil < Package
      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/devil-1.8.0-e342-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'b20edfe23152ce8c1de0dc78ce1098dc5844ba23377108f93c5222101099c51c',
-     armv7l: 'b20edfe23152ce8c1de0dc78ce1098dc5844ba23377108f93c5222101099c51c',
-       i686: 'cd64e331c519a10550c774af9d9c304fa80811d482304e5889f3d0d6136489c8',
-     x86_64: '1762d8d08c4d21a8b892864e2d18871b2f15a99a59a543faa42682e7921293f7'
+    aarch64: '7d45e28698eb99159d98b97760d11ddecff0ac87412b7cf249fb7e188b320502',
+     armv7l: '7d45e28698eb99159d98b97760d11ddecff0ac87412b7cf249fb7e188b320502',
+       i686: 'c75491427f9a75e33b8bca9f33b24cef15afc869118298d41177d45d3a913f4b',
+     x86_64: '99de10866bec2ac80094d5f3ad8a4d906cb6597dd01a2cce7d408533488ce330'
   })
 
-  depends_on 'libpng'
+  depends_on 'freeglut'
   depends_on 'jasper'
   depends_on 'lcms'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libglu'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
+  depends_on 'libtiff'
+  depends_on 'libxi'
+  depends_on 'libxmu'
+  depends_on 'mesa'
 
   def self.patch
     system "find -type f -exec sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' {} +"
