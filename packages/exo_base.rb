@@ -8,6 +8,8 @@ class Exo_base < Package
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  
+  depends_on 'wayland'
 
   def self.preflight
     abort 'Wayland is not supported in your Chrome OS version'.lightred unless File.stat('/var/run/chrome/wayland-0').socket?
