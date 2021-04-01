@@ -4,6 +4,7 @@ class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
   version '9.52'
+  license 'AGPL-3+'
   compatibility 'all'
   source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/ghostscript-9.52.tar.xz'
   source_sha256 '57442acf8b46453a9b5fc6fec738fbbb7e13a3d3e00f1aaaa0975529bc203c7c'

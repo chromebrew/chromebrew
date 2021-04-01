@@ -4,6 +4,7 @@ class Libgudev < Package
   description 'libgudev is a library with GObject bindings to libudev'
   homepage 'https://wiki.gnome.org/Projects/libgudev'
   version '234-1c7e'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/libgudev/archive/1c7e05b40b92b67dac7a6cd27b70ba08956e4815.zip'
   source_sha256 '5ecb0c8ca76b6da7c7ad01f947c407f3670362bf5d3244075928dd86e040fcc4'

@@ -4,6 +4,7 @@ class Diy < Package
   description 'data-parallel out-of-core library'
   homepage 'https://github.com/diatomic/diy'
   version '3.5.0'
+  license 'custom'
   compatibility 'all'
   source_url 'https://github.com/diatomic/diy/archive/3.5.0.tar.gz'
   source_sha256 'b3b5490441d521b6e9b33471c782948194bf95c7c3df3eb97bc5cf4530b91576'

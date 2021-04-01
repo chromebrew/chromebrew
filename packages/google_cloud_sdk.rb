@@ -4,6 +4,7 @@ class Google_cloud_sdk < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/'
   version '236.0.0'
+  license 'Apache-2.0'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686'

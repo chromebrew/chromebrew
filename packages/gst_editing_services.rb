@@ -5,6 +5,7 @@ class Gst_editing_services < Package
   homepage 'https://gstreamer.freedesktop.org/modules/gst-editing-services.html'
   @_ver = '1.18.3'
   version @_ver
+  license 'LGPL-2.0+'
   compatibility 'all'
   source_url "https://gstreamer.freedesktop.org/src/gst-editing-services/gst-editing-services-#{@_ver}.tar.xz"
   source_sha256 '8ae139b13b1646a20ba63b0b90877d35813e24cd87642d325e751fc7cb175e20'
@@ -23,9 +24,9 @@ class Gst_editing_services < Package
   })
 
   depends_on 'gst_plugins_base'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'pygobject' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'pygobject' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

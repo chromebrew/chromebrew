@@ -4,8 +4,9 @@ class Tinycore < Package
   description 'TinyCore Linux is a distro based on loop-device mounted programs, like Snaps.
           This is a wrapper script to be able to execute their .tcz files.'
   homepage 'https://distro.ibiblio.org/tinycorelinux/'
-  compatibility 'all'
   version '9.0-0'
+  license '' # Figuring out
+  compatibility 'all'
   case ARCH
   when 'armv7l', 'aarch64'
     source_url 'https://distro.ibiblio.org/tinycorelinux/9.x/armv7/tcz/bash.tcz'

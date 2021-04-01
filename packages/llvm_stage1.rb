@@ -5,6 +5,7 @@ class Llvm_stage1 < Package
   homepage 'http://llvm.org/'
   @_ver = '11.1.0-rc1'
   version @_ver
+  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain and rc'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
   source_sha256 'e610297041129a5c5b24355a988c99c7452ee7105ee2355334a8c521b988eb3c'
@@ -21,7 +22,7 @@ class Llvm_stage1 < Package
         i686: '84a5a2a381af8c789fcb895d1ae62dc1932b3ad1ad423e8351e37aa9be5e2490',
       x86_64: 'ddb9e88444729174b0c6f4de883910ce78e8fa489e0831acdf92daaf4561e9af',
   })
-  
+
   # llvm_stage1 is compiled with gcc, without -flto
   # Then in stage 2 (llvm.rb) everything is compiled with clang built in stage 1, with -flto=thin
   # FYI LLVM 11.1.0 is a tiny rebuild of 11.0.1 fixing ABI compatibility with LLVM 10.0.0 & LLVM 12
@@ -45,12 +46,12 @@ class Llvm_stage1 < Package
     @ARCH_CXX_FLAGS = '-fPIC'
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lld'
   end
-  
+
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto"
   @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto"
-  
+
   # Using Targets 'all' because otherwise mesa complains.
-  # This may be patched upstream as per 
+  # This may be patched upstream as per
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   LLVM_TARGETS_TO_BUILD = 'all'
   LLVM_VERSION = version.split("-")[0]
@@ -64,7 +65,7 @@ class Llvm_stage1 < Package
     puts "Setting compile to use python3".lightgreen
     ############################################################
     system "grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'"
-    
+
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system "echo '#!/bin/bash
@@ -123,7 +124,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
       FileUtils.ln_s "lib#{CREW_LIB_SUFFIX}/LLVMgold.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
     end
   end
-  
+
   def self.check
     Dir.chdir("builddir") do
       #system "ninja check-llvm || true"

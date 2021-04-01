@@ -4,6 +4,7 @@ class Libmms < Package
   description 'MMS stream protocol library'
   homepage 'https://sourceforge.net/projects/libmms/'
   version '0.6.4'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://download.sourceforge.net/libmms/libmms-0.6.4.tar.gz'
   source_sha256 '3c05e05aebcbfcc044d9e8c2d4646cd8359be39a3f0ba8ce4e72a9094bee704f'

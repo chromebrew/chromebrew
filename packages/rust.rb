@@ -5,6 +5,7 @@ class Rust < Package
   homepage 'https://www.rust-lang.org/'
   @_ver = '1.50.0'
   version @_ver
+  license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/rust-lang/rust/archive/#{@_ver}.tar.gz"
   source_sha256 '112114380a4f4ec98c30313ce9047183ee0c95ef2b28beeb7b77e6cd47a9294e'

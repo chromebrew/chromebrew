@@ -2,8 +2,9 @@ require 'package'
 
 class Xkbcomp < Package
   description 'Compile XKB keyboard'
-  homepage 'https://www.x.org'
+  homepage 'https://xorg.freedesktop.org'
   version '1.4.4'
+  license 'ISC, MIT and custom'
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/app/xkbcomp-1.4.4.tar.bz2'
   source_sha256 '59cce603a607a17722a0a1cf99010f4894e7812beb5d695abbc08474d59af27e'

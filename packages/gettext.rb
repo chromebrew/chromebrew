@@ -5,6 +5,7 @@ class Gettext < Package
   homepage 'https://www.gnu.org/software/gettext/'
   @_ver = '0.21'
   version "#{@ver}-1"
+  license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://gnu.freemirror.org/gnu/gettext/gettext-#{@_ver}.tar.lz"
   source_sha256 '435b546e3880ab767c967c0731b20629a0cb0ba620e6bac2f590f401c10ebb45'

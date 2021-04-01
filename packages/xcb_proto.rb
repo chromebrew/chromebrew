@@ -2,10 +2,11 @@ require 'package'
 
 class Xcb_proto < Package
   description 'The protocols for the X window system provide extended functionality for communication between a X client and the server.'
-  homepage 'https://x.org'
+  homepage 'https://xcb.freedesktop.org'
   version '1.14.1'
+  license 'MIT-with-advertising'
   compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/xorg/proto/xcbproto/-/archive/xcb-proto-1.14.1/xcbproto-xcb-proto-1.14.1.tar.bz2'
+  source_url 'https://x.org/releases/individual/proto/xcb-proto-1.14.tar.xz'
   source_sha256 '186a3ceb26f9b4a015f5a44dcc814c93033a5fc39684f36f1ecc79834416a605'
 
   binary_url({

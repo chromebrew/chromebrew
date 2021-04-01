@@ -5,6 +5,7 @@ class Libnotify < Package
   homepage 'https://git.gnome.org/browse/libnotify'
   @_ver = '0.7.9'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/GNOME/libnotify/archive/#{@_ver}.tar.gz"
   source_sha256 '9bd4f5fa911d27567e7cc2d2d09d69356c16703c4e8d22c0b49a5c45651f3af0'

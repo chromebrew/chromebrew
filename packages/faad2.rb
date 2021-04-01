@@ -5,6 +5,7 @@ class Faad2 < Package
   homepage 'https://github.com/knik0/faad2'
   @_ver = '2.10.0'
   version @_ver
+  license 'faad2'
   compatibility 'all'
   source_url 'https://github.com/knik0/faad2/archive/2_10_0.tar.gz'
   source_sha256 '0c6d9636c96f95c7d736f097d418829ced8ec6dbd899cc6cc82b728480a84bfb'

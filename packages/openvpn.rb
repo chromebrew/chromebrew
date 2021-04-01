@@ -4,6 +4,7 @@ class Openvpn < Package
   description 'OpenVPN is an open source VPN daemon'
   homepage 'https://openvpn.net/'
   version '2.4.9'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://swupdate.openvpn.org/community/releases/openvpn-2.4.9.tar.xz'
   source_sha256 '641f3add8694b2ccc39fd4fd92554e4f089ad16a8db6d2b473ec284839a5ebe2'

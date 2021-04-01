@@ -4,6 +4,7 @@ class Atkmm < Package
   description 'Atkmm is the official C++ interface for the ATK accessibility toolkit library.'
   homepage 'https://www.gtkmm.org/'
   version '2.28.1'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/atkmm/2.28/atkmm-2.28.1.tar.xz'
   source_sha256 '116876604770641a450e39c1f50302884848ce9cc48d43c5dc8e8efc31f31bad'

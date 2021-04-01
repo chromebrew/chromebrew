@@ -4,6 +4,7 @@ class Fakeroot_ng < Package
   description 'Fakeroot-ng is a clean re-implementation of fakeroot.'
   homepage 'https://fakeroot-ng.lingnu.com/index.php/Home_Page'
   version '0.18'
+  license 'GPL-2'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

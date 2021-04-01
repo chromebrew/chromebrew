@@ -5,8 +5,9 @@ class Inetutils < Package
   homepage 'https://www.gnu.org/software/inetutils/'
   @_ver = '2.0'
   version "#{@_ver}-1"
+  license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/inetutils/inetutils-#{@_ver}.tar.xz"
+  source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{@_ver}.tar.xz"
   source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
 
   binary_url({

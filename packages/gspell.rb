@@ -2,7 +2,9 @@ require 'package'
 
 class Gspell < Package
   description 'a flexible API to implement the spell checking in a GTK+ application'
+  homepage 'https://wiki.gnome.org/Projects/gspell'
   version '1.9.1-1'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gspell/1.9/gspell-1.9.1.tar.xz'
   source_sha256 'dcbb769dfdde8e3c0a8ed3102ce7e661abbf7ddf85df08b29915e92cd723abdd'

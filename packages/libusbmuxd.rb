@@ -3,29 +3,33 @@ require 'package'
 class Libusbmuxd < Package
   description 'USB Multiplex Daemon'
   homepage 'http://www.libimobiledevice.org/'
-  version '2.0.1'
+  version '2.0.2'
+  license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/libimobiledevice/libusbmuxd/archive/2.0.1.tar.gz'
-  source_sha256 'f93faf3b3a73e283646f4d62b3421aeccf58142266b0eb22b2b13dd4b2362eb8'
+  source_url "https://github.com/libimobiledevice/libusbmuxd/archive/#{version}.tar.gz"
+  source_sha256 '8ae3e1d9340177f8f3a785be276435869363de79f491d05d8a84a59efc8a8fdc'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libusbmuxd-2.0.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '9db036100d9e97fbeb94a88545fab317f4c38d4e642ba668e30183d230906654',
-     armv7l: '9db036100d9e97fbeb94a88545fab317f4c38d4e642ba668e30183d230906654',
-       i686: '8ab3386d2ad4347f58e48a47333f0e759b9ebd54eec99b435f8ae4a1e953cad4',
-     x86_64: '6aab88193820ba3b336c083147c0a5ac449a3ebb839d726144454e89ee0ecb80',
+  binary_sha256({
+    aarch64: '731ccae4db42bb38174653ebfebd73e70d9f21c3a14d4df9bc81310e9261294d',
+     armv7l: '731ccae4db42bb38174653ebfebd73e70d9f21c3a14d4df9bc81310e9261294d',
+       i686: '71bf097eefdce79c6e470211237db21a11f34656ca54500a792525c24c8d8935',
+     x86_64: '022b15b6cacd910ff840003d147d9d7f702eee9a49b012dc2b18b8fb6414b985'
   })
 
   depends_on 'glib'
   depends_on 'libplist'
 
   def self.build
-    system "./autogen.sh #{CREW_OPTIONS}"
+    system "env CFLAGS='-flto=auto' \
+      CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
+      ./autogen.sh #{CREW_OPTIONS}"
     system 'make'
   end
 

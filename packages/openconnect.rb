@@ -5,6 +5,7 @@ class Openconnect < Package
   description 'OpenConnect is an SSL VPN client initially created to support Cisco\'s AnyConnect SSL VPN.'
   homepage 'http://www.infradead.org/openconnect/'
   compatibility 'all'
+  license 'LGPL-2.1 and GPL-2'
   source_url 'ftp://ftp.infradead.org/pub/openconnect/openconnect-7.08.tar.gz'
   source_sha256 '1c44ec1f37a6a025d1ca726b9555649417f1d31a46f747922b84099ace628a03'
 

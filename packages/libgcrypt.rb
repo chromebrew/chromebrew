@@ -4,6 +4,7 @@ class Libgcrypt < Package
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
   version '1.8.6'
+  license 'LGPL-2.1 and MIT'
   compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.6.tar.bz2'
   source_sha256 '0cba2700617b99fc33864a0c16b1fa7fdf9781d9ed3509f5d767178e5fd7b975'

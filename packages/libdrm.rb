@@ -5,6 +5,7 @@ class Libdrm < Package
   homepage 'https://dri.freedesktop.org'
   @_ver = '2.4.104'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://dri.freedesktop.org/libdrm/libdrm-#{@_ver}.tar.xz"
   source_sha256 'd66ad8b5c2441015ac1333e40137bb803c3bde3612ff040286fcc12158ea1bcb'

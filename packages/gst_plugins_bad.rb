@@ -5,6 +5,7 @@ class Gst_plugins_bad < Package
   homepage 'https://gstreamer.freedesktop.org/'
   @_ver = '1.18.3'
   version @_ver
+  license 'LGPL-2'
   compatibility 'all'
   source_url "https://github.com/GStreamer/gst-plugins-bad/archive/#{@_ver}.tar.gz"
   source_sha256 '3e8b145850ade47e9fe09632c4b7bddfe35d2c53f5c6055183cfc62276010f46'
@@ -29,12 +30,12 @@ class Gst_plugins_bad < Package
   depends_on 'libgudev'
   depends_on 'libusb'
   depends_on 'libvdpau'
-  depends_on 'mjpegtools' => ':build'
-  depends_on 'chromaprint' => ':build'
-  depends_on 'libmms' => ':build'
-  depends_on 'faad2' => ':build'
-  depends_on 'libdca' => ':build'
-  depends_on 'libdvdnav' => ':build'
+  depends_on 'mjpegtools' => :build
+  depends_on 'chromaprint' => :build
+  depends_on 'libmms' => :build
+  depends_on 'faad2' => :build
+  depends_on 'libdca' => :build
+  depends_on 'libdvdnav' => :build
 
   def self.build
     system "meson \

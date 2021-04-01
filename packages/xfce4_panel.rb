@@ -4,6 +4,7 @@ class Xfce4_panel < Package
   description 'Next generation panel for the XFCE desktop environment'
   homepage 'https://xfce.org/'
   version '4.16.0'
+  license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://archive.xfce.org/src/xfce/xfce4-panel/4.16/xfce4-panel-#{version}.tar.bz2"
   source_sha256 '5e979aeeb37d306d72858b1bc67448222ea7a68de01409055b846cd31f3cc53d'

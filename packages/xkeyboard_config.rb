@@ -6,6 +6,7 @@ class Xkeyboard_config < Package
   homepage 'http://www.freedesktop.org/wiki/Software/XKeyboardConfig'
   compatibility 'all'
   version '2.29'
+  license 'MIT'
   source_url 'https://www.x.org/releases/individual/data/xkeyboard-config/xkeyboard-config-2.29.tar.bz2'
   source_sha256 '1d4175278bf06000683656763a8b1d3282c61a314b6db41260c8efe92d621802'
 

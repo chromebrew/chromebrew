@@ -4,6 +4,7 @@ class Xercesc < Package
   description 'Xerces-C++ is a validating XML parser written in a portable subset of C++.'
   homepage 'http://xerces.apache.org/xerces-c/'
   version '3.2.3'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://downloads.apache.org/xerces/c/3/sources/xerces-c-3.2.3.tar.xz'
   source_sha256 '12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149'

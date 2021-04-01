@@ -5,6 +5,7 @@ class Thunar < Package
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
   @_ver = '4.16.1'
   version @_ver + '-1'
+  license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
   source_url "https://archive.xfce.org/src/xfce/thunar/4.16/thunar-#{@_ver}.tar.bz2"
   source_sha256 'da2d17d2cb69eb33768690b714cc232ed367cbd71eb9543aaa2a805d05dc3ce1'

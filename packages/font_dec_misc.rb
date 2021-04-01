@@ -4,6 +4,7 @@ class Font_dec_misc < Package
   description 'DEC cursor and session PCF fonts'
   homepage 'https://xorg.freedesktop.org/'
   version '1.0.3'
+  license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-dec-misc-1.0.3.tar.bz2'
   source_sha256 'e19ddf8b5f8de914d81675358fdfe37762e9ce524887cc983adef34f2850ff7b'

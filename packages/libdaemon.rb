@@ -4,6 +4,7 @@ class Libdaemon < Package
   description 'libdaemon is a lightweight C library that eases the writing of UNIX daemons.'
   homepage 'http://0pointer.de/lennart/projects/libdaemon/'
   version '0.14'
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url 'http://0pointer.de/lennart/projects/libdaemon/libdaemon-0.14.tar.gz'
   source_sha256 'fd23eb5f6f986dcc7e708307355ba3289abe03cc381fc47a80bca4a50aa6b834'

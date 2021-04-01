@@ -5,6 +5,7 @@ class Gst_plugins_good < Package
   homepage 'https://gstreamer.freedesktop.org/'
   @_ver = '1.18.3'
   version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-#{@_ver}.tar.xz"
   source_sha256 '9b3b8e05d4d6073bf929fb33e2d8f74dd81ff21fa5b50c3273c78dfa2ab9c5cb'
@@ -30,9 +31,9 @@ class Gst_plugins_good < Package
   depends_on 'taglib'
   depends_on 'libdv'
   depends_on 'libvpx'
-  depends_on 'jack' => ':build'
-  depends_on 'gtk3' => ':build'
-  depends_on 'nasm' => ':build'
+  depends_on 'jack' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'nasm' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

@@ -4,6 +4,7 @@ class Tcsh < Package
   description 'tcsh is a csh compatible shell with file name completion and command line editing.'
   homepage 'https://www.tcsh.org/'
   version '6.22.03'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://astron.com/pub/tcsh/tcsh-6.22.03.tar.gz'
   source_sha256 'be2cfd653d2a0c7f506d2dd14c12324ba749bd484037be6df44a3973f52262b7'

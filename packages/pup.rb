@@ -4,6 +4,7 @@ class Pup < Package
   description 'pup is a command line tool for processing HTML inspired by jq'
   homepage 'https://github.com/ericchiang/pup'
   version '0.4.0'
+  license 'MIT'
   compatibility 'all'
 
   case ARCH

@@ -5,6 +5,7 @@ class Mjpegtools < Package
   homepage 'https://mjpeg.sourceforge.io/'
   @_ver = '2.2.0_beta'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/sourceforge/mjpeg/mjpegtools-#{@_ver}.tar.gz"
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -26,7 +27,7 @@ class Mjpegtools < Package
   depends_on 'libpng'
   depends_on 'libdv'
   depends_on 'libsdl2'
-  depends_on 'v4l_utils' => ':build'
+  depends_on 'v4l_utils' => :build
 
   def self.build
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \

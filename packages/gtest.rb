@@ -2,7 +2,9 @@ require 'package'
 
 class Gtest < Package
   description 'Google Test - C++ testing utility'
+  homepage 'https://opensource.google/projects/googletest'
   version '1.10.0-389c'
+  license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/google/googletest/archive/389cb68b87193358358ae87cc56d257fd0d80189.zip'
   source_sha256 '763e20249e76417bed7ebc44aa85fedf5fbac6f9fb6d30bddb628ab07ebf04f5'

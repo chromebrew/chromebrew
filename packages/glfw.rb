@@ -4,6 +4,7 @@ class Glfw < Package
   description 'GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.'
   homepage 'http://www.glfw.org/'
   version '3.3.2'
+  license 'ZLIB'
   compatibility 'all'
   source_url 'https://github.com/glfw/glfw/releases/download/3.3.2/glfw-3.3.2.zip'
   source_sha256 '08a33a512f29d7dbf78eab39bd7858576adcc95228c9efe8e4bc5f0f3261efc7'

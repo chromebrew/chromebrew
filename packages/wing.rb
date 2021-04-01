@@ -4,6 +4,7 @@ class Wing < Package
   description 'Wing Personal is a free Python IDE designed for students and hobbyists.'
   homepage 'https://wingware.com/'
   version '7.2.1.0'
+  license 'Wingware-EULA'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

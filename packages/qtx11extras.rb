@@ -4,8 +4,9 @@ class Qtx11extras < Package
   description 'Provides classes for developing for the X11 platform.'
   homepage 'https://www.qt.io/'
   version '5.15.1-1'
+  license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtx11extras-everywhere-src-5.15.1.tar.xz'
+  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtx11extras-everywhere-src-5.15.1.tar.xz'
   source_sha256 'f7cd7c475a41840209808bf8b1de1c6587c3c74e5ae3b0969760b9ed35159e59'
 
   binary_url ({

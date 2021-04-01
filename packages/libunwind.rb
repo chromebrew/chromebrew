@@ -4,6 +4,7 @@ class Libunwind < Package
   description 'libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
   homepage 'https://www.nongnu.org/libunwind/'
   version '1.5.0-1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/libunwind/libunwind-1.5.0.tar.gz'
   source_sha256 '90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017'

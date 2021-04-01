@@ -4,6 +4,7 @@ class Librespot < Package
   description 'Open Source Spotify connect library'
   homepage 'https://github.com/librespot-org/librespot'
   version '0.1.3'
+  license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/librespot-org/librespot/archive/v0.1.3.tar.gz'
   source_sha256 '2d28a63c6dda08ecbc1245c7cfe34c9b3b29e8c5304f4aa8b65aedb899056b25'

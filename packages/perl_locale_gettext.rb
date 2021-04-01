@@ -5,6 +5,7 @@ class Perl_locale_gettext < Package
   description 'Locale::gettext - message handling functions'
   homepage 'https://metacpan.org/pod/Locale::gettext'
   compatibility 'all'
+  license 'GPL-1+ or Artistic'
   version '1.07-1'
   source_url 'https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/gettext-1.07.tar.gz'
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
