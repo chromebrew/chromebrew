@@ -49,10 +49,10 @@ class Devil < Package
         -DBUILD_SHARED_LIBS=ON \
         .."
     end
-    system 'ninja -C DevIL/builddir'
+    system 'samu -C DevIL/builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C DevIL/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C DevIL/builddir install"
   end
 end

@@ -31,10 +31,10 @@ class Libwnck < Package
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
            '_build'
-    system 'ninja -v -C _build'
+    system 'samu -v -C _build'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C _build install"
   end
 end

@@ -23,11 +23,11 @@ class Gcalculator < Package
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     @_wrapper = <<~EOF
       #!/bin/sh
       WAYLAND_DISPLAY=wayland-0

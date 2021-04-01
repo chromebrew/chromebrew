@@ -24,15 +24,15 @@ class Prometheus_cpp < Package
 		          -DENABLE_TESTING=ON \
 		          -DBUILD_SHARED_LIBS=ON \
 		          -DUSE_THIRDPARTY_LIBRARIES=OFF .."
-      system "ninja"
+      system "samu"
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 
   def self.check
-    system "ninja -C builddir test"
+    system "samu -C builddir test"
   end
 end

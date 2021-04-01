@@ -45,7 +45,7 @@ class Mono < Package
       --enable-llvm \
       --enable-loadedllvm \
       --enable-system-aot \
-      --enable-ninja \
+      --enable-samu \
       --with-x \
       --with-libgdiplus"
     system 'make || make' # Make might fail the first time. This is a known upstream bug.

@@ -64,10 +64,10 @@ class Libaom < Package
         -Wno-dev \
         .."
     end
-    system 'ninja -C aom_git/builddir'
+    system 'samu -C aom_git/builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C aom_git/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C aom_git/builddir install"
   end
 end

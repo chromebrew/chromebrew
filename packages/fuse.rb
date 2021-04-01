@@ -31,11 +31,11 @@ class Fuse < Package
     -Duseroot=false \
     builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d/"
     FileUtils.mv "#{CREW_DEST_DIR}/etc/init.d/fuse3", "#{CREW_DEST_PREFIX}/etc/init.d/fuse3"
     FileUtils.mv "#{CREW_DEST_PREFIX}/sbin/mount.fuse3", "#{CREW_DEST_PREFIX}/bin/mount.fuse3"

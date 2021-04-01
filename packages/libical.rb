@@ -39,10 +39,10 @@ class Libical < Package
       -DICAL_BUILD_DOCS=false \
       -DLIBICAL_BUILD_TESTING=false"
     end
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

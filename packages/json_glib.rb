@@ -30,16 +30,16 @@ class Json_glib < Package
     system "meson #{CREW_MESON_LTO_OPTIONS} \
     builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   # Ticket opened at
   # https://gitlab.gnome.org/GNOME/json-glib/-/issues/59
   # def self.check
-  # system 'ninja test -C builddir'
+  # system 'samu test -C builddir'
   # end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

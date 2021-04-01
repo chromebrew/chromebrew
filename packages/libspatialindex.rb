@@ -27,12 +27,12 @@ class Libspatialindex < Package
     Dir.chdir "builddir" do
       system "cmake -G 'Ninja' #{CREW_CMAKE_OPTIONS} \
               .."
-      system "ninja"
+      system "samu"
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/lib", CREW_DEST_LIB_PREFIX if ARCH == 'x86_64'
   end
 end

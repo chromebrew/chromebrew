@@ -40,7 +40,7 @@ class Swi_prolog < Package
       -DINSTALL_TESTS=ON \
       .."
       system '../scripts/pgo-compile.sh'
-      system 'ninja'
+      system 'samu'
     end
   end
 
@@ -51,6 +51,6 @@ class Swi_prolog < Package
   # end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

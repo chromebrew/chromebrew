@@ -52,11 +52,11 @@ class Appstream_glib < Package
       -Drpm=false \
       builddir"
     system 'meson configure builddir'
-    system "sed -i 's#-R#-Wl,-rpath=#g' builddir/build.ninja"
-    system 'ninja -C builddir'
+    system "sed -i 's#-R#-Wl,-rpath=#g' builddir/build.samu"
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

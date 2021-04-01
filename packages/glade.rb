@@ -33,10 +33,10 @@ class Glade < Package
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
     system "meson setup #{CREW_MESON_OPTIONS} -Dgtk_doc=false -Dman=false build"
     system "meson configure build"
-    system "ninja -C build"
+    system "samu -C build"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
   end
 end

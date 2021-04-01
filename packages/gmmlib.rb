@@ -36,10 +36,10 @@ class Gmmlib < Package
             LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
             cmake #{CREW_CMAKE_OPTIONS} ../ -G Ninja"
     end
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

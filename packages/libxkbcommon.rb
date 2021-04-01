@@ -31,14 +31,14 @@ class Libxkbcommon < Package
             #{CREW_MESON_LTO_OPTIONS} \
             builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.check
-    system 'ninja -C builddir test'
+    system 'samu -C builddir test'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

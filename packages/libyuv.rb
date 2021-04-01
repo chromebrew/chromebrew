@@ -49,12 +49,12 @@ class Libyuv < Package
         #{CREW_CMAKE_OPTIONS} \
         .."
     end
-    system 'ninja -C libyuv_git/builddir'
+    system 'samu -C libyuv_git/builddir'
     system 'du -a libyuv_git/builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C libyuv_git/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C libyuv_git/builddir install"
     Dir.chdir CREW_DEST_PREFIX do
       FileUtils.mv 'lib', 'lib64' if ARCH == 'x86_64'
     end

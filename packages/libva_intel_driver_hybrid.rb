@@ -32,11 +32,11 @@ class Libva_intel_driver_hybrid < Package
     system "meson #{CREW_MESON_LTO_OPTIONS} \
             -Denable_hybrid_codec=true builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 
   def self.postinstall

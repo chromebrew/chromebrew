@@ -65,10 +65,10 @@ class Webkit2gtk < Package
         -DENABLE_INTROSPECTION=ON \
         .."
     end
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

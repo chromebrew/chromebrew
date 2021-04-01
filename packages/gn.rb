@@ -31,7 +31,7 @@ class Gn < Package
     ENV['CXX']="g++"
     Dir.chdir ("gn") do
       system "python build/gen.py"
-      system "ninja -C out"
+      system "samu -C out"
     end
   end
 

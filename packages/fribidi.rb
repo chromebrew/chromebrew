@@ -25,10 +25,10 @@ class Fribidi < Package
   def self.build
     system "meson #{CREW_MESON_OPTIONS} -Ddocs=false -Dtests=false build"
     system 'meson configure build'
-    system 'ninja -v -C build'
+    system 'samu -v -C build'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
   end
 end

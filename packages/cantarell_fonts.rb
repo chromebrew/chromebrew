@@ -33,12 +33,12 @@ class Cantarell_fonts < Package
       -Dfontsdir=#{CREW_PREFIX}/share/fonts/opentype/cantarell \
       builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_PREFIX}/share/fonts/opentype/cantarell"
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 
   def self.postinstall
