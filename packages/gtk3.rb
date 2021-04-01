@@ -5,7 +5,7 @@ class Gtk3 < Package
   homepage 'https://developer.gnome.org/gtk3/3.0/'
   @_ver = '3.24.28'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gtk/-/archive/#{@_ver}/gtk-#{@_ver}.tar.bz2"
@@ -13,16 +13,16 @@ class Gtk3 < Package
   source_sha256 'ab8e2799c71f4ff5052fade351a3a035d60d7d357035788227bf5e6270cde448'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.28-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'ed7944ce5c9de772f04b435c5b3b4a764ba40c50396d618c2bc2d47d8e4d12c5',
-     armv7l: 'ed7944ce5c9de772f04b435c5b3b4a764ba40c50396d618c2bc2d47d8e4d12c5',
-       i686: '198994411219b4ebd29872901bb0c32f57c5a018d6fff60967be01c27fd3889a',
-     x86_64: '5b45f67de167c933b7e2b5fd138eac56ebe1405fd2d70e3036980df1fc684987'
+    aarch64: '25b189ed5da4f41a7c31882c71ab7f4cacd6504987706a629c2b8cf63157e3eb',
+     armv7l: '25b189ed5da4f41a7c31882c71ab7f4cacd6504987706a629c2b8cf63157e3eb',
+       i686: 'db956665e7077a5699a24515ccbde0ac932c3d445def3e36f74bcd09f1608296',
+     x86_64: '16ef9237bd85428972d050da9d5307f30700b24ce26c6d165c39769ad3dc2d92'
   })
 
   depends_on 'adwaita_icon_theme'
@@ -45,6 +45,7 @@ class Gtk3 < Package
   depends_on 'iso_codes'
   depends_on 'json_glib'
   depends_on 'libdeflate'
+  depends_on 'libjpeg'
   depends_on 'libepoxy'
   depends_on 'libx11'
   depends_on 'libxcomposite'
@@ -90,8 +91,10 @@ class Gtk3 < Package
 
   def self.postinstall
     # generate schemas
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+    system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
+    system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
+    # update icon cache
+    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end
 end

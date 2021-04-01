@@ -3,18 +3,20 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  version '2.42.2-1'
+  version '2.42.4'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz'
   source_sha256 '83c66a1cfd591d7680c144d2922c5955d38b4db336d7cd3ee109f7bcf9afef15'
 
-  depends_on 'pango'
+  depends_on 'glib'
   depends_on 'gobject_introspection'
   depends_on 'jasper'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
   depends_on 'libtiff'
-  depends_on 'libjpeg_turbo'
   depends_on 'libwebp'
+  depends_on 'pango'
   depends_on 'six'
 
   def self.build
@@ -26,8 +28,8 @@ class Gdk_pixbuf < Package
       -Ddebug=false \
       -Dman=false \
       builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
@@ -47,7 +49,7 @@ class Gdk_pixbuf < Package
 
   def self.postinstall
     ENV['GDK_PIXBUF_MODULEDIR'] = "#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders"
-    ENV['GDK_PIXBUF_MODULE_FILE'] = ENV['GDK_PIXBUF_MODULEDIR'] + '.cache'
+    ENV['GDK_PIXBUF_MODULE_FILE'] = "#{ENV['GDK_PIXBUF_MODULEDIR']}.cache"
     system 'gdk-pixbuf-query-loaders --update-cache'
   end
 end
