@@ -64,6 +64,7 @@ class Clang < Package
                       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
                       -DCLANG_LINK_CLANG_DYLIB=ON \
                       -DLLVM_LINK_LLVM_DYLIB=ON \
+                      -DBUILD_SHARED_LIBS=ON \
                       -DLLVM_ENABLE_RTTI=ON \
                       -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
                       -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
