@@ -19,6 +19,7 @@ class Llvm < Package
   depends_on 'binutils' => :build
   depends_on 'linuxheaders' => :build
   depends_on 'python3' => :build
+  depends_on 'pygments' => :build
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -72,6 +73,7 @@ class Llvm < Package
                       -DPYTHON_EXECUTABLE=$(which python3) \
                       -DLLVM_INSTALL_UTILS=ON \
                       -DLLVM_ENABLE_ZLIB=ON \
+                      -DLLVM_TOOL_MLIR_BUILD=ON \
                       -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
                       -DLLVM_OPTIMIZED_TABLEGEN=ON \
                       -DLLVM_ENABLE_TERMINFO=ON ."
@@ -79,11 +81,11 @@ class Llvm < Package
     FileUtils.mkdir "builddir"
     Dir.chdir "builddir" do
       system "cmake -G Ninja #{@LLVM_CMAKE_OPTIONS} .."
-      system "ninja"
+      system 'samu'
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

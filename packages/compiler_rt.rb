@@ -68,11 +68,11 @@ class Compiler_rt < Package
     FileUtils.mkdir "builddir"
     Dir.chdir "builddir" do
       system "cmake -G Ninja #{@LLVM_CMAKE_OPTIONS} .."
-      system "ninja"
+      system "samu"
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

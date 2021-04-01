@@ -83,11 +83,11 @@ class Lldb < Package
               -DLLDB_ENABLE_PYTHON=ON \
               -DCURSES_NCURSES_LIBRARY=#{CREW_LIB_PREFIX}/libncursesw.so \
               -DPANEL_LIBRARIES=#{CREW_LIB_PREFIX}/libpanelw.so .."
-      system "ninja"
+      system "samu"
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
