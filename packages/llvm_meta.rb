@@ -10,7 +10,6 @@ class Llvm_meta < Package
   is_fake
 
   depends_on 'clang'
-  depends_on 'clang_tools_extra'
   depends_on 'compiler_rt'
   depends_on 'flang'
   depends_on 'libclc'
