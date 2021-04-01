@@ -1,7 +1,7 @@
 require 'package'
 
 class Libunwind < Package
-  description 'libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
+  description 'GNU libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
   homepage 'https://www.nongnu.org/libunwind/'
   version '1.5.0-1'
   license 'MIT'

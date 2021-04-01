@@ -14,6 +14,8 @@ class Libcxx < Package
   depends_on 'cmake' => :build
   depends_on 'perl' => :build
   depends_on 'pkgconfig' => :build
+  depends_on 'linuxheaders' => :build
+  depends_on 'python3' => :build
 
   case ARCH
   when 'aarch64', 'armv7l'

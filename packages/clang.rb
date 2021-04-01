@@ -9,16 +9,15 @@ class Clang < Package
   source_url 'https://github.com/llvm/llvm-project/releases/download/llvmorg-11.1.0/clang-11.1.0.src.tar.xz'
   source_sha256 '0a8288f065d1f57cb6d96da4d2965cbea32edc572aa972e466e954d17148558b'
 
-  depends_on 'zlibpkg'
-  depends_on 'ncurses'
-  depends_on 'libffi'
-  depends_on 'libxml2'
   depends_on 'llvm'
-  depends_on 'libcxx'
+  depends_on 'binutils'
+  depends_on 'libxml2'
+  depends_on 'glibc'
   depends_on 'cmake' => :build
   depends_on 'perl' => :build
   depends_on 'pkgconfig' => :build
-  depends_on 'binutils' => :build
+  depends_on 'linuxheaders' => :build
+  depends_on 'python3' => :build
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -61,7 +60,6 @@ class Clang < Package
                       -DCMAKE_LINKER=gold \
                       -DLLVM_USE_LINKER=gold \
                       -DCLANG_DEFAULT_LINKER=bfd \
-                      -DCLANG_DEFAULT_CXX_STDLIB=libc++ \
                       -DCLANG_DEFAULT_OBJCOPY=llvm-objcopy \
                       -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
                       -DCLANG_LINK_CLANG_DYLIB=ON \
@@ -70,8 +68,6 @@ class Clang < Package
                       -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
                       -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
                       -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
-                      -DLLVM_PARALLEL_COMPILE_JOBS=$(($(nproc) + $(nproc))) \
-                      -DLLVM_PARALLEL_LINK_JOBS=$(nproc) \
                       -DPYTHON_EXECUTABLE=$(which python3) \
                       -DLLVM_ENABLE_ZLIB=ON \
                       -DLLVM_ENABLE_TERMINFO=ON ."

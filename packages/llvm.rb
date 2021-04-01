@@ -17,6 +17,8 @@ class Llvm < Package
   depends_on 'perl' => :build
   depends_on 'pkgconfig' => :build
   depends_on 'binutils' => :build
+  depends_on 'linuxheaders' => :build
+  depends_on 'python3' => :build
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -67,8 +69,6 @@ class Llvm < Package
                       -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
                       -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
                       -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
-                      -DLLVM_PARALLEL_COMPILE_JOBS=$(($(nproc) + $(nproc))) \
-                      -DLLVM_PARALLEL_LINK_JOBS=$(nproc) \
                       -DPYTHON_EXECUTABLE=$(which python3) \
                       -DLLVM_INSTALL_UTILS=ON \
                       -DLLVM_ENABLE_ZLIB=ON \

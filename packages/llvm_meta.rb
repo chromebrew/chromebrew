@@ -16,9 +16,8 @@ class Llvm_meta < Package
   depends_on 'libclc'
   depends_on 'libcxx'
   depends_on 'lld'
-  depends_on 'llvm'
-  depends_on 'llvm_libunwind'
   depends_on 'lldb'
+  depends_on 'llvm'
   depends_on 'openmp'
   depends_on 'polly'
 
