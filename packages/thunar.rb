@@ -35,11 +35,11 @@ class Thunar < Package
   def self.build
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
             ./configure #{CREW_OPTIONS} \
-              --enable-gio-unix
-              --enable-gudev
-              --enable-exif
-              --enable-pcre
-              --disable-static
+              --enable-gio-unix \
+              --enable-gudev \
+              --enable-exif \
+              --enable-pcre \
+              --disable-static \
               --enable-notifications"
     system 'make'
   end
