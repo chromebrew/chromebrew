@@ -1,7 +1,7 @@
 require 'package'
 
 class Browsh < Package
-  description 'A fully-modern text-based browser, rendering to TTY and browsers.'
+  description 'A fully-modern text-based browser with Firefox backend, rendering to TTY and browsers.'
   homepage 'https://www.brow.sh'
   @_ver = '1.6.4'
   version @_ver
