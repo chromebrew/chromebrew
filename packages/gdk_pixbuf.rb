@@ -23,14 +23,14 @@ class Gdk_pixbuf < Package
   })
 
   depends_on 'glib'
-  depends_on 'gobject_introspection'
-  depends_on 'jasper'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'jasper' => :build
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libtiff'
-  depends_on 'libwebp'
-  depends_on 'pango'
-  depends_on 'six'
+  depends_on 'libwebp'  => :build
+  depends_on 'pango' => :build
+  depends_on 'six' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
