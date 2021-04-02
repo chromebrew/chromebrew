@@ -33,13 +33,14 @@ class Exo_base < Package
   end
 
   def self.install
-    system "echo '#{@env}' >> #{HOME}/.bashrc" unless `grep -c '#{@env.lines.first.chomp}' #{HOME}/.bashrc`.to_i > 0
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/etc/env.d/")
     #File.write("#{CREW_DEST_PREFIX}/etc/env.d/exo_base", @env)
   end
 
   def self.postinstall
-    puts <<~EOT.lightblue
+      system "echo '#{@env}' >> #{HOME}/.bashrc" unless `grep -c '#{@env.lines.first.chomp}' #{HOME}/.bashrc`.to_i > 0
+
+      puts <<~EOT.lightblue
 
       To complete the installation, execute the following:
       
