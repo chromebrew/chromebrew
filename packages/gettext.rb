@@ -4,7 +4,7 @@ class Gettext < Package
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://www.gnu.org/software/gettext/'
   @_ver = '0.21'
-  version "#{@ver}-1"
+  version "#{@_ver}-1"
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://gnu.freemirror.org/gnu/gettext/gettext-#{@_ver}.tar.lz"

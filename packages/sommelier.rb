@@ -9,13 +9,25 @@ class Sommelier < Package
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sommelier-20210109-2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'b518f2f3086e611f6bcdd8cd2b8b67d70956b96c5c43174e26685be6bd7aa0c4',
+     armv7l: 'b518f2f3086e611f6bcdd8cd2b8b67d70956b96c5c43174e26685be6bd7aa0c4',
+       i686: '74a2838593c1297e37127335d6e2aad9402caf264960bf05405434cec67eb254',
+     x86_64: '7e9689e28331c1d9be1f30c9deb6a77fae2519ccb753ef0ffb53faac324bf7e8'
+  })
+
   depends_on 'coreutils' # for readlink in wrapper script
   depends_on 'libdrm'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon'
-  depends_on 'llvm' => :build
   depends_on 'mesa'
   depends_on 'pixman'
   depends_on 'procps' # for pgrep in wrapper script
@@ -267,16 +279,16 @@ EOF"
 
     sommelier_in_bashrc = `grep -c "set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a" ~/.bashrc || true`
     unless sommelier_in_bashrc.to_i.positive?
-      puts "Putting sommelier loading code in ~/.bashrc".lightblue
+      puts 'Putting sommelier loading code in ~/.bashrc'.lightblue
       system "echo '# Sommelier daemon' >> ~/.bashrc"
       system "echo 'startsommelier' >> ~/.bashrc"
       puts 'To complete the installation, execute the following:'.orange
       puts 'source ~/.bashrc'.orange
     end
     puts
-    FileUtils.touch "#{HOME}/.sommelier.env" unless File.exists? "#{HOME}/.sommelier.env"
-    puts "To adjust sommelier environment variables, edit ~/.sommelier.env".lightblue
-    puts "Default values are in ~/.sommelier-default.env".lightblue
+    FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"
+    puts 'To adjust sommelier environment variables, edit ~/.sommelier.env'.lightblue
+    puts 'Default values are in ~/.sommelier-default.env'.lightblue
     puts
     puts "To start the sommelier daemon, run 'startsommelier'".lightblue
     puts "To stop the sommelier daemon, run 'stopsommelier'".lightblue

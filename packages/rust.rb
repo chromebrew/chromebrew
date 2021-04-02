@@ -3,12 +3,25 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.50.0'
-  version "#{@ver}-1"
+  @_ver = '1.51.0'
+  version @_ver
   license 'Apache-2.0 and MIT'
   compatibility 'all'
-  source_url "https://github.com/rust-lang/rust/archive/#{@_ver}.tar.gz"
-  source_sha256 '112114380a4f4ec98c30313ce9047183ee0c95ef2b28beeb7b77e6cd47a9294e'
+  source_url 'file:///dev/null'
+  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.51.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.51.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.51.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rust-1.51.0-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '1673202f5a6ff0b3753468bc96084da810ba1d5952c207be459556598faa6f68',
+     armv7l: '1673202f5a6ff0b3753468bc96084da810ba1d5952c207be459556598faa6f68',
+       i686: '07b04e4b808aba2e34a98ace8939a7b3285c41e99596a5560ac941729635e90a',
+     x86_64: 'e272a06829c9bb3d1c14752b668767bd85911231ba48e3a6281fc746b40ac19a'
+  })
 
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
@@ -58,6 +71,6 @@ class Rust < Package
       source #{CREW_PREFIX}/share/bash-completion/completions/rustup
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @env)
-    system "rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
+    system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
   end
 end
