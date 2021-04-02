@@ -6,9 +6,9 @@ class Intel_media_driver < Package
   @_ver = '20.4.5'
   version "#{@_ver}-1"
   license 'BSD-3, and MIT'
+  compatibility 'x86_64'
   case ARCH
   when 'x86_64'
-    compatibility 'x86_64'
     source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
     source_sha256 '3d856a963127ddd6690fc6dac521d7674947675d5f20452f1e6f45c0fc83f9e6'
 
