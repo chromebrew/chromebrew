@@ -24,11 +24,11 @@ class Nodebrew < Package
     FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew", "#{HOME}/.nodebrew"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @env = <<~EOF
+    @bashd = <<~EOF
       # nodebrew bash completion
       source #{CREW_PREFIX}/share/nodebrew/completions/bash/nodebrew-completion
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/nodebrew", @env)
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/nodebrew", @bashd)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
