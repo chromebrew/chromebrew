@@ -75,10 +75,10 @@ class Libefl < Package
            '-Demotion-loaders-disabler=gstreamer1,gstreamer,xine',
            '-Demotion-generic-loaders-disabler=vlc',
            '_build'
-    system 'samu -v -C _build'
+    system 'ninja -v -C _build'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C _build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
   end
 end

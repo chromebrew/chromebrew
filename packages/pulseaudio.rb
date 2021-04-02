@@ -66,7 +66,7 @@ class Pulseaudio < Package
     -Dalsadatadir=#{CREW_PREFIX}/share/alsa-card-profile \
     builddir"
     system 'meson configure builddir'
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.check
@@ -81,11 +81,11 @@ class Pulseaudio < Package
     # stderr:
     # loop-init
     # once!
-    # system 'samu -C builddir test || true'
+    # system 'ninja -C builddir test || true'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     @pulseaudio_daemon_conf = <<~PAUDIO_DAEMON_CONF_HEREDOC
       # Replace these with the proper values
       exit-idle-time = 10 # Exit as soon as unneeded

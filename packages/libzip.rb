@@ -32,15 +32,15 @@ class Libzip < Package
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         .."
-      system 'samu'
+      system 'ninja'
     end
   end
 
   def self.check
-    system "samu -C builddir test"
+    system "ninja -C builddir test"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

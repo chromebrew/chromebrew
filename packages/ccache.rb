@@ -35,12 +35,12 @@ class Ccache < Package
       -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
       -DZSTD_FROM_INTERNET=ON \
       .."
-      system "samu"
+      system "ninja"
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     Dir.chdir 'build' do
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/ccache/bin"
       system "for _prog in gcc g++ c++; do

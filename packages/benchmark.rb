@@ -52,15 +52,15 @@ class Benchmark < Package
               -DBENCHMARK_ENABLE_GTEST_TESTS=ON \
               -DBENCHMARK_ENABLE_TESTING=ON \
               -DINSTALL_GTEST=OFF .."
-      system "samu"
+      system "ninja"
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 
   def self.check
-    system "samu -C builddir test"
+    system "ninja -C builddir test"
   end
 end

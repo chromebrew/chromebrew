@@ -23,7 +23,7 @@ class Libudev_stub < Package
   })
 
   depends_on 'eudev'
-  depends_on 'samu' => :build
+  depends_on 'ninja' => :build
 
   def self.build
     Dir.chdir "#{CREW_PREFIX}/bin" do

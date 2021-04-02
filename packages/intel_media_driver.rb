@@ -41,11 +41,11 @@ class Intel_media_driver < Package
             LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
             cmake #{CREW_CMAKE_OPTIONS} ../ -G Ninja"
     end
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 
   def self.postinstall

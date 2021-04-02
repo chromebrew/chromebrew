@@ -59,7 +59,7 @@ class Weston < Package
         builddir"
 
     system 'meson configure builddir'
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
     system "cat <<'EOF'> weston.ini
 [core]
 xwayland=true
@@ -70,7 +70,7 @@ EOF"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu install -C builddir"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja install -C builddir"
     system "install -Dm644 weston.ini #{CREW_DEST_HOME}/.config/weston.ini"
   end
 

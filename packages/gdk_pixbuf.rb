@@ -42,11 +42,11 @@ class Gdk_pixbuf < Package
       -Dman=false \
       builddir"
     system 'meson configure builddir'
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     loader_dir = "#{CREW_DEST_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders"
     FileUtils.mkdir_p loader_dir
     system "touch #{loader_dir}.cache"

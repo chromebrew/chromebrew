@@ -47,13 +47,13 @@ class Zstd < Package
         #{CREW_MESON_LTO_OPTIONS} \
         builddir"
       system 'meson configure builddir'
-      system 'samu -C builddir'
+      system 'ninja -C builddir'
     end
   end
 
   def self.install
     Dir.chdir 'build/meson' do
-      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+      system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     end
   end
 end

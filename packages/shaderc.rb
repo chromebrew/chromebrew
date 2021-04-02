@@ -44,10 +44,10 @@ class Shaderc < Package
         -Wno-dev \
         .."
     end
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

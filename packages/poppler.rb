@@ -53,10 +53,10 @@ class Poppler < Package
       -I#{CREW_PREFIX}/include' \
       -DENABLE_UNSTABLE_API_ABI_HEADERS=on"
     end
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

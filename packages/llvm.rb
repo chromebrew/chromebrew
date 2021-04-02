@@ -144,13 +144,13 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
             -Wno-dev \
             ../llvm"
-      system 'samu'
+      system 'ninja'
     end
   end
 
   def self.install
     Dir.chdir('builddir') do
-      system "DESTDIR=#{CREW_DEST_DIR} samu install"
+      system "DESTDIR=#{CREW_DEST_DIR} ninja install"
       FileUtils.install 'clc', "#{CREW_DEST_PREFIX}/bin/clc", mode: 0o755
       FileUtils.install 'clc++', "#{CREW_DEST_PREFIX}/bin/clc++", mode: 0o755
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
@@ -160,9 +160,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
 
   def self.check
     Dir.chdir('builddir') do
-      # system "samu check-llvm || true"
-      # system "samu check-clang || true"
-      # system "samu check-lld || true"
+      # system "ninja check-llvm || true"
+      # system "ninja check-clang || true"
+      # system "ninja check-lld || true"
     end
   end
 

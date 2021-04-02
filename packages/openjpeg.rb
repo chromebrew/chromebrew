@@ -35,10 +35,10 @@ class Openjpeg < Package
         -DOPENJPEG_INSTALL_LIB_DIR='lib#{CREW_LIB_SUFFIX}' \
         .."
     end
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

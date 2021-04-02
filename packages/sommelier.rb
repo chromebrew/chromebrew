@@ -84,7 +84,7 @@ class Sommelier < Package
         -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" \
         builddir"
       system 'meson configure builddir'
-      system 'samu -C builddir'
+      system 'ninja -C builddir'
 
       Dir.chdir('builddir') do
         system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
@@ -242,7 +242,7 @@ EOF"
 
   def self.install
     Dir.chdir('platform2_git/vm_tools/sommelier') do
-      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+      system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
       Dir.chdir('builddir') do
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         system "install -Dm755 sommelier_sh #{CREW_DEST_PREFIX}/bin/sommelier"

@@ -41,10 +41,10 @@ class Harfbuzz < Package
     -Ddocs=disabled \
     builddir"
     system "meson configure builddir"
-    system "samu -C builddir"
+    system "ninja -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu install -C builddir"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja install -C builddir"
   end
 end

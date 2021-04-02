@@ -34,15 +34,15 @@ class Civetweb < Package
 		          -DCIVETWEB_ENABLE_CXX=ON \
 		          -DCIVETWEB_ENABLE_SERVER_EXECUTABLE=ON \
 		          -DCIVETWEB_ENABLE_SSL=ON .."
-      system "samu"
+      system "ninja"
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 
   def self.check
-    system "samu -C builddir test"
+    system "ninja -C builddir test"
   end
 end

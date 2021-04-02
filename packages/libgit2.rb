@@ -34,11 +34,11 @@ class Libgit2 < Package
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         .."
-      system 'samu'
+      system 'ninja'
     end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

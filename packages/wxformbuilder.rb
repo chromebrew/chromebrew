@@ -34,7 +34,7 @@ class Wxformbuilder < Package
 
   def self.install
     Dir.chdir 'wxFormBuilder' do
-      system "DESTDIR=#{CREW_DEST_DIR} samu -C _build install"
+      system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
       if ARCH == 'x86_64'
         FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib"
         FileUtils.ln_s "#{CREW_LIB_PREFIX}/wxformbuilder", "#{CREW_DEST_PREFIX}/lib/wxformbuilder"

@@ -32,12 +32,12 @@ class Jsoncpp < Package
   end
 
   def self.check
-    system 'samu -v -C build test'
+    system 'ninja -v -C build test'
   end
 
   def self.install
     Dir.chdir 'build' do
-      system "DESTDIR=#{CREW_DEST_DIR} samu install"
+      system "DESTDIR=#{CREW_DEST_DIR} ninja install"
     end
   end
 end

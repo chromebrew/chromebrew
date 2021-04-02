@@ -37,10 +37,10 @@ class Vmaf < Package
       builddir"
     end
     system 'meson configure libvmaf/builddir'
-    system 'samu -C libvmaf/builddir'
+    system 'ninja -C libvmaf/builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C libvmaf/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C libvmaf/builddir install"
   end
 end

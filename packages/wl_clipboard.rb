@@ -27,10 +27,10 @@ class Wl_clipboard < Package
 
   def self.build
     system "meson build --prefix #{CREW_PREFIX}"
-    system 'samu -C build'
+    system 'ninja -C build'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 end

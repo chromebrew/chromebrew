@@ -34,10 +34,10 @@ class Check < Package
       -DCHECK_ENABLE_TIMEOUT_TESTS=OFF \
       -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
       .."
-      system "samu"
+      system "ninja"
     end
   end
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 end

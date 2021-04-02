@@ -33,11 +33,11 @@ class Xorg_intel_driver < Package
     #        builddir"
     #
     #system 'meson configure builddir'
-    #system "samu -l #{CREW_NPROC.to_i/2} -C builddir"
+    #system "ninja -l #{CREW_NPROC.to_i/2} -C builddir"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    #system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    #system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

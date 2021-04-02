@@ -36,7 +36,7 @@ class Glslang < Package
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_SHARED_LIBS=ON"
     end
-    system 'samu -C build-shared'
+    system 'ninja -C build-shared'
     Dir.mkdir 'build-static'
     Dir.chdir 'build-static' do
     system "cmake .. \
@@ -46,11 +46,11 @@ class Glslang < Package
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_SHARED_LIBS=OFF"
       end
-    system 'samu -C build-static'
+    system 'ninja -C build-static'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build-shared install"
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build-static install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-shared install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-static install"
   end
 end

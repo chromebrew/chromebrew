@@ -59,10 +59,10 @@ class Gst_plugins_good < Package
       -Dgobject-cast-checks=disabled \
       builddir"
     system 'meson configure builddir'
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

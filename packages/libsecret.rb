@@ -29,10 +29,10 @@ class Libsecret < Package
   def self.build
     system "meson #{CREW_MESON_OPTIONS} -Dgtk_doc=false -Dmanpage=false build"
     system 'meson configure build'
-    system 'samu -v -C build'
+    system 'ninja -v -C build'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 end

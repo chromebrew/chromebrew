@@ -40,15 +40,15 @@ class Libjpeg_turbo < Package
         -W no-dev \
         .."
     end
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.check
-    system 'samu -C builddir test'
+    system 'ninja -C builddir test'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     FileUtils.install 'jpegint.h', "#{CREW_DEST_PREFIX}/include/", mode: 0o644
   end
 end

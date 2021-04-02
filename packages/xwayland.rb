@@ -62,7 +62,7 @@ class Xwayland < Package
               -Dglamor=true \
               build"
     system 'meson configure build'
-    system 'samu -C build'
+    system 'ninja -C build'
     system "cat <<'EOF'> Xwayland_sh
 #!/bin/bash
 if base=$(readlink \"$0\" 2>/dev/null); then
@@ -84,7 +84,7 @@ EOF"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/Xwayland.elf"
     system "install -Dm755 Xwayland_sh #{CREW_DEST_PREFIX}/bin/Xwayland"
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/X"

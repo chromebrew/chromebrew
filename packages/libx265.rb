@@ -45,7 +45,7 @@ class Libx265 < Package
           -Wno-dev \
           ../source"
       end
-      system 'samu -C build-12'
+      system 'ninja -C build-12'
       Dir.mkdir 'build-10'
       Dir.chdir 'build-10' do
         system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
@@ -62,7 +62,7 @@ class Libx265 < Package
           -Wno-dev \
           ../source"
       end
-      system 'samu -C build-10'
+      system 'ninja -C build-10'
       Dir.mkdir 'builddir'
       Dir.chdir 'builddir' do
         system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
@@ -98,10 +98,10 @@ class Libx265 < Package
         ../source"
       end
     end
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
