@@ -817,7 +817,12 @@ def install
     meta = download
     target_dir = unpack meta
     if meta[:source] == true
-      abort "You don't have a working C compiler. Run `crew install buildessential` to get one and try again.".lightred unless system('gcc --version')
+      abort "You don't have a working C compiler. Execute `crew install buildessential` and try again.".lightred unless system('gcc --version')
+      abort "You don't have a working Clang compiler. Execute `crew install buildessential` and try again.".lightred unless system('clang --version')
+      abort "You don't have a working CMake compiler. Execute `crew install buildessential` and try again.".lightred unless system('cmake --version')
+      abort "You don't have a working Meson build system. Execute `crew install buildessential` and try again.".lightred unless system('meson --version')
+      abort "You don't have a working Perl. Execute `crew install buildessential` and try again.".lightred unless system('perl --version')
+      abort "You don't have a working Python. Execute `crew install buildessential` and try again.".lightred unless system('python --version')
 
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy

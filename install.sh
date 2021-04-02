@@ -16,10 +16,12 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
 
-EARLY_PACKAGES="gcc10 llvm brotli c_ares libcyrussasl libiconv libidn2 \
-libmetalink libnghttp2 libpsl libssh2 libtirpc libunistring lz4 openldap \
-rtmpdump zstd ncurses ca_certificates ruby libffi openssl nettle krb5 \
-p11kit libtasn1 gnutls curl git icu4c libedit"
+EARLY_PACKAGES="gcc10 brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
+libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates ruby libffi openssl \
+nettle krb5 p11kit libtasn1 gnutls curl git icu4c"
+
+LATE_PACKAGES="less most manpages filecmd mawk readline perl pcre pcre2 python27 python3 \
+sed bz2 lz4 lzip unzip xzutils zip"
 
 ARCH="$(uname -m)"
 
@@ -43,6 +45,9 @@ case "${ARCH}" in
   echo -e "${RED}Your device is not supported by Chromebrew yet :/${RESET}"
   exit 1;;
 esac
+
+# install a base set of development packages for compiling and building software
+read -n1 -p "${BLUE}Install development tools? (not needed for most users) [y/N]: ${RESET}" devtools
 
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
@@ -197,8 +202,9 @@ git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
 crew update
 
-# install a base set of essential packages
-yes | crew install buildessential less most
+yes | crew install $LATE_PACKAGES
+
+[[ "$devtools" == "y" || "$devtools" == "Y" ]] && yes | crew install buildessential
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then

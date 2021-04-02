@@ -3,37 +3,19 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.10'
+  version '1.11'
   license 'GPL-3+'
   compatibility 'all'
 
   is_fake
 
-  #install first to get ldconfig
+  # install first to get ldconfig
   depends_on 'glibc'
   depends_on 'gcc10'
   depends_on 'gcc_tools'
   depends_on 'linuxheaders'
   depends_on 'make'
   depends_on 'pkgconfig'
-
-  # install man pages
-  depends_on 'manpages'
-
-  # compress man pages
-  depends_on 'compressdoc'
-
-  # build documentation
-  depends_on 'doxygen'
-
-  # configure scripts reference the file command
-  depends_on 'filecmd'
-
-  # essential dependency for many packages
-  depends_on 'readline'
-
-  # override the system version with sandbox mode enabled
-  depends_on 'sed'
 
   # typically required libraries to compile source code using "./autogen.sh"
   depends_on 'automake'
@@ -45,28 +27,80 @@ class Buildessential < Package
   depends_on 'flex'
   depends_on 'util_macros'
   depends_on 'gettext'
-#  depends_on 'wget' # use 'curl -#LO' instead
-  depends_on 'mawk'
 
-  # compression utilities
-  depends_on 'lzip'
-  depends_on 'unzip'
-  depends_on 'zip'
+  # build documentation
+  depends_on 'compressdoc'
+  depends_on 'doxygen'
+  depends_on 'help2man'
+  depends_on 'gtk_doc'
 
-  # cmake
+  # Assembler
+  #depends_on 'nasm'
+  #depends_on 'yasm'
+
+  # BASIC
+  #depends_on 'freebasic'
+  #depends_on 'qb64'
+
+  # CMake
   depends_on 'cmake'
 
-  # xorg protocols headers
-  #depends_on 'xorg_proto'
+  # COBOL
+  #depends_on 'gnucobol'
+
+  # Google
+  #depends_on 'dart'
+  #depends_on 'flutter'
+  #depends_on 'go'
+  #depends_on 'gox'
+  #depends_on 'gyp'
+
+  # Haskell
+  #depends_on 'ghc'
+
+  # Java
+  #depends_on 'jdk'
+
+  # LLVM
+  depends_on 'llvm'
+
+  # Meson build system
+  depends_on 'meson'
+
+  # Node.js
+  #depends_on 'nodebrew'
+  #depends_on 'nvm'
+  #depends_on 'yarn'
+
+  # Pascal
+  #depends_on 'fpc'
+
+  # Perl
+  depends_on 'perl'
+  depends_on 'pcre'
+  depends_on 'pcre2'
+
+  # Perl module build?
+  #depends_on 'perl_module_build'
+
+  # PHP
+  #depends_on 'php'
+  #depends_on 'composer'
 
   # Python
   depends_on 'python27'
   depends_on 'python3'
 
-  # maybe meson build system ?
-  depends_on 'meson'
+  # Qt
+  #depends_on 'qtcreator'
+  #depends_on 'qttools'
 
-  # perl module build ?
-  # depends_on 'perl_module_build'
+  # Rust
+  #depends_on 'rust'
 
+  # Samurai
+  #depends_on 'samurai'
+
+  # xorg protocol headers
+  #depends_on 'xorg_proto'
 end
