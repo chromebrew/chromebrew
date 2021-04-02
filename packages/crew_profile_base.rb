@@ -19,11 +19,11 @@ class Crew_profile_base < Package
 
   def self.preinstall
     # Don't overwrite custom changes
-    FileUtils.rm "./src/env.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/env.d/99-custom"
-    FileUtils.rm "./src/profile.d/99-custom" if File.exists? "#{CREW_PREFIX}/etc/profile.d/99-custom"
-    FileUtils.rm "./src/env.d/00-locale" if File.exists? "#{CREW_PREFIX}/etc/env.d/00-locale"
-    FileUtils.rm "./src/env.d/01-editor" if File.exists? "#{CREW_PREFIX}/etc/env.d/01-editor"
-    FileUtils.rm "./src/env.d/02-pager" if File.exists? "#{CREW_PREFIX}/etc/env.d/02-pager"
+    FileUtils.rm "./src/env.d/99-custom" if File.exist? "#{CREW_PREFIX}/etc/env.d/99-custom"
+    FileUtils.rm "./src/profile.d/99-custom" if File.exist? "#{CREW_PREFIX}/etc/profile.d/99-custom"
+    FileUtils.rm "./src/env.d/00-locale" if File.exist? "#{CREW_PREFIX}/etc/env.d/00-locale"
+    FileUtils.rm "./src/env.d/01-editor" if File.exist? "#{CREW_PREFIX}/etc/env.d/01-editor"
+    FileUtils.rm "./src/env.d/02-pager" if File.exist? "#{CREW_PREFIX}/etc/env.d/02-pager"
   end
 
   def self.install
@@ -33,13 +33,13 @@ class Crew_profile_base < Package
 
   def self.postinstall
     # Remove stale files from the last install
-    FileUtils.rm "#{HOME}/.bashrc.bak" if File.exists? "#{HOME}/.bashrc.bak"
-    FileUtils.rm "#{HOME}/.zshrc.bak" if File.exists? "#{HOME}/.zshrc.bak"
+    FileUtils.rm "#{HOME}/.bashrc.bak" if File.exist? "#{HOME}/.bashrc.bak"
+    FileUtils.rm "#{HOME}/.zshrc.bak" if File.exist? "#{HOME}/.zshrc.bak"
 
     # Don't overwrite a custom shell rc
     @_str = "source #{CREW_PREFIX}/etc/profile"
-    FileUtils.touch "#{HOME}/.bashrc" unless File.exists? "#{HOME}/.bashrc"
-    FileUtils.touch "#{HOME}/.zshrc" unless File.exists? "#{HOME}/.zshrc"
+    FileUtils.touch "#{HOME}/.bashrc" unless File.exist? "#{HOME}/.bashrc"
+    FileUtils.touch "#{HOME}/.zshrc" unless File.exist? "#{HOME}/.zshrc"
     FileUtils.mv "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak" if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
     FileUtils.mv "#{HOME}/.zshrc", "#{HOME}/.zshrc.bak" if `grep -c '#{@_str}' #{HOME}/.zshrc`.to_i.zero?
 
@@ -52,12 +52,12 @@ class Crew_profile_base < Package
       # Put your stuff under this comment
     EOF
     # Must write directly to HOME and not CREW_DEST_HOME to prevent chromebrew from removing ~/.bashrc during reinstall
-    IO.write("#{HOME}/.bashrc", @rcfile) unless File.exists? "#{HOME}/.bashrc"
-    IO.write("#{HOME}/.zshrc", @rcfile) unless File.exists? "#{HOME}/.zshrc"
+    IO.write("#{HOME}/.bashrc", @rcfile) unless File.exist? "#{HOME}/.bashrc"
+    IO.write("#{HOME}/.zshrc", @rcfile) unless File.exist? "#{HOME}/.zshrc"
 
     # Don't overwrite a custom shell rc part 2
-    system "cat #{HOME}/.bashrc.bak >> #{HOME}/.bashrc" if File.exists? "#{HOME}/.bashrc.bak"
-    system "cat #{HOME}/.zshrc.bak >> #{HOME}/.zshrc" if File.exists? "#{HOME}/.zshrc.bak"
+    system "cat #{HOME}/.bashrc.bak >> #{HOME}/.bashrc" if File.exist? "#{HOME}/.bashrc.bak"
+    system "cat #{HOME}/.zshrc.bak >> #{HOME}/.zshrc" if File.exist? "#{HOME}/.zshrc.bak"
 
     puts
     puts "IT IS IMPERATIVE TO THE FUNCTION OF CHROMEBREW FOR".lightblue
