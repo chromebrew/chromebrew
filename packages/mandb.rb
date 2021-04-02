@@ -23,6 +23,12 @@ class Mandb < Package
      x86_64: '0f0265d2c924662d1f7099ddcc42876d516c29d18a985d2545e9b6dde7d81734'
   })
 
+  depends_on 'gdbm'
+  depends_on 'groff'
+  depends_on 'libpipeline'
+  depends_on 'libseccomp'
+  depends_on 'zlibpkg'
+  
   def self.patch
     system "sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' src/man_db.conf.in"
     [
