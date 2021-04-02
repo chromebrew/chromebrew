@@ -71,11 +71,23 @@ class Clang < Package
                       -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
                       -DPYTHON_EXECUTABLE=$(which python3) \
                       -DLLVM_ENABLE_ZLIB=ON \
-                      -DLLVM_ENABLE_TERMINFO=ON ."
+                      -DLLVM_ENABLE_TERMINFO=ON \
+                      -DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD=ON ."
+
+def self.prebuild
+  FileUtils.mkdir_p 'clang'
+  system 'mv * clang || true' # Ruby's Dir.glob won't work
+  system "curl -#LO https://github.com/llvm/llvm-project/releases/download/llvmorg-11.1.0/clang-tools-extra-11.1.0.src.tar.xz"
+  abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("clang-tools-extra-11.1.0.src.tar.xz") ) == '76707c249de7a9cde3456b960c9a36ed9bbde8e3642c01f0ef61a43d61e0c1a2'
+  system "tar xf clang-tools-extra-11.1.0.src.tar.xz"
+  FileUtils.mv "clang-tools-extra-11.1.0.src", "clang-tools-extra"
+end
+
   def self.build
     FileUtils.mkdir "builddir"
     Dir.chdir "builddir" do
-      system "cmake -G Ninja #{@LLVM_CMAKE_OPTIONS} .."
+      system "cmake -G Ninja #{@LLVM_CMAKE_OPTIONS} ../clang"
+      system "false"
       system "samu"
     end
   end
