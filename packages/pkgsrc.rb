@@ -51,7 +51,7 @@ class Pkgsrc < Package
     end
     system "install -Dm755 pkglocate #{CREW_DEST_PREFIX}/pkg/sbin/pkglocate"
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # NetBSD pkgsrc configuration
       source #{CREW_PREFIX}/share/s/s-completion.bash

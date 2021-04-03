@@ -35,7 +35,7 @@ class Nodebrew < Package
       # nodebrew configuration
       export PATH="$PATH:$HOME/.nodebrew/current/bin"
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/nodebrew", @env)
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/nodebrew", @env)
   end
 
   def self.postinstall
