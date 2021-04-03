@@ -757,7 +757,6 @@ end
 
 def resolve_dependencies
   abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
-  @pkg.preflight
   expand_dependencies
 
   # leave only not installed packages in dependencies
@@ -985,6 +984,7 @@ def build_command (args)
     @pkgName = name
     search @pkgName
     print_current_package @opt_verbose
+    @pkg.preflight
     resolve_dependencies_and_build
   end
 end
@@ -1032,6 +1032,7 @@ def install_command (args)
     search @pkgName
     print_current_package true
     @pkg.build_from_source = true if @opt_src or @opt_recursive
+    @pkg.preflight
     resolve_dependencies_and_install
   end
 end
@@ -1068,6 +1069,7 @@ def reinstall_command (args)
     @pkg.build_from_source = true if @opt_src or @opt_recursive
     if @pkgName
       @pkg.in_upgrade = true
+      @pkg.preflight
       resolve_dependencies_and_install
       @pkg.in_upgrade = false
     end
