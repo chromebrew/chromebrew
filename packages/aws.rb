@@ -3,25 +3,20 @@ require 'package'
 class Aws < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
-  version '1.17.13-1'
+  version '0.2.7'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/aws/aws-cli/archive/1.17.13.tar.gz'
-  source_sha256 '4dc8ff38ca67341021f6e2971084d7ed8b87968443e089e758b5531f1381205f'
+  source_url 'https://files.pythonhosted.org/packages/8e/d4/56cec0935aef056e6d20581b09c64d6e6395dc3ff381ec89e7c8e7f6667f/aws2-0.2.7.tar.gz'
+  source_sha256 'e7f09c31b8c152ea015a002c2f2dc8745f0e2ec01cc21cc5fd92afb6b97e24a4'
 
   depends_on 'setuptools' => :build
   depends_on 'six'
 
-  def self.build
-    system "sed -i 's,-e git://github.com/boto/botocore.git@develop#egg=botocore,botocore==1.14.13,' requirements.txt"
-    system "sed -i 's,-e git://github.com/boto/s3transfer.git@develop#egg=s3transfer,s3transfer==0.3.3,' requirements.txt"
-  end
-
   def self.install
-    system "pip install awscli==#{version} -r requirements.txt --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I aws2==#{version} --no-warn-script-location"
     system "chmod +x #{CREW_DEST_PREFIX}/bin/aws"
     system "chmod +x #{CREW_DEST_PREFIX}/bin/aws_completer"
-    
+
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
     @awsbashrc = <<~EOF
       # Amazon Web Services CLI bash completion

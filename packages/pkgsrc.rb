@@ -3,11 +3,11 @@ require 'package'
 class Pkgsrc < Package
   description 'pkgsrc is a framework for building third-party software on NetBSD and other UNIX-like systems'
   homepage 'https://github.com/NetBSD/pkgsrc'
-  version '2020Q1-1'
+  version '2021Q1'
   license '' # Can't find license
   compatibility 'all'
-  source_url 'https://github.com/NetBSD/pkgsrc/archive/6ba7d2a6ee1388ad515177f5964681f2f6c13f13.tar.gz'
-  source_sha256 'fe2cf98d294cdd298c9191c33c5223860f73e9bed8b9d137f0c32a579ea49803'
+  source_url 'https://github.com/NetBSD/pkgsrc/archive/ccaf3cb68a965f1b055b3e04485d725fc7043813.tar.gz'
+  source_sha256 '16039f24bb84d5046832e462cfd7a21c5f53dd15792a9e6b71fa4faec3a7ab4e'
 
   def self.build
     @pkglocate = <<~EOF

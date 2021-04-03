@@ -3,7 +3,7 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  @_ver = '5.6'
+  @_ver = '5.6.1'
   version @_ver
   license 'GPL-3'
   compatibility 'all'
@@ -17,8 +17,8 @@ class Nano < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
+    system "env CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
       LDFLAGS='-flto=auto' \
       ./configure #{CREW_OPTIONS} \
       --enable-threads=posix \

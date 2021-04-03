@@ -3,11 +3,11 @@ require 'package'
 class Ccache < Package
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.samba.org/'
-  version '4.1-1'
+  version '4.2.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
-  source_url 'https://github.com/ccache/ccache/releases/download/v4.1/ccache-4.1.tar.xz'
-  source_sha256 '5fdc804056632d722a1182e15386696f0ea6c59cb4ab4d65a54f0b269ae86f99'
+  source_url 'https://github.com/ccache/ccache/releases/download/v4.2.1/ccache-4.2.1.tar.xz'
+  source_sha256 '9d6ba1cdefdc690401f404b747d81a9a1802b17af4235815866b7620d980477e'
 
   depends_on 'xdg_base'
   depends_on 'asciidoc' => :build

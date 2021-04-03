@@ -3,17 +3,17 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.31.0'
-  version "#{@_ver}-1"
+  @_ver = '2.31.1'
+  version "#{@_ver}"
   license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"
-  source_sha256 '13b3efb8eca3e3ef6e7eea6839600c37636dbac28069907beafd075ef7f45f0b'
+  source_sha256 'b1c0e95e9861b5d1b9ad3d8deaa2d8c7f02304ffc1b5e8869dd9fb98f9a0d436'
 
   def self.build
     abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
-    system 'autoreconf -i'
+    system 'autoreconf -fiv'
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
     LDFLAGS='-flto=auto' \
     ./configure \

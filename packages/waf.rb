@@ -6,8 +6,8 @@ class Waf < Package
   version '1.9.13-1'
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/waf-project/waf/archive/waf-1.9.13.tar.gz'
-  source_sha256 '08d41e9e50398b2f07d74b0cef7b9f02d33787d6d27d2a0e6df5732bbd95bebc'
+  source_url 'https://gitlab.com/ita1024/waf/-/archive/waf-2.0.22/waf-waf-2.0.22.tar.bz2'
+  source_sha256 '7368b14adba94467c920161aaca3e54384aca392acb7dc8ee37d53ce29dac781'
 
   depends_on 'help2man'
   depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"

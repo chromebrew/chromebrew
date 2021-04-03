@@ -6,11 +6,11 @@ class Packer_completion < Package
   version '1.0.0-1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/mrolli/packer-bash-completion/archive/1.0.0.tar.gz'
-  source_sha256 '20ebfacd3f3a60f8dbd09e25b97d3b6e5049cbdf00a2d607fe79eaaef39e1eea'
+  source_url 'https://github.com/mrolli/packer-bash-completion/archive/refs/tags/1.4.3.tar.gz'
+  source_sha256 'af7b3b49b29ffdb05b519dad2d83066f3d166dd8e29abd406ca0f3d480901df4'
 
   def self.install
-    system "install -Dm644 packer #{CREW_PREFIX}/share/packer-bash-completion/packer"
+    FileUtils.install 'packer', "#{CREW_PREFIX}/share/packer-bash-completion/packer", mode: 644¸ verbose: true
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @env = <<~EOF
