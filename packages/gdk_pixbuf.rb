@@ -3,11 +3,12 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  version '2.42.4-1'
+  @_ver = '2.42.4
+  version #{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz'
-  source_sha256 '83c66a1cfd591d7680c144d2922c5955d38b4db336d7cd3ee109f7bcf9afef15'
+  source_url "https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/#{@_ver}/gdk-pixbuf-#{@_ver}.tar.bz2"
+  source_sha256 'd94d2e67165739559a6323a23eea8ad3560ab1085e2a3356a19548c9cb88e1e9'
 
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
