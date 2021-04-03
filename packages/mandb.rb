@@ -24,12 +24,11 @@ class Mandb < Package
   })
 
   depends_on 'gdbm'
-  depends_on 'glibc'
   depends_on 'groff' => :build
   depends_on 'libpipeline'
   depends_on 'libseccomp'
   depends_on 'zlibpkg'
-  
+
   def self.patch
     system "sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' src/man_db.conf.in"
     [
