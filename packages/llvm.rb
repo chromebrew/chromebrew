@@ -13,6 +13,7 @@ class Llvm < Package
   depends_on 'ncurses'
   depends_on 'libffi'
   depends_on 'libxml2'
+  depends_on 'ocaml' => :build
   depends_on 'cmake' => :build
   depends_on 'perl' => :build
   depends_on 'pkgconfig' => :build
