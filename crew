@@ -7,7 +7,7 @@ abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 require 'find'
 require 'net/http'
 require 'uri'
-require 'digest/sha2'
+require 'digest'
 require 'json'
 require 'fileutils'
 require_relative 'lib/const'
@@ -1097,9 +1097,9 @@ def whatprovides_command (args)
 end
 
 def is_command (name)
-  return (!name =~ /^[-<]/)
+  return !name.match?(/\A^[-<]/)
 end
 
-command_name = args.each { |k, v| ( v && is_command(k) ) && break k } .first
+command_name = args.each { |k, v| break k if v && is_command(k) }
 function = command_name + '_command'
 send(function, args)
