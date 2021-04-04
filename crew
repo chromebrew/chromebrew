@@ -7,7 +7,7 @@ abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 require 'find'
 require 'net/http'
 require 'uri'
-require 'digest'
+require 'digest/2'
 require 'json'
 require 'fileutils'
 require_relative 'lib/const'
@@ -538,10 +538,10 @@ def download
       csum_type = 256
       csum = @pkg.source_sha256
     end
-  elsif @pkg.binary_sha512[@device[:architecture]]
+  elsif @pkg.binary_sha512
     csum_type = 512
     csum = @pkg.binary_sha512[@device[:architecture]]
-  elsif @pkg.binary_sha256[@device[:architecture]]
+  elsif @pkg.binary_sha256
     csum_type = 256
     csum = @pkg.binary_sha256[@device[:architecture]]
   else
