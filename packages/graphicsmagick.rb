@@ -4,6 +4,7 @@ class Graphicsmagick < Package
   description 'GraphicsMagick is the swiss army knife of image processing.'
   homepage 'http://www.graphicsmagick.org/'
   version '1.3.35'
+  license 'MIT'
   compatibility 'all'
   source_url 'http://ftp.icm.edu.pl/pub/unix/graphics/GraphicsMagick/1.3/GraphicsMagick-1.3.35.tar.gz'
   source_sha256 'd96d5ce2ef7e0e90166551e38742713728bfd33d6f18495a9ddda938700fc055'

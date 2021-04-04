@@ -4,6 +4,7 @@ class Perl_read_key < Package
   description 'Character mode terminal access for Perl Term::ReadKey'
   homepage 'https://metacpan.org/source/JSTOWE/TermReadKey-2.37/'
   version '2.38'
+  license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://github.com/jonathanstowe/TermReadKey/archive/2.38.tar.gz'
   source_sha256 'bb669c422d7094e19fa85d43676b67933b86d4a1f6b39fed5dbfaaaa97716c1d'

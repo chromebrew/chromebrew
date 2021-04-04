@@ -4,6 +4,7 @@ class Qtfm < Package
   description 'Lightweight desktop independent Qt file manager'
   homepage 'https://qtfm.eu/'
   version '6.2.0'
+  license 'GPL-2+'
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/rodlie/qtfm/archive/6.2.0.tar.gz'
   source_sha256 '58c6af502b606e63f96e8aec96b65ca9125be18ecdd5e4680ccaf50e9c40b064'

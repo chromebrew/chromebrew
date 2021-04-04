@@ -4,6 +4,7 @@ class Peazip < Package
   description 'Free file archiver utility to open and extract RAR, TAR and ZIP archives'
   homepage 'https://peazip.github.io/'
   version '7.6.0'
+  license 'LGPL-3'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'

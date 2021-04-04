@@ -4,6 +4,7 @@ class Zsh < Package
   description 'Zsh is a shell designed for interactive use, although it is also a powerful scripting language.'
   homepage 'http://zsh.sourceforge.net/'
   version '5.8'
+  license 'ZSH and GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/zsh/zsh/5.8/zsh-5.8.tar.xz'
   source_sha256 'dcc4b54cc5565670a65581760261c163d720991f0d06486da61f8d839b52de27'

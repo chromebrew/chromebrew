@@ -4,6 +4,7 @@ class Xorg_vmware_driver < Package
   description 'The Xorg VMware Driver package contains the X.Org Video Driver for VMware SVGA virtual video cards.'
   homepage 'https://01.org/linuxgraphics/'
   version '13.2.1'
+  license 'MIT and MIT-with-advertising'
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-video-vmware-13.2.1.tar.bz2'
   source_sha256 'e2f7f7101fba7f53b268e7a25908babbf155b3984fb5268b3d244eb6c11bf62b'

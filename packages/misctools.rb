@@ -4,6 +4,7 @@ class Misctools < Package
   description 'The misctools package is a collection of small but useful utilities.'
   homepage 'http://www.hyperrealm.com/oss_misctools.shtml'
   version '2.6'
+  license 'GPL-2'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

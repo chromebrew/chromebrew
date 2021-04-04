@@ -5,6 +5,7 @@ class Libsigcplusplus < Package
   homepage 'https://github.com/libsigcplusplus/libsigcplusplus/'
   @_ver = '2.10.6'
   version @_ver
+  license 'LGPL-3'
   compatibility 'all'
   source_url "https://github.com/libsigcplusplus/libsigcplusplus/archive/#{@_ver}.tar.gz"
   source_sha256 '3458b027f44204571a3a7091ebb94e5b1b5ecc7fbab89ce2bada25543645993f'

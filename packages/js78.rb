@@ -1,9 +1,10 @@
 require 'package'
 
 class Js78 < Package
-  description 'JavaScript interpreter and libraries - Version 78'
+  description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 78'
   @_ver = '78.7.0'
   version @_ver
+  license 'MPL-2.0'
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'
@@ -21,8 +22,8 @@ class Js78 < Package
      x86_64: '4cb92c9bd6d44208816cf8bbfb6504795766544a509e06ee2f792a8c44d99beb'
   })
 
-  depends_on 'autoconf213' => ':build'
-  depends_on 'rust' => ':build'
+  depends_on 'autoconf213' => :build
+  depends_on 'rust' => :build
   depends_on 'llvm'
   depends_on 'nspr'
 
@@ -39,7 +40,7 @@ class Js78 < Package
     patch_url = 'http://archive.ubuntu.com/ubuntu/pool/main/m/mozjs78/mozjs78_78.4.0-2.debian.tar.xz'
     patch_sha256 = 'dcf2eec86c275448656cf18b3c142c3a2067dc8fdeff029211b66182b9179d21'
 
-    system('wget', '--continue', '--no-check-certificate', patch_url, '-O', 'unzippatches.tar.xz')
+    system('curl -#L', patch_url, '-o', 'unzippatches.tar.xz')
     unless Digest::SHA256.hexdigest(File.read('./unzippatches.tar.xz')) == patch_sha256
       abort 'Checksum mismatch :/ try again'
     end

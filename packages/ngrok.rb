@@ -4,6 +4,7 @@ class Ngrok < Package
   description 'ngrok exposes local servers behind NATs and firewalls to the public internet over secure tunnels.'
   homepage 'https://ngrok.com/'
   version '2.3.35'
+  license '' # Can't find license
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'

@@ -4,6 +4,7 @@ class Weechat < Package
   description "WeeChat is a fast, light and extensible chat client."
   homepage 'http://www.weechat.org/'
   version '2.1'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://weechat.org/files/src/weechat-2.1.tar.xz'
   source_sha256 'cda0f81ff8243fd25cca76c8e490e2fdb5b8fbb2554d7aa87cb3b0beda16ed38'

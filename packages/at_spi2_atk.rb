@@ -1,9 +1,10 @@
 require 'package'
-  
+
 class At_spi2_atk < Package
   description 'D-Bus AT-SPI'
   homepage 'http://www.freedesktop.org/'
   version '2.38.0'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/at-spi2-atk/archive/AT_SPI2_ATK_2_38_0.tar.gz'
   source_sha256 '95f10c80834d3811938153199da671967ee3c8f378883ed3f6ddeee1d316d3e4'

@@ -4,6 +4,7 @@ class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
   version '3.4.2066.76'
+  license 'Vivaldi'
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -40,7 +41,7 @@ class Vivaldi < Package
       arch = 'amd64'
       sha256 = 'f9d457943b40e2bd4edd6d7d6cf069bd9cb690b5da60f7ec314837840194abfa'
     end
-    system "wget https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}-1_#{arch}.deb"
+    system "curl -#LO https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}-1_#{arch}.deb"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("vivaldi-stable_#{version}-1_#{arch}.deb") ) == sha256
     system "alien -tc vivaldi-stable_#{version}-1_#{arch}.deb"
     system "tar xvf vivaldi-stable-#{version}.tgz"

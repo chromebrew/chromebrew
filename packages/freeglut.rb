@@ -1,9 +1,10 @@
 require 'package'
 
 class Freeglut < Package
-  description 'FreeGLUT is a free-software/open-source alternative to the OpenGL Utility Toolkit (GLUT) library.'
+  description 'FreeGLUT is a free and open-source alternative to the OpenGL Utility Toolkit (GLUT) library.'
   homepage 'http://freeglut.sourceforge.net/'
   version '3.2.1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/freeglut/freeglut/3.2.1/freeglut-3.2.1.tar.gz'
   source_sha256 'd4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'

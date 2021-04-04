@@ -4,6 +4,7 @@ class Openblas < Package
   description 'OpenBLAS is an optimized BLAS library'
   homepage 'http://www.openblas.net/'
   version '0.3.10'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/xianyi/OpenBLAS/archive/v0.3.10.tar.gz'
   source_sha256 '0484d275f87e9b8641ff2eecaa9df2830cbe276ac79ad80494822721de6e1693'

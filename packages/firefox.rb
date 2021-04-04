@@ -3,10 +3,10 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  compatibility 'all'
-  
   version '87.0' if ARCH =~ /^(i686|x86_64)/
-  
+  license 'MPL-2.0, GPL-2 and LGPL-2.1'
+  compatibility 'all'
+
   case ARCH
   when 'i686'
     source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2"
@@ -21,8 +21,28 @@ class Firefox < Package
     source_sha256 'bd4c13a8cf824c9c9c4f5dbb7ab3d0c1dda3bb5ddc99c53632509f835814e4c1'
   end
 
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'dbus'
+  depends_on 'dbus_glib'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gtk2'
   depends_on 'gtk3'
-  depends_on 'apulse'
+  depends_on 'libx11'
+  depends_on 'libxcb'
+  depends_on 'libxcomposite'
+  depends_on 'libxcursor'
+  depends_on 'libxdamage'
+  depends_on 'libxext'
+  depends_on 'libxfixes'
+  depends_on 'libxi'
+  depends_on 'libxrender'
+  depends_on 'libxt'
+  depends_on 'pango'
+  depends_on 'pulseaudio'
   depends_on 'sommelier'
 
   def self.patch    

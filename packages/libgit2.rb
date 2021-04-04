@@ -5,6 +5,7 @@ class Libgit2 < Package
   homepage 'https://libgit2.org/'
   @_ver = '1.1.0'
   version @_ver
+  license 'GPL-2-with-linking-exception'
   compatibility 'all'
   source_url "https://github.com/libgit2/libgit2/releases/download/v#{@_ver}/libgit2-#{@_ver}.tar.gz"
   source_sha256 'ad73f845965cfd528e70f654e428073121a3fa0dc23caac81a1b1300277d4dba'
@@ -36,7 +37,7 @@ class Libgit2 < Package
       system 'ninja'
     end
   end
-  
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end

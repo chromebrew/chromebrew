@@ -3,34 +3,37 @@ require 'package'
 class Popt < Package
   description 'Library for parsing command line options'
   homepage 'https://directory.fsf.org/wiki/Popt'
-  version '1.16'
+  version '1.18'
+  license 'MIT'
   compatibility 'all'
-  source_url 'http://rpm5.org/files/popt/popt-1.16.tar.gz'
-  source_sha256 'e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8'
+  source_url "https://github.com/rpm-software-management/popt/archive/refs/tags/popt-#{version}-release.tar.gz"
+  source_sha256 '36245242c59b5a33698388e415a3e1efa2d48fc4aead91aeb2810b4c0744f4e3'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.16-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.18-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.18-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/popt-1.18-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '6ac9639a832436479b7eb2333178d0334108313a89d15506815580a5284e85fa',
-     armv7l: '6ac9639a832436479b7eb2333178d0334108313a89d15506815580a5284e85fa',
-       i686: 'ada50c7bc3d4d71d234cea3891112d8c9822bc49c75beb917478e181051a3e78',
-     x86_64: '6bdbab0585a94534dd44f9ecd196902166c49aabcf239e4bfb667c08a27dc300',
+  binary_sha256({
+    aarch64: 'e301538c274369121eb26cf77d91d1a5c451cc4ec088a115361c1b31175a06c8',
+     armv7l: 'e301538c274369121eb26cf77d91d1a5c451cc4ec088a115361c1b31175a06c8',
+       i686: '8017bb16b0ee0094e66d1a130734463389721d060b31340b47ce5e2a2521ea4b',
+     x86_64: 'b6f09b9dcca99c16e61a7c71333ce0454c38ad99c7dfa0893cce9c44f8335f77'
   })
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system "make"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "env CFLAGS='-flto=auto' \
+      CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
+      ./configure \
+      --disable-maintainer-mode"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system "gzip -9 #{CREW_DEST_PREFIX}/share/man/man3/popt.3"
   end
 end

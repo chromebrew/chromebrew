@@ -4,6 +4,7 @@ class Lxml < Package
   description 'Library for processing XML and HTML in the Python language.'
   homepage 'https://lxml.de/'
   version '4.6.1'
+  license 'BSD, ElementTree, GPL-2 and PSF-2'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

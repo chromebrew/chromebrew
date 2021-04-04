@@ -108,6 +108,9 @@ class Template < Package # Notice the capitals, EG: 'I3' - would be used for an 
   depends_on '#' => :build # Only required when the package
   is built from source
             # Notice the newline
+  def self.preflight # For preflight checks, not required
+    system '#'  # Replace '#' with a disk space check, for example
+  end
   def self.prebuild # For sed operations, not required
     system '#'  # Replace '#' with a sed operation
   end

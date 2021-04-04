@@ -4,6 +4,7 @@ class Neovim < Package
   description 'Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie).'
   homepage 'https://neovim.io/'
   version '0.4.4'
+  license 'Apache-2.0 and vim'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

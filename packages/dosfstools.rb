@@ -4,6 +4,7 @@ class Dosfstools < Package
   description 'dosfstools consists of the programs mkfs.fat, fsck.fat and fatlabel to create, check and label file systems of the FAT family.'
   homepage 'https://github.com/dosfstools/dosfstools'
   version '4.1'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz'
   source_sha256 'e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173'

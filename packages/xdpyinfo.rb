@@ -5,8 +5,9 @@ require 'package'
 
 class Xdpyinfo < Package
   description 'Display information utility for X'
-  homepage 'https://gitlab.freedesktop.org/xorg/app/xdpyinfo'
+  homepage 'https://xorg.freedesktop.org/'
   version '1.3.2'
+  license 'MIT-with-advertising'
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/archive/individual/app/xdpyinfo-1.3.2.tar.bz2'
   source_sha256 '30238ed915619e06ceb41721e5f747d67320555cc38d459e954839c189ccaf51'

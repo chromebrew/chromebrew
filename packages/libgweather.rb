@@ -4,6 +4,7 @@ class Libgweather < Package
   description 'Location and timezone database and weather-lookup library'
   homepage 'https://wiki.gnome.org/Projects/LibGWeather'
   version '40.beta'
+  license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/libgweather/archive/40.beta.tar.gz'
   source_sha256 '89eebe5a83177f094c017a484be3a27b5e418fec2d9aaea1937bdc6ddc430627'
@@ -25,9 +26,9 @@ class Libgweather < Package
   depends_on 'gtk3'
   depends_on 'geocode_glib'
   depends_on 'dconf'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'glade' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'glade' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

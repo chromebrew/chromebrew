@@ -5,6 +5,7 @@ class Vulkan_icd_loader < Package
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
   @_ver = '1.2.169'
   version @_ver
+  license 'APache-2.0'
   compatibility 'all'
   source_url "https://github.com/KhronosGroup/Vulkan-Loader/archive/v#{@_ver}.tar.gz"
   source_sha256 'e8413d6244245e5322a91fa204415115941c5396b892ef28a13152af635c5ca4'
@@ -25,10 +26,10 @@ class Vulkan_icd_loader < Package
   depends_on 'libx11'
   depends_on 'libxrandr'
   depends_on 'vulkan_headers'
-  depends_on 'libx11' => ':build'
-  depends_on 'libxrandr' => ':build'
-  depends_on 'wayland' => ':build'
-  depends_on 'vulkan_headers' => ':build'
+  depends_on 'libx11' => :build
+  depends_on 'libxrandr' => :build
+  depends_on 'wayland' => :build
+  depends_on 'vulkan_headers' => :build
 
   def self.build
     Dir.mkdir 'builddir'

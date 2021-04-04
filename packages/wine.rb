@@ -6,6 +6,7 @@ class Wine < Package
   homepage 'https://www.winehq.org/'
   compatibility 'aarch64,armv7l,x86_64'
   version '5.22'
+  license 'LGPL-2.1'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
     source_url 'https://dl.winehq.org/wine/source/5.x/wine-5.22.tar.xz'

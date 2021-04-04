@@ -4,6 +4,7 @@ class Nedit < Package
   description 'A fast, compact Motif/X11 plain text editor, for most popular Unix systems.'
   homepage 'https://sourceforge.net/projects/nedit/'
   version '5.7'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/nedit/nedit-source/nedit-5.7-src.tar.gz'
   source_sha256 'add9ac79ff973528ad36c86858238bac4f59896c27dbf285cbe6a4d425fca17a'
@@ -45,4 +46,3 @@ class Nedit < Package
     system "install -Dm644 ./doc/nedit.man #{CREW_DEST_MAN_PREFIX}/man1/nedit.1"
   end
 end
-

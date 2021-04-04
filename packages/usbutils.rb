@@ -5,6 +5,7 @@ class Usbutils < Package
   homepage 'http://linux-usb.sourceforge.net/'
   @_ver = '013'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/utils/usb/usbutils/usbutils-#{@_ver}.tar.xz"
   source_sha256 '9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338'
@@ -36,7 +37,7 @@ class Usbutils < Package
 
   def self.postinstall
     FileUtils.mkdir_p "#{CREW_PREFIX}/share/hwdata/" unless Dir.exist? "#{CREW_PREFIX}/share/hwdata/"
-    system "wget http://www.linux-usb.org/usb.ids -O #{CREW_PREFIX}/share/hwdata/usb.ids"
+    system "curl -#LO http://www.linux-usb.org/usb.ids -O #{CREW_PREFIX}/share/hwdata/usb.ids"
     puts "It's recommended that you setup a cron job to update this file regularly.".lightblue
     puts 'You can install a cron package by executing `crew install cronie`'.lightblue
     puts

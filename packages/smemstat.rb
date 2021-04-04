@@ -2,8 +2,9 @@ require 'package'
 
 class Smemstat < Package
   description 'Smemstat reports the physical memory usage taking into consideration shared memory.'
-  homepage 'http://kernel.ubuntu.com/~cking/smemstat/'
+  homepage 'https://kernel.ubuntu.com/~cking/smemstat/'
   version '0.02.07'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/smemstat/smemstat-0.02.07.tar.xz'
   source_sha256 'acc17fdd6da92571e73a58bf1512b398cb307b80f46dc196cbb8102e7fb02526'

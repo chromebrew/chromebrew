@@ -4,6 +4,7 @@ class Php5 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '5.6.40-2'
+  license 'PHP-3.01'
   compatibility 'all'
   source_url 'http://php.net/distributions/php-5.6.40.tar.xz'
   source_sha256 '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
@@ -32,9 +33,9 @@ class Php5 < Package
   depends_on 'tidy'
   depends_on 'unixodbc'
 
-  def self.preinstall
+  def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless "#{phpver}" == ""
+    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
   end
 
   def self.patch

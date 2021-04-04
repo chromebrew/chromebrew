@@ -4,6 +4,7 @@ class Gutenprint < Package
   description 'High quality drivers for Canon, Epson, Lexmark, Sony, Olympus, and PCL printers for use with CUPS and GIMP.'
   homepage 'http://gimp-print.sourceforge.net/'
   version '5.3.3'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/gimp-print/gutenprint-5.3/5.3.3/gutenprint-5.3.3.tar.xz'
   source_sha256 '7279ecbc8e67d1858c53cb24e423ea1be98e214872006b79e6e03650dd54a072'

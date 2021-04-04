@@ -5,6 +5,7 @@ class Libwpe < Package
   homepage 'https://wpewebkit.org'
   @_ver = '1.8.0'
   version @_ver
+  license 'BSD-2'
   compatibility 'all'
   source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{@_ver}/libwpe-#{@_ver}.tar.xz"
   source_sha256 'a6f00a7d091cbd4db57fe7ee3b4c12c6350921d654ed79812800a26c888481d2'
