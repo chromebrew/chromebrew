@@ -12,7 +12,8 @@ class Exo_base < Package
   depends_on 'wayland'
 
   def self.preflight
-    abort 'Wayland is not supported in your Chrome OS version'.lightred unless File.stat('/var/run/chrome/wayland-0').socket?
+    abort 'Wayland is not supported in your Chrome OS version'.lightred \
+      unless ( begin; File.stat('/var/run/chrome/wayland-').socket?; rescue Errno::ENOENT; false; end )
   end
 
   def self.build
