@@ -31,7 +31,7 @@ class Firefox < Package
       # To get sound working, used : https://codelab.wordpress.com/2017/12/11/firefox-drops-alsa-apulse-to-the-rescue/
       
       exec apulse #{CREW_LIB_PREFIX}/firefox/firefox "$@"
-      EOF
+    EOF
   end
 
   def self.install
