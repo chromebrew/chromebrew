@@ -11,7 +11,8 @@ class Gui_setup < Package
 
   def self.preflight
     # exo wayland compositor is required for sommelier
-    abort 'Graphical environment is not supported in your Chrome OS version'.lightred unless File.stat('/var/run/chrome/wayland-0').socket?
+    abort 'Graphical environment is not supported in your Chrome OS version'.lightred \
+      unless ( begin; File.stat('/var/run/chrome/wayland-').socket?; rescue Errno::ENOENT; false; end )
 
     puts <<~EOT
       Select display server:
