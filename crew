@@ -553,7 +553,7 @@ def download
       FileUtils.mkdir_p CREW_CACHE_DIR, verbose: @fileutils_verbose
       cachefile = CREW_CACHE_DIR + filename
       if File.file?(cachefile)
-        if eval("Digest::SHA#{csum_type}.hexdigest( File.binread(#{cachefile}) ) == #{csum}") then
+        if eval("Digest::SHA#{csum_type}.hexdigest( File.binread('#{cachefile}') ) == '#{csum}'") then
           FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
           puts "Archive found in cache".lightgreen
           return {source: source, filename: filename}
@@ -566,7 +566,7 @@ def download
     system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
 
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      eval("Digest::SHA#{csum_type}.hexdigest( File.binread(#{filename}) ) == #{csum}")
+      eval("Digest::SHA#{csum_type}.hexdigest( File.binread('#{filename}') ) == '#{csum}'")
     puts "Archive downloaded".lightgreen
 
     if ENV['CREW_CACHE_OPT']
@@ -958,7 +958,7 @@ def remove (pkgName)
       File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
         begin
           puts 'Removing directory ' + line.chomp + ''.lightred if @opt_verbose
-          FileUtils.rm_rf line.chomp
+          FileUtils.rmdir line.chomp
         rescue => exception #swallow exception
         end
       end
