@@ -62,14 +62,14 @@ class Gtk4 < Package
   depends_on 'libgpgerror'
   depends_on 'libgudev'
   depends_on 'libjpeg'
-  depends_on 'libmfx'
+  depends_on 'libmfx' if ARCH.eql?('x86_64') || ARCH.eql?('i686')
   depends_on 'libmodplug'
   depends_on 'libmp3lame'
   depends_on 'libogg'
   depends_on 'libopencoreamr'
   depends_on 'libopus'
   depends_on 'libpng'
-  depends_on 'libsass'
+  depends_on 'libsass' if ARCH.eql?('x86_64')
   depends_on 'libsoup2'
   depends_on 'libsoxr'
   depends_on 'libssh'
