@@ -13,20 +13,19 @@ class Browsh < Package
   case ARCH
   when 'armv7l', 'aarch64'
     @_arch = 'armv7'
+    source_sha256 '36f02b21cbac554e1ca05e382560bf10043b402d2c345cbfffa9f1f20992bec2'
   when 'x86_64'
     @_arch = 'amd64'
+    source_sha256 'd0bbdfe07e1494bb097dcff6290f17f98f6e3e5546f17139223b75d97c1caab5'
   when 'i686'
     @_arch = '386'
+    source_sha256 '43969b4af481c387303ce44357d4f912f250bb00a13c094968809e36fd7988e5'
   end
     
   @_file = "browsh_#{@_ver}_linux_#{@_arch}"
   @_url = "https://github.com/browsh-org/browsh/releases/download/v#{@_ver}/"
 
   source_url @_url + @_file
-  
-  def self.preflight
-    source_sha256 `curl -Ls #{@_url}/browsh_#{@_ver}_checksums.txt`.scan(/(.*)#{@_file}$/)[0][0].strip
-  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
