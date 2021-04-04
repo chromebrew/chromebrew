@@ -39,8 +39,8 @@ class Firefox < Package
       FileUtils.mv(Dir['./*'], CREW_DEST_PREFIX)
     else
       # follow official armhf deb, install to lib instead of share
-      FileUtils.mkdir_p [CREW_DEST_LIB_PREFIX, "#{CREW_DEST_PREFIX}/bin/"]
-      FileUtils.mv('.', "#{CREW_DEST_LIB_PREFIX}/firefox")
+      FileUtils.mkdir_p ["#{CREW_DEST_LIB_PREFIX}/firefox/", "#{CREW_DEST_PREFIX}/bin/"]
+      FileUtils.mv(Dir['./*'], "#{CREW_DEST_LIB_PREFIX}/firefox/")
     end
     File.write("#{CREW_DEST_PREFIX}/bin/firefox", @_wrapper)
     File.chmod(0755, "#{CREW_DEST_PREFIX}/bin/firefox")
