@@ -7,7 +7,7 @@ abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 require 'find'
 require 'net/http'
 require 'uri'
-require 'digest/2'
+require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require_relative 'lib/const'
