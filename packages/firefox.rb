@@ -17,7 +17,7 @@ class Firefox < Package
   when 'armv7l', 'aarch64'
     @_arm = true
     version '87.0-2' # follow debian patch
-    source_url "https://http.us.debian.org/debian/pool/main/f/firefox/firefox_#{version}_armhf.deb"
+    source_url "http://http.us.debian.org/debian/pool/main/f/firefox/firefox_#{version}_armhf.deb"
     source_sha256 'bd4c13a8cf824c9c9c4f5dbb7ab3d0c1dda3bb5ddc99c53632509f835814e4c1'
   end
 
