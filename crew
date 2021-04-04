@@ -511,19 +511,19 @@ def download
   filename = File.basename(uri.path)
   
   if source
-    if @pkg.source_sha512
+    if respond_to?(@pkg.source_sha512)
       csum_type = 512
-      csum = @pkg.source_sha512
-    elsif @pkg.source_sha256
+      csum = respond_to?(@pkg.source_sha512)
+    elsif respond_to?(@pkg.source_sha256)
       csum_type = 256
-      csum = @pkg.source_sha256
+      csum = respond_to?(@pkg.source_sha256)
     end
-  elsif @pkg.binary_sha512[@device[:architecture]]
+  elsif respond_to?(@pkg.binary_sha512[@device[:architecture]])
     csum_type = 512
-    csum = @pkg.binary_sha512[@device[:architecture]]
-  elsif @pkg.binary_sha256[@device[:architecture]]
+    csum = respond_to?(@pkg.binary_sha512[@device[:architecture]])
+  elsif respond_to?(@pkg.binary_sha256[@device[:architecture]])
     csum_type = 256
-    csum = @pkg.binary_sha256[@device[:architecture]]
+    csum = respond_to?(@pkg.binary_sha256[@device[:architecture]])
   else
     abort 'No checksum provided for this package, aborting...'.lightred
   end
