@@ -23,13 +23,17 @@ class Python3 < Package
      x86_64: 'cd3a63250e76cd887a620df69f37d349d4cea0d39e3d8bc2ceef9400a40befbb'
   })
 
+  depends_on 'bz2' => :build
   depends_on 'fontconfig'
   depends_on 'freetype'
+  depends_on 'gdbm' => :build
   depends_on 'glib'
   depends_on 'graphite'
   depends_on 'harfbuzz'
+  depends_on 'krb5' => :build
   depends_on 'libdb'
   depends_on 'libpng'
+  depends_on 'libtirpc' => :build
   depends_on 'libx11'
   depends_on 'libxau'
   depends_on 'libxcb'
@@ -37,8 +41,10 @@ class Python3 < Package
   depends_on 'libxft'
   depends_on 'libxrender'
   depends_on 'libxss'
+  depends_on 'sqlite' => :build
   depends_on 'tcl'
   depends_on 'tk'
+  depends_on 'xzutils' => :build
 
   def self.preinstall
     # Fix ImportError: cannot import name 'PackageFinder'.
