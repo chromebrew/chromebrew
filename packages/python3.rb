@@ -23,9 +23,22 @@ class Python3 < Package
      x86_64: 'cd3a63250e76cd887a620df69f37d349d4cea0d39e3d8bc2ceef9400a40befbb'
   })
 
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'glib'
+  depends_on 'graphite'
+  depends_on 'harfbuzz'
+  depends_on 'libdb'
+  depends_on 'libpng'
   depends_on 'libx11'
+  depends_on 'libxau'
+  depends_on 'libxcb'
+  depends_on 'libxext'
+  depends_on 'libxft'
+  depends_on 'libxrender'
+  depends_on 'libxss'
   depends_on 'tcl'
-  depends_on 'tk' => :build # yes this creates a circular dependency.
+  depends_on 'tk'
 
   def self.preinstall
     # Fix ImportError: cannot import name 'PackageFinder'.
