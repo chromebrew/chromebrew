@@ -4,6 +4,7 @@ class Pkgsrc < Package
   description 'pkgsrc is a framework for building third-party software on NetBSD and other UNIX-like systems'
   homepage 'https://github.com/NetBSD/pkgsrc'
   version '2020Q1'
+  license '' # Can't find license
   compatibility 'all'
   source_url 'https://github.com/NetBSD/pkgsrc/archive/6ba7d2a6ee1388ad515177f5964681f2f6c13f13.tar.gz'
   source_sha256 'fe2cf98d294cdd298c9191c33c5223860f73e9bed8b9d137f0c32a579ea49803'
@@ -54,7 +55,7 @@ EOF"
       system 'rm -f *'
     end
     FileUtils.chdir "#{CREW_DEST_PREFIX}" do
-      system "wget ftp://ftp.netbsd.org/pub/pkgsrc/pkgsrc-#{version}/pkgsrc-#{version}.tar.xz"
+      system "curl -#LO ftp://ftp.netbsd.org/pub/pkgsrc/pkgsrc-#{version}/pkgsrc-#{version}.tar.xz"
       abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("pkgsrc-#{version}.tar.xz") ) == '133d2f79115c87ad7dbf6f7ab604ddc0d09afe3b1d3c4cda5670c1fb758eb283'
       system "tar xvf pkgsrc-#{version}.tar.xz"
       FileUtils.rm_f "pkgsrc-#{version}.tar.xz"

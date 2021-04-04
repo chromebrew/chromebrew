@@ -4,6 +4,7 @@ class Ndisc6 < Package
   description 'Small collection of useful tools for IPv6 networking (ndisc6, rdisc6, tcptraceroute6, traceroute6, rdnssd).'
   homepage 'https://www.remlab.net/ndisc6/'
   version '1.0.4'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://www.remlab.net/files/ndisc6/ndisc6-1.0.4.tar.bz2'
   source_sha256 'abb1da4a98d94e5abe1dd7b1c975de540306b0581cbbd36aff035118b2f25c1f'

@@ -4,6 +4,7 @@ class Exa < Package
   description 'Modern replacement for \'ls\''
   homepage 'https://the.exa.website'
   version '0.9.0'
+  license 'Apache-2.0, MIT and Unlicense'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

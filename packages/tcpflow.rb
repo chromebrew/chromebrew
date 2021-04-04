@@ -4,6 +4,7 @@ class Tcpflow < Package
   description 'TCP/IP packet demultiplexer'
   homepage 'https://github.com/simsong/tcpflow'
   version '1.5.0'
+  license 'GPL-3'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

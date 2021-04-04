@@ -4,6 +4,7 @@ class Wdiff < Package
   description 'The GNU wdiff program is a front end to diff for comparing files on a word per word basis.'
   homepage 'https://www.gnu.org/software/wdiff/'
   version '1.2.2'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/wdiff/wdiff-1.2.2.tar.gz'
   source_sha256 '34ff698c870c87e6e47a838eeaaae729fa73349139fc8db12211d2a22b78af6b'

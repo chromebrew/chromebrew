@@ -4,6 +4,7 @@ class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
   version '5.32.0'
+  license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'http://www.cpan.org/src/5.0/perl-5.32.0.tar.gz'
   source_sha256 'efeb1ce1f10824190ad1cadbcccf6fdb8a5d37007d0100d2d9ae5f2b5900c0b4'

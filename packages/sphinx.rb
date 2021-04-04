@@ -4,6 +4,7 @@ class Sphinx < Package
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation'
   homepage 'http://www.sphinx-doc.org/en/master/'
   version '3.2.1'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinx/archive/v3.2.1.tar.gz'
   source_sha256 '8816c90665b192b36c4482fb59819c276bae37ed275948fb2ab2ba873aa29d8a'

@@ -4,6 +4,7 @@ class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
   version '2.9.10-1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.9.10/libxml2-v2.9.10.tar.bz2'
   source_sha256 '5f1cc19c849cccabb983881cf1ebf833f42db5d7b8afba7a7763a2ac3101715c'
@@ -22,6 +23,7 @@ class Libxml2 < Package
   })
 
   depends_on 'zlibpkg'
+  depends_on 'readline'
 
   def self.patch
     # Fix encoding.c:1961:31: error: ‘TRUE’ undeclared (first use in this function)

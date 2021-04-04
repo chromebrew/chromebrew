@@ -4,6 +4,7 @@ class Sxhkd < Package
   description 'Simple X HotKey Daemon'
   homepage "https://github.com/baskerville/sxhkd"
   version '0.6.2'
+  license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/baskerville/sxhkd/archive/0.6.2.tar.gz'
   source_sha256 '1edc8b1a8b3631c10ba9cb9df1181830dacbbdf77adb558e31d5dd2029637386'

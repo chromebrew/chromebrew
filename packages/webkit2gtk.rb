@@ -5,6 +5,7 @@ class Webkit2gtk < Package
   homepage 'https://webkitgtk.org'
   @_ver = '2.30.5'
   version @_ver
+  license 'LGPL-2+ and BSD-2'
   compatibility 'all'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{@_ver}.tar.xz"
   source_sha256 '7d0dab08e3c5ae07bec80b2822ef42e952765d5724cac86eb23999bfed5a7f1f'
@@ -27,8 +28,8 @@ class Webkit2gtk < Package
   depends_on 'freetype'
   depends_on 'gtk3'
   depends_on 'harfbuzz'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'gobject_introspection' => :build
   depends_on 'libsoup'
   depends_on 'libwpe'
   depends_on 'wpebackend_fdo'

@@ -4,6 +4,7 @@ class Libeconf < Package
   description 'Enhanced config file parser, which merges config files placed in several locations into one.'
   homepage 'https://github.com/openSUSE/libeconf'
   version '0.3.8'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/openSUSE/libeconf/archive/v0.3.8.tar.gz'
   source_sha256 'e0c265f85eef2aca400d17b88f74891ce40ed88d959ebc29f529d26121f7e8e3'

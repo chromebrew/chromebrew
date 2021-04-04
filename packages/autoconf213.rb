@@ -4,6 +4,7 @@ class Autoconf213 < Package
   description 'A GNU tool for automatically configuring source code Legacy 2.1x version'
   homepage 'https://www.gnu.org/software/autoconf/'
   version '2.13'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz'
   source_sha256 'f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e'

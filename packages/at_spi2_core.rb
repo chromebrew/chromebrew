@@ -3,22 +3,23 @@ require 'package'
 class At_spi2_core < Package
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'http://www.freedesktop.org/'
-  version '2.39.90.1'
+  version '2.39.91'
+  license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://download.gnome.org/core/40/40.beta/sources/at-spi2-core-2.39.90.1.tar.xz'
-  source_sha256 '2e8a9098e64dc66478ca095d3ca91657626eb778dc75e64bff6294be7ceaa4ba'
+  source_url 'https://download.gnome.org/core/40/40.rc/sources/at-spi2-core-2.39.91.tar.xz'
+  source_sha256 '4f71d3d208736adfe004102b4caca0ad70a7e3986d9bcd1661d7d824e10bbfb3'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.90.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.90.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.90.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.90.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'b29ccd5984ad407ca52ce7890e315ab9bbafcfc5eae1151f017385c8f5e181f8',
-     armv7l: 'b29ccd5984ad407ca52ce7890e315ab9bbafcfc5eae1151f017385c8f5e181f8',
-       i686: '6f90a42303579e980393fd221f39a8dddacd9dba601c9d24bfe46e50bc9e5b16',
-     x86_64: '2e9227ff4ea9dcad67fce2b5de279d493a776b68df7fb5c9fbd3dae9aaa9c892'
+    aarch64: '7a9ab15123727d6036c8b30b9a35ab52f71745a8a4edce0fe80039216c2649b1',
+     armv7l: '7a9ab15123727d6036c8b30b9a35ab52f71745a8a4edce0fe80039216c2649b1',
+       i686: 'd29109b831f23f0412f79c174fcd0b0c13e69ffdccd86d2bf7663601a4252fd6',
+     x86_64: '7ae8a3cca653f06dc1efb1945117bd0fbab719462b3bdbc385057664f25acfc2'
   })
 
   depends_on 'libxtst'

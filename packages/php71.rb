@@ -4,6 +4,7 @@ class Php71 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '7.1.33-2'
+  license 'PHP-3.01'
   compatibility 'all'
   source_url 'https://php.net/distributions/php-7.1.33.tar.xz'
   source_sha256 'bd7c0a9bd5433289ee01fd440af3715309faf583f75832b64fe169c100d52968'
@@ -33,9 +34,9 @@ class Php71 < Package
   depends_on 'tidy'
   depends_on 'unixodbc'
 
-  def self.preinstall
+  def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless "#{phpver}" == ""
+    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
   end
 
   def self.patch

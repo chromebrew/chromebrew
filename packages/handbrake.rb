@@ -4,6 +4,7 @@ class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
   version '1.3.3-1'
+  license 'GPL-2'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'
@@ -16,7 +17,7 @@ class Handbrake < Package
     binary_sha256 ({
       x86_64: '13e06c6458fe918ab1a46deeadcea9415c00be877a333b9bfbe5969c1ca1ba2a',
     })
-    
+
     depends_on 'gtk3'
     depends_on 'ffmpeg'
     depends_on 'jansson'

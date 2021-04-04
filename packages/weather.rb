@@ -4,6 +4,7 @@ class Weather < Package
   description 'This command-line utility is intended to provide quick access to current weather conditions and forecasts.'
   homepage 'http://fungi.yuggoth.org/weather/'
   version '2.3'
+  license 'ISC'
   compatibility 'all'
   source_url 'http://fungi.yuggoth.org/weather/src/weather-2.3.tar.xz'
   source_sha256 '86148d2f1d59867f637f52558cc2a6b3280fac94df55c6e5af0ce37cc190d146'

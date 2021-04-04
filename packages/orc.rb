@@ -5,6 +5,7 @@ class Orc < Package
   homepage 'https://gitlab.freedesktop.org/gstreamer/orc'
   @_ver = '0.4.32'
   version @_ver
+  license 'BSD and BSD-2'
   compatibility 'all'
   source_url "https://github.com/GStreamer/orc/archive/#{@_ver}.tar.gz"
   source_sha256 '6a7349d2ab4a73476cd4de36212e8c3c6524998081aaa04cf3a891ef792dd50f'
@@ -22,8 +23,8 @@ class Orc < Package
      x86_64: '31c20cfc000b15c7bffceb6aec67bb337a7240eef8c62d74349cd553ed615b6d'
   })
 
-  depends_on 'valgrind' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'valgrind' => :build
+  depends_on 'gtk_doc' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

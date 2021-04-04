@@ -2,8 +2,9 @@ require 'package'
 
 class Fnotifystat < Package
   description 'Fnotifystat is a program that dumps the file system activity in a given period of time.'
-  homepage 'http://kernel.ubuntu.com/~cking/fnotifystat/'
+  homepage 'https://kernel.ubuntu.com/~cking/fnotifystat/'
   version '0.02.02'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/fnotifystat/fnotifystat-0.02.02.tar.gz'
   source_sha256 'a57034f8b8db3f43b28bfd2e15a27b599a5705809c59c3983b36276f6764a691'

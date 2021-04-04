@@ -3,25 +3,34 @@ require 'package'
 class Libhandy < Package
   description 'The aim of the handy library is to help with developing UI for mobile devices using GTK/GNOME.'
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
-  @_ver = '1.0.3'
-  version @_ver
+  @_ver = '1.2.0'
+  version "#{@_ver}-1"
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libhandy/-/archive/#{@_ver}/libhandy-#{@_ver}.tar.bz2"
-  source_sha256 '8cdeb88deaf13efbc0da73306bf8f8d14b6e5b108807a4f7b43d6a7c6e3a158d'
+  source_sha256 'b2e08210a6b0c6b08e6c46848024cbcf44973e40377a1373d7cbb0bde7131b56'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.0.3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.0.3-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.0.3-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.0.3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '4e5c2b68cdf5884bf233086a4cb8258c39d7c4f3abc84e262b9dc485292eff1a',
-      armv7l: '4e5c2b68cdf5884bf233086a4cb8258c39d7c4f3abc84e262b9dc485292eff1a',
-        i686: 'fabc2b197a1b8c6c1560a0ba3dd4f6a1839715e38f7079a11bd6169dbf54f38b',
-      x86_64: 'b2b09e3a0ded79ce0ab151c489d95549c3b8c508ee485d8fdfdb4f4e0edcfb29',
+  binary_sha256({
+    aarch64: '3bd22e6101caa76c8f89fc4ef8aeb046e85c7969b42003f1835e81c13df7180d',
+     armv7l: '3bd22e6101caa76c8f89fc4ef8aeb046e85c7969b42003f1835e81c13df7180d',
+       i686: 'f1e76dc3fdc785113360060a6813c971008a3961667abef92bed7a27fc386e1d',
+     x86_64: '3519270c70aec8aedfd6afbd9f286920f148d6377a8e30512c020ff166959684'
   })
 
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'fribidi'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gtk3'
+  depends_on 'libjpeg'
+  depends_on 'pango'
   depends_on 'vala'
 
   def self.prebuild

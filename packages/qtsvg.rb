@@ -4,8 +4,9 @@ class Qtsvg < Package
   description 'Provides classes for displaying the contents of SVG files.'
   homepage 'https://www.qt.io/'
   version '5.15.1'
+  license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception, LGPL-2.1 and LGPL-3'
   compatibility 'all'
-  source_url 'http://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtsvg-everywhere-src-5.15.1.tar.xz'
+  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtsvg-everywhere-src-5.15.1.tar.xz'
   source_sha256 '308160223c0bd7492d56fb5d7b7f705bfb130947ac065bf39280ec6d7cbe4f6a'
 
   binary_url ({

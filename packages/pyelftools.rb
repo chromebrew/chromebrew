@@ -4,6 +4,7 @@ class Pyelftools < Package
   description 'Pure-Python library for parsing and analyzing ELF files and DWARF debugging information.'
   homepage 'https://github.com/eliben/pyelftools'
   version '0.27'
+  license 'public-domain'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

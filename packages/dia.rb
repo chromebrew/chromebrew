@@ -4,6 +4,7 @@ class Dia < Package
   description 'Dia Diagram Editor is free Open Source drawing software for Windows, Mac OS X and Linux.'
   homepage 'http://dia-installer.de/'
   version '0.97.2-1'
+  license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
@@ -53,7 +54,7 @@ class Dia < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Fix dia_renderer_set_size: assertion 'irenderer != NULL' failed.  See https://bugs.launchpad.net/ubuntu/+source/dia/+bug/1102960/comments/11.
-    system 'wget https://bugs.launchpad.net/ubuntu/+source/dia/+bug/1102960/+attachment/3552916/+files/persistence'
+    system 'curl -#LO https://bugs.launchpad.net/ubuntu/+source/dia/+bug/1102960/+attachment/3552916/+files/persistence'
     abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest( File.read('persistence') ) == '53cb6e49892bd60870fb31780052e46d9e47c5b19f87db1651760d10d3fe66e7'
     system "install -Dm644 persistence #{CREW_DEST_HOME}/.dia/persistence"
   end

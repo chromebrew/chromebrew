@@ -4,6 +4,7 @@ class Pygobject < Package
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://pygobject.readthedocs.io/en/latest/'
   version '3.38-0a16'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pygobject/-/archive/0a16082c3e092fdccf5499172a4b9dec07aa383d/pygobject-0a16082c3e092fdccf5499172a4b9dec07aa383d.tar.bz2'
   source_sha256 'f83531eeb2d4980afde618a83d16749b14e47d92673a6b1ec63ae7a0a01c4bfc'

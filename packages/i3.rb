@@ -4,6 +4,7 @@ class I3 < Package
   description 'Improved tiling window manager'
   homepage 'https://i3wm.org/'
   version '4.18.3'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://i3wm.org/downloads/i3-4.18.3.tar.bz2'
   source_sha256 '53ae7903fad6eea830d58e949698e4a502c432c0d0a582659a0a59b1b995b10d'

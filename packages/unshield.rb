@@ -4,6 +4,7 @@ class Unshield < Package
   description 'Tool and library to extract CAB files from InstallShield installers.'
   homepage 'https://github.com/twogood/unshield'
   version '1.4.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/twogood/unshield/archive/1.4.2.tar.gz'
   source_sha256 '5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774'

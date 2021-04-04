@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'find'
+require_relative '../lib/const'
+require_relative '../lib/color'
+
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift '../lib'
+
+Dir.glob('../packages/*.rb').each do |filename|
+  puts "Loading #{File.basename(filename, '.rb')}..."
+  load filename
+end
+
+puts "\nAll load tests successful.".lightgreen

@@ -1,36 +1,46 @@
 require 'package'
 
 class Libva < Package
-  description 'Libva is an implementation for VA-API (VIdeo Acceleration API)'
+  description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  version '2.10.0'
+  @_ver = '2.11.0'
+  version @_ver
+  license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/intel/libva/releases/download/2.10.0/libva-2.10.0.tar.bz2'
-  source_sha256 'fa81e35b50d9818fce5ec9eeeeff08a24a8864ceeb9a5c8e7ae4446eacfc0236'
+  source_url "https://github.com/intel/libva/archive/refs/tags/#{@_ver}.tar.gz"
+  source_sha256 'ee2bd79bad5e2404143f089360685f5da63a32dd551b54ccd61d2d49c041178a'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.10.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.10.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.10.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.10.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '5f66aaac102c5c21759a5f4e7395a79b94292f3aa653d970ce0460fdfa2cbfa6',
-      armv7l: '5f66aaac102c5c21759a5f4e7395a79b94292f3aa653d970ce0460fdfa2cbfa6',
-        i686: '0511fbc6c345dbf98d46638a20e8ed53341fc9dbe415792217181d535e9819f0',
-      x86_64: '500ce66bbf4884373920cc09cc5eea80e6d4864c274b8f93e9bc4ffe2394263a',
+  binary_sha256({
+    aarch64: '4af41d8c10b335f1b00bbfa9c4afcea07bbb0b7d00acd3a18a0c007592302a4a',
+     armv7l: '4af41d8c10b335f1b00bbfa9c4afcea07bbb0b7d00acd3a18a0c007592302a4a',
+       i686: '49938688385785511cca5cdd3d5354a0e1a227538fd7a1dfec4588dbd9af90b5',
+     x86_64: 'fcdd6886cfacef1a4e3e31448bf469f78233993a1376c1c4255314d7355c1eed'
   })
 
-  depends_on 'llvm'  => ':build'
   depends_on 'libdrm'
+  depends_on 'libx11'
+  depends_on 'libxext'
+  depends_on 'libxfixes'
+  depends_on 'mesa'
+  depends_on 'wayland'
 
   def self.build
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    --default-library=both \
+    -Db_lto=true \
+    -Db_pie=true \
+    builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

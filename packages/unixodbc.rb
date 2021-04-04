@@ -3,33 +3,35 @@ require 'package'
 class Unixodbc < Package
   description 'ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources.'
   homepage 'http://www.unixodbc.org/'
-  version '2.3.7'
+  version '2.3.9'
+  license 'LGPL-2+'
   compatibility 'all'
-  source_url 'http://www.unixodbc.org/unixODBC-2.3.7.tar.gz'
-  source_sha256 '45f169ba1f454a72b8fcbb82abd832630a3bf93baa84731cf2949f449e1e3e77'
+  source_url "http://www.unixodbc.org/unixODBC-#{version}.tar.gz"
+  source_sha256 '52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.7-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.9-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.9-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/unixodbc-2.3.9-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '4d97ddf6e1d78b18f90fa8ee4e8698a2c10e111cd294c6a4ee479b0ba734a1b8',
-     armv7l: '4d97ddf6e1d78b18f90fa8ee4e8698a2c10e111cd294c6a4ee479b0ba734a1b8',
-       i686: '987033a506015196dee6951e25d0860a23c5deadf74068590be5b913d1bfca3d',
-     x86_64: 'ecae202a4367725ceb7124b374f5e80335cfde85b6cdc296beaff735ddea3331',
+  binary_sha256({
+    aarch64: '6f04ee2e7fcc4e8c37db45e05fe51a5dcac345b7c61d440b791762ae7609b578',
+     armv7l: '6f04ee2e7fcc4e8c37db45e05fe51a5dcac345b7c61d440b791762ae7609b578',
+       i686: '590762ad9a2cd402ae52da0382c652d8e08a6b049f875ae99ec792f228331cd8',
+     x86_64: '705488db5fc32fe2062da25e4650ac090983404525c9d06f32646058a76cfb2a'
   })
-
+  
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --disable-maintainer-mode"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

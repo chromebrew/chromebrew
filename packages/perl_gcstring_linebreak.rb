@@ -4,6 +4,7 @@ class Perl_gcstring_linebreak < Package
   description 'UAX 14 Unicode Line Breaking Algorithm - Perl binding Unicode::LineBreak Unicode::GCString'
   homepage 'http://search.cpan.org/~nezumi/Unicode-LineBreak-2018.003/lib/Unicode/LineBreak.pod'
   version '2019.001'
+  license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://github.com/hatukanezumi/Unicode-LineBreak/archive/Unicode-LineBreak-2019.001.tar.gz'
   source_sha256 'bc9f96cf8bea60665e8ad67e90b0db3cc0bcdb97101e15c8c44ea671ba256577'

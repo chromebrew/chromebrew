@@ -3,33 +3,37 @@ require 'package'
 class Libgdiplus < Package
   description 'The mono library that provides a GDI+-compatible API on non-windows operating systems.'
   homepage 'https://www.mono-project.com/docs/gui/libgdiplus/'
-  version '6.0.5-2'
+  version '6.0.5-3'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://download.mono-project.com/sources/libgdiplus/libgdiplus-6.0.5.tar.gz'
   source_sha256 'b81e4e5cc3e4831b2945de08bef26eb1bdcd795aeaf8f971b221c51213a025ef'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '1f6af1a888b6892619e1e75d4d81626e44e683e4bc416cbc2ecf67fd56395bb9',
-     armv7l: '1f6af1a888b6892619e1e75d4d81626e44e683e4bc416cbc2ecf67fd56395bb9',
-       i686: 'f82da1a7932e0f10234c60662f9f1cbbd6d47d35015bdd32c1394f782faa59cf',
-     x86_64: 'f36f2f2729d1184131c855de987d432fed17a8c848f044768c4b20a9fb35267e'
+    aarch64: 'b8567295afed609d49bed5ecf8ccd9b363cfdb453afc1028ee8afd3a00e348b7',
+     armv7l: 'b8567295afed609d49bed5ecf8ccd9b363cfdb453afc1028ee8afd3a00e348b7',
+       i686: '889b8b69cb691d00f5b506d3f2770cb172c9a1ad8ddc0441a82d3d77e971fa79',
+     x86_64: '9c4f2e47dc4f95c88a188838cef7a5424fd272177d8eb4a7d32dfbeb212fc0b6'
   })
 
-  depends_on 'glib'
   depends_on 'cairo'
-  depends_on 'graphite'
-  depends_on 'libexif'
-  depends_on 'libtiff'
-  depends_on 'libpng'
-  depends_on 'libwebp'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
   depends_on 'giflib'
+  depends_on 'glib'
+  depends_on 'graphite'
   depends_on 'imake' => :build
+  depends_on 'libexif'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
+  depends_on 'libtiff'
+  depends_on 'libwebp'
 
   def self.build
     system "CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'

@@ -3,35 +3,46 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '85.0.2'
+  version '87.0'
+  license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686'
     source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 '83ace0384a14e383e65716ef9305d72e39832b855ebecf2035e6267b4c9a97a5'
+    source_sha256 '9127aee106dd9f09fac0c3cb89c5d75553384da4ec9be5943b60a5f55f31fccc'
   when 'x86_64'
     source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 '98763f4b1526811967d71e1bbb9552a9a3fd877321ecb497083b9e313b528c31'
+    source_sha256 '3c9207bee0a998634c4fd12293acfae207d16508749ad405bf1e8717d06acf02'
   end
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'gtk3'
-    depends_on 'apulse'
-    depends_on 'sommelier'
-  end
-
-# To get sound working, used : https://codelab.wordpress.com/2017/12/11/firefox-drops-alsa-apulse-to-the-rescue/
-
-  def self.build
-    system "echo '#!/bin/bash' > firefox.sh"
-    system "echo 'cd #{CREW_PREFIX}/firefox' >> firefox.sh"
-    system "echo 'apulse ./firefox \"\$@\"' >> firefox.sh"
-  end
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'dbus'
+  depends_on 'dbus_glib'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gtk2'
+  depends_on 'gtk3'
+  depends_on 'libx11'
+  depends_on 'libxcb'
+  depends_on 'libxcomposite'
+  depends_on 'libxcursor'
+  depends_on 'libxdamage'
+  depends_on 'libxext'
+  depends_on 'libxfixes'
+  depends_on 'libxi'
+  depends_on 'libxrender'
+  depends_on 'libxt'
+  depends_on 'pango'
+  depends_on 'pulseaudio'
+  depends_on 'sommelier'
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/firefox"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/firefox"
-    system "install -Dm755 firefox.sh #{CREW_DEST_PREFIX}/bin/firefox"
+    FileUtils.ln_s "#{CREW_PREFIX}/firefox/firefox", "#{CREW_DEST_PREFIX}/bin/firefox"
   end
 end

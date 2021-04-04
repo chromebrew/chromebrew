@@ -5,6 +5,7 @@ class Filecmd < Package
   homepage 'http://ftp.astron.com/'
   @_ver = '5.39'
   version @_ver
+  license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url "http://ftp.astron.com/pub/file/file-#{@_ver}.tar.gz"
   source_sha256 'f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1'
@@ -25,12 +26,13 @@ class Filecmd < Package
   def self.build
     # The filefix command changes the full path of the file command in configure scripts.
     # Execute this command from your source code root directory.
-    system "cat <<'EOF'> filefix
-#!/bin/bash
-for f in $(find . -name configure); do
-  sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' ${f}
-done
-EOF"
+    @filefix = <<~EOF
+      #!/bin/bash
+      for f in $(find . -name configure); do
+        sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' ${f}
+      done
+    EOF
+    IO.write("./filefix", @filefix)
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       ./configure \
       #{CREW_OPTIONS} \
@@ -41,7 +43,7 @@ EOF"
   def self.check
     system "make", "check"
   end
- 
+
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.install 'filefix', "#{CREW_DEST_PREFIX}/bin/filefix", mode: 0755

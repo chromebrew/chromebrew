@@ -3,29 +3,30 @@ require 'package'
 class Libsoup < Package
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  version '2.72-2'
+  @_ver = '2.99.2'
+  @_ver_prelastdot = @_ver.rpartition('.')[0]
+  version @_ver
+  license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz'
-  source_sha256 '170c3f8446b0f65f8e4b93603349172b1085fb8917c181d10962f02bb85f5387'
+  source_url "https://download.gnome.org/sources/libsoup/#{@_ver_prelastdot}/libsoup-#{@_ver}.tar.xz"
+  source_sha256 '664fa1b78a15cc0aa1fa65efb3b281a888417530f9f56a219571c0630f942ba5'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.72-2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.72-2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.72-2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.72-2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'b400c7ec6e46aa72743e94f1f04c1e91dfac90f4c6af9a02a7b1b7fd7ae1b9c2',
-      armv7l: 'b400c7ec6e46aa72743e94f1f04c1e91dfac90f4c6af9a02a7b1b7fd7ae1b9c2',
-        i686: '4e3fd0b050b6d9f6897df32eb13922ceeeac11934fbbfb1df65fd0677ff9af54',
-      x86_64: '0a16a6d71b389a7196a93af1c4d29fa8c5c2d68dff6cd1b80b909de1d499de26',
+  binary_sha256({
+    aarch64: '7b0fd36b36395b4949af7915af3eab02ab1842ba085f7c1858c977aca4af0534',
+     armv7l: '7b0fd36b36395b4949af7915af3eab02ab1842ba085f7c1858c977aca4af0534',
+       i686: '994478c3f30ed64b0ec04dc13b1383086806c8607f644a541bb4f25de2440a15',
+     x86_64: '2226f557f9d63cf666a17edd10c0831589cd3bdd652774f77b8ae73d0caa6440'
   })
 
   depends_on 'glib_networking'
-  depends_on 'libpsl'
-  depends_on 'sqlite'
   depends_on 'vala'
-  depends_on 'llvm'
+  depends_on 'libsoup2' # This way we make sure packages which need the older libsoup-2.4 library get it too.
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

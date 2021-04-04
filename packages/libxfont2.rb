@@ -4,6 +4,7 @@ class Libxfont2 < Package
   description 'X.org X font library'
   homepage 'http://www.x.org'
   version '2.0.4'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXfont2-2.0.4.tar.bz2'
   source_sha256 '6d151b3368e5035efede4b6264c0fdc6662c1c99dbc2de425e3480cababc69e6'

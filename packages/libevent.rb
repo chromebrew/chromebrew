@@ -5,6 +5,7 @@ class Libevent < Package
   homepage 'http://libevent.org/'
   @_ver = '2.1.12'
   version @_ver
+  license 'BSD'
   compatibility 'all'
   source_url "https://github.com/libevent/libevent/releases/download/release-#{@_ver}-stable/libevent-#{@_ver}-stable.tar.gz"
   source_sha256 '92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'

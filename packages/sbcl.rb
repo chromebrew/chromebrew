@@ -4,6 +4,7 @@ class Sbcl < Package
   description 'Steel Bank Common Lisp (SBCL) is a high performance Common Lisp compiler.'
   homepage 'http://www.sbcl.org/index.html'
   version '2.0.3'
+  license 'MIT'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

@@ -4,6 +4,7 @@ class Libevdev < Package
   description 'libevdev is a wrapper library for evdev devices.'
   homepage 'https://www.freedesktop.org/wiki/Software/libevdev'
   version '1.11.0'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz'
   source_sha256 '63f4ea1489858a109080e0b40bd43e4e0903a1e12ea888d581db8c495747c2d0'
