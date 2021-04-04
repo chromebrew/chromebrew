@@ -47,7 +47,7 @@ case "${ARCH}" in
 esac
 
 # install a base set of development packages for compiling and building software
-read -n1 -p "${BLUE}Install development tools? (not needed for most users) [y/N]: ${RESET}" devtools
+echo -e -n "${BLUE}Install development tools? (not needed for most users) [y/N]: ${RESET}"; read -n1 devtools
 
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
