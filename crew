@@ -949,7 +949,7 @@ def remove (pkgName)
       File.readlines("meta/#{pkgName}.filelist").each do |line|
         begin
           puts ('Removing file ' + line.chomp).lightred if @opt_verbose
-          FileUtils.rm_f line.chomp
+          FileUtils.rm_f line.chomp, verbose: @fileutils_verbose
         rescue => exception #swallow exception
         end
       end
@@ -958,14 +958,14 @@ def remove (pkgName)
       File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
         begin
           puts 'Removing directory ' + line.chomp + ''.lightred if @opt_verbose
-          FileUtils.rmdir line.chomp
+          FileUtils.rmdir line.chomp, verbose: @fileutils_verbose
         rescue => exception #swallow exception
         end
       end
 
       #remove the file and directory list
-      FileUtils.rm_f "meta/#{pkgName}.filelist"
-      FileUtils.rm_f "meta/#{pkgName}.directorylist"
+      FileUtils.rm_f "meta/#{pkgName}.filelist", verbose: @fileutils_verbose
+      FileUtils.rm_f "meta/#{pkgName}.directorylist", verbose: @fileutils_verbose
 
     end
   end
@@ -985,7 +985,7 @@ def remove (pkgName)
   search pkgName, true
   @pkg.remove
 
-  puts (pkgName.capitalize + 'removed!').lightgreen
+  puts (pkgName.capitalize + ' removed!').lightgreen
 end
 
 def build_command (args)
