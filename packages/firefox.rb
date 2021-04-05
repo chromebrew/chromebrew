@@ -47,21 +47,22 @@ class Firefox < Package
   depends_on 'pulseaudio'
   depends_on 'sommelier'
 
-  def self.patch    
+  def self.patch   
     @_wrapper = <<~EOF
       #!/bin/sh
       # To get sound working, used : https://codelab.wordpress.com/2017/12/11/firefox-drops-alsa-apulse-to-the-rescue/
       
       exec apulse #{CREW_PREFIX}/lib/firefox/firefox "$@"
     EOF
+    
+    FileUtils.rm('./usr/bin/firefox')
+    File.write("./bin/firefox", @_wrapper)
+    File.chmod(0755, './bin/firefox')
   end
 
   def self.install
     FileUtils.mkdir_p(CREW_DEST_PREFIX)
     FileUtils.mv('./etc/', CREW_DEST_PREFIX)
     FileUtils.mv(Dir['./usr/*'], CREW_DEST_PREFIX)
-    
-    File.write("#{CREW_DEST_PREFIX}/bin/firefox", @_wrapper)
-    File.chmod(0755, "#{CREW_DEST_PREFIX}/bin/firefox")
   end
 end
