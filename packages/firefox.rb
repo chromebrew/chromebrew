@@ -56,7 +56,7 @@ class Firefox < Package
     EOF
     
     FileUtils.rm('./usr/bin/firefox')
-    File.write("./usr/bin/firefox", @_wrapper)
+    File.write('./usr/bin/firefox', @_wrapper)
     File.chmod(0755, './usr/bin/firefox')
   end
 
