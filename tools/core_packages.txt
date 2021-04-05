@@ -81,8 +81,6 @@ ruby
 sed
 slang
 sqlite
-tcl
-tk
 trousers
 uchardet
 unzip
