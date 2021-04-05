@@ -7,8 +7,8 @@ class Python3 < Package
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
-  source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tgz"
-  source_sha256 '66c4de16daa74a825cf9da9ddae1fe020b72c3854b73b1762011cc33f9e4592f'
+  source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
+  source_sha256 '4b0e6644a76f8df864ae24ac500a51bbf68bd098f6a173e27d3b61cdca9aa134'
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-armv7l.tar.xz',
