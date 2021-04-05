@@ -1,11 +1,12 @@
 require 'package'
 
-class Ranger < Package # the name of the package
+class Ranger < Package
   description 'A VIM-inspired filemanager for the console.'
   homepage 'http://ranger.nongnu.org/'
-  version '1.8.1' # the current version of the package
+  version '1.8.1'
+  license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/ranger/ranger/archive/v1.8.1.tar.gz' # the source files for the package
+  source_url 'https://github.com/ranger/ranger/archive/v1.8.1.tar.gz'
   source_sha256 'ab0e32159cde196df4ff14e9c516aaf8ac2db79e3fdee17e59f327d677a96949'
 
   binary_url ({
@@ -30,6 +31,6 @@ class Ranger < Package # the name of the package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
+    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
   end
 end

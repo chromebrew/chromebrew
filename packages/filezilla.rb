@@ -5,6 +5,7 @@ class Filezilla < Package
   homepage 'https://filezilla-project.org/'
   @_ver = '3.52.2'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://download.filezilla-project.org/client/FileZilla_#{@_ver}_src.tar.bz2"
   source_sha256 'c0788816928a26e8863c7dc26b158644e71bef29406df7d2eda37dc4810d6cdf'
@@ -49,7 +50,7 @@ class Filezilla < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-  
+
   def self.postinstall
     puts
     puts "To complete the installation, execute the following:".lightblue

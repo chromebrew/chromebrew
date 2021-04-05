@@ -5,6 +5,7 @@ class Libusb < Package
   homepage 'https://sourceforge.net/projects/libusb/'
   @_ver = '1.0.24'
   version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/libusb/libusb/releases/download/v#{@_ver}/libusb-#{@_ver}.tar.bz2"
   source_sha256 '7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a'

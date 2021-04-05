@@ -4,6 +4,7 @@ class Libpeas < Package
   description 'A GObject plugins library'
   homepage 'https://wiki.gnome.org/Projects/Libpeas'
   version '1.28.0'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/libpeas/archive/libpeas-1.28.0.tar.gz'
   source_sha256 '93d2826330a5e943dcfe8d059c5885a808494ee44c0b04f72f2bb2283b4d515b'
@@ -23,11 +24,11 @@ class Libpeas < Package
 
   depends_on 'gtk3'
   depends_on 'gobject_introspection'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'pygobject' => ':build'
-  depends_on 'glade' => ':build'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'vala' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'pygobject' => :build
+  depends_on 'glade' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'vala' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} builddir"

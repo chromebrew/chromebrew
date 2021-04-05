@@ -4,6 +4,7 @@ class Openbox < Package
   description 'Openbox is a highly configurable, next generation window manager with extensive standards support.'
   homepage 'http://openbox.org/'
   version '3.6.1'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'http://openbox.org/dist/openbox/openbox-3.6.1.tar.xz'
   source_sha256 'abe75855cc5616554ffd47134ad15291fe37ebbebf1a80b69cbde9d670f0e26d'

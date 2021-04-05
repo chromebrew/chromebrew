@@ -6,6 +6,7 @@ class Vivaldi < Package
   @_ver = '3.7.2218.52'
   version @_ver
   compatibility 'all'
+  license 'Vivaldi'
 
   depends_on 'cras'
   depends_on 'gtk3'

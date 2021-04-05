@@ -4,6 +4,7 @@ class Utf8proc < Package
   description 'a clean C library for processing UTF-8 Unicode data: normalization, case-folding, graphemes, and more'
   homepage 'https://julialang.org/utf8proc/'
   version '2.5.0'
+  license 'MIT and custom'
   compatibility 'all'
   source_url 'https://github.com/JuliaStrings/utf8proc/archive/v2.5.0.tar.gz'
   source_sha256 'd4e8dfc898cfd062493cb7f42d95d70ccdd3a4cd4d90bec0c71b47cca688f1be'

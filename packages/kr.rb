@@ -3,6 +3,7 @@ require 'package'
 class Kr < Package
   description 'Krypton command-line client, daemon, and SSH integration'
   homepage 'https://krypt.co'
+  license 'all-rights-reserved' # Don't distribute binaries of this package: it's illegal.
   version '2.4.4'
   compatibility 'all'
   source_url 'https://raw.githubusercontent.com/kryptco/kr/master/README.md'

@@ -4,6 +4,7 @@ class Wbox < Package
   description 'Wbox aims to help you having fun while testing HTTP related stuff.'
   homepage 'http://www.hping.org/wbox/'
   version '5'
+  license 'BSD'
   compatibility 'all'
   source_url 'http://www.hping.org/wbox/wbox-5.tar.gz'
   source_sha256 '1589d85e83c8ee78383a491d89e768ab9aab9f433c5f5e035cfb5eed17efaa19'

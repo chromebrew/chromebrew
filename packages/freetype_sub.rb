@@ -4,6 +4,7 @@ class Freetype_sub < Package
   description 'Freetype_sub is a version without harfbuzz. It is intended to handle circular dependency betwwen freetype and harfbuzz.'
   homepage 'https://www.freetype.org/'
   version '2.10.4'
+  license 'FTL or GPL-2+'
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.10.4.tar.xz'
   source_sha256 '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'

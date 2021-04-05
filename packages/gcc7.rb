@@ -4,6 +4,7 @@ class Gcc7 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
   version '7.4.0-1'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-7.4.0/gcc-7.4.0.tar.xz'
   source_sha256 'eddde28d04f334aec1604456e536416549e9b1aa137fc69204e65eb0c009fe51'
@@ -22,7 +23,7 @@ class Gcc7 < Package
   })
 
   depends_on 'unzip' => :build
-  depends_on 'gawk' => :build
+  depends_on 'mawk' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'icu4c' => :build
   depends_on 'python27' => :build

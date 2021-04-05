@@ -4,6 +4,7 @@ class Pycharm < Package
   description 'The Python IDE for Professional Developers'
   homepage 'https://www.jetbrains.com/pycharm/'
   version '2019.3.3'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://download.jetbrains.com/python/pycharm-community-anaconda-2019.3.3.tar.gz'
   source_sha256 'e84d392bfaeaf8b382ce7948261be2ff6d8bade5351b392571eb4c243aa88a61'

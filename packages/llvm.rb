@@ -5,6 +5,7 @@ class Llvm < Package
   homepage 'http://llvm.org/'
   @_ver = '11.1.0'
   version @_ver
+  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
   source_sha256 '53a0719f3f4b0388013cfffd7b10c7d5682eece1929a9553c722348d1f866e79'

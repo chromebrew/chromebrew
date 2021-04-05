@@ -5,6 +5,7 @@ class Moreutils < Package
   homepage 'https://joeyh.name/code/moreutils/'
   @_ver = '0.65'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "http://http.debian.net/debian/pool/main/m/moreutils/moreutils_#{@_ver}.orig.tar.xz"
   source_sha256 'ba0cfaa1ff6ead2b15c62a67292de66a366f9b815a09697b54677f7e15f5a2b2'
@@ -22,8 +23,8 @@ class Moreutils < Package
       x86_64: '55222b8e4293e548f812542fa7447e5420c1b7098c0ae481e1f0a0357dd84ed9',
   })
 
-  depends_on 'docbook_xml'
-  depends_on 'libxslt'
+  depends_on 'docbook_xml' => :build
+  depends_on 'libxslt' => :build
 
   def self.build
     system "sed -i 's,PREFIX?=/usr,PREFIX?=#{CREW_PREFIX},' Makefile"

@@ -4,6 +4,7 @@ class Xorg_lib < Package
   description 'A collection of xorg libraries.'
   homepage ''
   version '0.1-0'
+  license '' # is_fake
   compatibility 'all'
 
   is_fake
@@ -41,5 +42,5 @@ class Xorg_lib < Package
   depends_on 'libxxf86dga'
   depends_on 'libxxf86vm'
   depends_on 'libxcomposite'
-  depends_on 'libxscrnsaver'
+  depends_on 'libxss'
 end

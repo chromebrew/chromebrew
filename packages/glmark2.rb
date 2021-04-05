@@ -7,6 +7,7 @@ class Glmark2 < Package
   description 'OpenGL ES 2.0 benchmark'
   homepage 'https://github.com/glmark2/glmark2'
   version '2020.04'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/glmark2/glmark2/archive/2020.04.tar.gz'
   source_sha256 '0fa7723111c928a73c04d4fa4adfc15a9dea6d335fe189f59c74ae5af26f99a2'

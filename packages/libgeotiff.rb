@@ -4,6 +4,7 @@ class Libgeotiff < Package
   description 'GeoTIFF is based on the TIFF format and is used as an interchange format for georeferenced raster imagery.'
   homepage 'https://github.com/OSGeo/libgeotiff'
   version '1.6.0'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/OSGeo/libgeotiff/releases/download/1.6.0/libgeotiff-1.6.0.tar.gz'
   source_sha256 '9311017e5284cffb86f2c7b7a9df1fb5ebcdc61c30468fb2e6bca36e4272ebca'

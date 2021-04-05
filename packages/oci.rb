@@ -4,6 +4,7 @@ class Oci < Package
   description 'Command Line Interface for Oracle Cloud Infrastructure'
   homepage 'https://github.com/oracle/oci-cli'
   version '2.4.23'
+  license 'UPL-1.0'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

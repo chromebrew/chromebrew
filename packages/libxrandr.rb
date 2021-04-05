@@ -2,8 +2,9 @@ require 'package'
 
 class Libxrandr < Package
   description 'X.org X Resize, Rotate and Reflection extension library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org'
   version '1.5.2-1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXrandr-1.5.2.tar.gz'
   source_sha256 '3f10813ab355e7a09f17e147d61b0ce090d898a5ea5b5519acd0ef68675dcf8e'

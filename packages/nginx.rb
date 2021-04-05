@@ -4,6 +4,7 @@ class Nginx < Package
   description 'nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.'
   homepage 'http://nginx.org/'
   version '1.19.6'
+  license 'BSD-2, BSD, SSLeay, MIT, GPL-2 and GPL-2+'
   compatibility 'all'
   source_url 'https://nginx.org/download/nginx-1.19.6.tar.gz'
   source_sha256 'b11195a02b1d3285ddf2987e02c6b6d28df41bb1b1dd25f33542848ef4fc33b5'

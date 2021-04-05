@@ -4,6 +4,7 @@ class Woff2 < Package
   description 'Web Open Font Format (WOFF) is an open format for using fonts on the Web.'
   homepage 'https://github.com/google/woff2'
   version '1.0.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/google/woff2/archive/v1.0.2.tar.gz'
   source_sha256 'add272bb09e6384a4833ffca4896350fdb16e0ca22df68c0384773c67a175594'

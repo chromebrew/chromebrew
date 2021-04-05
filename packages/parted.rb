@@ -5,6 +5,7 @@ class Parted < Package
   homepage 'https://www.gnu.org/software/parted'
   @_ver = '3.4'
   version @_ver
+  license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/parted/parted-#{@_ver}.tar.xz"
   source_sha256 'e1298022472da5589b7f2be1d5ee3c1b66ec3d96dfbad03dc642afd009da5342'

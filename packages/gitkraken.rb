@@ -4,6 +4,7 @@ class Gitkraken < Package
   description 'The legendary Git GUI for Windows, Mac and Linux'
   homepage 'https://www.gitkraken.com/git-client'
   version '6.5.4'
+  license 'Gitkracken-EULA'
   compatibility 'x86_64'
   case ARCH
   when 'x86_64'

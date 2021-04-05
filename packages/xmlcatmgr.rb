@@ -4,6 +4,7 @@ class Xmlcatmgr < Package
   description 'XML and SGML catalog manager'
   homepage 'https://xmlcatmgr.sourceforge.net'
   version '2.2'
+  license 'BSD'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/sourceforge/xmlcatmgr/xmlcatmgr-2.2.tar.gz'
   source_sha256 'ea1142b6aef40fbd624fc3e2130cf10cf081b5fa88e5229c92b8f515779d6fdc'

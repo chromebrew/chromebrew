@@ -5,6 +5,7 @@ class Pcre < Package
   homepage 'http://pcre.org/'
   @_ver = '8.44'
   version "#{@_ver}-1"
+  license 'BSD-3'
   compatibility 'all'
   source_url "https://ftp.pcre.org/pub/pcre/pcre-#{@_ver}.tar.bz2"
   source_sha256 '19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d'

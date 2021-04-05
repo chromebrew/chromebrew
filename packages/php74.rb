@@ -3,23 +3,24 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.4.15'
+  @_ver = '7.4.16'
   version @_ver
+  license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '9b859c65f0cf7b3eff9d4a28cfab719fb3d36a1db3c20d874a79b5ec44d43cb8'
+  source_sha256 '1c16cefaf88ded4c92eed6a8a41eb682bb2ef42429deb55f1c4ba159053fb98b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.15-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.16-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.16-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php74-7.4.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '98ec0e0a86572c2f07c046acb04ea43d554c8fc5bf7e93b6aef8df02e53f4115',
-     armv7l: '98ec0e0a86572c2f07c046acb04ea43d554c8fc5bf7e93b6aef8df02e53f4115',
-       i686: 'b97210411f421122416fdfebac7698c115a5b94fbfd270b1fcf0719fc7bce14f',
-     x86_64: '70e8e26da1c6c30381ddfc6e0a119eb66d3ad4ee18c7982df51637810d03acc0'
+    aarch64: 'f3113d9c6f2f80644831b9f2eebb8867381b89e249206e6023f93ddfcbb41c0b',
+     armv7l: 'f3113d9c6f2f80644831b9f2eebb8867381b89e249206e6023f93ddfcbb41c0b',
+       i686: 'a04441e35fdf3612bc0bb07ecc04e98b51a7068ecec6789e239c4abc5d17f65a',
+     x86_64: 'ec82cab3f37d18d67c1aa2e5d7011a7014502914a2edc5b5a9d450b16d8e71c8',
   })
 
   depends_on 'aspell_en'
@@ -38,9 +39,9 @@ class Php74 < Package
   depends_on 'oniguruma'
   depends_on 'pygments'
 
-  def self.preinstall
+  def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless phpver.to_s == ''
+    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
   end
 
   def self.patch
@@ -77,53 +78,45 @@ class Php74 < Package
        --with-config-file-path=#{CREW_PREFIX}/etc \
        --with-libdir=#{ARCH_LIB} \
        --with-kerberos=#{CREW_LIB_PREFIX} \
+       --enable-bcmath \
+       --enable-calendar \
+       --enable-dba=shared \
        --enable-exif \
        --enable-fpm \
        --enable-ftp \
+       --enable-intl \
        --enable-mbstring \
+       --enable-mysqlnd \
        --enable-opcache \
        --enable-pcntl \
        --enable-shared \
        --enable-shmop \
-       --enable-sockets \
-       --enable-bcmath \
-       --enable-calendar \
-       --enable-dba=shared \
-       --enable-intl \
-       --enable-mysqlnd \
-       --enable-opcache \
        --enable-soap \
+       --enable-sockets \
        --enable-sysvmsg \
-       --enable-zip \
-       --with-gd \
-       --with-libzip \
-       --with-pcre-regex \
-       --with-zip \
        --with-bz2 \
        --with-curl \
+       --with-ffi \
+       --with-freetype \
+       --with-gdbm \
        --with-gettext \
        --with-gmp \
+       --with-jpeg \
+       --with-ldap \
+       --with-ldap-sasl \
+       --with-libedit \
        --with-mysqli \
        --with-openssl \
        --with-pdo-mysql \
        --with-pear \
+       --with-pspell \
        --with-readline \
+       --with-sodium \
        --with-tidy \
        --with-unixODBC \
-       --with-xsl \
-       --with-zlib \
-       --with-freetype \
-       --with-gdbm \
-       --with-jpeg \
-       --with-ldap \
-       --with-ldap-sasl \
-       --with-pspell \
-       --with-sodium \
        --with-xmlrpc \
-       --with-zip \
-       --with-ffi \
-       --with-libedit"
-    #--with-pdo-dblib"
+       --with-xsl \
+       --with-zip"
     system 'make'
   end
 
@@ -132,8 +125,11 @@ class Php74 < Package
   end
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
     FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0644
     FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0755

@@ -4,6 +4,7 @@ class Appres < Package
   description 'The appres program prints the resources seen by an application (or subhierarchy of an application) with the specified class and instance names.'
   homepage 'https://www.x.org'
   version '1.0.5'
+  license 'custom'
   compatibility 'all'
   source_url 'https://x.org/archive/individual/app/appres-1.0.5.tar.bz2'
   source_sha256 'ffad893712c81943b919e3cbfe46fc65259cc0d9eb96d5e658670e3fbb265928'

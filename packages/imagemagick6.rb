@@ -4,6 +4,7 @@ class Imagemagick6 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
   version '6.9.11-29'
+  license 'imagemagick'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'

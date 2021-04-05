@@ -4,6 +4,7 @@ class Smartmontools < Package
   description 'The smartmontools package contains two utility programs (smartctl and smartd) to control and monitor storage systems using the Self-Monitoring, Analysis and Reporting Technology System (SMART) built into most modern ATA/SATA, SCSI/SAS and NVMe disks.'
   homepage 'https://www.smartmontools.org/'
   version '7.2'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/smartmontools/smartmontools/7.2/smartmontools-7.2.tar.gz'
   source_sha256 '5cd98a27e6393168bc6aaea070d9e1cd551b0f898c52f66b2ff2e5d274118cd6'

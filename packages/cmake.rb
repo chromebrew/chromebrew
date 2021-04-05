@@ -5,6 +5,7 @@ class Cmake < Package
   homepage 'https://cmake.org/'
   @_ver = '3.19.4'
   version @_ver
+  license 'CMake'
   compatibility 'all'
   source_url "https://github.com/Kitware/CMake/releases/download/v#{@_ver}/cmake-#{@_ver}.tar.gz"
   source_sha256 '7d0232b9f1c57e8de81f38071ef8203e6820fe7eec8ae46a1df125d88dbcc2e1'

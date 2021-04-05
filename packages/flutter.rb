@@ -4,6 +4,7 @@ class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
   version '1.20.2'
+  license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/flutter/flutter/archive/1.20.2.tar.gz'
   source_sha256 'b4086649d29f85d035ec38c27e383f8989382241331d2e352f12cc00a6b8c96b'

@@ -2,8 +2,9 @@ require 'package'
 
 class Libxres < Package
   description 'X.org X-Resource extension client library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org'
   version '1.2.0-0'
+  license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXres-1.2.0.tar.gz'
   source_sha256 '5b62feee09f276d74054787df030fceb41034de84174abec6d81c591145e043a'

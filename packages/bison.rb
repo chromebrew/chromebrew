@@ -5,10 +5,11 @@ class Bison < Package
   homepage 'https://www.gnu.org/software/bison/'
   @_ver = '3.7.4'
   version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/bison/bison-#{@_ver}.tar.xz"
   source_sha256 'a3b5813f48a11e540ef26f46e4d288c0c25c7907d9879ae50e430ec49f63c010'
-  
+
   binary_url ({
      aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.7.4-chromeos-armv7l.tar.xz',
       armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.7.4-chromeos-armv7l.tar.xz',

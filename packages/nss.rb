@@ -5,6 +5,7 @@ class Nss < Package
   homepage 'https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS'
   @_ver = '3.61'
   version @_ver
+  license 'MPL-2.0, GPL-2 or LGPL-2.1'
   compatibility 'all'
   source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_61_RTM/src/nss-3.61-with-nspr-4.29.tar.gz'
   source_sha256 '812468f3cf22917f9647fec7997f4ab27ae4167811d9cbdc831f41f5ed281c5d'

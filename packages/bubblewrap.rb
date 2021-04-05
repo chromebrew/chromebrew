@@ -5,6 +5,7 @@ class Bubblewrap < Package
   homepage 'https://github.com/containers/bubblewrap'
   @_ver = '0.4.1'
   version "#{@_ver}-1"
+  license 'LGPL-2+'
   compatibility 'all'
   source_url "https://github.com/containers/bubblewrap/releases/download/v#{@_ver}/bubblewrap-#{@_ver}.tar.xz"
   source_sha256 'b9c69b9b1c61a608f34325c8e1a495229bacf6e4a07cbb0c80cf7a814d7ccc03'

@@ -3,16 +3,15 @@ require 'package'
 class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
-  version '1.20.108'
+  version '1.22.67'
+  license 'MPL-2'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
-    source_sha256 '3a6b5f0ff3c5bc839e5992f9ace19257b5866c3c3eb9c6bb061767c43a40a60a'
-    depends_on 'gtk3'
-    depends_on 'xdg_base'
-    depends_on 'sommelier' # The hardware acceleration with Wayland is broken, so use x11
-  end
+  source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
+  source_sha256 'd71ac5a00ad701a002958059c5bd86920e5965dc1ac857a7e0abf432e29fce8c'
+
+  depends_on 'gtk3'
+  depends_on 'xdg_base'
+  depends_on 'sommelier' # The hardware acceleration with Wayland is broken, so use x11
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

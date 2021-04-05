@@ -4,6 +4,7 @@ class Libxpresent < Package
   description 'XPresent extension C library'
   homepage 'https://cgit.freedesktop.org/xorg/lib/libXpresent/'
   version '1.0.0'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/lib/libXpresent-1.0.0.tar.gz'
   source_sha256 '92f1bdfb67ae2ffcdb25ad72c02cac5e4912dc9bc792858240df1d7f105946fa'

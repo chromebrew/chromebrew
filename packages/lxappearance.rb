@@ -4,6 +4,7 @@ class Lxappearance < Package
   description 'LXDE Theme Switcher'
   homepage 'http://lxde.org/'
   version '0.6.3'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/sourceforge/lxde/lxappearance-0.6.3.tar.xz'
   source_sha256 '7222d858b8fef4b7967c42142d61e82ded6dd42dc5ef1d59caad775795928b38'

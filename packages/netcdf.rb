@@ -4,6 +4,7 @@ class Netcdf < Package
   description 'NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.'
   homepage 'https://www.unidata.ucar.edu/software/netcdf/'
   version '4.7.4'
+  license 'UCAR-Unidata'
   compatibility 'all'
   source_url 'https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.7.4.tar.gz'
   source_sha256 '0e476f00aeed95af8771ff2727b7a15b2de353fb7bb3074a0d340b55c2bd4ea8'

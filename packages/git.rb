@@ -3,30 +3,28 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.30.0'
-  version "#{@_ver}-2"
+  @_ver = '2.31.0'
+  version @_ver
+  license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"
-  source_sha256 '8db4edd1a0a74ebf4b78aed3f9e25c8f2a7db3c00b1aaee94d1e9834fae24e61'
+  source_sha256 '13b3efb8eca3e3ef6e7eea6839600c37636dbac28069907beafd075ef7f45f0b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.30.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'a11bad34ddd17924b226026eccabf449381cf6b069715b914ab7bd66b3190a36',
-     armv7l: 'a11bad34ddd17924b226026eccabf449381cf6b069715b914ab7bd66b3190a36',
-       i686: 'd09ad3f842c1fefba128e28252d383b69bc890627e7759abeb1d75b624bf4d84',
-     x86_64: '3a63be93d3bbc46811a7f8b81a8e4b08c03ff82facf36419030ac214b60e4e6b'
+    aarch64: '3eb7bfa293ab60c72ba430e81323979720d7d101413067d4df5fd64ed7ffcf83',
+     armv7l: '3eb7bfa293ab60c72ba430e81323979720d7d101413067d4df5fd64ed7ffcf83',
+       i686: '716d376ce2d8548d81ab2c88c3868e1eb8125dda656470509558b14b1bd5fbd5',
+     x86_64: '287d1307cfd7a42be9f64e2acf98447e9d6b6b640905539b60e11533506fa507'
   })
 
-  depends_on 'curl' => :build
-  depends_on 'python3' => :build
-
   def self.build
-    raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
+    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
     system 'autoreconf -i'
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \

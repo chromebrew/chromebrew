@@ -7,6 +7,7 @@ class Peg < Package
   description 'recursive-descent parser generators for C'
   homepage 'https://www.piumarta.com/software/peg/'
   version '0.1.18-2'
+  license 'MIT'
   compatibility 'all'
   source_url 'http://piumarta.com/software/peg/peg-0.1.18.tar.gz'
   source_sha256 '20193bdd673fc7487a38937e297fff08aa73751b633a086ac28c3b34890f9084'

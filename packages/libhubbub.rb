@@ -4,6 +4,7 @@ class Libhubbub < Package
   description 'HTML5 compliant parsing library, written in C'
   homepage 'https://www.netsurf-browser.org'
   version '0.3.7'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libhubbub-0.3.7-src.tar.gz'
   source_sha256 '9e7ae253e6c9069e757eb9ad4e4846f38b4db52c0ca0151446a9fa4a977735b6'

@@ -5,6 +5,7 @@ class Libwacom < Package
   homepage 'https://github.com/linuxwacom/libwacom'
   @_ver = 1.8
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://github.com/linuxwacom/libwacom/releases/download/libwacom-#{@_ver}/libwacom-#{@_ver}.tar.bz2"
   source_sha256 '2e8075e60bbef74fe9c3539b0a0080efab28912b2552784d8b54dbbf1aaa63e5'

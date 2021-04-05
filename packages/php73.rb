@@ -5,6 +5,7 @@ class Php73 < Package
   homepage 'http://www.php.net/'
   @_ver = '7.3.27'
   version @_ver
+  license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
   source_sha256 '65f616e2d5b6faacedf62830fa047951b0136d5da34ae59e6744cbaf5dca148d'
@@ -33,9 +34,9 @@ class Php73 < Package
   depends_on 'unixodbc'
   depends_on 'pygments'
 
-  def self.preinstall
+  def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless phpver.to_s == ''
+    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
   end
 
   def self.patch
