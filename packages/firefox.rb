@@ -52,12 +52,12 @@ class Firefox < Package
       #!/bin/sh
       # To get sound working, used : https://codelab.wordpress.com/2017/12/11/firefox-drops-alsa-apulse-to-the-rescue/
       
-      exec apulse #{CREW_PREFIX}/lib/firefox/firefox "$@"
+      exec apulse ../lib/firefox/firefox "$@"
     EOF
     
     FileUtils.rm('./usr/bin/firefox')
-    File.write("./bin/firefox", @_wrapper)
-    File.chmod(0755, './bin/firefox')
+    File.write("./usr/bin/firefox", @_wrapper)
+    File.chmod(0755, './usr/bin/firefox')
   end
 
   def self.install
