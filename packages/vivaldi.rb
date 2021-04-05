@@ -32,7 +32,10 @@ class Vivaldi < Package
   
   def self.patch
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", './usr/bin/vivaldi-stable'
-    FileUtils.ln_s "#{CREW_PREFIX}/share/vivaldi/vivaldi", './usr/bin/vivaldi'
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", './usr/bin/vivaldi'
+    
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/lib/vivaldi/media-codecs-89.0.4389.82/
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/lib/libffmpeg.so", "#{CREW_DEST_HOME}/.local/lib/vivaldi/media-codecs-89.0.4389.82/"
   end
 
   def self.install
@@ -43,8 +46,9 @@ class Vivaldi < Package
   end
   
   def self.remove
-    Dir.chdir(HOME) do
-      FileUtils.rm_rf ['.config/vivaldi', '.config/lib/vivaldi', '.config/share/.vivaldi_reporting_data']
+    FileUtils.rm_rf HOME + '/.local/lib/vivaldi'
+    Dir.chdir(CREW_PREFIX) do
+      FileUtils.rm_rf ['.config/vivaldi', '.cache/vivaldi', '.config/share/.vivaldi_reporting_data']
     end
   end
 end
