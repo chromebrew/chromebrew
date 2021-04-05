@@ -52,7 +52,7 @@ class Firefox < Package
       #!/bin/sh
       # To get sound working, used : https://codelab.wordpress.com/2017/12/11/firefox-drops-alsa-apulse-to-the-rescue/
       
-      exec apulse ../lib/firefox/firefox "$@"
+      exec apulse #{CREW_PREFIX}/lib/firefox/firefox "$@"
     EOF
     
     FileUtils.rm('./usr/bin/firefox')
