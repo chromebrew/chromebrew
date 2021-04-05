@@ -533,17 +533,19 @@ def download
   case source
     case true
     when @pkg.source_sha512
-      csum_type = 512
+      csum_type = 'SHA512'
       csum = @pkg.source_sha512
     when @pkg.source_sha256
-      csum_type = 256
+      csum_type = 'SHA256'
       csum = @pkg.source_sha256
+    when @pkg.source_md5
+      csum_type = 'MD5'
     end
   when @pkg.binary_sha512
-    csum_type = 512
+    csum_type = 'SHA512'
     csum = @pkg.binary_sha512[@device[:architecture]]
   when @pkg.binary_sha256
-    csum_type = 256
+    csum_type = 'SHA256'
     csum = @pkg.binary_sha256[@device[:architecture]]
   else
     abort 'No checksum provided for this package, aborting...'.lightred
