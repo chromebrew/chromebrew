@@ -532,25 +532,27 @@ def download
   filename = File.basename(uri.path)
   
   case source
-    case true
-    when @pkg.source_sha512
-      csum_type = 'SHA512'
-      csum = @pkg.source_sha512
-    when @pkg.source_sha256
-      csum_type = 'SHA256'
-      csum = @pkg.source_sha256
-    when @pkg.source_md5
-      csum_type = 'MD5'
-    end
+  when @pkg.source_sha512
+    csum_type = 'SHA512'
+    csum = @pkg.source_sha512
+  when @pkg.source_sha256
+    csum_type = 'SHA256'
+    csum = @pkg.source_sha256
+  when @pkg.source_md5
+    csum_type = 'MD5'
+    csum = @pkg.source_md5
+  end
+  
+  case !source
   when @pkg.binary_sha512
     csum_type = 'SHA512'
     csum = @pkg.binary_sha512[@device[:architecture]]
   when @pkg.binary_sha256
     csum_type = 'SHA256'
     csum = @pkg.binary_sha256[@device[:architecture]]
-  else
-    abort 'No checksum provided for this package, aborting...'.lightred
   end
+  
+  abort 'No checksum provided for this package, aborting...'.lightred unless defined?(csum)
   
   Dir.chdir CREW_BREW_DIR do
     if ENV['CREW_CACHE_OPT']
