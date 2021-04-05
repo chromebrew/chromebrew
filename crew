@@ -530,18 +530,19 @@ def download
   uri = URI.parse url
   filename = File.basename(uri.path)
   
-  if source
-    if @pkg.source_sha512
+  case source
+    case true
+    when @pkg.source_sha512
       csum_type = 512
       csum = @pkg.source_sha512
-    elsif @pkg.source_sha256
+    when @pkg.source_sha256
       csum_type = 256
       csum = @pkg.source_sha256
     end
-  elsif @pkg.binary_sha512
+  when @pkg.binary_sha512
     csum_type = 512
     csum = @pkg.binary_sha512[@device[:architecture]]
-  elsif @pkg.binary_sha256
+  when @pkg.binary_sha256
     csum_type = 256
     csum = @pkg.binary_sha256[@device[:architecture]]
   else
