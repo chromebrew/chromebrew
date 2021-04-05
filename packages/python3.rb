@@ -23,15 +23,8 @@ class Python3 < Package
      x86_64: 'cd3a63250e76cd887a620df69f37d349d4cea0d39e3d8bc2ceef9400a40befbb'
   })
 
-  depends_on 'bz2' => :build
-  depends_on 'gdbm' => :build
-  depends_on 'krb5' => :build
-  depends_on 'libdb'
-  depends_on 'libtirpc' => :build
-  depends_on 'sqlite' => :build
-  depends_on 'tcl' => :build # Also needed for tkinter support
-  depends_on 'tk' => :build # Also needed for tkinter support
-  depends_on 'xzutils' => :build
+  # depends_on 'tcl' # Needed for tkinter support
+  # depends_on 'tk'  # Needed for tkinter support
 
   def self.preinstall
     # Fix ImportError: cannot import name 'PackageFinder'.
