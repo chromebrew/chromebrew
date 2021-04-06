@@ -3,7 +3,7 @@ require 'package'
 class Gittools < Package
   description 'Tools for analyzing .git repositories'
   homepage 'https://github.com/internetwache/GitTools'
-  version '37487' # https://github.com/internetwache/GitTools/issues/47
+  version '37487-1' # https://github.com/internetwache/GitTools/issues/47
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/internetwache/GitTools/archive/37487f603d1ba1bc5d7f7c94e9aa4b8e3beec413.tar.gz'
