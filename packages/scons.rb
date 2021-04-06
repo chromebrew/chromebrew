@@ -6,7 +6,7 @@ class Scons < Package
   license 'MIT'
   version '4.1.0'
   compatibility 'all'
-  source_url 'http://prdownloads.sourceforge.net/scons/scons-4.1.0.tar.gz'
+  source_url 'https://prdownloads.sourceforge.net/scons/scons-4.1.0.tar.gz'
   source_sha256 '72d28d762e2126787f173e3d59e089239f8b2f4e9ef3114d57f10b1206985d85'
 
   depends_on 'python3'
