@@ -81,6 +81,12 @@ class Wine < Package
     else
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @wine_config_env = <<~'WINE_CONFIG_EOF'
+      # Wine configuration
+      WINEPREFIX="${XDG_CONFIG_HOME}"/.wine
+    WINE_CONFIG_EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/wine", @wine_config_env)
   end
 
   def self.postinstall
@@ -90,6 +96,7 @@ class Wine < Package
   end
 
   def self.remove
+    @xdg_config_home = ENV['XDG_CONFIG_HOME']
     if Dir.exist? "#{HOME}/.wine"
       puts
       print "Would you like to remove #{HOME}/.wine? [y/N] "
@@ -100,6 +107,19 @@ class Wine < Package
         puts "#{HOME}/.wine removed.".lightred
       else
         puts "#{HOME}/.wine saved.".lightgreen
+      end
+      puts
+    end
+    if Dir.exist? "#{@xdg_config_home}/.wine"
+      puts
+      print "Would you like to remove #{@xdg_config_home}/.wine? [y/N] "
+      response = $stdin.getc
+      case response
+      when 'y', 'Y'
+        FileUtils.rm_rf "#{@xdg_config_home}/.wine"
+        puts "#{@xdg_config_home}/.wine removed.".lightred
+      else
+        puts "#{@xdg_config_home}/.wine saved.".lightgreen
       end
       puts
     end
