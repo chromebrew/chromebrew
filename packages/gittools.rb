@@ -3,7 +3,7 @@ require 'package'
 class Gittools < Package
   description 'Tools for analyzing .git repositories'
   homepage 'https://github.com/internetwache/GitTools'
-  version '37487'
+  version '37487' # https://github.com/internetwache/GitTools/issues/47
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/internetwache/GitTools/archive/37487f603d1ba1bc5d7f7c94e9aa4b8e3beec413.tar.gz'
@@ -15,6 +15,7 @@ class Gittools < Package
   })
 
   depends_on 'python3'
+  depends_on 'py3_requests'
 
   def self.build
     system "echo '#!/bin/bash' > gitfinder"
@@ -30,9 +31,6 @@ class Gittools < Package
     system "install -Dm755 Extractor/extractor.sh #{CREW_DEST_PREFIX}/bin/extractor"
     system "install -Dm755 Finder/gitfinder.py #{CREW_DEST_PREFIX}/bin/gitfinder.py"
     system "install -Dm755 gitfinder #{CREW_DEST_PREFIX}/bin/gitfinder"
-    Dir.chdir 'Finder' do
-      system "pip3 install -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
-    end
   end
 
   def self.postinstall
