@@ -26,7 +26,7 @@ class Gtk_doc < Package
   depends_on 'fop'
   depends_on 'itstool'
   depends_on 'libxslt'
-  depends_on 'pygments' => :build
+  depends_on 'py3_pygments' => :build
 
   #def self.patch
     # There are alot of patches to grab here ~ They've all come from Void-Packages (xbps-src)
