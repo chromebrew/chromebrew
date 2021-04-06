@@ -1,0 +1,74 @@
+# Adapted from Arch Linux libgxps PKGBUILD at:
+# https://github.com/archlinux/svntogit-packages/raw/packages/libgxps/trunk/PKGBUILD
+
+require 'package'
+
+class Libgxps < Package
+  description 'XPS Documents library'
+  homepage 'https://wiki.gnome.org/Projects/libgxps'
+  version '0.3.2'
+  license 'GPL2'
+  compatibility 'all'
+  source_url "https://gitlab.gnome.org/GNOME/libgxps/-/archive/#{version}/libgxps-#{version}.tar.bz2"
+  source_sha256 'ffbc656e801233a64ea5b6ab5532691e8b91f72cce3ea957615fe8523696d42a'
+
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgxps-0.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgxps-0.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgxps-0.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgxps-0.3.2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '47a8cac375a3ea3dace3d0498c79511d3973b2e39b6fd8d8593804e6de84dfeb',
+     armv7l: '47a8cac375a3ea3dace3d0498c79511d3973b2e39b6fd8d8593804e6de84dfeb',
+       i686: '7b6f550b505c2453841539b0ce36b5d8404ab098bdc2fa8f8c5f7f27cdda6ac8',
+     x86_64: '87bf32455bded966594a39131bf79ad198e06617df4ccc0327932c413b3d78b6'
+  })
+
+  depends_on 'avahi'
+  depends_on 'cairo'
+  depends_on 'cups'
+  depends_on 'dbus'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'glib'
+  depends_on 'gobject_introspection' => ':build'
+  depends_on 'graphite'
+  depends_on 'gtk3'
+  depends_on 'gtk_doc' => ':build'
+  depends_on 'harfbuzz'
+  depends_on 'lcms'
+  depends_on 'libarchive'
+  depends_on 'libdeflate'
+  depends_on 'libdrm'
+  depends_on 'libjpeg'
+  depends_on 'libpaper'
+  depends_on 'libpng'
+  depends_on 'libtiff'
+  depends_on 'libunwind'
+  depends_on 'libwebp'
+  depends_on 'libx11'
+  depends_on 'libxau'
+  depends_on 'libxcb'
+  depends_on 'libxext'
+  depends_on 'libxfixes'
+  depends_on 'libxshmfence'
+  depends_on 'libxxf86vm'
+  depends_on 'mesa'
+  depends_on 'openjpeg'
+  depends_on 'pcre'
+  depends_on 'pixman'
+  depends_on 'util_linux'
+  depends_on 'wayland'
+
+  def self.build
+    system "meson #{CREW_MESON_LTO_OPTIONS} \
+      builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
+  end
+
+  def self.install
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+end
