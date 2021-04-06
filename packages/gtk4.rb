@@ -24,13 +24,16 @@ class Gtk4 < Package
      x86_64: '68c169e9112531c9fc41f9bed15a542867500846a16eedc6f103cfbcd99c668b'
   })
 
+  depends_on 'adwaita_icon_theme'
   depends_on 'cairo'
+  depends_on 'cantarell_fonts'
   depends_on 'cups'
   depends_on 'ffmpeg'
   depends_on 'fontconfig'
   depends_on 'fribidi'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
+  depends_on 'gnome_icon_theme'
   depends_on 'graphene'
   depends_on 'gst_plugins_bad'
   depends_on 'gst_plugins_base'
@@ -58,6 +61,7 @@ class Gtk4 < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland'
+  depends_on 'xdg_base'
 
   def self.patch
     case ARCH
