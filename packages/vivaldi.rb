@@ -34,7 +34,7 @@ class Vivaldi < Package
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", './usr/bin/vivaldi-stable'
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", './usr/bin/vivaldi'
     
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/lib/vivaldi/media-codecs-89.0.4389.82/
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/lib/vivaldi/media-codecs-89.0.4389.82/"
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/lib/libffmpeg.so", "#{CREW_DEST_HOME}/.local/lib/vivaldi/media-codecs-89.0.4389.82/"
   end
 
