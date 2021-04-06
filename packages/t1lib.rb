@@ -24,18 +24,14 @@ class T1lib < Package
   })
 
   depends_on 'hashpipe' => :build
-  depends_on 'libbsd'
   depends_on 'libice'
   depends_on 'libsm'
   depends_on 'libx11'
-  depends_on 'libxau'
   depends_on 'libxaw'
-  depends_on 'libxcb'
   depends_on 'libxext'
   depends_on 'libxmu'
   depends_on 'libxpm'
   depends_on 'libxt'
-  depends_on 'util_linux'
 
   def self.patch
     system 'curl -Ls https://github.com/archlinux/svntogit-packages/raw/packages/t1lib/trunk/lib-cleanup.diff | \

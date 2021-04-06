@@ -25,27 +25,17 @@ class Gtk3 < Package
      x86_64: '16ef9237bd85428972d050da9d5307f30700b24ce26c6d165c39769ad3dc2d92'
   })
 
-  depends_on 'adwaita_icon_theme'
   depends_on 'atk'
   depends_on 'at_spi2_atk'
   depends_on 'cairo'
-  depends_on 'cantarell_fonts'
   depends_on 'cups'
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'fribidi'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
-  depends_on 'gnome_icon_theme'
-  depends_on 'gobject_introspection'
-  depends_on 'graphene'
-  depends_on 'graphite'
   depends_on 'harfbuzz'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'iso_codes'
   depends_on 'json_glib'
-  depends_on 'libdeflate'
-  depends_on 'libjpeg'
   depends_on 'libepoxy'
   depends_on 'libx11'
   depends_on 'libxcomposite'
@@ -58,10 +48,9 @@ class Gtk3 < Package
   depends_on 'libxkbcommon'
   depends_on 'libxrandr'
   depends_on 'pango'
-  depends_on 'shared_mime_info'
+  depends_on 'rest'
   depends_on 'six' => :build
   depends_on 'wayland'
-  depends_on 'xdg_base'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

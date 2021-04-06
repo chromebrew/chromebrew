@@ -25,10 +25,8 @@ class Djvulibre < Package
      x86_64: 'd17ec121e01aea869ea74b421aebcf4b8f019e8b32268859256aadd32019aab5'
   })
  
-  depends_on 'libdeflate'
   depends_on 'libjpeg'
   depends_on 'libtiff'
-  depends_on 'libwebp'
   depends_on 'librsvg' => :build
 
   def self.build
