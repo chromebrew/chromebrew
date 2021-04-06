@@ -40,9 +40,20 @@ class Vivaldi < Package
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/lib/vivaldi/media-codecs-89.0.4389.82/
+
     FileUtils.mv './etc/', CREW_DEST_PREFIX
     FileUtils.mv Dir['./usr/*'], CREW_DEST_PREFIX
     FileUtils.mv './opt/vivaldi/', "#{CREW_DEST_PREFIX}/share/"
+    
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", '#{CREW_DEST_PREFIX}/bin/vivaldi-stable'
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi"
+    
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/lib/vivaldi/media-codecs-89.0.4389.82/
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/lib/libffmpeg.so", "#{CREW_DEST_HOME}/.local/lib/vivaldi/media-codecs-89.0.4389.82/"
+    
+    # ERROR: ld.so: object '/home/chronos/user/.local/lib/vivaldi/media-codecs-89.0.4389.82/libffmpeg.so' from LD_PRELOAD cannot be preloaded
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/lib/libffmpeg.so", "#{CREW_DEST_HOME}/.local/lib/vivaldi/media-codecs-89.0.4389.82/"
   end
   
   def self.remove
