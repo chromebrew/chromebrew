@@ -38,6 +38,7 @@ class Wine < Package
   depends_on 'mpg123'
   depends_on 'openal'
   depends_on 'pulseaudio'
+  depends_on 'xdg_base'
   depends_on 'sommelier'
 
   @xdg_config_home = ENV['XDG_CONFIG_HOME']
