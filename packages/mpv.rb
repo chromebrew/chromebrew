@@ -23,7 +23,7 @@ class Mpv < Package
   })
 
   depends_on 'alsa_lib'
-  depends_on 'docutils' => :build
+  depends_on 'py3_docutils' => :build
   depends_on 'ffmpeg'
   depends_on 'jack'
   depends_on 'lcms'
