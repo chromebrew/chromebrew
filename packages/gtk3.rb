@@ -36,6 +36,7 @@ class Gtk3 < Package
   depends_on 'fribidi'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
+  depends_on 'gnome_icon_theme'
   depends_on 'harfbuzz'
   depends_on 'hicolor_icon_theme'
   depends_on 'json_glib'
