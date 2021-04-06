@@ -27,7 +27,7 @@ class Libnewt < Package
   depends_on 'libxcrypt'
   depends_on 'popt'
   depends_on 'tcl' => :build
-  depends_on 'pygments' => :build
+  depends_on 'py3_pygments' => :build
 
   def self.patch
     patch_url = 'http://deb.debian.org/debian/pool/main/n/newt/newt_0.52.21-4.debian.tar.xz'
