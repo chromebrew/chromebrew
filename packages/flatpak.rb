@@ -31,7 +31,7 @@ class Flatpak < Package
   depends_on 'libsoup2'
   depends_on 'polkit'
   depends_on 'pulseaudio'
-  depends_on 'pyparsing'
+  depends_on 'py3_pyparsing'
   depends_on 'xdg_base'
 
   def self.patch
