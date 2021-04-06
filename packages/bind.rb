@@ -26,13 +26,13 @@ class Bind < Package
   depends_on 'jsonc'
   depends_on 'libcap'
   depends_on 'libuv'
+  depends_on 'py3_ply'
 
   def self.build
     system 'git config --global advice.detachedHead false'
     @_ver_ = @_ver.gsub(/[.]/, '_')
     system "git clone --depth=1 -b v#{@_ver_} https://gitlab.isc.org/isc-projects/bind9.git"
     Dir.chdir 'bind9' do
-      system 'pip3 install ply==3.11'
       system 'autoreconf -fi'
       system 'filefix'
       system "env CFLAGS='-DDIG_SIGCHASE -flto=auto' \
@@ -52,8 +52,6 @@ class Bind < Package
   def self.install
     Dir.chdir 'bind9' do
       system "make DESTDIR=#{CREW_DEST_DIR} install"
-      system 'pip3 uninstall -y ply'
-      system "pip3 install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I ply==3.11"
     end
   end
 end
