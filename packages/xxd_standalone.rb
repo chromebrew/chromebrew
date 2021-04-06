@@ -3,24 +3,24 @@ require 'package'
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'http://www.vim.org'
-  @_ver = '8.2.2580'
+  @_ver = '8.2.2725'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
-  source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'
+  source_url "https://github.com/vim/vim/archive/refs/tags/v#{@_ver}.tar.gz"
+  source_sha256 'a8aca906cf63fdc4264f86c1c39f8164989de0be3dc18553cb23bd6226c361a9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2580-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2580-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2580-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2580-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2725-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2725-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2725-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xxd_standalone-8.2.2725-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '7faf6e6e092c5913bb627ef7d2e33bd3fa2f3f0ba140773eb676ee267110fdc1',
-     armv7l: '7faf6e6e092c5913bb627ef7d2e33bd3fa2f3f0ba140773eb676ee267110fdc1',
-       i686: '1026e73efdf2559a2915752529fa2dbd9803e39c2ef604e57dcde28895105089',
-     x86_64: 'd84e4ae4abaf14e7ccd5257e9db7366d5131d6726fb3da024f3ac82c37fe42fa'
+    aarch64: '2dfdca9a6df73cfcd2d668bde027cf612dac84903d431317dc80ba436e7d6043',
+     armv7l: '2dfdca9a6df73cfcd2d668bde027cf612dac84903d431317dc80ba436e7d6043',
+       i686: '06af0aab3534058d294e616a41cfe29221e615c9a381d144a82b00379e4dea4d',
+     x86_64: '91756fb4d218b84362163da540500ccf10e2e2782a264a86584d5dd6e87a2b25'
   })
 
   def self.build
