@@ -1,7 +1,7 @@
 require 'package'
 
 class Ansible < Package
-  description 'Ansible is a radically simple IT automation platform from RedHat.'
+  description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
   version '2.9.14-1'
   license 'GPL-3'
