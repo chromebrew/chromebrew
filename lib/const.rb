@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.7.19'
+CREW_VERSION = '1.7.20'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -84,3 +84,7 @@ CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -D
 CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"
 CREW_LIB_SUFFIX = if ARCH == 'x86_64' then '64' else '' end
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"
+
+CREW_SETUP_PY3_BUILD_OPTIONS = "--executable #{CREW_PREFIX}/bin/python3"
+CREW_SETUP_PY2_BUILD_OPTIONS = "--executable #{CREW_PREFIX}/bin/python2"
+CREW_SETUP_PY_INSTALL_OPTIONS = "--prefix=#{CREW_PREFIX} --root=#{CREW_DEST_DIR} --compile -O2"
