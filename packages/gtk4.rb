@@ -56,7 +56,7 @@ class Gtk4 < Package
   depends_on 'libxkbcommon'
   depends_on 'libxrandr'
   depends_on 'pango'
-  depends_on 'pygments' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'rest'
   depends_on 'shared_mime_info'
   depends_on 'six' => :build
