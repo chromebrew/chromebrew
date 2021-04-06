@@ -22,7 +22,7 @@ class Libxslt < Package
      x86_64: '2ead1e30cb028f2f299056f8eea5bfb318f7346c6a65cfa4a891672560ed26bc',
   })
 
-  depends_on 'libxml2_python'
+  depends_on 'py3_libxml2'
   depends_on 'libgcrypt'
   depends_on 'docbook_xsl'
 
