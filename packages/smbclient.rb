@@ -1,29 +1,14 @@
-# Adapted from Arch Linux samba PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/samba/trunk/PKGBUILD
-
 require 'package'
 
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
-  homepage 'https://www.samba.org'
-  version '4.14.2'
-  license 'GPLv3'
+  homepage 'https://www.samba.org/'
+  @_ver = '4.14.2'
+  version "#{@_ver}-1"
+  license 'GPL-3'
   compatibility 'all'
-  source_url "https://us1.samba.org/samba/ftp/stable/samba-#{version}.tar.gz"
+  source_url "https://us1.samba.org/samba/ftp/stable/samba-#{@_ver}.tar.gz"
   source_sha256 '95651da478743f7cb407aec81287536c096e3e18bb4981dbe47ca70bf6181f96'
-
-  binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/smbclient-4.14.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/smbclient-4.14.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/smbclient-4.14.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/smbclient-4.14.2-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '19d88b0a7b60b5f1002ef071f3aa8c1ecefb00067e89eff653d2c234da2ff428',
-     armv7l: '19d88b0a7b60b5f1002ef071f3aa8c1ecefb00067e89eff653d2c234da2ff428',
-       i686: 'd4952770d1531c5bfc34b1e3527cad7b8b13e2c04d9c2630c9d8bd630d6dbd7a',
-     x86_64: 'f1c215ece0eae7eb36212ccaef962347b31b660403fa8b835a12b797e0786c2b'
-  })
 
   depends_on 'avahi'
   depends_on 'cmocka'
@@ -42,6 +27,8 @@ class Smbclient < Package
   depends_on 'lmdb' => :build
   depends_on 'perl_parse_yapp' => :build
   depends_on 'popt'
+  depends_on 'py3_dnspython' => :build
+  depends_on 'py3_markdown' => :build
   depends_on 'talloc'
   depends_on 'tdb'
   depends_on 'tevent'
@@ -54,8 +41,6 @@ class Smbclient < Package
                        smbcquotas smbget net nmblookup smbtar]
   @smbclient_pkgconfig = %w[smbclient netapi wbclient]
 
-  @python_deps = %w[Markdown dnspython]
-
   @xml_catalog_files = ENV['XML_CATALOG_FILES']
 
   def self.patch
@@ -63,12 +48,6 @@ class Smbclient < Package
     -i source4/dsdb/samdb/ldb_modules/password_hash.c"
     system "sed -i 's,/etc/xml/catalog,#{@xml_catalog_files},g' docs-xml/Makefile"
     system "sed -i 's,file:///etc/xml/catalog,#{@xml_catalog_files},g' buildtools/wafsamba/wafsamba.py"
-  end
-
-  def self.prebuild
-    @python_deps.each do |item|
-      system "pip install --upgrade #{item}"
-    end
   end
 
   def self.build
@@ -107,9 +86,6 @@ class Smbclient < Package
     FileUtils.mkdir_p 'staging'
     system 'make V=1 DESTDIR=staging install'
     FileUtils.cp 'source3/script/smbtar', "staging/#{CREW_PREFIX}/bin/"
-    @python_deps.each do |item|
-      system "pip uninstall --yes #{item}"
-    end
   end
 
   def self.install
