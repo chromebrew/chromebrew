@@ -40,6 +40,9 @@ class Wine < Package
   depends_on 'pulseaudio'
   depends_on 'sommelier'
 
+  @xdg_config_home = ENV['XDG_CONFIG_HOME']
+  @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
+  
   def self.build
     case ARCH
     when 'x86_64'
@@ -91,12 +94,12 @@ class Wine < Package
 
   def self.postinstall
     puts
-    puts "Type 'WINEPREFIX=$XDG_CONFIG_HOME/.wine wine explorer' to get started using the file explorer.".lightblue
+    puts "Type 'WINEPREFIX=#{@xdg_config_home}/.wine wine explorer' to get started using the file explorer.".lightblue
     puts
   end
 
   def self.remove
-    @xdg_config_home = ENV['XDG_CONFIG_HOME']
+    # If legacy location is being used
     if Dir.exist? "#{HOME}/.wine"
       puts
       print "Would you like to remove #{HOME}/.wine? [y/N] "
@@ -110,6 +113,8 @@ class Wine < Package
       end
       puts
     end
+    
+    # If current location is being used
     if Dir.exist? "#{@xdg_config_home}/.wine"
       puts
       print "Would you like to remove #{@xdg_config_home}/.wine? [y/N] "
