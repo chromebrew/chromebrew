@@ -25,9 +25,11 @@ class Gtk3 < Package
      x86_64: '16ef9237bd85428972d050da9d5307f30700b24ce26c6d165c39769ad3dc2d92'
   })
 
+  depends_on 'adwaita_icon_theme'
   depends_on 'atk'
   depends_on 'at_spi2_atk'
   depends_on 'cairo'
+  depends_on 'cantarell_fonts'
   depends_on 'cups'
   depends_on 'fontconfig'
   depends_on 'freetype'
@@ -35,6 +37,7 @@ class Gtk3 < Package
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'harfbuzz'
+  depends_on 'hicolor_icon_theme'
   depends_on 'json_glib'
   depends_on 'libepoxy'
   depends_on 'libx11'
@@ -49,8 +52,10 @@ class Gtk3 < Package
   depends_on 'libxrandr'
   depends_on 'pango'
   depends_on 'rest'
+  depends_on 'shared_mime_info'
   depends_on 'six' => :build
   depends_on 'wayland'
+  depends_on 'xdg_base'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
