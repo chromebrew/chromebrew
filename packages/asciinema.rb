@@ -23,7 +23,7 @@ class Asciinema < Package
   })
 
   depends_on 'xdg_base'
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.build
     system "echo '[api]
