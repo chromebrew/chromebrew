@@ -24,7 +24,7 @@ class Llvm < Package
   })
 
   depends_on 'ocaml' => :build
-  depends_on 'pygments' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'ccache' => :build
   # depends_on 'llvm_stage1' => :build # Not needed with a functional
   # prior llvm 11 build.
