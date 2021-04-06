@@ -26,11 +26,11 @@ class Libwacom < Package
   depends_on 'libgudev'
   depends_on 'eudev'
   depends_on 'libevdev'
+  depends_on 'py3_pyudev' => :build
+  depends_on 'py3_pytest' => :build
+  depends_on 'py3_libevdev' => :build
 
   def self.build
-    system "pip3 install --upgrade --no-warn-script-location pyudev --prefix #{CREW_PREFIX}"
-    system "pip3 install --upgrade --no-warn-script-location pytest --prefix #{CREW_PREFIX}"
-    system "pip3 install --upgrade --no-warn-script-location libevdev --prefix #{CREW_PREFIX}"
     system "meson #{CREW_MESON_LTO_OPTIONS} \
     -Dtests=disabled \
       builddir"
@@ -40,8 +40,5 @@ class Libwacom < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    system 'pip3 uninstall -y pyudev'
-    system 'pip3 uninstall -y pytest'
-    system 'pip3 uninstall -y libevdev'
   end
 end
