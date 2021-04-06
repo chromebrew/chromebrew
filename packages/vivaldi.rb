@@ -52,9 +52,8 @@ class Vivaldi < Package
   end
   
   def self.remove
-    FileUtils.rm_rf HOME + '/.local/lib/vivaldi'
     Dir.chdir(CREW_PREFIX) do
-      FileUtils.rm_rf ['.config/vivaldi', '.cache/vivaldi', '.config/share/.vivaldi_reporting_data']
+      FileUtils.rm_rf ["#{HOME}/.local/lib/vivaldi", '.config/vivaldi', '.cache/vivaldi', '.config/share/.vivaldi_reporting_data']
     end
   end
 end
