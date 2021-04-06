@@ -6,7 +6,7 @@ class Sonic < Package
   version '0.2.0'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/espeak-ng/sonic/archive/refs/tags/release-0.2.0.tar.gz'
+  source_url 'https://github.com/espeak-ng/sonic/archive/release-0.2.0.tar.gz'
   source_sha256 'c7827ce576838467590ffa1f935fbe1049e896dfed6c515cf569ad3779c24085'
 
   def self.patch

@@ -6,7 +6,7 @@ class Pcaudiolib < Package
   version '1.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/espeak-ng/pcaudiolib/archive/refs/tags/1.1.tar.gz'
+  source_url 'https://github.com/espeak-ng/pcaudiolib/archive/1.1.tar.gz'
   source_sha256 '699a5a347b1e12dc5b122e192e19f4db01621826bf41b9ebefb1cbc63ae2180b'
 
   depends_on 'alsa_lib'

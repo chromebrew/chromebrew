@@ -6,7 +6,7 @@ class Jasper < Package
   version '2.0.28'
   license 'JasPer-2.0'
   compatibility 'all'
-  source_url 'https://github.com/jasper-software/jasper/archive/refs/tags/version-2.0.28.tar.gz'
+  source_url 'https://github.com/jasper-software/jasper/archive/version-2.0.28.tar.gz'
   source_sha256 '6b4e5f682be0ab1a5acb0eeb6bf41d6ce17a658bb8e2dbda95de40100939cc88'
 
   binary_url({

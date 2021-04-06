@@ -8,7 +8,7 @@ class Shaderc < Package
   version '2020.5'
   license 'Apache'
   compatibility 'all'
-  source_url "https://github.com/google/shaderc/archive/refs/tags/v#{version}.tar.gz"
+  source_url "https://github.com/google/shaderc/archive/v#{version}.tar.gz"
   source_sha256 'e96d8cb208b796cecb9e6cce437c7d1116343158ef3ea26277eb13b62cf56834'
 
   binary_url({

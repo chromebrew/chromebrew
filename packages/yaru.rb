@@ -7,7 +7,7 @@ class Yaru < Package
   version @_ver
   license 'GPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
-  source_url "https://github.com/ubuntu/yaru/archive/refs/tags/#{@_ver}.tar.gz"
+  source_url "https://github.com/ubuntu/yaru/archive/#{@_ver}.tar.gz"
   source_sha256 '8cbbb1fcc7fa1e46e48d870cc1f941069e8213ac53200001aa9548ad79086836'
 
   binary_url({

@@ -9,7 +9,7 @@ class Libnfs < Package
   version '4.0.0'
   license 'GPLv2 & BSD'
   compatibility 'all'
-  source_url "https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-#{version}.tar.gz"
+  source_url "https://github.com/sahlberg/libnfs/archive/libnfs-#{version}.tar.gz"
   source_sha256 '6ee77e9fe220e2d3e3b1f53cfea04fb319828cc7dbb97dd9df09e46e901d797d'
 
   binary_url({

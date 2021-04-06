@@ -6,7 +6,7 @@ class Liburing < Package
   version '2.0'
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/axboe/liburing/archive/refs/tags/liburing-#{version}.tar.gz"
+  source_url "https://github.com/axboe/liburing/archive/liburing-#{version}.tar.gz"
   source_sha256 'ca069ecc4aa1baf1031bd772e4e97f7e26dfb6bb733d79f70159589b22ab4dc0'
 
   binary_url({

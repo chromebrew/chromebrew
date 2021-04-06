@@ -9,7 +9,7 @@ class Mujs < Package
   version '1.1.0'
   license 'ISC'
   compatibility 'all'
-  source_url "https://github.com/ccxvii/mujs/archive/refs/tags/#{version}.tar.gz"
+  source_url "https://github.com/ccxvii/mujs/archive/#{version}.tar.gz"
   source_sha256 '8e43a38fdea75f036a9f3213e346a6c304206b4e3d00886564fb6bf70c1c2807'
 
   binary_url({

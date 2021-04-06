@@ -6,7 +6,7 @@ class Popt < Package
   version '1.18'
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/rpm-software-management/popt/archive/refs/tags/popt-#{version}-release.tar.gz"
+  source_url "https://github.com/rpm-software-management/popt/archive/popt-#{version}-release.tar.gz"
   source_sha256 '36245242c59b5a33698388e415a3e1efa2d48fc4aead91aeb2810b4c0744f4e3'
 
   binary_url({

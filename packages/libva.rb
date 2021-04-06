@@ -7,7 +7,7 @@ class Libva < Package
   version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/intel/libva/archive/refs/tags/#{@_ver}.tar.gz"
+  source_url "https://github.com/intel/libva/archive/#{@_ver}.tar.gz"
   source_sha256 'ee2bd79bad5e2404143f089360685f5da63a32dd551b54ccd61d2d49c041178a'
 
   binary_url({
