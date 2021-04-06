@@ -5,6 +5,7 @@ class Libxcomposite < Package
   homepage 'http://www.x.org'
   @_ver = '0.4.5'
   version @_ver
+  license 'custom'
   compatibility 'all'
   source_url "https://www.x.org/archive/individual/lib/libXcomposite-#{@_ver}.tar.gz"
   source_sha256 '581c7fc0f41a99af38b1c36b9be64bc13ef3f60091cd3f01105bbc7c01617d6c'
@@ -33,7 +34,7 @@ class Libxcomposite < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-  
+
   def self.check
     system 'make', 'check'
   end

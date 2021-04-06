@@ -4,6 +4,7 @@ class Gl2ps < Package
   description 'An OpenGL to PostScript printing library'
   homepage 'http://geuz.org/gl2ps/'
   version '1.4.2'
+  license 'LGPL-2'
   compatibility 'all'
   source_url 'http://geuz.org/gl2ps/src/gl2ps-1.4.2.tgz'
   source_sha256 '8d1c00c1018f96b4b97655482e57dcb0ce42ae2f1d349cd6d4191e7848d9ffe9'

@@ -1,9 +1,10 @@
 require 'package'
 
 class Hget < Package
-  description 'interruptable, resumable download accelerator'
+  description 'Interruptable, resumable download accelerator'
   homepage 'https://github.com/huydx/hget'
   version '8cff5f7'
+  license 'MIT'
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'

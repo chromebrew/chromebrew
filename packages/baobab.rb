@@ -4,6 +4,7 @@ class Baobab < Package
   description 'Disk Usage Analyzer (also known as baobab) scans folders, devices or remote locations and and reports on the disk space consumed by each element.'
   homepage 'https://wiki.gnome.org/Apps/DiskUsageAnalyzer'
   version '3.35.1'
+  license 'GPL-2+ and FDL-1.1+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/baobab/3.35/baobab-3.35.1.tar.xz'
   source_sha256 '1b6b5e533802a9293bd061cd0a49049664c310f814e39e40b310ae954342fe83'

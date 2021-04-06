@@ -4,6 +4,7 @@ class Openvr < Package
   description 'OpenVR is an API and runtime that allows access to VR hardware from multiple vendors without requiring that applications have specific knowledge of the hardware they are targeting.'
   homepage 'https://github.com/ValveSoftware/openvr'
   version '1.12.5'
+  license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/ValveSoftware/openvr/archive/v1.12.5.tar.gz'
   source_sha256 'f3cdbaa946688553638e6d65978f156311c9b08825316198d925f5eade6cfeb7'

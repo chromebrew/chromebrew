@@ -4,6 +4,7 @@ class Hyphen < Package
   description 'hyphenation library to use converted TeX hyphenation patterns'
   homepage 'https://github.com/hunspell/hyphen'
   version '73dd29'
+  license 'GPL-2, LGPL-2.1 and MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/hunspell/hyphen/archive/73dd2967c8e1e4f6d7334ee9e539a323d6e66cbd.tar.gz'
   source_sha256 'd174ba8a2653e79ebd135fd2241fe87d511f9510a31e82bdf13ec21192852595'

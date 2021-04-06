@@ -4,6 +4,7 @@ class Perl_io_socket_ssl < Package
   description 'IO::Socket::SSL - SSL sockets with IO::Socket interface'
   homepage 'https://metacpan.org/pod/IO::Socket::SSL'
   version '2.068'
+  license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.068.tar.gz'
   source_sha256 '4420fc0056f1827b4dd1245eacca0da56e2182b4ef6fc078f107dc43c3fb8ff9'

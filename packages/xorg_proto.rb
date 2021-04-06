@@ -4,6 +4,7 @@ class Xorg_proto < Package
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/'
   version '2020.1-1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2020.1.tar.bz2'
   source_sha256 '54a153f139035a376c075845dd058049177212da94d7a9707cf9468367b699d2'
@@ -21,7 +22,7 @@ class Xorg_proto < Package
       x86_64: '1ab0f6074972bafa33e78e945958b70c7886c0abff146bc8a020bfc499c7e14f',
   })
 
-  depends_on 'llvm' => ':build'
+  depends_on 'llvm' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

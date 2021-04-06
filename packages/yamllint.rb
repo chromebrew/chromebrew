@@ -4,6 +4,7 @@ class Yamllint < Package
   description 'A linter for YAML files.'
   homepage 'https://github.com/adrienverge/yamllint'
   version '1.11.1'
+  license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/adrienverge/yamllint/archive/v1.11.1.tar.gz'
   source_sha256 '56221b7c0a50b1619e491eb157624a5d1b160c1a4f019d64f117268f42fe4ca4'

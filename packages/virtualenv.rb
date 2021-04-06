@@ -4,6 +4,7 @@ class Virtualenv < Package
   description 'Virtual Python Environment builder'
   homepage 'http://virtualenv.pypa.io/'
   version '16.0.0'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/virtualenv/archive/16.0.0.tar.gz'
   source_sha256 '5a597f845cf785d46c3ae39d6cb18ef0b6af4ca366da40682364f78f7fe00d22'

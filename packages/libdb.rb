@@ -4,6 +4,7 @@ class Libdb < Package
   description 'Berkeley DB is a family of embedded key-value database libraries providing scalable high-performance data management services to applications.'
   homepage 'https://github.com/berkeleydb/libdb'
   version '5.3.28'
+  license 'ASM, BSD, CDDL, custom and SPL.'
   compatibility 'all'
   source_url 'https://github.com/berkeleydb/libdb/releases/download/v5.3.28/db-5.3.28.tar.gz'
   source_sha256 'e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628'

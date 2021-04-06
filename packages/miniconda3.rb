@@ -4,6 +4,7 @@ class Miniconda3 < Package
   description 'Anaconda is the world\'s most popular Python data science platform.'
   homepage 'https://conda.io/miniconda.html'
   version '4.5.11'
+  license 'BSD-3'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686', 'x86_64'

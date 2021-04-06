@@ -4,6 +4,7 @@ class Haveged < Package
   description 'A simple entropy daemon based on the HAVEGE algorithm, significantly faster than /dev/urandom.'
   homepage 'https://issihosts.com/haveged/'
   version '1.9.14'
+  license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/jirka-h/haveged/archive/v1.9.14.tar.gz'
   source_sha256 '938cb494bcad7e4f24e61eb50fab4aa0acbc3240c80f3ad5c6cf7e6e922618c3'

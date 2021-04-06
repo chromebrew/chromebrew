@@ -5,6 +5,7 @@ class Wayland < Package
   homepage 'https://wayland.freedesktop.org'
   @_ver = '1.19.0'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url "https://wayland.freedesktop.org/releases/wayland-#{@_ver}.tar.xz"
   source_sha256 'baccd902300d354581cd5ad3cc49daa4921d55fb416a5883e218750fef166d15'

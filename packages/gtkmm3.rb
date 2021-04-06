@@ -4,6 +4,7 @@ class Gtkmm3 < Package
   description 'The Gtkmm3 package provides a C++ interface to GTK+ 3.'
   homepage 'https://www.gtkmm.org/'
   version '3.24.4'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gtkmm/3.24/gtkmm-3.24.4.tar.xz'
   source_sha256 '9beb71c3e90cfcfb790396b51e3f5e7169966751efd4f3ef9697114be3be6743'

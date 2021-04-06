@@ -4,6 +4,7 @@ class Mutagen < Package
   description 'Mutagen provides real-time file synchronization and flexible network forwarding, extending the reach of your existing development tools to cloud-based containers and infrastructure.'
   homepage 'https://mutagen.io/'
   version '0.11.5'
+  license 'GPL-2'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'

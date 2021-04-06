@@ -4,6 +4,7 @@ class Sass < Package
   description 'A Dart implementation of Sass. Sass makes CSS fun again.'
   homepage 'https://sass-lang.com/'
   version '1.32.8'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sass/dart-sass/archive/1.32.8.tar.gz'
   source_sha256 '1b7679f55bd621af878265ce8b07e3de404779b5f390b6f74ef76c9bacf292b2'

@@ -4,6 +4,7 @@ class Sublime_text < Package
   description 'A sophisticated text editor for code, markup and prose.'
   homepage 'https://www.sublimetext.com/'
   version '3.2.2'
+  license '' # Can't find license
   compatibility 'i686,x86_64'
   case ARCH
   when 'x86_64'

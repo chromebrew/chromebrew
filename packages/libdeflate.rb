@@ -5,6 +5,7 @@ class Libdeflate < Package
   homepage 'https://github.com/ebiggers/libdeflate/'
   version '1.7-1'
   compatibility 'all'
+  license 'MIT'
   source_url 'https://github.com/ebiggers/libdeflate/archive/v1.7.tar.gz'
   source_sha256 'a5e6a0a9ab69f40f0f59332106532ca76918977a974e7004977a9498e3f11350'
 

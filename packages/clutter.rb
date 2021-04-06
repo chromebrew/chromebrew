@@ -4,6 +4,7 @@ class Clutter < Package
   description 'OpenGL based interactive canvas library'
   homepage 'https://www.clutter-project.org'
   version '1.26.4'
+  license 'LGPL-2.1+ and FDL-1.1+'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/clutter/1.26/clutter-1.26.4.tar.xz'
   source_sha256 '8b48fac159843f556d0a6be3dbfc6b083fc6d9c58a20a49a6b4919ab4263c4e6'

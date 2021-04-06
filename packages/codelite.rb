@@ -4,6 +4,7 @@ class Codelite < Package
   description 'CodeLite is an open source, free, cross platform IDE specialized in C, C++, PHP and JavaScript'
   homepage 'https://codelite.org/'
   version '13.0-1'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/eranif/codelite/archive/13.0.tar.gz'
   source_sha256 'f2653fa42d6214999718236998cb223e6de00a498c0cfde795e901be693fb9ac'

@@ -4,6 +4,7 @@ class Cras < Package
   description 'ChromeOS Audio Server'
   homepage 'https://www.chromium.org/chromium-os/chromiumos-design-docs/cras-chromeos-audio-server'
   version 'stabilize-13654.B'
+  license 'BSD-Google'
   compatibility 'all'
   source_url "https://chromium.googlesource.com/chromiumos/third_party/adhd/+/refs/heads/#{version}/cras/README.md"
   source_sha256 '355514e78ba4d1736f53c427c329bdfad327afc052a1b78d543cb4840d199b4e'
@@ -28,8 +29,8 @@ class Cras < Package
     depends_on 'speexdsp'
     depends_on 'sbc'
     depends_on 'dbus'
-    depends_on 'rust' => ':build'
-    depends_on 'llvm' => ':build'
+    depends_on 'rust' => :build
+    depends_on 'llvm' => :build
     depends_on 'gtest' => :build
     depends_on 'eudev'
 

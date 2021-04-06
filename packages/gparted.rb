@@ -5,6 +5,7 @@ class Gparted < Package
   homepage 'https://gparted.org/'
   @_ver = '1.2.0'
   version @_ver + '-1'
+  license 'GPL-2+ and FDL-1.2+'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{@_ver}/gparted-#{@_ver}.tar.gz"
   source_sha256 '6c90715d254d7a7ec0208b29007b64160dd9fb7df4c4aa7f8ec2c9d23114c719'
@@ -24,9 +25,9 @@ class Gparted < Package
 
   depends_on 'parted'
   depends_on 'gtkmm3'
-  depends_on 'intltool' => ':build'
-  depends_on 'itstool' => ':build'
-  depends_on 'yelp_tools' => ':build'
+  depends_on 'intltool' => :build
+  depends_on 'itstool' => :build
+  depends_on 'yelp_tools' => :build
   depends_on 'xfsprogs'
   depends_on 'exfatprogs'
   depends_on 'f2fs_tools'

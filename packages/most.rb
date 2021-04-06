@@ -4,6 +4,7 @@ class Most < Package
   description 'MOST is a powerful paging program for Unix, VMS, MSDOS, and win32 systems.'
   homepage 'http://www.jedsoft.org/most/'
   version '5.1.0'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://www.jedsoft.org/releases/most/most-5.1.0.tar.gz'
   source_sha256 'db805d1ffad3e85890802061ac8c90e3c89e25afb184a794e03715a3ed190501'

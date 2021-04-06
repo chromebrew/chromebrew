@@ -3,67 +3,67 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1i'
-  version @_ver + '-1'
+  @_ver = '1.1.1k'
+  version @_ver
+  license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 'e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242'
+  source_sha256 '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1i-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1i-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1i-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1i-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '6b4db90acb22c772dcb70d5688033b26230d3e10f2037ee56422f38b8fbd0029',
-      armv7l: '6b4db90acb22c772dcb70d5688033b26230d3e10f2037ee56422f38b8fbd0029',
-        i686: '22aae2e468cab25f6258c07cce8afe586b906297d2af602762516c5fd1cd93b5',
-      x86_64: 'c5d19a3cab5f38898f4875ca2be57c3a8fb23c73726dd14e29f7bed02d252eb0',
+  binary_sha256({
+    aarch64: '4b5a6ff1bbd03a7adf09acebe3b7a928de9a8520e260360f9f4fac8e7c83e903',
+     armv7l: '4b5a6ff1bbd03a7adf09acebe3b7a928de9a8520e260360f9f4fac8e7c83e903',
+       i686: '84d388677881fa56ccfa2dd7bd05ff8ef8ddcccebf30d60e7d13194e18c64e51',
+     x86_64: 'fbcbe9955bd9b8cb9de3f7b2d5c77a4fcd9d8e5704afd192ad597871162a690d'
   })
-
 
   depends_on 'ccache' => :build
 
   case ARCH
-  when 'aarch64','armv7l'
-    @ARCH_C_FLAGS = '-fPIC -march=armv7-a -mfloat-abi=hard'
-    @ARCH_CXX_FLAGS = '-fPIC -march=armv7-a -mfloat-abi=hard'
-    OPENSSL_CONFIGURE_TARGET = 'linux-generic32'
+  when 'aarch64', 'armv7l'
+    @arch_c_flags = '-fPIC -march=armv7-a -mfloat-abi=hard'
+    @arch_cxx_flags = '-fPIC -march=armv7-a -mfloat-abi=hard'
+    @openssl_configure_target = 'linux-generic32'
   when 'i686'
-    @ARCH_C_FLAGS = '-fPIC'
-    @ARCH_CXX_FLAGS = '-fPIC'
-    OPENSSL_CONFIGURE_TARGET = 'linux-x86'
+    @arch_c_flags = '-fPIC'
+    @arch_cxx_flags = '-fPIC'
+    @openssl_configure_target = 'linux-x86'
   when 'x86_64'
-    @ARCH_C_FLAGS = '-fPIC'
-    @ARCH_CXX_FLAGS = '-fPIC'
-    OPENSSL_CONFIGURE_TARGET = 'linux-x86_64'
+    @arch_c_flags = '-fPIC'
+    @arch_cxx_flags = '-fPIC'
+    @openssl_configure_target = 'linux-x86_64'
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=auto"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=auto"
+  @ARCH_LDFLAGS = '-flto=auto'
+  @ARCH_C_LTO_FLAGS = "#{@arch_c_flags} -flto=auto"
+  @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags} -flto=auto"
 
   def self.build
     # This gives you the list of OpenSSL configure targets
-    system "./Configure LIST"
-    system "env  PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
-    CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
-    ./Configure --prefix=#{CREW_PREFIX} \
-    --libdir=#{CREW_LIB_PREFIX} \
-    --openssldir=#{CREW_PREFIX}/etc/ssl \
-    #{OPENSSL_CONFIGURE_TARGET}"
-    system "make"
+    system './Configure LIST'
+    system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
+      CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
+      LDFLAGS=\"#{@ARCH_LDFLAGS}\" \
+      ./Configure --prefix=#{CREW_PREFIX} \
+      --libdir=#{CREW_LIB_PREFIX} \
+      --openssldir=#{CREW_PREFIX}/etc/ssl \
+      #{@openssl_configure_target}"
+    system 'make'
   end
-  
 
   def self.check
-    system "make test"
+    system 'make test'
   end
-  
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install_sw install_ssldirs"
     # For Libressl Compatibility
-    #FileUtils.ln_s "#{CREW_LIB_PREFIX}/libssl.so", "#{CREW_DEST_LIB_PREFIX}/libssl.so.48"
-    #FileUtils.ln_s "#{CREW_LIB_PREFIX}/libcrypto.so", "#{CREW_DEST_LIB_PREFIX}/libcrypto.so.46"
+    # FileUtils.ln_s "#{CREW_LIB_PREFIX}/libssl.so", "#{CREW_DEST_LIB_PREFIX}/libssl.so.48"
+    # FileUtils.ln_s "#{CREW_LIB_PREFIX}/libcrypto.so", "#{CREW_DEST_LIB_PREFIX}/libcrypto.so.46"
   end
 end

@@ -5,6 +5,7 @@ class Libunbound < Package
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
   @_ver = '1.13.0'
   version @_ver
+  license 'BSD and GPL-2'
   compatibility 'all'
   source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{@_ver}.tar.gz"
   source_sha256 'a954043a95b0326ca4037e50dace1f3a207a0a19e9a4a22f4c6718fc623db2a1'
@@ -30,11 +31,11 @@ class Libunbound < Package
     --with-pic"
     system "make"
   end
-  
+
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
-  
+
   def self.check
     system 'make', 'test'
   end

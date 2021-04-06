@@ -5,6 +5,7 @@ class Atom < Package
   homepage 'https://atom.io/'
   @_ver = '1.55.0'
   version @_ver
+  license 'MIT'
   compatibility 'x86_64'
 
   source_url "https://github.com/atom/atom/releases/download/v#{@_ver}/atom-amd64.deb"

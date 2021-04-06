@@ -4,6 +4,7 @@ class Xorg_wacom_driver < Package
   description 'The Xorg Wacom Driver package contains the X.Org X11 driver and SDK for Wacom and Wacom-like tablets. It is not required to use a Wacom tablet, the xf86-input-evdev driver can handle these devices without problems.'
   homepage 'https://www.x.org'
   version '0.36.0'
+  license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/linuxwacom/xf86-input-wacom-0.36.0.tar.bz2'
   source_sha256 'eae7c5d2872b1433c8d679bb42b00213403eb2a0544c514f4df2b586284c23f6'

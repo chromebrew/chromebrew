@@ -4,6 +4,7 @@ class Remmina < Package
   description 'The GTK Remmina Remote Desktop Client'
   homepage 'https://remmina.org/'
   version '1.2.30'
+  license 'GPL-2+-with-openssl-exception'
   compatibility 'all'
   source_url 'https://github.com/FreeRDP/Remmina/archive/v1.2.30.tar.gz'
   source_sha256 'cf9528709fe531830f949bc4adcc806b86606942e7ee552fd6177fcd81d4d33f'

@@ -4,6 +4,7 @@ class Tox < Package
   description 'tox aims to automate and standardize testing in Python.'
   homepage 'https://tox.readthedocs.io/en/latest/'
   version '3.4.0'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/tox-dev/tox/archive/3.4.0.tar.gz'
   source_sha256 '01171065c1628b5549c370a160979a04fef1de32aa9e39203aaa998057c03d11'

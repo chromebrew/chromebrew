@@ -5,6 +5,7 @@ class Libsdl2 < Package
   homepage 'http://www.libsdl.org'
   @_ver = '2.0.14'
   version @_ver
+  license 'ZLIB'
   compatibility 'all'
   source_url "https://www.libsdl.org/release/SDL2-#{@_ver}.tar.gz"
   source_sha256 'd8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc'
