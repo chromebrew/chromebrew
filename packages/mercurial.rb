@@ -21,4 +21,12 @@ class Mercurial < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
+  
+  def self.postinstall
+    puts
+    puts "To begin using mercurial, you'll need to configure it.".lightblue
+    puts "Run `hg debuginstall` and address any issues that it reports.".lightblue
+    puts "Mercurial's wiki is available at https://www.mercurial-scm.org/wiki/".lightblue
+    puts
+  end
 end
