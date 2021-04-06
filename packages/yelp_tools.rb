@@ -24,7 +24,7 @@ class Yelp_tools < Package
 
   depends_on 'yelp_xsl'
   depends_on 'libxslt'
-  depends_on 'lxml'
+  depends_on 'py3_lxml'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
