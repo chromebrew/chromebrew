@@ -13,7 +13,7 @@ class Gcalculator < Package
   source_url "#{@_url}.tar.xz"
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 
-  depends_on 'setuptools' => :build
+  depends_on 'py3_setuptools' => :build
   depends_on 'gtk3'
   depends_on 'gtksourceview'
   depends_on 'itstool'
