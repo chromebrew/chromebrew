@@ -22,7 +22,7 @@ class Pax_utils < Package
       x86_64: '836d8627d96ed61608cb7bee423db753fc00c67600c62386e1df98d4529c35c9',
   })
 
-  depends_on 'pyelftools'
+  depends_on 'py3_pyelftools'
   depends_on 'libcap' => :build
   depends_on 'libseccomp' => :build
 
