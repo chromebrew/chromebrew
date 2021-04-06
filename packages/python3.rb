@@ -5,7 +5,7 @@ class Python3 < Package
   homepage 'https://www.python.org/'
   @_ver = '3.9.2'
   version @_ver
-  license 'PSF-2.0'
+  license 'PSF-2'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
   source_sha256 '3c2034c54f811448f516668dce09d24008a0716c3a794dd8639b5388cbde247d'
@@ -102,14 +102,5 @@ class Python3 < Package
       FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
       system "cd #{CREW_DEST_LIB_PREFIX} && ln -s ../lib/libpython*.so* ."
     end
-  end
-
-  def self.postinstall
-    puts
-    puts 'Upgrading pip...'.lightblue
-    system "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} python3 get-pip.py -U"
-    puts 'Setting Python3 as default python...'.lightblue
-    FileUtils.ln_sf "#{CREW_PREFIX}/bin/python3", "#{CREW_PREFIX}/bin/python"
-    FileUtils.ln_sf "#{CREW_PREFIX}/bin/pip3", "#{CREW_PREFIX}/bin/pip"
   end
 end
