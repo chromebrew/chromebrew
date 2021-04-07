@@ -50,6 +50,9 @@ class Libheif < Package
   end
 
   def self.postinstall
-    system 'gdk-pixbuf-query-loaders --update-cache'
+    if File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
+      system 'gdk-pixbuf-query-loaders',
+             '--update-cache'
+    end
   end
 end
