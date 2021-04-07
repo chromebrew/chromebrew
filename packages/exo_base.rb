@@ -39,7 +39,7 @@ class Exo_base < Package
   end
 
   def self.postinstall
-      system "echo '#{@env}' >> #{HOME}/.bashrc" unless `grep -c '#{@env.lines.first.chomp}' #{HOME}/.bashrc`.to_i > 0
+      system "echo '#{@env}' >> #{HOME}/.bashrc" unless `grep -c '#{@env.lines.first.chomp}' #{HOME}/.bashrc`.to_i.positive?
 
       puts <<~EOT.lightblue
 
