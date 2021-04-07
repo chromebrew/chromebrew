@@ -8,7 +8,7 @@ class Nano < Package
   license 'GPL-3'
   compatibility 'all'
   source_url "https://nano-editor.org/dist/v5/nano-#{@_ver}.tar.xz"
-  source_sha256 'fce183e4a7034d07d219c79aa2f579005d1fd49f156db6e50f53543a87637a32'
+  source_sha256 '760d7059e0881ca0ee7e2a33b09d999ec456ff7204df86bee58eb6f523ee8b09'
 
   depends_on 'xdg_base'
 
