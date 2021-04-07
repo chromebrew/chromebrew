@@ -10,15 +10,23 @@ class Depot_tools < Package
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
-  binary_url ({
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/depot_tools-da768751-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/depot_tools-da768751-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/depot_tools-da768751-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/depot_tools-da768751-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
+    aarch64: '312855d9469f02e0cd5e58743c894ff33f4025e51b86be2a434257e9f0113198',
+     armv7l: '312855d9469f02e0cd5e58743c894ff33f4025e51b86be2a434257e9f0113198',
+       i686: 'e785879988280df835d5ef3311a5c959443cf92f60c5e6d06ed97240b1f5a0a7',
+     x86_64: '31ac1d57078cb3d9dd42c8473df0e4024629ed0bd293f962a404b62e9c9fa584'
   })
 
   depends_on 'xdg_base'
 
   def self.install
-    system "git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git --depth 10"
+    system 'git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git --depth 10'
     Dir.chdir 'depot_tools' do
       system "git checkout #{@_ver}"
       FileUtils.rm_rf 'man/src/'
@@ -28,7 +36,7 @@ class Depot_tools < Package
       FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/"
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/doc/depot_tools/"
       FileUtils.mv Dir.glob('man/html/*.html'), "#{CREW_DEST_PREFIX}/share/doc/depot_tools/"
-      FileUtils.mv Dir.glob('man/*'), "#{CREW_DEST_MAN_PREFIX}"
+      FileUtils.mv Dir.glob('man/*'), CREW_DEST_MAN_PREFIX
       FileUtils.rm_r 'man/'
       FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/depot_tools"
       FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/.vpython-root"

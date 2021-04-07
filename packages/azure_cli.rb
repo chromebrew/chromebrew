@@ -5,11 +5,20 @@ class Azure_cli < Package
   homepage 'https://github.com/Azure/azure-cli'
   version '2.21.0'
   license 'MIT'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   case ARCH
   when 'i686', 'x86_64'
     source_url 'https://github.com/Azure/azure-cli/archive/refs/tags/azure-cli-2.21.0.tar.gz'
     source_sha256 'bbe4a1f85418d239444717f2c9706a87f81fd2515bb0bb4b4e48548fd3e08caa'
+
+    binary_url({
+      i686: 'https://dl.bintray.com/chromebrew/chromebrew/azure_cli-2.21.0-chromeos-i686.tar.xz',
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/azure_cli-2.21.0-chromeos-x86_64.tar.xz'
+    })
+    binary_sha256({
+      i686: '222e74caa74df6ab129f33f90aea86e65d000ebc4f5d78cb7f3ec2f98421ed3c',
+    x86_64: '073b64f7104e298205afe623588c95f2e0cb17e664e53ff46042c9bd4076d2c8'
+    })
   end
 
   def self.install
@@ -17,10 +26,10 @@ class Azure_cli < Package
     system "chmod +x #{CREW_DEST_PREFIX}/bin/az"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @env = <<~EOF
+    @azureenv = <<~AZUREEOF
       # Microsoft Azure CLI bash completion
       source #{CREW_PREFIX}/share/azure-cli/az.completion
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @env)
+    AZUREEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azureenv)
   end
 end
