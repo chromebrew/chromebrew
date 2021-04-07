@@ -4,16 +4,29 @@ class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
   @_ver = '1.16.3'
-  version "#{@_ver}"
+  version @_ver
   license 'BSD'
   compatibility 'all'
   source_url "https://dl.google.com/go/go#{@_ver}.src.tar.gz"
   source_sha256 'b298d29de9236ca47a023e382313bcc2d2eed31dfa706b60a04103ce83a71a25'
 
-  depends_on 'perl' => :build
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16.3-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16.3-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16.3-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '2f6ab6029594d5563bd1b020ff0982d960a8d569e0081d1a36f4972a436e2e1b',
+     armv7l: '2f6ab6029594d5563bd1b020ff0982d960a8d569e0081d1a36f4972a436e2e1b',
+       i686: '13df993fe2af5ab01b1d4f28808dab883107ad62fb4dd566970b52d1decd26aa',
+     x86_64: 'f4676ad5ab1f1c83e73e4dfd1b94794a7630e9d1880e854ea81da9ffe912cd8f'
+  })
 
   @env ||= ''
 
+  depends_on 'perl' => :build
+  
   # Tests require perl
   # go is required to build versions of go > 1.4
   case ARCH
