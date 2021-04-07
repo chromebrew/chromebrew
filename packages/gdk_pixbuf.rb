@@ -25,10 +25,10 @@ class Gdk_pixbuf < Package
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
   depends_on 'jasper' => :build
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libtiff'
-  depends_on 'libwebp'  => :build
+  depends_on 'libjpeg' => :build #Actually runtime
+  depends_on 'libpng' => :build #Actually runtime
+  depends_on 'libtiff' => :build #Actually runtime
+  depends_on 'libwebp' => :build
   depends_on 'pango' => :build
   depends_on 'six' => :build
 
