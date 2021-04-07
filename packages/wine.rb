@@ -99,34 +99,18 @@ class Wine < Package
   end
 
   def self.remove
-    # If legacy location is being used
-    if Dir.exist? "#{HOME}/.wine"
-      puts
-      print "Would you like to remove #{HOME}/.wine? [y/N] "
-      response = $stdin.getc
-      case response
-      when 'y', 'Y'
-        FileUtils.rm_rf "#{HOME}/.wine"
-        puts "#{HOME}/.wine removed.".lightred
-      else
-        puts "#{HOME}/.wine saved.".lightgreen
-      end
-      puts
-    end
-    
-    # If current location is being used
-    if Dir.exist? "#{@xdg_config_home}/.wine"
-      puts
-      print "Would you like to remove #{@xdg_config_home}/.wine? [y/N] "
-      response = $stdin.getc
-      case response
-      when 'y', 'Y'
-        FileUtils.rm_rf "#{@xdg_config_home}/.wine"
-        puts "#{@xdg_config_home}/.wine removed.".lightred
-      else
-        puts "#{@xdg_config_home}/.wine saved.".lightgreen
-      end
-      puts
-    end
+    config_dirs = ["#{HOME}/.wine", "#{@xdg_config_home}/.wine"]
+    config_dirs.each { |config_dir|                                                                                                                                                           
+      if Dir.exists? config_dir                                                                                                                                                               
+        print "\nWould you like to remove #{config_dir}? [y/N] "                                                                                                                                
+        case STDIN.getc                                                                                                                                                                       
+        when "y", "Y"                                                                                                                                                                         
+          FileUtils.rm_rf config_dir                                                                                                                                                          
+          puts "#{config_dir} removed.".lightred                                                                                                                                              
+        else                                                                                                                                                                                  
+          puts "#{config_dir} saved.".lightgreen                                                                                                                                              
+        end                                                                                                                                                                                   
+      end                                                                                                                                                                                     
+    }
   end
 end
