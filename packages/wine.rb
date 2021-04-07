@@ -41,7 +41,8 @@ class Wine < Package
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
-  @xdg_config_home = empty?(ENV['XDG_CONFIG_HOME']) ? "#{CREW_PREFIX}/.config" : ENV['XDG_CONFIG_HOME']
+  @xdg_config_home = ENV['XDG_CONFIG_HOME']
+  @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build
     case ARCH
