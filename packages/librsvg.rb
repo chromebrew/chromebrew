@@ -70,4 +70,5 @@ class Librsvg < Package
       system 'gdk-pixbuf-query-loaders',
              '--update-cache'
     end
+  end
 end
