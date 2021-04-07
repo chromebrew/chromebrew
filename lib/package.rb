@@ -1,7 +1,7 @@
 require 'package_helpers'
 
 class Package
-  property :description, :homepage, :version, :license, :compatibility, :binary_url, :binary_sha512, :binary_sha256, :source_url, :source_sha512, :source_sha256, :source_md5, :is_fake
+  property :description, :homepage, :version, :license, :compatibility, :binary_url, :binary_sha512, :binary_sha256, :source_url, :source_sha512, :source_sha256, :is_fake
 
   class << self
     attr_reader :is_fake
