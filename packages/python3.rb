@@ -3,33 +3,41 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.9.2'
+  @_ver = '3.9.4'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '3c2034c54f811448f516668dce09d24008a0716c3a794dd8639b5388cbde247d'
+  source_sha256 '4b0e6644a76f8df864ae24ac500a51bbf68bd098f6a173e27d3b61cdca9aa134'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '83b292381a6fcda63f3c8c6c4b682694be673b42ed14eb1482e5cfe6f1c0f835',
-     armv7l: '83b292381a6fcda63f3c8c6c4b682694be673b42ed14eb1482e5cfe6f1c0f835',
-       i686: '8f3ba22ea8824a958aafe9127e8fa078406323a6d9785e2986d3dc4ac45f671a',
-     x86_64: 'd3195034ad9d26e9e4c0c08c35bff6f551cc5661b970284c96deb81f32d34fb8'
+    aarch64: 'fe4fde3f9738ac76096dfdc13ff6931543e2f612035421e294f87d2bfc09773c',
+     armv7l: 'fe4fde3f9738ac76096dfdc13ff6931543e2f612035421e294f87d2bfc09773c',
+       i686: 'a9e7b61911679cda55f65cf5ca29076ee2ac4540c8dd7bda5322df66d4d6e4bd',
+     x86_64: 'cd3a63250e76cd887a620df69f37d349d4cea0d39e3d8bc2ceef9400a40befbb'
   })
 
   depends_on 'bz2'
-  depends_on 'xzutils'
+  depends_on 'gdbm'
+  depends_on 'glibc'
+  depends_on 'krb5' => :build
+  depends_on 'libdb'
+  depends_on 'libffi'
+  depends_on 'libtirpc' => :build
+  depends_on 'ncurses'
+  depends_on 'openssl'  
+  depends_on 'readline'
   depends_on 'sqlite'
-  depends_on 'krb5'
-  depends_on 'libtirpc'
-  depends_on 'tk' => :build # yes this creates a circular dependency.
-  depends_on 'gdbm' => :build
+  # depends_on 'tcl' # Needed for tkinter support
+  # depends_on 'tk'  # Needed for tkinter support
+  depends_on 'xzutils'
+  depends_on 'zlibpkg'
 
   def self.preinstall
     # Fix ImportError: cannot import name 'PackageFinder'.
