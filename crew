@@ -8,7 +8,6 @@ require 'find'
 require 'net/http'
 require 'uri'
 require 'digest/sha2'
-require 'digest/md5'
 require 'json'
 require 'fileutils'
 require_relative 'lib/const'
@@ -538,9 +537,6 @@ def download
   when @pkg.source_sha256
     csum_type = 'SHA256'
     csum = @pkg.source_sha256
-  when @pkg.source_md5
-    csum_type = 'MD5'
-    csum = @pkg.source_md5
   end
   
   case !source
