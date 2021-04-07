@@ -25,9 +25,9 @@ class Gdk_pixbuf < Package
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
   depends_on 'jasper' => :build
-  depends_on 'libjpeg' => :build #Actually runtime
-  depends_on 'libpng' => :build #Actually runtime
-  depends_on 'libtiff' => :build #Actually runtime
+  depends_on 'libjpeg'
+  depends_on 'libpng'
+  depends_on 'libtiff'
   depends_on 'libwebp' => :build
   depends_on 'pango' => :build
   depends_on 'six' => :build
@@ -53,9 +53,9 @@ class Gdk_pixbuf < Package
   end
 
   def self.postinstall
-    ENV['GDK_PIXBUF_MODULEDIR'] = "#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders"
-    ENV['GDK_PIXBUF_MODULE_FILE'] = "#{ENV['GDK_PIXBUF_MODULEDIR']}.cache"
-    system 'gdk-pixbuf-query-loaders --update-cache'
+    system 'env GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders \
+      GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache \
+      gdk-pixbuf-query-loaders --update-cache'
     gdk_pixbuf_in_bashrc = `grep -c "GDK_PIXBUF_MODULEDIR" ~/.bashrc || true`
     unless gdk_pixbuf_in_bashrc.to_i.positive?
       puts 'Putting GDK_PIXBUF code in ~/.bashrc'.lightblue

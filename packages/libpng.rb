@@ -45,11 +45,6 @@ class Libpng < Package
   end
 
   def self.postinstall
-    # *.png: Unrecognized image file format (gdk-pixbuf-error-quark, 3)
     system 'update-mime-database', "#{CREW_PREFIX}/share/mime"
-    if File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-      system 'gdk-pixbuf-query-loaders',
-             '--update-cache'
-    end
   end
 end
