@@ -10,6 +10,19 @@ class Fontconfig < Package
   source_url "https://github.com/freedesktop/fontconfig/archive/#{@_ver}.tar.gz"
   source_sha256 'f8452c78d1a12f6966455b0d584f89553b13e970b40644c3650f690ec0b3b4fe'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fontconfig-2.13.93-2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '0047a707a1fc8531fa6bfc6fa45f2aead43ece0e65d1eaad094e4e98f3e43ec0',
+     armv7l: '0047a707a1fc8531fa6bfc6fa45f2aead43ece0e65d1eaad094e4e98f3e43ec0',
+       i686: 'abef1aab53d6880c0f43fc188a6de1ca1bf9b60c20c3f6459cdbcb40b32cb80a',
+     x86_64: '762b2f4a1d0d593f7f4c5000b651e9d03e98b11759a113bac0c260cc45830391'
+  })
+
   depends_on 'gperf'
   depends_on 'freetype_sub'
   depends_on 'jsonc'
