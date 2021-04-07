@@ -10,6 +10,19 @@ class Docbook_xsl < Package
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl-1.79.2-2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '98cc13cd1883b26708624d253cb54325f523d2f4bf43089a1008c7500c81f37c',
+     armv7l: '98cc13cd1883b26708624d253cb54325f523d2f4bf43089a1008c7500c81f37c',
+       i686: 'ff237f1f8c2be2482391150492a03f49518a20c30d36b9c9fa6302b1f265e0eb',
+     x86_64: '4e53c3fe08e6b59c6e1a9bb2f1b9620e93af939c87a95ff3d97bb16095adde1a'
+  })
+
   depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
   depends_on 'bash'

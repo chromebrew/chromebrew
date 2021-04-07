@@ -9,6 +9,19 @@ class Asciinema < Package
   source_url 'https://github.com/asciinema/asciinema/archive/v2.0.2.tar.gz'
   source_sha256 '2578a1b5611e5375771ef6582a6533ef8d40cdbed1ba1c87786fd23af625ab68'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '5fddd233f9f093935c23574dc1ce6247103352e845408375fa537fd2f56675ec',
+     armv7l: '5fddd233f9f093935c23574dc1ce6247103352e845408375fa537fd2f56675ec',
+       i686: '82f850655844133b11a251428021f9d92904b6c733f68cd3f6f827987fc072ee',
+     x86_64: 'e2bbf8e05f6762432da17259edba89f86f28d8c145de74adc057eb1d253eae90'
+  })
+
   depends_on 'xdg_base'
   depends_on 'setuptools'
 

@@ -9,6 +9,19 @@ class Xdg_base < Package
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xdg_base-0.7-7-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xdg_base-0.7-7-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xdg_base-0.7-7-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xdg_base-0.7-7-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '2ec80e4af5d9791083b8004542b4fda18160a8773ef42a7390ec3018927c37ea',
+     armv7l: '2ec80e4af5d9791083b8004542b4fda18160a8773ef42a7390ec3018927c37ea',
+       i686: '34df15da8d205ac30a6a439829851502676e9f3484d1c823cdffb65eeba91327',
+     x86_64: '6e8adac27ccf434f6e4c227487cc6d0ab262093c34095170ec351537a003981b'
+  })
+
   def self.preinstall
     # Save any previous configuration, if it exists.
     if File.directory?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config") && !FileUtils.cp_r("#{HOME}/.config",
@@ -23,9 +36,8 @@ class Xdg_base < Package
   end
 
   def self.install
-
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~EOF
+    @xdgbaseenv = <<~XDGBASEEOF
       # Chromebrew's XDG configuration
       # See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
       # XDG Base Directory Specification Environment Variables
@@ -35,8 +47,8 @@ class Xdg_base < Package
       export XDG_DATA_DIRS=#{CREW_PREFIX}/share
       export XDG_DATA_HOME=#{CREW_PREFIX}/.config/.local/share
       export XDG_RUNTIME_DIR=/var/run/chrome
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", @env)
+    XDGBASEEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", @xdgbaseenv)
   end
 
   def self.postinstall

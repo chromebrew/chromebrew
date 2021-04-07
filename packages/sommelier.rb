@@ -256,14 +256,14 @@ EOF"
     end
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
-    @env = <<~EOF
+    @sommelierenv = <<~SOMMELIERENVEOF
       # Sommelier loading code
       set -a
       source ~/.sommelier-default.env
       source ~/.sommelier.env
       set +a
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @env)
+    SOMMELIERENVEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @sommelierenv)
   end
 
   def self.postinstall

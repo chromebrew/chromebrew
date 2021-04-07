@@ -57,20 +57,20 @@ class Rust < Package
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~EOF
+    @rustconfigenv = <<~RUSTCONFIGEOF
       # Rustup and cargo configuration
       export CARGO_HOME=#{CREW_PREFIX}/share/cargo
       export RUSTUP_HOME=#{CREW_PREFIX}/share/rustup
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/rust", @env)
+    RUSTCONFIGEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/rust", @rustconfigenv)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @env = <<~EOF
+    @rustcompletionenv = <<~RUSTCOMPLETIONEOF
       # Rustup and cargo bash completion
       source #{CREW_PREFIX}/share/bash-completion/completions/cargo
       source #{CREW_PREFIX}/share/bash-completion/completions/rustup
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @env)
+    RUSTCOMPLETIONEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
     system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
   end
 end

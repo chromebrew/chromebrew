@@ -50,12 +50,12 @@ class Bash < Package
     FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @env = <<~EOF
+    @bashenv = <<~BASHEOF
       # Make Chromebrew's version of bash start automatically
       # This currently seems to be broken, uncomment at your own risk
       # #{CREW_PREFIX}/bin/bash
       # PS1=$PS1
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash", @env)
+    BASHEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash", @bashenv)
   end
 end

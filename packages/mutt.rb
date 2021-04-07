@@ -9,11 +9,20 @@ class Mutt < Package
   source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-2.0.6.tar.gz'
   source_sha256 '81e31c45895fd624747f19106aa2697d2aa135049ff2e9e9db0a6ed876bcb598'
 
-  depends_on 'gdbm'
-  depends_on 'libcyrussasl'
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '2f3f18827cb8a2c0a5a48e04397c4c4bf811cad82a8a235081a9f54ba227308f',
+     armv7l: '2f3f18827cb8a2c0a5a48e04397c4c4bf811cad82a8a235081a9f54ba227308f',
+       i686: 'd43f6599f9c83c487a2302015e1be9c8d28702fe8d8feab092cbc5b37a54e4a4',
+     x86_64: '3dedfd9092e58cba771c3af7079bf608b11960df2d30989254187501befccecc'
+  })
+
   depends_on 'libxslt'
-  depends_on 'openssl'
-  depends_on 'perl'
 
   def self.build
     system "./configure \
@@ -29,13 +38,13 @@ class Mutt < Package
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/mail"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~EOF
+    @muttenv = <<~MUTTEOF
       # Mutt configuration
       export SASL_PATH=#{CREW_PREFIX}/lib/sasl2
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/mutt", @env)
+    MUTTEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/mutt", @muttenv)
   end
 end

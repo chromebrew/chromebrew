@@ -9,6 +9,19 @@ class Bash_completion < Package
   source_url 'https://github.com/scop/bash-completion/archive/refs/tags/2.11.tar.gz'
   source_sha256 '16adefabf43ec8ffb473704f5724d775c2f47e9f750d7d608f0251ec21fe8813'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'dc426ff82ec4b0feb70d9a8b271269873127f95a5f8b8cde27c4aa38468afd27',
+     armv7l: 'dc426ff82ec4b0feb70d9a8b271269873127f95a5f8b8cde27c4aa38468afd27',
+       i686: '35c16db77e47df16451bfd3ecc9759c6debe9e74523a3644cf47fbc3b211fa3e',
+     x86_64: '75f84fe83ae7e4c308dc62ea26a1dffd886f1efe486f0ed9ba8587ee3e7f42bc'
+  })
+
   def self.build
     system 'autoreconf -i'
     system "./configure #{CREW_OPTIONS}"
@@ -16,13 +29,13 @@ class Bash_completion < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @env = <<~EOF
+    @bashcompletionenv = <<~BASHCOMPLETIONEOF
       # Bash completion configuration
       source #{CREW_PREFIX}/share/bash-completion/bash_completion
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash_completion", @env)
+    BASHCOMPLETIONEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash_completion", @bashcompletionenv)
   end
 end

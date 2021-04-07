@@ -10,6 +10,19 @@ class Docbook_xml412 < Package
   source_url 'https://docbook.org/xml/4.1.2/docbkx412.zip'
   source_sha256 '30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml412-4.1.2-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'e7b80341f9c8c4c84e5064785e21a7f4b28966abc09447763343d34af6f92203',
+     armv7l: 'e7b80341f9c8c4c84e5064785e21a7f4b28966abc09447763343d34af6f92203',
+       i686: '322606e25ce187ed1b62573e4c4e51dda56054c4bf48d635fc126ed82f13a5f2',
+     x86_64: 'ece6d95295cd269780339a9dca5925b224f63cf01879a1a27370faf7d13a4648'
+  })
+
   depends_on 'docbook_xml'
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'

@@ -69,7 +69,7 @@ class Crew_profile_base < Package
                 # DO NOT DELETE THIS LINE
                 # See #{CREW_PREFIX}/etc/profile for further details
                 source #{CREW_PREFIX}/etc/profile
-        #{'  '}
+
                 # Put your stuff under this comment
       CREW_PROFILE_EOF
       # Must write directly to HOME and not CREW_DEST_HOME to prevent chromebrew from removing ~/.bashrc during reinstall

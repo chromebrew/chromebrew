@@ -10,8 +10,20 @@ class Docbook_xml43 < Package
   source_url "https://docbook.org/xml/#{@_ver}/docbook-xml-#{@_ver}.zip"
   source_sha256 '23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml43-4.3-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml43-4.3-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml43-4.3-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml43-4.3-2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'd285fef3ffdf1adcc1dfc582241d2a7e945a071b7824fe8953014a84c0513de6',
+     armv7l: 'd285fef3ffdf1adcc1dfc582241d2a7e945a071b7824fe8953014a84c0513de6',
+       i686: 'd6adafcceb7cd548312fe23dc8f34911e2c60e3f53c87828012fa1fc3675429f',
+     x86_64: '15b5f0da306a63ae5e32b87692f333fe77502798792af99a30bc5bbfc3422862'
+  })
+
   depends_on 'docbook_xml'
-  depends_on 'libxml2'
   depends_on 'xmlcatmgr'
 
   def self.install

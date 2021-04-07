@@ -10,8 +10,20 @@ class Docbook_xml50 < Package
   source_url "https://docbook.org/xml/#{@_ver}/docbook-#{@_ver}.zip"
   source_sha256 '3dcd65e1f5d9c0c891b3be204fa2bb418ce485d32310e1ca052e81d36623208e'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml50-5.0-2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '2ab82950132df3cd03fa314553cd961aa22f559d95dca84943e75c55158a8a3b',
+     armv7l: '2ab82950132df3cd03fa314553cd961aa22f559d95dca84943e75c55158a8a3b',
+       i686: '0f60fb72a56090a498bf7959ec4c566f0e7b6b9e8ecb6eacaaeb7b115b08c2a0',
+     x86_64: '3206419c30af448462552a504c545b22f53b3acfc8806347c667d1bdba6d21f0'
+  })
+
   depends_on 'docbook_xml'
-  depends_on 'libxml2'
   depends_on 'xmlcatmgr'
   depends_on 'bash'
 

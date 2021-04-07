@@ -10,8 +10,20 @@ class Docbook_xml42 < Package
   source_url "https://docbook.org/xml/#{@_ver}/docbook-xml-#{@_ver}.zip"
   source_sha256 'acc4601e4f97a196076b7e64b368d9248b07c7abf26b34a02cca40eeebe60fa2'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'b83d4e1f4209796ea5269ed4519d2ce2fb99612cd727177fb76b19da1d2c60d3',
+     armv7l: 'b83d4e1f4209796ea5269ed4519d2ce2fb99612cd727177fb76b19da1d2c60d3',
+       i686: '44698530cf0876d1b70dce3846226fb58da7bbebcf5e8490648d1840ef68a50a',
+     x86_64: '6037eb199c1c76d311d92b43b85d54ce2f660c651b1c6fe35f3caee6cfd865a8'
+  })
+
   depends_on 'docbook_xml'
-  depends_on 'libxml2'
   depends_on 'xmlcatmgr'
 
   def self.install
@@ -43,7 +55,6 @@ class Docbook_xml42 < Package
   end
 
   def self.postinstall
-
     system "xmlcatalog --noout --add rewriteSystem \
       http://www.oasis-open.org/docbook/xml/#{@_ver} \
       #{CREW_PREFIX}/share/xml/docbook/xml-dtd-#{@_ver} \
