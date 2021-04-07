@@ -66,7 +66,8 @@ class Librsvg < Package
   end
 
   def self.postinstall
-    # gdk_pixbuf should be setting the correct env variables
-    system 'gdk-pixbuf-query-loaders'
-  end
+    if File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
+      system 'gdk-pixbuf-query-loaders',
+             '--update-cache'
+    end
 end
