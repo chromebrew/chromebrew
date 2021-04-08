@@ -9,6 +9,19 @@ class Libgc < Package
   source_url 'https://httpredir.debian.org/debian/pool/main/libg/libgc/libgc_8.0.4.orig.tar.gz'
   source_sha256 '436a0ddc67b1ac0b0405b61a9675bca9e075c8156f4debd1d06f3a56c7cd289d'
 
+  binary_url ({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgc-8.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgc-8.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgc-8.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgc-8.0.4-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'ae5052fb0631ca207dee9178f18da34ed5bb1e8da8c45249dc23e6260763e7f8',
+     armv7l: 'ae5052fb0631ca207dee9178f18da34ed5bb1e8da8c45249dc23e6260763e7f8',
+       i686: 'f2d7240df24b0b25bc8984ae39492d6639b492e88430992bcf99307656b1dbdb',
+     x86_64: 'f9fd0199862aad3b417597c9921dd5399a59e9f41f388cbb829b198626912a3c',
+  })
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
             --enable-static \

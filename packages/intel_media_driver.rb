@@ -7,13 +7,11 @@ class Intel_media_driver < Package
   version @_ver
   license 'BSD-3, and MIT'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
-    source_sha256 '3d856a963127ddd6690fc6dac521d7674947675d5f20452f1e6f45c0fc83f9e6'
-    depends_on 'gmmlib'
-    depends_on 'libva'
-  end
+  source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
+  source_sha256 '3d856a963127ddd6690fc6dac521d7674947675d5f20452f1e6f45c0fc83f9e6'
+
+  depends_on 'gmmlib'
+  depends_on 'libva'
 
   binary_url({
     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_driver-20.4.5-chromeos-x86_64.tar.xz'
@@ -21,7 +19,6 @@ class Intel_media_driver < Package
   binary_sha256({
     x86_64: '0710ad9dd76b97b62849cfe6179dae0e884e56c475332b03f889d5eaa121ffff'
   })
-
 
   def self.preflight
     abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
