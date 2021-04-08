@@ -10,7 +10,8 @@ class Packer_completion < Package
   source_sha256 'af7b3b49b29ffdb05b519dad2d83066f3d166dd8e29abd406ca0f3d480901df4'
 
   def self.install
-    FileUtils.install 'packer', "#{CREW_PREFIX}/share/packer-bash-completion/packer", mode: 644¸ verbose: true
+    FileUtils.mkdir "#{CREW_PREFIX}/share/packer-bash-completion/"
+    FileUtils.install 'packer', "#{CREW_PREFIX}/share/packer-bash-completion/packer", mode: 644, verbose: true
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @env = <<~EOF
