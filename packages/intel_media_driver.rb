@@ -7,6 +7,7 @@ class Intel_media_driver < Package
   version "#{@_ver}"
   license 'BSD-3 and MIT'
   compatibility 'x86_64'
+
   case ARCH
   when 'x86_64'
     source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
@@ -29,7 +30,6 @@ class Intel_media_driver < Package
     depends_on 'cmake' => :build
 
   end
-
 
   def self.preflight
     abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
