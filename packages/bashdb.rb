@@ -23,6 +23,7 @@ class Bashdb < Package
   })
 
   depends_on 'bash'
+  depends_on 'compressdoc' => :build
   depends_on 'texinfo' => :build
 
   def self.build
