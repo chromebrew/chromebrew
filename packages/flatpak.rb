@@ -3,8 +3,8 @@ require 'package'
 class Flatpak < Package
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
-  @_ver = '1.10.2-1'
-  version @_ver
+  @_ver = '1.10.2'
+  version "#{@_ver}+1"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
@@ -13,6 +13,7 @@ class Flatpak < Package
   depends_on 'appstream_glib'
   depends_on 'bubblewrap'
   depends_on 'dconf'
+  depends_on 'fuse2'
   depends_on 'libevent'
   depends_on 'libostree'
   depends_on 'libsoup2'
@@ -20,8 +21,14 @@ class Flatpak < Package
   depends_on 'pulseaudio'
   depends_on 'pyparsing'
   depends_on 'xdg_base'
+  depends_on 'xdg_dbus_proxy'
+  depends_on 'xmlto' => :build
 
   def self.patch
+    # Use fuse3
+    #system "sed -i 's:PKG_CHECK_MODULES(FUSE, fuse >= 2.9.2):PKG_CHECK_MODULES(FUSE, fuse3 >= 3.1.1):' configure.ac"
+    #system "sed -i 's:#define FUSE_USE_VERSION 26:#define FUSE_USE_VERSION 31:' revokefs/main.c"
+
     # Source has libglnx repo as submodule
     @git_dir = 'libglnx'
     @git_hash = '4c9055ac08bb64dca146724f488cce4c1ce4c628'
@@ -63,18 +70,23 @@ class Flatpak < Package
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap CFLAGS='-flto=auto' \
-      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
-      --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
-      --enable-sandboxed-triggers \
-      --with-priv-mode=none \
-      --without-systemd \
-      --with-system-fonts-dir=#{CREW_PREFIX}/share/fonts:/usr/share/fonts \
-      --with-system-font-cache-dirs=/usr/share/cache/fontconfig:#{CREW_PREFIX}/cache/fontconfig \
-      --disable-documentation \
-      --disable-maintainer-mode \
-      --with-system-bubblewrap"
+    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap \
+              CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+              CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+              LDFLAGS='-flto=auto' \
+            ./configure #{CREW_OPTIONS} \
+              --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
+              --localstatedir=#{CREW_PREFIX}/var \
+              --enable-sandboxed-triggers \
+              --with-priv-mode=none \
+              --without-systemd \
+              --with-system-fonts-dir=#{CREW_PREFIX}/share/fonts:/usr/share/fonts \
+              --with-system-font-cache-dirs=/usr/share/cache/fontconfig:#{CREW_PREFIX}/cache/fontconfig \
+              --disable-documentation \
+              --disable-maintainer-mode \
+              --enable-xauth \
+              --with-system-dbus-proxy \
+              --with-system-bubblewrap"
     system 'make'
   end
 
@@ -113,12 +125,14 @@ class Flatpak < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # Flatpak configuration
-      export XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share'
+      export XDG_DATA_DIRS='#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share'
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/flatpak", @env)
   end
 
   def self.postinstall
+    system "[ -e /var/run/chrome/dconf ] || sudo mkdir /var/run/chrome/dconf"
+    system "sudo chown chronos:chronos /var/run/chrome/dconf/ -Rv"
     puts
     puts 'Configuring flathub'.lightblue
     system "#{CREW_PREFIX}/libexec/flatpak/flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo"
