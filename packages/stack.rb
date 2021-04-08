@@ -10,8 +10,8 @@ class Stack < Package
 
   case ARCH
   when 'x86_64'
-    source_url "https://github.com/commercialhaskell/stack/releases/download/#{@_ver}/stack-#{@_ver}-linux-x86_64.tar.gz"
-    source_sha256 'f29d63b91ff2bddd130b29ddee90a1f450706271a13d5d80b653b50379ffa076'
+    source_url "https://github.com/commercialhaskell/stack/releases/download/v#{@_ver}/stack-#{@_ver}-linux-x86_64.tar.gz"
+    source_sha256 'c83b6c93d6541c0bce2175085a04062020f4160a86116e20f3b343b562f2d1e8'
   end
 
   def self.install
