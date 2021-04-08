@@ -7,12 +7,8 @@ class Intel_media_driver < Package
   version "#{@_ver}"
   license 'BSD-3 and MIT'
   compatibility 'x86_64'
-
-  case ARCH
-  when 'x86_64'
-    source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
-    # 21.1.3 source_sha256 '219ce6b08a84bdce311160dc694d866249fd4e390391c2ac7be55f13a2fb928c'
-    source_sha256 'f2374c29bc46dab73e0ab78c86620a2b644bd6989d33327fe3ba36c4b9d0f82f'
+  source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
+  source_sha256 'f2374c29bc46dab73e0ab78c86620a2b644bd6989d33327fe3ba36c4b9d0f82f'
 
 #    binary_url({
 #      x86_64: 'NEW BINARY'
@@ -21,15 +17,13 @@ class Intel_media_driver < Package
 #      x86_64: 'NEW BINARY'
 #    })
 
-    depends_on 'gmmlib'
-    depends_on 'libva'
-    depends_on 'libpciaccess'
-    depends_on 'libx11'
-    depends_on 'libxext'
-    depends_on 'samurai' => :build
-    depends_on 'cmake' => :build
-
-  end
+  depends_on 'gmmlib'
+  depends_on 'libva'
+  depends_on 'libpciaccess'
+  depends_on 'libx11'
+  depends_on 'libxext'
+  depends_on 'samurai' => :build
+  depends_on 'cmake' => :build
 
   def self.preflight
     abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
