@@ -1,6 +1,6 @@
 require 'package'
 
-class Aws < Package
+class Aws2 < Package
   description 'The AWS CLI is an open source tool built on top of the AWS SDK for Python (Boto) that provides commands for interacting with AWS services.'
   homepage 'https://aws.amazon.com/documentation/cli/'
   version '0.2.7'
