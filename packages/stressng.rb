@@ -3,7 +3,8 @@ require 'package'
 class Stressng < Package
   description 'stress-ng will stress test a computer system in various selectable ways.'
   homepage 'https://kernel.ubuntu.com/~cking/stress-ng/'
-  @_ver = '0.12.05' # 0.12.06 would not build as of 2021.04.07
+  # 0.12.06 would not build as of 2021.04.07
+  @_ver = '0.12.05'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
