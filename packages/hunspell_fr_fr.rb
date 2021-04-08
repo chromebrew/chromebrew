@@ -1,7 +1,7 @@
 require 'package'
 
 class Hunspell_fr_fr < Package
-  description 'Hunspell French dictionary'
+  description 'Dictionnaire Français Hunspell'
   homepage 'http://hunspell.github.io/'
   version '1.7.0-2'
   license 'MPL-1.1, GPL-2 and LGPL-2.1'
