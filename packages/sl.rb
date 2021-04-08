@@ -2,7 +2,7 @@ require 'package'
 
 class Sl < Package
   description 'Steam Locomotive runs across your terminal when you type "sl" as you meant to type "ls".'
-  homepage 'https://github.com/mtoyoda/sl'
+  homepage 'https://github.com/mtoyoda/sl/'
   version '5.02'
   license 'Toyoda'
   compatibility 'all'
@@ -34,7 +34,7 @@ class Sl < Package
            }
            initscr();
       -    signal(SIGINT, SIG_IGN);
-      +    if (INTR == 0) {
+      +    if (INTR == 1) {
       +        signal(SIGINT, SIG_IGN);
       +    }
            noecho();
@@ -43,27 +43,20 @@ class Sl < Package
     EOF
     IO.write("add_-e_option.patch", @addeoption)
     system "patch -Np1 -i add_-e_option.patch"
+
+    system "sed -i 's:#include <curses.h>:#include <ncursesw/curses.h>:' sl.c"
   end
 
   def self.build
-    system "sed -i 's:#include <curses.h>:#include <ncursesw/curses.h>:' sl.c"
-    system "gcc -O2 -pipe -o sl sl.c -ltinfow"
+    system "gcc -o sl sl.c -O2 -pipe -flto=auto -fuse-ld=gold -lncursesw -ltinfow"
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/"
     FileUtils.install 'sl', "#{CREW_DEST_PREFIX}/bin/sl", mode: 0755
     FileUtils.install 'sl.1', "#{CREW_DEST_MAN_PREFIX}/man1/sl.1", mode: 0644
     FileUtils.install 'sl.h', "#{CREW_DEST_PREFIX}/include/sl.h", mode: 0644
-
-    FileUtils.mkdir "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~EOF
-      # sl configuration
-      # sl does this annoying thing where it doesn't allow the user to cancel with ^include Comparable
-      # To disable this "feature", uncomment the line below
-      #alias sl="sl -e"
-    EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sl", @env)
   end
 end
