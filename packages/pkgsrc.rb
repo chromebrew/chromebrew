@@ -29,7 +29,6 @@ class Pkgsrc < Package
     end
     ENV['SH'] = '/bin/bash'
     ENV['OS_VARIANT'] = 'chromeos'
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     FileUtils.chdir 'bootstrap' do
       system "./bootstrap --abi=#{abi} --preserve-path --unprivileged --prefix=#{CREW_PREFIX}/pkg \
 --pkgdbdir=#{CREW_PREFIX}/pkg/pkgdb --sysconfdir=#{CREW_PREFIX}/pkg/etc --varbase=#{CREW_PREFIX}/pkg/var \

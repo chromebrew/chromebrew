@@ -25,7 +25,6 @@ class Rust < Package
 
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
     case ARCH

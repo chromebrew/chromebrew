@@ -26,7 +26,7 @@ class Go < Package
   @env ||= ''
 
   depends_on 'perl' => :build
-  
+
   # Tests require perl
   # go is required to build versions of go > 1.4
   case ARCH
@@ -47,7 +47,6 @@ class Go < Package
     when 'aarch64', 'armv7l'
       FileUtils.cd 'src' do
         @env += "GOROOT='..'"
-        @env += " TMPDIR=#{CREW_PREFIX}/tmp"
         @env += " GOROOT_FINAL=#{CREW_PREFIX}/share/go"
         @env += ' GOHOSTARCH=arm' if ARCH == 'aarch64'
         # install with go_bootstrap if go is not in the path
@@ -66,7 +65,7 @@ class Go < Package
     case ARCH
     when 'aarch64', 'armv7l'
       Dir.chdir 'src' do
-        system "PATH=\"#{Dir.pwd}/../bin:$PATH\" GOROOT=\"#{Dir.pwd}/..\" TMPDIR=\"#{CREW_PREFIX}/tmp\" go tool dist test"
+        system "PATH=\"#{Dir.pwd}/../bin:$PATH\" GOROOT=\"#{Dir.pwd}/..\" go tool dist test"
       end
     end
   end
@@ -89,7 +88,6 @@ class Go < Package
     @gorun = <<~EOF
       # Uncomment the line starting with "export" below to use `go run`
       # Don't forget to uncomment it when you're done
-      # export TMPDIR=#{CREW_PREFIX}/tmp
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/go-run", @gorun)
     @godev = <<~EOF
