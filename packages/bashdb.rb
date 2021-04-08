@@ -40,7 +40,7 @@ class Bashdb < Package
       system "git remote add origin #{@git_url}"
       system "git fetch --depth 1 origin #{@git_hash}"
       system 'git checkout FETCH_HEAD'
-      system 'NOCONFIGURE=1 ./autogen.sh'
+      system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
       system './configure --help'
       system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
         LDFLAGS='-flto=auto' \
