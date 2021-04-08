@@ -10,6 +10,19 @@ class Flatpak < Package
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
   source_sha256 'db152739d072f8ff299e4e888d8963a1b4538da7b10e0b86525be438f2e1dde4'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'f03b38526bd4874d0e917bac2e743929f8e118ab67796ee088f36e4712d4c35b',
+     armv7l: 'f03b38526bd4874d0e917bac2e743929f8e118ab67796ee088f36e4712d4c35b',
+       i686: 'cd76a117df4c1757410dda6f17ac5d1a46a0028ab3116ae3fea5af602774a1d4',
+     x86_64: 'ae83c2515abec6eb9969b69d838280f70f620f51ad21231ce5e297c87f5cff5c'
+  })
+
   depends_on 'appstream_glib'
   depends_on 'bubblewrap'
   depends_on 'dconf'
@@ -26,8 +39,8 @@ class Flatpak < Package
 
   def self.patch
     # Use fuse3
-    #system "sed -i 's:PKG_CHECK_MODULES(FUSE, fuse >= 2.9.2):PKG_CHECK_MODULES(FUSE, fuse3 >= 3.1.1):' configure.ac"
-    #system "sed -i 's:#define FUSE_USE_VERSION 26:#define FUSE_USE_VERSION 31:' revokefs/main.c"
+    # system "sed -i 's:PKG_CHECK_MODULES(FUSE, fuse >= 2.9.2):PKG_CHECK_MODULES(FUSE, fuse3 >= 3.1.1):' configure.ac"
+    # system "sed -i 's:#define FUSE_USE_VERSION 26:#define FUSE_USE_VERSION 31:' revokefs/main.c"
 
     # Source has libglnx repo as submodule
     @git_dir = 'libglnx'
@@ -131,8 +144,8 @@ class Flatpak < Package
   end
 
   def self.postinstall
-    system "[ -e /var/run/chrome/dconf ] || sudo mkdir /var/run/chrome/dconf"
-    system "sudo chown chronos:chronos /var/run/chrome/dconf/ -Rv"
+    system '[ -e /var/run/chrome/dconf ] || sudo mkdir /var/run/chrome/dconf'
+    system 'sudo chown chronos:chronos /var/run/chrome/dconf/ -Rv'
     puts
     puts 'Configuring flathub'.lightblue
     system "#{CREW_PREFIX}/libexec/flatpak/flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo"

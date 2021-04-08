@@ -3,52 +3,30 @@ require 'package'
 class Intel_media_driver < Package
   description 'The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.'
   homepage 'https://github.com/intel/media-driver'
-  @_ver = '21.1.2' # 21.1.3 won't build as of 2021-04-07
-  version "#{@_ver}"
-  license 'BSD-3 and MIT'
-  compatibility 'x86_64'
-  source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
-  source_sha256 'f2374c29bc46dab73e0ab78c86620a2b644bd6989d33327fe3ba36c4b9d0f82f'
+  @_ver = '20.4.5'
+  version "#{@_ver}-1"
+  license 'BSD-3, and MIT'
+  case ARCH
+  when 'x86_64'
+    compatibility 'x86_64'
+    source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
+    source_sha256 '3d856a963127ddd6690fc6dac521d7674947675d5f20452f1e6f45c0fc83f9e6'
 
-#    binary_url({
-#      x86_64: 'NEW BINARY'
-#    })
-#    binary_sha256({
-#      x86_64: 'NEW BINARY'
-#    })
-
-  depends_on 'gmmlib'
-  depends_on 'libva'
-  depends_on 'libpciaccess'
-  depends_on 'libx11'
-  depends_on 'libxext'
-  depends_on 'samurai' => :build
-  depends_on 'cmake' => :build
+    binary_url({
+      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_driver-20.4.5-1-chromeos-x86_64.tar.xz'
+    })
+    binary_sha256({
+      x86_64: '0cc7a352ff10ca44659c49e8ebace37dc8c96a936d66fd28c1c17b7d8c709419'
+    })
+    depends_on 'gmmlib'
+    depends_on 'libva'
+  end
 
   def self.preflight
     abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
   end
 
   def self.patch
-    @x_option = <<~X_OPTION_EOF
-      --- a/media_driver/media_top_cmake.cmake
-      +++ b/media_driver/media_top_cmake.cmake
-      @@ -21,7 +21,12 @@
-       project( media )
-
-       find_package(PkgConfig)
-      +if(NOT DEFINED USE_X11 OR USE_X11)
-       find_package(X11)
-      +endif(NOT DEFINED USE_X11 OR USE_X11)
-      +if(USE_X11 AND NOT X11_FOUND)
-      +    message(FATAL_ERROR "Usage of X11 is required by USE_X11 variable, but X11 package is not found")
-      +endif(USE_X11 AND NOT X11_FOUND)
-
-       bs_set_if_undefined(LIB_NAME iHD_drv_video)
-    X_OPTION_EOF
-    IO.write("x-option.patch", @x_option)
-
-    system "patch -Np1 -i x-option.patch"
     system "find . -type f -exec sed -e 's,LD_LIBRARY_PATH=,LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:,g' \
             -e 's,-fstack-protector-all,-fno-stack-protector,g' \
             -e 's,-fstack-protector,-fno-stack-protector,g' -i {} +"
@@ -60,25 +38,18 @@ class Intel_media_driver < Package
       system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
             CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
             LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-            cmake #{CREW_CMAKE_OPTIONS} ../ -G Ninja \
-              -DBUILD_SHARED_LIBS=ON \
-              -DMEDIA_BUILD_FATAL_WARNINGS=OFF \
-              -DPLATFORM=linux \
-              -DLATEST_CPP_NEEDED=ON \
-              -DUSE_X11=ON \
-              -Wno-dev"
+            cmake #{CREW_CMAKE_OPTIONS} ../ -G Ninja"
     end
-    system 'samu -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~EOF
       # intel_media_driver configuration
       export LIBVA_DRIVER_NAME=iHD
-      export export LIBVA_DRIVERS_PATH=#{CREW_LIB_PREFIX}
     EOF
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/intel_media_driver", @env)
   end

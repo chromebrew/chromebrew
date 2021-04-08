@@ -9,6 +9,19 @@ class Sl < Package
   source_url 'https://github.com/mtoyoda/sl/archive/5.02.tar.gz'
   source_sha256 '1e5996757f879c81f202a18ad8e982195cf51c41727d3fea4af01fdcbbb5563a'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sl-5.02-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sl-5.02-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sl-5.02-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sl-5.02-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '6eec64e45434268292b6c3529799b67ddca817418807fe3ce724a3c0f6a5be84',
+     armv7l: '6eec64e45434268292b6c3529799b67ddca817418807fe3ce724a3c0f6a5be84',
+       i686: '1e8ce70c5f1b292c3187e708bd2603de328af24e64b0f6e3c38fec41b1db0083',
+     x86_64: 'e357445a2f8c73f9e9de3fd0b5e5383d809991b0633b82bd1ce28e0ced33c315'
+  })
+
   def self.patch
     @addeoption = <<~EOF
       --- a/sl.c
@@ -41,22 +54,22 @@ class Sl < Package
            curs_set(0);
            nodelay(stdscr, TRUE);
     EOF
-    IO.write("add_-e_option.patch", @addeoption)
-    system "patch -Np1 -i add_-e_option.patch"
+    IO.write('add_-e_option.patch', @addeoption)
+    system 'patch -Np1 -i add_-e_option.patch'
 
     system "sed -i 's:#include <curses.h>:#include <ncursesw/curses.h>:' sl.c"
   end
 
   def self.build
-    system "gcc -o sl sl.c -O2 -pipe -flto=auto -fuse-ld=gold -lncursesw -ltinfow"
+    system 'gcc -o sl sl.c -O2 -pipe -flto=auto -fuse-ld=gold -lncursesw -ltinfow'
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/"
-    FileUtils.install 'sl', "#{CREW_DEST_PREFIX}/bin/sl", mode: 0755
-    FileUtils.install 'sl.1', "#{CREW_DEST_MAN_PREFIX}/man1/sl.1", mode: 0644
-    FileUtils.install 'sl.h', "#{CREW_DEST_PREFIX}/include/sl.h", mode: 0644
+    FileUtils.install 'sl', "#{CREW_DEST_PREFIX}/bin/sl", mode: 0o755
+    FileUtils.install 'sl.1', "#{CREW_DEST_MAN_PREFIX}/man1/sl.1", mode: 0o644
+    FileUtils.install 'sl.h', "#{CREW_DEST_PREFIX}/include/sl.h", mode: 0o644
   end
 end
