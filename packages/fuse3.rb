@@ -1,6 +1,6 @@
 require 'package'
 
-class Fuse < Package
+class Fuse3 < Package
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse'
   version '3.10.2'
