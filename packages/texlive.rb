@@ -5,17 +5,21 @@ class Texlive < Package
   homepage 'https://www.tug.org/texlive/'
   version '20200406'
   license 'GPL-2 and GPL-3'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url 'https://github.com/TeX-Live/texlive-source/archive/refs/tags/svn58528.tar.gz'
   source_sha256 '5c2e53d25d2f85d511bb3fa238e2de718ce27e22db83559284570b5c380f4bed'
 
   binary_url({
-    i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-i686.tar.xz',
-  x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    i686: 'c7329f858b8acf873dd2f31be3d5230ac7d2d6e78156d1f919410a9223d493f8',
-  x86_64: '250e8b5a02c440efbcba35c32227537039b1934e97ccc6a83e1fcd57fc42e81c'
+    aarch64: 'c6f87231b92dd7627ad33bb1038eeb5167b70b52c669a6c87277e8cb8ad7c53a',
+     armv7l: 'c6f87231b92dd7627ad33bb1038eeb5167b70b52c669a6c87277e8cb8ad7c53a',
+       i686: 'c7329f858b8acf873dd2f31be3d5230ac7d2d6e78156d1f919410a9223d493f8',
+     x86_64: '250e8b5a02c440efbcba35c32227537039b1934e97ccc6a83e1fcd57fc42e81c'
   })
 
   depends_on 'freetype'
