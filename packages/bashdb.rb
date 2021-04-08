@@ -54,7 +54,6 @@ class Bashdb < Package
   def self.install
     Dir.chdir @git_dir do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      system "compressdoc --gzip -9 #{CREW_DEST_MAN_PREFIX}/man1"
     end
   end
 end
