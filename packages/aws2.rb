@@ -14,20 +14,18 @@ class Aws2 < Package
 
   def self.install
     system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I aws2==#{version} --no-warn-script-location"
-    system "chmod +x #{CREW_DEST_PREFIX}/bin/aws"
-    system "chmod +x #{CREW_DEST_PREFIX}/bin/aws_completer"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
-    @awsbashrc = <<~EOF
+    @awsbashrc = <<~AWSBASHRCEOF
       # Amazon Web Services CLI bash completion
       source #{CREW_PREFIX}/bin/aws_bash_completer
-    EOF
+    AWSBASHRCEOF
     IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/aws", @awsbashrc)
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/zsh.d"
-    @awszshrc = <<~EOF
+    @awszshrc = <<~AWSZSHRCEOF
       # Amazon Web Services CLI zsh completion
       source #{CREW_PREFIX}/bin/aws_zsh_completer.sh
-    EOF
+    AWSZSHRCEOF
     IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/aws", @awszshrc)
   end
 end
