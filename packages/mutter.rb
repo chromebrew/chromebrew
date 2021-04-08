@@ -12,12 +12,12 @@ class Mutter < Package
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.0-chromeos-x86_64.tar.xz'
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '4738981bc3b25f189e376e9398f892063e4434881b364abfb471ae2671c5518c',
-     armv7l: '4738981bc3b25f189e376e9398f892063e4434881b364abfb471ae2671c5518c',
-     x86_64: '245503f395c5a138e279d71fee7bdd98b2244bc682a90a373f742a3b78f190f2'
+    aarch64: 'fafa169c22a7aa7595edf43a4c8dc7306210163e6759130f81d338120b92b8bd',
+     armv7l: 'fafa169c22a7aa7595edf43a4c8dc7306210163e6759130f81d338120b92b8bd',
+     x86_64: '1b28b4cd4f91f342bc6bde187f48f58954b7259f0377e679742c9c821b60f668',
   })
 
   depends_on 'dconf'
