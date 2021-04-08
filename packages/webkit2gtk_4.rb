@@ -23,27 +23,42 @@ class Webkit2gtk_4 < Package
      x86_64: '2bfe6213119d1bbaa98634a99e0390a222ea95c30ef1d329d0b17d6df0aaf89b'
   })
 
-  depends_on 'ccache' => :build
+  depends_on 'atk'
   depends_on 'cairo'
+  depends_on 'ccache' => :build
+  depends_on 'enchant'
   depends_on 'fontconfig'
   depends_on 'freetype'
-  depends_on 'gtk3'
-  depends_on 'gtk4'
-  depends_on 'harfbuzz'
-  depends_on 'gtk_doc' => :build
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
   depends_on 'gobject_introspection' => :build
-  depends_on 'libsoup'
-  depends_on 'libwpe'
-  depends_on 'wpebackend_fdo'
-  depends_on 'libsecret'
-  depends_on 'enchant'
-  depends_on 'libnotify'
+  depends_on 'gst_plugins_base'
+  depends_on 'gstreamer'
+  depends_on 'gtk3'
+  depends_on 'gtk_doc' => :build
+  depends_on 'harfbuzz'
   depends_on 'hyphen'
-  depends_on 'woff2'
-  depends_on 'bubblewrap'
-  depends_on 'xdg_dbus_proxy'
-  depends_on 'openjpeg'
+  depends_on 'libgcrypt'
+  depends_on 'libjpeg'
+  depends_on 'libnotify'
+  depends_on 'libpng'
+  depends_on 'libsecret'
   depends_on 'libsoup'
+  depends_on 'libsoup2'
+  depends_on 'libwebp'
+  depends_on 'libwpe'
+  depends_on 'libx11'
+  depends_on 'libxcomposite'
+  depends_on 'libxdamage'
+  depends_on 'libxrender'
+  depends_on 'libxslt'
+  depends_on 'libxt'
+  depends_on 'mesa'
+  depends_on 'openjpeg'
+  depends_on 'pango'
+  depends_on 'wayland'
+  depends_on 'woff2'
+  depends_on 'wpebackend_fdo'
 
   def self.build
     # This builds webkit2gtk4 (which uses gtk3)
