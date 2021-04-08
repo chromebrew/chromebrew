@@ -10,6 +10,6 @@ class Webkit2gtk < Package
   
   is_fake
 
-  depends_on 'webkit2gtk_4_0'
-  depends_on 'webkit2gtk_5_0'
+  depends_on 'webkit2gtk_4'
+  depends_on 'webkit2gtk_5'
 end
