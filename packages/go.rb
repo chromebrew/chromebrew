@@ -25,8 +25,6 @@ class Go < Package
 
   @env ||= ''
 
-  depends_on 'perl' => :build
-
   # Tests require perl
   # go is required to build versions of go > 1.4
   case ARCH
