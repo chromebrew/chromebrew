@@ -3,23 +3,23 @@ require 'package'
 class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
-  version '20200406'
+  version '20210318'
   license 'GPL-2 and GPL-3'
   compatibility 'all'
   source_url 'https://github.com/TeX-Live/texlive-source/archive/refs/tags/svn58528.tar.gz'
   source_sha256 '5c2e53d25d2f85d511bb3fa238e2de718ce27e22db83559284570b5c380f4bed'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20200406-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c6f87231b92dd7627ad33bb1038eeb5167b70b52c669a6c87277e8cb8ad7c53a',
-     armv7l: 'c6f87231b92dd7627ad33bb1038eeb5167b70b52c669a6c87277e8cb8ad7c53a',
-       i686: 'c7329f858b8acf873dd2f31be3d5230ac7d2d6e78156d1f919410a9223d493f8',
-     x86_64: '250e8b5a02c440efbcba35c32227537039b1934e97ccc6a83e1fcd57fc42e81c'
+    aarch64: 'ba9b3c7029ede0a12a692ed79125c15d60a00bd2dd17dccbfad4457ef8b264c6',
+     armv7l: 'ba9b3c7029ede0a12a692ed79125c15d60a00bd2dd17dccbfad4457ef8b264c6',
+       i686: '6962944875d9b18fd5f3c491edb25eb0305cce4df6dcd6b7a33dfa30908d06c9',
+     x86_64: 'd8d856b90d628da1cd5a616241eb09c3f695c35cc169645a8a5d5d89f2e71111'
   })
 
   depends_on 'freetype'
@@ -40,21 +40,21 @@ class Texlive < Package
   def self.prebuild
     # This is for people building with limited filespace
     Dir.chdir 'libs' do
-      FileUtils.rm_rf 'cairo'
-      FileUtils.rm_rf 'freetype2'
-      FileUtils.rm_rf 'gd'
-      FileUtils.rm_rf 'gmp'
-      FileUtils.rm_rf 'graphite2'
-      FileUtils.rm_rf 'harfbuzz'
-      FileUtils.rm_rf 'libpaper'
-      FileUtils.rm_rf 'libpng'
+      # FileUtils.rm_rf 'cairo'
+      # FileUtils.rm_rf 'freetype2'
+      # FileUtils.rm_rf 'gd'
+      # FileUtils.rm_rf 'gmp'
+      # FileUtils.rm_rf 'graphite2'
+      # FileUtils.rm_rf 'harfbuzz'
+      # FileUtils.rm_rf 'libpaper'
+      # FileUtils.rm_rf 'libpng'
       # FileUtils.rm_rf 'lua53'
       # FileUtils.rm_rf 'luajit'
-      FileUtils.rm_rf 'mfpr'
-      FileUtils.rm_rf 'pixman'
-      FileUtils.rm_rf 'poppler'
-      FileUtils.rm_rf 'zlib'
-      FileUtils.rm_rf 'zziplib'
+      # FileUtils.rm_rf 'mfpr'
+      # FileUtils.rm_rf 'pixman'
+      # FileUtils.rm_rf 'poppler'
+      # FileUtils.rm_rf 'zlib'
+      # FileUtils.rm_rf 'zziplib'
     end
   end
 
