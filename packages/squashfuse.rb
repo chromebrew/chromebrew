@@ -25,7 +25,7 @@ class Squashfuse < Package
      x86_64: 'df130e28a509798c98213a139936e6711b7d6d97b2510f3194820cb47e22631d'
   })
 
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'lzo'
 
   def self.build

@@ -1,6 +1,6 @@
 require 'package'
 
-class Fuse < Package
+class Fuse3 < Package
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse'
   version '3.10.2'
@@ -10,16 +10,16 @@ class Fuse < Package
   source_sha256 '736e8d1ce65c09cb435fbbb500d53dc75f4d6e93bd325d22adc890951cf56337'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-3.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-3.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-3.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse-3.10.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '2f869838f88e0a8df6ef38b84b1b2c379ec2b14d0c7c95cdd7a2f759d5042e42',
-     armv7l: '2f869838f88e0a8df6ef38b84b1b2c379ec2b14d0c7c95cdd7a2f759d5042e42',
-       i686: 'fa4568332e5646bca84fbd3364bd9055f4acfbc12f47caf93bbbbc071bc6382f',
-     x86_64: '56c922765b937e931b86a7589dc0b08be52263c45078a42757c43ae6a5081865'
+    aarch64: '6e4d623810017d9dc58852f19d251fe52282578d6099ea41eac94d23eb0066e8',
+     armv7l: '6e4d623810017d9dc58852f19d251fe52282578d6099ea41eac94d23eb0066e8',
+       i686: 'd202035312895ee3bd9d260775cabba729d67996b3a3c1ce3786c83120515efa',
+     x86_64: 'c82701ac8f799f7716963363ab44b8a7984d580eff3ecd1d54ddbc589e08c907'
   })
 
   def self.build

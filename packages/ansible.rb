@@ -25,8 +25,7 @@ class Ansible < Package
   depends_on 'setuptools'
 
   def self.install
-    system "TMPDIR=#{CREW_PREFIX}/tmp \
-            pip install --prefix #{CREW_PREFIX} \
+    system "pip install --prefix #{CREW_PREFIX} \
             --root #{CREW_DEST_DIR} -I ansible==#{self.version}"
   end
 end

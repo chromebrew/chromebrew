@@ -14,9 +14,9 @@ class Hunspell < Package
   if ARGV[0] == 'install'
     puts
     puts "Enter your preferred language:"
-    puts "1 = English (US)"
-    puts "2 = French (FR)"
-    puts "3 = Spanish (ANY)"
+    puts "1 = American English"
+    puts "2 = Français"
+    puts "3 = Español"
     puts "0 = Cancel"
 
     while version = STDIN.gets.chomp

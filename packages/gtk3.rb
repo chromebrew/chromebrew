@@ -9,7 +9,6 @@ class Gtk3 < Package
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gtk/-/archive/#{@_ver}/gtk-#{@_ver}.tar.bz2"
-  # source_url "https://download.gnome.org/sources/gtk/#{@_ver_prelastdot}/gtk-#{@_ver}.tar.xz"
   source_sha256 'ab8e2799c71f4ff5052fade351a3a035d60d7d357035788227bf5e6270cde448'
 
   binary_url({
@@ -25,38 +24,47 @@ class Gtk3 < Package
      x86_64: '16ef9237bd85428972d050da9d5307f30700b24ce26c6d165c39769ad3dc2d92'
   })
 
-  depends_on 'adwaita_icon_theme'
-  depends_on 'atk'
-  depends_on 'at_spi2_atk'
-  depends_on 'cairo'
-  depends_on 'cantarell_fonts'
-  depends_on 'cups'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'fribidi'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gnome_icon_theme'
-  depends_on 'harfbuzz'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'json_glib'
-  depends_on 'libepoxy'
-  depends_on 'libx11'
-  depends_on 'libxcomposite'
-  depends_on 'libxcursor'
-  depends_on 'libxdamage'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxi'
-  depends_on 'libxinerama'
-  depends_on 'libxkbcommon'
-  depends_on 'libxrandr'
-  depends_on 'pango'
-  depends_on 'rest'
-  depends_on 'shared_mime_info'
-  depends_on 'six' => :build
-  depends_on 'wayland'
-  depends_on 'xdg_base'
+  # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'docbook' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'iso_codes' => :build
+  depends_on 'mesa' => :build
+  depends_on 'graphene' => :build # Do we need this?
+  depends_on 'graphite' => :build # Do we need this?
+  depends_on 'libdeflate' => :build # Do we need this?
+  depends_on 'libjpeg' => :build # Do we need this?
+  depends_on 'six' => :build # Do we need this?
+  depends_on 'adwaita_icon_theme' # L
+  depends_on 'cantarell_fonts' # L
+  depends_on 'gnome_icon_theme' # L
+  depends_on 'hicolor_icon_theme' # L
+  depends_on 'shared_mime_info' # L
+  depends_on 'xdg_base' # L
+  depends_on 'atk' # R
+  depends_on 'at_spi2_atk' # R
+  depends_on 'cairo' # R
+  depends_on 'cups' # R
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'fribidi' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxi' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxrandr' # R
+  depends_on 'pango' # R
+  depends_on 'rest' # R
+  depends_on 'wayland' # R
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

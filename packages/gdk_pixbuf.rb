@@ -3,23 +3,24 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  version '2.42.4'
+  @_ver = '2.42.4'
+  version "#{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz'
-  source_sha256 '83c66a1cfd591d7680c144d2922c5955d38b4db336d7cd3ee109f7bcf9afef15'
+  source_url "https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/#{@_ver}/gdk-pixbuf-#{@_ver}.tar.bz2"
+  source_sha256 'd94d2e67165739559a6323a23eea8ad3560ab1085e2a3356a19548c9cb88e1e9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gdk_pixbuf-2.42.4-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '23fc39d28ea5c1680730dcc387919446c41b57e341b8efcb8bdfa9c0662dddec',
-     armv7l: '23fc39d28ea5c1680730dcc387919446c41b57e341b8efcb8bdfa9c0662dddec',
-       i686: '259535541d24d83bc47503087eb0f84c50a29aa22e4eb61ab8ce33f465051bb5',
-     x86_64: '5c4ccbdf7b580052fc9788bc0d5174061ea84028851c74ce7b258d6a17413517'
+    aarch64: '62e8a794241bbeb7e4699617aa77dbae0e4ff7498ffac640a0ddeb09c66c0e92',
+     armv7l: '62e8a794241bbeb7e4699617aa77dbae0e4ff7498ffac640a0ddeb09c66c0e92',
+       i686: '2906220e700f765463aa12e2ca7b6500a92cdbae49f752470860fcc432986849',
+     x86_64: '6eefc5ee6bd5d37334e5745bff55eb240933d7751ad7eb0a78bdd965c3c50a90'
   })
 
   depends_on 'glib'
@@ -28,9 +29,17 @@ class Gdk_pixbuf < Package
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libtiff'
-  depends_on 'libwebp'  => :build
+  depends_on 'libwebp' => :build
   depends_on 'pango' => :build
   depends_on 'six' => :build
+
+  @python_deps = %w[Markdown typogrify]
+
+  def self.prebuild
+    @python_deps.each do |item|
+      system "pip install --upgrade #{item}"
+    end
+  end
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
@@ -39,10 +48,13 @@ class Gdk_pixbuf < Package
       -Drelocatable=true \
       -Djasper=true \
       -Ddebug=false \
-      -Dman=false \
+      -Dman=true \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
+    @python_deps.each do |item|
+      system "pip uninstall --yes #{item}"
+    end
   end
 
   def self.install
@@ -50,19 +62,19 @@ class Gdk_pixbuf < Package
     loader_dir = "#{CREW_DEST_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders"
     FileUtils.mkdir_p loader_dir
     system "touch #{loader_dir}.cache"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @gdk_pixbuf_env = <<~GDK_PIXBUF_ENV_EOF
+      # gdk-pixbuf configuration
+      export GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders
+      export GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache
+    GDK_PIXBUF_ENV_EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/gdk_pixbuf", @gdk_pixbuf_env)
   end
 
   def self.postinstall
-    ENV['GDK_PIXBUF_MODULEDIR'] = "#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders"
-    ENV['GDK_PIXBUF_MODULE_FILE'] = "#{ENV['GDK_PIXBUF_MODULEDIR']}.cache"
-    system 'gdk-pixbuf-query-loaders --update-cache'
-    gdk_pixbuf_in_bashrc = `grep -c "GDK_PIXBUF_MODULEDIR" ~/.bashrc || true`
-    unless gdk_pixbuf_in_bashrc.to_i.positive?
-      puts 'Putting GDK_PIXBUF code in ~/.bashrc'.lightblue
-      system "echo 'export GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders' >> ~/.bashrc"
-      system "echo 'export GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
+    system "env GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders \
+      GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache \
+      gdk-pixbuf-query-loaders --update-cache"
   end
 end

@@ -3,23 +3,23 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.0.0-2'
+  version '3.0.1'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.tar.gz'
-  source_sha256 'a13ed141a1c18eb967aac1e33f4d6ad5f21be1ac543c344e0d6feeee54af8e28'
+  source_url 'https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.1.tar.gz'
+  source_sha256 '369825db2199f6aeef16b408df6a04ebaddb664fb9af0ec8c686b0ce7ab77727'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6e2d40ea5d1bafbe0b79e1a0ae644911f33a9ceb94716d3e4c05d91884850b28',
-     armv7l: '6e2d40ea5d1bafbe0b79e1a0ae644911f33a9ceb94716d3e4c05d91884850b28',
-       i686: '44422c2fbe7c1d4d8d0088d12c1691d33de19fbe10a1461d9b3ce8cf1e2e7e1e',
-     x86_64: '20d4d18d1a184a088abb5547bc94e7f6189229565157bb35c5691cf0f1264f9f'
+    aarch64: '210eb6582d1a06e7fbdbbfeb6658abed7633437de3e7faa4ebf16875e3687e28',
+     armv7l: '210eb6582d1a06e7fbdbbfeb6658abed7633437de3e7faa4ebf16875e3687e28',
+       i686: 'a7b5531d7d331bdaa2b822eed85dd66ecf3a9f7f04ed9227c154f9657a4d53cd',
+     x86_64: '78bba3bf15210fd85ece6a0551fc0a1097c55a39f92b334a204ac97edfa2e1a5'
   })
 
   depends_on 'ca_certificates'
@@ -40,7 +40,7 @@ class Ruby < Package
   end
 
   def self.check
-    system "TMPDIR=#{CREW_PREFIX}/tmp make check || true"
+    system "make check || true"
   end
 
   def self.install

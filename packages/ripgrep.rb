@@ -35,7 +35,6 @@ class Ripgrep < Package
   end
 
   def self.check
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system 'cargo test --all'
   end
 

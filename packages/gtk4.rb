@@ -23,45 +23,52 @@ class Gtk4 < Package
        i686: '26bba0fa27efbc129c81077260ae15adc03cd02dd4ebf664fb3b99082816510d',
      x86_64: '68c169e9112531c9fc41f9bed15a542867500846a16eedc6f103cfbcd99c668b'
   })
-
-  depends_on 'adwaita_icon_theme'
-  depends_on 'cairo'
-  depends_on 'cantarell_fonts'
-  depends_on 'cups'
-  depends_on 'ffmpeg'
-  depends_on 'fontconfig'
-  depends_on 'fribidi'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gnome_icon_theme'
-  depends_on 'graphene'
-  depends_on 'gst_plugins_bad'
-  depends_on 'gst_plugins_base'
-  depends_on 'gstreamer'
-  depends_on 'harfbuzz'
-  depends_on 'intel_media_sdk' if ARCH.eql?('x86_64')
-  depends_on 'json_glib'
-  depends_on 'libepoxy'
-  depends_on 'libmfx' if ARCH.eql?('i686')
-  depends_on 'libsass' if ARCH.eql?('x86_64')
-  depends_on 'libx11'
-  depends_on 'libxcomposite'
-  depends_on 'libxcursor'
-  depends_on 'libxdamage'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxi'
-  depends_on 'libxinerama'
-  depends_on 'libxkbcommon'
-  depends_on 'libxrandr'
-  depends_on 'pango'
-  depends_on 'pygments' => :build
-  depends_on 'rest'
-  depends_on 'six' => :build
+  
+  # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'docbook' => :build
+  depends_on 'gobject_introspection' => : build
+  depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
+  depends_on 'iso_codes' => :build
+  depends_on 'mesa' => :build
+  depends_on 'pygments' => :build # Is this needed?
+  depends_on 'six' => :build # Is this needed?
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
-  depends_on 'wayland'
-  depends_on 'xdg_base'
+  depends_on 'adwaita_icon_theme' # L
+  depends_on 'cantarell_fonts' # L
+  depends_on 'gnome_icon_theme' # L
+  depends_on 'hicolor_icon_theme' # L
+  depends_on 'shared_mime_info' # L
+  depends_on 'xdg_base' # L
+  depends_on 'cairo' # R
+  depends_on 'cups' # R
+  depends_on 'ffmpeg' # R
+  depends_on 'fontconfig' # R
+  depends_on 'fribidi' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'graphene' # R
+  depends_on 'gst_plugins_bad' # R
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libmfx' if ARCH.eql?('i686') # R
+  depends_on 'libsass' if ARCH.eql?('x86_64') # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxrandr' # R
+  depends_on 'pango' # R
+  depends_on 'rest' # R
+  depends_on 'vulkan_icd_loader' # R
+  depends_on 'wayland' # R
 
   def self.patch
     case ARCH
