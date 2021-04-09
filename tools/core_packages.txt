@@ -10,6 +10,7 @@ c_ares
 ca_certificates
 cmake
 compressdoc
+crew_profile_base
 curl
 diffutils
 doxygen
@@ -31,6 +32,7 @@ isl
 krb5
 less
 libcyrussasl
+libdb
 libedit
 libffi
 libiconv
@@ -85,7 +87,6 @@ trousers
 uchardet
 unzip
 util_macros
-wget
 xorg_proto
 xzutils
 zip

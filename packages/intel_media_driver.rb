@@ -4,24 +4,22 @@ class Intel_media_driver < Package
   description 'The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.'
   homepage 'https://github.com/intel/media-driver'
   @_ver = '20.4.5'
-  version @_ver
+  version "#{@_ver}-1"
   license 'BSD-3, and MIT'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
-    source_sha256 '3d856a963127ddd6690fc6dac521d7674947675d5f20452f1e6f45c0fc83f9e6'
-    depends_on 'gmmlib'
-    depends_on 'libva'
-  end
+
+  source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
+  source_sha256 '3d856a963127ddd6690fc6dac521d7674947675d5f20452f1e6f45c0fc83f9e6'
 
   binary_url({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_driver-20.4.5-chromeos-x86_64.tar.xz'
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_driver-20.4.5-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    x86_64: '0710ad9dd76b97b62849cfe6179dae0e884e56c475332b03f889d5eaa121ffff'
+    x86_64: '0cc7a352ff10ca44659c49e8ebace37dc8c96a936d66fd28c1c17b7d8c709419'
   })
 
+  depends_on 'gmmlib'
+  depends_on 'libva'
 
   def self.preflight
     abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
@@ -46,17 +44,12 @@ class Intel_media_driver < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 
-  def self.postinstall
-    @_str = 'export LIBVA_DRIVER_NAME=iHD'
-    if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
-      puts 'Performing env-setup...'
-      system "echo '#{@_str}' >> #{HOME}/.bashrc"
-      puts
-      puts 'To complete the installation, execute the following:'.lightblue
-      puts 'source ~/.bashrc'.lightblue
-      puts
-    end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # intel_media_driver configuration
+      export LIBVA_DRIVER_NAME=iHD
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/intel_media_driver", @env)
   end
 end

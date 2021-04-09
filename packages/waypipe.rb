@@ -25,7 +25,7 @@ class Waypipe < Package
   depends_on 'mesa'
   depends_on 'ffmpeg'
   depends_on 'libva'
-  depends_on 'libdrm' => ':build'
+  depends_on 'libdrm' => :build
 
   def self.patch
     system "sed -i '/#include \"util.h\"/a #include  <linux/version.h>' src/dmabuf.c"

@@ -24,7 +24,7 @@ class Libxss < Package
   })
 
   depends_on 'libxext'
-  depends_on 'util_macros' => ':build'
+  depends_on 'util_macros' => :build
 
   def self.build
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \

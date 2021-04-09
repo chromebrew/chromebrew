@@ -3,20 +3,18 @@ require 'package'
 class Opera < Package
   description "Opera is a multi-platform web browser based on Chromium and developed by Opera Software."
   homepage 'https://www.opera.com/'
-  version '74.0.3911.160'
+  version '75.0.3969.93'
   license 'OPERA-2018'
   compatibility 'x86_64'
+  source_url "https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
+  source_sha256 `curl -Ls https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`.chomp
 
-  if ARCH == 'x86_64'
-    depends_on 'gtk3'
-    depends_on 'gsettings_desktop_schemas'
-    depends_on 'harfbuzz'
-    depends_on 'graphite'
-    depends_on 'cras'
-    depends_on 'sommelier'
-    source_url "https://get.geo.opera.com/pub/opera/desktop/74.0.3911.160/linux/opera-stable_#{version}_amd64.deb"
-    source_sha256 `curl -Ls https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb.sha256sum`.chomp
-  end
+  depends_on 'gtk3'
+  depends_on 'gsettings_desktop_schemas'
+  depends_on 'harfbuzz'
+  depends_on 'graphite'
+  depends_on 'cras'
+  depends_on 'sommelier'
 
   def self.install
     # llvm-strip doesn't works with opera
@@ -49,7 +47,7 @@ class Opera < Package
 
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      FileUtils.rm 'x-www-browser' if File.realpath('x-www-browser') == "#{CREW_LIB_PREFIX}/opera/opera"
+      FileUtils.rm 'x-www-browser' if File.symlink?('x-www-browser') && File.realpath('x-www-browser') == "#{CREW_LIB_PREFIX}/opera/opera"
     end
   end
 end

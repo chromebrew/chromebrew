@@ -26,9 +26,9 @@ class Libgweather < Package
   depends_on 'gtk3'
   depends_on 'geocode_glib'
   depends_on 'dconf'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'glade' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'glade' => :build
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

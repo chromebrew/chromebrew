@@ -3,24 +3,24 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2580'
+  @_ver = '8.2.2725'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
-  source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'
+  source_url "https://github.com/vim/vim/archive/refs/tags/v#{@_ver}.tar.gz"
+  source_sha256 'a8aca906cf63fdc4264f86c1c39f8164989de0be3dc18553cb23bd6226c361a9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2725-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2725-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2725-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2725-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'fc753eff299bb106dde43f55f7b52d40852f3f2b0651eb869afad92eb1c5132c',
-     armv7l: 'fc753eff299bb106dde43f55f7b52d40852f3f2b0651eb869afad92eb1c5132c',
-       i686: 'a830cb5b36fe8752b90829f5b97dc382868d7dfda4462ed7cb3e37eebd27939a',
-     x86_64: '27f86977743855f0f77f9797a80674eda93977a4309a02bff399364237984104'
+    aarch64: 'c7c267037313e808abd4106eff6c2ae47e6cd95ccc2c97fd84ba0034efc9a0ed',
+     armv7l: 'c7c267037313e808abd4106eff6c2ae47e6cd95ccc2c97fd84ba0034efc9a0ed',
+       i686: '596357e4b5a9b098d6724a26dc120dbc8b3bccf3d7d706caa604a7fc1aa44036',
+     x86_64: 'a46443dd0cd6b6b8f924cb0f531154c5ac551bddcaa2e9ea52b93d18ae0864fc'
   })
 
   depends_on 'vim_runtime'
@@ -43,7 +43,6 @@ class Vim < Package
   end
 
   def self.build
-    system './configure --help'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \

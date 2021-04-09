@@ -26,10 +26,10 @@ class Vulkan_icd_loader < Package
   depends_on 'libx11'
   depends_on 'libxrandr'
   depends_on 'vulkan_headers'
-  depends_on 'libx11' => ':build'
-  depends_on 'libxrandr' => ':build'
-  depends_on 'wayland' => ':build'
-  depends_on 'vulkan_headers' => ':build'
+  depends_on 'libx11' => :build
+  depends_on 'libxrandr' => :build
+  depends_on 'wayland' => :build
+  depends_on 'vulkan_headers' => :build
 
   def self.build
     Dir.mkdir 'builddir'

@@ -3,21 +3,21 @@ require 'package'
 class Gnome_shell < Package
   description 'Next generation desktop shell'
   homepage 'https://wiki.gnome.org/Projects/GnomeShell'
-  version '40.rc'
+  version '40.0'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/GNOME/gnome-shell/archive/#{version}.tar.gz"
-  source_sha256 '76fcbb7d4ac829a1a1287feea40f3bcebc8e5ba225bb8231707cee09f53d44a0'
+  source_sha256 '29567d94787e4b8db2723caeaf230ee1eba6b53072592c9269a24973909aaca3'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.rc-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.rc-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.rc-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_shell-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '6bdc526bcf41f9348522a17ca9aefe8f437b87ba06bdb552dfc22607b5256f77',
-     armv7l: '6bdc526bcf41f9348522a17ca9aefe8f437b87ba06bdb552dfc22607b5256f77',
-     x86_64: '30b92776aaa8345bb32084d14675ffe60a01d985cee4eeecd304fdc27d693f8b'
+    aarch64: '31335a6996bc1638c4e63497684b7f3f9b90eb016e10aedaa9c96848190609c0',
+     armv7l: '31335a6996bc1638c4e63497684b7f3f9b90eb016e10aedaa9c96848190609c0',
+     x86_64: '4e933fabbc5cab93e25579de3958cdcde55d7d11c1ef13a6902c5775fb0d925c'
   })
 
   depends_on 'gcr'
@@ -31,9 +31,9 @@ class Gnome_shell < Package
   depends_on 'upower'
   depends_on 'gnome_session'
   depends_on 'gnome_settings_daemon'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'evolution_data_server' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'evolution_data_server' => :build
+  depends_on 'gobject_introspection' => :build
   depends_on 'mutter'
 
   def self.patch

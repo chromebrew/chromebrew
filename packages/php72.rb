@@ -34,9 +34,9 @@ class Php72 < Package
   depends_on 'tidy'
   depends_on 'unixodbc'
 
-  def self.preinstall
+  def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightred unless "#{phpver}" == ""
+    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
   end
 
   def self.patch
@@ -61,7 +61,6 @@ class Php72 < Package
   end
 
   def self.build
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     ENV['CFLAGS'] = ' -liconv'
     system './configure',
            "--prefix=#{CREW_PREFIX}",

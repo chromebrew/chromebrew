@@ -3,39 +3,54 @@ require 'package'
 class Gst_plugins_bad < Package
   description 'Multimedia graph framework - bad plugins'
   homepage 'https://gstreamer.freedesktop.org/'
-  @_ver = '1.18.3'
+  @_ver = '1.18.4'
   version @_ver
   license 'LGPL-2'
   compatibility 'all'
   source_url "https://github.com/GStreamer/gst-plugins-bad/archive/#{@_ver}.tar.gz"
-  source_sha256 '3e8b145850ade47e9fe09632c4b7bddfe35d2c53f5c6055183cfc62276010f46'
+  source_sha256 '30178ddcabcf71faccca8808f402a6e02394dfe3f821e2abe7a1b397f01eeaed'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '310fe14e7ac0ec26cd16c48a43f840ee7fa05fcb81a18801b34d2bfade6c8c1f',
-     armv7l: '310fe14e7ac0ec26cd16c48a43f840ee7fa05fcb81a18801b34d2bfade6c8c1f',
-       i686: 'ff4c9c6f78cf2ac14b08cce80837b8b8fdc562b347fcc0754db966c02e424313',
-     x86_64: '676663870c05079b5df3fc94071cb0e4bbcd16a0087e9916a241a5db262943fd'
+    aarch64: 'd730e940fa02c687cf4a3a1ff7b9a2d6fa2a295525aa409fc63e589956a71b40',
+     armv7l: 'd730e940fa02c687cf4a3a1ff7b9a2d6fa2a295525aa409fc63e589956a71b40',
+       i686: 'ac42eaad61b8e7de0764ee7620eb95582c6d2b6a4451834de9d0245aaef5308d',
+     x86_64: 'a1ea51c581260ea4da46238533ec0a4e17d58b08e63800d5addbd4fed5500de2'
   })
 
+  depends_on 'cairo'
+  depends_on 'chromaprint' => :build
+  depends_on 'faad2'
+  depends_on 'glib'
   depends_on 'gst_plugins_base'
-  depends_on 'orc'
+  depends_on 'gstreamer'
+  depends_on 'lcms'
+  depends_on 'libass'
+  depends_on 'libdca' => :build
   depends_on 'libdrm'
-  depends_on 'libx11'
+  depends_on 'libdvdnav'
+  depends_on 'libdvdread'
+  depends_on 'libfdk_aac'
   depends_on 'libgudev'
+  depends_on 'libmms'
+  depends_on 'librsvg'
+  depends_on 'libsndfile'
   depends_on 'libusb'
+  depends_on 'libva'
   depends_on 'libvdpau'
-  depends_on 'mjpegtools' => ':build'
-  depends_on 'chromaprint' => ':build'
-  depends_on 'libmms' => ':build'
-  depends_on 'faad2' => ':build'
-  depends_on 'libdca' => ':build'
-  depends_on 'libdvdnav' => ':build'
+  depends_on 'libwebp'
+  depends_on 'libx11'
+  depends_on 'mjpegtools'
+  depends_on 'openal'
+  depends_on 'openjpeg'
+  depends_on 'orc'
+  depends_on 'pango'
+  depends_on 'wayland'
 
   def self.build
     system "meson \

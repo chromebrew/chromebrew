@@ -3,29 +3,28 @@ require 'package'
 class Mutter < Package
   description 'A window manager for GNOME'
   homepage 'https://wiki.gnome.org/Projects/Mutter'
-  version '40.rc'
+  version '40.0'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/mutter/-/archive/#{version}/mutter-#{version}.tar.bz2"
-  # source_url "https://download.gnome.org/core/#{version}/sources/mutter-#{version}.tar.xz"
-  source_sha256 '8652c2d4c95a845d26b37d8fc8edbfa1261273405317103dbc3216d1ee66db99'
+  source_sha256 '3f56768113d536f5842ea6db14d1d9c48f8c87cd240891f9b9305116e425771e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.rc-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.rc-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.rc-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutter-40.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '7432e3824c27a0f92351e7f9888ddba7416b0513ec6e103bffa9f2f6a70b01bd',
-     armv7l: '7432e3824c27a0f92351e7f9888ddba7416b0513ec6e103bffa9f2f6a70b01bd',
-     x86_64: 'bc61662e93ad4e540f957efce8b3af3183422b19b838f87878931e9e35a87dd5'
+    aarch64: 'fafa169c22a7aa7595edf43a4c8dc7306210163e6759130f81d338120b92b8bd',
+     armv7l: 'fafa169c22a7aa7595edf43a4c8dc7306210163e6759130f81d338120b92b8bd',
+     x86_64: '1b28b4cd4f91f342bc6bde187f48f58954b7259f0377e679742c9c821b60f668',
   })
 
   depends_on 'dconf'
   depends_on 'gnome_settings_daemon'
   depends_on 'gsettings_desktop_schemas'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'xorg_server' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'xorg_server' => :build
   depends_on 'libinput'
   depends_on 'libwacom'
   depends_on 'startup_notification'

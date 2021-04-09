@@ -3,23 +3,23 @@ require 'package'
 class Nuitka < Package
   description 'nuitka is a Python to binary compiler written in Python. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module.'
   homepage 'https://nuitka.net/'
-  version '0.6.12.3'
+  version '0.6.13.2'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/Nuitka/Nuitka/archive/0.6.12.3.tar.gz'
-  source_sha256 '4f65349b87c3ffc297e19251308d743ee8b5ef09b695c134d6a46ec89d255216'
+  source_url 'https://github.com/Nuitka/Nuitka/archive/refs/tags/0.6.13.2.tar.gz'
+  source_sha256 'a594d054255688dbef8f8ba5b6cbb0207ad467384f2a6214522781ffbd5d43e5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.12.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.12.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.12.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.12.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '34b1e243d748254248e460992194b40cc79813cb9d59bf01a1c940e2c3519725',
-     armv7l: '34b1e243d748254248e460992194b40cc79813cb9d59bf01a1c940e2c3519725',
-       i686: '96be8a2d57245d5f9414bd13242f3e6ae5ab5927a8455afbddd43d27a45b83ce',
-     x86_64: '5ef1b47e0ec8a22c3852c1ba7b11efc5034558db2ef231f2e23bbe7628b558d9',
+    aarch64: '30d982517d09101767cfb71f7e579b0dd8b0636ce2e922ccd7d2a3eec93f0e26',
+     armv7l: '30d982517d09101767cfb71f7e579b0dd8b0636ce2e922ccd7d2a3eec93f0e26',
+       i686: '31d41f49b3caea88732e590ef269a17233f8cbc8298e50d9e89e7e8daae44889',
+     x86_64: '19333abe43c61a1fb3907ab6d4e63532dc9ddc7917b2cfa0c790a21bb89117e1',
   })
 
   def self.install
