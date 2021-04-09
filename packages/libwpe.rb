@@ -3,24 +3,24 @@ require 'package'
 class Libwpe < Package
   description 'General-purpose library for WPE WebKit'
   homepage 'https://wpewebkit.org'
-  @_ver = '1.8.0'
+  @_ver = '1.10.0'
   version @_ver
   license 'BSD-2'
   compatibility 'all'
   source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{@_ver}/libwpe-#{@_ver}.tar.xz"
-  source_sha256 'a6f00a7d091cbd4db57fe7ee3b4c12c6350921d654ed79812800a26c888481d2'
+  source_sha256 '2415e270d45e3595ed4052bc105f733744dc2d3677e12ff4a831e5029841084d'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.8.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.8.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.8.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.8.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.10.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.10.0-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.10.0-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libwpe-1.10.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '2ac2dfad4b4ada47f50eb01de8e4f48629de8f4d88a7808173c0164f8cfc7978',
-      armv7l: '2ac2dfad4b4ada47f50eb01de8e4f48629de8f4d88a7808173c0164f8cfc7978',
-        i686: 'c6ea7fb4281d48faf071f6a701e372863046ebfca86d3c9bb644f405e2192bf7',
-      x86_64: 'fb76a33b0eaed0ebb0ed586ee019a12d6f5a77e2b3b1e99ccc3ecd9884e43b20',
+  binary_sha256({
+    aarch64: '44c64f96d2051025c83162c7a556400156eb8657fb4965a1da8f3d6919e44d47',
+     armv7l: '44c64f96d2051025c83162c7a556400156eb8657fb4965a1da8f3d6919e44d47',
+       i686: '4f376503f92ed5e655fcef91ec6518fb147250a352f59b941f52797eadadcfdc',
+     x86_64: 'f7bf29748a591772836b70aa213e1c8dc67236c7ea3f2ea72717bfe928a39d69'
   })
 
   depends_on 'libxkbcommon'
@@ -28,8 +28,8 @@ class Libwpe < Package
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
     builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install

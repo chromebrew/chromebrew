@@ -22,11 +22,17 @@ class Libtiff < Package
      x86_64: '3a30356473a84f4c024c3dc399487782c6f585896a18c641b866ecad6cf528a8'
   })
 
-  depends_on 'libx11'
-  depends_on 'libjpeg'
-  depends_on 'libwebp'
-  depends_on 'libdeflate'
+  depends_on 'freeglut'
   depends_on 'imake' => :build
+  depends_on 'libdeflate'
+  depends_on 'libglu'
+  depends_on 'libice'
+  depends_on 'libjpeg'
+  depends_on 'libsm'
+  depends_on 'libwebp'
+  depends_on 'libx11'
+  depends_on 'libxi'
+  depends_on 'mesa'
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'

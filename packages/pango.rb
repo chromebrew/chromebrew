@@ -22,15 +22,17 @@ class Pango < Package
      x86_64: '0e334cadaaa118649dec9a8a35a6982f349338bed3c974fa3992786bf329b906'
   })
 
-  depends_on 'harfbuzz'
-  depends_on 'freetype'
   depends_on 'cairo'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'fribidi' # Gets built inside install automatically.
   depends_on 'glib'
   depends_on 'gobject_introspection' # add this package to build gtk+, avoid compilation error
+  depends_on 'harfbuzz'
+  depends_on 'libx11'
+  depends_on 'libxft'
   depends_on 'libxrender'
-  depends_on 'fribidi' # Gets built inside install automatically.
   depends_on 'six'
-  depends_on 'fontconfig'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \
