@@ -26,7 +26,6 @@ class Kubectl < Package
   depends_on "rsync" => :build
 
   def self.build
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     # Override the -j$NPROC set by crew with -j1 to workaround a race issue
     system "make", "-j1", "generated_files"
     system "make", "kubectl"

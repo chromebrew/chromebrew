@@ -61,7 +61,6 @@ class Php72 < Package
   end
 
   def self.build
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     ENV['CFLAGS'] = ' -liconv'
     system './configure',
            "--prefix=#{CREW_PREFIX}",

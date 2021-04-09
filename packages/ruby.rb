@@ -40,7 +40,7 @@ class Ruby < Package
   end
 
   def self.check
-    system "TMPDIR=#{CREW_PREFIX}/tmp make check || true"
+    system "make check || true"
   end
 
   def self.install

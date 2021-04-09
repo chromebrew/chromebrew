@@ -34,7 +34,6 @@ class Handbrake < Package
   end
 
   def self.build
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       ./configure --prefix=#{CREW_PREFIX} --enable-x265 --enable-numa --enable-fdk-aac --harden"
     Dir.chdir 'build' do
