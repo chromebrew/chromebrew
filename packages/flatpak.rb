@@ -4,17 +4,17 @@ class Flatpak < Package
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
   @_ver = '1.10.2'
-  version "#{@_ver}+1"
+  version "#{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
   source_sha256 'db152739d072f8ff299e4e888d8963a1b4538da7b10e0b86525be438f2e1dde4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2+1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f03b38526bd4874d0e917bac2e743929f8e118ab67796ee088f36e4712d4c35b',
