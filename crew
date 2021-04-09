@@ -522,12 +522,6 @@ def download
   elsif !source
     puts "Precompiled binary available, downloading..."
   elsif @pkg.build_from_source
-    abort "You don't have a working C compiler. Execute `crew install buildessential` and try again.".lightred unless system('make --version')
-    abort "You don't have a working Clang compiler. Execute `crew install buildessential` and try again.".lightred unless system('clang --version')
-    abort "You don't have a working CMake compiler. Execute `crew install buildessential` and try again.".lightred unless system('cmake --version')
-    abort "You don't have a working Meson build system. Execute `crew install buildessential` and try again.".lightred unless system('meson --version')
-    abort "You don't have a working Perl. Execute `crew install buildessential` and try again.".lightred unless system('perl --version')
-    abort "You don't have a working Python. Execute `crew install buildessential` and try again.".lightred unless system('python --version')
     puts "Downloading source..."
   else
     puts "No precompiled binary available for your platform, downloading source..."
@@ -759,6 +753,8 @@ def expand_dependencies
     end
   end
   push_dependencies
+  @dependencies << 'buildessential' if @pkg.build_from_source
+  @dependencies.reverse!
 end
 
 def resolve_dependencies
