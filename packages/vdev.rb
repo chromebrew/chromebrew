@@ -22,7 +22,7 @@ class Vdev < Package
      x86_64: 'f8384c3a8b057e48d13889a9ce8433b16d44f74a6750273323a53aa782bf24be',
   })
 
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'libpstat'
   depends_on 'fskit'
   depends_on 'lvm2'

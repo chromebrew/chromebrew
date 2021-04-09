@@ -26,7 +26,7 @@ class Syncthing < Package
 
   def self.build
     #The system tmp dir is mounted noexec, and the build will fail if it is used
-    system "TMPDIR=#{CREW_PREFIX}/tmp go run build.go -version v0.14.40"
+    system "go run build.go -version v0.14.40"
   end
 
   def self.install

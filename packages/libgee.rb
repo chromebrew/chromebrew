@@ -26,8 +26,7 @@ class Libgee < Package
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env TMPDIR=#{CREW_PREFIX}/tmp \
-      CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       ./configure #{CREW_OPTIONS}"

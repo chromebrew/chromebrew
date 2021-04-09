@@ -3,30 +3,26 @@ require 'package'
 class Mutt < Package
   description 'Mutt is a small but very powerful text-based mail client for Unix operating systems.'
   homepage 'http://mutt.org/'
-  version '1.9.2'
+  version '2.0.6'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-1.9.2.tar.gz'
-  source_sha256 'a2e152a352bbf02d222d54074199d9c53821c19f700c4cb85f78fa85faed7896'
+  source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-2.0.6.tar.gz'
+  source_sha256 '81e31c45895fd624747f19106aa2697d2aa135049ff2e9e9db0a6ed876bcb598'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-1.9.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mutt-2.0.6-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '0acaa6fa2863afa8da56a61ba99d365e2bdd73dc56e9801ee9b6e9338d33e2a2',
-     armv7l: '0acaa6fa2863afa8da56a61ba99d365e2bdd73dc56e9801ee9b6e9338d33e2a2',
-       i686: '97e12bc88aff256ea46c6389c69a5cf2623908c423ca43f08d6a905c0cb50391',
-     x86_64: 'e8ca9e36db89e76471118d9620df06e9f6eac43c20eefd01810a98ca80149583',
+  binary_sha256({
+    aarch64: '2f3f18827cb8a2c0a5a48e04397c4c4bf811cad82a8a235081a9f54ba227308f',
+     armv7l: '2f3f18827cb8a2c0a5a48e04397c4c4bf811cad82a8a235081a9f54ba227308f',
+       i686: 'd43f6599f9c83c487a2302015e1be9c8d28702fe8d8feab092cbc5b37a54e4a4',
+     x86_64: '3dedfd9092e58cba771c3af7079bf608b11960df2d30989254187501befccecc'
   })
 
-  depends_on 'gdbm'
-  depends_on 'libcyrussasl'
   depends_on 'libxslt'
-  depends_on 'openssl'
-  depends_on 'perl'
 
   def self.build
     system "./configure \
@@ -42,13 +38,13 @@ class Mutt < Package
 
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/mail"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-  end
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
-  def self.postinstall
-    puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "echo 'export SASL_PATH=#{CREW_PREFIX}/lib/sasl2' >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @muttenv = <<~MUTTEOF
+      # Mutt configuration
+      export SASL_PATH=#{CREW_PREFIX}/lib/sasl2
+    MUTTEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/mutt", @muttenv)
   end
 end

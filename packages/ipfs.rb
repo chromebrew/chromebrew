@@ -23,7 +23,7 @@ class Ipfs < Package
   })
 
   depends_on 'go' => :build
-  depends_on 'fuse'
+  depends_on 'fuse3'
 
   def self.build
     system 'mkdir -p ../src/github.com/ipfs/go-ipfs'

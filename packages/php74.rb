@@ -66,7 +66,7 @@ class Php74 < Package
   end
 
   def self.build
-    system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} TMPDIR='#{CREW_PREFIX}/tmp' CFLAGS='-pipe' \
+    system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} CFLAGS='-pipe' \
       ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
