@@ -3,19 +3,18 @@ require 'package'
 class Intel_media_driver < Package
   description 'The Intel(R) Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.'
   homepage 'https://github.com/intel/media-driver'
-  @_ver = '20.4.5'
-  version "#{@_ver}-1"
+  @_ver = '21.1.3'
+  version @_ver
   license 'BSD-3, and MIT'
   compatibility 'x86_64'
-
   source_url "https://github.com/intel/media-driver/archive/intel-media-#{@_ver}.tar.gz"
-  source_sha256 '3d856a963127ddd6690fc6dac521d7674947675d5f20452f1e6f45c0fc83f9e6'
+  source_sha256 '219ce6b08a84bdce311160dc694d866249fd4e390391c2ac7be55f13a2fb928c'
 
   binary_url({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_driver-20.4.5-1-chromeos-x86_64.tar.xz'
+    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_driver-21.1.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    x86_64: '0cc7a352ff10ca44659c49e8ebace37dc8c96a936d66fd28c1c17b7d8c709419'
+    x86_64: 'cb0a13759d9694716c928640384ca59c3ac044a3379e0cc4160f156347e4d158'
   })
 
   depends_on 'gmmlib'
