@@ -6,20 +6,19 @@ class Intel_media_sdk < Package
   version '20.5.1'
   license 'MIT'
   compatibility 'x86_64'
-  if ARCH == 'x86_64'
-    source_url 'https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-20.5.1.tar.gz'
-    source_sha256 '047986646f185313df2159fd44bccd870e173bb1cae9c2501ac6b9774bfd424b'
-    depends_on 'intel_media_driver'
-    depends_on 'libdrm'
-    depends_on 'libva'
-    depends_on 'wayland'
-  end
+  source_url 'https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-20.5.1.tar.gz'
+  source_sha256 '047986646f185313df2159fd44bccd870e173bb1cae9c2501ac6b9774bfd424b'
+
+  depends_on 'intel_media_driver'
+  depends_on 'libdrm'
+  depends_on 'libva'
+  depends_on 'wayland'
 
   binary_url({
     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intel_media_sdk-20.5.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    x86_64: '89aac36a221473846222f7550109055c674927aff2273fd1e1f807d046c8046b'
+    x86_64: '6c50fda47c7711dbc506badef677cb9f9941ffd5fc0d147562117f08da7658f2'
   })
 
   def self.build

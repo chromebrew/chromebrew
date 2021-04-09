@@ -3,24 +3,24 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.0.1'
+  @_ver = '21.0.2'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
-  source_sha256 '379fc984459394f2ab2d84049efdc3a659869dc1328ce72ef0598506611712bb'
+  source_sha256 '46c1dc5bb54a372dee43ec3c067229c299187d5bdadf1402756bbf66a6df5b88'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '281a8b7b6cc4009fc39020151176e56a8f2f695c02c86fd04b81887484183a38',
-     armv7l: '281a8b7b6cc4009fc39020151176e56a8f2f695c02c86fd04b81887484183a38',
-       i686: 'd18cebf293137b55ba21b7daf8b015f11e787e34592b180bc3b904a8311798f9',
-     x86_64: 'f82724f2890c1a8a6ceb768826cbe17301580286d47d365bbc425943af22cd6c'
+    aarch64: '535d0993748c3331486a2a48f380898244d223f355306374fd7761260871731a',
+     armv7l: '535d0993748c3331486a2a48f380898244d223f355306374fd7761260871731a',
+       i686: 'dd315ca82272212afa69914bc1f4a676fd0d5f1e35f7e11c1264c569afed360d',
+     x86_64: '0d69570884f25ca4ea75635c05d60652148397d51afecedc92cf3dcee6955361'
   })
 
   depends_on 'elfutils'

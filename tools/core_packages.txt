@@ -4,6 +4,7 @@ brotli
 bz2
 c_ares
 ca_certificates
+crew_profile_base
 curl
 filecmd
 gcc10
@@ -16,6 +17,7 @@ icu4c
 krb5
 less
 libcyrussasl
+libdb
 libedit
 libffi
 libidn2

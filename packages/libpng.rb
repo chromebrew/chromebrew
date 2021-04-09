@@ -43,4 +43,8 @@ class Libpng < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
+
+  def self.postinstall
+    system 'update-mime-database', "#{CREW_PREFIX}/share/mime"
+  end
 end

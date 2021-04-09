@@ -4,26 +4,26 @@ class Docbook_xml44 < Package
   description 'A widely used XML scheme for writing documentation and help'
   homepage 'https://www.oasis-open.org/docbook/'
   @_ver = '4.4'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'MIT'
   compatibility 'all'
   source_url "https://docbook.org/xml/#{@_ver}/docbook-xml-#{@_ver}.zip"
   source_sha256 '02f159eb88c4254d95e831c51c144b1863b216d909b5ff45743a1ce6f5273090'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-2-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-2-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml44-4.4-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0781dda33ce4845ca3f18d533469ca888c5823f8b1c5b41fa9c633e25569d971',
-     armv7l: '0781dda33ce4845ca3f18d533469ca888c5823f8b1c5b41fa9c633e25569d971',
-       i686: 'f681134f0aa6bee29744c33612c5d5b71d52601777a00af170fc3528d9af9474',
-     x86_64: '46f1158d117549d339ace891d87e2ac27a0cc5d778f75991c462201e57f11e0b'
+    aarch64: '0a46c480b0091976c7f205f357e40a89dd8184b6e8917f83b650b61a4d19842f',
+     armv7l: '0a46c480b0091976c7f205f357e40a89dd8184b6e8917f83b650b61a4d19842f',
+       i686: '245084bbab863f35e180a73c0b673ded95f7e62de840f232ac9c367888dabd78',
+     x86_64: 'a0d55ff8144b07bafcf720618dacaa60ccd520fa2b3fb952069cfc93fbf87abb'
   })
 
-  depends_on 'libxml2'
+  depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
 
   def self.install
@@ -55,18 +55,6 @@ class Docbook_xml44 < Package
   end
 
   def self.postinstall
-    # Docbook common postinstall block
-    ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
-
-    xml_catalog_files_in_bashrc = `grep -c "XML_CATALOG_FILES" ~/.bashrc || true`
-    unless xml_catalog_files_in_bashrc.to_i.positive?
-      puts "Putting \"export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog\" in ~/.bashrc".lightblue
-      system "echo 'export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
-    # End Docbook common postinstall block
-
     system "xmlcatalog --noout --add 'public' \
       '-//OASIS//ELEMENTS DocBook XML HTML Tables V#{@_ver}//EN' \
       'http://www.oasis-open.org/docbook/xml/#{@_ver}/htmltblx.mod' \
