@@ -9,11 +9,8 @@ class Epiphany < Package
   version '40.0'
   license 'GPL'
   compatibility 'x86_64 aarch64 armv7l'
-  case ARCH
-  when 'x86_64', 'aarch64', 'armv7l'
-    source_url "https://gitlab.gnome.org/GNOME/epiphany/-/archive/#{version}/epiphany-#{version}.tar.bz2"
-    source_sha256 '2603fcc30ea8c2ba1343eda845c70825af0749db1c5e1ef252240e30dd855c06'
-  end
+  source_url "https://gitlab.gnome.org/GNOME/epiphany/-/archive/#{version}/epiphany-#{version}.tar.bz2"
+  source_sha256 '2603fcc30ea8c2ba1343eda845c70825af0749db1c5e1ef252240e30dd855c06'
 
   binary_url({
     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/epiphany-40.0-chromeos-armv7l.tar.xz',
