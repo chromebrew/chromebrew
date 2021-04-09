@@ -73,8 +73,8 @@ class Gdk_pixbuf < Package
   end
 
   def self.postinstall
-    system 'env GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders \
+    system "env GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders \
       GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache \
-      gdk-pixbuf-query-loaders --update-cache'
+      gdk-pixbuf-query-loaders --update-cache"
   end
 end
