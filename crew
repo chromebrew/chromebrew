@@ -47,6 +47,22 @@ Usage:
 version #{CREW_VERSION}
 DOCOPT
 
+CREW_LICENSE = <<~LICENSESTRING
+  Copyright (C) 2021 Chromebrew Authors
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, version 3 of the License.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see https://www.gnu.org/licenses/gpl-3.0.html.
+LICENSESTRING
+
 # Set XZ_OPT environment variable for build command.
 # If CREW_XZ_OPT is defined, use it by default.  Use `-7e`, otherwise.
 ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
@@ -61,8 +77,12 @@ begin
   args['<name>'] = args['<name>'].map { |arg| arg.gsub('-','_') } if args['<name>']
 rescue Docopt::Exit => e
   if ARGV[0] then
-    if ARGV[0] == '-V' or ARGV[0] == '--version' then
+    case ARGV[0]
+    when '-V', '--version'
       puts CREW_VERSION
+      exit 0
+    when '-L', '--license'
+      puts CREW_LICENSE
       exit 0
     end
     if ARGV[0] != '-h' and ARGV[0] != '--help' then
