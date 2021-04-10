@@ -35,13 +35,14 @@ Usage:
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides [options] <name> ...
 
-  -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
-  -s --build-from-source  Build from source even if pre-compiled binary exists.
-  -S --recursive-build    Build from source, including all dependencies, even if pre-compiled binaries exist.
-  -V --version            Display the crew version.
   -c --color              Use colors even if standard out is not a tty.
   -d --no-color           Disable colors even if standard out is a tty.
+  -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
+  -L --license            Display the crew license.
+  -s --build-from-source  Build from source even if pre-compiled binary exists.
+  -S --recursive-build    Build from source, including all dependencies, even if pre-compiled binaries exist.
   -v --verbose            Show extra information.
+  -V --version            Display the crew version.
   -h --help               Show this screen.
 
 version #{CREW_VERSION}
