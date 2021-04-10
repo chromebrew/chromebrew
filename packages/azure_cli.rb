@@ -1,5 +1,3 @@
-# This package is left untouched, except upgrades, as many changes are in #5503
-
 require 'package'
 
 class Azure_cli < Package
@@ -14,9 +12,12 @@ class Azure_cli < Package
     source_sha256 'bbe4a1f85418d239444717f2c9706a87f81fd2515bb0bb4b4e48548fd3e08caa'
   end
 
+  def self.build
+    system "python3 setup.py build #{CREW_SETUP_PY3_BUILD_OPTIONS}"
+  end
+
   def self.install
-    system "pip install azure-cli -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
-    system "chmod +x #{CREW_DEST_PREFIX}/bin/az"
+    system "python3 setup.py install #{CREW_SETUP_PY_INSTALL_OPTIONS}"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @azurebashd = <<~AZUREEOF
