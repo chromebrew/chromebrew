@@ -6,24 +6,21 @@ class Oci_cli < Package
   version '2.22.1'
   license 'UPL-1.0 or Apache-2.0'
   compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686', 'x86_64'
-    source_url 'https://github.com/oracle/oci-cli/archive/v2.22.1.tar.gz'
-    source_sha256 '008b3e612d5bcfc11d27fb274a5efe289e8ce30d68b4a1ea6c7d73eb5782d370'
+  source_url 'https://github.com/oracle/oci-cli/archive/v2.22.1.tar.gz'
+  source_sha256 '008b3e612d5bcfc11d27fb274a5efe289e8ce30d68b4a1ea6c7d73eb5782d370'
 
-    depends_on 'py3_arrow'
-    depends_on 'py3_click'
-    depends_on 'py3_cffi'
-    depends_on 'py3_configparser'
-    depends_on 'py3_jmespath'
-    depends_on 'py3_oci'
-    depends_on 'py3_pyopenssl'
-    depends_on 'py3_retrying'
-    depends_on 'py3_terminaltables'
-    depends_on 'py3_virtualenv'
-    depends_on 'py3_pyyaml'
-    depends_on 'py3_setuptools' => :build
-  end
+  depends_on 'py3_arrow'
+  depends_on 'py3_click'
+  depends_on 'py3_cffi'
+  depends_on 'py3_configparser'
+  depends_on 'py3_jmespath'
+  depends_on 'py3_oci'
+  depends_on 'py3_pyopenssl'
+  depends_on 'py3_retrying'
+  depends_on 'py3_terminaltables'
+  depends_on 'py3_virtualenv'
+  depends_on 'py3_pyyaml'
+  depends_on 'py3_setuptools' => :build
 
   def self.build
     system "python3 setup.py build #{CREW_SETUP_PY3_BUILD_OPTIONS}"
