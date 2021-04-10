@@ -23,7 +23,6 @@ class Choose < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    #FileUtils.install "choose", "#{CREW_DEST_PREFIX}/bin/", mode: 755 #Broken?
-    FileUtils.cp "choose", "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.install "choose", "#{CREW_DEST_PREFIX}/bin/choose", mode: 0755
   end
 end
