@@ -23,7 +23,7 @@ class Sshfs < Package
   })
 
   depends_on 'glib'
-  depends_on 'fuse'
+  depends_on 'fuse3'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

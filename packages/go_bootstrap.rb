@@ -24,7 +24,7 @@ class Go_bootstrap < Package
 
   def self.build
     FileUtils.cd('src') do
-      system "TMPDIR=#{CREW_PREFIX}/tmp ./make.bash"
+      system "./make.bash"
     end
   end
 

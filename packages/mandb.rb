@@ -24,6 +24,7 @@ class Mandb < Package
   })
 
   depends_on 'gdbm'
+  depends_on 'glibc'
   depends_on 'groff' => :build
   depends_on 'libpipeline'
   depends_on 'libseccomp'
@@ -60,7 +61,6 @@ class Mandb < Package
     # we can't write to /usr/lib/tmpfiles.d
     # we can't create the user 'man'
     # the pager is not at the default location
-    system './configure --help'
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
       ./configure \
@@ -82,12 +82,5 @@ class Mandb < Package
 
   def self.postinstall
     system "env MANPATH=#{CREW_MAN_PREFIX} mandb -psc"
-    pager_in_bashrc = `grep -c "PAGER" ~/.bashrc || true`
-    unless pager_in_bashrc.to_i.positive?
-      puts 'Putting PAGER=most in ~/.bashrc'.lightblue
-      system "echo 'export PAGER=most' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
   end
 end

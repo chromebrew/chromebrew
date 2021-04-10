@@ -28,7 +28,7 @@ class Gvfs < Package
   depends_on 'dconf'
   depends_on 'docbook_xsl' => :build
   depends_on 'elogind' => :build
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'gcr'
   depends_on 'glib'
   depends_on 'gtk3' => :build

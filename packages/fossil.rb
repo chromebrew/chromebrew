@@ -22,7 +22,7 @@ class Fossil < Package
      x86_64: 'e3de20c2f0f7d49d2cac73d9076fd866d8df5f781105473b15107fcc3c45b69d',
   })
 
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'sqlite'
 
   def self.build

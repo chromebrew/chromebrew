@@ -35,7 +35,6 @@ class Aircrack_ng < Package
     # --with-avx512[=yes|no]  use AVX-512F instruction set, [default=no]
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
       LDFLAGS='-flto=auto' \
-      TMPDIR=#{CREW_PREFIX}/tmp \
       ./configure \
       #{CREW_OPTIONS} \
       --program-prefix='' --program-suffix='' \
