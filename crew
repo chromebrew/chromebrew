@@ -77,10 +77,11 @@ begin
   args['<name>'] = args['<name>'].map { |arg| arg.gsub('-','_') } if args['<name>']
 rescue Docopt::Exit => e
   if ARGV[0] then
-    if ARGV[0] == '-V' or ARGV[0] == '--version' then
+    case ARGV[0]
+    when '-V', '--version'
       puts CREW_VERSION
       exit 0
-    elsif ARGV[0] == '-L' or ARGV[0] == '--license' then
+    when '-L', '--license'
       puts LICENSE
       exit 0
     end
