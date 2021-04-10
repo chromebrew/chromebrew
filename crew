@@ -47,7 +47,7 @@ Usage:
 version #{CREW_VERSION}
 DOCOPT
 
-LICENSE = <<~LICENSESTRING
+CREW_LICENSE = <<~LICENSESTRING
   Copyright (C) 2021 Chromebrew Authors
 
   This program is free software: you can redistribute it and/or modify
@@ -82,7 +82,7 @@ rescue Docopt::Exit => e
       puts CREW_VERSION
       exit 0
     when '-L', '--license'
-      puts LICENSE
+      puts CREW_LICENSE
       exit 0
     end
     if ARGV[0] != '-h' and ARGV[0] != '--help' then
