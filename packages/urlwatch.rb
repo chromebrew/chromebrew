@@ -1,7 +1,7 @@
 require 'package'
 
 class Urlwatch < Package
-  description 'urlwatch helps you watch changes in webpages.'
+  description 'urlwatch is a tool for monitoring webpages for changes.'
   homepage 'https://thp.io/2008/urlwatch/'
   version '2.22'
   license 'BSD'
