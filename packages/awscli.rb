@@ -23,26 +23,18 @@ class Awscli < Package
 
   def self.install
     system "python3 setup.py install #{CREW_SETUP_PY_INSTALL_OPTIONS}"
-  end
 
-  def self.postinstall
-    puts
-    puts "Command completion support is available for the following shells:".lightblue
-    puts "bash zsh".lightblue
-    puts
-    puts "To add aws completion for bash, execute the following:".lightblue
-    puts "echo '# aws completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_bash_completer ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/bin/aws_bash_completer' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
-    puts "To add aws completion for zsh, execute the following:".lightblue
-    puts "echo '# aws completion' >> ~/.zshrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/aws_zsh_completer.sh ]; then' >> ~/.zshrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/bin/aws_zsh_completer.sh' >> ~/.zshrc".lightblue
-    puts "echo 'fi' >> ~/.zshrc".lightblue
-    puts "source ~/.zshrc".lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
+    @awsbashrc = <<~AWSBASHRCEOF
+      # Amazon Web Services CLI bash completion
+      source #{CREW_PREFIX}/bin/aws_bash_completer
+    AWSBASHRCEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/aws", @awsbashrc)
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/zsh.d"
+    @awszshrc = <<~AWSZSHRCEOF
+      # Amazon Web Services CLI zsh completion
+      source #{CREW_PREFIX}/bin/aws_zsh_completer.sh
+    AWSZSHRCEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/zsh.d/aws", @awszshrc)
   end
 end

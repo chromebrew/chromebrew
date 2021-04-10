@@ -17,13 +17,12 @@ class Azure_cli < Package
   def self.install
     system "pip install azure-cli -r requirements.txt --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
     system "chmod +x #{CREW_DEST_PREFIX}/bin/az"
-  end
 
-  def self.postinstall
-    puts
-    puts "To add command completion, execute the following:".lightblue
-    puts "echo 'source #{CREW_PREFIX}/share/azure-cli/az.completion' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @azurebashd = <<~AZUREEOF
+      # Microsoft Azure CLI bash completion
+      source #{CREW_PREFIX}/share/azure-cli/az.completion
+    AZUREEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azurebashd)
   end
 end
