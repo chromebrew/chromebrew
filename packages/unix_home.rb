@@ -4,6 +4,7 @@ class Unix_home < Package
   description 'Regular Unix home directory for Chrome OS'
   version '1.0'
   compatibility 'all'
+  license 'GPL-3+'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
   
@@ -23,6 +24,12 @@ class Unix_home < Package
       set +a
     EOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/unix_home", @env)
+    
+    # cover HOME variable for dependencies after this package
+    # undefine HOME variable
+    Object.send(:remove_const, :HOME)
+    # define it
+    HOME = @HOME
   end
   
   def self.postinstall
