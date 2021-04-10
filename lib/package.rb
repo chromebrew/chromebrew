@@ -37,6 +37,14 @@ class Package
     @dependencies
   end
 
+  def self.conflicts_with (conflict = nil)
+    Dir[CREW_META_PATH + '*.directorylist'].sort.map do |f|
+      if File.basename(f, '.directorylist').include? conflict then
+        abort "#{conflict} is installed so #{**FIXME**} cannot be installed!".lightred
+      end
+    end
+  end
+
   def self.get_url (architecture)
     if !@build_from_source && @binary_url && @binary_url.has_key?(architecture)
       return @binary_url[architecture]
