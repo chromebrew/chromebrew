@@ -29,7 +29,6 @@ class Python27 < Package
   # Proxy setting breaks test_httpservers, test_ssl,
   # test_urllib, test_urllib2, test_urllib2_localnet.
   # So, modifying environment variable to make pass tests.
-  ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
 
   def self.build
     # IMPORTANT: Do not build with python27 already installed or pip will not be included.

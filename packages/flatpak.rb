@@ -4,37 +4,50 @@ class Flatpak < Package
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
   @_ver = '1.10.2'
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/flatpak/flatpak/releases/download/#{@_ver}/flatpak-#{@_ver}.tar.xz"
   source_sha256 'db152739d072f8ff299e4e888d8963a1b4538da7b10e0b86525be438f2e1dde4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flatpak-1.10.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c75d3704f54b035af47b13aec034e762f55ef01de3193f9948af9c2f94240160',
-     armv7l: 'c75d3704f54b035af47b13aec034e762f55ef01de3193f9948af9c2f94240160',
-       i686: '5d379657448f6186f23ed5e47ccebbfc1e5b03ad930886c093451b32f0734390',
-     x86_64: '6b35bbf60cc693be3dd808dd697d0a5d62cbe2f830d6a856fa32aa1e15d7210b'
+    aarch64: 'f03b38526bd4874d0e917bac2e743929f8e118ab67796ee088f36e4712d4c35b',
+     armv7l: 'f03b38526bd4874d0e917bac2e743929f8e118ab67796ee088f36e4712d4c35b',
+       i686: 'cd76a117df4c1757410dda6f17ac5d1a46a0028ab3116ae3fea5af602774a1d4',
+     x86_64: 'ae83c2515abec6eb9969b69d838280f70f620f51ad21231ce5e297c87f5cff5c'
   })
 
   depends_on 'appstream_glib'
   depends_on 'bubblewrap'
   depends_on 'dconf'
+  depends_on 'fuse2'
+  depends_on 'gdk_pixbuf'
+  depends_on 'gpgme'
+  depends_on 'json_glib'
+  depends_on 'libarchive'
+  depends_on 'libassuan'
   depends_on 'libevent'
   depends_on 'libostree'
   depends_on 'libsoup2'
+  depends_on 'libxau'
   depends_on 'polkit'
   depends_on 'pulseaudio'
   depends_on 'py3_pyparsing'
   depends_on 'xdg_base'
+  depends_on 'xdg_dbus_proxy'
+  depends_on 'xmlto' => :build
 
   def self.patch
+    # Use fuse3
+    # system "sed -i 's:PKG_CHECK_MODULES(FUSE, fuse >= 2.9.2):PKG_CHECK_MODULES(FUSE, fuse3 >= 3.1.1):' configure.ac"
+    # system "sed -i 's:#define FUSE_USE_VERSION 26:#define FUSE_USE_VERSION 31:' revokefs/main.c"
+
     # Source has libglnx repo as submodule
     @git_dir = 'libglnx'
     @git_hash = '4c9055ac08bb64dca146724f488cce4c1ce4c628'
@@ -76,24 +89,30 @@ class Flatpak < Package
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap CFLAGS='-flto=auto' \
-      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
-      --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
-      --enable-sandboxed-triggers \
-      --with-priv-mode=none \
-      --without-systemd \
-      --with-system-fonts-dir=#{CREW_PREFIX}/share/fonts:/usr/share/fonts \
-      --with-system-font-cache-dirs=/usr/share/cache/fontconfig:#{CREW_PREFIX}/cache/fontconfig \
-      --disable-documentation \
-      --disable-maintainer-mode \
-      --with-system-bubblewrap"
+    system "env BWRAP=#{CREW_PREFIX}/bin/bwrap \
+              CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+              CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+              LDFLAGS='-flto=auto' \
+            ./configure #{CREW_OPTIONS} \
+              --with-system-install-dir=#{CREW_PREFIX}/var/lib/flatpak \
+              --localstatedir=#{CREW_PREFIX}/var \
+              --enable-sandboxed-triggers \
+              --with-priv-mode=none \
+              --without-systemd \
+              --with-system-fonts-dir=#{CREW_PREFIX}/share/fonts:/usr/share/fonts \
+              --with-system-font-cache-dirs=/usr/share/cache/fontconfig:#{CREW_PREFIX}/cache/fontconfig \
+              --disable-documentation \
+              --disable-maintainer-mode \
+              --enable-xauth \
+              --with-system-dbus-proxy \
+              --with-system-bubblewrap"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.install "#{CREW_DEST_PREFIX}/bin/flatpak", "#{CREW_DEST_PREFIX}/bin/flatpak.elf", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec/flatpak/"
+    FileUtils.install "#{CREW_DEST_PREFIX}/bin/flatpak", "#{CREW_DEST_PREFIX}/libexec/flatpak/flatpak", mode: 0o755
     @flatpak_sh = <<~FLATPAK_HEREDOC
       #!/bin/bash
       # Flatpak needs to be able to see fonts in #{CREW_PREFIX}/share/fonts
@@ -115,28 +134,27 @@ class Flatpak < Package
       unset GDK_PIXBUF_MODULEDIR
       unset GDK_BACKEND
       unset FONTCONFIG_PATH
-      #{CREW_PREFIX}/bin/flatpak.elf \$FLATPAK_FLAGS  "\$@"
+      #{CREW_PREFIX}/libexec/flatpak/flatpak \$FLATPAK_FLAGS  "\$@"
     FLATPAK_HEREDOC
     IO.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
     FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf",
                  "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # Flatpak configuration
+      export XDG_DATA_DIRS='#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share'
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/flatpak", @env)
   end
 
   def self.postinstall
+    system '[ -e /var/run/chrome/dconf ] || sudo mkdir /var/run/chrome/dconf'
+    system 'sudo chown chronos:chronos /var/run/chrome/dconf/ -Rv'
     puts
     puts 'Configuring flathub'.lightblue
-    system 'flatpak.elf remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo'
+    system "#{CREW_PREFIX}/libexec/flatpak/flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo"
     puts
-    # Check to see if XDG_DATA_DIRS for flatpak is in ~/.bashrc. If not, put
-    # it in.
-    @_str = "XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share"
-    if `grep -c '#{@_str}' #{HOME}/.bashrc`.to_i.zero?
-      puts 'Putting XDG Environment Variables in ~/.bashrc'.lightblue
-      system "sed -i '/XDG_DATA_DIRS/d' ~/.bashrc"
-      system "echo 'export XDG_DATA_DIRS=#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
   end
 end

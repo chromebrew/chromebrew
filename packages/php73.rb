@@ -61,7 +61,7 @@ class Php73 < Package
   end
 
   def self.build
-    system "env TMPDIR='#{CREW_PREFIX}/tmp' CFLAGS='-pipe -ltinfo' \
+    system "env CFLAGS='-pipe -ltinfo' \
       ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \

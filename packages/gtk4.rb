@@ -109,16 +109,48 @@ class Gtk4 < Package
   depends_on 'py3_pygments' => :build
   depends_on 'rest'
   depends_on 'shared_mime_info'
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
   depends_on 'snappy'
   depends_on 'speex'
   depends_on 'srt'
   depends_on 'util_linux'
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
-  depends_on 'wayland'
-  depends_on 'xdg_base'
-  depends_on 'zeromq'
+  depends_on 'adwaita_icon_theme' # L
+  depends_on 'cantarell_fonts' # L
+  depends_on 'gnome_icon_theme' # L
+  depends_on 'hicolor_icon_theme' # L
+  depends_on 'shared_mime_info' # L
+  depends_on 'xdg_base' # L
+  depends_on 'cairo' # R
+  depends_on 'cups' # R
+  depends_on 'ffmpeg' # R
+  depends_on 'fontconfig' # R
+  depends_on 'fribidi' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'graphene' # R
+  depends_on 'gst_plugins_bad' # R
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libmfx' if ARCH.eql?('i686') # R
+  depends_on 'libsass' if ARCH.eql?('x86_64') # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxrandr' # R
+  depends_on 'pango' # R
+  depends_on 'rest' # R
+  depends_on 'vulkan_icd_loader' # R
+  depends_on 'wayland' # R
 
   def self.patch
     case ARCH

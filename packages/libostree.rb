@@ -27,7 +27,7 @@ class Libostree < Package
   depends_on 'gpgme'
   depends_on 'libsoup'
   depends_on 'e2fsprogs'
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'libarchive'
   depends_on 'avahi'
   depends_on 'gtk_doc' => :build

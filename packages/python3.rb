@@ -31,7 +31,7 @@ class Python3 < Package
   depends_on 'libffi'
   depends_on 'libtirpc' => :build
   depends_on 'ncurses'
-  depends_on 'openssl'  
+  depends_on 'openssl'
   depends_on 'readline'
   depends_on 'sqlite'
   # depends_on 'tcl' # Needed for tkinter support
@@ -58,8 +58,7 @@ class Python3 < Package
     # test_urllib, test_urllib2, test_urllib2_localnet.
     # So, modifying environment variable to make pass tests.
 
-    system "env TMPDIR=#{CREW_PREFIX}/tmp \
-      CFLAGS='' \
+    system "env CFLAGS='' \
       CXXFLAGS='' \
       CC='gcc -pthread' \
       CPPFLAGS='#{@cppflags}' \
@@ -96,7 +95,7 @@ class Python3 < Package
     # Using /tmp breaks test_distutils, test_subprocess
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet
-    # system "TMPDIR=#{CREW_PREFIX}/tmp http_proxy= https_proxy= ftp_proxy= make test"
+    # system "http_proxy= https_proxy= ftp_proxy= make test"
   end
 
   def self.install

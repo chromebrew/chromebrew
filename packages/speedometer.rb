@@ -10,7 +10,7 @@ class Speedometer < Package
   source_sha256 '63e676c96a9df953b4f7f631f1c1d21fedd71d23d159b53e60662c6bb4c19437'
 
   depends_on 'py3_psutil'
-  depends_on 'six'
+  depends_on 'py3_six'
   depends_on 'py3_nuitka' => :build
 
   def self.patch
