@@ -26,7 +26,7 @@ class Gtk4 < Package
   
   # L = Logical Dependency, R = Runtime Dependency
   depends_on 'docbook' => :build
-  depends_on 'gobject_introspection' => : build
+  depends_on 'gobject_introspection' => :build
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
   depends_on 'mesa' => :build
