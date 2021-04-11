@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.7.23'
+CREW_VERSION = '1.8.23'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -72,15 +72,22 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
+CREW_COMMON_FLAGS = "-Os -pipe -flto=auto -fuse-ld=gold"
+CFLAGS = CREW_COMMON_FLAGS
+CXXFLAGS = CREW_COMMON_FLAGS
+FCFLAGS = CREW_COMMON_FLAGS
+FFLAGS = CREW_COMMON_FLAGS
+LDFLAGS = "-flto=auto"
 
+CREW_ENV_OPTIONS = "CFLAGS=#{CFLAGS} CXXFLAGS=#{CXXFLAGS} FCFLAGS=#{FCFLAGS} FFLAGS=#{FFLAGS} LDFLAGS=#{LDFLAGS}"
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT} --program-prefix='' --program-suffix=''"
-CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Dc_args='-fuse-ld=lld -pipe' -Dcpp_args='-fuse-ld=lld -pipe'"
-CREW_MESON_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=release -Db_lto=true -Dcpp_args='-fuse-ld=gold -pipe' -Dc_args='-fuse-ld=gold -pipe'"
+CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=true -Dcpp_args='#{CXXFLAGS}' -Dc_args='#{CFLAGS}'"
+CREW_MESON_LTO_OPTIONS = CREW_MESON_OPTIONS # This option is depreciated, please use CREW_MESON_OPTIONS
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
 # Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
-CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"
+CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS='#{CFLAGS}' -DCMAKE_CXX_FLAGS='#{CXXFLAGS}' -DCMAKE_BUILD_TYPE=MinSizeRel --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"
 CREW_LIB_SUFFIX = if ARCH == 'x86_64' then '64' else '' end
-CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_BUILD_TYPE=Release --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"
+CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_BUILD_TYPE=MinSizeRel --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT}"
