@@ -690,6 +690,29 @@ def prepare_package (destdir)
     system 'find . -type l >> ../filelist'
     system 'cut -c2- ../filelist > filelist'
 
+    # check for conflicts with other installed files
+    conflicts = []
+    Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
+      packageName = File.basename packageList, '.filelist'
+      File.readlines(packageList).each do |line|
+        File.readlines('filelist').each do |item|
+          if line == item && packageName != @pkg.name
+            conflicts << [packageName, item.chomp]
+          end
+        end
+      end
+    end
+    unless conflicts.empty?
+      puts "Unable to complete this build since there is a conflict with the same file in another package.".lightred
+      pp = ''
+      conflicts.each do |p, f|
+        puts "\n#{p} package conflicts below:".lightred if p != pp
+        puts f.lightred
+        pp = p
+      end
+      abort
+    end
+
     # create directory list
     system 'find . -type d > ../dlist'
     system 'cut -c2- ../dlist > dlistcut'
