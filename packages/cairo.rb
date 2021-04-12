@@ -22,10 +22,16 @@ class Cairo < Package
      x86_64: 'b12d21a683f06db69052f2d927039f6e893aecdc993de1b384af9267d25ff93e'
   })
 
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'glib'
   depends_on 'libpng'
+  depends_on 'libx11'
+  depends_on 'libxcb'
+  depends_on 'libxrender'
   depends_on 'lzo'
-  depends_on 'pixman'
   depends_on 'mesa'
+  depends_on 'pixman'
 
   def self.build
     system "meson #{CREW_MESON_LTO_OPTIONS} \

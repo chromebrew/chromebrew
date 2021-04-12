@@ -11,6 +11,19 @@ class Stressng < Package
   source_url "https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-#{@_ver}.tar.xz"
   source_sha256 'af7779aee38e6d94726ed7d5cf36384a64d50c86e42fff89c141d8609913f425'
 
+  binary_url({
+    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.12.05-chromeos-armv7l.tar.xz',
+     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.12.05-chromeos-armv7l.tar.xz',
+       i686: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.12.05-chromeos-i686.tar.xz',
+     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.12.05-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'c2d12f8c29ebb89709a40880f18bf29c2f1eb4e9b50f5f601e2a47aab598ef21',
+     armv7l: 'c2d12f8c29ebb89709a40880f18bf29c2f1eb4e9b50f5f601e2a47aab598ef21',
+       i686: '15f02f0c7819d9c3f5da89068b5c18f812f5428dabeab3ddf8f0d626ce0a8f7d',
+     x86_64: 'a2b49f6d383bbfb208daf3146205ebfd8bb4aaa9f2b0fa0be76a880cf32b2c18'
+  })
+
   depends_on 'libbsd'
 
   def self.patch
