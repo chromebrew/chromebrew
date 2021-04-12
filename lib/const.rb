@@ -72,7 +72,7 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_COMMON_FLAGS = "'-Os -pipe -fno-lto -fuse-ld=gold'"
+CREW_COMMON_FLAGS = "'-Os -pipe -flto=auto -fuse-ld=gold'"
 CREW_COMMON_FNO_LTO_FLAGS = "'-Os -pipe -fno-lto -fuse-ld=gold'"
 CREW_FNO_LTO_LDFLAGS = "'-fno-lto'"
 CREW_LDFLAGS = "'-flto=auto'"
