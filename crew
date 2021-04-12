@@ -570,12 +570,12 @@ def download
       end
     end
 
-    puts File.basename(filename)
-    system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}" unless File.basename(filename).end_with? '.git'
-
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum  unless File.basename(filename).end_with? '.git'
-    puts "Archive downloaded".lightgreen
+    unless File.basename(filename).end_with? '.git'
+      system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless
+        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
+      puts "Archive downloaded".lightgreen
+    end
 
     if ENV['CREW_CACHE_OPT']
       puts 'Caching downloaded archive'.lightgreen
