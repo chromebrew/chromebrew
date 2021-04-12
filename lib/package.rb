@@ -38,15 +38,23 @@ class Package
   end
 
   def self.get_url (architecture)
-    if !@build_from_source && @binary_url && @binary_url.has_key?(architecture)
+    if !@build_from_source and @binary_url and @binary_url.has_key?(architecture)
       return @binary_url[architecture]
     else
       return @source_url
     end
   end
 
+  def self.get_sha256 (architecture)
+    if !@build_from_source and @binary_sha256 and @binary_sha256.has_key?(architecture)
+      return @binary_sha256[architecture]
+    else
+      return @source_sha256
+    end
+  end
+
   def self.is_binary? (architecture)
-    if !@build_from_source && @binary_url && @binary_url.has_key?(architecture)
+    if !@build_from_source and @binary_url and @binary_url.has_key?(architecture)
       return true
     else
       return false
@@ -54,7 +62,7 @@ class Package
   end
 
   def self.is_source? (architecture)
-    if is_binary?(architecture) || is_fake?
+    if is_binary?(architecture) or is_fake?
       return false
     else
       return true

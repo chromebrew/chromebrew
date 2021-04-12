@@ -550,11 +550,8 @@ def download
 
   uri = URI.parse url
   filename = File.basename(uri.path)
-  if source
-    sha256sum = @pkg.source_sha256
-  else
-    sha256sum = @pkg.binary_sha256[@device[:architecture]]
-  end
+  sha256sum = @pkg.get_sha256(@device[:architecture])
+
   Dir.chdir CREW_BREW_DIR do
     if ENV['CREW_CACHE_OPT']
       FileUtils.mkdir_p CREW_CACHE_DIR, verbose: @fileutils_verbose
