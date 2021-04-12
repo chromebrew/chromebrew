@@ -570,10 +570,11 @@ def download
       end
     end
 
-    system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+    puts File.basename(filename)
+    system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}" unless File.basename(filename).end_with? '.git'
 
     abort 'Checksum mismatch. :/ Try again.'.lightred unless
-      Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
+      Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum  unless File.basename(filename).end_with? '.git'
     puts "Archive downloaded".lightgreen
 
     if ENV['CREW_CACHE_OPT']
@@ -591,17 +592,21 @@ def unpack (meta)
     FileUtils.mkdir_p extract_dir, verbose: @fileutils_verbose
     case File.basename meta[:filename]
     when /\.zip$/i
-      puts "Unpacking archive using 'unzip', this may take a while..."
+      puts "Unpacking archive using 'unzip', this may take a while...".lightgreen
       _verbopt = @opt_verbose ? '-v' : '-qq'
       system 'unzip', _verbopt, '-d', extract_dir, meta[:filename]
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
-      puts "Unpacking archive using 'tar', this may take a while..."
+      puts "Unpacking archive using 'tar', this may take a while...".lightgreen
       FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{extract_dir}"
     when /\.deb$/i
-      puts "Unpacking archive using 'ar', this may take a while..."
+      puts "Unpacking archive using 'ar', this may take a while...".lightgreen
       FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
       system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{extract_dir}"
+    when /\.git$/i
+      puts "Cloning with 'git', this may take a while...".lightgreen
+      FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
+      system "git clone #{@pkg.source_url} --branch #{@pkg.git_branch} --depth 1 #{extract_dir}"
     end
     if meta[:source] == true
       # Check the number of directories in the archive
