@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative 'lib/color'
+require_relative '../lib/color'
 
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
@@ -10,8 +10,8 @@ require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require_relative 'lib/const'
-require_relative 'lib/util'
+require_relative '../lib/const'
+require_relative '../lib/util'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -72,7 +72,7 @@ ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
 CURL = ENV['CURL'] || 'curl'
 
 # Parse arguments using docopt
-require_relative 'lib/docopt'
+require_relative '../lib/docopt'
 begin
   args = Docopt::docopt(DOC)
   args['<name>'] = args['<name>'].map { |arg| arg.gsub('-','_') } if args['<name>']
