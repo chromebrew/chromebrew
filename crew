@@ -585,7 +585,7 @@ def download
 end
 
 def unpack (meta)
-  extract_dir = meta[:filename] + '.dir'
+  extract_dir = meta[:filename] + '.' + `tr -dc A-Za-z0-9 </dev/urandom | head -c 8` + '.dir'
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p extract_dir, verbose: @fileutils_verbose
