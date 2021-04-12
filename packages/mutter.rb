@@ -33,7 +33,7 @@ class Mutter < Package
   depends_on 'ccache' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dtests=false \
     -Dprofiler=false \
     -Dopengl=true \

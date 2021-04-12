@@ -52,7 +52,7 @@ class Pulseaudio < Package
   depends_on 'webrtc_audio_processing'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dsystem_user=chronos \
     -Dsystem_group=cras \

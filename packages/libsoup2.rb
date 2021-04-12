@@ -28,7 +28,7 @@ class Libsoup2 < Package
   depends_on 'vala'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dtests=false \
       -Dsysprof=disabled \
       -Dintrospection=enabled \

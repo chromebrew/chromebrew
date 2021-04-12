@@ -32,7 +32,7 @@ class Igt_gpu_tools < Package
   depends_on 'gtk_doc' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Ddocs=disabled \
     -Dtests=disabled \
     -Doping=disabled \

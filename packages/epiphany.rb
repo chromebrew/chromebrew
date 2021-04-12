@@ -46,7 +46,7 @@ class Epiphany < Package
   depends_on 'webkit2gtk_4'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

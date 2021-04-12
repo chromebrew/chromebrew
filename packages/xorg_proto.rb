@@ -25,7 +25,7 @@ class Xorg_proto < Package
   depends_on 'llvm' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
       -Dc_args='-fuse-ld=lld' \
       builddir"
     system "meson configure builddir"

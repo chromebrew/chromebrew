@@ -30,7 +30,7 @@ class Libva_intel_driver_hybrid < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
             -Denable_hybrid_codec=true builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

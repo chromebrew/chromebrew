@@ -27,7 +27,7 @@ class Gobject_introspection < Package
 
   def self.build
     system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-    meson #{CREW_MESON_LTO_OPTIONS} \
+    meson #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

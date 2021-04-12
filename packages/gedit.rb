@@ -57,7 +57,7 @@ class Gedit < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Drequire_all_tests=false \
     -Duser_documentation=false \
     builddir"

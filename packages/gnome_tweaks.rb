@@ -30,7 +30,7 @@ class Gnome_tweaks < Package
   depends_on 'libnotify'
 
   def self.build
-    system "meson setup #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

@@ -26,7 +26,7 @@ class P11kit < Package
   depends_on 'libtasn1'
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
       build"
     system "meson configure build"
     system "ninja -C build"
