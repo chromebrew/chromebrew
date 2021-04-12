@@ -682,6 +682,14 @@ end
 
 def prepare_package (destdir)
   Dir.chdir destdir do
+    # Avoid /usr/local/share/info/dir{.gz} file conflict:
+    # The install-info program maintains a directory of installed 
+    # info documents in /usr/share/info/dir for the use of info 
+    # readers. This file must not be included in packages other 
+    # than install-info.
+    # https://www.debian.org/doc/debian-policy/ch-docs.html#info-documents
+    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/dir" if File.exist?("#{CREW_DEST_PREFIX}/share/info/dir")
+
     # compress manual files
     compress_doc "#{CREW_DEST_PREFIX}/man"
     compress_doc "#{CREW_DEST_PREFIX}/info"
@@ -713,7 +721,7 @@ def prepare_package (destdir)
         puts f.lightred
         pp = p
       end
-      abort
+      abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == '1'
     end
 
     # create directory list
