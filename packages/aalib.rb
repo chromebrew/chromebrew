@@ -10,7 +10,6 @@ class Aalib < Package
   source_sha256 'fbddda9230cf6ee2a4f5706b4b11e2190ae45f5eda1f0409dc4f99b35e0a70ee'
 
   depends_on 'libx11'
-  depends_on 'slang'
   depends_on 'xorg_proto' => :build
 
   def self.build
