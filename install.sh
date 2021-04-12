@@ -21,7 +21,7 @@ EARLY_PACKAGES="gcc10 brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 
 libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates ruby libffi openssl \
 nettle krb5 p11kit libtasn1 gnutls curl git icu4c"
 
-LATE_PACKAGES="less most manpages filecmd mawk readline perl pcre pcre2 python27 python3 \
+LATE_PACKAGES="crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 python27 python3 \
 sed bz2 lz4 lzip unzip xzutils zip"
 
 ARCH="$(uname -m)"
@@ -184,11 +184,10 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
 done
 
 ## workaround https://github.com/skycocker/chromebrew/issues/3305
-sudo ldconfig > /dev/null 2> /dev/null || true
+sudo ldconfig &> /dev/null || true
 
 # create symlink to 'crew' in ${CREW_PREFIX}/bin/
-rm -f "${CREW_PREFIX}/bin/crew"
-ln -s "../lib/crew/crew" "${CREW_PREFIX}/bin/"
+ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 # prepare sparse checkout .rb packages directory and do it
 cd "${CREW_LIB_PATH}"
