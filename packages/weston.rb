@@ -43,7 +43,7 @@ class Weston < Package
   depends_on 'libwacom'
 
   def self.build
-    system "LIBRARY_PATH=#{CREW_LIB_PREFIX} meson #{CREW_MESON_LTO_OPTIONS} \
+    system "LIBRARY_PATH=#{CREW_LIB_PREFIX} meson #{CREW_MESON_OPTIONS} \
         -Dshell-ivi=false \
         -Dremoting=true \
         -Dbackend-default=wayland \

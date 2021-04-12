@@ -44,7 +44,7 @@ class Gtksourceview_4 < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Db_asneeded=false \
     builddir"
     system 'meson configure builddir'

@@ -26,7 +26,7 @@ class Atkmm < Package
   depends_on 'glibmm'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dbuild-documentation=false \
     -Dbuild-demos=false \

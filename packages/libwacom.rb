@@ -31,7 +31,7 @@ class Libwacom < Package
     system "pip3 install --upgrade --no-warn-script-location pyudev --prefix #{CREW_PREFIX}"
     system "pip3 install --upgrade --no-warn-script-location pytest --prefix #{CREW_PREFIX}"
     system "pip3 install --upgrade --no-warn-script-location libevdev --prefix #{CREW_PREFIX}"
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dtests=disabled \
       builddir"
     system 'meson configure builddir'

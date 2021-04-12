@@ -24,7 +24,7 @@ class Libsigcplusplus < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dmaintainer-mode=true \
     -Dbuild-deprecated-api=true \
     -Dbuild-examples=false \

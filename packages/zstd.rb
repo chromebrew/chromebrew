@@ -44,7 +44,7 @@ class Zstd < Package
   def self.build
     Dir.chdir 'build/meson' do
       system "meson \
-        #{CREW_MESON_LTO_OPTIONS} \
+        #{CREW_MESON_OPTIONS} \
         builddir"
       system 'meson configure builddir'
       system 'ninja -C builddir'

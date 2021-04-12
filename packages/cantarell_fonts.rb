@@ -28,7 +28,7 @@ class Cantarell_fonts < Package
   depends_on 'graphite' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Duseprebuilt=true \
       -Dfontsdir=#{CREW_PREFIX}/share/fonts/opentype/cantarell \
       builddir"

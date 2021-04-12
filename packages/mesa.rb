@@ -58,7 +58,7 @@ class Mesa < Package
     system 'pip3 uninstall -y Mako MarkupSafe || :'
     system "pip3 install --no-warn-script-location --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
     system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako"
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Db_asneeded=false \
     -Dvulkan-drivers=#{@vk} \
     -Dgallium-drivers=#{@galliumdrivers} \

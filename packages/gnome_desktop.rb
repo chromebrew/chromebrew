@@ -40,7 +40,7 @@ class Gnome_desktop < Package
   depends_on 'yelp_tools' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dsystemd=disabled \
     builddir"
     system 'meson configure builddir'

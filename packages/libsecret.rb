@@ -27,7 +27,7 @@ class Libsecret < Package
   depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} -Dgtk_doc=false -Dmanpage=false build"
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} -Dgtk_doc=false -Dmanpage=false build"
     system 'meson configure build'
     system 'ninja -v -C build'
   end

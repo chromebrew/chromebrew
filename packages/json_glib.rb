@@ -27,7 +27,7 @@ class Json_glib < Package
   depends_on 'gobject_introspection'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

@@ -39,7 +39,7 @@ class Vte < Package
 
   def self.build
     system "meson \
-      #{CREW_MESON_OPTIONS} \
+      #{CREW_MESON_FNO_LTO_OPTIONS} \
       -Dc_args='-fuse-ld=lld -pipe -fno-stack-protector' \
       -Dc_link_args='-fuse-ld=lld -pipe -fno-stack-protector' \
       -Dcpp_args='-fuse-ld=lld -pipe -fno-stack-protector' \

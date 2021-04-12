@@ -31,7 +31,7 @@ class Libva < Package
   depends_on 'wayland'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Db_lto=true \
     -Db_pie=true \

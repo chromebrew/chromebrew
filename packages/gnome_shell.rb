@@ -52,7 +52,7 @@ class Gnome_shell < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=true \
     -Dsystemd=false \
     -Dnetworkmanager=false \

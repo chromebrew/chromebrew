@@ -39,7 +39,7 @@ class Fontconfig < Package
       sys.exit()
     INSTALLCACHE_HEREDOC
     IO.write('install-cache', @install_cache, perm: 0o666)
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --localstatedir=#{CREW_PREFIX}/cache \
     --default-library=both \
     -Ddoc=disabled \

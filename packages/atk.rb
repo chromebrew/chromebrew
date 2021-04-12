@@ -26,7 +26,7 @@ class Atk < Package
   depends_on 'six' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} build"
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} build"
     system 'meson configure build'
     system 'ninja -C build'
   end

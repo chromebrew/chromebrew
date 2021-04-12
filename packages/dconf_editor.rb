@@ -28,7 +28,7 @@ class Dconf_editor < Package
   depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
             builddir"
     system 'ninja -C builddir'
   end

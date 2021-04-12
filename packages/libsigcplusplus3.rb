@@ -24,7 +24,7 @@ class Libsigcplusplus3 < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dbuild-examples=false \
     builddir"
     system "meson configure builddir"

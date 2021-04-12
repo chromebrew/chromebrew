@@ -29,7 +29,7 @@ class Libdrm < Package
   depends_on 'libxslt'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dfreedreno-kgsl=true \
       -Damdgpu=true \
       -Dradeon=true \

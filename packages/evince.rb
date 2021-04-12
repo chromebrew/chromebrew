@@ -48,7 +48,7 @@ class Evince < Package
   depends_on 'poppler'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dgtk_doc=false \
       -Dps=enabled \
       -Dsystemduserunitdir=no \

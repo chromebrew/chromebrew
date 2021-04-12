@@ -26,7 +26,7 @@ class Dav1d < Package
   depends_on 'nasm' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
