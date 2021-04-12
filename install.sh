@@ -184,7 +184,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
 done
 
 ## workaround https://github.com/skycocker/chromebrew/issues/3305
-sudo ldconfig > /dev/null 2> /dev/null || true
+sudo ldconfig &> /dev/null || true
 
 # create symlink to 'crew' in ${CREW_PREFIX}/bin/
 rm -f "${CREW_PREFIX}/bin/crew"
