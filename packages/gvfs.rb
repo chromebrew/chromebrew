@@ -48,7 +48,7 @@ class Gvfs < Package
   depends_on 'smbclient'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dfuse=true \
     -Dgoa=false \
     -Dgoogle=false \

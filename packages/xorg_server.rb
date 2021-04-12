@@ -61,7 +61,7 @@ class Xorg_server < Package
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_LTO_OPTIONS} \
+    system "meson configure #{CREW_MESON_OPTIONS} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \

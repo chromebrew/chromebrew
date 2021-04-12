@@ -34,7 +34,7 @@ class Cairo < Package
   depends_on 'pixman'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dgl-backend=auto \
     -Dglesv3=enabled \

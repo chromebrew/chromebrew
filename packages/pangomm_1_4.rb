@@ -30,7 +30,7 @@ class Pangomm_1_4 < Package
   depends_on 'mm_common'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dmaintainer-mode=true \
     -Dbuild-documentation=false \
     builddir"

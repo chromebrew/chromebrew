@@ -30,7 +30,7 @@ class Folks < Package
   depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dbluez_backend=false \
     -Ddocs=false \
     -Deds_backend=false \

@@ -35,7 +35,7 @@ class Libinput < Package
   # depends_on 'gtk3' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Ddebug-gui=false \
       -Ddocumentation=false \
       builddir"

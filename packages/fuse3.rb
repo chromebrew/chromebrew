@@ -24,7 +24,7 @@ class Fuse3 < Package
 
   def self.build
     system "pip install --upgrade --no-warn-script-location pytest --prefix #{CREW_PREFIX}"
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Ddisable-mtab=true \
     -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d/ \
     -Dexamples=true \

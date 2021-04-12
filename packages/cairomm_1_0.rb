@@ -29,7 +29,7 @@ class Cairomm_1_0 < Package
   depends_on 'libxrender'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dbuild-documentation=false \
     -Dbuild-examples=false \

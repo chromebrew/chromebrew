@@ -31,7 +31,7 @@ class Glade < Package
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson setup #{CREW_MESON_OPTIONS} -Dgtk_doc=false -Dman=false build"
+    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} -Dgtk_doc=false -Dman=false build"
     system "meson configure build"
     system "ninja -C build"
   end

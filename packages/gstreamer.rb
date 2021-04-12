@@ -31,7 +31,7 @@ class Gstreamer < Package
   depends_on 'libunwind'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dgst_debug=false \
     builddir"
     system 'meson configure builddir'

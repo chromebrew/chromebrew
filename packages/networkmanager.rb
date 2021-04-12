@@ -127,7 +127,7 @@ class Networkmanager < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       --default-library=both \
       -Ddbus_conf_dir=#{CREW_PREFIX}/share/dbus-1/system.d \
       -Dsystem_ca_path=#{CREW_PREFIX}/etc/ssl/certs \

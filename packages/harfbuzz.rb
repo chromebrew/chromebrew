@@ -32,7 +32,7 @@ class Harfbuzz < Package
   depends_on 'graphite' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dintrospection=enabled \
     -Dbenchmark=disabled \

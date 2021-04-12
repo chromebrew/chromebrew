@@ -31,7 +31,7 @@ class Gjs < Package
   depends_on 'dbus' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dinstalled_tests=false \
     -Dskip_dbus_tests=true \
     -Dreadline=disabled \

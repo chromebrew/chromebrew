@@ -31,7 +31,7 @@ class Gst_editing_services < Package
   depends_on 'pygobject' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Ddoc=disabled \
       -Dvalidate=disabled \
       builddir"

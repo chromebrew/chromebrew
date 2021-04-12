@@ -54,7 +54,7 @@ class Gst_plugins_bad < Package
 
   def self.build
     system "meson \
-      #{CREW_MESON_LTO_OPTIONS} \
+      #{CREW_MESON_OPTIONS} \
       -Ddirectfb=disabled \
       -Ddoc=disabled \
       -Dflite=disabled \

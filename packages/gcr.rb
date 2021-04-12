@@ -38,7 +38,7 @@ class Gcr < Package
   depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=false \
     builddir"
     system 'meson configure builddir'

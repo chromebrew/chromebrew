@@ -28,7 +28,7 @@ class Libnotify < Package
   depends_on 'gnome_common'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dman=false \
     -Ddocbook_docs=disabled \
     -Dtests=false \

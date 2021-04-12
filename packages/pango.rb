@@ -35,7 +35,7 @@ class Pango < Package
   depends_on 'six'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dinstall-tests=false \
     -Dcairo=enabled \
     -Dfreetype=enabled \

@@ -59,7 +59,7 @@ class Gst_plugins_good < Package
   depends_on 'wavpack' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
       -Ddoc=disabled \
       -Drpicamsrc=disabled \
       -Dgobject-cast-checks=disabled \

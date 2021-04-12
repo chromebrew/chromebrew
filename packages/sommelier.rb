@@ -70,7 +70,7 @@ class Sommelier < Package
       # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
       system "env CC=clang CXX=clang++ \
-        meson #{CREW_MESON_OPTIONS} \
+        meson #{CREW_MESON_FNO_LTO_OPTIONS} \
         -Db_asneeded=false \
         -Db_lto=true \
         -Db_lto_mode=thin \

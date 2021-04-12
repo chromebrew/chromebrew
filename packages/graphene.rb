@@ -27,7 +27,7 @@ class Graphene < Package
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
       -Darm_neon=false \
       -Dinstalled_tests=false \
       -Dtests=false \

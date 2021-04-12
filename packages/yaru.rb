@@ -26,7 +26,7 @@ class Yaru < Package
   depends_on 'sassc'
 
   def self.build
-    system "meson setup #{CREW_MESON_LTO_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dubuntu-unity=true \
       build"
     system 'meson configure build'

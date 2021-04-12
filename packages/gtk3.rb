@@ -67,7 +67,7 @@ class Gtk3 < Package
   depends_on 'wayland' # R
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dbroadway_backend=true \
       -Ddemos=false \
       -Dexamples=false \

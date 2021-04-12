@@ -42,7 +42,7 @@ class Pipewire < Package
 
   def self.build
     system "meson \
-      #{CREW_MESON_LTO_OPTIONS} \
+      #{CREW_MESON_OPTIONS} \
       -Dbluez5-backend-hsphfpd=disabled \
       -Dbluez5-backend-ofono=disabled \
       -Dbluez5=disabled \

@@ -24,7 +24,7 @@ class Libpsl < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Ddocs=disabled \
     builddir"
     system 'meson configure builddir'
