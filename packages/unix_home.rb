@@ -12,18 +12,20 @@ class Unix_home < Package
     @HOME = "#{CREW_DEST_PREFIX}/home/#{USER}/"
     FileUtils.mkdir_p [@HOME, "#{CREW_DEST_PREFIX}/etc/env.d/"]
     
-    FileUtils.ln_s Dir["#{Dir.home}/.bash*"], @HOME
-    FileUtils.ln_s "#{Dir.home}/Downloads", @HOME
-    FileUtils.ln_s "#{Dir.home}/MyFiles", @HOME + 'Documents'
-    FileUtils.ln_s Dir.home, @HOME + 'chromeos'
+    FileUtils.ln_s Dir["#{HOME}/.bash*"], @HOME
+    FileUtils.ln_s "#{HOME}/Downloads", @HOME
+    FileUtils.ln_s "#{HOME}/MyFiles", @HOME + 'Documents'
+    FileUtils.ln_s HOME, @HOME + 'chromeos'
     
     @env = <<~EOF
       set -a
       HOME=#{@HOME}
-      ORIG_HOME=#{Dir.home}
+      ORIG_HOME=#{HOME}
       set +a
     EOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/unix_home", @env)
+    # add original home directory to const.rb
+    system "echo 'ORIG_HOME=#{HOME}' >> #{CREW_LIB_PATH}/lib/const.rb"
     
     # cover HOME variable for dependencies after this package
     # undefine HOME variable
