@@ -11,10 +11,10 @@ class Libde265 < Package
   source_sha256 '24c791dd334fa521762320ff54f0febfd3c09fc978880a8c5fbc40a88f21d905'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libde265-1.0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libde265-1.0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libde265-1.0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libde265-1.0.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libde265-1.0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libde265-1.0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libde265-1.0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libde265-1.0.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f2ca6f26fd80159a03e6dc9e3ba62f24ab690c98b03444dc0bad602461643fde',

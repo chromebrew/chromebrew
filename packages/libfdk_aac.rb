@@ -10,10 +10,10 @@ class Libfdk_aac < Package
   source_sha256 '840133aa9412153894af03b27b03dde1188772442c316a4ce2a24ed70093f271'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libfdk_aac-2.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libfdk_aac-2.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libfdk_aac-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libfdk_aac-2.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libfdk_aac-2.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libfdk_aac-2.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libfdk_aac-2.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libfdk_aac-2.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '08f675d0b53219ef822e7eee420c80b92ef017e15e198bee44554cbe7e77b6e0',

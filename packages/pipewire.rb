@@ -11,10 +11,10 @@ class Pipewire < Package
   source_sha256 'aeca2b44660c4f36eed29cc9c6ccb093ea2778fd0e4ed7665cdfc40b2a49873f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.24-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pipewire-0.3.24-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pipewire-0.3.24-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pipewire-0.3.24-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pipewire-0.3.24-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '008b5f294106edf2a3c02e682a127dc2e89e246e697dc73d642f374aeb241c80',

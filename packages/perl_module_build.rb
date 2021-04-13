@@ -10,10 +10,10 @@ class Perl_module_build < Package
   source_sha256 '7e0f4c692c1740c1ac84ea14d7ea3d8bc798b2fb26c09877229e04f430b2b717'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_module_build-0.4231-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_module_build-0.4231-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_module_build-0.4231-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_module_build-0.4231-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_module_build-0.4231-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_module_build-0.4231-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_module_build-0.4231-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_module_build-0.4231-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b8407fa11a374de2c9a07ecae133cee6872b433872b6b3bef2a51218bf0d3c4c',

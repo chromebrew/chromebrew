@@ -11,10 +11,10 @@ class Asciidoc < Package
   source_sha256 'fd499fcf51317b1aaf27336fb5e919c44c1f867f1ae6681ee197365d3065238b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/asciidoc-9.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/asciidoc-9.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/asciidoc-9.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/asciidoc-9.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/asciidoc-9.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/asciidoc-9.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/asciidoc-9.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/asciidoc-9.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2b38a7ec2050abd4df05fe90a4bb85199c3d45d7961ad0c5bcbf065b2f411857',

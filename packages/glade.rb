@@ -10,10 +10,10 @@ class Glade < Package
   source_sha256 '98fc87647d88505c97dd2f30f2db2d3e9527515b3af11694787d62a8d28fbab7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glade-3.38.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glade-3.38.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glade-3.38.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glade-3.38.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glade-3.38.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glade-3.38.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glade-3.38.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glade-3.38.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2cd59ac4b9b4fc83e227471d8134cf16953b910d54741469a35c8633e015c76e',

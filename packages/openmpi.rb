@@ -10,10 +10,10 @@ class Openmpi < Package
   source_sha256 'cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openmpi-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openmpi-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openmpi-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openmpi-4.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openmpi-4.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openmpi-4.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/openmpi-4.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/openmpi-4.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6ebfd586e6e8efcbdda5ec1c69356bf29adc2c15844405fc9fd6b595330cebff',

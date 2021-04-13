@@ -11,10 +11,10 @@ class Xorg_server < Package
   source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_server-1.20.10-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.10-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.10-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_server-1.20.10-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_server-1.20.10-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0ce4d77d557a5cc438e7257c157584eb8d2e62f88a250e3f0abd1d35e5f76154',

@@ -10,10 +10,10 @@ class Xorg_evdev_driver < Package
   source_sha256 '9edaa6205baf6d2922cc4db3d8e54a7e7773b5f733b0ae90f6be7725f983b70d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_evdev_driver-2.10.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_evdev_driver-2.10.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_evdev_driver-2.10.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_evdev_driver-2.10.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '69b9c2a60e21804c4169b7e596a7fe3527dd4b82546dd0b7e69253b302d277e9',

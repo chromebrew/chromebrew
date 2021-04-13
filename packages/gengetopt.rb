@@ -10,10 +10,10 @@ class Gengetopt < Package
   source_sha256 '30b05a88604d71ef2a42a2ef26cd26df242b41f5b011ad03083143a31d9b01f7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gengetopt-2.22.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gengetopt-2.22.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gengetopt-2.22.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gengetopt-2.22.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gengetopt-2.22.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gengetopt-2.22.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gengetopt-2.22.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gengetopt-2.22.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7e306c8b415392c657bbc244edb617b91426ed08936751145434b0bbf4bfd04d',

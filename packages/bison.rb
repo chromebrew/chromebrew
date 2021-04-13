@@ -11,10 +11,10 @@ class Bison < Package
   source_sha256 'a3b5813f48a11e540ef26f46e4d288c0c25c7907d9879ae50e430ec49f63c010'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.7.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.7.4-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.7.4-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bison-3.7.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bison-3.7.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bison-3.7.4-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/bison-3.7.4-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/bison-3.7.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'ba8edbb5a88d16aedbd7c37dc247bd4a4fec5390063dc6220b1275a0bdcfb44c',

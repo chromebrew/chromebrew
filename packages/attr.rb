@@ -10,10 +10,10 @@ class Attr < Package
   source_sha256 '5ead72b358ec709ed00bbf7a9eaef1654baad937c001c044fe8b74c57f5324e7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/attr-2.4.48-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/attr-2.4.48-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/attr-2.4.48-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/attr-2.4.48-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/attr-2.4.48-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/attr-2.4.48-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/attr-2.4.48-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/attr-2.4.48-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '28abf6ac96e7cc3a1ba2690781b26d855e2f545a408c5583bda3220a8985cbf1',

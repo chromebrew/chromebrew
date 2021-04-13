@@ -10,10 +10,10 @@ class Bacula < Package
   source_sha256 'a40d04d2c48135972cecb6578405e835c4b9d798c0950017de0fad40ca94e8a0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bacula-9.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bacula-9.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bacula-9.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bacula-9.4.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bacula-9.4.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bacula-9.4.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/bacula-9.4.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/bacula-9.4.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1a0a0c032e40a648e9e9492aa428e9c674b1baa7ee76f5254f070f385be31263',

@@ -10,10 +10,10 @@ class Libmypaint < Package
   source_sha256 '741754f293f6b7668f941506da07cd7725629a793108bb31633fb6c3eae5315f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libmypaint-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libmypaint-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libmypaint-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libmypaint-1.6.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmypaint-1.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmypaint-1.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libmypaint-1.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libmypaint-1.6.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd4771b0d30a84a37170863f83158f18c3ba5d2cbe49d8ba40f07bf4b9dd9193b',

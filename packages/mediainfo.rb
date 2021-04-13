@@ -10,10 +10,10 @@ class Mediainfo < Package
   source_sha256 '0f23ccc9a78b24104dc387691e1df484ed75350ee77277982cd170cca59750b0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mediainfo-17.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mediainfo-17.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mediainfo-17.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mediainfo-17.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mediainfo-17.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mediainfo-17.12-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mediainfo-17.12-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mediainfo-17.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a963c89216f20971448bc34dc69b868d9bb3aa106d9cd6cb0eb5884ebd9e08b3',

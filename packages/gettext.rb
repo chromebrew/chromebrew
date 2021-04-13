@@ -11,10 +11,10 @@ class Gettext < Package
   source_sha256 '435b546e3880ab767c967c0731b20629a0cb0ba620e6bac2f590f401c10ebb45'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gettext-0.21-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gettext-0.21-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gettext-0.21-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gettext-0.21-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gettext-0.21-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gettext-0.21-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gettext-0.21-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gettext-0.21-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6d54ddacd45c8393893173a163b24a0b1ece327fce41b0e37d9353fd203360e7',

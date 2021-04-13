@@ -10,10 +10,10 @@ class Desktop_file_utils < Package
   source_sha256 '6c094031bdec46c9f621708f919084e1cb5294e2c5b1e4c883b3e70cb8903385'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/desktop_file_utilities-0.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/desktop_file_utilities-0.23-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/desktop_file_utilities-0.23-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/desktop_file_utilities-0.23-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/desktop_file_utilities-0.23-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/desktop_file_utilities-0.23-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/desktop_file_utilities-0.23-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/desktop_file_utilities-0.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '96410e0ccb06559e86ceeaf828a4992d6701efe98ca69a6cd3d7772d19a388cd',

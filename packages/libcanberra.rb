@@ -10,10 +10,10 @@ class Libcanberra < Package
   source_sha256 'c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libcanberra-0.30-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libcanberra-0.30-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libcanberra-0.30-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libcanberra-0.30-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcanberra-0.30-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcanberra-0.30-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libcanberra-0.30-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libcanberra-0.30-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2a8d173a95f304fdfe202184fbf842d0f5f543a273c18df91bfd52109d16d8ca',

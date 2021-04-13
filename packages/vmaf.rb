@@ -11,10 +11,10 @@ class Vmaf < Package
   source_sha256 'e7fc00ae1322a7eccfcf6d4f1cdf9c67eec8058709887c8c6c3795c617326f77'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vmaf-2.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vmaf-2.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vmaf-2.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vmaf-2.1.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vmaf-2.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vmaf-2.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vmaf-2.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vmaf-2.1.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fd05f6c2ad4d9f6373d8136db11f858169c17e6c2937a1bcedf381e93408c6e2',

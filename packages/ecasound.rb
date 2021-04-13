@@ -10,10 +10,10 @@ class Ecasound < Package
   source_sha256 '468bec44566571043c655c808ddeb49ae4f660e49ab0072970589fd5a493f6d4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ecasound-1.0.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ecasound-1.0.21-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ecasound-1.0.21-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ecasound-1.0.21-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ecasound-1.0.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ecasound-1.0.21-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ecasound-1.0.21-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ecasound-1.0.21-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8bbf7d4b25da6f034a519a8bbb213acd9e4d328c8be0ffcb1ef7973faf1932ea',

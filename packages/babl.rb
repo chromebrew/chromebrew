@@ -10,10 +10,10 @@ class Babl < Package
   source_sha256 '0b3f595159ad1b216cd729c0504c3a5f6cf780c641f4dc63fc164f3c0382c8f0'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/babl-0.1.86-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/babl-0.1.86-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/babl-0.1.86-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/babl-0.1.86-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/babl-0.1.86-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/babl-0.1.86-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/babl-0.1.86-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/babl-0.1.86-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b3eea8151c169644a29b812cf4c8c3e7bb686c21d2fe5b41b9e0d0b334010ebf',

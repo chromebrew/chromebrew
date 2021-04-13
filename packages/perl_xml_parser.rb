@@ -10,10 +10,10 @@ class Perl_xml_parser < Package
   source_sha256 'd331332491c51cccfb4cb94ffc44f9cd73378e618498d4a37df9e043661c515d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_parser-2.46-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_parser-2.46-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_parser-2.46-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_parser-2.46-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_xml_parser-2.46-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_xml_parser-2.46-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_xml_parser-2.46-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_xml_parser-2.46-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '19c9f04e36592ba130c178c0b19a0418959f7dbc5ff69d926cc7d7953ebf5ce8',

@@ -12,10 +12,10 @@ class Sgml_common < Package
   source_sha256 '7dc418c1d361123ffc5e45d61f1b97257940a8eb35d0bfbbc493381cc5b1f959'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sgml_common-0.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sgml_common-0.6.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sgml_common-0.6.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sgml_common-0.6.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '18ff17ac8af52e6e6790564c49155d5c2e8e05583d514744af1e30502d4a79b8',

@@ -10,10 +10,10 @@ class Xauth < Package
   source_sha256 '5afe42ce3cdf4f60520d1658d2b17face45c74050f39af45dccdc95e73fafc4d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xauth-1.0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xauth-1.0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xauth-1.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xauth-1.0.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xauth-1.0.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xauth-1.0.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xauth-1.0.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xauth-1.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a246881cf30bade98de08a011f285ea48df3f0e6a6ba0f25d354b46867f45d2e',

@@ -10,10 +10,10 @@ class Pkgconfig < Package
   source_sha256 'beeeb23b4581241517e45e57d901459022376c3143f415fac1a1216d583b1796'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pkgconfig-0.29.2-d97d-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pkgconfig-0.29.2-d97d-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pkgconfig-0.29.2-d97d-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pkgconfig-0.29.2-d97d-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pkgconfig-0.29.2-d97d-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pkgconfig-0.29.2-d97d-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pkgconfig-0.29.2-d97d-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pkgconfig-0.29.2-d97d-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5f3ad29987b8e93d88dce19fbd5b968809857d0267baab4f68d4a7129b06cd8b',

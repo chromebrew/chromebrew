@@ -11,10 +11,10 @@ class Orc < Package
   source_sha256 '6a7349d2ab4a73476cd4de36212e8c3c6524998081aaa04cf3a891ef792dd50f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/orc-0.4.32-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/orc-0.4.32-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/orc-0.4.32-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/orc-0.4.32-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/orc-0.4.32-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/orc-0.4.32-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/orc-0.4.32-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/orc-0.4.32-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f1454d82feafc44e7925e22d43ebce845536ce8931b939ea5a0098dbe0f78880',

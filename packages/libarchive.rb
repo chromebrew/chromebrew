@@ -11,10 +11,10 @@ class Libarchive < Package
   source_sha256 '0e17d3a8d0b206018693b27f08029b598f6ef03600c2b5d10c94ce58692e299b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.5.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.5.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.5.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libarchive-3.5.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libarchive-3.5.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libarchive-3.5.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libarchive-3.5.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libarchive-3.5.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd58404d09d291373169e80b4012ffb5c51f30760503769808b7a9e98111cfb68',

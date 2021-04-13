@@ -10,10 +10,10 @@ class Perl_text_charwidth < Package
   source_sha256 'abded5f4fdd9338e89fd2f1d8271c44989dae5bf50aece41b6179d8e230704f8'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_charwidth-0.04-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_charwidth-0.04-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_text_charwidth-0.04-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_text_charwidth-0.04-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f3d97714e0b0a6004c74c2c0e3ce3b716bbd15faebf67f11b8c3b44744417e22',

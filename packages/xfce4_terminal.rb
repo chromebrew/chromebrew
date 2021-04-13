@@ -10,10 +10,10 @@ class Xfce4_terminal < Package
   source_sha256 '7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_terminal-0.8.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_terminal-0.8.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_terminal-0.8.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_terminal-0.8.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfce4_terminal-0.8.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfce4_terminal-0.8.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xfce4_terminal-0.8.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xfce4_terminal-0.8.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b11aa2b481bf89d83e2d1e8086f8a38947c6f1b1e5ec7b3db2e4a9a71b192aa1',

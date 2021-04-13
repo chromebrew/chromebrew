@@ -11,10 +11,10 @@ class Docbook_xml42 < Package
   source_sha256 'acc4601e4f97a196076b7e64b368d9248b07c7abf26b34a02cca40eeebe60fa2'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml42-4.2-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/docbook_xml42-4.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/docbook_xml42-4.2-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b83d4e1f4209796ea5269ed4519d2ce2fb99612cd727177fb76b19da1d2c60d3',

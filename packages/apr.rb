@@ -10,10 +10,10 @@ class Apr < Package
   source_sha256 'e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/apr-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/apr-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/apr-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/apr-1.7.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/apr-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/apr-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/apr-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/apr-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd69034b2a36311d738e752c3a7c8b07aa91e8b2e49672e0dbb6ecb684edd4013',

@@ -11,10 +11,10 @@ class Poppler_data < Package
   source_sha256 '6e2fcef66ec8c44625f94292ccf8af9f1d918b410d5aa69c274ce67387967b30'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler_data-0.4.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/poppler_data-0.4.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/poppler_data-0.4.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler_data-0.4.10-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/poppler_data-0.4.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/poppler_data-0.4.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/poppler_data-0.4.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/poppler_data-0.4.10-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '819a39d253b0e62d9e08f704e9d8d9bc551f48528393a82d988d87a64422ec63',

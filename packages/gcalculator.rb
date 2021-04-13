@@ -14,10 +14,10 @@ class Gcalculator < Package
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcalculator-3.38.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcalculator-3.38.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcalculator-3.38.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcalculator-3.38.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcalculator-3.38.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcalculator-3.38.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gcalculator-3.38.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gcalculator-3.38.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f733de0413e40cf0e730a06eef727ea1ace4a92e0fe8f3fd0590c7c7cee017db',

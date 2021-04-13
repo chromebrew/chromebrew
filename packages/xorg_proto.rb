@@ -10,10 +10,10 @@ class Xorg_proto < Package
   source_sha256 '54a153f139035a376c075845dd058049177212da94d7a9707cf9468367b699d2'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_proto-2020.1-1-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_proto-2020.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '3de61490afe9c9b45ad23abf007109b942e196aed3299f90da7ff6429400b687',

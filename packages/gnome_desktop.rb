@@ -12,10 +12,10 @@ class Gnome_desktop < Package
   source_sha256 'b993bb587326e405796ffe15335eba6923cfec4bee454e738a748e98476c320a'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_desktop-40.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_desktop-40.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_desktop-40.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnome_desktop-40.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_desktop-40.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'aa5626a827b0dc651edc6187b5f9bda067191aaa003961b051d763939488c800',

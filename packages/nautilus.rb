@@ -14,10 +14,10 @@ class Nautilus < Package
   source_sha256 '9bcb93c5ce56dbe1cd2b2d0808c21a5e37cc1d098ee037b7da75c0a4a59e84e7'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nautilus-40.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nautilus-40.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nautilus-40.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nautilus-40.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nautilus-40.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nautilus-40.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nautilus-40.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nautilus-40.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '98663fed405335be9b9e297f641bd7e14edc631f43702e17a6477ba5b43368b3',

@@ -10,10 +10,10 @@ class Hunspell_fr_fr < Package
   source_sha256 'bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/hunspell_fr_fr-1.7.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/hunspell_fr_fr-1.7.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/hunspell_fr_fr-1.7.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/hunspell_fr_fr-1.7.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/hunspell_fr_fr-1.7.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/hunspell_fr_fr-1.7.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/hunspell_fr_fr-1.7.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/hunspell_fr_fr-1.7.0-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f9436296b3b3cc53ed1307e21493754054037fa4ee69e8d047316d7d9906ce07',

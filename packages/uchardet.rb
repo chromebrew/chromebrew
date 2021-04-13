@@ -10,10 +10,10 @@ class Uchardet < Package
   source_sha256 '8351328cdfbcb2432e63938721dd781eb8c11ebc56e3a89d0f84576b96002c61'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/uchardet-0.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/uchardet-0.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/uchardet-0.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/uchardet-0.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/uchardet-0.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/uchardet-0.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/uchardet-0.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/uchardet-0.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3e3e33899d7c3752750fc9b71a43fe46728a2cc9b129ef2a66141c4db61f32f3',

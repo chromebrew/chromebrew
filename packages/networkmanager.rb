@@ -11,10 +11,10 @@ class Networkmanager < Package
   source_sha256 '9fab930be75a2dc4fcfdacdaf9a870580d2969b64aec019dbfc63f4cab491485'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/networkmanager-1.30.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/networkmanager-1.30.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/networkmanager-1.30.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/networkmanager-1.30.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/networkmanager-1.30.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '69bf115544cf9735cbbddb8b24d3b10991b3ee430856f8d8ac36b26e4e192f13',

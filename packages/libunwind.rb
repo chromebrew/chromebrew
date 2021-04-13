@@ -10,10 +10,10 @@ class Libunwind < Package
   source_sha256 '90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libunwind-1.5.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libunwind-1.5.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'c1b315c17464f67a1e719a615da0154c661eaf1e6e1584f8a68870a2de8721e8',
