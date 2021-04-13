@@ -10,10 +10,10 @@ class Iso_codes < Package
   source_sha256 '67117fb76f32c8fb5e37d2d60bce238f1f8e865cc7b569a57cbc3017ca15488a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iso_codes-4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iso_codes-4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iso_codes-4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/iso_codes-4.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/iso_codes-4.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/iso_codes-4.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/iso_codes-4.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/iso_codes-4.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3842e352264375e1b331bc14e4bdfceb56c27978e4ca96b0572c96db980266c0',

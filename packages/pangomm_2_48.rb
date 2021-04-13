@@ -11,10 +11,10 @@ class Pangomm_2_48 < Package
   source_sha256 '744ba9156ca642f6cbbe049f965c741319c9f71629b153b6888dbca239fa770b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pangomm_2_48-2.48.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pangomm_2_48-2.48.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pangomm_2_48-2.48.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pangomm_2_48-2.48.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pangomm_2_48-2.48.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pangomm_2_48-2.48.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pangomm_2_48-2.48.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pangomm_2_48-2.48.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '720f11d212bf078bbac66bf6751ebc24e5040fa2d7d5908a637b3d6c83a8d28d',

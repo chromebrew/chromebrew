@@ -10,10 +10,10 @@ class Imlib2 < Package
   source_sha256 '033a6a639dcbc8e03f65ff05e57068e7346d50ee2f2fff304bb9095a1b2bc407'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imlib2-1.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imlib2-1.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/imlib2-1.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imlib2-1.7.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/imlib2-1.7.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/imlib2-1.7.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/imlib2-1.7.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/imlib2-1.7.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fc1a05ee2eeaa200511b2bcebd2bdc70bd68192e1b3fabacba732cf48485a330',

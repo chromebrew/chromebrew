@@ -10,10 +10,10 @@ class Sane_backends < Package
   source_sha256 '3a28c237c0a72767086202379f6dc92dbb63ec08dfbab22312cba80e238bb114'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sane_backends-1.0.32-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sane_backends-1.0.32-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sane_backends-1.0.32-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sane_backends-1.0.32-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sane_backends-1.0.32-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sane_backends-1.0.32-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sane_backends-1.0.32-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sane_backends-1.0.32-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ac5d7ac8a77796e58a2b423ecabb59df5cbcec5c734080942cf187517deecaf9',

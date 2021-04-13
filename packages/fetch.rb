@@ -10,10 +10,10 @@ class Fetch < Package
   source_sha256 'ff3072da89c36a5031a3585ec6898113005185e76f626cf4ca8cffee4b62446d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fetch-0.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fetch-0.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fetch-0.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fetch-0.1.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fetch-0.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fetch-0.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fetch-0.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fetch-0.1.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6df3fe6ab4d7a6277577275e49c973949b2e60e8f1516e7eca7ff72bf8f4ce7f',

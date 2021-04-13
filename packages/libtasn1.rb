@@ -10,10 +10,10 @@ class Libtasn1 < Package
   source_sha256 '0e0fb0903839117cb6e3b56e68222771bebf22ad7fc2295a0ed7d576e8d4329d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtasn1-4.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libtasn1-4.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libtasn1-4.16-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libtasn1-4.16-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libtasn1-4.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5e4512b5de236f36519662658481c9021956ea210030efe67447fd2e345c296d',

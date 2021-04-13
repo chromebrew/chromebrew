@@ -10,10 +10,10 @@ class Testdisk < Package
   source_sha256 'c95dd532dad353713e8ca895a3faac31acef284f9f0fad299f69181fec583313'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/testdisk-7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/testdisk-7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/testdisk-7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/testdisk-7.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/testdisk-7.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/testdisk-7.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/testdisk-7.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/testdisk-7.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd1d42ff50e0792de2c5ddaec3abcb5de9e7057a3d7f63f883cdf283d336850ce',

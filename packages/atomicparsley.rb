@@ -10,10 +10,10 @@ class Atomicparsley < Package
   source_sha256 '8ba4e3e21d7a9239932e2a6f34842194d8f9eba84ce9eb83fb35369f5f3f05ab'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/atomicparsley-0.9.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/atomicparsley-0.9.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/atomicparsley-0.9.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/atomicparsley-0.9.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/atomicparsley-0.9.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/atomicparsley-0.9.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/atomicparsley-0.9.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/atomicparsley-0.9.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '55d6f7bf30bd0e178dd9d117c08b6b5c6f6965808f2e483256ab100a0823b4ae',

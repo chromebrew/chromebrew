@@ -10,10 +10,10 @@ class Sleuthkit < Package
   source_sha256 'f52a08ab0de078182c0f2d19d3e1b341424a9e0c1633a61c3b892fb38f9acb97'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sleuthkit-4.6.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sleuthkit-4.6.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sleuthkit-4.6.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sleuthkit-4.6.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sleuthkit-4.6.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5ec2af7f82c975c22a8801bfa28a25ce6544fc079c38987fa9e6276f6198ec3a',

@@ -6,14 +6,12 @@ class Android_studio < Package
   version '4.1.2.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url 'https://dl.google.com/dl/android/studio/ide-zips/4.1.2.0/android-studio-ide-201.7042882-linux.tar.gz'
-    source_sha256 '89f7c3a03ed928edeb7bbb1971284bcb72891a77b4f363557a7ad4ed37652bb9'
-    depends_on 'jdk8'
-    depends_on 'xdg_base'
-    depends_on 'sommelier'
-  end
+  source_url 'https://dl.google.com/dl/android/studio/ide-zips/4.1.2.0/android-studio-ide-201.7042882-linux.tar.gz'
+  source_sha256 '89f7c3a03ed928edeb7bbb1971284bcb72891a77b4f363557a7ad4ed37652bb9'
+
+  depends_on 'jdk8'
+  depends_on 'xdg_base'
+  depends_on 'sommelier'
 
   def self.preflight
     free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp.to_i

@@ -10,10 +10,10 @@ class Thunar < Package
   source_sha256 'da2d17d2cb69eb33768690b714cc232ed367cbd71eb9543aaa2a805d05dc3ce1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/thunar-4.16.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/thunar-4.16.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/thunar-4.16.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/thunar-4.16.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/thunar-4.16.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f72859ef9d34c9f53b027e3ff4f939d53dfd02e2e14fa1ccba7272857dff6846',

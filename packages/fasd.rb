@@ -10,10 +10,10 @@ class Fasd < Package
   source_sha256 '88efdfbbed8df408699a14fa6c567450bf86480f5ff3dde42d0b3e1dee731f65'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fasd-1.0.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fasd-1.0.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fasd-1.0.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fasd-1.0.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fasd-1.0.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fasd-1.0.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fasd-1.0.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fasd-1.0.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7a8f84519778bdd8c8d34b277d900016be6a5acdef97d7f18ddc22a59d43ffcc',

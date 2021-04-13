@@ -10,9 +10,9 @@ class Qtdeclarative < Package
   source_sha256 '7e30f0ccba61f9d71720b91d7f7523c23677f23cd96065cb71df1b0df329d768'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qtdeclarative-5.15.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qtdeclarative-5.15.1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qtdeclarative-5.15.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qtdeclarative-5.15.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qtdeclarative-5.15.1-chromeos-armv7l.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/qtdeclarative-5.15.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e95739560c1a124ddc52362945327cb60a1fc0bda568ca15011848750b8554d9',

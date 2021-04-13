@@ -10,10 +10,10 @@ class At_spi2_core < Package
   source_sha256 '4f71d3d208736adfe004102b4caca0ad70a7e3986d9bcd1661d7d824e10bbfb3'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/at_spi2_core-2.39.91-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/at_spi2_core-2.39.91-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7a9ab15123727d6036c8b30b9a35ab52f71745a8a4edce0fe80039216c2649b1',

@@ -12,10 +12,10 @@ class Libefl < Package
   source_sha256 'de95c6e673c170c1e21382918b122417c091c643e7dcaced89aa785529625c2a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libefl-1.24.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libefl-1.24.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libefl-1.24.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libefl-1.24.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libefl-1.24.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libefl-1.24.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libefl-1.24.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libefl-1.24.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a8711a86825b0186ce5749455cf1763c9a338a2dffdad78cdbf1eab185b6a879',

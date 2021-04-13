@@ -10,10 +10,10 @@ class Xorg_synaptics_driver < Package
   source_sha256 'afba3289d7a40217a19d90db98ce181772f9ca6d77e1898727b0afcf02073b5a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_synaptics_driver-1.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_synaptics_driver-1.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_synaptics_driver-1.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_synaptics_driver-1.9.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_synaptics_driver-1.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_synaptics_driver-1.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_synaptics_driver-1.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_synaptics_driver-1.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '455fe9b17ba1b46407680ad3c5c4f21ba2ff4db55578d3144fcfe38d844980dc',

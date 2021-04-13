@@ -10,10 +10,10 @@ class P11kit < Package
   source_sha256 'e4bf1e374b3c0950a724cf367bd52201519f4b7025c8e9902a274123cc232560'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.22-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.22-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.22-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/p11kit-0.23.22-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/p11kit-0.23.22-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/p11kit-0.23.22-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/p11kit-0.23.22-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/p11kit-0.23.22-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'd62b5c7216b9b271584147ec0b5c432ef1f993c0985be2c77ec7b681981eb2a8',

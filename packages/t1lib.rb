@@ -13,9 +13,9 @@ class T1lib < Package
   source_sha256 '821328b5054f7890a0d0cd2f52825270705df3641dbd476d58d17e56ed957b59'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/t1lib-5.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/t1lib-5.1.2-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/t1lib-5.1.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/t1lib-5.1.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/t1lib-5.1.2-chromeos-armv7l.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/t1lib-5.1.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2f4799df219c60ac0ece07da29347d070b16671e3d003e988d586baf18018ecb',

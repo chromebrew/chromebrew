@@ -11,10 +11,10 @@ class V4l_utils < Package
   source_sha256 '956118713f7ccb405c55c7088a6a2490c32d54300dd9a30d8d5008c28d3726f7'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.20.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.20.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.20.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/v4l_utils-1.20.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/v4l_utils-1.20.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/v4l_utils-1.20.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/v4l_utils-1.20.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/v4l_utils-1.20.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c7048454015dbd6c4b98b1ae19b58030c4f607c28f732ebca0f8ed0e5b130c52',

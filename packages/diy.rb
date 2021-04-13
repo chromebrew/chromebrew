@@ -10,10 +10,10 @@ class Diy < Package
   source_sha256 'b3b5490441d521b6e9b33471c782948194bf95c7c3df3eb97bc5cf4530b91576'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/diy-3.5.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/diy-3.5.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/diy-3.5.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/diy-3.5.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/diy-3.5.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1f7e1d0b9c3f4c3675a243ad85082057be425544a1e2a84eb7bd0a1c1f5f059d',

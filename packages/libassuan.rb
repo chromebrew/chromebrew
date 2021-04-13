@@ -10,10 +10,10 @@ class Libassuan < Package
   source_sha256 '8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libassuan-2.5.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libassuan-2.5.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libassuan-2.5.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libassuan-2.5.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libassuan-2.5.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libassuan-2.5.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libassuan-2.5.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libassuan-2.5.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '853b20547fd035aa2b8e8e3653cfbbd1adc70f6b1f453a41776fa4799519a4d5',

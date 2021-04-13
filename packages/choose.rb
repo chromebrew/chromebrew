@@ -10,10 +10,10 @@ class Choose < Package
   source_sha256 'd09a679920480e66bff36c76dd4d33e8ad739a53eace505d01051c114a829633'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/choose-0.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/choose-0.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/choose-0.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/choose-0.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/choose-0.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/choose-0.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/choose-0.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/choose-0.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '26cdefb57b3e12c1a73626879f0327aecc474289be086034c3f930d4cc51528b',

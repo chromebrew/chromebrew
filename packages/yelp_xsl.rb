@@ -11,10 +11,10 @@ class Yelp_xsl < Package
   source_sha256 '3938ae88880cdcc3bbd20db25a05bac03cd1324d60c2940ed85e56259725e7f7'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_xsl-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yelp_xsl-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yelp_xsl-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/yelp_xsl-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/yelp_xsl-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd98fe7c598a54bee90907294bca5ab24732ecbe3f2badc0953693e88007e49ba',

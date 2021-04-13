@@ -10,10 +10,10 @@ class Openssh < Package
   source_sha256 'b924181983a77cb10e61530960e818ccae075e5c457ea6b9f67e4946009563db'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssh-8.4-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openssh-8.4-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openssh-8.4-1-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/openssh-8.4-1-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/openssh-8.4-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '6cc250043f9f5978e65220cc5a499651a292f0d8597eedb97e427ccb80872d29',

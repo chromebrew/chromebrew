@@ -10,10 +10,10 @@ class Gedit < Package
   source_sha256 'b7ac78774fe2eadd09a9d91d19b2596ebd3388f2d3d1cf3cbac81cba649c399a'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gedit-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gedit-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gedit-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gedit-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gedit-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gedit-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gedit-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gedit-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7f976a406dd8e8137d0aa7217c1d75fbee756a028c8315c386c41dfb4c3b57f6',

@@ -11,10 +11,10 @@ class Gobject_introspection < Package
   source_sha256 'b22035bd3e7ea27cc29b0c19ec5da8dd6cafe88a08392ecd06b41d4025406b4c'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gobject_introspection-1.68.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gobject_introspection-1.68.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gobject_introspection-1.68.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7f19992ebfb2efd6890b80aa13975b5052b62018359dfd3d6d4f504d88f5cfb8',

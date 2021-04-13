@@ -10,10 +10,10 @@ class Librsvg < Package
   source_sha256 'a4298a98e3a95fdd73c858c17d4dd018525fb09dbb13bbd668a0c2243989e958'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/librsvg-2.50.3-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/librsvg-2.50.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/librsvg-2.50.3-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '40d0ff493b29670a4375a7fc35c236cdc44c249a6658bbc49ea54a435868d729',

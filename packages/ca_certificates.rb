@@ -11,10 +11,10 @@ class Ca_certificates < Package
   source_sha256 'af30b4d9a2c58e42134067d29f0ba6120e5960fd140393d5574d4bdcf5b824d6'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ca_certificates-20210119-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ca_certificates-20210119-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ca_certificates-20210119-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ca_certificates-20210119-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ca_certificates-20210119-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ca_certificates-20210119-2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ca_certificates-20210119-2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ca_certificates-20210119-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '84bb971e1d955d113b48013c694fd209f1627799f9c5a1e6123911c27d72ad4c',

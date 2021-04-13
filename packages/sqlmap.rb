@@ -10,10 +10,10 @@ class Sqlmap < Package
   source_sha256 '77faf85164eb17dce769ec830cbd146768644315bc1024613ad13155e09c2d11'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sqlmap-1.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sqlmap-1.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sqlmap-1.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sqlmap-1.4.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sqlmap-1.4.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sqlmap-1.4.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sqlmap-1.4.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sqlmap-1.4.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '02a1b56739af28c5c2dbd920f69c630e7e1ffafc043387b06534c9586886f5f7',
