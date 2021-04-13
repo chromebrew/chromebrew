@@ -597,7 +597,6 @@ def download
           if system "sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir $extract_dir
             system "tar x#{@verbose}f #{cachefile} -C #{$extract_dir}"
-            puts "Archive found in cache".lightgreen
             return {source: source, filename: filename}
           else
             puts 'Cached repository checksum mismatch. :/ Will download.'.lightred
@@ -625,7 +624,7 @@ def download
       # Stow file in cache if requested
       if CREW_IS_CACHING
         puts 'Caching downloaded archive.'.lightgreen
-        system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz $(find #{$extract_dir} -mindepth 1 -maxdepth 1)"
+          Dir.chdir "#{$extract_dir}" do system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz $(find -mindepth 1 -maxdepth 1 -printf '%P\n')" end
         system "sha256sum #{CREW_CACHE_DIR}/#{filename}.tar.xz > #{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256"
       end
     end
@@ -721,7 +720,7 @@ def compress_doc (dir)
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "compressdoc --gzip -9#{@verbose} #{dir}"
+    system "compressdoc --gzip -9 -#{@verbose} #{dir}"
   end
 end
 
