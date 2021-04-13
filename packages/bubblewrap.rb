@@ -11,10 +11,10 @@ class Bubblewrap < Package
   source_sha256 'b9c69b9b1c61a608f34325c8e1a495229bacf6e4a07cbb0c80cf7a814d7ccc03'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/bubblewrap-0.4.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/bubblewrap-0.4.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7c3f2c4a332342b9d7aa15d6aa776a38d1dc94a8c4c904a81a64f7e7ca45cedd',

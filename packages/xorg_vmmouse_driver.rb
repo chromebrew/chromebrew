@@ -6,16 +6,14 @@ class Xorg_vmmouse_driver < Package
   version '13.1.0'
   license 'MIT-with-advertising and ISC'
   compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686', 'x86_64'
-    source_url 'https://www.x.org/pub/individual/driver/xf86-input-vmmouse-13.1.0.tar.bz2'
-    source_sha256 '0af558957ac1be1b2863712c2475de8f4d7f14921fd01ded2e2fde4921b19319'
-    depends_on 'xorg_server' => :build
-  end
+  source_url 'https://www.x.org/pub/individual/driver/xf86-input-vmmouse-13.1.0.tar.bz2'
+  source_sha256 '0af558957ac1be1b2863712c2475de8f4d7f14921fd01ded2e2fde4921b19319'
+
+  depends_on 'xorg_server' => :build
 
   binary_url ({
-      i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_vmmouse_driver-13.1.0-chromeos-i686.tar.xz',
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_vmmouse_driver-13.1.0-chromeos-x86_64.tar.xz',
+      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_vmmouse_driver-13.1.0-chromeos-i686.tar.xz',
+    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_vmmouse_driver-13.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: 'd24b37d653b0c8a57373f10b8431ad26691a196f0d9d9e5ba45495c65b9a60eb',

@@ -10,10 +10,10 @@ class Libsass < Package
   source_sha256 'f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsass-3.6.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsass-3.6.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsass-3.6.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsass-3.6.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsass-3.6.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsass-3.6.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsass-3.6.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsass-3.6.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '80f6e743442cc3725a889cd139c89f159f1bb834698f60c4b9e10595bcde3e8c',

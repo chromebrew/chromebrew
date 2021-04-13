@@ -11,10 +11,10 @@ class Libunbound < Package
   source_sha256 'a954043a95b0326ca4037e50dace1f3a207a0a19e9a4a22f4c6718fc623db2a1'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunbound-1.13.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libunbound-1.13.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libunbound-1.13.0-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libunbound-1.13.0-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libunbound-1.13.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '6a233948f7d41046dc23d1cc500cf87b604b6d99861d0806b12393e090bd034a',

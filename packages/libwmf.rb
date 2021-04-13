@@ -10,10 +10,10 @@ class Libwmf < Package
   source_sha256 'ec31cc81ee41ab28acef686b875b7692f6a5286710d6fd58429d914f78c73847'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libwmf-0.2.12-483e-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libwmf-0.2.12-483e-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libwmf-0.2.12-483e-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libwmf-0.2.12-483e-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6313c27b04e538ce75b749049658d7ad0f85df880a24f49f232e1846a32535b2',

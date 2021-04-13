@@ -11,10 +11,10 @@ class Symlinks < Package
   source_sha256 'f4469a9f366ccfaa7273b1f78bd540b8a6fa96f8b2b81a95d131944fb77efdd4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/symlinks-1.4-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/symlinks-1.4-4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/symlinks-1.4-4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/symlinks-1.4-4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/symlinks-1.4-4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/symlinks-1.4-4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '75676c7daebaa9a32ddf2053a47fde8e9cfb19ef774388b577b352514d98925d',

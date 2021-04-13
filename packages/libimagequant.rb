@@ -11,10 +11,10 @@ class Libimagequant < Package
   source_sha256 'b5fa27da1f3cf3e8255dd02778bb6a51dc71ce9f99a4fc930ea69b83200a7c74'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libimagequant-2.14.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libimagequant-2.14.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libimagequant-2.14.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libimagequant-2.14.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libimagequant-2.14.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libimagequant-2.14.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libimagequant-2.14.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libimagequant-2.14.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0f7ae09c69f1648bf6a77c6d269336fa246c2415ff0cb0bb9fb2bb55c46edafe',

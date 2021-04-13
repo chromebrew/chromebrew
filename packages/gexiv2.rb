@@ -12,10 +12,10 @@ class Gexiv2 < Package
   source_sha256 '2322b552aca330eef79724a699c51a302345d5e074738578b398b7f2ff97944c'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gexiv2-0.12.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gexiv2-0.12.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gexiv2-0.12.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gexiv2-0.12.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gexiv2-0.12.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '305a56146c461035262b294710aacb8e5401d2bcee8e1828661e35e78b5bf47e',
@@ -28,7 +28,7 @@ class Gexiv2 < Package
   depends_on 'gobject_introspection'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

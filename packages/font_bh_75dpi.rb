@@ -10,10 +10,10 @@ class Font_bh_75dpi < Package
   source_sha256 '3486aa51ac92c646a448fe899c5c3dae0024b1fef724d5100d52640d1cac721c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/font_bh_75dpi-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/font_bh_75dpi-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/font_bh_75dpi-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/font_bh_75dpi-1.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_bh_75dpi-1.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_bh_75dpi-1.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/font_bh_75dpi-1.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/font_bh_75dpi-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd805e4c0a8408bc8befa3641a7b9d6237fed852228c8cad214f602ef36768383',

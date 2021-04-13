@@ -11,10 +11,10 @@ class Gst_plugins_bad < Package
   source_sha256 '30178ddcabcf71faccca8808f402a6e02394dfe3f821e2abe7a1b397f01eeaed'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_bad-1.18.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gst_plugins_bad-1.18.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gst_plugins_bad-1.18.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gst_plugins_bad-1.18.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gst_plugins_bad-1.18.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd730e940fa02c687cf4a3a1ff7b9a2d6fa2a295525aa409fc63e589956a71b40',
@@ -54,7 +54,7 @@ class Gst_plugins_bad < Package
 
   def self.build
     system "meson \
-      #{CREW_MESON_LTO_OPTIONS} \
+      #{CREW_MESON_OPTIONS} \
       -Ddirectfb=disabled \
       -Ddoc=disabled \
       -Dflite=disabled \

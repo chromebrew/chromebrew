@@ -10,10 +10,10 @@ class Apriconv < Package
   source_sha256 '7d454e0fe32f2385f671000e3b755839d16aabd7291e3947c973c90377c35313'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/apriconv-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/apriconv-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/apriconv-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/apriconv-1.2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/apriconv-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/apriconv-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/apriconv-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/apriconv-1.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6ec314d1d6143a855e59d5a3b76db311e3ba60b980b98be3d639c39e74949fed',

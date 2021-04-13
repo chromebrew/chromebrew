@@ -10,8 +10,8 @@ class Prometheus_cpp < Package
   source_sha256 'f116cee772df7bf23fc89fb71c13ad4420601e304a382d77da725da0d0dc4cac'
 
   binary_url ({
-      i686: 'https://dl.bintray.com/chromebrew/chromebrew/prometheus_cpp-0.12.1-chromeos-i686.tar.xz',
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/prometheus_cpp-0.12.1-chromeos-x86_64.tar.xz',
+      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/prometheus_cpp-0.12.1-chromeos-i686.tar.xz',
+    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/prometheus_cpp-0.12.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: '6fd409af6b2eeaf47267f459feb267f1309cac53b83eeafba27ce5165b5df162',

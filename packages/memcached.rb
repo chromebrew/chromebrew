@@ -10,10 +10,10 @@ class Memcached < Package
   source_sha256 '45a22c890dc1edb27db567fb4c9c25b91bfd578477c08c5fb10dca93cc62cc5a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/memcached-1.5.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/memcached-1.5.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/memcached-1.5.16-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/memcached-1.5.16-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/memcached-1.5.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c80d5865748c2954b08734ed28dc46b5df20c5a222e73d1205f6a2d574d96aff',

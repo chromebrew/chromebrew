@@ -10,10 +10,10 @@ class Libxslt < Package
   source_sha256 '98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxslt-1.1.34-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxslt-1.1.34-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxslt-1.1.34-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxslt-1.1.34-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxslt-1.1.34-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxslt-1.1.34-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',

@@ -15,11 +15,8 @@ class Sublime_text < Package
     source_sha256 '480609962bbbd12128b5332c7831372b8851c13e160512730d1b0a6a835a3071'
   end
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'gtk2'
-    depends_on 'sommelier'
-  end
+  depends_on 'gtk2'
+  depends_on 'sommelier'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

@@ -10,10 +10,10 @@ class Ncftp < Package
   source_sha256 '129e5954850290da98af012559e6743de193de0012e972ff939df9b604f81c23'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncftp-3.2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncftp-3.2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncftp-3.2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncftp-3.2.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ncftp-3.2.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ncftp-3.2.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ncftp-3.2.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ncftp-3.2.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3321010fccdc0fc30a11c7deb914f4c9b6ce606f3e3dd191b87a9266a7ed6afc',

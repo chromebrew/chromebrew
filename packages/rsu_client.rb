@@ -10,10 +10,10 @@ class Rsu_client < Package
   source_sha256 'a84d27f2775ceef3bf0f715504ba41f3776c5374b61f9820993a26f350e4fa3d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rsu_client-4.3.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rsu_client-4.3.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rsu_client-4.3.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rsu_client-4.3.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rsu_client-4.3.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rsu_client-4.3.8-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rsu_client-4.3.8-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rsu_client-4.3.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '740174a97f6f60b8fde6cc6458934ecb1605fa66d40c4ee04b095316b8fa4e7e',

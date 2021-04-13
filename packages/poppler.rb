@@ -11,10 +11,10 @@ class Poppler < Package
   source_sha256 '5e2219656c6bbd36154133fef2e12b7d0938464518827098b29a10b1697ea79c'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.04.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.04.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/poppler-21.04.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/poppler-21.04.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4ee2c4b1b30d7a39d18dd6b3b5b45f284c730cf83d7f46cabd6ba4a64e518f4f',

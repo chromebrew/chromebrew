@@ -11,10 +11,10 @@ class Moreutils < Package
   source_sha256 'ba0cfaa1ff6ead2b15c62a67292de66a366f9b815a09697b54677f7e15f5a2b2'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/moreutils-0.65-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/moreutils-0.65-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/moreutils-0.65-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/moreutils-0.65-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/moreutils-0.65-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/moreutils-0.65-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'af2d40444fb74ae8e2151b76d61417ddee993b69b8e6b6b30a65218612a8f523',

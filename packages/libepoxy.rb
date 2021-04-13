@@ -10,10 +10,10 @@ class Libepoxy < Package
   source_sha256 '261663db21bcc1cc232b07ea683252ee6992982276536924271535875f5b0556'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libepoxy-1.5.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libepoxy-1.5.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libepoxy-1.5.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libepoxy-1.5.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libepoxy-1.5.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libepoxy-1.5.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libepoxy-1.5.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libepoxy-1.5.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'de87478a3eecf1b1ab3b23441b87ca0c81ee26af507b7223dffb51097aa15e07',
@@ -26,7 +26,7 @@ class Libepoxy < Package
   depends_on 'python3'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
     system "meson configure builddir"
     system "ninja -C builddir"
   end

@@ -11,10 +11,10 @@ class Libevent < Package
   source_sha256 '92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libevent-2.1.12-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libevent-2.1.12-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libevent-2.1.12-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libevent-2.1.12-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libevent-2.1.12-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libevent-2.1.12-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libevent-2.1.12-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libevent-2.1.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'c5617c8ad9ff0c9107a5a744f6d8e8413a07aa70212c25dd9df085dae5f96d19',

@@ -356,7 +356,10 @@ def const (var)
       'CREW_LIB_PREFIX',
       'CREW_LIB_SUFFIX',
       'CREW_MAN_PREFIX',
-      'CREW_MESON_LTO_OPTIONS',
+      'CREW_COMMON_FLAGS',
+      'CREW_COMMON_FNO_LTO_FLAGS',
+      'CREW_ENV_OPTIONS',
+      'CREW_MESON_FNO_LTO_OPTIONS',
       'CREW_MESON_OPTIONS',
       'CREW_META_PATH',
       'CREW_NOT_COMPRESS',
@@ -420,7 +423,7 @@ end
 
 def whatprovides (regexPat)
   fileArray = []
-  needle = regexPat.gsub(/-/,'_').gsub(/_/,'\-')
+  needle = regexPat.gsub(/-/,',').gsub(/,/,'\-')
   Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
     packageName = File.basename packageList, '.filelist'
     File.readlines(packageList).each do |line|
@@ -680,6 +683,14 @@ end
 
 def prepare_package (destdir)
   Dir.chdir destdir do
+    # Avoid /usr/local/share/info/dir{.gz} file conflict:
+    # The install-info program maintains a directory of installed 
+    # info documents in /usr/share/info/dir for the use of info 
+    # readers. This file must not be included in packages other 
+    # than install-info.
+    # https://www.debian.org/doc/debian-policy/ch-docs.html#info-documents
+    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/dir" if File.exist?("#{CREW_DEST_PREFIX}/share/info/dir")
+
     # compress manual files
     compress_doc "#{CREW_DEST_PREFIX}/man"
     compress_doc "#{CREW_DEST_PREFIX}/info"
@@ -711,7 +722,7 @@ def prepare_package (destdir)
         puts f.lightred
         pp = p
       end
-      abort
+      abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == '1'
     end
 
     # create directory list
@@ -778,9 +789,19 @@ end
 
 def expand_dependencies
   @dependencies = []
+  if @pkg.build_from_source
+    # make sure all buildessential packages are installed
+    pkgname = @pkg.name
+    search 'buildessential', true
+    check_deps = @pkg.dependencies.map {|k, v| k}
+    check_deps.each do |dep|
+      @dependencies << dep unless @device[:installed_packages].include?(dep)
+    end
+    search pkgname, true
+  end
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
-       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
+      (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
       check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
     else
@@ -861,7 +882,6 @@ def install
     meta = download
     target_dir = unpack meta
     if meta[:source] == true
-      abort "You don't have a working C compiler. Run `crew install buildessential` to get one and try again.".lightred unless system('gcc --version')
 
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy

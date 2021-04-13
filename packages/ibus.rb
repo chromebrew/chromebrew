@@ -11,10 +11,10 @@ class Ibus < Package
   source_sha256 'abf33a965063629d3bbdab8a5948736ce3a9523cc3d6331e5ea0ec5e8ea7421f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ibus-1.5.24-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ibus-1.5.24-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ibus-1.5.24-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ibus-1.5.24-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',

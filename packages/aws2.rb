@@ -10,10 +10,10 @@ class Aws2 < Package
   source_sha256 'e7f09c31b8c152ea015a002c2f2dc8745f0e2ec01cc21cc5fd92afb6b97e24a4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aws2-0.2.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aws2-0.2.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aws2-0.2.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aws2-0.2.7-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aws2-0.2.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aws2-0.2.7-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/aws2-0.2.7-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/aws2-0.2.7-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '72215a5bbb0b6f63fa31492d89fe54e17630b505a64f89e37720823c3c346de3',

@@ -10,10 +10,10 @@ class Libvisual < Package
   source_sha256 'c004e88ae55872b19dc651b0e465b1e57c07e75eacb1bff8a43b6ceb75671850'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libvisual-0.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libvisual-0.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libvisual-0.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libvisual-0.4.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvisual-0.4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvisual-0.4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libvisual-0.4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libvisual-0.4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0eb131d81f76405c634d8749a5cbd1138b722c9389156d405c1fdb05ee73fab9',

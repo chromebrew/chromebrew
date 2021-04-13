@@ -10,10 +10,10 @@ class Yamllint < Package
   source_sha256 '56221b7c0a50b1619e491eb157624a5d1b160c1a4f019d64f117268f42fe4ca4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yamllint-1.11.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yamllint-1.11.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yamllint-1.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yamllint-1.11.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yamllint-1.11.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yamllint-1.11.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/yamllint-1.11.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/yamllint-1.11.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9798d172ec31c7b2c6b739dfd1177084c80aeb9ad15d129e3a84caed558bde54',

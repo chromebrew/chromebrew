@@ -10,10 +10,10 @@ class Fly < Package
   source_sha256 '8411915a9acd9a3d86896db5a53ac6bd4e35b44106c0f180cc0f96a6f02a62c9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fly-1.6.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fly-1.6.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fly-1.6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fly-1.6.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fly-1.6.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fly-1.6.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fly-1.6.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fly-1.6.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '18e5b2d2e945f0192bc56de5c24a822421027c20477a1306ea9f61a8fc55eea9',

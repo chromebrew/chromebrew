@@ -10,10 +10,10 @@ class Gtkmm4 < Package
   source_sha256 '8973d9bc7848e02cb2051e05f3ee3a4baffe2feb4af4a5487f0e3132eec03884'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm4-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm4-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm4-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm4-4.0.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtkmm4-4.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtkmm4-4.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtkmm4-4.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtkmm4-4.0.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1d2640f81201631586b082735b8ad82a229ff9502233acc4ed628ba88dd46278',
@@ -28,7 +28,7 @@ class Gtkmm4 < Package
   depends_on 'cairomm'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

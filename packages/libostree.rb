@@ -11,10 +11,10 @@ class Libostree < Package
   source_sha256 'fdaa5992d0a6f62157152355449ac8476c50df6602be398e9ad10438cc1e679b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libostree-2020.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libostree-2020.8-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libostree-2020.8-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libostree-2020.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4e4ffd30a74ea73c60f7b0c9a0064a50dacf31ad0d8011f95deb35fab596878d',

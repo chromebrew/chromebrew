@@ -10,10 +10,10 @@ class Aspell < Package
   source_sha256 'f9b77e515334a751b2e60daab5db23499e26c9209f5e7b7443b05235ad0226f2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aspell-0.60.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aspell-0.60.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aspell-0.60.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aspell-0.60.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aspell-0.60.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aspell-0.60.8-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/aspell-0.60.8-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/aspell-0.60.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ec931f1b5a7f23a2eef005a698b2fcda44bcbfe6c9d7c7e3fcc3df91bb284f62',

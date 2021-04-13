@@ -10,10 +10,10 @@ class Moonbuggy < Package
   source_sha256 '352dc16ccae4c66f1e87ab071e6a4ebeb94ff4e4f744ce1b12a769d02fe5d23f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/moonbuggy-1.0.51-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/moonbuggy-1.0.51-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/moonbuggy-1.0.51-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/moonbuggy-1.0.51-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/moonbuggy-1.0.51-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/moonbuggy-1.0.51-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/moonbuggy-1.0.51-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/moonbuggy-1.0.51-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ed1a664522ac06317afefa478572efebe80f9cbf99fd06a3bc0353b5b46af221',

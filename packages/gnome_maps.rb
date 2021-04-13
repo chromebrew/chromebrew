@@ -11,10 +11,10 @@ class Gnome_maps < Package
   source_sha256 'db00e0c8e5ce3c3fb3801ecf522f76751cc1f0b1d5007c6169207260143f163b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_maps-40.rc-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_maps-40.rc-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_maps-40.rc-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_maps-40.rc-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_maps-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_maps-40.rc-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnome_maps-40.rc-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_maps-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a2c42ed9bb3ae39df2987dd0985ba16081b7d46f402bbd0dd18ac3310a5f6557',
@@ -37,7 +37,7 @@ class Gnome_maps < Package
   depends_on 'yelp_tools' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

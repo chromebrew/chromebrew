@@ -11,10 +11,10 @@ class Parted < Package
   source_sha256 'e1298022472da5589b7f2be1d5ee3c1b66ec3d96dfbad03dc642afd009da5342'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/parted-3.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/parted-3.4-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/parted-3.4-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/parted-3.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/parted-3.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/parted-3.4-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/parted-3.4-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/parted-3.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'ede8edf189c6a15f7f73c5473230e183e658515392727cf263bcec6f6e7a3145',
