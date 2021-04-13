@@ -53,6 +53,10 @@ class Package
     end
   end
 
+  def self.get_extract_dir
+    name + '.' + Time.now.utc.strftime("%Y%m%d%H%M%S") + '.dir'
+  end
+
   def self.is_binary? (architecture)
     if !@build_from_source and @binary_url and @binary_url.has_key?(architecture)
       return true
