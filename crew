@@ -601,9 +601,14 @@ def unpack (meta)
       FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
       system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{extract_dir}"
     when /\.git$/i
-      puts "Cloning with 'git', this may take a while...".lightgreen
-      FileUtils.mkdir extract_dir unless Dir.exist?(extract_dir)
-      system "git clone #{@pkg.source_url} --branch #{@pkg.git_branch} --depth 1 #{extract_dir}"
+      Dir.chdir extract_dir do
+        system 'git init'
+        system 'git config advice.detachedHead false'
+        system 'git config init.defaultBranch master'
+        system "git remote add origin #{@pkg.source_url}"
+        system "git fetch --depth 1 origin #{@pkg.git_tag}"
+        system 'git checkout FETCH_HEAD'
+      end
     end
     if meta[:source] == true
       # Check the number of directories in the archive
