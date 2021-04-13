@@ -10,10 +10,10 @@ class Libxfont2 < Package
   source_sha256 '6d151b3368e5035efede4b6264c0fdc6662c1c99dbc2de425e3480cababc69e6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfont2-2.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxfont2-2.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxfont2-2.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfont2-2.0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxfont2-2.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxfont2-2.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxfont2-2.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxfont2-2.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3ac6d734039ec97440aafcbd2da119114e2a47d18568d3403eab5f529c32f20b',

@@ -10,10 +10,10 @@ class Haproxy < Package
   source_sha256 '3f2e0d40af66dd6df1dc2f6055d3de106ba62836d77b4c2e497a82a4bdbc5422'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/haproxy-2.0.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/haproxy-2.0.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/haproxy-2.0.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/haproxy-2.0.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/haproxy-2.0.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9c3580edbfa83b4f0d59aa2f6d08689a76fef634daea6bf351a8b022110a5f29',

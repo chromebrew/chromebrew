@@ -13,10 +13,10 @@ class Lmdb < Package
   source_sha256 'd4c668167a2d703ef91db733b4069b8b74dbc374405855be6626b45e2a7e2dd3'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lmdb-0.9.29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lmdb-0.9.29-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lmdb-0.9.29-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lmdb-0.9.29-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lmdb-0.9.29-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lmdb-0.9.29-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lmdb-0.9.29-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lmdb-0.9.29-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0459de4035dccce3ab4e8ca3b7ee061447d530fbb526e97c20c143e7688dc7a7',

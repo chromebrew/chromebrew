@@ -12,10 +12,10 @@ class Spirv_headers < Package
   source_sha256 'b209fe7fd0db5a2eb61db5d93525ce0f39e4d615f2f82bd02ff0ee512bd45a1e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/spirv_headers-1.5.4-f88a-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/spirv_headers-1.5.4-f88a-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/spirv_headers-1.5.4-f88a-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/spirv_headers-1.5.4-f88a-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/spirv_headers-1.5.4-f88a-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/spirv_headers-1.5.4-f88a-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/spirv_headers-1.5.4-f88a-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/spirv_headers-1.5.4-f88a-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7fbc45daafcb8a8d2a2b677321df22f86797cc3cdd17b57e6ff6e56e6f00bc79',

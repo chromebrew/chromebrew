@@ -11,10 +11,10 @@ class L_smash < Package
   source_sha256 'e6f7c31de684f4b89ee27e5cd6262bf96f2a5b117ba938d2d606cf6220f05935'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/l_smash-2.14.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/l_smash-2.14.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/l_smash-2.14.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/l_smash-2.14.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/l_smash-2.14.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/l_smash-2.14.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/l_smash-2.14.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/l_smash-2.14.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5df042cdee6dc70e3670053f5f83a714865227aa4975fb0e655f0c7287a4066e',

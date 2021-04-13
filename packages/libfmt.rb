@@ -10,10 +10,10 @@ class Libfmt < Package
   source_sha256 '5d98c504d0205f912e22449ecdea776b78ce0bb096927334f80781e720084c9f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libfmt-7.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libfmt-7.1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libfmt-7.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libfmt-7.1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libfmt-7.1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libfmt-7.1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libfmt-7.1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libfmt-7.1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '26bb8f4333716d1ccce3a479b040e326bdb833483098064d20ef28a53d5068b1',

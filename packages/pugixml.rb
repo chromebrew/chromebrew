@@ -10,10 +10,10 @@ class Pugixml < Package
   source_sha256 '55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pugixml-1.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pugixml-1.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pugixml-1.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pugixml-1.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pugixml-1.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pugixml-1.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pugixml-1.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pugixml-1.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c948a90abf61186a25c71ed9434e9bea9ac7f6a88578c05fe40ba006ede7d561',

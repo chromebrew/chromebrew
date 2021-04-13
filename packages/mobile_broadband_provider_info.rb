@@ -11,10 +11,10 @@ class Mobile_broadband_provider_info < Package
   source_sha256 '0616b3d0580575741d4319ac71ca67c9a378879943d32a67ac0460615767bcdf'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mobile_broadband_provider_info-20201225-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mobile_broadband_provider_info-20201225-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mobile_broadband_provider_info-20201225-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mobile_broadband_provider_info-20201225-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mobile_broadband_provider_info-20201225-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mobile_broadband_provider_info-20201225-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mobile_broadband_provider_info-20201225-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mobile_broadband_provider_info-20201225-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'bcd1950197cad4165f2ae459e479a33ffdf923f8ba15825bf1a7b98759c2ae6e',

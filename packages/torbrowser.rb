@@ -8,15 +8,13 @@ class Torbrowser < Package
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
 
-  case ARCH
-  when 'x86_64'
-    @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}"
-    @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
-    source_url "#{@_url}/#{@_name}"
-    source_sha256 `curl -#L '#{@_url}/sha256sums-signed-build.txt' | grep '#{@_name}' | cut -d' ' -f1`.chomp
-    depends_on 'gtk3'
-    depends_on 'sommelier'
-  end
+  @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}"
+  @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
+  source_url "#{@_url}/#{@_name}"
+  source_sha256 `curl -#L '#{@_url}/sha256sums-signed-build.txt' | grep '#{@_name}' | cut -d' ' -f1`.chomp
+
+  depends_on 'gtk3'
+  depends_on 'sommelier'
 
   def self.build
     @tor = <<~EOF

@@ -10,10 +10,10 @@ class Linux_pam < Package
   source_sha256 '201d40730b1135b1b3cdea09f2c28ac634d73181ccd0172ceddee3649c5792fc'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_pam-1.5.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/linux_pam-1.5.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/linux_pam-1.5.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/linux_pam-1.5.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/linux_pam-1.5.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '50f55a3858081ca4748fba9f731310b81c9ed6ed85597c1fd715a5c2ae1f56d4',

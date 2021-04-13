@@ -11,10 +11,10 @@ class Mjpegtools < Package
   source_sha256 'a84349839471052db1ef691134aacf905b314dfce8762d47e10edcc9ab5f97d8'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mjpegtools-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mjpegtools-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mjpegtools-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mjpegtools-2.2.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mjpegtools-2.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mjpegtools-2.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mjpegtools-2.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mjpegtools-2.2.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '50bef51c33555ed239c35fe88ce52e025cbefc7bc3ce80158b186bb4d348f746',

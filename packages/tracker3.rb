@@ -13,10 +13,10 @@ class Tracker3 < Package
   source_sha256 'd673f7733753bfca965947e56fd66e61de4d9a931f354b0f74bd7d678bda50f3'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tracker3-3.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tracker3-3.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tracker3-3.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tracker3-3.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tracker3-3.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tracker3-3.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tracker3-3.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tracker3-3.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c0dcefb67e57e81357d16a8ea36354968220e3c219afb221793d258d1a21830f',
@@ -39,7 +39,7 @@ class Tracker3 < Package
 
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
       -Ddocs=false \
       -Dman=false \

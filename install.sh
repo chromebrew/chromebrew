@@ -16,10 +16,13 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
 
-EARLY_PACKAGES="gcc10 llvm brotli c_ares libcyrussasl libiconv libidn2 \
-libmetalink libnghttp2 libpsl libssh2 libtirpc libunistring lz4 openldap \
-rtmpdump zstd ncurses ca_certificates ruby libffi openssl nettle krb5 \
-p11kit libtasn1 gnutls curl git icu4c libedit"
+# EARLY_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
+EARLY_PACKAGES="gcc10 brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
+libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates ruby libffi openssl \
+nettle krb5 p11kit libtasn1 gnutls curl git icu4c"
+
+LATE_PACKAGES="crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 python27 python3 \
+sed bz2 lz4 lzip unzip xzutils zip"
 
 ARCH="$(uname -m)"
 
@@ -44,11 +47,14 @@ case "${ARCH}" in
   exit 1;;
 esac
 
+# install a base set of development packages for compiling and building software
+echo -e -n "${BLUE}Install development tools? (not needed for most users) [y/N]: ${RESET}"; read -n1 devtools
+
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
-  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then 
+  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then
     sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
   fi
 done
@@ -178,11 +184,10 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
 done
 
 ## workaround https://github.com/skycocker/chromebrew/issues/3305
-sudo ldconfig > /dev/null 2> /dev/null || true
+sudo ldconfig &> /dev/null || true
 
 # create symlink to 'crew' in ${CREW_PREFIX}/bin/
-rm -f "${CREW_PREFIX}/bin/crew"
-ln -s "../lib/crew/crew" "${CREW_PREFIX}/bin/"
+ln -sfv "lib/crew/crew" "${CREW_PREFIX}/bin/"
 
 # prepare sparse checkout .rb packages directory and do it
 cd "${CREW_LIB_PATH}"
@@ -197,8 +202,9 @@ git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
 crew update
 
-# install a base set of essential packages
-yes | crew install buildessential less most
+yes | crew install $LATE_PACKAGES
+
+[[ "$devtools" == "y" || "$devtools" == "Y" ]] && yes | crew install buildessential
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
@@ -215,26 +221,12 @@ source ~/.bashrc
 ${RESET}"
 fi
 echo -e "${BLUE}
-To set the default PAGER environment variable to use less:
-echo \"export PAGER='less'\" >> ~/.bashrc && . ~/.bashrc
+Edit ${CREW_PREFIX}/etc/env.d/02-pager to change the default PAGER.
+more is used by default
 
-Alternatively, you could use most.  Why settle for less, right?
-echo \"export PAGER='most'\" >> ~/.bashrc && . ~/.bashrc
+You may wish to edit the ${CREW_PREFIX}/etc/env.d/01-editor file for an editor default.
 
-Below are some text editor suggestions.
+Chromebrew provides nano, vim and emacs as default TUI editor options.
 
-To install 'nano', execute:
-crew install nano
-
-Or, to get an updated version of 'vim', execute:
-crew install vim
-
-You may wish to set the EDITOR environment variable for an editor default.
-
-For example, to set 'nano' as the default editor, execute:
-echo \"export EDITOR='nano'\" >> ~/.bashrc && . ~/.bashrc
-
-To set 'vim' as the default editor, execute:
-echo \"export EDITOR='vim'\" >> ~/.bashrc && . ~/.bashrc
 ${RESET}"
 echo -e "${GREEN}Chromebrew installed successfully and package lists updated.${RESET}"

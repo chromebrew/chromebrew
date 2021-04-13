@@ -10,10 +10,10 @@ class Wxformbuilder < Package
   source_sha256 'e63532e71828d5e168388380fe627225f997267495da4bf6c55ef592738bdc88'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wxformbuilder-3.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wxformbuilder-3.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wxformbuilder-3.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wxformbuilder-3.9.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wxformbuilder-3.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wxformbuilder-3.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/wxformbuilder-3.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wxformbuilder-3.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '72919b2bd017609c541cdd137375e4f5b77ebbc575b64bf4c36f800ff9063acb',

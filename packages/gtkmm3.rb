@@ -10,10 +10,10 @@ class Gtkmm3 < Package
   source_sha256 '9beb71c3e90cfcfb790396b51e3f5e7169966751efd4f3ef9697114be3be6743'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm3-3.24.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtkmm3-3.24.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtkmm3-3.24.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtkmm3-3.24.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'df6763cd6810ef3b578f97525e5455dcf1dc37a2eeca0a282412dc269f75446e',
@@ -27,7 +27,7 @@ class Gtkmm3 < Package
   depends_on 'pangomm'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dbuild-documentation=false \
     -Dbuild-demos=false \

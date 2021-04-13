@@ -10,10 +10,10 @@ class Qttools < Package
   source_sha256 'c189d0ce1ff7c739db9a3ace52ac3e24cb8fd6dbf234e49f075249b38f43c1cc'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qttools-5.15.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qttools-5.15.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/qttools-5.15.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qttools-5.15.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qttools-5.15.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qttools-5.15.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/qttools-5.15.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/qttools-5.15.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0d40cb342b8b31427bc976979dbc4c5bfcd8995e5bcc1e74a2a91cf4d84c2265',

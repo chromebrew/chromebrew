@@ -10,10 +10,10 @@ class Oniguruma < Package
   source_sha256 'dc6dec742941e24b761cea1b9a2f12e750879107ae69fd80ae1046459d4fb1db'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/oniguruma-6.9.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/oniguruma-6.9.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/oniguruma-6.9.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/oniguruma-6.9.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/oniguruma-6.9.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/oniguruma-6.9.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/oniguruma-6.9.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/oniguruma-6.9.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b6235fcfb3eb95dddafe8979adca6a4ba1bfc47d2c802a8bc14b73f1f57a30f5',

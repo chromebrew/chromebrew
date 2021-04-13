@@ -13,10 +13,10 @@ class Grep < Package
   source_sha256 '667e15e8afe189e93f9f21a7cd3a7b3f776202f417330b248c2ad4f997d9373e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/grep-3.6-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/grep-3.6-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/grep-3.6-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/grep-3.6-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/grep-3.6-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/grep-3.6-2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/grep-3.6-2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/grep-3.6-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '668f794614cab844c7e29d4970ea5c1ab0ff15d822dff5c806efd769d81d9097',

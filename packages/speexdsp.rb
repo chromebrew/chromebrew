@@ -10,10 +10,10 @@ class Speexdsp < Package
   source_sha256 '4ae688600039f5d224bdf2e222d2fbde65608447e4c2f681585e4dca6df692f1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/speexdsp-1.2rc3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/speexdsp-1.2rc3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/speexdsp-1.2rc3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/speexdsp-1.2rc3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/speexdsp-1.2rc3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/speexdsp-1.2rc3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/speexdsp-1.2rc3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/speexdsp-1.2rc3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0aa0fe549eb030ed9e134a39526751817d9e117509ce3dcbae1c7e3b6dfe8602',
