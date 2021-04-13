@@ -24,6 +24,7 @@ class Nano < Package
   })
 
   depends_on 'xdg_base'
+  depends_on 'filecmd'
 
   def self.patch
     system "sed -i '/SIGWINCH/d' src/nano.c"
