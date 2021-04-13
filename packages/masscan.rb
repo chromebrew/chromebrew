@@ -10,10 +10,10 @@ class Masscan < Package
   source_sha256 '51de345f677f46595fc3bd747bfb61bc9ff130adcbec48f3401f8057c8702af9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/masscan-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/masscan-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/masscan-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/masscan-1.0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/masscan-1.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/masscan-1.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/masscan-1.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/masscan-1.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd1ca6e9300aa9b9fcc416c3c987844eebf614b7a7c49e77bb780d84f2d4c3030',

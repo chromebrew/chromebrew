@@ -11,10 +11,10 @@ class Abseil_cpp < Package
   source_sha256 'ebe2ad1480d27383e4bf4211e2ca2ef312d5e6a09eba869fd2e8a5c5d553ded2'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/abseil_cpp-20200923.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/abseil_cpp-20200923.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/abseil_cpp-20200923.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/abseil_cpp-20200923.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0bcfb2b4924b1c782d918805edf2e6b200ec9547ae362d09ed1122003dd64c49',

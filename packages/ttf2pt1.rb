@@ -10,10 +10,10 @@ class Ttf2pt1 < Package
   source_sha256 'ae926288be910073883b5c8a3b8fc168fde52b91199fdf13e92d72328945e1d0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ttf2pt1-3.4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ttf2pt1-3.4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ttf2pt1-3.4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ttf2pt1-3.4.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ttf2pt1-3.4.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ttf2pt1-3.4.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ttf2pt1-3.4.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ttf2pt1-3.4.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2ec84f7e4625661c6566c5252ca8fb6034d854a87593856c187a9587f10e286c',

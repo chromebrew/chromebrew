@@ -10,10 +10,10 @@ class Eigen < Package
   source_sha256 '685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/eigen-3.3.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/eigen-3.3.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/eigen-3.3.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/eigen-3.3.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/eigen-3.3.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/eigen-3.3.7-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/eigen-3.3.7-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/eigen-3.3.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd5cf4005c822890e8d6a3a57fd186151dfd36d0fef513200a2e81fa767ddb64e',

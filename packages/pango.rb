@@ -10,10 +10,10 @@ class Pango < Package
   source_sha256 'd21f8b30dc8abdfc55de25656ecb88dc1105eeeb315e5e2a980dcef8010c2c80'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pango-1.48.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pango-1.48.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pango-1.48.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pango-1.48.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pango-1.48.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c4bc39bde5db09cb6762d6fda0e9d454302f9484c71a3df677562b2db1407716',
@@ -35,7 +35,7 @@ class Pango < Package
   depends_on 'six'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dinstall-tests=false \
     -Dcairo=enabled \
     -Dfreetype=enabled \

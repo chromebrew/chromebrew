@@ -10,10 +10,10 @@ class Libopencoreamr < Package
   source_sha256 '2c006cb9d5f651bfb5e60156dbff6af3c9d35c7bbcc9015308c0aff1e14cd341'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libopencoreamr-0.1.5-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libopencoreamr-0.1.5-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libopencoreamr-0.1.5-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libopencoreamr-0.1.5-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libopencoreamr-0.1.5-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libopencoreamr-0.1.5-0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libopencoreamr-0.1.5-0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libopencoreamr-0.1.5-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '637a39ca077305a37b9a7e58e46d4344f29d5ce1e1ab6febd7d93d6727ef88bd',

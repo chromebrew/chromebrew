@@ -8,11 +8,8 @@ class Stack < Package
   license 'BSD'
   compatibility 'x86_64'
 
-  case ARCH
-  when 'x86_64'
-    source_url "https://github.com/commercialhaskell/stack/releases/download/v#{@_ver}/stack-#{@_ver}-linux-x86_64.tar.gz"
-    source_sha256 'c83b6c93d6541c0bce2175085a04062020f4160a86116e20f3b343b562f2d1e8'
-  end
+  source_url "https://github.com/commercialhaskell/stack/releases/download/v#{@_ver}/stack-#{@_ver}-linux-x86_64.tar.gz"
+  source_sha256 'c83b6c93d6541c0bce2175085a04062020f4160a86116e20f3b343b562f2d1e8'
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_HOME

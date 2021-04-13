@@ -10,10 +10,10 @@ class Perl_text_wrapi18n < Package
   source_sha256 '4bd29a17f0c2c792d12c1005b3c276f2ab0fae39c00859ae1741d7941846a488'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_wrapi18n-0.06-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_wrapi18n-0.06-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_text_wrapi18n-0.06-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_text_wrapi18n-0.06-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '87bebe91adc2d9b6b288691dace869f93e51a828086174d8c9380665dc7267a5',

@@ -10,10 +10,10 @@ class Rfkill < Package
   source_sha256 'e0ae3004215e39a6c5c36e0726558740728d16f67ebdb8bea621250f6091d86a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rfkill-0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rfkill-0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rfkill-0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rfkill-0.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rfkill-0.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rfkill-0.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rfkill-0.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rfkill-0.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '23aa25afb00546a728082d06d0b1e4f55a98c684d1bc43003f935efb661dced6',

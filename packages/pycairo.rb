@@ -10,10 +10,10 @@ class Pycairo < Package
   source_sha256 '0f0a35ec923d87bc495f6753b1e540fd046d95db56a35250c44089fbce03b698'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pycairo-1.17.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pycairo-1.17.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pycairo-1.17.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pycairo-1.17.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pycairo-1.17.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pycairo-1.17.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pycairo-1.17.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pycairo-1.17.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '401ca3457234b15a392c6506480211a83c6d3d03b191e0dc1033cf8daacc341b',

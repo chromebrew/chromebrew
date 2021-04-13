@@ -11,10 +11,10 @@ class Git < Package
   source_sha256 'b1c0e95e9861b5d1b9ad3d8deaa2d8c7f02304ffc1b5e8869dd9fb98f9a0d436'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git-2.31.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/git-2.31.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/git-2.31.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/git-2.31.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/git-2.31.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '86c740f001fde7008c59a3f85816d25f59190eb9a7ebd4b1f10ecc74606e4739',

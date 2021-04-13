@@ -13,10 +13,10 @@ class Djvulibre < Package
   source_sha256 'fcd009ea7654fde5a83600eb80757bd3a76998e47d13c66b54c8db849f8f2edc'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/djvulibre-3.5.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/djvulibre-3.5.28-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/djvulibre-3.5.28-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/djvulibre-3.5.28-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/djvulibre-3.5.28-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/djvulibre-3.5.28-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/djvulibre-3.5.28-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/djvulibre-3.5.28-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2a662b5b95e3e5c24531cb4ae0f5b33c044895f33fc88c562026a4124ff15295',

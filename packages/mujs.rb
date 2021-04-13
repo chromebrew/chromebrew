@@ -13,10 +13,10 @@ class Mujs < Package
   source_sha256 '8e43a38fdea75f036a9f3213e346a6c304206b4e3d00886564fb6bf70c1c2807'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mujs-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mujs-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mujs-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mujs-1.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mujs-1.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mujs-1.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mujs-1.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mujs-1.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6e35d13ccbbf048b85406b5edf5a9ff1965359bcace8a7c53ca9a293691bc09c',

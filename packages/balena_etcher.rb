@@ -3,10 +3,10 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://www.balena.io/etcher/'
-  compatibility 'x86_64, i686'
   @_ver = '1.5.115'
   version @_ver
   license 'Apache-2.0'
+  compatibility 'x86_64, i686'
   case ARCH
   when 'x86_64'
     source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balena-etcher-electron_#{@_ver}_amd64.deb"
@@ -16,20 +16,17 @@ class Balena_etcher < Package
     source_sha256 'c6af91ec0e7649be643bbd12765d1bc8a19d181c55f0135e10d3e9ed8d85c577'
   end
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'gtk2'
-    depends_on 'freetype'
-    depends_on 'cairo'
-    depends_on 'lzma'
-    depends_on 'libnotify'
-    depends_on 'nspr'
-    depends_on 'libgconf'
-    depends_on 'alien' => :build
-    depends_on 'libxss'
-    depends_on 'xhost'
-    depends_on 'sommelier'
-  end
+  depends_on 'gtk2'
+  depends_on 'freetype'
+  depends_on 'cairo'
+  depends_on 'lzma'
+  depends_on 'libnotify'
+  depends_on 'nspr'
+  depends_on 'libgconf'
+  depends_on 'alien' => :build
+  depends_on 'libxss'
+  depends_on 'xhost'
+  depends_on 'sommelier'
 
   def self.build
     Dir.chdir('../') do

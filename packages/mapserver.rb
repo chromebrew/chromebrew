@@ -10,10 +10,10 @@ class Mapserver < Package
   source_sha256 'dcbebd62976deef1490b084d8f6a0b2f2a1a25407efb6e058390025375539507'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mapserver-7.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mapserver-7.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mapserver-7.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mapserver-7.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mapserver-7.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mapserver-7.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mapserver-7.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mapserver-7.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3779fc38a83229c289aa32a8d6610af0a379d08296ff9639c153f6b5a44b1174',

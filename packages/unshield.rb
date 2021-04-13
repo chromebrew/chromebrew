@@ -10,10 +10,10 @@ class Unshield < Package
   source_sha256 '5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/unshield-1.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/unshield-1.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/unshield-1.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/unshield-1.4.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/unshield-1.4.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/unshield-1.4.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/unshield-1.4.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/unshield-1.4.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c8e532b79f02553de261074d813e908288ba65c55787f83cda72d3af508e6a2b',

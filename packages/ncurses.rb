@@ -10,10 +10,10 @@ class Ncurses < Package
   source_sha256 'e5e83965329c85d8d28f9a35a71ab785fce015f42f491e7dcafbb9f36ad1eaea'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ncurses-6.2-20210206-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ncurses-6.2-20210206-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ncurses-6.2-20210206-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ncurses-6.2-20210206-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ncurses-6.2-20210206-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f87816a803fdbb6403ecb03ea4faec04da8c3a829a1455a2c9e0a0686818ebb6',

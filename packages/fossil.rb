@@ -10,10 +10,10 @@ class Fossil < Package
   source_sha256 '76a794555918be179850739a90f157de0edb8568ad552b4c40ce186c79ff6ed9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fossil-2.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fossil-2.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fossil-2.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fossil-2.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1888721a262e9a4232f91ff46a1700d8e024969475f01bc769f5d04f2a00567d',

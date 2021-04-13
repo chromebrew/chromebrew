@@ -10,10 +10,10 @@ class Perl_time_hires < Package
   source_sha256 '5bfa145bc11e70a8e337543b1084a293743a690691b568493455dedf58f34b1e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_time_hires-1.9758-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_time_hires-1.9758-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_time_hires-1.9758-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_time_hires-1.9758-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_time_hires-1.9758-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_time_hires-1.9758-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_time_hires-1.9758-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_time_hires-1.9758-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '71dfe08892dc8c59a158448050d5d7bd5ea2a4c93adae3304c8645aa612a41e8',

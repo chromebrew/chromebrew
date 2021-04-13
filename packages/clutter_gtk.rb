@@ -14,10 +14,10 @@ class Clutter_gtk < Package
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/clutter_gtk-1.8.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/clutter_gtk-1.8.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/clutter_gtk-1.8.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/clutter_gtk-1.8.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/clutter_gtk-1.8.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/clutter_gtk-1.8.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/clutter_gtk-1.8.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/clutter_gtk-1.8.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256 ({
     aarch64: '7f759c259b71f86c1e13ec5ffb8e0add079b5dfa4cddae06d81700db6834ac7d',
@@ -31,7 +31,7 @@ class Clutter_gtk < Package
   depends_on 'clutter'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

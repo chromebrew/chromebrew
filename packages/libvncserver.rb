@@ -10,9 +10,9 @@ class Libvncserver < Package
   source_sha256 '33cbbb4e15bb390f723c311b323cef4a43bcf781984f92d92adda3243a116136'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libvncserver-0.9.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libvncserver-0.9.12-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libvncserver-0.9.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvncserver-0.9.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvncserver-0.9.12-chromeos-armv7l.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libvncserver-0.9.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4c2fd37b3d1d6d590a99eb123fb98f8477c8c56a6ff93df9ad438d330a664bb3',

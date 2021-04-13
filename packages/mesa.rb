@@ -11,10 +11,10 @@ class Mesa < Package
   source_sha256 '46c1dc5bb54a372dee43ec3c067229c299187d5bdadf1402756bbf66a6df5b88'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mesa-21.0.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mesa-21.0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mesa-21.0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mesa-21.0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mesa-21.0.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '535d0993748c3331486a2a48f380898244d223f355306374fd7761260871731a',
@@ -58,7 +58,7 @@ class Mesa < Package
     system 'pip3 uninstall -y Mako MarkupSafe || :'
     system "pip3 install --no-warn-script-location --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
     system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako"
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Db_asneeded=false \
     -Dvulkan-drivers=#{@vk} \
     -Dgallium-drivers=#{@galliumdrivers} \

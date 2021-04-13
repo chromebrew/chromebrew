@@ -10,10 +10,10 @@ class Mate_desktop < Package
   source_sha256 '36d0722750ce30ba8d4b8b735bef6ad1b1b4c8f9f51257e36ec419b9b438a178'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mate_desktop-1.20-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mate_desktop-1.20-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mate_desktop-1.20-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mate_desktop-1.20-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mate_desktop-1.20-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mate_desktop-1.20-0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mate_desktop-1.20-0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mate_desktop-1.20-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '159fe66a17c142fa7f34f6801a40fd51812155963f1cc57edccf50e2505ace32',

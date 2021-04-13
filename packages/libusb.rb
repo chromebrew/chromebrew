@@ -11,10 +11,10 @@ class Libusb < Package
   source_sha256 '7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libusb-1.0.24-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libusb-1.0.24-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libusb-1.0.24-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libusb-1.0.24-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libusb-1.0.24-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ded8613e843afa15f3cee5cebfd443b46cd628184de64564df93104ceff11de2',
