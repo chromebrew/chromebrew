@@ -11,10 +11,10 @@ class Libva_utils < Package
   source_sha256 '0c1eb7f717e391d00da74c53a9fe5caf3d6c510dcd35bac7f71a0e59ad1b8d26'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libva_utils-2.11.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libva_utils-2.11.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libva_utils-2.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libva_utils-2.11.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libva_utils-2.11.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libva_utils-2.11.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libva_utils-2.11.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libva_utils-2.11.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '96b6472a638dc5b6269460b49ff4dab1063b7a9227a07cef8aa2aea5bb7d14f1',
@@ -26,7 +26,7 @@ class Libva_utils < Package
   depends_on 'libva'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

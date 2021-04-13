@@ -10,10 +10,10 @@ class Mpv < Package
   source_sha256 '100a116b9f23bdcda3a596e9f26be3a69f166a4f1d00910d1789b6571c46f3a9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mpv-0.33.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mpv-0.33.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mpv-0.33.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mpv-0.33.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mpv-0.33.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mpv-0.33.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a2ea4b4c758863b540470ed728dbc5d9fc05f778a703bf31f490544cbe618f9b',

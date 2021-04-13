@@ -10,10 +10,10 @@ class Docbook2x < Package
   source_sha256 '4077757d367a9d1b1427e8d5dfc3c49d993e90deabc6df23d05cfe9cd2fcdc45'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook2x-0.8.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook2x-0.8.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook2x-0.8.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook2x-0.8.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook2x-0.8.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook2x-0.8.8-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/docbook2x-0.8.8-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/docbook2x-0.8.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '908f22bd15b5d8cd5d4ebc09f9ee7cd2f7bbbf83a0b359c899983c83a0437a2e',

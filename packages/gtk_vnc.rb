@@ -10,10 +10,10 @@ class Gtk_vnc < Package
   source_sha256 'a81a1f1a79ad4618027628ffac27d3391524c063d9411c7a36a5ec3380e6c080'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk_vnc-1.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk_vnc-1.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtk_vnc-1.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtk_vnc-1.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8026b25e42c51f0a124aff3779b9dbb035b331dd2bb0faa60cf10f54a9e77b38',

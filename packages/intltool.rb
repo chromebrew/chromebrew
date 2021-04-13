@@ -10,10 +10,10 @@ class Intltool < Package
   source_sha256 '67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/intltool-0.51.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/intltool-0.51.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/intltool-0.51.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/intltool-0.51.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/intltool-0.51.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '47c82f3b2e4d6c2959ee1edf1d8dc480eb4e28e0bfac9efc823be7d937bfadcb',

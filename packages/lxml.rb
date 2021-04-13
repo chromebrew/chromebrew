@@ -10,10 +10,10 @@ class Lxml < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lxml-4.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lxml-4.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lxml-4.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lxml-4.6.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lxml-4.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lxml-4.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lxml-4.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lxml-4.6.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c9b3bfe7891b89b124260f2fd7ac276060649922c9010b4287a13d18deb98c91',

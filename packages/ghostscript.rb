@@ -10,10 +10,10 @@ class Ghostscript < Package
   source_sha256 'ecbaa2e79e6d82cab8d0fbdfd899aa4fc68ffb43f6901d547d33ca7008fe1871'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.54-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.54-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.54-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.54-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ghostscript-9.54-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ghostscript-9.54-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',

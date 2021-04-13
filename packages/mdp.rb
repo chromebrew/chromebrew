@@ -10,10 +10,10 @@ class Mdp < Package
   source_sha256 '7384c1ba32bd8e4b11342570d2144165a60682499b4cb54e50c8eb3164cfabc5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mdp-1.0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mdp-1.0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mdp-1.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mdp-1.0.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mdp-1.0.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mdp-1.0.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mdp-1.0.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mdp-1.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2478dbee17514f83d0340c0ac6eb2ccf957aa000e48a0b0d2c614df523f98315',

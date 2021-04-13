@@ -10,10 +10,10 @@ class Cbase < Package
   source_sha256 'c4d155686ac2e9d1480319de311967fadad745a6ab6971d53d495d9a9e52dc47'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cbase-1.3.7-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cbase-1.3.7-3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cbase-1.3.7-3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cbase-1.3.7-3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cbase-1.3.7-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cbase-1.3.7-3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cbase-1.3.7-3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cbase-1.3.7-3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b3e31a3e497c1cd251a8fb20e135fbb38f18d42eb3353bc24039f69f0776b55b',

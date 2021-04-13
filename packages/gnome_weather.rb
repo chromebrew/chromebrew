@@ -10,10 +10,10 @@ class Gnome_weather < Package
   source_sha256 'f687caa96f357ec6bf7a4c3c376e82f7476d0b711b9e670a2f074a069c7531d8'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_weather-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_weather-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_weather-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_weather-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_weather-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_weather-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnome_weather-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_weather-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f90c5fb9bb00e103e66017515f5b0206dc1baeb2650e329c16f4a20bde827ab5',
@@ -32,7 +32,7 @@ class Gnome_weather < Package
   depends_on 'libhandy'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dsystemd=disabled \
     builddir"
     system 'meson configure builddir'

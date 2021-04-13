@@ -10,10 +10,10 @@ class Libice < Package
   source_sha256 '7812a824a66dd654c830d21982749b3b563d9c2dfe0b88b203cefc14a891edc0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libice-1.0.9-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libice-1.0.9-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libice-1.0.9-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libice-1.0.9-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libice-1.0.9-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libice-1.0.9-0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libice-1.0.9-0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libice-1.0.9-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9950466b86446a797a1331d6778a5d339af17960cad8c2c9a8e5a038c63c5b57',

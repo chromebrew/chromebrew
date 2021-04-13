@@ -11,10 +11,10 @@ class Usbutils < Package
   source_sha256 '9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-013-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-013-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-013-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/usbutils-013-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/usbutils-013-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/usbutils-013-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/usbutils-013-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/usbutils-013-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '07502628efc250a37a113baaf9d24c23f524ee3f7a9a5f5693a4454f3259d4e5',

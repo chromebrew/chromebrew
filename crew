@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative '../lib/color'
+require_relative 'lib/color'
 
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
@@ -12,6 +12,8 @@ require 'json'
 require 'fileutils'
 require_relative '../lib/const'
 require_relative '../lib/util'
+require_relative 'lib/const'
+require_relative 'lib/util'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -72,7 +74,7 @@ ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
 CURL = ENV['CURL'] || 'curl'
 
 # Parse arguments using docopt
-require_relative '../lib/docopt'
+require_relative 'lib/docopt'
 begin
   args = Docopt::docopt(DOC)
   args['<name>'] = args['<name>'].map { |arg| arg.gsub('-','_') } if args['<name>']
@@ -355,7 +357,10 @@ def const (var)
       'CREW_LIB_PREFIX',
       'CREW_LIB_SUFFIX',
       'CREW_MAN_PREFIX',
-      'CREW_MESON_LTO_OPTIONS',
+      'CREW_COMMON_FLAGS',
+      'CREW_COMMON_FNO_LTO_FLAGS',
+      'CREW_ENV_OPTIONS',
+      'CREW_MESON_FNO_LTO_OPTIONS',
       'CREW_MESON_OPTIONS',
       'CREW_META_PATH',
       'CREW_NOT_COMPRESS',
@@ -686,6 +691,14 @@ end
 
 def prepare_package (destdir)
   Dir.chdir destdir do
+    # Avoid /usr/local/share/info/dir{.gz} file conflict:
+    # The install-info program maintains a directory of installed 
+    # info documents in /usr/share/info/dir for the use of info 
+    # readers. This file must not be included in packages other 
+    # than install-info.
+    # https://www.debian.org/doc/debian-policy/ch-docs.html#info-documents
+    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/dir" if File.exist?("#{CREW_DEST_PREFIX}/share/info/dir")
+
     # compress manual files
     compress_doc "#{CREW_DEST_PREFIX}/man"
     compress_doc "#{CREW_DEST_PREFIX}/info"
@@ -717,7 +730,7 @@ def prepare_package (destdir)
         puts f.lightred
         pp = p
       end
-      abort
+      abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == '1'
     end
 
     # create directory list

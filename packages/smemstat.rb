@@ -10,10 +10,10 @@ class Smemstat < Package
   source_sha256 'acc17fdd6da92571e73a58bf1512b398cb307b80f46dc196cbb8102e7fb02526'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/smemstat-0.02.07-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/smemstat-0.02.07-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/smemstat-0.02.07-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/smemstat-0.02.07-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/smemstat-0.02.07-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/smemstat-0.02.07-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/smemstat-0.02.07-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/smemstat-0.02.07-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '80549cd181fd79bd9c58462ea5e9b87d5f0c0657093a892803ae3db77980b7cb',

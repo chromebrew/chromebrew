@@ -10,10 +10,10 @@ class Libxinerama < Package
   source_sha256 '0008dbd7ecf717e1e507eed1856ab0d9cf946d03201b85d5dcf61489bb02d720'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxinerama-1.1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxinerama-1.1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxinerama-1.1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxinerama-1.1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxinerama-1.1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxinerama-1.1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxinerama-1.1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxinerama-1.1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',

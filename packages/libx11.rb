@@ -10,10 +10,10 @@ class Libx11 < Package
   source_sha256 '36c8f93b6595437c8cfbc9f08618bcb3041cbd303e140a0013f88e4c2977cb54'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libx11-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libx11-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libx11-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libx11-1.7.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libx11-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libx11-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libx11-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libx11-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '77e5db5e74f4524ec72a3887ac329c6f34d5d4eecec6cc76a59989bbc3612902',

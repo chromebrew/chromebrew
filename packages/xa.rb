@@ -10,10 +10,10 @@ class Xa < Package
   source_sha256 '32f2164c99e305218e992970856dd8e2309b5cb6ac4758d7b2afe3bfebc9012d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xa-2.3.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xa-2.3.11-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xa-2.3.11-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xa-2.3.11-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xa-2.3.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xa-2.3.11-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xa-2.3.11-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xa-2.3.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4e9da9aa44ec5d58c597d5f3fcbba2ba3786002e0da6adebe381c4c70f90cda6',

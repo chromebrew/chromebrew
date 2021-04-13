@@ -11,10 +11,10 @@ class Libinih < Package
   source_sha256 '439cff9ce9a8afc52d08772ac3e93b3cecd79c7707f871fb4534fb3a48201880'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libinih-52-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libinih-52-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libinih-52-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libinih-52-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libinih-52-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libinih-52-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libinih-52-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libinih-52-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '813f8831babc7ab96bc4ec618b3b702e09906c97f7d319dc24e7cb5cf9b517a9',
@@ -24,7 +24,7 @@ class Libinih < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Ddefault_library=both \
     -Ddistro_install=true \
     -Dwith_INIReader=true \

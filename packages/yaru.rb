@@ -11,10 +11,10 @@ class Yaru < Package
   source_sha256 '8cbbb1fcc7fa1e46e48d870cc1f941069e8213ac53200001aa9548ad79086836'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yaru-21.04.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yaru-21.04.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yaru-21.04.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/yaru-21.04.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/yaru-21.04.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b13e932b15e3867f2243d230cc6cdb36c475227a7167e298634cb72a48e37d0c',
@@ -26,7 +26,7 @@ class Yaru < Package
   depends_on 'sassc'
 
   def self.build
-    system "meson setup #{CREW_MESON_LTO_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dubuntu-unity=true \
       build"
     system 'meson configure build'

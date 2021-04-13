@@ -10,10 +10,10 @@ class Xorg_fbdev_driver < Package
   source_sha256 '9dd4b326498223abbfdf786089a46ea3db4fa6bbd341308eb48a9e00bc3fd51b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_fbdev_driver-0.4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_fbdev_driver-0.4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_fbdev_driver-0.4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_fbdev_driver-0.4.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_fbdev_driver-0.4.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_fbdev_driver-0.4.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_fbdev_driver-0.4.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_fbdev_driver-0.4.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '865f82f5fa3190d900f03f05f45980185a098a186344ab8fe8a40564bd4faf4c',

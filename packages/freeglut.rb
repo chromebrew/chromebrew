@@ -10,10 +10,10 @@ class Freeglut < Package
   source_sha256 'd4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freeglut-3.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freeglut-3.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freeglut-3.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freeglut-3.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freeglut-3.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freeglut-3.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/freeglut-3.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/freeglut-3.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',

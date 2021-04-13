@@ -10,10 +10,10 @@ class Gdal < Package
   source_sha256 '161cf55371a143826f1d76ce566db1f0a666496eeb4371aed78b1642f219d51d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gdal-3.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gdal-3.1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gdal-3.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gdal-3.1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gdal-3.1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gdal-3.1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gdal-3.1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gdal-3.1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4e650503583cdb958c514a681ef5ed4791dee197eadcdb9bf58ca574e6a7f034',

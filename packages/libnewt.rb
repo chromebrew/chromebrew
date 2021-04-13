@@ -11,10 +11,10 @@ class Libnewt < Package
   source_sha256 '265eb46b55d7eaeb887fca7a1d51fe115658882dfe148164b6c49fccac5abb31'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libnewt-0.52.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libnewt-0.52.21-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libnewt-0.52.21-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libnewt-0.52.21-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libnewt-0.52.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libnewt-0.52.21-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libnewt-0.52.21-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libnewt-0.52.21-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd1813f44254d795347e412bfffcc6a86b4dffc934db3e0341b5072f7a7518b12',
