@@ -12,10 +12,10 @@ class Gtk4 < Package
   source_sha256 'ea817483d35cd5f5d949a61b15c904ee3157fe5befb98e084a241921562f1838'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtk4-4.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtk4-4.2.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e6d12870ed535be19d04aff0eb4659e94728faa4464fd1d26de0dc51fec049d2',
@@ -23,7 +23,7 @@ class Gtk4 < Package
        i686: '26bba0fa27efbc129c81077260ae15adc03cd02dd4ebf664fb3b99082816510d',
      x86_64: '68c169e9112531c9fc41f9bed15a542867500846a16eedc6f103cfbcd99c668b'
   })
-  
+
   # L = Logical Dependency, R = Runtime Dependency
   depends_on 'docbook' => :build
   depends_on 'gobject_introspection' => :build

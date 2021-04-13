@@ -10,10 +10,10 @@ class Waypipe < Package
   source_sha256 'b280079b05aef9b243be3644fc803e3feaa2fc2952d11a6c02ab33257fb52479'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/waypipe-0.7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/waypipe-0.7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/waypipe-0.7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/waypipe-0.7.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/waypipe-0.7.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/waypipe-0.7.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/waypipe-0.7.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/waypipe-0.7.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '115949938eaf98fd38af6b1b8ffdb90e7976e87910fb5e0288d17c69d3cdb47c',

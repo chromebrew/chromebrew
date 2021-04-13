@@ -11,10 +11,10 @@ class Nasm < Package
   source_sha256 '3caf6729c1073bf96629b57cee31eeb54f4f8129b01902c73428836550b30a3f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nasm-2.15.05-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nasm-2.15.05-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nasm-2.15.05-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nasm-2.15.05-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nasm-2.15.05-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nasm-2.15.05-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nasm-2.15.05-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nasm-2.15.05-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '341d485bb248ed27fa1deaf10d361ab13eb9ac8332298cb45d3c2199e01aca25',

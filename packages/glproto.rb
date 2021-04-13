@@ -10,10 +10,10 @@ class Glproto < Package
   source_sha256 'b419c969412ad5c02dd53a0169041766c151ef599bf58b8dad70686fa1001c58'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glproto-1.4.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glproto-1.4.17-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glproto-1.4.17-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glproto-1.4.17-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glproto-1.4.17-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glproto-1.4.17-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glproto-1.4.17-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glproto-1.4.17-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a5b1a0f75c5196a5abba05c02f4bd89ca04436ea4af8570f4e1466c2f9979a74',

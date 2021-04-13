@@ -10,10 +10,10 @@ class Mpg123 < Package
   source_sha256 '6c1337aee2e4bf993299851c70b7db11faec785303cfca3a5c3eb5f329ba7023'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mpg123-1.25.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mpg123-1.25.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mpg123-1.25.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mpg123-1.25.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mpg123-1.25.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mpg123-1.25.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mpg123-1.25.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mpg123-1.25.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '25786bf03b27a76815ab30e8f3c8e864e7f2f58548b84e092e93f51a074e2515',

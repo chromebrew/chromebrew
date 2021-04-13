@@ -13,10 +13,10 @@ class Squashfs_tools_ng < Package
   source_sha256 '110794124b268e92e28e6a95f0781d1338f48c338434ef746f5de68c64e19aeb'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/squashfs_tools_ng-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/squashfs_tools_ng-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/squashfs_tools_ng-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/squashfs_tools_ng-1.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/squashfs_tools_ng-1.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/squashfs_tools_ng-1.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/squashfs_tools_ng-1.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/squashfs_tools_ng-1.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '60048d2dd13cc62c08437afd9ef009977d4d40e5ebd3bb8e60dc8a1de0766b2f',

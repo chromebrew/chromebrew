@@ -10,10 +10,10 @@ class Markdown < Package
   source_sha256 '6520e9b6a58c5555e381b6223d66feddee67f675ed312ec19e9cee1b92bc0137'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/markdown-1.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/markdown-1.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/markdown-1.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/markdown-1.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/markdown-1.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/markdown-1.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/markdown-1.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/markdown-1.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bc5c8f4b5fe7ad5239d57b442c390cbdebb2fe94f84a1e854126c3999c296dae',

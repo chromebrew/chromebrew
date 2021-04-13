@@ -10,10 +10,10 @@ class Percona_toolkit < Package
   source_sha256 '40f1a2241fb3ac1049e43ea75056f02d8af48c1eb731b48a4b564a054f8227e3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_toolkit-3.0.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/percona_toolkit-3.0.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/percona_toolkit-3.0.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_toolkit-3.0.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/percona_toolkit-3.0.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/percona_toolkit-3.0.7-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/percona_toolkit-3.0.7-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/percona_toolkit-3.0.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c805533b7b9ba184e17d070574c30c453a73a2dde3258787b50c6ac77e319495',

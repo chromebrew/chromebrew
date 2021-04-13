@@ -10,10 +10,10 @@ class Htop < Package
   source_sha256 'd9d6826f10ce3887950d709b53ee1d8c1849a70fa38e91d5896ad8cbc6ba3c57'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/htop-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/htop-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/htop-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/htop-2.2.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/htop-2.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/htop-2.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/htop-2.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/htop-2.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3d6c1ed809d819222a7d1f9f2b406df0a2c6caf6175870133d5538099c038d74',

@@ -11,15 +11,15 @@ class Gmmlib < Package
   source_sha256 'b996f09264e05ebca0dc275ea32791ba22769fe04147592371b4a61cdf508763'
 
   binary_url({
-    i686: 'https://dl.bintray.com/chromebrew/chromebrew/gmmlib-21.1.1-chromeos-i686.tar.xz',
-  x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gmmlib-21.1.1-chromeos-x86_64.tar.xz'
+      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gmmlib-21.1.1-chromeos-i686.tar.xz',
+    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gmmlib-21.1.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    i686: 'c71cb96bf16648e0818daca7913e32a71a67a117ffaf1379f7e4970f075d5454',
-  x86_64: '8cc86525354adbcc15e2e9ba8b59444178ec2037f72f9d29763286ef23dd1973'
+      i686: 'c71cb96bf16648e0818daca7913e32a71a67a117ffaf1379f7e4970f075d5454',
+    x86_64: '8cc86525354adbcc15e2e9ba8b59444178ec2037f72f9d29763286ef23dd1973'
   })
-  depends_on 'libva'
 
+  depends_on 'libva'
 
   def self.patch
     system "find . -type f -exec sed -e 's,LD_LIBRARY_PATH=,LD_LIBRARY_PATH=#{CREW_LIB_PREFIX}:,g' \

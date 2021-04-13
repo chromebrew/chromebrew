@@ -10,10 +10,10 @@ class Lzo < Package
   source_sha256 'c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lzo-2.10-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lzo-2.10-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lzo-2.10-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lzo-2.10-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lzo-2.10-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8909723551598aea2da661c6e327d42ede4eedef60351113b2ee7923e45523d4',

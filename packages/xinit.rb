@@ -10,10 +10,10 @@ class Xinit < Package
   source_sha256 '230835eef2f5978a1e1344928168119373f6df1d0a32c09515e545721ee582ef'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xinit-1.4.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xinit-1.4.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xinit-1.4.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xinit-1.4.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xinit-1.4.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xinit-1.4.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xinit-1.4.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xinit-1.4.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '571b3b0688bb7013a186dc577d6a6ea5b036f08b398a42528512c8990b03f51b',

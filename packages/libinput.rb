@@ -11,10 +11,10 @@ class Libinput < Package
   source_sha256 'c560cfca14cb5c50d2a1b7551df06bc5d4306e32c128f3e3d37e137285dedbad'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libinput-1.17.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libinput-1.17.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libinput-1.17.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libinput-1.17.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libinput-1.17.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libinput-1.17.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libinput-1.17.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libinput-1.17.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a449ec4b3a457cf1222606c053bd90d6ff857434f06fdce33689d2bc198f2280',

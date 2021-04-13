@@ -10,10 +10,10 @@ class Libvdpau < Package
   source_sha256 'b5a52eeac9417edbc396f26c40591ba5df0cd18285f68d84614ef8f06196e50e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libvdpau-1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libvdpau-1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libvdpau-1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libvdpau-1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvdpau-1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvdpau-1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libvdpau-1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libvdpau-1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b3b560d72b7877db7cad6f15d79c35ae118fc8804c64be8192b7f4a1930b138c',

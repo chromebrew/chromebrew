@@ -10,10 +10,10 @@ class Glib_networking < Package
   source_sha256 '5f2f62db8a75e2ec5462af12cb59157fb17500dca172c637a88c59053d52115b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glib_networking-2.68.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glib_networking-2.68.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glib_networking-2.68.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glib_networking-2.68.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glib_networking-2.68.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '8ce43fcc55b8b8dd2692e80a610741aa727307ab3bfdb34382271634727ac186',

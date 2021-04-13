@@ -12,10 +12,10 @@ class Glib < Package
   source_sha256 '67734f584f3a05a2872f57e9a8db38f3b06c7087fb531c5a839d9171968103ea'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glib-2.68.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glib-2.68.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glib-2.68.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glib-2.68.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glib-2.68.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '074bbda5881173ce7d9cb01849cd9c1919ff3e111e3d40c4abbe655b1de6aa55',

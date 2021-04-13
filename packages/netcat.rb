@@ -10,10 +10,10 @@ class Netcat < Package
   source_sha256 '30719c9a4ffbcf15676b8f528233ccc54ee6cba96cb4590975f5fd60c68a066f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/netcat-0.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/netcat-0.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/netcat-0.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/netcat-0.7.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/netcat-0.7.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/netcat-0.7.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/netcat-0.7.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/netcat-0.7.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '02fa145b9e7d8d956b676fe8ce320d507e00852102bcfbf8c11ab68f340d090a',

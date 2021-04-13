@@ -10,10 +10,10 @@ class Rubberband < Package
   source_sha256 '86bed06b7115b64441d32ae53634fcc0539a50b9b648ef87443f936782f6c3ca'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rubberband-1.8.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rubberband-1.8.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rubberband-1.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rubberband-1.8.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rubberband-1.8.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rubberband-1.8.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rubberband-1.8.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rubberband-1.8.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b684aa86b3ef03b2be91f518c5b88d536d9d3152eeab5670fd7117186742be8b',

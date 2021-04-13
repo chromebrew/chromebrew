@@ -11,10 +11,10 @@ class Git_lfs < Package
   source_sha256 '782e6275df9ca370730945112e16a0b8c64b9819f0b61fae52ba1ebbc8dce2d5'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/git_lfs-2.13.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/git_lfs-2.13.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/git_lfs-2.13.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/git_lfs-2.13.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/git_lfs-2.13.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/git_lfs-2.13.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/git_lfs-2.13.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/git_lfs-2.13.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '28dd4fe263e71d34c1af024f7955e975a7baa239b25d8fed9982cce213248d5a',

@@ -10,10 +10,10 @@ class Clojure < Package
   source_sha256 '3487545874a31b2c568397be221eb5c9070e220cbf741f1eb4819937200d21a5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.10.1.469-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.10.1.469-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.10.1.469-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/clojure-1.10.1.469-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/clojure-1.10.1.469-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/clojure-1.10.1.469-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/clojure-1.10.1.469-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/clojure-1.10.1.469-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b7413c3b56bb18d5fb8e60cb5b3b9de827fe6398bf6022d58b3e05f596f8e07a',

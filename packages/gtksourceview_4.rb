@@ -11,10 +11,10 @@ class Gtksourceview_4 < Package
   source_sha256 'ec16a6a61d643e278d3a02828257a59d802d4ae740247bf03fdebf10d9401635'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtksourceview_4-4.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtksourceview_4-4.8.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtksourceview_4-4.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtksourceview_4-4.8.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b6e5a158eaf5853eadcc5fcf3057c84b60800113358e3db76b1c9b716faec11e',

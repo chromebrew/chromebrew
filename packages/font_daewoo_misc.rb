@@ -10,10 +10,10 @@ class Font_daewoo_misc < Package
   source_sha256 'bc65de70bee12698caa95b523d3b652c056347e17b68cc8b5d6bbdff235c4be8'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/font_daewoo_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/font_daewoo_misc-1.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/font_daewoo_misc-1.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/font_daewoo_misc-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ab4e6485bc9457a2bce6d7f9ebd426048a7844539f8538a0b703ceb84128e746',

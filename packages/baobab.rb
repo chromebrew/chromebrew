@@ -10,10 +10,10 @@ class Baobab < Package
   source_sha256 '1b6b5e533802a9293bd061cd0a49049664c310f814e39e40b310ae954342fe83'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/baobab-3.35.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/baobab-3.35.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/baobab-3.35.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/baobab-3.35.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/baobab-3.35.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/baobab-3.35.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c71f8f044a796984990f52b33953c22e9a197ca547123f65cad0b810bd04a53f',

@@ -10,10 +10,10 @@ class Texlive < Package
   source_sha256 '5c2e53d25d2f85d511bb3fa238e2de718ce27e22db83559284570b5c380f4bed'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20210318-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/texlive-20210318-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/texlive-20210318-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/texlive-20210318-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/texlive-20210318-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ba9b3c7029ede0a12a692ed79125c15d60a00bd2dd17dccbfad4457ef8b264c6',

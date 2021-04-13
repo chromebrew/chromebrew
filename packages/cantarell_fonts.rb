@@ -11,10 +11,10 @@ class Cantarell_fonts < Package
   source_sha256 '3d35db0ac03f9e6b0d5a53577591b714238985f4cfc31a0aa17f26cd74675e83'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cantarell_fonts-0.301-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cantarell_fonts-0.301-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cantarell_fonts-0.301-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cantarell_fonts-0.301-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cantarell_fonts-0.301-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cantarell_fonts-0.301-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cantarell_fonts-0.301-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cantarell_fonts-0.301-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fb8107d41047d58c73a5c3152ed6319d5ce841a73f1f5d90d6bfff0c988ce9d7',

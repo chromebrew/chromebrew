@@ -11,10 +11,10 @@ class Xwayland < Package
   source_sha256 '8a71c3e8b95c43bb91bc3d7a4ff9075456a0cfe297721dbc8d4a76cf241d82fb'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xwayland-21.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xwayland-21.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xwayland-21.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xwayland-21.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c6951e26f866c161171598257d8f56ee94ca180d2d3dfb45d92871be230050eb',

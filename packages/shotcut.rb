@@ -6,22 +6,20 @@ class Shotcut < Package
   version '20.11.25'
   license 'GPL-3+'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url 'https://github.com/mltframework/shotcut/releases/download/v20.11.25/shotcut-linux-x86_64-201125.txz'
-    source_sha256 'fa45d26a1e1e6af82e4f600a7a98b020e1af14f9c176595567aacbb3c9f21093'
-    depends_on 'gtk3'
-    depends_on 'jack1'
-    depends_on 'ffmpeg'
-    depends_on 'sommelier'
-  end
+  source_url 'https://github.com/mltframework/shotcut/releases/download/v20.11.25/shotcut-linux-x86_64-201125.txz'
+  source_sha256 'fa45d26a1e1e6af82e4f600a7a98b020e1af14f9c176595567aacbb3c9f21093'
 
   binary_url ({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/shotcut-20.11.25-chromeos-x86_64.tar.xz',
+    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/shotcut-20.11.25-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     x86_64: 'c252f03d9b50f5533d86640734d2327ee6e364df79d3505e890da587d1b32efc',
   })
+
+  depends_on 'gtk3'
+  depends_on 'jack1'
+  depends_on 'ffmpeg'
+  depends_on 'sommelier'
 
   def self.build
     system "cat << 'EOF' > shotcut

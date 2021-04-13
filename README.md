@@ -105,6 +105,6 @@ Copyright 2013-2021 Michal Siwek and [all the awesome contributors](https://gith
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
 
-Our binary packages are hosted on [Bintray](https://bintray.com/chromebrew/chromebrew).
+Our binary packages are hosted on [SourceForge](https://sourceforge.net/projects/chromebrew/).
 
-<a href="https://bintray.com/chromebrew/chromebrew" target="_blank"><img src="https://github.com/skycocker/chromebrew/blob/master/images/Powered-by-Bintray_Banner_16-6-16-green.png" alt="Powered by Bintray" /></a>
+<a href="https://sourceforge.net/projects/chromebrew/" target="_blank"><img src="images/sourceforge.png" alt="SourceForge" /></a>

@@ -10,10 +10,10 @@ class Enscript < Package
   source_sha256 '6d56bada6934d055b34b6c90399aa85975e66457ac5bf513427ae7fc77f5c0bb'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/enscript-1.6.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/enscript-1.6.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/enscript-1.6.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/enscript-1.6.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/enscript-1.6.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/enscript-1.6.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/enscript-1.6.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/enscript-1.6.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '316ed484d08cfbe16632937379a05366b9841e986e351fd3d4061f474e046725',

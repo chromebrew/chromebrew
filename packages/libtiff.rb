@@ -10,10 +10,10 @@ class Libtiff < Package
   source_sha256 'eb0484e568ead8fa23b513e9b0041df7e327f4ee2d22db5a533929dfc19633cb'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libtiff-4.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libtiff-4.2.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a0cbdf73940274a9f34ac362e989226ad7ddbef2b6a43fdbdbd05f81eb948a3a',

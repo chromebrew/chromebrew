@@ -10,10 +10,10 @@ class Libxft < Package
   source_sha256 '225c68e616dd29dbb27809e45e9eadf18e4d74c50be43020ef20015274529216'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxft-2.3.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxft-2.3.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxft-2.3.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxft-2.3.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxft-2.3.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxft-2.3.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxft-2.3.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxft-2.3.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '609b249aaa1dcd93cac3d16996dc8c0141c0150d288ff2bf9fe004e7cc5396ab',

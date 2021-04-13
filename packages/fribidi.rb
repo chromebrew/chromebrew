@@ -10,10 +10,10 @@ class Fribidi < Package
   source_sha256 '3ebb19c4184ed6dc324d2e291d7465bc6108a20be019f053f33228e07e879c4f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fribidi-1.0.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fribidi-1.0.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fribidi-1.0.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fribidi-1.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1200e97b55266d2640939faf5d63fb587819d699f248ff65a957263f346e9546',

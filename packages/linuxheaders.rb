@@ -10,10 +10,10 @@ class Linuxheaders < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-4.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-4.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-3.18-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/linuxheaders-4.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/linuxheaders-4.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/linuxheaders-4.14-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/linuxheaders-3.18-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/linuxheaders-4.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4960ced072202049c4f90350ebfa6b13a3fe6750ae8a1f0d79c63ad976b66391',

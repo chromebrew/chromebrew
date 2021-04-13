@@ -11,10 +11,10 @@ class Cairomm_1_0 < Package
   source_sha256 '0126b9cc295dc36bc9c0860d5b720cb5469fd78d5620c8f10cc5f0c07b928de3'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm_1_0-1.14.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm_1_0-1.14.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm_1_0-1.14.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cairomm_1_0-1.14.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cairomm_1_0-1.14.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cairomm_1_0-1.14.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cairomm_1_0-1.14.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cairomm_1_0-1.14.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '43377afdfd60e5d6de950d883d7053c5f21dc2fe7b87b99d60b51de2c16e480d',

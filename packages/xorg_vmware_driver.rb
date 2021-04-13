@@ -10,10 +10,10 @@ class Xorg_vmware_driver < Package
   source_sha256 'e2f7f7101fba7f53b268e7a25908babbf155b3984fb5268b3d244eb6c11bf62b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_vmware_driver-13.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_vmware_driver-13.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_vmware_driver-13.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_vmware_driver-13.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_vmware_driver-13.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_vmware_driver-13.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_vmware_driver-13.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_vmware_driver-13.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '23546757562958f739b4121ba98cb3324ab32687d073bdd6a0d868ee993a0bc1',

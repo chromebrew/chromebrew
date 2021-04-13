@@ -10,10 +10,10 @@ class Bash_completion < Package
   source_sha256 '16adefabf43ec8ffb473704f5724d775c2f47e9f750d7d608f0251ec21fe8813'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bash_completion-2.11-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bash_completion-2.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bash_completion-2.11-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/bash_completion-2.11-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/bash_completion-2.11-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'dc426ff82ec4b0feb70d9a8b271269873127f95a5f8b8cde27c4aa38468afd27',

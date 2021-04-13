@@ -10,10 +10,10 @@ class Dconf_editor < Package
   source_sha256 '558408f2abac1129cd010be17db7df3b976d51206b17df603ee7aae4d0f6dd52'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dconf_editor-3.38.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dconf_editor-3.38.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dconf_editor-3.38.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/dconf_editor-3.38.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/dconf_editor-3.38.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a54f46627b350bd3af6c5430e1a7d73a8318a33c132802d7898795156cb0f954',

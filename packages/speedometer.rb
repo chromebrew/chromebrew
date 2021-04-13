@@ -10,10 +10,10 @@ class Speedometer < Package
   source_sha256 '63e676c96a9df953b4f7f631f1c1d21fedd71d23d159b53e60662c6bb4c19437'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/speedometer-2.8-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/speedometer-2.8-3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/speedometer-2.8-3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/speedometer-2.8-3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/speedometer-2.8-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/speedometer-2.8-3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/speedometer-2.8-3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/speedometer-2.8-3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6f3e7d29fde57f37d0f0ea595374166701b30a6153b932c25ced4be683d27edf',

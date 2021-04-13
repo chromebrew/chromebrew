@@ -10,10 +10,10 @@ class Shtool < Package
   source_sha256 '1298a549416d12af239e9f4e787e6e6509210afb49d5cf28eb6ec4015046ae19'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/shtool-2.0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/shtool-2.0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/shtool-2.0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/shtool-2.0.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shtool-2.0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shtool-2.0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/shtool-2.0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/shtool-2.0.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'aa29d402a98610a0191860e03429d0247a49d1e3158349a49f9daea57ba35f99',

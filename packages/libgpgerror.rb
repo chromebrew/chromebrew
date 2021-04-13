@@ -10,10 +10,10 @@ class Libgpgerror < Package
   source_sha256 'fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgpgerror-1.42-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgpgerror-1.42-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgpgerror-1.42-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgpgerror-1.42-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgpgerror-1.42-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgpgerror-1.42-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgpgerror-1.42-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgpgerror-1.42-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9864ed50574b3830c7e613392e6bdccf1be8857d5e40263b8d31f535481db547',

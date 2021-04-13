@@ -11,10 +11,10 @@ class Rlottie < Package
   source_sha256 '030ccbc270f144b4f3519fb3b86e20dd79fb48d5d55e57f950f12bab9b65216a'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rlottie-0.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rlottie-0.2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/rlottie-0.2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rlottie-0.2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rlottie-0.2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rlottie-0.2-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rlottie-0.2-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rlottie-0.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'd41beeacb713a50355e002ce77a58344a9d4fca4d6dee45fce370657733e5088',
