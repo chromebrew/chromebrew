@@ -5,7 +5,7 @@ class Buildessential < Package
   version '1.12'
   license 'GPL-3+'
   compatibility 'all'
- 
+
   is_fake
 
   # Some package installs won't work without this
