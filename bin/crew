@@ -453,9 +453,6 @@ def update
     system 'git reset --hard origin/master'
   end
 
-  # Update the symlink
-  #FileUtils.symlink "../lib/crew/bin/crew", "#{CREW_PREFIX}/bin/crew", force: true, verbose: @fileutils_verbose
-
   puts 'Package lists, crew, and library updated.'
 
   #update compatible packages
