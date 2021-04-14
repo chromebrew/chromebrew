@@ -8,6 +8,9 @@ class Crew_profile_base < Package
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  
+  # temporary fix for crew symlink
+  FileUtils.ln_sf "../lib/crew/bin/crew", "#{CREW_PREFIX}/bin/crew" if ARGV[1].eql?('update')
 
   binary_url({
     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/crew_profile_base-0.0.1-pre6-chromeos-armv7l.tar.xz',
