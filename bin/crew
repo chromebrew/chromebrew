@@ -567,7 +567,7 @@ def download
     # Sources that download with curl
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i, /\.deb$/i
       # Recall file from cache if requeseted
-      if CREW_IS_CACHING
+      if CREW_CACHE_ENABLED
         cachefile = CREW_CACHE_DIR + filename
         if File.file?(cachefile)
           if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum then
@@ -586,7 +586,7 @@ def download
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
       puts "Archive downloaded".lightgreen
       # Stow file in cache if requested
-      if CREW_IS_CACHING
+      if CREW_CACHE_ENABLED
         puts 'Caching downloaded archive'.lightgreen
         FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
       end
@@ -594,7 +594,7 @@ def download
     # Sources that download with git
     when /\.git$/i
       # Recall repository from cache if requested
-      if CREW_IS_CACHING
+      if CREW_CACHE_ENABLED
         cachefile = CREW_CACHE_DIR + '/' + filename + '.tar.xz'
         if File.file?(cachefile)
           if system "sha256sum -c #{cachefile}.sha256"
@@ -625,7 +625,7 @@ def download
         puts "Repository downloaded".lightgreen
       end
       # Stow file in cache if requested
-      if CREW_IS_CACHING
+      if CREW_CACHE_ENABLED
         puts 'Caching downloaded archive.'.lightgreen
           Dir.chdir "#{@extract_dir}" do system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz $(find -mindepth 1 -maxdepth 1 -printf '%P\n')" end
         system "sha256sum #{CREW_CACHE_DIR}/#{filename}.tar.xz > #{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256"
