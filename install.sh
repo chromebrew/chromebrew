@@ -187,7 +187,7 @@ done
 sudo ldconfig &> /dev/null || true
 
 # create symlink to 'crew' in ${CREW_PREFIX}/bin/
-ln -sfv "../lib/crew/crew" "${CREW_PREFIX}/bin/crew"
+ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 # prepare sparse checkout .rb packages directory and do it
 cd "${CREW_LIB_PATH}"
