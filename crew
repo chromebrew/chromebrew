@@ -111,12 +111,10 @@ if @opt_verbose then
   @fileutils_verbose = true
   @verbose = 'v'
   @short_verbose = '-v'
-  @long_verbose = '--verbose'
 else
   @fileutils_verbose = false
   @verbose = ''
   @short_verbose = ''
-  @long_verbose = '--verbose'
 end
 
 @opt_src = args["--build-from-source"]
