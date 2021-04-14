@@ -2,11 +2,13 @@ require 'package'
 
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
-  homepage ''
   version '1.12'
   license 'GPL-3+'
   compatibility 'all'
 
+  # temporary fix for crew symlink
+  FileUtils.ln_sf "../lib/crew/bin/crew", "#{CREW_PREFIX}/bin/crew" if ARGV[0].eql?('update')
+  
   is_fake
 
   # Some package installs won't work without this
