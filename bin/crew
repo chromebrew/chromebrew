@@ -10,6 +10,7 @@ require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
+require 'securerandom'
 require_relative '../lib/const'
 require_relative '../lib/util'
 
