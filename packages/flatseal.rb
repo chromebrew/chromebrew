@@ -13,6 +13,7 @@ class Flatseal < Package
   depends_on 'desktop_file_utils'
   depends_on 'gjs'
   depends_on 'gtk3'
+  depends_on 'sommelier'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"
