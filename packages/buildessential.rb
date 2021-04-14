@@ -5,9 +5,6 @@ class Buildessential < Package
   version '1.12'
   license 'GPL-3+'
   compatibility 'all'
-
-  # temporary fix for crew symlink
-  FileUtils.ln_sf "../lib/crew/bin/crew", "#{CREW_PREFIX}/bin/crew" if ARGV[1].eql?('update')
   
   is_fake
 
