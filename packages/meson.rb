@@ -22,8 +22,9 @@ class Meson < Package
        i686: 'f8a173fefc3b188208fbd6da61f3f9b0e94db62b8bbdb18573b8d740547ade82',
      x86_64: '4f6668f8cf6463fbe20e9d7de20d818548ab53ec69c7dae1e5700f57e6d6b816'
   })
-  
+
   depends_on 'ninja'
+  depends_on 'samurai'
 
   def self.install
     system "python3 setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
