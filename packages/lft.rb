@@ -10,10 +10,10 @@ class Lft < Package
   source_sha256 '08e5c7973551b529c850bffbc7152c4e5f0bcb1f07ebbb39151a7dc9a3bf9de0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lft-3.79-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lft-3.79-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lft-3.79-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lft-3.79-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lft-3.79-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lft-3.79-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lft-3.79-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lft-3.79-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6a3c32976a7384458cc11ba2ad0c29c44cc14d2effc3cb6d78b97c64ab2164e8',

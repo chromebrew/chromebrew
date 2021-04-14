@@ -3,37 +3,34 @@ require 'package'
 class Packer_completion < Package
   description 'Add bash autocompletion for packer.'
   homepage 'https://github.com/mrolli/packer-bash-completion'
-  version '1.0.0'
+  version '1.0.0-1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/mrolli/packer-bash-completion/archive/1.0.0.tar.gz'
-  source_sha256 '20ebfacd3f3a60f8dbd09e25b97d3b6e5049cbdf00a2d607fe79eaaef39e1eea'
+  source_url 'https://github.com/mrolli/packer-bash-completion/archive/refs/tags/1.4.3.tar.gz'
+  source_sha256 'af7b3b49b29ffdb05b519dad2d83066f3d166dd8e29abd406ca0f3d480901df4'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/packer_completion-1.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/packer_completion-1.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/packer_completion-1.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/packer_completion-1.0.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/packer_completion-1.0.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/packer_completion-1.0.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/packer_completion-1.0.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/packer_completion-1.0.0-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '9334ea5ec25ee0207576ad8064e7d05bb3f7d56e38e788443992ee646f00eee7',
-     armv7l: '9334ea5ec25ee0207576ad8064e7d05bb3f7d56e38e788443992ee646f00eee7',
-       i686: 'ffe610cfa7cc113af4f2a6ec505aa2897aae771b0a3069b659fa53ae24aba902',
-     x86_64: '72db1d2343fc28baaaef56b8aaca87442b3d713f99ca3e3889b920a816f2c4b2',
+  binary_sha256({
+    aarch64: 'f5b7d5298e8d26c88409399074af9d00335dc7e30ba521fb9f413043324885a7',
+     armv7l: 'f5b7d5298e8d26c88409399074af9d00335dc7e30ba521fb9f413043324885a7',
+       i686: '07c51b5dfbd4b38b75fcfabacdd2d1dbcfc71d4ad5bdc3284b3b685707e750c7',
+     x86_64: '44a68bde192c65ed695b496815dce5b09b826973a25100fd6262eb69144b884a'
   })
 
   def self.install
-    system "install -Dm644 packer #{CREW_PREFIX}/share/packer-bash-completion/packer"
-  end
+    FileUtils.mkdir "#{CREW_PREFIX}/share/packer-bash-completion/"
+    FileUtils.install 'packer', "#{CREW_PREFIX}/share/packer-bash-completion/packer", mode: 644, verbose: true
 
-  def self.postinstall
-    puts
-    puts "To complete installation, execute the following:".lightblue
-    puts "echo '# packer completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/share/packer-bash-completion/packer ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/share/packer-bash-completion/packer' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @env = <<~EOF
+      # Packer bash completion
+      source #{CREW_PREFIX}/share/packer-bash-completion/packer
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/packer_completion", @env)
   end
 end

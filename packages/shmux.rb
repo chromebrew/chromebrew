@@ -10,10 +10,10 @@ class Shmux < Package
   source_sha256 '4b84dc3e0d72d054ed4730d130a509f43441fb61561c11a444d6ee65cbff9c04'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/shmux-1.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/shmux-1.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/shmux-1.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/shmux-1.0.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shmux-1.0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shmux-1.0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/shmux-1.0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/shmux-1.0.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a8e89a4d6d087c646c5a0050fb09527a15b655838277fda2bcfd4ed37a1c10c5',

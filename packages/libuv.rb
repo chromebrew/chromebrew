@@ -11,10 +11,10 @@ class Libuv < Package
   source_sha256 '5c52de5bdcfb322dbe10f98feb56e45162e668ad08bc28ab4b914d4f79911697'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.39.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.39.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.39.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libuv-1.39.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libuv-1.39.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libuv-1.39.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libuv-1.39.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libuv-1.39.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4b844ba4a96f39e12b4a691c96d76726de85ced70ca4eda8dcc5f6f02fc56b13',

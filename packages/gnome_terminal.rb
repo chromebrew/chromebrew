@@ -11,10 +11,10 @@ class Gnome_terminal < Package
   source_sha256 'ad56dc0f1c6d75ed9ef6a1238e963141d7ba609ad3bffb376bfe43a37f0d308e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_terminal-3.41.0-3b79-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnome_terminal-3.41.0-3b79-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_terminal-3.41.0-3b79-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '127a7ebff88b54baca1e813e7a46b3b649e99e4c8395e47320ef9e534931d73a',
@@ -32,7 +32,7 @@ class Gnome_terminal < Package
   depends_on 'gtk_doc'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dsearch_provider=false \
     -Dnautilus_extension=false \

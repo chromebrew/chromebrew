@@ -11,10 +11,10 @@ class Python3 < Package
   source_sha256 '4b0e6644a76f8df864ae24ac500a51bbf68bd098f6a173e27d3b61cdca9aa134'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/python3-3.9.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/python3-3.9.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/python3-3.9.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/python3-3.9.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/python3-3.9.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fe4fde3f9738ac76096dfdc13ff6931543e2f612035421e294f87d2bfc09773c',
@@ -31,7 +31,7 @@ class Python3 < Package
   depends_on 'libffi'
   depends_on 'libtirpc' => :build
   depends_on 'ncurses'
-  depends_on 'openssl'  
+  depends_on 'openssl'
   depends_on 'readline'
   depends_on 'sqlite'
   # depends_on 'tcl' # Needed for tkinter support
@@ -58,8 +58,7 @@ class Python3 < Package
     # test_urllib, test_urllib2, test_urllib2_localnet.
     # So, modifying environment variable to make pass tests.
 
-    system "env TMPDIR=#{CREW_PREFIX}/tmp \
-      CFLAGS='' \
+    system "env CFLAGS='' \
       CXXFLAGS='' \
       CC='gcc -pthread' \
       CPPFLAGS='#{@cppflags}' \
@@ -96,7 +95,7 @@ class Python3 < Package
     # Using /tmp breaks test_distutils, test_subprocess
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet
-    # system "TMPDIR=#{CREW_PREFIX}/tmp http_proxy= https_proxy= ftp_proxy= make test"
+    # system "http_proxy= https_proxy= ftp_proxy= make test"
   end
 
   def self.install

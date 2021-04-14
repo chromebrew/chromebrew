@@ -11,10 +11,10 @@ class Consolekit < Package
   source_sha256 '104fd9f41c2d572ad62f4032de46c4c384c3522602b0ad953cf55759c6c64c1d'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/consolekit-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/consolekit-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/consolekit-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/consolekit-1.2.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/consolekit-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/consolekit-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/consolekit-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/consolekit-1.2.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4b9173ec6798adc23824c4189a050744b888de6b58d60442d1ec89bf0df81443',

@@ -10,10 +10,10 @@ class Libnghttp2 < Package
   source_sha256 '556f24653397c71ebb8270b3c5e5507f0893e6eac2c6eeda6be2ecf6e1f50f62'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libnghttp2-1.43.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libnghttp2-1.43.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libnghttp2-1.43.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libnghttp2-1.43.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libnghttp2-1.43.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libnghttp2-1.43.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libnghttp2-1.43.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libnghttp2-1.43.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3a760af4f8f0e4bec998be98b6f942d3baa2bc270a40780922d3bb69b36052af',

@@ -10,10 +10,10 @@ class Libproxy < Package
   source_sha256 '654db464120c9534654590b6683c7fa3887b3dad0ca1c4cd412af24fbfca6d4f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libproxy-0.4.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libproxy-0.4.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libproxy-0.4.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libproxy-0.4.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libproxy-0.4.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libproxy-0.4.15-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libproxy-0.4.15-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libproxy-0.4.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f0df6d6fbe49b9783ebe03bf922cb917714358dc4380c44dfa9b5bbdc747d831',

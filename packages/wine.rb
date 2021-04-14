@@ -11,10 +11,10 @@ class Wine < Package
   source_sha256 '0600fd208c06925d6634d29f543bba0a64361c34e9bd7609c2f0e209610ad347'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wine-6.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wine-6.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wine-6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wine-6.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wine-6.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wine-6.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/wine-6.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wine-6.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b9be4a9acbe76ba54be0671952221a019240811a27e94f53c40e5fb67e0624a3',

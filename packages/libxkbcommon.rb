@@ -11,10 +11,10 @@ class Libxkbcommon < Package
   source_sha256 'a2202f851e072b84e64a395212cbd976ee18a8ee602008b0bad02a13247dbc52'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-1.0.3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-1.0.3-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-1.0.3-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxkbcommon-1.0.3-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxkbcommon-1.0.3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxkbcommon-1.0.3-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxkbcommon-1.0.3-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxkbcommon-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '65ba534f892176bd4a2b7255e0083e59c223165219bb976c8b96d8475f54640e',
@@ -28,7 +28,7 @@ class Libxkbcommon < Package
 
   def self.build
     system "meson \
-            #{CREW_MESON_LTO_OPTIONS} \
+            #{CREW_MESON_OPTIONS} \
             builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

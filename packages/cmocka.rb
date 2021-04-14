@@ -13,10 +13,10 @@ class Cmocka < Package
   source_sha256 'f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmocka-1.1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmocka-1.1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmocka-1.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmocka-1.1.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmocka-1.1.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmocka-1.1.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cmocka-1.1.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cmocka-1.1.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3697a4226d1da0acfd5f462f645eb31886e41ade46c10b4ba211367c55f5b820',

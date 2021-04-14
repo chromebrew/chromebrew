@@ -10,10 +10,10 @@ class Pthread_stubs < Package
   source_sha256 'e4d05911a3165d3b18321cc067fdd2f023f06436e391c6a28dff618a78d2e733'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pthread_stubs-0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pthread_stubs-0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pthread_stubs-0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '85fd777e81a2dd5e3954e82465291c2c889567b7ae8bbb7a3e51b196c8ed35dd',

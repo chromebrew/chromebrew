@@ -10,10 +10,10 @@ class Acpi < Package
   source_sha256 'd7a504b61c716ae5b7e81a0c67a50a51f06c7326f197b66a4b823de076a35005'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/acpi-1.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/acpi-1.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/acpi-1.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/acpi-1.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/acpi-1.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/acpi-1.7-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/acpi-1.7-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/acpi-1.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '86f608f45ef9c7d423f26f4b1a268e7b995061e1ecb613bf3fbca2d9c7bf5665',

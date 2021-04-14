@@ -12,10 +12,10 @@ class Tcl < Package
   source_sha256 '8c0486668586672c5693d7d95817cb05a18c5ecca2f40e2836b9578064088258'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.11-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tcl-8.6.11-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tcl-8.6.11-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tcl-8.6.11-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '82ae2b101306c3a450a81a44e3b9d5e05b2a5f6bcfaba6bbe9907a26b04914aa',

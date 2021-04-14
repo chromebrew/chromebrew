@@ -11,10 +11,10 @@ class Libdrm < Package
   source_sha256 'd66ad8b5c2441015ac1333e40137bb803c3bde3612ff040286fcc12158ea1bcb'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.104-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.104-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.104-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libdrm-2.4.104-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdrm-2.4.104-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdrm-2.4.104-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libdrm-2.4.104-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libdrm-2.4.104-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'd92b2cf767f17517a2e90e610749b38d878f126f237bafa027c5f019bd26ab78',
@@ -29,7 +29,7 @@ class Libdrm < Package
   depends_on 'libxslt'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dfreedreno-kgsl=true \
       -Damdgpu=true \
       -Dradeon=true \

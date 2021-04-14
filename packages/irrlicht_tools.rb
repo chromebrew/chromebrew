@@ -10,10 +10,10 @@ class Irrlicht_tools < Package
   source_sha256 'f42b280bc608e545b820206fe2a999c55f290de5c7509a02bdbeeccc1bf9e433'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_tools-1.8.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_tools-1.8.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_tools-1.8.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/irrlicht_tools-1.8.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/irrlicht_tools-1.8.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/irrlicht_tools-1.8.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/irrlicht_tools-1.8.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/irrlicht_tools-1.8.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fb12a3c4e9d2e57b9eff5c08558090035e33a4790723edb8df19b1a02070be6b',

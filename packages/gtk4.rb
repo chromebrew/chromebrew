@@ -12,10 +12,10 @@ class Gtk4 < Package
   source_sha256 'ea817483d35cd5f5d949a61b15c904ee3157fe5befb98e084a241921562f1838'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk4-4.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtk4-4.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtk4-4.2.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e6d12870ed535be19d04aff0eb4659e94728faa4464fd1d26de0dc51fec049d2',
@@ -24,102 +24,51 @@ class Gtk4 < Package
      x86_64: '68c169e9112531c9fc41f9bed15a542867500846a16eedc6f103cfbcd99c668b'
   })
 
-  depends_on 'adwaita_icon_theme'
-  depends_on 'at_spi2_atk'
-  depends_on 'avahi'
-  depends_on 'cairo'
-  depends_on 'cantarell_fonts'
-  depends_on 'cups'
-  depends_on 'dav1d'
-  depends_on 'dbus'
-  depends_on 'elfutils'
-  depends_on 'eudev'
-  depends_on 'ffmpeg'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'fribidi'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gnome_icon_theme'
-  depends_on 'gobject_introspection'
-  depends_on 'graphene'
-  depends_on 'graphite'
-  depends_on 'gsm'
-  depends_on 'gst_plugins_bad'
-  depends_on 'gst_plugins_base'
-  depends_on 'gstreamer'
-  depends_on 'harfbuzz'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'intel_media_sdk' if ARCH.eql?('x86_64')
-  depends_on 'iso_codes'
-  depends_on 'json_glib'
-  depends_on 'libaom'
-  depends_on 'libbluray'
-  depends_on 'libdeflate'
-  depends_on 'libdrm'
-  depends_on 'libepoxy'
-  depends_on 'libgcrypt'
-  depends_on 'libgpgerror'
-  depends_on 'libgudev'
-  depends_on 'libjpeg'
-  depends_on 'libmfx' if ARCH.eql?('i686')
-  depends_on 'libmodplug'
-  depends_on 'libmp3lame'
-  depends_on 'libogg'
-  depends_on 'libopencoreamr'
-  depends_on 'libopus'
-  depends_on 'libpng'
-  depends_on 'libsass' if ARCH.eql?('x86_64')
-  depends_on 'libsoup2'
-  depends_on 'libsoxr'
-  depends_on 'libssh'
-  depends_on 'libtheora'
-  depends_on 'libtiff'
-  depends_on 'libunwind'
-  depends_on 'libva'
-  depends_on 'libvdpau'
-  depends_on 'libvorbis'
-  depends_on 'libvpx'
-  depends_on 'libwebp'
-  depends_on 'libx11'
-  depends_on 'libx264'
-  depends_on 'libx265'
-  depends_on 'libxau'
-  depends_on 'libxcb'
-  depends_on 'libxcomposite'
-  depends_on 'libxcursor'
-  depends_on 'libxdamage'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxi'
-  depends_on 'libxinerama'
-  depends_on 'libxkbcommon'
-  depends_on 'libxrandr'
-  depends_on 'libxrender'
-  depends_on 'libxshmfence'
-  depends_on 'libxvid'
-  depends_on 'libxxf86vm'
-  depends_on 'lzo'
-  depends_on 'mesa'
-  depends_on 'openjpeg'
-  depends_on 'orc'
-  depends_on 'pango'
-  depends_on 'pcre'
-  depends_on 'pixman'
-  depends_on 'pygments' => :build
-  depends_on 'rav1e'
-  depends_on 'rest'
-  depends_on 'shared_mime_info'
-  depends_on 'six' => :build
-  depends_on 'snappy'
-  depends_on 'speex'
-  depends_on 'srt'
-  depends_on 'util_linux'
+  # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'docbook' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
+  depends_on 'iso_codes' => :build
+  depends_on 'mesa' => :build
+  depends_on 'pygments' => :build # Is this needed?
+  depends_on 'six' => :build # Is this needed?
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
-  depends_on 'wayland'
-  depends_on 'xdg_base'
-  depends_on 'zeromq'
+  depends_on 'adwaita_icon_theme' # L
+  depends_on 'cantarell_fonts' # L
+  depends_on 'gnome_icon_theme' # L
+  depends_on 'hicolor_icon_theme' # L
+  depends_on 'shared_mime_info' # L
+  depends_on 'xdg_base' # L
+  depends_on 'cairo' # R
+  depends_on 'cups' # R
+  depends_on 'ffmpeg' # R
+  depends_on 'fontconfig' # R
+  depends_on 'fribidi' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'graphene' # R
+  depends_on 'gst_plugins_bad' # R
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libmfx' if ARCH.eql?('i686') # R
+  depends_on 'libsass' if ARCH.eql?('x86_64') # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxi' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxrandr' # R
+  depends_on 'pango' # R
+  depends_on 'rest' # R
+  depends_on 'vulkan_icd_loader' # R
+  depends_on 'wayland' # R
 
   def self.patch
     case ARCH
@@ -130,7 +79,7 @@ class Gtk4 < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
       -Dbuild-examples=false \
       -Dbuild-tests=false \

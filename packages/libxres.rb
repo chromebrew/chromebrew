@@ -10,10 +10,10 @@ class Libxres < Package
   source_sha256 '5b62feee09f276d74054787df030fceb41034de84174abec6d81c591145e043a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxres-1.2.0-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxres-1.2.0-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxres-1.2.0-0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxres-1.2.0-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd6de2abe84e9f020add008da76bdb2e35e98438d799f64c3f8cf93df39a0319c',

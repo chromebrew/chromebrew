@@ -10,10 +10,10 @@ class Perl_gcstring_linebreak < Package
   source_sha256 'bc9f96cf8bea60665e8ad67e90b0db3cc0bcdb97101e15c8c44ea671ba256577'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_gcstring_linebreak-2019.001-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_gcstring_linebreak-2019.001-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_gcstring_linebreak-2019.001-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_gcstring_linebreak-2019.001-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f3305554fcb79da45098b3b13aa792f74ba773447d2ca7c0b1c114e1fcfd6511',

@@ -10,10 +10,10 @@ class Urlwatch < Package
   source_sha256 '0a7b46d161501463dda99a1d82daf00237e2627616beaa6ccbf04d6c70c68ded'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/urlwatch-2.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/urlwatch-2.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/urlwatch-2.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/urlwatch-2.7-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/urlwatch-2.7-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/urlwatch-2.7-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/urlwatch-2.7-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/urlwatch-2.7-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'daab4655856fab857ec59c3c946aceaba592a74e2e655473ec5189bf2370326e',

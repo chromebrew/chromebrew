@@ -10,10 +10,10 @@ class Alsa_utils < Package
   source_sha256 '4fdd1745d6ad339be596ba66c12c0ee513aab19050bd48439f91edafbd8688b0'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_utils-1.2.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_utils-1.2.4-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_utils-1.2.4-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/alsa_utils-1.2.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/alsa_utils-1.2.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/alsa_utils-1.2.4-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/alsa_utils-1.2.4-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/alsa_utils-1.2.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '40412aaf27fd4e38efe2613a8ee92d6a6f91dcf33b58e3c39a4bd65f1c12cf34',

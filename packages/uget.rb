@@ -10,10 +10,10 @@ class Uget < Package
   source_sha256 '445cf58799a9a06e08cd4180b172f4b0a8a8c2ee82da732bdfe2dd502d949936'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/uget-2.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/uget-2.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/uget-2.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/uget-2.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/uget-2.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/uget-2.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/uget-2.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/uget-2.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ca69d322f0584a63365f90a390adc5b5c543fc8554091f27b23b8cdd2dc60a5a',

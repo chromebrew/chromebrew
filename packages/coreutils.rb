@@ -11,10 +11,10 @@ class Coreutils < Package
   source_sha256 '4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.32-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.32-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.32-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/coreutils-8.32-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/coreutils-8.32-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/coreutils-8.32-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/coreutils-8.32-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/coreutils-8.32-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'a1be275b2b5f26c724b73550c30a5e2e58c9267c2af853e660293d4e33138453',

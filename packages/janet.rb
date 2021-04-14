@@ -10,10 +10,10 @@ class Janet < Package
   source_sha256 '2a119f3a79b209a858864e73ca3efda57ac044df3c89762a31480bbea386d2a3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/janet-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/janet-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/janet-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/janet-1.7.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/janet-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/janet-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/janet-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/janet-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6fbc239bc6374e516ca5e63e988e50a62f5396b83cc1b5ffcc37c484f436ea07',

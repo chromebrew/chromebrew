@@ -10,10 +10,10 @@ class Log4cplus < Package
   source_sha256 '6046f0867ce4734f298418c7b7db0d35c27403090bb751d98e6e76aa4935f1af'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/log4cplus-2.0.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/log4cplus-2.0.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/log4cplus-2.0.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/log4cplus-2.0.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/log4cplus-2.0.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4bab42054f71f29b8c3f6711ed6ca465de3a4a82b796f598f1a39d3af5187dd6',

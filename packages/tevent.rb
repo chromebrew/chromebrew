@@ -13,10 +13,10 @@ class Tevent < Package
   source_sha256 'f8427822e5b2878fb8b28d6f50d96848734f3f3130612fb574fdd2d2148a6696'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tevent-0.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tevent-0.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tevent-0.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tevent-0.10.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tevent-0.10.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tevent-0.10.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tevent-0.10.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tevent-0.10.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2a34abbf8f8619fec618d0f08e692d61065c8fcc5ef37cf7a1bf64415709ea4f',

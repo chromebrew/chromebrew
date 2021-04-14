@@ -10,10 +10,10 @@ class Wbox < Package
   source_sha256 '1589d85e83c8ee78383a491d89e768ab9aab9f433c5f5e035cfb5eed17efaa19'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wbox-5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wbox-5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/wbox-5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wbox-5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wbox-5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wbox-5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/wbox-5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wbox-5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3494092bd7e35a74a42844ea5be0a91832e3368c8ecb23088fda343acf811efc',

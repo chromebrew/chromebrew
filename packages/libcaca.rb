@@ -10,10 +10,10 @@ class Libcaca < Package
   source_sha256 'e44aa1a77d4345809d317063ca82e9247867dd9147069dd2fa0fe6db8411e395'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libcaca-0.99.beta20-e496-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libcaca-0.99.beta20-e496-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libcaca-0.99.beta20-e496-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libcaca-0.99.beta20-e496-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ab3310aa860fc7ec1f52300dbf2089052dbabda6ebcd991666e8000cad16658e',

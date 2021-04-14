@@ -10,10 +10,10 @@ class Yelp_tools < Package
   source_sha256 'bada2afb5160066aef39e11f90eb5377f0bb161aa2b4dcd744c381e3c2ff77ce'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/yelp_tools-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yelp_tools-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/yelp_tools-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/yelp_tools-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/yelp_tools-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1317a7aa14db9fd3f3794ece39708c35320b2098a3265dfaad0b7d1e418b0319',
@@ -27,7 +27,7 @@ class Yelp_tools < Package
   depends_on 'lxml'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

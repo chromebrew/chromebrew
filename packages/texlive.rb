@@ -3,54 +3,152 @@ require 'package'
 class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
-  version '20201101'
-  license 'metapackage'
+  version '20210318'
+  license 'GPL-2 and GPL-3'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'https://github.com/TeX-Live/texlive-source/archive/refs/tags/svn58528.tar.gz'
+  source_sha256 '5c2e53d25d2f85d511bb3fa238e2de718ce27e22db83559284570b5c380f4bed'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/texlive-20201101-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/texlive-20210318-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/texlive-20210318-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/texlive-20210318-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/texlive-20210318-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '99138e8f8ebe9757f4e8a01a477f3d7a96a6120b7932370becad051888668c4e',
-     armv7l: '99138e8f8ebe9757f4e8a01a477f3d7a96a6120b7932370becad051888668c4e',
-       i686: '2fdecfceeb8138757eed544186fb888569f6dbb6e4eb44db5a6b449034f06e82',
-     x86_64: '4628da71f94b1aeded431efdf7136b605702af9b01b4377d8c6c42e9e98dc61d',
+  binary_sha256({
+    aarch64: 'ba9b3c7029ede0a12a692ed79125c15d60a00bd2dd17dccbfad4457ef8b264c6',
+     armv7l: 'ba9b3c7029ede0a12a692ed79125c15d60a00bd2dd17dccbfad4457ef8b264c6',
+       i686: '6962944875d9b18fd5f3c491edb25eb0305cce4df6dcd6b7a33dfa30908d06c9',
+     x86_64: 'd8d856b90d628da1cd5a616241eb09c3f695c35cc169645a8a5d5d89f2e71111'
   })
+
+  depends_on 'freetype'
+  depends_on 'harfbuzz'
+  depends_on 'libpng'
+  depends_on 'cairo'
+  depends_on 'libpaper'
+  depends_on 'graphite'
+  depends_on 'libxmu'
+  depends_on 'libxaw'
+  depends_on 'pixman'
+  depends_on 'poppler'
+  # depends_on 'lua'
+  # depends_on 'luajit'
+  depends_on 'zziplib'
+  depends_on 'texinfo' => :build
+
+  def self.prebuild
+    # This is for people building with limited filespace
+    Dir.chdir 'libs' do
+      # FileUtils.rm_rf 'cairo'
+      # FileUtils.rm_rf 'freetype2'
+      # FileUtils.rm_rf 'gd'
+      # FileUtils.rm_rf 'gmp'
+      # FileUtils.rm_rf 'graphite2'
+      # FileUtils.rm_rf 'harfbuzz'
+      # FileUtils.rm_rf 'libpaper'
+      # FileUtils.rm_rf 'libpng'
+      # FileUtils.rm_rf 'lua53'
+      # FileUtils.rm_rf 'luajit'
+      # FileUtils.rm_rf 'mfpr'
+      # FileUtils.rm_rf 'pixman'
+      # FileUtils.rm_rf 'poppler'
+      # FileUtils.rm_rf 'zlib'
+      # FileUtils.rm_rf 'zziplib'
+    end
+  end
 
   def self.build
-    system "curl -#LO ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz"
-    system "curl -#LO ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz.sha512"
-    system "cat install-tl-unx.tar.gz.sha512 | xargs | cut -d' ' -f1 > sha512"
-    sha512 = open('sha512').read.chomp
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA512.hexdigest( File.read('install-tl-unx.tar.gz') ) == sha512
-    system "tar xvf install-tl-unx.tar.gz"
-    system "mv install-tl-20*/* ."
-    system "rm -rf install-tl-20*/"
+    system 'filefix'
+    FileUtils.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "env CFLAGS='-pipe -fuse-ld=gold' \
+        CXXFLAGS='-pipe -fuse-ld=gold' \
+        ../configure #{CREW_OPTIONS} \
+        --disable-bibtex-x \
+        --disable-chktex \
+        --disable-cjkutils \
+        --disable-detex \
+        --disable-dialog \
+        --disable-dvi2tty \
+        --disable-dvisvgm \
+        --disable-largefile \
+        --disable-lcdf-typetools \
+        --disable-multiplatform \
+        --disable-native-texlive-build \
+        --disable-pdfopen \
+        --disable-ps2pkm \
+        --disable-t1utils \
+        --disable-tex4htk \
+        --disable-ttf2pk2 \
+        --disable-vlna \
+        --disable-xindy \
+        --enable-biber \
+        --enable-dvipng \
+        --enable-dvipsk \
+        --enable-epsfwin \
+        --enable-ipc \
+        --enable-luatex \
+        --enable-mftalkwin \
+        --enable-ps2eps \
+        --enable-psutils \
+        --enable-regiswin \
+        --enable-shared \
+        --enable-tektronixwin \
+        --enable-unitermwin \
+        --enable-xetex \
+        --with-banner-add='Chromebrew' \
+        --with-ln-s \
+        --with-ps=gs \
+        --with-system-cairo \
+        --with-system-freetype2 \
+        --with-system-gd \
+        --with-system-gmp \
+        --with-system-graphite2 \
+        --with-system-harfbuzz \
+        --with-system-icu \
+        --with-system-libpaper \
+        --with-system-libpng \
+        --with-system-mpfr \
+        --with-system-pixman \
+        --with-system-poppler \
+        --with-system-zlib \
+        --with-system-zziplib \
+        --with-texinfo \
+        --with-x \
+        --with-x-dvi-toolkit=motif"
+
+      # Options to add with later packages
+      # --with-system-kpathsea \
+      # --with-system-ptexenc \
+      # --with-system-teckit \
+      # --with-system-xpdf \
+
+      # Texlive doesn't support these options (yet)
+      #--with-system-lua53 \
+      #--with-system-luajit \
+      system 'make'
+    end
   end
 
   def self.install
-    dir = "#{CREW_DEST_PREFIX}/share/texlive"
-    system "yes I | TEXLIVE_INSTALL_PREFIX=#{dir} \
-           TEXLIVE_INSTALL_TEXMFVAR=#{dir}/local/texmf-var \
-           TEXLIVE_INSTALL_TEXMFCONFIG=#{dir}/local/texmf-config \
-           TEXLIVE_INSTALL_TEXMFHOME=#{dir}/local \
-           ./install-tl --scheme=basic --no-cls"
-    system "find #{dir} -iname '*.pdf' -delete" # saving some space
-    system "find #{dir}/20*/texmf-dist/doc -type f -and -not -path '*man*' -delete"
-    system "find #{dir} -name 'tlmgr' -exec {} init-usertree ';'"
+    Dir.chdir 'builddir' do
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    end
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    path = `echo #{CREW_PREFIX}/share/texlive/20*`.chomp
+    @env = <<~EOF
+      # texlive configuration
+      export PATH="$PATH:#{path}/bin/#{ARCH}-linux"
+      export MANPATH="$MANPATH:#{path}/bin/texmf-dist/doc/man"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/FIXME", @env)
   end
 
   def self.postinstall
-    path = `echo #{CREW_PREFIX}/share/texlive/20*`.chomp
-    puts "\nPlease add texlive to your PATH and MANPATH to be able to use the executables and manpages. Use the following commands:".lightblue
-    puts " echo \"export PATH=\$PATH:#{path}/bin/#{ARCH}-linux\" >> ~/.bashrc".lightblue
-    puts " echo \"export MANPATH=\$MANPATH:#{path}/bin/texmf-dist/doc/man\" >> ~/.bashrc".lightblue
-    puts " source ~/.bashrc".lightblue
+    puts
     puts "\nThis is a very small installation, with only the basic packages. To install more, use `tlmgr install <package>`.".lightblue
+    puts
   end
 end

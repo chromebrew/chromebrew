@@ -10,10 +10,10 @@ class Pidgin < Package
   source_sha256 '2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pidgin-2.13.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pidgin-2.13.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pidgin-2.13.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pidgin-2.13.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pidgin-2.13.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pidgin-2.13.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pidgin-2.13.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pidgin-2.13.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c69f235347be1d0200af259304853f61b52d618df109cf155ba1b024c54b8298',

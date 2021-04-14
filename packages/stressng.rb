@@ -3,47 +3,52 @@ require 'package'
 class Stressng < Package
   description 'stress-ng will stress test a computer system in various selectable ways.'
   homepage 'https://kernel.ubuntu.com/~cking/stress-ng/'
-  version '0.11.22'
+  # 0.12.06 would not build as of 2021.04.07
+  @_ver = '0.12.05'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.11.22.tar.xz'
-  source_sha256 '408153d64be1d8a8d584e5f48d9fd09602adf4095a17c0b542cb41e636cf0464'
+  source_url "https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-#{@_ver}.tar.xz"
+  source_sha256 'af7779aee38e6d94726ed7d5cf36384a64d50c86e42fff89c141d8609913f425'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.11.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.11.22-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.11.22-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/stressng-0.11.22-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/stressng-0.12.05-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/stressng-0.12.05-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/stressng-0.12.05-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/stressng-0.12.05-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '0720d4a1d77eec74276340abc0744905cc8c134224b7dfff4312a365d18d92a4',
-     armv7l: '0720d4a1d77eec74276340abc0744905cc8c134224b7dfff4312a365d18d92a4',
-       i686: '259742d2a4f8c170a922617eef24c03018a4bdd2132ac20693331de13c4a8ba9',
-     x86_64: '996e29261b54bebc9bc63efe5df4f00dba7b86a29e4653fcdfa4a220aaf270d2',
+  binary_sha256({
+    aarch64: 'c2d12f8c29ebb89709a40880f18bf29c2f1eb4e9b50f5f601e2a47aab598ef21',
+     armv7l: 'c2d12f8c29ebb89709a40880f18bf29c2f1eb4e9b50f5f601e2a47aab598ef21',
+       i686: '15f02f0c7819d9c3f5da89068b5c18f812f5428dabeab3ddf8f0d626ce0a8f7d',
+     x86_64: 'a2b49f6d383bbfb208daf3146205ebfd8bb4aaa9f2b0fa0be76a880cf32b2c18'
   })
+
+  depends_on 'libbsd'
+
+  def self.patch
+    system "sed -i 's:BINDIR=/usr/bin:BINDIR=#{CREW_PREFIX}/bin:' Makefile"
+    system "sed -i 's:MANDIR=/usr/share/man/man1:MANDIR=#{CREW_MAN_PREFIX}/man1:' Makefile"
+    system "sed -i 's:JOBDIR=/usr/share/stress-ng/example-jobs:JOBDIR=#{CREW_PREFIX}/share/stress-ng/example-jobs:' Makefile"
+    system "sed -i 's:BASHDIR=/usr/share/bash-completion/completions:BASHDIR=#{CREW_PREFIX}/share/bash-completion/completions:' Makefile"
+  end
 
   def self.build
-    system 'make',
-      "BINDIR=#{CREW_PREFIX}/bin",
-      "MANDIR=#{CREW_PREFIX}/share/man/man1",
-      "JOBDIR=#{CREW_PREFIX}/share/stress-ng/example-jobs",
-      "BASHDIR=#{CREW_PREFIX}/share/bash-completion/completions"
+    system "env CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+                CC='gcc' \
+            make"
   end
 
   def self.install
-    system 'make',
-      "DESTDIR=#{CREW_DEST_DIR}",
-      "BINDIR=#{CREW_PREFIX}/bin",
-      "MANDIR=#{CREW_PREFIX}/share/man/man1",
-      "JOBDIR=#{CREW_PREFIX}/share/stress-ng/example-jobs",
-      "BASHDIR=#{CREW_PREFIX}/share/bash-completion/completions",
-      'install'
-  end
+    system "env CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+                CC='gcc' \
+            make DESTDIR=#{CREW_DEST_DIR} install"
 
-  def self.postinstall
-    puts
-    puts "To add bash completion, execute the following:".lightblue
-    puts "echo 'source #{CREW_PREFIX}/share/bash-completion/completions/stress-ng' >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @env = <<~EOF
+      # stressng bash completion
+      source #{CREW_PREFIX}/share/bash-completion/completions/stress-ng
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/stressng", @env)
   end
 end

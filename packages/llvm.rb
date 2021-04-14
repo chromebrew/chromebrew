@@ -11,10 +11,10 @@ class Llvm < Package
   source_sha256 '53a0719f3f4b0388013cfffd7b10c7d5682eece1929a9553c722348d1f866e79'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm-11.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/llvm-11.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/llvm-11.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/llvm-11.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/llvm-11.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ba0520a8d5bfa90efb3eb13a530c8d4052f9e7572aa30dd42dfc624b88a0251e',

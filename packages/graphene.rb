@@ -10,10 +10,10 @@ class Graphene < Package
   source_sha256 '87c682291fa38a131aaf9aaee17d053d7bd4ea5309d305a356619c95784b9b4d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/graphene-1.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/graphene-1.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/graphene-1.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/graphene-1.10.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/graphene-1.10.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/graphene-1.10.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/graphene-1.10.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/graphene-1.10.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'dbcb1dcb4f783438cf7b3f1cdc59e336be93a79bd69ce82d124bb57f022ac85e',
@@ -27,7 +27,7 @@ class Graphene < Package
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"
     ENV['CXXFLAGS'] = "-fuse-ld=lld"
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
       -Darm_neon=false \
       -Dinstalled_tests=false \
       -Dtests=false \

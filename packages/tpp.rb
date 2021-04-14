@@ -10,10 +10,10 @@ class Tpp < Package
   source_sha256 '68e3de94fbfb62bd91a6d635581bcf8671a306fffe615d00294d388ad91e1b5f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tpp-1.3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tpp-1.3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tpp-1.3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tpp-1.3.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tpp-1.3.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tpp-1.3.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tpp-1.3.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tpp-1.3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e9c8e83cdd2ed2571e2959b47b33b22f621eb78fd3ef10942c6b30c50a22d823',

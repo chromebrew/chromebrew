@@ -10,10 +10,10 @@ class Lapack < Package
   source_sha256 'deb22cc4a6120bff72621155a9917f485f96ef8319ac074a7afbc68aab88bcf6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lapack-3.8.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lapack-3.8.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lapack-3.8.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lapack-3.8.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f93b9afdd088faa48b11735b7467a2056f13efc98d0edc158166364f1edd795d',

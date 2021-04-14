@@ -28,7 +28,7 @@ class Xorg_intel_driver < Package
             --with-default-dri=3"
 
     #system "env LDFLAGS='-lXv' \
-    #        meson #{CREW_MESON_LTO_OPTIONS} \
+    #        meson #{CREW_MESON_OPTIONS} \
     #        -Dwith-default-dri=3 \
     #        builddir"
     #

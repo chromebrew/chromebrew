@@ -4,25 +4,26 @@ class Docbook_xsl_nons < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
-  version @_ver
+  version "#{@_ver}-1"
   license 'custom'
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-nons-#{@_ver}.zip"
   source_sha256 'ba41126fbf4021e38952f3074dc87cdf1e50f3981280c7a619f88acf31456822'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl_nons-1.79.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl_nons-1.79.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl_nons-1.79.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xsl_nons-1.79.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/docbook_xsl_nons-1.79.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/docbook_xsl_nons-1.79.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '591c6a68855b291d26463cb039b72b6100a10b02f29e4b61a8177df9ffc7694c',
-     armv7l: '591c6a68855b291d26463cb039b72b6100a10b02f29e4b61a8177df9ffc7694c',
-       i686: '96082d7311387dddc7e9751f5d4458168a782be88eacf4789cebd1962406fba7',
-     x86_64: '358b905b77951ab9e81272628b87e4f43152869f1a7a894e2e1139309f0ff4b1'
+    aarch64: 'dbc2f81d3557aea2e40e87f4d1d68adc0b36c4a549f20813e66ab54d6e357030',
+     armv7l: 'dbc2f81d3557aea2e40e87f4d1d68adc0b36c4a549f20813e66ab54d6e357030',
+       i686: '1ec31fedd6f78376aaf36c67ab6d8a985ad198fad674742b7a48654a9e687647',
+     x86_64: 'a0a9096b8900966146d924cd86ef43b10b973422186cc5f25520897417fdb707'
   })
 
+  depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
   depends_on 'bash'
 
@@ -79,18 +80,6 @@ class Docbook_xsl_nons < Package
   end
 
   def self.postinstall
-    # Docbook common postinstall block
-    ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
-
-    xml_catalog_files_in_bashrc = `grep -c "XML_CATALOG_FILES" ~/.bashrc || true`
-    unless xml_catalog_files_in_bashrc.to_i.positive?
-      puts "Putting \"export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog\" in ~/.bashrc".lightblue
-      system "echo 'export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
-    # End Docbook common postinstall block
-
     system "xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl-nons/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}-nons '#{CREW_PREFIX}/etc/xml/catalog'"
     system "xmlcatalog --noout --add rewriteURI https://cdn.docbook.org/release/xsl-nons/#{@_ver} #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}-nons '#{CREW_PREFIX}/etc/xml/catalog'"
     system "xmlcatalog --noout --add rewriteSystem https://cdn.docbook.org/release/xsl-nons/current #{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}-nons '#{CREW_PREFIX}/etc/xml/catalog'"

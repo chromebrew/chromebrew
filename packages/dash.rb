@@ -10,10 +10,10 @@ class Dash < Package
   source_sha256 '4bb75944bb47fa6d1cf1e8a3ff941f6f1fb23497b553446e9f615d52d07ef1e7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dash-0.5.11.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dash-0.5.11.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dash-0.5.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dash-0.5.11.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dash-0.5.11.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dash-0.5.11.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/dash-0.5.11.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/dash-0.5.11.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1b44e3da6bfc8c4e10752b14da464d8a04b748025de69423f944fac8035dbb96',

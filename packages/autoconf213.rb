@@ -10,10 +10,10 @@ class Autoconf213 < Package
   source_sha256 'f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/autoconf213-2.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/autoconf213-2.13-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/autoconf213-2.13-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/autoconf213-2.13-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '43464c65466ff94bb507a3174ddd0d325dd0e02d9ffe76a2575d44a795c8f699',
