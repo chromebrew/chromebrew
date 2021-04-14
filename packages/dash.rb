@@ -2,7 +2,7 @@ require 'package'
 
 class Dash < Package
   description 'The Debian Almquist Shell (dash) is a POSIX-compliant shell derived from ash that executes scripts faster than bash and has fewer library dependencies.'
-  homepage 'https://invisible-island.net/mawk/'
+  homepage 'https://salsa.debian.org/debian/dash/'
   version '0.5.11.1'
   license 'BSD'
   compatibility 'all'
