@@ -34,7 +34,6 @@ class Gst_plugins_base < Package
   depends_on 'libgudev'
   depends_on 'libjpeg'
   depends_on 'libogg'
-  depends_on 'libopus'
   depends_on 'libpng'
   depends_on 'libtheora'
   depends_on 'libvisual'
@@ -46,6 +45,7 @@ class Gst_plugins_base < Package
   depends_on 'libxshmfence'
   depends_on 'libxv'
   depends_on 'mesa'
+  depends_on 'opus'
   depends_on 'pango'
   depends_on 'wayland'
 
