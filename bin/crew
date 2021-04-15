@@ -454,7 +454,7 @@ def update
   #update package lists
   Dir.chdir CREW_LIB_PATH do
     if @crew_testing == '1'
-      system "git remote add testing #{@crew_testing_repo} || \
+      system "git remote add testing #{@crew_testing_repo} 2>/dev/null || \
         git remote set-url testing #{@crew_testing_repo}"
       system "git fetch testing #{@crew_testing_branch}"
       system "git reset --hard testing/#{@crew_testing_branch}"
