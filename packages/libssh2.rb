@@ -28,7 +28,7 @@ class Libssh2 < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure \
       #{CREW_OPTIONS} \
       --with-libz"

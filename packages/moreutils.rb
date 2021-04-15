@@ -30,7 +30,7 @@ class Moreutils < Package
     system "sed -i 's,PREFIX?=/usr,PREFIX?=#{CREW_PREFIX},' Makefile"
     system "sed -i 's,DOCBOOKXSL?=/usr/share/xml/docbook/stylesheet/docbook-xsl,DOCBOOKXSL?=#{CREW_PREFIX}/share/xml/docbook/stylesheet/docbook-xsl,' Makefile"
     system "sed -i 's,share/man,man,g' Makefile"
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       make"
   end
 

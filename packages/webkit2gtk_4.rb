@@ -65,7 +65,7 @@ class Webkit2gtk_4 < Package
     Dir.mkdir 'builddir4'
     Dir.chdir 'builddir4' do
       # -flto breaks x86_64 builds
-      # system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+      # system "env #{CREW_ENV_OPTIONS} \
       # Bubblewrap sandbox breaks on epiphany with
       # bwrap: Can't make symlink at /var/run: File exists
       system "cmake \
