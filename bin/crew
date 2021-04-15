@@ -631,7 +631,10 @@ def download
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
         puts 'Caching downloaded archive.'.lightgreen
-          Dir.chdir "#{@extract_dir}" do system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz $(find -mindepth 1 -maxdepth 1 -printf '%P\n')" end
+          Dir.chdir "#{@extract_dir}" do 
+            system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz \
+              $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
+          end
         system "sha256sum #{CREW_CACHE_DIR}/#{filename}.tar.xz > #{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256"
       end
     end

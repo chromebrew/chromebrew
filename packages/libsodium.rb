@@ -23,14 +23,14 @@ class Libsodium < Package
   })
 
   def self.build
-      system 'NOCONFIGURE=1 ./autogen.sh'
-      system "env #{CREW_ENV_OPTIONS} \
-        ./configure #{CREW_OPTIONS}"
-      system 'make'
+    system 'NOCONFIGURE=1 ./autogen.sh'
+    system "env #{CREW_ENV_OPTIONS} \
+      ./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
