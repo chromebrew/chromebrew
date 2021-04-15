@@ -46,5 +46,12 @@ class Ncursesw < Package
     Dir.chdir 'ncursesw_build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
+    # Make symlinks for non-wide software
+    Dir.chdir "#{CREW_DEST_LIB_PREFIX}" do
+      Dir.glob('*w.so*').each do |f|
+        @basefile_nowide = f.gsub('w.so', '.so')
+        FileUtils.ln_sf f, @basefile_nowide
+      end
+    end
   end
 end

@@ -34,7 +34,7 @@ class Libsodium < Package
       system "git fetch --depth 1 origin #{@git_hash}"
       system 'git checkout FETCH_HEAD'
       system 'NOCONFIGURE=1 ./autogen.sh'
-      system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
+      system "env #{CREW_ENV_OPTIONS}  \
       LDFLAGS='-flto=auto'\
       ./configure #{CREW_OPTIONS}"
       system 'make'
