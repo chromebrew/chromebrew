@@ -608,20 +608,16 @@ def download
           puts 'Cannot find cached repository. :/ Will download.'.lightred
         end
       end
-      # Download file if not needed
+      # Download via git
       Dir.mkdir @extract_dir
       Dir.chdir @extract_dir do
         system 'git init'
         system 'git config advice.detachedHead false'
         system 'git config init.defaultBranch master'
         system "git remote add origin #{@pkg.source_url}", exception: true
-        if @pkg.git_hash
-          system "git fetch origin"
-          system "git checkout #{@pkg.git_hash}", exception: true
-        else
-          system "git fetch --depth 1 origin #{@pkg.git_tag}", exception: true
-        end
+        system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
         system 'git checkout FETCH_HEAD'
+        system 'git submodule update --init --recursive'
         puts "Repository downloaded".lightgreen
       end
       # Stow file in cache if requested
