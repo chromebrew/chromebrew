@@ -30,7 +30,7 @@ class Bash < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} #{@CONFIGUREFLAGS} --with-curses --enable-readline \
       --enable-mem-scramble --enable-usg-echo-default \
       --enable-single-help-strings --enable-select \

@@ -52,7 +52,6 @@ class Ffmpeg < Package
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
   depends_on 'libopencoreamr' # R
-  depends_on 'libopus' # R
   depends_on 'libraw1394' # R
   depends_on 'libsdl2' # R
   depends_on 'libsoxr' # R
@@ -72,6 +71,7 @@ class Ffmpeg < Package
   depends_on 'libxv' # R
   depends_on 'openal' # ?
   depends_on 'openjpeg' # R
+  depends_on 'opus' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'rav1e' # R

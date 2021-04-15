@@ -34,7 +34,7 @@ class Gnome_keyring < Package
   depends_on 'openssh'
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
     ./configure #{CREW_OPTIONS} \
     --with-pam-dir=#{CREW_PREFIX}/lib/security \
     --disable-schemas-compile \

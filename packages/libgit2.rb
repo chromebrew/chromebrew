@@ -29,7 +29,7 @@ class Libgit2 < Package
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+      system "env #{CREW_ENV_OPTIONS} \
         cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \

@@ -34,7 +34,7 @@ class Mjpegtools < Package
   def self.build
     system 'ls -aFl'
     system '[ -x configure ] || ./autogen.sh'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS}"
     system 'make'
   end

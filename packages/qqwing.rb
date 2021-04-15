@@ -23,7 +23,7 @@ class Qqwing < Package
   })
 
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
             ./configure #{CREW_OPTIONS}"
     system 'make'
   end

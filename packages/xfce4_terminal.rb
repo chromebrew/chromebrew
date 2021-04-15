@@ -23,7 +23,7 @@ class Xfce4_terminal < Package
   })
 
   depends_on 'desktop_file_utilities'
-  depends_on 'gtkvte'
+  depends_on 'vte'
   depends_on 'exo' => :build
   depends_on 'hicolor_icon_theme'
   depends_on 'libxfce4ui'

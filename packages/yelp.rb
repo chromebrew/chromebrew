@@ -41,7 +41,7 @@ class Yelp < Package
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
     ./configure #{CREW_OPTIONS} \
     --enable-compile-warnings=minimum \
     --enable-debug=no \

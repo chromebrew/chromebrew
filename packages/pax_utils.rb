@@ -28,7 +28,7 @@ class Pax_utils < Package
 
   def self.build
     system "sed -i 's|/usr/bin/env python|/usr/bin/env python3|g' lddtree.py"
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
     ./configure \
     #{CREW_OPTIONS} \
     --with-caps \

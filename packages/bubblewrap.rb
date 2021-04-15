@@ -32,7 +32,7 @@ class Bubblewrap < Package
 
   def self.build
     system './configure --help'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --disable-maintainer-mode \
       --disable-man \
