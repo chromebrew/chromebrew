@@ -7,7 +7,7 @@ class Dash < Package
   license 'BSD'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/dash.git'
-  git_tag 'upstream/0.5.11.2'
+  git_hashtag 'upstream/0.5.11.2'
 
   binary_url ({
     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dash-0.5.11.1-chromeos-armv7l.tar.xz',
