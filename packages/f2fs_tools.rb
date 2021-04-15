@@ -32,7 +32,7 @@ class F2fs_tools < Package
 
   def self.build
     system "autoreconf -fi"
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure \
       #{CREW_OPTIONS} \
       --sbindir=#{CREW_PREFIX}/bin"

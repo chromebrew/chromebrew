@@ -31,7 +31,7 @@ class Consolekit < Package
   depends_on 'xmlto' => :build
 
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./autogen.sh  \
       #{CREW_OPTIONS} \
       --sysconfdir=#{CREW_PREFIX}/etc  \

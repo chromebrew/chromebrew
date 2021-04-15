@@ -3,24 +3,24 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '1.20.10'
-  version "#{@_ver}-1"
+  @_ver = '1.20.11'
+  version @_ver
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
-  source_url "https://github.com/freedesktop/xorg-xserver/archive/xorg-server-#{@_ver}.tar.gz"
-  source_sha256 '499d2b79fdf78e2e06b0c17a4d735fe25ba9d44f689e06a7e82612c35083c4ad'
+  source_url "https://gitlab.freedesktop.org/xorg/xserver/-/archive/xorg-server-#{@_ver}/xserver-xorg-server-#{@_ver}.tar.bz2"
+  source_sha256 'c03ef3c2dc44e75bf8caf942135a5aba3638822edb835bd05d2eaf428531a6a2'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.10-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.10-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_server-1.20.10-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_server-1.20.10-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_server-1.20.11-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_server-1.20.11-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0ce4d77d557a5cc438e7257c157584eb8d2e62f88a250e3f0abd1d35e5f76154',
-     armv7l: '0ce4d77d557a5cc438e7257c157584eb8d2e62f88a250e3f0abd1d35e5f76154',
-       i686: '1886cb710830cb55660b407c9bcc31b8a1ca85dad3115778ea561fd46b673f19',
-     x86_64: '5cc436f10f8c8219284b629597f912d08ebeb1a221ebb16dbe97902a4045f706'
+    aarch64: '27cb4df4959f2d8e4d379d66daead6fb286bafada5f493d0049fb28227160493',
+     armv7l: '27cb4df4959f2d8e4d379d66daead6fb286bafada5f493d0049fb28227160493',
+       i686: 'f5285506842220eb0690b88a6be7dc921d6be4e51b7db5e25c5d65f75cd1f173',
+     x86_64: '732dd1586499edd926531f56e83f1bf38bdc743203a0041ff2fb1b78e3b2738c'
   })
 
   depends_on 'libepoxy'
@@ -69,7 +69,7 @@ class Xorg_server < Package
               -Dxcsecurity=true \
               -Dxorg=true \
               -Dxephyr=true \
-              -Dxwayland=true \
+              -Dxwayland=false \
               -Dglamor=true \
               -Dudev=true \
               -Dxwin=false \
@@ -79,30 +79,14 @@ class Xorg_server < Package
               build"
     system 'meson configure build'
     system 'ninja -C build'
-    system "cat <<'EOF'> Xwayland_sh
-#!/bin/bash
-if base=$(readlink \"$0\" 2>/dev/null); then
-  case $base in
-  /*) base=$(readlink -f \"$0\" 2>/dev/null);; # if $0 is abspath symlink, make symlink fully resolved.
-  *)  base=$(dirname \"$0\")/\"${base}\";;
-  esac
-else
-  case $0 in
-  /*) base=$0;;
-  *)  base=${PWD:-`pwd`}/$0;;
-  esac
-fi
-basedir=${base%/*}
-# TODO(crbug/1003841): Remove LD_ARGV0 once
-# ld.so supports forwarding the binary name.
-LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/Xwayland.sh\" exec   \"${basedir}/..#{@peer_cmd_prefix}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
-EOF"
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/Xwayland.elf"
-    system "install -Dm755 Xwayland_sh #{CREW_DEST_PREFIX}/bin/Xwayland"
-    FileUtils.ln_sf "#{CREW_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/X"
+    # Get these from xwayland package
+    @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/Xwayland #{CREW_DEST_LIB_PREFIX}/xorg/protocol.txt]
+    @deletefiles.each do |f|
+      FileUtils.rm f if  File.exist?(f)
+    end
   end
 end

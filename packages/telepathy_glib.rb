@@ -29,7 +29,7 @@ class Telepathy_glib < Package
   depends_on 'gobject_introspection' => :build
 
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure \
       #{CREW_OPTIONS} \
       --libexecdir=#{CREW_LIB_PREFIX}/telepathy \

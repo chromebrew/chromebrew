@@ -446,11 +446,22 @@ end
 
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkgName
-
+  @crew_testing_repo = ENV['CREW_TESTING_REPO']
+  @crew_testing_branch = ENV['CREW_TESTING_BRANCH']
+  @crew_testing = ENV['CREW_TESTING']
+  @crew_testing = 0 if @crew_testing_repo.nil? || @crew_testing_repo.empty?
+  @crew_testing = 0 if @crew_testing_branch.nil? || @crew_testing_branch.empty?
   #update package lists
   Dir.chdir CREW_LIB_PATH do
-    system 'git fetch origin master'
-    system 'git reset --hard origin/master'
+    if @crew_testing == '1'
+      system "git remote add testing #{@crew_testing_repo} 2>/dev/null || \
+        git remote set-url testing #{@crew_testing_repo}"
+      system "git fetch testing #{@crew_testing_branch}"
+      system "git reset --hard testing/#{@crew_testing_branch}"
+    else
+      system 'git fetch origin master'
+      system 'git reset --hard origin/master'
+    end
   end
 
   puts 'Package lists, crew, and library updated.'
@@ -620,7 +631,10 @@ def download
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
         puts 'Caching downloaded archive.'.lightgreen
-          Dir.chdir "#{@extract_dir}" do system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz $(find -mindepth 1 -maxdepth 1 -printf '%P\n')" end
+          Dir.chdir "#{@extract_dir}" do 
+            system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz \
+              $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
+          end
         system "sha256sum #{CREW_CACHE_DIR}/#{filename}.tar.xz > #{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256"
       end
     end

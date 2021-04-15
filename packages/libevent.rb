@@ -26,7 +26,7 @@ class Libevent < Package
   depends_on 'openssl'
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS}"
     system "make"
   end

@@ -28,7 +28,7 @@ class Zziplib < Package
   def self.build
     FileUtils.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto'\
+      system "env #{CREW_ENV_OPTIONS} \
         cmake -G Ninja #{CREW_CMAKE_OPTIONS} \
         -DCP=/bin/cp \
         -DGZIP=/bin/gzip \

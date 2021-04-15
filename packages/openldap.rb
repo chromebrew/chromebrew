@@ -26,7 +26,7 @@ class Openldap < Package
   depends_on 'libcyrussasl'
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
     ./configure #{CREW_OPTIONS} --disable-slapd"
     system 'make'
     system 'make depend'
