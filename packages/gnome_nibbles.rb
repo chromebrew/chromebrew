@@ -14,6 +14,7 @@ class Gnome_nibbles < Package
   depends_on 'gsound'
   depends_on 'librsvg'
   depends_on 'libgnome_games_support'
+  depends_on 'sommelier' # keyboard not responding in wayland
 
   def self.build
     system "meson #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
@@ -23,17 +24,6 @@ class Gnome_nibbles < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    @_app = name.tr('_', '-')
-    @_wrapper = <<~EOF
-      #!/bin/sh
-      WAYLAND_DISPLAY=wayland-0
-      GDK_BACKEND=wayland
-      CLUTTER_BACKEND=wayland
-      exec #{@_app}.elf "$@"
-    EOF
-    File.write(@_app, @_wrapper)
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/#{@_app}", "#{CREW_DEST_PREFIX}/bin/#{@_app}.elf"
-    FileUtils.install @_app, "#{CREW_DEST_PREFIX}/bin/#{@_app}", mode: 0755
   end
 
   def self.postinstall
