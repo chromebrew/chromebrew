@@ -4,7 +4,7 @@
 require 'package'
 
 class Libcacard < Package
-  description 'Common Access Card library thar provides emulation of smart cards to a virtual card reader running in a guest virtual machine'
+  description 'Common Access Card library that provides emulation of smart cards to a virtual card reader running in a guest virtual machine'
   homepage 'https://www.spice-space.org/page/Libcacard'
   version '2.7.0-2'
   license 'GPL2'
@@ -29,8 +29,7 @@ class Libcacard < Package
 
   def self.build
     system 'filefix'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-        LDFLAGS='-flto=auto'\
+    system "env #{CREW_ENV_OPTIONS} \
         ./configure #{CREW_OPTIONS}"
     system 'make'
   end
