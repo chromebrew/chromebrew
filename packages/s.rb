@@ -19,6 +19,19 @@ class S < Package
     source_sha256 '38c29001936f1758159cc935b3ab97d1dee75c35ceacd8bd5ada3837b306192f'
   end
 
+  binary_url ({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/s-0.5.15-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/s-0.5.15-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '10367f04c278a6157f35c3c0bdbc3a1baa4c49aa3d0362681cc031d292dcd4d6',
+     armv7l: '10367f04c278a6157f35c3c0bdbc3a1baa4c49aa3d0362681cc031d292dcd4d6',
+       i686: '80322df663b3e5a8f72f6ec027f50a857f44f677cdd163abaf12de53ec09f6f5',
+     x86_64: '8674e52bef5b72ba4d8e9022bc103bbf5df9f5e97eb21a5cf52661afe66f2ef9',
+  })
+
   depends_on 'unzip' => :build
 
   def self.install
