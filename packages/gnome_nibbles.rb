@@ -1,10 +1,10 @@
 require 'package'
 
 class Gnome_nibbles < Package
+  @_commit = '62964e9256fcac616109af874dbb2bd8342a9853'
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
-  @_commit '62964e9256fcac616109af874dbb2bd8342a9853'
-  version = '3.38.2+git+' + @_commit[0..8]
+  version '3.38.2+git+' + @_commit[0..8]
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-nibbles/-/archive/#{@_commit}/gnome-nibbles-#{@_commit}.tar.gz"
