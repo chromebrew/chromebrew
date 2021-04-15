@@ -6,8 +6,8 @@ class Gtk_vnc < Package
   version '1.2.0'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gtk-vnc/-/archive/v#{version}/gtk-vnc-v#{version}.tar.bz2"
-  source_sha256 '125af97fdd43a570e62c351b53c26bd82c9cb1146b7f72d9d594e6e07dde78d9'
+  source_url 'https://gitlab.gnome.org/GNOME/gtk-vnc.git'
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
@@ -31,18 +31,6 @@ class Gtk_vnc < Package
 
   def self.patch
     system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
-    # Source has keycodemapdb repo as submodule
-    @git_dir = 'subprojects/keycodemapdb'
-    @git_hash = '6280c94f306df6a20bbc100ba15a5a81af0366e6'
-    @git_url = 'https://gitlab.com/keycodemap/keycodemapdb.git'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-    end
   end
 
   def self.build
