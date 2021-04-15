@@ -10,10 +10,10 @@ class Od1n < Package
   source_sha256 '7fe26f0268fe63ec0352502ae590a7a5e258248f253649661dc782ca7edd52ae'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/od1n-2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/od1n-2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/od1n-2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/od1n-2.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/od1n-2.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/od1n-2.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/od1n-2.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/od1n-2.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '205e61cefc8dd5655c9621b57701c627b53915af79ec547fdc3ec7796cdaacf5',

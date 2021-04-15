@@ -10,10 +10,10 @@ class Xfce4_dev_tools < Package
   source_sha256 '2c9eb8e0fe23e47dc31411a93b683fd1b7a49140e9163f0aab9e94a3d8a0b5fd'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_dev_tools-4.14.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_dev_tools-4.14.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_dev_tools-4.14.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xfce4_dev_tools-4.14.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfce4_dev_tools-4.14.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfce4_dev_tools-4.14.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xfce4_dev_tools-4.14.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xfce4_dev_tools-4.14.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8b1ceccfed1a4bdb34dbf9ed35c246cca5035754ae01185db88261cd5ed62dd4',

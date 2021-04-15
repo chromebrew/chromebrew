@@ -10,10 +10,10 @@ class Ck4up < Package
   source_sha256 '37f2f981cfdb6811a906e5520cb27203cb5ecb725d2180aaac59d377c1ac9fbf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ck4up-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ck4up-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ck4up-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ck4up-1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ck4up-1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ck4up-1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ck4up-1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ck4up-1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '04faf368ecc2291d8b0177488f1d4d26441dd2e147c27d848c7e1f719eac9238',

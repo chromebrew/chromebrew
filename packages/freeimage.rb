@@ -10,10 +10,10 @@ class Freeimage < Package
   source_sha256 'f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freeimage-3.18.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freeimage-3.18.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freeimage-3.18.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freeimage-3.18.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freeimage-3.18.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freeimage-3.18.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/freeimage-3.18.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/freeimage-3.18.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '87b9d5423bc6efbcaa15cd5bc8789d7d9d155c146b09297a72c5a5b7e0a27be6',

@@ -10,10 +10,10 @@ class Jsoncpp < Package
   source_sha256 'c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jsoncpp-1.8.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jsoncpp-1.8.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jsoncpp-1.8.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jsoncpp-1.8.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jsoncpp-1.8.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jsoncpp-1.8.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/jsoncpp-1.8.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/jsoncpp-1.8.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5b8b28dfbdb1a30ba094d9c694e2f7a3b27d3cadbdaa463173baa4f813630f2c',

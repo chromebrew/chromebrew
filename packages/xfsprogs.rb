@@ -11,10 +11,10 @@ class Xfsprogs < Package
   source_sha256 'e807ca9fd8f01e45c9ec8ffb3c123bdb7dfcfd8e05340520d2ff1ddbc3bd7c88'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xfsprogs-5.10.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xfsprogs-5.10.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xfsprogs-5.10.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xfsprogs-5.10.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfsprogs-5.10.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfsprogs-5.10.0-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xfsprogs-5.10.0-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xfsprogs-5.10.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'd2034b7ee2c95673d900aed424c04abe6f53cc721261ef3b5822c4d98ca720ef',

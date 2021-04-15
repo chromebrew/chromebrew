@@ -10,10 +10,10 @@ class Qpdf < Package
   source_sha256 '21822dc365eaee55bc449d84eb760b9845c4871783ab0e4c4f3b244052718a1a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qpdf-7.1.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qpdf-7.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qpdf-7.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/qpdf-7.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/qpdf-7.1.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '94947bdabca20ed079672c86ce3f6b94ff5e3d992e0d94d41cbeef7bbc40d78e',

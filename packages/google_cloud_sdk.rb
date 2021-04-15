@@ -15,10 +15,7 @@ class Google_cloud_sdk < Package
     source_sha256 'cfa7ff7c67d58d5b1bd2ae623a007c23d94937d8bc898b7933c647c660860659'
   end
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'xdg_base'
-  end
+  depends_on 'xdg_base'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"

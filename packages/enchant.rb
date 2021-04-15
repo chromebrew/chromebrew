@@ -11,10 +11,10 @@ class Enchant < Package
   source_sha256 '85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/enchant-2.2.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/enchant-2.2.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/enchant-2.2.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/enchant-2.2.15-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/enchant-2.2.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/enchant-2.2.15-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/enchant-2.2.15-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/enchant-2.2.15-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1d13b3581ec9223b127f91b29bd5838b44ed61cfee4eb6d2d58a1e3f945f0a14',

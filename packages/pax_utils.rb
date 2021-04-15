@@ -10,10 +10,10 @@ class Pax_utils < Package
   source_sha256 '7ce7170ceed255bb47cac03b88bcbc636b0e412cac974e213e8017a1dae292ec'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pax_utils-1.2.5-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pax_utils-1.2.5-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/pax_utils-1.2.5-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pax_utils-1.2.5-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pax_utils-1.2.5-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pax_utils-1.2.5-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pax_utils-1.2.5-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pax_utils-1.2.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'edc856ff6cc451358da1fb46a2a1023594f3d243cb1c30e5aa67c9ee9ed4dac6',

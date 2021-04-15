@@ -10,10 +10,10 @@ class Fuse3 < Package
   source_sha256 '736e8d1ce65c09cb435fbbb500d53dc75f4d6e93bd325d22adc890951cf56337'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fuse3-3.10.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fuse3-3.10.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fuse3-3.10.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fuse3-3.10.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fuse3-3.10.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6e4d623810017d9dc58852f19d251fe52282578d6099ea41eac94d23eb0066e8',
@@ -24,7 +24,7 @@ class Fuse3 < Package
 
   def self.build
     system "pip install --upgrade --no-warn-script-location pytest --prefix #{CREW_PREFIX}"
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Ddisable-mtab=true \
     -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d/ \
     -Dexamples=true \

@@ -10,10 +10,10 @@ class Ccache < Package
   source_sha256 '9d6ba1cdefdc690401f404b747d81a9a1802b17af4235815866b7620d980477e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ccache-4.2.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ccache-4.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ccache-4.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ccache-4.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ccache-4.2.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'abe2f4a839d98bf3946c59f731090a02f2436b832685fd7bbf4a952a54537b16',

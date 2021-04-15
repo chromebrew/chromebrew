@@ -10,10 +10,10 @@ class Lha < Package
   source_sha256 'b081f600fd34ab99d5ddf085d0667bc4fa3e44362843935236592ddd999f084f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lha-6f6cbc1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lha-6f6cbc1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lha-6f6cbc1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lha-6f6cbc1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lha-6f6cbc1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lha-6f6cbc1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lha-6f6cbc1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lha-6f6cbc1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8fa5dd3a57a9da3ffe245f1417f746da3c6d712e4436dcad67a71ec34e1c2e94',

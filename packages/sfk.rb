@@ -10,10 +10,10 @@ class Sfk < Package
   source_sha256 '1c53d4d9d05af752546c8341a718bf64be99b62491ff91db02ef100e2f93bfc3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sfk-1.8.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sfk-1.8.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sfk-1.8.7-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sfk-1.8.7-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sfk-1.8.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1666f3bd5271973be9ce535e6cc1a71a831ba3d479ba2a08b7c587d2142ef360',

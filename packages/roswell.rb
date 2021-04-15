@@ -10,10 +10,10 @@ class Roswell < Package
   source_sha256 '798b96fdcb8c89445b36692b31570bb99882d83719d6310d969ccfcb2a35a1d4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/roswell-20.01.14.104-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/roswell-20.01.14.104-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/roswell-20.01.14.104-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/roswell-20.01.14.104-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/roswell-20.01.14.104-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/roswell-20.01.14.104-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/roswell-20.01.14.104-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/roswell-20.01.14.104-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3c3a54706ecb418ded5e27b9672a6a11e29eaf778e0c6bb44b18ab16050ff463',

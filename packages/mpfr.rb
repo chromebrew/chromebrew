@@ -10,10 +10,10 @@ class Mpfr < Package
   source_sha256 '67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mpfr-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mpfr-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mpfr-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mpfr-4.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mpfr-4.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mpfr-4.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mpfr-4.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mpfr-4.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '95fb95f4a32a0c91e48c3dee207710614eb44d1e98f3e43d7d439c5be7c1e5eb',

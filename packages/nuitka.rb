@@ -10,10 +10,10 @@ class Nuitka < Package
   source_sha256 'a594d054255688dbef8f8ba5b6cbb0207ad467384f2a6214522781ffbd5d43e5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nuitka-0.6.13.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nuitka-0.6.13.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nuitka-0.6.13.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nuitka-0.6.13.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nuitka-0.6.13.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '30d982517d09101767cfb71f7e579b0dd8b0636ce2e922ccd7d2a3eec93f0e26',

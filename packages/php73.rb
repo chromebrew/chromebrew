@@ -11,10 +11,10 @@ class Php73 < Package
   source_sha256 '65f616e2d5b6faacedf62830fa047951b0136d5da34ae59e6744cbaf5dca148d'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php73-7.3.27-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/php73-7.3.27-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/php73-7.3.27-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/php73-7.3.27-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/php73-7.3.27-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7bd308b90ec61c6d1f03bfa97cc5883a9e963fab9d63d9922493d6ca5dceefcc',

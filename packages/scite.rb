@@ -10,10 +10,10 @@ class Scite < Package
   source_sha256 '2e0b95842bbc875a9224416fad3a9179ec329b3af2ca1abdd8e64c008068bb99'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/scite-4.2.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/scite-4.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/scite-4.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/scite-4.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/scite-4.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '44c3738e5f6d241e74a0b2dc30080f73643cf170fcf93b8167a42f85943e4554',

@@ -10,10 +10,10 @@ class Fswatch < Package
   source_sha256 'b7dadb84848ce666aac0311f9b4c739fbfee6a90c6097807a1f45ad4367294c2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fswatch-1.11.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fswatch-1.11.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fswatch-1.11.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fswatch-1.11.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fswatch-1.11.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fswatch-1.11.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fswatch-1.11.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fswatch-1.11.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '216b35bc050f6daa298f6da0074f70542898d22647dc6340434664cf75359518',

@@ -10,10 +10,10 @@ class Samurai < Package
   source_sha256 '3b8cf51548dfc49b7efe035e191ff5e1963ebc4fe8f6064a5eefc5343eaf78a5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/samurai-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/samurai-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/samurai-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/samurai-1.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/samurai-1.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/samurai-1.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/samurai-1.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/samurai-1.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bf38ed51c2b3ade1b3879a09ae2962660a7c89c88ac6dcbf673378e58b04d33c',

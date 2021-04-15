@@ -10,10 +10,10 @@ class Perl_carp_clan < Package
   source_sha256 'c75f92e34422cc5a65ab05d155842b701452434e9aefb649d6e2289c47ef6708'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_carp_clan-6.08-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_carp_clan-6.08-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_carp_clan-6.08-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_carp_clan-6.08-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'dc90c4812e8dc89fbdc37173fc5e28bdbbf2d4b7ef4e5a1848cafa3b93c92a0e',

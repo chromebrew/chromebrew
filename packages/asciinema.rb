@@ -10,10 +10,10 @@ class Asciinema < Package
   source_sha256 '2578a1b5611e5375771ef6582a6533ef8d40cdbed1ba1c87786fd23af625ab68'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/asciinema-2.0.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/asciinema-2.0.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/asciinema-2.0.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5fddd233f9f093935c23574dc1ce6247103352e845408375fa537fd2f56675ec',

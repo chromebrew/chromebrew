@@ -10,10 +10,10 @@ class Mate_calc < Package
   source_sha256 'c6b2c4d832f67d5f3d1293cb143e428365077e3cdfe4fc4bb80b3fce5362b51e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mate_calc-1.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mate_calc-1.21-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mate_calc-1.21-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mate_calc-1.21-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mate_calc-1.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mate_calc-1.21-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mate_calc-1.21-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mate_calc-1.21-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '311ade356f6259ca68ebf2318b7dfec9053e51899c3bb033b91e091479d587f6',

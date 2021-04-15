@@ -11,10 +11,10 @@ class Nano < Package
   source_sha256 '760d7059e0881ca0ee7e2a33b09d999ec456ff7204df86bee58eb6f523ee8b09'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nano-5.6.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nano-5.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nano-5.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nano-5.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nano-5.6.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1a421406267c513aed8d65ec02d9b2e796e4ca1dcc044d00e5b1b8a5543796e4',
