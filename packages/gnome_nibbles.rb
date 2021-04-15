@@ -37,7 +37,8 @@ class Gnome_nibbles < Package
   end
 
   def self.postinstall
-    system 'gdk-pixbuf-query-loaders --update-cache'
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+    system 'update-mime-database', "#{CREW_PREFIX}/share/mime"
+    system 'gdk-pixbuf-query-loaders', '--update-cache'
+    system 'glib-compile-schemas', "#{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end
