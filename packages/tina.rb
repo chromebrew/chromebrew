@@ -10,10 +10,10 @@ class Tina < Package
   source_sha256 '108cec9d1dbd938c67f3fae2e4238e12d064f1d12bd0d9debd0ee3ac79553edf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tina-0.1.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tina-0.1.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tina-0.1.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tina-0.1.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tina-0.1.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tina-0.1.12-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tina-0.1.12-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tina-0.1.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '07d4a2cdbffe0286a98b28ee0041d6d8cdb40ca18721c8dc4aeebcfd95416559',

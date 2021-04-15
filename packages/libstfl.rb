@@ -9,6 +9,19 @@ class Libstfl < Package
   source_url 'http://www.clifford.at/stfl/stfl-0.23.tar.gz'
   source_sha256 'e75ed8427905ad50faf43ed5fefd0cf7b16ee0c1ca87e15d33e360bb92aedfde'
 
+  binary_url ({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libstfl-0.23-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libstfl-0.23-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libstfl-0.23-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libstfl-0.23-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '68532ced7ade579392d5d3ab4e9ea70f8282f5ec8a981770e6976411f496266d',
+     armv7l: '68532ced7ade579392d5d3ab4e9ea70f8282f5ec8a981770e6976411f496266d',
+       i686: '4240b0d2723ce868824e7109a2549e5f86566877cb738242b2024139525df8ed',
+     x86_64: '285f8fd5fc05bb37e4dfc7cba8e8f3e81dc1637aeb1fa98ffba3e53b05581c12',
+  })
+
   def self.patch
     @ruby_extconf = <<~EOF
       --- a/ruby/extconf.rb

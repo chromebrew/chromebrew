@@ -10,16 +10,16 @@ class Icu4c < Package
   source_sha256 'c79193dee3907a2199b8296a93b52c5cb74332c26f3d167269487680d479d625'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/icu4c-68.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/icu4c-68.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/icu4c-68.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/icu4c-68.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/icu4c-68.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '35dfc0e95c0d6c09a323fd6ec393dc48e33940fc7815a4f51adff5a63f99416a',
-      armv7l: '35dfc0e95c0d6c09a323fd6ec393dc48e33940fc7815a4f51adff5a63f99416a',
-        i686: '1c45fb6c19db175fba61dd9925b648955c5081ad7dea31feb7b613b5ca0a97c9',
-      x86_64: '290087e9c03a94eaf5d33a82b76dc3b5bb11be1dff5a6e57aa190ec5439bcfb2',
+    aarch64: '35dfc0e95c0d6c09a323fd6ec393dc48e33940fc7815a4f51adff5a63f99416a',
+     armv7l: '35dfc0e95c0d6c09a323fd6ec393dc48e33940fc7815a4f51adff5a63f99416a',
+       i686: '1c45fb6c19db175fba61dd9925b648955c5081ad7dea31feb7b613b5ca0a97c9',
+     x86_64: '290087e9c03a94eaf5d33a82b76dc3b5bb11be1dff5a6e57aa190ec5439bcfb2',
   })
 
   def self.build

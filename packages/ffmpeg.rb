@@ -3,90 +3,88 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '4.3.2'
-  version "#{@_ver}-2"
+  @_ver = '4.4'
+  version @_ver
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is stil accurate,
   compatibility 'all'
   source_url 'file:///dev/null'
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ffmpeg-4.3.2-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ffmpeg-4.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ffmpeg-4.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ffmpeg-4.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ffmpeg-4.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'd38e1ba9bde45dd24db6b244c6739d8238ef118e0103853ed93beabf28749a94',
-     armv7l: 'd38e1ba9bde45dd24db6b244c6739d8238ef118e0103853ed93beabf28749a94',
-       i686: '803e33ef7cce3b8cbddc543e7b3c0c6682ec8a87ea74b9a6fae0596fb9b2199d',
-     x86_64: 'a9f554a7ddb5dc9d151be6bf09ec0bdaa01b33de7a024d9976987a34ed39a904'
+    aarch64: '745e2246e2e0dbe5b4484484d3f2cd5a1c018c998286b3947f0ca90c576da79a',
+     armv7l: '745e2246e2e0dbe5b4484484d3f2cd5a1c018c998286b3947f0ca90c576da79a',
+       i686: 'c09e49cd35e4a08120cb41f2c0731276e2fdf370939d87d69825705474e0c29d',
+     x86_64: '5b5fcfc511a47302007f5408d876ee25bfcde9c63d4c4afb08b48059e0ea8ef1'
   })
 
-  depends_on 'alsa_lib'
-  depends_on 'avisynthplus'
+  depends_on 'avisynthplus' # ?
+  depends_on 'chromaprint' # ?
+  depends_on 'ladspa' # ?
+  depends_on 'wavpack' # ?
+  depends_on 'zvbi' # ?
   depends_on 'ccache' => :build
-  depends_on 'chromaprint'
-  depends_on 'dav1d'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'fribidi'
-  depends_on 'gsm'
-  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
-  depends_on 'jack'
-  depends_on 'ladspa'
-  depends_on 'libaom'
-  depends_on 'libass'
-  depends_on 'libavc1394'
-  depends_on 'libbluray'
-  depends_on 'libdc1394'
-  depends_on 'libdrm'
-  depends_on 'libfdk_aac'
-  depends_on 'libfrei0r'
-  depends_on 'libiec61883'
-  depends_on 'libmfx' if ARCH == 'i686' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
-  depends_on 'libmodplug'
-  depends_on 'libmp3lame'
-  depends_on 'libopencoreamr'
-  depends_on 'libopus'
-  depends_on 'libraw1394'
-  depends_on 'librsvg'
-  depends_on 'libsdl2'
-  depends_on 'libsoxr'
-  depends_on 'libssh'
-  depends_on 'libtheora'
-  depends_on 'libva'
-  depends_on 'libvdpau'
-  depends_on 'libvoamrwbenc'
-  depends_on 'libvorbis'
-  depends_on 'libvpx'
-  depends_on 'libwebp'
-  depends_on 'libx11'
-  depends_on 'libx264'
-  depends_on 'libx265'
-  depends_on 'libxcb'
-  depends_on 'libxext'
-  depends_on 'libxv'
-  depends_on 'libxvid'
+  depends_on 'libdc1394' => :build
+  depends_on 'libfdk_aac' => :build
+  depends_on 'libfrei0r' => :build
+  depends_on 'libvoamrwbenc' => :build
   depends_on 'nasm' => :build
-  depends_on 'openal'
-  depends_on 'openjpeg'
-  depends_on 'pipewire'
-  depends_on 'pulseaudio'
-  depends_on 'rav1e'
-  depends_on 'rubberband'
-  depends_on 'snappy'
-  depends_on 'speex'
-  depends_on 'srt'
-  depends_on 'tesseract'
-  depends_on 'v4l_utils'
-  depends_on 'vidstab'
-  depends_on 'vmaf'
-  depends_on 'wavpack'
-  depends_on 'xorg_lib'
-  depends_on 'zeromq'
-  depends_on 'zimg'
-  depends_on 'zvbi'
+  depends_on 'alsa_lib' # R
+  depends_on 'dav1d' # R
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'fribidi' # R
+  depends_on 'gsm' # R
+  depends_on 'intel_media_sdk' if ARCH == 'x86_64' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive? # R
+  depends_on 'jack' # R
+  depends_on 'libaom' # R
+  depends_on 'libass' # R
+  depends_on 'libavc1394' # R
+  depends_on 'libbluray' # R
+  depends_on 'libdrm' # R
+  depends_on 'libiec61883' # R
+  depends_on 'libmfx' if ARCH == 'i686' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive? # R
+  depends_on 'libmodplug' # R
+  depends_on 'libmp3lame' # R
+  depends_on 'libopencoreamr' # R
+  depends_on 'libopus' # R
+  depends_on 'libraw1394' # R
+  depends_on 'libsdl2' # R
+  depends_on 'libsoxr' # R
+  depends_on 'libssh' # R
+  depends_on 'libtheora' # R
+  depends_on 'libva' # R
+  depends_on 'libvdpau' # R
+  depends_on 'libvorbis' # R
+  depends_on 'libvpx' # R
+  depends_on 'libwebp' # R
+  depends_on 'libx11' # R
+  depends_on 'libx264' # R
+  depends_on 'libx265' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
+  depends_on 'libxvid' # R
+  depends_on 'libxv' # R
+  depends_on 'openal' # ?
+  depends_on 'openjpeg' # R
+  depends_on 'pipewire' # R
+  depends_on 'pulseaudio' # R
+  depends_on 'rav1e' # R
+  depends_on 'rubberband' # R
+  depends_on 'snappy' # R
+  depends_on 'speex' # R
+  depends_on 'srt' # R
+  depends_on 'tesseract' # R
+  depends_on 'v4l_utils' # R
+  depends_on 'vidstab' # R
+  depends_on 'vmaf' # R
+  depends_on 'zeromq' # R
+  depends_on 'zimg' # R
 
   def self.build
     case ARCH
@@ -113,24 +111,6 @@ class Ffmpeg < Package
     Dir.chdir @git_dir do
       system "git checkout #{@git_hash}"
       system 'git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315' # fix build against libsrt 1.4.2
-      # Patch from https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ffmpeg/trunk/vmaf-model-path.patch
-      @vmaf_patch = <<~'VMAF_PATCH_EOF'
-        diff --git a/libavfilter/vf_libvmaf.c b/libavfilter/vf_libvmaf.c
-        index 249e50c720..9b791e19b1 100644
-        --- a/libavfilter/vf_libvmaf.c
-        +++ b/libavfilter/vf_libvmaf.c
-        @@ -72,7 +72,7 @@ typedef struct LIBVMAFContext {
-         #define FLAGS AV_OPT_FLAG_FILTERING_PARAM|AV_OPT_FLAG_VIDEO_PARAM
-
-         static const AVOption libvmaf_options[] = {
-        -    {"model_path",  "Set the model to be used for computing vmaf.",                     OFFSET(model_path), AV_OPT_TYPE_STRING, {.str="/usr/local/share/model/vmaf_v0.6.1.pkl"}, 0, 1, FLAGS},
-        +    {"model_path",  "Set the model to be used for computing vmaf.",                     OFFSET(model_path), AV_OPT_TYPE_STRING, {.str="/usr/share/model/vmaf_v0.6.1.pkl"}, 0, 1, FLAGS},
-             {"log_path",  "Set the file path to be used to store logs.",                        OFFSET(log_path), AV_OPT_TYPE_STRING, {.str=NULL}, 0, 1, FLAGS},
-             {"log_fmt",  "Set the format of the log (xml or json).",                            OFFSET(log_fmt), AV_OPT_TYPE_STRING, {.str=NULL}, 0, 1, FLAGS},
-             {"enable_transform",  "Enables transform for computing vmaf.",                      OFFSET(enable_transform), AV_OPT_TYPE_BOOL, {.i64=0}, 0, 1, FLAGS},
-      VMAF_PATCH_EOF
-      IO.write('vmaf.patch', @vmaf_patch)
-      system 'patch -p1 -i vmaf.patch'
       # ChromeOS awk employs sandbox redirection protections which screw
       # up configure script generation, so use mawk.
       system "sed -i 's/awk/mawk/g' configure"

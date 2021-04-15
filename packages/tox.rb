@@ -10,10 +10,10 @@ class Tox < Package
   source_sha256 '01171065c1628b5549c370a160979a04fef1de32aa9e39203aaa998057c03d11'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tox-3.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tox-3.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tox-3.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tox-3.4.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tox-3.4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tox-3.4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tox-3.4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tox-3.4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '39e24875f9ba6375d2bbc2d5318ad6b220209e38c2105d8fde3de7dc3f84ff1c',

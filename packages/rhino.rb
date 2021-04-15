@@ -10,10 +10,10 @@ class Rhino < Package
   source_sha256 'f8f748269032822891e8ceab6e4c4947fd42c178c3f3cedcfb4c839f0c48f543'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rhino-1.7.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rhino-1.7.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rhino-1.7.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rhino-1.7.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rhino-1.7.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rhino-1.7.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rhino-1.7.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rhino-1.7.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6ccff41a98164088c949c16848dbf873fd7230070a9bb3451efc0a0d6d2cd825',

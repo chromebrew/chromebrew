@@ -10,10 +10,10 @@ class Strace < Package
   source_sha256 'd513bc085609a9afd64faf2ce71deb95b96faf46cd7bc86048bc655e4e4c24d2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/strace-5.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/strace-5.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/strace-5.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/strace-5.2-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/strace-5.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/strace-5.2-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2affe33b6758ed49fc50d140e7673f44e33fc72410597eb851fef5e9699a1afc',

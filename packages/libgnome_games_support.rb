@@ -14,10 +14,10 @@ class Libgnome_games_support < Package
   source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgnome_games_support-1.8.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgnome_games_support-1.8.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgnome_games_support-1.8.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgnome_games_support-1.8.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgnome_games_support-1.8.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgnome_games_support-1.8.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgnome_games_support-1.8.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgnome_games_support-1.8.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256 ({
     aarch64: 'a19aa61c3719f84c94394fc3f435ff51d02821e17005f3afd0088a934e0e3fce',
@@ -31,7 +31,7 @@ class Libgnome_games_support < Package
   depends_on 'clutter'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

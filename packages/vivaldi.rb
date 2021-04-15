@@ -27,9 +27,9 @@ class Vivaldi < Package
     @_arch = 'i386'
     source_sha256 '6f93e285e1cd48103fbdc3266e1188556ed2a98b08f7c6420eeb07c05c559a08'
   end
-  
+
   source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{@_ver}-1_#{@_arch}.deb"
-  
+
   def self.patch
     # ERROR: ld.so: object '/home/chronos/user/.local/lib/vivaldi/media-codecs-89.0.4389.82/libffmpeg.so' from LD_PRELOAD cannot be preloaded
     system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/vivaldi'
@@ -42,15 +42,15 @@ class Vivaldi < Package
     FileUtils.mv './etc/', CREW_DEST_PREFIX
     FileUtils.mv Dir['./usr/*'], CREW_DEST_PREFIX
     FileUtils.mv './opt/vivaldi/', "#{CREW_DEST_PREFIX}/share/"
-    
+
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi-stable"
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi"
   end
-  
+
   def self.postinstall
     system "#{CREW_PREFIX}/share/vivaldi/update-ffmpeg", '--user'
   end
-  
+
   def self.remove
     Dir.chdir(CREW_PREFIX) do
       FileUtils.rm_rf ["#{HOME}/.local/lib/vivaldi", '.config/vivaldi', '.cache/vivaldi', '.config/share/.vivaldi_reporting_data']

@@ -6,12 +6,10 @@ class Sublime_merge < Package
   version 'Build 1119'
   license '' # Can't find license
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url 'https://download.sublimetext.com/sublime_merge_build_1119_x64.tar.xz'
-    source_sha256 '64b06320c0300923ade0901493cfd78e7f28598324f99d4c3609b3c85c5f1cea'
-    depends_on 'sommelier'
-  end
+  source_url 'https://download.sublimetext.com/sublime_merge_build_1119_x64.tar.xz'
+  source_sha256 '64b06320c0300923ade0901493cfd78e7f28598324f99d4c3609b3c85c5f1cea'
+
+  depends_on 'sommelier'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

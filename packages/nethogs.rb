@@ -10,10 +10,10 @@ class Nethogs < Package
   source_sha256 '317c1d5235d4be677e494e931c41d063a783ac0ac51e35e345e621d261c2e5a0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nethogs-0.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nethogs-0.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nethogs-0.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nethogs-0.8.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nethogs-0.8.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nethogs-0.8.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nethogs-0.8.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nethogs-0.8.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '60471aea008d2c85e0cbd5986830141c8aa0bdf81d7543fc8d14f002efbdf719',

@@ -10,10 +10,10 @@ class Glyr < Package
   source_sha256 '77e8da60221c8d27612e4a36482069f26f8ed74a1b2768ebc373c8144ca806e8'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glyr-1.0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glyr-1.0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glyr-1.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glyr-1.0.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glyr-1.0.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glyr-1.0.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glyr-1.0.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glyr-1.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e9b5746c110bc3e87a3bab7a56060e95e1fe066371b78c43afdd0fcc9fcb11d2',

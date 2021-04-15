@@ -10,10 +10,10 @@ class Docutils < Package
   source_sha256 'c35e87e985f70106f6f97e050f3bed990641e0e104566134b9cd23849a460e96'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docutils-0.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docutils-0.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docutils-0.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docutils-0.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docutils-0.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docutils-0.15-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/docutils-0.15-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/docutils-0.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b5e6ebde642f897d08eed30a521daaea456ac179d36a27b002205ab82ddb2a42',

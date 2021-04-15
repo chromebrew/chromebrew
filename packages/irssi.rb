@@ -10,10 +10,10 @@ class Irssi < Package
   source_sha256 '6727060c918568ba2ff4295ad736128dba0b995d7b20491bca11f593bd857578'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/irssi-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/irssi-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/irssi-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/irssi-1.2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/irssi-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/irssi-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/irssi-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/irssi-1.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cef7c8a7eae8b5c8b3436808ba40d7ee47b6bee964accc6869ccc31d0bbd0c48',

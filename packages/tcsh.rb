@@ -10,10 +10,10 @@ class Tcsh < Package
   source_sha256 'be2cfd653d2a0c7f506d2dd14c12324ba749bd484037be6df44a3973f52262b7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tcsh-6.22.03-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tcsh-6.22.03-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tcsh-6.22.03-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tcsh-6.22.03-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tcsh-6.22.03-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tcsh-6.22.03-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tcsh-6.22.03-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tcsh-6.22.03-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'caf87524b2701545318ba80f96c45c616ea2bbd98aab84bc7039c80142393943',

@@ -11,10 +11,10 @@ class Gsettings_desktop_schemas < Package
   source_sha256 'ce1d57e98ba6e460f9764e4a48a28ebe1866423e54c1eeceff6a3c90feb41bc6'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gsettings_desktop_schemas-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gsettings_desktop_schemas-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gsettings_desktop_schemas-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',
@@ -29,7 +29,7 @@ class Gsettings_desktop_schemas < Package
   depends_on 'gtk4'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

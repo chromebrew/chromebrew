@@ -10,10 +10,10 @@ class Freerdp < Package
   source_sha256 '883bc0396c6be9aba6bc07ebc8ff08457125868ada0f06554e62ef072f90cf59'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freerdp-2.2.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freerdp-2.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freerdp-2.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/freerdp-2.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/freerdp-2.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'de7c23e9ddeed50896daed5081a2aaf8fb849799faee83155d2a32939abbf6a7',

@@ -3,23 +3,23 @@ require 'package'
 class Hub < Package
   description 'hub is a command-line wrapper for git that makes you better at GitHub.'
   homepage 'https://hub.github.com/'
-  version '2.4.0'
+  version '2.14.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/github/hub/archive/v2.4.0.tar.gz'
-  source_sha256 '894eb112be9aa0464fa2c63f48ae8e573ef9e32a00bad700e27fd09a0cb3be4b'
+  source_url "https://github.com/github/hub/archive/refs/tags/v#{version}.tar.gz"
+  source_sha256 'e19e0fdfd1c69c401e1c24dd2d4ecf3fd9044aa4bd3f8d6fd942ed1b2b2ad21a'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/hub-2.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/hub-2.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/hub-2.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/hub-2.4.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/hub-2.14.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/hub-2.14.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/hub-2.14.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/hub-2.14.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'cf87b6f4db9da4397e2c3c8c91efe65f6d104238ebac43a74b5ff8e33ea71a79',
-     armv7l: 'cf87b6f4db9da4397e2c3c8c91efe65f6d104238ebac43a74b5ff8e33ea71a79',
-       i686: 'd2ee1d2942eeaec70926d93ea25dcf30d69fffa55bf017b25dd2a72c0d0a554e',
-     x86_64: '6b06e10fc0aa5ae7be07cd74bbae122eca0815d4e2c52dc92f5e11000282bf24',
+  binary_sha256({
+    aarch64: '1f1b9adacc34fc75c35fb4789b929dba0361bb8f66910c2ff1e5e580fd02d97a',
+     armv7l: '1f1b9adacc34fc75c35fb4789b929dba0361bb8f66910c2ff1e5e580fd02d97a',
+       i686: '0f0f1901d1c73e998e17abcab8a6bf69b8494ae8b2f0d14556abd33b59f5efd6',
+     x86_64: 'c1720760d44e772419129c0ae27cbdab8b9e8c29c7e578990dc38015b69081c2'
   })
 
   depends_on 'go' => :build
@@ -27,9 +27,5 @@ class Hub < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     system "script/build -o #{CREW_DEST_PREFIX}/bin/hub"
-    puts
-    puts "You will need to add an alias in order to use hub as a git wrapper:".lightblue
-    puts "echo \"alias git=hub\" >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts
   end
 end

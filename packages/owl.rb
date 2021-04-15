@@ -10,10 +10,10 @@ class Owl < Package
   source_sha256 '4d9982da3582456d1e769e25a7d0b2daefe859c45e262c8f56f794114f9a29a0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/owl-0.1.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/owl-0.1.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/owl-0.1.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/owl-0.1.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/owl-0.1.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/owl-0.1.14-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/owl-0.1.14-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/owl-0.1.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '305978182d9826979fdd56b7085cdcf0cc24cc6c234a96d7c513756f55028bc0',

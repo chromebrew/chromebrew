@@ -10,10 +10,10 @@ class Exo < Package
   source_sha256 '1975b00eed9a8aa1f899eab2efaea593731c19138b83fdff2f13bdca5275bacc'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/exo-4.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/exo-4.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/exo-4.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/exo-4.16.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exo-4.16.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exo-4.16.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/exo-4.16.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/exo-4.16.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f0320072faf16879bbd5dac3ccb130995a7a7240b18fea972ea4689c2355caf0',

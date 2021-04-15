@@ -10,10 +10,10 @@ class Q < Package
   source_sha256 'cf0f2ca3ecb88fedf6232d5ce5931afc90eae1db8fdef78b17933d46e9f9f678'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/q-1.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/q-1.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/q-1.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/q-1.7.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/q-1.7.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/q-1.7.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/q-1.7.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/q-1.7.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '04016db78b39035e66a0e6a3ed12e7bec1b7e497b2dff89dbb9a02d8b74a6bfa',

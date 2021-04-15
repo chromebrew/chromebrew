@@ -10,10 +10,10 @@ class Gtkvte < Package
   source_sha256 'a3a9fb182740b392a45cd3f46fa61a985f68bb6b1817b52daec22034c46158c3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtkvte-0.48.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtkvte-0.48.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtkvte-0.48.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtkvte-0.48.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtkvte-0.48.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtkvte-0.48.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtkvte-0.48.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtkvte-0.48.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '93f9d430e87dc5cf21aec88e4b32126ae0e16d272ebb4f220c4da57bd1e5d053',

@@ -10,10 +10,10 @@ class Umockdev < Package
   source_sha256 '9f13e8a836ef36158e2cc2b679cb99639e1f68a430b04fbe4dd07d3cb2b32a75'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/umockdev-0.9.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/umockdev-0.9.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/umockdev-0.9.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/umockdev-0.9.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/umockdev-0.9.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/umockdev-0.9.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/umockdev-0.9.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/umockdev-0.9.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '62d6ad9b0cbcbd6c50634e7ee0e77365b810b3a0be57fb61fbde768018428e92',

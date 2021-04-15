@@ -3,25 +3,23 @@ require 'package'
 class Github_cli < Package
   description 'Official Github CLI tool'
   homepage 'https://cli.github.com/'
-  version '1.0.0'
+  version '1.8.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/cli/cli/archive/v1.0.0.tar.gz'
-  source_sha256 'e3d1c341829f5b885dce9aa2bf4bc84db48072752250f6fdb2d62903caf07cfb'
+  source_url 'https://github.com/cli/cli/archive/refs/tags/v1.8.1.tar.gz'
+  source_sha256 '5bdbc589a6d5cca241b2dc467d846a8f23c465d78efd898271f18b636608d6e6'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/github_cli-1.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/github_cli-1.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/github_cli-1.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/github_cli-1.0.0-chromeos-x86_64.tar.xz',
-
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/github_cli-1.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/github_cli-1.8.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'f105f30044c96869f9f2c199a6907d7518ce69a6e7dc8de3059f2c2e1716d1e2',
-     armv7l: 'f105f30044c96869f9f2c199a6907d7518ce69a6e7dc8de3059f2c2e1716d1e2',
-       i686: 'b28ff38226112dcdb6c37b46fe8c84bbf28d709ae6d68ba102d2de4b72cf4a42',
-     x86_64: '4949a7f29a571f59c8262f7b007a02cc238900d9999f10ad2941975fc2e3878b',
-
+  binary_sha256({
+    aarch64: 'fa3db74e10915c3edb47bc8f92b934dddb5fbb284ba9526c3e207826b3f8f949',
+     armv7l: 'fa3db74e10915c3edb47bc8f92b934dddb5fbb284ba9526c3e207826b3f8f949',
+       i686: '490bea45749ecc20f57a49e78ea323e45fda376d4437dfa4ecc01f7a34ea972b',
+     x86_64: 'c82ab211a3c9653e4f16a6aed36bc377ffa54a6d193b1d51a076dbf91faf1997'
   })
 
   depends_on 'go' => :build
@@ -32,11 +30,5 @@ class Github_cli < Package
 
   def self.install
     system "install -Dm755 bin/gh #{CREW_DEST_PREFIX}/bin/gh"
-  end
-
-  def self.postinstall
-    puts
-    puts "Type 'gh' to get started.".lightblue
-    puts
   end
 end

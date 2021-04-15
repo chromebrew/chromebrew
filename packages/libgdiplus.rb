@@ -10,10 +10,10 @@ class Libgdiplus < Package
   source_sha256 'b81e4e5cc3e4831b2945de08bef26eb1bdcd795aeaf8f971b221c51213a025ef'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgdiplus-6.0.5-3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgdiplus-6.0.5-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgdiplus-6.0.5-3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgdiplus-6.0.5-3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgdiplus-6.0.5-3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b8567295afed609d49bed5ecf8ccd9b363cfdb453afc1028ee8afd3a00e348b7',

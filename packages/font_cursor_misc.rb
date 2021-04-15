@@ -10,10 +10,10 @@ class Font_cursor_misc < Package
   source_sha256 '17363eb35eece2e08144da5f060c70103b59d0972b4f4d77fd84c9a7a2dba635'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/font_cursor_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/font_cursor_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/font_cursor_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/font_cursor_misc-1.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_cursor_misc-1.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_cursor_misc-1.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/font_cursor_misc-1.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/font_cursor_misc-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8259c1415c5c26cd3acfe4b4e285ee51e359e3a9e293ad5ee1e323b183e29447',

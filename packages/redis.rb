@@ -10,10 +10,10 @@ class Redis < Package
   source_sha256 '769b5d69ec237c3e0481a262ff5306ce30db9b5c8ceb14d1023491ca7be5f6fa'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/redis-4.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/redis-4.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/redis-4.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/redis-4.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/redis-4.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '42719b23596a9340ae1e87321b91ec810fd6a3f5c69b540036674ce56c78d0e8',

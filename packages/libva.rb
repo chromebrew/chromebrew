@@ -11,10 +11,10 @@ class Libva < Package
   source_sha256 'ee2bd79bad5e2404143f089360685f5da63a32dd551b54ccd61d2d49c041178a'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libva-2.11.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libva-2.11.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libva-2.11.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libva-2.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libva-2.11.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4af41d8c10b335f1b00bbfa9c4afcea07bbb0b7d00acd3a18a0c007592302a4a',
@@ -31,7 +31,7 @@ class Libva < Package
   depends_on 'wayland'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Db_lto=true \
     -Db_pie=true \

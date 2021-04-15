@@ -10,10 +10,10 @@ class Selenium_server_standalone < Package
   source_sha256 '662789e2508babe0be2d5b3b84630834b7727ed1960b66567be1c73eed08433b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/selenium_server_standalone-3.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/selenium_server_standalone-3.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/selenium_server_standalone-3.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/selenium_server_standalone-3.11.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/selenium_server_standalone-3.11.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/selenium_server_standalone-3.11.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/selenium_server_standalone-3.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/selenium_server_standalone-3.11.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '38dd130c44c9cd16deefd85201331343ef675229870ddd80f1d9a2fbc7cfd432',

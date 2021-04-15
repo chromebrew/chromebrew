@@ -10,10 +10,10 @@ class Font_bitstream_100dpi < Package
   source_sha256 'ebe0d7444e3d7c8da7642055ac2206f0190ee060700d99cd876f8fc9964cb6ce'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/font_bitstream_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/font_bitstream_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/font_bitstream_100dpi-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/font_bitstream_100dpi-1.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_bitstream_100dpi-1.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_bitstream_100dpi-1.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/font_bitstream_100dpi-1.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/font_bitstream_100dpi-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f441acd2dbd2a14fbf1f8a9751c280914430fb1fca73226e9d41f6942d148584',

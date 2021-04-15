@@ -15,10 +15,7 @@ class Freebasic < Package
     source_sha256 'd5034e81201760de7fd7bc563d8c33213a9530da3d15d4907e52d47278a00243'
   end
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'libtinfo'
-  end
+  depends_on 'libtinfo'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
