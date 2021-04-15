@@ -29,8 +29,7 @@ class Usbredir < Package
 
   def self.build
     system 'autoreconf -fi'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto'\
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --sbindir=#{CREW_PREFIX}/bin"
     system 'make'

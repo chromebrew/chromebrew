@@ -33,6 +33,7 @@ class Usbutils < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.touch "#{CREW_DEST_PREFIX}/share/hwdata/usb.ids"
   end
 
   def self.postinstall

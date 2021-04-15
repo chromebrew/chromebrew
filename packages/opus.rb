@@ -28,8 +28,7 @@ class Opus < Package
   depends_on 'doxygen' => ':build'
 
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --enable-custom-modes"
     system 'make'

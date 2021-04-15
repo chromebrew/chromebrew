@@ -26,9 +26,7 @@ class Ncursesw < Package
     # build libncursesw
     FileUtils.mkdir 'ncursesw_build'
     Dir.chdir 'ncursesw_build' do
-      system "env CFLAGS='-flto=auto' \
-          CXXFLAGS='-flto=auto' \
-          LDFLAGS='-flto=auto' \
+      system "env #{CREW_ENV_OPTIONS} \
         ../configure #{CREW_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
