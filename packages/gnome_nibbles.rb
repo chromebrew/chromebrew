@@ -14,7 +14,7 @@ class Gnome_nibbles < Package
   depends_on 'gsound'
   depends_on 'librsvg'
   depends_on 'libgnome_games_support'
-  depends_on 'sommelier' # keyboard not responding in wayland
+  depends_on 'gui_setup'
 
   def self.build
     system "meson #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
