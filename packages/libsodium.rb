@@ -6,8 +6,8 @@ class Libsodium < Package
   version '1.0.18-7168'
   license 'ISC'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'https://github.com/jedisct1/libsodium.git'
+  git_hashtag '7168944f16e12c1b630e66a7b9be0802d5b564dd'
 
   binary_url({
     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsodium-1.0.18-7168-chromeos-armv7l.tar.xz',
@@ -23,28 +23,14 @@ class Libsodium < Package
   })
 
   def self.build
-    @git_dir = 'libsodium_git'
-    @git_hash = '7168944f16e12c1b630e66a7b9be0802d5b564dd'
-    @git_url = 'https://github.com/jedisct1/libsodium.git'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
       system 'NOCONFIGURE=1 ./autogen.sh'
-      system "env #{CREW_ENV_OPTIONS}  \
-      LDFLAGS='-flto=auto'\
-      ./configure #{CREW_OPTIONS}"
+      system "env #{CREW_ENV_OPTIONS} \
+        ./configure #{CREW_OPTIONS}"
       system 'make'
-    end
   end
 
   def self.install
-    Dir.chdir @git_dir do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
   end
 
   def self.check
