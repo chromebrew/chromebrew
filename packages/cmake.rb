@@ -3,12 +3,12 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.19.4-1'
+  @_ver = '3.20.1'
   version @_ver
   license 'CMake'
   compatibility 'all'
   source_url "https://github.com/Kitware/CMake/releases/download/v#{@_ver}/cmake-#{@_ver}.tar.gz"
-  source_sha256 '7d0232b9f1c57e8de81f38071ef8203e6820fe7eec8ae46a1df125d88dbcc2e1'
+  source_sha256 '3f1808b9b00281df06c91dd7a021d7f52f724101000da7985a401678dfe035b0'
 
   binary_url ({
   })
