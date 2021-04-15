@@ -22,8 +22,8 @@ class Gnome_nibbles < Package
   end
 
   def self.install
-    @name = name.tr('_', '-')
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    @_app = name.tr('_', '-')
     @_wrapper = <<~EOF
       #!/bin/sh
       WAYLAND_DISPLAY=wayland-0
