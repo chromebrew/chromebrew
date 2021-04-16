@@ -111,7 +111,7 @@ for package in $EARLY_PACKAGES; do
       category='ruby'
       ;;
     lib*)
-      category='lib${package:3:4}'
+      category='lib${package:3:1}'
       ;;
     *)
       category=${package:0:1}
