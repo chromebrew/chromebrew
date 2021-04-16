@@ -766,8 +766,8 @@ def prepare_package (destdir)
     @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
       -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
       sed 's,.filelist,,g' | sed 's,#{CREW_META_PATH},,g'"
-    conflicts << %x[#{@conflictscmd}].chomp
-    conflicts = conflicts.reject(&:empty?)
+    conflicts << %x[#{@conflictscmd}].chomp.split(" ")
+    conflicts.reject!(&:empty?)
     unless conflicts.empty?
       puts "Unable to complete this build since there is a conflict with the same file in another package.".lightred
       pp = ''
