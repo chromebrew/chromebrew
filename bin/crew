@@ -164,13 +164,13 @@ def set_package (pkgName, pkgPath)
 end
 
 def list_packages
-  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
     print_package filename
   end
 end
 
 def list_available
-  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
     notInstalled = true
     pkgName = File.basename filename, '.rb'
     notInstalled = false if File.exists? CREW_META_PATH + pkgName + '.filelist'
@@ -192,7 +192,7 @@ def list_installed
 end
 
 def list_compatible(compat = true)
-  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     set_package pkgName, filename
     if compat
@@ -213,7 +213,7 @@ end
 
 def generate_compatible
   @device[:compatible_packages] = []
-  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     set_package pkgName, filename
     if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
@@ -228,18 +228,29 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  pkgPath = CREW_PACKAGES_PATH + pkgName + '.rb'
+  if @pkg.name.start_with? 'ruby'
+    pkgCategory = 'ruby'
+  elsif @pkg.name.start_with? 'py2'
+    pkgCategory = 'py2'
+  elsif @pkg.name.start_with? 'py3'
+    pkgCategory = 'py3'
+  elsif @pkg.name.start_with? 'perl'
+    pkgCategory = 'perl'
+  else
+    pkgCategory = @pkg.name[0,1]
+  end
+  pkgPath = CREW_PACKAGES_PATH + pkgCategory + '/' + pkgName + '.rb'
   return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
-  results = Dir[CREW_PACKAGES_PATH + '*.rb'].sort \
+  results = Dir[CREW_PACKAGES_PATH + '*/*.rb'].sort \
     .select  { |f| File.basename(f, '.rb') =~ re } \
     .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
-    Dir[CREW_PACKAGES_PATH + '*.rb'].each do |packagePath|
+    Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
       set_package packageName, packagePath
       if ( @pkg.description =~ /#{pkgPat}/i )
@@ -368,6 +379,7 @@ def const (var)
       'CREW_OPTIONS',
       'CREW_PACKAGES_PATH',
       'CREW_PREFIX',
+      'CREW_REPO_DIR',
       'CREW_TGT',
       'CREW_VERSION',
       'HOME',
@@ -448,6 +460,8 @@ def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkgName
   @crew_testing_repo = ENV['CREW_TESTING_REPO']
   @crew_testing_branch = ENV['CREW_TESTING_BRANCH']
+  @crew_packages_testing_repo = ENV['CREW_PACKAGES_TESTING_REPO']
+  @crew_packages_testing_repo = ENV['CREW_PACKAGES_TESTING_BRANCH']
   @crew_testing = ENV['CREW_TESTING']
   @crew_testing = 0 if @crew_testing_repo.nil? || @crew_testing_repo.empty?
   @crew_testing = 0 if @crew_testing_branch.nil? || @crew_testing_branch.empty?
@@ -464,7 +478,29 @@ def update
     end
   end
 
-  puts 'Package lists, crew, and library updated.'
+  puts 'Crew, and library updated.'
+
+  if Dir.exist? CREW_PACKAGES_PATH
+    Dir.chdir CREW_PACKAGES_PATH do
+      if @crew_testing == '1'
+        system "git remote add testing #{@crew_packages_testing_repo} 2>/dev/null || \
+          git remote set-url testing #{@crew_packages_testing_repo}"
+        system "git fetch testing #{@crew_packages_testing_branch}"
+        system "git reset --hard testing/#{@crew_packages_testing_branch}"
+      else
+        system "git fetch origin #{CREW_STABILITY}"
+        system "git reset --hard origin/#{CREW_STABILITY}"
+      end
+    end
+  else
+    FileUtils.mkdir_p CREW_PACKAGES_PATH
+    Dir.chdir CREW_PACKAGES_PATH do
+      system 'git clone https://github.com/chromebrew/packages/ .'
+      system "git reset --hard origin/#{CREW_STABILITY}"
+    end
+  end
+
+  puts 'Packages updated.'
 
   #update compatible packages
   puts 'Generating compatible packages...'
@@ -631,7 +667,7 @@ def download
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
         puts 'Caching downloaded archive.'.lightgreen
-          Dir.chdir "#{@extract_dir}" do 
+          Dir.chdir "#{@extract_dir}" do
             system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz \
               $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
           end
