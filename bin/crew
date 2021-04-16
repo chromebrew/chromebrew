@@ -776,7 +776,7 @@ def prepare_package (destdir)
       pp = ''
       conflicts.each do |p, f|
         puts "\n#{p} package conflicts below:".lightred if p != pp
-        puts "#{f}".lightred
+        puts f.lightred
         pp = p
       end
       abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == '1'
