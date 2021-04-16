@@ -228,7 +228,7 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  case @pkg.name.start_with
+  case pkgName.start_with
   when 'ruby_'
     pkgCategory = 'ruby'
   when 'py2_'
@@ -238,9 +238,9 @@ def search (pkgName, silent = false)
   when 'perl_'
     pkgCategory = 'perl'
   when 'lib'
-    pkgCategory = 'lib' + @pkg.name[3,4]
+    pkgCategory = 'lib' + pkgName[3,4]
   else
-    pkgCategory = @pkg.name[0,1]
+    pkgCategory = pkgName[0,1]
   end
   pkgPath = CREW_PACKAGES_PATH + pkgCategory + '/' + pkgName + '.rb'
   return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
@@ -481,7 +481,7 @@ def update
     end
   end
 
-  puts 'Crew, and library updated.'
+  puts 'Crew and library updated.'.lightgreen
 
   if Dir.exist? CREW_PACKAGES_PATH
     Dir.chdir CREW_PACKAGES_PATH do
@@ -503,14 +503,14 @@ def update
     end
   end
 
-  puts 'Packages updated.'
+  puts 'Packages updated.'.lightgreen
 
   #update compatible packages
-  puts 'Generating compatible packages...'
+  puts 'Generating compatible packages...'.lightgreen
   generate_compatible
 
   #check for outdated installed packages
-  puts 'Checking for package updates...'
+  puts 'Checking for package updates...'.lightgreen
 
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
@@ -523,7 +523,7 @@ def update
 
   if canBeUpdated > 0
     puts
-    puts "Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages."
+    puts "Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.".lightgreen
   else
     puts "Your software is up to date.".lightgreen
   end
