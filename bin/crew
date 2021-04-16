@@ -454,6 +454,7 @@ def update
   #update package lists
   Dir.chdir CREW_LIB_PATH do
     if @crew_testing == '1'
+      puts "Updating crew from testing repository..."
       system "git remote add testing #{@crew_testing_repo} 2>/dev/null || \
         git remote set-url testing #{@crew_testing_repo}"
       system "git fetch testing #{@crew_testing_branch}"
@@ -623,6 +624,10 @@ def download
         system 'git config advice.detachedHead false'
         system 'git config init.defaultBranch master'
         system "git remote add origin #{@pkg.source_url}", exception: true
+        unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
+          puts "git branch exists"
+          system "git remote set-branches origin #{@pkg.git_branch}", exception: true
+        end
         system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
         system 'git checkout FETCH_HEAD'
         system 'git submodule update --init --recursive'
