@@ -99,16 +99,16 @@ esac
 for package in $EARLY_PACKAGES; do
   case $package in
     perl_*)
-      category='perl'
+      category="perl"
       ;;
     py2_*)
-      category='py2'
+      category="py2"
       ;;
     py3_*)
-      category='py3'
+      category="py3"
       ;;
     ruby_*)
-      category='ruby'
+      category="ruby"
       ;;
     lib*)
       category="lib${package:3:1}"
