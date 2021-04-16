@@ -31,7 +31,7 @@ CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
 case ENV['CREW_STABILITY'].to_s
-when 'testing' or 'canary' # or 'stable'
+when 'testing', 'canary' # or 'stable'
   CREW_STABILITY = ENV['CREW_STABILITY'].to_s
 when ''
   CREW_STABILITY = 'testing'
