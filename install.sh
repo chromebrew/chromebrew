@@ -7,7 +7,12 @@ set -e
 OWNER="${OWNER:-skycocker}"
 REPO="${REPO:-chromebrew}"
 BRANCH="${BRANCH:-master}"
-URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
+
+PACKAGES_OWNER="${PACKAGES_OWNER:-chromebrew}"
+PACKAGES_REPO="${PACKAGES_BRANCH:-packages}"
+PACKAGES_BRANCH="${PACKAGES_BRANCH:-testing}"
+PACKAGES_URL="https://raw.githubusercontent.com/${PACKAGES_OWNER}/${PACKAGES_REPO}/${PACKAGES_BRANCH}"
+
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew/"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew/"
@@ -92,7 +97,19 @@ case "${ARCH}" in
 esac
 
 for package in $EARLY_PACKAGES; do
-  pkgfile="$($CURL -Lsf "${URL}"/packages/"$package".rb)"
+  case $package in
+    perl*)
+      category='perl' ;;
+    py2*)
+      category='py2' ;;
+    py3*)
+      category='py3' ;;
+    ruby*)
+      category='ruby' ;;
+    *)
+      category=${package:0:1} ;;
+  esac
+  pkgfile="$($CURL -Lsf "${PACKAGES_URL}"/"$category"/"$package".rb)"
   temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   urls[k]="$temp_url"
