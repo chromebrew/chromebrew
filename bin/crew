@@ -765,6 +765,7 @@ def prepare_package (destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check for conflicts with other installed files
+    puts "Checking for conflicts with files from installed packages.".lightgreen
     conflicts = []
     @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
       -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
