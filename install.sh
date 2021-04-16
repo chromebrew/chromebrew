@@ -215,20 +215,21 @@ sudo ldconfig &> /dev/null || true
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 # prepare sparse checkout .rb packages directory and do it
-mkdir "${CREW_LIB_PATH}"
-cd "${CREW_LIB_PATH}"
-rm -rf .git
-git init
-git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
-git config core.sparsecheckout true
-echo packages >> .git/info/sparse-checkout
-echo lib >> .git/info/sparse-checkout
-echo crew >> .git/info/sparse-checkout
-git fetch origin "${BRANCH}"
-git reset --hard origin/"${BRANCH}"
+mkdir -p "${CREW_LIB_PATH}"
+pushd "${CREW_LIB_PATH}"
+ rm -rf .git
+  git init
+  git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
+  git config core.sparsecheckout true
+  echo packages >> .git/info/sparse-checkout
+  echo lib >> .git/info/sparse-checkout
+  echo crew >> .git/info/sparse-checkout
+  git fetch origin "${BRANCH}"
+  git reset --hard origin/"${BRANCH}"
+popd
 
 # sync packages
-mkdir ${CREW_PACKAGES_PATH}
+mkdir -p ${CREW_PACKAGES_PATH}
 pushd ${CREW_PACKAGES_PATH}
   git init
   git remote add origin "https://github.com/${PACKAGES_OWNER}/${PACKAGES_REPO}.git"
