@@ -9,7 +9,7 @@ REPO="${REPO:-chromebrew}"
 BRANCH="${BRANCH:-master}"
 
 PACKAGES_OWNER="${PACKAGES_OWNER:-chromebrew}"
-PACKAGES_REPO="${PACKAGES_BRANCH:-packages}"
+PACKAGES_REPO="${PACKAGES_REPO:-packages}"
 PACKAGES_BRANCH="${PACKAGES_BRANCH:-testing}"
 PACKAGES_URL="https://raw.githubusercontent.com/${PACKAGES_OWNER}/${PACKAGES_REPO}/${PACKAGES_BRANCH}"
 
@@ -98,14 +98,18 @@ esac
 
 for package in $EARLY_PACKAGES; do
   case $package in
-    perl*)
-      category='perl' ;;
-    py2*)
-      category='py2' ;;
-    py3*)
-      category='py3' ;;
-    ruby*)
-      category='ruby' ;;
+    perl_*)
+      category='perl'
+      ;;
+    py2_*)
+      category='py2'
+      ;;
+    py3_*)
+      category='py3'
+      ;;
+    ruby_*)
+      category='ruby'
+      ;;
     *)
       category=${package:0:1} ;;
   esac
