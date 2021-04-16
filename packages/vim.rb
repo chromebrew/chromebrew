@@ -3,25 +3,12 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2771'
-  version @_ver
+  @_ver = '8.2.2725'
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{@_ver}"
-
-  binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim-8.2.2771-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim-8.2.2771-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vim-8.2.2771-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vim-8.2.2771-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'db9b50e90520ad99abd7bba4d72cd0c6bfe0484fb35fb486660b9455cfe0419b',
-     armv7l: 'db9b50e90520ad99abd7bba4d72cd0c6bfe0484fb35fb486660b9455cfe0419b',
-       i686: 'b4da99349cfa476ebe3c10672bbfc7d83edbf88ef8e912192ba55b1c344548cb',
-     x86_64: '3252e3e715bf49f5aaf66520f624180bab9440b8d54c5d47fe8a76c832c42c9c'
-  })
 
   depends_on 'vim_runtime'
 
