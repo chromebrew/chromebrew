@@ -68,7 +68,7 @@ class Gemacs < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "install -Dm755 src/emacs #{CREW_DEST_PREFIX}/bin/gemacs"
-    system "install -Dm755 src/emacs-#{@_ver} #{CREW_DEST_PREFIX}/bin/gemacs-#{@_ver}"
+    FileUtils.install 'src/emacs', "#{CREW_DEST_PREFIX}/bin/gemacs", mode: 0o755
+    FileUtils.install "src/emacs-#{@_ver}", "#{CREW_DEST_PREFIX}/bin/gemacs-#{@_ver}", mode: 0o755
   end
 end
