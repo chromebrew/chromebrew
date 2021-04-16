@@ -3,18 +3,18 @@ require 'package'
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'http://www.vim.org'
-  @_ver = '8.2.2725'
+  @_ver = '8.2.2771'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://github.com/vim/vim/archive/refs/tags/v#{@_ver}.tar.gz"
-  source_sha256 'a8aca906cf63fdc4264f86c1c39f8164989de0be3dc18553cb23bd6226c361a9'
+  source_url 'https://github.com/vim/vim.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xxd_standalone-8.2.2725-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xxd_standalone-8.2.2725-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xxd_standalone-8.2.2725-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xxd_standalone-8.2.2725-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xxd_standalone-8.2.2771-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xxd_standalone-8.2.2771-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xxd_standalone-8.2.2771-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xxd_standalone-8.2.2771-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2dfdca9a6df73cfcd2d668bde027cf612dac84903d431317dc80ba436e7d6043',
