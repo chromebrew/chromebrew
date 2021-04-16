@@ -17,10 +17,10 @@ class Xxd_standalone < Package
      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xxd_standalone-8.2.2771-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '2dfdca9a6df73cfcd2d668bde027cf612dac84903d431317dc80ba436e7d6043',
-     armv7l: '2dfdca9a6df73cfcd2d668bde027cf612dac84903d431317dc80ba436e7d6043',
-       i686: '06af0aab3534058d294e616a41cfe29221e615c9a381d144a82b00379e4dea4d',
-     x86_64: '91756fb4d218b84362163da540500ccf10e2e2782a264a86584d5dd6e87a2b25'
+    aarch64: 'f271aa2395a61e7e5dc8c663635dc33c773489df0a6491e75d402638ec9b03d8',
+     armv7l: 'f271aa2395a61e7e5dc8c663635dc33c773489df0a6491e75d402638ec9b03d8',
+       i686: 'f51c5c9f5cc775f6d312a12a90dd08f35a55332fac1a67cb22180c1c655e6b0d',
+     x86_64: '4a765d6217a05f24c124a8fde1d35ae56d636021371a66337d93ce3680f1ab92'
   })
 
   def self.build
