@@ -474,10 +474,10 @@ def update
   if Dir.exist? CREW_PACKAGES_PATH
     Dir.chdir CREW_PACKAGES_PATH do
       if @crew_testing == '1'
-        system "git remote add testing #{@crew_packages_testing_repo} 2>/dev/null || \
-          git remote set-url testing #{@crew_packages_testing_repo}"
-        system "git fetch testing #{@crew_packages_testing_branch}"
-        system "git reset --hard testing/#{@crew_packages_testing_branch}"
+        system "git remote add origin #{@crew_packages_testing_repo} 2>/dev/null || \
+          git remote set-url origin #{@crew_packages_testing_repo}"
+        system "git fetch origin #{@crew_packages_testing_branch}"
+        system "git reset --hard origin/#{@crew_packages_testing_branch}"
       else
         system "git fetch origin #{CREW_STABILITY}"
         system "git reset --hard origin/#{CREW_STABILITY}"
@@ -486,6 +486,8 @@ def update
   else
     FileUtils.mkdir_p CREW_PACKAGES_PATH
     Dir.chdir CREW_PACKAGES_PATH do
+      system "git init"
+      system "git remote add origin https://github.com/chromebrew/packages.git"
       system "git fetch origin #{CREW_STABILITY}"
       system "git reset --hard origin/#{CREW_STABILITY}"
     end
