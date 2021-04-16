@@ -471,7 +471,7 @@ def update
   @crew_testing = 0 if @crew_testing_branch.nil? || @crew_testing_branch.empty?
 
   #update repository
-  if Dir.exist? CREW_PACKAGES_PATH
+  unless Dir.exist? CREW_PACKAGES_PATH
     Dir.chdir CREW_PACKAGES_PATH do
       if @crew_testing == '1'
         system "git remote add testing #{@crew_packages_testing_repo} 2>/dev/null || \

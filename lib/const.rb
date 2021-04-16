@@ -1,4 +1,5 @@
 # Defines common constants used in different parts of crew
+require_relative 'color'
 
 CREW_VERSION = '1.8.7'
 
@@ -36,7 +37,7 @@ when 'testing', 'canary' # or 'stable'
 when ''
   CREW_STABILITY = 'testing'
 else
-  puts 'The CREW_STABILITY environment variable is set to an invalid variable. Defaulting to testing'.lightred
+  puts 'The CREW_STABILITY environment variable is set to an invalid variable. Defaulting to testing.'.lightred
   CREW_STABILITY = 'testing'
 end
 

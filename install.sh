@@ -18,7 +18,7 @@ CREW_LIB_PATH="${CREW_PREFIX}/lib/crew/"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew/"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew/"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
-CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
+CREW_PACKAGES_PATH="${CREW_PREFIX}/var/crew/repo/main"
 CURL="${CURL:-curl}"
 
 # EARLY_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
@@ -225,6 +225,14 @@ echo lib >> .git/info/sparse-checkout
 echo crew >> .git/info/sparse-checkout
 git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
+
+# sync packages
+pushd ${CREW_PACKAGES_PATH}
+  git init
+  git remote add origin "https://github.com/${PACKAGES_OWNER}/${PACKAGES_REPO}.git"
+  git fetch origin "${PACKAGES_BRANCH}"
+  git reset --hard origin/"${PACKAGES_BRANCH}"
+popd
 crew update
 
 yes | crew install $LATE_PACKAGES
