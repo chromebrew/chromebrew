@@ -3,7 +3,7 @@ require 'package'
 class Texinfo < Package
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
-  version '6.7-1'
+  version '6.7'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/texinfo/texinfo-6.7.tar.xz'
@@ -31,10 +31,11 @@ class Texinfo < Package
 
   def self.build
     # configure and make
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_PREFIX} \
-      --with-external-Text-Unidecode \
-      --with-external-Unicode-EastAsianWidth"
+    system './configure',
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--with-external-Text-Unidecode',
+           '--with-external-Unicode-EastAsianWidth'
     system 'make'
   end
 
