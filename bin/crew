@@ -625,7 +625,8 @@ def download
         system 'git config init.defaultBranch master'
         system "git remote add origin #{@pkg.source_url}", exception: true
         unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
-          puts "git branch exists"
+          # Leave a message because this step can be slow.
+          puts "Setting git branch for source download..."
           system "git remote set-branches origin #{@pkg.git_branch}", exception: true
         end
         system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
