@@ -12,7 +12,6 @@ gdbm
 gettext
 git
 gnutls
-groff
 icu4c
 krb5
 less
@@ -52,7 +51,6 @@ ruby
 sed
 slang
 sqlite
-uchardet
 unzip
 xzutils
 zip

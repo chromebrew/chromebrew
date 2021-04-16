@@ -759,10 +759,14 @@ def prepare_package (destdir)
     conflicts = []
     Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
       packageName = File.basename packageList, '.filelist'
-      File.readlines(packageList).each do |line|
-        File.readlines('filelist').each do |item|
-          if line == item && packageName != @pkg.name
-            conflicts << [packageName, item.chomp]
+      if packageName != @pkg.name
+        puts "Checking for conflicts in #{packageName}..."
+        File.readlines(packageList).each do |line|
+          File.readlines('filelist').each do |item|
+            if line == item
+              conflicts << [packageName, item.chomp]
+              puts item.chomp
+            end
           end
         end
       end
