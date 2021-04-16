@@ -3,6 +3,9 @@
 # exit on fail
 set -e
 
+# CDPATH in a script can break scripts using cd
+unset CDPATH
+
 #chromebrew directories
 OWNER="${OWNER:-skycocker}"
 REPO="${REPO:-chromebrew}"
