@@ -4,12 +4,25 @@ class Gemacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'https://www.gnu.org/software/emacs/'
   @_ver = '28.0.50.1'
-  version "#{@_ver}-fb5f"
+  version "#{@_ver}-7a7b"
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/emacs.git'
   git_branch 'feature/pgtk'
-  git_hashtag 'fb5f3e694b0f6e2bccfc2124555c986fdc409cd0'
+  git_hashtag '7a7bc15242896b20c7af49f77f0e22c3d78e4d88'
+
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gemacs-28.0.50.1-7a7b-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gemacs-28.0.50.1-7a7b-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '74066f8609ca1403609962454feff1a85aedb24a3d56dbfcae4a3aad8d00f836',
+     armv7l: '74066f8609ca1403609962454feff1a85aedb24a3d56dbfcae4a3aad8d00f836',
+       i686: '401243600795df8a6c375a7e581b939e258d1697595e9a43573860fca34656c0',
+     x86_64: '702ac1d56095b1032d387a2e4736e6f8ac49d4d16a165cbc1142cb5ffe394454'
+  })
 
   depends_on 'alsa_lib'
   depends_on 'cairo'

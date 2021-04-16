@@ -626,11 +626,14 @@ def download
         system "git remote add origin #{@pkg.source_url}", exception: true
         unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
           # Leave a message because this step can be slow.
-          puts "Setting git branch for source download..."
+          puts "Downloading src from a git branch. This may take a while..."
           system "git remote set-branches origin #{@pkg.git_branch}", exception: true
+          system "git fetch --progress origin #{@pkg.git_branch}", exception: true
+          system "git checkout #{@pkg.git_hashtag}", exception: true
+        else
+          system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
+          system 'git checkout FETCH_HEAD'
         end
-        system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
-        system 'git checkout FETCH_HEAD'
         system 'git submodule update --init --recursive'
         puts "Repository downloaded".lightgreen
       end
