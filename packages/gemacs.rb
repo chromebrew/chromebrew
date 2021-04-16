@@ -7,8 +7,9 @@ class Gemacs < Package
   version "#{@_ver}-7a7b"
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'https://git.savannah.gnu.org/git/emacs.git'
+  git_branch 'feature/pgtk'
+  git_hashtag '7a7bc15242896b20c7af49f77f0e22c3d78e4d88'
 
   binary_url({
     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
@@ -25,6 +26,7 @@ class Gemacs < Package
 
   depends_on 'alsa_lib'
   depends_on 'cairo'
+  depends_on 'freetype' => :build
   depends_on 'giflib'
   depends_on 'gpm'
   depends_on 'gtk3'
@@ -38,56 +40,35 @@ class Gemacs < Package
   depends_on 'texinfo'
   depends_on 'webkit2gtk'
 
-  def self.prebuild
-    @git_dir = 'emacs_git'
-    @git_branch = 'feature/pgtk'
-    @git_hash = '7a7bc15242896b20c7af49f77f0e22c3d78e4d88'
-    @git_url = 'https://git.savannah.gnu.org/git/emacs.git'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git remote set-branches origin '#{@git_branch}'"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-    end
-  end
-
   def self.build
-    Dir.chdir 'emacs_git' do
-      system 'NOCONFIGURE=1 ./autogen.sh'
-      system "env CFLAGS='-pipe -fuse-ld=gold -flto=auto' CXXFLAGS='-pipe -fuse-ld=gold -flto=auto' \
-        LDFLAGS='-flto=auto' \
-        ./configure \
-        --enable-link-time-optimization \
-        --localstatedir=#{CREW_PREFIX}/share \
-        --prefix=#{CREW_PREFIX} \
-        --with-cairo \
-        --with-gif=ifavailable \
-        --with-jpeg=yes \
-        --with-modules \
-        --with-native-compilation \
-        --without-gconf \
-        --without-gsettings \
-        --without-selinux \
-        --without-x \
-        --with-pgtk \
-        --with-png=yes \
-        --with-rsvg=yes \
-        --with-sound=alsa \
-        --with-tiff=ifavailable \
-        --with-x-toolkit=gtk3 \
-        --with-xwidgets"
-      system 'make'
-    end
+    system 'NOCONFIGURE=1 ./autogen.sh'
+    system "env #{CREW_ENV_OPTIONS} \
+      ./configure \
+      --enable-link-time-optimization \
+      --localstatedir=#{CREW_PREFIX}/share \
+      --prefix=#{CREW_PREFIX} \
+      --with-cairo \
+      --with-gif=ifavailable \
+      --with-jpeg=yes \
+      --with-modules \
+      --with-native-compilation \
+      --without-gconf \
+      --without-gsettings \
+      --without-selinux \
+      --without-x \
+      --with-pgtk \
+      --with-png=yes \
+      --with-rsvg=yes \
+      --with-sound=alsa \
+      --with-tiff=ifavailable \
+      --with-x-toolkit=gtk3 \
+      --with-xwidgets"
+    system 'make'
   end
 
   def self.install
-    Dir.chdir 'emacs_git' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      system "install -Dm755 src/emacs #{CREW_DEST_PREFIX}/bin/gemacs"
-      system "install -Dm755 src/emacs-#{@_ver} #{CREW_DEST_PREFIX}/bin/gemacs-#{@_ver}"
-    end
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.install 'src/emacs', "#{CREW_DEST_PREFIX}/bin/gemacs", mode: 0o755
+    FileUtils.install "src/emacs-#{@_ver}", "#{CREW_DEST_PREFIX}/bin/gemacs-#{@_ver}", mode: 0o755
   end
 end
