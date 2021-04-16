@@ -228,7 +228,7 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  case pkgName.start_with
+  case pkgName.start_with?
   when 'ruby_'
     pkgCategory = 'ruby'
   when 'py2_'
