@@ -227,6 +227,7 @@ git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
 
 # sync packages
+mkdir ${CREW_PACKAGES_PATH}
 pushd ${CREW_PACKAGES_PATH}
   git init
   git remote add origin "https://github.com/${PACKAGES_OWNER}/${PACKAGES_REPO}.git"
