@@ -231,11 +231,11 @@ def search (pkgName, silent = false)
 
   if pkgName.start_with? 'ruby_'
     pkgCategory = 'ruby'
-  elsif pkgName.start_with? 'py2'
+  elsif pkgName.start_with? 'py2_'
     pkgCategory = 'py2'
-  elsif pkgName.start_with? 'py3'
+  elsif pkgName.start_with? 'py3_'
     pkgCategory = 'py3'
-  elsif pkgName.start_with? 'perl'
+  elsif pkgName.start_with? 'perl_'
     pkgCategory = 'perl'
   elsif pkgName.start_with? 'lib'
     pkgCategory = 'lib' + pkgName[3,1]
