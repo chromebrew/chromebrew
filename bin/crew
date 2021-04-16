@@ -164,13 +164,13 @@ def set_package (pkgName, pkgPath)
 end
 
 def list_packages
-  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '/*/*.rb'].each do |filename|
     print_package filename
   end
 end
 
 def list_available
-  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '/*/*.rb'].each do |filename|
     notInstalled = true
     pkgName = File.basename filename, '.rb'
     notInstalled = false if File.exists? CREW_META_PATH + pkgName + '.filelist'
@@ -192,7 +192,7 @@ def list_installed
 end
 
 def list_compatible(compat = true)
-  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '/*/*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     set_package pkgName, filename
     if compat
@@ -213,7 +213,7 @@ end
 
 def generate_compatible
   @device[:compatible_packages] = []
-  Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |filename|
+  Dir[CREW_PACKAGES_PATH + '/*/*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     set_package pkgName, filename
     if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
@@ -228,32 +228,36 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  case pkgName.start_with?
-  when 'ruby_'
+
+  if pkgName.start_with? 'ruby_'
     pkgCategory = 'ruby'
-  when 'py2_'
+  elsif pkgName.start_with? 'py2'
     pkgCategory = 'py2'
-  when 'py3_'
+  elsif pkgName.start_with? 'py3'
     pkgCategory = 'py3'
-  when 'perl_'
+  elsif pkgName.start_with? 'perl'
     pkgCategory = 'perl'
-  when 'lib'
-    pkgCategory = 'lib' + pkgName[3,4]
+  elsif pkgName.start_with? 'lib'
+    pkgCategory = 'lib' + pkgName[3,1]
   else
     pkgCategory = pkgName[0,1]
   end
-  pkgPath = CREW_PACKAGES_PATH + pkgCategory + '/' + pkgName + '.rb'
+
+  pkgPath = CREW_PACKAGES_PATH + '/' + pkgCategory + '/' + pkgName + '.rb'
+#  puts pkgName
+#  puts pkgCategory
+#  puts pkgPath
   return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
-  results = Dir[CREW_PACKAGES_PATH + '*/*.rb'].sort \
+  results = Dir[CREW_PACKAGES_PATH + '/*/*.rb'].sort \
     .select  { |f| File.basename(f, '.rb') =~ re } \
     .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
-    Dir[CREW_PACKAGES_PATH + '*/*.rb'].each do |packagePath|
+    Dir[CREW_PACKAGES_PATH + '/*/*.rb'].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
       set_package packageName, packagePath
       if ( @pkg.description =~ /#{pkgPat}/i )
@@ -498,7 +502,7 @@ def update
   else
     FileUtils.mkdir_p CREW_PACKAGES_PATH
     Dir.chdir CREW_PACKAGES_PATH do
-      system 'git clone https://github.com/chromebrew/packages/ .'
+      system "git fetch origin #{CREW_STABILITY}"
       system "git reset --hard origin/#{CREW_STABILITY}"
     end
   end
