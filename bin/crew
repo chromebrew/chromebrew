@@ -236,6 +236,8 @@ def search (pkgName, silent = false)
     pkgCategory = 'py3'
   elsif @pkg.name.start_with? 'perl_'
     pkgCategory = 'perl'
+  elsif @pkg.name.start_with? 'lib'
+    pkgCategory = 'lib' + @pkg.name[3,4]
   else
     pkgCategory = @pkg.name[0,1]
   end

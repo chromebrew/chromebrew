@@ -110,8 +110,12 @@ for package in $EARLY_PACKAGES; do
     ruby_*)
       category='ruby'
       ;;
+    lib*)
+      category='lib${package:3:4}'
+      ;;
     *)
-      category=${package:0:1} ;;
+      category=${package:0:1}
+      ;;
   esac
   pkgfile="$($CURL -Lsf "${PACKAGES_URL}"/"$category"/"$package".rb)"
   temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
