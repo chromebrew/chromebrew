@@ -469,21 +469,8 @@ def update
   @crew_testing = ENV['CREW_TESTING']
   @crew_testing = 0 if @crew_testing_repo.nil? || @crew_testing_repo.empty?
   @crew_testing = 0 if @crew_testing_branch.nil? || @crew_testing_branch.empty?
-  #update package lists
-  Dir.chdir CREW_LIB_PATH do
-    if @crew_testing == '1'
-      system "git remote add testing #{@crew_testing_repo} 2>/dev/null || \
-        git remote set-url testing #{@crew_testing_repo}"
-      system "git fetch testing #{@crew_testing_branch}"
-      system "git reset --hard testing/#{@crew_testing_branch}"
-    else
-      system 'git fetch origin master'
-      system 'git reset --hard origin/master'
-    end
-  end
 
-  puts 'Crew and library updated.'.lightgreen
-
+  #update repository
   if Dir.exist? CREW_PACKAGES_PATH
     Dir.chdir CREW_PACKAGES_PATH do
       if @crew_testing == '1'
@@ -505,6 +492,21 @@ def update
   end
 
   puts 'Packages updated.'.lightgreen
+
+  #update package lists
+  Dir.chdir CREW_LIB_PATH do
+    if @crew_testing == '1'
+      system "git remote add testing #{@crew_testing_repo} 2>/dev/null || \
+        git remote set-url testing #{@crew_testing_repo}"
+      system "git fetch testing #{@crew_testing_branch}"
+      system "git reset --hard testing/#{@crew_testing_branch}"
+    else
+      system 'git fetch origin master'
+      system 'git reset --hard origin/master'
+    end
+  end
+
+  puts 'Crew and library updated.'.lightgreen
 
   #update compatible packages
   puts 'Generating compatible packages...'.lightgreen
