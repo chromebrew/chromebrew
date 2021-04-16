@@ -1,7 +1,7 @@
 # Defines common constants used in different parts of crew
 require_relative 'color'
 
-CREW_VERSION = '1.8.7'
+CREW_VERSION = '1.8.8'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines

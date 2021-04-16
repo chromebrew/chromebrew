@@ -496,6 +496,7 @@ def update
   #update package lists
   Dir.chdir CREW_LIB_PATH do
     if @crew_testing == '1'
+      puts "Updating crew from testing repository..."
       system "git remote add testing #{@crew_testing_repo} 2>/dev/null || \
         git remote set-url testing #{@crew_testing_repo}"
       system "git fetch testing #{@crew_testing_branch}"
@@ -665,8 +666,16 @@ def download
         system 'git config advice.detachedHead false'
         system 'git config init.defaultBranch master'
         system "git remote add origin #{@pkg.source_url}", exception: true
-        system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
-        system 'git checkout FETCH_HEAD'
+        unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
+          # Leave a message because this step can be slow.
+          puts "Downloading src from a git branch. This may take a while..."
+          system "git remote set-branches origin #{@pkg.git_branch}", exception: true
+          system "git fetch --progress origin #{@pkg.git_branch}", exception: true
+          system "git checkout #{@pkg.git_hashtag}", exception: true
+        else
+          system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
+          system 'git checkout FETCH_HEAD'
+        end
         system 'git submodule update --init --recursive'
         puts "Repository downloaded".lightgreen
       end
@@ -798,17 +807,13 @@ def prepare_package (destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check for conflicts with other installed files
+    puts "Checking for conflicts with files from installed packages.".lightgreen
     conflicts = []
-    Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
-      packageName = File.basename packageList, '.filelist'
-      File.readlines(packageList).each do |line|
-        File.readlines('filelist').each do |item|
-          if line == item && packageName != @pkg.name
-            conflicts << [packageName, item.chomp]
-          end
-        end
-      end
-    end
+    @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
+      -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
+      sed 's,.filelist,,g' | sed 's,#{CREW_META_PATH},,g'"
+    conflicts << %x[#{@conflictscmd}].chomp.split(" ")
+    conflicts.reject!(&:empty?)
     unless conflicts.empty?
       puts "Unable to complete this build since there is a conflict with the same file in another package.".lightred
       pp = ''
