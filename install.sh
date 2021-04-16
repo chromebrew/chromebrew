@@ -215,6 +215,7 @@ sudo ldconfig &> /dev/null || true
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 # prepare sparse checkout .rb packages directory and do it
+mkdir "${CREW_LIB_PATH}"
 cd "${CREW_LIB_PATH}"
 rm -rf .git
 git init
