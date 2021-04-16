@@ -228,15 +228,16 @@ def generate_compatible
 end
 
 def search (pkgName, silent = false)
-  if @pkg.name.start_with? 'ruby_'
+  case @pkg.name.start_with
+  when 'ruby_'
     pkgCategory = 'ruby'
-  elsif @pkg.name.start_with? 'py2_'
+  when 'py2_'
     pkgCategory = 'py2'
-  elsif @pkg.name.start_with? 'py3_'
+  when 'py3_'
     pkgCategory = 'py3'
-  elsif @pkg.name.start_with? 'perl_'
+  when 'perl_'
     pkgCategory = 'perl'
-  elsif @pkg.name.start_with? 'lib'
+  when 'lib'
     pkgCategory = 'lib' + @pkg.name[3,4]
   else
     pkgCategory = @pkg.name[0,1]
