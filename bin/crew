@@ -476,7 +476,7 @@ def update
   #update repository
   if Dir.exist? CREW_PACKAGES_PATH
     Dir.chdir CREW_PACKAGES_PATH do
-      if @crew_package_testing = 1
+      if @crew_package_testing == '1'
         system "git remote remove origin"
         system "git remote add origin #{@crew_package_repo}"
         system "git fetch origin #{@crew_package_branch}"
