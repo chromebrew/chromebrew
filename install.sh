@@ -10,6 +10,9 @@ unset CDPATH
 OWNER="${OWNER:-skycocker}"
 REPO="${REPO:-chromebrew}"
 BRANCH="${BRANCH:-master}"
+if [[ $OWNER != skycocker ]] or [[ $REPO != chromebrew ]] or [[ $BRANCH != master ]]; then
+  CREW_TESTING="1"
+fi
 
 PACKAGES_OWNER="${PACKAGES_OWNER:-chromebrew}"
 PACKAGES_REPO="${PACKAGES_REPO:-packages}"
@@ -239,7 +242,14 @@ pushd ${CREW_PACKAGES_PATH}
   git fetch origin "${PACKAGES_BRANCH}"
   git reset --hard origin/"${PACKAGES_BRANCH}"
 popd
-crew update
+
+if [[ -z $CREW_TESTING ]]; then
+  env CREW_TESTING_REPO="https://github.com/${OWNER}/${REPO}.git" \
+  CREW_TESTING_BRANCH=${BRANCH} \
+  crew update
+else
+  crew update
+fi
 
 yes | crew install $LATE_PACKAGES
 
