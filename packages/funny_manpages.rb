@@ -3,15 +3,23 @@ require 'package'
 class Funny_manpages < Package
   description 'funny unix manpages'
   homepage 'https://github.com/ltworf/funny-manpages'
-  version '2.3'
-  license 'unlicensed'
+  @_ver = '2.3'
+  version "#{@_ver}-1"
+  license 'custom'
   compatibility 'all'
-  source_url 'https://github.com/ltworf/funny-manpages/releases/download/2.3/funny-manpages_2.3.orig.tar.gz'
-  source_sha256 'b3459487abf375d0925494f1c015103e2f3198977b68640bb29bc2c3a8f89c83'
+  source_url 'https:///github.com/ltworf/funny-manpages.git'
+  git_hashtag @_ver
+  
+  depends_on 'mandb'
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv "usr/share/man", "#{CREW_DEST_PREFIX}/share", verbose: true
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man3/"
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man6/"
+    FileUtils.install Dir.glob('man/*.1fun'), "#{CREW_DEST_MAN_PREFIX}/man1", mode: 0644, verbose: true
+    FileUtils.install Dir.glob('man/*.3fun'), "#{CREW_DEST_MAN_PREFIX}/man3", mode: 0644, verbose: true
+    FileUtils.install Dir.glob('man/*.6fun'), "#{CREW_DEST_MAN_PREFIX}/man6", mode: 0644, verbose: true
+    FileUtils.symlink 'grope.1fun', "#{CREW_DEST_MAN_PREFIX}/man1/egrope.1fun", verbose: true
+    FileUtils.symlink 'grope.1fun', "#{CREW_DEST_MAN_PREFIX}/man1/fgrope.1fun", verbose: true
   end
 end
