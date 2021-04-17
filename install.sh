@@ -10,7 +10,7 @@ unset CDPATH
 OWNER="${OWNER:-skycocker}"
 REPO="${REPO:-chromebrew}"
 BRANCH="${BRANCH:-master}"
-if [[ $OWNER != skycocker ]] or [[ $REPO != chromebrew ]] or [[ $BRANCH != master ]]; then
+if [[ $OWNER != skycocker ]] || [[ $REPO != chromebrew ]] || [[ $BRANCH != master ]]; then
   CREW_TESTING="1"
 fi
 
