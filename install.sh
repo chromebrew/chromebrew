@@ -246,6 +246,7 @@ popd
 if [[ -z $CREW_TESTING ]]; then
   env CREW_TESTING_REPO="https://github.com/${OWNER}/${REPO}.git" \
   CREW_TESTING_BRANCH=${BRANCH} \
+  CREW_TESTING=1
   crew update
 else
   crew update
