@@ -29,10 +29,11 @@ class Wayland < Package
       set +a
     EOF
     
-    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
-
-    -Ddocumentation=false \
-    builddir"
+    system <<~CONFIGURE
+      meson #{CREW_MESON_FNO_LTO_OPTIONS} \
+      -Ddocumentation=false \
+      builddir
+    CONFIGURE
     system "meson configure builddir"
     system "ninja -C builddir"
   end
