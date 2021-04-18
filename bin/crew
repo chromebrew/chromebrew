@@ -518,7 +518,7 @@ def upgrade
       next if dependencies.include? package[:name]
       # add package itself
       dependencies = [ package[:name] ].concat(dependencies)
-      # expand depencencies and add it to the dependencies list
+      # expand dependencies and add it to the dependencies list
       search package[:name], true
       exp_dep = expand_dependencies
       dependencies = exp_dep.concat(dependencies)
@@ -697,7 +697,7 @@ def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
     puts 'Building from source, this may take a while...'
 
-    # Rename *.la files temporily to *.la_tmp to avoid
+    # Rename *.la files temporarily to *.la_tmp to avoid
     # libtool: link: '*.la' is not a valid libtool archive.
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
