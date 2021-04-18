@@ -40,6 +40,6 @@ class Wayland < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/etc/env.d/")
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/exo_base", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/wayland", @env)
   end
 end
