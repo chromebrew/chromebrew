@@ -181,7 +181,7 @@ wxWinLL-3
 ZLIB
 ZPL
 
-# Licenses that match the definiton of free software as set by the FSF, but are neither approved by the FSF or OSI
+# Licenses that match the definition of free software as set by the FSF, but are neither approved by the FSF or OSI
 AIFFWriter.m
 Allegro
 alternate
