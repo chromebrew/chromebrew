@@ -1230,11 +1230,7 @@ def whatprovides_command (args)
   end
 end
 
-def is_command (name)
-  return false if name =~ /^[-<]/
-  return true
+command_name = args.each_pair do |k, v|
+  next unless v
+  return send(k + '_command', args) if !!!(k =~ /^[-<]/) # is command?
 end
-
-command_name = args.find { |k, v| v && is_command(k) } [0]
-function = command_name + '_command'
-send(function, args)
