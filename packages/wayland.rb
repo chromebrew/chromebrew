@@ -30,7 +30,6 @@ class Wayland < Package
     EOF
     
     system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
-
     -Ddocumentation=false \
     builddir"
     system "meson configure builddir"
