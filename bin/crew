@@ -541,7 +541,7 @@ def upgrade
       end
     end
 
-    if toBeUpdated.length.positive
+    if toBeUpdated.length.positive?
       puts 'Updating packages...'
       toBeUpdated.each do |package|
         search package
