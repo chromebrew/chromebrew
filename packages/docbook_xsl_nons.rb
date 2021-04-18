@@ -44,7 +44,7 @@ class Docbook_xsl_nons < Package
         shopt -s nullglob  # ignore missing files
         echo "ignore missing files"
         for fn in assembly catalog.xml common docsrc eclipse epub epub3 \
-        extensions fo highlighting html htmlhelp images javahelp lib log \
+        extensions for highlighting html htmlhelp images javahelp lib log \
         manpages params profiling roundtrip slides template tests tools \
         webhelp website xhtml xhtml-1_1 xhtml5
         do

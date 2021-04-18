@@ -1,7 +1,7 @@
 require 'package'
 
 class At_spi2_core < Package
-  description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
+  description 'This is over DBus; toolkit widgets provide their content to screen readers such as Orca'
   homepage 'http://www.freedesktop.org/'
   version '2.39.91'
   license 'LGPL-2.1+'

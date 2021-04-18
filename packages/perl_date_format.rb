@@ -1,7 +1,7 @@
 require 'package'
 
 class Perl_date_format < Package
-  description 'Date formating subroutines'
+  description 'Date formatting subroutines'
   homepage 'https://metacpan.org/pod/Date::Format'
   version '2.33'
   license 'GPL-1+ or Artistic'
