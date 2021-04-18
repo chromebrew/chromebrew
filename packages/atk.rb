@@ -1,7 +1,7 @@
 require 'package'
 
 class Atk < Package
-  description 'ATK provides the set of accessibility interfaces that are implemented by other tookits and applications'
+  description 'ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications'
   homepage 'https://developer.gnome.org/atk'
   version '2.36'
   license 'LGPL-2+'
