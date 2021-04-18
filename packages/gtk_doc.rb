@@ -29,7 +29,7 @@ class Gtk_doc < Package
   depends_on 'pygments' => :build
 
   #def self.patch
-    # There are alot of patches to grab here ~ They've all come from Void-Packages (xbps-src)
+    # There are a lot of patches to grab here ~ They've all come from Void-Packages (xbps-src)
     #puts
     #puts 'Grabbing patches'.lightblue
     #system 'curl --ssl -L -o "output-reproducible.patch" "https://git.io/JUlWD" --progress-bar'

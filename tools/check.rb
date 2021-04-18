@@ -817,7 +817,7 @@ task :nano do
 	:rest     => "| sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -1"
 end
 
-desc "Check for new verison of ncdu"
+desc "Check for new version of ncdu"
 task :ncdu do
   check_version :pkg_name => "ncdu",
 	:url      => "https://dev.yorhel.nl/download/",
