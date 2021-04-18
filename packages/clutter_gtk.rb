@@ -21,6 +21,6 @@ class Clutter_gtk < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR}", 'ninja', '-C', 'builddir', 'install'
+    system 'env', "DESTDIR=#{CREW_DEST_DIR}", 'ninja', '-C', 'builddir', 'install'
   end
 end
