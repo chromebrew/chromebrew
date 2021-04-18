@@ -11,10 +11,10 @@ class Wayland < Package
   source_sha256 'baccd902300d354581cd5ad3cc49daa4921d55fb416a5883e218750fef166d15'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wayland-1.19.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wayland-1.19.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wayland-1.19.0-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/wayland-1.19.0-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wayland-1.19.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'ff5f655f517f263a92c0416f25bb6a16168cd7adf7fb1dcaec752b293068fa9a',
@@ -30,7 +30,7 @@ class Wayland < Package
   depends_on 'libxslt'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Ddocumentation=false \
     builddir"
     system "meson configure builddir"

@@ -10,10 +10,10 @@ class Zile < Package
   source_sha256 '7a78742795ca32480f2bab697fd5e328618d9997d6f417cf1b14e9da9af26b74'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zile-2.4.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zile-2.4.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zile-2.4.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zile-2.4.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zile-2.4.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zile-2.4.14-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/zile-2.4.14-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/zile-2.4.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9af8d03f90d5a5f6ffd48774ccdc053ffb8d0a878baf883a301ff709d1d8d2d4',

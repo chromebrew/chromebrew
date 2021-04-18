@@ -10,10 +10,10 @@ class Sshfs < Package
   source_sha256 '70845dde2d70606aa207db5edfe878e266f9c193f1956dd10ba1b7e9a3c8d101'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sshfs-2.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sshfs-2.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sshfs-2.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sshfs-2.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sshfs-2.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sshfs-2.10-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sshfs-2.10-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sshfs-2.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '22670d1a6127f7c1e7181af517f0e9242cf7f88645a861f80541f8196bdd815f',
@@ -23,7 +23,7 @@ class Sshfs < Package
   })
 
   depends_on 'glib'
-  depends_on 'fuse'
+  depends_on 'fuse3'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"

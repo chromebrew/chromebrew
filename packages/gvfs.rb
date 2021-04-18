@@ -11,10 +11,10 @@ class Gvfs < Package
   source_sha256 'acde26bee8a04e8432b0946b0fd36bc831ccc4f58c32fbcee6a3f525a595f5e9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvfs-1.48.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvfs-1.48.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gvfs-1.48.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gvfs-1.48.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '97b9379b27f4005491a2737d7f549d750a8c7b7cb4939cf423e610306e888a66',
@@ -28,7 +28,7 @@ class Gvfs < Package
   depends_on 'dconf'
   depends_on 'docbook_xsl' => :build
   depends_on 'elogind' => :build
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'gcr'
   depends_on 'glib'
   depends_on 'gtk3' => :build
@@ -48,7 +48,7 @@ class Gvfs < Package
   depends_on 'smbclient'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dfuse=true \
     -Dgoa=false \
     -Dgoogle=false \

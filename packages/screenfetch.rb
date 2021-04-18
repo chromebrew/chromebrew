@@ -10,10 +10,10 @@ class Screenfetch < Package
   source_sha256 'aa97dcd2a8576ae18de6c16c19744aae1573a3da7541af4b98a91930a30a3178'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/screenfetch-3.9.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/screenfetch-3.9.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/screenfetch-3.9.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/screenfetch-3.9.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/screenfetch-3.9.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3cd66c744cc13b3527d1b0840a7a2093ac45c1bf2fb10871ccc8a63a3e98c948',

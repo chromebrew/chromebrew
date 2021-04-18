@@ -10,10 +10,10 @@ class Has < Package
   source_sha256 'e06d9674bc1b9281c1d4391ad4366d2ef249768e7b0ada304695bf954786e9c4'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/has-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/has-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/has-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/has-1.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/has-1.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/has-1.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/has-1.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/has-1.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9eb67faf4e926a34f1c3e984dd31c47e90d7c67a35447b8f883619ef3ac89d99',

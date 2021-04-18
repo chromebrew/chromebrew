@@ -10,10 +10,10 @@ class Xorg_libinput_driver < Package
   source_sha256 'd4ad8dc5ad6f962a3f15f61ba9e9f8e37fa0b57eee9f484e2bd721d60ca72ee6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_libinput_driver-0.27.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_libinput_driver-0.27.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_libinput_driver-0.27.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_libinput_driver-0.27.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_libinput_driver-0.27.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_libinput_driver-0.27.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_libinput_driver-0.27.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_libinput_driver-0.27.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a053e2e55ad706913c2cafcca3a4f6da585e315c672bebafadc6844dc75f3663',

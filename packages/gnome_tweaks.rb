@@ -11,10 +11,10 @@ class Gnome_tweaks < Package
   source_sha256 '4b0548176772ce999531f6f873ee147420f9dc95980a11a3c2faa052b76119e5'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_tweaks-40.beta-4cbb-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnome_tweaks-40.beta-4cbb-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_tweaks-40.beta-4cbb-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '490cce3a691eef0f388a464bb18900da5fa1f898a10d2d39fa59d023a89e229e',
@@ -30,7 +30,7 @@ class Gnome_tweaks < Package
   depends_on 'libnotify'
 
   def self.build
-    system "meson setup #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

@@ -10,10 +10,10 @@ class Ruby < Package
   source_sha256 '369825db2199f6aeef16b408df6a04ebaddb664fb9af0ec8c686b0ce7ab77727'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ruby-3.0.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ruby-3.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ruby-3.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ruby-3.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ruby-3.0.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '210eb6582d1a06e7fbdbbfeb6658abed7633437de3e7faa4ebf16875e3687e28',
@@ -40,7 +40,7 @@ class Ruby < Package
   end
 
   def self.check
-    system "TMPDIR=#{CREW_PREFIX}/tmp make check || true"
+    system "make check || true"
   end
 
   def self.install

@@ -10,10 +10,10 @@ class Gawk < Package
   source_sha256 '8a13d0adfacde9540acbb2e0ad9867ef17890b3fd4c2af288fe3c4f7b507a274'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gawk-5.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gawk-5.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gawk-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gawk-5.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gawk-5.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gawk-5.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gawk-5.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gawk-5.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7539039d47859d047cae70909b10399edeb8c83987701f98fbaa33ceb0b842ce',

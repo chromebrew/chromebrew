@@ -10,10 +10,10 @@ class Syncthing < Package
   source_sha256 '9c406897443465e03d3259df1dda10bd86e49ae4286f8c855d9f35e47026af2f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/syncthing-0.14.41-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/syncthing-0.14.41-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/syncthing-0.14.41-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',
@@ -26,7 +26,7 @@ class Syncthing < Package
 
   def self.build
     #The system tmp dir is mounted noexec, and the build will fail if it is used
-    system "TMPDIR=#{CREW_PREFIX}/tmp go run build.go -version v0.14.40"
+    system "go run build.go -version v0.14.40"
   end
 
   def self.install

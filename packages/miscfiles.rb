@@ -10,10 +10,10 @@ class Miscfiles < Package
   source_sha256 '6aaaa8898b0f6dac18bcaa5492874a6cd1243ffbe7a6dd347ca8f3ec3642a500'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/miscfiles-1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/miscfiles-1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/miscfiles-1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/miscfiles-1.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/miscfiles-1.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/miscfiles-1.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/miscfiles-1.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/miscfiles-1.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '83434d1f24d47b5e86b7ab649f186ab02530ac3a11c2f3cbf77481a95e3e2e0b',

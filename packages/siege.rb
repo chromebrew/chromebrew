@@ -10,10 +10,10 @@ class Siege < Package
   source_sha256 '3b4b7001afa4d80f3f4939066a4932e198e9f949dcc0e3affecbedd922800231'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/siege-4.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/siege-4.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/siege-4.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/siege-4.0.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/siege-4.0.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/siege-4.0.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/siege-4.0.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/siege-4.0.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bdebecd0f52474101942d8f0d993389b1ed3f6aa32d9c3c5a9ffd8ed719814a3',

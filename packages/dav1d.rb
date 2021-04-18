@@ -11,10 +11,10 @@ class Dav1d < Package
   source_sha256 '3dd91d96b44e9d8ba7e82ad9e730d6c579ab5e19edca0db857a60f5ae6a0eb13'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/dav1d-0.8.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/dav1d-0.8.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/dav1d-0.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dav1d-0.8.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dav1d-0.8.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dav1d-0.8.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/dav1d-0.8.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/dav1d-0.8.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1e55f2fb0514c8a5fb6b991a2280495b0706ff95f5ae4013e67e70de2e8b5bfe',
@@ -26,7 +26,7 @@ class Dav1d < Package
   depends_on 'nasm' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

@@ -10,10 +10,10 @@ class Octane < Package
   source_sha256 'c355dd9a37df421826f3d8028d89e8c8b58faa12a49da88fa2641788f9482fe7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/octane-2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/octane-2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/octane-2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/octane-2.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/octane-2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/octane-2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/octane-2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/octane-2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c195233b1d220e0905a439e631c1eca73d23631ed20f896a1d6527e64ea2b78c',

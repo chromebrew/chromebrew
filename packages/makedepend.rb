@@ -10,10 +10,10 @@ class Makedepend < Package
   source_sha256 '845f6708fc850bf53f5b1d0fb4352c4feab3949f140b26f71b22faba354c3365'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/makedepend-1.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/makedepend-1.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/makedepend-1.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/makedepend-1.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/makedepend-1.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/makedepend-1.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/makedepend-1.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/makedepend-1.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cdae9433b0ce1dbf949eac2ba2ccf48561ee1357e3f63b28b76c70eeaecedaa3',

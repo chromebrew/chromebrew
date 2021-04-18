@@ -10,10 +10,10 @@ class Percona_boost < Package
   source_sha256 '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_boost-1.59.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/percona_boost-1.59.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/percona_boost-1.59.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_boost-1.59.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/percona_boost-1.59.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/percona_boost-1.59.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/percona_boost-1.59.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/percona_boost-1.59.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a8ae7d1682a5801169991b3d824402059ea7b527ca1b118dca240d9a91201fd1',

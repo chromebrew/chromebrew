@@ -6,11 +6,8 @@ class Squeak < Package
   version '5.3-19439'
   license 'MIT and Apache-2.0'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url 'http://files.squeak.org/5.3/Squeak5.3-19439-64bit/Squeak5.3-19439-64bit-202003021730-Linux.zip'
-    source_sha256 'c2e64c9eabf5e94a19766b5fab809b37986c3874767d0fdba4b6139043dfa19a'
-  end
+  source_url 'http://files.squeak.org/5.3/Squeak5.3-19439-64bit/Squeak5.3-19439-64bit-202003021730-Linux.zip'
+  source_sha256 'c2e64c9eabf5e94a19766b5fab809b37986c3874767d0fdba4b6139043dfa19a'
 
   depends_on 'pulseaudio'
   depends_on 'sommelier'

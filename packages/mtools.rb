@@ -11,10 +11,10 @@ class Mtools < Package
   source_sha256 'd09cff66d7277ad36a7573fc3e9803bfa558cdda83baabaafbf7761317462283'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mtools-4.0.26-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mtools-4.0.26-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/mtools-4.0.26-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mtools-4.0.26-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mtools-4.0.26-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mtools-4.0.26-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mtools-4.0.26-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mtools-4.0.26-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'b04897069248682f60fe685c66cb74b1da86cbb393d80eca88a4445623a7f267',

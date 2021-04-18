@@ -10,10 +10,10 @@ class Pdfgrep < Package
   source_sha256 '0370d744b3072d47383dbed2cb9c8b0b64b83c084da5a8961f8d4bc7669e941e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pdfgrep-2.0.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pdfgrep-2.0.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pdfgrep-2.0.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pdfgrep-2.0.1-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pdfgrep-2.0.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pdfgrep-2.0.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pdfgrep-2.0.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pdfgrep-2.0.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0614122a56626fbc83ea82f36cacbb6fca7e5912cc0ff9b5fc343e5c67667da9',

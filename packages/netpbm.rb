@@ -10,10 +10,10 @@ class Netpbm < Package
   source_sha256 'c0d32d4b9a53fde47dd9a36f45653e0ef51f6c390517f10b0c5056d1a8a844bd'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/netpbm-10.73.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/netpbm-10.73.28-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/netpbm-10.73.28-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/netpbm-10.73.28-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/netpbm-10.73.28-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/netpbm-10.73.28-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/netpbm-10.73.28-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/netpbm-10.73.28-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2f4dd0de3f9af1423121ba6e82ddc268863fadaf50222a51dc2026652e99fefb',

@@ -10,10 +10,10 @@ class Flif < Package
   source_sha256 'aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/flif-0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/flif-0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/flif-0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/flif-0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/flif-0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/flif-0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/flif-0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/flif-0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '64f447f5fe90b8075259e6bf427387b7baa64a6d0dd7bbc49c05325bc20cf882',

@@ -20,7 +20,7 @@ class Gnome_mines < Package
 
   def self.build
     system "env CFLAGS='-fuse-ld=lld' CXXFLAGS='-fuse-ld=lld' \
-            meson #{CREW_MESON_LTO_OPTIONS} builddir"
+            meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end
