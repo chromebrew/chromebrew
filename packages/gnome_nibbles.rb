@@ -14,7 +14,7 @@ class Gnome_nibbles < Package
   depends_on 'gsound'
   depends_on 'librsvg'
   depends_on 'libgnome_games_support'
-  depends_on 'gui_setup'
+  depends_on 'wayland'
 
   def self.build
     system "meson #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
