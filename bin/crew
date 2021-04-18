@@ -769,7 +769,7 @@ def prepare_package (destdir)
     puts "Checking for conflicts with files from installed packages..."
     conflicts = []
     File.readlines('filelist').each do |p|
-      next unless File.exist(p)
+      next unless File.exist?(p)
       Dir['/usr/local/etc/crew/meta/*.filelist'].each do |f|
         pkgName = File.basename(f, '.rb')
         c = File.foreach(f).grep( Regexp.new('^' + p + '$') )
