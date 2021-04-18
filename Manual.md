@@ -94,13 +94,13 @@ The rundown of what each function and variable are/(can be) used for follows.
 
 A simple example ruby script can be found on the [Wiki](https://github.com/skycocker/chromebrew/wiki/Creating-a-package).
 ```ruby
-require 'package' # must occour within each `.rb`
+require 'package' # must occur within each `.rb`
 			      # Notice the newline
 class Template < Package # Notice the capitals, EG: 'I3' - would be used for an 'i3' package
   description 'The template script' # Notice the indent, should contain no more than one line of text
   homepage '#' # Notice the same indent, EG: 'https://i3wm.org/' - Would be used for an 'i3' Package
   version 'version#-revision#' # EG: 4.18.2-1 - Where '4.18.2' is the version and '1' is the revision - Omit revision on new packges
-  compatibility '#' # Can contain 'all', or a list of supported architectures each seperated by a space
+  compatibility '#' # Can contain 'all', or a list of supported architectures each separated by a space
   source_url '#' # The URL from which the source of the package can be downloaded
   source_sha256 '#' # The `sha256` checksum of the downloaded source package
                   # Notice the newline
@@ -155,7 +155,7 @@ NOTE: All rules can have exceptions, if ***REQUIRED***, exceptions to the rules 
 
 <a name="eq">`CREW_OPTIONS`</a>: Equal to `--prefix=/usr/local --libdir=/usr/local/lib --mandir=/usr/local/share/man --build=armv7l-cros-linux-gnueabihf --host=armv7l-cros-linux-gnueabihf --target=#{CREW_BUILD}`
 
-Any additonally required resources for ChromeOS or ChromeBooks cane be found [here](https://github.com/skycocker/chromebrew/wiki/Links)
+Any additionally required resources for ChromeOS or ChromeBooks can be found [here](https://github.com/skycocker/chromebrew/wiki/Links)
 
 Still can't find something? Have a look in [`Issues`](https://github.com/skycocker/chromebrew/issues)<sup>Or post a issue</sup>
 

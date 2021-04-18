@@ -1,7 +1,7 @@
 require 'package'
 
 class Xfce4_terminal < Package
-  description 'Modern terminal emulator primarly for the Xfce desktop environment'
+  description 'Modern terminal emulator primarily for the Xfce desktop environment'
   homepage 'https://xfce.org/'
   version '0.8.10'
   license 'GPL-2+'

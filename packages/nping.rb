@@ -33,8 +33,8 @@ class Nping < Package
     #without-zenmap in configure removes openssl dependency
     system "./configure --without-zenmap --prefix=#{CREW_PREFIX}"
 
-    # Make files in the project dont have the right dependencies to build this by itself
-    # so just make the whole thing and then install nping - not effecient, but
+    # Make files in the project don't have the right dependencies to build this by itself
+    # so just make the whole thing and then install nping - not efficient, but
     # more likely to work than a bunch of Makefile dependency edits
     system "make"
   end

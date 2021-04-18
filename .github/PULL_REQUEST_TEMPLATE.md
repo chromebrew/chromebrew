@@ -3,14 +3,14 @@ Fixes #
 (let GitHub automatically close an issue when this pull request gets merged)
 
 ## Before you submit a pull request
-This template is not neccessary when you do simple things like updating packages to the latest version. But in doubt, it's always better so provide some information.
+This template is not necessary when you do simple things like updating packages to the latest version. But in doubt, it's always better so provide some information.
 
 ## Description
 Provide a description, what your changes do and why they are important
 
 Please link issues and other pull requests connected to this one.
 
-## Addtional information
+## Additional information
 Mention things we might need to know. Like:
 
 Works properly:
