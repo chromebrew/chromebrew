@@ -38,7 +38,6 @@ class Gnome_calculator < Package
       To use the graphical calculator, execute 'gnome-calculator'
     
       To use the command line calculator, execute 'gcalccmd'
-    
     EOT
   end
 end
