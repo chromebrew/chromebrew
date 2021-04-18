@@ -14,6 +14,10 @@ require_relative '../lib/util'
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
+# Tell ruby to use utf8
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
 DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
@@ -767,20 +771,20 @@ def prepare_package (destdir)
 
     # check for conflicts with other installed files
     puts "Checking for conflicts with files from installed packages..."
-    conflicts = []
+    conflicts = {}
     File.readlines('filelist').each do |p|
-      next unless File.exist?(p)
+      next unless File.exist?(p.chomp)
       Dir['/usr/local/etc/crew/meta/*.filelist'].each do |f|
-        pkgName = File.basename(f, '.rb')
-        c = File.foreach(f).grep( Regexp.new('^' + p + '$') )
+        pkgName = File.basename(f, '.filelist')
+        c = File.foreach(f).grep( Regexp.new('^' + p + '$') )[0]
         conflicts[c] = pkgName if c
       end
 
       puts "Unable to complete this build since there is a conflict with the same file in another package.".lightred
-      pp = ''
+      pp = nil
       conflicts.each_pair do |f, p|
-        puts '', "#{p} package conflicts below:".lightred if p != pp
-        puts f.lightred
+        puts nil, "#{p} package conflicts below:".lightred if p != pp
+        puts f.chomp.lightred
         pp = p
       end
       abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY']
