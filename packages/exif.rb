@@ -10,10 +10,10 @@ class Exif < Package
   source_sha256 'f55e125eee6c2a75d367d3b388bcd7bea75dc944fabe8671bb32e889192f4b77'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/exif-0.6.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/exif-0.6.21-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/exif-0.6.21-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/exif-0.6.21-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exif-0.6.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exif-0.6.21-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/exif-0.6.21-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/exif-0.6.21-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8f8de193c0571c268e8004876a0365178237107d2e21d44766ef128f204adcb3',

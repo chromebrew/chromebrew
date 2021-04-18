@@ -27,7 +27,7 @@ Model: YOUR MODEL HERE
 
 Architecture: `uname -m`
 
-## Addtional information
+## Additional information
 Mention things we might need to know. Like:
 
 What I think needs to be done:

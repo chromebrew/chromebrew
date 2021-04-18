@@ -10,10 +10,10 @@ class Gimp < Package
   source_sha256 'bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gimp-2.10.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gimp-2.10.24-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gimp-2.10.24-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gimp-2.10.24-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gimp-2.10.24-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gimp-2.10.24-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6867db24428a1509ac14459f29944a2fbb0a81e8a509b39cd2b7c837fd48fd00',
@@ -77,8 +77,7 @@ class Gimp < Package
   depends_on 'sommelier'
 
   def self.build
-    system "env TMPDIR=#{CREW_PREFIX}/tmp \
-      CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+    system "env CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
       CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
       LDFLAGS='-flto' \
       LIBS='-lm' \

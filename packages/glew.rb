@@ -10,10 +10,10 @@ class Glew < Package
   source_sha256 '314219ba1db50d49b99705e8eb00e83b230ee7e2135289a00b5b570e4a4db43a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glew-2.2.0-rc3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glew-2.2.0-rc3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/glew-2.2.0-rc3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glew-2.2.0-rc3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glew-2.2.0-rc3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glew-2.2.0-rc3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glew-2.2.0-rc3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glew-2.2.0-rc3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0912816e2c59d5a677f0b777ac92b7ac92262a9bf8daa5ab5c9e182b95cb9836',

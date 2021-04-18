@@ -10,10 +10,10 @@ class Sphinx < Package
   source_sha256 '8816c90665b192b36c4482fb59819c276bae37ed275948fb2ab2ba873aa29d8a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sphinx-3.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sphinx-3.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sphinx-3.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sphinx-3.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sphinx-3.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sphinx-3.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sphinx-3.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sphinx-3.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b41731dc932880a677e23ae5d6d1fcb3a2b7bc0baecb6fe39c28d849789f98e9',

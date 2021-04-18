@@ -10,10 +10,10 @@ class Libpciaccess < Package
   source_sha256 '84413553994aef0070cf420050aa5c0a51b1956b404920e21b81e96db6a61a27'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpciaccess-0.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpciaccess-0.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpciaccess-0.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpciaccess-0.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libpciaccess-0.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libpciaccess-0.16-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libpciaccess-0.16-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libpciaccess-0.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4168d9adea96e7394c3a2aee9b732134abf9ea0c749dcf1b696bbb2d19047bec',

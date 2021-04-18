@@ -11,10 +11,10 @@ class Libsigcplusplus3 < Package
   source_sha256 '25ff9bf59c28e185c3901963f11bbdac58ce866281c65c870145b119e59a0836'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-3.0.6-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-3.0.6-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-3.0.6-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsigcplusplus3-3.0.6-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsigcplusplus3-3.0.6-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsigcplusplus3-3.0.6-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsigcplusplus3-3.0.6-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsigcplusplus3-3.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '30e2d139bec3e807e96ebee3047ec91fb080def2c0d45ca27aa2ba383e8fb9d6',
@@ -24,7 +24,7 @@ class Libsigcplusplus3 < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dbuild-examples=false \
     builddir"
     system "meson configure builddir"

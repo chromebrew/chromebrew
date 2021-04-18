@@ -10,10 +10,10 @@ class Php72 < Package
   source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/php72-7.2.34-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/php72-7.2.34-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/php72-7.2.34-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/php72-7.2.34-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/php72-7.2.34-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'db33d2ff6220b3a14d515f4a663e93f0b59feef8d0eff385adfe7e33949bd551',
@@ -61,7 +61,6 @@ class Php72 < Package
   end
 
   def self.build
-    ENV['TMPDIR'] = "#{CREW_PREFIX}/tmp"
     ENV['CFLAGS'] = ' -liconv'
     system './configure',
            "--prefix=#{CREW_PREFIX}",

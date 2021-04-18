@@ -3,24 +3,24 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  @_ver = '1.16'
+  @_ver = '1.16.3'
   version @_ver
   license 'BSD'
   compatibility 'all'
   source_url "https://dl.google.com/go/go#{@_ver}.src.tar.gz"
-  source_sha256 '7688063d55656105898f323d90a79a39c378d86fe89ae192eb3b7fc46347c95a'
+  source_sha256 'b298d29de9236ca47a023e382313bcc2d2eed31dfa706b60a04103ce83a71a25'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/go-1.16-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/go-1.16.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/go-1.16.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5c8a7c1dba8d2d58cf474e6d0dfbe0d327268b3795fa6d59c84cf7e578c890e5',
-     armv7l: '5c8a7c1dba8d2d58cf474e6d0dfbe0d327268b3795fa6d59c84cf7e578c890e5',
-       i686: 'c1e8ef3998c06c069e49703af7f8c8bc719dcbd3c488322d9b3c3db765ee4dc8',
-     x86_64: '163773e1e201b0829189724b6781c6aa8e78eccf2041aa3cb09f07d7bc44e777'
+    aarch64: '2f6ab6029594d5563bd1b020ff0982d960a8d569e0081d1a36f4972a436e2e1b',
+     armv7l: '2f6ab6029594d5563bd1b020ff0982d960a8d569e0081d1a36f4972a436e2e1b',
+       i686: '13df993fe2af5ab01b1d4f28808dab883107ad62fb4dd566970b52d1decd26aa',
+     x86_64: 'f4676ad5ab1f1c83e73e4dfd1b94794a7630e9d1880e854ea81da9ffe912cd8f'
   })
 
   @env ||= ''
@@ -45,7 +45,6 @@ class Go < Package
     when 'aarch64', 'armv7l'
       FileUtils.cd 'src' do
         @env += "GOROOT='..'"
-        @env += " TMPDIR=#{CREW_PREFIX}/tmp"
         @env += " GOROOT_FINAL=#{CREW_PREFIX}/share/go"
         @env += ' GOHOSTARCH=arm' if ARCH == 'aarch64'
         # install with go_bootstrap if go is not in the path
@@ -64,7 +63,7 @@ class Go < Package
     case ARCH
     when 'aarch64', 'armv7l'
       Dir.chdir 'src' do
-        system "PATH=\"#{Dir.pwd}/../bin:$PATH\" GOROOT=\"#{Dir.pwd}/..\" TMPDIR=\"#{CREW_PREFIX}/tmp\" go tool dist test"
+        system "PATH=\"#{Dir.pwd}/../bin:$PATH\" GOROOT=\"#{Dir.pwd}/..\" go tool dist test"
       end
     end
   end
@@ -82,20 +81,29 @@ class Go < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/go", "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/gofmt", "#{CREW_DEST_PREFIX}/bin"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @gorun = <<~EOF
+      # Uncomment the line starting with "export" below to use `go run`
+      # Don't forget to uncomment it when you're done
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/go-run", @gorun)
+    @godev = <<~EOF
+      # Go development configuration
+      if [ ! -e #{CREW_PREFIX}/work/go ]; then
+        mkdir -vp #{CREW_PREFIX}/work/go
+      fi
+      if [ ! -e #{HOME}/go ]; then
+        ln -sv #{CREW_PREFIX}/work/go #{HOME}/go
+      fi
+      export PATH="$PATH:$HOME/go/bin"
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/go-dev", @godev)
   end
 
   def self.postinstall
     puts
-    puts "Installed Go for #{ARCH} in #{CREW_PREFIX}/share/go".lightblue
-    puts
-    puts 'To use `go run`, execute the following:'.lightblue
-    puts "export TMPDIR=#{CREW_PREFIX}/tmp".lightblue
-    puts
-    puts 'To develop with `go`, execute the following:'.lightblue
-    puts "mkdir -p #{CREW_PREFIX}/work/go".lightblue
-    puts "ln -s #{CREW_PREFIX}/work/go $HOME/go".lightblue
-    puts 'export PATH="$HOME/go/bin:$PATH"'.lightblue
-    puts "export TMPDIR=#{CREW_PREFIX}/tmp".lightblue
+    puts "Edit #{CREW_PREFIX}/etc/env.d/go-run to be able to use go-run".lightblue
     puts
   end
 end

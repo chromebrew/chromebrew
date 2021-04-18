@@ -10,10 +10,10 @@ class Libcap < Package
   source_sha256 'e98bc4d93645082ec787730b0fd1a712b38882465c505777de17c338831ee181'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libcap-2.49-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcap-2.49-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcap-2.49-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libcap-2.49-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libcap-2.49-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a70c7ce2ce27a15a294ce7229c10a1c2227c2705a8b0e0be88cf8bb5eed73e77',

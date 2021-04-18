@@ -6,13 +6,11 @@ class Qtcreator < Package
   version '4.9.1'
   license '' # Can't find license
   compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686', 'x86_64'
-    source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/md5sums.txt'
-    source_sha256 '50ea8bf9728b8ceb3a92044745edd55fd02783b8733da7fd57e044bc21980bf6'
-    depends_on 'xdg_base'
-    depends_on 'sommelier'
-  end
+  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/md5sums.txt'
+  source_sha256 '50ea8bf9728b8ceb3a92044745edd55fd02783b8733da7fd57e044bc21980bf6'
+
+  depends_on 'xdg_base'
+  depends_on 'sommelier'
 
   def self.install
     system "echo 'function Controller() {' > qt-installer-script.qs"

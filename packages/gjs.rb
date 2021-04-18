@@ -11,10 +11,10 @@ class Gjs < Package
   source_sha256 '12df0c0ff2dd4c944ad27477ee8053e1363c4ad499542686bba21e06d38c6733'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gjs-1.67.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gjs-1.67.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gjs-1.67.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gjs-1.67.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gjs-1.67.3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gjs-1.67.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6ee8b11391aee0245536d1d702b765739b20310df841ca4395fce2d9b07eb532',
@@ -31,7 +31,7 @@ class Gjs < Package
   depends_on 'dbus' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dinstalled_tests=false \
     -Dskip_dbus_tests=true \
     -Dreadline=disabled \

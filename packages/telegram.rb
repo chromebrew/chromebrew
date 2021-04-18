@@ -6,11 +6,8 @@ class Telegram < Package
   version '2.5.1'
   license 'BSD, LGPL-2+ and GPL-3-with-openssl-exception'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url 'https://updates.tdesktop.com/tlinux/tsetup.2.5.1.tar.xz'
-    source_sha256 '939275a84498dedb1a33ac3f0242b0211548ddb087f9801518db92c5d6dc0151'
-  end
+  source_url 'https://updates.tdesktop.com/tlinux/tsetup.2.5.1.tar.xz'
+  source_sha256 '939275a84498dedb1a33ac3f0242b0211548ddb087f9801518db92c5d6dc0151'
 
   def self.build
     system "cat <<'EOF'> telegram

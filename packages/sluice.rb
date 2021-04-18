@@ -10,10 +10,10 @@ class Sluice < Package
   source_sha256 'c1fc8093f93bc376d494883f3302749fcf46a1041baab6c3304ef6185f9c1569'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sluice-0.02.08-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sluice-0.02.08-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sluice-0.02.08-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sluice-0.02.08-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sluice-0.02.08-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sluice-0.02.08-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sluice-0.02.08-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sluice-0.02.08-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b0cab6d3faaff309e4c81f16b81873c44968a1fca5b89996116c5a53cdf0eef3',

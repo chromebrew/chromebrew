@@ -11,10 +11,10 @@ class Libhandy < Package
   source_sha256 'b2e08210a6b0c6b08e6c46848024cbcf44973e40377a1373d7cbb0bde7131b56'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libhandy-1.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libhandy-1.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libhandy-1.2.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3bd22e6101caa76c8f89fc4ef8aeb046e85c7969b42003f1835e81c13df7180d',
@@ -38,7 +38,7 @@ class Libhandy < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

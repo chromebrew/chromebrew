@@ -10,10 +10,10 @@ class Xmltoman < Package
   source_sha256 '948794a316aaecd13add60e17e476beae86644d066cb60171fc6b779f2df14b0'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xmltoman-0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xmltoman-0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xmltoman-0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xmltoman-0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmltoman-0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmltoman-0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xmltoman-0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xmltoman-0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a0b2caaf0eee70d7a48fc6d0b3f069e867f5cd4b608231ef2578ba7db653b2bb',

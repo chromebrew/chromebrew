@@ -10,10 +10,10 @@ class Qtchooser < Package
   source_sha256 'b22c21df135d48fc775d26d771170c2c70555704d4625605383be2cd149c7cea'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/qtchooser-66-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/qtchooser-66-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/qtchooser-66-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/qtchooser-66-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qtchooser-66-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/qtchooser-66-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/qtchooser-66-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/qtchooser-66-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7dcd1b8095c0f9cba9b10c2ffbaf3fa9c633dd00342acce2070a06fe4df991e0',

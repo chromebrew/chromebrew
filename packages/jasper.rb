@@ -10,10 +10,10 @@ class Jasper < Package
   source_sha256 '6b4e5f682be0ab1a5acb0eeb6bf41d6ce17a658bb8e2dbda95de40100939cc88'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.28-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.28-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.28-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jasper-2.0.28-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jasper-2.0.28-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/jasper-2.0.28-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/jasper-2.0.28-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '050b02a407702dc301f3f5992a57872d0073e76d1d0a22172990d07ffeb7b52f',

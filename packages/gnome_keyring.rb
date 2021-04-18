@@ -10,10 +10,10 @@ class Gnome_keyring < Package
   source_sha256 'a264b57a8d1a71fdf0d66e8cd6033d013fb828be279c35766545eb9bb3734f87'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_keyring-3.36.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_keyring-3.36.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_keyring-3.36.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_keyring-3.36.0-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_keyring-3.36.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_keyring-3.36.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnome_keyring-3.36.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_keyring-3.36.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
@@ -34,7 +34,7 @@ class Gnome_keyring < Package
   depends_on 'openssh'
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
     ./configure #{CREW_OPTIONS} \
     --with-pam-dir=#{CREW_PREFIX}/lib/security \
     --disable-schemas-compile \

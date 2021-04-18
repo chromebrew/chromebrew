@@ -12,10 +12,10 @@ class Libsoup < Package
   source_sha256 '664fa1b78a15cc0aa1fa65efb3b281a888417530f9f56a219571c0630f942ba5'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup-2.99.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsoup-2.99.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsoup-2.99.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsoup-2.99.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsoup-2.99.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7b0fd36b36395b4949af7915af3eab02ab1842ba085f7c1858c977aca4af0534',
@@ -29,7 +29,7 @@ class Libsoup < Package
   depends_on 'libsoup2' # This way we make sure packages which need the older libsoup-2.4 library get it too.
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dtests=false \
       -Dsysprof=disabled \
       -Dintrospection=enabled \

@@ -11,10 +11,10 @@ class Openssl < Package
   source_sha256 '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openssl-1.1.1k-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openssl-1.1.1k-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openssl-1.1.1k-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/openssl-1.1.1k-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/openssl-1.1.1k-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4b5a6ff1bbd03a7adf09acebe3b7a928de9a8520e260360f9f4fac8e7c83e903',

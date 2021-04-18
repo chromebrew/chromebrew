@@ -3,24 +3,24 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '21.1.0'
+  @_ver = '21.1.1'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
   source_url "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-#{@_ver}.tar.xz"
-  source_sha256 '8a71c3e8b95c43bb91bc3d7a4ff9075456a0cfe297721dbc8d4a76cf241d82fb'
+  source_sha256 '31f261ce51bbee76a6ca3ec02aa367ffa2b5efa2b98412df57ccefd7a19003ce'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xwayland-21.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xwayland-21.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xwayland-21.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xwayland-21.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xwayland-21.1.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c6951e26f866c161171598257d8f56ee94ca180d2d3dfb45d92871be230050eb',
-     armv7l: 'c6951e26f866c161171598257d8f56ee94ca180d2d3dfb45d92871be230050eb',
-       i686: 'aec35c04079a6187f9e637d09715bbea03343dded024672693cf6f49c21bd180',
-     x86_64: '584edc98ad46aa38da43d5174d533e4407b68f5f8fe7608a98bbcba72912c3e4'
+    aarch64: 'd8e3068e17a3870691209f2a72babe5b1e0e777851a39656dda132715227e81a',
+     armv7l: 'd8e3068e17a3870691209f2a72babe5b1e0e777851a39656dda132715227e81a',
+       i686: 'f49397108ca18335ee323d4f71a32d1041eb9747742185b361f1fbe7e9336b90',
+     x86_64: '7c7f7d84957e4ab595458e5add13586bab6c45cb8edde948a9750aa02944f105'
   })
 
   depends_on 'dbus'
@@ -54,7 +54,7 @@ class Xwayland < Package
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_LTO_OPTIONS} \
+    system "meson configure #{CREW_MESON_OPTIONS} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
@@ -87,6 +87,10 @@ EOF"
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/Xwayland.elf"
     system "install -Dm755 Xwayland_sh #{CREW_DEST_PREFIX}/bin/Xwayland"
-    FileUtils.ln_sf "#{CREW_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/X"
+    # Get these from xorg_server package
+    @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/X #{CREW_DEST_MAN_PREFIX}/man1/Xserver.1]
+    @deletefiles.each do |f|
+      FileUtils.rm f if  File.exist?(f)
+    end
   end
 end

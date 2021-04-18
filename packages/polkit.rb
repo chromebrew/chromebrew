@@ -10,10 +10,10 @@ class Polkit < Package
   source_sha256 '48cf39b1113f22a79a2ad3c901aa5d495b1ead780ca9be99ca4d4bb39cc25619'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/polkit-0.118-265f-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/polkit-0.118-265f-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/polkit-0.118-265f-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/polkit-0.118-265f-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/polkit-0.118-265f-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/polkit-0.118-265f-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/polkit-0.118-265f-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/polkit-0.118-265f-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6144024125f13a854cf48dce3d567a562beeeb6bfce82d01ae2309110a6ceaba',
@@ -27,7 +27,7 @@ class Polkit < Package
   depends_on 'gobject_introspection' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dsystemd=disabled \
     builddir"
     system 'meson configure builddir'

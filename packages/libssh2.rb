@@ -11,10 +11,10 @@ class Libssh2 < Package
   source_sha256 'd5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libssh2-1.9.0-3-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libssh2-1.9.0-3-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libssh2-1.9.0-3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'a8b26892821ee9fae80de1c93d3f33171826e81849977227654d0ab91067ec25',
@@ -28,7 +28,7 @@ class Libssh2 < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure \
       #{CREW_OPTIONS} \
       --with-libz"

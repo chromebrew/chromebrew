@@ -10,10 +10,10 @@ class Avahi < Package
   source_sha256 '060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/avahi-0.8-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/avahi-0.8-3-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/avahi-0.8-3-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/avahi-0.8-3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1a2f3f2f1963ff4843ecf2212eaca985368d26ef532f953a68020c1518db0dcf',

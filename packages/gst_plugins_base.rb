@@ -11,10 +11,10 @@ class Gst_plugins_base < Package
   source_sha256 '29e53229a84d01d722f6f6db13087231cdf6113dd85c25746b9b58c3d68e8323'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_base-1.18.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gst_plugins_base-1.18.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gst_plugins_base-1.18.4-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gst_plugins_base-1.18.4-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gst_plugins_base-1.18.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6fc2e6d6b63ab3c869a4d136f9eeb85f4334a0fb271fea43829e7f20a83a6d29',
@@ -34,7 +34,6 @@ class Gst_plugins_base < Package
   depends_on 'libgudev'
   depends_on 'libjpeg'
   depends_on 'libogg'
-  depends_on 'libopus'
   depends_on 'libpng'
   depends_on 'libtheora'
   depends_on 'libvisual'
@@ -46,11 +45,12 @@ class Gst_plugins_base < Package
   depends_on 'libxshmfence'
   depends_on 'libxv'
   depends_on 'mesa'
+  depends_on 'opus'
   depends_on 'pango'
   depends_on 'wayland'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dgst_debug=false \
     -Dexamples=disabled \
     builddir"

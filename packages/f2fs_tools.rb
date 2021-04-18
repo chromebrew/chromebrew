@@ -11,10 +11,10 @@ class F2fs_tools < Package
   source_sha256 '619263d4e2022152a1472c1d912eaae104f20bd227ce0bb9d41d1d6608094bd1'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/f2fs_tools-1.14.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/f2fs_tools-1.14.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/f2fs_tools-1.14.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/f2fs_tools-1.14.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/f2fs_tools-1.14.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/f2fs_tools-1.14.0-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/f2fs_tools-1.14.0-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/f2fs_tools-1.14.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '68b0d173285b156e90e7b8ef1283c0ce5b3b6b7273161baa7db8dc6a331d4e4a',
@@ -32,7 +32,7 @@ class F2fs_tools < Package
 
   def self.build
     system "autoreconf -fi"
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure \
       #{CREW_OPTIONS} \
       --sbindir=#{CREW_PREFIX}/bin"
