@@ -4,7 +4,6 @@ require_relative '../lib/color'
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 
-require 'find'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
@@ -526,7 +525,7 @@ def upgrade
     # Check version number of installed package and make a target list
     toBeUpdated = []
     dependencies.each do |dep|
-      package = @device[:installed_packages].find {|pkg| pkg[:name] == dep}
+      package = @device[:installed_packages].any? {|pkg| pkg[:name] == dep}
       next unless package
       search package[:name], true
       if package[:version] != @pkg.version
@@ -534,12 +533,12 @@ def upgrade
       end
     end
 
-    if toBeUpdated.length > 0
+    if toBeUpdated.length.positive
       puts 'Updating packages...'
       toBeUpdated.each do |package|
         search package
         print_current_package
-        puts "Updating " + @pkg.name + "..." if @opt_verbose
+        puts "Updating #{@pkg.name}..." if @opt_verbose
         @pkg.in_upgrade = true
         resolve_dependencies_and_install
         @pkg.in_upgrade = false
@@ -562,11 +561,11 @@ def download
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
   elsif !source
-    puts "Precompiled binary available, downloading..."
+    puts 'Precompiled binary available, downloading...'
   elsif @pkg.build_from_source
-    puts "Downloading source..."
+    puts 'Downloading source...'
   else
-    puts "No precompiled binary available for your platform, downloading source..."
+    puts 'No precompiled binary available for your platform, downloading source...'
   end
 
   Dir.chdir CREW_BREW_DIR do
@@ -577,7 +576,7 @@ def download
       # Recall file from cache if requeseted
       if CREW_CACHE_ENABLED
         cachefile = CREW_CACHE_DIR + filename
-        if File.file?(cachefile)
+        if File.exist?(cachefile)
           if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum then
             FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
             puts "Archive found in cache".lightgreen
@@ -639,11 +638,13 @@ def download
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
         puts 'Caching downloaded archive...'
-          Dir.chdir "#{@extract_dir}" do
-            system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz \
-              $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
-          end
-        system "sha256sum #{CREW_CACHE_DIR}/#{filename}.tar.xz > #{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256"
+        Dir.chdir @extract_dir do
+          system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz \
+            $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
+        end
+        File.write("#{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256",
+          Digest::SHA256.hexdigest( File.binread("#{CREW_CACHE_DIR}/#{filename}.tar.xz") ) )
+        
         puts 'Archive cached.'.lightgreen
       end
     end
@@ -698,7 +699,7 @@ def build_and_preconfigure (target_dir)
     # libtool: link: '*.la' is not a valid libtool archive.
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
-    puts 'Rename all *.la files to *.la_tmp'.lightblue
+    puts 'Rename all *.la files to *.la_tmp'.lightblue if @opt_verbose
 
     system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@short_verbose} {} {}_tmp"
 
@@ -714,7 +715,7 @@ def build_and_preconfigure (target_dir)
 
     # Rename all *.la_tmp back to *.la to avoid
     # cannot access '*.la': No such file or directory
-    puts 'Rename all *.la_tmp files back to *.la'.lightblue
+    puts 'Rename all *.la_tmp files back to *.la'.lightblue if @opt_verbose
     system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@short_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
   end
 end
@@ -767,20 +768,22 @@ def prepare_package (destdir)
     # check for conflicts with other installed files
     puts "Checking for conflicts with files from installed packages..."
     conflicts = []
-    @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
-      -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
-      sed 's,.filelist,,g' | sed 's,#{CREW_META_PATH},,g'"
-    conflicts << %x[#{@conflictscmd}].chomp.split(" ")
-    conflicts.reject!(&:empty?)
-    unless conflicts.empty?
+    File.readlines('filelist').each do |p|
+      next unless File.exist(p)
+      Dir['/usr/local/etc/crew/meta/*.filelist'].each do |f|
+        pkgName = File.basename(f, '.rb')
+        c = File.foreach(f).grep( Regexp.new('^' + p + '$') )
+        conflicts[c] = pkgName if c
+      end
+
       puts "Unable to complete this build since there is a conflict with the same file in another package.".lightred
       pp = ''
-      conflicts.each do |p, f|
-        puts "\n#{p} package conflicts below:".lightred if p != pp
+      conflicts.each_pair do |f, p|
+        puts '', "#{p} package conflicts below:".lightred if p != pp
         puts f.lightred
         pp = p
       end
-      abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == '1'
+      abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY']
     end
 
     # create directory list
