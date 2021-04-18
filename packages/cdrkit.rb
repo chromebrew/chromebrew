@@ -10,10 +10,10 @@ class Cdrkit < Package
   source_sha256 'd1c030756ecc182defee9fe885638c1785d35a2c2a297b4604c0e0dcc78e47da'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cdrkit-1.1.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cdrkit-1.1.11-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cdrkit-1.1.11-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cdrkit-1.1.11-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cdrkit-1.1.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cdrkit-1.1.11-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cdrkit-1.1.11-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cdrkit-1.1.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6d829e8a270b9c6966998adff36696336503223c0a524c67a4760965741bc3e2',

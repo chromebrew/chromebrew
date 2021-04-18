@@ -10,10 +10,10 @@ class Percona_server < Package
   source_sha256 '17f06c07165954e7eacc3ba2cac0e1d4ba65b0b568f2437298d3c17a6a0940fd'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/percona_server-5.7.20-19-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/percona_server-5.7.20-19-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/percona_server-5.7.20-19-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',

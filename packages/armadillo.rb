@@ -10,10 +10,10 @@ class Armadillo < Package
   source_sha256 'dd9cd664282f2c3483af194ceedc2fba8559e0d20f8782c640fd6f3ac7cac2bf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/armadillo-9.600.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/armadillo-9.600.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/armadillo-9.600.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/armadillo-9.600.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/armadillo-9.600.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cabc00c9184da1185c0fcbe834c1447e0e31a9ff34b9c2ede39f7419b95768cc',

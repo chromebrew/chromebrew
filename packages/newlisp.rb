@@ -10,10 +10,10 @@ class Newlisp < Package
   source_sha256 'bc3272600510fe78d32a85b23e0793c16f9f9ee05605d28ca537bdc322c25dc2'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/newlisp-10.7.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/newlisp-10.7.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/newlisp-10.7.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/newlisp-10.7.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/newlisp-10.7.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/newlisp-10.7.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/newlisp-10.7.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/newlisp-10.7.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fd2b3a812a48f420f500823b80902ab9ac74379b5b77d1ab746ff6c385b22d3a',

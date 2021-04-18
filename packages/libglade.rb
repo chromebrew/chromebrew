@@ -3,32 +3,39 @@ require 'package'
 class Libglade < Package
   description 'Libglade is a library that performs a similar job to the C source output routines in the GLADE user interface builder.'
   homepage 'http://www.jamesh.id.au/software/libglade/'
-  version '2.6.4'
+  version '2.6.4-1'
   license 'LGPL-2'
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libglade/2.6/libglade-2.6.4.tar.bz2'
   source_sha256 '64361e7647839d36ed8336d992fd210d3e8139882269bed47dc4674980165dec'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libglade-2.6.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libglade-2.6.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libglade-2.6.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libglade-2.6.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libglade-2.6.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libglade-2.6.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libglade-2.6.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libglade-2.6.4-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '9f211b42969c6d791e8d61f13aad15251e3991c0270c251810eda6c5fbdb550e',
-     armv7l: '9f211b42969c6d791e8d61f13aad15251e3991c0270c251810eda6c5fbdb550e',
-       i686: '13920b24507ee60dc5f4c8501dd89305a05797b030afe25af6d3771595b83e56',
-     x86_64: '2749ac0d67edb91b1f59355fba8dd045c8dbc44ede3fc619304853b2ac4799cf',
+  binary_sha256({
+    aarch64: 'b4cad18d6fb3ed0a1594c387ceb3f2d635b82f4ec157d2e07c0d8a8a7cacd15f',
+     armv7l: 'b4cad18d6fb3ed0a1594c387ceb3f2d635b82f4ec157d2e07c0d8a8a7cacd15f',
+       i686: '85bbd35f8c0878bb2ef0fba71305b94d1c8d74dcc221f548372b72e39df0c9e6',
+     x86_64: 'a950a82a9b670902efd4418b9947ef47764520811fd65d2623ddc8416d818f05'
   })
 
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
   depends_on 'gtk2'
   depends_on 'gtk3'
+  depends_on 'pango'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    # flto breaks compile
+    system "./configure \
+      #{CREW_OPTIONS}"
     system 'make'
   end
 
@@ -37,6 +44,6 @@ class Libglade < Package
   end
 
   def self.check
-    #system 'make', 'check'
+    # system 'make', 'check'
   end
 end

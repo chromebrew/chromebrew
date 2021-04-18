@@ -3,23 +3,18 @@ require 'package'
 class Docbook_xml < Package
   description 'Meta package for all versions of docbook_xml'
   homepage 'http://www.docbook.org'
-  version '5.1-2'
+  version '5.1-2-1'
   license 'MIT'
   compatibility 'all'
 
   is_fake
 
-  # Docbook common postinstall block
-  ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
-
-  xml_catalog_files_in_bashrc = `grep -c "XML_CATALOG_FILES" ~/.bashrc || true`
-  unless xml_catalog_files_in_bashrc.to_i.positive?
-    puts "Putting \"export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog\" in ~/.bashrc".lightblue
-    system "echo 'export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog' >> ~/.bashrc"
-    puts 'To complete the installation, execute the following:'.orange
-    puts 'source ~/.bashrc'.orange
-  end
-  # End Docbook common postinstall block
+  FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+  @env = <<~EOF
+    # Docbook_xml configuration
+    XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
+  EOF
+  IO.write("#{CREW_DEST_PREFIX}/etc/env.d/docbook_xml", @env)
 
   depends_on 'xmlcatmgr'
   depends_on 'docbook_xml412'

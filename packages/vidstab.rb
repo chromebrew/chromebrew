@@ -10,10 +10,10 @@ class Vidstab < Package
   source_sha256 '14d2a053e56edad4f397be0cb3ef8eb1ec3150404ce99a426c4eb641861dc0bb'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vidstab-1.1.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vidstab-1.1.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vidstab-1.1.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vidstab-1.1.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vidstab-1.1.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vidstab-1.1.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vidstab-1.1.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vidstab-1.1.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1f8dad35414c0ee16576445473791d9012ff3910d3a491b40d820adc05438eb2',

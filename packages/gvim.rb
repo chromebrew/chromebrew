@@ -3,24 +3,24 @@ require 'package'
 class Gvim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2580'
+  @_ver = '8.2.2725'
   version @_ver
-  license 'vim'
+  license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
-  source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'
+  source_url "https://github.com/vim/vim/archive/refs/tags/v#{@_ver}.tar.gz"
+  source_sha256 'a8aca906cf63fdc4264f86c1c39f8164989de0be3dc18553cb23bd6226c361a9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.2580-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.2580-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.2580-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gvim-8.2.2580-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2725-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2725-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gvim-8.2.2725-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gvim-8.2.2725-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'c06a89c4a40a50d68232218248bce92fe6613cf7e1ec88711f3ac9fcc25e8d9d',
-     armv7l: 'c06a89c4a40a50d68232218248bce92fe6613cf7e1ec88711f3ac9fcc25e8d9d',
-       i686: 'ec59a0ce5aea951488100381333ef8e30f11880b2fadc66cbc9a90db06c7ff31',
-     x86_64: 'a3fa1854b694e1ae034086950a51909825bdd5886dbb7ed29e8651dc53673458'
+    aarch64: '0c813f4f93053af3d50e6bad0de4742eba2a99bed72ca5ca239fdf1b31d42b69',
+     armv7l: '0c813f4f93053af3d50e6bad0de4742eba2a99bed72ca5ca239fdf1b31d42b69',
+       i686: '2b9dd78e45e4543874fb5f5237e33edcf8c6ece04b9263c992ca4d9e7200a486',
+     x86_64: '177d45f4f3dd52e3148d46ab4de6b4ffe9f91b0ead63f9e75d5891a1ce1ff706'
   })
 
   depends_on 'vim_runtime'

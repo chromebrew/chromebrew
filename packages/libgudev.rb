@@ -10,10 +10,10 @@ class Libgudev < Package
   source_sha256 '5ecb0c8ca76b6da7c7ad01f947c407f3670362bf5d3244075928dd86e040fcc4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgudev-234-1c7e-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgudev-234-1c7e-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgudev-234-1c7e-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgudev-234-1c7e-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e636f1df415de3dddf08c3326d633b8bdf0223130e50cb2f62c5916b641c152a',
@@ -25,7 +25,7 @@ class Libgudev < Package
   depends_on 'gobject_introspection'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

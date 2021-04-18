@@ -17,16 +17,9 @@ class Mongodb < Package
   binary_sha256 ({
   })
 
-  depends_on 'openssl' => :build
   depends_on 'libpcap' => :build
-  depends_on 'python27' => :build
   depends_on 'scons' => :build
   depends_on 'go' => :build
-  depends_on 'git' => :build
-  case ARCH
-  when 'armv7l', 'aarch64'
-    depends_on 'perl' => :build         # gen-config.sh uses perl
-  end
 
   def self.build
     # prepare mongo-tools

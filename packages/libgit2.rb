@@ -11,10 +11,10 @@ class Libgit2 < Package
   source_sha256 'ad73f845965cfd528e70f654e428073121a3fa0dc23caac81a1b1300277d4dba'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libgit2-1.1.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgit2-1.1.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgit2-1.1.0-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgit2-1.1.0-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgit2-1.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '6ace517ea3525066a11071ed20e02eda6862bd944ceaf4f704c2f28b5f0bc6ac',
@@ -29,7 +29,7 @@ class Libgit2 < Package
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+      system "env #{CREW_ENV_OPTIONS} \
         cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \

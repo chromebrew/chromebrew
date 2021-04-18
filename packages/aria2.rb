@@ -11,10 +11,10 @@ class Aria2 < Package
   source_sha256 '1e2b7fd08d6af228856e51c07173cfcf987528f1ac97e04c5af4a47642617dfd'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aria2-1.35.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aria2-1.35.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aria2-1.35.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/aria2-1.35.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/aria2-1.35.0-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b8082b1a4f9b8941f2891564046415abf544f113a452650d139c64253f4378f1',

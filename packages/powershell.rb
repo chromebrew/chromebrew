@@ -15,10 +15,7 @@ class Powershell < Package
     source_sha256 'a9c023940c77a96a9f5135309e44c93ed627983bb1a66ecf5beb42bbba54ead6'
   end
 
-  case ARCH
-  when 'aarch64', 'armv7l', 'x86_64'
-    depends_on 'xdg_base'
-  end
+  depends_on 'xdg_base'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

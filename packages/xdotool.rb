@@ -13,10 +13,10 @@ class Xdotool < Package
   source_sha256 '35be5ff6edf0c620a0e16f09ea5e101d5173280161772fca18657d83f20fcca8'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xdotool-3.20160805.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xdotool-3.20160805.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xdotool-3.20160805.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xdotool-3.20160805.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xdotool-3.20160805.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xdotool-3.20160805.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xdotool-3.20160805.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xdotool-3.20160805.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '37b9d630ca048ed377c184d44cbbc261022fabe6bec143abc0c066563f913bc4',

@@ -11,10 +11,10 @@ class Libpng < Package
   source_sha256 '505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpng-1.6.37-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpng-1.6.37-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpng-1.6.37-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpng-1.6.37-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libpng-1.6.37-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libpng-1.6.37-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libpng-1.6.37-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libpng-1.6.37-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'addb9158594a38f2d4ecd90c5de111d43586d3cdd9ab1edc25536cfb3dc3b760',
@@ -23,7 +23,7 @@ class Libpng < Package
      x86_64: '703cb00f75ecdab4918029aa57ee9ed53f027d0a4be6cd6c29b9e4fbd25f7dfe'
   })
 
-  depends_on 'zlibpkg'
+  depends_on 'shared_mime_info'
 
   def self.patch
     system 'filefix'
@@ -42,5 +42,9 @@ class Libpng < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.postinstall
+    system 'update-mime-database', "#{CREW_PREFIX}/share/mime"
   end
 end

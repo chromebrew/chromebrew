@@ -10,10 +10,10 @@ class Mypaint_brushes < Package
   source_sha256 '704bb6420e65085acfd7a61d6050e96b0395c5eab078433f11406c355f16b214'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint_brushes-1.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint_brushes-1.3.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mypaint_brushes-1.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mypaint_brushes-1.3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '87eed1b1688597faac6b4910e1489d6fc4967af705b6594eaf9fdb5568a44dd1',

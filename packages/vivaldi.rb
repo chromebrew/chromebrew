@@ -3,68 +3,57 @@ require 'package'
 class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
-  version '3.4.2066.76'
+  @_ver = '3.7.2218.52'
+  version @_ver
+  compatibility 'all'
   license 'Vivaldi'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vivaldi-3.4.2066.76-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vivaldi-3.4.2066.76-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vivaldi-3.4.2066.76-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '3e7ae1d2390328fed4fa6fbef334bc986bba013b567e8ed4e4176c4dda22568b',
-     armv7l: '3e7ae1d2390328fed4fa6fbef334bc986bba013b567e8ed4e4176c4dda22568b',
-     x86_64: 'ddcc649cc4580e12c28769f5b4ecb6a647841a902fc6a557ef27613eb02a4f60',
-  })
+  depends_on 'cras'
+  depends_on 'gtk3'
+  depends_on 'gsettings_desktop_schemas'
+  depends_on 'libx264'
+  depends_on 'xdg_base'
+  depends_on 'xdg_utils'
+  depends_on 'sommelier'
 
   case ARCH
-  when 'aarch64', 'armv7l', 'x86_64'
-    depends_on 'alien' => :build
-    depends_on 'cras'
-    depends_on 'gtk3'
-    depends_on 'gsettings_desktop_schemas'
-    depends_on 'libx264'
-    depends_on 'xdg_base'
-    depends_on 'xdg_utils'
-    depends_on 'sommelier'
+  when 'aarch64', 'armv7l'
+    @_arch = 'armhf'
+    source_sha256 '1f92f3ea5ef6d2260b2784089d334a32be54aa3d955955fc3cc443d8937cae06'
+  when 'x86_64'
+    @_arch = 'amd64'
+    source_sha256 'f131f182bc6dd6e735a83ffaa4ff2a3cca90184daa26e0996d1cb64ed765ab2a'
+  when 'i686'
+    @_arch = 'i386'
+    source_sha256 '6f93e285e1cd48103fbdc3266e1188556ed2a98b08f7c6420eeb07c05c559a08'
   end
 
-  def self.build
-    case ARCH
-    when 'aarch64', 'armv7l'
-      arch = 'armhf'
-      sha256 = '3288843c31b86edcdc4f1a6ba33832d926244e60e14157e602ae7420bb860adc'
-    when 'x86_64'
-      arch = 'amd64'
-      sha256 = 'f9d457943b40e2bd4edd6d7d6cf069bd9cb690b5da60f7ec314837840194abfa'
-    end
-    system "curl -#LO https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}-1_#{arch}.deb"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("vivaldi-stable_#{version}-1_#{arch}.deb") ) == sha256
-    system "alien -tc vivaldi-stable_#{version}-1_#{arch}.deb"
-    system "tar xvf vivaldi-stable-#{version}.tgz"
+  source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{@_ver}-1_#{@_arch}.deb"
+
+  def self.patch
+    # ERROR: ld.so: object '/home/chronos/user/.local/lib/vivaldi/media-codecs-89.0.4389.82/libffmpeg.so' from LD_PRELOAD cannot be preloaded
+    system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/vivaldi'
+    system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/update-ffmpeg'
   end
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
-    FileUtils.rm 'usr/bin/vivaldi-stable'
-    FileUtils.mv 'usr/bin', CREW_DEST_PREFIX
-    FileUtils.mv 'opt', CREW_DEST_PREFIX
-    FileUtils.mv 'usr/share', CREW_DEST_PREFIX
-    FileUtils.ln_s "#{CREW_PREFIX}/opt/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi"
+
+    FileUtils.mv './etc/', CREW_DEST_PREFIX
+    FileUtils.mv Dir['./usr/*'], CREW_DEST_PREFIX
+    FileUtils.mv './opt/vivaldi/', "#{CREW_DEST_PREFIX}/share/"
+
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi-stable"
+    FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi"
   end
 
   def self.postinstall
-    puts
-    puts "Type 'vivaldi' to get started.".lightblue
-    puts
-    puts "To completely remove, execute the following:".lightblue
-    puts "crew remove vivaldi".lightblue
-    puts "rm -rf ~/.config/vivaldi".lightblue
-    puts "rm -rf ~/.config/lib/vivaldi".lightblue
-    puts "rm -f ~/.config/share/.vivaldi_reporting_data".lightblue
-    puts
+    system "#{CREW_PREFIX}/share/vivaldi/update-ffmpeg", '--user'
+  end
+
+  def self.remove
+    Dir.chdir(CREW_PREFIX) do
+      FileUtils.rm_rf ["#{HOME}/.local/lib/vivaldi", '.config/vivaldi', '.cache/vivaldi', '.config/share/.vivaldi_reporting_data']
+    end
   end
 end

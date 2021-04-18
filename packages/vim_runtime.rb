@@ -3,24 +3,24 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2580'
+  @_ver = '8.2.2725'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
-  source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'
+  source_url "https://github.com/vim/vim/archive/refs/tags/v#{@_ver}.tar.gz"
+  source_sha256 'a8aca906cf63fdc4264f86c1c39f8164989de0be3dc18553cb23bd6226c361a9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim_runtime-8.2.2725-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim_runtime-8.2.2725-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vim_runtime-8.2.2725-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vim_runtime-8.2.2725-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
-     armv7l: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
-       i686: '1cefc1026dfdac9d039bb82629ab9287c2bd9a6704f4929f120766d436e7c237',
-     x86_64: '9b8e3d8e1e7455d049000342972c9dfb09ad1fb0b98ef665dde381aa646f9951'
+    aarch64: '25defdc827b9d728a772b030bcb0b70ddef40e0d0cfc0c541e5586134006f84f',
+     armv7l: '25defdc827b9d728a772b030bcb0b70ddef40e0d0cfc0c541e5586134006f84f',
+       i686: '9bed968fb77eaf4738a5d9a327fdfd8163be88e710a69f32c11e5d90562cfb2a',
+     x86_64: 'beeb273511e1728621609d5ab03d115ccab2f2197a90e72de0d39ed391120898'
   })
 
   depends_on 'gpm'
@@ -38,7 +38,6 @@ class Vim_runtime < Package
   end
 
   def self.build
-    system './configure --help'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
@@ -92,6 +91,9 @@ class Vim_runtime < Package
       if &compatible
         set nocompatible
       endif
+
+      " Disable automatic visual mode on mouse select.
+      set mouse-=a
 
       set backspace=indent,eol,start
       set ruler

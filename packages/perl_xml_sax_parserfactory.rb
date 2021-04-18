@@ -10,10 +10,10 @@ class Perl_xml_sax_parserfactory < Package
   source_sha256 '4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_sax_parserfactory-1.02-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_xml_sax_parserfactory-1.02-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_xml_sax_parserfactory-1.02-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_xml_sax_parserfactory-1.02-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9a65d90e104f6345618c68a626188de073498c5a836f02478ee0388af74197d2',

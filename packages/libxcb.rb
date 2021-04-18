@@ -10,10 +10,10 @@ class Libxcb < Package
   source_sha256 'a55ed6db98d43469801262d81dc2572ed124edc3db31059d4e9916eb9f844c34'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxcb-1.14-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxcb-1.14-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxcb-1.14-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxcb-1.14-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxcb-1.14-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxcb-1.14-2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxcb-1.14-2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxcb-1.14-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '970a54ee26b5719351236de38fa8e714815f478fb76a53b07ed8458950f0e7e8',

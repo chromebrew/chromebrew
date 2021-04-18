@@ -11,10 +11,10 @@ class Libxdamage < Package
   source_sha256 '630ec53abb8c2d6dac5cd9f06c1f73ffb4a3167f8118fdebd77afd639dbc2019'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.5-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.5-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.5-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxdamage-1.1.5-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxdamage-1.1.5-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxdamage-1.1.5-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxdamage-1.1.5-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxdamage-1.1.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '1732f53c0dadda7fbc3a17b9628930e3f5a5c22200cc0d8e6020eca7f410264b',

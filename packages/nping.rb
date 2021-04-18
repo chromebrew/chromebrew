@@ -10,10 +10,10 @@ class Nping < Package
   source_sha256 'a8796ecc4fa6c38aad6139d9515dc8113023a82e9d787e5a5fb5fa1b05516f21'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nping-7.60-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nping-7.60-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nping-7.60-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nping-7.60-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nping-7.60-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nping-7.60-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nping-7.60-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nping-7.60-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e57915081b9648b6f4ea639a40f611306d870fced74b47ee3438daa8414e1921',
@@ -33,8 +33,8 @@ class Nping < Package
     #without-zenmap in configure removes openssl dependency
     system "./configure --without-zenmap --prefix=#{CREW_PREFIX}"
 
-    # Make files in the project dont have the right dependencies to build this by itself
-    # so just make the whole thing and then install nping - not effecient, but
+    # Make files in the project don't have the right dependencies to build this by itself
+    # so just make the whole thing and then install nping - not efficient, but
     # more likely to work than a bunch of Makefile dependency edits
     system "make"
   end

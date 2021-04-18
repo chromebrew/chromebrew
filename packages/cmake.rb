@@ -11,10 +11,10 @@ class Cmake < Package
   source_sha256 '7d0232b9f1c57e8de81f38071ef8203e6820fe7eec8ae46a1df125d88dbcc2e1'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.4-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.4-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cmake-3.19.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.19.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.19.4-chromeos-armv7l.tar.xz',
+        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cmake-3.19.4-chromeos-i686.tar.xz',
+      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cmake-3.19.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '2fadd859e81c8db71411692c6cef4efbd53daa3c70b5d8739f7d15de290fdffb',
@@ -32,7 +32,7 @@ class Cmake < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./bootstrap --prefix=#{CREW_PREFIX}"
     system 'make'
   end

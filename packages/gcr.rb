@@ -3,23 +3,24 @@ require 'package'
 class Gcr < Package
   description 'GNOME crypto package'
   homepage 'https://www.gnome.org'
-  version '3.40.0'
+  @_ver = '3.40.0'
+  version "#{@_ver}-1"
   license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{version}/gcr-#{version}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{@_ver}/gcr-#{@_ver}.tar.bz2"
   source_sha256 '659a49bac1c713a743894845c82ef53ccc7326dcce1879b1af0ab502ec10e7ab'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gcr-3.40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcr-3.40.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcr-3.40.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gcr-3.40.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gcr-3.40.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0756d3e389d6414442a8991cf59fe2bc9b08aaea009ef271608da7fb0da37c0e',
-     armv7l: '0756d3e389d6414442a8991cf59fe2bc9b08aaea009ef271608da7fb0da37c0e',
-       i686: '70b81b9f78daf7a22cd7489819428fd48df8630e81289b3fe255a5c3b4b7dd6c',
-     x86_64: '4f27f7bb81abadf2a044637b0afb286ec252107c1380291bb82e6c3d7e230aa1'
+    aarch64: 'e1062d5322f4dd084436459fe26e76af0a6118e3a1b0f88329dacae0617c0d96',
+     armv7l: 'e1062d5322f4dd084436459fe26e76af0a6118e3a1b0f88329dacae0617c0d96',
+       i686: 'd927f0e2bdcfa4542d68d4ddc9371b67776f2724b19bd0847029dee6d9751244',
+     x86_64: 'a7a7c8ecd1472f17269e33624ba2e91ca4dd699613f833ce9b566889a81ab45f'
   })
 
   depends_on 'cairo'
@@ -31,12 +32,13 @@ class Gcr < Package
   depends_on 'gtk3'
   depends_on 'hicolor_icon_theme'
   depends_on 'libgcrypt'
+  depends_on 'libjpeg'
   depends_on 'libxslt'
   depends_on 'pango'
   depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=false \
     builddir"
     system 'meson configure builddir'

@@ -10,10 +10,10 @@ class Aircrack_ng < Package
   source_sha256 'd6dc9078f2ab56671f8fb707aa5ddbbec36d1a732cc7ad9a3d2803a5dbbaae5b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/aircrack_ng-1.6-17f9-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/aircrack_ng-1.6-17f9-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7c7b369f40e783ebad0786124f109b50ef9db65ae5b5fa725af55712c8eefea4',
@@ -35,7 +35,6 @@ class Aircrack_ng < Package
     # --with-avx512[=yes|no]  use AVX-512F instruction set, [default=no]
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
       LDFLAGS='-flto=auto' \
-      TMPDIR=#{CREW_PREFIX}/tmp \
       ./configure \
       #{CREW_OPTIONS} \
       --program-prefix='' --program-suffix='' \

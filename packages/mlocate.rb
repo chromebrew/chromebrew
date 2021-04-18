@@ -10,10 +10,10 @@ class Mlocate < Package
   source_sha256 '3063df79fe198fb9618e180c54baf3105b33d88fe602ff2d8570aaf944f1263e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mlocate-0.26-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mlocate-0.26-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mlocate-0.26-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mlocate-0.26-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mlocate-0.26-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mlocate-0.26-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mlocate-0.26-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mlocate-0.26-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '69e02f44a498cd38a8f4bc2e3410f934506426d670664c402a09bfb34d51418c',

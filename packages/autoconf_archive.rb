@@ -10,10 +10,10 @@ class Autoconf_archive < Package
   source_sha256 '6175f90d9fa64c4d939bdbb3e8511ae0ee2134863a2c7bf8d9733819efa6e159'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2018.03.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2018.03.13-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2018.03.13-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf_archive-2018.03.13-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/autoconf_archive-2018.03.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/autoconf_archive-2018.03.13-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/autoconf_archive-2018.03.13-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/autoconf_archive-2018.03.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f2088e6174f98043cfddf9b2d96441289df11734427ae9dc6c59da75422aaba4',

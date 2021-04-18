@@ -6,15 +6,13 @@ class Wing < Package
   version '7.2.1.0'
   license 'Wingware-EULA'
   compatibility 'x86_64'
-  case ARCH
-  when 'x86_64'
-    source_url 'https://wingware.com/pub/wing-personal/7.2.1.0/wing-personal-7.2.1.0-linux-x64.tar.bz2'
-    source_sha256 'e42a8269a08c8bff6a91d021dcc11de8ab0b007a5a267bdeb870e7369f155064'
-    depends_on 'sommelier'
-  end
+  source_url 'https://wingware.com/pub/wing-personal/7.2.1.0/wing-personal-7.2.1.0-linux-x64.tar.bz2'
+  source_sha256 'e42a8269a08c8bff6a91d021dcc11de8ab0b007a5a267bdeb870e7369f155064'
+
+  depends_on 'sommelier'
 
   binary_url ({
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wing-7.2.1.0-chromeos-x86_64.tar.xz',
+    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wing-7.2.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     x86_64: '8be03ea9bcfa884c4f4a324190ecf6cbefd7b82389e264b6a35e318f30ec7ed3',

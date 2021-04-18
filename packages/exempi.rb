@@ -13,10 +13,10 @@ class Exempi < Package
   source_sha256 'dff105f53bdd971e633b7fcb3bcfb22276716228a9e6063c1fd241a8542b9cec'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/exempi-2.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/exempi-2.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/exempi-2.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/exempi-2.5.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/exempi-2.5.2-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/exempi-2.5.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9f9699c46f95394aaaf6b116f7984c6dbfdbcd258698624baace212458391e67',

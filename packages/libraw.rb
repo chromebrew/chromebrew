@@ -10,10 +10,10 @@ class Libraw < Package
   source_sha256 '40a262d7cc71702711a0faec106118ee004f86c86cc228281d12d16da03e02f5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libraw-0.19.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libraw-0.19.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libraw-0.19.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libraw-0.19.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libraw-0.19.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libraw-0.19.5-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libraw-0.19.5-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libraw-0.19.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4b5b8a0de463b978d31665cec3651408b2e7d5dde525bf6c81eda6fa50642fc7',
