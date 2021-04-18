@@ -14,6 +14,7 @@ class Gnome_sudoku < Package
   depends_on 'gsound'
   depends_on 'librsvg'
   depends_on 'qqwing'
+  depends_on 'sommelier'
 
   def self.build
     system "meson #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
