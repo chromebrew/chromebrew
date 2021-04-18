@@ -3,7 +3,7 @@ require 'package'
 class Gnome_klotski < Package
   description 'A puzzle game for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Klotski'
-  @_ver = '3.38.2'
+  @_ver = '3.38.2-1'
   version @_ver
   license 'GPL-3+ and FDL-1.1+'
   compatibility 'all'
