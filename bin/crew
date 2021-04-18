@@ -5,8 +5,6 @@ require_relative '../lib/color'
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 
 require 'find'
-require 'net/http'
-require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
@@ -557,8 +555,7 @@ def download
   url = @pkg.get_url(@device[:architecture])
   source = @pkg.is_source?(@device[:architecture])
 
-  uri = URI.parse url
-  filename = File.basename(uri.path)
+  filename = File.basename(url)
   sha256sum = @pkg.get_sha256(@device[:architecture])
   @extract_dir = @pkg.get_extract_dir
 
