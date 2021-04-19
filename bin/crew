@@ -246,18 +246,15 @@ def regexp_search(pkgPat)
     .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
     Dir[CREW_PACKAGES_PATH + '*.rb'].each do |packagePath|
-      alias description String
-      File.foreach(packagePath) do |line|
-        next unless line =~ /^\s*description/
-        _eval = eval line
-        next unless _eval =~ /#{pkgPat}/i
-        pkgName = File.basename(packagePath, '.rb')
-        results << pkgName
-        puts pkgName + ': ' + _eval
+      packageName = File.basename packagePath, '.rb'
+      set_package packageName, packagePath
+      if ( @pkg.description =~ /#{pkgPat}/i )
+        print_current_package @opt_verbose
+        results.push(packageName)
       end
     end
   end
-  abort "Package #{pkgPat} not found. :(".lightred unless results.length.positive?
+  abort "Package #{pkgPat} not found. :(".lightred unless results.length > 0
 end
 
 def help (pkgName)
