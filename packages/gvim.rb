@@ -3,24 +3,24 @@ require 'package'
 class Gvim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2725'
-  version "#{@_ver}-1"
+  @_ver = '8.2.2783'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2771-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2771-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gvim-8.2.2771-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gvim-8.2.2771-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gvim-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gvim-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0c813f4f93053af3d50e6bad0de4742eba2a99bed72ca5ca239fdf1b31d42b69',
-     armv7l: '0c813f4f93053af3d50e6bad0de4742eba2a99bed72ca5ca239fdf1b31d42b69',
-       i686: '2b9dd78e45e4543874fb5f5237e33edcf8c6ece04b9263c992ca4d9e7200a486',
-     x86_64: '177d45f4f3dd52e3148d46ab4de6b4ffe9f91b0ead63f9e75d5891a1ce1ff706'
+    aarch64: '5fa3e65af114e54896f1bb6c26d5641b3eeda7360bc1f1db2f4391c7837a1fae',
+     armv7l: '5fa3e65af114e54896f1bb6c26d5641b3eeda7360bc1f1db2f4391c7837a1fae',
+       i686: '0673b3a34aa458741db5143806711e878074d629dad775868e756f86a216ef6e',
+     x86_64: '49b45c9d34d39571e099c352f2d6508d057195fedfcb3958e45ff80521cfd7d5'
   })
 
   depends_on 'vim_runtime'
@@ -40,11 +40,11 @@ class Gvim < Package
              'feature.h'
       system 'sed', '-i', "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|",
              'feature.h'
-      system 'autoconf'
     end
   end
 
   def self.build
+    system '[ -x configure ] || autoreconf -fvi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \

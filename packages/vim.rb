@@ -3,12 +3,25 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2725'
-  version "#{@_ver}-1"
+  @_ver = '8.2.2783'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{@_ver}"
+
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vim-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vim-8.2.2783-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '7d9a7c8c565f0957ba9691600211b91ac9eedd2ef9c1b4f005407ca9485e5c80',
+     armv7l: '7d9a7c8c565f0957ba9691600211b91ac9eedd2ef9c1b4f005407ca9485e5c80',
+       i686: 'a220c76cdc7db089cf66bedfb7c16aa60aa184b7229ea6df6c8a67a6778920a9',
+     x86_64: '2c857e364ce0f2e9e6d543db1c83c588392fdb9845fa919390e03ef4bd395fe7'
+  })
 
   depends_on 'vim_runtime'
 
@@ -25,11 +38,11 @@ class Vim < Package
              'feature.h'
       system 'sed', '-i', "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|",
              'feature.h'
-      system 'autoconf'
     end
   end
 
   def self.build
+    system '[ -x configure ] || autoreconf -fvi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \

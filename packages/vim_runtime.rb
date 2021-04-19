@@ -3,24 +3,24 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2725'
-  version "#{@_ver}-1"
+  @_ver = '8.2.2783'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim_runtime-8.2.2771-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim_runtime-8.2.2771-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vim_runtime-8.2.2771-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vim_runtime-8.2.2771-chromeos-x86_64.tar.xz'
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vim_runtime-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vim_runtime-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '13f9a4b274583ca357f19c8005b85d0d78b5a0e15d17c5ce261f12aef8aa883c',
-     armv7l: '13f9a4b274583ca357f19c8005b85d0d78b5a0e15d17c5ce261f12aef8aa883c',
-       i686: 'e9834a529a0035923d63620ede15202b03c9560ba684cfc04f1c8cd3e888779b',
-     x86_64: '5cc51807ad98444e7ac226cfae843808b13b0817d847281e9bdb41dd4358bd34'
+    aarch64: '7b5f68b15a505a1e09341e42effc0b9459f9ce6e43a86bd55d9db8d21d68fdf3',
+     armv7l: '7b5f68b15a505a1e09341e42effc0b9459f9ce6e43a86bd55d9db8d21d68fdf3',
+       i686: '582e96ae36094a8f6999d8e4536be2c9dee605b817993283a2ef67b58a01323c',
+     x86_64: 'f8938a61e962da682b46ea66a0d29fb47300a219b7d80ec654dcff2a5d475e7d'
   })
 
   depends_on 'gpm'
@@ -33,11 +33,11 @@ class Vim_runtime < Package
              'feature.h'
       system 'sed', '-i', "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|",
              'feature.h'
-      system 'autoconf'
     end
   end
 
   def self.build
+    system '[ -x configure ] || autoreconf -fvi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
