@@ -3,24 +3,24 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.19.4'
+  @_ver = '3.20.1'
   version @_ver
   license 'CMake'
   compatibility 'all'
   source_url "https://github.com/Kitware/CMake/releases/download/v#{@_ver}/cmake-#{@_ver}.tar.gz"
-  source_sha256 '7d0232b9f1c57e8de81f38071ef8203e6820fe7eec8ae46a1df125d88dbcc2e1'
+  source_sha256 '3f1808b9b00281df06c91dd7a021d7f52f724101000da7985a401678dfe035b0'
 
-  binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.19.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.19.4-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cmake-3.19.4-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cmake-3.19.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.20.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.20.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cmake-3.20.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cmake-3.20.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '2fadd859e81c8db71411692c6cef4efbd53daa3c70b5d8739f7d15de290fdffb',
-      armv7l: '2fadd859e81c8db71411692c6cef4efbd53daa3c70b5d8739f7d15de290fdffb',
-        i686: '155a845f77398d932b257c1e1d88d88ddb9aadd3475a07dfef7254eec9ec1216',
-      x86_64: '378988eb97d00f0c8b57e1c2992a1a597c2ec640d58d0f16be9caab203fd69cc',
+  binary_sha256({
+    aarch64: '078af3199ebab9ea478b9c162098b1746a91a83a62052017991e6d66ff5e81e2',
+     armv7l: '078af3199ebab9ea478b9c162098b1746a91a83a62052017991e6d66ff5e81e2',
+       i686: '715e5a2d8b097df0f753cac11e6c15fc3b5a47765de4f9be554715c65bbb7a5b',
+     x86_64: '61e754f415704a3feaeb6a0f0bdbd7cbdd958f76f779b32be49c799e351a0852'
   })
 
   depends_on 'llvm' => :build
@@ -39,5 +39,6 @@ class Cmake < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.mv "#{CREW_DEST_PREFIX}/doc/", "#{CREW_DEST_PREFIX}/share/"
   end
 end
