@@ -10,9 +10,17 @@ class Cmake < Package
   source_url "https://github.com/Kitware/CMake/releases/download/v#{@_ver}/cmake-#{@_ver}.tar.gz"
   source_sha256 '3f1808b9b00281df06c91dd7a021d7f52f724101000da7985a401678dfe035b0'
 
-  binary_url ({
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.20.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cmake-3.20.1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cmake-3.20.1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cmake-3.20.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
+    aarch64: '078af3199ebab9ea478b9c162098b1746a91a83a62052017991e6d66ff5e81e2',
+     armv7l: '078af3199ebab9ea478b9c162098b1746a91a83a62052017991e6d66ff5e81e2',
+       i686: '715e5a2d8b097df0f753cac11e6c15fc3b5a47765de4f9be554715c65bbb7a5b',
+     x86_64: '61e754f415704a3feaeb6a0f0bdbd7cbdd958f76f779b32be49c799e351a0852'
   })
 
   depends_on 'llvm' => :build
