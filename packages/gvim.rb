@@ -17,10 +17,10 @@ class Gvim < Package
      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gvim-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5fa3e65af114e54896f1bb6c26d5641b3eeda7360bc1f1db2f4391c7837a1fae',
-     armv7l: '5fa3e65af114e54896f1bb6c26d5641b3eeda7360bc1f1db2f4391c7837a1fae',
-       i686: '0673b3a34aa458741db5143806711e878074d629dad775868e756f86a216ef6e',
-     x86_64: '49b45c9d34d39571e099c352f2d6508d057195fedfcb3958e45ff80521cfd7d5'
+    aarch64: 'bb178b2d66d9a84237b4f4dfacd78befa7a5b88baffe0f49f8bacee045dda6bd',
+     armv7l: 'bb178b2d66d9a84237b4f4dfacd78befa7a5b88baffe0f49f8bacee045dda6bd',
+       i686: 'a0ad2d39ab72c9d5f827fdb0bdaeb39ca6cd64114f4520f3979f43852dcf9458',
+     x86_64: '979a27bf60ed3af9e08d61c159d51d39dade3f32818d57e50fd846f9a840935d'
   })
 
   depends_on 'vim_runtime'

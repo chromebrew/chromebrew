@@ -17,10 +17,10 @@ class Vim_runtime < Package
      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vim_runtime-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '7b5f68b15a505a1e09341e42effc0b9459f9ce6e43a86bd55d9db8d21d68fdf3',
-     armv7l: '7b5f68b15a505a1e09341e42effc0b9459f9ce6e43a86bd55d9db8d21d68fdf3',
-       i686: '582e96ae36094a8f6999d8e4536be2c9dee605b817993283a2ef67b58a01323c',
-     x86_64: 'f8938a61e962da682b46ea66a0d29fb47300a219b7d80ec654dcff2a5d475e7d'
+    aarch64: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
+     armv7l: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
+       i686: 'fe0bed8bc2aaa80db2748876c746cfce7f6c1004a30f3293f9497bdbdf6ca04e',
+     x86_64: 'f1e37f9c9ad6cf1fea25581634abc0a67ec51f4c64bfc0936b9a9544a958095b'
   })
 
   depends_on 'gpm'

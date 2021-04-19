@@ -17,10 +17,10 @@ class Vim < Package
      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vim-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '7d9a7c8c565f0957ba9691600211b91ac9eedd2ef9c1b4f005407ca9485e5c80',
-     armv7l: '7d9a7c8c565f0957ba9691600211b91ac9eedd2ef9c1b4f005407ca9485e5c80',
-       i686: 'a220c76cdc7db089cf66bedfb7c16aa60aa184b7229ea6df6c8a67a6778920a9',
-     x86_64: '2c857e364ce0f2e9e6d543db1c83c588392fdb9845fa919390e03ef4bd395fe7'
+    aarch64: '3051888f588842fe3001ab6bd014d28c094cbb45096078295dd82f2640e2557f',
+     armv7l: '3051888f588842fe3001ab6bd014d28c094cbb45096078295dd82f2640e2557f',
+       i686: 'e20d87a9a0bfaa0470ef317f51f5786076b0fc15ef55a2b12daf044f731fb5ff',
+     x86_64: '53c2887e570759765ae43abeedd7857b6fafb531f94aac2dbc48901c85110fbd'
   })
 
   depends_on 'vim_runtime'
