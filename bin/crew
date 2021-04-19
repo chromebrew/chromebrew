@@ -559,7 +559,7 @@ def upgrade
       puts "#{@pkg.name} is already up to date.".lightgreen
     end
   else
-    # Make a installed packages list belong to the dependency order
+    # Make an installed packages list belong to the dependency order
     dependencies = []
     @device[:installed_packages].each do |package|
       # skip package if it is dependent other packages previously checked
@@ -568,6 +568,7 @@ def upgrade
       dependencies = [ package[:name] ].concat(dependencies)
       # expand dependencies and add it to the dependencies list
       search package[:name], true
+      @dependencies = []
       exp_dep = expand_dependencies
       dependencies = exp_dep.concat(dependencies)
     end
@@ -897,17 +898,6 @@ def resolve_dependencies_and_install
 end
 
 def expand_dependencies
-  @dependencies = []
-  if @pkg.build_from_source
-    # make sure all buildessential packages are installed
-    pkgname = @pkg.name
-    search 'buildessential', true
-    check_deps = @pkg.dependencies.map {|k, v| k}
-    check_deps.each do |dep|
-      @dependencies << dep unless @device[:installed_packages].include?(dep)
-    end
-    search pkgname, true
-  end
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
@@ -932,6 +922,15 @@ end
 
 def resolve_dependencies
   abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
+
+  @dependencies = []
+  if @pkg.build_from_source
+    # make sure all buildessential packages are installed
+    pkgname = @pkg.name
+    search 'buildessential', true
+    expand_dependencies
+    search pkgname, true
+  end
   expand_dependencies
 
   # leave only not installed packages in dependencies
