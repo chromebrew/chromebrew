@@ -769,7 +769,7 @@ def prepare_package (destdir)
         puts f.chomp.lightred
         pp = p
       end
-      abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY']
+      abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == '1'
     end
 
     # create directory list
