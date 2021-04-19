@@ -34,7 +34,7 @@ CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
 HOME = ENV['HOME'] || CREW_PREFIX + ENV['HOME']
 USER = `whoami`.chomp
-CREW_CACHE_DIR = ENV['CREW_CACHE_DIR'] || HOME + '/.cache/crewcache'
+CREW_CACHE_DIR = ENV['CREW_CACHE_DIR'] || CREW_PREFIX + '/var/cache/crew'
 
 FileUtils.mkdir_p CREW_CACHE_DIR unless Dir.exist? CREW_CACHE_DIR
 
