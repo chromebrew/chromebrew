@@ -424,14 +424,11 @@ def files (pkgName)
 end
 
 def whatprovides (regexPat)
-  needle = regexPat.gsub(/-/,',').gsub(/,/,'\-')
-  Dir[CREW_META_PATH + '*.filelist'].each do |pkgList|
-    File.foreach(pkgList).each do |line|
-      next unless line.ascii_only? and line =~ /#{needle}/
-      # should not have same file between packages
-      return (puts (File.basename(pkgList, '.filelist') + ': ' + line))
-    end
-  end
+  puts `grep '#{regexPat}' #{CREW_LIB_PATH}/packages/*.rb`.each_line \
+    .map {|f|
+      p = f.split(':', 2)
+      File.basename(p[0]) + ': ' + p[1]
+    }
 end
 
 def update (pkg = nil)
