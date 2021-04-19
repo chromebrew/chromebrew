@@ -85,9 +85,9 @@ class Buildessential < Package
   #depends_on 'fpc'
 
   # Perl
-  #depends_on 'perl'
-  #depends_on 'pcre'
-  #depends_on 'pcre2'
+  depends_on 'perl'
+  depends_on 'pcre'
+  depends_on 'pcre2'
 
   # Perl module build?
   #depends_on 'perl_module_build'
