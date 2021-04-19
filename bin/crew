@@ -7,9 +7,9 @@ abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require 'securerandom'
 require_relative '../lib/const'
 require_relative '../lib/util'
+require_relative '../lib/docopt'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -77,7 +77,6 @@ CURL = ENV['CURL'] || 'curl'
 @cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
 
 # Parse arguments using docopt
-require_relative '../lib/docopt'
 begin
   args = Docopt::docopt(DOC)
   args['<name>'] = args['<name>'].map { |arg| arg.gsub('-','_') } if args['<name>']
@@ -139,8 +138,8 @@ end
 def print_current_package (extra = false)
   pkgName = @pkg.name
   status = ''
-  status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == pkgName end
-  status = 'incompatible' unless @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
+  status = 'installed' if @device[:installed_packages].any? {|elem| elem[:name] == pkgName }
+  status = 'incompatible' unless @device[:compatible_packages].any? {|elem| elem[:name] == pkgName }
   case status
   when 'installed'
     print @pkg.name.lightgreen
@@ -160,7 +159,7 @@ def print_current_package (extra = false)
 end
 
 def set_package (pkgName, pkgPath)
-  require pkgPath
+  require_relative pkgPath
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.build_from_source = true if @opt_recursive
   @pkg.name = pkgName
@@ -174,9 +173,13 @@ end
 
 def list_available
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
-    notInstalled = true
     pkgName = File.basename filename, '.rb'
-    notInstalled = false if File.exists? CREW_META_PATH + pkgName + '.filelist'
+    if File.exists? CREW_META_PATH + pkgName + '.filelist'
+      notInstalled = false
+    else 
+      notInstalled = true
+    end
+    
     if notInstalled
       set_package pkgName, filename
       if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
@@ -190,7 +193,7 @@ end
 
 def list_installed
   Dir[CREW_META_PATH + '*.directorylist'].sort.map do |f|
-    File.basename(f, '.directorylist').lightgreen
+    puts File.basename(f, '.directorylist').lightgreen
   end
 end
 
@@ -243,15 +246,18 @@ def regexp_search(pkgPat)
     .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
     Dir[CREW_PACKAGES_PATH + '*.rb'].each do |packagePath|
-      packageName = File.basename packagePath, '.rb'
-      set_package packageName, packagePath
-      if ( @pkg.description =~ /#{pkgPat}/i )
-        print_current_package @opt_verbose
-        results.push(packageName)
+      alias description String
+      File.foreach(packagePath) do |line|
+        next unless line =~ /^\s*description/
+        _eval = eval line
+        next unless _eval =~ /#{pkgPat}/i
+        pkgName = File.basename(packagePath, '.rb')
+        results << pkgName
+        puts pkgName + ': ' + _eval
       end
     end
   end
-  abort "Package #{pkgPat} not found. :(".lightred unless results.length > 0
+  abort "Package #{pkgPat} not found. :(".lightred unless results.length.positive?
 end
 
 def help (pkgName)
@@ -335,12 +341,9 @@ def help (pkgName)
   end
 end
 
-def const (var)
-  if var
-    value = eval(var)
-    puts "#{var}=#{value}"
-  else
-    vars = [
+def const (var = nil)
+  unless var
+    var = [
       'ARCH',
       'ARCH_LIB',
       'CHROMEOS_RELEASE',
@@ -377,10 +380,9 @@ def const (var)
       'LIBC_VERSION',
       'USER'
     ]
-    vars.each { |var|
-      value = eval(var)
-      puts "#{var}=#{value}"
-    }
+  end
+  var.each do |var|
+    puts "#{var}=#{self.const_get(var)}"
   end
 end
 
@@ -425,35 +427,22 @@ def files (pkgName)
 end
 
 def whatprovides (regexPat)
-  fileArray = []
   needle = regexPat.gsub(/-/,',').gsub(/,/,'\-')
-  Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
-    packageName = File.basename packageList, '.filelist'
-    File.readlines(packageList).each do |line|
-      found = line[/#{needle}/] if line.ascii_only?
-      if found
-        fileLine = packageName + ': ' + line
-        if not fileArray.include? fileLine
-          fileArray.push(fileLine)
-        end
-      end
+  Dir[CREW_META_PATH + '*.filelist'].each do |pkgList|
+    File.foreach(pkgList).each do |line|
+      next unless line.ascii_only? and line =~ /#{needle}/
+      # should not have same file between packages
+      return (puts (File.basename(pkgList, '.filelist') + ': ' + line))
     end
-  end
-  if not fileArray.empty?
-    fileArray.sort.each do |item|
-      puts item
-    end
-    puts "\nTotal found: #{fileArray.length}".lightgreen
   end
 end
 
-def update
+def update (pkg = nil)
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkgName
-  @crew_testing_repo = ENV['CREW_TESTING_REPO']
-  @crew_testing_branch = ENV['CREW_TESTING_BRANCH']
-  @crew_testing = ENV['CREW_TESTING']
-  @crew_testing = 0 if @crew_testing_repo.nil? || @crew_testing_repo.empty?
-  @crew_testing = 0 if @crew_testing_branch.nil? || @crew_testing_branch.empty?
+  @crew_testing_repo = ENV['CREW_TESTING_REPO'] || ''
+  @crew_testing_branch = ENV['CREW_TESTING_BRANCH'] || ''
+  @crew_testing = ENV['CREW_TESTING'] || ''
+
   #update package lists
   Dir.chdir CREW_LIB_PATH do
     if @crew_testing == '1'
@@ -480,15 +469,14 @@ def update
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
     search package[:name], true
-    if package[:version] != @pkg.version
+    unless package[:version] == @pkg.version
       canBeUpdated += 1
       puts @pkg.name + ' could be updated from ' + package[:version] + ' to ' + @pkg.version
     end
   end
 
-  if canBeUpdated > 0
-    puts
-    puts "Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages."
+  if canBeUpdated.positive?
+    puts nil, "Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages."
   else
     puts "Your software is up to date.".lightgreen
   end
@@ -626,7 +614,7 @@ def download
         system 'git config advice.detachedHead false'
         system 'git config init.defaultBranch master'
         system "git remote add origin #{@pkg.source_url}", exception: true
-        unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
+        unless @pkg.git_branch || @pkg.git_branch.empty?
           # Leave a message because this step can be slow.
           puts "Downloading src from a git branch. This may take a while..."
           system "git remote set-branches origin #{@pkg.git_branch}", exception: true
@@ -677,10 +665,10 @@ def unpack (meta)
     if meta[:source] == true
       # Check the number of directories in the archive
       entries = Dir["#{@extract_dir}/*"]
-      entries = Dir[@extract_dir] if entries.empty?
-      if entries.length == 0
-        abort "Empty archive: #{meta[:filename]}".lightred
-      elsif entries.length == 1 && File.directory?(entries.first)
+      # uncomment this if we get rid of the 'file:///dev/null' source
+      #abort "Empty archive: #{meta[:filename]}" if entries.empty?
+
+      if entries.length == 1 and File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
         target_dir = entries.first
       else
@@ -713,7 +701,7 @@ def build_and_preconfigure (target_dir)
     @pkg.build
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf Dir.glob("#{CREW_DEST_DIR}/*"), verbose: @fileutils_verbose
+    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose
     puts 'Preconfiguring package...'
     @pkg.install
 
@@ -845,7 +833,7 @@ def resolve_dependencies_and_install
   ensure
     # cleanup
     unless @opt_keep
-      FileUtils.rm_rf Dir.glob("#{CREW_BREW_DIR}/*")
+      FileUtils.rm_rf Dir["#{CREW_BREW_DIR}/*"]
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" # this is a little ugly, feel free to find a better way
     end
   end
@@ -916,11 +904,10 @@ def resolve_dependencies
 
   puts
   print 'Do you agree? [Y/n] '
-  response = STDIN.getc
-  case response
+  case response = STDIN.getc
   when 'n'
     abort 'No changes made.'
-  when "\n", "y", "Y"
+  when "\n", 'y', 'Y'
     puts 'Proceeding...'
     proceed = true
   else
@@ -946,7 +933,7 @@ def install
   unless @pkg.is_fake?
     meta = download
     target_dir = unpack meta
-    if meta[:source] == true
+    if meta[:source]
 
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy
@@ -1046,7 +1033,8 @@ def archive_package (pwd)
   Dir.chdir CREW_DEST_DIR do
     system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
   end
-  system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
+  File.write("#{pwd}/#{pkg_name}.sha256",
+          Digest::SHA256.hexdigest( File.binread("#{pwd}/#{pkg_name}") ) )
 end
 
 def remove (pkgName)
@@ -1058,36 +1046,36 @@ def remove (pkgName)
   end
 
   #if the filelist exists, remove the files and directories installed by the package
-  if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
+  if File.exist?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
 
       #remove all files installed by the package
-      File.open("meta/#{pkgName}.filelist").each_line do |line|
+      File.readlines("meta/#{pkgName}.filelist").each do |line|
         begin
-          puts 'Removing file ' + line.chomp + ''.lightred if @opt_verbose
-          File.unlink line.chomp
+          puts "Removing file #{line.chomp}".lightred if @opt_verbose
+          FileUtils.rm_f line.chomp
         rescue => exception #swallow exception
         end
       end
 
       #remove all directories installed by the package
-      File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
+      File.readlines("meta/#{pkgName}.directorylist").each do |line|
         begin
           puts 'Removing directory ' + line.chomp + ''.lightred if @opt_verbose
-          Dir.rmdir line.chomp
+          FileUtils.rmdir line.chomp
         rescue => exception #swallow exception
         end
       end
 
       #remove the file and directory list
-      File.unlink "meta/#{pkgName}.filelist"
-      File.unlink "meta/#{pkgName}.directorylist"
+      FileUtils.rm "meta/#{pkgName}.filelist"
+      FileUtils.rm "meta/#{pkgName}.directorylist"
 
     end
   end
 
   #remove from installed packages
-  puts 'Removing package ' + pkgName + "".lightred if @opt_verbose
+  puts "Removing package #{pkgName}".lightred if @opt_verbose
   @device[:installed_packages].each do |elem|
     @device[:installed_packages].delete elem if elem[:name] == pkgName
   end
@@ -1163,13 +1151,14 @@ def install_command (args)
 end
 
 def list_command (args)
-  if args['available']
+  case
+  when args['available']
     list_available
-  elsif args['installed']
-    puts list_installed
-  elsif args['compatible']
+  when args['installed']
+    list_installed
+  when args['compatible']
     list_compatible true
-  elsif args['incompatible']
+  when args['incompatible']
     list_compatible false
   end
 end
@@ -1215,9 +1204,7 @@ def search_command (args)
   end
 end
 
-def update_command (args)
-  update
-end
+alias update_command update
 
 def upgrade_command (args)
   args["<name>"].each do |name|
@@ -1226,14 +1213,12 @@ def upgrade_command (args)
     print_current_package
     @pkg.build_from_source = true if @opt_src
     upgrade
-  end.empty? and begin
-    upgrade
-  end
+  end.empty? and upgrade
 end
 
 def whatprovides_command (args)
   args["<name>"].each do |name|
-    whatprovides name
+    whatprovides(name)
   end
 end
 
