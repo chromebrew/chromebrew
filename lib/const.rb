@@ -7,9 +7,9 @@ ARCH_ACTUAL = `uname -m`.chomp
 # which report armv8l when linux32 is run.
 ARCH = ENV['CREW_ARCH'] || if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
 
-CREW_LIB_SUFFIX = if ARCH == 'x86_64' then '64' else '' end
+CREW_LIB_SUFFIX = (ARCH == 'x86_64') ? '64' : ''
+ARCH_LIB = 'lib' + CREW_LIB_SUFFIX
 
-ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
 CHROMEOS_RELEASE = File.read('/etc/lsb-release').scan(/CHROMEOS_RELEASE_CHROME_MILESTONE=(.*)/)[0][0]
 
@@ -62,8 +62,8 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_COMMON_FLAGS = "'-w -Os -pipe -flto=auto -fuse-ld=gold'"
-CREW_COMMON_FNO_LTO_FLAGS = "'-w -Os -pipe -fno-lto -fuse-ld=gold'"
+CREW_COMMON_FLAGS = "'-Werror -Wno-dev -Os -pipe -flto=auto -fuse-ld=gold'"
+CREW_COMMON_FNO_LTO_FLAGS = "'-Werror -Wno-dev -Os -pipe -fno-lto -fuse-ld=gold'"
 CREW_FNO_LTO_LDFLAGS = "'-fno-lto'"
 CREW_LDFLAGS = "'-flto=auto'"
 
@@ -121,4 +121,4 @@ CREW_CMAKE_OPTIONS = <<~OPT
   --target=#{CREW_TGT}
 OPT
 
-CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DLIB_SUFFIX=#{CREW_LIB_SUFFIX}" + CREW_CMAKE_OPTIONS
+CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DLIB_SUFFIX=#{CREW_LIB_SUFFIX} " + CREW_CMAKE_OPTIONS
