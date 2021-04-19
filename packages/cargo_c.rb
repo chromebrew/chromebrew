@@ -4,7 +4,7 @@
 require 'package'
 
 class Cargo_c < Package
-  description 'A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
+  description 'A cargo subcommand to build and install C-ABI compatible dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
   version '0.7.3'
   license 'LGPL-2.1 and MPL-1.1'

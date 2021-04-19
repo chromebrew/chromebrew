@@ -3,15 +3,12 @@ require 'package'
 class Gsound < Package
   description 'GSound is a small library for playing system sounds.'
   homepage 'https://wiki.gnome.org/Projects/GSound'
-  @_app = File.basename(__FILE__, '.rb').tr('_', '-')
-  @_fullver = '1.0.2'
-  @_mainver = @_fullver.rpartition('.')[0]
-  @_url = "https://download.gnome.org/sources/#{@_app}/#{@_mainver}/#{@_app}-#{@_fullver}"
-  version @_fullver
+  @_ver = '1.0.2'
+  version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "#{@_url}.tar.xz"
-  source_sha256 `curl -Ls #{@_url}.sha256sum | tail -n1 | cut -d ' ' -f1`.chomp
+  source_url "https://download.gnome.org/sources/gsound/#{@_ver.rpartition('.')[0]}/gsound-#{@_ver}.tar.xz"
+  source_sha256 'bba8ff30eea815037e53bee727bbd5f0b6a2e74d452a7711b819a7c444e78e53'
 
   binary_url ({
     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gsound-1.0.2-chromeos-armv7l.tar.xz',
@@ -31,16 +28,15 @@ class Gsound < Package
 
   def self.build
     system './autogen.sh' if File.exist?('autogen.sh')
-    system "env #{CREW_ENV_OPTIONS} \
-            ./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 
   def self.check
-    system "make", "check"
+    system 'make check'
   end
 end

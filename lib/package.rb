@@ -130,7 +130,7 @@ class Package
   def self.system(*args)
     # add "-j#" argument to "make" at compile-time, if necessary
 
-    # Order of precendence to assign the number of processors:
+    # Order of precedence to assign the number of processors:
     # 1. The value of '-j#' from the package make argument
     # 2. The value of ENV["CREW_NPROC"]
     # 3. The value of `nproc`.strip

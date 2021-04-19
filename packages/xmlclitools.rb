@@ -1,7 +1,7 @@
 require 'package'
 
 class Xmlclitools < Package
-  description 'xmlclitools provides four command-line tools for searching, modifying, and formating XML data. The tools are designed to work in conjunction with standard *nix utilities such as grep, sort, and shell scripts.'
+  description 'xmlclitools provides four command-line tools for searching, modifying, and formatting XML data. The tools are designed to work in conjunction with standard *nix utilities such as grep, sort, and shell scripts.'
   homepage 'http://freshmeat.sourceforge.net/projects/xmlclitools'
   version '1.61-1'
   license 'GPL-2'

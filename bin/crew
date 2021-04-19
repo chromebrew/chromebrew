@@ -72,6 +72,9 @@ ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
 # If CURL environment variable exists use it in lieu of curl.
 CURL = ENV['CURL'] || 'curl'
 
+# All available crew commands.
+@cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
+
 # Parse arguments using docopt
 require_relative '../lib/docopt'
 begin
@@ -89,10 +92,9 @@ rescue Docopt::Exit => e
     end
     if ARGV[0] != '-h' and ARGV[0] != '--help' then
       puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-      cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
       # Looking for similar commands
-      if not cmds.include?(ARGV[0]) then
-        similar = cmds.select {|word| edit_distance(ARGV[0], word) < 4}
+      if not @cmds.include?(ARGV[0]) then
+        similar = @cmds.select {|word| edit_distance(ARGV[0], word) < 4}
         if not similar.empty? then
           puts 'Did you mean?'
           similar.each {|sug| puts "  #{sug}"}
@@ -328,7 +330,7 @@ def help (pkgName)
     puts "Usage: crew whatprovides <pattern> ..."
     puts "The <pattern> is a search string which can contain regular expressions."
   else
-    puts "Available commands: build, const, download, files, help, install, list, postinstall, reinstall ,remove, search, update, upgrade, whatprovides"
+    puts "Available commands: #{@cmds.join(', ')}"
   end
 end
 
@@ -509,15 +511,16 @@ def upgrade
       puts "#{@pkg.name} is already up to date.".lightgreen
     end
   else
-    # Make a installed packages list belong to the dependency order
+    # Make an installed packages list belong to the dependency order
     dependencies = []
     @device[:installed_packages].each do |package|
       # skip package if it is dependent other packages previously checked
       next if dependencies.include? package[:name]
       # add package itself
       dependencies = [ package[:name] ].concat(dependencies)
-      # expand depencencies and add it to the dependencies list
+      # expand dependencies and add it to the dependencies list
       search package[:name], true
+      @dependencies = []
       exp_dep = expand_dependencies
       dependencies = exp_dep.concat(dependencies)
     end
@@ -593,11 +596,11 @@ def download
       system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
-      puts "Archive downloaded".lightgreen
+      puts 'Archive downloaded.'.lightgreen
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
-        puts 'Caching downloaded archive'.lightgreen
         FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+        puts 'Archive cached.'.lightgreen
       end
 
     # Sources that download with git
@@ -635,16 +638,17 @@ def download
           system 'git checkout FETCH_HEAD'
         end
         system 'git submodule update --init --recursive'
-        puts "Repository downloaded".lightgreen
+        puts 'Repository downloaded.'.lightgreen
       end
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
-        puts 'Caching downloaded archive.'.lightgreen
-          Dir.chdir "#{@extract_dir}" do 
+        puts 'Caching downloaded archive...'
+          Dir.chdir "#{@extract_dir}" do
             system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz \
               $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
           end
         system "sha256sum #{CREW_CACHE_DIR}/#{filename}.tar.xz > #{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256"
+        puts 'Archive cached.'.lightgreen
       end
     end
   end
@@ -657,15 +661,15 @@ def unpack (meta)
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
     case File.basename meta[:filename]
     when /\.zip$/i
-      puts "Unpacking archive using 'unzip', this may take a while...".lightgreen
+      puts "Unpacking archive using 'unzip', this may take a while..."
       _verbopt = @opt_verbose ? '-v' : '-qq'
       system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
-      puts "Unpacking archive using 'tar', this may take a while...".lightgreen
+      puts "Unpacking archive using 'tar', this may take a while..."
       FileUtils.mkdir @extract_dir unless Dir.exist?(@extract_dir)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
-      puts "Unpacking archive using 'ar', this may take a while...".lightgreen
+      puts "Unpacking archive using 'ar', this may take a while..."
       FileUtils.mkdir @extract_dir unless Dir.exist?(@extract_dir)
       system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{@extract_dir}", exception: true
     end
@@ -694,7 +698,7 @@ def build_and_preconfigure (target_dir)
   Dir.chdir target_dir do
     puts 'Building from source, this may take a while...'
 
-    # Rename *.la files temporily to *.la_tmp to avoid
+    # Rename *.la files temporarily to *.la_tmp to avoid
     # libtool: link: '*.la' is not a valid libtool archive.
     # See https://gnunet.org/faq-la-files and
     # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
@@ -765,7 +769,7 @@ def prepare_package (destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check for conflicts with other installed files
-    puts "Checking for conflicts with files from installed packages.".lightgreen
+    puts "Checking for conflicts with files from installed packages..."
     conflicts = []
     @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
       -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
@@ -846,17 +850,6 @@ def resolve_dependencies_and_install
 end
 
 def expand_dependencies
-  @dependencies = []
-  if @pkg.build_from_source
-    # make sure all buildessential packages are installed
-    pkgname = @pkg.name
-    search 'buildessential', true
-    check_deps = @pkg.dependencies.map {|k, v| k}
-    check_deps.each do |dep|
-      @dependencies << dep unless @device[:installed_packages].include?(dep)
-    end
-    search pkgname, true
-  end
   def push_dependencies
     if @pkg.is_binary?(@device[:architecture]) ||
       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
@@ -881,6 +874,15 @@ end
 
 def resolve_dependencies
   abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
+
+  @dependencies = []
+  if @pkg.build_from_source
+    # make sure all buildessential packages are installed
+    pkgname = @pkg.name
+    search 'buildessential', true
+    expand_dependencies
+    search pkgname, true
+  end
   expand_dependencies
 
   # leave only not installed packages in dependencies

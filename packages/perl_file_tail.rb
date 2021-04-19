@@ -1,7 +1,7 @@
 require 'package'
 
 class Perl_file_tail < Package
-  description 'Perl extension for reading from continously updated files'
+  description 'Perl extension for reading from continuously updated files'
   homepage 'https://metacpan.org/pod/File::Tail'
   version '1.3'
   license 'GPL-1+ or Artistic'

@@ -4,40 +4,52 @@ class Wayland < Package
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
   @_ver = '1.19.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url "https://wayland.freedesktop.org/releases/wayland-#{@_ver}.tar.xz"
   source_sha256 'baccd902300d354581cd5ad3cc49daa4921d55fb416a5883e218750fef166d15'
 
-  binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wayland-1.19.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wayland-1.19.0-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/wayland-1.19.0-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wayland-1.19.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wayland-1.19.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/wayland-1.19.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/wayland-1.19.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wayland-1.19.0-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'ff5f655f517f263a92c0416f25bb6a16168cd7adf7fb1dcaec752b293068fa9a',
-      armv7l: 'ff5f655f517f263a92c0416f25bb6a16168cd7adf7fb1dcaec752b293068fa9a',
-        i686: '35a7c95bab108da2483b99d7a63703b2e2f65d202cab699d1cfc721f0c4a172e',
-      x86_64: 'fc509f738cb90e5f67e612389d209b94018751b87dd37452d9ed1762bd54f8f3',
+  binary_sha256({
+    aarch64: 'afde6d47410b47f681cf945f3fee881715d5d67c78e055353011413498fda590',
+     armv7l: 'afde6d47410b47f681cf945f3fee881715d5d67c78e055353011413498fda590',
+       i686: '460606fc3edcac28c61a684ef1a22fad67ff569d3fdb1f9d7414e4a8dbcbc923',
+     x86_64: 'd57e02b79a9e6d875b0496597bab4d219fc257df08bafb0be7dee39cbbd7c597'
   })
 
   depends_on 'expat'
   depends_on 'libpng'
-  depends_on 'libffi'
-  depends_on 'libxml2'
   depends_on 'libxslt'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    @env = <<~EOF
+      # environment set-up for Chrome OS built-in Wayland server
+      set -a
+      # all variables will export automatically
+      XDG_RUNTIME_DIR=/var/run/chrome
+      XDG_SESSION_TYPE=wayland
+      WAYLAND_DISPLAY=wayland-0
+      CLUTTER_BACKEND=wayland
+      GDK_BACKEND=wayland
+      set +a
+    EOF
+
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
     -Ddocumentation=false \
     builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/etc/env.d/")
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/wayland", @env)
   end
 end

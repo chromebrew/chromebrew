@@ -79,7 +79,7 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/li
     puts
     puts "The executable names are in the format of Snap executable names.".lightblue
     puts "This is imperative to be able to run TinyCore programs.".lightblue
-    puts "For eample, to run the 'bashbug' program in the TinyCore 'bash' package, please execute:".lightblue
+    puts "For example, to run the 'bashbug' program in the TinyCore 'bash' package, please execute:".lightblue
     puts "tinycore bash.bashbug".lightblue
     puts
     puts "To run a binary that has a dot in its name, such as 'ld.gold', use the full name:".lightblue

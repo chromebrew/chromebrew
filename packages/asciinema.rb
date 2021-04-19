@@ -30,7 +30,7 @@ class Asciinema < Package
 
 ; API server URL, default: https://asciinema.org
 ; If you run your own instance of asciinema-server then set its address here
-; It can also be overriden by setting ASCIINEMA_API_URL environment variable
+; It can also be overridden by setting ASCIINEMA_API_URL environment variable
 ;url = https://asciinema.example.com
 
 [record]

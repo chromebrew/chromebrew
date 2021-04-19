@@ -1,4 +1,4 @@
-# This package should definitely be split into its consituent parts sometime.
+# This package should definitely be split into its constituent parts sometime.
 
 require 'package'
 
