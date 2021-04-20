@@ -404,7 +404,7 @@ class Gcc10 < Package
     puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_LIB_PREFIX}/bfd-plugins/"
     FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_LIB_PREFIX}/bfd-plugins/"
     # binutils makes a symlink here, but just in case it isn't there.
-    unless CREW_LIB_PREFIX.to_s == "#{CREW_PREFIX}/lib"
+    if ARCH == 'x86_64'
       FileUtils.mkdir_p "#{CREW_PREFIX}/lib/bfd-plugins/"
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_PREFIX}/lib/bfd-plugins/"
