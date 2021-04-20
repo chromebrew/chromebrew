@@ -22,8 +22,6 @@ class Openssh < Package
      x86_64: '4900147acf20bfcf9dd27654563a2aeefed7b63e12eb7a9fa96992194ce07f24'
   })
 
-  depends_on 'autoconf' => :build
-
   def self.build
     system 'autoreconf -fiv'
     system 'autoheader'
