@@ -10,6 +10,19 @@ class Vte < Package
   source_url "https://download.gnome.org/sources/vte/#{@_ver.rpartition('.')[0]}/vte-#{@_ver}.tar.xz"
   source_sha256 'c0c60b8dc343167437c86d984b0cf134df86034180ed70513f683006ada3ec41'
 
+  binary_url({
+    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
+       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vte-0.64.0-chromeos-i686.tar.xz',
+     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vte-0.64.0-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'c29af253aa820f21b91be681e8fa1bdd2e5d0028455827b38f281738f13a3a09',
+     armv7l: 'c29af253aa820f21b91be681e8fa1bdd2e5d0028455827b38f281738f13a3a09',
+       i686: '610c54d224b4e63bac35107f78089d625120e3f16cc8dda217172093e63a4eb3',
+     x86_64: '1e7a6e0496eac016b8343df2a4e2ead78eb1125587d2ce2169a03f35a688a201'
+  })
+
   depends_on 'gobject_introspection' => :build
   depends_on 'fribidi'
   depends_on 'gtk3'
