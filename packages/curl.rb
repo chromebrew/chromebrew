@@ -3,43 +3,49 @@ require 'package'
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.75.0'
-  version "#{@_ver}-1"
+  @_ver = '7.76.1'
+  version @_ver
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
-  source_sha256 'fe0c49d8468249000bda75bcfdf9e30ff7e9a86d35f1a21f428d79c389d55675'
+  source_sha256 '64bb5288c39f0840c07d077e30d9052e1cbb9fa6c2dc52523824cc859e679145'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.75.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.75.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/curl-7.75.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/curl-7.75.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.76.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.76.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/curl-7.76.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/curl-7.76.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5931c7a220565a764e6e07dd29ee9d3faeccfc5c8a8cd55c1e2f461ab2b91ce1',
-     armv7l: '5931c7a220565a764e6e07dd29ee9d3faeccfc5c8a8cd55c1e2f461ab2b91ce1',
-       i686: 'affda80ebef656f6def4997e7b444dfc587c9310affa23a2f7be7afc28b1e4d7',
-     x86_64: '06153ae00ddc65055fe7b4aae6421101befbf611ce884ce0b794d080a585f088'
+    aarch64: 'ae48ef34d0a91114c532590f7f7c754bd3fa9bc7e6a96223b2864d167ba79c3a',
+     armv7l: 'ae48ef34d0a91114c532590f7f7c754bd3fa9bc7e6a96223b2864d167ba79c3a',
+       i686: '61f65c1c8d892c80d40908beadbd73de14a7c987593d93dad62c7c9555927bdf',
+     x86_64: 'fbe7e0e7192e75ff64b24e71a8861b773c4d47ef668206f85fff6e8840d59f54'
   })
 
+  depends_on 'brotli' # R
+  depends_on 'ca_certificates' # L
+  depends_on 'c_ares' # R
   depends_on 'groff' => :build
-  depends_on 'brotli'
-  depends_on 'c_ares'
-  depends_on 'libidn2'
-  depends_on 'libmetalink'
-  depends_on 'libnghttp2'
-  depends_on 'libtirpc'
-  depends_on 'libunbound'
-  depends_on 'openldap'
-  depends_on 'zstd'
-  depends_on 'rtmpdump'
-  depends_on 'ca_certificates'
+  depends_on 'libidn2' # R
+  depends_on 'libmetalink' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpsl' # R
+  depends_on 'libtirpc' # ?
+  depends_on 'libunbound' # ?
+  depends_on 'openldap' # R
+  depends_on 'openssl' # R
+  depends_on 'rtmpdump' # R
+  depends_on 'rust' => :build
+  depends_on 'valgrind' => :build
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
+
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
-    system './configure --help'
+    system 'filefix'
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
       LDFLAGS='-flto=auto'\
       ./configure #{CREW_OPTIONS} \
@@ -58,9 +64,9 @@ class Curl < Package
     # Python package impacket needed for testing.
     # 1094 tests out of 1097 reported OK: 99% on 10/25/2020
     # The 3 tests that failed were FTP, SMB and GOPHER.
-    # system 'pip3 install impacket'
-    # system 'make check || true'
-    # system 'pip3 uninstall -y impacket'
+    system 'pip3 install impacket'
+    system 'make check || true'
+    system 'pip3 uninstall -y impacket'
   end
 
   def self.install
