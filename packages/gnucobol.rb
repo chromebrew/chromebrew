@@ -10,10 +10,10 @@ class Gnucobol < Package
   source_sha256 'e55aeea6b1f77e763b4cd4b520c78eb06da7671b4dcc76463fd0237dbf2e4816'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnucobol-3.0-rc1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnucobol-3.0-rc1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnucobol-3.0-rc1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnucobol-3.0-rc1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnucobol-3.0-rc1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnucobol-3.0-rc1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gnucobol-3.0-rc1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gnucobol-3.0-rc1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '414d959994a7816b3afca483ebbff70306ea9f5577e702957806f76f1d714718',

@@ -10,10 +10,10 @@ class Libslz < Package
   source_sha256 '985cb527a4d1c7a93e9eb19d79f97513eb57cfe6e112b727976855c8144ffccc'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libslz-1.1.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libslz-1.1.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libslz-1.1.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libslz-1.1.0-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libslz-1.1.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libslz-1.1.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libslz-1.1.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libslz-1.1.0-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '506026ec40d5166c94d9f95b5b875a0410c53d7eb0cb49cc1ab5464474a05801',

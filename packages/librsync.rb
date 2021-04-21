@@ -10,10 +10,10 @@ class Librsync < Package
   source_sha256 '6fce69041aa4fc72a21f1ab280a7299b82df2b1fa0a25d8695fd527e6752625e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/librsync-2.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/librsync-2.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/librsync-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/librsync-2.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/librsync-2.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/librsync-2.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/librsync-2.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/librsync-2.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '49885aeceb210260c6e731c7ab45c0f3eeb65c3b5202d5d32ac848c5974a8ebc',

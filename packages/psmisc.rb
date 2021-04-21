@@ -11,10 +11,10 @@ class Psmisc < Package
   source_sha256 'fe530b0a29902f8660481248fc19f6994927282b4fe0cd992121016144b95fa6'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/psmisc-23.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/psmisc-23.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/psmisc-23.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/psmisc-23.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/psmisc-23.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/psmisc-23.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/psmisc-23.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/psmisc-23.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd951db8224299af61b2ca8fb78d64f93667f52df0901928927d8c743216a629f',

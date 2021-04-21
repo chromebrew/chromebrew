@@ -10,10 +10,10 @@ class Rng_tools < Package
   source_sha256 '5fecd904f7d01262b3209ff78dd3b9594aac8daa41badd5a1e6438658e80c36e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rng_tools-6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rng_tools-6.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/rng_tools-6.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/rng_tools-6.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd24c4b10672a24a8fee318a3eabe9f6124da04ffc8099243c88f30dddf29eb90',

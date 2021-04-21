@@ -13,10 +13,10 @@ class Smbclient < Package
   source_sha256 '95651da478743f7cb407aec81287536c096e3e18bb4981dbe47ca70bf6181f96'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/smbclient-4.14.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/smbclient-4.14.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/smbclient-4.14.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/smbclient-4.14.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/smbclient-4.14.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/smbclient-4.14.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/smbclient-4.14.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/smbclient-4.14.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '19d88b0a7b60b5f1002ef071f3aa8c1ecefb00067e89eff653d2c234da2ff428',

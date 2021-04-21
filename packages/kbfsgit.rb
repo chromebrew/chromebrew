@@ -10,10 +10,10 @@ class Kbfsgit < Package
   source_sha256 '2bbbfd2eb7ed12295375a182656af6dcc509827f7ed83c2b1dd0f72f56853fa5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kbfsgit-1.0.40-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kbfsgit-1.0.40-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/kbfsgit-1.0.40-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/kbfsgit-1.0.40-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kbfsgit-1.0.40-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kbfsgit-1.0.40-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/kbfsgit-1.0.40-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/kbfsgit-1.0.40-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '23d60c0673cea6be297723edba12de195c333f3f575c1f6e4860a66b8739c1a4',

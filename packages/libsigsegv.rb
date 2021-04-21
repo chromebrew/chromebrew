@@ -10,10 +10,10 @@ class Libsigsegv < Package
   source_sha256 '3ae1af359eebaa4ffc5896a1aee3568c052c99879316a1ab57f8fe1789c390b6'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsigsegv-2.12-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsigsegv-2.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libsigsegv-2.12-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libsigsegv-2.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e95892871d5cfd7164b3056e87461fd852d1a224ca0a23f0dd73a98e71a83217',

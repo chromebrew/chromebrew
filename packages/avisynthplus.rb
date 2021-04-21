@@ -10,10 +10,10 @@ class Avisynthplus < Package
   source_sha256 '8906d9e46dc90a194413d69b710e3106c0aafddc0c5c62004885d0c3beb79862'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/avisynthplus-3.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/avisynthplus-3.7.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/avisynthplus-3.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/avisynthplus-3.7.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '041ab6c783a42f1ffa0ecbb27b5fee4b49a1e5083b00a48454fc5a29069264ef',

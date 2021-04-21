@@ -10,10 +10,10 @@ class Krb5 < Package
   source_sha256 'bc7862dd1342c04e1c17c984a268d50f29c0a658a59a22bd308ffa007d532a2e'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/krb5-1.19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/krb5-1.19-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/krb5-1.19-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/krb5-1.19-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/krb5-1.19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/krb5-1.19-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/krb5-1.19-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/krb5-1.19-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '69f5fdec7c6c2c409b2d328c325954fdc8f8cf21024f84059968f052437c160a',

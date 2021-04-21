@@ -11,10 +11,10 @@ class Llvm_stage1 < Package
   source_sha256 'e610297041129a5c5b24355a988c99c7452ee7105ee2355334a8c521b988eb3c'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/llvm_stage1-11.1.0-rc1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/llvm_stage1-11.1.0-rc1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/llvm_stage1-11.1.0-rc1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/llvm_stage1-11.1.0-rc1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '863dd7cae43abef88dfe25c60e0dda1f8d59756f8c8fbb111989a3669dca0a16',

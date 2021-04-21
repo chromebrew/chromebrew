@@ -10,10 +10,10 @@ class Libfrei0r < Package
   source_sha256 'dae0ca623c83173788ce4fc74cb67ac7e50cf33a4412ee3d33bed284da1a8437'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libfrei0r-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libfrei0r-1.6.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libfrei0r-1.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libfrei0r-1.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bd9381d2c456c270133c206c66e94ed5f77a856bd23d18138d92df6b4e2c7759',

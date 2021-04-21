@@ -10,10 +10,10 @@ class Grive < Package
   source_sha256 '24641ef4802eb93bb55e7069bca55c4fb8aa17fd88833b9c89a1b2ee7d266567'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/grive-0.5.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/grive-0.5.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/grive-0.5.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/grive-0.5.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/grive-0.5.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/grive-0.5.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/grive-0.5.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/grive-0.5.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e42ae9643925d4500328fecc1149f24c7dbaa1ccc6c8ec4129b408ad6cbaeb02',

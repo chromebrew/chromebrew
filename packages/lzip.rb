@@ -10,10 +10,10 @@ class Lzip < Package
   source_sha256 '68c703c7b5198b3fd7a0c3f20011e9a8c938b8dec14824c4c873922fdb01719f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lzip-1.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lzip-1.21-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lzip-1.21-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lzip-1.21-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/lzip-1.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/lzip-1.21-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/lzip-1.21-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/lzip-1.21-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '09f94e775a908f77177ee4657940e62e8a223b50210d66b581b4ee823416cac9',

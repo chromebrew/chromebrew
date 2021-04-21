@@ -10,10 +10,10 @@ class Daq < Package
   source_sha256 'd41da5f7793e66044e6927dd868c0525e7ee4ec1a3515bf74ef9a30cd9273af0'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/daq-2.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/daq-2.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/daq-2.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/daq-2.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/daq-2.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/daq-2.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/daq-2.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/daq-2.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e886d91158b996eac4c5510945fed80906b328aea842bd588db5acc080a3ff4c',

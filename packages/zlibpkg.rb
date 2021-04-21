@@ -11,10 +11,10 @@ class Zlibpkg < Package
   source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zlibpkg-1.2.11-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zlibpkg-1.2.11-4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/zlibpkg-1.2.11-4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/zlibpkg-1.2.11-4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/zlibpkg-1.2.11-4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/zlibpkg-1.2.11-4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/zlibpkg-1.2.11-4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/zlibpkg-1.2.11-4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4b9c8b7ae88784f0c2744f268cc31afa1bb467f2ea964a7cb601509f12fceee7',

@@ -10,10 +10,10 @@ class Expat < Package
   source_sha256 'f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/expat-2.2.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/expat-2.2.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/expat-2.2.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/expat-2.2.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/expat-2.2.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/expat-2.2.9-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/expat-2.2.9-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/expat-2.2.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2bac1ab7a27c48690d47e28b5826818095932bb9210ec46b69e173a088ead177',

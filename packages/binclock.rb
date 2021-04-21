@@ -10,10 +10,10 @@ class Binclock < Package
   source_sha256 'e8caa26437301c70bf9840901db9e46d32b99c0ec8b442562f96390e28f35408'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/binclock-3883e8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/binclock-3883e8-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/binclock-3883e8-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/binclock-3883e8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/binclock-3883e8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/binclock-3883e8-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/binclock-3883e8-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/binclock-3883e8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '265d4488274d213d0663f7aebb3da8c81b046edd8c6cef4101a70dcce6a39b18',

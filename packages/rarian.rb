@@ -10,10 +10,10 @@ class Rarian < Package
   source_sha256 'aafe886d46e467eb3414e91fa9e42955bd4b618c3e19c42c773026b205a84577'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rarian-0.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rarian-0.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rarian-0.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rarian-0.8.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rarian-0.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rarian-0.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/rarian-0.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/rarian-0.8.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0432d2e342be1d21b788bd906d12312faae65f9badef502c9cbcfe74c56aabf3',

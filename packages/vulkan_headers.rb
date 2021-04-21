@@ -11,10 +11,10 @@ class Vulkan_headers < Package
   source_sha256 'b86266544ab1d6780c5ee6cdf10f24ba9ec4c97bc83d2229e0fb8142c36e52ac'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vulkan_headers-1.2.171-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vulkan_headers-1.2.171-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/vulkan_headers-1.2.171-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/vulkan_headers-1.2.171-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f0795e78f27c10ab4180743b4f1f46b566007da4fd348b4cdf6e35ee4c3fb72b',

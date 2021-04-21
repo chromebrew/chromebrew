@@ -10,10 +10,10 @@ class Kbd < Package
   source_sha256 '18f45ee8790ddb18363fcb98d60e715528b1c04aa4501bd69111609d43240d3e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kbd-2.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kbd-2.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/kbd-2.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/kbd-2.0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kbd-2.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kbd-2.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/kbd-2.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/kbd-2.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0c53c9ac9dfae25f7ddbc308db92cff85b5343e594cfb5e9f73058340eda1401',

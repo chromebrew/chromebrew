@@ -10,10 +10,10 @@ class Dosfstools < Package
   source_sha256 'e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dosfstools-4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dosfstools-4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/dosfstools-4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/dosfstools-4.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dosfstools-4.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dosfstools-4.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/dosfstools-4.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/dosfstools-4.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a2fa41c25a7aee9ae85cd1b7759d3de0f89c6e3863ab26b7959d0b7f7c4acae6',

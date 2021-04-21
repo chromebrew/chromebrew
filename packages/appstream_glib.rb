@@ -10,10 +10,10 @@ class Appstream_glib < Package
   source_sha256 'e6532620fde20df56d121f692ab24a28a4389b2aa37d5199d676eda37baf1fd4'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/appstream_glib-0.7.18-dbd6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/appstream_glib-0.7.18-dbd6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/appstream_glib-0.7.18-dbd6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/appstream_glib-0.7.18-dbd6-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/appstream_glib-0.7.18-dbd6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/appstream_glib-0.7.18-dbd6-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/appstream_glib-0.7.18-dbd6-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/appstream_glib-0.7.18-dbd6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e917ad02dce4cfcf29f82a6f5a6af91bb1d26493aefeec0a14ecaf71c274821c',

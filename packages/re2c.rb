@@ -10,10 +10,10 @@ class Re2c < Package
   source_sha256 'f37f25ff760e90088e7d03d1232002c2c2672646d5844fdf8e0d51a5cd75a503'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/re2c-1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/re2c-1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/re2c-1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/re2c-1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/re2c-1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/re2c-1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/re2c-1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/re2c-1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1ee30785ba83b9ed00258fa126f18a14e687cd4902a20f10b9bf1ce322f4692f',

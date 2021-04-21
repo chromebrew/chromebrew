@@ -10,10 +10,10 @@ class Openvr < Package
   source_sha256 'f3cdbaa946688553638e6d65978f156311c9b08825316198d925f5eade6cfeb7'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openvr-1.12.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openvr-1.12.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/openvr-1.12.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/openvr-1.12.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openvr-1.12.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openvr-1.12.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/openvr-1.12.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/openvr-1.12.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a76d1856f054658c6e2d6bc1eb32ee15331e7d2a06c136341d33262b1bce0930',

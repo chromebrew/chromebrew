@@ -12,10 +12,10 @@ class Arduino_ide < Package
   source_sha256 '862e4b100d5214ca51d501edcc095467d7a4e3dc39b306146001da8b0c63343e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/arduino_ide-1.8.10-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/arduino_ide-1.8.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/arduino_ide-1.8.10-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/arduino_ide-1.8.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cf323df5db4b7b3d225199539f185cdd66bb7d86705b8eec5125d1538508bf9b',

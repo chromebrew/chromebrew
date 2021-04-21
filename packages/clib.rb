@@ -10,10 +10,10 @@ class Clib < Package
   source_sha256 'f5718e316771571971cb4e5a0142f91b47c6bfe32997fd869fc5a90ec091a066'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/clib-1.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/clib-1.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/clib-1.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/clib-1.8.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/clib-1.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/clib-1.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/clib-1.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/clib-1.8.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2e9535f72f2b36bef76aa7cbd17b4264652d94f9c46408c81a6d1400df379851',

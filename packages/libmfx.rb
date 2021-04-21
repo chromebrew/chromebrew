@@ -10,7 +10,7 @@ class Libmfx < Package
   source_sha256 '853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42'
 
   binary_url({
-    i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libmfx-1.25-chromeos-i686.tar.xz',
+    i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libmfx-1.25-chromeos-i686.tar.xz',
   })
   binary_sha256({
     i686: '3eab119d8be510a2786d31419c20c551a0629f3b8d8d4fa58a2fb31b3f66a960',

@@ -11,10 +11,10 @@ class Elfutils < Package
   source_sha256 'c3637c208d309d58714a51e61e63f1958808fead882e9b607506a29e5474f2c5'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/elfutils-0.183-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/elfutils-0.183-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/elfutils-0.183-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/elfutils-0.183-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/elfutils-0.183-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/elfutils-0.183-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/elfutils-0.183-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/elfutils-0.183-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0780ef4605befe8aa878d7f4997fa4431686f1a40851e513243cabf7d9d31bf8',

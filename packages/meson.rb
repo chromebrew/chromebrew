@@ -11,10 +11,10 @@ class Meson < Package
   source_sha256 'cd3773625253df4fd1c380faf03ffae3d02198d6301e7c8bc7bba6c66af66096'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/meson-0.57.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/meson-0.57.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/meson-0.57.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/meson-0.57.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/meson-0.57.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/meson-0.57.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/meson-0.57.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/meson-0.57.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '159a2101c1ca6a798baeeee0b95cd10950d7b62e088fa0229270b11983c27ec0',

@@ -10,10 +10,10 @@ class Libsodium < Package
   git_hashtag '7168944f16e12c1b630e66a7b9be0802d5b564dd'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsodium-1.0.18-7168-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsodium-1.0.18-7168-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsodium-1.0.18-7168-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsodium-1.0.18-7168-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsodium-1.0.18-7168-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsodium-1.0.18-7168-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libsodium-1.0.18-7168-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libsodium-1.0.18-7168-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '8cf24abf23f1ec6b19052e29b5cc80db8f2b6917dae193827c99a02349839221',

@@ -10,10 +10,10 @@ class Datamash < Package
   source_sha256 'eebb52171a4353aaad01921384098cf54eb96ebfaf99660e017f6d9fc96657a6'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/datamash-1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/datamash-1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/datamash-1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/datamash-1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/datamash-1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/datamash-1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/datamash-1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/datamash-1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a5c3eccb59d8a85d3b6f171b7c1df2b153676dbbda431426660716a9ebf96db5',

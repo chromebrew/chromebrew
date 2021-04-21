@@ -11,10 +11,10 @@ class Pulseaudio < Package
   source_sha256 '75d3f7742c1ae449049a4c88900e454b8b350ecaa8c544f3488a2562a9ff66f1'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pulseaudio-14.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pulseaudio-14.2-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pulseaudio-14.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pulseaudio-14.2-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2',
@@ -70,7 +70,7 @@ class Pulseaudio < Package
   end
 
   def self.check
-    # Only test failure is on armv7l:
+b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2
     # 39/50 thread-test                                                                                                   FAIL             4.02s   exit status 1
     # >>> MALLOC_PERTURB_=232 MAKE_CHECK=1 /usr/local/tmp/crew/pulseaudio-14.2.tar.xz.dir/pulseaudio-14.2/builddir/src/tests/thread-test
     # ――――――――――――――――――――――――――――――――――――― ✀  ―――――――――――――――――――――――――――――――――――――

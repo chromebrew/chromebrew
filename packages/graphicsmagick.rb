@@ -10,10 +10,10 @@ class Graphicsmagick < Package
   source_sha256 'd96d5ce2ef7e0e90166551e38742713728bfd33d6f18495a9ddda938700fc055'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/graphicsmagick-1.3.35-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/graphicsmagick-1.3.35-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/graphicsmagick-1.3.35-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/graphicsmagick-1.3.35-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/graphicsmagick-1.3.35-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/graphicsmagick-1.3.35-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/graphicsmagick-1.3.35-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/graphicsmagick-1.3.35-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd9ed09c58b7704161c7047edde788c7e505319531dc43e730523ce92396644f3',

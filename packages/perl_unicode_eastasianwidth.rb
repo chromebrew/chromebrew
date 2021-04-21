@@ -10,10 +10,10 @@ class Perl_unicode_eastasianwidth < Package
   source_sha256 '2a5bfd926c4fe5f77e6137da2c31ac2545282ae5fec6e9af0fdd403555a90ff4'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_unicode_eastasianwidth-12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_unicode_eastasianwidth-12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_unicode_eastasianwidth-12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_unicode_eastasianwidth-12.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_unicode_eastasianwidth-12.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_unicode_eastasianwidth-12.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_unicode_eastasianwidth-12.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_unicode_eastasianwidth-12.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5593ee971d525518b3ceb87f09ac1e72f9588f07560af63eb11ab82da3f69e49',

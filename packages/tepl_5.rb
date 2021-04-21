@@ -10,10 +10,10 @@ class Tepl_5 < Package
   source_sha256 '2dda3ed2bd16742f6d0fc6d602448eaa2e40b9c967b88599add2338d6fa590e7'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tepl_5-5.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tepl_5-5.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tepl_5-5.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tepl_5-5.0.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tepl_5-5.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tepl_5-5.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/tepl_5-5.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/tepl_5-5.0.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1c6bda4f08ad49244dd0e368858e43de9323adf54ab34d387754d0982a8af710',

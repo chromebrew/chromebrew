@@ -9,11 +9,11 @@
 #   bash ./download_binary.sh [package|all] [repo]
 #
 #   If no options are provided, core package binaries will be downloaded.
-#   If no repo is provided, the default is sourceforge.
+#   If no repo is provided, the default is github.
 #
 # Author: Ed Reel (uberhacker) edreel at gmail dot com
 #
-# Updated: 2021-04-14
+# Updated: 2021-04-21
 #
 # License: GPL-3+
 
@@ -30,13 +30,14 @@ else
   echo "Downloading core package binaries..."
   PACKAGES=$(cat ../tools/core_packages.txt | xargs)
 fi
-BINTRAY_REPO="https://dl.bintray.com/chromebrew/chromebrew/"
-SOURCEFORGE_REPO="https://downloads.sourceforge.net/project/chromebrew/"
 BALTO_REPO="https://baltocdn.com/chromebrew/chromebrew/chromebrew/downloads/"
-REPO="sourceforge"
+BINTRAY_REPO="https://dl.bintray.com/chromebrew/chromebrew/"
+GITHUB_REPO="https://github.com/chromebrew/binaries/raw/main/"
+SOURCEFORGE_REPO="https://downloads.sourceforge.net/project/chromebrew/"
+REPO="github"
 if test $2; then
   valid=
-  valid_repos="balto bintray sourceforge"
+  valid_repos="balto bintray github sourceforge"
   for r in $valid_repos; do
     [[ "$2" == "$r" ]] && valid=1
   done
@@ -47,6 +48,7 @@ if test $2; then
     REPO=$2
   fi
 fi
+new_base="${BINTRAY_REPO}"
 
 for package in ${PACKAGES}; do
   for arch in armv7l i686 x86_64; do
@@ -58,8 +60,8 @@ for package in ${PACKAGES}; do
         new_package=$(echo ${package} | sed 's,\_,,')
         new_base="${BALTO_REPO}${package:0:1}/${new_package}/"
         ;;
-      bintray)
-        new_base="${BINTRAY_REPO}"
+      github)
+        new_base="${GITHUB_REPO}${arch}/"
         ;;
       sourceforge)
         new_base="${SOURCEFORGE_REPO}${arch}/"
@@ -86,8 +88,8 @@ for package in ${PACKAGES}; do
     #  esac
     #fi
     echo "Package: ${package}, Arch: ${arch}, Version: ${version}"
-    echo "Downloading ${url}..."
-    curl -#Lsf ${url} -o ${tarfile}
+    echo "Downloading ${new_url}..."
+    curl -#Lsf ${new_url} -o ${tarfile}
     echo -e "Verifying ${tarfile}..."
     echo -e "$(echo "${sha256}" "${tarfile}" | sha256sum -c -)"
     case "${?}" in
