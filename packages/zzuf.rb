@@ -10,10 +10,10 @@ class Zzuf < Package
   source_sha256 '04353d94c68391b3945199f100ab47fc5ff7815db1e92581a600d4175e3a6872'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zzuf-0.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zzuf-0.15-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/zzuf-0.15-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/zzuf-0.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/zzuf-0.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/zzuf-0.15-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/zzuf-0.15-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/zzuf-0.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'feff06cc3eb02aed4eb9c027bc528580aba6b0ccf9c1bfd189c76a562439ed28',

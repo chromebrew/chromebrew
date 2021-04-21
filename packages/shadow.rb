@@ -11,10 +11,10 @@ class Shadow < Package
   source_sha256 'a3ad4630bdc41372f02a647278a8c3514844295d36eefe68ece6c3a641c1ae62'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shadow-4.8.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shadow-4.8.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/shadow-4.8.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/shadow-4.8.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/shadow-4.8.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/shadow-4.8.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/shadow-4.8.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/shadow-4.8.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2f7ed952af80df7d0d57c68b1983d8de34fa29a8f66eec28ecd41f9efafea1c0',

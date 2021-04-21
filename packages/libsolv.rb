@@ -10,10 +10,10 @@ class Libsolv < Package
   source_sha256 '34a67c23cedd38a949607d8cdbd867aa4b07556f18a57e17162ac962bbdbbf54'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsolv-0.7.14-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsolv-0.7.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libsolv-0.7.14-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libsolv-0.7.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4a559dd64cbc0a45f291bb3b7b500bcb04119559987830df0066176fc48867a9',

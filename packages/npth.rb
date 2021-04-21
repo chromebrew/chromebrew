@@ -10,10 +10,10 @@ class Npth < Package
   source_sha256 '294a690c1f537b92ed829d867bee537e46be93fbd60b16c04630fbbfcd9db3c2'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/npth-1.5-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/npth-1.5-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/npth-1.5-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/npth-1.5-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/npth-1.5-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/npth-1.5-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/npth-1.5-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/npth-1.5-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2e1ee46afeb6ab2ed19e3245ba6f3f78d5bfec6594ab64c3f8e94ee1841616e5',

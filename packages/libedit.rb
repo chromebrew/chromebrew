@@ -10,10 +10,10 @@ class Libedit < Package
   source_sha256 'dbb82cb7e116a5f8025d35ef5b4f7d4a3cdd0a3909a146a39112095a2d229071'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libedit-20191231-3.1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libedit-20191231-3.1-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libedit-20191231-3.1-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libedit-20191231-3.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libedit-20191231-3.1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libedit-20191231-3.1-chromeos-armv7l.tar.xz',
+        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libedit-20191231-3.1-chromeos-i686.tar.xz',
+      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libedit-20191231-3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '610986dcb014c2079b2b355628ee6f7b867076974cf751b891a926f0a0d9d5b8',

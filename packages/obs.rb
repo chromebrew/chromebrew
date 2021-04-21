@@ -10,8 +10,8 @@ class Obs < Package
   source_sha256 'b3d65f36ad2bfcd6ffde1771be64662ce8e8771349fab82bb49f80dbb1f5f2e6'
 
   binary_url ({
-      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/obs-24.0.5-chromeos-i686.tar.xz',
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/obs-24.0.5-chromeos-x86_64.tar.xz',
+      i686: 'https://github.com/chromebrew/binaries/raw/main/i686/obs-24.0.5-chromeos-i686.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/obs-24.0.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: 'b27299c233995f0c03a4dc2a8563bec7a2f00582a2554d62829d216769f42d5c',

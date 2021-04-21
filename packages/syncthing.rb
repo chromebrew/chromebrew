@@ -10,10 +10,10 @@ class Syncthing < Package
   source_sha256 '9c406897443465e03d3259df1dda10bd86e49ae4286f8c855d9f35e47026af2f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/syncthing-0.14.41-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/syncthing-0.14.41-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/syncthing-0.14.41-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/syncthing-0.14.41-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',

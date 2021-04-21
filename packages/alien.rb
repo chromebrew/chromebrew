@@ -10,10 +10,10 @@ class Alien < Package
   source_sha256 '37a22587c33810feab323474bdadbf969fda2eb4e720b2ca01b40d82d6f71a17'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/alien-8.95-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/alien-8.95-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/alien-8.95-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/alien-8.95-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/alien-8.95-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/alien-8.95-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/alien-8.95-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/alien-8.95-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '81431f3b524332343a63bfc4d81a7d26d699de468d4d1001fa71490d50ecfe7a',

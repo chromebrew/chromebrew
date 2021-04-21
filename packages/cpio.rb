@@ -10,10 +10,10 @@ class Cpio < Package
   source_sha256 '08a35e92deb3c85d269a0059a27d4140a9667a6369459299d08c17f713a92e73'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cpio-2.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cpio-2.12-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cpio-2.12-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cpio-2.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cpio-2.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cpio-2.12-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/cpio-2.12-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/cpio-2.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ce329d2fa0fc9f708af6992a72335ed787e2c6753ed745149f3b343e5d237f0d',

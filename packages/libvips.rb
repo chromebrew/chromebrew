@@ -11,10 +11,10 @@ class Libvips < Package
   source_sha256 'b2412f580ba83129d55e57a73c7c4fdb53e60a39c48910acc5f0d80518deb7a5'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvips-8.10.6-beta2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvips-8.10.6-beta2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libvips-8.10.6-beta2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libvips-8.10.6-beta2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libvips-8.10.6-beta2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libvips-8.10.6-beta2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libvips-8.10.6-beta2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libvips-8.10.6-beta2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2d95674bfc951f232315ea0e93311d5982b9975c76f7f8d092f8d3fcfe6810b6',

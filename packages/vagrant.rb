@@ -10,10 +10,10 @@ class Vagrant < Package
   source_sha256 '212b91c45f60a825fcfc656424021e2550833778a6d4ebe13458676201a04eba'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vagrant-2.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vagrant-2.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vagrant-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vagrant-2.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vagrant-2.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vagrant-2.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/vagrant-2.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/vagrant-2.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c87a9597690114da4fc34cd0c8c2a6af0f9c1b0591d5dc1e98fa59fddbdc6768',

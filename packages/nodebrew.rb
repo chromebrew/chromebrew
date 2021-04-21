@@ -11,10 +11,10 @@ class Nodebrew < Package
   source_sha256 'c34e7186d4fd493c5417ad5563ad39fd493a42695bd9a7758c3df10380e43399'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nodebrew-1.0.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nodebrew-1.0.1-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/nodebrew-1.0.1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/nodebrew-1.0.1-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ea1dc71bbdb987b742474128b4836e643beec4abcd48c7a2bc695092f8b19d39',

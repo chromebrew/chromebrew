@@ -10,10 +10,10 @@ class Gmp < Package
   source_sha256 '3f33f127bcb6b2c3601676cd3281df45824b148cbf688b73c0fc8248793667d9'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gmp-6.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gmp-6.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gmp-6.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gmp-6.2.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gmp-6.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gmp-6.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gmp-6.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gmp-6.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2808a85d261fb740f5278be8ea25aca44de63e7512fbbf5a19bf133db5b5c152',

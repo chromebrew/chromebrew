@@ -10,10 +10,10 @@ class Sshuttle < Package
   source_sha256 '62c18b4d89e654687247a334e0ebaec675d38dfbedc6863d8d65044d37241b0f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sshuttle-0.78.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sshuttle-0.78.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/sshuttle-0.78.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/sshuttle-0.78.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fad069cad984ae9a16cfe2109aa5e4f1b4af1435a9fd99075fe363d65b201348',

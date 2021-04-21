@@ -10,10 +10,10 @@ class Alsa_plugins < Package
   source_sha256 '1c0f06450c928d711719686c9dbece2d480184f36fab11b8f0534cb7b41e337d'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/alsa_plugins-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/alsa_plugins-1.2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/alsa_plugins-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/alsa_plugins-1.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',

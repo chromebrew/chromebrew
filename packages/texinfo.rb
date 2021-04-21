@@ -10,10 +10,10 @@ class Texinfo < Package
   source_sha256 '988403c1542d15ad044600b909997ba3079b10e03224c61188117f3676b02caa'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/texinfo-6.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/texinfo-6.7-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/texinfo-6.7-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/texinfo-6.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/texinfo-6.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/texinfo-6.7-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/texinfo-6.7-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/texinfo-6.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c01bcef457daa115be3bb4a7dbbf36263b491f500217e226b5ffbcb8777d706d',

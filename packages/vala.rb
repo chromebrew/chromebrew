@@ -10,10 +10,10 @@ class Vala < Package
   source_sha256 'a1db75bfdc7e8ffa08d2c4a8a4b561fb24f3e9516d712531b8d14a74695a37b2'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vala-0.51.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vala-0.51.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vala-0.51.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vala-0.51.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vala-0.51.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vala-0.51.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/vala-0.51.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/vala-0.51.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '322bf1ba49dad18e92a07ff0371d1ecf5ef50658cff4854c866484d0636209cd',

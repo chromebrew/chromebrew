@@ -10,10 +10,10 @@ class Libewf < Package
   source_sha256 'cf36d3baf3a96dbe566fde55ae7d79fc2e7b998806ab13e0f69915799f19e040'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libewf-20171104-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libewf-20171104-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libewf-20171104-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libewf-20171104-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libewf-20171104-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libewf-20171104-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libewf-20171104-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libewf-20171104-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fdd4e2e098bd07486158fda5f5cc9ab4ed02ed2f39b1201af889fba500b84ab1',

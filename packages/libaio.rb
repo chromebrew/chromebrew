@@ -11,10 +11,10 @@ class Libaio < Package
   source_sha256 'b7cf93b29bbfb354213a0e8c0e82dfcf4e776157940d894750528714a0af2272'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libaio-0.3.112-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libaio-0.3.112-chromeos-x86_64.tar.xz',
+     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
+      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
+        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libaio-0.3.112-chromeos-i686.tar.xz',
+      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libaio-0.3.112-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'f7fc535e5d72f059e97f5b18a41b3cac20b63930d773bdc21438e170bb395e26',

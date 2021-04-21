@@ -11,10 +11,10 @@ class Pcre2 < Package
   source_sha256 'b95ddb9414f91a967a887d69617059fb672b914f56fa3d613812c1ee8e8a1a37'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pcre2-10.36-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pcre2-10.36-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pcre2-10.36-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pcre2-10.36-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pcre2-10.36-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pcre2-10.36-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pcre2-10.36-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pcre2-10.36-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f83694fcc265d5dc06c627e47ea7765e74eb337727277f4dbbd8df7d1d5e8114',

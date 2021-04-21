@@ -10,10 +10,10 @@ class Xmlto < Package
   source_sha256 '1130df3a7957eb9f6f0d29e4aa1c75732a7dfb6d639be013859b5c7ec5421276'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmlto-0.0.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmlto-0.0.28-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xmlto-0.0.28-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xmlto-0.0.28-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xmlto-0.0.28-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xmlto-0.0.28-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xmlto-0.0.28-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xmlto-0.0.28-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8f03c0544caa110a2af91afdf9b5a0b88b5e6ee2799cf4710cbe200b8bcf58a3',

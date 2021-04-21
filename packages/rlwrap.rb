@@ -10,10 +10,10 @@ class Rlwrap < Package
   source_sha256 '29e5a850fbe4753f353b0734e46ec0da043621bdcf7b52a89b77517f3941aade'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rlwrap-0.43-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rlwrap-0.43-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rlwrap-0.43-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rlwrap-0.43-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rlwrap-0.43-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rlwrap-0.43-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/rlwrap-0.43-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/rlwrap-0.43-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bc4979020c1fe51241c491c674283c4f0a0b51521baca9b82553d69b6e984855',

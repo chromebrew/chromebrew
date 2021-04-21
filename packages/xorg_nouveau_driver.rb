@@ -10,10 +10,10 @@ class Xorg_nouveau_driver < Package
   source_sha256 'aede10fd395610a328697adca3434fb14e9afbd79911d6c8545cfa2c0e541d4c'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_nouveau_driver-1.0.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_nouveau_driver-1.0.15-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_nouveau_driver-1.0.15-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_nouveau_driver-1.0.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xorg_nouveau_driver-1.0.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xorg_nouveau_driver-1.0.15-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xorg_nouveau_driver-1.0.15-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xorg_nouveau_driver-1.0.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '117d2cc14d320b1cdbe5e3f792022b796779d289553a8213607b132ee442090e',

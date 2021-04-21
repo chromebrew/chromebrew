@@ -10,7 +10,7 @@ class Handbrake < Package
   source_sha256 '218a37d95f48b5e7cf285363d3ab16c314d97627a7a710cab3758902ae877f85'
 
   binary_url ({
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/handbrake-1.3.3-1-chromeos-x86_64.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/handbrake-1.3.3-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     x86_64: '13e06c6458fe918ab1a46deeadcea9415c00be877a333b9bfbe5969c1ca1ba2a',

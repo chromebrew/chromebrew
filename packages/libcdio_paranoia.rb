@@ -13,10 +13,10 @@ class Libcdio_paranoia < Package
   source_sha256 '7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcdio_paranoia-10.2-2.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcdio_paranoia-10.2-2.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libcdio_paranoia-10.2-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libcdio_paranoia-10.2-2.0.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcdio_paranoia-10.2-2.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcdio_paranoia-10.2-2.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libcdio_paranoia-10.2-2.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libcdio_paranoia-10.2-2.0.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '8ba30c99931a347744767a197b49cb14cb3459e7997928bb4377acc2082afeaf',

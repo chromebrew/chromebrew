@@ -10,10 +10,10 @@ class Tcpstat < Package
   source_sha256 '46fde9458cc5678264b0c5f2197f84ada9101951197fdeec5f04b0801fcff0ba'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tcpstat-1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tcpstat-1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tcpstat-1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tcpstat-1.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tcpstat-1.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tcpstat-1.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/tcpstat-1.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/tcpstat-1.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9dc536b86bc7e6c133931ef586b8229386ab8528e6eea8ecfb12c8ba79ad349b',

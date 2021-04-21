@@ -18,9 +18,9 @@ class Zathura < Package
   depends_on 'zathura_poppler_pdf'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zathura-0.4.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zathura-0.4.7-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/zathura-0.4.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/zathura-0.4.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/zathura-0.4.7-chromeos-armv7l.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/zathura-0.4.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '401655bbb1a8f83cbcd158e67370abc105a292027f8b35ccbe6af04755b33d61',

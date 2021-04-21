@@ -10,10 +10,10 @@ class Libvoamrwbenc < Package
   source_sha256 '5652b391e0f0e296417b841b02987d3fd33e6c0af342c69542cbb016a71d9d4e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvoamrwbenc-0.1.3-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvoamrwbenc-0.1.3-0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libvoamrwbenc-0.1.3-0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libvoamrwbenc-0.1.3-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libvoamrwbenc-0.1.3-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libvoamrwbenc-0.1.3-0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libvoamrwbenc-0.1.3-0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libvoamrwbenc-0.1.3-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '983297522b623ee92bc5886479b85636cd88ef5f67d36da4a4ea0b2374583cb7',

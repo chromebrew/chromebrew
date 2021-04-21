@@ -10,10 +10,10 @@ class Tar < Package
   source_sha256 '66a8344b1dc83a411d311bd1547e0176e56cc311f28ee94a30f84dafb3d9067e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tar-1.33-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tar-1.33-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tar-1.33-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tar-1.33-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tar-1.33-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tar-1.33-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/tar-1.33-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/tar-1.33-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd5441f72cb619faf1d1c105adee8ad262fbdaeb2f74126042af03c8621c879c9',

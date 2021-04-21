@@ -10,10 +10,10 @@ class Amtk < Package
   source_sha256 'fc9bad18bbd5421da52e0548f9e91eda180539bb568d1e7116ca65f4f73f4b67'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/amtk-5.2.0-33ec-1-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/amtk-5.2.0-33ec-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
+        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/amtk-5.2.0-33ec-1-chromeos-i686.tar.xz',
+      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/amtk-5.2.0-33ec-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '6d3c8ac190895b8065f94c54baa32c3407c474204a58ded15aa850a5a177a176',

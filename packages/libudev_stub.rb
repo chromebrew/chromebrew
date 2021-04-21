@@ -10,10 +10,10 @@ class Libudev_stub < Package
   source_sha256 '4bc4479b8297bfd6449f245e09106600af1b3af657dd1472d9fd4c920b673660'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libudev_stub-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libudev_stub-0.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libudev_stub-0.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libudev_stub-0.9.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libudev_stub-0.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libudev_stub-0.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libudev_stub-0.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libudev_stub-0.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2eb86743b502cab926280f0e37a19417f96eaad925d9e533cf1c5a01212796b4',

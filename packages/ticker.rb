@@ -10,10 +10,10 @@ class Ticker < Package
   source_sha256 '5d80787d4c27b3dc4f8ebec2868d52bcf365c1ef928e63dc6c3ac541efe40e98'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ticker-1.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ticker-1.13-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ticker-1.13-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ticker-1.13-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ticker-1.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ticker-1.13-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ticker-1.13-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ticker-1.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd91f2b9b28e55878423c3f67b172d2983a346bae1e7d4d639343d0c86e1758c9',

@@ -10,10 +10,10 @@ class Libgweather < Package
   source_sha256 '89eebe5a83177f094c017a484be3a27b5e418fec2d9aaea1937bdc6ddc430627'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgweather-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgweather-40.beta-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgweather-40.beta-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgweather-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgweather-40.beta-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgweather-40.beta-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libgweather-40.beta-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libgweather-40.beta-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'eb3d11bb2bd6fcc03b232c52e018851ae3e4aa6008dc4676c3f99218a6a62b77',

@@ -10,10 +10,10 @@ class Sg3_utils < Package
   source_sha256 'ca94ac106510742cd8ff5ead4a7e5c89d410653291401daf4632d2bef2a35b05'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sg3_utils-1.44-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sg3_utils-1.44-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sg3_utils-1.44-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sg3_utils-1.44-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sg3_utils-1.44-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sg3_utils-1.44-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/sg3_utils-1.44-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/sg3_utils-1.44-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ae79701d44c714506fc6e96380cfe9bc401f8207bd3cef75ad6d22af62a947ab',

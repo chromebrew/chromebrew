@@ -10,10 +10,10 @@ class Json2xml < Package
   source_sha256 '61c7c848f7dc74d09ecc10badaa69902859483ea4e3b13148a83173af564aeea'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/json2xml-2.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/json2xml-2.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/json2xml-2.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/json2xml-2.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/json2xml-2.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/json2xml-2.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/json2xml-2.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/json2xml-2.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a7456faac3802bfffa003a845d7f7f12869e02796542b97b0539940ca6222061',

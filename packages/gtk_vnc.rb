@@ -10,10 +10,10 @@ class Gtk_vnc < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtk_vnc-1.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtk_vnc-1.2.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gtk_vnc-1.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gtk_vnc-1.2.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '62d85534080b53b4b3e0a20c58979db9e550a035414821d210a45fc8965da0ab',

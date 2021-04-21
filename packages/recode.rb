@@ -11,10 +11,10 @@ class Recode < Package
   source_sha256 'd7de37aa4793ec00b042a0315f142281a1dc480f6f6d7cb2cd2568e58c4f2e87'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/recode-2d7092a-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/recode-2d7092a-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/recode-2d7092a-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/recode-2d7092a-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/recode-2d7092a-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/recode-2d7092a-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/recode-2d7092a-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/recode-2d7092a-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3084a139559698dcfeb48f372cf05be2f38c00a65a657b946ff9afc8d2e639f4',
