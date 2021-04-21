@@ -10,10 +10,10 @@ class Rkhunter < Package
   source_sha256 'a8807c83f9f325312df05aa215fa75ad697c7a16163175363c2066baa26dda77'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rkhunter-1.4.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rkhunter-1.4.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rkhunter-1.4.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rkhunter-1.4.4-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rkhunter-1.4.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rkhunter-1.4.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/rkhunter-1.4.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/rkhunter-1.4.4-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '878cd4755b1a3d84a0ae8a07a6d1e4a852d47c642bcb292def0dac9f4b4acea7',

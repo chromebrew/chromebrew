@@ -10,10 +10,10 @@ class Ocaml < Package
   source_sha256 '58d431dde66f5750ebe9b15d5a1c4872f80d283dec23448689b0d1a498b7e4c7'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ocaml-4.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ocaml-4.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ocaml-4.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ocaml-4.10.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ocaml-4.10.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ocaml-4.10.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ocaml-4.10.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ocaml-4.10.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5c473693ab61a9f70f2691b63680009bd1ddf5f237eebdaa9d3ccb02e5cba793',

@@ -10,10 +10,10 @@ class Sshrc < Package
   source_sha256 'e849ff19319381548011a9bdf1e33abc6eba3dc6a910c4226e6981d75d5564dd'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sshrc-0.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sshrc-0.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sshrc-0.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sshrc-0.6.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sshrc-0.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sshrc-0.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/sshrc-0.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/sshrc-0.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e52ec8b2ea9be7d694bcc676059a8f5bfd35a9a05dbde317eff1bfb992ed9d37',

@@ -10,10 +10,10 @@ class Chromaprint < Package
   source_sha256 'ea18608b76fb88e0203b7d3e1833fb125ce9bb61efe22c6e169a50c52c457f82'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/chromaprint-1.4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/chromaprint-1.4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/chromaprint-1.4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/chromaprint-1.4.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/chromaprint-1.4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/chromaprint-1.4.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/chromaprint-1.4.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/chromaprint-1.4.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c0ea0bbcd43d6211cb11e85f54425d8a0bbea65e31dbf2662358599b1bce256e',

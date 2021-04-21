@@ -10,10 +10,10 @@ class Libaacs < Package
   source_sha256 '47e0bdc9c9f0f6146ed7b4cc78ed1527a04a537012cf540cf5211e06a248bace'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libaacs-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libaacs-0.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libaacs-0.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libaacs-0.9.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libaacs-0.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libaacs-0.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libaacs-0.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libaacs-0.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '79d13f5b1aa9dcf1f00d982a96a4756ca71a743e488141f29f57b7752c28d335',

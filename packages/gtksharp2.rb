@@ -10,10 +10,10 @@ class Gtksharp2 < Package
   source_sha256 '02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtksharp2-2.12.45-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtksharp2-2.12.45-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtksharp2-2.12.45-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtksharp2-2.12.45-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtksharp2-2.12.45-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtksharp2-2.12.45-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gtksharp2-2.12.45-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gtksharp2-2.12.45-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f7b0e0626a8561f4a24297d97322c2f4b280644e9b6015e03ce0d8a198bc2cfb',

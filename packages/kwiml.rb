@@ -10,10 +10,10 @@ class Kwiml < Package
   source_sha256 '09607a32224091cb6deb605382772c69a4f51d16a5ccf065688e6e7d80e6f822'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kwiml-a079af-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kwiml-a079af-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/kwiml-a079af-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/kwiml-a079af-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kwiml-a079af-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kwiml-a079af-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/kwiml-a079af-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/kwiml-a079af-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0198974f4a579f5aadb1b2174690fc79d9deb1b7690e732d35f35214c687c4b1',

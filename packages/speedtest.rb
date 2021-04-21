@@ -10,10 +10,10 @@ class Speedtest < Package
   source_sha256 '5e22f2dcce1c9020f33faf559b22727483f022008a2912b85d573e578374b6a0'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/speedtest-2.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/speedtest-2.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/speedtest-2.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/speedtest-2.0.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/speedtest-2.0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/speedtest-2.0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/speedtest-2.0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/speedtest-2.0.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5e6c9be7bd7b74ad375057949f5acd2db7d1f02ff6a38621a6cf516f5f60593f',

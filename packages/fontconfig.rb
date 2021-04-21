@@ -11,10 +11,10 @@ class Fontconfig < Package
   source_sha256 'f8452c78d1a12f6966455b0d584f89553b13e970b40644c3650f690ec0b3b4fe'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fontconfig-2.13.93-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fontconfig-2.13.93-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/fontconfig-2.13.93-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/fontconfig-2.13.93-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/fontconfig-2.13.93-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0047a707a1fc8531fa6bfc6fa45f2aead43ece0e65d1eaad094e4e98f3e43ec0',

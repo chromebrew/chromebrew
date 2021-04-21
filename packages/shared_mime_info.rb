@@ -10,10 +10,10 @@ class Shared_mime_info < Package
   source_sha256 'c625a83b4838befc8cafcd54e3619946515d9e44d63d61c4adf7f5513ddfbebf'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shared_mime_info-1.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shared_mime_info-1.10-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/shared_mime_info-1.10-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/shared_mime_info-1.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/shared_mime_info-1.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/shared_mime_info-1.10-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/shared_mime_info-1.10-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/shared_mime_info-1.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '29434bf4c31cf050dad19b3b31b5da17fe8e3321405e94f49769102721994f58',

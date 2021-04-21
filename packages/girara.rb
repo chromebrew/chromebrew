@@ -10,10 +10,10 @@ class Girara < Package
   source_sha256 'e33ba2a21dd57606439d37c829d48466a14e3e50a698e6bd678b511f5c59f4b5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/girara-0.3.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/girara-0.3.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/girara-0.3.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/girara-0.3.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/girara-0.3.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/girara-0.3.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/girara-0.3.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/girara-0.3.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '82dff3ea4ff0099f016a5aee03c52115b3acea760e55ec7c25c624f337f4f934',

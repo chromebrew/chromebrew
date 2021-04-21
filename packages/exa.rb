@@ -10,9 +10,9 @@ class Exa < Package
   source_sha256 '96e743ffac0512a278de9ca3277183536ee8b691a46ff200ec27e28108fef783'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exa-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/exa-0.9.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/exa-0.9.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/exa-0.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/exa-0.9.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/exa-0.9.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '42133a358da6081dc28f67ce182ba414e14a1c73da85bdf8e573851b3bb8bf54',

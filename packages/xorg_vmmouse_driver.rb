@@ -12,8 +12,8 @@ class Xorg_vmmouse_driver < Package
   depends_on 'xorg_server' => :build
 
   binary_url ({
-      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_vmmouse_driver-13.1.0-chromeos-i686.tar.xz',
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_vmmouse_driver-13.1.0-chromeos-x86_64.tar.xz',
+      i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xorg_vmmouse_driver-13.1.0-chromeos-i686.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xorg_vmmouse_driver-13.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: 'd24b37d653b0c8a57373f10b8431ad26691a196f0d9d9e5ba45495c65b9a60eb',
