@@ -10,10 +10,10 @@ class Inkscape < Package
   source_sha256 '063296c05a65d7a92a0f627485b66221487acfc64a24f712eb5237c4bd7816b2'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/inkscape-0.92.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/inkscape-0.92.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/inkscape-0.92.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/inkscape-0.92.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/inkscape-0.92.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/inkscape-0.92.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/inkscape-0.92.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/inkscape-0.92.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '99b2d2527b668282d0107327b76dc2f44f5f0cee3b5cc2a4e8259d8d3aae5676',

@@ -10,10 +10,10 @@ class Ansible < Package
   source_sha256 'efe7183e08f0c9dd9efd9124efa8978be62851b1e8eb856593a073538bfc6fb5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ansible-2.9.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ansible-2.9.14-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ansible-2.9.14-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ansible-2.9.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ansible-2.9.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ansible-2.9.14-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ansible-2.9.14-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ansible-2.9.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9c43a7e52691b4ba2042a34fc5613db34d45b8b3dbe96aeb8754b296fca9437a',

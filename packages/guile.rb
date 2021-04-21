@@ -10,10 +10,10 @@ class Guile < Package
   source_sha256 '8353a8849cd7aa77be66af04bd6bf7a6207440d2f8722e46672232bb9f0a4086'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/guile-2.2.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/guile-2.2.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/guile-2.2.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/guile-2.2.3-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/guile-2.2.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/guile-2.2.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/guile-2.2.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/guile-2.2.3-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '418eb676b562f77b80e3dae974f35159c0f844284c8e98f02d6763ff08924d4e',

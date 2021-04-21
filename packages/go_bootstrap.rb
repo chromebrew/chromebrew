@@ -10,10 +10,10 @@ class Go_bootstrap < Package
   source_sha256 'f4ff5b5eb3a3cae1c993723f3eab519c5bae18866b5e5f96fe1102f0cb5c3e52'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/go_bootstrap-1.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/go_bootstrap-1.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/go_bootstrap-1.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/go_bootstrap-1.4-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/go_bootstrap-1.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/go_bootstrap-1.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/go_bootstrap-1.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/go_bootstrap-1.4-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'dd2aaa41eb1e27a50d9a805f0bbe4b0924bb2fd4ddeccbe2658fb7fd59f48956',

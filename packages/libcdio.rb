@@ -10,10 +10,10 @@ class Libcdio < Package
   source_sha256 '1b481b5da009bea31db875805665974e2fc568e2b2afa516f4036733657cf958'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcdio-2.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcdio-2.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libcdio-2.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libcdio-2.0.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcdio-2.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcdio-2.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libcdio-2.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libcdio-2.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '96fe10d82e1165af8ddf59512c0f5e47adbebab38fcdb9741e687fc591075e98',

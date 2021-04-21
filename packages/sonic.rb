@@ -10,10 +10,10 @@ class Sonic < Package
   source_sha256 'c7827ce576838467590ffa1f935fbe1049e896dfed6c515cf569ad3779c24085'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sonic-0.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sonic-0.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sonic-0.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sonic-0.2.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sonic-0.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sonic-0.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/sonic-0.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/sonic-0.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '14ff70ffe97368d3f5297229da2eb228ea1f298c0d35611462957a3ac67a4a79',

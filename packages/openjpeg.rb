@@ -10,10 +10,10 @@ class Openjpeg < Package
   source_sha256 '8702ba68b442657f11aaeb2b338443ca8d5fb95b0d845757968a7be31ef7f16d'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openjpeg-2.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openjpeg-2.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/openjpeg-2.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/openjpeg-2.4.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openjpeg-2.4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openjpeg-2.4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/openjpeg-2.4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/openjpeg-2.4.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '595710bad9c20bb9cf549c4ac128c38a7b95d765482a4686f92e9a7c2436492c',

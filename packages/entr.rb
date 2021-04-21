@@ -10,10 +10,10 @@ class Entr < Package
   source_sha256 '4ad4fe9108b179199951cfc78a581a8a69602b073dae59bcae4b810f6e1f6c8b'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/entr-4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/entr-4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/entr-4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/entr-4.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/entr-4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/entr-4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/entr-4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/entr-4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0245397ddc6c63266cb85893650b4e3f30ba9ba433c3bb6ce4f1e026b31d7f41',

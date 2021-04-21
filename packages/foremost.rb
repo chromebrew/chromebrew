@@ -10,10 +10,10 @@ class Foremost < Package
   source_sha256 '502054ef212e3d90b292e99c7f7ac91f89f024720cd5a7e7680c3d1901ef5f34'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/foremost-1.5.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/foremost-1.5.7-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/foremost-1.5.7-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/foremost-1.5.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/foremost-1.5.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/foremost-1.5.7-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/foremost-1.5.7-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/foremost-1.5.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '45ee9afccc2ac3fc0c3b9e788a8f7f4cc5cd8b3a4cb10fed415e6f5f4c7fa59b',

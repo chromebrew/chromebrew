@@ -10,10 +10,10 @@ class Opensp < Package
   source_sha256 '57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/opensp-1.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/opensp-1.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/opensp-1.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/opensp-1.5.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/opensp-1.5.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/opensp-1.5.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/opensp-1.5.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/opensp-1.5.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '96b7be4dfbf6a31a3b06f6e0675267e595f58cd235f46c4b5726edb55b835360',

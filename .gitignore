@@ -1,0 +1,6 @@
+release/
+*.bz2
+*.gz
+*.sha256
+*.xz
+*.zip

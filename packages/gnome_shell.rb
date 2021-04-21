@@ -10,9 +10,9 @@ class Gnome_shell < Package
   source_sha256 '29567d94787e4b8db2723caeaf230ee1eba6b53072592c9269a24973909aaca3'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_shell-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_shell-40.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_shell-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_shell-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_shell-40.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gnome_shell-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '31335a6996bc1638c4e63497684b7f3f9b90eb016e10aedaa9c96848190609c0',

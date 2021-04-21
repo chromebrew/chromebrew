@@ -10,10 +10,10 @@ class Crew_profile_base < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/crew_profile_base-0.0.1-pre6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/crew_profile_base-0.0.1-pre6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/crew_profile_base-0.0.1-pre6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/crew_profile_base-0.0.1-pre6-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/crew_profile_base-0.0.1-pre6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/crew_profile_base-0.0.1-pre6-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/crew_profile_base-0.0.1-pre6-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/crew_profile_base-0.0.1-pre6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '042a8b84951511fbc017b2418b8c1eb92d40cba81e1e4e00c0e1d903ad2af032',

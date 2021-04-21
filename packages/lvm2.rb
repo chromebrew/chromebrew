@@ -11,10 +11,10 @@ class Lvm2 < Package
   source_sha256 '842c4510d4653990927d4518a5bf2743126a37531671a05842cdaf8d54bb9dd4'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lvm2-2.03.11-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lvm2-2.03.11-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lvm2-2.03.11-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lvm2-2.03.11-chromeos-x86_64.tar.xz',
+     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/lvm2-2.03.11-chromeos-armv7l.tar.xz',
+      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/lvm2-2.03.11-chromeos-armv7l.tar.xz',
+        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/lvm2-2.03.11-chromeos-i686.tar.xz',
+      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/lvm2-2.03.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'a60be47b7f7011234587ebba6e28adb36d27138b4bb182aa88da8af7fc6a6079',

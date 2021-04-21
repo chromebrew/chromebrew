@@ -11,10 +11,10 @@ class Perl_locale_gettext < Package
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_locale_gettext-1.07-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_locale_gettext-1.07-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_locale_gettext-1.07-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_locale_gettext-1.07-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2ca25cdafbe78b4d6b5e01c8985c20a2341c06c3b6969c50fa57f5dda2980e07',

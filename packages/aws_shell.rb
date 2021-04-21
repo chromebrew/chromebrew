@@ -10,10 +10,10 @@ class Aws_shell < Package
   source_sha256 '84262f0ccba6757a318ce415d8a77026b43db958cfac9ef615e75c3515d78f78'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aws_shell-0.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aws_shell-0.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/aws_shell-0.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/aws_shell-0.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/aws_shell-0.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/aws_shell-0.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/aws_shell-0.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/aws_shell-0.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7b973100dd69dc756fd4578fd8776670279f8dcbe086e9c3874997aa0f2425bb',

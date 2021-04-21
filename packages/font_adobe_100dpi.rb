@@ -10,10 +10,10 @@ class Font_adobe_100dpi < Package
   source_sha256 'b2c08433eab5cb202470aa9f779efefce8d9cab2534f34f3aa4a31d05671c054'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_adobe_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_adobe_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/font_adobe_100dpi-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/font_adobe_100dpi-1.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/font_adobe_100dpi-1.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/font_adobe_100dpi-1.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/font_adobe_100dpi-1.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/font_adobe_100dpi-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bd1f009f3db17d73db401bcfdddca3f8471b29e2d387569aabe9d5ffc000a8df',

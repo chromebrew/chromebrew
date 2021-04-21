@@ -11,10 +11,10 @@ class Libexiv2 < Package
   source_sha256 '4cf76787b665186c7a484f16aaf92b306be3fa34feb1edbda79442811dd4287e'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libexiv2-0.27.3-d8dd-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libexiv2-0.27.3-d8dd-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libexiv2-0.27.3-d8dd-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libexiv2-0.27.3-d8dd-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libexiv2-0.27.3-d8dd-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libexiv2-0.27.3-d8dd-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libexiv2-0.27.3-d8dd-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libexiv2-0.27.3-d8dd-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd5e464080d02bd02f92cc8faab43eae4ed3f65a86dd931302e9d3400df65ece1',

@@ -12,10 +12,10 @@ class Libgsf < Package
   source_sha256 'd188ebd3787b5375a8fd38ee6f761a2007de5e98fa0cf5623f271daa67ba774d'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgsf-1.14.47-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgsf-1.14.47-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgsf-1.14.47-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgsf-1.14.47-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgsf-1.14.47-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgsf-1.14.47-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libgsf-1.14.47-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libgsf-1.14.47-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fdb327f0c46a75e3cd5c5e4bc7e2701fe5b622881837894f9b2314bcc4b29501',

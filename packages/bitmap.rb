@@ -10,10 +10,10 @@ class Bitmap < Package
   source_sha256 'e0f3afad5272d796f54c33fa1b5bd1fb3f62843a54b28c87196d06a35123e5f5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bitmap-1.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bitmap-1.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/bitmap-1.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/bitmap-1.0.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bitmap-1.0.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bitmap-1.0.9-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/bitmap-1.0.9-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/bitmap-1.0.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '45218cfba754b357f8e0dac9f73b70200a8e10835317e69d20da17ec5d9ca8d0',

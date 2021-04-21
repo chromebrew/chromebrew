@@ -10,10 +10,10 @@ class Leveldb < Package
   source_sha256 '55423cac9e3306f4a9502c738a001e4a339d1a38ffbee7572d4a07d5d63949b2'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/leveldb-1.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/leveldb-1.22-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/leveldb-1.22-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/leveldb-1.22-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/leveldb-1.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/leveldb-1.22-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/leveldb-1.22-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/leveldb-1.22-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '362de886138261f127b60e31644ac80c627d9aba40e027c9d92978337c327915',

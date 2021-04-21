@@ -10,10 +10,10 @@ class Help2man < Package
   source_sha256 'd4ecf697d13f14dd1a78c5995f06459bff706fd1ce593d1c02d81667c0207753'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/help2man-1.47.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/help2man-1.47.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/help2man-1.47.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/help2man-1.47.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/help2man-1.47.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/help2man-1.47.4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/help2man-1.47.4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/help2man-1.47.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cc7d19aaa9ecb015b68f54d1d58308bf8c280a2a0248d0b1b27b6e6ae282fb5d',

@@ -10,10 +10,10 @@ class Cronie < Package
   source_sha256 '370bf34641691489330e708bd4cdbd779267296a030668a12f77b7e36872fd75'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cronie-1.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cronie-1.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cronie-1.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cronie-1.5.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cronie-1.5.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cronie-1.5.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/cronie-1.5.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/cronie-1.5.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',

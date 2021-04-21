@@ -10,10 +10,10 @@ class Libdb < Package
   source_sha256 'e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdb-5.3.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdb-5.3.28-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libdb-5.3.28-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libdb-5.3.28-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdb-5.3.28-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdb-5.3.28-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libdb-5.3.28-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libdb-5.3.28-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bf1e26d40554e30404c8eaba250eb008561113f8742f4d9d07999687881c642d',

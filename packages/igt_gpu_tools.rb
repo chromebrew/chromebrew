@@ -11,8 +11,8 @@ class Igt_gpu_tools < Package
   source_sha256 '40454d8f0484ea2477862007398a08eef78a6c252c4defce1c934548593fdd11'
 
   binary_url({
-      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/igt_gpu_tools-1.25-1-chromeos-i686.tar.xz',
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/igt_gpu_tools-1.25-1-chromeos-x86_64.tar.xz'
+      i686: 'https://github.com/chromebrew/binaries/raw/main/i686/igt_gpu_tools-1.25-1-chromeos-i686.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/igt_gpu_tools-1.25-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
       i686: 'eabf18c03916648a85b9f6211a197738ad51ad92900949cb257aeedc4e2bb2e3',

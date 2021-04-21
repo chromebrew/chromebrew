@@ -10,7 +10,7 @@ class Jdk11 < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url ({
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/jdk11-11.0.10-chromeos-x86_64.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/jdk11-11.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     x86_64: '6082f18263db0ded42b64130948c8dc39564aadd726c79f6ba92038566120107',

@@ -104,7 +104,3 @@ License
 Copyright 2013-2021 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
-
-Our binary packages are hosted on [SourceForge](https://sourceforge.net/projects/chromebrew/).
-
-<a href="https://sourceforge.net/projects/chromebrew/" target="_blank"><img src="images/sourceforge.png" alt="SourceForge" /></a>

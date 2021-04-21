@@ -10,10 +10,10 @@ class Motif < Package
   source_sha256 '859b723666eeac7df018209d66045c9853b50b4218cecadb794e2359619ebce7'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/motif-2.3.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/motif-2.3.8-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/motif-2.3.8-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/motif-2.3.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/motif-2.3.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/motif-2.3.8-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/motif-2.3.8-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/motif-2.3.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1c54520d4eaf0c6f9731aa486d63df65b6f0b32edef3eff2184dc6b699851b42',

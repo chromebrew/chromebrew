@@ -10,10 +10,10 @@ class Chibi_scheme < Package
   source_sha256 '8a077859b123216c123c243db391b0fe4c0cf73978c7cdd7b8ea853a48192756'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/chibi_scheme-0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/chibi_scheme-0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/chibi_scheme-0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/chibi_scheme-0.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/chibi_scheme-0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/chibi_scheme-0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/chibi_scheme-0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/chibi_scheme-0.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c5ce68d2b060f78644b9b95d4c4bf900aec0787d5461d78ff4ccfca556d63e16',

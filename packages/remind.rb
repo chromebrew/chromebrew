@@ -10,10 +10,10 @@ class Remind < Package
   source_sha256 '8adab4c0b30a556c34223094c5c74779164d5f3b8be66b8039f44b577e678ec1'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/remind-03.01.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/remind-03.01.15-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/remind-03.01.15-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/remind-03.01.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/remind-03.01.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/remind-03.01.15-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/remind-03.01.15-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/remind-03.01.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '65bae63d254189573223d8771b257e8a0186ee6bfcfb8c97a7df74995e4fe042',

@@ -10,10 +10,10 @@ class Neon < Package
   source_sha256 'db0bd8cdec329b48f53a6f00199c92d5ba40b0f015b153718d1b15d3d967fbca'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/neon-0.30.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/neon-0.30.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/neon-0.30.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/neon-0.30.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/neon-0.30.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/neon-0.30.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/neon-0.30.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/neon-0.30.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '788d09916ce56e217297af5f3e3ce86d131ab05be0f54f85bf24f86a85701989',

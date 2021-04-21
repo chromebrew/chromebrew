@@ -10,10 +10,10 @@ class Isl < Package
   source_sha256 '5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/isl-0.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/isl-0.23-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/isl-0.23-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/isl-0.23-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/isl-0.23-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/isl-0.23-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/isl-0.23-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/isl-0.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c552525f20ee4089d55c58cb718275ef8c5beba05f49dce6415de3a80983305e',

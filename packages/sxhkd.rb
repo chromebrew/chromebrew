@@ -10,10 +10,10 @@ class Sxhkd < Package
   source_sha256 '1edc8b1a8b3631c10ba9cb9df1181830dacbbdf77adb558e31d5dd2029637386'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sxhkd-0.6.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sxhkd-0.6.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sxhkd-0.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sxhkd-0.6.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sxhkd-0.6.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sxhkd-0.6.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/sxhkd-0.6.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/sxhkd-0.6.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ddc4774617d8238d80e4319771f1a9d6ef76f91337f76fa68aa49c543042bed9',

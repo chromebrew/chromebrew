@@ -10,10 +10,10 @@ class Vpnc < Package
   source_sha256 '46cea3bd02f207c62c7c6f2f22133382602baeda1dc320747809e94881414884'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vpnc-0.5.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vpnc-0.5.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vpnc-0.5.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vpnc-0.5.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vpnc-0.5.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vpnc-0.5.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/vpnc-0.5.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/vpnc-0.5.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e7bbf197b1c330a774aebeb33470879b3de0766059f370848ded4ade66776eb5',

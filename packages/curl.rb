@@ -11,10 +11,10 @@ class Curl < Package
   source_sha256 'fe0c49d8468249000bda75bcfdf9e30ff7e9a86d35f1a21f428d79c389d55675'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/curl-7.75.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/curl-7.75.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/curl-7.75.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/curl-7.75.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.75.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.75.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/curl-7.75.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/curl-7.75.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5931c7a220565a764e6e07dd29ee9d3faeccfc5c8a8cd55c1e2f461ab2b91ce1',

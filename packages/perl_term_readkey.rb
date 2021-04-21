@@ -10,10 +10,10 @@ class Perl_term_readkey < Package
   source_sha256 '5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_term_readkey-2.38-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_term_readkey-2.38-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_term_readkey-2.38-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_term_readkey-2.38-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '94188d0e163fe8dd2ddd02eb2c7737821810b073d999189d3c8d4441f8a17d01',

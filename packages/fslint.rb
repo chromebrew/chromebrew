@@ -10,10 +10,10 @@ class Fslint < Package
   source_sha256 'f15daebfecfd2eea0d3b48a0193e25974b71dcf1e4b4a33d5a3dcfb7bb9c90cc'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fslint-2.46-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fslint-2.46-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/fslint-2.46-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/fslint-2.46-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2eb0a037b1b395589ad00bf857eb9eba17e9c30f1d1683417d7f00ef0854e50c',

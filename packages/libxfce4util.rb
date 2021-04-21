@@ -10,10 +10,10 @@ class Libxfce4util < Package
   source_sha256 '60598d745d1fc81ff5ad3cecc3a8d1b85990dd22023e7743f55abd87d8b55b83'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxfce4util-4.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxfce4util-4.16.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libxfce4util-4.16.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libxfce4util-4.16.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ceca4f8f984045af5c7d945c679884e034ccbe005b778ad51bb957cf59c00cc8',

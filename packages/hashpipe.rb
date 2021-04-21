@@ -10,10 +10,10 @@ class Hashpipe < Package
   source_sha256 '6b3931d7c46332be2a6c07f94f91924065ba7988edd2e8a471123c77d3c614f6'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/hashpipe-1.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/hashpipe-1.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/hashpipe-1.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/hashpipe-1.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/hashpipe-1.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c852b3c8c35151b359f94c71505132a865da8bdb710345431b24c46a3ba6931b',

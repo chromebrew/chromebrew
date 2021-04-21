@@ -10,10 +10,10 @@ class Check < Package
   source_sha256 'a8de4e0bacfb4d76dd1c618ded263523b53b85d92a146d8835eb1a52932fa20a'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/check-0.15.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/check-0.15.2-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/check-0.15.2-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/check-0.15.2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/check-0.15.2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/check-0.15.2-chromeos-armv7l.tar.xz',
+        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/check-0.15.2-chromeos-i686.tar.xz',
+      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/check-0.15.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '935119bc79d705b92a3a67d422b86aa466284bc907026635c06b1767ca1bf346',

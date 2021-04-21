@@ -12,10 +12,10 @@ class Gfbgraph < Package
   source_sha256 'e55bb497daabfcd7e68e216ac5c695f03319f660ff524d0b6659e42089853516'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gfbgraph-0.2.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gfbgraph-0.2.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gfbgraph-0.2.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gfbgraph-0.2.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gfbgraph-0.2.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gfbgraph-0.2.4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gfbgraph-0.2.4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gfbgraph-0.2.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '883a3eb50bf0fd391333759913e20c4211f5f31a1a3002b7b900019b234b211d',
