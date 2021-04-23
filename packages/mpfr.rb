@@ -48,6 +48,6 @@ class Mpfr < Package
 
   def self.check
     # Check only works after an install on x86_64
-    system 'PWD=$(pwd) ; LD_LIBRARY_PATH=$pwd/src/.libs:$LD_LIBRARY_PATH make check'
+    system "LD_LIBRARY_PATH=\$(pwd)/src/.libs:\$LD_LIBRARY_PATH make check"
   end
 end
