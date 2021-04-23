@@ -117,7 +117,6 @@ class Gcc10 < Package
       end
       system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
         CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
-        LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         ../configure #{CREW_OPTIONS} \
         --disable-libmpx \
@@ -147,9 +146,8 @@ class Gcc10 < Package
         --with-pic \
         --with-system-zlib \
         #{@archflags}"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
-        make -j4"
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+        make"
     end
   end
 
@@ -164,39 +162,32 @@ class Gcc10 < Package
   def self.install
     Dir.chdir('objdir') do
       # gcc-libs install
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-          LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
           make -C #{CREW_TGT}/libgcc DESTDIR=#{CREW_DEST_DIR} install-shared"
 
       @gcc_libs = %w[libatomic libgfortran libgo libgomp libitm
                      libquadmath libsanitizer/asan libsanitizer/lsan libsanitizer/ubsan
                      libsanitizer/tsan libstdc++-v3/src libvtv]
       @gcc_libs.each do |lib|
-        system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-          LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+        system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
           make -C #{CREW_TGT}/#{lib} \
           DESTDIR=#{CREW_DEST_DIR} install-toolexeclibLTLIBRARIES || true"
       end
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libobjc DESTDIR=#{CREW_DEST_DIR} install-libs || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libstdc++-v3/po DESTDIR=#{CREW_DEST_DIR} install || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libphobos DESTDIR=#{CREW_DEST_DIR} install || true"
 
       @gcc_libs_info = %w[libgomp libitm libquadmath]
       @gcc_libs_info.each do |lib|
-        system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-          LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+        system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
           make -C #{CREW_TGT}/#{lib} DESTDIR=#{CREW_DEST_DIR} install-info || true"
       end
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-          LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
           make DESTDIR=#{CREW_DEST_DIR} install-strip"
 
       # gcc-non-lib install
@@ -205,8 +196,7 @@ class Gcc10 < Package
       gcc_dir = "gcc/#{gcc_arch}/#{gcc_version}"
       gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C gcc DESTDIR=#{CREW_DEST_DIR} install-driver install-cpp install-gcc-ar \
         c++.install-common install-headers install-plugin install-lto-wrapper"
 
@@ -221,8 +211,7 @@ class Gcc10 < Package
         FileUtils.install "gcc/#{lib}", "#{gcc_libdir}/", mode: 0o755
       end
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libgcc DESTDIR=#{CREW_DEST_DIR} install"
 
       @libstdc_install = %w[src include libsupc++]
@@ -231,12 +220,10 @@ class Gcc10 < Package
       LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
       make -C #{CREW_TGT}/libstdc++-v3/#{lib} DESTDIR=#{CREW_DEST_DIR} install"
       end
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libstdc++-v3/python DESTDIR=#{CREW_DEST_DIR} install"
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make DESTDIR=#{CREW_DEST_DIR} install-libcc1"
 
       # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
@@ -247,45 +234,33 @@ class Gcc10 < Package
       FileUtils.mv Dir.glob("#{CREW_DEST_LIB_PREFIX}/*gdb.py"),
                    "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib/"
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make DESTDIR=#{CREW_DEST_DIR} install-fixincludes"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C gcc DESTDIR=#{CREW_DEST_DIR} install-mkheaders"
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS || true"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS || true"
       # This failed on i686
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS || true"
       # This might fail on i686
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS || true"
 
       # libiberty is installed from binutils
@@ -294,20 +269,16 @@ class Gcc10 < Package
       #      make -C libiberty DESTDIR=#{CREW_DEST_DIR} install"
       # install -m644 libiberty/pic/libiberty.a "#{CREW_DEST_PREFIX}/lib"
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C gcc DESTDIR=#{CREW_DEST_DIR} install-man install-info"
 
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C libcpp DESTDIR=#{CREW_DEST_DIR} install"
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
 
       # install the libstdc++ man pages
-      system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
