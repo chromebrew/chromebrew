@@ -23,6 +23,8 @@ class Mpfr < Package
   })
 
   depends_on 'autoconf_archive' => :build
+  depends_on 'hashpipe' => :build
+  depends_on 'gmp' # R
 
   def self.patch
     puts 'Applying current rolling patchset. See https://www.mpfr.org/mpfr-current/#bugs'
