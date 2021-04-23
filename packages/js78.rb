@@ -10,10 +10,10 @@ class Js78 < Package
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/js78-78.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/js78-78.7.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/js78-78.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/js78-78.7.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'bf8e6afa9277745bad6e9d4f16f86e4b5bb41357ef502c9776968d0a4ecbe008',

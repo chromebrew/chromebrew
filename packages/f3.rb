@@ -10,10 +10,10 @@ class F3 < Package
   source_sha256 '1d9edf12d3f40c03a552dfc3ed36371c62933b9213483182f7a561e1a5b8e1cc'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/f3-7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/f3-7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/f3-7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/f3-7.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/f3-7.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/f3-7.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/f3-7.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/f3-7.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0e024b920108a42f8c5497a045972998fd2768c3f6103c05a14785583429298f',

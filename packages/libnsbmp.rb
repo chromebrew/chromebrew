@@ -10,10 +10,10 @@ class Libnsbmp < Package
   source_sha256 '79c49365f860ed451bfc4109eddec8de3e9b7ce5a3be069596bd2aa19279324f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libnsbmp-0.1.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libnsbmp-0.1.6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libnsbmp-0.1.6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libnsbmp-0.1.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libnsbmp-0.1.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libnsbmp-0.1.6-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libnsbmp-0.1.6-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libnsbmp-0.1.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '19a2adc9830d6831ca4f3449f50dcd5ac06843b69030fb584a2f4394a3d7dee8',

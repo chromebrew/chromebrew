@@ -10,10 +10,10 @@ class Xorg_wacom_driver < Package
   source_sha256 'eae7c5d2872b1433c8d679bb42b00213403eb2a0544c514f4df2b586284c23f6'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_wacom_driver-0.36.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_wacom_driver-0.36.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_wacom_driver-0.36.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_wacom_driver-0.36.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xorg_wacom_driver-0.36.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xorg_wacom_driver-0.36.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xorg_wacom_driver-0.36.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xorg_wacom_driver-0.36.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ee29a6cace73be6ba1a7d219ad1b177a27329b60bd54ac535bcf542810e49f17',

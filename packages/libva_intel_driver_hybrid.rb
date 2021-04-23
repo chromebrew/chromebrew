@@ -10,8 +10,8 @@ class Libva_intel_driver_hybrid < Package
   source_sha256 '03cd7e16acc94f828b6e7f3087863d8ca06e99ffa3385588005b1984bdd56157'
 
   binary_url({
-      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libva_intel_driver_hybrid-2.4.1-1-chromeos-i686.tar.xz',
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libva_intel_driver_hybrid-2.4.1-1-chromeos-x86_64.tar.xz'
+      i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libva_intel_driver_hybrid-2.4.1-1-chromeos-i686.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libva_intel_driver_hybrid-2.4.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
       i686: 'ff155f22b24b2c58a434e3b866f47f367b92817835d15f62034311ee607dc289',

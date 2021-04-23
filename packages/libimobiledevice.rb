@@ -13,10 +13,10 @@ class Libimobiledevice < Package
   source_sha256 'acbfb73eabee162e64c0d9de207d71c0a5f47c40cd5ad32a5097f734328ce10a'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libimobiledevice-1.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libimobiledevice-1.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libimobiledevice-1.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libimobiledevice-1.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libimobiledevice-1.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libimobiledevice-1.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libimobiledevice-1.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libimobiledevice-1.3.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7a8a73892ac722226e44a17c810900213aa6c5e66c26ad23b8d30b379d5b7dae',

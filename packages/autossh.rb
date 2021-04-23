@@ -10,10 +10,10 @@ class Autossh < Package
   source_sha256 '5fc3cee3361ca1615af862364c480593171d0c54ec156de79fc421e31ae21277'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/autossh-1.4g-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/autossh-1.4g-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/autossh-1.4g-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/autossh-1.4g-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/autossh-1.4g-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/autossh-1.4g-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/autossh-1.4g-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/autossh-1.4g-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6cb94ea21f975411bd5dd4b00bf237f0018f2c6cad16a0cb0676a61a026626e3',

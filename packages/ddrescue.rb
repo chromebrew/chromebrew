@@ -10,10 +10,10 @@ class Ddrescue < Package
   source_sha256 'ce538ebd26a09f45da67d3ad3f7431932428231ceec7a2d255f716fa231a1063'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ddrescue-1.25-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ddrescue-1.25-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ddrescue-1.25-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ddrescue-1.25-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ddrescue-1.25-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ddrescue-1.25-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ddrescue-1.25-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ddrescue-1.25-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'abc719d94dc994ffc18cbe065e6606282d04f78652cab536897af2773b447d0d',

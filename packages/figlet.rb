@@ -10,10 +10,10 @@ class Figlet < Package
   source_sha256 'bf88c40fd0f077dab2712f54f8d39ac952e4e9f2e1882f1195be9e5e4257417d'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/figlet-2.2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/figlet-2.2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/figlet-2.2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/figlet-2.2.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/figlet-2.2.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/figlet-2.2.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/figlet-2.2.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/figlet-2.2.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6f4f9e4777710551e5ff6a7da662f628bb150f29ff8cec5cdc5763c3fd24f16f',

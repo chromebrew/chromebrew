@@ -10,9 +10,9 @@ class Librespot < Package
   source_sha256 '2d28a63c6dda08ecbc1245c7cfe34c9b3b29e8c5304f4aa8b65aedb899056b25'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/librespot-0.1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/librespot-0.1.3-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/librespot-0.1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/librespot-0.1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/librespot-0.1.3-chromeos-armv7l.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/librespot-0.1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ecfcbfaf8f71b1a4442535a0dc97e2d3db4dd5c67c7200deb040da74db56c099',

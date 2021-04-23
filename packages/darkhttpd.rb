@@ -10,10 +10,10 @@ class Darkhttpd < Package
   source_sha256 'a50417b622b32b5f421b3132cb94ebeff04f02c5fb87fba2e31147d23de50505'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/darkhttpd-1.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/darkhttpd-1.12-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/darkhttpd-1.12-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/darkhttpd-1.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/darkhttpd-1.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/darkhttpd-1.12-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/darkhttpd-1.12-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/darkhttpd-1.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2e0d63b59129bae92d3d957b655a9d4bf07a66586d5427f8fbe1b0d181541b0f',

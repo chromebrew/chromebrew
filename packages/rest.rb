@@ -11,10 +11,10 @@ class Rest < Package
   source_sha256 '9063b9906c3a4684bef6ccaad9462e8409e1025fe37b7c9596fcf2f5f7507904'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rest-0.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rest-0.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rest-0.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rest-0.8.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rest-0.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rest-0.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/rest-0.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/rest-0.8.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9e9f407b296703cce2260663f12a127624f902a8fa7067c1ea83d7f715212568',

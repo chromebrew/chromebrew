@@ -11,10 +11,10 @@ class Kakoune < Package
   source_sha256 '7a31c9f08c261c5128d1753762721dd7b7fe4bb4e9a3c368c9d768c72a1472e1'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kakoune-v2018.09.04-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/kakoune-v2018.09.04-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/kakoune-v2018.09.04-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/kakoune-v2018.09.04-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kakoune-v2018.09.04-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/kakoune-v2018.09.04-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/kakoune-v2018.09.04-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/kakoune-v2018.09.04-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a4304ec155e6c375c841451df07d60b19ed288b0abc9f99b46a6de52a2b40321',

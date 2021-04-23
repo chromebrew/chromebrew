@@ -10,10 +10,10 @@ class Jfrog < Package
   source_sha256 '75a0f9bfd3170d03c542b62442761822ff2e4a7a279406d9b2ee5eeee888813f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jfrog-1.39.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jfrog-1.39.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/jfrog-1.39.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/jfrog-1.39.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jfrog-1.39.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jfrog-1.39.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/jfrog-1.39.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/jfrog-1.39.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4561d7c7fe855a92055e23baee586f25b0261fce20f89919c12ca477e0895324',

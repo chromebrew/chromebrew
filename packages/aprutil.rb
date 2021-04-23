@@ -10,10 +10,10 @@ class Aprutil < Package
   source_sha256 'd3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aprutil-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aprutil-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/aprutil-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/aprutil-1.6.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/aprutil-1.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/aprutil-1.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/aprutil-1.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/aprutil-1.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e9fc87b307ffd4b0ebf0f8edb198813eff40c78652ca128b870401e0b95e8da5',

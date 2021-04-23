@@ -11,10 +11,10 @@ class Rav1e < Package
   source_sha256 'fd884fa387d01860eaf22a0a97353525221eb32bf6b9154bbfa21b6cce5988c8'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/rav1e-0.5.0-alpha-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/rav1e-0.5.0-alpha-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/rav1e-0.5.0-alpha-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/rav1e-0.5.0-alpha-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd02192b1152145b31bb1192d79ca40cb722d3c550b7471020e30bfac69448571',

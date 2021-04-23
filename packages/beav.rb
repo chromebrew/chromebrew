@@ -10,10 +10,10 @@ class Beav < Package
   source_sha256 '7ad905e4124bf105ca0e213d8212bed231559825ac11588794b9be7a91399ddc'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/beav-1.40-18-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/beav-1.40-18-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/beav-1.40-18-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/beav-1.40-18-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/beav-1.40-18-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/beav-1.40-18-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/beav-1.40-18-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/beav-1.40-18-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5cc00778439b0fc1a73085ce7d0b32c9c755720bcd0d74a21fa8c317280e25f1',

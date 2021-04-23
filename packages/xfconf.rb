@@ -10,10 +10,10 @@ class Xfconf < Package
   source_sha256 '589052a0efc6151c5fb5f438da463502a4fd91848cae7b9376d417be4c5a0c02'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfconf-4.14.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xfconf-4.14.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xfconf-4.14.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xfconf-4.14.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xfconf-4.14.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xfconf-4.14.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xfconf-4.14.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xfconf-4.14.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '14c0ea331495d775cefe7d47d0ad3b916ca1b32cee886dcd526f6577d9e8e846',

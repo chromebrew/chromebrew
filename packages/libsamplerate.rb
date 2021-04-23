@@ -10,10 +10,10 @@ class Libsamplerate < Package
   source_sha256 '0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsamplerate-0.1.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsamplerate-0.1.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsamplerate-0.1.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsamplerate-0.1.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsamplerate-0.1.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsamplerate-0.1.9-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libsamplerate-0.1.9-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libsamplerate-0.1.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cae5af051ec2d36af1e8c1acfc8fc8fd3b7d81d22492a6f2226561c78733775f',

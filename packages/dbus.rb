@@ -10,10 +10,10 @@ class Dbus < Package
   source_sha256 '8078f5c25e34ab907ce06905d969dc8ef0ccbec367e1e1707c7ecf8460f4254e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dbus-1.13.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dbus-1.13.18-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/dbus-1.13.18-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/dbus-1.13.18-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dbus-1.13.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dbus-1.13.18-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/dbus-1.13.18-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/dbus-1.13.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '11c36243a83f99f7a2f44194ed1e8691fc5a4dd98238a067e8fa8caf53364842',

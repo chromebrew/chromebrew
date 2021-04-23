@@ -10,10 +10,10 @@ class Cpustat < Package
   source_sha256 'ea9ab5a970ec657496c0127e3e5d58d49ce0fe07e750b4aafcfeb4896ccd74e9'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cpustat-0.02.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cpustat-0.02.10-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cpustat-0.02.10-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cpustat-0.02.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cpustat-0.02.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cpustat-0.02.10-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/cpustat-0.02.10-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/cpustat-0.02.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd8a55c174fee28fc12a5a153836696fdfc7320f5fbc106095e0d18faccc7c58e',

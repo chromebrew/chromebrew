@@ -10,10 +10,10 @@ class Ibmonitor < Package
   source_sha256 '331dac4553b5c336d1db3d35176ecebeaf15b39ad0432372cba583324a222e28'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ibmonitor-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ibmonitor-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ibmonitor-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ibmonitor-1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ibmonitor-1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ibmonitor-1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ibmonitor-1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ibmonitor-1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '22735764b4c6c9d973dffa60110c138f6a0b1cc2d9a7dae43f87d02f47c0028c',

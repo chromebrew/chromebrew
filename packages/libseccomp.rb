@@ -11,10 +11,10 @@ class Libseccomp < Package
   source_sha256 '76ad54e31d143b39a99083564045212a965e026a1010a742edd793d26d699829'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libseccomp-2.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libseccomp-2.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libseccomp-2.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libseccomp-2.5.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libseccomp-2.5.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libseccomp-2.5.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libseccomp-2.5.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libseccomp-2.5.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a5fb74e92c03f02a6079796234e0c3c192ec689d71bc5b5dd104c0decdd747b1',

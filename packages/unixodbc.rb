@@ -10,10 +10,10 @@ class Unixodbc < Package
   source_sha256 '52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/unixodbc-2.3.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/unixodbc-2.3.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/unixodbc-2.3.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/unixodbc-2.3.9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/unixodbc-2.3.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/unixodbc-2.3.9-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/unixodbc-2.3.9-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/unixodbc-2.3.9-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6f04ee2e7fcc4e8c37db45e05fe51a5dcac345b7c61d440b791762ae7609b578',

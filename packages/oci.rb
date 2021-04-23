@@ -14,8 +14,8 @@ class Oci < Package
   end
 
   binary_url ({
-      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/oci-2.4.23-chromeos-i686.tar.xz',
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/oci-2.4.23-chromeos-x86_64.tar.xz',
+      i686: 'https://github.com/chromebrew/binaries/raw/main/i686/oci-2.4.23-chromeos-i686.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/oci-2.4.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: '541ead165b4ff71b8bea745779f68057a6f79b67da838369a8d9a94ed22b66b6',

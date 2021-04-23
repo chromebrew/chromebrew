@@ -12,10 +12,10 @@ class Shaderc < Package
   source_sha256 'e96d8cb208b796cecb9e6cce437c7d1116343158ef3ea26277eb13b62cf56834'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shaderc-2020.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shaderc-2020.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/shaderc-2020.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/shaderc-2020.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/shaderc-2020.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/shaderc-2020.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/shaderc-2020.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/shaderc-2020.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '74e0264a8277b173f33e04e84a31a118173c2f4c5013ddd9f68f51a4a38b0965',

@@ -10,10 +10,10 @@ class Mtr < Package
   source_sha256 '229c673d637bd7dbb96471623785a47e85da0b1944978200c949994c1e6af10d'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mtr-0.93-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mtr-0.93-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mtr-0.93-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mtr-0.93-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mtr-0.93-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mtr-0.93-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mtr-0.93-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mtr-0.93-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '10827000fd244c4a001077b013ed89d9ee156297764a59b763938e2e261d1965',

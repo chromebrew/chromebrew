@@ -11,7 +11,7 @@ class Intel_media_driver < Package
   source_sha256 '219ce6b08a84bdce311160dc694d866249fd4e390391c2ac7be55f13a2fb928c'
 
   binary_url({
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/intel_media_driver-21.1.3-chromeos-x86_64.tar.xz'
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/intel_media_driver-21.1.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     x86_64: 'cb0a13759d9694716c928640384ca59c3ac044a3379e0cc4160f156347e4d158'
