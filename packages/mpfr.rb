@@ -27,7 +27,8 @@ class Mpfr < Package
   def self.patch
     puts 'Applying current rolling patchset. See https://www.mpfr.org/mpfr-current/#bugs'
     puts 'for more information.'
-    system 'curl -Ls https://www.mpfr.org/mpfr-current/allpatches | patch -NZp1 --binary'
+    system 'curl -Ls "https://gforge.inria.fr/scm/viewvc.php/mpfr/misc/www/mpfr-4.1.0/allpatches?revision=14491&view=co" | \
+      hashpipe sha256 dfa7d8a14ec7cb3b344cb81cfd7bd7e22aba62379941cc9110759f11172ac013 | patch -NZp1 --binary'
   end
 
   def self.build
