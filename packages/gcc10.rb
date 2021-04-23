@@ -27,14 +27,17 @@ class Gcc10 < Package
   @mpc_ver = '1.2.1'
   @mpfr_ver = '4.1.0'
 
-  depends_on 'dejagnu' => :build # for test
   depends_on 'ccache' => :build
+  depends_on 'dejagnu' => :build # for test
   depends_on 'hashpipe' => :build
+  depends_on 'icu4c' => :build
+  depends_on 'mawk' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'isl' # R
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'gmp' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
