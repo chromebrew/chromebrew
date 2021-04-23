@@ -4,42 +4,48 @@ class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
   version '10.3.0'
-  @isl_ver = '0.23'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-10.3.0/gcc-10.3.0.tar.xz'
   source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcc10-10.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcc10-10.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gcc10-10.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gcc10-10.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-armv7l.tar.xz',
+       i686: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-i686.tar.xz',
+     x86_64: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'a76f2e18af60cd5eb9cfb118c4bd6c31a35be4f5ea617a0b6b22ce549030d494',
-     armv7l: 'a76f2e18af60cd5eb9cfb118c4bd6c31a35be4f5ea617a0b6b22ce549030d494',
-       i686: 'c5ff2877e7a3077b8bf2d0d8158a54a6a5483385bdbf685bcfa476be61a5886e',
-     x86_64: '6e49cfe362cb7645b892c8454acc1822620fc8c3bc353249e24f6f8d8da10866'
+    aarch64: 'd705cef48c08f2b2f12fb1f5fd0dcedb7c4f3d1101218b2c04f80c3b0ad0ef25',
+     armv7l: 'd705cef48c08f2b2f12fb1f5fd0dcedb7c4f3d1101218b2c04f80c3b0ad0ef25',
+       i686: 'dd28942ca55db9928f8004750b0f6fefa6a6a87fcf565bff7099928e5265f7c9',
+     x86_64: '2779b9eddcd2630dca4c1ec8310130acd6362118c51c7808ce31eba907842e07'
   })
+  
+  @gmp_ver = '6.2.1'
+  @isl_ver = '0.23'
+  @mpc_ver = '1.2.1'
+  @mpfr_ver = '4.1.0'
 
   depends_on 'dejagnu' => :build # for test
   depends_on 'ccache' => :build
   depends_on 'hashpipe' => :build
-  depends_on 'glibc'
-  depends_on 'isl'
-  depends_on 'mpc'
-  depends_on 'mpfr'
-  depends_on 'gmp'
+  depends_on 'glibc' # R
+  depends_on 'isl' # R
+  depends_on 'mpc' # R
+  depends_on 'mpfr' # R
+  depends_on 'gmp' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
-  def self.preinstall
-    installed_gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
-    gcc_version = version.split('-')[0]
-    # match to 'version' for case of ccache in PATH
-    unless installed_gccver.to_s == 'No' || installed_gccver.to_s == 'not' || installed_gccver.to_s == 'gcc:' || installed_gccver.to_s == 'version' || installed_gccver.to_s == gcc_version.to_s
-      abort "GCC version #{installed_gccver} already installed.".lightgreen
-    end
-  end
+   def self.preinstall
+     installed_gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
+     gcc_version = version.split('-')[0]
+     # match to 'version' for case of ccache in PATH
+     unless installed_gccver.to_s == 'No' || installed_gccver.to_s == 'not' || installed_gccver.to_s == 'gcc:' || installed_gccver.to_s == 'version' || installed_gccver.to_s == gcc_version.to_s
+       abort "GCC version #{installed_gccver} already installed.".lightgreen
+     end
+   end
 
   def self.build
     # Set ccache sloppiness as per
@@ -52,11 +58,32 @@ class Gcc10 < Package
     # linked statically.
     # system './contrib/download_prerequisites'
 
+    # Install newer version of gmp
+    gmp_url = "https://gmplib.org/download/gmp/gmp-#{@gmp_ver}.tar.lz"
+    gmp_sha256 = '2c7f4f0d370801b2849c48c9ef3f59553b5f1d3791d070cffb04599f9fc67b41'
+    system "curl -Ls #{gmp_url} | hashpipe sha256 #{gmp_sha256} | tar --lzip -x"
+    system "ln -sf ../gmp-#{@gmp_ver} gmp"
+
     # Install newer version of isl
     isl_url = "http://isl.gforge.inria.fr/isl-#{@isl_ver}.tar.bz2"
     isl_sha256 = 'c58922c14ae7d0791a77932f377840890f19bc486b653fa64eba7f1026fb214d'
     system "curl -Ls #{isl_url} | hashpipe sha256 #{isl_sha256} | tar xj"
     system "ln -sf ../isl-#{@isl_ver} isl"
+
+    # Install newer version of mpc
+    mpc_url = "https://ftp.gnu.org/gnu/mpc/mpc-#{@mpc_ver}.tar.gz"
+    mpc_sha256 = '17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459'
+    system "curl -Ls #{mpc_url} | hashpipe sha256 #{mpc_sha256} | tar xz"
+    system "ln -sf ../mpc-#{@mpc_ver} mpc"
+
+    # Install newer version of mpfr
+    mpfr_url = "https://www.mpfr.org/mpfr-current/mpfr-#{@mpfr_ver}.tar.xz"
+    mpfr_sha256 = '0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
+    system "curl -Ls #{mpfr_url} | hashpipe sha256 #{mpfr_sha256} | tar xJ"
+    Dir.chdir "mpfr-#{@mpfr_ver}" do
+      system 'curl -Ls https://www.mpfr.org/mpfr-current/allpatches | patch -NZp1 --binary'
+    end
+    system "ln -sf ../mpfr-#{@mpfr_ver} mpfr"
 
     gcc_version = version.split('-')[0]
 
@@ -77,104 +104,52 @@ class Gcc10 < Package
     # when building static llvm
     system "sed -i 's/-fbuilding-libgcc -fno-stack-protector/-fbuilding-libgcc -fPIC -fno-stack-protector/g' libgcc/Makefile.in"
     Dir.chdir('objdir') do
-      @cflags = '-fPIC'
-      @cxxflags = '-fPIC'
+      @cflags = '-fPIC -pipe'
+      @cxxflags = '-fPIC -pipe'
       @languages = 'c,c++,jit,objc,fortran,go'
       case ARCH
       when 'armv7l', 'aarch64'
-        system "env CFLAGS=#{@cflags} CXXFLAGS=#{@cxxflags} \
-           LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-           LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
-          ../configure #{CREW_OPTIONS} \
-          --disable-libmpx \
-          --disable-libssp \
-          --disable-multilib \
-          --disable-werror \
-          --enable-cet=auto \
-          --enable-checking=release \
-          --enable-clocale=gnu \
-          --enable-default-pie \
-          --enable-default-ssp \
-          --enable-gnu-indirect-function \
-          --enable-gnu-unique-object \
-          --enable-host-shared \
-          --enable-languages=#{@languages} \
-          --enable-lto \
-          --enable-plugin \
-          --enable-shared \
-          --enable-static \
-          --enable-threads=posix \
-          --program-suffix=-#{gcc_version} \
-          --with-arch=armv7-a \
-          --with-build-config=bootstrap-lto-lean \
-          --with-float=hard \
-          --with-fpu=neon \
-          --with-isl \
-          --with-pic \
-          --with-system-zlib \
-          --with-tune=cortex-a15"
+        @archflags = '--with-arch=armv7-a --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
       when 'x86_64'
-        system "env CFLAGS=#{@cflags} CXXFLAGS=#{@cxxflags}  \
-          LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-          LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
-          ../configure #{CREW_OPTIONS} \
-          --disable-libmpx \
-          --disable-libssp \
-          --disable-multilib \
-          --disable-werror \
-          --enable-cet=auto \
-          --enable-checking=release \
-          --enable-clocale=gnu \
-          --enable-default-pie \
-          --enable-default-ssp \
-          --enable-gnu-indirect-function \
-          --enable-gnu-unique-object \
-          --enable-host-shared \
-          --enable-languages=#{@languages}  \
-          --enable-lto \
-          --enable-plugin \
-          --enable-shared \
-          --enable-static \
-          --enable-threads=posix \
-          --program-suffix=-#{gcc_version} \
-          --with-arch-64=x86-64 \
-          --with-build-config=bootstrap-lto-lean \
-          --with-isl \
-          --with-pic \
-          --with-system-zlib"
+        @archflags = '--with-arch-64=x86-64'
       when 'i686'
-        system "env CFLAGS=#{@cflags} CXXFLAGS=#{@cxxflags} \
-          LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-          LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
-          ../configure  #{CREW_OPTIONS} \
-          --disable-libmpx \
-          --disable-libssp \
-          --disable-multilib \
-          --disable-werror \
-          --enable-cet=auto \
-          --enable-checking=release \
-          --enable-clocale=gnu \
-          --enable-default-pie \
-          --enable-default-ssp \
-          --enable-gnu-indirect-function \
-          --enable-gnu-unique-object \
-          --enable-host-shared \
-          --enable-languages=#{@languages}  \
-          --enable-lto \
-          --enable-plugin \
-          --enable-shared \
-          --enable-static \
-          --enable-threads=posix \
-          --program-suffix=-#{gcc_version} \
-          --with-arch-32=#{ARCH} \
-          --with-build-config=bootstrap-lto-lean \
-          --with-isl \
-          --with-pic \
-          --with-system-zlib"
+        @archflags = '--with-arch-32=i686'
       end
+      system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
+        CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
+        LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
+        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+        ../configure #{CREW_OPTIONS} \
+        --disable-libmpx \
+        --disable-libssp \
+        --disable-multilib \
+        --disable-werror \
+        --enable-cet=auto \
+        --enable-checking=release \
+        --enable-clocale=gnu \
+        --enable-default-pie \
+        --enable-default-ssp \
+        --enable-gnu-indirect-function \
+        --enable-gnu-unique-object \
+        --enable-host-shared \
+        --enable-languages=#{@languages} \
+        --enable-lto \
+        --enable-plugin \
+        --enable-shared \
+        --enable-static \
+        --enable-threads=posix \
+        --program-suffix=-#{gcc_version} \
+        --with-build-config=bootstrap-lto-lean \
+        --with-gmp \
+        --with-isl \
+        --with-mpc \
+        --with-mpfr \
+        --with-pic \
+        --with-system-zlib \
+        #{@archflags}"
       system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-          LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
-          make -j4"
+        LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
+        make -j4"
     end
   end
 
@@ -228,18 +203,22 @@ class Gcc10 < Package
       gcc_arch = `gcc/xgcc -dumpmachine`.chomp
       gcc_version = version.split('-')[0]
       gcc_dir = "gcc/#{gcc_arch}/#{gcc_version}"
-      gcc_libdir = "#{CREW_LIB_PREFIX}/#{gcc_dir}"
+      gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
       system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C gcc DESTDIR=#{CREW_DEST_DIR} install-driver install-cpp install-gcc-ar \
         c++.install-common install-headers install-plugin install-lto-wrapper"
 
-      system "install -m755 -t #{CREW_DEST_PREFIX}/bin/ gcc/gcov"
-      system "install -m755 -t #{CREW_DEST_PREFIX}/bin/ gcc/gcov-tool"
+      @gcov_install = %w[gcov gcov-tool]
+      @gcov_install.each do |gcov_bin|
+        FileUtils.install "gcc/#{gcov_bin}", "#{CREW_DEST_PREFIX}/bin/#{gcov_bin}-#{gcc_version}", mode: 0o755
+      end
+
+      FileUtils.mkdir_p gcc_libdir
       @gcc_libdir_install = %w[cc1 cc1plus collect2 lto1]
       @gcc_libdir_install.each do |lib|
-        system "install -m755 -t #{gcc_libdir}/ gcc/#{lib}"
+        FileUtils.install "gcc/#{lib}", "#{gcc_libdir}/", mode: 0o755
       end
 
       system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
@@ -375,8 +354,8 @@ class Gcc10 < Package
 
   def self.postinstall
     # Only make links to unversioned in postinstall
-    gcc_arch = `gcc-#{version} -dumpmachine`.chomp
     gcc_version = version.split('-')[0]
+    gcc_arch = `gcc-#{gcc_version} -dumpmachine`.chomp
     gcc_dir = "gcc/#{gcc_arch}/#{gcc_version}"
     Dir.chdir "#{CREW_PREFIX}/bin/" do
       Dir.glob("#{gcc_arch}-*-#{gcc_version}").each do |f|
