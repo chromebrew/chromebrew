@@ -84,7 +84,8 @@ class Gcc10 < Package
     mpfr_sha256 = '0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
     system "curl -Ls #{mpfr_url} | hashpipe sha256 #{mpfr_sha256} | tar xJ"
     Dir.chdir "mpfr-#{@mpfr_ver}" do
-      system 'curl -Ls https://www.mpfr.org/mpfr-current/allpatches | patch -NZp1 --binary'
+      system 'curl -Ls "https://gforge.inria.fr/scm/viewvc.php/mpfr/misc/www/mpfr-4.1.0/allpatches?revision=14491&view=co" | \
+        hashpipe sha256 dfa7d8a14ec7cb3b344cb81cfd7bd7e22aba62379941cc9110759f11172ac013 | patch -NZp1 --binary'
     end
     system "ln -sf ../mpfr-#{@mpfr_ver} mpfr"
 
