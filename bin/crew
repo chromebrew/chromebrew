@@ -630,9 +630,13 @@ def download
         unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
           # Leave a message because this step can be slow.
           puts "Downloading src from a git branch. This may take a while..."
-          system "git remote set-branches origin #{@pkg.git_branch}", exception: true
-          system "git fetch --progress origin #{@pkg.git_branch}", exception: true
-          system "git checkout #{@pkg.git_hashtag}", exception: true
+          unless @pkg.git_hashtag.nil? || @pkg.git_hashtag.empty?
+            system "git remote set-branches origin #{@pkg.git_branch}", exception: true
+            system "git fetch --progress origin #{@pkg.git_branch}", exception: true
+            system "git checkout #{@pkg.git_hashtag}", exception: true
+          else
+            system "git clone --depth 1 --branch #{@pkg.git_branch} #{@pkg.source_url}", exception: true
+          end
         else
           system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
           system 'git checkout FETCH_HEAD'
