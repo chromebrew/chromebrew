@@ -3,37 +3,39 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  @_ver = '0.3.25'
+  @_ver = '0.3.26'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/PipeWire/pipewire/archive/#{@_ver}.tar.gz"
-  source_sha256 'fb6d5a0cbde621659ffd67622f19744dd6c8da8745b060cb1951c3d2045e5166'
+  source_sha256 '05cc9d25de45290c025da5da1b94fc705bddacd93cf3690d0b2988c1ac501ee1'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.25-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.25-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pipewire-0.3.25-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pipewire-0.3.25-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pipewire-0.3.26-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pipewire-0.3.26-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '90d11afcba0ffd2ce109f5745e4eab64de5088e66d98c5086392d5455f933e22',
-     armv7l: '90d11afcba0ffd2ce109f5745e4eab64de5088e66d98c5086392d5455f933e22',
-       i686: '45cc47b0b504b2ac20718cd3ba6fb754a87465579f756bb091b7b288c606dc8f',
-     x86_64: '17f59cb128de6a9d580631c21b5b94314abdc653adfb5ff59e7b24d4f406e22b'
+    aarch64: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
+     armv7l: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
+       i686: '43bc1175d6f75755fc8fb3abe4b9e473d7ccc3593f1c53f504a2eee7b19b84c2',
+     x86_64: '27bdc741fe0b577e3cbfa5ef4f419f23f18cf9a06f04df815249f58dbabe5d28'
   })
 
-  depends_on 'alsa_lib'
+  depends_on 'alsa_lib' # R
   depends_on 'alsa_plugins' => :build
-  depends_on 'dbus'
-  depends_on 'eudev'
-  depends_on 'glib'
-  depends_on 'gsettings_desktop_schemas'
-  depends_on 'gst_plugins_base'
-  depends_on 'gstreamer'
-  depends_on 'jack' => :build
-  depends_on 'libsndfile'
+  depends_on 'dbus' # R
+  depends_on 'eudev' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'jack' # R
+  depends_on 'libsndfile' # R
   depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # R
 
   def self.build
     system "meson \
