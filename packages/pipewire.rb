@@ -12,7 +12,7 @@ class Pipewire < Package
 
   binary_url({
     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7ls/pipewire-0.3.26-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pipewire-0.3.26-chromeos-i686.tar.xz',
      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pipewire-0.3.26-chromeos-x86_64.tar.xz'
   })
@@ -29,7 +29,7 @@ class Pipewire < Package
   depends_on 'eudev' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gsettings_desktop_schemas' -> :build
+  depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gst_plugins_base' # R
   depends_on 'gstreamer' # R
   depends_on 'jack' # R
