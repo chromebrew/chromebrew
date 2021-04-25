@@ -26,7 +26,7 @@ class Gcc7 < Package
   depends_on 'mawk' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'icu4c' => :build
-  depends_on 'python27' => :build
+  depends_on 'python2' => :build
   depends_on 'python3' => :build
 
   depends_on 'binutils'

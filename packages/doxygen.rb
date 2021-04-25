@@ -22,7 +22,7 @@ class Doxygen < Package
      x86_64: 'ff5909d7d941b2a9e29ffc2c1d54613f65c57ff5ac4bae186264f63614ee6be3',
   })
 
-  depends_on 'python27' => :build
+  depends_on 'python2' => :build
 
   def self.build
     Dir.mkdir 'build'

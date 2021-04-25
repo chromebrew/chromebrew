@@ -27,7 +27,7 @@ class Dtrx < Package
   depends_on 'cabextract'
   depends_on 'cpio'
   depends_on 'lha'
-  depends_on 'python27'
+  depends_on 'python2'
   depends_on 'unrar'
   depends_on 'unshield'
   depends_on 'unzip'

@@ -24,7 +24,7 @@ class Pycairo < Package
 
   depends_on 'cairo'
   depends_on 'python3'
-  depends_on 'python27'
+  depends_on 'python2'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'
 

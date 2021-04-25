@@ -22,7 +22,7 @@ class Charm < Package
      x86_64: '9e826bf34b0c9d7fd6ccb712f57b40e29850c18ffe4d03f39215f66044a9b616',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.install
     system "python setup.py install --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"

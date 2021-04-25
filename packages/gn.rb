@@ -22,7 +22,7 @@ class Gn < Package
      x86_64: '385d47846ff117275793dc43d9ef004d4aa1075b29af3d9283f289cfc757d59f',
   })
 
-  depends_on 'python27' => :build
+  depends_on 'python2' => :build
   depends_on 'meson' => :build
 
   def self.build

@@ -22,7 +22,7 @@ class Percona_boost < Package
      x86_64: '4cfcf14440dae594c3ad0c8fa3086f08c0e90787785d82e1b54454bcf0941ed9',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.build
     system './bootstrap.sh'

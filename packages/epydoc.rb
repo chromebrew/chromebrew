@@ -22,7 +22,7 @@ class Epydoc < Package
      x86_64: '5978478fb0eadb8a0a48b76b3c96bf0baa6b6c8d31ecd97c121a4cbaeb0941dd',
   })
 
-  depends_on 'python27'
+  depends_on 'python2'
 
   def self.install
     system "python setup.py install --root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX}"

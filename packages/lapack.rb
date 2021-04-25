@@ -22,7 +22,7 @@ class Lapack < Package
      x86_64: '45aec7ef9a9c37e098be7fd80b88c580bef29181b398e6e4c8d15cee9ddf7456',
   })
 
-  depends_on 'python27'
+  depends_on 'python2'
 
   def self.build
     Dir.mkdir 'build'
