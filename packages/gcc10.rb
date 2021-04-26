@@ -328,9 +328,6 @@ class Gcc10 < Package
   end
 
   def self.postinstall
-    unless File.exist?("#{CREW_META_PATH}libssp.filelist")
-      system 'crew install libssp'
-    end
     # Only make links to unversioned in postinstall
     gcc_version = version.split('-')[0]
     gcc_arch = `gcc-#{gcc_version} -dumpmachine`.chomp
@@ -365,6 +362,11 @@ class Gcc10 < Package
       FileUtils.mkdir_p "#{CREW_PREFIX}/lib/bfd-plugins/"
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_PREFIX}/lib/bfd-plugins/"
+    end
+    # This has to be done at the VERY END of postinstall since any 
+    # other DIR.chdir from gcc10's postinstall will now fail. 
+    unless File.exist?("#{CREW_META_PATH}libssp.filelist")
+      system 'crew install libssp'
     end
   end
 end
