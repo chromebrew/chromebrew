@@ -10,10 +10,10 @@ class Gcc10 < Package
   source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-armv7l.tar.xz',
-       i686: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-i686.tar.xz',
-     x86_64: 'file:///usr/local/tmp/packages/gcc10-10.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/releases/download/v_gcc10_10.3.0/gcc10-10.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/releases/download/v_gcc10_10.3.0/gcc10-10.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/releases/download/v_gcc10_10.3.0/gcc10-10.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/releases/download/v_gcc10_10.3.0/gcc10-10.3.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd705cef48c08f2b2f12fb1f5fd0dcedb7c4f3d1101218b2c04f80c3b0ad0ef25',
