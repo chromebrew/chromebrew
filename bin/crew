@@ -578,26 +578,31 @@ def download
     case File.basename(filename)
     # Sources that download with curl
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i, /\.deb$/i
-      # Recall file from cache if requeseted
+      # Recall file from cache if requested
       if CREW_CACHE_ENABLED
+        puts "Looking for archive in cache".orange if @opt_verbose
         cachefile = CREW_CACHE_DIR + filename
-        if File.file?(cachefile)
+        if ! File.exist?(cachefile)
+          puts 'Cannot find cached archive. 😔 Will download.'.lightred
+          cachefile = ''
+        else
+          puts "Archive file exists in cache".lightgreen if @opt_verbose
           if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum then
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+              puts "Archive hard linked from cache".green if @opt_verbose
             rescue
               # Copy cached file if hard link fails.
               FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+              puts "Archive copied from cache".green if @opt_verbose
             end
-            puts "Archive found in cache".lightgreen
-            return {source: source, filename: filename}
+          puts "Archive found in cache".lightgreen
+          return {source: source, filename: filename}
           else
             puts 'Cached archive checksum mismatch. :/ Will download.'.lightred
             cachefile = ''
           end
-        puts 'Cannot find cached archive. :/ Will download.'.lightred
-        cachefile = ''
         end
       end
       # Download file if not cached.
@@ -610,12 +615,15 @@ def download
         begin
           # Hard link to cache if possible.
           FileUtils.ln filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+          puts "Archive hard linked to cache".green if @opt_verbose
         rescue
           # Copy to cache if hard link fails.
           FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+          puts "Archive copied to cache".green if @opt_verbose
         end
-        puts 'Archive cached.'.lightgreen
+        puts 'Archive copied to cache.'.lightgreen
       end
+      return {source: source, filename: filename}
 
     # Sources that download with git
     when /\.git$/i
