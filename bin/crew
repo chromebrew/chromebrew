@@ -606,7 +606,7 @@ def download
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
       puts 'Archive downloaded.'.lightgreen
       # Stow file in cache if requested (and if file is not from cache).
-      if CREW_CACHE_ENABLED and ! cachefile.to_s.empty?
+      if CREW_CACHE_ENABLED and cachefile.to_s.empty?
         begin
           # Hard link to cache if possible.
           FileUtils.ln filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
