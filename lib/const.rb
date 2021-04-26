@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.8.10'
+CREW_VERSION = '1.8.11'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -10,7 +10,7 @@ ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
 
-if ENV['CREW_PREFIX'].to_s == ''
+if ENV['CREW_PREFIX'].to_s.empty?
   CREW_PREFIX = '/usr/local'
 else
   CREW_PREFIX = ENV['CREW_PREFIX']
@@ -29,17 +29,19 @@ CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
-if ENV['CREW_PREFIX'].to_s == ''
+if ENV['CREW_PREFIX'].to_s.empty?
   HOME = ENV['HOME']
 else
   HOME = CREW_PREFIX + ENV['HOME']
 end
 
-if ENV['CREW_CACHE_DIR'].to_s == ''
-  CREW_CACHE_DIR = HOME + '/.cache/crewcache'
+# File.join ensures a trailing slash if one does not exist.
+if ENV['CREW_CACHE_DIR'].to_s.empty?
+  CREW_CACHE_DIR = File.join(HOME + '/.cache/crewcache', '')
 else
-  CREW_CACHE_DIR = ENV['CREW_CACHE_DIR']
+  CREW_CACHE_DIR = File.join(ENV['CREW_CACHE_DIR'], '')
 end
+
 FileUtils.mkdir_p CREW_CACHE_DIR unless Dir.exist? CREW_CACHE_DIR
 
 CREW_CACHE_ENABLED = ENV['CREW_CACHE_ENABLED']
@@ -47,7 +49,7 @@ CREW_CACHE_ENABLED = ENV['CREW_CACHE_ENABLED']
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
 
 # Set CREW_NPROC from environment variable or `nproc`
-if ENV["CREW_NPROC"].to_s == ''
+if ENV["CREW_NPROC"].to_s.empty?
   CREW_NPROC = `nproc`.strip
 else
   CREW_NPROC = ENV["CREW_NPROC"]
