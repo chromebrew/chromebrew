@@ -41,14 +41,22 @@ class Gcc10 < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-   def self.preinstall
-     installed_gccver = `gcc -v 2>&1 | tail -1 | cut -d' ' -f3`.chomp
-     gcc_version = version.split('-')[0]
-     # match to 'version' & 'Could' for cases of ccache in PATH
-     unless installed_gccver.to_s == 'No' || installed_gccver.to_s == 'not' || installed_gccver.to_s == 'gcc:' || installed_gccver.to_s == 'Could' || installed_gccver.to_s == 'version' || installed_gccver.to_s == gcc_version.to_s
-       abort "GCC version #{installed_gccver} already installed.".lightgreen
-     end
-   end
+  def self.preinstall
+    gcc_version = version.split('-')[0]
+    # Use full gcc path to bypass ccache
+    stdout_and_stderr, status = Open3.capture2e('bash', '-c',"#{CREW_PREFIX}/bin/gcc -v 2>&1 | tail -1 | cut -d' ' -f3")
+    if status.success?
+      installed_gccver = stdout_and_stderr.chomp
+      # One gets "1:" with no gcc installed.
+      unless installed_gccver.to_s == '1:' || 
+        installed_gccver.to_s == 'No' || 
+        installed_gccver.to_s == 'not' || 
+        installed_gccver.to_s == 'gcc:' || 
+        installed_gccver.to_s == gcc_version.to_s
+        abort "GCC version #{installed_gccver} already installed.".lightgreen
+      end
+    end
+  end
 
   def self.build
     # Set ccache sloppiness as per
@@ -363,9 +371,11 @@ class Gcc10 < Package
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_PREFIX}/lib/bfd-plugins/"
     end
-    # This has to be done at the VERY END of postinstall since any 
-    # other DIR.chdir from gcc10's postinstall will now fail. 
+    # This has to be done at the VERY END of postinstall since any
+    # other DIR.chdir from gcc10's postinstall will now fail.
     unless File.exist?("#{CREW_META_PATH}libssp.filelist")
+      puts 'Please run "crew install libssp" to finish gcc install.'.lightgreen
+      # Do initial libssp install just to make sure libssp library is installed.
       system 'crew install libssp'
     end
   end
