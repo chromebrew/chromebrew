@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.8.10'
+CREW_VERSION = '1.8.11'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -35,11 +35,13 @@ else
   HOME = CREW_PREFIX + ENV['HOME']
 end
 
+# File.join ensures a trailing slash if one does not exist.
 if ENV['CREW_CACHE_DIR'].to_s == ''
-  CREW_CACHE_DIR = HOME + '/.cache/crewcache'
+  CREW_CACHE_DIR = File.join(HOME + '/.cache/crewcache', '')
 else
-  CREW_CACHE_DIR = ENV['CREW_CACHE_DIR']
+  CREW_CACHE_DIR = File.join(ENV['CREW_CACHE_DIR'], '')
 end
+
 FileUtils.mkdir_p CREW_CACHE_DIR unless Dir.exist? CREW_CACHE_DIR
 
 CREW_CACHE_ENABLED = ENV['CREW_CACHE_ENABLED']

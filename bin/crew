@@ -583,23 +583,37 @@ def download
         cachefile = CREW_CACHE_DIR + filename
         if File.file?(cachefile)
           if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum then
-            FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+            begin
+              # Hard link cached file if possible.
+              FileUtils.ln cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+            rescue
+              # Copy cached file if hard link fails.
+              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+            end
             puts "Archive found in cache".lightgreen
             return {source: source, filename: filename}
           else
             puts 'Cached archive checksum mismatch. :/ Will download.'.lightred
+            cachefile = ''
           end
         puts 'Cannot find cached archive. :/ Will download.'.lightred
+        cachefile = ''
         end
       end
-      # Download file if not cached
+      # Download file if not cached.
       system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
       abort 'Checksum mismatch. :/ Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
       puts 'Archive downloaded.'.lightgreen
-      # Stow file in cache if requested
-      if CREW_CACHE_ENABLED
-        FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+      # Stow file in cache if requested (and if file is not from cache).
+      if CREW_CACHE_ENABLED and ! cachefile.to_s.empty?
+        begin
+          # Hard link to cache if possible.
+          FileUtils.ln filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+        rescue
+          # Copy to cache if hard link fails.
+          FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
+        end
         puts 'Archive cached.'.lightgreen
       end
 
@@ -607,7 +621,7 @@ def download
     when /\.git$/i
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
-        cachefile = CREW_CACHE_DIR + '/' + filename + '.tar.xz'
+        cachefile = CREW_CACHE_DIR + filename + '.tar.xz'
         if File.file?(cachefile)
           if system "sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir @extract_dir
