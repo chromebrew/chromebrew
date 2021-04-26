@@ -378,5 +378,7 @@ class Gcc10 < Package
       # Do initial libssp install just to make sure libssp library is installed.
       system 'crew install libssp'
     end
+    puts 'If you do not need gcc you can uninstall gcc to save space with'.lightgreen
+    puts '"crew update ; crew upgrade ; crew install libssp ; crew remove gcc10"'.lightgreen
   end
 end
