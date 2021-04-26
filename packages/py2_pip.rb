@@ -20,5 +20,8 @@ class Py2_pip < Package
 
   def self.install
     system "python2 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
+
+    # Don't make pip2 the default pip
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/pip" if File.exist? "#{CREW_DEST_PREFIX}/bin/pip"
   end
 end

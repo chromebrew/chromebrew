@@ -27,7 +27,7 @@ class Python3 < Package
   depends_on 'zlibpkg'
 
   def self.patch
-    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
+    system "sed -i -e 's:#{CREW_LIB_PREFIX}:\$(get_libdir):g' \
 		Lib/distutils/command/install.py \
 		Lib/distutils/sysconfig.py \
 		Lib/site.py \

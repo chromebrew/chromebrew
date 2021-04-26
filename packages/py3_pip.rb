@@ -22,6 +22,6 @@ class Py3_pip < Package
     system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
 
     # Make pip3 the default pip
-    FileUtils.ln_sf "pip3", "#{CREW_DEST_PREFIX}/bin/pip"
+    #FileUtils.ln_s "pip3", "#{CREW_DEST_PREFIX}/bin/pip" # This automatically happens
   end
 end
