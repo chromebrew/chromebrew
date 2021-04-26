@@ -11,10 +11,10 @@ class Glibc < Package
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
     binary_url ({
-      aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glibc-2.23-chromeos-armv7l.tar.xz',
-       armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glibc-2.23-chromeos-armv7l.tar.xz',
-         i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glibc-2.23-chromeos-i686.tar.xz',
-       x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glibc-2.23-chromeos-x86_64.tar.xz',
+      aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/glibc-2.23-chromeos-armv7l.tar.xz',
+       armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/glibc-2.23-chromeos-armv7l.tar.xz',
+         i686: 'https://github.com/chromebrew/binaries/raw/main/i686/glibc-2.23-chromeos-i686.tar.xz',
+       x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/glibc-2.23-chromeos-x86_64.tar.xz',
     })
     binary_sha256 ({
       aarch64: 'acbecc4c5824653a1aca66da9856970fa4ae0ad97179747047e1a72fc2c2bac7',
@@ -26,9 +26,9 @@ class Glibc < Package
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
     binary_url ({
-      aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-armv7l.tar.xz',
-       armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-armv7l.tar.xz',
-       x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/glibc-2.27-chromeos-x86_64.tar.xz',
+      aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
+       armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
+       x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/glibc-2.27-chromeos-x86_64.tar.xz',
     })
     binary_sha256 ({
       aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',

@@ -10,10 +10,10 @@ class Ipfs < Package
   source_sha256 '9d5f2ef17a8bd4040fb4246c694034ec0ff323bc07d3f1469ce0877892695f31'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ipfs-0.4.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ipfs-0.4.13-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ipfs-0.4.13-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ipfs-0.4.13-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ipfs-0.4.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ipfs-0.4.13-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ipfs-0.4.13-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ipfs-0.4.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'eaefd30775098871ac00669290ffa13ecf8885fb9034801855b28c0e43ea9f0a',

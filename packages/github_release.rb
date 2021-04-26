@@ -10,10 +10,10 @@ class Github_release < Package
   source_sha256 '057d57b01cd45d0316e2d32b7593ff0f4bb493d4767b5701b21b54301d74ff48'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/github_release-0.7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/github_release-0.7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/github_release-0.7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/github_release-0.7.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/github_release-0.7.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/github_release-0.7.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/github_release-0.7.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/github_release-0.7.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5877bb08e32cc5f7c53bddf4049a530d4ae277c991b3f38dec1def084c2ab212',

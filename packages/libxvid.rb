@@ -10,10 +10,10 @@ class Libxvid < Package
   source_sha256 '7c20f279f9d8e89042e85465d2bcb1b3130ceb1ecec33d5448c4589d78f010b4'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxvid-1.3.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxvid-1.3.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxvid-1.3.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxvid-1.3.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxvid-1.3.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxvid-1.3.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libxvid-1.3.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libxvid-1.3.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0587f20f1a2ea2ede14054ccddfc2fbef2a0ef5b611c3ba679c0d1724da365eb',

@@ -10,10 +10,10 @@ class Gyp < Package
   source_sha256 'c99f4fb0ba0798492713cd19579af8140e9a65d32af62c56bd6d447cf1ab7f6a'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gyp-81286d-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gyp-81286d-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gyp-81286d-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gyp-81286d-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '74c53919430e90aafd5301d815c8f161dc79822067e1381f7ed7116522eb8c93',

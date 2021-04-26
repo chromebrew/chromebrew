@@ -10,10 +10,10 @@ class Pygobject < Package
   source_sha256 'f83531eeb2d4980afde618a83d16749b14e47d92673a6b1ec63ae7a0a01c4bfc'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pygobject-3.38-0a16-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pygobject-3.38-0a16-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pygobject-3.38-0a16-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pygobject-3.38-0a16-chromeos-x86_64.tar.xz',
+     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pygobject-3.38-0a16-chromeos-armv7l.tar.xz',
+      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pygobject-3.38-0a16-chromeos-armv7l.tar.xz',
+        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pygobject-3.38-0a16-chromeos-i686.tar.xz',
+      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pygobject-3.38-0a16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '25288827bdc2116b0afabca5b4016a3d53feb884dbb4514281e1ac2eb50212bb',

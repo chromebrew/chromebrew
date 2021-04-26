@@ -10,10 +10,10 @@ class Libical < Package
   source_sha256 'bd26d98b7fcb2eb0cd5461747bbb02024ebe38e293ca53a7dfdcb2505265a728'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libical-3.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libical-3.0.9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libical-3.0.9-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libical-3.0.9-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7db2461fee6be357f39abd270cfad5f20aa2e0d40f65a3310f1d2cc755c50e5e',

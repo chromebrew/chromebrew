@@ -10,10 +10,10 @@ class Font_adobe_utopia_type1 < Package
   source_sha256 '979435105f897a70f8993fa02c8362160b0513366c2ab896965416f96dbb8077'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_adobe_utopia_type1-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/font_adobe_utopia_type1-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/font_adobe_utopia_type1-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/font_adobe_utopia_type1-1.0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/font_adobe_utopia_type1-1.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/font_adobe_utopia_type1-1.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/font_adobe_utopia_type1-1.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/font_adobe_utopia_type1-1.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2e0f5a41d6d0d01abc90e1646315c027489fb53c662d6885e7b729449107d94b',

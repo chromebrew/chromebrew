@@ -10,10 +10,10 @@ class Augeas < Package
   source_sha256 '321942c9cc32185e2e9cb72d0a70eea106635b50269075aca6714e3ec282cb87'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/augeas-1.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/augeas-1.12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/augeas-1.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/augeas-1.12.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/augeas-1.12.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/augeas-1.12.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/augeas-1.12.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/augeas-1.12.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8c77e2c9e36dff045129f4e196b72051e7e085c612d43fe0f3f3f8d825c9d3ad',

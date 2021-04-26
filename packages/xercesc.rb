@@ -10,10 +10,10 @@ class Xercesc < Package
   source_sha256 '12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xercesc-3.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xercesc-3.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xercesc-3.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xercesc-3.2.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xercesc-3.2.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xercesc-3.2.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xercesc-3.2.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xercesc-3.2.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7ee70737c8d3fe7d21a9e3cf3f27abebcf9b663da95b4aa24e9862c9c707fe4c',

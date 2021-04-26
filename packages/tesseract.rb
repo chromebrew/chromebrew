@@ -11,10 +11,10 @@ class Tesseract < Package
   source_sha256 '2a66ff0d8595bff8f04032165e6c936389b1e5727c3ce5a27b3e059d218db1cb'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tesseract-4.1.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tesseract-4.1.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tesseract-4.1.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tesseract-4.1.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tesseract-4.1.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tesseract-4.1.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/tesseract-4.1.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/tesseract-4.1.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5ebd835d7e56c61c2718e2514c31a66742ab12ae419ee640dfe30e4dca9092e9',

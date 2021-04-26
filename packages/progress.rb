@@ -10,10 +10,10 @@ class Progress < Package
   source_sha256 '064c95e8b93893dbf4b4b8152290cbb3b0c005eda0cae500353561048c9939a5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/progress-0.13.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/progress-0.13.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/progress-0.13.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/progress-0.13.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/progress-0.13.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/progress-0.13.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/progress-0.13.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/progress-0.13.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '47368db75bdb46fd8ee91cb1838fd593d29b7df8abf875b67ecd79df1251817a',

@@ -10,10 +10,10 @@ class Ckermit < Package
   source_sha256 '0503518ef8f225d06749f7923ae84521bc358daf353222c75c009cd040dc5e26'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ckermit-8.0.211-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ckermit-8.0.211-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ckermit-8.0.211-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ckermit-8.0.211-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ckermit-8.0.211-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ckermit-8.0.211-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ckermit-8.0.211-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ckermit-8.0.211-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5779bf0c226ec6ef42ad40c3e4a739524eb2a5d6cf4949404fc536529e3932d6',

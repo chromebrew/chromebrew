@@ -10,10 +10,10 @@ class Setuptools < Package
   source_sha256 '7d97c001ce9193c6d947bc584b6a19f593e1d2dd4d6c443de3b1e545875bc132'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/setuptools-50.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/setuptools-50.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/setuptools-50.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/setuptools-50.3.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/setuptools-50.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/setuptools-50.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/setuptools-50.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/setuptools-50.3.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bb3de709aa29d38537d1690bd3c3b75aa213f7afbe1e60e883d85dc926fc5aec',

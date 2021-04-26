@@ -10,10 +10,10 @@ class Libid3tag < Package
   source_sha256 '63da4f6e7997278f8a3fef4c6a372d342f705051d1eeb6a46a86b03610e26151'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libid3tag-0.15.1b-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libid3tag-0.15.1b-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libid3tag-0.15.1b-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libid3tag-0.15.1b-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libid3tag-0.15.1b-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libid3tag-0.15.1b-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libid3tag-0.15.1b-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libid3tag-0.15.1b-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '614d3daa64a65218669d392862e0adb52d6a97e29e0964e83519a0f43e2e7ae0',

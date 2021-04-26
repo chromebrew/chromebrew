@@ -10,10 +10,10 @@ class Cabextract < Package
   source_sha256 'afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cabextract-1.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cabextract-1.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cabextract-1.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cabextract-1.9.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cabextract-1.9.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cabextract-1.9.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/cabextract-1.9.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/cabextract-1.9.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e3e343dc5e467c5ae85b2ad35aa8328c0aba6a16d31cc446cf315f14b679a3b0',

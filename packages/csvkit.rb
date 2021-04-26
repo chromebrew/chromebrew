@@ -10,10 +10,10 @@ class Csvkit < Package
   source_sha256 'e19c609894c42e850c25af1ca9082753f76f231450f70a70c46344bec45c1a66'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/csvkit-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/csvkit-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/csvkit-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/csvkit-1.0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/csvkit-1.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/csvkit-1.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/csvkit-1.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/csvkit-1.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b6d48277e99c02a4ae4afffed955682def7326cc6e24be797d35719cefb9f086',

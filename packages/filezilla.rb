@@ -11,10 +11,10 @@ class Filezilla < Package
   source_sha256 'c0788816928a26e8863c7dc26b158644e71bef29406df7d2eda37dc4810d6cdf'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/filezilla-3.52.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/filezilla-3.52.2-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/filezilla-3.52.2-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/filezilla-3.52.2-chromeos-x86_64.tar.xz',
+     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/filezilla-3.52.2-chromeos-armv7l.tar.xz',
+      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/filezilla-3.52.2-chromeos-armv7l.tar.xz',
+        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/filezilla-3.52.2-chromeos-i686.tar.xz',
+      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/filezilla-3.52.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '3585d8326e1784c9d690539a76854fe50c5aa81a7996bc4f97bf11a00dcb959e',

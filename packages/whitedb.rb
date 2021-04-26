@@ -10,10 +10,10 @@ class Whitedb < Package
   source_sha256 '10c4ccd754ed2d53dbdef9ec16c88c732aa73d923fc0ee114e7e3a78a812849d'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/whitedb-0.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/whitedb-0.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/whitedb-0.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/whitedb-0.7.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/whitedb-0.7.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/whitedb-0.7.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/whitedb-0.7.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/whitedb-0.7.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e27c9bcfd7733bed9ad37fa39295e3b1f45f147c6c1e3864263092a277a175fc',

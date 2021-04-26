@@ -13,10 +13,10 @@ class Libcacard < Package
   source_sha256 '16b1a0847d5f9d2290e0785eca40f2e49d1ed80814bfc758c05c76b3c89cdb6f'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcacard-2.7.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcacard-2.7.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libcacard-2.7.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libcacard-2.7.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcacard-2.7.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcacard-2.7.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libcacard-2.7.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libcacard-2.7.0-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a6a77ce44bca8e06cc0c2cd1b4257cdefdf57921010bd31f2b09b934014190bf',

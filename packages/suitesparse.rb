@@ -10,10 +10,10 @@ class Suitesparse < Package
   source_sha256 'fe3bc7c3bd1efdfa5cffffb5cebf021ff024c83b5daf0ab445429d3d741bd3ad'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/suitesparse-5.7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/suitesparse-5.7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/suitesparse-5.7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/suitesparse-5.7.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/suitesparse-5.7.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/suitesparse-5.7.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/suitesparse-5.7.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/suitesparse-5.7.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '458d03ffa601714d5e3a1f1990c6dfa76b39a79e8d3335405f60e51e0ab6a669',

@@ -10,10 +10,10 @@ class Avocado < Package
   source_sha256 'ae96466e2c19da3c6044ae59e05b235f6d211cfc4de8cbecfcaf0b59dc61332a'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/avocado-67.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/avocado-67.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/avocado-67.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/avocado-67.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/avocado-67.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/avocado-67.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/avocado-67.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/avocado-67.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c97be359f822af9643b4f86d6a93a8aa265effb8c1deac27af29a744601164cf',

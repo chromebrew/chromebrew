@@ -13,9 +13,9 @@ class Epiphany < Package
   source_sha256 '2603fcc30ea8c2ba1343eda845c70825af0749db1c5e1ef252240e30dd855c06'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/epiphany-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/epiphany-40.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/epiphany-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/epiphany-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/epiphany-40.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/epiphany-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '8985d22d9a78b08b3a8419acb4e9b808e2a1b4295c8d718a48cc9425025b6ca2',

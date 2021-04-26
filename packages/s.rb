@@ -20,16 +20,16 @@ class S < Package
   end
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/s-0.5.15-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/s-0.5.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/s-0.5.15-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/s-0.5.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '10367f04c278a6157f35c3c0bdbc3a1baa4c49aa3d0362681cc031d292dcd4d6',
-     armv7l: '10367f04c278a6157f35c3c0bdbc3a1baa4c49aa3d0362681cc031d292dcd4d6',
-       i686: '80322df663b3e5a8f72f6ec027f50a857f44f677cdd163abaf12de53ec09f6f5',
-     x86_64: '8674e52bef5b72ba4d8e9022bc103bbf5df9f5e97eb21a5cf52661afe66f2ef9',
+    aarch64: '33e5b1a944af6817883f4291082d9dc733d1f5ca682b0184d5355adc4108fd7a',
+     armv7l: '33e5b1a944af6817883f4291082d9dc733d1f5ca682b0184d5355adc4108fd7a',
+       i686: 'ec31db142a154f7f4eba7234e1ba52bd60fc949ec25714b7b46ffcf66fafcdf1',
+     x86_64: '2500eedec49e58870261d48caad9ff43de24fae21853736d7feb0a83f519e248',
   })
 
   depends_on 'unzip' => :build

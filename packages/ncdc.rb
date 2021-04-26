@@ -10,10 +10,10 @@ class Ncdc < Package
   source_sha256 '8a998857df6289b6bd44287fc06f705b662098189f2a8fe95b1a5fbc703b9631'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ncdc-1.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ncdc-1.20-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ncdc-1.20-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ncdc-1.20-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ncdc-1.20-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ncdc-1.20-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ncdc-1.20-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ncdc-1.20-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '29c39214a120bd002a78b118a53daa085530e837a6b67f1cf10bbaa7d1991524',

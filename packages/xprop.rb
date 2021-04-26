@@ -10,10 +10,10 @@ class Xprop < Package
   source_sha256 '9b92ed0316bf2486121d8bac88bd1878f16b43bd335f18009b1f941f1eca93a1'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xprop-1.2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xprop-1.2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xprop-1.2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xprop-1.2.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xprop-1.2.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xprop-1.2.5-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xprop-1.2.5-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xprop-1.2.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '67a59122be3f28942a9c2d8752ea09d9e4f854415f1512d1f2b2b90ead9d37a4',

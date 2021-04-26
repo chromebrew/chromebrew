@@ -10,10 +10,10 @@ class Xmlstarlet < Package
   source_sha256 '15d838c4f3375332fd95554619179b69e4ec91418a3a5296e7c631b7ed19e7ca'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmlstarlet-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmlstarlet-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xmlstarlet-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xmlstarlet-1.6.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xmlstarlet-1.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xmlstarlet-1.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xmlstarlet-1.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xmlstarlet-1.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c8cf483394228f94ee8c592285ed257e5b62aa839bb9ad901da0a6efbfa3b534',

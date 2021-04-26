@@ -13,10 +13,10 @@ class Xdpyinfo < Package
   source_sha256 '30238ed915619e06ceb41721e5f747d67320555cc38d459e954839c189ccaf51'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xdpyinfo-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xdpyinfo-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xdpyinfo-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xdpyinfo-1.3.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xdpyinfo-1.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xdpyinfo-1.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xdpyinfo-1.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xdpyinfo-1.3.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7f5d670f0eb6a4f9d0d47ca597f401e9596cee02c110d824462e599f9f4a1ca8',

@@ -13,10 +13,10 @@ class Libcue < Package
   source_sha256 'f27bc3ebb2e892cd9d32a7bee6d84576a60f955f29f748b9b487b173712f1200'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcue-2.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libcue-2.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libcue-2.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libcue-2.2.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcue-2.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcue-2.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libcue-2.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libcue-2.2.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e0875a11ffd4f82d46b244475398faa8116b924eec61af1dc80e3986b257452c',

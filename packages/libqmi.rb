@@ -11,10 +11,10 @@ class Libqmi < Package
   source_sha256 '8c8c3ee719874d2529bce9b35b028fe435b36f003979a360d3ad0938449db783'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libqmi-1.28.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libqmi-1.28.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libqmi-1.28.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libqmi-1.28.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libqmi-1.28.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libqmi-1.28.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libqmi-1.28.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libqmi-1.28.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '03ccdba7bf32be2b5e02951d25a664af9654acceb1eb5c71fcbf5179a46190d7',

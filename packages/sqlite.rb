@@ -10,10 +10,10 @@ class Sqlite < Package
   source_sha256 '106a2c48c7f75a298a7557bcc0d5f4f454e5b43811cc738b7ca294d6956bbb15'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sqlite-3.33.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sqlite-3.33.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sqlite-3.33.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sqlite-3.33.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sqlite-3.33.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/sqlite-3.33.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/sqlite-3.33.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/sqlite-3.33.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '27a1d3b134071c152133e377a4be1900a93a22a9e9c9ca57fdb1532f09c1f142',

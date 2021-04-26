@@ -10,10 +10,10 @@ class Perl_text_unidecode < Package
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_unidecode-1.30-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_unidecode-1.30-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_text_unidecode-1.30-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_text_unidecode-1.30-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_text_unidecode-1.30-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_text_unidecode-1.30-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_text_unidecode-1.30-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_text_unidecode-1.30-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '43b5783ca695cc44a5129fab5e176b24f94a300ab4e28f65ae9155c36dad93c8',

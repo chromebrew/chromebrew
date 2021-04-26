@@ -11,10 +11,10 @@ class Xxd_standalone < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xxd_standalone-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xxd_standalone-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xxd_standalone-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xxd_standalone-8.2.2783-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xxd_standalone-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xxd_standalone-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xxd_standalone-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xxd_standalone-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '398383f29decea21b375a83861804a76b8a7f5345ea5d8e632430d596836862e',

@@ -11,10 +11,10 @@ class Libwpe < Package
   source_sha256 '2415e270d45e3595ed4052bc105f733744dc2d3677e12ff4a831e5029841084d'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libwpe-1.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libwpe-1.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libwpe-1.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libwpe-1.10.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libwpe-1.10.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libwpe-1.10.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libwpe-1.10.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libwpe-1.10.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '44c64f96d2051025c83162c7a556400156eb8657fb4965a1da8f3d6919e44d47',

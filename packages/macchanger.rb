@@ -10,10 +10,10 @@ class Macchanger < Package
   source_sha256 'dae2717c270fd5f62d790dbf80c19793c651b1b26b62c101b82d5fdf25a845bf'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/macchanger-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/macchanger-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/macchanger-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/macchanger-1.7.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/macchanger-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/macchanger-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/macchanger-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/macchanger-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bee8775a633ffd9477709174b0303a5fcb432a9065f81d978580def71fc2a744',

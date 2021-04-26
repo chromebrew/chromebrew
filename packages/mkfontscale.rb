@@ -10,10 +10,10 @@ class Mkfontscale < Package
   source_sha256 'ca0495eb974a179dd742bfa6199d561bda1c8da4a0c5a667f21fd82aaab6bac7'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mkfontscale-1.2.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mkfontscale-1.2.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/mkfontscale-1.2.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mkfontscale-1.2.1-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mkfontscale-1.2.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mkfontscale-1.2.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mkfontscale-1.2.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mkfontscale-1.2.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6dc86c623685bdc66affcdf10ddf98f0c3d0a1426e68556eb5b3eb88a238c868',

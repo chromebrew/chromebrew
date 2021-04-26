@@ -10,10 +10,10 @@ class Squashfs < Package
   source_sha256 '0d605512437b1eb800b4736791559295ee5f60177e102e4d4ccd0ee241a5f3f6'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/squashfs-4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/squashfs-4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/squashfs-4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/squashfs-4.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/squashfs-4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/squashfs-4.3-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/squashfs-4.3-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/squashfs-4.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '46d88da52b018f54fc8c177f3d13ba3f925167058ff4c9c20628683be8a7142c',

@@ -11,10 +11,10 @@ class Vte < Package
   source_sha256 'c0c60b8dc343167437c86d984b0cf134df86034180ed70513f683006ada3ec41'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/vte-0.64.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/vte-0.64.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/vte-0.64.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/vte-0.64.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c29af253aa820f21b91be681e8fa1bdd2e5d0028455827b38f281738f13a3a09',

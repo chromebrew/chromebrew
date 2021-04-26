@@ -10,10 +10,10 @@ class Nsgenbind < Package
   source_sha256 '4d8d53ad000ada712772365e6a73eb8fc5ce97584af9c865ac5b26a2187f1cb3'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nsgenbind-0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nsgenbind-0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nsgenbind-0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nsgenbind-0.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/nsgenbind-0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/nsgenbind-0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/nsgenbind-0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/nsgenbind-0.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '51a88fadaf90448c2ecac5213230cc0b18909832635e80d3eeb7ed00b3126e66',

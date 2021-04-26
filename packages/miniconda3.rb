@@ -10,8 +10,8 @@ class Miniconda3 < Package
   source_sha256 '9a5d4e87325a5015bfc00167a0eb41d53e1e7a7f47f2078e50f5fb7ab3082b11'
 
   binary_url ({
-      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/miniconda3-4.5.11-chromeos-i686.tar.xz',
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/miniconda3-4.5.11-chromeos-x86_64.tar.xz',
+      i686: 'https://github.com/chromebrew/binaries/raw/main/i686/miniconda3-4.5.11-chromeos-i686.tar.xz',
+    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/miniconda3-4.5.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: 'f42040d6e439e545bf80a372bd277e0e12370a995425b50cdfdc1fe0fb9dc491',

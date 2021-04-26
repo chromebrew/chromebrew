@@ -10,10 +10,10 @@ class Scheme48 < Package
   source_sha256 '9c4921a90e95daee067cd2e9cc0ffe09e118f4da01c0c0198e577c4f47759df4'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/scheme48-1.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/scheme48-1.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/scheme48-1.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/scheme48-1.9.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/scheme48-1.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/scheme48-1.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/scheme48-1.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/scheme48-1.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ea7ebd83c9fd176cadeb3ba22e70d030942a199660a1c47d1e6c10d4c441febd',

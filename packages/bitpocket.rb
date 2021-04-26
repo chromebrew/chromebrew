@@ -10,10 +10,10 @@ class Bitpocket < Package
   source_sha256 'f3952374a1139465700f9122d7a929227be5cdeb681679cbe00bb93658adbd1f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bitpocket-0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bitpocket-0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/bitpocket-0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/bitpocket-0.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bitpocket-0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bitpocket-0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/bitpocket-0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/bitpocket-0.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7b94a65b172e2c93a8a35bd6c6642d61023b0c91ab9f2ba9a8db7f7dca9c150e',
