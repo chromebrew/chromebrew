@@ -839,7 +839,9 @@ def strip_dir (dir)
 
     # Strip binaries but not compressed archives
     puts "Stripping binaries..."
-    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tbz' ! -iname '*\.tgz' ! -iname '\*.txz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    extensions = [ 'bz2', 'gz', 'lha', 'lz', 'rar', 'tar', 'tbz', 'tgz', 'txz', 'xz', 'zip' ]
+    inames = extensions.join(' ! -iname *\.')
+    strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
   end
 end
 
