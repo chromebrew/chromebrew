@@ -1077,7 +1077,7 @@ end
 def remove (pkgName)
 
   #make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.exist?("#{CREW_META_PATH}#{pkgName}.filelist")
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
