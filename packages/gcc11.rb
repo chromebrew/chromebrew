@@ -119,10 +119,6 @@ class Gcc11 < Package
 
     gcc_version = version.split('-')[0]
 
-    # previous compile issue
-    # /usr/local/bin/ld: cannot find crti.o: No such file or directory
-    # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
-    # ENV['LIBRARY_PATH'] = CREW_LIB_PREFIX # fix x86_64 issues
     FileUtils.mkdir_p 'objdir/gcc/.deps'
     # This fixes a PATH_MAX undefined error which breaks libsanitizer
     # "libsanitizer/asan/asan_linux.cpp:217:21: error: ‘PATH_MAX’ was not declared in this scope"
@@ -144,7 +140,11 @@ class Gcc11 < Package
         #{@archflags} \
         --enable-languages=#{@languages} \
         --program-suffix=-#{gcc_version}"
+      # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
+      # /usr/local/bin/ld: cannot find crti.o: No such file or directory
+      # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
+        LIBRARY_PATH=#{CREW_LIB_PREFIX} \
         make"
     end
   end
