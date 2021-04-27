@@ -1,4 +1,5 @@
 require 'package'
+require 'open3'
 
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
