@@ -816,6 +816,9 @@ def prepare_package (destdir)
 
     # remove temporary files
     FileUtils.rm_rf ['dlistcut', '../dlist', '../filelist'], verbose: @fileutils_verbose
+
+    strip_dir destdir 
+
   end
 end
 
@@ -828,6 +831,20 @@ def strip_find_files (find_cmd, strip_option = "")
   system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r llvm-strip #{strip_option}"
 end
 
+def strip_dir (dir)
+  Dir.chdir dir do
+    # Strip libraries with -S
+    puts "Stripping libraries..."
+    strip_find_files "find . -type f  \\( -name 'lib*.a' -o -name 'lib*.so*' \\) -print", "-S"
+
+    # Strip binaries but not compressed archives
+    puts "Stripping binaries..."
+    extensions = [ 'bz2', 'gz', 'lha', 'lz', 'lzh', 'rar', 'tar', 'tbz', 'tgz', 'txz', 'xz', 'Z', 'zip' ]
+    inames = extensions.join(' ! -iname *\.')
+    strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+  end
+end
+
 def install_package (pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
@@ -836,12 +853,7 @@ def install_package (pkgdir)
     FileUtils.mv 'dlist', CREW_META_PATH + @pkg.name + '.directorylist', verbose: @fileutils_verbose
     FileUtils.mv 'filelist', CREW_META_PATH + @pkg.name + '.filelist', verbose: @fileutils_verbose
 
-    # Strip libraries with -S
-    strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
-    strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
-
-    # Strip binaries but not compressed archives
-    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tbz' ! -iname '*\.tgz' ! -iname '\*.txz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    strip_dir pkgdir
 
     if Dir.exists? "#{pkgdir}/home" then
       system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
@@ -1069,7 +1081,7 @@ end
 def remove (pkgName)
 
   #make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName }
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.exist?("#{CREW_META_PATH}#{pkgName}.filelist")
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
