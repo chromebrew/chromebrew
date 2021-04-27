@@ -78,6 +78,20 @@ class Gcc11 < Package
     end
   end
 
+  def self.patch
+    # This fixes a PATH_MAX undefined error which breaks libsanitizer
+    # "libsanitizer/asan/asan_linux.cpp:217:21: error: ‘PATH_MAX’ was not declared in this scope"
+    # This is defined in https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.4/include/uapi/linux/limits.h
+    # and is defined as per suggested method here: https://github.com/ZefengWang/cross-tool-chain-build
+    # The following is due to sed not passing newlines right.
+    system "grep  -q 4096 libsanitizer/asan/asan_linux.cpp || (sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp &&
+    sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp &&
+    sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
+    # Fix "crtbeginT.o: relocation R_X86_64_32 against hidden symbol `__TMC_END__' can not be used when making a shared object"
+    # when building static llvm
+    # system "sed -i 's/-fbuilding-libgcc -fno-stack-protector/-fbuilding-libgcc -fPIC -fno-stack-protector/g' libgcc/Makefile.in"
+  end
+  
   def self.build
     # Set ccache sloppiness as per
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
@@ -120,17 +134,7 @@ class Gcc11 < Package
     gcc_version = version.split('-')[0]
 
     FileUtils.mkdir_p 'objdir/gcc/.deps'
-    # This fixes a PATH_MAX undefined error which breaks libsanitizer
-    # "libsanitizer/asan/asan_linux.cpp:217:21: error: ‘PATH_MAX’ was not declared in this scope"
-    # This is defined in https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.4/include/uapi/linux/limits.h
-    # and is defined as per suggested method here: https://github.com/ZefengWang/cross-tool-chain-build
-    # The following is due to sed not passing newlines right.
-    # system "grep  -q 4096 libsanitizer/asan/asan_linux.cpp || (sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp &&
-    # sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp &&
-    # sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
-    # Fix "crtbeginT.o: relocation R_X86_64_32 against hidden symbol `__TMC_END__' can not be used when making a shared object"
-    # when building static llvm
-    # system "sed -i 's/-fbuilding-libgcc -fno-stack-protector/-fbuilding-libgcc -fPIC -fno-stack-protector/g' libgcc/Makefile.in"
+    
     Dir.chdir('objdir') do
       system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
         CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
