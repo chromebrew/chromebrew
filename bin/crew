@@ -816,6 +816,14 @@ def prepare_package (destdir)
 
     # remove temporary files
     FileUtils.rm_rf ['dlistcut', '../dlist', '../filelist'], verbose: @fileutils_verbose
+
+    # Strip libraries with -S
+    strip_find_files "find . -type f -name 'lib*.a' -print", "-S"
+    strip_find_files "find . -type f -name 'lib*.so*' -print", "-S"
+
+    # Strip binaries but not compressed archives
+    strip_find_files "find . -type f ! -iname '*\.bz2' ! -iname '*\.gz' ! -iname '*\.lha' ! -iname '*\.lz' ! -iname '*\.rar' ! -iname '*\.tar' ! -iname '*\.tbz' ! -iname '*\.tgz' ! -iname '\*.txz' ! -iname '*\.xz' ! -iname '*\.zip' -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+
   end
 end
 
@@ -1069,7 +1077,7 @@ end
 def remove (pkgName)
 
   #make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName }
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
