@@ -105,8 +105,8 @@ class Python2 < Package
 
     # move dynamic libraries to their correct places, so the dynamic loader can find them
     FileUtils.mkdir CREW_DEST_LIB_PREFIX unless Dir.exist? CREW_DEST_LIB_PREFIX
-    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so", CREW_DEST_LIB_PREFIX if ARCH == 'x86_64'
-    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so.1.0", CREW_DEST_LIB_PREFIX if ARCH == 'x86_64'
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so", CREW_DEST_LIB_PREFIX unless CREW_LIB_SUFFIX.empty?
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so.1.0", CREW_DEST_LIB_PREFIX unless CREW_LIB_SUFFIX.empty?
 
     # Remove python executable, python3 is default
     FileUtils.rm "#{CREW_DEST_PREFIX}/bin/python"
