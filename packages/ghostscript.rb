@@ -10,10 +10,10 @@ class Ghostscript < Package
   source_sha256 'ecbaa2e79e6d82cab8d0fbdfd899aa4fc68ffb43f6901d547d33ca7008fe1871'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ghostscript-9.54-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ghostscript-9.54-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_i686/ghostscript-9.54-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_x86_64/ghostscript-9.54-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',

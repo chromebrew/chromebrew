@@ -10,10 +10,10 @@ class Perl_text_charwidth < Package
   source_sha256 'abded5f4fdd9338e89fd2f1d8271c44989dae5bf50aece41b6179d8e230704f8'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_text_charwidth-0.04-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_text_charwidth-0.04-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_i686/perl_text_charwidth-0.04-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_x86_64/perl_text_charwidth-0.04-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f3d97714e0b0a6004c74c2c0e3ce3b716bbd15faebf67f11b8c3b44744417e22',

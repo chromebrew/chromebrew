@@ -10,10 +10,10 @@ class Mate_common < Package
   source_sha256 '616d9c319ee892f05494570fb0f7316c10f17a1f8d15d0a9a6ae38c320161a41'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mate_common-1.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mate_common-1.20-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mate_common-1.20-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mate_common-1.20-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_common/1.20_armv7l/mate_common-1.20-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_common/1.20_armv7l/mate_common-1.20-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_common/1.20_i686/mate_common-1.20-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_common/1.20_x86_64/mate_common-1.20-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd8e420843837ccdb2883abd53c46667444499db3cf041a907af29d4bed435e1d',

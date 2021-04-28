@@ -10,10 +10,10 @@ class Perl_text_wrapi18n < Package
   source_sha256 '4bd29a17f0c2c792d12c1005b3c276f2ab0fae39c00859ae1741d7941846a488'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_text_wrapi18n-0.06-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_text_wrapi18n-0.06-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-1_armv7l/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-1_armv7l/perl_text_wrapi18n-0.06-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-1_i686/perl_text_wrapi18n-0.06-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-1_x86_64/perl_text_wrapi18n-0.06-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '87bebe91adc2d9b6b288691dace869f93e51a828086174d8c9380665dc7267a5',

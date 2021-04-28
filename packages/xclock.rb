@@ -10,10 +10,10 @@ class Xclock < Package
   source_sha256 'cf461fb2c6f2ac42c54d8429ee2010fdb9a1442a370adfbfe8a7bfaf33c123bb'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xclock-1.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xclock-1.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xclock-1.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xclock-1.0.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.0.9_armv7l/xclock-1.0.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.0.9_armv7l/xclock-1.0.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.0.9_i686/xclock-1.0.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.0.9_x86_64/xclock-1.0.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b70ff42097e49252e239a56873c7c1422da7bb545a4828b62997561735bbbd39',

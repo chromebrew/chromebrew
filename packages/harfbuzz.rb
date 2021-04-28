@@ -11,10 +11,10 @@ class Harfbuzz < Package
   source_sha256 'daff8a4003ac420a8550760ed303ce33b310c8ea17b7f15b307d1969cabcebcb'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/harfbuzz-2.7.4-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/harfbuzz-2.7.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_armv7l/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_armv7l/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_i686/harfbuzz-2.7.4-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_x86_64/harfbuzz-2.7.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'a2cc6f26453bc9077dde0d549ea92e30a8847d9c9d49ceebc681b090056d69fc',

@@ -10,10 +10,10 @@ class Mypaint_brushes < Package
   source_sha256 '704bb6420e65085acfd7a61d6050e96b0395c5eab078433f11406c355f16b214'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mypaint_brushes-1.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mypaint_brushes-1.3.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes/1.3.0_armv7l/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes/1.3.0_armv7l/mypaint_brushes-1.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes/1.3.0_i686/mypaint_brushes-1.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes/1.3.0_x86_64/mypaint_brushes-1.3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '87eed1b1688597faac6b4910e1489d6fc4967af705b6594eaf9fdb5568a44dd1',

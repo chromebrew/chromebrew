@@ -10,10 +10,10 @@ class Perl_xml_simple < Package
   source_sha256 '531fddaebea2416743eb5c4fdfab028f502123d9a220405a4100e68fc480dbf8'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_xml_simple-2.25-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_xml_simple-2.25-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_xml_simple-2.25-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_xml_simple-2.25-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_armv7l/perl_xml_simple-2.25-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_armv7l/perl_xml_simple-2.25-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_i686/perl_xml_simple-2.25-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_x86_64/perl_xml_simple-2.25-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1e59e0c43b8bfecf21365d9ee0b58db3faa544f07da1aa349734ba34b75541a0',

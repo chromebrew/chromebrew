@@ -10,10 +10,10 @@ class Popt < Package
   source_sha256 '36245242c59b5a33698388e415a3e1efa2d48fc4aead91aeb2810b4c0744f4e3'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/popt-1.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/popt-1.18-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/popt-1.18-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/popt-1.18-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/popt/1.18_armv7l/popt-1.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/popt/1.18_armv7l/popt-1.18-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/popt/1.18_i686/popt-1.18-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/popt/1.18_x86_64/popt-1.18-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e301538c274369121eb26cf77d91d1a5c451cc4ec088a115361c1b31175a06c8',

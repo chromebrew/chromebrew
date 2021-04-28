@@ -10,10 +10,10 @@ class Perl_xml_sax_parserfactory < Package
   source_sha256 '4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_xml_sax_parserfactory-1.02-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_xml_sax_parserfactory-1.02-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_parserfactory/1.02_armv7l/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_parserfactory/1.02_armv7l/perl_xml_sax_parserfactory-1.02-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_parserfactory/1.02_i686/perl_xml_sax_parserfactory-1.02-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_parserfactory/1.02_x86_64/perl_xml_sax_parserfactory-1.02-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9a65d90e104f6345618c68a626188de073498c5a836f02478ee0388af74197d2',

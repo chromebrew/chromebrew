@@ -10,10 +10,10 @@ class Most < Package
   source_sha256 'db805d1ffad3e85890802061ac8c90e3c89e25afb184a794e03715a3ed190501'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/most-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/most-5.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_i686/most-5.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_x86_64/most-5.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '333fee656f76d9a8d5343edf9d2e1c29c48d73b4c21992a76439644c7edf7f70',

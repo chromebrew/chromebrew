@@ -10,10 +10,10 @@ class Gzip < Package
   source_sha256 '8425ccac99872d544d4310305f915f5ea81e04d0f437ef1a230dc9d1c819d7c0'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gzip-1.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gzip-1.10-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gzip-1.10-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gzip-1.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.10_armv7l/gzip-1.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.10_armv7l/gzip-1.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.10_i686/gzip-1.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.10_x86_64/gzip-1.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f06dff71bad212d9a9032bb2d2ede8e8d749a6d629404d0c60a70fe34485fd04',

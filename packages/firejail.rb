@@ -11,10 +11,10 @@ class Firejail < Package
   source_sha256 'ce996854278863f3e91ff185198c7cc1377fb70053d37a43e3b1ef1021c57756'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/firejail-0.9.54-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/firejail-0.9.54-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/firejail-0.9.54-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/firejail-0.9.54-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_armv7l/firejail-0.9.54-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_armv7l/firejail-0.9.54-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_i686/firejail-0.9.54-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_x86_64/firejail-0.9.54-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6a5a4b9f191482d5fb5259d9b7a6e8487bff6dca1b44e859d78a9c98c474805c',

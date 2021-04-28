@@ -11,10 +11,10 @@ class Libheif < Package
   source_sha256 'c550938f56ff6dac83702251a143f87cb3a6c71a50d8723955290832d9960913'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libheif-1.11.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libheif-1.11.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_armv7l/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_armv7l/libheif-1.11.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_i686/libheif-1.11.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.11.0-2_x86_64/libheif-1.11.0-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '741663915e39e3f343c5d084423597484477eb49dc719f1395c62f84501ba8d9',

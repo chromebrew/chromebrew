@@ -10,10 +10,10 @@ class Libfontenc < Package
   source_sha256 '2cfcce810ddd48f2e5dc658d28c1808e86dcf303eaff16728b9aa3dbc0092079'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libfontenc-1.1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libfontenc-1.1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libfontenc-1.1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libfontenc-1.1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.4_armv7l/libfontenc-1.1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.4_armv7l/libfontenc-1.1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.4_i686/libfontenc-1.1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.4_x86_64/libfontenc-1.1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '435c3bc5faa5f9884f72b9d2e18ab9c5df8c20d4fbcde9f0fe56044f46c8282c',

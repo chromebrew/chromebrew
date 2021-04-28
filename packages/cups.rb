@@ -11,10 +11,10 @@ class Cups < Package
   source_sha256 'deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/cups-2.3.3op2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/cups-2.3.3op2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_i686/cups-2.3.3op2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_x86_64/cups-2.3.3op2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'cf7fb54c659bb5f01c3097274864c3e0bf1669f0d6a8a1e6df82e6c403ad5264',

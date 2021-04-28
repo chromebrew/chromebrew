@@ -10,10 +10,10 @@ class Libglu < Package
   source_sha256 'fb5a4c2dd6ba6d1c21ab7c05129b0769544e1d68e1e3b0ffecb18e73c93055bc'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libglu-9.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libglu-9.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libglu-9.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libglu-9.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.1_armv7l/libglu-9.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.1_armv7l/libglu-9.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.1_i686/libglu-9.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.1_x86_64/libglu-9.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0bf229621676810287e72253faf88af8d6fc7e2c295a6110c30e50b4c841dd36',

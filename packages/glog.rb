@@ -10,10 +10,10 @@ class Glog < Package
   source_sha256 '267103f8a1e9578978aa1dc256001e6529ef593e5aea38193d31c2872ee025e8'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/glog-0.3.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/glog-0.3.5-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/glog-0.3.5-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/glog-0.3.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glog/0.3.5_armv7l/glog-0.3.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glog/0.3.5_armv7l/glog-0.3.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glog/0.3.5_i686/glog-0.3.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glog/0.3.5_x86_64/glog-0.3.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bd0c7e649bb6e1128e44c8989ab4182f60665e50e5d992341d8bf19235a6dd2e',

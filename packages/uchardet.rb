@@ -10,10 +10,10 @@ class Uchardet < Package
   source_sha256 '8351328cdfbcb2432e63938721dd781eb8c11ebc56e3a89d0f84576b96002c61'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/uchardet-0.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/uchardet-0.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/uchardet-0.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/uchardet-0.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uchardet/0.0.6_armv7l/uchardet-0.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uchardet/0.0.6_armv7l/uchardet-0.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uchardet/0.0.6_i686/uchardet-0.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uchardet/0.0.6_x86_64/uchardet-0.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3e3e33899d7c3752750fc9b71a43fe46728a2cc9b129ef2a66141c4db61f32f3',

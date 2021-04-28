@@ -10,10 +10,10 @@ class Flatseal < Package
   source_sha256 '28d05995effa2858483283cbc9fb54c55bf4dcb6267e4d7d495a32ff724806b1'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/flatseal-1.6.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/flatseal-1.6.8-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/flatseal-1.6.8-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/flatseal-1.6.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.6.8_armv7l/flatseal-1.6.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.6.8_armv7l/flatseal-1.6.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.6.8_i686/flatseal-1.6.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.6.8_x86_64/flatseal-1.6.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'de9d7364712c7e4fe13be61be7b3e961fc7fc792e65d87a3fbb0b95612bc9e11',

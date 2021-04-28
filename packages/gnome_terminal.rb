@@ -11,10 +11,10 @@ class Gnome_terminal < Package
   source_sha256 'ad56dc0f1c6d75ed9ef6a1238e963141d7ba609ad3bffb376bfe43a37f0d308e'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gnome_terminal-3.41.0-3b79-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gnome_terminal-3.41.0-3b79-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_i686/gnome_terminal-3.41.0-3b79-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_x86_64/gnome_terminal-3.41.0-3b79-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '127a7ebff88b54baca1e813e7a46b3b649e99e4c8395e47320ef9e534931d73a',

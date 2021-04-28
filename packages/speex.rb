@@ -10,10 +10,10 @@ class Speex < Package
   source_sha256 'eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/speex-1.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/speex-1.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/speex-1.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/speex-1.2.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.0-1_armv7l/speex-1.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.0-1_armv7l/speex-1.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.0-1_i686/speex-1.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.0-1_x86_64/speex-1.2.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5e1bba6a53dd827dd342a7e28454080025e8f3f7c8bd4766004a2da3f9842678',

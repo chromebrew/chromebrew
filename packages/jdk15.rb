@@ -10,7 +10,7 @@ class Jdk15 < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url ({
-    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/jdk15-15.0.2-chromeos-x86_64.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk15/15.0.2_x86_64/jdk15-15.0.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     x86_64: '76967a212cb4bded9932fa2e44328272472f780a69e1574da9f4412a81de41ae',

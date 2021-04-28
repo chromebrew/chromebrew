@@ -10,10 +10,10 @@ class Screen < Package
   source_sha256 '1b6922520e6a0ce5e28768d620b0f640a6631397f95ccb043b70b91bb503fa3a'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/screen-4.6.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/screen-4.6.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/screen-4.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/screen-4.6.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.6.2_armv7l/screen-4.6.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.6.2_armv7l/screen-4.6.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.6.2_i686/screen-4.6.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.6.2_x86_64/screen-4.6.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f8d903c06175118730ea3d44ed59f6d6fbd94c7f5c6ed190e8e7ca42bb3cfc76',
