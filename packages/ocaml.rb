@@ -10,10 +10,10 @@ class Ocaml < Package
   source_sha256 '9825e5903b852a7a5edb71a1ed68f5d5d55d6417e2dda514dda602bc6efeed7b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/chromebrew/binaries/-/raw/ocaml_4.12.0/armv7l/ocaml-4.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/chromebrew/binaries/-/raw/ocaml_4.12.0/armv7l/ocaml-4.12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/chromebrew/binaries/-/raw/ocaml_4.12.0/i686/ocaml-4.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/chromebrew/binaries/-/raw/ocaml_4.12.0/x86_64/ocaml-4.12.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_armv7l/ocaml-4.12.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_armv7l/ocaml-4.12.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_i686/ocaml-4.12.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_x86_64/ocaml-4.10.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6da8eaf154e9e5be53d49ba12704cf3ad857fce4b404be44104a2b4417440e9b',
