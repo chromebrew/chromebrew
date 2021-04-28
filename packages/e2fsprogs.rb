@@ -11,10 +11,10 @@ class E2fsprogs < Package
   source_sha256 '62d49c86d9d4becf305093edd65464484dc9ea41c6ff9ae4f536e4a341b171a2'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/e2fsprogs-1.45.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/e2fsprogs-1.45.7-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/e2fsprogs-1.45.7-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/e2fsprogs-1.45.7-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_armv7l/e2fsprogs-1.45.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_armv7l/e2fsprogs-1.45.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_i686/e2fsprogs-1.45.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_x86_64/e2fsprogs-1.45.7-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4deb49e04d94878c4a9e4977a5aa01937c379cf332b56b4e93524f6a891bdbc1',

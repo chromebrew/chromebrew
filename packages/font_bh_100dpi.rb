@@ -10,10 +10,10 @@ class Font_bh_100dpi < Package
   source_sha256 '23c07162708e4b79eb33095c8bfa62c783717a9431254bbf44863734ea239481'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/font_bh_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/font_bh_100dpi-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/font_bh_100dpi-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/font_bh_100dpi-1.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_100dpi/1.0.3_armv7l/font_bh_100dpi-1.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_100dpi/1.0.3_armv7l/font_bh_100dpi-1.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_100dpi/1.0.3_i686/font_bh_100dpi-1.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_100dpi/1.0.3_x86_64/font_bh_100dpi-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8e692f3da6f15d2c4a52e925771a41a805407e240fb8acb0c01c9a18a23df8c2',

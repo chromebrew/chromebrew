@@ -19,10 +19,10 @@ class Ccl < Package
   end
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ccl-1.11.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ccl-1.11.5-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ccl-1.11.5-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ccl-1.11.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_armv7l/ccl-1.11.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_armv7l/ccl-1.11.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_i686/ccl-1.11.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_x86_64/ccl-1.11.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c76d7ef3a190d6f5df52b00de5b520e96c63e07d1703bc5325a8f692dc85342c',

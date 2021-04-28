@@ -11,10 +11,10 @@ class Curl < Package
   source_sha256 '64bb5288c39f0840c07d077e30d9052e1cbb9fa6c2dc52523824cc859e679145'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.76.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/curl-7.76.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/curl-7.76.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/curl-7.76.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.76.1_armv7l/curl-7.76.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.76.1_armv7l/curl-7.76.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.76.1_i686/curl-7.76.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.76.1_x86_64/curl-7.76.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ae48ef34d0a91114c532590f7f7c754bd3fa9bc7e6a96223b2864d167ba79c3a',

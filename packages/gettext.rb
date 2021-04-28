@@ -11,10 +11,10 @@ class Gettext < Package
   source_sha256 '435b546e3880ab767c967c0731b20629a0cb0ba620e6bac2f590f401c10ebb45'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gettext-0.21-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gettext-0.21-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gettext-0.21-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gettext-0.21-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-1_armv7l/gettext-0.21-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-1_armv7l/gettext-0.21-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-1_i686/gettext-0.21-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-1_x86_64/gettext-0.21-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6d54ddacd45c8393893173a163b24a0b1ece327fce41b0e37d9353fd203360e7',

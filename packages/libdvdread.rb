@@ -10,10 +10,10 @@ class Libdvdread < Package
   source_sha256 '28ce4f0063883ca4d37dfd40a2f6685503d679bca7d88d58e04ee8112382d5bd'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdvdread-6.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdvdread-6.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libdvdread-6.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libdvdread-6.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdread/6.0.1_armv7l/libdvdread-6.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdread/6.0.1_armv7l/libdvdread-6.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdread/6.0.1_i686/libdvdread-6.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdread/6.0.1_x86_64/libdvdread-6.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a724a51f746624dfe879dc0c1671efd28450f1b4138d1b80d7b38bf6d5f3be89',

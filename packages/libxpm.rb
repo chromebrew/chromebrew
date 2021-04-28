@@ -10,10 +10,10 @@ class Libxpm < Package
   source_sha256 '2523acc780eac01db5163267b36f5b94374bfb0de26fc0b5a7bee76649fd8501'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxpm-3.5.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxpm-3.5.12-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libxpm-3.5.12-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libxpm-3.5.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_armv7l/libxpm-3.5.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_armv7l/libxpm-3.5.12-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_i686/libxpm-3.5.12-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_x86_64/libxpm-3.5.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c38c518e3fd530ad13fd27dc67d5a14f5eb06b2a5259c38a321e80e02541a9e8',

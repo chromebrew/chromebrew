@@ -11,10 +11,10 @@ class Openssl < Package
   source_sha256 '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openssl-1.1.1k-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openssl-1.1.1k-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/openssl-1.1.1k-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/openssl-1.1.1k-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k_armv7l/openssl-1.1.1k-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k_armv7l/openssl-1.1.1k-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k_i686/openssl-1.1.1k-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k_x86_64/openssl-1.1.1k-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4b5a6ff1bbd03a7adf09acebe3b7a928de9a8520e260360f9f4fac8e7c83e903',

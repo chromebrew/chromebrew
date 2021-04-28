@@ -10,10 +10,10 @@ class Aalib < Package
   source_sha256 'fbddda9230cf6ee2a4f5706b4b11e2190ae45f5eda1f0409dc4f99b35e0a70ee'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/aalib-1.4rc5-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/aalib-1.4rc5-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/aalib-1.4rc5-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/aalib-1.4rc5-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_armv7l/aalib-1.4rc5-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_armv7l/aalib-1.4rc5-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_i686/aalib-1.4rc5-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_x86_64/aalib-1.4rc5-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '755e06e37eb67e35e25001426a69b6549160aae9262411afbac6435dcd2bc3fb',

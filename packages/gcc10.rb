@@ -10,10 +10,10 @@ class Gcc10 < Package
   source_sha256 '87f1b3344db6cdcb7295e63c031e00f2c7755c2656cf9603aeb32cf5a5539ec7'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gcc10-10.2.1-0f64-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gcc10-10.2.1-0f64-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gcc10-10.2.1-0f64-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gcc10-10.2.1-0f64-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.2.1-0f64_armv7l/gcc10-10.2.1-0f64-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.2.1-0f64_armv7l/gcc10-10.2.1-0f64-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.2.1-0f64_i686/gcc10-10.2.1-0f64-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.2.1-0f64_x86_64/gcc10-10.2.1-0f64-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'dc0760c6fc123a48a72a6f5492f56d2be4273c29be3dfce6e7b202521c659365',

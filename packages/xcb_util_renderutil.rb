@@ -10,10 +10,10 @@ class Xcb_util_renderutil < Package
   source_sha256 'c6e97e48fb1286d6394dddb1c1732f00227c70bd1bedb7d1acabefdd340bea5b'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xcb_util_renderutil-0.3.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xcb_util_renderutil-0.3.9-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xcb_util_renderutil-0.3.9-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xcb_util_renderutil-0.3.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9_armv7l/xcb_util_renderutil-0.3.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9_armv7l/xcb_util_renderutil-0.3.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9_i686/xcb_util_renderutil-0.3.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9_x86_64/xcb_util_renderutil-0.3.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e3f17ab33870d9b12bacc3916be4e4069688923178501e22dafd14fe77ec8534',

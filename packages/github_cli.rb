@@ -10,10 +10,10 @@ class Github_cli < Package
   source_sha256 '5bdbc589a6d5cca241b2dc467d846a8f23c465d78efd898271f18b636608d6e6'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/github_cli-1.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/github_cli-1.8.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_armv7l/github_cli-1.8.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_i686/github_cli-1.8.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_cli/1.8.1_x86_64/github_cli-1.8.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fa3db74e10915c3edb47bc8f92b934dddb5fbb284ba9526c3e207826b3f8f949',

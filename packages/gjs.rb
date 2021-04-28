@@ -11,10 +11,10 @@ class Gjs < Package
   source_sha256 '12df0c0ff2dd4c944ad27477ee8053e1363c4ad499542686bba21e06d38c6733'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gjs-1.67.3-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gjs-1.67.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_i686/gjs-1.67.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_x86_64/gjs-1.67.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6ee8b11391aee0245536d1d702b765739b20310df841ca4395fce2d9b07eb532',

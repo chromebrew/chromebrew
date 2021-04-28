@@ -10,10 +10,10 @@ class Xa < Package
   source_sha256 '32f2164c99e305218e992970856dd8e2309b5cb6ac4758d7b2afe3bfebc9012d'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xa-2.3.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xa-2.3.11-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xa-2.3.11-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xa-2.3.11-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xa/2.3.11_armv7l/xa-2.3.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xa/2.3.11_armv7l/xa-2.3.11-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xa/2.3.11_i686/xa-2.3.11-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xa/2.3.11_x86_64/xa-2.3.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4e9da9aa44ec5d58c597d5f3fcbba2ba3786002e0da6adebe381c4c70f90cda6',

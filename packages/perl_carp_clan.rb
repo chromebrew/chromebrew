@@ -10,10 +10,10 @@ class Perl_carp_clan < Package
   source_sha256 'c75f92e34422cc5a65ab05d155842b701452434e9aefb649d6e2289c47ef6708'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_carp_clan-6.08-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_carp_clan-6.08-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08_armv7l/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08_armv7l/perl_carp_clan-6.08-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08_i686/perl_carp_clan-6.08-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08_x86_64/perl_carp_clan-6.08-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'dc90c4812e8dc89fbdc37173fc5e28bdbbf2d4b7ef4e5a1848cafa3b93c92a0e',

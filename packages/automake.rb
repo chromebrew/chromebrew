@@ -11,10 +11,10 @@ class Automake < Package
   source_sha256 'ce010788b51f64511a1e9bb2a1ec626037c6d0e7ede32c1c103611b9d3cba65f'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/automake-1.16.3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/automake-1.16.3-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/automake-1.16.3-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/automake-1.16.3-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/automake/1.16.3_armv7l/automake-1.16.3-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/automake/1.16.3_armv7l/automake-1.16.3-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/automake/1.16.3_i686/automake-1.16.3-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/automake/1.16.3_x86_64/automake-1.16.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '13375c5e84631bab60166d390fe617db372d56c922cead9193524a1417816fae',

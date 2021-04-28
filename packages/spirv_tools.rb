@@ -11,10 +11,10 @@ class Spirv_tools < Package
   source_sha256 'c06eed1c7a1018b232768481184b5ae4d91d614d7bd7358dc2fe306bd0a39c6e'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/spirv_tools-2020.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/spirv_tools-2020.7-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/spirv_tools-2020.7-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/spirv_tools-2020.7-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_armv7l/spirv_tools-2020.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_armv7l/spirv_tools-2020.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_i686/spirv_tools-2020.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2020.7_x86_64/spirv_tools-2020.7-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '11f7b470632a94066cae7c546fc8a826c2cc34e11aab3544bb1fff64dc3627d4',

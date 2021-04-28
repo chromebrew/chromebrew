@@ -10,10 +10,10 @@ class Freerdp < Package
   source_sha256 'a1f52f0d9569b418a555ffe4d15a3782712198be47308e9514d20ca5af41a1b1'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/freerdp-2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/freerdp-2.3.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_i686/freerdp-2.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_x86_64/freerdp-2.3.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'dd2db88bb1442ed6d8d37d064ed5701087e339008b91314916b69b0f0f127ca6',

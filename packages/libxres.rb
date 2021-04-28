@@ -10,10 +10,10 @@ class Libxres < Package
   source_sha256 '5b62feee09f276d74054787df030fceb41034de84174abec6d81c591145e043a'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libxres-1.2.0-0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libxres-1.2.0-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_armv7l/libxres-1.2.0-0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_i686/libxres-1.2.0-0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.0-0_x86_64/libxres-1.2.0-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd6de2abe84e9f020add008da76bdb2e35e98438d799f64c3f8cf93df39a0319c',

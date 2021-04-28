@@ -11,10 +11,10 @@ class Libgd < Package
   source_sha256 'dcc22244d775f469bee21dce1ea42552adbb72ba0cc423f9fa6a64601b3a1893'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgd-2.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgd-2.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libgd-2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libgd-2.3.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_armv7l/libgd-2.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_armv7l/libgd-2.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_i686/libgd-2.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_x86_64/libgd-2.3.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'af41a2f68397421ae6d8974b1caaf41e559ddfce9b381dfa45ad235b8f912f1c',

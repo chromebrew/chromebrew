@@ -16,8 +16,8 @@ class Dropbox < Package
   end
 
   binary_url ({
-      i686: 'https://github.com/chromebrew/binaries/raw/main/i686/dropbox-48.4.58-chromeos-i686.tar.xz',
-    x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/dropbox-48.4.58-chromeos-x86_64.tar.xz',
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dropbox/48.4.58_i686/dropbox-48.4.58-chromeos-i686.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dropbox/48.4.58_x86_64/dropbox-48.4.58-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: '1d272702286bd31f3235ba0eb8369946f45fb4ea919b35d1ec4ed060a1578b69',
