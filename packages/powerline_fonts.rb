@@ -10,10 +10,10 @@ class Powerline_fonts < Package
   source_sha256 '3a0b73abca6334b5e6bddefab67f6eb1b2fac1231817d95fc79126c8998c4844'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/powerline_fonts-2015-12-04-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/powerline_fonts-2015-12-04-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/powerline_fonts-2015-12-04-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/powerline_fonts-2015-12-04-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerline_fonts/2015-12-04_armv7l/powerline_fonts-2015-12-04-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerline_fonts/2015-12-04_armv7l/powerline_fonts-2015-12-04-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerline_fonts/2015-12-04_i686/powerline_fonts-2015-12-04-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerline_fonts/2015-12-04_x86_64/powerline_fonts-2015-12-04-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f8a9f001b5e1fb43795a6f3c1ac430ae1a1cae8f192f43b416d694518fea8050',

@@ -10,10 +10,10 @@ class Elinks < Package
   source_sha256 '456db6f704c591b1298b0cd80105f459ff8a1fc07a0ec1156a36c4da6f898979'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/elinks-0.11.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/elinks-0.11.7-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/elinks-0.11.7-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/elinks-0.11.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.11.7_armv7l/elinks-0.11.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.11.7_armv7l/elinks-0.11.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.11.7_i686/elinks-0.11.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.11.7_x86_64/elinks-0.11.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0d84da6aae40b4ac0df284338634493925ad37ff8a3e5017383de8a8ca8c8db8',

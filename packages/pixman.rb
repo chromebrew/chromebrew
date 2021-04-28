@@ -10,10 +10,10 @@ class Pixman < Package
   source_sha256 '6d200dec3740d9ec4ec8d1180e25779c00bc749f94278c8b9021f5534db223fc'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pixman-0.40.0-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pixman-0.40.0-0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pixman-0.40.0-0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pixman-0.40.0-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixman/0.40.0-0_armv7l/pixman-0.40.0-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixman/0.40.0-0_armv7l/pixman-0.40.0-0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixman/0.40.0-0_i686/pixman-0.40.0-0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixman/0.40.0-0_x86_64/pixman-0.40.0-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fbf99db1fcf954a8932ba8590964e6029b13e0bd08fbed118eb368d4263e4b77',

@@ -11,10 +11,10 @@ class Gsettings_desktop_schemas < Package
   source_sha256 'ce1d57e98ba6e460f9764e4a48a28ebe1866423e54c1eeceff6a3c90feb41bc6'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gsettings_desktop_schemas-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gsettings_desktop_schemas-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_i686/gsettings_desktop_schemas-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_x86_64/gsettings_desktop_schemas-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',

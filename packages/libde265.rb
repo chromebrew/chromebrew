@@ -11,10 +11,10 @@ class Libde265 < Package
   source_sha256 '24c791dd334fa521762320ff54f0febfd3c09fc978880a8c5fbc40a88f21d905'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libde265-1.0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libde265-1.0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libde265-1.0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libde265-1.0.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libde265/1.0.8_armv7l/libde265-1.0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libde265/1.0.8_armv7l/libde265-1.0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libde265/1.0.8_i686/libde265-1.0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libde265/1.0.8_x86_64/libde265-1.0.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f2ca6f26fd80159a03e6dc9e3ba62f24ab690c98b03444dc0bad602461643fde',

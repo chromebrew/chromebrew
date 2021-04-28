@@ -10,10 +10,10 @@ class Gtkmm3 < Package
   source_sha256 '9beb71c3e90cfcfb790396b51e3f5e7169966751efd4f3ef9697114be3be6743'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gtkmm3-3.24.4-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gtkmm3-3.24.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_i686/gtkmm3-3.24.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_x86_64/gtkmm3-3.24.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'df6763cd6810ef3b578f97525e5455dcf1dc37a2eeca0a282412dc269f75446e',

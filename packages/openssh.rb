@@ -10,10 +10,10 @@ class Openssh < Package
   source_sha256 'b641e88a61b58d60f87b1c0e38805eb5b1206810cab71b1f2966faa87938593b'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openssh-8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/openssh-8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/openssh-8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/openssh-8.6-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.6_armv7l/openssh-8.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.6_armv7l/openssh-8.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.6_i686/openssh-8.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.6_x86_64/openssh-8.6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '13c4fc76c595404df4a6b53be4e35580bda59937841668c73b4b2f871d559350',

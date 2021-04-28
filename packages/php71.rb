@@ -10,10 +10,10 @@ class Php71 < Package
   source_sha256 'bd7c0a9bd5433289ee01fd440af3715309faf583f75832b64fe169c100d52968'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/php71-7.1.33-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/php71-7.1.33-2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/php71-7.1.33-2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/php71-7.1.33-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_armv7l/php71-7.1.33-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_armv7l/php71-7.1.33-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_i686/php71-7.1.33-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_x86_64/php71-7.1.33-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '28d25b32c01e40b9c2a99acd779a33853f51fc5ac1ac6748aa701a83a415c61a',

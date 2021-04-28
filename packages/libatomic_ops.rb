@@ -10,10 +10,10 @@ class Libatomic_ops < Package
   source_sha256 '587edf60817f56daf1e1ab38a4b3c729b8e846ff67b4f62a6157183708f099af'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libatomic_ops-7.6.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libatomic_ops-7.6.10-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libatomic_ops-7.6.10-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libatomic_ops-7.6.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.6.10_armv7l/libatomic_ops-7.6.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.6.10_armv7l/libatomic_ops-7.6.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.6.10_i686/libatomic_ops-7.6.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.6.10_x86_64/libatomic_ops-7.6.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0844abb0df05ad6c0f9b72b0cbb5e20bb51e4d8c8e9889e44a146aa38693d3ff',

@@ -11,10 +11,10 @@ class Libsigcplusplus < Package
   source_sha256 '3458b027f44204571a3a7091ebb94e5b1b5ecc7fbab89ce2bada25543645993f'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libsigcplusplus-2.10.6-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libsigcplusplus-2.10.6-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_i686/libsigcplusplus-2.10.6-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_x86_64/libsigcplusplus-2.10.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',

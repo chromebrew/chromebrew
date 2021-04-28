@@ -10,10 +10,10 @@ class Nmap < Package
   source_sha256 'fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/nmap-7.80-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/nmap-7.80-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/nmap-7.80-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/nmap-7.80-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmap/7.80_armv7l/nmap-7.80-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmap/7.80_armv7l/nmap-7.80-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmap/7.80_i686/nmap-7.80-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmap/7.80_x86_64/nmap-7.80-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '05f6f7b8303f7249e0ce26650f13bd051d0d5665d321be0ff59f6ce51cff57fe',

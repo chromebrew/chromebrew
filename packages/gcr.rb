@@ -11,10 +11,10 @@ class Gcr < Package
   source_sha256 '659a49bac1c713a743894845c82ef53ccc7326dcce1879b1af0ab502ec10e7ab'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gcr-3.40.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gcr-3.40.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gcr-3.40.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gcr-3.40.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr/3.40.0-1_armv7l/gcr-3.40.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr/3.40.0-1_armv7l/gcr-3.40.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr/3.40.0-1_i686/gcr-3.40.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr/3.40.0-1_x86_64/gcr-3.40.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e1062d5322f4dd084436459fe26e76af0a6118e3a1b0f88329dacae0617c0d96',

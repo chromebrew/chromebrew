@@ -10,10 +10,10 @@ class Alive < Package
   source_sha256 '120dd9ef361833623be353ad8cfac585abae51a16fedd3a84f1d99a842793fef'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/alive-2.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/alive-2.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/alive-2.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/alive-2.0.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.2_armv7l/alive-2.0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.2_armv7l/alive-2.0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.2_i686/alive-2.0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.2_x86_64/alive-2.0.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '02f36ed0016450c778347646a793d743eeb96c5f9cfac3652e53a878eba6a505',

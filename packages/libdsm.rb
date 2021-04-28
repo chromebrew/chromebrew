@@ -10,10 +10,10 @@ class Libdsm < Package
   source_sha256 '96caef854a1f7aa61ab6fdfca9c36a1813b37d23d013db0bc4ec7cd38a570b1c'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdsm-0.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdsm-0.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libdsm-0.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libdsm-0.3.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.0_armv7l/libdsm-0.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.0_armv7l/libdsm-0.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.0_i686/libdsm-0.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.0_x86_64/libdsm-0.3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '03273279d98be86b0da0db0eb251c6a8475dcf32816337bef2aaaecf3f02318d',

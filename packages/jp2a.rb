@@ -10,10 +10,10 @@ class Jp2a < Package
   source_sha256 '6017b83f10bae352c7786868a977a02080a4e84fb99e6fbad18086fcfedffdf4'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jp2a-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jp2a-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/jp2a-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/jp2a-1.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.0_armv7l/jp2a-1.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.0_armv7l/jp2a-1.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.0_i686/jp2a-1.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.0_x86_64/jp2a-1.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '23f9ec4aee910371c8a37b464e50270b26e000125c9a5636675ed10c08ac8e16',

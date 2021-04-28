@@ -10,10 +10,10 @@ class Libx264 < Package
   source_sha256 '6d4eacd1e735f1670a84f56802023fce9a68f19a6186440281fff7757810297d'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libx264-b86a-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libx264-b86a-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libx264-b86a-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libx264-b86a-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx264/b86a_armv7l/libx264-b86a-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx264/b86a_armv7l/libx264-b86a-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx264/b86a_i686/libx264-b86a-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx264/b86a_x86_64/libx264-b86a-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e212794830955a9f109c01000eae365580dc61568db24a4ae412f9f518932f3a',

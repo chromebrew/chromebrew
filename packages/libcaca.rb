@@ -10,10 +10,10 @@ class Libcaca < Package
   source_sha256 'e44aa1a77d4345809d317063ca82e9247867dd9147069dd2fa0fe6db8411e395'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libcaca-0.99.beta20-e496-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libcaca-0.99.beta20-e496-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_armv7l/libcaca-0.99.beta20-e496-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_i686/libcaca-0.99.beta20-e496-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-e496_x86_64/libcaca-0.99.beta20-e496-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ab3310aa860fc7ec1f52300dbf2089052dbabda6ebcd991666e8000cad16658e',

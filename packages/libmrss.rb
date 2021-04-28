@@ -10,10 +10,10 @@ class Libmrss < Package
   source_sha256 'cc3b466fa376d9fa54644268957437ce525fc336926180fda4e831af019767a6'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libmrss-0.19.2-7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libmrss-0.19.2-7-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libmrss-0.19.2-7-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libmrss-0.19.2-7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_armv7l/libmrss-0.19.2-7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_armv7l/libmrss-0.19.2-7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_i686/libmrss-0.19.2-7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_x86_64/libmrss-0.19.2-7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8536ff6ee637e13f466d73afcf6806e01742df9d8ffff07120bd03fc892728a4',

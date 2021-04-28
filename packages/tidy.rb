@@ -10,10 +10,10 @@ class Tidy < Package
   source_sha256 '08a63bba3d9e7618d1570b4ecd6a7daa83c8e18a41c82455b6308bc11fe34958'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tidy-5.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tidy-5.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/tidy-5.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/tidy-5.6.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tidy/5.6.0_armv7l/tidy-5.6.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tidy/5.6.0_armv7l/tidy-5.6.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tidy/5.6.0_i686/tidy-5.6.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tidy/5.6.0_x86_64/tidy-5.6.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cff1c1a6c12ac5503db6d5d38b674069df305dfdf5abe327af57f4fe10559b07',

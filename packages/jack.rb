@@ -11,10 +11,10 @@ class Jack < Package
   source_sha256 '38f674bbc57852a8eb3d9faa1f96a0912d26f7d5df14c11005ad499c8ae352f2'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jack-1.9.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jack-1.9.17-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/jack-1.9.17-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/jack-1.9.17-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_armv7l/jack-1.9.17-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_armv7l/jack-1.9.17-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_i686/jack-1.9.17-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.17_x86_64/jack-1.9.17-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd18c47ae88f28ada701a4938cf26db6659ed9425006e0a81b887be1f8868a280',

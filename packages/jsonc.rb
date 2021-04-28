@@ -10,10 +10,10 @@ class Jsonc < Package
   source_sha256 '5d867baeb7f540abe8f3265ac18ed7a24f91fe3c5f4fd99ac3caba0708511b90'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jsonc-0.13.1-20180305-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jsonc-0.13.1-20180305-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/jsonc-0.13.1-20180305-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/jsonc-0.13.1-20180305-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonc/0.13.1-20180305-1_armv7l/jsonc-0.13.1-20180305-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonc/0.13.1-20180305-1_armv7l/jsonc-0.13.1-20180305-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonc/0.13.1-20180305-1_i686/jsonc-0.13.1-20180305-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonc/0.13.1-20180305-1_x86_64/jsonc-0.13.1-20180305-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c00bac86e26ee85be838fd5ab2ac422f144a86d7049be13809e389607e3ca97b',

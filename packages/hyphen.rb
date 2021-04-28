@@ -10,10 +10,10 @@ class Hyphen < Package
   source_sha256 'd174ba8a2653e79ebd135fd2241fe87d511f9510a31e82bdf13ec21192852595'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/hyphen-73dd29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/hyphen-73dd29-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/hyphen-73dd29-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/hyphen-73dd29-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_armv7l/hyphen-73dd29-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_armv7l/hyphen-73dd29-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_i686/hyphen-73dd29-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_x86_64/hyphen-73dd29-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9c4dc3e8175ecf54eff33dca64506534b0a5e284749854ff20fc8f2b411c2442',

@@ -10,10 +10,10 @@ class Gnome_common < Package
   source_sha256 '8407fd8786a44c9ce47987de0906d9266492195df9251a089afaa06cc65c72d8'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_common-3.18.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_common-3.18.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gnome_common-3.18.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gnome_common-3.18.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_common/3.18.0_armv7l/gnome_common-3.18.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_common/3.18.0_armv7l/gnome_common-3.18.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_common/3.18.0_i686/gnome_common-3.18.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_common/3.18.0_x86_64/gnome_common-3.18.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5a3383100374ce40ddf230237ac656958fb7ec72cf2d0896a9101e3208f9a9bb',

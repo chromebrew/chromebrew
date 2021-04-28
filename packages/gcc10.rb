@@ -6,7 +6,7 @@ class Gcc10 < Package
   version '10.3.0'
   license 'GPL-3'
   compatibility 'all'
-
+  
     is_fake
 
     depends_on 'libssp'

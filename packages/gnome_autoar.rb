@@ -11,10 +11,10 @@ class Gnome_autoar < Package
   source_sha256 '22a69b610697386a2c0edaa7aa64cc3b45e655d7fd5fe14f71d4d196c5747eab'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gnome_autoar-0.3.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gnome_autoar-0.3.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_i686/gnome_autoar-0.3.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_x86_64/gnome_autoar-0.3.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd39da19ad4e07e32fdd631512d9be881b1b3d35169db87c681b20ae56ba027af',
