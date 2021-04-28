@@ -600,14 +600,14 @@ def download
           puts "Archive found in cache".lightgreen
           return {source: source, filename: filename}
           else
-            puts 'Cached archive checksum mismatch. :/ Will download.'.lightred
+            puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
             cachefile = ''
           end
         end
       end
       # Download file if not cached.
       system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless
+      abort 'Checksum mismatch. 😔 Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
       puts 'Archive downloaded.'.lightgreen
       # Stow file in cache if requested (and if file is not from cache).
@@ -629,17 +629,24 @@ def download
     when /\.git$/i
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
-        cachefile = CREW_CACHE_DIR + filename + '.tar.xz'
+        if @pkg.git_branch.nil? || @pkg.git_branch.empty?
+          cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag + '.tar.xz'
+          puts "cachefile is #{cachefile}".orange if @opt_verbose
+        else
+          # Use to the day granularity for a branch timestamp.
+          cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + Time.now.strftime("%m%d%Y") + '.tar.xz'
+          puts "cachefile is #{cachefile}".orange if @opt_verbose
+        end
         if File.file?(cachefile)
-          if system "sha256sum -c #{cachefile}.sha256"
+          if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir @extract_dir
             system "tar x#{@verbose}f #{cachefile} -C #{@extract_dir}"
             return {source: source, filename: filename}
           else
-            puts 'Cached repository checksum mismatch. :/ Will download.'.lightred
+            puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
           end
         else
-          puts 'Cannot find cached repository. :/ Will download.'.lightred
+          puts 'Cannot find cached git repository. 😔 Will download.'.lightred
         end
       end
       # Download via git
@@ -664,13 +671,13 @@ def download
       end
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
-        puts 'Caching downloaded archive...'
-          Dir.chdir "#{@extract_dir}" do
-            system "tar c#{@verbose}Jf #{CREW_CACHE_DIR}/#{filename}.tar.xz \
-              $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
-          end
-        system "sha256sum #{CREW_CACHE_DIR}/#{filename}.tar.xz > #{CREW_CACHE_DIR}/#{filename}.tar.xz.sha256"
-        puts 'Archive cached.'.lightgreen
+        puts 'Caching downloaded git repo...'
+        Dir.chdir "#{@extract_dir}" do
+          system "tar c#{@verbose}Jf #{cachefile} \
+            $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
+        end
+        system "sha256sum #{cachefile} > #{cachefile}.sha256"
+        puts 'Git repo cached.'.lightgreen
       end
     end
   end
