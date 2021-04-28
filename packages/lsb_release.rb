@@ -15,6 +15,7 @@ class Lsb_release < Package
   })
 
   depends_on 'help2man'
+  depends_on 'make'
 
   def self.build
     system "cp /etc/lsb-release /tmp"
