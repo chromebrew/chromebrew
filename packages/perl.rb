@@ -11,10 +11,10 @@ class Perl < Package
   source_sha256 '03b693901cd8ae807231b1787798cf1f2e0b8a56218d07b7da44f784a7caeb2c'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl-5.32.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl-5.32.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl-5.32.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl-5.32.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.32.1_armv7l/perl-5.32.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.32.1_armv7l/perl-5.32.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.32.1_i686/perl-5.32.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.32.1_x86_64/perl-5.32.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '8f96c4ac4e4927ff643670ba362568e5483ba4ef970acd742877ef49b48829df',
