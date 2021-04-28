@@ -670,15 +670,13 @@ def download
       # Stow file in cache if requested
       if CREW_CACHE_ENABLED
         puts 'Caching downloaded git repo...'
-        archivegitjob = fork do
           Dir.chdir "#{@extract_dir}" do
-            exec "tar c#{@verbose}Jf #{cachefile} \
-              $(find -mindepth 1 -maxdepth 1 -printf '%P\n'); \
-              sha256sum #{cachefile} > #{cachefile}.sha256"
+            system "tar c#{@verbose}Jf #{cachefile} \
+              $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
           end
+            system "sha256sum #{cachefile} > #{cachefile}.sha256"
         end
-        Process.detach(archivegitjob)
-        puts 'Git archive caching job backgrounded.'.lightgreen
+        puts 'Git repo cached.'.lightgreen
       end
     end
   end
