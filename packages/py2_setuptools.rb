@@ -11,6 +11,19 @@ class Py2_setuptools < Package
   source_url "https://files.pythonhosted.org/packages/b2/40/4e00501c204b457f10fe410da0c97537214b2265247bc9a5bc6edd55b9e4/setuptools-#{@_ver}.zip"
   source_sha256 'c67aa55db532a0dadc4d2e20ba9961cbd3ccc84d544e9029699822542b5a476b'
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_armv7l/py2_setuptools-44.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_armv7l/py2_setuptools-44.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_i686/py2_setuptools-44.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_x86_64/py2_setuptools-44.1.1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '668bdf06acc1e02d9a2ef79e16815d14930ecf3a0cacbc449f8b4581be6453ca',
+     armv7l: '668bdf06acc1e02d9a2ef79e16815d14930ecf3a0cacbc449f8b4581be6453ca',
+       i686: '1e1dc11e756309055e2086adac78f35a7979d8458cc8c3621aa1babd2a0cf37f',
+     x86_64: '79faf57d69a900e81d35ce3517f4c5e7997f45925bbf31fc3bcd388084cc7e18'
+  })
+
   depends_on 'python2'
 
   def self.build
