@@ -22,7 +22,15 @@ class Python2 < Package
      x86_64: 'b733a3aa7b34b2737cc1cc433e3fe2ddb99c014837268fde3b5697f79da2510c'
   })
 
-  depends_on 'expat'
+  depends_on 'readline' # R
+  depends_on 'openssl' # R
+  depends_on 'libdb' # R
+  depends_on 'sqlite' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'bz2' # R
+  depends_on 'expat' # R
+  depends_on 'libffi' # R
 
   #  def self.patch
   #    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
