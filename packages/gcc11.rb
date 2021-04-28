@@ -10,6 +10,19 @@ class Gcc11 < Package
   source_url 'https://sourceware.org/pub/gcc/releases/gcc-11.1.0/gcc-11.1.0.tar.xz'
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
+  binary_url({
+    aarch64: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '69dcba6dd228dd8bce42b03a6109483c21e66e4ca62c5c6f5fd640feadc29c66',
+     armv7l: '69dcba6dd228dd8bce42b03a6109483c21e66e4ca62c5c6f5fd640feadc29c66',
+       i686: '2407dde003b6a5f1f406548484add5625bcd35dc2fbb3f4b2e500f00013e161d',
+     x86_64: '51f6c5e241f2b7ac82f14e9df47e13797eaf0511bf47dcd0a6468d48d19fee35'
+  })
+
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'hashpipe' => :build
@@ -87,11 +100,8 @@ class Gcc11 < Package
     system "grep  -q 4096 libsanitizer/asan/asan_linux.cpp || (sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
-    # Fix "crtbeginT.o: relocation R_X86_64_32 against hidden symbol `__TMC_END__' can not be used when making a shared object"
-    # when building static llvm
-    # system "sed -i 's/-fbuilding-libgcc -fno-stack-protector/-fbuilding-libgcc -fPIC -fno-stack-protector/g' libgcc/Makefile.in"
   end
-  
+
   def self.build
     # Set ccache sloppiness as per
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
@@ -134,7 +144,7 @@ class Gcc11 < Package
     gcc_version = version.split('-')[0]
 
     FileUtils.mkdir_p 'objdir/gcc/.deps'
-    
+
     Dir.chdir('objdir') do
       system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
         CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
