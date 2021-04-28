@@ -10,10 +10,10 @@ class Perl_text_unidecode < Package
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_text_unidecode-1.30-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_text_unidecode-1.30-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_i686/perl_text_unidecode-1.30-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_x86_64/perl_text_unidecode-1.30-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0fb6cfb59c797bb0d5c94e7a06460f1863e4b03587d86d33be384d2cd80aa872',
