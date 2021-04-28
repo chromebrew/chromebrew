@@ -11,10 +11,10 @@ class Llvm < Package
   source_sha256 '53a0719f3f4b0388013cfffd7b10c7d5682eece1929a9553c722348d1f866e79'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/llvm-11.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/llvm-11.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/llvm-11.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/llvm-11.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/11.1.0_armv7l/llvm-11.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/11.1.0_armv7l/llvm-11.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/11.1.0_i686/llvm-11.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/11.1.0_x86_64/llvm-11.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ba0520a8d5bfa90efb3eb13a530c8d4052f9e7572aa30dd42dfc624b88a0251e',

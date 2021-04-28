@@ -10,10 +10,10 @@ class Mpv < Package
   source_sha256 '100a116b9f23bdcda3a596e9f26be3a69f166a4f1d00910d1789b6571c46f3a9'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mpv-0.33.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mpv-0.33.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_i686/mpv-0.33.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_x86_64/mpv-0.33.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a2ea4b4c758863b540470ed728dbc5d9fc05f778a703bf31f490544cbe618f9b',

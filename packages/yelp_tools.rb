@@ -10,10 +10,10 @@ class Yelp_tools < Package
   source_sha256 'bada2afb5160066aef39e11f90eb5377f0bb161aa2b4dcd744c381e3c2ff77ce'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/yelp_tools-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/yelp_tools-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/yelp_tools-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/yelp_tools-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/40.0_armv7l/yelp_tools-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/40.0_armv7l/yelp_tools-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/40.0_i686/yelp_tools-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_tools/40.0_x86_64/yelp_tools-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1317a7aa14db9fd3f3794ece39708c35320b2098a3265dfaad0b7d1e418b0319',

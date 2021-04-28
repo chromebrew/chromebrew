@@ -10,10 +10,10 @@ class Smartmontools < Package
   source_sha256 '5cd98a27e6393168bc6aaea070d9e1cd551b0f898c52f66b2ff2e5d274118cd6'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/smartmontools-7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/smartmontools-7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/smartmontools-7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/smartmontools-7.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_armv7l/smartmontools-7.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_armv7l/smartmontools-7.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_i686/smartmontools-7.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smartmontools/7.2_x86_64/smartmontools-7.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ac90e2813866209afb1a854571f3223be3af25a897be70c4253ecd07727c10ec',

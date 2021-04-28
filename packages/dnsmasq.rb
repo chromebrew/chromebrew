@@ -10,10 +10,10 @@ class Dnsmasq < Package
   source_sha256 'cdaba2785e92665cf090646cba6f94812760b9d7d8c8d0cfb07ac819377a63bb'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dnsmasq-2.80-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dnsmasq-2.80-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/dnsmasq-2.80-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/dnsmasq-2.80-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_armv7l/dnsmasq-2.80-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_armv7l/dnsmasq-2.80-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_i686/dnsmasq-2.80-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_x86_64/dnsmasq-2.80-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cc8c362e20af19a30faf76355ca10a3f3ec856004008c2dd0272e40957fdfc62',

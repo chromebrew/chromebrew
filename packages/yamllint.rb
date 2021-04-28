@@ -10,10 +10,10 @@ class Yamllint < Package
   source_sha256 '56221b7c0a50b1619e491eb157624a5d1b160c1a4f019d64f117268f42fe4ca4'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/yamllint-1.11.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/yamllint-1.11.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/yamllint-1.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/yamllint-1.11.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yamllint/1.11.1_armv7l/yamllint-1.11.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yamllint/1.11.1_armv7l/yamllint-1.11.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yamllint/1.11.1_i686/yamllint-1.11.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yamllint/1.11.1_x86_64/yamllint-1.11.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9798d172ec31c7b2c6b739dfd1177084c80aeb9ad15d129e3a84caed558bde54',

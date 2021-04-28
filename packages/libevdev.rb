@@ -10,10 +10,10 @@ class Libevdev < Package
   source_sha256 '63f4ea1489858a109080e0b40bd43e4e0903a1e12ea888d581db8c495747c2d0'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libevdev-1.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libevdev-1.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libevdev-1.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libevdev-1.11.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_armv7l/libevdev-1.11.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_armv7l/libevdev-1.11.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_i686/libevdev-1.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.11.0_x86_64/libevdev-1.11.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3b4008a79759fdb098e2e93a5455aed90965d670d5a4328b67b49f4936584eb6',

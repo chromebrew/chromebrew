@@ -10,10 +10,10 @@ class Qemacs < Package
   source_sha256 '2ffba66a44783849282199acfcc08707debc7169394a8fd0902626222f27df94'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/qemacs-0.3.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/qemacs-0.3.3-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/qemacs-0.3.3-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/qemacs-0.3.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemacs/0.3.3_armv7l/qemacs-0.3.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemacs/0.3.3_armv7l/qemacs-0.3.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemacs/0.3.3_i686/qemacs-0.3.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemacs/0.3.3_x86_64/qemacs-0.3.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b68631882ce0ff1edcaff8560e480813acf8e048ba0c897e554813fa9e01e72f',

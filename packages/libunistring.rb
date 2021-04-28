@@ -10,10 +10,10 @@ class Libunistring < Package
   source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libunistring-0.9.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libunistring-0.9.10-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libunistring-0.9.10-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libunistring-0.9.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10_armv7l/libunistring-0.9.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10_armv7l/libunistring-0.9.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10_i686/libunistring-0.9.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10_x86_64/libunistring-0.9.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bd3254d74558de91f176d933d0e4c71eb34b82e245abfbbce9fbee675e89e6fc',

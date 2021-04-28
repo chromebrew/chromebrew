@@ -10,10 +10,10 @@ class Libmodplug < Package
   source_sha256 '457ca5a6c179656d66c01505c0d95fafaead4329b9dbaa0f997d00a3508ad9de'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libmodplug-0.8.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libmodplug-0.8.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libmodplug-0.8.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libmodplug-0.8.9.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_armv7l/libmodplug-0.8.9.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_armv7l/libmodplug-0.8.9.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_i686/libmodplug-0.8.9.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0_x86_64/libmodplug-0.8.9.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'bc64a7b24b9d2fbfb92026b77566d8c8f2bb404ee5a2afefa808891f878e1760',

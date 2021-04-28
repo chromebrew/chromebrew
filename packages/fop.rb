@@ -10,10 +10,10 @@ class Fop < Package
   source_sha256 'ccfd7a1d4e5a04e76723946efa1147ffa9a8715ce2b58d2a27085a8e744520f8'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/fop-2.6-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/fop-2.6-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/fop-2.6-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/fop-2.6-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_armv7l/fop-2.6-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_armv7l/fop-2.6-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_i686/fop-2.6-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.6-1_x86_64/fop-2.6-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5b7a73cd366557240852ea2ec1dc75d2f75d2b0b47c6d5634c2995aba1de79c0',

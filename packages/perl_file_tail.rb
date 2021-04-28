@@ -10,10 +10,10 @@ class Perl_file_tail < Package
   source_sha256 '26d09f81836e43eae40028d5283fe5620fe6fe6278bf3eb8eb600c48ec34afc7'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_file_tail-1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_file_tail-1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_file_tail-1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_file_tail-1.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3_armv7l/perl_file_tail-1.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3_armv7l/perl_file_tail-1.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3_i686/perl_file_tail-1.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3_x86_64/perl_file_tail-1.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f01dfbccd682bd74baea061f0143963cfd7271219eedfbd4ee659e7561096923',

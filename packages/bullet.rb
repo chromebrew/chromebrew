@@ -10,10 +10,10 @@ class Bullet < Package
   source_sha256 '621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bullet-2.89-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bullet-2.89-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/bullet-2.89-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/bullet-2.89-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bullet/2.89_armv7l/bullet-2.89-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bullet/2.89_armv7l/bullet-2.89-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bullet/2.89_i686/bullet-2.89-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bullet/2.89_x86_64/bullet-2.89-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'de8d4c188438087d438173aa33cea512deadc88e1c3f94cd6b9932c389b46d47',

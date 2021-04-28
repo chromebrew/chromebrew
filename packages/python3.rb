@@ -11,10 +11,10 @@ class Python3 < Package
   source_sha256 '4b0e6644a76f8df864ae24ac500a51bbf68bd098f6a173e27d3b61cdca9aa134'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/python3-3.9.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/python3-3.9.4-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/python3-3.9.4-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/python3-3.9.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4_armv7l/python3-3.9.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4_armv7l/python3-3.9.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4_i686/python3-3.9.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4_x86_64/python3-3.9.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fe4fde3f9738ac76096dfdc13ff6931543e2f612035421e294f87d2bfc09773c',

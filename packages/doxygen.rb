@@ -10,10 +10,10 @@ class Doxygen < Package
   source_sha256 '1b5d337e4b73ef1357a88cbd06fc4c301f08f279dac0adb99e876f4d72361f4f'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/doxygen-1.8.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/doxygen-1.8.17-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/doxygen-1.8.17-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/doxygen-1.8.17-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_armv7l/doxygen-1.8.17-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_armv7l/doxygen-1.8.17-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_i686/doxygen-1.8.17-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.8.17_x86_64/doxygen-1.8.17-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f775a0bd1f0ac17e216d5be7667e605bb8b819426dcd87ccb79547978883e79f',

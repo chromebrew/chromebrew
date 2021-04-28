@@ -10,10 +10,10 @@ class Jbigkit < Package
   source_sha256 'de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/jbigkit-2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/jbigkit-2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_i686/jbigkit-2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_x86_64/jbigkit-2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '04f05a1e9d64fd440828b26dbab92e332e14cf8877f89dd3a3184ccb394f28ae',

@@ -12,10 +12,10 @@ class Re2 < Package
   source_sha256 '1396ab50c06c1a8885fb68bf49a5ecfd989163015fd96699a180d6414937f33f'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/re2-2021-02-02-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/re2-2021-02-02-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/re2-2021-02-02-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/re2-2021-02-02-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_armv7l/re2-2021-02-02-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_armv7l/re2-2021-02-02-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_i686/re2-2021-02-02-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_x86_64/re2-2021-02-02-chromeos-x86_64.tar.xz'
   })
   binary_sha256 ({
     aarch64: 'ae5d5606c670ae8b7a1d6faae048683e2a68a49594e3955ba422924d0e236b6a',

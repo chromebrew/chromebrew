@@ -10,10 +10,10 @@ class Gawk < Package
   source_sha256 '8a13d0adfacde9540acbb2e0ad9867ef17890b3fd4c2af288fe3c4f7b507a274'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gawk-5.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gawk-5.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gawk-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gawk-5.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.0_armv7l/gawk-5.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.0_armv7l/gawk-5.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.0_i686/gawk-5.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.0_x86_64/gawk-5.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7539039d47859d047cae70909b10399edeb8c83987701f98fbaa33ceb0b842ce',

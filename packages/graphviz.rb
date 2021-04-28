@@ -11,10 +11,10 @@ class Graphviz < Package
   source_sha256 'e5d7580b3dfcbeb0b86f28dd3c2df76f32086bb428f67c8ae8512e5fd969324d'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/graphviz-2.46.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/graphviz-2.46.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/graphviz-2.46.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/graphviz-2.46.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_armv7l/graphviz-2.46.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_armv7l/graphviz-2.46.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_i686/graphviz-2.46.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/2.46.1-1_x86_64/graphviz-2.46.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4ae28e2e66dc90f4c0ff235578512a9e972490db1a2e8042fc71b800fd034003',

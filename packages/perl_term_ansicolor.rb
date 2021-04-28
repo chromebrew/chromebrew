@@ -10,10 +10,10 @@ class Perl_term_ansicolor < Package
   source_sha256 'c4865a9fe2ce3a46fd4f11215dcba05a9d5603e797a2623abc19cc14b4a0609a'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_term_ansicolor-5.01-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_term_ansicolor-5.01-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_term_ansicolor-5.01-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_term_ansicolor-5.01-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_ansicolor/5.01_armv7l/perl_term_ansicolor-5.01-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_ansicolor/5.01_armv7l/perl_term_ansicolor-5.01-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_ansicolor/5.01_i686/perl_term_ansicolor-5.01-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_ansicolor/5.01_x86_64/perl_term_ansicolor-5.01-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c96e95727d025667223e7a03bc89fdc061c3d83e4660815a4bf33aa72aafcd09',

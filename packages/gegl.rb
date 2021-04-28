@@ -10,10 +10,10 @@ class Gegl < Package
   source_sha256 'c112782cf4096969e23217ccdfabe42284e35d5435ff0c43d40e4c70faeca8dd'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gegl-0.4.30-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gegl-0.4.30-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gegl-0.4.30-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gegl-0.4.30-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.30_armv7l/gegl-0.4.30-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.30_armv7l/gegl-0.4.30-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.30_i686/gegl-0.4.30-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.30_x86_64/gegl-0.4.30-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '25258b3592ddf748f011e3fc0a44ccb3ce0ba24ae33d030df592f34210eef04b',

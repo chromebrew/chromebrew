@@ -10,10 +10,10 @@ class Traceroute < Package
   source_sha256 '3669d22a34d3f38ed50caba18cd525ba55c5c00d5465f2d20d7472e5d81603b6'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/traceroute-2.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/traceroute-2.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/traceroute-2.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/traceroute-2.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.0_armv7l/traceroute-2.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.0_armv7l/traceroute-2.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.0_i686/traceroute-2.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.0_x86_64/traceroute-2.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4342a2b6b38304f358664cacb75c9d97bf1eb284cd7f000087b62699bfebc835',

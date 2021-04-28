@@ -10,10 +10,10 @@ class Iptraf < Package
   source_sha256 '9ee433d95573d612539da4b452e6cdcbca6ab6674a88bfbf6eaf12d4902b5163'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/iptraf-3.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/iptraf-3.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/iptraf-3.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/iptraf-3.0.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptraf/3.0.0_armv7l/iptraf-3.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptraf/3.0.0_armv7l/iptraf-3.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptraf/3.0.0_i686/iptraf-3.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptraf/3.0.0_x86_64/iptraf-3.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f0961b50adbce4ce969559f556621debee9a6e29886202063eeeaca5a898bc64',

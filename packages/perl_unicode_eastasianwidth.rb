@@ -10,16 +10,16 @@ class Perl_unicode_eastasianwidth < Package
   source_sha256 '2a5bfd926c4fe5f77e6137da2c31ac2545282ae5fec6e9af0fdd403555a90ff4'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_unicode_eastasianwidth-12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_unicode_eastasianwidth-12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_unicode_eastasianwidth-12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_unicode_eastasianwidth-12.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-1_armv7l/perl_unicode_eastasianwidth-12.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-1_armv7l/perl_unicode_eastasianwidth-12.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-1_i686/perl_unicode_eastasianwidth-12.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-1_x86_64/perl_unicode_eastasianwidth-12.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '5593ee971d525518b3ceb87f09ac1e72f9588f07560af63eb11ab82da3f69e49',
-     armv7l: '5593ee971d525518b3ceb87f09ac1e72f9588f07560af63eb11ab82da3f69e49',
-       i686: '6cd20f8a7cfb18799864003c76475c4e8280c7367f7285460facbf44d9279a5d',
-     x86_64: 'd200c9e1cc6c1e02a690006914c0f7e7845e7af92d2ec858df58b5f9cd0e3c4c',
+    aarch64: 'fe5c4b5bb96413f8e3841d1542961a79d288d57ea7ba49fda5704e9010e4625c',
+     armv7l: 'fe5c4b5bb96413f8e3841d1542961a79d288d57ea7ba49fda5704e9010e4625c',
+       i686: '5e79c41dec4627a50378058acbc0e815970571127a0dad29128a905eafc889a5',
+     x86_64: '55c5256381f12302211179f0a5aedecdd200b8e09fd28564630cc9bbd5294403',
   })
 
   depends_on 'perl'

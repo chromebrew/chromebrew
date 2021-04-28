@@ -11,10 +11,10 @@ class Leptonica < Package
   source_sha256 '3952b974ec057d24267aae48c54bca68ead8275604bf084a73a4b953ff79196e'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/leptonica-1.80.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/leptonica-1.80.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/leptonica-1.80.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/leptonica-1.80.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_armv7l/leptonica-1.80.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_armv7l/leptonica-1.80.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_i686/leptonica-1.80.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_x86_64/leptonica-1.80.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd4ae243ebd485e3bc061701f07bdd031f02916c79e6e7c0bc4353321c79ec66b',

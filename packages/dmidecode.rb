@@ -10,10 +10,10 @@ class Dmidecode < Package
   source_sha256 '077006fa2da0d06d6383728112f2edef9684e9c8da56752e97cd45a11f838edd'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dmidecode-3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/dmidecode-3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/dmidecode-3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/dmidecode-3.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.2_armv7l/dmidecode-3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.2_armv7l/dmidecode-3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.2_i686/dmidecode-3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.2_x86_64/dmidecode-3.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '41beef6535dc3a44b0e9485e304cb54143bb5be8b5fdb6fbed5e8e51089d9929',
