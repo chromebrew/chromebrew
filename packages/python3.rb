@@ -4,27 +4,41 @@ class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
   @_ver = '3.9.4'
-  version @_ver + '-1'
+  version "#{@_ver}-1"
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
   source_sha256 '4b0e6644a76f8df864ae24ac500a51bbf68bd098f6a173e27d3b61cdca9aa134'
 
-  depends_on 'bz2'
-  depends_on 'gdbm'
-  depends_on 'glibc'
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_armv7l/python3-3.9.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_armv7l/python3-3.9.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_i686/python3-3.9.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_x86_64/python3-3.9.4-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '17acda432cbbdcbcdf46a8fda536c160d460833d2e8d4e33f41669cd392d1ec3',
+     armv7l: '17acda432cbbdcbcdf46a8fda536c160d460833d2e8d4e33f41669cd392d1ec3',
+       i686: '2c47ce9690665232473be9582234f73f5bebdd616db1d1e0c9edf6a56880b59f',
+     x86_64: '23ade3fd6991f88f0207e8ed64def6c2a8823b5b51aa22358b08daf328a4caca'
+  })
+
   depends_on 'krb5' => :build
-  depends_on 'libdb'
-  depends_on 'libffi'
   depends_on 'libtirpc' => :build
-  depends_on 'ncurses'
-  depends_on 'openssl'
-  depends_on 'readline'
-  depends_on 'sqlite'
+  depends_on 'bz2' # R
+  depends_on 'expat' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'libdb' # R
+  depends_on 'libffi' # R
+  depends_on 'ncurses' # R
+  depends_on 'openssl' # R
+  depends_on 'readline' # R
+  depends_on 'sqlite' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
   # depends_on 'tcl' # Needed for tkinter support
   # depends_on 'tk'  # Needed for tkinter support
-  depends_on 'xzutils'
-  depends_on 'zlibpkg'
 
   def self.patch
     system "sed -i -e 's:#{CREW_LIB_PREFIX}:\$(get_libdir):g' \
