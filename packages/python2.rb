@@ -9,11 +9,20 @@ class Python2 < Package
   source_url 'https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz'
   source_sha256 'b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43'
 
-  depends_on 'libffi'
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_armv7l/python2-2.7.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_armv7l/python2-2.7.18-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_i686/python2-2.7.18-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_x86_64/python2-2.7.18-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '8d50eb96aac259934a8a057280244ca4a7f312cee4a331694890ea7ac4d757c7',
+     armv7l: '8d50eb96aac259934a8a057280244ca4a7f312cee4a331694890ea7ac4d757c7',
+       i686: 'bb74dd4cc2f10a30b861b41ccbc14e7251e4838d288a033e72ce502376247bc8',
+     x86_64: 'b733a3aa7b34b2737cc1cc433e3fe2ddb99c014837268fde3b5697f79da2510c'
+  })
+
   depends_on 'expat'
-  depends_on 'zlibpkg'
-  depends_on 'bz2' => :build
-  depends_on 'sqlite' => :build
 
   #  def self.patch
   #    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
@@ -87,8 +96,8 @@ class Python2 < Package
 
     # move dynamic libraries to their correct places, so the dynamic loader can find them
     FileUtils.mkdir CREW_DEST_LIB_PREFIX unless Dir.exist? CREW_DEST_LIB_PREFIX
-    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so", CREW_DEST_LIB_PREFIX
-    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so.1.0", CREW_DEST_LIB_PREFIX
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so", CREW_DEST_LIB_PREFIX if ARCH == 'x86_64'
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib/libpython2.7.so.1.0", CREW_DEST_LIB_PREFIX if ARCH == 'x86_64'
 
     # Remove python executable, python3 is default
     FileUtils.rm "#{CREW_DEST_PREFIX}/bin/python"
