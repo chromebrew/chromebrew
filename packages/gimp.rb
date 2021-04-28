@@ -10,10 +10,10 @@ class Gimp < Package
   source_sha256 'bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gimp-2.10.24-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gimp-2.10.24-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_i686/gimp-2.10.24-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_x86_64/gimp-2.10.24-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6867db24428a1509ac14459f29944a2fbb0a81e8a509b39cd2b7c837fd48fd00',

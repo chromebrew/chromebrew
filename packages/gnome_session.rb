@@ -11,9 +11,9 @@ class Gnome_session < Package
   source_sha256 '0dd8c38c29568db6ffbd2a788f12b9e93262296ffd6d4c40fc2a830099d46883'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gnome_session-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_x86_64/gnome_session-40.beta-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9bdad789a49f45e3574f829455a1d89d71b1cddbfe8d0cb7c6868b892ad5ae98',

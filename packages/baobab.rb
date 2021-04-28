@@ -10,10 +10,10 @@ class Baobab < Package
   source_sha256 '1b6b5e533802a9293bd061cd0a49049664c310f814e39e40b310ae954342fe83'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/baobab-3.35.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/baobab-3.35.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_armv7l/baobab-3.35.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_i686/baobab-3.35.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/baobab/3.35.1_x86_64/baobab-3.35.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c71f8f044a796984990f52b33953c22e9a197ca547123f65cad0b810bd04a53f',

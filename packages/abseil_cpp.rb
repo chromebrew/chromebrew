@@ -11,10 +11,10 @@ class Abseil_cpp < Package
   source_sha256 'ebe2ad1480d27383e4bf4211e2ca2ef312d5e6a09eba869fd2e8a5c5d553ded2'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/abseil_cpp-20200923.3-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/abseil_cpp-20200923.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20200923.3_armv7l/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20200923.3_armv7l/abseil_cpp-20200923.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20200923.3_i686/abseil_cpp-20200923.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20200923.3_x86_64/abseil_cpp-20200923.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0bcfb2b4924b1c782d918805edf2e6b200ec9547ae362d09ed1122003dd64c49',

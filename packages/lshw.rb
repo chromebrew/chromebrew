@@ -10,10 +10,10 @@ class Lshw < Package
   source_sha256 'ae22ef11c934364be4fd2a0a1a7aadf4495a0251ec6979da280d342a89ca3c2f'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/lshw-B.02.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/lshw-B.02.18-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/lshw-B.02.18-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/lshw-B.02.18-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lshw/B.02.18_armv7l/lshw-B.02.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lshw/B.02.18_armv7l/lshw-B.02.18-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lshw/B.02.18_i686/lshw-B.02.18-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lshw/B.02.18_x86_64/lshw-B.02.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd6d2db90b1df3ac02f53c01188a23230e8d2a11935487e03a8b61c4ecdc888be',

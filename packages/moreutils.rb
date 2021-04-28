@@ -11,10 +11,10 @@ class Moreutils < Package
   source_sha256 'ba0cfaa1ff6ead2b15c62a67292de66a366f9b815a09697b54677f7e15f5a2b2'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/moreutils-0.65-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/moreutils-0.65-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_i686/moreutils-0.65-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_x86_64/moreutils-0.65-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'af2d40444fb74ae8e2151b76d61417ddee993b69b8e6b6b30a65218612a8f523',

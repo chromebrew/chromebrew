@@ -10,10 +10,10 @@ class Libxau < Package
   source_sha256 'ccf8cbf0dbf676faa2ea0a6d64bcc3b6746064722b606c8c52917ed00dcb73ec'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxau-1.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxau-1.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libxau-1.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libxau-1.0.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.9_armv7l/libxau-1.0.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.9_armv7l/libxau-1.0.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.9_i686/libxau-1.0.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.9_x86_64/libxau-1.0.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ef6e137ebb752f4015495c60acea0ab17efa50391f4d133e61d25859c791d452',

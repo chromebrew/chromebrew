@@ -10,10 +10,10 @@ class Charm < Package
   source_sha256 'ae2d536303e770ceb002f69c1e71f6a8532c8d5dd075d2f5c1bf09ad02c3c015'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/charm-1.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/charm-1.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/charm-1.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/charm-1.9.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_armv7l/charm-1.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_armv7l/charm-1.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_i686/charm-1.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_x86_64/charm-1.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0b830d2222daab4736c2de2952827371fcf934934640a56606669b163fdd58e5',

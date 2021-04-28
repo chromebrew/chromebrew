@@ -10,10 +10,10 @@ class Pmd < Package
   source_sha256 '9a19365f2e107ae801b39be04c5c03cdca2d352c450faac639a6dd95b5c3ab0c'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pmd-6.28.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pmd-6.28.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pmd-6.28.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pmd-6.28.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_armv7l/pmd-6.28.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_armv7l/pmd-6.28.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_i686/pmd-6.28.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pmd/6.28.0_x86_64/pmd-6.28.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3ffa1b5c562929b74903a42bb8246203b6b1a09a156031e25522991bb25eea51',

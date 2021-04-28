@@ -10,10 +10,10 @@ class Libcheck < Package
   source_sha256 'c4336b31447acc7e3266854f73ec188cdb15554d0edd44739631da174a569909'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcheck-0.13.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libcheck-0.13.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libcheck-0.13.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libcheck-0.13.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcheck/0.13.0_armv7l/libcheck-0.13.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcheck/0.13.0_armv7l/libcheck-0.13.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcheck/0.13.0_i686/libcheck-0.13.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcheck/0.13.0_x86_64/libcheck-0.13.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '71a129c63ce759b17a6a9ce7c30eecadb633a24242170d9a6646a9c45c64eac4',

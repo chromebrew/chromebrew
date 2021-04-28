@@ -10,10 +10,10 @@ class Qtsvg < Package
   source_sha256 '308160223c0bd7492d56fb5d7b7f705bfb130947ac065bf39280ec6d7cbe4f6a'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/qtsvg-5.15.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/qtsvg-5.15.1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/qtsvg-5.15.1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/qtsvg-5.15.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtsvg/5.15.1_armv7l/qtsvg-5.15.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtsvg/5.15.1_armv7l/qtsvg-5.15.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtsvg/5.15.1_i686/qtsvg-5.15.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtsvg/5.15.1_x86_64/qtsvg-5.15.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '45a4e115d43f59daa636a53050ef477da6e790cda70872cb9c1c07c4963e2337',

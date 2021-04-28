@@ -10,10 +10,10 @@ class Acl < Package
   source_sha256 '06be9865c6f418d851ff4494e12406568353b891ffe1f596b34693c387af26c7'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/acl-2.2.53-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/acl-2.2.53-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/acl-2.2.53-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/acl-2.2.53-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/acl/2.2.53_armv7l/acl-2.2.53-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/acl/2.2.53_armv7l/acl-2.2.53-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/acl/2.2.53_i686/acl-2.2.53-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/acl/2.2.53_x86_64/acl-2.2.53-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '63d5600ce26933fc49b5fea4a9ab37f1dac8546c9a2bee6d0525ced6b98c03bb',

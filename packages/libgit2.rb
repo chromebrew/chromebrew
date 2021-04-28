@@ -11,10 +11,10 @@ class Libgit2 < Package
   source_sha256 'ad73f845965cfd528e70f654e428073121a3fa0dc23caac81a1b1300277d4dba'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgit2-1.1.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libgit2-1.1.0-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libgit2-1.1.0-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libgit2-1.1.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.1.0_armv7l/libgit2-1.1.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.1.0_armv7l/libgit2-1.1.0-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.1.0_i686/libgit2-1.1.0-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.1.0_x86_64/libgit2-1.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '6ace517ea3525066a11071ed20e02eda6862bd944ceaf4f704c2f28b5f0bc6ac',

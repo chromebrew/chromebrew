@@ -10,10 +10,10 @@ class Strace < Package
   source_sha256 'd513bc085609a9afd64faf2ce71deb95b96faf46cd7bc86048bc655e4e4c24d2'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/strace-5.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/strace-5.2-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_i686/strace-5.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_x86_64/strace-5.2-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2affe33b6758ed49fc50d140e7673f44e33fc72410597eb851fef5e9699a1afc',

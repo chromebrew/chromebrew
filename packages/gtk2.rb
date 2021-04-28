@@ -10,10 +10,10 @@ class Gtk2 < Package
   source_sha256 'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gtk2-2.24.33-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gtk2-2.24.33-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_i686/gtk2-2.24.33-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_x86_64/gtk2-2.24.33-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '973cb7478861aa2821870c07e1ab3570b3d66afd51b3b065e1fd7598d4a666a2',

@@ -13,10 +13,10 @@ class Exempi < Package
   source_sha256 'dff105f53bdd971e633b7fcb3bcfb22276716228a9e6063c1fd241a8542b9cec'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/exempi-2.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/exempi-2.5.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_i686/exempi-2.5.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_x86_64/exempi-2.5.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9f9699c46f95394aaaf6b116f7984c6dbfdbcd258698624baace212458391e67',

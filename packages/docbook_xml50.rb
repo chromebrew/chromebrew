@@ -11,10 +11,10 @@ class Docbook_xml50 < Package
   source_sha256 '3dcd65e1f5d9c0c891b3be204fa2bb418ce485d32310e1ca052e81d36623208e'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/docbook_xml50-5.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/docbook_xml50-5.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_armv7l/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_armv7l/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_i686/docbook_xml50-5.0-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_x86_64/docbook_xml50-5.0-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2ab82950132df3cd03fa314553cd961aa22f559d95dca84943e75c55158a8a3b',

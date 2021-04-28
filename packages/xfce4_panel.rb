@@ -10,10 +10,10 @@ class Xfce4_panel < Package
   source_sha256 '5e979aeeb37d306d72858b1bc67448222ea7a68de01409055b846cd31f3cc53d'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xfce4_panel-4.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xfce4_panel-4.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xfce4_panel-4.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xfce4_panel-4.16.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_panel/4.16.0_armv7l/xfce4_panel-4.16.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_panel/4.16.0_armv7l/xfce4_panel-4.16.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_panel/4.16.0_i686/xfce4_panel-4.16.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_panel/4.16.0_x86_64/xfce4_panel-4.16.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '338ec0279e7da70d8748e5a434b82a52230f2f0359903e1a93488e144c8b9c1b',

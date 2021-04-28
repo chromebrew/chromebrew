@@ -10,10 +10,10 @@ class Xcb_util_keysyms < Package
   source_sha256 '0ef8490ff1dede52b7de533158547f8b454b241aa3e4dcca369507f66f216dd9'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xcb_util_keysyms-0.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xcb_util_keysyms-0.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xcb_util_keysyms-0.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xcb_util_keysyms-0.4.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_keysyms/0.4.0_armv7l/xcb_util_keysyms-0.4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_keysyms/0.4.0_armv7l/xcb_util_keysyms-0.4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_keysyms/0.4.0_i686/xcb_util_keysyms-0.4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_keysyms/0.4.0_x86_64/xcb_util_keysyms-0.4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5b762804af0c1cda419771f9b3fe0be115f5745b163f966ed0d0be0662532e33',

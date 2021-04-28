@@ -10,10 +10,10 @@ class Urlwatch < Package
   source_sha256 'b61997ec6229b2cb22b7121d0b666da91e524e212d126f55cd939d230daa5887'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/urlwatch-2.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/urlwatch-2.23-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/urlwatch-2.23-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/urlwatch-2.23-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_armv7l/urlwatch-2.23-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_armv7l/urlwatch-2.23-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_i686/urlwatch-2.23-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_x86_64/urlwatch-2.23-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1f17b72ee478889438aa358a966b649523793f1c5c97fd19b4eaddaa5f75f7ed',

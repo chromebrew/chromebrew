@@ -10,10 +10,10 @@ class Links < Package
   source_sha256 '32443c6f011216a8a43ed0806d9d23c1defdd19bc4b021ee00cda197782e175a'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/links-1.03-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/links-1.03-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/links-1.03-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/links-1.03-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_armv7l/links-1.03-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_armv7l/links-1.03-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_i686/links-1.03-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/1.03_x86_64/links-1.03-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'de75740c75a6b141e68df3ab31a834890f79834843df543f1de9fbb077665d40',

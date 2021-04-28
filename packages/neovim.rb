@@ -10,9 +10,9 @@ class Neovim < Package
   source_sha256 '2f76aac59363677f37592e853ab2c06151cca8830d4b3fe4675b4a52d41fc42c'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/neovim-0.4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/neovim-0.4.4-chromeos-armv7l.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/neovim-0.4.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.4.4_armv7l/neovim-0.4.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.4.4_armv7l/neovim-0.4.4-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.4.4_x86_64/neovim-0.4.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4f070268cb5386ad3cff2c3a5e7f332a79ce28335ec13f17763d2cb0c5a6083b',
