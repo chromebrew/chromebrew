@@ -10,10 +10,10 @@ class Waf < Package
   source_sha256 '7368b14adba94467c920161aaca3e54384aca392acb7dc8ee37d53ce29dac781'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/waf-2.0.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/waf-2.0.22-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/waf-2.0.22-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/waf-2.0.22-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_armv7l/waf-2.0.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_armv7l/waf-2.0.22-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_i686/waf-2.0.22-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_x86_64/waf-2.0.22-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '732013cc9f066715cc03186d9d082d7096413b1fdd910ae71e93db6a4a162cc9',

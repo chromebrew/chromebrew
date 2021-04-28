@@ -10,10 +10,10 @@ class M4 < Package
   source_sha256 'f2c1e86ca0a404ff281631bdc8377638992744b175afb806e25871a24a934e07'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/m4-1.4.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/m4-1.4.18-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/m4-1.4.18-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/m4-1.4.18-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.18_armv7l/m4-1.4.18-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.18_armv7l/m4-1.4.18-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.18_i686/m4-1.4.18-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.18_x86_64/m4-1.4.18-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '57b2c4f5bc8ef5cc680e97e878d79382f3cfd2b1e54679cae269bf968cd72316',

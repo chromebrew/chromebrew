@@ -11,10 +11,10 @@ class Gobject_introspection < Package
   source_sha256 'b22035bd3e7ea27cc29b0c19ec5da8dd6cafe88a08392ecd06b41d4025406b4c'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gobject_introspection-1.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gobject_introspection-1.68.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_i686/gobject_introspection-1.68.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_x86_64/gobject_introspection-1.68.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7f19992ebfb2efd6890b80aa13975b5052b62018359dfd3d6d4f504d88f5cfb8',

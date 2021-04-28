@@ -10,10 +10,10 @@ class Mediainfo < Package
   source_sha256 '0f23ccc9a78b24104dc387691e1df484ed75350ee77277982cd170cca59750b0'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mediainfo-17.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mediainfo-17.12-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mediainfo-17.12-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mediainfo-17.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/17.12_armv7l/mediainfo-17.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/17.12_armv7l/mediainfo-17.12-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/17.12_i686/mediainfo-17.12-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/17.12_x86_64/mediainfo-17.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a963c89216f20971448bc34dc69b868d9bb3aa106d9cd6cb0eb5884ebd9e08b3',

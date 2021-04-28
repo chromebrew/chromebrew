@@ -11,10 +11,10 @@ class Mandb < Package
   source_sha256 'b66c99edfad16ad928c889f87cf76380263c1609323c280b3a9e6963fdb16756'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mandb-2.9.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mandb-2.9.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mandb-2.9.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mandb-2.9.4-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.9.4-1_armv7l/mandb-2.9.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.9.4-1_armv7l/mandb-2.9.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.9.4-1_i686/mandb-2.9.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.9.4-1_x86_64/mandb-2.9.4-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1380c9d892dee58035943cd45e0fbdde24076ecff95d217a244b23d29530fda2',

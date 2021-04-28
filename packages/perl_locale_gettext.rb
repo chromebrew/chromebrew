@@ -11,10 +11,10 @@ class Perl_locale_gettext < Package
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_locale_gettext-1.07-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_locale_gettext-1.07-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_i686/perl_locale_gettext-1.07-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_x86_64/perl_locale_gettext-1.07-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2ca25cdafbe78b4d6b5e01c8985c20a2341c06c3b6969c50fa57f5dda2980e07',

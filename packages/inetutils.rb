@@ -11,10 +11,10 @@ class Inetutils < Package
   source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/inetutils-2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/inetutils-2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_i686/inetutils-2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_x86_64/inetutils-2.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '8e4e1d3e987ed40aa8c63a8a794f1fd74ce390aee6e63795cb1936ff36ffd176',

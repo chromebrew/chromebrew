@@ -10,10 +10,10 @@ class Brotli < Package
   source_sha256 'a0bfaf49d8d35262ef1d1e617486b061f47c634721c345051bf8d9fb806f3bb9'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/brotli-1.0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/brotli-1.0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/brotli-1.0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/brotli-1.0.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.8_armv7l/brotli-1.0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.8_armv7l/brotli-1.0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.8_i686/brotli-1.0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brotli/1.0.8_x86_64/brotli-1.0.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '636a5bb46059311e280f1828aa032e2d2bad83905b124549159b73e279856688',

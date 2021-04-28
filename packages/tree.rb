@@ -10,10 +10,10 @@ class Tree < Package
   source_sha256 '715d5d4b434321ce74706d0dd067505bb60c5ea83b5f0b3655dae40aa6f9b7c2'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tree-1.8.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/tree-1.8.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/tree-1.8.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/tree-1.8.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_armv7l/tree-1.8.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_armv7l/tree-1.8.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_i686/tree-1.8.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/1.8.0_x86_64/tree-1.8.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a7505aeb61a91e3735cd89e139632af5229a41d693e7b088fcdd6b5db630504a',

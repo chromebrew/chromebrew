@@ -10,10 +10,10 @@ class Libwmf < Package
   source_sha256 'ec31cc81ee41ab28acef686b875b7692f6a5286710d6fd58429d914f78c73847'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libwmf-0.2.12-483e-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libwmf-0.2.12-483e-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_i686/libwmf-0.2.12-483e-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_x86_64/libwmf-0.2.12-483e-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6313c27b04e538ce75b749049658d7ad0f85df880a24f49f232e1846a32535b2',

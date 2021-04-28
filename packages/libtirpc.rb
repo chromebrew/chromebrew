@@ -11,10 +11,10 @@ class Libtirpc < Package
   source_sha256 '245895caf066bec5e3d4375942c8cb4366adad184c29c618d97f724ea309ee17'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libtirpc-1.3.1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libtirpc-1.3.1-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libtirpc-1.3.1-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libtirpc-1.3.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.1_armv7l/libtirpc-1.3.1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.1_armv7l/libtirpc-1.3.1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.1_i686/libtirpc-1.3.1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.1_x86_64/libtirpc-1.3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '489870e43cd86ca9aa252f3639f54e8af9bc6b33e16ef96aa66f0114bef8ee90',

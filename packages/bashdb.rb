@@ -10,10 +10,10 @@ class Bashdb < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bashdb-5.0-1.1.2-abac-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/bashdb-5.0-1.1.2-abac-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/bashdb-5.0-1.1.2-abac-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/bashdb-5.0-1.1.2-abac-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_armv7l/bashdb-5.0-1.1.2-abac-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_armv7l/bashdb-5.0-1.1.2-abac-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_i686/bashdb-5.0-1.1.2-abac-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_x86_64/bashdb-5.0-1.1.2-abac-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e94ee67c7eb1e025301f2ab16f5588a1903816fccb6b965e83e28e8a4e13c146',

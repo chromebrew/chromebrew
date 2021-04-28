@@ -11,10 +11,10 @@ class Pipewire < Package
   source_sha256 '05cc9d25de45290c025da5da1b94fc705bddacd93cf3690d0b2988c1ac501ee1'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/pipewire-0.3.26-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/pipewire-0.3.26-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_i686/pipewire-0.3.26-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_x86_64/pipewire-0.3.26-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',

@@ -10,10 +10,10 @@ class Graphite < Package
   source_sha256 'f99d1c13aa5fa296898a181dff9b82fb25f6cc0933dbaa7a475d8109bd54209d'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/graphite-1.3.14-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/graphite-1.3.14-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/graphite-1.3.14-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/graphite-1.3.14-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_armv7l/graphite-1.3.14-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_armv7l/graphite-1.3.14-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_i686/graphite-1.3.14-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_x86_64/graphite-1.3.14-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3ee1594a2f5a0349dd12ef28fb60dffe254c8ca3ac4444da7be90741057c63b5',

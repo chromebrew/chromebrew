@@ -10,10 +10,10 @@ class Libeconf < Package
   source_sha256 'e0c265f85eef2aca400d17b88f74891ce40ed88d959ebc29f529d26121f7e8e3'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libeconf-0.3.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libeconf-0.3.8-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libeconf-0.3.8-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libeconf-0.3.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_armv7l/libeconf-0.3.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_armv7l/libeconf-0.3.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_i686/libeconf-0.3.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_x86_64/libeconf-0.3.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '48ea1c16670d3f19656f6abbec7c3b218a67946512dc53b3707bacba4b36f6aa',

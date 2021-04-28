@@ -11,10 +11,10 @@ class Exfatprogs < Package
   source_sha256 '88c12a2f9cbe4f12129f3b7fa2cd42f24dbed3f579e61bac2ca699ca79fad4e0'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/exfatprogs-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/exfatprogs-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/exfatprogs-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/exfatprogs-1.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_armv7l/exfatprogs-1.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_armv7l/exfatprogs-1.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_i686/exfatprogs-1.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.1.0_x86_64/exfatprogs-1.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4e2730cc159d86f2f49888f692b199c29490ffac051585777f3ccd09f762145d',

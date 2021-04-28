@@ -10,10 +10,10 @@ class Librsvg < Package
   source_sha256 'a4298a98e3a95fdd73c858c17d4dd018525fb09dbb13bbd668a0c2243989e958'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/librsvg-2.50.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/librsvg-2.50.3-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.50.3-1_armv7l/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.50.3-1_armv7l/librsvg-2.50.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.50.3-1_i686/librsvg-2.50.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.50.3-1_x86_64/librsvg-2.50.3-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '40d0ff493b29670a4375a7fc35c236cdc44c249a6658bbc49ea54a435868d729',

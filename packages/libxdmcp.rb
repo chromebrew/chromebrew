@@ -10,10 +10,10 @@ class Libxdmcp < Package
   source_sha256 '20523b44aaa513e17c009e873ad7bbc301507a3224c232610ce2e099011c6529'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libxdmcp-1.1.3-1-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libxdmcp-1.1.3-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_i686/libxdmcp-1.1.3-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_x86_64/libxdmcp-1.1.3-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '8d044dae7bae3290e3189d25216df2dec946bf3214812c3327f44c5d4af908c7',

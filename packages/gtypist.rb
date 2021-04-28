@@ -10,10 +10,10 @@ class Gtypist < Package
   source_sha256 'c13af40b12479f8219ffa6c66020618c0ce305ad305590fde02d2c20eb9cf977'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtypist-2.9.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gtypist-2.9.5-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gtypist-2.9.5-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gtypist-2.9.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtypist/2.9.5_armv7l/gtypist-2.9.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtypist/2.9.5_armv7l/gtypist-2.9.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtypist/2.9.5_i686/gtypist-2.9.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtypist/2.9.5_x86_64/gtypist-2.9.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '270d48de1bc66a8ef39e8d72435aa2c1528b4a8512a791817e44c8d64ebfc0e0',

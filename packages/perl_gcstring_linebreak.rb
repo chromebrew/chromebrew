@@ -10,10 +10,10 @@ class Perl_gcstring_linebreak < Package
   source_sha256 'bc9f96cf8bea60665e8ad67e90b0db3cc0bcdb97101e15c8c44ea671ba256577'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/perl_gcstring_linebreak-2019.001-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/perl_gcstring_linebreak-2019.001-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001_armv7l/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001_armv7l/perl_gcstring_linebreak-2019.001-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001_i686/perl_gcstring_linebreak-2019.001-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001_x86_64/perl_gcstring_linebreak-2019.001-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f3305554fcb79da45098b3b13aa792f74ba773447d2ca7c0b1c114e1fcfd6511',

@@ -13,10 +13,10 @@ class Libnfs < Package
   source_sha256 '6ee77e9fe220e2d3e3b1f53cfea04fb319828cc7dbb97dd9df09e46e901d797d'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libnfs-4.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libnfs-4.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libnfs-4.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libnfs-4.0.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_armv7l/libnfs-4.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_armv7l/libnfs-4.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_i686/libnfs-4.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_x86_64/libnfs-4.0.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c8aca50954bfbdf85d749655c98d940592cb0f0059375b0142974196a4eb1066',

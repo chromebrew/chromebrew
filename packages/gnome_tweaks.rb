@@ -11,10 +11,10 @@ class Gnome_tweaks < Package
   source_sha256 '4b0548176772ce999531f6f873ee147420f9dc95980a11a3c2faa052b76119e5'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gnome_tweaks-40.beta-4cbb-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gnome_tweaks-40.beta-4cbb-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_i686/gnome_tweaks-40.beta-4cbb-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_x86_64/gnome_tweaks-40.beta-4cbb-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '490cce3a691eef0f388a464bb18900da5fa1f898a10d2d39fa59d023a89e229e',
