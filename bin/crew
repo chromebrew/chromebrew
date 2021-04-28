@@ -631,12 +631,14 @@ def download
       if CREW_CACHE_ENABLED
         if @pkg.git_branch.nil? || @pkg.git_branch.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag + '.tar.xz'
+          puts "cachefile is #{cachefile}".orange if @opt_verbose
         else
           # Use to the day granularity for a branch timestamp.
-          cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch + Time.now.strftime("%m%d%Y") + '.tar.xz'
+          cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + Time.now.strftime("%m%d%Y") + '.tar.xz'
+          puts "cachefile is #{cachefile}".orange if @opt_verbose
         end
         if File.file?(cachefile)
-          if system "sha256sum -c #{cachefile}.sha256"
+          if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir @extract_dir
             system "tar x#{@verbose}f #{cachefile} -C #{@extract_dir}"
             return {source: source, filename: filename}
@@ -674,8 +676,7 @@ def download
             system "tar c#{@verbose}Jf #{cachefile} \
               $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
           end
-            system "sha256sum #{cachefile} > #{cachefile}.sha256"
-        end
+          system "sha256sum #{cachefile} > #{cachefile}.sha256"
         puts 'Git repo cached.'.lightgreen
       end
     end
