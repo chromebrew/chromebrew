@@ -3,7 +3,8 @@ require 'package'
 class Py2_setuptools < Package
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  @_ver = '44.1.1' # Newest python2 supported version as of 2021-04-24
+  # Newest python2 supported version as of 2021-04-24
+  @_ver = '44.1.1'
   version @_ver
   license 'MIT'
   compatibility 'all'
