@@ -6,7 +6,7 @@ PATH=/bin:/usr/bin
 read -p $'\e[1;34mRemove Chromebrew and all installed packages? [y/N]: \e[0m' respond
 case ${respond} in
   y|Y|"")
-     echo -ne "\e[1mProceeding (This may take a while)...\e[0m"
+     echo -e "\e[1mProceeding (This may take a while)...\e[0m"
      ;;
   *)
      echo -e "\e[1;31mNo changes made.\e[0m"
