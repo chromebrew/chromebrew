@@ -24,7 +24,7 @@ class Alsa_plugins < Package
 
   depends_on 'dbus'
   depends_on 'ffmpeg'
-  depends_on 'speexdsp'
+  depends_on 'speex'
   depends_on 'alsa_lib'
   depends_on 'pulseaudio'
 

@@ -24,7 +24,7 @@ class Ecasound < Package
 
   depends_on 'libaudiofile'
   depends_on 'libsndfile'
-  depends_on 'python27'
+  depends_on 'python2'
 
   def self.patch
     # Fix ./configure: line 8777: /usr/bin/file: No such file or directory

@@ -22,7 +22,7 @@ class Gyp < Package
      x86_64: 'a6ad933e8dc00f2fc5baff2f5bf523040a7a427dbb5f4e59dd7cfc2e48c8388c',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.install
     system "python setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"

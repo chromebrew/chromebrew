@@ -36,7 +36,7 @@ class Imagemagick6 < Package
   depends_on 'openexr'
   depends_on 'openjpeg'
   depends_on 'pango'
-  depends_on 'python27'
+  depends_on 'python2'
   depends_on 'zstd'
   depends_on 'sommelier'
 

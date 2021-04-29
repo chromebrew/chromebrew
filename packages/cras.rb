@@ -26,7 +26,7 @@ class Cras < Package
     depends_on 'alsa_lib'
     depends_on 'ladspa'
     depends_on 'iniparser'
-    depends_on 'speexdsp'
+    depends_on 'speex'
     depends_on 'sbc'
     depends_on 'dbus'
     depends_on 'rust' => :build
