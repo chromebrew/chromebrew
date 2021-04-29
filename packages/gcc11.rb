@@ -159,7 +159,7 @@ class Gcc11 < Package
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        make"
+        make -j#{CREW_NPROC}"
     end
   end
 
