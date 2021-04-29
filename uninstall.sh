@@ -20,4 +20,11 @@ ${CREW_PREFIX}/bin/sed -e '/source.*profile/d' \
         -e '/# DO NOT DELETE THIS LINE/d' \
         -e '/# See .*profile for further details/d' -i ~/.bashrc
 
-echo -e "\n\n\e[1;32mChromebrew removed successfully.\e[0m"
+echo -e "
+\e[1;32mChromebrew removed successfully.\e[0m
+\e[1;34m
+If you have Crouton installed and you want to restore your chroots, run this command afterwards:
+
+ln -s /mnt/stateful_partition/crouton/chroots /usr/local/
+curl -L https://goo.gl/fd3zc | sudo bash
+\e[0m"
