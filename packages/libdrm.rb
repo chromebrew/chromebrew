@@ -11,10 +11,10 @@ class Libdrm < Package
   source_sha256 'd66ad8b5c2441015ac1333e40137bb803c3bde3612ff040286fcc12158ea1bcb'
 
   binary_url ({
-     aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdrm-2.4.104-chromeos-armv7l.tar.xz',
-      armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libdrm-2.4.104-chromeos-armv7l.tar.xz',
-        i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libdrm-2.4.104-chromeos-i686.tar.xz',
-      x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libdrm-2.4.104-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.104_armv7l/libdrm-2.4.104-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.104_armv7l/libdrm-2.4.104-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.104_i686/libdrm-2.4.104-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.104_x86_64/libdrm-2.4.104-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'd92b2cf767f17517a2e90e610749b38d878f126f237bafa027c5f019bd26ab78',

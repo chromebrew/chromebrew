@@ -10,10 +10,10 @@ class Libxkbfile < Package
   source_sha256 '758dbdaa20add2db4902df0b1b7c936564b7376c02a0acd1f2a331bd334b38c7'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxkbfile-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libxkbfile-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libxkbfile-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libxkbfile-1.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxkbfile/1.1.0_armv7l/libxkbfile-1.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxkbfile/1.1.0_armv7l/libxkbfile-1.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxkbfile/1.1.0_i686/libxkbfile-1.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxkbfile/1.1.0_x86_64/libxkbfile-1.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '667eac3dcdb3e4c79531f3263a5c98696d41650c15bd9b478f80ff77bcbb67f0',

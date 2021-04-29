@@ -10,10 +10,10 @@ class Ninja < Package
   source_sha256 '3810318b08489435f8efc19c05525e80a993af5a55baa0dfeae0465a9d45f99f'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ninja-1.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/ninja-1.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/ninja-1.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/ninja-1.10.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.0_armv7l/ninja-1.10.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.0_armv7l/ninja-1.10.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.0_i686/ninja-1.10.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.10.0_x86_64/ninja-1.10.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5e2ef70ad213e86a4a32e48bb4783face0bff6f3b079080d3d668bb35ba83088',

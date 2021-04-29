@@ -10,10 +10,10 @@ class Mosh < Package
   source_sha256 'da600573dfa827d88ce114e0fed30210689381bbdcff543c931e4d6a2e851216'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mosh-1.3.2-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mosh-1.3.2-3-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mosh-1.3.2-3-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mosh-1.3.2-3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mosh/1.3.2-3_armv7l/mosh-1.3.2-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mosh/1.3.2-3_armv7l/mosh-1.3.2-3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mosh/1.3.2-3_i686/mosh-1.3.2-3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mosh/1.3.2-3_x86_64/mosh-1.3.2-3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '206acadc595fd9645a1b1f31293774c8aaaae75f6ea3f0ae766c8915a0657c75',

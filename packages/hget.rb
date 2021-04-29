@@ -10,10 +10,10 @@ class Hget < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/hget-8cff5f7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/hget-8cff5f7-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/hget-8cff5f7-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/hget-8cff5f7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hget/8cff5f7_armv7l/hget-8cff5f7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hget/8cff5f7_armv7l/hget-8cff5f7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hget/8cff5f7_i686/hget-8cff5f7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hget/8cff5f7_x86_64/hget-8cff5f7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5cd8050d079a49c9377a8e2ea91f90ab038a248ab2bf22a93a9fbab5689d1e96',

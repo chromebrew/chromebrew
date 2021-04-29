@@ -10,10 +10,10 @@ class Gn < Package
   source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gn-dca877f-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/gn-dca877f-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/gn-dca877f-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/gn-dca877f-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_armv7l/gn-dca877f-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_armv7l/gn-dca877f-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_i686/gn-dca877f-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_x86_64/gn-dca877f-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7ecb46dc020a7f2ef83c9f299b93e33b7d7907915a580eae29fba4038d348572',

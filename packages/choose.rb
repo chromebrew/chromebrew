@@ -10,10 +10,10 @@ class Choose < Package
   source_sha256 'd09a679920480e66bff36c76dd4d33e8ad739a53eace505d01051c114a829633'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/choose-0.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/choose-0.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/choose-0.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/choose-0.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/choose/0.1.0_armv7l/choose-0.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/choose/0.1.0_armv7l/choose-0.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/choose/0.1.0_i686/choose-0.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/choose/0.1.0_x86_64/choose-0.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '26cdefb57b3e12c1a73626879f0327aecc474289be086034c3f930d4cc51528b',

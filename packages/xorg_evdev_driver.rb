@@ -10,10 +10,10 @@ class Xorg_evdev_driver < Package
   source_sha256 '9edaa6205baf6d2922cc4db3d8e54a7e7773b5f733b0ae90f6be7725f983b70d'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/xorg_evdev_driver-2.10.5-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/xorg_evdev_driver-2.10.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_armv7l/xorg_evdev_driver-2.10.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_i686/xorg_evdev_driver-2.10.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_evdev_driver/2.10.5_x86_64/xorg_evdev_driver-2.10.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'de669f481bef66a6589ea28232fc8991ef476260ce1f718f338d9fbcbee1525f',

@@ -10,10 +10,10 @@ class Libwebp < Package
   source_sha256 '2fc8bbde9f97f2ab403c0224fb9ca62b2e6852cbc519e91ceaa7c153ffd88a0c'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libwebp-1.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libwebp-1.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libwebp-1.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libwebp-1.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.2.0-1_armv7l/libwebp-1.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.2.0-1_armv7l/libwebp-1.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.2.0-1_i686/libwebp-1.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.2.0-1_x86_64/libwebp-1.2.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd1c5298b87e15ebcb33e7fb6a99ed6c4daf130b1efa2994abfe846c692bf34fc',

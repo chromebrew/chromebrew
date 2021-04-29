@@ -10,10 +10,10 @@ class Libsm < Package
   source_sha256 '14bb7c669ce2b8ff712fbdbf48120e3742a77edcd5e025d6b3325ed30cf120f4'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsm-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/libsm-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/libsm-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/libsm-1.2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_armv7l/libsm-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_armv7l/libsm-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_i686/libsm-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsm/1.2.2_x86_64/libsm-1.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '37e41534cb72c0816c7836f5e042183bc03062367b09d2da556b355be4cd541f',

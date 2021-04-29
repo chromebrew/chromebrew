@@ -10,10 +10,10 @@ class Mailutils < Package
   source_sha256 '6d43fa217c4ac63f057de87890c562d170bb92bc402368b5fbc579e4c2b3a158'
 
   binary_url ({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mailutils-3.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/mailutils-3.12-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/mailutils-3.12-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/mailutils-3.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_armv7l/mailutils-3.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_armv7l/mailutils-3.12-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_i686/mailutils-3.12-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.12_x86_64/mailutils-3.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '826c7106823744618d9d070727ce7349845918576442dc00e52643e394792a5a',

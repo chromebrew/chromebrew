@@ -11,10 +11,10 @@ class Vim < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/raw/main/armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/raw/main/i686/vim-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/raw/main/x86_64/vim-8.2.2783-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_i686/vim-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_x86_64/vim-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3051888f588842fe3001ab6bd014d28c094cbb45096078295dd82f2640e2557f',
