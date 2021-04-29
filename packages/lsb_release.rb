@@ -14,8 +14,8 @@ class Lsb_release < Package
   binary_sha256 ({
   })
 
-  depends_on 'help2man' => :build
-  depends_on 'make' => :build
+  depends_on 'help2man'
+  depends_on 'make'
 
   def self.build
     system "cp /etc/lsb-release /tmp"
