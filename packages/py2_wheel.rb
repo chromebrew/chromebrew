@@ -1,0 +1,39 @@
+require 'package'
+
+class Py2_wheel < Package
+  description 'Wheel is the binary package format for python.'
+  homepage 'https://wheel.readthedocs.io/'
+  @_ver = '0.36.2'
+  version @_ver
+  license 'MIT'
+  compatibility 'all'
+  source_url 'https://github.com/pypa/wheel.git'
+  git_hashtag @_ver
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_wheel/0.36.2_armv7l/py2_wheel-0.36.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_wheel/0.36.2_armv7l/py2_wheel-0.36.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_wheel/0.36.2_i686/py2_wheel-0.36.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_wheel/0.36.2_x86_64/py2_wheel-0.36.2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '0d3fefe56883596140bec955b6098f4f486a29f74167e914949c560653ac12a3',
+     armv7l: '0d3fefe56883596140bec955b6098f4f486a29f74167e914949c560653ac12a3',
+       i686: '43f51e7a624afa1a0bdf9f023d1079b3627ae3cbd792ce2bde9b3c526dd2c301',
+     x86_64: '214daa1cb230f9fb1ba3f0ae6e4005813c9a01749ee7b2beef4aa34fec790ff1'
+  })
+
+  depends_on 'python2'
+  depends_on 'py2_setuptools' => :build
+
+  def self.build
+    system "python2 setup.py build #{PY2_SETUP_BUILD_OPTIONS}"
+  end
+
+  def self.install
+    system "python2 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
+
+    # Remove conflicting executables
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/wheel"
+  end
+end

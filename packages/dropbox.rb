@@ -24,7 +24,7 @@ class Dropbox < Package
     x86_64: 'c2c699372e4646ce5ed542fa189c08dc44dea1ae312f7401f1f385279e1b2ded',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
   depends_on 'libxslt'
 
   def self.build
