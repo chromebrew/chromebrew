@@ -22,7 +22,7 @@ class Duplicity < Package
      x86_64: 'e122233caf601a05b85b1816ae690be8c1d6e82a83953351c8ecd0ca6046706e',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
   depends_on 'librsync'
   depends_on 'gnupg'
   depends_on 'openssh'
