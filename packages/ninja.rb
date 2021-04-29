@@ -32,7 +32,6 @@ class Ninja < Package
     system "env #{CREW_ENV_OPTIONS} \
       AR=gcc-ar \
       python3 configure.py --bootstrap"
-    system 'ninja'
   end
 
   def self.install
