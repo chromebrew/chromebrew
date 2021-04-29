@@ -11,10 +11,10 @@ class Gcc11 < Package
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://github.com/chromebrew/binaries/releases/download/v_gcc11_11.1.0/gcc11-11.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_i686/gcc11-11.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_x86_64/gcc11-11.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '69dcba6dd228dd8bce42b03a6109483c21e66e4ca62c5c6f5fd640feadc29c66',
@@ -351,6 +351,9 @@ class Gcc11 < Package
         @basefile_noarch_nover = @basefile_nover.split(/#{gcc_arch}-/, 2).last
         puts "Symlinking #{f} to #{@basefile_noarch_nover}"
         FileUtils.ln_sf f, @basefile_noarch_nover
+        @basefile_noarch_nover_nogcc = @basefile_noarch_nover.split(/gcc-/, 2).last
+        puts "Symlinking #{f} to #{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
+        FileUtils.ln_sf f, "#{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
       end
       Dir.glob("*-#{gcc_version}").each do |f|
         @basefile_nover = f.split(/-#{gcc_version}/, 2).first
