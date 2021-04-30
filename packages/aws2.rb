@@ -7,8 +7,7 @@ class Aws2 < Package
   version @_ver + '-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e7f09c31b8c152ea015a002c2f2dc8745f0e2ec01cc21cc5fd92afb6b97e24a4'
+  source_url 'SKIP'
 
   binary_url({
   })

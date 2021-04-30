@@ -569,6 +569,8 @@ def download
     puts "Precompiled binary available, downloading..."
   elsif @pkg.build_from_source
     puts "Downloading source..."
+  elsif uri =~ /^SKIP$/i
+    puts "Skipping source download..."
   else
     puts "No precompiled binary available for your platform, downloading source..."
   end
@@ -679,6 +681,8 @@ def download
         system "sha256sum #{cachefile} > #{cachefile}.sha256"
         puts 'Git repo cached.'.lightgreen
       end
+    when /^SKIP$/i
+      Dir.mkdir @extract_dir
     end
   end
   return {source: source, filename: filename}
@@ -860,13 +864,13 @@ def install_package (pkgdir)
     FileUtils.mv 'dlist', CREW_META_PATH + @pkg.name + '.directorylist', verbose: @fileutils_verbose
     FileUtils.mv 'filelist', CREW_META_PATH + @pkg.name + '.filelist', verbose: @fileutils_verbose
 
-    strip_dir pkgdir
+    strip_dir pkgdir if Dir.exists? "#{pkgdir}/usr"
 
     if Dir.exists? "#{pkgdir}/home" then
       system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
-    else
+    elsif Dir.exists? "#{pkgdir}/usr" then
       system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
-      end
+    end
   end
 end
 
