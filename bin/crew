@@ -579,7 +579,7 @@ def download
 
     case File.basename(filename)
     # Sources that download with curl
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i, /\.deb$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for archive in cache".orange if @opt_verbose
@@ -699,12 +699,16 @@ def unpack (meta)
       system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
-      FileUtils.mkdir @extract_dir unless Dir.exist?(@extract_dir)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
       puts "Unpacking archive using 'ar', this may take a while..."
-      FileUtils.mkdir @extract_dir unless Dir.exist?(@extract_dir)
       system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{@extract_dir}", exception: true
+    when /\.AppImage$/i
+      puts "Unpacking 'AppImage' archive, this may take a while..."
+      FileUtils.chmod 0755, meta[:filename], verbose: @fileutils_verbose
+      Dir.chdir @extract_dir do
+        system "../#{meta[:filename]} --appimage-extract", exception: true
+      end
     end
     if meta[:source] == true
       # Check the number of directories in the archive
@@ -843,16 +847,18 @@ def strip_find_files (find_cmd, strip_option = "")
 end
 
 def strip_dir (dir)
-  Dir.chdir dir do
-    # Strip libraries with -S
-    puts "Stripping libraries..."
-    strip_find_files "find . -type f  \\( -name 'lib*.a' -o -name 'lib*.so*' \\) -print", "-S"
+  unless CREW_NOT_STRIP || ENV['CREW_NOT_STRIP']
+    Dir.chdir dir do
+      # Strip libraries with -S
+      puts "Stripping libraries..."
+      strip_find_files "find . -type f  \\( -name 'lib*.a' -o -name 'lib*.so*' \\) -print", "-S"
 
-    # Strip binaries but not compressed archives
-    puts "Stripping binaries..."
-    extensions = [ 'bz2', 'gz', 'lha', 'lz', 'lzh', 'rar', 'tar', 'tbz', 'tgz', 'txz', 'xz', 'Z', 'zip' ]
-    inames = extensions.join(' ! -iname *\.')
-    strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+      # Strip binaries but not compressed archives
+      puts "Stripping binaries..."
+      extensions = [ 'bz2', 'gz', 'lha', 'lz', 'lzh', 'rar', 'tar', 'tbz', 'tgz', 'txz', 'xz', 'Z', 'zip' ]
+      inames = extensions.join(' ! -iname *\.')
+      strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    end
   end
 end
 
