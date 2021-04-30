@@ -6,8 +6,7 @@ class Jdk11 < Package
   version '11.0.10'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'SKIP'
 
   binary_url ({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk11/11.0.10_x86_64/jdk11-11.0.10-chromeos-x86_64.tar.xz',

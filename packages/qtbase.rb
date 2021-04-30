@@ -7,8 +7,7 @@ class Qtbase < Package
   version @_ver + '-1'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'SKIP'
 
   binary_url ({
      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.2-1_armv7l/qtbase-5.15.2-1-chromeos-armv7l.tar.xz',

@@ -6,8 +6,7 @@ class Clear_cache < Package
   version '1.0'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'SKIP'
 
   def self.build
     system "cat << 'EOF' > clear-cache

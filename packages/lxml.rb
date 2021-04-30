@@ -6,8 +6,7 @@ class Lxml < Package
   version '4.6.1'
   license 'BSD, ElementTree, GPL-2 and PSF-2'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'SKIP'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lxml/4.6.1_armv7l/lxml-4.6.1-chromeos-armv7l.tar.xz',
