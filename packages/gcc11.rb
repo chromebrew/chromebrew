@@ -7,7 +7,7 @@ class Gcc11 < Package
   version '11.1.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://sourceware.org/pub/gcc/releases/gcc-11.1.0/gcc-11.1.0.tar.xz'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz'
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
@@ -17,10 +17,10 @@ class Gcc11 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_x86_64/gcc11-11.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '69dcba6dd228dd8bce42b03a6109483c21e66e4ca62c5c6f5fd640feadc29c66',
-     armv7l: '69dcba6dd228dd8bce42b03a6109483c21e66e4ca62c5c6f5fd640feadc29c66',
-       i686: '2407dde003b6a5f1f406548484add5625bcd35dc2fbb3f4b2e500f00013e161d',
-     x86_64: '51f6c5e241f2b7ac82f14e9df47e13797eaf0511bf47dcd0a6468d48d19fee35'
+    aarch64: '2db5bcee6b52e393f8a42a78543dff6339ec598f0fb852ab60ac5d1e5b620d71',
+     armv7l: '2db5bcee6b52e393f8a42a78543dff6339ec598f0fb852ab60ac5d1e5b620d71',
+       i686: 'd6d23b0cab5ea3e0922e6549140f2a0a7a4190c1739e79a49ee1051c4e02bd7d',
+     x86_64: 'e0216d9a1d1eededcca9b4a34b9e1fe7e013c3f6dea8a012bc1357c3df30b77b'
   })
 
   depends_on 'ccache' => :build
@@ -32,6 +32,7 @@ class Gcc11 < Package
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
+  depends_on 'libgcc_s1' # L
 
   @gcc_global_opts = '--disable-bootstrap \
   --disable-libmpx \
@@ -159,7 +160,7 @@ class Gcc11 < Package
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        make -j#{CREW_NPROC}"
+        make"
     end
   end
 
@@ -374,12 +375,18 @@ class Gcc11 < Package
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_PREFIX}/lib/bfd-plugins/"
     end
-    # Remove all libssp files from gcc package
-    sspfile = File.open("#{CREW_META_PATH}libssp.filelist").read
-    sspfile.each_line do |line|
-      FileUtils.rm "#{CREW_DEST_DIR}#{line}" if File.exist?("#{CREW_DEST_DIR}#{line}")
-    end
     puts 'If you do not need gcc you can uninstall gcc to save space with'.lightgreen
     puts '"crew update ; crew upgrade ; crew remove gcc10 gcc11"'.lightgreen
+  end
+  # Remove all conflicting files from conflicting packages / reinstall
+  # This should be at the very end.
+  conflict_packages = %w[libssp libgcc_s1]
+  conflict_packages.each do |package|
+    # file = File.open("#{CREW_META_PATH}#{package}.filelist").read
+    # file.each_line do |line|
+    #   FileUtils.rm "/#{line}" if File.exist?("/#{line}")
+    # end
+    # Reinstall these conflicting packages since we may have overwritten them.
+    system "crew reinstall #{package}"
   end
 end

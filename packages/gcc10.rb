@@ -7,8 +7,21 @@ class Gcc10 < Package
   version '10.3.0-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-10.3.0/gcc-10.3.0.tar.xz'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz'
   source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_i686/gcc10-10.3.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_x86_64/gcc10-10.3.0-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '063eaf22f00c38abf797c4ccf09199bca4629ee7dcbf0a5015bc79e0c3dff313',
+     armv7l: '063eaf22f00c38abf797c4ccf09199bca4629ee7dcbf0a5015bc79e0c3dff313',
+       i686: '9c7b5a06288fa3b448d10c9f3569032c63f48b6f1148f513f74674bb59aa1961',
+     x86_64: '700b52e5f44c1c578d2c223222cae680343f9d2247f587212f2f9d24ab9d348e'
+  })
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
@@ -19,34 +32,35 @@ class Gcc10 < Package
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
+  depends_on 'libgcc_s1' # L
 
   @gcc_global_opts = '--disable-bootstrap \
-  --disable-libmpx \
-  --disable-libssp \
-  --disable-multilib \
-  --disable-werror \
-  --enable-cet=auto \
-  --enable-checking=release \
-  --enable-clocale=gnu \
-  --enable-default-pie \
-  --enable-default-ssp \
-  --enable-gnu-indirect-function \
-  --enable-gnu-unique-object \
-  --enable-host-shared \
-  --enable-lto \
-  --enable-plugin \
-  --enable-shared \
-  --enable-symvers \
-  --enable-static \
-  --enable-threads=posix \
-  --with-gcc-major-version-only \
-  --with-gmp \
-  --with-isl \
-  --with-mpc \
-  --with-mpfr \
-  --with-pic \
-  --with-system-libunwind \
-  --with-system-zlib'
+    --disable-libmpx \
+    --disable-libssp \
+    --disable-multilib \
+    --disable-werror \
+    --enable-cet=auto \
+    --enable-checking=release \
+    --enable-clocale=gnu \
+    --enable-default-pie \
+    --enable-default-ssp \
+    --enable-gnu-indirect-function \
+    --enable-gnu-unique-object \
+    --enable-host-shared \
+    --enable-lto \
+    --enable-plugin \
+    --enable-shared \
+    --enable-symvers \
+    --enable-static \
+    --enable-threads=posix \
+    --with-gcc-major-version-only \
+    --with-gmp \
+    --with-isl \
+    --with-mpc \
+    --with-mpfr \
+    --with-pic \
+    --with-system-libunwind \
+    --with-system-zlib'
 
   @cflags = '-fPIC -pipe'
   @cxxflags = '-fPIC -pipe'
@@ -146,7 +160,7 @@ class Gcc10 < Package
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        make"
+        make -j#{CREW_NPROC}"
     end
   end
 
@@ -281,8 +295,8 @@ class Gcc10 < Package
         make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
-      system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
-      system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}"
+      system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/ || true"
+      system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version} || true"
 
       # Make symbolic links
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
@@ -361,12 +375,18 @@ class Gcc10 < Package
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_PREFIX}/lib/bfd-plugins/"
     end
-    # Remove all libssp files from gcc package
-    sspfile = File.open("#{CREW_META_PATH}libssp.filelist").read
-    sspfile.each_line do |line|
-      FileUtils.rm "#{CREW_DEST_DIR}#{line}" if File.exist?("#{CREW_DEST_DIR}#{line}")
-    end
     puts 'If you do not need gcc you can uninstall gcc to save space with'.lightgreen
     puts '"crew update ; crew upgrade ; crew remove gcc10 gcc11"'.lightgreen
+  end
+  # Remove all conflicting files from conflicting packages / reinstall
+  # This should be at the very end.
+  conflict_packages = %w[libssp libgcc_s1]
+  conflict_packages.each do |package|
+    # file = File.open("#{CREW_META_PATH}#{package}.filelist").read
+    # file.each_line do |line|
+    #   FileUtils.rm "/#{line}" if File.exist?("/#{line}")
+    # end
+    # Reinstall these conflicting packages since we may have overwritten them.
+    system "crew reinstall #{package}"
   end
 end
