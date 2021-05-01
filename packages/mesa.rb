@@ -25,7 +25,7 @@ class Mesa < Package
 
   depends_on 'elfutils' # R
   depends_on 'expat' # R
-  depends_on 'gcc11' # R
+  depends_on 'gcc10' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
