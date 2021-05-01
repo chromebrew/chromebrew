@@ -29,7 +29,6 @@ class Llvm < Package
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc10' # R or gcc11
-  depends_on 'lld' => :build # Or a post llvm 12.0.0 build of llvm
 
   case ARCH
   when 'aarch64', 'armv7l'
