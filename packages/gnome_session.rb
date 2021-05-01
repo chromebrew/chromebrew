@@ -11,9 +11,9 @@ class Gnome_session < Package
   source_sha256 '0dd8c38c29568db6ffbd2a788f12b9e93262296ffd6d4c40fc2a830099d46883'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_session-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_session-40.beta-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_session-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_x86_64/gnome_session-40.beta-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9bdad789a49f45e3574f829455a1d89d71b1cddbfe8d0cb7c6868b892ad5ae98',
@@ -26,14 +26,14 @@ class Gnome_session < Package
   depends_on 'gsettings_desktop_schemas'
   depends_on 'gtk3'
   depends_on 'gnome_desktop'
-  depends_on 'mesa' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'libxtrans' => ':build'
-  depends_on 'xmlto' => ':build'
-  depends_on 'docbook_xsl' => ':build'
+  depends_on 'mesa' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'libxtrans' => :build
+  depends_on 'xmlto' => :build
+  depends_on 'docbook_xsl' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS}\
+    system "meson #{CREW_MESON_OPTIONS}\
       -Dsystemd=false \
       -Dsystemd_session=disable \
       -Dsystemd_journal=false \

@@ -10,10 +10,10 @@ class Libpcap < Package
   source_sha256 '635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpcap-1.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpcap-1.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpcap-1.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpcap-1.9.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_armv7l/libpcap-1.9.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_armv7l/libpcap-1.9.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_i686/libpcap-1.9.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_x86_64/libpcap-1.9.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6ed603b0fcfc2262772ab55efaf2ac4aca927131d67e796d9d7b5ebdb4a13646',

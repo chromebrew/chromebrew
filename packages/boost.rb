@@ -10,10 +10,10 @@ class Boost < Package
   source_sha256 '83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/boost-1.74.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/boost-1.74.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/boost-1.74.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/boost-1.74.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.74.0_armv7l/boost-1.74.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.74.0_armv7l/boost-1.74.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.74.0_i686/boost-1.74.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.74.0_x86_64/boost-1.74.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3ae8405849a0a624682f230a8f4d8135c4eca3657246bf5dd8fdbb79461bce1d',

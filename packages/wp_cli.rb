@@ -12,7 +12,7 @@ class Wp_cli < Package
   depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
 
   def self.build
-    system "wget https://github.com/wp-cli/wp-cli/releases/download/v#{version}/wp-cli-#{version}.phar"
+    system "curl -#LO https://github.com/wp-cli/wp-cli/releases/download/v#{version}/wp-cli-#{version}.phar"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("wp-cli-#{version}.phar") ) == '139dcc86ed39ef751679efbdaf57a53528f1afda972c4e3622667cc27397b540'
   end
 

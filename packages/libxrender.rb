@@ -10,10 +10,10 @@ class Libxrender < Package
   source_sha256 '770527cce42500790433df84ec3521e8bf095dfe5079454a92236494ab296adf'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxrender-0.9.10-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxrender-0.9.10-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxrender-0.9.10-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxrender-0.9.10-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_armv7l/libxrender-0.9.10-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_armv7l/libxrender-0.9.10-0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_i686/libxrender-0.9.10-0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_x86_64/libxrender-0.9.10-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f6a33f234184d2dae8646449940234d749deefffb7148a141ac09a402a054e22',

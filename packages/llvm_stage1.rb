@@ -11,16 +11,16 @@ class Llvm_stage1 < Package
   source_sha256 'e610297041129a5c5b24355a988c99c7452ee7105ee2355334a8c521b988eb3c'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_stage1-11.1.0-rc1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/llvm_stage1-11.1.0-rc1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_armv7l/llvm_stage1-11.1.0-rc1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_i686/llvm_stage1-11.1.0-rc1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/11.1.0-rc1_x86_64/llvm_stage1-11.1.0-rc1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-     aarch64: '863dd7cae43abef88dfe25c60e0dda1f8d59756f8c8fbb111989a3669dca0a16',
-      armv7l: '863dd7cae43abef88dfe25c60e0dda1f8d59756f8c8fbb111989a3669dca0a16',
-        i686: '84a5a2a381af8c789fcb895d1ae62dc1932b3ad1ad423e8351e37aa9be5e2490',
-      x86_64: 'ddb9e88444729174b0c6f4de883910ce78e8fa489e0831acdf92daaf4561e9af',
+    aarch64: '863dd7cae43abef88dfe25c60e0dda1f8d59756f8c8fbb111989a3669dca0a16',
+     armv7l: '863dd7cae43abef88dfe25c60e0dda1f8d59756f8c8fbb111989a3669dca0a16',
+       i686: '84a5a2a381af8c789fcb895d1ae62dc1932b3ad1ad423e8351e37aa9be5e2490',
+     x86_64: 'ddb9e88444729174b0c6f4de883910ce78e8fa489e0831acdf92daaf4561e9af',
   })
 
   # llvm_stage1 is compiled with gcc, without -flto

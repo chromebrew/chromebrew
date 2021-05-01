@@ -10,10 +10,10 @@ class Httrack < Package
   source_sha256 '3477a0e5568e241c63c9899accbfcdb6aadef2812fcce0173688567b4c7d4025'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/httrack-3.49.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/httrack-3.49.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/httrack-3.49.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/httrack-3.49.2-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-1_armv7l/httrack-3.49.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-1_armv7l/httrack-3.49.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-1_i686/httrack-3.49.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-1_x86_64/httrack-3.49.2-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '332ff037e21446d4bf593826221ce95895a6824ae2cb56d10bfff2e2827446c3',

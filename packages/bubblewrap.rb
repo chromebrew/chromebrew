@@ -11,10 +11,10 @@ class Bubblewrap < Package
   source_sha256 'b9c69b9b1c61a608f34325c8e1a495229bacf6e4a07cbb0c80cf7a814d7ccc03'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bubblewrap-0.4.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_armv7l/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_armv7l/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_i686/bubblewrap-0.4.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_x86_64/bubblewrap-0.4.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7c3f2c4a332342b9d7aa15d6aa776a38d1dc94a8c4c904a81a64f7e7ca45cedd',
@@ -32,7 +32,7 @@ class Bubblewrap < Package
 
   def self.build
     system './configure --help'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --disable-maintainer-mode \
       --disable-man \

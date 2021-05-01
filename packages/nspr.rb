@@ -10,10 +10,10 @@ class Nspr < Package
   source_sha256 '2e2c09c17b1c9f43a2f0a5d83a30a712bff3016d2b7cf5a3dd904847292607ae'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nspr-4.29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nspr-4.29-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nspr-4.29-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nspr-4.29-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nspr/4.29_armv7l/nspr-4.29-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nspr/4.29_armv7l/nspr-4.29-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nspr/4.29_i686/nspr-4.29-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nspr/4.29_x86_64/nspr-4.29-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7fe5265f56931e762523e9412303ed9ed4befa69ddf9aa54216bbbeb51e75f5a',

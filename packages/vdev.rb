@@ -10,10 +10,10 @@ class Vdev < Package
   source_sha256 'dbf561890aa70a8619506d166803a72d0c2a5b7590226feef784ec623bcb4739'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vdev-ceb7a6c-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vdev/ceb7a6c_armv7l/vdev-ceb7a6c-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vdev/ceb7a6c_armv7l/vdev-ceb7a6c-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vdev/ceb7a6c_i686/vdev-ceb7a6c-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vdev/ceb7a6c_x86_64/vdev-ceb7a6c-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '087ab4f0a4b12f0fe49c8e0031e8af37b2b4e645cd71def45c212177716eaebb',
@@ -22,7 +22,7 @@ class Vdev < Package
      x86_64: 'f8384c3a8b057e48d13889a9ce8433b16d44f74a6750273323a53aa782bf24be',
   })
 
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'libpstat'
   depends_on 'fskit'
   depends_on 'lvm2'

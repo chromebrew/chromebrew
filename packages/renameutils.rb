@@ -10,10 +10,10 @@ class Renameutils < Package
   source_sha256 'cbd2f002027ccf5a923135c3f529c6d17fabbca7d85506a394ca37694a9eb4a3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/renameutils-0.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/renameutils-0.12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/renameutils-0.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/renameutils-0.12.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/renameutils/0.12.0_armv7l/renameutils-0.12.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/renameutils/0.12.0_armv7l/renameutils-0.12.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/renameutils/0.12.0_i686/renameutils-0.12.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/renameutils/0.12.0_x86_64/renameutils-0.12.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2e497d4cb92fcea0d44dcc4096031bbc37a54d7825ac956179190cca410f7312',

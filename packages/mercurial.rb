@@ -10,10 +10,10 @@ class Mercurial < Package
   source_sha256 'b20132dec5ae6d27ee43a133144069895befe09f7e454bfa9e39950a185f0afe'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mercurial-4.2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/4.2.2_armv7l/mercurial-4.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/4.2.2_armv7l/mercurial-4.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/4.2.2_i686/mercurial-4.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/4.2.2_x86_64/mercurial-4.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '80f381f790326ad000501235b038d3f0633a6ac001d1bdb6969a7a0b3dd981da',

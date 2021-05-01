@@ -3,44 +3,53 @@ require 'package'
 class Libtiff < Package
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
-  version '4.2.0'
+  version '4.2.0-1'
   license 'libtiff'
   compatibility 'all'
   source_url 'https://download.osgeo.org/libtiff/tiff-4.2.0.tar.gz'
   source_sha256 'eb0484e568ead8fa23b513e9b0041df7e327f4ee2d22db5a533929dfc19633cb'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libtiff-4.2.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_armv7l/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_armv7l/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_i686/libtiff-4.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_x86_64/libtiff-4.2.0-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '5b348ee73ff84faf3b7a6fa30f1fa36f735090aed8a96221730c001368969fba',
-     armv7l: '5b348ee73ff84faf3b7a6fa30f1fa36f735090aed8a96221730c001368969fba',
-       i686: '13480016d525f79282ef1b7305e851b5d843592e5aa95292a1125a5aae2fac0e',
-     x86_64: 'ac6dd7686f42a8a263b9eae152626f95dfcc5b788d9e61a93685820af3fa92af',
+  binary_sha256({
+    aarch64: 'a0cbdf73940274a9f34ac362e989226ad7ddbef2b6a43fdbdbd05f81eb948a3a',
+     armv7l: 'a0cbdf73940274a9f34ac362e989226ad7ddbef2b6a43fdbdbd05f81eb948a3a',
+       i686: '2cfebbbe502beb99cf0dd12ee49efa99cca1ef90420103f39b873828fd1b43f6',
+     x86_64: '3a30356473a84f4c024c3dc399487782c6f585896a18c641b866ecad6cf528a8'
   })
 
-  depends_on 'libx11'
-  depends_on 'libjpeg'
-  depends_on 'libwebp'
-  depends_on 'libdeflate'
+  depends_on 'freeglut'
   depends_on 'imake' => :build
+  depends_on 'libdeflate'
+  depends_on 'libglu'
+  depends_on 'libice'
+  depends_on 'libjpeg'
+  depends_on 'libsm'
+  depends_on 'libwebp'
+  depends_on 'libx11'
+  depends_on 'libxi'
+  depends_on 'mesa'
 
   def self.build
-    system "env NOCONFIGURE=1 ./autogen.sh"
-    system "./configure #{CREW_OPTIONS} \
-            --with-x \
-            --enable-zlib \
-            --enable-mdi \
-            --enable-libdeflate \
-            --enable-pixarlog \
-            --enable-jpeg \
-            --enable-lzma \
-            --enable-zstd \
-            --enable-webp \
-            --enable-cxx"
+    system 'env NOCONFIGURE=1 ./autogen.sh'
+    system "env CFLAGS='-flto=auto -fuse-ld=gold' \
+      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
+      LDFLAGS='-flto=auto' \
+      ./configure #{CREW_OPTIONS} \
+      --with-x \
+      --enable-zlib \
+      --enable-mdi \
+      --enable-libdeflate \
+      --enable-pixarlog \
+      --enable-jpeg \
+      --enable-lzma \
+      --enable-zstd \
+      --enable-webp \
+      --enable-cxx"
     system 'make'
   end
 

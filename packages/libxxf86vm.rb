@@ -10,10 +10,10 @@ class Libxxf86vm < Package
   source_sha256 '5108553c378a25688dcb57dca383664c36e293d60b1505815f67980ba9318a99'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxxf86vm-1.1.4-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxxf86vm-1.1.4-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxxf86vm-1.1.4-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxxf86vm-1.1.4-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.4-0_armv7l/libxxf86vm-1.1.4-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.4-0_armv7l/libxxf86vm-1.1.4-0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.4-0_i686/libxxf86vm-1.1.4-0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.4-0_x86_64/libxxf86vm-1.1.4-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '62379cfc00fd66e76b81b93be0e79d68b2749fa79f162addc3745c2ecd452019',

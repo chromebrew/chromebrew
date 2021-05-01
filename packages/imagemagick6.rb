@@ -6,41 +6,39 @@ class Imagemagick6 < Package
   version '6.9.11-29'
   license 'imagemagick'
   compatibility 'aarch64,armv7l,x86_64'
-  case ARCH
-  when 'aarch64', 'armv7l', 'x86_64'
-    source_url 'https://github.com/ImageMagick/ImageMagick6/archive/6.9.11-29.tar.gz'
-    source_sha256 'f425e31f64cb481a1416a037d88d04eb44236bef83334e55b7ad692f71c61270'
-    depends_on 'flif'
-    depends_on 'freeimage'
-    depends_on 'freetype'
-    depends_on 'ghostscript'
-    depends_on 'graphviz'
-    depends_on 'jbigkit'
-    depends_on 'jemalloc'
-    depends_on 'lzma'
-    depends_on 'libheif'
-    depends_on 'librsvg'
-    depends_on 'libwebp'
-    depends_on 'libwmf'
-    depends_on 'msttcorefonts'
-    depends_on 'openexr'
-    depends_on 'openjpeg'
-    depends_on 'pango'
-    depends_on 'python27'
-    depends_on 'zstd'
-    depends_on 'sommelier'
-  end
+  source_url 'https://github.com/ImageMagick/ImageMagick6/archive/6.9.11-29.tar.gz'
+  source_sha256 'f425e31f64cb481a1416a037d88d04eb44236bef83334e55b7ad692f71c61270'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/imagemagick6-6.9.11-29-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_x86_64/imagemagick6-6.9.11-29-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd30b0f8132c26bb5a31160c046dec64b6ee5a6060130c17fdfe2546cef1c01f2',
      armv7l: 'd30b0f8132c26bb5a31160c046dec64b6ee5a6060130c17fdfe2546cef1c01f2',
      x86_64: '5a247589c82be8fde96ee189ffbe12f5b72bb7398d341b80245222bab568af07',
   })
+
+  depends_on 'flif'
+  depends_on 'freeimage'
+  depends_on 'freetype'
+  depends_on 'ghostscript'
+  depends_on 'graphviz'
+  depends_on 'jbigkit'
+  depends_on 'jemalloc'
+  depends_on 'lzma'
+  depends_on 'libheif'
+  depends_on 'librsvg'
+  depends_on 'libwebp'
+  depends_on 'libwmf'
+  depends_on 'msttcorefonts'
+  depends_on 'openexr'
+  depends_on 'openjpeg'
+  depends_on 'pango'
+  depends_on 'python2'
+  depends_on 'zstd'
+  depends_on 'sommelier'
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp

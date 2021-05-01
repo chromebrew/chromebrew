@@ -4,33 +4,38 @@ class Tesseract < Package
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
   @_ver = '4.1.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/tesseract-ocr/tesseract/archive/#{@_ver}.tar.gz"
   source_sha256 '2a66ff0d8595bff8f04032165e6c936389b1e5727c3ce5a27b3e059d218db1cb'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tesseract-4.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tesseract-4.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tesseract-4.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tesseract-4.1.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-1_armv7l/tesseract-4.1.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-1_armv7l/tesseract-4.1.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-1_i686/tesseract-4.1.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-1_x86_64/tesseract-4.1.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '2784bfad438508abf959d5cf40c2cb7bad39ad30338cf94bc1b2cc2cdc4a4f5c',
-     armv7l: '2784bfad438508abf959d5cf40c2cb7bad39ad30338cf94bc1b2cc2cdc4a4f5c',
-       i686: '019d1cd38b1008e43e022b147a1b34ab11c11da1622733b7abea681215557ab3',
-     x86_64: '1661e2e92aeee9071cf37cee949a3c4d686fc379809e227be6e4b513b3a6b5f8'
+    aarch64: '5ebd835d7e56c61c2718e2514c31a66742ab12ae419ee640dfe30e4dca9092e9',
+     armv7l: '5ebd835d7e56c61c2718e2514c31a66742ab12ae419ee640dfe30e4dca9092e9',
+       i686: '77cc9f2d88850fb4722cd0f2b924a1f3f6e74eb47b0cbdcf01394c80c4453991',
+     x86_64: '78ba50689c80dfda47a0c21171576fb4613481558a63e3eda56c714432bdaa13'
   })
 
+  depends_on 'asciidoc' => :build
+  depends_on 'cairo'
+  depends_on 'cairo' => :build
+  depends_on 'fontconfig'
+  depends_on 'giflib'
+  depends_on 'glib'
+  depends_on 'leptonica'
+  depends_on 'libarchive'
+  depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libtiff'
-  depends_on 'libjpeg_turbo'
-  depends_on 'giflib'
-  depends_on 'leptonica'
-  depends_on 'cairo' => ':build'
-  depends_on 'pango' => ':build'
-  depends_on 'asciidoc' => ':build'
+  depends_on 'pango'
+  depends_on 'pango' => :build
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'

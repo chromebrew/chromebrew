@@ -11,10 +11,10 @@ class Vulkan_icd_loader < Package
   source_sha256 'e8413d6244245e5322a91fa204415115941c5396b892ef28a13152af635c5ca4'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_icd_loader-1.2.169-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_armv7l/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_armv7l/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_i686/vulkan_icd_loader-1.2.169-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_x86_64/vulkan_icd_loader-1.2.169-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b5e441f3f7c9959ae0fc2a9b00bbcc4d5861068687c4174f500b3d1769f08e19',
@@ -26,15 +26,15 @@ class Vulkan_icd_loader < Package
   depends_on 'libx11'
   depends_on 'libxrandr'
   depends_on 'vulkan_headers'
-  depends_on 'libx11' => ':build'
-  depends_on 'libxrandr' => ':build'
-  depends_on 'wayland' => ':build'
-  depends_on 'vulkan_headers' => ':build'
+  depends_on 'libx11' => :build
+  depends_on 'libxrandr' => :build
+  depends_on 'wayland' => :build
+  depends_on 'vulkan_headers' => :build
 
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+      system "env #{CREW_ENV_OPTIONS} \
         cmake -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         -DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \

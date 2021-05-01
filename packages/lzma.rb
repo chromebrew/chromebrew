@@ -10,10 +10,10 @@ class Lzma < Package
   source_sha256 '618e54513993b3a153fa1c150fccdf25788c72b36e84ab4db71911083531cf6a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/lzma-4.32.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/lzma-4.32.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/lzma-4.32.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/lzma-4.32.7-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzma/4.32.7-1_armv7l/lzma-4.32.7-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzma/4.32.7-1_armv7l/lzma-4.32.7-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzma/4.32.7-1_i686/lzma-4.32.7-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzma/4.32.7-1_x86_64/lzma-4.32.7-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cb62ba6e36b24cf50d0490e3ed9c35c35a76ca394f98e6c572bf3e49ab48f205',

@@ -10,10 +10,10 @@ class Hello < Package
   source_sha256 '31e066137a962676e89f69d1b65382de95a7ef7d914b8cb956f41ea72e0f516b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/hello-2.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/hello-2.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/hello-2.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/hello-2.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_armv7l/hello-2.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_armv7l/hello-2.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_i686/hello-2.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.10_x86_64/hello-2.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5dc4429669eb28c742dfea306e988b168f4fd871bfca7aa29d69c6594a24a7f6',

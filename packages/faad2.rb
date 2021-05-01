@@ -11,10 +11,10 @@ class Faad2 < Package
   source_sha256 '0c6d9636c96f95c7d736f097d418829ced8ec6dbd899cc6cc82b728480a84bfb'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/faad2-2.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/faad2-2.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/faad2-2.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/faad2-2.10.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_armv7l/faad2-2.10.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_armv7l/faad2-2.10.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_i686/faad2-2.10.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_x86_64/faad2-2.10.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '61e4cfcd34bbedcb9cb3abea2a5bb73f57027319665c96eade68f0cf80e913e0',
@@ -29,7 +29,7 @@ class Faad2 < Package
 
   def self.build
     system 'autoreconf -vfi'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS}"
     system 'make'
   end

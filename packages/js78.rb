@@ -10,10 +10,10 @@ class Js78 < Package
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/js78-78.7.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_i686/js78-78.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_x86_64/js78-78.7.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'bf8e6afa9277745bad6e9d4f16f86e4b5bb41357ef502c9776968d0a4ecbe008',
@@ -22,8 +22,8 @@ class Js78 < Package
      x86_64: '4cb92c9bd6d44208816cf8bbfb6504795766544a509e06ee2f792a8c44d99beb'
   })
 
-  depends_on 'autoconf213' => ':build'
-  depends_on 'rust' => ':build'
+  depends_on 'autoconf213' => :build
+  depends_on 'rust' => :build
   depends_on 'llvm'
   depends_on 'nspr'
 
@@ -40,7 +40,7 @@ class Js78 < Package
     patch_url = 'http://archive.ubuntu.com/ubuntu/pool/main/m/mozjs78/mozjs78_78.4.0-2.debian.tar.xz'
     patch_sha256 = 'dcf2eec86c275448656cf18b3c142c3a2067dc8fdeff029211b66182b9179d21'
 
-    system('wget', '--continue', '--no-check-certificate', patch_url, '-O', 'unzippatches.tar.xz')
+    system('curl -#L', patch_url, '-o', 'unzippatches.tar.xz')
     unless Digest::SHA256.hexdigest(File.read('./unzippatches.tar.xz')) == patch_sha256
       abort 'Checksum mismatch :/ try again'
     end

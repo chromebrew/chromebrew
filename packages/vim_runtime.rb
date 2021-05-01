@@ -3,24 +3,24 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2580'
+  @_ver = '8.2.2783'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
-  source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'
+  source_url 'https://github.com/vim/vim.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim_runtime-8.2.2580-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_i686/vim_runtime-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_x86_64/vim_runtime-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
-     armv7l: '8cc4833ea1a19af223e899b5aa7edfa7a7258f33080008d39783acf92d22e2e3',
-       i686: '1cefc1026dfdac9d039bb82629ab9287c2bd9a6704f4929f120766d436e7c237',
-     x86_64: '9b8e3d8e1e7455d049000342972c9dfb09ad1fb0b98ef665dde381aa646f9951'
+    aarch64: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
+     armv7l: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
+       i686: 'fe0bed8bc2aaa80db2748876c746cfce7f6c1004a30f3293f9497bdbdf6ca04e',
+     x86_64: 'f1e37f9c9ad6cf1fea25581634abc0a67ec51f4c64bfc0936b9a9544a958095b'
   })
 
   depends_on 'gpm'
@@ -33,12 +33,11 @@ class Vim_runtime < Package
              'feature.h'
       system 'sed', '-i', "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|",
              'feature.h'
-      system 'autoconf'
     end
   end
 
   def self.build
-    system './configure --help'
+    system '[ -x configure ] || autoreconf -fvi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
@@ -77,6 +76,12 @@ class Vim_runtime < Package
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/icons"
 
+    # these are provided by 'xxd_standalone'
+    @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/xxd #{CREW_DEST_MAN_PREFIX}/man1/xxd.1]
+    @deletefiles.each do |f|
+      FileUtils.rm f if  File.exist?(f)
+    end
+
     # add sane defaults and simulate some XDG support
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/vim/vimfiles")
     File.write("#{CREW_DEST_PREFIX}/share/vim/vimfiles/chromebrew.vim", <<~EOF)
@@ -92,6 +97,9 @@ class Vim_runtime < Package
       if &compatible
         set nocompatible
       endif
+
+      " Disable automatic visual mode on mouse select.
+      set mouse-=a
 
       set backspace=indent,eol,start
       set ruler
@@ -119,20 +127,17 @@ class Vim_runtime < Package
         silent! call mkdir(expand(&g:undodir), 'p', 0700)
       endif
     EOF
-  end
-
-  def self.postinstall
-    vimrc = "#{CREW_PREFIX}/etc/vimrc"
-    # keep user changes by writing to a new file
-    vimrc += '.new' if File.exist?(vimrc)
+    system "sed -i 's/set mouse=a/set mouse-=a/g' #{CREW_DEST_PREFIX}/share/vim/vim82/defaults.vim"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
+    vimrc = "#{CREW_DEST_PREFIX}/etc/vimrc"
     # by default we will load the global config
-    File.write(vimrc, <<~EOF)
+    File.write(vimrc, <<~VIMRCEOF)
       " System-wide defaults are in #{CREW_PREFIX}/share/vim/vimfiles/chromebrew.vim
       " and sourced by this file. If you wish to change any of those settings, you
       " should do so at the end of this file or in your user-specific (~/.vimrc) file.
 
       " If you do not wish to use the bundled defaults, remove the next line.
       runtime! chromebrew.vim
-    EOF
+    VIMRCEOF
   end
 end

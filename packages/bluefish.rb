@@ -10,10 +10,10 @@ class Bluefish < Package
   source_sha256 '948fc2921f0a67a7ce811220093a3b3dfc8021a6e3005f549373cd3402ee0f26'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bluefish-2.2.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bluefish-2.2.12-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bluefish-2.2.12-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bluefish-2.2.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.12_armv7l/bluefish-2.2.12-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.12_armv7l/bluefish-2.2.12-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.12_i686/bluefish-2.2.12-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.12_x86_64/bluefish-2.2.12-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6e769339832399c45018d072a2c906c00025b16c1b4a3acd8c5ea58dafa86b3c',

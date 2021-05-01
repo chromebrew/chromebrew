@@ -6,15 +6,12 @@ class Miniconda3 < Package
   version '4.5.11'
   license 'BSD-3'
   compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686', 'x86_64'
-    source_url 'https://raw.githubusercontent.com/conda/conda/4.5.11/README.rst'
-    source_sha256 '9a5d4e87325a5015bfc00167a0eb41d53e1e7a7f47f2078e50f5fb7ab3082b11'
-  end
+  source_url 'https://raw.githubusercontent.com/conda/conda/4.5.11/README.rst'
+  source_sha256 '9a5d4e87325a5015bfc00167a0eb41d53e1e7a7f47f2078e50f5fb7ab3082b11'
 
   binary_url ({
-      i686: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-4.5.11-chromeos-i686.tar.xz',
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/miniconda3-4.5.11-chromeos-x86_64.tar.xz',
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniconda3/4.5.11_i686/miniconda3-4.5.11-chromeos-i686.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniconda3/4.5.11_x86_64/miniconda3-4.5.11-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: 'f42040d6e439e545bf80a372bd277e0e12370a995425b50cdfdc1fe0fb9dc491',

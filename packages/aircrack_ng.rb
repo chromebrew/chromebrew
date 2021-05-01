@@ -10,15 +10,15 @@ class Aircrack_ng < Package
   source_sha256 'd6dc9078f2ab56671f8fb707aa5ddbbec36d1a732cc7ad9a3d2803a5dbbaae5b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/aircrack_ng-1.6-17f9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_armv7l/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_armv7l/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_i686/aircrack_ng-1.6-17f9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_x86_64/aircrack_ng-1.6-17f9-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '7c7b369f40e783ebad0786124f109b50ef9db65ae5b5fa725af55712c8eefea4',
-     armv7l: '7c7b369f40e783ebad0786124f109b50ef9db65ae5b5fa725af55712c8eefea4',
-       i686: '27d67a5bbadb60975451f79e5a019a4567f7241519e248ea54050be4e4c554dc',
+    aarch64: '5e48972faf181388c35a818ecfd5057b384752e82aab190376acbf838be7ee88',
+     armv7l: '5e48972faf181388c35a818ecfd5057b384752e82aab190376acbf838be7ee88',
+       i686: 'e3a7f24e822efc47f0402993ca482c5e4eae75cb49e6912eda44dcc52bbc2e81',
      x86_64: '5c7cfe8e71c1dc3f5634027855ebee88d458a08f44bca3ed0a01388f0524524c'
   })
 
@@ -35,7 +35,6 @@ class Aircrack_ng < Package
     # --with-avx512[=yes|no]  use AVX-512F instruction set, [default=no]
     system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
       LDFLAGS='-flto=auto' \
-      TMPDIR=#{CREW_PREFIX}/tmp \
       ./configure \
       #{CREW_OPTIONS} \
       --program-prefix='' --program-suffix='' \

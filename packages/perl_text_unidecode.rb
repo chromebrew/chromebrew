@@ -10,16 +10,16 @@ class Perl_text_unidecode < Package
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_unidecode-1.30-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_unidecode-1.30-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_unidecode-1.30-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_text_unidecode-1.30-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_i686/perl_text_unidecode-1.30-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_x86_64/perl_text_unidecode-1.30-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '43b5783ca695cc44a5129fab5e176b24f94a300ab4e28f65ae9155c36dad93c8',
-     armv7l: '43b5783ca695cc44a5129fab5e176b24f94a300ab4e28f65ae9155c36dad93c8',
-       i686: 'd29c8c82aff2664ef8184bf225fe581c30cddcf632300c781eca4fcab9dd3732',
-     x86_64: '0a862d29622f5516bee8b00706d7c59f2e2ed091c484c9366fa515dcab213581',
+    aarch64: '0fb6cfb59c797bb0d5c94e7a06460f1863e4b03587d86d33be384d2cd80aa872',
+     armv7l: '0fb6cfb59c797bb0d5c94e7a06460f1863e4b03587d86d33be384d2cd80aa872',
+       i686: 'ef13e84d29e03bba52f2ab3dc2a20d0955e3440f2da50f69d3c5832f428a28f5',
+     x86_64: '9f9ace5d05847bb7d697fd27b02c43d3ef5224d7e036b5ac635b99409ee0142e',
   })
 
   depends_on 'perl'

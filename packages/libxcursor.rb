@@ -11,10 +11,10 @@ class Libxcursor < Package
   source_sha256 'ad5b2574fccaa4c3fa67b9874fbed863d29ad230c784e9a08b20692418f6a1f8'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxcursor-1.2.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxcursor-1.2.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxcursor-1.2.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxcursor-1.2.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_armv7l/libxcursor-1.2.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_armv7l/libxcursor-1.2.0-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_i686/libxcursor-1.2.0-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcursor/1.2.0_x86_64/libxcursor-1.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'e605f3d58857df9ccdf5abdc8e9b3c16b8f424953406fb04585741504cb443bf',

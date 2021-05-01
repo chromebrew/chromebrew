@@ -10,10 +10,10 @@ class Libglvnd < Package
   source_sha256 '8eb697a879245c6246ffabf2c1ed72a5ae335769f0772f55cbe4fee3e50223fe'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libglvnd-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libglvnd-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libglvnd-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libglvnd-1.3.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.3.2_armv7l/libglvnd-1.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.3.2_armv7l/libglvnd-1.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.3.2_i686/libglvnd-1.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.3.2_x86_64/libglvnd-1.3.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '70735287c0e3ec8a7adc8a0b73ff3094f64fc05033f00a7c97b3b9f135f89b5e',

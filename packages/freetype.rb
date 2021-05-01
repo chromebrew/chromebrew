@@ -10,10 +10,10 @@ class Freetype < Package
   source_sha256 '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/freetype-2.10.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_armv7l/freetype-2.10.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_armv7l/freetype-2.10.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_i686/freetype-2.10.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_x86_64/freetype-2.10.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c3063feb7034883e248ac4d62a82409df69577ccc4abe38ca7bd7e39c5ed3576',

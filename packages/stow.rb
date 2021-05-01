@@ -10,10 +10,10 @@ class Stow < Package
   source_sha256 'e2f77649301b215b9adbc2f074523bedebad366812690b9dc94457af5cf273df'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/stow-2.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/stow-2.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/stow-2.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/stow-2.2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_armv7l/stow-2.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_armv7l/stow-2.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_i686/stow-2.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_x86_64/stow-2.2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3ea38b90ba0477578caa6a01326587f3826d5829a01f1725a781588fead751bc',

@@ -3,29 +3,33 @@ require 'package'
 class Libplist < Package
   description 'A library to handle Apple Property List format'
   homepage 'http://www.libimobiledevice.org/'
-  version '2.1.0'
+  version '2.2.0'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://github.com/libimobiledevice/libplist/archive/2.1.0.tar.gz'
-  source_sha256 '4b33f9af3f9208d54a3c3e1a8c149932513f451c98d1dd696fe42c06e30b7f03'
+  source_url "https://github.com/libimobiledevice/libplist/archive/#{version}.tar.gz"
+  source_sha256 '7e654bdd5d8b96f03240227ed09057377f06ebad08e1c37d0cfa2abe6ba0cee2'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libplist-2.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libplist-2.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libplist-2.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libplist-2.1.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libplist/2.2.0_armv7l/libplist-2.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libplist/2.2.0_armv7l/libplist-2.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libplist/2.2.0_i686/libplist-2.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libplist/2.2.0_x86_64/libplist-2.2.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'adca559671e694422de5f311b9c968d4e7f5fc45aae8c1c9140e825741475d26',
-     armv7l: 'adca559671e694422de5f311b9c968d4e7f5fc45aae8c1c9140e825741475d26',
-       i686: '11f60dc59c427f286b717fcd63ada445effc478c5895f51130128a6b1ff5418e',
-     x86_64: 'd6580afa2ec93f6a41f95e31cb86dd5dd7828f09a5091323f2fe6a4ee90a4e20',
+  binary_sha256({
+    aarch64: '5494b780369670c29f13fcdbb2c9929109da7e0849cad829f7e6bfb6d1f51690',
+     armv7l: '5494b780369670c29f13fcdbb2c9929109da7e0849cad829f7e6bfb6d1f51690',
+       i686: '5b4c2083b045022f9d55966478f1942c1c7f212933bca6000ca8820bb588c426',
+     x86_64: 'def23cf8dea8fabebc2b04f0489ec4469587d31ba5a9d19c429bb491a437d049'
   })
 
   depends_on 'glib'
 
   def self.build
-    system "PYTHON=#{CREW_PREFIX}/bin/python3 ./autogen.sh CC=gcc CXX=g++ #{CREW_OPTIONS}"
+    system "env CFLAGS='-flto=auto' \
+      CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto=auto' \
+      CC=gcc \
+      ./autogen.sh #{CREW_OPTIONS}"
     system 'make'
   end
 

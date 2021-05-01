@@ -10,10 +10,10 @@ class Libdc1394 < Package
   source_sha256 'c6e6175c32c5567c5d4245176e75d1dfdd353902dd640e1de26cdefe5146fe6c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libdc1394-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libdc1394-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libdc1394-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libdc1394-2.2.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_armv7l/libdc1394-2.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_armv7l/libdc1394-2.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_i686/libdc1394-2.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.0_x86_64/libdc1394-2.2.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9b7d5faf499e68792355cce360192bc48b8379d897096b966aecb3714c929442',

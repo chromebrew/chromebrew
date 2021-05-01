@@ -10,10 +10,10 @@ class Libxml2_python < Package
   source_sha256 '0faa7455354a724e3d07c37177cbf125b3e04da91073fa0858806cb5376f2c55'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2_python-2.9.10-f93c-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2_python-2.9.10-f93c-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2_python-2.9.10-f93c-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxml2_python-2.9.10-f93c-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2_python/2.9.10-f93c_armv7l/libxml2_python-2.9.10-f93c-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2_python/2.9.10-f93c_armv7l/libxml2_python-2.9.10-f93c-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2_python/2.9.10-f93c_i686/libxml2_python-2.9.10-f93c-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2_python/2.9.10-f93c_x86_64/libxml2_python-2.9.10-f93c-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'a9a5e98c5efbaa2640f4d6b89c5bbe790c1f4b76c5eb27796c3f3fed4746f4d1',

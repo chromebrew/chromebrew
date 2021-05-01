@@ -10,10 +10,10 @@ class Btrfsprogs < Package
   source_sha256 '69788461f7076951f7235b87d0a5615683151dfbfaaa93f645279bf757e85769'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/btrfsprogs-5.10.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/btrfsprogs-5.10.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/btrfsprogs-5.10.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/btrfsprogs-5.10.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_armv7l/btrfsprogs-5.10.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_armv7l/btrfsprogs-5.10.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_i686/btrfsprogs-5.10.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_x86_64/btrfsprogs-5.10.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7219f58137c4275bc242ee4a1c6dc41289a19965e7d4239dc9f0f2d5b917f427',

@@ -10,10 +10,10 @@ class Libunwind < Package
   source_sha256 '90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libunwind-1.5.0-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-1_armv7l/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-1_armv7l/libunwind-1.5.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-1_i686/libunwind-1.5.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-1_x86_64/libunwind-1.5.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'c1b315c17464f67a1e719a615da0154c661eaf1e6e1584f8a68870a2de8721e8',
@@ -23,7 +23,7 @@ class Libunwind < Package
   })
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
     ./configure #{CREW_OPTIONS} --enable-ptrace"
     system 'make'
   end

@@ -10,10 +10,10 @@ class Autoconf213 < Package
   source_sha256 'f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/autoconf213-2.13-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13_armv7l/autoconf213-2.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13_armv7l/autoconf213-2.13-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13_i686/autoconf213-2.13-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13_x86_64/autoconf213-2.13-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '43464c65466ff94bb507a3174ddd0d325dd0e02d9ffe76a2575d44a795c8f699',
@@ -23,7 +23,7 @@ class Autoconf213 < Package
   })
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --infodir=#{CREW_PREFIX}/share/info \
       --program-suffix=-2.13 \

@@ -10,10 +10,10 @@ class Duplicity < Package
   source_sha256 '50bf7d14413284ecb036146ab9ba0e271937f2fa7826f8c8300b2965eb450a6c'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/duplicity-0.7.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/duplicity-0.7.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/duplicity-0.7.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/duplicity-0.7.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_armv7l/duplicity-0.7.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_armv7l/duplicity-0.7.15-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_i686/duplicity-0.7.15-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_x86_64/duplicity-0.7.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '173e42b07ec4d4646cfbe16c78faabf1f7bce3a6b754350058fa1ebc19d82a0b',
@@ -22,7 +22,7 @@ class Duplicity < Package
      x86_64: 'e122233caf601a05b85b1816ae690be8c1d6e82a83953351c8ecd0ca6046706e',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
   depends_on 'librsync'
   depends_on 'gnupg'
   depends_on 'openssh'

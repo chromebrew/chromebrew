@@ -3,50 +3,71 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.27'
+  @_ver = '3.24.28'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gtk/-/archive/#{@_ver}/gtk-#{@_ver}.tar.bz2"
-  # source_url "https://download.gnome.org/sources/gtk/#{@_ver_prelastdot}/gtk-#{@_ver}.tar.xz"
-  source_sha256 'dbc3b14ae0d8e44bc8caeac91d62b4d2403a881d837cb4e9bcfb8d138712c3a3'
+  source_sha256 'ab8e2799c71f4ff5052fade351a3a035d60d7d357035788227bf5e6270cde448'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk3-3.24.27-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_armv7l/gtk3-3.24.28-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_armv7l/gtk3-3.24.28-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_i686/gtk3-3.24.28-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_x86_64/gtk3-3.24.28-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '29a4642e0887f09c4d9950fd9ca7ac7246c455ae91aeed25268658857c66a39e',
-     armv7l: '29a4642e0887f09c4d9950fd9ca7ac7246c455ae91aeed25268658857c66a39e',
-       i686: '0022f857e4697bad885232d246de0e12403ec6a99e63ef43f292882c0becc467',
-     x86_64: '59e5324c659a0c9803e906717eebd82c6a3818539d1336beae603fd591ca0e9c'
+    aarch64: '25b189ed5da4f41a7c31882c71ab7f4cacd6504987706a629c2b8cf63157e3eb',
+     armv7l: '25b189ed5da4f41a7c31882c71ab7f4cacd6504987706a629c2b8cf63157e3eb',
+       i686: 'db956665e7077a5699a24515ccbde0ac932c3d445def3e36f74bcd09f1608296',
+     x86_64: '16ef9237bd85428972d050da9d5307f30700b24ce26c6d165c39769ad3dc2d92'
   })
 
-  depends_on 'adwaita_icon_theme'
-  depends_on 'atk'
-  depends_on 'at_spi2_atk'
-  depends_on 'cantarell_fonts'
-  depends_on 'cups'
-  depends_on 'gdk_pixbuf'
-  depends_on 'gnome_icon_theme'
-  depends_on 'gobject_introspection'
-  depends_on 'graphene'
-  depends_on 'graphite'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'iso_codes'
-  depends_on 'json_glib'
-  depends_on 'libdeflate'
-  depends_on 'libepoxy'
-  depends_on 'libxkbcommon'
-  depends_on 'shared_mime_info'
-  depends_on 'six' => :build
-  depends_on 'xdg_base'
+  # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'docbook' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'iso_codes' => :build
+  depends_on 'mesa' => :build
+  depends_on 'graphene' => :build # Do we need this?
+  depends_on 'graphite' => :build # Do we need this?
+  depends_on 'libdeflate' => :build # Do we need this?
+  depends_on 'libjpeg' => :build # Do we need this?
+  depends_on 'six' => :build # Do we need this?
+  depends_on 'adwaita_icon_theme' # L
+  depends_on 'cantarell_fonts' # L
+  depends_on 'gnome_icon_theme' # L
+  depends_on 'hicolor_icon_theme' # L
+  depends_on 'shared_mime_info' # L
+  depends_on 'xdg_base' # L
+  depends_on 'atk' # R
+  depends_on 'at_spi2_atk' # R
+  depends_on 'cairo' # R
+  depends_on 'cups' # R
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
+  depends_on 'fribidi' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxi' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxrandr' # R
+  depends_on 'pango' # R
+  depends_on 'rest' # R
+  depends_on 'wayland' # R
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dbroadway_backend=true \
       -Ddemos=false \
       -Dexamples=false \
@@ -73,8 +94,10 @@ class Gtk3 < Package
 
   def self.postinstall
     # generate schemas
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+    system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
+    system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
+    # update icon cache
+    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end
 end

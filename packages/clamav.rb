@@ -10,10 +10,10 @@ class Clamav < Package
   source_sha256 '32a9745277bfdda80e77ac9ca2f5990897418e9416880f3c31553ca673e80546'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/clamav-0.103.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/clamav-0.103.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/clamav-0.103.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/clamav-0.103.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_armv7l/clamav-0.103.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_armv7l/clamav-0.103.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_i686/clamav-0.103.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.103.0_x86_64/clamav-0.103.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c1bc0817863ee9f5e77e0805080cba457c405681b08960ff6581c5c1a39186fa',

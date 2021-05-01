@@ -10,10 +10,10 @@ class Perl_io_socket_ssl < Package
   source_sha256 '4420fc0056f1827b4dd1245eacca0da56e2182b4ef6fc078f107dc43c3fb8ff9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_io_socket_ssl-2.068-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_io_socket_ssl-2.068-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_io_socket_ssl-2.068-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_io_socket_ssl-2.068-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.068_armv7l/perl_io_socket_ssl-2.068-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.068_armv7l/perl_io_socket_ssl-2.068-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.068_i686/perl_io_socket_ssl-2.068-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.068_x86_64/perl_io_socket_ssl-2.068-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '290136e4383f9f88e8d9ca18d73c41ed6eb96f7d81f1c3baa3c6ef3087283560',

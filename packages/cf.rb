@@ -3,55 +3,41 @@ require 'package'
 class Cf < Package
   description 'The official command line client for Cloud Foundry'
   homepage 'https://docs.cloudfoundry.org/cf-cli'
-  version '6.36.1'
+  version '6.53.0'
   license 'Apache-2.0'
-  compatibility 'i686,x86_64'
+  compatibility 'i686 x86_64'
   case ARCH
-  when 'i686', 'x86_64'
-    source_url 'https://raw.githubusercontent.com/cloudfoundry/cli/v6.36.1/README.md'
-    source_sha256 'e760fc21cdee6960dbd864e48c08630eabe33af0bb1bb4d412a22d4bb9ac6a06'
+  when 'i686'
+    source_url 'https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.53.0/cf-cli_6.53.0_linux_i686.tgz'
+    source_sha256 'bd4620f116bfd3093fb6f5c20ceab94be32539839b615223b65bc14d75dae27b'
+  when 'x86_64'
+    source_url 'https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.53.0/cf-cli_6.53.0_linux_x86-64.tgz'
+    source_sha256 '09664d1469fb8a0ddba804343121aba7d8f64ba6bfde75a53f6e29d6600b2342'
   end
 
-  binary_url ({
-      i686: 'https://dl.bintray.com/chromebrew/chromebrew/cf-6.36.1-chromeos-i686.tar.xz',
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cf-6.36.1-chromeos-x86_64.tar.xz',
+  binary_url({
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_i686/cf-6.53.0-chromeos-i686.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_x86_64/cf-6.53.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-      i686: '8fc3e0c54791538211b3b5d2c7b4756da9c122637917baeceb025dda4be5347d',
-    x86_64: 'd99c348433cef60967da0322bbf3035e28959a24d50c5042c489cf3b14d35feb',
+  binary_sha256({
+      i686: 'bd74201bfadd439ea2e65827c8c6ff725bbd70a7931efe90e6f97b4628e10b8e',
+    x86_64: '1607f02390272191a8a0c393a9a5a9cf5389df774e158bd2cb669b0edd5c3570'
   })
 
   def self.install
-    case ARCH
-    when 'i686'
-      system 'curl -#LO https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.36.1/cf-cli_6.36.1_linux_i686.tgz'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('cf-cli_6.36.1_linux_i686.tgz') ) == '9e6383521345370e9a266d11ff4f827e853d2dfbf999bcb9e6a0f62ec69c3b0f'
-      system 'tar xvf cf-cli_6.36.1_linux_i686.tgz'
-      system "install -Dm755 cf #{CREW_DEST_PREFIX}/bin/cf"
-      system "curl -#L -o cf.bash https://raw.githubusercontent.com/cloudfoundry/cli/v6.36.1/ci/installers/completion/cf"
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('cf.bash') ) == 'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e'
-      system "install -Dm644 cf.bash #{CREW_DEST_PREFIX}/share/cf/bash-completion/cf.bash"
-    when 'x86_64'
-      system 'curl -#LO https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.36.1/cf-cli_6.36.1_linux_x86-64.tgz'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('cf-cli_6.36.1_linux_x86-64.tgz') ) == 'd5e59258183939305f44c471dab41a000290446399cc9b206b107c7bdb8ce180'
-      system 'tar xvf cf-cli_6.36.1_linux_x86-64.tgz'
-      system "install -Dm755 cf #{CREW_DEST_PREFIX}/bin/cf"
-      system "curl -#L -o cf.bash https://raw.githubusercontent.com/cloudfoundry/cli/v6.36.1/ci/installers/completion/cf"
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('cf.bash') ) == 'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e'
-      system "install -Dm644 cf.bash #{CREW_DEST_PREFIX}/share/cf/bash-completion/cf.bash"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/cf/bash-completion/"
+    FileUtils.install 'cf', "#{CREW_DEST_PREFIX}/bin/cf", mode: 0o755
+    system 'curl -#Lo cf.bash https://raw.githubusercontent.com/cloudfoundry/cli/v6.36.1/ci/installers/completion/cf'
+    unless Digest::SHA256.hexdigest(File.read('cf.bash')) == 'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e'
+      abort 'Checksum mismatch. :/ Try again.'.lightred
     end
-  end
-
-  def self.postinstall
-    case ARCH
-    when 'i686', 'x86_64'
-      puts
-      puts "To add bash completion, execute the following:".lightblue
-      puts "echo 'if [ -f #{CREW_PREFIX}/share/cf/bash-completion/cf.bash ]; then' >> ~/.bashrc".lightblue
-      puts "echo '  source #{CREW_PREFIX}/share/cf/bash-completion/cf.bash' >> ~/.bashrc".lightblue
-      puts "echo 'fi' >> ~/.bashrc".lightblue
-      puts "source ~/.bashrc".lightblue
-      puts
-    end
+    FileUtils.install 'cf.bash', "#{CREW_DEST_PREFIX}/share/cf/bash-completion/cf.bash", mode: 0o644
+    @env = <<~EOF
+      # Cloud Foundry CLI configuration
+      source #{CREW_PREFIX}/share/cf/bash-completion/cf.bash
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/cf", @env)
   end
 end

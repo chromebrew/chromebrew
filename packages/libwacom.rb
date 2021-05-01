@@ -11,10 +11,10 @@ class Libwacom < Package
   source_sha256 '2e8075e60bbef74fe9c3539b0a0080efab28912b2552784d8b54dbbf1aaa63e5'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libwacom-1.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libwacom-1.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libwacom-1.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libwacom-1.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.8_armv7l/libwacom-1.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.8_armv7l/libwacom-1.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.8_i686/libwacom-1.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.8_x86_64/libwacom-1.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7029db156ea3a27a9024f12071cb1fb99a54f233b1df0b3c5eb6174d5e5a54fd',
@@ -31,7 +31,7 @@ class Libwacom < Package
     system "pip3 install --upgrade --no-warn-script-location pyudev --prefix #{CREW_PREFIX}"
     system "pip3 install --upgrade --no-warn-script-location pytest --prefix #{CREW_PREFIX}"
     system "pip3 install --upgrade --no-warn-script-location libevdev --prefix #{CREW_PREFIX}"
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dtests=disabled \
       builddir"
     system 'meson configure builddir'

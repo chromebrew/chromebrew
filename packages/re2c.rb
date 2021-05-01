@@ -3,27 +3,28 @@ require 'package'
 class Re2c < Package
   description 're2c is a free and open-source lexer generator for C and C++.'
   homepage 'http://re2c.org/'
-  version '1.3'
+  version '2.1.1'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://github.com/skvadrik/re2c/releases/download/1.3/re2c-1.3.tar.xz'
-  source_sha256 'f37f25ff760e90088e7d03d1232002c2c2672646d5844fdf8e0d51a5cd75a503'
+  source_url 'https://github.com/skvadrik/re2c/releases/download/2.1.1/re2c-2.1.1.tar.lz'
+  source_sha256 '635860abc1c611dc5f7ab85581fa65bfa9b447946763b073d38e51620467539b'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/re2c-1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/re2c-1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/re2c-1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/re2c-1.3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_armv7l/re2c-2.1.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_armv7l/re2c-2.1.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_i686/re2c-2.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/2.1.1_x86_64/re2c-2.1.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '1ee30785ba83b9ed00258fa126f18a14e687cd4902a20f10b9bf1ce322f4692f',
-     armv7l: '1ee30785ba83b9ed00258fa126f18a14e687cd4902a20f10b9bf1ce322f4692f',
-       i686: '0fefae6d421dbe3166a1cefd28473264423d158ee52b41b3aec3cfb7ccfb5526',
-     x86_64: 'a4639d6224bf8537e25703f03161a3f849e05160d40282b274b91611a674b069',
+  binary_sha256({
+    aarch64: 'f83c472ffa93b475b4fe715cbf05e131d8f9865d516af8d45a9ef3d5f029d1fd',
+     armv7l: 'f83c472ffa93b475b4fe715cbf05e131d8f9865d516af8d45a9ef3d5f029d1fd',
+       i686: '8f2ce53ecda3396e3fb199955a5803fd1ac695590a838a73f80cf1ce684680d5',
+     x86_64: '527b1e15f7c58f7725d04d0f025b630af76564ae42b14d979d6d958f221f92cd'
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "env #{CREW_ENV_OPTIONS} \
+      ./configure #{CREW_OPTIONS}"
     system 'make'
     system 'make bootstrap'
   end

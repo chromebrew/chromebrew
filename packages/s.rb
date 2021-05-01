@@ -2,54 +2,49 @@ require 'package'
 
 class S < Package
   description 'Open a web search in your terminal.'
-  homepage 'https://github.com/zquestz/s'
-  version '0.5.10'
+  homepage 'https://github.com/zquestz/s/'
+  @_ver = '0.5.15'
+  version @_ver
   license 'GPL-3+'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://github.com/zquestz/s/releases/download/v0.5.10/s-linux_arm.zip'
-    source_sha256 '4d31cbb3f81a52946d9e40e1d3ebb650d7112c5c3d45c07ae29435bfea2c0dea'
+    source_url "https://github.com/zquestz/s/releases/download/v#{@_ver}/s-linux_arm.zip"
+    source_sha256 'ddffb211f117395a736f679a8a96cc726ac46c50fdfe1a6e2c4bb4494b970cd0'
   when 'i686'
-    source_url 'https://github.com/zquestz/s/releases/download/v0.5.10/s-linux_386.zip'
-    source_sha256 'ff94e41816bcaadbd0edd334fae634e71afd1bb4f2acb5dc52f6849714c64e68'
+    source_url "https://github.com/zquestz/s/releases/download/v#{@_ver}/s-linux_386.zip"
+    source_sha256 '8724b0ea6ec0e8abedcdc87f2efccd12a848ff1267149f8ca14b46251649cffc'
   when 'x86_64'
-    source_url 'https://github.com/zquestz/s/releases/download/v0.5.10/s-linux_amd64.zip'
-    source_sha256 '1e9a379071171ffaa28ce4d697389a70b115955335e41cfbbd37197404129d49'
+    source_url "https://github.com/zquestz/s/releases/download/v#{@_ver}/s-linux_amd64.zip"
+    source_sha256 '38c29001936f1758159cc935b3ab97d1dee75c35ceacd8bd5ada3837b306192f'
   end
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/s-0.5.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s/0.5.15_armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s/0.5.15_armv7l/s-0.5.15-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s/0.5.15_i686/s-0.5.15-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s/0.5.15_x86_64/s-0.5.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'a9b1301b6fd3283a7464b4820d115079d79ba7f2b09c14a635bab851721a3f77',
-     armv7l: 'a9b1301b6fd3283a7464b4820d115079d79ba7f2b09c14a635bab851721a3f77',
-       i686: 'bad1fcf5147b65d4d527512fdfe9aa7e8cdfb20ab9598d98bacf91b7df4c3b1e',
-     x86_64: '8a904b6a061c4efa8c55ea2af93f7a5be5af42fafcfc1cc7233fd9f28afeb1f5',
+    aarch64: '33e5b1a944af6817883f4291082d9dc733d1f5ca682b0184d5355adc4108fd7a',
+     armv7l: '33e5b1a944af6817883f4291082d9dc733d1f5ca682b0184d5355adc4108fd7a',
+       i686: 'ec31db142a154f7f4eba7234e1ba52bd60fc949ec25714b7b46ffcf66fafcdf1',
+     x86_64: '2500eedec49e58870261d48caad9ff43de24fae21853736d7feb0a83f519e248',
   })
 
-  depends_on 'links'
-  depends_on 'unzip'
+  depends_on 'unzip' => :build
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_DIR}/home/#{USER}/user"
-    system "cp autocomplete/s-completion.bash /home/#{USER}/user/.s-completion.bash"
-    system "cp autocomplete/s-completion.bash #{CREW_DEST_DIR}/home/#{USER}/user/.s-completion.bash"
-    system "cp autocomplete/s.fish /home/#{USER}/user/.s.fish"
-    system "cp autocomplete/s.fish #{CREW_DEST_DIR}/home/#{USER}/user/.s.fish"
-    system "cp s #{CREW_DEST_PREFIX}/bin"
-    puts ""
-    puts "In order to enable autocomplete for bash, execute the following:".lightblue
-    puts "echo \"source ~/.s-completion.bash\" >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts ""
-    puts "In order to enable a default search binary, execute the following:".lightblue
-    puts "echo \"alias s='s -b links'\" >> ~/.bashrc && source ~/.bashrc".lightblue
-    puts ""
-    puts "Example usage: s [-b links] best linux command line utilities".lightblue
-    puts ""
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/s/"
+    FileUtils.cp "autocomplete/s-completion.bash", "#{CREW_DEST_PREFIX}/share/s/"
+    FileUtils.cp 's', "#{CREW_DEST_PREFIX}/bin"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @env = <<~EOF
+      # s bash completion
+      source #{CREW_PREFIX}/share/s/s-completion.bash
+    EOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/s", @env)
   end
 end

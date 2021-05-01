@@ -10,10 +10,10 @@ class Pyparsing < Package
   source_sha256 'c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pyparsing-2.4.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pyparsing-2.4.7-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/pyparsing-2.4.7-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pyparsing-2.4.7-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyparsing/2.4.7_armv7l/pyparsing-2.4.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyparsing/2.4.7_armv7l/pyparsing-2.4.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyparsing/2.4.7_i686/pyparsing-2.4.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyparsing/2.4.7_x86_64/pyparsing-2.4.7-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd4decc10bf590b30f6c05fb463e7fc9d79b7d9e9d84a92de694619ba10da0381',

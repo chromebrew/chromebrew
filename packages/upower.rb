@@ -12,10 +12,10 @@ class Upower < Package
   source_sha256 'd50961ff6d2c5bc5e9b8ef6611a12dc8933f722ebf7de245b97fbe72999ebd9b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/upower-0.99.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/upower-0.99.11-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/upower-0.99.11-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/upower-0.99.11-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_armv7l/upower-0.99.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_armv7l/upower-0.99.11-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_i686/upower-0.99.11-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/0.99.11_x86_64/upower-0.99.11-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f424ee9ea8fa6d96c9765983fb3ba67564ac7ce4531ba3302b28a7dc2c54c9f5',
@@ -26,9 +26,9 @@ class Upower < Package
 
   depends_on 'libusb'
   depends_on 'libgudev'
-  depends_on 'docbook_xsl' => ':build'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'docbook_xsl' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'

@@ -10,10 +10,10 @@ class Tcpdump < Package
   source_sha256 '798b3536a29832ce0cbb07fafb1ce5097c95e308a6f592d14052e1ef1505fe79'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/tcpdump-4.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/tcpdump-4.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/tcpdump-4.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/tcpdump-4.9.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.9.2_armv7l/tcpdump-4.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.9.2_armv7l/tcpdump-4.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.9.2_i686/tcpdump-4.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.9.2_x86_64/tcpdump-4.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fd6105f6f5d0e3d516a2841cef121d6a9e48311cae1bcb3081aed66f7c008aaa',

@@ -10,10 +10,10 @@ class Xcb_util_image < Package
   source_sha256 '2db96a37d78831d643538dd1b595d7d712e04bdccf8896a5e18ce0f398ea2ffc'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_util_image-0.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_util_image-0.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_util_image-0.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xcb_util_image-0.4.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_image/0.4.0_armv7l/xcb_util_image-0.4.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_image/0.4.0_armv7l/xcb_util_image-0.4.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_image/0.4.0_i686/xcb_util_image-0.4.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_image/0.4.0_x86_64/xcb_util_image-0.4.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'a8c6f9a8cd513f065756a70ec0a81a0128af0826b232be1602ad6ee24dcb2db1',

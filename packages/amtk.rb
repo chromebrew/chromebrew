@@ -10,10 +10,10 @@ class Amtk < Package
   source_sha256 'fc9bad18bbd5421da52e0548f9e91eda180539bb568d1e7116ca65f4f73f4b67'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/amtk-5.2.0-33ec-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/amtk-5.2.0-33ec-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/amtk/5.2.0-33ec-1_armv7l/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/amtk/5.2.0-33ec-1_armv7l/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/amtk/5.2.0-33ec-1_i686/amtk-5.2.0-33ec-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/amtk/5.2.0-33ec-1_x86_64/amtk-5.2.0-33ec-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '6d3c8ac190895b8065f94c54baa32c3407c474204a58ded15aa850a5a177a176',
@@ -23,13 +23,13 @@ class Amtk < Package
   })
 
   depends_on 'gtk3'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
   depends_on 'llvm' => :build
 
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
     -Dc_args='-fuse-ld=lld' \
     builddir"
     system "meson configure builddir"

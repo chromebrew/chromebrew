@@ -10,10 +10,10 @@ class S3cmd < Package
   source_sha256 'caf09f1473301c442fba6431c983c361c9af8bde503dac0953f0d2f8f2c53c8f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/s3cmd-2.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/s3cmd-2.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/s3cmd-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/s3cmd-2.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.0.1_armv7l/s3cmd-2.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.0.1_armv7l/s3cmd-2.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.0.1_i686/s3cmd-2.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.0.1_x86_64/s3cmd-2.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'beb0aa2dd915c1d7b1830d107d5875893f3d69194401f868dffd9ebbe9ad0bd2',

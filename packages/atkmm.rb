@@ -10,10 +10,10 @@ class Atkmm < Package
   source_sha256 '116876604770641a450e39c1f50302884848ce9cc48d43c5dc8e8efc31f31bad'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/atkmm-2.28.1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/atkmm-2.28.1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/atkmm-2.28.1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/atkmm-2.28.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_armv7l/atkmm-2.28.1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_armv7l/atkmm-2.28.1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_i686/atkmm-2.28.1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.1_x86_64/atkmm-2.28.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '0f959c7e95bee71b46cb1b90902d0e7556d0914e56e1a4e7654c95166307dd8d',
@@ -26,7 +26,7 @@ class Atkmm < Package
   depends_on 'glibmm'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dbuild-documentation=false \
     -Dbuild-demos=false \

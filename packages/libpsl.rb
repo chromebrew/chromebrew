@@ -11,10 +11,10 @@ class Libpsl < Package
   source_sha256 '644375d557bb3b84c485df2dae98ee388fe1e11fb75230004e4b8623b3b833a9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libpsl-0.21.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libpsl-0.21.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libpsl-0.21.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libpsl-0.21.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpsl/0.21.1_armv7l/libpsl-0.21.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpsl/0.21.1_armv7l/libpsl-0.21.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpsl/0.21.1_i686/libpsl-0.21.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpsl/0.21.1_x86_64/libpsl-0.21.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9b8376e9c1b5e65363e0c4a7ad61721930e07dbaa032c76455723186d6268d47',
@@ -24,7 +24,7 @@ class Libpsl < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Ddocs=disabled \
     builddir"
     system 'meson configure builddir'

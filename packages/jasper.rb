@@ -3,52 +3,48 @@ require 'package'
 class Jasper < Package
   description 'The JasPer Project is an open-source initiative to provide a free software-based reference implementation of the codec specified in the JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1).'
   homepage 'https://www.ece.uvic.ca/~frodo/jasper/'
-  version '2.0.16'
+  version '2.0.28'
   license 'JasPer-2.0'
   compatibility 'all'
-  source_url 'https://github.com/mdadams/jasper/archive/version-2.0.16.tar.gz'
-  source_sha256 'f1d8b90f231184d99968f361884e2054a1714fdbbd9944ba1ae4ebdcc9bbfdb1'
+  source_url 'https://github.com/jasper-software/jasper/archive/refs/tags/version-2.0.28.tar.gz'
+  source_sha256 '6b4e5f682be0ab1a5acb0eeb6bf41d6ce17a658bb8e2dbda95de40100939cc88'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/jasper-2.0.16-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_armv7l/jasper-2.0.28-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_armv7l/jasper-2.0.28-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_i686/jasper-2.0.28-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_x86_64/jasper-2.0.28-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'f6930f4eb532697e9a8b2ba0c124b78d7ed20e38d376d8b7f6f04fb67aa5002a',
-     armv7l: 'f6930f4eb532697e9a8b2ba0c124b78d7ed20e38d376d8b7f6f04fb67aa5002a',
-       i686: '4c37b7d767f66147d703ff8cf28cfd53e9e18da14a93afc48af3c8996c781786',
-     x86_64: 'e955f0bda71b3dd685ccab2d92edebf640ef3052bca025e737092275de116848',
+  binary_sha256({
+    aarch64: '050b02a407702dc301f3f5992a57872d0073e76d1d0a22172990d07ffeb7b52f',
+     armv7l: '050b02a407702dc301f3f5992a57872d0073e76d1d0a22172990d07ffeb7b52f',
+       i686: 'a017337c865a83e694faa0d009cef7ae2c507cfa7b5563def488423eb05ee6a4',
+     x86_64: 'e6ac7bc7b46baabf165f6afedf70fc509022626c52e483632533670ff2a78ed3'
   })
 
-  depends_on 'ld_default' => :build
-  depends_on 'shared_mime_info'
   depends_on 'freeglut'
+  depends_on 'libglu'
+  depends_on 'libjpeg'
   depends_on 'mesa'
+  depends_on 'shared_mime_info'
 
   def self.build
-    puts 'Change to GOLD linker.'.orange
-    original_default = `ld_default g`.chomp
-    system 'cmake', '-G', 'Unix Makefiles', '-H.', '-Bbuild',
-           "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-           '-DCMAKE_BUILD_TYPE=Release',
-           '-DJAS_ENABLE_DOC=FALSE'
-    Dir.chdir 'build' do
-      system 'make clean all'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      cmake \
+        -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        -DJAS_ENABLE_DOC=FALSE \
+        -DBUILD_SHARED_LIBS=ON \
+        .."
     end
-    system "ld_default #{original_default}"
-  end
-
-  def self.check
-    Dir.chdir 'build' do
-#      system 'make test'
-    end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

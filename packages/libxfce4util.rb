@@ -10,10 +10,10 @@ class Libxfce4util < Package
   source_sha256 '60598d745d1fc81ff5ad3cecc3a8d1b85990dd22023e7743f55abd87d8b55b83'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxfce4util-4.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxfce4util-4.16.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.16.0_armv7l/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.16.0_armv7l/libxfce4util-4.16.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.16.0_i686/libxfce4util-4.16.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4util/4.16.0_x86_64/libxfce4util-4.16.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ceca4f8f984045af5c7d945c679884e034ccbe005b778ad51bb957cf59c00cc8',

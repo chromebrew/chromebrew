@@ -10,10 +10,10 @@ class Mypaint < Package
   source_sha256 'ed2349382f6a0c583d7defae06427e97ac7d14acb77b9e2c0fc7171ddd96d3c7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint-1.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint-1.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint-1.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/mypaint-1.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/1.2.1_armv7l/mypaint-1.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/1.2.1_armv7l/mypaint-1.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/1.2.1_i686/mypaint-1.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/1.2.1_x86_64/mypaint-1.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '34fa83b9be46e7bb03e914abe51abe7e17da0d7bf6967c8ff2c77413f8edcab2',

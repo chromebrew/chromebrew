@@ -10,10 +10,10 @@ class Iniparser < Package
   source_sha256 '960daa800dd31d70ba1bacf3ea2d22e8ddfc2906534bf328319495966443f3ae'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/iniparser-4.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_armv7l/iniparser-4.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_armv7l/iniparser-4.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_i686/iniparser-4.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iniparser/4.1_x86_64/iniparser-4.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '712e6e63ea2aa696666a53ba354a5108f158241ce806f1eda5b27a577cc7bd58',
@@ -24,7 +24,7 @@ class Iniparser < Package
 
   def self.patch
     # Fix buffer overflow vulnerabilities
-    system 'wget', 'https://github.com/ndevilla/iniparser/commit/a249509544972d60f5077bfde554af480bd82594.patch'
+    system 'curl -#LO https://github.com/ndevilla/iniparser/commit/a249509544972d60f5077bfde554af480bd82594.patch'
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('a249509544972d60f5077bfde554af480bd82594.patch') ) == '1b1fe5d2faf6eb5bed51b80b046d4699c09b14b3e5e5277aed790a8741fcad8b'
     system 'patch', '-Np1', '-i', 'a249509544972d60f5077bfde554af480bd82594.patch'
     # Fix libdir

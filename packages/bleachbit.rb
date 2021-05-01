@@ -10,10 +10,10 @@ class Bleachbit < Package
   source_sha256 '0318cd1bc83655971c9ffd6bf27f4866bbe57381e92cfbcf8a2a6833075b49fa'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bleachbit-2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bleachbit-2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bleachbit-2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bleachbit-2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_armv7l/bleachbit-2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_armv7l/bleachbit-2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_i686/bleachbit-2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/2.2_x86_64/bleachbit-2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2afa292475e4b51d8a05be4c9d22053e07b0ab9fc80f15c31206a7c76196b1b8',

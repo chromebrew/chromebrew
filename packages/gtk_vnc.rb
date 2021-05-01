@@ -3,41 +3,45 @@ require 'package'
 class Gtk_vnc < Package
   description 'VNC viewer widget for GTK'
   homepage 'https://wiki.gnome.org/Projects/gtk-vnc'
-  version '1.0.0'
+  version '1.2.0'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/1.0/gtk-vnc-1.0.0.tar.xz'
-  source_sha256 'a81a1f1a79ad4618027628ffac27d3391524c063d9411c7a36a5ec3380e6c080'
+  source_url 'https://gitlab.gnome.org/GNOME/gtk-vnc.git'
+  git_hashtag "v#{version}"
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk_vnc-1.0.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_i686/gtk_vnc-1.2.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_x86_64/gtk_vnc-1.2.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '8026b25e42c51f0a124aff3779b9dbb035b331dd2bb0faa60cf10f54a9e77b38',
-     armv7l: '8026b25e42c51f0a124aff3779b9dbb035b331dd2bb0faa60cf10f54a9e77b38',
-       i686: '86b2a47da79c0035ad41efb6ae4a0eb9bee0d931caf54ecbb44dd79183af5ee8',
-     x86_64: 'efa9ae051e5ef07895101f66f93577fd459609b8eb3fd8bb6bc00ee76fd638d3',
+  binary_sha256({
+    aarch64: '62d85534080b53b4b3e0a20c58979db9e550a035414821d210a45fc8965da0ab',
+     armv7l: '62d85534080b53b4b3e0a20c58979db9e550a035414821d210a45fc8965da0ab',
+       i686: '609017642a8be0a5d309b05d07aed5665760eca14af26075c3b719fef3736dc8',
+     x86_64: '5001d552bfa4155bf2c77a1e1a7ee4714125566db0b9ce1e3e3c5e88ace8057d'
   })
 
-  depends_on 'pygtk'
-  depends_on 'libcyrussasl'
+  depends_on 'cairo'
   depends_on 'glib'
-  depends_on 'libgcrypt'
   depends_on 'gobject_introspection'
+  depends_on 'gtk3'
+  depends_on 'libgcrypt'
+  depends_on 'pulseaudio'
 
-  def self.prebuild
-    system "sed -i '226d' meson.build"
+  def self.patch
+    system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
   end
 
   def self.build
-    system "meson --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --buildtype=release -Dwith-coroutine=auto _build"
-    system 'ninja -v -C _build'
+    system "meson \
+      #{CREW_MESON_OPTIONS} \
+      builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

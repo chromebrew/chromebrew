@@ -11,10 +11,10 @@ class Filecmd < Package
   source_sha256 'f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/filecmd-5.39-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.39_armv7l/filecmd-5.39-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.39_armv7l/filecmd-5.39-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.39_i686/filecmd-5.39-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.39_x86_64/filecmd-5.39-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'cdd5e95dfa839a179e68822683a0eda74e83b0ec530fdf82665051ced048d3e7',

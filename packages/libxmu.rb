@@ -10,10 +10,10 @@ class Libxmu < Package
   source_sha256 'e5fd4bacef068f9509b8226017205040e38d3fba8d2de55037200e7176c13dba'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxmu-1.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxmu-1.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxmu-1.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxmu-1.1.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.2_armv7l/libxmu-1.1.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.2_armv7l/libxmu-1.1.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.2_i686/libxmu-1.1.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.2_x86_64/libxmu-1.1.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b0e35fa7604228c0bc7e556a3425e928a90f9f00707126c6007c235b9162c75c',

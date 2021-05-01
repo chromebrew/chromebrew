@@ -10,10 +10,10 @@ class Sassc < Package
   source_sha256 'a2077ae439f29c45ce76c81b9b4e63aed1b7f41e9f5fc82881c2d52752c6f440'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sassc-3.6.1-66f0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sassc-3.6.1-66f0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sassc-3.6.1-66f0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sassc-3.6.1-66f0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.1-66f0_armv7l/sassc-3.6.1-66f0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.1-66f0_armv7l/sassc-3.6.1-66f0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.1-66f0_i686/sassc-3.6.1-66f0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.1-66f0_x86_64/sassc-3.6.1-66f0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e0beec78444eca58f93f7a874ee660bf07aa67610609a8a615474f0e4be606aa',

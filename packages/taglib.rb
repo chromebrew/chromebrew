@@ -10,10 +10,10 @@ class Taglib < Package
   source_sha256 'b6d1a5a610aae6ff39d93de5efd0fdc787aa9e9dc1e7026fa4c961b26563526b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/taglib-1.11.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/taglib-1.11.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/taglib-1.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/taglib-1.11.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_armv7l/taglib-1.11.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_armv7l/taglib-1.11.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_i686/taglib-1.11.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_x86_64/taglib-1.11.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2bb4922da1de20136cdbc0375a716975aed496ccb3e26a08d7585c80f5364de7',

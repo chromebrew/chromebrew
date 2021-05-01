@@ -10,10 +10,10 @@ class Perl_term_readkey < Package
   source_sha256 '5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/perl_term_readkey-2.38-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/perl_term_readkey-2.38-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38_armv7l/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38_armv7l/perl_term_readkey-2.38-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38_i686/perl_term_readkey-2.38-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38_x86_64/perl_term_readkey-2.38-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '94188d0e163fe8dd2ddd02eb2c7737821810b073d999189d3c8d4441f8a17d01',

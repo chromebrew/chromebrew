@@ -3,24 +3,24 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2580'
+  @_ver = '8.2.2783'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vim/vim/archive/v8.2.2580.tar.gz'
-  source_sha256 'd0a508ca9726c8ff69bc5f5ab1ebe251c256e01e730f7b36afd03a66c89fcf79'
+  source_url 'https://github.com/vim/vim.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vim-8.2.2580-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_i686/vim-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_x86_64/vim-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'fc753eff299bb106dde43f55f7b52d40852f3f2b0651eb869afad92eb1c5132c',
-     armv7l: 'fc753eff299bb106dde43f55f7b52d40852f3f2b0651eb869afad92eb1c5132c',
-       i686: 'a830cb5b36fe8752b90829f5b97dc382868d7dfda4462ed7cb3e37eebd27939a',
-     x86_64: '27f86977743855f0f77f9797a80674eda93977a4309a02bff399364237984104'
+    aarch64: '3051888f588842fe3001ab6bd014d28c094cbb45096078295dd82f2640e2557f',
+     armv7l: '3051888f588842fe3001ab6bd014d28c094cbb45096078295dd82f2640e2557f',
+       i686: 'e20d87a9a0bfaa0470ef317f51f5786076b0fc15ef55a2b12daf044f731fb5ff',
+     x86_64: '53c2887e570759765ae43abeedd7857b6fafb531f94aac2dbc48901c85110fbd'
   })
 
   depends_on 'vim_runtime'
@@ -38,12 +38,11 @@ class Vim < Package
              'feature.h'
       system 'sed', '-i', "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|",
              'feature.h'
-      system 'autoconf'
     end
   end
 
   def self.build
-    system './configure --help'
+    system '[ -x configure ] || autoreconf -fvi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
@@ -77,6 +76,12 @@ class Vim < Package
 
     # these are provided by 'vim_runtime'
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/vim"
+
+    # these are provided by 'xxd_standalone'
+    @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/xxd #{CREW_DEST_MAN_PREFIX}/man1/xxd.1]
+    @deletefiles.each do |f|
+      FileUtils.rm f if  File.exist?(f)
+    end
 
     # remove desktop and icon files for the terminal package
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/applications"

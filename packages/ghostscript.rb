@@ -3,40 +3,80 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '9.52'
+  version '9.54'
   license 'AGPL-3+'
   compatibility 'all'
-  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/ghostscript-9.52.tar.xz'
-  source_sha256 '57442acf8b46453a9b5fc6fec738fbbb7e13a3d3e00f1aaaa0975529bc203c7c'
+  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostpdl-9.54.0.tar.xz'
+  source_sha256 'ecbaa2e79e6d82cab8d0fbdfd899aa4fc68ffb43f6901d547d33ca7008fe1871'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.52-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.52-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.52-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/ghostscript-9.52-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_i686/ghostscript-9.54-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_x86_64/ghostscript-9.54-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '5a3ae66fa14e6b58b61e7375fb8796330a991305a7f448ffa7636392f3bc5df0',
-     armv7l: '5a3ae66fa14e6b58b61e7375fb8796330a991305a7f448ffa7636392f3bc5df0',
-       i686: 'c05ca55a65c57d6d084be7ea407dd96d068ca2ac7c7e78bd48d0e79cbff4703a',
-     x86_64: '09dfcff8a2477779f9d8dcb677bcda0b99b5064cb343d56495b51240d2a0f988',
+  binary_sha256({
+    aarch64: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',
+     armv7l: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',
+       i686: 'f68277f2d042311835bf70828dcae6ce281d5cb376e4d525d63e1858012ab30d',
+     x86_64: '92ac6123594ea3fe04474e7654785a599f65b57884f5931b71bfeb63100b0741'
   })
 
-  depends_on 'dbus'
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'cups'
   depends_on 'fontconfig'
-  depends_on 'jasper'
-  depends_on 'gsfonts'
+  depends_on 'freetype'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gtk3'
+  depends_on 'harfbuzz'
   depends_on 'lcms'
+  depends_on 'libice'
+  depends_on 'libjpeg'
+  depends_on 'libpaper'
+  depends_on 'libpng'
+  depends_on 'libsm'
+  depends_on 'libtiff'
+  depends_on 'libx11'
   depends_on 'libxext'
   depends_on 'libxt'
   depends_on 'openjpeg'
-  depends_on 'libpaper'
-  depends_on 'cups'
+  depends_on 'pango'
+
+  case ARCH
+  when 'armv7l', 'aarch64'
+    @ltoflags = ''
+  when 'x86_64', 'i686'
+    @ltoflags = '-flto'
+  end
+
+  def self.patch
+    system 'rm -r cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib'
+  end
 
   def self.build
-    system "CPPFLAGS='-DPNG_ARM_NEON_OPT=0' ./configure #{CREW_OPTIONS} --disable-dependency-tracking -disable-static"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system 'filefix'
+    system "env CFLAGS='-pipe -fuse-ld=gold #{@ltoflags}' \
+      CXXFLAGS='-pipe -fuse-ld=gold #{@ltoflags}' \
+      ./configure #{CREW_OPTIONS} \
+      --disable-compile-inits \
+      --enable-dynamic \
+      --enable-fontconfig \
+      --enable-freetype \
+      --enable-openjpeg \
+      --with-drivers=ALL \
+      --with-fontpath=#{CREW_PREFIX}/share/fonts/gsfonts \
+      --with-ijs \
+      --with-jbig2dec \
+      --with-libpaper \
+      --with-openprinting \
+      --without-luratech \
+      --with-system-libtiff \
+      --with-x"
     system 'make'
-    system "make so" # Make libgs
+    system 'make so' # Make libgs
   end
 
   def self.install

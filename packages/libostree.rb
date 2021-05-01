@@ -11,10 +11,10 @@ class Libostree < Package
   source_sha256 'fdaa5992d0a6f62157152355449ac8476c50df6602be398e9ad10438cc1e679b'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libostree-2020.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libostree/2020.8_armv7l/libostree-2020.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libostree/2020.8_armv7l/libostree-2020.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libostree/2020.8_i686/libostree-2020.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libostree/2020.8_x86_64/libostree-2020.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '4e4ffd30a74ea73c60f7b0c9a0064a50dacf31ad0d8011f95deb35fab596878d',
@@ -27,14 +27,14 @@ class Libostree < Package
   depends_on 'gpgme'
   depends_on 'libsoup'
   depends_on 'e2fsprogs'
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'libarchive'
   depends_on 'avahi'
   depends_on 'gtk_doc' => :build
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'  LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --with-curl \
       --without-libsystemd \

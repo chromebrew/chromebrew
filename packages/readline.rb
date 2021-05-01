@@ -11,10 +11,10 @@ class Readline < Package
   source_sha256 'f8ceb4ee131e3232226a17f51b164afc46cd0b9e6cef344be87c65962cb82b02'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/readline-8.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/readline-8.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/readline-8.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/readline-8.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_armv7l/readline-8.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_armv7l/readline-8.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_i686/readline-8.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.1-1_x86_64/readline-8.1-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '59a46fc3edcb1a6dd5039aee1e7dda31289e87f60c8d260f8f883da11880425e',

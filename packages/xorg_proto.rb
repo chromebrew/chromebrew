@@ -10,10 +10,10 @@ class Xorg_proto < Package
   source_sha256 '54a153f139035a376c075845dd058049177212da94d7a9707cf9468367b699d2'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/xorg_proto-2020.1-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_armv7l/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_armv7l/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_i686/xorg_proto-2020.1-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_x86_64/xorg_proto-2020.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '3de61490afe9c9b45ad23abf007109b942e196aed3299f90da7ff6429400b687',
@@ -22,10 +22,10 @@ class Xorg_proto < Package
       x86_64: '1ab0f6074972bafa33e78e945958b70c7886c0abff146bc8a020bfc499c7e14f',
   })
 
-  depends_on 'llvm' => ':build'
+  depends_on 'llvm' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
       -Dc_args='-fuse-ld=lld' \
       builddir"
     system "meson configure builddir"

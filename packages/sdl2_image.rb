@@ -10,10 +10,10 @@ class Sdl2_image < Package
   source_sha256 'e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sdl2_image-2.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sdl2_image-2.0.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_armv7l/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_armv7l/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_i686/sdl2_image-2.0.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_x86_64/sdl2_image-2.0.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fa555b57c402a9dd9ff3b2cca24b173f443114b43c077b299ff1a6355bf8eb05',

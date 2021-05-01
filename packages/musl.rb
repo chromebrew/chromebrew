@@ -3,17 +3,17 @@ require 'package'
 class Musl < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
   homepage 'https://musl.libc.org/'
-  version '1.1.23'
+  version '1.2.2'
   license 'MIT, LGPL-2 and GPL-2'
   compatibility 'all'
-  source_url 'https://musl.libc.org/releases/musl-1.2.2.tar.gz'
+  source_url "https://musl.libc.org/releases/musl-#{version}.tar.gz"
   source_sha256 '9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/musl-1.2.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_armv7l/musl-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_armv7l/musl-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_i686/musl-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_x86_64/musl-1.2.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3ed631095e644fc8477a73c26b29970af21fea79ee65380ede17bb1d9b8116d3',

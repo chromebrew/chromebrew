@@ -3,38 +3,56 @@ require 'package'
 class Bashdb < Package
   description 'The Bash Debugger Project is a source-code debugger for bash that follows the gdb command syntax.'
   homepage 'http://bashdb.sourceforge.net/'
-  version '4.3-0.91'
+  version '5.0-1.1.2-abac'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/bashdb/bashdb/4.3-0.91/bashdb-4.3-0.91.tar.bz2'
-  source_sha256 '60117745813f29070a034c590c9d70153cc47f47024ae54bfecdc8cd86d9e3ea'
+  source_url 'SKIP'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/bashdb-4.3-0.91-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/bashdb-4.3-0.91-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/bashdb-4.3-0.91-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/bashdb-4.3-0.91-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_armv7l/bashdb-5.0-1.1.2-abac-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_armv7l/bashdb-5.0-1.1.2-abac-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_i686/bashdb-5.0-1.1.2-abac-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_x86_64/bashdb-5.0-1.1.2-abac-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '833df9e8e4b7eebdf1d84021614e1f96e36246f8b3a6885b3a1cb453bd3721e2',
-     armv7l: '833df9e8e4b7eebdf1d84021614e1f96e36246f8b3a6885b3a1cb453bd3721e2',
-       i686: '0a8ef27b0d6c4f82e8918ea12955b76dae0b2c4b43cce6a7ed7d8f59a3616585',
-     x86_64: 'b86e37e76d360d4cd0ec70d2658770844eec81fed829ca0a51fc0bb3da0efa96',
+  binary_sha256({
+    aarch64: 'e94ee67c7eb1e025301f2ab16f5588a1903816fccb6b965e83e28e8a4e13c146',
+     armv7l: 'e94ee67c7eb1e025301f2ab16f5588a1903816fccb6b965e83e28e8a4e13c146',
+       i686: '2642a9fcf547fda5b85ce5472f2637f897b92e162b0955e6113080047895f99e',
+     x86_64: '83b0ce54ea38ea941dba8bdbb5ef5f41884fa6abb5faaed5eae00064989f5ae3'
   })
 
-  depends_on 'compressdoc' => :build
+  depends_on 'bash'
+  depends_on 'texinfo' => :build
 
   def self.build
-    system "./configure \
-            --bindir=#{CREW_PREFIX}/bin \
-            --datadir=#{CREW_PREFIX}/share \
-            --infodir=#{CREW_PREFIX}/info \
-            --mandir=#{CREW_PREFIX}/man"
-    system "make"
+    # No releases yet for Bash 5.1 compatible bashdb, so need git version.
+    # Turn off git warnings.
+    system 'git config --global advice.detachedHead false'
+    system 'git config --global init.defaultBranch main'
+    @git_dir = 'bashdb_git'
+    @git_hash = 'abac8ee0db03a62d9dc360640e9e5b9648a8fc12'
+    @git_url = 'https://git.code.sf.net/p/bashdb/code'
+    FileUtils.rm_rf(@git_dir)
+    FileUtils.mkdir_p(@git_dir)
+    Dir.chdir @git_dir do
+      system 'git init'
+      system "git remote add origin #{@git_url}"
+      system "git fetch --depth 1 origin #{@git_hash}"
+      system 'git checkout FETCH_HEAD'
+      system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+      system './configure --help'
+      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+        LDFLAGS='-flto=auto' \
+        ./configure \
+        #{CREW_OPTIONS} \
+        --with-bash=#{CREW_PREFIX}/bin/bash \
+        --disable-dependency-tracking"
+    end
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/man/man1"
+    Dir.chdir @git_dir do
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    end
   end
 end

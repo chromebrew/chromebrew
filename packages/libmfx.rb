@@ -6,19 +6,17 @@ class Libmfx < Package
   version '1.25'
   license 'BSD'
   compatibility 'i686'
-  case ARCH
-  when 'i686'
-    source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.25.tar.gz'
-    source_sha256 '853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42'
-    depends_on 'libva'
-  end
+  source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.25.tar.gz'
+  source_sha256 '853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42'
 
   binary_url({
-    i686: 'https://dl.bintray.com/chromebrew/chromebrew/libmfx-1.25-chromeos-i686.tar.xz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmfx/1.25_i686/libmfx-1.25-chromeos-i686.tar.xz',
   })
   binary_sha256({
     i686: '3eab119d8be510a2786d31419c20c551a0629f3b8d8d4fa58a2fb31b3f66a960',
   })
+
+  depends_on 'libva'
 
   def self.build
     system 'autoreconf -i'

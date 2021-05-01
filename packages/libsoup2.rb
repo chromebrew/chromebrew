@@ -10,10 +10,10 @@ class Libsoup2 < Package
   source_sha256 '170c3f8446b0f65f8e4b93603349172b1085fb8917c181d10962f02bb85f5387'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup2-2.72-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup2-2.72-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup2-2.72-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libsoup2-2.72-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_armv7l/libsoup2-2.72-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_armv7l/libsoup2-2.72-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_i686/libsoup2-2.72-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_x86_64/libsoup2-2.72-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '5fe4849b14fab9bc1642f86faed10800d8693d5b1e73d591dcf2aacbaca962a5',
@@ -28,7 +28,7 @@ class Libsoup2 < Package
   depends_on 'vala'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dtests=false \
       -Dsysprof=disabled \
       -Dintrospection=enabled \

@@ -11,6 +11,7 @@ class Llvm < Package
   source_sha256 '8e6c99e482bb16a450165176c2d881804976a2d770e0445af4375e78a1fbf19c'
 
   binary_url({
+
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_armv7l/llvm-12.0.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_armv7l/llvm-12.0.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_i686/llvm-12.0.0-chromeos-i686.tar.xz',
@@ -27,7 +28,7 @@ class Llvm < Package
   depends_on 'pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
-  depends_on 'gcc11' # R or gcc10
+  depends_on 'gcc10' # R or gcc11
   depends_on 'lld' => :build # Or a post llvm 12.0.0 build of llvm
 
   case ARCH

@@ -10,10 +10,10 @@ class Gnutls < Package
   source_sha256 '49e2a22691d252c9f24a9829b293a8f359095bc5a818351f05f1c0a5188a1df8'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnutls-3.7.0-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_armv7l/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_armv7l/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_i686/gnutls-3.7.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_x86_64/gnutls-3.7.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '7a80e48b97bb721ee3b6805d5863d61800a230c9b598a511a07df3af5d49dfdb',

@@ -11,10 +11,10 @@ class Geoclue < Package
   source_sha256 '6cc7dbe4177b4e7f3532f7fe42262049789a3cd6c55afe60a3564d7394119c27'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/geoclue-2.5.7-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_armv7l/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_armv7l/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_i686/geoclue-2.5.7-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_x86_64/geoclue-2.5.7-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '8208222a9240c0d90afaac07a4111ad27e5b02f9ea3ba55211278440f065dad2',
@@ -27,13 +27,13 @@ class Geoclue < Package
   depends_on 'json_glib'
   depends_on 'avahi'
   depends_on 'geocode_glib'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'libnotify' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'libnotify' => :build
   depends_on 'modemmanager'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
       -Dsystemd=disabled \
       -Ddbus-sys-dir=#{CREW_PREFIX}/share/dbus-1 \
       -D3g-source=true \

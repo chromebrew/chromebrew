@@ -3,71 +3,50 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  @_ver = '0.3.22'
+  @_ver = '0.3.26'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/PipeWire/pipewire/archive/#{@_ver}.tar.gz"
-  source_sha256 '5db2caf41af79cd9e343d07a3804c63b8b243c1d74e926181058e29771d4b691'
+  source_sha256 '05cc9d25de45290c025da5da1b94fc705bddacd93cf3690d0b2988c1ac501ee1'
 
-  binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/pipewire-0.3.22-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_i686/pipewire-0.3.26-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_x86_64/pipewire-0.3.26-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '8641411382ca539208681a9fcc0e4c4449c317020c28a7f95a1b4d3fee6a04a4',
-      armv7l: '8641411382ca539208681a9fcc0e4c4449c317020c28a7f95a1b4d3fee6a04a4',
-        i686: 'd8d093f9cabf7881daaa746af3c7d0a44604c55caf732272a04817b8593bf2ba',
-      x86_64: 'af44f8765b24d423555db5ac00324c8c73c597144af404a28551bbcae595a405',
+  binary_sha256({
+    aarch64: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
+     armv7l: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
+       i686: '43bc1175d6f75755fc8fb3abe4b9e473d7ccc3593f1c53f504a2eee7b19b84c2',
+     x86_64: '27bdc741fe0b577e3cbfa5ef4f419f23f18cf9a06f04df815249f58dbabe5d28'
   })
 
-
-  depends_on 'gsettings_desktop_schemas'
+  depends_on 'alsa_lib' # R
   depends_on 'alsa_plugins' => :build
-  depends_on 'gst_plugins_base'
-  depends_on 'gstreamer'
-  depends_on 'jack'
-  depends_on 'eudev'
-  depends_on 'vulkan_headers'
-  depends_on 'mesa'
-
-  def self.patch
-    case ARCH
-    when 'i686'
-      # Patch from https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/9f53057b51c9d7ce68c240c21b459dc0b7d6acaf
-      # getrandom was introduced to glibc 2.25, and i686 has 2.23.
-      @getrandom_freebsd = <<~'GETRANDOM_FREEBSD_EOF'
-        #include <sys/param.h>
-        #include <fcntl.h>
-        ssize_t getrandom(void *buf, size_t buflen, unsigned int flags) {
-          int fd = open("/dev/random", O_CLOEXEC);
-          if (fd < 0)
-            return -1;
-          ssize_t bytes = read(fd, buf, buflen);
-          close(fd);
-          return bytes;
-        }
-      GETRANDOM_FREEBSD_EOF
-      IO.write('getrandom.c', @getrandom_freebsd)
-      system "sed -i '/random.h/ r getrandom.c' src/pipewire/impl-core.c"
-      system "sed -i '/random.h/d' src/pipewire/impl-core.c"
-    end
-  end
+  depends_on 'dbus' # R
+  depends_on 'eudev' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'jack' # R
+  depends_on 'libsndfile' # R
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # R
 
   def self.build
     system "meson \
-      #{CREW_MESON_LTO_OPTIONS} \
-      -Dbluez5=false \
-      -Dbluez5-backend-native=false \
-      -Dbluez5-backend-ofono=false \
-      -Dbluez5-backend-hsphfpd=false \
-      -Dvulkan=true \
-      -Dv4l2=false \
-      -Dexamples=false \
+      #{CREW_MESON_OPTIONS} \
+      -Dbluez5-backend-hsphfpd=disabled \
+      -Dbluez5-backend-ofono=disabled \
+      -Dbluez5=disabled \
+      -Dexamples=disabled \
       -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d \
-      -Dvolume=true \
+      -Dv4l2=disabled \
+      -Dvolume=auto \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

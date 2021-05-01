@@ -1,7 +1,7 @@
 require 'package'
 
 class At_spi2_core < Package
-  description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
+  description 'This is over DBus; toolkit widgets provide their content to screen readers such as Orca'
   homepage 'http://www.freedesktop.org/'
   version '2.39.91'
   license 'LGPL-2.1+'
@@ -10,10 +10,10 @@ class At_spi2_core < Package
   source_sha256 '4f71d3d208736adfe004102b4caca0ad70a7e3986d9bcd1661d7d824e10bbfb3'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_core-2.39.91-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_armv7l/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_armv7l/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_i686/at_spi2_core-2.39.91-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_x86_64/at_spi2_core-2.39.91-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7a9ab15123727d6036c8b30b9a35ab52f71745a8a4edce0fe80039216c2649b1',
@@ -30,7 +30,7 @@ class At_spi2_core < Package
   depends_on 'gtk_doc'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

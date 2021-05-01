@@ -3,40 +3,63 @@ require 'package'
 class Gst_plugins_good < Package
   description 'Multimedia graph framework - good plugins'
   homepage 'https://gstreamer.freedesktop.org/'
-  @_ver = '1.18.3'
-  version @_ver
+  @_ver = '1.18.4'
+  version "#{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-#{@_ver}.tar.xz"
-  source_sha256 '9b3b8e05d4d6073bf929fb33e2d8f74dd81ff21fa5b50c3273c78dfa2ab9c5cb'
+  source_sha256 'b6e50e3a9bbcd56ee6ec71c33aa8332cc9c926b0c1fae995aac8b3040ebe39b0'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_good-1.18.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_good-1.18.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_good-1.18.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gst_plugins_good-1.18.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_armv7l/gst_plugins_good-1.18.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_armv7l/gst_plugins_good-1.18.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_i686/gst_plugins_good-1.18.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_x86_64/gst_plugins_good-1.18.4-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '7d76162d9f654da6bf2a9fd0207c8299d06a067a1c6f1dc9cf5b05c5d1d7df40',
-     armv7l: '7d76162d9f654da6bf2a9fd0207c8299d06a067a1c6f1dc9cf5b05c5d1d7df40',
-       i686: 'a6a0fe5c64329539e12ce5d163503255621f735e66fd0c8b99758858760c1178',
-     x86_64: '8d90148635f3be03ff8086e93dce7bcebc76c218c1fc71db9d07fed0f5c4acdf'
+    aarch64: 'c6bd8050a3c0f1b314c710a325211955179befb161ad265c6aeea8aec1e4f262',
+     armv7l: 'c6bd8050a3c0f1b314c710a325211955179befb161ad265c6aeea8aec1e4f262',
+       i686: '9d81667abfe65600e5b248de3c2de29ce6eb7f1e352929015c033809423324ea',
+     x86_64: '1ce70592cf499cda3a46f519db2ba479e0e8ca56acf43d44366b884d59b73487'
   })
 
-  depends_on 'pulseaudio'
-  depends_on 'libsoup'
-  depends_on 'gst_plugins_base'
-  depends_on 'wavpack'
-  depends_on 'aalib'
-  depends_on 'taglib'
-  depends_on 'libdv'
-  depends_on 'libvpx'
-  depends_on 'jack' => ':build'
-  depends_on 'gtk3' => ':build'
-  depends_on 'nasm' => ':build'
+  # L = Logical Dependency, R = Runtime Dependency
+  depends_on 'libjpeg' => :build
+  depends_on 'nasm' => :build
+  depends_on 'gst_plugins_base' # L
+  depends_on 'aalib' # R
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'gtk3' # R
+  depends_on 'jack' # R
+  depends_on 'libavc1394' # R
+  depends_on 'libcaca' # R
+  depends_on 'libdv' # R
+  depends_on 'libgudev' # R
+  depends_on 'libiec61883' # R
+  depends_on 'libmp3lame' # R
+  depends_on 'libpng' # R
+  depends_on 'libraw1394' # R
+  depends_on 'libsoup2' # R
+  depends_on 'libvpx' # R
+  depends_on 'libx11' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'mpg123' # R
+  depends_on 'orc' # R
+  depends_on 'pipewire' # R
+  depends_on 'pulseaudio' # R
+  depends_on 'speex' # R
+  depends_on 'taglib' # R
+  depends_on 'v4l_utils' # R
+  depends_on 'wavpack' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
       -Ddoc=disabled \
       -Drpicamsrc=disabled \
       -Dgobject-cast-checks=disabled \

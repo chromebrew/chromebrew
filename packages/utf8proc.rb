@@ -10,10 +10,10 @@ class Utf8proc < Package
   source_sha256 'd4e8dfc898cfd062493cb7f42d95d70ccdd3a4cd4d90bec0c71b47cca688f1be'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/utf8proc-2.5.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/utf8proc-2.5.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/utf8proc-2.5.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/utf8proc-2.5.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/utf8proc/2.5.0_armv7l/utf8proc-2.5.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/utf8proc/2.5.0_armv7l/utf8proc-2.5.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/utf8proc/2.5.0_i686/utf8proc-2.5.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/utf8proc/2.5.0_x86_64/utf8proc-2.5.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '9ebbd94d6221173beb34f0c80f62d38d557d87ceceac29d9ee7cfd96f6ccbfb2',

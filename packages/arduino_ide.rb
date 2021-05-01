@@ -3,18 +3,6 @@ ENV['CREW_NOT_STRIP'] = 'true'
 require 'package'
 
 class Arduino_ide < Package
-
-  @version = "1.8.9"
-
-  case ARCH
-  when 'x86_64'
-    @platform = 'linux64'
-  when 'i686'
-    @platform = 'linux32'
-  when 'armv7l', 'aarch64'
-    @platform = 'linuxarm'
-  end
-
   description 'Arduino is an open-source physical computing platform based on a simple I/O board and a development environment that implements the Processing/Wiring language.'
   homepage 'https://www.arduino.cc/'
   version '1.8.10'
@@ -24,10 +12,10 @@ class Arduino_ide < Package
   source_sha256 '862e4b100d5214ca51d501edcc095467d7a4e3dc39b306146001da8b0c63343e'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/arduino_ide-1.8.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/arduino_ide-1.8.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_i686/arduino_ide-1.8.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_x86_64/arduino_ide-1.8.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cf323df5db4b7b3d225199539f185cdd66bb7d86705b8eec5125d1538508bf9b',
@@ -41,13 +29,22 @@ class Arduino_ide < Package
   depends_on 'ant' => :build
   depends_on 'sommelier'
 
+  case ARCH
+  when 'x86_64'
+    @platform = 'linux64'
+  when 'i686'
+    @platform = 'linux32'
+  when 'armv7l', 'aarch64'
+    @platform = 'linuxarm'
+  end
+
   def self.build
     Dir.chdir("build") do
       system 'env',
              "JAVA_HOME=#{CREW_PREFIX}/share/jdk8",
              'ant',
              '-Djava.net.preferIPv4Stack=true',
-             "-Dversion=#{@version}",
+             "-Dversion=#{version}",
              "-Dplatform=#{@platform}",
              'clean',
              'dist'
@@ -55,7 +52,7 @@ class Arduino_ide < Package
       system "echo >> arduino"
       system "echo 'echo \"Enabling Arduino write access...\"' >> arduino"
       system "echo 'sudo chmod o+rw /dev/ttyACM*' >> arduino"
-      system "echo '#{CREW_PREFIX}/share/arduino-#{@version}/arduino \"$@\"' >> arduino"
+      system "echo '#{CREW_PREFIX}/share/arduino-#{version}/arduino \"$@\"' >> arduino"
       system "echo 'echo \"Disabling Arduino write access...\"' >> arduino"
       system "echo 'sudo chmod o-rw /dev/ttyACM*' >> arduino"
     end
@@ -64,9 +61,9 @@ class Arduino_ide < Package
   def self.install
     Dir.chdir("build") do
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-      system "tar xpf linux/arduino-#{@version}-#{@platform}.tar.xz -C #{CREW_DEST_PREFIX}/share/"
+      system "tar xpf linux/arduino-#{version}-#{@platform}.tar.xz -C #{CREW_DEST_PREFIX}/share/"
       system "install -Dm755 arduino #{CREW_DEST_PREFIX}/bin/arduino"
-      FileUtils.ln_s "../share/arduino-#{@version}/arduino-builder", "#{CREW_DEST_PREFIX}/bin"
+      FileUtils.ln_s "../share/arduino-#{version}/arduino-builder", "#{CREW_DEST_PREFIX}/bin"
     end
   end
 end

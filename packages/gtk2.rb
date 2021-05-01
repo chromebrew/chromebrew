@@ -3,35 +3,53 @@ require 'package'
 class Gtk2 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '2.24.33'
+  version '2.24.33-1'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz'
   source_sha256 'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
 
-  binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk2-2.24.33-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gtk2-2.24.33-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gtk2-2.24.33-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gtk2-2.24.33-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_i686/gtk2-2.24.33-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_x86_64/gtk2-2.24.33-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: 'b259d923928b1ff1ecf0eaaa91bbb9ff201b66b5cc7418d83a19a39b975c8554',
-     armv7l: 'b259d923928b1ff1ecf0eaaa91bbb9ff201b66b5cc7418d83a19a39b975c8554',
-       i686: '680a403e558776af399bff35d9febe5d1c05b95b3905f936fe2b8e170d6d037d',
-     x86_64: '10ec206de2a847f749ad271e97b473c8159395fc64751fe3b26058ca1ef6e75e',
+  binary_sha256({
+    aarch64: '973cb7478861aa2821870c07e1ab3570b3d66afd51b3b065e1fd7598d4a666a2',
+     armv7l: '973cb7478861aa2821870c07e1ab3570b3d66afd51b3b065e1fd7598d4a666a2',
+       i686: '425d69586e1f990a1ef2eac1ecbafee226183bc2266a65a7df5fc6eb3e14b803',
+     x86_64: '0e39307d3bb40f03a24d676404a8d5359f61a6d4b1219ab0aa4fb35be0b5806a'
   })
 
-  depends_on 'gtk_doc'
   depends_on 'atk'
-  depends_on 'pango'
-  depends_on 'gdk_pixbuf'
+  depends_on 'cairo'
   depends_on 'cups'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
+  depends_on 'gtk_doc'
+  depends_on 'harfbuzz'
+  depends_on 'libjpeg'
+  depends_on 'libx11'
+  depends_on 'libxcomposite'
+  depends_on 'libxcursor'
+  depends_on 'libxdamage'
+  depends_on 'libxext'
+  depends_on 'libxfixes'
+  depends_on 'libxinerama'
+  depends_on 'libxrandr'
+  depends_on 'libxrender'
+  depends_on 'pango'
   depends_on 'shared_mime_info'
   depends_on 'six' => :build
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-gdktarget=x11"
+    system "env CFLAGS='-pipe -flto=auto' \
+      CXXFLAGS='-pipe -flto=auto' \
+      LDFLAGS='-flto' \
+      ./configure #{CREW_OPTIONS} --with-gdktarget=x11"
     system 'make'
   end
 

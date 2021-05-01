@@ -10,10 +10,10 @@ class Libmng < Package
   source_sha256 '4a462fdd48d4bc82c1d7a21106c8a18b62f8cc0042454323058e6da0dbb57dd3'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libmng-2.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libmng-2.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libmng-2.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libmng-2.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmng/2.0.3_armv7l/libmng-2.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmng/2.0.3_armv7l/libmng-2.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmng/2.0.3_i686/libmng-2.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmng/2.0.3_x86_64/libmng-2.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b940238dbe081af502bee237e1eeaea7322732433146ace0ff45c0cf07665552',

@@ -10,10 +10,10 @@ class Cadaver < Package
   source_sha256 'fd4ce68a3230ba459a92bcb747fc6afa91e46d803c1d5ffe964b661793c13fca'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cadaver-0.23.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cadaver-0.23.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cadaver-0.23.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cadaver-0.23.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cadaver/0.23.3_armv7l/cadaver-0.23.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cadaver/0.23.3_armv7l/cadaver-0.23.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cadaver/0.23.3_i686/cadaver-0.23.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cadaver/0.23.3_x86_64/cadaver-0.23.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd9a7268a76a9c4f3968b27e3c90d281f8f1b10a77d2ffd1baea583747a55ccd3',

@@ -3,37 +3,38 @@ require 'package'
 class Poppler < Package
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  @_ver = '21.03.0'
-  version @_ver
+  @_ver = '21.04.0'
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url "https://poppler.freedesktop.org/poppler-#{@_ver}.tar.xz"
-  source_sha256 'fd51ead4aac1d2f4684fa6e7b0ec06f0233ed21667e720a4e817e4455dd63d27'
+  source_sha256 '5e2219656c6bbd36154133fef2e12b7d0938464518827098b29a10b1697ea79c'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.03.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.03.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.03.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/poppler-21.03.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_armv7l/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_armv7l/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_i686/poppler-21.04.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_x86_64/poppler-21.04.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'a4cb106683c7b8d289553fe9073201329619519f30ecc623dc6d08dbfd4eccb7',
-     armv7l: 'a4cb106683c7b8d289553fe9073201329619519f30ecc623dc6d08dbfd4eccb7',
-       i686: '54adf5a92963371ef36fbfa9078554b8539877bb036569d4f1b5d8627f7d2ddb',
-     x86_64: '4133f3f21f6ed0a9d6530dbe4d4d5467984958479e69f56061c25e2ff42fb4dc'
+    aarch64: '4ee2c4b1b30d7a39d18dd6b3b5b45f284c730cf83d7f46cabd6ba4a64e518f4f',
+     armv7l: '4ee2c4b1b30d7a39d18dd6b3b5b45f284c730cf83d7f46cabd6ba4a64e518f4f',
+       i686: '3921cca2f9d5da0d24263bb6297f77027230fa36dd434e216d4d6fef3b2c14cc',
+     x86_64: 'f44903cd9abb9a0c58ef0f9554f5f877752cfbbc701620b1a81ef7c71e049b93'
   })
 
-  depends_on 'boost'
   depends_on 'cairo'
-  depends_on 'freeglut'
-  depends_on 'harfbuzz'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'glib'
   depends_on 'lcms'
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libtiff'
+  depends_on 'nspr'
+  depends_on 'nss'
   depends_on 'openjpeg'
-  depends_on 'poppler_data'
-  depends_on 'qttools'
+  depends_on 'qtbase'
 
   def self.build
     Dir.mkdir 'builddir'

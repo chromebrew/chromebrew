@@ -6,14 +6,14 @@ class Chrpath < Package
   version '0.16'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'http://ftp.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz'
+  source_url 'https://httpredir.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz'
   source_sha256 'bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/chrpath-0.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/chrpath-0.16-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/chrpath-0.16-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/chrpath-0.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_armv7l/chrpath-0.16-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_armv7l/chrpath-0.16-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_i686/chrpath-0.16-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_x86_64/chrpath-0.16-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '90a116020875ffc085d1da9352d6fadb08cedf5e50e73b296380e00d061d82f1',
@@ -23,7 +23,7 @@ class Chrpath < Package
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

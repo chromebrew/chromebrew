@@ -10,10 +10,10 @@ class Adwaita_icon_theme < Package
   source_sha256 'd794a492e8e7db33bdc19898effabc1f1205302e166da522c5351a8eba9da404'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/adwaita_icon_theme-40.rc-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_armv7l/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_armv7l/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_i686/adwaita_icon_theme-40.rc-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_x86_64/adwaita_icon_theme-40.rc-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f8cd7b689fb6debe871906165b0f0e93542db14b23b7f9f26fce30cbdec48246',

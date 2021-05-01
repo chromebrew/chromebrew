@@ -10,10 +10,10 @@ class Swig < Package
   source_sha256 '7a00b4d0d53ad97a14316135e2d702091cd5f193bb58bcfcd8bc59d41e7887a9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/swig-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/swig-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/swig-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/swig-4.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_armv7l/swig-4.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_armv7l/swig-4.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_i686/swig-4.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_x86_64/swig-4.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bfcc6357fed1a729192a5f94fcb0a42ce9a391c71e973a5c71663bcec5758409',

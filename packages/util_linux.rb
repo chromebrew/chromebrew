@@ -10,10 +10,10 @@ class Util_linux < Package
   source_sha256 'f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/util_linux-2.36.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/util_linux-2.36.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/util_linux-2.36.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/util_linux-2.36.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.36.2_armv7l/util_linux-2.36.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.36.2_armv7l/util_linux-2.36.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.36.2_i686/util_linux-2.36.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.36.2_x86_64/util_linux-2.36.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '55c8e9851dfd613a7e6649d125e34f0909a3f11d7c2d2c27e5e621220deb7a7b',
@@ -23,7 +23,6 @@ class Util_linux < Package
   })
 
   depends_on 'libcap_ng'
-  depends_on 'libtinfo'
   depends_on 'linux_pam'
   depends_on 'pcre2'
   depends_on 'libeconf'

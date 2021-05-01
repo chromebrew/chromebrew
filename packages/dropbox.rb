@@ -16,19 +16,16 @@ class Dropbox < Package
   end
 
   binary_url ({
-      i686: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-48.4.58-chromeos-i686.tar.xz',
-    x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/dropbox-48.4.58-chromeos-x86_64.tar.xz',
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dropbox/48.4.58_i686/dropbox-48.4.58-chromeos-i686.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dropbox/48.4.58_x86_64/dropbox-48.4.58-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
       i686: '1d272702286bd31f3235ba0eb8369946f45fb4ea919b35d1ec4ed060a1578b69',
     x86_64: 'c2c699372e4646ce5ed542fa189c08dc44dea1ae312f7401f1f385279e1b2ded',
   })
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
-    depends_on 'libxslt'
-  end
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'libxslt'
 
   def self.build
     system "curl -#LO https://linux.dropbox.com/packages/dropbox.py"
@@ -58,7 +55,7 @@ class Dropbox < Package
     puts "To finish the installation, execute 'dropboxd'.".lightblue
     puts "Login to dropbox.com, highlight the url and paste into Chrome.".lightblue
     puts "Type Ctrl+C to exit dropboxd after linking your system.".lightblue
-    puts "Execute 'dropbox start' and after synching is complete, files will be available in ~/Dropbox.".lightblue
+    puts "Execute 'dropbox start' and after syncing is complete, files will be available in ~/Dropbox.".lightblue
     puts "Execute 'dropbox' to see the full list of available options.".lightblue
     puts
   end

@@ -10,10 +10,10 @@ class Avisynthplus < Package
   source_sha256 '8906d9e46dc90a194413d69b710e3106c0aafddc0c5c62004885d0c3beb79862'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/avisynthplus-3.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/avisynthplus-3.7.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_armv7l/avisynthplus-3.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_i686/avisynthplus-3.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.0_x86_64/avisynthplus-3.7.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '041ab6c783a42f1ffa0ecbb27b5fee4b49a1e5083b00a48454fc5a29069264ef',
@@ -22,7 +22,7 @@ class Avisynthplus < Package
      x86_64: '84f41b0ea157e9f53267f9e9212c9ad5eea5ee31d2cb1dc7cd516475e10e04ba'
   })
 
-  depends_on 'devil' => ':build'
+  depends_on 'devil' => :build
 
   def self.build
     Dir.mkdir 'builddir'

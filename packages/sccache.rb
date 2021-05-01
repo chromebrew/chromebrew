@@ -11,10 +11,10 @@ class Sccache < Package
   source_sha256 '7dbe71012f9b0b57d8475de6b36a9a3b4802e44a135e886f32c5ad1b0eb506e0'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sccache-0.2.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sccache-0.2.15-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sccache-0.2.15-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sccache-0.2.15-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sccache/0.2.15_armv7l/sccache-0.2.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sccache/0.2.15_armv7l/sccache-0.2.15-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sccache/0.2.15_i686/sccache-0.2.15-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sccache/0.2.15_x86_64/sccache-0.2.15-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0c5c81c8fb17e91e420cd2ab261800d5640519956a40c3feb74469bee303ec4e',
@@ -23,7 +23,7 @@ class Sccache < Package
      x86_64: 'abbede3efe1a1cdee32be218ec2b86781da6074a262d7c07ac23b247610b8262'
   })
 
-  depends_on 'rust' => ':build'
+  depends_on 'rust' => :build
 
   def self.build
     system "cargo fetch \

@@ -10,10 +10,10 @@ class Numactl < Package
   source_sha256 '991e254b867eb5951a44d2ae0bf1996a8ef0209e026911ef6c3ef4caf6f58c9a'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/numactl-2.0.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/numactl-2.0.13-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/numactl-2.0.13-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/numactl-2.0.13-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_armv7l/numactl-2.0.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_armv7l/numactl-2.0.13-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_i686/numactl-2.0.13-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_x86_64/numactl-2.0.13-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1b1e55bb8d1b72d460bd7877845e86a27a449671a0e6987bd2ba97714f8151b4',

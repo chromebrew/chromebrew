@@ -11,10 +11,10 @@ class Wpebackend_fdo < Package
   source_sha256 '9652a99c75fe1c6eab0585b6395f4e104b2427e4d1f42969f1f77df29920d253'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/wpebackend_fdo-1.8.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/wpebackend_fdo-1.8.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/wpebackend_fdo-1.8.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/wpebackend_fdo-1.8.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.0_armv7l/wpebackend_fdo-1.8.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.0_armv7l/wpebackend_fdo-1.8.0-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.0_i686/wpebackend_fdo-1.8.0-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.8.0_x86_64/wpebackend_fdo-1.8.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '2eb8dbb4be7ec82b3b48c5396759f447374b206ef3d498d49899a86b066b60d0',
@@ -26,11 +26,11 @@ class Wpebackend_fdo < Package
   depends_on 'libwpe'
   depends_on 'wayland'
   depends_on 'libepoxy'
-  depends_on 'mesa' => ':build'
-  depends_on 'wayland_protocols' => ':build'
+  depends_on 'mesa' => :build
+  depends_on 'wayland_protocols' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     builddir"
     system "meson configure builddir"
     system "ninja -C builddir"

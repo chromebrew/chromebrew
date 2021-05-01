@@ -10,10 +10,10 @@ class At_spi2_atk < Package
   source_sha256 '95f10c80834d3811938153199da671967ee3c8f378883ed3f6ddeee1d316d3e4'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_atk-2.38.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_atk-2.38.0-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_atk-2.38.0-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/at_spi2_atk-2.38.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_atk/2.38.0_armv7l/at_spi2_atk-2.38.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_atk/2.38.0_armv7l/at_spi2_atk-2.38.0-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_atk/2.38.0_i686/at_spi2_atk-2.38.0-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_atk/2.38.0_x86_64/at_spi2_atk-2.38.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '097744ccba6da2013771b9da22a887e64cd6fd0df0b39bc1576e9131e1ff30a9',
@@ -27,7 +27,7 @@ class At_spi2_atk < Package
   depends_on 'atk'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} builddir"
+    system "meson #{CREW_MESON_OPTIONS} builddir"
     system "meson configure builddir"
     system "ninja -C builddir"
   end

@@ -10,10 +10,10 @@ class Compressdoc < Package
   source_sha256 'f380473baaa8785b1c7a7a30f2dda4b748a9baed3b335655faedad49ebf8246b'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/compressdoc-20080421.1623-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/compressdoc-20080421.1623-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/compressdoc-20080421.1623-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/compressdoc-20080421.1623-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_armv7l/compressdoc-20080421.1623-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_armv7l/compressdoc-20080421.1623-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_i686/compressdoc-20080421.1623-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20080421.1623_x86_64/compressdoc-20080421.1623-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3e63d392982f5ccfd330f927febec36b18a53ad722b26a4beb2f4de3efad6c94',

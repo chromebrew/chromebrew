@@ -4,26 +4,26 @@ class Docbook_xml51 < Package
   description 'A widely used XML scheme for writing documentation and help'
   homepage 'https://www.oasis-open.org/docbook/'
   @_ver = '5.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'MIT'
   compatibility 'all'
   source_url "https://docbook.org/xml/#{@_ver}/docbook-v#{@_ver}-os.zip"
   source_sha256 'b3f3413654003c1e773360d7fc60ebb8abd0e8c9af8e7d6c4b55f124f34d1e7f'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml51-5.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml51-5.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml51-5.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/docbook_xml51-5.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_armv7l/docbook_xml51-5.1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_armv7l/docbook_xml51-5.1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_i686/docbook_xml51-5.1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_x86_64/docbook_xml51-5.1-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0f54fe99ab568f5675eeef905925192f0f96ce5bfb6c4b0c9ec597429352940d',
-     armv7l: '0f54fe99ab568f5675eeef905925192f0f96ce5bfb6c4b0c9ec597429352940d',
-       i686: '9d0331c233cc88d7302c99130df4edcb633f1944800ead2e0d6f2b6f5bb9fb42',
-     x86_64: '95b7ffdb3797cb550d7da3195aeedbee5336a58e14cf8dae765248370698162c'
+    aarch64: 'ca2389bebf749c9697ba33405f85b41bd3272bff20d4b4640df05c29b675dac4',
+     armv7l: 'ca2389bebf749c9697ba33405f85b41bd3272bff20d4b4640df05c29b675dac4',
+       i686: 'b07d85d319d7ef992b23a1e11f2de204e7416650eeb3c65379328369adc99811',
+     x86_64: '9439627140b197a6d9d57897d206dcd75d2d64bbae74960411203be48d41bb68'
   })
 
-  depends_on 'libxml2'
+  depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
   depends_on 'bash'
 
@@ -147,18 +147,6 @@ class Docbook_xml51 < Package
   end
 
   def self.postinstall
-    # Docbook common postinstall block
-    ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
-
-    xml_catalog_files_in_bashrc = `grep -c "XML_CATALOG_FILES" ~/.bashrc || true`
-    unless xml_catalog_files_in_bashrc.to_i.positive?
-      puts "Putting \"export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog\" in ~/.bashrc".lightblue
-      system "echo 'export XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog' >> ~/.bashrc"
-      puts 'To complete the installation, execute the following:'.orange
-      puts 'source ~/.bashrc'.orange
-    end
-    # End Docbook common postinstall block
-
     system "xmlcatalog --noout --add \"delegatePublic\" \
         \"-//OASIS//ENTITIES DocBook XML\" \
         \"file://#{CREW_PREFIX}/etc/xml/docbook-xml\" \

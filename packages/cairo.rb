@@ -10,10 +10,10 @@ class Cairo < Package
   source_sha256 '74b24c1ed436bbe87499179a3b27c43f4143b8676d8ad237a6fa787401959705'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.17.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.17.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.17.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cairo-1.17.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4_armv7l/cairo-1.17.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4_armv7l/cairo-1.17.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4_i686/cairo-1.17.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4_x86_64/cairo-1.17.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9ff5df66de2bf89670852e030379a6c1873dfc2e154e86fe0992ee6ebebe4be9',
@@ -22,13 +22,19 @@ class Cairo < Package
      x86_64: 'b12d21a683f06db69052f2d927039f6e893aecdc993de1b384af9267d25ff93e'
   })
 
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'glib'
   depends_on 'libpng'
+  depends_on 'libx11'
+  depends_on 'libxcb'
+  depends_on 'libxrender'
   depends_on 'lzo'
-  depends_on 'pixman'
   depends_on 'mesa'
+  depends_on 'pixman'
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dgl-backend=auto \
     -Dglesv3=enabled \

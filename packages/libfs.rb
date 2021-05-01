@@ -10,10 +10,10 @@ class Libfs < Package
   source_sha256 '91bf1c5ce4115b7dbf4e314fdbee54052708e8f7b6a2ec6e82c309bcbe40ef3d'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libfs-1.0.7-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libfs-1.0.7-0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libfs-1.0.7-0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libfs-1.0.7-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_armv7l/libfs-1.0.7-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_armv7l/libfs-1.0.7-0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_i686/libfs-1.0.7-0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.7-0_x86_64/libfs-1.0.7-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '70879f9509e6c33cc7377706e251e53397c772c6ab1d59ffec7370bd6f247eb2',

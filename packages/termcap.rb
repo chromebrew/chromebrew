@@ -10,10 +10,10 @@ class Termcap < Package
   source_sha256 '91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/termcap-1.3.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/termcap-1.3.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/termcap-1.3.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/termcap-1.3.1-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/termcap/1.3.1-1_armv7l/termcap-1.3.1-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/termcap/1.3.1-1_armv7l/termcap-1.3.1-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/termcap/1.3.1-1_i686/termcap-1.3.1-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/termcap/1.3.1-1_x86_64/termcap-1.3.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c009c6ce4f03e6897c656f2e45a6d386ecbd06b78b766b054fa96a981611cc45',

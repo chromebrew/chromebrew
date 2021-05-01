@@ -10,10 +10,10 @@ class Rendercheck < Package
   source_sha256 '00605679436d65ccf9a6f1f1cb206df7a2e8b28a7821e867922d2b14b009f1cc'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/rendercheck-1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/rendercheck-1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/rendercheck-1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/rendercheck-1.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rendercheck/1.5_armv7l/rendercheck-1.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rendercheck/1.5_armv7l/rendercheck-1.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rendercheck/1.5_i686/rendercheck-1.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rendercheck/1.5_x86_64/rendercheck-1.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '90b0f792889946717870f1497e523c3229cb5840feaf1152da6a125710310697',

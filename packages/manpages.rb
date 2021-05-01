@@ -10,10 +10,10 @@ class Manpages < Package
   source_sha256 '75102535ba119f2f223f674d84e1dcdaebf0a5ffd639b3c2e6cb0a0e34768762'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-5.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-5.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-5.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/manpages-5.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_armv7l/manpages-5.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_armv7l/manpages-5.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_i686/manpages-5.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/5.10_x86_64/manpages-5.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f744832c6e15601fa603a42bb12f8b1d9500ddd1f1e39444970e57a5c2d2e2db',

@@ -10,10 +10,10 @@ class Zsh < Package
   source_sha256 'dcc4b54cc5565670a65581760261c163d720991f0d06486da61f8d839b52de27'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zsh-5.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_armv7l/zsh-5.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_armv7l/zsh-5.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_i686/zsh-5.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsh/5.8_x86_64/zsh-5.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8f06f08ffefdbe17a1026eab0140c74a103c3dc4b710fad9f9a158a215ba3376',

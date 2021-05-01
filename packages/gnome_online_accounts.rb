@@ -11,10 +11,10 @@ class Gnome_online_accounts < Package
   source_sha256 '89e27c886c0266b8c84a56dbb0fb0baefa704dd4d0ec47dd154a26590554adc9'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_online_accounts-3.39.92-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gnome_online_accounts-3.39.92-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_armv7l/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_armv7l/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_i686/gnome_online_accounts-3.39.92-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_x86_64/gnome_online_accounts-3.39.92-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c99efb0ee72e176460beea2b7e75fb980d48f6f1fe56725437631fc17a804cc6',
@@ -29,12 +29,12 @@ class Gnome_online_accounts < Package
   depends_on 'rest'
   depends_on 'libsecret'
   depends_on 'gcr'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'vala' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=true \
     builddir"
     system 'meson configure builddir'

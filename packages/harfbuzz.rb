@@ -11,10 +11,10 @@ class Harfbuzz < Package
   source_sha256 'daff8a4003ac420a8550760ed303ce33b310c8ea17b7f15b307d1969cabcebcb'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/harfbuzz-2.7.4-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/harfbuzz-2.7.4-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_armv7l/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_armv7l/harfbuzz-2.7.4-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_i686/harfbuzz-2.7.4-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/2.7.4_x86_64/harfbuzz-2.7.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: 'a2cc6f26453bc9077dde0d549ea92e30a8847d9c9d49ceebc681b090056d69fc',
@@ -23,7 +23,7 @@ class Harfbuzz < Package
       x86_64: 'bdcb5b9ab85752b8f8ce46b919e6739754e369fd807a5f52d85afb43ca815153',
   })
 
-  depends_on 'cairo' => ':build'
+  depends_on 'cairo' => :build
   depends_on 'glib' => :build
   depends_on 'gobject_introspection'
   depends_on 'ragel' => :build
@@ -32,7 +32,7 @@ class Harfbuzz < Package
   depends_on 'graphite' => :build
 
   def self.build
-    system "meson #{CREW_MESON_LTO_OPTIONS} \
+    system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dintrospection=enabled \
     -Dbenchmark=disabled \

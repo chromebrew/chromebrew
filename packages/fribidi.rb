@@ -10,10 +10,10 @@ class Fribidi < Package
   source_sha256 '3ebb19c4184ed6dc324d2e291d7465bc6108a20be019f053f33228e07e879c4f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fribidi-1.0.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.10_armv7l/fribidi-1.0.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.10_armv7l/fribidi-1.0.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.10_i686/fribidi-1.0.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.10_x86_64/fribidi-1.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1200e97b55266d2640939faf5d63fb587819d699f248ff65a957263f346e9546',
@@ -23,7 +23,7 @@ class Fribidi < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} -Ddocs=false -Dtests=false build"
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} -Ddocs=false -Dtests=false build"
     system 'meson configure build'
     system 'ninja -v -C build'
   end

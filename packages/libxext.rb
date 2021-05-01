@@ -10,10 +10,10 @@ class Libxext < Package
   source_sha256 '8ef0789f282826661ff40a8eef22430378516ac580167da35cc948be9041aac1'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libxext-1.3.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libxext-1.3.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libxext-1.3.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libxext-1.3.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxext/1.3.4_armv7l/libxext-1.3.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxext/1.3.4_armv7l/libxext-1.3.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxext/1.3.4_i686/libxext-1.3.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxext/1.3.4_x86_64/libxext-1.3.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '71402bff06db86bd9b08030c7615868a8bfcf3ed52ef9369d066267c1827c118',
@@ -22,7 +22,7 @@ class Libxext < Package
      x86_64: '9024bf186472eeb3ed2fe0ea7c77716f76c9860248418d8f804f600d5b5c2704',
   })
 
-  depends_on 'llvm' => ':build'
+  depends_on 'llvm' => :build
 
   def self.build
     ENV['CFLAGS'] = "-fuse-ld=lld"

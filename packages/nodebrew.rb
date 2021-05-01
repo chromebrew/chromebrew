@@ -4,23 +4,23 @@ class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
   @_ver = '1.0.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"
   source_sha256 'c34e7186d4fd493c5417ad5563ad39fd493a42695bd9a7758c3df10380e43399'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-1.0.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-1.0.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-1.0.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/nodebrew-1.0.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_i686/nodebrew-1.0.1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_x86_64/nodebrew-1.0.1-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'e3c4bfac2033982be9859766dc9b7c00a018cbdc0c233f54b0725295baabd770',
-     armv7l: 'e3c4bfac2033982be9859766dc9b7c00a018cbdc0c233f54b0725295baabd770',
-       i686: 'ca1437cc074946cd723a691a89ca127d3c1f95beea6015fa74cf66fe074a6c22',
-     x86_64: 'bcf965ab509fca115094ba9ed146c0b9fe43a37055b2b233b32cf77bde659f08'
+    aarch64: 'ea1dc71bbdb987b742474128b4836e643beec4abcd48c7a2bc695092f8b19d39',
+     armv7l: 'ea1dc71bbdb987b742474128b4836e643beec4abcd48c7a2bc695092f8b19d39',
+       i686: 'b07ef1989b2f09f340eee6901d00652639f6e4dfb7c47d958bfebfe267fd5285',
+     x86_64: 'f564dade9448caa2763eddb292060e0dab2c17740f0b898c71432dc8e2ce3d48'
   })
 
   def self.install
@@ -35,23 +35,24 @@ class Nodebrew < Package
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/current/bin/node", "#{CREW_DEST_PREFIX}/bin/nodejs"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew", "#{CREW_DEST_HOME}/.nodebrew"
     FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew", "#{HOME}/.nodebrew"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
+    @bashd = <<~NODEBREWCOMPLETIONEOF
+      # nodebrew bash completion
+      source #{CREW_PREFIX}/share/nodebrew/completions/bash/nodebrew-completion
+    NODEBREWCOMPLETIONEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/nodebrew", @bashd)
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~'NODEBREWENVEOF'
+      # nodebrew configuration
+      export PATH="$PATH:$HOME/.nodebrew/current/bin"
+    NODEBREWENVEOF
+    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/nodebrew", @env)
   end
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew/default", "#{CREW_PREFIX}/share/nodebrew/current"
-    puts
-    puts 'Nodebrew completion support is available for the following shells:'.lightblue
-    puts 'bash fish zsh'.lightblue
-    puts
-    puts 'To add nodebrew completion for bash, execute the following:'.lightblue
-    puts "echo '# nodebrew completion' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/share/nodebrew/completions/bash/nodebrew-completion ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  source #{CREW_PREFIX}/share/nodebrew/completions/bash/nodebrew-completion' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts "echo 'export PATH=\$HOME/.nodebrew/current/bin:\$PATH' >> ~/.bashrc && source ~/.bashrc".lightblue
     puts
     puts 'To install the latest node, execute:'.lightblue
     puts 'nodebrew install-binary latest'.lightblue
@@ -60,12 +61,12 @@ class Nodebrew < Package
   end
 
   def self.remove
-    if Dir.exists? "#{CREW_PREFIX}/share/nodebrew"
+    if Dir.exist? "#{CREW_PREFIX}/share/nodebrew"
       puts
       print "Would you like to remove #{CREW_PREFIX}/share/nodebrew? [y/N] "
-      response = STDIN.getc
+      response = $stdin.getc
       case response
-      when "y", "Y"
+      when 'y', 'Y'
         FileUtils.rm_rf "#{CREW_PREFIX}/share/nodebrew"
         puts "#{CREW_PREFIX}/share/nodebrew removed.".lightred
       else

@@ -4,7 +4,7 @@
 require 'package'
 
 class Cargo_c < Package
-  description 'A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
+  description 'A cargo subcommand to build and install C-ABI compatible dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
   version '0.7.3'
   license 'LGPL-2.1 and MPL-1.1'
@@ -13,10 +13,10 @@ class Cargo_c < Package
   source_sha256 '533c65d555330e86b91415753efc140ffdb900abd59b5b6403352c4264941a99'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/cargo_c-0.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/cargo_c-0.7.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_i686/cargo_c-0.7.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_x86_64/cargo_c-0.7.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9063b96616c64d564f99cd16611ca86f8b8a72a88f5afd03582aaba51941acea',
@@ -25,7 +25,7 @@ class Cargo_c < Package
      x86_64: 'de92ff24a09ed7d26f0b8490e174c83ff9941ab33b417a8d20243d0f85d18ef3'
   })
 
-  depends_on 'rust' => ':build'
+  depends_on 'rust' => :build
 
   def self.build
     system "cargo fetch \

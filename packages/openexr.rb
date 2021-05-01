@@ -10,10 +10,10 @@ class Openexr < Package
   source_sha256 'fd6cb3a87f8c1a233be17b94c74799e6241d50fc5efd4df75c7a4b9cf4e25ea6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/openexr-2.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/openexr-2.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/openexr-2.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/openexr-2.3.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_armv7l/openexr-2.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_armv7l/openexr-2.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_i686/openexr-2.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_x86_64/openexr-2.3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd2c0cda2100a6928c13ee79bd605be4c0457f11b289fe7970ac4fdee18d4653b',

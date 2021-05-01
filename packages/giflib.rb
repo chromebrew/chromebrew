@@ -10,10 +10,10 @@ class Giflib < Package
   source_sha256 'df27ec3ff24671f80b29e6ab1c4971059c14ac3db95406884fc26574631ba8d5'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/giflib-5.1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/giflib-5.1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/giflib-5.1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/giflib-5.1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.1.4_armv7l/giflib-5.1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.1.4_armv7l/giflib-5.1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.1.4_i686/giflib-5.1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.1.4_x86_64/giflib-5.1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '546af3350ca70ffc33ba0c12e6de65efe2fc9bce95ef3c48ab81da2d6cc1cae0',

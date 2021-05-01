@@ -15,10 +15,7 @@ class Cabal < Package
     source_sha256 '6136c189ffccaa39916f9cb5788f757166444a2d0c473b987856a79ecbf0c714'
   end
 
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'ghc'
-  end
+  depends_on 'ghc'
 
   def self.install
     system "install -Dm755 cabal #{CREW_DEST_PREFIX}/bin/cabal"

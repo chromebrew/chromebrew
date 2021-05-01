@@ -10,10 +10,10 @@ class Fossil < Package
   source_sha256 '76a794555918be179850739a90f157de0edb8568ad552b4c40ce186c79ff6ed9'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fossil-2.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_armv7l/fossil-2.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_armv7l/fossil-2.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_i686/fossil-2.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_x86_64/fossil-2.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1888721a262e9a4232f91ff46a1700d8e024969475f01bc769f5d04f2a00567d',
@@ -22,7 +22,7 @@ class Fossil < Package
      x86_64: 'e3de20c2f0f7d49d2cac73d9076fd866d8df5f781105473b15107fcc3c45b69d',
   })
 
-  depends_on 'fuse'
+  depends_on 'fuse3'
   depends_on 'sqlite'
 
   def self.build

@@ -10,10 +10,10 @@ class Charm < Package
   source_sha256 'ae2d536303e770ceb002f69c1e71f6a8532c8d5dd075d2f5c1bf09ad02c3c015'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/charm-1.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/charm-1.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/charm-1.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/charm-1.9.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_armv7l/charm-1.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_armv7l/charm-1.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_i686/charm-1.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/charm/1.9.2_x86_64/charm-1.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0b830d2222daab4736c2de2952827371fcf934934640a56606669b163fdd58e5',
@@ -22,7 +22,7 @@ class Charm < Package
      x86_64: '9e826bf34b0c9d7fd6ccb712f57b40e29850c18ffe4d03f39215f66044a9b616',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.install
     system "python setup.py install --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"

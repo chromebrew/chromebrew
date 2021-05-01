@@ -10,10 +10,10 @@ class Gspell < Package
   source_sha256 'dcbb769dfdde8e3c0a8ed3102ce7e661abbf7ddf85df08b29915e92cd723abdd'
 
   binary_url ({
-     aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/gspell-1.9.1-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/gspell-1.9.1-1-chromeos-armv7l.tar.xz',
-        i686: 'https://dl.bintray.com/chromebrew/chromebrew/gspell-1.9.1-1-chromeos-i686.tar.xz',
-      x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/gspell-1.9.1-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-1_armv7l/gspell-1.9.1-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-1_armv7l/gspell-1.9.1-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-1_i686/gspell-1.9.1-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-1_x86_64/gspell-1.9.1-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '26c16ee849e3c09cd67f6dd951fd917959d362d195d9e52d3efca4e1b6875328',

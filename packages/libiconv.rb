@@ -10,10 +10,10 @@ class Libiconv < Package
   source_sha256 'e6a1b1b589654277ee790cce3734f07876ac4ccfaecbee8afa0b649cf529cc04'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-4-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-4-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libiconv-1.16-4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.16-4_armv7l/libiconv-1.16-4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.16-4_armv7l/libiconv-1.16-4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.16-4_i686/libiconv-1.16-4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.16-4_x86_64/libiconv-1.16-4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3328a5694b7eb6d44bfad79129aacb36f564ed597f31aafb54615635d50e1560',

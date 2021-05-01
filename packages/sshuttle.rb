@@ -10,10 +10,10 @@ class Sshuttle < Package
   source_sha256 '62c18b4d89e654687247a334e0ebaec675d38dfbedc6863d8d65044d37241b0f'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/sshuttle-0.78.3-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/sshuttle-0.78.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/0.78.3_armv7l/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/0.78.3_armv7l/sshuttle-0.78.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/0.78.3_i686/sshuttle-0.78.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/0.78.3_x86_64/sshuttle-0.78.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fad069cad984ae9a16cfe2109aa5e4f1b4af1435a9fd99075fe363d65b201348',

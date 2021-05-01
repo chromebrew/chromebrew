@@ -10,9 +10,9 @@ class Fzf < Package
   source_sha256 '07576e47d2d446366eb7806fd9f825a2340cc3dc7f799f1f53fe038ca9bf30f6'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/fzf-0.23.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/fzf-0.23.1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/fzf-0.23.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fzf/0.23.1_armv7l/fzf-0.23.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fzf/0.23.1_armv7l/fzf-0.23.1-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fzf/0.23.1_x86_64/fzf-0.23.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '034490807bf8b4dc3b996a70f492b99e54ac2ed3035e60d819af0b9565ebb79a',

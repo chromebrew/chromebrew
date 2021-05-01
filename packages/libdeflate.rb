@@ -10,10 +10,10 @@ class Libdeflate < Package
   source_sha256 'a5e6a0a9ab69f40f0f59332106532ca76918977a974e7004977a9498e3f11350'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libdeflate-1.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libdeflate-1.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libdeflate-1.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libdeflate-1.7-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_armv7l/libdeflate-1.7-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_armv7l/libdeflate-1.7-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_i686/libdeflate-1.7-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.7-1_x86_64/libdeflate-1.7-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '1195e3098e35caf102d85f6e094c0e4e13d0f4065bf43447168b5c3f53e59130',

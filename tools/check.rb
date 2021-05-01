@@ -729,7 +729,7 @@ task :lua do
 	:rest     => "| sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -1"
 end
 
-desc "Check for new verion of lz4"
+desc "Check for new version of lz4"
 task :lz4 do
   check_version :pkg_name => "lz4",
 	:url      => "https://github.com/lz4/lz4/releases/latest",
@@ -817,7 +817,7 @@ task :nano do
 	:rest     => "| sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -1"
 end
 
-desc "Check for new verison of ncdu"
+desc "Check for new version of ncdu"
 task :ncdu do
   check_version :pkg_name => "ncdu",
 	:url      => "https://dev.yorhel.nl/download/",
@@ -1219,7 +1219,7 @@ task :texinfo do
 	:rest     => "| sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -1"
 end
 
-desc "Check for new versio of tig"
+desc "Check for new version of tig"
 task :tig do
   check_version :pkg_name => "tig",
 	:url      => "https://github.com/jonas/tig/releases/latest",

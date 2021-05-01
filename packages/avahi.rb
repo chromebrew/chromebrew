@@ -3,29 +3,38 @@ require 'package'
 class Avahi < Package
   description 'Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite.'
   homepage 'http://www.avahi.org/'
-  version '0.8-2'
+  version '0.8-3'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz'
   source_sha256 '060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-2-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-2-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/avahi-0.8-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_armv7l/avahi-0.8-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_armv7l/avahi-0.8-3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_i686/avahi-0.8-3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-3_x86_64/avahi-0.8-3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'f37472d2cacfb5bcb342209d43938ac578dfa37de30662d8b73a74d386a60d83',
-     armv7l: 'f37472d2cacfb5bcb342209d43938ac578dfa37de30662d8b73a74d386a60d83',
-       i686: '2e77803a7d2dca48ad76c0ee08544008ea330ec1824db4600766a2f968a3ced5',
-     x86_64: 'de20f11d7e0d269f7940a0b75cd9647e55ccaac1bb49a05b383b16561318a6af'
+    aarch64: '1a2f3f2f1963ff4843ecf2212eaca985368d26ef532f953a68020c1518db0dcf',
+     armv7l: '1a2f3f2f1963ff4843ecf2212eaca985368d26ef532f953a68020c1518db0dcf',
+       i686: 'ca7e9694328710e7b14c22b5d0dd488363303cabca6d7e2ef5f82f484f56d666',
+     x86_64: 'a9b2f76d80af5ebd527cff54f928437f454824b7e5eda102fa7d1c568bb73063'
   })
 
+  depends_on 'atk'
+  depends_on 'cairo'
+  depends_on 'dbus'
+  depends_on 'gdk_pixbuf'
+  depends_on 'glib'
   depends_on 'gtk3'
+  depends_on 'harfbuzz'
+  depends_on 'libcap'
   depends_on 'libdaemon'
   depends_on 'libevent'
+  depends_on 'libjpeg'
   depends_on 'mono' => :build
+  depends_on 'pango'
   depends_on 'qtbase'
 
   def self.build

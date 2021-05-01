@@ -10,10 +10,10 @@ class Libical < Package
   source_sha256 'bd26d98b7fcb2eb0cd5461747bbb02024ebe38e293ca53a7dfdcb2505265a728'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/libical-3.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/libical-3.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/libical-3.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/libical-3.0.9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_i686/libical-3.0.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_x86_64/libical-3.0.9-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7db2461fee6be357f39abd270cfad5f20aa2e0d40f65a3310f1d2cc755c50e5e',
@@ -24,9 +24,9 @@ class Libical < Package
 
   depends_on 'glib'
   depends_on 'icu4c'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'vala' => ':build'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gtk_doc' => :build
+  depends_on 'vala' => :build
+  depends_on 'gobject_introspection' => :build
 
   def self.build
     Dir.mkdir 'builddir'

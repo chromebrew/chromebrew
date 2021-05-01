@@ -1,7 +1,7 @@
 require 'package'
 
 class Atk < Package
-  description 'ATK provides the set of accessibility interfaces that are implemented by other tookits and applications'
+  description 'ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications'
   homepage 'https://developer.gnome.org/atk'
   version '2.36'
   license 'LGPL-2+'
@@ -10,10 +10,10 @@ class Atk < Package
   source_sha256 'fb76247e369402be23f1f5c65d38a9639c1164d934e40f6a9cf3c9e96b652788'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/atk-2.36-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/atk-2.36-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/atk-2.36-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/atk-2.36-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_armv7l/atk-2.36-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_armv7l/atk-2.36-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_i686/atk-2.36-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atk/2.36_x86_64/atk-2.36-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '59b8ccc0c669036ac52af1ce1ae2935f003b373c8fad8ce6825ded95bc1b2a29',
@@ -26,7 +26,7 @@ class Atk < Package
   depends_on 'six' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} build"
+    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} build"
     system 'meson configure build'
     system 'ninja -C build'
   end

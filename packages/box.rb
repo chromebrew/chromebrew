@@ -10,10 +10,10 @@ class Box < Package
   source_sha256 'b60e231f431cefbd88fc4022af5408c2098242f45485180d87ad88dbd30e6d02'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/box-2.7.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/box-2.7.5-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/box-2.7.5-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/box-2.7.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_armv7l/box-2.7.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_armv7l/box-2.7.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_i686/box-2.7.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_x86_64/box-2.7.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2dd48393354f030d4324a9fde5ea1b57d809c14f87b96fd8e70af8b6c9c1b8a7',

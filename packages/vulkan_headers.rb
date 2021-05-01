@@ -11,10 +11,10 @@ class Vulkan_headers < Package
   source_sha256 'b86266544ab1d6780c5ee6cdf10f24ba9ec4c97bc83d2229e0fb8142c36e52ac'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.171-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/vulkan_headers-1.2.171-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_i686/vulkan_headers-1.2.171-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_x86_64/vulkan_headers-1.2.171-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f0795e78f27c10ab4180743b4f1f46b566007da4fd348b4cdf6e35ee4c3fb72b',

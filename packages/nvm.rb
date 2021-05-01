@@ -9,6 +9,19 @@ class Nvm < Package
   source_url 'https://github.com/nvm-sh/nvm/archive/v0.35.3.tar.gz'
   source_sha256 'a88c8c1e920ca24c09a2f9f0733afa9d6ccf03fe068e9ffba488416d9710d4fb'
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_i686/nvm-0.35.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_x86_64/nvm-0.35.3-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: 'eba4a5fdb550729b0d406cf5dd5791f0c4bc166d8cfc195abadc60a8323b6445',
+     armv7l: 'eba4a5fdb550729b0d406cf5dd5791f0c4bc166d8cfc195abadc60a8323b6445',
+       i686: '89f5bed7552b0f80689c3dd2dd46c1357b4b77a96502216d794098e6a3d607c7',
+     x86_64: '864317f63b74224ed74bc131c5596e11524abb277e717494111c98d75fd86de2'
+  })
+
   def self.install
     system "sed -i 's,\$HOME/.nvm,#{CREW_DEST_PREFIX}/share/nvm,g' install.sh"
     system "NVM_DIR=#{CREW_DEST_PREFIX}/share/nvm && bash install.sh"
@@ -16,15 +29,10 @@ class Nvm < Package
     system "rm -rf #{CREW_DEST_PREFIX}/share/nvm/test"
   end
 
-  def self.postinstall
+  def self.remove
     puts
-    puts "To complete the installation, execute:".lightblue
-    puts "source ~/.bashrc".lightblue
-    puts
-    puts "To uninstall, execute the following:".lightblue
-    puts "crew remove nvm".lightblue
+    puts "Don't forget to run:"
     puts "rm -rf #{CREW_PREFIX}/share/nvm".lightblue
-    puts "Delete any lines with NVM_DIR in ~/.bashrc.".lightblue
     puts
   end
 end

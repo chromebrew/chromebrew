@@ -10,10 +10,10 @@ class Linux_sources < Package
   source_sha256 'f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
 
   binary_url ({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/linux_sources-4.14-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_armv7l/linux_sources-4.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_armv7l/linux_sources-4.14-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_i686/linux_sources-4.14-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_x86_64/linux_sources-4.14-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7dfea20067015e59a2b4b1006b0beddaa6873a01470cee8007647d990da5bf57',

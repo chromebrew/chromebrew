@@ -11,10 +11,10 @@ class Zstd < Package
   source_sha256 'acf714d98e3db7b876e5b540cbf6dee298f60eb3c0723104f6d3f065cd60d6a8'
 
   binary_url({
-    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/zstd-1.4.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/zstd-1.4.9-chromeos-armv7l.tar.xz',
-       i686: 'https://dl.bintray.com/chromebrew/chromebrew/zstd-1.4.9-chromeos-i686.tar.xz',
-     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/zstd-1.4.9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_armv7l/zstd-1.4.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_armv7l/zstd-1.4.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_i686/zstd-1.4.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_x86_64/zstd-1.4.9-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c94ef7aecad9675d4fdcfc444cfd74c1560f6f8090c851bffe2be2a5250fc4f9',
@@ -44,7 +44,7 @@ class Zstd < Package
   def self.build
     Dir.chdir 'build/meson' do
       system "meson \
-        #{CREW_MESON_LTO_OPTIONS} \
+        #{CREW_MESON_OPTIONS} \
         builddir"
       system 'meson configure builddir'
       system 'ninja -C builddir'
