@@ -17,20 +17,21 @@ class Mesa < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.0.3_x86_64/mesa-21.0.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '606c7d251e1c80c6750d9aa9fb2c0e48db0200b8f38e3f8e4ce76275c017ad41',
-     armv7l: '606c7d251e1c80c6750d9aa9fb2c0e48db0200b8f38e3f8e4ce76275c017ad41',
+    aarch64: '48a476c2125b18e667f9d4bf7ff62cd01f316960702c64004a7ec77e1800d538',
+     armv7l: '48a476c2125b18e667f9d4bf7ff62cd01f316960702c64004a7ec77e1800d538',
        i686: '38d87df4433017a000a2c446ea2a0a17ac7db9f5aecb158fc7f1cd2115ccc4bb',
      x86_64: 'fc5692ca5514fbbcb87a7bd8cb3f1388a322830103e108350ae56cb5747f6be4'
   })
 
   depends_on 'elfutils' # R
   depends_on 'expat' # R
-  depends_on 'libgcc_s1' # R
+  depends_on 'gcc11' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
+  depends_on 'libgcc_s1' # R
   depends_on 'libomxil_bellagio' => :build
-  depends_on 'libunwind' => :build
+  depends_on 'libunwind' # R
   depends_on 'libvdpau' => :build
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
@@ -39,18 +40,16 @@ class Mesa < Package
   depends_on 'libxfixes' # R
   depends_on 'libxrandr' # R
   depends_on 'libxshmfence' # R
-  depends_on 'libxv'
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
-  depends_on 'libxxf86vm'
   depends_on 'libxxf86vm' # R
   depends_on 'llvm' # R
   depends_on 'lm_sensors' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
+  depends_on 'wayland_protocols' => :build
 
   def self.build
     case ARCH
