@@ -10,10 +10,10 @@ class Anagram < Package
   source_sha256 'd046fd5accd3c62267c0ef81b56cd05c59ec92b37cdb73f69d031879dba308bd'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/anagram-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/anagram-1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_i686/anagram-1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_x86_64/anagram-1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5d5e2fa0868d99ed24623a1fd98bf9a00a07c50e5a8c931cf2d43ab3dfbf1a42',

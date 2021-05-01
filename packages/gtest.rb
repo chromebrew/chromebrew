@@ -10,10 +10,10 @@ class Gtest < Package
   source_sha256 '763e20249e76417bed7ebc44aa85fedf5fbac6f9fb6d30bddb628ab07ebf04f5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtest-1.10.0-389c-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtest-1.10.0-389c-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtest-1.10.0-389c-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtest-1.10.0-389c-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_armv7l/gtest-1.10.0-389c-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_armv7l/gtest-1.10.0-389c-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_i686/gtest-1.10.0-389c-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_x86_64/gtest-1.10.0-389c-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4c1dde1b6562fca74a35cd29f627d57ce06e6fb77b1873c34be7e75200ce5826',

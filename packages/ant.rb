@@ -10,10 +10,10 @@ class Ant < Package
   source_sha256 '4b2008cc60fefd424b05567e9d43a071302865d5fd8b01a807e15e381b557ec2'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ant-1.10.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ant-1.10.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ant-1.10.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ant-1.10.9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.9_armv7l/ant-1.10.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.9_armv7l/ant-1.10.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.9_i686/ant-1.10.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.9_x86_64/ant-1.10.9-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e015a293ee3db3a0f4d184e0f7c07c084799013ba68912631cc2359f9f26d804',

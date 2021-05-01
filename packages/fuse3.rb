@@ -10,10 +10,10 @@ class Fuse3 < Package
   source_sha256 '736e8d1ce65c09cb435fbbb500d53dc75f4d6e93bd325d22adc890951cf56337'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fuse3-3.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/fuse3-3.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/fuse3-3.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/fuse3-3.10.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.2_armv7l/fuse3-3.10.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.2_armv7l/fuse3-3.10.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.2_i686/fuse3-3.10.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.2_x86_64/fuse3-3.10.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6e4d623810017d9dc58852f19d251fe52282578d6099ea41eac94d23eb0066e8',

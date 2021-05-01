@@ -10,10 +10,10 @@ class Psutil < Package
   source_sha256 'c015248da36109ffaa15f46fce8c0003f678cfaa408090f466c80318885e7abf'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/psutil-5.8.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/psutil-5.8.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/psutil-5.8.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/psutil-5.8.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psutil/5.8.0_armv7l/psutil-5.8.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psutil/5.8.0_armv7l/psutil-5.8.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psutil/5.8.0_i686/psutil-5.8.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psutil/5.8.0_x86_64/psutil-5.8.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '35a8643fdc7141f35a0a91d217a5dedf377bb79790c18dc02f089362dfc8e104',

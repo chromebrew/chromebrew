@@ -11,10 +11,10 @@ class Docbook_xsl_nons < Package
   source_sha256 'ba41126fbf4021e38952f3074dc87cdf1e50f3981280c7a619f88acf31456822'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/docbook_xsl_nons-1.79.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/docbook_xsl_nons-1.79.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_i686/docbook_xsl_nons-1.79.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_x86_64/docbook_xsl_nons-1.79.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'dbc2f81d3557aea2e40e87f4d1d68adc0b36c4a549f20813e66ab54d6e357030',

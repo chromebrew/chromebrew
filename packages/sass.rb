@@ -10,10 +10,10 @@ class Sass < Package
   source_sha256 '1b7679f55bd621af878265ce8b07e3de404779b5f390b6f74ef76c9bacf292b2'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sass-1.32.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sass-1.32.8-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sass-1.32.8-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sass-1.32.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sass/1.32.8_armv7l/sass-1.32.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sass/1.32.8_armv7l/sass-1.32.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sass/1.32.8_i686/sass-1.32.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sass/1.32.8_x86_64/sass-1.32.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '12ea3b5e50d909b9375b9e2ae4063f73dd073716d6dc431ee10e0bbdd9eaacfc',

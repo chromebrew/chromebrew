@@ -11,10 +11,10 @@ class Gvfs < Package
   source_sha256 'acde26bee8a04e8432b0946b0fd36bc831ccc4f58c32fbcee6a3f525a595f5e9'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gvfs-1.48.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gvfs-1.48.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.0-1_armv7l/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.0-1_armv7l/gvfs-1.48.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.0-1_i686/gvfs-1.48.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.0-1_x86_64/gvfs-1.48.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '97b9379b27f4005491a2737d7f549d750a8c7b7cb4939cf423e610306e888a66',

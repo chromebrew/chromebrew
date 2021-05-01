@@ -10,10 +10,10 @@ class Evolution_data_server < Package
   source_sha256 'd789b6dc403d35902b3b6cdcebff31880d2773b1829fbdc561c59a71453eaab9'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/evolution_data_server-3.39.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/evolution_data_server-3.39.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/evolution_data_server-3.39.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/evolution_data_server-3.39.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_armv7l/evolution_data_server-3.39.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_armv7l/evolution_data_server-3.39.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_i686/evolution_data_server-3.39.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_x86_64/evolution_data_server-3.39.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'cf89c1f0ee6aaec68cee3dc6d5e9261a715b1e074ea1613f474976f9e8db376e',

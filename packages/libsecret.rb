@@ -10,10 +10,10 @@ class Libsecret < Package
   source_sha256 'ca34e69b210df221ae5da6692c2cb15ef169bb4daf42e204442f24fdb0520d4b'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsecret-0.20.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsecret-0.20.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsecret-0.20.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsecret-0.20.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_armv7l/libsecret-0.20.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_armv7l/libsecret-0.20.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_i686/libsecret-0.20.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.4_x86_64/libsecret-0.20.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '72e98cbae2d269061a3d2ca137a8437642d9cc72a130f02fecddd405dd968c95',

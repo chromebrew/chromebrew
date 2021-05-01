@@ -10,10 +10,10 @@ class Xcb_util_wm < Package
   source_sha256 '28bf8179640eaa89276d2b0f1ce4285103d136be6c98262b6151aaee1d3c2a3f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xcb_util_wm-0.4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xcb_util_wm-0.4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xcb_util_wm-0.4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xcb_util_wm-0.4.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_wm/0.4.1_armv7l/xcb_util_wm-0.4.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_wm/0.4.1_armv7l/xcb_util_wm-0.4.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_wm/0.4.1_i686/xcb_util_wm-0.4.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_wm/0.4.1_x86_64/xcb_util_wm-0.4.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'eca2ea7322b69ffa1ffc26b2c9e8b27b3f497a903245096ab5714058d9cbcb6c',

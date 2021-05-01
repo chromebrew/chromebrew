@@ -10,10 +10,10 @@ class Json_glib < Package
   source_sha256 'a33d66c6d038bda46b910c6c6d59c4e15db014e363dc997a0414c2e07d134f24'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/json_glib-1.6.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/json_glib-1.6.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/json_glib-1.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/json_glib-1.6.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_armv7l/json_glib-1.6.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_armv7l/json_glib-1.6.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_i686/json_glib-1.6.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_x86_64/json_glib-1.6.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '455dcfbda9d20fc22e4ce2ccb33ac87776acd82cdc515ce7bf26af0e0118cd89',

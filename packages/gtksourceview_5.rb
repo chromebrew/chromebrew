@@ -11,10 +11,10 @@ class Gtksourceview_5 < Package
   source_sha256 'b97ee7f2404d00ba607b865a838ee7c90053811c16c633a6359dace4ee1f218c'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtksourceview_5-5.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gtksourceview_5-5.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gtksourceview_5-5.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gtksourceview_5-5.0.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_armv7l/gtksourceview_5-5.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_armv7l/gtksourceview_5-5.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_i686/gtksourceview_5-5.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_x86_64/gtksourceview_5-5.0.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0e1f4e4d940074837e075f5008dd5178b5e9c6b4bcf2f8eabd16002adf7adb8c',

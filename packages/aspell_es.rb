@@ -10,10 +10,10 @@ class Aspell_es < Package
   source_sha256 'ad367fa1e7069c72eb7ae37e4d39c30a44d32a6aa73cedccbd0d06a69018afcc'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aspell_es-1.11-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/aspell_es-1.11-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/aspell_es-1.11-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/aspell_es-1.11-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_es/1.11-2_armv7l/aspell_es-1.11-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_es/1.11-2_armv7l/aspell_es-1.11-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_es/1.11-2_i686/aspell_es-1.11-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_es/1.11-2_x86_64/aspell_es-1.11-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6672aed4511fc5297e905cfdb10c8491d4e077f53cd0d6eb7500d380f6f7e28d',

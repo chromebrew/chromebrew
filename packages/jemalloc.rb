@@ -10,10 +10,10 @@ class Jemalloc < Package
   source_sha256 '34330e5ce276099e2e8950d9335db5a875689a4c6a56751ef3b1d8c537f887f6'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jemalloc-5.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jemalloc-5.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/jemalloc-5.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/jemalloc-5.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jemalloc/5.2.1_armv7l/jemalloc-5.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jemalloc/5.2.1_armv7l/jemalloc-5.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jemalloc/5.2.1_i686/jemalloc-5.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jemalloc/5.2.1_x86_64/jemalloc-5.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bc626c680f09555d7909d4cb13eac39b321ac930b8deb68e5e5dd9e24ac95e55',

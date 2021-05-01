@@ -10,10 +10,10 @@ class Zoneinfo < Package
   source_sha256 '21bf125de7b0c486cb57f1ba61b39584c949b2e6cac0a03a6425435d9bff37d0'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zoneinfo-2021a-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zoneinfo-2021a-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/zoneinfo-2021a-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/zoneinfo-2021a-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_armv7l/zoneinfo-2021a-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_armv7l/zoneinfo-2021a-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_i686/zoneinfo-2021a-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2021a_x86_64/zoneinfo-2021a-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '90df3fefec5c3a6c74dc8f5ebc9c71eedafe4d8640c4925bbe06add4a860c4b4',

@@ -12,10 +12,10 @@ class Gemacs < Package
   git_hashtag '7a7bc15242896b20c7af49f77f0e22c3d78e4d88'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gemacs-28.0.50.1-7a7b-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gemacs-28.0.50.1-7a7b-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_i686/gemacs-28.0.50.1-7a7b-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_x86_64/gemacs-28.0.50.1-7a7b-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '74066f8609ca1403609962454feff1a85aedb24a3d56dbfcae4a3aad8d00f836',

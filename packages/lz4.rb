@@ -10,10 +10,10 @@ class Lz4 < Package
   source_sha256 '658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lz4-1.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lz4-1.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lz4-1.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lz4-1.9.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.2_armv7l/lz4-1.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.2_armv7l/lz4-1.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.2_i686/lz4-1.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lz4/1.9.2_x86_64/lz4-1.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '103784c0d0f91d022a0d6487550d87b8cefd0452d168cf53e794b44d458a8142',

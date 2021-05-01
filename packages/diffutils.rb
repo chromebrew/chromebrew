@@ -10,10 +10,10 @@ class Diffutils < Package
   source_sha256 'b3a7a6221c3dc916085f0d205abf6b8e1ba443d4dd965118da364a1dc1cb3a26'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/diffutils-3.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/diffutils-3.7-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/diffutils-3.7-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/diffutils-3.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_armv7l/diffutils-3.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_armv7l/diffutils-3.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_i686/diffutils-3.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_x86_64/diffutils-3.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '814cec97d84c6558bff0cf5d92b048e76ec4b9cd1fdbff01890e0bfd8b7c261d',

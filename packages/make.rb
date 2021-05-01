@@ -10,10 +10,10 @@ class Make < Package
   source_sha256 'de1a441c4edf952521db30bfca80baae86a0ff1acd0a00402999344f04c45e82'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/make-4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/make-4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/make-4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/make-4.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_armv7l/make-4.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_armv7l/make-4.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_i686/make-4.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_x86_64/make-4.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '88a00eb5088f6a6b15c510f75040f7932b467e3f8306166052f24b56b4cd9405',

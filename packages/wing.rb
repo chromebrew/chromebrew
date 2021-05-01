@@ -12,7 +12,7 @@ class Wing < Package
   depends_on 'sommelier'
 
   binary_url ({
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/wing-7.2.1.0-chromeos-x86_64.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wing/7.2.1.0_x86_64/wing-7.2.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     x86_64: '8be03ea9bcfa884c4f4a324190ecf6cbefd7b82389e264b6a35e318f30ec7ed3',

@@ -13,10 +13,10 @@ class Spice_gtk < Package
   source_sha256 '23acbee197eaaec9bce6e6bfd885bd8f79708332639243ff04833020865713cd'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/spice_gtk-0.39-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/spice_gtk-0.39-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/spice_gtk-0.39-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/spice_gtk-0.39-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.39_armv7l/spice_gtk-0.39-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.39_armv7l/spice_gtk-0.39-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.39_i686/spice_gtk-0.39-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.39_x86_64/spice_gtk-0.39-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'd26a23484818e6c52a82732768a6835e7327149d0ddfcdbb4822037f9be0eb13',

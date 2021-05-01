@@ -10,9 +10,9 @@ class Dia < Package
   source_sha256 '13437d52f2c5cfdae7ecde8bd5ed0a53a388b0331698236d0ec63453b8a13016'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dia-0.97.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dia-0.97.2-1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/dia-0.97.2-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.2-1_armv7l/dia-0.97.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.2-1_armv7l/dia-0.97.2-1-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.2-1_x86_64/dia-0.97.2-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '55db6bb7d6703818578e1a8977b5020d3e83cb5fb3ac568f8d797deaf200c3b6',

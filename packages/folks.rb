@@ -11,10 +11,10 @@ class Folks < Package
   source_sha256 'fc793ac48add708bf95b65060e74d66c016ea6077297f3329c59fee83cc415ed'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/folks-0.15.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/folks-0.15.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/folks-0.15.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/folks-0.15.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_armv7l/folks-0.15.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_armv7l/folks-0.15.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_i686/folks-0.15.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_x86_64/folks-0.15.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e6b4e6fe98522d67283e033a176c9efbb11784d0a5dd93c048a96418011fb64f',

@@ -12,10 +12,10 @@ class Glibmm_2_68 < Package
   source_sha256 'c1f38573191dceed85a05600888cf4cf4695941f339715bd67d51c2416f4f375'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glibmm_2_68-2.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/glibmm_2_68-2.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/glibmm_2_68-2.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/glibmm_2_68-2.68.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_68/2.68.0_armv7l/glibmm_2_68-2.68.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_68/2.68.0_armv7l/glibmm_2_68-2.68.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_68/2.68.0_i686/glibmm_2_68-2.68.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_68/2.68.0_x86_64/glibmm_2_68-2.68.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ac6be3527b1b77d5a31c0f9af2a382c8793805541c30d0c1050fde4da99d110a',

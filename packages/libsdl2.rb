@@ -11,10 +11,10 @@ class Libsdl2 < Package
   source_sha256 'd8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsdl2-2.0.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libsdl2-2.0.14-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libsdl2-2.0.14-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libsdl2-2.0.14-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.14_armv7l/libsdl2-2.0.14-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.14_armv7l/libsdl2-2.0.14-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.14_i686/libsdl2-2.0.14-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.14_x86_64/libsdl2-2.0.14-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '824f086a8e1fbe7fc90e9d715f402bfe77cf4800574be2bc8404cc3d1b73803f',

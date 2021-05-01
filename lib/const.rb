@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.8.10'
+CREW_VERSION = '1.8.15'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -13,7 +13,7 @@ ARCH_LIB = 'lib' + CREW_LIB_SUFFIX
 LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
 CHROMEOS_RELEASE = File.read('/etc/lsb-release').scan(/CHROMEOS_RELEASE_CHROME_MILESTONE=(.*)/)[0][0]
 
-if ENV['CREW_PREFIX'].empty?
+if ENV['CREW_PREFIX'].to_s.empty?
   CREW_PREFIX = '/usr/local'
 else
   CREW_PREFIX = ENV['CREW_PREFIX']
@@ -32,9 +32,18 @@ CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
-HOME = ENV['HOME'] || CREW_PREFIX + ENV['HOME']
-USER = `whoami`.chomp
-CREW_CACHE_DIR = ENV['CREW_CACHE_DIR'] || CREW_PREFIX + '/var/cache/crew'
+if ENV['CREW_PREFIX'].to_s.empty?
+  HOME = ENV['HOME']
+else
+  HOME = CREW_PREFIX + ENV['HOME']
+end
+
+# File.join ensures a trailing slash if one does not exist.
+if ENV['CREW_CACHE_DIR'].to_s.empty?
+  CREW_CACHE_DIR = File.join(HOME + '/.cache/crewcache', '')
+else
+  CREW_CACHE_DIR = File.join(ENV['CREW_CACHE_DIR'], '')
+end
 
 FileUtils.mkdir_p CREW_CACHE_DIR unless Dir.exist? CREW_CACHE_DIR
 
@@ -42,7 +51,11 @@ CREW_CACHE_ENABLED = ENV['CREW_CACHE_ENABLED']
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
 
 # Set CREW_NPROC from environment variable or `nproc`
-CREW_NPROC = ENV['CREW_NPROC'] || `nproc`.chomp
+if ENV["CREW_NPROC"].to_s.empty?
+  CREW_NPROC = `nproc`.strip
+else
+  CREW_NPROC = ENV["CREW_NPROC"]
+end
 
 # Set CREW_NOT_COMPRESS from environment variable
 CREW_NOT_COMPRESS = ENV['CREW_NOT_COMPRESS']
@@ -122,3 +135,12 @@ CREW_CMAKE_OPTIONS = <<~OPT
 OPT
 
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DLIB_SUFFIX=#{CREW_LIB_SUFFIX} " + CREW_CMAKE_OPTIONS
+
+PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
+PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
+PY_SETUP_INSTALL_OPTIONS = <<~OPT
+  --root=#{CREW_DEST_DIR} \
+  --prefix=#{CREW_PREFIX} -O2 \
+  --compile \
+  --single-version-externally-managed
+OPT

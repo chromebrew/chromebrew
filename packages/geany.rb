@@ -10,10 +10,10 @@ class Geany < Package
     source_sha256 '18c5756444c1d8bcd737c8ecfd4ef0b3607c924fc02560d4e8b78f6121531a18'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/geany-1.37.1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/geany-1.37.1-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/geany-1.37.1-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/geany-1.37.1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/1.37.1_armv7l/geany-1.37.1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/1.37.1_armv7l/geany-1.37.1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/1.37.1_i686/geany-1.37.1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/1.37.1_x86_64/geany-1.37.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '23569bccfea77b83925f8d8b69b0726956fab967588f8b87433a9aec9e846f9c',

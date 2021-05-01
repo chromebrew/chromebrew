@@ -10,10 +10,10 @@ class Dub < Package
   source_sha256 'baa8c533f59d83f74e89c06f5ec7e52daf3becb227c7177a9eeab7159ba86dbc'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dub-1.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/dub-1.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/dub-1.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/dub-1.7.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dub/1.7.1_armv7l/dub-1.7.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dub/1.7.1_armv7l/dub-1.7.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dub/1.7.1_i686/dub-1.7.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dub/1.7.1_x86_64/dub-1.7.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fc18b55caf6bf1b72d4400727be146fb0dc55978d8157976b7058b03928d1312',

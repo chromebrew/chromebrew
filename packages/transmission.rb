@@ -10,10 +10,10 @@ class Transmission < Package
   source_sha256 '35442cc849f91f8df982c3d0d479d650c6ca19310a994eccdaa79a4af3916b7d'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/transmission-2.94-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/transmission-2.94-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/transmission-2.94-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/transmission-2.94-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/2.94-1_armv7l/transmission-2.94-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/2.94-1_armv7l/transmission-2.94-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/2.94-1_i686/transmission-2.94-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/2.94-1_x86_64/transmission-2.94-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '87d5d1c8270dcbf151f98643c6d5d56961d22727133050076b3a7b0ccfd7c073',

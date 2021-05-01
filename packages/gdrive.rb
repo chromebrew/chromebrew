@@ -10,10 +10,10 @@ class Gdrive < Package
   source_sha256 'a1ea624e913e258596ea6340c8818a90c21962b0a75cf005e49a0f72f2077b2e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gdrive-2.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gdrive-2.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gdrive-2.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gdrive-2.1.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdrive/2.1.0_armv7l/gdrive-2.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdrive/2.1.0_armv7l/gdrive-2.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdrive/2.1.0_i686/gdrive-2.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdrive/2.1.0_x86_64/gdrive-2.1.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6290b75162c27f422ccd8477d5dba46b94a91519f74f404f9edf7c44913cac4d',

@@ -11,10 +11,10 @@ class Libavif < Package
   source_sha256 'ea1603fc18e7dd20cf01f0b405156576886ecb5df84db8c0e87187cd2f8a00f4'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libavif-0.9.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libavif-0.9.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libavif-0.9.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libavif-0.9.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_armv7l/libavif-0.9.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_armv7l/libavif-0.9.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_i686/libavif-0.9.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_x86_64/libavif-0.9.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a8da55cfc5b76744c0925508e0824f861a6846d87960ebefbfdcf09c4d36a9c9',

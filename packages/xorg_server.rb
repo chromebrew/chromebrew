@@ -11,10 +11,10 @@ class Xorg_server < Package
   source_sha256 'c03ef3c2dc44e75bf8caf942135a5aba3638822edb835bd05d2eaf428531a6a2'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_server-1.20.11-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_server-1.20.11-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_i686/xorg_server-1.20.11-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_x86_64/xorg_server-1.20.11-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '27cb4df4959f2d8e4d379d66daead6fb286bafada5f493d0049fb28227160493',

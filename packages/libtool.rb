@@ -10,10 +10,10 @@ class Libtool < Package
   source_sha256 'e3bd4d5d3d025a36c21dd6af7ea818a2afcd4dfc1ea5a17b39d7854bcd0c06e3'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libtool-2.4.6-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libtool-2.4.6-4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libtool-2.4.6-4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libtool-2.4.6-4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_armv7l/libtool-2.4.6-4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_armv7l/libtool-2.4.6-4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_i686/libtool-2.4.6-4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtool/2.4.6-4_x86_64/libtool-2.4.6-4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4d83d3c0d26b8aef3fba0d0d42feaa3fda736652a82ecfd24f4cdce384dc2b0c',

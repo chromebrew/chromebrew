@@ -10,10 +10,10 @@ class Libxxf86dga < Package
   source_sha256 'b3b7eab9b0b55d41526a5abf9a0b4e104cf2114e6b8adf7c7807b92e848c7d73'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxxf86dga-1.1-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxxf86dga-1.1-0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxxf86dga-1.1-0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxxf86dga-1.1-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1-0_armv7l/libxxf86dga-1.1-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1-0_armv7l/libxxf86dga-1.1-0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1-0_i686/libxxf86dga-1.1-0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1-0_x86_64/libxxf86dga-1.1-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7640083a2883a0e14b77add34fb9dbaf3d7c941526d31485f38e89b0ce8f9f6b',

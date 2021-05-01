@@ -11,10 +11,10 @@ class Gdbm < Package
   source_sha256 '37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gdbm-1.19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gdbm-1.19-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gdbm-1.19-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gdbm-1.19-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_armv7l/gdbm-1.19-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_armv7l/gdbm-1.19-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_i686/gdbm-1.19-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.19_x86_64/gdbm-1.19-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '34ed01ff6f5ce4af6e8d89f54acbd74cd2b33c585c4409d5d6d77fcbedf0562b',

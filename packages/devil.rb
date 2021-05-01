@@ -10,10 +10,10 @@ class Devil < Package
   source_sha256 '73728ff9f877b9247728ae46148866eea81092ccefb538a28640fe31b73d74ac'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/devil-1.8.0-e342-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/devil-1.8.0-e342-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/devil-1.8.0-e342-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/devil-1.8.0-e342-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-e342_armv7l/devil-1.8.0-e342-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-e342_armv7l/devil-1.8.0-e342-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-e342_i686/devil-1.8.0-e342-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-e342_x86_64/devil-1.8.0-e342-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '7d45e28698eb99159d98b97760d11ddecff0ac87412b7cf249fb7e188b320502',

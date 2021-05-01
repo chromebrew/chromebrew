@@ -3,7 +3,7 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  @_ver = '10.0.13'
+  @_ver = '10.0.15'
   version @_ver
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
@@ -11,7 +11,7 @@ class Torbrowser < Package
   @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}"
   @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
   source_url "#{@_url}/#{@_name}"
-  source_sha256 `curl -#L '#{@_url}/sha256sums-signed-build.txt' | grep '#{@_name}' | cut -d' ' -f1`.chomp
+  source_sha256 '3a73b44f68fe97c4d89984fd0a23be069c495ada7ecf97dc3060c6e7aa4c06aa'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
@@ -34,26 +34,25 @@ class Torbrowser < Package
   end
 
   def self.postinstall
-    puts
-    puts 'Set Tor as your default browser? [Y/n]: '
-    case STDIN.gets.chomp
-    when "\n", 'Y', 'y', 'yes'
+    print "\nSet Tor as your default browser? [Y/n]: "
+    case STDIN.getc
+    when "\n", 'Y', 'y'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf 'tor', 'x-www-browser'
       end
+      puts 'Tor is now your default browser.'.lightgreen
     else
-      puts 'No change has been made.'
-      puts
+      puts 'No change has been made.'.orange
     end
-
-    puts
-    puts "Type 'tor' to get started.".lightblue
-    puts
+    puts "\nType 'tor' to get started.\n".lightblue
   end
 
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      FileUtils.rm 'x-www-browser' if File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
+      if File.exist?('x-www-browser') and File.symlink?('x-www-browser') \
+        and File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
+        FileUtils.rm 'x-www-browser'
+      end
     end
   end
 end

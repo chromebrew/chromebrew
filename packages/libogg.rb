@@ -10,10 +10,10 @@ class Libogg < Package
   source_sha256 '4f3fc6178a533d392064f14776b23c397ed4b9f48f5de297aba73b643f955c08'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libogg-1.3.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libogg-1.3.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libogg-1.3.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libogg-1.3.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libogg/1.3.3_armv7l/libogg-1.3.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libogg/1.3.3_armv7l/libogg-1.3.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libogg/1.3.3_i686/libogg-1.3.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libogg/1.3.3_x86_64/libogg-1.3.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '19cedaf925df92be0217fdd752e3c78ca0e864c8b7aca395835fe80b30bd9ef8',

@@ -12,10 +12,10 @@ class Unicode_cldr < Package
   source_sha256 '19689be1352eafc2f034f065d4f70fe55136aed381c2d1e506d9ed49333ee9f8'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/unicode_cldr-38.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/unicode_cldr-38.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/unicode_cldr-38.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/unicode_cldr-38.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_cldr/38.0_armv7l/unicode_cldr-38.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_cldr/38.0_armv7l/unicode_cldr-38.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_cldr/38.0_i686/unicode_cldr-38.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_cldr/38.0_x86_64/unicode_cldr-38.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'fe2d83d790608a23da19f1bbd5dd6b155e4d180b68ffe15deea1b23624efd8d0',

@@ -10,10 +10,10 @@ class Perl_pod_parser < Package
   source_sha256 'dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_pod_parser-1.63-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_pod_parser-1.63-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_pod_parser-1.63-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_pod_parser-1.63-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_armv7l/perl_pod_parser-1.63-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_armv7l/perl_pod_parser-1.63-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_i686/perl_pod_parser-1.63-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_x86_64/perl_pod_parser-1.63-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3b7eabb2c15a0a3dfc325d564ebb50bbb7c03fbc31ab6b6b094f3402c99e7bbf',

@@ -10,10 +10,10 @@ class Iptables < Package
   source_sha256 'a23cac034181206b4545f4e7e730e76e08b5f3dd78771ba9645a6756de9cdd80'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/iptables-1.8.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/iptables-1.8.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/iptables-1.8.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/iptables-1.8.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_armv7l/iptables-1.8.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_armv7l/iptables-1.8.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_i686/iptables-1.8.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.3_x86_64/iptables-1.8.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '18c2cdd028a017bd6e7fa02ebc1f41158fa3793873bcd33a3054d746a7655be1',

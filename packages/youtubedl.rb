@@ -10,10 +10,10 @@ class Youtubedl < Package
   source_sha256 'd607adf66b7047865733f7d05af9478118ee4dd974ef9f971563e11de7f29122'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/youtubedl-2021.02.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/youtubedl-2021.02.10-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/youtubedl-2021.02.10-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/youtubedl-2021.02.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtubedl/2021.02.10_armv7l/youtubedl-2021.02.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtubedl/2021.02.10_armv7l/youtubedl-2021.02.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtubedl/2021.02.10_i686/youtubedl-2021.02.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtubedl/2021.02.10_x86_64/youtubedl-2021.02.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '595afef841f6baf7d61cbea4956804e010c1f34c15a631534fb069d113794301',

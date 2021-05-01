@@ -10,10 +10,10 @@ class Nftables < Package
   source_sha256 '68d6fdfe8ab02303e6b1f13968a4022da5b0120110eaee3233d806857937b66e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nftables-0.9.6-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nftables-0.9.6-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nftables-0.9.6-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nftables-0.9.6-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/0.9.6-1_armv7l/nftables-0.9.6-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/0.9.6-1_armv7l/nftables-0.9.6-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/0.9.6-1_i686/nftables-0.9.6-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/0.9.6-1_x86_64/nftables-0.9.6-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '87b2be9b1f371c684d5d21c111e8baf96f61813963ee38726c0fde7dd089eb47',

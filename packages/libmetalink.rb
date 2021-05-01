@@ -10,10 +10,10 @@ class Libmetalink < Package
   source_sha256 '86312620c5b64c694b91f9cc355eabbd358fa92195b3e99517504076bf9fe33a'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmetalink-0.1.3-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmetalink-0.1.3-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libmetalink-0.1.3-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libmetalink-0.1.3-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-2_armv7l/libmetalink-0.1.3-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-2_armv7l/libmetalink-0.1.3-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-2_i686/libmetalink-0.1.3-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-2_x86_64/libmetalink-0.1.3-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b47564f58da6ce1215010fd9ad152a568f5cae15a466b43b59b871d1469efb25',

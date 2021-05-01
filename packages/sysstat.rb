@@ -10,10 +10,10 @@ class Sysstat < Package
   source_sha256 'a496936bb3f5093d780a50735f00e39b0b7f3a688eb89051f2ef5f86739522c5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sysstat-12.1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/sysstat-12.1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/sysstat-12.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/sysstat-12.1.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_armv7l/sysstat-12.1.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_armv7l/sysstat-12.1.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_i686/sysstat-12.1.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_x86_64/sysstat-12.1.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '88f64d75bf8be7fe4cb8136ec188631a6e504c44951d8f2003f1998167be2df7',

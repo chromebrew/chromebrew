@@ -10,10 +10,10 @@ class Nvm < Package
   source_sha256 'a88c8c1e920ca24c09a2f9f0733afa9d6ccf03fe068e9ffba488416d9710d4fb'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nvm-0.35.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nvm-0.35.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_armv7l/nvm-0.35.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_i686/nvm-0.35.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nvm/0.35.3_x86_64/nvm-0.35.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'eba4a5fdb550729b0d406cf5dd5791f0c4bc166d8cfc195abadc60a8323b6445',

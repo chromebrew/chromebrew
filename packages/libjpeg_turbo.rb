@@ -11,10 +11,10 @@ class Libjpeg_turbo < Package
   source_sha256 '005aee2fcdca252cee42271f7f90574dda64ca6505d9f8b86ae61abc2b426371'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libjpeg_turbo-2.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libjpeg_turbo-2.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libjpeg_turbo-2.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libjpeg_turbo-2.0.6-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg_turbo/2.0.6_armv7l/libjpeg_turbo-2.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg_turbo/2.0.6_armv7l/libjpeg_turbo-2.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg_turbo/2.0.6_i686/libjpeg_turbo-2.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg_turbo/2.0.6_x86_64/libjpeg_turbo-2.0.6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '03aaee5e33b24e1919784d2167e1bd797c08ebf0af496a5de429dd053552fdaa',

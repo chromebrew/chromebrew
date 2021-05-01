@@ -13,7 +13,7 @@ class Svt_av1 < Package
   source_sha256 'e942959be6b062f4adea33fd5dbfbd5581b178ce87b4baf9bd84283fbc8203e1'
 
   binary_url({
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/svt_av1-0.8.6-chromeos-x86_64.tar.xz'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/svt_av1/0.8.6_x86_64/svt_av1-0.8.6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     x86_64: '930dad392dc9b31153adfbdb01f5c9cc947bf58c29c121aac89039a24c043867'

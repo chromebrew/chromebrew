@@ -10,10 +10,10 @@ class Superlu < Package
   source_sha256 '77582501dedef295eb74e4dc9433e2816d2d8be211eae307379c13d93c65bc71'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/superlu-5.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/superlu-5.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/superlu-5.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/superlu-5.2.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/superlu/5.2.1_armv7l/superlu-5.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/superlu/5.2.1_armv7l/superlu-5.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/superlu/5.2.1_i686/superlu-5.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/superlu/5.2.1_x86_64/superlu-5.2.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'ba7c045b4aefe809e33de9fe35476cca3ed62af1e38ec162c5e199d36d8181e1',

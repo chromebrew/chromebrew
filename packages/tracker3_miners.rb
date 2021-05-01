@@ -13,10 +13,10 @@ class Tracker3_miners < Package
   source_sha256 '4384105303082b859c48eec1fdb19b905e7605bba901cbc09df779293c319460'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tracker3_miners-3.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tracker3_miners-3.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tracker3_miners-3.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tracker3_miners-3.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.1.0_armv7l/tracker3_miners-3.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.1.0_armv7l/tracker3_miners-3.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.1.0_i686/tracker3_miners-3.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.1.0_x86_64/tracker3_miners-3.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0809348f22bc74b6af7e5e1566017feee21c2094cc6cc338d0ac070a1eba3931',

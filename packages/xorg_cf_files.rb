@@ -10,10 +10,10 @@ class Xorg_cf_files < Package
   source_sha256 '6d56094e5d1a6c7d7a9576ac3a0fc2c042344509ea900d59f4b23df668b96c7a'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_cf_files-1.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xorg_cf_files-1.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xorg_cf_files-1.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xorg_cf_files-1.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.6_armv7l/xorg_cf_files-1.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.6_armv7l/xorg_cf_files-1.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.6_i686/xorg_cf_files-1.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.6_x86_64/xorg_cf_files-1.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c6ce0bf7604e000c5972fd0057e1eda94e4f27899f4633ad48f8c2c435a7c22e',
