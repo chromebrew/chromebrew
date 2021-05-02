@@ -1,26 +1,26 @@
 require 'package'
 require 'open3'
 
-class Gcc10 < Package
+class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.3.0-1'
-  license 'GPL-3'
+  version '11.1.0'
+  license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz'
-  source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz'
+  source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_i686/gcc10-10.3.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_x86_64/gcc10-10.3.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_i686/gcc11-11.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_x86_64/gcc11-11.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '063eaf22f00c38abf797c4ccf09199bca4629ee7dcbf0a5015bc79e0c3dff313',
-     armv7l: '063eaf22f00c38abf797c4ccf09199bca4629ee7dcbf0a5015bc79e0c3dff313',
-       i686: '9c7b5a06288fa3b448d10c9f3569032c63f48b6f1148f513f74674bb59aa1961',
-     x86_64: '700b52e5f44c1c578d2c223222cae680343f9d2247f587212f2f9d24ab9d348e'
+    aarch64: '2db5bcee6b52e393f8a42a78543dff6339ec598f0fb852ab60ac5d1e5b620d71',
+     armv7l: '2db5bcee6b52e393f8a42a78543dff6339ec598f0fb852ab60ac5d1e5b620d71',
+       i686: 'd6d23b0cab5ea3e0922e6549140f2a0a7a4190c1739e79a49ee1051c4e02bd7d',
+     x86_64: 'e0216d9a1d1eededcca9b4a34b9e1fe7e013c3f6dea8a012bc1357c3df30b77b'
   })
 
   depends_on 'ccache' => :build
@@ -35,32 +35,32 @@ class Gcc10 < Package
   depends_on 'libgcc_s1' # L
 
   @gcc_global_opts = '--disable-bootstrap \
-    --disable-libmpx \
-    --disable-libssp \
-    --disable-multilib \
-    --disable-werror \
-    --enable-cet=auto \
-    --enable-checking=release \
-    --enable-clocale=gnu \
-    --enable-default-pie \
-    --enable-default-ssp \
-    --enable-gnu-indirect-function \
-    --enable-gnu-unique-object \
-    --enable-host-shared \
-    --enable-lto \
-    --enable-plugin \
-    --enable-shared \
-    --enable-symvers \
-    --enable-static \
-    --enable-threads=posix \
-    --with-gcc-major-version-only \
-    --with-gmp \
-    --with-isl \
-    --with-mpc \
-    --with-mpfr \
-    --with-pic \
-    --with-system-libunwind \
-    --with-system-zlib'
+  --disable-libmpx \
+  --disable-libssp \
+  --disable-multilib \
+  --disable-werror \
+  --enable-cet=auto \
+  --enable-checking=release \
+  --enable-clocale=gnu \
+  --enable-default-pie \
+  --enable-default-ssp \
+  --enable-gnu-indirect-function \
+  --enable-gnu-unique-object \
+  --enable-host-shared \
+  --enable-lto \
+  --enable-plugin \
+  --enable-shared \
+  --enable-symvers \
+  --enable-static \
+  --enable-threads=posix \
+  --with-gcc-major-version-only \
+  --with-gmp \
+  --with-isl \
+  --with-mpc \
+  --with-mpfr \
+  --with-pic \
+  --with-system-libunwind \
+  --with-system-zlib'
 
   @cflags = '-fPIC -pipe'
   @cxxflags = '-fPIC -pipe'
@@ -160,7 +160,7 @@ class Gcc10 < Package
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        make -j#{CREW_NPROC}"
+        make"
     end
   end
 
@@ -295,8 +295,8 @@ class Gcc10 < Package
         make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
-      system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/ || true"
-      system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version} || true"
+      system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
+      system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}"
 
       # Make symbolic links
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
