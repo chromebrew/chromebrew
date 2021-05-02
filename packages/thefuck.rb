@@ -1,19 +1,26 @@
 require 'package'
 
 class Thefuck < Package
-  description 'Magnificent app which corrects your previous console command.'
-  homepage 'https://github.com/nvbn/thefuck'
-  version '3.26'
+  description 'Thef*ck is a magnificent app which corrects your previous console command.'
+  homepage 'https://github.com/nvbn/thefuck/'
+  @_ver = '3.30'
+  version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/nvbn/thefuck/3.26/README.md'
-  source_sha256 '105e10e37c4c1430fe6bc3a48c9508254048721825ae14856d713de61c95bc66'
+  source_url 'https://github.com/nvbn/thefuck.git'
+  git_hashtag @_ver
 
-  def self.install
-    system "pip3 install thefuck --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX} --no-warn-script-location"
+  depends_on 'py3_six'
+  depends_on 'py3_colorama'
+  depends_on 'py3_psutil'
+  depends_on 'py3_pyte'
+  depends_on 'py3_decorator'
+
+  def self.build
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 
-  def self.postinstall
-    system 'fuck && fuck'
+  def self.install
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end
