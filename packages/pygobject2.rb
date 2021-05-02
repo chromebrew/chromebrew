@@ -24,7 +24,7 @@ class Pygobject2 < Package
 
   depends_on 'glib'
   depends_on 'gobject_introspection'
-  depends_on 'pycairo'
+  depends_on 'py3_pycairo'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
