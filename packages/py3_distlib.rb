@@ -1,7 +1,7 @@
 require 'package'
 
 class Py3_distlib < Package
-  description 'Appdirs is a small Python module for determining appropriate platform-specific directories.'
+  description 'Distlib provides distribution utilities for Python packages.'
   homepage 'https://bitbucket.org/pypa/distlib/'
   @_ver = '0.3.1'
   version @_ver
@@ -17,6 +17,6 @@ class Py3_distlib < Package
   end
 
   def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
   end
 end
