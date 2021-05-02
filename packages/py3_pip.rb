@@ -23,7 +23,8 @@ class Py3_pip < Package
      x86_64: '729a9958cae998936dc3ca300feb7c10eb8d56f74b524913cc84cb1cf6bbe553'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3'
+  depends_on 'py3_setuptools'
   depends_on 'py3_wheel'
 
   def self.build
