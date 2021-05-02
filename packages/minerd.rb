@@ -10,10 +10,10 @@ class Minerd < Package
   source_sha256 'ea16761a952b8f0fbba22fd16d48bb5e20abc48a10af99a00c70c332b3cb54f5'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/minerd-2.5.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/minerd-2.5.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/minerd-2.5.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/minerd-2.5.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minerd/2.5.0_armv7l/minerd-2.5.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minerd/2.5.0_armv7l/minerd-2.5.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minerd/2.5.0_i686/minerd-2.5.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minerd/2.5.0_x86_64/minerd-2.5.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '37f961088b95729020863d96f4718eee45159fbbdc829e23e89f3f5c8c87dade',

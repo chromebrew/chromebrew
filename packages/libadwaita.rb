@@ -10,10 +10,10 @@ class Libadwaita < Package
   source_sha256 'af4e34b811c18f2e42f76764c33f835b63110f8a1d471156befcd500d062daab'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libadwaita-1.1.0-aab6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libadwaita-1.1.0-aab6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libadwaita-1.1.0-aab6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libadwaita-1.1.0-aab6-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.1.0-aab6_armv7l/libadwaita-1.1.0-aab6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.1.0-aab6_armv7l/libadwaita-1.1.0-aab6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.1.0-aab6_i686/libadwaita-1.1.0-aab6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.1.0-aab6_x86_64/libadwaita-1.1.0-aab6-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '50e69b5c70875b5d938f9d578fd786eed3ce1de4ca4ab0d788eac24dcf63788c',

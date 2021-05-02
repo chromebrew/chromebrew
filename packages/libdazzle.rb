@@ -10,10 +10,10 @@ class Libdazzle < Package
   source_sha256 'a31f80a3134332d9621d46d74276788ba22e55d1197edab07182ea6be8468989'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdazzle-3.40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdazzle-3.40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libdazzle-3.40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libdazzle-3.40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdazzle/3.40.0_armv7l/libdazzle-3.40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdazzle/3.40.0_armv7l/libdazzle-3.40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdazzle/3.40.0_i686/libdazzle-3.40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdazzle/3.40.0_x86_64/libdazzle-3.40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c11c683320703431a0ead7f365e25e5fb7db17933967d0c23a7c12c62b269c86',

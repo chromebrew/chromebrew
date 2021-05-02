@@ -10,10 +10,10 @@ class Peek < Package
   source_sha256 '8104b65b041858b7f7f482e1425f8f22d429524340ad341f95f08b08fe4e8602'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/peek-1.3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/peek-1.3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/peek-1.3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/peek-1.3.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_armv7l/peek-1.3.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_armv7l/peek-1.3.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_i686/peek-1.3.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_x86_64/peek-1.3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'c24c16aff4c322c206f4b6a6d2e0d9d87d0f88aadf7ff95bc09fce9ef2958281',

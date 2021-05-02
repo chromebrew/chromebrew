@@ -10,10 +10,10 @@ class Libidn2 < Package
   source_sha256 'e1cb1db3d2e249a6a3eb6f0946777c2e892d5c5dc7bd91c74394fc3a01cab8b5'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libidn2-2.3.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libidn2-2.3.0-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libidn2-2.3.0-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libidn2-2.3.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_armv7l/libidn2-2.3.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_armv7l/libidn2-2.3.0-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_i686/libidn2-2.3.0-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_x86_64/libidn2-2.3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '7614e912f8122d6a2a3b779f4c16f0e74029dd1213ea9d38ed7b6ee6d19f3de6',

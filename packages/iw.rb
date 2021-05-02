@@ -10,10 +10,10 @@ class Iw < Package
   source_sha256 'f38a82a9bfa2a45d6bf471fe84df9c39bed3d3ca0e8931ed31951f603e21deb3'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/iw-5.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/iw-5.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/iw-5.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/iw-5.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.9_armv7l/iw-5.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.9_armv7l/iw-5.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.9_i686/iw-5.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.9_x86_64/iw-5.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4f922f68dfda3cba18a781f9210a2558bcefd57b4a2392ac20c4390761faab02',

@@ -11,10 +11,10 @@ class Gst_plugins_good < Package
   source_sha256 'b6e50e3a9bbcd56ee6ec71c33aa8332cc9c926b0c1fae995aac8b3040ebe39b0'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gst_plugins_good-1.18.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gst_plugins_good-1.18.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gst_plugins_good-1.18.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gst_plugins_good-1.18.4-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_armv7l/gst_plugins_good-1.18.4-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_armv7l/gst_plugins_good-1.18.4-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_i686/gst_plugins_good-1.18.4-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_plugins_good/1.18.4-1_x86_64/gst_plugins_good-1.18.4-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'c6bd8050a3c0f1b314c710a325211955179befb161ad265c6aeea8aec1e4f262',

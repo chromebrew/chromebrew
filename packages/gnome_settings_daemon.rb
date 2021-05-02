@@ -11,10 +11,10 @@ class Gnome_settings_daemon < Package
   source_sha256 'ea6351b9f82c507e431cea15a69e7bb0574b8003618c48ff8c07e04969516e7f'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_settings_daemon-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnome_settings_daemon-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnome_settings_daemon-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnome_settings_daemon-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/40.0_armv7l/gnome_settings_daemon-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/40.0_armv7l/gnome_settings_daemon-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/40.0_i686/gnome_settings_daemon-40.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/40.0_x86_64/gnome_settings_daemon-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'ae054caa58411bbf1f00729e748aaf0974913bff99ff77d24797f3814e4c5387',

@@ -10,10 +10,10 @@ class Tepl_6 < Package
   source_sha256 '954c9e27d017bddc99788911019ca223222fd1c59e383c4e21be84e62906b662'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tepl_6-5.99.0-d61f-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tepl_6-5.99.0-d61f-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tepl_6-5.99.0-d61f-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tepl_6-5.99.0-d61f-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/5.99.0-d61f_armv7l/tepl_6-5.99.0-d61f-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/5.99.0-d61f_armv7l/tepl_6-5.99.0-d61f-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/5.99.0-d61f_i686/tepl_6-5.99.0-d61f-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/5.99.0-d61f_x86_64/tepl_6-5.99.0-d61f-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '928c126e8c0d2a87a6778dbe9d60fd1a31a0e3160ea384d5c0e36444b4936de9',

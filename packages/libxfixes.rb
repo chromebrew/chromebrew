@@ -10,10 +10,10 @@ class Libxfixes < Package
   source_sha256 '9ab6c13590658501ce4bd965a8a5d32ba4d8b3bb39a5a5bc9901edffc5666570'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxfixes-5.0.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxfixes-5.0.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxfixes-5.0.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxfixes-5.0.3-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/5.0.3-1_armv7l/libxfixes-5.0.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/5.0.3-1_armv7l/libxfixes-5.0.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/5.0.3-1_i686/libxfixes-5.0.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/5.0.3-1_x86_64/libxfixes-5.0.3-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '053fad492759a5dd5df72239a28416fa93e64f84ebc49e26ce1a410924345463',

@@ -10,10 +10,10 @@ class Openblas < Package
   source_sha256 '0484d275f87e9b8641ff2eecaa9df2830cbe276ac79ad80494822721de6e1693'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openblas-0.3.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/openblas-0.3.10-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/openblas-0.3.10-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/openblas-0.3.10-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.10_armv7l/openblas-0.3.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.10_armv7l/openblas-0.3.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.10_i686/openblas-0.3.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.10_x86_64/openblas-0.3.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0d21d2d1b5de2552db9b2b3f40acf217b1e634181fe052e430d8e7421d53f4c3',

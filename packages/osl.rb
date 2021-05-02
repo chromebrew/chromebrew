@@ -10,10 +10,10 @@ class Osl < Package
   source_sha256 'eee5cd9bf5b3b8491f95f681cfaa987344f0fb3d7499f5d8e19e3ce75e0c5ed0'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/osl-0.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/osl-0.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/osl-0.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/osl-0.9.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/osl/0.9.2_armv7l/osl-0.9.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/osl/0.9.2_armv7l/osl-0.9.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/osl/0.9.2_i686/osl-0.9.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/osl/0.9.2_x86_64/osl-0.9.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '171bd5dfa05cc568a97a4fb4d88ad483f3d4a147df7c2e6da3561e9d61f845a7',

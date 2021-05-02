@@ -10,10 +10,10 @@ class Abcde < Package
   source_sha256 '046cd0bba78dd4bbdcbcf82fe625865c60df35a005482de13a6699c5a3b83124'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/abcde-2.9.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/abcde-2.9.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/abcde-2.9.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/abcde-2.9.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abcde/2.9.3_armv7l/abcde-2.9.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abcde/2.9.3_armv7l/abcde-2.9.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abcde/2.9.3_i686/abcde-2.9.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abcde/2.9.3_x86_64/abcde-2.9.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'dde5336b912d62d86b8fc15394305fe9c3971d94067c156bccd7325d1c50cc85',

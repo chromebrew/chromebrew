@@ -10,10 +10,10 @@ class Healthcheck < Package
   source_sha256 '4f40995614da68da7422e2ba8e01815c569e3c1a268122a5e13a007899092630'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/healthcheck-1cace5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/healthcheck-1cace5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/healthcheck-1cace5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/healthcheck-1cace5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/healthcheck/1cace5_armv7l/healthcheck-1cace5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/healthcheck/1cace5_armv7l/healthcheck-1cace5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/healthcheck/1cace5_i686/healthcheck-1cace5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/healthcheck/1cace5_x86_64/healthcheck-1cace5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'b2859389bc7e8822e63fc6d793b40b298c9f47ca69dacfe274e891b62ce6c750',

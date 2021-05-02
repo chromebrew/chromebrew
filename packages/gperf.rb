@@ -10,10 +10,10 @@ class Gperf < Package
   source_sha256 '588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gperf-3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gperf-3.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_i686/gperf-3.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_x86_64/gperf-3.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4515671860504871812106df28e025e75ba47c8068d1183e2d9e2baf743c94d4',

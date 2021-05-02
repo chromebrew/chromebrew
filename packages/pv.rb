@@ -10,10 +10,10 @@ class Pv < Package
   source_sha256 '94defb4183ae07c44219ba298d43c4991d6e203c29f74393d72ecad3b090508a'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pv-1.6.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/pv-1.6.6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/pv-1.6.6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/pv-1.6.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pv/1.6.6_armv7l/pv-1.6.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pv/1.6.6_armv7l/pv-1.6.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pv/1.6.6_i686/pv-1.6.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pv/1.6.6_x86_64/pv-1.6.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'da5302deb6b9d72962e10ace08c96a5c76a4b48186f58333c1413e2526231157',

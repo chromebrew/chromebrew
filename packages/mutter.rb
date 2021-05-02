@@ -10,9 +10,9 @@ class Mutter < Package
   source_sha256 '3f56768113d536f5842ea6db14d1d9c48f8c87cd240891f9b9305116e425771e'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mutter-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/mutter-40.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/mutter-40.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.0_armv7l/mutter-40.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.0_armv7l/mutter-40.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.0_x86_64/mutter-40.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
     aarch64: 'fafa169c22a7aa7595edf43a4c8dc7306210163e6759130f81d338120b92b8bd',

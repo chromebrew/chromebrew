@@ -10,10 +10,10 @@ class Lua < Package
   source_sha256 '11570d97e9d7303c0a59567ed1ac7c648340cd0db10d5fd594c09223ef2f524f'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lua-5.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/lua-5.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/lua-5.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/lua-5.4.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_armv7l/lua-5.4.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_armv7l/lua-5.4.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_i686/lua-5.4.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_x86_64/lua-5.4.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1d9a0982da7b59fa17892c699f2818ee137a1eaba895da3519c67e71b4aabd6d',

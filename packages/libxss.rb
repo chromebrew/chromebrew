@@ -11,10 +11,10 @@ class Libxss < Package
   source_sha256 'f917075a1b7b5a38d67a8b0238eaab14acd2557679835b154cf2bca576e89bf8'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxss-1.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxss-1.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxss-1.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxss-1.2.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_armv7l/libxss-1.2.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_armv7l/libxss-1.2.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_i686/libxss-1.2.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_x86_64/libxss-1.2.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'cec3f0b92f4c56b7ec262ec05356f6304b6e5e651f3074abdb08177a4ef10099',

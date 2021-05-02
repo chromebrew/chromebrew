@@ -9,6 +9,7 @@ class Perl_text_unidecode < Package
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBURKE/Text-Unidecode-1.30.tar.gz'
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
 
+<<<<<<< HEAD
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
@@ -20,6 +21,19 @@ class Perl_text_unidecode < Package
      armv7l: '0fb6cfb59c797bb0d5c94e7a06460f1863e4b03587d86d33be384d2cd80aa872',
        i686: 'ef13e84d29e03bba52f2ab3dc2a20d0955e3440f2da50f69d3c5832f428a28f5',
      x86_64: '9f9ace5d05847bb7d697fd27b02c43d3ef5224d7e036b5ac635b99409ee0142e'
+=======
+  binary_url ({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_armv7l/perl_text_unidecode-1.30-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_i686/perl_text_unidecode-1.30-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-2_x86_64/perl_text_unidecode-1.30-2-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: '0fb6cfb59c797bb0d5c94e7a06460f1863e4b03587d86d33be384d2cd80aa872',
+     armv7l: '0fb6cfb59c797bb0d5c94e7a06460f1863e4b03587d86d33be384d2cd80aa872',
+       i686: 'ef13e84d29e03bba52f2ab3dc2a20d0955e3440f2da50f69d3c5832f428a28f5',
+     x86_64: '9f9ace5d05847bb7d697fd27b02c43d3ef5224d7e036b5ac635b99409ee0142e',
+>>>>>>> master
   })
 
   depends_on 'perl'

@@ -10,10 +10,10 @@ class Luajit < Package
   source_sha256 '874b1f8297c697821f561f9b73b57ffd419ed8f4278c82e05b48806d30c1e979'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/luajit-2.0.5-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/luajit-2.0.5-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/luajit-2.0.5-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/luajit-2.0.5-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_armv7l/luajit-2.0.5-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_armv7l/luajit-2.0.5-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_i686/luajit-2.0.5-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.0.5-2_x86_64/luajit-2.0.5-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '0518de335a3dc8ac04d9bcbe476d3cf2f053c058737d57f6d723c31c6eb59c99',

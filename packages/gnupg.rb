@@ -10,10 +10,10 @@ class Gnupg < Package
   source_sha256 'd95b361ee6ef7eff86af40c8c72bf9313736ac9f7010d6604d78bf83818e976e'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnupg-2.2.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnupg-2.2.7-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnupg-2.2.7-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnupg-2.2.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_armv7l/gnupg-2.2.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_armv7l/gnupg-2.2.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_i686/gnupg-2.2.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.2.7_x86_64/gnupg-2.2.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'e356625feaef9e93d4d0946635db862df13c5f555636b38c5504042fa4ff3c23',

@@ -11,10 +11,10 @@ class Libvpx < Package
   source_sha256 '8e55e04cdefeb1596968e70c5167e13d26132ca214d276292d5cda737a430af5'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvpx-1.10.0-rc1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libvpx-1.10.0-rc1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libvpx-1.10.0-rc1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libvpx-1.10.0-rc1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_armv7l/libvpx-1.10.0-rc1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_armv7l/libvpx-1.10.0-rc1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_i686/libvpx-1.10.0-rc1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_x86_64/libvpx-1.10.0-rc1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '61583e4e5ac53ef7534c948bf05874381c9889cf8bb25771458d332c21caddff',

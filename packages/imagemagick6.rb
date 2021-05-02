@@ -10,9 +10,9 @@ class Imagemagick6 < Package
   source_sha256 'f425e31f64cb481a1416a037d88d04eb44236bef83334e55b7ad692f71c61270'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/imagemagick6-6.9.11-29-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_x86_64/imagemagick6-6.9.11-29-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'd30b0f8132c26bb5a31160c046dec64b6ee5a6060130c17fdfe2546cef1c01f2',
@@ -36,7 +36,7 @@ class Imagemagick6 < Package
   depends_on 'openexr'
   depends_on 'openjpeg'
   depends_on 'pango'
-  depends_on 'python27'
+  depends_on 'python2'
   depends_on 'zstd'
   depends_on 'sommelier'
 

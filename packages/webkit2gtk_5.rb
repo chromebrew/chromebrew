@@ -11,10 +11,10 @@ class Webkit2gtk_5 < Package
   source_sha256 '9d7df4dae9ada2394257565acc2a68ace9308c4c61c3fcc00111dc1f11076bf0'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/webkit2gtk_5-2.32.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/webkit2gtk_5-2.32.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/webkit2gtk_5-2.32.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/webkit2gtk_5-2.32.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_armv7l/webkit2gtk_5-2.32.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_armv7l/webkit2gtk_5-2.32.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_i686/webkit2gtk_5-2.32.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_x86_64/webkit2gtk_5-2.32.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '0d49b1141892ec63b2b43c682aa4feb3c5b64dc04bfea08ec9f9c0d2c6fb583d',

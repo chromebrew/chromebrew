@@ -16,8 +16,8 @@ class Cf < Package
   end
 
   binary_url({
-      i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cf-6.53.0-chromeos-i686.tar.xz',
-    x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cf-6.53.0-chromeos-x86_64.tar.xz'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_i686/cf-6.53.0-chromeos-i686.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_x86_64/cf-6.53.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
       i686: 'bd74201bfadd439ea2e65827c8c6ff725bbd70a7931efe90e6f97b4628e10b8e',

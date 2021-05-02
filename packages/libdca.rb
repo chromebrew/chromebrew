@@ -10,10 +10,10 @@ class Libdca < Package
   source_sha256 '98f98a9aa000a26b927c6facd15d18dcf664238adfc5db24f533c5932cdb1f40'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdca-0.0.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdca-0.0.6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libdca-0.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libdca-0.0.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.6_armv7l/libdca-0.0.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.6_armv7l/libdca-0.0.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.6_i686/libdca-0.0.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.6_x86_64/libdca-0.0.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '73bdbbcd5c16feaeacaa87f1d09df7b3646ff94dde3ce229de16912bd3745910',

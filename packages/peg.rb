@@ -13,10 +13,10 @@ class Peg < Package
   source_sha256 '20193bdd673fc7487a38937e297fff08aa73751b633a086ac28c3b34890f9084'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/peg-0.1.18-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/peg-0.1.18-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/peg-0.1.18-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/peg-0.1.18-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_armv7l/peg-0.1.18-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_armv7l/peg-0.1.18-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_i686/peg-0.1.18-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_x86_64/peg-0.1.18-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '439a168668877cae8de48cf51c9f18c18245373a6c7e7104c8fa23d61197264f',

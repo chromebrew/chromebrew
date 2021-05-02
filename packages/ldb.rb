@@ -13,10 +13,10 @@ class Ldb < Package
   source_sha256 'a4d308b3d0922ef01f3661a69ebc373e772374defa76cf0979ad21b21f91922d'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ldb-2.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ldb-2.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_i686/ldb-2.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_x86_64/ldb-2.3.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a21f075d2ecc39ccb53e97433c4cdbe3474054f773ea31735c9ef1227e05ae9e',

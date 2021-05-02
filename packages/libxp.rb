@@ -10,10 +10,10 @@ class Libxp < Package
   source_sha256 '7f360c9905849c3587d48efc0f0ecbc852c19f61a52b18530d6b005cb9148c57'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxp-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxp-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxp-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxp-1.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_armv7l/libxp-1.0.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_armv7l/libxp-1.0.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_i686/libxp-1.0.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.3_x86_64/libxp-1.0.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '173115a4b608b9234e3150d03fe8b41547878897c9a969e084950a72cd8ac633',

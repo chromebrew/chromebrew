@@ -10,10 +10,10 @@ class Itstool < Package
   source_sha256 'bda0b08e9a1db885c9d7d1545535e9814dd8931d5b8dd5ab4a47bd769d0130c6'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/itstool-2.0.6-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/itstool-2.0.6-1-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/itstool-2.0.6-1-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/itstool-2.0.6-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.6-1_armv7l/itstool-2.0.6-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.6-1_armv7l/itstool-2.0.6-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.6-1_i686/itstool-2.0.6-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.6-1_x86_64/itstool-2.0.6-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '765e60cddd633a23262c94f0b9093d3b1ffcfe40eba35ca4b533ef85e2112949',

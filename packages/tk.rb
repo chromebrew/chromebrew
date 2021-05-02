@@ -12,10 +12,10 @@ class Tk < Package
   source_sha256 '5228a8187a7f70fa0791ef0f975270f068ba9557f57456f51eb02d9d4ea31282'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tk-8.6.11-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/tk-8.6.11-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/tk-8.6.11-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/tk-8.6.11-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.11-1_armv7l/tk-8.6.11-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.11-1_armv7l/tk-8.6.11-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.11-1_i686/tk-8.6.11-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.11-1_x86_64/tk-8.6.11-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '45f352f6979be6011f5f1d4a8ee6caef842ae2d8579f2d3ae69bf361a41e320d',

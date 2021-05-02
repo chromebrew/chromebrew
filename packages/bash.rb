@@ -10,10 +10,10 @@ class Bash < Package
   source_sha256 'cc012bc860406dcf42f64431bcd3d2fa7560c02915a601aba9cd597a39329baa'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bash-5.1-1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/bash-5.1-1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/bash-5.1-1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/bash-5.1-1-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_armv7l/bash-5.1-1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_armv7l/bash-5.1-1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_i686/bash-5.1-1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_x86_64/bash-5.1-1-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '72fd49fb8fcc718587e71df1df7eb69812fab5ae2e5706a3093254af2f44b8ec',

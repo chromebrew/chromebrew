@@ -10,10 +10,10 @@ class Xzutils < Package
   source_sha256 'f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xzutils-5.2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xzutils-5.2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xzutils-5.2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xzutils-5.2.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5_armv7l/xzutils-5.2.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5_armv7l/xzutils-5.2.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5_i686/xzutils-5.2.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5_x86_64/xzutils-5.2.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bbb38dfbc5f7845dde5d4e6c1aa46be40d4d94f5db26b0aa20f1603a14c6e61d',

@@ -11,10 +11,10 @@ class Go < Package
   source_sha256 'b298d29de9236ca47a023e382313bcc2d2eed31dfa706b60a04103ce83a71a25'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/go-1.16.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/go-1.16.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_armv7l/go-1.16.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_i686/go-1.16.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.16.3_x86_64/go-1.16.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2f6ab6029594d5563bd1b020ff0982d960a8d569e0081d1a36f4972a436e2e1b',

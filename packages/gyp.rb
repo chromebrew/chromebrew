@@ -10,10 +10,10 @@ class Gyp < Package
   source_sha256 'c99f4fb0ba0798492713cd19579af8140e9a65d32af62c56bd6d447cf1ab7f6a'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gyp-81286d-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gyp-81286d-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp/81286d_armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp/81286d_armv7l/gyp-81286d-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp/81286d_i686/gyp-81286d-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp/81286d_x86_64/gyp-81286d-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '74c53919430e90aafd5301d815c8f161dc79822067e1381f7ed7116522eb8c93',
@@ -22,7 +22,7 @@ class Gyp < Package
      x86_64: 'a6ad933e8dc00f2fc5baff2f5bf523040a7a427dbb5f4e59dd7cfc2e48c8388c',
   })
 
-  depends_on 'python27' unless File.exists? "#{CREW_PREFIX}/bin/python"
+  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
 
   def self.install
     system "python setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"

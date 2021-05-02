@@ -11,10 +11,10 @@ class Cairomm_1_16 < Package
   source_sha256 '7e881492c5f9f546688c31160deb742c166fc4c68b6b8eb9920c00a0f0f144f9'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cairomm_1_16-1.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cairomm_1_16-1.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cairomm_1_16-1.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cairomm_1_16-1.16.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_armv7l/cairomm_1_16-1.16.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_armv7l/cairomm_1_16-1.16.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_i686/cairomm_1_16-1.16.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_x86_64/cairomm_1_16-1.16.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '59ca0664657952e1296639082e8352e26ad1b9792208b4a2b713c64178f73e77',

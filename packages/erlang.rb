@@ -10,10 +10,10 @@ class Erlang < Package
   source_sha256 'cb5b7246eeaac9298c51c9915386df2f784e82a3f7ff93b68453591f0b370400'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/erlang-23.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/erlang-23.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/erlang-23.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/erlang-23.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/23.1_armv7l/erlang-23.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/23.1_armv7l/erlang-23.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/23.1_i686/erlang-23.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/23.1_x86_64/erlang-23.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '22823fe62be5afe6a98a06061b6ca2b6f7138d3bb20a3730593aa3defa42f29b',

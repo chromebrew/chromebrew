@@ -10,10 +10,10 @@ class Libxt < Package
   source_sha256 'b59bee38a9935565fa49dc1bfe84cb30173e2e07e1dcdf801430d4b54eb0caa3'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxt-1.1.5-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxt-1.1.5-0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxt-1.1.5-0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxt-1.1.5-0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_armv7l/libxt-1.1.5-0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_armv7l/libxt-1.1.5-0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_i686/libxt-1.1.5-0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.1.5-0_x86_64/libxt-1.1.5-0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '168593f2dd1628c1816c4504beec2fc997932b28b1fc0e2ddb9043d1400f5523',

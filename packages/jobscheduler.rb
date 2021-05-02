@@ -10,10 +10,10 @@ class Jobscheduler < Package
   source_sha256 '079819463d1e64300fd4f2231e84a62d282b4319dd5585fcbf6ca6014484352b'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jobscheduler-1.12.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jobscheduler-1.12.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/jobscheduler-1.12.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/jobscheduler-1.12.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jobscheduler/1.12.3_armv7l/jobscheduler-1.12.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jobscheduler/1.12.3_armv7l/jobscheduler-1.12.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jobscheduler/1.12.3_i686/jobscheduler-1.12.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jobscheduler/1.12.3_x86_64/jobscheduler-1.12.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '91e009c4f9fdc0f8db00a71419235175e9ba0971a1511723866bad0358bc4429',

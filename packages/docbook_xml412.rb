@@ -11,10 +11,10 @@ class Docbook_xml412 < Package
   source_sha256 '30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xml412-4.1.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/docbook_xml412-4.1.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/docbook_xml412-4.1.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/docbook_xml412-4.1.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml412/4.1.2-1_armv7l/docbook_xml412-4.1.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml412/4.1.2-1_armv7l/docbook_xml412-4.1.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml412/4.1.2-1_i686/docbook_xml412-4.1.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml412/4.1.2-1_x86_64/docbook_xml412-4.1.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e7b80341f9c8c4c84e5064785e21a7f4b28966abc09447763343d34af6f92203',

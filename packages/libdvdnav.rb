@@ -10,10 +10,10 @@ class Libdvdnav < Package
   source_sha256 'f0a2711b08a021759792f8eb14bb82ff8a3c929bf88c33b64ffcddaa27935618'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdvdnav-6.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libdvdnav-6.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libdvdnav-6.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libdvdnav-6.0.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdnav/6.0.0_armv7l/libdvdnav-6.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdnav/6.0.0_armv7l/libdvdnav-6.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdnav/6.0.0_i686/libdvdnav-6.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdnav/6.0.0_x86_64/libdvdnav-6.0.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '72938f6813add62c1be036f36cd33e6e3dceeec5255818e8b9c9031ba86cb457',

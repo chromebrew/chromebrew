@@ -10,10 +10,10 @@ class Shhmsg < Package
   source_sha256 '88c69e3f0b920b1ef93f6c10f354786f171d7cb3ab170a463bb9ab8bbf13a02b'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shhmsg-1.4.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/shhmsg-1.4.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/shhmsg-1.4.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/shhmsg-1.4.2-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhmsg/1.4.2-2_armv7l/shhmsg-1.4.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhmsg/1.4.2-2_armv7l/shhmsg-1.4.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhmsg/1.4.2-2_i686/shhmsg-1.4.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhmsg/1.4.2-2_x86_64/shhmsg-1.4.2-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6b4a11be7742dc0936b3f85638c337c0af8a2b08a3c46c7e320604341a8ca707',

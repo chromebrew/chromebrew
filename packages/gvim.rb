@@ -3,24 +3,24 @@ require 'package'
 class Gvim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2725'
+  @_ver = '8.2.2783'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://github.com/vim/vim/archive/refs/tags/v#{@_ver}.tar.gz"
-  source_sha256 'a8aca906cf63fdc4264f86c1c39f8164989de0be3dc18553cb23bd6226c361a9'
+  source_url 'https://github.com/vim/vim.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2725-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gvim-8.2.2725-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gvim-8.2.2725-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gvim-8.2.2725-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_armv7l/gvim-8.2.2783-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_armv7l/gvim-8.2.2783-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_i686/gvim-8.2.2783-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_x86_64/gvim-8.2.2783-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0c813f4f93053af3d50e6bad0de4742eba2a99bed72ca5ca239fdf1b31d42b69',
-     armv7l: '0c813f4f93053af3d50e6bad0de4742eba2a99bed72ca5ca239fdf1b31d42b69',
-       i686: '2b9dd78e45e4543874fb5f5237e33edcf8c6ece04b9263c992ca4d9e7200a486',
-     x86_64: '177d45f4f3dd52e3148d46ab4de6b4ffe9f91b0ead63f9e75d5891a1ce1ff706'
+    aarch64: 'bb178b2d66d9a84237b4f4dfacd78befa7a5b88baffe0f49f8bacee045dda6bd',
+     armv7l: 'bb178b2d66d9a84237b4f4dfacd78befa7a5b88baffe0f49f8bacee045dda6bd',
+       i686: 'a0ad2d39ab72c9d5f827fdb0bdaeb39ca6cd64114f4520f3979f43852dcf9458',
+     x86_64: '979a27bf60ed3af9e08d61c159d51d39dade3f32818d57e50fd846f9a840935d'
   })
 
   depends_on 'vim_runtime'
@@ -40,11 +40,11 @@ class Gvim < Package
              'feature.h'
       system 'sed', '-i', "s|^.*#define SYS_GVIMRC_FILE.*$|#define SYS_GVIMRC_FILE \"#{CREW_PREFIX}/etc/gvimrc\"|",
              'feature.h'
-      system 'autoconf'
     end
   end
 
   def self.build
+    system '[ -x configure ] || autoreconf -fvi'
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
@@ -78,6 +78,12 @@ class Gvim < Package
 
     # these are provided by 'vim_runtime'
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/share/vim"
+
+    # these are provided by 'xxd_standalone'
+    @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/xxd #{CREW_DEST_MAN_PREFIX}/man1/xxd.1]
+    @deletefiles.each do |f|
+      FileUtils.rm f if  File.exist?(f)
+    end
   end
 
   def self.postinstall

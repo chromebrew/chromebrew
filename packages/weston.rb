@@ -11,10 +11,10 @@ class Weston < Package
   source_sha256 '82b17ab1766f13557fc620c21e3c89165342d3a3ead79ba01181b4f7d2144487'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/weston-9.0.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/weston-9.0.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_i686/weston-9.0.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_x86_64/weston-9.0.0-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9f5f48dfa122850c5a1041ae59c8358d76eb08adb84be474dba2cfdf430074ea',

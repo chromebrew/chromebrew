@@ -6,14 +6,13 @@ class Jdk8 < Package
   version '8u281'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'SKIP'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jdk8-8u281-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/jdk8-8u281-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/jdk8-8u281-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/jdk8-8u281-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u281_armv7l/jdk8-8u281-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u281_armv7l/jdk8-8u281-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u281_i686/jdk8-8u281-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u281_x86_64/jdk8-8u281-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'cd7eaa50a24c5fd23a3239955b4e8d307269265f83cac4b6c5d0b8c034db95f0',

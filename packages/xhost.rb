@@ -10,10 +10,10 @@ class Xhost < Package
   source_sha256 '93e619ee15471f576cfb30c663e18f5bc70aca577a63d2c2c03f006a7837c29a'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xhost-1.0.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xhost-1.0.7-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xhost-1.0.7-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xhost-1.0.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_armv7l/xhost-1.0.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_armv7l/xhost-1.0.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_i686/xhost-1.0.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.7_x86_64/xhost-1.0.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6bc7b1b1ac3da2a29d255dc12116d8fb7558b7a951c39694e793a17de3118f0f',
