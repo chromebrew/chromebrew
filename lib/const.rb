@@ -97,4 +97,4 @@ CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LI
 
 PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
-PY_SETUP_INSTALL_OPTIONS = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile --single-version-externally-managed"
+PY_SETUP_INSTALL_OPTIONS = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
