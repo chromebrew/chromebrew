@@ -7,8 +7,7 @@ class Go_tools < Package
   version @_ver
   license 'BSD'
   compatibility 'all'
-  source_url 'file:///dev/null'
-  source_sha256 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  source_url 'SKIP'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_tools/0.6.6_armv7l/go_tools-0.6.6-chromeos-armv7l.tar.xz',
