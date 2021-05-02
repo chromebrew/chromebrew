@@ -28,7 +28,7 @@ class Llvm < Package
   depends_on 'pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
-  depends_on 'gcc10' # R or gcc11
+  depends_on 'gcc11' # R or gcc11
 
   case ARCH
   when 'aarch64', 'armv7l'
