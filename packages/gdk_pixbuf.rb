@@ -31,7 +31,7 @@ class Gdk_pixbuf < Package
   depends_on 'libtiff'
   depends_on 'libwebp' => :build
   depends_on 'pango' => :build
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
 
   @python_deps = %w[Markdown typogrify]
 

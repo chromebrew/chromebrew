@@ -22,7 +22,7 @@ class Choose < Package
      x86_64: '138d368f47682787e47e01a59090014d993e8f63ba6678a9b315640a5075cd88',
   })
 
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system "pip install urwid --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"

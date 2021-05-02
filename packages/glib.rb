@@ -27,8 +27,8 @@ class Glib < Package
   depends_on 'pcre'
   depends_on 'shared_mime_info'
   depends_on 'util_linux'
-  depends_on 'six'
-  depends_on 'pygments'
+  depends_on 'py3_six'
+  depends_on 'py3_pygments'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

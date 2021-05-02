@@ -22,7 +22,7 @@ class Sphinx < Package
      x86_64: '54effef8d4e749a5d88150867bc4f171d30bbe1c97d600364bd19a260129ef70',
   })
 
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system 'git clone https://github.com/sphinx-doc/sphinx.git build'

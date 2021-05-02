@@ -38,7 +38,7 @@ class Flatpak < Package
   depends_on 'libxau'
   depends_on 'polkit'
   depends_on 'pulseaudio'
-  depends_on 'pyparsing'
+  depends_on 'py3_pyparsing'
   depends_on 'xdg_base'
   depends_on 'xdg_dbus_proxy'
   depends_on 'xmlto' => :build

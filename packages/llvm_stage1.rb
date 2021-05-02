@@ -31,7 +31,7 @@ class Llvm_stage1 < Package
   depends_on 'libedit'
   depends_on 'libtirpc'
   depends_on 'swig'
-  depends_on 'pygments' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'ccache' => :build
 
   case ARCH

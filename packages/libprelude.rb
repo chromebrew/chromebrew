@@ -22,7 +22,7 @@ class Libprelude < Package
      x86_64: 'f7642b1ffb9a0b5ee5c22a3f1345fbc0ff8b7e334a9839c7d24b7108fd069806',
   })
 
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
 
   def self.build
     system "./configure \

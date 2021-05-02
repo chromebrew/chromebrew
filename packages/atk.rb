@@ -23,7 +23,7 @@ class Atk < Package
   })
 
   depends_on 'gobject_introspection'
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
 
   def self.build
     system "meson #{CREW_MESON_FNO_LTO_OPTIONS} build"
