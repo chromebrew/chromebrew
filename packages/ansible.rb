@@ -22,7 +22,7 @@ class Ansible < Package
      x86_64: '03858df7d32282cbc04bcf33ec923e3ea03963898be7d0d6fdb51e589e43f11f',
   })
 
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system "pip install --prefix #{CREW_PREFIX} \

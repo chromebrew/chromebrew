@@ -23,7 +23,7 @@ class Gdb < Package
   })
 
   depends_on 'libx11'
-  depends_on 'six'
+  depends_on 'py3_six'
 
   def self.build
     system './configure',

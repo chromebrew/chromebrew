@@ -26,7 +26,7 @@ class Dia < Package
   depends_on 'libart'
   depends_on 'libpng'
   depends_on 'libwmf'
-  depends_on 'six'
+  depends_on 'py3_six'
   depends_on 'swig1'
   depends_on 'sommelier'
 

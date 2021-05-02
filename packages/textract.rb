@@ -22,7 +22,7 @@ class Textract < Package
      x86_64: '13e5933fe8082e152cdf80c661f85f9a425e2a303ace296cf82e8d302da39551',
   })
 
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
   depends_on 'pulseaudio'
   depends_on 'swig'
 

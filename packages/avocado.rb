@@ -24,7 +24,7 @@ class Avocado < Package
 
   depends_on 'xdg_base'
   depends_on 'xzutils'
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system "pip install avocado-framework --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"

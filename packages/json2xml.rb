@@ -23,7 +23,7 @@ class Json2xml < Package
   })
 
   depends_on 'libxslt'
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

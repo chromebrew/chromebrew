@@ -16,7 +16,7 @@ class Aws2 < Package
   })
 
   depends_on 'rust' => :build
-  depends_on 'setuptools' => :build
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I aws2==#{@_ver} --no-warn-script-location"

@@ -30,8 +30,8 @@ class Gtk4 < Package
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
   depends_on 'mesa' => :build
-  depends_on 'pygments' => :build # Is this needed?
-  depends_on 'six' => :build # Is this needed?
+  depends_on 'py3_pygments' => :build # Is this needed?
+  depends_on 'py3_six' => :build # Is this needed?
   depends_on 'vulkan_headers' => :build
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cantarell_fonts' # L

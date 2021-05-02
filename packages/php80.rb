@@ -37,7 +37,7 @@ class Php80 < Package
   depends_on 'tidy'
   depends_on 'unixodbc'
   depends_on 'oniguruma'
-  depends_on 'pygments'
+  depends_on 'py3_pygments'
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp

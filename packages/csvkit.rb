@@ -22,7 +22,7 @@ class Csvkit < Package
      x86_64: '01d05a5337a2aeb7488ad7129cc19ac342e6dac19fe07f7487a4ec3cd0751d78',
   })
 
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system "pip install --prefix #{CREW_PREFIX} \

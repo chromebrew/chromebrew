@@ -11,7 +11,7 @@ class Dr < Package
   source_url 'https://github.com/Ewpratten/dr/archive/2.0-cros.tar.gz'
   source_sha256 '0ab9003c23d74d1ca8b0cfaf33e7db5e5b908d3448c87c4c0a83c9bf77a8ac23'
 
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system 'curl -#Lo dr/dr https://github.com/Ewpratten/dr/releases/download/2.0-cros/dr'

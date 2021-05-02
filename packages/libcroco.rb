@@ -25,7 +25,7 @@ class Libcroco < Package
   })
 
   depends_on 'gtk_doc'
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
 
   def self.build
     system 'sh autogen.sh'

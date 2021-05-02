@@ -24,7 +24,7 @@ class Mate_desktop < Package
 
   depends_on 'mate_common'
   depends_on 'dconf'
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
 
   def self.build
     system "./autogen.sh"
