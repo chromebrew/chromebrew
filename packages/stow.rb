@@ -9,6 +9,8 @@ class Stow < Package
   source_url 'https://ftpmirror.gnu.org/stow/stow-2.3.1.tar.gz'
   source_sha256 '09d5d99671b78537fd9b2c0b39a5e9761a7a0e979f6fdb7eabfa58ee45f03d4b'
 
+  depends_on 'perl'
+  
   def self.prebuild
     system 'cpan App::cpanminus'
   end
@@ -22,5 +24,8 @@ class Stow < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+
+    # Avoid conflicts with other perl module installs
+    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 end
