@@ -9,7 +9,6 @@ class Perl_xml_simple < Package
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz'
   source_sha256 '531fddaebea2416743eb5c4fdfab028f502123d9a220405a4100e68fc480dbf8'
 
-
   depends_on 'perl_xml_parser'
 
   def self.prebuild
@@ -23,8 +22,5 @@ class Perl_xml_simple < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-
-    # conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 end

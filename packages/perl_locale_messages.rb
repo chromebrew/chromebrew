@@ -9,11 +9,9 @@ class Perl_locale_messages < Package
   source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.31.tar.gz'
   source_sha256 'cad0b1fd0abfa1340dea089ec45ee3dacd9710c9fd942c064bb8124273b3caa9'
 
-
   depends_on 'perl'
 
-  def self.build
-  end
+  def self.build; end
 
   def self.install
     # install files to build directory
@@ -27,11 +25,7 @@ class Perl_locale_messages < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
-
-    # conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 
-  def self.check
-  end
+  def self.check; end
 end

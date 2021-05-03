@@ -23,11 +23,7 @@ class Perl_term_readkey < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
-
-    # Avoid conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 
-  def self.check
-  end
+  def self.check; end
 end

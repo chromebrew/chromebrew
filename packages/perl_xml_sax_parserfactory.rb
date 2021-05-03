@@ -9,12 +9,9 @@ class Perl_xml_sax_parserfactory < Package
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz'
   source_sha256 '4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a'
 
-
-
   depends_on 'perl'
 
-  def self.build
-  end
+  def self.build; end
 
   def self.install
     # install files to build directory
@@ -28,11 +25,7 @@ class Perl_xml_sax_parserfactory < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
-
-    # conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 
-  def self.check
-  end
+  def self.check; end
 end

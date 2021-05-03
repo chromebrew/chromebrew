@@ -19,8 +19,6 @@ class Perl_date_format < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
-    # Avoid conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
     # Conflict with perl_xml_parser package.
     FileUtils.rm "#{CREW_PREFIX}/lib/perl5/site_perl/5.32.1/Date/Language/Amharic.pm"
   end

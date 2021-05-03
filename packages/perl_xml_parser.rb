@@ -12,8 +12,7 @@ class Perl_xml_parser < Package
   depends_on 'expat'
   depends_on 'perl'
 
-  def self.build
-  end
+  def self.build; end
 
   def self.install
     # install files to build directory
@@ -27,11 +26,7 @@ class Perl_xml_parser < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
-
-    # conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -type f -name .packlist -o -name perllocal.pod -delete"
   end
 
-  def self.check
-  end
+  def self.check; end
 end

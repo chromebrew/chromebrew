@@ -22,8 +22,5 @@ class Perl_unicode_eastasianwidth < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-
-    # Avoid conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 end

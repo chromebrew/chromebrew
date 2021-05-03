@@ -9,12 +9,9 @@ class Perl_pod_parser < Package
   source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.63.tar.gz'
   source_sha256 'dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd'
 
-
-
   depends_on 'perl'
 
-  def self.build
-  end
+  def self.build; end
 
   def self.install
     # install files to build directory
@@ -28,11 +25,7 @@ class Perl_pod_parser < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
-
-    # conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 
-  def self.check
-  end
+  def self.check; end
 end
