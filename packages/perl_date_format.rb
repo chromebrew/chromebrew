@@ -21,5 +21,7 @@ class Perl_date_format < Package
 
     # Avoid conflicts with other perl module installs
     system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
+    # Conflict with perl_xml_parser package.
+    FileUtils.rm "#{CREW_PREFIX}/perl5/site_perl/5.32.1/Date/Language/Amharic.pm"
   end
 end
