@@ -957,20 +957,37 @@ def resolve_dependencies
 
   return if @dependencies.empty?
 
-
   puts 'The following packages also need to be installed: '
 
-  i = 0
-  last_deps = []
+  deps = @dependencies
+  begin_packages = []
+  end_packages = []
+  first_packages = ["shared_mime_info"]
   last_packages = ["curl", "ghc", "mandb", "gtk3", "gtk4", "sommelier"]
   @dependencies.each do |dep|
-    if last_packages.include?(dep)
-      @dependencies.delete_at(i)
-      last_deps.push(dep)
+    depends = nil
+    File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
+      f.each_line do |line|
+        if line =~ /depends_on/
+          depends = true
+          break
+        end
+      end
+    end
+    begin_packages.push dep if first_packages.include? dep
+    # if a dependency package has no other dependencies, push to the front
+    begin_packages.push dep unless depends
+    end_packages.push dep if last_packages.include? dep
+  end
+  i = 0
+  all_packages = begin_packages + end_packages
+  deps.each do |dep|
+    if all_packages.include?(dep)
+      deps.delete_at(i)
     end
     i += 1
   end
-  @dependencies.concat last_deps.sort
+  @dependencies = (begin_packages + deps + end_packages).uniq
 
   @dependencies.each do |dep|
     print dep + ' '
