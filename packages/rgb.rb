@@ -3,7 +3,7 @@ require 'package'
 class Rgb < Package
   description 'X color name database'
   homepage 'https://xorg.freedesktop.org/'
-  version '1.0.6'
+  version '1.0.6-1'
   license 'custom'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/rgb-1.0.6.tar.bz2'
@@ -12,6 +12,7 @@ class Rgb < Package
   depends_on 'xorg_proto' => :build
 
   def self.build
+    system '[ -x configure ] || ./autogen.sh'
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
