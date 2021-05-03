@@ -300,7 +300,7 @@ def help (pkgName)
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "list"
     puts "List packages"
-    puts "Usage: crew list available|installed|compatible|incompatible"
+    puts "Usage: crew list [-v|--verbose] available|installed|compatible|incompatible"
   when "postinstall"
     puts "Display postinstall messages of package(s)."
     puts "Usage: crew postinstall <package1> [<package2> ...]"
