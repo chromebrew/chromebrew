@@ -814,7 +814,10 @@ def prepare_package (destdir)
     FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/dir" if File.exist?("#{CREW_DEST_PREFIX}/share/info/dir")
     
     # Remove all perl module files which will conflict
-    system "find #{CREW_DEST_DIR} -type f -name .packlist -o -name perllocal.pod -delete"
+    if @pkg.name.include? 'perl_'
+      puts "Removing .packlist and perllocal.pod files to avoid conflicts with other perl packages.".orange
+      system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete" 
+    end
 
     # compress manual files
     compress_doc "#{CREW_DEST_PREFIX}/man"
