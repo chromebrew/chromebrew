@@ -39,7 +39,7 @@ class Xorg_server < Package
   depends_on 'font_util'
   depends_on 'libbsd'
   depends_on 'dbus'
-  depends_on 'lzma' => :build
+  depends_on 'xzutils' => :build
   depends_on 'xkbcomp'
   depends_on 'glproto'
   depends_on 'xcb_util_renderutil' => :build

@@ -30,7 +30,7 @@ class Imagemagick7 < Package
   depends_on 'graphviz'
   depends_on 'jbigkit'
   depends_on 'jemalloc'
-  depends_on 'lzma'
+  depends_on 'xzutils'
   depends_on 'libheif'
   depends_on 'librsvg'
   depends_on 'libwebp'
