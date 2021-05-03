@@ -968,7 +968,8 @@ def resolve_dependencies
     depends = nil
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
       f.each_line do |line|
-        if line =~ /depends_on/
+        found = line[/depends_on/] if line.ascii_only?
+        if found
           depends = true
           break
         end
