@@ -19,7 +19,7 @@ class Balena_etcher < Package
   depends_on 'gtk2'
   depends_on 'freetype'
   depends_on 'cairo'
-  depends_on 'lzma'
+  depends_on 'xzutils'
   depends_on 'libnotify'
   depends_on 'nspr'
   depends_on 'libgconf'
