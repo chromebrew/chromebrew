@@ -29,7 +29,7 @@ class Perl_xml_parser < Package
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
 
     # conflicts with other perl module installs
-    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
+    system "find #{CREW_DEST_DIR} -type f -name .packlist -o -name perllocal.pod -delete"
   end
 
   def self.check
