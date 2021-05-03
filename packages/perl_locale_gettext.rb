@@ -6,22 +6,9 @@ class Perl_locale_gettext < Package
   homepage 'https://metacpan.org/pod/Locale::gettext'
   compatibility 'all'
   license 'GPL-1+ or Artistic'
-  version '1.07-1'
+  version '1.07-2'
   source_url 'https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/gettext-1.07.tar.gz'
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_armv7l/perl_locale_gettext-1.07-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_i686/perl_locale_gettext-1.07-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-1_x86_64/perl_locale_gettext-1.07-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '2ca25cdafbe78b4d6b5e01c8985c20a2341c06c3b6969c50fa57f5dda2980e07',
-     armv7l: '2ca25cdafbe78b4d6b5e01c8985c20a2341c06c3b6969c50fa57f5dda2980e07',
-       i686: 'cf09ba00b54abf698b8c90e08c0de4f99856179551033f81e7984b4f1ae99e8f',
-     x86_64: '1183aaa19a065dcc5578276614e4e42f178b76e629d52285f68a12dae87f9232',
-  })
 
   depends_on 'perl'
 
@@ -40,6 +27,9 @@ class Perl_locale_gettext < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
+
+    # Avoid conflicts with other perl module installs
+    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 
   def self.check

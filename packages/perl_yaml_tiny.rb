@@ -3,24 +3,11 @@ require 'package'
 class Perl_yaml_tiny < Package
   description 'YAML::Tiny - Read/Write YAML files with as little code as possible'
   homepage 'https://metacpan.org/pod/YAML::Tiny'
-  version '1.73'
+  version '1.73-2'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/YAML-Tiny-1.73.tar.gz'
   source_sha256 'bc315fa12e8f1e3ee5e2f430d90b708a5dc7e47c867dba8dce3a6b8fbe257744'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.73_armv7l/perl_yaml_tiny-1.73-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.73_armv7l/perl_yaml_tiny-1.73-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.73_i686/perl_yaml_tiny-1.73-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.73_x86_64/perl_yaml_tiny-1.73-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'b8d1b77879017165e920e68843bcf2e20c0e3f9a90c7dea79e46e61ae1599b3d',
-     armv7l: 'b8d1b77879017165e920e68843bcf2e20c0e3f9a90c7dea79e46e61ae1599b3d',
-       i686: '7f89638189e8940a5b96f1a105612f88649143b40ebcfca83d3c03382827f81e',
-     x86_64: 'cf49cfc2fb0ad7605e6590a5ea0470420d212f64d494f9277cfd49e12b136714',
-  })
 
   depends_on 'perl'
 
@@ -36,6 +23,9 @@ class Perl_yaml_tiny < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
+
+    # Avoid conflicts with other perl module installs
+    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 
   def self.check

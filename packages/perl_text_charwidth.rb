@@ -3,24 +3,11 @@ require 'package'
 class Perl_text_charwidth < Package
   description 'Text::CharWidth - Get number of occupied columns of a string on terminals'
   homepage 'https://metacpan.org/pod/Text::CharWidth'
-  version '0.04-1'
+  version '0.04-2'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/Text-CharWidth-0.04.tar.gz'
   source_sha256 'abded5f4fdd9338e89fd2f1d8271c44989dae5bf50aece41b6179d8e230704f8'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_armv7l/perl_text_charwidth-0.04-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_i686/perl_text_charwidth-0.04-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-1_x86_64/perl_text_charwidth-0.04-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'f3d97714e0b0a6004c74c2c0e3ce3b716bbd15faebf67f11b8c3b44744417e22',
-     armv7l: 'f3d97714e0b0a6004c74c2c0e3ce3b716bbd15faebf67f11b8c3b44744417e22',
-       i686: '876b30f1223dd35171bee51adcc898c2a5a0b2e77837fbcb08aa2d2570790c62',
-     x86_64: 'a8b8882ce818811dc8eeb67c42cea8ef9ef3ca53e7c791e031bcf127b69db277',
-  })
 
   depends_on 'perl'
 
@@ -39,6 +26,9 @@ class Perl_text_charwidth < Package
     # install man
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
+
+    # Avoid conflicts with other perl module installs
+    system "find #{CREW_DEST_DIR} -name .packlist -o -name perllocal.pod -delete"
   end
 
   def self.check
