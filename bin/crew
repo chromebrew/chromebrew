@@ -188,8 +188,24 @@ def list_available
 end
 
 def list_installed
-  Dir[CREW_META_PATH + '*.directorylist'].sort.map do |f|
-    File.basename(f, '.directorylist').lightgreen
+  unless @opt_verbose
+    Dir[CREW_META_PATH + '*.directorylist'].sort.map do |f|
+      File.basename(f, '.directorylist').lightgreen
+    end
+  else
+    @installed_packages = []
+    @device[:installed_packages].each do |package|
+      search package[:name], true
+      @installed_packages.append(package[:name] + ' ' + package[:version].to_s)
+    end
+    @sorted_installed_packages = @installed_packages.sort
+    @sorted_installed_packages.unshift('======= =======')
+    @sorted_installed_packages.unshift('Package Version')
+    @first_col_width = @sorted_installed_packages.map(&:split).map(&:first).max_by(&:size).size + 2
+    @sorted_installed_packages.map(&:strip).each do |line|
+        puts "%-#{@first_col_width}s%s".lightgreen % line.split
+    end
+    puts
   end
 end
 
@@ -284,7 +300,7 @@ def help (pkgName)
     puts "If `-v` or `--verbose` is present, extra information will be displayed."
   when "list"
     puts "List packages"
-    puts "Usage: crew list available|installed|compatible|incompatible"
+    puts "Usage: crew list [-v|--verbose] available|installed|compatible|incompatible"
   when "postinstall"
     puts "Display postinstall messages of package(s)."
     puts "Usage: crew postinstall <package1> [<package2> ...]"
@@ -941,20 +957,38 @@ def resolve_dependencies
 
   return if @dependencies.empty?
 
-
   puts 'The following packages also need to be installed: '
 
-  i = 0
-  last_deps = []
+  deps = @dependencies
+  begin_packages = []
+  end_packages = []
+  first_packages = ["shared_mime_info"]
   last_packages = ["curl", "ghc", "mandb", "gtk3", "gtk4", "sommelier"]
   @dependencies.each do |dep|
-    if last_packages.include?(dep)
-      @dependencies.delete_at(i)
-      last_deps.push(dep)
+    depends = nil
+    File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
+      f.each_line do |line|
+        found = line[/depends_on/] if line.ascii_only?
+        if found
+          depends = true
+          break
+        end
+      end
+    end
+    begin_packages.push dep if first_packages.include? dep
+    # if a dependency package has no other dependencies, push to the front
+    begin_packages.push dep unless depends
+    end_packages.push dep if last_packages.include? dep
+  end
+  i = 0
+  all_packages = begin_packages + end_packages
+  deps.each do |dep|
+    if all_packages.include?(dep)
+      deps.delete_at(i)
     end
     i += 1
   end
-  @dependencies.concat last_deps.sort
+  @dependencies = (begin_packages + deps + end_packages).uniq
 
   @dependencies.each do |dep|
     print dep + ' '
