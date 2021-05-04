@@ -3,27 +3,33 @@ require 'package'
 class Stow < Package
   description 'Manage installation of multiple softwares in the same directory tree'
   homepage 'https://www.gnu.org/software/stow/'
-  version '2.2.2'
+  version '2.3.1'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/stow/stow-2.2.2.tar.gz'
-  source_sha256 'e2f77649301b215b9adbc2f074523bedebad366812690b9dc94457af5cf273df'
+  source_url 'https://ftpmirror.gnu.org/stow/stow-2.3.1.tar.gz'
+  source_sha256 '09d5d99671b78537fd9b2c0b39a5e9761a7a0e979f6fdb7eabfa58ee45f03d4b'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_armv7l/stow-2.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_armv7l/stow-2.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_i686/stow-2.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.2.2_x86_64/stow-2.2.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.3.1_armv7l/stow-2.3.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.3.1_armv7l/stow-2.3.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.3.1_i686/stow-2.3.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stow/2.3.1_x86_64/stow-2.3.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '3ea38b90ba0477578caa6a01326587f3826d5829a01f1725a781588fead751bc',
-     armv7l: '3ea38b90ba0477578caa6a01326587f3826d5829a01f1725a781588fead751bc',
-       i686: 'e53ad50ae437b0dd709ba44c91a02aa5b8b9ec8ce2255565690ffce58ec59753',
-     x86_64: '0c51e9d9c4963fd53d93ba87facd08812ad204414df888f14564a420f9f2f664',
+  binary_sha256({
+    aarch64: '503b01aab3beaf36bd629ab7b8aee2d98e29b780bbc20becdb2e1d0cacdfe150',
+     armv7l: '503b01aab3beaf36bd629ab7b8aee2d98e29b780bbc20becdb2e1d0cacdfe150',
+       i686: '5a38f30a09b1815beda68dd24ae3ea298183eb40b23b6c455cc990314159d17f',
+     x86_64: 'bd129677fb5214d53531b7fde7afd8bc22160e04d55fd05b3c9c1dc8b0c21867'
   })
+
+  def self.prebuild
+    system 'cpan App::cpanminus'
+  end
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}"
+    system 'cpanm Test::Output'
+    system "./configure #{CREW_OPTIONS} \
+      --with-pmdir=$(PERL5LIB= perl -le 'print $INC[0]')"
     system 'make'
   end
 
