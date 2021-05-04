@@ -183,7 +183,7 @@ def list_available
     notInstalled = false if File.exists? CREW_META_PATH + pkgName + '.filelist'
     if notInstalled
       set_package pkgName, filename
-      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+      if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         puts pkgName
       else
         puts pkgName.lightred
@@ -219,7 +219,7 @@ def list_compatible(compat = true)
     pkgName = File.basename filename, '.rb'
     set_package pkgName, filename
     if compat
-      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+      if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         if File.exist? CREW_META_PATH + pkgName + '.filelist'
           puts pkgName.lightgreen
         else
@@ -227,7 +227,7 @@ def list_compatible(compat = true)
         end
       end
     else
-      unless @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+      unless @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         puts pkgName.lightred
       end
     end
@@ -249,7 +249,7 @@ def generate_compatible
             pkgName = File.basename filename, '.rb'
             puts "Checking #{pkgName} for compatibility.".orange if @opt_verbose
             set_package pkgName, filename
-            if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+            if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
               #add to compatible packages
               puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
               @semaphore.synchronize do
@@ -985,7 +985,7 @@ def expand_dependencies
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility&.include?('all') or @pkg.compatibility&.include?(ARCH)
 
   @dependencies = []
   if @pkg.build_from_source
