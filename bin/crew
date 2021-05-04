@@ -488,7 +488,7 @@ def update
   #update compatible packages
   puts 'Generating compatible packages...'
   generate_compatible
-
+  puts 'Generating compatible packages done.'.orange if @opt_verbose
   #check for outdated installed packages
   puts 'Checking for package updates...'
 
