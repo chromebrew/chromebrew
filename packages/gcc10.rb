@@ -31,8 +31,8 @@ class Gcc10 < Package
   depends_on 'isl' # R
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'libssp' # L
-  depends_on 'libgcc_s1' # L
+  #depends_on 'libssp' # L
+  #depends_on 'libgcc_s1' # L
 
   @gcc_global_opts = '--disable-bootstrap \
     --disable-libmpx \
