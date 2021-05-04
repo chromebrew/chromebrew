@@ -595,7 +595,7 @@ def download
 
     case File.basename(filename)
     # Sources that download with curl
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|tpxz|xz|lz))?|tgz|tbz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for archive in cache".orange if @opt_verbose
@@ -727,7 +727,7 @@ def unpack (meta)
       end
     when /\.tpxz$/i
       puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
-      system "tar -Ipixz x#{@verbose} -C #{@extract_dir}", exception: true
+      system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     end
     if meta[:source] == true
       # Check the number of directories in the archive
