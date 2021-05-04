@@ -388,5 +388,5 @@ class Gcc11 < Package
     # end
     # Reinstall these conflicting packages since we may have overwritten them.
   #  system "crew reinstall #{package}"
-  end
+  #end
 end
