@@ -7,9 +7,20 @@ class Perl_gcstring_linebreak < Package
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://github.com/hatukanezumi/Unicode-LineBreak.git'
-  source_sha256 'Unicode-LineBreak-2019.001'
+  git_hashtag 'Unicode-LineBreak-2019.001'
 
-  depends_on 'perl'
+  binary_url({
+    aarch64: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-armv7l.tar.xz',
+     armv7l: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-armv7l.tar.xz',
+       i686: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-i686.tar.xz',
+     x86_64: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '376dfc3b39d861076e0ead658cc62ae07d5d753eaaf86bb70d440a537c3a4da4',
+     armv7l: '376dfc3b39d861076e0ead658cc62ae07d5d753eaaf86bb70d440a537c3a4da4',
+       i686: 'bedf57b7890ffb8ad84fce620bc07b28c1128901829a9453905ce8f64982a3eb',
+     x86_64: '2ccb5f0a0e9d96e02b13d1d4e16719b9df93d82354642f8f94feae76fa0cbd87'
+  })
 
   def self.build
     system 'perl', 'Makefile.PL'

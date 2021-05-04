@@ -9,10 +9,8 @@ class Xzutils < Package
   source_url 'https://github.com/xz-mirror/xz.git'
   git_hashtag 'e7da44d5151e21f153925781ad29334ae0786101'
 
-  depends_on 'perl_po4a' => :build
-  
   def self.build
-    system '[ -x configure ] || ./autogen.sh'
+    system '[ -x configure ] || ./autogen.sh --no-po4a'
     system "#{CREW_ENV_OPTIONS} \
       ./configure \
       #{CREW_OPTIONS} \
