@@ -84,9 +84,6 @@ class Smbclient < Package
     FileUtils.mkdir_p 'staging'
     system 'make V=1 DESTDIR=staging install'
     FileUtils.cp 'source3/script/smbtar', "staging/#{CREW_PREFIX}/bin/"
-    @python_deps.each do |item|
-      system "pip uninstall --yes #{item}"
-    end
   end
 
   def self.install
