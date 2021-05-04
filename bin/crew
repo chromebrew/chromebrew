@@ -595,7 +595,7 @@ def download
 
     case File.basename(filename)
     # Sources that download with curl
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|tpxz|xz|lz))?|tgz|tbz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for archive in cache".orange if @opt_verbose
@@ -725,6 +725,9 @@ def unpack (meta)
       Dir.chdir @extract_dir do
         system "../#{meta[:filename]} --appimage-extract", exception: true
       end
+    when /\.tpxz$/i
+      puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
+      system "pixz -d #{meta[:filename]} | tar x#{@verbose} -C #{@extract_dir}", exception: true
     end
     if meta[:source] == true
       # Check the number of directories in the archive
@@ -810,6 +813,12 @@ def prepare_package (destdir)
     # https://www.debian.org/doc/debian-policy/ch-docs.html#info-documents
     FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/dir" if File.exist?("#{CREW_DEST_PREFIX}/share/info/dir")
 
+    # Remove all perl module files which will conflict
+    if @pkg.name.include? 'perl_'
+      puts "Removing .packlist and perllocal.pod files to avoid conflicts with other perl packages.".orange
+      system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete" 
+    end
+
     # compress manual files
     compress_doc "#{CREW_DEST_PREFIX}/man"
     compress_doc "#{CREW_DEST_PREFIX}/info"
@@ -871,7 +880,7 @@ def strip_dir (dir)
 
       # Strip binaries but not compressed archives
       puts "Stripping binaries..."
-      extensions = [ 'bz2', 'gz', 'lha', 'lz', 'lzh', 'rar', 'tar', 'tbz', 'tgz', 'txz', 'xz', 'Z', 'zip' ]
+      extensions = [ 'bz2', 'gz', 'lha', 'lz', 'lzh', 'rar', 'tar', 'tbz', 'tgz', 'tpxz', 'txz', 'xz', 'Z', 'zip' ]
       inames = extensions.join(' ! -iname *\.')
       strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
     end
@@ -1122,9 +1131,17 @@ def build_package (pwd)
 end
 
 def archive_package (pwd)
-  pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-  Dir.chdir CREW_DEST_DIR do
-    system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
+  unless ENV['CREW_USE_PIXZ'] == 1
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
+    Dir.chdir CREW_DEST_DIR do
+      system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
+    end
+  else
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tpxz"
+    Dir.chdir CREW_DEST_DIR do
+      # Use smaller blocks with "-f0.25" to make random access faster.
+      system "tar c#{@verbose} * | pixz -f0.25 -9 > #{pwd}/#{pkg_name}"
+    end
   end
   system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
 end
