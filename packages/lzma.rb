@@ -6,7 +6,6 @@ class Lzma < Package
   version '4.98'
   license 'public-domain'
   compatibility 'all'
-  source_url 'SKIP'
 
   is_fake
 
