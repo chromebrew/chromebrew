@@ -217,7 +217,11 @@ end
 def list_compatible(compat = true)
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
-    set_package pkgName, filename
+    begin
+      set_package pkgName, filename
+    rescue => e
+      puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+    end
     if compat
       if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         if File.exist? CREW_META_PATH + pkgName + '.filelist'
