@@ -234,8 +234,10 @@ def generate_compatible
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     set_package pkgName, filename
+    puts 'Checking #{@pkg.name} for compatibility.'.orange if @opt_verbose
     if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
       #add to compatible packages
+      puts 'Adding #{@pkg.name} to compatible packages.'.lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
     end
   end
