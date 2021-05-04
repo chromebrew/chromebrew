@@ -1210,11 +1210,10 @@ end
 def postinstall_command (args)
   args["<name>"].each do |name|
     if installed?(name)
-      @pkgName = name
-      search @pkgName, true
+      search name, true
       @pkg.postinstall
     else
-      puts "Package #{@pkgName} is not installed. :(".lightred
+      puts "Package #{name} is not installed. :(".lightred
     end
   end
 end
