@@ -10,10 +10,10 @@ class Nss_mdns < Package
   source_sha256 'a2094101b735cade45048764ea594bdae2bfa9399837f3c852a5b264416e9c8c'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nss_mdns-0.14.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nss_mdns-0.14.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nss_mdns-0.14.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nss_mdns-0.14.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss_mdns/0.14.1_armv7l/nss_mdns-0.14.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss_mdns/0.14.1_armv7l/nss_mdns-0.14.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss_mdns/0.14.1_i686/nss_mdns-0.14.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss_mdns/0.14.1_x86_64/nss_mdns-0.14.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'f563823a9c3c3d9946900151e661977d35ba78e75a1e864e71bccceb66536810',

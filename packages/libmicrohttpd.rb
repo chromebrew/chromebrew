@@ -10,10 +10,10 @@ class Libmicrohttpd < Package
   source_sha256 '7a11e1376c62ff95bd6d2dfe6799d57ac7cdbcb32f70bfbd5e47c71f373e01f3'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libmicrohttpd-0.9.58-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libmicrohttpd-0.9.58-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_i686/libmicrohttpd-0.9.58-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_x86_64/libmicrohttpd-0.9.58-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '861604f225237f0ab46185d0b71fb8e405efe376c1c8014dc15ad1491ab76e8f',

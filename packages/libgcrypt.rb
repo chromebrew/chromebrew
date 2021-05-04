@@ -10,10 +10,10 @@ class Libgcrypt < Package
   source_sha256 '0cba2700617b99fc33864a0c16b1fa7fdf9781d9ed3509f5d767178e5fd7b975'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgcrypt-1.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgcrypt-1.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgcrypt-1.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgcrypt-1.8.6-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_armv7l/libgcrypt-1.8.6-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_armv7l/libgcrypt-1.8.6-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_i686/libgcrypt-1.8.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_x86_64/libgcrypt-1.8.6-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '1536f3b492773f7145d3f68893e4a4b0f0b6f3c64ac1141d563c243146836988',

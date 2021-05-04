@@ -11,14 +11,14 @@ class Symlinks < Package
   source_sha256 'f4469a9f366ccfaa7273b1f78bd540b8a6fa96f8b2b81a95d131944fb77efdd4'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/symlinks-1.4-4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/symlinks-1.4-4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_i686/symlinks-1.4-4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_x86_64/symlinks-1.4-4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '75676c7daebaa9a32ddf2053a47fde8e9cfb19ef774388b577b352514d98925d',
-     armv7l: '75676c7daebaa9a32ddf2053a47fde8e9cfb19ef774388b577b352514d98925d',
+    aarch64: 'def477d27a14a689d5fc900c640779e5edd24ff2cc00cd9eff7950f101c4f4c1',
+     armv7l: 'def477d27a14a689d5fc900c640779e5edd24ff2cc00cd9eff7950f101c4f4c1',
        i686: '94c62cf190ad07a4c38c9fe15875ba819b17d9be306ed907aa4643a7a24d1e49',
      x86_64: '39fe5a53a1c557aa71cfd6d7760e069c0421931e3e5345c57696e1cf79bf8e39'
   })

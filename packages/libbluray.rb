@@ -10,10 +10,10 @@ class Libbluray < Package
   source_sha256 'a3dd452239b100dc9da0d01b30e1692693e2a332a7d29917bf84bb10ea7c0b42'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libbluray-1.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libbluray-1.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libbluray-1.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libbluray-1.1.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_armv7l/libbluray-1.1.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_armv7l/libbluray-1.1.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_i686/libbluray-1.1.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbluray/1.1.2_x86_64/libbluray-1.1.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2affb63f6bf45b408f27f9f52eb29d4eeed070bf0fa729f91349a70b784b4661',

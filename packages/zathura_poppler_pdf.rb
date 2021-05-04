@@ -10,10 +10,10 @@ class Zathura_poppler_pdf < Package
   source_sha256 'd5cc3a7dae49471b85b503bbb9049c6f8d10903f4a611d721a2e0fefe726d4ed'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zathura_poppler_pdf-0.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/zathura_poppler_pdf-0.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/zathura_poppler_pdf-0.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/zathura_poppler_pdf-0.3.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_armv7l/zathura_poppler_pdf-0.3.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_armv7l/zathura_poppler_pdf-0.3.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_i686/zathura_poppler_pdf-0.3.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_x86_64/zathura_poppler_pdf-0.3.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8f0a5457aa3ed3f5eed6f602b4439967ab6957b3d1e04e7f9a9468d77713f1ea',

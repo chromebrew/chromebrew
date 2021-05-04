@@ -10,10 +10,10 @@ class Ladspa < Package
   source_sha256 '4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ladspa-1.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ladspa-1.15-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ladspa-1.15-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ladspa-1.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_armv7l/ladspa-1.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_armv7l/ladspa-1.15-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_i686/ladspa-1.15-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_x86_64/ladspa-1.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '3aa308850f574ef1151a8bddfb1056775b81752a0e33e9da37eb1884c0261223',

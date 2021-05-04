@@ -11,10 +11,10 @@ class Gparted < Package
   source_sha256 '6c90715d254d7a7ec0208b29007b64160dd9fb7df4c4aa7f8ec2c9d23114c719'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gparted-1.2.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gparted-1.2.0-1-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_armv7l/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_armv7l/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_i686/gparted-1.2.0-1-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_x86_64/gparted-1.2.0-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '86ffa5a47aa41a0c7a443c122d70e7754c7ddf8347ccbf70f378048071c6808b',

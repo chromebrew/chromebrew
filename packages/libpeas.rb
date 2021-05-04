@@ -10,10 +10,10 @@ class Libpeas < Package
   source_sha256 '93d2826330a5e943dcfe8d059c5885a808494ee44c0b04f72f2bb2283b4d515b'
 
   binary_url ({
-     aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
-        i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libpeas-1.28.0-chromeos-i686.tar.xz',
-      x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libpeas-1.28.0-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_i686/libpeas-1.28.0-chromeos-i686.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_x86_64/libpeas-1.28.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
      aarch64: '1e304a55ad539257c0ff2e1caa48671ee0c8749eb438d344d27025bc8b48c435',

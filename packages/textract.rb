@@ -10,10 +10,10 @@ class Textract < Package
   source_sha256 '9e5e2132db126646031134f7a84efbf10f631a3d0fb56bc8881f67998890dfac'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/textract-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/textract-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/textract-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/textract-1.6.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_armv7l/textract-1.6.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_armv7l/textract-1.6.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_i686/textract-1.6.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_x86_64/textract-1.6.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '77b0b5be2d908bf3e82e57e23c657edc4e556b87dc3d8790aba158e5509b87c7',

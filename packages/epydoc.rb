@@ -10,10 +10,10 @@ class Epydoc < Package
   source_sha256 'd4e5c8d90937d01b05170f592c1fa9b29e9ed0498dfe7f0eb2a3af61725b6ad1'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/epydoc-3.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/epydoc-3.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/epydoc-3.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/epydoc-3.0.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_armv7l/epydoc-3.0.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_armv7l/epydoc-3.0.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_i686/epydoc-3.0.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_x86_64/epydoc-3.0.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8991ce352c0c8d49e7947ed3d99194dc3d8b3c6277c21ee47f44925b9377dccf',
@@ -22,7 +22,7 @@ class Epydoc < Package
      x86_64: '5978478fb0eadb8a0a48b76b3c96bf0baa6b6c8d31ecd97c121a4cbaeb0941dd',
   })
 
-  depends_on 'python27'
+  depends_on 'python2'
 
   def self.install
     system "python setup.py install --root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX}"

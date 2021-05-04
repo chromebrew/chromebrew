@@ -10,10 +10,10 @@ class Libspectre < Package
   source_sha256 '49ae9c52b5af81b405455c19fe24089d701761da2c45d22164a99576ceedfbed'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libspectre-0.2.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libspectre-0.2.9-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libspectre-0.2.9-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libspectre-0.2.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_armv7l/libspectre-0.2.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_armv7l/libspectre-0.2.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_i686/libspectre-0.2.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.9_x86_64/libspectre-0.2.9-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '4b475b4e20a95c3ae4a2b9c515b63b865395d3885291f8339adc25315a47c09e',

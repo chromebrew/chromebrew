@@ -10,10 +10,10 @@ class Libndp < Package
   source_sha256 '53fd7da8fc840900238f1699e98a7e3e60cd6c68489015303e84b19c9dd2bb3a'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libndp-1.7-3fc2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libndp-1.7-3fc2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libndp-1.7-3fc2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libndp-1.7-3fc2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_armv7l/libndp-1.7-3fc2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_armv7l/libndp-1.7-3fc2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_i686/libndp-1.7-3fc2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_x86_64/libndp-1.7-3fc2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'cd1c2dc1ba0d66e86f335a9003a21c5cdb83f617b95fc9cee3f47cedaac44776',

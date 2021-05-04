@@ -951,7 +951,6 @@ def resolve_dependencies
   first_packages = ["shared_mime_info"]
   last_packages = ["curl", "ghc", "mandb", "gtk3", "gtk4", "sommelier"]
 
-
   @dependencies.each do |dep|
     print dep + ' '
   end
@@ -1092,7 +1091,7 @@ def archive_package (pwd)
 end
 
 def remove (pkgName)
-  #make sure the package is actually installed
+  # make sure the package is actually installed
   unless installed?(pkgName, mode: 'filelist')
     return puts "Package #{pkgName} isn't installed.".lightred
   end

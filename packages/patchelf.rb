@@ -10,10 +10,10 @@ class Patchelf < Package
   source_sha256 '5ed94d15c44c13c1fa6a78b2f5ca499e465fd9171e4a1daf194e8523c04a9339'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/patchelf-0.12-f347-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/patchelf-0.12-f347-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/patchelf-0.12-f347-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/patchelf-0.12-f347-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_armv7l/patchelf-0.12-f347-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_armv7l/patchelf-0.12-f347-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_i686/patchelf-0.12-f347-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_x86_64/patchelf-0.12-f347-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e2b7945b1a842076b60347516561d29af99bc450ef66732d41086bb15bc8374d',

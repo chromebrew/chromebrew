@@ -13,10 +13,10 @@ class Cargo_c < Package
   source_sha256 '533c65d555330e86b91415753efc140ffdb900abd59b5b6403352c4264941a99'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cargo_c-0.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cargo_c-0.7.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_i686/cargo_c-0.7.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_x86_64/cargo_c-0.7.3-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '9063b96616c64d564f99cd16611ca86f8b8a72a88f5afd03582aaba51941acea',

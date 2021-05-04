@@ -10,10 +10,10 @@ class Remmina < Package
   source_sha256 '24531287b85b2500b172cbe125f829c0dcf008c887ffa5e1b19a29c23d902885'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/remmina-1.4.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/remmina-1.4.13-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/remmina-1.4.13-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/remmina-1.4.13-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.13_armv7l/remmina-1.4.13-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.13_armv7l/remmina-1.4.13-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.13_i686/remmina-1.4.13-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.13_x86_64/remmina-1.4.13-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e42b0d7595f28712a818d3570274dd3070063c37ec6850da22d8e976a7a77f5d',

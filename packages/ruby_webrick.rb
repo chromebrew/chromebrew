@@ -10,10 +10,10 @@ class Ruby_webrick < Package
   source_sha256 '25df35c696301deddec8cc929954284fa3dfaa86ad90c0cce2ecc5740c476545'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ruby_webrick-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ruby_webrick-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ruby_webrick-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ruby_webrick-1.7.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_webrick/1.7.0_armv7l/ruby_webrick-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_webrick/1.7.0_armv7l/ruby_webrick-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_webrick/1.7.0_i686/ruby_webrick-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_webrick/1.7.0_x86_64/ruby_webrick-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'bd2b9c9c252b056688c3423ec6b026a619e429734b9f4fa831c431d237ab3aee',

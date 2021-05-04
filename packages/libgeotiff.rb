@@ -10,10 +10,10 @@ class Libgeotiff < Package
   source_sha256 '9311017e5284cffb86f2c7b7a9df1fb5ebcdc61c30468fb2e6bca36e4272ebca'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgeotiff-1.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgeotiff-1.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgeotiff-1.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgeotiff-1.6.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_armv7l/libgeotiff-1.6.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_armv7l/libgeotiff-1.6.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_i686/libgeotiff-1.6.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_x86_64/libgeotiff-1.6.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '5c83c9df55eb3c906814e64b05131b53b5bfc9ee6a47b08a1fd36a7973c1c765',

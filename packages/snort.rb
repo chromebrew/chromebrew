@@ -10,10 +10,10 @@ class Snort < Package
   source_sha256 '9f6b3aeac5a109f55504bd370564ac431cb1773507929dc461626898f33f46cd'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/snort-2.9.11.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/snort-2.9.11.1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/snort-2.9.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/snort-2.9.11.1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snort/2.9.11.1_armv7l/snort-2.9.11.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snort/2.9.11.1_armv7l/snort-2.9.11.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snort/2.9.11.1_i686/snort-2.9.11.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snort/2.9.11.1_x86_64/snort-2.9.11.1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8f12b124f9542264c22d29a337be0b84899289dbbcb8c533540aebb792d2e955',

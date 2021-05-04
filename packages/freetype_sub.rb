@@ -10,10 +10,10 @@ class Freetype_sub < Package
   source_sha256 '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/freetype_sub-2.10.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/freetype_sub-2.10.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_i686/freetype_sub-2.10.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_x86_64/freetype_sub-2.10.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '7c8620a0cad19fbcd7ff0d96a7304323648b97c93d86352cfbb8216c768aeb1b',

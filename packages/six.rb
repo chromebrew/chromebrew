@@ -10,10 +10,10 @@ class Six < Package
   source_sha256 '6efff7289d1d369f0a25180433aba83ec2584e489e90f115b52ba69e4816cfb4'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/six-1.14.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/six-1.14.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/six-1.14.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/six-1.14.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/six/1.14.0_armv7l/six-1.14.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/six/1.14.0_armv7l/six-1.14.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/six/1.14.0_i686/six-1.14.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/six/1.14.0_x86_64/six-1.14.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '194646b4fb1a0ed11492d21a45bc09d91ab7da78cbc8a6ad2f0c3ebe723692ba',

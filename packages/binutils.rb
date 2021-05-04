@@ -4,23 +4,23 @@ class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
   @_ver = '2.36.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
   source_sha256 'e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/binutils-2.36.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/binutils-2.36.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/binutils-2.36.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/binutils-2.36.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_armv7l/binutils-2.36.1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_armv7l/binutils-2.36.1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_i686/binutils-2.36.1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_x86_64/binutils-2.36.1-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '3f580f50aa890e57b2faead8c500982890b03c834a0808d1ee8fbf8f91df706f',
-     armv7l: '3f580f50aa890e57b2faead8c500982890b03c834a0808d1ee8fbf8f91df706f',
-       i686: '791e202c0fa73426b35ba072f4bd7d08150792d56ed0a55fd92921373eeef1ed',
-     x86_64: '564af95307c729f0199717dbb770a7dae08c3cb3818298689f809076c45fa9c5'
+    aarch64: '46564bc989d33c3518f7afbb54f95e4b614f735ddcbe783114ba397ff283e408',
+     armv7l: '46564bc989d33c3518f7afbb54f95e4b614f735ddcbe783114ba397ff283e408',
+       i686: 'e9ea43c0c5f9f98422f83b8f1732104c78b55f53572e7353657944fe9dc6298a',
+     x86_64: '784c5e9bfd884c411708ae3c2ee1c852022f411794ff109fb7d37e91f124037b'
   })
 
   def self.patch

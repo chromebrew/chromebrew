@@ -10,10 +10,10 @@ class Cowsay < Package
   source_sha256 'd8b871332cfc1f0b6c16832ecca413ca0ac14d58626491a6733829e3d655878b'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cowsay-3.04-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/cowsay-3.04-1-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/cowsay-3.04-1-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/cowsay-3.04-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_armv7l/cowsay-3.04-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_armv7l/cowsay-3.04-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_i686/cowsay-3.04-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cowsay/3.04-1_x86_64/cowsay-3.04-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3cd6ecc3ce8521dd6e9d598bf72437cb5ab6982ef9d0a8eaa2d991cf57ed7bac',

@@ -10,10 +10,10 @@ class Ldc < Package                 # The first character of the class name must
   source_sha256 '7cd46140ca3e4ca0d52c352e5b694d4d5336898ed4f02c3e18e0eafd69dd18bd'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ldc-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/ldc-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/ldc-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/ldc-1.7.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldc/1.7.0_armv7l/ldc-1.7.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldc/1.7.0_armv7l/ldc-1.7.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldc/1.7.0_i686/ldc-1.7.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldc/1.7.0_x86_64/ldc-1.7.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '6a4b83f91ead7675d40aa3621dc48362fffa99db4217e3e3557cecf80d91fef8',

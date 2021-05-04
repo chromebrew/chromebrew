@@ -97,7 +97,7 @@ class Buildessential < Package
   #depends_on 'composer'
 
   # Python
-  depends_on 'python27'
+  depends_on 'python2'
   depends_on 'python3'
 
   # Qt

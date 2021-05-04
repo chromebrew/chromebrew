@@ -10,10 +10,10 @@ class Libxtst < Package
   source_sha256 '4655498a1b8e844e3d6f21f3b2c4e2b571effb5fd83199d428a6ba7ea4bf5204'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxtst-1.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libxtst-1.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libxtst-1.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libxtst-1.2.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_armv7l/libxtst-1.2.3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_armv7l/libxtst-1.2.3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_i686/libxtst-1.2.3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.3_x86_64/libxtst-1.2.3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '032782d5f6b4eff989dead39660124c9248d6612b41f5a7ad065172e9fdbdb2a',

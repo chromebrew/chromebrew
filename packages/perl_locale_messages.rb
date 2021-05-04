@@ -10,10 +10,10 @@ class Perl_locale_messages < Package
   source_sha256 'cad0b1fd0abfa1340dea089ec45ee3dacd9710c9fd942c064bb8124273b3caa9'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_locale_messages-1.31-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/perl_locale_messages-1.31-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/perl_locale_messages-1.31-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/perl_locale_messages-1.31-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.31_armv7l/perl_locale_messages-1.31-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.31_armv7l/perl_locale_messages-1.31-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.31_i686/perl_locale_messages-1.31-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.31_x86_64/perl_locale_messages-1.31-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'aac0aa6fe8609a8f51f755f738613842dad332d641e3ddbebb30565a82d87be9',

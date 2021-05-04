@@ -10,10 +10,10 @@ class Gnuchess < Package
   source_sha256 'e536675a61abe82e61b919f6b786755441d9fcd4c21e1c82fb9e5340dd229846'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnuchess-6.2.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gnuchess-6.2.7-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gnuchess-6.2.7-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gnuchess-6.2.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnuchess/6.2.7_armv7l/gnuchess-6.2.7-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnuchess/6.2.7_armv7l/gnuchess-6.2.7-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnuchess/6.2.7_i686/gnuchess-6.2.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnuchess/6.2.7_x86_64/gnuchess-6.2.7-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'beaa12320b833a03fcf58db484efd22b32e5a51feb50548345a298e316ca0915',

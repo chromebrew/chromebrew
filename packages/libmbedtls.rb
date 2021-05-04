@@ -10,10 +10,10 @@ class Libmbedtls < Package
   source_sha256 'fe9e3b15c3375943bdfebbbb20dd6b4f1147b3b5d926248bd835d73247407430'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmbedtls-2.16.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libmbedtls-2.16.8-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libmbedtls-2.16.8-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libmbedtls-2.16.8-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_armv7l/libmbedtls-2.16.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_armv7l/libmbedtls-2.16.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_i686/libmbedtls-2.16.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbedtls/2.16.8_x86_64/libmbedtls-2.16.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: 'fa1207538c87a278987bd49aa789d9a064745eb17af6e0bca986cab290f7c8e4',

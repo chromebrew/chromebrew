@@ -10,10 +10,10 @@ class Gcab < Package
   source_sha256 '597dd7d0ddee9065412abf0ee15ae73e913daf967f43af5dd55ea9b87b514188'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcab-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gcab-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gcab-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gcab-1.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_armv7l/gcab-1.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_armv7l/gcab-1.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_i686/gcab-1.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.4_x86_64/gcab-1.4-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '38438135d7527691a77a8c8016ad4afb13bebc6245663b87e8b0dd6beb41174d',

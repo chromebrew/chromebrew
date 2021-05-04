@@ -11,10 +11,10 @@ class Nss < Package
   source_sha256 '812468f3cf22917f9647fec7997f4ab27ae4167811d9cbdc831f41f5ed281c5d'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nss-3.61-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/nss-3.61-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/nss-3.61-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/nss-3.61-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/3.61_armv7l/nss-3.61-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/3.61_armv7l/nss-3.61-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/3.61_i686/nss-3.61-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/3.61_x86_64/nss-3.61-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '812f36d5c1875cf8803097265483b8a558194c6f0778977d55637407682ba51c',

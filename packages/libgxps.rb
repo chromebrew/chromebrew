@@ -13,10 +13,10 @@ class Libgxps < Package
   source_sha256 'ffbc656e801233a64ea5b6ab5532691e8b91f72cce3ea957615fe8523696d42a'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgxps-0.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/libgxps-0.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/libgxps-0.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/libgxps-0.3.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_armv7l/libgxps-0.3.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_armv7l/libgxps-0.3.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_i686/libgxps-0.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_x86_64/libgxps-0.3.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '47a8cac375a3ea3dace3d0498c79511d3973b2e39b6fd8d8593804e6de84dfeb',

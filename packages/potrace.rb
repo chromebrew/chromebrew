@@ -10,10 +10,10 @@ class Potrace < Package
   source_sha256 'a9b33904ace328340c850a01458199e0064e03ccaaa731bc869a842b1b8d529d'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/potrace-1.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/potrace-1.15-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/potrace-1.15-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/potrace-1.15-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_armv7l/potrace-1.15-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_armv7l/potrace-1.15-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_i686/potrace-1.15-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.15_x86_64/potrace-1.15-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '8429fae5e3917cb36772db6e14a5245cbf2c1fab7c4798319aace9f037285aed',

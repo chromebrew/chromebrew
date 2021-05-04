@@ -11,10 +11,10 @@ class Gstreamer < Package
   source_sha256 '9aeec99b38e310817012aa2d1d76573b787af47f8a725a65b833880a094dfbc5'
 
   binary_url({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gstreamer-1.18.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/gstreamer-1.18.4-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/gstreamer-1.18.4-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/gstreamer-1.18.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.18.4_armv7l/gstreamer-1.18.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.18.4_armv7l/gstreamer-1.18.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.18.4_i686/gstreamer-1.18.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.18.4_x86_64/gstreamer-1.18.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6c9267fa671cd0127e8f677e211b3b260d79f85e865b7e9e98bdcfd726360e5a',

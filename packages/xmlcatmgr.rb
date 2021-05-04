@@ -10,10 +10,10 @@ class Xmlcatmgr < Package
   source_sha256 'ea1142b6aef40fbd624fc3e2130cf10cf081b5fa88e5229c92b8f515779d6fdc'
 
   binary_url ({
-    aarch64: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmlcatmgr-2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://downloads.sourceforge.net/project/chromebrew/armv7l/xmlcatmgr-2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://downloads.sourceforge.net/project/chromebrew/i686/xmlcatmgr-2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://downloads.sourceforge.net/project/chromebrew/x86_64/xmlcatmgr-2.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlcatmgr/2.2_armv7l/xmlcatmgr-2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlcatmgr/2.2_armv7l/xmlcatmgr-2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlcatmgr/2.2_i686/xmlcatmgr-2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlcatmgr/2.2_x86_64/xmlcatmgr-2.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '24f525796676d285347f300bb26b60c728d6384032e0dad2230bc0c4bbb41eea',
