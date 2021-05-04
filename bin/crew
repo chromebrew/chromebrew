@@ -259,7 +259,7 @@ def generate_compatible
               puts "#{pkgName} is not a compatible package.".lightred if @opt_verbose
             end
           rescue => e
-            puts "Error with #{pkgName}.rb: #{e}".red
+            puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant') 
           end
         end
       rescue => e
