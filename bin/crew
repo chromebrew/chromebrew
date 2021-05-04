@@ -266,9 +266,9 @@ def generate_compatible
         puts "Thread Error: #{e}".orange unless e.to_s.include?('queue empty') if @opt_verbose
       end
     end
-  end; "ok"
+  end
   begin
-    workers.map(&:join); "ok"
+    workers.map(&:join)
   rescue => exception
     puts "Explicitly caught - #{exception.class}: #{exception.message}" if @opt_verbose
   end
