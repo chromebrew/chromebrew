@@ -239,6 +239,8 @@ def generate_compatible
       #add to compatible packages
       puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
+    else
+      puts "#{pkgName} not a compatible packages.".lightred if @opt_verbose
     end
   end
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
