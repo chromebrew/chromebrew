@@ -730,6 +730,9 @@ def unpack (meta)
         system "../#{meta[:filename]} --appimage-extract", exception: true
       end
     when /\.tpxz$/i
+      unless File.exist?("#{CREW_PREFIX}/bin/pixz")
+        abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred
+      end
       puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
       system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     end

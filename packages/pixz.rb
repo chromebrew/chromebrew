@@ -40,8 +40,7 @@ class Pixz < Package
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
-  unless File.exist?("#{CREW_META_PATH}pixz.filelist")
-    puts 'Pixz is not installed'.lightred
-    system 'crew install pixz' unless File.exist?("#{CREW_META_PATH}pixz.filelist")
+  unless File.exist?("#{CREW_PREFIX}/bin/pixz")
+    puts 'Pixz is not installed. Please install it with \'crew install pixz\''.lightred
   end
 end
