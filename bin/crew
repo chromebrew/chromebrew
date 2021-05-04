@@ -727,7 +727,7 @@ def unpack (meta)
       end
     when /\.tpxz$/i
       puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
-      system "pixz -d #{meta[:filename]} | tar x#{@verbose} -C #{@extract_dir}", exception: true
+      system "tar -Ipixz x#{@verbose} -C #{@extract_dir}", exception: true
     end
     if meta[:source] == true
       # Check the number of directories in the archive
