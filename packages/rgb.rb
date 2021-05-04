@@ -12,7 +12,7 @@ class Rgb < Package
   depends_on 'xorg_proto' => :build
 
   def self.build
-    system '[ -x configure ] || ./autogen.sh'
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
