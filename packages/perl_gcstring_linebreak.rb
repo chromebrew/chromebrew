@@ -10,10 +10,10 @@ class Perl_gcstring_linebreak < Package
   git_hashtag 'Unicode-LineBreak-2019.001'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-armv7l.tar.xz',
-     armv7l: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-armv7l.tar.xz',
-       i686: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-i686.tar.xz',
-     x86_64: 'file:///usr/local/tmp/packages/perl_gcstring_linebreak-2019.001-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001-1_armv7l/perl_gcstring_linebreak-2019.001-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001-1_armv7l/perl_gcstring_linebreak-2019.001-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001-1_i686/perl_gcstring_linebreak-2019.001-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gcstring_linebreak/2019.001-1_x86_64/perl_gcstring_linebreak-2019.001-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '376dfc3b39d861076e0ead658cc62ae07d5d753eaaf86bb70d440a537c3a4da4',
