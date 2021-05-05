@@ -4,7 +4,6 @@ require_relative '../lib/color'
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 
-require 'thread'
 require 'find'
 require 'net/http'
 require 'uri'
@@ -33,7 +32,7 @@ Usage:
   crew reinstall [options] [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] <name> ...
   crew remove [options] <name> ...
   crew search [options] [<name> ...]
-  crew update [options]
+  crew update [options] [<compatible>]
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides [options] <name> ...
 
@@ -132,7 +131,11 @@ end
 
 def print_package(pkgPath, extra = false)
   pkgName = File.basename pkgPath, '.rb'
-  set_package pkgName, pkgPath
+  begin
+    set_package pkgName, pkgPath
+  rescue => e
+    puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+  end
   print_current_package extra
 end
 
@@ -182,7 +185,11 @@ def list_available
     pkgName = File.basename filename, '.rb'
     notInstalled = false if File.exists? CREW_META_PATH + pkgName + '.filelist'
     if notInstalled
-      set_package pkgName, filename
+      begin
+        set_package pkgName, filename
+      rescue => e
+        puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+      end
       if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         puts pkgName
       else
@@ -215,66 +222,61 @@ def list_installed
 end
 
 def list_compatible(compat = true)
+  generate_compatible
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+    pkgName = File.basename filename, '.rb'
+    if @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
+      @compatibility = true
+    else
+      @compatibility = false
+    end
+    if @compatibility
+      if ( File.exist? CREW_META_PATH + pkgName + '.filelist' ) && compat
+        puts pkgName.lightgreen
+      else
+        puts pkgName unless !compat
+      end
+    else
+      puts pkgName.lightred
+    end
+  end
+end
+
+def generate_compatible
+  puts 'Generating compatible packages...'
+  @device[:compatible_packages] = []
+  Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
+
     pkgName = File.basename filename, '.rb'
     begin
       set_package pkgName, filename
     rescue => e
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
-    if compat
-      if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
-        if File.exist? CREW_META_PATH + pkgName + '.filelist'
-          puts pkgName.lightgreen
-        else
-          puts pkgName
-        end
+    puts "Checking #{pkgName} for compatibility.".orange if @opt_verbose
+    # If compatibility property does not exist, check if a binary package
+    # exists, and if not, see if at least a source url exists.
+    @compatibility = true
+    @binary_url = ''
+    @url = ''
+    if @pkg.compatibility.nil?
+      @binary_url = @pkg.get_binary_url(@device[:architecture])
+      @url = @pkg.get_url(@device[:architecture])
+      if !@binary_url
+        puts "#{pkgName} is missing compatibility information".red
+        #puts "url: #{@url}".green
+        # If no source package is available, then package is not compatible.
+        @compatibility = false if !@url
+        puts "#{pkgName} compatibility is #{@compatibility.to_s}" if @opt_verbose
       end
+    end
+    if ( @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH or @pkg.compatibility.nil? ) and @compatibility
+      #add to compatible packages
+      puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
+      @device[:compatible_packages].push(name: @pkg.name)
     else
-      unless @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
-        puts pkgName.lightred
-      end
+      puts "#{pkgName} is not a compatible package.".lightred if @opt_verbose
     end
-  end
-end
-
-def generate_compatible
-  @device[:compatible_packages] = []
-  @work_q = Queue.new
-  @semaphore = Mutex.new
-  Dir[CREW_PACKAGES_PATH + '*.rb'].each{|file| @work_q << file}
-  # This creates a 10 worker thread pool
-  workers = (0...10).map do
-    Thread.new do
-    Thread.abort_on_exception = true
-      begin
-        while filename = @work_q.pop(true)
-          begin
-            pkgName = File.basename filename, '.rb'
-            puts "Checking #{pkgName} for compatibility.".orange if @opt_verbose
-            set_package pkgName, filename
-            if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
-              #add to compatible packages
-              puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
-              @semaphore.synchronize do
-                @device[:compatible_packages].push(name: @pkg.name)
-              end
-            else
-              puts "#{pkgName} is not a compatible package.".lightred if @opt_verbose
-            end
-          rescue => e
-            puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant') 
-          end
-        end
-      rescue => e
-        puts "Thread Error: #{e}".orange unless e.to_s.include?('queue empty') if @opt_verbose
-      end
-    end
-  end
-  begin
-    workers.map(&:join)
-  rescue => exception
-    puts "Explicitly caught - #{exception.class}: #{exception.message}" if @opt_verbose
   end
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     output = JSON.parse @device.to_json
@@ -284,7 +286,11 @@ end
 
 def search (pkgName, silent = false)
   pkgPath = CREW_PACKAGES_PATH + pkgName + '.rb'
-  return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
+  begin
+    return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
+  rescue => e
+    puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+  end
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
@@ -296,7 +302,11 @@ def regexp_search(pkgPat)
   if results.empty?
     Dir[CREW_PACKAGES_PATH + '*.rb'].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
-      set_package packageName, packagePath
+      begin
+        set_package packageName, packagePath
+      rescue => e
+        puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+      end
       if ( @pkg.description =~ /#{pkgPat}/i )
         print_current_package @opt_verbose
         results.push(packageName)
@@ -371,6 +381,8 @@ def help (pkgName)
     puts "Update crew."
     puts "Usage: crew update"
     puts "This only updates crew itself.  Use `crew upgrade` to update packages."
+    puts "Usage: crew update compatible"
+    puts "This updates the crew package compatibility list."
   when "upgrade"
     puts "Update package(s)."
     puts "Usage: crew upgrade [-v|--verbose] [-s|--build-from-source] <package1> [<package2> ...]"
@@ -523,7 +535,6 @@ def update
   puts 'Package lists, crew, and library updated.'
 
   #update compatible packages
-  puts 'Generating compatible packages...'
   generate_compatible
   puts 'Generating compatible packages done.'.orange if @opt_verbose
   #check for outdated installed packages
@@ -989,7 +1000,7 @@ def expand_dependencies
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility&.include?('all') or @pkg.compatibility&.include?(ARCH)
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
 
   @dependencies = []
   if @pkg.build_from_source
@@ -1354,7 +1365,11 @@ def search_command (args)
 end
 
 def update_command (args)
-  update
+  if args['<compatible>']
+    generate_compatible
+  else
+    update
+  end
 end
 
 def upgrade_command (args)
