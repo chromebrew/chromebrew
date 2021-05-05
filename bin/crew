@@ -246,7 +246,6 @@ def generate_compatible
   puts 'Generating compatible packages...'
   @device[:compatible_packages] = []
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
-
     pkgName = File.basename filename, '.rb'
     begin
       set_package pkgName, filename
