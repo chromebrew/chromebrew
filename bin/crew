@@ -142,8 +142,8 @@ end
 def print_current_package(extra = false)
   pkgName = @pkg.name
   status = ''
-  status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == pkgName end
-  status = 'incompatible' unless @pkg.name.in? @device[:compatible_packages]
+  status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == @pkg.name end
+  status = 'incompatible' unless @device[:compatible_packages].any? do |elem| elem[:name] == @pkg.name end
   case status
   when 'installed'
     print @pkg.name.lightgreen
@@ -225,7 +225,7 @@ def list_compatible(compat = true)
   generate_compatible
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
-    if pkgName.in? @device[:compatible_packages]
+    if @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
       @compatibility = true
     else
       @compatibility = false
@@ -999,7 +999,7 @@ def expand_dependencies
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.name.in? @device[:compatible_packages]
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @device[:compatible_packages].any? do |elem| elem[:name] == @pkg.name end
 
   @dependencies = []
   if @pkg.build_from_source
