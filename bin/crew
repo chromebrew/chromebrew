@@ -32,7 +32,7 @@ Usage:
   crew reinstall [options] [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] <name> ...
   crew remove [options] <name> ...
   crew search [options] [<name> ...]
-  crew update [options]
+  crew update [options] [<compatible>]
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides [options] <name> ...
 
@@ -131,15 +131,19 @@ end
 
 def print_package(pkgPath, extra = false)
   pkgName = File.basename pkgPath, '.rb'
-  set_package pkgName, pkgPath
+  begin
+    set_package pkgName, pkgPath
+  rescue => e
+    puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+  end
   print_current_package extra
 end
 
-def print_current_package (extra = false)
+def print_current_package(extra = false)
   pkgName = @pkg.name
   status = ''
-  status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == pkgName end
-  status = 'incompatible' unless @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
+  status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == @pkg.name end
+  status = 'incompatible' unless @device[:compatible_packages].any? do |elem| elem[:name] == @pkg.name end
   case status
   when 'installed'
     print @pkg.name.lightgreen
@@ -158,8 +162,12 @@ def print_current_package (extra = false)
   puts ""
 end
 
-def set_package (pkgName, pkgPath)
-  require pkgPath
+def set_package(pkgName, pkgPath)
+  begin
+    require_relative pkgPath
+  rescue SyntaxError => e
+    puts "#{e.class}: #{e.message}".red
+  end
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.build_from_source = true if @opt_recursive
   @pkg.name = pkgName
@@ -175,10 +183,14 @@ def list_available
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     notInstalled = true
     pkgName = File.basename filename, '.rb'
-    notInstalled = false if File.exists? CREW_META_PATH + pkgName + '.filelist'
+    notInstalled = false if File.exist? CREW_META_PATH + pkgName + '.filelist'
     if notInstalled
-      set_package pkgName, filename
-      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+      begin
+        set_package pkgName, filename
+      rescue => e
+        puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+      end
+      if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         puts pkgName
       else
         puts pkgName.lightred
@@ -203,44 +215,61 @@ def list_installed
     @sorted_installed_packages.unshift('Package Version')
     @first_col_width = @sorted_installed_packages.map(&:split).map(&:first).max_by(&:size).size + 2
     @sorted_installed_packages.map(&:strip).each do |line|
-        puts "%-#{@first_col_width}s%s".lightgreen % line.split
+      puts "%-#{@first_col_width}s%s".lightgreen % line.split
     end
     puts
   end
 end
 
 def list_compatible(compat = true)
+  generate_compatible
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
-    set_package pkgName, filename
-    if compat
-      if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
-        if File.exist? CREW_META_PATH + pkgName + '.filelist'
-          puts pkgName.lightgreen
-        else
-          puts pkgName
-        end
+    if @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
+      if ( File.exist? CREW_META_PATH + pkgName + '.filelist' ) && compat
+        puts pkgName.lightgreen
+      else
+        puts pkgName unless !compat
       end
     else
-      unless @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
-        puts pkgName.lightred
-      end
+      puts pkgName.lightred
     end
   end
 end
 
 def generate_compatible
+  puts 'Generating compatible packages...'
   @device[:compatible_packages] = []
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
-    set_package pkgName, filename
+    begin
+      set_package pkgName, filename
+    rescue => e
+      puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+    end
     puts "Checking #{pkgName} for compatibility.".orange if @opt_verbose
-    if @pkg.compatibility.include? 'all' or @pkg.compatibility.include? ARCH
+    # If compatibility property does not exist, check if a binary package
+    # exists, and if not, see if at least a source url exists.
+    @compatibility = true
+    @binary_url = ''
+    @url = ''
+    if @pkg.compatibility.nil?
+      @binary_url = @pkg.get_binary_url(@device[:architecture])
+      @url = @pkg.get_url(@device[:architecture])
+      if !@binary_url
+        puts "#{pkgName} is missing compatibility information".red
+        #puts "url: #{@url}".green
+        # If no source package is available, then package is not compatible.
+        @compatibility = false unless @url
+        puts "#{pkgName} compatibility is #{@compatibility}" if @opt_verbose
+      end
+    end
+    if ( @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH or @pkg.compatibility.nil? ) and @compatibility
       #add to compatible packages
       puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
     else
-      puts "#{pkgName} not a compatible packages.".lightred if @opt_verbose
+      puts "#{pkgName} is not a compatible package.".lightred if @opt_verbose
     end
   end
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
@@ -251,7 +280,11 @@ end
 
 def search (pkgName, silent = false)
   pkgPath = CREW_PACKAGES_PATH + pkgName + '.rb'
-  return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
+  begin
+    return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
+  rescue => e
+    puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+  end
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
@@ -263,17 +296,21 @@ def regexp_search(pkgPat)
   if results.empty?
     Dir[CREW_PACKAGES_PATH + '*.rb'].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
-      set_package packageName, packagePath
+      begin
+        set_package packageName, packagePath
+      rescue => e
+        puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+      end
       if ( @pkg.description =~ /#{pkgPat}/i )
         print_current_package @opt_verbose
         results.push(packageName)
       end
     end
   end
-  abort "Package #{pkgPat} not found. :(".lightred unless results.length > 0
+  abort "Package #{pkgPat} not found. :(".lightred unless results.length.positive?
 end
 
-def help (pkgName)
+def help(pkgName)
   case pkgName
   when "build"
     puts "Build package(s)."
@@ -338,6 +375,8 @@ def help (pkgName)
     puts "Update crew."
     puts "Usage: crew update"
     puts "This only updates crew itself.  Use `crew upgrade` to update packages."
+    puts "Usage: crew update compatible"
+    puts "This updates the crew package compatibility list."
   when "upgrade"
     puts "Update package(s)."
     puts "Usage: crew upgrade [-v|--verbose] [-s|--build-from-source] <package1> [<package2> ...]"
@@ -354,7 +393,7 @@ def help (pkgName)
   end
 end
 
-def const (var)
+def const(var)
   if var
     value = eval(var)
     puts "#{var}=#{value}"
@@ -428,12 +467,12 @@ end
 
 def files (pkgName)
   filelist = "#{CREW_META_PATH}#{pkgName}.filelist"
-  if File.exists? filelist
+  if File.exist? filelist
     system "sort #{filelist}"
     lines = File.readlines(filelist).size
     size = 0
     File.readlines(filelist).each do |filename|
-      size += File.size(filename.chomp) if File.exists? filename.chomp
+      size += File.size(filename.chomp) if File.exist? filename.chomp
     end
     humansize = human_size(size)
     puts "Total found: #{lines}".lightgreen
@@ -452,13 +491,13 @@ def whatprovides (regexPat)
       found = line[/#{needle}/] if line.ascii_only?
       if found
         fileLine = packageName + ': ' + line
-        if not fileArray.include? fileLine
+        unless fileArray.include? fileLine
           fileArray.push(fileLine)
         end
       end
     end
   end
-  if not fileArray.empty?
+  unless fileArray.empty?
     fileArray.sort.each do |item|
       puts item
     end
@@ -490,7 +529,6 @@ def update
   puts 'Package lists, crew, and library updated.'
 
   #update compatible packages
-  puts 'Generating compatible packages...'
   generate_compatible
   puts 'Generating compatible packages done.'.orange if @opt_verbose
   #check for outdated installed packages
@@ -557,7 +595,7 @@ def upgrade
       end
     end
 
-    if toBeUpdated.length > 0
+    if toBeUpdated.length.positive?
       puts 'Updating packages...'
       toBeUpdated.each do |package|
         search package
@@ -609,7 +647,7 @@ def download
           cachefile = ''
         else
           puts "Archive file exists in cache".lightgreen if @opt_verbose
-          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum then
+          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
@@ -619,8 +657,8 @@ def download
               FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
               puts "Archive copied from cache".green if @opt_verbose
             end
-          puts "Archive found in cache".lightgreen
-          return {source: source, filename: filename}
+            puts "Archive found in cache".lightgreen
+            return {source: source, filename: filename}
           else
             puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
             cachefile = ''
@@ -708,7 +746,7 @@ def download
   return {source: source, filename: filename}
 end
 
-def unpack (meta)
+def unpack(meta)
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
@@ -725,11 +763,14 @@ def unpack (meta)
       system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{@extract_dir}", exception: true
     when /\.AppImage$/i
       puts "Unpacking 'AppImage' archive, this may take a while..."
-      FileUtils.chmod 0755, meta[:filename], verbose: @fileutils_verbose
+      FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
       Dir.chdir @extract_dir do
         system "../#{meta[:filename]} --appimage-extract", exception: true
       end
     when /\.tpxz$/i
+      unless File.exist?("#{CREW_PREFIX}/bin/pixz")
+        abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred
+      end
       puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
       system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     end
@@ -737,7 +778,7 @@ def unpack (meta)
       # Check the number of directories in the archive
       entries = Dir["#{@extract_dir}/*"]
       entries = Dir[@extract_dir] if entries.empty?
-      if entries.length == 0
+      if entries.length.zero?
         abort "Empty archive: #{meta[:filename]}".lightred
       elsif entries.length == 1 && File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
@@ -754,7 +795,7 @@ def unpack (meta)
   return CREW_BREW_DIR + target_dir
 end
 
-def build_and_preconfigure (target_dir)
+def build_and_preconfigure(target_dir)
   Dir.chdir target_dir do
     puts 'Building from source, this may take a while...'
 
@@ -783,21 +824,21 @@ def build_and_preconfigure (target_dir)
   end
 end
 
-def pre_install (dest_dir)
+def pre_install(dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing pre-install...'
     @pkg.preinstall
   end
 end
 
-def post_install (dest_dir)
+def post_install(dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing post-install...'
     @pkg.postinstall
   end
 end
 
-def compress_doc (dir)
+def compress_doc(dir)
   # check whether crew should compress
   return if CREW_NOT_COMPRESS || ENV['CREW_NOT_COMPRESS'] || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
 
@@ -807,7 +848,7 @@ def compress_doc (dir)
   end
 end
 
-def prepare_package (destdir)
+def prepare_package(destdir)
   Dir.chdir destdir do
     # Avoid /usr/local/share/info/dir{.gz} file conflict:
     # The install-info program maintains a directory of installed
@@ -818,7 +859,7 @@ def prepare_package (destdir)
     FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/dir" if File.exist?("#{CREW_DEST_PREFIX}/share/info/dir")
     
     # Remove all perl module files which will conflict
-    if @pkg.name.include? 'perl_'
+    if @pkg.name =~ /^perl_/
       puts "Removing .packlist and perllocal.pod files to avoid conflicts with other perl packages.".orange
       system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete" 
     end
@@ -866,7 +907,7 @@ def prepare_package (destdir)
   end
 end
 
-def strip_find_files (find_cmd, strip_option = "")
+def strip_find_files(find_cmd, strip_option = "")
   # check whether crew should strip
   return if CREW_NOT_STRIP || ENV['CREW_NOT_STRIP'] || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
 
@@ -875,7 +916,7 @@ def strip_find_files (find_cmd, strip_option = "")
   system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r llvm-strip #{strip_option}"
 end
 
-def strip_dir (dir)
+def strip_dir(dir)
   unless CREW_NOT_STRIP || ENV['CREW_NOT_STRIP']
     Dir.chdir dir do
       # Strip libraries with -S
@@ -891,7 +932,7 @@ def strip_dir (dir)
   end
 end
 
-def install_package (pkgdir)
+def install_package(pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
     puts 'Performing install...'
@@ -953,7 +994,7 @@ def expand_dependencies
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatibility.include?('all') or @pkg.compatibility.include?(ARCH)
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @device[:compatible_packages].any? do |elem| elem[:name] == @pkg.name end
 
   @dependencies = []
   if @pkg.build_from_source
@@ -1106,7 +1147,7 @@ def resolve_dependencies_and_build
   puts "#{@pkg.name} is built!".lightgreen
 end
 
-def build_package (pwd)
+def build_package(pwd)
   abort 'It is not possible to build a fake package'.lightred if @pkg.is_fake?
   abort 'It is not possible to build without source'.lightred if !@pkg.is_source?(@device[:architecture])
 
@@ -1134,7 +1175,7 @@ def build_package (pwd)
   archive_package pwd
 end
 
-def archive_package (pwd)
+def archive_package(pwd)
   unless ENV['CREW_USE_PIXZ'] == '1'
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1151,7 +1192,7 @@ def archive_package (pwd)
   system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
 end
 
-def remove (pkgName)
+def remove(pkgName)
 
   #make sure the package is actually installed
   unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.exist?("#{CREW_META_PATH}#{pkgName}.filelist")
@@ -1206,7 +1247,7 @@ def remove (pkgName)
   puts "#{pkgName.capitalize} removed!".lightgreen
 end
 
-def build_command (args)
+def build_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
@@ -1216,7 +1257,7 @@ def build_command (args)
   end
 end
 
-def download_command (args)
+def download_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
@@ -1225,7 +1266,7 @@ def download_command (args)
   end
 end
 
-def const_command (args)
+def const_command(args)
   unless args["<name>"].empty?
     args["<name>"].each do |name|
       const name
@@ -1235,7 +1276,7 @@ def const_command (args)
   end
 end
 
-def files_command (args)
+def files_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
@@ -1244,7 +1285,7 @@ def files_command (args)
   end
 end
 
-def help_command (args)
+def help_command(args)
   if args["<command>"]
     help args["<command>"]
   else
@@ -1253,7 +1294,7 @@ def help_command (args)
   end
 end
 
-def install_command (args)
+def install_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
@@ -1264,7 +1305,7 @@ def install_command (args)
   end
 end
 
-def list_command (args)
+def list_command(args)
   if args['available']
     list_available
   elsif args['installed']
@@ -1276,7 +1317,7 @@ def list_command (args)
   end
 end
 
-def postinstall_command (args)
+def postinstall_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName, true
@@ -1288,7 +1329,7 @@ def postinstall_command (args)
   end
 end
 
-def reinstall_command (args)
+def reinstall_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
@@ -1303,13 +1344,13 @@ def reinstall_command (args)
   end
 end
 
-def remove_command (args)
+def remove_command(args)
   args["<name>"].each do |name|
     remove name
   end
 end
 
-def search_command (args)
+def search_command(args)
   args["<name>"].each do |name|
     regexp_search name
   end.empty? and begin
@@ -1317,11 +1358,15 @@ def search_command (args)
   end
 end
 
-def update_command (args)
-  update
+def update_command(args)
+  if args['<compatible>']
+    generate_compatible
+  else
+    update
+  end
 end
 
-def upgrade_command (args)
+def upgrade_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
@@ -1333,13 +1378,13 @@ def upgrade_command (args)
   end
 end
 
-def whatprovides_command (args)
+def whatprovides_command(args)
   args["<name>"].each do |name|
     whatprovides name
   end
 end
 
-def is_command (name)
+def is_command(name)
   return false if name =~ /^[-<]/
   return true
 end
