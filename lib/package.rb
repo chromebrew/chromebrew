@@ -46,11 +46,7 @@ class Package
   end
 
   def self.get_binary_url (architecture)
-    if @binary_url.has_key?(architecture)
-      return @binary_url[architecture]
-    else
-      return nil
-    end
+    return @binary_url.has_key?(architecture) ? @binary_url[architecture] : nil
   end
 
   def self.get_sha256 (architecture)
