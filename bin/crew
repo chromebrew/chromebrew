@@ -226,11 +226,6 @@ def list_compatible(compat = true)
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
-      @compatibility = true
-    else
-      @compatibility = false
-    end
-    if @compatibility
       if ( File.exist? CREW_META_PATH + pkgName + '.filelist' ) && compat
         puts pkgName.lightgreen
       else
