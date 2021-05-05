@@ -22,7 +22,7 @@ class Libsolv < Package
      x86_64: '1c9062a1b1cc87345941eedb01d7aacd9f942c7924d81db8c52d77cde19a32ed',
   })
 
-  depends_on 'lzma'
+  depends_on 'xzutils'
   depends_on 'swig'
   depends_on 'zstd'
 
