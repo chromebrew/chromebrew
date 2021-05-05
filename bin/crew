@@ -140,7 +140,6 @@ def print_package(pkgPath, extra = false)
 end
 
 def print_current_package(extra = false)
-  pkgName = @pkg.name
   status = ''
   status = 'installed' if @device[:installed_packages].any? do |elem| elem[:name] == @pkg.name end
   status = 'incompatible' unless @device[:compatible_packages].any? do |elem| elem[:name] == @pkg.name end
@@ -229,7 +228,7 @@ def list_compatible(compat = true)
       if ( File.exist? CREW_META_PATH + pkgName + '.filelist' ) && compat
         puts pkgName.lightgreen
       else
-        puts pkgName unless !compat
+        puts pkgName if compat
       end
     else
       puts pkgName.lightred
@@ -238,7 +237,7 @@ def list_compatible(compat = true)
 end
 
 def generate_compatible
-  puts 'Generating compatible packages...'
+  puts 'Generating compatible packages...'.orange if @opt_verbose
   @device[:compatible_packages] = []
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
