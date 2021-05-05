@@ -237,7 +237,7 @@ def list_compatible(compat = true)
 end
 
 def generate_compatible
-  puts 'Generating compatible packages...'
+  puts 'Generating compatible packages...'.orange if @opt_verbose
   @device[:compatible_packages] = []
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
