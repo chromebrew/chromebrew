@@ -3,35 +3,34 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.0.3'
+  @_ver = '21.1.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
-  source_sha256 '565c6f4bd2d5747b919454fc1d439963024fc78ca56fd05158c3b2cde2f6912b'
+  source_sha256 '0128f10e22970d3aed3d1034003731f94623015cd9797c07151417649c1b1ff8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.0.3_armv7l/mesa-21.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.0.3_armv7l/mesa-21.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.0.3_i686/mesa-21.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.0.3_x86_64/mesa-21.0.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_armv7l/mesa-21.1.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_armv7l/mesa-21.1.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_i686/mesa-21.1.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_x86_64/mesa-21.1.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '48a476c2125b18e667f9d4bf7ff62cd01f316960702c64004a7ec77e1800d538',
-     armv7l: '48a476c2125b18e667f9d4bf7ff62cd01f316960702c64004a7ec77e1800d538',
-       i686: '38d87df4433017a000a2c446ea2a0a17ac7db9f5aecb158fc7f1cd2115ccc4bb',
-     x86_64: 'fc5692ca5514fbbcb87a7bd8cb3f1388a322830103e108350ae56cb5747f6be4'
+    aarch64: '9c463844ab7266af05b5f2a75490cb265d0e9c7113f6b668bac028560e294476',
+     armv7l: '9c463844ab7266af05b5f2a75490cb265d0e9c7113f6b668bac028560e294476',
+       i686: '2be5429a5391da110a2985c402c0931a9c8b41a39d7d4a65451c7f995586de83',
+     x86_64: 'f34ac6bec705a7ea859f4d95b990829c98b19abb7eb60b4a1035f1574d841735'
   })
 
   depends_on 'elfutils' # R
   depends_on 'expat' # R
-  depends_on 'gcc10' # R
+  depends_on 'gcc11' => :extract "#{CREW_LIB_PREFIX}/libgcc_s.so.1"
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
-  depends_on 'libgcc_s1' # R
   depends_on 'libomxil_bellagio' => :build
-  depends_on 'libunwind' # R
+  depends_on 'libunwind' => :build
   depends_on 'libvdpau' => :build
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
@@ -40,6 +39,7 @@ class Mesa < Package
   depends_on 'libxfixes' # R
   depends_on 'libxrandr' # R
   depends_on 'libxshmfence' # R
+  depends_on 'libxv' => :build
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
@@ -48,8 +48,8 @@ class Mesa < Package
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'wayland' # R
   depends_on 'wayland_protocols' => :build
+  depends_on 'wayland' # R
 
   def self.build
     case ARCH
