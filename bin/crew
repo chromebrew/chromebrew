@@ -275,6 +275,7 @@ def generate_compatible
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
+  puts 'Generating compatible packages done.'.orange if @opt_verbose
 end
 
 def search (pkgName, silent = false)
@@ -529,7 +530,6 @@ def update
 
   #update compatible packages
   generate_compatible
-  puts 'Generating compatible packages done.'.orange if @opt_verbose
   #check for outdated installed packages
   puts 'Checking for package updates...'
 
