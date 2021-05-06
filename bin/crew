@@ -306,7 +306,7 @@ def regexp_search(pkgPat)
       end
     end
   end
-  abort "Package #{pkgPat} not found. :(".lightred unless results.length.positive?
+  abort "Package #{pkgPat} not found. :(".lightred if results.empty?
 end
 
 def help(pkgName)
@@ -594,7 +594,7 @@ def upgrade
       end
     end
 
-    if toBeUpdated.length.positive?
+    unless toBeUpdated.empty?
       puts 'Updating packages...'
       toBeUpdated.each do |package|
         search package
