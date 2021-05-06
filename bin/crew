@@ -74,7 +74,7 @@ ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
 CURL = ENV['CURL'] || 'curl'
 
 # All available crew commands.
-@cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
+@cmds = ["build", "const", "deps", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
 
 # Parse arguments using docopt
 require_relative '../lib/docopt'
