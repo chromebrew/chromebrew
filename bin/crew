@@ -275,6 +275,7 @@ def generate_compatible
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
+  puts 'Generating compatible packages done.'.orange if @opt_verbose
 end
 
 def search (pkgName, silent = false)
@@ -306,7 +307,7 @@ def regexp_search(pkgPat)
       end
     end
   end
-  abort "Package #{pkgPat} not found. :(".lightred unless results.length.positive?
+  abort "Package #{pkgPat} not found. :(".lightred if results.empty?
 end
 
 def help(pkgName)
@@ -529,7 +530,6 @@ def update
 
   #update compatible packages
   generate_compatible
-  puts 'Generating compatible packages done.'.orange if @opt_verbose
   #check for outdated installed packages
   puts 'Checking for package updates...'
 
@@ -594,7 +594,7 @@ def upgrade
       end
     end
 
-    if toBeUpdated.length.positive?
+    unless toBeUpdated.empty?
       puts 'Updating packages...'
       toBeUpdated.each do |package|
         search package
@@ -777,7 +777,7 @@ def unpack(meta)
       # Check the number of directories in the archive
       entries = Dir["#{@extract_dir}/*"]
       entries = Dir[@extract_dir] if entries.empty?
-      if entries.length.zero?
+      if entries.empty?
         abort "Empty archive: #{meta[:filename]}".lightred
       elsif entries.length == 1 && File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
