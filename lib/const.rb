@@ -10,7 +10,7 @@ ARCH = ENV['CREW_ARCH'] || if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_AC
 CREW_LIB_SUFFIX = (ARCH == 'x86_64') ? '64' : ''
 ARCH_LIB = 'lib' + CREW_LIB_SUFFIX
 
-LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
+LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`.scan(/version (.*)\.$/)[0][0]
 CHROMEOS_RELEASE = File.read('/etc/lsb-release').scan(/CHROMEOS_RELEASE_CHROME_MILESTONE=(.*)/)[0][0]
 
 if ENV['CREW_PREFIX'].to_s.empty?
