@@ -1092,7 +1092,7 @@ end
 
 def remove (pkgName)
   # make sure the package is actually installed
-  unless installed?(pkgName, mode: 'filelist')
+  unless installed?(pkgName, mode: 'json') or installed?(pkgName, mode: 'filelist')
     return puts "Package #{pkgName} isn't installed.".lightred
   end
 
