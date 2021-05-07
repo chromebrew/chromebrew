@@ -3,24 +3,24 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  @_ver = '0.3.26'
+  @_ver = '0.3.27'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/PipeWire/pipewire/archive/#{@_ver}.tar.gz"
-  source_sha256 '05cc9d25de45290c025da5da1b94fc705bddacd93cf3690d0b2988c1ac501ee1'
+  source_sha256 '657db1b9a29ae17a9f1d9782a45bda2ba5a893fef55e1ca26453e8f7f2d4e64e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_i686/pipewire-0.3.26-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_x86_64/pipewire-0.3.26-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.27_armv7l/pipewire-0.3.27-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.27_armv7l/pipewire-0.3.27-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.27_i686/pipewire-0.3.27-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.27_x86_64/pipewire-0.3.27-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
-     armv7l: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
-       i686: '43bc1175d6f75755fc8fb3abe4b9e473d7ccc3593f1c53f504a2eee7b19b84c2',
-     x86_64: '27bdc741fe0b577e3cbfa5ef4f419f23f18cf9a06f04df815249f58dbabe5d28'
+    aarch64: '87a66ffe7fe0454081a49ab17bb583f7b58bf529cc9914019540939551c065ea',
+     armv7l: '87a66ffe7fe0454081a49ab17bb583f7b58bf529cc9914019540939551c065ea',
+       i686: 'c3a2fe495e7c279638c3ec6d3b937259ac609e8d31e8087bd6ff37ba8b2d53dd',
+     x86_64: '7f9dd0164d68f19feb219d42996315ed8a6a4c9aa6265bdd83e1293f965a769e'
   })
 
   depends_on 'alsa_lib' # R
