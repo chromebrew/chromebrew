@@ -18,9 +18,9 @@ module DependencyUtils
       # check all dependencies recursively
       check_deps.each do |dep|
         # build unique dependencies list
-        unless @dependencies.include?(dep) or \
+        unless @dependencies&.include?(dep) or \
                dep == @pkgName or \
-               @checking.include?(dep) or \
+               @checking&.include?(dep) or \
                installed?(dep)
 
           search dep, true
