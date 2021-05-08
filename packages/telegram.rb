@@ -18,6 +18,7 @@ class Telegram < Package
   end
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'Telegram', "#{CREW_DEST_PREFIX}/bin/Telegram", mode: 0o755
     FileUtils.install 'telegram', "#{CREW_DEST_PREFIX}/bin/telegram", mode: 0o755
   end
