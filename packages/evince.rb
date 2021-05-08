@@ -28,15 +28,15 @@ class Evince < Package
   depends_on 'atk'
   depends_on 'cairo'
   depends_on 'djvulibre'
-  depends_on 'docbook_xsl' => ':build'
+  depends_on 'docbook_xsl' => :build
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gnome_desktop'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gobject_introspection' => :build
   depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'gtk3'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'gtk_doc' => :build
   depends_on 'libarchive'
   depends_on 'libgxps'
   depends_on 'libhandy'

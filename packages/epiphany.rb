@@ -25,12 +25,12 @@ class Epiphany < Package
 
   depends_on 'atk'
   depends_on 'cairo' => :build
-  depends_on 'docbook_xml' => ':build'
+  depends_on 'docbook_xml' => :build
   depends_on 'freetype' => :build
   depends_on 'gcr'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
-  depends_on 'gobject_introspection' => ':build'
+  depends_on 'gobject_introspection' => :build
   depends_on 'gtk3'
   depends_on 'help2man' => :build
   depends_on 'json_glib'
@@ -40,9 +40,9 @@ class Epiphany < Package
   depends_on 'libportal'
   depends_on 'libsecret'
   depends_on 'libsoup2'
-  depends_on 'lsb_release' => ':build'
+  depends_on 'lsb_release' => :build
   depends_on 'pango'
-  depends_on 'startup_notification' => ':build'
+  depends_on 'startup_notification' => :build
   depends_on 'webkit2gtk_4'
 
   def self.build
