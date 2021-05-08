@@ -1,5 +1,6 @@
 acl
 attr
+binutils
 brotli
 bz2
 c_ares
@@ -7,6 +8,7 @@ ca_certificates
 crew_profile_base
 curl
 filecmd
+flex
 gcc10
 gdbm
 gettext
@@ -44,6 +46,7 @@ p11kit
 pcre
 pcre2
 perl
+py3_pip
 python27
 python3
 readline
