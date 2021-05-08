@@ -24,7 +24,6 @@ class Codium < Package
   depends_on 'cairo'
   depends_on 'cups'
   depends_on 'dbus'
-  depends_on 'firefox'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gtk3'
