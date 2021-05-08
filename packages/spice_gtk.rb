@@ -32,12 +32,12 @@ class Spice_gtk < Package
   depends_on 'usbredir'
   depends_on 'gst_plugins_base'
   depends_on 'gst_plugins_good'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'py3_pygments' => ':build'
-  depends_on 'py3_pygments' => ':build'
-  depends_on 'spice_protocol' => ':build'
-  depends_on 'usbutils' => ':build'
-  depends_on 'vala' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'py3_pygments' => :build
+  depends_on 'py3_pygments' => :build
+  depends_on 'spice_protocol' => :build
+  depends_on 'usbutils' => :build
+  depends_on 'vala' => :build
 
   def self.build
     system "meson \
