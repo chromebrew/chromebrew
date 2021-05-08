@@ -26,7 +26,7 @@ class Pixz < Package
   })
 
   depends_on 'libarchive'
-  depends_on 'asciidoc' => ':build'
+  depends_on 'asciidoc' => :build
   depends_on 'xzutils'
 
   def self.build
