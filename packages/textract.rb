@@ -2,7 +2,7 @@ require 'package'
 
 class Textract < Package
   description 'Extract text from any document.'
-  homepage 'http://textract.readthedocs.io/en/stable/'
+  homepage 'http://textract.readthedocs.io/'
   version '1.6.1'
   license 'MIT'
   compatibility 'all'
