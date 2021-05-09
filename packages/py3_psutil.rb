@@ -1,10 +1,10 @@
 require 'package'
 
 class Py3_psutil < Package
-  description 'Legacy compatibility packages.'
+  description 'psutil is a cross-platform library for process and system monitoring in Python.'
   homepage 'https://github.com/giampaolo/psutil/'
   @_ver = '5.8.0'
-  version '5.8.0-1'
+  version @_ver + '-1'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/giampaolo/psutil.git'

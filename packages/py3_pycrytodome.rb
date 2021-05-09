@@ -8,7 +8,7 @@ class Py3_pycryptodomex < Package
   license 'BSD and public-domain'
   compatibility 'all'
   source_url 'https://github.com/Legrandin/pycryptodome.git'
-  git_hashtag 'v' + @_ver + 'x'
+  git_hashtag 'v' + @_ver
 
   depends_on 'py3_setuptools' => :build
 
