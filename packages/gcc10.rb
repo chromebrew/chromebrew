@@ -378,7 +378,7 @@ class Gcc10 < Package
     puts '"crew update ; crew upgrade ; crew remove gcc10 gcc11"'.lightgreen
     # Remove all conflicting files from conflicting packages / reinstall
     # This should be at the very end.
-    conflict_packages = %w[libssp libgcc_s1]
+    conflict_packages = %w[libssp]
     conflict_packages.each do |package|
        file = File.open("#{CREW_META_PATH}#{package}.filelist").read
        file.each_line do |line|
