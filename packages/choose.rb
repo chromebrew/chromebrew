@@ -18,7 +18,7 @@ class Choose < Package
   end
 
   def self.install
-    FileUtils.mkdir "#{CREW_DEST_PREIFX}/bin/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREIFX}/bin/"
     FileUtils.install "choose", "#{CREW_DEST_PREFIX}/bin/choose", mode: 0755, verbose: true
   end
 end
