@@ -20,7 +20,7 @@ class Gcc11 < Package
     aarch64: '91d0bd9bbf3e800eab19812630166b68835fb4a120cd05cc3baa40d8e8a3c32b',
      armv7l: '91d0bd9bbf3e800eab19812630166b68835fb4a120cd05cc3baa40d8e8a3c32b',
        i686: 'df8e4f5bf6079dec44340d05c3c92935e9d6689a8f70d59d94af14ca1c14bbb9',
-     x86_64: 'e0216d9a1d1eededcca9b4a34b9e1fe7e013c3f6dea8a012bc1357c3df30b77b'
+     x86_64: 'eb88f4785a50d34b806bdb6f0dcd13f5c44b7a15a7c702eee47fae4e94e8f107'
   })
 
   depends_on 'ccache' => :build
