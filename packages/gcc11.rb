@@ -11,15 +11,15 @@ class Gcc11 < Package
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_i686/gcc11-11.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_x86_64/gcc11-11.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_armv7l/gcc11-11.1.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_i686/gcc11-11.1.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0_x86_64/gcc11-11.1.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2db5bcee6b52e393f8a42a78543dff6339ec598f0fb852ab60ac5d1e5b620d71',
-     armv7l: '2db5bcee6b52e393f8a42a78543dff6339ec598f0fb852ab60ac5d1e5b620d71',
-       i686: 'd6d23b0cab5ea3e0922e6549140f2a0a7a4190c1739e79a49ee1051c4e02bd7d',
+    aarch64: '91d0bd9bbf3e800eab19812630166b68835fb4a120cd05cc3baa40d8e8a3c32b',
+     armv7l: '91d0bd9bbf3e800eab19812630166b68835fb4a120cd05cc3baa40d8e8a3c32b',
+       i686: 'df8e4f5bf6079dec44340d05c3c92935e9d6689a8f70d59d94af14ca1c14bbb9',
      x86_64: 'e0216d9a1d1eededcca9b4a34b9e1fe7e013c3f6dea8a012bc1357c3df30b77b'
   })
 
@@ -32,7 +32,6 @@ class Gcc11 < Package
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
-  depends_on 'libgcc_s1' # L
 
   @gcc_global_opts = '--disable-bootstrap \
   --disable-libmpx \

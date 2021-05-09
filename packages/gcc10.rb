@@ -7,14 +7,14 @@ class Gcc10 < Package
   version '10.3.0-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tpxz'
   source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_i686/gcc10-10.3.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_x86_64/gcc10-10.3.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_armv7l/gcc10-10.3.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_i686/gcc10-10.3.0-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_x86_64/gcc10-10.3.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '063eaf22f00c38abf797c4ccf09199bca4629ee7dcbf0a5015bc79e0c3dff313',
@@ -32,7 +32,6 @@ class Gcc10 < Package
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
-  depends_on 'libgcc_s1' # L
 
   @gcc_global_opts = '--disable-bootstrap \
     --disable-libmpx \
@@ -129,11 +128,11 @@ class Gcc10 < Package
     ## Install newer version of mpc
     # mpc_url = "https://ftp.gnu.org/gnu/mpc/mpc-#{@mpc_ver}.tar.gz"
     # mpc_sha256 = '17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459'
-    # system "curl -Ls #{mpc_url} | hashpipe sha256 #{mpc_sha256} | tar xz"
+    # system "curl -Ls #{mpc_url} | hashpipe sha256 #{mpc_sha256} | tpxz"
     # system "ln -sf ../mpc-#{@mpc_ver} mpc"
 
     ## Install newer version of mpfr
-    # mpfr_url = "https://www.mpfr.org/mpfr-current/mpfr-#{@mpfr_ver}.tar.xz"
+    # mpfr_url = "https://www.mpfr.org/mpfr-current/mpfr-#{@mpfr_ver}.tpxz"
     # mpfr_sha256 = '0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
     # system "curl -Ls #{mpfr_url} | hashpipe sha256 #{mpfr_sha256} | tar xJ"
     # Dir.chdir "mpfr-#{@mpfr_ver}" do
