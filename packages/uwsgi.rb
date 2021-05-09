@@ -2,7 +2,7 @@ require 'package'
 
 class Uwsgi < Package
   description 'uWSGI application server container'
-  homepage 'https://uwsgi-docs.readthedocs.io/en/latest/'
+  homepage 'https://uwsgi-docs.readthedocs.io/'
   version '2.0.17'
   license 'GPL-2'
   compatibility 'all'

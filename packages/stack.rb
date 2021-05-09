@@ -2,7 +2,7 @@ require 'package'
 
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
-  homepage 'https://docs.haskellstack.org/en/stable/README/'
+  homepage 'https://docs.haskellstack.org/'
   @_ver = '2.5.1'
   version @_ver
   license 'BSD'
