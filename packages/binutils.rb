@@ -23,6 +23,8 @@ class Binutils < Package
      x86_64: '784c5e9bfd884c411708ae3c2ee1c852022f411794ff109fb7d37e91f124037b'
   })
 
+  depends_on 'flex'
+
   def self.patch
     system 'filefix'
     system "sed -i 's,scriptdir = \$(tooldir)/lib,scriptdir = \$(tooldir)/#{ARCH_LIB},g' ld/Makefile.am"

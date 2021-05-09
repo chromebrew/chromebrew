@@ -23,6 +23,7 @@ Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew
 Usage:
   crew build [options] [-k|--keep] <name> ...
   crew const [options] [<name> ...]
+  crew deps [options] <name> ...
   crew download [options] <name> ...
   crew files [options] <name> ...
   crew help [<command>]
@@ -73,7 +74,7 @@ ENV["XZ_OPT"] = ENV['CREW_XZ_OPT'] || "-7e -T #{CREW_NPROC}"
 CURL = ENV['CURL'] || 'curl'
 
 # All available crew commands.
-@cmds = ["build", "const", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
+@cmds = ["build", "const", "deps", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
 
 # Parse arguments using docopt
 require_relative '../lib/docopt'
@@ -322,6 +323,9 @@ def help(pkgName)
     puts "Display constant(s)."
     puts "Usage: crew const [<const1> <const2> ...]"
     puts "If no constants are provided, all constants will be displayed."
+  when "deps"
+    puts "Display dependencies of package(s)."
+    puts "Usage: crew deps <package1> [<package2> ...]"
   when "download"
     puts "Download package(s)."
     puts "Usage: crew download [-v|--verbose] <package1> [<package2> ...]"
@@ -982,7 +986,7 @@ def expand_dependencies
     # check all dependencies recursively
     check_deps.each do |dep|
       # build unique dependencies list
-      unless @dependencies.include?(dep) || dep == @pkgName
+      unless @dependencies&.include?(dep) || dep == @pkgName
         @dependencies << dep
         search dep, true
         push_dependencies
@@ -1256,15 +1260,6 @@ def build_command(args)
   end
 end
 
-def download_command(args)
-  args["<name>"].each do |name|
-    @pkgName = name
-    search @pkgName
-    print_current_package @opt_verbose
-    download
-  end
-end
-
 def const_command(args)
   unless args["<name>"].empty?
     args["<name>"].each do |name|
@@ -1272,6 +1267,26 @@ def const_command(args)
     end
   else
     const nil
+  end
+end
+
+def deps_command(args)
+  args["<name>"].each do |name|
+    @dependencies = []
+    @pkgName = name
+    search @pkgName
+    print_current_package
+    expand_dependencies
+    puts @dependencies
+  end
+end
+
+def download_command(args)
+  args["<name>"].each do |name|
+    @pkgName = name
+    search @pkgName
+    print_current_package @opt_verbose
+    download
   end
 end
 

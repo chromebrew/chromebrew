@@ -21,8 +21,8 @@ EARLY_PACKAGES="libssp brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2
 libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates libyaml ruby libffi \
 openssl nettle krb5 p11kit libtasn1 gnutls curl git icu4c"
 
-LATE_PACKAGES="crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 python27 python3 \
-sed bz2 lz4 lzip unzip xzutils zip"
+LATE_PACKAGES="binutils crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 \
+python27 python3 py3_pip sed bz2 lz4 lzip unzip xzutils zip"
 
 ARCH="$(uname -m)"
 
