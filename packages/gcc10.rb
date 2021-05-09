@@ -17,10 +17,10 @@ class Gcc10 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-1_x86_64/gcc10-10.3.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '063eaf22f00c38abf797c4ccf09199bca4629ee7dcbf0a5015bc79e0c3dff313',
-     armv7l: '063eaf22f00c38abf797c4ccf09199bca4629ee7dcbf0a5015bc79e0c3dff313',
-       i686: '9c7b5a06288fa3b448d10c9f3569032c63f48b6f1148f513f74674bb59aa1961',
-     x86_64: '700b52e5f44c1c578d2c223222cae680343f9d2247f587212f2f9d24ab9d348e'
+    aarch64: 'ae539279936c6629ced64637aba4b21c9434e69c0764898ee47e800aee3e1e49',
+     armv7l: 'ae539279936c6629ced64637aba4b21c9434e69c0764898ee47e800aee3e1e49',
+       i686: '4deb2cbd64e9a78c0bcc4266a261ab9f66095031d4cd8d4d3b1159920b5237cf',
+     x86_64: 'f23c534e2366d9cd84da8bf3404bbe47688287a47974e46aeaeab22b6e993a1a'
   })
 
   depends_on 'ccache' => :build
