@@ -3,32 +3,24 @@ require 'package'
 class Duplicity < Package
   description 'Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.'
   homepage 'http://duplicity.nongnu.org/'
-  version '0.7.15'
+  version '0.8.19'
   compatibility 'all'
   license 'GPL-3'
-  source_url 'https://code.launchpad.net/duplicity/0.7-series/0.7.15/+download/duplicity-0.7.15.tar.gz'
-  source_sha256 '50bf7d14413284ecb036146ab9ba0e271937f2fa7826f8c8300b2965eb450a6c'
+  source_url 'https://files.pythonhosted.org/packages/9f/ae/4eb8869a12a531f453ef1d64a0d53dfa6a674895f6222b347f8c96a7a88b/duplicity-0.8.19.tar.gz'
+  source_sha256 'd5dda2918058d0e47bf7a1299cfc9b51cc2f0546920fc3cfcf7ae06fc76d68ba'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_armv7l/duplicity-0.7.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_armv7l/duplicity-0.7.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_i686/duplicity-0.7.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.7.15_x86_64/duplicity-0.7.15-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '173e42b07ec4d4646cfbe16c78faabf1f7bce3a6b754350058fa1ebc19d82a0b',
-     armv7l: '173e42b07ec4d4646cfbe16c78faabf1f7bce3a6b754350058fa1ebc19d82a0b',
-       i686: 'f09130b65c2f29bd44204911efaf1a755bf1be74454f4c62f3e77a808b47b090',
-     x86_64: 'e122233caf601a05b85b1816ae690be8c1d6e82a83953351c8ecd0ca6046706e',
-  })
-
-  depends_on 'python2' unless File.exists? "#{CREW_PREFIX}/bin/python"
   depends_on 'librsync'
   depends_on 'gnupg'
   depends_on 'openssh'
+  depends_on 'py3_future'
+  depends_on 'py3_fasteners'
+  depends_on 'py3_setuptools' => :build
+
+  def self.build
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+  end
 
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} fasteners"
-    system "python setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end
