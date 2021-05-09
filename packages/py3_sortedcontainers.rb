@@ -1,14 +1,14 @@
 require 'package'
 
-class Py3_pycryptodomex < Package
+class Py3_sortedcontainers < Package
   description 'Pycryptodomex is a cryptographic library for Python.'
-  homepage 'https://www.pycryptodome.org/'
-  @_ver = '3.10.1'
+  homepage 'http://www.grantjenks.com/docs/sortedcontainers/'
+  @_ver = '2.3.0'
   version @_ver
-  license 'BSD and public-domain'
+  license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://github.com/Legrandin/pycryptodome.git'
-  git_hashtag 'v' + @_ver + 'x'
+  source_url 'https://github.com/grantjenks/python-sortedcontainers.git'
+  git_hashtag 'v' + @_ver
 
   depends_on 'py3_setuptools' => :build
 
