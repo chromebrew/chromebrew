@@ -26,10 +26,6 @@ class Perl_stow < Package
      x86_64: 'bd129677fb5214d53531b7fde7afd8bc22160e04d55fd05b3c9c1dc8b0c21867'
   })
 
-  def self.prebuild
-    system 'cpan App::cpanminus'
-  end
-
   def self.build
     system 'cpanm Test::Output'
     system "./configure #{CREW_OPTIONS} \
