@@ -3,26 +3,27 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.9.4'
-  version "#{@_ver}-1"
+  @_ver = '3.9.5'
+  version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '4b0e6644a76f8df864ae24ac500a51bbf68bd098f6a173e27d3b61cdca9aa134'
+  source_sha256 '0c5a140665436ec3dbfbb79e2dfb6d192655f26ef4a29aeffcb6d1820d716d83'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_armv7l/python3-3.9.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_armv7l/python3-3.9.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_i686/python3-3.9.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.4-1_x86_64/python3-3.9.4-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_armv7l/python3-3.9.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_armv7l/python3-3.9.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_i686/python3-3.9.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_x86_64/python3-3.9.5-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '17acda432cbbdcbcdf46a8fda536c160d460833d2e8d4e33f41669cd392d1ec3',
-     armv7l: '17acda432cbbdcbcdf46a8fda536c160d460833d2e8d4e33f41669cd392d1ec3',
-       i686: '2c47ce9690665232473be9582234f73f5bebdd616db1d1e0c9edf6a56880b59f',
-     x86_64: '23ade3fd6991f88f0207e8ed64def6c2a8823b5b51aa22358b08daf328a4caca'
+    aarch64: 'fa69875022aa4d3067d2ebff90681669e6531ed69c9a7921a19f827f9bdb086c',
+     armv7l: 'fa69875022aa4d3067d2ebff90681669e6531ed69c9a7921a19f827f9bdb086c',
+       i686: 'f47186768e5fc9dad1b71c89360b2248f4a90c14b5cd7d9be38087160f1e4088',
+     x86_64: '808f2dc915e47b646a15de657ab1b240b09472e2b2441424179f8ec8f789b2f9',
   })
 
+  depends_on 'autoconf_archive' => :build
   depends_on 'krb5' => :build
   depends_on 'libtirpc' => :build
   depends_on 'bz2' # R
