@@ -336,7 +336,7 @@ class Gcc10 < Package
   end
 
   def self.postinstall
-    add_filelist = Array.new
+    add_filelist = []
     # Only make links to unversioned in postinstall
     gcc_version = version.split('-')[0]
     gcc_arch = `gcc-#{gcc_version} -dumpmachine`.chomp
@@ -387,11 +387,9 @@ class Gcc10 < Package
     # Add postinstall symlinks to filelist
     filelist = File.readlines("#{CREW_META_PATH}#{@name}.filelist")
     add_filelist.each do |new_file|
-    unless filelist.include?(new_file)
-      filelist.append(new_file)
-      end
+      filelist.append(new_file) unless filelist.include?(new_file)
     end
-    File.open("#{CREW_META_PATH}#{@name}.filelist", "w+") do |f|
+    File.open("#{CREW_META_PATH}#{@name}.filelist", 'w+') do |f|
       f.puts(filelist)
     end
   end
