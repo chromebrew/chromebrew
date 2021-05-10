@@ -11,7 +11,6 @@ class Llvm < Package
   source_sha256 '8e6c99e482bb16a450165176c2d881804976a2d770e0445af4375e78a1fbf19c'
 
   binary_url({
-
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_armv7l/llvm-12.0.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_armv7l/llvm-12.0.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_i686/llvm-12.0.0-chromeos-i686.tar.xz',
@@ -81,10 +80,10 @@ class Llvm < Package
   def self.patch
     # This keeps system libraries from being linked in as dependencies on a build host image, such as in docker.
     # Uncomment the rest of this section if you need to.
-    system "sudo rm /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
-    system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
-    system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
-    system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
+    #system "sudo rm /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
+    #system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
+    #system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
+    #system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
     # Fix gold linker issues killing mesa builds as per
     # https://reviews.llvm.org/D100624 and
     # https://bugs.llvm.org/show_bug.cgi?id=49915 fixed in 13.0 but also
