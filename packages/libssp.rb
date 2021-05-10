@@ -60,7 +60,7 @@ class Libssp < Package
   @languages = 'c,c++,jit,objc,fortran,go'
   case ARCH
   when 'armv7l', 'aarch64'
-    @archflags = '--with-arch=armv7-a --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
+    @archflags = '--with-arch=armv7-a --with-float=hard --with-fpu=neon'
   when 'x86_64'
     @archflags = '--with-arch-64=x86-64'
   when 'i686'

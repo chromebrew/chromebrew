@@ -336,6 +336,7 @@ class Gcc10 < Package
   end
 
   def self.postinstall
+    add_filelist = Array.new
     # Only make links to unversioned in postinstall
     gcc_version = version.split('-')[0]
     gcc_arch = `gcc-#{gcc_version} -dumpmachine`.chomp
@@ -345,47 +346,53 @@ class Gcc10 < Package
         @basefile_nover = f.split(/-#{gcc_version}/, 2).first
         puts "Symlinking #{f} to #{@basefile_nover}"
         FileUtils.ln_sf f, @basefile_nover
+        add_filelist |= ["#{CREW_PREFIX}/bin/#{@basefile_nover}"]
         # @basefile_noarch=f.split(/#{gcc_arch}-/, 2).last
         # puts "Symlinking #{f} to #{@basefile_noarch}"
         # FileUtils.ln_sf f, @basefile_noarch
         @basefile_noarch_nover = @basefile_nover.split(/#{gcc_arch}-/, 2).last
         puts "Symlinking #{f} to #{@basefile_noarch_nover}"
         FileUtils.ln_sf f, @basefile_noarch_nover
+        add_filelist |= ["#{CREW_PREFIX}/bin/#{@basefile_noarch_nover}"]
         @basefile_noarch_nover_nogcc = @basefile_noarch_nover.split(/gcc-/, 2).last
         puts "Symlinking #{f} to #{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
         FileUtils.ln_sf f, "#{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
+        add_filelist |= ["#{CREW_PREFIX}/bin/#{gcc_arch}-#{@basefile_noarch_nover_nogcc}"]
       end
       Dir.glob("*-#{gcc_version}").each do |f|
         @basefile_nover = f.split(/-#{gcc_version}/, 2).first
         puts "Symlinking #{f} to #{@basefile_nover}"
         FileUtils.ln_sf f, @basefile_nover
+        add_filelist |= ["#{CREW_PREFIX}/bin/#{@basefile_nover}"]
       end
       # many packages expect this symlink
       puts "Symlinking gcc-#{gcc_version} to cc"
       FileUtils.ln_sf "gcc-#{gcc_version}", 'cc'
+      add_filelist |= ["#{CREW_PREFIX}/bin/cc"]
     end
     # make sure current version of gcc LTO plugin for Gold linker is installed.
     FileUtils.mkdir_p "#{CREW_LIB_PREFIX}/bfd-plugins/"
     puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_LIB_PREFIX}/bfd-plugins/"
     FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_LIB_PREFIX}/bfd-plugins/"
+    add_filelist |= ["#{CREW_LIB_PREFIX}/bfd-plugins/liblto_plugin.so"]
     # binutils makes a symlink here, but just in case it isn't there.
     if ARCH == 'x86_64'
       FileUtils.mkdir_p "#{CREW_PREFIX}/lib/bfd-plugins/"
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_PREFIX}/lib/bfd-plugins/"
+      add_filelist |= ["#{CREW_PREFIX}/lib/bfd-plugins/liblto_plugin.so"]
     end
     puts 'If you do not need gcc you can uninstall gcc to save space with'.lightgreen
     puts '"crew update ; crew upgrade ; crew remove gcc10 gcc11"'.lightgreen
-    # Remove all conflicting files from conflicting packages / reinstall
-    # This should be at the very end.
-    conflict_packages = %w[libssp]
-    conflict_packages.each do |package|
-       file = File.open("#{CREW_META_PATH}#{package}.filelist").read
-       file.each_line do |line|
-         FileUtils.rm "/#{line}" if File.exist?("/#{line}")
-       end
-      # Reinstall these conflicting packages since we may have overwritten them.
-      system "crew reinstall #{package}"
+    # Add postinstall symlinks to filelist
+    filelist = File.readlines("#{CREW_META_PATH}#{@name}.filelist")
+    add_filelist.each do |new_file|
+    unless filelist.include?(new_file)
+      filelist.append(new_file)
+      end
+    end
+    File.open("#{CREW_META_PATH}#{@name}.filelist", "w+") do |f|
+      f.puts(filelist)
     end
   end
 end
