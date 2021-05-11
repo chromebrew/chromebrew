@@ -78,11 +78,12 @@ class Gcc11 < Package
   def self.preinstall
     # Use full gcc path to bypass ccache
     stdout_and_stderr, status = Open3.capture2e('bash', '-c',
-                                                "#{CREW_PREFIX}/bin/gcc -v 2>&1 | tail -1 | cut -d' ' -f1")
+                                                "#{CREW_PREFIX}/bin/gcc -dumpversion 2>&1 | tail -1 | cut -d' ' -f1")
     if status.success?
       installed_gccver = stdout_and_stderr.chomp
-      # One gets "-dumpversion" with no gcc installed.
+      # One gets "-dumpversion" or "bash:" with no gcc installed.
       unless installed_gccver.to_s == '-dumpversion' ||
+             installed_gccver.to_s == 'bash:' ||
              installed_gccver.to_s == @gcc_version.to_s ||
              installed_gccver.rpartition('.')[0].to_s == @gcc_version.rpartition('.')[0].to_s
         abort "GCC version #{installed_gccver} already installed.".lightgreen
