@@ -3,7 +3,7 @@ require 'package'
 class Texinfo < Package
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
-  version '6.7'
+  version '6.7-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/texinfo/texinfo-6.7.tar.xz'
@@ -22,20 +22,16 @@ class Texinfo < Package
      x86_64: '4e7a16cb4f7d93a7c949c7ff10b03fa2e27b9db4372e5c138b0f10561fafa292',
   })
 
-  depends_on 'gettext' => :build
-  depends_on 'perl'
   depends_on 'perl_locale_messages'
   depends_on 'perl_text_unidecode'
   depends_on 'perl_unicode_eastasianwidth'
-  depends_on 'ncurses'
 
   def self.build
     # configure and make
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-external-Text-Unidecode',
-           '--with-external-Unicode-EastAsianWidth'
+    system "env #{CREW_ENV_OPTIONS} \
+      ./configure #{CREW_OPTIONS} \
+      --with-external-Text-Unidecode \
+      --with-external-Unicode-EastAsianWidth"
     system 'make'
   end
 

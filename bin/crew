@@ -1179,17 +1179,17 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless ENV['CREW_USE_PIXZ'] == '1'
-    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-    Dir.chdir CREW_DEST_DIR do
-      system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
-    end
-  else
+  unless ENV['CREW_USE_PIXZ'] == '0' || !File.exist?("#{CREW_PREFIX}/bin/pixz") 
     puts "Using pixz to compress archive."
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tpxz"
     Dir.chdir CREW_DEST_DIR do
       # Use smaller blocks with "-f0.25" to make random access faster.
       system "tar c#{@verbose} * | pixz -f0.25 -9 > #{pwd}/#{pkg_name}"
+    end
+  else
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
+    Dir.chdir CREW_DEST_DIR do
+      system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
     end
   end
   system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
