@@ -159,7 +159,7 @@ class Gcc11 < Package
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        make"
+        make -j#{CREW_NPROC}"
     end
   end
 
@@ -302,95 +302,53 @@ class Gcc11 < Package
       Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
         system "find . -type f -maxdepth 1 -exec ln -sv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
       end
+    end
 
-      Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
-        Dir.glob("*-#{gcc_version}.1*").each do |f|
-          @basefile = f.gsub("-#{gcc_version}", '')
-          FileUtils.ln_sf f, @basefile
-        end
-      end
-
-      # Only make links to unversioned in postinstall
-      Dir.chdir "#{CREW_DEST_PREFIX}/bin/" do
-        Dir.glob("#{gcc_arch}-*-#{gcc_version}").each do |f|
-          # @basefile_nover=f.split(/-#{gcc_version}/, 2).first
-          # puts "Symlinking #{f} to #{@basefile_nover}"
-          # FileUtils.ln_sf f, @basefile_nover
-          @basefile_noarch = f.split(/#{gcc_arch}-/, 2).last
-          puts "Symlinking #{f} to #{@basefile_noarch}"
-          FileUtils.ln_sf f, @basefile_noarch
-        end
-        # Dir.glob("*-#{gcc_version}").each do |f|
-        # @basefile_nover=f.split(/-#{gcc_version}/, 2).first
-        # FileUtils.ln_sf f, @basefile_nover
-        # end
-        # # many packages expect this symlink
-        # FileUtils.ln_sf "gcc-#{gcc_version}", 'cc'
-      end
-      # libgomp.so conflicts with llvm
-      @deletefiles = %W[#{CREW_DEST_LIB_PREFIX}/libgomp.so]
-      @deletefiles.each do |f|
-        FileUtils.rm f if File.exist?(f)
+    Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
+      Dir.glob("*-#{gcc_version}.1*").each do |f|
+        @basefile = f.gsub("-#{gcc_version}", '')
+        FileUtils.ln_sf f, @basefile
       end
     end
-  end
 
-  def self.postinstall
-    add_filelist = []
-    # Only make links to unversioned in postinstall
-    gcc_version = version.split('-')[0]
-    gcc_arch = `gcc-#{gcc_version} -dumpmachine`.chomp
-    gcc_dir = "gcc/#{gcc_arch}/#{gcc_version}"
-    Dir.chdir "#{CREW_PREFIX}/bin/" do
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin/" do
       Dir.glob("#{gcc_arch}-*-#{gcc_version}").each do |f|
         @basefile_nover = f.split(/-#{gcc_version}/, 2).first
         puts "Symlinking #{f} to #{@basefile_nover}"
         FileUtils.ln_sf f, @basefile_nover
-        add_filelist |= ["#{CREW_PREFIX}/bin/#{@basefile_nover}"]
-        # @basefile_noarch=f.split(/#{gcc_arch}-/, 2).last
-        # puts "Symlinking #{f} to #{@basefile_noarch}"
-        # FileUtils.ln_sf f, @basefile_noarch
+        @basefile_noarch = f.split(/#{gcc_arch}-/, 2).last
+        puts "Symlinking #{f} to #{@basefile_noarch}"
+        FileUtils.ln_sf f, @basefile_noarch
         @basefile_noarch_nover = @basefile_nover.split(/#{gcc_arch}-/, 2).last
         puts "Symlinking #{f} to #{@basefile_noarch_nover}"
         FileUtils.ln_sf f, @basefile_noarch_nover
-        add_filelist |= ["#{CREW_PREFIX}/bin/#{@basefile_noarch_nover}"]
         @basefile_noarch_nover_nogcc = @basefile_noarch_nover.split(/gcc-/, 2).last
         puts "Symlinking #{f} to #{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
         FileUtils.ln_sf f, "#{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
-        add_filelist |= ["#{CREW_PREFIX}/bin/#{gcc_arch}-#{@basefile_noarch_nover_nogcc}"]
       end
       Dir.glob("*-#{gcc_version}").each do |f|
         @basefile_nover = f.split(/-#{gcc_version}/, 2).first
         puts "Symlinking #{f} to #{@basefile_nover}"
         FileUtils.ln_sf f, @basefile_nover
-        add_filelist |= ["#{CREW_PREFIX}/bin/#{@basefile_nover}"]
       end
       # many packages expect this symlink
       puts "Symlinking gcc-#{gcc_version} to cc"
       FileUtils.ln_sf "gcc-#{gcc_version}", 'cc'
-      add_filelist |= ["#{CREW_PREFIX}/bin/cc"]
+    end
+    # libgomp.so conflicts with llvm
+    @deletefiles = %W[#{CREW_DEST_LIB_PREFIX}/libgomp.so]
+    @deletefiles.each do |f|
+      FileUtils.rm f if File.exist?(f)
     end
     # make sure current version of gcc LTO plugin for Gold linker is installed.
-    FileUtils.mkdir_p "#{CREW_LIB_PREFIX}/bfd-plugins/"
-    puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_LIB_PREFIX}/bfd-plugins/"
-    FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_LIB_PREFIX}/bfd-plugins/"
-    add_filelist |= ["#{CREW_LIB_PREFIX}/bfd-plugins/liblto_plugin.so"]
+    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+    puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
+    FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
     # binutils makes a symlink here, but just in case it isn't there.
     if ARCH == 'x86_64'
-      FileUtils.mkdir_p "#{CREW_PREFIX}/lib/bfd-plugins/"
-      puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_PREFIX}/lib/bfd-plugins/"
-      FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_PREFIX}/lib/bfd-plugins/"
-      add_filelist |= ["#{CREW_PREFIX}/lib/bfd-plugins/liblto_plugin.so"]
-    end
-    puts 'If you do not need gcc you can uninstall gcc to save space with'.lightgreen
-    puts '"crew update ; crew upgrade ; crew remove gcc10 gcc11"'.lightgreen
-    # Add postinstall symlinks to filelist
-    filelist = File.readlines("#{CREW_META_PATH}#{@name}.filelist")
-    add_filelist.each do |new_file|
-      filelist.append(new_file) unless filelist.include?(new_file)
-    end
-    File.open("#{CREW_META_PATH}#{@name}.filelist", 'w+') do |f|
-      f.puts(filelist)
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
+      puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_DEST_PREFIX}/lib/bfd-plugins/"
+      FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
     end
   end
 end
