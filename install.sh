@@ -17,12 +17,12 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
 
 # EARLY_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-EARLY_PACKAGES="libssp brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
+EARLY_PACKAGES="libarchive openssl zstd xzutils lz4 bz2 libxml2 pixz libssp brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
 libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates libyaml ruby libffi \
-openssl nettle krb5 p11kit libtasn1 gnutls curl git icu4c"
+nettle krb5 p11kit libtasn1 gnutls curl git icu4c "
 
 LATE_PACKAGES="binutils crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 \
-python27 python3 py3_pip sed bz2 lz4 lzip unzip xzutils zip"
+python27 python3 py3_pip sed lzip unzip zip"
 
 ARCH="$(uname -m)"
 
@@ -106,7 +106,9 @@ function download_check () {
 
     #download
     echo -e "${BLUE}Downloading ${1}...${RESET}"
-    $CURL '-#' -C - -L --ssl "${2}" -o "${3}"
+    # Gitlab doesn't support byte ranges, hence no need for "-C"
+    # --ssl is only valid for (FTP IMAP POP3 SMTP)
+    $CURL '-#' -L "${2}" -o "${3}"
 
     #verify
     echo -e "${BLUE}Verifying ${1}...${RESET}"
@@ -127,7 +129,11 @@ function extract_install () {
 
     #extract and install
     echo "Extracting ${1} (this may take a while)..."
-    tar xpf ../"${2}"
+    if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h > /dev/null; then 
+      tar xpf ../"${2}"
+    else
+    LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
+    fi
     echo "Installing ${1} (this may take a while)..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
