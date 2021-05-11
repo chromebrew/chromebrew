@@ -16,8 +16,8 @@ class Libssp < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.1.0_x86_64/libssp-11.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '21d6872debb576b442a0a62ab7d0ae4bc765db83bf43cdb8e11c28f56e51d456',
-     armv7l: '21d6872debb576b442a0a62ab7d0ae4bc765db83bf43cdb8e11c28f56e51d456',
+    aarch64: '8befe2e0872e61a61f3c3b557905612e64358d7df0617e8101dec63768087eb8',
+     armv7l: '8befe2e0872e61a61f3c3b557905612e64358d7df0617e8101dec63768087eb8',
        i686: '5b02bf769ec3754f4b0c937e5420f13bf285bc81bdc9c68fbc6f63c56562682b',
      x86_64: '356cd568080dd0e724081ec7f020d0b21e091d5552d175746f830c48830bd8b9'
   })
