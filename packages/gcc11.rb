@@ -33,6 +33,8 @@ class Gcc11 < Package
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
 
+  @gcc_version = version.split('-')[0].rpartition('.')[0]
+
   @gcc_global_opts = '--disable-bootstrap \
   --disable-libmpx \
   --disable-libssp \
@@ -74,18 +76,15 @@ class Gcc11 < Package
   end
 
   def self.preinstall
-    gcc_version = version.split('-')[0]
     # Use full gcc path to bypass ccache
     stdout_and_stderr, status = Open3.capture2e('bash', '-c',
-                                                "#{CREW_PREFIX}/bin/gcc -v 2>&1 | tail -1 | cut -d' ' -f3")
+                                                "#{CREW_PREFIX}/bin/gcc -v 2>&1 | tail -1 | cut -d' ' -f1")
     if status.success?
       installed_gccver = stdout_and_stderr.chomp
-      # One gets "1:" with no gcc installed.
-      unless installed_gccver.to_s == '1:' ||
-             installed_gccver.to_s == 'No' ||
-             installed_gccver.to_s == 'not' ||
-             installed_gccver.to_s == 'gcc:' ||
-             installed_gccver.to_s == gcc_version.to_s
+      # One gets "-dumpversion" with no gcc installed.
+      unless installed_gccver.to_s == '-dumpversion' ||
+             installed_gccver.to_s == @gcc_version.to_s ||
+             installed_gccver.rpartition('.')[0].to_s == @gcc_version.rpartition('.')[0].to_s
         abort "GCC version #{installed_gccver} already installed.".lightgreen
       end
     end
@@ -141,8 +140,6 @@ class Gcc11 < Package
     # end
     # system "ln -sf ../mpfr-#{@mpfr_ver} mpfr"
 
-    gcc_version = version.split('-')[0]
-
     FileUtils.mkdir_p 'objdir/gcc/.deps'
 
     Dir.chdir('objdir') do
@@ -153,7 +150,7 @@ class Gcc11 < Package
         #{@gcc_global_opts} \
         #{@archflags} \
         --enable-languages=#{@languages} \
-        --program-suffix=-#{gcc_version}"
+        --program-suffix=-#{@gcc_version}"
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
       # /usr/local/bin/ld: cannot find crti.o: No such file or directory
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
@@ -172,6 +169,9 @@ class Gcc11 < Package
   end
 
   def self.install
+    gcc_arch = `objdir/gcc/xgcc -dumpmachine`.chomp
+    gcc_dir = "gcc/#{gcc_arch}/#{@gcc_version}"
+    gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
     Dir.chdir('objdir') do
       # gcc-libs install
       system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
@@ -203,18 +203,13 @@ class Gcc11 < Package
           make DESTDIR=#{CREW_DEST_DIR} install-strip"
 
       # gcc-non-lib install
-      gcc_arch = `gcc/xgcc -dumpmachine`.chomp
-      gcc_version = version.split('-')[0]
-      gcc_dir = "gcc/#{gcc_arch}/#{gcc_version}"
-      gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
-
       system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         make -C gcc DESTDIR=#{CREW_DEST_DIR} install-driver install-cpp install-gcc-ar \
         c++.install-common install-headers install-plugin install-lto-wrapper"
 
       @gcov_install = %w[gcov gcov-tool]
       @gcov_install.each do |gcov_bin|
-        FileUtils.install "gcc/#{gcov_bin}", "#{CREW_DEST_PREFIX}/bin/#{gcov_bin}-#{gcc_version}", mode: 0o755
+        FileUtils.install "gcc/#{gcov_bin}", "#{CREW_DEST_PREFIX}/bin/#{gcov_bin}-#{@gcc_version}", mode: 0o755
       end
 
       FileUtils.mkdir_p gcc_libdir
@@ -305,15 +300,15 @@ class Gcc11 < Package
     end
 
     Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
-      Dir.glob("*-#{gcc_version}.1*").each do |f|
-        @basefile = f.gsub("-#{gcc_version}", '')
+      Dir.glob("*-#{@gcc_version}.1*").each do |f|
+        @basefile = f.gsub("-#{@gcc_version}", '')
         FileUtils.ln_sf f, @basefile
       end
     end
 
     Dir.chdir "#{CREW_DEST_PREFIX}/bin/" do
-      Dir.glob("#{gcc_arch}-*-#{gcc_version}").each do |f|
-        @basefile_nover = f.split(/-#{gcc_version}/, 2).first
+      Dir.glob("#{gcc_arch}-*-#{@gcc_version}").each do |f|
+        @basefile_nover = f.split(/-#{@gcc_version}/, 2).first
         puts "Symlinking #{f} to #{@basefile_nover}"
         FileUtils.ln_sf f, @basefile_nover
         @basefile_noarch = f.split(/#{gcc_arch}-/, 2).last
@@ -326,14 +321,14 @@ class Gcc11 < Package
         puts "Symlinking #{f} to #{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
         FileUtils.ln_sf f, "#{gcc_arch}-#{@basefile_noarch_nover_nogcc}"
       end
-      Dir.glob("*-#{gcc_version}").each do |f|
-        @basefile_nover = f.split(/-#{gcc_version}/, 2).first
+      Dir.glob("*-#{@gcc_version}").each do |f|
+        @basefile_nover = f.split(/-#{@gcc_version}/, 2).first
         puts "Symlinking #{f} to #{@basefile_nover}"
         FileUtils.ln_sf f, @basefile_nover
       end
       # many packages expect this symlink
-      puts "Symlinking gcc-#{gcc_version} to cc"
-      FileUtils.ln_sf "gcc-#{gcc_version}", 'cc'
+      puts "Symlinking gcc-#{@gcc_version} to cc"
+      FileUtils.ln_sf "gcc-#{@gcc_version}", 'cc'
     end
     # libgomp.so conflicts with llvm
     @deletefiles = %W[#{CREW_DEST_LIB_PREFIX}/libgomp.so]
