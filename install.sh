@@ -129,10 +129,10 @@ function extract_install () {
 
     #extract and install
     echo "Extracting ${1} (this may take a while)..."
-    if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h > /dev/null; then 
+    if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then 
       tar xpf ../"${2}"
     else
-    LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
+      LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
     fi
     echo "Installing ${1} (this may take a while)..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
