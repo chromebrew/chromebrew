@@ -213,14 +213,6 @@ crew update
 yes | crew install $LATE_PACKAGES 
 
 [[ "$devtools" == "y" || "$devtools" == "Y" ]] && yes | crew install buildessential
-# Install core packages
-echo -e "${BLUE}
-Installing core packages...
-${RESET}"
-for i in $(cat tools/core_packages.txt  )
-do
-( yes | crew upgrade $i || true )
-done
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
