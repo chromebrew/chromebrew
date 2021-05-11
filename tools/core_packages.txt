@@ -46,6 +46,7 @@ p11kit
 pcre
 pcre2
 perl
+pixz
 py3_pip
 python27
 python3
