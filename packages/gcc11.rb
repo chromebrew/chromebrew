@@ -11,16 +11,16 @@ class Gcc11 < Package
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_armv7l/gcc11-11.1.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_armv7l/gcc11-11.1.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_i686/gcc11-11.1.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_x86_64/gcc11-11.1.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_i686/gcc11-11.1.0-2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_x86_64/gcc11-11.1.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '47cac6b4a5716b439ba5a4f81f41059c8bd81030c45ea9d729dd998748a9b17f',
-     armv7l: '47cac6b4a5716b439ba5a4f81f41059c8bd81030c45ea9d729dd998748a9b17f',
-       i686: 'd5994c92969e4d61320157654ccd1bcd3afcd6c66aa6e89e56b67b15cf06bd30',
-     x86_64: '9f6b7e180d66506732c52c5a23337e5cdf559721939ade8bde975bcea9ada04b'
+    aarch64: 'c164a89519541d48a414f21ab2414bd93ddd0c9577fafd50f382b72e9a213e79',
+     armv7l: 'c164a89519541d48a414f21ab2414bd93ddd0c9577fafd50f382b72e9a213e79',
+       i686: 'c2d12cb493ccdb3d84f6fc565d3be8a7771c30d73b9440f81b2fea8aef753288',
+     x86_64: '02cdaa61b298daa3eaa7ff6cbd373c64d527da2726945c3f3c3bd3d927e3b530'
   })
 
   depends_on 'ccache' => :build
