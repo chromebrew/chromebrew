@@ -293,11 +293,11 @@ class Gcc11 < Package
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
       system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}"
 
-      # Make symbolic links
-      FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
-      Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
-        system "find . -type f -maxdepth 1 -exec ln -sv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
-      end
+      ## Make symbolic links
+      #FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
+      #Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
+        #system "find . -type f -maxdepth 1 -exec ln -sv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
+      #end
     end
 
     Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
