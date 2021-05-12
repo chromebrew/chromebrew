@@ -82,7 +82,7 @@ class Gcc10 < Package
              installed_gccver.to_s == 'bash:' ||
              installed_gccver.to_s == @gcc_version.to_s ||
              installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
-        abort "GCC version #{installed_gccver} already installed.".lightgreen
+        abort "GCC version #{installed_gccver} is already installed. Please run: crew remove gcc#{installed_gccver} && crew install #{self.to_s.downcase}".lightgreen
       end
     end
   end
