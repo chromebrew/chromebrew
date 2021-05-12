@@ -4,7 +4,7 @@ require 'open3'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.3.0-2'
+  version '10.3.0-3'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz'
