@@ -11,16 +11,12 @@ class Gcc11 < Package
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_i686/gcc11-11.1.0-2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_x86_64/gcc11-11.1.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c164a89519541d48a414f21ab2414bd93ddd0c9577fafd50f382b72e9a213e79',
-     armv7l: 'c164a89519541d48a414f21ab2414bd93ddd0c9577fafd50f382b72e9a213e79',
-       i686: 'c2d12cb493ccdb3d84f6fc565d3be8a7771c30d73b9440f81b2fea8aef753288',
-     x86_64: '02cdaa61b298daa3eaa7ff6cbd373c64d527da2726945c3f3c3bd3d927e3b530'
+       i686: '9c1e13720a102c62bd0794e4872e9936d73c6c3bcb2934854c32798090035021',
+     x86_64: '91ed0f513618b8d548928d256e68219046c5dcf6726b79f1d71979e0ae5d64dc'
   })
 
   depends_on 'ccache' => :build
@@ -292,12 +288,6 @@ class Gcc11 < Package
       # byte-compile python libraries
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
       system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}"
-
-      ## Make symbolic links
-      #FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
-      #Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
-        #system "find . -type f -maxdepth 1 -exec ln -sv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
-      #end
     end
 
     Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do

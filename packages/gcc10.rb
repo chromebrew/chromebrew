@@ -11,16 +11,12 @@ class Gcc10 < Package
   source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-2_armv7l/gcc10-10.3.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-2_armv7l/gcc10-10.3.0-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-2_i686/gcc10-10.3.0-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-2_x86_64/gcc10-10.3.0-2-chromeos-x86_64.tpxz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_i686/gcc10-10.3.0-3-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_x86_64/gcc10-10.3.0-3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '658745ec60c4c51902ec8a3b44268051e32675b583e975932d1d04df64e307c2',
-     armv7l: '658745ec60c4c51902ec8a3b44268051e32675b583e975932d1d04df64e307c2',
-       i686: '3da3094cba3aa94a3abfe8c80b78ef0fa411b37248b9940cf6892079a1afac28',
-     x86_64: '0bc7853779446996e267e8142e87bf2e1e989b54fc03813c0cf2350b463bb3fc'
+    i686: 'd9648e0d2d042ccb771f215ab7ceaf566e43d64c77c2df4ac8e8c0182ae4ff22',
+  x86_64: '82d5f5c2c492a39494891f55cb37c7226ac2e3048241964816dceb1c517dd5f1'
   })
 
   depends_on 'ccache' => :build
@@ -292,12 +288,6 @@ class Gcc10 < Package
       # byte-compile python libraries
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/ || true"
       system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version} || true"
-
-      ## Make symbolic links
-      #FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
-      #Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
-        #system "find . -type f -maxdepth 1 -exec ln -sv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
-      #end
     end
 
     Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
