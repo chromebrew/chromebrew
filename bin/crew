@@ -827,7 +827,7 @@ def build_and_preconfigure(target_dir)
   end
 end
 
-def pre_flight
+def pre_flight(dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing pre-flight checks...'
     @pkg.preflight
