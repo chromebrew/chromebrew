@@ -3,29 +3,29 @@ require 'package'
 class Libpcap < Package
   description 'A portable C/C++ library for network traffic capture.'
   homepage 'https://www.tcpdump.org/'
-  version '1.9.1'
+  version '1.10.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz'
-  source_sha256 '635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094'
+  source_url 'https://www.tcpdump.org/release/libpcap-1.10.0.tar.gz'
+  source_sha256 '8d12b42623eeefee872f123bd0dc85d535b00df4d42e865f993c40f7bfc92b1e'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_armv7l/libpcap-1.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_armv7l/libpcap-1.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_i686/libpcap-1.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.9.1_x86_64/libpcap-1.9.1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_armv7l/libpcap-1.10.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_armv7l/libpcap-1.10.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_i686/libpcap-1.10.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_x86_64/libpcap-1.10.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '6ed603b0fcfc2262772ab55efaf2ac4aca927131d67e796d9d7b5ebdb4a13646',
-     armv7l: '6ed603b0fcfc2262772ab55efaf2ac4aca927131d67e796d9d7b5ebdb4a13646',
-       i686: '9eac0cd730345403835a085f5acd9b1648a2610c4cf1f2ae2c3af988d4c28499',
-     x86_64: '475bcac8bcd6f24765c68151500470141d5faf85fa89879612d4a0336a43e0ef',
+  binary_sha256({
+    aarch64: '3ec810c7c9ddc2e2d684cae52dcc69375b786f18b4f53086dc70a3b794a4a759',
+     armv7l: '3ec810c7c9ddc2e2d684cae52dcc69375b786f18b4f53086dc70a3b794a4a759',
+       i686: '967dcedbb55c15c68c232692a76b4a9e4a7d1accbed443c3bcc30fda952ea6ad',
+     x86_64: '8afeecd5018fe6d0bb4958e08d8359ee7abd09d48633d575ac2a241ccbdbee96'
   })
 
   depends_on 'libnl3'
 
   def self.build
-    system "CFLAGS='-I#{CREW_PREFIX}/include/libnl3' ./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "CFLAGS='-I#{CREW_PREFIX}/include/libnl3 -flto -fuse-ld=gold' ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
