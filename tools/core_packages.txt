@@ -9,7 +9,7 @@ crew_profile_base
 curl
 filecmd
 flex
-gcc10
+gcc11
 gdbm
 gettext
 git
