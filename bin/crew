@@ -964,7 +964,7 @@ def resolve_dependencies_and_install
   unless @pkg.is_fake?
     # Process preflight block to see if package should even
     # be downloaded or installed.
-    pre_flight
+    pre_flight CREW_DEST_DIR
   end
   begin
     origin = @pkg.name
