@@ -4,28 +4,28 @@ require 'open3'
 class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.1.0-1'
+  version '11.1.0-2'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz'
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_armv7l/gcc11-11.1.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_armv7l/gcc11-11.1.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_i686/gcc11-11.1.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-1_x86_64/gcc11-11.1.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_i686/gcc11-11.1.0-2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_x86_64/gcc11-11.1.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '47cac6b4a5716b439ba5a4f81f41059c8bd81030c45ea9d729dd998748a9b17f',
-     armv7l: '47cac6b4a5716b439ba5a4f81f41059c8bd81030c45ea9d729dd998748a9b17f',
-       i686: 'd5994c92969e4d61320157654ccd1bcd3afcd6c66aa6e89e56b67b15cf06bd30',
-     x86_64: '9f6b7e180d66506732c52c5a23337e5cdf559721939ade8bde975bcea9ada04b'
+    aarch64: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
+     armv7l: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
+       i686: '9c1e13720a102c62bd0794e4872e9936d73c6c3bcb2934854c32798090035021',
+     x86_64: '91ed0f513618b8d548928d256e68219046c5dcf6726b79f1d71979e0ae5d64dc'
   })
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'hashpipe' => :build
+  # depends_on 'hashpipe' => :build
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
@@ -33,7 +33,7 @@ class Gcc11 < Package
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
 
-  @gcc_version = version.split('-')[0].rpartition('.')[0]
+  @gcc_version = version.split('-')[0].partition('.')[0]
 
   @gcc_global_opts = '--disable-bootstrap \
   --disable-libmpx \
@@ -75,7 +75,7 @@ class Gcc11 < Package
     @archflags = '--with-arch-32=i686'
   end
 
-  def self.preinstall
+  def self.preflight
     # Use full gcc path to bypass ccache
     stdout_and_stderr, status = Open3.capture2e('bash', '-c',
                                                 "#{CREW_PREFIX}/bin/gcc -dumpversion 2>&1 | tail -1 | cut -d' ' -f1")
@@ -85,8 +85,11 @@ class Gcc11 < Package
       unless installed_gccver.to_s == '-dumpversion' ||
              installed_gccver.to_s == 'bash:' ||
              installed_gccver.to_s == @gcc_version.to_s ||
-             installed_gccver.rpartition('.')[0].to_s == @gcc_version.rpartition('.')[0].to_s
-        abort "GCC version #{installed_gccver} already installed.".lightgreen
+             installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
+        $stderr.puts "GCC version #{installed_gccver} is currently installed.".lightred
+        $stderr.puts "To use #{self.to_s.downcase} please run:".lightgreen
+        $stderr.puts "crew remove gcc#{installed_gccver} && crew install #{self.to_s.downcase}".lightgreen
+        exit 1
       end
     end
   end
@@ -292,12 +295,6 @@ class Gcc11 < Package
       # byte-compile python libraries
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
       system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}"
-
-      # Make symbolic links
-      FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
-      Dir.chdir "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}" do
-        system "find . -type f -maxdepth 1 -exec ln -sv #{gcc_libdir}/{} #{CREW_DEST_LIB_PREFIX}/{} \\;"
-      end
     end
 
     Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do

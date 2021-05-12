@@ -827,6 +827,13 @@ def build_and_preconfigure(target_dir)
   end
 end
 
+def pre_flight(dest_dir)
+  Dir.chdir dest_dir do
+    puts 'Performing pre-flight checks...'
+    @pkg.preflight
+  end
+end
+
 def pre_install(dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing pre-install...'
@@ -954,6 +961,11 @@ def install_package(pkgdir)
 end
 
 def resolve_dependencies_and_install
+  unless @pkg.is_fake?
+    # Process preflight block to see if package should even
+    # be downloaded or installed.
+    pre_flight CREW_DEST_DIR
+  end
   begin
     origin = @pkg.name
 
@@ -1255,7 +1267,6 @@ def build_command(args)
     @pkgName = name
     search @pkgName
     print_current_package @opt_verbose
-    @pkg.preflight
     resolve_dependencies_and_build
   end
 end
@@ -1314,7 +1325,6 @@ def install_command(args)
     search @pkgName
     print_current_package true
     @pkg.build_from_source = true if @opt_src or @opt_recursive
-    @pkg.preflight
     resolve_dependencies_and_install
   end
 end
@@ -1351,7 +1361,6 @@ def reinstall_command(args)
     @pkg.build_from_source = true if @opt_src or @opt_recursive
     if @pkgName
       @pkg.in_upgrade = true
-      @pkg.preflight
       resolve_dependencies_and_install
       @pkg.in_upgrade = false
     end
