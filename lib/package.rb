@@ -85,7 +85,7 @@ class Package
     @is_fake
   end
 
-  # Function to perform pre-flight operations prior to dependency checks.
+  # Function to perform pre-flight operations prior to build dependency checks.
   def self.preflight
 
   end
@@ -108,6 +108,11 @@ class Package
   # Function to perform check from source build.
   # This executes only during `crew build`.
   def self.check
+
+  end
+
+  # Function for checks to see if install should occur.
+  def self.preinstallcheck
 
   end
 
