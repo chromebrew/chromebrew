@@ -11,12 +11,16 @@ class Gcc10 < Package
   source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_i686/gcc10-10.3.0-3-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_x86_64/gcc10-10.3.0-3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_armv7l/gcc10-10.3.0-3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_armv7l/gcc10-10.3.0-3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_i686/gcc10-10.3.0-3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_x86_64/gcc10-10.3.0-3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    i686: 'd9648e0d2d042ccb771f215ab7ceaf566e43d64c77c2df4ac8e8c0182ae4ff22',
-  x86_64: '82d5f5c2c492a39494891f55cb37c7226ac2e3048241964816dceb1c517dd5f1'
+    aarch64: '0c7c7fa852a1b95e7cd18c60e5950d8acfe204073e9a4a3ecd13fa715a38b1c4',
+     armv7l: '0c7c7fa852a1b95e7cd18c60e5950d8acfe204073e9a4a3ecd13fa715a38b1c4',
+       i686: 'd9648e0d2d042ccb771f215ab7ceaf566e43d64c77c2df4ac8e8c0182ae4ff22',
+     x86_64: '82d5f5c2c492a39494891f55cb37c7226ac2e3048241964816dceb1c517dd5f1'
   })
 
   depends_on 'ccache' => :build
@@ -82,7 +86,10 @@ class Gcc10 < Package
              installed_gccver.to_s == 'bash:' ||
              installed_gccver.to_s == @gcc_version.to_s ||
              installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
-        abort "GCC version #{installed_gccver} is already installed. Please run: crew remove gcc#{installed_gccver} && crew install #{self.to_s.downcase}".lightgreen
+        $stderr.puts "GCC version #{installed_gccver} is currently installed.".lightred
+        $stderr.puts "To use #{self.to_s.downcase} please run:".lightgreen
+        $stderr.puts "crew remove gcc#{installed_gccver} && crew install #{self.to_s.downcase}".lightgreen
+        exit 1
       end
     end
   end
