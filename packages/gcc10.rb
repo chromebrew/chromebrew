@@ -75,7 +75,7 @@ class Gcc10 < Package
     @archflags = '--with-arch-32=i686'
   end
 
-  def self.preinstallcheck
+  def self.preflight
     # Use full gcc path to bypass ccache
     stdout_and_stderr, status = Open3.capture2e('bash', '-c',
                                                 "#{CREW_PREFIX}/bin/gcc -dumpversion 2>&1 | tail -1 | cut -d' ' -f1")
