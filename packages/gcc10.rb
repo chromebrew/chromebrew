@@ -81,7 +81,7 @@ class Gcc10 < Package
       unless installed_gccver.to_s == '-dumpversion' ||
              installed_gccver.to_s == 'bash:' ||
              installed_gccver.to_s == @gcc_version.to_s ||
-             installed_gccver.rpartition('.')[0].to_s == @gcc_version.rpartition('.')[0].to_s
+             installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
         abort "GCC version #{installed_gccver} already installed.".lightgreen
       end
     end
