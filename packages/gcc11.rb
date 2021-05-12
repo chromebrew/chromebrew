@@ -11,17 +11,21 @@ class Gcc11 < Package
   source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_i686/gcc11-11.1.0-2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_x86_64/gcc11-11.1.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
+    aarch64: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
+     armv7l: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
        i686: '9c1e13720a102c62bd0794e4872e9936d73c6c3bcb2934854c32798090035021',
      x86_64: '91ed0f513618b8d548928d256e68219046c5dcf6726b79f1d71979e0ae5d64dc'
   })
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'hashpipe' => :build
+  # depends_on 'hashpipe' => :build
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R

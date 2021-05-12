@@ -21,7 +21,7 @@ class Gcc10 < Package
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'hashpipe' => :build
+  # depends_on 'hashpipe' => :build
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
