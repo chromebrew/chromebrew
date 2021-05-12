@@ -33,7 +33,7 @@ class Gcc11 < Package
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
 
-  @gcc_version = version.split('-')[0].rpartition('.')[0]
+  @gcc_version = version.split('-')[0].partition('.')[0]
 
   @gcc_global_opts = '--disable-bootstrap \
   --disable-libmpx \
