@@ -3,27 +3,27 @@ require 'package'
 class Lua < Package
   description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
   homepage 'https://www.lua.org/'
-  version '5.4.2'
+  version '5.4.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.lua.org/ftp/lua-5.4.2.tar.gz'
-  source_sha256 '11570d97e9d7303c0a59567ed1ac7c648340cd0db10d5fd594c09223ef2f524f'
+  source_url 'https://www.lua.org/ftp/lua-5.4.3.tar.gz'
+  source_sha256 'f8612276169e3bfcbcfb8f226195bfc6e466fe13042f1076cbde92b7ec96bbfb'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_armv7l/lua-5.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_armv7l/lua-5.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_i686/lua-5.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.2_x86_64/lua-5.4.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_armv7l/lua-5.4.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_armv7l/lua-5.4.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_i686/lua-5.4.3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_x86_64/lua-5.4.3-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '1d9a0982da7b59fa17892c699f2818ee137a1eaba895da3519c67e71b4aabd6d',
-     armv7l: '1d9a0982da7b59fa17892c699f2818ee137a1eaba895da3519c67e71b4aabd6d',
-       i686: '8c04a985efa92609659cb618efd59086c7b57ae7ca3f101ebb6bf68d13a127a9',
-     x86_64: 'a063effc0721cc63a4872338a6d139e2f5b8611e1eb3b9391c111444279d88f0',
+  binary_sha256({
+    aarch64: '2cbf9670bd0a9388537d70d5559ff0505d31b6be36e85ccec0077ddb4f3fd3e3',
+     armv7l: '2cbf9670bd0a9388537d70d5559ff0505d31b6be36e85ccec0077ddb4f3fd3e3',
+       i686: '828d08293bb955aa2daa222fb6295a3c8f002c6ddd147d4d067129bed6b6e706',
+     x86_64: 'a1e7d87857e5ea2be3988975750e4af3cb881643bd751beb316b19f9305f5b88'
   })
 
   def self.build
-    system "make PLAT=linux-readline"
+    system "env #{CREW_ENV_OPTIONS} make PLAT=linux-readline"
   end
 
   def self.install
