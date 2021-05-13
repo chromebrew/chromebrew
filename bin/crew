@@ -653,11 +653,11 @@ def download
           if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum
             begin
               # Hard link cached file if possible.
-              FileUtils.ln cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+              FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
               puts "Archive hard linked from cache".green if @opt_verbose
             rescue
               # Copy cached file if hard link fails.
-              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
               puts "Archive copied from cache".green if @opt_verbose
             end
             puts "Archive found in cache".lightgreen
