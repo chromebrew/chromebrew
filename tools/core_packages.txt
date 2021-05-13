@@ -7,6 +7,7 @@ c_ares
 ca_certificates
 crew_profile_base
 curl
+elfutils
 expat
 filecmd
 flex
