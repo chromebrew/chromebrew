@@ -950,8 +950,6 @@ def install_package(pkgdir)
     FileUtils.mv 'dlist', CREW_META_PATH + @pkg.name + '.directorylist', verbose: @fileutils_verbose
     FileUtils.mv 'filelist', CREW_META_PATH + @pkg.name + '.filelist', verbose: @fileutils_verbose
 
-    strip_dir pkgdir if Dir.exists? "#{pkgdir}/usr"
-
     if Dir.exists? "#{pkgdir}/home" then
       system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
     elsif Dir.exists? "#{pkgdir}/usr" then
