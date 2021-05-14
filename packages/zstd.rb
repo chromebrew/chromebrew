@@ -3,43 +3,25 @@ require 'package'
 class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
-  @_ver = '1.4.9'
+  @_ver = '1.5.0'
   version @_ver
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url "https://github.com/facebook/zstd/archive/v#{@_ver}.tar.gz"
-  source_sha256 'acf714d98e3db7b876e5b540cbf6dee298f60eb3c0723104f6d3f065cd60d6a8'
+  source_sha256 '0d9ade222c64e912d6957b11c923e214e2e010a18f39bec102f572e693ba2867'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_armv7l/zstd-1.4.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_armv7l/zstd-1.4.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_i686/zstd-1.4.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.4.9_x86_64/zstd-1.4.9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0_armv7l/zstd-1.5.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0_armv7l/zstd-1.5.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0_i686/zstd-1.5.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0_x86_64/zstd-1.5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c94ef7aecad9675d4fdcfc444cfd74c1560f6f8090c851bffe2be2a5250fc4f9',
-     armv7l: 'c94ef7aecad9675d4fdcfc444cfd74c1560f6f8090c851bffe2be2a5250fc4f9',
-       i686: 'd59795e6cc367cfb9120e4a7b60df706cfd1746c5b41485767cf2ff75eddb2cb',
-     x86_64: '055c10b86abdb5268f90c28f73ccb7cc1db155ef7d7e14fba97a977ed3886832'
+    aarch64: 'ee8ce213f9209da69ed272c684cf20d1dcf75e24c1d7bfb11e1091b9484793c2',
+     armv7l: 'ee8ce213f9209da69ed272c684cf20d1dcf75e24c1d7bfb11e1091b9484793c2',
+       i686: 'a8d8312f83a0cdf627ceb5f9a6099e5036f20fbedd9a6c53c678b50c3d1a34c9',
+     x86_64: '4da82c8d02a0f8b2a2e2591110708df8e36b9451631420de28a8c2d14f579265'
   })
-
-  def self.patch
-    # Patch from https://github.com/facebook/zstd/issues/2519#issuecomment-790092538
-    @meson_patch = <<~'MESON_PATCH_EOF'
-      --- a/build/meson/lib/meson.build~      2021-03-02 22:20:57.000000000 +0000
-      +++ b/build/meson/lib/meson.build       2021-03-03 21:56:00.058700361 +0000
-      @@ -22,6 +22,7 @@
-         join_paths(zstd_rootdir, 'lib/common/threading.c'),
-         join_paths(zstd_rootdir, 'lib/common/pool.c'),
-         join_paths(zstd_rootdir, 'lib/common/zstd_common.c'),
-      +  join_paths(zstd_rootdir, 'lib/common/zstd_trace.c'),
-         join_paths(zstd_rootdir, 'lib/common/error_private.c'),
-         join_paths(zstd_rootdir, 'lib/common/xxhash.c'),
-         join_paths(zstd_rootdir, 'lib/compress/hist.c'),
-    MESON_PATCH_EOF
-    IO.write('meson.patch', @meson_patch)
-    system 'patch -p1 -i meson.patch'
-  end
 
   def self.build
     Dir.chdir 'build/meson' do
