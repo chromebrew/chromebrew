@@ -827,11 +827,9 @@ def build_and_preconfigure(target_dir)
   end
 end
 
-def pre_flight(dest_dir)
-  Dir.chdir dest_dir do
-    puts 'Performing pre-flight checks...'
-    @pkg.preflight
-  end
+def pre_flight
+  puts 'Performing pre-flight checks...'
+  @pkg.preflight
 end
 
 def pre_install(dest_dir)
@@ -962,7 +960,7 @@ def resolve_dependencies_and_install
   unless @pkg.is_fake?
     # Process preflight block to see if package should even
     # be downloaded or installed.
-    pre_flight CREW_DEST_DIR
+    pre_flight
   end
   begin
     origin = @pkg.name
