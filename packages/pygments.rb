@@ -21,6 +21,8 @@ class Pygments < Package
      x86_64: '955f2f252e98842b63569334ad133908c2c527617b687f632bbfd1f4db8013b6'
   })
 
+  depends_on 'py3_pip'
+
   def self.install
     system 'pip uninstall -y pygments'
     system "pip install --upgrade --no-warn-script-location pygments --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"

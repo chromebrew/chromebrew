@@ -828,6 +828,7 @@ def build_and_preconfigure(target_dir)
 end
 
 def pre_flight(dest_dir)
+  FileUtils.mkdir_p(dest_dir) unless Dir.exist?(dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing pre-flight checks...'
     @pkg.preflight

@@ -3,32 +3,35 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.28'
+  @_ver = '3.24.29'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version @_ver
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gtk/-/archive/#{@_ver}/gtk-#{@_ver}.tar.bz2"
-  source_sha256 'ab8e2799c71f4ff5052fade351a3a035d60d7d357035788227bf5e6270cde448'
+  source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_armv7l/gtk3-3.24.28-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_armv7l/gtk3-3.24.28-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_i686/gtk3-3.24.28-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.28-1_x86_64/gtk3-3.24.28-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_armv7l/gtk3-3.24.29-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_armv7l/gtk3-3.24.29-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_i686/gtk3-3.24.29-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_x86_64/gtk3-3.24.29-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '25b189ed5da4f41a7c31882c71ab7f4cacd6504987706a629c2b8cf63157e3eb',
-     armv7l: '25b189ed5da4f41a7c31882c71ab7f4cacd6504987706a629c2b8cf63157e3eb',
-       i686: 'db956665e7077a5699a24515ccbde0ac932c3d445def3e36f74bcd09f1608296',
-     x86_64: '16ef9237bd85428972d050da9d5307f30700b24ce26c6d165c39769ad3dc2d92'
+    aarch64: '05caf4c5661d197f4c82d3cf1ed919a5379fd82ac7df8b2ec0734c50984f49a1',
+     armv7l: '05caf4c5661d197f4c82d3cf1ed919a5379fd82ac7df8b2ec0734c50984f49a1',
+       i686: 'd23792469f08482573d02aaca7c3042e85c1f1f4b54ba9bd661ec473cdb1cf2c',
+     x86_64: '848d47ac2546f4bc554b9f6f0af8e148741d7c55ef52d83f4a5fbf51c07aa9eb'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
   depends_on 'docbook' => :build
+  depends_on 'ghostscript' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'iso_codes' => :build
+  depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
+  depends_on 'valgrind' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
   depends_on 'libdeflate' => :build # Do we need this?
@@ -66,6 +69,15 @@ class Gtk3 < Package
   depends_on 'rest' # R
   depends_on 'wayland' # R
 
+  def self.patch
+    # Use locally build subprojects
+    @deps = %w[cairo librsvg]
+    @deps.each do |dep|
+      FileUtils.rm_rf "subprojects/#{dep}" if Dir.exist?("subprojects/#{dep}")
+      FileUtils.rm_rf "subprojects/#{dep}.wrap" if File.exist?("subprojects/#{dep}.wrap")
+    end
+  end
+
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
       -Dbroadway_backend=true \
@@ -97,7 +109,10 @@ class Gtk3 < Package
     system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
     system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
-    # update icon cache
+    # update icon cache, but only if gdk_pixbuf is already installed.
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    return unless @device[:installed_packages].any? 'gdk_pixbuf'
+
     system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end
 end
