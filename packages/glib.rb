@@ -3,40 +3,34 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.68.0'
+  @_ver = '2.68.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://download.gnome.org/sources/glib/#{@_ver_prelastdot}/glib-#{@_ver}.tar.xz"
-  source_sha256 '67734f584f3a05a2872f57e9a8db38f3b06c7087fb531c5a839d9171968103ea'
+  source_url 'https://gitlab.gnome.org/GNOME/glib.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.0_armv7l/glib-2.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.0_armv7l/glib-2.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.0_i686/glib-2.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.0_x86_64/glib-2.68.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_armv7l/glib-2.68.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_armv7l/glib-2.68.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_i686/glib-2.68.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_x86_64/glib-2.68.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '074bbda5881173ce7d9cb01849cd9c1919ff3e111e3d40c4abbe655b1de6aa55',
-     armv7l: '074bbda5881173ce7d9cb01849cd9c1919ff3e111e3d40c4abbe655b1de6aa55',
-       i686: '4b4236243277ef9e2e1671090b9c5eb761fcbc1f4df43cbe54cffe19f838a922',
-     x86_64: '7c2bca7c57a8552eb0be3bac923d984eb01449d329b4d1a061b2dc42aacece82'
+    aarch64: '51cca2bdab9b0d8725010d9627e1af90553bd80627c7c0ca7822eb1d48977d5e',
+     armv7l: '51cca2bdab9b0d8725010d9627e1af90553bd80627c7c0ca7822eb1d48977d5e',
+       i686: '9edb7d402f59d21ed282bfd68b45c3bfe896a6edd0c6d5fed6b284e42532f8d3',
+     x86_64: '3f6a6728ad5b7e8b048665e2258ea22cf9ee5fa5c60c7e57d8172ada16486932'
   })
 
-  depends_on 'pcre'
-  depends_on 'shared_mime_info'
-  depends_on 'util_linux'
-  depends_on 'six'
-  depends_on 'pygments'
+  depends_on 'pygments' => :build
+  depends_on 'shared_mime_info' # L
+  depends_on 'six' => :build
+  depends_on 'util_linux' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
-    -Dc_args='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-    -Dc_link_args='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-    -Dcpp_args='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-    -Dcpp_link_args='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -fuse-ld=gold' \
-    -Das_needed=false \
     -Dselinux=disabled \
     -Dsysprof=disabled \
     -Dman=false \

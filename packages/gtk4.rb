@@ -3,33 +3,36 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.2.0'
+  @_ver = '4.2.1'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version @_ver
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gtk/-/archive/#{@_ver}/gtk-#{@_ver}.tar.bz2"
-  source_sha256 'ea817483d35cd5f5d949a61b15c904ee3157fe5befb98e084a241921562f1838'
+  source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.0-1_armv7l/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.0-1_armv7l/gtk4-4.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.0-1_i686/gtk4-4.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.0-1_x86_64/gtk4-4.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.1_armv7l/gtk4-4.2.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.1_armv7l/gtk4-4.2.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.1_i686/gtk4-4.2.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.2.1_x86_64/gtk4-4.2.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e6d12870ed535be19d04aff0eb4659e94728faa4464fd1d26de0dc51fec049d2',
-     armv7l: 'e6d12870ed535be19d04aff0eb4659e94728faa4464fd1d26de0dc51fec049d2',
-       i686: '26bba0fa27efbc129c81077260ae15adc03cd02dd4ebf664fb3b99082816510d',
-     x86_64: '68c169e9112531c9fc41f9bed15a542867500846a16eedc6f103cfbcd99c668b'
+    aarch64: '131b1ef2ee52e9e4e19ac99a2973f2a6b0322d9bb02b7141f792bfe9f6f0b7e8',
+     armv7l: '131b1ef2ee52e9e4e19ac99a2973f2a6b0322d9bb02b7141f792bfe9f6f0b7e8',
+       i686: '49d26942d98c39a093fd341cfb5f62c97d869c20246304ccd8f9ff1cee5c4b92',
+     x86_64: '47520c1d162a3f626e7df1dd50a936b737ce4cf09e76ed1cec228e806fc3e321'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
   depends_on 'docbook' => :build
+  depends_on 'ghostscript' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
+  depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
+  depends_on 'valgrind' => :build
   depends_on 'pygments' => :build # Is this needed?
   depends_on 'six' => :build # Is this needed?
   depends_on 'vulkan_headers' => :build
@@ -76,6 +79,12 @@ class Gtk4 < Package
       system "sed -i 's,#include <fcntl.h>,#include <linux/fcntl.h>,' gdk/wayland/cursor/os-compatibility.c"
       system "sed -i 's/#define HAVE_MEMFD_CREATE/#define HAVE_MEMFD_CREATE_NO/' gdk/wayland/cursor/os-compatibility.c"
     end
+    # Don't rebuild packaged subprojects
+    @deps = %w[cairo librsvg]
+    @deps.each do |dep|
+      FileUtils.rm_rf "subprojects/#{dep}" if Dir.exist?("subprojects/#{dep}")
+      FileUtils.rm_rf "subprojects/#{dep}.wrap" if File.exist?("subprojects/#{dep}.wrap")
+    end
   end
 
   def self.build
@@ -111,7 +120,10 @@ class Gtk4 < Package
     system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
     system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
-    # update icon cache
-    system "#{CREW_PREFIX}/bin/gtk4-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
+    # update icon cache, but only if gdk_pixbuf is already installed.
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    return unless @device[:installed_packages].any? 'gdk_pixbuf'
+
+    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end
 end
