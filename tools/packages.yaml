@@ -504,6 +504,11 @@ url: https://www.bleachbit.org/download/source
 activity: medium
 ---
 kind: url
+name: blender
+url: https://mirror.clarkson.edu/blender/release
+activity: medium
+---
+kind: url
 name: bluefish
 url: https://www.bennewitz.com/bluefish/stable/source/
 activity: none
@@ -829,6 +834,11 @@ url: https://sourceforge.net/projects/collectl/files/collectl/
 activity: low
 ---
 kind: url
+name: colord
+url: https://www.freedesktop.org/software/colord/releases/
+activity: low
+---
+kind: url
 name: colordiff
 url: https://www.colordiff.org/
 activity: low
@@ -884,6 +894,11 @@ url: https://github.com/cpputest/cpputest/releases
 activity: none
 ---
 kind: url
+name: cpu_x
+url: https://github.com/X0rg/CPU-X/releases/
+activity: medium
+---
+kind: url
 name: cpustat
 url: http://kernel.ubuntu.com/~cking/tarballs/cpustat
 activity: medium
@@ -907,6 +922,11 @@ kind: url
 name: cros_resize
 url: https://github.com/ethanmad/chromeos-resize/releases/
 activity: low
+---
+kind: url
+name: crossmobile
+url: https://github.com/crossmob/CrossMobile/releases/
+activity: medium
 ---
 kind: url
 name: cryptsetup
@@ -957,6 +977,11 @@ kind: url
 name: darkhttpd
 url: https://unix4lyfe.org/darkhttpd
 activity: none
+---
+kind: url
+name: darktable
+url: https://github.com/darktable-org/darktable/releases/
+activity: low
 ---
 kind: url
 name: dart
@@ -1654,6 +1679,11 @@ url: https://sourceforge.net/projects/fbc/files/Source%20Code/
 activity: none
 ---
 kind: url
+name: freecad
+url: https://github.com/FreeCAD/FreeCAD/releases/
+activity: high
+---
+kind: url
 name: freedos
 url: https://sourceforge.net/projects/freedos/files/Kernel/
 activity: none
@@ -1752,11 +1782,6 @@ kind: url
 name: gcab
 url: https://gitlab.gnome.org/GNOME/gcab/-/tags
 activity: low
----
-kind: url
-name: gcalculator
-url: https://gitlab.gnome.org/GNOME/gnome-calculator/-/tags
-activity: high
 ---
 kind: url
 name: gcc
@@ -2057,6 +2082,11 @@ kind: url
 name: gnome_autoar
 url: https://gitlab.gnome.org/GNOME/gnome-autoar/-/tags
 activity: low
+---
+kind: url
+name: gnome_calculator
+url: https://gitlab.gnome.org/GNOME/gnome-calculator/-/tags
+activity: high
 ---
 kind: url
 name: gnome_common
@@ -2406,6 +2436,11 @@ activity: low
 kind: url
 name: gtksharp2
 url: https://download.mono-project.com/sources/gtk-sharp212/
+activity: none
+---
+kind: url
+name: gtksourceview_3
+url: https://gitlab.gnome.org/GNOME/gtksourceview/-/tags
 activity: none
 ---
 kind: url
@@ -2931,6 +2966,11 @@ activity: high
 kind: url
 name: kcov
 url: https://github.com/SimonKagstrom/kcov/releases
+activity: low
+---
+kind: url
+name: keepassxc
+url: https://github.com/keepassxreboot/keepassxc/releases/
 activity: low
 ---
 kind: url
@@ -3944,6 +3984,11 @@ url: https://www.libssh2.org/download
 activity: none
 ---
 kind: url
+name: libssp
+url: https://ftpmirror.gnu.org/gcc/
+activity: low
+---
+kind: url
 name: libstemmer
 url: https://github.com/zvelo/libstemmer/
 activity: none
@@ -4469,11 +4514,6 @@ url: http://download.savannah.gnu.org/releases/lzip
 activity: low
 ---
 kind: url
-name: lzma
-url: https://tukaani.org/lzma/
-activity: none
----
-kind: url
 name: lzo
 url: http://www.oberhumer.com/opensource/lzo/download
 activity: none
@@ -4824,6 +4864,11 @@ url: https://github.com/Jehan/mypaint-brushes/releases
 activity: low
 ---
 kind: url
+name: mysql
+url: https://dev.mysql.com/downloads/mysql/
+activity: low
+---
+kind: url
 name: mysqltuner
 url: https://github.com/major/MySQLTuner-perl/
 activity: none
@@ -5147,6 +5192,11 @@ kind: url
 name: openexr
 url: https://github.com/openexr/openexr/releases/
 activity: low
+---
+kind: url
+name: openhab
+url: https://www.openhab.org/download/
+activity: high
 ---
 kind: url
 name: openjpeg
@@ -5474,6 +5524,11 @@ url: http://search.cpan.org/CPAN/authors/id/R/RA/RAAB/
 activity: none
 ---
 kind: url
+name: perl_stow
+url: https://ftp.gnu.org/gnu/stow
+activity: none
+---
+kind: url
 name: perl_term_ansicolor
 url: https://github.com/rra/ansicolor/releases
 activity: none
@@ -5587,6 +5642,11 @@ kind: url
 name: pixman
 url: https://www.cairographics.org/releases/
 activity: none
+---
+kind: url
+name: pixz
+url: https://github.com/vasi/pixz/releases
+activity: low
 ---
 kind: url
 name: pkgconf
@@ -5766,6 +5826,36 @@ activity: none
 kind: url
 name: pwgen
 url: https://sourceforge.net/projects/pwgen/files/pwgen/
+activity: low
+---
+kind: url
+name: py2_pip
+url: https://github.com/pypa/pip/releases
+activity: medium
+---
+kind: url
+name: py2_setuptools
+url: https://github.com/pypa/setuptools/releases
+activity: medium
+---
+kind: url
+name: py2_wheel
+url: https://github.com/pypa/wheel/releases
+activity: low
+---
+kind: url
+name: py3_pip
+url: https://github.com/pypa/pip/releases
+activity: medium
+---
+kind: url
+name: py3_setuptools
+url: https://github.com/pypa/setuptools/releases
+activity: medium
+---
+kind: url
+name: py3_wheel
+url: https://github.com/pypa/wheel/releases
 activity: low
 ---
 kind: url
@@ -6069,6 +6159,11 @@ url: http://www.ruby-lang.org/en/downloads/
 activity: medium
 ---
 kind: url
+name: ruby_docopt
+url: https://github.com/docopt/docopt/releases
+activity: none
+---
+kind: url
 name: ruby_webrick
 url: https://github.com/ruby/webrick/releases
 activity: medium
@@ -6197,11 +6292,6 @@ kind: url
 name: serf
 url: https://www.apache.org/dist/serf
 activity: none
----
-kind: url
-name: setuptools
-url: https://github.com/pypa/setuptools/releases
-activity: medium
 ---
 kind: url
 name: sfk
@@ -6379,11 +6469,6 @@ url: http://downloads.us.xiph.org/releases/speex
 activity: none
 ---
 kind: url
-name: speexdsp
-url: http://downloads.xiph.org/releases/speex
-activity: none
----
-kind: url
 name: sphinx
 url: https://github.com/sphinx-doc/sphinx/releases
 activity: high
@@ -6476,11 +6561,6 @@ activity: medium
 kind: url
 name: startup_notification
 url: https://freedesktop.org/software/startup-notification/releases
-activity: none
----
-kind: url
-name: stow
-url: https://ftp.gnu.org/gnu/stow
 activity: none
 ---
 kind: url
@@ -7556,6 +7636,11 @@ activity: low
 kind: url
 name: zathura_poppler_pdf
 url: https://pwmt.org/projects/zathura-pdf-poppler/download/
+activity: low
+---
+kind: url
+name: zenity
+url: https://deb.debian.org/debian/pool/main/z/zenity/
 activity: low
 ---
 kind: url

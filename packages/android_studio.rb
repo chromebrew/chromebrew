@@ -3,14 +3,13 @@ require 'package'
 class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
-  version '4.1.2.0'
+  version '4.2.1.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url 'https://dl.google.com/dl/android/studio/ide-zips/4.1.2.0/android-studio-ide-201.7042882-linux.tar.gz'
-  source_sha256 '89f7c3a03ed928edeb7bbb1971284bcb72891a77b4f363557a7ad4ed37652bb9'
+  source_url 'https://redirector.gvt1.com/edgedl/android/studio/install/4.2.1.0/android-studio-ide-202.7351085-cros.deb'
+  source_sha256 '6263ed1c69c358dd4708c0ee8b65144c2b7681e79f4ec2a4954144020664f5c3'
 
   depends_on 'jdk8'
-  depends_on 'xdg_base'
   depends_on 'sommelier'
 
   def self.preflight
@@ -19,34 +18,25 @@ class Android_studio < Package
   end
 
   def self.install
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/share/android-studio')
-    FileUtils.cp_r('.', CREW_DEST_PREFIX + '/share/android-studio/')
     FileUtils.mkdir_p(CREW_DEST_PREFIX + '/bin')
+    FileUtils.mv 'usr/share', CREW_DEST_PREFIX
+    FileUtils.mv 'opt/android-studio', CREW_DEST_PREFIX + '/share'
     FileUtils.cd(CREW_DEST_PREFIX + '/bin') do
       FileUtils.ln_s(CREW_PREFIX + '/share/android-studio/bin/studio.sh', 'studio')
-    end
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/.config/.AndroidStudio4.1')
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/.config/Android')
-    FileUtils.mkdir_p(CREW_DEST_HOME)
-    FileUtils.cd(CREW_DEST_HOME) do
-      FileUtils.ln_sf(CREW_PREFIX + '/.config/.AndroidStudio4.1/', '.AndroidStudio4.1')
-      FileUtils.ln_sf(CREW_PREFIX + '/.config/Android/', 'Android')
     end
   end
 
   def self.postinstall
-    puts
-    puts 'To start using Android Studio, type `studio`.'.lightblue
-    puts
+    puts "\nTo start using Android Studio, type `studio`.\n".lightblue
   end
 
   def self.remove
-    config_dirs = ["#{CREW_PREFIX}/.config/Android", "#{CREW_PREFIX}/.config/.AndroidStudio4.1"]
+    print "Would you like to remove the config directories? [y/N] "
+    response = STDIN.getc
+    config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]
     config_dirs.each { |config_dir|
       if Dir.exists? config_dir
-        puts
-        print "Would you like to remove #{config_dir}? [y/N] "
-        case STDIN.getc
+        case response
         when "y", "Y"
           FileUtils.rm_rf config_dir
           puts "#{config_dir} removed.".lightred
