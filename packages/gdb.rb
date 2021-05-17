@@ -19,10 +19,10 @@ class Gdb < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2_x86_64/gdb-10.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'dd17aa02eb51445ac59b3285ac89255eeb96a920f702a336b866157324455bd4',
-     armv7l: 'dd17aa02eb51445ac59b3285ac89255eeb96a920f702a336b866157324455bd4',
-       i686: 'f9e48ee07f58f571f48e70d311ce6f3428e57d8efda2019a70e6767ae9221039',
-     x86_64: '03edf742e370f61a3f7c3efb431e4517501f6841049ab50c4c7faa1d79814bf6'
+    aarch64: 'c3a708da100b18e4da8d22cfe3f046d7fbebe1f62af6f6f0fd19b3cceb75e349',
+     armv7l: 'c3a708da100b18e4da8d22cfe3f046d7fbebe1f62af6f6f0fd19b3cceb75e349',
+       i686: 'a25af22de11214b9d6011d533b47dac518f1c1ac7cc49f0cd1f2cca312167308',
+     x86_64: 'f3b420aff23c86604c9b0e4945458d734764f18372808bc5bddff568e1ed7262'
   })
 
   depends_on 'libx11'
@@ -63,9 +63,21 @@ class Gdb < Package
 
   def self.install
     Dir.chdir('build') do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+      system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
     end
-    # Remove file conflicting with binutils
-    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/bfd.info"
+    # Remove files conflicting with binutils
+    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/bfd.info" if File.exist?("#{CREW_DEST_PREFIX}/share/info/bfd.info")
+    conflict_packages = %w[binutils]
+    conflict_packages.each do |package|
+      file = File.open("#{CREW_META_PATH}#{package}.filelist").read
+      file.each_line do |line|
+        if File.exist?("#{CREW_DEST_DIR}#{line}")
+          FileUtils.rm_f "#{CREW_DEST_DIR}#{line}"
+          puts "Removed #{CREW_DEST_DIR}#{line}"
+        end
+      end
+    end
+    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so" if File.exist?("#{CREW_DEST_LIB_PREFIX}/libinproctrace.so")
   end
 end
