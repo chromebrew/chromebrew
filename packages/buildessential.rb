@@ -38,6 +38,7 @@ class Buildessential < Package
   depends_on 'doxygen'
   depends_on 'help2man'
   depends_on 'gtk_doc'
+  depends_on 'texinfo' # This contains makeinfo
 
   # Assembler
   #depends_on 'nasm'
