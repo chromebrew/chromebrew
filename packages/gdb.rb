@@ -25,10 +25,10 @@ class Gdb < Package
      x86_64: 'f3b420aff23c86604c9b0e4945458d734764f18372808bc5bddff568e1ed7262'
   })
 
-  depends_on 'libx11'
-  depends_on 'mpfr'
-  depends_on 'source_highlight'
-  depends_on 'texinfo'
+  depends_on 'mpfr' # R
+  depends_on 'gmp' # R
+  depends_on 'source_highlight' # R
+  depends_on 'boost' # R
 
   def self.patch
     system "sed -i 's%#include <term.h>%#include <ncursesw/term.h>%g' gdb/gdb_curses.h"
