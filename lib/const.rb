@@ -80,11 +80,10 @@ end
 CREW_COMMON_FLAGS = "'-Os -pipe -flto=auto -fuse-ld=gold'"
 CREW_COMMON_FNO_LTO_FLAGS = "'-Os -pipe -fno-lto -fuse-ld=gold'"
 
-
 CREW_ENV_OPTIONS = "CFLAGS=#{CREW_COMMON_FLAGS} CXXFLAGS=#{CREW_COMMON_FLAGS} FCFLAGS=#{CREW_COMMON_FLAGS} FFLAGS=#{CREW_COMMON_FLAGS}"
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT} --program-prefix='' --program-suffix=''"
-CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=true -Dstrip=true -Db_pie=true -Dcpp_args=#{CREW_COMMON_FLAGS.sub(/-flto=auto/, '').sub(/-fuse-ld=gold/, '')} -Dc_args=#{CREW_COMMON_FLAGS.sub(/-flto=auto/, '').sub(/-fuse-ld=gold/, '')}"
-CREW_MESON_FNO_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=false -Dstrip=true -Db_pie=true -Dcpp_args=#{CREW_COMMON_FNO_LTO_FLAGS.sub(/-fno-lto/, '').sub(/-fuse-ld=gold/, '')}} -Dc_args=#{CREW_COMMON_FNO_LTO_FLAGS.sub(/-fno-lto/, '').sub(/-fuse-ld=gold/, '')}"
+CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=true -Dstrip=true -Db_pie=true -Dcpp_args='-Os -pipe' -Dc_args='-Os -pipe'"
+CREW_MESON_FNO_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=false -Dstrip=true -Db_pie=true -Dcpp_args='-Os -pipe' -Dc_args='-Os -pipe'"
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
