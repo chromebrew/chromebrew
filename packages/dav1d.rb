@@ -3,30 +3,31 @@ require 'package'
 class Dav1d < Package
   description '**dav1d** is a new **AV1** cross-platform **d**ecoder, open-source, and focused on speed and correctness.'
   homepage 'https://code.videolan.org/videolan/dav1d'
-  @_ver = '0.8.2'
+  @_ver = '0.9.0'
   version @_ver
   license 'BSD-2'
   compatibility 'all'
   source_url "https://get.videolan.org/dav1d/#{@_ver}/dav1d-#{@_ver}.tar.xz"
-  source_sha256 '3dd91d96b44e9d8ba7e82ad9e730d6c579ab5e19edca0db857a60f5ae6a0eb13'
+  source_sha256 'cfae88e8067c9b2e5b96d95a7a00155c353376fe9b992a96b4336e0eab19f9f6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.8.2_armv7l/dav1d-0.8.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.8.2_armv7l/dav1d-0.8.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.8.2_i686/dav1d-0.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.8.2_x86_64/dav1d-0.8.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.9.0_armv7l/dav1d-0.9.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.9.0_armv7l/dav1d-0.9.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.9.0_i686/dav1d-0.9.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/0.9.0_x86_64/dav1d-0.9.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1e55f2fb0514c8a5fb6b991a2280495b0706ff95f5ae4013e67e70de2e8b5bfe',
-     armv7l: '1e55f2fb0514c8a5fb6b991a2280495b0706ff95f5ae4013e67e70de2e8b5bfe',
-       i686: 'a2115b3d09915b60f6fdffff5ad624df55bbfb3207b55eea08277b77680c34c9',
-     x86_64: '86edb8b9bcd8d7ae8e5062da704f8c223a7c3745340108d13325100c96aafb2e'
+    aarch64: '54fa3dba94781b03e2e8c59ac24f29b3d085490a36a8cc18e438febd18509c24',
+     armv7l: '54fa3dba94781b03e2e8c59ac24f29b3d085490a36a8cc18e438febd18509c24',
+       i686: '72577ec0e01a901a1c8d1f7c0d8b673f556a3bed9d70570755ebe9b726659ec2',
+     x86_64: '3f3f2a3756402e37bbde7d5d9f6374d2e183f2d9ce6ca49288718dc6a3746cb3'
   })
 
   depends_on 'nasm' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "env CC=clang CXX=clang++ C_LD=lld CC_LD=lld \
+      meson #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
