@@ -1,38 +1,36 @@
 require 'package'
 
 class Binutils < Package
-  description 'The GNU Binutils are a collection of binary tools. This also provides the GNU Debugger.'
+  description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
   @_ver = '2.36.1'
-  version "#{@_ver}-3"
+  version "#{@_ver}-2"
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'git://sourceware.org/git/binutils-gdb.git'
-  git_hashtag 'f35674005e609660f5f45005a9e095541ca4c5fe'
+  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
+  source_sha256 'e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-3_armv7l/binutils-2.36.1-3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-3_armv7l/binutils-2.36.1-3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-3_i686/binutils-2.36.1-3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-3_x86_64/binutils-2.36.1-3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_armv7l/binutils-2.36.1-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_armv7l/binutils-2.36.1-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_i686/binutils-2.36.1-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_x86_64/binutils-2.36.1-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '0af31b71dacb0c63ee5670e23dea5fc51ff70968f279923256ecfd00abd51816',
-     armv7l: '0af31b71dacb0c63ee5670e23dea5fc51ff70968f279923256ecfd00abd51816',
-       i686: 'd86abe680b7ce662a525b4cd46e6f6fbed4e0512598e1f1b2969bc2ba9337c90',
-     x86_64: 'f7d230441ba09d2697c0337eb551a49b391844c1a215378bcc801460f2c5273e'
+    aarch64: '46564bc989d33c3518f7afbb54f95e4b614f735ddcbe783114ba397ff283e408',
+     armv7l: '46564bc989d33c3518f7afbb54f95e4b614f735ddcbe783114ba397ff283e408',
+       i686: 'e9ea43c0c5f9f98422f83b8f1732104c78b55f53572e7353657944fe9dc6298a',
+     x86_64: '784c5e9bfd884c411708ae3c2ee1c852022f411794ff109fb7d37e91f124037b'
   })
 
   depends_on 'zlibpkg' # R
+  depends_on 'glibc' # R
   depends_on 'elfutils' # R
   depends_on 'flex' # R
 
   def self.patch
     system 'filefix'
-    system "sed -i 's%#include <term.h>%#include <ncursesw/term.h>%g' gdb/gdb_curses.h"
     system "sed -i 's,scriptdir = \$(tooldir)/lib,scriptdir = \$(tooldir)/#{ARCH_LIB},g' ld/Makefile.am"
-    # Turn off development mode (-Werror, gas run-time checks, date in sonames)
-    system "sed -i '/^development=/s/true/false/' bfd/development.sh"
     Dir.chdir 'ld' do
       system 'aclocal && automake'
     end
@@ -41,19 +39,13 @@ class Binutils < Package
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "env #{CREW_ENV_OPTIONS} \
-      CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw  -lncursesw' \
-        ../configure \
-        #{CREW_OPTIONS} \
-        --disable-gdb \
-        --disable-gdb-server \
-        --disable-werror \
+      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
+        LDFLAGS='-flto=auto' \
+        ../configure #{CREW_OPTIONS} \
+        --disable-bootstrap \
         --disable-maintainer-mode \
-        --disable-nls \
         --enable-64-bit-bfd \
-        --enable-cet \
         --enable-gold \
-        --enable-host-shared \
         --enable-install-libiberty \
         --enable-ld=default \
         --enable-lto \
@@ -62,27 +54,22 @@ class Binutils < Package
         --enable-shared \
         --enable-threads \
         --enable-vtable-verify \
-        --with-lib-path=#{CREW_LIB_PREFIX} \
-        --with-lzma \
         --with-pic \
-        --with-pkgversion=Chromebrew \
-        --with-python=python3 \
-        --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit"
+        --with-lib-path=#{CREW_LIB_PREFIX} \
+        --with-system-zlib"
       system 'make configure-host'
-      system 'make'
       system "make tooldir=#{CREW_PREFIX}"
     end
   end
 
   def self.check
     Dir.chdir 'build' do
-      system 'make -k LDFLAGS="" check || true'
+      system 'make check || true'
     end
   end
 
   def self.install
     Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}",
              "tooldir=#{CREW_PREFIX}", 'install'
     end
