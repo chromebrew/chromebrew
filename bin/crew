@@ -402,13 +402,42 @@ def const(var)
     value = eval(var)
     puts "#{var}=#{value}"
   else
-   @ruby_default_constants = %w[ENV IO STDIN STDOUT STDERR ARGF  GC RubyVM 
-     TOPLEVEL_BINDING RUBY_VERSION RUBY_RELEASE_DATE RUBY_PLATFORM 
-     RUBY_PATCHLEVEL RUBY_REVISION RUBY_COPYRIGHT RUBY_ENGINE 
-     RUBY_ENGINE_VERSION ARGV RUBY_DESCRIPTION CROSS_COMPILING
-     OpenSSL StringIO URI Q R S DOC JSON]
+    @ruby_default_constants = %w[
+      ARGF
+      ARGV
+      CROSS_COMPILING
+      DOC
+      ENV
+      GC
+      IO
+      JSON
+      OpenSSL
+      Q
+      R
+      RUBY_COPYRIGHT
+      RUBY_DESCRIPTION
+      RUBY_ENGINE
+      RUBY_ENGINE_VERSION
+      RUBYGEMS_ACTIVATION_MONITOR
+      RUBY_PATCHLEVEL
+      RUBY_PLATFORM
+      RUBY_RELEASE_DATE
+      RUBY_REVISION
+      RUBY_VERSION
+      RubyVM
+      S
+      STDERR
+      STDIN
+      STDOUT
+      StringIO
+      TOPLEVEL_BINDING
+      URI
+    ]
+    # Get all constants
     @constants = Module.constants.select {|e| e =~ /[[:upper:]]$/}
+    # Reject all constants which match the default list
     @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.find{ |f| /\A#{e}\z/ =~ f }}
+    # Print a sorted list of the remaining constants used by crew.
     @constants.sort.each { |var|
       value = eval(var.to_s)
       puts "#{var}=#{value}"
