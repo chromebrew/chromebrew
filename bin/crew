@@ -402,45 +402,15 @@ def const(var)
     value = eval(var)
     puts "#{var}=#{value}"
   else
-    vars = [
-      'ARCH',
-      'ARCH_LIB',
-      'CHROMEOS_RELEASE',
-      'CURL',
-      'CREW_BREW_DIR',
-      'CREW_BUILD',
-      'CREW_CMAKE_LIBSUFFIX_OPTIONS',
-      'CREW_CMAKE_OPTIONS',
-      'CREW_CONFIG_PATH',
-      'CREW_DEST_DIR',
-      'CREW_DEST_HOME',
-      'CREW_DEST_LIB_PREFIX',
-      'CREW_DEST_MAN_PREFIX',
-      'CREW_DEST_PREFIX',
-      'CREW_LIB_PATH',
-      'CREW_LIB_PREFIX',
-      'CREW_LIB_SUFFIX',
-      'CREW_MAN_PREFIX',
-      'CREW_COMMON_FLAGS',
-      'CREW_COMMON_FNO_LTO_FLAGS',
-      'CREW_ENV_OPTIONS',
-      'CREW_MESON_FNO_LTO_OPTIONS',
-      'CREW_MESON_OPTIONS',
-      'CREW_META_PATH',
-      'CREW_NOT_COMPRESS',
-      'CREW_NOT_STRIP',
-      'CREW_NPROC',
-      'CREW_OPTIONS',
-      'CREW_PACKAGES_PATH',
-      'CREW_PREFIX',
-      'CREW_TGT',
-      'CREW_VERSION',
-      'HOME',
-      'LIBC_VERSION',
-      'USER'
-    ]
-    vars.each { |var|
-      value = eval(var)
+   @ruby_default_constants = %w[ENV IO STDIN STDOUT STDERR ARGF  GC RubyVM 
+     TOPLEVEL_BINDING RUBY_VERSION RUBY_RELEASE_DATE RUBY_PLATFORM 
+     RUBY_PATCHLEVEL RUBY_REVISION RUBY_COPYRIGHT RUBY_ENGINE 
+     RUBY_ENGINE_VERSION ARGV RUBY_DESCRIPTION CROSS_COMPILING
+     OpenSSL StringIO URI Q R S DOC JSON]
+    @constants = Module.constants.select {|e| e =~ /[[:upper:]]$/}
+    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.find{ |f| /\A#{e}\z/ =~ f }}
+    @constants.sort.each { |var|
+      value = eval(var.to_s)
       puts "#{var}=#{value}"
     }
   end
