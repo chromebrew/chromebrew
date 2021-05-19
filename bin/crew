@@ -1002,12 +1002,6 @@ def resolve_dependencies
 
   puts 'The following packages also need to be installed: '
 
-  deps = @dependencies
-  begin_packages = []
-  end_packages = []
-  first_packages = ["shared_mime_info"]
-  last_packages = ["curl", "ghc", "mandb", "gtk3", "gtk4", "sommelier"]
-
   @dependencies.each do |dep|
     print dep + ' '
   end
@@ -1016,7 +1010,7 @@ def resolve_dependencies
   print 'Do you agree? [Y/n] '
   response = STDIN.getc
   case response
-  when 'n'
+  when 'n', 'N'
     abort 'No changes made.'
   when "\n", "y", "Y"
     puts 'Proceeding...'
