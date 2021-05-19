@@ -51,7 +51,7 @@ class Pulseaudio < Package
   depends_on 'libxtst' # R
   depends_on 'orc' # R
   depends_on 'pipewire' # R
-  depends_on 'speex' # R
+  depends_on 'speexdsp' # R
   depends_on 'tcpwrappers' => :build
   depends_on 'tdb' # R
   depends_on 'valgrind' => :build
