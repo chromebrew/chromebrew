@@ -486,6 +486,10 @@ def files (pkgName)
 end
 
 def whatprovides (regexPat)
+  # Use grep version command to ascertain whether we have a working grep.
+  unless system('grep -V > /dev/null 2>&1')
+    abort 'Grep is not working. Please install it with \'crew install grep\''.lightred
+  end
   fileArray = []
   @grepresults =  %x[grep "#{regexPat}" #{CREW_META_PATH}*.filelist].chomp.gsub('.filelist','').gsub(':',': ').gsub(CREW_META_PATH,'').split(/$/).map(&:strip)
   @grepresults.each { |fileLine| fileArray.push(fileLine) }
