@@ -3,7 +3,7 @@ require 'package'
 class Py3_pip < Package
   description 'Pip is the python package manager from the Python Packaging Authority.'
   homepage 'https://pip.pypa.io/'
-  @_ver = '21.0.1'
+  @_ver = '21.1.1'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Py3_pip < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.0.1_armv7l/py3_pip-21.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.0.1_armv7l/py3_pip-21.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.0.1_i686/py3_pip-21.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.0.1_x86_64/py3_pip-21.0.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.1.1_armv7l/py3_pip-21.1.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.1.1_armv7l/py3_pip-21.1.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.1.1_i686/py3_pip-21.1.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.1.1_x86_64/py3_pip-21.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ce0f563a1f9a8fdd16c9d44263d42206742d8fbbc705f5a2a11973c234a96ac0',
-     armv7l: 'ce0f563a1f9a8fdd16c9d44263d42206742d8fbbc705f5a2a11973c234a96ac0',
-       i686: 'd782d6d8cf6a857ee31e07a304dd4d07223f30f3e2812e29deb4d1a7962cad51',
-     x86_64: '729a9958cae998936dc3ca300feb7c10eb8d56f74b524913cc84cb1cf6bbe553'
+    aarch64: '9762d97c11d232dda3a0009620793d93f6f073839deb5478178b39131ebc568f',
+     armv7l: '9762d97c11d232dda3a0009620793d93f6f073839deb5478178b39131ebc568f',
+       i686: '167a767129284e150af3953dcfcf35caab2f9552d383ad55041d511d49b72e58',
+     x86_64: '794210d8b23bf7f3ecf2377eee166da6acc3e1cfaa8db7ddbff1b4ec29d60007'
   })
 
   depends_on 'py3_setuptools'
