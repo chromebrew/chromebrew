@@ -6,44 +6,45 @@ require 'package'
 class Epiphany < Package
   description 'A GNOME web browser based on the WebKit rendering engine'
   homepage 'https://wiki.gnome.org/Apps/Web'
-  version '40.0'
+  version '40.1'
   license 'GPL'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/epiphany/-/archive/#{version}/epiphany-#{version}.tar.bz2"
-  source_sha256 '2603fcc30ea8c2ba1343eda845c70825af0749db1c5e1ef252240e30dd855c06'
+  source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/40.0_armv7l/epiphany-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/40.0_armv7l/epiphany-40.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/40.0_x86_64/epiphany-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/40.1_armv7l/epiphany-40.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/40.1_armv7l/epiphany-40.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/40.1_x86_64/epiphany-40.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8985d22d9a78b08b3a8419acb4e9b808e2a1b4295c8d718a48cc9425025b6ca2',
-     armv7l: '8985d22d9a78b08b3a8419acb4e9b808e2a1b4295c8d718a48cc9425025b6ca2',
-     x86_64: '16990d7104da6872cfeb93f5fcbbc184d2d22f476dd544af848b22196f9facd0'
+    aarch64: '141150e042132087d7e1dc8738fae0d35c26f2a337fa969c414eb912c698b13d',
+     armv7l: '141150e042132087d7e1dc8738fae0d35c26f2a337fa969c414eb912c698b13d',
+     x86_64: 'e0e48fab65f7b75bd9dfb07243a4d14ced036376da71be28eb9491c363b640dd'
   })
 
-  depends_on 'atk'
-  depends_on 'cairo' => :build
-  depends_on 'docbook_xml' => ':build'
+  depends_on 'atk' # R
+  depends_on 'cairo' # R
+  depends_on 'docbook_xml' => :build
   depends_on 'freetype' => :build
-  depends_on 'gcr'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk3'
+  depends_on 'gcr' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gmp' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk3' # R
   depends_on 'help2man' => :build
-  depends_on 'json_glib'
-  depends_on 'libarchive'
-  depends_on 'libdazzle'
-  depends_on 'libhandy'
-  depends_on 'libportal'
-  depends_on 'libsecret'
-  depends_on 'libsoup2'
-  depends_on 'lsb_release' => ':build'
-  depends_on 'pango'
-  depends_on 'startup_notification' => ':build'
-  depends_on 'webkit2gtk_4'
+  depends_on 'json_glib' # R
+  depends_on 'libdazzle' # R
+  depends_on 'libhandy' # R
+  depends_on 'libportal' # R
+  depends_on 'libsecret' # R
+  depends_on 'libsoup2' # R
+  depends_on 'lsb_release' => :build
+  depends_on 'pango' # R
+  depends_on 'startup_notification' => :build
+  depends_on 'valgrind' => :build
+  depends_on 'webkit2gtk_4' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

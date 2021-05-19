@@ -30,8 +30,8 @@ class Libgxps < Package
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'glib'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
   depends_on 'lcms'
   depends_on 'libarchive'
   depends_on 'libjpeg'

@@ -402,45 +402,44 @@ def const(var)
     value = eval(var)
     puts "#{var}=#{value}"
   else
-    vars = [
-      'ARCH',
-      'ARCH_LIB',
-      'CHROMEOS_RELEASE',
-      'CURL',
-      'CREW_BREW_DIR',
-      'CREW_BUILD',
-      'CREW_CMAKE_LIBSUFFIX_OPTIONS',
-      'CREW_CMAKE_OPTIONS',
-      'CREW_CONFIG_PATH',
-      'CREW_DEST_DIR',
-      'CREW_DEST_HOME',
-      'CREW_DEST_LIB_PREFIX',
-      'CREW_DEST_MAN_PREFIX',
-      'CREW_DEST_PREFIX',
-      'CREW_LIB_PATH',
-      'CREW_LIB_PREFIX',
-      'CREW_LIB_SUFFIX',
-      'CREW_MAN_PREFIX',
-      'CREW_COMMON_FLAGS',
-      'CREW_COMMON_FNO_LTO_FLAGS',
-      'CREW_ENV_OPTIONS',
-      'CREW_MESON_FNO_LTO_OPTIONS',
-      'CREW_MESON_OPTIONS',
-      'CREW_META_PATH',
-      'CREW_NOT_COMPRESS',
-      'CREW_NOT_STRIP',
-      'CREW_NPROC',
-      'CREW_OPTIONS',
-      'CREW_PACKAGES_PATH',
-      'CREW_PREFIX',
-      'CREW_TGT',
-      'CREW_VERSION',
-      'HOME',
-      'LIBC_VERSION',
-      'USER'
+    @ruby_default_constants = %w[
+      ARGF
+      ARGV
+      CROSS_COMPILING
+      DOC
+      ENV
+      GC
+      IO
+      JSON
+      OpenSSL
+      Q
+      R
+      RUBY_COPYRIGHT
+      RUBY_DESCRIPTION
+      RUBY_ENGINE
+      RUBY_ENGINE_VERSION
+      RUBYGEMS_ACTIVATION_MONITOR
+      RUBY_PATCHLEVEL
+      RUBY_PLATFORM
+      RUBY_RELEASE_DATE
+      RUBY_REVISION
+      RUBY_VERSION
+      RubyVM
+      S
+      STDERR
+      STDIN
+      STDOUT
+      StringIO
+      TOPLEVEL_BINDING
+      URI
     ]
-    vars.each { |var|
-      value = eval(var)
+    # Get all constants
+    @constants = Module.constants.select {|e| e =~ /[[:upper:]]$/}
+    # Reject all constants which match the default list
+    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.find{ |f| /\A#{e}\z/ =~ f }}
+    # Print a sorted list of the remaining constants used by crew.
+    @constants.sort.each { |var|
+      value = eval(var.to_s)
       puts "#{var}=#{value}"
     }
   end
@@ -653,11 +652,11 @@ def download
           if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum
             begin
               # Hard link cached file if possible.
-              FileUtils.ln cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+              FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
               puts "Archive hard linked from cache".green if @opt_verbose
             rescue
               # Copy cached file if hard link fails.
-              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose
+              FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
               puts "Archive copied from cache".green if @opt_verbose
             end
             puts "Archive found in cache".lightgreen
@@ -827,6 +826,11 @@ def build_and_preconfigure(target_dir)
   end
 end
 
+def pre_flight
+  puts 'Performing pre-flight checks...'
+  @pkg.preflight
+end
+
 def pre_install(dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing pre-install...'
@@ -943,8 +947,6 @@ def install_package(pkgdir)
     FileUtils.mv 'dlist', CREW_META_PATH + @pkg.name + '.directorylist', verbose: @fileutils_verbose
     FileUtils.mv 'filelist', CREW_META_PATH + @pkg.name + '.filelist', verbose: @fileutils_verbose
 
-    strip_dir pkgdir if Dir.exists? "#{pkgdir}/usr"
-
     if Dir.exists? "#{pkgdir}/home" then
       system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
     elsif Dir.exists? "#{pkgdir}/usr" then
@@ -954,6 +956,11 @@ def install_package(pkgdir)
 end
 
 def resolve_dependencies_and_install
+  unless @pkg.is_fake?
+    # Process preflight block to see if package should even
+    # be downloaded or installed.
+    pre_flight
+  end
   begin
     origin = @pkg.name
 
@@ -1134,17 +1141,17 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless ENV['CREW_USE_PIXZ'] == '1'
-    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
-    Dir.chdir CREW_DEST_DIR do
-      system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
-    end
-  else
+  unless ENV['CREW_USE_PIXZ'] == '0' || !File.exist?("#{CREW_PREFIX}/bin/pixz") 
     puts "Using pixz to compress archive."
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tpxz"
     Dir.chdir CREW_DEST_DIR do
       # Use smaller blocks with "-f0.25" to make random access faster.
       system "tar c#{@verbose} * | pixz -f0.25 -9 > #{pwd}/#{pkg_name}"
+    end
+  else
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
+    Dir.chdir CREW_DEST_DIR do
+      system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
     end
   end
   system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
@@ -1197,7 +1204,6 @@ def build_command(args)
     @pkgName = name
     search @pkgName
     print_current_package @opt_verbose
-    @pkg.preflight
     resolve_dependencies_and_build
   end
 end
@@ -1254,15 +1260,8 @@ def install_command(args)
   args["<name>"].each do |name|
     search name
     print_current_package true
-
-    if installed?(name)
-      puts "Package #{name} already installed, skipping...".lightgreen
-    else
-      @pkgName = name
-      @pkg.build_from_source = true if @opt_src or @opt_recursive
-      @pkg.preflight
-      resolve_dependencies_and_install
-    end
+    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    resolve_dependencies_and_install
   end
 end
 
@@ -1297,7 +1296,6 @@ def reinstall_command(args)
     @pkg.build_from_source = true if @opt_src or @opt_recursive
     if @pkgName
       @pkg.in_upgrade = true
-      @pkg.preflight
       resolve_dependencies_and_install
       @pkg.in_upgrade = false
     end
