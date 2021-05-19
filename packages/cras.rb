@@ -22,17 +22,16 @@ class Cras < Package
       x86_64: '1f53ed96948e29f71d42f1b437e7e4637f6e08a4e573966ec139bb3437ed0d21',
   })
 
-
-    depends_on 'alsa_lib'
-    depends_on 'ladspa'
-    depends_on 'iniparser'
-    depends_on 'speex'
-    depends_on 'sbc'
-    depends_on 'dbus'
-    depends_on 'rust' => :build
-    depends_on 'llvm' => :build
-    depends_on 'gtest' => :build
-    depends_on 'eudev'
+  depends_on 'alsa_lib' # R
+  depends_on 'dbus' # R
+  depends_on 'eudev' # R
+  depends_on 'gtest' => :build
+  depends_on 'iniparser' # R
+  depends_on 'ladspa'
+  depends_on 'llvm' => :build
+  depends_on 'rust' => :build
+  depends_on 'sbc' # R
+  depends_on 'speexdsp' # R
 
   def self.build
     system 'git', 'clone', 'https://chromium.googlesource.com/chromiumos/third_party/adhd', '-b', version, '.'
