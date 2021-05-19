@@ -2,33 +2,34 @@ require 'package'
 
 class Gjs < Package
   description 'Javascript Bindings for GNOME'
-  @_ver = '1.67.3'
+  @_ver = '1.68.1'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
   compatibility 'all'
-  source_url "https://download.gnome.org/sources/gjs/#{@_ver_prelastdot}/gjs-#{@_ver}.tar.xz"
-  source_sha256 '12df0c0ff2dd4c944ad27477ee8053e1363c4ad499542686bba21e06d38c6733'
+  source_url 'https://gitlab.gnome.org/GNOME/gjs.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_armv7l/gjs-1.67.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_i686/gjs-1.67.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.67.3_x86_64/gjs-1.67.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.68.1_armv7l/gjs-1.68.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.68.1_armv7l/gjs-1.68.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.68.1_i686/gjs-1.68.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.68.1_x86_64/gjs-1.68.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6ee8b11391aee0245536d1d702b765739b20310df841ca4395fce2d9b07eb532',
-     armv7l: '6ee8b11391aee0245536d1d702b765739b20310df841ca4395fce2d9b07eb532',
-       i686: 'f8eeea3dd66b93420d99942db1dc355c8b0f36d0201e77ca239186e8de113051',
-     x86_64: '0bcdfb345b073565735fbd8b3e76a5cd6d9694590cbd10b217619207b91a3f88'
+    aarch64: 'a44d907e21468900d3ac6e0ea326dc051e431dd2eedf3ea8f3fc1603b5b93d70',
+     armv7l: 'a44d907e21468900d3ac6e0ea326dc051e431dd2eedf3ea8f3fc1603b5b93d70',
+       i686: 'd1c8db6ed575dd5f471fc3c91e8c7f5f34e448ba8eca2c3aa8802eaf923f3ff3',
+     x86_64: '0d0b81db80db509870491850ce86bc0b7b0aaca8407eb8d7c09e47797aa908ba'
   })
 
-  depends_on 'cairo'
-  depends_on 'gobject_introspection'
-  depends_on 'js78'
-  depends_on 'dconf'
-  depends_on 'gobject_introspection' => :build
+  depends_on 'cairo' # R
   depends_on 'dbus' => :build
+  depends_on 'dconf' => :build
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' # R
+  depends_on 'js78' => :build
+  depends_on 'libx11' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
