@@ -35,7 +35,7 @@ Usage:
   crew search [options] [<name> ...]
   crew update [options] [<compatible>]
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
-  crew whatprovides [options] <name> ...
+  crew whatprovides [options] <pattern> ...
 
   -c --color              Use colors even if standard out is not a tty.
   -d --no-color           Disable colors even if standard out is a tty.
@@ -487,19 +487,8 @@ end
 
 def whatprovides (regexPat)
   fileArray = []
-  needle = regexPat.gsub(/-/,',').gsub(/,/,'\-')
-  Dir[CREW_META_PATH + '*.filelist'].each do |packageList|
-    packageName = File.basename packageList, '.filelist'
-    File.readlines(packageList).each do |line|
-      found = line[/#{needle}/] if line.ascii_only?
-      if found
-        fileLine = packageName + ': ' + line
-        unless fileArray.include? fileLine
-          fileArray.push(fileLine)
-        end
-      end
-    end
-  end
+  @grepresults =  %x[grep "#{regexPat}" #{CREW_META_PATH}*.filelist].chomp.gsub('.filelist','').gsub(':',': ').gsub(CREW_META_PATH,'').split(/$/).map(&:strip)
+  @grepresults.each { |fileLine| fileArray.push(fileLine) }
   unless fileArray.empty?
     fileArray.sort.each do |item|
       puts item
@@ -1397,7 +1386,7 @@ def upgrade_command(args)
 end
 
 def whatprovides_command(args)
-  args["<name>"].each do |name|
+  args["<pattern>"].each do |name|
     whatprovides name
   end
 end
