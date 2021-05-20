@@ -3,30 +3,26 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.1.0'
+  @_ver = '21.1.1'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
-  source_sha256 '0128f10e22970d3aed3d1034003731f94623015cd9797c07151417649c1b1ff8'
+  source_sha256 'eec25ea379054e8911bc5de816aeb50f581b5b708414725003d2f00386b38dd2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_armv7l/mesa-21.1.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_armv7l/mesa-21.1.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_i686/mesa-21.1.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.0_x86_64/mesa-21.1.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_armv7l/mesa-21.1.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_armv7l/mesa-21.1.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_i686/mesa-21.1.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_x86_64/mesa-21.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9c463844ab7266af05b5f2a75490cb265d0e9c7113f6b668bac028560e294476',
-     armv7l: '9c463844ab7266af05b5f2a75490cb265d0e9c7113f6b668bac028560e294476',
-       i686: '2be5429a5391da110a2985c402c0931a9c8b41a39d7d4a65451c7f995586de83',
-     x86_64: 'f34ac6bec705a7ea859f4d95b990829c98b19abb7eb60b4a1035f1574d841735'
+    aarch64: '242a34dde6605408a1e3b2065a83f90187a9bdd978bc515dd927717fef641a6b',
+     armv7l: '242a34dde6605408a1e3b2065a83f90187a9bdd978bc515dd927717fef641a6b',
+       i686: '6878fd22b4918af37b662ce4e974e8f43e50588ec9addddaf10638980488e771',
+     x86_64: 'a4e381761971625cc8b6120bed6aea5eaf6c068f4476321de08b8f5f06875635'
   })
 
-  depends_on 'elfutils' # R
-  depends_on 'expat' # R
-  depends_on 'gcc11' # R
-  depends_on 'glibc' # R
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
   depends_on 'libomxil_bellagio' => :build
