@@ -3,19 +3,32 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  @_ver = '2.42.4-1'
-  version "#{@_ver}-1"
+  @_ver = '2.42.6'
+  version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/#{@_ver}/gdk-pixbuf-#{@_ver}.tar.bz2"
-  source_sha256 'd94d2e67165739559a6323a23eea8ad3560ab1085e2a3356a19548c9cb88e1e9'
+  source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
+  git_hashtag @_ver
 
-  depends_on 'glib'
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6_armv7l/gdk_pixbuf-2.42.6-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6_armv7l/gdk_pixbuf-2.42.6-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6_i686/gdk_pixbuf-2.42.6-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6_x86_64/gdk_pixbuf-2.42.6-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'e34b1d8685646cfcf999bb84c699e19c749d6cefd9d5346702bf8bc611293234',
+     armv7l: 'e34b1d8685646cfcf999bb84c699e19c749d6cefd9d5346702bf8bc611293234',
+       i686: 'e96ec7db0611cc7701754b3466b4b1d337123a62eefd06be0976254482b50027',
+     x86_64: '275ea5531916a62aa263e2f94c3eeb23af85140dfc4034ed513c044ad2277d6f'
+  })
+
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'jasper' => :build
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libtiff'
+  depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' # R
   depends_on 'libwebp' => :build
   depends_on 'pango' => :build
   depends_on 'py3_six' => :build
@@ -52,6 +65,6 @@ class Gdk_pixbuf < Package
   def self.postinstall
     system "env GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders \
       GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache \
-      gdk-pixbuf-query-loaders --update-cache"
+      LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} gdk-pixbuf-query-loaders --update-cache"
   end
 end

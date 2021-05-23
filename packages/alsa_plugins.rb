@@ -22,11 +22,12 @@ class Alsa_plugins < Package
      x86_64: '2c0108843697c8711160defebbf6db421a2b6fe1aa582b9567e8cbb9b124bf02',
   })
 
+  depends_on 'alsa_lib' # R
   depends_on 'dbus'
   depends_on 'ffmpeg'
-  depends_on 'speex'
-  depends_on 'alsa_lib'
   depends_on 'pulseaudio'
+  depends_on 'pulseaudio' # R
+  depends_on 'speexdsp' # R
 
   def self.build
     system './configure',

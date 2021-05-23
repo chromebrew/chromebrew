@@ -11,7 +11,7 @@ class Buildessential < Package
 
   # install first to get ldconfig
   depends_on 'glibc'
-  depends_on 'gcc10'
+  depends_on 'gcc11'
   depends_on 'gmp'
   depends_on 'mpfr'
   depends_on 'mpc'
@@ -38,6 +38,7 @@ class Buildessential < Package
   depends_on 'doxygen'
   depends_on 'help2man'
   depends_on 'gtk_doc'
+  depends_on 'texinfo' # This contains makeinfo
 
   # Assembler
   #depends_on 'nasm'

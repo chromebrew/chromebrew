@@ -85,7 +85,7 @@ class Package
     @is_fake
   end
 
-  # Function to perform pre-flight operations prior to dependency checks.
+  # Function for checks to see if install should occur.
   def self.preflight
 
   end

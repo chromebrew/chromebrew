@@ -3,34 +3,35 @@ require 'package'
 class Mutter < Package
   description 'A window manager for GNOME'
   homepage 'https://wiki.gnome.org/Projects/Mutter'
-  version '40.0'
+  version '40.1'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/mutter/-/archive/#{version}/mutter-#{version}.tar.bz2"
-  source_sha256 '3f56768113d536f5842ea6db14d1d9c48f8c87cd240891f9b9305116e425771e'
+  source_url 'https://gitlab.gnome.org/GNOME/mutter.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.0_armv7l/mutter-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.0_armv7l/mutter-40.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.0_x86_64/mutter-40.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.1_armv7l/mutter-40.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.1_armv7l/mutter-40.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.1_x86_64/mutter-40.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'fafa169c22a7aa7595edf43a4c8dc7306210163e6759130f81d338120b92b8bd',
-     armv7l: 'fafa169c22a7aa7595edf43a4c8dc7306210163e6759130f81d338120b92b8bd',
-     x86_64: '1b28b4cd4f91f342bc6bde187f48f58954b7259f0377e679742c9c821b60f668',
+    aarch64: '45b333676e45c13fdeab755581875203cf3f1f23265b86c83db5933e6d80d937',
+     armv7l: '45b333676e45c13fdeab755581875203cf3f1f23265b86c83db5933e6d80d937',
+     x86_64: 'faf3da0f7e8868fdc885b822ce9fb23bb44e0df47a3f0174c19dc7caff9f6c68'
   })
 
+  depends_on 'ccache' => :build
   depends_on 'dconf'
   depends_on 'gnome_settings_daemon'
-  depends_on 'gsettings_desktop_schemas'
   depends_on 'gobject_introspection' => :build
-  depends_on 'xorg_server' => :build
+  depends_on 'gsettings_desktop_schemas'
+  depends_on 'libcanberra'
   depends_on 'libinput'
   depends_on 'libwacom'
-  depends_on 'startup_notification'
   depends_on 'pipewire'
-  depends_on 'libcanberra'
-  depends_on 'ccache' => :build
+  depends_on 'startup_notification'
+  depends_on 'xorg_server' => :build
+  depends_on 'xwayland'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

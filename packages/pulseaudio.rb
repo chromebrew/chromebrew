@@ -31,7 +31,7 @@ class Pulseaudio < Package
   depends_on 'dbus' # R
   depends_on 'elogind' => :build
   depends_on 'eudev' # R
-  depends_on 'gcc10' # R
+  depends_on 'gcc11' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' # L
@@ -51,7 +51,7 @@ class Pulseaudio < Package
   depends_on 'libxtst' # R
   depends_on 'orc' # R
   depends_on 'pipewire' # R
-  depends_on 'speex' # R
+  depends_on 'speexdsp' # R
   depends_on 'tcpwrappers' => :build
   depends_on 'tdb' # R
   depends_on 'valgrind' => :build
