@@ -3,41 +3,92 @@ require 'package'
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '10.3.0'
+  version '11.1.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz'
-  source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz'
+  source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/10.3.0_armv7l/libssp-10.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/10.3.0_armv7l/libssp-10.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/10.3.0_i686/libssp-10.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/10.3.0_x86_64/libssp-10.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.1.0_armv7l/libssp-11.1.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.1.0_armv7l/libssp-11.1.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.1.0_i686/libssp-11.1.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.1.0_x86_64/libssp-11.1.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '96cccac5b98b142fdfeed83fcd2cc163dfcda386246366b4f7702ef9f1076649',
-     armv7l: '96cccac5b98b142fdfeed83fcd2cc163dfcda386246366b4f7702ef9f1076649',
-       i686: 'a4bf6df2e4e7d325b12c882702ae0a7262fdda7c1a109f7e044a4de7b206bbfc',
-     x86_64: '6c59d395ebd6d461cdc619333566c2139f96209390f7826f58df264f42301c0e'
+    aarch64: '8befe2e0872e61a61f3c3b557905612e64358d7df0617e8101dec63768087eb8',
+     armv7l: '8befe2e0872e61a61f3c3b557905612e64358d7df0617e8101dec63768087eb8',
+       i686: '5b02bf769ec3754f4b0c937e5420f13bf285bc81bdc9c68fbc6f63c56562682b',
+     x86_64: '356cd568080dd0e724081ec7f020d0b21e091d5552d175746f830c48830bd8b9'
   })
 
+  depends_on 'ccache' => :build
+  depends_on 'dejagnu' => :build # for test
+  depends_on 'glibc' # R
+
   @gcc_name = 'libssp'
-  @gcc_global_opts = '--enable-static \
-                      --enable-shared \
-                      --disable-multilib \
-                      --disable-cet \
-                      --with-pic \
-                      --enable-symvers \
-                      --with-gcc-major-version-only \
-                      --with-system-libunwind'
+
+  @gcc_global_opts = '--disable-libmpx \
+  --disable-libssp \
+  --disable-multilib \
+  --disable-werror \
+  --enable-cet=auto \
+  --enable-checking=release \
+  --enable-clocale=gnu \
+  --enable-default-pie \
+  --enable-default-ssp \
+  --enable-gnu-indirect-function \
+  --enable-gnu-unique-object \
+  --enable-host-shared \
+  --enable-lto \
+  --enable-plugin \
+  --enable-shared \
+  --enable-symvers \
+  --enable-static \
+  --enable-threads=posix \
+  --with-gcc-major-version-only \
+  --with-gmp \
+  --with-isl \
+  --with-mpc \
+  --with-mpfr \
+  --with-pic \
+  --with-system-libunwind \
+  --with-system-zlib'
+
+  @cflags = '-fPIC -pipe'
+  @cxxflags = '-fPIC -pipe'
+  @languages = 'c,c++,jit,objc,fortran,go'
+  case ARCH
+  when 'armv7l', 'aarch64'
+    @archflags = '--with-arch=armv7-a --with-float=hard --with-fpu=neon'
+  when 'x86_64'
+    @archflags = '--with-arch-64=x86-64'
+  when 'i686'
+    @archflags = '--with-arch-32=i686'
+  end
+
 
   def self.build
+    # Set ccache sloppiness as per
+    # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
+    system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
+    # Prefix ccache to path.
+    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
+
+    gcc_version = version.split('-')[0]
+
     Dir.mkdir "#{@gcc_name}-builddir"
     Dir.chdir "#{@gcc_name}-builddir" do
-      system "#{CREW_ENV_OPTIONS} ../#{@gcc_name}/configure #{CREW_OPTIONS} \
-              #{@gcc_global_opts}"
-      system 'make'
+      system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
+        CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
+        PATH=#{@path} \
+        ../#{@gcc_name}/configure #{CREW_OPTIONS} \
+        #{@gcc_global_opts} \
+        --enable-languages=#{@languages} \
+        --program-suffix=-#{gcc_version} \
+        #{@archflags}"
+      system "env PATH=#{@path} \
+        make"
     end
   end
 

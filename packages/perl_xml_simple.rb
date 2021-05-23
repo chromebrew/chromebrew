@@ -3,23 +3,23 @@ require 'package'
 class Perl_xml_simple < Package
   description 'XML::Simple - An API for simple XML files'
   homepage 'https://metacpan.org/pod/XML::Simple'
-  version '2.25-1'
+  version '2.25-2'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz'
   source_sha256 '531fddaebea2416743eb5c4fdfab028f502123d9a220405a4100e68fc480dbf8'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_armv7l/perl_xml_simple-2.25-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_armv7l/perl_xml_simple-2.25-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_i686/perl_xml_simple-2.25-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-1_x86_64/perl_xml_simple-2.25-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-2_armv7l/perl_xml_simple-2.25-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-2_armv7l/perl_xml_simple-2.25-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-2_i686/perl_xml_simple-2.25-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-2_x86_64/perl_xml_simple-2.25-2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '1e59e0c43b8bfecf21365d9ee0b58db3faa544f07da1aa349734ba34b75541a0',
-     armv7l: '1e59e0c43b8bfecf21365d9ee0b58db3faa544f07da1aa349734ba34b75541a0',
-       i686: 'e035d818f9ef397fbc8f4f9e0aa95dc360c797931808f03e46a7cf7a7393a158',
-     x86_64: '13dd6b54550fc74148e635ea6ef7afecbe49ae691b85e745f4ed5e0667da79e6',
+  binary_sha256({
+    aarch64: 'c75d6a80e668aa4ca4515c0d4eaf57c81d95f43db722818b201f87e96a66295d',
+     armv7l: 'c75d6a80e668aa4ca4515c0d4eaf57c81d95f43db722818b201f87e96a66295d',
+       i686: '84d43b1ff8994d610b58d4084dc859a78cfbd1b614b037009b6af3149bc28434',
+     x86_64: 'ae76a1851970fb669756a75b9f2b51b48e4687da515ab015c448eeb4eac9c422'
   })
 
   depends_on 'perl_xml_parser'

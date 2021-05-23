@@ -3,29 +3,30 @@ require 'package'
 class Waypipe < Package
   description 'A proxy for Wayland protocol applications. WARNING: different versions are incompatible'
   homepage 'https://gitlab.freedesktop.org/mstoeckl/waypipe'
-  version '0.7.2'
+  version '0.8.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v0.7.2/waypipe-v0.7.2.tar.gz'
-  source_sha256 'b280079b05aef9b243be3644fc803e3feaa2fc2952d11a6c02ab33257fb52479'
+  source_url 'https://gitlab.freedesktop.org/mstoeckl/waypipe.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.7.2_armv7l/waypipe-0.7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.7.2_armv7l/waypipe-0.7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.7.2_i686/waypipe-0.7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.7.2_x86_64/waypipe-0.7.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.8.0_armv7l/waypipe-0.8.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.8.0_armv7l/waypipe-0.8.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.8.0_i686/waypipe-0.8.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.8.0_x86_64/waypipe-0.8.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '115949938eaf98fd38af6b1b8ffdb90e7976e87910fb5e0288d17c69d3cdb47c',
-     armv7l: '115949938eaf98fd38af6b1b8ffdb90e7976e87910fb5e0288d17c69d3cdb47c',
-       i686: '462f32367698388dd6333d14be082a20d1293102bfbb3ab5dfa9c8f55e42b3ea',
-     x86_64: '3e2bfc20d665b49b6023b2f6d1e703e9bfce519a802ea8c8d8dde33e5a179640'
+    aarch64: '7ed1843341ca708c08c6ec854ece411d0dc4a2e37af472e8c11a75651c5beecc',
+     armv7l: '7ed1843341ca708c08c6ec854ece411d0dc4a2e37af472e8c11a75651c5beecc',
+       i686: '0c994fb5538080d055b0116fa26b65538e9b4f237b7be268b877df1c006ae408',
+     x86_64: '96d33e96782fe12fb707271c66de01d3e5948a7c9d9fc59963bae8f33f19bf9f'
   })
 
-  depends_on 'mesa'
-  depends_on 'ffmpeg'
-  depends_on 'libva'
+  depends_on 'speexdsp' => :build
+  depends_on 'ffmpeg' # R
   depends_on 'libdrm' => :build
+  depends_on 'libva' # R
+  depends_on 'mesa' # R
 
   def self.patch
     system "sed -i '/#include \"util.h\"/a #include  <linux/version.h>' src/dmabuf.c"

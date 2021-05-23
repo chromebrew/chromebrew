@@ -3,30 +3,30 @@ require 'package'
 class Oniguruma < Package
   description 'Oniguruma is a modern and flexible regular expressions library.'
   homepage 'https://github.com/kkos/oniguruma'
-  version '6.9.3'
+  version '6.9.7.1'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://github.com/kkos/oniguruma/archive/v6.9.3.tar.gz'
-  source_sha256 'dc6dec742941e24b761cea1b9a2f12e750879107ae69fd80ae1046459d4fb1db'
+  source_url 'https://github.com/kkos/oniguruma.git'
+  git_hashtag "v#{version}"
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.3_armv7l/oniguruma-6.9.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.3_armv7l/oniguruma-6.9.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.3_i686/oniguruma-6.9.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.3_x86_64/oniguruma-6.9.3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_armv7l/oniguruma-6.9.7.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_armv7l/oniguruma-6.9.7.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_i686/oniguruma-6.9.7.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_x86_64/oniguruma-6.9.7.1-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'b6235fcfb3eb95dddafe8979adca6a4ba1bfc47d2c802a8bc14b73f1f57a30f5',
-     armv7l: 'b6235fcfb3eb95dddafe8979adca6a4ba1bfc47d2c802a8bc14b73f1f57a30f5',
-       i686: '11d6178e2662c45b869e9f3c3335291f60c74623e33f8cb027f1cdc1b81ab686',
-     x86_64: 'ba64baffe8cc1797ac44d7385d6d0c11d9438bfe9f11ece17f80a34740e32753',
+  binary_sha256({
+    aarch64: '61e2b0c0a8096bc2acdb1d311021786c08c0a47298fab2a063e2821c19b95f28',
+     armv7l: '61e2b0c0a8096bc2acdb1d311021786c08c0a47298fab2a063e2821c19b95f28',
+       i686: 'e0c27b9259019fc5c1461d689a47cad568e7636de9480086e3e22aec8854c2e4',
+     x86_64: 'bd6365ccee10f95b6091eecf8b23e96a0b30f87a1b9c71f120dabcaa9f5c6cee'
   })
 
   def self.build
-    system './autogen.sh'
-    system './configure',
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}"
+    system 'NOCONFIGURE=1 ./autogen.sh'
+    system 'filefix'
+    system "env #{CREW_ENV_OPTIONS} \
+      ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

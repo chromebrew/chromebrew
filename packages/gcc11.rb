@@ -1,26 +1,26 @@
 require 'package'
 require 'open3'
 
-class Gcc10 < Package
+class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.3.0-3'
-  license 'GPL-3'
+  version '11.1.0-2'
+  license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz'
-  source_sha256 '64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz'
+  source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_armv7l/gcc10-10.3.0-3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_armv7l/gcc10-10.3.0-3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_i686/gcc10-10.3.0-3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.3.0-3_x86_64/gcc10-10.3.0-3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_i686/gcc11-11.1.0-2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_x86_64/gcc11-11.1.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0c7c7fa852a1b95e7cd18c60e5950d8acfe204073e9a4a3ecd13fa715a38b1c4',
-     armv7l: '0c7c7fa852a1b95e7cd18c60e5950d8acfe204073e9a4a3ecd13fa715a38b1c4',
-       i686: 'd9648e0d2d042ccb771f215ab7ceaf566e43d64c77c2df4ac8e8c0182ae4ff22',
-     x86_64: '82d5f5c2c492a39494891f55cb37c7226ac2e3048241964816dceb1c517dd5f1'
+    aarch64: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
+     armv7l: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
+       i686: '9c1e13720a102c62bd0794e4872e9936d73c6c3bcb2934854c32798090035021',
+     x86_64: '91ed0f513618b8d548928d256e68219046c5dcf6726b79f1d71979e0ae5d64dc'
   })
 
   depends_on 'ccache' => :build
@@ -36,32 +36,32 @@ class Gcc10 < Package
   @gcc_version = version.split('-')[0].partition('.')[0]
 
   @gcc_global_opts = '--disable-bootstrap \
-    --disable-libmpx \
-    --disable-libssp \
-    --disable-multilib \
-    --disable-werror \
-    --enable-cet=auto \
-    --enable-checking=release \
-    --enable-clocale=gnu \
-    --enable-default-pie \
-    --enable-default-ssp \
-    --enable-gnu-indirect-function \
-    --enable-gnu-unique-object \
-    --enable-host-shared \
-    --enable-lto \
-    --enable-plugin \
-    --enable-shared \
-    --enable-symvers \
-    --enable-static \
-    --enable-threads=posix \
-    --with-gcc-major-version-only \
-    --with-gmp \
-    --with-isl \
-    --with-mpc \
-    --with-mpfr \
-    --with-pic \
-    --with-system-libunwind \
-    --with-system-zlib'
+  --disable-libmpx \
+  --disable-libssp \
+  --disable-multilib \
+  --disable-werror \
+  --enable-cet=auto \
+  --enable-checking=release \
+  --enable-clocale=gnu \
+  --enable-default-pie \
+  --enable-default-ssp \
+  --enable-gnu-indirect-function \
+  --enable-gnu-unique-object \
+  --enable-host-shared \
+  --enable-lto \
+  --enable-plugin \
+  --enable-shared \
+  --enable-symvers \
+  --enable-static \
+  --enable-threads=posix \
+  --with-gcc-major-version-only \
+  --with-gmp \
+  --with-isl \
+  --with-mpc \
+  --with-mpfr \
+  --with-pic \
+  --with-system-libunwind \
+  --with-system-zlib'
 
   @cflags = '-fPIC -pipe'
   @cxxflags = '-fPIC -pipe'
@@ -131,11 +131,11 @@ class Gcc10 < Package
     ## Install newer version of mpc
     # mpc_url = "https://ftp.gnu.org/gnu/mpc/mpc-#{@mpc_ver}.tar.gz"
     # mpc_sha256 = '17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459'
-    # system "curl -Ls #{mpc_url} | hashpipe sha256 #{mpc_sha256} | tpxz"
+    # system "curl -Ls #{mpc_url} | hashpipe sha256 #{mpc_sha256} | tar xz"
     # system "ln -sf ../mpc-#{@mpc_ver} mpc"
 
     ## Install newer version of mpfr
-    # mpfr_url = "https://www.mpfr.org/mpfr-current/mpfr-#{@mpfr_ver}.tpxz"
+    # mpfr_url = "https://www.mpfr.org/mpfr-current/mpfr-#{@mpfr_ver}.tar.xz"
     # mpfr_sha256 = '0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
     # system "curl -Ls #{mpfr_url} | hashpipe sha256 #{mpfr_sha256} | tar xJ"
     # Dir.chdir "mpfr-#{@mpfr_ver}" do
@@ -293,8 +293,8 @@ class Gcc10 < Package
         make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
-      system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/ || true"
-      system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version} || true"
+      system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
+      system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}"
     end
 
     Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
