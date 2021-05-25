@@ -3,11 +3,11 @@ require 'package'
 class Far < Package
   description 'Search and replace operations on file content across multiple files.'
   homepage 'http://findandreplace.sourceforge.net'
-  version '2.0.2'
+  version '2.0.3'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://prdownloads.sourceforge.net/project/findandreplace/findandreplace/2.0.2/FAR-2.0.2-x.tar.gz'
-  source_sha256 '0b2c796bdcc088be960f15cb4e348f8af62f74afbdacc188c3c101c2f502204d'
+  source_url 'https://downloads.sourceforge.net/project/findandreplace/findandreplace/2.0.3/FAR-2.0.3-x.tar.gz'
+  source_sha256 'd0e8406b08833be398476e3482a657998cd89e429025989f87cd35added5bedf'
 
   binary_url ({
   })
@@ -18,14 +18,17 @@ class Far < Package
   depends_on 'sommelier'
 
   def self.build
-    system "echo '#!/bin/bash' > far"
-    system "echo 'cd #{CREW_PREFIX}/share/far' >> far"
-    system "echo './far.sh' >> far"
+    @far = <<~EOF
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/far
+      ./far.sh "$@"
+    EOF
+    File.write('far', @far)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/far"
-    system "cp -r . #{CREW_DEST_PREFIX}/share/far"
-    system "install -Dm755 far #{CREW_DEST_PREFIX}/bin/far"
+    FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/far"
+    FileUtils.install 'far', "#{CREW_DEST_PREFIX}/bin/far", mode: 0o755
   end
 end
