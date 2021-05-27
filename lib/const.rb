@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.10.5'
+CREW_VERSION = '1.10.6'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -77,10 +77,12 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_COMMON_FLAGS = "'-Os -pipe -flto -fuse-ld=gold'"
+CREW_COMMON_FLAGS = "'-Os -pipe -flto -ffat-lto-objects -fuse-ld=gold'"
 CREW_COMMON_FNO_LTO_FLAGS = "'-Os -pipe -fno-lto -fuse-ld=gold'"
+CREW_FNO_LTO_LDFLAGS = "'-fno-lto'"
+CREW_LDFLAGS = "'-flto'"
 
-CREW_ENV_OPTIONS = "CFLAGS=#{CREW_COMMON_FLAGS} CXXFLAGS=#{CREW_COMMON_FLAGS} FCFLAGS=#{CREW_COMMON_FLAGS} FFLAGS=#{CREW_COMMON_FLAGS}"
+CREW_ENV_OPTIONS = "CFLAGS=#{CREW_COMMON_FLAGS} CXXFLAGS=#{CREW_COMMON_FLAGS} FCFLAGS=#{CREW_COMMON_FLAGS} FFLAGS=#{CREW_COMMON_FLAGS} LDFLAGS=#{CREW_LDFLAGS}"
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT} --program-prefix='' --program-suffix=''"
 CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=true -Dstrip=true -Db_pie=true -Dcpp_args='-Os -pipe' -Dc_args='-Os -pipe'"
 CREW_MESON_FNO_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=false -Dstrip=true -Db_pie=true -Dcpp_args='-Os -pipe' -Dc_args='-Os -pipe'"
@@ -89,10 +91,10 @@ CREW_MESON_FNO_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
 # Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
-CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_CXX_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_BUILD_TYPE=MinSizeRel"
+CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_CXX_FLAGS=#{CREW_COMMON_FLAGS} -DPROPERTY INTERPROCEDURAL_OPTIMIZATION=TRUE -DCMAKE_BUILD_TYPE=MinSizeRel"
 CREW_CMAKE_FNO_LTO_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS=#{CREW_COMMON_FNO_LTO_FLAGS} -DCMAKE_CXX_FLAGS=#{CREW_COMMON_FNO_LTO_FLAGS} -DCMAKE_BUILD_TYPE=MinSizeRel"
 CREW_LIB_SUFFIX = if ARCH == 'x86_64' then '64' else '' end
-CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_C_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_CXX_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_BUILD_TYPE=MinSizeRel"
+CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
 PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
