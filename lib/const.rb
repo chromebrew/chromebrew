@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.10.6'
+CREW_VERSION = '1.10.7'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -8,7 +8,7 @@ ARCH_ACTUAL = `uname -m`.strip
 ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
 
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
-LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
+LIBC_VERSION = %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split.last.delete_suffix!('.')
 
 if ENV['CREW_PREFIX'].to_s.empty?
   CREW_PREFIX = '/usr/local'
