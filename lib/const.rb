@@ -8,7 +8,10 @@ ARCH_ACTUAL = `uname -m`.strip
 ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
 
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
-LIBC_VERSION = %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split.last.delete_suffix!('.')
+
+# Glibc version can be found from the output of libc.so.6
+@libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
+LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
 
 if ENV['CREW_PREFIX'].to_s.empty?
   CREW_PREFIX = '/usr/local'
