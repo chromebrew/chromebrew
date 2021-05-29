@@ -192,8 +192,6 @@ def list_available
       end
       if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         puts pkgName
-      else
-        puts pkgName.lightred
       end
     end
   end
@@ -222,17 +220,18 @@ def list_installed
 end
 
 def list_compatible(compat = true)
-  generate_compatible
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
-      if ( File.exist? CREW_META_PATH + pkgName + '.filelist' ) && compat
-        puts pkgName.lightgreen
-      else
-        puts pkgName if compat
+      if compat
+        if ( File.exist? CREW_META_PATH + pkgName + '.filelist' )
+          puts pkgName.lightgreen
+        else
+          puts pkgName
+        end
       end
     else
-      puts pkgName.lightred
+      puts pkgName.lightred unless compat
     end
   end
 end
