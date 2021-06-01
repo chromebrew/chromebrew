@@ -64,6 +64,6 @@ class Filecmd < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.install 'filefix', "#{CREW_DEST_PREFIX}/bin/filefix", mode: 0o755
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
-    FileUtils.cp 'file.static', "#{CREW_DEST_PREFIX}/bin/file"
+    FileUtils.install 'file.static', "#{CREW_DEST_PREFIX}/bin/file", mode: 0o755
   end
 end
