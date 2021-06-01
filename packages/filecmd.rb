@@ -4,23 +4,23 @@ class Filecmd < Package
   description 'file command determines the file type.'
   homepage 'http://ftp.astron.com/'
   @_ver = '5.40'
-  version @_ver
+  version @_ver + '-1'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
   source_url "http://ftp.astron.com/pub/file/file-#{@_ver}.tar.gz"
   source_sha256 '167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40_armv7l/filecmd-5.40-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40_armv7l/filecmd-5.40-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40_i686/filecmd-5.40-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40_x86_64/filecmd-5.40-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-1_armv7l/filecmd-5.40-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-1_armv7l/filecmd-5.40-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-1_i686/filecmd-5.40-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.40-1_x86_64/filecmd-5.40-1-chromeos-x86_64.tpxz',
   })
   binary_sha256({
-    aarch64: 'fb583470099d4d432aa7bf99b0a84f58c2b3633b79d06a8099002110d02d8fbe',
-    armv7l: 'fb583470099d4d432aa7bf99b0a84f58c2b3633b79d06a8099002110d02d8fbe',
-    i686: '8d772df66fc1901ab427dd4c23866a89543025c3bec0e8f19a43e508f9afddf4',
-    x86_64: '189bb1bbc27d66a4cb0f06cb0f5ad19cea99855add9056e555dccaea6108bd23'
+    aarch64: 'cd6ac82d2b20553e35041c62bfeb876af2f3eecef89c5b959168b0ce3a315fcd',
+     armv7l: 'cd6ac82d2b20553e35041c62bfeb876af2f3eecef89c5b959168b0ce3a315fcd',
+       i686: '61f026a550efebbd9629391450548c34bcc5c844bc774eec66f29a085a866bc5',
+     x86_64: '796e17e8f971bf5fa4378c43cc7a4e5b88436b48f6b4bca0179a83ba7d36a4c7',
   })
 
   def self.build
@@ -37,7 +37,7 @@ class Filecmd < Package
     # Build static for use in case needed with glibc brokenness.
     system "env  CFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
       CXXFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
-      LDFLAGS='-flto=auto -static' \
+      LDFLAGS='-flto=auto' \
       ./configure \
       #{CREW_OPTIONS} \
       --enable-static \
