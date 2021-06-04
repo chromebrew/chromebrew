@@ -7,6 +7,7 @@ c_ares
 ca_certificates
 crew_profile_base
 curl
+e2fsprogs
 elfutils
 expat
 filecmd
