@@ -1018,8 +1018,8 @@ def resolve_dependencies
   deps = @dependencies
   begin_packages = []
   end_packages = []
-  first_packages = ["shared_mime_info"]
-  last_packages = ["curl", "ghc", "mandb", "gtk3", "gtk4", "sommelier"]
+  first_packages = %w[curl git pixz shared_mime_info]
+  last_packages = %w[ghc mandb gtk3 gtk4 sommelier]
   @dependencies.each do |dep|
     depends = nil
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
