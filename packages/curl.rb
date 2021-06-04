@@ -24,8 +24,13 @@ class Curl < Package
   })
 
   depends_on 'libunbound' # ?
+  depends_on 'openldap' # R
+  depends_on 'openssl' # R
+  depends_on 'py3_pip' => :build
   depends_on 'rust' => :build
   depends_on 'valgrind' => :build
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
