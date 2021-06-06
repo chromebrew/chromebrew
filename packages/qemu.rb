@@ -17,7 +17,7 @@ class Qemu < Package
   })
 
   depends_on 'bz2'
-  depends_on 'curl'
+  depends_on 'libcurl'
   depends_on 'glib'
   depends_on 'gtk3'
   depends_on 'jemalloc'

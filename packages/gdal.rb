@@ -23,7 +23,7 @@ class Gdal < Package
   })
 
   depends_on 'openjpeg'
-  depends_on 'curl'
+  depends_on 'libcurl'
   depends_on 'geos'
   depends_on 'hdf5'
   depends_on 'proj4'
