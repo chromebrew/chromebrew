@@ -229,7 +229,7 @@ class Curl < Package
 
   def self.check
     system 'src/curl -Lf https://github.com/skycocker/chromebrew/raw/master/install.sh -o /tmp/install.sh'
-    FileUtil.rm '/tmp/install.sh'
+    FileUtils.rm '/tmp/install.sh'
   end
 
   def self.install
