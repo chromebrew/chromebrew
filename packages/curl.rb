@@ -17,10 +17,10 @@ class Curl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-git_x86_64/curl-7.77.0-git-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '268771c547ef80761b937aedafe786ca701524e20b4737263aee9791514189d0',
-     armv7l: '268771c547ef80761b937aedafe786ca701524e20b4737263aee9791514189d0',
-       i686: '45796384ef70732ab7d4df71f09d2860e22bee776f86f7ff60c9863ff5bc28c2',
-     x86_64: 'ee99c0558b9dc9e64e4a2619706224daa3e7a0d4b100af135ac5b0a6a3b68ab4'
+    aarch64: '45597919122d848c3b6b91358b67ade0eaa9fb9bfb887f97c6bdeee55fcc84c2',
+     armv7l: '45597919122d848c3b6b91358b67ade0eaa9fb9bfb887f97c6bdeee55fcc84c2',
+       i686: '02436eb8f258cd050cb7c3836801a16cb3c2f24a011ece6a4f388715b2d3c4a7',
+     x86_64: '7399d70a022d09a421b461454b20528d5a8d4fd1976a8364b32190887e8a5780'
   })
 
   depends_on 'ca_certificates' => :build
@@ -57,10 +57,10 @@ class Curl < Package
           CFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
           CXXFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
           CPPFLAGS='-I#{@deppath}/include' \
-          LDFLAGS='-L#{@deppath}/lib' \
+          LDFLAGS='-L#{@deppath}/#{ARCH_LIB}' \
           cmake \
           -DCMAKE_INSTALL_PREFIX='#{@deppath}' \
-          -DCMAKE_LIBRARY_PATH='#{@deppath}/lib' \
+          -DCMAKE_LIBRARY_PATH='#{@deppath}/#{ARCH_LIB}' \
           -DCMAKE_C_COMPILER=`which musl-gcc` \
           -DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON \
           -DINCLUDE_DIRECTORIES=#{@deppath}/include \
@@ -76,7 +76,7 @@ class Curl < Package
         CFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
         CXXFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans#{@arch_ssp_cflags}' \
         CPPFLAGS='-I#{@deppath}/include' \
-        LDFLAGS='-L#{@deppath}/lib'"
+        LDFLAGS='-L#{@deppath}/#{ARCH_LIB}'"
 
     FileUtils.mkdir_p 'build/zlib'
     Dir.chdir 'build/zlib' do
@@ -114,7 +114,7 @@ class Curl < Package
       end
       system 'ninja -C builddir'
       system 'ninja -C builddir install'
-      Dir.chdir "#{@deppath}/lib" do
+      Dir.chdir "#{@deppath}/#{ARCH_LIB}" do
         @brotlilibs = %w[libbrotlidec libbrotlienc libbrotlicommon]
         @brotlilibs.each do |lib|
           FileUtils.ln_s "#{lib}-static.a", "#{lib}.a"
@@ -152,7 +152,7 @@ class Curl < Package
         CFLAGS='-flto -pipe -O3 -fPIC #{@arch_c_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
         CXXFLAGS='-flto -pipe -O3 -fPIC #{@arch_cxx_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
         CPPFLAGS='-I#{@deppath}/include' \
-        LDFLAGS='-L#{@deppath}/lib -flto' \
+        LDFLAGS='-L#{@deppath}/#{ARCH_LIB} -flto' \
         ./Configure \
         --prefix=#{@deppath} \
         no-tests zlib no-shared \
@@ -160,24 +160,24 @@ class Curl < Package
       system 'make'
       system 'make install_sw'
     end
-    
+
     # libssh has problems linking with musl statically
     # FileUtils.mkdir_p 'build/libssh'
     # Dir.chdir 'build/libssh' do
-      # puts 'Building Libssh.'.lightgreen
-      # system 'curl -Ls https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz | tar --strip-components=1 -Jxf -'
-      # FileUtils.mkdir('builddir')
-      # Dir.chdir('builddir') do
-      # system "#{@curldep_cmake_options} \
-      #-DWITH_EXAMPLES=OFF \
-      #-DBUILD_SHARED_LIBS=OFF \
-      #-DWITH_STATIC_LIB=ON \
-      #-DWITH_GSSAPI=OFF \
-      #-DHAVE_GLOB=0 \
-      # ../ -G Ninja"
-      # end
-      # system 'ninja -C builddir'
-      # system 'ninja -C builddir install'
+    # puts 'Building Libssh.'.lightgreen
+    # system 'curl -Ls https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz | tar --strip-components=1 -Jxf -'
+    # FileUtils.mkdir('builddir')
+    # Dir.chdir('builddir') do
+    # system "#{@curldep_cmake_options} \
+    #-DWITH_EXAMPLES=OFF \
+    #-DBUILD_SHARED_LIBS=OFF \
+    #-DWITH_STATIC_LIB=ON \
+    #-DWITH_GSSAPI=OFF \
+    #-DHAVE_GLOB=0 \
+    # ../ -G Ninja"
+    # end
+    # system 'ninja -C builddir'
+    # system 'ninja -C builddir install'
     # end
     FileUtils.mkdir_p 'build/nghttp2'
     Dir.chdir 'build/nghttp2' do
@@ -199,9 +199,9 @@ class Curl < Package
       CPPFLAGS='-I#{@deppath}/include' \
       CFLAGS='-flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
       CXXFLAGS='-flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-      LDFLAGS='-L#{@deppath}/lib -flto -static -Wl,--no-as-needed -ldl' \
-      LIBS='#{@deppath}/lib/libssl.a #{@deppath}/lib/libcrypto.a #{@deppath}/lib/libbrotlicommon.a #{@deppath}/lib/libbrotlidec.a #{@deppath}/lib/libidn2.a #{@deppath}/lib/libnghttp2.a  #{@deppath}/lib/libz.a #{@deppath}/lib/libzstd.a -L#{@deppath}/lib' \
-      CURL_LIBRARY_PATH=#{@deppath}/lib \
+      LDFLAGS='-L#{@deppath}/#{ARCH_LIB} -flto -static -Wl,--no-as-needed -ldl' \
+      LIBS='#{@deppath}/#{ARCH_LIB}/libssl.a #{@deppath}/#{ARCH_LIB}/libcrypto.a #{@deppath}/#{ARCH_LIB}/libbrotlicommon.a #{@deppath}/#{ARCH_LIB}/libbrotlidec.a #{@deppath}/#{ARCH_LIB}/libidn2.a #{@deppath}/#{ARCH_LIB}/libnghttp2.a  #{@deppath}/#{ARCH_LIB}/libz.a #{@deppath}/#{ARCH_LIB}/libzstd.a -L#{@deppath}/#{ARCH_LIB}' \
+      CURL_LIBRARY_PATH=#{@deppath}/#{ARCH_LIB} \
       ./configure --prefix=#{@deppath} \
       --disable-imap \
       --disable-ldap \
@@ -210,7 +210,6 @@ class Curl < Package
       --disable-maintainer-mode \
       --disable-rtsp \
       --disable-shared \
-      --enable-debug \
       --enable-ipv6 \
       --enable-static \
       --enable-unix-sockets \
@@ -230,6 +229,7 @@ class Curl < Package
 
   def self.check
     system 'src/curl -Lf https://github.com/skycocker/chromebrew/raw/master/install.sh -o /tmp/install.sh'
+    FileUtil.rm '/tmp/install.sh'
   end
 
   def self.install
