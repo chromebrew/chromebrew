@@ -1189,11 +1189,11 @@ def archive_package(pwd)
         system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
       end
      # Issues with non-x86_64
-     # if File.exist?("#{CREW_PREFIX}/bin/upx")
-     #   puts "Using upx to shrink binaries"
-     #   system "find . -executable -type f | xargs file | \
-     #     grep ELF | cut -d: -f1 | xargs upx -9"
-     # end
+      if File.exist?("#{CREW_PREFIX}/bin/upx")
+        puts "Using upx to shrink binaries"
+        system "find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" \\)| xargs file | \
+          grep ELF | cut -d: -f1 | xargs upx --exact --best"
+      end
     end
   end
   unless ENV['CREW_USE_PIXZ'] == '0' || !File.exist?("#{CREW_PREFIX}/bin/pixz") 

@@ -41,15 +41,16 @@ class Icu4c < Package
     end
   end
 
+  @icuver = '69'
+  @oldicuver = %w[67 68]
+
   def self.install
     FileUtils.cd('source') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
-    @icuver = '69'
-    @oldicuver = %w[68 67]
     Dir.chdir CREW_DEST_LIB_PREFIX do
       @oldicuver.each do |oldver|
-        # Backwards compatibility symlinks
+        # Backwards compatibility symlinks (which may not work - see postinstall.)
         FileUtils.ln_sf "libicudata.so.#{@icuver}", "libicudata.so.#{oldver}"
         FileUtils.ln_sf "libicui18n.so.#{@icuver}", "libicui18n.so.#{oldver}"
         FileUtils.ln_sf "libicuio.so.#{@icuver}", "libicuio.so.#{oldver}"
@@ -58,5 +59,27 @@ class Icu4c < Package
         FileUtils.ln_sf "libicuuc.so.#{@icuver}", "libicuuc.so.#{oldver}"
       end
     end
+  end
+
+  def self.postinstall
+    # Check for packages that expect an older icu library.
+    #Dir.chdir CREW_LIB_PREFIX do
+      #@oldicuver.each do |oldver|
+        #puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
+        #@fileArray = []
+        #@libArray = []
+        #@nmresults = %x[nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}].chop.split(/$/).map(&:strip)
+        #@nmresults.each { |fileLine| @libArray.push(fileLine.partition(":").first) }
+        #@libArray.each do |f|
+          #@grepresults =  %x[grep "#{f}" #{CREW_META_PATH}*.filelist].chomp.gsub('.filelist','').partition(":").first.gsub(CREW_META_PATH,'').split(/$/).map(&:strip)
+          #@grepresults.each { |fileLine| @fileArray.push(fileLine) }
+        #end
+        #unless @fileArray.empty?
+          #@fileArray.uniq.sort.each do |item|
+            #puts item.lightred
+          #end
+        #end
+      #end
+    #end
   end
 end
