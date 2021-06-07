@@ -3,22 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-2'
+  version '20210109-3'
   license 'BSD-Google'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
+  git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-2_armv7l/sommelier-20210109-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-2_armv7l/sommelier-20210109-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-2_i686/sommelier-20210109-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-2_x86_64/sommelier-20210109-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_armv7l/sommelier-20210109-3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_armv7l/sommelier-20210109-3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_i686/sommelier-20210109-3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_x86_64/sommelier-20210109-3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b518f2f3086e611f6bcdd8cd2b8b67d70956b96c5c43174e26685be6bd7aa0c4',
-     armv7l: 'b518f2f3086e611f6bcdd8cd2b8b67d70956b96c5c43174e26685be6bd7aa0c4',
-       i686: '74a2838593c1297e37127335d6e2aad9402caf264960bf05405434cec67eb254',
-     x86_64: '7e9689e28331c1d9be1f30c9deb6a77fae2519ccb753ef0ffb53faac324bf7e8'
+    aarch64: '401181dfb60f062d00166d39259ca60f593c629af9466dbfb6dcc3f4363575be',
+     armv7l: '401181dfb60f062d00166d39259ca60f593c629af9466dbfb6dcc3f4363575be',
+       i686: 'f00ace87c154fa1c4f786656db369004612b51c27236dbdca9c4f0fd230496eb',
+     x86_64: '29b161ee80fbc1f334bfaf7d191ce8b37c0b7cff414d3e639934b10de64280d7'
   })
 
   depends_on 'coreutils' # for readlink in wrapper script
@@ -46,22 +47,8 @@ class Sommelier < Package
     @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end
 
-  def self.prebuild
-    @git_dir = 'platform2_git'
-    @git_hash = 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
-    @git_url = 'https://chromium.googlesource.com/chromiumos/platform2'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-    end
-  end
-
   def self.build
-    Dir.chdir('platform2_git/vm_tools/sommelier') do
+    Dir.chdir('vm_tools/sommelier') do
       # Patch to avoid error with GCC > 9.x
       # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
       system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
@@ -239,7 +226,7 @@ EOF"
   end
 
   def self.install
-    Dir.chdir('platform2_git/vm_tools/sommelier') do
+    Dir.chdir('vm_tools/sommelier') do
       system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
       Dir.chdir('builddir') do
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"

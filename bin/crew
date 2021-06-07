@@ -903,6 +903,9 @@ def prepare_package(destdir)
 
     strip_dir destdir 
 
+    # make hard linked files symlinks and use upx on executables
+    shrink_dir destdir
+
   end
 end
 
@@ -927,6 +930,37 @@ def strip_dir(dir)
       extensions = [ 'bz2', 'gz', 'lha', 'lz', 'lzh', 'rar', 'tar', 'tbz', 'tgz', 'tpxz', 'txz', 'xz', 'Z', 'zip' ]
       inames = extensions.join(' ! -iname *\.')
       strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+    end
+  end
+end
+
+def shrink_dir(dir)
+  # We might also want a package option to avoid using these tools
+  # on specific packages such as sommelier & xwayland.
+  if ENV['CREW_SHRINK_ARCHIVE'] == '1'
+    Dir.chdir dir do
+      if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+        puts "Using rdfind to find duplicate or hard linked files."
+        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
+      end
+      if File.exist?("#{CREW_PREFIX}/bin/symlinks")
+        puts "Using symlinks tool to make absolute symlinks relative"
+        system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
+      end
+     # Issues with non-x86_64 in compressing libraries, so just compress
+     # non-libraries. Also note that one needs to use "upx -d" on a 
+     # compressed file to use ldd.
+     # sommelier also isn't happy when sommelier and xwayland are compressed
+     # so don't compress those packages.
+      if File.exist?("#{CREW_PREFIX}/bin/upx")
+        puts "Using upx to shrink binaries."
+        # Logic here is to find executable files, check if they are ELF files,
+        # compress a file while making a backup, expand the file with 
+        # upx, and if the expansion doesn't error then delete the backup.
+        system "find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" \\)| xargs file | \
+          grep ELF | cut -d: -f1 | xargs -I {} \
+          bash -c 'upx --best -k --overlay=skip {} && \( upx -t {} && rm {}.~ || mv {}.~ {}\)'"
+      end
     end
   end
 end
@@ -1018,8 +1052,8 @@ def resolve_dependencies
   deps = @dependencies
   begin_packages = []
   end_packages = []
-  first_packages = ["shared_mime_info"]
-  last_packages = ["curl", "ghc", "mandb", "gtk3", "gtk4", "sommelier"]
+  first_packages = %w[curl git pixz shared_mime_info]
+  last_packages = %w[ghc mandb gtk3 gtk4 sommelier]
   @dependencies.each do |dep|
     depends = nil
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
