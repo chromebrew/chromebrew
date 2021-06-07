@@ -24,6 +24,7 @@ class Curl < Package
   })
 
   depends_on 'ca_certificates' => :build
+  depends_on 'libcurl' # L (This is only here to make sure upgrades of curl pull in libcurl.)
   depends_on 'libunbound' => :build
   depends_on 'musl' => :build
   depends_on 'py3_pip' => :build
