@@ -3,24 +3,24 @@ require 'package'
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.77.0-git'
-  version @_ver
+  @_ver = '7.77.0'
+  version "#{@_ver}-1"
   license 'curl'
   compatibility 'all'
   source_url 'https://github.com/curl/curl.git'
   git_hashtag 'curl-7_77_0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-git_armv7l/curl-7.77.0-git-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-git_armv7l/curl-7.77.0-git-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-git_i686/curl-7.77.0-git-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-git_x86_64/curl-7.77.0-git-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_armv7l/curl-7.77.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_armv7l/curl-7.77.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_i686/curl-7.77.0-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_x86_64/curl-7.77.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '45597919122d848c3b6b91358b67ade0eaa9fb9bfb887f97c6bdeee55fcc84c2',
-     armv7l: '45597919122d848c3b6b91358b67ade0eaa9fb9bfb887f97c6bdeee55fcc84c2',
-       i686: '02436eb8f258cd050cb7c3836801a16cb3c2f24a011ece6a4f388715b2d3c4a7',
-     x86_64: '7399d70a022d09a421b461454b20528d5a8d4fd1976a8364b32190887e8a5780'
+    aarch64: '439fb6468782be5842b4f7a3c2854e5026d3eaf3a99023dd3d82b540458ec110',
+     armv7l: '439fb6468782be5842b4f7a3c2854e5026d3eaf3a99023dd3d82b540458ec110',
+       i686: '98479b4d6c3d9deee57fb261b58c2a327ebdfaa15a14eead2d979a26e2f2c74d',
+     x86_64: '07d49c2d5ad27ccaeba9f50b73b5c0078a1d0c57902797e0b5cc2e98d4c1f2b9'
   })
 
   depends_on 'ca_certificates' => :build
