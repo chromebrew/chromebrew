@@ -3,24 +3,24 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.1.1'
+  @_ver = '21.1.2'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url "https://mesa.freedesktop.org/archive/mesa-#{@_ver}.tar.xz"
-  source_sha256 'eec25ea379054e8911bc5de816aeb50f581b5b708414725003d2f00386b38dd2'
+  source_sha256 '23b4b63760561f3a4f98b5be12c6de621e9a6bdf355e087a83d9184cd4e2825f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_armv7l/mesa-21.1.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_armv7l/mesa-21.1.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_i686/mesa-21.1.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.1_x86_64/mesa-21.1.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.2_armv7l/mesa-21.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.2_armv7l/mesa-21.1.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.2_i686/mesa-21.1.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.1.2_x86_64/mesa-21.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '242a34dde6605408a1e3b2065a83f90187a9bdd978bc515dd927717fef641a6b',
-     armv7l: '242a34dde6605408a1e3b2065a83f90187a9bdd978bc515dd927717fef641a6b',
-       i686: '6878fd22b4918af37b662ce4e974e8f43e50588ec9addddaf10638980488e771',
-     x86_64: 'a4e381761971625cc8b6120bed6aea5eaf6c068f4476321de08b8f5f06875635'
+    aarch64: '55ca672cbbc91981c60cd744bedc34dc1efd26246ebf468f3801c308a8fcd78f',
+     armv7l: '55ca672cbbc91981c60cd744bedc34dc1efd26246ebf468f3801c308a8fcd78f',
+       i686: '8417668f98889fcdae58f783e7b80084d74a69ec5234198f39b4179b68e1d4a9',
+     x86_64: 'a1a297a96645b2c3d63cc4c9411711debb5200d43acea2f3d173b6087cb2e7b8'
   })
 
   depends_on 'glslang' => :build
