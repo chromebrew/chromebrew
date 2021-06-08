@@ -6,7 +6,7 @@ class Glibc < Package
   version LIBC_VERSION
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
-  
+
   depends_on 'gawk' => :build
   depends_on 'libgd' => :build
   depends_on 'libidn2' => :build
@@ -188,15 +188,16 @@ class Glibc < Package
     end
     # Just let the system use all provided glibc libraries
     Dir.chdir CREW_DEST_LIB_PREFIX do
-      @libraries.each do |lib|
-      # Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
-      #   if `file #{f} | grep "shared object"`
-      #     g = File.basename(f)
-      #     FileUtils.ln_sf f.to_s, g.to_s
+      # @libraries.each do |lib|
+      #   Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
+      #     if `file #{f} | grep "shared object"`
+      #       g = File.basename(f)
+      #       FileUtils.ln_sf f.to_s, g.to_s
+      #     end
       #   end
       # end
-      
-      FileUtils.rm Dir.glob("*")
+
+      FileUtils.rm Dir.glob('*')
       case ARCH
       when 'armv7l', 'aarch64'
         FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-armhf.so.3", 'ld-linux-armhf.so.3'
@@ -206,7 +207,7 @@ class Glibc < Package
         FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-x86-64.so.2", 'ld-linux-x86-64.so.2'
       end
     end
- 
+
     # minimum set of locales -> #{CREW_LIB_PREFIX}/locale/locale-archive
     # May be better to just whitelist certain locales and delete everything else like other distributions do, e.g.
     # for dir in locale i18n; do
@@ -252,7 +253,7 @@ class Glibc < Package
   end
 
   def self.check
-    Dir.chdir "glibc_build" do
+    Dir.chdir 'glibc_build' do
       system "make -k -j#{CREW_NPROC} check"
     end
   end
