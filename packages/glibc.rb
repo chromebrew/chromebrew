@@ -4,9 +4,9 @@ class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
   version LIBC_VERSION
-  compatbility 'all'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
-
+  compatibility 'all'
+  
   depends_on 'gawk' => :build
   depends_on 'libgd' => :build
   depends_on 'libidn2' => :build
@@ -64,12 +64,11 @@ class Glibc < Package
       # Apply patch due to new version of binutils which causes compilation failure
       # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
       Dir.chdir 'misc' do
-        if File.readlines('regexp.c').grep(/monitor/).any?
-          puts 'Patched!'.lightgreen
-        else
+        unless File.readlines('regexp.c').grep(/monitor/).any?
           system "sed -i 's,char \\*loc1,char \\*loc1 __attribute__ ((nocommon)),g' regexp.c"
           system "sed -i 's,char \\*loc2,char \\*loc2 __attribute__ ((nocommon)),g' regexp.c"
           system "sed -i 's,char \\*locs,char \\*locs __attribute__ ((nocommon)),g' regexp.c"
+          puts 'Patched!'.lightgreen
         end
       end
     when '2.32'
@@ -89,10 +88,22 @@ class Glibc < Package
   end
 
   def self.build
-    system 'mkdir -pv glibc_build'
+    Dir.mkdir 'glibc_build'
     Dir.chdir 'glibc_build' do
       case LIBC_VERSION
-      when '2.23'
+      when '2.23' # This is only for glibc 2.23
+        system '../configure',
+               "--prefix=#{CREW_PREFIX}",
+               "--libdir=#{CREW_LIB_PREFIX}",
+               "--with-headers=#{CREW_PREFIX}/include",
+               '--disable-werror',
+               '--disable-sanity-checks',
+               '--enable-shared',
+               '--disable-multilib',
+               'libc_cv_forced_unwind=yes',
+               'libc_cv_ssp=no',
+               'libc_cv_ssp_strong=no'
+      when '2.27'
         case ARCH
         when 'armv7l', 'aarch64'
           system '../configure',
@@ -105,20 +116,7 @@ class Glibc < Package
                  'libc_cv_forced_unwind=yes',
                  '--without-selinux'
         when 'x86_64'
-          system "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
-          puts "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
-          system '../configure',
-                 "--prefix=#{CREW_PREFIX}",
-                 "--libdir=#{CREW_LIB_PREFIX}",
-                 "--with-headers=#{CREW_PREFIX}/include",
-                 '--disable-werror',
-                 '--disable-sanity-checks',
-                 '--enable-shared',
-                 '--disable-multilib',
-                 'libc_cv_forced_unwind=yes',
-                 'libc_cv_ssp=no',
-                 'libc_cv_ssp_strong=no'
-        when 'i686' # This is only for glibc 2.23
+          IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system '../configure',
                  "--prefix=#{CREW_PREFIX}",
                  "--libdir=#{CREW_LIB_PREFIX}",
@@ -151,7 +149,7 @@ class Glibc < Package
             libc_cv_forced_unwind=yes \
             "
         when 'x86_64'
-          system "echo \"slibdir=#{CREW_LIB_PREFIX}\" > configparms"
+          IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system "env \
           CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
           LD=ld ../configure \
@@ -188,25 +186,27 @@ class Glibc < Package
       # for 2.32, let's not bother with this, and just use the default install?
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'localedata/install-locales'
     end
-    Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
+    # Just let the system use all provided glibc libraries
+    Dir.chdir CREW_DEST_LIB_PREFIX do
       @libraries.each do |lib|
-        Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
-          if `file #{f} | grep "shared object"`
-            g = File.basename(f)
-            FileUtils.ln_sf f.to_s, g.to_s
-          end
-        end
-        case ARCH
-        when 'armv7l', 'aarch64'
-          FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-armhf.so.3", 'ld-linux-armhf.so.3'
-        when 'i686'
-          FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux.so.2", 'ld-linux.so.2'
-        when 'x86_64'
-          FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-x86-64.so.2", 'ld-linux-x86-64.so.2'
-        end
+      # Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
+      #   if `file #{f} | grep "shared object"`
+      #     g = File.basename(f)
+      #     FileUtils.ln_sf f.to_s, g.to_s
+      #   end
+      # end
+      
+      FileUtils.rm Dir.glob("*")
+      case ARCH
+      when 'armv7l', 'aarch64'
+        FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-armhf.so.3", 'ld-linux-armhf.so.3'
+      when 'i686'
+        FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux.so.2", 'ld-linux.so.2'
+      when 'x86_64'
+        FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-x86-64.so.2", 'ld-linux-x86-64.so.2'
       end
     end
-
+ 
     # minimum set of locales -> #{CREW_LIB_PREFIX}/locale/locale-archive
     # May be better to just whitelist certain locales and delete everything else like other distributions do, e.g.
     # for dir in locale i18n; do
