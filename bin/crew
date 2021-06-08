@@ -589,6 +589,20 @@ def upgrade
       end
     end
 
+    # Adjust package install ordering for upgrades.
+    CREW_FIRST_PACKAGES.each do |pkg|
+      # Add package to beginning.
+      toBeUpdated.insert(0,toBeUpdated.delete(pkg)) if toBeUpdated.include? pkg
+    end
+    CREW_LAST_PACKAGES.each do |pkg|
+      if toBeUpdated.include? pkg
+        # Add package to beginning.
+        toBeUpdated.insert(0,toBeUpdated.delete(pkg))
+        # Now rotate first package to last package.
+        toBeUpdated=toBeUpdated.rotate(1)
+      end
+    end
+
     unless toBeUpdated.empty?
       puts 'Updating packages...'
       toBeUpdated.each do |package|
