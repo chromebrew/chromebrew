@@ -3,23 +3,23 @@ require 'package'
 class Less < Package
   description 'GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.'
   homepage 'https://www.gnu.org/software/less/'
-  version '563'
+  version '581.2'
   license 'GPL-3 or BSD-2'
   compatibility 'all'
-  source_url 'http://www.greenwoodsoftware.com/less/less-563.tar.gz'
-  source_sha256 'ce5b6d2b9fc4442d7a07c93ab128d2dff2ce09a1d4f2d055b95cf28dd0dc9a9a'
+  source_url 'http://www.greenwoodsoftware.com/less/less-581.2.tar.gz'
+  source_sha256 'ce34b47caf20a99740672bf560fc48d5d663c5e78e67bc254e616b9537d5d83b'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/563_armv7l/less-563-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/563_armv7l/less-563-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/563_i686/less-563-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/563_x86_64/less-563-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/581.2_armv7l/less-581.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/581.2_armv7l/less-581.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/581.2_i686/less-581.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/581.2_x86_64/less-581.2-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-    aarch64: '7cb60d2d83031342ee8b5bfc57291e4a8e140a14635760034a38d96fa7f085ab',
-     armv7l: '7cb60d2d83031342ee8b5bfc57291e4a8e140a14635760034a38d96fa7f085ab',
-       i686: '586086877e087bfb5577d8283b90e6bca71212b03c2286997a9dfa67d7638bb9',
-     x86_64: '0136439b108a87c3b1fbf0a05a89dbbccc4aaf740a2fce5dee9f1a46fe2ef363',
+    aarch64: '1d7d98feb864c81610dd5430e993e7ce8ee97665854ea15ef89d333a464006b3',
+     armv7l: '1d7d98feb864c81610dd5430e993e7ce8ee97665854ea15ef89d333a464006b3',
+       i686: 'bc225d51f8de8850528c1d694cbb84aaaf9cdd9e10b3352b327de729e5daba1b',
+     x86_64: '30fdb82765a4ae19196f3e95a74cf723e1f719e682cd7953e5415343a5217651',
   })
 
   depends_on 'ncurses'
