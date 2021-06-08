@@ -3,6 +3,8 @@ require 'package'
 class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
+  version LIBC_VERSION
+  compatbility 'all'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
 
   depends_on 'gawk' => :build
@@ -15,8 +17,6 @@ class Glibc < Package
 
   case LIBC_VERSION
   when '2.23'
-    version '2.2x'
-    compatibility 'x86_64'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
@@ -27,8 +27,6 @@ class Glibc < Package
       i686: '52145b65cb49c2751f69d4c46636f0685f2abb6685d8a080b71b2f091595a950'
     })
   when '2.27'
-    version '2.2x'
-    compatibility 'x86_64'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
@@ -43,8 +41,6 @@ class Glibc < Package
        x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
     })
   when '2.32' # All architectures with updates past M92.
-    version '2.32'
-    compatibility 'x86_64 armv7l aarch64'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
     source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
 
