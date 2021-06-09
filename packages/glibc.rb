@@ -48,7 +48,7 @@ class Glibc < Package
       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_x86_64/glibc-2.32-chromeos-x86_64.tpxz'
     })
     binary_sha256({
-      x86_64: '0e6749f4d4c445e27bcd8669865fa060193552ecda2233f7f0d5e91c90b91a0b'
+      x86_64: '794745d17eae977dccf6d5635f67e5bb1465286a3888bc5e69eda487e87654ae'
     })
   end
 
@@ -198,7 +198,9 @@ class Glibc < Package
       #   end
       # end
 
-      FileUtils.rm Dir.glob('*')
+      Dir.glob("#{CREW_DEST_LIB_PREFIX}/*").each do |f|
+        FileUtils.rm_f f unless File.directory?(f)
+      end
       case ARCH
       when 'armv7l', 'aarch64'
         FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-armhf.so.3", 'ld-linux-armhf.so.3'
