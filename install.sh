@@ -17,9 +17,9 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
 
 # EARLY_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-EARLY_PACKAGES="libarchive openssl zstd xzutils lz4 bz2 libxml2 pixz libssp brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
+EARLY_PACKAGES="pixz curl git libarchive openssl zstd xzutils lz4 bz2 libxml2 libssp brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
 libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates libyaml ruby libffi \
-nettle krb5 p11kit libtasn1 gnutls curl git icu4c "
+nettle krb5 p11kit libtasn1 gnutls icu4c "
 
 LATE_PACKAGES="binutils crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 \
 python27 python3 py3_pip sed lzip unzip zip"
