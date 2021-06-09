@@ -73,8 +73,9 @@ class Glibc < Package
       end
     when '2.32'
       FileUtils.mkdir_p 'gentoopatches'
-      system 'curl -Ls https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.32-patches-8.tar.xz \
-        hashpipe 6653f1d0aadad10bd288f3bae274bd4e0a013d47f09ce78199fb5989b2d8fd9b | tar -xJf - -C gentoopatches'
+      system 'curl -Ls https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.32-patches-8.tar.xz | \
+        hashpipe sha256 6653f1d0aadad10bd288f3bae274bd4e0a013d47f09ce78199fb5989b2d8fd9b | \
+        tar -xJf - -C gentoopatches'
       Dir.glob('gentoopatches/patches/*.patch').each do |patch|
         system "patch -Np1 -i #{patch}"
       end
