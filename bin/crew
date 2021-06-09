@@ -589,6 +589,20 @@ def upgrade
       end
     end
 
+    # Adjust package install ordering for upgrades.
+    CREW_FIRST_PACKAGES.each do |pkg|
+      # Add package to beginning.
+      toBeUpdated.insert(0,toBeUpdated.delete(pkg)) if toBeUpdated.include? pkg
+    end
+    CREW_LAST_PACKAGES.each do |pkg|
+      if toBeUpdated.include? pkg
+        # Add package to beginning.
+        toBeUpdated.insert(0,toBeUpdated.delete(pkg))
+        # Now rotate first package to last package.
+        toBeUpdated=toBeUpdated.rotate(1)
+      end
+    end
+
     unless toBeUpdated.empty?
       puts 'Updating packages...'
       toBeUpdated.each do |package|
@@ -1050,10 +1064,10 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   deps = @dependencies
-  begin_packages = []
-  end_packages = []
-  first_packages = %w[curl git pixz shared_mime_info]
-  last_packages = %w[ghc mandb gtk3 gtk4 sommelier]
+  # populate arrays with common elements
+  begin_packages = deps & CREW_FIRST_PACKAGES
+  end_packages = deps & CREW_LAST_PACKAGES
+
   @dependencies.each do |dep|
     depends = nil
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
@@ -1065,19 +1079,13 @@ def resolve_dependencies
         end
       end
     end
-    begin_packages.push dep if first_packages.include? dep
     # if a dependency package has no other dependencies, push to the front
     begin_packages.push dep unless depends
-    end_packages.push dep if last_packages.include? dep
   end
-  i = 0
-  all_packages = begin_packages + end_packages
-  deps.each do |dep|
-    if all_packages.include?(dep)
-      deps.delete_at(i)
-    end
-    i += 1
-  end
+  # Remove elements in another array
+  deps -= begin_packages
+  deps -= end_packages
+
   @dependencies = (begin_packages + deps + end_packages).uniq
 
   @dependencies.each do |dep|
