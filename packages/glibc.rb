@@ -44,12 +44,16 @@ class Glibc < Package
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
     source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
 
-    binary_url({
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_x86_64/glibc-2.32-chromeos-x86_64.tpxz'
-    })
-    binary_sha256({
-      x86_64: '794745d17eae977dccf6d5635f67e5bb1465286a3888bc5e69eda487e87654ae'
-    })
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_armv7l/glibc-2.32-chromeos-armv7l.tpxz',
+    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_armv7l/glibc-2.32-chromeos-armv7l.tpxz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_x86_64/glibc-2.32-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '1fb970e490c988e49672e3e5d1edcaea795323e4fbb74559dea3bd35d7e6c63c',
+    armv7l: '1fb970e490c988e49672e3e5d1edcaea795323e4fbb74559dea3bd35d7e6c63c',
+    x86_64: '794745d17eae977dccf6d5635f67e5bb1465286a3888bc5e69eda487e87654ae'
+  })
   end
 
   depends_on 'gawk' => :build
@@ -149,6 +153,10 @@ class Glibc < Package
             libc_cv_c_cleanup=yes \
             libc_cv_forced_unwind=yes \
             "
+          # install-symbolic-link segfaults on armv7l, but we're deleting
+          # the libraries anyways, so it doesn't matter.
+          system "sed -i 's,install-symbolic-link,/bin/true,g' ../Makefile"
+          system "sed -i 's,symbolic-link-prog := \$(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
         when 'x86_64'
           IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system "env \
@@ -255,9 +263,9 @@ class Glibc < Package
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so.*")
   end
 
-  def self.check
-    Dir.chdir 'glibc_build' do
-      system "make -k -j#{CREW_NPROC} check"
-    end
-  end
+ #  def self.check
+ #   Dir.chdir 'glibc_build' do
+ #     system "make -k -j#{CREW_NPROC} check"
+ #   end
+ # end
 end
