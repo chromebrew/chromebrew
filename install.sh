@@ -9,20 +9,15 @@ REPO="${REPO:-chromebrew}"
 BRANCH="${BRANCH:-master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
-CREW_LIB_PATH="${CREW_PREFIX}/lib/crew/"
-CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew/"
+CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
+CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew/"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
 
-# EARLY_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-EARLY_PACKAGES="pixz curl git libarchive openssl zstd xzutils lz4 bz2 libxml2 libssp brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
-libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates libyaml ruby libffi \
-nettle krb5 p11kit libtasn1 gnutls icu4c "
-
-LATE_PACKAGES="binutils crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 \
-python27 python3 py3_pip sed lzip unzip zip"
+# BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
+BOOTSTRAP_PACKAGES="pixz jq curl git gmp ncurses ca_certificates ruby"
 
 ARCH="$(uname -m)"
 
@@ -49,6 +44,8 @@ esac
 
 # install a base set of development packages for compiling and building software
 echo -e -n "${BLUE}Install development tools? (not needed for most users) [y/N]: ${RESET}"; read -n1 devtools
+echo ''
+echo -e "${YELLOW}Doing initial setup for install in ${CREW_PREFIX}.${RESET}"
 
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
@@ -91,8 +88,22 @@ case "${ARCH}" in
   ;;
 esac
 
-for package in $EARLY_PACKAGES; do
-  pkgfile="$($CURL -Lsf "${URL}"/packages/"$package".rb)"
+# create the device.json file if it doesn't exist
+cd "${CREW_CONFIG_PATH}"
+if [ ! -f device.json ]; then
+  echo -e "${YELLOW}Creating new device.json...${RESET}"
+  jq --arg key0 'architecture' --arg value0 "${ARCH}" \
+    --arg key1 'installed_packages' \
+    '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
+fi
+
+echo -e "${YELLOW}Downloading information for Bootstrap packages.${BLUE}"
+
+(cd "${CREW_LIB_PATH}"/packages && curl -#OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
+echo -e "${RESET}"
+
+for package in $BOOTSTRAP_PACKAGES; do
+  pkgfile="$(cat "${CREW_LIB_PATH}"/packages/"$package".rb)"
   temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   urls[k]="$temp_url"
@@ -145,35 +156,13 @@ function update_device_json () {
 
   if grep '"name": "'"${1}"'"' device.json > /dev/null; then
     echo "Updating version number of ${1} in device.json..."
-    sed -i device.json -e '/"name": "'"${1}"'"/N;//s/"version": ".*"/"version": "'"${2}"'"/'
-  elif grep '^    }$' device.json > /dev/null; then
-    echo "Adding new information on ${1} to device.json..."
-    sed -i device.json -e '/^    }$/s/$/,\
-    {\
-      "name": "'"${1}"'",\
-      "version": "'"${2}"'"\
-    }/'
+    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json) > device.json
   else
     echo "Adding new information on ${1} to device.json..."
-    sed -i device.json -e '/^  "installed_packages": \[$/s/$/\
-    {\
-      "name": "'"${1}"'",\
-      "version": "'"${2}"'"\
-    }/'
+    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json 
   fi
 }
-
-# create the device.json file if it doesn't exist
-cd "${CREW_CONFIG_PATH}"
-if [ ! -f device.json ]; then
-  echo -e "${YELLOW}Creating new device.json...${RESET}"
-  echo '{' > device.json
-  echo '  "architecture": "'"${ARCH}"'",' >> device.json
-  echo '  "installed_packages": [' >> device.json
-  echo '  ]' >> device.json
-  echo '}' >> device.json
-fi
-
+echo -e "${YELLOW}Downloading Bootstrap packages.${RESET}"
 # extract, install and register packages
 for i in $(seq 0 $((${#urls[@]} - 1))); do
   url="${urls["${i}"]}"
@@ -198,6 +187,7 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 # prepare sparse checkout .rb packages directory and do it
 cd "${CREW_LIB_PATH}"
 rm -rf .git
+git config --global init.defaultBranch main
 git init
 git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
 git config core.sparsecheckout true
@@ -208,9 +198,14 @@ echo crew >> .git/info/sparse-checkout
 echo tools   >> .git/info/sparse-checkout
 git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
+echo -e "${YELLOW}Updating crew package information.${RESET}"
 crew update
 
-yes | crew install $LATE_PACKAGES 
+crew_installed_packages=$(jq  '.installed_packages[] .name' "${CREW_CONFIG_PATH}/device.json" | sed -e 's/"//g'   | sort)
+crew_core_packages=$(cat "${CREW_LIB_PATH}/tools/core_packages.txt" | sort)
+# The comm tool gives the set of packages in core not already installed.
+# Install those remaining core packages.
+yes | crew install $(comm -23 <(echo $crew_core_packages) <(echo $crew_installed_packages))
 
 [[ "$devtools" == "y" || "$devtools" == "Y" ]] && yes | crew install buildessential
 
