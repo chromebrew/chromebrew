@@ -139,7 +139,7 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo "Extracting ${1} (this may take a while)..."
+    echo "Extracting ${1} ..."
     if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then 
       tar xpf ../"${2}"
     else
@@ -170,7 +170,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   tarfile="$(basename ${url})"
   name="${tarfile%%-*}"   # extract string before first '-'
   rest="${tarfile#*-}"    # extract string after first '-'
-  version="$(echo ${rest} | sed -e 's/-chromeos.*$//')"
+  version="${rest/-chromeos.*$/}"
                         # extract string between first '-' and "-chromeos"
 
   download_check "${name}" "${url}" "${tarfile}" "${sha256}"
@@ -191,11 +191,7 @@ git config --global init.defaultBranch main
 git init
 git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
 git config core.sparsecheckout true
-echo packages >> .git/info/sparse-checkout
-echo lib >> .git/info/sparse-checkout
-echo bin >> .git/info/sparse-checkout
-echo crew >> .git/info/sparse-checkout
-echo tools   >> .git/info/sparse-checkout
+{ echo packages; echo lib; echo bin; echo crew; echo tools; } >> .git/info/sparse-checkout
 git fetch origin "${BRANCH}"
 git reset --hard origin/"${BRANCH}"
 echo -e "${YELLOW}Updating crew package information.${RESET}"
