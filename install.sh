@@ -122,12 +122,14 @@ done
 # functions to maintain packages
 function download_check () {
     cd "$CREW_BREW_DIR"
-    if [[ -n "$CREW_CACHE_ENABLED" ]] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
+    # use cached file if available and caching enabled
+    if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
       echo -e "${BLUE}Verifying cached ${1}...${RESET}"
       echo -e "${GREEN}$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)${RESET}"
       case "${?}" in
       0)
-        ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" && return
+        ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
+        return
         ;;
       *)
         echo -e "${RED}Verification of cached ${1} failed, downloading.${RESET}"
@@ -141,7 +143,11 @@ function download_check () {
     echo -e "${BLUE}Verifying ${1}...${RESET}"
     echo -e "${GREEN}$(echo "${4}" "${3}" | sha256sum -c -)${RESET}"
     case "${?}" in
-    0) [[ -n "$CREW_CACHE_ENABLED" ]] && cp "${3}" "$CREW_CACHE_DIR/${3}"
+    0)
+      if [ -n "$CREW_CACHE_ENABLED" ] ; then
+        cp "${3}" "$CREW_CACHE_DIR/${3}" || true
+      fi
+      return
       ;;
     *)
       echo -e "${RED}Verification failed, something may be wrong with the download.${RESET}"
