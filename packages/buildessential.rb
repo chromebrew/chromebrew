@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.15'
+  version '1.16'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -23,16 +23,19 @@ class Buildessential < Package
   depends_on 'pkgconfig'
   depends_on 'binutils'
 
-  # typically required libraries to compile source code using "./autogen.sh"
+  # typically required libraries & tools to configure packages
+  # e.g. using "./autogen.sh"
   depends_on 'automake'
-  depends_on 'libtool'
-  depends_on 'intltool'
-  depends_on 'patch'
-  depends_on 'diffutils'
   depends_on 'bison'
+  depends_on 'diffutils'
+  depends_on 'filecmd'
   depends_on 'flex'
-  depends_on 'util_macros'
   depends_on 'gettext'
+  depends_on 'intltool'
+  depends_on 'libtool'
+  depends_on 'patch'
+  depends_on 'sed'
+  depends_on 'util_macros'
 
   # build documentation
   depends_on 'compressdoc'
