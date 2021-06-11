@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.14'
+  version '1.15'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -21,6 +21,7 @@ class Buildessential < Package
   depends_on 'linuxheaders'
   depends_on 'make'
   depends_on 'pkgconfig'
+  depends_on 'binutils'
 
   # typically required libraries to compile source code using "./autogen.sh"
   depends_on 'automake'
@@ -113,5 +114,5 @@ class Buildessential < Package
   # Packages needed for shrinking package archives
   depends_on 'rdfind'
   depends_on 'symlinks'
-  #depends_on 'upx'
+  depends_on 'upx'
 end
