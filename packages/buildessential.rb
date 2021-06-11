@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.14'
+  version '1.15'
   license 'GPL-3+'
   compatibility 'all'
 
