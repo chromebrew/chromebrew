@@ -213,19 +213,17 @@ echo -e "${YELLOW}Setup and synchronize local package repo...${RESET}"
 echo -e "${GRAY}"
 
 # Remove old git config directories if they exist
-rm -rf "${CREW_LIB_PATH}"/{.git,.crewsetuptmp}
+rm -rf "${CREW_LIB_PATH}"
 
 # Do a minimal clone, which also sets origin to the master/main branch
 # by default. For more on why this setup might be useful see:
 # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
-git clone --depth=1 --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"/.crewsetuptmp
+git clone --depth=1 --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
 
-# move .git directory to final location and remove tmp folder.
-mv "${CREW_LIB_PATH}"/.crewsetuptmp/.git "${CREW_LIB_PATH}"/ && rm -rf "${CREW_LIB_PATH}"/.crewsetuptmp
 cd "${CREW_LIB_PATH}"
 
 # Checkout, overwriting local files.
-git checkout -f "${BRANCH}"
+git checkout "${BRANCH}"
 
 # Set sparse-checkout folders and include install.sh for use in reinstalls
 # or to fix problems.
