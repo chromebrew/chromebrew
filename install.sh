@@ -9,29 +9,31 @@ REPO="${REPO:-chromebrew}"
 BRANCH="${BRANCH:-master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
 CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
-CREW_LIB_PATH="${CREW_PREFIX}/lib/crew/"
-CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew/"
-CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew/"
+CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
+CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
+CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
+CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
 
-# EARLY_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-EARLY_PACKAGES="pixz curl git libarchive openssl zstd xzutils lz4 bz2 libxml2 libssp brotli c_ares libcyrussasl libidn2 libmetalink libnghttp2 libpsl \
-libtirpc libunistring openldap rtmpdump zstd ncurses ca_certificates libyaml ruby libffi \
-nettle krb5 p11kit libtasn1 gnutls icu4c "
-
-LATE_PACKAGES="binutils crew_profile_base less most manpages filecmd mawk readline perl pcre pcre2 \
-python27 python3 py3_pip sed lzip unzip zip"
+# BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
+BOOTSTRAP_PACKAGES="pixz jq ca_certificates curl git gmp ncurses ruby"
 
 ARCH="$(uname -m)"
+# For container usage, where we are emulating armv7l via linux32
+ARCH="${ARCH/armv8l/armv7l}"
 
-GREEN='\e[1;32m';
-RED='\e[1;31m';
-BLUE='\e[1;34m';
-YELLOW='\e[1;33m';
+RED='\e[1;91m';    # Use Light Red for errors.
+YELLOW='\e[1;33m'; # Use Yellow for informational messages.
+GREEN='\e[1;32m';  # Use Green for success messages. 
+BLUE='\e[1;34m';   # Use Blue for intrafunction messages.
+GRAY='\e[1;37m';   # Use Gray for program output.
+MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
+echo -e "${GREEN}Welcome to Chromebrew!${RESET}"
+echo
 if [ "${EUID}" == "0" ]; then
   echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
   exit 1;
@@ -49,12 +51,15 @@ esac
 
 # install a base set of development packages for compiling and building software
 echo -e -n "${BLUE}Install development tools? (not needed for most users) [y/N]: ${RESET}"; read -n1 devtools
-
+echo -e "\n\n${YELLOW}Doing initial setup for install in ${CREW_PREFIX}.${RESET}"
+echo -e "${YELLOW}This may take a while if there are preexisting files in ${CREW_PREFIX}...${RESET}"
+echo
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
   if [ -d "${CREW_PREFIX}"/"${folder}" ]; then
+    echo -e "${BLUE}Resetting ownership of ${CREW_PREFIX}/${folder}${RESET}"
     sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
   fi
 done
@@ -66,7 +71,7 @@ if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
 fi
 
 # prepare directories
-for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"; do
+for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
   if [ ! -d "${dir}" ]; then
     mkdir -p "${dir}"
   fi
@@ -91,8 +96,22 @@ case "${ARCH}" in
   ;;
 esac
 
-for package in $EARLY_PACKAGES; do
-  pkgfile="$($CURL -Lsf "${URL}"/packages/"$package".rb)"
+# create the device.json file if it doesn't exist
+cd "${CREW_CONFIG_PATH}"
+if [ ! -f device.json ]; then
+  echo -e "\n${YELLOW}Creating new device.json.${RESET}"
+  jq --arg key0 'architecture' --arg value0 "${ARCH}" \
+    --arg key1 'installed_packages' \
+    '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
+fi
+echo
+echo -e "${YELLOW}Downloading information for Bootstrap packages...${RESET}"
+echo -e "${GRAY}"
+(cd "${CREW_LIB_PATH}"/packages && curl -#OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
+echo -e "${RESET}"
+
+for package in $BOOTSTRAP_PACKAGES; do
+  pkgfile="$(cat "${CREW_LIB_PATH}"/packages/"$package".rb)"
   temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
   urls[k]="$temp_url"
@@ -102,19 +121,34 @@ done
 
 # functions to maintain packages
 function download_check () {
-    cd "${CREW_BREW_DIR}"
-
+    cd "$CREW_BREW_DIR"
+    # use cached file if available and caching enabled
+    if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
+      echo -e "${BLUE}Verifying cached ${1}...${RESET}"
+      echo -e "${GREEN}$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)${RESET}"
+      case "${?}" in
+      0)
+        ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
+        return
+        ;;
+      *)
+        echo -e "${RED}Verification of cached ${1} failed, downloading.${RESET}"
+      esac
+    fi
     #download
     echo -e "${BLUE}Downloading ${1}...${RESET}"
-    # Gitlab doesn't support byte ranges, hence no need for "-C"
-    # --ssl is only valid for (FTP IMAP POP3 SMTP)
     $CURL '-#' -L "${2}" -o "${3}"
 
     #verify
     echo -e "${BLUE}Verifying ${1}...${RESET}"
     echo -e "${GREEN}$(echo "${4}" "${3}" | sha256sum -c -)${RESET}"
     case "${?}" in
-    0) ;;
+    0)
+      if [ -n "$CREW_CACHE_ENABLED" ] ; then
+        cp "${3}" "$CREW_CACHE_DIR/${3}" || true
+      fi
+      return
+      ;;
     *)
       echo -e "${RED}Verification failed, something may be wrong with the download.${RESET}"
       exit 1;;
@@ -128,13 +162,13 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo "Extracting ${1} (this may take a while)..."
+    echo -e "${BLUE}Extracting ${1} ...${RESET}"
     if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then 
       tar xpf ../"${2}"
     else
       LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
     fi
-    echo "Installing ${1} (this may take a while)..."
+    echo -e "${BLUE}Installing ${1} ...${RESET}"
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
@@ -143,37 +177,16 @@ function extract_install () {
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
 
-  if grep '"name": "'"${1}"'"' device.json > /dev/null; then
-    echo "Updating version number of ${1} in device.json..."
-    sed -i device.json -e '/"name": "'"${1}"'"/N;//s/"version": ".*"/"version": "'"${2}"'"/'
-  elif grep '^    }$' device.json > /dev/null; then
-    echo "Adding new information on ${1} to device.json..."
-    sed -i device.json -e '/^    }$/s/$/,\
-    {\
-      "name": "'"${1}"'",\
-      "version": "'"${2}"'"\
-    }/'
+  if [[ $(jq --arg key "$1" -e '.installed_packages[] | select(.name == $key )' device.json) ]]; then
+    echo -e "${BLUE}Updating version number of ${1} in device.json...${RESET}"
+    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json) > device.json
   else
-    echo "Adding new information on ${1} to device.json..."
-    sed -i device.json -e '/^  "installed_packages": \[$/s/$/\
-    {\
-      "name": "'"${1}"'",\
-      "version": "'"${2}"'"\
-    }/'
+    echo -e "${BLUE}Adding new information on ${1} to device.json...${RESET}"
+    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json 
   fi
 }
-
-# create the device.json file if it doesn't exist
-cd "${CREW_CONFIG_PATH}"
-if [ ! -f device.json ]; then
-  echo -e "${YELLOW}Creating new device.json...${RESET}"
-  echo '{' > device.json
-  echo '  "architecture": "'"${ARCH}"'",' >> device.json
-  echo '  "installed_packages": [' >> device.json
-  echo '  ]' >> device.json
-  echo '}' >> device.json
-fi
-
+echo -e "${YELLOW}Downloading Bootstrap packages...${RESET}"
+echo
 # extract, install and register packages
 for i in $(seq 0 $((${#urls[@]} - 1))); do
   url="${urls["${i}"]}"
@@ -191,28 +204,57 @@ done
 
 ## workaround https://github.com/skycocker/chromebrew/issues/3305
 sudo ldconfig &> /dev/null || true
-
-# create symlink to 'crew' in ${CREW_PREFIX}/bin/
+echo -e "\n${YELLOW}Creating symlink to 'crew' in ${CREW_PREFIX}/bin/${RESET}"
+echo -e "${GRAY}"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
+echo -e "${RESET}"
 
-# prepare sparse checkout .rb packages directory and do it
+echo -e "${YELLOW}Setup and synchronize local package repo...${RESET}"
+echo -e "${GRAY}"
+
+# Remove old git config directories if they exist
+rm -rf "${CREW_LIB_PATH}"
+
+# Do a minimal clone, which also sets origin to the master/main branch
+# by default. For more on why this setup might be useful see:
+# https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
+git clone --depth=1 --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
+
 cd "${CREW_LIB_PATH}"
-rm -rf .git
-git init
-git remote add -f origin "https://github.com/${OWNER}/${REPO}.git"
-git config core.sparsecheckout true
-echo packages >> .git/info/sparse-checkout
-echo lib >> .git/info/sparse-checkout
-echo bin >> .git/info/sparse-checkout
-echo crew >> .git/info/sparse-checkout
-echo tools   >> .git/info/sparse-checkout
-git fetch origin "${BRANCH}"
+
+# Checkout, overwriting local files.
+git checkout "${BRANCH}"
+
+# Set sparse-checkout folders and include install.sh for use in reinstalls
+# or to fix problems.
+git sparse-checkout set packages lib bin crew tools install.sh
 git reset --hard origin/"${BRANCH}"
-crew update
+echo -e "${RESET}"
 
-yes | crew install $LATE_PACKAGES 
+echo -e "${YELLOW}Updating crew package information...${RESET}"
+echo
+# Since we just ran git, just update package compatibility information.
+crew update compatible
 
-[[ "$devtools" == "y" || "$devtools" == "Y" ]] && yes | crew install buildessential
+# The comm tool gives the set of packages in core not already installed.
+packages_to_install=$(comm -23 <(sort "${CREW_LIB_PATH}/tools/core_packages.txt") <(jq  '.installed_packages[] .name' "${CREW_CONFIG_PATH}/device.json" | tr -d \" | sort))
+# Only install if packages_to_install isn't empty. This can happen
+# when running the install script on an existing install.
+if [[ -n "$packages_to_install" ]]; then
+  echo -e "${YELLOW}Installing core Chromebrew packages...${RESET}"
+  echo
+  yes | crew install $packages_to_install
+fi
+
+echo -e "\n${YELLOW}Running Bootstrap package postinstall scripts...${RESET}"
+echo
+crew postinstall $BOOTSTRAP_PACKAGES
+
+if [[ "$devtools" == "y" || "$devtools" == "Y" ]] ; then
+  echo -e "\n${YELLOW}Installing development tools...${RESET}"
+  echo
+  yes | crew install buildessential
+fi
 
 echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
