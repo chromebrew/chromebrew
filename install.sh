@@ -18,7 +18,7 @@ CURL="${CURL:-curl}"
 CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="pixz jq ca_certificates curl git gmp ncurses ruby"
+BOOTSTRAP_PACKAGES="pixz jq ca_certificates curl git gmp ncurses libyaml ruby"
 
 ARCH="$(uname -m)"
 # For container usage, where we are emulating armv7l via linux32
@@ -236,15 +236,9 @@ echo
 # Since we just ran git, just update package compatibility information.
 crew update compatible
 
-# The comm tool gives the set of packages in core not already installed.
-packages_to_install=$(comm -23 <(sort "${CREW_LIB_PATH}/tools/core_packages.txt") <(jq  '.installed_packages[] .name' "${CREW_CONFIG_PATH}/device.json" | tr -d \" | sort))
-# Only install if packages_to_install isn't empty. This can happen
-# when running the install script on an existing install.
-if [[ -n "$packages_to_install" ]]; then
-  echo -e "${YELLOW}Installing core Chromebrew packages...${RESET}"
-  echo
-  yes | crew install $packages_to_install
-fi
+echo -e "${YELLOW}Installing core Chromebrew packages...${RESET}"
+echo
+yes | crew install core
 
 echo -e "\n${YELLOW}Running Bootstrap package postinstall scripts...${RESET}"
 echo
