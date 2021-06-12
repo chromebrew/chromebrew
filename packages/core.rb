@@ -2,7 +2,7 @@ require 'package'
 
 class Core < Package
   description 'Core Chromebrew Packages.'
-  homepage ''
+  homepage 'https://github.com/skycocker/chromebrew'
   version '1.0'
   license 'GPL-3+'
   compatibility 'all'
@@ -47,6 +47,7 @@ class Core < Package
   depends_on 'libssp'
   depends_on 'libtasn1'
   depends_on 'libtirpc'
+  depends_on 'libunbound'
   depends_on 'libunistring'
   depends_on 'libxml2'
   depends_on 'libyaml'
