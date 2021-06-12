@@ -9,8 +9,6 @@ class Core < Package
 
   is_fake
 
-  depends_on 'acl'
-  depends_on 'attr'
   depends_on 'binutils'
   depends_on 'brotli'
   depends_on 'bz2'
@@ -21,7 +19,6 @@ class Core < Package
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
-  depends_on 'filecmd'
   depends_on 'flex'
   depends_on 'gdbm'
   depends_on 'gettext'
@@ -75,7 +72,6 @@ class Core < Package
   depends_on 'readline'
   depends_on 'rtmpdump'
   depends_on 'ruby'
-  depends_on 'sed'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'
