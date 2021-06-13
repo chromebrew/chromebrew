@@ -46,10 +46,8 @@ class Geany < Package
   end
 
   def self.postinstall
-    # This is needed to aoid "Error loading theme icon 'geany-build' for stock" messages.
-    if File.exist?("#{CREW_PREFIX}/bin/gtk-update-icon-cache")
-      system "gtk-update-icon-cache #{CREW_PREFIX}/share/icons/hicolor -f"
-    end
+    # This is needed to avoid "Error loading theme icon 'geany-build' for stock" messages.
+    system "gtk-update-icon-cache #{CREW_PREFIX}/share/icons/hicolor -f"
     puts
     puts "To get started, type 'geany'.".lightblue
     puts
