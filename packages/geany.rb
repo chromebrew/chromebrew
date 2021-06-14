@@ -26,6 +26,9 @@ class Geany < Package
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
+  @xdg_config_home = ENV['XDG_CONFIG_HOME']
+  @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
+
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "#{CREW_ENV_OPTIONS} \
@@ -48,12 +51,21 @@ class Geany < Package
   def self.postinstall
     # This is needed to avoid "Error loading theme icon 'geany-build' for stock" messages.
     system "gtk-update-icon-cache #{CREW_PREFIX}/share/icons/hicolor -f"
-    puts
-    puts "To get started, type 'geany'.".lightblue
-    puts
-    puts 'To completely uninstall, execute the following:'.lightblue
-    puts 'crew remove geany'.lightblue
-    puts 'rm -rf ~/.config/geany'.lightblue
-    puts
+  end
+
+  def self.remove
+    config_dirs = ["#{HOME}/.config/geany", "#{@xdg_config_home}/geany"]
+    config_dirs.each do |config_dir|
+      next unless Dir.exist? config_dir
+
+      print "\nWould you like to remove #{config_dir}? [y/N] "
+      case $stdin.getc
+      when 'y', 'Y'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightred
+      else
+        puts "#{config_dir} saved.".lightgreen
+      end
+    end
   end
 end
