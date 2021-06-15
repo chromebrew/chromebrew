@@ -18,7 +18,7 @@ CURL="${CURL:-curl}"
 CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="pixz jq ca_certificates curl git gmp ncurses libyaml ruby"
+BOOTSTRAP_PACKAGES="pixz jq ca_certificates git gmp ncurses libyaml ruby"
 
 ARCH="$(uname -m)"
 # For container usage, where we are emulating armv7l via linux32
@@ -26,14 +26,13 @@ ARCH="${ARCH/armv8l/armv7l}"
 
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
-GREEN='\e[1;32m';  # Use Green for success messages. 
+GREEN='\e[1;32m';  # Use Green for success messages.
 BLUE='\e[1;34m';   # Use Blue for intrafunction messages.
 GRAY='\e[1;37m';   # Use Gray for program output.
 MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
-echo -e "${GREEN}Welcome to Chromebrew!${RESET}"
-echo
+echo -e "${GREEN}Welcome to Chromebrew!${RESET}\n"
 if [ "${EUID}" == "0" ]; then
   echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
   exit 1;
@@ -49,11 +48,9 @@ case "${ARCH}" in
   exit 1;;
 esac
 
-# install a base set of development packages for compiling and building software
-echo -e -n "${BLUE}Install development tools? (not needed for most users) [y/N]: ${RESET}"; read -n1 devtools
 echo -e "\n\n${YELLOW}Doing initial setup for install in ${CREW_PREFIX}.${RESET}"
-echo -e "${YELLOW}This may take a while if there are preexisting files in ${CREW_PREFIX}...${RESET}"
-echo
+echo -e "${YELLOW}This may take a while if there are preexisting files in ${CREW_PREFIX}...${RESET}\n"
+
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
@@ -64,6 +61,7 @@ do
   fi
 done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+
 # Delete 'var' symlink on Cloudready platform
 if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
   [ -L /usr/local/var ] && sudo rm -f /usr/local/var
@@ -104,8 +102,7 @@ if [ ! -f device.json ]; then
     --arg key1 'installed_packages' \
     '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 fi
-echo
-echo -e "${YELLOW}Downloading information for Bootstrap packages...${RESET}"
+echo -e "\n${YELLOW}Downloading information for Bootstrap packages...${RESET}"
 echo -e "${GRAY}"
 (cd "${CREW_LIB_PATH}"/packages && curl -#OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
 echo -e "${RESET}"
@@ -163,7 +160,7 @@ function extract_install () {
 
     #extract and install
     echo -e "${BLUE}Extracting ${1} ...${RESET}"
-    if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then 
+    if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then
       tar xpf ../"${2}"
     else
       LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
@@ -182,11 +179,10 @@ function update_device_json () {
     cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json) > device.json
   else
     echo -e "${BLUE}Adding new information on ${1} to device.json...${RESET}"
-    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json 
+    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json
   fi
 }
-echo -e "${YELLOW}Downloading Bootstrap packages...${RESET}"
-echo
+echo -e "${YELLOW}Downloading Bootstrap packages...${RESET}\n"
 # extract, install and register packages
 for i in $(seq 0 $((${#urls[@]} - 1))); do
   url="${urls["${i}"]}"
@@ -231,28 +227,18 @@ git sparse-checkout set packages lib bin crew tools install.sh
 git reset --hard origin/"${BRANCH}"
 echo -e "${RESET}"
 
-echo -e "${YELLOW}Updating crew package information...${RESET}"
-echo
+echo -e "${YELLOW}Updating crew package information...${RESET}\n"
 # Since we just ran git, just update package compatibility information.
 crew update compatible
 
-echo -e "${YELLOW}Installing core Chromebrew packages...${RESET}"
-echo
+echo -e "${YELLOW}Installing core Chromebrew packages...${RESET}\n"
 yes | crew install core
 
-echo -e "\n${YELLOW}Running Bootstrap package postinstall scripts...${RESET}"
-echo
+echo -e "\n${YELLOW}Running Bootstrap package postinstall scripts...${RESET}\n"
 crew postinstall $BOOTSTRAP_PACKAGES
 
-if [[ "$devtools" == "y" || "$devtools" == "Y" ]] ; then
-  echo -e "\n${YELLOW}Installing development tools...${RESET}"
-  echo
-  yes | crew install buildessential
-fi
-
-echo
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
-  echo -e "${YELLOW}
+  echo -e "\n${YELLOW}
 Since you have installed Chromebrew in a directory other than '/usr/local',
 you need to run these commands to complete your installation:
 ${RESET}"
