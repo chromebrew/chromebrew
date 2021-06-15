@@ -13,13 +13,13 @@ class Git < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.32.0-musl-1_armv7l/git-2.32.0-musl-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.32.0-musl-1_armv7l/git-2.32.0-musl-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.32.0-musl-1_i686/git-2.32.0-musl-1-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.32.0-musl-1_i686/git-2.32.0-musl-1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.32.0-musl-1_x86_64/git-2.32.0-musl-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'f9dce49267eab2dd52233ff8bfdc6899f482dd17dc67a50eebbd2e531a2aa6b4',
      armv7l: 'f9dce49267eab2dd52233ff8bfdc6899f482dd17dc67a50eebbd2e531a2aa6b4',
-       i686: '232ec85839ba8169cb5c503ffc668085c90611d98276ec3823b7d65cfd1e00b2',
+       i686: '4e7ea06987c4ccea0ec900bffaba2184b48d3ca0d4d33d08134f23e1dc590129',
      x86_64: '17eac279771387b441bd0175cd30451e5ac6f5cb2cd21f73f99477fadba5d947'
   })
 
