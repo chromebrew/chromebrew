@@ -11,7 +11,7 @@ ls ../packages/*.rb | sort | cut -d'/' -f3 | cut -d'.' -f1 > /tmp/packages_all.t
 rm -f /tmp/packages.txt
 touch /tmp/packages.txt
 for p in $(cat /tmp/packages_all.txt); do
-  if [ ! $(grep 'is_fake' ../packages/${p}.rb 2> /dev/null) ]; then
+  if [[ ! $(grep 'is_fake' ../packages/${p}.rb 2> /dev/null) ]]; then
     echo $p >> /tmp/packages.txt
   fi
 done
