@@ -22,7 +22,7 @@ class Libxfont2 < Package
      x86_64: '2de5392e181a0f94794b888eec55bc35b0e26cb8f69ca0f77394b9d7e887ef1b',
   })
 
-  depends_on 'fop'
+  depends_on 'fop' => :build
   depends_on 'libxtrans'
   depends_on 'libfontenc'
   depends_on 'libx11'
