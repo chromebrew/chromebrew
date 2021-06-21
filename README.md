@@ -100,6 +100,7 @@ Latest Packages
 
 | Name | Description | Date Added |
 |:---|:---|:---|
+| snowflake | Snowflake (aka Muon) is a graphical SSH client. | 2021-06-19 |
 | fd | A simple, fast and user-friendly alternative to find | 2021-06-08 |
 | rdfind | Redundant data find - a program that finds duplicate files. | 2021-06-07 |
 | libcurl | Command line tool and library for transferring data with URLs. | 2021-06-07 |
@@ -109,7 +110,6 @@ Latest Packages
 | gcloud | Command-line interface for Google Cloud Platform products and services | 2021-05-23 |
 | upx | Extendable, high-performance executable packer for several executable formats | 2021-05-20 |
 | ucl | Portable lossless data compression library written in ANSI C | 2021-05-20 |
-| source_highlight | Convert source code to syntax highlighted document | 2021-05-17 |
 
 Chat with us!
 -------------
