@@ -3,23 +3,23 @@ require 'package'
 class Sqlite < Package
   description 'SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.'
   homepage 'http://www.sqlite.org/'
-  version '3.33.0'
+  version '3.36.0'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://sqlite.org/2020/sqlite-autoconf-3330000.tar.gz'
-  source_sha256 '106a2c48c7f75a298a7557bcc0d5f4f454e5b43811cc738b7ca294d6956bbb15'
+  source_url 'https://sqlite.org/2021/sqlite-autoconf-3360000.tar.gz'
+  source_sha256 'bd90c3eb96bee996206b83be7065c9ce19aef38c3f4fb53073ada0d0b69bbce3'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.33.0_armv7l/sqlite-3.33.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.33.0_armv7l/sqlite-3.33.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.33.0_i686/sqlite-3.33.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.33.0_x86_64/sqlite-3.33.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.36.0_armv7l/sqlite-3.36.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.36.0_armv7l/sqlite-3.36.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.36.0_i686/sqlite-3.36.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.36.0_x86_64/sqlite-3.36.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '27a1d3b134071c152133e377a4be1900a93a22a9e9c9ca57fdb1532f09c1f142',
-     armv7l: '27a1d3b134071c152133e377a4be1900a93a22a9e9c9ca57fdb1532f09c1f142',
-       i686: '6a4c154e2c863c487139dfe3890982634ec4e8ac8572fac887faddc452fd76d6',
-     x86_64: 'a508152321c6a8175d48c9203a6aedc24d279fc1bd5e53ed7bcfb8816b70bbdc',
+  binary_sha256({
+    aarch64: '57ba561acfc24bc8a9eed5f0ef8d32726fd9c2970fe0d1e17b1764df6f3bfade',
+     armv7l: '57ba561acfc24bc8a9eed5f0ef8d32726fd9c2970fe0d1e17b1764df6f3bfade',
+       i686: '2f54951a8d62f28262771b12ec0c04ecd9162bedad060d2c630e45a074c0a0a1',
+     x86_64: '7ea92b093047843e47d9a383ecb05831774824913b562c245c9460875773cdb3'
   })
 
   depends_on 'libedit'
@@ -27,8 +27,7 @@ class Sqlite < Package
   depends_on 'zlibpkg'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --disable-static \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
       --enable-shared \
       --enable-editline \
       --enable-readline \
