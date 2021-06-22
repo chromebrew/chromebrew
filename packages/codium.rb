@@ -27,6 +27,7 @@ class Codium < Package
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gtk3'
+  depends_on 'libcom_err'
   depends_on 'libdrm'
   depends_on 'libx11'
   depends_on 'libxcb'
