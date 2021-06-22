@@ -100,6 +100,7 @@ Latest Packages
 
 | Name | Description | Date Added |
 |:---|:---|:---|
+| ltrace | ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process. | 2021-06-22 |
 | exodus | Exodus is a desktop crypto wallet | 2021-06-21 |
 | snowflake | Snowflake (aka Muon) is a graphical SSH client. | 2021-06-19 |
 | fd | A simple, fast and user-friendly alternative to find | 2021-06-08 |
@@ -109,7 +110,6 @@ Latest Packages
 | pdftk | PDFtk is a simple tool for doing everyday things with PDF documents. | 2021-05-31 |
 | podofo | A PDF parsing, modification and creation library. | 2021-05-27 |
 | gcloud | Command-line interface for Google Cloud Platform products and services | 2021-05-23 |
-| upx | Extendable, high-performance executable packer for several executable formats | 2021-05-20 |
 
 Chat with us!
 -------------
