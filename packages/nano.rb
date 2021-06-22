@@ -3,24 +3,24 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  @_ver = '5.6.1'
+  @_ver = '5.8'
   version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://nano-editor.org/dist/v5/nano-#{@_ver}.tar.xz"
-  source_sha256 '760d7059e0881ca0ee7e2a33b09d999ec456ff7204df86bee58eb6f523ee8b09'
+  source_sha256 'e43b63db2f78336e2aa123e8d015dbabc1720a15361714bfd4b1bb4e5e87768c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.6.1_armv7l/nano-5.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.6.1_armv7l/nano-5.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.6.1_i686/nano-5.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.6.1_x86_64/nano-5.6.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_armv7l/nano-5.8-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_armv7l/nano-5.8-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_i686/nano-5.8-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_x86_64/nano-5.8-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1a421406267c513aed8d65ec02d9b2e796e4ca1dcc044d00e5b1b8a5543796e4',
-     armv7l: '1a421406267c513aed8d65ec02d9b2e796e4ca1dcc044d00e5b1b8a5543796e4',
-       i686: '0b5f611c9cde46159191a255127761a04c4e1e6c865a41fff8d048ac596ed938',
-     x86_64: 'da8530aac92bd6b84dd3b142baa4586db42e5c0880172a55d9fa7383f91fc408'
+    aarch64: '23b77943e240929c4acf71ea4c0f40ef107524b6368bbcc35e8cc5f6bd751ee8',
+     armv7l: '23b77943e240929c4acf71ea4c0f40ef107524b6368bbcc35e8cc5f6bd751ee8',
+       i686: '0e21d468927c646e377e9aa848032b401eb7a6c160a564d45d4e809a7f20f8c7',
+     x86_64: '00651b1b81c2479b9b924325e5308530e49dacaa925f67903893347e8f295628'
   })
 
   depends_on 'xdg_base'
@@ -30,9 +30,7 @@ class Nano < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto=auto' \
+    system "#{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --enable-threads=posix \
       --enable-nls \
@@ -66,7 +64,6 @@ class Nano < Package
       f << "set historylog\n"
       f << "set quickblank\n"
       f << "set regexp\n"
-      f << "set smooth\n"
       f << "set suspend\n"
     end
   end
