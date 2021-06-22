@@ -6,23 +6,23 @@ require 'package'
 class Evince < Package
   description 'Document viewer PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt'
   homepage 'https://wiki.gnome.org/Apps/Evince'
-  version '40.1'
+  version '40.2'
   license 'GPL'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/evince.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_armv7l/evince-40.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_armv7l/evince-40.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_i686/evince-40.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_x86_64/evince-40.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_armv7l/evince-40.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_armv7l/evince-40.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_i686/evince-40.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_x86_64/evince-40.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '62b72ae5cb06f66f219254ca9538c1cb28f91d869689f70f1551d89d5acbd336',
-     armv7l: '62b72ae5cb06f66f219254ca9538c1cb28f91d869689f70f1551d89d5acbd336',
-       i686: '35fddcde12a82b65876ef8ddc6f4dee8b42f74b1c746a5f51a84e2b686bcce8b',
-     x86_64: '66c5249315ae4e4f348ea5c2d732323623f8eb834ffc7cd353a53de966a7672a'
+    aarch64: '74251f49f4fe22b9a19e4cbd16770d270eb13147df23265e62bb960ec71634e0',
+     armv7l: '74251f49f4fe22b9a19e4cbd16770d270eb13147df23265e62bb960ec71634e0',
+       i686: '30051f33d1c73422b28298ccb9f7a84cc6dbb30a742cc01aef63d7054b090b04',
+     x86_64: '49e164c40f852960136be7660fc38be92d6517d45c073d2b076dcdbf643cffd6'
   })
 
   depends_on 'atk' # R
