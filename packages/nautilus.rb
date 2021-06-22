@@ -6,7 +6,7 @@ require 'package'
 class Nautilus < Package
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
-  @_ver = '40.1'
+  @_ver = '40.2'
   version @_ver
   license 'GPLv3'
   compatibility 'all'
@@ -14,16 +14,16 @@ class Nautilus < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.1_armv7l/nautilus-40.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.1_armv7l/nautilus-40.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.1_i686/nautilus-40.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.1_x86_64/nautilus-40.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_armv7l/nautilus-40.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_armv7l/nautilus-40.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_i686/nautilus-40.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_x86_64/nautilus-40.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5be1b22e7f4c93ea940558f5cfcb7e33c7abbf86d3c2b8cc3ac039c1ca946215',
-     armv7l: '5be1b22e7f4c93ea940558f5cfcb7e33c7abbf86d3c2b8cc3ac039c1ca946215',
-       i686: '66f98e53dd52bd1670d229845b969964fa1be2bbce2419db006defa4919dc5b4',
-     x86_64: '2df5a25aa14395965a8891b3917044537b7faf89dd45b49b46eab331e9379e0f'
+    aarch64: '8417f762f5857edc7fe0dcfc64fac7a488ec6668f4ed19cf7a4f09b4c7821bbf',
+     armv7l: '8417f762f5857edc7fe0dcfc64fac7a488ec6668f4ed19cf7a4f09b4c7821bbf',
+       i686: '3bc83cc9f2b407584434365c9ac8f95a1b0b691d6cb6f44bc4fadda5a1283ce2',
+     x86_64: 'ddd67ddee30dab06fd42c6b74bbf50a6cee0ab43071a363f283ff4d66b848ba0'
   })
 
   depends_on 'appstream_glib' => :build
