@@ -11,6 +11,7 @@ require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require 'securerandom'
+require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
 
@@ -845,9 +846,11 @@ def pre_install(dest_dir)
 end
 
 def post_install
-  Dir.chdir CREW_DEST_DIR do
-    puts "Performing post-install for #{@pkg.name}...".lightblue
-    @pkg.postinstall
+  Dir.mktmpdir do |post_install_tempdir|
+    Dir.chdir post_install_tempdir do
+      puts "Performing post-install for #{@pkg.name}...".lightblue
+      @pkg.postinstall
+    end
   end
 end
 
