@@ -1127,7 +1127,7 @@ def resolve_dependencies
       print_current_package
       install
     end
-    if @resolve_dependencies_and_install == 1
+    if @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
       @to_postinstall = @dependencies
     else
       @dependencies.each do |dep|
@@ -1177,7 +1177,7 @@ def install
     # perform install process
     install_package dest_dir
 
-    unless @resolve_dependencies_and_install == 1
+    unless @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
       # perform post-install process
       post_install
     end
@@ -1195,13 +1195,18 @@ def install
 end
 
 def resolve_dependencies_and_build
+  @resolve_dependencies_and_build = 1
+  @to_postinstall = []
   begin
     origin = @pkg.name
 
     # mark current package as which is required to compile from source
     @pkg.build_from_source = true
     resolve_dependencies
-
+    @to_postinstall.each do |dep|
+      search dep
+      post_install
+    end
     search origin, true
     build_package Dir.pwd
   rescue InstallError => e
@@ -1214,6 +1219,7 @@ def resolve_dependencies_and_build
     end
   end
   puts "#{@pkg.name} is built!".lightgreen
+  @resolve_dependencies_and_build = 0
 end
 
 def build_package(pwd)
