@@ -100,6 +100,7 @@ Latest Packages
 
 | Name | Description | Date Added |
 |:---|:---|:---|
+| codelobster | Free cross-platform IDE for PHP/HTML/CSS/JavaScript development | 2021-06-23 |
 | ltrace | ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process. | 2021-06-22 |
 | exodus | Exodus is a desktop crypto wallet | 2021-06-21 |
 | snowflake | Snowflake (aka Muon) is a graphical SSH client. | 2021-06-19 |
@@ -109,7 +110,6 @@ Latest Packages
 | pdfchain | PDF Chain is a graphical user interface for the PDF Toolkit (PDFtk). | 2021-06-01 |
 | pdftk | PDFtk is a simple tool for doing everyday things with PDF documents. | 2021-05-31 |
 | podofo | A PDF parsing, modification and creation library. | 2021-05-27 |
-| gcloud | Command-line interface for Google Cloud Platform products and services | 2021-05-23 |
 
 Chat with us!
 -------------
