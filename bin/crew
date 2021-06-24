@@ -656,7 +656,7 @@ def download
           cachefile = ''
         else
           puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
-          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum
+          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum || sha256sum =~ /^SKIP$/i
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
@@ -677,7 +677,7 @@ def download
       # Download file if not cached.
       system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
+        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested (and if file is not from cache).
       if CREW_CACHE_ENABLED and cachefile.to_s.empty?
