@@ -7,7 +7,7 @@ class Minecraft < Package
   license 'Mojang'
   compatibility 'x86_64'
   source_url 'https://launcher.mojang.com/download/Minecraft.deb'
-  source_sha256 '21254b54e59e946adc523898f704592dc7c32b644c618324df80c4b98355ccd0'
+  source_sha256 'SKIP'
 
   depends_on 'libx11'
   depends_on 'jdk8'
