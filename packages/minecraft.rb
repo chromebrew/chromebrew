@@ -9,7 +9,7 @@ class Minecraft < Package
   source_url 'https://launcher.mojang.com/download/Minecraft.deb'
   # The minecraft-launcher deb changes often, and we are downloading via https
   # so maybe it is ok to trust the source package without further hashing.
-  source_sha256 `curl -Ls #{source_url} | sha256sum | tail -n1 | cut -d' ' -f1`.chomp
+  source_sha256 'SKIP'
 
   depends_on 'libx11'
   depends_on 'jdk8'
