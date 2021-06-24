@@ -19,15 +19,13 @@ class Minecraft < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/minecraft-launcher", "#{CREW_DEST_PREFIX}/bin/minecraft-launcher.elf"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/minecraft"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.minecraft"
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       @launcherscript = <<~EOF
         #!/bin/bash
         # Minecraft launcher documentation is at:
         # https://minecraft.fandom.com/wiki/Minecraft_Launcher
-        sudo mount -o remount,symfollow /home/chronos/user
-        #{CREW_PREFIX}/bin/minecraft-launcher.elf --workDir #{CREW_PREFIX}/.config/minecraft --tmpDir #{CREW_PREFIX}/tmp $@
-        sudo mount -o remount,nosymfollow /home/chronos/user
+        HOME=#{CREW_PREFIX}/.config #{CREW_PREFIX}/bin/minecraft-launcher.elf --workDir #{CREW_PREFIX}/.config/.minecraft --tmpDir #{CREW_PREFIX}/tmp $@
       EOF
       IO.write("minecraft-launcher", @launcherscript)
       system "chmod +x minecraft-launcher"
@@ -36,7 +34,7 @@ class Minecraft < Package
 
   def self.postinstall
     puts
-    puts "Your minecraft data is in #{CREW_PREFIX}/.config/minecraft and ~/.minecraft .".lightblue
+    puts "Your minecraft data is in #{CREW_PREFIX}/.config/.minecraft .".lightblue
     puts "To launch, just type `minecraft-launcher`.".lightblue
     puts
   end
