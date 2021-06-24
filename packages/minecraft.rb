@@ -26,7 +26,7 @@ class Minecraft < Package
         # Minecraft launcher documentation is at:
         # https://minecraft.fandom.com/wiki/Minecraft_Launcher
         sudo mount -o remount,symfollow /home/chronos/user
-        /usr/local/bin/minecraft-launcher.elf --disableGPU --workDir #{CREW_PREFIX}/.config/minecraft --tmpDir #{CREW_PREFIX}/tmp $@
+        #{CREW_PREFIX}/bin/minecraft-launcher.elf --workDir #{CREW_PREFIX}/.config/minecraft --tmpDir #{CREW_PREFIX}/tmp $@
         sudo mount -o remount,nosymfollow /home/chronos/user
       EOF
       IO.write("minecraft-launcher", @launcherscript)
