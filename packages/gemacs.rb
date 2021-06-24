@@ -4,24 +4,24 @@ class Gemacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'https://www.gnu.org/software/emacs/'
   @_ver = '28.0.50.1'
-  version "#{@_ver}-7a7b"
+  version "#{@_ver}-01b0"
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/emacs.git'
   git_branch 'feature/pgtk'
-  git_hashtag '7a7bc15242896b20c7af49f77f0e22c3d78e4d88'
+  git_hashtag '01b0a909b5ca858a09484821cc866127652f4153'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_armv7l/gemacs-28.0.50.1-7a7b-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_i686/gemacs-28.0.50.1-7a7b-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-7a7b_x86_64/gemacs-28.0.50.1-7a7b-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-01b0_armv7l/gemacs-28.0.50.1-01b0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-01b0_armv7l/gemacs-28.0.50.1-01b0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-01b0_i686/gemacs-28.0.50.1-01b0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.0.50.1-01b0_x86_64/gemacs-28.0.50.1-01b0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '74066f8609ca1403609962454feff1a85aedb24a3d56dbfcae4a3aad8d00f836',
-     armv7l: '74066f8609ca1403609962454feff1a85aedb24a3d56dbfcae4a3aad8d00f836',
-       i686: '401243600795df8a6c375a7e581b939e258d1697595e9a43573860fca34656c0',
-     x86_64: '702ac1d56095b1032d387a2e4736e6f8ac49d4d16a165cbc1142cb5ffe394454'
+    aarch64: '8ba0433113a23361cf961d372c8e7db79206c5baf3046255bebec0acd1d73452',
+     armv7l: '8ba0433113a23361cf961d372c8e7db79206c5baf3046255bebec0acd1d73452',
+       i686: 'e1a0efa63cf40683ddfd90ca181f43e50d87bbf6179774f976e6cc8f917f0205',
+     x86_64: '8f462f3de1a19f67a36e6752124da213add709a075cd8bc52815452d9bf68b16'
   })
 
   depends_on 'alsa_lib'
