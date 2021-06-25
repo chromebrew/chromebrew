@@ -11,6 +11,7 @@ require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require 'securerandom'
+require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
 
@@ -150,9 +151,9 @@ def print_current_package(extra = false)
   when 'incompatible'
     print @pkg.name.lightred
   else
-    print @pkg.name
+    print @pkg.name.lightblue
   end
-  print ": #{@pkg.description}" if @pkg.description
+  print ": #{@pkg.description}".lightblue if @pkg.description
   if extra
     puts ""
     puts @pkg.homepage if @pkg.homepage
@@ -648,14 +649,14 @@ def download
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
-        puts "Looking for archive in cache".orange if @opt_verbose
+        puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
         cachefile = CREW_CACHE_DIR + filename
         if ! File.exist?(cachefile)
           puts 'Cannot find cached archive. 😔 Will download.'.lightred
           cachefile = ''
         else
-          puts "Archive file exists in cache".lightgreen if @opt_verbose
-          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum
+          puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
+          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum || sha256sum =~ /^SKIP$/i
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
@@ -676,8 +677,8 @@ def download
       # Download file if not cached.
       system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
-      puts 'Archive downloaded.'.lightgreen
+        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
+      puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested (and if file is not from cache).
       if CREW_CACHE_ENABLED and cachefile.to_s.empty?
         begin
@@ -844,10 +845,12 @@ def pre_install(dest_dir)
   end
 end
 
-def post_install(dest_dir)
-  Dir.chdir dest_dir do
-    puts 'Performing post-install...'
-    @pkg.postinstall
+def post_install
+  Dir.mktmpdir do |post_install_tempdir|
+    Dir.chdir post_install_tempdir do
+      puts "Performing post-install for #{@pkg.name}...".lightblue
+      @pkg.postinstall
+    end
   end
 end
 
@@ -1000,6 +1003,7 @@ def install_package(pkgdir)
 end
 
 def resolve_dependencies_and_install
+  @resolve_dependencies_and_install = 1
   unless @pkg.is_fake?
     # Process preflight block to see if package should even
     # be downloaded or installed.
@@ -1008,10 +1012,16 @@ def resolve_dependencies_and_install
   begin
     origin = @pkg.name
 
+    @to_postinstall = []
     resolve_dependencies
 
     search origin, true
     install
+    @to_postinstall.append(@pkg.name)
+    @to_postinstall.each do |dep|
+      search dep
+      post_install
+    end
   rescue InstallError => e
     abort "#{@pkg.name} failed to install: #{e.to_s}".lightred
   ensure
@@ -1022,6 +1032,7 @@ def resolve_dependencies_and_install
     end
   end
   puts "#{@pkg.name.capitalize} installed!".lightgreen
+  @resolve_dependencies_and_install = 0
 end
 
 def expand_dependencies
@@ -1116,6 +1127,14 @@ def resolve_dependencies
       print_current_package
       install
     end
+    if @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
+      @to_postinstall = @dependencies
+    else
+      @dependencies.each do |dep|
+        search dep
+        post_install
+      end
+    end
   end
 end
 
@@ -1158,8 +1177,10 @@ def install
     # perform install process
     install_package dest_dir
 
-    # perform post-install process
-    post_install dest_dir
+    unless @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
+      # perform post-install process
+      post_install
+    end
   end
 
   #add to installed packages
@@ -1174,13 +1195,18 @@ def install
 end
 
 def resolve_dependencies_and_build
+  @resolve_dependencies_and_build = 1
+  @to_postinstall = []
   begin
     origin = @pkg.name
 
     # mark current package as which is required to compile from source
     @pkg.build_from_source = true
     resolve_dependencies
-
+    @to_postinstall.each do |dep|
+      search dep
+      post_install
+    end
     search origin, true
     build_package Dir.pwd
   rescue InstallError => e
@@ -1193,6 +1219,7 @@ def resolve_dependencies_and_build
     end
   end
   puts "#{@pkg.name} is built!".lightgreen
+  @resolve_dependencies_and_build = 0
 end
 
 def build_package(pwd)
