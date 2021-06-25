@@ -25,6 +25,7 @@ class Geany < Package
   depends_on 'gtk3'
   depends_on 'xdg_base'
   depends_on 'sommelier'
+  depends_on 'vte'
 
   @xdg_config_home = ENV['XDG_CONFIG_HOME']
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
