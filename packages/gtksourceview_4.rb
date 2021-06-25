@@ -6,20 +6,18 @@ class Gtksourceview_4 < Package
   @_ver = '4.8.1'
   version @_ver
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/gtksourceview/-/archive/#{@_ver}/gtksourceview-#{@_ver}.tar.bz2"
   source_sha256 'ec16a6a61d643e278d3a02828257a59d802d4ae740247bf03fdebf10d9401635'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.1_armv7l/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.1_armv7l/gtksourceview_4-4.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.1_i686/gtksourceview_4-4.8.1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.1_x86_64/gtksourceview_4-4.8.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'b6e5a158eaf5853eadcc5fcf3057c84b60800113358e3db76b1c9b716faec11e',
      armv7l: 'b6e5a158eaf5853eadcc5fcf3057c84b60800113358e3db76b1c9b716faec11e',
-       i686: 'c0799e84f28569699b968f501a45f37e21b38ee0257774e87075139e54308094',
      x86_64: '68b3cea57e7cd0edf6712b9ad3b8c9c1e3b2b7723d7a1cc070178b04db597d82'
   })
 
