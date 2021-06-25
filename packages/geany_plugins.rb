@@ -22,20 +22,10 @@ class Geany_plugins < Package
 
   depends_on 'libgit2' => :build
   depends_on 'valgrind' => :build
-  depends_on 'vte' => :build
-  depends_on 'atk' # R
-  depends_on 'cairo' # R
   depends_on 'enchant' # R
-  depends_on 'gdk_pixbuf' # R
   depends_on 'geany' # R
-  depends_on 'glib' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
   depends_on 'libsoup2' # R
-  depends_on 'libxml2' # R
-  depends_on 'pango' # R
   depends_on 'webkit2gtk_4' # R
-  depends_on 'zlibpkg' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
