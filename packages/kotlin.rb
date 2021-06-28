@@ -15,7 +15,7 @@ class Kotlin < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/kotlin"
     FileUtils.rm_f Dir['bin/*.bat']
-    FileUtils.mv Dir['.'] "#{CREW_DEST_PREFIX}/share/kotlin"
+    FileUtils.mv Dir['.'], "#{CREW_DEST_PREFIX}/share/kotlin"
     FileUtils.cd "#{CREW_DEST_PREFIX}/share/kotlin/bin" do
       system "find . -type f -exec ln -s #{CREW_PREFIX}/share/kotlin/bin/{} #{CREW_DEST_PREFIX}/bin \\;"
     end
