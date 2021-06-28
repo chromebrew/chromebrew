@@ -3,16 +3,11 @@ require 'package'
 class Idea < Package
   description 'Capable and Ergonomic IDE for JVM'
   homepage 'https://www.jetbrains.com/idea/'
-  version '2019.3.2'
+  version '2021.1.2'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://download.jetbrains.com/idea/ideaIC-2019.3.2.tar.gz'
-  source_sha256 'c38f18a2b2246b9a53fd62d454ccf67996bf59adc0b7e3843be0a9cf44637127'
-
-  binary_url ({
-  })
-  binary_sha256 ({
-  })
+  source_url 'https://download.jetbrains.com/idea/ideaIC-2021.1.2.tar.gz'
+  source_sha256 'e2517d79b39581f1548ca4119cb2fa478505cf73203d97b4f3292f05ae71250e'
 
   depends_on 'jdk8'
   depends_on 'xdg_base'
@@ -22,21 +17,32 @@ class Idea < Package
     # Fix java.io.IOException: Cannot run program "/home/chronos/user/.IdeaIC2019.3/system/tmp/ij1055598732.tmp": error=13, Permission denied
     FileUtils.mkdir_p "#{CREW_DEST_HOME}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.IdeaIC2019.3"
-    system "touch #{CREW_DEST_PREFIX}/.config/.IdeaIC2019.3/test"
-    FileUtils.ln_s "#{CREW_PREFIX}/.config/.IdeaIC2019.3", "#{CREW_DEST_HOME}/.IdeaIC2019.3"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.IdeaIC2021.1"
+    system "touch #{CREW_DEST_PREFIX}/.config/.IdeaIC2021.1/test"
+    FileUtils.ln_s "#{CREW_PREFIX}/.config/.IdeaIC2021.1", "#{CREW_DEST_HOME}/.IdeaIC2021.1"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/Idea"
     FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/Idea"
     FileUtils.ln_s "#{CREW_PREFIX}/share/Idea/bin/idea.sh", "#{CREW_DEST_PREFIX}/bin/idea"
   end
 
   def self.postinstall
-    puts
-    puts "To get started, type 'idea'.".lightblue
-    puts
-    puts "To completely remove including all preferences, execute the following:".lightblue
-    puts "crew remove idea".lightblue
-    puts "rm -rf #{CREW_PREFIX}/.config/.IdeaIC2019.3".lightblue
-    puts
+    puts "\nTo get started, type 'idea'.\n".lightblue
+  end
+
+  def self.remove
+    print "Would you like to remove the config directories? [y/N] "
+    response = STDIN.getc
+    config_dirs = ["#{CREW_PREFIX}/.config/.IdeaIC2021.1", "#{HOME}/.IdeaIC2021.1"]
+    config_dirs.each { |config_dir|
+      if Dir.exist? config_dir
+        case response
+        when 'y', 'Y'
+          FileUtils.rm_rf config_dir
+          puts "#{config_dir} removed.".lightred
+        else
+          puts "#{config_dir} saved.".lightgreen
+        end
+      end
+    }
   end
 end
