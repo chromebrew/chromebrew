@@ -6,20 +6,18 @@ class Vte < Package
   @_ver = '0.64.2'
   version @_ver
   license 'LGPL-2+ and GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
   git_hashtag @_ver
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_i686/vte-0.64.2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_x86_64/vte-0.64.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
      armv7l: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
-       i686: '8e3696af4f9cf32e5b7a22741c66eeba991d3a261c68acd3b4223dde9747d24e',
      x86_64: '3c8d0ddce8365705d966bdc2b1102d77dd660c0265b0e36ff9a7848e400614e0'
   })
 
