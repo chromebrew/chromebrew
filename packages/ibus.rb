@@ -6,20 +6,18 @@ class Ibus < Package
   @_ver = '1.5.24'
   version "#{@_ver}-1"
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/ibus/ibus/releases/download/#{@_ver}/ibus-#{@_ver}.tar.gz"
   source_sha256 'abf33a965063629d3bbdab8a5948736ce3a9523cc3d6331e5ea0ec5e8ea7421f'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_i686/ibus-1.5.24-1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_x86_64/ibus-1.5.24-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
      armv7l: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
-       i686: '683dd8cd21854a8a47a66e3d3c238cc898d22745f48390c28483ef16fdfecd40',
      x86_64: 'baeca79b3d8750e062e46dcee2114f3425a8abed1a104db540df542ea098814f'
   })
 
