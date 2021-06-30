@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.16'
+  version '1.17'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -36,6 +36,7 @@ class Buildessential < Package
   depends_on 'patch'
   depends_on 'sed'
   depends_on 'util_macros'
+  depends_on 'valgrind'
 
   # build documentation
   depends_on 'compressdoc'
