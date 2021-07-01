@@ -3,24 +3,22 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.9.5'
+  @_ver = '3.9.6'
   version @_ver
   license 'PSF-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '0c5a140665436ec3dbfbb79e2dfb6d192655f26ef4a29aeffcb6d1820d716d83'
+  source_sha256 '397920af33efc5b97f2e0b57e91923512ef89fc5b3c1d21dbfc8c4828ce0108a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_armv7l/python3-3.9.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_armv7l/python3-3.9.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_i686/python3-3.9.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.5_x86_64/python3-3.9.5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.6_armv7l/python3-3.9.6-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.6_armv7l/python3-3.9.6-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.6_x86_64/python3-3.9.6-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'fa69875022aa4d3067d2ebff90681669e6531ed69c9a7921a19f827f9bdb086c',
-     armv7l: 'fa69875022aa4d3067d2ebff90681669e6531ed69c9a7921a19f827f9bdb086c',
-       i686: 'f47186768e5fc9dad1b71c89360b2248f4a90c14b5cd7d9be38087160f1e4088',
-     x86_64: '808f2dc915e47b646a15de657ab1b240b09472e2b2441424179f8ec8f789b2f9',
+    aarch64: '6196100c5fef60f2442e3ccebe2887ef6634fe003a9e175d6656715c77b8badf',
+     armv7l: '6196100c5fef60f2442e3ccebe2887ef6634fe003a9e175d6656715c77b8badf',
+     x86_64: '89f63f5bacddc09303e7bded741dad40d07db8eda6a12a568bcb4eb4ce63c036'
   })
 
   depends_on 'autoconf_archive' => :build
