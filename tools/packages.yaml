@@ -379,6 +379,11 @@ url: https://github.com/Azure/azure-cli/releases
 activity: high
 ---
 kind: url
+name: b2
+url: https://github.com/boostorg/build/releases
+activity: low
+---
+kind: url
 name: babl
 url: https://download.gimp.org/pub/babl/
 activity: high
@@ -816,6 +821,11 @@ activity: none
 kind: url
 name: codelite
 url: https://github.com/eranif/codelite/releases/
+activity: medium
+---
+kind: url
+name: codelobster
+url: http://codelobsteride.com/#download
 activity: medium
 ---
 kind: url
@@ -1337,6 +1347,11 @@ kind: url
 name: exif
 url: https://github.com/libexif/exif/releases
 activity: none
+---
+kind: url
+name: exodus
+url: https://www.exodus.com/download/
+activity: high
 ---
 kind: url
 name: expat
@@ -4484,6 +4499,11 @@ url: https://github.com/hreinecke/lsscsi/releases
 activity: none
 ---
 kind: url
+name: ltrace
+url: https://gitlab.com/cespedes/ltrace
+activity: none
+---
+kind: url
 name: lua
 url: https://www.lua.org/ftp
 activity: none
@@ -6354,6 +6374,11 @@ url: http://freedesktop.org/~hadess/
 activity: low
 ---
 kind: url
+name: shells
+url: https://www.shells.com/l/en-US/download
+activity: low
+---
+kind: url
 name: shhmsg
 url: http://shh.thathost.com/pub-unix/files/
 activity: none
@@ -6457,6 +6482,11 @@ kind: url
 name: snort
 url: https://www.snort.org/downloads/
 activity: low
+---
+kind: url
+name: snowflake
+url: https://github.com/subhra74/snowflake/releases
+activity: none
 ---
 kind: url
 name: socat
