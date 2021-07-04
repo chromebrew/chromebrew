@@ -22,7 +22,6 @@ class Sommelier < Package
      x86_64: '29b161ee80fbc1f334bfaf7d191ce8b37c0b7cff414d3e639934b10de64280d7'
   })
 
-  depends_on 'coreutils' # for readlink in wrapper script
   depends_on 'libdrm'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
@@ -35,6 +34,7 @@ class Sommelier < Package
   depends_on 'wayland'
   depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
   depends_on 'xsetroot' # for xsetroot in sommelierrc script
+  depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xwayland'
   depends_on 'xxd_standalone' # for xxd in wrapper script
 
@@ -109,6 +109,10 @@ EOF"
         # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
         system "cat <<'EOF'> sommelier_sh
 #!/bin/bash
+function readlink(){
+  coreutils --coreutils-prog=readlink "$@"
+}
+
 if base=$(readlink \"$0\" 2>/dev/null); then
   case $base in
   /*) base=$(readlink -f \"$0\" 2>/dev/null);; # if $0 is abspath symlink, make symlink fully resolved.
@@ -230,14 +234,14 @@ EOF"
       system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
       Dir.chdir('builddir') do
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
-        system "install -Dm755 sommelier_sh #{CREW_DEST_PREFIX}/bin/sommelier"
-        system "install -Dm755 sommelierd #{CREW_DEST_PREFIX}/sbin/sommelierd"
-        system "install -Dm755 startsommelier #{CREW_DEST_PREFIX}/bin/startsommelier"
+        FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
+        FileUtils.install 'sommelierd', "#{CREW_DEST_PREFIX}/sbin/sommelierd", mode: 0o755
+        FileUtils.install 'startsommelier', "#{CREW_DEST_PREFIX}/bin/startsommelier", mode: 0o755
         FileUtils.ln_sf 'startsommelier', "#{CREW_DEST_PREFIX}/bin/initsommelier"
-        system "install -Dm755 stopsommelier #{CREW_DEST_PREFIX}/bin/stopsommelier"
-        system "install -Dm755 restartsommelier #{CREW_DEST_PREFIX}/bin/restartsommelier"
-        system "install -Dm755 sommelierrc #{CREW_DEST_PREFIX}/etc/sommelierrc"
-        system "install -Dm644 .sommelier-default.env #{CREW_DEST_HOME}/.sommelier-default.env"
+        FileUtils.install 'stopsommelier', "#{CREW_DEST_PREFIX}/bin/stopsommelier", mode: 0o755
+        FileUtils.install 'restartsommelier', "#{CREW_DEST_PREFIX}/bin/restartsommelier", mode: 0o755
+        FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o755
+        FileUtils.install '.sommelier-default.env', "#{CREW_DEST_HOME}/.sommelier-default.env", mode: 0o644
       end
     end
 
