@@ -5,15 +5,15 @@ if [ ! -d ../packages ]; then
 fi
 cd ../packages
 arch=$(uname -m)
-exclusions='android_studio.rb antlr4.rb asciidoctor.rb asciinema.rb atom.rb autosetup.rb balena_etcher.rb brave.rb broadway.rb cabal.rb checkinstall.rb chrome.rb'
-exclusions+=' clear_cache.rb codium.rb composer.rb cowsay.rb cpu_x.rb crew_profile.rb cros_resize.rb dart.rb depot_tools.rb docx2txt.rb dr.rb elixir.rb far.rb'
-exclusions+=' fd.rb firefox.rb flutter.rb fortune.rb fortunes.rb fpc.rb freebasic.rb freecad.rb freedos.rb gcc_tools.rb gcloud.rb ghc.rb gittools.rb gradle.rb'
-exclusions+=' hollywood.rb hugo.rb hunspell.rb idea.rb julia.rb keepassxc.rb komodo.rb kotlin.rb kr.rb ld_default.rb leiningen.rb libtinfo.rb lsb_release.rb'
-exclusions+=' minecraft.rb mutagen.rb mysqltuner.rb mywanip.rb nconvert.rb neofetch.rb netbeans.rb ngrok.rb nodebrew.rb nvm.rb oc.rb opera.rb packer.rb pakitheme.rb'
-exclusions+=' papirus_icon_theme.rb peazip.rb perl_gcstring_linebreak.rb perl_io_socket_ssl.rb perl_locale_gettext.rb perl_locale_messages.rb perl_module_build.rb'
-exclusions+=' perl_read_key.rb perl_sgmls.rb perl_term_ansicolor.rb perl_text_charwidth.rb perl_text_unidecode.rb perl_text_wrapi18n.rb perl_time_hires.rb'
+exclusions='android_studio.rb antlr4.rb asciidoctor.rb asciinema.rb atom.rb autosetup.rb balena_etcher.rb blender.rb brave.rb broadway.rb cabal.rb checkinstall.rb'
+exclusions+=' chrome.rb clear_cache.rb codium.rb composer.rb cowsay.rb cpu_x.rb crew_profile.rb cros_resize.rb dart.rb depot_tools.rb docx2txt.rb dr.rb elixir.rb'
+exclusions+=' far.rb fd.rb firefox.rb flutter.rb fortune.rb fortunes.rb fpc.rb freebasic.rb freecad.rb freedos.rb gcc_tools.rb gcloud.rb ghc.rb gittools.rb gradle.rb'
+exclusions+=' hollywood.rb hugo.rb hunspell.rb idea.rb julia.rb keepassxc.rb komodo.rb kotlin.rb kr.rb ld_default.rb leiningen.rb libcom_err.rb libtinfo.rb lsb_release.rb'
+exclusions+=' minecraft.rb mutagen.rb mysqltuner.rb mywanip.rb mysql.rb nconvert.rb neofetch.rb netbeans.rb ngrok.rb nodebrew.rb nvm.rb oc.rb openhab.rb opera.rb'
+exclusions+=' packer.rb pakitheme.rb papirus_icon_theme.rb peazip.rb perl_gcstring_linebreak.rb perl_io_socket_ssl.rb perl_locale_gettext.rb perl_locale_messages.rb'
+exclusions+=' perl_module_build.rb perl_read_key.rb perl_sgmls.rb perl_term_ansicolor.rb perl_text_charwidth.rb perl_text_unidecode.rb perl_text_wrapi18n.rb perl_time_hires.rb'
 exclusions+=' perl_unicode_eastasianwidth.rb perl_xml_parser.rb perl_xml_sax_parserfactory.rb perl_xml_simple.rb phpsysinfo.rb pipes_sh.rb pipesx_sh.rb pkgsrc.rb'
-exclusions+=' platformsh.rb pngcheck.rb powershell.rb pup.rb pycharm.rb qtcreator.rb ruby_docopt.rb skype.rb sl.rb sommelier.rb spark.rb squeak.rb stack.rb'
+exclusions+=' platformsh.rb pngcheck.rb powershell.rb pup.rb pycharm.rb qtcreator.rb ruby_docopt.rb shells.rb skype.rb sl.rb sommelier.rb spark.rb squeak.rb stack.rb'
 exclusions+=' sublime_merge.rb sublime_text.rb symfony.rb telegram.rb terminus.rb terraform.rb thefuck.rb tinycore.rb tkdiff.rb torbrowser.rb txt2regex.rb'
 exclusions+=' uthash.rb uwsgi.rb v2ray.rb vivaldi.rb wallstreet.rb wp_cli.rb xdg_base.rb xz_java.rb yarn.rb'
 if [[ "${arch}" == 'aarch64' || "${arch}" == 'armv7l' ]]; then
