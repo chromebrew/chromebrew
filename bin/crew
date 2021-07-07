@@ -642,11 +642,7 @@ def download
     puts "No precompiled binary available for your platform, downloading source..."
   end
 
-  if uri.scheme =~ /git/
-    @git = true
-  else
-    @git = false
-  end
+  @git = uri.scheme =~ /git/ ? true : false
 
   Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
