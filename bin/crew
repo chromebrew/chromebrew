@@ -642,8 +642,13 @@ def download
     puts "No precompiled binary available for your platform, downloading source..."
   end
 
-  Dir.chdir CREW_BREW_DIR do
+  if uri.scheme =~ /git/
+    @git = true
+  else
+    @git = false
+  end
 
+  Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
     # Sources that download with curl
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
@@ -694,8 +699,16 @@ def download
       end
       return {source: source, filename: filename}
 
-    # Sources that download with git
+    when /^SKIP$/i
+      Dir.mkdir @extract_dir
+
+    # Source URLs which end with .git are git sources.
     when /\.git$/i
+      @git = true
+    end
+
+    # Handle git sources.
+    if @git == true
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
         if @pkg.git_branch.nil? || @pkg.git_branch.empty?
@@ -748,8 +761,6 @@ def download
         system "sha256sum #{cachefile} > #{cachefile}.sha256"
         puts 'Git repo cached.'.lightgreen
       end
-    when /^SKIP$/i
-      Dir.mkdir @extract_dir
     end
   end
   return {source: source, filename: filename}
