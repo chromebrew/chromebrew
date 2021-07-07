@@ -780,7 +780,7 @@ def unpack(meta)
         tar_opt = '--bzip2'
       end
 
-      system "ar -p #{meta[:filename]} data.#{suffix} | tar x#{@verbose} #{tar_opt} -C #{@extract_dir}"
+      system "ar -p #{meta[:filename]} data.#{suffix} | tar x#{@verbose} #{tar_opt} -C #{@extract_dir}", exception: true
     when /\.AppImage$/i
       puts "Unpacking 'AppImage' archive, this may take a while..."
       FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
