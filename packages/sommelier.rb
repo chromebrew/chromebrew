@@ -97,7 +97,7 @@ EOF"
         system "cat <<'EOF'> sommelier_sh
 #!/bin/bash
 function readlink(){
-  coreutils --coreutils-prog=readlink "$@"
+  coreutils --coreutils-prog=readlink \"$@\"
 }
 
 if base=$(readlink \"$0\" 2>/dev/null); then
