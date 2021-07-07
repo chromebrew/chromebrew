@@ -31,7 +31,7 @@ class Libdbusmenu_gtk3 < Package
   depends_on 'vala'
 
   def self.patch
-    system './autogen.sh'
+    system 'NOCONFIGURE=1 ./autogen.sh'
   end
 
   def self.build
