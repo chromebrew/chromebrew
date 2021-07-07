@@ -3,13 +3,11 @@ require 'package'
 class Chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome'
-  @_ver = '90.0.4430.212'
-  @_deb = "google-chrome-stable_#{@_ver}-1_amd64.deb"
-  version @_ver
+  version '91.0.4472.114-1'
   license 'google-chrome'
   compatibility 'x86_64'
-  source_url "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/#{@_deb}"
-  source_sha256 '274b473c4b4a3bcd0839e777ed466550daceae4352570ca4f342e824506163f8'
+  source_url 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_91.0.4472.114-1_amd64.deb'
+  source_sha256 'dae70d722430fe27421a945ee1844dc2b0b7ca90856d19820cbedf8e7d0b4c01'
 
   depends_on 'nspr'
   depends_on 'cairo'
@@ -24,7 +22,7 @@ class Chrome < Package
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX
     FileUtils.mv 'opt/google/chrome', "#{CREW_DEST_PREFIX}/share"
 
-    FileUtils.ln_s "#{CREW_PREFIX}/share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome-stable"
-    FileUtils.ln_s "#{CREW_PREFIX}/share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
+    FileUtils.ln_s "../share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome-stable"
+    FileUtils.ln_s "../share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
   end
 end
