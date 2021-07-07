@@ -769,7 +769,18 @@ def unpack(meta)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
       puts "Unpacking archive using 'ar', this may take a while..."
-      system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{@extract_dir}", exception: true
+      
+      suffix = `ar -t #{meta[:filename]}`.scan(/data.(.*)/)[0][0]
+      case suffix
+      when 'tar.xz'
+        tar_opt = '--xz'
+      when 'tgz', 'tar.gz'
+        tar_opt = '--gzip'
+      when 'bzip2'
+        tar_opt = '--bzip2'
+      end
+
+      system "ar -p #{meta[:filename]} data.#{suffix} | tar x#{@verbose} #{tar_opt} -C #{@extract_dir}", exception: true
     when /\.AppImage$/i
       puts "Unpacking 'AppImage' archive, this may take a while..."
       FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
