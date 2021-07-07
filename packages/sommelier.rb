@@ -220,6 +220,7 @@ EOF"
     Dir.chdir('vm_tools/sommelier') do
       system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
       Dir.chdir('builddir') do
+        FileUtils.mkdir ["#{CREW_DEST_PREFIX}/bin", "#{CREW_DEST_PREFIX}/sbin", "#{CREW_DEST_PREFIX}/etc", CREW_DEST_HOME]
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
         FileUtils.install 'sommelierd', "#{CREW_DEST_PREFIX}/sbin/sommelierd", mode: 0o755
@@ -227,7 +228,7 @@ EOF"
         FileUtils.ln_sf 'startsommelier', "#{CREW_DEST_PREFIX}/bin/initsommelier"
         FileUtils.install 'stopsommelier', "#{CREW_DEST_PREFIX}/bin/stopsommelier", mode: 0o755
         FileUtils.install 'restartsommelier', "#{CREW_DEST_PREFIX}/bin/restartsommelier", mode: 0o755
-        FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o755
+        FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o644
         FileUtils.install '.sommelier-default.env', "#{CREW_DEST_HOME}/.sommelier-default.env", mode: 0o644
       end
     end
