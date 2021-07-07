@@ -3,39 +3,35 @@ require 'package'
 class Libsodium < Package
   description 'A modern, portable, easy to use crypto library'
   homepage 'https://libsodium.org'
-  version '1.0.18-7168'
+  version '1.0.18-RELEASE'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/jedisct1/libsodium.git'
-  git_hashtag '7168944f16e12c1b630e66a7b9be0802d5b564dd'
+  source_url 'https://github.com/jedisct1/libsodium/archive/refs/tags/1.0.18-RELEASE.tar.gz'
+  source_sha256 'b7292dd1da67a049c8e78415cd498ec138d194cfdb302e716b08d26b80fecc10'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-7168_armv7l/libsodium-1.0.18-7168-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-7168_armv7l/libsodium-1.0.18-7168-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-7168_i686/libsodium-1.0.18-7168-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-7168_x86_64/libsodium-1.0.18-7168-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_armv7l/libsodium-1.0.18-RELEASE-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_armv7l/libsodium-1.0.18-RELEASE-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_i686/libsodium-1.0.18-RELEASE-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_x86_64/libsodium-1.0.18-RELEASE-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '8cf24abf23f1ec6b19052e29b5cc80db8f2b6917dae193827c99a02349839221',
-     armv7l: '8cf24abf23f1ec6b19052e29b5cc80db8f2b6917dae193827c99a02349839221',
-       i686: 'ab1a37ec01e04271deca45cfb8943dc8d379e12c4d154a4d190824e1de6c0daa',
-     x86_64: 'f5ad9b26a80254a30e8aaced54eeb19e8962980b888df9d904a6377d7dce9cff'
+    aarch64: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
+     armv7l: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
+       i686: 'd1a7c85be6511c084b6830e9e0786e07efbc79a415e9bddc8961486bf355a41f',
+     x86_64: '46856f8d0724b7c52dc8c2b657e9f49da97bd2eaee423c3055eb426b29a200a5',
   })
 
   def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    Dir.chdir @git_dir do
-      system 'make', 'check'
-    end
   end
 end
