@@ -9,6 +9,19 @@ class Sommelier < Package
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_armv7l/sommelier-20210109-3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_armv7l/sommelier-20210109-3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_i686/sommelier-20210109-3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-3_x86_64/sommelier-20210109-3-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '401181dfb60f062d00166d39259ca60f593c629af9466dbfb6dcc3f4363575be',
+     armv7l: '401181dfb60f062d00166d39259ca60f593c629af9466dbfb6dcc3f4363575be',
+       i686: 'f00ace87c154fa1c4f786656db369004612b51c27236dbdca9c4f0fd230496eb',
+     x86_64: '29b161ee80fbc1f334bfaf7d191ce8b37c0b7cff414d3e639934b10de64280d7'
+  })
+  
   depends_on 'libdrm'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
