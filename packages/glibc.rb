@@ -3,7 +3,6 @@ require 'package'
 class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
-  version LIBC_VERSION
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
 
@@ -17,6 +16,7 @@ class Glibc < Package
 
   case LIBC_VERSION
   when '2.23'
+  version LIBC_VERSION
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
@@ -27,6 +27,7 @@ class Glibc < Package
       i686: '52145b65cb49c2751f69d4c46636f0685f2abb6685d8a080b71b2f091595a950'
     })
   when '2.27'
+  version LIBC_VERSION
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
@@ -41,19 +42,22 @@ class Glibc < Package
        x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
     })
   when '2.32' # All architectures with updates past M92.
+  version '2.32-1'
+    # Currently just using the binaries for 2.27, since the 2.32 
+    # glibc is causing segfaults in locally compiled binaries.
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
     source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_armv7l/glibc-2.32-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_armv7l/glibc-2.32-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32_x86_64/glibc-2.32-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: '1fb970e490c988e49672e3e5d1edcaea795323e4fbb74559dea3bd35d7e6c63c',
-    armv7l: '1fb970e490c988e49672e3e5d1edcaea795323e4fbb74559dea3bd35d7e6c63c',
-    x86_64: '794745d17eae977dccf6d5635f67e5bb1465286a3888bc5e69eda487e87654ae'
-  })
+    binary_url({
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_x86_64/glibc-2.27-chromeos-x86_64.tar.xz'
+    })
+    binary_sha256({
+      aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+       armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+       x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
+    })
   end
 
   depends_on 'gawk' => :build
@@ -187,6 +191,8 @@ class Glibc < Package
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     librlv librt libthread_db-1.0 libutil]
+    @glibc_app_libraries = %w[libSegFault libpcprofile]
+    @gcc_reqs = %w[Scrt1.o crti.o crtn.o libc_nonshared.a]
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     Dir.chdir 'glibc_build' do
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
@@ -198,16 +204,30 @@ class Glibc < Package
     # Just let the system use all provided glibc libraries
     Dir.chdir CREW_DEST_LIB_PREFIX do
       # @libraries.each do |lib|
-      #   Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
-      #     if `file #{f} | grep "shared object"`
-      #       g = File.basename(f)
-      #       FileUtils.ln_sf f.to_s, g.to_s
-      #     end
-      #   end
+      # Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
+      # if `file #{f} | grep "shared object"`
+      # g = File.basename(f)
+      # FileUtils.ln_sf f.to_s, g.to_s
+      # end
+      # end
       # end
 
+      FileUtils.mkdir_p 'disabled'
       Dir.glob("#{CREW_DEST_LIB_PREFIX}/*").each do |f|
-        FileUtils.rm_f f unless File.directory?(f)
+        # crt files are needed by linkers
+        # FileUtils.rm_f f unless File.directory?(f) or File.basename(f).include? 'crt'
+        unless File.directory?(f) || @gcc_reqs.include?(File.basename(f)) || File.basename(f).include?('.a')
+          FileUtils.mv f,
+                       'disabled'
+        end
+      end
+      @glibc_app_libraries.each do |lib|
+        Dir.glob("disabled/#{lib}*").each do |f|
+          if `file #{f} | grep "shared object"`
+            g = File.basename(f)
+            FileUtils.mv f.to_s, '.'
+          end
+        end
       end
       case ARCH
       when 'armv7l', 'aarch64'
@@ -263,9 +283,35 @@ class Glibc < Package
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so.*")
   end
 
- #  def self.check
- #   Dir.chdir 'glibc_build' do
- #     system "make -k -j#{CREW_NPROC} check"
- #   end
- # end
+  # def self.check
+  # Dir.chdir 'glibc_build' do
+  # system "make -k -j#{CREW_NPROC} check"
+  # end
+  # end
+  def self.postinstall
+    @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
+                    libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
+                    libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
+                    libresolv librlv librt libthread_db-1.0 libutil]
+    Dir.chdir CREW_LIB_PREFIX do
+      @libraries.each do |lib|
+        Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
+          if `file #{f} | grep "shared object"`
+            g = File.basename(f)
+            FileUtils.ln_sf f.to_s, g.to_s
+          end
+        end
+      end
+      if LIBC_VERSION == '2.32'
+        FileUtils.ln_sf "/#{ARCH_LIB}/libresolv-#{LIBC_VERSION}.so", 'libresolv.so.2'
+        FileUtils.ln_sf "/#{ARCH_LIB}/libc.so.6", '.'
+        case ARCH
+        when 'armv7l', 'aarch64'
+          FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-armhf.so.3", 'ld-linux-armhf.so.3'
+        when 'x86_64'
+          FileUtils.ln_sf "/#{ARCH_LIB}/ld-linux-x86-64.so.2", 'ld-linux-x86-64.so.2'
+        end
+      end
+    end
+  end
 end
