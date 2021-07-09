@@ -3,23 +3,23 @@ require 'package'
 class Bash < Package
   description 'The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.'
   homepage 'https://www.gnu.org/software/bash/'
-  version '5.1-1-2'
+  version '5.1.8'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/bash/bash-5.1.tar.gz'
-  source_sha256 'cc012bc860406dcf42f64431bcd3d2fa7560c02915a601aba9cd597a39329baa'
+  source_url 'https://ftpmirror.gnu.org/bash/bash-5.1.8.tar.gz'
+  source_sha256 '0cfb5c9bb1a29f800a97bd242d19511c997a1013815b805e0fdd32214113d6be'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_armv7l/bash-5.1-1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_armv7l/bash-5.1-1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_i686/bash-5.1-1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1-1-2_x86_64/bash-5.1-1-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_armv7l/bash-5.1.8-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_armv7l/bash-5.1.8-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_i686/bash-5.1.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_x86_64/bash-5.1.8-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '72fd49fb8fcc718587e71df1df7eb69812fab5ae2e5706a3093254af2f44b8ec',
-     armv7l: '72fd49fb8fcc718587e71df1df7eb69812fab5ae2e5706a3093254af2f44b8ec',
-       i686: 'aebd997e7f52bd91b3aa62cffc07dd613f4900be075f4ca093f15be13e388d17',
-     x86_64: '232cd95a5feda0c9c7dc6bbcf6015d8b60ffcb760215d7aad1d6ac8bba11316e'
+    aarch64: '4b34aa31012294bbafdfb392e986d2220bf95d3472302af3debb160491e44021',
+     armv7l: '4b34aa31012294bbafdfb392e986d2220bf95d3472302af3debb160491e44021',
+       i686: '449eed047e9cf2304a14560c596e2d0061a11b6782856bb0815dbd1127088462',
+     x86_64: '8a63a3934b316589f590e5a68760cf928de1d563b075acb7b306a19a9cdb6c50'
   })
 
   case ARCH
@@ -40,8 +40,7 @@ class Bash < Package
       --enable-directory-stack --enable-coprocesses --enable-cond-regexp \
       --enable-cond-command --enable-command-timing --enable-casemod-expansions \
       --enable-casemod-attributes --enable-brace-expansion --enable-bang-history \
-      --enable-array-variables --enable-arith-for-command --enable-alias \
-      --enable-static-link"
+      --enable-array-variables --enable-arith-for-command --enable-alias"
     system 'make'
   end
 
