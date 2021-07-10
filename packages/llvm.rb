@@ -3,24 +3,24 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '12.0.1'
+  @_ver = '12.0.0'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
-  source_sha256 '66b64aa301244975a4aea489f402f205cde2f53dd722dad9e7b77a0459b4c8df'
+  source_sha256 '8e6c99e482bb16a450165176c2d881804976a2d770e0445af4375e78a1fbf19c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1_armv7l/llvm-12.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1_armv7l/llvm-12.0.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1_i686/llvm-12.0.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1_x86_64/llvm-12.0.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_armv7l/llvm-12.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_armv7l/llvm-12.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_i686/llvm-12.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.0_x86_64/llvm-12.0.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '461f0f9acdb937cbafaf38072501b03f5e08d3cde670c47b12424687b123732a',
-     armv7l: '461f0f9acdb937cbafaf38072501b03f5e08d3cde670c47b12424687b123732a',
-       i686: '5c4a2f926cb6802bf45c5ea779228850b00bd9e9662c9494448d60bfb158e930',
-     x86_64: 'cdc7295cbffa51a2333e3c7891f31383f92c28d4861d03cac33a808a1b675d6b'
+    aarch64: 'd5f6b88daa7d17c90a4dbda045641ac269aef5702c29ab4781cd19041d02a089',
+     armv7l: 'd5f6b88daa7d17c90a4dbda045641ac269aef5702c29ab4781cd19041d02a089',
+       i686: 'ae7555048502a018fb8eeeb26300b10d3916762eb8e730618abe62163d4d0f63',
+     x86_64: '51da1968be089ad011603156e1a74a26d684a69fdc61c651125bc319d7b2921f'
   })
 
   depends_on 'ocaml' => :build
@@ -80,10 +80,16 @@ class Llvm < Package
   def self.patch
     # This keeps system libraries from being linked in as dependencies on a build host image, such as in docker.
     # Uncomment the rest of this section if you need to.
-    # system "sudo rm /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
-    # system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
-    # system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
-    # system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
+    #system "sudo rm /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
+    #system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
+    #system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
+    #system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
+    # Fix gold linker issues killing mesa builds as per
+    # https://reviews.llvm.org/D100624 and
+    # https://bugs.llvm.org/show_bug.cgi?id=49915 fixed in 13.0 but also
+    # hopefully making it to 12.0.1
+    system "sed -i 's#write16(buf, s.sym->versionId);#write16(buf, s.sym->isLazy() ? VER_NDX_GLOBAL : s.sym->versionId);#g' \
+      lld/ELF/SyntheticSections.cpp"
   end
 
   def self.build
@@ -117,7 +123,7 @@ cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
 cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
 gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
-      system "env LLVM_IAS=1 PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin LD=ld.lld \
+      system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin LD=ld.lld \
             cmake -G Ninja \
             -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_C_COMPILER=$(which clang) \
