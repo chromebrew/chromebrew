@@ -970,9 +970,7 @@ def strip_dir(dir)
 end
 
 def shrink_dir(dir)
-  # We might also want a package option to avoid using these tools
-  # on specific packages such as sommelier & xwayland.
-  if ENV['CREW_SHRINK_ARCHIVE'] == '1'
+  unless ENV['CREW_SHRINK_ARCHIVE'] == '0'
     Dir.chdir dir do
       if File.exist?("#{CREW_PREFIX}/bin/rdfind")
         puts "Using rdfind to find duplicate or hard linked files."
@@ -991,7 +989,8 @@ def shrink_dir(dir)
         # Logic here is to find executable binaries, compress after making
         # a backup, then expand the compressed file with upx. If the
         # expansion doesn't error out then it is ok to delete the backup.
-        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -print].chomp
+        # Disable for sommelier.elf and Xwayland.elf since upx breaks those binaries.
+        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -print].chomp
         unless @execfiles.empty? or @execfiles.nil?
           puts "Using upx to shrink binaries."
           @execfiles.each_line do |execfile|
