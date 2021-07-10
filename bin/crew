@@ -997,6 +997,7 @@ def shrink_dir(dir)
             system "upx --best -k --overlay=skip #{execfile} && \
             \( upx -t #{execfile} && rm #{execfile}.~ || mv #{execfile}.~ #{execfile}\)"
           end
+          system 'find . -executable -type f -name "*.~" -delete'
         end
       end
     end
