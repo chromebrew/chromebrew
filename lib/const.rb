@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.11.7'
+CREW_VERSION = '1.11.8'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
