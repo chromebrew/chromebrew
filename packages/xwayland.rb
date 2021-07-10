@@ -3,24 +3,22 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '21.1.1'
-  version "#{@_ver}-1"
+  @_ver = '21.1.2'
+  version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-#{@_ver}.tar.xz"
-  source_sha256 '31f261ce51bbee76a6ca3ec02aa367ffa2b5efa2b98412df57ccefd7a19003ce'
+  source_sha256 'b81cbdd5ad60b8b7ad8c3ecc7ec2a28c9bf021448670735cebb501f08bebd18b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1-1_armv7l/xwayland-21.1.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1-1_armv7l/xwayland-21.1.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1-1_i686/xwayland-21.1.1-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1-1_x86_64/xwayland-21.1.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_x86_64/xwayland-21.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '38b5d8f88eeebfc129228ba922d1e50c9744603fa8ea1d1b140a3f8febeb44b0',
-     armv7l: '38b5d8f88eeebfc129228ba922d1e50c9744603fa8ea1d1b140a3f8febeb44b0',
-       i686: '6013786072753462890a811aa56bd491e459395133f45ac9914bd1f4b6ea07ac',
-     x86_64: 'ff1faf9120fd8b815a14cacac97efeb788a5a834b7527b2fb6300e533c3c611d'
+    aarch64: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
+     armv7l: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
+     x86_64: 'e6b2e07ca4df3e09ee16f6a03b951801c8e3784315dc8f2fb829889d18878473'
   })
 
   depends_on 'dbus'
@@ -32,7 +30,7 @@ class Xwayland < Package
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libtirpc' => :build
-  depends_on 'libunwind'  => :build
+  depends_on 'libunwind' => :build
   depends_on 'libxau' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxfont2' # R
@@ -46,7 +44,6 @@ class Xwayland < Package
   depends_on 'wayland' # R
   depends_on 'xkbcomp'
   depends_on 'xorg_lib'
-
 
   case ARCH
   when 'armv7l', 'aarch64'
