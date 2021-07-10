@@ -39,7 +39,7 @@ class Mesa < Package
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm' # R
+  depends_on 'llvm' => :build
   depends_on 'lm_sensors' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
