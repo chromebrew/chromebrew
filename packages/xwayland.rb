@@ -30,7 +30,7 @@ class Xwayland < Package
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libtirpc' => :build
-  depends_on 'libunwind' => :build
+  depends_on 'libunwind' # Runtime dependency for sommelier
   depends_on 'libxau' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxfont2' # R
