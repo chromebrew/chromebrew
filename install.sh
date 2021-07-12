@@ -3,6 +3,9 @@
 # exit on fail
 set -e
 
+# load system info
+source /etc/lsb-release
+
 #chromebrew directories
 OWNER="${OWNER:-skycocker}"
 REPO="${REPO:-chromebrew}"
@@ -33,6 +36,29 @@ MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
 echo -e "${GREEN}Welcome to Chromebrew!${RESET}\n"
+
+# disallow non Chrome OS devices
+if [ -z "${CHROMEOS_RELEASE_VERSION}" ] && [ "${CREW_INSTALL_ANYWAY}" != '1' ]; then
+  echo -e "${RED}Only Chrome OS developer shell is supported by Chromebrew :/${RESET}"
+  exit 1
+fi
+
+# disallow non-stable channels Chromr OS
+if [ "${CHROMEOS_RELEASE_TRACK}" != 'stable-channel' ] && [ "${CREW_INSTALL_ANYWAY}" != '1' ]; then
+  echo -e "${YELLOW}The beta, dev, and canary channel are unsupported by Chromebrew"
+  echo -e "Install anyway? [Y/n]"
+  echo -e "(This may cause major issues with your Chromebrew installation)${RESET}"
+  # `<&1`: tell bash read from console not stdin (curl)
+  read -n1 response <&1
+  case ${response} in
+    Y|y)
+      echo;;
+    *)
+      exit 1;;
+  esac
+fi
+
+# disallow root
 if [ "${EUID}" == "0" ]; then
   echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
   exit 1;
@@ -62,11 +88,9 @@ do
 done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
-# Delete 'var' symlink on Cloudready platform
-if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
-  [ -L /usr/local/var ] && sudo rm -f /usr/local/var
-  [ -L /usr/local/local ] && sudo rm -f /usr/local/local
-fi
+# Delete 'var' symlink on Chromium OS platform
+[ -L /usr/local/var ] && sudo rm -f /usr/local/var
+[ -L /usr/local/local ] && sudo rm -f /usr/local/local
 
 # prepare directories
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
