@@ -38,13 +38,13 @@ RESET='\e[0m'
 echo -e "${GREEN}Welcome to Chromebrew!${RESET}\n"
 
 # disallow non Chrome OS devices
-if [ -z "${CHROMEOS_RELEASE_VERSION}" ] && [ "${CREW_INSTALL_ANYWAY}" != '1' ]; then
+if [ -z "${CHROMEOS_RELEASE_VERSION}" ]; then
   echo -e "${RED}Only Chrome OS developer shell is supported by Chromebrew :/${RESET}"
   exit 1
 fi
 
 # disallow non-stable channels Chromr OS
-if [ "${CHROMEOS_RELEASE_TRACK}" != 'stable-channel' ] && [ "${CREW_INSTALL_ANYWAY}" != '1' ]; then
+if [ "${CHROMEOS_RELEASE_TRACK}" != 'stable-channel' ]; then
   echo -e "${YELLOW}The beta, dev, and canary channel are unsupported by Chromebrew"
   echo -e "Install anyway? [Y/n]"
   echo -e "(This may cause major issues with your Chromebrew installation)${RESET}"
