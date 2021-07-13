@@ -11,6 +11,7 @@ class Libcom_err < Package
   depends_on 'e2fsprogs'
 
   def self.install
+    ENV['CREW_SHRINK_ARCHIVE'] = '0'
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     Dir.chdir CREW_DEST_LIB_PREFIX do
       FileUtils.symlink "#{CREW_LIB_PREFIX}/libcom_err.so.2.1", 'libcom_err.so.3'
