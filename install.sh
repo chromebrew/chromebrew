@@ -3,9 +3,6 @@
 # exit on fail
 set -e
 
-# load system info
-source /etc/lsb-release
-
 #chromebrew directories
 OWNER="${OWNER:-skycocker}"
 REPO="${REPO:-chromebrew}"
@@ -37,15 +34,23 @@ RESET='\e[0m'
 
 echo -e "${GREEN}Welcome to Chromebrew!${RESET}\n"
 
+# load system info
+if [ -f /etc/lsb-release ]; then
+  source /etc/lsb-release
+else
+  echo -e "${YELLOW}Unable to detect system information, installation will continue.${RESET}"
+  CHROMEOS_RELEASE_VERSION=0.0-00000
+fi
+
 # disallow non Chrome OS devices
 if [ -z "${CHROMEOS_RELEASE_VERSION}" -a "${CREW_FORCE_INSTALL}" != '1' ]; then
   echo -e "${RED}Only Chrome OS developer shell is supported by Chromebrew :/${RESET}"
-  echo -e "${YELLOW}Run 'CREW_INSTALL_ANYWAY=1 curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
+  echo -e "${YELLOW}Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
   exit 1
 fi
 
 # disallow non-stable channels Chromr OS
-if [ "${CHROMEOS_RELEASE_TRACK}" != 'stable-channel' -a "${CREW_FORCE_INSTALL}" != '1' ]; then
+if [ "${CHROMEOS_RELEASE_TRACK}" != 'stable-channel' -a "${CREW_FORCE_INSTALL}" != '1' ] || [ -f /usr/bin/crosh ]; then
   echo -e "${YELLOW}The beta, dev, and canary channel are unsupported by Chromebrew${RESET}"
   echo -e "${YELLOW}Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
   exit 1
