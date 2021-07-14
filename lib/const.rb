@@ -13,9 +13,8 @@ ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 @libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
 LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
 
-if ENV['CREW_PREFIX'].to_s.empty? or ENV['CREW_PREFIX'] == '/usr/local'
-  CREW_PREFIX = '/usr/local'
-else
+CREW_PREFIX = '/usr/local'
+if ENV['CREW_PREFIX'] and ENV['CREW_PREFIX'] != CREW_PREFIX
   CREW_PREFIX = ENV['CREW_PREFIX']
   CREW_BUILD_FROM_SOURCE = 1
 end
