@@ -26,6 +26,7 @@ class Gnome_terminal < Package
   depends_on 'dconf'
   depends_on 'desktop_file_utilities'
   depends_on 'gsettings_desktop_schemas'
+  depends_on 'adobe_source_code_pro_fonts' # (Needed for monospace fonts)
   depends_on 'yelp_tools'
   depends_on 'gtk_doc'
 
