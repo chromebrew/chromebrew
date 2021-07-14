@@ -3,25 +3,23 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.29'
+  @_ver = '3.24.30'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_armv7l/gtk3-3.24.29-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_armv7l/gtk3-3.24.29-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_i686/gtk3-3.24.29-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.29_x86_64/gtk3-3.24.29-chromeos-x86_64.tpxz'
+    aarch64: 'file:///usr/local/tmp/packages/gtk3-3.24.30-chromeos-armv7l.tpxz',
+     armv7l: 'file:///usr/local/tmp/packages/gtk3-3.24.30-chromeos-armv7l.tpxz',
+     x86_64: 'file:///usr/local/tmp/packages/gtk3-3.24.30-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '05caf4c5661d197f4c82d3cf1ed919a5379fd82ac7df8b2ec0734c50984f49a1',
-     armv7l: '05caf4c5661d197f4c82d3cf1ed919a5379fd82ac7df8b2ec0734c50984f49a1',
-       i686: 'd23792469f08482573d02aaca7c3042e85c1f1f4b54ba9bd661ec473cdb1cf2c',
-     x86_64: '848d47ac2546f4bc554b9f6f0af8e148741d7c55ef52d83f4a5fbf51c07aa9eb'
+    aarch64: '53ac51ba579ca1845428d1fbc05563066ecc3f6ee66461b444eb3ded928ae4ef',
+     armv7l: '53ac51ba579ca1845428d1fbc05563066ecc3f6ee66461b444eb3ded928ae4ef',
+     x86_64: '29ca5524c6b7e39d778db9c65cfa606ddac87f9af8ec2f4cb238f94435827d63'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
