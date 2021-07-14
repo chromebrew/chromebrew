@@ -12,9 +12,9 @@ class Gtk3 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/gtk3-3.24.30-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/gtk3-3.24.30-chromeos-armv7l.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/gtk3-3.24.30-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_armv7l/gtk3-3.24.30-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_armv7l/gtk3-3.24.30-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_x86_64/gtk3-3.24.30-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '53ac51ba579ca1845428d1fbc05563066ecc3f6ee66461b444eb3ded928ae4ef',
