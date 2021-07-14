@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.11.9'
+CREW_VERSION = '1.12.0'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -13,11 +13,10 @@ ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 @libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
 LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
 
-if ENV['CREW_PREFIX'].to_s.empty?
-  CREW_PREFIX = '/usr/local'
-else
+CREW_PREFIX = '/usr/local'
+if ENV['CREW_PREFIX'] and ENV['CREW_PREFIX'] != CREW_PREFIX
   CREW_PREFIX = ENV['CREW_PREFIX']
-  @pkg.build_from_source = true
+  CREW_BUILD_FROM_SOURCE = 1
 end
 
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB

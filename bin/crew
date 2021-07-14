@@ -1402,7 +1402,7 @@ def install_command(args)
     @pkgName = name
     search @pkgName
     print_current_package true
-    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    @pkg.build_from_source = true if @opt_src or @opt_recursive or ENV['CREW_BUILD_FROM_SOURCE'] == '1'
     resolve_dependencies_and_install
   end
 end
@@ -1436,7 +1436,7 @@ def reinstall_command(args)
     @pkgName = name
     search @pkgName
     print_current_package
-    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    @pkg.build_from_source = true if @opt_src or @opt_recursive or ENV['CREW_BUILD_FROM_SOURCE'] == '1'
     if @pkgName
       @pkg.in_upgrade = true
       resolve_dependencies_and_install
@@ -1472,7 +1472,7 @@ def upgrade_command(args)
     @pkgName = name
     search @pkgName
     print_current_package
-    @pkg.build_from_source = true if @opt_src
+    @pkg.build_from_source = true if @opt_src or ENV['CREW_BUILD_FROM_SOURCE'] == '1'
     upgrade
   end.empty? and begin
     upgrade
