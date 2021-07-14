@@ -39,7 +39,7 @@ if [ -f /etc/lsb-release ]; then
   source /etc/lsb-release
 else
   echo -e "${YELLOW}Unable to detect system information, installation will continue.${RESET}"
-  CHROMEOS_RELEASE_VERSION=0.0-00000
+  CHROMEOS_RELEASE_VERSION=0
 fi
 
 # disallow non Chrome OS devices
