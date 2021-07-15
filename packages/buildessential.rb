@@ -3,11 +3,14 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.17'
+  version '1.18'
   license 'GPL-3+'
   compatibility 'all'
 
   is_fake
+
+  # Make sure core is installed
+  depends_on 'core'
 
   # install first to get ldconfig
   depends_on 'glibc'
