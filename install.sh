@@ -4,18 +4,21 @@
 set -e
 
 #chromebrew directories
-OWNER="${OWNER:-skycocker}"
-REPO="${REPO:-chromebrew}"
-BRANCH="${BRANCH:-master}"
+
+: "${OWNER:=skycocker}"
+: "${REPO:=chromebrew}"
+: "${BRANCH:=master}"
+: "${CURL:=curl}"
+: "${CREW_PREFIX:=/usr/local}"
+: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
+
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
-CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
-CURL="${CURL:-curl}"
-CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
+
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 BOOTSTRAP_PACKAGES="pixz jq ca_certificates git gmp ncurses libyaml ruby"
@@ -38,14 +41,17 @@ if [ "${EUID}" == "0" ]; then
   exit 1;
 fi
 
-case "${ARCH}" in
+case ${ARCH}" in
 "i686"|"x86_64"|"armv7l"|"aarch64")
-  LIB_SUFFIX=
-  [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
+  LIB_SUFFIX=''
+  ;;
+'x86_64')
+  LIB_SUFFIX='64'
   ;;
 *)
   echo -e "${RED}Your device is not supported by Chromebrew yet :/${RESET}"
-  exit 1;;
+  exit 1
+  ;;
 esac
 
 echo -e "\n\n${YELLOW}Doing initial setup for install in ${CREW_PREFIX}.${RESET}"
@@ -69,11 +75,7 @@ if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
 fi
 
 # prepare directories
-for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
-  if [ ! -d "${dir}" ]; then
-    mkdir -p "${dir}"
-  fi
-done
+mkdir -p "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}"
 
 # prepare url and sha256
 urls=()
