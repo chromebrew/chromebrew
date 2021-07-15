@@ -12,13 +12,16 @@ set -e
 : "${CREW_PREFIX:=/usr/local}"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 
-URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
+URL="https://github.com/${OWNER}/${REPO}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 
+# Set sparse-checkout folders and include install.sh for use in reinstalls
+# or to fix problems.
+sparse_checkout=(bin/ lib/ packages/ install.sh)
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 BOOTSTRAP_PACKAGES="pixz jq ca_certificates git gmp ncurses libyaml ruby"
@@ -42,7 +45,7 @@ if [ "${EUID}" == "0" ]; then
 fi
 
 case "${ARCH}" in
-"i686"|"x86_64"|"armv7l"|"aarch64")
+"i686"|"armv7l"|"aarch64")
   LIB_SUFFIX=''
   ;;
 'x86_64')
@@ -76,6 +79,12 @@ fi
 
 # prepare directories
 mkdir -p "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}"
+
+# download repository
+curl -L\# "${URL}/archive/${BRANCH}.tar.gz" |\
+  tar -xz --strip-components=1 \
+  ${sparse_checkout[@]/#/${REPO}-${BRANCH}\/} \
+  -C "${CREW_LIB_PATH}/"
 
 # prepare url and sha256
 urls=()
@@ -203,23 +212,16 @@ echo -e "${RESET}"
 echo -e "${YELLOW}Setup and synchronize local package repo...${RESET}"
 echo -e "${GRAY}"
 
-# Remove old git config directories if they exist
-rm -rf "${CREW_LIB_PATH}"
-
-# Do a minimal clone, which also sets origin to the master/main branch
-# by default. For more on why this setup might be useful see:
-# https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
-git clone --depth=1 --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
-
 cd "${CREW_LIB_PATH}"
 
-# Checkout, overwriting local files.
-git checkout "${BRANCH}"
+# Remove old git config directories if they exist
+rm -rf .git/
 
-# Set sparse-checkout folders and include install.sh for use in reinstalls
-# or to fix problems.
-git sparse-checkout set packages lib bin crew tools install.sh
-git reset --hard origin/"${BRANCH}"
+# set up environment for `crew update`
+git init .
+git remote add -f origin "${URL}.git"
+git sparse-checkout set ${sparse_checkout[@]}
+
 echo -e "${RESET}"
 
 echo -e "${YELLOW}Updating crew package information...${RESET}\n"
