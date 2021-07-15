@@ -79,19 +79,13 @@ mkdir -p "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "
 
 # prepare url and sha256
 urls=()
-temp_url=
 sha256s=()
-temp_sha256=
-k=0
 
 case "${ARCH}" in
 "armv7l"|"aarch64")
   if ! type "xz" > /dev/null; then
-    temp_url='https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz'
-    temp_sha256='4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7'
-    urls[k]="$temp_url"
-    sha256s[k]="$temp_sha256"
-    k=$((k+1))
+    urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
+    sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
   fi
   ;;
 esac
@@ -116,6 +110,11 @@ for package in $BOOTSTRAP_PACKAGES; do
   urls[k]="$temp_url"
   sha256s[k]="$temp_sha256"
   k=$((k+1))
+done
+
+for package in ${BOOTSTRAP_PACKAGES}; do
+  urls+=("$(sed -n '/binary_url.*({/,/})/p' ${CREW_PACKAGES_PATH}/${package}.rb | sed -n "s/\,//g; s/^[[:blank:]]*${ARCH}: .\(.*\)./\1/p")")
+  sha256s+=("$(sed -n '/binary_sha256.*({/,/})/p' ${CREW_PACKAGES_PATH}/${package}.rb | sed -n "s/\,//g; s/^[[:blank:]]*${ARCH}: .\(.*\)./\1/p")")
 done
 
 # functions to maintain packages
