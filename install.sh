@@ -41,7 +41,7 @@ if [ "${EUID}" == "0" ]; then
   exit 1;
 fi
 
-case ${ARCH}" in
+case "${ARCH}" in
 "i686"|"x86_64"|"armv7l"|"aarch64")
   LIB_SUFFIX=''
   ;;
@@ -104,17 +104,12 @@ echo -e "${GRAY}"
 echo -e "${RESET}"
 
 for package in $BOOTSTRAP_PACKAGES; do
-  pkgfile="$(cat "${CREW_LIB_PATH}"/packages/"$package".rb)"
-  temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
-  temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
-  urls[k]="$temp_url"
-  sha256s[k]="$temp_sha256"
-  k=$((k+1))
-done
+  # use built-in regex to extract
+  [[ "$(sed -n /binary_sha256/,/}/p ${CREW_PACKAGES_PATH}/${package}.rb)" =~ .*x86_64:[[:blank:]]*[\'\"]([^\'\"]*) ]]
+    sha256s+=("${BASH_REMATCH[1]}")
 
-for package in ${BOOTSTRAP_PACKAGES}; do
-  urls+=("$(sed '/binary_url.*{/,/}/!d; s/${ARCH}: [\'|\"]\(.*\)[\'|\"]/\1/' ${CREW_PACKAGES_PATH}/${package}.rb)
-  sha256s+=("$(sed '/binary_sha256.*{/,/}/!d' ${CREW_PACKAGES_PATH}/${package}.rb | sed -n "s/\,//g; s/^[[:blank:]]*${ARCH}: .\(.*\)./\1/p")")
+  [[ "$(sed -n /binary_url/,/}/p ${CREW_PACKAGES_PATH}/${package}.rb)" =~ .*x86_64:[[:blank:]]*[\'\"]([^\'\"]*) ]]
+    urls+=("${BASH_REMATCH[1]}")
 done
 
 # functions to maintain packages
@@ -177,10 +172,10 @@ function update_device_json () {
 
   if [[ $(jq --arg key "$1" -e '.installed_packages[] | select(.name == $key )' device.json) ]]; then
     echo -e "${BLUE}Updating version number of ${1} in device.json...${RESET}"
-    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json) > device.json
+    jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json > device.json
   else
     echo -e "${BLUE}Adding new information on ${1} to device.json...${RESET}"
-    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json
+    jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json > device.json
   fi
 }
 echo -e "${YELLOW}Downloading Bootstrap packages...${RESET}\n"
@@ -191,8 +186,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   tarfile="$(basename ${url})"
   name="${tarfile%%-*}"   # extract string before first '-'
   rest="${tarfile#*-}"    # extract string after first '-'
-  version="$(echo ${rest} | sed -e 's/-chromeos.*$//')"
-                        # extract string between first '-' and "-chromeos"
+  version="${rest%%-chromeos*}"  # extract string between first '-' and "-chromeos"
 
   download_check "${name}" "${url}" "${tarfile}" "${sha256}"
   extract_install "${name}" "${tarfile}"
