@@ -113,8 +113,8 @@ for package in $BOOTSTRAP_PACKAGES; do
 done
 
 for package in ${BOOTSTRAP_PACKAGES}; do
-  urls+=("$(sed -n '/binary_url.*({/,/})/p' ${CREW_PACKAGES_PATH}/${package}.rb | sed -n "s/\,//g; s/^[[:blank:]]*${ARCH}: .\(.*\)./\1/p")")
-  sha256s+=("$(sed -n '/binary_sha256.*({/,/})/p' ${CREW_PACKAGES_PATH}/${package}.rb | sed -n "s/\,//g; s/^[[:blank:]]*${ARCH}: .\(.*\)./\1/p")")
+  urls+=("$(sed '/binary_url.*{/,/}/!d; s/${ARCH}: [\'|\"]\(.*\)[\'|\"]/\1/' ${CREW_PACKAGES_PATH}/${package}.rb)
+  sha256s+=("$(sed '/binary_sha256.*{/,/}/!d' ${CREW_PACKAGES_PATH}/${package}.rb | sed -n "s/\,//g; s/^[[:blank:]]*${ARCH}: .\(.*\)./\1/p")")
 done
 
 # functions to maintain packages
