@@ -9,7 +9,7 @@ class Buildessential < Package
 
   is_fake
 
-  # Makre sure core is installed
+  # Make sure core is installed
   depends_on 'core'
 
   # install first to get ldconfig
