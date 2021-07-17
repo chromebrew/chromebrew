@@ -3,37 +3,33 @@ require 'package'
 class Libical < Package
   description 'An open source reference implementation of the icalendar data type and serialization format'
   homepage 'https://github.com/libical/libical'
-  version '3.0.9'
+  version '3.0.10'
   license 'MPL-2.0 or LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://github.com/libical/libical/releases/download/v3.0.9/libical-3.0.9.tar.gz'
-  source_sha256 'bd26d98b7fcb2eb0cd5461747bbb02024ebe38e293ca53a7dfdcb2505265a728'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/libical/libical/releases/download/v3.0.10/libical-3.0.10.tar.gz'
+  source_sha256 'f933b3e6cf9d56a35bb5625e8e4a9c3a50239a85aea05ed842932c1a1dc336b4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_armv7l/libical-3.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_i686/libical-3.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.9_x86_64/libical-3.0.9-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.10_armv7l/libical-3.0.10-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.10_armv7l/libical-3.0.10-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.10_x86_64/libical-3.0.10-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '7db2461fee6be357f39abd270cfad5f20aa2e0d40f65a3310f1d2cc755c50e5e',
-     armv7l: '7db2461fee6be357f39abd270cfad5f20aa2e0d40f65a3310f1d2cc755c50e5e',
-       i686: '15749b91f620d4f108c6c73ce3a23075621a13728348d401ae499b1db047b747',
-     x86_64: 'd3ebd14fbd5b34f1c0347dfb21e6b278a6a7131fb9367a1be0e53d23cac755ac'
+    aarch64: 'eaf30d94276f73f41c57f4c4ef520d90db8dd26c6fabd87ec06eb427d7630c1f',
+     armv7l: 'eaf30d94276f73f41c57f4c4ef520d90db8dd26c6fabd87ec06eb427d7630c1f',
+     x86_64: '4183f8666361ccb3c4c41e41ec1a17a649d1e432836a55a3aeb56ef2d0976f05'
   })
 
   depends_on 'glib'
-  depends_on 'icu4c'
   depends_on 'gtk_doc' => :build
+  depends_on 'icu4c'
   depends_on 'vala' => :build
   depends_on 'gobject_introspection' => :build
 
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      cmake #{CREW_CMAKE_OPTIONS} .. -G Ninja \
+      system "cmake #{CREW_CMAKE_OPTIONS} .. -G Ninja \
       -DGOBJECT_INTROSPECTION=true \
       -DICAL_GLIB_VAPI=true \
       -DICAL_BUILD_DOCS=false \
