@@ -3,25 +3,23 @@ require 'package'
 class Gnome_desktop < Package
   description 'Library with common API for various GNOME modules'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
-  @_ver = '40.0'
+  @_ver = '40.3'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version @_ver
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-desktop/-/archive/#{@_ver}/gnome-desktop-#{@_ver}.tar.bz2"
-  source_sha256 'b993bb587326e405796ffe15335eba6923cfec4bee454e738a748e98476c320a'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.0-1_armv7l/gnome_desktop-40.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.0-1_armv7l/gnome_desktop-40.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.0-1_i686/gnome_desktop-40.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.0-1_x86_64/gnome_desktop-40.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.3_armv7l/gnome_desktop-40.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.3_armv7l/gnome_desktop-40.3-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.3_x86_64/gnome_desktop-40.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'aa5626a827b0dc651edc6187b5f9bda067191aaa003961b051d763939488c800',
-     armv7l: 'aa5626a827b0dc651edc6187b5f9bda067191aaa003961b051d763939488c800',
-       i686: '2ec196505f5a9d53833d44af523f7cc1383883ec8de1cc49ee9c0010a0cac8c5',
-     x86_64: '36359861c63f4272417bc9ab23b4eeeba0c301a167268cbca4e7a8c940f53e04'
+    aarch64: '42015f607b49bda566fb307649835336bafafebf182d6a6938bee23489a8c0f9',
+     armv7l: '42015f607b49bda566fb307649835336bafafebf182d6a6938bee23489a8c0f9',
+     x86_64: 'c9dc4e63cc3c1e16a957e37064fd2efed590b96b5bb58b8fe3004ea2dcf825f2'
   })
 
   depends_on 'cairo'
