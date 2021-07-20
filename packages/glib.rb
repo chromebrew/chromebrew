@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.68.2'
+  @_ver = '2.69.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Glib < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_armv7l/glib-2.68.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_armv7l/glib-2.68.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_i686/glib-2.68.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.68.2_x86_64/glib-2.68.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_armv7l/glib-2.69.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_armv7l/glib-2.69.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_i686/glib-2.69.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_x86_64/glib-2.69.0-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '51cca2bdab9b0d8725010d9627e1af90553bd80627c7c0ca7822eb1d48977d5e',
-     armv7l: '51cca2bdab9b0d8725010d9627e1af90553bd80627c7c0ca7822eb1d48977d5e',
-       i686: '9edb7d402f59d21ed282bfd68b45c3bfe896a6edd0c6d5fed6b284e42532f8d3',
-     x86_64: '3f6a6728ad5b7e8b048665e2258ea22cf9ee5fa5c60c7e57d8172ada16486932'
+    aarch64: '573261af071950bce6f0ed2022cff39ed9fe341a0fc623fda18dd12a246b1392',
+     armv7l: '573261af071950bce6f0ed2022cff39ed9fe341a0fc623fda18dd12a246b1392',
+       i686: '60f54d5bac8c668f5b932e021b17391560353e6ae8391fed00a6af740620eea5',
+     x86_64: 'f2f4cce78c7cedfa0ab73438c83f6aed840b5bdd92b8d0dcb7dea3ef81bd785f',
   })
 
   depends_on 'pygments' => :build

@@ -3,30 +3,33 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.4.16'
+  @_ver = '7.4.21'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '1c16cefaf88ded4c92eed6a8a41eb682bb2ef42429deb55f1c4ba159053fb98b'
+  source_sha256 'cf43384a7806241bc2ff22022619baa4abb9710f12ec1656d0173de992e32a90'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.16_armv7l/php74-7.4.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.16_armv7l/php74-7.4.16-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.16_i686/php74-7.4.16-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.16_x86_64/php74-7.4.16-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_armv7l/php74-7.4.21-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_armv7l/php74-7.4.21-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_i686/php74-7.4.21-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_x86_64/php74-7.4.21-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: 'f3113d9c6f2f80644831b9f2eebb8867381b89e249206e6023f93ddfcbb41c0b',
-     armv7l: 'f3113d9c6f2f80644831b9f2eebb8867381b89e249206e6023f93ddfcbb41c0b',
-       i686: 'a04441e35fdf3612bc0bb07ecc04e98b51a7068ecec6789e239c4abc5d17f65a',
-     x86_64: 'ec82cab3f37d18d67c1aa2e5d7011a7014502914a2edc5b5a9d450b16d8e71c8',
+    aarch64: '6f24337b7f3ab13eeec7caa6a85d5b9e04661d2a9f36a17dd2434a8f8dcee211',
+     armv7l: '6f24337b7f3ab13eeec7caa6a85d5b9e04661d2a9f36a17dd2434a8f8dcee211',
+       i686: 'fe065f5875eed285cae998a0f95d0a87b1406404789b1aa681b3deab5e711afa',
+     x86_64: '6d22a25947829bbf0b90c2cda6c8c989aaf0c8efe1554be668e81ca89ee59d88',
   })
 
   depends_on 'aspell_en'
+  depends_on 'libcurl'
   depends_on 'libgcrypt'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
   depends_on 'libsodium'
+  depends_on 'libxpm'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'exif'
@@ -76,7 +79,10 @@ class Php74 < Package
        --mandir=#{CREW_MAN_PREFIX} \
        --sbindir=#{CREW_PREFIX}/bin \
        --with-config-file-path=#{CREW_PREFIX}/etc \
+       --with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype \
        --with-libdir=#{ARCH_LIB} \
+       --with-jpeg-dir=#{CREW_PREFIX}/include \
+       --with-xpm-dir=#{CREW_PREFIX}/include/X11 \
        --with-kerberos=#{CREW_LIB_PREFIX} \
        --enable-bcmath \
        --enable-calendar \

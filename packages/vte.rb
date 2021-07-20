@@ -3,24 +3,22 @@ require 'package'
 class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  @_ver = '0.64.0'
+  @_ver = '0.64.2'
   version @_ver
   license 'LGPL-2+ and GPL-3+'
-  compatibility 'all'
-  source_url "https://download.gnome.org/sources/vte/#{@_ver.rpartition('.')[0]}/vte-#{@_ver}.tar.xz"
-  source_sha256 'c0c60b8dc343167437c86d984b0cf134df86034180ed70513f683006ada3ec41'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/vte.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.0_armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.0_armv7l/vte-0.64.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.0_i686/vte-0.64.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.0_x86_64/vte-0.64.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_x86_64/vte-0.64.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c29af253aa820f21b91be681e8fa1bdd2e5d0028455827b38f281738f13a3a09',
-     armv7l: 'c29af253aa820f21b91be681e8fa1bdd2e5d0028455827b38f281738f13a3a09',
-       i686: '610c54d224b4e63bac35107f78089d625120e3f16cc8dda217172093e63a4eb3',
-     x86_64: '1e7a6e0496eac016b8343df2a4e2ead78eb1125587d2ce2169a03f35a688a201'
+    aarch64: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
+     armv7l: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
+     x86_64: '3c8d0ddce8365705d966bdc2b1102d77dd660c0265b0e36ff9a7848e400614e0'
   })
 
   depends_on 'gobject_introspection' => :build

@@ -379,6 +379,11 @@ url: https://github.com/Azure/azure-cli/releases
 activity: high
 ---
 kind: url
+name: b2
+url: https://github.com/boostorg/build/releases
+activity: low
+---
+kind: url
 name: babl
 url: https://download.gimp.org/pub/babl/
 activity: high
@@ -816,6 +821,11 @@ activity: none
 kind: url
 name: codelite
 url: https://github.com/eranif/codelite/releases/
+activity: medium
+---
+kind: url
+name: codelobster
+url: http://codelobsteride.com/#download
 activity: medium
 ---
 kind: url
@@ -1339,6 +1349,11 @@ url: https://github.com/libexif/exif/releases
 activity: none
 ---
 kind: url
+name: exodus
+url: https://www.exodus.com/download/
+activity: high
+---
+kind: url
 name: expat
 url: https://sourceforge.net/projects/expat/files/expat/
 activity: low
@@ -1396,6 +1411,11 @@ activity: none
 kind: url
 name: faultstat
 url: https://kernel.ubuntu.com/~cking/tarballs/faultstat/
+activity: low
+---
+kind: url
+name: fd
+url: https://github.com/sharkdp/fd/releases/
 activity: low
 ---
 kind: url
@@ -1792,6 +1812,11 @@ kind: url
 name: gccmakedep
 url: https://www.x.org/releases/individual/util/
 activity: none
+---
+kind: url
+name: gcloud
+url: https://cloud.google.com/sdk/docs/downloads-versioned-archives
+activity: high
 ---
 kind: url
 name: gcr
@@ -2232,11 +2257,6 @@ kind: url
 name: gobject_introspection
 url: https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/
 activity: medium
----
-kind: url
-name: google_cloud_sdk
-url: https://cloud.google.com/sdk/docs/downloads-versioned-archives
-activity: high
 ---
 kind: url
 name: gox
@@ -3237,6 +3257,11 @@ kind: url
 name: libcue
 url: https://github.com/lipnitsk/libcue/releases
 activity: none
+---
+kind: url
+name: libcurl
+url: https://github.com/curl/curl/releases
+activity: high
 ---
 kind: url
 name: libcyrussasl
@@ -4474,6 +4499,11 @@ url: https://github.com/hreinecke/lsscsi/releases
 activity: none
 ---
 kind: url
+name: ltrace
+url: https://gitlab.com/cespedes/ltrace
+activity: none
+---
+kind: url
 name: lua
 url: https://www.lua.org/ftp
 activity: none
@@ -5404,6 +5434,11 @@ url: https://ftp.pcre.org/pub/pcre
 activity: low
 ---
 kind: url
+name: pdfchain
+url: https://downloads.sourceforge.net/project/pdfchain/files/
+activity: none
+---
+kind: url
 name: pdfcrack
 url: https://sourceforge.net/projects/pdfcrack/files/pdfcrack
 activity: none
@@ -5412,6 +5447,11 @@ kind: url
 name: pdfgrep
 url: https://pdfgrep.org/download.html
 activity: medium
+---
+kind: url
+name: pdftk
+url: https://gitlab.com/pdftk-java/pdftk/-/tags
+activity: low
 ---
 kind: url
 name: peazip
@@ -5687,6 +5727,11 @@ kind: url
 name: pngcheck
 url: https://sourceforge.net/projects/png-mng/files/pngcheck/
 activity: none
+---
+kind: url
+name: podofo
+url: https://sourceforge.net/projects/podofo/files/
+activity: low
 ---
 kind: url
 name: polkit
@@ -6024,6 +6069,11 @@ url: https://github.com/xiph/rav1e/releases
 activity: medium
 ---
 kind: url
+name: rdfind
+url: https://github.com/pauldreik/rdfind/releases/
+activity: none
+---
+kind: url
 name: re2
 url: https://github.com/google/re2/releases
 activity: high
@@ -6324,6 +6374,11 @@ url: http://freedesktop.org/~hadess/
 activity: low
 ---
 kind: url
+name: shells
+url: https://www.shells.com/l/en-US/download
+activity: low
+---
+kind: url
 name: shhmsg
 url: http://shh.thathost.com/pub-unix/files/
 activity: none
@@ -6429,6 +6484,11 @@ url: https://www.snort.org/downloads/
 activity: low
 ---
 kind: url
+name: snowflake
+url: https://github.com/subhra74/snowflake/releases
+activity: none
+---
+kind: url
 name: socat
 url: http://www.dest-unreach.org/socat/download
 activity: none
@@ -6441,6 +6501,11 @@ activity: none
 kind: url
 name: sonic
 url: https://github.com/espeak-ng/sonic/releases
+activity: none
+---
+kind: url
+name: source_highlight
+url: https://ftpmirror.gnu.org/src-highlite/
 activity: none
 ---
 kind: url
@@ -6466,6 +6531,11 @@ activity: low
 kind: url
 name: speex
 url: http://downloads.us.xiph.org/releases/speex
+activity: none
+---
+kind: url
+name: speexdsp
+url: https://gitlab.xiph.org/xiph/speexdsp/-/tags
 activity: none
 ---
 kind: url
@@ -6939,6 +7009,11 @@ url: https://www.freedesktop.org/software/uchardet/releases/
 activity: none
 ---
 kind: url
+name: ucl
+url: https://www.oberhumer.com/opensource/ucl/download/
+activity: none
+---
+kind: url
 name: uget
 url: https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/
 activity: low
@@ -6997,6 +7072,11 @@ kind: url
 name: upower
 url: https://gitlab.freedesktop.org/upower/upower/-/tags
 activity: none
+---
+kind: url
+name: upx
+url: https://github.com/upx/upx/releases/
+activity: low
 ---
 kind: url
 name: urlwatch

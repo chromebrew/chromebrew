@@ -3,7 +3,7 @@ require 'package'
 class Libsoup < Package
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  @_ver = '2.99.5'
+  @_ver = '2.99.8'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1+'
@@ -12,16 +12,16 @@ class Libsoup < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.5_armv7l/libsoup-2.99.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.5_armv7l/libsoup-2.99.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.5_i686/libsoup-2.99.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.5_x86_64/libsoup-2.99.5-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.8_armv7l/libsoup-2.99.8-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.8_armv7l/libsoup-2.99.8-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.8_i686/libsoup-2.99.8-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/2.99.8_x86_64/libsoup-2.99.8-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4f50b3740fd20061dfe27d08ef6cfb0815fefdd8740e3f5b71e284617c51033b',
-     armv7l: '4f50b3740fd20061dfe27d08ef6cfb0815fefdd8740e3f5b71e284617c51033b',
-       i686: 'f4effaf7fb8acf0262edb3d199bb982e8de90283aee92463005cacd343738a23',
-     x86_64: '28192705371f712fa67d4c6d17a7bd48114f3114882a5a499795bfe1d04c3dda'
+    aarch64: '41c08a29b640d95e648dee4fdbedcaefb18a422a49391cf39d5a45544ebde524',
+     armv7l: '41c08a29b640d95e648dee4fdbedcaefb18a422a49391cf39d5a45544ebde524',
+       i686: '98c6ba49cf0ab920eae0beec8c3298d298d0a5313f06fd6f4576caf1ae7b126f',
+     x86_64: 'de2b3183bd4db56f1b945fb72c1fd9823adeda053c1be94d06dac93adf030870'
   })
 
   depends_on 'glib_networking'
@@ -35,7 +35,6 @@ class Libsoup < Package
       -Dintrospection=enabled \
       builddir"
     system 'meson configure builddir'
-    system "sed -i 's#-R#-Wl,-rpath=#g' builddir/build.ninja"
     system 'ninja -C builddir'
   end
 
