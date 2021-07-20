@@ -22,7 +22,7 @@ class Dropbox_uploader < Package
      x86_64: 'de141ac2bbc1a53d30776f5a280af3733222a92ca09465f13ea5b9d6000b2731',
   })
 
-  depends_on 'curl'
+  depends_on 'libcurl'
 
   def self.install
     system "sed -i 's,dropbox_uploader.sh,dropbox_uploader,g' dropShell.sh"

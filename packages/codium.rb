@@ -3,17 +3,17 @@ require 'package'
 class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.56.2'
+  version '1.58.0'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"
-    source_sha256 '75152bdb78370435ec08b4230f25077edb65bc99348144c8e6aa1f30e12022b5'
+    source_sha256 'f5f2b68a2e764541f7c74676bf21c37571b8578b1a6f33002e63dddcd050edb1'
     @arch = 'arm'
   when 'x86_64'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
-    source_sha256 '7ff6bde6bea18260ea864f75d077639c9967da99fcfc6ab6f2ed81a5c61182bf'
+    source_sha256 '74d536db88b777be7e3ef5d6c8001d4bc200109e1d9e454e60997c356783ef8a'
     @arch = 'x64'
   end
 
@@ -27,6 +27,7 @@ class Codium < Package
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gtk3'
+  depends_on 'libcom_err'
   depends_on 'libdrm'
   depends_on 'libx11'
   depends_on 'libxcb'
@@ -44,6 +45,7 @@ class Codium < Package
   depends_on 'sommelier'
 
   def self.install
+    ENV['CREW_SHRINK_ARCHIVE'] = '0'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"

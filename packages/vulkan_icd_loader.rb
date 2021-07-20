@@ -3,24 +3,22 @@ require 'package'
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  @_ver = '1.2.169'
+  @_ver = '1.2.184'
   version @_ver
-  license 'APache-2.0'
-  compatibility 'all'
+  license 'Apache-2.0'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/KhronosGroup/Vulkan-Loader/archive/v#{@_ver}.tar.gz"
-  source_sha256 'e8413d6244245e5322a91fa204415115941c5396b892ef28a13152af635c5ca4'
+  source_sha256 '61f2cae1c47f38e17b6a2e578cf247041d733a2db364d6e09f4366cc493aec73'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_armv7l/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_armv7l/vulkan_icd_loader-1.2.169-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_i686/vulkan_icd_loader-1.2.169-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.169_x86_64/vulkan_icd_loader-1.2.169-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.184_armv7l/vulkan_icd_loader-1.2.184-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.184_armv7l/vulkan_icd_loader-1.2.184-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.184_x86_64/vulkan_icd_loader-1.2.184-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b5e441f3f7c9959ae0fc2a9b00bbcc4d5861068687c4174f500b3d1769f08e19',
-     armv7l: 'b5e441f3f7c9959ae0fc2a9b00bbcc4d5861068687c4174f500b3d1769f08e19',
-       i686: '965450506c352b43d05fe88fb2e60ebd9c0080cfd321e59f392a4f32daeddaff',
-     x86_64: 'ba071a6f4a1536b5c5237270c836dd89cd0bb041567f942a71e39adaacd32d87'
+    aarch64: '34cad6bd4efd3ea9bc603eafdc9bccdbcabbdfb4d84966ea5f04a83bc8e30886',
+     armv7l: '34cad6bd4efd3ea9bc603eafdc9bccdbcabbdfb4d84966ea5f04a83bc8e30886',
+     x86_64: 'bb7021c88c28ddad6587eb7bc298821cf48181f5570e44ba7eb72c1ff4317068'
   })
 
   depends_on 'libx11'

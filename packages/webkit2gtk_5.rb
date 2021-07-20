@@ -6,20 +6,18 @@ class Webkit2gtk_5 < Package
   @_ver = '2.32.1'
   version @_ver
   license 'LGPL-2+ and BSD-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{@_ver}.tar.xz"
   source_sha256 '136117317f70f66486f71b8edf5e46f8776403c5d8a296e914b11a36ef836917'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_armv7l/webkit2gtk_5-2.32.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_armv7l/webkit2gtk_5-2.32.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_i686/webkit2gtk_5-2.32.1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_x86_64/webkit2gtk_5-2.32.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '706890a948d02cb2db17d3f1ef0718710c88ba8900a6bc31cb6905498aa85189',
      armv7l: '706890a948d02cb2db17d3f1ef0718710c88ba8900a6bc31cb6905498aa85189',
-       i686: '74d8d4d4badd3f4484cd098a1828aeb423d05a1dad4b5e1a42f13101c5af123b',
      x86_64: '5dfa210eecb769b0b301474ee2bd819f68eda3fa27e1e372a0cb046718675a90'
   })
 

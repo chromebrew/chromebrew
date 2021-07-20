@@ -3,31 +3,34 @@ require 'package'
 class Openldap < Package
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  @_ver = '2.4.57'
-  version @_ver
+  @_ver = '2.5.5'
+  version "#{@_ver}-1"
   license 'OpenLDAP and GPL-2'
   compatibility 'all'
   source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{@_ver}.tgz"
-  source_sha256 'c7ba47e1e6ecb5b436f3d43281df57abeffa99262141aec822628bc220f6b45a'
+  source_sha256 '74ecefda2afc0e054d2c7dc29166be6587fa9de7a4087a80183bc9c719dbf6b3'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.4.57_armv7l/openldap-2.4.57-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.4.57_armv7l/openldap-2.4.57-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.4.57_i686/openldap-2.4.57-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.4.57_x86_64/openldap-2.4.57-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_armv7l/openldap-2.5.5-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_armv7l/openldap-2.5.5-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_i686/openldap-2.5.5-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.5.5-1_x86_64/openldap-2.5.5-1-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: 'eafc72703f61b96747a8d37e6fcdac7d5d400832da9f9205936188dda6e57a46',
-      armv7l: 'eafc72703f61b96747a8d37e6fcdac7d5d400832da9f9205936188dda6e57a46',
-        i686: 'e981259b1c30688d15c3b8ca83ea87fe83bd41f1923322b274df04e6e10611f0',
-      x86_64: 'e0ca5de88bd9808f8e30beb0861bec2da9c3686b538f4563603b19fbd50b6278',
+  binary_sha256({
+    aarch64: 'fb6fd0f0690103b39b71bce3a71426feb41ac8f0de03466a2a5985dcd82a4fdd',
+     armv7l: 'fb6fd0f0690103b39b71bce3a71426feb41ac8f0de03466a2a5985dcd82a4fdd',
+       i686: '409d75a7523e4de951285a5f9daf0d14166467242ce37cf85b5718a85e63cc88',
+     x86_64: 'a79aa7779fe182d0e529099f704a7c3d9e590b103d33e2f35779e59c4b582e06'
   })
 
   depends_on 'libcyrussasl'
 
+  def self.patch
+    system 'filefix'
+  end
+
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_OPTIONS} --disable-slapd"
+    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} --disable-slapd"
     system 'make'
     system 'make depend'
   end

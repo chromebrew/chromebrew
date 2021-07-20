@@ -3,30 +3,33 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.3'
+  @_ver = '8.0.8'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'c9816aa9745a9695672951eaff3a35ca5eddcb9cacf87a4f04b9fb1169010251'
+  source_sha256 'dc1668d324232dec1d05175ec752dade92d29bb3004275118bc3f7fc7cbfbb1c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_armv7l/php80-8.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_armv7l/php80-8.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_i686/php80-8.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_x86_64/php80-8.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.8_armv7l/php80-8.0.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.8_armv7l/php80-8.0.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.8_i686/php80-8.0.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.8_x86_64/php80-8.0.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '476ce8403fffce634600922e811cd71bedce3d8a8fdff5041450b1f73f3e9ab0',
-     armv7l: '476ce8403fffce634600922e811cd71bedce3d8a8fdff5041450b1f73f3e9ab0',
-       i686: '16818b4073cc89b69378a02716d04305697e134b0da9883ccdf9aab4559586ea',
-     x86_64: 'bab671116f916ab2eb6c7423d8c313e28632a01ca6be8fcac29699f13b01cc8c',
+    aarch64: '7bd82ad4a07c575c38a624998f68ebfeac6dd5247971ef0b038143cbe740ab43',
+     armv7l: '7bd82ad4a07c575c38a624998f68ebfeac6dd5247971ef0b038143cbe740ab43',
+       i686: 'b67f5d9cfc5f4dd7b2b10cc643ba9a35293b4bdfef37dd2b0cb428a36db5707e',
+     x86_64: '721217a2a167d2c16029242e59a26772f38b208e209feb2659b30aa4944c007b',
   })
 
   depends_on 'aspell_en'
+  depends_on 'libcurl'
   depends_on 'libgcrypt'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
   depends_on 'libsodium'
+  depends_on 'libxpm'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'exif'
@@ -76,7 +79,10 @@ class Php80 < Package
        --mandir=#{CREW_MAN_PREFIX} \
        --sbindir=#{CREW_PREFIX}/bin \
        --with-config-file-path=#{CREW_PREFIX}/etc \
+       --with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype \
        --with-libdir=#{ARCH_LIB} \
+       --with-jpeg-dir=#{CREW_PREFIX}/include \
+       --with-xpm-dir=#{CREW_PREFIX}/include/X11 \
        --with-kerberos=#{CREW_LIB_PREFIX} \
        --enable-exif \
        --enable-fpm \

@@ -6,23 +6,24 @@ require 'package'
 class Exempi < Package
   description 'A library to parse XMP metadata'
   homepage 'https://libopenraw.freedesktop.org/wiki/Exempi'
-  version '2.5.2'
+  @_ver = '2.5.2'
+  version "#{@_ver}-1"
   license 'BSD'
   compatibility 'all'
-  source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{version}/exempi-#{version}.tar.bz2"
+  source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{@_ver}/exempi-#{@_ver}.tar.bz2"
   source_sha256 'dff105f53bdd971e633b7fcb3bcfb22276716228a9e6063c1fd241a8542b9cec'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_armv7l/exempi-2.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_i686/exempi-2.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2_x86_64/exempi-2.5.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_armv7l/exempi-2.5.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_armv7l/exempi-2.5.2-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_i686/exempi-2.5.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_x86_64/exempi-2.5.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9f9699c46f95394aaaf6b116f7984c6dbfdbcd258698624baace212458391e67',
-     armv7l: '9f9699c46f95394aaaf6b116f7984c6dbfdbcd258698624baace212458391e67',
-       i686: 'bc0706d7dc3acc174fbb38e98bf50a88039b8bb10bd601f5d99bc63ef2c4ac6a',
-     x86_64: '37746a7eb30fd9de6779d1f5426adba4f961c720415f20ff374ff3a700a7f523'
+    aarch64: '551b3b9ea9078d1ace55df7014d34863ce4708e273cc336ce165775dc6e34c30',
+     armv7l: '551b3b9ea9078d1ace55df7014d34863ce4708e273cc336ce165775dc6e34c30',
+       i686: '5bb4594a18f52103b41d6a9be9c9729d485b68e302cf3ac5afbbb5a150f58384',
+     x86_64: 'fd2cb5b92e6b19a1897ace6d32cb608748d963776011923e41c2580061bbd46c'
   })
 
   depends_on 'boost' => :build
@@ -30,15 +31,12 @@ class Exempi < Package
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
-    system "install -Dm644 COPYING #{CREW_DEST_DIR}/usr/share/licenses/exempi/LICENSE"
   end
 end

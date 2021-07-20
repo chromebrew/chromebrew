@@ -3,11 +3,14 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.14'
+  version '1.18'
   license 'GPL-3+'
   compatibility 'all'
 
   is_fake
+
+  # Make sure core is installed
+  depends_on 'core'
 
   # install first to get ldconfig
   depends_on 'glibc'
@@ -21,17 +24,22 @@ class Buildessential < Package
   depends_on 'linuxheaders'
   depends_on 'make'
   depends_on 'pkgconfig'
+  depends_on 'binutils'
 
-  # typically required libraries to compile source code using "./autogen.sh"
+  # typically required libraries & tools to configure packages
+  # e.g. using "./autogen.sh"
   depends_on 'automake'
-  depends_on 'libtool'
-  depends_on 'intltool'
-  depends_on 'patch'
-  depends_on 'diffutils'
   depends_on 'bison'
+  depends_on 'diffutils'
+  depends_on 'filecmd'
   depends_on 'flex'
-  depends_on 'util_macros'
   depends_on 'gettext'
+  depends_on 'intltool'
+  depends_on 'libtool'
+  depends_on 'patch'
+  depends_on 'sed'
+  depends_on 'util_macros'
+  depends_on 'valgrind'
 
   # build documentation
   depends_on 'compressdoc'
@@ -109,4 +117,9 @@ class Buildessential < Package
 
   # xorg protocol headers
   #depends_on 'xorg_proto'
+
+  # Packages needed for shrinking package archives
+  depends_on 'rdfind'
+  depends_on 'symlinks'
+  depends_on 'upx'
 end

@@ -3,23 +3,23 @@ require 'package'
 class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.7.0-1'
+  version '3.7.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.0.tar.xz'
-  source_sha256 '49e2a22691d252c9f24a9829b293a8f359095bc5a818351f05f1c0a5188a1df8'
+  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.2.tar.xz'
+  source_sha256 '646e6c5a9a185faa4cea796d378a1ba8e1148dbb197ca6605f95986a25af2752'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_armv7l/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_armv7l/gnutls-3.7.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_i686/gnutls-3.7.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.0-1_x86_64/gnutls-3.7.0-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_armv7l/gnutls-3.7.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_armv7l/gnutls-3.7.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_i686/gnutls-3.7.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_x86_64/gnutls-3.7.2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: '7a80e48b97bb721ee3b6805d5863d61800a230c9b598a511a07df3af5d49dfdb',
-      armv7l: '7a80e48b97bb721ee3b6805d5863d61800a230c9b598a511a07df3af5d49dfdb',
-        i686: 'b3f8597ad7173e9721bd5bc5dbb6fd6385fac9cc748fc7e5d1871dc7161ccff8',
-      x86_64: 'd9fb0a59c22d64d629a7fcd868450b0c862a2bbe66c8940d854331da738ba4c3',
+  binary_sha256({
+    aarch64: '610e93e9f684b6e0dcac110ad323f0f4037e5d464968788e8686fe8328c63d4f',
+     armv7l: '610e93e9f684b6e0dcac110ad323f0f4037e5d464968788e8686fe8328c63d4f',
+       i686: '7849bf00eadd86e4eaead29de780b446aea8da21524221c4a98fc39532e5673f',
+     x86_64: '6570141b5100fee1bf0bf75012beea7b641bec5a0d79c131d22f2b20b042008a'
   })
 
   depends_on 'zlibpkg'
@@ -28,27 +28,37 @@ class Gnutls < Package
   depends_on 'nettle'
   depends_on 'libtasn1'
   depends_on 'trousers'
-  depends_on 'p11kit'
+  depends_on 'p11kit' # This package cannot be built statically.
   depends_on 'libffi'
   depends_on 'libunbound'
   depends_on 'libidn2'
 
+  def self.prebuild
+    # Use IPv4 fallback if default connection fails.
+    system "#{CREW_PREFIX}/sbin/unbound-anchor -a '#{CREW_PREFIX}/etc/unbound/root.key' || #{CREW_PREFIX}/sbin/unbound-anchor -4 -a '#{CREW_PREFIX}/etc/unbound/root.key'"
+  end
+
+  def self.patch
+    system 'filefix'
+  end
+
   def self.build
-    system "./configure --help"
-    system "env CFLAGS='-flto=1' CXXFLAGS='-flto=1' \
-    ./configure #{CREW_OPTIONS} \
-    --enable-shared \
-    --with-pic \
-    --with-system-priority-file=#{CREW_PREFIX}/etc/gnutls/default-priorities \
-    --with-unbound-root-key-file=#{CREW_PREFIX}/etc/unbound/root.key"
-    system "make"
+    system './configure --help'
+    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} \
+      --enable-shared \
+      --enable-static \
+      --with-pic \
+      --with-system-priority-file=#{CREW_PREFIX}/etc/gnutls/default-priorities \
+      --with-trousers-lib=#{CREW_LIB_PREFIX}/libtspi.so.1 \
+      --with-unbound-root-key-file=#{CREW_PREFIX}/etc/unbound/root.key"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    #system "make", "check"
+    system "make", "check"
   end
 end

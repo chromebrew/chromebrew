@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.10.5'
+CREW_VERSION = '1.12.0'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -8,13 +8,15 @@ ARCH_ACTUAL = `uname -m`.strip
 ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
 
 ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
-LIBC_VERSION = if File.exist? "/#{ARCH_LIB}/libc-2.27.so" then '2.27' else '2.23' end
 
-if ENV['CREW_PREFIX'].to_s.empty?
-  CREW_PREFIX = '/usr/local'
-else
+# Glibc version can be found from the output of libc.so.6
+@libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
+LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
+
+CREW_PREFIX = '/usr/local'
+if ENV['CREW_PREFIX'] and ENV['CREW_PREFIX'] != CREW_PREFIX
   CREW_PREFIX = ENV['CREW_PREFIX']
-  @pkg.build_from_source = true
+  CREW_BUILD_FROM_SOURCE = 1
 end
 
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
@@ -77,22 +79,24 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_COMMON_FLAGS = "'-Os -pipe -flto -fuse-ld=gold'"
-CREW_COMMON_FNO_LTO_FLAGS = "'-Os -pipe -fno-lto -fuse-ld=gold'"
+CREW_COMMON_FLAGS = '-Os -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=gold'
+CREW_COMMON_FNO_LTO_FLAGS = '-Os -pipe -fno-lto -fPIC -fuse-ld=gold'
+CREW_FNO_LTO_LDFLAGS = '-fno-lto'
+CREW_LDFLAGS = '-flto'
 
-CREW_ENV_OPTIONS = "CFLAGS=#{CREW_COMMON_FLAGS} CXXFLAGS=#{CREW_COMMON_FLAGS} FCFLAGS=#{CREW_COMMON_FLAGS} FFLAGS=#{CREW_COMMON_FLAGS}"
+CREW_ENV_OPTIONS = "CFLAGS='#{CREW_COMMON_FLAGS}' CXXFLAGS='#{CREW_COMMON_FLAGS}' FCFLAGS='#{CREW_COMMON_FLAGS}' FFLAGS='#{CREW_COMMON_FLAGS}' LDFLAGS='#{CREW_LDFLAGS}'"
 CREW_OPTIONS = "--prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT} --program-prefix='' --program-suffix=''"
-CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=true -Dstrip=true -Db_pie=true -Dcpp_args='-Os -pipe' -Dc_args='-Os -pipe'"
-CREW_MESON_FNO_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=false -Dstrip=true -Db_pie=true -Dcpp_args='-Os -pipe' -Dc_args='-Os -pipe'"
+CREW_MESON_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=true -Dstrip=true -Db_pie=true -Dcpp_args='-Os' -Dc_args='-Os'"
+CREW_MESON_FNO_LTO_OPTIONS = "-Dprefix=#{CREW_PREFIX} -Dlibdir=#{CREW_LIB_PREFIX} -Dmandir=#{CREW_MAN_PREFIX} -Dbuildtype=minsize -Db_lto=false -Dstrip=true -Db_pie=true -Dcpp_args='-Os' -Dc_args='-Os'"
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
 # Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
-CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_CXX_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_BUILD_TYPE=MinSizeRel"
-CREW_CMAKE_FNO_LTO_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS=#{CREW_COMMON_FNO_LTO_FLAGS} -DCMAKE_CXX_FLAGS=#{CREW_COMMON_FNO_LTO_FLAGS} -DCMAKE_BUILD_TYPE=MinSizeRel"
+CREW_CMAKE_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS}' -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS}' -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LDFLAGS}' -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LDFLAGS}' -DCMAKE_STATIC_LINKER_FLAGS='#{CREW_LDFLAGS}' -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE -DCMAKE_BUILD_TYPE=MinSizeRel"
+CREW_CMAKE_FNO_LTO_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DCMAKE_C_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' -DCMAKE_EXE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} -DCMAKE_SHARED_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} -DCMAKE_STATIC_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} -DCMAKE_MODULE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} -DCMAKE_BUILD_TYPE=MinSizeRel"
 CREW_LIB_SUFFIX = if ARCH == 'x86_64' then '64' else '' end
-CREW_CMAKE_LIBSUFFIX_OPTIONS = "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX} -DCMAKE_C_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_CXX_FLAGS=#{CREW_COMMON_FLAGS} -DCMAKE_BUILD_TYPE=MinSizeRel"
+CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
 PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"

@@ -25,6 +25,7 @@ class Gdb < Package
      x86_64: 'f3b420aff23c86604c9b0e4945458d734764f18372808bc5bddff568e1ed7262'
   })
 
+  depends_on 'libcurl' # R
   depends_on 'mpfr' # R
   depends_on 'gmp' # R
   depends_on 'source_highlight' # R

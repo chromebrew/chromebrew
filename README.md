@@ -4,24 +4,6 @@
 
 <p align="center">Package manager for Chrome OS</p>
 
-Chat with us!
--------------
-<p><em>Discord is not currently syncing messages with Slack</em></p>
-<p><a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank"><img src="/images/slack.png" alt="Slack Invite" />
-<a href="https://discord.gg/QRrzBXN" target="_blank"><img src="/images/discord.png" alt="Discord Invite" /></a></p>
-
-Supported Systems
------------------
-
-| Architecture | Supported? |
-|:---:|:---:|
-| x86_64 | Yes |
-| i686 | Yes<sup>*</sup> |
-| armv7l | Yes |
-| aarch64 | Yes |
-
-<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support gui apps, we will try to continue to support cli programs.</em>
-
 Overview
 --------
 
@@ -39,6 +21,18 @@ Please be aware of the fact that developer mode is insecure if not properly conf
 sudo chromeos-setdevpasswd
 sudo crossystem dev_boot_signed_only=1
 ```
+
+Supported Systems
+-----------------
+
+| Architecture | Supported? |
+|:---:|:---:|
+| x86_64 | Yes |
+| i686 | Yes<sup>*</sup> |
+| armv7l | Yes |
+| aarch64 | Yes |
+
+<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support gui apps, we will try to continue to support cli programs.</em>
 
 Installation
 ------------
@@ -77,27 +71,51 @@ Usage
 
 Where available commands are:
 
-  * build - `build package(s) from source and store the archive and checksum in the current working directory`
-  * const - `display constant(s)`
-  * deps - `display dependencies of package(s)`
-  * download - `download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install`
-  * files - `display installed files of package(s)`
-  * help - `get information about command usage`
-  * install - `install package(s) along with dependencies after prompting for confirmation`
-  * list - `available, installed, compatible or incompatible packages`
-  * postinstall - `display postinstall messages of package(s)`
-  * reinstall - `remove and install package(s)`
-  * remove - `remove package(s)`
-  * search - `look for package(s)`
-  * update - `update crew itself`
-  * upgrade - `update all or specific package(s)`
-  * whatprovides - `regex search for package(s) that contains file(s)`
+| Command | Description |
+|:---|:---|
+| build | build package(s) from source and store the archive and checksum in the current working directory |
+| const | display constant(s) |
+| deps | display dependencies of package(s) |
+| download | download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install |
+| files | display installed files of package(s) |
+| help | get information about command usage |
+| install | install package(s) along with dependencies after prompting for confirmation |
+| list | available, installed, compatible or incompatible packages |
+| postinstall | display postinstall messages of package(s) |
+| reinstall | remove and install package(s) |
+| remove | remove package(s) |
+| search | look for package(s) |
+| update | update crew itself |
+| upgrade | update all or specific package(s) |
+| whatprovides | regex search for package(s) that contains file(s) |
 
 Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
 
     crew install --keep <package1> [<package2> ...]
+
+Latest Packages
+---------------
+
+| Name | Description | Date Added |
+|:---|:---|:---|
+| b2 | B2 makes it easy to build C++ projects, everywhere. | 2021-07-01 |
+| shells | Launch your Shells™ virtual desktop | 2021-06-25 |
+| codelobster | Free cross-platform IDE for PHP/HTML/CSS/JavaScript development | 2021-06-23 |
+| ltrace | ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process. | 2021-06-22 |
+| exodus | Exodus is a desktop crypto wallet | 2021-06-21 |
+| snowflake | Snowflake (aka Muon) is a graphical SSH client. | 2021-06-19 |
+| fd | A simple, fast and user-friendly alternative to find | 2021-06-08 |
+| rdfind | Redundant data find - a program that finds duplicate files. | 2021-06-07 |
+| libcurl | Command line tool and library for transferring data with URLs. | 2021-06-07 |
+| pdfchain | PDF Chain is a graphical user interface for the PDF Toolkit (PDFtk). | 2021-06-01 |
+
+Chat with us!
+-------------
+<p><em>Discord is not currently syncing messages with Slack</em></p>
+<p><a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank"><img src="/images/slack.png" alt="Slack Invite" />
+<a href="https://discord.gg/QRrzBXN" target="_blank"><img src="/images/discord.png" alt="Discord Invite" /></a></p>
 
 License
 -------

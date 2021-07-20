@@ -11,6 +11,7 @@ require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require 'securerandom'
+require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
 
@@ -150,9 +151,9 @@ def print_current_package(extra = false)
   when 'incompatible'
     print @pkg.name.lightred
   else
-    print @pkg.name
+    print @pkg.name.lightblue
   end
-  print ": #{@pkg.description}" if @pkg.description
+  print ": #{@pkg.description}".lightblue if @pkg.description
   if extra
     puts ""
     puts @pkg.homepage if @pkg.homepage
@@ -192,8 +193,6 @@ def list_available
       end
       if @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH
         puts pkgName
-      else
-        puts pkgName.lightred
       end
     end
   end
@@ -222,17 +221,18 @@ def list_installed
 end
 
 def list_compatible(compat = true)
-  generate_compatible
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? do |elem| elem[:name] == pkgName end
-      if ( File.exist? CREW_META_PATH + pkgName + '.filelist' ) && compat
-        puts pkgName.lightgreen
-      else
-        puts pkgName if compat
+      if compat
+        if ( File.exist? CREW_META_PATH + pkgName + '.filelist' )
+          puts pkgName.lightgreen
+        else
+          puts pkgName
+        end
       end
     else
-      puts pkgName.lightred
+      puts pkgName.lightred unless compat
     end
   end
 end
@@ -590,6 +590,20 @@ def upgrade
       end
     end
 
+    # Adjust package install ordering for upgrades.
+    CREW_FIRST_PACKAGES.each do |pkg|
+      # Add package to beginning.
+      toBeUpdated.insert(0,toBeUpdated.delete(pkg)) if toBeUpdated.include? pkg
+    end
+    CREW_LAST_PACKAGES.each do |pkg|
+      if toBeUpdated.include? pkg
+        # Add package to beginning.
+        toBeUpdated.insert(0,toBeUpdated.delete(pkg))
+        # Now rotate first package to last package.
+        toBeUpdated=toBeUpdated.rotate(1)
+      end
+    end
+
     unless toBeUpdated.empty?
       puts 'Updating packages...'
       toBeUpdated.each do |package|
@@ -628,21 +642,22 @@ def download
     puts "No precompiled binary available for your platform, downloading source..."
   end
 
-  Dir.chdir CREW_BREW_DIR do
+  @git = uri.scheme =~ /git/ ? true : false
 
+  Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
     # Sources that download with curl
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
-        puts "Looking for archive in cache".orange if @opt_verbose
+        puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
         cachefile = CREW_CACHE_DIR + filename
         if ! File.exist?(cachefile)
           puts 'Cannot find cached archive. 😔 Will download.'.lightred
           cachefile = ''
         else
-          puts "Archive file exists in cache".lightgreen if @opt_verbose
-          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum
+          puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
+          if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum || sha256sum =~ /^SKIP$/i
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
@@ -663,8 +678,8 @@ def download
       # Download file if not cached.
       system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
-      puts 'Archive downloaded.'.lightgreen
+        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
+      puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested (and if file is not from cache).
       if CREW_CACHE_ENABLED and cachefile.to_s.empty?
         begin
@@ -680,8 +695,16 @@ def download
       end
       return {source: source, filename: filename}
 
-    # Sources that download with git
+    when /^SKIP$/i
+      Dir.mkdir @extract_dir
+
+    # Source URLs which end with .git are git sources.
     when /\.git$/i
+      @git = true
+    end
+
+    # Handle git sources.
+    if @git == true
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
         if @pkg.git_branch.nil? || @pkg.git_branch.empty?
@@ -734,8 +757,6 @@ def download
         system "sha256sum #{cachefile} > #{cachefile}.sha256"
         puts 'Git repo cached.'.lightgreen
       end
-    when /^SKIP$/i
-      Dir.mkdir @extract_dir
     end
   end
   return {source: source, filename: filename}
@@ -755,7 +776,18 @@ def unpack(meta)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
       puts "Unpacking archive using 'ar', this may take a while..."
-      system "ar -p #{meta[:filename]} data.tar.xz | xz -dc#{@verbose} | tar x#{@verbose} -C #{@extract_dir}", exception: true
+      
+      suffix = `ar -t #{meta[:filename]}`.scan(/data.(.*)/)[0][0]
+      case suffix
+      when 'tar.xz'
+        tar_opt = '--xz'
+      when 'tgz', 'tar.gz'
+        tar_opt = '--gzip'
+      when 'bzip2'
+        tar_opt = '--bzip2'
+      end
+
+      system "ar -p #{meta[:filename]} data.#{suffix} | tar x#{@verbose} #{tar_opt} -C #{@extract_dir}", exception: true
     when /\.AppImage$/i
       puts "Unpacking 'AppImage' archive, this may take a while..."
       FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
@@ -831,10 +863,12 @@ def pre_install(dest_dir)
   end
 end
 
-def post_install(dest_dir)
-  Dir.chdir dest_dir do
-    puts 'Performing post-install...'
-    @pkg.postinstall
+def post_install
+  Dir.mktmpdir do |post_install_tempdir|
+    Dir.chdir post_install_tempdir do
+      puts "Performing post-install for #{@pkg.name}...".lightblue
+      @pkg.postinstall
+    end
   end
 end
 
@@ -904,6 +938,9 @@ def prepare_package(destdir)
 
     strip_dir destdir 
 
+    # make hard linked files symlinks and use upx on executables
+    shrink_dir destdir
+
   end
 end
 
@@ -932,6 +969,41 @@ def strip_dir(dir)
   end
 end
 
+def shrink_dir(dir)
+  unless ENV['CREW_SHRINK_ARCHIVE'] == '0'
+    Dir.chdir dir do
+      if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+        puts "Using rdfind to find duplicate or hard linked files."
+        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
+      end
+      if File.exist?("#{CREW_PREFIX}/bin/symlinks")
+        puts "Using symlinks tool to make absolute symlinks relative"
+        system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
+      end
+      # Issues with non-x86_64 in compressing libraries, so just compress
+      # non-libraries. Also note that one needs to use "upx -d" on a
+      # compressed file to use ldd.
+      # sommelier also isn't happy when sommelier and xwayland are compressed
+      # so don't compress those packages.
+      if File.exist?("#{CREW_PREFIX}/bin/upx")
+        # Logic here is to find executable binaries, compress after making
+        # a backup, then expand the compressed file with upx. If the
+        # expansion doesn't error out then it is ok to delete the backup.
+        # Disable for sommelier.elf and Xwayland.elf since upx breaks those binaries.
+        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -print].chomp
+        unless @execfiles.empty? or @execfiles.nil?
+          puts "Using upx to shrink binaries."
+          @execfiles.each_line do |execfile|
+            system "upx --best -k --overlay=skip #{execfile} && \
+            \( upx -t #{execfile} && rm #{execfile}.~ || mv #{execfile}.~ #{execfile}\)"
+          end
+          system 'find . -executable -type f -name "*.~" -delete'
+        end
+      end
+    end
+  end
+end
+
 def install_package(pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
@@ -949,6 +1021,7 @@ def install_package(pkgdir)
 end
 
 def resolve_dependencies_and_install
+  @resolve_dependencies_and_install = 1
   unless @pkg.is_fake?
     # Process preflight block to see if package should even
     # be downloaded or installed.
@@ -957,10 +1030,16 @@ def resolve_dependencies_and_install
   begin
     origin = @pkg.name
 
+    @to_postinstall = []
     resolve_dependencies
 
     search origin, true
     install
+    @to_postinstall.append(@pkg.name)
+    @to_postinstall.each do |dep|
+      search dep
+      post_install
+    end
   rescue InstallError => e
     abort "#{@pkg.name} failed to install: #{e.to_s}".lightred
   ensure
@@ -971,6 +1050,7 @@ def resolve_dependencies_and_install
     end
   end
   puts "#{@pkg.name.capitalize} installed!".lightgreen
+  @resolve_dependencies_and_install = 0
 end
 
 def expand_dependencies
@@ -1017,10 +1097,10 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   deps = @dependencies
-  begin_packages = []
-  end_packages = []
-  first_packages = ["shared_mime_info"]
-  last_packages = ["curl", "ghc", "mandb", "gtk3", "gtk4", "sommelier"]
+  # populate arrays with common elements
+  begin_packages = deps & CREW_FIRST_PACKAGES
+  end_packages = deps & CREW_LAST_PACKAGES
+
   @dependencies.each do |dep|
     depends = nil
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
@@ -1032,19 +1112,13 @@ def resolve_dependencies
         end
       end
     end
-    begin_packages.push dep if first_packages.include? dep
     # if a dependency package has no other dependencies, push to the front
     begin_packages.push dep unless depends
-    end_packages.push dep if last_packages.include? dep
   end
-  i = 0
-  all_packages = begin_packages + end_packages
-  deps.each do |dep|
-    if all_packages.include?(dep)
-      deps.delete_at(i)
-    end
-    i += 1
-  end
+  # Remove elements in another array
+  deps -= begin_packages
+  deps -= end_packages
+
   @dependencies = (begin_packages + deps + end_packages).uniq
 
   @dependencies.each do |dep|
@@ -1070,6 +1144,14 @@ def resolve_dependencies
       search dep
       print_current_package
       install
+    end
+    if @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
+      @to_postinstall = @dependencies
+    else
+      @dependencies.each do |dep|
+        search dep
+        post_install
+      end
     end
   end
 end
@@ -1113,8 +1195,10 @@ def install
     # perform install process
     install_package dest_dir
 
-    # perform post-install process
-    post_install dest_dir
+    unless @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
+      # perform post-install process
+      post_install
+    end
   end
 
   #add to installed packages
@@ -1129,13 +1213,18 @@ def install
 end
 
 def resolve_dependencies_and_build
+  @resolve_dependencies_and_build = 1
+  @to_postinstall = []
   begin
     origin = @pkg.name
 
     # mark current package as which is required to compile from source
     @pkg.build_from_source = true
     resolve_dependencies
-
+    @to_postinstall.each do |dep|
+      search dep
+      post_install
+    end
     search origin, true
     build_package Dir.pwd
   rescue InstallError => e
@@ -1148,6 +1237,7 @@ def resolve_dependencies_and_build
     end
   end
   puts "#{@pkg.name} is built!".lightgreen
+  @resolve_dependencies_and_build = 0
 end
 
 def build_package(pwd)
@@ -1312,7 +1402,7 @@ def install_command(args)
     @pkgName = name
     search @pkgName
     print_current_package true
-    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    @pkg.build_from_source = true if @opt_src or @opt_recursive or ENV['CREW_BUILD_FROM_SOURCE'] == '1'
     resolve_dependencies_and_install
   end
 end
@@ -1346,7 +1436,7 @@ def reinstall_command(args)
     @pkgName = name
     search @pkgName
     print_current_package
-    @pkg.build_from_source = true if @opt_src or @opt_recursive
+    @pkg.build_from_source = true if @opt_src or @opt_recursive or ENV['CREW_BUILD_FROM_SOURCE'] == '1'
     if @pkgName
       @pkg.in_upgrade = true
       resolve_dependencies_and_install
@@ -1382,7 +1472,7 @@ def upgrade_command(args)
     @pkgName = name
     search @pkgName
     print_current_package
-    @pkg.build_from_source = true if @opt_src
+    @pkg.build_from_source = true if @opt_src or ENV['CREW_BUILD_FROM_SOURCE'] == '1'
     upgrade
   end.empty? and begin
     upgrade
