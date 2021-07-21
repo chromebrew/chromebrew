@@ -10,6 +10,8 @@ class Py3_libxml2 < Package
   source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
   git_hashtag 'v' + @_ver
 
+  depends_on 'libxml2'
+  depends_on 'libxslt'
   depends_on 'py3_setuptools' => :build
 
   def self.build
@@ -22,7 +24,7 @@ class Py3_libxml2 < Package
 
   def self.install
     Dir.chdir('python') do
-      system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
+      system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
     end
   end
 end
