@@ -3,23 +3,22 @@ require 'package'
 class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.0.5.1-2'
+  @_ver = '3.0.5.1'
+  version @_ver + '-3'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://github.com/wxWidgets/wxWidgets/archive/v3.0.5.1.tar.gz'
-  source_sha256 'bae4d9f289e33a05fb8553fcc580564d30efe6a882ff08e3d4e09ef01f5f6578'
+  compatibility 'aarch64,armv7l,x86_64'
+  source_url 'https://github.com/wxWidgets/wxWidgets.git'
+  git_hashtag 'v' + @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-2_armv7l/wxwidgets-3.0.5.1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-2_armv7l/wxwidgets-3.0.5.1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-2_i686/wxwidgets-3.0.5.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-2_x86_64/wxwidgets-3.0.5.1-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-3_armv7l/wxwidgets-3.0.5.1-3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-3_armv7l/wxwidgets-3.0.5.1-3-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-3_x86_64/wxwidgets-3.0.5.1-3-chromeos-x86_64.tpxz',
   })
   binary_sha256({
-    aarch64: 'ed1d320f5031866429b4d5ef6fa32b55703f0863da4b038f85a5618949952c4a',
-     armv7l: 'ed1d320f5031866429b4d5ef6fa32b55703f0863da4b038f85a5618949952c4a',
-       i686: '1670e89718d59b1dad3abee8d40cdc0757e4a0df748189d1b3078d9f5b37ef38',
-     x86_64: '56e179fe5b48b444525b34701c64b7e2e5fc3e5e6a9a57ee7769560785400901'
+    aarch64: 'f2409c1a97f926a1fcb21ef7f5217a361c06389f9044a764cab20b5a8a721343',
+     armv7l: 'f2409c1a97f926a1fcb21ef7f5217a361c06389f9044a764cab20b5a8a721343',
+     x86_64: 'fef36327456b2b3fe3aa73af54a028aef85bbd9e312f5ddce5954a8eb3900a22',
   })
 
   depends_on 'gst_plugins_base'
@@ -54,9 +53,7 @@ class Wxwidgets < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
       --with-gtk=3 \
       --with-opengl \
       --enable-unicode \
@@ -74,5 +71,8 @@ class Wxwidgets < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.0", 'wx-config'
+    end
   end
 end
