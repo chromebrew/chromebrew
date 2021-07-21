@@ -19,5 +19,5 @@ class S3cmd < Package
 
   def self.install
     system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  en
+  end
 end
