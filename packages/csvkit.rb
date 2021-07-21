@@ -2,32 +2,26 @@ require 'package'
 
 class Csvkit < Package
   description 'A suite of utilities for converting to and working with CSV, the king of tabular file formats.'
-  homepage 'http://csvkit.rtfd.org/'
-  version '1.0.4'
+  homepage 'https://csvkit.rtfd.org/'
+  @_ver = '1.0.6'
+  version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/wireservice/csvkit/archive/1.0.4.tar.gz'
-  source_sha256 'e19c609894c42e850c25af1ca9082753f76f231450f70a70c46344bec45c1a66'
+  source_url 'https://github.com/wireservice/csvkit.git'
+  git_hashtag @_ver
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.4_armv7l/csvkit-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.4_armv7l/csvkit-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.4_i686/csvkit-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.4_x86_64/csvkit-1.0.4-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'b6d48277e99c02a4ae4afffed955682def7326cc6e24be797d35719cefb9f086',
-     armv7l: 'b6d48277e99c02a4ae4afffed955682def7326cc6e24be797d35719cefb9f086',
-       i686: 'dd6f3a7878131e5b5801415ef96f3b8462b32d3df95c59255194b5bc09e2d4c7',
-     x86_64: '01d05a5337a2aeb7488ad7129cc19ac342e6dac19fe07f7487a4ec3cd0751d78',
-  })
-
+  depends_on 'py3_six'
+  depends_on 'py3_agate_dbf'
+  depends_on 'py3_agate'
+  depends_on 'py3_agate_excel'
+  depends_on 'py3_agate_sql'
   depends_on 'py3_setuptools' => :build
 
+  def self.build
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+  end
+
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} \
-            --root #{CREW_DEST_DIR} \
-            -r requirements-py2.txt \
-            -r requirements-py3.txt csvkit"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end
