@@ -3,7 +3,7 @@ require 'package'
 class Meson < Package
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '0.58.1'
+  @_ver = '0.58.2'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
