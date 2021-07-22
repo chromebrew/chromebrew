@@ -7,7 +7,7 @@ class Py3_libevdev < Package
   version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://https://gitlab.freedesktop.org/libevdev/python-libevdev.git'
+  source_url 'https://gitlab.freedesktop.org/libevdev/python-libevdev.git'
   git_hashtag @_ver
 
   depends_on 'py3_setuptools' => :build

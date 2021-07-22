@@ -8,7 +8,7 @@ class Py3_xlrd < Package
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/python-excel/xlrd.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag @_ver
 
   depends_on 'py3_setuptools' => :build
 

@@ -8,7 +8,7 @@ class Py3_terminaltables < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Robpol86/terminaltables.git'
-  git_hashtag 'terminaltables-' + @_ver
+  git_hashtag 'v' + @_ver
 
   depends_on 'py3_dateutil'
   depends_on 'py3_setuptools' => :build

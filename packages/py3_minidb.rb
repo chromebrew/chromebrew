@@ -1,6 +1,6 @@
 require 'package'
 
-class Py3_cssselect < Package
+class Py3_minidb < Package
   description 'Minidb is a simple SQLite3-based store for Python objects.'
   homepage 'http://thp.io/2010/minidb/'
   @_ver = '2.0.4'
@@ -17,6 +17,6 @@ class Py3_cssselect < Package
   end
 
   def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
   end
 end

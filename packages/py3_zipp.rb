@@ -3,12 +3,12 @@ require 'package'
 class Py3_zipp < Package
   description 'Zipp is a backport of pathlib-compatible object wrapper for zip files.'
   homepage 'https://github.com/jaraco/zipp/'
-  @_ver = '3.4.1'
+  @_ver = '3.5.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/jaraco/zipp.git'
-  git_hashtag @_ver
+  git_hashtag 'v' + @_ver
 
   depends_on 'py3_setuptools' => :build
 

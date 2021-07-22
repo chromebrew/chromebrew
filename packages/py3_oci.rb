@@ -8,7 +8,7 @@ class Py3_oci < Package
   license 'UPL-1.0 or Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/oracle/oci-python-sdk.git'
-  git_hashtag @_ver
+  git_hashtag 'v' + @_ver
 
   depends_on 'py3_dateutil'
   depends_on 'py3_configparser'

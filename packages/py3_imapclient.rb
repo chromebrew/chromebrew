@@ -2,13 +2,13 @@ require 'package'
 
 class Py3_imapclient < Package
   description 'IMAPclient is an easy-to-use, complete IMAP client library.'
-  homepage 'https://www.decalage.info/python/olefileio/'
-  @_ver = '0.46'
+  homepage 'https://imapclient.readthedocs.io/'
+  @_ver = '2.2.0'
   version @_ver
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/decalage2/olefile.git'
-  git_hashtag 'v' + @_ver
+  source_url 'https://github.com/mjs/imapclient.git'
+  git_hashtag @_ver
 
   depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build

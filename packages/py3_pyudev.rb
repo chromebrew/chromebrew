@@ -1,13 +1,13 @@
 require 'package'
 
 class Py3_pyudev < Package
-  description 'Libevdev is a Python wrapper around the libevdev C library.'
+  description 'Pyudev provides Python bindings for udev.'
   homepage 'https://pyudev.readthedocs.io/'
   @_ver = '0.22'
   version @_ver
-  license 'MIT'
+  license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/libevdev/python-libevdev.git'
+  source_url 'https://github.com/pyudev/pyudev.git'
   git_hashtag 'v' + @_ver
 
   depends_on 'py3_six'
