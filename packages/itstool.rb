@@ -10,6 +10,7 @@ class Itstool < Package
   source_url 'https://github.com/itstool/itstool.git'
   git_hashtag @_ver
 
+  depends_on 'py3_libxml2'
   depends_on 'py3_setuptools' => :build
 
   def self.build
