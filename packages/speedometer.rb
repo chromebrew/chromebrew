@@ -22,7 +22,7 @@ class Speedometer < Package
      x86_64: 'a926e76ca2d5de7773b2e2d5423892677c020f0b1328abe9ff84fe81d2801a97',
   })
 
-  depends_on 'psutil'
+  depends_on 'py3_psutil'
   depends_on 'py3_six'
   depends_on 'py3_nuitka' => :build
 
