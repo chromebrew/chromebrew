@@ -1,6 +1,6 @@
 require 'package'
 
-class Py3_sphinxcontrib_qthelp < Package
+class Py3_sphinxcontrib_htmlhelp < Package
   description 'sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files.'
   homepage 'https://www.sphinx-doc.org/'
   @_ver = '1.0.3'

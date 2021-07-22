@@ -7,8 +7,8 @@ class Py3_openpyxl < Package
   version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://foss.heptapod.net/openpyxl/openpyxl.git'
-  git_hashtag @_ver
+  source_url 'https://files.pythonhosted.org/packages/f1/7d/fb475cd963bd9d244f95a90c98f518f5c834fefe749f25f9f479ca2d8a51/openpyxl-3.0.7.tar.gz'
+  source_sha256 '6456a3b472e1ef0facb1129f3c6ef00713cebf62e736cd7a75bcc3247432f251'
 
   depends_on 'py3_et_xmlfile'
   depends_on 'py3_setuptools' => :build

@@ -8,7 +8,7 @@ class Oci_cli < Package
   license 'UPL-1.0'
   compatibility 'all'
   source_url 'https://github.com/oracle/oci-cli.git'
-  git_hashtag @_ver
+  git_hashtag 'v' + @_ver
 
   depends_on 'py3_arrow'
   depends_on 'py3_six'

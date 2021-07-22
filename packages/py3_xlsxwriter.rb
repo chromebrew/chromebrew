@@ -1,6 +1,6 @@
 require 'package'
 
-class Py3_pillow < Package
+class Py3_xlsxwriter < Package
   description 'XlsxWriter is a Python module for creating Excel XLSX files.'
   homepage 'https://xlsxwriter.readthedocs.io/'
   @_ver = '1.4.2'

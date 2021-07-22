@@ -8,7 +8,7 @@ class Py3_mako < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sqlalchemy/mako.git'
-  git_hashtag @_ver
+  git_hashtag 'rel_' + @_ver.gsub('.','_')
 
   depends_on 'py3_markupsafe'
   depends_on 'py3_setuptools' => :build

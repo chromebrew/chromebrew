@@ -7,7 +7,7 @@ class Py3_argcomplete < Package
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://kislyuk.github.io/argcomplete.git'
+  source_url 'https://github.com/kislyuk/argcomplete.git'
   git_hashtag 'v' + @_ver
 
   depends_on 'py3_setuptools' => :build

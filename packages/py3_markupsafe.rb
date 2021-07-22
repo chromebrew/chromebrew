@@ -7,7 +7,7 @@ class Py3_markupsafe < Package
   version @_ver
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/pallets/jinja.git'
+  source_url 'https://github.com/pallets/markupsafe.git'
   git_hashtag @_ver
 
   depends_on 'py3_setuptools' => :build

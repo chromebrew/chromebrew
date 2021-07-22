@@ -24,7 +24,6 @@ class Glib < Package
      x86_64: 'f2f4cce78c7cedfa0ab73438c83f6aed840b5bdd92b8d0dcb7dea3ef81bd785f',
   })
 
-  depends_on 'pygments' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'py3_six' => :build
   depends_on 'py3_pygments' => :build

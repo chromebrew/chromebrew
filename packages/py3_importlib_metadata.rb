@@ -3,12 +3,12 @@ require 'package'
 class Py3_importlib_metadata < Package
   description 'Importlib metadata reads metadata from Python packages.'
   homepage 'https://github.com/python/importlib_metadata/'
-  @_ver = '4.0.1'
+  @_ver = '4.6.1'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/python/importlib_metadata.git'
-  git_hashtag @_ver
+  git_hashtag 'v' + @_ver
 
   depends_on 'py3_zipp'
   depends_on 'py3_setuptools' => :build

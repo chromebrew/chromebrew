@@ -17,6 +17,6 @@ class Py3_docx2txt < Package
   end
 
   def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS_NO_SVEM}"
   end
 end

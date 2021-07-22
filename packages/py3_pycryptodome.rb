@@ -1,7 +1,7 @@
 require 'package'
 
-class Py3_pycryptodomex < Package
-  description 'Pycryptodomex is a cryptographic library for Python.'
+class Py3_pycryptodome < Package
+  description 'Pycryptodome is a cryptographic library for Python.'
   homepage 'https://www.pycryptodome.org/'
   @_ver = '3.10.1'
   version @_ver
