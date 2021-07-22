@@ -35,9 +35,9 @@ class Crew_profile_base < Package
       FileUtils.rm './src/env.d/99-custom' if File.exist? "#{CREW_PREFIX}/etc/env.d/99-custom"
       FileUtils.rm './src/profile.d/99-custom' if File.exist? "#{CREW_PREFIX}/etc/profile.d/99-custom"
       # Custom changes should only go in the above two files.
-      #FileUtils.rm './src/env.d/00-locale' if File.exist? "#{CREW_PREFIX}/etc/env.d/00-locale"
-      #FileUtils.rm './src/env.d/01-editor' if File.exist? "#{CREW_PREFIX}/etc/env.d/01-editor"
-      #FileUtils.rm './src/env.d/02-pager' if File.exist? "#{CREW_PREFIX}/etc/env.d/02-pager"
+      # FileUtils.rm './src/env.d/00-locale' if File.exist? "#{CREW_PREFIX}/etc/env.d/00-locale"
+      # FileUtils.rm './src/env.d/01-editor' if File.exist? "#{CREW_PREFIX}/etc/env.d/01-editor"
+      # FileUtils.rm './src/env.d/02-pager' if File.exist? "#{CREW_PREFIX}/etc/env.d/02-pager"
 
       FileUtils.mkdir_p "#{CREW_PREFIX}/etc/"
       FileUtils.cp_r Dir.glob('./src/*'), "#{CREW_PREFIX}/etc/"
@@ -51,11 +51,11 @@ class Crew_profile_base < Package
 
       # Write our rc files
       @crew_rcfile = <<~CREW_PROFILE_EOF
-                # DO NOT DELETE THIS LINE
-                # See #{CREW_PREFIX}/etc/profile for further details
-                source #{CREW_PREFIX}/etc/profile
+        # DO NOT DELETE THIS LINE
+        # See #{CREW_PREFIX}/etc/profile for further details
+        source #{CREW_PREFIX}/etc/profile
 
-                # Put your stuff under this comment
+        # Put your stuff under this comment
 
       CREW_PROFILE_EOF
       # Must write directly to HOME and not CREW_DEST_HOME to prevent chromebrew from removing ~/.bashrc during reinstall
@@ -66,6 +66,7 @@ class Crew_profile_base < Package
         end
       else
         IO.write("#{HOME}/.bashrc", @crew_rcfile)
+      end
       if File.exist? "#{HOME}/.zshrc"
         if `grep -c "#{@_str}" #{HOME}/.zshrc`.to_i.zero?
           old_zshrc = IO.read "#{HOME}/.zshrc"
