@@ -75,10 +75,6 @@ class Crew_profile_base < Package
       else
         IO.write("#{HOME}/.zshrc", @crew_rcfile)
       end
-
-      puts
-      puts "Please put shell environment customizations in #{CREW_PREFIX}/etc/env.d/99-custom and #{CREW_PREFIX}/etc/profile.d/99-custom .".lightblue
-      puts
     end
   end
 end
