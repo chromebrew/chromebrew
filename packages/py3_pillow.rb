@@ -3,7 +3,7 @@ require 'package'
 class Py3_pillow < Package
   description 'Pillow is a Python Imaging Library (PIL).'
   homepage 'https://python-pillow.org/'
-  @_ver = '8.2.0'
+  @_ver = '8.3.1'
   version @_ver
   license 'HPND'
   compatibility 'all'
@@ -11,12 +11,17 @@ class Py3_pillow < Package
   git_hashtag @_ver
 
   depends_on 'py3_lxml'
-  depends_on 'py3_pillow'
   depends_on 'py3_xlsxwriter'
+  depends_on 'libjpeg'
+  depends_on 'libxcb'
   depends_on 'py3_setuptools' => :build
 
   def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+    system "python3 setup.py build_ext \
+            --disable-platform-guessing \
+            --enable-zlib \
+            --enable-jpeg \
+            --enable-xcb"
   end
 
   def self.install
