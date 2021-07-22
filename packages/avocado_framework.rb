@@ -12,7 +12,7 @@ class Avocado_framework < Package
 
   depends_on 'xdg_base'
   depends_on 'xzutils'
-  depends_on 'py3_setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
