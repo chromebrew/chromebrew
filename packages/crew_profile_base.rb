@@ -77,11 +77,7 @@ class Crew_profile_base < Package
       end
 
       puts
-      puts 'IT IS IMPERATIVE TO THE FUNCTION OF CHROMEBREW FOR'.lightblue
-      puts "#{HOME}/.bashrc to contain the line 'source #{CREW_PREFIX}/etc/profile'.".lightblue
-      puts 'This should have happened automatically.'.lightblue
-      puts "If the line doesn't exist, add it now and report a bug at https://github.com/chromebrew/crew-profile-base/issues.".lightblue
-      puts "Please put customizations in #{CREW_PREFIX}/etc/env.d/99-custom and #{CREW_PREFIX}/etc/profile.d/99-custom .".lightblue
+      puts "Please put shell environment customizations in #{CREW_PREFIX}/etc/env.d/99-custom and #{CREW_PREFIX}/etc/profile.d/99-custom .".lightblue
       puts
     end
   end
