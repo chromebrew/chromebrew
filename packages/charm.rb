@@ -3,7 +3,7 @@ require 'package'
 class Charm < Package
   description 'Charm is a full-featured, cross-platfom blogging client for LiveJournal, Atom (Movable Type, Blogger), and MetaWeb (WordPress).'
   homepage 'http://ljcharm.sourceforge.net/'
-  version '1.9.2'
+  version '1.9.2-1'
   license 'charm'
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/ljcharm/charm/charm-1.9.2/charm-1.9.2.tar.gz'
