@@ -14,10 +14,7 @@ class Glibc < Package
   # enable-obsolete-rpc should NOT be included as a build option as
   # this functionality is provided by libtirpc
 
-  @LIBC_VERSION = LIBC_VERSION
-  # Set the following to build newer glibc on an older architecture
-  # @LIBC_VERSION = '2.32'
-  case @LIBC_VERSION
+  case LIBC_VERSION
   when '2.23'
     version LIBC_VERSION
     compatibility 'i686'
@@ -72,7 +69,7 @@ class Glibc < Package
   depends_on 'texinfo' => :build
 
   def self.patch
-    case @LIBC_VERSION
+    case LIBC_VERSION
     when '2.23', '2.27'
       # Apply patch due to new version of binutils which causes compilation failure
       # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
@@ -115,7 +112,7 @@ class Glibc < Package
   def self.build
     Dir.mkdir 'glibc_build'
     Dir.chdir 'glibc_build' do
-      case @LIBC_VERSION
+      case LIBC_VERSION
       when '2.23' # This is only for glibc 2.23
         system '../configure',
                "--prefix=#{CREW_PREFIX}",
@@ -300,7 +297,7 @@ class Glibc < Package
         end
       end
     end
-    case @LIBC_VERSION
+    case LIBC_VERSION
     when '2.32'
       puts 'Paring locales to a minimal set.'.lightblue
       system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive'
