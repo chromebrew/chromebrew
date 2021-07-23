@@ -3,40 +3,44 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.10.4'
+  version '2.11.0'
   license 'FTL or GPL-2+'
-  compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.10.4.tar.xz'
-  source_sha256 '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'
+  compatibility 'x86_64'
+  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.11.0.tar.xz'
+  source_sha256 '8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_armv7l/freetype-2.10.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_armv7l/freetype-2.10.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_i686/freetype-2.10.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_x86_64/freetype-2.10.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_x86_64/freetype-2.11.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'c3063feb7034883e248ac4d62a82409df69577ccc4abe38ca7bd7e39c5ed3576',
-     armv7l: 'c3063feb7034883e248ac4d62a82409df69577ccc4abe38ca7bd7e39c5ed3576',
-       i686: 'a53b10cf19f25922aa6cc0f09fe846e5ee7221c73f2288ca04f83529191a94f5',
-     x86_64: '4622df673ffd07fdcec9591f039ad6e89c4687517678adb6f964dbfdff6a39cf',
+  binary_sha256({
+    x86_64: '395ed9c9be0c260428f1588ddce0a969bdfaab0c664c67f6518278610622a6d1'
   })
 
-  depends_on 'expat'
-  depends_on 'libpng'   # freetype needs zlib optionally. zlib is also the dependency of libpng
-  depends_on 'bz2'
   depends_on 'harfbuzz'
+  depends_on 'libpng'   # freetype needs zlib optionally. zlib is also the dependency of libpng
+
+  def self.patch
+    system 'sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg'
+    system 'sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
+    -i include/freetype/config/ftoption.h'
+  end
 
   def self.build
     system 'pip3 install docwriter'
-    system "sed -i 's,/usr/include/freetype2,#{CREW_PREFIX}/include/freetype2,g' configure"
-    system "./configure CFLAGS=' -fPIC' #{CREW_OPTIONS} --enable-freetype-config --with-harfbuzz"
-    system 'make'
+    system "meson #{CREW_MESON_OPTIONS} \
+    --default-library=both \
+    builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
     system 'pip3 uninstall docwriter -y'
     system "pip3 install docwriter --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja install -C builddir"
+  end
+
+  def self.postinstall
+    system "find #{CREW_BREW_DIR}/* -name freetype*.tar | xargs rm -rf"  # make sure to delete downloaded files
   end
 end
