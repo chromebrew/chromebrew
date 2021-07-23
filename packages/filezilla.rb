@@ -3,24 +3,22 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  @_ver = '3.52.2'
+  @_ver = '3.55.0'
   version @_ver
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'aarch64,armv7l,x86_64'
   source_url "https://download.filezilla-project.org/client/FileZilla_#{@_ver}_src.tar.bz2"
-  source_sha256 'c0788816928a26e8863c7dc26b158644e71bef29406df7d2eda37dc4810d6cdf'
+  source_sha256 'ae70eb4180d136be29bbad6fcdd188e497e205fc416ea3e413dce7cd8cab9c82'
 
   binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.52.2_armv7l/filezilla-3.52.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.52.2_armv7l/filezilla-3.52.2-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.52.2_i686/filezilla-3.52.2-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.52.2_x86_64/filezilla-3.52.2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.55.0_armv7l/filezilla-3.55.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.55.0_armv7l/filezilla-3.55.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.55.0_x86_64/filezilla-3.55.0-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-     aarch64: '3585d8326e1784c9d690539a76854fe50c5aa81a7996bc4f97bf11a00dcb959e',
-      armv7l: '3585d8326e1784c9d690539a76854fe50c5aa81a7996bc4f97bf11a00dcb959e',
-        i686: 'a6bf0b25146e61c126f52d8a9b5efdea4fc25d03261b80a347fadff4af95f657',
-      x86_64: '336b624e5ae3e75a4b6bd2d008c3220347bc5bfba2cf8a1187090bc9ac450e4f',
+    aarch64: '7135323bf1f3bdb82f37610867c7ca8e8b6a22990cd464ccf021952cc73816b7',
+     armv7l: '7135323bf1f3bdb82f37610867c7ca8e8b6a22990cd464ccf021952cc73816b7',
+     x86_64: 'f0effe1033d2d3a5ab548077c0d3a71e24877f132520c08381bd5e23c9cf45f1',
   })
 
   depends_on 'dbus'
