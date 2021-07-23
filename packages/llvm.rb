@@ -13,11 +13,13 @@ class Llvm < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_armv7l/llvm-12.0.1-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_armv7l/llvm-12.0.1-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_i686/llvm-12.0.1-1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_x86_64/llvm-12.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '324cb80793345bcca65f986c659cafae25dc64b2e546acffb7c441d6f771127d',
      armv7l: '324cb80793345bcca65f986c659cafae25dc64b2e546acffb7c441d6f771127d',
+       i686: '4f084d7b68e906dc896253fb51437af2c2768b01dfbc868e40c95d56c34be871',
      x86_64: 'fc83b1d1a1b98d0579003f0b212a8eeae3716c78b70e765180415472676ac4ef'
   })
 
