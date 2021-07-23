@@ -15,16 +15,10 @@ class Meson < Package
   depends_on 'py3_setuptools' => :build
 
   def self.build
-    system "python3 -m nuitka --show-progress \
-            --show-scons \
-            --follow-imports \
-            --prefer-source-code \
-            meson.py \
-            -o meson"
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.cp "meson", "#{CREW_DEST_PREFIX}/bin/meson"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end
