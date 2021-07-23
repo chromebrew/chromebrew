@@ -24,7 +24,7 @@ class Meson < Package
   end
 
   def self.install
-    FileUtils.mkdir "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.cp "meson", "#{CREW_DEST_PREFIX}/bin/meson"
   end
 end
