@@ -4,31 +4,25 @@ class Inetutils < Package
   description 'The Inetutils package contains programs for basic networking. Such as dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp, traceroute'
   homepage 'https://www.gnu.org/software/inetutils/'
   @_ver = '2.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{@_ver}.tar.xz"
   source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_i686/inetutils-2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_x86_64/inetutils-2.0-1-chromeos-x86_64.tar.xz'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_x86_64/inetutils-2.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8e4e1d3e987ed40aa8c63a8a794f1fd74ce390aee6e63795cb1936ff36ffd176',
-     armv7l: '8e4e1d3e987ed40aa8c63a8a794f1fd74ce390aee6e63795cb1936ff36ffd176',
-       i686: '7553ad07ca3e4994469efd85d7b48cbcf1d375fde0cc07495cb9cf8dabfe564d',
-     x86_64: 'ad1bf386ab4ecc3d1f799c845b4f4b9451039fc0608d0ed5dcae15410815e265'
+    x86_64: 'b5b9dc81d6c355823ace1ab775e57e6f6fe884fd10bef24dc26f11d084d9c366'
   })
 
   depends_on 'linux_pam'
-  depends_on 'patchelf'
+  depends_on 'patchelf' => :build
   depends_on 'libcap'
 
   def self.build
-    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS.sub("CFLAGS='", "CFLAGS='-lpthread -ltinfo ")} \
       LIBRARY_PATH=#{CREW_LIB_PREFIX} ./configure #{CREW_OPTIONS} \
       --with-krb5=#{CREW_PREFIX} \
       --disable-rpath \
