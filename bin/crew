@@ -776,7 +776,7 @@ def unpack(meta)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
       puts "Unpacking archive using 'ar', this may take a while..."
-      
+
       suffix = `ar -t #{meta[:filename]}`.scan(/data.(.*)/)[0][0]
       case suffix
       when 'tar.xz'
@@ -891,11 +891,11 @@ def prepare_package(destdir)
     # than install-info.
     # https://www.debian.org/doc/debian-policy/ch-docs.html#info-documents
     FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/dir" if File.exist?("#{CREW_DEST_PREFIX}/share/info/dir")
-    
+
     # Remove all perl module files which will conflict
     if @pkg.name =~ /^perl_/
       puts "Removing .packlist and perllocal.pod files to avoid conflicts with other perl packages.".orange
-      system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete" 
+      system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete"
     end
 
     # compress manual files
@@ -908,6 +908,18 @@ def prepare_package(destdir)
     system 'find . -type f > ../filelist'
     system 'find . -type l >> ../filelist'
     system 'cut -c2- ../filelist > filelist'
+
+    # check for FHS3 compliance
+    @fhs_compliant_prefix = ['bin', 'etc', 'include', 'lib', 'libexec', 'opt', 'sbin', 'share', 'var']
+    @fhs_compliant_prefix.append(ARCH_LIB) if ARCH_LIB == 'lib64'
+    @_abort_fhs = 0
+    Dir.foreach(CREW_DEST_PREFIX) do |filename|
+      next if filename == '.' or filename == '..'
+      unless @fhs_compliant_prefix.include?(filename)
+        puts "Unable to complete this build because #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
+        @_abort_fhs = 1
+      end
+    end
 
     # check for conflicts with other installed files
     puts "Checking for conflicts with files from installed packages..."
@@ -928,6 +940,10 @@ def prepare_package(destdir)
       abort unless ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == '1'
     end
 
+    # abort if not FHS compliant
+    abort "Exiting due to above errors.".lightred unless ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] == '1' or @_abort_fhs == 0
+
+
     # create directory list
     system 'find . -type d > ../dlist'
     system 'cut -c2- ../dlist > dlistcut'
@@ -936,11 +952,10 @@ def prepare_package(destdir)
     # remove temporary files
     FileUtils.rm_rf ['dlistcut', '../dlist', '../filelist'], verbose: @fileutils_verbose
 
-    strip_dir destdir 
+    strip_dir destdir
 
     # make hard linked files symlinks and use upx on executables
     shrink_dir destdir
-
   end
 end
 
@@ -1269,7 +1284,7 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless ENV['CREW_USE_PIXZ'] == '0' || !File.exist?("#{CREW_PREFIX}/bin/pixz") 
+  unless ENV['CREW_USE_PIXZ'] == '0' || !File.exist?("#{CREW_PREFIX}/bin/pixz")
     puts "Using pixz to compress archive."
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tpxz"
     Dir.chdir CREW_DEST_DIR do
