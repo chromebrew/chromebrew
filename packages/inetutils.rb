@@ -10,6 +10,17 @@ class Inetutils < Package
   source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{@_ver}.tar.xz"
   source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_armv7l/inetutils-2.0-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_armv7l/inetutils-2.0-2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_x86_64/inetutils-2.0-2-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'ae1e5b394988799ecfb50197e60e1cc90fce3a0a5d91bd4a0f6d84c036164321',
+     armv7l: 'ae1e5b394988799ecfb50197e60e1cc90fce3a0a5d91bd4a0f6d84c036164321',
+     x86_64: 'cafa21af3d855a8fe9118e02f1e8db83e31603822ba6c5c27c380769050fb107'
+  })
+
   depends_on 'linux_pam'
   depends_on 'patchelf' => :build
   depends_on 'libcap'
