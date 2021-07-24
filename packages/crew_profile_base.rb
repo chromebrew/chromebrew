@@ -8,7 +8,6 @@ class Crew_profile_base < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'dbus'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
@@ -45,6 +44,10 @@ class Crew_profile_base < Package
       # Remove stale files from the last install
       FileUtils.rm "#{HOME}/.bashrc.bak" if File.exist? "#{HOME}/.bashrc.bak"
       FileUtils.rm "#{HOME}/.zshrc.bak" if File.exist? "#{HOME}/.zshrc.bak"
+
+      # dbus file moved to dbus package, so remove it.
+      FileUtils.rm_f './src/env.d/env.d/03-dbus'
+      FileUtils.rm_f "#{CREW_PREFIX}/etc/env.d/03-dbus"
 
       # Don't overwrite a custom shell rc
       @_str = "source #{CREW_PREFIX}/etc/profile"
