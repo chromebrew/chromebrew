@@ -10,18 +10,12 @@ class Inetutils < Package
   source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{@_ver}.tar.xz"
   source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_x86_64/inetutils-2.0-2-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    x86_64: 'b5b9dc81d6c355823ace1ab775e57e6f6fe884fd10bef24dc26f11d084d9c366'
-  })
-
   depends_on 'linux_pam'
   depends_on 'patchelf' => :build
   depends_on 'libcap'
 
   def self.build
+    # logger conflicts with util_linux
     system "env #{CREW_ENV_OPTIONS.sub("CFLAGS='", "CFLAGS='-lpthread -ltinfo ")} \
       LIBRARY_PATH=#{CREW_LIB_PREFIX} ./configure #{CREW_OPTIONS} \
       --with-krb5=#{CREW_PREFIX} \
@@ -32,7 +26,8 @@ class Inetutils < Package
       --disable-rsh \
       --enable-encryption \
       --enable-authentication \
-      --disable-servers"
+      --disable-servers \
+      --disable-logger"
     system 'make'
   end
 
