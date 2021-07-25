@@ -11,4 +11,6 @@ class Hangman < Bsdgame
   git_hashtag $_bsdgame_git_hashtag
 
   bsdgame 'hangman'
+
+  depends_on 'words'
 end
