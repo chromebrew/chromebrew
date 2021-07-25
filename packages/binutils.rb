@@ -10,7 +10,7 @@ class Binutils < Package
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
   source_sha256 '820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
 
-  binary_url({                                                                                        
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_armv7l/binutils-2.37-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_armv7l/binutils-2.37-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_i686/binutils-2.37-chromeos-i686.tar.xz',
@@ -18,7 +18,7 @@ class Binutils < Package
   })
   binary_sha256({
     aarch64: 'dce5da5f6fccbb0d7372c13e3e765419fa761134ebe829fe79d909bd523c9f61',
-     armv7l: 'dce5da5f6fccbb0d7372c13e3e765419fa761134ebe829fe79d909bd523c9f61',                       
+     armv7l: 'dce5da5f6fccbb0d7372c13e3e765419fa761134ebe829fe79d909bd523c9f61',
        i686: '4504003750b30421dab3bc590cc1f7c9ddd83361bdc3f6847073429484ba97b8',
      x86_64: '6648a5f4b57cc1b93166920d48ff9ff2318e9eb834984d8511eaa2a4d992da83'
   })
