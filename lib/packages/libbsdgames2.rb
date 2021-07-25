@@ -8,6 +8,13 @@ class Bsdgame < Package
   $_bsdgame_source_url = 'https://salsa.debian.org/games-team/bsdgames.git'
   $_bsdgame_git_hashtag = 'debian/' + @_ver + '-' + @_debver
 
+  def self.bsdgame (gametobuild = nil)
+    if gametobuild
+      @bsdgame = gametobuild
+    end
+    @bsdgame
+  end
+
   def self.patch
     puts 'Downloading patches'.lightblue
     Dir.chdir 'debian/patches' do
@@ -32,11 +39,11 @@ class Bsdgame < Package
     system "sed -i 's:read input:read -t 0.2 input:' configure" # Make script automatic
   end
 
-  def self.build(bsdgame)
+  def self.prebuild
     puts 'Configuring'.lightblue
     system "sed -i 's:-g -O2:#{CREW_COMMON_FLAGS}:g' configure"
     system "sed -i 's:/usr/games:#{CREW_PREFIX}/bin:' wargames/wargames"
-    system "echo bsd_games_cfg_build_dirs='\"#{bsdgame}\"' >> config.params"
+    system "echo bsd_games_cfg_build_dirs='\"#{@bsdgame}\"' >> config.params"
     system "echo bsd_games_cfg_docdir='#{CREW_PREFIX}/share/doc/bsdgames' >> config.params"
     system "echo bsd_games_cfg_install_prefix='#{CREW_DEST_DIR}' >> config.params"
     system "echo bsd_games_cfg_gamesdir='#{CREW_PREFIX}/bin' >> config.params"
@@ -52,8 +59,8 @@ class Bsdgame < Package
     system "echo bsd_games_cfg_varlibdir='#{CREW_PREFIX}/var/bsdgames' >> config.params"
     system "echo bsd_games_cfg_ncurses_includes='-I#{CREW_PREFIX}/include/ncursesw' >> config.params"
     system "echo bsd_games_cfg_use_libcrypto='n' >> config.params"
-    system "echo bsd_games_cfg_other_cflags='#{CREW_COMMON_FLAGS}' >> config.params" # Link-time optimization
-    system "echo bsd_games_cfg_other_ldflags='#{CREW_LDFLAGS}' >> config.params"
+    system "echo bsd_games_cfg_other_cflags='\"#{CREW_COMMON_FLAGS}\"' >> config.params" # Link-time optimization
+    system "echo bsd_games_cfg_other_ldflags='\"#{CREW_LDFLAGS}\"' >> config.params"
     system "echo bsd_games_cfg_pager='$(which less)' >> config.params" # Most looks weird and more doesn't scroll up
     system "echo bsd_games_cfg_dictionary_src='#{CREW_PREFIX}/share/dict/words' >> config.params"
     system "echo bsd_games_cfg_dm_configfile='#{CREW_PREFIX}/etc/dm/dm.conf' >> config.params"

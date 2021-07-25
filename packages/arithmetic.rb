@@ -10,5 +10,5 @@ class Arithmetic < Bsdgame
   source_url $_bsdgame_source_url
   git_hashtag $_bsdgame_git_hashtag
 
-  @_bsdgame = self.name.to_s.downcase
+  bsdgame 'arithmetic'
 end

@@ -708,7 +708,7 @@ def download
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
         if @pkg.git_branch.nil? || @pkg.git_branch.empty?
-          cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag + '.tar.xz'
+          cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag.gsub('/', '_') + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         else
           # Use to the day granularity for a branch timestamp.

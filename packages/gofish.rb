@@ -10,5 +10,5 @@ class Gofish < Bsdgame
   source_url $_bsdgame_source_url
   git_hashtag $_bsdgame_git_hashtag
 
-  @_bsdgame = 'fish' # Not to be confused with the shell fish
+  bsdgame 'fish' # Not to be confused with the shell fish
 end
