@@ -3,38 +3,35 @@ require 'package'
 class Squashfs < Package
   description 'Squashfs is a compressed read-only filesystem for Linux.'
   homepage 'http://squashfs.sourceforge.net/'
-  version '4.3'
+  version '4.5'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/squashfs/squashfs/squashfs4.3/squashfs4.3.tar.gz'
-  source_sha256 '0d605512437b1eb800b4736791559295ee5f60177e102e4d4ccd0ee241a5f3f6'
+  source_url 'https://downloads.sourceforge.net/project/squashfs/squashfs/squashfs4.5/squashfs4.5.tar.gz'
+  source_sha256 'c493b29c3d152789d04fae5e6532499d96ce3f79256bc6df4f97b5170c88e979'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.3_armv7l/squashfs-4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.3_armv7l/squashfs-4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.3_i686/squashfs-4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.3_x86_64/squashfs-4.3-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_armv7l/squashfs-4.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_armv7l/squashfs-4.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_i686/squashfs-4.5-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_x86_64/squashfs-4.5-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '46d88da52b018f54fc8c177f3d13ba3f925167058ff4c9c20628683be8a7142c',
-     armv7l: '46d88da52b018f54fc8c177f3d13ba3f925167058ff4c9c20628683be8a7142c',
-       i686: '913c4ef36694ba34eb9542ead201e59aeaa4ebdd4cec0a6fc78395fbe19a85ca',
-     x86_64: 'b9f8bb91f7ab76540d0a8484cd3bc7ce64f90bea6279474d1e4a8f32c79f990f',
+  binary_sha256({
+    aarch64: '630e363cf16b40b181ac3e09792ae9d7f73874ea4e902905824785c7c489546d',
+     armv7l: '630e363cf16b40b181ac3e09792ae9d7f73874ea4e902905824785c7c489546d',
+       i686: 'b72fc434de5a0c0f80edadff18efb2dfc13bc3223fe7a57b366621c1b34572f4',
+     x86_64: '6a3f77adbef01926ed731f7a69dab7607218dd13b31dda230556d5590dd7eea3'
   })
 
   depends_on 'compressdoc' => :build
   depends_on 'help2man' => :build
-  depends_on 'lz4'
   depends_on 'lzo'
-  depends_on 'xzutils'
-  depends_on 'zlibpkg'
 
   def self.build
     FileUtils.cd('squashfs-tools') do
       system "sed -i '5iLZ4_SUPPORT = 1' Makefile"
       system "sed -i '6iLZO_SUPPORT = 1' Makefile"
       system "sed -i '7iXZ_SUPPORT = 1' Makefile"
-      system "make"
+      system 'make'
     end
   end
 
@@ -45,7 +42,6 @@ class Squashfs < Package
       system "install -Dm755 unsquashfs #{CREW_DEST_PREFIX}/bin/unsquashfs"
       system "help2man ./mksquashfs -N --no-discard-stderr > #{CREW_DEST_PREFIX}/share/man/man1/mksquashfs.1"
       system "help2man ./unsquashfs -N --no-discard-stderr > #{CREW_DEST_PREFIX}/share/man/man1/unsquashfs.1"
-      system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/man/man1"
     end
   end
 end
