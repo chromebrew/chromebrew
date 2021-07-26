@@ -10,6 +10,17 @@ class Py3_pluggy < Package
   source_url 'https://github.com/pytest-dev/pluggy.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/0.13.1_armv7l/py3_pluggy-0.13.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/0.13.1_armv7l/py3_pluggy-0.13.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/0.13.1_x86_64/py3_pluggy-0.13.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'b52471f3165e506014641212c666b4b0cd83554a420f9b956c528a5941efc0b0',
+     armv7l: 'b52471f3165e506014641212c666b4b0cd83554a420f9b956c528a5941efc0b0',
+     x86_64: '65b5e572673f2c23516b5eb728dba13a9ab228e992170e0237cb84e54319e38a'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build

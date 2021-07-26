@@ -8,7 +8,14 @@ class Oci_cli < Package
   license 'UPL-1.0'
   compatibility 'all'
   source_url 'https://github.com/oracle/oci-cli.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/2.24.3_x86_64/oci_cli-2.24.3-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: '8732fa4c8469aff32e587a43a3065064ac21aba6afef70187628d934929eb735'
+  })
 
   depends_on 'py3_arrow'
   depends_on 'py3_six'

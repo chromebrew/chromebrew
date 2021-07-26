@@ -10,6 +10,17 @@ class Py3_py < Package
   source_url 'https://github.com/pytest-dev/py.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_py/1.10.0_armv7l/py3_py-1.10.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_py/1.10.0_armv7l/py3_py-1.10.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_py/1.10.0_x86_64/py3_py-1.10.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '87216dfa6e6dea6bf5d2a2b706a054db9affbb78413de08b14df23711eeeb053',
+     armv7l: '87216dfa6e6dea6bf5d2a2b706a054db9affbb78413de08b14df23711eeeb053',
+     x86_64: 'daf69c756cec7668d0a3aea2d2dd54e7634a5a0650a6452b8a3e004f001571df'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build
