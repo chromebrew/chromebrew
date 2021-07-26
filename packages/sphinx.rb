@@ -8,7 +8,14 @@ class Sphinx < Package
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinx.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/3.5.4_x86_64/sphinx-3.5.4-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: 'a62fe2943fb8de064afa7613cd5cf6522b5a27b64cda434eeac79c49ce225b5b'
+  })
 
   depends_on 'py3_jinja2'
   depends_on 'py3_sphinxcontrib_devhelp'
@@ -25,7 +32,6 @@ class Sphinx < Package
   depends_on 'py3_pygments'
   depends_on 'py3_packaging'
   depends_on 'py3_snowballstemmer'
-  depends_on 'py3_setuptools' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
