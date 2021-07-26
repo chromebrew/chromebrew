@@ -11,10 +11,12 @@ class Py3_pyopenssl < Package
   git_hashtag @_ver
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyopenssl/20.0.1_x86_64/py3_pyopenssl-20.0.1-chromeos-x86_64.tpxz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyopenssl/20.0.1_i686/py3_pyopenssl-20.0.1-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyopenssl/20.0.1_x86_64/py3_pyopenssl-20.0.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '071477601beeca4bd49dc5975a9fe0d4ee7050135538086f3218d03fb1932a5a'
+    i686: '66e2046576f17e8dd612be3a9dbe63ec9f636759f3cc69af6db30938a78623df',
+  x86_64: '071477601beeca4bd49dc5975a9fe0d4ee7050135538086f3218d03fb1932a5a'
   })
 
   depends_on 'openssl'

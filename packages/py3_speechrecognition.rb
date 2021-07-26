@@ -13,11 +13,13 @@ class Py3_speechrecognition < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_armv7l/py3_speechrecognition-3.8.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_armv7l/py3_speechrecognition-3.8.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_i686/py3_speechrecognition-3.8.1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1_x86_64/py3_speechrecognition-3.8.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '6a7c922b92517dfc88374777aa7a4a46b46454b06b97dc4f7e9f7c5c276117b2',
      armv7l: '6a7c922b92517dfc88374777aa7a4a46b46454b06b97dc4f7e9f7c5c276117b2',
+       i686: '3c6dc27f3104eed6077024225802aa34b04028291b850a049ee2ec03f8d73929',
      x86_64: '616ac521e9abc6844240623932a93a42421bc0e716a5733e8d11546bc4e9dbfd'
   })
 

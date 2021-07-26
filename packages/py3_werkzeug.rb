@@ -13,11 +13,13 @@ class Py3_werkzeug < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_werkzeug/1.0.1_armv7l/py3_werkzeug-1.0.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_werkzeug/1.0.1_armv7l/py3_werkzeug-1.0.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_werkzeug/1.0.1_i686/py3_werkzeug-1.0.1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_werkzeug/1.0.1_x86_64/py3_werkzeug-1.0.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '8df6835784b65e901c8f8f857a47cfcbef1dfdd28eef30f44ca01ba49a19182a',
      armv7l: '8df6835784b65e901c8f8f857a47cfcbef1dfdd28eef30f44ca01ba49a19182a',
+       i686: '7af0e035d16a862b63e50dd340a659b8c2e53797da76af62498ce2bfe19b1825',
      x86_64: '232433cbf1bcaba259ed5f73551ea5a8d2b4af0a260d1b18154fdec8c6dd3320'
   })
 
