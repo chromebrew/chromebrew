@@ -13,13 +13,13 @@ class Binutils < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_armv7l/binutils-2.37-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_armv7l/binutils-2.37-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_i686/binutils-2.37-chromeos-i686.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_i686/binutils-2.37-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37_x86_64/binutils-2.37-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'dce5da5f6fccbb0d7372c13e3e765419fa761134ebe829fe79d909bd523c9f61',
      armv7l: 'dce5da5f6fccbb0d7372c13e3e765419fa761134ebe829fe79d909bd523c9f61',
-       i686: '4504003750b30421dab3bc590cc1f7c9ddd83361bdc3f6847073429484ba97b8',
+       i686: '29fa3ec42f5728bcc8a174401eccb375ba5f5eb224970251e093ddc3e1d3947f',
      x86_64: '6648a5f4b57cc1b93166920d48ff9ff2318e9eb834984d8511eaa2a4d992da83'
   })
 
