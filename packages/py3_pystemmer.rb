@@ -5,7 +5,7 @@ class Py3_pystemmer < Package
   homepage 'http://snowball.tartarus.org'
   version '2.0.1'
   license 'BSD MIT'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url 'https://pypi.io/packages/source/P/PyStemmer/PyStemmer-2.0.1.tar.gz'
   source_sha256 '9b81c35302f1d2a5ad9465b85986db246990db93d97d3e8f129269ed7102788e'
 
