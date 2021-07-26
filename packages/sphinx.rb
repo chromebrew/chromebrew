@@ -24,7 +24,7 @@ class Sphinx < Package
   depends_on 'py3_alabaster'
   depends_on 'py3_pygments'
   depends_on 'py3_packaging'
-  depends_on 'snowballstemmer'
+  depends_on 'py3_snowballstemmer'
   depends_on 'py3_setuptools' => :build
 
   def self.build
