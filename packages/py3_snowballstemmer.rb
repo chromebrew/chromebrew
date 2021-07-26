@@ -5,7 +5,7 @@ class Py3_snowballstemmer < Package
   homepage 'https://snowballstem.org'
   version '2.1.0'
   license 'BSD'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url 'https://pypi.python.org/packages/source/s/snowballstemmer/snowballstemmer-2.1.0.tar.gz'
   source_sha256 'e997baa4f2e9139951b6f4c631bad912dfd3c792467e2f03d7239464af90e914'
 
