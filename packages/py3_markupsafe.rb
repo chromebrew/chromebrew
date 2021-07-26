@@ -10,6 +10,17 @@ class Py3_markupsafe < Package
   source_url 'https://github.com/pallets/markupsafe.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/1.1.1_armv7l/py3_markupsafe-1.1.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/1.1.1_armv7l/py3_markupsafe-1.1.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/1.1.1_x86_64/py3_markupsafe-1.1.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '05269eb76a28496280e09830e855ceac625562826e0d31b8c72eef0d655a8a7a',
+     armv7l: '05269eb76a28496280e09830e855ceac625562826e0d31b8c72eef0d655a8a7a',
+     x86_64: 'c716a9294a7e21ec561e24aa85b10b20ba5c09234054b5a37f1d95d38b7d86be'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build

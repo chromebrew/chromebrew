@@ -10,6 +10,13 @@ class Py3_secretstorage < Package
   source_url 'https://github.com/mitya57/secretstorage.git'
   git_hashtag @_ver
 
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1_x86_64/py3_secretstorage-3.3.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: '6907804991a9052f2a9d7fa2c472d0c407034013978cd231d3c17defa845573e'
+  })
+
   depends_on 'py3_jeepney'
   depends_on 'py3_cryptography'
   depends_on 'py3_setuptools' => :build

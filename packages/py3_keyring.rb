@@ -8,7 +8,14 @@ class Py3_keyring < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/jaraco/keyring.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_keyring/23.0.1_x86_64/py3_keyring-23.0.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: 'f1ce83cfed4f4d7f6f0628e7022c1d9f8c1ec77a8217deed2d968075bdf4b79b'
+  })
 
   depends_on 'py3_jeepney'
   depends_on 'py3_secretstorage'

@@ -8,7 +8,18 @@ class Py3_urwid < Package
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/urwid/urwid.git'
-  git_hashtag 'release-' + @_ver
+  git_hashtag "release-#{@_ver}"
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2_armv7l/py3_urwid-2.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2_armv7l/py3_urwid-2.1.2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2_x86_64/py3_urwid-2.1.2-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '38afd9d587f8b96d22a0bee2dcb65733718c4cd5c22ce1aeaadc4184ab763d3b',
+     armv7l: '38afd9d587f8b96d22a0bee2dcb65733718c4cd5c22ce1aeaadc4184ab763d3b',
+     x86_64: 'fa219fcf2872d1482f17fcee27f908e07dee4bcf2fdd9e7b0029e7075d650bee'
+  })
 
   depends_on 'py3_setuptools' => :build
 

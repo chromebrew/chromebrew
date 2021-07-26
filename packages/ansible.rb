@@ -9,6 +9,13 @@ class Ansible < Package
   source_url 'https://files.pythonhosted.org/packages/53/d5/6cdea3c8479644b1b788d57cad500e9d782e06f6a84cac05121a65cca67e/ansible-3.3.0.tar.gz'
   source_sha256 '2de5385c48a2a24a19f6cbaccc7d7684c64b6194f9a9b175aba7949d53b07bc9'
 
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/3.3.0_x86_64/ansible-3.3.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: 'c1580c511f0ae42bf3aacce66439ce8c9cf2f93c4ebe40223ae65410e88b3b22'
+  })
+
   depends_on 'ansible_base'
   depends_on 'py3_setuptools' => :build
 

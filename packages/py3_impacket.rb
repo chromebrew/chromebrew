@@ -8,7 +8,14 @@ class Py3_impacket < Package
   license 'Apache-2.0-with-impacket-modifications'
   compatibility 'all'
   source_url 'https://github.com/SecureAuthCorp/impacket.git'
-  git_hashtag 'impacket_' + @_ver.gsub('.', '_')
+  git_hashtag "impacket_#{@_ver.gsub('.', '_')}"
+
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.22_x86_64/py3_impacket-0.9.22-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: '795f9396ffaa32c7f197dc732bd36cdcbe71965514e75ae205f4d9729ac288e5'
+  })
 
   depends_on 'py3_pycryptodomex'
   depends_on 'py3_flask'

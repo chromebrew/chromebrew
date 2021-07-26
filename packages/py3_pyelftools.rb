@@ -11,16 +11,16 @@ class Py3_pyelftools < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_armv7l/py3_pyelftools-0.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_armv7l/py3_pyelftools-0.27-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_i686/py3_pyelftools-0.27-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_x86_64/py3_pyelftools-0.27-chromeos-x86_64.tar.xz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_i686/py3_pyelftools-0.27-chromeos-i686.tar.xz',
+ aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_armv7l/py3_pyelftools-0.27-chromeos-armv7l.tpxz',
+  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_armv7l/py3_pyelftools-0.27-chromeos-armv7l.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_x86_64/py3_pyelftools-0.27-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f5da6d42031d374f73344b9f13207c41c47ba8e571cd36ca45194eb60e5cd0fa',
-     armv7l: 'f5da6d42031d374f73344b9f13207c41c47ba8e571cd36ca45194eb60e5cd0fa',
-       i686: '17dcdddf5764b8ff2339ea037cfe9f5c7ab9cb29479f856dec0663ef093344a6',
-     x86_64: '443dbb4e558e0c02066a22179e97122daccfac5d455e40ab67ec0f5dbf744f76'
+    i686: '17dcdddf5764b8ff2339ea037cfe9f5c7ab9cb29479f856dec0663ef093344a6',
+ aarch64: 'b994942b282cb1c859b5001f16839476c4d99cd22a75b6f926342aa23d91444e',
+  armv7l: 'b994942b282cb1c859b5001f16839476c4d99cd22a75b6f926342aa23d91444e',
+  x86_64: 'a4fb7eb28776078f41b15bd41d25ed0f2ca70629186cacb305116ba0d7975dbe'
   })
 
   depends_on 'py3_setuptools' => :build

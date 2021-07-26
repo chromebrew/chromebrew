@@ -10,6 +10,17 @@ class Avocado_framework < Package
   source_url 'https://github.com/avocado-framework/avocado.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/87.0_armv7l/avocado_framework-87.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/87.0_armv7l/avocado_framework-87.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/87.0_x86_64/avocado_framework-87.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'fa01356025b6bcafda45fbbf468d0f3c29b5d4c499f8c9c0e089d1774de71c03',
+     armv7l: 'fa01356025b6bcafda45fbbf468d0f3c29b5d4c499f8c9c0e089d1774de71c03',
+     x86_64: 'e51b95bf30fc88981f33b015d77150fefc4e1a77fe801691a19c86ef475ee6d8'
+  })
+
   depends_on 'xdg_base'
   depends_on 'xzutils'
   depends_on 'py3_setuptools' => :build

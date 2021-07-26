@@ -8,7 +8,18 @@ class Py3_sqlalchemy < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sqlalchemy/sqlalchemy.git'
-  git_hashtag 'rel_' + @_ver.gsub('.', '_')
+  git_hashtag "rel_#{@_ver.gsub('.', '_')}"
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sqlalchemy/1.4.21_armv7l/py3_sqlalchemy-1.4.21-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sqlalchemy/1.4.21_armv7l/py3_sqlalchemy-1.4.21-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sqlalchemy/1.4.21_x86_64/py3_sqlalchemy-1.4.21-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '075915be591aa3ef89c5a08cdd1cf8922ce97900c1fb6aeeb1da146e011b2daf',
+     armv7l: '075915be591aa3ef89c5a08cdd1cf8922ce97900c1fb6aeeb1da146e011b2daf',
+     x86_64: '99c8729d8fc8f1dcb5d1635419cc9953cee791f2443d3e6954471e26ed7c6854'
+  })
 
   depends_on 'py3_setuptools' => :build
 

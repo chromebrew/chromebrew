@@ -10,6 +10,17 @@ class Py3_semantic_version < Package
   source_url 'https://github.com/rbarrois/python-semanticversion.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_semantic_version/2.8.5_armv7l/py3_semantic_version-2.8.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_semantic_version/2.8.5_armv7l/py3_semantic_version-2.8.5-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_semantic_version/2.8.5_x86_64/py3_semantic_version-2.8.5-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'ebc85d3489343da5afc4d4813acf825323df52aac0f693f728f89100c13ee25c',
+     armv7l: 'ebc85d3489343da5afc4d4813acf825323df52aac0f693f728f89100c13ee25c',
+     x86_64: '48d4d1a2df32ba2624a01a1f6670e2bf9dc2d1693fc05e893ff77e654ceb3454'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build

@@ -10,6 +10,17 @@ class Csvkit < Package
   source_url 'https://github.com/wireservice/csvkit.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6_armv7l/csvkit-1.0.6-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6_armv7l/csvkit-1.0.6-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6_x86_64/csvkit-1.0.6-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '3caee2c61cee798fcf16d96ba310f0f77a8b237e56889f1cfe2d12a127f34961',
+     armv7l: '3caee2c61cee798fcf16d96ba310f0f77a8b237e56889f1cfe2d12a127f34961',
+     x86_64: '0b12a20e97969ebb2e7cca57040824c772b2bcdcb824ab5f32618f1a79fed62d'
+  })
+
   depends_on 'py3_six'
   depends_on 'py3_agate_dfb'
   depends_on 'py3_agate'
