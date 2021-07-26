@@ -10,10 +10,12 @@ class Ansible_base < Package
   source_sha256 '04635d3e08fc29358c76b8e7f1e9db0ce443fb09ce30b2acc6cacaad165f2151'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible_base/2.10.9_x86_64/ansible_base-2.10.9-chromeos-x86_64.tpxz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible_base/2.10.9_i686/ansible_base-2.10.9-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible_base/2.10.9_x86_64/ansible_base-2.10.9-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '28d811d9b8d912f23f911fa46ed7e43758f1f54083486156e075a949a09dd03f'
+    i686: '3b121d5d5948388eec588ad8d78eb9226a61c21f64ce304401109e1dd0601ad1',
+  x86_64: '28d811d9b8d912f23f911fa46ed7e43758f1f54083486156e075a949a09dd03f'
   })
 
   depends_on 'xdg_base'

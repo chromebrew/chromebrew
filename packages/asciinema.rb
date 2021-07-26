@@ -12,13 +12,13 @@ class Asciinema < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.0.2-1_armv7l/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.0.2-1_armv7l/asciinema-2.0.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.0.2-1_i686/asciinema-2.0.2-1-chromeos-i686.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.0.2-2_i686/asciinema-2.0.2-2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.0.2-2_x86_64/asciinema-2.0.2-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5fddd233f9f093935c23574dc1ce6247103352e845408375fa537fd2f56675ec',
      armv7l: '5fddd233f9f093935c23574dc1ce6247103352e845408375fa537fd2f56675ec',
-       i686: '82f850655844133b11a251428021f9d92904b6c733f68cd3f6f827987fc072ee',
+       i686: '9086a6bce66d3ad0542d8d61f6904bd24078998d2a0867ced9b65eabb15b889b',
      x86_64: 'a94b73de95817df65ede7ba0e58c71547cf7eb6a326b9707dd94a29a3fd73aab'
   })
 

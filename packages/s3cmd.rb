@@ -13,11 +13,13 @@ class S3cmd < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.1.0_armv7l/s3cmd-2.1.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.1.0_armv7l/s3cmd-2.1.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.1.0_i686/s3cmd-2.1.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.1.0_x86_64/s3cmd-2.1.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '313e17b05c93f876d865cb8f170f191b6d1815b9d344ba53400fd4aa1e523a19',
      armv7l: '313e17b05c93f876d865cb8f170f191b6d1815b9d344ba53400fd4aa1e523a19',
+       i686: '9d422dbd45acf2661b3cb2d93f60fe010442765af4f21ebccbd965c7410d1b2a',
      x86_64: '34aae7b83d4197f25bb727a880d7c1580baa003cb6b62fe2c61202795794ddd9'
   })
 

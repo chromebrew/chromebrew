@@ -13,11 +13,13 @@ class Py3_sphinxcontrib_qthelp < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_armv7l/py3_sphinxcontrib_qthelp-1.0.3-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_armv7l/py3_sphinxcontrib_qthelp-1.0.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_i686/py3_sphinxcontrib_qthelp-1.0.3-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_qthelp/1.0.3_x86_64/py3_sphinxcontrib_qthelp-1.0.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'fd704c99d991b7e9d099048386399c027e05885353c422edd014eee98fa60b5b',
      armv7l: 'fd704c99d991b7e9d099048386399c027e05885353c422edd014eee98fa60b5b',
+       i686: '7232ad9206a252a383db1dd1621de131412645e9091a2ba9c3b1be551b4f1cc2',
      x86_64: '12409c13d5e5d417bc9efffd558532652824aae63d00a6c0de886694f9804fa4'
   })
 

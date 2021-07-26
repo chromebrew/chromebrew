@@ -12,11 +12,13 @@ class Py3_ply < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ply/3.11_armv7l/py3_ply-3.11-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ply/3.11_armv7l/py3_ply-3.11-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ply/3.11_i686/py3_ply-3.11-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ply/3.11_x86_64/py3_ply-3.11-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '01623b278862d6b2cc009b29d8d9caa58b3f8d5b191fe22ea762a1a9ee337137',
      armv7l: '01623b278862d6b2cc009b29d8d9caa58b3f8d5b191fe22ea762a1a9ee337137',
+       i686: '312b4256f509aeddec27cf01fd369921ed55f41defb2dbe38ce46c1e45f0251b',
      x86_64: '85171b92200dec35d59d0ca62b7c3c1f0cf3aeb091b186e616a4c199829e8851'
   })
 

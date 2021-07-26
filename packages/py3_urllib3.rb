@@ -13,11 +13,13 @@ class Py3_urllib3 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_armv7l/py3_urllib3-1.26.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_armv7l/py3_urllib3-1.26.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_i686/py3_urllib3-1.26.4-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.4_x86_64/py3_urllib3-1.26.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'bf68c09e43c2146279fef1aebc82391a3a00f84d02bd8c1886583f84a92ae8d8',
      armv7l: 'bf68c09e43c2146279fef1aebc82391a3a00f84d02bd8c1886583f84a92ae8d8',
+       i686: '9384102b6c832c47e4ff9ce145c2688ce42def8c526db8936e1d42379a6f6c3b',
      x86_64: '0f4f87c1ca55ada88d565c947a3219502baa207396a4cdce27873f9126cab279'
   })
 

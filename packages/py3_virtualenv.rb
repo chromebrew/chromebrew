@@ -13,11 +13,13 @@ class Py3_virtualenv < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_virtualenv/20.0.27_armv7l/py3_virtualenv-20.0.27-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_virtualenv/20.0.27_armv7l/py3_virtualenv-20.0.27-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_virtualenv/20.0.27_i686/py3_virtualenv-20.0.27-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_virtualenv/20.0.27_x86_64/py3_virtualenv-20.0.27-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '03e01c5dde9ad6ae1b6e07ec39f928cf7840fba64263569400b61c969915bc3f',
      armv7l: '03e01c5dde9ad6ae1b6e07ec39f928cf7840fba64263569400b61c969915bc3f',
+       i686: 'a50c70f65ac0c95d879be93b964e9afbb08f84a3d84686a97ba6fa1c9e74c589',
      x86_64: '907e4a92284aea8eee071b823e86803d96ef191793521343ed06cfdc4bc8eae8'
   })
 
