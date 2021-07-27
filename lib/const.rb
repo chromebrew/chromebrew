@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.12.0'
+CREW_VERSION = '1.13.0'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -12,6 +12,8 @@ ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
 # Glibc version can be found from the output of libc.so.6
 @libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
 LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
+
+CREW_BUILD_FROM_SOURCE = ENV['CREW_BUILD_FROM_SOURCE']
 
 CREW_PREFIX = '/usr/local'
 if ENV['CREW_PREFIX'] and ENV['CREW_PREFIX'] != CREW_PREFIX
@@ -37,6 +39,8 @@ else
   HOME = CREW_PREFIX + ENV['HOME']
 end
 
+CREW_DEST_HOME = CREW_DEST_DIR + HOME
+
 # File.join ensures a trailing slash if one does not exist.
 if ENV['CREW_CACHE_DIR'].to_s.empty?
   CREW_CACHE_DIR = File.join(HOME + '/.cache/crewcache', '')
@@ -48,24 +52,43 @@ FileUtils.mkdir_p CREW_CACHE_DIR unless Dir.exist? CREW_CACHE_DIR
 
 CREW_CACHE_ENABLED = ENV['CREW_CACHE_ENABLED']
 
-CREW_DEST_HOME = CREW_DEST_DIR + HOME
+CREW_CONFLICTS_ONLY_ADVISORY = ENV['CREW_CONFLICTS_ONLY_ADVISORY']
+
+CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']
 
 # Set CREW_NPROC from environment variable or `nproc`
-if ENV["CREW_NPROC"].to_s.empty?
+if ENV['CREW_NPROC'].to_s.empty?
   CREW_NPROC = `nproc`.strip
 else
-  CREW_NPROC = ENV["CREW_NPROC"]
+  CREW_NPROC = ENV['CREW_NPROC']
 end
 
 # Set CREW_NOT_COMPRESS from environment variable
-CREW_NOT_COMPRESS = ENV["CREW_NOT_COMPRESS"]
+CREW_NOT_COMPRESS = ENV['CREW_NOT_COMPRESS']
 
 # Set CREW_NOT_STRIP from environment variable
-CREW_NOT_STRIP = ENV["CREW_NOT_STRIP"]
+CREW_NOT_STRIP = ENV['CREW_NOT_STRIP']
+
+CREW_SHRINK_ARCHIVE = ENV['CREW_SHRINK_ARCHIVE']
+
+# Set testing constants from environment variables
+crew_testing_repo = ENV['CREW_TESTING_REPO']
+crew_testing_branch = ENV['CREW_TESTING_BRANCH']
+crew_testing = ENV['CREW_TESTING']
+crew_testing = '0' if crew_testing_repo.nil? || crew_testing_repo.empty?
+crew_testing = '0' if crew_testing_branch.nil? || crew_testing_branch.empty?
+CREW_TESTING = crew_testing
+CREW_TESTING_BRANCH = crew_testing_branch
+CREW_TESTING_REPO = crew_testing_repo
+
+CREW_USE_PIXZ = ENV['CREW_USE_PIXZ']
 
 USER = `whoami`.chomp
 
 CHROMEOS_RELEASE = `grep CHROMEOS_RELEASE_CHROME_MILESTONE= /etc/lsb-release | cut -d'=' -f2`.chomp
+
+# If CURL environment variable exists use it in lieu of curl.
+CURL = ENV['CURL'] || 'curl'
 
 case ARCH
 when 'aarch64', 'armv7l'
