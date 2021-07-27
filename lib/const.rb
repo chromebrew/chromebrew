@@ -1,13 +1,15 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.13.0'
+CREW_VERSION = '1.14.0'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
 # which report armv8l when linux32 is run.
 ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
 
-ARCH_LIB = if ARCH == 'x86_64' then 'lib64' else 'lib' end
+# Allow for edge case of i686 install on a x86_64 host before linux32 is
+# downloaded, e.g. in a docker container.
+ARCH_LIB = if ARCH == 'x86_64' and Dir.exist?('/lib64') then 'lib64' else 'lib' end
 
 # Glibc version can be found from the output of libc.so.6
 @libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
