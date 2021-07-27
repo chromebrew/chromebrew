@@ -216,11 +216,14 @@ rm -rf "${CREW_LIB_PATH}"
 # Do a minimal clone, which also sets origin to the master/main branch
 # by default. For more on why this setup might be useful see:
 # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
-git clone --depth=1 --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
+# If using alternate branch don't use depth=1
+[[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
+git clone $GIT_DEPTH --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
 
 cd "${CREW_LIB_PATH}"
 
 # Checkout, overwriting local files.
+[[ "$BRANCH" != "master" ]] && git fetch --all
 git checkout "${BRANCH}"
 
 # Set sparse-checkout folders and include install.sh for use in reinstalls
