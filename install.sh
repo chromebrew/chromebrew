@@ -16,13 +16,15 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 CURL="${CURL:-curl}"
 CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
+# For container usage, where we want to specify i686 arch
+# on a x86_64 host by setting ARCH=i686.
+: "${ARCH:=$(uname -m)}"
+# For container usage, when we are emulating armv7l via linux32
+# uname -m reports armv8l.
+ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 BOOTSTRAP_PACKAGES="pixz jq ca_certificates git gmp ncurses libyaml ruby"
-
-ARCH="$(uname -m)"
-# For container usage, where we are emulating armv7l via linux32
-ARCH="${ARCH/armv8l/armv7l}"
 
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
@@ -228,6 +230,9 @@ git reset --hard origin/"${BRANCH}"
 echo -e "${RESET}"
 
 echo -e "${YELLOW}Updating crew package information...${RESET}\n"
+# Without setting LD_LIBRARY_PATH, the mandb postinstall fails
+# from not being able to find the gdbm library.
+export LD_LIBRARY_PATH=$(crew const CREW_LIB_PREFIX | sed -e 's:CREW_LIB_PREFIX=::g')
 # Since we just ran git, just update package compatibility information.
 crew update compatible
 
