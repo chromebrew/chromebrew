@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.14.0'
+CREW_VERSION = '1.15.0'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -15,12 +15,14 @@ ARCH_LIB = if ARCH == 'x86_64' and Dir.exist?('/lib64') then 'lib64' else 'lib' 
 @libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
 LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
 
-CREW_BUILD_FROM_SOURCE = ENV['CREW_BUILD_FROM_SOURCE']
-
-CREW_PREFIX = '/usr/local'
-if ENV['CREW_PREFIX'] and ENV['CREW_PREFIX'] != CREW_PREFIX
-  CREW_PREFIX = ENV['CREW_PREFIX']
+if ENV['CREW_PREFIX'] and ENV['CREW_PREFIX'] != '' and ENV['CREW_PREFIX'] != '/usr/local'
   CREW_BUILD_FROM_SOURCE = 1
+  CREW_PREFIX = ENV['CREW_PREFIX']
+  HOME = CREW_PREFIX + ENV['HOME']
+else
+  CREW_BUILD_FROM_SOURCE = ENV['CREW_BUILD_FROM_SOURCE']
+  CREW_PREFIX = '/usr/local'
+  HOME = ENV['HOME']
 end
 
 CREW_LIB_PREFIX = CREW_PREFIX + '/' + ARCH_LIB
@@ -34,12 +36,6 @@ CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
 CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
-
-if ENV['CREW_PREFIX'].to_s.empty?
-  HOME = ENV['HOME']
-else
-  HOME = CREW_PREFIX + ENV['HOME']
-end
 
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
 
