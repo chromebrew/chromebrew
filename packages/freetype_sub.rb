@@ -3,39 +3,51 @@ require 'package'
 class Freetype_sub < Package
   description 'Freetype_sub is a version without harfbuzz. It is intended to handle circular dependency betwwen freetype and harfbuzz.'
   homepage 'https://www.freetype.org/'
-  version '2.10.4'
+  version '2.11.0'
   license 'FTL or GPL-2+'
-  compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.10.4.tar.xz'
-  source_sha256 '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.11.0.tar.xz'
+  source_sha256 '8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_i686/freetype_sub-2.10.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_x86_64/freetype_sub-2.10.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.11.0_armv7l/freetype_sub-2.11.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.11.0_armv7l/freetype_sub-2.11.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.11.0_x86_64/freetype_sub-2.11.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '7c8620a0cad19fbcd7ff0d96a7304323648b97c93d86352cfbb8216c768aeb1b',
-     armv7l: '7c8620a0cad19fbcd7ff0d96a7304323648b97c93d86352cfbb8216c768aeb1b',
-       i686: '4e6ab3e8a7dacab4380099315c2d547b89ce490f33d7e677744034d4e44ccabe',
-     x86_64: 'a5c364bdee4a22ca72bbaba4162dc2d75730f15b4340bddf038ee3698751c116',
+  binary_sha256({
+    aarch64: '845ef60abffc0428c99102712323568f17d9a27e5a080df115dd07da25ff110a',
+     armv7l: '845ef60abffc0428c99102712323568f17d9a27e5a080df115dd07da25ff110a',
+     x86_64: '039810744e62693895f366e48f2ff9156b4a02c3784a4b7a851992dc94ded9a6'
   })
 
-  depends_on 'expat'
   depends_on 'libpng'   # freetype needs zlib optionally. zlib is also the dependency of libpng
-  depends_on 'bz2'
+
+  def self.preflight
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    if @device[:installed_packages].any? 'harfbuzz'
+      abort 'This harfbuzz prereq needs to be built without harfbuzz installed.'.lightred
+    end
+  end
+
+  def self.patch
+    system 'sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg'
+    system 'sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
+    -i include/freetype/config/ftoption.h'
+  end
 
   def self.build
     system 'pip3 install docwriter'
-    system "./configure CFLAGS=' -fPIC' #{CREW_OPTIONS} --enable-freetype-config --without-harfbuzz"
-    system 'make'
+    system "meson #{CREW_MESON_OPTIONS} \
+    --default-library=both \
+    builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
     system 'pip3 uninstall docwriter -y'
     system "pip3 install docwriter --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja install -C builddir"
   end
 
   def self.postinstall
