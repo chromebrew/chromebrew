@@ -10,6 +10,19 @@ class Py3_tzlocal < Package
   source_url 'https://github.com/regebro/tzlocal.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tzlocal/1.5.1_armv7l/py3_tzlocal-1.5.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tzlocal/1.5.1_armv7l/py3_tzlocal-1.5.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tzlocal/1.5.1_i686/py3_tzlocal-1.5.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tzlocal/1.5.1_x86_64/py3_tzlocal-1.5.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '65257a990b181d64c789ec90138e4254bd85ee43b179dbf355abaad4c6619091',
+     armv7l: '65257a990b181d64c789ec90138e4254bd85ee43b179dbf355abaad4c6619091',
+       i686: 'f0826794d8ce2b418543b9d7ce349fdf088ac73da2bddc1ee6eafa5e5c07a325',
+     x86_64: '218731e661685965ddeede0b02cf567e9c5344a7755dac09d07c3edb35b02174'
+  })
+
   depends_on 'py3_pytz'
   depends_on 'py3_setuptools' => :build
 
