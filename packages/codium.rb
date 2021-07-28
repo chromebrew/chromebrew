@@ -3,17 +3,17 @@ require 'package'
 class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.58.0'
+  version '1.58.2'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"
-    source_sha256 'f5f2b68a2e764541f7c74676bf21c37571b8578b1a6f33002e63dddcd050edb1'
+    source_sha256 '0ecd273f3b9f55680060336972aa7058b2dc75dfcf4849e50e2e0033755d42c6'
     @arch = 'arm'
   when 'x86_64'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
-    source_sha256 '74d536db88b777be7e3ef5d6c8001d4bc200109e1d9e454e60997c356783ef8a'
+    source_sha256 '48462b95b74d2dc279b4ed9dd593fdd80dca4656574069cccb78d8075f610486'
     @arch = 'x64'
   end
 
@@ -46,6 +46,7 @@ class Codium < Package
 
   def self.install
     ENV['CREW_SHRINK_ARCHIVE'] = '0'
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
