@@ -8,7 +8,20 @@ class Py3_libxml2 < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12_armv7l/py3_libxml2-2.9.12-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12_armv7l/py3_libxml2-2.9.12-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12_i686/py3_libxml2-2.9.12-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12_x86_64/py3_libxml2-2.9.12-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '6e56764b886b8a311031ec5f8f7d25aa2593e28a34e79f0b15d87ab462a7f403',
+     armv7l: '6e56764b886b8a311031ec5f8f7d25aa2593e28a34e79f0b15d87ab462a7f403',
+       i686: 'bb5df65e5758fc7731e076ecee120692000fc864f6c11b28f09f0e41447de8b3',
+     x86_64: 'd9f41187eae16e4c3dd25a647b12f6a7b9b5a4511a13bddc915a68d36fb19b7a'
+  })
 
   depends_on 'libxml2'
   depends_on 'libxslt'
