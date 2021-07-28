@@ -17,15 +17,15 @@ class Glibc < Package
 
   case LIBC_VERSION
   when '2.23'
-    version LIBC_VERSION
+    version '2.23-1'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
     binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23_i686/glibc-2.23-chromeos-i686.tar.xz'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-1_i686/glibc-2.23-1-chromeos-i686.tpxz'
     })
     binary_sha256({
-      i686: '52145b65cb49c2751f69d4c46636f0685f2abb6685d8a080b71b2f091595a950'
+      i686: '0bcecf83d71f221c5a2cf1bc727e337b7b30ed829df0f59a9864fe4c34947df2'
     })
   when '2.27'
     version LIBC_VERSION
@@ -110,44 +110,56 @@ class Glibc < Package
   def self.build
     Dir.mkdir 'glibc_build'
     Dir.chdir 'glibc_build' do
+      # gold linker does not work for glibc 2.23, and maybe others.
+      FileUtils.mkdir_p 'binutils'
+      @binutils = IO.readlines("#{CREW_META_PATH}binutils.filelist")
+      @binutils.each do |bin|
+        if bin['/bin/']
+          FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}"
+        end
+      end
+      FileUtils.cp 'binutils/ld.bfd', 'binutils.ld'
       case LIBC_VERSION
       when '2.23' # This is only for glibc 2.23
-        system '../configure',
-               "--prefix=#{CREW_PREFIX}",
-               "--libdir=#{CREW_LIB_PREFIX}",
-               "--with-headers=#{CREW_PREFIX}/include",
-               '--disable-werror',
-               '--disable-sanity-checks',
-               '--enable-shared',
-               '--disable-multilib',
-               'libc_cv_forced_unwind=yes',
-               'libc_cv_ssp=no',
-               'libc_cv_ssp_strong=no'
+        system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
+                 #{CREW_OPTIONS} \
+                 --with-headers=#{CREW_PREFIX}/include \
+                 --disable-werror \
+                 --disable-sanity-checks \
+                 --enable-shared \
+                 --disable-multilib \
+                 --with-binutils=binutils \
+                 --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+                 libc_cv_forced_unwind=yes \
+                 libc_cv_ssp=no \
+                 libc_cv_ssp_strong=no"
       when '2.27'
         case ARCH
         when 'armv7l', 'aarch64'
-          system '../configure',
-                 "--prefix=#{CREW_PREFIX}",
-                 "--libdir=#{CREW_LIB_PREFIX}",
-                 "--with-headers=#{CREW_PREFIX}/include",
-                 '--disable-werror',
-                 '--disable-sanity-checks',
-                 '--enable-shared',
-                 'libc_cv_forced_unwind=yes',
-                 '--without-selinux'
+          system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
+                   #{CREW_OPTIONS} \
+                   --with-headers=#{CREW_PREFIX}/include \
+                   --disable-werror \
+                   --disable-sanity-checks \
+                   --enable-shared \
+                   --with-binutils=binutils \
+                   --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+                   libc_cv_forced_unwind=yes \
+                   --without-selinux"
         when 'x86_64'
           IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
-          system '../configure',
-                 "--prefix=#{CREW_PREFIX}",
-                 "--libdir=#{CREW_LIB_PREFIX}",
-                 "--with-headers=#{CREW_PREFIX}/include",
-                 '--disable-werror',
-                 '--disable-sanity-checks',
-                 '--enable-shared',
-                 '--disable-multilib',
-                 'libc_cv_forced_unwind=yes',
-                 'libc_cv_ssp=no',
-                 'libc_cv_ssp_strong=no'
+          system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
+                   #{CREW_OPTIONS} \
+                   --with-headers=#{CREW_PREFIX}/include \
+                   --disable-werror \
+                   --disable-sanity-checks \
+                   --enable-shared \
+                   --with-binutils=binutils \
+                   --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+                   --disable-multilib \
+                   libc_cv_forced_unwind=yes \
+                   libc_cv_ssp=no \
+                   libc_cv_ssp_strong=no"
         end
       when '2.32'
         # Optimization flags from https://github.com/InBetweenNames/gentooLTO
@@ -187,9 +199,10 @@ class Glibc < Package
             libc_cv_z_nodelete=yes \
             libc_cv_z_nodlopen=yes \
             libc_cv_z_relro=yes \
+            --with-binutils=binutils \
+            --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
             --without-cvs \
             --without-selinux \
-            --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
             "
           # install-symbolic-link segfaults on armv7l, but we're deleting
           # the libraries anyways, so it doesn't matter.
@@ -199,7 +212,7 @@ class Glibc < Package
           IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system "env \
           CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
-          LD=ld ../configure \
+            ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --with-headers=#{CREW_PREFIX}/include \
@@ -233,9 +246,10 @@ class Glibc < Package
             libc_cv_z_nodelete=yes \
             libc_cv_z_nodlopen=yes \
             libc_cv_z_relro=yes \
+            --with-binutils=binutils \
+            --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
             --without-cvs \
             --without-selinux \
-            --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
             "
         end
       end
@@ -243,12 +257,12 @@ class Glibc < Package
       case @LIBC_VERSION
       when '2.32'
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
-      ../glibc_build/locale/locarchive.o \
-      ../glibc_build/locale/md5.o \
-      ../glibc_build/locale/record-status.o \
-      -I. -DDATADIR=\\\"#{CREW_PREFIX}/share\\\" -DPREFIX=\\\"#{CREW_PREFIX}\\\" \
-      -L../glibc_build \
-      -B../glibc_build/csu/ -lc -lc_nonshared"
+          ../glibc_build/locale/locarchive.o \
+          ../glibc_build/locale/md5.o \
+          ../glibc_build/locale/record-status.o \
+          -I. -DDATADIR=\\\"#{CREW_PREFIX}/share\\\" -DPREFIX=\\\"#{CREW_PREFIX}\\\" \
+          -L../glibc_build \
+          -B../glibc_build/csu/ -lc -lc_nonshared"
       end
     end
   end
@@ -258,13 +272,49 @@ class Glibc < Package
     system "sed 's,/usr/#{ARCH_LIB}/libc_nonshared.a,#{CREW_LIB_PREFIX}/libc_nonshared.a,g' /usr/#{ARCH_LIB}/libc.so > #{CREW_DEST_LIB_PREFIX}/libc.so"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     Dir.chdir 'glibc_build' do
-      system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
       system "make DESTDIR=#{CREW_DEST_DIR} install" # "sln elf/symlink.list" fails on armv7l
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'localedata/install-locales'
+      case LIBC_VERSION
+      when '2.23', '2.27'
+        Dir.chdir "localedata" do
+          system "mkdir -pv #{CREW_DEST_LIB_PREFIX}/locale"
+          puts "Install minimum set of locales".lightblue
+
+          # Assume old version of glibc is installed. -> use localedef.
+          # If not installed, we can move following instruction to postinstall
+          # Since glibc is a basic package, we prefer to provide pre-compiled package.
+          # No compilcated detect logics required -> make it as simple as possible
+          system "localedef --prefix=#{CREW_DEST_DIR} -i cs_CZ -f UTF-8 cs_CZ.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i de_DE -f ISO-8859-1 de_DE"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i de_DE@euro -f ISO-8859-15 de_DE@euro"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i de_DE -f UTF-8 de_DE.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i en_GB -f UTF-8 en_GB.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i en_HK -f ISO-8859-1 en_HK"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i en_PH -f ISO-8859-1 en_PH"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i en_US -f ISO-8859-1 en_US"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i en_US -f UTF-8 en_US.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i es_MX -f ISO-8859-1 es_MX"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i fa_IR -f UTF-8 fa_IR"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i fr_FR -f ISO-8859-1 fr_FR"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i fr_FR@euro -f ISO-8859-15 fr_FR@euro"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i fr_FR -f UTF-8 fr_FR.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i it_IT -f ISO-8859-1 it_IT"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i it_IT -f UTF-8 it_IT.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i ja_JP -f EUC-JP ja_JP"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i ru_RU -f KOI8-R ru_RU.KOI8-R"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i ru_RU -f UTF-8 ru_RU.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i tr_TR -f UTF-8 tr_TR.UTF-8"
+          system "localedef --prefix=#{CREW_DEST_DIR} -i zh_CN -f GB18030 zh_CN.GB18030"
+        end
+      when '2.32'
+        system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
+        system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'localedata/install-locales'
+      end
     end
+    # libnsl is provided by perl
+    FileUtils.rm_f Dir.glob("#{CREW_DEST_LIB_PREFIX}/libnsl.so*")
     # Remove libmount.so since it conflicts with the one from util_linux.
-    FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so.*")
+    FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
   end
 
   # def self.check
