@@ -3,7 +3,7 @@ require 'package'
 class Youtube_dl < Package
   description 'Command-line program to download videos from YouTube.com and other video sites'
   homepage 'https://youtube-dl.org/'
-  @_ver = '2021.06.06'
+  @_ver = '2021.04.26'
   version @_ver
   license 'public-domain'
   compatibility 'all'
