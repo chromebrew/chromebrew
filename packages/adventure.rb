@@ -1,4 +1,3 @@
-require 'package'
 require 'packages/libbsdgames2'
 
 class Adventure < Bsdgame

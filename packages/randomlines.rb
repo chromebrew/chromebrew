@@ -1,4 +1,3 @@
-require 'package'
 require 'packages/libbsdgames2'
 
 # I'd really like this package name to be "random", however classes don't seem to be able to be named "random".
