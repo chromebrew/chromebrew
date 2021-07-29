@@ -4,28 +4,27 @@ require 'open3'
 class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.1.0-2'
+  version '11.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz'
-  source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz'
+  source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_i686/gcc11-11.1.0-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_x86_64/gcc11-11.1.0-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_i686/gcc11-11.2.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_x86_64/gcc11-11.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
-     armv7l: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
-       i686: '9c1e13720a102c62bd0794e4872e9936d73c6c3bcb2934854c32798090035021',
-     x86_64: '91ed0f513618b8d548928d256e68219046c5dcf6726b79f1d71979e0ae5d64dc'
+    aarch64: '6826e30f422f8e1b702422d9f185953bb1ccdd6e03352b3300ec65b510803d5d',
+     armv7l: '6826e30f422f8e1b702422d9f185953bb1ccdd6e03352b3300ec65b510803d5d',
+       i686: '5490594fe9330c0bf253996693d855e23a619a8e6d27b6a2cab54927fd1c7610',
+     x86_64: '809ceaa5af62954eae0ab65256648506231bd672c13bddc3075e1e023279c466'
   })
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
-  # depends_on 'hashpipe' => :build
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
@@ -153,6 +152,7 @@ class Gcc11 < Package
         ../configure #{CREW_OPTIONS} \
         #{@gcc_global_opts} \
         #{@archflags} \
+        --with-native-system-header-dir=#{CREW_PREFIX}/include \
         --enable-languages=#{@languages} \
         --program-suffix=-#{@gcc_version}"
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
