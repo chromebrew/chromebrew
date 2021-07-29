@@ -3,7 +3,7 @@ require 'package'
 class Fuse3 < Package
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse/'
-  @_ver = '3.10.3'
+  @_ver = '3.10.4'
   version @_ver
   license 'GPL-2+'
   compatibility 'all'
@@ -27,6 +27,5 @@ class Fuse3 < Package
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d/"
     FileUtils.mv "#{CREW_DEST_DIR}/etc/init.d/fuse3", "#{CREW_DEST_PREFIX}/etc/init.d/fuse3"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/sbin/mount.fuse3", "#{CREW_DEST_PREFIX}/bin/mount.fuse3"
   end
 end
