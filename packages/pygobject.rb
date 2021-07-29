@@ -2,41 +2,37 @@ require 'package'
 
 class Pygobject < Package
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
-  homepage 'https://pygobject.readthedocs.io/en/latest/'
-  version '3.38-0a16'
+  homepage 'https://pygobject.readthedocs.io/'
+  @_ver = '3.40.1'
+  version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/pygobject/-/archive/0a16082c3e092fdccf5499172a4b9dec07aa383d/pygobject-0a16082c3e092fdccf5499172a4b9dec07aa383d.tar.bz2'
-  source_sha256 'f83531eeb2d4980afde618a83d16749b14e47d92673a6b1ec63ae7a0a01c4bfc'
+  source_url 'https://gitlab.gnome.org/GNOME/pygobject.git'
+  git_hashtag @_ver
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.38-0a16_armv7l/pygobject-3.38-0a16-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.38-0a16_armv7l/pygobject-3.38-0a16-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.38-0a16_i686/pygobject-3.38-0a16-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.38-0a16_x86_64/pygobject-3.38-0a16-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.40.1_armv7l/pygobject-3.40.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.40.1_armv7l/pygobject-3.40.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.40.1_i686/pygobject-3.40.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.40.1_x86_64/pygobject-3.40.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '25288827bdc2116b0afabca5b4016a3d53feb884dbb4514281e1ac2eb50212bb',
-      armv7l: '25288827bdc2116b0afabca5b4016a3d53feb884dbb4514281e1ac2eb50212bb',
-        i686: 'e85370c34c4beb590b8bf9695dfcbc8107b958d37fec6a49d39c445b30e7cfc2',
-      x86_64: '65a8a2138b1ddae9cf90782515295577219bee5e26c41f3285077d92ddffd10f',
+  binary_sha256({
+    aarch64: '1500e6bc54033b30b095bee58fed4690d614c765671bd3722688e76b78fe454e',
+     armv7l: '1500e6bc54033b30b095bee58fed4690d614c765671bd3722688e76b78fe454e',
+       i686: 'ebe701b39d9ca9fb0b394333c92eab82ff76d3126566bcefc140b800a0356f48',
+     x86_64: '25669c04d58e2f76ea77ef6d7f9235feb608291dbdf8632bb8dd5c1e4cd44fe9'
   })
 
   depends_on 'glib'
   depends_on 'gobject_introspection'
-  depends_on 'pycairo'
+  depends_on 'py3_pycairo'
+  depends_on 'py3_setuptools' => :build
 
   def self.build
-    system 'pip3 install --upgrade pycairo'
-    system "meson #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-    system 'pip3 uninstall --yes pycairo'
-    system "pip3 install pycairo --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end

@@ -1,32 +1,37 @@
 require 'package'
 
 class Meson < Package
-  description 'The Meson Build System'
-  homepage 'http://mesonbuild.com/'
-  @_ver = '0.58.1'
+  description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
+  homepage 'https://mesonbuild.com/'
+  @_ver = '0.58.2'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
-  source_url "https://github.com/mesonbuild/meson/archive/#{@_ver}.tar.gz"
-  source_sha256 '78e0f553dd3bc632d5f96ab943b1bbccb599c2c84ff27c5fb7f7fff9c8a3f6b4'
+  source_url 'https://github.com/mesonbuild/meson.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.1_armv7l/meson-0.58.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.1_armv7l/meson-0.58.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.1_i686/meson-0.58.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.1_x86_64/meson-0.58.1-chromeos-x86_64.tpxz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.1_i686/meson-0.58.1-chromeos-i686.tpxz',
+ aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.2_armv7l/meson-0.58.2-chromeos-armv7l.tpxz',
+  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.2_armv7l/meson-0.58.2-chromeos-armv7l.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.2_x86_64/meson-0.58.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd2a6cacfd9e258918fe0627e117faf27be537c2d7340f0d6ff663e59f0800a3f',
-     armv7l: 'd2a6cacfd9e258918fe0627e117faf27be537c2d7340f0d6ff663e59f0800a3f',
-       i686: '81211605d926df2868241b31726224bfe41f816faa7095a123e9c78dea680a7a',
-     x86_64: 'abe7dfe244c45c3daa4d91938a199c997d81d063a53125117ce218c4a4677aaf'
+    i686: '81211605d926df2868241b31726224bfe41f816faa7095a123e9c78dea680a7a',
+ aarch64: '725b270200e40fd3ebbaa4d4312f6fa6cb76422c92bfaa125322b74696f04b5e',
+  armv7l: '725b270200e40fd3ebbaa4d4312f6fa6cb76422c92bfaa125322b74696f04b5e',
+  x86_64: '4330d50cc93deb873f60fb3dda818f9875c9967b938c66f5577245a4fdbebbd2'
   })
 
   depends_on 'ninja'
   depends_on 'samurai'
+  depends_on 'py3_setuptools' => :build
+
+  def self.build
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+  end
 
   def self.install
-    system "python3 setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end

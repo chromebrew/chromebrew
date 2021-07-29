@@ -3,29 +3,33 @@ require 'package'
 class Ansible < Package
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  version '2.9.14'
+  version '3.3.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://releases.ansible.com/ansible/ansible-2.9.14.tar.gz'
-  source_sha256 'efe7183e08f0c9dd9efd9124efa8978be62851b1e8eb856593a073538bfc6fb5'
+  source_url 'https://files.pythonhosted.org/packages/53/d5/6cdea3c8479644b1b788d57cad500e9d782e06f6a84cac05121a65cca67e/ansible-3.3.0.tar.gz'
+  source_sha256 '2de5385c48a2a24a19f6cbaccc7d7684c64b6194f9a9b175aba7949d53b07bc9'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.9.14_armv7l/ansible-2.9.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.9.14_armv7l/ansible-2.9.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.9.14_i686/ansible-2.9.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.9.14_x86_64/ansible-2.9.14-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/3.3.0_armv7l/ansible-3.3.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/3.3.0_armv7l/ansible-3.3.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/3.3.0_i686/ansible-3.3.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/3.3.0_x86_64/ansible-3.3.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '9c43a7e52691b4ba2042a34fc5613db34d45b8b3dbe96aeb8754b296fca9437a',
-     armv7l: '9c43a7e52691b4ba2042a34fc5613db34d45b8b3dbe96aeb8754b296fca9437a',
-       i686: 'f93312f9080369044f136abf3713e54b490efe1833d9ba6ca8959b3300f57de9',
-     x86_64: '03858df7d32282cbc04bcf33ec923e3ea03963898be7d0d6fdb51e589e43f11f',
+  binary_sha256({
+    aarch64: 'b9510ce8907f00a3a41066de88b34f519776494a13a804dbbad35e63511fab65',
+     armv7l: 'b9510ce8907f00a3a41066de88b34f519776494a13a804dbbad35e63511fab65',
+       i686: 'df3f907db3401d10f4b302a2c899e18271c963e1d92ea9cdfa14e70e9d4986fe',
+     x86_64: 'c1580c511f0ae42bf3aacce66439ce8c9cf2f93c4ebe40223ae65410e88b3b22'
   })
 
-  depends_on 'setuptools'
+  depends_on 'ansible_base'
+  depends_on 'py3_setuptools' => :build
+
+  def self.build
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+  end
 
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} \
-            --root #{CREW_DEST_DIR} -I ansible==#{self.version}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end

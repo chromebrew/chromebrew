@@ -31,7 +31,7 @@ class Libxml2 < Package
   end
 
   def self.build
-    # libxml2-python built in another package (libxml2_python)
+    # libxml2-python built in another package (py3_libxml2)
     system "./autogen.sh \
       #{CREW_OPTIONS} \
       #{CREW_ENV_OPTIONS} \

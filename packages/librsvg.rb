@@ -36,7 +36,7 @@ class Librsvg < Package
   depends_on 'libpng'
   depends_on 'pango'
   depends_on 'rust' => :build
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
   depends_on 'vala' => :build
 
   def self.build

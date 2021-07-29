@@ -24,7 +24,7 @@ class Kcov < Package
 
   depends_on 'libcurl'
   depends_on 'elfutils'
-  depends_on 'six'
+  depends_on 'py3_six'
 
   def self.build
     Dir.mkdir 'build'

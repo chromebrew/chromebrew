@@ -22,9 +22,9 @@ class Speedometer < Package
      x86_64: 'a926e76ca2d5de7773b2e2d5423892677c020f0b1328abe9ff84fe81d2801a97',
   })
 
-  depends_on 'psutil'
-  depends_on 'six'
-  depends_on 'nuitka' => :build
+  depends_on 'py3_psutil'
+  depends_on 'py3_six'
+  depends_on 'py3_nuitka' => :build
 
   def self.patch
     system "sed -i 's:#!/usr/bin/python3:#!#{CREW_PREFIX}/bin/python3:' bin/speedometer"

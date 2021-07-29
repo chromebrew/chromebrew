@@ -34,7 +34,7 @@ class Gtk3 < Package
   depends_on 'graphite' => :build # Do we need this?
   depends_on 'libdeflate' => :build # Do we need this?
   depends_on 'libjpeg' => :build # Do we need this?
-  depends_on 'six' => :build # Do we need this?
+  depends_on 'py3_six' => :build # Do we need this?
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cantarell_fonts' # L
   depends_on 'gnome_icon_theme' # L

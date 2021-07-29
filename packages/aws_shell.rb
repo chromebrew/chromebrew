@@ -22,7 +22,7 @@ class Aws_shell < Package
      x86_64: '41ad9b4fbe0104c4e7d48fb7b5c2469f89562f46c1184b985114da37bf0ed479',
   })
 
-  depends_on 'setuptools'
+  depends_on 'py3_setuptools' => :build
 
   def self.install
     system "python setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
