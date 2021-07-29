@@ -95,6 +95,22 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 
     crew install --keep <package1> [<package2> ...]
 
+Recently Upgraded Packages
+--------------------------
+
+| Name | Description | Date Upgraded | Version
+|:---|:---|:---|
+| codium | VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration. | 2021-07-28 | 1.58.2 |
+| fontconfig | Fontconfig is a library for configuring and customizing font access. | 2021-07-27 | 2.13.94 |
+| boost | Boost provides free peer-reviewed portable C++ source libraries. | 2021-07-26 | 1.76.0 |
+| squashfs | Squashfs is a compressed read-only filesystem for Linux. | 2021-06-24 | 4.5 |
+| vala | Vala is a programming language that aims to bring modern programming language features to GNOME developers. | 2021-07-22 | 0.54.2 |
+| crew_profile_base | Crew-profile-base sets up Chromebrew's environment capabilities. | 2021-07-22 | 0.0.2 |
+| filezilla | A simple, fast and user-friendly alternative to find | 2021-06-08 | 3.55.0 |
+| ncurses | The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. | 2021-07-19 | 6.2-20210523 |
+| brave | Next generation Brave browser for macOS, Windows, Linux, Android. | 2021-07-19 | 1.29.8 |
+| putty | Free Telnet, SSH, and Rlogin clients plus a terminal emulator. | 2021-07-18 | 0.76 |
+
 Latest Packages
 ---------------
 
