@@ -11,10 +11,14 @@ class Urlwatch < Package
   git_hashtag @_ver
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-1_x86_64/urlwatch-2.23-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-1_armv7l/urlwatch-2.23-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-1_armv7l/urlwatch-2.23-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-1_x86_64/urlwatch-2.23-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: 'a97f63ace9100a68c71a6c1cada31a65ed47d695367fe6cfff433141f8dffd17'
+    aarch64: 'f023114e10a107a326a2e813a937d404544c6e80c52720c70ecf556ecc63df54',
+     armv7l: 'f023114e10a107a326a2e813a937d404544c6e80c52720c70ecf556ecc63df54',
+     x86_64: 'a97f63ace9100a68c71a6c1cada31a65ed47d695367fe6cfff433141f8dffd17'
   })
 
   depends_on 'py3_lxml'
