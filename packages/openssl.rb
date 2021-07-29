@@ -4,21 +4,21 @@ class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
   @_ver = '1.1.1k'
-  version "#{@_ver}-2"
-  license 'openssl'
+  version "#{@_ver}-3"
   compatibility 'all'
+  license 'openssl'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
   source_sha256 '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-2_armv7l/openssl-1.1.1k-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-2_armv7l/openssl-1.1.1k-2-chromeos-armv7l.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-3_armv7l/openssl-1.1.1k-3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-3_armv7l/openssl-1.1.1k-3-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-2_i686/openssl-1.1.1k-2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-2_x86_64/openssl-1.1.1k-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a71bfc9649794f16e03d2aafe43fdd4090e3679078d4c54c18f2de00c2d5ae61',
-     armv7l: 'a71bfc9649794f16e03d2aafe43fdd4090e3679078d4c54c18f2de00c2d5ae61',
+    aarch64: '0d6acf58d87071df456b02676ff3693668517b29249964501da173ad8880cd8b',
+     armv7l: '0d6acf58d87071df456b02676ff3693668517b29249964501da173ad8880cd8b',
        i686: '5a55581745e62d8e3697b7dfa7b91624c0aeda94cf925c1feb079163e3923b0b',
      x86_64: 'd095621c44c8607c93b3881cbdc71d8bb219f1d48f93abf0c626d3f7f2eddba7'
   })
