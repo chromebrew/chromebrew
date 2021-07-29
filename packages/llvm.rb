@@ -24,7 +24,7 @@ class Llvm < Package
   })
 
   depends_on 'ocaml' => :build
-  depends_on 'pygments' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc11' # R or gcc11

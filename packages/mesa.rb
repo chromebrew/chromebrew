@@ -41,6 +41,7 @@ class Mesa < Package
   depends_on 'libxxf86vm' # R
   depends_on 'llvm' => :build
   depends_on 'lm_sensors' # R
+  depends_on 'py3_mako'
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
@@ -56,19 +57,16 @@ class Mesa < Package
       @vk = 'auto'
       @galliumdrivers = 'auto'
     end
-    system 'pip3 uninstall -y Mako MarkupSafe || :'
-    system "pip3 install --no-warn-script-location --prefix \"#{CREW_PREFIX}\" --root \"#{CREW_DEST_DIR}\" Mako"
-    system "pip3 install --prefix \"#{CREW_PREFIX}\" Mako"
     system "meson #{CREW_MESON_OPTIONS} \
     -Db_asneeded=false \
     -Dvulkan-drivers=#{@vk} \
     -Dgallium-drivers=#{@galliumdrivers} \
      builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

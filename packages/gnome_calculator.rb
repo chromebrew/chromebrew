@@ -10,7 +10,7 @@ class Gnome_calculator < Package
   source_url "https://download.gnome.org/sources/gnome-calculator/#{@_ver.rpartition('.')[0]}/gnome-calculator-#{@_ver}.tar.xz"
   source_sha256 '8c83cc6433e015d15aa2a0cf3d0b187f7adb92830d39dd2e66076c73192a316b'
 
-  depends_on 'setuptools' => :build
+  depends_on 'py3_setuptools' => :build
   depends_on 'gtk3'
   depends_on 'gtksourceview'
   depends_on 'itstool'

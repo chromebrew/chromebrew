@@ -9,5 +9,4 @@ class Python27 < Package
   is_fake
 
   depends_on 'python2'
-
 end

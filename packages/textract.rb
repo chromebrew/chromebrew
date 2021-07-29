@@ -1,32 +1,44 @@
 require 'package'
 
 class Textract < Package
-  description 'Extract text from any document.'
-  homepage 'http://textract.readthedocs.io/en/stable/'
-  version '1.6.1'
+  description 'Textract provides text extracting tools for many formats.'
+  homepage 'http://textract.readthedocs.io/'
+  @_ver = '1.6.3'
+  version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/deanmalmgren/textract/archive/v1.6.1.tar.gz'
-  source_sha256 '9e5e2132db126646031134f7a84efbf10f631a3d0fb56bc8881f67998890dfac'
+  source_url 'https://github.com/deanmalmgren/textract.git'
+  git_hashtag "v#{@_ver}"
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_armv7l/textract-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_armv7l/textract-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_i686/textract-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.1_x86_64/textract-1.6.1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.3_armv7l/textract-1.6.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.3_armv7l/textract-1.6.3-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.3_x86_64/textract-1.6.3-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '77b0b5be2d908bf3e82e57e23c657edc4e556b87dc3d8790aba158e5509b87c7',
-     armv7l: '77b0b5be2d908bf3e82e57e23c657edc4e556b87dc3d8790aba158e5509b87c7',
-       i686: 'f5e52a3dcb931ad25d4847b47f41c50f9eee454d24169603c13f5cb800df59ca',
-     x86_64: '13e5933fe8082e152cdf80c661f85f9a425e2a303ace296cf82e8d302da39551',
+  binary_sha256({
+    aarch64: '2acbe613d6da563b6d2448901a0aeae370e098cae979329d347cf2fc83b03d15',
+     armv7l: '2acbe613d6da563b6d2448901a0aeae370e098cae979329d347cf2fc83b03d15',
+     x86_64: '14e5dc95823db12a0f4cb9f355db91066f6a4314049a78d3fc82fa671aeb8f69'
   })
 
-  depends_on 'setuptools'
-  depends_on 'pulseaudio'
-  depends_on 'swig'
+  depends_on 'py3_pdfminer_six'
+  depends_on 'py3_ebooklib'
+  depends_on 'py3_pptx'
+  depends_on 'py3_extract_msg'
+  depends_on 'py3_xlrd'
+  depends_on 'py3_docx2txt'
+  depends_on 'py3_argcomplete'
+  depends_on 'py3_speechrecognition'
+  depends_on 'py3_chardet'
+  depends_on 'py3_beautifulsoup4'
+  depends_on 'py3_six'
+  depends_on 'py3_setuptools' => :build
+
+  def self.build
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+  end
 
   def self.install
-    system "pip3 install textract --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end

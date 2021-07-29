@@ -31,10 +31,6 @@ class Gdb < Package
   depends_on 'source_highlight' # R
   depends_on 'boost' # R
 
-  def self.patch
-    system "sed -i 's%#include <term.h>%#include <ncursesw/term.h>%g' gdb/gdb_curses.h"
-  end
-
   def self.build
     FileUtils.mkdir_p 'build'
     Dir.chdir('build') do
