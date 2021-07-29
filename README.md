@@ -98,8 +98,8 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 Recently Upgraded Packages
 --------------------------
 
-| Name | Description | Date Upgraded | Version
-|:---|:---|:---|
+| Name | Description | Date Upgraded | Version |
+|:---|:---|:---|:---|
 | codium | VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration. | 2021-07-28 | 1.58.2 |
 | fontconfig | Fontconfig is a library for configuring and customizing font access. | 2021-07-27 | 2.13.94 |
 | boost | Boost provides free peer-reviewed portable C++ source libraries. | 2021-07-26 | 1.76.0 |
