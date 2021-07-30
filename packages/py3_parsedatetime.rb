@@ -1,7 +1,7 @@
 require 'package'
 
 class Py3_parsedatetime < Package
-  description 'Leather is a fast, approximate chart generator in Python.'
+  description 'Parse human-readable date/time strings'
   homepage 'https://github.com/bear/parsedatetime/'
   @_ver = '2.6'
   version @_ver
