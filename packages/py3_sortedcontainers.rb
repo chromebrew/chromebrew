@@ -1,7 +1,7 @@
 require 'package'
 
 class Py3_sortedcontainers < Package
-  description 'Pycryptodomex is a cryptographic library for Python.'
+  description 'Python Sorted Container Types: Sorted List, Sorted Dict, and Sorted Set'
   homepage 'http://www.grantjenks.com/docs/sortedcontainers/'
   @_ver = '2.3.0'
   version @_ver

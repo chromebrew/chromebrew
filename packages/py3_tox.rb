@@ -1,7 +1,7 @@
 require 'package'
 
 class Py3_tox < Package
-  description 'Toml is a Python Library for Tom\'s Obvious, Minimal Language.'
+  description 'Command line driven CI frontend and development task automation tool.'
   homepage 'https://tox.readthedocs.io/'
   @_ver = '3.13.2'
   version @_ver

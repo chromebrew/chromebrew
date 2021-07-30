@@ -1,7 +1,7 @@
 require 'package'
 
 class Py3_decorator < Package
-  description 'Colorama makes ANSI color sequences work on MS Windows.'
+  description 'define signature-preserving function decorators and decorator factories'
   homepage 'https://github.com/micheles/decorator/'
   @_ver = '4.4.2'
   version @_ver
