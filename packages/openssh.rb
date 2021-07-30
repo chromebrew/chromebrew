@@ -22,11 +22,16 @@ class Openssh < Package
      x86_64: '4900147acf20bfcf9dd27654563a2aeefed7b63e12eb7a9fa96992194ce07f24'
   })
 
+
+  depends_on 'zlibpkg'
+  depends_on 'openssl'
+  depends_on 'libfido2'
+
   def self.build
     system 'autoreconf -fiv'
     system 'autoheader'
     system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
+      ./configure #{CREW_OPTIONS} --with-ssl-engine --with-ssl-dir=/usr/local/include/openssl --with-zlib=/usr/local/include/zlib.h --with-security-key-builtin"
     system 'make'
   end
 
