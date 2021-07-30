@@ -1,6 +1,6 @@
 require 'package'
 
-class LibCBOR < Package
+class libCBOR < Package
   description 'CBOR Protocol implementation for C and others'
   homepage 'https://github.com/PJK/libcbor'
   version '0.8.0'
