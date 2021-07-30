@@ -520,7 +520,7 @@ def update
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
     search package[:name], true
-    if package[:version] != @pkg.version
+    if package[:version].to_s != @pkg.version
       canBeUpdated += 1
       puts @pkg.name + ' could be updated from ' + package[:version].to_s + ' to ' + @pkg.version
     end
