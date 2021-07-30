@@ -6,23 +6,23 @@ require 'package'
 class Gdb < Package
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '10.2'
+  version '10.2-1'
   license 'GPL3'
   compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.xz'
   source_sha256 'aaa1223d534c9b700a8bec952d9748ee1977513f178727e1bee520ee000b4f29'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2_armv7l/gdb-10.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2_armv7l/gdb-10.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2_i686/gdb-10.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2_x86_64/gdb-10.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2-1_armv7l/gdb-10.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2-1_armv7l/gdb-10.2-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2-1_i686/gdb-10.2-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2-1_x86_64/gdb-10.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c3a708da100b18e4da8d22cfe3f046d7fbebe1f62af6f6f0fd19b3cceb75e349',
-     armv7l: 'c3a708da100b18e4da8d22cfe3f046d7fbebe1f62af6f6f0fd19b3cceb75e349',
-       i686: 'a25af22de11214b9d6011d533b47dac518f1c1ac7cc49f0cd1f2cca312167308',
-     x86_64: 'f3b420aff23c86604c9b0e4945458d734764f18372808bc5bddff568e1ed7262'
+    aarch64: 'f1d04f35be61bc90d1d9dd6a243585cdf78d07e2d0fe256777fef2613feacda3',
+     armv7l: 'f1d04f35be61bc90d1d9dd6a243585cdf78d07e2d0fe256777fef2613feacda3',
+       i686: 'cc16237aa00d46d9ed5fe2786e13e87b89e4a763644326bbbc5d6847c5d84395',
+     x86_64: 'fa8a712a9907f7f24f8d1e1a7ef9dd3fbdbec7b4b367fdbeca4be40f689fe0db'
   })
 
   depends_on 'libcurl' # R
