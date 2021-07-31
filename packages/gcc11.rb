@@ -11,14 +11,14 @@ class Gcc11 < Package
   source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_i686/gcc11-11.2.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_x86_64/gcc11-11.2.0-chromeos-x86_64.tpxz'
+    aarch64: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-armv7l.tpxz',
+     armv7l: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-armv7l.tpxz',
+       i686: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-i686.tpxz',
+     x86_64: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6826e30f422f8e1b702422d9f185953bb1ccdd6e03352b3300ec65b510803d5d',
-     armv7l: '6826e30f422f8e1b702422d9f185953bb1ccdd6e03352b3300ec65b510803d5d',
+    aarch64: '5103c1e80e63ab61e3d62973dbb38a8fbb35ca6eb11be2fc50d43c4e5959fbb6',
+     armv7l: '5103c1e80e63ab61e3d62973dbb38a8fbb35ca6eb11be2fc50d43c4e5959fbb6',
        i686: '5490594fe9330c0bf253996693d855e23a619a8e6d27b6a2cab54927fd1c7610',
      x86_64: '809ceaa5af62954eae0ab65256648506231bd672c13bddc3075e1e023279c466'
   })
@@ -85,9 +85,9 @@ class Gcc11 < Package
              installed_gccver.to_s == 'bash:' ||
              installed_gccver.to_s == @gcc_version.to_s ||
              installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
-        $stderr.puts "GCC version #{installed_gccver} is currently installed.".lightred
-        $stderr.puts "To use #{self.to_s.downcase} please run:".lightgreen
-        $stderr.puts "crew remove gcc#{installed_gccver} && crew install #{self.to_s.downcase}".lightgreen
+        warn "GCC version #{installed_gccver} is currently installed.".lightred
+        warn "To use #{to_s.downcase} please run:".lightgreen
+        warn "crew remove gcc#{installed_gccver} && crew install #{to_s.downcase}".lightgreen
         exit 1
       end
     end
