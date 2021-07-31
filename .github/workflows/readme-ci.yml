@@ -1,0 +1,29 @@
+name: Readme Package Updater
+
+on:
+  push:
+    branch: 'master'
+    paths:
+      - 'packages/**.rb'
+
+jobs:
+  update_readme:
+    runs-on: ubuntu-latest
+    if: github.repository == 'skycocker/chromebrew'
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: head
+
+    - name: Update Packages List
+      run: |
+        ruby tools/update_readme_package.rb ${{ github.sha }} && echo hello
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add 'README.md'
+        git commit -m 'Update package table in README'
+        git push
