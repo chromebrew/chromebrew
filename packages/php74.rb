@@ -3,24 +3,24 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.4.21'
+  @_ver = '7.4.22'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'cf43384a7806241bc2ff22022619baa4abb9710f12ec1656d0173de992e32a90'
+  source_sha256 '8e078cd7d2f49ac3fcff902490a5bb1addc885e7e3b0d8dd068f42c68297bde8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_armv7l/php74-7.4.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_armv7l/php74-7.4.21-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_i686/php74-7.4.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.21_x86_64/php74-7.4.21-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_armv7l/php74-7.4.22-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_armv7l/php74-7.4.22-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_i686/php74-7.4.22-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_x86_64/php74-7.4.22-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '6f24337b7f3ab13eeec7caa6a85d5b9e04661d2a9f36a17dd2434a8f8dcee211',
-     armv7l: '6f24337b7f3ab13eeec7caa6a85d5b9e04661d2a9f36a17dd2434a8f8dcee211',
-       i686: 'fe065f5875eed285cae998a0f95d0a87b1406404789b1aa681b3deab5e711afa',
-     x86_64: '6d22a25947829bbf0b90c2cda6c8c989aaf0c8efe1554be668e81ca89ee59d88',
+    aarch64: '5f7ad8b776079e5a436cb4462e190005bfd25d168a7182fe8b96f50c6b129eed',
+     armv7l: '5f7ad8b776079e5a436cb4462e190005bfd25d168a7182fe8b96f50c6b129eed',
+       i686: 'd7d10b351d9990b490068a248cfebf804d18107e07979aebceef7171e96a565e',
+     x86_64: 'bcb56488cfc623c5bd0dde93b116c3d6ab94987914eb9fd57a7568a8dead6232',
   })
 
   depends_on 'aspell_en'
@@ -44,7 +44,9 @@ class Php74 < Package
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    unless ARGV[0] == 'reinstall' and version == phpver
+      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    end
   end
 
   def self.patch
@@ -75,21 +77,21 @@ class Php74 < Package
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
        --libdir=#{CREW_LIB_PREFIX} \
-       --localstatedir=#{CREW_PREFIX}/tmp \
+       --localstatedir=#{CREW_PREFIX}/var \
        --mandir=#{CREW_MAN_PREFIX} \
        --sbindir=#{CREW_PREFIX}/bin \
        --with-config-file-path=#{CREW_PREFIX}/etc \
-       --with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype \
        --with-libdir=#{ARCH_LIB} \
-       --with-jpeg-dir=#{CREW_PREFIX}/include \
-       --with-xpm-dir=#{CREW_PREFIX}/include/X11 \
        --with-kerberos=#{CREW_LIB_PREFIX} \
+       --with-pear=#{CREW_LIB_PREFIX}/php \
+       --with-zlib-dir=#{CREW_LIB_PREFIX} \
        --enable-bcmath \
        --enable-calendar \
        --enable-dba=shared \
        --enable-exif \
        --enable-fpm \
        --enable-ftp \
+       --enable-gd \
        --enable-intl \
        --enable-mbstring \
        --enable-mysqlnd \
@@ -114,7 +116,6 @@ class Php74 < Package
        --with-mysqli \
        --with-openssl \
        --with-pdo-mysql \
-       --with-pear \
        --with-pspell \
        --with-readline \
        --with-sodium \
@@ -131,9 +132,12 @@ class Php74 < Package
   end
 
   def self.install
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
@@ -144,6 +148,7 @@ class Php74 < Package
     FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php7-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
+    FileUtils.mv "#{CREW_DEST_PREFIX}/php/php/fpm", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.channels"
