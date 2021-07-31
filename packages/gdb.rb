@@ -19,8 +19,8 @@ class Gdb < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2-1_x86_64/gdb-10.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f1d04f35be61bc90d1d9dd6a243585cdf78d07e2d0fe256777fef2613feacda3',
-     armv7l: 'f1d04f35be61bc90d1d9dd6a243585cdf78d07e2d0fe256777fef2613feacda3',
+    aarch64: 'c95796ad149444d93297e596e4018be2a184dbb631f2cbcb050b197b5bbb0aff',
+     armv7l: 'c95796ad149444d93297e596e4018be2a184dbb631f2cbcb050b197b5bbb0aff',
        i686: 'cc16237aa00d46d9ed5fe2786e13e87b89e4a763644326bbbc5d6847c5d84395',
      x86_64: 'fa8a712a9907f7f24f8d1e1a7ef9dd3fbdbec7b4b367fdbeca4be40f689fe0db'
   })
