@@ -61,13 +61,12 @@ echo -e "\n\n${YELLOW}Doing initial setup for install in ${CREW_PREFIX}.${RESET}
 echo -e "${YELLOW}This may take a while if there are preexisting files in ${CREW_PREFIX}...${RESET}\n"
 
 # This will allow things to work without sudo
-crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
+crew_folders="bin cache doc docbook etc include lib lib/crew lib/crew/bin etc/crew etc/crew/meta tmp/crew tmp/crew/dest lib/crew/packages lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
-  if [ -d "${CREW_PREFIX}"/"${folder}" ]; then
-    echo -e "${BLUE}Resetting ownership of ${CREW_PREFIX}/${folder}${RESET}"
-    sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
-  fi
+  mkdir -p "${CREW_PREFIX}"/"${folder}"
+  echo -e "${BLUE}Resetting ownership of ${CREW_PREFIX}/${folder}${RESET}"
+  sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
 done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
@@ -76,9 +75,6 @@ if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
   [ -L /usr/local/var ] && sudo rm -f /usr/local/var
   [ -L /usr/local/local ] && sudo rm -f /usr/local/local
 fi
-
-# prepare directories
-mkdir -p "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}"
 
 # download repository
 curl -L\# "${URL}/archive/${BRANCH}.tar.gz" |\
@@ -107,10 +103,6 @@ if [ ! -f device.json ]; then
     --arg key1 'installed_packages' \
     '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 fi
-echo -e "\n${YELLOW}Downloading information for Bootstrap packages...${RESET}"
-echo -e "${GRAY}"
-(cd "${CREW_LIB_PATH}"/packages && curl -#OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
-echo -e "${RESET}"
 
 for package in $BOOTSTRAP_PACKAGES; do
   # use built-in regex to extract
@@ -172,6 +164,8 @@ function extract_install () {
     fi
     echo -e "${BLUE}Installing ${1} ...${RESET}"
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
+    pwd
+    ls -aFl
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
