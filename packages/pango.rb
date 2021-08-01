@@ -32,7 +32,7 @@ class Pango < Package
   depends_on 'libx11'
   depends_on 'libxft'
   depends_on 'libxrender'
-  depends_on 'six'
+  depends_on 'py3_six'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

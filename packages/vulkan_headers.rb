@@ -3,24 +3,22 @@ require 'package'
 class Vulkan_headers < Package
   description 'Vulkan header files'
   homepage 'https://github.com/KhronosGroup/Vulkan-Headers'
-  @_ver = '1.2.171'
+  @_ver = '1.2.184'
   version @_ver
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/KhronosGroup/Vulkan-Headers/archive/v#{@_ver}.tar.gz"
-  source_sha256 'b86266544ab1d6780c5ee6cdf10f24ba9ec4c97bc83d2229e0fb8142c36e52ac'
+  source_sha256 'de1889ff550c1a78e752fbdf71117ac319fb674b0abe080a4e6e9053da2aea85'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_armv7l/vulkan_headers-1.2.171-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_i686/vulkan_headers-1.2.171-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.171_x86_64/vulkan_headers-1.2.171-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.184_armv7l/vulkan_headers-1.2.184-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.184_armv7l/vulkan_headers-1.2.184-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.184_x86_64/vulkan_headers-1.2.184-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f0795e78f27c10ab4180743b4f1f46b566007da4fd348b4cdf6e35ee4c3fb72b',
-     armv7l: 'f0795e78f27c10ab4180743b4f1f46b566007da4fd348b4cdf6e35ee4c3fb72b',
-       i686: '285dbac0bfd1e95262b2d60a0b9ff3dc5c300b794777871552d104a4e7f68549',
-     x86_64: 'f054e13240784b5c989d0a046a36dcffed794b1d6cbd3ff3998c2d70d32b0234'
+    aarch64: 'b17aa592829e1ff8810c92f2cf28bf0b77f198bf0d5d71c5fcc45c12206dc2f8',
+     armv7l: 'b17aa592829e1ff8810c92f2cf28bf0b77f198bf0d5d71c5fcc45c12206dc2f8',
+     x86_64: '276679a7d8b8061198fe4262e89eca1f745208ea23e26dea99e2510d668795b0'
   })
 
   def self.build

@@ -23,6 +23,7 @@ class Py3_pip < Package
      x86_64: '794210d8b23bf7f3ecf2377eee166da6acc3e1cfaa8db7ddbff1b4ec29d60007'
   })
 
+  depends_on 'python3'
   depends_on 'py3_setuptools'
   depends_on 'py3_wheel'
 

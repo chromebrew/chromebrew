@@ -95,21 +95,37 @@ Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after ins
 
     crew install --keep <package1> [<package2> ...]
 
+Recently Upgraded Packages
+--------------------------
+
+| Name | Description | Date Upgraded | Version |
+|:---|:---|:---|:---|
+| stack | The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced. | 2021-07-29 | 2.5.1 |
+| openssl | The Open Source toolkit for Secure Sockets Layer and Transport Layer Security | 2021-07-29 | 1.1.1k-3 |
+| urlwatch | A tool for monitoring webpages for updates | 2021-07-29 | 2.23-1 |
+| mypaint | MyPaint is a simple drawing and painting program. | 2021-07-29 | 2.0.1 |
+| mypaint_brushes | Brushes used by MyPaint and other software using libmypaint. | 2021-07-29 | 2.0.2 |
+| itstools | Translate XML with PO files using W3C Internationalization Tag Set rules | 2021-07-29 | 2.0.6-2 |
+| ansible | Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs. | 2021-07-29 | 3.3.0 |
+| pycairo | Dummy package for py3_pycairo. | 2021-07-29 | 1 |
+| libmypaint | Libmypaint is MyPaint\'s brushstroke rendering code, in a form that can be used by other programs. | 2021-07-29 | 1.6.1 |
+| six | Dummy package for py3_six | 2021-07-29 | 1 |
+
 Latest Packages
 ---------------
 
 | Name | Description | Date Added |
 |:---|:---|:---|
-| b2 | B2 makes it easy to build C++ projects, everywhere. | 2021-07-01 |
-| shells | Launch your Shells™ virtual desktop | 2021-06-25 |
-| codelobster | Free cross-platform IDE for PHP/HTML/CSS/JavaScript development | 2021-06-23 |
-| ltrace | ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process. | 2021-06-22 |
-| exodus | Exodus is a desktop crypto wallet | 2021-06-21 |
-| snowflake | Snowflake (aka Muon) is a graphical SSH client. | 2021-06-19 |
-| fd | A simple, fast and user-friendly alternative to find | 2021-06-08 |
-| rdfind | Redundant data find - a program that finds duplicate files. | 2021-06-07 |
-| libcurl | Command line tool and library for transferring data with URLs. | 2021-06-07 |
-| pdfchain | PDF Chain is a graphical user interface for the PDF Toolkit (PDFtk). | 2021-06-01 |
+| py3_secretstorage | Python bindings to Freedesktop.org Secret Service API | 2021-07-29 |
+| py3_openssl | PyOpenSSL is a Python wrapper module around the OpenSSL library. | 2021-07-29 |
+| py3_oci | Oracle Cloud Infrastructure Python SDK | 2021-07-29 |
+| py3_keyring | Keyring stores and accesses your passwords safely. | 2021-07-29 |
+| py3_impacket | Impacket provides network protocols constructors and dissectors. | 2021-07-29 |
+| py3_ebooklib | Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format. | 2021-07-29 |
+| py3_cryptography | Cryptography provides cryptographic recipes and primitives to Python developers. | 2021-07-29 |
+| oci_cli | Command Line Interface for Oracle Cloud Infrastructure | 2021-07-29 |
+| ansible_base | Ansible base libraries and functions. | 2021-07-29 |
+| py3_zipp | Zipp is a backport of pathlib-compatible object wrapper for zip files. | 2021-07-26 |
 
 Chat with us!
 -------------

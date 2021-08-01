@@ -43,7 +43,7 @@ class Gtk2 < Package
   depends_on 'libxrender'
   depends_on 'pango'
   depends_on 'shared_mime_info'
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
 
   def self.build
     system "env CFLAGS='-pipe -flto=auto' \

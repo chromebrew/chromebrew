@@ -28,7 +28,7 @@ class Harfbuzz < Package
   depends_on 'gobject_introspection'
   depends_on 'ragel' => :build
   depends_on 'freetype_sub'
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
   depends_on 'graphite' => :build
 
   def self.build

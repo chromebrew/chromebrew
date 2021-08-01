@@ -1,6 +1,3 @@
-# Adapted from Arch Linux samba PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/samba/trunk/PKGBUILD
-
 require 'package'
 
 class Smbclient < Package
@@ -40,6 +37,8 @@ class Smbclient < Package
   depends_on 'lmdb' => :build
   depends_on 'perl_parse_yapp' => :build
   depends_on 'popt'
+  depends_on 'py3_markdown'
+  depends_on 'py3_dnspython'
   depends_on 'talloc'
   depends_on 'tdb'
   depends_on 'tevent'
@@ -52,8 +51,6 @@ class Smbclient < Package
                        smbcquotas smbget net nmblookup smbtar]
   @smbclient_pkgconfig = %w[smbclient netapi wbclient]
 
-  @python_deps = %w[Markdown dnspython]
-
   @xml_catalog_files = ENV['XML_CATALOG_FILES']
 
   def self.patch
@@ -63,17 +60,9 @@ class Smbclient < Package
     system "sed -i 's,file:///etc/xml/catalog,#{@xml_catalog_files},g' buildtools/wafsamba/wafsamba.py"
   end
 
-  def self.prebuild
-    @python_deps.each do |item|
-      system "pip install --upgrade #{item}"
-    end
-  end
-
   def self.build
     system './configure --help'
-    system "env CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto=auto' \
+    system "env #{CREW_ENV_OPTIONS}
       ./configure --enable-fhs \
       #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc \
@@ -105,9 +94,6 @@ class Smbclient < Package
     FileUtils.mkdir_p 'staging'
     system 'make V=1 DESTDIR=staging install'
     FileUtils.cp 'source3/script/smbtar', "staging/#{CREW_PREFIX}/bin/"
-    @python_deps.each do |item|
-      system "pip uninstall --yes #{item}"
-    end
   end
 
   def self.install

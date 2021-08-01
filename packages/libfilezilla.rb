@@ -3,23 +3,21 @@ require 'package'
 class Libfilezilla < Package
   description 'libfilezilla is a small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs.'
   homepage 'https://lib.filezilla-project.org/'
-  version '0.26-1'
+  version '0.30.0'
   license 'GPL-2+'
-  compatibility 'all'
-  source_url 'https://download.filezilla-project.org/libfilezilla/libfilezilla-0.26.0.tar.bz2'
-  source_sha256 '17ed226593e8e466ce3c3f8ce583b36c79f163189ead54d631613cc3da5c80bd'
+  compatibility 'aarch64,armv7l,x86_64'
+  source_url 'https://download.filezilla-project.org/libfilezilla/libfilezilla-0.30.0.tar.bz2'
+  source_sha256 'c16df6dacdb2ded4f6e05141b4681eda91a5a1ba052900a24a9f84e65a50dc40'
 
   binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.26-1_armv7l/libfilezilla-0.26-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.26-1_armv7l/libfilezilla-0.26-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.26-1_i686/libfilezilla-0.26-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.26-1_x86_64/libfilezilla-0.26-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.30.0_armv7l/libfilezilla-0.30.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.30.0_armv7l/libfilezilla-0.30.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.30.0_x86_64/libfilezilla-0.30.0-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-     aarch64: 'feed1d31cf4d1939190e38d6649610250b76dd8242adfd644672d6e2530c5d66',
-      armv7l: 'feed1d31cf4d1939190e38d6649610250b76dd8242adfd644672d6e2530c5d66',
-        i686: '29cc4771df9bf63a0723ec43f1d5fa18ba1e17c93543888ba3fc6a2811d9910b',
-      x86_64: 'c442aadbe2e23252a3abcdcef79b0e771c29f4d940541d263f32dcddcabc030f',
+    aarch64: '377a1c8a97c728d5b920099ef9dfc45e5d28fa66d937cf67c756a8876f9f32df',
+     armv7l: '377a1c8a97c728d5b920099ef9dfc45e5d28fa66d937cf67c756a8876f9f32df',
+     x86_64: '7fe37df89a8d984beb1b875c03f6cd51efec0003472dc9fcdfdec9d5a35d488f',
   })
 
   depends_on 'p11kit'
@@ -29,8 +27,7 @@ class Libfilezilla < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

@@ -31,15 +31,9 @@ class Gdk_pixbuf < Package
   depends_on 'libtiff' # R
   depends_on 'libwebp' => :build
   depends_on 'pango' => :build
-  depends_on 'six' => :build
-
-  @python_deps = %w[Markdown typogrify]
-
-  def self.prebuild
-    @python_deps.each do |item|
-      system "pip install --upgrade #{item}"
-    end
-  end
+  depends_on 'py3_six' => :build
+  depends_on 'py3_markdown' => :build
+  depends_on 'py3_typogrify' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
@@ -50,15 +44,11 @@ class Gdk_pixbuf < Package
       -Ddebug=false \
       -Dman=true \
       builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-    @python_deps.each do |item|
-      system "pip uninstall --yes #{item}"
-    end
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     loader_dir = "#{CREW_DEST_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders"
     FileUtils.mkdir_p loader_dir
     system "touch #{loader_dir}.cache"

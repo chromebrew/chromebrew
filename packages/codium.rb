@@ -3,17 +3,17 @@ require 'package'
 class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.57.1'
+  version '1.58.2'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"
-    source_sha256 '7af54a051a856578a13bb52f4d318fea29b75410706773dd2d3918a4e0f2c365'
+    source_sha256 '0ecd273f3b9f55680060336972aa7058b2dc75dfcf4849e50e2e0033755d42c6'
     @arch = 'arm'
   when 'x86_64'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
-    source_sha256 'b2c4ee5384e5dd0c87cbc1925b7c92ad4495e6bf633aa42d033cfdeced87439b'
+    source_sha256 '48462b95b74d2dc279b4ed9dd593fdd80dca4656574069cccb78d8075f610486'
     @arch = 'x64'
   end
 
@@ -45,6 +45,12 @@ class Codium < Package
   depends_on 'sommelier'
 
   def self.install
+    ENV['CREW_SHRINK_ARCHIVE'] = '0'
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"

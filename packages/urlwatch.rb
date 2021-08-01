@@ -3,28 +3,38 @@ require 'package'
 class Urlwatch < Package
   description 'A tool for monitoring webpages for updates'
   homepage 'https://thp.io/2008/urlwatch/'
-  version '2.23'
+  @_ver = '2.23'
+  version "#{@_ver}-1"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/thp/urlwatch/archive/2.23.tar.gz'
-  source_sha256 'b61997ec6229b2cb22b7121d0b666da91e524e212d126f55cd939d230daa5887'
+  source_url 'https://github.com/thp/urlwatch.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_armv7l/urlwatch-2.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_armv7l/urlwatch-2.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_i686/urlwatch-2.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23_x86_64/urlwatch-2.23-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-1_armv7l/urlwatch-2.23-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-1_armv7l/urlwatch-2.23-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-1_x86_64/urlwatch-2.23-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1f17b72ee478889438aa358a966b649523793f1c5c97fd19b4eaddaa5f75f7ed',
-     armv7l: '1f17b72ee478889438aa358a966b649523793f1c5c97fd19b4eaddaa5f75f7ed',
-       i686: '66a0c448752ed7a144e6e73967fb600d5f2784aab59b49279650a156d4cb8b92',
-     x86_64: '9d2629ab5d1172e48eb97bd074c5156a6fafe75d1f11a698a85a6cc84a87934c'
+    aarch64: 'f023114e10a107a326a2e813a937d404544c6e80c52720c70ecf556ecc63df54',
+     armv7l: 'f023114e10a107a326a2e813a937d404544c6e80c52720c70ecf556ecc63df54',
+     x86_64: 'a97f63ace9100a68c71a6c1cada31a65ed47d695367fe6cfff433141f8dffd17'
   })
 
+  depends_on 'py3_lxml'
+  depends_on 'py3_cssselect'
+  depends_on 'py3_minidb'
+  depends_on 'py3_pyyaml'
+  depends_on 'py3_requests'
+  depends_on 'py3_appdirs'
+  depends_on 'py3_keyring'
+  depends_on 'py3_setuptools' => :build
+
+  def self.build
+    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+  end
+
   def self.install
-    system "CRYPTOGRAPHY_DONT_BUILD_RUST=1 pip3 install \
-           --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -r requirements.txt"
-    system "python3 setup.py install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR}"
+    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
   end
 end
