@@ -3,11 +3,11 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '4.2.0'
+  version '6.0.0'
   license 'GPL-2, LGPL-2 and BSD-2'
   compatibility 'all'
-  source_url 'https://download.qemu.org/qemu-4.2.0.tar.xz'
-  source_sha256 'd3481d4108ce211a053ef15be69af1bdd9dde1510fda80d92be0f6c3e98768f0'
+  source_url 'https://download.qemu.org/qemu-6.0.0.tar.xz'
+  source_sha256 '87bc1a471ca24b97e7005711066007d443423d19aacda3d442558ae032fa30b9'
 
   binary_url ({
 
@@ -30,15 +30,30 @@ class Qemu < Package
   depends_on 'pixman'
   depends_on 'hicolor_icon_theme'
 
+
+  @_virgl = <<~OPT if File.exist?("#{CREW_META_PATH}/virglrenderer.filelist")
+    --enable-virglrenderer \
+    --enable-opengl
+  OPT
+ 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--disable-stack-protector"
-    system 'make'
+    system <<~BUILD
+      env #{CREW_ENV_OPTIONS} \
+      ./configure \
+        #{CREW_OPTIONS} \
+        #{@_virgl} \
+        --enable-kvm \
+        --enable-system \
+        --enable-modules
+    BUILD
+    # --enable-gtk
+    # --enable-sdl
+    # --disable-stack-protector
+
+    system 'ninja -C build'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 end
