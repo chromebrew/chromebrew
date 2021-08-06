@@ -6,7 +6,7 @@ class Vulkan_headers < Package
   @_ver = '1.2.184'
   version @_ver
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url "https://github.com/KhronosGroup/Vulkan-Headers/archive/v#{@_ver}.tar.gz"
   source_sha256 'de1889ff550c1a78e752fbdf71117ac319fb674b0abe080a4e6e9053da2aea85'
 
