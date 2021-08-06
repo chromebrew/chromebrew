@@ -6,7 +6,7 @@ class Vulkan_icd_loader < Package
   @_ver = '1.2.184'
   version @_ver
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url "https://github.com/KhronosGroup/Vulkan-Loader/archive/v#{@_ver}.tar.gz"
   source_sha256 '61f2cae1c47f38e17b6a2e578cf247041d733a2db364d6e09f4366cc493aec73'
 
