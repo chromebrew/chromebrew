@@ -1,7 +1,7 @@
 require 'package'
 
 class Py3_secretstorage < Package
-  description 'Jeepney is a low-level, pure Python DBus protocol wrapper.'
+  description 'Python bindings to Freedesktop.org Secret Service API'
   homepage 'https://secretstorage.readthedocs.io/'
   @_ver = '3.3.1'
   version @_ver
