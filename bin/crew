@@ -806,6 +806,8 @@ def unpack(meta)
       # Use `extract_dir` for binary distribution
       target_dir = @extract_dir
     end
+    # Remove tarball to save space.
+    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
   end
   return CREW_BREW_DIR + target_dir
 end
@@ -898,14 +900,19 @@ def prepare_package(destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check for FHS3 compliance
+    puts "Checking for FHS3 compliance..."
+    @_errors = 0
     @fhs_compliant_prefix = ['bin', 'etc', 'include', 'lib', 'libexec', 'opt', 'sbin', 'share', 'var']
     @fhs_compliant_prefix.append(ARCH_LIB) if ARCH_LIB == 'lib64'
-    @_abort_fhs = 0
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        puts "Unable to complete this build because #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
-        @_abort_fhs = 1
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY == '1'
+          puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
+        else
+          puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
+          @_errors = 1
+        end
       end
     end
 
@@ -918,19 +925,27 @@ def prepare_package(destdir)
     conflicts << %x[#{@conflictscmd}].chomp.split(" ")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      puts "Unable to complete this build since there is a conflict with the same file in another package.".lightred
+      if CREW_CONFLICTS_ONLY_ADVISORY == '1'
+        puts "Warning: There is a conflict with the same file in another package.".orange
+      else
+        puts "Error: There is a conflict with the same file in another package.".lightred
+        @_errors = 1
+      end
       pp = ''
       conflicts.each do |p, f|
-        puts "\n#{p} package conflicts below:".lightred if p != pp
-        puts f.lightred
+        if CREW_CONFLICTS_ONLY_ADVISORY == '1'
+          puts "\n#{p} package conflicts below:".orange if p != pp
+          puts f.orange
+        else
+          puts "\n#{p} package conflicts below:".lightred if p != pp
+          puts f.lightred
+        end
         pp = p
       end
-      abort unless CREW_CONFLICTS_ONLY_ADVISORY == '1'
     end
 
-    # abort if not FHS compliant
-    abort "Exiting due to above errors.".lightred unless CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY == '1' or @_abort_fhs == 0
-
+    # abort if errors encountered
+    abort "Exiting due to above errors.".lightred if @_errors == 1
 
     # create directory list
     system 'find . -type d > ../dlist'
@@ -1258,7 +1273,7 @@ def build_package(pwd)
   # therefore it is possible place time consuming tests in the check method.
   if Dir.exist? target_dir
     Dir.chdir target_dir do
-      puts 'Checking...'
+      puts 'Running tests...'
       @pkg.check
     end
   end
