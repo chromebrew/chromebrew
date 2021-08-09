@@ -7,8 +7,8 @@ class Curl < Package
   version @_ver
   license 'curl'
   compatibility 'all'
-  source_url 'https://github.com/curl/curl.git'
-  git_hashtag 'curl-' + @_ver.gsub('.','_')
+  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.','_')}/curl-#{@_ver}.tar.xz"
+  source_sha256 'be42766d5664a739c3974ee3dfbbcbe978a4ccb1fe628bb1d9b59ac79e445fb5'
 
   depends_on 'ca_certificates' => :build
   depends_on 'hashpipe' => :build
