@@ -12,13 +12,13 @@ class Jdk8 < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_armv7l/jdk8-8u301-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_armv7l/jdk8-8u301-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_i686/jdk8-8u301-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_x86_64/jdk8-8u301-chromeos-x86_64.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_x86_64/jdk8-8u301-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
     aarch64: '2d9a015c7b166433e271385fce079e10a69ce3d605f047c6607d988a263f6daa',
      armv7l: '2d9a015c7b166433e271385fce079e10a69ce3d605f047c6607d988a263f6daa',
        i686: '97e017c17b2c977bc3449b8edf06d370ec4a952d1407a5eb81a72907cfdca29a',
-     x86_64: 'ce47cd7d6630c2aa87e169c5c2e9585150895dded5b9f989c83ecd5b6a1d9e73',
+     x86_64: 'edb2abc91c37ce7a1378a9e40e31116528037708df49aad64dccc18b9eb14b2c',
   })
 
   def self.preflight
