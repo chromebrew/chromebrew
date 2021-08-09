@@ -14,16 +14,58 @@ class Curl < Package
   depends_on 'hashpipe' => :build
   depends_on 'libunbound' => :build
   depends_on 'musl' => :build
-  depends_on 'py3_pip' => :build
   depends_on 'rust' => :build
   depends_on 'valgrind' => :build
+
+  def self.prebuild
+    FileUtils.mkdir_p 'deproot/include'
+    FileUtils.mkdir_p 'deproot/lib'
+    @builddirs = ['zlib', 'zstd', 'brotli', 'idn2', 'ssl', 'libssh', 'nghttp2']
+    @builddirs.each do |builddir|
+      FileUtils.mkdir_p "build/#{builddir}"
+    end
+
+    puts "Downloading supporting libraries...".yellow
+    Dir.chdir 'build/zlib' do
+      system 'curl -#L https://zlib.net/zlib-1.2.11.tar.gz | \
+        hashpipe sha256 c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1 | \
+        tar xz --strip-components=1'
+    end
+    Dir.chdir 'build/zstd' do
+      system 'curl -#L https://github.com/facebook/zstd/archive/v1.5.0.tar.gz | \
+        hashpipe sha256 0d9ade222c64e912d6957b11c923e214e2e010a18f39bec102f572e693ba2867 | \
+        tar xz --strip-components=1'
+    end
+    Dir.chdir 'build/brotli' do
+      system 'curl -#L https://github.com/google/brotli/archive/v1.0.9.tar.gz | \
+        hashpipe sha256 f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46 | \
+        tar xz --strip-components=1'
+    end
+    Dir.chdir 'build/idn2' do
+      system 'curl -#L https://ftpmirror.gnu.org/libidn/libidn2-2.3.2.tar.gz | \
+        hashpipe sha256 76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91 | \
+        tar xz --strip-components=1'
+    end
+    Dir.chdir 'build/ssl' do
+      system 'curl -#L https://www.openssl.org/source/openssl-1.1.1k.tar.gz | \
+        hashpipe sha256 892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5 | \
+        tar xz --strip-components=1'
+    end
+    Dir.chdir 'build/libssh' do
+      system 'curl -#L https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz | \
+       hashpipe sha256 acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718 | \
+        tar xJ --strip-components=1'
+    end
+    Dir.chdir 'build/idn2' do
+      system 'curl -#L https://github.com/nghttp2/nghttp2/releases/download/v1.44.0/nghttp2-1.44.0.tar.bz2 | \
+        hashpipe sha256 989971276517a1c9ed330b779c34cf02d99da3b85d156eb297f42b1b7227b297 | \
+        tar xj --strip-components=1'
+    end
+  end
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
-    FileUtils.mkdir_p 'build'
-    FileUtils.mkdir_p 'deproot/include'
-    FileUtils.mkdir_p 'deproot/lib'
     Dir.chdir 'deproot' do
       FileUtils.ln_s 'lib', 'lib64'
     end
@@ -63,23 +105,17 @@ class Curl < Package
         CPPFLAGS='-I#{@deppath}/include' \
         LDFLAGS='-L#{@deppath}/#{ARCH_LIB}'"
 
-    FileUtils.mkdir_p 'build/zlib'
     Dir.chdir 'build/zlib' do
       puts 'Building Zlib.'.yellow
-      system 'curl -Ls https://zlib.net/zlib-1.2.11.tar.gz | \
-        hashpipe sha256 c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1 | \
-        tar --strip-components=1 -zxf -'
+      system 'filefix'
       system "#{@curldep_env_options} ./configure --prefix=#{@deppath} \
         --static"
       system 'make'
       system 'make install'
     end
-    FileUtils.mkdir_p 'build/zstd'
+
     Dir.chdir 'build/zstd' do
       puts 'Building Zstd.'.yellow
-      system 'curl -Ls https://github.com/facebook/zstd/archive/v1.5.0.tar.gz | \
-        hashpipe sha256 0d9ade222c64e912d6957b11c923e214e2e010a18f39bec102f572e693ba2867 | \
-        tar --strip-components=1 -zxf -'
       FileUtils.mkdir('build/cmake/builddir')
       Dir.chdir('build/cmake/builddir') do
         system "#{@curldep_cmake_options} \
@@ -90,12 +126,9 @@ class Curl < Package
       system 'samu -C build/cmake/builddir'
       system 'samu -C build/cmake/builddir install'
     end
-    FileUtils.mkdir_p 'build/brotli'
+
     Dir.chdir 'build/brotli' do
       puts 'Building Brotli.'.yellow
-      system 'curl -Ls https://github.com/google/brotli/archive/v1.0.9.tar.gz | \
-        hashpipe sha256 f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46 | \
-        tar --strip-components=1 -zxf -'
       FileUtils.mkdir('builddir')
       Dir.chdir('builddir') do
         system "#{@curldep_cmake_options} \
@@ -112,18 +145,16 @@ class Curl < Package
         end
       end
     end
-    FileUtils.mkdir_p 'build/idn2'
+
     Dir.chdir 'build/idn2' do
       puts 'Building IDN2.'.yellow
-      system 'curl -Ls https://ftpmirror.gnu.org/libidn/libidn2-2.3.1.tar.gz | \
-        hashipe sha256 8af684943836b8b53965d5f5b6714ef13c26c91eaa36ce7d242e3d21f5d40f2d | \
-        tar --strip-components=1 -zxf -'
+      system 'filefix'
       system "#{@curldep_env_options} ./configure --prefix=#{@deppath} \
         --disable-shared"
       system 'make'
       system 'make install'
     end
-    FileUtils.mkdir_p 'build/ssl'
+
     case ARCH
     when 'aarch64', 'armv7l'
       @arch_c_flags = '-march=armv7-a -mfloat-abi=hard'
@@ -138,11 +169,9 @@ class Curl < Package
       @arch_cxx_flags = ''
       @openssl_configure_target = 'linux-x86_64'
     end
+
     Dir.chdir 'build/ssl' do
       puts 'Building OpenSSL.'.yellow
-      system 'curl -Ls https://www.openssl.org/source/openssl-1.1.1k.tar.gz | \
-        hashpipe sha256 892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5 | \
-        tar --strip-components=1 -zxf -'
       system "CC=musl-gcc \
         CFLAGS='-flto -pipe -Os -fPIC #{@arch_c_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
         CXXFLAGS='-flto -pipe -Os -fPIC #{@arch_cxx_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
@@ -157,31 +186,25 @@ class Curl < Package
     end
 
     # libssh has problems linking with musl statically
-    # FileUtils.mkdir_p 'build/libssh'
-    # Dir.chdir 'build/libssh' do
-    # puts 'Building Libssh.'.yellow
-    # system 'curl -Ls https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz | \
-    #   hashpipe sha256 acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718 | \
-    #   tar --strip-components=1 -Jxf -'
-    # FileUtils.mkdir('builddir')
-    # Dir.chdir('builddir') do
-    # system "#{@curldep_cmake_options} \
+    #Dir.chdir 'build/libssh' do
+    #puts 'Building Libssh.'.yellow
+    #FileUtils.mkdir('builddir')
+    #Dir.chdir('builddir') do
+    #system "#{@curldep_cmake_options} \
     #-DWITH_EXAMPLES=OFF \
     #-DBUILD_SHARED_LIBS=OFF \
     #-DWITH_STATIC_LIB=ON \
     #-DWITH_GSSAPI=OFF \
     #-DHAVE_GLOB=0 \
-    # ../ -G Ninja"
-    # end
-    # system 'samu -C builddir'
-    # system 'samu -C builddir install'
-    # end
-    FileUtils.mkdir_p 'build/nghttp2'
+    #../ -G Ninja"
+    #end
+    #system 'samu -C builddir'
+    #system 'samu -C builddir install'
+    #end
+
     Dir.chdir 'build/nghttp2' do
       puts 'Building Nghttp2.'.yellow
-      system 'curl -Ls https://github.com/nghttp2/nghttp2/releases/download/v1.43.0/nghttp2-1.43.0.tar.gz | \
-        hashpipe sha256 45cc3ed91966551f92b31958ceca9b3a9f23ce4faf5cbedb78aa3327cd4e5907 | \
-        tar --strip-components=1 -zxf -'
+      system 'filefix'
       system "#{@curldep_env_options} ./configure --prefix=#{@deppath} \
         --enable-lib-only \
         --disable-shared \
