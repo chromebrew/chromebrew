@@ -39,8 +39,8 @@ class Libcurl < Package
     end
 
     system '[ -x configure ] || autoreconf -fvi'
-    system "env  CFLAGS='-flto=auto -pipe -Os -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
-       CXXFLAGS='-flto=auto -pipe -Os -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
+    system "env  CFLAGS='-flto=auto -pipe -Os -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
+       CXXFLAGS='-flto=auto -pipe -Os -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
        LDFLAGS='-flto=auto' LIBS='#{@krb5_static_libs} -lm -lbrotlicommon -lbrotlidec -lzstd -lz -lssl -lcrypto -lsasl2 -lxml2 -lpthread' \
        ./configure #{CREW_OPTIONS} \
       --disable-maintainer-mode \
