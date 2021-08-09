@@ -13,11 +13,13 @@ class Meson < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_armv7l/meson-0.59.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_armv7l/meson-0.59.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_i686/meson-0.59.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_x86_64/meson-0.59.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '4cdb34e921d39f0a7439543a241941d869fc4c7390e2a5c33d0cd6485996bbc6',
      armv7l: '4cdb34e921d39f0a7439543a241941d869fc4c7390e2a5c33d0cd6485996bbc6',
+       i686: 'd91ab13dcce6d3f112a9275a160baea1ec5663fb215fe717d6543fa723b69d90',
      x86_64: '9358e0c8dc83a744fc2ceb24119d918dc5007334d9670cdf523e15e4b083d29d'
   })
 
