@@ -1040,7 +1040,8 @@ end
 
 def resolve_dependencies_and_install
   @resolve_dependencies_and_install = 1
-  unless @pkg.is_fake?
+  preflight_fake_packages = ['hunspell', 'imagemagick', 'jdk', 'php']
+  unless @pkg.is_fake? and ! preflight_fake_packages.include?(@pkg.name)
     # Process preflight block to see if package should even
     # be downloaded or installed.
     pre_flight
