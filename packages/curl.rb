@@ -3,25 +3,12 @@ require 'package'
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.77.0'
-  version "#{@_ver}-1"
+  @_ver = '7.78.0'
+  version @_ver
   license 'curl'
   compatibility 'all'
   source_url 'https://github.com/curl/curl.git'
-  git_hashtag 'curl-7_77_0'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_armv7l/curl-7.77.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_armv7l/curl-7.77.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_i686/curl-7.77.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_x86_64/curl-7.77.0-1-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: '439fb6468782be5842b4f7a3c2854e5026d3eaf3a99023dd3d82b540458ec110',
-     armv7l: '439fb6468782be5842b4f7a3c2854e5026d3eaf3a99023dd3d82b540458ec110',
-       i686: '98479b4d6c3d9deee57fb261b58c2a327ebdfaa15a14eead2d979a26e2f2c74d',
-     x86_64: '07d49c2d5ad27ccaeba9f50b73b5c0078a1d0c57902797e0b5cc2e98d4c1f2b9'
-  })
+  git_hashtag 'curl-' + @_ver.gsub('.','_')
 
   depends_on 'ca_certificates' => :build
   depends_on 'hashpipe' => :build
@@ -52,8 +39,8 @@ class Curl < Package
     end
 
     @curldep_cmake_options = "CC=musl-gcc \
-          CFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-          CXXFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+          CFLAGS='-flto -pipe -Os -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+          CXXFLAGS='-flto -pipe -Os -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
           CPPFLAGS='-I#{@deppath}/include' \
           LDFLAGS='-L#{@deppath}/#{ARCH_LIB}' \
           cmake \
@@ -62,7 +49,7 @@ class Curl < Package
           -DCMAKE_C_COMPILER=`which musl-gcc` \
           -DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON \
           -DINCLUDE_DIRECTORIES=#{@deppath}/include \
-          -DCMAKE_C_FLAGS='-O3 -fPIC -pipe -flto -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+          -DCMAKE_C_FLAGS='-Os -fPIC -pipe -flto -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
           -DCMAKE_EXE_LINKER_FLAGS='-flto' \
           -DCMAKE_SHARED_LINKER_FLAGS='-flto' \
           -DCMAKE_STATIC_LINKER_FLAGS='-flto' \
@@ -71,15 +58,15 @@ class Curl < Package
           -DCMAKE_BUILD_TYPE=Release"
 
     @curldep_env_options = "CC=musl-gcc \
-        CFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-        CXXFLAGS='-flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans#{@arch_ssp_cflags}' \
+        CFLAGS='-flto -pipe -Os -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+        CXXFLAGS='-flto -pipe -Os -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans#{@arch_ssp_cflags}' \
         CPPFLAGS='-I#{@deppath}/include' \
         LDFLAGS='-L#{@deppath}/#{ARCH_LIB}'"
 
     FileUtils.mkdir_p 'build/zlib'
     Dir.chdir 'build/zlib' do
       puts 'Building Zlib.'.yellow
-      system 'curl -Ls http://zlib.net/zlib-1.2.11.tar.gz | \
+      system 'curl -Ls https://zlib.net/zlib-1.2.11.tar.gz | \
         hashpipe sha256 c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1 | \
         tar --strip-components=1 -zxf -'
       system "#{@curldep_env_options} ./configure --prefix=#{@deppath} \
@@ -100,8 +87,8 @@ class Curl < Package
         -DZSTD_BUILD_SHARED=OFF \
         ../ -G Ninja"
       end
-      system 'ninja -C build/cmake/builddir'
-      system 'ninja -C build/cmake/builddir install'
+      system 'samu -C build/cmake/builddir'
+      system 'samu -C build/cmake/builddir install'
     end
     FileUtils.mkdir_p 'build/brotli'
     Dir.chdir 'build/brotli' do
@@ -116,8 +103,8 @@ class Curl < Package
           -DWITH_STATIC_LIB=ON \
         ../ -G Ninja"
       end
-      system 'ninja -C builddir'
-      system 'ninja -C builddir install'
+      system 'samu -C builddir'
+      system 'samu -C builddir install'
       Dir.chdir "#{@deppath}/#{ARCH_LIB}" do
         @brotlilibs = %w[libbrotlidec libbrotlienc libbrotlicommon]
         @brotlilibs.each do |lib|
@@ -128,7 +115,7 @@ class Curl < Package
     FileUtils.mkdir_p 'build/idn2'
     Dir.chdir 'build/idn2' do
       puts 'Building IDN2.'.yellow
-      system 'curl -Ls http://ftp.gnu.org/gnu/libidn/libidn2-2.3.1.tar.gz | \
+      system 'curl -Ls https://ftpmirror.gnu.org/libidn/libidn2-2.3.1.tar.gz | \
         hashipe sha256 8af684943836b8b53965d5f5b6714ef13c26c91eaa36ce7d242e3d21f5d40f2d | \
         tar --strip-components=1 -zxf -'
       system "#{@curldep_env_options} ./configure --prefix=#{@deppath} \
@@ -157,8 +144,8 @@ class Curl < Package
         hashpipe sha256 892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5 | \
         tar --strip-components=1 -zxf -'
       system "CC=musl-gcc \
-        CFLAGS='-flto -pipe -O3 -fPIC #{@arch_c_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-        CXXFLAGS='-flto -pipe -O3 -fPIC #{@arch_cxx_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+        CFLAGS='-flto -pipe -Os -fPIC #{@arch_c_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+        CXXFLAGS='-flto -pipe -Os -fPIC #{@arch_cxx_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
         CPPFLAGS='-I#{@deppath}/include' \
         LDFLAGS='-L#{@deppath}/#{ARCH_LIB} -flto' \
         ./Configure \
@@ -186,8 +173,8 @@ class Curl < Package
     #-DHAVE_GLOB=0 \
     # ../ -G Ninja"
     # end
-    # system 'ninja -C builddir'
-    # system 'ninja -C builddir install'
+    # system 'samu -C builddir'
+    # system 'samu -C builddir install'
     # end
     FileUtils.mkdir_p 'build/nghttp2'
     Dir.chdir 'build/nghttp2' do
@@ -209,8 +196,8 @@ class Curl < Package
     system "env CC=musl-gcc \
       PKG_CONFIG='pkg-config --static' \
       CPPFLAGS='-I#{@deppath}/include' \
-      CFLAGS='-flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-      CXXFLAGS='-flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+      CFLAGS='-flto -pipe -Os -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+      CXXFLAGS='-flto -pipe -Os -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
       LDFLAGS='-L#{@deppath}/#{ARCH_LIB} -flto -static -Wl,--no-as-needed -ldl' \
       LIBS='#{@deppath}/#{ARCH_LIB}/libssl.a #{@deppath}/#{ARCH_LIB}/libcrypto.a #{@deppath}/#{ARCH_LIB}/libbrotlicommon.a #{@deppath}/#{ARCH_LIB}/libbrotlidec.a #{@deppath}/#{ARCH_LIB}/libidn2.a #{@deppath}/#{ARCH_LIB}/libnghttp2.a  #{@deppath}/#{ARCH_LIB}/libz.a #{@deppath}/#{ARCH_LIB}/libzstd.a -L#{@deppath}/#{ARCH_LIB}' \
       CURL_LIBRARY_PATH=#{@deppath}/#{ARCH_LIB} \
