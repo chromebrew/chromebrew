@@ -752,7 +752,12 @@ end
 
 def download_extra(target_dir)
   urls = @pkg.get_extra_download
-  puts "Downloading extra files".lightgreen unless urls.empty? or urls.nil?
+
+  if urls.empty? or urls.nil?
+    return
+  else
+    puts "Downloading extra files".lightgreen
+  end
 
   Dir.chdir target_dir do
     urls.each_pair {|key, value|
@@ -778,7 +783,7 @@ def download_extra(target_dir)
       end
     }
   end
-  puts "Extra files downloaded.".lightgreen unless urls.empty? or urls.nil?
+  puts "Extra files downloaded.".lightgreen
 end
 
 def unpack(meta)
