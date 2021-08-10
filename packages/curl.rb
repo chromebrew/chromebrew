@@ -10,17 +10,6 @@ class Curl < Package
   source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
   source_sha256 'be42766d5664a739c3974ee3dfbbcbe978a4ccb1fe628bb1d9b59ac79e445fb5'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_armv7l/curl-7.78.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_armv7l/curl-7.78.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_x86_64/curl-7.78.0-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: 'd17b29109e29ead28138ca614b118574414dde2cb4b71e4a608e42441b85d3ed',
-     armv7l: 'd17b29109e29ead28138ca614b118574414dde2cb4b71e4a608e42441b85d3ed',
-     x86_64: 'ef555c818ee539f884e19801d868168761b4de4af1849c9d0ce47091f3ca31bc'
-  })
-
   depends_on 'ca_certificates' => :build
   depends_on 'hashpipe' => :build
   depends_on 'libunbound' => :build
@@ -92,8 +81,8 @@ class Curl < Package
     end
 
     @curldep_cmake_options = "CC=musl-gcc \
-          CFLAGS='-flto -pipe -Os -fPIC -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-          CXXFLAGS='-flto -pipe -Os -fPIC -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+          CFLAGS='-flto -pipe -Os -fPIC -fuse-ld=bfd -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+          CXXFLAGS='-flto -pipe -Os -fPIC -fuse-ld=bfd -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
           CPPFLAGS='-I#{@deppath}/include' \
           LDFLAGS='-L#{@deppath}/#{ARCH_LIB}' \
           cmake \
@@ -102,7 +91,7 @@ class Curl < Package
           -DCMAKE_C_COMPILER=`which musl-gcc` \
           -DCMAKE_INCLUDE_DIRECTORIES_BEFORE=ON \
           -DINCLUDE_DIRECTORIES=#{@deppath}/include \
-          -DCMAKE_C_FLAGS='-Os -fPIC -pipe -flto -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+          -DCMAKE_C_FLAGS='-Os -fPIC -pipe -flto -fuse-ld=bfd -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
           -DCMAKE_EXE_LINKER_FLAGS='-flto' \
           -DCMAKE_SHARED_LINKER_FLAGS='-flto' \
           -DCMAKE_STATIC_LINKER_FLAGS='-flto' \
@@ -111,8 +100,8 @@ class Curl < Package
           -DCMAKE_BUILD_TYPE=Release"
 
     @curldep_env_options = "CC=musl-gcc \
-        CFLAGS='-flto -pipe -Os -fPIC -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-        CXXFLAGS='-flto -pipe -Os -fPIC -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans#{@arch_ssp_cflags}' \
+        CFLAGS='-flto -pipe -Os -fPIC -fuse-ld=bfd -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+        CXXFLAGS='-flto -pipe -Os -fPIC -fuse-ld=bfd -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans#{@arch_ssp_cflags}' \
         CPPFLAGS='-I#{@deppath}/include' \
         LDFLAGS='-L#{@deppath}/#{ARCH_LIB}'"
 
@@ -184,8 +173,8 @@ class Curl < Package
     Dir.chdir 'build/ssl' do
       puts 'Building OpenSSL.'.yellow
       system "CC=musl-gcc \
-        CFLAGS='-flto -pipe -Os -fuse-ld=gold -fPIC #{@arch_c_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-        CXXFLAGS='-flto -pipe -Os -fuse-ld=gold -fPIC #{@arch_cxx_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+        CFLAGS='-flto -pipe -Os -fuse-ld=bfd -fPIC #{@arch_c_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+        CXXFLAGS='-flto -pipe -Os -fuse-ld=bfd -fPIC #{@arch_cxx_flags} -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
         CPPFLAGS='-I#{@deppath}/include' \
         LDFLAGS='-L#{@deppath}/#{ARCH_LIB} -flto' \
         ./Configure \
@@ -230,8 +219,8 @@ class Curl < Package
     system "env CC=musl-gcc \
       PKG_CONFIG='pkg-config --static' \
       CPPFLAGS='-I#{@deppath}/include' \
-      CFLAGS='-flto -pipe -Os -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
-      CXXFLAGS='-flto -pipe -Os -fuse-ld=gold -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags}' \
+      CFLAGS='-flto -pipe -Os -fuse-ld=bfd -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags} -static' \
+      CXXFLAGS='-flto -pipe -Os -fuse-ld=bfd -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_ssp_cflags} -static' \
       LDFLAGS='-L#{@deppath}/#{ARCH_LIB} -flto -static -Wl,--no-as-needed -ldl' \
       LIBS='#{@deppath}/#{ARCH_LIB}/libssl.a #{@deppath}/#{ARCH_LIB}/libcrypto.a #{@deppath}/#{ARCH_LIB}/libbrotlicommon.a #{@deppath}/#{ARCH_LIB}/libbrotlidec.a #{@deppath}/#{ARCH_LIB}/libidn2.a #{@deppath}/#{ARCH_LIB}/libnghttp2.a  #{@deppath}/#{ARCH_LIB}/libz.a #{@deppath}/#{ARCH_LIB}/libzstd.a -L#{@deppath}/#{ARCH_LIB}' \
       CURL_LIBRARY_PATH=#{@deppath}/#{ARCH_LIB} \
