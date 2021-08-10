@@ -22,9 +22,7 @@ class Oneko < Package
   extra_url 'https://bouncer.gentoo.org/fetch/root/all/distfiles/oneko-1.2-dog.png' => '5ca2d41b5538618196cfe9e40dd75856fde77fe35cba99ed9b2eacf1fb0e5502'
 
   def self.patch
-    # Unpack the patches
-    system "tar xf oneko_1.2.sakura.6-15.debian.tar.xz"
-    # Patch the patches
+    system "tar xf oneko_#{@_ver}.debian.tar.xz"
     system "for patch in $(cat debian/patches/series); do patch -p 1 -i debian/patches/${patch}; done"
   end
 
