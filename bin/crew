@@ -750,6 +750,36 @@ def download
   return {source: source, filename: filename}
 end
 
+def download_extra(target_dir)
+  urls = @pkg.get_extra_download
+  puts "Downloading extra files".lightgreen unless urls.empty? or urls.nil?
+
+  Dir.chdir target_dir do
+    urls.each_pair {|key, value|
+      case key
+      when /\.git$/i
+        # Don't let git recognize a subrepository
+        system "echo '#{key.split('/')[-1].gsub('.git','')}' >> .gitignore"
+        Dir.mkdir key.split('/')[-1].gsub('.git','')
+        Dir.chdir key.split('/')[-1].gsub('.git','') do
+          system 'git init'
+          system 'git config advice.detachedHead false'
+          system 'git config init.defaultBranch master'
+          system "git remote add origin #{key}", exception: true
+          system "git fetch --depth 1 origin #{value}", exception: true
+          system 'git checkout FETCH_HEAD'
+          system 'git submodule update --init --recursive'
+        end
+      else
+        system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{key}\' --output #{key.split('/')[-1]}"
+        abort 'Checksum mismatch. :/ Try again.'.lightred unless
+            Digest::SHA256.hexdigest( File.read("#{key.split('/')[-1]}") ) == "#{value}"
+      end
+    }
+  end
+  puts "Extra files downloaded.".lightgreen unless urls.empty? or urls.nil?
+end
+
 def unpack(meta)
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
@@ -1185,6 +1215,9 @@ def install
     meta = download
     target_dir = unpack meta
     if meta[:source] == true
+
+      # download extra patch files
+      download_extra target_dir
 
       # build from source and place binaries at CREW_DEST_DIR
       # CREW_DEST_DIR contains usr/local/... hierarchy

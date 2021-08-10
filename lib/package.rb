@@ -57,6 +57,25 @@ class Package
     end
   end
 
+  def self.extra_urls
+    @extra_urls = Hash.new unless @extra_urls
+    @extra_urls
+  end
+
+  def self.extra_url (url = nil)
+    @extra_urls = Hash.new unless @extra_urls
+    if url
+      @extra_urls.merge!(url)
+    end
+    @extra_urls
+    puts url
+    puts @extra_urls
+  end
+
+  def self.get_extra_download
+    @extra_urls
+  end
+
   def self.get_extract_dir
     name + '.' + Time.now.utc.strftime("%Y%m%d%H%M%S") + '.dir'
   end
