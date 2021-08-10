@@ -760,6 +760,7 @@ def download_extra(target_dir)
       when /\.git$/i
         # Don't let git recognize a subrepository
         system "echo '#{key.split('/')[-1].gsub('.git','')}' >> .gitignore"
+        # Download repository
         Dir.mkdir key.split('/')[-1].gsub('.git','')
         Dir.chdir key.split('/')[-1].gsub('.git','') do
           system 'git init'

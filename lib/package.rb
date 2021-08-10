@@ -68,8 +68,6 @@ class Package
       @extra_urls.merge!(url)
     end
     @extra_urls
-    puts url
-    puts @extra_urls
   end
 
   def self.get_extra_download
