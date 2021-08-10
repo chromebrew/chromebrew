@@ -7,8 +7,19 @@ class Curl < Package
   version @_ver
   license 'curl'
   compatibility 'all'
-  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.','_')}/curl-#{@_ver}.tar.xz"
+  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
   source_sha256 'be42766d5664a739c3974ee3dfbbcbe978a4ccb1fe628bb1d9b59ac79e445fb5'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_armv7l/curl-7.77.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_armv7l/curl-7.77.0-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_x86_64/curl-7.78.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '439fb6468782be5842b4f7a3c2854e5026d3eaf3a99023dd3d82b540458ec110',
+     armv7l: '439fb6468782be5842b4f7a3c2854e5026d3eaf3a99023dd3d82b540458ec110',
+     x86_64: 'ef555c818ee539f884e19801d868168761b4de4af1849c9d0ce47091f3ca31bc'
+  })
 
   depends_on 'ca_certificates' => :build
   depends_on 'hashpipe' => :build
@@ -20,12 +31,12 @@ class Curl < Package
   def self.prebuild
     FileUtils.mkdir_p 'deproot/include'
     FileUtils.mkdir_p 'deproot/lib'
-    @builddirs = ['zlib', 'zstd', 'brotli', 'idn2', 'ssl', 'libssh', 'nghttp2']
+    @builddirs = %w[zlib zstd brotli idn2 ssl libssh nghttp2]
     @builddirs.each do |builddir|
       FileUtils.mkdir_p "build/#{builddir}"
     end
 
-    puts "Downloading supporting libraries.".yellow
+    puts 'Downloading supporting libraries.'.yellow
     Dir.chdir 'build/zlib' do
       system 'curl -#L https://zlib.net/zlib-1.2.11.tar.gz | \
         hashpipe sha256 c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1 | \
@@ -186,21 +197,21 @@ class Curl < Package
     end
 
     # libssh has problems linking with musl statically
-    #Dir.chdir 'build/libssh' do
-    #puts 'Building Libssh.'.yellow
-    #FileUtils.mkdir('builddir')
-    #Dir.chdir('builddir') do
-    #system "#{@curldep_cmake_options} \
+    # Dir.chdir 'build/libssh' do
+    # puts 'Building Libssh.'.yellow
+    # FileUtils.mkdir('builddir')
+    # Dir.chdir('builddir') do
+    # system "#{@curldep_cmake_options} \
     #-DWITH_EXAMPLES=OFF \
     #-DBUILD_SHARED_LIBS=OFF \
     #-DWITH_STATIC_LIB=ON \
     #-DWITH_GSSAPI=OFF \
     #-DHAVE_GLOB=0 \
-    #../ -G Ninja"
-    #end
-    #system 'samu -C builddir'
-    #system 'samu -C builddir install'
-    #end
+    # ../ -G Ninja"
+    # end
+    # system 'samu -C builddir'
+    # system 'samu -C builddir install'
+    # end
 
     Dir.chdir 'build/nghttp2' do
       puts 'Building Nghttp2.'.yellow
