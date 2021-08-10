@@ -753,7 +753,7 @@ end
 def download_extra(target_dir)
   urls = @pkg.get_extra_download
 
-  if urls.empty? or urls.nil?
+  if urls.to_s.empty? or urls.nil?
     return
   else
     puts "Downloading extra files".lightgreen
