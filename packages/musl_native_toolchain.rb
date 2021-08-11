@@ -42,7 +42,7 @@ class Musl_native_toolchain < Package
     $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/musl/lib"
     Dir.chdir("#{CREW_DEST_PREFIX}/musl") do
-      FileUtils.ln_s 'lib', 'lib64'
+      FileUtils.ln_s 'lib', 'lib64' if ARCH == 'x86_64'
     end
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/musl/", verbose: true
   end
