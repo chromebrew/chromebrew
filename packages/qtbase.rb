@@ -13,12 +13,12 @@ class Qtbase < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/kde-5.15-830a_armv7l/qtbase-kde-5.15-830a-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/kde-5.15-830a_armv7l/qtbase-kde-5.15-830a-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/kde-5.15-830a_x86_64/qtbase-kde-5.15-830a-chromeos-x86_64.tpxz'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/kde-5.15-830a_x86_64/qtbase-kde-5.15-830a-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '19eb54d1fe54d4bf1c49afadbaeeb5a7adcec584624ab88938c3ea7827bc56a2',
-     armv7l: '19eb54d1fe54d4bf1c49afadbaeeb5a7adcec584624ab88938c3ea7827bc56a2',
-    x86_64: '9b58c01ad6d16498b1cd8a35ac97026f75dc5d19b586a0a3759362757ddd8bf7'
+    aarch64: '8554431fc8f552380aa8822d440559c9fd2bbe00314d96ed5939637ef3a329e6',
+     armv7l: '8554431fc8f552380aa8822d440559c9fd2bbe00314d96ed5939637ef3a329e6',
+     x86_64: '9b58c01ad6d16498b1cd8a35ac97026f75dc5d19b586a0a3759362757ddd8bf7'
   })
 
   depends_on 'alsa_plugins'
