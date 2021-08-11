@@ -16,8 +16,8 @@ class Libcurl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_x86_64/libcurl-7.78.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a098ea270cfccf12a6606d30d5ea72df4f328fe14a6f1898ae04e7186f99ea69',
-     armv7l: 'a098ea270cfccf12a6606d30d5ea72df4f328fe14a6f1898ae04e7186f99ea69',
+    aarch64: '7235de020a82896df7e6519cab9e63f870a164e181a9e8c8bf60c90276c50a00',
+     armv7l: '7235de020a82896df7e6519cab9e63f870a164e181a9e8c8bf60c90276c50a00',
      x86_64: '6fa0de9f9db89ce8d40f1e811a78f38bbcf5b17a7c116dce1155237b04016fe3'
   })
 
@@ -39,8 +39,8 @@ class Libcurl < Package
   depends_on 'zstd' # R
 
   def self.build
-    # Without these downstream programs which want to statically link
-    # libcurl have issues.
+    # Without these downstream programs which we want to statically link
+    # libcurl has issues.
     @krb5_static_libs = '-l:libkrb5support.a -l:libgssapi_krb5.a -l:libkrb5.a -l:libk5crypto.a -l:libcom_err.a'
 
     @libssh = '--with-libssh'
