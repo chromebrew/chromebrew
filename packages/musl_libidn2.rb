@@ -1,25 +1,25 @@
 require 'package'
 
-class Musl_libunistring < Package
-  description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
-  homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10'
-  license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
+class Musl_libidn2 < Package
+  description 'GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications.'
+  homepage 'https://www.gnu.org/software/libidn/'
+  version '2.3.2'
+  license 'GPL-2+ and LGPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url 'https://ftpmirror.gnu.org/libidn/libidn2-2.3.2.tar.gz'
+  source_sha256 '76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_armv7l/musl_libidn2-2.3.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_armv7l/musl_libidn2-2.3.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_i686/musl_libidn2-2.3.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_x86_64/musl_libidn2-2.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-     armv7l: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
-     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
+    aarch64: 'c37e067ec66210c1571c26ca90126f232e03e6066643acaaf8a2dc784b54bfdd',
+     armv7l: 'c37e067ec66210c1571c26ca90126f232e03e6066643acaaf8a2dc784b54bfdd',
+       i686: '93fdc1d0ce7112695463e98f582b42a2b3715efbc8b9cc1001afbbd7f0f8b7fd',
+     x86_64: '7140b776fe48662f787fde9facf7d646f2456b0f2ccfbf5a3889144f8f411716'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -77,7 +77,6 @@ class Musl_libunistring < Package
 
   def self.build
     system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --enable-static \
         --disable-shared"
     system 'make'
   end

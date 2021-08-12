@@ -1,28 +1,30 @@
 require 'package'
 
-class Musl_libunistring < Package
-  description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
-  homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10'
-  license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
+class Musl_openssl < Package
+  description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+  homepage 'https://www.openssl.org'
+  @_ver = '1.1.1k'
+  version @_ver.to_s
+  license 'openssl'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
+  source_sha256 '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_armv7l/musl_openssl-1.1.1k-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_armv7l/musl_openssl-1.1.1k-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_i686/musl_openssl-1.1.1k-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_x86_64/musl_openssl-1.1.1k-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-     armv7l: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
-     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
+    aarch64: 'f75be1f4f0d7a68dc60f72cbcb5ada983bcdbe82086529bae7546ba70b5f5dae',
+     armv7l: 'f75be1f4f0d7a68dc60f72cbcb5ada983bcdbe82086529bae7546ba70b5f5dae',
+       i686: '04f5a5d674a9cac2cc27aafc0df98a460600ef5cc41c07540c103e75ab7a4aac',
+     x86_64: 'ee6c92bbc7038332331b70332c6fd7b6eb50221103fc7fb2ccda930cf383ebdd'
   })
 
   depends_on 'musl_native_toolchain' => :build
+  depends_on 'musl_zlib' => :build
 
   @abi = ''
   @arch_ssp_cflags = ''
@@ -31,9 +33,12 @@ class Musl_libunistring < Package
   case ARCH
   when 'aarch64', 'armv7l'
     @abi = 'eabihf'
+    @openssl_configure_target = 'linux-generic32'
   when 'i686'
     @arch_ssp_cflags = '-fno-stack-protector'
+    @openssl_configure_target = 'linux-x86'
   when 'x86_64'
+    @openssl_configure_target = 'linux-x86_64'
   end
 
   @cflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_c_flags} #{@arch_ssp_cflags} -fcommon"
@@ -51,6 +56,7 @@ class Musl_libunistring < Package
         LDFLAGS='#{@cmake_ldflags}' \
         cmake \
         -DCMAKE_INSTALL_PREFIX='#{CREW_PREFIX}/musl' \
+        -DCMAKE_INSTALL_LIBDIR='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_LIBRARY_PATH='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_C_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc \
         -DCMAKE_CXX_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++ \
@@ -76,9 +82,11 @@ class Musl_libunistring < Package
       LDFLAGS='#{@ldflags}'"
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --enable-static \
-        --disable-shared"
+    system "#{@musldep_env_options} ./Configure \
+        --prefix=#{CREW_PREFIX}/musl \
+        --libdir=#{CREW_PREFIX}/musl/lib \
+        no-tests zlib no-shared \
+        #{@openssl_configure_target}"
     system 'make'
   end
 
@@ -88,6 +96,6 @@ class Musl_libunistring < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install_sw'
   end
 end

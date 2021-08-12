@@ -1,28 +1,32 @@
 require 'package'
 
-class Musl_libunistring < Package
-  description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
-  homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10'
-  license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
+class Musl_libssh < Package
+  description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
+  homepage 'https://www.libssh.org/'
+  @_ver = '0.9.5'
+  version @_ver
+  @_ver_prelastdot = @_ver.rpartition('.')[0]
+  license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url "https://www.libssh.org/files/#{@_ver_prelastdot}/libssh-#{@_ver}.tar.xz"
+  source_sha256 'acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_armv7l/musl_libssh-0.9.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_armv7l/musl_libssh-0.9.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_i686/musl_libssh-0.9.5-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_x86_64/musl_libssh-0.9.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-     armv7l: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
-     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
+    aarch64: '1e3d8f47e2ba1da123433ed3c6ce97629c605f13e2f9e934b299b2d5dfc69502',
+     armv7l: '1e3d8f47e2ba1da123433ed3c6ce97629c605f13e2f9e934b299b2d5dfc69502',
+       i686: '950ca7f5da44df0249a27164c109ac71b3cb1a93c157064c56b99bdc8c0a4961',
+     x86_64: 'c8f41e9f0883bf95fca3d1d6be9e0b1341ea179c2f155e22cdc0df9a85c8c176'
   })
 
   depends_on 'musl_native_toolchain' => :build
+  depends_on 'musl_zlib' => :build
+  depends_on 'musl_openssl' => :build
 
   @abi = ''
   @arch_ssp_cflags = ''
@@ -51,6 +55,7 @@ class Musl_libunistring < Package
         LDFLAGS='#{@cmake_ldflags}' \
         cmake \
         -DCMAKE_INSTALL_PREFIX='#{CREW_PREFIX}/musl' \
+        -DCMAKE_INSTALL_LIBDIR='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_LIBRARY_PATH='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_C_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc \
         -DCMAKE_CXX_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++ \
@@ -76,10 +81,21 @@ class Musl_libunistring < Package
       LDFLAGS='#{@ldflags}'"
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --enable-static \
-        --disable-shared"
-    system 'make'
+    FileUtils.mkdir('builddir')
+    Dir.chdir('builddir') do
+      system "#{@musldep_cmake_options} \
+      -DOPENSSL_INCLUDE_DIR=#{CREW_PREFIX}/musl/include \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DGLOBAL_BIND_CONFIG=#{CREW_PREFIX}/etc/ssh/libssh_server_config \
+      -DGLOBAL_CLIENT_CONFIG=#{CREW_PREFIX}/etc/ssh/ssh_config \
+      -DHAVE_GLOB=0 \
+      -DUNIT_TESTING=OFF \
+      -DWITH_EXAMPLES=OFF \
+      -DWITH_STATIC_LIB=ON \
+      ../ -G Ninja"
+    end
+    system "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
+      samu -C builddir -j#{CREW_NPROC}"
   end
 
   def self.install
@@ -88,6 +104,6 @@ class Musl_libunistring < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

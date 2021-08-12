@@ -1,25 +1,25 @@
 require 'package'
 
-class Musl_libunistring < Package
-  description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
-  homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10'
-  license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
+class Musl_brotli < Package
+  description 'Brotli compression format'
+  homepage 'https://github.com/google/brotli'
+  version '1.0.9'
+  license 'MIT'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url 'https://github.com/google/brotli/archive/v1.0.9.tar.gz'
+  source_sha256 'f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_armv7l/musl_brotli-1.0.9-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_armv7l/musl_brotli-1.0.9-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_i686/musl_brotli-1.0.9-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_x86_64/musl_brotli-1.0.9-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-     armv7l: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
-     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
+    aarch64: '873ce1857a4ce73620d47ab283f632ff47d5509e870eddcd57d3ff8a44f028fa',
+     armv7l: '873ce1857a4ce73620d47ab283f632ff47d5509e870eddcd57d3ff8a44f028fa',
+       i686: 'd0ceca0467b8f7d86e57b88f5e9f901efa16410957f76b6231841a3a6b81e16e',
+     x86_64: '4486cda139a1155cd7dba48376c49f1ccbc9d3cdcc4a4b35990936266895476e'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -51,6 +51,7 @@ class Musl_libunistring < Package
         LDFLAGS='#{@cmake_ldflags}' \
         cmake \
         -DCMAKE_INSTALL_PREFIX='#{CREW_PREFIX}/musl' \
+        -DCMAKE_INSTALL_LIBDIR='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_LIBRARY_PATH='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_C_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc \
         -DCMAKE_CXX_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++ \
@@ -76,10 +77,15 @@ class Musl_libunistring < Package
       LDFLAGS='#{@ldflags}'"
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --enable-static \
-        --disable-shared"
-    system 'make'
+    FileUtils.mkdir('builddir')
+    Dir.chdir('builddir') do
+      system "#{@musldep_cmake_options} \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DWITH_STATIC_LIB=ON \
+        ../ -G Ninja"
+    end
+    system "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
+      samu -C builddir -j#{CREW_NPROC}"
   end
 
   def self.install
@@ -88,6 +94,12 @@ class Musl_libunistring < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    Dir.chdir "#{CREW_DEST_PREFIX}/musl/lib" do
+      @brotlilibs = %w[libbrotlidec libbrotlienc libbrotlicommon]
+      @brotlilibs.each do |lib|
+        FileUtils.ln_s "#{lib}-static.a", "#{lib}.a"
+      end
+    end
   end
 end

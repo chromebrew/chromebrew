@@ -1,29 +1,30 @@
 require 'package'
 
-class Musl_krb5 < Package
-  description 'Kerberos is a network authentication protocol.'
-  homepage 'https://web.mit.edu/kerberos'
-  version '1.19.2'
-  license 'openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )'
+class Musl_libnghttp2 < Package
+  description 'library implementing HTTP/2 protocol'
+  homepage 'https://nghttp2.org/'
+  @_ver = '1.44.0'
+  version @_ver.to_s
+  license 'MIT'
   compatibility 'all'
-  source_url 'https://web.mit.edu/kerberos/dist/krb5/1.19/krb5-1.19.2.tar.gz'
-  source_sha256 '10453fee4e3a8f8ce6129059e5c050b8a65dab1c257df68b99b3112eaa0cdf6a'
+  source_url "https://github.com/nghttp2/nghttp2/releases/download/v#{@_ver}/nghttp2-#{@_ver}.tar.bz2"
+  source_sha256 '989971276517a1c9ed330b779c34cf02d99da3b85d156eb297f42b1b7227b297'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_i686/musl_krb5-1.19.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_x86_64/musl_krb5-1.19.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_armv7l/musl_libnghttp2-1.44.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_armv7l/musl_libnghttp2-1.44.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_i686/musl_libnghttp2-1.44.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_x86_64/musl_libnghttp2-1.44.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '447399f2631634a0c8f5e296748c5d3ffc2e2951a5f63f7269e1490704e7b08c',
-     armv7l: '447399f2631634a0c8f5e296748c5d3ffc2e2951a5f63f7269e1490704e7b08c',
-       i686: 'ecf85191be363ccbb8c9d776306f1afdc673709d17a976180f473e4082a00a2a',
-     x86_64: '41b397c6b630c7f517e66d6dfc602eaf6f9f124b7c949c980494928de6d0c295'
+    aarch64: 'a1e5658fa2818435c04a9bbf3016883259f2cf357532663bdcb465aa7cede3fe',
+     armv7l: 'a1e5658fa2818435c04a9bbf3016883259f2cf357532663bdcb465aa7cede3fe',
+       i686: '1060a1514584f2caaa049c641dc2d6ae8a9d8e43d10803c629bba749f094e168',
+     x86_64: '5960ccc554b8ef66419b7c890def80fff89420f4a4b52ac4ca1be1ba070c76ab'
   })
 
   depends_on 'musl_native_toolchain' => :build
-  depends_on 'musl_ncurses' => :build
+  depends_on 'musl_zlib' => :build
   depends_on 'musl_openssl' => :build
 
   @abi = ''
@@ -53,6 +54,7 @@ class Musl_krb5 < Package
         LDFLAGS='#{@cmake_ldflags}' \
         cmake \
         -DCMAKE_INSTALL_PREFIX='#{CREW_PREFIX}/musl' \
+        -DCMAKE_INSTALL_LIBDIR='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_LIBRARY_PATH='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_C_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc \
         -DCMAKE_CXX_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++ \
@@ -67,30 +69,26 @@ class Musl_krb5 < Package
         -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE \
         -DCMAKE_BUILD_TYPE=Release"
 
-  @krb5_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
-        CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
-        CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
-        LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-        PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
-        LIBS='-l:libncursesw.a -l:libtinfow.a' \
-        CFLAGS='#{@cflags}' \
-        CXXFLAGS='#{@cxxflags}' \
-        CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
-        LDFLAGS=' #{@ldflags} -l:libncursesw.a -l:libtinfow.a'"
+  @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
+      CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
+      CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
+      LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
+      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
+      CFLAGS='#{@cflags}' \
+      CXXFLAGS='#{@cxxflags}' \
+      CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
+      LDFLAGS='#{@ldflags}'"
 
   def self.build
-    Dir.chdir 'src' do
-      system "#{@krb5_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-          --libdir=#{CREW_PREFIX}/musl/lib \
-          --localstatedir=#{CREW_PREFIX}/var/krb5kdc \
-          --disable-shared \
-          --enable-static \
-          --without-system-verto \
-          --without-libedit \
-          --disable-rpath \
-          --without-keyutils"
-      system 'make'
+    FileUtils.mkdir('builddir')
+    Dir.chdir('builddir') do
+      system "#{@musldep_cmake_options} \
+      -DENABLE_SHARED_LIB=OFF \
+      -DENABLE_STATIC_LIB=ON \
+      ../ -G Ninja"
     end
+    system "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
+      samu -C builddir -j#{CREW_NPROC}"
   end
 
   def self.install
@@ -99,8 +97,6 @@ class Musl_krb5 < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    Dir.chdir 'src' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

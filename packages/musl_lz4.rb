@@ -1,25 +1,25 @@
 require 'package'
 
-class Musl_libunistring < Package
-  description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
-  homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10'
-  license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
+class Musl_lz4 < Package
+  description 'LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).'
+  homepage 'https://lz4.github.io/lz4/'
+  version '1.9.2'
+  license 'BSD-2 and GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url 'https://github.com/lz4/lz4/archive/v1.9.2.tar.gz'
+  source_sha256 '658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_armv7l/musl_lz4-1.9.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_armv7l/musl_lz4-1.9.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_i686/musl_lz4-1.9.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_x86_64/musl_lz4-1.9.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-     armv7l: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
-     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
+    aarch64: 'ffe7b999c45a2417dac278c1742d482938fee96db2f2a2213ed01153b20ac3a7',
+     armv7l: 'ffe7b999c45a2417dac278c1742d482938fee96db2f2a2213ed01153b20ac3a7',
+       i686: '6cb072dfac2b88df750d32fc259155b762eeb987dfbf352283d4a7fa13a3e2a7',
+     x86_64: '879317bd3b652c30086fec940df66c4c0b66fd565708ccf300ca54e9ff94235f'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -76,10 +76,10 @@ class Musl_libunistring < Package
       LDFLAGS='#{@ldflags}'"
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --enable-static \
-        --disable-shared"
-    system 'make'
+    system "#{@musldep_env_options} make PREFIX=#{CREW_PREFIX}/musl \
+      LIBDIR=#{CREW_PREFIX}/musl/lib \
+      BUILD_STATIC=yes \
+      BUILD_SHARED=no"
   end
 
   def self.install
@@ -88,6 +88,6 @@ class Musl_libunistring < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "LIBDIR=#{CREW_PREFIX}/musl/lib", 'install'
   end
 end

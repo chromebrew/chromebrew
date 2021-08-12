@@ -1,28 +1,31 @@
 require 'package'
 
-class Musl_libunistring < Package
-  description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
-  homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10'
-  license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
+class Musl_zstd < Package
+  description 'Zstandard - Fast real-time compression algorithm'
+  homepage 'http://www.zstd.net'
+  version '1.5.0'
+  license 'BSD or GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url 'https://github.com/facebook/zstd.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_armv7l/musl_zstd-1.5.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_armv7l/musl_zstd-1.5.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_i686/musl_zstd-1.5.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_x86_64/musl_zstd-1.5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-     armv7l: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
-     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
+    aarch64: '50c703a005623b1d212d6344ea27b24c4adc80d24e39e7bda37ae696340d846c',
+     armv7l: '50c703a005623b1d212d6344ea27b24c4adc80d24e39e7bda37ae696340d846c',
+       i686: '286b14d98df95cf6262c9bb9d469ddb369d8e1a75807515fe05e9a58c76d4ba7',
+     x86_64: 'be252c43689f7538e95504fbea7ddb78d7898ca0ee348df1bcacd79523266aad'
   })
 
   depends_on 'musl_native_toolchain' => :build
+  depends_on 'musl_lz4' => :build
+  depends_on 'musl_xz' => :build
+  depends_on 'patchelf' => :build
 
   @abi = ''
   @arch_ssp_cflags = ''
@@ -51,6 +54,7 @@ class Musl_libunistring < Package
         LDFLAGS='#{@cmake_ldflags}' \
         cmake \
         -DCMAKE_INSTALL_PREFIX='#{CREW_PREFIX}/musl' \
+        -DCMAKE_INSTALL_LIBDIR='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_LIBRARY_PATH='#{CREW_PREFIX}/musl/lib' \
         -DCMAKE_C_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc \
         -DCMAKE_CXX_COMPILER=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++ \
@@ -76,10 +80,16 @@ class Musl_libunistring < Package
       LDFLAGS='#{@ldflags}'"
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --enable-static \
-        --disable-shared"
-    system 'make'
+    FileUtils.mkdir('build/cmake/builddir')
+    Dir.chdir('build/cmake/builddir') do
+      system "#{@musldep_cmake_options} \
+      -DZSTD_BUILD_STATIC=ON \
+      -DZSTD_BUILD_SHARED=OFF \
+      -DZSTD_BUILD_PROGRAMS=OFF \
+      ../ -G Ninja"
+    end
+    system "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
+      samu -C build/cmake/builddir -j#{CREW_NPROC}"
   end
 
   def self.install
@@ -88,6 +98,6 @@ class Musl_libunistring < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C build/cmake/builddir install"
   end
 end
