@@ -1,29 +1,29 @@
 require 'package'
 
-class Musl_zlib < Package
-  description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
-  homepage 'http://www.zlib.net/'
-  @_ver = '1.2.11'
-  version @_ver.to_s
-  license 'zlib'
+class Musl_krb5 < Package
+  description 'Kerberos is a network authentication protocol.'
+  homepage 'https://web.mit.edu/kerberos'
+  version '1.19.2'
+  license 'openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )'
   compatibility 'all'
-  source_url "http://www.zlib.net/zlib-#{@_ver}.tar.gz"
-  source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
+  source_url 'https://web.mit.edu/kerberos/dist/krb5/1.19/krb5-1.19.2.tar.gz'
+  source_sha256 '10453fee4e3a8f8ce6129059e5c050b8a65dab1c257df68b99b3112eaa0cdf6a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_i686/musl_zlib-1.2.11-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_x86_64/musl_zlib-1.2.11-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_i686/musl_krb5-1.19.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_x86_64/musl_krb5-1.19.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0e188f8eb4f7d2d7817b14c8409d5533b77b299078eed0bd857f2466fb17cd71',
-     armv7l: '0e188f8eb4f7d2d7817b14c8409d5533b77b299078eed0bd857f2466fb17cd71',
-       i686: 'b1c73fe2324b9c749023df9b3e6a2d87922086b5fa8edf09d3a1cf27f51365dd',
-     x86_64: '37b0132c89e1f258e0e932c255561331e4b4a34536c119f38bf619f7e6068016'
+    aarch64: '447399f2631634a0c8f5e296748c5d3ffc2e2951a5f63f7269e1490704e7b08c',
+     armv7l: '447399f2631634a0c8f5e296748c5d3ffc2e2951a5f63f7269e1490704e7b08c',
+       i686: 'ecf85191be363ccbb8c9d776306f1afdc673709d17a976180f473e4082a00a2a',
+     x86_64: 'f2fbc0f85778d69a379eba8cb372ac9c38a00834a3690fb946c3e8bc2f780499'
   })
 
   depends_on 'musl_native_toolchain' => :build
+  depends_on 'musl_ncurses' => :build
 
   @abi = ''
   @arch_ssp_cflags = ''
@@ -66,20 +66,29 @@ class Musl_zlib < Package
         -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE \
         -DCMAKE_BUILD_TYPE=Release"
 
-  @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
-      CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
-      CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
-      LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
-      CFLAGS='#{@cflags}' \
-      CXXFLAGS='#{@cxxflags}' \
-      CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
-      LDFLAGS='#{@ldflags}'"
+  @krb5_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
+        CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
+        CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
+        LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
+        PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
+        LIBS='-l:libncursesw.a -l:libtinfow.a' \
+        CFLAGS='#{@cflags}' \
+        CXXFLAGS='#{@cxxflags}' \
+        CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
+        LDFLAGS=' #{@ldflags} -l:libncursesw.a -l:libtinfow.a'"
 
   def self.build
-    system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-          --static"
-    system 'make'
+    Dir.chdir 'src' do
+      system "#{@krb5_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
+          --localstatedir=#{CREW_PREFIX}/var/krb5kdc \
+          --disable-shared \
+          --enable-static \
+          --without-system-verto \
+          --without-libedit \
+          --disable-rpath \
+          --without-keyutils"
+      system 'make'
+    end
   end
 
   def self.install
@@ -88,6 +97,8 @@ class Musl_zlib < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    Dir.chdir 'src' do
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    end
   end
 end
