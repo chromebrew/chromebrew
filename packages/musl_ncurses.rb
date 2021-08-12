@@ -1,26 +1,25 @@
 require 'package'
 
-class Musl_zlib < Package
-  description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
-  homepage 'http://www.zlib.net/'
-  @_ver = '1.2.11'
-  version @_ver.to_s
-  license 'zlib'
+class Musl_ncurses < Package
+  description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
+  homepage 'https://www.gnu.org/software/ncurses/'
+  version '6.2-20210522'
+  license 'MIT'
   compatibility 'all'
-  source_url "http://www.zlib.net/zlib-#{@_ver}.tar.gz"
-  source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
+  source_url 'https://github.com/mirror/ncurses.git'
+  git_hashtag '2a969388725aa1ee321acadf09a4ff8e00787036'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_i686/musl_zlib-1.2.11-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_x86_64/musl_zlib-1.2.11-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_armv7l/musl_ncurses-6.2-20210522-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_armv7l/musl_ncurses-6.2-20210522-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_i686/musl_ncurses-6.2-20210522-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_x86_64/musl_ncurses-6.2-20210522-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'aae7e4d8f98502558fd2f3bbbb790647c77b10a43a3fb6edd5c1f2e89eb2285b',
-     armv7l: 'aae7e4d8f98502558fd2f3bbbb790647c77b10a43a3fb6edd5c1f2e89eb2285b',
-       i686: 'd2dee9df32e360e98f7e05eef8314aa0da2f44ddf879e5b397c46922eba6757e',
-     x86_64: '4a5e6aec51b4ecd8a41159029dadbcd675153da568610d7c8897ad94284eee08'
+    aarch64: '307d642fa2a84e65ed34cb005b32bb6d900c3b51be05d482bd31a121175db8cf',
+     armv7l: '307d642fa2a84e65ed34cb005b32bb6d900c3b51be05d482bd31a121175db8cf',
+       i686: '7eb3d713d2acfe94f91736478cf7f0390cc53f36464f5a9a33d3fc43974eaf18',
+     x86_64: 'd5b5c2ddfab5d247c1f416607e71667d3fd80ad0d46f985278f76f1988f695a4'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -70,7 +69,7 @@ class Musl_zlib < Package
       CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
       CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
       LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib \
+      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
       CFLAGS='#{@cflags}' \
       CXXFLAGS='#{@cxxflags}' \
       CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
@@ -78,7 +77,14 @@ class Musl_zlib < Package
 
   def self.build
     system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-          --static"
+        --with-static \
+        --with-cxx-static \
+        --without-debug \
+        --enable-pc-files \
+        --with-pkg-config-libdir=#{CREW_PREFIX}/musl/lib/pkgconfig \
+        --enable-widec \
+        --without-tests \
+        --with-termlib"
     system 'make'
   end
 

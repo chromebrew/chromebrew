@@ -26,10 +26,10 @@ class Musl_native_toolchain < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_x86_64/musl_native_toolchain-1.2.2-e5d2823-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '20264377f281e5ff63831a7438030365c1b470e81541badf3defc11664e21f45',
-     armv7l: '20264377f281e5ff63831a7438030365c1b470e81541badf3defc11664e21f45',
-       i686: '89d2f541c5391c30e3cc8eba52dd0835c979245f5c1ee5feb0a45f9ed9ed8bf7',
-     x86_64: 'f7e63e0296652ae4d416d350c7c71402ad9c1336bd3ee4b9caafb872c40c6529'
+    aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
+     armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
+       i686: '95961eed7adcf6c1d8bdbec91e6384fbd66e538718e2802c43241714c4b8cc92',
+     x86_64: '8b03981c6c6de3695f9bb6149b0c3a7fa4c2646c9e7464d78cc8acc28e87b75d'
   })
 
   def self.install
@@ -41,10 +41,12 @@ class Musl_native_toolchain < Package
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/musl/lib"
-    Dir.chdir("#{CREW_DEST_PREFIX}/musl") do
-      FileUtils.ln_s 'lib', 'lib64' if ARCH == 'x86_64'
-    end
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/musl/", verbose: true
+    Dir.chdir("#{CREW_DEST_PREFIX}/musl/lib") do
+      FileUtils.ln_sf 'libc.so', 'ld-musl-x86_64.so.1' if ARCH == 'x86_64'
+      FileUtils.ln_sf 'libc.so', 'ld-musl-armhf.so.1' if ARCH == 'armv7l'
+      FileUtils.ln_sf 'libc.so', 'ld-musl-i386.so.1' if ARCH == 'i686'
+    end
   end
 
   def self.postinstall; end

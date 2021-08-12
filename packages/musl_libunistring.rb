@@ -1,26 +1,25 @@
 require 'package'
 
-class Musl_zlib < Package
-  description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
-  homepage 'http://www.zlib.net/'
-  @_ver = '1.2.11'
-  version @_ver.to_s
-  license 'zlib'
+class Musl_libunistring < Package
+  description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
+  homepage 'https://www.gnu.org/software/libunistring/'
+  version '0.9.10'
+  license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
-  source_url "http://www.zlib.net/zlib-#{@_ver}.tar.gz"
-  source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
+  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
+  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_i686/musl_zlib-1.2.11-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_x86_64/musl_zlib-1.2.11-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'aae7e4d8f98502558fd2f3bbbb790647c77b10a43a3fb6edd5c1f2e89eb2285b',
-     armv7l: 'aae7e4d8f98502558fd2f3bbbb790647c77b10a43a3fb6edd5c1f2e89eb2285b',
-       i686: 'd2dee9df32e360e98f7e05eef8314aa0da2f44ddf879e5b397c46922eba6757e',
-     x86_64: '4a5e6aec51b4ecd8a41159029dadbcd675153da568610d7c8897ad94284eee08'
+    aarch64: 'c95bd2525fdf60f421b17ba0c0a8478e6570a3b56054bb7930ad8f02e9315ded',
+     armv7l: 'c95bd2525fdf60f421b17ba0c0a8478e6570a3b56054bb7930ad8f02e9315ded',
+       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
+     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -70,7 +69,7 @@ class Musl_zlib < Package
       CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
       CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
       LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib \
+      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
       CFLAGS='#{@cflags}' \
       CXXFLAGS='#{@cxxflags}' \
       CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
@@ -78,7 +77,8 @@ class Musl_zlib < Package
 
   def self.build
     system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-          --static"
+        --enable-static \
+        --disable-shared"
     system 'make'
   end
 
