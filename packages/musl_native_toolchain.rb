@@ -29,7 +29,7 @@ class Musl_native_toolchain < Package
     aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
      armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
        i686: '95961eed7adcf6c1d8bdbec91e6384fbd66e538718e2802c43241714c4b8cc92',
-     x86_64: '8b03981c6c6de3695f9bb6149b0c3a7fa4c2646c9e7464d78cc8acc28e87b75d'
+     x86_64: '8db02d6424f54906394c55adc77dec8f37d22f7e9c6baf2c8557cd03f1eebeb0'
   })
 
   def self.install
@@ -46,6 +46,9 @@ class Musl_native_toolchain < Package
       FileUtils.ln_sf 'libc.so', 'ld-musl-x86_64.so.1' if ARCH == 'x86_64'
       FileUtils.ln_sf 'libc.so', 'ld-musl-armhf.so.1' if ARCH == 'armv7l'
       FileUtils.ln_sf 'libc.so', 'ld-musl-i386.so.1' if ARCH == 'i686'
+    end
+    Dir.chdir("#{CREW_DEST_PREFIX}/musl") do
+      FileUtils.ln_sf 'lib', 'lib64' if ARCH == 'x86_64'
     end
   end
 
