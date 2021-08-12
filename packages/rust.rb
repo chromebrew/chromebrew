@@ -26,12 +26,7 @@ class Rust < Package
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    default_host = case ARCH
-                   when 'aarch64', 'armv7l'
-                     'armv7-unknown-linux-gnueabihf'
-                   else
-                     "#{ARCH}-unknown-linux-gnu"
-                   end
+    default_host = ARCH == 'aarch64' || ARCH == 'armv7' ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
     system 'curl -Lf https://sh.rustup.rs -o rustup.sh'
     unless Digest::SHA256.hexdigest(File.read('rustup.sh')) == 'a3cb081f88a6789d104518b30d4aa410009cd08c3822a1226991d6cf0442a0f8'
       abort 'Checksum mismatch. :/ Try again.'.lightred
