@@ -3,37 +3,37 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.52.1'
+  @_ver = '1.54.0'
   version @_ver
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.52.1_armv7l/rust-1.52.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.52.1_armv7l/rust-1.52.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.52.1_i686/rust-1.52.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.52.1_x86_64/rust-1.52.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.54.0_armv7l/rust-1.54.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.54.0_armv7l/rust-1.54.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.54.0_i686/rust-1.54.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.54.0_x86_64/rust-1.54.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd097b95fbc232485bbec6f62faa461efa9577a2af4c7310a73b6ce89dec24fdb',
-     armv7l: 'd097b95fbc232485bbec6f62faa461efa9577a2af4c7310a73b6ce89dec24fdb',
-       i686: '8d5ca2caef9388156f2e7a0789e99a7333fe42c780e5b608e9cd0212787314b1',
-     x86_64: 'a69248bf35e9ce7270304ba7f52ca1a6db62ac1f186a727840558e7dea50fb60'
+    aarch64: 'b0d314f20de04bedd397f29e8f2016be9ef2b4c482c8df7559e5c72bb4e66024',
+     armv7l: 'b0d314f20de04bedd397f29e8f2016be9ef2b4c482c8df7559e5c72bb4e66024',
+       i686: '54b16460b5f8a0b78ae7ef11ab3b31d965c26a7663cc958963c5c35c41a19f54',
+     x86_64: '2287cb7645dcd2c66e7806897095e31ef63cf09fea48c06cb60208cef0d8d0a3'
   })
 
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
-    case ARCH
-    when 'aarch64', 'armv7l'
-      default_host = 'armv7-unknown-linux-gnueabihf'
-    else
-      default_host = "#{ARCH}-unknown-linux-gnu"
-    end
+    default_host = case ARCH
+                   when 'aarch64', 'armv7l'
+                     'armv7-unknown-linux-gnueabihf'
+                   else
+                     "#{ARCH}-unknown-linux-gnu"
+                   end
     system 'curl -Lf https://sh.rustup.rs -o rustup.sh'
-    unless Digest::SHA256.hexdigest(File.read('rustup.sh')) == '427614d934032ae48a218136dc9e2aad30979575fadf1c53940676ceb3ca0561'
+    unless Digest::SHA256.hexdigest(File.read('rustup.sh')) == 'a3cb081f88a6789d104518b30d4aa410009cd08c3822a1226991d6cf0442a0f8'
       abort 'Checksum mismatch. :/ Try again.'.lightred
     end
     system "sed -i 's,\$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup.sh"
