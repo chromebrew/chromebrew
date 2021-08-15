@@ -7,18 +7,20 @@ class Gtk3 < Package
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_armv7l/gtk3-3.24.30-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_armv7l/gtk3-3.24.30-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_i686/gtk3-3.24.30-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_x86_64/gtk3-3.24.30-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '53ac51ba579ca1845428d1fbc05563066ecc3f6ee66461b444eb3ded928ae4ef',
      armv7l: '53ac51ba579ca1845428d1fbc05563066ecc3f6ee66461b444eb3ded928ae4ef',
+       i686: '3d2c917a0c7bd975a726220f3f4d99b246b650c16609b258566d84c1416202cb',
      x86_64: '29ca5524c6b7e39d778db9c65cfa606ddac87f9af8ec2f4cb238f94435827d63'
   })
 
