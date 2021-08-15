@@ -7,18 +7,20 @@ class Gtk4 < Package
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.3.1_armv7l/gtk4-4.3.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.3.1_armv7l/gtk4-4.3.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.3.1_i686/gtk4-4.3.1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.3.1_x86_64/gtk4-4.3.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'd714a0b5c0318ee50ad3e7bd581e4d69435aafcf3800b640030f940e5accb1cd',
      armv7l: 'd714a0b5c0318ee50ad3e7bd581e4d69435aafcf3800b640030f940e5accb1cd',
+       i686: 'b9fc6152bf910f95f9d7823d47b592a689a9ccb7279955d1f25731a15d6dd000',
      x86_64: '986e9290a4ba1e216db1f7d6c89ce4d86cf9ecae1af3b90c1ad43fd385237c75'
   })
 
