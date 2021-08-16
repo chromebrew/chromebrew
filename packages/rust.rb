@@ -72,7 +72,8 @@ class Rust < Package
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir
 
-      print "\nWould you like to remove #{config_dir}? [y/N] "
+      system "echo #{config_dir}; ls #{config_dir}"
+      print "\nWould you like to remove the config directories above? [y/N] "
       case $stdin.getc
       when 'y', 'Y'
         FileUtils.rm_rf config_dir
