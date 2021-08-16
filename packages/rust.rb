@@ -69,7 +69,7 @@ class Rust < Package
   
   def self.remove
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
-    system "echo #{config_dirs}; ls #{config_dirs}"
+    system "echo #{config_dirs}"
     print "\nWould you like to remove the config directories above? [y/N] "
     case $stdin.getc
     when 'y', 'Y'
