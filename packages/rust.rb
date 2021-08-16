@@ -69,18 +69,14 @@ class Rust < Package
   
   def self.remove
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
-    config_dirs.each do |config_dir|
-      if Dir.exist?(config_dir)
-        system "echo #{config_dir}; ls #{config_dir}"
-        print "\nWould you like to remove the config directories above? [y/N] "
-        case $stdin.getc
-        when 'y', 'Y'
-          FileUtils.rm_rf config_dir
-          puts "#{config_dir} removed.".lightred
-        else
-          puts "#{config_dir} saved.".lightgreen
-        end
-      end
+    system "echo #{config_dirs}; ls #{config_dirs}"
+    print "\nWould you like to remove the config directories above? [y/N] "
+    case $stdin.getc
+    when 'y', 'Y'
+      FileUtils.rm_rf config_dirs
+      puts "#{config_dirs} removed.".lightred
+    else
+      puts "#{config_dirs} saved.".lightgreen
     end
   end
 end
