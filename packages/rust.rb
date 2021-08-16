@@ -66,4 +66,8 @@ class Rust < Package
     IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
     system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
   end
+  
+  def self.remove
+    FileUtils.rm_f "~/.rustup"
+  end
 end
