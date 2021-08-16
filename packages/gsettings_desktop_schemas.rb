@@ -6,18 +6,20 @@ class Gsettings_desktop_schemas < Package
   @_ver = '40.0'
   version @_ver
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/archive/#{@_ver}/gsettings-desktop-schemas-#{@_ver}.tar.bz2"
   source_sha256 'ce1d57e98ba6e460f9764e4a48a28ebe1866423e54c1eeceff6a3c90feb41bc6'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_i686/gsettings_desktop_schemas-40.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_x86_64/gsettings_desktop_schemas-40.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',
      armv7l: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',
+       i686: 'fc4a46d258118b6526df8c594b113e7ce285cdab10598a1179d865e6544494e6',
      x86_64: 'dc5237b94506cbf20080be7d1af759053dbdabde617329f08714a849eb4fc7c3'
   })
 
