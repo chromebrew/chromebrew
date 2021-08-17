@@ -99,7 +99,7 @@ class Sommelier < Package
         # This file via:
         # crostini: /opt/google/cros-containers/bin/sommelier
         # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
-        IO.write 'sommelier_sh' <<~EOF
+        IO.write 'sommelier_sh', <<~EOF
           #!/bin/bash
           function readlink(){
             coreutils --coreutils-prog=readlink "$@"
@@ -128,7 +128,7 @@ class Sommelier < Package
         EOF
 
         # sommelierd
-        IO.write 'sommelierd' <<~EOF
+        IO.write 'sommelierd', <<~EOF
           #!/bin/bash -a
 
           source ${CREW_PREFIX}/etc/env.d/sommelier.env &>/dev/null
@@ -182,7 +182,7 @@ class Sommelier < Package
         EOF
         
         # startsommelier
-        IO.write 'startsommelier' <<~EOF
+        IO.write 'startsommelier', <<~EOF
           #!/bin/bash -a
 
           source ~/.sommelier-default.env &>/dev/null
@@ -228,7 +228,7 @@ class Sommelier < Package
         EOF
 
         # stopsommelier
-        IO.write 'stopsommelier' <<~EOF
+        IO.write 'stopsommelier', <<~EOF
           #!/bin/bash
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
@@ -247,7 +247,7 @@ class Sommelier < Package
         EOF
         
         # restartsommelier
-        IO.write 'restartsommelier' <<~EOF
+        IO.write 'restartsommelier', <<~EOF
           #!/bin/bash
           stopsommelier && startsommelier
         EOF
