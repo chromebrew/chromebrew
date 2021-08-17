@@ -53,19 +53,22 @@ class Sommelier < Package
 
       # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
-      system "env CC=clang CXX=clang++ \
-        meson #{CREW_MESON_FNO_LTO_OPTIONS} \
-        -Db_asneeded=false \
-        -Db_lto=true \
-        -Db_lto_mode=thin \
-        -Dc_args='-fuse-ld=lld' \
-        -Dcpp_args='-fuse-ld=lld' \
-        -Dcpp_link_args='-fuse-ld=lld' \
-        -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-        -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
-        -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
-        -Dpeer_cmd_prefix=\"#{CREW_PREFIX}#{@peer_cmd_prefix}\" \
-        builddir"
+      system <<~BUILD
+        env CC=clang CXX=clang++ \
+          meson #{CREW_MESON_FNO_LTO_OPTIONS} \
+          -Db_asneeded=false \
+          -Db_lto=true \
+          -Db_lto_mode=thin \
+          -Dc_args='-fuse-ld=lld' \
+          -Dcpp_args='-fuse-ld=lld' \
+          -Dcpp_link_args='-fuse-ld=lld' \
+          -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
+          -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
+          -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
+          -Dpeer_cmd_prefix="#{CREW_PREFIX}#{@peer_cmd_prefix}" \
+          builddir
+      BUILD
+      
       system 'meson configure builddir'
       system 'ninja -C builddir'
 
@@ -145,7 +148,7 @@ class Sommelier < Package
             /sbin/ss --unix -a -p | grep "\b$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)" | grep wayland &>/dev/null
           }
           checksommelierxwayland () {
-            xdpyinfo -display \$DISPLAY &>/dev/null
+            xdpyinfo -display "${DISPLAY}" &>/dev/null
           }
           
           ## As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
@@ -153,18 +156,18 @@ class Sommelier < Package
           ## in ChromeOS's wayland compositor.
           #if ! checksommelierwayland ; then
           #  pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
-          #  rm \${XDG_RUNTIME_DIR}/wayland-1*
+          #  rm ${XDG_RUNTIME_DIR}/wayland-1*
           #  sommelier --parent \
           #    --peer-cmd-prefix="#{CREW_PREFIX}#{@peer_cmd_prefix}" \
           #    --drm-device=/dev/dri/renderD128 --shm-driver=noop \
           #    --data-driver=noop --display=wayland-0 --socket=wayland-1 \
           #    --virtwl-device=/dev/null &> #{CREW_PREFIX}/var/log/sommelier.log &
-          #  echo "\$!" > #{CREW_PREFIX}/var/run/sommelier-wayland.pid
+          #  echo "$!" > #{CREW_PREFIX}/var/run/sommelier-wayland.pid
           #fi
           
           if ! checksommelierxwayland; then
             pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
-            DISPLAY=\"\${DISPLAY:0:3}\"
+            DISPLAY="${DISPLAY:0:3}"
 
             sommelier -X \
               --x-display=${DISPLAY}  \
@@ -182,7 +185,7 @@ class Sommelier < Package
                 source #{CREW_PREFIX}/etc/sommelierrc" \
             &>> #{CREW_PREFIX}/var/log/sommelier.log
   
-            echo "\${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
+            echo "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             xhost +si:localuser:root &>/dev/null
           fi
         EOF
