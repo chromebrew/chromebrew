@@ -3,52 +3,36 @@ require 'package'
 class Gtest < Package
   description 'Google Test - C++ testing utility'
   homepage 'https://opensource.google/projects/googletest'
-  version '1.10.0-389c'
+  @_ver = '1.11.0'
+  version @_ver
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/google/googletest/archive/389cb68b87193358358ae87cc56d257fd0d80189.zip'
-  source_sha256 '763e20249e76417bed7ebc44aa85fedf5fbac6f9fb6d30bddb628ab07ebf04f5'
+  source_url 'https://github.com/google/googletest.git'
+  git_hashtag 'release-' + @_ver
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_armv7l/gtest-1.10.0-389c-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_armv7l/gtest-1.10.0-389c-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_i686/gtest-1.10.0-389c-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.10.0-389c_x86_64/gtest-1.10.0-389c-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_armv7l/gtest-1.11.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_armv7l/gtest-1.11.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_i686/gtest-1.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_x86_64/gtest-1.11.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '4c1dde1b6562fca74a35cd29f627d57ce06e6fb77b1873c34be7e75200ce5826',
-     armv7l: '4c1dde1b6562fca74a35cd29f627d57ce06e6fb77b1873c34be7e75200ce5826',
-       i686: '111db3afcc8f26d2a9e2d04221c99a8514d786da64fdc06349ea3665eaa3ea86',
-     x86_64: '560e28bcf87d89c9c076f0d094c8cfb461392e68679b7d833038a18c4d3c2fa2',
+  binary_sha256({
+    aarch64: '523a783df726759242ab363f4174ef27b3db4b2794b85398b2d5f97dd3c136a3',
+     armv7l: '523a783df726759242ab363f4174ef27b3db4b2794b85398b2d5f97dd3c136a3',
+       i686: '67f2af894a33460bf36d2c4e913384e1afcaaa95256225abf80b6e271b9630c2',
+     x86_64: '79392e23282200e8d37d47738832b0e05d916f6c51b5af01b332b9887bc476a5'
   })
-
-  case ARCH
-  when 'aarch64','armv7l'
-    ARCH_C_FLAGS = '-march=armv7-a -mcpu=cortex-a15 -mfloat-abi=hard -I/usr/local/include/c++/v1'
-    ARCH_CXX_FLAGS = '-march=armv7-a -mcpu=cortex-a15 -mfloat-abi=hard -I/usr/local/include/c++/v1'
-  when 'i686','x86_64'
-    ARCH_C_FLAGS = ''
-    ARCH_CXX_FLAGS = ''
-  end
 
   def self.build
-    system "sed -E \"s|(GOOGLETEST_VERSION) [0-9\\.]+|\\1 1.10.0|\" -i CMakeLists.txt"
-    system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} cmake -G Ninja \
-     -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}  \
-     -DCMAKE_BUILD_TYPE=Release \
-     -Dgtest_build_tests=OFF \
-     -DCMAKE_C_COMPILER=$(which clang) \
-     -DCMAKE_CXX_COMPILER=$(which clang++) \
-     -DCMAKE_C_FLAGS='#{ARCH_C_FLAGS}' \
-     -DCMAKE_CXX_FLAGS='#{ARCH_CXX_FLAGS}' \
-     -DCMAKE_LINKER=$(which lld) \
-     -DCMAKE_AR=$(which llvm-ar) \
-     -DCMAKE_RANLIB=$(which llvm-ranlib) \
-     -Bbuilddir"
-    system 'ninja -C builddir'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "env #{CREW_ENV_OPTIONS} \
+        cmake -G Ninja #{CREW_CMAKE_OPTIONS} -DBUILD_SHARED_LIBS=ON .."
+      system 'samu'
+    end
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
