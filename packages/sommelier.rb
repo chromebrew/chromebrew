@@ -296,7 +296,7 @@ class Sommelier < Package
       To restart the sommelier daemon, run 'restartsommelier'
     
     EOT
-    puts <<EOT.orange
+    puts <<~EOT.orange
       Please be aware that gui applications may not work without the
       sommelier daemon running.
     
