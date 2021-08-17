@@ -259,7 +259,7 @@ class Sommelier < Package
     Dir.chdir('vm_tools/sommelier') do
       system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
       Dir.chdir('builddir') do
-        FileUtils.mkdir ["#{CREW_DEST_PREFIX}/bin", "#{CREW_DEST_PREFIX}/sbin", "#{CREW_DEST_PREFIX}/etc", CREW_DEST_HOME]
+        FileUtils.mkdir_p ["#{CREW_DEST_PREFIX}/bin", "#{CREW_DEST_PREFIX}/sbin", "#{CREW_DEST_PREFIX}/etc", CREW_DEST_HOME]
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
         FileUtils.install 'sommelierd', "#{CREW_DEST_PREFIX}/sbin/sommelierd", mode: 0o755
