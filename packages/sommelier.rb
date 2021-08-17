@@ -84,7 +84,7 @@ class Sommelier < Package
 
           case "$(uname -m)" in
           x86_64|i686)
-            sort_result = "$(sort -V <<< "$(uname -r)"$'\\n'"4.16.0" | tail -n1)"
+            sort_result="$(sort -V <<< "$(uname -r)"$'\\n'"4.16.0" | tail -n1)"
             if [[ "${sort_result}" == "4.16.0" ]]; then
               MESA_LOADER_DRIVER_OVERRIDE=i965
             fi
@@ -125,7 +125,7 @@ class Sommelier < Package
           basedir=${base%/*}
           LD_ARGV0_REL="../bin/sommelier" \
             exec "${basedir}/..#{@peer_cmd_prefix}" \
-              ../bin/sommelier \
+              --argv0 "$0" \
               --library-path \
               "${basedir}/../#{ARCH_LIB}" \
               --inhibit-rpath '' \
@@ -285,8 +285,7 @@ class Sommelier < Package
     # all tasks are done by sommelier.env now
     puts
     puts 'Removing old sommelier env variable loading code in ~/.bashrc'.lightblue
-    system 'sed -i "s,set -a && source ~/.sommelier.env && set +a,," -i.backup ~/.bashrc'
-    system 'sed -i "s,set -a ; source ~/.sommelier-default.env ; source ~/.sommelier.env ; set +a,," -i.backup ~/.bashrc'
+    system 'sed -i "/[sS]ommelier/d" -i.backup ~/.bashrc'
     puts 'To complete the installation, execute the following:'.orange
     puts 'source ~/.bashrc'.orange
 
