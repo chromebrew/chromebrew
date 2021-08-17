@@ -39,6 +39,12 @@ class Sommelier < Package
     @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end
 
+  def self.preflight
+    unless File.socket?('/var/run/chrome/wayland-0')
+      abort "This package is not compatible with your device :/".lightred
+    end
+  end
+  
   def self.build
     Dir.chdir('vm_tools/sommelier') do
       # Patch to avoid error with GCC > 9.x
@@ -268,7 +274,6 @@ class Sommelier < Package
         FileUtils.install 'stopsommelier', "#{CREW_DEST_PREFIX}/bin/stopsommelier", mode: 0o755
         FileUtils.install 'restartsommelier', "#{CREW_DEST_PREFIX}/bin/restartsommelier", mode: 0o755
         FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o644
-        FileUtils.install '.sommelier-default.env', "#{CREW_DEST_HOME}/.sommelier-default.env", mode: 0o644
       end
     end
 
