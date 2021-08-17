@@ -102,7 +102,7 @@ class Sommelier < Package
         IO.write 'sommelier_sh' <<~EOF
           #!/bin/bash
           function readlink(){
-            coreutils --coreutils-prog=readlink \"$@\"
+            coreutils --coreutils-prog=readlink "$@"
           }
 
           if base=$(readlink "$0" 2>/dev/null); then
