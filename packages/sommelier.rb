@@ -44,13 +44,15 @@ class Sommelier < Package
       abort "This package is not compatible with your device :/".lightred
     end
   end
-  
+
+  def self.prebuild
+    # Patch to avoid error with GCC > 9.x
+    # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
+    Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc", chdir: 'vm_tools/sommelier'
+  end
+
   def self.build
     Dir.chdir('vm_tools/sommelier') do
-      # Patch to avoid error with GCC > 9.x
-      # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
-      system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc"
-
       # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
       system <<~BUILD
@@ -70,7 +72,7 @@ class Sommelier < Package
       BUILD
       
       system 'meson configure builddir'
-      system 'ninja -C builddir'
+      system 'samu -C builddir'
 
       Dir.chdir('builddir') do
         system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
