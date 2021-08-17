@@ -1,7 +1,7 @@
 require 'package'
 
 class Crew_url_handler < Package
-  description 'Script for opening an URL in Chrome OS browser'
+  description 'Script for opening an URL in your default browser'
   homepage 'https://github.com/skycocker/chromebrew'
   version '1.0'
   license 'GPL-3'
