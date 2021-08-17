@@ -293,8 +293,8 @@ class Sommelier < Package
     puts
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"
     puts <<~EOT.lightblue
-      To adjust sommelier environment variables, edit #{CREW_PREFIX}/etc/env.d/sommelier'
-      Default values are in ~/.sommelier-default.env
+      To adjust sommelier environment variables, edit #{CREW_PREFIX}/etc/env.d/sommelier
+      Default values are in #{CREW_PREFIX}/etc/env.d/sommelier
       
       To start the sommelier daemon, run 'startsommelier'
       To stop the sommelier daemon, run 'stopsommelier'
