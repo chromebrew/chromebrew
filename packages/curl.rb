@@ -17,10 +17,10 @@ class Curl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_x86_64/curl-7.78.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4a8737953581f3277af58f45e7ce43381e5d8d0601018f668106f01ea35bc098',
-     armv7l: '4a8737953581f3277af58f45e7ce43381e5d8d0601018f668106f01ea35bc098',
-       i686: 'e908c912a425cb71e071238b2260d90c513f7bb5a19ffa7ab877adc81f617ba8',
-     x86_64: 'a03326367b15ad2e46a78be0d31ffe0276d302c8e8f37bc51fd3b9fe7dec5be9'
+    aarch64: '9f176fb06b0d039fb59674d4fb8d9fd96f194d4ac7fbcc906f4eacf1d45ca5a8',
+     armv7l: '9f176fb06b0d039fb59674d4fb8d9fd96f194d4ac7fbcc906f4eacf1d45ca5a8',
+       i686: '2286de285438ee9f4885c1f6b759c1ff28ee7cc17c828797081a7cbe167d1287',
+     x86_64: 'b67ca7c670ef0ecb0ab896f3743ff8971246cb947c2339bc096d86613d2b0181'
   })
 
   depends_on 'ca_certificates' => :build
@@ -167,7 +167,7 @@ class Curl < Package
     -L#{CREW_PREFIX}/musl/lib' \
     CURL_LIBRARY_PATH=#{CREW_PREFIX}/musl/lib \
     ./configure --prefix=#{CREW_PREFIX}/musl \
-    --libdir=#{CREW_PREFIX}/musl \
+    --libdir=#{CREW_PREFIX}/musl/lib \
     --disable-dependency-tracking \
     --disable-imap \
     --disable-ldap \
