@@ -18,8 +18,8 @@ class Musl_lz4 < Package
   binary_sha256({
     aarch64: 'ffe7b999c45a2417dac278c1742d482938fee96db2f2a2213ed01153b20ac3a7',
      armv7l: 'ffe7b999c45a2417dac278c1742d482938fee96db2f2a2213ed01153b20ac3a7',
-       i686: '6cb072dfac2b88df750d32fc259155b762eeb987dfbf352283d4a7fa13a3e2a7',
-     x86_64: '879317bd3b652c30086fec940df66c4c0b66fd565708ccf300ca54e9ff94235f'
+       i686: 'dd56cd308c23f377c8e6bf0727abfe6cb914bd72ed66529f2189bbdf5a15b78e',
+     x86_64: 'a0ef3300ac61b6c5c513fb2f8d4f99b155dfc2eabf1c0e93c9c224437ab32af0'
   })
 
   depends_on 'musl_native_toolchain' => :build

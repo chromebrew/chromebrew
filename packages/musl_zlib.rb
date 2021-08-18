@@ -17,10 +17,10 @@ class Musl_zlib < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_x86_64/musl_zlib-1.2.11-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0e188f8eb4f7d2d7817b14c8409d5533b77b299078eed0bd857f2466fb17cd71',
-     armv7l: '0e188f8eb4f7d2d7817b14c8409d5533b77b299078eed0bd857f2466fb17cd71',
-       i686: 'b1c73fe2324b9c749023df9b3e6a2d87922086b5fa8edf09d3a1cf27f51365dd',
-     x86_64: '37b0132c89e1f258e0e932c255561331e4b4a34536c119f38bf619f7e6068016'
+    aarch64: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
+     armv7l: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
+       i686: 'addf2cafe0eea9d6dee69f125a2816b31a8ce7e4510ca80940e39398c952e2bd',
+     x86_64: '8d609a60c86f67e85052970a62a65bd74282eda688fddfc30e07aa19def12547'
   })
 
   depends_on 'musl_native_toolchain' => :build

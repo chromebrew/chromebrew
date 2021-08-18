@@ -4,7 +4,7 @@ class Musl_libnghttp2 < Package
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
   @_ver = '1.44.0'
-  version @_ver.to_s
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/nghttp2/nghttp2/releases/download/v#{@_ver}/nghttp2-#{@_ver}.tar.bz2"
@@ -19,8 +19,8 @@ class Musl_libnghttp2 < Package
   binary_sha256({
     aarch64: 'a1e5658fa2818435c04a9bbf3016883259f2cf357532663bdcb465aa7cede3fe',
      armv7l: 'a1e5658fa2818435c04a9bbf3016883259f2cf357532663bdcb465aa7cede3fe',
-       i686: '1060a1514584f2caaa049c641dc2d6ae8a9d8e43d10803c629bba749f094e168',
-     x86_64: '5960ccc554b8ef66419b7c890def80fff89420f4a4b52ac4ca1be1ba070c76ab'
+       i686: 'bff9be0aa3a6ee1382ef4cd6be72f68cc4b0492bfee133514e9afe31526d8ee0',
+     x86_64: '3433a5484c9655495bde0f0132dc68de7ac8ac2484b2ab8564f7594623163bf1'
   })
 
   depends_on 'musl_native_toolchain' => :build

@@ -6,7 +6,7 @@ class Musl_libidn2 < Package
   version '2.3.2'
   license 'GPL-2+ and LGPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libidn/libidn2-2.3.2.tar.gz'
+  source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{version}.tar.gz"
   source_sha256 '76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91'
 
   binary_url({
@@ -16,13 +16,14 @@ class Musl_libidn2 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_x86_64/musl_libidn2-2.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c37e067ec66210c1571c26ca90126f232e03e6066643acaaf8a2dc784b54bfdd',
-     armv7l: 'c37e067ec66210c1571c26ca90126f232e03e6066643acaaf8a2dc784b54bfdd',
-       i686: '93fdc1d0ce7112695463e98f582b42a2b3715efbc8b9cc1001afbbd7f0f8b7fd',
-     x86_64: '7140b776fe48662f787fde9facf7d646f2456b0f2ccfbf5a3889144f8f411716'
+    aarch64: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
+     armv7l: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
+       i686: '8ca581ae752253a7312754ed90da4d3db8874485df7e9299bbad52fa1ee42a07',
+     x86_64: '4db4f2cdf93da11a090ab78d3b01d729c374bd41ebf41a0e89a2031091b16d24'
   })
 
   depends_on 'musl_native_toolchain' => :build
+  depends_on 'musl_libunistring' => :build
 
   @abi = ''
   @arch_ssp_cflags = ''
@@ -75,9 +76,17 @@ class Musl_libidn2 < Package
       CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
       LDFLAGS='#{@ldflags}'"
 
+  def self.patch
+    FileUtils.rm_f 'doc/idn2.1'
+  end
+
   def self.build
     system "#{@musldep_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
-        --disable-shared"
+        --disable-shared \
+        --disable-doc \
+        --disable-rpath \
+        --disable-gtk-doc \
+        --disable-gtk-doc-pdf"
     system 'make'
   end
 

@@ -16,10 +16,10 @@ class Musl_c_ares < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_x86_64/musl_c_ares-1.17.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9614a8e2f86a67c1c60661bf8c7ca0f8a8d5a0910f76aad8ea0d55ff0bec88a4',
-     armv7l: '9614a8e2f86a67c1c60661bf8c7ca0f8a8d5a0910f76aad8ea0d55ff0bec88a4',
-       i686: '3010f207dbde4b4ad225931696bdd61e45d15eedea745948f87596a0d27ad25f',
-     x86_64: '5e376d4cc1d1d21c9988e5486a0b6fa4d6dfd5ce882762290da7bc2f8b141b41'
+    aarch64: '0a7b147895dec02c913ee92622485c79a8575c44afa2854b0b60ee93b1f01f55',
+     armv7l: '0a7b147895dec02c913ee92622485c79a8575c44afa2854b0b60ee93b1f01f55',
+       i686: '1df7efce50d00836b18d9e8a8a8c0cbc11c693037943ca69f0b339105021fdf4',
+     x86_64: 'd637607a8c9c72f36dda7c9dd5b0906462ac46b7cc7f18208fa548b63e78497a'
   })
 
   depends_on 'musl_native_toolchain' => :build

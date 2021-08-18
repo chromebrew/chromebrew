@@ -16,10 +16,10 @@ class Musl_krb5 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_x86_64/musl_krb5-1.19.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '447399f2631634a0c8f5e296748c5d3ffc2e2951a5f63f7269e1490704e7b08c',
-     armv7l: '447399f2631634a0c8f5e296748c5d3ffc2e2951a5f63f7269e1490704e7b08c',
-       i686: 'ecf85191be363ccbb8c9d776306f1afdc673709d17a976180f473e4082a00a2a',
-     x86_64: '41b397c6b630c7f517e66d6dfc602eaf6f9f124b7c949c980494928de6d0c295'
+    aarch64: 'ae3dbf8f8b0197953b954c2115f29ee61ae04583e6859d78e4e8d4689920a8cd',
+     armv7l: 'ae3dbf8f8b0197953b954c2115f29ee61ae04583e6859d78e4e8d4689920a8cd',
+       i686: 'ecbec035b2e93a59883b41e797cafd2510d04a8f3fd9b8032dd77c3cab87af84',
+     x86_64: 'ec91bba3e55eade92f3b9dbe3278fe8a73ec65227faaebc8a880b037e7f63010'
   })
 
   depends_on 'musl_native_toolchain' => :build

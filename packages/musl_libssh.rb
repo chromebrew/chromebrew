@@ -18,12 +18,13 @@ class Musl_libssh < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_x86_64/musl_libssh-0.9.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1e3d8f47e2ba1da123433ed3c6ce97629c605f13e2f9e934b299b2d5dfc69502',
-     armv7l: '1e3d8f47e2ba1da123433ed3c6ce97629c605f13e2f9e934b299b2d5dfc69502',
-       i686: '950ca7f5da44df0249a27164c109ac71b3cb1a93c157064c56b99bdc8c0a4961',
-     x86_64: 'c8f41e9f0883bf95fca3d1d6be9e0b1341ea179c2f155e22cdc0df9a85c8c176'
+    aarch64: 'c24e1c01cb682054878e8587fe246495baaa9aae1f32ab5c59e51b7ef9135a0b',
+     armv7l: 'c24e1c01cb682054878e8587fe246495baaa9aae1f32ab5c59e51b7ef9135a0b',
+       i686: '2372e3a35e4842a8ce16aab4d8a12ec72a12c72e02e25443dfd834da201aa21c',
+     x86_64: 'c3bd211cf2b13d03142871dad8425bed4fc0a283696dc68147a2045ee3abc3f2'
   })
 
+  depends_on 'musl_krb5' => :build
   depends_on 'musl_native_toolchain' => :build
   depends_on 'musl_zlib' => :build
   depends_on 'musl_openssl' => :build

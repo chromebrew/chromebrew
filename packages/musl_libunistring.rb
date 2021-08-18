@@ -16,13 +16,14 @@ class Musl_libunistring < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-     armv7l: '3abccca7c7845c41cd4fa89a7d2e08778b99241caae610f9124433d745dceacc',
-       i686: '816cf6f3c27e95b181f21b85e446403942e0364be34998088582073b60e250c2',
-     x86_64: 'c5e5fc54c7f0fd462664b517a485a803157191325ec8734563a1cf81a77d0017'
+    aarch64: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
+     armv7l: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
+       i686: '054d188d237eded469d2ccfdc27cd64370704221ba04d89076d6bcc296220b02',
+     x86_64: 'cdab7f1661c3b8e93f1bb7e0b255993817df246e46ace22d9d1d2451826c324b'
   })
 
   depends_on 'musl_native_toolchain' => :build
+  depends_on 'musl_zlib' => :build
 
   @abi = ''
   @arch_ssp_cflags = ''
@@ -89,5 +90,7 @@ class Musl_libunistring < Package
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # avoid conflict with musl_libidn2
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/musl/share/info/dir"
   end
 end

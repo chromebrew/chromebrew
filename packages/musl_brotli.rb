@@ -16,10 +16,10 @@ class Musl_brotli < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_x86_64/musl_brotli-1.0.9-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '873ce1857a4ce73620d47ab283f632ff47d5509e870eddcd57d3ff8a44f028fa',
-     armv7l: '873ce1857a4ce73620d47ab283f632ff47d5509e870eddcd57d3ff8a44f028fa',
-       i686: 'd0ceca0467b8f7d86e57b88f5e9f901efa16410957f76b6231841a3a6b81e16e',
-     x86_64: '4486cda139a1155cd7dba48376c49f1ccbc9d3cdcc4a4b35990936266895476e'
+    aarch64: '5a0adda76a2a4fd9038596a9bd29689b40b0f88d89119a38b48201c619120c6b',
+     armv7l: '5a0adda76a2a4fd9038596a9bd29689b40b0f88d89119a38b48201c619120c6b',
+       i686: 'a2f5f5d2ed337805ef41b12ea86a5316f315af09114eadc72f604b77d7938c36',
+     x86_64: 'c48b54167e64f66230582cbb8691dd7df8e02e28509d601a0455d556627fc3e9'
   })
 
   depends_on 'musl_native_toolchain' => :build

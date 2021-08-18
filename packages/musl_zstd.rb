@@ -16,16 +16,13 @@ class Musl_zstd < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_x86_64/musl_zstd-1.5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '50c703a005623b1d212d6344ea27b24c4adc80d24e39e7bda37ae696340d846c',
-     armv7l: '50c703a005623b1d212d6344ea27b24c4adc80d24e39e7bda37ae696340d846c',
-       i686: '286b14d98df95cf6262c9bb9d469ddb369d8e1a75807515fe05e9a58c76d4ba7',
-     x86_64: 'be252c43689f7538e95504fbea7ddb78d7898ca0ee348df1bcacd79523266aad'
+    aarch64: '822e00a41875ef36ee60caf20248994e3f88aff792fc316301ae920fa9efe280',
+     armv7l: '822e00a41875ef36ee60caf20248994e3f88aff792fc316301ae920fa9efe280',
+       i686: '36c0b6802c919b911dd84a60caba2f7678cd9592d95d504a819259ee2c4d00d9',
+     x86_64: 'fc0bd9a2fe9e058aa25dbaca3a4fa9bc5e1cf80533e0fa4d9ef803acbef6ddbf'
   })
 
   depends_on 'musl_native_toolchain' => :build
-  depends_on 'musl_lz4' => :build
-  depends_on 'musl_xz' => :build
-  depends_on 'patchelf' => :build
 
   @abi = ''
   @arch_ssp_cflags = ''

@@ -16,10 +16,10 @@ class Musl_ncurses < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_x86_64/musl_ncurses-6.2-20210522-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '307d642fa2a84e65ed34cb005b32bb6d900c3b51be05d482bd31a121175db8cf',
-     armv7l: '307d642fa2a84e65ed34cb005b32bb6d900c3b51be05d482bd31a121175db8cf',
-       i686: '7eb3d713d2acfe94f91736478cf7f0390cc53f36464f5a9a33d3fc43974eaf18',
-     x86_64: 'd5b5c2ddfab5d247c1f416607e71667d3fd80ad0d46f985278f76f1988f695a4'
+    aarch64: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
+     armv7l: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
+       i686: '72a9cd80e616cb016950f006906627b23d8f54e0f9c8149ba8163000144a1a54',
+     x86_64: '1f7a5efdccc51d44cf80304739a98f7d6b12ce2c869da49b33b3910b295451f5'
   })
 
   depends_on 'musl_native_toolchain' => :build
