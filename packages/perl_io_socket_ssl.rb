@@ -10,15 +10,15 @@ class Perl_io_socket_ssl < Package
   source_sha256 '40da40948ecc9c787ed39c95715872679eebfd54243721174993a2003e32ab0a'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.068-1_i686/perl_io_socket_ssl-2.068-1-chromeos-i686.tar.xz',
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.071_armv7l/perl_io_socket_ssl-2.071-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.071_armv7l/perl_io_socket_ssl-2.071-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.071_i686/perl_io_socket_ssl-2.071-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.071_x86_64/perl_io_socket_ssl-2.071-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-       i686: '24df6cac573463073b723da4b9b1a65380e2cdd67a053aabb9e61491410960c7',
     aarch64: '9fc1e546ec21478fb4ed274e0a06bcbf62b1cd255e55f27368548f925ced9a5a',
      armv7l: '9fc1e546ec21478fb4ed274e0a06bcbf62b1cd255e55f27368548f925ced9a5a',
+       i686: 'a6d658776f94b42cf15d63e53c7a85ce11e7624842a16f6c077560d050db2a5b',
      x86_64: 'edb13970364eda495488af15f78716f4959fa907645574667ef9dddf5e3281cf'
   })
 

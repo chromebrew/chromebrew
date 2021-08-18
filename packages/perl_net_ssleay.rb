@@ -12,11 +12,13 @@ class Perl_net_ssleay < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_armv7l/perl_net_ssleay-1.90-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_armv7l/perl_net_ssleay-1.90-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_i686/perl_net_ssleay-1.90-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_x86_64/perl_net_ssleay-1.90-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '4ed9c05974afa9edf1006c363e3f7a58607b3bff2714013feacad40a6b071f1c',
      armv7l: '4ed9c05974afa9edf1006c363e3f7a58607b3bff2714013feacad40a6b071f1c',
+       i686: '2418b10e45d07d03c76615eeaa7a4d247de4252f64672d5243e0e43cc053bfcf',
      x86_64: '65271f786fbf6480fea9b9e95e05d15227add6cb418e1dae9ba97bfe7e35424e'
   })
 
