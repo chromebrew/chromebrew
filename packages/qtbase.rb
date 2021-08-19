@@ -12,11 +12,13 @@ class Qtbase < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_armv7l/qtbase-5.15.3-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_armv7l/qtbase-5.15.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_i686/qtbase-5.15.3-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_x86_64/qtbase-5.15.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '8554431fc8f552380aa8822d440559c9fd2bbe00314d96ed5939637ef3a329e6',
      armv7l: '8554431fc8f552380aa8822d440559c9fd2bbe00314d96ed5939637ef3a329e6',
+       i686: 'ae0ecf607b4f2742b7a6bde14f77c9aace3ad28511cfdec4e4db5e2a5ad54b6d',
      x86_64: '9b58c01ad6d16498b1cd8a35ac97026f75dc5d19b586a0a3759362757ddd8bf7'
   })
 
