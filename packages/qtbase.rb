@@ -3,12 +3,11 @@ require 'package'
 class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  @_ver = '5.15'
-  version @_ver
+  version '5.15.3'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag "kde/#{@_ver}"
+  git_hashtag "kde/5.15"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15_armv7l/qtbase-5.15-chromeos-armv7l.tpxz',
