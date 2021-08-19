@@ -10,9 +10,9 @@ class Qtbase < Package
   git_hashtag "kde/5.15"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15_armv7l/qtbase-5.15-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15_armv7l/qtbase-5.15-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15_x86_64/qtbase-5.15-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_armv7l/qtbase-5.15.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_armv7l/qtbase-5.15.3-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_x86_64/qtbase-5.15.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '8554431fc8f552380aa8822d440559c9fd2bbe00314d96ed5939637ef3a329e6',
