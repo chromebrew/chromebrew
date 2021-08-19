@@ -26,7 +26,7 @@ class Mesa < Package
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
   depends_on 'libomxil_bellagio' => :build
-  depends_on 'libunwind' => :build
+  depends_on 'libunwind'
   depends_on 'libvdpau' => :build
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
