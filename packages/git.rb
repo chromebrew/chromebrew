@@ -24,6 +24,7 @@ class Git < Package
   })
 
   depends_on 'ca_certificates' => :build
+  depends_on 'curl' => :build
   depends_on 'rust' => :build
   depends_on 'musl_brotli' => :build
   depends_on 'musl_c_ares' => :build
@@ -97,6 +98,7 @@ class Git < Package
 
     @krb5_static_libs = "#{CREW_PREFIX}/musl/lib/libkrb5support.a  #{CREW_PREFIX}/musl/lib/libgssapi_krb5.a #{CREW_PREFIX}/musl/lib/libkrb5.a  #{CREW_PREFIX}/musl/lib/libk5crypto.a #{CREW_PREFIX}/musl/lib/libcom_err.a"
 
+    # This build is dependent upon the musl curl package
     @curl_static_libs = `#{CREW_PREFIX}/musl/bin/curl-config --static-libs`.chomp.gsub('=auto', '')
     @git_libs = "#{@curl_static_libs} #{@krb5_static_libs} \
         -l:libresolv.a \
