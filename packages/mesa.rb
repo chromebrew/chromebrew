@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.2.0'
+  @_ver = '21.2.1'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.0_armv7l/mesa-21.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.0_armv7l/mesa-21.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.0_i686/mesa-21.2.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.0_x86_64/mesa-21.2.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_armv7l/mesa-21.2.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_armv7l/mesa-21.2.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_i686/mesa-21.2.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_x86_64/mesa-21.2.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd80e1bde346c0460a377a11ead1f5b30c34369c84e124060f9a025a985bb37b3',
-     armv7l: 'd80e1bde346c0460a377a11ead1f5b30c34369c84e124060f9a025a985bb37b3',
-       i686: 'fd43dd3879c980efc701804535b9422e5e41d31b85d2de498c5049c2fced8935',
-     x86_64: 'e25ae34492f5da8da9fdcb39b159f0be43b72f9b6420ec03df04cedba7493a23'
+    aarch64: 'af4f1d97e5404ff136bae551ce9a1dcbc9d1db2990b35fcf71fde37df892caf5',
+     armv7l: 'af4f1d97e5404ff136bae551ce9a1dcbc9d1db2990b35fcf71fde37df892caf5',
+       i686: '41c82db78aad8fb8331ed19bb5698f29bb2a2bbedaae73c192ae1e0333fe4426',
+     x86_64: '5e619405ea17db19a946a690ba98e7def61e0f12077aa4fce844d13f97625660'
   })
 
   depends_on 'glslang' => :build
@@ -104,6 +104,6 @@ class Mesa < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
