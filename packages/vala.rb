@@ -5,18 +5,20 @@ class Vala < Package
   homepage 'https://wiki.gnome.org/Projects/Vala'
   version '0.52.4'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/vala.git'
   git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.52.4_armv7l/vala-0.52.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.52.4_armv7l/vala-0.52.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.52.4_i686/vala-0.52.4-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.52.4_x86_64/vala-0.52.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '99147de6b7b758595d27359d4a6fa137f844b1d67807d8f0a14a5cf5ae201a4f',
      armv7l: '99147de6b7b758595d27359d4a6fa137f844b1d67807d8f0a14a5cf5ae201a4f',
+       i686: 'accb24d01b54aed8876c3cb1ff79ec4c62e97dad3d59522d6ace946faf7cc809',
      x86_64: '85dd615b1ff6ccb1c6cf9940349624b8f0228c045ce275e2d2b5f304de79279d'
   })
 
