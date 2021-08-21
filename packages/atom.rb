@@ -4,7 +4,7 @@ class Atom < Package
   description 'The hackable text editor'
   homepage 'https://atom.io/'
   @_ver = '1.58.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'x86_64'
 
@@ -13,6 +13,7 @@ class Atom < Package
 
   depends_on 'fakeroot'
   depends_on 'gtk3'
+  depends_on 'libcom_err'
   depends_on 'libsecret'
   depends_on 'sommelier'
 
