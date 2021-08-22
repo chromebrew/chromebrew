@@ -100,22 +100,25 @@ Recently Upgraded Packages
 
 | Name | Description | Date Upgraded | Version |
 |:---|:---|:---|:---|
-| stack | The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced. | 2021-07-29 | 2.5.1 |
-| openssl | The Open Source toolkit for Secure Sockets Layer and Transport Layer Security | 2021-07-29 | 1.1.1k-3 |
-| urlwatch | A tool for monitoring webpages for updates | 2021-07-29 | 2.23-1 |
-| mypaint | MyPaint is a simple drawing and painting program. | 2021-07-29 | 2.0.1 |
-| mypaint_brushes | Brushes used by MyPaint and other software using libmypaint. | 2021-07-29 | 2.0.2 |
-| itstools | Translate XML with PO files using W3C Internationalization Tag Set rules | 2021-07-29 | 2.0.6-2 |
-| ansible | Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs. | 2021-07-29 | 3.3.0 |
-| pycairo | Dummy package for py3_pycairo. | 2021-07-29 | 1 |
-| libmypaint | Libmypaint is MyPaint\'s brushstroke rendering code, in a form that can be used by other programs. | 2021-07-29 | 1.6.1 |
-| six | Dummy package for py3_six | 2021-07-29 | 1 |
+| atom | The hackable text editor | 2021-08-21 | 1.58.0-1 |
+| vulkan_icd_loader | Vulkan Installable Client Driver ICD Loader | 2021-08-20 | 1.2.189 |
+| vulkan_headers | Vulkan header files | 2021-08-20 | 1.2.189 |
+| mesa | Open-source implementation of the OpenGL specification | 2021-08-20 | 21.2.1 |
+| upx | Extendable, high-performance executable packer for several executable formats | 2021-08-19 | 4.0.0-8a82 |
+| qtbase | Qt Base (Core, Gui, Widgets, Network, ...) | 2021-08-19 | 5.15.3 |
+| patchelf | PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables. | 2021-08-18 | 0.13 |
+| gtest | Google Test - C++ testing utility | 2021-08-17 | 1.11.0 |
+| libidn2 | GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications. | 2021-08-17 | 2.3.2 |
+| libnghttp2 | library implementing HTTP/2 protocol | 2021-08-17 | 1.44.0 |
 
 Latest Packages
 ---------------
 
 | Name | Description | Date Added |
 |:---|:---|:---|
+| apktool | A tool for reverse engineering Android apk files | 2021-08-20 |
+| teams | Microsoft Teams - Meet, chat, call, and collaborate in just one place. | 2021-08-15 |
+| github_desktop | GitHub Desktop is an open source Electron-based GitHub app | 2021-08-15 |
 | py3_secretstorage | Python bindings to Freedesktop.org Secret Service API | 2021-07-29 |
 | py3_openssl | PyOpenSSL is a Python wrapper module around the OpenSSL library. | 2021-07-29 |
 | py3_oci | Oracle Cloud Infrastructure Python SDK | 2021-07-29 |
@@ -123,9 +126,6 @@ Latest Packages
 | py3_impacket | Impacket provides network protocols constructors and dissectors. | 2021-07-29 |
 | py3_ebooklib | Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format. | 2021-07-29 |
 | py3_cryptography | Cryptography provides cryptographic recipes and primitives to Python developers. | 2021-07-29 |
-| oci_cli | Command Line Interface for Oracle Cloud Infrastructure | 2021-07-29 |
-| ansible_base | Ansible base libraries and functions. | 2021-07-29 |
-| py3_zipp | Zipp is a backport of pathlib-compatible object wrapper for zip files. | 2021-07-26 |
 
 Chat with us!
 -------------
