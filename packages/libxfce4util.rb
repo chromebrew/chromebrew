@@ -11,6 +11,10 @@ class Libxfce4util < Package
 
   depends_on 'gobject_introspection'
 
+  def self.patch
+    system 'filefix'
+  end
+
   def self.build
     system <<~BUILD
       [ -x autogen.sh ] && env NOCONFIGURE='1' ./autogen.sh
