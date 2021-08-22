@@ -3,33 +3,27 @@ require 'package'
 class Xfce4_dev_tools < Package
   description 'Xfce4 development tools'
   homepage 'https://xfce.org/'
-  version '4.14.0'
+  version '4.17.0'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.14/xfce4-dev-tools-4.14.0.tar.bz2'
-  source_sha256 '2c9eb8e0fe23e47dc31411a93b683fd1b7a49140e9163f0aab9e94a3d8a0b5fd'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_dev_tools/4.14.0_armv7l/xfce4_dev_tools-4.14.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_dev_tools/4.14.0_armv7l/xfce4_dev_tools-4.14.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_dev_tools/4.14.0_i686/xfce4_dev_tools-4.14.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_dev_tools/4.14.0_x86_64/xfce4_dev_tools-4.14.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '8b1ceccfed1a4bdb34dbf9ed35c246cca5035754ae01185db88261cd5ed62dd4',
-     armv7l: '8b1ceccfed1a4bdb34dbf9ed35c246cca5035754ae01185db88261cd5ed62dd4',
-       i686: 'fe79c7ae95dc08eb4a32168d8b0ff5fcd203cd91d7b12d894a94f826d84dd425',
-     x86_64: '24341f2465119626d4625ba9926f7d63f7e6a95bba6f18e01706025855399c9e',
-  })
+  source_url 'https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.17/xfce4-dev-tools-4.17.0.tar.bz2'
+  source_sha256 'd334c1f10e140e666b86c6c3bd8dcd62f1a877f537bcacc974478b6e92c493c7'
 
   depends_on 'gtk_doc'
 
+  def self.patch
+    system 'filefix'
+  end
+
   def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system "make -j#{CREW_NPROC}"
+    system <<~BUILD
+      # env NOCONFIGURE='1' ./autogen.sh
+      env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}
+      make
+    BUILD
   end
 
   def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
