@@ -3,11 +3,11 @@ require 'package'
 class Libxfce4util < Package
   description 'Utility library for the Xfce4 desktop environment'
   homepage 'https://xfce.org/'
-  version '4.16.0'
+  version '4.17.1'
   license 'LGPL-2+ and GPL-2+'
   compatibility 'all'
-  source_url 'https://gitlab.xfce.org/xfce/libxfce4util.git'
-  git_hashtag '546a8404050459a7b4d5bd264d11d1748f71d940'
+  source_url 'https://archive.xfce.org/src/xfce/libxfce4util/4.17/libxfce4util-4.17.1.tar.bz2'
+  source_sha256 '1942151f3c1f3732bc53dd9fd3b936f62067796dc47a33c60a0ad05d933d90f2'
 
   depends_on 'gobject_introspection'
 
