@@ -17,7 +17,7 @@ class Xfce4_dev_tools < Package
 
   def self.build
     system <<~BUILD
-      # env NOCONFIGURE='1' ./autogen.sh
+      [ -x autogen.sh ] && env NOCONFIGURE='1' ./autogen.sh
       env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}
       make
     BUILD
