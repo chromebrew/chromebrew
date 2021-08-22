@@ -25,8 +25,7 @@ class Xfce4_panel < Package
       [ -x autogen.sh ] && env NOCONFIGURE='1' ./autogen.sh
       env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
         --disable-static \
-        --enable-gio-unix \
-        --enable-gtk2
+        --enable-gio-unix
 
       make
     BUILD
