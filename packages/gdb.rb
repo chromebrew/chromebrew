@@ -19,13 +19,12 @@ class Gdb < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/10.2-1_x86_64/gdb-10.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c95796ad149444d93297e596e4018be2a184dbb631f2cbcb050b197b5bbb0aff',
-     armv7l: 'c95796ad149444d93297e596e4018be2a184dbb631f2cbcb050b197b5bbb0aff',
-       i686: 'cc16237aa00d46d9ed5fe2786e13e87b89e4a763644326bbbc5d6847c5d84395',
-     x86_64: 'fa8a712a9907f7f24f8d1e1a7ef9dd3fbdbec7b4b367fdbeca4be40f689fe0db'
+    aarch64: '84de0df44444f2fffac56db0ff50374f3c967f31ff9c889194b9364eb613aa82',
+     armv7l: '84de0df44444f2fffac56db0ff50374f3c967f31ff9c889194b9364eb613aa82',
+       i686: 'd7bd22e1427da962523a99cd145664e733165520def366b6b081e899d20bdb5b',
+     x86_64: 'c407a7749b85e28222946221ecfb73f24aa9f13378f5c8cf4a91f253a059da06'
   })
 
-  depends_on 'libcurl' # R
   depends_on 'mpfr' # R
   depends_on 'gmp' # R
   depends_on 'source_highlight' # R
