@@ -35,7 +35,7 @@ class Avahi < Package
   depends_on 'libjpeg'
   depends_on 'mono' => :build
   depends_on 'pango'
-  depends_on 'qtbase'
+  depends_on 'qtbase' => :build
 
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
