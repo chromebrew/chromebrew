@@ -34,4 +34,8 @@ class Xfce4_panel < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
+  
+  def self.postinstall
+    system 'gtk-update-icon-cache',  '-f',  '-t', "#{CREW_PREFIX}/share/icons/hicolor"
+  end
 end
