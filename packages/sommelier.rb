@@ -45,7 +45,7 @@ class Sommelier < Package
     end
   end
 
-  def self.prebuild
+  def self.patch
     # Patch to avoid error with GCC > 9.x
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
     Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc", chdir: 'vm_tools/sommelier'
@@ -270,7 +270,7 @@ class Sommelier < Package
     Dir.chdir('vm_tools/sommelier') do
       system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
       Dir.chdir('builddir') do
-        FileUtils.mkdir_p ["#{CREW_DEST_PREFIX}/bin", "#{CREW_DEST_PREFIX}/sbin", "#{CREW_DEST_PREFIX}/etc", CREW_DEST_HOME]
+        FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc CREW_DEST_HOME]
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
         FileUtils.install 'sommelierd', "#{CREW_DEST_PREFIX}/sbin/sommelierd", mode: 0o755
