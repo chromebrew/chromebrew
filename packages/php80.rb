@@ -3,24 +3,24 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.9'
+  @_ver = '8.0.10'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '71a01b2b56544e20e28696ad5b366e431a0984eaa39aa5e35426a4843e172010'
+  source_sha256 '66dc4d1bc86d9c1bc255b51b79d337ed1a7a035cf71230daabbf9a4ca35795eb'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.9_armv7l/php80-8.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.9_armv7l/php80-8.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.9_i686/php80-8.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.9_x86_64/php80-8.0.9-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_armv7l/php80-8.0.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_armv7l/php80-8.0.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_i686/php80-8.0.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_x86_64/php80-8.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '37924b67652a924cbb4d8d21f5796682400676a3d05399b88ba7bacd4163b11a',
-     armv7l: '37924b67652a924cbb4d8d21f5796682400676a3d05399b88ba7bacd4163b11a',
-       i686: 'e56372e2c953904d0d4aa5967704bed4740458c9b164f66c3fd50e6a12116db3',
-     x86_64: 'b51c837978748f911398aef255ec50c3e9452014a85ada449fd2c43ba32d46bd',
+    aarch64: 'a65f8b92cd92058e35ec91351b634d357f8bd3e4ef992b7caeb4dc7f08cc7696',
+     armv7l: 'a65f8b92cd92058e35ec91351b634d357f8bd3e4ef992b7caeb4dc7f08cc7696',
+       i686: '04f25063f542961edbab7e572ea918b1dc9f9573c88525343e533a3708f69249',
+     x86_64: 'd80d9799c9e0824f3f79c29f4eebc4d6f8bb25c39591f2471a826be62516727c',
   })
 
   depends_on 'aspell_en'
@@ -44,7 +44,7 @@ class Php80 < Package
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    unless ARGV[0] == 'reinstall' and version == phpver
+    unless ARGV[0] == 'reinstall' and @_ver == phpver
       abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
     end
   end
@@ -140,6 +140,7 @@ class Php80 < Package
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
