@@ -12,13 +12,13 @@ class Openssh < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.7_armv7l/openssh-8.7-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.7_armv7l/openssh-8.7-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.7_i686/openssh-8.7-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.7_i686/openssh-8.7-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/8.7_x86_64/openssh-8.7-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '773918e9e9fdcbeba4b4240057e0d1946942806e37ae1812c5dbbb37aca8154f',
      armv7l: '773918e9e9fdcbeba4b4240057e0d1946942806e37ae1812c5dbbb37aca8154f',
-       i686: 'a6a8f190b1a2a7dfdc9a7026f5cf83ed184b711c5a26ed872a61d43646a21ee0',
+       i686: '3ec04d72c174ede9ff283c5e0a8f994fba40e714ebc21ed647e4964b1ff8c80c',
      x86_64: '8c04f059c2d1f7683185d795fd87adad1988cd46546ab0c445957c2ed593781c'
   })
 
