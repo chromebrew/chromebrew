@@ -34,6 +34,11 @@ url: https://download.savannah.gnu.org/releases/acl
 activity: medium
 ---
 kind: url
+name: acli
+url: https://github.com/acquia/cli/releases
+activity: medium
+---
+kind: url
 name: acpi
 url: https://sourceforge.net/projects/acpiclient/files/acpiclient/
 activity: none
@@ -1972,6 +1977,11 @@ kind: url
 name: git_lfs
 url: https://github.com/git-lfs/git-lfs/releases
 activity: medium
+---
+kind: url
+name: git_prompt
+url: https://github.com/git/git/releases
+activity: high
 ---
 kind: url
 name: github_cli
