@@ -22,7 +22,7 @@ class Mpv < Package
      x86_64: '93efe37ca276f8f83a207fe953df0d0efe565cbc1a7291f0b354b7f412508323'
   })
 
-  depends_on 'docutils' => :build
+  depends_on 'py3_docutils' => :build
   depends_on 'libcdio' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'alsa_lib' # R
