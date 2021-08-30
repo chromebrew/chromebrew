@@ -3,27 +3,29 @@ require 'package'
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.2.34-1'
+  @_ver = '7.2.34'
+  version "#{@_ver}-2"
   license 'PHP-3.01'
   compatibility 'all'
   source_url 'https://www.php.net/distributions/php-7.2.34.tar.xz'
   source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-1_armv7l/php72-7.2.34-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-1_armv7l/php72-7.2.34-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-1_i686/php72-7.2.34-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-1_x86_64/php72-7.2.34-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_armv7l/php72-7.2.34-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_armv7l/php72-7.2.34-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_i686/php72-7.2.34-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_x86_64/php72-7.2.34-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'db33d2ff6220b3a14d515f4a663e93f0b59feef8d0eff385adfe7e33949bd551',
-     armv7l: 'db33d2ff6220b3a14d515f4a663e93f0b59feef8d0eff385adfe7e33949bd551',
-       i686: '597a05fbbfc3058a7a695cdcb1796d71aaf0dd525d4538d2f0079835eaac5f57',
-     x86_64: '383699209341f173df246281a2b3e0f4f068814e4dbd1e894bc64061c4e62b6f',
+    aarch64: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',
+     armv7l: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',
+       i686: '5d0770534aff60ecb57d99b1ed8ecf2b13058a06f7056162541c1e370dbb1334',
+     x86_64: '40c16a7e5635c5c2a9bd6f41b9db894237147c02d6c5b8d7175c0a97639eea5c',
   })
 
   depends_on 'libgcrypt'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libiconv'
+  depends_on 'libjpeg'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'libcurl'
@@ -36,7 +38,9 @@ class Php72 < Package
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    unless ARGV[0] == 'reinstall' and @_ver == phpver
+      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    end
   end
 
   def self.patch
@@ -107,36 +111,43 @@ class Php72 < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/log"
-    system "mkdir -p #{CREW_DEST_PREFIX}/tmp/run"
-    system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"
-    system "install -Dm644 php.ini-development #{CREW_DEST_PREFIX}/etc/php.ini"
-    system "install -Dm755 sapi/fpm/init.d.php-fpm.in #{CREW_DEST_PREFIX}/etc/init.d/php-fpm"
-    system "install -Dm644 sapi/fpm/php-fpm.conf.in #{CREW_DEST_PREFIX}/etc/php-fpm.conf"
-    system "install -Dm644 sapi/fpm/www.conf.in #{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf"
-    system "ln -s #{CREW_PREFIX}/etc/init.d/php-fpm #{CREW_DEST_PREFIX}/bin/php7-fpm"
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
+    system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
+    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0o644
+    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0o755
+    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0o644
+    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode: 0o644
+    FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php7-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
-    system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
-    system "mv", "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
-    system "rm", "-rf", "#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock", "#{CREW_DEST_DIR}/.registry"
+    FileUtils.mv "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
+    FileUtils.mv "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
+    FileUtils.rm_rf ["#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock", "#{CREW_DEST_DIR}/.registry"]
   end
 
   def self.postinstall
     puts
-    puts "To start the php-fpm service, execute:".lightblue
-    puts "php7-fpm start".lightblue
+    puts 'To start the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm start'.lightblue
     puts
-    puts "To stop the php-fpm service, execute:".lightblue
-    puts "php7-fpm stop".lightblue
+    puts 'To stop the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm stop'.lightblue
     puts
-    puts "To restart the php-fpm service, execute:".lightblue
-    puts "php7-fpm restart".lightblue
+    puts 'To restart the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm restart'.lightblue
     puts
-    puts "To start php-fpm on login, execute the following:".lightblue
+    puts 'To start php-fpm on login, execute the following:'.lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/php7-fpm ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/php7-fpm start' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
   end
 end
