@@ -3,24 +3,24 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.4.22'
+  @_ver = '7.4.23'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '8e078cd7d2f49ac3fcff902490a5bb1addc885e7e3b0d8dd068f42c68297bde8'
+  source_sha256 'cea52313fcffe56343bcd3c66dbb23cd5507dc559cc2e3547cf8f5452e88a05d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_armv7l/php74-7.4.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_armv7l/php74-7.4.22-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_i686/php74-7.4.22-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.22_x86_64/php74-7.4.22-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_armv7l/php74-7.4.23-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_armv7l/php74-7.4.23-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_i686/php74-7.4.23-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.23_x86_64/php74-7.4.23-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '5f7ad8b776079e5a436cb4462e190005bfd25d168a7182fe8b96f50c6b129eed',
-     armv7l: '5f7ad8b776079e5a436cb4462e190005bfd25d168a7182fe8b96f50c6b129eed',
-       i686: 'd7d10b351d9990b490068a248cfebf804d18107e07979aebceef7171e96a565e',
-     x86_64: 'bcb56488cfc623c5bd0dde93b116c3d6ab94987914eb9fd57a7568a8dead6232',
+    aarch64: 'f74f93f8b17b36cd51a6b1e05a07436631a014348592ef07c26c90f07658e075',
+     armv7l: 'f74f93f8b17b36cd51a6b1e05a07436631a014348592ef07c26c90f07658e075',
+       i686: '95217c23ec537756ad89d0e4bd5ec55f5dba38deccd3db9be50b45ad1c33826e',
+     x86_64: '8e03a92a68091211a31e99d11a51a035554124c9726a78f7ae9755f82b1e9c7f',
   })
 
   depends_on 'aspell_en'
@@ -44,7 +44,7 @@ class Php74 < Package
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    unless ARGV[0] == 'reinstall' and version == phpver
+    unless ARGV[0] == 'reinstall' and @_ver == phpver
       abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
     end
   end
@@ -138,6 +138,7 @@ class Php74 < Package
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
