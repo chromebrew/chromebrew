@@ -3,26 +3,26 @@ require 'package'
 class Qtx11extras < Package
   description 'Provides classes for developing for the X11 platform.'
   homepage 'https://www.qt.io/'
-  version '5.15.1-1'
+  version '5.15.2'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
-  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtx11extras-everywhere-src-5.15.1.tar.xz'
-  source_sha256 'f7cd7c475a41840209808bf8b1de1c6587c3c74e5ae3b0969760b9ed35159e59'
+  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtx11extras-everywhere-src-5.15.2.tar.xz'
+  source_sha256 '7014702ee9a644a5a93da70848ac47c18851d4f8ed622b29a72eed9282fc6e3e'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.1-1_armv7l/qtx11extras-5.15.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.1-1_armv7l/qtx11extras-5.15.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.1-1_i686/qtx11extras-5.15.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.1-1_x86_64/qtx11extras-5.15.1-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.2_armv7l/qtx11extras-5.15.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.2_armv7l/qtx11extras-5.15.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.2_i686/qtx11extras-5.15.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtx11extras/5.15.2_x86_64/qtx11extras-5.15.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'ea7ce2aabb51547b5bc0856c5e1ed456dc088cff9fbdf1963b4fcdb7f7b626bd',
-     armv7l: 'ea7ce2aabb51547b5bc0856c5e1ed456dc088cff9fbdf1963b4fcdb7f7b626bd',
-       i686: '44b9aa475e5e07e1ae93109ba7611fb881787e45a894a468d704a784dba39f36',
-     x86_64: '08bd84632909341214c35adaa3857f44c111d7c182c33aee3654c34f43dad055',
+    aarch64: '94135c37b7dab401960661ecc5474798f25d95f1677c3b56133770ba58d97f7c',
+     armv7l: '94135c37b7dab401960661ecc5474798f25d95f1677c3b56133770ba58d97f7c',
+       i686: '0741a8d65a3616d2473929f55a8689a1196277381227d63c49e1234acd25d6e7',
+     x86_64: '817c1e82a88f71177f4d866f6629a84ad8e9683c682912cfb556714f0f60b603',
   })
 
-  depends_on 'qtbase'
+  depends_on 'qtbase' => :build
 
   def self.build
     system 'qmake && make'
@@ -30,10 +30,9 @@ class Qtx11extras < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
-    system "cp -a lib/* #{CREW_DEST_LIB_PREFIX}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/Qt-5"
+    FileUtils.cp_r Dir['lib/*'], "#{CREW_DEST_LIB_PREFIX}"
     FileUtils.cp_r 'include', "#{CREW_DEST_PREFIX}/share/Qt-5"
-    FileUtils.cp_r 'mkspecs', "#{CREW_DEST_PREFIX}/share/Qt-5"
     FileUtils.cp_r 'src', "#{CREW_DEST_PREFIX}/share/Qt-5"
   end
 end
