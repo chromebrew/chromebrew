@@ -100,22 +100,24 @@ Recently Upgraded Packages
 
 | Name | Description | Date Upgraded | Version |
 |:---|:---|:---|:---|
+| terminus | The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform | 2021-08-25 | 2.6.1 |
+| balena_etcher | Flash OS images to SD cards & USB drives, safely and easily. | 2021-08-23 | 1.5.121-1 |
+| gtk4 | GTK+ is a multi-platform toolkit for creating graphical user interfaces. | 2021-08-22 | 4.4.0 |
+| glib | GLib provides the core application building blocks for libraries and applications written in C. | 2021-08-22 | 2.69.2 |
 | atom | The hackable text editor | 2021-08-21 | 1.58.0-1 |
 | vulkan_icd_loader | Vulkan Installable Client Driver ICD Loader | 2021-08-20 | 1.2.189 |
 | vulkan_headers | Vulkan header files | 2021-08-20 | 1.2.189 |
 | mesa | Open-source implementation of the OpenGL specification | 2021-08-20 | 21.2.1 |
 | upx | Extendable, high-performance executable packer for several executable formats | 2021-08-19 | 4.0.0-8a82 |
 | qtbase | Qt Base (Core, Gui, Widgets, Network, ...) | 2021-08-19 | 5.15.3 |
-| patchelf | PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables. | 2021-08-18 | 0.13 |
-| gtest | Google Test - C++ testing utility | 2021-08-17 | 1.11.0 |
-| libidn2 | GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications. | 2021-08-17 | 2.3.2 |
-| libnghttp2 | library implementing HTTP/2 protocol | 2021-08-17 | 1.44.0 |
 
 Latest Packages
 ---------------
 
 | Name | Description | Date Added |
 |:---|:---|:---|
+| git_prompt | Display the git branch and status in the command prompt | 2021-08-26 |
+| acli | Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services. | 2021-08-25 |
 | apktool | A tool for reverse engineering Android apk files | 2021-08-20 |
 | teams | Microsoft Teams - Meet, chat, call, and collaborate in just one place. | 2021-08-15 |
 | github_desktop | GitHub Desktop is an open source Electron-based GitHub app | 2021-08-15 |
@@ -124,8 +126,6 @@ Latest Packages
 | py3_oci | Oracle Cloud Infrastructure Python SDK | 2021-07-29 |
 | py3_keyring | Keyring stores and accesses your passwords safely. | 2021-07-29 |
 | py3_impacket | Impacket provides network protocols constructors and dissectors. | 2021-07-29 |
-| py3_ebooklib | Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format. | 2021-07-29 |
-| py3_cryptography | Cryptography provides cryptographic recipes and primitives to Python developers. | 2021-07-29 |
 
 Chat with us!
 -------------
