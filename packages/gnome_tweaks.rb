@@ -2,30 +2,27 @@ require 'package'
 
 class Gnome_tweaks < Package
   description 'Graphical interface for advanced GNOME 3 settings Tweak Tool'
-  @_ver = '40.beta-4cbb'
+  @_ver = '40.0'
   version @_ver
   license 'GPL-3+ and CC0-1.0'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/4cbb4a44743b64df5c688e84f28befe28da012ba/gnome-tweaks-4cbb4a44743b64df5c688e84f28befe28da012ba.tar.bz2'
-  # source_url "https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/#{@_ver}/gnome-tweaks-#{@_ver}.tar.bz2"
-  source_sha256 '4b0548176772ce999531f6f873ee147420f9dc95980a11a3c2faa052b76119e5'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-tweaks.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_armv7l/gnome_tweaks-40.beta-4cbb-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_i686/gnome_tweaks-40.beta-4cbb-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.beta-4cbb_x86_64/gnome_tweaks-40.beta-4cbb-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.0_armv7l/gnome_tweaks-40.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.0_armv7l/gnome_tweaks-40.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_tweaks/40.0_x86_64/gnome_tweaks-40.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '490cce3a691eef0f388a464bb18900da5fa1f898a10d2d39fa59d023a89e229e',
-     armv7l: '490cce3a691eef0f388a464bb18900da5fa1f898a10d2d39fa59d023a89e229e',
-       i686: '16cab78294026cdc82fe297a3e1ec0fb2e9fa918d6e4c5bea75152bf18ead989',
-     x86_64: '32c252ce5bc50847b2552a2625dce0aa89f48f568c9d3fc6cdd3e1d4d241fc06'
+    aarch64: 'ebec11a3439e8cd1817f871c2f2015ebce581a483a1926cc5dcbf42c55ae1145',
+     armv7l: 'ebec11a3439e8cd1817f871c2f2015ebce581a483a1926cc5dcbf42c55ae1145',
+     x86_64: 'a002b3463df0c990e3cab84ae1a9748eddaa8d50e9952b04d593cd99373578f9'
   })
 
   depends_on 'gnome_settings_daemon'
   depends_on 'gsettings_desktop_schemas'
-  depends_on 'pygobject'
+  depends_on 'py3_gobject'
   depends_on 'libhandy'
   depends_on 'libnotify'
 
@@ -37,5 +34,9 @@ class Gnome_tweaks < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end
