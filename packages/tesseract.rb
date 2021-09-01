@@ -23,7 +23,6 @@ class Tesseract < Package
 
   depends_on 'asciidoc' => :build
   depends_on 'cairo'
-  depends_on 'cairo' => :build
   depends_on 'fontconfig'
   depends_on 'giflib'
   depends_on 'glib'
