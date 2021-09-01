@@ -48,6 +48,7 @@ class Mpv < Package
   depends_on 'libxrandr' # R
   depends_on 'libxss' # R
   depends_on 'libxv' # R
+  depends_on 'llvm' # R
   depends_on 'luajit' # R
   depends_on 'mesa' # R
   depends_on 'mujs' # R
