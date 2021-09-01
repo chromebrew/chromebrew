@@ -11,14 +11,14 @@ class Gnome_terminal < Package
   git_hashtag '3.41.0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-0f6f_armv7l/gnome_terminal-3.41.0-0f6f-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-0f6f_armv7l/gnome_terminal-3.41.0-0f6f-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_x86_64/gnome_terminal-3.41.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_armv7l/gnome_terminal-3.41.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_armv7l/gnome_terminal-3.41.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_x86_64/gnome_terminal-3.41.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '070f952c02e1630e5eb41cf11f5550ccf0c1857201fe688ee37919d7fd293633',
-     armv7l: '070f952c02e1630e5eb41cf11f5550ccf0c1857201fe688ee37919d7fd293633',
-    x86_64: 'ed42ef2ce74e24a414e978891802fc06cc8cc3c0bb4b9c9dfcd3e71b86b1c0ad'
+    aarch64: 'a645989d30509d01be54ef794bf8c4f105cef48965c2beb0d05eded71faae724',
+     armv7l: 'a645989d30509d01be54ef794bf8c4f105cef48965c2beb0d05eded71faae724',
+     x86_64: 'ed42ef2ce74e24a414e978891802fc06cc8cc3c0bb4b9c9dfcd3e71b86b1c0ad'
   })
 
   depends_on 'gtk3'
@@ -33,6 +33,7 @@ class Gnome_terminal < Package
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
+    -Ddocs=false \
     -Dsearch_provider=false \
     -Dnautilus_extension=false \
     -Dlocalstatedir=#{CREW_PREFIX}/var/local \
