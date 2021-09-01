@@ -10,13 +10,18 @@ class Libcurl < Package
   source_url 'https://curl.se/download/curl-7.78.0.tar.xz'
   source_sha256 'be42766d5664a739c3974ee3dfbbcbe978a4ccb1fe628bb1d9b59ac79e445fb5'
 
+
   binary_url({
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_i686/libcurl-7.78.0-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_armv7l/libcurl-7.78.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_armv7l/libcurl-7.78.0-chromeos-armv7l.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_x86_64/libcurl-7.78.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
        i686: '07f1ab7fd175cf911dbd0a2eb802b827f7b47f62b1aa65659b8a544b20dfcc6d',
-     x86_64: '41ca8542b21338c5b22148e443ff8b9ae9338541ea693e21d361d76abaa75bdc'
+    aarch64: '62cb453539ce7d575438bad5b565e6401614a0ef19c8979e954543719e710dbb',
+     armv7l: '62cb453539ce7d575438bad5b565e6401614a0ef19c8979e954543719e710dbb',
+     x86_64: '267da90a48c7e68051376a5f2febc39ad0c0265231afc567d6edd88ccb864760'
   })
 
   depends_on 'brotli' => :build
