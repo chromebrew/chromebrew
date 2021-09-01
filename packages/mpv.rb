@@ -22,7 +22,6 @@ class Mpv < Package
   })
 
   depends_on 'py3_docutils' => :build
-  depends_on 'libcdio' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'alsa_lib' # R
   depends_on 'ffmpeg' # R
