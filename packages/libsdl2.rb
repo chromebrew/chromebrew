@@ -26,8 +26,11 @@ class Libsdl2 < Package
   depends_on 'pulseaudio'
   depends_on 'nasm' => :build
 
-  def self.build
+  def self.patch
     system 'filefix'
+  end
+
+  def self.build
     system "env #{CREW_ENV_OPTIONS} \
       ./configure \
       #{CREW_OPTIONS}"
