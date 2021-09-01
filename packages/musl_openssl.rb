@@ -3,24 +3,22 @@ require 'package'
 class Musl_openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1k'
-  version @_ver.to_s
+  @_ver = '1.1.1l'
+  version @_ver
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
+  source_sha256 '0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_armv7l/musl_openssl-1.1.1k-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_armv7l/musl_openssl-1.1.1k-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_i686/musl_openssl-1.1.1k-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1k_x86_64/musl_openssl-1.1.1k-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1l_armv7l/musl_openssl-1.1.1l-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1l_armv7l/musl_openssl-1.1.1l-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1l_x86_64/musl_openssl-1.1.1l-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9a430535737a0b41b1e12fe0f3f346aec810e815c827d6e073037f5daa3557a3',
-     armv7l: '9a430535737a0b41b1e12fe0f3f346aec810e815c827d6e073037f5daa3557a3',
-       i686: '7912dfb6bedf83c9d725eaf9f9348de6046ee54214bec381054978265134ed1b',
-     x86_64: '6d0f193de4675274eca5ccbea344c030e99420ee41405892e30dbf702848e76b'
+    aarch64: '4717a7b11c310a1960d884c24a2a730c15b14232de046c5262bdb72bb6b3bec7',
+     armv7l: '4717a7b11c310a1960d884c24a2a730c15b14232de046c5262bdb72bb6b3bec7',
+     x86_64: '55761cf1b3bd7719536450fb53bb132cae30047d36391520585de34c2a74bfb2'
   })
 
   depends_on 'musl_native_toolchain' => :build

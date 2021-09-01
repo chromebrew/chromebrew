@@ -12,13 +12,11 @@ class Musl_xz < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_xz/5.2.5-e7da-1_armv7l/musl_xz-5.2.5-e7da-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_xz/5.2.5-e7da-1_armv7l/musl_xz-5.2.5-e7da-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_xz/5.2.5-e7da-1_i686/musl_xz-5.2.5-e7da-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_xz/5.2.5-e7da-1_x86_64/musl_xz-5.2.5-e7da-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '181dd6f6fb00a12eb68272f655e3ac9514470ebb32f4b5e58010915f1ad7f326',
      armv7l: '181dd6f6fb00a12eb68272f655e3ac9514470ebb32f4b5e58010915f1ad7f326',
-       i686: '5b0b648fdf75c2e31b25f9b291d99f9d70d29260db9fb380f370a579c11c3afd',
      x86_64: 'd13b1586398d63d6dee83de2606a109625c02521956110bbb443e86b5b5cf045'
   })
 

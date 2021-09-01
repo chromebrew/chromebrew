@@ -22,13 +22,11 @@ class Musl_native_toolchain < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_armv7l/musl_native_toolchain-1.2.2-e5d2823-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_armv7l/musl_native_toolchain-1.2.2-e5d2823-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_i686/musl_native_toolchain-1.2.2-e5d2823-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_x86_64/musl_native_toolchain-1.2.2-e5d2823-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
      armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
-       i686: '95961eed7adcf6c1d8bdbec91e6384fbd66e538718e2802c43241714c4b8cc92',
      x86_64: '8db02d6424f54906394c55adc77dec8f37d22f7e9c6baf2c8557cd03f1eebeb0'
   })
 

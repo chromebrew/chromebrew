@@ -12,14 +12,12 @@ class Musl_zstd < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_armv7l/musl_zstd-1.5.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_armv7l/musl_zstd-1.5.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_i686/musl_zstd-1.5.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_x86_64/musl_zstd-1.5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '822e00a41875ef36ee60caf20248994e3f88aff792fc316301ae920fa9efe280',
-     armv7l: '822e00a41875ef36ee60caf20248994e3f88aff792fc316301ae920fa9efe280',
-       i686: '36c0b6802c919b911dd84a60caba2f7678cd9592d95d504a819259ee2c4d00d9',
-     x86_64: 'fc0bd9a2fe9e058aa25dbaca3a4fa9bc5e1cf80533e0fa4d9ef803acbef6ddbf'
+    aarch64: '9d48937a211bc8a47cb5bc6ff6d45f54f9e240ef745c5afd0e60548f33fda6df',
+     armv7l: '9d48937a211bc8a47cb5bc6ff6d45f54f9e240ef745c5afd0e60548f33fda6df',
+     x86_64: '3f2cd87c5c928248dfe9f27f4822def3b2c89d5ad2dd2e7800be1cce4ce8df97'
   })
 
   depends_on 'musl_native_toolchain' => :build

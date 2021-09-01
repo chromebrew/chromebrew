@@ -12,13 +12,11 @@ class Musl_lz4 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_armv7l/musl_lz4-1.9.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_armv7l/musl_lz4-1.9.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_i686/musl_lz4-1.9.2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.2_x86_64/musl_lz4-1.9.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'ffe7b999c45a2417dac278c1742d482938fee96db2f2a2213ed01153b20ac3a7',
      armv7l: 'ffe7b999c45a2417dac278c1742d482938fee96db2f2a2213ed01153b20ac3a7',
-       i686: 'dd56cd308c23f377c8e6bf0727abfe6cb914bd72ed66529f2189bbdf5a15b78e',
      x86_64: 'a0ef3300ac61b6c5c513fb2f8d4f99b155dfc2eabf1c0e93c9c224437ab32af0'
   })
 

@@ -12,14 +12,12 @@ class Musl_krb5 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_i686/musl_krb5-1.19.2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_x86_64/musl_krb5-1.19.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ae3dbf8f8b0197953b954c2115f29ee61ae04583e6859d78e4e8d4689920a8cd',
-     armv7l: 'ae3dbf8f8b0197953b954c2115f29ee61ae04583e6859d78e4e8d4689920a8cd',
-       i686: 'ecbec035b2e93a59883b41e797cafd2510d04a8f3fd9b8032dd77c3cab87af84',
-     x86_64: 'ec91bba3e55eade92f3b9dbe3278fe8a73ec65227faaebc8a880b037e7f63010'
+    aarch64: '99aa23d08276fc454a137b9c3a97a4c3d544844fa61bc1cce29fa48232a63e42',
+     armv7l: '99aa23d08276fc454a137b9c3a97a4c3d544844fa61bc1cce29fa48232a63e42',
+     x86_64: '00a028fd778f00144e2246eaacf10b0450cecf365e85910c26ecbdc6068d8ed2'
   })
 
   depends_on 'musl_native_toolchain' => :build

@@ -3,25 +3,23 @@ require 'package'
 class Musl_libssh < Package
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
-  @_ver = '0.9.5'
+  @_ver = '0.9.6'
   version @_ver
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://www.libssh.org/files/#{@_ver_prelastdot}/libssh-#{@_ver}.tar.xz"
-  source_sha256 'acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718'
+  source_sha256 '86bcf885bd9b80466fe0e05453c58b877df61afa8ba947a58c356d7f0fab829b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_armv7l/musl_libssh-0.9.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_armv7l/musl_libssh-0.9.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_i686/musl_libssh-0.9.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.5_x86_64/musl_libssh-0.9.5-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_x86_64/musl_libssh-0.9.6-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c24e1c01cb682054878e8587fe246495baaa9aae1f32ab5c59e51b7ef9135a0b',
-     armv7l: 'c24e1c01cb682054878e8587fe246495baaa9aae1f32ab5c59e51b7ef9135a0b',
-       i686: '2372e3a35e4842a8ce16aab4d8a12ec72a12c72e02e25443dfd834da201aa21c',
-     x86_64: 'c3bd211cf2b13d03142871dad8425bed4fc0a283696dc68147a2045ee3abc3f2'
+    aarch64: '758ce31be09541e34a195e12341ae3b517dca11d5b8c748df2a42b2a6c2b9ae7',
+     armv7l: '758ce31be09541e34a195e12341ae3b517dca11d5b8c748df2a42b2a6c2b9ae7',
+     x86_64: 'b3baa0cac10b680759805fbe3b1e857812a83a92f78a5e85981e46d6c0c1a144'
   })
 
   depends_on 'musl_krb5' => :build

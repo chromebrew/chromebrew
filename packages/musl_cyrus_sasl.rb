@@ -12,14 +12,12 @@ class Musl_cyrus_sasl < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_armv7l/musl_cyrus_sasl-2.1.27-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_armv7l/musl_cyrus_sasl-2.1.27-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_i686/musl_cyrus_sasl-2.1.27-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_x86_64/musl_cyrus_sasl-2.1.27-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'dea4384dbf58e2a8bb8bbd4e9391cace8f0a7d24dea461639ab8d16b89c976b6',
-     armv7l: 'dea4384dbf58e2a8bb8bbd4e9391cace8f0a7d24dea461639ab8d16b89c976b6',
-       i686: 'ce546b2e1d27232b846ed91cf59be5f9c30e75c1300d05cf3f1814818b3d34d4',
-     x86_64: '7a722b4120d7b1727f4dd09954a2731c88952b497872e5816f8db6ab9c51519e'
+    aarch64: 'c55ffa0d554c8d440b612312e187aec9bc65327f33fc2f65a1b9544daafba865',
+     armv7l: 'c55ffa0d554c8d440b612312e187aec9bc65327f33fc2f65a1b9544daafba865',
+     x86_64: 'a378960c5bdb76e21346c4b5b768407b40477ca8212169587cc65415be3cb01f'
   })
 
   depends_on 'musl_native_toolchain' => :build

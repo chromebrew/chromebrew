@@ -12,13 +12,11 @@ class Musl_ncurses < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_armv7l/musl_ncurses-6.2-20210522-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_armv7l/musl_ncurses-6.2-20210522-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_i686/musl_ncurses-6.2-20210522-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_x86_64/musl_ncurses-6.2-20210522-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
      armv7l: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
-       i686: '72a9cd80e616cb016950f006906627b23d8f54e0f9c8149ba8163000144a1a54',
      x86_64: '1f7a5efdccc51d44cf80304739a98f7d6b12ce2c869da49b33b3910b295451f5'
   })
 

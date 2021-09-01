@@ -12,13 +12,11 @@ class Musl_libidn2 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_armv7l/musl_libidn2-2.3.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_armv7l/musl_libidn2-2.3.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_i686/musl_libidn2-2.3.2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_x86_64/musl_libidn2-2.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
      armv7l: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
-       i686: '8ca581ae752253a7312754ed90da4d3db8874485df7e9299bbad52fa1ee42a07',
      x86_64: '4db4f2cdf93da11a090ab78d3b01d729c374bd41ebf41a0e89a2031091b16d24'
   })
 

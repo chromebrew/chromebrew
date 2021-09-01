@@ -13,13 +13,11 @@ class Musl_zlib < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_armv7l/musl_zlib-1.2.11-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_i686/musl_zlib-1.2.11-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_x86_64/musl_zlib-1.2.11-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
      armv7l: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
-       i686: 'addf2cafe0eea9d6dee69f125a2816b31a8ce7e4510ca80940e39398c952e2bd',
      x86_64: '8d609a60c86f67e85052970a62a65bd74282eda688fddfc30e07aa19def12547'
   })
 
