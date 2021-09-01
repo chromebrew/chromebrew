@@ -100,32 +100,32 @@ Recently Upgraded Packages
 
 | Name | Description | Date Upgraded | Version |
 |:---|:---|:---|:---|
-| terminus | The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform | 2021-08-25 | 2.6.1 |
-| balena_etcher | Flash OS images to SD cards & USB drives, safely and easily. | 2021-08-23 | 1.5.121-1 |
-| gtk4 | GTK+ is a multi-platform toolkit for creating graphical user interfaces. | 2021-08-22 | 4.4.0 |
-| glib | GLib provides the core application building blocks for libraries and applications written in C. | 2021-08-22 | 2.69.2 |
-| atom | The hackable text editor | 2021-08-21 | 1.58.0-1 |
-| vulkan_icd_loader | Vulkan Installable Client Driver ICD Loader | 2021-08-20 | 1.2.189 |
-| vulkan_headers | Vulkan header files | 2021-08-20 | 1.2.189 |
-| mesa | Open-source implementation of the OpenGL specification | 2021-08-20 | 21.2.1 |
-| upx | Extendable, high-performance executable packer for several executable formats | 2021-08-19 | 4.0.0-8a82 |
-| qtbase | Qt Base (Core, Gui, Widgets, Network, ...) | 2021-08-19 | 5.15.3 |
+| libxfce4util | Utility library for the Xfce4 desktop environment | 2021-08-31 | 4.17.1 |
+| xfce4_dev_tools | Xfce4 development tools | 2021-08-31 | 4.17.0 |
+| xfce4_panel | Next generation panel for the XFCE desktop environment | 2021-08-31 | 4.16.3 |
+| qtsvg | Provides classes for displaying the contents of SVG files. | 2021-08-30 | 5.15.2 |
+| qtx11extras | Provides classes for developing for the X11 platform. | 2021-08-30 | 5.15.2 |
+| php71 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.1.33 |
+| php72 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.2.34 |
+| php73 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.3.30 |
+| php74 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.4.23 |
+| php80 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 8.0.10 |
 
 Latest Packages
 ---------------
 
 | Name | Description | Date Added |
 |:---|:---|:---|
+| qtlocation | Qt Location and Positioning | 2021-08-30 |
+| qtmultimedia | Qt Multimedia | 2021-08-30 |
+| qtscript | Qt Script Tools | 2021-08-30 |
+| qtserialport | Qt Serial Port | 2021-08-30 |
+| qtwayland | Qt Wayland | 2021-08-30 |
+| stellarium | Stellarium is a free open source planetarium for your computer. | 2021-08-30 |
 | git_prompt | Display the git branch and status in the command prompt | 2021-08-26 |
 | acli | Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services. | 2021-08-25 |
 | apktool | A tool for reverse engineering Android apk files | 2021-08-20 |
 | teams | Microsoft Teams - Meet, chat, call, and collaborate in just one place. | 2021-08-15 |
-| github_desktop | GitHub Desktop is an open source Electron-based GitHub app | 2021-08-15 |
-| py3_secretstorage | Python bindings to Freedesktop.org Secret Service API | 2021-07-29 |
-| py3_openssl | PyOpenSSL is a Python wrapper module around the OpenSSL library. | 2021-07-29 |
-| py3_oci | Oracle Cloud Infrastructure Python SDK | 2021-07-29 |
-| py3_keyring | Keyring stores and accesses your passwords safely. | 2021-07-29 |
-| py3_impacket | Impacket provides network protocols constructors and dissectors. | 2021-07-29 |
 
 Chat with us!
 -------------
