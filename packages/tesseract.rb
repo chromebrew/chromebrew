@@ -34,7 +34,6 @@ class Tesseract < Package
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'pango'
-  depends_on 'pango' => :build
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'
