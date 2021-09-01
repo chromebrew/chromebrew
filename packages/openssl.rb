@@ -13,11 +13,13 @@ class Openssl < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_armv7l/openssl-1.1.1l-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_armv7l/openssl-1.1.1l-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_i686/openssl-1.1.1l-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_x86_64/openssl-1.1.1l-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'bc847247e12d2f68874dfd56408b51839e56cfeb00db431134e4dda6004ebb5a',
      armv7l: 'bc847247e12d2f68874dfd56408b51839e56cfeb00db431134e4dda6004ebb5a',
+       i686: '4b9296c9bce595849bf4f7ebd11f9303ab8089c422f13338f0d74b5bf3b8eb88',
      x86_64: 'b99e603aadccb0544dc51026ce065bff345b63a0e5defcd254316a67bad541fc'
   })
 
