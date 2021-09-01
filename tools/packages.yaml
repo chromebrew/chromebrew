@@ -5996,11 +5996,31 @@ activity: high
 kind: url
 name: qtdeclarative
 url: http://download.qt.io/official_releases/qt/
-activity: high
+activity: medium
 ---
 kind: url
 name: qtfm
 url: https://github.com/rodlie/qtfm/releases
+activity: medium
+---
+kind: url
+name: qtlocation
+url: http://download.qt.io/official_releases/qt/
+activity: medium
+---
+kind: url
+name: qtmultimedia
+url: http://download.qt.io/official_releases/qt/
+activity: medium
+---
+kind: url
+name: qtscript
+url: http://download.qt.io/official_releases/qt/
+activity: medium
+---
+kind: url
+name: qtserialport
+url: http://download.qt.io/official_releases/qt/
 activity: medium
 ---
 kind: url
@@ -6012,6 +6032,11 @@ kind: url
 name: qttools
 url: http://download.qt.io/official_releases/qt/
 activity: high
+---
+kind: url
+name: qtwayland
+url: http://download.qt.io/official_releases/qt/
+activity: medium
 ---
 kind: url
 name: qtx11extras
@@ -6612,6 +6637,11 @@ kind: url
 name: startup_notification
 url: https://freedesktop.org/software/startup-notification/releases
 activity: none
+---
+kind: url
+name: stellarium
+url: https://github.com/Stellarium/stellarium/releases
+activity: medium
 ---
 kind: url
 name: strace
