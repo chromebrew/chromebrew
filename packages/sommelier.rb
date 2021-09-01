@@ -5,15 +5,21 @@ class Sommelier < Package
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
   version '20210109-4'
   license 'BSD-Google'
-  compatibility 'all'
+  compatibility 'armv7l aarch64 x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_x86_64/sommelier-20210109-4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
+    aarch64: '3698af2c3b77f659d7195f8b7e55d157147d137addeef42790730c9e9cb0bcbc',
+     armv7l: '3698af2c3b77f659d7195f8b7e55d157147d137addeef42790730c9e9cb0bcbc',
+     x86_64: '7f83d6a5897616b40257dfd4c7bd94e915c4b8a2e8f49158b2c77e77eef8bf73'
   })
-  
+
   depends_on 'libdrm'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
@@ -40,15 +46,17 @@ class Sommelier < Package
   end
 
   def self.preflight
-    unless File.socket?('/var/run/chrome/wayland-0')
-      abort "This package is not compatible with your device :/".lightred
+    @container_check = `grep :/docker /proc/self/cgroup | wc -l`
+    unless File.socket?('/var/run/chrome/wayland-0') || !@container_check.to_i.zero?
+      abort 'This package is not compatible with your device :/'.lightred
     end
   end
 
   def self.patch
     # Patch to avoid error with GCC > 9.x
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
-    Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc", chdir: 'vm_tools/sommelier'
+    Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc",
+                  chdir: 'vm_tools/sommelier'
   end
 
   def self.build
@@ -70,7 +78,7 @@ class Sommelier < Package
           -Dpeer_cmd_prefix="#{CREW_PREFIX}#{@peer_cmd_prefix}" \
           builddir
       BUILD
-      
+
       system 'meson configure builddir'
       system 'samu -C builddir'
 
@@ -99,7 +107,7 @@ class Sommelier < Package
           if [ -f "~/.sommelier.env" ]; then
             source ~/.sommelier.env
           fi
-          
+
           startsommelier
           set +a
         EOF
@@ -152,7 +160,7 @@ class Sommelier < Package
           checksommelierxwayland () {
             xdpyinfo -display "${DISPLAY}" &>/dev/null
           }
-          
+
           ## As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
           ## One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
           ## in ChromeOS's wayland compositor.
@@ -166,7 +174,7 @@ class Sommelier < Package
           #    --virtwl-device=/dev/null &> #{CREW_PREFIX}/var/log/sommelier.log &
           #  echo "$!" > #{CREW_PREFIX}/var/run/sommelier-wayland.pid
           #fi
-          
+
           if ! checksommelierxwayland; then
             pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
             DISPLAY="${DISPLAY:0:3}"
@@ -186,12 +194,12 @@ class Sommelier < Package
                 xauth -f ~/.Xauthority add ${DISPLAY} . $(xxd -l 16 -p /dev/urandom)
                 source #{CREW_PREFIX}/etc/sommelierrc" \
             &>> #{CREW_PREFIX}/var/log/sommelier.log
-  
+
             echo "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             xhost +si:localuser:root &>/dev/null
           fi
         EOF
-        
+
         # startsommelier
         IO.write 'startsommelier', <<~EOF
           #!/bin/bash -a
@@ -199,7 +207,7 @@ class Sommelier < Package
           source ~/.sommelier-default.env &>/dev/null
           source ~/.sommelier.env &>/dev/null
           set +a
-          
+
           checksommelierwayland () {
             #if [ -f "#{CREW_PREFIX}/var/run/sommelier-wayland.pid" ]; then
             #  /sbin/ss --unix -a -p |\
@@ -223,12 +231,12 @@ class Sommelier < Package
             (( wait = wait - 1 ))
             sleep 3
           done
-        
+
           SOMMWPIDS="$(pgrep -f "sommelier.elf --parent" 2> /dev/null)"
           SOMMWPROCS="$(pgrep -fa "sommelier.elf --parent" 2> /dev/null)"
           SOMMXPIDS="$(pgrep -f "sommelier.elf -X" 2> /dev/null)"
           SOMMXPROCS="$(pgrep -fa "sommelier.elf -X" 2> /dev/null)"
-        
+
           if checksommelierwayland && checksommelierxwayland ; then
             echo -e "sommelier processes running: ${SOMMWPIDS} ${SOMMXPIDS}"
           else
@@ -256,7 +264,7 @@ class Sommelier < Package
             echo "sommelier stopped"
           fi
         EOF
-        
+
         # restartsommelier
         IO.write 'restartsommelier', <<~EOF
           #!/bin/bash
@@ -299,16 +307,16 @@ class Sommelier < Package
     puts <<~EOT.lightblue
       To adjust sommelier environment variables, edit #{CREW_PREFIX}/etc/env.d/sommelier
       Default values are in #{CREW_PREFIX}/etc/env.d/sommelier
-      
+
       To start the sommelier daemon, run 'startsommelier'
       To stop the sommelier daemon, run 'stopsommelier'
       To restart the sommelier daemon, run 'restartsommelier'
-    
+
     EOT
     puts <<~EOT.orange
       Please be aware that gui applications may not work without the
       sommelier daemon running.
-    
+
       The sommelier daemon may also have to be restarted with
       'restartsommelier' after waking your device.
 
