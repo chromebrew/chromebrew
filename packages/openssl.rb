@@ -3,24 +3,22 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1k'
-  version "#{@_ver}-3"
-  compatibility 'all'
+  @_ver = '1.1.1l'
+  version @_ver
   license 'openssl'
+  compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 '892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
+  source_sha256 '0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-3_armv7l/openssl-1.1.1k-3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-3_armv7l/openssl-1.1.1k-3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-2_i686/openssl-1.1.1k-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1k-2_x86_64/openssl-1.1.1k-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_armv7l/openssl-1.1.1l-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_armv7l/openssl-1.1.1l-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_x86_64/openssl-1.1.1l-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0d6acf58d87071df456b02676ff3693668517b29249964501da173ad8880cd8b',
-     armv7l: '0d6acf58d87071df456b02676ff3693668517b29249964501da173ad8880cd8b',
-       i686: '5a55581745e62d8e3697b7dfa7b91624c0aeda94cf925c1feb079163e3923b0b',
-     x86_64: 'd095621c44c8607c93b3881cbdc71d8bb219f1d48f93abf0c626d3f7f2eddba7'
+    aarch64: 'bc847247e12d2f68874dfd56408b51839e56cfeb00db431134e4dda6004ebb5a',
+     armv7l: 'bc847247e12d2f68874dfd56408b51839e56cfeb00db431134e4dda6004ebb5a',
+     x86_64: 'b99e603aadccb0544dc51026ce065bff345b63a0e5defcd254316a67bad541fc'
   })
 
   depends_on 'ccache' => :build
