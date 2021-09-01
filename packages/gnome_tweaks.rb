@@ -6,8 +6,6 @@ class Gnome_tweaks < Package
   version @_ver
   license 'GPL-3+ and CC0-1.0'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/4cbb4a44743b64df5c688e84f28befe28da012ba/gnome-tweaks-4cbb4a44743b64df5c688e84f28befe28da012ba.tar.bz2'
-  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-tweaks.git'
   git_hashtag @_ver
 
