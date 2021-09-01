@@ -3,23 +3,22 @@ require 'package'
 class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  version '0.33.1'
+  @_ver = '0.33.1'
+  version "#{@_ver}-1"
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'all'
-  source_url "https://github.com/mpv-player/mpv/archive/v#{version}.tar.gz"
+  source_url "https://github.com/mpv-player/mpv/archive/v#{@_ver}.tar.gz"
   source_sha256 '100a116b9f23bdcda3a596e9f26be3a69f166a4f1d00910d1789b6571c46f3a9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_armv7l/mpv-0.33.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_i686/mpv-0.33.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1_x86_64/mpv-0.33.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1-1_armv7l/mpv-0.33.1-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1-1_armv7l/mpv-0.33.1-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1-1_x86_64/mpv-0.33.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a2ea4b4c758863b540470ed728dbc5d9fc05f778a703bf31f490544cbe618f9b',
-     armv7l: 'a2ea4b4c758863b540470ed728dbc5d9fc05f778a703bf31f490544cbe618f9b',
-       i686: '71131f716ec3c4cea9d3f94816634472d1fbea090a7e9122078f825d0d2405ab',
-     x86_64: '93efe37ca276f8f83a207fe953df0d0efe565cbc1a7291f0b354b7f412508323'
+    aarch64: '22c7f7b0a877a1a22aa1f312be6ca20b3b3f3e67dd350dd829301752cdbc451f',
+     armv7l: '22c7f7b0a877a1a22aa1f312be6ca20b3b3f3e67dd350dd829301752cdbc451f',
+     x86_64: 'c4642f6da028403f3efcd6e1b0c9382d410fc106663a0ca70e3f4a785f387628'
   })
 
   depends_on 'py3_docutils' => :build
@@ -39,6 +38,7 @@ class Mpv < Package
   depends_on 'libdvdnav' # R
   depends_on 'libdvdread' # R
   depends_on 'libjpeg' # R
+  depends_on 'libsdl2' # R
   depends_on 'libva' # R
   depends_on 'libvdpau' # R
   depends_on 'libx11' # R
@@ -63,9 +63,7 @@ class Mpv < Package
 
   def self.build
     system './bootstrap.py'
-    system "env CFLAGS='-flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto=auto' \
+    system "#{CREW_ENV_OPTIONS} \
       ./waf \
       configure \
       #{CREW_OPTIONS.sub(/--build=.*/, '')} \
@@ -74,19 +72,29 @@ class Mpv < Package
       --enable-dvdnav \
       --enable-gl-x11 \
       --enable-libarchive \
-      --enable-libmpv-shared"
-    system './waf'
+      --enable-libmpv-shared \
+      --enable-sdl2"
+    system "./waf -j#{CREW_NPROC}"
+    # mpv conf file
+    IO.write 'mpv.conf', <<~MPVCONF
+      hwdec=auto-safe
+      hwdec-codecs=all
+      fs=yes
+    MPVCONF
   end
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     system './waf', "--destdir=#{CREW_DEST_DIR}", 'install'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/mpv"
+    FileUtils.install 'mpv.conf', "#{CREW_DEST_PREFIX}/etc/mpv/mpv.conf", mode: 0o644
   end
 
   def self.postinstall
     # Use XDG_CONFIG_HOME location for config file stub
-    FileUtils.mkdir_p "#{CREW_PREFIX}/.config"
-    system "touch #{CREW_PREFIX}/.config/mpv"
+    # @xdg_config_home = ENV['XDG_CONFIG_HOME']
+    # FileUtils.mkdir_p @xdg_config_home
+    # system "touch #{@xdg_config_home}/mpv"
     system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
     system "#{CREW_PREFIX}/bin/gtk4-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
   end
