@@ -14,11 +14,13 @@ class Libssh < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.9.6_armv7l/libssh-0.9.6-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.9.6_armv7l/libssh-0.9.6-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.9.6_i686/libssh-0.9.6-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.9.6_x86_64/libssh-0.9.6-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5c4a6da32f3b23488dd15e06a5eb77e191143e4d5b5a396331a429e9d5dd5cfd',
      armv7l: '5c4a6da32f3b23488dd15e06a5eb77e191143e4d5b5a396331a429e9d5dd5cfd',
+       i686: '9a3d676f230262a5974fe05e7ea705c9062a5b27364655e29e2abf4158009389',
      x86_64: 'a4a261a53541349d5c9564a74f7a5d5051d33a4cbdbc06885810eb948f0d01a8'
   })
 
