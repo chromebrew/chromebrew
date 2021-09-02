@@ -13,11 +13,13 @@ class Libsdl2 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.16_armv7l/libsdl2-2.0.16-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.16_armv7l/libsdl2-2.0.16-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.16_i686/libsdl2-2.0.16-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.16_x86_64/libsdl2-2.0.16-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '05cbfc5d3efb7e42009001fea4ade1932f2f273caba7090ab11e68887286ecbd',
      armv7l: '05cbfc5d3efb7e42009001fea4ade1932f2f273caba7090ab11e68887286ecbd',
+       i686: '9ea4dbde3d49cb18d3756c546ed337b911458822fa7e5263e245b7feaf373c73',
      x86_64: '5f0d468a5fdf3c5ac02eb3e369af10b975d6e66340e3002289e8c9acd237ef33'
   })
 
