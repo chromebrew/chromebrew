@@ -12,11 +12,13 @@ class Sommelier < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_i686/sommelier-20210109-4-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_x86_64/sommelier-20210109-4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '3698af2c3b77f659d7195f8b7e55d157147d137addeef42790730c9e9cb0bcbc',
      armv7l: '3698af2c3b77f659d7195f8b7e55d157147d137addeef42790730c9e9cb0bcbc',
+       i686: '423707ace2d90a8ceb0a51287ad9bbdf87c0d8729aa3d8b7e951b20c0d05b28d',
      x86_64: '7f83d6a5897616b40257dfd4c7bd94e915c4b8a2e8f49158b2c77e77eef8bf73'
   })
 
@@ -40,7 +42,7 @@ class Sommelier < Package
   when 'armv7l', 'aarch64'
     @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
   when 'i686'
-    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
+    @peer_cmd_prefix = '/lib/ld-linux.so.2'
   when 'x86_64'
     @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end
