@@ -7,7 +7,7 @@ class Tar < Package
   license 'BSD'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/tar/tar-1.34.tar.xz'
-  source_sha256 '03d908cf5768cfe6b7ad588c921c6ed21acabfb2b79b788d1330453507647aed'
+  source_sha256 '63bebd26879c5e1eea4352f0d03c991f966aeb3ddeb3c7445c902568d5411d28'
 
   
 
