@@ -3,7 +3,7 @@ require 'package'
 class Meson < Package
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '0.58.2'
+  @_ver = '0.59.0'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.1_i686/meson-0.58.1-chromeos-i686.tpxz',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.2_armv7l/meson-0.58.2-chromeos-armv7l.tpxz',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.2_armv7l/meson-0.58.2-chromeos-armv7l.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.58.2_x86_64/meson-0.58.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_armv7l/meson-0.59.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_armv7l/meson-0.59.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_i686/meson-0.59.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.0_x86_64/meson-0.59.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    i686: '81211605d926df2868241b31726224bfe41f816faa7095a123e9c78dea680a7a',
- aarch64: '725b270200e40fd3ebbaa4d4312f6fa6cb76422c92bfaa125322b74696f04b5e',
-  armv7l: '725b270200e40fd3ebbaa4d4312f6fa6cb76422c92bfaa125322b74696f04b5e',
-  x86_64: '4330d50cc93deb873f60fb3dda818f9875c9967b938c66f5577245a4fdbebbd2'
+    aarch64: '4cdb34e921d39f0a7439543a241941d869fc4c7390e2a5c33d0cd6485996bbc6',
+     armv7l: '4cdb34e921d39f0a7439543a241941d869fc4c7390e2a5c33d0cd6485996bbc6',
+       i686: 'd91ab13dcce6d3f112a9275a160baea1ec5663fb215fe717d6543fa723b69d90',
+     x86_64: '9358e0c8dc83a744fc2ceb24119d918dc5007334d9670cdf523e15e4b083d29d'
   })
 
   depends_on 'ninja'

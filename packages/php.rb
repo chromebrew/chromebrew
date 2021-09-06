@@ -3,23 +3,27 @@ require 'package'
 class Php < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.40-8.0.9'
+  version '5.6.40-8.0.10'
   license 'PHP-3.01'
   compatibility 'all'
 
   is_fake
 
   def self.preflight
-    phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    major = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f1`.chomp
+    minor = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f2`.chomp
+    unless major.empty? and minor.empty?
+      puts "Php#{major}#{minor} already installed.".lightgreen
+      abort "Enter `crew remove php#{major}#{minor} && crew install php` to install a different version."
+    end
     puts
     puts "Select version:"
     puts "5.6 = PHP 5.6.40"
     puts "7.1 = PHP 7.1.33"
     puts "7.2 = PHP 7.2.34"
-    puts "7.3 = PHP 7.3.29"
-    puts "7.4 = PHP 7.4.22"
-    puts "8.0 = PHP 8.0.9"
+    puts "7.3 = PHP 7.3.30"
+    puts "7.4 = PHP 7.4.23"
+    puts "8.0 = PHP 8.0.10"
     puts "  0 = Cancel"
 
     while version = STDIN.gets.chomp

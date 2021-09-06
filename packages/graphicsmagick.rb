@@ -22,7 +22,7 @@ class Graphicsmagick < Package
      x86_64: '0e5058139fd5c7a715fb8c182b82883fea66623c8029cf9d6bac9e3b51fd7a9e',
   })
 
-  depends_on 'docutils'
+  depends_on 'py3_docutils'
   depends_on 'freetype'
   depends_on 'ghostscript'
   depends_on 'libwebp'

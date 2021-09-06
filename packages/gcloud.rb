@@ -17,24 +17,45 @@ class Gcloud < Package
 
   depends_on 'xdg_base'
 
+  def self.build
+    @gcloudenv = <<~EOF
+
+      # The next line updates PATH for the Google Cloud SDK.
+      if [ -f '#{CREW_PREFIX}/share/gcloud/path.bash.inc' ]; then . '#{CREW_PREFIX}/share/gcloud/path.bash.inc'; fi
+
+      # The next line enables shell command completion for gcloud.
+      if [ -f '#{CREW_PREFIX}/share/gcloud/completion.bash.inc' ]; then . '#{CREW_PREFIX}/share/gcloud/completion.bash.inc'; fi
+    EOF
+  end
+
   def self.install
+    ENV['CREW_SHRINK_ARCHIVE'] = '0'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gcloud"
     FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/gcloud"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/share/gcloud") do
+    FileUtils.cd "#{CREW_DEST_PREFIX}/share/gcloud" do
       system "./install.sh \
               --usage-reporting false \
               --rc-path #{HOME}/.bashrc \
               --quiet"
     end
-    system "sed -i 's,#{CREW_DEST_DIR},,g' #{HOME}/.bashrc"
+    Dir.mkdir "#{CREW_DEST_PREFIX}/bin"
+    Dir.chdir "#{CREW_DEST_PREFIX}/share/gcloud/bin" do
+      system "find -type f -maxdepth 1 -exec ln -s #{CREW_PREFIX}/share/gcloud/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
+    end
+    FileUtils.mv "#{HOME}/.bashrc.backup", "#{HOME}/.bashrc"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    IO.write "#{CREW_DEST_PREFIX}/etc/env.d/gcloud", @gcloudenv
   end
 
   def self.postinstall
     puts
     puts "To finish the installation, execute the following:".lightblue
-    puts "exec -l \$SHELL".lightblue
-    puts "#{CREW_PREFIX}/share/gcloud/bin/gcloud init".lightblue
+    puts "source ~/.bashrc && gcloud init".lightblue
     puts
   end
 

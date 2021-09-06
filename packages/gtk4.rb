@@ -3,23 +3,25 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.3.1'
+  @_ver = '4.4.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.3.1_armv7l/gtk4-4.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.3.1_armv7l/gtk4-4.3.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.3.1_x86_64/gtk4-4.3.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_i686/gtk4-4.4.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_x86_64/gtk4-4.4.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd714a0b5c0318ee50ad3e7bd581e4d69435aafcf3800b640030f940e5accb1cd',
-     armv7l: 'd714a0b5c0318ee50ad3e7bd581e4d69435aafcf3800b640030f940e5accb1cd',
-     x86_64: '986e9290a4ba1e216db1f7d6c89ce4d86cf9ecae1af3b90c1ad43fd385237c75'
+    aarch64: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
+     armv7l: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
+       i686: '5e06944bbcf839838a4bd2bba713b6c3ca724b08f9a0dd8eba92c0418446974b',
+     x86_64: '1604014f5f7188b5a974ca8cc06b62e1fc14e8553806541abbcb173694fc2547'
   })
 
   # L = Logical Dependency, R = Runtime Dependency

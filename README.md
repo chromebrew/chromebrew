@@ -100,32 +100,32 @@ Recently Upgraded Packages
 
 | Name | Description | Date Upgraded | Version |
 |:---|:---|:---|:---|
-| stack | The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced. | 2021-07-29 | 2.5.1 |
-| openssl | The Open Source toolkit for Secure Sockets Layer and Transport Layer Security | 2021-07-29 | 1.1.1k-3 |
-| urlwatch | A tool for monitoring webpages for updates | 2021-07-29 | 2.23-1 |
-| mypaint | MyPaint is a simple drawing and painting program. | 2021-07-29 | 2.0.1 |
-| mypaint_brushes | Brushes used by MyPaint and other software using libmypaint. | 2021-07-29 | 2.0.2 |
-| itstools | Translate XML with PO files using W3C Internationalization Tag Set rules | 2021-07-29 | 2.0.6-2 |
-| ansible | Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs. | 2021-07-29 | 3.3.0 |
-| pycairo | Dummy package for py3_pycairo. | 2021-07-29 | 1 |
-| libmypaint | Libmypaint is MyPaint\'s brushstroke rendering code, in a form that can be used by other programs. | 2021-07-29 | 1.6.1 |
-| six | Dummy package for py3_six | 2021-07-29 | 1 |
+| libxfce4util | Utility library for the Xfce4 desktop environment | 2021-08-31 | 4.17.1 |
+| xfce4_dev_tools | Xfce4 development tools | 2021-08-31 | 4.17.0 |
+| xfce4_panel | Next generation panel for the XFCE desktop environment | 2021-08-31 | 4.16.3 |
+| qtsvg | Provides classes for displaying the contents of SVG files. | 2021-08-30 | 5.15.2 |
+| qtx11extras | Provides classes for developing for the X11 platform. | 2021-08-30 | 5.15.2 |
+| php71 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.1.33 |
+| php72 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.2.34 |
+| php73 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.3.30 |
+| php74 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.4.23 |
+| php80 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 8.0.10 |
 
 Latest Packages
 ---------------
 
 | Name | Description | Date Added |
 |:---|:---|:---|
-| py3_secretstorage | Python bindings to Freedesktop.org Secret Service API | 2021-07-29 |
-| py3_openssl | PyOpenSSL is a Python wrapper module around the OpenSSL library. | 2021-07-29 |
-| py3_oci | Oracle Cloud Infrastructure Python SDK | 2021-07-29 |
-| py3_keyring | Keyring stores and accesses your passwords safely. | 2021-07-29 |
-| py3_impacket | Impacket provides network protocols constructors and dissectors. | 2021-07-29 |
-| py3_ebooklib | Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format. | 2021-07-29 |
-| py3_cryptography | Cryptography provides cryptographic recipes and primitives to Python developers. | 2021-07-29 |
-| oci_cli | Command Line Interface for Oracle Cloud Infrastructure | 2021-07-29 |
-| ansible_base | Ansible base libraries and functions. | 2021-07-29 |
-| py3_zipp | Zipp is a backport of pathlib-compatible object wrapper for zip files. | 2021-07-26 |
+| qtlocation | Qt Location and Positioning | 2021-08-30 |
+| qtmultimedia | Qt Multimedia | 2021-08-30 |
+| qtscript | Qt Script Tools | 2021-08-30 |
+| qtserialport | Qt Serial Port | 2021-08-30 |
+| qtwayland | Qt Wayland | 2021-08-30 |
+| stellarium | Stellarium is a free open source planetarium for your computer. | 2021-08-30 |
+| git_prompt | Display the git branch and status in the command prompt | 2021-08-26 |
+| acli | Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services. | 2021-08-25 |
+| apktool | A tool for reverse engineering Android apk files | 2021-08-20 |
+| teams | Microsoft Teams - Meet, chat, call, and collaborate in just one place. | 2021-08-15 |
 
 Chat with us!
 -------------
