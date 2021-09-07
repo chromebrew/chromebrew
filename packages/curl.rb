@@ -6,8 +6,9 @@ class Curl < Package
   @_ver = '7.78.0'
   version @_ver
   license 'curl'
+  # source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
   compatibility 'all'
-  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
+  source_url 'https://curl.se/download/curl-7.78.0.tar.xz'
   source_sha256 'be42766d5664a739c3974ee3dfbbcbe978a4ccb1fe628bb1d9b59ac79e445fb5'
 
   binary_url({
@@ -17,10 +18,10 @@ class Curl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_x86_64/curl-7.78.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9f176fb06b0d039fb59674d4fb8d9fd96f194d4ac7fbcc906f4eacf1d45ca5a8',
-     armv7l: '9f176fb06b0d039fb59674d4fb8d9fd96f194d4ac7fbcc906f4eacf1d45ca5a8',
+    aarch64: 'b1a96f22014ca2b23f7b42cda81fbcdab5710d75b3eef0bf60aef3c5fee8fdb3',
+     armv7l: 'b1a96f22014ca2b23f7b42cda81fbcdab5710d75b3eef0bf60aef3c5fee8fdb3',
        i686: '2286de285438ee9f4885c1f6b759c1ff28ee7cc17c828797081a7cbe167d1287',
-     x86_64: 'b67ca7c670ef0ecb0ab896f3743ff8971246cb947c2339bc096d86613d2b0181'
+     x86_64: '667d70c2bdebcfcd0e185b5344073a3000a764ed094e76b00471fafcc37f0af2'
   })
 
   depends_on 'ca_certificates' => :build
