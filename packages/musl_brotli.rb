@@ -12,12 +12,14 @@ class Musl_brotli < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_armv7l/musl_brotli-1.0.9-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_armv7l/musl_brotli-1.0.9-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_i686/musl_brotli-1.0.9-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9_x86_64/musl_brotli-1.0.9-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '31ccdb44798e12856a0a558fd6eb6de0e280a5696a4ebe6e10834f2087a0ed94',
-     armv7l: '31ccdb44798e12856a0a558fd6eb6de0e280a5696a4ebe6e10834f2087a0ed94',
-     x86_64: '2f44ddd9c2ec54efcda56d48950176719ad5676556b2062b0bf3c4ce39c9cf92'
+    aarch64: '2c5a29ba571418c554b63f46053ba44a53f3c80957fb6e7f4cd6af26d8b85918',
+     armv7l: '2c5a29ba571418c554b63f46053ba44a53f3c80957fb6e7f4cd6af26d8b85918',
+       i686: 'a2f5f5d2ed337805ef41b12ea86a5316f315af09114eadc72f604b77d7938c36',
+     x86_64: '81d0f70239f39effdc9c22192b9ea7000e02f769da296d4fea764abf87765443'
   })
 
   depends_on 'musl_native_toolchain' => :build

@@ -13,12 +13,14 @@ class Musl_libnghttp2 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_armv7l/musl_libnghttp2-1.44.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_armv7l/musl_libnghttp2-1.44.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_i686/musl_libnghttp2-1.44.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_x86_64/musl_libnghttp2-1.44.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a1e5658fa2818435c04a9bbf3016883259f2cf357532663bdcb465aa7cede3fe',
-     armv7l: 'a1e5658fa2818435c04a9bbf3016883259f2cf357532663bdcb465aa7cede3fe',
-     x86_64: '3433a5484c9655495bde0f0132dc68de7ac8ac2484b2ab8564f7594623163bf1'
+    aarch64: '519076c20206886515684ee9a72da4a73da0b4ede5dc6c8610f3bd5df30b7043',
+     armv7l: '519076c20206886515684ee9a72da4a73da0b4ede5dc6c8610f3bd5df30b7043',
+       i686: 'bff9be0aa3a6ee1382ef4cd6be72f68cc4b0492bfee133514e9afe31526d8ee0',
+     x86_64: '31d7ca42cedefc40edb70e708388ff497ea7bd519c8f750d173bedceb49bc559'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -83,6 +85,7 @@ class Musl_libnghttp2 < Package
       system "#{@musldep_cmake_options} \
       -DENABLE_SHARED_LIB=OFF \
       -DENABLE_STATIC_LIB=ON \
+      -DENABLE_LIB_ONLY=ON \
       ../ -G Ninja"
     end
     system "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \

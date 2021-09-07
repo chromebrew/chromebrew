@@ -3,21 +3,21 @@ require 'package'
 class Musl_krb5 < Package
   description 'Kerberos is a network authentication protocol.'
   homepage 'https://web.mit.edu/kerberos'
-  version '1.19.2'
+  version '1.20-4b17'
   license 'openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )'
   compatibility 'all'
-  source_url 'https://web.mit.edu/kerberos/dist/krb5/1.19/krb5-1.19.2.tar.gz'
-  source_sha256 '10453fee4e3a8f8ce6129059e5c050b8a65dab1c257df68b99b3112eaa0cdf6a'
+  source_url 'https://github.com/krb5/krb5.git'
+  git_hashtag '4b170a1814413cbc515f9322483851a4ac5012b7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_armv7l/musl_krb5-1.19.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.19.2_x86_64/musl_krb5-1.19.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.20-4b17_armv7l/musl_krb5-1.20-4b17-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.20-4b17_armv7l/musl_krb5-1.20-4b17-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.20-4b17_x86_64/musl_krb5-1.20-4b17-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '99aa23d08276fc454a137b9c3a97a4c3d544844fa61bc1cce29fa48232a63e42',
-     armv7l: '99aa23d08276fc454a137b9c3a97a4c3d544844fa61bc1cce29fa48232a63e42',
-     x86_64: '00a028fd778f00144e2246eaacf10b0450cecf365e85910c26ecbdc6068d8ed2'
+    aarch64: '1e025a04f483e2e0c710c75f6b164cb8b75cb9bc2ecdd70847cc93851d7c2aee',
+     armv7l: '1e025a04f483e2e0c710c75f6b164cb8b75cb9bc2ecdd70847cc93851d7c2aee',
+     x86_64: '23219873032ba8add0fa30e2fa63ea0d704e80e0b752172b9b736668cd15f922'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -78,6 +78,7 @@ class Musl_krb5 < Package
 
   def self.build
     Dir.chdir 'src' do
+      system 'autoreconf -fiv'
       system "#{@krb5_env_options} ./configure --prefix=#{CREW_PREFIX}/musl \
           --libdir=#{CREW_PREFIX}/musl/lib \
           --localstatedir=#{CREW_PREFIX}/var/krb5kdc \

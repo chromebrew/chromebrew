@@ -7,10 +7,10 @@ class Musl_native_toolchain < Package
   license 'MIT, LGPL-2 and GPL-2'
   compatibility 'all'
   source_url({
-    aarch64: 'https://musl.cc/armv7l-linux-musleabihf-native.tgz',
-     armv7l: 'https://musl.cc/armv7l-linux-musleabihf-native.tgz',
+    aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
+     armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
        i686: 'https://musl.cc/i686-linux-musl-native.tgz',
-     x86_64: 'https://musl.cc/x86_64-linux-musl-native.tgz'
+     x86_64: '8db02d6424f54906394c55adc77dec8f37d22f7e9c6baf2c8557cd03f1eebeb0'
   })
   source_sha256({
     aarch64: 'bf54a4762aed1a53be247bd5ead66569145c02d7ec78f405b184a7cda80149d1',
@@ -20,9 +20,9 @@ class Musl_native_toolchain < Package
   })
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_armv7l/musl_native_toolchain-1.2.2-e5d2823-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_armv7l/musl_native_toolchain-1.2.2-e5d2823-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_x86_64/musl_native_toolchain-1.2.2-e5d2823-chromeos-x86_64.tpxz'
+    aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
+     armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
+     x86_64: '8db02d6424f54906394c55adc77dec8f37d22f7e9c6baf2c8557cd03f1eebeb0'
   })
   binary_sha256({
     aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',

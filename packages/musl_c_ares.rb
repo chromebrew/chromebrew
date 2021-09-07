@@ -12,12 +12,14 @@ class Musl_c_ares < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_armv7l/musl_c_ares-1.17.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_armv7l/musl_c_ares-1.17.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_i686/musl_c_ares-1.17.2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_x86_64/musl_c_ares-1.17.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '85d60e5a33c8475bb065274fe98ad15b52d4332c50115f2b7ca09b82e02eb1f8',
-     armv7l: '85d60e5a33c8475bb065274fe98ad15b52d4332c50115f2b7ca09b82e02eb1f8',
-     x86_64: '7a1e41252f20345091c973eecbe3f7bc0426eaf1092f23984f19ba91e6810ee1'
+    aarch64: '9687cca0da22074f3ae23df09433b08d5886f14b42f8597c23b71b6ab33af572',
+     armv7l: '9687cca0da22074f3ae23df09433b08d5886f14b42f8597c23b71b6ab33af572',
+       i686: '1df7efce50d00836b18d9e8a8a8c0cbc11c693037943ca69f0b339105021fdf4',
+     x86_64: '805e87a23e1d61d2982e09542ea86c321dce6f2bd368ea320e79e60b4232c108'
   })
 
   depends_on 'musl_native_toolchain' => :build

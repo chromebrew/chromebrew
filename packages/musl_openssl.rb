@@ -3,22 +3,22 @@ require 'package'
 class Musl_openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1l'
+  @_ver = '3.0.0'
   version @_ver
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 '0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1'
+  source_sha256 '59eedfcb46c25214c9bd37ed6078297b4df01d012267fe9e9eee31f61bc70536'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1l_armv7l/musl_openssl-1.1.1l-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1l_armv7l/musl_openssl-1.1.1l-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/1.1.1l_x86_64/musl_openssl-1.1.1l-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_armv7l/musl_openssl-3.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_armv7l/musl_openssl-3.0.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_x86_64/musl_openssl-3.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4717a7b11c310a1960d884c24a2a730c15b14232de046c5262bdb72bb6b3bec7',
-     armv7l: '4717a7b11c310a1960d884c24a2a730c15b14232de046c5262bdb72bb6b3bec7',
-     x86_64: '55761cf1b3bd7719536450fb53bb132cae30047d36391520585de34c2a74bfb2'
+    aarch64: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
+     armv7l: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
+     x86_64: '334ff5181e6d49185e3b6bdcabd952a9362011a02cfa8285a7adce368a07d85d'
   })
 
   depends_on 'musl_native_toolchain' => :build

@@ -12,12 +12,14 @@ class Musl_expat < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_armv7l/musl_expat-2.4.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_armv7l/musl_expat-2.4.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_i686/musl_expat-2.4.1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_x86_64/musl_expat-2.4.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a1c4fae29ea46a373df90988347378bf9c726198d514b86b6cce290cbfe3d6fb',
-     armv7l: 'a1c4fae29ea46a373df90988347378bf9c726198d514b86b6cce290cbfe3d6fb',
-     x86_64: 'ead1902f0c4b2ac25e0d802f8c51612c466be6581852462cab3ec01ab12d6d19'
+    aarch64: '6354f0700ea7755fd112e6decd44b1b8aeee1cd353a9eff6e9edc40ee5efb969',
+     armv7l: '6354f0700ea7755fd112e6decd44b1b8aeee1cd353a9eff6e9edc40ee5efb969',
+       i686: '4b58bd92dc6f4f945e4f6f0f9bcf85a0f4af877d7548c080f93ac6ef3e5d56c6',
+     x86_64: '06c82bec5ca86179c2f82c0f8c3bb6b691c27a5db29cc1f86d56a61b20bc4dbe'
   })
 
   def self.patch
