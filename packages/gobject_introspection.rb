@@ -3,32 +3,29 @@ require 'package'
 class Gobject_introspection < Package
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  @_ver = '1.68.0'
+  @_ver = '1.69.0'
   version @_ver
   license 'LGPL-2+ and GPL-2+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/#{@_ver}/gobject-introspection-#{@_ver}.tar.bz2"
-  source_sha256 'b22035bd3e7ea27cc29b0c19ec5da8dd6cafe88a08392ecd06b41d4025406b4c'
+  source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_armv7l/gobject_introspection-1.68.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_i686/gobject_introspection-1.68.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.68.0_x86_64/gobject_introspection-1.68.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.69.0_armv7l/gobject_introspection-1.69.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.69.0_armv7l/gobject_introspection-1.69.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.69.0_x86_64/gobject_introspection-1.69.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '7f19992ebfb2efd6890b80aa13975b5052b62018359dfd3d6d4f504d88f5cfb8',
-     armv7l: '7f19992ebfb2efd6890b80aa13975b5052b62018359dfd3d6d4f504d88f5cfb8',
-       i686: '8b65be9e83ef90cd7442c1bc0fa54f7e781cd77193eea98550bcb9f98ba044a1',
-     x86_64: 'c150f71e67bb0dcb9f00b9d22442bc572097c6c2612725d56dd7537bb7619402'
+    aarch64: 'f07dcf8fa48c6fcd1bc08cf03dad0ee605c2dd78c939221971ae2e8b8950f7f3',
+     armv7l: 'f07dcf8fa48c6fcd1bc08cf03dad0ee605c2dd78c939221971ae2e8b8950f7f3',
+     x86_64: '2c3a734c15234a2d9fc7891b80ab65e6d11e7cca4275256b173a1d85fecc5c8c'
   })
 
   depends_on 'glib'
 
   def self.build
-    system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-    meson #{CREW_MESON_OPTIONS} \
-    builddir"
+    system "#{CREW_ENV_OPTIONS} meson #{CREW_MESON_OPTIONS} \
+      builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end
