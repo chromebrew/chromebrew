@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.69.2'
+  @_ver = '2.69.3'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,14 @@ class Glib < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.2_armv7l/glib-2.69.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.2_armv7l/glib-2.69.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.2_i686/glib-2.69.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.2_x86_64/glib-2.69.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.3_armv7l/glib-2.69.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.3_armv7l/glib-2.69.3-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.3_x86_64/glib-2.69.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'fe9ebe9afa704f979c17e75fa0d50bd28be4ca677c40ef789206d7422ba88d8e',
-     armv7l: 'fe9ebe9afa704f979c17e75fa0d50bd28be4ca677c40ef789206d7422ba88d8e',
-       i686: '4184125c9303b4d319835bf79ec7b66e0883eff484dd2f579b0c2b228d54178c',
-     x86_64: '2e6b2d45f2db856c94427efdae401dd42018a65f650ce23e9e374fdde923c59c'
+    aarch64: '0a28298a4b7c7628d227a627b880b04f4cb1eb7eddc1b9bb470394a883cb7e91',
+     armv7l: '0a28298a4b7c7628d227a627b880b04f4cb1eb7eddc1b9bb470394a883cb7e91',
+     x86_64: '484b56feaa32030249f8b5a66728b15b84190b092539012f102d53f0e011a0c6'
   })
 
   depends_on 'shared_mime_info' # L
