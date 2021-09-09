@@ -1011,10 +1011,36 @@ def shrink_dir(dir)
         @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -print].chomp
         unless @execfiles.empty? or @execfiles.nil?
           puts "Using upx to shrink binaries."
-          @execfiles.each_line do |execfile|
-            system "upx --best -k --overlay=skip #{execfile} && \
-            \( upx -t #{execfile} && rm #{execfile}.~ || mv #{execfile}.~ #{execfile}\)"
+          begin
+              gem 'concurrent-ruby'
+          rescue Gem::LoadError
+              puts ' -> install gem ' + 'concurrent-ruby'
+              Gem.install('concurrent-ruby')
+              gem 'concurrent-ruby'
           end
+          require 'concurrent-ruby'
+          pool = Concurrent::ThreadPoolExecutor.new(
+            min_threads: CREW_NPROC,
+            max_threads: CREW_NPROC,
+            max_queue: 0, # unbounded work queue
+            fallback_policy: :caller_runs
+          )
+          @execfiles.each_line do |execfile|
+            puts "Attempting to compress #{execfile}".lightblue
+            pool.post do
+              begin
+                system "upx --best -k --overlay=skip #{execfile}"
+                system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
+              rescue
+                FileUtils.mv "#{execfile}.~", execfile
+              ensure
+                FileUtils.rm_f "#{execfile}.~"
+              end
+            end
+          end
+          pool.shutdown
+          pool.wait_for_termination
+          # This should no longer be needed, but leave for cleanup.
           system 'find . -executable -type f -name "*.~" -delete'
         end
       end
