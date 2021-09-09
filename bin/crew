@@ -1020,13 +1020,13 @@ def shrink_dir(dir)
           end
           require 'concurrent-ruby'
           pool = Concurrent::ThreadPoolExecutor.new(
-            min_threads: CREW_NPROC,
+            min_threads: 1,
             max_threads: CREW_NPROC,
             max_queue: 0, # unbounded work queue
             fallback_policy: :caller_runs
           )
           @execfiles.each_line do |execfile|
-            puts "Attempting to compress #{execfile}".lightblue
+            puts "Attempting to compress #{execfile} ...".lightblue
             pool.post do
               begin
                 system "upx --best -k --overlay=skip #{execfile}"
