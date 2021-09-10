@@ -1026,9 +1026,9 @@ def shrink_dir(dir)
             fallback_policy: :caller_runs
           )
           @execfiles.each_line do |execfile|
-            puts "Attempting to compress #{execfile} ...".lightblue
             pool.post do
               begin
+                puts "Attempting to compress #{execfile.chomp} ...".lightblue
                 system "upx --best -k --overlay=skip #{execfile}"
                 system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
               rescue
