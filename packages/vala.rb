@@ -12,11 +12,13 @@ class Vala < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_armv7l/vala-0.53.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_armv7l/vala-0.53.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_i686/vala-0.53.2-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_x86_64/vala-0.53.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '03a6379a478dd6103049a993a0e0ad04e62e2c71fa42bef139b322c914059ee1',
      armv7l: '03a6379a478dd6103049a993a0e0ad04e62e2c71fa42bef139b322c914059ee1',
+       i686: 'c19d63faa1e2cc935990af274233412f69591998593f18be13c1e0e7d9fcef2f',
      x86_64: '5c503b417af46f6f5ab79dc3d2cf63336e46cea9e73c6c56d0b80fc831e8d0ff'
   })
 
