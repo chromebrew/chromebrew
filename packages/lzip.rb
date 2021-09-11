@@ -10,7 +10,6 @@ class Lzip < Package
   source_sha256 'c3342d42e67139c165b8b128d033b5c96893a13ac5f25933190315214e87a948'
 
   def self.build
-    # configure: WARNING: unrecognized option: '--libdir=/usr/local/lib64' 
     system "#{CREW_ENV_OPTIONS} ./configure --prefix=#{CREW_PREFIX}"
     system 'make'
   end
