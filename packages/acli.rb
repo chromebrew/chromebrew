@@ -3,7 +3,7 @@ require 'package'
 class Acli < Package
   description 'Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.'
   homepage 'https://github.com/acquia/cli'
-  version '1.13.1'
+  version '1.13.2'
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'SKIP'
@@ -20,7 +20,7 @@ class Acli < Package
 
   def self.install
     system "curl -#LO https://github.com/acquia/cli/releases/download/#{version}/acli.phar"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('acli.phar') ) == '5d25b7835ea544a277275c283d410f2bc9924cc04aa69253f4fe2a8d2f5e3bb5'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('acli.phar') ) == '5e058c98a2f4a4805ac10ed0481d844b1c434d434fa0df6b71feec27fc14640e'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'acli.phar', "#{CREW_DEST_PREFIX}/bin/acli", mode: 0o755
   end
