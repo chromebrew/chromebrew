@@ -3,23 +3,21 @@ require 'package'
 class Libsoup2 < Package
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  version '2.72'
+  version '2.74.0'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz'
-  source_sha256 '170c3f8446b0f65f8e4b93603349172b1085fb8917c181d10962f02bb85f5387'
+  source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_armv7l/libsoup2-2.72-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_armv7l/libsoup2-2.72-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_i686/libsoup2-2.72-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.72_x86_64/libsoup2-2.72-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.0_armv7l/libsoup2-2.74.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.0_armv7l/libsoup2-2.74.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.0_x86_64/libsoup2-2.74.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5fe4849b14fab9bc1642f86faed10800d8693d5b1e73d591dcf2aacbaca962a5',
-     armv7l: '5fe4849b14fab9bc1642f86faed10800d8693d5b1e73d591dcf2aacbaca962a5',
-       i686: '17309548e1b4c495785bc70a5d87b985e28bbd47ef8c4aff0b665083d2bfc7ec',
-     x86_64: '3925e8f5ca246afdb7cc1dcca708eb5d61a07bc977d1eb2c8cf447526b326c52'
+    aarch64: '455f9d65631baf563d599f0cbe4d90b50545602e93d2773299c4434e12ada3b5',
+     armv7l: '455f9d65631baf563d599f0cbe4d90b50545602e93d2773299c4434e12ada3b5',
+     x86_64: '3194e26077e8343919de6492c83399c8f7e353b48c6b9a17c15b024a7dfb2621'
   })
 
   depends_on 'glib_networking'
