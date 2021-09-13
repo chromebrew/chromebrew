@@ -3,24 +3,22 @@ require 'package'
 class Libhandy < Package
   description 'The aim of the handy library is to help with developing UI for mobile devices using GTK/GNOME.'
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
-  @_ver = '1.2.0'
-  version "#{@_ver}-1"
+  @_ver = '1.4.0'
+  version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/libhandy/-/archive/#{@_ver}/libhandy-#{@_ver}.tar.bz2"
-  source_sha256 'b2e08210a6b0c6b08e6c46848024cbcf44973e40377a1373d7cbb0bde7131b56'
+  source_url 'https://gitlab.gnome.org/GNOME/libhandy.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.2.0-1_armv7l/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.2.0-1_armv7l/libhandy-1.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.2.0-1_i686/libhandy-1.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.2.0-1_x86_64/libhandy-1.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_armv7l/libhandy-1.4.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_armv7l/libhandy-1.4.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_x86_64/libhandy-1.4.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3bd22e6101caa76c8f89fc4ef8aeb046e85c7969b42003f1835e81c13df7180d',
-     armv7l: '3bd22e6101caa76c8f89fc4ef8aeb046e85c7969b42003f1835e81c13df7180d',
-       i686: 'f1e76dc3fdc785113360060a6813c971008a3961667abef92bed7a27fc386e1d',
-     x86_64: '3519270c70aec8aedfd6afbd9f286920f148d6377a8e30512c020ff166959684'
+    aarch64: '518a1687d6bfb8497e19a50f2a64810dc7e466ffc03bd29a63c93a2039730dc7',
+     armv7l: '518a1687d6bfb8497e19a50f2a64810dc7e466ffc03bd29a63c93a2039730dc7',
+     x86_64: '4d4ac622317b61751eff09e267e05b7998a2d5ca210b95126b3a82ab7a388caa'
   })
 
   depends_on 'atk'
@@ -33,9 +31,9 @@ class Libhandy < Package
   depends_on 'pango'
   depends_on 'vala'
 
-  def self.prebuild
-    system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
-  end
+  # def self.prebuild
+  #  system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
+  # end
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"
