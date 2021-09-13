@@ -3,11 +3,11 @@ require 'package'
 class Asciidoctor < Package
   description 'A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.'
   homepage 'https://asciidoctor.org/'
-  version '2.0.10'
+  version '2.0.16'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/asciidoctor/asciidoctor/archive/v2.0.10.tar.gz'
-  source_sha256 'afca74837e6d4b339535e8ba0b79f2ad00bd1eef78bf391cc36995ca2e31630a'
+  source_url 'https://github.com/asciidoctor/asciidoctor/archive/v2.0.16.tar.gz'
+  source_sha256 '8fc1e3947012e22bccabe4d6faa31fee446f3719bb7478c79f45221b64fbd09f'
 
   binary_url ({
   })
