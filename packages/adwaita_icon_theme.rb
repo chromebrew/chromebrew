@@ -3,23 +3,21 @@ require 'package'
 class Adwaita_icon_theme < Package
   description 'Theme consisting of a set of icons for GTK+'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
-  version '40.rc'
+  version '40.1.1'
   license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
-  source_url 'https://download.gnome.org/core/40/40.rc/sources/adwaita-icon-theme-40.rc.tar.xz'
-  source_sha256 'd794a492e8e7db33bdc19898effabc1f1205302e166da522c5351a8eba9da404'
+  source_url 'https://download.gnome.org/core/41/41.rc/sources/adwaita-icon-theme-40.1.1.tar.xz'
+  source_sha256 '0b6c436ed6ad9887a88ada1f72a0197b1eb73b020d8d344abab4c7fa7250f8f6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_armv7l/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_armv7l/adwaita_icon_theme-40.rc-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_i686/adwaita_icon_theme-40.rc-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.rc_x86_64/adwaita_icon_theme-40.rc-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_armv7l/adwaita_icon_theme-40.1.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_armv7l/adwaita_icon_theme-40.1.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_x86_64/adwaita_icon_theme-40.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f8cd7b689fb6debe871906165b0f0e93542db14b23b7f9f26fce30cbdec48246',
-     armv7l: 'f8cd7b689fb6debe871906165b0f0e93542db14b23b7f9f26fce30cbdec48246',
-       i686: 'b400562bbdbf9f0b97dfd259de529882c97548d726334d57f15e9876fdce28d4',
-     x86_64: '91da1bc30615a25d9d239eb05e8782ca2a4efbffafe6da7693976dcb1cb2c6fa'
+    aarch64: 'adc3108c3520dedd11949bbcc1b39a573944d3f084166b385c93297f77c5aabe',
+     armv7l: 'adc3108c3520dedd11949bbcc1b39a573944d3f084166b385c93297f77c5aabe',
+     x86_64: 'a900ebcf4874828df3891c23921154aa1681ba6690f951fbf75358f88f0ad458'
   })
 
   depends_on 'cantarell_fonts'
@@ -35,10 +33,7 @@ class Adwaita_icon_theme < Package
     GDK_PIXBUF_MODULE_FILE='#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache' \
     gdk-pixbuf-query-loaders > #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache"
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
