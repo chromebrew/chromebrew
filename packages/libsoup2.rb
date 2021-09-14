@@ -12,11 +12,13 @@ class Libsoup2 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.0_armv7l/libsoup2-2.74.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.0_armv7l/libsoup2-2.74.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.0_i686/libsoup2-2.74.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.0_x86_64/libsoup2-2.74.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '455f9d65631baf563d599f0cbe4d90b50545602e93d2773299c4434e12ada3b5',
      armv7l: '455f9d65631baf563d599f0cbe4d90b50545602e93d2773299c4434e12ada3b5',
+       i686: 'b3703f6250566229435f00ceea1af8391e40afac9f0e436daefc45fcb156cc6e',
      x86_64: '3194e26077e8343919de6492c83399c8f7e353b48c6b9a17c15b024a7dfb2621'
   })
 
