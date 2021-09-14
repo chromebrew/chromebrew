@@ -40,6 +40,11 @@ class Firefox < Package
   depends_on 'sommelier'
 
   def self.install
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/firefox"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/firefox"
