@@ -12,11 +12,13 @@ class Adwaita_icon_theme < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_armv7l/adwaita_icon_theme-40.1.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_armv7l/adwaita_icon_theme-40.1.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_i686/adwaita_icon_theme-40.1.1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_x86_64/adwaita_icon_theme-40.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'adc3108c3520dedd11949bbcc1b39a573944d3f084166b385c93297f77c5aabe',
      armv7l: 'adc3108c3520dedd11949bbcc1b39a573944d3f084166b385c93297f77c5aabe',
+       i686: 'c4f97fc424e02d37498be3e27237acd41f0051c101dec307c5635c07969461a9',
      x86_64: 'a900ebcf4874828df3891c23921154aa1681ba6690f951fbf75358f88f0ad458'
   })
 
