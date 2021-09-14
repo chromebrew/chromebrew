@@ -25,11 +25,7 @@ class Nss < Package
   depends_on 'gyp_next' => :build
 
   def self.build
-    @build_64 = if ARCH == 'x86_64'
-                  '1'
-                else
-                  '0'
-                end
+    @build_64 = ARCH == 'x86_64' ? '1' : '0'
     @arch_cflags = ''
     @arch_ldflags = @arch_cflags
 
