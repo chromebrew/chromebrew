@@ -13,11 +13,13 @@ class Libhandy < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_armv7l/libhandy-1.4.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_armv7l/libhandy-1.4.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_i686/libhandy-1.4.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_x86_64/libhandy-1.4.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '518a1687d6bfb8497e19a50f2a64810dc7e466ffc03bd29a63c93a2039730dc7',
      armv7l: '518a1687d6bfb8497e19a50f2a64810dc7e466ffc03bd29a63c93a2039730dc7',
+       i686: 'a928efd9fd5014687b207cc734ece25eec6c87d43c63c28160ed3578747cf8f2',
      x86_64: '4d4ac622317b61751eff09e267e05b7998a2d5ca210b95126b3a82ab7a388caa'
   })
 
