@@ -13,11 +13,13 @@ class Libinput < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_armv7l/libinput-1.19.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_armv7l/libinput-1.19.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_i686/libinput-1.19.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.0_x86_64/libinput-1.19.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '92d7106871145a7b83c4fcf91603563473de4da33c4b3368b4a795a7e51629e1',
      armv7l: '92d7106871145a7b83c4fcf91603563473de4da33c4b3368b4a795a7e51629e1',
+       i686: 'f33badf3a7bed9a0ba5c343663be77c32d773c943a886d1307a9ec05d58abd80',
      x86_64: '46bdc13b4d3e214591300759ec62d14d76e20faa9d8f05f887f88e1cd70cac62'
   })
 
