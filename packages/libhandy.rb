@@ -31,10 +31,6 @@ class Libhandy < Package
   depends_on 'pango'
   depends_on 'vala'
 
-  # def self.prebuild
-  #  system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
-  # end
-
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
