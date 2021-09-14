@@ -64,7 +64,7 @@ class Rust < Package
     IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
     system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      Dir.glob('*').each do |f|
+      Dir['*'] do |f|
         FileUtils.ln_sf "../share/cargo/bin/#{f}", f
       end
     end
