@@ -12,14 +12,12 @@ class Sommelier < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_i686/sommelier-20210109-4-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_x86_64/sommelier-20210109-4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3698af2c3b77f659d7195f8b7e55d157147d137addeef42790730c9e9cb0bcbc',
-     armv7l: '3698af2c3b77f659d7195f8b7e55d157147d137addeef42790730c9e9cb0bcbc',
-       i686: '423707ace2d90a8ceb0a51287ad9bbdf87c0d8729aa3d8b7e951b20c0d05b28d',
-     x86_64: '7f83d6a5897616b40257dfd4c7bd94e915c4b8a2e8f49158b2c77e77eef8bf73'
+    aarch64: '2fbadad68afa4f712c35874190bac505af989fae8bc8783eaeb8ed5ed7837d93',
+     armv7l: '2fbadad68afa4f712c35874190bac505af989fae8bc8783eaeb8ed5ed7837d93',
+     x86_64: '6204e088afe53b492c470779edeb362023a2797153d424960c6612cd1689ce37'
   })
 
   depends_on 'libdrm'
@@ -281,7 +279,8 @@ class Sommelier < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d #{CREW_DEST_PREFIX}/etc/env.d CREW_DEST_HOME]
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d
+                         #{CREW_DEST_PREFIX}/etc/env.d CREW_DEST_HOME]
     Dir.chdir('vm_tools/sommelier') do
       system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
       Dir.chdir('builddir') do
