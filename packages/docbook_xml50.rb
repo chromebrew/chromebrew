@@ -4,7 +4,7 @@ class Docbook_xml50 < Package
   description 'A widely used XML scheme for writing documentation and help'
   homepage 'https://www.oasis-open.org/docbook/'
   @_ver = '5.0'
-  version "#{@_ver}-2"
+  version "#{@_ver}-3"
   license 'MIT'
   compatibility 'all'
   source_url "https://docbook.org/xml/#{@_ver}/docbook-#{@_ver}.zip"
@@ -25,7 +25,6 @@ class Docbook_xml50 < Package
 
   depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
-  depends_on 'bash'
 
   def self.install
     system "xmlcatalog --noout --create docbook-#{@_ver}.xml"
@@ -189,20 +188,21 @@ class Docbook_xml50 < Package
       done
     ADDFILES_HEREDOC
     IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
-    system "#{CREW_PREFIX}/bin/bash -x ./add_files.sh | true"
+    system 'bash -x ./add_files.sh || true'
 
-    system "#{CREW_PREFIX}/bin/bash -c \"for type in dtd rng sch xsd; do
-      mkdir -p #{CREW_DEST_PREFIX}/share/xml/docbook/schema/\\\${type}/#{@_ver}
-      install -m644 \\\${type}/* #{CREW_DEST_PREFIX}/share/xml/docbook/schema/\\\${type}/#{@_ver}
-    done\""
+    %W[dtd rng sch xsd].each do |type|
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
+      FileUtils.cp Dir["#{type}/*"], "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
+    end
+    
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    system "install -m755 tools/db4-entities.pl #{CREW_DEST_PREFIX}/bin"
+    FileUtils.install mode: 0o755, 'tools/db4-entities.pl', "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5"
-    system "install -m644 tools/db4-upgrade.xsl #{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/"
+    FileUtils.install mode:0o644, 'tools/db4-upgrade.xsl', "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/"
 
     # catalog configuration
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/xml"
-    system "install -m644 docbook-#{@_ver}.xml  #{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml"
+    FileUtils.install mode: 0o755, "docbook-#{@_ver}.xml", "#{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml"
   end
 
   def self.preinstall
