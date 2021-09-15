@@ -25,7 +25,6 @@ class Docbook_xsl < Package
 
   depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
-  depends_on 'bash'
 
   def self.patch
     system 'curl -OLf "https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch"'
