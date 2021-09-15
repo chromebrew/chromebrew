@@ -110,7 +110,6 @@ class Sommelier < Package
             source ~/.sommelier.env
           fi
 
-          startsommelier
           set +a
         EOF
 
@@ -272,15 +271,20 @@ class Sommelier < Package
           #!/bin/bash
           stopsommelier && startsommelier
         EOF
+
+        # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
+        @bash.d_sommelier = <<~EOF
+          startsommelier
+        EOF
       end
     end
   end
 
   def self.install
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d #{CREW_DEST_PREFIX}/etc/env.d CREW_DEST_HOME]
     Dir.chdir('vm_tools/sommelier') do
       system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
       Dir.chdir('builddir') do
-        FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc CREW_DEST_HOME]
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
         FileUtils.install 'sommelierd', "#{CREW_DEST_PREFIX}/sbin/sommelierd", mode: 0o755
@@ -292,7 +296,7 @@ class Sommelier < Package
       end
     end
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", @bash.d_sommelier)
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @sommelierenv)
   end
 
