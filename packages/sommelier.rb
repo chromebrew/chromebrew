@@ -67,7 +67,7 @@ class Sommelier < Package
 
       system <<~BUILD
         env CC=clang CXX=clang++ \
-          meson #{CREW_MESON_FNO_LTO_OPTIONS} \
+          meson #{CREW_MESON_OPTIONS} \
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
@@ -273,7 +273,7 @@ class Sommelier < Package
         EOF
 
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
-        @bash.d_sommelier = <<~EOF
+        @bashd_sommelier = <<~EOF
           startsommelier
         EOF
       end
@@ -296,7 +296,7 @@ class Sommelier < Package
       end
     end
 
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", @bash.d_sommelier)
+    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", @bashd_sommelier)
     IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @sommelierenv)
   end
 
