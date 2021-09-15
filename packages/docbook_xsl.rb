@@ -27,7 +27,7 @@ class Docbook_xsl < Package
   depends_on 'xmlcatmgr'
 
   def self.patch
-    system 'curl -OLf "https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch"'
+    system 'curl -OLsf "https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch"'
     unless Digest::SHA256.hexdigest(File.read('765567_non-recursive_string_subst.patch')) == '193ec26dcb37bdf12037ed4ea98d68bd550500c8e96b719685d76d7096c3f9b3'
       abort 'Checksum mismatch. :/ Try again.'.lightred
     end
@@ -38,7 +38,7 @@ class Docbook_xsl < Package
     ENV['XML_CATALOG_FILES'] = "#{CREW_DEST_PREFIX}/etc/xml/catalog"
     @pkgroot = "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}"
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
-      install -Dt @pkgroot -m644 VERSION{,.xsl}
+      install -Dt #{@pkgroot} -m644 VERSION{,.xsl}
       (
         shopt -s nullglob  # ignore missing files
         echo "ignore missing files"
@@ -52,8 +52,8 @@ class Docbook_xsl < Package
       )
     ADDFILES_HEREDOC
     IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
-    system "#{CREW_PREFIX}/bin/bash ./add_files.sh || true"
-    system "install -Dt #{@pkgroot} -m644 VERSION.xsl"
+    system 'bash ./add_files.sh || true'
+    FileUtils.install 'VERSION.xsl', @pkgroot, mode:0o644
     FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
                    "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/"
