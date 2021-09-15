@@ -4,7 +4,7 @@ class Docbook_xsl < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
-  version "#{@_ver}-2"
+  version "#{@_ver}-3"
   license 'custom'
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
