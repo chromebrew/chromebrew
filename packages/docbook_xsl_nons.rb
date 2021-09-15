@@ -4,7 +4,7 @@ class Docbook_xsl_nons < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'custom'
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-nons-#{@_ver}.zip"
@@ -25,7 +25,6 @@ class Docbook_xsl_nons < Package
 
   depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
-  depends_on 'bash'
 
   def self.patch
     system 'curl -OLf "https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch"'
@@ -53,7 +52,7 @@ class Docbook_xsl_nons < Package
       )
     ADDFILES_HEREDOC
     IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
-    system "#{CREW_PREFIX}/bin/bash ./add_files.sh || true"
+    system 'bash ./add_files.sh || true'
   end
 
   def self.preinstall
