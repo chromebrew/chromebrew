@@ -25,6 +25,8 @@ class Rdfind < Package
      x86_64: '2b442e00f36840cea9c023a4ffad71aa8952df831769594759726bd5f24372f4'
   })
 
+  depends_on 'autoconf_archive' => :build
+
   def self.patch
     system "sed -i '/<vector>/a #include <limits>' rdfind.cc"
     system "sed -i '/<cstdio>/a #include <stdexcept>' Checksum.cc"
