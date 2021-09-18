@@ -13,11 +13,13 @@ class Musl_openssl < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_armv7l/musl_openssl-3.0.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_armv7l/musl_openssl-3.0.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_i686/musl_openssl-3.0.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_x86_64/musl_openssl-3.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
      armv7l: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
+       i686: 'e03aaed76c66a7e8ce0f2a4c9f6c64f343f5e5f5bfd90d3ed16c14960af6a6a6',
      x86_64: '334ff5181e6d49185e3b6bdcabd952a9362011a02cfa8285a7adce368a07d85d'
   })
 

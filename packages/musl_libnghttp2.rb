@@ -19,7 +19,7 @@ class Musl_libnghttp2 < Package
   binary_sha256({
     aarch64: '519076c20206886515684ee9a72da4a73da0b4ede5dc6c8610f3bd5df30b7043',
      armv7l: '519076c20206886515684ee9a72da4a73da0b4ede5dc6c8610f3bd5df30b7043',
-       i686: 'bff9be0aa3a6ee1382ef4cd6be72f68cc4b0492bfee133514e9afe31526d8ee0',
+       i686: '1f51ed0279164a26ba4c77eec699eba6af86f6dda7b2403808c0c2ecac097262',
      x86_64: '31d7ca42cedefc40edb70e708388ff497ea7bd519c8f750d173bedceb49bc559'
   })
 

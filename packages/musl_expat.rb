@@ -18,7 +18,7 @@ class Musl_expat < Package
   binary_sha256({
     aarch64: '6354f0700ea7755fd112e6decd44b1b8aeee1cd353a9eff6e9edc40ee5efb969',
      armv7l: '6354f0700ea7755fd112e6decd44b1b8aeee1cd353a9eff6e9edc40ee5efb969',
-       i686: '4b58bd92dc6f4f945e4f6f0f9bcf85a0f4af877d7548c080f93ac6ef3e5d56c6',
+       i686: 'cbf58196eb5d5d1cd10d8dc690d5f6a9ac93ec318457814a36cb5b9dea20f408',
      x86_64: '06c82bec5ca86179c2f82c0f8c3bb6b691c27a5db29cc1f86d56a61b20bc4dbe'
   })
 

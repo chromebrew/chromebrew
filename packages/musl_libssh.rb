@@ -14,11 +14,13 @@ class Musl_libssh < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_i686/musl_libssh-0.9.6-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_x86_64/musl_libssh-0.9.6-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'feb3f6d6dd7ce33d3c75e23229219c16488b1ea33e42b22737a24dcc875f69d8',
      armv7l: 'feb3f6d6dd7ce33d3c75e23229219c16488b1ea33e42b22737a24dcc875f69d8',
+       i686: '9e617fa3711f49bae34b11fd98d7e4b90c347c76f0b504a31d65bbb1b7e2e194',
      x86_64: 'eb6bf78665da6b203680c557d50a1ced726c63c90f81f249dde28e17ddb084ee'
   })
 

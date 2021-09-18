@@ -12,11 +12,13 @@ class Musl_libunistring < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_armv7l/musl_libunistring-0.9.10-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_i686/musl_libunistring-0.9.10-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
      armv7l: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
+       i686: 'a644a401f6979bb2094bc2b25814b64f943b55a8b8395cbc264e79f95ee3a42c',
      x86_64: 'cdab7f1661c3b8e93f1bb7e0b255993817df246e46ace22d9d1d2451826c324b'
   })
 
