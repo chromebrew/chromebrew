@@ -4,13 +4,13 @@ class Musl_native_toolchain < Package
   description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
   homepage 'https://musl.cc/'
   version '1.2.2-e5d2823'
-  license 'MIT, LGPL-2 and GPL-2'
   compatibility 'all'
+  license 'MIT, LGPL-2 and GPL-2'
   source_url({
-    aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
-     armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
+    aarch64: 'https://musl.cc/armv7l-linux-musleabihf-native.tgz',
+     armv7l: 'https://musl.cc/armv7l-linux-musleabihf-native.tgz',
        i686: 'https://musl.cc/i686-linux-musl-native.tgz',
-     x86_64: '8db02d6424f54906394c55adc77dec8f37d22f7e9c6baf2c8557cd03f1eebeb0'
+     x86_64: 'https://musl.cc/x86_64-linux-musl-native.tgz'
   })
   source_sha256({
     aarch64: 'bf54a4762aed1a53be247bd5ead66569145c02d7ec78f405b184a7cda80149d1',
@@ -20,13 +20,15 @@ class Musl_native_toolchain < Package
   })
 
   binary_url({
-    aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
-     armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
-     x86_64: '8db02d6424f54906394c55adc77dec8f37d22f7e9c6baf2c8557cd03f1eebeb0'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_armv7l/musl_native_toolchain-1.2.2-e5d2823-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_armv7l/musl_native_toolchain-1.2.2-e5d2823-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_i686/musl_native_toolchain-1.2.2-e5d2823-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.2-e5d2823_x86_64/musl_native_toolchain-1.2.2-e5d2823-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
      armv7l: '6243d3202b0f5beaba5940dc7233694beed43d6b53da67d2b0848cc17451ec8b',
+       i686: 'caad5f111600ad007bc160e1e67a07b29770ccb8febb9f3a60edf7ff921eee46',
      x86_64: '8db02d6424f54906394c55adc77dec8f37d22f7e9c6baf2c8557cd03f1eebeb0'
   })
 
