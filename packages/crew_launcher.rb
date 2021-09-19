@@ -7,7 +7,7 @@ class Crew_launcher < Package
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/supechicken/crew-launcher.git'
-  git_hashtag 'main'
+  git_hashtag '720b283fceb2e9fb6c7f01f11f94b83bd8253f3d'
   
   depends_on 'graphicsmagick'
 
