@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.16.6'
+CREW_VERSION = '1.16.7'
 
 ARCH_ACTUAL = `uname -m`.strip
 # This helps with virtualized builds on aarch64 machines
@@ -124,5 +124,5 @@ PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
 PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
 
-CREW_FIRST_PACKAGES = %w[curl git pixz shared_mime_info]
+CREW_FIRST_PACKAGES = %w[libssh curl git pixz shared_mime_info]
 CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
