@@ -28,7 +28,7 @@ class Crew_launcher < Package
     system "curl -L https://github.com/skycocker/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/icon/brew.png"
 
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/crew_launcher", <<~EOF
-      crew-launcher start-server > /dev/null
+      crew-launcher start-server
     EOF
   end
 end
