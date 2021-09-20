@@ -11,10 +11,14 @@ class Harfbuzz < Package
   git_hashtag @_ver
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.0.0_x86_64/harfbuzz-3.0.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.0.0_armv7l/harfbuzz-3.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.0.0_armv7l/harfbuzz-3.0.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.0.0_x86_64/harfbuzz-3.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '3e087664cdf7d74ffcccff126c8b37f922168f2d25a5807bd8ac2e809028965d'
+    aarch64: '51af46f21b3d0e280c5ffcb036e1917094278f79ad39cd4038d057a33302c1ac',
+     armv7l: '51af46f21b3d0e280c5ffcb036e1917094278f79ad39cd4038d057a33302c1ac',
+     x86_64: '3e087664cdf7d74ffcccff126c8b37f922168f2d25a5807bd8ac2e809028965d'
   })
 
   depends_on 'cairo' => :build
