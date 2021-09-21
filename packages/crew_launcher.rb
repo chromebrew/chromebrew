@@ -22,7 +22,7 @@ class Crew_launcher < Package
 
     FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/crew-launcher/"
     FileUtils.ln_s "#{CREW_LIB_PATH}/lib/color.rb", "#{CREW_DEST_PREFIX}/share/crew-launcher/lib"
-    FileUtils.ln_s '../lib/crew-launcher/main.rb', "#{CREW_DEST_PREFIX}/bin/crew-launcher"
+    FileUtils.ln_s '../share/crew-launcher/main.rb', "#{CREW_DEST_PREFIX}/bin/crew-launcher"
     
     system "curl -L https://github.com/skycocker/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/share/crew-launcher/icon/brew.png"
 
