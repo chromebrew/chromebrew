@@ -14,6 +14,7 @@ class Opera < Package
   depends_on 'harfbuzz'
   depends_on 'graphite'
   depends_on 'cras'
+  depends_on 'libcom_err'
   depends_on 'sommelier'
 
   def self.install
