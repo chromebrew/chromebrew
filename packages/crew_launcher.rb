@@ -7,22 +7,21 @@ class Crew_launcher < Package
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/supechicken/crew-launcher.git'
-  git_hashtag '720b283fceb2e9fb6c7f01f11f94b83bd8253f3d'
+  git_hashtag 'ec0aefe84eac9d31ef58cff2dc2de1fd9526af0b'
   
   depends_on 'graphicsmagick'
 
   def self.install
     FileUtils.mkdir_p [
       "#{CREW_DEST_PREFIX}/bin/",
-      "#{CREW_DEST_PREFIX}/lib/crew-launcher/",
       "#{CREW_DEST_PREFIX}/share/crew-launcher/icon/",
       "#{CREW_DEST_PREFIX}/share/crew-launcher/json/",
       "#{CREW_DEST_DIR}/tmp/crew-launcher/",
       "#{CREW_DEST_PREFIX}/etc/env.d/"
     ]
 
-    FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/lib/crew-launcher/"
-    FileUtils.ln_s "#{CREW_LIB_PATH}/lib/color.rb", "#{CREW_DEST_PREFIX}/lib/crew-launcher/lib"
+    FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/crew-launcher/"
+    FileUtils.ln_s "#{CREW_LIB_PATH}/lib/color.rb", "#{CREW_DEST_PREFIX}/share/crew-launcher/lib"
     FileUtils.ln_s '../lib/crew-launcher/main.rb', "#{CREW_DEST_PREFIX}/bin/crew-launcher"
     
     system "curl -L https://github.com/skycocker/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/lib/crew-launcher/icon/brew.png"
@@ -30,5 +29,9 @@ class Crew_launcher < Package
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/crew_launcher", <<~EOF
       crew-launcher start-server
     EOF
+  end
+
+  def self.remove
+    FileUtils.rm_rf "#{CREW_PREFIX}/share/crew-launcher/"
   end
 end
