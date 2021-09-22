@@ -3,23 +3,21 @@ require 'package'
 class Freetype_sub < Package
   description 'Freetype_sub is a version without harfbuzz. It is intended to handle circular dependency betwwen freetype and harfbuzz.'
   homepage 'https://www.freetype.org/'
-  version '2.10.4'
+  version '2.11.0'
   license 'FTL or GPL-2+'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.10.4.tar.xz'
-  source_sha256 '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'
+  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.11.0.tar.xz'
+  source_sha256 '8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_armv7l/freetype_sub-2.10.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_i686/freetype_sub-2.10.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.10.4_x86_64/freetype_sub-2.10.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.11.0_armv7l/freetype_sub-2.11.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.11.0_armv7l/freetype_sub-2.11.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype_sub/2.11.0_x86_64/freetype_sub-2.11.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '7c8620a0cad19fbcd7ff0d96a7304323648b97c93d86352cfbb8216c768aeb1b',
-     armv7l: '7c8620a0cad19fbcd7ff0d96a7304323648b97c93d86352cfbb8216c768aeb1b',
-       i686: '4e6ab3e8a7dacab4380099315c2d547b89ce490f33d7e677744034d4e44ccabe',
-     x86_64: 'a5c364bdee4a22ca72bbaba4162dc2d75730f15b4340bddf038ee3698751c116',
+  binary_sha256({
+    aarch64: '7cb416b93f2b41dcef3f7fa9cc5624467e5cc89a720a2850b0edde19f48999b7',
+     armv7l: '7cb416b93f2b41dcef3f7fa9cc5624467e5cc89a720a2850b0edde19f48999b7',
+     x86_64: '5abc6e6e8c4b68d6e1e860f4a9b421578ed2b3a21180a3f2ac880af629ee2afd'
   })
 
   depends_on 'expat'
