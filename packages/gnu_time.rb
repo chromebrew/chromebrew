@@ -8,8 +8,6 @@ class Gnu_time < Package
   homepage 'https://www.gnu.org/software/time/'
   version '1.9'
   license 'GPL'
-  # source_url 'https://git.savannah.gnu.org/cgit/time.git/snapshot/time-1.9.tar.gz'
-  # source_sha256 '27952e85cf19fd4666be55443b92df921875d789f74b212de51c2aa0b20d4c2e'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/time.git'
   git_hashtag "v#{version}"
