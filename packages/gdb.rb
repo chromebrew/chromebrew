@@ -3,7 +3,7 @@
 
 require 'package'
 
-lass Gdb < Package
+class Gdb < Package
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
   version '11.1'
