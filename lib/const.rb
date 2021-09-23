@@ -127,4 +127,6 @@ PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version
 CREW_FIRST_PACKAGES = %w[libssh curl git pixz shared_mime_info]
 CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
 
+# libssp is in the libssp package
+# libatomic is in the gcc package
 CREW_ESSENTIAL_FILES = %W[#{CREW_LIB_PREFIX}/libssp.so.0.0.0 #{CREW_LIB_PREFIX}/libatomic.so.1]
