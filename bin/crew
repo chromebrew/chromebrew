@@ -1341,13 +1341,23 @@ def remove(pkgName)
   #if the filelist exists, remove the files and directories installed by the package
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
-
       #remove all files installed by the package
       File.open("meta/#{pkgName}.filelist").each_line do |line|
-        begin
+        # Do not remove essential files from gcc or libssp which ruby
+        # relies on, especially during package upgrades or reinstalls.
+        # These essential files are enumerated in const.rb as
+        # CREW_ESSENTIAL_FILES.
+        if CREW_ESSENTIAL_FILES.include? line.chomp
+          if @opt_verbose
+            puts "Removing #{line.chomp} will break crew. It was " +
+                 'NOT'.lightred + ' deleted.'
+          end
+        else
           puts 'Removing file ' + line.chomp + ''.lightred if @opt_verbose
-          File.unlink line.chomp
-        rescue => exception #swallow exception
+          begin
+            File.unlink line.chomp
+          rescue => exception #swallow exception
+          end
         end
       end
 
