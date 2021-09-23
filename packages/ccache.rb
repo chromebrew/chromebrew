@@ -3,24 +3,24 @@ require 'package'
 class Ccache < Package
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.samba.org/'
-  @_ver = '4.3'
+  @_ver = '4.4.1'
   version @_ver
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url "https://github.com/ccache/ccache/releases/download/v#{@_ver}/ccache-#{@_ver}.tar.xz"
-  source_sha256 '504a0f2184465c306826f035b4bc00bae7500308d6af4abbfb50e33a694989b4'
+  source_sha256 'ebd6dfb5b15dfe39310e1f5834bafbe6ab526c71df8ad08a508e8a242bad8159'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.3_armv7l/ccache-4.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.3_armv7l/ccache-4.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.3_i686/ccache-4.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.3_x86_64/ccache-4.3-chromeos-x86_64.tpxz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_i686/ccache-4.4.1-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_armv7l/ccache-4.4.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_armv7l/ccache-4.4.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_x86_64/ccache-4.4.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'abda944f6994dbd35338ad1cf124642f907c9dc37ea218843db6a20a635ccaef',
-     armv7l: 'abda944f6994dbd35338ad1cf124642f907c9dc37ea218843db6a20a635ccaef',
-       i686: '2b26758218334508e45aedbea916996dfefc5b414de8a6f1079523954a5f6982',
-     x86_64: '5b2cc2ccebe97eb2212091d478ac5168e4eddf887a1374cca2b5d566f142c40d'
+       i686: '6a1585edc95b2aa73bea3c44aa8ac7a9c9a51f5b4ada9b082678aebd2a6f3aa8',
+    aarch64: '87280c39170a39a8eb1e0af251d464d99820db4d034f5fd262aa2e5d1ba5c08e',
+     armv7l: '87280c39170a39a8eb1e0af251d464d99820db4d034f5fd262aa2e5d1ba5c08e',
+     x86_64: 'ca97449d2ffb651915de4c0f1472e5f0db3dc2d85dd009b3c241ba67fc93febd'
   })
 
   depends_on 'xdg_base'
@@ -34,6 +34,7 @@ class Ccache < Package
       #{CREW_CMAKE_OPTIONS} \
       -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
       -DZSTD_FROM_INTERNET=ON \
+      -DHIREDIS_FROM_INTERNET=ON \
       .."
       system 'ninja'
     end
