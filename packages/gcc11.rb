@@ -11,15 +11,15 @@ class Gcc11 < Package
   source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/gcc11-11.2.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_i686/gcc11-11.2.0-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_x86_64/gcc11-11.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5103c1e80e63ab61e3d62973dbb38a8fbb35ca6eb11be2fc50d43c4e5959fbb6',
      armv7l: '5103c1e80e63ab61e3d62973dbb38a8fbb35ca6eb11be2fc50d43c4e5959fbb6',
-       i686: '5490594fe9330c0bf253996693d855e23a619a8e6d27b6a2cab54927fd1c7610',
+       i686: 'dea5a99091b825b44729d3ed0521a4e0f3f5004f316d39cd0ab74ea3534c3e9e',
      x86_64: '809ceaa5af62954eae0ab65256648506231bd672c13bddc3075e1e023279c466'
   })
 
@@ -35,6 +35,7 @@ class Gcc11 < Package
   @gcc_version = version.split('-')[0].partition('.')[0]
 
   @gcc_global_opts = '--disable-bootstrap \
+  --disable-install-libiberty \
   --disable-libmpx \
   --disable-libssp \
   --disable-multilib \
