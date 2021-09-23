@@ -12,13 +12,13 @@ class Libssp < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_armv7l/libssp-11.2.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_armv7l/libssp-11.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_i686/libssp-11.2.0-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_i686/libssp-11.2.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_x86_64/libssp-11.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5ff8842611c3cb8a2d72eb3fa591299354ae2021c2b1927259df407910645f19',
      armv7l: '5ff8842611c3cb8a2d72eb3fa591299354ae2021c2b1927259df407910645f19',
-       i686: '16bc98bbd5048b649bd45ca74a2bfdba92a045839b65c2f5fbfc986fbe8436ce',
+       i686: 'dcf1f3951a9f44e8a5aba0f4db7c675684b747a8cb66efdc2340e513913e79fe',
      x86_64: 'c753248ee6996448fc14d02fe43f79f41974adff30101856a467be70b2b41b7d'
   })
 
@@ -29,6 +29,7 @@ class Libssp < Package
   @gcc_name = 'libssp'
 
   @gcc_global_opts = '--disable-libmpx \
+  --disable-install-libiberty \
   --disable-libssp \
   --disable-multilib \
   --disable-werror \
