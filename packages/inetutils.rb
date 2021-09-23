@@ -3,22 +3,24 @@ require 'package'
 class Inetutils < Package
   description 'The Inetutils package contains programs for basic networking. Such as dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp, traceroute'
   homepage 'https://www.gnu.org/software/inetutils/'
-  @_ver = '2.0'
-  version "#{@_ver}-2"
+  @_ver = '2.2'
+  version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{@_ver}.tar.xz"
-  source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
+  source_sha256 'd547f69172df73afef691a0f7886280fd781acea28def4ff4b4b212086a89d80'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_armv7l/inetutils-2.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_armv7l/inetutils-2.0-2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-2_x86_64/inetutils-2.0-2-chromeos-x86_64.tpxz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_i686/inetutils-2.2-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_armv7l/inetutils-2.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_armv7l/inetutils-2.2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_x86_64/inetutils-2.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ae1e5b394988799ecfb50197e60e1cc90fce3a0a5d91bd4a0f6d84c036164321',
-     armv7l: 'ae1e5b394988799ecfb50197e60e1cc90fce3a0a5d91bd4a0f6d84c036164321',
-     x86_64: 'cafa21af3d855a8fe9118e02f1e8db83e31603822ba6c5c27c380769050fb107'
+       i686: 'ee0f7e82efe8fee69a27bda30a6d42d2a616bcd5d9be1682cec43136f70f9b71',
+    aarch64: '413181b35983017b30a53f08de729ffb7f4dd54a2fdbb6b6d0d4dc7fa4333c76',
+     armv7l: '413181b35983017b30a53f08de729ffb7f4dd54a2fdbb6b6d0d4dc7fa4333c76',
+     x86_64: '4b6d96a0e618da13d6225d3f14f22739e6c199e944820dacbf99175ec88982df'
   })
 
   depends_on 'linux_pam'
