@@ -3,13 +3,8 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  if ARCH == 'i686'
-    @_ver = '11.1.0'
-    version @_ver
-  else
-    @_ver = '12.0.1'
-    version "#{@_ver}-1"
-  end
+  @_ver = '12.0.1'
+  version "#{@_ver}-1"
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
@@ -18,13 +13,13 @@ class Llvm < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_armv7l/llvm-12.0.1-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_armv7l/llvm-12.0.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/11.1.0_i686/llvm-11.1.0-chromeos-i686.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_i686/llvm-12.0.1-1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_x86_64/llvm-12.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '324cb80793345bcca65f986c659cafae25dc64b2e546acffb7c441d6f771127d',
      armv7l: '324cb80793345bcca65f986c659cafae25dc64b2e546acffb7c441d6f771127d',
-       i686: '3a514f96c846d777c838fef6c585d2278abf2a586bfaeacfd3e2bccc9ffce838',
+       i686: '3eb88d8e23d3e1411a955a9475572fd2e963fff7bd10791c8b825ebddbfcde10',
      x86_64: 'fc83b1d1a1b98d0579003f0b212a8eeae3716c78b70e765180415472676ac4ef'
   })
 
