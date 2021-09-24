@@ -3,22 +3,24 @@ require 'package'
 class Gtksourceview_5 < Package
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
-  @_ver = '5.0.0'
+  @_ver = '5.2.0'
   version @_ver
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/gtksourceview/-/archive/#{@_ver}/gtksourceview-#{@_ver}.tar.bz2"
-  source_sha256 'b97ee7f2404d00ba607b865a838ee7c90053811c16c633a6359dace4ee1f218c'
+  compatibility 'all'
+  source_url 'https://gitlab.gnome.org/GNOME/gtksourceview.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_armv7l/gtksourceview_5-5.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_armv7l/gtksourceview_5-5.0.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_x86_64/gtksourceview_5-5.0.0-chromeos-x86_64.tar.xz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_i686/gtksourceview_5-5.0.0-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.2.0_armv7l/gtksourceview_5-5.2.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.2.0_armv7l/gtksourceview_5-5.2.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.2.0_x86_64/gtksourceview_5-5.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0e1f4e4d940074837e075f5008dd5178b5e9c6b4bcf2f8eabd16002adf7adb8c',
-     armv7l: '0e1f4e4d940074837e075f5008dd5178b5e9c6b4bcf2f8eabd16002adf7adb8c',
-     x86_64: '455fb554c60675f9c15b77510cab48ed1986caba9f7c9cabe6f6d945bb30962e'
+       i686: 'd27b36e8275ba473c3758ae708eebd1aa80a34a346db5a44593d196f9f2f96a7',
+    aarch64: '96884f9ce28885b53432644059de5acc5bc251b7f6a8d6d5c27d1a1df32c18d8',
+     armv7l: '96884f9ce28885b53432644059de5acc5bc251b7f6a8d6d5c27d1a1df32c18d8',
+     x86_64: '00986e7083640e3771e854efcbeb3ae5f3fbd3393743722ddd417b4604bf25af'
   })
 
   depends_on 'atk'
