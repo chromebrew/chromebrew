@@ -66,13 +66,6 @@ class Binutils < Package
   end
 
   def self.install
-    if ARCH == 'armv7l'
-      ENV['CREW_SHRINK_ARCHIVE'] = '0'
-      warn_level = $VERBOSE
-      $VERBOSE = nil
-      load "#{CREW_LIB_PATH}lib/const.rb"
-      $VERBOSE = warn_level
-    end
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}",
              "tooldir=#{CREW_PREFIX}", 'install'
