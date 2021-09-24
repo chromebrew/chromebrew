@@ -3,23 +3,23 @@ require 'package'
 class Graphite < Package
   description 'Reimplementation of the SIL Graphite text processing engine'
   homepage 'https://github.com/silnrsi/graphite'
-  version '1.3.14-1'
+  version '1.3.14-2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz'
   source_sha256 'f99d1c13aa5fa296898a181dff9b82fb25f6cc0933dbaa7a475d8109bd54209d'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_armv7l/graphite-1.3.14-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_armv7l/graphite-1.3.14-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_i686/graphite-1.3.14-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-1_x86_64/graphite-1.3.14-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_armv7l/graphite-1.3.14-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_armv7l/graphite-1.3.14-2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_i686/graphite-1.3.14-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_x86_64/graphite-1.3.14-2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '3ee1594a2f5a0349dd12ef28fb60dffe254c8ca3ac4444da7be90741057c63b5',
-     armv7l: '3ee1594a2f5a0349dd12ef28fb60dffe254c8ca3ac4444da7be90741057c63b5',
-       i686: '772269f953a7ddb6a40d164bf405f2e0219a0d6dc805efe8a0df5b9840769fb2',
-     x86_64: '1eac00455f2ff39b9ed26689054a5794e62fa7c4b8eacf1c5cb4a839c3d01ac5',
+  binary_sha256({
+    aarch64: '4b7ccb98e54afb311014eedeaee7a262cc8d46c0ee9ca4102cc5aee8a38660e0',
+     armv7l: '4b7ccb98e54afb311014eedeaee7a262cc8d46c0ee9ca4102cc5aee8a38660e0',
+       i686: '457ed635172c5ba7f61b95cfa2036efdfa1183ae2a77e4e9f06b9d33f9dbe763',
+     x86_64: '298e03f04acb71d5b8fdfb340b0bc6387fe4ecf2ac2b0ebad7ecb21101c85e66'
   })
 
   depends_on 'freetype_sub'
