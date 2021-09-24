@@ -6,23 +6,23 @@ require 'package'
 class Chafa < Package
   description 'Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc.'
   homepage 'https://hpjansson.org/chafa/'
-  version '1.6.1'
+  version '1.8.0'
   license 'LGPL'
   compatibility 'all'
-  source_url 'https://github.com/hpjansson/chafa/releases/download/1.6.1/chafa-1.6.1.tar.xz'
-  source_sha256 '76c98930e99b3e5fadb986148b99d65636e9e9619124e568ff13d364ede89fa5'
+  source_url 'https://github.com/hpjansson/chafa/releases/download/1.8.0/chafa-1.8.0.tar.xz'
+  source_sha256 '21ff652d836ba207098c40c459652b2f1de6c8a64fbffc62e7c6319ced32286b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.6.1_armv7l/chafa-1.6.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.6.1_armv7l/chafa-1.6.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.6.1_i686/chafa-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.6.1_x86_64/chafa-1.6.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_armv7l/chafa-1.8.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_armv7l/chafa-1.8.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_i686/chafa-1.8.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_x86_64/chafa-1.8.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3b1070f6bb7c4e3756fec41b9241b7823d34c09cbedf59fb7a700921e06cb561',
-     armv7l: '3b1070f6bb7c4e3756fec41b9241b7823d34c09cbedf59fb7a700921e06cb561',
-       i686: 'a2d4ff382d205c1522b8155b999b5499fea83815b9f71f8697256f93174cc288',
-     x86_64: '4b3fd102523ce0458a897bcd0ce1bbe8c60e30eb830e4aa98cedb782576795e6'
+    aarch64: '8e4a30680cb863f3735e8e21f33332dae55aa894648719ac8f26028d99cc178e',
+     armv7l: '8e4a30680cb863f3735e8e21f33332dae55aa894648719ac8f26028d99cc178e',
+       i686: '7a5d976bd6c4790a9bf3612ce18ff2160103d1fac5fbda282f8655ae9e443715',
+     x86_64: '0a7c5213a65a6058a766022ec58867f6c435a0759ee27d69727c43f2f9db2c9b'
   })
 
   depends_on 'imagemagick7' => :build
