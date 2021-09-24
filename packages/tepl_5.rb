@@ -3,23 +3,24 @@ require 'package'
 class Tepl_5 < Package
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
   homepage 'https://wiki.gnome.org/Projects/Tepl'
-  version '5.0.1'
+  @_ver = '5.0.1'
+  version "#{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/GNOME/tepl/archive/5.0.1.tar.gz'
-  source_sha256 '2dda3ed2bd16742f6d0fc6d602448eaa2e40b9c967b88599add2338d6fa590e7'
+  source_url 'https://gitlab.gnome.org/Archive/tepl.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1_armv7l/tepl_5-5.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1_armv7l/tepl_5-5.0.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1_i686/tepl_5-5.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1_x86_64/tepl_5-5.0.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1-1_armv7l/tepl_5-5.0.1-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1-1_armv7l/tepl_5-5.0.1-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1-1_x86_64/tepl_5-5.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1c6bda4f08ad49244dd0e368858e43de9323adf54ab34d387754d0982a8af710',
-     armv7l: '1c6bda4f08ad49244dd0e368858e43de9323adf54ab34d387754d0982a8af710',
        i686: '380fcc1fba9345a966726985dd7232d5bf1326bf62597f43b2bd194a40ce4a91',
-     x86_64: 'd41156324372ef2d95d056a4b58d10f177bd9c1cf176f5c5baafdc81b55d2c1a'
+    aarch64: '720a58a348b85529676c8bd4caa1a1e1566e3afbbcb01017bd91808242c955d0',
+     armv7l: '720a58a348b85529676c8bd4caa1a1e1566e3afbbcb01017bd91808242c955d0',
+     x86_64: '347c0d84339c38b72332b8b91e468f85e72a69e5b13ceb5e689d49332f337c99'
   })
 
   depends_on 'amtk'
