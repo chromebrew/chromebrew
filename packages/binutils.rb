@@ -18,8 +18,8 @@ class Binutils < Package
   })
   binary_sha256({
        i686: '9bd786abf5e42b06e3ecd51ffdd63348fbf54f18fd6aeec8aafcebc20f231404',
-    aarch64: 'd82b3c0af9587c48a03b531d6869d44ff17282cfd3056238935d015ac92a421c',
-     armv7l: 'd82b3c0af9587c48a03b531d6869d44ff17282cfd3056238935d015ac92a421c',
+    aarch64: '2b0dccac7104572bd7e050ba191fc5eb355019351cba9d07293bb53450b4ff84',
+     armv7l: '2b0dccac7104572bd7e050ba191fc5eb355019351cba9d07293bb53450b4ff84',
      x86_64: 'd9e0347631803d94648495ba9f2b16836f6f637046ac4c757a725c47f57a2c7a'
   })
 
@@ -66,6 +66,13 @@ class Binutils < Package
   end
 
   def self.install
+    if ARCH == 'armv7l'
+      ENV['CREW_SHRINK_ARCHIVE'] = '0'
+      warn_level = $VERBOSE
+      $VERBOSE = nil
+      load "#{CREW_LIB_PATH}lib/const.rb"
+      $VERBOSE = warn_level
+    end
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}",
              "tooldir=#{CREW_PREFIX}", 'install'
