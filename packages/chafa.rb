@@ -15,11 +15,13 @@ class Chafa < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_armv7l/chafa-1.8.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_armv7l/chafa-1.8.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_i686/chafa-1.8.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_x86_64/chafa-1.8.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '8e4a30680cb863f3735e8e21f33332dae55aa894648719ac8f26028d99cc178e',
      armv7l: '8e4a30680cb863f3735e8e21f33332dae55aa894648719ac8f26028d99cc178e',
+       i686: '7a5d976bd6c4790a9bf3612ce18ff2160103d1fac5fbda282f8655ae9e443715',
      x86_64: '0a7c5213a65a6058a766022ec58867f6c435a0759ee27d69727c43f2f9db2c9b'
   })
 

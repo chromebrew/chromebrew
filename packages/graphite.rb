@@ -12,11 +12,13 @@ class Graphite < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_armv7l/graphite-1.3.14-2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_armv7l/graphite-1.3.14-2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_i686/graphite-1.3.14-2-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/1.3.14-2_x86_64/graphite-1.3.14-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '4b7ccb98e54afb311014eedeaee7a262cc8d46c0ee9ca4102cc5aee8a38660e0',
      armv7l: '4b7ccb98e54afb311014eedeaee7a262cc8d46c0ee9ca4102cc5aee8a38660e0',
+       i686: '457ed635172c5ba7f61b95cfa2036efdfa1183ae2a77e4e9f06b9d33f9dbe763',
      x86_64: '298e03f04acb71d5b8fdfb340b0bc6387fe4ecf2ac2b0ebad7ecb21101c85e66'
   })
 

@@ -12,11 +12,13 @@ class Freetype < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_armv7l/freetype-2.11.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_armv7l/freetype-2.11.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_i686/freetype-2.11.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_x86_64/freetype-2.11.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '24c9fee8ddd769952dd1eb0927020892b61677f8097e8d70fccf7ee4902680e4',
      armv7l: '24c9fee8ddd769952dd1eb0927020892b61677f8097e8d70fccf7ee4902680e4',
+       i686: 'c4d4948ff5f63714de352e88f2b8ddcc167a30e2ae6af7979d3dc4815d123d64',
      x86_64: '8a173447f2471d35512e6ea75cda0f53f18ae930e990881f94c7dbea9011b402'
   })
 
