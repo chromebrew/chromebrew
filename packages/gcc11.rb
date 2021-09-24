@@ -13,7 +13,7 @@ class Gcc11 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_i686/gcc11-11.2.0-chromeos-i686.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_i686/gcc11-11.2.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_x86_64/gcc11-11.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
