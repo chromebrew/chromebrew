@@ -12,11 +12,13 @@ class Neon < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neon/0.31.2_armv7l/neon-0.31.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neon/0.31.2_armv7l/neon-0.31.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neon/0.31.2_i686/neon-0.31.2-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neon/0.31.2_x86_64/neon-0.31.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '8da405951069b5143951dc15799a5367d8e5b752e85c31bc39b22ec32a40dcb7',
      armv7l: '8da405951069b5143951dc15799a5367d8e5b752e85c31bc39b22ec32a40dcb7',
+       i686: '867d746b9bc058663a53258b6326199f4c6868c11f96cf03d8d9b4538d1b2b5a',
      x86_64: 'cee9c8e0ace8b92c29bfb0f9e4592b93ba31f9fcfc5f0ad52910bb0b71d2f44b'
   })
 
