@@ -3,23 +3,22 @@ require 'package'
 class Pango < Package
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'http://www.pango.org/'
-  version '1.49.1'
+  @_ver = '1.49.1'
+  version "#{@_ver}-1"
   license 'LGPL-2+ and FTL'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1_armv7l/pango-1.49.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1_armv7l/pango-1.49.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1_i686/pango-1.49.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1_x86_64/pango-1.49.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1-1_armv7l/pango-1.49.1-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1-1_armv7l/pango-1.49.1-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1-1_x86_64/pango-1.49.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '34371224fc5fa1134e9ede5b2c8851edcd21234117fa82debdede86ad60ee8a7',
-     armv7l: '34371224fc5fa1134e9ede5b2c8851edcd21234117fa82debdede86ad60ee8a7',
-       i686: '38283172c022958a30c410963f4ee3808f418e6a819f4067ab698b03065cc639',
-     x86_64: '164ad6211444cfd9938a761617d1fc65770574026af6c3024111ae53ca8fde85'
+    aarch64: '5ac0e10a9a277da0c66477d153787f491ffc5c6a7c7fb8fd7329f939ab4601f2',
+     armv7l: '5ac0e10a9a277da0c66477d153787f491ffc5c6a7c7fb8fd7329f939ab4601f2',
+     x86_64: '99a850bbfbac333ae89ec458a4a65109c341d3953e233149a25db960c2e27de5'
   })
 
   depends_on 'cairo'
