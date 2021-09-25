@@ -13,11 +13,13 @@ class Mesa < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_i686/mesa-21.2.2-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_x86_64/mesa-21.2.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
      armv7l: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
+       i686: '7d28e75839baed8ceb15e677eba566b6501819c03cbe9f8067857d79a0bb9a7e',
      x86_64: '82f5de3eb10852a5fdd40ac38b85ed3c4c17c9f7a67199417a9ebe8021552d2e'
   })
 
