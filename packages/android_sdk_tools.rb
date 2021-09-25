@@ -17,7 +17,7 @@ class Android_sdk_tools < Package
     FileUtils.mv Dir['*'], CREW_DEST_PREFIX + '/share/android-sdk-tools'
     Dir["#{CREW_DEST_PREFIX}/share/android-sdk-tools/bin/*"].each do |filename|
       binary = File.basename(filename)
-      FileUtils.ln_s "#{CREW_PREFIX}/share/android-sdk-tools/bin/#{binary}", "#{CREW_DEST_PREFIX}/bin/#{binary}"
+      FileUtils.ln_s "../share/android-sdk-tools/bin/#{binary}", "#{CREW_DEST_PREFIX}/bin/#{binary}"
     end
   end
 
