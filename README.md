@@ -100,32 +100,32 @@ Recently Upgraded Packages
 
 | Name | Description | Date Upgraded | Version |
 |:---|:---|:---|:---|
-| libxfce4util | Utility library for the Xfce4 desktop environment | 2021-08-31 | 4.17.1 |
-| xfce4_dev_tools | Xfce4 development tools | 2021-08-31 | 4.17.0 |
-| xfce4_panel | Next generation panel for the XFCE desktop environment | 2021-08-31 | 4.16.3 |
-| qtsvg | Provides classes for displaying the contents of SVG files. | 2021-08-30 | 5.15.2 |
-| qtx11extras | Provides classes for developing for the X11 platform. | 2021-08-30 | 5.15.2 |
-| php71 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.1.33 |
-| php72 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.2.34 |
-| php73 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.3.30 |
-| php74 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 7.4.23 |
-| php80 | PHP is a popular general-purpose scripting language that is especially suited to web development. | 2021-08-30 | 8.0.10 |
+| gdb | The GNU Debugger | 2021-09-25 | 11.1 |
+| llvm | The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. | 2021-09-24 | 12.0.1 |
+| binutils | The GNU Binutils are a collection of binary tools. | 2021-09-24 | 2.37-1 |
+| inetutils | The Inetutils package contains programs for basic networking. | 2021-09-24 | 2.2 |
+| elfutils | elfutils is a collection of utilities and libraries to read, create and modify ELF binary files | 2021-09-24 | 0.185 |
+| neon | neon is an HTTP and WebDAV client library, with a C interface. | 2021-09-24 | 0.32.1 |
+| pango | Pango is a library for laying out and rendering of text, with an emphasis on internationalization. | 2021-09-24 | 1.49.1 |
+| libadwaita | Library of GNOME-specific UI patterns, replacing libhandy for GTK4 | 2021-09-24 | 1.0.0-alpha.2 |
+| gtksourceview_5 | Source code editing widget | 2021-09-24 | 5.2.0 |
+| gspell | A flexible API to implement the spell checking in a GTK+ application | 2021-09-24 | 1.9.1-2 |
 
 Latest Packages
 ---------------
 
 | Name | Description | Date Added |
 |:---|:---|:---|
+| gnu_time | Utility for monitoring a programs use of system resources | 2021-09-24 |
+| gnome_text_editor | GNOME Text Editor (2021) | 2021-09-24 |
+| vuze | Vuze (formerly Azureus) is an extremely powerful and configurable BitTorrent client. | 2021-09-21 |
+| smallbasic | SmallBASIC is a fast and easy to learn BASIC language interpreter | 2021-09-19 |
+| logisim | An educational tool for designing and simulating digital logic circuits | 2021-09-16 |
+| cros_adapta | Gtk+ compatible themes for styling UI elements from Crostini to match Chrome OS defaults. | 2021-09-10 |
+| chafa | Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc. | 2021-09-04 |
 | qtlocation | Qt Location and Positioning | 2021-08-30 |
 | qtmultimedia | Qt Multimedia | 2021-08-30 |
 | qtscript | Qt Script Tools | 2021-08-30 |
-| qtserialport | Qt Serial Port | 2021-08-30 |
-| qtwayland | Qt Wayland | 2021-08-30 |
-| stellarium | Stellarium is a free open source planetarium for your computer. | 2021-08-30 |
-| git_prompt | Display the git branch and status in the command prompt | 2021-08-26 |
-| acli | Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services. | 2021-08-25 |
-| apktool | A tool for reverse engineering Android apk files | 2021-08-20 |
-| teams | Microsoft Teams - Meet, chat, call, and collaborate in just one place. | 2021-08-15 |
 
 Chat with us!
 -------------
