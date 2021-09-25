@@ -3,21 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-4'
+  version '20210109-5'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_armv7l/sommelier-20210109-4-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-4_x86_64/sommelier-20210109-4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_armv7l/sommelier-20210109-5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_armv7l/sommelier-20210109-5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_i686/sommelier-20210109-5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_x86_64/sommelier-20210109-5-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '2fbadad68afa4f712c35874190bac505af989fae8bc8783eaeb8ed5ed7837d93',
-     armv7l: '2fbadad68afa4f712c35874190bac505af989fae8bc8783eaeb8ed5ed7837d93',
-     x86_64: '6204e088afe53b492c470779edeb362023a2797153d424960c6612cd1689ce37'
+    aarch64: '2b270ec19410594ba6969f20e168cc91739f090315a8046a95e303cac71d723e',
+     armv7l: '2b270ec19410594ba6969f20e168cc91739f090315a8046a95e303cac71d723e',
+       i686: '0b8f8ee99968f1cd3c429c9a1a7ffb6577b8ec430b91c83d1f7fa1c3856e7a3b',
+     x86_64: 'b652d65be2330108b4232dbf79991cc27c755a4fed958480b62696f4499b036d',
   })
 
   depends_on 'libdrm'
@@ -30,6 +32,7 @@ class Sommelier < Package
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc'
   depends_on 'wayland'
+  depends_on 'xauth'
   depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
   depends_on 'xsetroot' # for xsetroot in sommelierrc script
   depends_on 'xhost' # for xhost in sommelierd script
@@ -40,7 +43,7 @@ class Sommelier < Package
   when 'armv7l', 'aarch64'
     @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
   when 'i686'
-    @peer_cmd_prefix = '/lib/ld-linux.so.2'
+    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
   when 'x86_64'
     @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end
@@ -69,9 +72,6 @@ class Sommelier < Package
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
-          -Dc_args='-fuse-ld=lld' \
-          -Dcpp_args='-fuse-ld=lld' \
-          -Dcpp_link_args='-fuse-ld=lld' \
           -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
           -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
           -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
@@ -137,7 +137,6 @@ class Sommelier < Package
           basedir=${base%/*}
           LD_ARGV0_REL="../bin/sommelier" \
             exec "${basedir}/..#{@peer_cmd_prefix}" \
-              --argv0 "$0" \
               --library-path \
               "${basedir}/../#{ARCH_LIB}" \
               --inhibit-rpath '' \
