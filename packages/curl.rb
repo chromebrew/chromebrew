@@ -4,7 +4,7 @@ class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
   @_ver = '7.79.1'
-  version @_ver
+  version = ARCH == 'i686' ? '7.77.0' : @_ver
   license 'curl'
   compatibility 'all'
   source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
@@ -13,13 +13,13 @@ class Curl < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_armv7l/curl-7.79.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_armv7l/curl-7.79.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_i686/curl-7.79.1-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.77.0-1_i686/curl-7.77.0-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_x86_64/curl-7.79.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '28c0602e433b079f2767f4cea9de66d5a20eb20b384c1575972911033241e630',
      armv7l: '28c0602e433b079f2767f4cea9de66d5a20eb20b384c1575972911033241e630',
-       i686: '9594f4aa3265879bdaf6b301942bb093334459e642ef81a380a4d801e787a561',
+       i686: '98479b4d6c3d9deee57fb261b58c2a327ebdfaa15a14eead2d979a26e2f2c74d',
      x86_64: '16ec35a35eb37a81ce3c3775f23299ca2bed4af567ea546297a169af05cca327'
   })
 
