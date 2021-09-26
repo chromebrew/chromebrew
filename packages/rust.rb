@@ -10,14 +10,16 @@ class Rust < Package
   source_url 'SKIP'
 
   binary_url({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_i686/rust-1.55.0-chromeos-i686.tpxz',
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_armv7l/rust-1.55.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_armv7l/rust-1.55.0-chromeos-armv7l.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_x86_64/rust-1.55.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ccd4507777a918c301ed0da5b067e5c0f340843a77ef02d1774cf9067b7c5ef9',
-     armv7l: 'ccd4507777a918c301ed0da5b067e5c0f340843a77ef02d1774cf9067b7c5ef9',
-     x86_64: 'ffc3368e168614ae0f3f6578742b32a96c13d7f057e69c8771b69a835db33bcf'
+       i686: 'bce668e6278d073b9f66d7a1b5980d1a5f350b254aa18af03757ab6e72cc030b',
+    aarch64: 'bb532ba4a0bac36d4321b154bf2b726aa031eaaca2670ca426f544f22cd94cf4',
+     armv7l: 'bb532ba4a0bac36d4321b154bf2b726aa031eaaca2670ca426f544f22cd94cf4',
+     x86_64: 'd25d432ff1294fd0ab95e71951f6271d19e9dbdebede5f47defdb6abe909e96a'
   })
 
   def self.install
@@ -38,12 +40,12 @@ class Rust < Package
     FileUtils.cd("#{CREW_DEST_PREFIX}/share/cargo/bin") do
       system "find -type f -exec ln -s #{CREW_PREFIX}/share/cargo/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
     end
-    system "install -Dm644 #{CREW_DEST_PREFIX}/share/rustup/toolchains/stable-#{default_host}/etc/bash_completion.d/cargo #{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo"
-    FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/stable-#{default_host}/etc/bash_completion.d/cargo")
+    system "install -Dm644 #{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo #{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo"
+    FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo")
     system "touch #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
-    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/stable-#{default_host}/share/man/",
+    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
-    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/stable-#{default_host}/share/doc/")
+    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/doc/")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/cargo", "#{CREW_DEST_HOME}/.cargo")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 
