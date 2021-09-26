@@ -14,13 +14,13 @@ class Curl < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_armv7l/curl-7.78.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_armv7l/curl-7.78.0-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_i686/curl-7.78.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.78.0_x86_64/curl-7.78.0-chromeos-x86_64.tpxz'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_x86_64/curl-7.79.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'b1a96f22014ca2b23f7b42cda81fbcdab5710d75b3eef0bf60aef3c5fee8fdb3',
      armv7l: 'b1a96f22014ca2b23f7b42cda81fbcdab5710d75b3eef0bf60aef3c5fee8fdb3',
        i686: '6aa7e94a6d3dd8f103a49e8029ee515c19128e35a6af142188cc6d810add48df',
-     x86_64: '667d70c2bdebcfcd0e185b5344073a3000a764ed094e76b00471fafcc37f0af2'
+     x86_64: '16ec35a35eb37a81ce3c3775f23299ca2bed4af567ea546297a169af05cca327'
   })
 
   depends_on 'ca_certificates' => :build
