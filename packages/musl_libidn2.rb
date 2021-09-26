@@ -19,7 +19,7 @@ class Musl_libidn2 < Package
     aarch64: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
      armv7l: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
        i686: '040d01bf4bcaa29fbe7b213352519579837cb53ca3c3eb32db8d8cf3985b84b8',
-     x86_64: '4db4f2cdf93da11a090ab78d3b01d729c374bd41ebf41a0e89a2031091b16d24'
+     x86_64: '0813b2ae14c7349e1112f4e93ca5cd76e5a0ba5bee4c51b1db2f74c8e86006c7'
   })
 
   depends_on 'musl_native_toolchain' => :build

@@ -21,7 +21,7 @@ class Musl_libssh < Package
     aarch64: 'feb3f6d6dd7ce33d3c75e23229219c16488b1ea33e42b22737a24dcc875f69d8',
      armv7l: 'feb3f6d6dd7ce33d3c75e23229219c16488b1ea33e42b22737a24dcc875f69d8',
        i686: '9e617fa3711f49bae34b11fd98d7e4b90c347c76f0b504a31d65bbb1b7e2e194',
-     x86_64: 'eb6bf78665da6b203680c557d50a1ced726c63c90f81f249dde28e17ddb084ee'
+     x86_64: '1917dffdc56af43aea4ccd9472ea8d6d4002b3057ea1118907e20e6fdc383f50'
   })
 
   depends_on 'musl_krb5' => :build

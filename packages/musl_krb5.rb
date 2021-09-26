@@ -19,7 +19,7 @@ class Musl_krb5 < Package
     aarch64: '1e025a04f483e2e0c710c75f6b164cb8b75cb9bc2ecdd70847cc93851d7c2aee',
      armv7l: '1e025a04f483e2e0c710c75f6b164cb8b75cb9bc2ecdd70847cc93851d7c2aee',
        i686: '458292c4c7ffff8e3daee0507e8b15b17e9fcb33253fdcec6f9921e84c431f35',
-     x86_64: '23219873032ba8add0fa30e2fa63ea0d704e80e0b752172b9b736668cd15f922'
+     x86_64: '6db802be3a76a2ae409a459061b2cf6a16f10d831484b71c9307a78b85ead89f'
   })
 
   depends_on 'musl_native_toolchain' => :build

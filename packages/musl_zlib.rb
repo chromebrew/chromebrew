@@ -20,7 +20,7 @@ class Musl_zlib < Package
     aarch64: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
      armv7l: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
        i686: '0c8b2ee22bd24de9d37d688036dc810ea7cd3030bafca98ddcfb8fe82b6c1021',
-     x86_64: '8d609a60c86f67e85052970a62a65bd74282eda688fddfc30e07aa19def12547'
+     x86_64: 'dbe2f1f798905e8577e9b1b2579554a22802fec93c803fd10857be7cfc999cc2'
   })
 
   depends_on 'musl_native_toolchain' => :build

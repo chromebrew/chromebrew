@@ -20,7 +20,7 @@ class Musl_openssl < Package
     aarch64: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
      armv7l: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
        i686: 'e03aaed76c66a7e8ce0f2a4c9f6c64f343f5e5f5bfd90d3ed16c14960af6a6a6',
-     x86_64: '334ff5181e6d49185e3b6bdcabd952a9362011a02cfa8285a7adce368a07d85d'
+     x86_64: 'a17f737f02bb9c15d288832a066795b532530d68623bd6d3568946a99894258e'
   })
 
   depends_on 'musl_native_toolchain' => :build

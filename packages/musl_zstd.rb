@@ -19,7 +19,7 @@ class Musl_zstd < Package
     aarch64: '936a7f444ff2dcf44455b22165059afe830dbe152fa593ff2fd96eae0e3d3d09',
      armv7l: '936a7f444ff2dcf44455b22165059afe830dbe152fa593ff2fd96eae0e3d3d09',
        i686: 'e5efd4be2890701e4c21dc1511008d889c6fe0fab3e9fa0c1bfd483d4a864daa',
-     x86_64: 'd6bf137b09e0263b8e27d60cfd7a6e19b4cf5408531d479ffa325871500b07a4'
+     x86_64: '85c337d209e779cc39f697ef754326aca8d13b00d69c25e2461f2b085e4d1a28'
   })
 
   depends_on 'musl_native_toolchain' => :build

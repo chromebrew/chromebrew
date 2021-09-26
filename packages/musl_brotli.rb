@@ -19,7 +19,7 @@ class Musl_brotli < Package
     aarch64: '2c5a29ba571418c554b63f46053ba44a53f3c80957fb6e7f4cd6af26d8b85918',
      armv7l: '2c5a29ba571418c554b63f46053ba44a53f3c80957fb6e7f4cd6af26d8b85918',
        i686: '30b9152d88ad74d47f2acfa2b451832861d6ee0c39d46af637cf81c8d41bd2b2',
-     x86_64: '81d0f70239f39effdc9c22192b9ea7000e02f769da296d4fea764abf87765443'
+     x86_64: '326576ba9359c4d4a0c933dcc6a106f2094d4731267e182824fb3f6ff6d962f3'
   })
 
   depends_on 'musl_native_toolchain' => :build

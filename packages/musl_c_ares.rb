@@ -19,7 +19,7 @@ class Musl_c_ares < Package
     aarch64: '9687cca0da22074f3ae23df09433b08d5886f14b42f8597c23b71b6ab33af572',
      armv7l: '9687cca0da22074f3ae23df09433b08d5886f14b42f8597c23b71b6ab33af572',
        i686: 'ed1c8fef92a9675a8845bda7ca06e1c63b2250ac7dfac135c9a60532d8825963',
-     x86_64: '805e87a23e1d61d2982e09542ea86c321dce6f2bd368ea320e79e60b4232c108'
+     x86_64: 'b2994bf3c6ed793052492fca6a074ef0c0ad4d12f628bbbe42cc7e2000d2d68c'
   })
 
   depends_on 'musl_native_toolchain' => :build

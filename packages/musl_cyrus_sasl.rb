@@ -19,7 +19,7 @@ class Musl_cyrus_sasl < Package
     aarch64: 'c014d0fb64be07acdde1654f56b76bb5ce196d8c5544f94ac9f85df2a1c9012f',
      armv7l: 'c014d0fb64be07acdde1654f56b76bb5ce196d8c5544f94ac9f85df2a1c9012f',
        i686: '7450e9a3a4505b9b07b60783d33825c1c59a53ce7c360b91c2397cb05e60c2d7',
-     x86_64: '983fe6b33b92c98aa87d9d5054a79a2aeec176b94bdbfbecb574767a3125da23'
+     x86_64: 'c9c1e6ec2b43a3e3ad74dea27c310331ea6d209adb3bbf73429ff33d97950737'
   })
 
   depends_on 'musl_native_toolchain' => :build

@@ -19,7 +19,7 @@ class Musl_libunistring < Package
     aarch64: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
      armv7l: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
        i686: 'a644a401f6979bb2094bc2b25814b64f943b55a8b8395cbc264e79f95ee3a42c',
-     x86_64: 'cdab7f1661c3b8e93f1bb7e0b255993817df246e46ace22d9d1d2451826c324b'
+     x86_64: '12aece78b0944c92022305c75365a48ab6adbb2c68ba8e36bbd01c142b48ae33'
   })
 
   depends_on 'musl_native_toolchain' => :build

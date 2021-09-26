@@ -14,13 +14,13 @@ class Musl_libnghttp2 < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_armv7l/musl_libnghttp2-1.44.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_armv7l/musl_libnghttp2-1.44.0-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_i686/musl_libnghttp2-1.44.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.44.0_x86_64/musl_libnghttp2-1.44.0-chromeos-x86_64.tpxz'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.45.1_x86_64/musl_libnghttp2-1.45.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '519076c20206886515684ee9a72da4a73da0b4ede5dc6c8610f3bd5df30b7043',
      armv7l: '519076c20206886515684ee9a72da4a73da0b4ede5dc6c8610f3bd5df30b7043',
        i686: '1f51ed0279164a26ba4c77eec699eba6af86f6dda7b2403808c0c2ecac097262',
-     x86_64: '31d7ca42cedefc40edb70e708388ff497ea7bd519c8f750d173bedceb49bc559'
+     x86_64: '89f12cc2a150334b932ecc58e235721d776e42dc44e9acd34fa4b0d5529dc8a3'
   })
 
   depends_on 'musl_native_toolchain' => :build

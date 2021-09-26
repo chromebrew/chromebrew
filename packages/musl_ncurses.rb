@@ -19,7 +19,7 @@ class Musl_ncurses < Package
     aarch64: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
      armv7l: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
        i686: '30ae08e163db5538375f00d03027f0a60ceaf4e62a0a44b260029f41c2339226',
-     x86_64: '1f7a5efdccc51d44cf80304739a98f7d6b12ce2c869da49b33b3910b295451f5'
+     x86_64: '8d1edb89b38fb4b48084f4197748e8c0ebc160b926c78c476db93cfbc4930e3f'
   })
 
   depends_on 'musl_native_toolchain' => :build
