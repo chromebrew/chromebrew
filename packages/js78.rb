@@ -44,7 +44,7 @@ class Js78 < Package
     end
     system('tar', '-xf', 'unzippatches.tar.xz')
 
-    system('for i in `cat debian/patches/series`; do  patch -p 1 < debian/patches/$i; done')
+    File.foreach 'debian/patches/series' {|i| system "patch -p 1 < debian/patches/#{i}" }
 
     # Arch Patches
     # patch2_url = 'https://github.com/archlinux/svntogit-packages/raw/packages/js78/trunk/0002-Bug-1667736-Update-packed_simd-to-compile-on-Rust-1..patch'
