@@ -4,7 +4,7 @@ class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
   @_ver = '7.79.1'
-  version = ARCH == 'i686' ? '7.77.0' : @_ver
+  version = ARCH == 'i686' ? '7.77.0-1' : @_ver
   license 'curl'
   compatibility 'all'
   source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
