@@ -3,25 +3,22 @@ require 'package'
 class Libcurl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.78.0'
+  @_ver = '7.79.1'
   version @_ver
   license 'curl'
   compatibility 'all'
-  source_url 'https://curl.se/download/curl-7.78.0.tar.xz'
-  source_sha256 'be42766d5664a739c3974ee3dfbbcbe978a4ccb1fe628bb1d9b59ac79e445fb5'
-
+  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
+  source_sha256 '0606f74b1182ab732a17c11613cbbaf7084f2e6cca432642d0e3ad7c224c3689'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_i686/libcurl-7.78.0-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_armv7l/libcurl-7.78.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_armv7l/libcurl-7.78.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_x86_64/libcurl-7.78.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_x86_64/libcurl-7.79.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-       i686: '07f1ab7fd175cf911dbd0a2eb802b827f7b47f62b1aa65659b8a544b20dfcc6d',
-    aarch64: '62cb453539ce7d575438bad5b565e6401614a0ef19c8979e954543719e710dbb',
-     armv7l: '62cb453539ce7d575438bad5b565e6401614a0ef19c8979e954543719e710dbb',
-     x86_64: '267da90a48c7e68051376a5f2febc39ad0c0265231afc567d6edd88ccb864760'
+    aarch64: 'bf352a127695aaa84e77bfe19c0acd0b6f9dab90387ca19d40f0e8af621a0d6d',
+     armv7l: 'bf352a127695aaa84e77bfe19c0acd0b6f9dab90387ca19d40f0e8af621a0d6d',
+    x86_64: '83fed4b64ca34fd6e10c3b1f855ab7b4634a0ca58fb45297d00b74501c8827d1'
   })
 
   depends_on 'brotli' => :build
