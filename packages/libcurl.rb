@@ -3,25 +3,22 @@ require 'package'
 class Libcurl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.78.0'
+  @_ver = '7.79.1'
   version @_ver
   license 'curl'
   compatibility 'all'
-  source_url 'https://curl.se/download/curl-7.78.0.tar.xz'
-  source_sha256 'be42766d5664a739c3974ee3dfbbcbe978a4ccb1fe628bb1d9b59ac79e445fb5'
-
+  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
+  source_sha256 '0606f74b1182ab732a17c11613cbbaf7084f2e6cca432642d0e3ad7c224c3689'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_i686/libcurl-7.78.0-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_armv7l/libcurl-7.78.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_armv7l/libcurl-7.78.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.78.0_x86_64/libcurl-7.78.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_x86_64/libcurl-7.79.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-       i686: '07f1ab7fd175cf911dbd0a2eb802b827f7b47f62b1aa65659b8a544b20dfcc6d',
-    aarch64: '62cb453539ce7d575438bad5b565e6401614a0ef19c8979e954543719e710dbb',
-     armv7l: '62cb453539ce7d575438bad5b565e6401614a0ef19c8979e954543719e710dbb',
-     x86_64: '267da90a48c7e68051376a5f2febc39ad0c0265231afc567d6edd88ccb864760'
+    aarch64: '497ca2518256983a3a011fa83de67f20202a1aa5cc6fdf88424b96df4cbe19ba',
+     armv7l: '497ca2518256983a3a011fa83de67f20202a1aa5cc6fdf88424b96df4cbe19ba',
+     x86_64: 'e16d3d120bf089178f35f05636c9b79b5f5343d1e6b9a5a8edcc3c717213f26f'
   })
 
   depends_on 'brotli' => :build
@@ -42,9 +39,6 @@ class Libcurl < Package
   depends_on 'zstd' # R
 
   def self.build
-    # Without these downstream programs which want to statically link
-    # libcurl have issues.
-    # @krb5_static_libs = '-l:libkrb5support.a -l:libgssapi_krb5.a -l:libkrb5.a -l:libk5crypto.a -l:libcom_err.a'
 
     @libssh = '--with-libssh'
     case ARCH
@@ -72,6 +66,6 @@ class Libcurl < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/curl"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/curl", "#{CREW_DEST_PREFIX}/bin/curl.nonstatic"
   end
 end
