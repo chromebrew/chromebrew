@@ -25,7 +25,6 @@ class Libnghttp2 < Package
 
   depends_on 'jansson'
   depends_on 'jemalloc'
-  depends_on 'libevent' => :build
   depends_on 'libev' => :build
   depends_on 'py3_cython' => :build
 
@@ -39,11 +38,11 @@ class Libnghttp2 < Package
     end
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
-
   def self.check
     system 'samu -C builddir test'
+  end
+
+  def self.install
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
