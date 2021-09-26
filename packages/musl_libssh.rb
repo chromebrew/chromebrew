@@ -18,9 +18,9 @@ class Musl_libssh < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_x86_64/musl_libssh-0.9.6-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'feb3f6d6dd7ce33d3c75e23229219c16488b1ea33e42b22737a24dcc875f69d8',
-     armv7l: 'feb3f6d6dd7ce33d3c75e23229219c16488b1ea33e42b22737a24dcc875f69d8',
-       i686: '9e617fa3711f49bae34b11fd98d7e4b90c347c76f0b504a31d65bbb1b7e2e194',
+    aarch64: 'c34d6dc7d52669c6587c7d1523ab526897332edc3a185b6295f4a338f1e5e6cb',
+     armv7l: 'c34d6dc7d52669c6587c7d1523ab526897332edc3a185b6295f4a338f1e5e6cb',
+       i686: '55180705914fcb13215be2fe52d798b37ce760c6cf504a25b0a0c3d857388e29',
      x86_64: '1917dffdc56af43aea4ccd9472ea8d6d4002b3057ea1118907e20e6fdc383f50'
   })
 

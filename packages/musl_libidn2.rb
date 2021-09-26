@@ -16,9 +16,9 @@ class Musl_libidn2 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2_x86_64/musl_libidn2-2.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
-     armv7l: '05f8195d13e47c184648cba883fa389461f5f5d7b75071b2a3ca43ad7c16febf',
-       i686: '040d01bf4bcaa29fbe7b213352519579837cb53ca3c3eb32db8d8cf3985b84b8',
+    aarch64: '05013c0c7e71e590b2b7d7c55519ff837a09f187330612c142f2bb7e2632b5a6',
+     armv7l: '05013c0c7e71e590b2b7d7c55519ff837a09f187330612c142f2bb7e2632b5a6',
+       i686: '5652db6b61a1b4245a8b72aa27da31cffcdb15de4a3b7bb724b07264f022b505',
      x86_64: '0813b2ae14c7349e1112f4e93ca5cd76e5a0ba5bee4c51b1db2f74c8e86006c7'
   })
 

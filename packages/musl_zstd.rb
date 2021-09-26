@@ -16,9 +16,9 @@ class Musl_zstd < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.0_x86_64/musl_zstd-1.5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '936a7f444ff2dcf44455b22165059afe830dbe152fa593ff2fd96eae0e3d3d09',
-     armv7l: '936a7f444ff2dcf44455b22165059afe830dbe152fa593ff2fd96eae0e3d3d09',
-       i686: 'e5efd4be2890701e4c21dc1511008d889c6fe0fab3e9fa0c1bfd483d4a864daa',
+    aarch64: 'd540242853af21262637b7dcfd5d25e01e97daaa5817a053e30204dcc0a2fe68',
+     armv7l: 'd540242853af21262637b7dcfd5d25e01e97daaa5817a053e30204dcc0a2fe68',
+       i686: '2d18e52937e5e40c4e54ee1d728eca8216b49906a84d37ae2c528ea20772f932',
      x86_64: '85c337d209e779cc39f697ef754326aca8d13b00d69c25e2461f2b085e4d1a28'
   })
 

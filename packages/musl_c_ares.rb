@@ -16,9 +16,9 @@ class Musl_c_ares < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_x86_64/musl_c_ares-1.17.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9687cca0da22074f3ae23df09433b08d5886f14b42f8597c23b71b6ab33af572',
-     armv7l: '9687cca0da22074f3ae23df09433b08d5886f14b42f8597c23b71b6ab33af572',
-       i686: 'ed1c8fef92a9675a8845bda7ca06e1c63b2250ac7dfac135c9a60532d8825963',
+    aarch64: '16da6f86c68d47b675f94cadd36635d1c743ea33a599588d5d2b80349e472db8',
+     armv7l: '16da6f86c68d47b675f94cadd36635d1c743ea33a599588d5d2b80349e472db8',
+       i686: '4ca8616b8c42e0b4741080969b90bb80cb75a4cea48b4b98252e9a6f44801647',
      x86_64: 'b2994bf3c6ed793052492fca6a074ef0c0ad4d12f628bbbe42cc7e2000d2d68c'
   })
 

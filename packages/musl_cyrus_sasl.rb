@@ -16,9 +16,9 @@ class Musl_cyrus_sasl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_x86_64/musl_cyrus_sasl-2.1.27-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c014d0fb64be07acdde1654f56b76bb5ce196d8c5544f94ac9f85df2a1c9012f',
-     armv7l: 'c014d0fb64be07acdde1654f56b76bb5ce196d8c5544f94ac9f85df2a1c9012f',
-       i686: '7450e9a3a4505b9b07b60783d33825c1c59a53ce7c360b91c2397cb05e60c2d7',
+    aarch64: 'a1f6ff66ce747000afdec8006730e87506c3e3c2a8af317816ad84fd240e97b8',
+     armv7l: 'a1f6ff66ce747000afdec8006730e87506c3e3c2a8af317816ad84fd240e97b8',
+       i686: '420b9dfd517bd981837a7e26d379d5996635dfc66eae1a02eae1d9ed8e6886aa',
      x86_64: 'c9c1e6ec2b43a3e3ad74dea27c310331ea6d209adb3bbf73429ff33d97950737'
   })
 

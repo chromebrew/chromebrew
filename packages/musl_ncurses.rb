@@ -16,9 +16,9 @@ class Musl_ncurses < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.2-20210522_x86_64/musl_ncurses-6.2-20210522-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
-     armv7l: '84d75ae526930f137c2bfc9053f433f10e4b4be76b8f825db404b2aac96fa293',
-       i686: '30ae08e163db5538375f00d03027f0a60ceaf4e62a0a44b260029f41c2339226',
+    aarch64: '1df7dbbdb34fd3df6307958721afc56ce70d2540cfcc16c084557636e0331a00',
+     armv7l: '1df7dbbdb34fd3df6307958721afc56ce70d2540cfcc16c084557636e0331a00',
+       i686: '4d9abcb8ce86f3f9a751c67d041caf77c7ddcfb5d56924322bf5d8332098946f',
      x86_64: '8d1edb89b38fb4b48084f4197748e8c0ebc160b926c78c476db93cfbc4930e3f'
   })
 

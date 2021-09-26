@@ -16,9 +16,9 @@ class Musl_expat < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.1_x86_64/musl_expat-2.4.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6354f0700ea7755fd112e6decd44b1b8aeee1cd353a9eff6e9edc40ee5efb969',
-     armv7l: '6354f0700ea7755fd112e6decd44b1b8aeee1cd353a9eff6e9edc40ee5efb969',
-       i686: 'cbf58196eb5d5d1cd10d8dc690d5f6a9ac93ec318457814a36cb5b9dea20f408',
+    aarch64: '7f5fe3311c73a4737cefdfe8553ee604c1e046376ca240711cc953186f35d590',
+     armv7l: '7f5fe3311c73a4737cefdfe8553ee604c1e046376ca240711cc953186f35d590',
+       i686: 'deb210dcd8e6db83798ff3e349669b726318ae4c99a8797b327e938c43e5e0c1',
      x86_64: 'fe4d81b538419c1e27d8600c3bd87c1a4011289fb7eddd58ad75a9e8b623decc'
   })
 

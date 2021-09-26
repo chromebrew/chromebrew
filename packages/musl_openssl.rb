@@ -17,9 +17,9 @@ class Musl_openssl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.0_x86_64/musl_openssl-3.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
-     armv7l: 'af9dfed9d4e12ab81d262027d0c839a1ad4f799057b0721f908589b7bbd206d0',
-       i686: 'e03aaed76c66a7e8ce0f2a4c9f6c64f343f5e5f5bfd90d3ed16c14960af6a6a6',
+    aarch64: 'a9b6e78fe11c73ec19c4698786a7d01d39d8bafbd35ff82243106cb2a40a3889',
+     armv7l: 'a9b6e78fe11c73ec19c4698786a7d01d39d8bafbd35ff82243106cb2a40a3889',
+       i686: 'dc3c37e2d1badaf4b192339d144a0e3a83c47182a5531e80a9fa91255694733e',
      x86_64: 'a17f737f02bb9c15d288832a066795b532530d68623bd6d3568946a99894258e'
   })
 

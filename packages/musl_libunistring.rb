@@ -16,9 +16,9 @@ class Musl_libunistring < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10_x86_64/musl_libunistring-0.9.10-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
-     armv7l: 'fe13deda68d140d035135d448c0e9a22b6263e668feb005e186d083c8780fbf3',
-       i686: 'a644a401f6979bb2094bc2b25814b64f943b55a8b8395cbc264e79f95ee3a42c',
+    aarch64: 'c1e10a31ed0f6a307f3988571e19d3b6e18a0e46c67f68a4dcaaac15f5bc754a',
+     armv7l: 'c1e10a31ed0f6a307f3988571e19d3b6e18a0e46c67f68a4dcaaac15f5bc754a',
+       i686: '6edaae97bfdf67dab38234a29cfc21b8c5bbae453bd3e71a777dce858f392a8d',
      x86_64: '12aece78b0944c92022305c75365a48ab6adbb2c68ba8e36bbd01c142b48ae33'
   })
 

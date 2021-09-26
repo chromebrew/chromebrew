@@ -17,9 +17,9 @@ class Musl_zlib < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11_x86_64/musl_zlib-1.2.11-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
-     armv7l: '2eb4edff11b56a15f9dca8fbf665220979820ae9b2873a6206060fc06a302700',
-       i686: '0c8b2ee22bd24de9d37d688036dc810ea7cd3030bafca98ddcfb8fe82b6c1021',
+    aarch64: '00d2af88bd0b9ac504405379e470392a8c66d293046f4466899f493fec34c082',
+     armv7l: '00d2af88bd0b9ac504405379e470392a8c66d293046f4466899f493fec34c082',
+       i686: 'e30270a0ed70bd26ff96f2929f19f2e7dcba4dd6b5b458ccb299f618e2e72795',
      x86_64: 'dbe2f1f798905e8577e9b1b2579554a22802fec93c803fd10857be7cfc999cc2'
   })
 
