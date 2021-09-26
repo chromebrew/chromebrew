@@ -17,10 +17,10 @@ class Git < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.33.0-musl_x86_64/git-2.33.0-musl-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a4cbc1c0a2248d8f57c09512f30142e9e6959c7a8e69f599d4fdd2f55595bf5b',
-     armv7l: 'a4cbc1c0a2248d8f57c09512f30142e9e6959c7a8e69f599d4fdd2f55595bf5b',
-       i686: 'f88588b38627f602be6f1d50dcc4979aece11a9656571fa96793f24f29225bcd',
-     x86_64: 'fc08eb64c50075b7a013e786dc03088cd09596d4d185d83c593421de038f2076'
+    aarch64: 'fcb081bfb886dc1357bd633dda5a697f458979f86f1b58d01eb56bdfa55bc3fc',
+     armv7l: 'fcb081bfb886dc1357bd633dda5a697f458979f86f1b58d01eb56bdfa55bc3fc',
+       i686: '82b9985db9ea559e102b3b50f1972f7b210a5b45d6921b3f6a9b810c2500dca5',
+     x86_64: '1a736a5c346dfc5438fc776debbd05f8a73c83825f2ef8f220eef8d45386a7f5'
   })
 
   depends_on 'ca_certificates' => :build
