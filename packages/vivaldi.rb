@@ -3,7 +3,7 @@ require 'package'
 class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
-  @_ver = '4.2.2406.44'
+  @_ver = '4.2.2406.48'
   version @_ver
   compatibility 'aarch64,armv7l,x86_64'
   license 'Vivaldi'
@@ -19,10 +19,10 @@ class Vivaldi < Package
   case ARCH
   when 'aarch64', 'armv7l'
     @_arch = 'armhf'
-    source_sha256 '2028b234ebc4e5908288695c59956aaf576e0f0546d80177dbdd73ffe2060f32'
+    source_sha256 '01af7ef96a63bc48525bfc9e7cacc40eb5ec82c4894f546d871f60093954f2c5'
   when 'x86_64'
     @_arch = 'amd64'
-    source_sha256 '8217ee525dfec81aef5d885f192c799e4808633ff598a719a672bc25fbc740bf'
+    source_sha256 '97841156fac3b34a17692e9724aa34e3fb90658a6504c6eb5303d61ecff06867'
   end
 
   source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{@_ver}-1_#{@_arch}.deb"
@@ -31,6 +31,7 @@ class Vivaldi < Package
     # ERROR: ld.so: object '/home/chronos/user/.local/lib/vivaldi/media-codecs-89.0.4389.82/libffmpeg.so' from LD_PRELOAD cannot be preloaded
     system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/vivaldi'
     system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/update-ffmpeg'
+    system 'sed', '-i', "s:/usr/bin/::g", './usr/share/applications/vivaldi-stable.desktop'
   end
 
   def self.install
@@ -42,6 +43,17 @@ class Vivaldi < Package
 
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi-stable"
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi"
+
+    # Add icons for use with crew-launcher
+    icon_base_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor"
+    FileUtils.mkdir_p icon_base_path
+    Dir["#{CREW_DEST_PREFIX}/share/vivaldi/product_logo_*.png"].each do |filename|
+      logo = File.basename(filename)
+      size = File.basename(logo[13,7], '.png')
+      dims = "#{size}x#{size}"
+      FileUtils.mkdir_p "#{icon_base_path}/#{dims}/apps"
+      FileUtils.mv filename, "#{icon_base_path}/#{dims}/apps/vivaldi.png"
+    end
   end
 
   def self.postinstall
