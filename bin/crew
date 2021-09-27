@@ -277,9 +277,9 @@ def search (pkgName, silent = false)
   begin
     return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   rescue => e
-    puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+    puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
-  if ! File.exist?(pkgPath) && silent
+  unless File.exist?(pkgPath) && silent
     @pkg = nil
   return
   end
