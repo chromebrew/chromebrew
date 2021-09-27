@@ -279,6 +279,10 @@ def search (pkgName, silent = false)
   rescue => e
     puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
   end
+  if ! File.exist?(pkgPath) && silent
+    @pkg = nil
+  return
+  end
   abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
@@ -520,9 +524,12 @@ def update
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
     search package[:name], true
+    if @pkg.nil?
+      puts "Package file for #{package[:name]} not found. :(".lightred if @opt_verbose
+      next
+    end 
     if package[:version].to_s != @pkg.version
       canBeUpdated += 1
-      puts @pkg_name + 'version is'+ @pkg.version.inspect
       puts @pkg.name + ' could be updated from ' + package[:version].to_s + ' to ' + @pkg.version
     end
   end
