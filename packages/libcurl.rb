@@ -13,11 +13,13 @@ class Libcurl < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_i686/libcurl-7.79.1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_x86_64/libcurl-7.79.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '497ca2518256983a3a011fa83de67f20202a1aa5cc6fdf88424b96df4cbe19ba',
      armv7l: '497ca2518256983a3a011fa83de67f20202a1aa5cc6fdf88424b96df4cbe19ba',
+       i686: 'ab58dc20c50f2ad6dc00afc5b30c3eac2e4c8d5286efa70613821e46a6654d61',
      x86_64: 'e16d3d120bf089178f35f05636c9b79b5f5343d1e6b9a5a8edcc3c717213f26f'
   })
 
