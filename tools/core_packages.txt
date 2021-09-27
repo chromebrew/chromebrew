@@ -13,6 +13,7 @@ expat
 filecmd
 flex
 gdbm
+gcc11
 gettext
 git
 glibc
