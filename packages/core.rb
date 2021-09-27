@@ -20,6 +20,7 @@ class Core < Package
   depends_on 'expat'
   depends_on 'filecmd'
   depends_on 'flex'
+  depends_on 'gcc11'
   depends_on 'gdbm'
   depends_on 'gettext'
   depends_on 'git'
