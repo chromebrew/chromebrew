@@ -522,6 +522,7 @@ def update
     search package[:name], true
     if package[:version].to_s != @pkg.version
       canBeUpdated += 1
+      @pkg.version.inspect
       puts @pkg.name + ' could be updated from ' + package[:version].to_s + ' to ' + @pkg.version
     end
   end
