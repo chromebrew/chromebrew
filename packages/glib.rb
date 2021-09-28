@@ -14,13 +14,13 @@ class Glib < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_armv7l/glib-2.70.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_armv7l/glib-2.70.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_i686/glib-2.70.0-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_i686/glib-2.70.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_x86_64/glib-2.70.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5a3b66e351b9bdf6ebb4ca0c23383cffb8c65bec2c69ed40361d3a790aa39e4c',
      armv7l: '5a3b66e351b9bdf6ebb4ca0c23383cffb8c65bec2c69ed40361d3a790aa39e4c',
-       i686: 'f55c3a7ad33a87829202358af587c6fcb3c6848e75d30b3ef44e2175227e659c',
+       i686: 'aa7fb9b8a770208a1653692c4db68616bd35bfd5add16d121e7f63d6dbf40d5d',
      x86_64: '9f96829a225c86f284513766e9ea833d9fb78928f572a5bd78e12ff1932b957f'
   })
 
