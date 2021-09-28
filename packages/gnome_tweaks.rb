@@ -22,7 +22,7 @@ class Gnome_tweaks < Package
 
   depends_on 'gnome_settings_daemon'
   depends_on 'gsettings_desktop_schemas'
-  depends_on 'py3_gobject'
+  depends_on 'pygobject'
   depends_on 'libhandy'
   depends_on 'libnotify'
 
