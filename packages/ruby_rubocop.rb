@@ -11,6 +11,7 @@ class Ruby_rubocop < Package
   source_url 'SKIP'
 
   depends_on 'libyaml'
+  depends_on 'xdg_base'
 
   @xdg_config_home = ENV['XDG_CONFIG_HOME']
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
@@ -32,18 +33,6 @@ class Ruby_rubocop < Package
   end
 
   def self.remove
-    config_dirs = %W[#{@xdg_config_home}/rubocop]
-    config_dirs.each do |config_dir|
-      next unless Dir.exist? config_dir
-
-      print "\nWould you like to remove #{config_dir}? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
-      else
-        puts "#{config_dir} saved.".lightgreen
-      end
-    end
+    system 'gem uninstall -x rubocop'
   end
 end
