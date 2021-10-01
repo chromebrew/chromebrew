@@ -3,11 +3,11 @@ require 'package'
 class Crew_launcher < Package
   description 'Add Chromebrew app to launcher'
   homepage 'https://github.com/skycocker/chromebrew'
-  version '1'
+  version '1.0'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/supechicken/crew-launcher.git'
-  git_hashtag 'ec0aefe84eac9d31ef58cff2dc2de1fd9526af0b'
+  git_hashtag '1.0'
   
   depends_on 'graphicsmagick'
 
