@@ -921,7 +921,6 @@ def prepare_package(destdir)
 
     # check for FHS3 compliance
     puts "Checking for FHS3 compliance..."
-    @_errors = false
     @fhs_compliant_prefix = ['bin', 'etc', 'include', 'lib', 'libexec', 'opt', 'sbin', 'share', 'var']
     @fhs_compliant_prefix.append(ARCH_LIB) if ARCH_LIB == 'lib64'
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
