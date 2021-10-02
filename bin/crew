@@ -5,12 +5,10 @@ require_relative '../lib/color'
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 
 require 'find'
-require 'net/http'
 require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require 'securerandom'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
@@ -1010,16 +1008,16 @@ def shrink_dir(dir)
         puts "Using rdfind to find duplicate or hard linked files."
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
       end
-      if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-        puts "Using symlinks tool to make absolute symlinks relative"
-        system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-      end
+      #if File.exist?("#{CREW_PREFIX}/bin/symlinks")
+      #  puts "Using symlinks tool to make absolute symlinks relative"
+      #  system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
+      #end
       # Issues with non-x86_64 in compressing libraries, so just compress
       # non-libraries. Also note that one needs to use "upx -d" on a
       # compressed file to use ldd.
       # sommelier also isn't happy when sommelier and xwayland are compressed
       # so don't compress those packages.
-      if File.exist?("#{CREW_PREFIX}/bin/upx")
+      if CREW_USE_UPX and File.exist?("#{CREW_PREFIX}/bin/upx")
         # Logic here is to find executable binaries, compress after making
         # a backup, then expand the compressed file with upx. If the
         # expansion doesn't error out then it is ok to delete the backup.
