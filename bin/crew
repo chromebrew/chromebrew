@@ -909,8 +909,14 @@ def prepare_package(destdir)
     missing_lib = `find . -executable -type f -exec env LD_TRACE_LOADED_OBJECTS=1 {} \\;`.scan(/\t(.+) => not found/).flatten
 
     if missing_lib.any?
-      missing_lib.map {|lib| puts "#{@pkg.name}: missing .so file '#{lib}'".lightred }
-      @_errors = true if CREW_MISSING_LIB_ERROR
+      missing_lib.map do |lib|
+        unless CREW_MISSING_LIB_ONLY_ADVISORY == '1'
+          puts "Error: Missing .so file '#{lib}'".lightred
+          @_errors = true
+        else
+          puts "Warning: Missing .so file '#{lib}'".orange
+        end
+      end
     end
 
     # check for FHS3 compliance
