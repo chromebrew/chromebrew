@@ -61,8 +61,8 @@ else
   CREW_NPROC = ENV['CREW_NPROC']
 end
 
-# Set CREW_NOT_COMPRESS from environment variable
-CREW_NOT_COMPRESS = ENV['CREW_NOT_COMPRESS']
+# Set CREW_COMPRESS from environment variable
+CREW_COMPRESS = ENV['CREW_COMPRESS']
 
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV['CREW_NOT_STRIP']
@@ -83,7 +83,7 @@ CREW_USE_PIXZ = ENV['CREW_USE_PIXZ']
 
 USER = `whoami`.chomp
 
-CHROMEOS_RELEASE = `grep CHROMEOS_RELEASE_CHROME_MILESTONE= /etc/lsb-release | cut -d'=' -f2`.chomp
+CHROMEOS_RELEASE = File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
 
 # If CURL environment variable exists use it in lieu of curl.
 CURL = ENV['CURL'] || 'curl'
