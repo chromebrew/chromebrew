@@ -911,10 +911,10 @@ def prepare_package(destdir)
     if missing_lib.any?
       missing_lib.map do |lib|
         unless CREW_MISSING_LIB_ONLY_ADVISORY == '1'
-          puts "Error: Missing .so file '#{lib}'".lightred
+          puts "Error: Missing library '#{lib}'".lightred
           @_errors = true
         else
-          puts "Warning: Missing .so file '#{lib}'".orange
+          puts "Warning: Missing library '#{lib}'".orange
         end
       end
     end
