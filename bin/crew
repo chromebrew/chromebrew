@@ -907,19 +907,27 @@ def prepare_package(destdir)
     system 'find . -type l >> ../filelist'
     system 'cut -c2- ../filelist > filelist'
 
+    # check existence of required libraries
+    missing_lib = `find . -executable -type f -exec env LD_TRACE_LOADED_OBJECTS=1 {} \\;`.scan(/\t(.+) => not found/).flatten
+
+    if missing_lib.any?
+      missing_lib.map {|lib| puts "#{@pkg.name}: missing .so file '#{lib}'".lightred }
+      @_errors = true if CREW_MISSING_LIB_ERROR
+    end
+
     # check for FHS3 compliance
     puts "Checking for FHS3 compliance..."
-    @_errors = 0
+    @_errors = false
     @fhs_compliant_prefix = ['bin', 'etc', 'include', 'lib', 'libexec', 'opt', 'sbin', 'share', 'var']
     @fhs_compliant_prefix.append(ARCH_LIB) if ARCH_LIB == 'lib64'
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY == '1'
-          puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
-        else
+        if CREW_FHS_NONCOMPLIANCE_ERROR == '1'
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
-          @_errors = 1
+          @_errors = true
+        else
+          puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
         end
       end
     end
@@ -937,7 +945,7 @@ def prepare_package(destdir)
         puts "Warning: There is a conflict with the same file in another package.".orange
       else
         puts "Error: There is a conflict with the same file in another package.".lightred
-        @_errors = 1
+        @_errors = true
       end
       pp = ''
       conflicts.each do |p, f|
@@ -953,7 +961,7 @@ def prepare_package(destdir)
     end
 
     # abort if errors encountered
-    abort "Exiting due to above errors.".lightred if @_errors == 1
+    abort "Exiting due to above errors.".lightred if @_errors == true
 
     # create directory list
     system 'find . -type d > ../dlist'
