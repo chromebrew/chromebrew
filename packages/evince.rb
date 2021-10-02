@@ -6,46 +6,46 @@ require 'package'
 class Evince < Package
   description 'Document viewer PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt'
   homepage 'https://wiki.gnome.org/Apps/Evince'
-  version '40.1'
+  version '40.2'
   license 'GPL'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/evince/-/archive/#{version}/evince-#{version}.tar.bz2"
-  source_sha256 '1c438051423334a49311c941f44924195c4823f64c2fcc55285eb529ef9bff06'
+  source_url 'https://gitlab.gnome.org/GNOME/evince.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_armv7l/evince-40.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_armv7l/evince-40.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_i686/evince-40.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.1_x86_64/evince-40.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_armv7l/evince-40.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_armv7l/evince-40.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_i686/evince-40.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_x86_64/evince-40.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ff53c6f065e9d3efe0db2528ced3cf03124201fbe072ad3e113ee4dcc348c1d3',
-     armv7l: 'ff53c6f065e9d3efe0db2528ced3cf03124201fbe072ad3e113ee4dcc348c1d3',
-       i686: 'b3fa8f819fae5d173de436bf2ca2886763e04777c5a05fe81ce27a6e7e98dd57',
-     x86_64: 'e9a5508adad335debaef3105f753fb3e2b821d554edcd8fcecf2da8c5a9bf5c5'
+    aarch64: '74251f49f4fe22b9a19e4cbd16770d270eb13147df23265e62bb960ec71634e0',
+     armv7l: '74251f49f4fe22b9a19e4cbd16770d270eb13147df23265e62bb960ec71634e0',
+       i686: '30051f33d1c73422b28298ccb9f7a84cc6dbb30a742cc01aef63d7054b090b04',
+     x86_64: '49e164c40f852960136be7660fc38be92d6517d45c073d2b076dcdbf643cffd6'
   })
 
-  depends_on 'atk'
-  depends_on 'cairo'
-  depends_on 'djvulibre'
-  depends_on 'docbook_xsl' => ':build'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gnome_desktop'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gst_plugins_base'
-  depends_on 'gstreamer'
-  depends_on 'gtk3'
-  depends_on 'gtk_doc' => ':build'
-  depends_on 'libarchive'
-  depends_on 'libgxps'
-  depends_on 'libhandy'
-  depends_on 'libsecret'
-  depends_on 'libspectre'
-  depends_on 'libtiff'
-  depends_on 'nautilus'
-  depends_on 'pango'
-  depends_on 'poppler'
+  depends_on 'atk' # R
+  depends_on 'cairo' # R
+  depends_on 'djvulibre' # R
+  depends_on 'docbook_xsl' => :build
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gnome_desktop' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'gtk3' # R
+  depends_on 'gtk_doc' => :build
+  depends_on 'libgxps' # R
+  depends_on 'libhandy' # R
+  depends_on 'libsecret' # R
+  depends_on 'libspectre' # R
+  depends_on 'libtiff' # R
+  depends_on 'nautilus' # R
+  depends_on 'pango' # R
+  depends_on 'poppler' # R
+  depends_on 'valgrind' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

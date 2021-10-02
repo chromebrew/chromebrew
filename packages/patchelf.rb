@@ -3,28 +3,32 @@ require 'package'
 class Patchelf < Package
   description 'PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.'
   homepage 'http://nixos.org/patchelf.html'
-  version '0.12-f347'
+  version '0.13'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/NixOS/patchelf/archive/f34751b88bd07d7f44f5cd3200fb4122bf916c7e.zip'
-  source_sha256 '5ed94d15c44c13c1fa6a78b2f5ca499e465fd9171e4a1daf194e8523c04a9339'
+  source_url 'https://github.com/NixOS/patchelf.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_armv7l/patchelf-0.12-f347-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_armv7l/patchelf-0.12-f347-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_i686/patchelf-0.12-f347-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.12-f347_x86_64/patchelf-0.12-f347-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.13_armv7l/patchelf-0.13-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.13_armv7l/patchelf-0.13-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.13_i686/patchelf-0.13-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchelf/0.13_x86_64/patchelf-0.13-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e2b7945b1a842076b60347516561d29af99bc450ef66732d41086bb15bc8374d',
-     armv7l: 'e2b7945b1a842076b60347516561d29af99bc450ef66732d41086bb15bc8374d',
-       i686: '9496ae8276c538a798adcbf86816dab573c7ded0e96cd9e678991d7bd5ae54fe',
-     x86_64: 'c234ee6df670e7d1405ff57c607d529a0c9bed6815fd900a51059796620e1fdc'
+    aarch64: 'fc778c01628667394ad79f4873a2ec329a6aed20745688586be07a2dc7e62818',
+     armv7l: 'fc778c01628667394ad79f4873a2ec329a6aed20745688586be07a2dc7e62818',
+       i686: 'ac2ef0780f5d8a7fa98a8b37c8cae9ee84423220c000ea3c4613509679542851',
+     x86_64: '451436f8744dea2f1cc33d2232a54b38d3ba6788cda1fd7d0bef6b3003d096c6'
   })
 
   def self.build
     system './bootstrap.sh'
-    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+    # Optimization flags from https://github.com/InBetweenNames/gentooLTO
+    # Build static for use in case needed with glibc brokenness.
+    system "env CFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
+    CXXFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
+    LDFLAGS='-flto=auto -static' \
              ./configure #{CREW_OPTIONS}"
     system 'make'
   end

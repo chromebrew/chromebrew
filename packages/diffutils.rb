@@ -3,37 +3,37 @@ require 'package'
 class Diffutils < Package
   description 'GNU Diffutils is a package of several programs related to finding differences between files.'
   homepage 'https://www.gnu.org/software/diffutils/'
-  version '3.7'
+  version '3.8'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/diffutils/diffutils-3.7.tar.xz'
-  source_sha256 'b3a7a6221c3dc916085f0d205abf6b8e1ba443d4dd965118da364a1dc1cb3a26'
+  source_url 'https://ftpmirror.gnu.org/gnu/diffutils/diffutils-3.8.tar.xz'
+  source_sha256 'a6bdd7d1b31266d11c4f4de6c1b748d4607ab0231af5188fc2533d0ae2438fec'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_armv7l/diffutils-3.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_armv7l/diffutils-3.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_i686/diffutils-3.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.7_x86_64/diffutils-3.7-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.8_armv7l/diffutils-3.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.8_armv7l/diffutils-3.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.8_i686/diffutils-3.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.8_x86_64/diffutils-3.8-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '814cec97d84c6558bff0cf5d92b048e76ec4b9cd1fdbff01890e0bfd8b7c261d',
-     armv7l: '814cec97d84c6558bff0cf5d92b048e76ec4b9cd1fdbff01890e0bfd8b7c261d',
-       i686: 'ac29008e6b865b39e33bfb05cf5d93f39b6e25cdb93a1994faa408e11965bbc6',
-     x86_64: '7cd6726e32b667fb62a7a43189ca9677c3b21fd35cec8bd3d7051855605c9fce',
+    aarch64: '60d8d2f9e575dcd421d7bc7ab9e531fb67098a3e9f0c9af80b34709926889843',
+     armv7l: '60d8d2f9e575dcd421d7bc7ab9e531fb67098a3e9f0c9af80b34709926889843',
+       i686: 'b59c68f3594f03870344182a68bddda9eba1ce19de32705ff0c44108c36b0aa0',
+     x86_64: 'edddafc3090b7b146594d3b3d80c3c4cb8730c662b68eaaf2d90b42824368eb3',
   })
 
   depends_on 'libsigsegv'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system "make"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
   end
 end

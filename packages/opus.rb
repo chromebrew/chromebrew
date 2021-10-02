@@ -25,7 +25,7 @@ class Opus < Package
      x86_64: '5300c3c8b5e6072025f118fc82d916a786caaf58d00c2651542561fbd86208ae'
   })
 
-  depends_on 'doxygen' => ':build'
+  depends_on 'doxygen' => :build
 
   def self.build
     system "env #{CREW_ENV_OPTIONS} \

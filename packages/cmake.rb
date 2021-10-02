@@ -3,31 +3,31 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.20.1'
+  @_ver = '3.20.5'
   version @_ver
   license 'CMake'
   compatibility 'all'
   source_url "https://github.com/Kitware/CMake/releases/download/v#{@_ver}/cmake-#{@_ver}.tar.gz"
-  source_sha256 '3f1808b9b00281df06c91dd7a021d7f52f724101000da7985a401678dfe035b0'
+  source_sha256 '12c8040ef5c6f1bc5b8868cede16bb7926c18980f59779e299ab52cbc6f15bb0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.1_armv7l/cmake-3.20.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.1_armv7l/cmake-3.20.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.1_i686/cmake-3.20.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.1_x86_64/cmake-3.20.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.5_armv7l/cmake-3.20.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.5_armv7l/cmake-3.20.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.5_i686/cmake-3.20.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.20.5_x86_64/cmake-3.20.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '078af3199ebab9ea478b9c162098b1746a91a83a62052017991e6d66ff5e81e2',
-     armv7l: '078af3199ebab9ea478b9c162098b1746a91a83a62052017991e6d66ff5e81e2',
-       i686: '715e5a2d8b097df0f753cac11e6c15fc3b5a47765de4f9be554715c65bbb7a5b',
-     x86_64: '61e754f415704a3feaeb6a0f0bdbd7cbdd958f76f779b32be49c799e351a0852'
+    aarch64: '75be8bfa3cc657338fad5f6787064f6bf15db3920a9745d855fd96d4ae27267f',
+     armv7l: '75be8bfa3cc657338fad5f6787064f6bf15db3920a9745d855fd96d4ae27267f',
+       i686: '6857b4eb68676dcd828438ea141bc2152416c5819296aa7e177061787f6530fc',
+     x86_64: 'c09c700554d7d10689c81fece6a31d9a8c0ded0dc040e78ca2ff5501f4304a80'
   })
 
   depends_on 'llvm' => :build
 
   def self.patch
     if Dir.exist? "#{CREW_PREFIX}/include/ncursesw"
-      system 'sed -i "51s,$,\n  set(CURSES_INCLUDE_PATH ' + "#{CREW_PREFIX}/include/ncursesw" + ')," Modules/FindCurses.cmake'
+      system "sed -i \"51s,$,\\n  set(CURSES_INCLUDE_PATH #{CREW_PREFIX}/include/ncursesw),\" Modules/FindCurses.cmake"
     end
   end
 

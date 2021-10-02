@@ -3,17 +3,17 @@ require 'package'
 class Mysqltuner < Package
   description 'MySQLTuner is a script written in Perl that allows you to review a MySQL installation quickly and make adjustments to increase performance and stability.'
   homepage 'https://github.com/major/MySQLTuner-perl'
-  version '1.7.7'
+  version '1.7.21'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/major/MySQLTuner-perl/1c51f442822a170fb2eaafb088f22c8f4baacd9d/README.md'
-  source_sha256 '381d2200b487b4e8839d863ee300b761d5d0a8ee4eac5a8c51ef9bbd640ae6e6'
+  source_url 'SKIP'
 
   depends_on 'perl'
 
   def self.install
-    system "curl -#LO https://raw.githubusercontent.com/major/MySQLTuner-perl/1c51f442822a170fb2eaafb088f22c8f4baacd9d/mysqltuner.pl"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('mysqltuner.pl') ) == '26ad914fff4afca883a6a4d2bc69c142316144888c45e46e0fa56ad2b5a98a34'
-    system "install -Dm755 mysqltuner.pl #{CREW_DEST_PREFIX}/bin/mysqltuner"
+    system "curl -#LO https://raw.githubusercontent.com/major/MySQLTuner-perl/1.7.21/mysqltuner.pl"
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('mysqltuner.pl') ) == 'dd982083478a604ca0ada434b1b7d0323aa7c8302f4731d25a93cf0f77c46a27'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'mysqltuner.pl', "#{CREW_DEST_PREFIX}/bin/mysqltuner", mode: 0o755
   end
 end

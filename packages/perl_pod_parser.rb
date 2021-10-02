@@ -3,29 +3,26 @@ require 'package'
 class Perl_pod_parser < Package
   description 'Perl Pod::Parser - base class for creating POD filters and translators'
   homepage 'https://metacpan.org/pod/Pod::Parser'
-  version '1.63'
+  version '1.63-1'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.63.tar.gz'
   source_sha256 'dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_armv7l/perl_pod_parser-1.63-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_armv7l/perl_pod_parser-1.63-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_i686/perl_pod_parser-1.63-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63_x86_64/perl_pod_parser-1.63-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_armv7l/perl_pod_parser-1.63-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_armv7l/perl_pod_parser-1.63-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_i686/perl_pod_parser-1.63-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_x86_64/perl_pod_parser-1.63-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    aarch64: '3b7eabb2c15a0a3dfc325d564ebb50bbb7c03fbc31ab6b6b094f3402c99e7bbf',
-     armv7l: '3b7eabb2c15a0a3dfc325d564ebb50bbb7c03fbc31ab6b6b094f3402c99e7bbf',
-       i686: '5fe0a77aeef18cbac0075f703a89eda4b729f5270b636c59af194a6ae55d8c6c',
-     x86_64: '62d5b260b5da61a1a21adaa5a8fc8a31e0f3e5a312534e506de331c80275c00b',
+  binary_sha256({
+    aarch64: '8ba74165129311c52ccf8add610eda8aba4ef5e7b24e4a7ed365fbe825837710',
+     armv7l: '8ba74165129311c52ccf8add610eda8aba4ef5e7b24e4a7ed365fbe825837710',
+       i686: 'a0ae78e4d2aafd3ef90d2b23fdf5bd5f43da4638b17183ac9e1cf7914e349625',
+     x86_64: '75ee5ada7995eb9c7bc6c5199069c944107fe555cd1ef2a9df67ac60b5269908'
   })
 
-  depends_on 'perl'
-
-  def self.build
-  end
+  def self.build; end
 
   def self.install
     # install files to build directory
@@ -41,6 +38,5 @@ class Perl_pod_parser < Package
     system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
   end
 
-  def self.check
-  end
+  def self.check; end
 end

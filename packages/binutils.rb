@@ -3,25 +3,29 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.36.1'
-  version "#{@_ver}-2"
+  @_ver = '2.37'
+  version "#{@_ver}-1"
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
-  source_sha256 'e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0'
+  source_sha256 '820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_armv7l/binutils-2.36.1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_armv7l/binutils-2.36.1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_i686/binutils-2.36.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.36.1-2_x86_64/binutils-2.36.1-2-chromeos-x86_64.tar.xz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_i686/binutils-2.37-1-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_armv7l/binutils-2.37-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_armv7l/binutils-2.37-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_x86_64/binutils-2.37-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '46564bc989d33c3518f7afbb54f95e4b614f735ddcbe783114ba397ff283e408',
-     armv7l: '46564bc989d33c3518f7afbb54f95e4b614f735ddcbe783114ba397ff283e408',
-       i686: 'e9ea43c0c5f9f98422f83b8f1732104c78b55f53572e7353657944fe9dc6298a',
-     x86_64: '784c5e9bfd884c411708ae3c2ee1c852022f411794ff109fb7d37e91f124037b'
+       i686: '9bd786abf5e42b06e3ecd51ffdd63348fbf54f18fd6aeec8aafcebc20f231404',
+    aarch64: '2b0dccac7104572bd7e050ba191fc5eb355019351cba9d07293bb53450b4ff84',
+     armv7l: '2b0dccac7104572bd7e050ba191fc5eb355019351cba9d07293bb53450b4ff84',
+     x86_64: 'd9e0347631803d94648495ba9f2b16836f6f637046ac4c757a725c47f57a2c7a'
   })
+
+  def self.prebuild
+    FileUtils.rm_f "#{CREW_LIB_PREFIX}/libiberty.a"
+  end
 
   def self.patch
     system 'filefix'
@@ -34,15 +38,13 @@ class Binutils < Package
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-        LDFLAGS='-flto=auto' \
-        ../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_OPTIONS} \
         --disable-bootstrap \
         --disable-maintainer-mode \
         --enable-64-bit-bfd \
-        --enable-gold \
+        --enable-gold=default \
         --enable-install-libiberty \
-        --enable-ld=default \
+        --enable-ld \
         --enable-lto \
         --enable-plugins \
         --enable-relro \

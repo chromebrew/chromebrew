@@ -3,40 +3,44 @@ require 'package'
 class Expat < Package
   description 'James Clark\'s Expat XML parser library in C.'
   homepage 'https://sourceforge.net/projects/expat/'
-  version '2.2.9'
+  version '2.4.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.2.9/expat-2.2.9.tar.bz2'
-  source_sha256 'f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237'
+  source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.4.1/expat-2.4.1.tar.xz'
+  source_sha256 'cf032d0dba9b928636548e32b327a2d66b1aab63c4f4a13dd132c2d1d2f2fb6a'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.2.9_armv7l/expat-2.2.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.2.9_armv7l/expat-2.2.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.2.9_i686/expat-2.2.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.2.9_x86_64/expat-2.2.9-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_armv7l/expat-2.4.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_armv7l/expat-2.4.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_i686/expat-2.4.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_x86_64/expat-2.4.1-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '2bac1ab7a27c48690d47e28b5826818095932bb9210ec46b69e173a088ead177',
-     armv7l: '2bac1ab7a27c48690d47e28b5826818095932bb9210ec46b69e173a088ead177',
-       i686: '331b397c748e8bfeef19ac927236b19ea03d841e7e15788850f8a207c3ab473b',
-     x86_64: '1f339732173e08417ae6c9f12ff898020a517c345afd34682971ffa7d982a306',
+  binary_sha256({
+    aarch64: '1f044a7aecace21975cb528e625a1364d485f976eb3c12e53edf85006efe2980',
+     armv7l: '1f044a7aecace21975cb528e625a1364d485f976eb3c12e53edf85006efe2980',
+       i686: '5731a665443b8e029da85c5207352e380d476c6a9bbc4810fff23fa5bb0451e4',
+     x86_64: 'e5f8529e86f68486309d884676fdd72186a6ece1864d72ac97151a2d907690d4'
   })
+
+  def self.patch
+    system 'filefix'
+  end
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static',
-           '--with-pic'
+    system "./configure \
+       #{CREW_OPTIONS} \
+       #{CREW_ENV_OPTIONS} \
+       --enable-shared \
+       --enable-static \
+       --with-pic"
     system 'make'
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

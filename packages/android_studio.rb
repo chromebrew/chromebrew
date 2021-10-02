@@ -3,50 +3,45 @@ require 'package'
 class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
-  version '4.1.2.0'
+  version '2020.3.1.24'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url 'https://dl.google.com/dl/android/studio/ide-zips/4.1.2.0/android-studio-ide-201.7042882-linux.tar.gz'
-  source_sha256 '89f7c3a03ed928edeb7bbb1971284bcb72891a77b4f363557a7ad4ed37652bb9'
+  source_url 'https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2020.3.1.24/android-studio-2020.3.1.24-linux.tar.gz'
+  source_sha256 'f498ac0446b1fe32d9d5dda2b508049eb6732d9499619e2adf5ec9bb1166124d'
 
-  depends_on 'jdk8'
+  depends_on 'jdk11'
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
   def self.preflight
-    free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp.to_i
+    free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
     abort 'Not enough free disk space.  You need at least 6 GB to install.'.lightred if free_space < 6442450944
   end
 
   def self.install
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/share/android-studio')
-    FileUtils.cp_r('.', CREW_DEST_PREFIX + '/share/android-studio/')
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/bin')
-    FileUtils.cd(CREW_DEST_PREFIX + '/bin') do
-      FileUtils.ln_s(CREW_PREFIX + '/share/android-studio/bin/studio.sh', 'studio')
-    end
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/.config/.AndroidStudio4.1')
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/.config/Android')
-    FileUtils.mkdir_p(CREW_DEST_HOME)
-    FileUtils.cd(CREW_DEST_HOME) do
-      FileUtils.ln_sf(CREW_PREFIX + '/.config/.AndroidStudio4.1/', '.AndroidStudio4.1')
-      FileUtils.ln_sf(CREW_PREFIX + '/.config/Android/', 'Android')
+    FileUtils.mkdir_p CREW_DEST_PREFIX + '/bin'
+    FileUtils.mkdir_p CREW_DEST_PREFIX + '/share/android-studio'
+    FileUtils.mv 'bin', CREW_DEST_PREFIX + '/share/android-studio'
+    FileUtils.mv 'lib', CREW_DEST_PREFIX + '/share/android-studio'
+    FileUtils.mv 'plugins', CREW_DEST_PREFIX + '/share/android-studio'
+    FileUtils.cd CREW_DEST_PREFIX + '/bin' do
+      FileUtils.ln_s CREW_PREFIX + '/share/android-studio/bin/studio.sh', 'studio'
     end
   end
 
   def self.postinstall
-    puts
-    puts 'To start using Android Studio, type `studio`.'.lightblue
-    puts
+    puts "\nTo finish the installation, execute the following:".lightblue
+    puts "source #{HOME}/.bashrc".lightblue
+    puts "\nTo start using Android Studio, type `studio`.\n".lightblue
   end
 
   def self.remove
-    config_dirs = ["#{CREW_PREFIX}/.config/Android", "#{CREW_PREFIX}/.config/.AndroidStudio4.1"]
+    print "Would you like to remove the config directories? [y/N] "
+    response = STDIN.getc
+    config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]
     config_dirs.each { |config_dir|
       if Dir.exists? config_dir
-        puts
-        print "Would you like to remove #{config_dir}? [y/N] "
-        case STDIN.getc
+        case response
         when "y", "Y"
           FileUtils.rm_rf config_dir
           puts "#{config_dir} removed.".lightred

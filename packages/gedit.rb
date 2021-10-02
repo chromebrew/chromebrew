@@ -3,41 +3,40 @@ require 'package'
 class Gedit < Package
   description 'GNOME Text Editor'
   homepage 'https://wiki.gnome.org/Apps/Gedit'
-  version '40.0'
+  version '40.1'
   license 'GPL-2+ CC-BY-SA-3.0'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gedit/-/archive/#{version}/gedit-#{version}.tar.bz2"
-  source_sha256 'b7ac78774fe2eadd09a9d91d19b2596ebd3388f2d3d1cf3cbac81cba649c399a'
+  source_url 'https://gitlab.gnome.org/GNOME/gedit.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.0_armv7l/gedit-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.0_armv7l/gedit-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.0_i686/gedit-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.0_x86_64/gedit-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.1_armv7l/gedit-40.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.1_armv7l/gedit-40.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.1_i686/gedit-40.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.1_x86_64/gedit-40.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '7f976a406dd8e8137d0aa7217c1d75fbee756a028c8315c386c41dfb4c3b57f6',
-     armv7l: '7f976a406dd8e8137d0aa7217c1d75fbee756a028c8315c386c41dfb4c3b57f6',
-       i686: '4c495f8e7e307103ded815bc217b8bc021e7957a760f0e820a587e59f53d9569',
-     x86_64: 'd908a24c2ba3085980ad3ff0afbdd3c3996bbffb21bc1c538cb3d21364a8acd5'
+    aarch64: 'd00004e8fe0b7f2f9c1884f4f7657b208ac504cf9b19ef033f58559b4683588f',
+     armv7l: 'd00004e8fe0b7f2f9c1884f4f7657b208ac504cf9b19ef033f58559b4683588f',
+       i686: '415aa41a13957b20b7d420df9337e6344ce0668b29a43ae8913000fdbc5b5ed5',
+     x86_64: 'dc1aee9657dfa305d79fd9f4c582515886aeb6254d06794271997385d5f3060d'
   })
 
-  depends_on 'amtk'
-  depends_on 'atk'
-  depends_on 'cairo'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gobject_introspection'
-  depends_on 'gsettings_desktop_schemas'
-  depends_on 'gspell'
-  depends_on 'gtk3'
-  depends_on 'gtksourceview'
-  depends_on 'libpeas'
-  depends_on 'pango'
-  depends_on 'pygobject'
-  depends_on 'tepl_6'
-  depends_on 'gobject_introspection' => :build
+  depends_on 'amtk' # R
+  depends_on 'atk' # R
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' # R
+  depends_on 'gsettings_desktop_schemas' # L
+  depends_on 'gspell' # R
+  depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
+  depends_on 'gtksourceview_4' # R
+  depends_on 'libpeas' # R
+  depends_on 'pango' # R
+  depends_on 'pygobject'
+  depends_on 'tepl_6' # R
   depends_on 'vala' => :build
   depends_on 'yelp_tools' => :build
 
@@ -67,5 +66,9 @@ class Gedit < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end

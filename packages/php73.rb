@@ -3,28 +3,31 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.3.27'
+  @_ver = '7.3.30'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '65f616e2d5b6faacedf62830fa047951b0136d5da34ae59e6744cbaf5dca148d'
+  source_sha256 '0ebfd656df0f3b1ea37ff2887f8f2d1a71cd160fb0292547c0ee0a99e58ffd1b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.27_armv7l/php73-7.3.27-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.27_armv7l/php73-7.3.27-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.27_i686/php73-7.3.27-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.27_x86_64/php73-7.3.27-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_armv7l/php73-7.3.30-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_armv7l/php73-7.3.30-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_i686/php73-7.3.30-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_x86_64/php73-7.3.30-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '7bd308b90ec61c6d1f03bfa97cc5883a9e963fab9d63d9922493d6ca5dceefcc',
-     armv7l: '7bd308b90ec61c6d1f03bfa97cc5883a9e963fab9d63d9922493d6ca5dceefcc',
-       i686: 'd3b0be456454fd98673477769c31b240c8fff997740239d1465d14434fde47ca',
-     x86_64: 'fc2d093bc2ba1ab0169c6d0f644649d952b4cb32286a2aa82331dfa5d5cc05ed'
+    aarch64: '335b04b4491451c9cf99260fb2a20d9d246ce7a98a3821b66de4e93c5759ac51',
+     armv7l: '335b04b4491451c9cf99260fb2a20d9d246ce7a98a3821b66de4e93c5759ac51',
+       i686: '9428c9905b0a8003ce445980bcce73e4cfac7c218b6fce3e7453248ac2dc6597',
+     x86_64: '7fea7d62dc132f26a2e255f85c00fad9059b8d167e22d154b8a930c1f5082d94',
   })
 
+  depends_on 'libcurl'
   depends_on 'libgcrypt'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
+  depends_on 'libxpm'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'exif'
@@ -32,11 +35,13 @@ class Php73 < Package
   depends_on 're2c'
   depends_on 'tidy'
   depends_on 'unixodbc'
-  depends_on 'pygments'
+  depends_on 'py3_pygments'
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    unless ARGV[0] == 'reinstall' and @_ver == phpver
+      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    end
   end
 
   def self.patch
@@ -71,7 +76,10 @@ class Php73 < Package
        --mandir=#{CREW_MAN_PREFIX} \
        --sbindir=#{CREW_PREFIX}/bin \
        --with-config-file-path=#{CREW_PREFIX}/etc \
+       --with-freetype-dir=#{CREW_PREFIX}/include/freetype2/freetype \
        --with-libdir=#{ARCH_LIB} \
+       --with-jpeg-dir=#{CREW_PREFIX}/include \
+       --with-xpm-dir=#{CREW_PREFIX}/include/X11 \
        --with-kerberos=#{CREW_LIB_PREFIX} \
        --enable-exif \
        --enable-fpm \
@@ -103,26 +111,30 @@ class Php73 < Package
   end
 
   def self.check
-    # system 'make', 'test'
+    #system 'make', 'test'
   end
 
   def self.install
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
-    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0644
-    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0755
-    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0644
-    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode: 0644
-    Fileutils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php7-fpm"
+    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0o644
+    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0o755
+    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0o644
+    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode: 0o644
+    FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php7-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
     FileUtils.mv "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
-    FileUtils.rm_rf "#{CREW_DEST_DIR}/.channels"
-    FileUtils.rm_rf "#{CREW_DEST_DIR}/.filemap"
-    FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
-    FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
+    FileUtils.rm_rf ["#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock", "#{CREW_DEST_DIR}/.registry"]
   end
 
   def self.postinstall

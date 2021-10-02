@@ -29,7 +29,7 @@ class Inkscape < Package
   depends_on 'hicolor_icon_theme'
   depends_on 'imagemagick6'
   depends_on 'imagemagick7'
-  depends_on 'llvm'
+  depends_on 'llvm' => :build
   depends_on 'popt'
   depends_on 'xdg_base'
   depends_on 'sommelier'

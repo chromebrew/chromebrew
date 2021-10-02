@@ -3,24 +3,24 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '21.1.1'
+  @_ver = '21.1.2'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
   source_url "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-#{@_ver}.tar.xz"
-  source_sha256 '31f261ce51bbee76a6ca3ec02aa367ffa2b5efa2b98412df57ccefd7a19003ce'
+  source_sha256 'b81cbdd5ad60b8b7ad8c3ecc7ec2a28c9bf021448670735cebb501f08bebd18b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1_armv7l/xwayland-21.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1_armv7l/xwayland-21.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1_i686/xwayland-21.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.1_x86_64/xwayland-21.1.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_i686/xwayland-21.1.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_x86_64/xwayland-21.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd8e3068e17a3870691209f2a72babe5b1e0e777851a39656dda132715227e81a',
-     armv7l: 'd8e3068e17a3870691209f2a72babe5b1e0e777851a39656dda132715227e81a',
-       i686: 'f49397108ca18335ee323d4f71a32d1041eb9747742185b361f1fbe7e9336b90',
-     x86_64: '7c7f7d84957e4ab595458e5add13586bab6c45cb8edde948a9750aa02944f105'
+    aarch64: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
+     armv7l: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
+       i686: '1664e01869eb23851cfa881c187a153ccbd8ff1d35c8b25dea055ad5ce88a225',
+     x86_64: 'e6b2e07ca4df3e09ee16f6a03b951801c8e3784315dc8f2fb829889d18878473'
   })
 
   depends_on 'dbus'
@@ -28,18 +28,23 @@ class Xwayland < Package
   depends_on 'font_util'
   depends_on 'glproto'
   depends_on 'graphite'
-  depends_on 'libbsd'
-  depends_on 'libepoxy'
-  depends_on 'libunwind'
-  depends_on 'libxfont'
+  depends_on 'libbsd' # R
+  depends_on 'libdrm' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libtirpc' => :build
+  depends_on 'libunwind' # Runtime dependency for sommelier
+  depends_on 'libxau' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxfont2' # R
+  depends_on 'libxfont' # R
   depends_on 'libxkbcommon'
-  depends_on 'libxkbfile'
+  depends_on 'libxkbfile' # R
+  depends_on 'libxshmfence' # R
   depends_on 'libxtrans'
-  depends_on 'libxdmcp'
-  depends_on 'xzutils' => :build
-  depends_on 'mesa'
-  depends_on 'pixman'
-  depends_on 'wayland'
+  depends_on 'mesa' # R
+  depends_on 'pixman' # R
+  depends_on 'rendercheck' # R
+  depends_on 'wayland' # R
   depends_on 'xkbcomp'
   depends_on 'xorg_lib'
 

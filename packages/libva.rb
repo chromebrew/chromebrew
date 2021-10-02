@@ -3,24 +3,24 @@ require 'package'
 class Libva < Package
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  @_ver = '2.11.0'
+  @_ver = '2.12.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/intel/libva/archive/refs/tags/#{@_ver}.tar.gz"
-  source_sha256 'ee2bd79bad5e2404143f089360685f5da63a32dd551b54ccd61d2d49c041178a'
+  source_url 'https://github.com/intel/libva.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.11.0_armv7l/libva-2.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.11.0_armv7l/libva-2.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.11.0_i686/libva-2.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.11.0_x86_64/libva-2.11.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_armv7l/libva-2.12.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_armv7l/libva-2.12.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_i686/libva-2.12.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_x86_64/libva-2.12.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4af41d8c10b335f1b00bbfa9c4afcea07bbb0b7d00acd3a18a0c007592302a4a',
-     armv7l: '4af41d8c10b335f1b00bbfa9c4afcea07bbb0b7d00acd3a18a0c007592302a4a',
-       i686: '49938688385785511cca5cdd3d5354a0e1a227538fd7a1dfec4588dbd9af90b5',
-     x86_64: 'fcdd6886cfacef1a4e3e31448bf469f78233993a1376c1c4255314d7355c1eed'
+    aarch64: 'e64a354e9607f5b220a22d33ebe24cf8b933a0cd97bad7efa0376fdd8ef27c52',
+     armv7l: 'e64a354e9607f5b220a22d33ebe24cf8b933a0cd97bad7efa0376fdd8ef27c52',
+       i686: '7949cad8c32e05368d58243cfdc956e40350d570333a517f2c8c891f5ba0895d',
+     x86_64: '7cdc4741dd68458cdff0fff55ef4600af6fcf3b0fc385acc5649eda4bfcea0be'
   })
 
   depends_on 'libdrm'

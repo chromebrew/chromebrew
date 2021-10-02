@@ -23,7 +23,7 @@ class Grive < Package
   })
 
   depends_on 'yajl'
-  depends_on 'curl'
+  depends_on 'libcurl'
   depends_on 'libgcrypt'
   depends_on 'boost'
   depends_on 'expat'

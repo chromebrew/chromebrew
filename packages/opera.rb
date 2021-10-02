@@ -3,17 +3,18 @@ require 'package'
 class Opera < Package
   description "Opera is a multi-platform web browser based on Chromium and developed by Opera Software."
   homepage 'https://www.opera.com/'
-  version '75.0.3969.171'
+  version '79.0.4143.50'
   license 'OPERA-2018'
   compatibility 'x86_64'
-  source_url "https://get.geo.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 '7ce460d2c53dbefb83106d90812f60e36e09165548dcb0907f52b44bd66b8039'
+  source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
+  source_sha256 'd7429be47cd28d8ff6ebf392f19bc20a6349a20b998cd14fbc91affa81ce98c8'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
   depends_on 'harfbuzz'
   depends_on 'graphite'
   depends_on 'cras'
+  depends_on 'libcom_err'
   depends_on 'sommelier'
 
   def self.install
@@ -29,7 +30,7 @@ class Opera < Package
     FileUtils.rm_rf 'lib/'
 
     FileUtils.mkdir_p CREW_DEST_PREFIX
-    FileUtils.mv Dir.glob('*'), CREW_DEST_PREFIX
+    FileUtils.mv Dir['*'], CREW_DEST_PREFIX
   end
 
   def self.postinstall

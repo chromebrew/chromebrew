@@ -3,31 +3,30 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  @_ver = '0.3.26'
+  @_ver = '0.3.29'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url "https://github.com/PipeWire/pipewire/archive/#{@_ver}.tar.gz"
-  source_sha256 '05cc9d25de45290c025da5da1b94fc705bddacd93cf3690d0b2988c1ac501ee1'
+  source_sha256 'b733532d6460fb94d202a8b2104b0a87344e8484e69ccfdf44096dde91c21cf0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_armv7l/pipewire-0.3.26-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_i686/pipewire-0.3.26-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.26_x86_64/pipewire-0.3.26-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_armv7l/pipewire-0.3.29-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_armv7l/pipewire-0.3.29-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_i686/pipewire-0.3.29-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_x86_64/pipewire-0.3.29-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
-     armv7l: 'd539d5a392ed6bd4189610ea5cdc42c87a1ba238dec635883634f9f962a56a4d',
-       i686: '43bc1175d6f75755fc8fb3abe4b9e473d7ccc3593f1c53f504a2eee7b19b84c2',
-     x86_64: '27bdc741fe0b577e3cbfa5ef4f419f23f18cf9a06f04df815249f58dbabe5d28'
+    aarch64: '4dcdc0d5ea6d83011bef5521c495cde21ae518616bde047e52179a3b95b2a56a',
+     armv7l: '4dcdc0d5ea6d83011bef5521c495cde21ae518616bde047e52179a3b95b2a56a',
+       i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510',
+     x86_64: '41c64acd73abcd9aa21fb936bf64371b6f82d36cd2a397b8f14f91de0d4c70df'
   })
 
   depends_on 'alsa_lib' # R
   depends_on 'alsa_plugins' => :build
   depends_on 'dbus' # R
   depends_on 'eudev' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gst_plugins_base' # R

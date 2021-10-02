@@ -6,30 +6,29 @@ require 'package'
 class Grep < Package
   description 'A string search utility'
   homepage 'https://www.gnu.org/software/grep/'
-  version '3.6-2'
+  version '3.7'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/grep/grep-3.6.tar.xz'
-  source_sha256 '667e15e8afe189e93f9f21a7cd3a7b3f776202f417330b248c2ad4f997d9373e'
+  source_url 'https://ftpmirror.gnu.org/grep/grep-3.7.tar.xz'
+  source_sha256 '5c10da312460aec721984d5d83246d24520ec438dd48d7ab5a05dbc0d6d6823c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.6-2_armv7l/grep-3.6-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.6-2_armv7l/grep-3.6-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.6-2_i686/grep-3.6-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.6-2_x86_64/grep-3.6-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.7_armv7l/grep-3.7-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.7_armv7l/grep-3.7-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.7_i686/grep-3.7-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.7_x86_64/grep-3.7-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '668f794614cab844c7e29d4970ea5c1ab0ff15d822dff5c806efd769d81d9097',
-     armv7l: '668f794614cab844c7e29d4970ea5c1ab0ff15d822dff5c806efd769d81d9097',
-       i686: '25070365f43b5204c58e1830fbf3651a3163013d0c034f27c22bb086d6210032',
-     x86_64: 'e232de82d2e313efe7e14f10620471ed25f54ccfb5eeffebde8defead9c20acf'
+    aarch64: '86fca9359de8d9ccf234f43091a7518ca00fa6668f26fb9ce1cf1bbae3f50026',
+     armv7l: '86fca9359de8d9ccf234f43091a7518ca00fa6668f26fb9ce1cf1bbae3f50026',
+       i686: '1c9a1c6d8dbb4881f72342f6c1d96b2b55f9054b5f57372e61cdd7f4cd99c4b0',
+     x86_64: '958e21200e2be34683b3a31b8cadd9a3a37afaeb9bf0ab932befb50cf654fded'
   })
 
   depends_on 'pcre'
 
   def self.build
-    system "env CFLAGS='-flto' CXXFLAGS='-flto' \
-      LDFLAGS='-flto -Wl,-z,defs -Wl,--no-as-needed -ldl -Wl,--as-needed' \
+    system "#{CREW_ENV_OPTIONS} \
       CPPFLAGS=-DHAVE_DYNAMIC_LIBPCRE \
       ./configure #{CREW_OPTIONS} \
       --without-included-regex"

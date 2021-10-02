@@ -30,7 +30,7 @@ class R < Package
   depends_on 'libtiff'
   depends_on 'xzutils'
   depends_on 'bz2'
-  depends_on 'curl'
+  depends_on 'libcurl'
   depends_on 'tk'
   depends_on 'xdg_utils'
   depends_on 'sommelier'

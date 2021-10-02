@@ -3,29 +3,27 @@ require 'package'
 class Webkit2gtk_5 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  @_ver = '2.32.0'
+  @_ver = '2.32.1'
   version @_ver
   license 'LGPL-2+ and BSD-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{@_ver}.tar.xz"
-  source_sha256 '9d7df4dae9ada2394257565acc2a68ace9308c4c61c3fcc00111dc1f11076bf0'
+  source_sha256 '136117317f70f66486f71b8edf5e46f8776403c5d8a296e914b11a36ef836917'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_armv7l/webkit2gtk_5-2.32.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_armv7l/webkit2gtk_5-2.32.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_i686/webkit2gtk_5-2.32.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.0_x86_64/webkit2gtk_5-2.32.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_armv7l/webkit2gtk_5-2.32.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_armv7l/webkit2gtk_5-2.32.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_x86_64/webkit2gtk_5-2.32.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0d49b1141892ec63b2b43c682aa4feb3c5b64dc04bfea08ec9f9c0d2c6fb583d',
-     armv7l: '0d49b1141892ec63b2b43c682aa4feb3c5b64dc04bfea08ec9f9c0d2c6fb583d',
-       i686: 'f1481e0a9cdf9df4308320777971dc6c168344aa9488169caad6c4c6549c56d4',
-     x86_64: '11d1d701c17bdf1f7de0e4d0df094dd6342195134cf153b22b125ec1dfd58ead'
+    aarch64: '706890a948d02cb2db17d3f1ef0718710c88ba8900a6bc31cb6905498aa85189',
+     armv7l: '706890a948d02cb2db17d3f1ef0718710c88ba8900a6bc31cb6905498aa85189',
+     x86_64: '5dfa210eecb769b0b301474ee2bd819f68eda3fa27e1e372a0cb046718675a90'
   })
 
   depends_on 'atk'
   depends_on 'cairo'
-  depends_on 'ccache' => :build
+  depends_on 'dav1d'
   depends_on 'enchant'
   depends_on 'fontconfig'
   depends_on 'freetype'
@@ -56,6 +54,7 @@ class Webkit2gtk_5 < Package
   depends_on 'mesa'
   depends_on 'openjpeg'
   depends_on 'pango'
+  depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland'
   depends_on 'woff2'
@@ -69,10 +68,10 @@ class Webkit2gtk_5 < Package
       # system "env #{CREW_ENV_OPTIONS} \
       # Bubblewrap sandbox breaks on epiphany with
       # bwrap: Can't make symlink at /var/run: File exists
+      # ccache currently breaks gcc builds of webkit-gtk
       system "cmake \
         -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+        #{CREW_CMAKE_FNO_LTO_OPTIONS} \
         -DCMAKE_SKIP_RPATH=ON \
         -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
         -DENABLE_GAMEPAD=OFF \
@@ -87,6 +86,8 @@ class Webkit2gtk_5 < Package
         -DUSE_GTK4=ON \
         -DUSE_SOUP2=OFF \
         -DUSE_SYSTEMD=OFF \
+        -DUSE_AVIF=ON \
+        -DPYTHON_EXECUTABLE=`which python` \
         .."
     end
     system 'ninja -C builddir5'

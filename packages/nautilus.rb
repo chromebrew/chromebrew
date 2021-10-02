@@ -6,47 +6,47 @@ require 'package'
 class Nautilus < Package
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
-  @_ver = '40.0'
-  version "#{@_ver}-1"
+  @_ver = '40.2'
+  version @_ver
   license 'GPLv3'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/nautilus/-/archive/#{@_ver}/nautilus-#{@_ver}.tar.bz2"
-  source_sha256 '9bcb93c5ce56dbe1cd2b2d0808c21a5e37cc1d098ee037b7da75c0a4a59e84e7'
+  source_url 'https://gitlab.gnome.org/GNOME/nautilus.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.0-1_armv7l/nautilus-40.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.0-1_armv7l/nautilus-40.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.0-1_i686/nautilus-40.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.0-1_x86_64/nautilus-40.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_armv7l/nautilus-40.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_armv7l/nautilus-40.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_i686/nautilus-40.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/40.2_x86_64/nautilus-40.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '98663fed405335be9b9e297f641bd7e14edc631f43702e17a6477ba5b43368b3',
-     armv7l: '98663fed405335be9b9e297f641bd7e14edc631f43702e17a6477ba5b43368b3',
-       i686: '41b42d30a12e0e6597d994e8d159828ba68861b8336e46f2288451de08dc2948',
-     x86_64: 'b3412b0b281875a9cd1a9433e25e345246351f9a2eedc2e91e55f4cb4259a40c'
+    aarch64: '8417f762f5857edc7fe0dcfc64fac7a488ec6668f4ed19cf7a4f09b4c7821bbf',
+     armv7l: '8417f762f5857edc7fe0dcfc64fac7a488ec6668f4ed19cf7a4f09b4c7821bbf',
+       i686: '3bc83cc9f2b407584434365c9ac8f95a1b0b691d6cb6f44bc4fadda5a1283ce2',
+     x86_64: 'ddd67ddee30dab06fd42c6b74bbf50a6cee0ab43071a363f283ff4d66b848ba0'
   })
 
   depends_on 'appstream_glib' => :build
-  depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'atk' # R
+  depends_on 'cairo' # R
   depends_on 'dconf'
-  depends_on 'gdk_pixbuf'
-  depends_on 'gexiv2'
-  depends_on 'glib'
-  depends_on 'gnome_autoar'
-  depends_on 'gnome_desktop'
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'gexiv2' # R
+  depends_on 'glib' # R
+  depends_on 'gnome_autoar' # R
+  depends_on 'gnome_desktop' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'gst_plugins_base'
-  depends_on 'gstreamer'
-  depends_on 'gtk3'
+  depends_on 'gst_plugins_base' # R
+  depends_on 'gstreamer' # R
+  depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
   depends_on 'gvfs'
-  depends_on 'libhandy'
+  depends_on 'libhandy' # R
   depends_on 'libjpeg'
-  depends_on 'libportal'
-  depends_on 'pango'
-  depends_on 'tracker3'
+  depends_on 'libportal' # R
+  depends_on 'pango' # R
   depends_on 'tracker3_miners'
+  depends_on 'tracker3' # R
 
   def self.patch
     # Source has libgnome-volume-control repo as submodule

@@ -22,13 +22,13 @@ class Ldc < Package                 # The first character of the class name must
      x86_64: '6730100e809fc14d8b42f6d39fce4699917d24b971438eceb819e9c9264fbeaa',
   })
 
-  depends_on 'llvm'
-  depends_on 'curl'
+  depends_on 'libcurl'
   depends_on 'ncurses'
   depends_on 'zlibpkg'
   depends_on 'libconfig' => :build
   depends_on 'cmake' => :build
   depends_on 'libedit' => :build
+  depends_on 'llvm' => :build
 
   def self.build                   # the steps required to build the package
     system "mkdir", "build"

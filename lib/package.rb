@@ -41,7 +41,11 @@ class Package
     if !@build_from_source and @binary_url and @binary_url.has_key?(architecture)
       return @binary_url[architecture]
     else
-      return @source_url
+      if @source_url.respond_to?(:has_key?)
+        return @source_url.has_key?(architecture) ? @source_url[architecture] : nil
+      else
+        return @source_url
+      end
     end
   end
 
@@ -49,11 +53,19 @@ class Package
     return @binary_url.has_key?(architecture) ? @binary_url[architecture] : nil
   end
 
+  def self.get_source_url (architecture)
+    return @source_url.has_key?(architecture) ? @source_url[architecture] : nil
+  end
+
   def self.get_sha256 (architecture)
     if !@build_from_source and @binary_sha256 and @binary_sha256.has_key?(architecture)
       return @binary_sha256[architecture]
     else
-      return @source_sha256
+      if @source_sha256.respond_to?(:has_key?)
+        return @source_sha256.has_key?(architecture) ? @source_sha256[architecture] : nil
+      else
+        return @source_sha256
+      end
     end
   end
 
@@ -85,7 +97,7 @@ class Package
     @is_fake
   end
 
-  # Function to perform pre-flight operations prior to dependency checks.
+  # Function for checks to see if install should occur.
   def self.preflight
 
   end

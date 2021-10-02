@@ -3,34 +3,32 @@ require 'package'
 class Libidn2 < Package
   description 'GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications.'
   homepage 'https://www.gnu.org/software/libidn/'
-  version '2.3.0'
+  @_ver = '2.3.2'
+  version @_ver
   license 'GPL-2+ and LGPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libidn/libidn2-2.3.0.tar.gz'
-  source_sha256 'e1cb1db3d2e249a6a3eb6f0946777c2e892d5c5dc7bd91c74394fc3a01cab8b5'
+  source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{@_ver}.tar.gz"
+  source_sha256 '76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_armv7l/libidn2-2.3.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_armv7l/libidn2-2.3.0-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_i686/libidn2-2.3.0-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.0_x86_64/libidn2-2.3.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_armv7l/libidn2-2.3.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_armv7l/libidn2-2.3.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_i686/libidn2-2.3.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_x86_64/libidn2-2.3.2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: '7614e912f8122d6a2a3b779f4c16f0e74029dd1213ea9d38ed7b6ee6d19f3de6',
-      armv7l: '7614e912f8122d6a2a3b779f4c16f0e74029dd1213ea9d38ed7b6ee6d19f3de6',
-        i686: 'eed21b95d8c8d236acfc87e40cf6aa605a6ceb6894b2c0f331e8955e2897a617',
-      x86_64: '06c9f3803f02ce792550a39a1de3253b74ca6622b2543f843727f31dc4aa0f46',
+  binary_sha256({
+    aarch64: '6c335d7c611cc1d054c22d2b658aaa060a7bfd682528bac46dc404ffff14c818',
+     armv7l: '6c335d7c611cc1d054c22d2b658aaa060a7bfd682528bac46dc404ffff14c818',
+       i686: '7ce581270eeba81b5f3ec0d7f0e7826b95248a54e960608cc72777beb9f31098',
+     x86_64: '740ae2266e95b4d1974b80165967ec15efd0a7810a649fd7408bdb2964f06de7'
   })
 
   def self.build
-    system 'autoreconf -i -f'
-    system "sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' configure"
-    system "./configure #{CREW_OPTIONS} \
-           --enable-shared"
+    system "env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

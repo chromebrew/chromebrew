@@ -2,24 +2,22 @@ require 'package'
 
 class Evolution_data_server < Package
   description 'Centralized access to appointments and contacts'
-  @_ver = '3.39.3'
+  @_ver = '3.40.3'
   version @_ver
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
-  compatibility 'all'
-  source_url "https://github.com/GNOME/evolution-data-server/archive/#{@_ver}.tar.gz"
-  source_sha256 'd789b6dc403d35902b3b6cdcebff31880d2773b1829fbdc561c59a71453eaab9'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_armv7l/evolution_data_server-3.39.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_armv7l/evolution_data_server-3.39.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_i686/evolution_data_server-3.39.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.39.3_x86_64/evolution_data_server-3.39.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.40.3_armv7l/evolution_data_server-3.40.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.40.3_armv7l/evolution_data_server-3.40.3-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.40.3_x86_64/evolution_data_server-3.40.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'cf89c1f0ee6aaec68cee3dc6d5e9261a715b1e074ea1613f474976f9e8db376e',
-     armv7l: 'cf89c1f0ee6aaec68cee3dc6d5e9261a715b1e074ea1613f474976f9e8db376e',
-       i686: 'afe9ca339c2f242a40754f9a382a7ea07c616bdb50a30d65a4cade0ef641d8f4',
-     x86_64: 'cb36117f9ffaf564b84c0ec60c15c4c08a9e7d07584daa54dc859b5d281a8f17'
+    aarch64: '8ade9630fc18351495084f5e0ae3ad98fbbcd3e50f937d795d8dc2a1c4c36158',
+     armv7l: '8ade9630fc18351495084f5e0ae3ad98fbbcd3e50f937d795d8dc2a1c4c36158',
+     x86_64: '9620cad89b0ed797c84b4d7b85b977883678669963c724a679a09c681ef3934f'
   })
 
   depends_on 'nss'
@@ -34,9 +32,7 @@ class Evolution_data_server < Package
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-      CFLAGS='-pipe -flto=auto -I#{CREW_PREFIX}/include/gnu-libiconv' CXXFLAGS='-pipe -flto=auto -I#{CREW_PREFIX}/include/gnu-libiconv' \
-      LDFLAGS='-flto=auto -L#{CREW_LIB_PREFIX}' \
+      system "LIBRARY_PATH=#{CREW_LIB_PREFIX} \
       cmake #{CREW_CMAKE_LIBSUFFIX_OPTIONS} .. -G Ninja \
       -DCMAKE_VERBOSE_MAKEFILE=ON \
       -DENABLE_CANBERRA=OFF \
@@ -50,6 +46,7 @@ class Evolution_data_server < Package
       -DENABLE_WEATHER=OFF \
       -DWITH_NSPR_INCLUDES=#{CREW_PREFIX}/include/nspr \
       -DWITH_NSS_INCLUDES=#{CREW_PREFIX}/include/nss \
+      -DWITH_OPENLDAP=OFF \
       -DWITH_PHONENUMBER=OFF"
     end
     system 'ninja -C builddir'

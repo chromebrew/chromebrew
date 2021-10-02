@@ -3,23 +3,23 @@ require 'package'
 class Gtk2 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://www.gtk.org/'
-  version '2.24.33-1'
+  version '2.24.33-2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz'
   source_sha256 'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_armv7l/gtk2-2.24.33-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_i686/gtk2-2.24.33-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-1_x86_64/gtk2-2.24.33-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_armv7l/gtk2-2.24.33-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_armv7l/gtk2-2.24.33-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_i686/gtk2-2.24.33-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_x86_64/gtk2-2.24.33-2-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '973cb7478861aa2821870c07e1ab3570b3d66afd51b3b065e1fd7598d4a666a2',
-     armv7l: '973cb7478861aa2821870c07e1ab3570b3d66afd51b3b065e1fd7598d4a666a2',
-       i686: '425d69586e1f990a1ef2eac1ecbafee226183bc2266a65a7df5fc6eb3e14b803',
-     x86_64: '0e39307d3bb40f03a24d676404a8d5359f61a6d4b1219ab0aa4fb35be0b5806a'
+    aarch64: '3e4c4c44a9713a5e37770718e7951062ea9b986bb1a9a99d45f4fd79a9fdf747',
+     armv7l: '3e4c4c44a9713a5e37770718e7951062ea9b986bb1a9a99d45f4fd79a9fdf747',
+       i686: 'aaa52bb7041e4d459314b8a27d1564a9aac73a6464c055ce78a6860bc169de0a',
+     x86_64: 'c2696e86d1b93611ff3f0d6c5931cdb2666afb0f90324a25214db3e6c2a51df3',
   })
 
   depends_on 'atk'
@@ -43,17 +43,32 @@ class Gtk2 < Package
   depends_on 'libxrender'
   depends_on 'pango'
   depends_on 'shared_mime_info'
-  depends_on 'six' => :build
+  depends_on 'py3_six' => :build
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto' \
+    system "#{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} --with-gdktarget=x11"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
+      FileUtils.mv 'gtk-update-icon-cache', 'gtk2-update-icon-cache'
+    end
+  end
+
+  def self.postinstall
+    unless File.exists? "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
+      Dir.chdir "#{CREW_PREFIX}/bin" do
+        FileUtils.ln_s 'gtk2-update-icon-cache', 'gtk-update-icon-cache'
+      end
+    end
+  end
+
+  def self.remove
+    if File.symlink? "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
+      FileUtils.rm "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
+    end
   end
 end

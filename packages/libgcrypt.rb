@@ -3,34 +3,42 @@ require 'package'
 class Libgcrypt < Package
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.8.6'
+  version '1.9.3'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.6.tar.bz2'
-  source_sha256 '0cba2700617b99fc33864a0c16b1fa7fdf9781d9ed3509f5d767178e5fd7b975'
+  source_url 'https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.9.3.tar.bz2'
+  source_sha256 '97ebe4f94e2f7e35b752194ce15a0f3c66324e0ff6af26659bbfb5ff2ec328fd'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_armv7l/libgcrypt-1.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_armv7l/libgcrypt-1.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_i686/libgcrypt-1.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.8.6_x86_64/libgcrypt-1.8.6-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_armv7l/libgcrypt-1.9.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_armv7l/libgcrypt-1.9.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_i686/libgcrypt-1.9.3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_x86_64/libgcrypt-1.9.3-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: '1536f3b492773f7145d3f68893e4a4b0f0b6f3c64ac1141d563c243146836988',
-     armv7l: '1536f3b492773f7145d3f68893e4a4b0f0b6f3c64ac1141d563c243146836988',
-       i686: 'd569a14b5ecf2b62895a121e7cd271af4d103375a1f086359d7b5ba7b5dff930',
-     x86_64: '50794006ecb92d0e54be1a27a56f0e11be173dee3d98623b46f737541104b1a1',
+  binary_sha256({
+    aarch64: '1e2b42394624c35f94278ee7f9c70aa544c7c40dedd49b396e3e2a72d2e6e6bc',
+     armv7l: '1e2b42394624c35f94278ee7f9c70aa544c7c40dedd49b396e3e2a72d2e6e6bc',
+       i686: 'c072efaef5595c6f3ef7c57ce9573a8c9d79f2e7fa937425f4bb3a4098e12cd5',
+     x86_64: '3945f3464bd06d41db1be4ad4f59242490bfa897856c9e395f25b5d9f1f1bc75'
   })
 
   depends_on 'libgpgerror'
 
+  def self.patch
+    system 'filefix'
+  end
+
   def self.build
     case ARCH
     when 'aarch64'
-      ENV['gcry_cv_gcc_arm_platform_as_ok'] = 'no'
-      system "./configure #{CREW_OPTIONS} --disable-asm"
+      system "gcry_cv_gcc_arm_platform_as_ok=no ./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} \
+      --enable-static \
+      --enable-shared \
+      --disable-asm"
     else
-      system "./configure #{CREW_OPTIONS}"
+      system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} \
+        --enable-static \
+        --enable-shared"
     end
     system 'make'
   end

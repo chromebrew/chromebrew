@@ -3,23 +3,23 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.0.1-1'
+  version '3.0.2'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.1.tar.gz'
-  source_sha256 '369825db2199f6aeef16b408df6a04ebaddb664fb9af0ec8c686b0ce7ab77727'
+  source_url 'https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.gz'
+  source_sha256 '5085dee0ad9f06996a8acec7ebea4a8735e6fac22f22e2d98c3f2bc3bef7e6f1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.1-1_armv7l/ruby-3.0.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.1-1_armv7l/ruby-3.0.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.1-1_i686/ruby-3.0.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.1-1_x86_64/ruby-3.0.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_armv7l/ruby-3.0.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_armv7l/ruby-3.0.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_i686/ruby-3.0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.0.2_x86_64/ruby-3.0.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '03f443d63cca0fb640ec4d11f3b1306a9719e775f8c706c732f9231e41e66afd',
-     armv7l: '03f443d63cca0fb640ec4d11f3b1306a9719e775f8c706c732f9231e41e66afd',
-       i686: 'dc388589df39c39e9c494e761ae2ca950a9b4f0573aa0d96508959787c050dcd',
-     x86_64: '4f86c98eaae1e708bf66f1c939a5cd07d5764b9b64ca827e6f7d5f61021bcb7e'
+    aarch64: 'ad593ad2768a370594cc8353127f8754b67855a8f89606ed02c5517d3c6c0d8c',
+     armv7l: 'ad593ad2768a370594cc8353127f8754b67855a8f89606ed02c5517d3c6c0d8c',
+       i686: 'e484cc77a18a0e85ae7e30d0ad3c9fe11da044ddffd3ebbcc30a3468ceb850ff',
+     x86_64: 'a6f630ab4a14e584fcabb2c66c3005d0db01d856f25bb6ced527b7e93d9e0762'
   })
 
   depends_on 'ca_certificates'

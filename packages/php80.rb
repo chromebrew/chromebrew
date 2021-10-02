@@ -3,30 +3,33 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.3'
+  @_ver = '8.0.10'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'c9816aa9745a9695672951eaff3a35ca5eddcb9cacf87a4f04b9fb1169010251'
+  source_sha256 '66dc4d1bc86d9c1bc255b51b79d337ed1a7a035cf71230daabbf9a4ca35795eb'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_armv7l/php80-8.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_armv7l/php80-8.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_i686/php80-8.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.3_x86_64/php80-8.0.3-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_armv7l/php80-8.0.10-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_armv7l/php80-8.0.10-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_i686/php80-8.0.10-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.10_x86_64/php80-8.0.10-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '476ce8403fffce634600922e811cd71bedce3d8a8fdff5041450b1f73f3e9ab0',
-     armv7l: '476ce8403fffce634600922e811cd71bedce3d8a8fdff5041450b1f73f3e9ab0',
-       i686: '16818b4073cc89b69378a02716d04305697e134b0da9883ccdf9aab4559586ea',
-     x86_64: 'bab671116f916ab2eb6c7423d8c313e28632a01ca6be8fcac29699f13b01cc8c',
+    aarch64: 'a65f8b92cd92058e35ec91351b634d357f8bd3e4ef992b7caeb4dc7f08cc7696',
+     armv7l: 'a65f8b92cd92058e35ec91351b634d357f8bd3e4ef992b7caeb4dc7f08cc7696',
+       i686: '04f25063f542961edbab7e572ea918b1dc9f9573c88525343e533a3708f69249',
+     x86_64: 'd80d9799c9e0824f3f79c29f4eebc4d6f8bb25c39591f2471a826be62516727c',
   })
 
   depends_on 'aspell_en'
+  depends_on 'libcurl'
   depends_on 'libgcrypt'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
+  depends_on 'libpng'
   depends_on 'libsodium'
+  depends_on 'libxpm'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'exif'
@@ -37,11 +40,13 @@ class Php80 < Package
   depends_on 'tidy'
   depends_on 'unixodbc'
   depends_on 'oniguruma'
-  depends_on 'pygments'
+  depends_on 'py3_pygments'
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    unless ARGV[0] == 'reinstall' and @_ver == phpver
+      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    end
   end
 
   def self.patch
@@ -72,15 +77,18 @@ class Php80 < Package
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
        --libdir=#{CREW_LIB_PREFIX} \
-       --localstatedir=#{CREW_PREFIX}/tmp \
+       --localstatedir=#{CREW_PREFIX}/var \
        --mandir=#{CREW_MAN_PREFIX} \
        --sbindir=#{CREW_PREFIX}/bin \
        --with-config-file-path=#{CREW_PREFIX}/etc \
        --with-libdir=#{ARCH_LIB} \
        --with-kerberos=#{CREW_LIB_PREFIX} \
+       --with-pear=#{CREW_LIB_PREFIX}/php \
+       --with-zlib-dir=#{CREW_LIB_PREFIX} \
        --enable-exif \
        --enable-fpm \
        --enable-ftp \
+       --enable-gd \
        --enable-mbstring \
        --enable-opcache \
        --enable-pcntl \
@@ -103,7 +111,6 @@ class Php80 < Package
        --with-mysqli \
        --with-openssl \
        --with-pdo-mysql \
-       --with-pear \
        --with-readline \
        --with-tidy \
        --with-unixODBC \
@@ -127,7 +134,12 @@ class Php80 < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
@@ -139,6 +151,7 @@ class Php80 < Package
     FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php8-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
+    FileUtils.mv "#{CREW_DEST_PREFIX}/php/php/fpm", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.channels"

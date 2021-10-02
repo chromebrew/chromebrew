@@ -1,7 +1,7 @@
 require 'package'
 
 class Gtkmm4 < Package
-  description 'The Gtkmm3 package provides a C++ interface to GTK+ 3.'
+  description 'The Gtkmm4 package provides a C++ interface to GTK+ 4.'
   homepage 'https://www.gtkmm.org/'
   version '4.0.1'
   license 'LGPL-2.1+'
@@ -18,7 +18,7 @@ class Gtkmm4 < Package
   binary_sha256({
     aarch64: '1d2640f81201631586b082735b8ad82a229ff9502233acc4ed628ba88dd46278',
      armv7l: '1d2640f81201631586b082735b8ad82a229ff9502233acc4ed628ba88dd46278',
-       i686: '2672ac3748735b14decae069d71fc25e2e19b298638e422c11c6424a5763bec0',
+       i686: '1be63d921a1b6013e1a36ef9be69d904ed7b6234c75dc24880598d290681914c',
      x86_64: 'd6b5659e5e00d16442c9368db8c7baf610fb62f43111ed6f6cd93dfb0417fbf1'
   })
 

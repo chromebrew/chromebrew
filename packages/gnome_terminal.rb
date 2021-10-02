@@ -3,24 +3,22 @@ require 'package'
 class Gnome_terminal < Package
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
-  @_ver = '3.41.0-3b79'
+  @_ver = '3.41.0'
   version @_ver
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3b79354a357970147ae276a02ca2222db98a0d28/gnome-terminal-3b79354a357970147ae276a02ca2222db98a0d28.tar.bz2'
-  source_sha256 'ad56dc0f1c6d75ed9ef6a1238e963141d7ba609ad3bffb376bfe43a37f0d308e'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal.git'
+  git_hashtag '3.41.0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_armv7l/gnome_terminal-3.41.0-3b79-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_i686/gnome_terminal-3.41.0-3b79-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0-3b79_x86_64/gnome_terminal-3.41.0-3b79-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_armv7l/gnome_terminal-3.41.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_armv7l/gnome_terminal-3.41.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.41.0_x86_64/gnome_terminal-3.41.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '127a7ebff88b54baca1e813e7a46b3b649e99e4c8395e47320ef9e534931d73a',
-     armv7l: '127a7ebff88b54baca1e813e7a46b3b649e99e4c8395e47320ef9e534931d73a',
-       i686: '8312ce51a47c2ced1d38700c18ade1ab65f471f989ac0d5336065865059e906a',
-     x86_64: '7439c90a81a8ee6951021254a7d5ce1540b1aea95779fdcbf55ca507dbbd6cb6'
+    aarch64: 'a645989d30509d01be54ef794bf8c4f105cef48965c2beb0d05eded71faae724',
+     armv7l: 'a645989d30509d01be54ef794bf8c4f105cef48965c2beb0d05eded71faae724',
+     x86_64: 'ed42ef2ce74e24a414e978891802fc06cc8cc3c0bb4b9c9dfcd3e71b86b1c0ad'
   })
 
   depends_on 'gtk3'
@@ -28,16 +26,18 @@ class Gnome_terminal < Package
   depends_on 'dconf'
   depends_on 'desktop_file_utilities'
   depends_on 'gsettings_desktop_schemas'
+  depends_on 'adobe_source_code_pro_fonts' # (Needed for monospace fonts)
   depends_on 'yelp_tools'
   depends_on 'gtk_doc'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \
+    -Ddocs=false \
     -Dsearch_provider=false \
     -Dnautilus_extension=false \
-    -Dc_args='-flto -fno-stack-protector -U_FORTIFY_SOURCE -fuse-ld=gold -pipe' \
-    -Dcpp_args='-flto -fno-stack-protector -U_FORTIFY_SOURCE -fuse-ld=gold -pipe' \
+    -Dlocalstatedir=#{CREW_PREFIX}/var/local \
+    -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
@@ -45,5 +45,9 @@ class Gnome_terminal < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end

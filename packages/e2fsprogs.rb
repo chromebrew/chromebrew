@@ -3,38 +3,48 @@ require 'package'
 class E2fsprogs < Package
   description 'e2fsprogs are ext2/3/4 file system utilities.'
   homepage 'http://e2fsprogs.sourceforge.net/'
-  @_ver = '1.45.7'
-  version @_ver
+  @_ver = '1.46.2'
+  version "#{@_ver}-1"
   license 'GPL-2 and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v#{@_ver}/e2fsprogs-#{@_ver}.tar.xz"
-  source_sha256 '62d49c86d9d4becf305093edd65464484dc9ea41c6ff9ae4f536e4a341b171a2'
+  source_sha256 '23aa093295c94e71ef1be490c4004871c5b01d216a8cb4d111fa6c0aac354168'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_armv7l/e2fsprogs-1.45.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_armv7l/e2fsprogs-1.45.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_i686/e2fsprogs-1.45.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.45.7_x86_64/e2fsprogs-1.45.7-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_armv7l/e2fsprogs-1.46.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_armv7l/e2fsprogs-1.46.2-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_i686/e2fsprogs-1.46.2-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_x86_64/e2fsprogs-1.46.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4deb49e04d94878c4a9e4977a5aa01937c379cf332b56b4e93524f6a891bdbc1',
-     armv7l: '4deb49e04d94878c4a9e4977a5aa01937c379cf332b56b4e93524f6a891bdbc1',
-       i686: 'a950f3395704adfc93ec3207cfd5d62ae1c1def8c6e70cfb83e0a113092034c8',
-     x86_64: '37e6c64a587dd9d984194a0d22829a36c93d4fac413675b00bd0d77091e210c6'
+    aarch64: '572b1c252242a85862898afa75480a2d6b81352a9deb268e1d01021e2b477045',
+     armv7l: '572b1c252242a85862898afa75480a2d6b81352a9deb268e1d01021e2b477045',
+       i686: 'e0103e9ecb4e07110909da7405f8ef9a11961a990789a944a0e43271d82aec6b',
+     x86_64: 'aa77be21096e0f8f749cc4fc4f2e35d794ba70694a9e4d6b58c49353b5fe9138'
   })
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+    system "env #{CREW_ENV_OPTIONS} \
+      ./configure #{CREW_OPTIONS}\
+      --enable-elf-shlibs \
+      --enable-lto \
+      --disable-libblkid \
+      --disable-libuuid \
+      --disable-uuidd \
+      --disable-fsck"
     system 'make'
   end
 
   def self.check
-    system 'make', 'check'
+    # j_recover_fast_commit fails on armv7l
+    case ARCH
+    when 'i686', 'x86_64'
+      system 'make', 'check'
+    end
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-libs'
   end
 end

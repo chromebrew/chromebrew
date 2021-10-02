@@ -1,51 +1,79 @@
+# Adapted from Arch Linux gdb PKGBUILD at:
+# https://github.com/archlinux/svntogit-packages/raw/packages/gdb/trunk/PKGBUILD
+
 require 'package'
 
 class Gdb < Package
-  description 'GDB, the GNU Project debugger, allows you to see what is going on \'inside\' another program while it executes -- or what another program was doing at the moment it crashed.'
+  description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '8.3'
-  license 'GPL-2 and LGPL-2'
+  version '11.1'
+  license 'GPL3'
   compatibility 'all'
-  source_url 'http://ftpmirror.gnu.org/gdb/gdb-8.3.tar.xz'
-  source_sha256 '802f7ee309dcc547d65a68d61ebd6526762d26c3051f52caebe2189ac1ffd72e'
+  source_url 'https://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz'
+  source_sha256 'cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/8.3_armv7l/gdb-8.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/8.3_armv7l/gdb-8.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/8.3_i686/gdb-8.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/8.3_x86_64/gdb-8.3-chromeos-x86_64.tar.xz',
+  binary_url({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_i686/gdb-11.1-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_armv7l/gdb-11.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_armv7l/gdb-11.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_x86_64/gdb-11.1-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'cb31458449dbe3901b104a0e0629e9ef0cd219ea2783db736360d0176c321ca9',
-     armv7l: 'cb31458449dbe3901b104a0e0629e9ef0cd219ea2783db736360d0176c321ca9',
-       i686: '84bd95e06d5515647135ab5ce1f1c6a2956d5df8f324837dc26705fc28bcd07c',
-     x86_64: 'afb397d5022e72ea19e7d87fff5167b798f5063f59b1174dd56337837fdc7dea',
+  binary_sha256({
+       i686: '5ed42d4d144048f46d888079719431d5031f39f60f392dd690d72fe52233e19f',
+    aarch64: 'd790322bdc75abf93546a0845c55562e9ef358edd5f80883c4847b630bda6c27',
+     armv7l: 'd790322bdc75abf93546a0845c55562e9ef358edd5f80883c4847b630bda6c27',
+     x86_64: 'f3d0bb232d38629b0c25e12d29a5098a7d6fb01abcc65e914401b313b5d0bd68'
   })
 
-  depends_on 'libx11'
-  depends_on 'six'
+  depends_on 'mpfr' # R
+  depends_on 'gmp' # R
+  depends_on 'source_highlight' # R
+  depends_on 'boost' # R
 
   def self.build
-    system './configure',
-           '--with-x',
-           '--with-lzma',
-           '--enable-sim',
-           '--with-expat',
-           '--enable-tui',
-           '--with-python',
-           '--with-curses',
-           '--enable-shared',
-           '--with-system-zlib',
-           '--enable-64-bit-bfd',
-           '--enable-host-shared',
-           '--with-system-readline',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-pkgversion=Chromebrew'
-    system "make"
+    FileUtils.mkdir_p 'build'
+    Dir.chdir('build') do
+      system "env #{CREW_ENV_OPTIONS} \
+        CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw  -lncursesw' \
+        ../configure \
+        #{CREW_OPTIONS} \
+        --disable-nls \
+        --enable-64-bit-bfd \
+        --enable-host-shared \
+        --enable-lto \
+        --enable-shared \
+        --enable-sim \
+        --enable-source-highlight \
+        --enable-tui \
+        --with-curses \
+        --with-lzma \
+        --with-pkgversion=Chromebrew \
+        --with-python=python3 \
+        --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
+        --with-system-readline \
+        --with-system-zlib \
+        --with-x"
+      system 'make'
+    end
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    Dir.chdir('build') do
+      system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
+    end
+    # Remove files conflicting with binutils
+    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/bfd.info" if File.exist?("#{CREW_DEST_PREFIX}/share/info/bfd.info")
+    conflict_packages = %w[binutils]
+    conflict_packages.each do |package|
+      file = File.open("#{CREW_META_PATH}#{package}.filelist").read
+      file.each_line do |line|
+        if File.exist?("#{CREW_DEST_DIR}#{line}")
+          FileUtils.rm_f "#{CREW_DEST_DIR}#{line}"
+          puts "Removed #{CREW_DEST_DIR}#{line}"
+        end
+      end
+    end
+    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so" if File.exist?("#{CREW_DEST_LIB_PREFIX}/libinproctrace.so")
   end
 end

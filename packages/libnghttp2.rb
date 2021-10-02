@@ -3,40 +3,46 @@ require 'package'
 class Libnghttp2 < Package
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
-  version '1.43.0'
+  @_ver = '1.45.1'
+  version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/nghttp2/nghttp2/releases/download/v#{version}/nghttp2-#{version}.tar.bz2"
-  source_sha256 '556f24653397c71ebb8270b3c5e5507f0893e6eac2c6eeda6be2ecf6e1f50f62'
+  source_url 'https://github.com/nghttp2/nghttp2.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.43.0_armv7l/libnghttp2-1.43.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.43.0_armv7l/libnghttp2-1.43.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.43.0_i686/libnghttp2-1.43.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.43.0_x86_64/libnghttp2-1.43.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.45.1_armv7l/libnghttp2-1.45.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.45.1_armv7l/libnghttp2-1.45.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.45.1_i686/libnghttp2-1.45.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.45.1_x86_64/libnghttp2-1.45.1-chromeos-x86_64.tpxz',
   })
   binary_sha256({
-    aarch64: '3a760af4f8f0e4bec998be98b6f942d3baa2bc270a40780922d3bb69b36052af',
-     armv7l: '3a760af4f8f0e4bec998be98b6f942d3baa2bc270a40780922d3bb69b36052af',
-       i686: 'ae37feacc654b4f97090ac642003ec9bd1edc2447f19679ba2d03b1c6ec7f6cb',
-     x86_64: 'af383eeeaaa588726efbd85d883d2eee1f3799a9687d2c16904d229c5662d3db'
+    aarch64: 'a53af4ca732b343d976f729e809dff883159482b6338dfcb1541e9d20da469db',
+     armv7l: 'a53af4ca732b343d976f729e809dff883159482b6338dfcb1541e9d20da469db',
+       i686: '209c4b802cc37ceb4e508e54a403fea7ab23a84c9ec317d8bf497723e32969c4',
+     x86_64: 'f1d7369aee4be665d89a1cc582802fa1cc9d0b7803bd5df91cf2eb8b62a79241',
   })
 
+  depends_on 'jansson'
+  depends_on 'jemalloc'
+  depends_on 'libev' => :build
+  depends_on 'py3_cython' => :build
+
   def self.build
-    Dir.mkdir 'builddir'
+    FileUtils.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
+      system "cmake -G Ninja #{CREW_CMAKE_OPTIONS} \
+        -DENABLE_SHARED_LIB=ON \
+        -DENABLE_STATIC_LIB=ON .."
+      system 'samu'
     end
-    system 'ninja -C builddir'
+  end
+
+  def self.check
+    system 'samu -C builddir test'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
