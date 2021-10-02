@@ -61,13 +61,14 @@ else
   CREW_NPROC = ENV['CREW_NPROC']
 end
 
-# Set CREW_COMPRESS from environment variable
-CREW_COMPRESS = ENV['CREW_COMPRESS']
+# Set CREW_NOT_COMPRESS from environment variable
+CREW_NOT_COMPRESS = ENV['CREW_COMPRESS']
 
 # Set CREW_NOT_STRIP from environment variable
 CREW_NOT_STRIP = ENV['CREW_NOT_STRIP']
 
 CREW_SHRINK_ARCHIVE = ENV['CREW_SHRINK_ARCHIVE']
+CREW_USE_UPX = ENV['CREW_USE_UPX']
 
 # Set testing constants from environment variables
 crew_testing_repo = ENV['CREW_TESTING_REPO']
