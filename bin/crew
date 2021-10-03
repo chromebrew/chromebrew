@@ -1196,6 +1196,7 @@ def resolve_dependencies
     @dependencies.each do |dep|
       search dep
       print_current_package
+      @pkg.is_dep = true
       install
     end
     if @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
@@ -1255,7 +1256,7 @@ def install
   end
 
   #add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, is_dep: @pkg.is_dep)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
@@ -1401,6 +1402,36 @@ def remove(pkgName)
   @pkg.remove
 
   puts "#{pkgName.capitalize} removed!".lightgreen
+end
+
+def autoremove_command
+  deps_of_installed_pkgs = @device[:installed_packages].map do |pkg|
+    set_package pkg[:name], "#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb"
+    next @pkg.dependencies
+  end.flatten
+
+  remove_pkg = @device[:installed_packages].select {|pkg| pkg[:is_dep] and !deps_of_installed_pkgs.include?(pkg[:name]) }
+  
+  return if remove_pkg.empty?
+  
+  puts 'The following packages also need to be REMOVED: '
+  remove_pkg.each do |pkg|
+    print pkg + ' '
+  end
+  print "\n" + 'Do you agree? [Y/n] '
+
+  response = STDIN.getc
+  case response
+  when 'n'
+    abort 'No changes made.'
+  when "\n", "y", "Y"
+    puts 'Proceeding...'
+  else
+    puts "I don't understand `#{response}`. :(".lightred
+    abort 'No changes made.'
+  end
+  
+  remove_pkg.each {|pkg| remove(pkg) }
 end
 
 def build_command(args)
