@@ -5,6 +5,7 @@ class Package
 
   class << self
     attr_reader :is_fake
+    attr_writter :is_dependency
     attr_accessor :name, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
