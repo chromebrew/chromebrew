@@ -22,6 +22,7 @@ DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
 Usage:
+  crew autoremove [options]
   crew build [options] [-k|--keep] <name> ...
   crew const [options] [<name> ...]
   crew deps [options] <name> ...
@@ -1404,14 +1405,16 @@ def remove(pkgName)
   puts "#{pkgName.capitalize} removed!".lightgreen
 end
 
-def autoremove_command
+def autoremove_command(args)
   deps_of_installed_pkgs = @device[:installed_packages].map do |pkg|
     set_package pkg[:name], "#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb"
     next @pkg.dependencies
   end.flatten
 
-  remove_pkg = @device[:installed_packages].select {|pkg| pkg[:is_dep] and !deps_of_installed_pkgs.include?(pkg[:name]) }
-  
+  remove_pkg = @device[:installed_packages].select do |pkg|
+    pkg[:is_dep] and !deps_of_installed_pkgs.include?(pkg[:name])
+  end.map {|pkg| pkg[:name] }
+
   return if remove_pkg.empty?
   
   puts 'The following packages also need to be REMOVED: '
