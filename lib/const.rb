@@ -12,8 +12,7 @@ ARCH = if ARCH_ACTUAL == 'armv8l' then 'armv7l' else ARCH_ACTUAL end
 ARCH_LIB = if ARCH == 'x86_64' and Dir.exist?('/lib64') then 'lib64' else 'lib' end
 
 # Glibc version can be found from the output of libc.so.6
-@libcvertokens=  %x[/#{ARCH_LIB}/libc.so.6].lines.first.chomp.split(/[\s]/)
-LIBC_VERSION = @libcvertokens[@libcvertokens.find_index("version") + 1].sub!(/[[:punct:]]?$/,'')
+LIBC_VERSION = %x[/#{ARCH_LIB}/libc.so.6][/version ([^[[:punct:]]])+/, 1]
 
 if ENV['CREW_PREFIX'] and ENV['CREW_PREFIX'] != '' and ENV['CREW_PREFIX'] != '/usr/local'
   CREW_BUILD_FROM_SOURCE = 1
@@ -84,7 +83,7 @@ CREW_USE_PIXZ = ENV['CREW_USE_PIXZ']
 
 USER = `whoami`.chomp
 
-CHROMEOS_RELEASE = ( File.exist?('/etc/lsb-release') )? File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+CHROMEOS_RELEASE = ( File.exist?('/etc/lsb-release') )? File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1] : ''
 
 # If CURL environment variable exists use it in lieu of curl.
 CURL = ENV['CURL'] || 'curl'
