@@ -906,15 +906,16 @@ def prepare_package(destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check existence of required libraries
-    missing_lib = `find . -executable -type f -exec env LD_TRACE_LOADED_OBJECTS=1 {} \\;`.scan(/\t(.+) => not found/).flatten
+    Dir.glob('**/*') do |file|
+      next unless File.executable?(file)
+      missing_lib = `LD_TRACE_LOADED_OBJECTS=1 ./#{file}`.scan(/\t(.+) => not found/).flatten
 
-    if missing_lib.any?
-      missing_lib.map do |lib|
+      missing_lib.each do |lib|
         unless CREW_MISSING_LIB_ONLY_ADVISORY == '1'
-          puts "Error: Missing library '#{lib}'".lightred
+          puts "Error: Missing library '#{lib}' for '#{file}'".lightred
           @_errors = true
         else
-          puts "Warning: Missing library '#{lib}'".orange
+          puts "Warning: Missing library '#{lib}' for '#{file}'".orange
         end
       end
     end
@@ -926,7 +927,7 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ERROR == '1'
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY == '0'
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
           @_errors = true
         else
