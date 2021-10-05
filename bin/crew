@@ -925,7 +925,7 @@ def prepare_package(destdir)
     puts "Checking for conflicts with files from installed packages..."
     conflicts = []
     @conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist].chomp
-    conflicts << @conflictscmd.gsub(/(:|filelist|#{CREW_META_PATH})/).split(' ')
+    conflicts << @conflictscmd.gsub(/(:|filelist|#{CREW_META_PATH})/, '').split(' ')
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
       if CREW_CONFLICTS_ONLY_ADVISORY == '1'
