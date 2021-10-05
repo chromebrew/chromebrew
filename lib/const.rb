@@ -2,7 +2,7 @@
 
 CREW_VERSION = '1.16.10'
 
-ARCH_ACTUAL = `uname -m`.strip
+ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
 # which report armv8l when linux32 is run.
 ARCH = ( ARCH_ACTUAL == 'armv8l' ) ? 'armv7l' : ARCH_ACTUAL
@@ -55,7 +55,7 @@ CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY
 
 # Set CREW_NPROC from environment variable or `nproc`
 if ENV['CREW_NPROC'].to_s.empty?
-  CREW_NPROC = `nproc`.strip
+  CREW_NPROC = `nproc`.chomp
 else
   CREW_NPROC = ENV['CREW_NPROC']
 end
@@ -69,14 +69,14 @@ CREW_NOT_STRIP = ENV['CREW_NOT_STRIP']
 CREW_SHRINK_ARCHIVE = ENV['CREW_SHRINK_ARCHIVE']
 
 # Set testing constants from environment variables
-crew_testing_repo = ENV['CREW_TESTING_REPO']
-crew_testing_branch = ENV['CREW_TESTING_BRANCH']
-crew_testing = ENV['CREW_TESTING']
-crew_testing = '0' if crew_testing_repo.nil? || crew_testing_repo.empty?
-crew_testing = '0' if crew_testing_branch.nil? || crew_testing_branch.empty?
-CREW_TESTING = crew_testing
-CREW_TESTING_BRANCH = crew_testing_branch
-CREW_TESTING_REPO = crew_testing_repo
+CREW_TESTING_BRANCH = ENV['CREW_TESTING_BRANCH']
+CREW_TESTING_REPO = ENV['CREW_TESTING_REPO']
+
+CREW_TESTING = unless crew_testing_repo.to_s.empty? or crew_testing_branch.to_s.empty?
+  ENV['CREW_TESTING']
+else
+  '0'
+end
 
 CREW_USE_PIXZ = ENV['CREW_USE_PIXZ']
 
