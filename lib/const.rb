@@ -72,7 +72,7 @@ CREW_SHRINK_ARCHIVE = ENV['CREW_SHRINK_ARCHIVE']
 CREW_TESTING_BRANCH = ENV['CREW_TESTING_BRANCH']
 CREW_TESTING_REPO = ENV['CREW_TESTING_REPO']
 
-CREW_TESTING = unless crew_testing_repo.to_s.empty? or crew_testing_branch.to_s.empty?
+CREW_TESTING = unless CREW_TESTING_BRANCH.to_s.empty? or CREW_TESTING_REPO.to_s.empty?
   ENV['CREW_TESTING']
 else
   '0'
