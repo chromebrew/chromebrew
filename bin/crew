@@ -1543,6 +1543,6 @@ def is_command(name)
   return !!!name =~ /^[-<]/
 end
 
-command_name = args.each { |k, v| v && is_command(k) } [0]
+command_name = args.select { |k, v| v && is_command(k) } [0]
 function = command_name + '_command'
 send(function, args)
