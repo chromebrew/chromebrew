@@ -1543,6 +1543,6 @@ def is_command(name)
   return !!!name[/^[-<]/]
 end
 
-command_name = args.select { |k, v| v and is_command(k) } [0].keys[0]
+command_name = args.select { |k, v| v and is_command(k) } .keys[0]
 function = command_name + '_command'
 send(function, args)
