@@ -3,26 +3,13 @@ require 'package'
 class Nss < Package
   description 'Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.'
   homepage 'https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS'
-  @nss_ver = '3.69.1'
+  @nss_ver = '3.71'
   @nspr_ver = '4.32'
   version "nss.#{@nss_ver}.nspr.#{@nss_ver}"
   license 'MPL-2.0, GPL-2 or LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_69_1_RTM/src/nss-3.69.1-with-nspr-4.32.tar.gz'
-  source_sha256 '976dd57391aa269aa2961ac7ae002dc49935f855263df58b59b1dd4836d47cb7'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_armv7l/nss-nss.3.69.1.nspr.4.32-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_armv7l/nss-nss.3.69.1.nspr.4.32-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_i686/nss-nss.3.69.1.nspr.4.32-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_x86_64/nss-nss.3.69.1.nspr.4.32-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: 'e68a620a7b7f35289f401561e3c86ff1fceb38d0b0652da7e6c531addc020a14',
-     armv7l: 'e68a620a7b7f35289f401561e3c86ff1fceb38d0b0652da7e6c531addc020a14',
-       i686: '2b16871a705710c6f772c255b68572013e765658cb5f791b9fdaf697c1bf36ed',
-     x86_64: '89f80e57d77168fe58e28f60e245a18256dd3b1c68640a1430fc512f93e01b01'
-  })
+  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_71_RTM/src/nss-3.71-with-nspr-4.32.tar.gz'
+  source_sha256 '6a687ce29b54bda554db5740ff0b79a954852835edd3df35f613e6fed157a13e'
 
   depends_on 'gyp_next' => :build
 
