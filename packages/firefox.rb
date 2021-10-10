@@ -1,97 +1,131 @@
 require 'package'
 
 class Firefox < Package
-  description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
+  description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser.'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '92.0.1'
+  @_ver = '93.0'
+  version @_ver
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
-  compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686'
-    source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 '18859b248cabf07e082ba419bd8e0fb9f19ee0cbb7818de0096afee09191d4e2'
-  when 'x86_64'
-    source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 'a3ba62122a6cde1d7d2ebf96e765ea57ea3e9a312d2161e0ac70923946844689'
-  end
+  compatibility 'all'
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}/source/firefox-#{@_ver}.source.tar.xz"
+  source_sha256 'a78f080f5849bc284b84299f3540934a12e961a7ea368b592ae6576ea1f97102'
 
+  depends_on 'cbindgen' => :build
+  depends_on 'node' => :build
+  depends_on 'rust' => :build
+  depends_on 'nasm' => :build
+  depends_on 'nss'
+  depends_on 'nspr'
   depends_on 'atk'
   depends_on 'cairo'
-  depends_on 'dbus'
-  depends_on 'dbus_glib'
+  depends_on 'gtk3'
+  depends_on 'gdk_pixbuf'
+  depends_on 'libpng'
+  depends_on 'mesa'
   depends_on 'fontconfig'
   depends_on 'freetype'
-  depends_on 'gdk_pixbuf'
+  depends_on 'pulseaudio'
+  depends_on 'pixman'
   depends_on 'glib'
-  depends_on 'gtk2'
-  depends_on 'gtk3'
+  depends_on 'zlibpkg'
+  depends_on 'libffi'
   depends_on 'libx11'
-  depends_on 'libxcb'
   depends_on 'libxcomposite'
-  depends_on 'libxcursor'
   depends_on 'libxdamage'
   depends_on 'libxext'
   depends_on 'libxfixes'
-  depends_on 'libxi'
   depends_on 'libxrender'
-  depends_on 'libxt'
-  depends_on 'pango'
-  depends_on 'pulseaudio'
+  depends_on 'dbus_glib'
+  depends_on 'dav1d'
+  depends_on 'libaom'
+  depends_on 'harfbuzz'
+  depends_on 'graphite'
+  depends_on 'libevent'
+  depends_on 'libjpeg'
+  depends_on 'libvpx'
+  depends_on 'libwebp'
+  depends_on 'libx264'
   depends_on 'sommelier'
 
+  def self.patch
+    system "curl -#LO https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-93-patches-01.tar.xz"
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read("firefox-93-patches-01.tar.xz") ) == 'bf94adebac44c9b0192206080e1749a8ab913e85baf67c15bce46d0ef7f7a8a2'
+    system 'tar xf firefox-93-patches-01.tar.xz'
+    system 'for i in firefox-patches/*.patch; do patch -Np1 -i ${i}; done'
+  end
+
   def self.build
-    @firefox_sh = <<~FIREFOX_SH
-      #!/bin/bash
-      GDK_BACKEND=x11 #{CREW_PREFIX}/firefox/firefox "\$@"
-    FIREFOX_SH
-    # For some reason, the binaries do not have a desktop file so add it here.
-    @firefox_desktop = <<~FIREFOX_DESKTOP
-      [Desktop Entry]
-      Version=#{version}
-      Name=Firefox
-      Name[en_US]=firefox
-      GenericName=Mozilla Firefox
-      GenericName[en_US]=Mozilla Firefox
-      Comment=Free and open-source web browser
-      Exec=firefox %U
-      Terminal=false
-      Type=Application
-      Icon=firefox
-      Categories=Network;WebBrowser;
-      MimeType=text/html;text/xml;application/xhtml_xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
-    FIREFOX_DESKTOP
+    # TODO: Add API keys
+    system "find ./third_party -type f -name '*.so' -o -name '*.o' -print -delete"
+    FileUtils.mkdir_p "firefox_build"
+    @_mozconfig = <<~EOF
+      ac_add_options --allow-addon-sideload
+      ac_add_options --disable-cargo-incremental
+      ac_add_options --disable-crashreporter
+      ac_add_options --disable-install-strip
+      ac_add_options --disable-strip
+      ac_add_options --disable-updater
+      ac_add_options --enable-official-branding
+      ac_add_options --enable-release
+      ac_add_options --enable-system-ffi
+      ac_add_options --enable-system-pixman
+      ac_add_options --enable-dbus
+      ac_add_options --enable-pulseaudio
+      ac_add_options --libdir="#{CREW_LIB_PREFIX}"
+      ac_add_options --prefix="#{CREW_PREFIX}"
+      ac_add_options --target="#{CREW_TGT}"
+      ac_add_options --host="#{CREW_TGT}"
+      ac_add_options --without-ccache
+      ac_add_options --with-intl-api
+      ac_add_options --with-system-nspr
+      ac_add_options --with-system-nss
+      ac_add_options --with-system-png
+      ac_add_options --with-system-zlib
+      ac_add_options --with-system-av1
+      ac_add_options --with-system-harfbuzz
+      ac_add_options --with-system-graphite2
+      ac_add_options --with-system-icu
+      #ac_add_options --with-system-jpeg
+      ac_add_options --with-system-libevent
+      ac_add_options --with-system-libvpx
+      ac_add_options --with-system-webp
+      ac_add_options --enable-default-toolkit=cairo-gtk3
+      ac_add_options --enable-lto=full
+      ac_add_options --enable-linker=gold
+      ac_add_options --enable-optimize="-O2"
+      ac_add_options --disable-debug-symbols
+      ac_add_options MOZ_PGO=1
+      ac_add_options --with-unsigned-addon-scopes=app,system
+      ac_add_options --x-includes="#{CREW_PREFIX}/includes"
+      ac_add_options --x-libraries="#{CREW_LIB_PREFIX}"
+      export RUSTC_OPT_LEVEL=2
+    EOF
+    IO.write(".mozconfig", @_mozconfig)
+
+    system "env MOZILLA_FIVE_HOME='#{CREW_LIB_PREFIX}/firefox' \
+                CC='#{CREW_TGT}-gcc' CXX='#{CREW_TGT}-g++' LD='#{CREW_TGT}-ld.gold' AR=#{CREW_TGT}-gcc-ar NM=#{CREW_TGT}-gcc-nm RANLIB=#{CREW_TGT}-gcc-ranlib \
+                SHELL='/bin/bash' \
+                MOZCONFIG='.mozconfig' \
+                MOZBUILD_STATE_PATH='.mozbuild' \
+                MOZILLA_OFFICIAL=1 \
+                LLVM_PROFDATA='llvm-profdata' \
+                MACH_USE_SYSTEM_PYTHON=1 \
+                ./mach configure"
+    system "env MOZILLA_FIVE_HOME='#{CREW_LIB_PREFIX}/firefox' \
+                CC='#{CREW_TGT}-gcc' CXX='#{CREW_TGT}-g++' LD='#{CREW_TGT}-ld.gold' AR=#{CREW_TGT}-gcc-ar NM=#{CREW_TGT}-gcc-nm RANLIB=#{CREW_TGT}-gcc-ranlib \
+                SHELL='/bin/bash' \
+                MOZCONFIG='.mozconfig' \
+                MOZBUILD_STATE_PATH='.mozbuild' \
+                MOZILLA_OFFICIAL=1 \
+                LLVM_PROFDATA='llvm-profdata' \
+                MACH_USE_SYSTEM_PYTHON=1 \
+                GDK_BACKEND=x11 \
+                ./mach build --verbose"
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/firefox"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
-    icon_base_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor"
-    FileUtils.mkdir_p "#{icon_base_path}/16x16/apps"
-    FileUtils.mkdir_p "#{icon_base_path}/32x32/apps"
-    FileUtils.mkdir_p "#{icon_base_path}/48x48/apps"
-    FileUtils.mkdir_p "#{icon_base_path}/64x64/apps"
-    FileUtils.mkdir_p "#{icon_base_path}/128x128/apps"
-    FileUtils.mkdir_p "#{icon_base_path}/256x256/apps"
-    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/firefox"
-    IO.write("#{CREW_DEST_PREFIX}/bin/firefox", @firefox_sh, perm: 0o755)
-    IO.write("#{CREW_DEST_PREFIX}/share/applications/firefox.desktop", @firefox_desktop, perm: 0o644)
-    Dir.chdir 'browser/chrome/icons/default' do
-      FileUtils.mv 'default16.png', "#{icon_base_path}/16x16/apps/firefox.png"
-      FileUtils.mv 'default32.png', "#{icon_base_path}/32x32/apps/firefox.png"
-      FileUtils.mv 'default48.png', "#{icon_base_path}/48x48/apps/firefox.png"
-      FileUtils.mv 'default64.png', "#{icon_base_path}/64x64/apps/firefox.png"
-      FileUtils.mv 'default128.png', "#{icon_base_path}/128x128/apps/firefox.png"
-    end
-    # The following image is needed for crew-launcher which requires a minimum icon size of 144x144.
-    system 'curl -L#O https://files.softicons.com/download/application-icons/round-app-icons-by-ampeross/png/256x256/Mozilla.png'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('Mozilla.png')) == '994e780ada1456c26b077a9f97186aefbc90be5c57e66366b1bca32df0c14c4e'
-    FileUtils.mv 'Mozilla.png', "#{icon_base_path}/256x256/apps/firefox.png"
+    system "DESTDIR=#{CREW_DEST_DIR} ./mach install"
+    # TODO: port from equivalent gentoo ebuild
   end
 
   def self.postinstall
