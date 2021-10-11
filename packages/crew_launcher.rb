@@ -2,11 +2,11 @@ require 'package'
 
 class Crew_launcher < Package
   description 'Add Chromebrew app to launcher'
-  homepage 'https://github.com/skycocker/chromebrew'
+  homepage 'https://github.com/chromebrew/crew-launcher'
   version '1.1-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/supechicken/crew-launcher.git'
+  source_url 'https://github.com/chromebrew/crew-launcher.git'
   git_hashtag '1.1'
   
   depends_on 'libomp'
