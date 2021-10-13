@@ -53,7 +53,7 @@ class Python3 < Package
     @ldflags = "-Wl,-rpath,-L#{CREW_LIB_PREFIX}"
 
     # CREW_ENV_OPTIONS don't work so we have to make our own
-    @py_common_flags = "'-Os -pipe -fuse-ld=gold'"
+    @py_common_flags = "'-O2 -pipe -fuse-ld=gold'"
 
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
