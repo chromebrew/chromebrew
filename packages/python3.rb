@@ -11,9 +11,13 @@ class Python3 < Package
   source_sha256 '5a99f8e7a6a11a7b98b4e75e0d1303d3832cada5534068f69c7b6222a7b1b002'
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.0_armv7l/python3-3.10.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.0_armv7l/python3-3.10.0-chromeos-armv7l.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.0_x86_64/python3-3.10.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
+    aarch64: 'b2e7bb93c0ec928d4070789af596175f917aa0ff1012fc32840c43b054c63dc0',
+     armv7l: 'b2e7bb93c0ec928d4070789af596175f917aa0ff1012fc32840c43b054c63dc0',
      x86_64: 'eeb9ed251e799628351d4cd41113110dd35678947b2b7728a744b74804f84a87'
   })
 

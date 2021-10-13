@@ -11,10 +11,14 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.2_x86_64/meson-0.59.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.2_armv7l/meson-0.59.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.2_armv7l/meson-0.59.2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.2_x86_64/meson-0.59.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '452eb78409b47f771cc32994fc222a870cce5734942943a51c1f150c5f774adc'
+    aarch64: 'cb6754de47d498b8333d36e85611b0ee167ecee3a759ef56623ffdcf82ecbe20',
+     armv7l: 'cb6754de47d498b8333d36e85611b0ee167ecee3a759ef56623ffdcf82ecbe20',
+     x86_64: '452eb78409b47f771cc32994fc222a870cce5734942943a51c1f150c5f774adc'
   })
 
   depends_on 'ninja'

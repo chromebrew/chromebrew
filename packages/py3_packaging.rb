@@ -11,10 +11,14 @@ class Py3_packaging < Package
   git_hashtag @_ver
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_x86_64/py3_packaging-21.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_armv7l/py3_packaging-21.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_armv7l/py3_packaging-21.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_x86_64/py3_packaging-21.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '33d2a11a663b3beb60a9af8a91d6128af06dc2b2dc82370cf905131e9f95c820'
+    aarch64: '987772d193fe002b9896262193cf86304b62f9f96445bb9df642ecdca4eba7dd',
+     armv7l: '987772d193fe002b9896262193cf86304b62f9f96445bb9df642ecdca4eba7dd',
+     x86_64: '33d2a11a663b3beb60a9af8a91d6128af06dc2b2dc82370cf905131e9f95c820'
   })
 
   depends_on 'py3_setuptools' => :build
