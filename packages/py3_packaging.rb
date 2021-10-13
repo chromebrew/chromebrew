@@ -10,6 +10,13 @@ class Py3_packaging < Package
   source_url 'https://github.com/pypa/packaging.git'
   git_hashtag @_ver
 
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_x86_64/py3_packaging-21.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: '33d2a11a663b3beb60a9af8a91d6128af06dc2b2dc82370cf905131e9f95c820'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build

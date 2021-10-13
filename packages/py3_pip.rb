@@ -10,7 +10,15 @@ class Py3_pip < Package
   source_url 'https://github.com/pypa/pip.git'
   git_hashtag @_ver
 
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.3_x86_64/py3_pip-21.3-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: 'cc098791b59110f4996b2e23870b49adf9c1861ffe2261688cf4fc02e5cb9bef'
+  })
+
   depends_on 'python3'
+  depends_on 'py3_packaging' => :build
   depends_on 'py3_setuptools'
   depends_on 'py3_wheel'
 

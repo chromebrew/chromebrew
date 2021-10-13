@@ -10,6 +10,13 @@ class Python3 < Package
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
   source_sha256 '5a99f8e7a6a11a7b98b4e75e0d1303d3832cada5534068f69c7b6222a7b1b002'
 
+  binary_url({
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.0_x86_64/python3-3.10.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+     x86_64: 'eeb9ed251e799628351d4cd41113110dd35678947b2b7728a744b74804f84a87'
+  })
+
   depends_on 'autoconf_archive' => :build
   depends_on 'krb5' => :build
   depends_on 'libtirpc' => :build
@@ -63,10 +70,8 @@ class Python3 < Package
     system 'autoreconf -fiv'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env OPT='-g0' \
-        CFLAGS=#{@py_common_flags} \
-        CXXFLAGS=#{@py_common_flags} \
-        CC='#{CREW_TGT}-gcc' \
+      system "env OPT='-g0' CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
+        CC='#{CREW_TGT}-gcc -pthread' \
         CXX='#{CREW_TGT}-g++' \
         CPPFLAGS='#{@cppflags}' \
         LDFLAGS='#{@ldflags}' \
