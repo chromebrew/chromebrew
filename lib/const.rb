@@ -118,6 +118,8 @@ CREW_OPTIONS = <<~OPT
   --program-prefix='' \
   --program-suffix=''
 OPT
+CREW_OPTIONS.chomp
+CREW_ENV_OPTIONS.chomp
 
 CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT
   -Dprefix=#{CREW_PREFIX} \
@@ -130,6 +132,8 @@ CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT
   -Dcpp_args='-O2' \
   -Dc_args='-O2'
 OPT
+CREW_MESON_OPTIONS.chomp
+CREW_MESON_FNO_LTO_OPTIONS.chomp
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
@@ -158,6 +162,8 @@ CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT
   -DCMAKE_MODULE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_BUILD_TYPE=Release
 OPT
+CREW_CMAKE_OPTIONS.chomp
+CREW_CMAKE_FNO_LTO_OPTIONS.chomp
 
 CREW_LIB_SUFFIX = ( ARCH == 'x86_64' ) ? '64' : ''
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
