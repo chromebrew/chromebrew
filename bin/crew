@@ -977,7 +977,7 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
-    # make hard linked files symlinks and use upx on executables
+    # use upx on executables
     shrink_dir destdir
   end
 end
@@ -1014,10 +1014,6 @@ def shrink_dir(dir)
         puts "Using rdfind to find duplicate or hard linked files."
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
       end
-      #if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-      #  puts "Using symlinks tool to make absolute symlinks relative"
-      #  system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-      #end
       # Issues with non-x86_64 in compressing libraries, so just compress
       # non-libraries. Also note that one needs to use "upx -d" on a
       # compressed file to use ldd.
