@@ -53,7 +53,7 @@ class Python3 < Package
     @ldflags = "-Wl,-rpath,-L#{CREW_LIB_PREFIX}"
 
     # CREW_ENV_OPTIONS don't work so we have to make our own
-    @py_common_flags = "'-O2 -pipe -fuse-ld=gold'"
+    @py_common_flags = "'-O2 -pipe -fuse-ld=gold -flto-partition=none -ffat-lto-objects -flto'"
 
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
@@ -63,21 +63,23 @@ class Python3 < Package
     system 'autoreconf -fiv'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
-        CC='#{CREW_TGT}-gcc -pthread' \
+      system "env OPT='-g0' \
+        CFLAGS=#{@py_common_flags} \
+        CXXFLAGS=#{@py_common_flags} \
+        CC='#{CREW_TGT}-gcc' \
         CXX='#{CREW_TGT}-g++' \
         CPPFLAGS='#{@cppflags}' \
-        LDFLAGS='#{@ldflags} -lpthread' \
+        LDFLAGS='#{@ldflags}' \
       ../configure #{CREW_OPTIONS} \
         --with-computed-gotos \
         --enable-loadable-sqlite-extensions \
         --without-ensurepip \
         --enable-optimizations \
-        --with-lto \
         --with-platlibdir='lib#{CREW_LIB_SUFFIX}' \
         --with-system-ffi \
         --with-system-expat \
         --with-system-libmpdec \
+        --with-libc= \
         --enable-shared"
       system 'make'
     end
