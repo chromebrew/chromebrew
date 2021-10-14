@@ -3,7 +3,7 @@ require 'package'
 class Duplicity < Package
   description 'Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.'
   homepage 'http://duplicity.nongnu.org/'
-  version '0.8.19'
+  version '0.8.20'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://files.pythonhosted.org/packages/84/65/5ca97dade5527b6a93757e88455c53b0d7002322f9d47d848c35902ef431/duplicity-0.8.20.tar.gz'
