@@ -11,7 +11,7 @@ class Py3_wheel < Package
   git_hashtag @_ver
 
   depends_on 'py3_setuptools' => :build
-  depends_on 'py3_packaging' => :build
+  depends_on 'py3_packaging'
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
