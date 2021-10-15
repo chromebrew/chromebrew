@@ -71,6 +71,7 @@ CREW_TESTING_REPO = ENV['CREW_TESTING_REPO']
 CREW_TESTING = ( CREW_TESTING_BRANCH.to_s.empty? or CREW_TESTING_REPO.to_s.empty? ) ? '0' : ENV['CREW_TESTING']
 
 CREW_USE_PIXZ = ENV['CREW_USE_PIXZ']
+CREW_USE_TARLZ = ENV['CREW_USE_TARLZ']
 
 USER = `whoami`.chomp
 
@@ -167,7 +168,7 @@ PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
 PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
 
-CREW_FIRST_PACKAGES = %w[libssh curl git pixz shared_mime_info]
+CREW_FIRST_PACKAGES = %w[libssh curl git lzip pixz shared_mime_info]
 CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
 
 # libssp is in the libssp package

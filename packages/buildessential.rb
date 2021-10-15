@@ -119,6 +119,7 @@ class Buildessential < Package
   #depends_on 'xorg_proto'
 
   # Packages needed for shrinking package archives
+  depends_on 'tarlz'
   depends_on 'rdfind'
   depends_on 'symlinks'
   depends_on 'upx'
