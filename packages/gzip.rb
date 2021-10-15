@@ -9,6 +9,8 @@ class Gzip < Package
   source_url 'https://ftpmirror.gnu.org/gzip/gzip-1.11.tar.xz'
   source_sha256 '9b9a95d68fdcb936849a4d6fada8bf8686cddf58b9b26c9c4289ed0c92a77907'
 
+  depends_on 'zutils' # L
+
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
