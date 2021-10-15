@@ -3,7 +3,7 @@ require 'package'
 class Crew_launcher < Package
   description 'Add Chromebrew app to launcher'
   homepage 'https://github.com/chromebrew/crew-launcher'
-  version '1.1-1'
+  version '1.1-2'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-launcher.git'
@@ -22,7 +22,9 @@ class Crew_launcher < Package
     ]
 
     FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/crew-launcher/"
-    FileUtils.ln_s '../../../lib/color.rb', "#{CREW_DEST_PREFIX}/share/crew-launcher/lib/"
+    Dir.chdir "#{CREW_DEST_PREFIX}/share/crew-launcher/lib" do
+      FileUtils.ln_s '../../../lib/crew/lib/color.rb', 'color.rb'
+    end
     FileUtils.ln_s '../share/crew-launcher/main.rb', "#{CREW_DEST_PREFIX}/bin/crew-launcher"
     
     system "curl -L https://github.com/skycocker/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/share/crew-launcher/icon/brew.png"
