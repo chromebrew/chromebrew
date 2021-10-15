@@ -524,7 +524,7 @@ def update
     if @pkg.nil?
       puts "Package file for #{package[:name]} not found. :(".lightred if @opt_verbose
       next
-    end 
+    end
     if package[:version].to_s != @pkg.version
       canBeUpdated += 1
       puts @pkg.name + ' could be updated from ' + package[:version].to_s + ' to ' + @pkg.version
@@ -869,11 +869,20 @@ end
 
 def compress_doc(dir)
   # check whether crew should compress
-  return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+  return if CREW_NOT_COMPRESS
+
+  # check for an lzip implementation, if none, don't compress
+  if File.exist? "#{CREW_PREFIX}/bin/plzip"
+    lzip = "#{CREW_PREFIX}/bin/plzip"
+  elsif File.exist "#{CREW_PREFIX}/bin/lzip"
+    lzip = "#{CREW_PREFIX}/bin/lzip"
+  else
+    return
+  end
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "compressdoc --gzip -9 #{@short_verbose} #{dir}"
+    system "find #{dir} -type f -exec #{lzip} -9 #{@short_verbose} {} \\;"
   end
 end
 
@@ -894,6 +903,7 @@ def prepare_package(destdir)
     end
 
     # compress manual files
+    puts 'Compressing documentation...'
     compress_doc "#{CREW_DEST_PREFIX}/man"
     compress_doc "#{CREW_DEST_PREFIX}/info"
     compress_doc "#{CREW_DEST_PREFIX}/share/man"
