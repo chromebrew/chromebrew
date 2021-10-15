@@ -16,9 +16,9 @@ class Py3_packaging < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_x86_64/py3_packaging-21.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '987772d193fe002b9896262193cf86304b62f9f96445bb9df642ecdca4eba7dd',
-     armv7l: '987772d193fe002b9896262193cf86304b62f9f96445bb9df642ecdca4eba7dd',
-     x86_64: '33d2a11a663b3beb60a9af8a91d6128af06dc2b2dc82370cf905131e9f95c820'
+    aarch64: '76559d3723a4f8054912eb3ba8c8c75aa98df0d57eb4a0e88d22440e10ebab3b',
+     armv7l: '76559d3723a4f8054912eb3ba8c8c75aa98df0d57eb4a0e88d22440e10ebab3b',
+     x86_64: '4071466cc6e1c1dd12e3bfadf3f8180d1224590722cb498f1c28c836e327418a'
   })
 
   depends_on 'py3_setuptools' => :build

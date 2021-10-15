@@ -16,10 +16,12 @@ class Py3_setuptools < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/58.2.0_x86_64/py3_setuptools-58.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'cad22b90965d0ab80a016bcc0863fd4897eb330422b01a52c3ca41b1d16c7ada',
-     armv7l: 'cad22b90965d0ab80a016bcc0863fd4897eb330422b01a52c3ca41b1d16c7ada',
-     x86_64: '6b8d6a3275c9fc16113a82dba1208bc5b29e2a5950be7f1e386cb1312294a6d1'
+    aarch64: 'c14dc8751ba9d9afd6d6bd8e1b71208044d96cdc67e76031a9682f318b6e68df',
+     armv7l: 'c14dc8751ba9d9afd6d6bd8e1b71208044d96cdc67e76031a9682f318b6e68df',
+     x86_64: 'e3b12a6ae7564f25d964f2f68dee55a07e3a93c950d88f7bc2d952eb15167af1'
   })
+
+  depends_on 'py3_packaging'
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

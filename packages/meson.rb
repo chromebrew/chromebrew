@@ -16,9 +16,9 @@ class Meson < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.59.2_x86_64/meson-0.59.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'cb6754de47d498b8333d36e85611b0ee167ecee3a759ef56623ffdcf82ecbe20',
-     armv7l: 'cb6754de47d498b8333d36e85611b0ee167ecee3a759ef56623ffdcf82ecbe20',
-     x86_64: '452eb78409b47f771cc32994fc222a870cce5734942943a51c1f150c5f774adc'
+    aarch64: '756eee2c318484bfb3a69ef6c1c28407500458aa37cdb35fdf51e105fd52cca0',
+     armv7l: '756eee2c318484bfb3a69ef6c1c28407500458aa37cdb35fdf51e105fd52cca0',
+     x86_64: '4c5cf52803c86b5b70c6e2d4166b0e48ae7dfc563991672c64d4d5ad040d363e'
   })
 
   depends_on 'ninja'

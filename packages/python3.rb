@@ -16,9 +16,9 @@ class Python3 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.0_x86_64/python3-3.10.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b2e7bb93c0ec928d4070789af596175f917aa0ff1012fc32840c43b054c63dc0',
-     armv7l: 'b2e7bb93c0ec928d4070789af596175f917aa0ff1012fc32840c43b054c63dc0',
-     x86_64: 'eeb9ed251e799628351d4cd41113110dd35678947b2b7728a744b74804f84a87'
+    aarch64: 'fb428c391be2ced2c589a30d98e80015433e248f86b3df7d11ca824cc3aa319d',
+     armv7l: 'fb428c391be2ced2c589a30d98e80015433e248f86b3df7d11ca824cc3aa319d',
+     x86_64: '9b5a97dbb298e4cff814c22c58f03abf96ad9b16e3afa3ad32826e0505daa190'
   })
 
   depends_on 'autoconf_archive' => :build
