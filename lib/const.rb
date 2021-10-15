@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.17.1'
+CREW_VERSION = '1.17.2'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -106,7 +106,7 @@ CREW_ENV_OPTIONS = <<~OPT
   CXXFLAGS='#{CREW_COMMON_FLAGS}' \
   FCFLAGS='#{CREW_COMMON_FLAGS}' \
   FFLAGS='#{CREW_COMMON_FLAGS}' \
-  LDFLAGS='#{CREW_LDFLAGS}'
+  LDFLAGS='#{CREW_LDFLAGS}' \\
 OPT
 CREW_OPTIONS = <<~OPT
   --prefix=#{CREW_PREFIX} \
@@ -116,7 +116,7 @@ CREW_OPTIONS = <<~OPT
   --host=#{CREW_TGT} \
   --target=#{CREW_TGT} \
   --program-prefix='' \
-  --program-suffix=''
+  --program-suffix='' \\
 OPT
 
 CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT
@@ -128,7 +128,7 @@ CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT
   -Dstrip=true \
   -Db_pie=true \
   -Dcpp_args='-O2' \
-  -Dc_args='-O2'
+  -Dc_args='-O2' \\
 OPT
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
@@ -145,7 +145,7 @@ CREW_CMAKE_OPTIONS = <<~OPT
   -DCMAKE_STATIC_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release \\
 OPT
 CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
@@ -156,7 +156,7 @@ CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT
   -DCMAKE_SHARED_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_STATIC_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_MODULE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release \\
 OPT
 
 CREW_LIB_SUFFIX = ( ARCH == 'x86_64' ) ? '64' : ''
