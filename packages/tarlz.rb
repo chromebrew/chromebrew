@@ -2,7 +2,7 @@ require 'package'
 
 class Tarlz < Package
   description 'Tarlz is a massively parallel (multi-threaded) combined implementation of the tar archiver and the lzip compressor.'
-  homepage 'https://www.nongnu.org/lzip/lzip.html'
+  homepage 'https://www.nongnu.org/lzip/tarlz.html'
   version '1.21'
   license 'GPL-2+'
   compatibility 'all'
