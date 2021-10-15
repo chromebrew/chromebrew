@@ -1323,7 +1323,7 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  if !CREW_USE_TARLZ == '0' || CREW_USE_PIXZ == '1' || !File.exist?("#{CREW_PREFIX}/bin/tarlz")
+  if CREW_USE_TARLZ == '1' && File.exist?("#{CREW_PREFIX}/bin/tarlz")
     puts "Using tarlz to compress archive."
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.lz"
     Dir.chdir CREW_DEST_DIR do
