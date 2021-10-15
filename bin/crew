@@ -871,18 +871,20 @@ def compress_doc(dir)
   # check whether crew should compress
   return if CREW_NOT_COMPRESS
 
-  # check for an lzip implementation, if none, don't compress
+  # check for an lzip implementation, if none, use xz instead
   if File.exist? "#{CREW_PREFIX}/bin/plzip"
-    lzip = "#{CREW_PREFIX}/bin/plzip"
-  elsif File.exist "#{CREW_PREFIX}/bin/lzip"
-    lzip = "#{CREW_PREFIX}/bin/lzip"
+    compress = "#{CREW_PREFIX}/bin/plzip"
+  elsif File.exist? "#{CREW_PREFIX}/bin/lzip"
+    compress = "#{CREW_PREFIX}/bin/lzip"
+  elsif File.exist? "#{CREW_PREFIX}/bin/xz"
+    compress = "#{CREW_PREFIX}/bin/xz"
   else
-    return
+    compress = "/usr/bin/xz"
   end
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "find #{dir} -type f -exec #{lzip} -9 #{@short_verbose} {} \\;"
+    system "find #{dir} -type f -exec #{compress} -9 #{@short_verbose} {} \\;"
   end
 end
 
