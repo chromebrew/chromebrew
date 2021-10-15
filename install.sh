@@ -24,7 +24,7 @@ CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="pixz jq ca_certificates git gmp ncurses libyaml ruby"
+BOOTSTRAP_PACKAGES="lzip pixz jq ca_certificates git gmp ncurses libyaml ruby"
 
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
