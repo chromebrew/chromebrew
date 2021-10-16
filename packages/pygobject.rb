@@ -14,7 +14,7 @@ class Pygobject < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0-1_x86_64/pygobject-3.42.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '440ec12a89f102c6421a551584a4a5a11938e9dca4b2aa27f146b1d770a8db18'
+    x86_64: 'e2c20188b76e78261a7fbf517ef650daca841d54b9d988a3f92448d5db5cf4a5'
   })
 
   depends_on 'glib'

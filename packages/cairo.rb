@@ -17,7 +17,7 @@ class Cairo < Package
   binary_sha256({
     aarch64: '03c6f9c849edf2736de57db8801aea7660d2250d14ed55417bf538ec26ec9787',
      armv7l: '03c6f9c849edf2736de57db8801aea7660d2250d14ed55417bf538ec26ec9787',
-     x86_64: '281d060106d371f9723bffb6bbc4caa57ec3a991cce740170fa1267a602a051d'
+     x86_64: '85538c1aac1a7a4cc4061a2b9d94e4dd04f51d9991e102025f145c936b169147'
   })
 
   depends_on 'fontconfig'
