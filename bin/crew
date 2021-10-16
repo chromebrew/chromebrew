@@ -876,10 +876,9 @@ def compress_doc(dir)
     compress = "#{CREW_PREFIX}/bin/plzip"
   elsif File.exist? "#{CREW_PREFIX}/bin/lzip"
     compress = "#{CREW_PREFIX}/bin/lzip"
-  elsif File.exist? "#{CREW_PREFIX}/bin/xz"
-    compress = "#{CREW_PREFIX}/bin/xz"
   else
-    compress = "/usr/bin/xz"
+    puts 'Warning: Could not find lzip binary, using xz to compress instead.'.orange
+    compress = "xz"
   end
 
   if Dir.exist? dir
