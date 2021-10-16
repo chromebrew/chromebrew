@@ -18,7 +18,7 @@ class Py3_pip < Package
   binary_sha256({
     aarch64: '2cbadf25b7a92858b4f0b31680c0936b4e760fe2be0f7bf2ebdb6d8b615841d6',
      armv7l: '2cbadf25b7a92858b4f0b31680c0936b4e760fe2be0f7bf2ebdb6d8b615841d6',
-     x86_64: 'c2262af02126182189df0a77e8de9ba3021718d1c2339f84f198e36d83295dc4'
+     x86_64: '0df516ed964fb67a36d69028c256e0e085f506058b5d517287888c1cbd9cf527'
   })
 
   depends_on 'python3'

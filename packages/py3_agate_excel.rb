@@ -10,6 +10,17 @@ class Py3_agate_excel < Package
   source_url 'https://github.com/wireservice/agate-excel.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_armv7l/py3_agate_excel-0.2.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_armv7l/py3_agate_excel-0.2.5-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_x86_64/py3_agate_excel-0.2.5-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '644676da8ea3ca6d2c6e1a1f67c450650975b6328df0be8bb03b94ddda543802',
+     armv7l: '644676da8ea3ca6d2c6e1a1f67c450650975b6328df0be8bb03b94ddda543802',
+     x86_64: '2b70388af3662a5715d99925d9533f1f3728e064f33ef4b494633a43ecd67d7f'
+  })
+
   depends_on 'py3_xlrd'
   depends_on 'py3_openpyxl'
   depends_on 'py3_olefile'

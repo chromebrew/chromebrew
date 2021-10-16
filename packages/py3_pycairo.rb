@@ -10,6 +10,17 @@ class Py3_pycairo < Package
   source_url 'https://github.com/pygobject/pycairo.git'
   git_hashtag "v#{@_ver}"
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_armv7l/py3_pycairo-1.20.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_armv7l/py3_pycairo-1.20.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_x86_64/py3_pycairo-1.20.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '11ad7cd1f05820807b2618e20848abb4411fbfcba06c5460d7a00b5933afc426',
+     armv7l: '11ad7cd1f05820807b2618e20848abb4411fbfcba06c5460d7a00b5933afc426',
+     x86_64: '99346236c668f51cb077c5e9a49388bdf54860fb144590dfffdedef6c1710498'
+  })
+
   depends_on 'cairo'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'

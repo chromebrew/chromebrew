@@ -11,10 +11,14 @@ class Wayland < Package
   source_sha256 'baccd902300d354581cd5ad3cc49daa4921d55fb416a5883e218750fef166d15'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_x86_64/wayland-1.19.0-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_armv7l/wayland-1.19.0-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_armv7l/wayland-1.19.0-2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_x86_64/wayland-1.19.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '387c4a312b12b4866e49f0f3871359c397817f23ee8796f660d98b1d8945109c'
+    aarch64: '2cb13dc6358d676682edf69c56195bc1c0b50ddc654ee32d79acbbe2f65ffb7a',
+     armv7l: '2cb13dc6358d676682edf69c56195bc1c0b50ddc654ee32d79acbbe2f65ffb7a',
+     x86_64: '3dba84fba4ca31b4cb0989154b292b57e298fe87a057267b63a8fc206f79fd4e'
   })
 
   depends_on 'expat'

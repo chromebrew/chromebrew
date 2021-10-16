@@ -10,6 +10,17 @@ class Py3_cython < Package
   source_url 'https://github.com/cython/cython.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_armv7l/py3_cython-0.29.24-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_armv7l/py3_cython-0.29.24-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_x86_64/py3_cython-0.29.24-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '7cb152a53eb2224396a9dabf40983ef06b385ed50a725ff62f5eab0fad916b06',
+     armv7l: '7cb152a53eb2224396a9dabf40983ef06b385ed50a725ff62f5eab0fad916b06',
+     x86_64: '91c98f487829261223a8c0547df33bde48c5884ba32e31461aa9c1a57e199c1e'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build
