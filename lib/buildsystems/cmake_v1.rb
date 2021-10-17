@@ -19,15 +19,6 @@ class Cmake_v1 < Package
     @check
   end
 
-  def self.lto? (bool)
-    if bool == false
-      @lto = false
-    else
-      @lto = true
-    end
-    @lto
-  end
-
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
