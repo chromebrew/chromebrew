@@ -27,7 +27,7 @@ class Autotools_v1 < Package
       end
     end
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-              #{@confiugre_options}"
+              #{@configure_options}"
     system 'make'
   end
 
