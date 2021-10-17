@@ -15,6 +15,6 @@ class M4 < Autotools_v1
   configure_options "--with-libsigsegv \
                     --with-packager='Chromebrew' \
                     --with-packager-version='#{CREW_VERSION}' \
-                    --with-packager-bug-repororts='https://github.com/skycocker/chromebrew/issues'"
+                    --with-packager-bug-reports='https://github.com/skycocker/chromebrew/issues'"
   check? true
 end

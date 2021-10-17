@@ -4,21 +4,13 @@ class Setup_py_v1 < Package
   @_buildsystems_setup_py_version = '1.0.0'
 
   def self.check? (bool)
-    if bool == true
-      @check = true
-    else
-      @check = false
-    end
-    @check
+    @check = bool
+    return @check
   end
 
   def self.svem? (bool)
-    if bool == false
-      @svem = false
-    else
-      @svem = true
-    end
-    @svem
+    @svem = bool
+    return @svem
   end
 
   def self.python_version (pyversion)

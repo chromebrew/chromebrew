@@ -11,12 +11,8 @@ class Meson_v1 < Package
   end
 
   def self.check? (bool)
-    if bool == true
-      @check = true
-    else
-      @check = false
-    end
-    @check
+    @check = bool
+    return @check
   end
 
   def self.build
