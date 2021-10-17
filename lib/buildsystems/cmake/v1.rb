@@ -28,7 +28,7 @@ class Cmake_v1 < Package
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 
-  if @check == true
+  if @check
     def self.check
       system 'samu -C builddir test'
     end

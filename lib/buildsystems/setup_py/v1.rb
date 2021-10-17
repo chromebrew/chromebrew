@@ -14,11 +14,14 @@ class Setup_py_v1 < Package
   end
 
   def self.build
+    if @python == nil
+      @python = 'python3'
+    end
     system "#{@python} setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 
   def self.install
-    if @svem == false
+    unless @svem
       @py_setup_install_options = PY_SETUP_INSTALL_OPTIONS_NO_SVEM
     else
       @py_setup_install_options = PY_SETUP_INSTALL_OPTIONS

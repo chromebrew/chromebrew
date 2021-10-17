@@ -17,10 +17,10 @@ class Autotools_v1 < Package
 
   def self.build
     # Run autoreconf if necessary
-    unless File.exist? './configure'
-      if File.exist? './autogen.sh'
+    unless File.executable? './configure'
+      if File.executable? './autogen.sh'
         system 'NOCONFIGURE=1 ./autogen.sh'
-      elsif File.exist? './bootstrap'
+      elsif File.executable? './bootstrap'
         system 'NOCONFIGURE=1 ./bootstrap'
       else
         system 'autoreconf -fiv'
@@ -35,7 +35,7 @@ class Autotools_v1 < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
-  if @check == true
+  if @check
     def self.check
       system 'make', 'check'
     end
