@@ -40,7 +40,6 @@ class Setup_py_v1 < Package
     else
       @py_setup_install_options = PY_SETUP_INSTALL_OPTIONS
     end
-    puts @py_setup_install_options.yellow
     system "#{@python} setup.py install #{@py_setup_install_options}"
   end
 end
