@@ -1,4 +1,4 @@
-require 'buildsystems/cmake_v1'
+require 'buildsystems/cmake/v1'
 
 class Libgit2 < Cmake_v1
   description 'A portable, pure C implementation of the Git core methods'

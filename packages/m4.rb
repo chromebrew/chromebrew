@@ -1,4 +1,4 @@
-require 'buildsystems/autotools_v1'
+require 'buildsystems/autotools/v1'
 
 class M4 < Autotools_v1
   description 'GNU M4 is an implementation of the traditional Unix macro processor.'

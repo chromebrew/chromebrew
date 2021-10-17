@@ -1,4 +1,4 @@
-require 'buildsystems/meson_v1'
+require 'buildsystems/meson/v1'
 
 class Xorg_proto < Meson_v1
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
