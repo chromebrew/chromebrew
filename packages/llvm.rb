@@ -11,10 +11,14 @@ class Llvm < Package
   source_sha256 '6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_x86_64/llvm-13.0.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_armv7l/llvm-13.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_armv7l/llvm-13.0.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_x86_64/llvm-13.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: 'e22c6565e635ac4fc64e15416608fabaf4faa5a39998d5accd16596cc730afd9'
+    aarch64: 'b31e993e87b2b11540a207c2c9e905244c2380a31f07b1f5820847ac0de2dcd7',
+     armv7l: 'b31e993e87b2b11540a207c2c9e905244c2380a31f07b1f5820847ac0de2dcd7',
+     x86_64: 'e22c6565e635ac4fc64e15416608fabaf4faa5a39998d5accd16596cc730afd9'
   })
 
   depends_on 'ocaml' => :build
