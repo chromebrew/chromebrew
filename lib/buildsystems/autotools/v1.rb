@@ -3,14 +3,14 @@ require 'package'
 class Autotools_v1 < Package
   @_buildsystems_autotools_version = '1.0.0'
 
-  def self.configure_options (options = nil)
+  def self.configure_options (options = '')
     if options
       @configure_options = options
     end
-    @configure_options
+    return @configure_options
   end
 
-  def self.check? (bool)
+  def self.check? (bool = false)
     @check = bool
     return @check
   end
@@ -27,7 +27,7 @@ class Autotools_v1 < Package
       end
     end
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-              #{@conifugre_options}"
+              #{@confiugre_options}"
     system 'make'
   end
 

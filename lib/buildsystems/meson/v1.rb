@@ -3,14 +3,14 @@ require 'package'
 class Meson_v1 < Package
   @_buildsystems_meson_version = '1.0.0'
 
-  def self.meson_options (options = nil)
+  def self.meson_options (options = '')
     if options
       @meson_options = options
     end
-    @meson_options
+    return @meson_options
   end
 
-  def self.check? (bool)
+  def self.check? (bool = false)
     @check = bool
     return @check
   end

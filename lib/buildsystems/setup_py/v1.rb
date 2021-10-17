@@ -3,23 +3,14 @@ require 'package'
 class Setup_py_v1 < Package
   @_buildsystems_setup_py_version = '1.0.0'
 
-  def self.check? (bool)
-    @check = bool
-    return @check
-  end
-
-  def self.svem? (bool)
+  def self.svem? (bool = true)
     @svem = bool
     return @svem
   end
 
-  def self.python_version (pyversion)
-    if pyversion == '2'
-      @python = 'python2'
-    elsif pyversion == '3'
-      @python = 'python3'
-    end
-    @python
+  def self.python_version (pyversion = '3')
+    @python = 'python' + pyversion
+    return @python
   end
 
   def self.build
