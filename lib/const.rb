@@ -12,7 +12,7 @@ ARCH = ( ARCH_ACTUAL == 'armv8l' ) ? 'armv7l' : ARCH_ACTUAL
 ARCH_LIB = ( ARCH == 'x86_64' and Dir.exist?('/lib64') ) ? 'lib64' : 'lib'
 
 # Glibc version can be found from the output of libc.so.6
-LIBC_VERSION = %x[/#{ARCH_LIB}/libc.so.6][/version ([\d.]+)\./, 1]
+LIBC_VERSION = %x[/#{ARCH_LIB}/libc.so.6].split(/Gentoo /)[1].split(/-/)[0].to_s
 
 unless ENV['CREW_PREFIX'].to_s.empty? or ENV['CREW_PREFIX'] == '/usr/local'
   CREW_BUILD_FROM_SOURCE = 1
