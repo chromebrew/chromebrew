@@ -575,7 +575,7 @@ def upgrade
     # Check version number of installed package and make a target list
     toBeUpdated = []
     dependencies.each do |dep|
-      package = @device[:installed_packages].select {|pkg| pkg[:name] == dep}
+      package = @device[:installed_packages].select {|pkg| pkg[:name] == dep} [0]
       next unless package
       search package[:name], true
       if package[:version] != @pkg.version
