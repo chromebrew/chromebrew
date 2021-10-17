@@ -872,20 +872,15 @@ def compress_doc(dir)
   return if CREW_NOT_COMPRESS
 
   # check for an lzip implementation, if none, use xz instead
-  if File.exist? "#{CREW_PREFIX}/bin/plzip"
-    compress = "#{CREW_PREFIX}/bin/plzip"
-  elsif File.exist? "#{CREW_PREFIX}/bin/lzip"
-    compress = "#{CREW_PREFIX}/bin/lzip"
-  elsif File.exist? "#{CREW_PREFIX}/bin/clzip"
-    compress = "#{CREW_PREFIX}/bin/clzip"
+  if File.exist? "#{CREW_PREFIX}/bin/lzip"
+    compress = 'lzip'
   else
-    puts 'Warning: Could not find lzip binary, using xz to compress instead.'.orange
-    compress = "xz"
+    compress = 'xz'
   end
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "find #{dir} -type f -exec #{compress} -9 #{@short_verbose} {} \\;"
+    system "compressdoc --#{compress} -9 #{@short_verbose} #{@_short_verbose} #{dir}"
   end
 end
 
