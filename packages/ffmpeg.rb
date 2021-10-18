@@ -10,10 +10,14 @@ class Ffmpeg < Package
   source_url 'SKIP'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_x86_64/ffmpeg-4.4-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_armv7l/ffmpeg-4.4-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_armv7l/ffmpeg-4.4-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_x86_64/ffmpeg-4.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '122561076a8add8f71c98de46c81fe72647ca61d49f65bfdb15ac6befd532073'
+    aarch64: '6747bc70eeafe775f7786087d40ea49b94fdf2f1583bd23b47d1d4824e169497',
+     armv7l: '6747bc70eeafe775f7786087d40ea49b94fdf2f1583bd23b47d1d4824e169497',
+     x86_64: '122561076a8add8f71c98de46c81fe72647ca61d49f65bfdb15ac6befd532073'
   })
 
   depends_on 'avisynthplus' # ?

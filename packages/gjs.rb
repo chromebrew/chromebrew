@@ -11,10 +11,14 @@ class Gjs < Package
   git_hashtag @_ver
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.70.0_x86_64/gjs-1.70.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.70.0_armv7l/gjs-1.70.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.70.0_armv7l/gjs-1.70.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.70.0_x86_64/gjs-1.70.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '2431c3e3f578dd8570349140729630d7916d49f9cf0b127097cad2e0fdaa1fe5'
+    aarch64: 'c7529e8c72b504c609c77485d0c2df0a0bae7a84399d9f239c0adb00e2a8d2d6',
+     armv7l: 'c7529e8c72b504c609c77485d0c2df0a0bae7a84399d9f239c0adb00e2a8d2d6',
+     x86_64: '2431c3e3f578dd8570349140729630d7916d49f9cf0b127097cad2e0fdaa1fe5'
   })
 
   depends_on 'cairo' # R
