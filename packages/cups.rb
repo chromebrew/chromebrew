@@ -4,23 +4,17 @@ class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
   @_ver = '2.3.3op2'
-  version @_ver
+  version "#{@_ver}-1"
   license 'Apache-2.0'
   compatibility 'all'
   source_url "https://github.com/OpenPrinting/cups/releases/download/v#{@_ver}/cups-#{@_ver}-source.tar.gz"
   source_sha256 'deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_i686/cups-2.3.3op2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_x86_64/cups-2.3.3op2-chromeos-x86_64.tar.xz'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_x86_64/cups-2.3.3op2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'cf7fb54c659bb5f01c3097274864c3e0bf1669f0d6a8a1e6df82e6c403ad5264',
-     armv7l: 'cf7fb54c659bb5f01c3097274864c3e0bf1669f0d6a8a1e6df82e6c403ad5264',
-       i686: '74e029c12bf5af1545ca74ffddf0f70fda68bebaaab22c264d7541c2c7b570aa',
-     x86_64: '993136847f961e31b04906a36334278df723c12c5e55c7d7cf9ee797fad2ed88'
+    x86_64: 'd938256c56276c7e401a236ea183d2167bee03ec5e3f13d0ffd3e56656b34293'
   })
 
   depends_on 'libusb'
@@ -28,10 +22,7 @@ class Cups < Package
   depends_on 'psmisc'
 
   def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system "#{CREW_ENV_OPTIONS} AR=$(which gcc-ar) ./configure #{CREW_OPTIONS} \
       --disable-launchd \
       --disable-systemd \
       --enable-libusb"

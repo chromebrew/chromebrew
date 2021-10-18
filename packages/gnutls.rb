@@ -3,7 +3,7 @@ require 'package'
 class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.7.2'
+  version '3.7.2-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.2.tar.xz'
