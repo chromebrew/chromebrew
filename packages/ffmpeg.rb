@@ -4,22 +4,16 @@ class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
   @_ver = '4.4'
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_armv7l/ffmpeg-4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_armv7l/ffmpeg-4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_i686/ffmpeg-4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_x86_64/ffmpeg-4.4-chromeos-x86_64.tar.xz'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_x86_64/ffmpeg-4.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '745e2246e2e0dbe5b4484484d3f2cd5a1c018c998286b3947f0ca90c576da79a',
-     armv7l: '745e2246e2e0dbe5b4484484d3f2cd5a1c018c998286b3947f0ca90c576da79a',
-       i686: 'c09e49cd35e4a08120cb41f2c0731276e2fdf370939d87d69825705474e0c29d',
-     x86_64: '5b5fcfc511a47302007f5408d876ee25bfcde9c63d4c4afb08b48059e0ea8ef1'
+    x86_64: '122561076a8add8f71c98de46c81fe72647ca61d49f65bfdb15ac6befd532073'
   })
 
   depends_on 'avisynthplus' # ?

@@ -11,10 +11,14 @@ class Cups < Package
   source_sha256 'deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_x86_64/cups-2.3.3op2-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_armv7l/cups-2.3.3op2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_armv7l/cups-2.3.3op2-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_x86_64/cups-2.3.3op2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: 'd938256c56276c7e401a236ea183d2167bee03ec5e3f13d0ffd3e56656b34293'
+    aarch64: 'c570b9075a8f0cd53b30031081f469330171ddbb034018f159533b467573ba0e',
+     armv7l: 'c570b9075a8f0cd53b30031081f469330171ddbb034018f159533b467573ba0e',
+     x86_64: 'd938256c56276c7e401a236ea183d2167bee03ec5e3f13d0ffd3e56656b34293'
   })
 
   depends_on 'libusb'

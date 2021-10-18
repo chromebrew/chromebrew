@@ -10,14 +10,14 @@ class P11kit < Package
   source_sha256 '284d209e045ebc7e30ccb479c7b559edfcb5433d665b497386dd35291826e39c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0_armv7l/p11kit-0.24.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0_armv7l/p11kit-0.24.0-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_x86_64/p11kit-0.24.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_armv7l/p11kit-0.24.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_armv7l/p11kit-0.24.0-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_x86_64/p11kit-0.24.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2ca3f06bf7057b4ddddb2fd0338e995fce6bf7c609120698a6218687cebd4bb1',
-     armv7l: '2ca3f06bf7057b4ddddb2fd0338e995fce6bf7c609120698a6218687cebd4bb1',
-    x86_64: '8259e4144eea281d3da641b7973e807518f521db62c552691a2e8d65f879ee87'
+    aarch64: '5eb5c9e6046d6a124235c797c14d06e2c82dde0161ba55bec3caa2463cdc0d0f',
+     armv7l: '5eb5c9e6046d6a124235c797c14d06e2c82dde0161ba55bec3caa2463cdc0d0f',
+     x86_64: '8259e4144eea281d3da641b7973e807518f521db62c552691a2e8d65f879ee87'
   })
 
   depends_on 'libffi'

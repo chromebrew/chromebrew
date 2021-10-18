@@ -10,11 +10,16 @@ class Rtmpdump < Package
   git_hashtag 'f1b83c10d8beb43fcc70a6e88cf4325499f25857'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/f1b83_x86_64/rtmpdump-f1b83-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/f1b83_armv7l/rtmpdump-f1b83-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/f1b83_armv7l/rtmpdump-f1b83-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/f1b83_x86_64/rtmpdump-f1b83-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '7e76a4f0a4f359f5ab8283ac175c4dc85f2d54aad1413840240627e810d5c6c0'
+    aarch64: '93a414b097aaf7e2a2c412fb412d6403563427e5a008b98bf2d26d7bbdfb5f3a',
+     armv7l: '93a414b097aaf7e2a2c412fb412d6403563427e5a008b98bf2d26d7bbdfb5f3a',
+     x86_64: '7e76a4f0a4f359f5ab8283ac175c4dc85f2d54aad1413840240627e810d5c6c0'
   })
+
   @make_common_opts = ['SYS=posix', "prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}",
                        "mandir=#{CREW_PREFIX}/share/man", 'CRYPTO=GNUTLS']
 
