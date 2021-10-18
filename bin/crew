@@ -4,13 +4,10 @@ require_relative '../lib/color'
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 
-require 'find'
-require 'net/http'
 require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require 'securerandom'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
@@ -433,7 +430,7 @@ def const(var)
     # Get all constants
     @constants = Module.constants.select {|e| e =~ /[[:upper:]]$/}
     # Reject all constants which match the default list
-    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.find{ |f| /\A#{e}\z/ =~ f }}
+    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.any? { |f| /\A#{e}\z/ =~ f }}
     # Print a sorted list of the remaining constants used by crew.
     @constants.sort.each { |var|
       value = eval(var.to_s)
@@ -578,7 +575,7 @@ def upgrade
     # Check version number of installed package and make a target list
     toBeUpdated = []
     dependencies.each do |dep|
-      package = @device[:installed_packages].find {|pkg| pkg[:name] == dep}
+      package = @device[:installed_packages].select {|pkg| pkg[:name] == dep} [0]
       next unless package
       search package[:name], true
       if package[:version] != @pkg.version
@@ -927,10 +924,8 @@ def prepare_package(destdir)
     # check for conflicts with other installed files
     puts "Checking for conflicts with files from installed packages..."
     conflicts = []
-    @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
-      -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
-      sed 's,.filelist,,g' | sed 's,#{CREW_META_PATH},,g'"
-    conflicts << %x[#{@conflictscmd}].chomp.split(" ")
+    @conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist].chomp
+    conflicts << @conflictscmd.gsub(/(:|filelist|#{CREW_META_PATH})/, '').split(' ')
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
       if CREW_CONFLICTS_ONLY_ADVISORY == '1'
@@ -965,7 +960,7 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
-    # make hard linked files symlinks and use upx on executables
+    # use upx on executables
     shrink_dir destdir
   end
 end
@@ -1001,10 +996,6 @@ def shrink_dir(dir)
       if File.exist?("#{CREW_PREFIX}/bin/rdfind")
         puts "Using rdfind to find duplicate or hard linked files."
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
-      end
-      if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-        puts "Using symlinks tool to make absolute symlinks relative"
-        system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
       end
       # Issues with non-x86_64 in compressing libraries, so just compress
       # non-libraries. Also note that one needs to use "upx -d" on a
@@ -1350,18 +1341,18 @@ def remove(pkgName)
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
       #remove all files installed by the package
-      File.open("meta/#{pkgName}.filelist").each_line do |line|
+      File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|
         # Do not remove essential files from gcc or libssp which ruby
         # relies on, especially during package upgrades or reinstalls.
         # These essential files are enumerated in const.rb as
         # CREW_ESSENTIAL_FILES.
-        if CREW_ESSENTIAL_FILES.include? line.chomp
+        if CREW_ESSENTIAL_FILES.include?(line)
           if @opt_verbose
-            puts "Removing #{line.chomp} will break crew. It was " +
+            puts "Removing #{line} will break crew. It was " +
                  'NOT'.lightred + ' deleted.'
           end
         else
-          puts 'Removing file ' + line.chomp + ''.lightred if @opt_verbose
+          puts "Removing file #{line}".lightred if @opt_verbose
           begin
             File.unlink line.chomp
           rescue => exception #swallow exception
@@ -1370,32 +1361,27 @@ def remove(pkgName)
       end
 
       #remove all directories installed by the package
-      File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
+      File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
         begin
-          puts 'Removing directory ' + line.chomp + ''.lightred if @opt_verbose
-          Dir.rmdir line.chomp
+          puts 'Removing directory ' + line + ''.lightred if @opt_verbose
+          Dir.rmdir line
         rescue => exception #swallow exception
         end
       end
 
       #remove the file and directory list
-      File.unlink "meta/#{pkgName}.filelist"
-      File.unlink "meta/#{pkgName}.directorylist"
+      FileUtils.rm_f "meta/#{pkgName}.filelist"
+      FileUtils.rm_f "meta/#{pkgName}.directorylist"
 
     end
   end
 
   #remove from installed packages
   puts 'Removing package ' + pkgName + "".lightred if @opt_verbose
-  @device[:installed_packages].each do |elem|
-    @device[:installed_packages].delete elem if elem[:name] == pkgName
-  end
+  @device[:installed_packages].delete_if {|elem| elem[:name] == pkgName }
 
   #update the device manifest
-  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
-    out = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(out)
-  end
+  File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate( JSON.parse(@device.to_json) )
 
   search pkgName, true
   @pkg.remove
@@ -1549,10 +1535,9 @@ def whatprovides_command(args)
 end
 
 def is_command(name)
-  return false if name =~ /^[-<]/
-  return true
+  return !!!name[/^[-<]/]
 end
 
-command_name = args.find { |k, v| v && is_command(k) } [0]
+command_name = args.select { |k, v| v and is_command(k) } .keys[0]
 function = command_name + '_command'
 send(function, args)
