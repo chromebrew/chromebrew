@@ -11,14 +11,14 @@ class Librsync < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2_armv7l/librsync-2.3.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2_armv7l/librsync-2.3.2-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_x86_64/librsync-2.3.2-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_armv7l/librsync-2.3.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_armv7l/librsync-2.3.2-1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_x86_64/librsync-2.3.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b90a721754a98a77666b6aeaf4e76992e2ccfc3894bc44a61217306186b900d8',
-     armv7l: 'b90a721754a98a77666b6aeaf4e76992e2ccfc3894bc44a61217306186b900d8',
-    x86_64: 'fdcbab57b6c0ca16bbcb83a5d33577b6655d49c1ab3b8d86b243957f6ba76c05'
+    aarch64: '28eec7479ef645f14297d3fc1d1db80bdf8d054ed78888ecd391f8804f2c0805',
+     armv7l: '28eec7479ef645f14297d3fc1d1db80bdf8d054ed78888ecd391f8804f2c0805',
+     x86_64: 'fdcbab57b6c0ca16bbcb83a5d33577b6655d49c1ab3b8d86b243957f6ba76c05'
   })
 
   depends_on 'cmake' => :build

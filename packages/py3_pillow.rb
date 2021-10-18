@@ -16,8 +16,8 @@ class Py3_pillow < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.2_x86_64/py3_pillow-8.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0aa75be0dba67b13e2e2016dc86953a2bc56d9d6a8c261f675045121a281e37d',
-     armv7l: '0aa75be0dba67b13e2e2016dc86953a2bc56d9d6a8c261f675045121a281e37d',
+    aarch64: '4162b722681015798da39e782b7f8a492e9f4659eaf7b91b46c1e0f106201e10',
+     armv7l: '4162b722681015798da39e782b7f8a492e9f4659eaf7b91b46c1e0f106201e10',
      x86_64: '0bb3b009e7c3ba3df74efeab479f65203f0e6d452f0fa246eb8963aeb7f7d746'
   })
 

@@ -16,8 +16,8 @@ class Wayland < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_x86_64/wayland-1.19.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2cb13dc6358d676682edf69c56195bc1c0b50ddc654ee32d79acbbe2f65ffb7a',
-     armv7l: '2cb13dc6358d676682edf69c56195bc1c0b50ddc654ee32d79acbbe2f65ffb7a',
+    aarch64: '9f6c1d28fccf5238fa79b698b9a567dc0690a674eb38321731c21dee9c562a14',
+     armv7l: '9f6c1d28fccf5238fa79b698b9a567dc0690a674eb38321731c21dee9c562a14',
      x86_64: '3dba84fba4ca31b4cb0989154b292b57e298fe87a057267b63a8fc206f79fd4e'
   })
 

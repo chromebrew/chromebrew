@@ -16,8 +16,8 @@ class Py3_cffi < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_x86_64/py3_cffi-1.15.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '24bb953fbec81c1eb4c8b07f25bf5c7333d4bbd251a1b2388422db3adf7bf627',
-     armv7l: '24bb953fbec81c1eb4c8b07f25bf5c7333d4bbd251a1b2388422db3adf7bf627',
+    aarch64: '262ba47fd9c537d67a47ff1960123d1e103f7dff9212d0d397870b3f7ffe5a2e',
+     armv7l: '262ba47fd9c537d67a47ff1960123d1e103f7dff9212d0d397870b3f7ffe5a2e',
      x86_64: '14962629743c54cf9ccf97cb8f3d4b1561a817c91f55e01d1ae7908a306d488a'
   })
 

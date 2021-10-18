@@ -16,8 +16,8 @@ class Py3_greenlet < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_greenlet/1.1.2_x86_64/py3_greenlet-1.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '74d2f75fce417fdcf5f0c38cfd4e99b6ba3e27378b6f24df86cdac0c3d364fb5',
-     armv7l: '74d2f75fce417fdcf5f0c38cfd4e99b6ba3e27378b6f24df86cdac0c3d364fb5',
+    aarch64: '3973fdaf733d14da300d17980880183c45d8d6d4110d03e15f02c97a1f4caf6a',
+     armv7l: '3973fdaf733d14da300d17980880183c45d8d6d4110d03e15f02c97a1f4caf6a',
      x86_64: '4717465c5a34afac6d33fb97ed713290e199a067f01ec0bc4ce4e52a6a86708b'
   })
 

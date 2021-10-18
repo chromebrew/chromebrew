@@ -16,8 +16,8 @@ class Py3_libxml2 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_x86_64/py3_libxml2-2.9.12-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd2390c711d8f261e1dbd5c193796bc18b47c9b27728730ddccb478302fc9f478',
-     armv7l: 'd2390c711d8f261e1dbd5c193796bc18b47c9b27728730ddccb478302fc9f478',
+    aarch64: '23a51d55df0b0da57e5dd22271efc40bca272f085c41a47caf7d3b9f31420c81',
+     armv7l: '23a51d55df0b0da57e5dd22271efc40bca272f085c41a47caf7d3b9f31420c81',
      x86_64: '110b87135cf67d05d3eb2291db13b2146f15ef9d33096903e61534a5ffcc78b6'
   })
 

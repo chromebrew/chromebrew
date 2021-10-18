@@ -15,8 +15,8 @@ class Cairo < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4-1_x86_64/cairo-1.17.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '03c6f9c849edf2736de57db8801aea7660d2250d14ed55417bf538ec26ec9787',
-     armv7l: '03c6f9c849edf2736de57db8801aea7660d2250d14ed55417bf538ec26ec9787',
+    aarch64: 'd565cf9531e2248dc81df24bf667fb6798d72e92b3db77c86087137b3f63dd03',
+     armv7l: 'd565cf9531e2248dc81df24bf667fb6798d72e92b3db77c86087137b3f63dd03',
      x86_64: '85538c1aac1a7a4cc4061a2b9d94e4dd04f51d9991e102025f145c936b169147'
   })
 
