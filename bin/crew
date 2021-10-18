@@ -1036,7 +1036,7 @@ def shrink_dir(dir)
             pool.post do
               begin
                 puts "Attempting to compress #{execfile.chomp} ...".lightblue
-                system "upx --best -k --overlay=skip #{execfile}"
+                system "upx --lzma -k --overlay=skip #{execfile}"
                 system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
               rescue
                 FileUtils.mv "#{execfile}.~", execfile

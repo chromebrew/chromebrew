@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.17.4'
+CREW_VERSION = '1.17.6'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -12,7 +12,7 @@ ARCH = ( ARCH_ACTUAL == 'armv8l' ) ? 'armv7l' : ARCH_ACTUAL
 ARCH_LIB = ( ARCH == 'x86_64' and Dir.exist?('/lib64') ) ? 'lib64' : 'lib'
 
 # Glibc version can be found from the output of libc.so.6
-LIBC_VERSION = %x[/#{ARCH_LIB}/libc.so.6][/version ([\d.]+)\./, 1]
+LIBC_VERSION = %x[/#{ARCH_LIB}/libc.so.6][/Gentoo ([^-]+)/, 1]
 
 unless ENV['CREW_PREFIX'].to_s.empty? or ENV['CREW_PREFIX'] == '/usr/local'
   CREW_BUILD_FROM_SOURCE = 1
