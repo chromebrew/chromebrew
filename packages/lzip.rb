@@ -9,24 +9,11 @@ class Lzip < Package
   source_url 'https://download.savannah.gnu.org/releases/lzip/lzip-1.22.tar.gz'
   source_sha256 'c3342d42e67139c165b8b128d033b5c96893a13ac5f25933190315214e87a948'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22_armv7l/lzip-1.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22_armv7l/lzip-1.22-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22_i686/lzip-1.22-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22_x86_64/lzip-1.22-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '670ab03acd4f929fd315e719b1c66c3b56651617449559d28f15b5124522f0e8',
-     armv7l: '670ab03acd4f929fd315e719b1c66c3b56651617449559d28f15b5124522f0e8',
-       i686: 'ff9c0ee2ffeca603bfc2754b256064168b353d02ed6506eff4008c961ba6b79b',
-     x86_64: '77c7eb34fe9a72694f1c9fe10f8c27e3205526f90b7bd55c6e659dd34e7b60f8',
-  })
-
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} \
               --libdir=#{CREW_LIB_PREFIX} \
               CXX=#{CREW_TGT}-g++ \
-              CXXFLAGS='#{CREW_COMMON_FLAGS}'"
+              CXXFLAGS='#{CREW_COMMON_FLAGS} -static'"
     system 'make'
   end
 
