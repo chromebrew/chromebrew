@@ -3,21 +3,21 @@ require 'package'
 class Mutter < Package
   description 'A window manager for GNOME'
   homepage 'https://wiki.gnome.org/Projects/Mutter'
-  version '40.3'
+  version '41.0'
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/mutter.git'
   git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_armv7l/mutter-40.3-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_armv7l/mutter-40.3-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_x86_64/mutter-40.3-chromeos-x86_64.tpxz'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_x86_64/mutter-41.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'ad5d9c51bd569a9a6a06fecf2075eb63ed70817f4c29abf7ececbceeb50fe7d4',
      armv7l: 'ad5d9c51bd569a9a6a06fecf2075eb63ed70817f4c29abf7ececbceeb50fe7d4',
-     x86_64: 'd1427dea256c51647c61f7e1d8987fe4ce87aee6d98c79993bdaf5657f74b186'
+    x86_64: '1dbf561eb457bb72023362e41f995c7820fb5c5b899a1f157e43a5722531dbe7'
   })
 
   depends_on 'ccache' => :build
@@ -39,6 +39,7 @@ class Mutter < Package
     -Dprofiler=false \
     -Dopengl=true \
     -Dglx=true \
+    -Dsystemd=false \
     -Dwayland=true \
     -Dnative_backend=true \
     -Dcogl_tests=true \
