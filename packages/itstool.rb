@@ -16,9 +16,9 @@ class Itstool < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7_x86_64/itstool-2.0.7-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '051b42e8eeb683dd174a593fb0740ce0e375e59decc420f2216ec27d6fc5f653',
-     armv7l: '051b42e8eeb683dd174a593fb0740ce0e375e59decc420f2216ec27d6fc5f653',
-     x86_64: 'a992780f5ebdeb44b9102df8c55fedb0683d131f5828829afa6f4332f0cbe9f8'
+    aarch64: 'a53d37953b18e110b2b2d18db0db8bb1d82014cc06381c0f8469e85acaed1804',
+     armv7l: 'a53d37953b18e110b2b2d18db0db8bb1d82014cc06381c0f8469e85acaed1804',
+     x86_64: '25530780e3c206688d01f4d9c27fa1ac86049256ead47c441d0e6a1c4878fc50'
   })
 
   depends_on 'py3_libxml2'
