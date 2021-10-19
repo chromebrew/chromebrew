@@ -10,14 +10,14 @@ class Gnome_shell < Package
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/40.4_armv7l/gnome_shell-40.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/40.4_armv7l/gnome_shell-40.4-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_x86_64/gnome_shell-41.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_armv7l/gnome_shell-41.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_armv7l/gnome_shell-41.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_x86_64/gnome_shell-41.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e0e29ad64f3a9d9f9f6e09cade8fe94dbfa6b13ada2cdb22a8acd391d230cf1b',
-     armv7l: 'e0e29ad64f3a9d9f9f6e09cade8fe94dbfa6b13ada2cdb22a8acd391d230cf1b',
-    x86_64: '6afe54dadee75fb2a4b1794d68237ddcc17ac0eea5aafd679ae534d2b876f7cb'
+    aarch64: 'eea813182b4fb943620beab82fabbdbde3b68cae8867ebc938e35c6a90612918',
+     armv7l: 'eea813182b4fb943620beab82fabbdbde3b68cae8867ebc938e35c6a90612918',
+     x86_64: '6afe54dadee75fb2a4b1794d68237ddcc17ac0eea5aafd679ae534d2b876f7cb'
   })
 
   depends_on 'gcr'

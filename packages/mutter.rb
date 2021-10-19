@@ -10,14 +10,14 @@ class Mutter < Package
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_armv7l/mutter-40.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/40.3_armv7l/mutter-40.3-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_x86_64/mutter-41.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_armv7l/mutter-41.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_armv7l/mutter-41.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_x86_64/mutter-41.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ad5d9c51bd569a9a6a06fecf2075eb63ed70817f4c29abf7ececbceeb50fe7d4',
-     armv7l: 'ad5d9c51bd569a9a6a06fecf2075eb63ed70817f4c29abf7ececbceeb50fe7d4',
-    x86_64: '1dbf561eb457bb72023362e41f995c7820fb5c5b899a1f157e43a5722531dbe7'
+    aarch64: '584f9f6e7413fcc037f6062dd3dba29d356556a58d0206b0401b3c4d34594352',
+     armv7l: '584f9f6e7413fcc037f6062dd3dba29d356556a58d0206b0401b3c4d34594352',
+     x86_64: '1dbf561eb457bb72023362e41f995c7820fb5c5b899a1f157e43a5722531dbe7'
   })
 
   depends_on 'ccache' => :build

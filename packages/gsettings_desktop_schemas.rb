@@ -11,14 +11,14 @@ class Gsettings_desktop_schemas < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/40.0_armv7l/gsettings_desktop_schemas-40.0-chromeos-armv7l.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_x86_64/gsettings_desktop_schemas-41.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_armv7l/gsettings_desktop_schemas-41.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_armv7l/gsettings_desktop_schemas-41.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/41.0_x86_64/gsettings_desktop_schemas-41.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',
-     armv7l: '2b7288bf9e021ae99686f1a09521154c1e12f8ccb6e370797fe345c729e80c76',
-    x86_64: '5454f7a310fbaf115dac44142dcc45436838fdc874f5647d7f056a76e656e9a8'
+    aarch64: '84fb838d4cde372d9c93ccfaa00be432a6c31b926550a6e3a6f758c7147b8db2',
+     armv7l: '84fb838d4cde372d9c93ccfaa00be432a6c31b926550a6e3a6f758c7147b8db2',
+     x86_64: '5454f7a310fbaf115dac44142dcc45436838fdc874f5647d7f056a76e656e9a8'
   })
 
   depends_on 'gnome_common'
