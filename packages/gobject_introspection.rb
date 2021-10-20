@@ -13,11 +13,13 @@ class Gobject_introspection < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.70.0-1_armv7l/gobject_introspection-1.70.0-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.70.0-1_armv7l/gobject_introspection-1.70.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.70.0-1_i686/gobject_introspection-1.70.0-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.70.0-1_x86_64/gobject_introspection-1.70.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5eb28e864dbaead1f78ef2caeb00c57d42ced3d9c044e2b30179a3fd529b3f30',
      armv7l: '5eb28e864dbaead1f78ef2caeb00c57d42ced3d9c044e2b30179a3fd529b3f30',
+       i686: '994518a21f2c7fa705a186510b5ec739058c858a7b728dbd09efbdff16c39948',
      x86_64: 'b44fc8463ff340776c2038da369277fda23d7c1d5fe95f138a666b0204817995'
   })
 

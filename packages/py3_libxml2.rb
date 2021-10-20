@@ -13,11 +13,13 @@ class Py3_libxml2 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_armv7l/py3_libxml2-2.9.12-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_armv7l/py3_libxml2-2.9.12-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_i686/py3_libxml2-2.9.12-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_x86_64/py3_libxml2-2.9.12-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '23a51d55df0b0da57e5dd22271efc40bca272f085c41a47caf7d3b9f31420c81',
      armv7l: '23a51d55df0b0da57e5dd22271efc40bca272f085c41a47caf7d3b9f31420c81',
+       i686: 'e8f22dabb406142751817081e2ccbec49fb38b148d15c677ba44de658f73b4cd',
      x86_64: '110b87135cf67d05d3eb2291db13b2146f15ef9d33096903e61534a5ffcc78b6'
   })
 

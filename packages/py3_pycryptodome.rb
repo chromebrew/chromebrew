@@ -13,11 +13,13 @@ class Py3_pycryptodome < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycryptodome/3.11.0_armv7l/py3_pycryptodome-3.11.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycryptodome/3.11.0_armv7l/py3_pycryptodome-3.11.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycryptodome/3.11.0_i686/py3_pycryptodome-3.11.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycryptodome/3.11.0_x86_64/py3_pycryptodome-3.11.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '435a62001b83311c45bed96d3b9d2866152b849f1b28ed2d219f6abecdecb60f',
      armv7l: '435a62001b83311c45bed96d3b9d2866152b849f1b28ed2d219f6abecdecb60f',
+       i686: '2ccddf959598017bd0d83d3e40e301ab3e7e899c3b05d4ff0a2dc4c20497d0a5',
      x86_64: 'cc486ec9c6b439229a35b0790e7979b3c771658c99d00963aeb9116d87867ed9'
   })
 

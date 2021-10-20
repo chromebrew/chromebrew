@@ -12,11 +12,13 @@ class Cairo < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4-1_armv7l/cairo-1.17.4-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4-1_armv7l/cairo-1.17.4-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4-1_i686/cairo-1.17.4-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.4-1_x86_64/cairo-1.17.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'd565cf9531e2248dc81df24bf667fb6798d72e92b3db77c86087137b3f63dd03',
      armv7l: 'd565cf9531e2248dc81df24bf667fb6798d72e92b3db77c86087137b3f63dd03',
+       i686: '070df0379e6f08ed51a8bee21c9d0929a584050b442e856dd17092d0e8c6e75e',
      x86_64: '85538c1aac1a7a4cc4061a2b9d94e4dd04f51d9991e102025f145c936b169147'
   })
 

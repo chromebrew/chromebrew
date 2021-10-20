@@ -13,11 +13,13 @@ class Py3_cffi < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_armv7l/py3_cffi-1.15.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_armv7l/py3_cffi-1.15.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_i686/py3_cffi-1.15.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_x86_64/py3_cffi-1.15.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '262ba47fd9c537d67a47ff1960123d1e103f7dff9212d0d397870b3f7ffe5a2e',
      armv7l: '262ba47fd9c537d67a47ff1960123d1e103f7dff9212d0d397870b3f7ffe5a2e',
+       i686: 'ffab938379ef9dc671a8229d5d7d4f57e7d9d55aedc9055e486dff35dfa4494c',
      x86_64: '14962629743c54cf9ccf97cb8f3d4b1561a817c91f55e01d1ae7908a306d488a'
   })
 
