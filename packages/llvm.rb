@@ -82,6 +82,29 @@ class Llvm < Package
     # system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
     # system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
     # system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
+
+    # Patch for i686 in llvm 13 via https://bugs.llvm.org/show_bug.cgi?id=51917
+    @llvm13_i686_patch = <<~LLVM_HEREDOC
+      --- a/lldb/source/Plugins/Process/Linux/IntelPTManager.cpp
+      +++ b/lldb/source/Plugins/Process/Linux/IntelPTManager.cpp
+      @@ -145,7 +145,11 @@ static Error CheckPsbPeriod(size_t psb_period) {
+       }
+
+       size_t IntelPTThreadTrace::GetTraceBufferSize() const {
+      +#ifndef PERF_ATTR_SIZE_VER5
+      +  llvm_unreachable("Intel PT Linux perf event not supported");
+      +#else
+         return m_mmap_meta->aux_size;
+      +#endif
+       }
+
+       static Expected<uint64_t>
+    LLVM_HEREDOC
+    case ARCH
+    when 'i686'
+      IO.write('llvm13_i686.patch', @llvm13_i686_patch)
+      system 'patch -Np1 -i llvm13_i686.patch'
+    end
   end
 
   def self.build
