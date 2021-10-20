@@ -13,11 +13,13 @@ class Itstool < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7_armv7l/itstool-2.0.7-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7_armv7l/itstool-2.0.7-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7_i686/itstool-2.0.7-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7_x86_64/itstool-2.0.7-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'a53d37953b18e110b2b2d18db0db8bb1d82014cc06381c0f8469e85acaed1804',
      armv7l: 'a53d37953b18e110b2b2d18db0db8bb1d82014cc06381c0f8469e85acaed1804',
+       i686: 'c6598e2338dce0a657eeba8e8a8864f675a43023fe1b7b0275f92f0ddb0e5264',
      x86_64: '25530780e3c206688d01f4d9c27fa1ac86049256ead47c441d0e6a1c4878fc50'
   })
 
