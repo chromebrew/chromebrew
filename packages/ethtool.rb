@@ -18,9 +18,9 @@ class Ethtool < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ethtool/5.14_x86_64/ethtool-5.14-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'cd96fbac9f4b9a76be99479b780795dbd6b8e2dffca87ecf7a7238710a7a8af2',
-     armv7l: 'cd96fbac9f4b9a76be99479b780795dbd6b8e2dffca87ecf7a7238710a7a8af2',
-     x86_64: 'db9958acc1f93a202b25c543ba811a12bea5cc7ea3a634a828aee7e2d9b5294a'
+    aarch64: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
+     armv7l: 'ded7bc75870dca4c022bb97fc99a2da72f54833d3ab077f44bce5ea551de72dc',
+     x86_64: 'b32262fb8c150d67098b274a7181288caf07dcbcac508307125ba4bff8926b81'
   })
 
   depends_on 'libmnl'
@@ -28,12 +28,16 @@ class Ethtool < Package
   def self.build
     system "#{CREW_ENV_OPTIONS} \
              ./configure #{CREW_OPTIONS} \
-             --mandir=#{CREW_PREFIX}/share/man \
+             --mandir=#{CREW_MAN_PREFIX} \
              --sbindir=#{CREW_PREFIX}/bin"
     system 'make'
   end
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
+  end
+
+  def self.check
+    system 'make check'
   end
 end
