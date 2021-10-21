@@ -12,7 +12,11 @@ class Gcc < Package
 
   begin
     @gcc_ver, status = Open3.capture2("#{CREW_PREFIX}/bin/gcc -dumpversion")
-  rescue
+  rescue StandardError
   end
-  depends_on status.exitstatus == 0 ? "gcc#{@gcc_ver.chomp}" : 'gcc11'
+  depends_on status.exitstatus.zero? ? "gcc#{@gcc_ver.chomp}" : 'gcc11'
+
+  def self.postinstall
+    puts "Current GCC version: #{@gcc_ver.chomp}.x".lightblue
+  end
 end
