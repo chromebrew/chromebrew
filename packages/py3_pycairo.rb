@@ -13,11 +13,13 @@ class Py3_pycairo < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_armv7l/py3_pycairo-1.20.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_armv7l/py3_pycairo-1.20.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_i686/py3_pycairo-1.20.1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_x86_64/py3_pycairo-1.20.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '826fe011a1613ab0d40a00bb97b9cd900b3fad2112db76e0e0ab59307176a4ec',
      armv7l: '826fe011a1613ab0d40a00bb97b9cd900b3fad2112db76e0e0ab59307176a4ec',
+       i686: 'bd456953dc84ad8df6e13614657588d9a2914346cf563aaa1bdeb0c5c340bccd',
      x86_64: '99346236c668f51cb077c5e9a49388bdf54860fb144590dfffdedef6c1710498'
   })
 

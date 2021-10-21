@@ -15,11 +15,13 @@ class Py3_lxml < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3-1_armv7l/py3_lxml-4.6.3-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3-1_armv7l/py3_lxml-4.6.3-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3-1_i686/py3_lxml-4.6.3-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3-1_x86_64/py3_lxml-4.6.3-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'f2bca8546b632cd5d46f162c0b1ee1c6d484b2e3f85b043e164227214492fa6e',
      armv7l: 'f2bca8546b632cd5d46f162c0b1ee1c6d484b2e3f85b043e164227214492fa6e',
+       i686: 'ea5f86d39e13638c3b1b05215b28b3b03d007297de3253c17a8b3ee05ccb4b7d',
      x86_64: '8ebb5cfc0782ee41bc5691b567b77ccfcadc109db4e88af0006174e1d36e3a4e'
   })
 

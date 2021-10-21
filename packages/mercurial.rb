@@ -13,11 +13,13 @@ class Mercurial < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/5.9.2_armv7l/mercurial-5.9.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/5.9.2_armv7l/mercurial-5.9.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/5.9.2_i686/mercurial-5.9.2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mercurial/5.9.2_x86_64/mercurial-5.9.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '144612b4e724584a23ebc84bc456e253090931492a377d4502894f8b2f1b719f',
      armv7l: '144612b4e724584a23ebc84bc456e253090931492a377d4502894f8b2f1b719f',
+       i686: 'c29089d54206ba59a520701e165b908ceaeb7e1d8e6015d367b57a1b9736082d',
      x86_64: '429d53235c70be2a251c2324982222b4836ed4fe15d912d86b577836655157ce'
   })
 

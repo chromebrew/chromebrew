@@ -13,11 +13,13 @@ class Py3_cython < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_armv7l/py3_cython-0.29.24-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_armv7l/py3_cython-0.29.24-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_i686/py3_cython-0.29.24-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_x86_64/py3_cython-0.29.24-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'c745cef9419f350142ab65cef8ff72cd5830abc69ba2d22b3b4e25722b897265',
      armv7l: 'c745cef9419f350142ab65cef8ff72cd5830abc69ba2d22b3b4e25722b897265',
+       i686: '77117c4fbf7b4c9c41609bc4b87843da1aa254faf462ab6d2135edfc12ef2fca',
      x86_64: '91c98f487829261223a8c0547df33bde48c5884ba32e31461aa9c1a57e199c1e'
   })
 

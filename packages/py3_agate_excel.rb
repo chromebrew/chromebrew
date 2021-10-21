@@ -13,11 +13,13 @@ class Py3_agate_excel < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_armv7l/py3_agate_excel-0.2.5-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_armv7l/py3_agate_excel-0.2.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_i686/py3_agate_excel-0.2.5-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_x86_64/py3_agate_excel-0.2.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '41de1c7c3185ed212896b7470621f59b0cb04155333fc018fb614074bffd3934',
      armv7l: '41de1c7c3185ed212896b7470621f59b0cb04155333fc018fb614074bffd3934',
+       i686: '197b12254b48926ecfbe24514245a6891c013019fd5ac158ddd30606e436ac66',
      x86_64: '2b70388af3662a5715d99925d9533f1f3728e064f33ef4b494633a43ecd67d7f'
   })
 

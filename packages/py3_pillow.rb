@@ -13,11 +13,13 @@ class Py3_pillow < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.2_armv7l/py3_pillow-8.3.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.2_armv7l/py3_pillow-8.3.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.2_i686/py3_pillow-8.3.2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.2_x86_64/py3_pillow-8.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '4162b722681015798da39e782b7f8a492e9f4659eaf7b91b46c1e0f106201e10',
      armv7l: '4162b722681015798da39e782b7f8a492e9f4659eaf7b91b46c1e0f106201e10',
+       i686: '54973b9fd4ec25c0f4e5782db4eeafd69b6054a8c0c3ca692ff0fc716ea49968',
      x86_64: '0bb3b009e7c3ba3df74efeab479f65203f0e6d452f0fa246eb8963aeb7f7d746'
   })
 

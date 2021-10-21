@@ -13,11 +13,13 @@ class Py3_pystemmer < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1-1_armv7l/py3_pystemmer-2.0.1-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1-1_armv7l/py3_pystemmer-2.0.1-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1-1_i686/py3_pystemmer-2.0.1-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1-1_x86_64/py3_pystemmer-2.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '9ebf7e03588dd8b9e308814b12d148f21d6a95da44378bae988a4696b77a4006',
      armv7l: '9ebf7e03588dd8b9e308814b12d148f21d6a95da44378bae988a4696b77a4006',
+       i686: 'a2fe821f92a6220552af34f4560fb1b728a68c9e581d9b455972e23748d3efe0',
      x86_64: 'afc0a9d659e8d4e74f06d50b0bd40499c063418cf48bffd262bdff6645e73a16'
   })
 
