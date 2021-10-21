@@ -8,6 +8,7 @@ class Gcc < Package
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
 
+  is_fake
 
   begin
     @gcc_ver, status = Open3.capture2("#{CREW_PREFIX}/bin/gcc -dumpversion")
