@@ -12,11 +12,13 @@ class P11kit < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_armv7l/p11kit-0.24.0-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_armv7l/p11kit-0.24.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_i686/p11kit-0.24.0-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_x86_64/p11kit-0.24.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5eb5c9e6046d6a124235c797c14d06e2c82dde0161ba55bec3caa2463cdc0d0f',
      armv7l: '5eb5c9e6046d6a124235c797c14d06e2c82dde0161ba55bec3caa2463cdc0d0f',
+       i686: '3c94ae2d63f1eef43f6e680d80b99b8eb2c51a4b026f607745f8d04f1fa92fc7',
      x86_64: '8259e4144eea281d3da641b7973e807518f521db62c552691a2e8d65f879ee87'
   })
 
