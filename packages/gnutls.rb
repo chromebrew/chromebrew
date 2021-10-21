@@ -12,13 +12,13 @@ class Gnutls < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_armv7l/gnutls-3.7.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_armv7l/gnutls-3.7.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_i686/gnutls-3.7.2-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2-1_i686/gnutls-3.7.2-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_x86_64/gnutls-3.7.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '610e93e9f684b6e0dcac110ad323f0f4037e5d464968788e8686fe8328c63d4f',
      armv7l: '610e93e9f684b6e0dcac110ad323f0f4037e5d464968788e8686fe8328c63d4f',
-       i686: '7849bf00eadd86e4eaead29de780b446aea8da21524221c4a98fc39532e5673f',
+       i686: 'fca8cc007f701f3764e7159ff7b075d787a00e4f5fec107e8127cb04413337d4',
      x86_64: '6570141b5100fee1bf0bf75012beea7b641bec5a0d79c131d22f2b20b042008a'
   })
 
