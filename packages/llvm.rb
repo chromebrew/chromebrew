@@ -13,11 +13,13 @@ class Llvm < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_armv7l/llvm-13.0.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_armv7l/llvm-13.0.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_i686/llvm-13.0.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_x86_64/llvm-13.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'b31e993e87b2b11540a207c2c9e905244c2380a31f07b1f5820847ac0de2dcd7',
      armv7l: 'b31e993e87b2b11540a207c2c9e905244c2380a31f07b1f5820847ac0de2dcd7',
+       i686: 'db42fbcb4cf18893f4b4a976b13e8baacea763dce3e72aa99a1fda7e1e416d70',
      x86_64: 'e22c6565e635ac4fc64e15416608fabaf4faa5a39998d5accd16596cc730afd9'
   })
 
@@ -102,7 +104,7 @@ class Llvm < Package
     LLVM_HEREDOC
     case ARCH
     when 'i686'
-      IO.write('llvm13_i686.patch', @llvm13_i686_patch)
+      File.write('llvm13_i686.patch', @llvm13_i686_patch)
       system 'patch -Np1 -i llvm13_i686.patch'
     end
   end
