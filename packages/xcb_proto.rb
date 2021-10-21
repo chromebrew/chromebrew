@@ -12,11 +12,13 @@ class Xcb_proto < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-1_armv7l/xcb_proto-1.14.1-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-1_armv7l/xcb_proto-1.14.1-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-1_i686/xcb_proto-1.14.1-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-1_x86_64/xcb_proto-1.14.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '51a4e97cece7e7e607c4b23ef77664d0b2d5ad1e31709fbf93f9a4f484edddc5',
      armv7l: '51a4e97cece7e7e607c4b23ef77664d0b2d5ad1e31709fbf93f9a4f484edddc5',
+       i686: '803c3acd7382789cdb8937389c567cf8d4211463f55d740c3a11e54d5e1b9def',
      x86_64: 'd83ce95516759805672daf6410796e2fd09973f93d1d813fee13e7cfc66f3690'
   })
 
