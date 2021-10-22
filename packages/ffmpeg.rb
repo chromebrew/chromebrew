@@ -12,11 +12,13 @@ class Ffmpeg < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_armv7l/ffmpeg-4.4-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_armv7l/ffmpeg-4.4-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_i686/ffmpeg-4.4-1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4-1_x86_64/ffmpeg-4.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '6747bc70eeafe775f7786087d40ea49b94fdf2f1583bd23b47d1d4824e169497',
      armv7l: '6747bc70eeafe775f7786087d40ea49b94fdf2f1583bd23b47d1d4824e169497',
+       i686: '2f541b4792917ec035bada49fb09dcfcf9626dbd9bef1f55a4bf7d2e426666ad',
      x86_64: '122561076a8add8f71c98de46c81fe72647ca61d49f65bfdb15ac6befd532073'
   })
 
@@ -41,6 +43,7 @@ class Ffmpeg < Package
   depends_on 'jack' # R
   depends_on 'libaom' # R
   depends_on 'libass' # R
+  depends_on 'leptonica' => :build
   depends_on 'libavc1394' # R
   depends_on 'libbluray' # R
   depends_on 'libdrm' # R
@@ -112,12 +115,11 @@ class Ffmpeg < Package
       # up configure script generation, so use mawk.
       system "sed -i 's/awk/mawk/g' configure"
       system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
-        CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
-        LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
+        CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
+        LDFLAGS='-U_FORTIFY_SOURCE #{@lto}' \
         CC=clang CXX=clang++ \
         ./configure \
         --arch=#{ARCH} \
-        #{CREW_OPTIONS.sub(/--build=.*/, '')} \
         --disable-debug \
         --enable-avisynth \
         --enable-ffplay \
@@ -176,7 +178,8 @@ class Ffmpeg < Package
         --enable-shared \
         --enable-version3 \
         --host-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
-        --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}'"
+        --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
+        #{CREW_OPTIONS.sub(/--build=.*/, '')}"
 
       system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
         make"
