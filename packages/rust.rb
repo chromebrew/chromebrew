@@ -10,12 +10,16 @@ class Rust < Package
   source_url 'SKIP'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_i686/rust-1.56.0-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_x86_64/rust-1.56.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_i686/rust-1.56.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_x86_64/rust-1.56.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    i686: '810c2435b303fb41cd37fc06c2af0136afbd6cfefff438d159c6444ff784be2d',
-  x86_64: 'b264a4ddb67628da00cb07441f7497200e9a4aa26dc90cacd7ca03f0785f06d3'
+    aarch64: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
+     armv7l: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
+       i686: '810c2435b303fb41cd37fc06c2af0136afbd6cfefff438d159c6444ff784be2d',
+     x86_64: 'b264a4ddb67628da00cb07441f7497200e9a4aa26dc90cacd7ca03f0785f06d3'
   })
 
   def self.install
@@ -35,7 +39,7 @@ class Rust < Package
     system "RUSTFLAGS='-Clto=thin' bash ./rustup.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{@_ver} --profile minimal"
     system "install -Dm644 #{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo #{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo"
     FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo")
-    system "touch #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
+    FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
     FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
     FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/doc/")
