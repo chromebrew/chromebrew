@@ -575,7 +575,7 @@ def upgrade
     # Check version number of installed package and make a target list
     toBeUpdated = []
     dependencies.each do |dep|
-      package = @device[:installed_packages].select {|pkg| pkg[:name] == dep}
+      package = @device[:installed_packages].select {|pkg| pkg[:name] == dep} [0]
       next unless package
       search package[:name], true
       if package[:version] != @pkg.version
@@ -1042,7 +1042,7 @@ def shrink_dir(dir)
             pool.post do
               begin
                 puts "Attempting to compress #{execfile.chomp} ...".lightblue
-                system "upx --best -k --overlay=skip #{execfile}"
+                system "upx --lzma -k --overlay=skip #{execfile}"
                 system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
               rescue
                 FileUtils.mv "#{execfile}.~", execfile
