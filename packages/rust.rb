@@ -12,13 +12,13 @@ class Rust < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_i686/rust-1.56.0-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_i686/rust-1.56.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_x86_64/rust-1.56.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
      armv7l: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
-       i686: '810c2435b303fb41cd37fc06c2af0136afbd6cfefff438d159c6444ff784be2d',
+       i686: 'e893e42a51e9283f84785bd7e00e7d742314e122056e612a756ab071c4cdc4fb',
      x86_64: 'b264a4ddb67628da00cb07441f7497200e9a4aa26dc90cacd7ca03f0785f06d3'
   })
 
