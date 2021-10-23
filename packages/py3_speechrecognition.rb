@@ -17,10 +17,10 @@ class Py3_speechrecognition < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_speechrecognition/3.8.1-1_x86_64/py3_speechrecognition-3.8.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'afeaccf883b59a06cb867d28304aa1ddf5d241471ea99bd2a0ac365b787a3684',
-     armv7l: 'afeaccf883b59a06cb867d28304aa1ddf5d241471ea99bd2a0ac365b787a3684',
-       i686: 'bd06930987301099ee4d5ef0ea75bd65985a8e3c3af0ea9c7f6ebec90c819117',
-     x86_64: '02fb72edebb23f4faeeb6c6a0e26d4985bee4a878556186d76c2e7b922eeeb32'
+    aarch64: 'c5ce5dffc5505a1ab1e1f04499f240e85f33fb36bd7ea917cd5d7f1a5de6bf77',
+     armv7l: 'c5ce5dffc5505a1ab1e1f04499f240e85f33fb36bd7ea917cd5d7f1a5de6bf77',
+       i686: '875b1e7ec7e45f47dcfb767d21f75d2f23ad38fbf8f0d81bf8789f7053bf083f',
+     x86_64: '095fb255a9245b66a4d1e174ea285362abd575b7d9f8227fef08f17fcef81b59'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_pycairo < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_x86_64/py3_pycairo-1.20.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '826fe011a1613ab0d40a00bb97b9cd900b3fad2112db76e0e0ab59307176a4ec',
-     armv7l: '826fe011a1613ab0d40a00bb97b9cd900b3fad2112db76e0e0ab59307176a4ec',
-       i686: 'bd456953dc84ad8df6e13614657588d9a2914346cf563aaa1bdeb0c5c340bccd',
-     x86_64: '99346236c668f51cb077c5e9a49388bdf54860fb144590dfffdedef6c1710498'
+    aarch64: '4ec3c476ae325d46812a4174b20adf344d61487ef53e4bfae3e8f7ab324a41ce',
+     armv7l: '4ec3c476ae325d46812a4174b20adf344d61487ef53e4bfae3e8f7ab324a41ce',
+       i686: '9aefbedc80f65dc265ebcf9c04867e2b8efa87622f11d6af85f1c1fce0296554',
+     x86_64: '12baa4a5e9f92a6dacd349302b32fd22e563d5d74b71521d5e8e49820c7a54e3'
   })
 
   depends_on 'cairo'

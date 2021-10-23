@@ -17,10 +17,10 @@ class Py3_psutil < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-2_x86_64/py3_psutil-5.8.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '27109725b7c9df19f4692365354a113acf8816336eb0b2aa97afb65c508efd13',
-     armv7l: '27109725b7c9df19f4692365354a113acf8816336eb0b2aa97afb65c508efd13',
-       i686: '216fbd0a957b6647d3aa9ac6f584c0165b34ad1777414ba1a4364124e409cb4e',
-     x86_64: '61e863bb00f473b6aae418093de26b2a43d14af5962572464c4770f76f607ac4'
+    aarch64: 'c7103a26b4591e1a486837714a5ac2cde818b94caf5eff1b99d59c065a01b307',
+     armv7l: 'c7103a26b4591e1a486837714a5ac2cde818b94caf5eff1b99d59c065a01b307',
+       i686: 'e8a3ffd3b4eb3d4435d01b1d9a6cfc194c5481194832e2140b6b0198848020d4',
+     x86_64: '927183cd08ffe1b9bd63acfc805908ad15cc8c7673338e44941d07d0a1bcd981'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -10,6 +10,19 @@ class Py3_beautifulsoup4 < Package
   source_url 'https://files.pythonhosted.org/packages/a1/69/daeee6d8f22c997e522cdbeb59641c4d31ab120aba0f2c799500f7456b7e/beautifulsoup4-4.10.0.tar.gz'
   source_sha256 'c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891'
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_beautifulsoup4/4.10.0_armv7l/py3_beautifulsoup4-4.10.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_beautifulsoup4/4.10.0_armv7l/py3_beautifulsoup4-4.10.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_beautifulsoup4/4.10.0_i686/py3_beautifulsoup4-4.10.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_beautifulsoup4/4.10.0_x86_64/py3_beautifulsoup4-4.10.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'fe8bd7370c07bac92c1aea4bd76417acf71d413884c40736c23e0fdfa31ee710',
+     armv7l: 'fe8bd7370c07bac92c1aea4bd76417acf71d413884c40736c23e0fdfa31ee710',
+       i686: '805801901ccf3842df333b34ebc97769d9007a6f877bbb86487192016e55ffb9',
+     x86_64: '02ec216e63b13eb9d337f327bb4d25ff0119dd829829678a60ab57e8cd4605e3'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build

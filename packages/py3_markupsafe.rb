@@ -17,10 +17,10 @@ class Py3_markupsafe < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markupsafe/2.0.1_x86_64/py3_markupsafe-2.0.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f61c4962ef53f9b7aa0213c9ff76740e1aee65585457dea39394406ef32cc6d5',
-     armv7l: 'f61c4962ef53f9b7aa0213c9ff76740e1aee65585457dea39394406ef32cc6d5',
-       i686: '92f36993ea896542970cbe7daa88102aafcb1fb4f7553302fe63fa008bb4f2d4',
-     x86_64: '554f29131f2f8a4314a0e5e9f5927d5972509ff526283c166c557d085d7fcbd4'
+    aarch64: 'a3dbfc766a5de540948b8626e1530f7c3b239d3cd674d58a8781032343d309be',
+     armv7l: 'a3dbfc766a5de540948b8626e1530f7c3b239d3cd674d58a8781032343d309be',
+       i686: 'b996fefd01e75933baa5fe6c8dbf5d0dbe82a223c68f8ea002856ea551ccaf52',
+     x86_64: '979b8c51b25a847618e773da0d1bab55dcc3b1abcd8384a5812fe0d935e7b488'
   })
 
   depends_on 'py3_setuptools' => :build

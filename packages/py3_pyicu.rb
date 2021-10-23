@@ -17,10 +17,10 @@ class Py3_pyicu < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.7.4_x86_64/py3_pyicu-2.7.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '113ab0d2742d1bd74f63a3f7047c0f6693ee5304631694c5927c820e20ca5022',
-     armv7l: '113ab0d2742d1bd74f63a3f7047c0f6693ee5304631694c5927c820e20ca5022',
-       i686: '0d30a56f81feb0e0c289166e49c8efeb8250c419ee9bc2c8ef51fa2a5214fe1f',
-     x86_64: '81692fdc014a1a17b08e4d2268ebb2d8868cdfba157b7d0950e64fda07f53211'
+    aarch64: '415b5709280c94e764f2ab42cfd89f2c33c39413253cb287b1ec897a0745cc6a',
+     armv7l: '415b5709280c94e764f2ab42cfd89f2c33c39413253cb287b1ec897a0745cc6a',
+       i686: 'f063c881ca7a432f1b2d1d23a117cec5a616dc340c1fe0ff0b936948260acf91',
+     x86_64: 'ee5f21f9258cb515ad8d07ecff4c86522ccd63685c951198baa54427a86ddeb5'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -13,12 +13,14 @@ class Py3_setuptools < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/58.2.0_armv7l/py3_setuptools-58.2.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/58.2.0_armv7l/py3_setuptools-58.2.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/58.2.0_i686/py3_setuptools-58.2.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/58.2.0_x86_64/py3_setuptools-58.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c14dc8751ba9d9afd6d6bd8e1b71208044d96cdc67e76031a9682f318b6e68df',
-     armv7l: 'c14dc8751ba9d9afd6d6bd8e1b71208044d96cdc67e76031a9682f318b6e68df',
-     x86_64: 'e3b12a6ae7564f25d964f2f68dee55a07e3a93c950d88f7bc2d952eb15167af1'
+    aarch64: '5b6921438cf08e88cfa0d4fdecc61e5eb8140dab650fffd260549a50133f60da',
+     armv7l: '5b6921438cf08e88cfa0d4fdecc61e5eb8140dab650fffd260549a50133f60da',
+       i686: 'ce979469a5b1a5aedf3773eb698960dd98d92762e14fc0ec7ae780c587769bf5',
+     x86_64: 'b8f4281610d8efd9796d37deed684a934101aa70bc6abf132fb930763a251202'
   })
 
   depends_on 'py3_packaging'

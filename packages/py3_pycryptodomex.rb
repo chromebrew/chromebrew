@@ -17,10 +17,10 @@ class Py3_pycryptodomex < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycryptodomex/3.11.0_x86_64/py3_pycryptodomex-3.11.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '10934e94f68d2a69da0997d04bc12d2a3829d7b34d51c6e11cfc50a2f1cf29b2',
-     armv7l: '10934e94f68d2a69da0997d04bc12d2a3829d7b34d51c6e11cfc50a2f1cf29b2',
-       i686: 'eb8306edd96461f652d7f13aeabc25ba890505472aa23409be13537b810aa11a',
-     x86_64: '8f554bafacdf6b784796f53018c1e8997664b0944428c58399b5b094c09cd225'
+    aarch64: '46dc315f262c0d32e2af899f2e653a094997d543aba1d3bed8aebf697d237a8a',
+     armv7l: '46dc315f262c0d32e2af899f2e653a094997d543aba1d3bed8aebf697d237a8a',
+       i686: '48785793958d45b5ce1e92ea386cdf7b3e39ae4d4622e9fb04db9b64bd9431dc',
+     x86_64: 'ee30655620726f03c3880a9efed3eda56e25be47b380ed31e2f3b7d017dec1a2'
   })
 
   depends_on 'py3_setuptools' => :build

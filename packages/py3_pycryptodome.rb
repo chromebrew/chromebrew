@@ -17,10 +17,10 @@ class Py3_pycryptodome < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycryptodome/3.11.0_x86_64/py3_pycryptodome-3.11.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '435a62001b83311c45bed96d3b9d2866152b849f1b28ed2d219f6abecdecb60f',
-     armv7l: '435a62001b83311c45bed96d3b9d2866152b849f1b28ed2d219f6abecdecb60f',
-       i686: '2ccddf959598017bd0d83d3e40e301ab3e7e899c3b05d4ff0a2dc4c20497d0a5',
-     x86_64: 'cc486ec9c6b439229a35b0790e7979b3c771658c99d00963aeb9116d87867ed9'
+    aarch64: '223c87b03a0786401de352def04643f6c5877802403096e56d66c8485733c320',
+     armv7l: '223c87b03a0786401de352def04643f6c5877802403096e56d66c8485733c320',
+       i686: '2986352e310c17fb04d1aa2339d6858a9c20891285e66ddfaa4bd5bc31a0139e',
+     x86_64: '5487fc4119e0d8e0efe75e3b3d143647a5f1927afe83fb7d85cf32dd0bdec5c0'
   })
 
   depends_on 'py3_setuptools' => :build

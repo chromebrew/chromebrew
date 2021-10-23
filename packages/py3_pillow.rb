@@ -17,10 +17,10 @@ class Py3_pillow < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/8.3.2_x86_64/py3_pillow-8.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4162b722681015798da39e782b7f8a492e9f4659eaf7b91b46c1e0f106201e10',
-     armv7l: '4162b722681015798da39e782b7f8a492e9f4659eaf7b91b46c1e0f106201e10',
-       i686: '54973b9fd4ec25c0f4e5782db4eeafd69b6054a8c0c3ca692ff0fc716ea49968',
-     x86_64: '0bb3b009e7c3ba3df74efeab479f65203f0e6d452f0fa246eb8963aeb7f7d746'
+    aarch64: '9e4f7a4d8d8e1b8d0cc3a2d201939223acec8a03e94a42d6ae1e8a01034aa6c0',
+     armv7l: '9e4f7a4d8d8e1b8d0cc3a2d201939223acec8a03e94a42d6ae1e8a01034aa6c0',
+       i686: '517d96c4e8ca397ecacc5ae7844c7caed4acb45053e3ecdeda35569eae034832',
+     x86_64: '034a8bcea83d704926b0af9a7b8595810d02daa2d601e73dacdbb511638dccf2'
   })
 
   depends_on 'py3_lxml'

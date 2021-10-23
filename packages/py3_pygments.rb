@@ -17,10 +17,10 @@ class Py3_pygments < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pygments/2.10.0_x86_64/py3_pygments-2.10.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5d059307372152d1913ce16ed8c4b93ffa7c38f9a84a7f7d8b0abef418030641',
-     armv7l: '5d059307372152d1913ce16ed8c4b93ffa7c38f9a84a7f7d8b0abef418030641',
-       i686: '007df1e0152019b04e7b51313c4ed69a1670acc8931fa7ccd2424361f58eda7a',
-     x86_64: '22d65dbc8ac96184a947a30b3a46db53b4ebb366be940e3850febc9153303511'
+    aarch64: 'b4cb569642d6d9e4f66e2d14e7132bfb55599d699b5d0d727fbef6021cf29391',
+     armv7l: 'b4cb569642d6d9e4f66e2d14e7132bfb55599d699b5d0d727fbef6021cf29391',
+       i686: 'c3a0b5839e184a6c5e19aa0ba41654f1a4853d7c0c50f7ca449a13054d86bc2f',
+     x86_64: 'f1129b5c03cf9ba43290e0db5a1c52ef37c006b0fc7aa52a677c5832959ad442'
   })
 
   depends_on 'py3_setuptools' => :build
