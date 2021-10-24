@@ -3,22 +3,22 @@ require 'package'
 class Jdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html'
-  version '8u301'
+  version '8u311'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_armv7l/jdk8-8u301-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_armv7l/jdk8-8u301-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_i686/jdk8-8u301-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u301_x86_64/jdk8-8u301-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u311_armv7l/jdk8-8u311-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u311_armv7l/jdk8-8u311-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u311_i686/jdk8-8u311-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u311_x86_64/jdk8-8u311-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '2d9a015c7b166433e271385fce079e10a69ce3d605f047c6607d988a263f6daa',
-     armv7l: '2d9a015c7b166433e271385fce079e10a69ce3d605f047c6607d988a263f6daa',
-       i686: '97e017c17b2c977bc3449b8edf06d370ec4a952d1407a5eb81a72907cfdca29a',
-     x86_64: 'edb2abc91c37ce7a1378a9e40e31116528037708df49aad64dccc18b9eb14b2c',
+    aarch64: '08748bcb7746a701b9181b00f9661f41228a89a859f75738edab9ea3a0fc0254',
+     armv7l: '08748bcb7746a701b9181b00f9661f41228a89a859f75738edab9ea3a0fc0254',
+       i686: '84d5315cfa1a3a65982a64028bc375601d41fd816187cd1476a75405296e2426',
+     x86_64: '9da28fdda2374b4449e23b4909910b5ac24ad05ff60c9fc9ff26ba15346343bf',
   })
 
   def self.preflight
@@ -31,13 +31,13 @@ class Jdk8 < Package
     case ARCH
     when 'aarch64', 'armv7l'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-arm32-vfp-hflt.tar.gz"
-      jdk_sha256 = '999615cd642d18f3cf04383c9f2a87d1acc85d598850742ef8d9ed5c6647d07a'
+      jdk_sha256 = 'd0748f7197fc49a73e50320699f1de4d3d3cd269bb4bdeb7dfd0a418ccfc1788'
     when 'i686'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-i586.tar.gz"
-      jdk_sha256 = '9d970ba3743a89ca9b7b8b11131f258f68f77cb1ce8840f6b2d9256cf9de594c'
+      jdk_sha256 = '42d9a2a66db962f205f370167625235b1624afb18c56198158a519b63cba835e'
     when 'x86_64'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-x64.tar.gz"
-      jdk_sha256 = 'f87ea91eb825ee45366f2653d97f8ca96527809a37982bad8fff19a2eaf3cd42'
+      jdk_sha256 = '759823389014292e84742a226b0e8fbaa08efa32adc6e6435a690c5576df3bb4'
     end
     unless File.exists? jdk_bin
       puts
@@ -54,7 +54,7 @@ class Jdk8 < Package
     system "tar xvf #{jdk_bin}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/jdk8"
-    FileUtils.cd 'jdk1.8.0_301' do
+    FileUtils.cd 'jdk1.8.0_311' do
       FileUtils.rm_f 'src.zip'
       FileUtils.rm_f 'javafx-src.zip'
       FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/jdk8/"
