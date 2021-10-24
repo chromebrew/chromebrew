@@ -21,9 +21,8 @@ class Gcc < Package
   end
 
   def self.postinstall
-    begin
+    unless @gcc_ver.nil?
       puts "Current GCC version: #{@gcc_ver.chomp}.x".lightblue
-    rescue
     end
   end
 end
