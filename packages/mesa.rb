@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.2.2'
+  @_ver = '21.2.4'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,14 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_i686/mesa-21.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_x86_64/mesa-21.2.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.4_armv7l/mesa-21.2.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.4_armv7l/mesa-21.2.4-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.4_x86_64/mesa-21.2.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-     armv7l: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-       i686: '7d28e75839baed8ceb15e677eba566b6501819c03cbe9f8067857d79a0bb9a7e',
-     x86_64: '82f5de3eb10852a5fdd40ac38b85ed3c4c17c9f7a67199417a9ebe8021552d2e'
+    aarch64: '79ec03bd14f979c0dac6508be7ee49c317bfb7ff00af792721a3fb03601e9657',
+     armv7l: '79ec03bd14f979c0dac6508be7ee49c317bfb7ff00af792721a3fb03601e9657',
+     x86_64: 'bee87666ba950e5d9f0e31546c4b2f7f150418026422574bd193f43a7461e74d'
   })
 
   depends_on 'glslang' => :build
@@ -73,7 +71,7 @@ class Mesa < Package
                  extern "C" {
                  #endif
       FREEDRENOPATCHEOF
-      IO.write('freedreno.patch', @freedrenopatch)
+      File.write('freedreno.patch', @freedrenopatch)
       system 'patch -Np1 -i freedreno.patch'
       # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505
       @tegrapatch = <<~TEGRAPATCHEOF
@@ -92,7 +90,7 @@ class Mesa < Package
                           assert(!fb->zsbuf);
                        }
       TEGRAPATCHEOF
-      IO.write('tegra.patch', @tegrapatch)
+      File.write('tegra.patch', @tegrapatch)
       system 'patch -Np1 -i tegra.patch'
     end
   end
