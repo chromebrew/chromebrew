@@ -21,6 +21,9 @@ class Gcc < Package
   end
 
   def self.postinstall
-    puts "Current GCC version: #{@gcc_ver.chomp}.x".lightblue
+    begin
+      puts "Current GCC version: #{@gcc_ver.chomp}.x".lightblue
+    rescue
+    end
   end
 end
