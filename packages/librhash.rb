@@ -8,7 +8,20 @@ class Librhash < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rhash/RHash.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    aarch64: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-armv7l.tpxz',
+     armv7l: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-armv7l.tpxz',
+       i686: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-i686.tpxz',
+     x86_64: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'e35ee8b1229d81ebb13041f149dd7a59cdd252ea992cabb1e963b1423d4cc398',
+     armv7l: 'e35ee8b1229d81ebb13041f149dd7a59cdd252ea992cabb1e963b1423d4cc398',
+       i686: 'd6aa44b3bf5c3330c37dd8135e2161c9ae5cf6b6840000b884f99cd8ab81b050',
+     x86_64: 'bd11b33586c3f8d9c0c21ca616aed57a8ebf2faee98e62854df86108193f6c4e'
+  })
 
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure \
@@ -26,5 +39,8 @@ class Librhash < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-lib-headers'
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-pkg-config'
+    Dir.chdir CREW_DEST_LIB_PREFIX do
+      FileUtils.ln_s 'librhash.so.0', 'librhash.so'
+    end
   end
 end

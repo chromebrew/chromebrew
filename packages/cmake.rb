@@ -1,14 +1,14 @@
-require 'package'
+ require 'package'
 
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
   @_ver = '3.21.3'
   version @_ver
+compatibility 'all'
   license 'CMake'
-  compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
 
   depends_on 'expat'
   depends_on 'jsoncpp'
@@ -18,6 +18,7 @@ class Cmake < Package
   depends_on 'libnghttp2'
   depends_on 'zstd'
   depends_on 'libarchive'
+  depends_on 'libcurl'
   depends_on 'librhash'
   depends_on 'libuv'
   depends_on 'llvm' => :build
@@ -29,33 +30,19 @@ class Cmake < Package
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./bootstrap \
-              --prefix=#{CREW_PREFIX} \
-              --docdir=#{CREW_PREFIX}/share/doc \
-              --mandir=#{CREW_MAN_PREFIX} \
-              --system-curl \
-              --system-expat \
-              --system-jsoncpp \
-              --system-zlib \
-              --system-bzip2 \
-              --system-liblzma \
-              --system-nghttp2 \
-              --system-zstd \
-              --system-libarchive \
-              --system-librhash \
-              --system-libuv \
-              --bootstrap-system-libuv \
-              --bootstrap-system-jsoncpp \
-              --bootstrap-system-librhash \
-              --no-qt-gui"
-    system 'make'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "#{CREW_ENV_OPTIONS} cmake \
+          -G Ninja \
+          #{CREW_CMAKE_OPTIONS} \
+          -DCMAKE_USE_SYSTEM_LIBRARIES=ON \
+          -DBUILD_QtDialog=NO \
+          .."
+    end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
