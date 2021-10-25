@@ -9,18 +9,16 @@ class Tar < Package
   source_url 'https://ftpmirror.gnu.org/gnu/tar/tar-1.34.tar.xz'
   source_sha256 '63bebd26879c5e1eea4352f0d03c991f966aeb3ddeb3c7445c902568d5411d28'
 
-  
-
   def self.build
-    system "./configure #{CREW_OPTIONS} --with-lzma=xz"
-    system "make"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} --with-lzma=xz"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
   end
 end
