@@ -17,19 +17,28 @@ class Libuv < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_x86_64/libuv-1.42.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '852d208cc9a612e5030b75c67921bb72e25cd5b8305541d18d44142c90095eae',
-     armv7l: '852d208cc9a612e5030b75c67921bb72e25cd5b8305541d18d44142c90095eae',
-       i686: '3a03a2ad4792ee2f590c3007e18c0891318c2825e2c4bfae3b3bf22aae6632e2',
-     x86_64: 'cb60ff3571ac0114354502698fcd4dea13c3f672ec3e1224587ced702df9e4fc'
+    aarch64: '7c8de7258951a636d8e4956bf54ce94bf32ffef80c1a5ffcb70c472cfde23b93',
+     armv7l: '7c8de7258951a636d8e4956bf54ce94bf32ffef80c1a5ffcb70c472cfde23b93',
+       i686: '02e4a7da7e2b43efd099e44b7097c2efbeda5bb306968ba014e77e420e8655ec',
+     x86_64: '85ec7265a2eaebec57b70199b94c7ff9a0e0eb94ad301fe0eb7a2b1f5f40132c'
   })
 
   def self.build
-    system './autogen.sh'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "#{CREW_ENV_OPTIONS} cmake \
+          -G Ninja \
+          #{CREW_CMAKE_OPTIONS} \
+          .."
+    end
+    system 'ninja -C builddir'
   end
 
+  # def self.check
+  #  system "ninja -C builddir test"
+  # end
+
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
