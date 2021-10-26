@@ -5,7 +5,7 @@ class Cmake < Package
   homepage 'https://cmake.org/'
   @_ver = '3.21.3'
   version @_ver
-compatibility 'all'
+  compatibility 'all'
   license 'CMake'
   source_url 'https://github.com/Kitware/CMake.git'
   git_hashtag "v#{@_ver}"
