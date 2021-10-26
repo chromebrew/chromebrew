@@ -39,8 +39,6 @@ class Librhash < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-lib-headers'
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-pkg-config'
-    Dir.chdir CREW_DEST_LIB_PREFIX do
-      FileUtils.ln_s 'librhash.so.0', 'librhash.so'
-    end
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-lib-so-link'
   end
 end
