@@ -55,6 +55,7 @@ class Cmake < Package
     system 'ninja -C builddir'
   end
 
+  # Only the BundleUtiliities test fails here.
   # def self.check
   #  system "ninja -C builddir test"
   # end
