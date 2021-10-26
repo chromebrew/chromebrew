@@ -11,10 +11,10 @@ class Librhash < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/librhash-1.4.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_armv7l/librhash-1.4.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_armv7l/librhash-1.4.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_i686/librhash-1.4.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_x86_64/librhash-1.4.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'e35ee8b1229d81ebb13041f149dd7a59cdd252ea992cabb1e963b1423d4cc398',

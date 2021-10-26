@@ -11,10 +11,10 @@ class Libuv < Package
   source_sha256 '43129625155a8aed796ebe90b8d4c990a73985ec717de2b2d5d3a23cfe4deb72'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/libuv-1.42.0-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/libuv-1.42.0-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/libuv-1.42.0-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/libuv-1.42.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_armv7l/libuv-1.42.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_armv7l/libuv-1.42.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_i686/libuv-1.42.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_x86_64/libuv-1.42.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '852d208cc9a612e5030b75c67921bb72e25cd5b8305541d18d44142c90095eae',
