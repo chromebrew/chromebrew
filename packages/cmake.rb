@@ -1,14 +1,21 @@
- require 'package'
+require 'package'
 
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
   @_ver = '3.21.3'
   version @_ver
-  compatibility 'all'
   license 'CMake'
+  compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
   git_hashtag "v#{@_ver}"
+
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.3_x86_64/cmake-3.21.3-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: '956f2cba7d4cc5eea374e7a460609566ddf927235a5b625bcda72936ffb79d0b'
+  })
 
   depends_on 'expat'
   depends_on 'jsoncpp'
@@ -42,9 +49,9 @@ class Cmake < Package
     system 'ninja -C builddir'
   end
 
-  def self.check
-    system "ninja -C builddir test"
-  end
+  # def self.check
+  #  system "ninja -C builddir test"
+  # end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
