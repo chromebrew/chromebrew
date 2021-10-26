@@ -22,13 +22,13 @@ class Glibc < Package
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
     binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-1_i686/glibc-2.23-1-chromeos-i686.tpxz'
+      i686: 'file:///output/pkg_cache/glibc-2.23-1-chromeos-i686.tar.xz'
     })
     binary_sha256({
-      i686: '0bcecf83d71f221c5a2cf1bc727e337b7b30ed829df0f59a9864fe4c34947df2'
+      i686: 'd2c987c0ad10a178b6a90a47b6cb2581391ddb8e1b382c01fd16d850f1de0b58'
     })
   when '2.27'
-    version LIBC_VERSION
+    version '2.27-1'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
@@ -69,6 +69,33 @@ class Glibc < Package
   def self.patch
     case LIBC_VERSION
     when '2.23', '2.27'
+      # Patch to avoid old ld issue on glibc 2.23
+      @glibc_223_i686_patch = <<~'GLIBC_223_HEREDOC'
+        diff -Npaur a/configure b/configure
+        --- a/configure	2021-10-26 17:26:04.523364222 +0000
+        +++ b/configure	2021-10-26 17:25:15.698560914 +0000
+        @@ -4482,10 +4482,10 @@ else
+           # Found it, now check the version.
+           { $as_echo "$as_me:${as_lineno-$LINENO}: checking version of $LD" >&5
+         $as_echo_n "checking version of $LD... " >&6; }
+        -  ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*GNU ld.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
+        +  ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*GNU gold.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
+           case $ac_prog_version in
+             '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
+        -    2.1[0-9][0-9]*|2.2[2-9]*|2.[3-9][0-9]*|[3-9].*|[1-9][0-9]*)
+        +    1.1[4-9]*|1.[2-9][0-9]*|1.1[0-9][0-9]*|[2-9].*|[1-9][0-9]*)
+                ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
+             *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
+      GLIBC_223_HEREDOC
+      case ARCH
+      when 'i686'
+        File.write('glibc_223_i686.patch', @glibc_223_i686_patch)
+        system 'patch -Np1 -i glibc_223_i686.patch'
+      when 'armv7l','x86_64'
+        # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
+        system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" -o glibc_227_nss.patch'
+        system 'patch -Np1 -i glibc_227_nss.patch || true'
+      end
       # Apply patch due to new version of binutils which causes compilation failure
       # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
       Dir.chdir 'misc' do
@@ -114,9 +141,7 @@ class Glibc < Package
       FileUtils.mkdir_p 'binutils'
       @binutils = IO.readlines("#{CREW_META_PATH}binutils.filelist")
       @binutils.each do |bin|
-        if bin['/bin/']
-          FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}"
-        end
+        FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}" if bin['/bin/']
       end
       FileUtils.cp 'binutils/ld.bfd', 'binutils.ld'
       case LIBC_VERSION
@@ -129,7 +154,7 @@ class Glibc < Package
                  --enable-shared \
                  --disable-multilib \
                  --with-binutils=binutils \
-                 --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+                 --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
                  libc_cv_forced_unwind=yes \
                  libc_cv_ssp=no \
                  libc_cv_ssp_strong=no"
@@ -143,7 +168,7 @@ class Glibc < Package
                    --disable-sanity-checks \
                    --enable-shared \
                    --with-binutils=binutils \
-                   --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+                   --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
                    libc_cv_forced_unwind=yes \
                    --without-selinux"
         when 'x86_64'
@@ -155,7 +180,7 @@ class Glibc < Package
                    --disable-sanity-checks \
                    --enable-shared \
                    --with-binutils=binutils \
-                   --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+                   --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
                    --disable-multilib \
                    libc_cv_forced_unwind=yes \
                    libc_cv_ssp=no \
@@ -200,7 +225,7 @@ class Glibc < Package
             libc_cv_z_nodlopen=yes \
             libc_cv_z_relro=yes \
             --with-binutils=binutils \
-            --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+            --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
             --without-cvs \
             --without-selinux \
             "
@@ -247,7 +272,7 @@ class Glibc < Package
             libc_cv_z_nodlopen=yes \
             libc_cv_z_relro=yes \
             --with-binutils=binutils \
-            --with-bugurl=https://github.com/skycocker/chromebrew/issues/new \
+            --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
             --without-cvs \
             --without-selinux \
             "
@@ -276,9 +301,9 @@ class Glibc < Package
       system "make DESTDIR=#{CREW_DEST_DIR} install" # "sln elf/symlink.list" fails on armv7l
       case LIBC_VERSION
       when '2.23', '2.27'
-        Dir.chdir "localedata" do
+        Dir.chdir 'localedata' do
           system "mkdir -pv #{CREW_DEST_LIB_PREFIX}/locale"
-          puts "Install minimum set of locales".lightblue
+          puts 'Install minimum set of locales'.lightblue
 
           # Assume old version of glibc is installed. -> use localedef.
           # If not installed, we can move following instruction to postinstall
@@ -317,11 +342,11 @@ class Glibc < Package
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
   end
 
-  # def self.check
-  # Dir.chdir 'glibc_build' do
-  # system "make -k -j#{CREW_NPROC} check"
-  # end
-  # end
+   def self.check
+     Dir.chdir 'glibc_build' do
+       system "make -k -j#{CREW_NPROC} check"
+     end
+   end
 
   def self.postinstall
     @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
@@ -372,7 +397,6 @@ class Glibc < Package
 
             FileUtils.rm_f f
             @fpath = "#{localedir}/#{f}"
-            #puts "Removed #{@fpath}.".orange
             @filelist.reject! { |e| e =~ /#{@fpath}/ }
           end
         end
