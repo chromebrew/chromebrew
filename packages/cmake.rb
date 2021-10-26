@@ -52,16 +52,16 @@ class Cmake < Package
           -DBUILD_QtDialog=NO \
           .."
     end
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   # Only the BundleUtiliities test fails here.
   # def self.check
-  #  system "ninja -C builddir test"
+  #  system "samu -C builddir test"
   # end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/doc/", "#{CREW_DEST_PREFIX}/share/"
   end
 end
