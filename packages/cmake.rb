@@ -42,7 +42,12 @@ compatibility 'all'
     system 'ninja -C builddir'
   end
 
+  def self.check
+    system "ninja -C builddir test"
+  end
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/doc/", "#{CREW_DEST_PREFIX}/share/"
   end
 end
