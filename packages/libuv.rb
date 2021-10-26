@@ -34,8 +34,9 @@ class Libuv < Package
     system 'ninja -C builddir'
   end
 
-  # def self.check
-  #  system "ninja -C builddir test"
+  # udp_multicast_join and udp_multicast_join6 tests fail
+  #  def self.check
+  #   system "ninja -C builddir test"
   # end
 
   def self.install
