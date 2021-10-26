@@ -278,9 +278,9 @@ def search (pkgName, silent = false)
   end
   unless File.exist?(pkgPath) && silent
     @pkg = nil
+    abort "Package #{pkgName} not found. 😞".lightred unless silent
   return
   end
-  abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
