@@ -3,12 +3,12 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.33.0'
+  @_ver = '2.33.1'
   version "#{@_ver}-musl"
   license 'GPL-2'
   compatibility 'all'
   source_url "https://github.com/git/git/archive/v#{@_ver}.tar.gz"
-  source_sha256 'ac8bb4bd4f689ddacd1f17c13e519c78d0f38ffc7c41dc24a4dbeb576bc88e91'
+  source_sha256 'fa459f95153a2c51af149c062f614018c027caf75a8dd92b3f64defe0a78f42f'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.33.0-musl_armv7l/git-2.33.0-musl-chromeos-armv7l.tpxz',
