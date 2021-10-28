@@ -3,26 +3,16 @@ require 'package'
 class Webkit2gtk_5 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  @_ver = '2.32.1'
+  @_ver = '2.32.4'
   version @_ver
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{@_ver}.tar.xz"
-  source_sha256 '136117317f70f66486f71b8edf5e46f8776403c5d8a296e914b11a36ef836917'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_armv7l/webkit2gtk_5-2.32.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_armv7l/webkit2gtk_5-2.32.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.1_x86_64/webkit2gtk_5-2.32.1-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: '706890a948d02cb2db17d3f1ef0718710c88ba8900a6bc31cb6905498aa85189',
-     armv7l: '706890a948d02cb2db17d3f1ef0718710c88ba8900a6bc31cb6905498aa85189',
-     x86_64: '5dfa210eecb769b0b301474ee2bd819f68eda3fa27e1e372a0cb046718675a90'
-  })
+  source_sha256 '00ce2d3f798d7bc5e9039d9059f0c3c974d51de38c8b716f00e94452a177d3fd'
 
   depends_on 'atk'
   depends_on 'cairo'
+  depends_on 'ccache' => :build
   depends_on 'dav1d'
   depends_on 'enchant'
   depends_on 'fontconfig'
@@ -68,10 +58,10 @@ class Webkit2gtk_5 < Package
       # system "env #{CREW_ENV_OPTIONS} \
       # Bubblewrap sandbox breaks on epiphany with
       # bwrap: Can't make symlink at /var/run: File exists
-      # ccache currently breaks gcc builds of webkit-gtk
       system "cmake \
         -G Ninja \
-        #{CREW_CMAKE_FNO_LTO_OPTIONS} \
+        #{CREW_CMAKE_OPTIONS.gsub('-flto', '').gsub('-ffat-lto-objects', '')} \
+        -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
         -DCMAKE_SKIP_RPATH=ON \
         -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
         -DENABLE_GAMEPAD=OFF \
