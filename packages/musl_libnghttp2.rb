@@ -3,7 +3,7 @@ require 'package'
 class Musl_libnghttp2 < Package
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
-  @_ver = '1.45.1'
+  @_ver = '1.46.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Musl_libnghttp2 < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.45.1_armv7l/musl_libnghttp2-1.45.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.45.1_armv7l/musl_libnghttp2-1.45.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.45.1_i686/musl_libnghttp2-1.45.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.45.1_x86_64/musl_libnghttp2-1.45.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_armv7l/musl_libnghttp2-1.46.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_armv7l/musl_libnghttp2-1.46.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_i686/musl_libnghttp2-1.46.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_x86_64/musl_libnghttp2-1.46.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '11da4116f1a2053d66dffc6ba678add182ce4fd779164a98206ccb2dac9c882b',
-     armv7l: '11da4116f1a2053d66dffc6ba678add182ce4fd779164a98206ccb2dac9c882b',
-       i686: '6976dfd15fbb3fe701d5805dd5fe5c9e3e8451a1fc4e3a3ffedd552484232260',
-     x86_64: '89f12cc2a150334b932ecc58e235721d776e42dc44e9acd34fa4b0d5529dc8a3'
+    aarch64: '1a31a348df4495445c2c6cbf6e63eced8f65fbba60ee565765a15fd9e7225be3',
+     armv7l: '1a31a348df4495445c2c6cbf6e63eced8f65fbba60ee565765a15fd9e7225be3',
+       i686: '2ffc611953c84af276674d5d3c519d387f753587d7bd010cd431ba7e6168a001',
+     x86_64: 'fcadac43c83f008eec846dc40972b6201404b549e3417badeeab2ab4cdd8d800'
   })
 
   depends_on 'musl_native_toolchain' => :build
@@ -78,6 +78,12 @@ class Musl_libnghttp2 < Package
       CXXFLAGS='#{@cxxflags}' \
       CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
       LDFLAGS='#{@ldflags}'"
+
+  # def self.patch
+  #  # Fix Python version check issue
+  #  system 'curl -OLf https://github.com/nghttp2/nghttp2/commit/07128719c4048c0c478ea073d6a850105153ab79.patch"
+  #  system 'patch -Np1 -i 07128719c4048c0c478ea073d6a850105153ab79.patch'
+  # end
 
   def self.build
     FileUtils.mkdir('builddir')

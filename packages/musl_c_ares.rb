@@ -3,23 +3,23 @@ require 'package'
 class Musl_c_ares < Package
   description 'c-ares is a C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.haxx.se/'
-  version '1.17.2'
+  version '1.18.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://c-ares.haxx.se/download/c-ares-1.17.2.tar.gz'
-  source_sha256 '4803c844ce20ce510ef0eb83f8ea41fa24ecaae9d280c468c582d2bb25b3913d'
+  source_url 'https://c-ares.haxx.se/download/c-ares-1.18.0.tar.gz'
+  source_sha256 '71c19708ed52a60ec6f14a4a48527187619d136e6199683e77832c394b0b0af8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_armv7l/musl_c_ares-1.17.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_armv7l/musl_c_ares-1.17.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_i686/musl_c_ares-1.17.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.17.2_x86_64/musl_c_ares-1.17.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.0_armv7l/musl_c_ares-1.18.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.0_armv7l/musl_c_ares-1.18.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.0_i686/musl_c_ares-1.18.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_c_ares/1.18.0_x86_64/musl_c_ares-1.18.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '16da6f86c68d47b675f94cadd36635d1c743ea33a599588d5d2b80349e472db8',
-     armv7l: '16da6f86c68d47b675f94cadd36635d1c743ea33a599588d5d2b80349e472db8',
-       i686: '4ca8616b8c42e0b4741080969b90bb80cb75a4cea48b4b98252e9a6f44801647',
-     x86_64: 'b2994bf3c6ed793052492fca6a074ef0c0ad4d12f628bbbe42cc7e2000d2d68c'
+    aarch64: 'c91f677604f7e0c84de87dfebc5f5bc9a5bf1c53d2a0108db39213fb7103ddc0',
+     armv7l: 'c91f677604f7e0c84de87dfebc5f5bc9a5bf1c53d2a0108db39213fb7103ddc0',
+       i686: '49fd4a1d2b7ce13a3d2b7c3c53ed9a698ceb9fdd794ffe55d0c26a2893adabde',
+     x86_64: '60c67270a5ea72cec04cd228d92af2dfd662cea0330ac04f4f51c3058e301370'
   })
 
   depends_on 'musl_native_toolchain' => :build
