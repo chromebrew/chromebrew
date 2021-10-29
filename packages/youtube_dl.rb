@@ -4,7 +4,7 @@ class Youtube_dl < Package
   description 'Command-line program to download videos from YouTube.com and other video sites'
   homepage 'https://youtube-dl.org/'
   @_ver = '2021.06.06'
-  version @_ver + '1'
+  version @_ver + '-1'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/ytdl-org/youtube-dl.git'
