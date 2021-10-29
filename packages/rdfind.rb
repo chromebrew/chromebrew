@@ -15,13 +15,13 @@ class Rdfind < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rdfind/1.5.0_armv7l/rdfind-1.5.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rdfind/1.5.0_armv7l/rdfind-1.5.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rdfind/1.5.0_i686/rdfind-1.5.0-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rdfind/1.5.0_i686/rdfind-1.5.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rdfind/1.5.0_x86_64/rdfind-1.5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5147ee21271d6210ed3f826d3c7e7175501a4100d5cb6898310cefc518f5b68f',
      armv7l: '5147ee21271d6210ed3f826d3c7e7175501a4100d5cb6898310cefc518f5b68f',
-       i686: 'aea20999058cffe05251dd79ea97077dd4e74bdb1aee0a797736e149df2b3844',
+       i686: '7e9c7393fd554211dd7a0d46fa524051254d5f118377e7705a26214b1a880610',
      x86_64: 'cc92cc6ed55717ba3dabe7160e82fa668e29f71364ff736cbc9004d61777f3ae'
   })
 
