@@ -3,36 +3,33 @@ require 'package'
 class Libxdmcp < Package
   description 'The libXdmcp package contains a library implementing the X Display Manager Control Protocol.'
   homepage 'http://www.x.org'
-  version '1.1.3-1'
+  @_ver = '1.1.3'
+  version "#{@_ver}-2"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.x.org/pub/individual/lib/libXdmcp-1.1.3.tar.bz2'
-  source_sha256 '20523b44aaa513e17c009e873ad7bbc301507a3224c232610ce2e099011c6529'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git'
+  git_hashtag "libXdmcp-#{@_ver}"
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_armv7l/libxdmcp-1.1.3-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_i686/libxdmcp-1.1.3-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-1_x86_64/libxdmcp-1.1.3-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-2_armv7l/libxdmcp-1.1.3-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-2_armv7l/libxdmcp-1.1.3-2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-2_x86_64/libxdmcp-1.1.3-2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: '8d044dae7bae3290e3189d25216df2dec946bf3214812c3327f44c5d4af908c7',
-      armv7l: '8d044dae7bae3290e3189d25216df2dec946bf3214812c3327f44c5d4af908c7',
-        i686: '0bb28f04ed3c6668febc1f9aad001ff0b39ed1746e0ca808bdfbc795bc36cd83',
-      x86_64: 'e85f069e15080182742ef6a4cc15742c94ea438ccd2ee772feea199a7fad1622',
+  binary_sha256({
+    aarch64: 'a1540e554724bfb3f0eb2525e332c6a5b47d15827596c5d163af7b6efb7c16dd',
+     armv7l: 'a1540e554724bfb3f0eb2525e332c6a5b47d15827596c5d163af7b6efb7c16dd',
+     x86_64: '7567bb45cc60b081c21b72c1526ffb3f9b5bb1016bb3737405bbcd5a4a85a3b7'
   })
 
-  depends_on "xorg_proto"
-  depends_on "llvm" => :build
+  depends_on 'xorg_proto'
 
   def self.build
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
+    system './autogen.sh'
     system "./configure #{CREW_OPTIONS}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-
 end
