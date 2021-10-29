@@ -10,9 +10,15 @@ class Webkit2gtk_5 < Package
   source_url "https://webkitgtk.org/releases/webkitgtk-#{@_ver}.tar.xz"
   source_sha256 '00ce2d3f798d7bc5e9039d9059f0c3c974d51de38c8b716f00e94452a177d3fd'
 
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.4_x86_64/webkit2gtk_5-2.32.4-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: 'f33da6311321d201b334f1b720ac0980497c6c57d0c928464f749d5b99cd8699'
+  })
+
   depends_on 'atk'
   depends_on 'cairo'
-  depends_on 'ccache' => :build
   depends_on 'dav1d'
   depends_on 'enchant'
   depends_on 'fontconfig'
@@ -61,7 +67,6 @@ class Webkit2gtk_5 < Package
       system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS.gsub('-flto', '').gsub('-ffat-lto-objects', '')} \
-        -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
         -DCMAKE_SKIP_RPATH=ON \
         -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
         -DENABLE_GAMEPAD=OFF \
@@ -84,6 +89,11 @@ class Webkit2gtk_5 < Package
   end
 
   def self.install
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir5 install"
   end
 end
