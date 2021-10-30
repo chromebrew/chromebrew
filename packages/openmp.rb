@@ -11,13 +11,15 @@ class Openmp < Package
   source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/openmp-#{version}.src.tar.xz"
   source_sha256 '4930ae7a1829a53b698255c2c6b6ee977cc364b37450c14ee458793c0d5e493c'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_armv7l/openmp-13.0.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_armv7l/openmp-13.0.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_x86_64/openmp-13.0.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '591d7fa5500ee74e4c1c6fe89abe6bfcbd5c335ec83859388e2a31d3b39fa9cf',
      armv7l: '591d7fa5500ee74e4c1c6fe89abe6bfcbd5c335ec83859388e2a31d3b39fa9cf',
+     x86_64: '8c5139ea1de8ef4e153fdea2cc9c99125442f2c6398a5509076f742a48bc0f2b'
   })
 
   depends_on 'libffi'
@@ -41,7 +43,7 @@ class Openmp < Package
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
             -DLIBOMP_ENABLE_SHARED=ON \
             -DLIBOMP_INSTALL_ALIASES=OFF \
-            -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
+            -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
             -DPYTHON_EXECUTABLE=$(which python3) \
             -Wno-dev \
             .."
