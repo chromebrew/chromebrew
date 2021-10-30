@@ -25,17 +25,4 @@ class Chrome < Package
     FileUtils.ln_s "../share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome-stable"
     FileUtils.ln_s "../share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
   end
-
-  def self.check_update
-    @_repo_url = 'https://dl.google.com/linux/chrome/deb'
-    @_info = `curl -LSs '#{@_repo_url}/dists/stable/main/binary-amd64/Packages'`.split("\n\n").select do |pkginfo|
-      pkginfo[/^Package: (.+)/, 1] == 'google-chrome-stable'
-    end
-
-    @_latest_info = @_info.sort_by do |info|
-      Gem::Version.new(info[/^Version: (.+)/, 1])
-    end[-1]
-
-    return @_latest_info[/^Version: (.+)/, 1], "#{@_repo_url}/#{@_latest_info[/^Filename: (.*)/, 1]}"
-  end
 end
