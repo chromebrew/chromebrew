@@ -10,6 +10,19 @@ class Gif2apng < Package
   source_url "https://sourceforge.net/projects/gif2apng/files/#{@_ver}/gif2apng-#{@_ver}-src.zip"
   source_sha256 '3b21308e935d799b3ffb4a86c6e00ffa4cb9b3f72f52d58d51c66eb0574ae7d2'
 
+  binary_url ({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gif2apng/1.9_armv7l/gif2apng-1.9-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gif2apng/1.9_armv7l/gif2apng-1.9-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gif2apng/1.9_i686/gif2apng-1.9-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gif2apng/1.9_x86_64/gif2apng-1.9-chromeos-x86_64.tar.xz',
+  })
+  binary_sha256 ({
+    aarch64: 'c0536e15897691a801c59d4b435c9c6a930bed91ba73a23697c85479284095b7',
+     armv7l: 'c0536e15897691a801c59d4b435c9c6a930bed91ba73a23697c85479284095b7',
+       i686: '488ade6bcc9b8e1d537937b929a6fa04a8825937fbb779512fc93883d0bea978',
+     x86_64: '62ba798c0c56f2df6c00c45b1c7c1e23776175dd7d612333c384ea9c9753a4be',
+  })
+
   depends_on 'zopfli'
   depends_on 'help2man' => :build
 
