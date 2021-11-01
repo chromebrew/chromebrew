@@ -10,7 +10,7 @@ class Go_fetch < Package
   source_url 'https://github.com/gruntwork-io/fetch.git'
   git_hashtag 'v' + @_ver
 
-  depends_on 'go'
+  depends_on 'go' => :build
 
   def self.build
     system "go get github.com/urfave/cli"
