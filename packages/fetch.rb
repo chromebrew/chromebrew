@@ -1,25 +1,32 @@
 require 'package'
 
 class Fetch < Package
-  description 'fetch makes it easy to download files, folders, or release assets from a specific commit, branch, or tag of a public or private GitHub repo.'
-  homepage 'https://github.com/gruntwork-io/fetch/'
-  @_ver = '0.4.2'
+  description 'FreeBSD Fetch retrieves files by URL.'
+  homepage 'https://github.com/jrmarino/fetch-freebsd/'
+  @_ver = '12.0.10'
   version @_ver
-  license 'LGPL-2.1'
+  license 'BSD-3'
   compatibility 'all'
-  source_url 'https://github.com/gruntwork-io/fetch.git'
+  source_url 'https://github.com/jrmarino/fetch-freebsd.git'
   git_hashtag 'v' + @_ver
 
-  depends_on 'go'
-
   def self.build
-    system "go get github.com/urfave/cli"
-    system "go get github.com/hashicorp/go-version"
-    system "sed -i 's,codegangsta,urfave,g' main.go"
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja #{CREW_CMAKE_OPTIONS} \
+              -DFETCH_LIBRARY=ON \
+              -DFETCH_PROGRAM=ON \
+              -DUSE_SYSTEM_SSL=ON .."
+    end
+    system 'samu -C builddir'
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    system "go build -ldflags \"-X main.VERSION=v#{@_ver}\" -o #{CREW_DEST_PREFIX}/bin/go-fetch"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    if CREW_LIB_SUFFIX != ''
+      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+      FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/lib/*"), CREW_DEST_LIB_PREFIX
+      FileUtils.rm_r "#{CREW_DEST_PREFIX}/lib/"
+    end
   end
 end
