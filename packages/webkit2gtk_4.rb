@@ -11,10 +11,14 @@ class Webkit2gtk_4 < Package
   source_sha256 '00ce2d3f798d7bc5e9039d9059f0c3c974d51de38c8b716f00e94452a177d3fd'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_x86_64/webkit2gtk_4-2.32.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_x86_64/webkit2gtk_4-2.32.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    x86_64: '36c5c54bc95ede8c00fb0b35361c4c20213ab6129a2712c10f91ff9c08128942'
+    aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
+     armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
+     x86_64: '36c5c54bc95ede8c00fb0b35361c4c20213ab6129a2712c10f91ff9c08128942'
   })
 
   depends_on 'atk'
