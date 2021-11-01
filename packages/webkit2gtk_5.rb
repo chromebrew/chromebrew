@@ -89,7 +89,7 @@ class Webkit2gtk_5 < Package
         -DPYTHON_EXECUTABLE=`which python` \
         .."
     end
-    system 'ninja -C builddir5'
+    system 'samu -C builddir5'
   end
 
   def self.install
@@ -98,6 +98,6 @@ class Webkit2gtk_5 < Package
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir5 install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir5 install"
   end
 end
