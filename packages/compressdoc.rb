@@ -5,7 +5,7 @@ class Compressdoc < Package
   homepage 'https://github.com/saltedcoffii/compressdoc/'
   @_ver = '20211031'
   version @_ver
-  license 'EUPL-1.2 and MIT'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/saltedcoffii/compressdoc.git'
   git_hashtag 'v' + @_ver
