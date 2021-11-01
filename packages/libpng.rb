@@ -1,10 +1,10 @@
 require 'package'
 
 class Libpng < Package
-  description 'libpng is the official PNG reference library.'
+  description 'libpng is the official PNG reference library. Patched with APNG support.'
   homepage 'http://libpng.org/pub/png/libpng.html'
   @_ver = '1.6.37'
-  version "#{@_ver}+apng"
+  version "#{@_ver}-3"
   license 'libpng2'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/libpng/libpng16/#{@_ver}/libpng-#{@_ver}.tar.xz"
