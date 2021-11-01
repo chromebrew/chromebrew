@@ -14,11 +14,13 @@ class Openmp < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_armv7l/openmp-13.0.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_armv7l/openmp-13.0.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_i686/openmp-13.0.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/13.0.0_x86_64/openmp-13.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '591d7fa5500ee74e4c1c6fe89abe6bfcbd5c335ec83859388e2a31d3b39fa9cf',
      armv7l: '591d7fa5500ee74e4c1c6fe89abe6bfcbd5c335ec83859388e2a31d3b39fa9cf',
+       i686: '8eeb887db0ae5b80aa155bef46c79174b949959c6713133213e16c5ad3add55a',
      x86_64: '8c5139ea1de8ef4e153fdea2cc9c99125442f2c6398a5509076f742a48bc0f2b'
   })
 

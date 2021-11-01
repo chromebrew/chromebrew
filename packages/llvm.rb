@@ -3,24 +3,25 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '13.0.0'
+  @_ver = '13.0.1-08e3'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
-  source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{@_ver}/llvm-project-#{@_ver}.src.tar.xz"
-  source_sha256 '6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3'
+  source_url 'https://github.com/llvm/llvm-project.git'
+  git_branch 'release/13.x'
+  git_hashtag '08e3a5ccd952edee36b3c002e3a29c6b1b5153de'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_armv7l/llvm-13.0.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_armv7l/llvm-13.0.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_i686/llvm-13.0.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.0_x86_64/llvm-13.0.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_armv7l/llvm-13.0.1-08e3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_armv7l/llvm-13.0.1-08e3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_i686/llvm-13.0.1-08e3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_x86_64/llvm-13.0.1-08e3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b31e993e87b2b11540a207c2c9e905244c2380a31f07b1f5820847ac0de2dcd7',
-     armv7l: 'b31e993e87b2b11540a207c2c9e905244c2380a31f07b1f5820847ac0de2dcd7',
-       i686: '96600de712e1f6e19485365575d633399212bb4974212cc2a766f1cadc333250',
-     x86_64: 'e22c6565e635ac4fc64e15416608fabaf4faa5a39998d5accd16596cc730afd9'
+    aarch64: 'd557f5c4a92f4b707ca8897071fbb127ec5785fb88dc5cf3215c4e67db18ca92',
+     armv7l: 'd557f5c4a92f4b707ca8897071fbb127ec5785fb88dc5cf3215c4e67db18ca92',
+       i686: 'be94864b1612f31d0b8509da29d48d0c02fb1326888d19c28cecfdf030d0385c',
+     x86_64: '91fa720b4507acce0ad44a8201f79ab14c1a8157cc89b1c21314fafb761d0f0d'
   })
 
   depends_on 'ocaml' => :build
@@ -182,13 +183,13 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DPYTHON_EXECUTABLE=$(which python3) \
             -Wno-dev \
             ../llvm"
-      system 'ninja'
+      system 'samu'
     end
   end
 
   def self.install
     Dir.chdir('builddir') do
-      system "DESTDIR=#{CREW_DEST_DIR} ninja install"
+      system "DESTDIR=#{CREW_DEST_DIR} samu install"
       FileUtils.install 'clc', "#{CREW_DEST_PREFIX}/bin/clc", mode: 0o755
       FileUtils.install 'clc++', "#{CREW_DEST_PREFIX}/bin/clc++", mode: 0o755
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
@@ -202,9 +203,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
 
   def self.check
     Dir.chdir('builddir') do
-      # system "ninja check-llvm || true"
-      # system "ninja check-clang || true"
-      # system "ninja check-lld || true"
+      # system "samu check-llvm || true"
+      # system "samu check-clang || true"
+      # system "samu check-lld || true"
     end
   end
 
