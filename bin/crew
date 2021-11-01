@@ -278,9 +278,9 @@ def search (pkgName, silent = false)
   end
   unless File.exist?(pkgPath) && silent
     @pkg = nil
+    abort "Package #{pkgName} not found. 😞".lightred unless silent
   return
   end
-  abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
@@ -1028,7 +1028,7 @@ def shrink_dir(dir)
             pool.post do
               begin
                 puts "Attempting to compress #{execfile.chomp} ...".lightblue
-                system "upx --best -k --overlay=skip #{execfile}"
+                system "upx --lzma -k --overlay=skip #{execfile}"
                 system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
               rescue
                 FileUtils.mv "#{execfile}.~", execfile
