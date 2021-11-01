@@ -70,7 +70,7 @@ class Webkit2gtk_5 < Package
       # bwrap: Can't make symlink at /var/run: File exists
       system "cmake \
         -G Ninja \
-        #{CREW_CMAKE_OPTIONS.gsub('-flto', '').gsub('-ffat-lto-objects', '')} \
+        #{CREW_CMAKE_OPTIONS.gsub(/-(flto|ffat-lto-objects)/, '')} \
         -DCMAKE_SKIP_RPATH=ON \
         -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
         -DENABLE_GAMEPAD=OFF \
