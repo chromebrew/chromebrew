@@ -3,22 +3,22 @@ require 'package'
 class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  @_ver = '0.33.1'
-  version "#{@_ver}-1"
+  @_ver = '0.34.0'
+  version @_ver
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'all'
-  source_url "https://github.com/mpv-player/mpv/archive/v#{@_ver}.tar.gz"
-  source_sha256 '100a116b9f23bdcda3a596e9f26be3a69f166a4f1d00910d1789b6571c46f3a9'
+  source_url 'https://github.com/mpv-player/mpv.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1-1_armv7l/mpv-0.33.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1-1_armv7l/mpv-0.33.1-1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.33.1-1_x86_64/mpv-0.33.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.0_armv7l/mpv-0.34.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.0_armv7l/mpv-0.34.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.0_x86_64/mpv-0.34.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '22c7f7b0a877a1a22aa1f312be6ca20b3b3f3e67dd350dd829301752cdbc451f',
-     armv7l: '22c7f7b0a877a1a22aa1f312be6ca20b3b3f3e67dd350dd829301752cdbc451f',
-     x86_64: 'c4642f6da028403f3efcd6e1b0c9382d410fc106663a0ca70e3f4a785f387628'
+    aarch64: '02e091134eedd1a0d468ce9a1032048e1e39d4310df919d41ce15a2ec5995c97',
+     armv7l: '02e091134eedd1a0d468ce9a1032048e1e39d4310df919d41ce15a2ec5995c97',
+     x86_64: '5cfe927d93d12fa456828b62afebff35d182b7105052f6186aef820a40436ebc'
   })
 
   depends_on 'py3_docutils' => :build
@@ -47,7 +47,7 @@ class Mpv < Package
   depends_on 'libxrandr' # R
   depends_on 'libxss' # R
   depends_on 'libxv' # R
-  depends_on 'llvm' # R
+  depends_on 'openmp' # R
   depends_on 'luajit' # R
   depends_on 'mesa' # R
   depends_on 'mujs' # R
@@ -66,17 +66,17 @@ class Mpv < Package
     system "#{CREW_ENV_OPTIONS} \
       ./waf \
       configure \
-      #{CREW_OPTIONS.sub(/--build=.*/, '')} \
       --confdir=#{CREW_PREFIX}/etc/mpv \
       --enable-cdda \
       --enable-dvdnav \
       --enable-gl-x11 \
       --enable-libarchive \
       --enable-libmpv-shared \
-      --enable-sdl2"
+      --enable-sdl2 \
+      #{CREW_OPTIONS.sub(/--build=.*/, '')}"
     system "./waf -j#{CREW_NPROC}"
     # mpv conf file
-    IO.write 'mpv.conf', <<~MPVCONF
+    File.write 'mpv.conf', <<~MPVCONF
       hwdec=auto-safe
       hwdec-codecs=all
       fs=yes
