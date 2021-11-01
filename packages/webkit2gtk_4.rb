@@ -123,10 +123,10 @@ class Webkit2gtk_4 < Package
         .."
       end
     end
-    system 'ninja -C builddir4'
+    system 'samu -C builddir4'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir4 install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir4 install"
   end
 end
