@@ -1099,23 +1099,22 @@ end
 
 def expand_dependencies
   def push_dependencies
-    unless @pkg.nil?
-      if @pkg.is_binary?(@device[:architecture]) ||
-        (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
-        # retrieve name of dependencies that doesn't contain :build tag
-        check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
-      else
-        # retrieve name of all dependencies
-        check_deps = @pkg.dependencies.map {|k, v| k}
-      end
-      # check all dependencies recursively
-      check_deps.each do |dep|
-        # build unique dependencies list
-        unless @dependencies&.include?(dep) || dep == @pkgName
-          @dependencies << dep
-          search dep, true
-          push_dependencies
-        end
+    return unless @pkg
+    if @pkg.is_binary?(@device[:architecture]) ||
+      (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
+      # retrieve name of dependencies that doesn't contain :build tag
+      check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
+    else
+      # retrieve name of all dependencies
+      check_deps = @pkg.dependencies.map {|k, v| k}
+    end
+    # check all dependencies recursively
+    check_deps.each do |dep|
+      # build unique dependencies list
+      unless @dependencies&.include?(dep) || dep == @pkgName
+        @dependencies << dep
+        search dep, true
+        push_dependencies
       end
     end
   end
@@ -1150,7 +1149,7 @@ def resolve_dependencies
   @dependencies.each do |dep|
     depends = nil
     unless File.exist?("#{CREW_PACKAGES_PATH}#{dep}.rb")
-      abort"Dependency #{dep} was not found.".lightred
+      abort "Dependency #{dep} was not found.".lightred
     end
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
       f.each_line do |line|
