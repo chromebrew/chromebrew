@@ -3,7 +3,7 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.21.3'
+  @_ver = '3.21.4'
   version @_ver
   license 'CMake'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Cmake < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.3_armv7l/cmake-3.21.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.3_armv7l/cmake-3.21.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.3_i686/cmake-3.21.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.3_x86_64/cmake-3.21.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.4_armv7l/cmake-3.21.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.4_armv7l/cmake-3.21.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.4_i686/cmake-3.21.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.21.4_x86_64/cmake-3.21.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c6a1fd6a4ddaed1eed40f5d01caa7bdcb8fc3d052200b7ee68c386d07baa425d',
-     armv7l: 'c6a1fd6a4ddaed1eed40f5d01caa7bdcb8fc3d052200b7ee68c386d07baa425d',
-       i686: '1376e50bc0a1af8f15763e2de306e311ac7c696ddd7dcefa4e0f1b9113a150fb',
-     x86_64: '956f2cba7d4cc5eea374e7a460609566ddf927235a5b625bcda72936ffb79d0b'
+    aarch64: 'c6f51bffd063dfe6468e438badc0d4a1332df3edc38ea90d7edbc7cd25805566',
+     armv7l: 'c6f51bffd063dfe6468e438badc0d4a1332df3edc38ea90d7edbc7cd25805566',
+       i686: '52897110039bf4d25c83ae7524b214e6bba147ffb5a77efa68a27f9949ffaaa9',
+     x86_64: '24fa4129b8e4e7cc511da337ad01b50c4aaa443c4cea6fff66f81b6ec3eba3d6'
   })
 
   depends_on 'expat'
