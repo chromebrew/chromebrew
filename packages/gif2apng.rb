@@ -24,7 +24,10 @@ class Gif2apng < Package
 
   def self.build
     system 'make'
-    system "help2man -s 1 -N -h '' --version-string='#{@_ver}' ./gif2apng -o gif2apng.1"
+    system "help2man -s 1 -N -h '' \
+            -n '#{self.description.downcase.delete! '.'}' \
+            --version-string='#{@_ver}' \
+            ./gif2apng -o gif2apng.1"
   end
 
   def self.install
