@@ -3,24 +3,22 @@ require 'package'
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  @_ver = '2.32.1'
-  version "#{@_ver}-1"
+  @_ver = '2.32.4'
+  version @_ver
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
   source_url "https://webkitgtk.org/releases/webkitgtk-#{@_ver}.tar.xz"
-  source_sha256 '136117317f70f66486f71b8edf5e46f8776403c5d8a296e914b11a36ef836917'
+  source_sha256 '00ce2d3f798d7bc5e9039d9059f0c3c974d51de38c8b716f00e94452a177d3fd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.1-1_armv7l/webkit2gtk_4-2.32.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.1-1_armv7l/webkit2gtk_4-2.32.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.1-1_i686/webkit2gtk_4-2.32.1-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.1-1_x86_64/webkit2gtk_4-2.32.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_x86_64/webkit2gtk_4-2.32.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '64e118160d7101af91e8ffd1505d7eaf2b03a32f6a6bede1f16402d9e40e265b',
-     armv7l: '64e118160d7101af91e8ffd1505d7eaf2b03a32f6a6bede1f16402d9e40e265b',
-       i686: 'cfa921effe347074bb318eaf9cc00e2940262e2c6da452a799cf54ef9c41f12c',
-     x86_64: '45c58419c27cfa20d74f025cf6778acb79a31d7f0a7de0cf2d403f9afbd2ac9a'
+    aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
+     armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
+     x86_64: '36c5c54bc95ede8c00fb0b35361c4c20213ab6129a2712c10f91ff9c08128942'
   })
 
   depends_on 'atk'
@@ -77,7 +75,7 @@ class Webkit2gtk_4 < Package
       # bwrap: Can't make symlink at /var/run: File exists
       case ARCH
       when 'x86_64'
-        system "CC=clang CXX=clang++ LD=lld NM=llvm-nm cmake \
+        system "#{CREW_ENV_OPTIONS} cmake \
           -G Ninja \
           #{CREW_CMAKE_OPTIONS.gsub('-flto', '').gsub('-ffat-lto-objects', '')} \
           -DLTO_MODE=thin \
@@ -125,10 +123,10 @@ class Webkit2gtk_4 < Package
         .."
       end
     end
-    system 'ninja -C builddir4'
+    system 'samu -C builddir4'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir4 install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir4 install"
   end
 end
