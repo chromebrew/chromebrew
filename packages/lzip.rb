@@ -9,10 +9,12 @@ class Lzip < Package
   source_url 'https://download.savannah.gnu.org/releases/lzip/lzip-1.22.tar.gz'
   source_sha256 'c3342d42e67139c165b8b128d033b5c96893a13ac5f25933190315214e87a948'
 
+  depends_on 'musl_native_toolchain' => :build
+
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} \
               --libdir=#{CREW_LIB_PREFIX} \
-              CXX=#{CREW_TGT}-g++ \
+              CXX=#{CREW_PREFIX}/musl/bin/g++ \
               CXXFLAGS='#{CREW_COMMON_FLAGS} -static'"
     system 'make'
   end
