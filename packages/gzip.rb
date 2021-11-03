@@ -10,16 +10,16 @@ class Gzip < Package
   source_sha256 '9b9a95d68fdcb936849a4d6fada8bf8686cddf58b9b26c9c4289ed0c92a77907'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11_armv7l/gzip-1.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11_armv7l/gzip-1.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11_i686/gzip-1.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11_x86_64/gzip-1.11-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11-1_armv7l/gzip-1.11-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11-1_armv7l/gzip-1.11-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11-1_i686/gzip-1.11-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.11-1_x86_64/gzip-1.11-1-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '3ccd4cee7c674ecae22af29a49260bf07f5c1da2c4b7426ed786659be9d52d3c',
-     armv7l: '3ccd4cee7c674ecae22af29a49260bf07f5c1da2c4b7426ed786659be9d52d3c',
-       i686: '6a27145e7c7c41291aab7d6faf4c171e84b1359913788fad04e84c83bf4013c3',
-     x86_64: '3ba5798e5713f61066ed9108c06322e14abcd2cbf3dd7d93535c7566fce5e4ad',
+    aarch64: '5c4954aaa1c00dcc32597bdc4944b4a72069c961aac8f1ad452ec11bb8d077c2',
+     armv7l: '5c4954aaa1c00dcc32597bdc4944b4a72069c961aac8f1ad452ec11bb8d077c2',
+       i686: 'b8a64ca517e857589edc251bd0cd26228731aa0bd309d46dc2972f0d4f19f7e7',
+     x86_64: '68e5e94f9af0b15a87d30482ba38bf00cde21e8eb841bd8421410000712574b4',
   })
 
   depends_on 'zutils' # L
