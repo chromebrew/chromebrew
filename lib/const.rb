@@ -101,14 +101,14 @@ CREW_COMMON_FNO_LTO_FLAGS = '-O2 -pipe -fno-lto -fPIC -fuse-ld=gold'
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 CREW_LDFLAGS = '-flto'
 
-CREW_ENV_OPTIONS = <<~OPT
+CREW_ENV_OPTIONS = <<~OPT.chomp
   CFLAGS='#{CREW_COMMON_FLAGS}' \
   CXXFLAGS='#{CREW_COMMON_FLAGS}' \
   FCFLAGS='#{CREW_COMMON_FLAGS}' \
   FFLAGS='#{CREW_COMMON_FLAGS}' \
-  LDFLAGS='#{CREW_LDFLAGS}' \\
+  LDFLAGS='#{CREW_LDFLAGS}'
 OPT
-CREW_OPTIONS = <<~OPT
+CREW_OPTIONS = <<~OPT.chomp
   --prefix=#{CREW_PREFIX} \
   --libdir=#{CREW_LIB_PREFIX} \
   --mandir=#{CREW_MAN_PREFIX} \
@@ -116,10 +116,10 @@ CREW_OPTIONS = <<~OPT
   --host=#{CREW_TGT} \
   --target=#{CREW_TGT} \
   --program-prefix='' \
-  --program-suffix='' \\
+  --program-suffix=''
 OPT
 
-CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT
+CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
   -Dprefix=#{CREW_PREFIX} \
   -Dlibdir=#{CREW_LIB_PREFIX} \
   -Dmandir=#{CREW_MAN_PREFIX} \
@@ -128,14 +128,14 @@ CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT
   -Dstrip=true \
   -Db_pie=true \
   -Dcpp_args='-O2' \
-  -Dc_args='-O2' \\
+  -Dc_args='-O2'
 OPT
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
 # Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
-CREW_CMAKE_OPTIONS = <<~OPT
+CREW_CMAKE_OPTIONS = <<~OPT.chomp
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
   -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS}' \
@@ -145,9 +145,9 @@ CREW_CMAKE_OPTIONS = <<~OPT
   -DCMAKE_STATIC_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE \
-  -DCMAKE_BUILD_TYPE=Release \\
+  -DCMAKE_BUILD_TYPE=Release
 OPT
-CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT
+CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT.chomp
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
   -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
   -DCMAKE_C_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
@@ -156,7 +156,7 @@ CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT
   -DCMAKE_SHARED_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_STATIC_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_MODULE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
-  -DCMAKE_BUILD_TYPE=Release \\
+  -DCMAKE_BUILD_TYPE=Release
 OPT
 
 CREW_LIB_SUFFIX = ( ARCH == 'x86_64' ) ? '64' : ''
