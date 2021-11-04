@@ -17,10 +17,10 @@ class Git < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.33.1-musl_x86_64/git-2.33.1-musl-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '18052f1abdfd44c1386bbc89bd31f83b0952e5bfa479ed657ad4623f7f0349c6',
-     armv7l: '18052f1abdfd44c1386bbc89bd31f83b0952e5bfa479ed657ad4623f7f0349c6',
-       i686: 'e3de97e12f7177d8ee31dd250f92499c566f2bcda50e18f3a380e3b2fb5b9beb',
-     x86_64: '2e87ccba75d78143ee2d53ccb513f0a2a6d62604ae25288b71ed2aff5428aaa7'
+    aarch64: 'e72ac82141776c350c490c4e951880f7b8ff249e6d5992b37f31efcce03b8a5f',
+     armv7l: 'e72ac82141776c350c490c4e951880f7b8ff249e6d5992b37f31efcce03b8a5f',
+       i686: '6b9a4462d9c7558422dd69ada6028981e3c8f68221ff02899b1962142162d4b6',
+     x86_64: '96b0d041fed29062b1506669ff5ca942c7c327d9f76e818be5a20ff8d7d7899b'
   })
 
   depends_on 'ca_certificates' => :build
@@ -51,6 +51,15 @@ class Git < Package
     system "grep -rl '[[:space:]]error (' . | xargs sed -i #{sedcmd2}"
     system "grep -rl ' !!error(' . | xargs sed -i 's/ \!\!error(/ \!\!git_error(/g'"
     system "sed -i 's/#define git_error(...) (error(__VA_ARGS__), const_error())/#define git_error(...) (git_error(__VA_ARGS__), const_error())/' git-compat-util.h"
+    # CMake patches.
+    # The VCPKG optout in this CmakeLists.txt file is quite broken.
+    system "sed -i 's/set(USE_VCPKG/#set(USE_VCPKG/g' contrib/buildsystems/CMakeLists.txt"
+    system "sed -i 's,set(PERL_PATH /usr/bin/perl),set(PERL_PATH #{CREW_PREFIX}/bin/perl),g' contrib/buildsystems/CMakeLists.txt"
+    system "sed -i 's,#!/usr/bin,#!#{CREW_PREFIX}/bin,g' contrib/buildsystems/CMakeLists.txt"
+    # Without the following DESTDIR doesn't work.
+    system "sed -i 's,\${CMAKE_INSTALL_PREFIX}/bin/git,\${CMAKE_BINARY_DIR}/git,g' contrib/buildsystems/CMakeLists.txt"
+    system "sed -i 's,\${CMAKE_INSTALL_PREFIX}/bin/git,\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/bin/git,g' contrib/buildsystems/CMakeLists.txt"
+    system "sed -i 's,\${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
   end
 
   def self.build
@@ -68,7 +77,8 @@ class Git < Package
 
     @cflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_c_flags} #{@arch_ssp_cflags} -fcommon"
     @cxxflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -fPIC -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_cxx_flags} #{@arch_ssp_cflags} -fcommon"
-    @ldflags = "-L#{CREW_PREFIX}/musl/lib -flto -static"
+    @ldflags = "-L#{CREW_PREFIX}/musl/lib -flto -static \
+       #{@git_libs}"
     @cmake_ldflags = '-flto'
     @musldep_cmake_options = "PATH=#{CREW_PREFIX}/musl/bin:#{CREW_PREFIX}/musl/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
         CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
@@ -129,35 +139,31 @@ class Git < Package
         LDFLAGS='#{@ldflags} \
        #{@git_libs}'"
 
-    case ARCH
-    when 'i686'
-      File.write('config.mak', 'NO_REGEX=NeedsStartEnd')
+    Dir.mkdir 'contrib/buildsystems/builddir'
+    Dir.chdir 'contrib/buildsystems/builddir' do
+      system "#{@git_env_options} cmake \
+          -G Ninja \
+          #{@musldep_cmake_options} \
+          -DCMAKE_C_STANDARD_LIBRARIES='#{@git_libs}' \
+          -DCMAKE_CXX_STANDARD_LIBRARIES='#{@git_libs}' \
+          -DCMAKE_MAKE_PROGRAM=#{CREW_PREFIX}/bin/samu \
+          -DNO_VCPKG=TRUE \
+          -DUSE_VCPKG=FALSE \
+          -Wdev \
+          .."
+      system 'samu'
     end
-
-    # system 'autoreconf -fiv'
-    system "#{@git_env_options} \
-    ./configure \
-      --prefix=#{CREW_PREFIX}/musl \
-      --libdir=#{CREW_PREFIX}/musl/lib \
-      CURL_LDFLAGS='-L#{CREW_PREFIX}/musl/lib #{@git_libs}' \
-      --with-openssl \
-      --without-tcltk \
-      --with-curl \
-      --with-perl=#{CREW_PREFIX}/bin/perl \
-      --with-python=#{CREW_PREFIX}/bin/python3 \
-      --with-gitconfig=#{CREW_PREFIX}/etc/gitconfig \
-      --with-gitattributes=#{CREW_PREFIX}/etc/gitattributes"
-    system 'cp config.log /tmp'
-    system "#{@git_env_options} make -j#{CREW_NPROC}"
   end
 
   def self.install
+    system 'cp contrib/buildsystems/builddir/cmake_install.cmake /output/work'
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
     warn_level = $VERBOSE
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"
     $VERBOSE = warn_level
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C contrib/buildsystems/builddir install"
+    # system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
 
@@ -168,6 +174,7 @@ class Git < Package
     GIT_BASHD_EOF
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/git", @git_bashd_env)
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    # Simplying the following block leads to the symlink not being created properly.
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_s '../musl/bin/git', 'git'
     end

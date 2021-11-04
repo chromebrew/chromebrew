@@ -17,10 +17,10 @@ class Curl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1-1_x86_64/curl-7.79.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6665b459a93fd975c51a69add1f376eb27b99942e1e0376887c27a35ad990f7e',
-     armv7l: '6665b459a93fd975c51a69add1f376eb27b99942e1e0376887c27a35ad990f7e',
-       i686: '4a520d3a2b358e6fe334c83dc1da69cee32960253eb215fe921f15b7af4ab3b3',
-     x86_64: '5eb5333c3fc256b01a9d29ee38971b6c8bc00fa886b920a0e44a93b0d9a01706'
+    aarch64: 'f678ab7370154c9379d96ee94752118d3aaa5d3551a941b54164670ee9a59349',
+     armv7l: 'f678ab7370154c9379d96ee94752118d3aaa5d3551a941b54164670ee9a59349',
+       i686: 'bfd65de8acd086830b17c02f1d11fa1630fa134227661a303732474914aac7e8',
+     x86_64: 'baa7f82ab8eee9c6ee4719b1dfa1389af8266325cc35ae45edde993ac9a538c7'
   })
 
   depends_on 'ca_certificates' => :build
@@ -212,6 +212,7 @@ class Curl < Package
     # Curl already includes man pages via "curl -M"
     FileUtils.rm_rf "#{CREW_DEST_PREFIX}/musl/share/man"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    # Simplying the following block leads to the symlink not being created properly.
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_s '../musl/bin/curl', 'curl'
     end

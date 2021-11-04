@@ -17,10 +17,10 @@ class Musl_libnghttp2 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_x86_64/musl_libnghttp2-1.46.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1a31a348df4495445c2c6cbf6e63eced8f65fbba60ee565765a15fd9e7225be3',
-     armv7l: '1a31a348df4495445c2c6cbf6e63eced8f65fbba60ee565765a15fd9e7225be3',
-       i686: '2ffc611953c84af276674d5d3c519d387f753587d7bd010cd431ba7e6168a001',
-     x86_64: 'fcadac43c83f008eec846dc40972b6201404b549e3417badeeab2ab4cdd8d800'
+    aarch64: 'b5feb94726ba1c74d89713962950b17947572affa2ac6ca5f2168c1708873144',
+     armv7l: 'b5feb94726ba1c74d89713962950b17947572affa2ac6ca5f2168c1708873144',
+       i686: '57466adedfae59f590dbd854792cfd0c7419432ef51bd44aed6e5e35bd3bf11c',
+     x86_64: 'a773f99919c09f8f0e24276b6669a668f3ee1d7ae339be4a2b9115423beee1b7'
   })
 
   depends_on 'musl_native_toolchain' => :build
