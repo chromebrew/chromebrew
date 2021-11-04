@@ -23,17 +23,13 @@ class Qemu < Package
   depends_on 'hicolor_icon_theme'
 
 
-  @_virgl = <<~OPT if File.exist?("#{CREW_META_PATH}/virglrenderer.filelist")
-    --enable-virglrenderer \
-    --enable-opengl
-  OPT
+  @_virgl = "--enable-virglrenderer --enable-opengl" if File.exist?("#{CREW_META_PATH}/virglrenderer.filelist")
  
   def self.build
     system <<~BUILD
       env #{CREW_ENV_OPTIONS} \
       ./configure \
-        #{CREW_OPTIONS.sub(/--target=.+/, '')} \
-        #{@_virgl} \
+        #{CREW_OPTIONS.sub(/--target=.+/, '')} #{@_virgl} \
         --enable-gtk \
         --enable-kvm \
         --enable-system \
