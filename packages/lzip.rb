@@ -22,12 +22,10 @@ class Lzip < Package
      x86_64: '670598329208beb7244a6d9a58c67bc5dd74c3ee81aedaa93749d5696456c19e',
   })
 
-  depends_on 'musl_native_toolchain' => :build
-
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} \
               --libdir=#{CREW_LIB_PREFIX} \
-              CXX=#{CREW_PREFIX}/musl/bin/g++ \
+              CXX=#{CREW_TGT}-g++ \
               CXXFLAGS='#{CREW_COMMON_FLAGS} -static'"
     system 'make'
   end
