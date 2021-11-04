@@ -3,21 +3,13 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '6.0.0'
+  version '6.1.0'
   license 'GPL-2, LGPL-2 and BSD-2'
   compatibility 'all'
-  source_url 'https://download.qemu.org/qemu-6.0.0.tar.xz'
-  source_sha256 '87bc1a471ca24b97e7005711066007d443423d19aacda3d442558ae032fa30b9'
-
-  binary_url ({
-
-  })
-  binary_sha256 ({
-
-  })
+  source_url 'https://download.qemu.org/qemu-6.1.0.tar.xz'
+  source_sha256 'eebc089db3414bbeedf1e464beda0a7515aad30f73261abc246c9b27503a3c96'
 
   depends_on 'bz2'
-  depends_on 'libcurl'
   depends_on 'glib'
   depends_on 'gtk3'
   depends_on 'jemalloc'
@@ -42,11 +34,11 @@ class Qemu < Package
       ./configure \
         #{CREW_OPTIONS} \
         #{@_virgl} \
+        --enable-gtk \
         --enable-kvm \
         --enable-system \
         --enable-modules
     BUILD
-    # --enable-gtk
     # --enable-sdl
     # --disable-stack-protector
 
