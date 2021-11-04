@@ -31,17 +31,16 @@ class Qemu < Package
       ./configure \
         #{CREW_OPTIONS.sub(/--target=.+/, '')} #{@_virgl} \
         --enable-gtk \
+        --enable-sdl \
         --enable-kvm \
         --enable-system \
         --enable-modules
     BUILD
-    # --enable-sdl
-    # --disable-stack-protector
 
-    system 'ninja -C build'
+    system 'samu -C build'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
   end
 end
