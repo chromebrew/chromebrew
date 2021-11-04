@@ -3,17 +3,17 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://www.balena.io/etcher/'
-  @_ver = '1.5.115'
+  @_ver = '1.6.0'
   version @_ver
   license 'Apache-2.0'
   compatibility 'x86_64, i686'
   case ARCH
   when 'x86_64'
-    source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balena-etcher-electron_#{@_ver}_amd64.deb"
-    source_sha256 'ff8da25c9e92424280031626ae1c2e595a1edfd4e6a0c220dfd190fd893f2bd4'
+    source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-x64.AppImage"
+    source_sha256 '055af004e129009e040c654c0b0c13fd5d9b0fea8d7bbd206548935e508a8dbf'
   when 'i686'
-    source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balena-etcher-electron_#{@_ver}_i386.deb"
-    source_sha256 'c6af91ec0e7649be643bbd12765d1bc8a19d181c55f0135e10d3e9ed8d85c577'
+    source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-ia32.AppImage"
+    source_sha256 '04838bc4f451919fffc5528dae5df35b3c7af910b769401ddee751709f9407fa'
   end
 
   depends_on 'gtk2'
@@ -23,37 +23,34 @@ class Balena_etcher < Package
   depends_on 'libnotify'
   depends_on 'nspr'
   depends_on 'libgconf'
-  depends_on 'alien' => :build
   depends_on 'libxss'
+  depends_on 'libcom_err'
+  depends_on 'gsettings_desktop_schemas'
   depends_on 'xhost'
   depends_on 'sommelier'
 
   def self.build
-    Dir.chdir('../') do
-      system "alien -tc balena-etcher-electron_#{@_ver}_*.deb"
-      system "tar xf balena-etcher-electron-#{@_ver}.tgz"
-    end
-    system "cat <<'EOF'> balena-etcher
-#!/bin/sh
-xhost si:localuser:root
-sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} balena-etcher-electron
-EOF"
+    etcher = <<~EOF
+      #!/bin/bash
+      xhost si:localuser:root
+      cd #{CREW_PREFIX}/share/balena-etcher
+      sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ./AppRun "$@"
+    EOF
+    IO.write('etcher.sh', etcher)
   end
 
   def self.install
     ENV['CREW_NOT_STRIP'] = '1'
-    Dir.chdir('../') do
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-      FileUtils.mv 'usr/share/', CREW_DEST_PREFIX
-      FileUtils.mv 'opt/', CREW_DEST_PREFIX
-      FileUtils.ln_s "#{CREW_PREFIX}/opt/balenaEtcher/balena-etcher-electron", "#{CREW_DEST_PREFIX}/bin/balena-etcher-electron"
-    end
-    FileUtils.install 'balena-etcher', "#{CREW_DEST_PREFIX}/bin/balena-etcher", mode: 0755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/balena-etcher"
+    FileUtils.install 'etcher.sh', "#{CREW_DEST_PREFIX}/bin/etcher", mode: 0755
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/balena-etcher"
   end
 
   def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     puts
-    puts "To get started, type 'balena-etcher'.".lightblue
+    puts "To get started, type 'etcher'.".lightblue
     puts
   end
 end

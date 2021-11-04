@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.69.0'
+  @_ver = '2.70.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Glib < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_armv7l/glib-2.69.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_armv7l/glib-2.69.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_i686/glib-2.69.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.69.0_x86_64/glib-2.69.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_armv7l/glib-2.70.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_armv7l/glib-2.70.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_i686/glib-2.70.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_x86_64/glib-2.70.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '573261af071950bce6f0ed2022cff39ed9fe341a0fc623fda18dd12a246b1392',
-     armv7l: '573261af071950bce6f0ed2022cff39ed9fe341a0fc623fda18dd12a246b1392',
-       i686: '60f54d5bac8c668f5b932e021b17391560353e6ae8391fed00a6af740620eea5',
-     x86_64: 'f2f4cce78c7cedfa0ab73438c83f6aed840b5bdd92b8d0dcb7dea3ef81bd785f',
+    aarch64: '5a3b66e351b9bdf6ebb4ca0c23383cffb8c65bec2c69ed40361d3a790aa39e4c',
+     armv7l: '5a3b66e351b9bdf6ebb4ca0c23383cffb8c65bec2c69ed40361d3a790aa39e4c',
+       i686: 'aa7fb9b8a770208a1653692c4db68616bd35bfd5add16d121e7f63d6dbf40d5d',
+     x86_64: '9f96829a225c86f284513766e9ea833d9fb78928f572a5bd78e12ff1932b957f'
   })
 
   depends_on 'shared_mime_info' # L
@@ -41,5 +41,9 @@ class Glib < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end

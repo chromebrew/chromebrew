@@ -3,23 +3,24 @@ require 'package'
 class Php71 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '7.1.33-2'
+  @_ver = '7.1.33'
+  version "#{@_ver}-3"
   license 'PHP-3.01'
   compatibility 'all'
   source_url 'https://php.net/distributions/php-7.1.33.tar.xz'
   source_sha256 'bd7c0a9bd5433289ee01fd440af3715309faf583f75832b64fe169c100d52968'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_armv7l/php71-7.1.33-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_armv7l/php71-7.1.33-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_i686/php71-7.1.33-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-2_x86_64/php71-7.1.33-2-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_armv7l/php71-7.1.33-3-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_armv7l/php71-7.1.33-3-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_i686/php71-7.1.33-3-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_x86_64/php71-7.1.33-3-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '28d25b32c01e40b9c2a99acd779a33853f51fc5ac1ac6748aa701a83a415c61a',
-     armv7l: '28d25b32c01e40b9c2a99acd779a33853f51fc5ac1ac6748aa701a83a415c61a',
-       i686: '0dd5c341ccda5c2df53bfbcd2cbd6ef3b24c3559a6b5e4c85c896f159d8b3d83',
-     x86_64: 'e7ef2221f0b66c55ff76ffd146b661b27ea0f73a6612587f02aa090a69c6ea07',
+    aarch64: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',
+     armv7l: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',
+       i686: '2a103889c234601b47489808de43e01d96be4bfe002653acc8c08c6f2c770770',
+     x86_64: '2d354302e1cc625a6f12af2da718c41068eabe5b63175803875d37a1c4224f57',
   })
 
   depends_on 'libgcrypt'
@@ -36,7 +37,9 @@ class Php71 < Package
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    unless ARGV[0] == 'reinstall' and @_ver == phpver
+      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
+    end
   end
 
   def self.patch
@@ -112,36 +115,43 @@ class Php71 < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/log"
-    system "mkdir -p #{CREW_DEST_PREFIX}/tmp/run"
-    system "make", "INSTALL_ROOT=#{CREW_DEST_DIR}", "install"
-    system "install -Dm644 php.ini-development #{CREW_DEST_PREFIX}/etc/php.ini"
-    system "install -Dm755 sapi/fpm/init.d.php-fpm.in #{CREW_DEST_PREFIX}/etc/init.d/php-fpm"
-    system "install -Dm644 sapi/fpm/php-fpm.conf.in #{CREW_DEST_PREFIX}/etc/php-fpm.conf"
-    system "install -Dm644 sapi/fpm/www.conf.in #{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf"
-    system "ln -s #{CREW_PREFIX}/etc/init.d/php-fpm #{CREW_DEST_PREFIX}/bin/php7-fpm"
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/log"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
+    system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
+    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0o644
+    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0o755
+    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0o644
+    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode: 0o644
+    FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php7-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
-    system "mv", "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
-    system "mv", "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
-    system "rm", "-rf", "#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock", "#{CREW_DEST_DIR}/.registry"
+    FileUtils.mv "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
+    FileUtils.mv "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
+    FileUtils.rm_rf ["#{CREW_DEST_DIR}/.channels", "#{CREW_DEST_DIR}/.filemap", "#{CREW_DEST_DIR}/.lock", "#{CREW_DEST_DIR}/.registry"]
   end
 
   def self.postinstall
     puts
-    puts "To start the php-fpm service, execute:".lightblue
-    puts "php7-fpm start".lightblue
+    puts 'To start the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm start'.lightblue
     puts
-    puts "To stop the php-fpm service, execute:".lightblue
-    puts "php7-fpm stop".lightblue
+    puts 'To stop the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm stop'.lightblue
     puts
-    puts "To restart the php-fpm service, execute:".lightblue
-    puts "php7-fpm restart".lightblue
+    puts 'To restart the php-fpm service, execute:'.lightblue
+    puts 'php7-fpm restart'.lightblue
     puts
-    puts "To start php-fpm on login, execute the following:".lightblue
+    puts 'To start php-fpm on login, execute the following:'.lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/php7-fpm ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/php7-fpm start' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
   end
 end

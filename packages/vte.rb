@@ -26,16 +26,6 @@ class Vte < Package
   depends_on 'gtk3'
   depends_on 'gtk4'
 
-  def self.patch
-    system "sed -i 's/gtk+-4.0/gtk4/g' meson.build"
-
-    # i686 headers are too old to have TIOCGPTPEER
-    case ARCH
-    when 'i686'
-      system "sed -i 's/#ifdef __linux__/#ifdef TIOCGPTPEER/' src/pty.cc"
-    end
-  end
-
   def self.build
     system <<~CONFIGURE
       meson \

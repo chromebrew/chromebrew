@@ -3,23 +3,23 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.10.4'
+  version '2.11.0'
   license 'FTL or GPL-2+'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.10.4.tar.xz'
-  source_sha256 '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'
+  source_url 'https://download.savannah.gnu.org/releases/freetype/freetype-2.11.0.tar.xz'
+  source_sha256 '8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_armv7l/freetype-2.10.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_armv7l/freetype-2.10.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_i686/freetype-2.10.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.10.4_x86_64/freetype-2.10.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_armv7l/freetype-2.11.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_armv7l/freetype-2.11.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_i686/freetype-2.11.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.0_x86_64/freetype-2.11.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'c3063feb7034883e248ac4d62a82409df69577ccc4abe38ca7bd7e39c5ed3576',
-     armv7l: 'c3063feb7034883e248ac4d62a82409df69577ccc4abe38ca7bd7e39c5ed3576',
-       i686: 'a53b10cf19f25922aa6cc0f09fe846e5ee7221c73f2288ca04f83529191a94f5',
-     x86_64: '4622df673ffd07fdcec9591f039ad6e89c4687517678adb6f964dbfdff6a39cf',
+  binary_sha256({
+    aarch64: '24c9fee8ddd769952dd1eb0927020892b61677f8097e8d70fccf7ee4902680e4',
+     armv7l: '24c9fee8ddd769952dd1eb0927020892b61677f8097e8d70fccf7ee4902680e4',
+       i686: 'c4d4948ff5f63714de352e88f2b8ddcc167a30e2ae6af7979d3dc4815d123d64',
+     x86_64: '8a173447f2471d35512e6ea75cda0f53f18ae930e990881f94c7dbea9011b402'
   })
 
   depends_on 'expat'

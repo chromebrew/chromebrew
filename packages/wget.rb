@@ -3,24 +3,23 @@ require 'package'
 class Wget < Package
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
-  @_ver = '1.21.1'
-  version "#{@_ver}-1"
+  version '1.21.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/wget/wget-#{@_ver}.tar.lz"
-  source_sha256 'db9bbe5347e6faa06fc78805eeb808b268979455ead9003a608569c9d4fc90ad'
+  source_url 'https://ftpmirror.gnu.org/gnu/wget/wget-1.21.2.tar.gz'
+  source_sha256 'e6d4c76be82c676dd7e8c61a29b2ac8510ae108a810b5d1d18fc9a1d2c9a2497'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.1-1_armv7l/wget-1.21.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.1-1_armv7l/wget-1.21.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.1-1_i686/wget-1.21.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.1-1_x86_64/wget-1.21.1-1-chromeos-x86_64.tar.xz'
+  binary_url ({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_armv7l/wget-1.21.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_armv7l/wget-1.21.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_i686/wget-1.21.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_x86_64/wget-1.21.2-chromeos-x86_64.tar.xz',
   })
-  binary_sha256({
-    aarch64: '407cb0b92209fe7c9f967a9b2b68134ba747bbbbd622328a89353bad524739c4',
-     armv7l: '407cb0b92209fe7c9f967a9b2b68134ba747bbbbd622328a89353bad524739c4',
-       i686: '342544c5ac5b6634edc3323c94a94d16a3cd8e5c7d4d695e5481e51d0608dc52',
-     x86_64: 'bd779500c54435989731f1f40918a7bd58065f6da5ea562f332412fa88dc833d'
+  binary_sha256 ({
+    aarch64: 'c2179f28acacdff15012005c0949712366045e1a40dc0682f8aa5b1758cffef6',
+     armv7l: 'c2179f28acacdff15012005c0949712366045e1a40dc0682f8aa5b1758cffef6',
+       i686: 'a80b25da86146cd54a35c534705e4dc2ccd5839f17e5c85f5ab3626018091dee',
+     x86_64: '792bbb12e594477ab1857749dab3f878edaa736307b100c235b987ce25bc144c',
   })
 
   depends_on 'gnutls'
@@ -33,13 +32,12 @@ class Wget < Package
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
-    system "env CFLAGS='-pipe -flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
-      --sysconfdir=#{CREW_PREFIX}/etc\
-      --with-metalink \
-      --without-libiconv-prefix"
+    system <<~BUILD
+      #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+        --sysconfdir=#{CREW_PREFIX}/etc \
+        --with-metalink \
+        --without-libiconv-prefix
+    BUILD
     system 'make'
   end
 
@@ -49,6 +47,6 @@ class Wget < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "echo \"ca_directory=#{CREW_PREFIX}/etc/ssl/certs\" >> #{CREW_DEST_PREFIX}/etc/wgetrc"
+    File.write "#{CREW_DEST_PREFIX}/etc/wgetrc", "ca_directory=#{CREW_PREFIX}/etc/ssl/certs\n", mode: 'a'
   end
 end

@@ -4,13 +4,10 @@ require_relative '../lib/color'
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 
-require 'find'
-require 'net/http'
 require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require 'securerandom'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
@@ -277,9 +274,13 @@ def search (pkgName, silent = false)
   begin
     return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
   rescue => e
-    puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+    puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
-  abort "Package #{pkgName} not found. :(".lightred unless silent
+  unless File.exist?(pkgPath) && silent
+    @pkg = nil
+    abort "Package #{pkgName} not found. 😞".lightred unless silent
+  return
+  end
 end
 
 def regexp_search(pkgPat)
@@ -429,7 +430,7 @@ def const(var)
     # Get all constants
     @constants = Module.constants.select {|e| e =~ /[[:upper:]]$/}
     # Reject all constants which match the default list
-    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.find{ |f| /\A#{e}\z/ =~ f }}
+    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.any? { |f| /\A#{e}\z/ =~ f }}
     # Print a sorted list of the remaining constants used by crew.
     @constants.sort.each { |var|
       value = eval(var.to_s)
@@ -520,6 +521,10 @@ def update
   canBeUpdated = 0
   @device[:installed_packages].each do |package|
     search package[:name], true
+    if @pkg.nil?
+      puts "Package file for #{package[:name]} not found. :(".lightred if @opt_verbose
+      next
+    end 
     if package[:version].to_s != @pkg.version
       canBeUpdated += 1
       puts @pkg.name + ' could be updated from ' + package[:version].to_s + ' to ' + @pkg.version
@@ -570,7 +575,7 @@ def upgrade
     # Check version number of installed package and make a target list
     toBeUpdated = []
     dependencies.each do |dep|
-      package = @device[:installed_packages].find {|pkg| pkg[:name] == dep}
+      package = @device[:installed_packages].select {|pkg| pkg[:name] == dep} [0]
       next unless package
       search package[:name], true
       if package[:version] != @pkg.version
@@ -806,6 +811,8 @@ def unpack(meta)
       # Use `extract_dir` for binary distribution
       target_dir = @extract_dir
     end
+    # Remove tarball to save space.
+    FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
   end
   return CREW_BREW_DIR + target_dir
 end
@@ -898,39 +905,50 @@ def prepare_package(destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check for FHS3 compliance
+    puts "Checking for FHS3 compliance..."
+    @_errors = 0
     @fhs_compliant_prefix = ['bin', 'etc', 'include', 'lib', 'libexec', 'opt', 'sbin', 'share', 'var']
     @fhs_compliant_prefix.append(ARCH_LIB) if ARCH_LIB == 'lib64'
-    @_abort_fhs = 0
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        puts "Unable to complete this build because #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
-        @_abort_fhs = 1
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY == '1'
+          puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
+        else
+          puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
+          @_errors = 1
+        end
       end
     end
 
     # check for conflicts with other installed files
     puts "Checking for conflicts with files from installed packages..."
     conflicts = []
-    @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
-      -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
-      sed 's,.filelist,,g' | sed 's,#{CREW_META_PATH},,g'"
-    conflicts << %x[#{@conflictscmd}].chomp.split(" ")
+    @conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist].chomp
+    conflicts << @conflictscmd.gsub(/(:|filelist|#{CREW_META_PATH})/, '').split(' ')
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      puts "Unable to complete this build since there is a conflict with the same file in another package.".lightred
+      if CREW_CONFLICTS_ONLY_ADVISORY == '1'
+        puts "Warning: There is a conflict with the same file in another package.".orange
+      else
+        puts "Error: There is a conflict with the same file in another package.".lightred
+        @_errors = 1
+      end
       pp = ''
       conflicts.each do |p, f|
-        puts "\n#{p} package conflicts below:".lightred if p != pp
-        puts f.lightred
+        if CREW_CONFLICTS_ONLY_ADVISORY == '1'
+          puts "\n#{p} package conflicts below:".orange if p != pp
+          puts f.orange
+        else
+          puts "\n#{p} package conflicts below:".lightred if p != pp
+          puts f.lightred
+        end
         pp = p
       end
-      abort unless CREW_CONFLICTS_ONLY_ADVISORY == '1'
     end
 
-    # abort if not FHS compliant
-    abort "Exiting due to above errors.".lightred unless CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY == '1' or @_abort_fhs == 0
-
+    # abort if errors encountered
+    abort "Exiting due to above errors.".lightred if @_errors == 1
 
     # create directory list
     system 'find . -type d > ../dlist'
@@ -942,7 +960,7 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
-    # make hard linked files symlinks and use upx on executables
+    # use upx on executables
     shrink_dir destdir
   end
 end
@@ -979,10 +997,6 @@ def shrink_dir(dir)
         puts "Using rdfind to find duplicate or hard linked files."
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
       end
-      if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-        puts "Using symlinks tool to make absolute symlinks relative"
-        system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-      end
       # Issues with non-x86_64 in compressing libraries, so just compress
       # non-libraries. Also note that one needs to use "upx -d" on a
       # compressed file to use ldd.
@@ -996,10 +1010,36 @@ def shrink_dir(dir)
         @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -print].chomp
         unless @execfiles.empty? or @execfiles.nil?
           puts "Using upx to shrink binaries."
-          @execfiles.each_line do |execfile|
-            system "upx --best -k --overlay=skip #{execfile} && \
-            \( upx -t #{execfile} && rm #{execfile}.~ || mv #{execfile}.~ #{execfile}\)"
+          begin
+              gem 'concurrent-ruby'
+          rescue Gem::LoadError
+              puts ' -> install gem ' + 'concurrent-ruby'
+              Gem.install('concurrent-ruby')
+              gem 'concurrent-ruby'
           end
+          require 'concurrent-ruby'
+          pool = Concurrent::ThreadPoolExecutor.new(
+            min_threads: 1,
+            max_threads: CREW_NPROC,
+            max_queue: 0, # unbounded work queue
+            fallback_policy: :caller_runs
+          )
+          @execfiles.each_line do |execfile|
+            pool.post do
+              begin
+                puts "Attempting to compress #{execfile.chomp} ...".lightblue
+                system "upx --lzma -k --overlay=skip #{execfile}"
+                system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
+              rescue
+                FileUtils.mv "#{execfile}.~", execfile
+              ensure
+                FileUtils.rm_f "#{execfile}.~"
+              end
+            end
+          end
+          pool.shutdown
+          pool.wait_for_termination
+          # This should no longer be needed, but leave for cleanup.
           system 'find . -executable -type f -name "*.~" -delete'
         end
       end
@@ -1025,7 +1065,8 @@ end
 
 def resolve_dependencies_and_install
   @resolve_dependencies_and_install = 1
-  unless @pkg.is_fake?
+  preflight_fake_packages = ['hunspell', 'imagemagick', 'jdk', 'php']
+  unless @pkg.is_fake? and ! preflight_fake_packages.include?(@pkg.name)
     # Process preflight block to see if package should even
     # be downloaded or installed.
     pre_flight
@@ -1058,6 +1099,7 @@ end
 
 def expand_dependencies
   def push_dependencies
+    return unless @pkg
     if @pkg.is_binary?(@device[:architecture]) ||
       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
@@ -1106,6 +1148,9 @@ def resolve_dependencies
 
   @dependencies.each do |dep|
     depends = nil
+    unless File.exist?("#{CREW_PACKAGES_PATH}#{dep}.rb")
+      abort "Dependency #{dep} was not found.".lightred
+    end
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
       f.each_line do |line|
         found = line[/depends_on/] if line.ascii_only?
@@ -1258,7 +1303,7 @@ def build_package(pwd)
   # therefore it is possible place time consuming tests in the check method.
   if Dir.exist? target_dir
     Dir.chdir target_dir do
-      puts 'Checking...'
+      puts 'Running tests...'
       @pkg.check
     end
   end
@@ -1299,43 +1344,48 @@ def remove(pkgName)
   #if the filelist exists, remove the files and directories installed by the package
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
-
       #remove all files installed by the package
-      File.open("meta/#{pkgName}.filelist").each_line do |line|
-        begin
-          puts 'Removing file ' + line.chomp + ''.lightred if @opt_verbose
-          File.unlink line.chomp
-        rescue => exception #swallow exception
+      File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|
+        # Do not remove essential files from gcc or libssp which ruby
+        # relies on, especially during package upgrades or reinstalls.
+        # These essential files are enumerated in const.rb as
+        # CREW_ESSENTIAL_FILES.
+        if CREW_ESSENTIAL_FILES.include?(line)
+          if @opt_verbose
+            puts "Removing #{line} will break crew. It was " +
+                 'NOT'.lightred + ' deleted.'
+          end
+        else
+          puts "Removing file #{line}".lightred if @opt_verbose
+          begin
+            File.unlink line.chomp
+          rescue => exception #swallow exception
+          end
         end
       end
 
       #remove all directories installed by the package
-      File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
+      File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
         begin
-          puts 'Removing directory ' + line.chomp + ''.lightred if @opt_verbose
-          Dir.rmdir line.chomp
+          puts 'Removing directory ' + line + ''.lightred if @opt_verbose
+          Dir.rmdir line
         rescue => exception #swallow exception
         end
       end
 
       #remove the file and directory list
-      File.unlink "meta/#{pkgName}.filelist"
-      File.unlink "meta/#{pkgName}.directorylist"
+      FileUtils.rm_f "meta/#{pkgName}.filelist"
+      FileUtils.rm_f "meta/#{pkgName}.directorylist"
 
     end
   end
 
   #remove from installed packages
   puts 'Removing package ' + pkgName + "".lightred if @opt_verbose
-  @device[:installed_packages].each do |elem|
-    @device[:installed_packages].delete elem if elem[:name] == pkgName
-  end
+  @device[:installed_packages].delete_if {|elem| elem[:name] == pkgName }
 
   #update the device manifest
-  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
-    out = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(out)
-  end
+  File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate( JSON.parse(@device.to_json) )
 
   search pkgName, true
   @pkg.remove
@@ -1489,10 +1539,9 @@ def whatprovides_command(args)
 end
 
 def is_command(name)
-  return false if name =~ /^[-<]/
-  return true
+  return !!!name[/^[-<]/]
 end
 
-command_name = args.find { |k, v| v && is_command(k) } [0]
+command_name = args.select { |k, v| v and is_command(k) } .keys[0]
 function = command_name + '_command'
 send(function, args)

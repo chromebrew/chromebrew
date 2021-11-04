@@ -8,13 +8,24 @@ class Libmypaint < Package
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/mypaint/libmypaint.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1_armv7l/libmypaint-1.6.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1_armv7l/libmypaint-1.6.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1_x86_64/libmypaint-1.6.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '37363c4d7e13e651dbf6dfa89369711660d6ae9ec844990a05a21a2bdf273429',
+     armv7l: '37363c4d7e13e651dbf6dfa89369711660d6ae9ec844990a05a21a2bdf273429',
+     x86_64: '797fe6813b0aa1148eebc92949638963b83c51f6ab445da09b7d0acd62f123c3'
+  })
 
   depends_on 'gegl'
   depends_on 'jsonc'
 
   def self.build
-    system "env NOCONFIGURE=1 ./autogen.sh"
+    system 'env NOCONFIGURE=1 ./autogen.sh'
     system "env #{CREW_ENV_OPTIONS} \
       GEGL_LIBS=\"#{CREW_LIB_PREFIX}/gegl-0.4\" \
       GEGL_CFLAGS=\"-I#{CREW_PREFIX}/include/gegl-0.4 \

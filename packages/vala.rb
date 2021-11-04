@@ -3,21 +3,23 @@ require 'package'
 class Vala < Package
   description 'Vala is a programming language that aims to bring modern programming language features to GNOME developers.'
   homepage 'https://wiki.gnome.org/Projects/Vala'
-  version '0.52.4'
+  version '0.53.2'
   license 'LGPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/vala.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.52.4_armv7l/vala-0.52.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.52.4_armv7l/vala-0.52.4-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.52.4_x86_64/vala-0.52.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_armv7l/vala-0.53.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_armv7l/vala-0.53.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_i686/vala-0.53.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_x86_64/vala-0.53.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '99147de6b7b758595d27359d4a6fa137f844b1d67807d8f0a14a5cf5ae201a4f',
-     armv7l: '99147de6b7b758595d27359d4a6fa137f844b1d67807d8f0a14a5cf5ae201a4f',
-     x86_64: '85dd615b1ff6ccb1c6cf9940349624b8f0228c045ce275e2d2b5f304de79279d'
+    aarch64: '03a6379a478dd6103049a993a0e0ad04e62e2c71fa42bef139b322c914059ee1',
+     armv7l: '03a6379a478dd6103049a993a0e0ad04e62e2c71fa42bef139b322c914059ee1',
+       i686: 'c19d63faa1e2cc935990af274233412f69591998593f18be13c1e0e7d9fcef2f',
+     x86_64: '5c503b417af46f6f5ab79dc3d2cf63336e46cea9e73c6c56d0b80fc831e8d0ff'
   })
 
   depends_on 'autoconf_archive' => :build

@@ -6,18 +6,20 @@ class Libva < Package
   @_ver = '2.12.0'
   version @_ver
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://github.com/intel/libva.git'
   git_hashtag @_ver
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_armv7l/libva-2.12.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_armv7l/libva-2.12.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_i686/libva-2.12.0-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.12.0_x86_64/libva-2.12.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'e64a354e9607f5b220a22d33ebe24cf8b933a0cd97bad7efa0376fdd8ef27c52',
      armv7l: 'e64a354e9607f5b220a22d33ebe24cf8b933a0cd97bad7efa0376fdd8ef27c52',
+       i686: '7949cad8c32e05368d58243cfdc956e40350d570333a517f2c8c891f5ba0895d',
      x86_64: '7cdc4741dd68458cdff0fff55ef4600af6fcf3b0fc385acc5649eda4bfcea0be'
   })
 

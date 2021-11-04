@@ -3,23 +3,23 @@ require 'package'
 class Json_glib < Package
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
   homepage 'https://wiki.gnome.org/Projects/JsonGlib'
-  version '1.6.2'
+  version '1.6.6'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://download.gnome.org/core/40/40.beta/sources/json-glib-1.6.2.tar.xz'
-  source_sha256 'a33d66c6d038bda46b910c6c6d59c4e15db014e363dc997a0414c2e07d134f24'
+  source_url 'https://gitlab.gnome.org/GNOME/json-glib.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_armv7l/json_glib-1.6.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_armv7l/json_glib-1.6.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_i686/json_glib-1.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.2_x86_64/json_glib-1.6.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_armv7l/json_glib-1.6.6-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_armv7l/json_glib-1.6.6-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_i686/json_glib-1.6.6-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_x86_64/json_glib-1.6.6-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '455dcfbda9d20fc22e4ce2ccb33ac87776acd82cdc515ce7bf26af0e0118cd89',
-     armv7l: '455dcfbda9d20fc22e4ce2ccb33ac87776acd82cdc515ce7bf26af0e0118cd89',
-       i686: '2df0c4c6ba784caa9d308cf25b815ca25b2ad4c8ea410f7105568aecfc5b79ef',
-     x86_64: '4ce5550617d0c6a6c61317cf74deba81a0674f0b315f7741db67c3b11b36e3fb'
+    aarch64: '37724d89adff90c65166c4f9f908bd1f4184ed5422caea9ec31fab941abbc947',
+     armv7l: '37724d89adff90c65166c4f9f908bd1f4184ed5422caea9ec31fab941abbc947',
+       i686: '08a05f309d75ee639cc009973f03de5018d6306080d6feac96a3792597eb348c',
+     x86_64: '40a0670356d43d4154b89ea2d0543b9db01b5920bc04b8d144d56a1de78d418c'
   })
 
   depends_on 'gtk_doc'
@@ -33,11 +33,9 @@ class Json_glib < Package
     system 'ninja -C builddir'
   end
 
-  # Ticket opened at
-  # https://gitlab.gnome.org/GNOME/json-glib/-/issues/59
-  # def self.check
-  # system 'ninja test -C builddir'
-  # end
+  def self.check
+    system 'ninja test -C builddir'
+  end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"

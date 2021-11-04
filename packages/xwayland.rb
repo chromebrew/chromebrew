@@ -6,18 +6,20 @@ class Xwayland < Package
   @_ver = '21.1.2'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-#{@_ver}.tar.xz"
   source_sha256 'b81cbdd5ad60b8b7ad8c3ecc7ec2a28c9bf021448670735cebb501f08bebd18b'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_i686/xwayland-21.1.2-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_x86_64/xwayland-21.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
      armv7l: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
+       i686: '1664e01869eb23851cfa881c187a153ccbd8ff1d35c8b25dea055ad5ce88a225',
      x86_64: 'e6b2e07ca4df3e09ee16f6a03b951801c8e3784315dc8f2fb829889d18878473'
   })
 
@@ -41,6 +43,7 @@ class Xwayland < Package
   depends_on 'libxtrans'
   depends_on 'mesa' # R
   depends_on 'pixman' # R
+  depends_on 'rendercheck' # R
   depends_on 'wayland' # R
   depends_on 'xkbcomp'
   depends_on 'xorg_lib'

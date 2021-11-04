@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/skycocker/chromebrew'
-  version '1.1'
+  version '1.3'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -18,7 +18,9 @@ class Core < Package
   depends_on 'e2fsprogs'
   depends_on 'elfutils'
   depends_on 'expat'
+  depends_on 'filecmd'
   depends_on 'flex'
+  depends_on 'gcc'
   depends_on 'gdbm'
   depends_on 'gettext'
   depends_on 'git'

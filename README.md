@@ -100,32 +100,32 @@ Recently Upgraded Packages
 
 | Name | Description | Date Upgraded | Version |
 |:---|:---|:---|:---|
-| stack | The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced. | 2021-07-29 | 2.5.1 |
-| openssl | The Open Source toolkit for Secure Sockets Layer and Transport Layer Security | 2021-07-29 | 1.1.1k-3 |
-| urlwatch | A tool for monitoring webpages for updates | 2021-07-29 | 2.23-1 |
-| mypaint | MyPaint is a simple drawing and painting program. | 2021-07-29 | 2.0.1 |
-| mypaint_brushes | Brushes used by MyPaint and other software using libmypaint. | 2021-07-29 | 2.0.2 |
-| itstools | Translate XML with PO files using W3C Internationalization Tag Set rules | 2021-07-29 | 2.0.6-2 |
-| ansible | Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs. | 2021-07-29 | 3.3.0 |
-| pycairo | Dummy package for py3_pycairo. | 2021-07-29 | 1 |
-| libmypaint | Libmypaint is MyPaint\'s brushstroke rendering code, in a form that can be used by other programs. | 2021-07-29 | 1.6.1 |
-| six | Dummy package for py3_six | 2021-07-29 | 1 |
+| gdb | The GNU Debugger | 2021-09-25 | 11.1 |
+| llvm | The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. | 2021-09-24 | 12.0.1 |
+| binutils | The GNU Binutils are a collection of binary tools. | 2021-09-24 | 2.37-1 |
+| inetutils | The Inetutils package contains programs for basic networking. | 2021-09-24 | 2.2 |
+| elfutils | elfutils is a collection of utilities and libraries to read, create and modify ELF binary files | 2021-09-24 | 0.185 |
+| neon | neon is an HTTP and WebDAV client library, with a C interface. | 2021-09-24 | 0.32.1 |
+| pango | Pango is a library for laying out and rendering of text, with an emphasis on internationalization. | 2021-09-24 | 1.49.1 |
+| libadwaita | Library of GNOME-specific UI patterns, replacing libhandy for GTK4 | 2021-09-24 | 1.0.0-alpha.2 |
+| gtksourceview_5 | Source code editing widget | 2021-09-24 | 5.2.0 |
+| gspell | A flexible API to implement the spell checking in a GTK+ application | 2021-09-24 | 1.9.1-2 |
 
 Latest Packages
 ---------------
 
 | Name | Description | Date Added |
 |:---|:---|:---|
-| py3_secretstorage | Python bindings to Freedesktop.org Secret Service API | 2021-07-29 |
-| py3_openssl | PyOpenSSL is a Python wrapper module around the OpenSSL library. | 2021-07-29 |
-| py3_oci | Oracle Cloud Infrastructure Python SDK | 2021-07-29 |
-| py3_keyring | Keyring stores and accesses your passwords safely. | 2021-07-29 |
-| py3_impacket | Impacket provides network protocols constructors and dissectors. | 2021-07-29 |
-| py3_ebooklib | Ebooklib is a Python E-book library for handling books in EPUB2/EPUB3 format. | 2021-07-29 |
-| py3_cryptography | Cryptography provides cryptographic recipes and primitives to Python developers. | 2021-07-29 |
-| oci_cli | Command Line Interface for Oracle Cloud Infrastructure | 2021-07-29 |
-| ansible_base | Ansible base libraries and functions. | 2021-07-29 |
-| py3_zipp | Zipp is a backport of pathlib-compatible object wrapper for zip files. | 2021-07-26 |
+| gnu_time | Utility for monitoring a programs use of system resources | 2021-09-24 |
+| gnome_text_editor | GNOME Text Editor (2021) | 2021-09-24 |
+| vuze | Vuze (formerly Azureus) is an extremely powerful and configurable BitTorrent client. | 2021-09-21 |
+| smallbasic | SmallBASIC is a fast and easy to learn BASIC language interpreter | 2021-09-19 |
+| logisim | An educational tool for designing and simulating digital logic circuits | 2021-09-16 |
+| cros_adapta | Gtk+ compatible themes for styling UI elements from Crostini to match Chrome OS defaults. | 2021-09-10 |
+| chafa | Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc. | 2021-09-04 |
+| qtlocation | Qt Location and Positioning | 2021-08-30 |
+| qtmultimedia | Qt Multimedia | 2021-08-30 |
+| qtscript | Qt Script Tools | 2021-08-30 |
 
 Chat with us!
 -------------

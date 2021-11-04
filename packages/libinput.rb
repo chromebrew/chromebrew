@@ -3,24 +3,22 @@ require 'package'
 class Libinput < Package
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput'
-  @_ver = '1.17.0'
+  @_ver = '1.19.2'
   version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url "https://www.freedesktop.org/software/libinput/libinput-#{@_ver}.tar.xz"
-  source_sha256 'c560cfca14cb5c50d2a1b7551df06bc5d4306e32c128f3e3d37e137285dedbad'
+  source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_armv7l/libinput-1.17.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_armv7l/libinput-1.17.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_i686/libinput-1.17.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_x86_64/libinput-1.17.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2_armv7l/libinput-1.19.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2_armv7l/libinput-1.19.2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2_x86_64/libinput-1.19.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a449ec4b3a457cf1222606c053bd90d6ff857434f06fdce33689d2bc198f2280',
-     armv7l: 'a449ec4b3a457cf1222606c053bd90d6ff857434f06fdce33689d2bc198f2280',
-       i686: '3b5cd49e73d1351369a4afd268a5bb84dc1a6ac00a0381fc9d94b89e753ca7c1',
-     x86_64: '7f4ed0a79f83c740aa1c708accf6f483b00345507df91a4d164117cd5bbb498e'
+    aarch64: 'f0bfc3ddddb5d34e874cb9b02bccda660f8600051ffdbdebe60760adfa427f3b',
+     armv7l: 'f0bfc3ddddb5d34e874cb9b02bccda660f8600051ffdbdebe60760adfa427f3b',
+     x86_64: '3d1a343fecb4cedf97f176a3be8ecdb80b8166d45f65fb97142e6fd91f7b3391'
   })
 
   depends_on 'mtdev'

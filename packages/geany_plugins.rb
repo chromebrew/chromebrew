@@ -3,21 +3,21 @@ require 'package'
 class Geany_plugins < Package
   description 'Geany plugins.'
   homepage 'https://www.geany.org/'
-  version '1.37-7c54'
+  version '1.38.0'
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://github.com/geany/geany-plugins.git'
-  git_hashtag '7c540bf347d0f0c6f6ab5123fa8f226b2f9152ee'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.37-7c54_armv7l/geany_plugins-1.37-7c54-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.37-7c54_armv7l/geany_plugins-1.37-7c54-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.37-7c54_x86_64/geany_plugins-1.37-7c54-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.38.0_armv7l/geany_plugins-1.38.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.38.0_armv7l/geany_plugins-1.38.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.38.0_x86_64/geany_plugins-1.38.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '746ecbc8c162e5407a43f64998b5d60f03555b2335d7c626ffc8a59152b9c394',
-     armv7l: '746ecbc8c162e5407a43f64998b5d60f03555b2335d7c626ffc8a59152b9c394',
-     x86_64: '99640a4c250c27ff315ce2184bdd6b6608f9109bc9df80868f5a0fb586ecc0b2'
+    aarch64: '61dafd4420585ddbf5678f27444a816a8f2fd1b0b88fb3ebc8bd2948758a05c9',
+     armv7l: '61dafd4420585ddbf5678f27444a816a8f2fd1b0b88fb3ebc8bd2948758a05c9',
+     x86_64: 'bba7bc28ddf7d47e8ccb0a071adca60528231f253a84a3e5650a4322b4815f88'
   })
 
   depends_on 'libgit2' => :build
@@ -34,9 +34,9 @@ class Geany_plugins < Package
     system 'make'
   end
 
-  # def self.check
-  #   system 'make', 'check'
-  # end
+  def self.check
+    system 'make', 'check'
+  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
