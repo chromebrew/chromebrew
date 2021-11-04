@@ -2,7 +2,7 @@ require 'package'
 
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
-  homepage 'http://www.qemu.org/'
+  homepage 'https://www.qemu.org/'
   version '6.1.0'
   license 'GPL-2, LGPL-2 and BSD-2'
   compatibility 'all'
@@ -23,7 +23,7 @@ class Qemu < Package
   depends_on 'hicolor_icon_theme'
 
 
-  @_virgl = "--enable-virglrenderer --enable-opengl" if File.exist?("#{CREW_META_PATH}/virglrenderer.filelist")
+  @_virgl = '--enable-virglrenderer --enable-opengl' if File.exist?("#{CREW_META_PATH}/virglrenderer.filelist")
  
   def self.build
     system <<~BUILD
