@@ -32,7 +32,7 @@ class Qemu < Package
     system <<~BUILD
       env #{CREW_ENV_OPTIONS} \
       ./configure \
-        #{CREW_OPTIONS} \
+        #{CREW_OPTIONS.sub(/--target=.+/, '')} \
         #{@_virgl} \
         --enable-gtk \
         --enable-kvm \
