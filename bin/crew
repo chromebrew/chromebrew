@@ -880,7 +880,7 @@ def compress_doc(dir)
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
-    system "compressdoc --#{compress} -9 #{@short_verbose} #{@_short_verbose} #{dir}"
+    system "compressdoc --#{compress} -9 #{@short_verbose} #{@short_verbose} #{dir}"
   end
 end
 
