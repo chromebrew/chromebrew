@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.2.4'
+  @_ver = '21.2.5'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.4_armv7l/mesa-21.2.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.4_armv7l/mesa-21.2.4-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.4_x86_64/mesa-21.2.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.5_armv7l/mesa-21.2.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.5_armv7l/mesa-21.2.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.5_i686/mesa-21.2.5-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.5_x86_64/mesa-21.2.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '79ec03bd14f979c0dac6508be7ee49c317bfb7ff00af792721a3fb03601e9657',
-     armv7l: '79ec03bd14f979c0dac6508be7ee49c317bfb7ff00af792721a3fb03601e9657',
-     x86_64: 'bee87666ba950e5d9f0e31546c4b2f7f150418026422574bd193f43a7461e74d'
+    aarch64: '78cdd2f8aa8faf6a99f36e5892ad999ed57c30e88536f301a87bb4db15f411e0',
+     armv7l: '78cdd2f8aa8faf6a99f36e5892ad999ed57c30e88536f301a87bb4db15f411e0',
+       i686: '6a4b4b3f9d2b5a5210c93987daf563123b0c8ab335352584671bf2560b45d8cb',
+     x86_64: '1256dd6c05b47fb799fa4dfcaa5ead1a46565669fd560b56626b73d31ce1347d'
   })
 
   depends_on 'glslang' => :build
@@ -93,6 +95,10 @@ class Mesa < Package
       File.write('tegra.patch', @tegrapatch)
       system 'patch -Np1 -i tegra.patch'
     end
+    # llvm 13 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
+    # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch
+    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch'
+    system 'patch -Np1 -i 13273.patch'
   end
 
   def self.build
