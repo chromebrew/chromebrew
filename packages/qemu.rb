@@ -6,8 +6,8 @@ class Qemu < Package
   version '6.1.0'
   license 'GPL-2, LGPL-2 and BSD-2'
   compatibility 'all'
-  source_url 'https://download.qemu.org/qemu-6.1.0.tar.xz'
-  source_sha256 'eebc089db3414bbeedf1e464beda0a7515aad30f73261abc246c9b27503a3c96'
+  source_url 'https://gitlab.com/qemu-project/qemu.git'
+  git_hashtag "v#{version}"
 
   depends_on 'bz2'
   depends_on 'glib'
@@ -21,7 +21,6 @@ class Qemu < Package
   depends_on 'lzo'
   depends_on 'pixman'
   depends_on 'hicolor_icon_theme'
-
 
   @_virgl = '--enable-virglrenderer --enable-opengl' if File.exist?("#{CREW_META_PATH}/virglrenderer.filelist")
  
