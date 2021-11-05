@@ -3,11 +3,11 @@ require 'package'
 class Ledger < Package
   description 'A double-entry accounting system with a command-line reporting interface'
   homepage 'https://www.ledger-cli.org/'
-  version '3.1.3'
+  version '3.2.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/ledger/ledger/archive/v3.1.3.tar.gz'
-  source_sha256 'b248c91d65c7a101b9d6226025f2b4bf3dabe94c0c49ab6d51ce84a22a39622b'
+  source_url 'https://github.com/ledger/ledger.git'
+  git_hashtag "v#{version}"
 
   depends_on 'boost' => :build
 
