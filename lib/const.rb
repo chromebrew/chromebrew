@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.17.8'
+CREW_VERSION = '1.17.9'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -119,12 +119,24 @@ CREW_OPTIONS = <<~OPT.chomp
   --program-suffix=''
 OPT
 
-CREW_MESON_OPTIONS = CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
+CREW_MESON_OPTIONS = <<~OPT.chomp
   -Dprefix=#{CREW_PREFIX} \
   -Dlibdir=#{CREW_LIB_PREFIX} \
   -Dmandir=#{CREW_MAN_PREFIX} \
   -Dbuildtype=release \
   -Db_lto=true \
+  -Dstrip=true \
+  -Db_pie=true \
+  -Dcpp_args='-O2' \
+  -Dc_args='-O2'
+OPT
+
+CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
+  -Dprefix=#{CREW_PREFIX} \
+  -Dlibdir=#{CREW_LIB_PREFIX} \
+  -Dmandir=#{CREW_MAN_PREFIX} \
+  -Dbuildtype=release \
+  -Db_lto=false \
   -Dstrip=true \
   -Db_pie=true \
   -Dcpp_args='-O2' \
