@@ -278,9 +278,9 @@ def search (pkgName, silent = false)
   end
   unless File.exist?(pkgPath) && silent
     @pkg = nil
+    abort "Package #{pkgName} not found. 😞".lightred unless silent
   return
   end
-  abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
@@ -1113,6 +1113,7 @@ end
 
 def expand_dependencies
   def push_dependencies
+    return unless @pkg
     if @pkg.is_binary?(@device[:architecture]) ||
       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
@@ -1161,6 +1162,9 @@ def resolve_dependencies
 
   @dependencies.each do |dep|
     depends = nil
+    unless File.exist?("#{CREW_PACKAGES_PATH}#{dep}.rb")
+      abort "Dependency #{dep} was not found.".lightred
+    end
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
       f.each_line do |line|
         found = line[/depends_on/] if line.ascii_only?

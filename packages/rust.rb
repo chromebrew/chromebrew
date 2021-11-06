@@ -3,23 +3,23 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.55.0'
+  @_ver = '1.56.0'
   version @_ver
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_i686/rust-1.55.0-chromeos-i686.tpxz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_armv7l/rust-1.55.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_armv7l/rust-1.55.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.55.0_x86_64/rust-1.55.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_i686/rust-1.56.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_x86_64/rust-1.56.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-       i686: 'bce668e6278d073b9f66d7a1b5980d1a5f350b254aa18af03757ab6e72cc030b',
-    aarch64: 'bb532ba4a0bac36d4321b154bf2b726aa031eaaca2670ca426f544f22cd94cf4',
-     armv7l: 'bb532ba4a0bac36d4321b154bf2b726aa031eaaca2670ca426f544f22cd94cf4',
-     x86_64: 'd25d432ff1294fd0ab95e71951f6271d19e9dbdebede5f47defdb6abe909e96a'
+    aarch64: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
+     armv7l: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
+       i686: 'e893e42a51e9283f84785bd7e00e7d742314e122056e612a756ab071c4cdc4fb',
+     x86_64: 'b264a4ddb67628da00cb07441f7497200e9a4aa26dc90cacd7ca03f0785f06d3'
   })
 
   def self.install
@@ -37,12 +37,9 @@ class Rust < Package
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/cargo")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
     system "RUSTFLAGS='-Clto=thin' bash ./rustup.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{@_ver} --profile minimal"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/share/cargo/bin") do
-      system "find -type f -exec ln -s #{CREW_PREFIX}/share/cargo/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
-    end
     system "install -Dm644 #{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo #{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo"
     FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo")
-    system "touch #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
+    FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
     FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
     FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/doc/")
@@ -55,7 +52,7 @@ class Rust < Package
       export CARGO_HOME=#{CREW_PREFIX}/share/cargo
       export RUSTUP_HOME=#{CREW_PREFIX}/share/rustup
     RUSTCONFIGEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/rust", @rustconfigenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/rust", @rustconfigenv)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @rustcompletionenv = <<~RUSTCOMPLETIONEOF
@@ -63,10 +60,15 @@ class Rust < Package
       source #{CREW_PREFIX}/share/bash-completion/completions/cargo
       source #{CREW_PREFIX}/share/bash-completion/completions/rustup
     RUSTCOMPLETIONEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
     system "#{CREW_DEST_PREFIX}/share/cargo/bin/rustup completions bash > #{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
+    Dir.chdir "#{CREW_DEST_PREFIX}/share/cargo/bin" do
+      Dir.children('.').delete_if { |f| f == 'cargo' }.each do |filename|
+        FileUtils.ln_sf 'cargo', filename
+      end
+    end
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      Dir['*'] do |f|
+      Dir.each_child('../share/cargo/bin') do |f|
         FileUtils.ln_sf "../share/cargo/bin/#{f}", f
       end
     end
