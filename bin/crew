@@ -905,17 +905,14 @@ def prepare_package(destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check existence of required libraries
-    Dir.glob('**/*') do |file|
-      next unless File.executable?(file)
-      missing_lib = `LD_TRACE_LOADED_OBJECTS=1 ./#{file}`.scan(/\t(.+) => not found/).flatten
+    missing_lib = `find . -executable -type f -exec env LD_TRACE_LOADED_OBJECTS=1 {} \\;`.scan(/\t(.+) => not found/).flatten
 
-      missing_lib.each do |lib|
-        unless CREW_MISSING_LIB_ONLY_ADVISORY == '1'
-          puts "Error: Missing library '#{lib}' for '#{file}'".lightred
-          @_errors = true
-        else
-          puts "Warning: Missing library '#{lib}' for '#{file}'".orange
-        end
+    missing_lib.each do |lib|
+      unless CREW_MISSING_LIB_ONLY_ADVISORY == '1'
+        puts "Error: Missing library '#{lib}'".lightred
+        @_errors = true
+      else
+        puts "Warning: Missing library '#{lib}'".orange
       end
     end
 
