@@ -905,6 +905,7 @@ def prepare_package(destdir)
     system 'cut -c2- ../filelist > filelist'
 
     # check existence of required libraries
+    puts "Checking for existence of required libraries..."
     Dir.glob("**/*").select {|e| File.file?(e) and File.executable?(e) }.each do |exec_file|
       missing_lib = `LD_TRACE_LOADED_OBJECTS=1 #{exec_file}`.scan(/\t(.+) => not found/).flatten
       missing_lib.each do |lib|
