@@ -3,25 +3,25 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '13.0.1-08e3'
+  @_ver = '13.0.1-2162'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_branch 'release/13.x'
-  git_hashtag '08e3a5ccd952edee36b3c002e3a29c6b1b5153de'
+  git_hashtag '216200aff2681407b5e799738b09a047771d86ec'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_armv7l/llvm-13.0.1-08e3-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_armv7l/llvm-13.0.1-08e3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_i686/llvm-13.0.1-08e3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-08e3_x86_64/llvm-13.0.1-08e3-chromeos-x86_64.tpxz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-2162_i686/llvm-13.0.1-2162-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-2162_x86_64/llvm-13.0.1-2162-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'd557f5c4a92f4b707ca8897071fbb127ec5785fb88dc5cf3215c4e67db18ca92',
      armv7l: 'd557f5c4a92f4b707ca8897071fbb127ec5785fb88dc5cf3215c4e67db18ca92',
-       i686: 'be94864b1612f31d0b8509da29d48d0c02fb1326888d19c28cecfdf030d0385c',
-     x86_64: '91fa720b4507acce0ad44a8201f79ab14c1a8157cc89b1c21314fafb761d0f0d'
+    i686: 'a7bdf3e1f7bff57c542a483246581976cfd54b74a50a3b6c932844d92798c6f1',
+  x86_64: 'a4383e772d68507040660f28fc42983778196bef6b92bf97bf3a433e621fcc04'
   })
 
   depends_on 'ocaml' => :build
