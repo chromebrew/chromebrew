@@ -700,11 +700,18 @@ def download
     if @git == true
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
+        # No git branch specified, just a git commit or tag
         if @pkg.git_branch.nil? || @pkg.git_branch.empty?
+          abort("No Git branch, commit, or tag specified!").lightred if @pkg.git_hashtag.nil? || @pkg.git_hashtag.empty
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
+        # Git branch and git commit specified
+        elsif ( ! @pkg.git_hashtag.nil? || ! @pkg.git_hashtag.empty )  and ( ! @pkg.git_branch.nil? || ! @pkg.git_branch.empty?)
+          cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + '_' + @pkg.git_hashtag + '.tar.xz'
+          puts "cachefile is #{cachefile}".orange if @opt_verbose
+        # Git branch specified, without a specific git commit.
         else
-          # Use to the day granularity for a branch timestamp.
+          # Use to the day granularity for a branch timestamp with no specific commit specified.
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + Time.now.strftime("%m%d%Y") + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         end
