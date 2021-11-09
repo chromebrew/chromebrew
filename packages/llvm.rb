@@ -20,7 +20,7 @@ class Llvm < Package
   binary_sha256({
     aarch64: '46c2c65a4a4a82ec32bda0220db884a959bc099b6fd4893803cbf5acb4713cf5',
      armv7l: '46c2c65a4a4a82ec32bda0220db884a959bc099b6fd4893803cbf5acb4713cf5',
-       i686: 'a7bdf3e1f7bff57c542a483246581976cfd54b74a50a3b6c932844d92798c6f1',
+       i686: '2b546d1dba19dff3872143fb41795ddd15a26ceb6da7a7dbc65b921a9e003c55',
      x86_64: 'a4383e772d68507040660f28fc42983778196bef6b92bf97bf3a433e621fcc04'
   })
 
@@ -69,8 +69,8 @@ class Llvm < Package
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'.freeze
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -fuse-ld=lld"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -fuse-ld=lld"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin"
   # LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'.freeze
 
   # Using Targets 'all' for non-i686 because otherwise mesa complains.
