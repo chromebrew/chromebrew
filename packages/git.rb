@@ -183,10 +183,9 @@ class Git < Package
   def self.check
     # Check to see if linking libcurl worked, which means
     # git-remote-https should exist
-    system "ls #{CREW_DEST_PREFIX}/musl/libexec/git-core/git-remote-https || exit 1"
     unless File.symlink?("#{CREW_DEST_PREFIX}/musl/libexec/git-core/git-remote-https") ||
            File.exist?("#{CREW_DEST_PREFIX}/musl/libexec/git-core/git-remote-https")
-      abort('git-remote-https is broken')
+      abort('git-remote-https is broken').lightred
     end
   end
 end
