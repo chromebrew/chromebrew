@@ -19,7 +19,7 @@ class Llvm_stage1 < Package
   binary_sha256({
     aarch64: '471ccebb72765a304bc8a1097e144b16d33e1fbbef5dd27fa4ed43530aaf2ee8',
      armv7l: '471ccebb72765a304bc8a1097e144b16d33e1fbbef5dd27fa4ed43530aaf2ee8',
-       i686: 'e4f470423076df1cb57d65f56e0d16ff1570e307a2cf83172745a1c300e6a4ee',
+       i686: '02bd963269fc8fb491bb641f8eb6acd00ed543ccdfe2707cb540d6b792961b44',
      x86_64: '310143770e287975bcb97e454d7e63f3f74ebaca5e02ea88d5f2e1140d0d3ac7'
   })
 
