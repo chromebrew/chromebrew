@@ -185,7 +185,7 @@ class Git < Package
     # git-remote-https should exist
     unless File.symlink?("#{CREW_DEST_PREFIX}/musl/libexec/git-core/git-remote-https") ||
            File.exist?("#{CREW_DEST_PREFIX}/musl/libexec/git-core/git-remote-https")
-      abort('git-remote-https is broken').lightred
+      abort 'git-remote-https is broken'.lightred
     end
   end
 end
