@@ -11,16 +11,16 @@ class Git < Package
   source_sha256 '0ce6222bfd31938b29360150286b51c77c643fa97740b1d35b6d1ceef8b0ecd7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.33.1-musl_armv7l/git-2.33.1-musl-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.33.1-musl_armv7l/git-2.33.1-musl-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.33.1-musl_i686/git-2.33.1-musl-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.33.1-musl_x86_64/git-2.33.1-musl-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.34.0-musl_armv7l/git-2.34.0-musl-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.34.0-musl_armv7l/git-2.34.0-musl-chromeos-armv7l.tpxz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.34.0-musl_i686/git-2.34.0-musl-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.34.0-musl_x86_64/git-2.34.0-musl-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e72ac82141776c350c490c4e951880f7b8ff249e6d5992b37f31efcce03b8a5f',
-     armv7l: 'e72ac82141776c350c490c4e951880f7b8ff249e6d5992b37f31efcce03b8a5f',
-       i686: '6b9a4462d9c7558422dd69ada6028981e3c8f68221ff02899b1962142162d4b6',
-     x86_64: '96b0d041fed29062b1506669ff5ca942c7c327d9f76e818be5a20ff8d7d7899b'
+    aarch64: 'ebb1ce7ebf9ef1b891fa7a1e1bc082b64f932ab7d3aa080ab1356ab5801d6c1c',
+     armv7l: 'ebb1ce7ebf9ef1b891fa7a1e1bc082b64f932ab7d3aa080ab1356ab5801d6c1c',
+    i686: 'b5bc649efd5829013e00a4420e8229dbd9858459cf2c7546aadc7f066f316136',
+  x86_64: '08360729068fff23dcc49c9cac8a717e9d448761d9fd6039c6f732c2336e3879'
   })
 
   depends_on 'ca_certificates' => :build
@@ -52,6 +52,8 @@ class Git < Package
     system "grep -rl ' !!error(' . | xargs sed -i 's/ \!\!error(/ \!\!git_error(/g'"
     system "sed -i 's/#define git_error(...) (error(__VA_ARGS__), const_error())/#define git_error(...) (git_error(__VA_ARGS__), const_error())/' git-compat-util.h"
     # CMake patches.
+    # Avoid undefined reference to `trace2_collect_process_info'
+    system "sed -i 's,compat_SOURCES unix-socket.c unix-stream-server.c,compat_SOURCES unix-socket.c unix-stream-server.c compat/linux/procinfo.c,g' contrib/buildsystems/CMakeLists.txt"
     # The VCPKG optout in this CmakeLists.txt file is quite broken.
     system "sed -i 's/set(USE_VCPKG/#set(USE_VCPKG/g' contrib/buildsystems/CMakeLists.txt"
     system "sed -i 's,set(PERL_PATH /usr/bin/perl),set(PERL_PATH #{CREW_PREFIX}/bin/perl),g' contrib/buildsystems/CMakeLists.txt"
