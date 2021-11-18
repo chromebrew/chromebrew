@@ -3,24 +3,24 @@ require 'package'
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.79.1'
+  @_ver = '7.80.0'
   version @_ver
   license 'curl'
   compatibility 'all'
-  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
-  source_sha256 '0606f74b1182ab732a17c11613cbbaf7084f2e6cca432642d0e3ad7c224c3689'
+  source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
+  source_sha256 'a132bd93188b938771135ac7c1f3ac1d3ce507c1fcbef8c471397639214ae2ab'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_armv7l/curl-7.79.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_armv7l/curl-7.79.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_i686/curl-7.79.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1_x86_64/curl-7.79.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_armv7l/curl-7.80.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_armv7l/curl-7.80.0-chromeos-armv7l.tpxz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_i686/curl-7.80.0-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_x86_64/curl-7.80.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '28c0602e433b079f2767f4cea9de66d5a20eb20b384c1575972911033241e630',
-     armv7l: '28c0602e433b079f2767f4cea9de66d5a20eb20b384c1575972911033241e630',
-       i686: '9594f4aa3265879bdaf6b301942bb093334459e642ef81a380a4d801e787a561',
-     x86_64: '16ec35a35eb37a81ce3c3775f23299ca2bed4af567ea546297a169af05cca327'
+    aarch64: 'aa54bf17aba4e15c170d84cd6b026a5547829d48c6e617193127f2ee15480a76',
+     armv7l: 'aa54bf17aba4e15c170d84cd6b026a5547829d48c6e617193127f2ee15480a76',
+    i686: '6214e778ae76f68af2c53b28323e4953e26bb6159cb21de941058ae1e9e8f43f',
+  x86_64: 'f3369f552b866320577048242ea5c8fd591b9e323a0810bb5d4a388f6815f949'
   })
 
   depends_on 'ca_certificates' => :build
@@ -60,7 +60,7 @@ class Curl < Package
              if BUILD_UNITTESTS
              noinst_LTLIBRARIES = libcurltool.la
     CURL_HEREDOC
-    IO.write('curl_778_static.patch', @curl_778_static_patch)
+    File.write('curl_778_static.patch', @curl_778_static_patch)
     system 'patch -Np1 -i curl_778_static.patch'
   end
 
@@ -162,7 +162,8 @@ class Curl < Package
 
     system 'autoreconf -fvi'
     system 'filefix'
-    system "#{@curl_env_options} \
+    system "PKG_CONFIG='pkg-config --static' \
+    #{@curl_env_options} \
     LIBS='#{@curl_lib_deps} \
     -L#{CREW_PREFIX}/musl/lib' \
     CURL_LIBRARY_PATH=#{CREW_PREFIX}/musl/lib \
@@ -191,7 +192,7 @@ class Curl < Package
     --without-librtmp \
     --with-zlib=#{CREW_PREFIX}/musl \
     "
-    system 'make curl_LDFLAGS=-all-static'
+    system "make curl_LDFLAGS='-static -all-static'"
     # FileUtils.cp 'src/curl', 'curl.static'
   end
 
@@ -212,7 +213,10 @@ class Curl < Package
     # Curl already includes man pages via "curl -M"
     FileUtils.rm_rf "#{CREW_DEST_PREFIX}/musl/share/man"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.ln_s "#{CREW_DEST_PREFIX}/musl/bin/curl", "#{CREW_DEST_PREFIX}/bin/curl"
+    # Simplying the following block leads to the symlink not being created properly.
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
+      FileUtils.ln_s '../musl/bin/curl', 'curl'
+    end
     # FileUtils.install 'curl.static', "#{CREW_DEST_PREFIX}/bin/curl", mode: 0o755
   end
 end
