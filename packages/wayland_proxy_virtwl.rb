@@ -21,7 +21,7 @@ class Wayland_proxy_virtwl < Package
   x86_64: 'dc6ec360d6f58b84f41cb2b97ba0c7355307d3f1b1d249e82cc0467b70cd54bf'
   })
 
-  depends_on 'ocaml'=> :build
+  depends_on 'ocaml' => :build
   depends_on 'opam' => :build
 
   def self.build
