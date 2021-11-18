@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.2.2'
+  @_ver = '21.3.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_i686/mesa-21.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_x86_64/mesa-21.2.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.0_armv7l/mesa-21.3.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.0_armv7l/mesa-21.3.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.0_i686/mesa-21.3.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.0_x86_64/mesa-21.3.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-     armv7l: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-       i686: '7d28e75839baed8ceb15e677eba566b6501819c03cbe9f8067857d79a0bb9a7e',
-     x86_64: '82f5de3eb10852a5fdd40ac38b85ed3c4c17c9f7a67199417a9ebe8021552d2e'
+    aarch64: '2bb59d291781d1965866052b0d1055a24d784af3e6bc311841710dec3be99645',
+     armv7l: '2bb59d291781d1965866052b0d1055a24d784af3e6bc311841710dec3be99645',
+       i686: 'ce83caa90ee2c3f14b73420a8fa318afca473fab0a48ca3e4095004e1ba295e1',
+     x86_64: 'fd76cc3b20926fcf2ede8ca54887197afd958c784acce6d8f690746cfdd85e80'
   })
 
   depends_on 'glslang' => :build
@@ -73,7 +73,7 @@ class Mesa < Package
                  extern "C" {
                  #endif
       FREEDRENOPATCHEOF
-      IO.write('freedreno.patch', @freedrenopatch)
+      File.write('freedreno.patch', @freedrenopatch)
       system 'patch -Np1 -i freedreno.patch'
       # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505
       @tegrapatch = <<~TEGRAPATCHEOF
@@ -92,9 +92,13 @@ class Mesa < Package
                           assert(!fb->zsbuf);
                        }
       TEGRAPATCHEOF
-      IO.write('tegra.patch', @tegrapatch)
+      File.write('tegra.patch', @tegrapatch)
       system 'patch -Np1 -i tegra.patch'
     end
+    # llvm 13 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
+    # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch
+    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch'
+    system 'patch -Np1 -i 13273.patch'
   end
 
   def self.build
