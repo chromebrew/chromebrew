@@ -7,7 +7,7 @@ class Curl < Package
   version @_ver
   license 'curl'
   compatibility 'all'
-  soure_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
+  source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
   source_sha256 'a132bd93188b938771135ac7c1f3ac1d3ce507c1fcbef8c471397639214ae2ab'
 
   binary_url({
