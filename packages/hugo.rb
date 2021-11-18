@@ -3,20 +3,20 @@ require 'package'
 class Hugo < Package
   description 'Hugo is one of the most popular open-source static site generators.'
   homepage 'https://gohugo.io'
-  version '0.82.1'
+  version '0.89.1'
   license 'Apache-2.0, Unlicense, BSD, BSD-2 and MPL-2.0'
   compatibility 'all'
 
   case ARCH
   when 'aarch64','armv7l'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.82.1/hugo_0.82.1_Linux-ARM.tar.gz'
-    source_sha256 '950943930b4c404d12660c67ce6eb109e1379e258958f9d177b3a6f86ec084cb'
+    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.89.1/hugo_0.89.1_Linux-ARM.tar.gz'
+    source_sha256 'd958a29e98b09888c7fb4bbe35665425cad0e2c604d3e65c1a669a40967f65fb'
   when 'i686'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.82.1/hugo_0.82.1_Linux-32bit.tar.gz'
-    source_sha256 '469749ba6ac750a1f4a2e9bf505b1b79e3b84060a6f72ede16791f1530cc245f'
+    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.89.1/hugo_0.89.1_Linux-32bit.tar.gz'
+    source_sha256 '6a9b37e45f61aea0c9b201943e749f2b729a55a70ff87b0ff69ed3149c031cc3'
   when 'x86_64'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.82.1/hugo_extended_0.82.1_Linux-64bit.tar.gz'
-    source_sha256 '09df1dfea2ee7e5b1a8bdc6aabbdf9baad5ac2d80034b2bd715e5c7230db99f7'
+    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.89.1/hugo_extended_0.89.1_Linux-64bit.tar.gz'
+    source_sha256 'b540d7ec33366f52900f60b4ab3d08a0536222e16f2582819498dc034d69087c'
   end
 
   binary_url ({

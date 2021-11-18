@@ -278,9 +278,9 @@ def search (pkgName, silent = false)
   end
   unless File.exist?(pkgPath) && silent
     @pkg = nil
+    abort "Package #{pkgName} not found. 😞".lightred unless silent
   return
   end
-  abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
@@ -700,11 +700,18 @@ def download
     if @git == true
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
+        # No git branch specified, just a git commit or tag
         if @pkg.git_branch.nil? || @pkg.git_branch.empty?
+          abort("No Git branch, commit, or tag specified!").lightred if @pkg.git_hashtag.nil? || @pkg.git_hashtag.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
+        # Git branch and git commit specified
+        elsif ( ! @pkg.git_hashtag.nil? || ! @pkg.git_hashtag.empty )  and ( ! @pkg.git_branch.nil? || ! @pkg.git_branch.empty?)
+          cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + '_' + @pkg.git_hashtag + '.tar.xz'
+          puts "cachefile is #{cachefile}".orange if @opt_verbose
+        # Git branch specified, without a specific git commit.
         else
-          # Use to the day granularity for a branch timestamp.
+          # Use to the day granularity for a branch timestamp with no specific commit specified.
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + Time.now.strftime("%m%d%Y") + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         end
@@ -723,17 +730,17 @@ def download
       # Download via git
       Dir.mkdir @extract_dir
       Dir.chdir @extract_dir do
-        system 'git init'
-        system 'git config advice.detachedHead false'
-        system 'git config init.defaultBranch master'
-        system "git remote add origin #{@pkg.source_url}", exception: true
         unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
           # Leave a message because this step can be slow.
           puts "Downloading src from a git branch. This may take a while..."
-          system "git remote set-branches origin #{@pkg.git_branch}", exception: true
-          system "git fetch --progress origin #{@pkg.git_branch}", exception: true
-          system "git checkout #{@pkg.git_hashtag}", exception: true
+          system "git clone --branch #{@pkg.git_branch} --single-branch #{@pkg.source_url} tmpdir", exception: true
+          system "mv tmpdir/.git . && rm -rf tmpdir"
+          system "git reset --hard #{@pkg.git_hashtag}", exception: true
         else
+          system 'git init'
+          system 'git config advice.detachedHead false'
+          system 'git config init.defaultBranch master'
+          system "git remote add origin #{@pkg.source_url}", exception: true
           system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
           system 'git checkout FETCH_HEAD'
         end
@@ -744,7 +751,7 @@ def download
       if CREW_CACHE_ENABLED and File.writable?(CREW_CACHE_DIR)
         puts 'Caching downloaded git repo...'
         Dir.chdir "#{@extract_dir}" do
-          system "tar c#{@verbose}Jf #{cachefile} \
+          system "tar c#{@verbose}Jf #{cachefile} --exclude-vcs \
             $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
         end
         system "sha256sum #{cachefile} > #{cachefile}.sha256"
@@ -1028,7 +1035,7 @@ def shrink_dir(dir)
             pool.post do
               begin
                 puts "Attempting to compress #{execfile.chomp} ...".lightblue
-                system "upx --best -k --overlay=skip #{execfile}"
+                system "upx --lzma -k --overlay=skip #{execfile}"
                 system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
               rescue
                 FileUtils.mv "#{execfile}.~", execfile
@@ -1099,6 +1106,7 @@ end
 
 def expand_dependencies
   def push_dependencies
+    return unless @pkg
     if @pkg.is_binary?(@device[:architecture]) ||
       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
@@ -1147,6 +1155,9 @@ def resolve_dependencies
 
   @dependencies.each do |dep|
     depends = nil
+    unless File.exist?("#{CREW_PACKAGES_PATH}#{dep}.rb")
+      abort "Dependency #{dep} was not found.".lightred
+    end
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
       f.each_line do |line|
         found = line[/depends_on/] if line.ascii_only?

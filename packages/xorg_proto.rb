@@ -10,4 +10,5 @@ class Xorg_proto < Meson_v1
   source_sha256 'aa2f663b8dbd632960b24f7477aa07d901210057f6ab1a1db5158732569ca015'
 
   check? true
+
 end

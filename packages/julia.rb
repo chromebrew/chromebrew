@@ -3,19 +3,19 @@ require 'package'
 class Julia < Package
   description 'Julia is a flexible dynamic language, appropriate for scientific and numerical computing'
   homepage 'https://julialang.org/'
-  version '1.3.1'
+  version '1.6.3'
   license 'MIT'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
-   source_url 'https://julialang-s3.julialang.org/bin/linux/armv7l/1.3/julia-1.3.1-linux-armv7l.tar.gz'
-   source_sha256 '965c8fab2214f8ce1b3d449d088561a6de61be42543b48c3bbadaed5b02bf824'
+   source_url 'https://julialang-s3.julialang.org/bin/linux/armv7l/1.6/julia-1.6.3-linux-armv7l.tar.gz'
+   source_sha256 '7cf08affbad206bd3c1ef8bc117bf0aa6ac95d1666bf4c06f9d530cff29b2067'
   when 'i686'
-    source_url 'https://julialang-s3.julialang.org/bin/linux/x86/1.3/julia-1.3.1-linux-i686.tar.gz'
-    source_sha256 '2cef14e892ac317707b39d2afd9ad57a39fb77445ffb7c461a341a4cdf34141a'
+    source_url 'https://julialang-s3.julialang.org/bin/linux/x86/1.6/julia-1.6.3-linux-i686.tar.gz'
+    source_sha256 '06e3d64813e4ba6019d8d79e918c48af4943700bd1eb689c481d82a64f8c280a'
   when 'x86_64'
-    source_url 'https://julialang-s3.julialang.org/bin/linux/x64/1.3/julia-1.3.1-linux-x86_64.tar.gz'
-    source_sha256 'faa707c8343780a6fe5eaf13490355e8190acf8e2c189b9e7ecbddb0fa2643ad'
+    source_url 'https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.3-linux-x86_64.tar.gz'
+    source_sha256 'c7459c334cd7c3e4a297baf52535937c6bad640e60882f9201a73bab9394314b'
   end
 
   def self.install
