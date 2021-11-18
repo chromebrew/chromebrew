@@ -11,16 +11,16 @@ class Curl < Package
   source_sha256 'a132bd93188b938771135ac7c1f3ac1d3ce507c1fcbef8c471397639214ae2ab'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1-1_armv7l/curl-7.79.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1-1_armv7l/curl-7.79.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1-1_i686/curl-7.79.1-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.79.1-1_x86_64/curl-7.79.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_armv7l/curl-7.80.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_armv7l/curl-7.80.0-chromeos-armv7l.tpxz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_i686/curl-7.80.0-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/7.80.0_x86_64/curl-7.80.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f678ab7370154c9379d96ee94752118d3aaa5d3551a941b54164670ee9a59349',
-     armv7l: 'f678ab7370154c9379d96ee94752118d3aaa5d3551a941b54164670ee9a59349',
-       i686: 'bfd65de8acd086830b17c02f1d11fa1630fa134227661a303732474914aac7e8',
-     x86_64: 'baa7f82ab8eee9c6ee4719b1dfa1389af8266325cc35ae45edde993ac9a538c7'
+    aarch64: 'aa54bf17aba4e15c170d84cd6b026a5547829d48c6e617193127f2ee15480a76',
+     armv7l: 'aa54bf17aba4e15c170d84cd6b026a5547829d48c6e617193127f2ee15480a76',
+    i686: '6214e778ae76f68af2c53b28323e4953e26bb6159cb21de941058ae1e9e8f43f',
+  x86_64: 'f3369f552b866320577048242ea5c8fd591b9e323a0810bb5d4a388f6815f949'
   })
 
   depends_on 'ca_certificates' => :build
@@ -162,7 +162,8 @@ class Curl < Package
 
     system 'autoreconf -fvi'
     system 'filefix'
-    system "#{@curl_env_options} \
+    system "PKG_CONFIG='pkg-config --static' \
+    #{@curl_env_options} \
     LIBS='#{@curl_lib_deps} \
     -L#{CREW_PREFIX}/musl/lib' \
     CURL_LIBRARY_PATH=#{CREW_PREFIX}/musl/lib \
@@ -191,7 +192,7 @@ class Curl < Package
     --without-librtmp \
     --with-zlib=#{CREW_PREFIX}/musl \
     "
-    system 'make curl_LDFLAGS=-all-static'
+    system "make curl_LDFLAGS='-static -all-static'"
     # FileUtils.cp 'src/curl', 'curl.static'
   end
 
