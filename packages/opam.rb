@@ -27,7 +27,7 @@ class Opam < Package
 
   depends_on 'bubblewrap'
   depends_on 'ocaml'
-  depends_on 'rsync' => :build
+  depends_on 'rsync'
 
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
