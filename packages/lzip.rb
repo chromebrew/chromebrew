@@ -32,10 +32,10 @@ class Lzip < Package
     @abi = 'eabihf'
   end
 
-  @cflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_c_flags} -fcommon"
-  @cxxflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_cxx_flags} -fcommon -static"
-  @ldflags = "-L#{CREW_PREFIX}/musl/lib -flto -static"
-  @cmake_ldflags = '-flto'
+  @cflags = "-B#{CREW_PREFIX}/musl/include -pipe -O2 -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_c_flags} -fcommon"
+  @cxxflags = "-B#{CREW_PREFIX}/musl/include -pipe -O2 -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_cxx_flags} -fcommon -static"
+  @ldflags = "-L#{CREW_PREFIX}/musl/lib -static"
+  @cmake_ldflags = ''
 
   @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
       CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
@@ -51,7 +51,7 @@ class Lzip < Package
     system "./configure --prefix=#{CREW_PREFIX}/musl \
       --datarootdir=#{CREW_PREFIX}/share \
       #{@musldep_env_options}"
-    system 'make'
+    system 'make -j1'
   end
 
   def self.install
