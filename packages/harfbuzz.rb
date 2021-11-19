@@ -13,13 +13,13 @@ class Harfbuzz < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.1.1_armv7l/harfbuzz-3.1.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.1.1_armv7l/harfbuzz-3.1.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.1.1_i686/harfbuzz-3.1.1-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.1.1_i686/harfbuzz-3.1.1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/3.1.1_x86_64/harfbuzz-3.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '36fa3b23aa11ec3aee2cebef48edf3fc5b82b5c74bb56ec4889717c6981bde62',
      armv7l: '36fa3b23aa11ec3aee2cebef48edf3fc5b82b5c74bb56ec4889717c6981bde62',
-       i686: 'd1419bdd44a8b7673a78b20c98fe5d454b464f59124e196af09f5e5e12d88959',
+       i686: '917efea7629e652ecc10b261c9efbbb98b4993cf958f2eebd926891e7b70e989',
      x86_64: '06a8f9366cec6772f2a9d2ab3da03402f46e1fa768a9b60bc3fd0d5ac0c0e167'
   })
 
