@@ -3,37 +3,73 @@ require 'package'
 class Ocaml < Package
   description 'OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles'
   homepage 'http://ocaml.org/'
-  version '4.12.0'
+  version '4.13.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://caml.inria.fr/pub/distrib/ocaml-4.12/ocaml-4.12.0.tar.gz'
-  source_sha256 '9825e5903b852a7a5edb71a1ed68f5d5d55d6417e2dda514dda602bc6efeed7b'
+  source_url 'https://github.com/ocaml/ocaml.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_armv7l/ocaml-4.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_armv7l/ocaml-4.12.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_i686/ocaml-4.12.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.12.0_x86_64/ocaml-4.12.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.13.1_armv7l/ocaml-4.13.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.13.1_armv7l/ocaml-4.13.1-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.13.1_x86_64/ocaml-4.13.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6da8eaf154e9e5be53d49ba12704cf3ad857fce4b404be44104a2b4417440e9b',
-     armv7l: '6da8eaf154e9e5be53d49ba12704cf3ad857fce4b404be44104a2b4417440e9b',
-       i686: 'be55c4f17d4e59e9ad0d259051c6ba932a3fd7fa1d098f61b0057938a0937c60',
-     x86_64: 'ee67fbd27e5c180c98c452a095feb8a0a113019cd2cc883d8749e066ac8109ba'
+    aarch64: '6e52264c7ae4739404b8791fb12561ec03e506b4f27cd203887366557db41038',
+     armv7l: '6e52264c7ae4739404b8791fb12561ec03e506b4f27cd203887366557db41038',
+     x86_64: 'a641c92dc3f56eaa29c5abf31bda397bb0c5cd35319a3d56f0fda30808d5bbc5'
   })
+
+  @crew_env_options = CREW_ENV_OPTIONS
+  case ARCH
+  when 'aarch64', 'armv7l'
+    # the ocaml log module fails to build when ld.gold is used.
+    @crew_env_options = CREW_ENV_OPTIONS.gsub('-fuse-ld=gold', '-fuse-ld=bfd')
+  end
 
   def self.patch
     system 'filefix'
+    # Fedora pass flags to ocaml patch from October 2021
+    # https://pagure.io/fedora-ocaml/c/9966786a7389dc6621f2bc2dce7c690c5a38b67d.patch
+    @fedora_ocaml_patch = <<~'OCAML_PATCH'
+      diff --git a/configure.ac b/configure.ac
+      index 3698c7c..e2a3cbe 100644
+      --- a/configure.ac
+      +++ b/configure.ac
+      @@ -669,6 +669,10 @@ AS_CASE([$host],
+             internal_cflags="$cc_warnings"],
+           [common_cflags="-O"])])
+
+      +# Allow CFLAGS and LDFLAGS to be added.
+      +common_cflags="$common_cflags $CFLAGS"
+      +cclibs="$cclibs $LDFLAGS"
+      +
+       internal_cppflags="-DCAML_NAME_SPACE $internal_cppflags"
+
+       # Enable SSE2 on x86 mingw to avoid using 80-bit registers.
+    OCAML_PATCH
+    File.write('fedora_ocaml.patch', @fedora_ocaml_patch)
+    system 'patch -Np1 -i fedora_ocaml.patch'
   end
 
+  def self.prebuild; end
+
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure -prefix #{CREW_PREFIX} \
-      -libdir #{CREW_LIB_PREFIX}"
-    system 'make -j1 world.opt'
+    system "#{@crew_env_options} \
+      ./configure #{CREW_OPTIONS}"
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/as", "#{CREW_BUILD}-as"
+    system "PATH=$PATH:$(pwd) make -j#{CREW_NPROC}"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.postinstall
+    # ocaml packages complain about this if it isn't there.
+    if !File.exist?("#{CREW_PREFIX}/bin/#{CREW_BUILD}-as") && File.exist?("#{CREW_PREFIX}/bin/as")
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/as",
+                     "#{CREW_PREFIX}/bin/#{CREW_BUILD}-as"
+    end
   end
 end
