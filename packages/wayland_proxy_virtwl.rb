@@ -1,6 +1,3 @@
-# Adapted from Arch Linux opam PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/opam/trunk/PKGBUILD
-
 require 'package'
 
 class Wayland_proxy_virtwl < Package
