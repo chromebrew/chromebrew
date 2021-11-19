@@ -12,13 +12,13 @@ class Lzip < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22-1_armv7l/lzip-1.22-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22-1_armv7l/lzip-1.22-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22-1_i686/lzip-1.22-1-chromeos-i686.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22-1_i686/lzip-1.22-1-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.22-1_x86_64/lzip-1.22-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '1af4e5160612003a2dcf992da1e250f69e94e0541afbc362ef08c64f03fd804b',
      armv7l: '1af4e5160612003a2dcf992da1e250f69e94e0541afbc362ef08c64f03fd804b',
-       i686: 'cf44af1ba5957bf2a5f811f10d1dd861cf03045d4ced66bd36b531c64b2116f2',
+       i686: 'a20e67ac88fdc55d2e382e042417a522cfcc4e84ce724f19e1528303fc0fc3ae',
      x86_64: '2238d47dee1af70ab2f3cce80208c73e0f8f1dec325d48ae92d80641ac09cd12'
   })
 
