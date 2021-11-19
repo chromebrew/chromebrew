@@ -15,14 +15,14 @@ class Opam < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1_armv7l/opam-2.1.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1_armv7l/opam-2.1.1-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1_i686/opam-2.1.1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1_x86_64/opam-2.1.1-chromeos-x86_64.tpxz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1_i686/opam-2.1.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1_x86_64/opam-2.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '53d3b4e436c1a70f5772523f0af5454aa54ad7dfb777d50fe7495d31160b7462',
      armv7l: '53d3b4e436c1a70f5772523f0af5454aa54ad7dfb777d50fe7495d31160b7462',
-    i686: '9dd1d7965cf4f2db86d6f92d5e33228cc4e7b59c0ddfc643ccf022a82a1610f2',
-  x86_64: 'f0cced8d7504be9b5bbd2f98d346e28b9cd18cd8b02985722643854a5cd5d51f'
+       i686: '4d8e3979729315249b0a9dabf795108c91d16618dd5f38285dc758eabf3896d1',
+     x86_64: 'f0cced8d7504be9b5bbd2f98d346e28b9cd18cd8b02985722643854a5cd5d51f'
   })
 
   depends_on 'bubblewrap'
