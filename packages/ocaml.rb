@@ -21,10 +21,12 @@ class Ocaml < Package
   })
 
   @crew_env_options = CREW_ENV_OPTIONS
+  @cc = ''
   case ARCH
   when 'aarch64', 'armv7l'
     # the ocaml log module fails to build when ld.gold is used.
     @crew_env_options = CREW_ENV_OPTIONS.gsub('-fuse-ld=gold', '-fuse-ld=bfd')
+    @cc = "CC='gcc -fuse-ld=bfd'"
   end
 
   def self.patch
@@ -55,10 +57,10 @@ class Ocaml < Package
   def self.prebuild; end
 
   def self.build
-    system "#{@crew_env_options} \
+    system "#{@cc} #{@crew_env_options} \
       ./configure #{CREW_OPTIONS}"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/as", "#{CREW_BUILD}-as"
-    system "PATH=$PATH:$(pwd) make -j#{CREW_NPROC}"
+    system "#{@cc} PATH=$PATH:$(pwd) make -j#{CREW_NPROC}"
   end
 
   def self.install
