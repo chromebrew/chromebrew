@@ -18,9 +18,9 @@ class Opam < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1-1_x86_64/opam-2.1.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ec54d9008a122e6e4050c43357de070086aa2d1cf4b1b770eacb2ff5e2753ca4',
-     armv7l: 'ec54d9008a122e6e4050c43357de070086aa2d1cf4b1b770eacb2ff5e2753ca4',
-     x86_64: 'c09d490e44d8e4ac4c723b7421f7b9203d8a7b3a8810f6505b1e3d1344505509'
+    aarch64: '72cab77dbbca98b2b46deb3568c66ea4745286c2596c4ffa9d053c81abbf65dc',
+     armv7l: '72cab77dbbca98b2b46deb3568c66ea4745286c2596c4ffa9d053c81abbf65dc',
+     x86_64: 'ca9f60990edc0784f650fec6744f3e4de6166997851bb85d550268171db22836'
   })
 
   depends_on 'bubblewrap'
@@ -54,17 +54,16 @@ class Opam < Package
   end
 
   def self.remove
-    # Leave this in until the next revision
-    if Dir.exist? "#{CREW_PREFIX}/opam"
+    if Dir.exist? "#{@OPAMROOT}"
       puts
-      print "Would you like to remove #{CREW_PREFIX}/opam? [y/N] "
+      print "Would you like to remove #{@OPAMROOT}? [y/N] "
       response = $stdin.getc
       case response
       when 'y', 'Y'
-        FileUtils.rm_rf "#{CREW_PREFIX}/opam"
-        puts "#{CREW_PREFIX}/opam removed.".lightred
+        FileUtils.rm_rf "#{@OPAMROOT}"
+        puts "#{@OPAMROOT} removed.".lightred
       else
-        puts "#{CREW_PREFIX}/opam saved.".lightgreen
+        puts "#{@OPAMROOT} saved.".lightgreen
       end
       puts
     end
