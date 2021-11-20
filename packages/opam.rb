@@ -18,8 +18,8 @@ class Opam < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.1-1_x86_64/opam-2.1.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '72cab77dbbca98b2b46deb3568c66ea4745286c2596c4ffa9d053c81abbf65dc',
-     armv7l: '72cab77dbbca98b2b46deb3568c66ea4745286c2596c4ffa9d053c81abbf65dc',
+    aarch64: '02de504f0585aded75d222df3c5fbd27be99d380611171cba57a4f210949ab45',
+     armv7l: '02de504f0585aded75d222df3c5fbd27be99d380611171cba57a4f210949ab45',
      x86_64: 'ca9f60990edc0784f650fec6744f3e4de6166997851bb85d550268171db22836'
   })
 
