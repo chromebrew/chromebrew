@@ -15,8 +15,8 @@ class Ocaml < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.13.1_x86_64/ocaml-4.13.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6e52264c7ae4739404b8791fb12561ec03e506b4f27cd203887366557db41038',
-     armv7l: '6e52264c7ae4739404b8791fb12561ec03e506b4f27cd203887366557db41038',
+    aarch64: 'c7a6fbbfe966ed1396cbf9b9222fa1b11cffa294c11d86f3a4e45ae16f99f062',
+     armv7l: 'c7a6fbbfe966ed1396cbf9b9222fa1b11cffa294c11d86f3a4e45ae16f99f062',
      x86_64: 'a641c92dc3f56eaa29c5abf31bda397bb0c5cd35319a3d56f0fda30808d5bbc5'
   })
 
