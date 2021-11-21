@@ -1407,6 +1407,8 @@ end
 
 def autoremove_command(args)
   deps_of_installed_pkgs = @device[:installed_packages].map do |pkg|
+    # ignore deleted/non-exist package recipes
+    next unless File.exist?("#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb")
     set_package pkg[:name], "#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb"
     next @pkg.dependencies
   end.flatten
