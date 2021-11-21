@@ -69,7 +69,7 @@ CREW_LICENSE = <<~LICENSESTRING
 LICENSESTRING
 
 # All available crew commands.
-@cmds = ["build", "const", "deps", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
+@cmds = ["autoremove", "build", "const", "deps", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
 
 # Parse arguments using docopt
 require_relative '../lib/docopt'
