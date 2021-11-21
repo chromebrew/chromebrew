@@ -27,7 +27,7 @@ class Sommelier < Package
   depends_on 'xauth'
   depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
   depends_on 'xsetroot' # for xsetroot in sommelierrc script
-  depends_on 'xhost' # for xhost in sommelierd script
+  depends_on 'xhost' # for xhost in sommelierrc script
   depends_on 'xrdb' # for xrdb in sommelierrc script
   depends_on 'xwayland'
 
