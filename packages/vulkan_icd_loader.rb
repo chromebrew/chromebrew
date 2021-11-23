@@ -3,7 +3,7 @@ require 'package'
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  @_ver = '1.2.199'
+  @_ver = '1.2.200'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
