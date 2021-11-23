@@ -3,24 +3,22 @@ require 'package'
 class Libdrm < Package
   description 'Cross-driver middleware for DRI protocol.'
   homepage 'https://dri.freedesktop.org'
-  @_ver = '2.4.108'
+  @_ver = '2.4.107'
   version @_ver
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/mesa/drm.git'
-  git_hashtag "libdrm-#{@_ver}"
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://dri.freedesktop.org/libdrm/libdrm-#{@_ver}.tar.xz"
+  source_sha256 'c554cef03b033636a975543eab363cc19081cb464595d3da1ec129f87370f888'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.108_armv7l/libdrm-2.4.108-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.108_armv7l/libdrm-2.4.108-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.108_i686/libdrm-2.4.108-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.108_x86_64/libdrm-2.4.108-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.107_armv7l/libdrm-2.4.107-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.107_armv7l/libdrm-2.4.107-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.107_x86_64/libdrm-2.4.107-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b6365349d8e1bcbec7f943c744c5595ac0cfa3e00e4196efed9fa79c307a6cfa',
-     armv7l: 'b6365349d8e1bcbec7f943c744c5595ac0cfa3e00e4196efed9fa79c307a6cfa',
-       i686: '974294e7d4d43554d1af048ed197d5ce52873a256c6b09c00364fffda4767031',
-     x86_64: '0e2520f4dff148baab2c9f8649093e6422c1596613c755662d1b9bdcb0fb8c16'
+    aarch64: '7610b79d04ea3bd1a74a56fc947fd226bf902d8ff4ca41f62ee61acf95982bcd',
+     armv7l: '7610b79d04ea3bd1a74a56fc947fd226bf902d8ff4ca41f62ee61acf95982bcd',
+     x86_64: 'acad6807fb51761065d53d118f5b6676a9f643af18f87e6ad6dd68c15a734fbe'
   })
 
   depends_on 'libpciaccess' # R
