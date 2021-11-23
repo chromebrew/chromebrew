@@ -9,6 +9,19 @@ class Musl_libucontext < Package
   source_url 'https://github.com/kaniini/libucontext.git'
   git_hashtag "libucontext-#{@_ver}"
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_armv7l/musl_libucontext-1.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_armv7l/musl_libucontext-1.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_i686/musl_libucontext-1.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_x86_64/musl_libucontext-1.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'ecb4f59b8669ea34f61cb5889e46f5de6be4241f8730c570d2f180d30782370f',
+     armv7l: 'ecb4f59b8669ea34f61cb5889e46f5de6be4241f8730c570d2f180d30782370f',
+       i686: '6bc511905bc917b2cd3ecf708760e18fd3b2c1f59560b1f5796bdeb2e3c4ffaf',
+     x86_64: 'cc3d984411b2353fe19cb3796cbe0d8a590b48d7e7998dc6a42d22703201c325'
+  })
+
   depends_on 'musl_native_toolchain' => :build
 
   @abi = ''
@@ -30,6 +43,7 @@ class Musl_libucontext < Package
   @cmake_ldflags = '-flto'
 
   @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
+      LIBRARY_PATH='#{CREW_PREFIX}/musl/lib:$LIBRARY_PATH' \
       CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
       CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
       LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
@@ -47,11 +61,8 @@ class Musl_libucontext < Package
     system "sed -i 's,INCLUDEDIR := /usr/include,INCLUDEDIR := #{CREW_PREFIX}/musl/include,g' Makefile"
     system "sed -i 's,PKGCONFIGDIR := /usr/lib/pkgconfig,PKGCONFIGDIR := #{CREW_PREFIX}/musl/lib/pkgconfig,g' Makefile"
   end
+
   def self.build
-    #system "./configure --prefix=#{CREW_PREFIX}/musl \
-      ##{@musldep_env_options} \
-      #--enable-shared \
-      #--enable-static"
     system "#{@musldep_env_options} make ARCH=#{@arch}"
   end
 

@@ -11,6 +11,19 @@ class Musl_libbacktrace < Package
   source_url 'https://github.com/ianlancetaylor/libbacktrace.git'
   git_hashtag version
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libbacktrace/d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a_armv7l/musl_libbacktrace-d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libbacktrace/d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a_armv7l/musl_libbacktrace-d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libbacktrace/d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a_i686/musl_libbacktrace-d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libbacktrace/d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a_x86_64/musl_libbacktrace-d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '19bc88daa2ee3de04167a159d2a52d1f35e3f54e531847de9b441517cfef7d4b',
+     armv7l: '19bc88daa2ee3de04167a159d2a52d1f35e3f54e531847de9b441517cfef7d4b',
+       i686: '1dc24f90bd5cb0c86518f6843906fa28647f8e3c4c4c44ce33e41707e22cf967',
+     x86_64: '24b85b73f26b55343485cca8938aebfcd09c586ffba6cef5a7430b4a0336c82b'
+  })
+
   depends_on 'musl_native_toolchain' => :build
 
   @abi = ''
@@ -27,6 +40,7 @@ class Musl_libbacktrace < Package
   @cmake_ldflags = '-flto'
 
   @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
+      LIBRARY_PATH='#{CREW_PREFIX}/musl/lib:$LIBRARY_PATH' \
       CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
       CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
       LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
