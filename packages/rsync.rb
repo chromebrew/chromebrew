@@ -25,6 +25,7 @@ class Rsync < Package
 
   depends_on 'xxhash'
   depends_on 'lz4'
+  depends_on 'popt'
 
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
