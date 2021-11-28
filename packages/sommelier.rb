@@ -80,9 +80,8 @@ class Sommelier < Package
 
   def self.build
     Dir.chdir('vm_tools/sommelier') do
-      # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
       system <<~BUILD
-        #{CREW_ENV_OPTIONS.gsub('gold', 'lld')} CC=clang CXX=clang++ \
+        #{CREW_ENV_OPTIONS} CC=clang CXX=clang++ \
           meson #{CREW_MESON_OPTIONS} \
           -Db_asneeded=false \
           -Db_lto=true \
@@ -107,9 +106,7 @@ class Sommelier < Package
         @sommelierenv = <<~EOF
           set -a
 
-          DISPLAY=:0
           SOMMELIER_ACCELERATORS='Super_L,<Alt>bracketleft,<Alt>bracketright'
-          WAYLAND_DISPLAY=wayland-1
 
           : "${CLUTTER_BACKEND:=x11}"
           : "${GDK_BACKEND:=x11}"
@@ -125,6 +122,34 @@ class Sommelier < Package
             fi
           ;;
           esac
+
+          # locate an unused X display
+          disp=0
+          while [ -S "/tmp/.X11-unix/X${disp}" ]; do
+            ((disp++))
+          done
+          SOMM_X_DISPLAY=":${disp}"
+          # don't export temp vars
+          unset disp
+
+          # locate an unused Wayland display
+          disp='0'
+          # use existing sommelier wayland socket if sommelier already running
+          while [[ -S "${XDG_RUNTIME_DIR}/wayland-${disp}" && "$(< "${XDG_RUNTIME_DIR}/wayland-${disp}.lock")" != 'somm_wl' ]]; do
+            ((disp++))
+          done
+          SOMM_WL_DISPLAY="wayland-${disp}"
+          # don't export temp vars
+          unset disp
+
+          # set X display if not set
+          : "${DISPLAY:=$SOMM_X_DISPLAY}"
+
+          # set WAYLAND_DISPLAY if not set
+          # if WAYLAND_DISPLAY is set to wayland-0 (exo Wayland server), override it
+          if [[ -z "${WAYLAND_DISPLAY}" || ${WAYLAND_DISPLAY} == 'wayland-0' ]]; then
+            WAYLAND_DISPLAY=${SOMM_WL_DISPLAY}
+          fi
 
           [ -f "~/.sommelier.env" ] && source ~/.sommelier.env
         EOF
@@ -179,15 +204,16 @@ class Sommelier < Package
         # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
         @sommelier_sh = <<~EOF
           #!/usr/bin/env bash
+          # Copyright 2012-2014 The Chromium OS Authors
 
-          function readlink(){
-            coreutils --coreutils-prog=readlink "$@"
+          function readlink () {
+            coreutils --coreutils-prog=readlink "${@}"
           }
 
-          if base=$(readlink "$0" 2>/dev/null); then
+          if base=$(readlink "${0}" 2>/dev/null); then
             case $base in
-            /*) base=$(readlink -f "$0" 2>/dev/null);; # if $0 is abspath symlink, make symlink fully resolved.
-            *)  base=$(dirname "$0")/"${base}";;
+            /*) base=$(readlink -f "${0}" 2> /dev/null);; # if $0 is abspath symlink, make symlink fully resolved.
+            *)  base=$(dirname "${0}")/"${base}";;
             esac
           else
             case $0 in
@@ -196,18 +222,21 @@ class Sommelier < Package
             esac
           fi
           basedir=${base%/*}
-          LD_ARGV0_REL="../bin/sommelier" \
+          LD_ARGV0_REL='../bin/sommelier' \
             exec "${basedir}/..#{@peer_cmd_prefix}" \
               --library-path \
               "${basedir}/../#{ARCH_LIB}" \
               --inhibit-rpath '' \
               "${base}.elf" \
-              "$@"
+              "${@}"
         EOF
 
         # sommelierd
         @sommelierd = <<~EOF
           #!/usr/bin/env bash
+
+          # clear log
+          echo -n > ${SOMMELIER_LOG}
 
           function log () {
             echo -e "[log]: ${@}" >> ${SOMMELIER_LOG}
@@ -217,9 +246,15 @@ class Sommelier < Package
             echo -e "[err]: ${@}"
           }
 
+          cat <<EOT>> ${SOMMELIER_LOG}
+          System info: $(uname -a)
+          Command line: ${0} ${@}
+
+          EOT
+
           function checksommelierwayland () {
-            if [[ "$(/sbin/ss -lxp)" =~ ${WAYLAND_DISPLAY} ]]; then
-              log "vaild wayland display (${WAYLAND_DISPLAY})"
+            if [[ "$(/sbin/ss -lxp)" =~ ${SOMM_WL_DISPLAY} ]]; then
+              log "vaild wayland display (${SOMM_WL_DISPLAY})"
             else
               err "sommelier-wayland failed to start"
               return 1
@@ -227,8 +262,8 @@ class Sommelier < Package
           }
 
           function checksommelierxwayland () {
-            if [[ "$(/sbin/ss -lxp)" =~ ${DISPLAY/:/X} ]]; then
-              log "sommelier running on display ${DISPLAY}"
+            if [[ "$(/sbin/ss -lxp)" =~ ${SOMM_X_DISPLAY/:/X} ]]; then
+              log "sommelier running on display ${SOMM_X_DISPLAY}"
             else
               err "sommelier-x11 failed to start"
               return 1
@@ -241,14 +276,16 @@ class Sommelier < Package
               nohup sommelier --parent \
                 --peer-cmd-prefix='#{CREW_PREFIX}#{@peer_cmd_prefix}' \
                 --display=wayland-0 \
-                --socket=wayland-1 \
-              &> ${SOMMELIER_LOG} &
+                --socket=${SOMM_WL_DISPLAY} \
+              &>> ${SOMMELIER_LOG} &
+              # add 'somm_wl' string to the lock file for identify use
+              echo -n 'somm_wl' > ${XDG_RUNTIME_DIR}/${SOMM_WL_DISPLAY}.lock
               echo -n "${!}" > #{CREW_PREFIX}/var/run/sommelier-wayland.pid
             fi
 
             if ! checksommelierxwayland &> /dev/null; then
               nohup sommelier -X \
-                --x-display=${DISPLAY}  \
+                --x-display=${SOMM_X_DISPLAY}  \
                 --glamor \
                 --display=wayland-0 \
                 --xwayland-path=#{CREW_PREFIX}/bin/Xwayland \
@@ -271,9 +308,14 @@ class Sommelier < Package
             } &> /dev/null
 
             # remove wayland socket after sommelier gone
-            if [[ ! "$(/sbin/ss -lxp)" =~ ${WAYLAND_DISPLAY} ]]; then
-              rm -f ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}*
-            fi
+            for socket in ${XDG_RUNTIME_DIR}/wayland-?; do
+              # only remove sockets that created by sommelier
+              if [[ "$(< "${socket}.lock")" == 'somm_wl' ]]; then
+                if [[ ! "$(/sbin/ss -lxp)" =~ ${socket##*/} ]]; then
+                  rm -f ${socket}*
+                fi
+              fi
+            done
 
             if [[ "$(ps -Ao args)" =~ sommelier.elf ]]; then
               echo "#{'sommelier failed to stop'.yellow}"
@@ -291,9 +333,6 @@ class Sommelier < Package
               err "SOMMELIER_LOG not set, exiting..."
               exit 1
             fi
-
-            # clear log file
-            echo -n > ${SOMMELIER_LOG}
 
             start
 
@@ -359,11 +398,10 @@ class Sommelier < Package
   end
 
   def self.postinstall
-    # all tasks are done by sommelier.env now
-    puts
-    puts 'To complete the installation, execute the following:'.orange
-    puts 'source ~/.bashrc'.orange
-    puts
+    puts '', <<~EOT.orange
+      To complete the installation, execute the following:
+      source #{CREW_PREFIX}/etc/profile
+    EOT
 
     FileUtils.touch "#{HOME}/.sommelier.env"
     puts <<~EOT.lightblue
