@@ -389,16 +389,16 @@ def help(pkgName)
     puts <<~EOT
       Look for package(s).
       Usage: crew search [-v|--verbose] [<pattern> ...]
-      If <pattern> is omitted, all packages will be returned."
-      If the package color is " + "green".lightgreen + ", it means the package is installed."
-      If the package color is " + "red".lightred + ", it means the architecture is not supported."
-      The <pattern> string can also contain regular expressions."
-      If `-v` or `--verbose` is present, homepage, version and license will be displayed."
-      Examples:"
-        crew search ^lib".lightblue + " will display all packages that start with `lib`."
-        crew search audio".lightblue + " will display all packages with `audio` in the name."
-        crew search | grep -i audio".lightblue + " will display all packages with `audio` in the name or description."
-        crew search git -v".lightblue + " will display packages with `git` in the name along with homepage, version and license."
+      If <pattern> is omitted, all packages will be returned.
+      If the package color is " + "green".lightgreen + ", it means the package is installed.
+      If the package color is " + "red".lightred + ", it means the architecture is not supported.
+      The <pattern> string can also contain regular expressions.
+      If `-v` or `--verbose` is present, homepage, version and license will be displayed.
+      Examples:
+        crew search ^lib".lightblue + " will display all packages that start with `lib`.
+        crew search audio".lightblue + " will display all packages with `audio` in the name.
+        crew search | grep -i audio".lightblue + " will display all packages with `audio` in the name or description.
+        crew search git -v".lightblue + " will display packages with `git` in the name along with homepage, version and license.
     EOT
   when "update"
     puts <<~EOT
