@@ -59,11 +59,13 @@ class Sommelier < Package
       SED
       
       # replace the virtwl shm driver to noop shm driver (removed in commit 180e42d)
-      @sommelier_shm_patch = { /^[[:blank:]]+struct sl_host_buffer\*.+?host_buffer->resource;$/m => <<~P1.chomp, /^[[:blank:]]+host_shm_pool->fd = fd;$/ => <<~P2.chomp }
+      @sommelier_shm_patch = {}
+      @sommelier_shm_patch[/^[[:blank:]]+struct sl_host_buffer\*.+?host_buffer->resource;$/m] = <<~P1.chomp
         assert(host->proxy);
         sl_create_host_buffer(host->shm->ctx, client, id,
             wl_shm_pool_create_buffer(host->proxy, offset, width, height, stride, format), width, height);
       P1
+      @sommelier_shm_patch[/^[[:blank:]]+host_shm_pool->fd = fd;$/] = <<~P2.chomp
         host_shm_pool->proxy = wl_shm_create_pool(host->shm_proxy, fd, size);
         wl_shm_pool_set_user_data(host_shm_pool->proxy, host_shm_pool);
         close(fd);
