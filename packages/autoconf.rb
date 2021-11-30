@@ -3,30 +3,30 @@ require 'package'
 class Autoconf < Package
   description 'Autoconf is an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages.'
   homepage 'http://www.gnu.org/software/autoconf/'
-  version '2.69'
+  version '2.71'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz'
-  source_sha256 '64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684'
+  source_url 'https://ftpmirror.gnu.org/autoconf/autoconf-2.71.tar.xz'
+  source_sha256 'f14c83cfebcc9427f2c3cea7258bd90df972d92eb26752da4ddad81c87a0faa4'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_armv7l/autoconf-2.69-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_armv7l/autoconf-2.69-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_i686/autoconf-2.69-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.69_x86_64/autoconf-2.69-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.71_armv7l/autoconf-2.71-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.71_armv7l/autoconf-2.71-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.71_i686/autoconf-2.71-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.71_x86_64/autoconf-2.71-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '18bb14e7e51ec1a76627f99976a28a14a82c29994370b261433550d5c8c461cc',
-     armv7l: '18bb14e7e51ec1a76627f99976a28a14a82c29994370b261433550d5c8c461cc',
-       i686: '99e6837ba27895c1ca73826bcbc05ec6363351c74caea3a43dc26c05c55ffffa',
-     x86_64: '6e9469eefc244fbe7754a3ae88e74fa8892f8676084a6c9ea2ec5b4d49a36c6b',
+    aarch64: 'cf2d3888909044d6dd3109b83d856a7face1d6bded14af644dd09985b5c92272',
+     armv7l: 'cf2d3888909044d6dd3109b83d856a7face1d6bded14af644dd09985b5c92272',
+       i686: '281f27740a18dcf251a36ee1b3067624b98da669e62d4cbd41e6631acba4805a',
+     x86_64: 'bd98d4a7920f4c4e02587d56a11b893436c81d0ce10e6b136532376bf78c8d2d',
   })
 
   depends_on 'perl'
   depends_on 'm4'
 
   def self.build
-    system "./configure"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system "make"
   end
 

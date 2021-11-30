@@ -3,24 +3,24 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.3.30'
+  @_ver = '7.3.33'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '0ebfd656df0f3b1ea37ff2887f8f2d1a71cd160fb0292547c0ee0a99e58ffd1b'
+  source_sha256 '166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_armv7l/php73-7.3.30-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_armv7l/php73-7.3.30-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_i686/php73-7.3.30-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.30_x86_64/php73-7.3.30-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.33_armv7l/php73-7.3.33-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.33_armv7l/php73-7.3.33-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.33_i686/php73-7.3.33-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.33_x86_64/php73-7.3.33-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '335b04b4491451c9cf99260fb2a20d9d246ce7a98a3821b66de4e93c5759ac51',
-     armv7l: '335b04b4491451c9cf99260fb2a20d9d246ce7a98a3821b66de4e93c5759ac51',
-       i686: '9428c9905b0a8003ce445980bcce73e4cfac7c218b6fce3e7453248ac2dc6597',
-     x86_64: '7fea7d62dc132f26a2e255f85c00fad9059b8d167e22d154b8a930c1f5082d94',
+    aarch64: '3b29987c24ed7d47d97152df1ba7915b37fde7c0a4959a003c90691853a2bfae',
+     armv7l: '3b29987c24ed7d47d97152df1ba7915b37fde7c0a4959a003c90691853a2bfae',
+       i686: '914661dbbce0d93271fc6fa072164d7c255a21634916054b4df6f931ba43791e',
+     x86_64: '332b1b11d789481fc735d59722364772ec68cfc4de6c775a558b45454cb074bb',
   })
 
   depends_on 'libcurl'

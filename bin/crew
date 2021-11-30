@@ -4,13 +4,10 @@ require_relative '../lib/color'
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid == 0
 
-require 'find'
-require 'net/http'
 require 'uri'
 require 'digest/sha2'
 require 'json'
 require 'fileutils'
-require 'securerandom'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
@@ -282,9 +279,9 @@ def search (pkgName, silent = false)
   end
   unless File.exist?(pkgPath) && silent
     @pkg = nil
+    abort "Package #{pkgName} not found. 😞".lightred unless silent
   return
   end
-  abort "Package #{pkgName} not found. :(".lightred unless silent
 end
 
 def regexp_search(pkgPat)
@@ -467,7 +464,7 @@ def const(var)
     # Get all constants
     @constants = Module.constants.select {|e| e =~ /[[:upper:]]$/}
     # Reject all constants which match the default list
-    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.find{ |f| /\A#{e}\z/ =~ f }}
+    @constants = @constants.map(&:to_s).reject{ |e| @ruby_default_constants.any? { |f| /\A#{e}\z/ =~ f }}
     # Print a sorted list of the remaining constants used by crew.
     @constants.sort.each { |var|
       value = eval(var.to_s)
@@ -612,7 +609,7 @@ def upgrade
     # Check version number of installed package and make a target list
     toBeUpdated = []
     dependencies.each do |dep|
-      package = @device[:installed_packages].find {|pkg| pkg[:name] == dep}
+      package = @device[:installed_packages].select {|pkg| pkg[:name] == dep} [0]
       next unless package
       search package[:name], true
       if package[:version] != @pkg.version
@@ -737,11 +734,18 @@ def download
     if @git == true
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
+        # No git branch specified, just a git commit or tag
         if @pkg.git_branch.nil? || @pkg.git_branch.empty?
+          abort("No Git branch, commit, or tag specified!").lightred if @pkg.git_hashtag.nil? || @pkg.git_hashtag.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
+        # Git branch and git commit specified
+        elsif ( ! @pkg.git_hashtag.nil? || ! @pkg.git_hashtag.empty )  and ( ! @pkg.git_branch.nil? || ! @pkg.git_branch.empty?)
+          cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + '_' + @pkg.git_hashtag + '.tar.xz'
+          puts "cachefile is #{cachefile}".orange if @opt_verbose
+        # Git branch specified, without a specific git commit.
         else
-          # Use to the day granularity for a branch timestamp.
+          # Use to the day granularity for a branch timestamp with no specific commit specified.
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + Time.now.strftime("%m%d%Y") + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         end
@@ -760,17 +764,17 @@ def download
       # Download via git
       Dir.mkdir @extract_dir
       Dir.chdir @extract_dir do
-        system 'git init'
-        system 'git config advice.detachedHead false'
-        system 'git config init.defaultBranch master'
-        system "git remote add origin #{@pkg.source_url}", exception: true
         unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
           # Leave a message because this step can be slow.
           puts "Downloading src from a git branch. This may take a while..."
-          system "git remote set-branches origin #{@pkg.git_branch}", exception: true
-          system "git fetch --progress origin #{@pkg.git_branch}", exception: true
-          system "git checkout #{@pkg.git_hashtag}", exception: true
+          system "git clone --branch #{@pkg.git_branch} --single-branch #{@pkg.source_url} tmpdir", exception: true
+          system "mv tmpdir/.git . && rm -rf tmpdir"
+          system "git reset --hard #{@pkg.git_hashtag}", exception: true
         else
+          system 'git init'
+          system 'git config advice.detachedHead false'
+          system 'git config init.defaultBranch master'
+          system "git remote add origin #{@pkg.source_url}", exception: true
           system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
           system 'git checkout FETCH_HEAD'
         end
@@ -781,7 +785,7 @@ def download
       if CREW_CACHE_ENABLED and File.writable?(CREW_CACHE_DIR)
         puts 'Caching downloaded git repo...'
         Dir.chdir "#{@extract_dir}" do
-          system "tar c#{@verbose}Jf #{cachefile} \
+          system "tar c#{@verbose}Jf #{cachefile} --exclude-vcs \
             $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
         end
         system "sha256sum #{cachefile} > #{cachefile}.sha256"
@@ -961,10 +965,8 @@ def prepare_package(destdir)
     # check for conflicts with other installed files
     puts "Checking for conflicts with files from installed packages..."
     conflicts = []
-    @conflictscmd = "grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist \
-      -Fxf filelist #{CREW_META_PATH}*.filelist | tr ':' ' ' | \
-      sed 's,.filelist,,g' | sed 's,#{CREW_META_PATH},,g'"
-    conflicts << %x[#{@conflictscmd}].chomp.split(" ")
+    @conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist].chomp
+    conflicts << @conflictscmd.gsub(/(:|filelist|#{CREW_META_PATH})/, '').split(' ')
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
       if CREW_CONFLICTS_ONLY_ADVISORY == '1'
@@ -999,7 +1001,7 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
-    # make hard linked files symlinks and use upx on executables
+    # use upx on executables
     shrink_dir destdir
   end
 end
@@ -1036,10 +1038,6 @@ def shrink_dir(dir)
         puts "Using rdfind to find duplicate or hard linked files."
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
       end
-      if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-        puts "Using symlinks tool to make absolute symlinks relative"
-        system 'symlinks -cr .' if File.exist?("#{CREW_PREFIX}/bin/symlinks")
-      end
       # Issues with non-x86_64 in compressing libraries, so just compress
       # non-libraries. Also note that one needs to use "upx -d" on a
       # compressed file to use ldd.
@@ -1071,7 +1069,7 @@ def shrink_dir(dir)
             pool.post do
               begin
                 puts "Attempting to compress #{execfile.chomp} ...".lightblue
-                system "upx --best -k --overlay=skip #{execfile}"
+                system "upx --lzma -k --overlay=skip #{execfile}"
                 system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
               rescue
                 FileUtils.mv "#{execfile}.~", execfile
@@ -1142,6 +1140,7 @@ end
 
 def expand_dependencies
   def push_dependencies
+    return unless @pkg
     if @pkg.is_binary?(@device[:architecture]) ||
       (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
       # retrieve name of dependencies that doesn't contain :build tag
@@ -1190,6 +1189,9 @@ def resolve_dependencies
 
   @dependencies.each do |dep|
     depends = nil
+    unless File.exist?("#{CREW_PACKAGES_PATH}#{dep}.rb")
+      abort "Dependency #{dep} was not found.".lightred
+    end
     File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
       f.each_line do |line|
         found = line[/depends_on/] if line.ascii_only?
@@ -1385,18 +1387,18 @@ def remove(pkgName)
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
       #remove all files installed by the package
-      File.open("meta/#{pkgName}.filelist").each_line do |line|
+      File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|
         # Do not remove essential files from gcc or libssp which ruby
         # relies on, especially during package upgrades or reinstalls.
         # These essential files are enumerated in const.rb as
         # CREW_ESSENTIAL_FILES.
-        if CREW_ESSENTIAL_FILES.include? line.chomp
+        if CREW_ESSENTIAL_FILES.include?(line)
           if @opt_verbose
-            puts "Removing #{line.chomp} will break crew. It was " +
+            puts "Removing #{line} will break crew. It was " +
                  'NOT'.lightred + ' deleted.'
           end
         else
-          puts 'Removing file ' + line.chomp + ''.lightred if @opt_verbose
+          puts "Removing file #{line}".lightred if @opt_verbose
           begin
             File.unlink line.chomp
           rescue => exception #swallow exception
@@ -1405,32 +1407,27 @@ def remove(pkgName)
       end
 
       #remove all directories installed by the package
-      File.readlines("meta/#{pkgName}.directorylist").reverse.each do |line|
+      File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
         begin
-          puts 'Removing directory ' + line.chomp + ''.lightred if @opt_verbose
-          Dir.rmdir line.chomp
+          puts 'Removing directory ' + line + ''.lightred if @opt_verbose
+          Dir.rmdir line
         rescue => exception #swallow exception
         end
       end
 
       #remove the file and directory list
-      File.unlink "meta/#{pkgName}.filelist"
-      File.unlink "meta/#{pkgName}.directorylist"
+      FileUtils.rm_f "meta/#{pkgName}.filelist"
+      FileUtils.rm_f "meta/#{pkgName}.directorylist"
 
     end
   end
 
   #remove from installed packages
   puts 'Removing package ' + pkgName + "".lightred if @opt_verbose
-  @device[:installed_packages].each do |elem|
-    @device[:installed_packages].delete elem if elem[:name] == pkgName
-  end
+  @device[:installed_packages].delete_if {|elem| elem[:name] == pkgName }
 
   #update the device manifest
-  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
-    out = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(out)
-  end
+  File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate( JSON.parse(@device.to_json) )
 
   search pkgName, true
   @pkg.remove
@@ -1618,10 +1615,9 @@ def whatprovides_command(args)
 end
 
 def is_command(name)
-  return false if name =~ /^[-<]/
-  return true
+  return !!!name[/^[-<]/]
 end
 
-command_name = args.find { |k, v| v && is_command(k) } [0]
+command_name = args.select { |k, v| v and is_command(k) } .keys[0]
 function = command_name + '_command'
 send(function, args)

@@ -3,16 +3,16 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '357.0.0'
+  version '362.0.0'
   license 'Apache-2.0'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-357.0.0-linux-x86.tar.gz'
-    source_sha256 '62efaaa3032780f665bb325aed9eacd6a1273f3fc680f94c9c4168dda4c1933f'
+    source_url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz"
+    source_sha256 '8c5af5891258fd313ac074abc552217df278d47fb88b901f9d68c42af9bc259e'
   when 'x86_64'
-    source_url 'https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-357.0.0-linux-x86_64.tar.gz'
-    source_sha256 '7fa9058ecee419564f53ad768699a78baec5b712b15db63f9e2aed42b5dcde29'
+    source_url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz"
+    source_sha256 '15cb05b2b3a63d657b7303343e46980b37041a94048055009328ee24e3ae3efc'
   end
 
   depends_on 'xdg_base'

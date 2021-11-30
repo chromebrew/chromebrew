@@ -3,7 +3,7 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.1.8'
+  version '2.1.11'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -23,16 +23,14 @@ class Composer < Package
 
   def self.install
     system "curl -Ls -o composer https://github.com/composer/composer/releases/download/#{version}/composer.phar"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('composer') ) == '77b8aca1b41174a67f27be066558f8a96f489916f4cded2bead3cab6a3f33590'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('composer') ) == 'fdb587131f8a11fcd475c9949ca340cc58a4b50cce6833caa8118b759a4ad1a3'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'composer', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
   end
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/.config", "#{HOME}/.config"
-    puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "echo 'export PATH=\$HOME/.config/composer/vendor/bin:\$PATH' >> ~/.bashrc && . ~/.bashrc".lightblue
-    puts
+    puts "\nTo finish the installation, execute the following:".lightblue
+    puts "echo 'export PATH=\$HOME/.config/composer/vendor/bin:\$PATH' >> ~/.bashrc && . ~/.bashrc\n".lightblue
   end
 end
