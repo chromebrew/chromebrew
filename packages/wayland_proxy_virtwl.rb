@@ -109,9 +109,9 @@ class Wayland_proxy_virtwl < Package
                | Ready | Destroyed -> ()
     PATCH_RELAY_EOF
     IO.write('xwayland.patch', @xwayland_patch)
-    system 'patch -Np1 -i xwayland.patch'
-    IO.write('xwayland.patch', @relay_patch)
-    system 'patch -Np1 -i relay.patch'
+    system 'patch -Np2 -i xwayland.patch'
+    IO.write('relay.patch', @relay_patch)
+    system 'patch -Np2 -i relay.patch'
   end
 
   def self.install
