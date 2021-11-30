@@ -135,7 +135,7 @@ class Wayland_proxy_virtwl < Package
       wayland-proxy-virtwl example usage (before running a gui program):
     EOS
     puts <<~'EOSCODE'.lightcyan
-      wayland-proxy-virtwl --wayland-display wayland-2 --x-display=2 --xrdb Xft.dpi:150
+      wayland-proxy-virtwl --wayland-display wayland-2 --x-display=2 --xrdb Xft.dpi:150 &
       export WAYLAND_DISPLAY=wayland-2
       export DISPLAY=:2
     EOSCODE
