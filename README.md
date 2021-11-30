@@ -73,6 +73,7 @@ Where available commands are:
 
 | Command | Description |
 |:---|:---|
+| autoremove | remove unused dependencies installed by removed packages |
 | build | build package(s) from source and store the archive and checksum in the current working directory |
 | const | display constant(s) |
 | deps | display dependencies of package(s) |
