@@ -12,14 +12,14 @@ class Wayland_proxy_virtwl < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/5b576d5cad76de6ed7513cc85748efd78ca366cf-3_armv7l/wayland_proxy_virtwl-5b576d5cad76de6ed7513cc85748efd78ca366cf-3-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/5b576d5cad76de6ed7513cc85748efd78ca366cf-3_armv7l/wayland_proxy_virtwl-5b576d5cad76de6ed7513cc85748efd78ca366cf-3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/5b576d5cad76de6ed7513cc85748efd78ca366cf-3_i686/wayland_proxy_virtwl-5b576d5cad76de6ed7513cc85748efd78ca366cf-3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/5b576d5cad76de6ed7513cc85748efd78ca366cf-3_x86_64/wayland_proxy_virtwl-5b576d5cad76de6ed7513cc85748efd78ca366cf-3-chromeos-x86_64.tpxz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_i686/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_x86_64/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '2172ba0d35a4a9eedc95a656de158eb08eea91319d5f2fa026a56c6bbeece71f',
      armv7l: '2172ba0d35a4a9eedc95a656de158eb08eea91319d5f2fa026a56c6bbeece71f',
-       i686: 'a8d9f3080c89d7fffa92b4198d47a49a981938ec974f08b287153e27ab0d545e',
-     x86_64: 'cd041ee4a63ec0f540e3820553d12e9e0d933de103eede6a6a97026bcf12363a'
+       i686: 'd936e559d1b9a77fd74d2f00353b80e574f67334ea238e9bd29cbb698cc70417',
+     x86_64: 'd6a34fb22a85eba404b45ff9a4ddc7351038104b8ef1719db37f5535eb401bee'
   })
 
   depends_on 'ocaml' => :build
@@ -29,6 +29,7 @@ class Wayland_proxy_virtwl < Package
   @OPAMROOT = "#{CREW_PREFIX}/share/opam"
 
   def self.patch
+    # For more info see https://github.com/talex5/wayland-proxy-virtwl/issues/24
     @xwayland_patch = <<~'PATCH_XWAYLAND_EOF'
       --- a/wayland-proxy-virtwl/xwayland.ml     2021-11-18 20:34:27.000000000 +0000
       +++ b/wayland-proxy-virtwl/xwayland.ml     2021-11-24 19:27:16.940505733 +0000
@@ -108,9 +109,9 @@ class Wayland_proxy_virtwl < Package
                match data.state with
                | Ready | Destroyed -> ()
     PATCH_RELAY_EOF
-    IO.write('xwayland.patch', @xwayland_patch)
+    File.write('xwayland.patch', @xwayland_patch)
     system 'patch -Np2 -i xwayland.patch'
-    IO.write('relay.patch', @relay_patch)
+    File.write('relay.patch', @relay_patch)
     system 'patch -Np2 -i relay.patch'
   end
 
