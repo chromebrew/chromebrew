@@ -10,14 +10,14 @@ class Wayland_proxy_virtwl < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/5b576d5cad76de6ed7513cc85748efd78ca366cf-3_armv7l/wayland_proxy_virtwl-5b576d5cad76de6ed7513cc85748efd78ca366cf-3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/5b576d5cad76de6ed7513cc85748efd78ca366cf-3_armv7l/wayland_proxy_virtwl-5b576d5cad76de6ed7513cc85748efd78ca366cf-3-chromeos-armv7l.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_armv7l/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_armv7l/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_i686/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_x86_64/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2172ba0d35a4a9eedc95a656de158eb08eea91319d5f2fa026a56c6bbeece71f',
-     armv7l: '2172ba0d35a4a9eedc95a656de158eb08eea91319d5f2fa026a56c6bbeece71f',
+    aarch64: '8bc8e2d9520ad8928f135aefbe04a5099ed15230607fb66cea5c8ecbe796b4e9',
+     armv7l: '8bc8e2d9520ad8928f135aefbe04a5099ed15230607fb66cea5c8ecbe796b4e9',
        i686: 'd936e559d1b9a77fd74d2f00353b80e574f67334ea238e9bd29cbb698cc70417',
      x86_64: 'd6a34fb22a85eba404b45ff9a4ddc7351038104b8ef1719db37f5535eb401bee'
   })
@@ -130,14 +130,14 @@ class Wayland_proxy_virtwl < Package
   end
 
   def self.postinstall
-    puts <<~'EOS'.lightblue
+    puts <<~'EOFSTRING'.lightblue
       Note that there is not yet hardware acceleration in wayland-proxy-virtwl.
       wayland-proxy-virtwl example usage (before running a gui program):
-    EOS
-    puts <<~'EOSCODE'.lightcyan
+    EOFSTRING
+    puts <<~'EOFSHELLCODE'.lightcyan
       wayland-proxy-virtwl --wayland-display wayland-2 --x-display=2 --xrdb Xft.dpi:150 &
       export WAYLAND_DISPLAY=wayland-2
       export DISPLAY=:2
-    EOSCODE
+    EOFSHELLCODE
   end
 end
