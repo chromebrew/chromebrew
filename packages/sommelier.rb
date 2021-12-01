@@ -10,8 +10,16 @@ class Sommelier < Package
   git_hashtag '1f1be4598c9de7e3865666176a33cf2223c17944'
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_armv7l/sommelier-20211110-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_armv7l/sommelier-20211110-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_i686/sommelier-20211110-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_x86_64/sommelier-20211110-chromeos-x86_64.tpxz'
   })
   binary_sha256({
+    aarch64: '34f2a709934d66dc0470338d279ba5c0ad40b31483697eaf732e0fa9c521b7d5',
+     armv7l: '34f2a709934d66dc0470338d279ba5c0ad40b31483697eaf732e0fa9c521b7d5',
+       i686: '0409a4c8f8872b53c50415fd2b5166ccd3eee222d451c42280aee1633918c2cb',
+     x86_64: 'c7f956ce6a798f44306517d8c4ec4c37b780879b01c181d108621a889dcd607d'
   })
 
   depends_on 'libdrm'
