@@ -26,7 +26,6 @@ class Cups < Package
   depends_on 'libusb'
   depends_on 'linux_pam'
   depends_on 'psmisc'
-  depends_on
 
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
