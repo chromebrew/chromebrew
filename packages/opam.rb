@@ -56,13 +56,13 @@ class Opam < Package
   end
 
   def self.remove
-    if Dir.exist? @OPAMROOT.to_s
+    if Dir.exist? @OPAMROOT
       puts
       print "Would you like to remove #{@OPAMROOT}? [y/N] "
       response = $stdin.getc
       case response
       when 'y', 'Y'
-        FileUtils.rm_rf @OPAMROOT.to_s
+        FileUtils.rm_rf @OPAMROOT
         puts "#{@OPAMROOT} removed.".lightred
       else
         puts "#{@OPAMROOT} saved.".lightgreen
