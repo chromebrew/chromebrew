@@ -12,12 +12,16 @@ class Wireshark < Package
   git_hashtag "wireshark-#{version}"
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_i686/wireshark-3.6.0-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_x86_64/wireshark-3.6.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_armv7l/wireshark-3.6.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_armv7l/wireshark-3.6.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_i686/wireshark-3.6.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_x86_64/wireshark-3.6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    i686: 'a6f2ffbc6924550c8ba82e9a82b9859ebbe1ac7c8c036149a5af957d5baeb0bf',
-  x86_64: 'c8461d43290fc2671fa561de99ebcbf8bcd836f306111bc6ef057cd5c5404296'
+    aarch64: '808bbff0525d26fb23159c6a64f3eb1d28716baffd01af5a7a510ac1bface476',
+     armv7l: '808bbff0525d26fb23159c6a64f3eb1d28716baffd01af5a7a510ac1bface476',
+       i686: 'a6f2ffbc6924550c8ba82e9a82b9859ebbe1ac7c8c036149a5af957d5baeb0bf',
+     x86_64: 'c8461d43290fc2671fa561de99ebcbf8bcd836f306111bc6ef057cd5c5404296'
   })
 
   depends_on 'asciidoctor' => :build
