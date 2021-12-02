@@ -266,7 +266,7 @@ class Sommelier < Package
 
           function checksommelierwayland () {
             if [[ "$(/sbin/ss -lxp)" =~ ${SOMM_WL_DISPLAY} ]]; then
-              log "vaild wayland display (${SOMM_WL_DISPLAY})"
+              log "valid wayland display (${SOMM_WL_DISPLAY})"
             else
               err "sommelier-wayland failed to start"
               return 1
