@@ -135,7 +135,7 @@ class Sommelier < Package
 
           # locate an unused X display
           disp=0
-          while [ -S "/tmp/.X11-unix/X${disp}" ]; do
+          while [ -S "/tmp/.X11-unix/X${disp}" ] && ! [[ -f "/tmp/.X11-unix/X${disp}.lock" && "$(< "/tmp/.X11-unix/X${disp}.lock")" == 'somm_x' ]]; do
             ((disp++))
           done
           SOMM_X_DISPLAY=":${disp}"
@@ -306,6 +306,8 @@ class Sommelier < Package
                   xauth -f ~/.Xauthority add '${DISPLAY}' . '$(openssl rand -hex 16)'
                   source #{CREW_PREFIX}/etc/sommelierrc" \
               &>> ${SOMMELIER_LOG} &
+              # add lock file for identify use
+              echo -n 'somm_x' > /tmp/.X11-unix/#{SOMM_X_DISPLAY/:/X}.lock
               echo -n "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             fi
           }
@@ -317,14 +319,16 @@ class Sommelier < Package
               pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
             } &> /dev/null
 
+            # remove x lock file after sommelier gone
+            for lock in /tmp/.X11-unix/${DISPLAY/:/X}.lock; do
+              # only remove lock files that created by sommelierd
+              [[ "$(< "${lock}")" == 'somm_x' ]] && rm -f ${lock}
+            done
+
             # remove wayland socket after sommelier gone
             for socket in ${XDG_RUNTIME_DIR}/wayland-?; do
               # only remove sockets that created by sommelier
-              if [[ "$(< "${socket}.lock")" == 'somm_wl' ]]; then
-                if [[ ! "$(/sbin/ss -lxp)" =~ ${socket##*/} ]]; then
-                  rm -f ${socket}*
-                fi
-              fi
+              [[ "$(< "${socket}.lock")" == 'somm_wl' ]] && rm -f ${socket}*
             done
 
             if [[ "$(ps -Ao args)" =~ sommelier.elf ]]; then
