@@ -5,7 +5,7 @@ class Sommelier < Package
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
   version '20211110'
   license 'BSD-Google'
-  compatibility 'aarch64, armv7l, x86_64'
+  compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag '1f1be4598c9de7e3865666176a33cf2223c17944'
 
@@ -44,6 +44,8 @@ class Sommelier < Package
     @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
   when 'x86_64'
     @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
+  when 'i686'
+    @peer_cmd_prefix = '/lib/ld-linux.so.2'
   end
 
   def self.preflight
