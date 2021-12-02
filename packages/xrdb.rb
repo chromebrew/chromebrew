@@ -19,7 +19,7 @@ class Xrdb < Package
   binary_sha256({
     aarch64: 'fd449dbef069f5f608d0e5a5d6b7da6104a4e7284b5a1a5e22fdb6d7a21ebc65',
      armv7l: 'fd449dbef069f5f608d0e5a5d6b7da6104a4e7284b5a1a5e22fdb6d7a21ebc65',
-       i686: 'f1eae836a2c769f2b383cc3c21d2d2e6307f32019a66ebce33ace94755ac3151',
+       i686: 'dc3a3cd9cee6b9278eb246e0d8cf6a0da71562e6a6ac9b5d3852f7d3ef17fba3',
      x86_64: 'f7f4003249dba8c91b80cf4c462506a6ca7e11deb3891fca79df735925c36ca4'
   })
 
@@ -32,6 +32,13 @@ class Xrdb < Package
   end
 
   def self.install
+    if ARCH == 'i686'
+      ENV['CREW_SHRINK_ARCHIVE'] = '0'
+      warn_level = $VERBOSE
+      $VERBOSE = nil
+      load "#{CREW_LIB_PATH}lib/const.rb"
+      $VERBOSE = warn_level
+    end
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
