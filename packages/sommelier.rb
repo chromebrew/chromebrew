@@ -414,14 +414,6 @@ class Sommelier < Package
   end
 
   def self.postinstall
-    # temporary fix for the DISPLAY variable
-    File.open("#{CREW_PREFIX}/etc/env.d/sommelier", 'a') {|io| io.puts '', <<~EOF }
-      if [[ "$(/sbin/ss -lxp)" =~ /tmp/X0.*sommelier.elf ]]; then
-        DISPLAY=:0
-        SOMM_X_DISPLAY=:0
-      fi
-    EOF
-
     puts '', <<~EOT.orange
       To complete the installation, execute the following:
       source #{CREW_PREFIX}/etc/profile
