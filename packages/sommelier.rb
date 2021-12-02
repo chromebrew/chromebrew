@@ -307,7 +307,7 @@ class Sommelier < Package
                   source #{CREW_PREFIX}/etc/sommelierrc" \
               &>> ${SOMMELIER_LOG} &
               # add lock file for identify use
-              echo -n 'somm_x' > /tmp/.X11-unix/#{SOMM_X_DISPLAY/:/X}.lock
+              echo -n 'somm_x' > /tmp/.X11-unix/${SOMM_X_DISPLAY/:/X}.lock
               echo -n "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             fi
           }
@@ -320,7 +320,7 @@ class Sommelier < Package
             } &> /dev/null
 
             # remove x lock file after sommelier gone
-            for lock in /tmp/.X11-unix/${DISPLAY/:/X}.lock; do
+            for lock in /tmp/.X11-unix/X?.lock; do
               # only remove lock files that created by sommelierd
               [[ "$(< "${lock}")" == 'somm_x' ]] && rm -f ${lock}
             done
