@@ -6,7 +6,7 @@ class Blender < Package
   version '3.0.0'
   license 'GPL-2'
   compatibility 'x86_64'
-  source_url 'https://mirror.clarkson.edu/blender/release/Blender3.0/blender-3.0.3-linux-x64.tar.xz'
+  source_url 'https://mirror.clarkson.edu/blender/release/Blender3.0/blender-3.0.0-linux-x64.tar.xz'
   source_sha256 '19b09dfcf5d3f3a068827454f0a704a9aa9c826350f73016121afef5f4d287ce'
 
   depends_on 'sommelier'
