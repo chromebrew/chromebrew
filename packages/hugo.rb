@@ -20,7 +20,7 @@ class Hugo < Package
   })
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/hugo"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'hugo', "#{CREW_DEST_PREFIX}/bin/hugo", mode: 0o755
   end
 end
