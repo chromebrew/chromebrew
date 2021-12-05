@@ -3,11 +3,11 @@ require 'package'
 class Blender < Package
   description 'Blender is the free and open source 3D creation suite.'
   homepage 'https://www.blender.org/'
-  version '2.93.5'
+  version '3.0.0'
   license 'GPL-2'
   compatibility 'x86_64'
-  source_url 'https://mirror.clarkson.edu/blender/release/Blender2.93/blender-2.93.5-linux-x64.tar.xz'
-  source_sha256 'faac4a6c9734760873f120995f71a3e894cad2b0446e7fd56e37941f9b7e6973'
+  source_url 'https://mirror.clarkson.edu/blender/release/Blender3.0/blender-3.0.3-linux-x64.tar.xz'
+  source_sha256 '19b09dfcf5d3f3a068827454f0a704a9aa9c826350f73016121afef5f4d287ce'
 
   depends_on 'sommelier'
 
