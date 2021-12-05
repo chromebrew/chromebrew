@@ -20,7 +20,7 @@ class Wireshark < Package
   binary_sha256({
     aarch64: '808bbff0525d26fb23159c6a64f3eb1d28716baffd01af5a7a510ac1bface476',
      armv7l: '808bbff0525d26fb23159c6a64f3eb1d28716baffd01af5a7a510ac1bface476',
-       i686: 'a6f2ffbc6924550c8ba82e9a82b9859ebbe1ac7c8c036149a5af957d5baeb0bf',
+       i686: 'f5c2695433f3e5bc6d3874fb4155a759d0e035240c4edcfb1edd33a19923e568',
      x86_64: 'c8461d43290fc2671fa561de99ebcbf8bcd836f306111bc6ef057cd5c5404296'
   })
 
