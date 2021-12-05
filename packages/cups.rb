@@ -3,24 +3,24 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  @_ver = '2.3.3op2'
-  version "#{@_ver}-1"
+  @_ver = '2.4.0'
+  version @_ver
   license 'Apache-2.0'
   compatibility 'all'
-  source_url "https://github.com/OpenPrinting/cups/releases/download/v#{@_ver}/cups-#{@_ver}-source.tar.gz"
-  source_sha256 'deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'
+  source_url 'https://github.com/OpenPrinting/cups.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_armv7l/cups-2.3.3op2-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_armv7l/cups-2.3.3op2-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_i686/cups-2.3.3op2-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2-1_x86_64/cups-2.3.3op2-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.0_armv7l/cups-2.4.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.0_armv7l/cups-2.4.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.0_i686/cups-2.4.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.0_x86_64/cups-2.4.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c570b9075a8f0cd53b30031081f469330171ddbb034018f159533b467573ba0e',
-     armv7l: 'c570b9075a8f0cd53b30031081f469330171ddbb034018f159533b467573ba0e',
-       i686: '6075b464c760c5a764fc9f862d17bc9c9984f8eccfa96ff9bedcf01361b5c388',
-     x86_64: 'd938256c56276c7e401a236ea183d2167bee03ec5e3f13d0ffd3e56656b34293'
+    aarch64: '13db998ba3942d45c7d73b74bf6b4fc562b5bb04a4f57c9228dc5bf31f9e78b8',
+     armv7l: '13db998ba3942d45c7d73b74bf6b4fc562b5bb04a4f57c9228dc5bf31f9e78b8',
+       i686: 'f10a508ea7e45a84ec3418cc8523e2ed0f3b939469a6610ba7c23f581c2f777b',
+     x86_64: '7f26cef90ae5e9f8b30d18682a707946a1ef174af0118650f93010fb3f9723b8'
   })
 
   depends_on 'libusb'
@@ -28,9 +28,7 @@ class Cups < Package
   depends_on 'psmisc'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} AR=$(which gcc-ar) ./configure #{CREW_OPTIONS} \
-      --disable-launchd \
-      --disable-systemd \
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
       --enable-libusb"
     system 'make'
     system "echo '#!/bin/bash' > startcupsd"
