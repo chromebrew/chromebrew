@@ -3,7 +3,7 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.21.4'
+  @_ver = '3.22.0'
   version @_ver
   license 'CMake'
   compatibility 'all'
