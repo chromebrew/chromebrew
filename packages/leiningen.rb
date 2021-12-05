@@ -12,7 +12,7 @@ class Leiningen < Package
   depends_on 'clojure'
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/lein"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'bin/lein', "#{CREW_DEST_PREFIX}/bin/lein", mode: 0o755
   end
 
