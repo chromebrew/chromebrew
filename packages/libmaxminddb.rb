@@ -18,10 +18,10 @@ class Libmaxminddb < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmaxminddb/1.6.0_x86_64/libmaxminddb-1.6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6d09c6d9890b39ceace43afb36c2c06aa01542f69b9c387086d334688548a327',
-     armv7l: '6d09c6d9890b39ceace43afb36c2c06aa01542f69b9c387086d334688548a327',
-       i686: '3eea0d0c61b6d3034704355f29b495260766b791c8f720cd8e84eaa834c09c34',
-     x86_64: '134056b2bfb80d86b5d27aaa389855725f3454b21775326d0680f2bfd37bb07e'
+    aarch64: 'dd5d36efff43193b39e867aafa2d8dc62952dff8e4deb899bc39e118279a4ee7',
+     armv7l: 'dd5d36efff43193b39e867aafa2d8dc62952dff8e4deb899bc39e118279a4ee7',
+       i686: '86c9e0b36eac6fcf3aa8f2148e48820b6aac60cb0557ef2bee96fae026cc6316',
+     x86_64: 'dde95291d323c066507792a3709e56faf4850341303a5b9e2cd0cf4da080bc17'
   })
 
   def self.patch
