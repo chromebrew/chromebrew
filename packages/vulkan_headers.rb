@@ -7,8 +7,8 @@ class Vulkan_headers < Package
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
-  source_url "https://github.com/KhronosGroup/Vulkan-Headers/archive/v#{@_ver}.tar.gz"
-  source_sha256 '0939d6cb950746f6f9cab59399c0a99628ed186426a972996599f90d34d8a99a'
+  source_url 'https://github.com/KhronosGroup/Vulkan-Headers.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.200_armv7l/vulkan_headers-1.2.200-chromeos-armv7l.tpxz',
