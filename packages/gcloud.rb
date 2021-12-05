@@ -3,17 +3,17 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '362.0.0'
+  version '365.0.1'
   license 'Apache-2.0'
   compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686'
-    source_url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz"
-    source_sha256 '8c5af5891258fd313ac074abc552217df278d47fb88b901f9d68c42af9bc259e'
-  when 'x86_64'
-    source_url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz"
-    source_sha256 '15cb05b2b3a63d657b7303343e46980b37041a94048055009328ee24e3ae3efc'
-  end
+  source_url ({
+      i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz",
+    x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz",
+  })
+  source_sha256 ({
+      i686: '9cf354476192935d9d43db455f777e43daf2b59bb9110ff3f21d533e550916cf',
+    x86_64: '17003cdba67a868c2518ac16efa60dc6175533b7a9fb87304459784308e30fb0',
+  })
 
   depends_on 'xdg_base'
 
