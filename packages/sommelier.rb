@@ -322,7 +322,7 @@ class Sommelier < Package
             } &> /dev/null
 
             # remove x lock file after sommelier gone
-            for lock in $(compgen -G "/tmp/.X11-unix/X?.lock"); do
+            for lock in $(compgen -G "/tmp/.X11-unix/X*.lock"); do
               # only remove lock files that created by sommelierd
               [[ "$(< "${lock}")" == 'somm_x' ]] && rm -f ${lock}
             done
