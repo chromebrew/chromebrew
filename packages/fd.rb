@@ -3,20 +3,21 @@ require 'package'
 class Fd < Package
   description "A simple, fast and user-friendly alternative to 'find'"
   homepage 'https://github.com/sharkdp/fd'
-  version '8.2.1'
+  version '8.3.0'
   license 'Apache License Version 2.0'
   compatibility 'all'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-arm-unknown-linux-musleabihf.tar.gz'
-    source_sha256 'b2e4d38f9beb20070d140643884c96c0f71089102b608eb3fe2ac7067de1dd3d'
-  when 'i686'
-    source_url 'https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-i686-unknown-linux-musl.tar.gz'
-    source_sha256 '2632725f0a41f8a6012e6b451f978693ce24b6555ef52e33c161135a5ca90830'
-  when 'x86_64'
-    source_url 'https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-musl.tar.gz'
-    source_sha256 'af511a1eb8c407397a52ebb7783ead06bd5c27f727ee0cb91e8adafd607ef9eb'
-  end
+  source_url ({
+    aarch64: 'https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-arm-unknown-linux-musleabihf.tar.gz',
+     armv7l: 'https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-arm-unknown-linux-musleabihf.tar.gz',
+       i686: 'https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-i686-unknown-linux-musl.tar.gz',
+     x86_64: 'https://github.com/sharkdp/fd/releases/download/v8.3.0/fd-v8.3.0-x86_64-unknown-linux-musl.tar.gz',
+  })
+  source_sha256 ({
+    aarch64: '14646b148e3cfbdaae667b32cf5eea48cf11e6ddc3dc0d845177c13053a316ff',
+     armv7l: '14646b148e3cfbdaae667b32cf5eea48cf11e6ddc3dc0d845177c13053a316ff',
+       i686: '279038bf1a9703934e3bddf2fa359af1445d3bbe4ab80e758ab5c58d96b0dd0e',
+     x86_64: 'ff36894153f352a29ecf0efd97adcd3ac788053801726861c6db4bdec1aa8461',
+  })
 
   def self.build
     File.write('fd.bash', "source #{CREW_PREFIX}/share/fd/autocomplete/fd.bash-completion")
