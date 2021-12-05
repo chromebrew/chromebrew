@@ -18,10 +18,10 @@ class Wireshark < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/3.6.0_x86_64/wireshark-3.6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '808bbff0525d26fb23159c6a64f3eb1d28716baffd01af5a7a510ac1bface476',
-     armv7l: '808bbff0525d26fb23159c6a64f3eb1d28716baffd01af5a7a510ac1bface476',
-       i686: 'f5c2695433f3e5bc6d3874fb4155a759d0e035240c4edcfb1edd33a19923e568',
-     x86_64: 'c8461d43290fc2671fa561de99ebcbf8bcd836f306111bc6ef057cd5c5404296'
+    aarch64: '61ea40696865306311267c22ef44c78d3dfbb7836c54be34991c781b0d39308a',
+     armv7l: '61ea40696865306311267c22ef44c78d3dfbb7836c54be34991c781b0d39308a',
+       i686: '8a0e904fa243b649d85d729c7d6ab2875fd3c9a0d0124c2dc9e9cfd780bfe30d',
+     x86_64: 'd6b21c3d27bf7e8db7ee42b83c794c494baee18bda7beb18ec5fa556b0a43db2'
   })
 
   depends_on 'asciidoctor' => :build

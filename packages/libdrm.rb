@@ -17,9 +17,9 @@ class Libdrm < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.108_x86_64/libdrm-2.4.108-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b6365349d8e1bcbec7f943c744c5595ac0cfa3e00e4196efed9fa79c307a6cfa',
-     armv7l: 'b6365349d8e1bcbec7f943c744c5595ac0cfa3e00e4196efed9fa79c307a6cfa',
-       i686: '974294e7d4d43554d1af048ed197d5ce52873a256c6b09c00364fffda4767031',
+    aarch64: '3661c7f7e58a7f9ce46545b32a26d917d77fbed1a23f0c266710a5acfb9710a1',
+     armv7l: '3661c7f7e58a7f9ce46545b32a26d917d77fbed1a23f0c266710a5acfb9710a1',
+       i686: '52183d84631bb78959238f9ffeb3695ea95b90089f7e0c6b1a80157c66ad810e',
      x86_64: '0e2520f4dff148baab2c9f8649093e6422c1596613c755662d1b9bdcb0fb8c16'
   })
 

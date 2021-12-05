@@ -3,13 +3,13 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '13.0.1-2162'
+  @_ver = '13.0.1-19b8'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_branch 'release/13.x'
-  git_hashtag '216200aff2681407b5e799738b09a047771d86ec'
+  git_hashtag '19b8368225dc9ec5a0da547eae48c10dae13522d'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-2162_armv7l/llvm-13.0.1-2162-chromeos-armv7l.tpxz',
