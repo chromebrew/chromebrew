@@ -18,7 +18,7 @@ class Sommelier < Package
   binary_sha256({
     aarch64: 'cf0bd7f37074d65f834fee128bf2d63e55536611d3d910029a4b20bde5ba9b6a',
      armv7l: 'cf0bd7f37074d65f834fee128bf2d63e55536611d3d910029a4b20bde5ba9b6a',
-       i686: '4e6436695b4854889954447593359bf772b29e5515ff21cbae65469d59d86fb3',
+       i686: '5203eaa34903862b1eddf4640602ede8e879d4afedcfead55281e606a44544e9',
      x86_64: 'bc5bf0800aa99965ac7447124bc1acc8bc8d096d4132e4296e12560590ad646e'
   })
 
@@ -50,7 +50,7 @@ class Sommelier < Package
 
   def self.preflight
     @container_check = system 'grep :/docker /proc/self/cgroup &> /dev/null'
-    if @container_check and ENV['SKIP_SOMM_CHECK'].to_s != '1' and !File.socket?('/var/run/chrome/wayland-0')
+    if @container_check && (ENV['SKIP_SOMM_CHECK'].to_s != '1') && !File.socket?('/var/run/chrome/wayland-0')
       abort 'This package is not compatible with your device :/'.lightred
     end
   end
@@ -67,7 +67,7 @@ class Sommelier < Package
         # point virtwl path to /dev/null (virtwl path is hardcoded now)
         sed -i -e 's:#define VIRTWL_DEVICE "/dev/wl0":#define VIRTWL_DEVICE "/dev/null":' virtualization/virtwl_channel.cc
       SED
-      
+
       # replace the virtwl shm driver to noop shm driver (removed in commit 180e42d)
       @sommelier_shm_patch = {}
       @sommelier_shm_patch[/^[[:blank:]]+struct sl_host_buffer\*.+?host_buffer->resource;$/m] = <<~P1.chomp
@@ -313,7 +313,7 @@ class Sommelier < Package
               echo -n "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             fi
           }
-          
+
           function stop () {
             {
               pkill -f sommelier.elf
@@ -393,18 +393,18 @@ class Sommelier < Package
 
       {
         "#{CREW_DEST_PREFIX}/bin/sommelier" => @sommelier_sh,
-        "#{CREW_DEST_PREFIX}/bin/sommelierd" => @sommelierd,
-        "#{CREW_DEST_PREFIX}/etc/sommelierrc" => @sommelierrc
-      } .each_pair do |filename, v|
+       "#{CREW_DEST_PREFIX}/bin/sommelierd" => @sommelierd,
+      "#{CREW_DEST_PREFIX}/etc/sommelierrc" => @sommelierrc
+      }.each_pair do |filename, v|
         File.write filename, v
-        File.chmod 0755, filename
+        File.chmod 0o755, filename
       end
 
       {
         "#{CREW_DEST_PREFIX}/bin/startsommelier" => 'sommelierd',
-        "#{CREW_DEST_PREFIX}/bin/stopsommelier" => 'sommelierd',
-        "#{CREW_DEST_PREFIX}/bin/restartsommelier" => 'sommelierd'
-      } .each_pair do |link, target|
+         "#{CREW_DEST_PREFIX}/bin/stopsommelier" => 'sommelierd',
+      "#{CREW_DEST_PREFIX}/bin/restartsommelier" => 'sommelierd'
+      }.each_pair do |link, target|
         FileUtils.ln_s target, link
       end
     end
