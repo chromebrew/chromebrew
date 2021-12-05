@@ -19,7 +19,7 @@ class Gobject_introspection < Package
   binary_sha256({
     aarch64: '5eb28e864dbaead1f78ef2caeb00c57d42ced3d9c044e2b30179a3fd529b3f30',
      armv7l: '5eb28e864dbaead1f78ef2caeb00c57d42ced3d9c044e2b30179a3fd529b3f30',
-       i686: '994518a21f2c7fa705a186510b5ec739058c858a7b728dbd09efbdff16c39948',
+       i686: '70f5c4b09aa0ad77d820b00463d4ea7fec479e4c2773f3a879d6437fc30c19ec',
      x86_64: 'b44fc8463ff340776c2038da369277fda23d7c1d5fe95f138a666b0204817995'
   })
 

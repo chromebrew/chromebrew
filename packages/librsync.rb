@@ -19,7 +19,7 @@ class Librsync < Package
   binary_sha256({
     aarch64: '28eec7479ef645f14297d3fc1d1db80bdf8d054ed78888ecd391f8804f2c0805',
      armv7l: '28eec7479ef645f14297d3fc1d1db80bdf8d054ed78888ecd391f8804f2c0805',
-       i686: '91bc749212a0e254f5efb00a24696bcdaefb6150bf4f691ee6a64cfab7996c6c',
+       i686: '4cfbee60f557730067df22e16da76b73d6a4170fbde1403fb78373a8f82d2103',
      x86_64: 'fdcbab57b6c0ca16bbcb83a5d33577b6655d49c1ab3b8d86b243957f6ba76c05'
   })
 

@@ -18,7 +18,7 @@ class Gnutls < Package
   binary_sha256({
     aarch64: 'c2aa4651e3fcde7acb408d581be30d33ac5a99aeacdfb7ed1aa332ffa08807d8',
      armv7l: 'c2aa4651e3fcde7acb408d581be30d33ac5a99aeacdfb7ed1aa332ffa08807d8',
-       i686: 'fca8cc007f701f3764e7159ff7b075d787a00e4f5fec107e8127cb04413337d4',
+       i686: '7e70441115c1d1d5930f61ab8f81b91484dac0ad7fce74601abcd497346a0497',
      x86_64: '607851025aec31be1628da21af43c29307024cf5169bed7f34707504d0099824'
   })
 
