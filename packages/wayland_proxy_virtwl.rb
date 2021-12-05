@@ -3,24 +3,23 @@ require 'package'
 class Wayland_proxy_virtwl < Package
   description 'Proxy Wayland connections across the VM boundary'
   homepage 'https://github.com/talex5/wayland-proxy-virtwl'
-  @_ver = 'd8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2'
+  @_ver = 'd7f58d405514dd031f2f12e402c8c6a58e62a885'
   version @_ver
   compatibility 'all'
   source_url 'https://github.com/talex5/wayland-proxy-virtwl.git'
-  git_branch 'chromebrew'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_armv7l/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_armv7l/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_i686/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/69de5648bad98a0f7ae19bea292420d7fd804205_x86_64/wayland_proxy_virtwl-69de5648bad98a0f7ae19bea292420d7fd804205-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_armv7l/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_armv7l/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-armv7l.tpxz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_i686/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_x86_64/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8bc8e2d9520ad8928f135aefbe04a5099ed15230607fb66cea5c8ecbe796b4e9',
-     armv7l: '8bc8e2d9520ad8928f135aefbe04a5099ed15230607fb66cea5c8ecbe796b4e9',
-       i686: 'd936e559d1b9a77fd74d2f00353b80e574f67334ea238e9bd29cbb698cc70417',
-     x86_64: 'd6a34fb22a85eba404b45ff9a4ddc7351038104b8ef1719db37f5535eb401bee'
+    aarch64: '5e22eb523da33a806e6f365a903b019fe1c7721a835a9e9b50d6ac1856c3c166',
+     armv7l: '5e22eb523da33a806e6f365a903b019fe1c7721a835a9e9b50d6ac1856c3c166',
+    i686: '50d9cd08dd362fb47bbbc501315393fd275393fc63cff555f0aa3ed63b6de3a0',
+  x86_64: '90b400156918b68b5617a7441e2ffc65b21fabd7d588e7e12b1157212a7943d3'
   })
 
   depends_on 'ocaml' => :build
@@ -28,93 +27,6 @@ class Wayland_proxy_virtwl < Package
   depends_on 'xwayland'
 
   @OPAMROOT = "#{CREW_PREFIX}/share/opam"
-
-  def self.patch
-    # For more info see https://github.com/talex5/wayland-proxy-virtwl/issues/24
-    @xwayland_patch = <<~'PATCH_XWAYLAND_EOF'
-      --- a/wayland-proxy-virtwl/xwayland.ml     2021-11-18 20:34:27.000000000 +0000
-      +++ b/wayland-proxy-virtwl/xwayland.ml     2021-11-24 19:27:16.940505733 +0000
-      @@ -129,9 +129,7 @@ module Selection = struct
-           x11 : X11.Display.t Lwt.t;
-           wayland_primary_offer : [`V1] Primary_offer.t option ref;
-           wayland_clipboard_offer : [`V1|`V2|`V3] Clipboard_offer.t option ref;
-      -    primary_selection_mgr : [`V1] Primary_mgr.t;
-           clipboard_mgr : [`V1] Clipboard_mgr.t;
-      -    primary_device : [`V1] Primary_device.t;
-           clipboard_device : [`V1] Clipboard_device.t;
-           selection_window : X11.Window.t Lwt.t;
-           set_selection_window : X11.Window.t Lwt.u;
-      @@ -373,23 +371,6 @@ module Selection = struct
-             | None -> Lwt.return []
-           in
-           (* Create a Wayland source offering those targets *)
-      -    let source = Primary_mgr.create_source t.primary_selection_mgr @@ object
-      -        inherit [_] Primary_source.v1
-      -
-      -        method on_send _ ~mime_type ~fd =
-      -          Log.info (fun f -> f "Sending X PRIMARY selection to Wayland (%S)" mime_type);
-      -          send_x_selection t primary ~via:requestor ~mime_type ~dst:fd
-      -
-      -        method on_cancelled self =
-      -          Log.info (fun f -> f "X selection source cancelled by Wayland - X app no longer owns selection");
-      -          Lwt.async (fun () ->
-      -              X11.Selection.set_owner x11 ~owner:(Some requestor) ~timestamp:`CurrentTime primary
-      -            );
-      -          Primary_source.destroy self
-      -      end
-      -    in
-      -    targets |> List.iter (fun mime_type -> Primary_source.offer source ~mime_type);
-      -    Primary_device.set_selection t.primary_device ~source:(Some source) ~serial:(Relay.last_serial t.relay);
-           Lwt.return_unit
-
-         (* Similar to {!set_x_owned_primary}, but for Wayland's clipboard API. *)
-      @@ -478,13 +459,11 @@ module Selection = struct
-             failwith "Expected exactly one X11 root window!"
-
-         let create ~relay ~seat ~x11 ~virtwl ~registry =
-      -    let primary_selection_mgr = Wayland.Registry.bind registry @@ new Primary_mgr.v1 in
-           let clipboard_mgr = Wayland.Registry.bind registry @@ new Clipboard_mgr.v1 in
-           let selection_window, set_selection_window = Lwt.wait () in
-           let clipboard_window, set_clipboard_window = Lwt.wait () in
-           let wayland_primary_offer = ref None in
-           let wayland_clipboard_offer = ref None in
-      -    let primary_device = Primary_mgr.get_device primary_selection_mgr ~seat @@ primary_device ~wayland_primary_offer in
-           let clipboard_device = Clipboard_mgr.get_data_device clipboard_mgr ~seat @@ clipboard_device ~wayland_clipboard_offer in
-           {
-             x11;
-      @@ -495,8 +474,6 @@ module Selection = struct
-             wayland_primary_offer;
-             selection_window;
-             set_selection_window;
-      -      primary_selection_mgr;
-      -      primary_device;
-             (* Clipboard: *)
-             wayland_clipboard_offer;
-             clipboard_window;
-    PATCH_XWAYLAND_EOF
-    @relay_patch = <<~'PATCH_RELAY_EOF'
-      --- a/wayland-proxy-virtwl/relay.ml	2021-11-18 20:34:27.000000000 +0000
-      +++ b/wayland-proxy-virtwl/relay.ml	2021-11-24 23:48:42.805651473 +0000
-      @@ -466,13 +466,6 @@ let make_surface ~xwayland ~host_surface
-             if x#scale <> 1l then
-               H.Wl_surface.set_buffer_scale h ~scale:x#scale;       (* Xwayland will be a new enough version *)
-             let set_configured s =
-      -        if s = `Unmanaged then (
-      -          (* For pointer cursors we want them at the normal size, even if low-res.
-      -             Also, Vim tries to hide the pointer by setting a 1x1 cursor, which confuses things
-      -             when unscaled. Ideally we would stop doing transforms in this case, but it doesn't
-      -             seem to matter. *)
-      -          H.Wl_surface.set_buffer_scale h ~scale:1l;
-      -        );
-               state := s;
-               match data.state with
-               | Ready | Destroyed -> ()
-    PATCH_RELAY_EOF
-    #File.write('xwayland.patch', @xwayland_patch)
-    #system 'patch -Np2 -i xwayland.patch'
-    #File.write('relay.patch', @relay_patch)
-    #system 'patch -Np2 -i relay.patch'
-  end
 
   def self.install
     ENV['OPAMROOT'] = @OPAMROOT
