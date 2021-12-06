@@ -18,8 +18,8 @@ class Gtk4 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_x86_64/gtk4-4.4.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8b73791fbd721c9f32cbe2e3f6c04b80604b977d7c929c633c263425c4175359',
-     armv7l: '8b73791fbd721c9f32cbe2e3f6c04b80604b977d7c929c633c263425c4175359',
+    aarch64: '9da01362c758205fb864aada2ec0a41730535fbe84b83cf6752e518341448a7b',
+     armv7l: '9da01362c758205fb864aada2ec0a41730535fbe84b83cf6752e518341448a7b',
        i686: '2c6b1eb268de8c3222d6c61fbe83331c9d9a34f987561c6dee9a8d5261b6d3e7',
      x86_64: '440f2099c91b98d4bc2ded68c358ebd31d7a7812a3299a30f9465d390f11ba38'
   })

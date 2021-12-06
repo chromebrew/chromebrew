@@ -11,16 +11,16 @@ class Xwayland < Package
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3_armv7l/xwayland-21.1.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3_armv7l/xwayland-21.1.3-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_i686/xwayland-21.1.3-1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_x86_64/xwayland-21.1.3-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_armv7l/xwayland-21.1.3-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_armv7l/xwayland-21.1.3-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_i686/xwayland-21.1.3-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_x86_64/xwayland-21.1.3-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0e3f901f3fea16a9d62419dcdcede57bda9b6253d235804c8a949cacdd308b24',
-     armv7l: '0e3f901f3fea16a9d62419dcdcede57bda9b6253d235804c8a949cacdd308b24',
-    i686: 'de1b4932e51425bb9abb7242535870017cf324b8f7dea13d5a7273939ea4b9e1',
-  x86_64: '6d765e2858190549260db5f2f1cc67b9971aa1ad83f5cd57040793170b387585'
+    aarch64: '23d0893e4fd7249a887b966d65ffea7dc4c5572d43b8fac81942e7d6a97b26ec',
+     armv7l: '23d0893e4fd7249a887b966d65ffea7dc4c5572d43b8fac81942e7d6a97b26ec',
+       i686: 'de1b4932e51425bb9abb7242535870017cf324b8f7dea13d5a7273939ea4b9e1',
+     x86_64: '6d765e2858190549260db5f2f1cc67b9971aa1ad83f5cd57040793170b387585'
   })
 
   depends_on 'dbus'

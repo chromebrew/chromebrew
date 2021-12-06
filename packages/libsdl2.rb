@@ -11,16 +11,16 @@ class Libsdl2 < Package
   git_hashtag "release-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.16_armv7l/libsdl2-2.0.16-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.16_armv7l/libsdl2-2.0.16-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_i686/libsdl2-2.0.18-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_x86_64/libsdl2-2.0.18-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_armv7l/libsdl2-2.0.18-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_armv7l/libsdl2-2.0.18-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_i686/libsdl2-2.0.18-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_x86_64/libsdl2-2.0.18-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '05cbfc5d3efb7e42009001fea4ade1932f2f273caba7090ab11e68887286ecbd',
-     armv7l: '05cbfc5d3efb7e42009001fea4ade1932f2f273caba7090ab11e68887286ecbd',
-    i686: '3089c520dfce88e2c878bbc28135feb39af7fd05e681772011fd429137ff9d07',
-  x86_64: '8c3d271c3440af75ea3cbefa84508878808177090683acd1d07e38d54d56e987'
+    aarch64: '5c40b35e64e22d0f394f0324ea93f77a06c9359aff1b620109ebb96e03b74880',
+     armv7l: '5c40b35e64e22d0f394f0324ea93f77a06c9359aff1b620109ebb96e03b74880',
+       i686: '3089c520dfce88e2c878bbc28135feb39af7fd05e681772011fd429137ff9d07',
+     x86_64: '8c3d271c3440af75ea3cbefa84508878808177090683acd1d07e38d54d56e987'
   })
 
   depends_on 'xorg_server'
