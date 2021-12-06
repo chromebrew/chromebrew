@@ -11,10 +11,16 @@ class Ibus < Package
   git_hashtag @_ver
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_i686/ibus-1.5.25-chromeos-i686.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_i686/ibus-1.5.25-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_x86_64/ibus-1.5.25-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-       i686: 'cef3949b6b3dce1feeab92375135894070585d1aaeb107701c6c2b5e4755795b'
+    aarch64: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
+     armv7l: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
+    i686: 'cef3949b6b3dce1feeab92375135894070585d1aaeb107701c6c2b5e4755795b',
+  x86_64: 'ddc0ce92ae7723c87ef3527e47a69684e3ac65b3adb0b2c7fe4cdbf6e9580235'
   })
 
   depends_on 'atk'
