@@ -12,16 +12,16 @@ class Llvm < Package
   git_hashtag '19b8368225dc9ec5a0da547eae48c10dae13522d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-2162_armv7l/llvm-13.0.1-2162-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-2162_armv7l/llvm-13.0.1-2162-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_i686/llvm-13.0.1-19b8-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_x86_64/llvm-13.0.1-19b8-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_armv7l/llvm-13.0.1-19b8-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_armv7l/llvm-13.0.1-19b8-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_i686/llvm-13.0.1-19b8-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_x86_64/llvm-13.0.1-19b8-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '46c2c65a4a4a82ec32bda0220db884a959bc099b6fd4893803cbf5acb4713cf5',
-     armv7l: '46c2c65a4a4a82ec32bda0220db884a959bc099b6fd4893803cbf5acb4713cf5',
-    i686: 'fee0d7cb0d862fdccb4efd180f17d102a970d7308c69839097303745297b4b0a',
-  x86_64: '83d5df5b4b1febe0b4c6805ab346231e46083ab9b0f516a02dd5d7eea2990852'
+    aarch64: '02c756bc93eb4e9754dad06734abca94abf0bec54ca76147c8e12650a32fb83e',
+     armv7l: '02c756bc93eb4e9754dad06734abca94abf0bec54ca76147c8e12650a32fb83e',
+       i686: 'fee0d7cb0d862fdccb4efd180f17d102a970d7308c69839097303745297b4b0a',
+     x86_64: '83d5df5b4b1febe0b4c6805ab346231e46083ab9b0f516a02dd5d7eea2990852'
   })
 
   depends_on 'ocaml' => :build
