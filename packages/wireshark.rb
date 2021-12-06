@@ -28,6 +28,7 @@ class Wireshark < Package
   depends_on 'c_ares'
   depends_on 'libmaxminddb'
   depends_on 'libpcap'
+  depends_on 'glib'
   depends_on 'qttools' unless ARCH == 'i686'
   depends_on 'qtmultimedia' unless ARCH == 'i686'
   depends_on 'qtsvg' unless ARCH == 'i686'
