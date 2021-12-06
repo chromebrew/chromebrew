@@ -10,16 +10,16 @@ class Xcb_proto < Package
   git_hashtag 'be9c255b6baac166966429c4442ddf2c99001bf5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-1_armv7l/xcb_proto-1.14.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-1_armv7l/xcb_proto-1.14.1-1-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-be9c_i686/xcb_proto-1.14.1-be9c-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-be9c_x86_64/xcb_proto-1.14.1-be9c-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-be9c_armv7l/xcb_proto-1.14.1-be9c-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-be9c_armv7l/xcb_proto-1.14.1-be9c-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-be9c_i686/xcb_proto-1.14.1-be9c-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.14.1-be9c_x86_64/xcb_proto-1.14.1-be9c-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '51a4e97cece7e7e607c4b23ef77664d0b2d5ad1e31709fbf93f9a4f484edddc5',
-     armv7l: '51a4e97cece7e7e607c4b23ef77664d0b2d5ad1e31709fbf93f9a4f484edddc5',
-    i686: '4f799fd7355d0e804dda5d0e5cd5b865cda848c11009b3833622c8860ddc463d',
-  x86_64: '141929f0097b500a307aaf359e86b411328ca2d3c65cfba16e17f323f08b64f9'
+    aarch64: '882d9e0e94a2b1f58cc8d67f98e3343fe02ff047b6a9a4edf908cf39cb3aaeb0',
+     armv7l: '882d9e0e94a2b1f58cc8d67f98e3343fe02ff047b6a9a4edf908cf39cb3aaeb0',
+       i686: '4f799fd7355d0e804dda5d0e5cd5b865cda848c11009b3833622c8860ddc463d',
+     x86_64: '141929f0097b500a307aaf359e86b411328ca2d3c65cfba16e17f323f08b64f9'
   })
 
   def self.build

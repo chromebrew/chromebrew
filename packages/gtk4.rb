@@ -12,14 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_x86_64/gtk4-4.4.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_armv7l/gtk4-4.4.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_armv7l/gtk4-4.4.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_i686/gtk4-4.4.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_x86_64/gtk4-4.4.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
-     armv7l: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
-    x86_64: 'c52aae4e12dc6435300dbccb3555acea5d736f5865d29f9c702c746d30e3df75'
+    aarch64: '8b73791fbd721c9f32cbe2e3f6c04b80604b977d7c929c633c263425c4175359',
+     armv7l: '8b73791fbd721c9f32cbe2e3f6c04b80604b977d7c929c633c263425c4175359',
+       i686: '2c6b1eb268de8c3222d6c61fbe83331c9d9a34f987561c6dee9a8d5261b6d3e7',
+     x86_64: 'c52aae4e12dc6435300dbccb3555acea5d736f5865d29f9c702c746d30e3df75'
   })
 
   # L = Logical Dependency, R = Runtime Dependency

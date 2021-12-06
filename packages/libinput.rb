@@ -11,16 +11,16 @@ class Libinput < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2_armv7l/libinput-1.19.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2_armv7l/libinput-1.19.2-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_i686/libinput-1.19.2-1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_x86_64/libinput-1.19.2-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_armv7l/libinput-1.19.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_armv7l/libinput-1.19.2-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_i686/libinput-1.19.2-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_x86_64/libinput-1.19.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f0bfc3ddddb5d34e874cb9b02bccda660f8600051ffdbdebe60760adfa427f3b',
-     armv7l: 'f0bfc3ddddb5d34e874cb9b02bccda660f8600051ffdbdebe60760adfa427f3b',
-    i686: '6abab518091907420a19b90b858dacf2179f70b9c75b66c2727fa13d0143430e',
-  x86_64: 'b0c906ccc338b8b675d75d9c9845f569c3a1735fbe35e602c6a669a997f4f950'
+    aarch64: 'e05b75fc7ce64fb075f80c166f040e44f93348ed9a1498edf62eca9bf6a63453',
+     armv7l: 'e05b75fc7ce64fb075f80c166f040e44f93348ed9a1498edf62eca9bf6a63453',
+       i686: '6abab518091907420a19b90b858dacf2179f70b9c75b66c2727fa13d0143430e',
+     x86_64: 'b0c906ccc338b8b675d75d9c9845f569c3a1735fbe35e602c6a669a997f4f950'
   })
 
   depends_on 'mtdev'
