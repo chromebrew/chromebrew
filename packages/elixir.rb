@@ -3,11 +3,11 @@ require 'package'
 class Elixir < Package
   description 'Elixir is a dynamic, functional language designed for building scalable and maintainable applications.'
   homepage 'https://elixir-lang.org/'
-  version '1.12.3'
+  version '1.13.0'
   license 'Apache-2.0 and ErlPL-1.1'
   compatibility 'all'
-  source_url 'https://github.com/elixir-lang/elixir/releases/download/v1.12.3/Precompiled.zip'
-  source_sha256 'b209f63ab5740a7f3011e288727993bd0a4f4fcf910f4e9a5791cb057e95fcbe'
+  source_url 'https://github.com/elixir-lang/elixir/releases/download/v1.13.0/Precompiled.zip'
+  source_sha256 'f287bebecaa40f91ff163ca86fbbedd40f05847dd57d217a5824d816e8e6750d'
 
   binary_url ({
   })
