@@ -11,11 +11,13 @@ class Mpv < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.0_i686/mpv-0.34.0-chromeos-i686.tpxz',
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.0_armv7l/mpv-0.34.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.0_armv7l/mpv-0.34.0-chromeos-armv7l.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.0_x86_64/mpv-0.34.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
+       i686: 'f74ba4cade2a5bbf454d4541f868022e135fc83771aadb74e73744374c73f1f6',
     aarch64: '02e091134eedd1a0d468ce9a1032048e1e39d4310df919d41ce15a2ec5995c97',
      armv7l: '02e091134eedd1a0d468ce9a1032048e1e39d4310df919d41ce15a2ec5995c97',
      x86_64: '5cfe927d93d12fa456828b62afebff35d182b7105052f6186aef820a40436ebc'
