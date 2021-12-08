@@ -3,11 +3,11 @@ require 'package'
 class Opera < Package
   description "Opera is a multi-platform web browser based on Chromium and developed by Opera Software."
   homepage 'https://www.opera.com/'
-  version '81.0.4196.54'
+  version '82.0.4227.23'
   license 'OPERA-2018'
   compatibility 'x86_64'
   source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 '4705f2b3b47bef90187b5092c01425a6237acdf3a89ba84faf13981ba769518b'
+  source_sha256 '8c0f1f82544b1f46aa863b03eb96ec89ea6508b0895e07415623c6ac0bbdb124'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'

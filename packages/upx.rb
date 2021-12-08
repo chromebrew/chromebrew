@@ -6,23 +6,23 @@ require 'package'
 class Upx < Package
   description 'Extendable, high-performance executable packer for several executable formats'
   homepage 'https://github.com/upx/upx'
-  version '4.0.0-8a82'
+  version '4.0.0-0108'
   license 'custom GPL2'
   compatibility 'all'
   source_url 'https://github.com/upx/upx.git'
-  git_hashtag '8a828474ca68fbbf2c2939722c3611bdb7f9c597'
+  git_hashtag '0108c1c34ef7fbcea99f6071dbd691670e43635f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-8a82_armv7l/upx-4.0.0-8a82-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-8a82_armv7l/upx-4.0.0-8a82-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-8a82_i686/upx-4.0.0-8a82-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-8a82_x86_64/upx-4.0.0-8a82-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-0108_armv7l/upx-4.0.0-0108-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-0108_armv7l/upx-4.0.0-0108-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-0108_i686/upx-4.0.0-0108-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.0.0-0108_x86_64/upx-4.0.0-0108-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9d6e12cf7ff3e8ee1c1819bdbb455c34d2f8fc503f1d4ea250419f026714b725',
-     armv7l: '9d6e12cf7ff3e8ee1c1819bdbb455c34d2f8fc503f1d4ea250419f026714b725',
-       i686: '41c11c923da18814495480a66e7aa5fb052dcb5e2932b05b179223d96c811d3d',
-     x86_64: '633999fc136f6daae381fac71922c9f19cf4e93efb928b266afc4ebdb59cbf21'
+    aarch64: 'e10c5ea814b6983525a0ac4b6c108999157dcd5d50b7fafd22c924fab451696d',
+     armv7l: 'e10c5ea814b6983525a0ac4b6c108999157dcd5d50b7fafd22c924fab451696d',
+       i686: 'b40da75e3bc758432029f18625ed3439997f8e5f81d536996c326eee58c6dc20',
+     x86_64: '05d13bf22d83b16e8037d1f744b601bada2821e09990bd6f00b5e99248f3e19a'
   })
 
   depends_on 'ucl'

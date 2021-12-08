@@ -3,16 +3,16 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '94.0.1'
+  version '95.0'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
   case ARCH
   when 'i686'
     source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 '4d0378f36915aab0d71aeea15e71f1db1b9500b3ceb22c840223aabf2eab2b60'
+    source_sha256 '3d007099ea060e4f2f5ac2d8272cab6c2c47b5d084b2fb46291851b3a3a34662'
   when 'x86_64'
     source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 'f40c7f084478f225a9611a971d71f5f59e63db7b9e9a42c95a2b7ad83c8a5b83'
+    source_sha256 '244ec7d444e340116eb4d0f21c513c5cde7f8d5bee75ad9cf492d563a6842554'
   end
 
   depends_on 'atk'

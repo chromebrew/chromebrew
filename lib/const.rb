@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.18.3'
+CREW_VERSION = '1.19.1'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -35,6 +35,10 @@ CREW_DEST_DIR = CREW_BREW_DIR + 'dest'
 CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
+
+# Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
+CREW_MUSL_PREFIX = CREW_PREFIX + '/share/musl'
+CREW_DEST_MUSL_PREFIX = CREW_DEST_DIR + CREW_MUSL_PREFIX
 
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
 

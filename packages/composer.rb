@@ -3,7 +3,7 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.1.11'
+  version '2.1.14'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -23,7 +23,7 @@ class Composer < Package
 
   def self.install
     system "curl -Ls -o composer https://github.com/composer/composer/releases/download/#{version}/composer.phar"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('composer') ) == 'fdb587131f8a11fcd475c9949ca340cc58a4b50cce6833caa8118b759a4ad1a3'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('composer') ) == 'd44a904520f9aaa766e8b4b05d2d9a766ad9a6f03fa1a48518224aad703061a4'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'composer', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
   end
