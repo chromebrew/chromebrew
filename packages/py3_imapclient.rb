@@ -11,16 +11,16 @@ class Py3_imapclient < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0_armv7l/py3_imapclient-2.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0_armv7l/py3_imapclient-2.2.0-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0-1_i686/py3_imapclient-2.2.0-1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0-1_x86_64/py3_imapclient-2.2.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0-1_armv7l/py3_imapclient-2.2.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0-1_armv7l/py3_imapclient-2.2.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0-1_i686/py3_imapclient-2.2.0-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imapclient/2.2.0-1_x86_64/py3_imapclient-2.2.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '26ba0231d3a994da411ef64e6fbee4676be0f66a5fa66d5412ee13a0c7e78dd6',
-     armv7l: '26ba0231d3a994da411ef64e6fbee4676be0f66a5fa66d5412ee13a0c7e78dd6',
-    i686: '40a4b96973fc1e4b6fc51066b984292e84ea0c8988b08df9c2c8b84b6f2338ad',
-  x86_64: '43ef4e74eb35722a950e077160a776cc74d35c243b0f104c799166a55a19ee4f'
+    aarch64: 'f742e6f24f267ca002758609c3055ba43b992f227305f1a7f8658e036c2e406f',
+     armv7l: 'f742e6f24f267ca002758609c3055ba43b992f227305f1a7f8658e036c2e406f',
+       i686: '41a296fbd077e4a0c260496cf5a2520a86d337b16fd10c037888436188c305a6',
+     x86_64: 'be9e0af74cbc09d92effd663429657582ea794644091a26d6938446cbe1e02d9'
   })
 
   depends_on 'py3_six'

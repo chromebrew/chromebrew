@@ -17,10 +17,10 @@ class Py3_isodate < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_isodate/0.6.0_x86_64/py3_isodate-0.6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '57aafbcb7ced6fac9c9da17d559335af7ab58514486134c487c8fcd3a74bbd1f',
-     armv7l: '57aafbcb7ced6fac9c9da17d559335af7ab58514486134c487c8fcd3a74bbd1f',
-       i686: '066242b6111d41022db807181e66f7a9977c25ada212715cd904ef9bfe15f7ce',
-     x86_64: '5e78bca4f6b3af312a3e9f3115ea78b374c686117b64e3ffeb090b8284ab2df3'
+    aarch64: '809a8a813a10a021e39c4f859a676950a374f95df05b67bda85a4c75ea4d185c',
+     armv7l: '809a8a813a10a021e39c4f859a676950a374f95df05b67bda85a4c75ea4d185c',
+       i686: '08043df182880abae97926fc4d172d1b20d0ed160967acb52a9d7d156f717710',
+     x86_64: 'ee26e380cd8779368404be244d8d6388a49ca131436975c457eea7b107cde869'
   })
 
   depends_on 'py3_six'

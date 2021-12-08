@@ -17,10 +17,10 @@ class Py3_nuitka < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_nuitka/0.6.17.2_x86_64/py3_nuitka-0.6.17.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a0868e9cd881b420f587193831e8d441bfac4bb552048247a8719071a470b26a',
-     armv7l: 'a0868e9cd881b420f587193831e8d441bfac4bb552048247a8719071a470b26a',
-       i686: '7eed5251cd2331a0366ab2241202014221764d68bee5f82c4354b7881ed1ee1f',
-     x86_64: 'feda666619d2f2b0070c8f43b387aad871f80ebb82fafdc26867b97ad10a4324'
+    aarch64: 'e7b1cf49bba389bb9d4022e33f142dce6cb8238640ab66215e5f87320a2efc24',
+     armv7l: 'e7b1cf49bba389bb9d4022e33f142dce6cb8238640ab66215e5f87320a2efc24',
+       i686: 'ac254fd32d7b2cb3e258e8a5abcc0b3424de67f90cc6802f393042108f2e0d06',
+     x86_64: 'd9f3030fa1f7bea0b9daac1dd2ae6fd2e7cd4cd469ee30ecd70f167c705206c7'
   })
 
   depends_on 'py3_setuptools' => :build

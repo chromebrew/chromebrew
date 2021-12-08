@@ -17,10 +17,10 @@ class Py3_snowballstemmer < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-1_x86_64/py3_snowballstemmer-2.1.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b49e93f44e74a576b5996824ee9a2ab7e5feffc7541c549b3900f2d974bfbfdc',
-     armv7l: 'b49e93f44e74a576b5996824ee9a2ab7e5feffc7541c549b3900f2d974bfbfdc',
-       i686: '7d0c1302de8c6ec8a3bfaba05a2096094d1d3a312524cdc15a97f4a4ffd96f05',
-     x86_64: '1a12046dcf38289daf7eed44d6ddcae3d2d1ca1899db276f7eff7560cb509cee'
+    aarch64: '9d26f6cacccbf9716e4ef5f255971065c1ae7923376d4239a29282ac21b23ccc',
+     armv7l: '9d26f6cacccbf9716e4ef5f255971065c1ae7923376d4239a29282ac21b23ccc',
+       i686: 'bb4d132b6c655d80adbcf4023c0458d3934dd195eddcf2b670c65544c80e90ec',
+     x86_64: 'fe32d3d5799f729258b7d85d5b1d149f7a5197933b215d7a1876b3e0cf2f4210'
   })
 
   depends_on 'py3_pystemmer'

@@ -17,10 +17,10 @@ class Py3_agate_excel < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5_x86_64/py3_agate_excel-0.2.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '41de1c7c3185ed212896b7470621f59b0cb04155333fc018fb614074bffd3934',
-     armv7l: '41de1c7c3185ed212896b7470621f59b0cb04155333fc018fb614074bffd3934',
-       i686: 'ca6813a59858a88a959eddca2662252583554862cf9c439b612bb8ca56c4ab27',
-     x86_64: 'ff3e5e5ad5b1d2e38d5b40c59a64ef566ef0542d47556d7b6a60a358790cec6e'
+    aarch64: '8f3fc1398cf3fa11b71b7daf87b435f81ae7f4fcc8dee907175744c930db06db',
+     armv7l: '8f3fc1398cf3fa11b71b7daf87b435f81ae7f4fcc8dee907175744c930db06db',
+       i686: '2ac4d6a29c4aceed7fb10ae42f417279fc3dfe39eb2ebee718e8ed1622818b14',
+     x86_64: '87dd31f3678007f4b19088cd6e88e1d3b0237cc7f45202704c5f7908bc428c9e'
   })
 
   depends_on 'py3_xlrd'

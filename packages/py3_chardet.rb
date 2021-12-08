@@ -17,10 +17,10 @@ class Py3_chardet < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_chardet/4.0.0-1_x86_64/py3_chardet-4.0.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '210fe2f123e06f2d9a2308dfaddcf4069c345db1627feeb654a90bb09830ed0a',
-     armv7l: '210fe2f123e06f2d9a2308dfaddcf4069c345db1627feeb654a90bb09830ed0a',
-       i686: 'eb3fa8e415817015c393a428d416a645cab1044b546839651e74d05f4a0218f8',
-     x86_64: '62107dbb08abf09ab0f8290399f2f3c1a0cdbaa61b845138fc8b791e127be567'
+    aarch64: '1aee846a7f90e915453fae80cb3ae8aa4dfe39e2c66e042d3ff6d1517c481a09',
+     armv7l: '1aee846a7f90e915453fae80cb3ae8aa4dfe39e2c66e042d3ff6d1517c481a09',
+       i686: '5ba5e254c593888abbf928f5f9083c33d50d0a29f53f0f56974aee6b6479359b',
+     x86_64: '4636e928541d5297f25be36e79ad56eb06733d4c338c9a149628f39bf01fae46'
   })
 
   depends_on 'py3_setuptools' => :build

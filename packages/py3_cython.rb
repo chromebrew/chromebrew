@@ -17,10 +17,10 @@ class Py3_cython < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cython/0.29.24_x86_64/py3_cython-0.29.24-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e7c3a371e47dc9fc65e8266daa196351c9e8b7f71084414c5cea298349d2d006',
-     armv7l: 'e7c3a371e47dc9fc65e8266daa196351c9e8b7f71084414c5cea298349d2d006',
-       i686: '09c5cd05ad4fe29c43a1859a7b9c870298cbd429bf74a275928972308ce16e8e',
-     x86_64: '18c5eac4bd891ac49969a6b43b039685b8d1f531d7a95ba5f8d2f80fd0c855ac'
+    aarch64: '015010c91705dda3e05a05ffc0f5ee62b460e67d5dc58c4b50e7412cd5d528b4',
+     armv7l: '015010c91705dda3e05a05ffc0f5ee62b460e67d5dc58c4b50e7412cd5d528b4',
+       i686: 'f738a39df78d2b74cc58b4d25a6f66b857328a1887035bdaaccc1e78ab131a63',
+     x86_64: 'a15ac94aa1a7da63465a28d2c91f9c1494a08762894d9b1092e9b86cfa89466b'
   })
 
   depends_on 'py3_setuptools' => :build

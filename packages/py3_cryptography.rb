@@ -11,16 +11,16 @@ class Py3_cryptography < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/3.4.7_armv7l/py3_cryptography-3.4.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/3.4.7_armv7l/py3_cryptography-3.4.7-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/35.0.0_i686/py3_cryptography-35.0.0-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/35.0.0_x86_64/py3_cryptography-35.0.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/35.0.0_armv7l/py3_cryptography-35.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/35.0.0_armv7l/py3_cryptography-35.0.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/35.0.0_i686/py3_cryptography-35.0.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/35.0.0_x86_64/py3_cryptography-35.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8bd03b0ab62ae17ce3c4cdeb4e209a5d761000c1327748bddc75de4d4d422c90',
-     armv7l: '8bd03b0ab62ae17ce3c4cdeb4e209a5d761000c1327748bddc75de4d4d422c90',
-    i686: 'fa3ef9eabeccb30d0eb01ac2bf80d35512b42be65bc3cfe2d22225f39071e70f',
-  x86_64: '9a9e7275ee534400fc35d6525f2fdb2d632383aceec2526d6d1285614c038e1a'
+    aarch64: '565e29e043e7fb83c7cd02c619b2611620689959e1c83ab27a7827b943382f40',
+     armv7l: '565e29e043e7fb83c7cd02c619b2611620689959e1c83ab27a7827b943382f40',
+       i686: 'a3bd7ca74b310b4581658eb9ee97c6358f78fb2e21305be74f43cd38014889c9',
+     x86_64: 'b4980330c51dfcfc6f1d8fb9cdd15bed2081db54331db70c805bf5cd5ab88a96'
   })
 
   depends_on 'py3_cffi'

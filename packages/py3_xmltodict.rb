@@ -17,10 +17,10 @@ class Py3_xmltodict < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xmltodict/0.12.0-1_x86_64/py3_xmltodict-0.12.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '846d1b13e1ddd37f7e025f4ef03ac8b20749c82ea6c64ddf17ffc78495827ddc',
-     armv7l: '846d1b13e1ddd37f7e025f4ef03ac8b20749c82ea6c64ddf17ffc78495827ddc',
-       i686: '7e74f9f06d04b40c600f9a0477a41238f6355420d82680a5759f4df0ab70494b',
-     x86_64: '5a91d570d8d1bb26604dc37ef60558212f2ffec9b108553e59d0b92378e248b2'
+    aarch64: 'e6e260cb091e9b5e235e1d2d27334694b863dc58a5acf92c1dde94672e83462c',
+     armv7l: 'e6e260cb091e9b5e235e1d2d27334694b863dc58a5acf92c1dde94672e83462c',
+       i686: 'c788c22328fae7a225a17d7329f69dd8a3255ae0a179011b0d66fc291aecdc77',
+     x86_64: '1b6f20ad9ccbdd7a3012f370c20d4664df2c5c2e107cb6ded6875e405ec2b7a1'
   })
 
   depends_on 'py3_setuptools' => :build

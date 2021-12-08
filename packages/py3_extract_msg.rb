@@ -11,16 +11,16 @@ class Py3_extract_msg < Package
   source_sha256 '7ebdbd7863a3699080a69f71ec0cd30ed9bfee70bad9acc6a8e6abe9523c78c0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7_armv7l/py3_extract_msg-0.28.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7_armv7l/py3_extract_msg-0.28.7-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7-1_i686/py3_extract_msg-0.28.7-1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7-1_x86_64/py3_extract_msg-0.28.7-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7-1_armv7l/py3_extract_msg-0.28.7-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7-1_armv7l/py3_extract_msg-0.28.7-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7-1_i686/py3_extract_msg-0.28.7-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_extract_msg/0.28.7-1_x86_64/py3_extract_msg-0.28.7-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c2b94eba0e922d79cd416c77db71e8004422efe69e90f306e5ae8b196d4a6446',
-     armv7l: 'c2b94eba0e922d79cd416c77db71e8004422efe69e90f306e5ae8b196d4a6446',
-    i686: '547edeadfe7fc86e32ad45b720911ceb32284d8f54c8ed60d7eed33a7914b062',
-  x86_64: 'fc217ba3dc3944152c4a9f324203ec2a1c482997893a2f704769433295d583e7'
+    aarch64: '9aa5ab813fc356ac41c8ce9fabc7ed381e7049524ea6be7578af5c8c512a392c',
+     armv7l: '9aa5ab813fc356ac41c8ce9fabc7ed381e7049524ea6be7578af5c8c512a392c',
+       i686: '97811b1d2e2c76396de636c348913218d42096184a87010839cc1a85820fae6a',
+     x86_64: 'de6c5055b5bc9dc212878c3296130475e974121f987a8f8b886645fde5f9a72c'
   })
 
   depends_on 'py3_tzlocal'

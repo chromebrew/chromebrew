@@ -17,10 +17,10 @@ class Py3_cffi < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_x86_64/py3_cffi-1.15.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '368000042881c818921a56925b9ae04608bb2ab4c73ac7859458b292ba6a74aa',
-     armv7l: '368000042881c818921a56925b9ae04608bb2ab4c73ac7859458b292ba6a74aa',
-       i686: 'd8f9d3c0b03d08ef708208628bf0c4d0d3e2042f02df51ad8d7c28d65305b3e7',
-     x86_64: 'e74a52a45def243f8a3893f71649f3782353b7ac283db636d9e44a2c8e3c2f90'
+    aarch64: 'd98d10a7bfc0bbd722e3393b00a56d2295b8d946596d4f2f34d336ad77ac6db0',
+     armv7l: 'd98d10a7bfc0bbd722e3393b00a56d2295b8d946596d4f2f34d336ad77ac6db0',
+       i686: '2f0edc72092b7964dfd2a4d5d8c28dff88126f0f6f93f6c4d4a7855305c07584',
+     x86_64: '871e834b08e282b6324df52853b7313de281fac7ee1e1b9cd0837ed5627a0038'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_distlib < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.2_x86_64/py3_distlib-0.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '18fd550533021acdb15094fe16cc5e32e2772bc261b0985ce75e85b65adb8a88',
-     armv7l: '18fd550533021acdb15094fe16cc5e32e2772bc261b0985ce75e85b65adb8a88',
-       i686: 'ed4d8bc782bf774a4a9108d6397bfb418529c18ee1a47bb5355a97d81f1dc3e9',
-     x86_64: '82aa5ef3eafe8b9c30839368790abda19dfec294191dee3a1165f4805a163692'
+    aarch64: 'e68ff5d19d0e91e128b40feaba73ee092a2b086f06583b8f2a9c4604b5e31790',
+     armv7l: 'e68ff5d19d0e91e128b40feaba73ee092a2b086f06583b8f2a9c4604b5e31790',
+       i686: '526956a79711bda6a25e86cf0a387cf8e2c9f52ba3ff9a10536f52c85c4ab489',
+     x86_64: '174bad9d25111143d4a67fd6979dbef6a3395b4cff41c7e09a83402563b80137'
   })
 
   depends_on 'py3_setuptools' => :build

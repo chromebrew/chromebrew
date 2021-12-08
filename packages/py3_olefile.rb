@@ -17,10 +17,10 @@ class Py3_olefile < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_olefile/0.46-1_x86_64/py3_olefile-0.46-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a29019a5f7fda813c7a5414208c99b3a9918ab8b0b8fc9733136a87eebb64e69',
-     armv7l: 'a29019a5f7fda813c7a5414208c99b3a9918ab8b0b8fc9733136a87eebb64e69',
-       i686: 'aa0c3b34328364e8029b4725e848c970d84cdbe6b018a37a881e3f7bcdd89fd3',
-     x86_64: '88de4191dba01cd2919f43e30c62b68720e1acab11333cdf0261e74f3d57d25e'
+    aarch64: '3a8b94a0bfd5b2c986bddd97a075531620c5bb397ffd10e1a90d20ca563447f0',
+     armv7l: '3a8b94a0bfd5b2c986bddd97a075531620c5bb397ffd10e1a90d20ca563447f0',
+       i686: '5fe2ad2a5a2968a921e1361ebd4d1350170d1152048e9ab2828bf2d65d89b590',
+     x86_64: '4ceb7c1be7292430825a25b026215fe7e26ab82c339885269a7dd8bf5e47a678'
   })
 
   depends_on 'py3_setuptools' => :build

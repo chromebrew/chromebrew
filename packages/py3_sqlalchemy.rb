@@ -17,10 +17,10 @@ class Py3_sqlalchemy < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sqlalchemy/1.4.25_x86_64/py3_sqlalchemy-1.4.25-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3e20c495f38a606c70ac1a89fade1bc1d68e883eebbe00d88c4905419feaf397',
-     armv7l: '3e20c495f38a606c70ac1a89fade1bc1d68e883eebbe00d88c4905419feaf397',
-       i686: 'e3772643095d01f661b090d3d9bacc035e9be4d1a824c2e9699f5a49901ef142',
-     x86_64: 'f79747695d135b6a05726184d33261bf701454631afca2cadd75011fa6014269'
+    aarch64: '1c25a187b6c3ec07bfc0193df23ceddea968da784aac9256d9d9e14045e5b5ec',
+     armv7l: '1c25a187b6c3ec07bfc0193df23ceddea968da784aac9256d9d9e14045e5b5ec',
+       i686: 'a06f25d8971946cc8875e9549385ad4f9e115f694e8414f4d844b8400b217334',
+     x86_64: '91a17d65451620e39335a9332be1f7cf8998d40c243e69af29ee3fff5e940165'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_pyyaml < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyyaml/6.0_x86_64/py3_pyyaml-6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2e1bd6e6616e9d49aa4a14cd7713eb8221ca83d87c468abebb07cfe040553c50',
-     armv7l: '2e1bd6e6616e9d49aa4a14cd7713eb8221ca83d87c468abebb07cfe040553c50',
-       i686: '7c3045a78c53fcbf422569f19f25bb8cb6a7e548676f38b14412793ae337b4bb',
-     x86_64: '7bf20f02d1f89faa3452ef15351a556a116a5e76d7e261a5cda4974dd0d113e9'
+    aarch64: 'c0bc15e713cb696128fe3e9a51f2f0f6e3fa2ab70c5bc3393bbef48cf317f82e',
+     armv7l: 'c0bc15e713cb696128fe3e9a51f2f0f6e3fa2ab70c5bc3393bbef48cf317f82e',
+       i686: 'f1c16002f1c66ae16879604dc83c93fdc49edc87c01e5b2e63033d728ec62440',
+     x86_64: 'e9ed77702a16c383616e8f76550ea488c044736fd5f19a3f36cd53cb92882763'
   })
 
   depends_on 'py3_setuptools' => :build

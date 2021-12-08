@@ -17,10 +17,10 @@ class Py3_tox < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tox/3.24.4_x86_64/py3_tox-3.24.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e6cef20883e7bf2bf97af5eda794c4eb16afbe58ab4bd2b4d5fbf8dea7cb75f8',
-     armv7l: 'e6cef20883e7bf2bf97af5eda794c4eb16afbe58ab4bd2b4d5fbf8dea7cb75f8',
-       i686: '843e4cbaf36e2f4ccdc6daa27f1fe73681ba5dc83d95be3c477d0c084f3686f9',
-     x86_64: 'cbe7a9e30156b8371f25439a0a94b05e4cfea660f079a188cdb6cf3da4f99056'
+    aarch64: '48b18633490b76fca8dbef6428ea3b95f8d84a1847517b3bc924c0302b0c5139',
+     armv7l: '48b18633490b76fca8dbef6428ea3b95f8d84a1847517b3bc924c0302b0c5139',
+       i686: 'ffeea5e8ee192ff7b32a8f899fd6b643770fb13011a3a1f15bec01c10e365846',
+     x86_64: '1c3aaed8fd7000a5bc719855947eb75a556b81d2a023d3e8c3980cff4554df31'
   })
 
   depends_on 'py3_py'

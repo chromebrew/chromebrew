@@ -17,10 +17,10 @@ class Py3_xlsxwriter < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xlsxwriter/3.0.1_x86_64/py3_xlsxwriter-3.0.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f0e1c5617d7bc8ba7cb261b000fcb509c02995f236944aa721629d30a07978d9',
-     armv7l: 'f0e1c5617d7bc8ba7cb261b000fcb509c02995f236944aa721629d30a07978d9',
-       i686: '3b5c866050589f0ff49ae139d3239acb4dc0a6927acc65e50e77d4a2f011b222',
-     x86_64: 'daef6d75efcb5fdff86923b5e3a8b0a5d5194c38d2230f570a784a48694a8a8c'
+    aarch64: 'e872536c962010db9e695ba08b83587475c4e4984149f53e95a50c1db2c44398',
+     armv7l: 'e872536c962010db9e695ba08b83587475c4e4984149f53e95a50c1db2c44398',
+       i686: '4ff2460fbb8f1d414052fce50cf1a1b52cf34aa27f1a72eba82d481df1f9a9b4',
+     x86_64: 'c5f837a9db310e08046b4dfed65859c883eb4070990ea44f179cb3ccde371382'
   })
 
   depends_on 'py3_setuptools' => :build

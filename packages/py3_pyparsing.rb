@@ -17,10 +17,10 @@ class Py3_pyparsing < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/2.4.7-1_x86_64/py3_pyparsing-2.4.7-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8dfed95736f2068caf186fb825f28c5ae6983fcd6cf0c445a70b3328be48fedc',
-     armv7l: '8dfed95736f2068caf186fb825f28c5ae6983fcd6cf0c445a70b3328be48fedc',
-       i686: 'eb1a938ff090d970fe237c5e31b08220941e685c7a4ae33e48f847a7ca42eece',
-     x86_64: '854349095b067a3bba4c7971098f34ec099ffd64808c4bf5bd7f14c8f6ba7b8a'
+    aarch64: '5c84dec013f9409d5ddad79f5c4034c10541926dde48d5848d946284b2aacb12',
+     armv7l: '5c84dec013f9409d5ddad79f5c4034c10541926dde48d5848d946284b2aacb12',
+       i686: 'c084beab43308489cdc1f2814776354e5d2b94c680e7c75ceccf330945747659',
+     x86_64: '10addc1059f3399f556b9ee9b6b2206abf8c0131ec74ec853465032274acbce9'
   })
 
   depends_on 'py3_setuptools' => :build

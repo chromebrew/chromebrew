@@ -17,10 +17,10 @@ class Py3_appdirs < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_appdirs/1.4.4-1_x86_64/py3_appdirs-1.4.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1d7773c9fadb29828df643d61dad12b6c037a556a2de27ac249e6741d05fc6c7',
-     armv7l: '1d7773c9fadb29828df643d61dad12b6c037a556a2de27ac249e6741d05fc6c7',
-       i686: '4e884a6637c9ff337286a921f5ca952a26e26275d04459f14fb1f77e7e6395a9',
-     x86_64: 'baf4558f08112c4002c2598cb55decfa2cf2d9e63686c3274671bb794db94652'
+    aarch64: '91ce5fc0655bdf0d3a5fe0f3478d83d2ac0e10221cc73d13f9a99b167be5b4e9',
+     armv7l: '91ce5fc0655bdf0d3a5fe0f3478d83d2ac0e10221cc73d13f9a99b167be5b4e9',
+       i686: '0ff49dfa6f7140a41616e3e14c63d4a2d4e7925b752952bf78ac7595514f8727',
+     x86_64: 'ef737c09133dd5f20d7cc7ac6ce0b8f8d2c8da581951fa95fa330d14f9b1ed59'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_leather < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4_x86_64/py3_leather-0.3.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f8711a1a2dd533ec8dea9f2cd0eefc3792454b0b25b89e165756b8713e1bd513',
-     armv7l: 'f8711a1a2dd533ec8dea9f2cd0eefc3792454b0b25b89e165756b8713e1bd513',
-       i686: '7bfc6948f14bccaa320b48ac0e1c16ce1666b9b76aab27cade06de52e38afc94',
-     x86_64: 'ddf12b877c0260cca61e9326939aa3f7ce6cf593139331bf42d51915f3e39c84'
+    aarch64: '1a1eb059dbb9caa8f20c53c7e71b4b23c1931a6587ecb43166f767cee8c840b1',
+     armv7l: '1a1eb059dbb9caa8f20c53c7e71b4b23c1931a6587ecb43166f767cee8c840b1',
+       i686: '2137d4c5d5d7334974f3f3f580434427c36a91e95b06e62caf5352b55d1a0530',
+     x86_64: 'e2af8d01d60392799ee3a8bf4624b4df30b4644288da9df8226e3386d9cc1313'
   })
 
   depends_on 'py3_six'

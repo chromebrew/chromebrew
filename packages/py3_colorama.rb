@@ -17,10 +17,10 @@ class Py3_colorama < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_colorama/0.4.4-1_x86_64/py3_colorama-0.4.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8d78c0f6d926ccd3a968789ca44128fb528fd065014452d14e95cfef819a80c4',
-     armv7l: '8d78c0f6d926ccd3a968789ca44128fb528fd065014452d14e95cfef819a80c4',
-       i686: '08f10c3f40ab9b6bc5b49a8c01076b224a2c73969fd3ef6aeedd1fb484b14abf',
-     x86_64: '503cc767d2f00882ed6f97e50970ae03c63c9ef6d9c8f0c8f2f59d12993a64c7'
+    aarch64: '96e02b9c3360a083ed1500fafba817e45a71a86064a306338eb020b3730bac47',
+     armv7l: '96e02b9c3360a083ed1500fafba817e45a71a86064a306338eb020b3730bac47',
+       i686: 'a4bc9fd6f3bd83b40bdcf8692d1e99e0f47b7a480e55ab18e62cf71b46a3ae5f',
+     x86_64: '5e5a9635d836fdf49237f5df12fbdeee92f0cdbef2144cbe4c93529cfee2ee86'
   })
 
   depends_on 'py3_setuptools' => :build

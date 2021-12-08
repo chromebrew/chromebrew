@@ -17,10 +17,10 @@ class Py3_mako < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mako/1.1.5_x86_64/py3_mako-1.1.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e483232123932b89a0a1d4a01b01aa3e815195a701a079ab531b29c90692da0a',
-     armv7l: 'e483232123932b89a0a1d4a01b01aa3e815195a701a079ab531b29c90692da0a',
-       i686: '4f2b45a9db7c1e0e2d28ed5912d3cfa304eff58c354530edcebf0f6a20759b29',
-     x86_64: 'c1dd1f03f0316669d914b9117998df30f47075a7cc8fa362d6b98d4e68aabb48'
+    aarch64: 'd87113392071930eaa7b0ba8aea2a52bcc1652a4ad49e966858e79b305416879',
+     armv7l: 'd87113392071930eaa7b0ba8aea2a52bcc1652a4ad49e966858e79b305416879',
+       i686: '97287f560d220954e690c87ad2642538520d226a1566fd0ff2b9cdaf281d78e9',
+     x86_64: 'ca623e5a094c1a2a845a328549e7ffba65335bdb744df248288dc2a70960df0e'
   })
 
   depends_on 'py3_markupsafe'

@@ -17,10 +17,10 @@ class Py3_text_unidecode < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_text_unidecode/1.3-1_x86_64/py3_text_unidecode-1.3-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6e0412e52f5f3ff9f5b4fedb5b04284046db0f2167eab863e5ca5cf314fef7a0',
-     armv7l: '6e0412e52f5f3ff9f5b4fedb5b04284046db0f2167eab863e5ca5cf314fef7a0',
-       i686: '7201bcef7316e2aa9ebb4058a239de9cda3cbf9da5e5eb555f8f745f95af7153',
-     x86_64: 'fbb154a8fea012d4cb6478ca0ac3f606ab645ff0cd78ddc6ac1e5e6895ff4718'
+    aarch64: '7a6071fa9a7f3178c677f092b13b8ca2ddcb7ab7cbc1cea7e2824c79cb4d15ec',
+     armv7l: '7a6071fa9a7f3178c677f092b13b8ca2ddcb7ab7cbc1cea7e2824c79cb4d15ec',
+       i686: '6ffeca7fd41258252a751a0554e9a2017fc8b581b2a8d865e9ba83690c4e4969',
+     x86_64: '3d4429a6036811d561b1f6619f94dfeefadad4de79ed0d41964ba146e6cfc605'
   })
 
   depends_on 'py3_setuptools' => :build

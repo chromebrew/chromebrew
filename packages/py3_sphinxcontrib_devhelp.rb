@@ -17,10 +17,10 @@ class Py3_sphinxcontrib_devhelp < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_devhelp/1.0.2_x86_64/py3_sphinxcontrib_devhelp-1.0.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '73b23ce00594787f58f255d6d5dba9073d50ae585a7262edeef6dccf3b024025',
-     armv7l: '73b23ce00594787f58f255d6d5dba9073d50ae585a7262edeef6dccf3b024025',
-       i686: '8754d599da11519830881634b7f14eb79c73ca17d02394ba51b62b0ede16f514',
-     x86_64: 'ed7c79a55fec5e59b1773913a2000ceb50fa3a9cb0b8257948d73130f021bcca'
+    aarch64: '3196686ec01222742cb48ee585aa5060203f7238a0636f691dd70d19c4ea68c1',
+     armv7l: '3196686ec01222742cb48ee585aa5060203f7238a0636f691dd70d19c4ea68c1',
+       i686: 'dbbea0432ac6ce25922765f23d2e4ee98dfc3a89f7175c5353df32ff19dcd3be',
+     x86_64: 'a325888dce188a29eb4a91c01819c16261e6c1f9cd88478ecf0b8e316a180462'
   })
 
   depends_on 'py3_setuptools' => :build

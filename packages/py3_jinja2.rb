@@ -17,10 +17,10 @@ class Py3_jinja2 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_jinja2/3.0.2_x86_64/py3_jinja2-3.0.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '876ca7ef5d436ba11bc31140ae62792600c4b87431ea3f6aa65eab1e8f35897a',
-     armv7l: '876ca7ef5d436ba11bc31140ae62792600c4b87431ea3f6aa65eab1e8f35897a',
-       i686: '98c179f92a98e39f75a05a327f7b81657ce304e22d2e350763099a54db2762ae',
-     x86_64: 'd59fa896369b6a68594dad34005120ddd303a34ca14ac666f30682e5759d8188'
+    aarch64: 'd523d068e3ef4f908ce2746d4315cc052d914e62457a99f538cb1bc1bc62ffc0',
+     armv7l: 'd523d068e3ef4f908ce2746d4315cc052d914e62457a99f538cb1bc1bc62ffc0',
+       i686: '71c0f00cc1a5977377be639dbb95d765fd87715b083e517fbea474512786ee70',
+     x86_64: '311d96718373cf983ff17bfc810a8b275c52f8762fa90d64f2253e9cba874e61'
   })
 
   depends_on 'py3_markupsafe'

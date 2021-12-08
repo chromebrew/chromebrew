@@ -17,10 +17,10 @@ class Py3_itsdangerous < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_x86_64/py3_itsdangerous-2.0.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'cab715a48b5dce3ad1be74186a801c62e5863730cf32b230150e32726bd84486',
-     armv7l: 'cab715a48b5dce3ad1be74186a801c62e5863730cf32b230150e32726bd84486',
-       i686: '32918b5d832cf28eb0adc8b29094c00a1cee666df893f93522f8407fc6eec6ed',
-     x86_64: '0c3694d6cc147b02a27251fa11c2067817323b1fda937c2a175ba2f9ea06b1ea'
+    aarch64: 'e480e5ef2d9b757bbcd7b45a0427003a2d81ee85e9388f56cfc895ec6ed5d0c1',
+     armv7l: 'e480e5ef2d9b757bbcd7b45a0427003a2d81ee85e9388f56cfc895ec6ed5d0c1',
+       i686: '6776095190067ae1b6809aa7cb6d61f0baa08423e2bac1f4b110584d7da56600',
+     x86_64: 'b211621da276c9693729ba64ab14f4a133683c2692f5b737e38ea50653adf00a'
   })
 
   depends_on 'py3_setuptools' => :build

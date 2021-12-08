@@ -17,10 +17,10 @@ class Py3_pyasn1 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-1_x86_64/py3_pyasn1-0.4.8-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'dd0565b0c1d682b4d65d308a64220937ef1aa0e31581e245c6dd4eddbca06b59',
-     armv7l: 'dd0565b0c1d682b4d65d308a64220937ef1aa0e31581e245c6dd4eddbca06b59',
-       i686: '56ff493b79f36b107914e2d97a81e7a4307e07f2b993aa42a8e2e8de7de99572',
-     x86_64: '27cf2e8a6867c96e506c75acce88bb05fb628b3cabade79c67f0e38beeb46247'
+    aarch64: 'd9ca4fe715b2d51dfbc819568f12df82edc6770b2b8f3556304cdee267ca5cfc',
+     armv7l: 'd9ca4fe715b2d51dfbc819568f12df82edc6770b2b8f3556304cdee267ca5cfc',
+       i686: 'b1c488ddb0a3c2b4055ff9efc4e72b9e4ebd9a5bcfa513c4cd24d1a03c1f6208',
+     x86_64: '9be6d5cb186073d9c04adc800d49ec02251003e59e07fdff65475ef6f4be1be9'
   })
 
   depends_on 'py3_setuptools' => :build

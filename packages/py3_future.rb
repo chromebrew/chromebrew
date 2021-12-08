@@ -17,10 +17,10 @@ class Py3_future < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_future/0.18.2-1_x86_64/py3_future-0.18.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4ad7452419735a7a1b8c8d1465221733dd403216f28f1552d7100156b1025f8e',
-     armv7l: '4ad7452419735a7a1b8c8d1465221733dd403216f28f1552d7100156b1025f8e',
-       i686: '12f279bf4d49d62908307b61a190d8be5e60dd1640799a09f7e1bc6777307afa',
-     x86_64: '79cddc48c0ea4bd4c4d3c31da7dc181cd47478960fac3fbf80884946179d66ba'
+    aarch64: '5c696cdddcbf64c1a5b8c08899e214e3f19eed0c1b1896b458fac11fc1ae2070',
+     armv7l: '5c696cdddcbf64c1a5b8c08899e214e3f19eed0c1b1896b458fac11fc1ae2070',
+       i686: 'b1ac5ac4f611459c88850f81d697037474b432d3a9e7b23ae1d9849ac31179c6',
+     x86_64: 'cf951bf6550bf5c0adc0bfd048704b55362d1ac0441c967a81cf23372fde921c'
   })
 
   depends_on 'py3_setuptools' => :build

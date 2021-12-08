@@ -17,10 +17,10 @@ class Py3_pytz < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytz/2021.3_x86_64/py3_pytz-2021.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e2a14389c8f81cd71f9677b455c7692f22f066928475764f5116d7483af5a2c4',
-     armv7l: 'e2a14389c8f81cd71f9677b455c7692f22f066928475764f5116d7483af5a2c4',
-       i686: 'd68dae45475db7bd9a967411e513edb269a0fbffd33b2abe97373196f9bcbdbf',
-     x86_64: 'ccd1d59075047b0c35eeaf464f7c42d155435085ca0bd8e3bc8436627db61e34'
+    aarch64: '802a3c3e79d6e0694eeb7d39ade44f216a2c3189b5be46d060917d26f4ae6f49',
+     armv7l: '802a3c3e79d6e0694eeb7d39ade44f216a2c3189b5be46d060917d26f4ae6f49',
+       i686: '62e2cc62b0b94b75ab0ae6215f0dfe69ba384ffe56ed92822b7df45cd0cadd40',
+     x86_64: '49fafd755f9968f1b370d39c89db0b37fede393aa7a1d00c9946e28411f9176b'
   })
 
   depends_on 'py3_setuptools' => :build

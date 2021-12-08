@@ -11,16 +11,16 @@ class Py3_impacket < Package
   git_hashtag "impacket_#{@_ver.gsub('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.22_armv7l/py3_impacket-0.9.22-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.22_armv7l/py3_impacket-0.9.22-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.23_i686/py3_impacket-0.9.23-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.23_x86_64/py3_impacket-0.9.23-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.23_armv7l/py3_impacket-0.9.23-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.23_armv7l/py3_impacket-0.9.23-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.23_i686/py3_impacket-0.9.23-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_impacket/0.9.23_x86_64/py3_impacket-0.9.23-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '207d25e818e1bbeaccdfc8461459a138d109ab0542bb3576353f9e79d5b57399',
-     armv7l: '207d25e818e1bbeaccdfc8461459a138d109ab0542bb3576353f9e79d5b57399',
-    i686: 'bc77f9e1e7e11ccb3513bd7c95a92557c4447a15e20a4f82907348bdb5ed6fbc',
-  x86_64: '85f10d35d9d2918291115d5fa418dd9059da66fc8704ae3a4ff09e2a79eb9d1b'
+    aarch64: 'c37b27ae6b0b5c58abdadc9a25f0652e2edc00ec4539f7fd1ccc53e2de25b589',
+     armv7l: 'c37b27ae6b0b5c58abdadc9a25f0652e2edc00ec4539f7fd1ccc53e2de25b589',
+       i686: '17387538bc0ce405a19ee9a02dd0edf138ccc80bc663d32493448b36de9a479e',
+     x86_64: '353624e76228604e37d2ade33876f9bd9b098dd06c9e776df00a2ee7f74c6bcf'
   })
 
   depends_on 'py3_pycryptodomex'

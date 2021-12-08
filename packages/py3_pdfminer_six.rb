@@ -17,10 +17,10 @@ class Py3_pdfminer_six < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-1_x86_64/py3_pdfminer_six-20201018-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f20936a2c058d90854f117304e9155255719aa6d1f0ac75fa40dca5b992d36d4',
-     armv7l: 'f20936a2c058d90854f117304e9155255719aa6d1f0ac75fa40dca5b992d36d4',
-       i686: '8859aad5f8e24cfb544387eea628845959dce5fe7c26886a649e5914ac868aff',
-     x86_64: '43b50ab8ad0761d7d95dbd73b90f717c3a01899fc532e1d1de9cfb5c1d54b68c'
+    aarch64: '77d7e27ebb8f8b4a8e90f15ea626d0e62c68af8c15103ed99c444b7f0003f237',
+     armv7l: '77d7e27ebb8f8b4a8e90f15ea626d0e62c68af8c15103ed99c444b7f0003f237',
+       i686: '7fdb846a171a677ecf661951e3d89432d263b8302003b46b1f24b820443b8328',
+     x86_64: 'bd96db5bf397b6cf89cf7628bba9ecfd2c17413979dadb7772e351db2990ad82'
   })
 
   depends_on 'py3_pycryptodome'

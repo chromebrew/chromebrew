@@ -17,10 +17,10 @@ class Py3_slugify < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_slugify/5.0.2_x86_64/py3_slugify-5.0.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5b6ff8cdb0e22b2d708c3997357380f6c6b3fd32d2d24d40e1527de92f41e9ed',
-     armv7l: '5b6ff8cdb0e22b2d708c3997357380f6c6b3fd32d2d24d40e1527de92f41e9ed',
-       i686: 'a9cad3705d565664807e9df2a8232d09787acfa9dc7b1d4695052c39751d6df1',
-     x86_64: '29890eca05c4c20a9b314746c22d13501a77b7ec1f24c86fdebf6681533b623a'
+    aarch64: '93db1b5b49bf48d40ce694df1d007bc4d6711887001c376c5e5cb7eb057f549b',
+     armv7l: '93db1b5b49bf48d40ce694df1d007bc4d6711887001c376c5e5cb7eb057f549b',
+       i686: '31fb8f5268cff92b3e43a138c093b09c76beffc33997ba233796a0bc006a4d2a',
+     x86_64: '368a3f138195f3d312e71102b6a00a524e60dd4102e09b3f40046eb4e441d2a6'
   })
 
   depends_on 'py3_text_unidecode'

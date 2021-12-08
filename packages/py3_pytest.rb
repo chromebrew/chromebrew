@@ -17,10 +17,10 @@ class Py3_pytest < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_x86_64/py3_pytest-6.2.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '076f26ea6bb78a39adaee5fed0cef6a816605e912aa2b22272b536a50778204c',
-     armv7l: '076f26ea6bb78a39adaee5fed0cef6a816605e912aa2b22272b536a50778204c',
-       i686: '8787f0a8fc8266eaa828c3d76ff57f3088419fd8de45b438434a8a53bcbd1097',
-     x86_64: '1af0977941d9b5e8bbd93b6671503cd019e8cae21efea39db52ec83bb2295ba8'
+    aarch64: 'e07eb2dc508c1710332cdf74a023c30d6c1805166ed8c4aea52e56e7b8afbe45',
+     armv7l: 'e07eb2dc508c1710332cdf74a023c30d6c1805166ed8c4aea52e56e7b8afbe45',
+       i686: 'c2f645998e899eab99998914fe74a65c83f16f4f688fdcb1ded0c5345a0891e6',
+     x86_64: '090b9bea45cafcc0b83fd11024a5fa149758c94b355e213c1c18f8bff5fad5f3'
   })
 
   depends_on 'py3_py'

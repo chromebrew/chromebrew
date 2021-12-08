@@ -19,10 +19,10 @@ class Py3_lxml < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3-1_x86_64/py3_lxml-4.6.3-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5a6f4d0843e9b6502c74935202bd2726697e3fa05c666f8c030108575e5c3d0e',
-     armv7l: '5a6f4d0843e9b6502c74935202bd2726697e3fa05c666f8c030108575e5c3d0e',
-       i686: '23eb5d1bc3944c3b4def3cda2a6eace9f7f8dc1b2c7b6a0d167601e03511ad7e',
-     x86_64: '88675cdd305b744f305828cf3238b5690ca7a92cf6e69a96ca8184200d7ed459'
+    aarch64: 'a9b46477532571b98da001a8605da93c9c7a30c5b5b2d578e764b727cdadedd9',
+     armv7l: 'a9b46477532571b98da001a8605da93c9c7a30c5b5b2d578e764b727cdadedd9',
+       i686: '935d4b24c9cf6dbb7555332dcb4e2568097b063dfcd0e46eb4262f32badbfc04',
+     x86_64: '712d152adbc53f19e11d648578deb67a805fb64863580770d3e42de5638f4daa'
   })
 
   depends_on 'py3_cython' => :build

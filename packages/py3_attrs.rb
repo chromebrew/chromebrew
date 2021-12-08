@@ -17,10 +17,10 @@ class Py3_attrs < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_attrs/21.2.0-1_x86_64/py3_attrs-21.2.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '87749b646c38c19c1880bb52bdd975e491e6b90a786cfeda03d2b3d364005ee9',
-     armv7l: '87749b646c38c19c1880bb52bdd975e491e6b90a786cfeda03d2b3d364005ee9',
-       i686: 'f51aa6ce647fe132a86f98904dd6402ce45565583e16504c274564fd0aebed32',
-     x86_64: '6bb02c660222f22f83d0c2d266796e54e3eac93e308a227bb19400c1a8fbd3ad'
+    aarch64: '9352f76874b690ce01024148c76cbedbabad5fad93c4706f770e03db18232c1e',
+     armv7l: '9352f76874b690ce01024148c76cbedbabad5fad93c4706f770e03db18232c1e',
+       i686: 'ffecad3b8c86a89784327cc36df6d27b12e40339b7df80a641b385816468763a',
+     x86_64: 'ec386157827ee1da17cbc34b2fb1f6d54922d098c370055825e18be297799d55'
   })
 
   depends_on 'py3_setuptools' => :build

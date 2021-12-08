@@ -11,16 +11,16 @@ class Py3_ebooklib < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1_armv7l/py3_ebooklib-0.17.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1_armv7l/py3_ebooklib-0.17.1-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1-1_i686/py3_ebooklib-0.17.1-1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1-1_x86_64/py3_ebooklib-0.17.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1-1_armv7l/py3_ebooklib-0.17.1-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1-1_armv7l/py3_ebooklib-0.17.1-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1-1_i686/py3_ebooklib-0.17.1-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ebooklib/0.17.1-1_x86_64/py3_ebooklib-0.17.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9ef251c995198dbc2f0d9e63cbf9a7c03458ed7ea9b0aeea4eeb0e4465b5eb48',
-     armv7l: '9ef251c995198dbc2f0d9e63cbf9a7c03458ed7ea9b0aeea4eeb0e4465b5eb48',
-    i686: 'b428b375c00d5f97e009c3cc6546dc9fab0ed2c66ac7d16198184c6a2bc89d88',
-  x86_64: 'e9e27422f2dbf43ef5126ef42fac54831286879ad782f2096e333eb6d44900ab'
+    aarch64: '6708fde9d731ef359e5fa9fe775427b062f7d8bf2cb52fb3f524459c27bd3b0e',
+     armv7l: '6708fde9d731ef359e5fa9fe775427b062f7d8bf2cb52fb3f524459c27bd3b0e',
+       i686: 'aec9bb0a8f001b900d0794544778b20330a037744a415c29f4db90eae09fb039',
+     x86_64: '7e7e7fdf0a20db6ccfe0ddc0ddd60ca0bdc01a56745855cf52ca565265eca466'
   })
 
   depends_on 'py3_lxml'

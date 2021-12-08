@@ -17,10 +17,10 @@ class Py3_agate < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate/1.6.3_x86_64/py3_agate-1.6.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6e6b403c6ed355e682bf6a049f1ff33e35a341e3e94ceb03cd461f281ed1ccc7',
-     armv7l: '6e6b403c6ed355e682bf6a049f1ff33e35a341e3e94ceb03cd461f281ed1ccc7',
-       i686: '01e4f4dcdea767b5112e06039e7eb78fa4b3fd0ac51a684bceb5b9b6006a16c4',
-     x86_64: 'c5f29c4e6e86c6f170e78eb8d321f091b19de638af14b427e80db08f05f0c56e'
+    aarch64: '357edbdec5c4cf615877846eb1cf7abe0d6ffa5897c5a5b74268d1590df4bde8',
+     armv7l: '357edbdec5c4cf615877846eb1cf7abe0d6ffa5897c5a5b74268d1590df4bde8',
+       i686: 'a46ea8c01fd442aebfe7f2e7dc26b79edc6419dc83909c2a66b5a16333427084',
+     x86_64: '0015ba29995578c47bd9f36abeebdfb400e00b9b137fdeed9ced4d6d151f41bc'
   })
 
   depends_on 'py3_babel'

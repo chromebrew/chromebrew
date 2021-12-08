@@ -17,10 +17,10 @@ class Py3_babel < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_babel/2.9.1-1_x86_64/py3_babel-2.9.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2ef366b598ffc715d9715759c4bdf31df2fcd683dc82c0abaa3fce4cde93b0f0',
-     armv7l: '2ef366b598ffc715d9715759c4bdf31df2fcd683dc82c0abaa3fce4cde93b0f0',
-       i686: '1e3ef455173d3238d08c5a440f998c95712c405c15d5524977a1cd8da00b5b76',
-     x86_64: 'e0f6a027e6e07c39e064e7b05c42fa6ffcf2b6218a5abf41c0d2f5c00ffdc145'
+    aarch64: 'b77c680b2c5b2c76e2bca308fa5c1050c87161a8019d923724b924ab9595aae0',
+     armv7l: 'b77c680b2c5b2c76e2bca308fa5c1050c87161a8019d923724b924ab9595aae0',
+       i686: '5e9efc6f22bef10e2b948d56c278a100c6fc462b57c084598add938f7dd056b0',
+     x86_64: '79a4015d2c3730fa8ba3d8eb45e138b8b6f47c46a185a37a786fd7a09fd037a4'
   })
 
   depends_on 'py3_pytz'

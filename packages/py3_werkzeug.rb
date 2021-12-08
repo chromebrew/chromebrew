@@ -17,10 +17,10 @@ class Py3_werkzeug < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_werkzeug/2.0.2_x86_64/py3_werkzeug-2.0.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0adfcdf965a0e7f6a6b95cb801573028af9b057684ff0efd864c8184187e3c45',
-     armv7l: '0adfcdf965a0e7f6a6b95cb801573028af9b057684ff0efd864c8184187e3c45',
-       i686: '8909b459642f48165f9cb92c885a885df77dcb4e67085297cf6b5aaac54f0276',
-     x86_64: 'adb5a2ce65c60f335eb44e37c7e3e2059e3ed3081da57239c05139276d66319b'
+    aarch64: '26e8b86c9038a994d0be11a9dbb120b182663911f50a8eda383c096f076b6556',
+     armv7l: '26e8b86c9038a994d0be11a9dbb120b182663911f50a8eda383c096f076b6556',
+       i686: '585c00685237b65a4cdc28eda8682364cfbbe75390ca7db6e51a315a73f73269',
+     x86_64: '6a9b20165cb9a7f3840c1cd3afc78cb3722f111259762011ef05fe37c48d6801'
   })
 
   depends_on 'py3_setuptools' => :build

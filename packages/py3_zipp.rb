@@ -17,10 +17,10 @@ class Py3_zipp < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_zipp/3.6.0_x86_64/py3_zipp-3.6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '962fca0ee3048448eb4c22e6dbd8794b57b3c5d66b21df83c1d3e7d6764c0ea7',
-     armv7l: '962fca0ee3048448eb4c22e6dbd8794b57b3c5d66b21df83c1d3e7d6764c0ea7',
-       i686: '5799e3de71fd450a1abdaa528a4d4fa6ed27f82a08085b6c214027bdd4c98975',
-     x86_64: 'a20a4195e5ba929b856b4b6427a8945e8d4c41187b0cf9b670d1fbc21f7a6409'
+    aarch64: 'c13351985efd510376d3c0dd006db2a9a9a864d8a53bb5b4ad7a2e28a7f371b0',
+     armv7l: 'c13351985efd510376d3c0dd006db2a9a9a864d8a53bb5b4ad7a2e28a7f371b0',
+       i686: '243aaf716e43eaab87c43d47c77162b86f6b4b2a208c5da0aa62c0f1a2e43362',
+     x86_64: 'cfc482639fe8a6af4b35c19f21c39836eb25638dcdf858686751783f7e51254b'
   })
 
   depends_on 'py3_setuptools' => :build

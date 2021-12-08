@@ -17,10 +17,10 @@ class Py3_wheel < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_wheel/0.37.0_x86_64/py3_wheel-0.37.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6d222ae59975a75d1a6edc521e89773cfabc744bc3d56602c780931b659f9d8b',
-     armv7l: '6d222ae59975a75d1a6edc521e89773cfabc744bc3d56602c780931b659f9d8b',
-       i686: 'ec1ddb5e04ff7846511532bf9d42d0b7e34913cb1b210c712df5024c58ce1cc9',
-     x86_64: 'adb0a9a13abb745e0b3e664e7db95ecdbf6d79be19b7cb8a77a80132ec7410b7'
+    aarch64: 'f7a9f3dd8567bd0f15135aed8a7aa4a2dc4a28474a125ebfc745ac0d3bc7010b',
+     armv7l: 'f7a9f3dd8567bd0f15135aed8a7aa4a2dc4a28474a125ebfc745ac0d3bc7010b',
+       i686: '56876fb356f9e0a83a9c283661de59776c41ffde0a7f33ebb8f69353a2098fa7',
+     x86_64: 'd22903d95f42433d09d17ee3d6b5c1d188553334d3f371df2ac4cd0b5c425c0c'
   })
 
   depends_on 'py3_setuptools' => :build

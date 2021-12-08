@@ -17,10 +17,10 @@ class Py3_docx2txt < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docx2txt/0.8-1_x86_64/py3_docx2txt-0.8-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '65c36a311c61ec0feb56529cc4e74f69c8b7863eff1dbda03652babeb13b96e9',
-     armv7l: '65c36a311c61ec0feb56529cc4e74f69c8b7863eff1dbda03652babeb13b96e9',
-       i686: 'b81af5016150e7faa5909e6e752b893d69afd67ede4810749d96d9bf021b70a1',
-     x86_64: '1fc91c764e07cdb7e503b365895edcc0e36ddb3383540e227de332f84ed8e5b5'
+    aarch64: '4fe7c0c804b47548bcab290e3a10d210a58571300819faa56c7e2fca566322ed',
+     armv7l: '4fe7c0c804b47548bcab290e3a10d210a58571300819faa56c7e2fca566322ed',
+       i686: 'b0c2208085a069a88bcc16794e1d7853fd4ff8ac478b1df8021639e213e3a764',
+     x86_64: 'dc9e85b1e826f850f4dc63f46c58246a30aeb834490d7961d5c46c404f71b808'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_jmespath < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_jmespath/0.10.0-1_x86_64/py3_jmespath-0.10.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b6b897283186bd9d80be0e856b83e429dbde5ffcc8ed79835ab8e3a08843d61a',
-     armv7l: 'b6b897283186bd9d80be0e856b83e429dbde5ffcc8ed79835ab8e3a08843d61a',
-       i686: '432bf6c97b5ac415dfaca2cd8d24289d9e79dfa79495dc5fd1eacb22dfac4a5c',
-     x86_64: '620e9c48c5d2dcff92e0f45774023b2013ccdec4f066ee953ab1cd26d00208ed'
+    aarch64: 'a69678814a7638dc21174574f61fd0c5130741ebe1856dfc9d13b10dc3d48eaf',
+     armv7l: 'a69678814a7638dc21174574f61fd0c5130741ebe1856dfc9d13b10dc3d48eaf',
+       i686: '6c81f0ca4f3c11e78a94e65ee9c6b2722b71ff8c8554fbbbd565fc89e4886933',
+     x86_64: '36b600ebd4ba2a77828d6a2ec409bec40286b993a56bb2a5fe44b090fb7a9482'
   })
 
   depends_on 'py3_setuptools' => :build

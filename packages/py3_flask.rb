@@ -17,10 +17,10 @@ class Py3_flask < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flask/2.0.2-1_x86_64/py3_flask-2.0.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0a83dc2e0183810bd3e2687a4ad4013e55e366792833278b0249146d2ca44772',
-     armv7l: '0a83dc2e0183810bd3e2687a4ad4013e55e366792833278b0249146d2ca44772',
-       i686: '25933700a347244b2aea611b241b245a0ed0ba6ca65180262d0d17faba64136d',
-     x86_64: '51565d6e4bef50d572de2bc5b88a18ecaa3501e97e373a5fc91f9b1ce0656ffb'
+    aarch64: 'ff05d4af75f1a1d53f2b029e9002f1e03daa8cecced493dc2342b0e00f9b896b',
+     armv7l: 'ff05d4af75f1a1d53f2b029e9002f1e03daa8cecced493dc2342b0e00f9b896b',
+       i686: '884a383b1a6c851b0e04bb3e4dfb98609328a24953334160b9e5d438eeacb673',
+     x86_64: '4412b56ca38573e82efc5b19916a3ce7ea4cc3bedc0555a6fb358766e63192e2'
   })
 
   depends_on 'py3_werkzeug'

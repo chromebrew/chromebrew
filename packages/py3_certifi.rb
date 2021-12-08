@@ -17,10 +17,10 @@ class Py3_certifi < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_certifi/2021.10.08_x86_64/py3_certifi-2021.10.08-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '33b1882bc2262289aea2f254c03c072ef6460fefe87371ac1b852cbad219cf4a',
-     armv7l: '33b1882bc2262289aea2f254c03c072ef6460fefe87371ac1b852cbad219cf4a',
-       i686: '7afd36d71494f931cdc758ae8c065a8d0cbf84dbc1ba6f76e9d25e58661bdf77',
-     x86_64: 'ba1da68d76045baa0b65704aee05a4ae27c580fbb9e519f01cae1af43a03cb11'
+    aarch64: '5cd446c1cdece3de96b30ca059f921d551c78a5d8498c6b5688900d882d51e16',
+     armv7l: '5cd446c1cdece3de96b30ca059f921d551c78a5d8498c6b5688900d882d51e16',
+       i686: '6a21972e1d4121df2a7976ddafc717c073248adca92ac746b2c7b57bd9738406',
+     x86_64: '3991ddac144d3294f2f718181a8239e160bcbb916ac329519161eae8eb58cb7f'
   })
 
   depends_on 'py3_setuptools' => :build

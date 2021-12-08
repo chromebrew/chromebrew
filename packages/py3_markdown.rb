@@ -17,10 +17,10 @@ class Py3_markdown < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_markdown/3.3.4-1_x86_64/py3_markdown-3.3.4-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c5673fba6bf85a943d5125967413be967ead29fa5cfd6e95487983fb2b2d97fa',
-     armv7l: 'c5673fba6bf85a943d5125967413be967ead29fa5cfd6e95487983fb2b2d97fa',
-       i686: '4a8f93f33a35a87c4e9ce6c9a70dba075baa4eb7db01167339d787f585712627',
-     x86_64: 'cee25c9787684d247bd69809ec01485f6ab6a0dbcb9babd37c0a8efcbc503131'
+    aarch64: '3572804087c4ad60bc3b67e96eb812f6c24685c01aea3f9aa43dbec688a1d38d',
+     armv7l: '3572804087c4ad60bc3b67e96eb812f6c24685c01aea3f9aa43dbec688a1d38d',
+       i686: 'caa494c8241be6ba00f814432af5cbe0466ec8f921677fe9695c78133912a1a3',
+     x86_64: '1ce0ddb7399b90079d6a5fc24cf9273542ccf3f1b61f1fc7390bb3dd14acd90d'
   })
 
   depends_on 'py3_setuptools' => :build

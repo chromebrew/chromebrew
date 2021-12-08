@@ -17,10 +17,10 @@ class Py3_pipdeptree < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_x86_64/py3_pipdeptree-2.2.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '856c38a3fcff169b2c465b483ace2d1b3b10a47226c1940ca97ced481a5b46dc',
-     armv7l: '856c38a3fcff169b2c465b483ace2d1b3b10a47226c1940ca97ced481a5b46dc',
-       i686: 'af91dccf56f875437b2d5aa13149753bd749e0e59995570484c562e0c1750b65',
-     x86_64: '35d03b61ea2450b84a251047d21b49d4ec3ba967c800675a10ce4c93e0389e60'
+    aarch64: '43bcc3d8c7cafc9ff0ffb11c3ac02d711bad8c3a255544ae1359f6266b61c96b',
+     armv7l: '43bcc3d8c7cafc9ff0ffb11c3ac02d711bad8c3a255544ae1359f6266b61c96b',
+       i686: 'def4e8eddadd8d3e5842c7c55796c753bd56fc7e4dd07b825e05703a73647906',
+     x86_64: 'a33079dea17ba00a73708eece8b455506abe1a3d46ed814f68176d2b62f7c9d0'
   })
 
   depends_on 'py3_pip'

@@ -17,10 +17,10 @@ class Py3_imagesize < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_imagesize/1.1.0-1_x86_64/py3_imagesize-1.1.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6d171ff5e87c64a72175253b1d5178a996bda4fe63555a8ddeee6683b70dd531',
-     armv7l: '6d171ff5e87c64a72175253b1d5178a996bda4fe63555a8ddeee6683b70dd531',
-       i686: 'b98a80e7bec326f5ba3795143b6ad506b741136b413575137d19cafea7486cca',
-     x86_64: '9b80b09d55b987647a118f15546ab30664b015bf1de9f901f8aeb77ac5b6f701'
+    aarch64: '0a631ced317c01ce94f0ec4eca3648307b103bcb8be80ef26fc21c168f7aab5b',
+     armv7l: '0a631ced317c01ce94f0ec4eca3648307b103bcb8be80ef26fc21c168f7aab5b',
+       i686: '5dafc0ff6d92665f34804d420660776726443f6ed8c9329ca4f1e26061148db9',
+     x86_64: 'de97f1c9967cbc7257139167652a2e07ee59e7bc826370e553c593b0e495139c'
   })
 
   depends_on 'py3_setuptools' => :build

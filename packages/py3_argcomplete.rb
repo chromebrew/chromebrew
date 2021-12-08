@@ -17,10 +17,10 @@ class Py3_argcomplete < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_argcomplete/1.12.3-1_x86_64/py3_argcomplete-1.12.3-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a3ac29ae936f90889eeb0040f35bb475db3689640d512171905756cb1491e022',
-     armv7l: 'a3ac29ae936f90889eeb0040f35bb475db3689640d512171905756cb1491e022',
-       i686: '504f03412cd08efa8c456f072c87fcb33830114b516ab735e38d3d558e1c8519',
-     x86_64: 'a08ec552c6c6cf718f6a074ca96aa9f4d32794fe1fb74d2da91cc15243df929f'
+    aarch64: 'dd1fcdad56a26605bffd091df8605f2af638b3c5e96ffa30231040fe55d36965',
+     armv7l: 'dd1fcdad56a26605bffd091df8605f2af638b3c5e96ffa30231040fe55d36965',
+       i686: '3e857e22e68e5916bcffa9d2ee311ea12889ffd64d9264d21ea52ad4b58dc2c7',
+     x86_64: '58ab02de00c117dd3bb4b06e9329151b16079d69f24fcb6ef0ec86ca65ee5d42'
   })
 
   depends_on 'py3_setuptools' => :build

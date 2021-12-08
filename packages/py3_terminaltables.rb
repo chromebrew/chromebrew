@@ -19,10 +19,10 @@ class Py3_terminaltables < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0-1_x86_64/py3_terminaltables-3.1.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2afb651c18177ed003d1bf874cb590b8ed810227bab315d739308d2fd66d44bd',
-     armv7l: '2afb651c18177ed003d1bf874cb590b8ed810227bab315d739308d2fd66d44bd',
-       i686: '08b60be304384feef2e2442fd5f88fb33f2d7214420f5fc2c88d16664d1fdb2c',
-     x86_64: '335535f87143e43e6ee5133287b73ac2aa0f47a10cc536e3ab47ee5e8150fa3f'
+    aarch64: '3402327fe2fb47c263923556f80c9610dd1f40ef3ad400cfc26a200d752f76c7',
+     armv7l: '3402327fe2fb47c263923556f80c9610dd1f40ef3ad400cfc26a200d752f76c7',
+       i686: '4bf3e71943804f649d8311de4bb3fcba4c7ccd0183da0bdf05ca0752f47bc962',
+     x86_64: '881307f80761cf65fb01f7e5d349e7d2dde3ec04b48b9cde2865a03449107aa0'
   })
 
   depends_on 'py3_dateutil'

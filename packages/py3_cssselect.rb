@@ -17,10 +17,10 @@ class Py3_cssselect < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-1_x86_64/py3_cssselect-1.1.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b2c988ab7370b671da1fccbaa28c248a99dec5c11bcc089f26d0259e3afd34e2',
-     armv7l: 'b2c988ab7370b671da1fccbaa28c248a99dec5c11bcc089f26d0259e3afd34e2',
-       i686: '528864e73db113217b560d38f50f921bf75a0f00ae54fe6a2ef6fcda7ea14dcf',
-     x86_64: '3839629722f436dd58f2043bbf51f6a6103cd98472d7b6bc9a564abcf6a15244'
+    aarch64: '7119884c145fa8377a85c046227b1303fc96b494c96b788c6ef7690e5dd50dac',
+     armv7l: '7119884c145fa8377a85c046227b1303fc96b494c96b788c6ef7690e5dd50dac',
+       i686: 'dacbdc4729a1479f95b4a7fba2d5a5215904d7239e6d6473ada98e40b845026b',
+     x86_64: '32f4c061ade50ca3d27c10908770cd2a93ca8b995e20473911da11d912e60f03'
   })
 
   depends_on 'py3_setuptools' => :build

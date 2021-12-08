@@ -17,10 +17,10 @@ class Py3_sphinxcontrib_htmlhelp < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/2.0.0_x86_64/py3_sphinxcontrib_htmlhelp-2.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a53e9b7b4a8295b0ba6eb8f77bc55375b823ba72b8007ab2a4cf877d94ec1707',
-     armv7l: 'a53e9b7b4a8295b0ba6eb8f77bc55375b823ba72b8007ab2a4cf877d94ec1707',
-       i686: 'cbb060fb041f5e54d7069f7ada7c0884486f0fba4d7c35445a9d60ca434cecc0',
-     x86_64: 'acfb71ffedd0625e70b6cb47fa6f60f4d0bceab478caa62184f51a41d29c73eb'
+    aarch64: '8d336c7e2108662fcb28dfa4c37bbc4bd14d9f191184806b5d08b4574cb5f6b5',
+     armv7l: '8d336c7e2108662fcb28dfa4c37bbc4bd14d9f191184806b5d08b4574cb5f6b5',
+       i686: 'ed05c393eb871eaac511196ca67a4b86286f25f629747bcafa8c6f223cd843c8',
+     x86_64: 'a1dd589c8c6a04047fcad2e7db5eaa488e448c77fc784e3bbfad6888e50b71a9'
   })
 
   depends_on 'py3_setuptools' => :build

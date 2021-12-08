@@ -17,10 +17,10 @@ class Py3_json2xml < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.8.0_x86_64/py3_json2xml-3.8.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1ef588aab7ce1dd1d9359d52aacde2aa5a157b456a93891d3b1dcc556f729d1d',
-     armv7l: '1ef588aab7ce1dd1d9359d52aacde2aa5a157b456a93891d3b1dcc556f729d1d',
-       i686: 'eb80f33fb875d05d87a7f822c277425602c9ef789ce462d1f175f0d4e261cc40',
-     x86_64: '4e55c8ba7944e78cbc9e58019d9ccc1409133c9e221b68ba885036f30838042a'
+    aarch64: '3b20a3b6b281900888fa7c232c8f57a20cc7af36e66ec92c183bd900b5c25172',
+     armv7l: '3b20a3b6b281900888fa7c232c8f57a20cc7af36e66ec92c183bd900b5c25172',
+       i686: '3528407115c0602f6d881d782500714426ede5994ae0b940a61d98f3612f7815',
+     x86_64: 'cfe83ee7e6ef6208facb755c1c80125b1db4fafef0a5993f78ea6841d2964b26'
   })
 
   depends_on 'py3_requests'

@@ -17,10 +17,10 @@ class Py3_xlrd < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_xlrd/2.0.1-1_x86_64/py3_xlrd-2.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '350b111a86f5de043bffd94f97d6a7869d538fbbd04a34c5be681eac3327fa93',
-     armv7l: '350b111a86f5de043bffd94f97d6a7869d538fbbd04a34c5be681eac3327fa93',
-       i686: '2fb364149a699491a54b398447bf38bcab9584f589ca0b8f401e9d920c972959',
-     x86_64: '8d0a9449d22ae810f8902d061b33da4cf5ae680d961ccf85b369e9f12ebd9f50'
+    aarch64: 'f9d41e808578b7f42b9a32d5f454043f5660873299d8eda683f5d4791442e511',
+     armv7l: 'f9d41e808578b7f42b9a32d5f454043f5660873299d8eda683f5d4791442e511',
+       i686: '3d4506bdadc47b5c6f55745d0e549faa518e84549e941e8a506f753a78451893',
+     x86_64: '83a5c2cf465dc5c80ca2a384cf01723341def568d97844162897bcb852973309'
   })
 
   depends_on 'py3_setuptools' => :build

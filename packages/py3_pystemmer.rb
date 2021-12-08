@@ -17,10 +17,10 @@ class Py3_pystemmer < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pystemmer/2.0.1-1_x86_64/py3_pystemmer-2.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0b610bade3fb21af4c4e91a90efaba597b69ec971a9a6d4576524c55d13eae2a',
-     armv7l: '0b610bade3fb21af4c4e91a90efaba597b69ec971a9a6d4576524c55d13eae2a',
-       i686: '91e68d685ba077a393abd83d33c2f5bb6f55867c483941a53a8a354031f0f1d7',
-     x86_64: '1eb6687f4f01a3d9dd1436570789bc2f3de1f257939b39a5a12b706c418f6852'
+    aarch64: 'b3e54cf7a3a8f33699204e46f73fc635d74169ac665686eb4a27a22079196c8a',
+     armv7l: 'b3e54cf7a3a8f33699204e46f73fc635d74169ac665686eb4a27a22079196c8a',
+       i686: 'fc5d4e785251e5765fc30f946865b7fdadcceeeeb9c12230fb74ef8b9b12fcde',
+     x86_64: 'f370c5460703abf5fb8f3804c16b7807f75d4cc4da984f0a5b04dfc2d64301ef'
   })
 
   depends_on 'py3_setuptools' => :build

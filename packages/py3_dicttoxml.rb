@@ -17,10 +17,10 @@ class Py3_dicttoxml < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dicttoxml/1.3.1-1_x86_64/py3_dicttoxml-1.3.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '63d41b40cfc5e2fd0c94855f3b28eaa00bb0c07718216b0e546ecd355a5b20c1',
-     armv7l: '63d41b40cfc5e2fd0c94855f3b28eaa00bb0c07718216b0e546ecd355a5b20c1',
-       i686: 'e71d4b19bbb28f396b714c4c7e31e961865bdc665e1e6bfb161ad669244f4309',
-     x86_64: 'e7edfc9b347f2915818f506902f055e15cb7caed7ecb071b864a0ad2fa4c50cc'
+    aarch64: '2459e21557c803a020f52def3b1fd3406da190374f748e417ddf9b5dc87bd2d4',
+     armv7l: '2459e21557c803a020f52def3b1fd3406da190374f748e417ddf9b5dc87bd2d4',
+       i686: 'a3a017a11de258f92caa103796c2aeae0419829451466995cfaa3bf1acb0175d',
+     x86_64: '222342f4b707c392df4cac64f88c6fba192dbc60c236b47d8213f586f4e18385'
   })
 
   depends_on 'py3_setuptools' => :build

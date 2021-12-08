@@ -17,10 +17,10 @@ class Py3_decorator < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_decorator/4.4.2_x86_64/py3_decorator-4.4.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b632c1aa8cc7685ba958b6fd5c4557d1ac2a0ce0d32e762a6f69abb7b0da6f2a',
-     armv7l: 'b632c1aa8cc7685ba958b6fd5c4557d1ac2a0ce0d32e762a6f69abb7b0da6f2a',
-       i686: 'e4e7da29c241262855d8562b2c3b1004987158679885475a87da74ca51ec79a9',
-     x86_64: '4bb4f252873a800fa529e224e587a0cdc8ba0ed7ef678c7d73110f7b7c05bccf'
+    aarch64: 'cf2a4b9f668587d4e4f0fe50f405e78fb864cb3d8f1fa707410382b39796509e',
+     armv7l: 'cf2a4b9f668587d4e4f0fe50f405e78fb864cb3d8f1fa707410382b39796509e',
+       i686: 'ab8512f18da0f1cef8a0b6d672d4a80dd79f07684df0090538a57f962864acdc',
+     x86_64: '027b7964b559f03c6d1e787f46cbd9ad841c574095c0a008915f04ccb574af53'
   })
 
   depends_on 'py3_setuptools' => :build

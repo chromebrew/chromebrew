@@ -17,10 +17,10 @@ class Py3_beautifulsoup4 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_beautifulsoup4/4.10.0_x86_64/py3_beautifulsoup4-4.10.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'fe8bd7370c07bac92c1aea4bd76417acf71d413884c40736c23e0fdfa31ee710',
-     armv7l: 'fe8bd7370c07bac92c1aea4bd76417acf71d413884c40736c23e0fdfa31ee710',
-       i686: '805801901ccf3842df333b34ebc97769d9007a6f877bbb86487192016e55ffb9',
-     x86_64: '02ec216e63b13eb9d337f327bb4d25ff0119dd829829678a60ab57e8cd4605e3'
+    aarch64: 'd4908aaf4b2390f022f9e5539da7aca032b1def7766f9614d031878224384fc0',
+     armv7l: 'd4908aaf4b2390f022f9e5539da7aca032b1def7766f9614d031878224384fc0',
+       i686: '6c2a717d0ee6504327e63298dbab27fa19870921c3717d4587a5a09c5c18ef00',
+     x86_64: '8f5e478b22f881e316b81fa15b7347d75406cb03eac2e4894f83640c4090389b'
   })
 
   depends_on 'py3_setuptools' => :build

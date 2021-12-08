@@ -17,10 +17,10 @@ class Py3_fasteners < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.16.3_x86_64/py3_fasteners-0.16.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8c9d54e24d283fda7b1c3196388dee64f2596ef3bff433e6ec0fa0414aff1853',
-     armv7l: '8c9d54e24d283fda7b1c3196388dee64f2596ef3bff433e6ec0fa0414aff1853',
-       i686: '3cb36503d069a04220961a9423a27099c0477b91a6c24805c70d6dc5056a48c2',
-     x86_64: '88c043f57cb6dc44a4a1c0333a28b2b6aaecf063f3fa094389ce222520f774b6'
+    aarch64: '033b5d05bc4541d543eaad6059ee38995d6b362b680402ff4cee7fb396353fa1',
+     armv7l: '033b5d05bc4541d543eaad6059ee38995d6b362b680402ff4cee7fb396353fa1',
+       i686: '74098c301e35a47d933968851b006fa4ae1cf86aa71c9dc92a6af6427b9a26cd',
+     x86_64: '98bfe6cd0c785de714d712d0f878334feb0356a5d55e18c4a6f81bd60268857e'
   })
 
   depends_on 'py3_six'

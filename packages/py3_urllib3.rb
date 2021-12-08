@@ -17,10 +17,10 @@ class Py3_urllib3 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urllib3/1.26.7_x86_64/py3_urllib3-1.26.7-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '27660818e72babded41bfd6c00a2068d93415bad644f3a5eb86274a00085ca18',
-     armv7l: '27660818e72babded41bfd6c00a2068d93415bad644f3a5eb86274a00085ca18',
-       i686: 'd23d719cec90e996af8212b33433f2930fb20e8b1cdf41dbb6370f70d003c212',
-     x86_64: 'de28a9b455b7c26aef0a27c5587c729776c4f4447c34cd6e17f68642fe4db992'
+    aarch64: 'dbd5ca53c39fb911ad6ae33ad032282138d5f8994253b441a0978dabcfcfdf18',
+     armv7l: 'dbd5ca53c39fb911ad6ae33ad032282138d5f8994253b441a0978dabcfcfdf18',
+       i686: '0fb08f895c6ece13c188910c85fb3b6d2db8bbc7e7c89d269f2ba8985fd30ac2',
+     x86_64: 'c0e94dff22ba0d556ee4fcae20e8eee0817e2f083219429aa7b44127d6996ffe'
   })
 
   depends_on 'py3_setuptools' => :build

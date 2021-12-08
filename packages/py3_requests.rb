@@ -17,10 +17,10 @@ class Py3_requests < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_requests/2.26.0_x86_64/py3_requests-2.26.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '47b9c132b69654ac5c5d7454787e57f89575d6dc8d2f40229f2411285897d364',
-     armv7l: '47b9c132b69654ac5c5d7454787e57f89575d6dc8d2f40229f2411285897d364',
-       i686: '67ef07df23ff6b5e441aa847fe6f04cf9e97cdf798d4c06a0cc77d0fe6b666e2',
-     x86_64: 'd4bf6914b6e293c65ed8e4e6c76e4d42f17a65976cfa7f153efd061014c317a8'
+    aarch64: '39c5da849cab8b0764fd796ba3f2d6eccffa9ccd757c066505e34f01ded6df35',
+     armv7l: '39c5da849cab8b0764fd796ba3f2d6eccffa9ccd757c066505e34f01ded6df35',
+       i686: '7803bc03e7ebe20dad05d2f49d2153ac747993a3ee1289be9b24cbfd54c7e557',
+     x86_64: 'cc6dfc0618a1a64a3c3f77d5f62a5de12729944960be0be572ff37648fd8f4b8'
   })
 
   depends_on 'py3_chardet'

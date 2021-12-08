@@ -17,10 +17,10 @@ class Py3_wcwidth < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_wcwidth/0.2.5-1_x86_64/py3_wcwidth-0.2.5-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '75999c58929143521e7cab2b17da0679a0120c0c9630d5a0bb2097ed2a7932aa',
-     armv7l: '75999c58929143521e7cab2b17da0679a0120c0c9630d5a0bb2097ed2a7932aa',
-       i686: 'b8ee3efbe064a84920c4224bab8dde6e7fb2a0b40f934fbedf78575001592a58',
-     x86_64: '769893b754e5e137406f0093b5255846f404c0c68784425b0869f6dd2312a94e'
+    aarch64: 'f3a1cc943cf945d22981a0a9a48c1c8f44e03b96cd9ed5c41805ed0a65ee1acf',
+     armv7l: 'f3a1cc943cf945d22981a0a9a48c1c8f44e03b96cd9ed5c41805ed0a65ee1acf',
+       i686: '66f9c6a712e15f61ad91d6f594bfdd3a2089578efa4e28f246f5af258a6a8885',
+     x86_64: 'a760f2d5300a1d55fcf61728cfe32f826e5dbc949e87d77650ece4b09fa0e17d'
   })
 
   depends_on 'py3_setuptools' => :build

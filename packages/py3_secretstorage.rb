@@ -11,16 +11,16 @@ class Py3_secretstorage < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1_armv7l/py3_secretstorage-3.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1_armv7l/py3_secretstorage-3.3.1-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1-1_i686/py3_secretstorage-3.3.1-1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1-1_x86_64/py3_secretstorage-3.3.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1-1_armv7l/py3_secretstorage-3.3.1-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1-1_armv7l/py3_secretstorage-3.3.1-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1-1_i686/py3_secretstorage-3.3.1-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_secretstorage/3.3.1-1_x86_64/py3_secretstorage-3.3.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f96796ae7c776a7826d80744760d64d91ba5594bed17125620806ae071e7450a',
-     armv7l: 'f96796ae7c776a7826d80744760d64d91ba5594bed17125620806ae071e7450a',
-    i686: '5394e8ae99b6c02a89ab2ebc9fb08b4661e6307cf49cc4c612aca502023831c1',
-  x86_64: '7ff3c5a2f35c68d1245099237d578e79e4714f8fe220a398407ef25b6a898486'
+    aarch64: 'd4ad62dfb50e650044251210b378376032db4cbf7b8e71f7e4ff93043e90f02d',
+     armv7l: 'd4ad62dfb50e650044251210b378376032db4cbf7b8e71f7e4ff93043e90f02d',
+       i686: 'bf62dea7557831be837dce0e689f15a2f47ba2a21259ff927a0a174c2f384009',
+     x86_64: '4d3a6ffea04238524479459433255f0659e9a4bec597ed7ff2b325b026a2958f'
   })
 
   depends_on 'py3_jeepney'

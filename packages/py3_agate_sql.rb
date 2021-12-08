@@ -17,10 +17,10 @@ class Py3_agate_sql < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8_x86_64/py3_agate_sql-0.5.8-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a8fded909be7abd312b0ac3982fab1761866fd57b4251d0dd2985684fe53bb03',
-     armv7l: 'a8fded909be7abd312b0ac3982fab1761866fd57b4251d0dd2985684fe53bb03',
-       i686: '20db00d26dcb4428bd34a38114a43dbdff5b61c9a84704f8982091e751a036a9',
-     x86_64: '3e1b0d1118f9cd2f9c8bcc0d27c432a1fbd8dcf13992e3bebe15f0f64e1ce59c'
+    aarch64: '6c5754f93292e168e09d476a81e501eaf3a12949b72be2b4a71a30681d209e8f',
+     armv7l: '6c5754f93292e168e09d476a81e501eaf3a12949b72be2b4a71a30681d209e8f',
+       i686: 'efd1f5a6bbec27206a296180059a306f16660de872f59ae0bde97bf870b87ffe',
+     x86_64: 'a7a2ec511e4cedb249d0d9585d9bc7129cb5b434004553608a18d88c3ff52496'
   })
 
   depends_on 'py3_agate'

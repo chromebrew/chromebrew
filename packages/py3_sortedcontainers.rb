@@ -17,10 +17,10 @@ class Py3_sortedcontainers < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sortedcontainers/2.4.0_x86_64/py3_sortedcontainers-2.4.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5df27f5b767c689603b55a89b4cfcedcb0af84bc7b4ffa0b115ea5c2f9dd1d12',
-     armv7l: '5df27f5b767c689603b55a89b4cfcedcb0af84bc7b4ffa0b115ea5c2f9dd1d12',
-       i686: '15cd15e5c6beeb420c6b7d31547494edb578ebc6f73121ac7ad5e98302c444e3',
-     x86_64: 'f5703a9027306c694ed242d866fa2e90e6daf92b640fe76da27a027d070fbfef'
+    aarch64: '7bc5404084294d14e4cf0bff54013fff3a27213509baad79e80a280212474043',
+     armv7l: '7bc5404084294d14e4cf0bff54013fff3a27213509baad79e80a280212474043',
+       i686: 'e82ddb9e71a7c60ce43354e3f74337d0018e1c646609b197b6fa31336f5209b4',
+     x86_64: 'c40ada805815e43c05ccc4efc99abff2748ac93a723c193aa1a4b6cd2b73834d'
   })
 
   depends_on 'py3_setuptools' => :build

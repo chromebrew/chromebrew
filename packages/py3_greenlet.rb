@@ -17,10 +17,10 @@ class Py3_greenlet < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_greenlet/1.1.2_x86_64/py3_greenlet-1.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3973fdaf733d14da300d17980880183c45d8d6d4110d03e15f02c97a1f4caf6a',
-     armv7l: '3973fdaf733d14da300d17980880183c45d8d6d4110d03e15f02c97a1f4caf6a',
-       i686: '4aa517c805d4701b3dec6fb2203e17325c7f46c230e3b1053041b8394e2f8239',
-     x86_64: '648d23a589d7d010878495f4e3651b0bdf08ac385dbfb4f00d520b1e0a7ae850'
+    aarch64: 'e0731ba05fff6bcc0ae7d44ccf6e01699005c6a84575db380e36c9239cab6019',
+     armv7l: 'e0731ba05fff6bcc0ae7d44ccf6e01699005c6a84575db380e36c9239cab6019',
+       i686: '0a3265b74ad646f7cde2befee5e83a9abc4cf74b98d37aa84adac09a988b7dd0',
+     x86_64: 'eadda0040122298dc2f6a4d62702175de430367a2eb0d530a256c19961a59dfa'
   })
 
   depends_on 'py3_agate'

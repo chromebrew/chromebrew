@@ -11,16 +11,16 @@ class Py3_pyudev < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22_armv7l/py3_pyudev-0.22-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22_armv7l/py3_pyudev-0.22-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22-1_i686/py3_pyudev-0.22-1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22-1_x86_64/py3_pyudev-0.22-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22-1_armv7l/py3_pyudev-0.22-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22-1_armv7l/py3_pyudev-0.22-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22-1_i686/py3_pyudev-0.22-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyudev/0.22-1_x86_64/py3_pyudev-0.22-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd3595f1225885de8ccbdca03a0a4e6a3be3745d48869fa0e65bbaf152a8bacaa',
-     armv7l: 'd3595f1225885de8ccbdca03a0a4e6a3be3745d48869fa0e65bbaf152a8bacaa',
-    i686: 'aedfca10bb198931e3b1939e189e6d1d07936fdb293f28394153f0d7af4f0650',
-  x86_64: 'cbc9f78154a63520f54095bcbb441e13fe294005e4d7c483a10c50d32f47bd92'
+    aarch64: '6f96581d66c5d51baa0544e223a93e96a9eb4621756bf1af2da9be4e9429354c',
+     armv7l: '6f96581d66c5d51baa0544e223a93e96a9eb4621756bf1af2da9be4e9429354c',
+       i686: '864fefb8d20b6f04a651d3f02aac3920fa3a0a9358cb7ab98a0c491d4fadd7c0',
+     x86_64: '40f85661d9dbfac8a0f9a356b346b86ab9251af10821f24b72fd831b95da7cc6'
   })
 
   depends_on 'py3_six'

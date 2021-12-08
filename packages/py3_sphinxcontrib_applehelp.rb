@@ -17,10 +17,10 @@ class Py3_sphinxcontrib_applehelp < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_applehelp/1.0.2-1_x86_64/py3_sphinxcontrib_applehelp-1.0.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5eb244880f6e9639cff6ac632622d3a73c473beb94f682efee8d8937f3b4f403',
-     armv7l: '5eb244880f6e9639cff6ac632622d3a73c473beb94f682efee8d8937f3b4f403',
-       i686: '407fb0c951ce93a7c58ccd5cccc5174899fc6ea4f8b2a6f0dc908103d0b4775f',
-     x86_64: 'fe3dbe1ab139bb18a7f0d7887130b4c0f5087ba941a847ced0d94a7060c72182'
+    aarch64: '919c67fb73d440175273648368279e12c43ae88999461ce643fb18a5e5221020',
+     armv7l: '919c67fb73d440175273648368279e12c43ae88999461ce643fb18a5e5221020',
+       i686: 'ef6ad478419ab58f27480ca2ebe5aa051306b037273bc1c6863fba269d45e337',
+     x86_64: 'a2992c9ad8cdd021aa9a41187c50d274ba1f6add006955bebcce6fac78b6cbc9'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_pyelftools < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27-1_x86_64/py3_pyelftools-0.27-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '43f41e76a044594adedfe9606a29d416c89fb76d247bb1f03d541f5386bd139c',
-     armv7l: '43f41e76a044594adedfe9606a29d416c89fb76d247bb1f03d541f5386bd139c',
-       i686: '8aeb32bb55d468586d2b73208ce984a23594e7762cb5e0d758663bed7e883111',
-     x86_64: '2f57af372503f3e7d249a5d2f310bd8e7c08b464045616867e9b72032c008456'
+    aarch64: 'cee59c129fbccd6f72d2ea45ba82cc0d986bcf8c42ed4813a473781d8a73538a',
+     armv7l: 'cee59c129fbccd6f72d2ea45ba82cc0d986bcf8c42ed4813a473781d8a73538a',
+       i686: '9105d58b8bbf878aa48c558dbcf11394b24272610ebfdc5ad4b0185023daa0f6',
+     x86_64: '5c2a2b09a2a480f4be521ac6075d14c7ed07bce390603370c76c4c23e08666ef'
   })
 
   depends_on 'py3_setuptools' => :build

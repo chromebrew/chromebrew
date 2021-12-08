@@ -17,10 +17,10 @@ class Py3_filelock < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_filelock/3.3.0_x86_64/py3_filelock-3.3.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '82a0ea0420a6e822d5da2d04c728d2103de813c4bf43e0904504f27d269f1d5e',
-     armv7l: '82a0ea0420a6e822d5da2d04c728d2103de813c4bf43e0904504f27d269f1d5e',
-       i686: '265536b7fffa3bf070cee5c9c9a779ed7645e76b8ed8b36f481274c419609e53',
-     x86_64: 'f846349a79acdc58ecc82bf4d51dec08a5b0fcb31a59b35bb482fa84ed4bfa5c'
+    aarch64: '7d6088fef48ba5adadd43e24a73ceaf006584dfdb632c8e75daf599f4a775e0d',
+     armv7l: '7d6088fef48ba5adadd43e24a73ceaf006584dfdb632c8e75daf599f4a775e0d',
+       i686: 'b7e5fa67db6efa39b12856dcb96900affc6812c26352453140ad67dc3685583e',
+     x86_64: '8d27ed9ed2662cb8fadff1795c881c5e5480fc2720d009f3d070be4b066ab62f'
   })
 
   depends_on 'py3_setuptools' => :build

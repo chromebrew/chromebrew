@@ -17,10 +17,10 @@ class Py3_sphinxcontrib_jsmath < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_jsmath/1.0.1-1_x86_64/py3_sphinxcontrib_jsmath-1.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'aa6d2940e79a968edf6e6efee2c827e0cff972e8e783833ae704b12cc93eb15c',
-     armv7l: 'aa6d2940e79a968edf6e6efee2c827e0cff972e8e783833ae704b12cc93eb15c',
-       i686: '1e89c22b7383ccf25aebce08010b35da3870fac23b6f94679e6c94da1d7b0809',
-     x86_64: '15321be51c302dcf7d1baf2c9c2831ef8f698a3bececf0d1996b63ff0491c98c'
+    aarch64: 'd32b19317a09b89751f407eed7fd7073038c851d29ecee76bc01de210738cdb1',
+     armv7l: 'd32b19317a09b89751f407eed7fd7073038c851d29ecee76bc01de210738cdb1',
+       i686: '648d6fa278b8305e1c93ab37c17a4475f6a903454527cc7b5cf74a18bcdd5ae4',
+     x86_64: 'e70111023d9f064f0c82e6cc74fc1a4046c5578c21ee74c446d6eb8a4b36c47a'
   })
 
   depends_on 'py3_setuptools' => :build

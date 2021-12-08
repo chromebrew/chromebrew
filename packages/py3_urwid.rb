@@ -17,10 +17,10 @@ class Py3_urwid < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_urwid/2.1.2-1_x86_64/py3_urwid-2.1.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4270ff224fb115ac320eceacdcd04023abb91eefc520567ba7bb186319d0e2e5',
-     armv7l: '4270ff224fb115ac320eceacdcd04023abb91eefc520567ba7bb186319d0e2e5',
-       i686: '5698d31b7407f654e2fb21a51df9f8d88b3ebf95a1cef7ee5b9ac994915e151f',
-     x86_64: 'f6df66da77134825fc72ab86b0855ec33b943c109df93526295b333f1962a668'
+    aarch64: '247a383b70411a76ceff0c110ba102ffdb779729d29a10fef0f55f5671e27a14',
+     armv7l: '247a383b70411a76ceff0c110ba102ffdb779729d29a10fef0f55f5671e27a14',
+       i686: '7b4a600226868fb8ae55d7264344bfbef39c40f7d20a539cfaf59dfb8e643edd',
+     x86_64: '4f8d906ee631d3ba83673f6734e4ad2b9797b077e8bb65859380c0aaa06f9395'
   })
 
   depends_on 'py3_setuptools' => :build

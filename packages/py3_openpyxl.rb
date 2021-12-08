@@ -17,10 +17,10 @@ class Py3_openpyxl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_openpyxl/3.0.9_x86_64/py3_openpyxl-3.0.9-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd9e3d80f78b94fdfb4c9f17ba042b77f87f68c97910e18941f5ded89f7346950',
-     armv7l: 'd9e3d80f78b94fdfb4c9f17ba042b77f87f68c97910e18941f5ded89f7346950',
-       i686: '12720a76db4d3925c2ef95a42b2a25adc65b423674fc5e2610ada8690aa3d35a',
-     x86_64: '24845aa5c4b4ac44e0cfd7c2ef9a98431f8cfc33ddff64f1d66bba3a2bb4a059'
+    aarch64: 'e70be570e3807951e701e406ab02d2bb3f64319865b7efed69596ab8862167b4',
+     armv7l: 'e70be570e3807951e701e406ab02d2bb3f64319865b7efed69596ab8862167b4',
+       i686: '35aab68a6ddf51ac15082186193fd683bf8665ebf981f3a48363f923951d2ea8',
+     x86_64: '85c8c8c7c2ce33b1d062ac8c4c80e3e92b469ff3463df0ee31abe365e44cc61a'
   })
 
   depends_on 'py3_et_xmlfile'

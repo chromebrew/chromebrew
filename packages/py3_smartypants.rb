@@ -17,10 +17,10 @@ class Py3_smartypants < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_smartypants/2.0.1-1_x86_64/py3_smartypants-2.0.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd91f17e4f13ebad85516130ee75003cc27c138babe8fcd2d3a59a607eb69f5f3',
-     armv7l: 'd91f17e4f13ebad85516130ee75003cc27c138babe8fcd2d3a59a607eb69f5f3',
-       i686: 'effac355e2e0464e9ed36a0bceace3e1c74b3e8ff472436ffa580e8dab949127',
-     x86_64: 'e0150891604a5b890a18ca1701d01ecad4248d908d5b3df91052b67c275fb95d'
+    aarch64: '09efcfdcfade8a76e0b62a9dbd3b6966ed76e2a81f029f63f4c8cd9465e59178',
+     armv7l: '09efcfdcfade8a76e0b62a9dbd3b6966ed76e2a81f029f63f4c8cd9465e59178',
+       i686: 'd4e5871f064d5326fedc15f3fca103e921eb65c022d320515eb8252c599ae18a',
+     x86_64: '1b49fe2860b38492a3c6d473137147263c930554ef54c855de9cc9d07d03b30a'
   })
 
   depends_on 'py3_setuptools' => :build

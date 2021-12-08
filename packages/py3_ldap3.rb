@@ -17,10 +17,10 @@ class Py3_ldap3 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_ldap3/2.9.1_x86_64/py3_ldap3-2.9.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '09d3423dc4e0bc974fdfc2ddf0d1a1afb7a48c6b90a158d4e5b238b716e9eaa8',
-     armv7l: '09d3423dc4e0bc974fdfc2ddf0d1a1afb7a48c6b90a158d4e5b238b716e9eaa8',
-       i686: '5fedce99e0812364a4bdc5f229c181be448d97699d5b5a4fb188109ef1d04031',
-     x86_64: 'd2aff57b5e0d631fb69b08ad42d6fc06dd1ede84f784902fc08f92bb60826cb6'
+    aarch64: 'dc7919d10be71fd2fe4b8947a406507eefa5b1d451df185c01a65d4d782fea67',
+     armv7l: 'dc7919d10be71fd2fe4b8947a406507eefa5b1d451df185c01a65d4d782fea67',
+       i686: 'e6e147db62d2363d75a301517de9abc637bada7826ccbf7231f6b3f7f87aaa13',
+     x86_64: '6d317338004c117385ba585f614070bbaf65eeadff449b662682228d22115dd3'
   })
 
   depends_on 'py3_pyasn1'

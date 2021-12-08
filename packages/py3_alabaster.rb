@@ -17,10 +17,10 @@ class Py3_alabaster < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-1_x86_64/py3_alabaster-0.7.12-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '10b9ddfe6781a02d083960b194d2eab5dc2a41ff19ac3eb3a3c48dfb72afadc4',
-     armv7l: '10b9ddfe6781a02d083960b194d2eab5dc2a41ff19ac3eb3a3c48dfb72afadc4',
-       i686: '1b707698d8c67279a6b01a958cc055fb00d68fc553cc65c011d6851e8928cf80',
-     x86_64: 'b89df2c58e7a2e291abf4a6ad3d9bfcc510ed2520055ffc95da51f7e88d137bf'
+    aarch64: 'd6c4783e5580c9d1e934dd75181c2a13151d71398c27879e0ac9efc4888c7ce8',
+     armv7l: 'd6c4783e5580c9d1e934dd75181c2a13151d71398c27879e0ac9efc4888c7ce8',
+       i686: '55c46df2b001aeeababef44841ef9284bd0d77635875502396cb8d320a45c988',
+     x86_64: '85cea802be3a36f4de9cc91ee1da3d50e4c618dbb0516a70c337acf77da1d58a'
   })
 
   depends_on 'py3_setuptools' => :build

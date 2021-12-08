@@ -17,10 +17,10 @@ class Py3_yamllint < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3_x86_64/py3_yamllint-1.26.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a40ef648365a97ef38c8c77de118c5bdd314a9b62887641abd87b19d767065bb',
-     armv7l: 'a40ef648365a97ef38c8c77de118c5bdd314a9b62887641abd87b19d767065bb',
-       i686: 'f2126de0d8c43ebe302c8254f7d2a9b75bc53d8ccefcda5a8ff208ab9941e085',
-     x86_64: 'e736652c77902d8ac2e05b11c1aff2164d8f4445a82d9a1edd75110ad2c081e4'
+    aarch64: '5a8d289862914e1222dd1af691c929795435871a7143e694420854c9d7170cb4',
+     armv7l: '5a8d289862914e1222dd1af691c929795435871a7143e694420854c9d7170cb4',
+       i686: 'e386a4975dc95c65cc6350f9afdc2e4cc4ec8da4e4bfb39d7e367a3599787ee0',
+     x86_64: '22405702c7dd3e4d6e11e944c5c8d610784cd5c5cbec8da7d5e86a90f9cd147e'
   })
 
   depends_on 'py3_pathspec'

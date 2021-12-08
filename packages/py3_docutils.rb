@@ -17,10 +17,10 @@ class Py3_docutils < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_docutils/0.17.1-1_x86_64/py3_docutils-0.17.1-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '171c83350d1edf6b3601a5917fcb7bcefe068fff4ee31d7ec5770cdf127f7f09',
-     armv7l: '171c83350d1edf6b3601a5917fcb7bcefe068fff4ee31d7ec5770cdf127f7f09',
-       i686: '97eccc95b24fcdd216ca6fc02ab4e1a6844f357795a608bd3d862ad3cdbe518a',
-     x86_64: 'f70f9fc51f5a96bb9a6123f6a6ac3cf33e1f3b55f73f78f8c7860235e5563383'
+    aarch64: '89a62ed3b047061fe765329171a91e76d7e113006136fbbb25311f6ce1692309',
+     armv7l: '89a62ed3b047061fe765329171a91e76d7e113006136fbbb25311f6ce1692309',
+       i686: 'a906df40046622e6b6e13220da7b03a5adcf677127d9da6ebe1bba3734aa683b',
+     x86_64: '5db96f75f85e79f9f69fed41f4c5739996626d1a288fbd35ef9a22c10d169b75'
   })
 
   depends_on 'py3_setuptools' => :build

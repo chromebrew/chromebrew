@@ -17,10 +17,10 @@ class Py3_pytimeparse < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytimeparse/1.1.8-1_x86_64/py3_pytimeparse-1.1.8-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '642ba7466ca2f27c960d9f04d82faa539e928e66d2c185a1d78e16f3a19d3836',
-     armv7l: '642ba7466ca2f27c960d9f04d82faa539e928e66d2c185a1d78e16f3a19d3836',
-       i686: '6ec512f9a164f4bcbb5281ee89c327e74e1bfbc46b0ce86cabc26fb939074f5f',
-     x86_64: 'eec103f6bb52eb4c2b2b2af47f6ab9319553f5e66c290d688c0a555e133df907'
+    aarch64: '47cbd8c39c0f08f252ae9c83d09f48476e1ec5481fe16c1ee5a5470e0f462446',
+     armv7l: '47cbd8c39c0f08f252ae9c83d09f48476e1ec5481fe16c1ee5a5470e0f462446',
+       i686: '908e3b05225e761d451cba630e25416b95b5a73cd145ee39c0d38fd343780961',
+     x86_64: '90214d3ab619ac80df3b5fa36a46b5e52a4afedfe834ef8dc847cc612607e16d'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_configparser < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_configparser/5.0.2-1_x86_64/py3_configparser-5.0.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '141a8931a2ea2157acaa424c1462d6530787a30cfcb36dabe2fcdbf36119a287',
-     armv7l: '141a8931a2ea2157acaa424c1462d6530787a30cfcb36dabe2fcdbf36119a287',
-       i686: '43d374ddab7008c0863ee5c4040b4dea37d34774659eae2b32deac18c10de3fa',
-     x86_64: 'a405cac91f3fae86399127303ef35108455bdbc5f238d11d32c62d280cc5158b'
+    aarch64: '87321cac9825e1345390d0882029e6bb4d573972c032b88c52c4e9dcfc93292d',
+     armv7l: '87321cac9825e1345390d0882029e6bb4d573972c032b88c52c4e9dcfc93292d',
+       i686: 'ff380d4680cc7a058464f0268fdd759428e477d03295b511fc1ef235fbfcbf61',
+     x86_64: '32c1efc6399b0aacb5ae68581c51b07f7ccbf9fe5e55e726fa5ac9ce8047a789'
   })
 
   depends_on 'py3_setuptools' => :build

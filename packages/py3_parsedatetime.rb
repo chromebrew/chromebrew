@@ -17,10 +17,10 @@ class Py3_parsedatetime < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_parsedatetime/2.6-1_x86_64/py3_parsedatetime-2.6-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '736de0902d546e630af431eb1a41f3b4cc72345662b3728e63bbd1894a8f80d0',
-     armv7l: '736de0902d546e630af431eb1a41f3b4cc72345662b3728e63bbd1894a8f80d0',
-       i686: '0d8f9d7d91ce52a120558df06d9fb3017fd5278bf73fdb8a938f5e8c85e8dd65',
-     x86_64: 'e1db932005ff12dbf34efe11232286760beec054e0a2fe6cfe9e8e70400e8c41'
+    aarch64: '6c7b3b8c49a27c1c611b7c6fb37d70563d048704b1a6c8ce8cf8250367b4e892',
+     armv7l: '6c7b3b8c49a27c1c611b7c6fb37d70563d048704b1a6c8ce8cf8250367b4e892',
+       i686: '48447988dff8b0ae37a7cd2994a1b91e1fd6c3adef4c079d5ebd79361299e56d',
+     x86_64: '3662d9592e9b8d73dd3f48476ef600beac90f3296afe948506676db009142598'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_pptx < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.21_x86_64/py3_pptx-0.6.21-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '36f03d7b1422a1ec9b5e25b89b004dd252b6db48957a6abb4523548521c00c43',
-     armv7l: '36f03d7b1422a1ec9b5e25b89b004dd252b6db48957a6abb4523548521c00c43',
-       i686: '5efb615fa9153f959ed870593c2e608e0783fdf27447c7e63f04ec0dad4c5836',
-     x86_64: '03a5fc0b46cb9f3de13aa0822eaf27b69901d0ce6c496eabcbd1b19b17836e11'
+    aarch64: 'b2ad566f0864f8dac9df6f616b906e4130c6f3158a765b7f121b8e129a6810e0',
+     armv7l: 'b2ad566f0864f8dac9df6f616b906e4130c6f3158a765b7f121b8e129a6810e0',
+       i686: '628fd911acc18356127c8437cfee8ffd9424c3487db068a948063c1422389ac1',
+     x86_64: '756d3eb7bce044c5997b65bb7475118a0370b6fcbd2e6750c028dfc153ad3114'
   })
 
   depends_on 'py3_lxml'

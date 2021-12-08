@@ -17,10 +17,10 @@ class Py3_importlib_metadata < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.8.1_x86_64/py3_importlib_metadata-4.8.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '14ec8523f8dbad3d220e1d510d7c49b7f96321a371e51a9731156b155d53cfef',
-     armv7l: '14ec8523f8dbad3d220e1d510d7c49b7f96321a371e51a9731156b155d53cfef',
-       i686: '10879b8a3fda17a44e4eedbfa42cb3f1d7cb32118f0ff817bf380309947e9da3',
-     x86_64: '41a7eac4c33d58b052aee44c73102cd560617d32ad325546a08ec715b4072426'
+    aarch64: '6139b68179532986690383b18389c8c6932f754a002ad90ce58aa9c58231c065',
+     armv7l: '6139b68179532986690383b18389c8c6932f754a002ad90ce58aa9c58231c065',
+       i686: '046c2d8c3ffdae2a222630661c4f05eb7973b33ecffcdc990b24d4be573943c5',
+     x86_64: 'c9c98c8676017c9d141aec4c1ce97cfa83704f6f68bfdcf964d599daa1210825'
   })
 
   depends_on 'py3_zipp'

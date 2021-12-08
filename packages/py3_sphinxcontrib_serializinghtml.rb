@@ -17,10 +17,10 @@ class Py3_sphinxcontrib_serializinghtml < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_serializinghtml/1.1.5_x86_64/py3_sphinxcontrib_serializinghtml-1.1.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a31bde7f1c2cc96fe0608e0dad4f66bf97b18ce460609ff3ece111b74e791fbe',
-     armv7l: 'a31bde7f1c2cc96fe0608e0dad4f66bf97b18ce460609ff3ece111b74e791fbe',
-       i686: '79ed77c6e10c30b89f95c914d4e44cbe3f4677bb33f08b2d1fb78b4439f072b7',
-     x86_64: '4ecfb51d9d4d5b1538a601f8ce4e1fa8f1ea050daab12669207f60f3b6ba7092'
+    aarch64: 'd6368995006799f09dcefcc7e158a2b843d89a405e0fc7882dea212da7beafef',
+     armv7l: 'd6368995006799f09dcefcc7e158a2b843d89a405e0fc7882dea212da7beafef',
+       i686: 'f7b47f71836fec14ef46cdea862fdefb7857b4ff51e320b9914451535b689254',
+     x86_64: 'df54965db5cdf4118a1557bb3935ed62d0d5cfa454490df0cc571257cd5739f5'
   })
 
   depends_on 'py3_setuptools' => :build

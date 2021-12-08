@@ -17,10 +17,10 @@ class Py3_pathspec < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0_x86_64/py3_pathspec-0.9.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ed9377a9b09f6f07318383bbead08d8b4a467a0612f2708f1cf51513b6707766',
-     armv7l: 'ed9377a9b09f6f07318383bbead08d8b4a467a0612f2708f1cf51513b6707766',
-       i686: '41121164a8565a0a06aa1d59ceaa7dc4972ad1e200147dbc9ca9296cac1e47f0',
-     x86_64: '985371d047aa811ed447de6c6028723aeba9f4548823a024ec80824094ccb080'
+    aarch64: '83e126ed957af789ed654ced0691b665c6b00a462dffe50e30452a5691c7c6b0',
+     armv7l: '83e126ed957af789ed654ced0691b665c6b00a462dffe50e30452a5691c7c6b0',
+       i686: '46309e4e84bb0e885fce67b71417a961cd0a441c3ea3933b4af7133ea6b0c49d',
+     x86_64: '993a31bef230e06ff6815816740707eabf8af60dbf1bb7c9456745370034c873'
   })
 
   depends_on 'py3_setuptools' => :build

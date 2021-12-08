@@ -17,10 +17,10 @@ class Py3_semantic_version < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_semantic_version/2.8.5-1_x86_64/py3_semantic_version-2.8.5-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6eec4d5d72432c69ab3ef1d5b127331cd456367b3f31e3a29f9707668d8fb757',
-     armv7l: '6eec4d5d72432c69ab3ef1d5b127331cd456367b3f31e3a29f9707668d8fb757',
-       i686: '8b9ac139abd5163d5f64cbd50586aef4dd5a86d4a1c6438592cafe1d2c06eabe',
-     x86_64: '2390020a593445dda1a2b3fadb4f26c73f79016b6bc6cc4a9b2a395aba8765c2'
+    aarch64: 'b03fc5f7061bd1bd3ac30da7ce8bd6d62bf5afe29aa39faaa36de5e90cf652f0',
+     armv7l: 'b03fc5f7061bd1bd3ac30da7ce8bd6d62bf5afe29aa39faaa36de5e90cf652f0',
+       i686: '6751f63cbb407340d1fb01985478afdce1e1f14593ade65279b6ac018f6b6435',
+     x86_64: 'e405ae9eb46eed11fec035bf3eceaea124abc87544ae8638a1c3a89221a29518'
   })
 
   depends_on 'py3_setuptools' => :build

@@ -17,10 +17,10 @@ class Py3_et_xmlfile < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_et_xmlfile/1.1.0_x86_64/py3_et_xmlfile-1.1.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b6faedae37bf59fb354f2357f3e0026d7713ecb100acbe7ff91696fdd18d7f5e',
-     armv7l: 'b6faedae37bf59fb354f2357f3e0026d7713ecb100acbe7ff91696fdd18d7f5e',
-       i686: '044288d9761cf7ac68c317fbe2707668ed0e4a8b03de5e87b9f6a7738de31bfe',
-     x86_64: 'f9ac03492d0c0d951dbd17b83611905748a9b06a18e119f40c52d8af81837fd6'
+    aarch64: '4f20b5f32abf23d002282bfde1fc304e8015cdde77aff582ef67f5bc1ac7fe02',
+     armv7l: '4f20b5f32abf23d002282bfde1fc304e8015cdde77aff582ef67f5bc1ac7fe02',
+       i686: 'cfdb38417d94479885c2bfc9faa8602108ce89408b92e98be7298472b6b7f76e',
+     x86_64: 'ad6b3cf9dae323257024e7d33ebda6bf7986f66ef69f4f4fd063d993f44997b3'
   })
 
   depends_on 'py3_setuptools' => :build
