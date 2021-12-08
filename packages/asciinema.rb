@@ -8,7 +8,20 @@ class Asciinema < Package
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/asciinema/asciinema.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_armv7l/asciinema-2.1.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_armv7l/asciinema-2.1.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_i686/asciinema-2.1.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_x86_64/asciinema-2.1.0-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '8ffc09b11883dbdfa8a6b3f3edca9ac2153d71caf0bd76618627b73267d8d375',
+     armv7l: '8ffc09b11883dbdfa8a6b3f3edca9ac2153d71caf0bd76618627b73267d8d375',
+       i686: '3cd8cff26adadf090b650b5009b1fae5347a3f5fd19fbaef71faa75080af040d',
+     x86_64: '2111e78503836a4d1db5a71c436274f59dc54506c70903088af52864a7e2f3a6'
+  })
 
   depends_on 'xdg_base'
   depends_on 'py3_setuptools' => :build
