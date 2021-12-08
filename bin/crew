@@ -1062,7 +1062,6 @@ def shrink_dir(dir)
         @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'].chomp
         unless @execfiles.empty? or @execfiles.nil?
           puts "Using upx to shrink binaries."
-          puts @execfiles
           # Copying in the ThreadPoolExecutor loop fails non-deterministically
           @execfiles.each_line do |execfilecp|
             execfilecp.slice! "."
