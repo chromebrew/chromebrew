@@ -6,7 +6,7 @@ class Gnome_settings_daemon < Package
   @_ver = '40.0.1'
   version @_ver
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'x86_64 aarch64 armv7l' # not compatible with i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git'
   git_hashtag @_ver
 
