@@ -11,16 +11,16 @@ class Oci_cli < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/2.24.3_armv7l/oci_cli-2.24.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/2.24.3_armv7l/oci_cli-2.24.3-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_i686/oci_cli-3.1.2-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_x86_64/oci_cli-3.1.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_armv7l/oci_cli-3.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_armv7l/oci_cli-3.1.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_i686/oci_cli-3.1.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_x86_64/oci_cli-3.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'da6ca6ffe386a3fe9ca59a847f1e154dca207816a49ac9de0a44f16c54da2091',
-     armv7l: 'da6ca6ffe386a3fe9ca59a847f1e154dca207816a49ac9de0a44f16c54da2091',
-    i686: '6ef0ff1cbe571c15ead08e00f08c52bfd85cb6d2271a0b7ff76a8603fd98da73',
-  x86_64: '409198208cd2dab9b6f66bed27413dca7e443b1917fca3d5158ae5a304905567'
+    aarch64: 'e34f28f7fd938279f2c4b4d2ea3089c1080f3f17960de056ccaba8e358a623c3',
+     armv7l: 'e34f28f7fd938279f2c4b4d2ea3089c1080f3f17960de056ccaba8e358a623c3',
+       i686: '6ef0ff1cbe571c15ead08e00f08c52bfd85cb6d2271a0b7ff76a8603fd98da73',
+     x86_64: '409198208cd2dab9b6f66bed27413dca7e443b1917fca3d5158ae5a304905567'
   })
 
   depends_on 'py3_arrow'
