@@ -16,10 +16,10 @@ class Jsoncpp < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsoncpp/1.9.4_x86_64/jsoncpp-1.9.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '7f0d44ddf2a5196e3bf4d2f69e6183ffed4298789f2bedc96b31c67171fba943',
-     armv7l: '7f0d44ddf2a5196e3bf4d2f69e6183ffed4298789f2bedc96b31c67171fba943',
-       i686: '7cd8992a5be92d4a670a678ef6c6fd4e91ed6ffa309923b23b6e11141566cf3f',
-     x86_64: 'e76dabf5643b8aea91de16d39b6563adcf081e2b32c732b3a9f7663b6a1104c9'
+    aarch64: '71fb94fdc4876273871a39cac3dbb84e0695a27aa307acb2601f227c374313bb',
+     armv7l: '71fb94fdc4876273871a39cac3dbb84e0695a27aa307acb2601f227c374313bb',
+       i686: '45cfb7ba6a35022261b262b813a99654046a08d4ccc67d496465b72337157b7a',
+     x86_64: '5496a7bb46dd54ee680ef70955f1259cf3c0173a2f8bf8c518458ecce5cb1f9e'
   })
 
   depends_on 'meson'
