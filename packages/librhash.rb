@@ -17,10 +17,10 @@ class Librhash < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_x86_64/librhash-1.4.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e35ee8b1229d81ebb13041f149dd7a59cdd252ea992cabb1e963b1423d4cc398',
-     armv7l: 'e35ee8b1229d81ebb13041f149dd7a59cdd252ea992cabb1e963b1423d4cc398',
-       i686: 'd6aa44b3bf5c3330c37dd8135e2161c9ae5cf6b6840000b884f99cd8ab81b050',
-     x86_64: 'bd11b33586c3f8d9c0c21ca616aed57a8ebf2faee98e62854df86108193f6c4e'
+    aarch64: '59805811b7e2933f16bd2114d865802ffc42ea025f353c7ae70326443d502a9e',
+     armv7l: '59805811b7e2933f16bd2114d865802ffc42ea025f353c7ae70326443d502a9e',
+       i686: '32a3acd47df5deb05dc97177438d9ef6d7c0b66940d82e6e9a5206ebec6a6bba',
+     x86_64: '60784cf7c9145aaf4c3f98e705ec4c0b2d1d6468957cee41f12f851731431a5a'
   })
 
   def self.build

@@ -17,10 +17,10 @@ class Libuv < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_x86_64/libuv-1.42.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '7c8de7258951a636d8e4956bf54ce94bf32ffef80c1a5ffcb70c472cfde23b93',
-     armv7l: '7c8de7258951a636d8e4956bf54ce94bf32ffef80c1a5ffcb70c472cfde23b93',
-       i686: '02e4a7da7e2b43efd099e44b7097c2efbeda5bb306968ba014e77e420e8655ec',
-     x86_64: '85ec7265a2eaebec57b70199b94c7ff9a0e0eb94ad301fe0eb7a2b1f5f40132c'
+    aarch64: '2d9e73560c0285b089bca9c16285a54d550427ed63beeccc67b8e342298af8b6',
+     armv7l: '2d9e73560c0285b089bca9c16285a54d550427ed63beeccc67b8e342298af8b6',
+       i686: 'f050af38e8f6a434b062126afc279c74f83b91f553cc631c9712fbc3275d0847',
+     x86_64: '2e7162ae796316fac9bb5f2fe1cbcb0e13f4da6d35d5b89cc2f7f402aa17fbfd'
   })
 
   def self.build
@@ -35,7 +35,7 @@ class Libuv < Package
   end
 
   # udp_multicast_join and udp_multicast_join6 tests fail
-  #  def self.check
+  # def self.check
   #   system "samu -C builddir test"
   # end
 
