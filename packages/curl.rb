@@ -219,8 +219,8 @@ class Curl < Package
 
   def self.postinstall
     if ARCH == 'i686'
-      puts 'Static curl is broken on i686, so use dynamic curl from libcurl package.'.orange
-      FileUtils.cp "#{CREW_PREFIX}/bin/curl.nonstatic", "#{CREW_PREFIX}/bin/curl"
+      puts 'Static curl is broken on i686, so using curl from the libcurl package.'.orange
+      FileUtils.cp_r "#{CREW_PREFIX}/bin/curl.nonstatic", "#{CREW_PREFIX}/bin/curl", remove_destination: true
     end
   end
 end
