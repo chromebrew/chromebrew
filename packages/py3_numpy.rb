@@ -3,7 +3,7 @@ require 'package'
 class Py3_numpy < Package
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  @_ver = '1.20.2'
+  @_ver = '1.21.4'
   version @_ver
   license 'BSD'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Py3_numpy < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.20.2_i686/py3_numpy-1.20.2-chromeos-i686.tar.xz',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.20.2_armv7l/py3_numpy-1.20.2-chromeos-armv7l.tpxz',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.20.2_armv7l/py3_numpy-1.20.2-chromeos-armv7l.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.20.2_x86_64/py3_numpy-1.20.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_armv7l/py3_numpy-1.21.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_armv7l/py3_numpy-1.21.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_i686/py3_numpy-1.21.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_x86_64/py3_numpy-1.21.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    i686: '15358c391e68667f3ceb607a16720093806a7840c6da526d7078a52b195b63e3',
- aarch64: 'de21a40aeb98be94b3546d2b49452679fc281170ae6377f35f384823beab3469',
-  armv7l: 'de21a40aeb98be94b3546d2b49452679fc281170ae6377f35f384823beab3469',
-  x86_64: 'abed005b2ae64c691a275d21101dd1d87a8dba3351630883d26264b2e47cd0ab'
+    aarch64: 'eb62980656c6cafe8ee1bd97ae0d6d6dff5402f9ff7a1f5f3687074661897c4d',
+     armv7l: 'eb62980656c6cafe8ee1bd97ae0d6d6dff5402f9ff7a1f5f3687074661897c4d',
+       i686: '17fe1d24ba66b5316c12a43ee64c1d59670cde1ab6179eb71dce1b8c6ea5dee4',
+     x86_64: '59b54964979b170cb4076b98a0ac1e67cb1292b2d472ed9c39c66199d835f54a'
   })
 
   depends_on 'lapack'

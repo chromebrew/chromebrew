@@ -3,7 +3,7 @@ require 'package'
 class Py3_idna < Package
   description 'IDNA provides internationalized domain names for Python.'
   homepage 'https://github.com/kjd/idna/'
-  @_ver = '3.1'
+  @_ver = '3.3'
   version @_ver
   license 'BSD-3'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_idna < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_idna/3.1_armv7l/py3_idna-3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_idna/3.1_armv7l/py3_idna-3.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_idna/3.1_x86_64/py3_idna-3.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_idna/3.3_armv7l/py3_idna-3.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_idna/3.3_armv7l/py3_idna-3.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_idna/3.3_i686/py3_idna-3.3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_idna/3.3_x86_64/py3_idna-3.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8b1d43393a55416ce6d245b757c8fb471e6e9a05b0e0b97c03bdfeae61daf527',
-     armv7l: '8b1d43393a55416ce6d245b757c8fb471e6e9a05b0e0b97c03bdfeae61daf527',
-     x86_64: '81ae966d16b99111df47c49bad147ab4517a91dc1056ef3f7037edc0c1ac3767'
+    aarch64: 'ed49da638b58f74acdc60d42a773c185e91b70f530d19eb11e9af4167b5e2471',
+     armv7l: 'ed49da638b58f74acdc60d42a773c185e91b70f530d19eb11e9af4167b5e2471',
+       i686: '6d7894d08a495d2d47eb06acb6c6a793b3fed4613e6dba9f8a93712958671774',
+     x86_64: '1d3b86b227ccd09abea28ea7848a22c2a3af641bc4626e648095b6ca6d12d4a7'
   })
 
   depends_on 'py3_setuptools' => :build

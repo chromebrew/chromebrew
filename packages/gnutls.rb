@@ -3,23 +3,23 @@ require 'package'
 class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.7.2'
+  version '3.7.2-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.2.tar.xz'
   source_sha256 '646e6c5a9a185faa4cea796d378a1ba8e1148dbb197ca6605f95986a25af2752'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_armv7l/gnutls-3.7.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_armv7l/gnutls-3.7.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_i686/gnutls-3.7.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2_x86_64/gnutls-3.7.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2-1_armv7l/gnutls-3.7.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2-1_armv7l/gnutls-3.7.2-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2-1_i686/gnutls-3.7.2-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.2-1_x86_64/gnutls-3.7.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '610e93e9f684b6e0dcac110ad323f0f4037e5d464968788e8686fe8328c63d4f',
-     armv7l: '610e93e9f684b6e0dcac110ad323f0f4037e5d464968788e8686fe8328c63d4f',
-       i686: '7849bf00eadd86e4eaead29de780b446aea8da21524221c4a98fc39532e5673f',
-     x86_64: '6570141b5100fee1bf0bf75012beea7b641bec5a0d79c131d22f2b20b042008a'
+    aarch64: 'c2aa4651e3fcde7acb408d581be30d33ac5a99aeacdfb7ed1aa332ffa08807d8',
+     armv7l: 'c2aa4651e3fcde7acb408d581be30d33ac5a99aeacdfb7ed1aa332ffa08807d8',
+       i686: '7e70441115c1d1d5930f61ab8f81b91484dac0ad7fce74601abcd497346a0497',
+     x86_64: '607851025aec31be1628da21af43c29307024cf5169bed7f34707504d0099824'
   })
 
   depends_on 'zlibpkg'
@@ -59,6 +59,6 @@ class Gnutls < Package
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
   end
 end
