@@ -3,33 +3,46 @@ require 'package'
 class Librhash < Package
   description 'RHash is a console utility for computing and verifying hash sums of files.'
   homepage 'http://rhash.anz.ru/'
-  version '1.3.6'
+  @_ver = '1.4.2'
+  version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/rhash/RHash/archive/v1.3.6.tar.gz'
-  source_sha256 '964df972b60569b5cb35ec989ced195ab8ea514fc46a74eab98e86569ffbcf92'
+  source_url 'https://github.com/rhash/RHash.git'
+  git_hashtag "v#{@_ver}"
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.3.6_armv7l/librhash-1.3.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.3.6_armv7l/librhash-1.3.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.3.6_i686/librhash-1.3.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.3.6_x86_64/librhash-1.3.6-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_armv7l/librhash-1.4.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_armv7l/librhash-1.4.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_i686/librhash-1.4.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_x86_64/librhash-1.4.2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'dcf9b61860e8a0994f99dc9fbb05d811f1b74cff29eaa22c0303ed910ecb2363',
-     armv7l: 'dcf9b61860e8a0994f99dc9fbb05d811f1b74cff29eaa22c0303ed910ecb2363',
-       i686: '8df3d5dd347071cb6bdc75aa1b78cbd45449c09785a1131d9a22001f3f8cedf4',
-     x86_64: 'c6b8682b1caec42d5146f2864c3d8ea608d1fcdbe638d60897e1e074a3f034a2',
+  binary_sha256({
+    aarch64: '59805811b7e2933f16bd2114d865802ffc42ea025f353c7ae70326443d502a9e',
+     armv7l: '59805811b7e2933f16bd2114d865802ffc42ea025f353c7ae70326443d502a9e',
+       i686: '32a3acd47df5deb05dc97177438d9ef6d7c0b66940d82e6e9a5206ebec6a6bba',
+     x86_64: '60784cf7c9145aaf4c3f98e705ec4c0b2d1d6468957cee41f12f851731431a5a'
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "#{CREW_ENV_OPTIONS} ./configure \
+            --prefix=#{CREW_PREFIX} \
+            --libdir=#{CREW_LIB_PREFIX}\
+            --cc=#{CREW_TGT}-gcc \
+            --ar=#{CREW_TGT}-gcc-ar \
+            --enable-gettext \
+            --enable-openssl \
+            --extra-cflags='#{CREW_COMMON_FLAGS}'"
     system 'make'
   end
 
+  def self.check
+    system 'make check'
+  end
+
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/librhash"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "cp librhash/*.h #{CREW_DEST_PREFIX}/include/librhash"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-lib-headers'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-pkg-config'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-lib-so-link'
   end
 end
