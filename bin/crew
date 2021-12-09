@@ -594,6 +594,10 @@ def upgrade
     # Make an installed packages list belong to the dependency order
     dependencies = []
     @device[:installed_packages].each do |package|
+      if not File.exist?(CREW_PACKAGES_PATH + package[:name] + '.rb')
+        puts "Package file for installed package #{package[:name]} is missing.".lightred
+        next
+      end
       # skip package if it is dependent other packages previously checked
       next if dependencies.include? package[:name]
       # add package itself
