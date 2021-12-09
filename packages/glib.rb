@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.70.0'
+  @_ver = '2.70.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Glib < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_armv7l/glib-2.70.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_armv7l/glib-2.70.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_i686/glib-2.70.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.0_x86_64/glib-2.70.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.2_armv7l/glib-2.70.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.2_armv7l/glib-2.70.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.2_i686/glib-2.70.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.70.2_x86_64/glib-2.70.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5a3b66e351b9bdf6ebb4ca0c23383cffb8c65bec2c69ed40361d3a790aa39e4c',
-     armv7l: '5a3b66e351b9bdf6ebb4ca0c23383cffb8c65bec2c69ed40361d3a790aa39e4c',
-       i686: 'aa7fb9b8a770208a1653692c4db68616bd35bfd5add16d121e7f63d6dbf40d5d',
-     x86_64: '9f96829a225c86f284513766e9ea833d9fb78928f572a5bd78e12ff1932b957f'
+    aarch64: '03c4b687563f3dafb44902fdecad9e6ac93d786a354457b0f741060e3a375733',
+     armv7l: '03c4b687563f3dafb44902fdecad9e6ac93d786a354457b0f741060e3a375733',
+       i686: '46380d4b372b6003f508f289c48efb5a7f53700a620b376668bf5017ab55fda8',
+     x86_64: '57c39aafee33dbab4fc73beb7087054ae8bd98d845f8954bf1f3e86edb83b0d8'
   })
 
   depends_on 'shared_mime_info' # L

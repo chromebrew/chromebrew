@@ -3,7 +3,7 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '21.1.0'
+  @_ver = '21.1.1'
   version @_ver
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Xorg_server < Package
   git_hashtag "xorg-server-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.0_armv7l/xorg_server-21.1.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.0_armv7l/xorg_server-21.1.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.0_x86_64/xorg_server-21.1.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_armv7l/xorg_server-21.1.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_armv7l/xorg_server-21.1.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_i686/xorg_server-21.1.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_x86_64/xorg_server-21.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'caf958b2cadb17e6c3f01437bba3549e7c6711afe307c932a69dbbfbf1476c3e',
-     armv7l: 'caf958b2cadb17e6c3f01437bba3549e7c6711afe307c932a69dbbfbf1476c3e',
-     x86_64: '7e2a10031216c8769e637ce8b391ca311d5894d3b538e059a57b7bc3d19bb01f'
+    aarch64: '2cd837af2b013df31076f48f39fb41a38235b73e153278bfd87ae1e4ff44c56c',
+     armv7l: '2cd837af2b013df31076f48f39fb41a38235b73e153278bfd87ae1e4ff44c56c',
+       i686: 'a0ef38b01cf4ae14e6ed46e5b07c3b4cf155432c935da29afe59feded26cbfff',
+     x86_64: 'ea71dab6ae05f4226586565e1689cbf78bdd194aa069ba3a6434f2a1b7d64468'
   })
 
   depends_on 'libepoxy'

@@ -3,24 +3,24 @@ require 'package'
 class Py3_cffi < Package
   description 'C Foreign Function Interface for Python calling C code.'
   homepage 'https://cffi.readthedocs.io/'
-  @_ver = '1.14.6'
+  @_ver = '1.15.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://files.pythonhosted.org/packages/2e/92/87bb61538d7e60da8a7ec247dc048f7671afe17016cd0008b3b710012804/cffi-1.14.6.tar.gz'
-  source_sha256 'c9a875ce9d7fe32887784274dd533c57909b7b1dcadcc128a2ac21331a9765dd'
+  source_url 'https://files.pythonhosted.org/packages/00/9e/92de7e1217ccc3d5f352ba21e52398372525765b2e0c4530e6eb2ba9282a/cffi-1.15.0.tar.gz'
+  source_sha256 '920f0d66a896c2d99f0adbb391f990a84091179542c205fa53ce5787aff87954'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_armv7l/py3_cffi-1.14.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_armv7l/py3_cffi-1.14.6-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_i686/py3_cffi-1.14.6-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.14.6_x86_64/py3_cffi-1.14.6-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_armv7l/py3_cffi-1.15.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_armv7l/py3_cffi-1.15.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_i686/py3_cffi-1.15.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_x86_64/py3_cffi-1.15.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b8fb5b6b8f7d866d80901792934034f6c1c145f06288e47600d16cbfe69a26e5',
-     armv7l: 'b8fb5b6b8f7d866d80901792934034f6c1c145f06288e47600d16cbfe69a26e5',
-       i686: '68be14b16f5c18ff3476ea640bd287584581651a0acbba025b8032560b583a31',
-     x86_64: 'd75a398ba7e4196843558c7f32a7692347d0c0d280fcd6b5fe5c5c285d5e441b'
+    aarch64: 'd98d10a7bfc0bbd722e3393b00a56d2295b8d946596d4f2f34d336ad77ac6db0',
+     armv7l: 'd98d10a7bfc0bbd722e3393b00a56d2295b8d946596d4f2f34d336ad77ac6db0',
+       i686: '2f0edc72092b7964dfd2a4d5d8c28dff88126f0f6f93f6c4d4a7855305c07584',
+     x86_64: '871e834b08e282b6324df52853b7313de281fac7ee1e1b9cd0837ed5627a0038'
   })
 
   depends_on 'py3_setuptools' => :build

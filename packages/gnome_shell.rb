@@ -3,21 +3,21 @@ require 'package'
 class Gnome_shell < Package
   description 'Next generation desktop shell'
   homepage 'https://wiki.gnome.org/Projects/GnomeShell'
-  version '40.3'
+  version '41.0'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-shell.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/40.3_armv7l/gnome_shell-40.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/40.3_armv7l/gnome_shell-40.3-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/40.3_x86_64/gnome_shell-40.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_armv7l/gnome_shell-41.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_armv7l/gnome_shell-41.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_x86_64/gnome_shell-41.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a77bce5ae1cffd7a7a159730565b7308442d44a8ad2fcce5367caa9683d07ff6',
-     armv7l: 'a77bce5ae1cffd7a7a159730565b7308442d44a8ad2fcce5367caa9683d07ff6',
-     x86_64: '26f505c184e1277fba828dd0258845bed34a42d62c0dc19862f0698d1b2113de'
+    aarch64: 'eea813182b4fb943620beab82fabbdbde3b68cae8867ebc938e35c6a90612918',
+     armv7l: 'eea813182b4fb943620beab82fabbdbde3b68cae8867ebc938e35c6a90612918',
+     x86_64: '6afe54dadee75fb2a4b1794d68237ddcc17ac0eea5aafd679ae534d2b876f7cb'
   })
 
   depends_on 'gcr'
@@ -35,7 +35,7 @@ class Gnome_shell < Package
   depends_on 'evolution_data_server' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'mutter'
-  depends_on 'pygments' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'vulkan_icd_loader' => :build
 
   def self.build
@@ -43,6 +43,7 @@ class Gnome_shell < Package
     -Dgtk_doc=true \
     -Dsystemd=false \
     -Dnetworkmanager=false \
+    -Dtests=false \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

@@ -3,7 +3,7 @@ require 'package'
 class Py3_packaging < Package
   description 'Packaging provides core utilities for Python packages'
   homepage 'https://packaging.pypa.io/'
-  @_ver = '20.9'
+  @_ver = '21.0'
   version @_ver
   license 'BSD-2 or Apache-2.0'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Py3_packaging < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_armv7l/py3_packaging-20.9-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_armv7l/py3_packaging-20.9-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_i686/py3_packaging-20.9-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/20.9_x86_64/py3_packaging-20.9-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_armv7l/py3_packaging-21.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_armv7l/py3_packaging-21.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_i686/py3_packaging-21.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.0_x86_64/py3_packaging-21.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '455e073afb6ca12d3c4837f97d6c4753ab20093b3a45529199f6331ccae2192b',
-     armv7l: '455e073afb6ca12d3c4837f97d6c4753ab20093b3a45529199f6331ccae2192b',
-       i686: '9209458660109c6278e1680230cb16f755b6d486e4f7a2b01fcedab80fb12fef',
-     x86_64: '976769e26fb5a042068876e1204820ea39177b82eb576e36ed0ecb96b178747c'
+    aarch64: 'fd26fc1784f6b275c553327589b975e5456214629caa0469f5dfb4cbf91267ce',
+     armv7l: 'fd26fc1784f6b275c553327589b975e5456214629caa0469f5dfb4cbf91267ce',
+       i686: '4f16b10ad81f01ccc9a2932a112f5b02b5fd04f444867bbd2db1307bbc44fa1b',
+     x86_64: '4715e0e8bb2ba57826e08e7c5e270f2258765ca1916a72e4549f4d92d4bb22c8'
   })
 
   depends_on 'py3_setuptools' => :build

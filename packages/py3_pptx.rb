@@ -3,7 +3,7 @@ require 'package'
 class Py3_pptx < Package
   description 'Python PPTX generates and manipulates Open XML PowerPoint files.'
   homepage 'https://github.com/scanny/python-pptx/'
-  @_ver = '0.6.18'
+  @_ver = '0.6.21'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_pptx < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.18_armv7l/py3_pptx-0.6.18-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.18_armv7l/py3_pptx-0.6.18-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.18_x86_64/py3_pptx-0.6.18-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.21_armv7l/py3_pptx-0.6.21-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.21_armv7l/py3_pptx-0.6.21-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.21_i686/py3_pptx-0.6.21-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pptx/0.6.21_x86_64/py3_pptx-0.6.21-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0d48691a41df2ff7af5c5568214b312350909554a95ef3e2661bc56dbb7ea9d1',
-     armv7l: '0d48691a41df2ff7af5c5568214b312350909554a95ef3e2661bc56dbb7ea9d1',
-     x86_64: 'cb94d5f39a4eef3f50b24bc089f5cb6a462a589c5dc7a778b82c18beaecd6d6b'
+    aarch64: 'b2ad566f0864f8dac9df6f616b906e4130c6f3158a765b7f121b8e129a6810e0',
+     armv7l: 'b2ad566f0864f8dac9df6f616b906e4130c6f3158a765b7f121b8e129a6810e0',
+       i686: '628fd911acc18356127c8437cfee8ffd9424c3487db068a948063c1422389ac1',
+     x86_64: '756d3eb7bce044c5997b65bb7475118a0370b6fcbd2e6750c028dfc153ad3114'
   })
 
   depends_on 'py3_lxml'
