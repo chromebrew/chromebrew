@@ -779,13 +779,16 @@ def download
           system 'git checkout FETCH_HEAD'
         end
         system 'git submodule update --init --recursive'
+        system 'git fetch --tags', exception: true
         puts 'Repository downloaded.'.lightgreen
       end
       # Stow file in cache if requested and cache is writable.
       if CREW_CACHE_ENABLED and File.writable?(CREW_CACHE_DIR)
         puts 'Caching downloaded git repo...'
         Dir.chdir "#{@extract_dir}" do
-          system "tar c#{@verbose}Jf #{cachefile} --exclude-vcs \
+          # Do not use --exclude-vcs to exclude .git
+          # because some builds will use that information.
+          system "tar c#{@verbose}Jf #{cachefile} \
             $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
         end
         system "sha256sum #{cachefile} > #{cachefile}.sha256"
@@ -1035,8 +1038,8 @@ def shrink_dir(dir)
   unless CREW_SHRINK_ARCHIVE == '0'
     Dir.chdir dir do
       if File.exist?("#{CREW_PREFIX}/bin/rdfind")
-        puts "Using rdfind to find duplicate or hard linked files."
-        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
+        puts "Using rdfind to convert duplicate files to hard links."
+        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
       end
       # Issues with non-x86_64 in compressing libraries, so just compress
       # non-libraries. Also note that one needs to use "upx -d" on a
@@ -1044,13 +1047,27 @@ def shrink_dir(dir)
       # sommelier also isn't happy when sommelier and xwayland are compressed
       # so don't compress those packages.
       if File.exist?("#{CREW_PREFIX}/bin/upx")
-        # Logic here is to find executable binaries, compress after making
-        # a backup, then expand the compressed file with upx. If the
-        # expansion doesn't error out then it is ok to delete the backup.
-        # Disable for sommelier.elf and Xwayland.elf since upx breaks those binaries.
-        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -print].chomp
+        # 1. Find executable binaries but also check for hard linked
+        # files by making sure we have a unique set of
+        # inodes for the binaries found.
+        # 2. Copy to a temp file.
+        # 3. Compress using upx. (Uncompressble files are ignored.)
+        # 4. Check compression by expanding the compressed file with
+        # upx.
+        # 5. If the expansion doesn't error out then it is ok to copy
+        # over the original. (This also lets us only avoid compressing
+        # hard linked files multiple times.)
+        # Also disable for sommelier.elf and Xwayland.elf since upx
+        # breaks those binaries.
+        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'].chomp
         unless @execfiles.empty? or @execfiles.nil?
           puts "Using upx to shrink binaries."
+          # Copying in the ThreadPoolExecutor loop fails non-deterministically
+          @execfiles.each_line do |execfilecp|
+            execfilecp.slice! "."
+            execfilecp = dir + execfilecp.chomp
+            FileUtils.cp "#{execfilecp}","#{execfilecp}-crewupxtmp"
+          end
           begin
               gem 'concurrent-ruby'
           rescue Gem::LoadError
@@ -1058,7 +1075,7 @@ def shrink_dir(dir)
               Gem.install('concurrent-ruby')
               gem 'concurrent-ruby'
           end
-          require 'concurrent-ruby'
+          require 'concurrent'
           pool = Concurrent::ThreadPoolExecutor.new(
             min_threads: 1,
             max_threads: CREW_NPROC,
@@ -1067,21 +1084,29 @@ def shrink_dir(dir)
           )
           @execfiles.each_line do |execfile|
             pool.post do
-              begin
-                puts "Attempting to compress #{execfile.chomp} ...".lightblue
-                system "upx --lzma -k --overlay=skip #{execfile}"
-                system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
-              rescue
-                FileUtils.mv "#{execfile}.~", execfile
-              ensure
-                FileUtils.rm_f "#{execfile}.~"
+              execfile.slice! "."
+              execfile = dir + execfile.chomp
+              puts "Attempting to compress #{execfile} ...".orange
+              # Make tmp file for compression
+              unless system "upx --lzma #{execfile}-crewupxtmp"
+                puts "Compression of #{execfile} failed...".orange if @opt_verbose
+                FileUtils.rm_f "#{execfile}-crewupxtmp"
               end
+              if File.exist?("#{execfile}-crewupxtmp")
+                puts "Testing compressed #{execfile}...".lightblue if @opt_verbose
+                if system "upx -t #{execfile}-crewupxtmp && cp #{execfile}-crewupxtmp #{execfile}"
+                  puts "#{execfile} successfully compressed...".lightgreen
+                else
+                  FileUtils.rm_f "#{execfile}-crewupxtmp" if File.exist?("#{execfile}-crewupxtmp")
+                end
+              end
+              FileUtils.rm "#{execfile}-crewupxtmp" if File.exist?("#{execfile}-crewupxtmp")
             end
           end
           pool.shutdown
           pool.wait_for_termination
-          # This should no longer be needed, but leave for cleanup.
-          system 'find . -executable -type f -name "*.~" -delete'
+          # Make sure temporary compression copies are deleted.
+          system 'find . -executable -type f -name "*-crewupxtmp" -delete'
         end
       end
     end
