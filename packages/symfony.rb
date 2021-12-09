@@ -3,7 +3,7 @@ require 'package'
 class Symfony < Package
   description 'Symfony is a set of PHP Components, a Web Application framework'
   homepage 'https://symfony.com/'
-  version '4.23.5'
+  version '4.26.11'
   license 'Symfony-cli-EULA'
   compatibility 'all'
   source_url 'SKIP'
@@ -14,13 +14,13 @@ class Symfony < Package
     case ARCH
     when 'aarch64', 'armv7l'
       arch = 'arm'
-      sha256 = 'abc16666f20b022ec4eeb2fddcc968e622ab7c656c69e34d41acd0ae51a99a28'
+      sha256 = '7ca196fdc086442098fc9e9d717e276d1729975390e9cd8b42879de27f8c539d'
     when 'i686'
       arch = '386'
-      sha256 = '65398740b4da78d312d6ecd94e8adfa4ea5d934398b18dec66e1d995332d419e'
+      sha256 = 'cb6bd321c495f1989ea5af0acbf5000d21de710eebdc31cb5a7561ee8251935c'
     when 'x86_64'
       arch = 'amd64'
-      sha256 = '43aef5fd5d45f4602697cad016eff504cb68ec6ad1271c7b1e2a089e1eedd05a'
+      sha256 = '4c5ab4d2455eea7fba226ddabba32a67b16828ec0e1977588045061a7a0a3a7a'
     end
     symfony_file = "symfony_linux_#{arch}"
     system "curl -#LO https://github.com/symfony/cli/releases/download/v#{version}/#{symfony_file}"
