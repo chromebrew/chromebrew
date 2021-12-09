@@ -16,10 +16,10 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_x86_64/sommelier-20211110-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'cf0bd7f37074d65f834fee128bf2d63e55536611d3d910029a4b20bde5ba9b6a',
-     armv7l: 'cf0bd7f37074d65f834fee128bf2d63e55536611d3d910029a4b20bde5ba9b6a',
-       i686: '5203eaa34903862b1eddf4640602ede8e879d4afedcfead55281e606a44544e9',
-     x86_64: 'bc5bf0800aa99965ac7447124bc1acc8bc8d096d4132e4296e12560590ad646e'
+    aarch64: '7bad1d04c36a791a8d86b96c1b01413eb76f6bd96ee9b369e8cfcc44ba563df2',
+     armv7l: '7bad1d04c36a791a8d86b96c1b01413eb76f6bd96ee9b369e8cfcc44ba563df2',
+       i686: '99a8ac7b64886c2816eb194ff8050e98e044c8bea216b69825af97c3fdfd2f4d',
+     x86_64: '81a6aead67052f5e8c1e72c2cc1a155ecd8b89c3357ac3c34e7f8da7ffc2708a'
   })
 
   depends_on 'libdrm'

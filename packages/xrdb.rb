@@ -17,13 +17,15 @@ class Xrdb < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xrdb/1.2.1_x86_64/xrdb-1.2.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'fd449dbef069f5f608d0e5a5d6b7da6104a4e7284b5a1a5e22fdb6d7a21ebc65',
-     armv7l: 'fd449dbef069f5f608d0e5a5d6b7da6104a4e7284b5a1a5e22fdb6d7a21ebc65',
-       i686: 'dc3a3cd9cee6b9278eb246e0d8cf6a0da71562e6a6ac9b5d3852f7d3ef17fba3',
-     x86_64: 'f7f4003249dba8c91b80cf4c462506a6ca7e11deb3891fca79df735925c36ca4'
+    aarch64: '11a324366e42a9c4fbf4320d11ef95278f17b82fc5f0705c24e2dd66a2f56ddc',
+     armv7l: '11a324366e42a9c4fbf4320d11ef95278f17b82fc5f0705c24e2dd66a2f56ddc',
+       i686: 'bfc03bdeccf7e972596f4013d9a330cc80c497758eb8f6e83dd95fcea0d9f6f4',
+     x86_64: 'c2d3a29dcac7878fded1af3defcb768930db7c4f4c973dd8f11dcd191dc00566'
   })
 
-  depends_on 'libxmu'
+  depends_on 'libx11' # R
+  depends_on 'libxmu' # R
+  depends_on 'libxdmcp' => :build
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
@@ -32,13 +34,6 @@ class Xrdb < Package
   end
 
   def self.install
-    if ARCH == 'i686'
-      ENV['CREW_SHRINK_ARCHIVE'] = '0'
-      warn_level = $VERBOSE
-      $VERBOSE = nil
-      load "#{CREW_LIB_PATH}lib/const.rb"
-      $VERBOSE = warn_level
-    end
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
