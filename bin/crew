@@ -653,17 +653,32 @@ def upgrade
 end
 
 def download_file(url, filename = url.split('/')[-1])
+  def _notfound(file, package = file, path = "/usr/local/bin/#{file}")
+    abort "Could not find #{file} at #{path}. Please install #{package} and try again.".lightred
+  end
   case ENV["CREW_DOWNLOADER"]
   when 'aria2', 'aria2c'
-    system "aria2c -c \'#{url}\' --out #{filename}"
-  when 'curl', '', nil
-    system "curl -#{@verbose}#LC - \'#{url}\' --output #{filename}"
+    if File.exist? "#{CREW_PREFIX}/bin/aria2c"
+      system "aria2c -c \'#{url}\' --out #{filename}"
+    else
+      _notfound('aria2c', 'aria2')
+    end
   when 'wget'
-    system "wget -#{@verbose}c \'#{url}\' --output-document #{filename}"
+    if File.exist? "#{CREW_PREFIX}/bin/wget"
+      system "wget -#{@verbose}c \'#{url}\' --output-document #{filename}"
+    else
+      _notfound('wget')
+    end
+  when 'fetch', 'bsdfetch', 'libfetch'
+    if File.exist? "#{CREW_PREFIX}/bin/fetch"
+      system "fetch -#{@verbose}1m #{url} --output #{filename}"
+    else
+      _notfound('fetch')
+    end
   when 'system curl', 'system'
     system "/usr/bin/curl -#{@verbose}#LC - \'#{url}\' --output #{filename}"
-  when 'fetch', 'bsdfetch', 'libfetch'
-    system "fetch -#{@verbose}1m #{url} --output #{filename}"
+  when 'curl', '', nil
+    system "curl -#{@verbose}#LC - \'#{url}\' --output #{filename}"
   else
     puts 'CREW_DOWNLOADER is set to an unknown value. Defaulting to curl.'.orange
     system "curl -#{@verbose}#LC - \'#{url}\' --output #{filename}"
