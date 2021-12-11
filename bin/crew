@@ -11,7 +11,6 @@ require 'fileutils'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
-require_relative '../lib/downloader'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -650,6 +649,25 @@ def upgrade
     else
       puts "Your software is already up to date.".lightgreen
     end
+  end
+end
+
+def download_file(url, filename = nil)
+  filename = url.split('/')[-1] if filename.nil?
+  case ENV["CREW_DOWNLOADER"]
+  when 'aria2', 'aria2c'
+    system "aria2c -c \'#{url}\' --out #{filename}"
+  when 'curl', '', nil
+    system "curl -#{@verbose}#LC - \'#{url}\' --output #{filename}"
+  when 'wget'
+    system "wget -#{@verbose}c \'#{url}\' --output-document #{filename}"
+  when 'system curl', 'system'
+    system "/usr/bin/curl -#{@verbose}#LC - \'#{url}\' --output #{filename}"
+  when 'fetch', 'bsdfetch', 'libfetch'
+    system "fetch -#{@verbose}1m #{url} --output #{filename}"
+  else
+    puts 'CREW_DOWNLOADER is set to an unknown value. Defaulting to curl.'.orange
+    system "curl -#{@verbose}#LC - \'#{url}\' --output #{filename}"
   end
 end
 
