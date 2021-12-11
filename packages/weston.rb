@@ -4,23 +4,23 @@ class Weston < Package
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'http://wayland.freedesktop.org'
   @_ver = '9.0.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'all'
-  source_url "https://github.com/wayland-project/weston/archive/#{@_ver}.tar.gz"
-  source_sha256 '82b17ab1766f13557fc620c21e3c89165342d3a3ead79ba01181b4f7d2144487'
+  source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_i686/weston-9.0.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_x86_64/weston-9.0.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_armv7l/weston-9.0.0-2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_armv7l/weston-9.0.0-2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_i686/weston-9.0.0-2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_x86_64/weston-9.0.0-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9f5f48dfa122850c5a1041ae59c8358d76eb08adb84be474dba2cfdf430074ea',
-     armv7l: '9f5f48dfa122850c5a1041ae59c8358d76eb08adb84be474dba2cfdf430074ea',
-       i686: '1a3cfca6a5b69500859b5af32fb22b3c9539804df6d0995564a21bb6a4f89f37',
-     x86_64: '4c729aa9b4c39a9016bc3a69bd9e41c0ab3dd12466128a1f04c3e735b2206d12'
+    aarch64: 'f6636182e1d0bbb228011c37f14691e3c8bb7481368f7a6841f3bc423cd78716',
+     armv7l: 'f6636182e1d0bbb228011c37f14691e3c8bb7481368f7a6841f3bc423cd78716',
+       i686: 'd43eb4eb14948ed70fdbd37da6ec3f91f2195c83471bc53d639c16a4298a4702',
+     x86_64: '10d807d0a7e218f9e8db4c105bd96512968bbc1b077c6538bf10e15b328aa877'
   })
 
   depends_on 'harfbuzz'
