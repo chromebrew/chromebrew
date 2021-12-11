@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env -S ruby -d
 require_relative '../lib/color'
 
 # Disallow sudo
@@ -11,6 +11,7 @@ require 'fileutils'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
+require_relative '../lib/downloader'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -558,7 +559,7 @@ def update
     if @pkg.nil?
       puts "Package file for #{package[:name]} not found. :(".lightred if @opt_verbose
       next
-    end 
+    end
     if package[:version].to_s != @pkg.version
       canBeUpdated += 1
       puts @pkg.name + ' could be updated from ' + package[:version].to_s + ' to ' + @pkg.version
@@ -707,7 +708,7 @@ def download
         end
       end
       # Download file if not cached.
-      system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+      download_file(url, filename)
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
@@ -1477,7 +1478,7 @@ def autoremove_command(args)
   end.map {|pkg| pkg[:name] }
 
   return if remove_pkg.empty?
-  
+
   puts 'The following packages also need to be REMOVED: '
   remove_pkg.each do |pkg|
     print pkg + ' '
@@ -1494,7 +1495,7 @@ def autoremove_command(args)
     puts "I don't understand `#{response}`. :(".lightred
     abort 'No changes made.'
   end
-  
+
   remove_pkg.each {|pkg| remove(pkg) }
 end
 
