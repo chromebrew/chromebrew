@@ -652,8 +652,7 @@ def upgrade
   end
 end
 
-def download_file(url, filename = nil)
-  filename = url.split('/')[-1] if filename.nil?
+def download_file(url, filename = url.split('/')[-1])
   case ENV["CREW_DOWNLOADER"]
   when 'aria2', 'aria2c'
     system "aria2c -c \'#{url}\' --out #{filename}"
