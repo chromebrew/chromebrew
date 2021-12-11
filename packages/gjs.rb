@@ -28,7 +28,7 @@ class Gjs < Package
   depends_on 'dconf' => :build
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R
-  depends_on 'js78' => :build
+  depends_on 'js78' #R
   depends_on 'libx11' # R
 
   def self.build
