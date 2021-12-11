@@ -24,16 +24,16 @@ class Oneko < Package
 
   depends_on 'libx11'
   depends_on 'libxext'
-  depends_on 'sommelier'
+  #depends_on 'sommelier'
   depends_on 'imake' => :build
   depends_on 'xorg_cf_files' => :build
   depends_on 'gccmakedep' => :build
 
   def self.patch
     # Download extra sources
-    system "curl -#LO https://httpredir.debian.org/debian/pool/main/o/oneko/oneko_1.2.sakura.6-15.debian.tar.xz"
-    system "curl -#LO https://bouncer.gentoo.org/fetch/root/all/distfiles/oneko-1.2-cat.png"
-    system "curl -#LO https://bouncer.gentoo.org/fetch/root/all/distfiles/oneko-1.2-dog.png"
+    download_file("https://httpredir.debian.org/debian/pool/main/o/oneko/oneko_1.2.sakura.6-15.debian.tar.xz", "oneko_1.2.sakura.6-15.debian.tar.xz")
+    download_file("https://bouncer.gentoo.org/fetch/root/all/distfiles/oneko-1.2-cat.png", "oneko-1.2-cat.png")
+    download_file("https://bouncer.gentoo.org/fetch/root/all/distfiles/oneko-1.2-dog.png", "oneko-1.2-dog.png")
     # Verify the sources
     @sha256sums = <<~EOF
       8f12f3e167f100e0fcef5185f6f1faf47cb627d96c7011e580348f5f317e76b4  oneko_1.2.sakura.6-15.debian.tar.xz
