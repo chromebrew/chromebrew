@@ -11,6 +11,8 @@ require 'fileutils'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
+require_relative '../lib/convert_size'
+require_relative '../lib/downloader'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -473,29 +475,6 @@ def const(var)
   end
 end
 
-def human_size (bytes)
-  kilobyte = 1024.0
-  megabyte = kilobyte * kilobyte
-  gigabyte = megabyte * kilobyte
-  if bytes < kilobyte
-    units = 'B'
-    size = bytes
-  end
-  if bytes >= kilobyte and bytes < megabyte
-    units = 'KB'
-    size = bytes / kilobyte
-  end
-  if bytes >= megabyte and bytes < gigabyte
-    units = 'MB'
-    size = bytes / megabyte
-  end
-  if bytes >= gigabyte
-    units = 'GB'
-    size = bytes / gigabyte
-  end
-  return sprintf('%.2f', size.to_s) + units
-end
-
 def files (pkgName)
   filelist = "#{CREW_META_PATH}#{pkgName}.filelist"
   if File.exist? filelist
@@ -707,7 +686,13 @@ def download
         end
       end
       # Download file if not cached.
-      system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+      # use curl if CURL environment variable set
+      if CURL == 'curl'
+        downloader url, filename, verbose: @opt_verbose
+      else
+        system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+      end
+
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
