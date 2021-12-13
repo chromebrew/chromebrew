@@ -1125,10 +1125,44 @@ def install_package(pkgdir)
     FileUtils.mv 'dlist', CREW_META_PATH + @pkg.name + '.directorylist', verbose: @fileutils_verbose
     FileUtils.mv 'filelist', CREW_META_PATH + @pkg.name + '.filelist', verbose: @fileutils_verbose
 
+    @brokensymlinks = nil
+    @brokensymlinks = %x[find . -type l -exec test ! -e {} \\; -print].chomp
+    unless @brokensymlinks.nil? or @brokensymlinks.empty?
+      puts "There are broken symlinks. Will try to fix.".orange if @opt_verbose
+      @brokensymlinks.each_line do |fixlink|
+        @brokentarget = nil
+        @fixedtarget = nil
+        @brokentarget = %x[readlink -n #{fixlink}]
+        puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{@brokentarget}".orange if @opt_verbose
+        @fixedtarget = @brokentarget.delete_prefix(CREW_DEST_DIR)
+        # If no changes were made, don't replace symlink
+        unless @fixedtarget == @brokentarget
+          # This doesn't work. Why?
+          FileUtils.ln_sf @fixedtarget,pkgdir + fixlink.delete_prefix('.')
+          # This works.
+          system "ln -sf #{@fixedtarget} #{pkgdir + fixlink.delete_prefix('.')}"
+          puts "Fixed: #{@fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if @opt_verbose
+        end
+      end
+    end
+    if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+        puts "Using rdfind to convert duplicate files to hard links."
+        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
+    end
     if Dir.exists? "#{pkgdir}/home" then
-      system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
-    elsif Dir.exists? "#{pkgdir}/usr" then
-      system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      if File.exist?("#{CREW_PREFIX}/bin/rsync")
+        system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
+      else
+        system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      end
+    end
+    if Dir.exists? "#{pkgdir}/usr/local" then
+      if File.exist?("#{CREW_PREFIX}/bin/rsync")
+        # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
+        system "rsync -ahHAXWx --remove-source-files ./usr/local/ #{CREW_PREFIX}"
+      else
+        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      end
     end
   end
 end
