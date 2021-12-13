@@ -27,7 +27,7 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose: fa
       ca_file: SSL_CERT_FILE,
       ca_path: SSL_CERT_DIR
   }) do |http|
-    http.request( Net::HTTP::Get.new(uri) ) do |response|
+    http.request( Net::HTTP::Get.new(uri, { 'User-Agent' => "ruby/#{RUBY_VERSION}" }) ) do |response|
       case
       when response.is_a?(Net::HTTPOK)
       when response.is_a?(Net::HTTPRedirection) # follow HTTP redirection
