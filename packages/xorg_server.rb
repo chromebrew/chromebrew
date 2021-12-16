@@ -3,7 +3,7 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '21.1.1'
+  @_ver = '21.1.2'
   version @_ver
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Xorg_server < Package
   git_hashtag "xorg-server-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_armv7l/xorg_server-21.1.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_armv7l/xorg_server-21.1.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_i686/xorg_server-21.1.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.1_x86_64/xorg_server-21.1.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_armv7l/xorg_server-21.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_armv7l/xorg_server-21.1.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_i686/xorg_server-21.1.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_x86_64/xorg_server-21.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '2cd837af2b013df31076f48f39fb41a38235b73e153278bfd87ae1e4ff44c56c',
-     armv7l: '2cd837af2b013df31076f48f39fb41a38235b73e153278bfd87ae1e4ff44c56c',
-       i686: 'a0ef38b01cf4ae14e6ed46e5b07c3b4cf155432c935da29afe59feded26cbfff',
-     x86_64: 'ea71dab6ae05f4226586565e1689cbf78bdd194aa069ba3a6434f2a1b7d64468'
+    aarch64: 'c28d99744f20b7b13ebafb15b9dfb3d5ff98151b406ecaf829fb7f2577e2c5a5',
+     armv7l: 'c28d99744f20b7b13ebafb15b9dfb3d5ff98151b406ecaf829fb7f2577e2c5a5',
+       i686: '78521b219039d6406e53be51e8bb9aa46791ad12f703e3eaae7ef6bf7267936a',
+     x86_64: 'a1a23a460d7d78d534f68b1a9e49f3aa3ea57994a98602738e08a1030730344c'
   })
 
   depends_on 'libepoxy'
