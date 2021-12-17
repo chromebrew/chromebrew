@@ -1,7 +1,9 @@
 require 'package_helpers'
 
 class Package
-  property :description, :homepage, :version, :license, :compatibility, :binary_url, :binary_sha256, :source_url, :source_sha256, :git_branch, :git_hashtag, :is_fake
+  property :description, :homepage, :version, :license, :compatibility,
+           :binary_url, :binary_sha256, :source_url, :source_sha256,
+           :git_branch, :git_hashtag, :is_fake
 
   class << self
     attr_reader :is_fake
@@ -152,39 +154,53 @@ class Package
     # 3. The value of `nproc`.strip
     # See lib/const.rb for more details
 
-    if @in_build == true
-      nproc = ''
-      nproc_opt =  ''
-      args.each do |arg|
-        params = arg.split(/\W+/)
-        params.each do |param|
-          if param.match(/j(\d)+/)
-            nproc_opt = param
-            break
-          end
-        end
-      end
-      nproc = "#{CREW_NPROC}" if nproc_opt == ''
-      if args[0] == "make"
-        # modify ["make", "args", ...] into ["make", "-j#{nproc}", "args", ...]
-        args.insert(1, "-j#{nproc}") if nproc != ''
-        if @opt_verbose then
-          args.insert(1, "V=1")
-        else
-          args.insert(1, "V=0")
-        end
-      elsif args.length == 1
-        # modify ["make args..."] into ["make -j#{nproc} args..."]
-        args[0].gsub!(/^make /, "make -j#{nproc} ") if nproc != ''
-        if @opt_verbose then
-          args[0].gsub!(/^make /, "make V=1 ")
-        else
-          args[0].gsub!(/^make /, "make V=0 ")
-        end
+    # extract command arguments
+    cmd_args = args.select {|arg| arg.is_a?(String) }
+    # there is no need to pass to the shell if the command is passed in mutiple args
+    # see https://ruby-doc.org/core-3.0.2/Kernel.html#method-i-system for more details
+    need_shell = cmd_args.size.eql?(1)
+
+    # extract env variables (if provided)
+    env_options = if args[0].is_a?(Hash)
+      # merge CREW_ENV_OPTIONS and given env variables
+      CREW_ENV_OPTIONS.scan(/\b(.+?)=(.+)\b/).to_h.merge(args[0])
+    else
+      # return CREW_ENV_OPTIONS in hash
+      CREW_ENV_OPTIONS.scan(/\b(.+?)=(.+)\b/).to_h
+    end
+  
+    # extract Kernel.system options (if provided)
+    system_options = if args[-1].is_a?(Hash)
+      { exception: true }.merge(args[-1])
+    else
+      { exception: true }
+    end
+
+    cmd_args.map! do |arg|
+      unless arg =~ /-j\s*\d+/
+        # add -j arg to build commands
+        arg.sub(/\b(?<=make|ninja|samu)(?=\b)/, " -j#{CREW_NPROC}")
       end
     end
-    Kernel.system(*args)
-    exitstatus = $?.exitstatus
-    raise InstallError.new("`#{args.join(" ")}` exited with #{exitstatus}") unless exitstatus == 0
+
+    begin
+      if need_shell
+        # use bash instead of /bin/sh
+        Kernel.system env_options,
+                      'bash', '-e', '-c',
+                      *cmd_args,      # ensure the command is passed first
+                      system_options  # pass Kernel.system options (all args after command) then
+      else
+        # pass to Kernel.system directly since it doesn't need a shell
+        Kernel.system env_options,
+                      *cmd_args,      # ensure the command is passed first
+                      system_options  # pass Kernel.system options (all args after command) then
+      end
+    rescue => e
+      exitstatus = $?.exitstatus
+      # print failed line number and error message
+      puts "#{e.backtrace[1]}: #{e.message}".orange
+      raise InstallError.new("`#{cmd_args.join(' ')}` exited with #{exitstatus}")
+    end
   end
 end
