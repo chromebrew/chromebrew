@@ -11,7 +11,7 @@ def setTermSize
   @termH, @termW = IO.console.winsize
   # space for progress bar after minus the reserved space for showing
   # the file size and progress percentage
-  @progBarW = @termW - 2 - (9 + 1) - (4 + 1)
+  @progBarW = @termW - 17
   return true
 end
 
@@ -35,7 +35,7 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
           * Follow HTTP redirection: #{response['Location']}
           *
         EOT
-        return downloader(response['Location'], filename, retry_count, verbose: verbose)
+        return downloader(response['Location'], filename, retry_count, verbose)
       else
         abort "HTTP request failed (#{response.code} #{response.msg})".lightred
       end
