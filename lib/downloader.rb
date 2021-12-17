@@ -15,7 +15,7 @@ def setTermSize
   return true
 end
 
-def downloader (url, filename = File.basename(url), retry_count = 0, verbose: false)
+def downloader (url, filename = File.basename(url), retry_count = 0, verbose = false)
   setTermSize
   # reset width settings after terminal resized
   trap('WINCH') { setTermSize }
