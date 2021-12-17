@@ -688,7 +688,7 @@ def download
       # Download file if not cached.
       # use curl if CURL environment variable set
       if CURL == 'curl'
-        downloader url, filename, verbose: @opt_verbose
+        downloader url, filename, @opt_verbose
       else
         system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
       end
