@@ -36,7 +36,7 @@ class Fcft < Package
     # pre-M92 systems.
     return unless LIBC_VERSION < '2.28'
 
-    system 'curl -Lf https://github.com/jtsiomb/c11threads/raw/master/c11threads.h -o threads.h'
+    system 'curl -Lf https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h -o threads.h'
   end
 
   def self.build
