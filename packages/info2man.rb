@@ -3,11 +3,12 @@ require 'package'
 class Info2man < Package
   description 'Convert GNU info files to POD or man pages.'
   homepage 'https://www.cskk.ezoshosting.com/cs/css/info2pod.html'
-  version '3.9.8'
+  @_ver = '1.1-10'
+  version @_ver
   license 'unknown'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/info2man.git'
-  git_hashtag 'debian/1.1-10'
+  git_hashtag "debian/#{@_ver}"
 
   def self.patch
     system "sed -i 's:#!/usr/bin/perl:#!#{CREW_PREFIX}/bin/perl:g' 0README.txt info2pod"
