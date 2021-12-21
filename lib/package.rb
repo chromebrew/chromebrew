@@ -179,7 +179,7 @@ class Package
     cmd_args.map! do |arg|
       unless arg =~ /-j\s*\d+/
         # add -j arg to build commands
-        arg.sub(/\b(?<=make|ninja|samu)(?=\b)/, " -j#{CREW_NPROC}")
+        arg.sub(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}")
       end
     end
 
