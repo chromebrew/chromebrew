@@ -3,24 +3,24 @@ require 'package'
 class Wayland < Package
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  @_ver = '1.19.0'
-  version "#{@_ver}-2"
-  license 'MIT'
+  @_ver = '1.20.0'
+  version @_ver
   compatibility 'all'
-  source_url "https://wayland.freedesktop.org/releases/wayland-#{@_ver}.tar.xz"
-  source_sha256 'baccd902300d354581cd5ad3cc49daa4921d55fb416a5883e218750fef166d15'
+  license 'MIT'
+  source_url 'https://gitlab.freedesktop.org/wayland/wayland.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_armv7l/wayland-1.19.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_armv7l/wayland-1.19.0-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_i686/wayland-1.19.0-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.19.0-2_x86_64/wayland-1.19.0-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0_armv7l/wayland-1.20.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0_armv7l/wayland-1.20.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0_i686/wayland-1.20.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0_x86_64/wayland-1.20.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9f6c1d28fccf5238fa79b698b9a567dc0690a674eb38321731c21dee9c562a14',
-     armv7l: '9f6c1d28fccf5238fa79b698b9a567dc0690a674eb38321731c21dee9c562a14',
-       i686: '24e8048e2e55226dd20d4e81186120baac62424fc87e0dbaa4e1aabc44834157',
-     x86_64: '3dba84fba4ca31b4cb0989154b292b57e298fe87a057267b63a8fc206f79fd4e'
+    aarch64: '459023ef9fb5fa1df1b9f3fa315b7d47c5466108d34fae3c0a94ed818a65ab88',
+     armv7l: '459023ef9fb5fa1df1b9f3fa315b7d47c5466108d34fae3c0a94ed818a65ab88',
+       i686: '73cac6d8b4dbcb585563925821c786122b3e770ba8cc8189c7085617bf5d565a',
+     x86_64: 'bced326d7fa76850e0c4314fcd9bad02ecc5ff9a5a53451f7ca4b7b1bb3d11a2'
   })
 
   depends_on 'expat'

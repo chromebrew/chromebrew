@@ -3,23 +3,24 @@ require 'package'
 class Libfilezilla < Package
   description 'libfilezilla is a small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs.'
   homepage 'https://lib.filezilla-project.org/'
-  version '0.30.0'
+  version '0.35.0'
   license 'GPL-2+'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://download.filezilla-project.org/libfilezilla/libfilezilla-0.30.0.tar.bz2'
-  source_sha256 'c16df6dacdb2ded4f6e05141b4681eda91a5a1ba052900a24a9f84e65a50dc40'
+  source_url 'https://download.filezilla-project.org/libfilezilla/libfilezilla-0.35.0.tar.bz2'
+  source_sha256 'eee2510dce3d0691ea73dc1da10fac7db1215b0ba9eefa616df305368b092ae8'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.30.0_armv7l/libfilezilla-0.30.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.30.0_armv7l/libfilezilla-0.30.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.30.0_x86_64/libfilezilla-0.30.0-chromeos-x86_64.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.35.0_armv7l/libfilezilla-0.35.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.35.0_armv7l/libfilezilla-0.35.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.35.0_x86_64/libfilezilla-0.35.0-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-    aarch64: '377a1c8a97c728d5b920099ef9dfc45e5d28fa66d937cf67c756a8876f9f32df',
-     armv7l: '377a1c8a97c728d5b920099ef9dfc45e5d28fa66d937cf67c756a8876f9f32df',
-     x86_64: '7fe37df89a8d984beb1b875c03f6cd51efec0003472dc9fcdfdec9d5a35d488f',
+    aarch64: 'ee13f1cfbe811e115848448a08e2ef005b538bd6f6a0cbf2242b0d6421ec90c2',
+     armv7l: 'ee13f1cfbe811e115848448a08e2ef005b538bd6f6a0cbf2242b0d6421ec90c2',
+     x86_64: '3938dad3bae7579ed831ab2a173c01e1a8b3bb1067c4146804e16a1e93d7df91',
   })
 
+  depends_on 'openmp'
   depends_on 'p11kit'
 
   def self.patch
