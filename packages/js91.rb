@@ -10,12 +10,16 @@ class Js91 < Package
   source_sha256 '75e98daf53c5aea19d711a625d5d5e6dfdc8335965d3a19567c62f9d2961fc75'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_i686/js91-91.4.1-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_x86_64/js91-91.4.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_armv7l/js91-91.4.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_armv7l/js91-91.4.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_i686/js91-91.4.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_x86_64/js91-91.4.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    i686: '8ce4a0556e26954dc4efa14aa58ab25b4e320c1ac1c5abd9f1c307326ceb0341',
-  x86_64: '9c0409340ef5882409697eb0fa452fd6267cdc93f535d27dfeb2b8fac43a1b15'
+    aarch64: '4b30eda6f946fc551ecd53012c149e7954b43eadf14004fb544c47e27200a1e5',
+     armv7l: '4b30eda6f946fc551ecd53012c149e7954b43eadf14004fb544c47e27200a1e5',
+       i686: '8ce4a0556e26954dc4efa14aa58ab25b4e320c1ac1c5abd9f1c307326ceb0341',
+     x86_64: '9c0409340ef5882409697eb0fa452fd6267cdc93f535d27dfeb2b8fac43a1b15'
   })
 
   depends_on 'autoconf213' => :build
