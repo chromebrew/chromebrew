@@ -37,7 +37,7 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
         EOT
         return downloader(response['Location'], filename, retry_count, verbose)
       else
-        abort "Download failed: #{response.code} #{response.msg}".lightred
+        abort "Download failed with error #{response.code}: #{response.msg}".lightred
       end
 
       # get target file size (should be returned by the server)
