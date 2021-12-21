@@ -1132,15 +1132,14 @@ def install_package(pkgdir)
       @brokensymlinks.each_line do |fixlink|
         @brokentarget = nil
         @fixedtarget = nil
-        @brokentarget = %x[readlink -n #{fixlink}]
+        @brokentarget = %x[readlink -n #{fixlink}].chomp
         puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{@brokentarget}".orange if @opt_verbose
-        @fixedtarget = @brokentarget.delete_prefix(CREW_DEST_DIR)
+        @fixedtarget = @brokentarget.delete_prefix(CREW_DEST_DIR).chomp
+        @fixedlink_loc = pkgdir + fixlink.delete_prefix('.')
+        @fixedlink_loc = @fixedlink_loc.chomp
         # If no changes were made, don't replace symlink
         unless @fixedtarget == @brokentarget
-          # This doesn't work. Why?
-          FileUtils.ln_sf @fixedtarget,pkgdir + fixlink.delete_prefix('.')
-          # This works.
-          system "ln -sf #{@fixedtarget} #{pkgdir + fixlink.delete_prefix('.')}"
+          FileUtils.ln_sf "#{@fixedtarget}","#{@fixedlink_loc}"
           puts "Fixed: #{@fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if @opt_verbose
         end
       end
