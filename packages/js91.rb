@@ -9,6 +9,13 @@ class Js91 < Package
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
   source_sha256 '75e98daf53c5aea19d711a625d5d5e6dfdc8335965d3a19567c62f9d2961fc75'
 
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_x86_64/js91-91.4.1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    x86_64: '9c0409340ef5882409697eb0fa452fd6267cdc93f535d27dfeb2b8fac43a1b15'
+  })
+
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
   depends_on 'llvm' => :build
@@ -29,15 +36,6 @@ class Js91 < Package
     system "sed -i 's/collections import defaultdict, MutableSequence/collections import defaultdict/' testing/mozbase/manifestparser/manifestparser/filters.py"
     system "sed -i '/from collections import defaultdict/a from collections.abc import MutableSequence' testing/mozbase/manifestparser/manifestparser/filters.py"
     system "sed -i 's/collections import Iterable/collections.abc import Iterable/' python/mozbuild/mozbuild/makeutil.py"
-
-    return unless ARCH == 'i686'
-
-    # Fixes https://bugs.gentoo.org/816975
-    system "curl -Lf 'https://816975.bugs.gentoo.org/attachment.cgi?id=745218&action=diff&format=raw&headers=1' -o i686_math.patch"
-    unless Digest::SHA256.hexdigest(File.read('./unzippatches.tar.xz')) == 'fcba8ce061545e893d9eebd3057cee150362fa23d7f3de4b249ec595789a0688'
-      abort 'Checksum mismatch :/ try again'
-    end
-    system('patch -Np1 -i i686_math.patch')
   end
 
   def self.build
@@ -48,6 +46,7 @@ class Js91 < Package
       ac_add_options --disable-strip
       ac_add_options --enable-application=js
       ac_add_options --enable-hardening
+      ac_add_options --enable-optimize
       ac_add_options --enable-optimize
       ac_add_options --enable-readline
       ac_add_options --enable-release
