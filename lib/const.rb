@@ -89,7 +89,7 @@ end
 CURL = ENV['CURL'] || 'curl'
 
 # set certificate file location for lib/downloader.rb
-SSL_CERT_FILE = unless ENV['SSL_CERT_FILE'].to_s.empty? or !File.exist(ENV['SSL_CERT_FILE'])
+SSL_CERT_FILE = unless ENV['SSL_CERT_FILE'].to_s.empty? or !File.exist?(ENV['SSL_CERT_FILE'])
   ENV['SSL_CERT_FILE']
 elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
   "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
