@@ -36,6 +36,15 @@ class Js91 < Package
     system "sed -i 's/collections import defaultdict, MutableSequence/collections import defaultdict/' testing/mozbase/manifestparser/manifestparser/filters.py"
     system "sed -i '/from collections import defaultdict/a from collections.abc import MutableSequence' testing/mozbase/manifestparser/manifestparser/filters.py"
     system "sed -i 's/collections import Iterable/collections.abc import Iterable/' python/mozbuild/mozbuild/makeutil.py"
+
+    return unless ARCH == 'i686'
+
+    # Fixes https://bugs.gentoo.org/816975
+    system "curl -Lf 'https://816975.bugs.gentoo.org/attachment.cgi?id=745218&action=diff&format=raw&headers=1' -o i686_math.patch"
+    unless Digest::SHA256.hexdigest(File.read('i686_math.patch')) == 'fcba8ce061545e893d9eebd3057cee150362fa23d7f3de4b249ec595789a0688'
+      abort 'Checksum mismatch :/ try again'
+    end
+    system('patch -Np1 -i i686_math.patch')
   end
 
   def self.build
