@@ -3,7 +3,7 @@ require 'package'
 class Py3_sphinxcontrib_htmlhelp < Package
   description 'sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files.'
   homepage 'https://www.sphinx-doc.org/'
-  @_ver = '1.0.3'
+  @_ver = '2.0.0'
   version @_ver
   license 'BSD'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Py3_sphinxcontrib_htmlhelp < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/1.0.3_armv7l/py3_sphinxcontrib_htmlhelp-1.0.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/1.0.3_armv7l/py3_sphinxcontrib_htmlhelp-1.0.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/1.0.3_i686/py3_sphinxcontrib_htmlhelp-1.0.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/1.0.3_x86_64/py3_sphinxcontrib_htmlhelp-1.0.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/2.0.0_armv7l/py3_sphinxcontrib_htmlhelp-2.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/2.0.0_armv7l/py3_sphinxcontrib_htmlhelp-2.0.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/2.0.0_i686/py3_sphinxcontrib_htmlhelp-2.0.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_sphinxcontrib_htmlhelp/2.0.0_x86_64/py3_sphinxcontrib_htmlhelp-2.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '70829b7bc50fd770d86639633f8925c7f0f694c3c20a4d7026f738ae40bb3bff',
-     armv7l: '70829b7bc50fd770d86639633f8925c7f0f694c3c20a4d7026f738ae40bb3bff',
-       i686: '4005a7d73961c7e357367950c435d5aecdcf87c5f64520ca1cfd53ee6ef8b669',
-     x86_64: '248b002ef01ee172d9408f53f561268e8aa3e6f094157548c825a72827641c84'
+    aarch64: '8d336c7e2108662fcb28dfa4c37bbc4bd14d9f191184806b5d08b4574cb5f6b5',
+     armv7l: '8d336c7e2108662fcb28dfa4c37bbc4bd14d9f191184806b5d08b4574cb5f6b5',
+       i686: 'ed05c393eb871eaac511196ca67a4b86286f25f629747bcafa8c6f223cd843c8',
+     x86_64: 'a1dd589c8c6a04047fcad2e7db5eaa488e448c77fc784e3bbfad6888e50b71a9'
   })
 
   depends_on 'py3_setuptools' => :build

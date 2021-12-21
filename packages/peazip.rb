@@ -3,7 +3,7 @@ require 'package'
 class Peazip < Package
   description 'Free file archiver utility to open and extract RAR, TAR and ZIP archives'
   homepage 'https://peazip.github.io/'
-  version '7.6.0'
+  version '8.3.0'
   license 'LGPL-3'
   compatibility 'all'
   case ARCH
@@ -11,11 +11,11 @@ class Peazip < Package
     source_url 'https://osdn.net/dl/peazip/pea-gtk2-arm.tar.gz'
     source_sha256 '6724a5c4e273f086680ac30440a2014b647322d25ed9bba574b7b8edba61abcc'
   when 'i686'
-    source_url 'https://github.com/peazip/PeaZip/releases/download/7.6.0/peazip_portable-7.6.0.LINUX.GTK2.tar.gz'
-    source_sha256 'bad059a252bdcb55c341a8b5cd1a4208c3b128a252079b36591684444d58afab'
+    source_url 'https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip_portable-8.3.0.LINUX.GTK2.x86.tar.gz'
+    source_sha256 'a96cb7b70e37b73460f0319c83c911cf4fac587b62f0ca8c777c593876b41d45'
   when 'x86_64'
-    source_url 'https://github.com/peazip/PeaZip/releases/download/7.6.0/peazip_portable-7.6.0.LINUX.x86_64.GTK2.tar.gz'
-    source_sha256 'fc04031fb7bcbc1959bd203b895bea209849744d470ea5b53670790a26606c1f'
+    source_url 'https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip_portable-8.3.0.LINUX.GTK2.x86_64.tar.gz'
+    source_sha256 '6382c744b4f510198ab57a65fe5d3e924ba399d1003c1338de5dd750d070fe36'
   end
 
   depends_on 'gtk2'
@@ -32,8 +32,6 @@ class Peazip < Package
   end
 
   def self.postinstall
-    puts
-    puts "Type 'peazip' to get started.".lightgreen
-    puts
+    puts "\nType 'peazip' to get started.\n".lightblue
   end
 end

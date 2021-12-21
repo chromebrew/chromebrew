@@ -3,24 +3,24 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '1.20.11'
+  @_ver = '21.1.2'
   version @_ver
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
-  source_url "https://gitlab.freedesktop.org/xorg/xserver/-/archive/xorg-server-#{@_ver}/xserver-xorg-server-#{@_ver}.tar.bz2"
-  source_sha256 'c03ef3c2dc44e75bf8caf942135a5aba3638822edb835bd05d2eaf428531a6a2'
+  source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
+  git_hashtag "xorg-server-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_armv7l/xorg_server-1.20.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_i686/xorg_server-1.20.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/1.20.11_x86_64/xorg_server-1.20.11-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_armv7l/xorg_server-21.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_armv7l/xorg_server-21.1.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_i686/xorg_server-21.1.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.2_x86_64/xorg_server-21.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '27cb4df4959f2d8e4d379d66daead6fb286bafada5f493d0049fb28227160493',
-     armv7l: '27cb4df4959f2d8e4d379d66daead6fb286bafada5f493d0049fb28227160493',
-       i686: 'f5285506842220eb0690b88a6be7dc921d6be4e51b7db5e25c5d65f75cd1f173',
-     x86_64: '732dd1586499edd926531f56e83f1bf38bdc743203a0041ff2fb1b78e3b2738c'
+    aarch64: 'c28d99744f20b7b13ebafb15b9dfb3d5ff98151b406ecaf829fb7f2577e2c5a5',
+     armv7l: 'c28d99744f20b7b13ebafb15b9dfb3d5ff98151b406ecaf829fb7f2577e2c5a5',
+       i686: '78521b219039d6406e53be51e8bb9aa46791ad12f703e3eaae7ef6bf7267936a',
+     x86_64: 'a1a23a460d7d78d534f68b1a9e49f3aa3ea57994a98602738e08a1030730344c'
   })
 
   depends_on 'libepoxy'
@@ -39,7 +39,7 @@ class Xorg_server < Package
   depends_on 'font_util'
   depends_on 'libbsd'
   depends_on 'dbus'
-  depends_on 'xzutils' => :build
+  depends_on 'lzma' => :build
   depends_on 'xkbcomp'
   depends_on 'glproto'
   depends_on 'xcb_util_renderutil' => :build
@@ -48,6 +48,10 @@ class Xorg_server < Package
   depends_on 'xcb_util_wm' => :build
   depends_on 'xcb_util_xrm' => :build
   depends_on 'xcb_util_cursor' => :build
+  depends_on 'libxcvt'
+  depends_on 'libinput'
+  depends_on 'libxdmcp'
+  depends_on 'xorg_proto'
   depends_on 'mesa'
 
   case ARCH
@@ -61,7 +65,7 @@ class Xorg_server < Package
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS} \
+    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '')} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
@@ -69,7 +73,6 @@ class Xorg_server < Package
               -Dxcsecurity=true \
               -Dxorg=true \
               -Dxephyr=true \
-              -Dxwayland=false \
               -Dglamor=true \
               -Dudev=true \
               -Dxwin=false \

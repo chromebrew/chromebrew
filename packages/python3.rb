@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.9.6'
+  @_ver = '3.10.1'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '397920af33efc5b97f2e0b57e91923512ef89fc5b3c1d21dbfc8c4828ce0108a'
+  source_sha256 'a7f1265b6e1a5de1ec5c3ec7019ab53413469934758311e9d240c46e5ae6e177'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.6_armv7l/python3-3.9.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.6_armv7l/python3-3.9.6-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.6_i686/python3-3.9.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.6_x86_64/python3-3.9.6-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_armv7l/python3-3.10.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_armv7l/python3-3.10.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_i686/python3-3.10.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_x86_64/python3-3.10.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '6196100c5fef60f2442e3ccebe2887ef6634fe003a9e175d6656715c77b8badf',
-     armv7l: '6196100c5fef60f2442e3ccebe2887ef6634fe003a9e175d6656715c77b8badf',
-       i686: 'b1db68a12b7fb8645fd119e5d62aec3194d88f6dd89e5d7c055d393bc4bb2cd6',
-     x86_64: '89f63f5bacddc09303e7bded741dad40d07db8eda6a12a568bcb4eb4ce63c036'
+    aarch64: '1d9b9ddff46e783c73b1d4e7efb4962863fb6530ba0f5177882e933349491672',
+     armv7l: '1d9b9ddff46e783c73b1d4e7efb4962863fb6530ba0f5177882e933349491672',
+       i686: 'e713a032139323ecf1b69ef28dba4ce5504fb589abd5ee0abddee6bb3a0c54db',
+     x86_64: 'abc558170fc98b73d41c15b2fd36fc595a32479fa4a73ab9ffacfe34fa350b95'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -66,7 +66,7 @@ class Python3 < Package
     @ldflags = "-Wl,-rpath,-L#{CREW_LIB_PREFIX}"
 
     # CREW_ENV_OPTIONS don't work so we have to make our own
-    @py_common_flags = "'-Os -pipe -fuse-ld=gold'"
+    @py_common_flags = "'-O2 -pipe -fuse-ld=gold -flto-partition=none -ffat-lto-objects -flto'"
 
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
@@ -76,21 +76,21 @@ class Python3 < Package
     system 'autoreconf -fiv'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
+      system "env OPT='-g0' CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
         CC='#{CREW_TGT}-gcc -pthread' \
         CXX='#{CREW_TGT}-g++' \
         CPPFLAGS='#{@cppflags}' \
-        LDFLAGS='#{@ldflags} -lpthread' \
+        LDFLAGS='#{@ldflags}' \
       ../configure #{CREW_OPTIONS} \
         --with-computed-gotos \
-        --with-loadable-sqlite-extensions \
+        --enable-loadable-sqlite-extensions \
         --without-ensurepip \
         --enable-optimizations \
-        --with-lto \
         --with-platlibdir='lib#{CREW_LIB_SUFFIX}' \
         --with-system-ffi \
         --with-system-expat \
-        --with-system-libmpdev \
+        --with-system-libmpdec \
+        --with-libc= \
         --enable-shared"
       system 'make'
     end

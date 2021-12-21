@@ -3,28 +3,28 @@ require 'package'
 class Coreutils < Package
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
   homepage 'https://www.gnu.org/software/coreutils/coreutils.html'
-  @_ver = '8.32'
+  @_ver = '9.0'
   version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/coreutils/coreutils-#{@_ver}.tar.xz"
-  source_sha256 '4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
+  source_sha256 'ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/8.32_armv7l/coreutils-8.32-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/8.32_armv7l/coreutils-8.32-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/8.32_i686/coreutils-8.32-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/8.32_x86_64/coreutils-8.32-chromeos-x86_64.tar.xz',
+  binary_url({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_i686/coreutils-9.0-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_armv7l/coreutils-9.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_armv7l/coreutils-9.0-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_x86_64/coreutils-9.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: 'a1be275b2b5f26c724b73550c30a5e2e58c9267c2af853e660293d4e33138453',
-      armv7l: 'a1be275b2b5f26c724b73550c30a5e2e58c9267c2af853e660293d4e33138453',
-        i686: 'b45b19f985acb4429d6c0be54c8a60171afeac88c21cdac0434ab19475f815b3',
-      x86_64: '1384d230561d78c1f87037a1422dfe04a4823bbbe5348370a319eb6c08e852a1',
+  binary_sha256({
+       i686: 'a4d1a88a16e68ca55aa4c2daa9dac4dfe202c20a0c91ff4caee7ba3062e81f2f',
+    aarch64: '5d94db6870ae7f5d62af972eb7640b53ba96199e387e707bd39ba9aaee67cd06',
+     armv7l: '5d94db6870ae7f5d62af972eb7640b53ba96199e387e707bd39ba9aaee67cd06',
+     x86_64: '905824619128baca70687e6d998debca143b8cac871e2874490dfff8d3c4e127'
   })
 
   def self.build
-    system "env CFLAGS='-flto' ./configure #{CREW_OPTIONS}"
+    system "env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
@@ -35,6 +35,6 @@ class Coreutils < Package
 echo \"#{ARCH}\"
 EOF"
     system "chmod +x #{CREW_DEST_PREFIX}/bin/arch"
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

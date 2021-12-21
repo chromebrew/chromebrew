@@ -3,28 +3,24 @@ require 'package'
 class Hugo < Package
   description 'Hugo is one of the most popular open-source static site generators.'
   homepage 'https://gohugo.io'
-  version '0.82.1'
+  version '0.89.4'
   license 'Apache-2.0, Unlicense, BSD, BSD-2 and MPL-2.0'
   compatibility 'all'
-
-  case ARCH
-  when 'aarch64','armv7l'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.82.1/hugo_0.82.1_Linux-ARM.tar.gz'
-    source_sha256 '950943930b4c404d12660c67ce6eb109e1379e258958f9d177b3a6f86ec084cb'
-  when 'i686'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.82.1/hugo_0.82.1_Linux-32bit.tar.gz'
-    source_sha256 '469749ba6ac750a1f4a2e9bf505b1b79e3b84060a6f72ede16791f1530cc245f'
-  when 'x86_64'
-    source_url 'https://github.com/gohugoio/hugo/releases/download/v0.82.1/hugo_extended_0.82.1_Linux-64bit.tar.gz'
-    source_sha256 '09df1dfea2ee7e5b1a8bdc6aabbdf9baad5ac2d80034b2bd715e5c7230db99f7'
-  end
-
-  binary_url ({
+  source_url ({
+    aarch64: 'https://github.com/gohugoio/hugo/releases/download/v0.89.4/hugo_0.89.4_Linux-ARM.tar.gz',
+     armv7l: 'https://github.com/gohugoio/hugo/releases/download/v0.89.4/hugo_0.89.4_Linux-ARM.tar.gz',
+       i686: 'https://github.com/gohugoio/hugo/releases/download/v0.89.4/hugo_0.89.4_Linux-32bit.tar.gz',
+     x86_64: 'https://github.com/gohugoio/hugo/releases/download/v0.89.4/hugo_extended_0.89.4_Linux-64bit.tar.gz',
   })
-  binary_sha256 ({
+  source_sha256 ({
+    aarch64: 'a8781ab0e61aa71c9084a23b908644296bb3390eda9cf5be78d2d225b5f0cc56',
+     armv7l: 'a8781ab0e61aa71c9084a23b908644296bb3390eda9cf5be78d2d225b5f0cc56',
+       i686: '1731fe5e9e7375d7c2d4f275d763957952734c4b52ed886d989b1112c3ff3a45',
+     x86_64: '97743ff4026eb1f0f6ceeea91c5f8236b4833ecbe36370e91dfea247da56072e',
   })
 
   def self.install
-    system "install -Dm755 hugo #{CREW_DEST_PREFIX}/bin/hugo"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'hugo', "#{CREW_DEST_PREFIX}/bin/hugo", mode: 0o755
   end
 end

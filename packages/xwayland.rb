@@ -3,22 +3,24 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '21.1.2'
+  @_ver = '21.1.4'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-#{@_ver}.tar.xz"
-  source_sha256 'b81cbdd5ad60b8b7ad8c3ecc7ec2a28c9bf021448670735cebb501f08bebd18b'
+  compatibility 'all'
+  source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
+  git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_armv7l/xwayland-21.1.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.2_x86_64/xwayland-21.1.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_i686/xwayland-21.1.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_x86_64/xwayland-21.1.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
-     armv7l: 'e628c8cac09e87f78dad4565ee06b28791951dc4ff13d34bccc982fbecefecfe',
-     x86_64: 'e6b2e07ca4df3e09ee16f6a03b951801c8e3784315dc8f2fb829889d18878473'
+    aarch64: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
+     armv7l: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
+       i686: '0348da7ee28ef88978f3bde2777855ac8c1c7432affb890e8012b60b07d43f22',
+     x86_64: '4a10a2ee3d43f50dde1e9f038b72c17475f40bcdf1e4439cfa7be44cc326c43b'
   })
 
   depends_on 'dbus'
@@ -41,6 +43,7 @@ class Xwayland < Package
   depends_on 'libxtrans'
   depends_on 'mesa' # R
   depends_on 'pixman' # R
+  depends_on 'rendercheck' # R
   depends_on 'wayland' # R
   depends_on 'xkbcomp'
   depends_on 'xorg_lib'
@@ -49,14 +52,14 @@ class Xwayland < Package
   when 'armv7l', 'aarch64'
     PEER_CMD_PREFIX = '/lib/ld-linux-armhf.so.3'.freeze
   when 'i686'
-    PEER_CMD_PREFIX = '/lib/ld-linux-i686.so.2'.freeze
+    PEER_CMD_PREFIX = '/lib/ld-linux.so.2'.freeze
   when 'x86_64'
     PEER_CMD_PREFIX = '/lib64/ld-linux-x86-64.so.2'.freeze
   end
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS} \
+    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '')} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \

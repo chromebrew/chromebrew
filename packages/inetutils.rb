@@ -3,32 +3,33 @@ require 'package'
 class Inetutils < Package
   description 'The Inetutils package contains programs for basic networking. Such as dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp, traceroute'
   homepage 'https://www.gnu.org/software/inetutils/'
-  @_ver = '2.0'
-  version "#{@_ver}-1"
+  @_ver = '2.2'
+  version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{@_ver}.tar.xz"
-  source_sha256 'e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722'
+  source_sha256 'd547f69172df73afef691a0f7886280fd781acea28def4ff4b4b212086a89d80'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_armv7l/inetutils-2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_i686/inetutils-2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.0-1_x86_64/inetutils-2.0-1-chromeos-x86_64.tar.xz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_i686/inetutils-2.2-chromeos-i686.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_armv7l/inetutils-2.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_armv7l/inetutils-2.2-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_x86_64/inetutils-2.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '8e4e1d3e987ed40aa8c63a8a794f1fd74ce390aee6e63795cb1936ff36ffd176',
-     armv7l: '8e4e1d3e987ed40aa8c63a8a794f1fd74ce390aee6e63795cb1936ff36ffd176',
-       i686: '7553ad07ca3e4994469efd85d7b48cbcf1d375fde0cc07495cb9cf8dabfe564d',
-     x86_64: 'ad1bf386ab4ecc3d1f799c845b4f4b9451039fc0608d0ed5dcae15410815e265'
+       i686: 'ee0f7e82efe8fee69a27bda30a6d42d2a616bcd5d9be1682cec43136f70f9b71',
+    aarch64: '413181b35983017b30a53f08de729ffb7f4dd54a2fdbb6b6d0d4dc7fa4333c76',
+     armv7l: '413181b35983017b30a53f08de729ffb7f4dd54a2fdbb6b6d0d4dc7fa4333c76',
+     x86_64: '4b6d96a0e618da13d6225d3f14f22739e6c199e944820dacbf99175ec88982df'
   })
 
   depends_on 'linux_pam'
-  depends_on 'patchelf'
+  depends_on 'patchelf' => :build
   depends_on 'libcap'
 
   def self.build
-    system "env CFLAGS='-flto=auto -ltinfo' CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
+    # logger conflicts with util_linux
+    system "env #{CREW_ENV_OPTIONS.sub("CFLAGS='", "CFLAGS='-lpthread -ltinfo ")} \
       LIBRARY_PATH=#{CREW_LIB_PREFIX} ./configure #{CREW_OPTIONS} \
       --with-krb5=#{CREW_PREFIX} \
       --disable-rpath \
@@ -38,7 +39,8 @@ class Inetutils < Package
       --disable-rsh \
       --enable-encryption \
       --enable-authentication \
-      --disable-servers"
+      --disable-servers \
+      --disable-logger"
     system 'make'
   end
 

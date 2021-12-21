@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.2.1'
+  @_ver = '21.3.1'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_armv7l/mesa-21.2.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_armv7l/mesa-21.2.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_i686/mesa-21.2.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.1_x86_64/mesa-21.2.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_armv7l/mesa-21.3.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_armv7l/mesa-21.3.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_i686/mesa-21.3.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_x86_64/mesa-21.3.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'af4f1d97e5404ff136bae551ce9a1dcbc9d1db2990b35fcf71fde37df892caf5',
-     armv7l: 'af4f1d97e5404ff136bae551ce9a1dcbc9d1db2990b35fcf71fde37df892caf5',
-       i686: '41c82db78aad8fb8331ed19bb5698f29bb2a2bbedaae73c192ae1e0333fe4426',
-     x86_64: '5e619405ea17db19a946a690ba98e7def61e0f12077aa4fce844d13f97625660'
+    aarch64: '89bee7e209c8c9c60fbe8f8882c8bd82c0eb09286bd040c35d041900a5d3a5df',
+     armv7l: '89bee7e209c8c9c60fbe8f8882c8bd82c0eb09286bd040c35d041900a5d3a5df',
+       i686: 'ca35e6d0965cc934efb6073d6d787d35d9bd5bfed5638ab40a8165280b0e049e',
+     x86_64: 'fa4a3885c77713ec70588f24b27db1936254dcb6471a26c8b3fc4589bb6e5f97'
   })
 
   depends_on 'glslang' => :build
@@ -53,7 +53,7 @@ class Mesa < Package
     case ARCH
     when 'aarch64', 'armv7l'
       # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5067
-      @freedrenopatch = <<~PATCHEOF
+      @freedrenopatch = <<~FREEDRENOPATCHEOF
                 --- a/src/gallium/drivers/freedreno/freedreno_util.h   2021-08-05 14:40:22.000000000 +0000
                 +++ b/src/gallium/drivers/freedreno/freedreno_util.h   2021-08-05 19:52:53.115410668 +0000
                 @@ -44,6 +44,15 @@
@@ -72,10 +72,33 @@ class Mesa < Package
                  #ifdef __cplusplus
                  extern "C" {
                  #endif
-      PATCHEOF
-      IO.write('freedreno.patch', @freedrenopatch)
+      FREEDRENOPATCHEOF
+      File.write('freedreno.patch', @freedrenopatch)
       system 'patch -Np1 -i freedreno.patch'
+      # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505
+      @tegrapatch = <<~TEGRAPATCHEOF
+                diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c b/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c
+                index 48d81f197db..f9b7bd57b27 100644
+                --- a/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c
+                +++ b/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c
+                @@ -255,6 +255,10 @@ nvc0_validate_fb(struct nvc0_context *nvc0)
+        #{'         '}
+                          nvc0_resource_fence(res, NOUVEAU_BO_WR);
+        #{'         '}
+                +         // hack to make opengl at least halfway working on a tegra k1
+                +         // see: https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505#note_627006
+                +         fb->zsbuf=NULL;
+                +
+                          assert(!fb->zsbuf);
+                       }
+      TEGRAPATCHEOF
+      File.write('tegra.patch', @tegrapatch)
+      system 'patch -Np1 -i tegra.patch'
     end
+    # llvm 13 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
+    # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch
+    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch'
+    system 'patch -Np1 -i 13273.patch'
   end
 
   def self.build

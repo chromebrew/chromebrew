@@ -3,7 +3,7 @@ require 'package'
 class Py3_json2xml < Package
   description 'json to xml converter'
   homepage 'https://json2xml.readthedocs.io/'
-  @_ver = '3.6.0'
+  @_ver = '3.8.0'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_json2xml < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.6.0_armv7l/py3_json2xml-3.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.6.0_armv7l/py3_json2xml-3.6.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.6.0_x86_64/py3_json2xml-3.6.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.8.0_armv7l/py3_json2xml-3.8.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.8.0_armv7l/py3_json2xml-3.8.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.8.0_i686/py3_json2xml-3.8.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_json2xml/3.8.0_x86_64/py3_json2xml-3.8.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ebaf5d827ea6d9683d36b6db16f04a2de05d0fd1e63b2b2c0d82602ede6b9b46',
-     armv7l: 'ebaf5d827ea6d9683d36b6db16f04a2de05d0fd1e63b2b2c0d82602ede6b9b46',
-     x86_64: '13e41d07e2939271ba4d3cd2ad458cfa84490c3c57fa8da3328031f91d954af3'
+    aarch64: '3b20a3b6b281900888fa7c232c8f57a20cc7af36e66ec92c183bd900b5c25172',
+     armv7l: '3b20a3b6b281900888fa7c232c8f57a20cc7af36e66ec92c183bd900b5c25172',
+       i686: '3528407115c0602f6d881d782500714426ede5994ae0b940a61d98f3612f7815',
+     x86_64: 'cfe83ee7e6ef6208facb755c1c80125b1db4fafef0a5993f78ea6841d2964b26'
   })
 
   depends_on 'py3_requests'

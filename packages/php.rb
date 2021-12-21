@@ -3,7 +3,7 @@ require 'package'
 class Php < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '5.6.40-8.0.10'
+  version '5.6.40-8.1.1'
   license 'PHP-3.01'
   compatibility 'all'
 
@@ -21,9 +21,10 @@ class Php < Package
     puts "5.6 = PHP 5.6.40"
     puts "7.1 = PHP 7.1.33"
     puts "7.2 = PHP 7.2.34"
-    puts "7.3 = PHP 7.3.30"
-    puts "7.4 = PHP 7.4.23"
-    puts "8.0 = PHP 8.0.10"
+    puts "7.3 = PHP 7.3.33"
+    puts "7.4 = PHP 7.4.27"
+    puts "8.0 = PHP 8.0.13"
+    puts "8.1 = PHP 8.1.1"
     puts "  0 = Cancel"
 
     while version = STDIN.gets.chomp
@@ -45,6 +46,9 @@ class Php < Package
         break
       when '8.0'
         depends_on 'php80'
+        break
+      when '8.1'
+        depends_on 'php81'
         break
       when '0'
         abort

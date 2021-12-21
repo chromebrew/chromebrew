@@ -3,24 +3,24 @@ require 'package'
 class Libinput < Package
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput'
-  @_ver = '1.17.0'
-  version @_ver
+  @_ver = '1.19.2'
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
-  source_url "https://www.freedesktop.org/software/libinput/libinput-#{@_ver}.tar.xz"
-  source_sha256 'c560cfca14cb5c50d2a1b7551df06bc5d4306e32c128f3e3d37e137285dedbad'
+  source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_armv7l/libinput-1.17.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_armv7l/libinput-1.17.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_i686/libinput-1.17.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.17.0_x86_64/libinput-1.17.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_armv7l/libinput-1.19.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_armv7l/libinput-1.19.2-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_i686/libinput-1.19.2-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_x86_64/libinput-1.19.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'a449ec4b3a457cf1222606c053bd90d6ff857434f06fdce33689d2bc198f2280',
-     armv7l: 'a449ec4b3a457cf1222606c053bd90d6ff857434f06fdce33689d2bc198f2280',
-       i686: '3b5cd49e73d1351369a4afd268a5bb84dc1a6ac00a0381fc9d94b89e753ca7c1',
-     x86_64: '7f4ed0a79f83c740aa1c708accf6f483b00345507df91a4d164117cd5bbb498e'
+    aarch64: 'e05b75fc7ce64fb075f80c166f040e44f93348ed9a1498edf62eca9bf6a63453',
+     armv7l: 'e05b75fc7ce64fb075f80c166f040e44f93348ed9a1498edf62eca9bf6a63453',
+       i686: '6abab518091907420a19b90b858dacf2179f70b9c75b66c2727fa13d0143430e',
+     x86_64: 'b0c906ccc338b8b675d75d9c9845f569c3a1735fbe35e602c6a669a997f4f950'
   })
 
   depends_on 'mtdev'
