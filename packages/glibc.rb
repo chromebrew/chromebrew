@@ -109,6 +109,14 @@ class Glibc < Package
           puts 'Patched!'.lightgreen
         end
       end
+      if LIBC_VERSION == '2.27'
+        @googlesource_branch = 'release-R91-13904.B'
+        system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
+        Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.27/*.patch').each do |patch|
+          puts patch
+          system "patch -Np1 < #{patch}"
+        end
+      end
     when '2.32'
       FileUtils.mkdir 'fedora'
       # Patch to enable build-local-archive
