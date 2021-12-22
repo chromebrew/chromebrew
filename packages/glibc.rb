@@ -25,7 +25,7 @@ class Glibc < Package
       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-2_i686/glibc-2.23-2-chromeos-i686.tpxz'
     })
     binary_sha256({
-      i686: '67bed222bf27599783bfe54bed9e5bde71c3f1da584ae6f1f43e806df0560de1'
+      i686: 'cb975c4ceee153b89a9a402d4bdd76b233e7ce3ae54f003a2875198039810f55'
     })
   when '2.27'
     version '2.27-2'
@@ -69,29 +69,192 @@ class Glibc < Package
   def self.patch
     case LIBC_VERSION
     when '2.23', '2.27'
-      # Patch to avoid old ld issue on glibc 2.23
+      # Patch to avoid old ld issue on glibc 2.23 by using ld configure 
+      # portion from https://github.com/bminor/glibc/blob/master/configure
       @glibc_223_i686_patch = <<~'GLIBC_223_HEREDOC'
-        diff -Npaur a/configure b/configure
-        --- a/configure	2021-10-26 17:26:04.523364222 +0000
-        +++ b/configure	2021-10-26 17:25:15.698560914 +0000
-        @@ -4482,10 +4482,10 @@ else
-           # Found it, now check the version.
-           { $as_echo "$as_me:${as_lineno-$LINENO}: checking version of $LD" >&5
-         $as_echo_n "checking version of $LD... " >&6; }
-        -  ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*GNU ld.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
+        --- a/configure	2021-12-22 11:42:36.689574968 -0500
+        +++ b/configure	2021-12-22 11:58:43.052504544 -0500
+        @@ -4434,7 +4434,143 @@ if test $ac_verc_fail = yes; then
+           AS=: critic_missing="$critic_missing as"
+         fi
+
+        -for ac_prog in $LD
+        +libc_cv_with_lld=no
+        +case $($LD --version) in
+        +  "GNU gold"*)
+        +  # Accept gold 1.14 or higher
+        +    for ac_prog in $LD
+        +do
+        +  # Extract the first word of "$ac_prog", so it can be a program name with args.
+        +set dummy $ac_prog; ac_word=$2
+        +{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+        +$as_echo_n "checking for $ac_word... " >&6; }
+        +if ${ac_cv_prog_LD+:} false; then :
+        +  $as_echo_n "(cached) " >&6
+        +else
+        +  if test -n "$LD"; then
+        +  ac_cv_prog_LD="$LD" # Let the user override the test.
+        +else
+        +as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+        +for as_dir in $PATH
+        +do
+        +  IFS=$as_save_IFS
+        +  test -z "$as_dir" && as_dir=.
+        +    for ac_exec_ext in '' $ac_executable_extensions; do
+        +  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+        +    ac_cv_prog_LD="$ac_prog"
+        +    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+        +    break 2
+        +  fi
+        +done
+        +  done
+        +IFS=$as_save_IFS
+        +
+        +fi
+        +fi
+        +LD=$ac_cv_prog_LD
+        +if test -n "$LD"; then
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $LD" >&5
+        +$as_echo "$LD" >&6; }
+        +else
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        +$as_echo "no" >&6; }
+        +fi
+        +
+        +
+        +  test -n "$LD" && break
+        +done
+        +
+        +if test -z "$LD"; then
+        +  ac_verc_fail=yes
+        +else
+        +  # Found it, now check the version.
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: checking version of $LD" >&5
+        +$as_echo_n "checking version of $LD... " >&6; }
         +  ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*GNU gold.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
+        +  case $ac_prog_version in
+        +    '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
+        +    1.1[4-9]*|1.[2-9][0-9]*|1.1[0-9][0-9]*|[2-9].*|[1-9][0-9]*)
+        +       ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
+        +    *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
+        +
+        +  esac
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_prog_version" >&5
+        +$as_echo "$ac_prog_version" >&6; }
+        +fi
+        +if test $ac_verc_fail = yes; then
+        +  LD=: critic_missing="$critic_missing GNU gold"
+        +fi
+        +
+        +    ;;
+        +  "LLD"*)
+        +  # Accept LLD 13.0.0 or higher
+        +    for ac_prog in $LD
+        +do
+        +  # Extract the first word of "$ac_prog", so it can be a program name with args.
+        +set dummy $ac_prog; ac_word=$2
+        +{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+        +$as_echo_n "checking for $ac_word... " >&6; }
+        +if ${ac_cv_prog_LD+:} false; then :
+        +  $as_echo_n "(cached) " >&6
+        +else
+        +  if test -n "$LD"; then
+        +  ac_cv_prog_LD="$LD" # Let the user override the test.
+        +else
+        +as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+        +for as_dir in $PATH
+        +do
+        +  IFS=$as_save_IFS
+        +  test -z "$as_dir" && as_dir=.
+        +    for ac_exec_ext in '' $ac_executable_extensions; do
+        +  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+        +    ac_cv_prog_LD="$ac_prog"
+        +    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+        +    break 2
+        +  fi
+        +done
+        +  done
+        +IFS=$as_save_IFS
+        +
+        +fi
+        +fi
+        +LD=$ac_cv_prog_LD
+        +if test -n "$LD"; then
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $LD" >&5
+        +$as_echo "$LD" >&6; }
+        +else
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        +$as_echo "no" >&6; }
+        +fi
+        +
+        +
+        +  test -n "$LD" && break
+        +done
+        +
+        +if test -z "$LD"; then
+        +  ac_verc_fail=yes
+        +else
+        +  # Found it, now check the version.
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: checking version of $LD" >&5
+        +$as_echo_n "checking version of $LD... " >&6; }
+        +  ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*LLD.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
+        +  case $ac_prog_version in
+        +    '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
+        +    1[3-9].*|[2-9][0-9].*)
+        +       ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
+        +    *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
+        +
+        +  esac
+        +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_prog_version" >&5
+        +$as_echo "$ac_prog_version" >&6; }
+        +fi
+        +if test $ac_verc_fail = yes; then
+        +  LD=: critic_missing="$critic_missing LLD"
+        +fi
+        +
+        +    libc_cv_with_lld=yes
+        +    ;;
+        +  *)
+        +    for ac_prog in $LD
+         do
+           # Extract the first word of "$ac_prog", so it can be a program name with args.
+         set dummy $ac_prog; ac_word=$2
+        @@ -4485,7 +4621,7 @@ $as_echo_n "checking version of $LD... "
+           ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*GNU ld.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
            case $ac_prog_version in
              '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
         -    2.1[0-9][0-9]*|2.2[2-9]*|2.[3-9][0-9]*|[3-9].*|[1-9][0-9]*)
-        +    1.1[4-9]*|1.[2-9][0-9]*|1.1[0-9][0-9]*|[2-9].*|[1-9][0-9]*)
+        +    2.1[0-9][0-9]*|2.2[5-9]*|2.[3-9][0-9]*|[3-9].*|[1-9][0-9]*)
                 ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
              *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
+
+        @@ -4494,9 +4630,14 @@ $as_echo_n "checking version of $LD... "
+         $as_echo "$ac_prog_version" >&6; }
+         fi
+         if test $ac_verc_fail = yes; then
+        -  LD=: critic_missing="$critic_missing ld"
+        +  LD=: critic_missing="$critic_missing GNU ld"
+         fi
+
+        +    ;;
+        +esac
+        +config_vars="$config_vars
+        +with-lld = $libc_cv_with_lld"
+        +
+
+         # These programs are version sensitive.
       GLIBC_223_HEREDOC
       case ARCH
       when 'i686'
         File.write('glibc_223_i686.patch', @glibc_223_i686_patch)
         system 'patch -Np1 -i glibc_223_i686.patch'
       when 'armv7l', 'x86_64'
+        @googlesource_branch = 'release-R91-13904.B'
+        system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
+        Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{LIBC_VERSION}*.patch").each do |patch|
+          puts patch
+          system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch})"
+        end
         # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
         system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" -o glibc_227_nss.patch'
         unless Digest::SHA256.hexdigest(File.read('glibc_227_nss.patch')) == '0c40630adf77292abb763362182158a87648e2c45904aebb5758b5ca38653ac9'
@@ -108,12 +271,6 @@ class Glibc < Package
           system "sed -i 's,char \\*locs,char \\*locs __attribute__ ((nocommon)),g' regexp.c"
           puts 'Patched!'.lightgreen
         end
-      end
-      @googlesource_branch = 'release-R91-13904.B'
-      system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
-      Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{LIBC_VERSION}*.patch").each do |patch|
-        puts patch
-        system "patch -Np1 -i #{patch}"
       end
     when '2.32'
       FileUtils.mkdir 'fedora'
@@ -152,7 +309,7 @@ class Glibc < Package
       @binutils.each do |bin|
         FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}" if bin['/bin/']
       end
-      FileUtils.cp 'binutils/ld.bfd', 'binutils.ld'
+      FileUtils.cp 'binutils/ld.bfd', 'binutils/ld'
       case LIBC_VERSION
       when '2.23' # This is only for glibc 2.23
         system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
