@@ -109,13 +109,11 @@ class Glibc < Package
           puts 'Patched!'.lightgreen
         end
       end
-      if LIBC_VERSION == '2.27'
-        @googlesource_branch = 'release-R91-13904.B'
-        system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
-        Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.27/*.patch').each do |patch|
-          puts patch
-          system "patch -Np1 < #{patch}"
-        end
+      @googlesource_branch = 'release-R91-13904.B'
+      system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
+      Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{LIBC_VERSION}*.patch").each do |patch|
+        puts patch
+        system "patch -Np1 -i #{patch}"
       end
     when '2.32'
       FileUtils.mkdir 'fedora'
@@ -136,7 +134,7 @@ class Glibc < Package
       Dir.glob('gentoopatches/patches/*.patch').each do |patch|
         system "patch -Np1 -i #{patch}"
       end
-      @googlesource_branch = 'release-R92-13982.B'
+      @googlesource_branch = 'release-R96-14268.B'
       system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
       Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.32/*.patch').each do |patch|
         puts patch
