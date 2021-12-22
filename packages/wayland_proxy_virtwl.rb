@@ -10,16 +10,16 @@ class Wayland_proxy_virtwl < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_armv7l/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_armv7l/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_i686/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2_x86_64/wayland_proxy_virtwl-d8596b8ef7b8b7b27e48f3621018e5edd2b3a6f2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d7f58d405514dd031f2f12e402c8c6a58e62a885_armv7l/wayland_proxy_virtwl-d7f58d405514dd031f2f12e402c8c6a58e62a885-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d7f58d405514dd031f2f12e402c8c6a58e62a885_armv7l/wayland_proxy_virtwl-d7f58d405514dd031f2f12e402c8c6a58e62a885-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d7f58d405514dd031f2f12e402c8c6a58e62a885_i686/wayland_proxy_virtwl-d7f58d405514dd031f2f12e402c8c6a58e62a885-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d7f58d405514dd031f2f12e402c8c6a58e62a885_x86_64/wayland_proxy_virtwl-d7f58d405514dd031f2f12e402c8c6a58e62a885-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5e22eb523da33a806e6f365a903b019fe1c7721a835a9e9b50d6ac1856c3c166',
-     armv7l: '5e22eb523da33a806e6f365a903b019fe1c7721a835a9e9b50d6ac1856c3c166',
-    i686: '50d9cd08dd362fb47bbbc501315393fd275393fc63cff555f0aa3ed63b6de3a0',
-  x86_64: '90b400156918b68b5617a7441e2ffc65b21fabd7d588e7e12b1157212a7943d3'
+    aarch64: '057575d06814635e9cdf22463641569486d7e2b663c82db3c31939fef0a346e7',
+     armv7l: '057575d06814635e9cdf22463641569486d7e2b663c82db3c31939fef0a346e7',
+       i686: '9258061ba55c3ce7b1a65a07a0d98ec68007118533339fd577e71f6154a8d291',
+     x86_64: '8a4ccc9cca2248d2f729e6ab0d66e97e6f3799a14a5da38d955ff8fb1a41f08d'
   })
 
   depends_on 'ocaml' => :build
