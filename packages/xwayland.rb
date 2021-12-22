@@ -3,24 +3,24 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '21.1.3'
-  version "#{@_ver}-1"
+  @_ver = '21.1.4'
+  version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_armv7l/xwayland-21.1.3-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_armv7l/xwayland-21.1.3-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_i686/xwayland-21.1.3-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3-1_x86_64/xwayland-21.1.3-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_i686/xwayland-21.1.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_x86_64/xwayland-21.1.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '23d0893e4fd7249a887b966d65ffea7dc4c5572d43b8fac81942e7d6a97b26ec',
-     armv7l: '23d0893e4fd7249a887b966d65ffea7dc4c5572d43b8fac81942e7d6a97b26ec',
-       i686: 'de1b4932e51425bb9abb7242535870017cf324b8f7dea13d5a7273939ea4b9e1',
-     x86_64: '6d765e2858190549260db5f2f1cc67b9971aa1ad83f5cd57040793170b387585'
+    aarch64: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
+     armv7l: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
+       i686: '0348da7ee28ef88978f3bde2777855ac8c1c7432affb890e8012b60b07d43f22',
+     x86_64: '4a10a2ee3d43f50dde1e9f038b72c17475f40bcdf1e4439cfa7be44cc326c43b'
   })
 
   depends_on 'dbus'

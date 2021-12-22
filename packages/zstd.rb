@@ -3,24 +3,24 @@ require 'package'
 class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
-  @_ver = '1.5.0'
-  version "#{@_ver}-1"
+  @_ver = '1.5.1'
+  version @_ver
   license 'BSD or GPL-2'
   compatibility 'all'
-  source_url "https://github.com/facebook/zstd/archive/v#{@_ver}.tar.gz"
-  source_sha256 '0d9ade222c64e912d6957b11c923e214e2e010a18f39bec102f572e693ba2867'
+  source_url 'https://github.com/facebook/zstd.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_armv7l/zstd-1.5.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_armv7l/zstd-1.5.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_i686/zstd-1.5.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.0-1_x86_64/zstd-1.5.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.1_armv7l/zstd-1.5.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.1_armv7l/zstd-1.5.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.1_i686/zstd-1.5.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.1_x86_64/zstd-1.5.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e63e459052fb415caa074ac053bb35418421b2573abf4fad4dd8f94197715187',
-     armv7l: 'e63e459052fb415caa074ac053bb35418421b2573abf4fad4dd8f94197715187',
-       i686: 'a5260b4a7c9a372571f0d77fc942b3f9f49d16432ed27447f46919cca246c0e2',
-     x86_64: 'af4b54526d9a6cd8b35d07b7e12c257cb46a5042861b83cf4248b63b6a6628eb'
+    aarch64: '65798a76e98605c8dc68c646fafed3df6bab54cff68efd14f0bdfff847f1212a',
+     armv7l: '65798a76e98605c8dc68c646fafed3df6bab54cff68efd14f0bdfff847f1212a',
+       i686: '33c872308e4766f78c7cd038822c3e70950cf6051b68f18e574948fe19439f04',
+     x86_64: 'bbfd450202fba5e1eaf3b190086ceb9f2eccdb8691cb93387de2467aabd9898b'
   })
 
   def self.build
