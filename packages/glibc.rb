@@ -17,7 +17,7 @@ class Glibc < Package
 
   case LIBC_VERSION
   when '2.23'
-    version '2.23-1'
+    version '2.23-2'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
@@ -28,7 +28,7 @@ class Glibc < Package
       i686: 'd2c987c0ad10a178b6a90a47b6cb2581391ddb8e1b382c01fd16d850f1de0b58'
     })
   when '2.27'
-    version '2.27-1'
+    version '2.27-2'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
@@ -343,6 +343,15 @@ class Glibc < Package
     FileUtils.rm_f Dir.glob("#{CREW_DEST_LIB_PREFIX}/libnsl.so*")
     # Remove libmount.so since it conflicts with the one from util_linux.
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
+    # threads.h was introduced in glibc 2.28. This is a workaround for
+    # pre-M92 systems.
+    return unless LIBC_VERSION < '2.28'
+
+    system 'curl -Lf https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h -o threads.h'
+    unless Digest::SHA256.hexdigest(File.read('threads.h')) == 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a'
+      abort 'Checksum mismatch. :/ Try again.'.lightred
+    end
+    FileUtils.cp 'threads.h',"#{CREW_DEST_PREFIX}/include/"
   end
 
   def self.check
