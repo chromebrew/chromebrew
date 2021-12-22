@@ -19,10 +19,10 @@ class Opam < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.2_x86_64/opam-2.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'dc177f2bb38e12fd6ce7c697117a661edc6ad67ca9b7249c7661c43f8e218a52',
-     armv7l: 'dc177f2bb38e12fd6ce7c697117a661edc6ad67ca9b7249c7661c43f8e218a52',
-       i686: '57f36dfc182d5719229f8ef883be8e878160ab116bb8c004a8ce3bdf5a802dd1',
-     x86_64: '612c10ea82c335d79c6a06e5abf9da93e873f3419574a7a93a17fa284c913daf'
+    aarch64: '596b3928ed6ebf82b865314ff0601f40f6e2bd8d9d2a0296ab6f45da1afc29cf',
+     armv7l: '596b3928ed6ebf82b865314ff0601f40f6e2bd8d9d2a0296ab6f45da1afc29cf',
+       i686: 'e21ee0b4989a8d18cc6ea6a0da59c8e214abe3de96104636b6d323195a69f393',
+     x86_64: 'bb2a382e59f36eb109eaaa0e471f0e9bc8f74823703fa9e9e0b0e11dfed6d9e7'
   })
 
   depends_on 'bubblewrap'
@@ -39,7 +39,7 @@ class Opam < Package
     @bashd_opam = <<~OPAMEOF
       export OPAMROOT=#{@OPAMROOT}
       eval \$(opam env --root=#{@OPAMROOT} --switch=default)
-      test -r #{@OPAMROOT}/opam-init/init.sh && . #{@OPAMROOT}/opam-init/init.sh > /dev/null 2> /dev/null || true
+      test -r #{@OPAMROOT}/opam-init/init.sh && . #{@OPAMROOT}/opam-init/init.sh &> /dev/null || true
     OPAMEOF
   end
 
@@ -56,18 +56,18 @@ class Opam < Package
   end
 
   def self.remove
-    if Dir.exist? @OPAMROOT
-      puts
-      print "Would you like to remove #{@OPAMROOT}? [y/N] "
-      response = $stdin.getc
-      case response
-      when 'y', 'Y'
-        FileUtils.rm_rf @OPAMROOT
-        puts "#{@OPAMROOT} removed.".lightred
-      else
-        puts "#{@OPAMROOT} saved.".lightgreen
-      end
-      puts
+    return unless Dir.exist? @OPAMROOT
+
+    puts
+    print "Would you like to remove #{@OPAMROOT}? [y/N] "
+    response = $stdin.getc
+    case response
+    when 'y', 'Y'
+      FileUtils.rm_rf @OPAMROOT
+      puts "#{@OPAMROOT} removed.".lightred
+    else
+      puts "#{@OPAMROOT} saved.".lightgreen
     end
+    puts
   end
 end
