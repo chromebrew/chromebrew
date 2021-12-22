@@ -22,10 +22,10 @@ class Glibc < Package
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
     binary_url({
-      i686: 'file:///output/pkg_cache/glibc-2.23-1-chromeos-i686.tar.xz'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-2_i686/glibc-2.23-2-chromeos-i686.tpxz'
     })
     binary_sha256({
-      i686: 'd2c987c0ad10a178b6a90a47b6cb2581391ddb8e1b382c01fd16d850f1de0b58'
+      i686: '67bed222bf27599783bfe54bed9e5bde71c3f1da584ae6f1f43e806df0560de1'
     })
   when '2.27'
     version '2.27-2'
@@ -91,7 +91,7 @@ class Glibc < Package
       when 'i686'
         File.write('glibc_223_i686.patch', @glibc_223_i686_patch)
         system 'patch -Np1 -i glibc_223_i686.patch'
-      when 'armv7l','x86_64'
+      when 'armv7l', 'x86_64'
         # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
         system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" -o glibc_227_nss.patch'
         unless Digest::SHA256.hexdigest(File.read('glibc_227_nss.patch')) == '0c40630adf77292abb763362182158a87648e2c45904aebb5758b5ca38653ac9'
@@ -351,23 +351,23 @@ class Glibc < Package
     unless Digest::SHA256.hexdigest(File.read('threads.h')) == 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a'
       abort 'Checksum mismatch. :/ Try again.'.lightred
     end
-    FileUtils.cp 'threads.h',"#{CREW_DEST_PREFIX}/include/"
+    FileUtils.cp 'threads.h', "#{CREW_DEST_PREFIX}/include/"
   end
 
   def self.check
-    #/usr/local/bin/nm: /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/../string/rtld-memcpy-sse2-unaligned.os: no symbols
-    #/usr/local/bin/nm: /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/../string/rtld-memmove-sse2-unaligned.os: no symbols
-    #make[2]: Target 'tests' not remade because of errors.
-    #rm /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/libc.dynsym /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/ld.dynsym
-    #make[2]: Leaving directory '/usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/elf'
-    #make[1]: *** [Makefile:214: elf/tests] Error 2
-    #make[1]: Target 'check' not remade because of errors.
-    #make[1]: Leaving directory '/usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23'
-    #make: *** [Makefile:9: check] Error 2
+    # /usr/local/bin/nm: /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/../string/rtld-memcpy-sse2-unaligned.os: no symbols
+    # /usr/local/bin/nm: /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/../string/rtld-memmove-sse2-unaligned.os: no symbols
+    # make[2]: Target 'tests' not remade because of errors.
+    # rm /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/libc.dynsym /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/ld.dynsym
+    # make[2]: Leaving directory '/usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/elf'
+    # make[1]: *** [Makefile:214: elf/tests] Error 2
+    # make[1]: Target 'check' not remade because of errors.
+    # make[1]: Leaving directory '/usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23'
+    # make: *** [Makefile:9: check] Error 2
     return if ARCH == 'i686'
-    
+
     Dir.chdir 'glibc_build' do
-     system "make -k -j#{CREW_NPROC} check || make check"
+      system "make -k -j#{CREW_NPROC} check || make check"
     end
   end
 
