@@ -89,21 +89,24 @@ end
 CURL = ENV['CURL'] || 'curl'
 
 # set certificate file location for lib/downloader.rb
-SSL_CERT_FILE = unless ENV['SSL_CERT_FILE'].to_s.empty? or !File.exist?(ENV['SSL_CERT_FILE'])
-  ENV['SSL_CERT_FILE']
-elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
-  "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
-else
-  '/etc/ssl/certs/ca-certificates.crt'
-end
-
-SSL_CERT_DIR = if ! ENV['SSL_CERT_DIR'].to_s.empty? and Dir.exist?(ENV['SSL_CERT_DIR'])
-  ENV['SSL_CERT_DIR']
-elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
-  "#{CREW_PREFIX}/etc/ssl/certs"
-else
-  '/etc/ssl/certs'
-end
+SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV['SSL_CERT_FILE'])
+                  if File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
+                    "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
+                  else
+                    '/etc/ssl/certs/ca-certificates.crt'
+                  end
+                else
+                  ENV['SSL_CERT_FILE']
+                end
+SSL_CERT_DIR = if ENV['SSL_CERT_DIR'].to_s.empty? || !Dir.exist?(ENV['SSL_CERT_DIR'])
+                 if Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
+                   "#{CREW_PREFIX}/etc/ssl/certs"
+                 else
+                   '/etc/ssl/certs'
+                 end
+               else
+                 ENV['SSL_CERT_DIR']
+               end
 
 case ARCH
 when 'aarch64', 'armv7l'
