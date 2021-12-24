@@ -3,23 +3,15 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20211110'
+  version '20211129'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag '1f1be4598c9de7e3865666176a33cf2223c17944'
+  git_hashtag '34714827bc5c443ee9adcdae95606666e5f0704a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_armv7l/sommelier-20211110-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_armv7l/sommelier-20211110-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_i686/sommelier-20211110-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20211110_x86_64/sommelier-20211110-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '7bad1d04c36a791a8d86b96c1b01413eb76f6bd96ee9b369e8cfcc44ba563df2',
-     armv7l: '7bad1d04c36a791a8d86b96c1b01413eb76f6bd96ee9b369e8cfcc44ba563df2',
-       i686: '99a8ac7b64886c2816eb194ff8050e98e044c8bea216b69825af97c3fdfd2f4d',
-     x86_64: '81a6aead67052f5e8c1e72c2cc1a155ecd8b89c3357ac3c34e7f8da7ffc2708a'
   })
 
   depends_on 'libdrm'
@@ -57,36 +49,8 @@ class Sommelier < Package
 
   def self.patch
     Dir.chdir('vm_tools/sommelier') do
-      @_drm_device = Dir['/dev/dri/renderD*'][0]
-
-      system <<~SED
-        # open the drm device without calling the new open_virtgpu logic (since it only accept virgl gpu)
-        sed -i -e 's#char\\* drm_device = NULL#char const \\*drm_device = "#{@_drm_device}"#' \
-               -e 's#int drm_fd = open_virtgpu(&drm_device)#int drm_fd = open(drm_device, O_RDWR | O_CLOEXEC)#' sommelier.cc
-
-        # point virtwl path to /dev/null (virtwl path is hardcoded now)
-        sed -i -e 's:#define VIRTWL_DEVICE "/dev/wl0":#define VIRTWL_DEVICE "/dev/null":' virtualization/virtwl_channel.cc
-      SED
-
-      # replace the virtwl shm driver to noop shm driver (removed in commit 180e42d)
-      @sommelier_shm_patch = {}
-      @sommelier_shm_patch[/^[[:blank:]]+struct sl_host_buffer\*.+?host_buffer->resource;$/m] = <<~P1.chomp
-        assert(host->proxy);
-        sl_create_host_buffer(host->shm->ctx, client, id,
-            wl_shm_pool_create_buffer(host->proxy, offset, width, height, stride, format), width, height);
-      P1
-      @sommelier_shm_patch[/^[[:blank:]]+host_shm_pool->fd = fd;$/] = <<~P2.chomp
-        host_shm_pool->proxy = wl_shm_create_pool(host->shm_proxy, fd, size);
-        wl_shm_pool_set_user_data(host_shm_pool->proxy, host_shm_pool);
-        close(fd);
-      P2
-
-      @sommelier_shm = File.read('sommelier-shm.cc')
-      @sommelier_shm_patch.each_pair do |k, v|
-        @sommelier_shm.sub!(k, v)
-      end
-
-      File.write('sommelier-shm.cc', @sommelier_shm)
+      system 'git clone https://github.com/supechicken/sommelier-chromiumos-patch.git'
+      system 'cat sommelier-chromiumos-patch/*.patch | patch -p1'
     end
   end
 
@@ -109,11 +73,11 @@ class Sommelier < Package
       system 'samu -C builddir'
 
       Dir.chdir('builddir') do
-        @help = <<~EOF
+        @help = <<~EOT
           To start the sommelier daemon, run 'startsommelier'
           To stop the sommelier daemon, run 'stopsommelier'
           To restart the sommelier daemon, run 'restartsommelier'
-        EOF
+        EOT
 
         @sommelierenv = <<~EOF
           set -a
@@ -122,7 +86,8 @@ class Sommelier < Package
 
           : "${CLUTTER_BACKEND:=x11}"
           : "${GDK_BACKEND:=x11}"
-          : "${SOMMELIER_LOG:=#{CREW_PREFIX}/var/log/sommelier.log}"
+          : "${SOMMELIER_DRM_DEVICE:=$( drm=( /dev/dri/renderD* ); echo -n ${drm[0]} )}"
+          : "${SOMMELIER_GLAMOR:=1}"
           : "${SOMMELIER_SCALE:=1.0}"
           : "${XCURSOR_SIZE:=30}"
           : "${XDG_RUNTIME_DIR:=/var/run/chrome}"
@@ -136,18 +101,24 @@ class Sommelier < Package
           esac
 
           # locate an unused X display
-          disp=0
-          while [ -S "/tmp/.X11-unix/X${disp}" ] && ! [[ -f "/tmp/.X11-unix/X${disp}.lock" && "$(< "/tmp/.X11-unix/X${disp}.lock")" == 'somm_x' ]]; do
-            ((disp++))
-          done
-          SOMM_X_DISPLAY=":${disp}"
-          # don't export temp vars
-          unset disp
+          if [ -d '/tmp/.X11-unix' ]; then
+            disp=0
+            while [ -S "/tmp/.X11-unix/X${disp}" ] && \
+                ! [[ -f "/tmp/.X11-unix/X${disp}.lock" && "$(< "/tmp/.X11-unix/X${disp}.lock")" == 'somm_x' ]]; do
+              ((disp++))
+            done
+            SOMM_X_DISPLAY=":${disp}"
+            # don't export temp vars
+            unset disp
+          else
+            SOMM_X_DISPLAY=':0'
+          fi
 
           # locate an unused Wayland display
-          disp='0'
+          disp=0
           # use existing sommelier wayland socket if sommelier already running
-          while [[ -S "${XDG_RUNTIME_DIR}/wayland-${disp}" && "$(< "${XDG_RUNTIME_DIR}/wayland-${disp}.lock")" != 'somm_wl' ]]; do
+          while [ -S "${XDG_RUNTIME_DIR}/wayland-${disp}" ] && \
+                [[ "$(< "${XDG_RUNTIME_DIR}/wayland-${disp}.lock")" != 'somm_wl' ]]; do
             ((disp++))
           done
           SOMM_WL_DISPLAY="wayland-${disp}"
@@ -246,6 +217,16 @@ class Sommelier < Package
         # sommelierd
         @sommelierd = <<~EOF
           #!/usr/bin/env bash
+          # sommelierd: start/stop wrapper script for sommelier daemon
+
+          # use CREW_PREFIX env variable if available
+          : "${CREW_PREFIX:=#{CREW_PREFIX}}"
+          : "${CREW_LIB_PREFIX:=#{CREW_LIB_PREFIX}}"
+
+          : "${SOMMELIER_LOG:=$CREW_PREFIX/var/log/sommelier.log}"
+
+          # create var/{log,run} directory if not exist
+          mkdir -p "${SOMMELIER_LOG%/*}" "${CREW_PREFIX}/var/run"
 
           # clear log
           echo -n > ${SOMMELIER_LOG}
@@ -258,14 +239,15 @@ class Sommelier < Package
             echo -e "[err]: ${@}"
           }
 
-          cat <<EOT>> ${SOMMELIER_LOG}
-          System info: $(uname -a)
-          Command line: ${0} ${@}
+          cat <<EOT >> ${SOMMELIER_LOG}
+          System Info: $(uname -a)
+          DRM Device: ${SOMMELIER_DRM_DEVICE}
+          Command Line: ${0} ${@}
 
           EOT
 
           function checksommelierwayland () {
-            if [[ "$(/sbin/ss -lxp)" =~ ${SOMM_WL_DISPLAY} ]]; then
+            if [[ "$(/sbin/ss -lxp)" =~ ${XDG_RUNTIME_DIR}/${SOMM_WL_DISPLAY} ]]; then
               log "valid wayland display (${SOMM_WL_DISPLAY})"
             else
               err "sommelier-wayland failed to start"
@@ -274,7 +256,7 @@ class Sommelier < Package
           }
 
           function checksommelierxwayland () {
-            if [[ "$(/sbin/ss -lxp)" =~ ${SOMM_X_DISPLAY/:/X} ]]; then
+            if [[ "$(/sbin/ss -lxp)" =~ /tmp/.X11-unix/${SOMM_X_DISPLAY/:/X} ]]; then
               log "sommelier running on display ${SOMM_X_DISPLAY}"
             else
               err "sommelier-x11 failed to start"
@@ -286,39 +268,40 @@ class Sommelier < Package
             if ! checksommelierwayland &> /dev/null; then
               # start a nested (hardware accelerated) wayland compositor on top of exo
               nohup sommelier --parent \
-                --peer-cmd-prefix='#{CREW_PREFIX}#{@peer_cmd_prefix}' \
+                --peer-cmd-prefix='${CREW_PREFIX}#{@peer_cmd_prefix}' \
                 --display=wayland-0 \
                 --socket=${SOMM_WL_DISPLAY} \
               &>> ${SOMMELIER_LOG} &
               # add 'somm_wl' string to the lock file for identify use
+              mkdir -p ${XDG_RUNTIME_DIR}
               echo -n 'somm_wl' > ${XDG_RUNTIME_DIR}/${SOMM_WL_DISPLAY}.lock
-              echo -n "${!}" > #{CREW_PREFIX}/var/run/sommelier-wayland.pid
+              echo -n "${!}" > ${CREW_PREFIX}/var/run/sommelier-wayland.pid
             fi
 
             if ! checksommelierxwayland &> /dev/null; then
               nohup sommelier -X \
-                --x-display=${SOMM_X_DISPLAY}  \
-                --glamor \
+                --x-display=${SOMM_X_DISPLAY} \
                 --display=wayland-0 \
-                --xwayland-path=#{CREW_PREFIX}/bin/Xwayland \
-                --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri \
-                --peer-cmd-prefix='#{CREW_PREFIX}#{@peer_cmd_prefix}' \
+                --xwayland-path=${CREW_PREFIX}/bin/Xwayland \
+                --xwayland-gl-driver-path=${CREW_LIB_PREFIX}/dri \
+                --peer-cmd-prefix='${CREW_PREFIX}#{@peer_cmd_prefix}' \
                 --no-exit-with-child \
                   /usr/bin/env bash -c "touch ~/.Xauthority
                   xauth -f ~/.Xauthority add '${DISPLAY}' . '$(openssl rand -hex 16)'
-                  source #{CREW_PREFIX}/etc/sommelierrc" \
+                  source ${CREW_PREFIX}/etc/sommelierrc" \
               &>> ${SOMMELIER_LOG} &
               # add lock file for identify use
+              mkdir -p /tmp/.X11-unix
               echo -n 'somm_x' > /tmp/.X11-unix/${SOMM_X_DISPLAY/:/X}.lock
-              echo -n "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
+              echo -n "${!}" > ${CREW_PREFIX}/var/run/sommelier-xwayland.pid
             fi
           }
 
           function stop () {
             {
               pkill -f sommelier.elf
-              pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
-              pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
+              pkill -F ${CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
+              pkill -F ${CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
             } &> /dev/null
 
             # remove x lock file after sommelier gone
@@ -343,7 +326,7 @@ class Sommelier < Package
 
           if [[ "${0}" == */startsommelier || "${1}" == '--start' ]]; then
             # reload env variables when started via startsommelier symlink
-            [[ "${0}" == */startsommelier ]] && source #{CREW_PREFIX}/etc/env.d/sommelier
+            [[ "${0}" == */startsommelier ]] && source ${CREW_PREFIX}/etc/env.d/sommelier
 
             if [ -z "${SOMMELIER_LOG}" ]; then
               err "SOMMELIER_LOG not set, exiting..."
@@ -367,7 +350,7 @@ class Sommelier < Package
               exit 1
             fi
 
-            echo -e "sommelier processes running: $(< #{CREW_PREFIX}/var/run/sommelier-wayland.pid) $(< #{CREW_PREFIX}/var/run/sommelier-xwayland.pid)"
+            echo -e "sommelier processes running: $(< ${CREW_PREFIX}/var/run/sommelier-wayland.pid) $(< ${CREW_PREFIX}/var/run/sommelier-xwayland.pid)"
           elif [[ "${0}" == */stopsommelier || "${1}" == '--stop' ]]; then
             stop
           elif [[ "${0}" == */restartsommelier || "${1}" == '--restart' ]]; then
@@ -385,16 +368,16 @@ class Sommelier < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d
-                         #{CREW_DEST_PREFIX}/etc/env.d CREW_DEST_HOME]
+    FileUtils.mkdir_p %W[ #{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d
+                          #{CREW_DEST_PREFIX}/etc/env.d #{CREW_DEST_HOME} ]
     Dir.chdir('vm_tools/sommelier') do
       system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
       FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
 
       {
         "#{CREW_DEST_PREFIX}/bin/sommelier" => @sommelier_sh,
-       "#{CREW_DEST_PREFIX}/bin/sommelierd" => @sommelierd,
-      "#{CREW_DEST_PREFIX}/etc/sommelierrc" => @sommelierrc
+        "#{CREW_DEST_PREFIX}/bin/sommelierd" => @sommelierd,
+        "#{CREW_DEST_PREFIX}/etc/sommelierrc" => @sommelierrc
       }.each_pair do |filename, v|
         File.write filename, v
         File.chmod 0o755, filename
@@ -402,8 +385,8 @@ class Sommelier < Package
 
       {
         "#{CREW_DEST_PREFIX}/bin/startsommelier" => 'sommelierd',
-         "#{CREW_DEST_PREFIX}/bin/stopsommelier" => 'sommelierd',
-      "#{CREW_DEST_PREFIX}/bin/restartsommelier" => 'sommelierd'
+        "#{CREW_DEST_PREFIX}/bin/stopsommelier" => 'sommelierd',
+        "#{CREW_DEST_PREFIX}/bin/restartsommelier" => 'sommelierd'
       }.each_pair do |link, target|
         FileUtils.ln_s target, link
       end
