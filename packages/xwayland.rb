@@ -3,7 +3,7 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '21.1.3'
+  @_ver = '21.1.4'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Xwayland < Package
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3_armv7l/xwayland-21.1.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3_armv7l/xwayland-21.1.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3_i686/xwayland-21.1.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.3_x86_64/xwayland-21.1.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_i686/xwayland-21.1.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_x86_64/xwayland-21.1.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0e3f901f3fea16a9d62419dcdcede57bda9b6253d235804c8a949cacdd308b24',
-     armv7l: '0e3f901f3fea16a9d62419dcdcede57bda9b6253d235804c8a949cacdd308b24',
-       i686: '1bac41025f8327cd3d499dbdef47090f299bc1b83703262f0d104c914ce01ee3',
-     x86_64: '0c31a8e8e5f5789e19d439986f8ae0dc0ccb54f01862862ae70da6ce43f17804'
+    aarch64: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
+     armv7l: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
+       i686: '0348da7ee28ef88978f3bde2777855ac8c1c7432affb890e8012b60b07d43f22',
+     x86_64: '4a10a2ee3d43f50dde1e9f038b72c17475f40bcdf1e4439cfa7be44cc326c43b'
   })
 
   depends_on 'dbus'
@@ -52,7 +52,7 @@ class Xwayland < Package
   when 'armv7l', 'aarch64'
     PEER_CMD_PREFIX = '/lib/ld-linux-armhf.so.3'.freeze
   when 'i686'
-    PEER_CMD_PREFIX = '/lib/ld-linux-i686.so.2'.freeze
+    PEER_CMD_PREFIX = '/lib/ld-linux.so.2'.freeze
   when 'x86_64'
     PEER_CMD_PREFIX = '/lib64/ld-linux-x86-64.so.2'.freeze
   end

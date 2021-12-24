@@ -3,7 +3,7 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  @_ver = '10.5.8'
+  @_ver = '10.5.10'
   version @_ver
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
@@ -11,7 +11,7 @@ class Torbrowser < Package
   @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}"
   @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
   source_url "#{@_url}/#{@_name}"
-  source_sha256 'e1938b9dad1a326e878c5bb12a1613a5f8fe7189b2d9c2e54d677bc5460ec3ae'
+  source_sha256 '8279652de22c9842755196cd861687ba73a3d46a1d5c94dc2c1253e104a46c57'
 
   depends_on 'gtk3'
   depends_on 'sommelier'

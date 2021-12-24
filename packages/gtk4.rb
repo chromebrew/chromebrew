@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.4.0'
+  @_ver = '4.4.1'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_i686/gtk4-4.4.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_x86_64/gtk4-4.4.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_armv7l/gtk4-4.4.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_armv7l/gtk4-4.4.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_i686/gtk4-4.4.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_x86_64/gtk4-4.4.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
-     armv7l: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
-       i686: '5e06944bbcf839838a4bd2bba713b6c3ca724b08f9a0dd8eba92c0418446974b',
-     x86_64: '1604014f5f7188b5a974ca8cc06b62e1fc14e8553806541abbcb173694fc2547'
+    aarch64: '9da01362c758205fb864aada2ec0a41730535fbe84b83cf6752e518341448a7b',
+     armv7l: '9da01362c758205fb864aada2ec0a41730535fbe84b83cf6752e518341448a7b',
+       i686: '2c6b1eb268de8c3222d6c61fbe83331c9d9a34f987561c6dee9a8d5261b6d3e7',
+     x86_64: '440f2099c91b98d4bc2ded68c358ebd31d7a7812a3299a30f9465d390f11ba38'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -96,8 +96,7 @@ class Gtk4 < Package
       -Dgraphene:default_library=both \
       -Dlibsass:default_library=both \
       -Dmutest:default_library=both \
-      -Dsassc:default_library=both \
-      -Dsassc=enabled \
+      -Dvulkan=enabled \
       build"
     system 'meson configure build'
     system 'ninja -C build'

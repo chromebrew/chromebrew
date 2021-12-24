@@ -40,6 +40,7 @@ class Curl < Package
   depends_on 'musl_zstd' => :build
   depends_on 'rust' => :build
   depends_on 'valgrind' => :build
+  depends_on 'libcurl' if ARCH == 'i686'
 
   def self.patch
     # Curl 7.78.0 needs a patch to enable static builds.
@@ -214,5 +215,12 @@ class Curl < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_DEST_PREFIX}/musl/bin/curl", "#{CREW_DEST_PREFIX}/bin/curl"
     # FileUtils.install 'curl.static', "#{CREW_DEST_PREFIX}/bin/curl", mode: 0o755
+  end
+
+  def self.postinstall
+    if ARCH == 'i686'
+      puts 'Static curl is broken on i686, so using curl from the libcurl package.'.orange
+      FileUtils.cp_r "#{CREW_PREFIX}/bin/curl.nonstatic", "#{CREW_PREFIX}/bin/curl", remove_destination: true
+    end
   end
 end

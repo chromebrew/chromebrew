@@ -14,11 +14,13 @@ class Libxcvt < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcvt/0.1.1_armv7l/libxcvt-0.1.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcvt/0.1.1_armv7l/libxcvt-0.1.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcvt/0.1.1_i686/libxcvt-0.1.1-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcvt/0.1.1_x86_64/libxcvt-0.1.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '6f230901f2a91504efc7257271c7be5a86a8529da06539c8d7cdf4cd6043a4f9',
      armv7l: '6f230901f2a91504efc7257271c7be5a86a8529da06539c8d7cdf4cd6043a4f9',
+       i686: 'a9ebc81a0499580e61cb2754edd6e13e5cad82edcc472941a31109cda0084b44',
      x86_64: 'cd3e28274fcc9166d37f26738b9434b86626a48511d9729a7a60ab3ae7d2da6e'
   })
 

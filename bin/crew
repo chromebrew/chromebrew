@@ -11,6 +11,8 @@ require 'fileutils'
 require 'tmpdir'
 require_relative '../lib/const'
 require_relative '../lib/util'
+require_relative '../lib/convert_size'
+require_relative '../lib/downloader'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -19,6 +21,7 @@ DOC = <<DOCOPT
 Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
 
 Usage:
+  crew autoremove [options]
   crew build [options] [-k|--keep] <name> ...
   crew const [options] [<name> ...]
   crew deps [options] <name> ...
@@ -65,7 +68,7 @@ CREW_LICENSE = <<~LICENSESTRING
 LICENSESTRING
 
 # All available crew commands.
-@cmds = ["build", "const", "deps", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
+@cmds = ["autoremove", "build", "const", "deps", "download", "files", "help", "install", "list", "postinstall", "reinstall", "remove", "search", "update", "upgrade", "whatprovides"]
 
 # Parse arguments using docopt
 require_relative '../lib/docopt'
@@ -307,85 +310,118 @@ end
 
 def help(pkgName)
   case pkgName
+  when "autoremove"
+    puts <<~EOT
+      Remove unused dependencies installed by removed packages
+      Usage: crew autoremove
+    EOT
   when "build"
-    puts "Build package(s)."
-    puts "Usage: crew build [-k|--keep] [-v|--verbose] <package1> [<package2> ...]"
-    puts "Build package(s) from source and place the archive and checksum in the current working directory."
-    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
-    puts "If `-v` or `--verbose` is present, extra information will be displayed."
+    puts <<~EOT
+      Build package(s).
+      Usage: crew build [-k|--keep] [-v|--verbose] <package1> [<package2> ...]
+      Build package(s) from source and place the archive and checksum in the current working directory.
+      If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
+      If `-v` or `--verbose` is present, extra information will be displayed.
+    EOT
   when "const"
-    puts "Display constant(s)."
-    puts "Usage: crew const [<const1> <const2> ...]"
-    puts "If no constants are provided, all constants will be displayed."
+    puts <<~EOT
+      Display constant(s).
+      Usage: crew const [<const1> <const2> ...]
+      If no constants are provided, all constants will be displayed.
+    EOT
   when "deps"
-    puts "Display dependencies of package(s)."
-    puts "Usage: crew deps <package1> [<package2> ...]"
+    puts <<~EOT
+      Display dependencies of package(s).
+      Usage: crew deps <package1> [<package2> ...]
+    EOT
   when "download"
-    puts "Download package(s)."
-    puts "Usage: crew download [-v|--verbose] <package1> [<package2> ...]"
-    puts "Download package(s) to `CREW_BREW_DIR` (#{CREW_BREW_DIR}), but don't install."
-    puts "If `-v` or `--verbose` is present, extra information will be displayed."
+    puts <<~EOT
+      Download package(s).
+      Usage: crew download [-v|--verbose] <package1> [<package2> ...]
+      Download package(s) to `CREW_BREW_DIR` (#{CREW_BREW_DIR}), but don't install.
+      If `-v` or `--verbose` is present, extra information will be displayed.
+    EOT
   when "files"
-    puts "Display installed files of package(s)."
-    puts "Usage: crew files <package1> [<package2> ...]"
-    puts "The package(s) must be currently installed."
+    puts <<~EOT
+      Display installed files of package(s).
+      Usage: crew files <package1> [<package2> ...]
+      The package(s) must be currently installed.
+    EOT
   when "install"
-    puts "Install package(s)."
-    puts "Usage: crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]"
-    puts "The package(s) must have a valid name.  Use `crew search <pattern>` to search for packages to install."
-    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
-    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
-    puts "If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary."
-    puts "If `-v` or `--verbose` is present, extra information will be displayed."
+    puts <<~EOT
+      Install package(s).
+      Usage: crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+      The package(s) must have a valid name.  Use `crew search <pattern>` to search for packages to install.
+      If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
+      If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary.
+      If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
+      If `-v` or `--verbose` is present, extra information will be displayed.
+    EOT
   when "list"
-    puts "List packages"
-    puts "Usage: crew list [-v|--verbose] available|installed|compatible|incompatible"
+    puts <<~EOT
+      List packages
+      Usage: crew list [-v|--verbose] available|installed|compatible|incompatible
+    EOT
   when "postinstall"
-    puts "Display postinstall messages of package(s)."
-    puts "Usage: crew postinstall <package1> [<package2> ...]"
-    puts "The package(s) must be currently installed."
+    puts <<~EOT
+      Display postinstall messages of package(s).
+      Usage: crew postinstall <package1> [<package2> ...]
+      The package(s) must be currently installed.
+    EOT
   when "reinstall"
-    puts "Remove and install package(s)."
-    puts "Usage: crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]"
-    puts "If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain."
-    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary."
-    puts "If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary."
-    puts "If `-v` or `--verbose` is present, extra information will be displayed."
+    puts <<~EOT
+      Remove and install package(s).
+      Usage: crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+      If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
+      If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary.
+      If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
+      If `-v` or `--verbose` is present, extra information will be displayed.
+    EOT
   when "remove"
-    puts "Remove package(s)."
-    puts "Usage: crew remove [-v|--verbose] <package1> [<package2> ...]"
-    puts "The package(s) must be currently installed."
-    puts "If `-v` or `--verbose` is present, extra information will be displayed."
+    puts <<~EOT
+      Remove package(s).
+      Usage: crew remove [-v|--verbose] <package1> [<package2> ...]
+      The package(s) must be currently installed.
+      If `-v` or `--verbose` is present, extra information will be displayed.
+    EOT
   when "search"
-    puts "Look for package(s)."
-    puts "Usage: crew search [-v|--verbose] [<pattern> ...]"
-    puts "If <pattern> is omitted, all packages will be returned."
-    puts "If the package color is " + "green".lightgreen + ", it means the package is installed."
-    puts "If the package color is " + "red".lightred + ", it means the architecture is not supported."
-    puts "The <pattern> string can also contain regular expressions."
-    puts "If `-v` or `--verbose` is present, homepage, version and license will be displayed."
-    puts "Examples:"
-    puts "  crew search ^lib".lightblue + " will display all packages that start with `lib`."
-    puts "  crew search audio".lightblue + " will display all packages with `audio` in the name."
-    puts "  crew search | grep -i audio".lightblue + " will display all packages with `audio` in the name or description."
-    puts "  crew search git -v".lightblue + " will display packages with `git` in the name along with homepage, version and license."
+    puts <<~EOT
+      Look for package(s).
+      Usage: crew search [-v|--verbose] [<pattern> ...]
+      If <pattern> is omitted, all packages will be returned.
+      If the package color is " + "green".lightgreen + ", it means the package is installed.
+      If the package color is " + "red".lightred + ", it means the architecture is not supported.
+      The <pattern> string can also contain regular expressions.
+      If `-v` or `--verbose` is present, homepage, version and license will be displayed.
+      Examples:
+        crew search ^lib".lightblue + " will display all packages that start with `lib`.
+        crew search audio".lightblue + " will display all packages with `audio` in the name.
+        crew search | grep -i audio".lightblue + " will display all packages with `audio` in the name or description.
+        crew search git -v".lightblue + " will display packages with `git` in the name along with homepage, version and license.
+    EOT
   when "update"
-    puts "Update crew."
-    puts "Usage: crew update"
-    puts "This only updates crew itself.  Use `crew upgrade` to update packages."
-    puts "Usage: crew update compatible"
-    puts "This updates the crew package compatibility list."
+    puts <<~EOT
+      Update crew.
+      Usage: crew update
+      This only updates crew itself.  Use `crew upgrade` to update packages.
+      Usage: crew update compatible
+      This updates the crew package compatibility list.
+    EOT
   when "upgrade"
-    puts "Update package(s)."
-    puts "Usage: crew upgrade [-v|--verbose] [-s|--build-from-source] <package1> [<package2> ...]"
-    puts "If package(s) are omitted, all packages will be updated.  Otherwise, specific package(s) will be updated."
-    puts "Use `crew update` to update crew itself."
-    puts "If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of upgraded via binary."
-    puts "If `-v` or `--verbose` is present, extra information will be displayed."
+    puts <<~EOT
+      Update package(s).
+      Usage: crew upgrade [-v|--verbose] [-s|--build-from-source] <package1> [<package2> ...]
+      If package(s) are omitted, all packages will be updated.  Otherwise, specific package(s) will be updated.
+      Use `crew update` to update crew itself.
+      If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of upgraded via binary.
+      If `-v` or `--verbose` is present, extra information will be displayed.
+    EOT
   when "whatprovides"
-    puts "Determine which package(s) contains file(s)."
-    puts "Usage: crew whatprovides <pattern> ..."
-    puts "The <pattern> is a search string which can contain regular expressions."
+    puts <<~EOT
+      Determine which package(s) contains file(s).
+      Usage: crew whatprovides <pattern> ...
+      The <pattern> is a search string which can contain regular expressions.
+    EOT
   else
     puts "Available commands: #{@cmds.join(', ')}"
   end
@@ -437,29 +473,6 @@ def const(var)
       puts "#{var}=#{value}"
     }
   end
-end
-
-def human_size (bytes)
-  kilobyte = 1024.0
-  megabyte = kilobyte * kilobyte
-  gigabyte = megabyte * kilobyte
-  if bytes < kilobyte
-    units = 'B'
-    size = bytes
-  end
-  if bytes >= kilobyte and bytes < megabyte
-    units = 'KB'
-    size = bytes / kilobyte
-  end
-  if bytes >= megabyte and bytes < gigabyte
-    units = 'MB'
-    size = bytes / megabyte
-  end
-  if bytes >= gigabyte
-    units = 'GB'
-    size = bytes / gigabyte
-  end
-  return sprintf('%.2f', size.to_s) + units
 end
 
 def files (pkgName)
@@ -560,6 +573,10 @@ def upgrade
     # Make an installed packages list belong to the dependency order
     dependencies = []
     @device[:installed_packages].each do |package|
+      if not File.exist?(CREW_PACKAGES_PATH + package[:name] + '.rb')
+        puts "Package file for installed package #{package[:name]} is missing.".lightred
+        next
+      end
       # skip package if it is dependent other packages previously checked
       next if dependencies.include? package[:name]
       # add package itself
@@ -669,7 +686,13 @@ def download
         end
       end
       # Download file if not cached.
-      system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+      # use curl if CURL environment variable set
+      if CURL == 'curl'
+        downloader url, filename, @opt_verbose
+      else
+        system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+      end
+
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
@@ -745,13 +768,16 @@ def download
           system 'git checkout FETCH_HEAD'
         end
         system 'git submodule update --init --recursive'
+        system 'git fetch --tags', exception: true
         puts 'Repository downloaded.'.lightgreen
       end
       # Stow file in cache if requested and cache is writable.
       if CREW_CACHE_ENABLED and File.writable?(CREW_CACHE_DIR)
         puts 'Caching downloaded git repo...'
         Dir.chdir "#{@extract_dir}" do
-          system "tar c#{@verbose}Jf #{cachefile} --exclude-vcs \
+          # Do not use --exclude-vcs to exclude .git
+          # because some builds will use that information.
+          system "tar c#{@verbose}Jf #{cachefile} \
             $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
         end
         system "sha256sum #{cachefile} > #{cachefile}.sha256"
@@ -1001,8 +1027,8 @@ def shrink_dir(dir)
   unless CREW_SHRINK_ARCHIVE == '0'
     Dir.chdir dir do
       if File.exist?("#{CREW_PREFIX}/bin/rdfind")
-        puts "Using rdfind to find duplicate or hard linked files."
-        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks true -makeresultsfile false ."
+        puts "Using rdfind to convert duplicate files to hard links."
+        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
       end
       # Issues with non-x86_64 in compressing libraries, so just compress
       # non-libraries. Also note that one needs to use "upx -d" on a
@@ -1010,13 +1036,27 @@ def shrink_dir(dir)
       # sommelier also isn't happy when sommelier and xwayland are compressed
       # so don't compress those packages.
       if File.exist?("#{CREW_PREFIX}/bin/upx")
-        # Logic here is to find executable binaries, compress after making
-        # a backup, then expand the compressed file with upx. If the
-        # expansion doesn't error out then it is ok to delete the backup.
-        # Disable for sommelier.elf and Xwayland.elf since upx breaks those binaries.
-        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -print].chomp
+        # 1. Find executable binaries but also check for hard linked
+        # files by making sure we have a unique set of
+        # inodes for the binaries found.
+        # 2. Copy to a temp file.
+        # 3. Compress using upx. (Uncompressble files are ignored.)
+        # 4. Check compression by expanding the compressed file with
+        # upx.
+        # 5. If the expansion doesn't error out then it is ok to copy
+        # over the original. (This also lets us only avoid compressing
+        # hard linked files multiple times.)
+        # Also disable for sommelier.elf and Xwayland.elf since upx
+        # breaks those binaries.
+        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'].chomp
         unless @execfiles.empty? or @execfiles.nil?
           puts "Using upx to shrink binaries."
+          # Copying in the ThreadPoolExecutor loop fails non-deterministically
+          @execfiles.each_line do |execfilecp|
+            execfilecp.slice! "."
+            execfilecp = dir + execfilecp.chomp
+            FileUtils.cp "#{execfilecp}","#{execfilecp}-crewupxtmp"
+          end
           begin
               gem 'concurrent-ruby'
           rescue Gem::LoadError
@@ -1024,7 +1064,7 @@ def shrink_dir(dir)
               Gem.install('concurrent-ruby')
               gem 'concurrent-ruby'
           end
-          require 'concurrent-ruby'
+          require 'concurrent'
           pool = Concurrent::ThreadPoolExecutor.new(
             min_threads: 1,
             max_threads: CREW_NPROC,
@@ -1033,21 +1073,29 @@ def shrink_dir(dir)
           )
           @execfiles.each_line do |execfile|
             pool.post do
-              begin
-                puts "Attempting to compress #{execfile.chomp} ...".lightblue
-                system "upx --lzma -k --overlay=skip #{execfile}"
-                system "upx -t #{execfile}" and FileUtils.rm "#{execfile}.~"
-              rescue
-                FileUtils.mv "#{execfile}.~", execfile
-              ensure
-                FileUtils.rm_f "#{execfile}.~"
+              execfile.slice! "."
+              execfile = dir + execfile.chomp
+              puts "Attempting to compress #{execfile} ...".orange
+              # Make tmp file for compression
+              unless system "upx --lzma #{execfile}-crewupxtmp"
+                puts "Compression of #{execfile} failed...".orange if @opt_verbose
+                FileUtils.rm_f "#{execfile}-crewupxtmp"
               end
+              if File.exist?("#{execfile}-crewupxtmp")
+                puts "Testing compressed #{execfile}...".lightblue if @opt_verbose
+                if system "upx -t #{execfile}-crewupxtmp && cp #{execfile}-crewupxtmp #{execfile}"
+                  puts "#{execfile} successfully compressed...".lightgreen
+                else
+                  FileUtils.rm_f "#{execfile}-crewupxtmp" if File.exist?("#{execfile}-crewupxtmp")
+                end
+              end
+              FileUtils.rm "#{execfile}-crewupxtmp" if File.exist?("#{execfile}-crewupxtmp")
             end
           end
           pool.shutdown
           pool.wait_for_termination
-          # This should no longer be needed, but leave for cleanup.
-          system 'find . -executable -type f -name "*.~" -delete'
+          # Make sure temporary compression copies are deleted.
+          system 'find . -executable -type f -name "*-crewupxtmp" -delete'
         end
       end
     end
@@ -1062,10 +1110,45 @@ def install_package(pkgdir)
     FileUtils.mv 'dlist', CREW_META_PATH + @pkg.name + '.directorylist', verbose: @fileutils_verbose
     FileUtils.mv 'filelist', CREW_META_PATH + @pkg.name + '.filelist', verbose: @fileutils_verbose
 
+    @brokensymlinks = nil
+    @brokensymlinks = %x[find . -type l -exec test ! -e {} \\; -print].chomp
+    unless @brokensymlinks.nil? or @brokensymlinks.empty?
+      puts "There are broken symlinks. Will try to fix.".orange if @opt_verbose
+      @brokensymlinks.each_line do |fixlink|
+        @brokentarget = nil
+        @fixedtarget = nil
+        @brokentarget = %x[readlink -n #{fixlink}].chomp
+        puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{@brokentarget}".orange if @opt_verbose
+        @fixedtarget = @brokentarget.delete_prefix(CREW_DEST_DIR).chomp
+        @fixedlink_loc = pkgdir + fixlink.delete_prefix('.')
+        @fixedlink_loc = @fixedlink_loc.chomp
+        # If no changes were made, don't replace symlink
+        unless @fixedtarget == @brokentarget
+          FileUtils.ln_sf "#{@fixedtarget}","#{@fixedlink_loc}"
+          puts "Fixed: #{@fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if @opt_verbose
+        end
+      end
+    end
+    if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+        puts "Using rdfind to convert duplicate files to hard links."
+        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
+    end
     if Dir.exists? "#{pkgdir}/home" then
-      system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
-    elsif Dir.exists? "#{pkgdir}/usr" then
-      system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      if system("#{CREW_PREFIX}/bin/rsync -V > /dev/null 2>&1")
+        system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
+      else
+        puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred if @opt_verbose
+        system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      end
+    end
+    if Dir.exists? "#{pkgdir}/usr/local" then
+      if system("#{CREW_PREFIX}/bin/rsync -V > /dev/null 2>&1")
+        # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
+        system "rsync -ahHAXWx --remove-source-files ./usr/local/ #{CREW_PREFIX}"
+      else
+        puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred if @opt_verbose
+        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      end
     end
   end
 end
@@ -1198,6 +1281,7 @@ def resolve_dependencies
     @dependencies.each do |dep|
       search dep
       print_current_package
+      @pkg.is_dep = true
       install
     end
     if @resolve_dependencies_and_install == 1 or @resolve_dependencies_and_build == 1
@@ -1257,7 +1341,7 @@ def install
   end
 
   #add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, is_dep: @pkg.is_dep)
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
@@ -1398,6 +1482,40 @@ def remove(pkgName)
   @pkg.remove
 
   puts "#{pkgName.capitalize} removed!".lightgreen
+end
+
+def autoremove_command(args)
+  deps_of_installed_pkgs = @device[:installed_packages].map do |pkg|
+    # ignore deleted/non-exist package recipes
+    next unless File.exist?("#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb")
+    set_package pkg[:name], "#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb"
+    next @pkg.dependencies
+  end.flatten
+
+  remove_pkg = @device[:installed_packages].select do |pkg|
+    pkg[:is_dep] and !deps_of_installed_pkgs.include?(pkg[:name])
+  end.map {|pkg| pkg[:name] }
+
+  return if remove_pkg.empty?
+  
+  puts 'The following packages also need to be REMOVED: '
+  remove_pkg.each do |pkg|
+    print pkg + ' '
+  end
+  print "\n" + 'Do you agree? [Y/n] '
+
+  response = STDIN.getc
+  case response
+  when 'n'
+    abort 'No changes made.'
+  when "\n", "y", "Y"
+    puts 'Proceeding...'
+  else
+    puts "I don't understand `#{response}`. :(".lightred
+    abort 'No changes made.'
+  end
+  
+  remove_pkg.each {|pkg| remove(pkg) }
 end
 
 def build_command(args)

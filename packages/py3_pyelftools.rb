@@ -4,23 +4,23 @@ class Py3_pyelftools < Package
   description 'Pure-Python library for parsing and analyzing ELF files and DWARF debugging information.'
   homepage 'https://github.com/eliben/pyelftools/'
   @_ver = '0.27'
-  version @_ver
+  version "#{@_ver}-1"
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/eliben/pyelftools.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_armv7l/py3_pyelftools-0.27-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_armv7l/py3_pyelftools-0.27-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_i686/py3_pyelftools-0.27-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27_x86_64/py3_pyelftools-0.27-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27-1_armv7l/py3_pyelftools-0.27-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27-1_armv7l/py3_pyelftools-0.27-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27-1_i686/py3_pyelftools-0.27-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.27-1_x86_64/py3_pyelftools-0.27-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b994942b282cb1c859b5001f16839476c4d99cd22a75b6f926342aa23d91444e',
-     armv7l: 'b994942b282cb1c859b5001f16839476c4d99cd22a75b6f926342aa23d91444e',
-       i686: '0826647dfdf8f0eea9d21e64d170dd5dbbe350145cf46d5ae3b42536dfa014f2',
-     x86_64: 'a4fb7eb28776078f41b15bd41d25ed0f2ca70629186cacb305116ba0d7975dbe'
+    aarch64: 'cee59c129fbccd6f72d2ea45ba82cc0d986bcf8c42ed4813a473781d8a73538a',
+     armv7l: 'cee59c129fbccd6f72d2ea45ba82cc0d986bcf8c42ed4813a473781d8a73538a',
+       i686: '9105d58b8bbf878aa48c558dbcf11394b24272610ebfdc5ad4b0185023daa0f6',
+     x86_64: '5c2a2b09a2a480f4be521ac6075d14c7ed07bce390603370c76c4c23e08666ef'
   })
 
   depends_on 'py3_setuptools' => :build

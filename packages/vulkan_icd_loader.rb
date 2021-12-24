@@ -17,10 +17,10 @@ class Vulkan_icd_loader < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.199_x86_64/vulkan_icd_loader-1.2.199-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e7219c181b2952edb9a11303a75d34f15d653a70d86b9b33ba6f4f40f92fa87c',
-     armv7l: 'e7219c181b2952edb9a11303a75d34f15d653a70d86b9b33ba6f4f40f92fa87c',
-       i686: '8dd3cd06b7534518ffb38bae42f972d623a62cad1bf8146ca2ca4b62598d1e1f',
-     x86_64: '1e2844c6d3bd9cddb0b5d1c9154279227264214543cbb9366b66adb79539d564'
+    aarch64: '61ff085298ade5bb89bdddd79f62f1fbcccba4642af0dd93925de1fc5afba005',
+     armv7l: '61ff085298ade5bb89bdddd79f62f1fbcccba4642af0dd93925de1fc5afba005',
+       i686: 'c1d9c5e78dd8d0898257babaa5914583e57fc764b0a18d5bc9f94e96bfb4cbcc',
+     x86_64: 'cb836195b0cd06b554db8e426665f980ac0757b1a3ae682a90fec215188dd5dc'
   })
 
   depends_on 'libx11'

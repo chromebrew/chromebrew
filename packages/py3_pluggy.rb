@@ -3,7 +3,7 @@ require 'package'
 class Py3_pluggy < Package
   description 'Pluggy provides plugin and hook calling mechanisms for Python.'
   homepage 'https://pluggy.readthedocs.io/'
-  @_ver = '0.13.1'
+  @_ver = '1.0.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Py3_pluggy < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/0.13.1_armv7l/py3_pluggy-0.13.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/0.13.1_armv7l/py3_pluggy-0.13.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/0.13.1_i686/py3_pluggy-0.13.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/0.13.1_x86_64/py3_pluggy-0.13.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0_armv7l/py3_pluggy-1.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0_armv7l/py3_pluggy-1.0.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0_i686/py3_pluggy-1.0.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0_x86_64/py3_pluggy-1.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b52471f3165e506014641212c666b4b0cd83554a420f9b956c528a5941efc0b0',
-     armv7l: 'b52471f3165e506014641212c666b4b0cd83554a420f9b956c528a5941efc0b0',
-       i686: 'b95f3e24bcd6e1feeb40e4f3f1a85b49942117d0b2ad84a783a0c947f6593ea6',
-     x86_64: '65b5e572673f2c23516b5eb728dba13a9ab228e992170e0237cb84e54319e38a'
+    aarch64: '249e143babbdd5eb4e2f36435b25a65e0a67dc70b0f99c04bf5b6549a48471b1',
+     armv7l: '249e143babbdd5eb4e2f36435b25a65e0a67dc70b0f99c04bf5b6549a48471b1',
+       i686: '77f1ad02115e8559cadba76fb7d28f31646681400cb61ac67aed66bbdf0b3573',
+     x86_64: '8ac08b55e1e90b5ebc2c40fc43d656a0bd02dd087405af7ebb793d3fb245274b'
   })
 
   depends_on 'py3_setuptools' => :build
