@@ -33,7 +33,7 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
   else
     # fallback to curl if the url protocol is not http(s):// or file://
     0.step(3,1) do |i|
-      unless system "#{CURL} --ssl -L -C - '#{uri.to_s}' -o '#{filename}'"
+      unless system "#{CURL} --ssl -#L -C - '#{uri.to_s}' -o '#{filename}'"
         puts "Retrying, #{3-i} retries left.".yellow
       else
         return true
