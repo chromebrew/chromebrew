@@ -22,7 +22,7 @@ class Fd < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/bash-completion/completions/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/zsh/site-functions/"
     FileUtils.install "target/release/fd", "#{CREW_DEST_PREFIX}/bin/fd", mode: 0o755
-    FileUtils.install "target/release/build/fd-find-88bf4d216dc4818c/out/fd.bash", "#{CREW_DEST_PREFIX}/share/bash-completion/completions/fd"
+    FileUtils.install %x[find . -name 'fd.bash' -type f].to_s.chomp, "#{CREW_DEST_PREFIX}/share/bash-completion/completions/fd"
     FileUtils.install "doc/fd.1", "#{CREW_DEST_MAN_PREFIX}/man1/fd.1"
     FileUtils.install "contrib/completion/_fd", "#{CREW_DEST_PREFIX}/share/zsh/site-functions/_fd"
   end
