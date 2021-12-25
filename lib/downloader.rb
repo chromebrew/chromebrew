@@ -36,7 +36,7 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
       unless system "#{CURL} --ssl -L -C - '#{uri.to_s}' -o '#{filename}'"
         puts "Retrying, #{3-i} retries left.".yellow
       else
-        return
+        return true
       end
     end
     # the download failed if we're still here
