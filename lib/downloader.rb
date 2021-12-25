@@ -21,8 +21,26 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
   trap('WINCH') { setTermSize }
   uri = URI(url)
 
-  if uri.scheme == 'file'
-    return FileUtils.cp url.path, filename
+  case uri.scheme
+  when /http?/
+  when 'file'
+    # use FileUtils to copy if it is a local file (the url protocol is file://)
+    if File.exist?(uri.path)
+      return FileUtils.cp uri.path, filename
+    else
+      abort "#{uri.path}: No such file :/".lightred
+    end
+  else
+    # fallback to curl if the url protocol is not http(s):// or file://
+    0.step(3,1) do |i|
+      unless system "#{CURL} --ssl -L -C - '#{uri.to_s}' -o '#{filename}'"
+        puts "Retrying, #{3-i} retries left.".yellow
+      else
+        return
+      end
+    end
+    # the download failed if we're still here
+    abort 'Download failed :/ Please check your network settings.'.lightred
   end
 
   Net::HTTP.start(uri.host, uri.port, {
