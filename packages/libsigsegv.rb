@@ -3,32 +3,16 @@ require 'package'
 class Libsigsegv < Package
   description 'GNU libsigsegv is a library for handling page faults in user mode.'
   homepage 'https://www.gnu.org/software/libsigsegv/'
-  version '2.12'
+  version '2.13'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libsigsegv/libsigsegv-2.12.tar.gz'
-  source_sha256 '3ae1af359eebaa4ffc5896a1aee3568c052c99879316a1ab57f8fe1789c390b6'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_armv7l/libsigsegv-2.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_i686/libsigsegv-2.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.12_x86_64/libsigsegv-2.12-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'e95892871d5cfd7164b3056e87461fd852d1a224ca0a23f0dd73a98e71a83217',
-     armv7l: 'e95892871d5cfd7164b3056e87461fd852d1a224ca0a23f0dd73a98e71a83217',
-       i686: '626159d654d90139bfb1301323aea5c28b6ad37f895824323471eb7911a5ce4f',
-     x86_64: '02097e964faa7116a1e4701f322da97375d8df1a0928cadc05e86b838fe9fef3',
-  })
+  source_url 'https://ftpmirror.gnu.org/libsigsegv/libsigsegv-2.13.tar.gz'
+  source_sha256 'be78ee4176b05f7c75ff03298d84874db90f4b6c9d5503f0da1226b3a3c48119'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-shared',
-           '--disable-static',
-           '--with-pic'
+    system 'autoreconf -fiv'
+    # libsigsegv fails to build with LTO.
+    system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
