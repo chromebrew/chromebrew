@@ -21,6 +21,10 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
   trap('WINCH') { setTermSize }
   uri = URI(url)
 
+  if uri.scheme == 'file'
+    return FileUtils.cp url.path, filename
+  end
+
   Net::HTTP.start(uri.host, uri.port, {
       max_retries: 3,
       use_ssl: uri.scheme.eql?('https'),
