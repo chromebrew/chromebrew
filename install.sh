@@ -47,7 +47,7 @@ fi
 # disallow non-stable channels Chrome OS
 if [ -f /etc/lsb-release ]; then
   if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
-    echo -e "${YELLOW}The beta, dev, and canary channel are unsupported by Chromebrew${RESET}"
+    echo -e "${RED}The beta, dev, and canary channel are unsupported by Chromebrew${RESET}"
     echo -e "${YELLOW}Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
     exit 1
   fi
@@ -55,11 +55,12 @@ else
   echo -e "${YELLOW}Unable to detect system information, installation will continue.${RESET}"
 fi
 
-echo -e "\n${GREEN}Welcome to Chromebrew!${RESET}\n"
 if [ "${EUID}" == "0" ]; then
   echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
   exit 1;
 fi
+
+echo -e "\n${GREEN}Welcome to Chromebrew!${RESET}\n"
 
 # prompt user to enter the sudo password if it set
 # if the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set
@@ -80,7 +81,7 @@ function curl () {
       return 0 || \
       echo -e "${YELLOW}Retrying, $((3-$i)) retries left.${RESET}"
   done
-  # the download failed if we still here
+  # the download failed if we're still here
   echo -e "${RED}Download failed :/ Please check your network settings.${RESET}"
   return 1
 }
@@ -110,8 +111,8 @@ done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
 # Delete ${CREW_PREFIX}/{var,local} symlink on some Chromium OS distro if exist
-[ -L ${CREW_PREFIX}/var ] && sudo rm -f #{CREW_PREFIX}/var
-[ -L ${CREW_PREFIX}/local ] && sudo rm -f #{CREW_PREFIX}/local
+[ -L ${CREW_PREFIX}/var ] && sudo rm -f "${CREW_PREFIX}/var"
+[ -L ${CREW_PREFIX}/local ] && sudo rm -f "${CREW_PREFIX}/local"
 
 # prepare directories
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
