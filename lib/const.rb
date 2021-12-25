@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.19.4'
+CREW_VERSION = '1.20.1'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -87,6 +87,26 @@ end
 
 # If CURL environment variable exists use it in lieu of curl.
 CURL = ENV['CURL'] || 'curl'
+
+# set certificate file location for lib/downloader.rb
+SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV['SSL_CERT_FILE'])
+                  if File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
+                    "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
+                  else
+                    '/etc/ssl/certs/ca-certificates.crt'
+                  end
+                else
+                  ENV['SSL_CERT_FILE']
+                end
+SSL_CERT_DIR = if ENV['SSL_CERT_DIR'].to_s.empty? || !Dir.exist?(ENV['SSL_CERT_DIR'])
+                 if Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
+                   "#{CREW_PREFIX}/etc/ssl/certs"
+                 else
+                   '/etc/ssl/certs'
+                 end
+               else
+                 ENV['SSL_CERT_DIR']
+               end
 
 case ARCH
 when 'aarch64', 'armv7l'
