@@ -13,11 +13,13 @@ class Webkit2gtk_4 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_i686/webkit2gtk_4-2.32.4-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_x86_64/webkit2gtk_4-2.32.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
      armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
+       i686: '1a5272472c312165616317481b406085a237f7f5748ab284a826af1faf9c541e',
      x86_64: '36c5c54bc95ede8c00fb0b35361c4c20213ab6129a2712c10f91ff9c08128942'
   })
 

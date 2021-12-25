@@ -3,7 +3,7 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2783'
+  @_ver = '8.2.3892'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Vim_runtime < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_i686/vim_runtime-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_x86_64/vim_runtime-8.2.2783-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.3892_armv7l/vim_runtime-8.2.3892-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.3892_armv7l/vim_runtime-8.2.3892-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.3892_i686/vim_runtime-8.2.3892-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.3892_x86_64/vim_runtime-8.2.3892-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
-     armv7l: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
-       i686: 'fe0bed8bc2aaa80db2748876c746cfce7f6c1004a30f3293f9497bdbdf6ca04e',
-     x86_64: 'f1e37f9c9ad6cf1fea25581634abc0a67ec51f4c64bfc0936b9a9544a958095b'
+    aarch64: 'be93a669b61829494079eb0338875c5f0075f4f23a4bfe6014711395e52ddb9d',
+     armv7l: 'be93a669b61829494079eb0338875c5f0075f4f23a4bfe6014711395e52ddb9d',
+       i686: 'c549d40159b4c48a3677c8161328aa92350b61ad51aa9521c15ed158b65e0099',
+     x86_64: '128056d94993c0219c7dfa4e2a46a76077d1a6df888852c72597b22adbd5ebd5'
   })
 
   depends_on 'gpm'
