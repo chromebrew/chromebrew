@@ -20,7 +20,7 @@ class Bison < Package
   end
 
   def self.check
-    puts 'Information: Bison checks take a very long time.'.lightblue
+    puts 'Notice: Bison checks take a very long time.'.yellow
     system 'make', 'check'
   end
 end
