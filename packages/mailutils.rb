@@ -17,7 +17,6 @@ class Mailutils < Package
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
             --enable-ipv6 \
             --with-gnutls \
-            --with-tcpwrappers \
             --with-berkeley-db \
             --without-guile \
             --with-gdbm \
