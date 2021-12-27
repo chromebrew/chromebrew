@@ -3,17 +3,17 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://www.balena.io/etcher/'
-  @_ver = '1.7.1'
+  @_ver = '1.7.2'
   version @_ver
   license 'Apache-2.0'
   compatibility 'x86_64, i686'
   case ARCH
   when 'x86_64'
     source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-x64.AppImage"
-    source_sha256 'e5ac6599898d9804311df0e35552f10d08da323cab5fb1fdf7fef567252b021b'
+    source_sha256 '1ab261f16e50f191eac8e6b6f8007e8587ccc423e5601909144caf8690cdfb71'
   when 'i686'
     source_url "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-ia32.AppImage"
-    source_sha256 '3cf3ee7fc895532d5d74941eca4b56b8a35c3a4735c924cd9c5e29ca4f7e2076'
+    source_sha256 '7864fe758150467dd5d642f5ff261963c1dceaeb1026dc4c79414e0ba849a9d7'
   end
 
   depends_on 'gtk2'
