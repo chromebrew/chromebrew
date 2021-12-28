@@ -47,9 +47,8 @@ class Libcap < Package
   end
 
   def self.check
-    @container_check = system 'grep :/docker /proc/self/cgroup &> /dev/null'
-    # Tests do not work in container.
-    return unless @container_check
+    # Tests do not work in a Docker container.
+    return if File.exist?('/.dockerenv')
 
     system 'make', 'test'
   end
