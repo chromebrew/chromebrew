@@ -5,10 +5,23 @@ class Libcap < Package
   homepage 'https://directory.fsf.org/wiki/Libcap/'
   @_ver = '2.62'
   version @_ver
-  compatibility 'all'
   license 'GPL-2 or BSD'
+  compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/libs/libcap/libcap.git'
   git_hashtag "libcap-#{@_ver}"
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_armv7l/libcap-2.62-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_armv7l/libcap-2.62-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_i686/libcap-2.62-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_x86_64/libcap-2.62-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'ad1ba9eeb6311aa50cae4933861e6ef3c6660114f8f59fae8b38ec33cf52f4ba',
+     armv7l: 'ad1ba9eeb6311aa50cae4933861e6ef3c6660114f8f59fae8b38ec33cf52f4ba',
+       i686: 'fde7113445a251b6109911cbd5de39300ec2469091cdaea6bc6a57e726e0ef86',
+     x86_64: '3964a327f72a3323e1a192d5fbe4020f29e83ede75347e0d65582ace36f4f66b'
+  })
 
   depends_on 'gperf' => :build
   depends_on 'linux_pam'
@@ -34,6 +47,10 @@ class Libcap < Package
   end
 
   def self.check
+    @container_check = system 'grep :/docker /proc/self/cgroup &> /dev/null'
+    # Tests do not work in container.
+    return unless @container_check
+
     system 'make', 'test'
   end
 end
