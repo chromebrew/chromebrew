@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.20.0'
+CREW_VERSION = '1.20.1'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -122,8 +122,8 @@ end
 
 CREW_COMMON_FLAGS = '-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=gold'
 CREW_COMMON_FNO_LTO_FLAGS = '-O2 -pipe -fno-lto -fPIC -fuse-ld=gold'
-CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 CREW_LDFLAGS = '-flto'
+CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
 CREW_ENV_OPTIONS = <<~OPT.chomp
   CFLAGS='#{CREW_COMMON_FLAGS}' \
@@ -131,6 +131,13 @@ CREW_ENV_OPTIONS = <<~OPT.chomp
   FCFLAGS='#{CREW_COMMON_FLAGS}' \
   FFLAGS='#{CREW_COMMON_FLAGS}' \
   LDFLAGS='#{CREW_LDFLAGS}'
+OPT
+CREW_ENV_FNO_LTO_OPTIONS = <<~OPT.chomp
+  CFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
+  CXXFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
+  FCFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
+  FFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
+  LDFLAGS='#{CREW_FNO_LTO_LDFLAGS}'
 OPT
 CREW_OPTIONS = <<~OPT.chomp
   --prefix=#{CREW_PREFIX} \

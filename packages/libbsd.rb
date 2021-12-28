@@ -3,31 +3,28 @@ require 'package'
 class Libbsd < Package
   description 'This library provides useful functions commonly found on BSD systems, and lacking on others like GNU systems, thus making it easier to port projects with strong BSD origins, without needing to embed the same code over and over again on each project.'
   homepage 'https://libbsd.freedesktop.org/wiki'
-  version '0.10.0'
+  @_ver = '0.11.3'
+  version @_ver
   license 'BSD, BSD-2, BSD-4, ISC'
   compatibility 'all'
-  source_url 'https://libbsd.freedesktop.org/releases/libbsd-0.10.0.tar.xz'
-  source_sha256 '34b8adc726883d0e85b3118fa13605e179a62b31ba51f676136ecb2d0bc1a887'
+  source_url 'https://git.hadrons.org/git/libbsd.git'
+  git_hashtag @_ver
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.10.0_armv7l/libbsd-0.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.10.0_armv7l/libbsd-0.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.10.0_i686/libbsd-0.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.10.0_x86_64/libbsd-0.10.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '37a763df2252323db210cdb3ea216adaa5e04702975de7b3e13164d7b89f7b85',
-     armv7l: '37a763df2252323db210cdb3ea216adaa5e04702975de7b3e13164d7b89f7b85',
-       i686: '0cc3fad8e96ddf9cd0c501a48043f76c8e2d25a8ce2114912cefe0f39633a14c',
-     x86_64: '1eaed035917e2d3656a3e708777cc18f3f350ec495185bae77c3a8f7e254da52',
-  })
+  depends_on 'libmd'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    FileUtils.mkdir_p 'm4'
+    system 'autoupdate'
+    system 'autoreconf -fiv'
+    system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS}"
     system "make"
   end
 
   def self.install
     system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+  end
+
+  def self.check
+    system "make", "check"
   end
 end
