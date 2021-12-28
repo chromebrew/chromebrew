@@ -4,18 +4,18 @@
 set -e
 
 #chromebrew directories
-: ="${OWNER:=skycocker}"
+: "${OWNER:=skycocker}"
 : "${REPO:=chromebrew}"
 : "${BRANCH:=master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
-CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
+: "${CREW_PREFIX:=/usr/local}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 : "${CURL:=/usr/bin/curl}"
-CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
+: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 # For container usage, where we want to specify i686 arch
 # on a x86_64 host by setting ARCH=i686.
 : "${ARCH:=$(uname -m)}"
@@ -156,10 +156,10 @@ fi
 for package in $BOOTSTRAP_PACKAGES; do
   pkgfile="${CREW_PACKAGES_PATH}/${package}.rb"
 
-  [[ "$(sed -n '/binary_sha256/,/}/p' "${pkgfile}")" =~ .*x86_64:[[:blank:]]*[\'\"]([^\'\"]*) ]]
+  [[ "$(sed -n '/binary_sha256/,/}/p' "${pkgfile}")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
     sha256s+=("${BASH_REMATCH[1]}")
 
-  [[ "$(sed -n '/binary_url/,/}/p' "${pkgfile}")" =~ .*x86_64:[[:blank:]]*[\'\"]([^\'\"]*) ]]
+  [[ "$(sed -n '/binary_url/,/}/p' "${pkgfile}")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
     urls+=("${BASH_REMATCH[1]}")
 done
 
