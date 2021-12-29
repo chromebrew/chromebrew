@@ -16,16 +16,21 @@ class Libcap_ng < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.2_x86_64/libcap_ng-0.8.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'e2c3b3d0e89bb490b92901d5a290b05a2467a0927cfbd60ef69e9b42816a8e91',
-     armv7l: 'e2c3b3d0e89bb490b92901d5a290b05a2467a0927cfbd60ef69e9b42816a8e91',
-       i686: 'c880cf4e563f949d8516242a63dd75a712c81387ffca8d69ef1f38160df0cd55',
-     x86_64: 'ed2882b6cfa3146c27ddf479bfd3f1f97941012802936b9ed5b1d894ee8ff9f1'
+    aarch64: '340c58b5a3d0225fd783c27ef82544640add2dd0f268a58185fb76b938226a48',
+     armv7l: '340c58b5a3d0225fd783c27ef82544640add2dd0f268a58185fb76b938226a48',
+       i686: '9bc669a2810c2b52faacb62f090d0291393782dba241f0b05bf96cfacfd8acde',
+     x86_64: '4b8cba2423a776d025e888dfd0e42ad9b9ce9402576271529fc89b5abb33a193'
   })
 
   depends_on 'python3'
 
+  def self.patch
+    system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' utils/captest.c"
+  end
+
   def self.build
     system './autogen.sh'
+    system 'filefix'
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
