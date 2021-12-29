@@ -28,7 +28,7 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
     if File.exist?(uri.path)
       return FileUtils.cp uri.path, filename
     else
-      abort "#{uri.path}: File not exist :/".lightred
+      abort "#{uri.path}: File not found :/".lightred
     end
   else
     # fallback to curl if the url protocol is not http(s):// or file://
