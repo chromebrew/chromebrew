@@ -155,10 +155,7 @@ class Package
     # See lib/const.rb for more details
 
     # extract command arguments
-    cmd_args = args.select {|arg| arg.is_a?(String) }
-    # there is no need to pass to the shell if the command is passed in mutiple args
-    # see https://ruby-doc.org/core-3.0.2/Kernel.html#method-i-system for more details
-    need_shell = cmd_args.size.eql?(1)
+    cmd_args = args.select {|arg| arg.is_a?(String) } .join(' ')
 
     # extract env variables (if provided)
     env_options = if args[0].is_a?(Hash)
@@ -176,26 +173,15 @@ class Package
       { exception: true }
     end
 
-    cmd_args.map! do |arg|
-      unless arg =~ /-j\s*\d+/
-        # add -j arg to build commands
-        arg.sub(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}")
-      end
-    end
+    # add -j arg to build commands
+    cmd_args.sub(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+/
 
     begin
-      if need_shell
-        # use bash instead of /bin/sh
-        Kernel.system env_options,
-                      'bash', '-e', '-c',
-                      *cmd_args,      # ensure the command is passed first
-                      system_options  # pass Kernel.system options (all args after command) then
-      else
-        # pass to Kernel.system directly since it doesn't need a shell
-        Kernel.system env_options,
-                      *cmd_args,      # ensure the command is passed first
-                      system_options  # pass Kernel.system options (all args after command) then
-      end
+      # use bash instead of /bin/sh
+      Kernel.system env_options,
+                    'bash', '-e', '-c',
+                    cmd_args,       # ensure the command is passed first
+                    system_options  # pass Kernel.system options (all args after command) then
     rescue => e
       exitstatus = $?.exitstatus
       # print failed line number and error message
