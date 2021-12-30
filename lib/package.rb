@@ -5,6 +5,16 @@ class Package
            :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag, :is_fake
 
+  create_placeholder :preflight,   # Function for checks to see if install should occur.
+                     :patch,       # Function to perform patch operations prior to build from source.
+                     :prebuild,    # Function to perform pre-build operations prior to build from source.
+                     :build,       # Function to perform build from source.
+                     :check,       # Function to perform check from source build. (executes only during `crew build`)
+                     :preinstall,  # Function to perform pre-install operations prior to install.
+                     :install,     # Function to perform install from source build.
+                     :postinstall, # Function to perform post-install for both source build and binary distribution.
+                     :remove       # Function to perform after package removal.
+
   class << self
     attr_reader :is_fake
     attr_accessor :name, :is_dep, :in_build, :build_from_source
@@ -167,9 +177,7 @@ class Package
     # Add -j arg to build commands.
     cmd_args.sub(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+/
     # Escape special bash characters.
-    cmd_args.gsub!('"','\\\\"')
-    cmd_args.gsub!('$','\\\\$')
-    cmd_args.gsub!('`','\\\\`')
+    cmd_args.gsub!(/("|\$|`)/, '\\\\\1')
 
     begin
       # use bash instead of /bin/sh
