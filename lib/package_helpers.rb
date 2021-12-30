@@ -2,7 +2,7 @@ class InstallError < RuntimeError; end
 
 def create_placeholder (*functions)
   # create_placeholder: create a placeholder for functions that will be used by crew later
-  function.each do |func|
+  functions.each do |func|
     self.class_eval("def self.#{func.to_s}; end")
   end
 end
