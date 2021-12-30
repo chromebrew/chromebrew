@@ -4,18 +4,18 @@
 set -e
 
 #chromebrew directories
-OWNER="${OWNER:-skycocker}"
-REPO="${REPO:-chromebrew}"
-BRANCH="${BRANCH:-master}"
+: "${OWNER:=skycocker}"
+: "${REPO:=chromebrew}"
+: "${BRANCH:=master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
-CREW_PREFIX="${CREW_PREFIX:-/usr/local}"
+: "${CREW_PREFIX:=/usr/local}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
-CURL="${CURL:-curl}"
-CREW_CACHE_DIR="${CREW_CACHE_DIR:-$CREW_PREFIX/tmp/packages}"
+: "${CURL:=/usr/bin/curl}"
+: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 # For container usage, where we want to specify i686 arch
 # on a x86_64 host by setting ARCH=i686.
 : "${ARCH:=$(uname -m)}"
@@ -30,15 +30,61 @@ RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
 GREEN='\e[1;32m';  # Use Green for success messages.
 BLUE='\e[1;34m';   # Use Blue for intrafunction messages.
-GRAY='\e[1;37m';   # Use Gray for program output.
+GRAY='\e[0;37m';   # Use Gray for program output.
 MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
-echo -e "${GREEN}Welcome to Chromebrew!${RESET}\n"
+# skip all checks if running on a docker container
+grep ':/docker' /proc/self/cgroup &> /dev/null && CREW_FORCE_INSTALL=1
+
+# reject crostini
+if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
+  echo -e "${RED}Crostini containers are not supported by Chromebrew :/${RESET}"
+  echo -e "${YELLOW}Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
+  exit 1
+fi
+
+# disallow non-stable channels Chrome OS
+if [ -f /etc/lsb-release ]; then
+  if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
+    echo -e "${RED}The beta, dev, and canary channel are unsupported by Chromebrew${RESET}"
+    echo -e "${YELLOW}Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
+    exit 1
+  fi
+else
+  echo -e "${YELLOW}Unable to detect system information, installation will continue.${RESET}"
+fi
+
 if [ "${EUID}" == "0" ]; then
   echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
   exit 1;
 fi
+
+echo -e "\n${GREEN}Welcome to Chromebrew!${RESET}\n"
+
+# prompt user to enter the sudo password if it set
+# if the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set
+if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
+  echo -e "${BLUE}Please enter the developer mode password${RESET}"
+  # reset sudo timeout
+  sudo -k
+  sudo /bin/true
+fi
+
+# force curl to use system libraries
+function curl () {
+  # retry if download failed
+  # the --retry/--retry-all-errors parameter in curl will not work with the 'curl: (7) Couldn't connect to server'
+  # error, a for loop is used here
+  for (( i = 0; i < 4; i++ )); do
+    env LD_LIBRARY_PATH='' ${CURL} --ssl -C - "${@}" && \
+      return 0 || \
+      echo -e "${YELLOW}Retrying, $((3-$i)) retries left.${RESET}"
+  done
+  # the download failed if we're still here
+  echo -e "${RED}Download failed :/ Please check your network settings.${RESET}"
+  return 1
+}
 
 case "${ARCH}" in
 "i686"|"x86_64"|"armv7l"|"aarch64")
@@ -64,11 +110,9 @@ do
 done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
-# Delete 'var' symlink on Cloudready platform
-if [[ $(grep neverware /etc/lsb-release) != "" ]]; then
-  [ -L /usr/local/var ] && sudo rm -f /usr/local/var
-  [ -L /usr/local/local ] && sudo rm -f /usr/local/local
-fi
+# Delete ${CREW_PREFIX}/{var,local} symlink on some Chromium OS distro if exist
+[ -L ${CREW_PREFIX}/var ] && sudo rm -f "${CREW_PREFIX}/var"
+[ -L ${CREW_PREFIX}/local ] && sudo rm -f "${CREW_PREFIX}/local"
 
 # prepare directories
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
@@ -77,21 +121,25 @@ for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"
   fi
 done
 
+echo -e "\n${YELLOW}Downloading information for Bootstrap packages...${RESET}"
+echo -en "${GRAY}"
+# use parallel mode if available
+if [[ "$(curl --help curl)" =~ --parallel ]]; then
+  (cd "${CREW_LIB_PATH}"/packages && curl -OLZ "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
+else
+  (cd "${CREW_LIB_PATH}"/packages && curl -OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
+fi
+echo -e "${RESET}"
+
 # prepare url and sha256
 urls=()
-temp_url=
 sha256s=()
-temp_sha256=
-k=0
 
 case "${ARCH}" in
 "armv7l"|"aarch64")
   if ! type "xz" > /dev/null; then
-    temp_url='https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz'
-    temp_sha256='4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7'
-    urls[k]="$temp_url"
-    sha256s[k]="$temp_sha256"
-    k=$((k+1))
+    urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
+    sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
   fi
   ;;
 esac
@@ -104,18 +152,15 @@ if [ ! -f device.json ]; then
     --arg key1 'installed_packages' \
     '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 fi
-echo -e "\n${YELLOW}Downloading information for Bootstrap packages...${RESET}"
-echo -e "${GRAY}"
-(cd "${CREW_LIB_PATH}"/packages && curl -#OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
-echo -e "${RESET}"
 
 for package in $BOOTSTRAP_PACKAGES; do
-  pkgfile="$(cat "${CREW_LIB_PATH}"/packages/"$package".rb)"
-  temp_url="$(echo "$pkgfile" | grep -m 3 "$ARCH": | head -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
-  temp_sha256="$(echo "$pkgfile" | grep -m 3 "$ARCH": | tail -n 1 | cut -d\' -f2 | tr -d \' | tr -d \" | sed 's/,//g')"
-  urls[k]="$temp_url"
-  sha256s[k]="$temp_sha256"
-  k=$((k+1))
+  pkgfile="${CREW_PACKAGES_PATH}/${package}.rb"
+
+  [[ "$(sed -n '/binary_sha256/,/}/p' "${pkgfile}")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
+    sha256s+=("${BASH_REMATCH[1]}")
+
+  [[ "$(sed -n '/binary_url/,/}/p' "${pkgfile}")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
+    urls+=("${BASH_REMATCH[1]}")
 done
 
 # functions to maintain packages
@@ -136,7 +181,7 @@ function download_check () {
     fi
     #download
     echo -e "${BLUE}Downloading ${1}...${RESET}"
-    $CURL '-#' -L "${2}" -o "${3}"
+    curl '-#' -L "${2}" -o "${3}"
 
     #verify
     echo -e "${BLUE}Verifying ${1}...${RESET}"
@@ -192,8 +237,8 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   tarfile="$(basename ${url})"
   name="${tarfile%%-*}"   # extract string before first '-'
   rest="${tarfile#*-}"    # extract string after first '-'
-  version="$(echo ${rest} | sed -e 's/-chromeos.*$//')"
-                        # extract string between first '-' and "-chromeos"
+  version="${rest%%-chromeos*}"
+                          # extract string between first '-' and "-chromeos"
 
   download_check "${name}" "${url}" "${tarfile}" "${sha256}"
   extract_install "${name}" "${tarfile}"
