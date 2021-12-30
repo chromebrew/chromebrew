@@ -109,52 +109,6 @@ class Package
     @is_fake
   end
 
-  # Function for checks to see if install should occur.
-  def self.preflight
-
-  end
-
-  # Function to perform patch operations prior to build from source.
-  def self.patch
-
-  end
-
-  # Function to perform pre-build operations prior to build from source.
-  def self.prebuild
-
-  end
-
-  # Function to perform build from source.
-  def self.build
-
-  end
-
-  # Function to perform check from source build.
-  # This executes only during `crew build`.
-  def self.check
-
-  end
-
-  # Function to perform pre-install operations prior to install.
-  def self.preinstall
-
-  end
-
-  # Function to perform install from source build.
-  def self.install
-
-  end
-
-  # Function to perform post-install for both source build and binary distribution.
-  def self.postinstall
-
-  end
-
-  # Function to perform after package removal.
-  def self.remove
-
-  end
-
   def self.system(*args)
     # add "-j#" argument to "make" at compile-time, if necessary
 
