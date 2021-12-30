@@ -156,15 +156,6 @@ class Package
 
     # extract command arguments
     cmd_args = args.select {|arg| arg.is_a?(String) } .join(' ')
-
-    # extract env variables (if provided)
-    env_options = if args[0].is_a?(Hash)
-      # merge CREW_ENV_OPTIONS and given env variables
-      CREW_ENV_OPTIONS.scan(/\b(.+?)=(.+)\b/).to_h.merge(args[0])
-    else
-      # return CREW_ENV_OPTIONS in hash
-      CREW_ENV_OPTIONS.scan(/\b(.+?)=(.+)\b/).to_h
-    end
   
     # extract Kernel.system options (if provided)
     system_options = if args[-1].is_a?(Hash)
@@ -178,15 +169,14 @@ class Package
 
     begin
       # use bash instead of /bin/sh
-      Kernel.system env_options,
-                    'bash', '-e', '-c',
-                    cmd_args,       # ensure the command is passed first
-                    system_options  # pass Kernel.system options (all args after command) then
+      @system_args = ''
+      [@system_args, "bash -e -c \"#{cmd_args}\""].reduce(&:concat)
+      Kernel.system(@system_args, system_options)
     rescue => e
       exitstatus = $?.exitstatus
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError.new("`#{cmd_args.join(' ')}` exited with #{exitstatus}")
+      raise InstallError, "`#{cmd_args}` exited with #{exitstatus}"
     end
   end
 end
