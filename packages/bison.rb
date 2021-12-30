@@ -3,28 +3,28 @@ require 'package'
 class Bison < Package
   description 'Bison is a general-purpose parser generator that converts an annotated context-free grammar into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables.'
   homepage 'https://www.gnu.org/software/bison/'
-  @_ver = '3.7.4'
+  @_ver = '3.8.2'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gnu/bison/bison-#{@_ver}.tar.xz"
-  source_sha256 'a3b5813f48a11e540ef26f46e4d288c0c25c7907d9879ae50e430ec49f63c010'
+  source_url "https://ftpmirror.gnu.org/bison/bison-#{@_ver}.tar.lz"
+  source_sha256 'fdf98bfe82abb04a34d4356753f7748dbbd2ef1221b1f202852a2b5ce0f78534'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_armv7l/bison-3.7.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_armv7l/bison-3.7.4-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_i686/bison-3.7.4-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.7.4_x86_64/bison-3.7.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.8.2_armv7l/bison-3.8.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.8.2_armv7l/bison-3.8.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.8.2_i686/bison-3.8.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bison/3.8.2_x86_64/bison-3.8.2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: 'ba8edbb5a88d16aedbd7c37dc247bd4a4fec5390063dc6220b1275a0bdcfb44c',
-      armv7l: 'ba8edbb5a88d16aedbd7c37dc247bd4a4fec5390063dc6220b1275a0bdcfb44c',
-        i686: '5e3db2010be0f04fefe4d4db3c265e4c5c96e7d9b36748fbd221fb71c4405ff5',
-      x86_64: '9ae17d6c8ae82bbf4ff2d6e2cdca52f91c21a8498b972f1012629697e6d8ee5d',
+  binary_sha256({
+    aarch64: '8f1ac3143e216a054c56a4dcb23d58078c7dbccdc67f86b1d4a8169fb4f0d43b',
+     armv7l: '8f1ac3143e216a054c56a4dcb23d58078c7dbccdc67f86b1d4a8169fb4f0d43b',
+       i686: '026e8c897e6f8c5bc1d30d17f0f5612d5d0b99e8e5cf77e16cecaf646716a755',
+     x86_64: 'e671fd14e25757fd0fc45d65443ff55d13df428e34e80fc2f642d86aa5a9df14'
   })
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
@@ -33,6 +33,7 @@ class Bison < Package
   end
 
   def self.check
-    system 'make check'
+    puts 'Notice: Bison checks take a very long time.'.yellow
+    system 'make', 'check'
   end
 end

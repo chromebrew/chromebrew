@@ -3,24 +3,24 @@ require 'package'
 class Py3_setuptools_rust < Package
   description 'Setuptools-rust provides rust support for setuptools.'
   homepage 'https://github.com/PyO3/setuptools-rust/'
-  @_ver = '0.12.1'
-  version "#{@_ver}-1"
+  @_ver = '1.1.2'
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/PyO3/setuptools-rust.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/0.12.1-1_armv7l/py3_setuptools_rust-0.12.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/0.12.1-1_armv7l/py3_setuptools_rust-0.12.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/0.12.1-1_i686/py3_setuptools_rust-0.12.1-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/0.12.1-1_x86_64/py3_setuptools_rust-0.12.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/1.1.2_armv7l/py3_setuptools_rust-1.1.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/1.1.2_armv7l/py3_setuptools_rust-1.1.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/1.1.2_i686/py3_setuptools_rust-1.1.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/1.1.2_x86_64/py3_setuptools_rust-1.1.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd3213f711c5849174df09d5c198830887829bba9d61c0c9be7d607d207e3f522',
-     armv7l: 'd3213f711c5849174df09d5c198830887829bba9d61c0c9be7d607d207e3f522',
-       i686: 'cfeafb87059fc1fd28d8f3a7e15ad4721079631eec322af966ec7f519b5b2f8b',
-     x86_64: '33fe45c89b8bd89171742de85b8bddd98ca0e6ed46dfab2cb429a40efa9ede45'
+    aarch64: '04099645c42222d96d437fcc19fe0de20d69827f369c9097f784aa51a9948ba5',
+     armv7l: '04099645c42222d96d437fcc19fe0de20d69827f369c9097f784aa51a9948ba5',
+       i686: 'd44f823d537a817ad9b71aad7bb48b2dc0446bbcf7b7507f0ca26e6aaa56f083',
+     x86_64: '721e1f3a97bfe023d6912abf20eb64bde96f76b587af245abad06481f2250e13'
   })
 
   depends_on 'rust'
