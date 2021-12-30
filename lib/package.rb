@@ -164,13 +164,19 @@ class Package
       { exception: true }
     end
 
-    # add -j arg to build commands
+    # Add -j arg to build commands.
     cmd_args.sub(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+/
+    # Escape special bash characters.
+    cmd_args.gsub!('"','\\\\"')
+    cmd_args.gsub!('$','\\\\$')
+    cmd_args.gsub!('`','\\\\`')
 
     begin
       # use bash instead of /bin/sh
       @system_args = ''
       [@system_args, "bash -e -c \"#{cmd_args}\""].reduce(&:concat)
+      # Uncomment following line for debugging.
+      # puts @system_args.orange
       Kernel.system(@system_args, system_options)
     rescue => e
       exitstatus = $?.exitstatus
