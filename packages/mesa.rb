@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.1'
+  @_ver = '21.3.3'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_armv7l/mesa-21.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_armv7l/mesa-21.3.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_i686/mesa-21.3.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.1_x86_64/mesa-21.3.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_armv7l/mesa-21.3.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_armv7l/mesa-21.3.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_i686/mesa-21.3.3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_x86_64/mesa-21.3.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '89bee7e209c8c9c60fbe8f8882c8bd82c0eb09286bd040c35d041900a5d3a5df',
-     armv7l: '89bee7e209c8c9c60fbe8f8882c8bd82c0eb09286bd040c35d041900a5d3a5df',
-       i686: 'ca35e6d0965cc934efb6073d6d787d35d9bd5bfed5638ab40a8165280b0e049e',
-     x86_64: 'fa4a3885c77713ec70588f24b27db1936254dcb6471a26c8b3fc4589bb6e5f97'
+    aarch64: '38c59f391a0383975a1ab57acc29c6993f2f0955998f12104fc099b3bc148b78',
+     armv7l: '38c59f391a0383975a1ab57acc29c6993f2f0955998f12104fc099b3bc148b78',
+       i686: '87ea3c9b99428c61f8d5e632259d59637bbb0a5c05b44719b9ed16f8117f4b1e',
+     x86_64: 'f980a723ea8f70dc0110f42cbccd9ffa5dc372eb877726ee0e264c9f4f477e6a'
   })
 
   depends_on 'glslang' => :build
@@ -31,6 +31,7 @@ class Mesa < Package
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
   depends_on 'libxdamage' => :build
+  depends_on 'libxdmcp' => :build
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
   depends_on 'libxrandr' # R
