@@ -932,6 +932,9 @@ def prepare_package(destdir)
     compress_doc "#{CREW_DEST_PREFIX}/share/man"
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
+    # Allow postbuild to override the filelist contents
+    @pkg.postbuild
+
     # create file list
     system 'find . -type f > ../filelist'
     system 'find . -type l >> ../filelist'
@@ -957,8 +960,8 @@ def prepare_package(destdir)
     # check for conflicts with other installed files
     puts "Checking for conflicts with files from installed packages..."
     conflicts = []
-    @conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist].chomp
-    conflicts << @conflictscmd.gsub(/(:|filelist|#{CREW_META_PATH})/, '').split(' ')
+    conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist]
+    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
       if CREW_CONFLICTS_ONLY_ADVISORY == '1'
@@ -967,17 +970,7 @@ def prepare_package(destdir)
         puts "Error: There is a conflict with the same file in another package.".lightred
         @_errors = 1
       end
-      pp = ''
-      conflicts.each do |p, f|
-        if CREW_CONFLICTS_ONLY_ADVISORY == '1'
-          puts "\n#{p} package conflicts below:".orange if p != pp
-          puts f.orange
-        else
-          puts "\n#{p} package conflicts below:".lightred if p != pp
-          puts f.lightred
-        end
-        pp = p
-      end
+      conflicts.each do |conflict| puts conflict end
     end
 
     # abort if errors encountered
