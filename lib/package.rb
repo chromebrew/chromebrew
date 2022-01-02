@@ -119,6 +119,11 @@ class Package
 
   end
 
+  # Function to perform post-build for both source build and binary distribution.
+  def self.postbuild
+
+  end
+
   # Function to perform check from source build.
   # This executes only during `crew build`.
   def self.check
