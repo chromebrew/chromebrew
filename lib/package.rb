@@ -9,6 +9,7 @@ class Package
                      :patch,       # Function to perform patch operations prior to build from source.
                      :prebuild,    # Function to perform pre-build operations prior to build from source.
                      :build,       # Function to perform build from source.
+                     :postbuild,   # Function to perform post-build for both source build and binary distribution.
                      :check,       # Function to perform check from source build. (executes only during `crew build`)
                      :preinstall,  # Function to perform pre-install operations prior to install.
                      :install,     # Function to perform install from source build.
@@ -109,7 +110,7 @@ class Package
     @is_fake
   end
 
-  def self.system(*args)
+  def self.system(*args, **opt_args)
     # add "-j#" argument to "make" at compile-time, if necessary
 
     # Order of precedence to assign the number of processors:
@@ -118,28 +119,22 @@ class Package
     # 3. The value of `nproc`.strip
     # See lib/const.rb for more details
 
-    # extract command arguments
-    cmd_args = args.select {|arg| arg.is_a?(String) } .join(' ')
-  
-    # extract Kernel.system options (if provided)
-    system_options = if args[-1].is_a?(Hash)
-      { exception: true }.merge(args[-1])
+    # extract env hash
+    if args[0].is_a?(Hash)
+      env = CREW_ENV_OPTIONS_HASH.merge(args[0])
+      args.delete_at(0) # remove env hash from args array
     else
-      { exception: true }
+      env = CREW_ENV_OPTIONS_HASH
     end
 
+    # after removing the env hash, all remaining args must be command args
+    cmd_args = args.join(' ')
+
     # Add -j arg to build commands.
-    cmd_args.sub(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+/
-    # Escape special bash characters.
-    cmd_args.gsub!(/("|\$|`)/, '\\\\\1')
+    cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+/
 
     begin
-      # use bash instead of /bin/sh
-      @system_args = ''
-      [@system_args, "bash -e -c \"#{cmd_args}\""].reduce(&:concat)
-      # Uncomment following line for debugging.
-      # puts @system_args.orange
-      Kernel.system(@system_args, system_options)
+      Kernel.system(env, cmd_args, opt_args, exception: true)
     rescue => e
       exitstatus = $?.exitstatus
       # print failed line number and error message
