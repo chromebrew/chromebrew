@@ -3,24 +3,24 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.0.11-2'
+  @_ver = '7.1.0-19'
   version @_ver
   license 'imagemagick'
   compatibility 'all'
-  source_url "https://github.com/ImageMagick/ImageMagick/archive/#{@_ver}.tar.gz"
-  source_sha256 '936959ba77bb9d8fdab4d9c69f90316c02a7e2467dea3790ad36b4d500c31a22'
+  source_url 'https://github.com/ImageMagick/ImageMagick.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_armv7l/imagemagick7-7.0.11-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_armv7l/imagemagick7-7.0.11-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_i686/imagemagick7-7.0.11-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.0.11-2_x86_64/imagemagick7-7.0.11-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-19_armv7l/imagemagick7-7.1.0-19-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-19_armv7l/imagemagick7-7.1.0-19-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-19_i686/imagemagick7-7.1.0-19-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-19_x86_64/imagemagick7-7.1.0-19-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '04025f5ae6e216cf6e79f2c1a6eccc79ee4a3228eb4d13d9475938a031bb1986',
-     armv7l: '04025f5ae6e216cf6e79f2c1a6eccc79ee4a3228eb4d13d9475938a031bb1986',
-       i686: '2a8cae3b4c308c75078f199e8bb9b005baf0babfdce0ff9f5b5f52b23ca71fa0',
-     x86_64: '8bc32c289e65e5499660cda89afab1dfb68b14de9c70b4f3e82924fa3dafe80a'
+    aarch64: 'e4ab61bc827580630719cdcd95036bff97375f7626deaea8a22e2cb8ffdde9a1',
+     armv7l: 'e4ab61bc827580630719cdcd95036bff97375f7626deaea8a22e2cb8ffdde9a1',
+       i686: 'f112987ecd6c6c5be4632ae7f3b953a30d2a4ad1ebeeb92d51d006a300a887cb',
+     x86_64: 'f3f60b31f682ce39b3fc56bb7a3f44d5fd0fcb87c37e0951080fc57dbc852757'
   })
 
   depends_on 'flif'
@@ -32,6 +32,7 @@ class Imagemagick7 < Package
   depends_on 'jemalloc'
   depends_on 'xzutils'
   depends_on 'libheif'
+  depends_on 'libpng'
   depends_on 'librsvg'
   depends_on 'libwebp'
   depends_on 'libwmf'
@@ -61,11 +62,13 @@ class Imagemagick7 < Package
       --program-prefix='' \
       --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
       --disable-dependency-tracking \
+      --with-magick-plus-plus \
       --enable-hugepages \
       --with-jemalloc \
       --with-modules \
       --enable-hdri \
       --with-perl \
+      --with-perl-options='INSTALLDIRS=vendor' \
       --with-rsvg \
       --with-x"
     system 'make'

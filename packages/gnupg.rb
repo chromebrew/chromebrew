@@ -9,7 +9,21 @@ class Gnupg < Package
   source_url 'https://dev.gnupg.org/source/gnupg.git'
   git_hashtag "gnupg-#{version}"
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.3.4_armv7l/gnupg-2.3.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.3.4_armv7l/gnupg-2.3.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.3.4_i686/gnupg-2.3.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.3.4_x86_64/gnupg-2.3.4-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: '4348fdfe6e565163a12fe76ad9c467bc58dcc8811f826343a6bf1bfe203fcca2',
+     armv7l: '4348fdfe6e565163a12fe76ad9c467bc58dcc8811f826343a6bf1bfe203fcca2',
+       i686: 'd3547c621c30cad0ea9eecd9906e86ae041f76ebb8564514bcb98da52da3dc0c',
+     x86_64: '2096de764cf3fd0a77bc390cdfa7bb551a1ec7cb07239221fee6e1f09404f4d9'
+  })
+
   depends_on 'bz2'
+  depends_on 'fig2dev' => :build
   depends_on 'imagemagick7' => :build
   depends_on 'libassuan'
   depends_on 'libgcrypt'
@@ -43,7 +57,7 @@ class Gnupg < Package
                  mycflags="$mycflags -Wno-format-zero-length"
                fi
     GCC10PATCHEOF
-    IO.write('gcc10.patch', @gcc10patch)
+    File.write('gcc10.patch', @gcc10patch)
     system 'patch -Np1 -F 2 -i gcc10.patch'
   end
 
