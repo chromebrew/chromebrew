@@ -9,7 +9,7 @@ class Linux_sources < Package
     @_ver = '4.14'
     version @_ver
   when 'i686'
-    @_ver '3.8'
+    @_ver = '3.8'
     version @_ver
   end
   license 'GPL-2'
