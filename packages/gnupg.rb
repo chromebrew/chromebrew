@@ -6,17 +6,51 @@ class Gnupg < Package
   version '2.3.4'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.4.tar.bz2'
-  source_sha256 'f3468ecafb1d7f9ad7b51fd1db7aebf17ceb89d2efa8a05cf2f39b4d405402ae'
+  source_url 'https://dev.gnupg.org/source/gnupg.git'
+  git_hashtag "gnupg-#{version}"
 
   depends_on 'bz2'
+  depends_on 'imagemagick7' => :build
   depends_on 'libassuan'
   depends_on 'libgcrypt'
   depends_on 'libksba'
   depends_on 'pinentry'
 
+  def self.patch
+    # See https://dev.gnupg.org/T5215
+    # Just add -fcommon to compile options to work around this issue.
+    #  system "git cherry-pick 9ad423d7218c"
+    @gcc10patch = <<~'GCC10PATCHEOF'
+      diff -NPaur a/configure.ac b/configure.ac
+      --- a/configure.ac	2022-01-04 02:22:14.157482995 +0000
+      +++ b/configure.ac	2022-01-04 02:25:52.050655151 +0000
+      @@ -1690,7 +1690,7 @@
+           # warning options and the user should have a chance of overriding
+           # them.
+           if test "$USE_MAINTAINER_MODE" = "yes"; then
+      -        mycflags="$mycflags -O3 -Wall -Wcast-align -Wshadow -Wstrict-prototypes"
+      +        mycflags="$mycflags -O3 -Wall -fcommon -Wcast-align -Wshadow -Wstrict-prototypes"
+               mycflags="$mycflags -Wformat -Wno-format-y2k -Wformat-security"
+               if test x"$_gcc_silent_wno" = xyes ; then
+                 _gcc_wopt=yes
+      @@ -1731,7 +1731,7 @@
+               fi
+
+           else
+      -        mycflags="$mycflags -Wall"
+      +        mycflags="$mycflags -Wall -fcommon"
+               if test x"$_gcc_silent_wno" = xyes ; then
+                 mycflags="$mycflags -Wno-format-zero-length"
+               fi
+    GCC10PATCHEOF
+    IO.write('gcc10.patch', @gcc10patch)
+    system 'patch -Np1 -F 2 -i gcc10.patch'
+  end
+
   def self.build
+    system './autogen.sh --force'
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+              --enable-maintainer-mode \
               --enable-all-tests \
               --with-capabilities \
               --with-zlib \
