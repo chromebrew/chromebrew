@@ -119,6 +119,9 @@ class Package
     # 3. The value of `nproc`.strip
     # See lib/const.rb for more details
 
+    # add exception option to opt_args
+    opt_args.merge!(exception: true)
+
     # extract env hash
     if args[0].is_a?(Hash)
       env = CREW_ENV_OPTIONS_HASH.merge(args[0])
@@ -134,7 +137,7 @@ class Package
     cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+/
 
     begin
-      Kernel.system(env, cmd_args, opt_args, exception: true)
+      Kernel.system(env, cmd_args, **opt_args)
     rescue => e
       exitstatus = $?.exitstatus
       # print failed line number and error message
