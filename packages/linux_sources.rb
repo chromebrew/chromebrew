@@ -3,11 +3,10 @@ require 'package'
 class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
-  # KERNEL_VERSION = %x[uname -r].chomp.reverse.split('.',2).collect(&:reverse)[1]
   case ARCH
   when 'aarch64', 'armv7l', 'x86_64'
     @_ver = '4.14'
-    version @_ver
+    version "#{@_ver}-1"
   when 'i686'
     @_ver = '3.8'
     version @_ver
@@ -22,6 +21,19 @@ class Linux_sources < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
   git_hashtag "chromeos-#{@_ver}"
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14-1_armv7l/linux_sources-4.14-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14-1_armv7l/linux_sources-4.14-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/3.8_i686/linux_sources-3.8-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14-1_x86_64/linux_sources-4.14-1-chromeos-x86_64.tpxz'
+  })
+  binary_sha256({
+    aarch64: 'c9b3116f83033215bf7f925a433bcea906067006d8c4c3f9747a279d729d4db0',
+     armv7l: 'c9b3116f83033215bf7f925a433bcea906067006d8c4c3f9747a279d729d4db0',
+       i686: '2e8cf6b96bfb2f1f65809123696799244ac20b3a7a6b516d00d9f09a0b682266',
+     x86_64: '5dc236576f40cbf6926b4b5f9241ed7e9e3e7db8f2b26643316a2ce1f08a4a02'
+  })
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
