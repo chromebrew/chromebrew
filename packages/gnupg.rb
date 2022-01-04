@@ -58,7 +58,7 @@ class Gnupg < Package
                fi
     GCC10PATCHEOF
     File.write('gcc10.patch', @gcc10patch)
-    system 'patch -Np1 -F 2 -i gcc10.patch'
+    system 'patch -Np1 -i gcc10.patch'
   end
 
   def self.build
