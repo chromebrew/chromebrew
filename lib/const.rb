@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.20.3'
+CREW_VERSION = '1.20.5'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -125,20 +125,26 @@ CREW_COMMON_FNO_LTO_FLAGS = '-O2 -pipe -fno-lto -fPIC -fuse-ld=gold'
 CREW_LDFLAGS = '-flto'
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
-CREW_ENV_OPTIONS = <<~OPT.chomp
-  CFLAGS='#{CREW_COMMON_FLAGS}' \
-  CXXFLAGS='#{CREW_COMMON_FLAGS}' \
-  FCFLAGS='#{CREW_COMMON_FLAGS}' \
-  FFLAGS='#{CREW_COMMON_FLAGS}' \
-  LDFLAGS='#{CREW_LDFLAGS}'
-OPT
-CREW_ENV_FNO_LTO_OPTIONS = <<~OPT.chomp
-  CFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
-  CXXFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
-  FCFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
-  FFLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
-  LDFLAGS='#{CREW_FNO_LTO_LDFLAGS}'
-OPT
+CREW_ENV_OPTIONS_HASH = {
+  'CFLAGS'   => CREW_COMMON_FLAGS,
+  'CXXFLAGS' => CREW_COMMON_FLAGS,
+  'FCFLAGS'  => CREW_COMMON_FLAGS,
+  'FFLAGS'   => CREW_COMMON_FLAGS,
+  'LDFLAGS'  => CREW_LDFLAGS
+}
+# parse from hash to shell readable string
+CREW_ENV_OPTIONS = CREW_ENV_OPTIONS_HASH.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')
+
+CREW_ENV_FNO_LTO_OPTIONS_HASH = {
+  'CFLAGS'   => CREW_COMMON_FNO_LTO_FLAGS,
+  'CXXFLAGS' => CREW_COMMON_FNO_LTO_FLAGS,
+  'FCFLAGS'  => CREW_COMMON_FNO_LTO_FLAGS,
+  'FFLAGS'   => CREW_COMMON_FNO_LTO_FLAGS,
+  'LDFLAGS'  => CREW_FNO_LTO_LDFLAGS
+}
+# parse from hash to shell readable string
+CREW_ENV_FNO_LTO_OPTIONS = CREW_ENV_FNO_LTO_OPTIONS_HASH.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')
+
 CREW_OPTIONS = <<~OPT.chomp
   --prefix=#{CREW_PREFIX} \
   --libdir=#{CREW_LIB_PREFIX} \
