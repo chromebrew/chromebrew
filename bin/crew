@@ -854,13 +854,15 @@ def build_and_preconfigure(target_dir)
   Dir.chdir target_dir do
     puts 'Building from source, this may take a while...'
 
-    # Rename *.la files temporarily to *.la_tmp to avoid
-    # libtool: link: '*.la' is not a valid libtool archive.
-    # See https://gnunet.org/faq-la-files and
-    # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
-    puts 'Rename all *.la files to *.la_tmp'.lightblue
+    if CREW_LA_RENAME_ENABLED
+      # Rename *.la files temporarily to *.la_tmp to avoid
+      # libtool: link: '*.la' is not a valid libtool archive.
+      # See https://gnunet.org/faq-la-files and
+      # https://stackoverflow.com/questions/42963653/libquadmath-la-is-not-a-valid-libtool-archive-when-configuring-openmpi-with-g
+      puts 'Rename all *.la files to *.la_tmp'.lightblue
 
-    system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@short_verbose} {} {}_tmp"
+      system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@short_verbose} {} {}_tmp"
+    end
 
     @pkg.in_build = true
     @pkg.patch
@@ -872,10 +874,12 @@ def build_and_preconfigure(target_dir)
     puts 'Preconfiguring package...'
     @pkg.install
 
-    # Rename all *.la_tmp back to *.la to avoid
-    # cannot access '*.la': No such file or directory
-    puts 'Rename all *.la_tmp files back to *.la'.lightblue
-    system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@short_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    if CREW_LA_RENAME_ENABLED
+      # Rename all *.la_tmp back to *.la to avoid
+      # cannot access '*.la': No such file or directory
+      puts 'Rename all *.la_tmp files back to *.la'.lightblue
+      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@short_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+    end
   end
 end
 

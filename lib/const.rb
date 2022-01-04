@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.20.4'
+CREW_VERSION = '1.20.5'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -67,6 +67,8 @@ CREW_NOT_COMPRESS = ENV['CREW_NOT_COMPRESS']
 CREW_NOT_STRIP = ENV['CREW_NOT_STRIP']
 
 CREW_SHRINK_ARCHIVE = ENV['CREW_SHRINK_ARCHIVE']
+
+CREW_LA_RENAME_ENABLED = ENV['CREW_LA_RENAME_ENABLED']
 
 # Set testing constants from environment variables
 CREW_TESTING_BRANCH = ENV['CREW_TESTING_BRANCH']
