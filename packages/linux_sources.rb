@@ -14,8 +14,9 @@ class Linux_sources < Package
   end
   # Only check for kernel version if not in container.
   unless File.exist?('/.dockerenv')
-    @KERNEL_VERSION = %x[uname -r].chomp.reverse.split('.',2).collect(&:reverse)[1]
+    @KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
     @ver = @KERNEL_VERSION.between?(@KERNEL_VERSION, '5.15') ? @ver : @KERNEL_VERSION
+    version @ver
   end
   license 'GPL-2'
   compatibility 'all'
