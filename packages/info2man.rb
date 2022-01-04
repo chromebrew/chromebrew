@@ -4,7 +4,6 @@ class Info2man < Package
   description 'Convert GNU info files to POD or man pages.'
   homepage 'https://www.cskk.ezoshosting.com/cs/css/info2pod.html'
   @_ver = '1.1-10'
-  @_perl_version = %x[echo "printf '%vd', $^V;" | perl].to_s
   version @_ver
   license 'unknown'
   compatibility 'all'
@@ -17,6 +16,7 @@ class Info2man < Package
   end
 
   def self.install
+    @_perl_version = %x[echo "printf '%vd', $^V;" | perl].to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/perl5/site_perl/#{@_perl_version}/"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
