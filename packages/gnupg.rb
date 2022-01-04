@@ -16,10 +16,10 @@ class Gnupg < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.3.4_x86_64/gnupg-2.3.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '4348fdfe6e565163a12fe76ad9c467bc58dcc8811f826343a6bf1bfe203fcca2',
-     armv7l: '4348fdfe6e565163a12fe76ad9c467bc58dcc8811f826343a6bf1bfe203fcca2',
-       i686: 'd3547c621c30cad0ea9eecd9906e86ae041f76ebb8564514bcb98da52da3dc0c',
-     x86_64: '2096de764cf3fd0a77bc390cdfa7bb551a1ec7cb07239221fee6e1f09404f4d9'
+    aarch64: 'f581a00c668be835091c809538f2ec6be54854daf9a5c413d9919e629881dd8e',
+     armv7l: 'f581a00c668be835091c809538f2ec6be54854daf9a5c413d9919e629881dd8e',
+       i686: '6178b043fd65b6ebfa7ca36a4379ef9fbae8903f2f088cdc7cf2618f8a685305',
+     x86_64: '2d42176822fa0c0b0aa5d32b85296e235c5195747a31b47a4e5f68c62614d639'
   })
 
   depends_on 'bz2'

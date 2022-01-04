@@ -24,6 +24,24 @@ class Libgpgerror < Package
   })
 
   def self.patch
+    # See https://dev.gnupg.org/T5008#136664
+    @testmakefilepatch = <<~'TESTMAKEFILEPATCHEOF'
+      --- a/tests/Makefile.in	2022-01-04 18:58:45.185918510 +0000
+      +++ b/tests/Makefile.in	2022-01-04 18:55:16.184507622 +0000
+      @@ -662,6 +662,10 @@ distclean-tags:
+       check-TESTS: $(TESTS)
+       	@failed=0; all=0; xfail=0; xpass=0; skip=0; \
+       	srcdir=$(srcdir); export srcdir; \
+      +	gpgerror_libdir=`dirname $$PWD`/src/.libs; \
+      +	LD_LIBRARY_PATH=`echo "$$gpgerror_libdir:$$LD_LIBRARY_PATH" | $(SED) 's/:*$$//g'`; \
+      +	DYLD_LIBRARY_PATH=`echo "$$gpgerror_libdir:$$DYLD_LIBRARY_PATH" | $(SED) 's/:*$$//g'`; \
+      +	export LD_LIBRARY_PATH; export DYLD_LIBRARY_PATH; \
+       	list=' $(TESTS) '; \
+       	$(am__tty_colors); \
+       	if test -n "$$list"; then \
+    TESTMAKEFILEPATCHEOF
+    File.write('testmakefile.patch', @testmakefilepatch)
+    system 'patch -Np1 -i testmakefile.patch'
     system 'filefix'
   end
 
@@ -34,6 +52,12 @@ class Libgpgerror < Package
       --enable-shared \
       --disable-maintainer-mode"
     system 'make'
+  end
+
+  def self.check
+    Dir.chdir 'tests' do
+      system 'make check'
+    end
   end
 
   def self.install
