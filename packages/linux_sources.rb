@@ -27,7 +27,7 @@ class Linux_sources < Package
     $VERBOSE = warn_level
     linux_src_dir = "#{CREW_DEST_PREFIX}/src/linux"
     FileUtils.mkdir_p(linux_src_dir)
-    FileUtils.rm_rf(.git)
+    FileUtils.rm_rf('.git')
     FileUtils.cp_r('.', linux_src_dir)
     Dir.chdir(linux_src_dir) do
       system 'make', 'defconfig'
