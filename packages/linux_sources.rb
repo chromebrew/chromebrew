@@ -3,36 +3,27 @@ require 'package'
 class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
-  version '4.14'
+  # KERNEL_VERSION = %x[uname -r].chomp.reverse.split('.',2).collect(&:reverse)[1]
+  case ARCH
+  when 'aarch64', 'armv7l', 'x86_64'
+    @_ver = '4.14'
+    version @_ver
+  when 'i686'
+    @_ver '3.8'
+    version @_ver
+  end
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz'
-  source_sha256 'f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_armv7l/linux_sources-4.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_armv7l/linux_sources-4.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_i686/linux_sources-4.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14_x86_64/linux_sources-4.14-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '7dfea20067015e59a2b4b1006b0beddaa6873a01470cee8007647d990da5bf57',
-     armv7l: '7dfea20067015e59a2b4b1006b0beddaa6873a01470cee8007647d990da5bf57',
-       i686: 'fae80d1d113eb4e2d9bc84daee4b398c2064730234df74b09edfc85fb9a696b4',
-     x86_64: '3051229ae81224a038795eecd6d21dfd9dad2c5f8711137016bb8a4bb28852c9',
-  })
+  source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
+  git_hashtag "chromeos-#{@_ver}"
 
   def self.install
-    linux_src_dir = CREW_DEST_PREFIX + '/src/linux'
-    pdir = 'chromiumos-overlay/sys-kernel/linux-headers/files'
-    # Download Linux kernel header patches
-    system 'git', 'clone', '--depth=1', '-b', 'release-R75-12105.B',
-           'https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay.git'
-    # Remove a/ and b/ path prefixes on patches so they can be applied with -Np0
-    system "sed -i -e 's,a/,,g' -e 's,b/,,g' #{pdir}/*.patch"
-    system "for file in #{pdir}/*.patch; do patch -Np0 -i \${file}; done"
-    # Remove Chromium OS overlay so it isn't included in the source tree
-    FileUtils.rm_rf 'chromiumos-overlay'
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    load "#{CREW_LIB_PATH}lib/const.rb"
+    $VERBOSE = warn_level
+    linux_src_dir = "#{CREW_DEST_PREFIX}/src/linux"
     FileUtils.mkdir_p(linux_src_dir)
     FileUtils.cp_r('.', linux_src_dir)
     Dir.chdir(linux_src_dir) do
