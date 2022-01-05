@@ -15,12 +15,10 @@ Prerequisites
 You will need a Chromebook with developer mode enabled.  To do so, select your device on
 [the ChromiumOS Wiki](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices) and follow the instructions listed there.
 
-Please be aware of the fact that developer mode is insecure if not properly configured. Setting a password as instructed in the VT-2 login screen is essential. It is also recommended to enable signed boot:
+Please be aware of the fact that developer mode is insecure if not properly configured. Setting a password as instructed in the VT-2 login screen is recommended. It is also recommended to enable signed boot:
 
-```bash
-sudo chromeos-setdevpasswd
-sudo crossystem dev_boot_signed_only=1
-```
+    sudo chromeos-setdevpasswd
+    sudo crossystem dev_boot_signed_only=1
 
 Supported Systems
 -----------------
@@ -32,7 +30,7 @@ Supported Systems
 | armv7l | Yes |
 | aarch64 | Yes |
 
-<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support gui apps, we will try to continue to support cli programs.</em>
+<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support GUI apps, we will try to continue to support CLI programs.</em>
 
 Installation
 ------------
@@ -137,6 +135,6 @@ Chat with us!
 License
 -------
 
-Copyright 2013-2021 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
+Copyright 2013-2022 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
