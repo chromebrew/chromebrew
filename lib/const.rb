@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.20.6'
+CREW_VERSION = '1.20.7'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -195,7 +195,7 @@ CREW_CMAKE_OPTIONS = <<~OPT.chomp
   -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_STATIC_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
-  -DPROPERTY_INTERPROCEDURAL_OPTIMIZATION=TRUE \
+  -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
   -DCMAKE_BUILD_TYPE=Release
 OPT
 CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT.chomp
