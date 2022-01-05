@@ -30,6 +30,7 @@ class Gtk4 < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
+  depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
   depends_on 'valgrind' => :build
