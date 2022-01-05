@@ -10,7 +10,7 @@ Chat with us!
 <p><em>If the Slack invite not working, please send <a href="https://mailto://crewonslack@gmail.com?subject=Slack%20invitation%20link%20request&body=This%20email%20is%20auto-generated%20by%20README.md" target="_blank">an email to crewonslack@gmail.com</a> to get a new invite link.</em></p>
 
 <p>
-  <a href="https://join.slack.com/t/chromebrew/shared_invite/enQtNDA2MTQ5ODQ3NDc2LTA0ZmJlMGFmNmZhOTYwNDE3ZDY0NDA0MWI0OTE3MzJkYTQxN2UxMWQ1YTEzOWFmNTliMGM4NDZjYzY2NjczZGE" target="_blank">
+  <a target="_blank">
     <!-- dark/light mode detection, see https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#specifying-the-theme-an-image-is-shown-to -->
     <img src="/images/slack_dark_mode.svg#gh-dark-mode-only" alt="Slack Invite">
     <img src="/images/slack_light_mode.svg#gh-light-mode-only" alt="Slack Invite">
