@@ -3,7 +3,7 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.30'
+  @_ver = '3.24.31'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk3 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_armv7l/gtk3-3.24.30-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_armv7l/gtk3-3.24.30-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_i686/gtk3-3.24.30-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.30_x86_64/gtk3-3.24.30-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.31_armv7l/gtk3-3.24.31-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.31_armv7l/gtk3-3.24.31-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.31_i686/gtk3-3.24.31-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.31_x86_64/gtk3-3.24.31-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '53ac51ba579ca1845428d1fbc05563066ecc3f6ee66461b444eb3ded928ae4ef',
-     armv7l: '53ac51ba579ca1845428d1fbc05563066ecc3f6ee66461b444eb3ded928ae4ef',
-       i686: '3d2c917a0c7bd975a726220f3f4d99b246b650c16609b258566d84c1416202cb',
-     x86_64: '29ca5524c6b7e39d778db9c65cfa606ddac87f9af8ec2f4cb238f94435827d63'
+    aarch64: '7df7bcce97f9ceca4bb6819b2306f3d5b0470a7b3a789d10a35b2e9071f386de',
+     armv7l: '7df7bcce97f9ceca4bb6819b2306f3d5b0470a7b3a789d10a35b2e9071f386de',
+       i686: '6fdcaf10062f4c1a8880c3d3eb897cacb27193f5817346041b4048608f362f74',
+     x86_64: '6273b79151dc38fa8a240100e75b72a3cba6a868611f3c25fe7862f98751a106'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -29,6 +29,7 @@ class Gtk3 < Package
   depends_on 'ghostscript' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'iso_codes' => :build
+  depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
   depends_on 'valgrind' => :build
