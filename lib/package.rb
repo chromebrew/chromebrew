@@ -134,7 +134,7 @@ class Package
     cmd_args = args.join(' ')
 
     # Add -j arg to build commands.
-    cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+/
+    cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+|cmake/
 
     begin
       Kernel.system(env, cmd_args, **opt_args)
