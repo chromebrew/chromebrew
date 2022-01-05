@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.4.1'
+  @_ver = '4.6.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_armv7l/gtk4-4.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_armv7l/gtk4-4.4.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_i686/gtk4-4.4.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.1_x86_64/gtk4-4.4.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_armv7l/gtk4-4.6.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_armv7l/gtk4-4.6.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_i686/gtk4-4.6.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_x86_64/gtk4-4.6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9da01362c758205fb864aada2ec0a41730535fbe84b83cf6752e518341448a7b',
-     armv7l: '9da01362c758205fb864aada2ec0a41730535fbe84b83cf6752e518341448a7b',
-       i686: '2c6b1eb268de8c3222d6c61fbe83331c9d9a34f987561c6dee9a8d5261b6d3e7',
-     x86_64: '440f2099c91b98d4bc2ded68c358ebd31d7a7812a3299a30f9465d390f11ba38'
+    aarch64: 'a90c62de22c3e1bda68d5f1618a323f1dffd26a4cbdcc50cbd7b2a913e868f65',
+     armv7l: 'a90c62de22c3e1bda68d5f1618a323f1dffd26a4cbdcc50cbd7b2a913e868f65',
+       i686: 'e5d022bb65e8346015ca25d26101a04307b59aa467ec2e29a2c1360ef2d1abd6',
+     x86_64: '2903de6c81e7d7fecba9a3ff6aa5425fce0f61a2ddb1eb5a6a9ae305cc982d30'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -30,6 +30,7 @@ class Gtk4 < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
+  depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
   depends_on 'valgrind' => :build
