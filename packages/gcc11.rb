@@ -4,24 +4,11 @@ require 'open3'
 class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.2.0'
+  version '11.2.0-1'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz'
   source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_armv7l/gcc11-11.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_i686/gcc11-11.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0_x86_64/gcc11-11.2.0-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: '5103c1e80e63ab61e3d62973dbb38a8fbb35ca6eb11be2fc50d43c4e5959fbb6',
-     armv7l: '5103c1e80e63ab61e3d62973dbb38a8fbb35ca6eb11be2fc50d43c4e5959fbb6',
-       i686: 'dea5a99091b825b44729d3ed0521a4e0f3f5004f316d39cd0ab74ea3534c3e9e',
-     x86_64: '809ceaa5af62954eae0ab65256648506231bd672c13bddc3075e1e023279c466'
-  })
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
@@ -105,6 +92,36 @@ class Gcc11 < Package
     sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
   end
 
+  def self.prebuild
+    @C99 = <<~EOF
+      #!/usr/bin/env sh
+      fl="-std=c99"
+      for opt; do
+        case "$opt" in
+          -std=c99|-std=iso9899:1999) fl="";;
+          -std=*) echo "`basename $0` called with non ISO C99 option $opt" >&2
+              exit 1;;
+        esac
+      done
+      exec gcc $fl ${1+"$@"}
+    EOF
+
+    @C89 = <<~EOF
+      #!/usr/bin/env sh
+      fl="-std=c89"
+      for opt; do
+        case "$opt" in
+          -ansi|-std=c89|-std=iso9899:1990) fl="";;
+          -std=*) echo "`basename $0` called with non ANSI/ISO C option $opt" >&2
+                exit 1;;
+        esac
+      done
+      exec gcc $fl ${1+"$@"}
+    EOF
+    IO.write 'c99', @C99
+    IO.write 'c89', @C89
+  end
+
   def self.build
     # Set ccache sloppiness as per
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
@@ -161,7 +178,7 @@ class Gcc11 < Package
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        make -j#{CREW_NPROC}"
+        make"
     end
   end
 
@@ -344,5 +361,7 @@ class Gcc11 < Package
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_DEST_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
     end
+    FileUtils.install 'c99', "#{CREW_DEST_PREFIX}/bin/c99", mode: 0o755
+    FileUtils.install 'c89', "#{CREW_DEST_PREFIX}/bin/c89", mode: 0o755
   end
 end
