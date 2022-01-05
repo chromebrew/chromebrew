@@ -15,7 +15,7 @@ Chat with us!
   </a>
   <img src="about:blank"> <!-- acting a space between two images -->
   <a href="https://discord.gg/QRrzBXN" target="_blank">
-    <img src="/images/discord.svg" alt="Discord Invite" style="margin-right: 10px;">
+    <img src="/images/discord.svg" alt="Discord Invite">
   </a>
 </p>
 
