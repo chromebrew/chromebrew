@@ -1,6 +1,7 @@
 require 'io/console'
 require 'net/http'
 require 'uri'
+require 'resolv-replace'
 require_relative 'const'
 require_relative 'color'
 require_relative 'convert_size'
