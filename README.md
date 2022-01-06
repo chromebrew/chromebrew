@@ -18,10 +18,10 @@ Chat with us!
   </a>
   <img src="about:blank" width='15px'> <!-- acting a space between two images -->
   <a href="https://discord.gg/QRrzBXN#gh-light-mode-only" target="_blank">
-    <img src="https://discord.com/assets/ff41b628a47ef3141164bfedb04fb220.png#gh-light-mode-only" alt="Slack Invite" width='201px' height='55px' align="middle">
+    <img src="https://discord.com/assets/ff41b628a47ef3141164bfedb04fb220.png#gh-light-mode-only" alt="Discord Invite" width='201px' height='55px' align="middle">
   </a>
   <a href="https://discord.gg/QRrzBXN#gh-dark-mode-only" target="_blank">
-    <img src="https://discord.com/assets/2f71ab5383293f63985ac8d5c632b3d4.png#gh-dark-mode-only" alt="Slack Invite" width='201px' height='55px' align="middle">
+    <img src="https://discord.com/assets/2f71ab5383293f63985ac8d5c632b3d4.png#gh-dark-mode-only" alt="Discord Invite" width='201px' height='55px' align="middle">
   </a>
 </p>
 
