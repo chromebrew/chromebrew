@@ -7,17 +7,21 @@
 Chat with us!
 -------------
 <p><em>Discord is not currently syncing messages with Slack</em></p>
-<p><em>If the Slack invite not working, please send <a href="https://mailto://crewonslack@gmail.com?subject=Slack%20invitation%20link%20request&body=This%20email%20is%20auto-generated%20by%20README.md" target="_blank">an email to crewonslack@gmail.com</a> to get a new invite link.</em></p>
 
-<p>
-  <a target="_blank">
-    <!-- dark/light mode detection, see https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#specifying-the-theme-an-image-is-shown-to -->
-    <img src="/images/slack_dark_mode.svg#gh-dark-mode-only" alt="Slack Invite">
-    <img src="/images/slack_light_mode.svg#gh-light-mode-only" alt="Slack Invite">
+<p align="centre">
+  <!-- dark/light mode detection, see https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#specifying-the-theme-an-image-is-shown-to -->
+  <a href="http://a.cim/#gh-light-mode-only" target="_blank">
+    <img src="https://cdn.bfldr.com/5H442O3W/at/pl546j-7le8zk-838dm2/Slack_RGB.png?auto=webp&format=png#gh-light-mode-only" alt="Slack Invite" width='158px' height='40px'>
+  </a>
+  <a href="http://a.cim#gh-dark-mode-only" target="_blank">
+    <img src="https://cdn.bfldr.com/5H442O3W/at/pljt3c-dcwb20-27ztzl/Slack_RGB_White.png?auto=webp&format=png#gh-dark-mode-only" alt="Slack Invite" width='158px' height='40px'>
   </a>
   <img src="about:blank"> <!-- acting a space between two images -->
-  <a href="https://discord.gg/QRrzBXN" target="_blank">
-    <img src="/images/discord.svg" alt="Discord Invite">
+  <a href="http://a.cim/#gh-light-mode-only" target="_blank">
+    <img src="https://discord.com/assets/ff41b628a47ef3141164bfedb04fb220.png#gh-light-mode-only" alt="Slack Invite" width='183px' height='50px'>
+  </a>
+  <a href="http://a.cim#gh-dark-mode-only" target="_blank">
+    <img src="https://discord.com/assets/2f71ab5383293f63985ac8d5c632b3d4.png#gh-dark-mode-only" alt="Slack Invite" width='219px' height='60px'>
   </a>
 </p>
 
