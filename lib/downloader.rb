@@ -1,6 +1,7 @@
 require 'io/console'
 require 'net/http'
 require 'uri'
+require 'resolv-replace'
 require_relative 'const'
 require_relative 'color'
 require_relative 'convert_size'
@@ -8,7 +9,15 @@ require_relative 'convert_size'
 def setTermSize
   # setTermSize: set progress bar size based on terminal width
   # get terminal window size
-  @termH, @termW = IO.console.winsize
+  begin
+    @termH, @termW = IO.console.winsize
+  rescue => e
+    puts "Non-interactive terminals may not be able to be queried for size."
+    # @termW = %x[tput cols].chomp.to_i
+    # @termH = %x[tput lines].chomp.to_i
+    @termW = '80'
+    @termH = '25'
+  end
   # space for progress bar after minus the reserved space for showing
   # the file size and progress percentage
   @progBarW = @termW - 17
