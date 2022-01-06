@@ -2,40 +2,39 @@ require 'package'
 
 class Zlibpkg < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
-  homepage 'http://www.zlib.net/'
+  homepage 'https://www.zlib.net/'
+  # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
   @_ver = '1.2.11'
-  version "#{@_ver}-5"
+  version "#{@_ver}-6"
   license 'zlib'
   compatibility 'all'
-  source_url "http://www.zlib.net/zlib-#{@_ver}.tar.gz"
+  source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"
   source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-5_armv7l/zlibpkg-1.2.11-5-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-5_armv7l/zlibpkg-1.2.11-5-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-5_i686/zlibpkg-1.2.11-5-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-5_x86_64/zlibpkg-1.2.11-5-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-6_armv7l/zlibpkg-1.2.11-6-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-6_armv7l/zlibpkg-1.2.11-6-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-6_i686/zlibpkg-1.2.11-6-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-6_x86_64/zlibpkg-1.2.11-6-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b80e7c60c1a250f7d64289ab376547ba93f29e12cdaa3ae4a1a3a00b7d4ad450',
-    armv7l: 'b80e7c60c1a250f7d64289ab376547ba93f29e12cdaa3ae4a1a3a00b7d4ad450',
-    i686: '96bc24d5d6651147fcd99e08740bfa71335aa8b51506cbb580f13cad784c2fb2',
-    x86_64: '475af7ff9074abbe8fbb52f686dbf8f43f4c9dc1987a4231ae85c56d15d246c7'
+    aarch64: '0012a9c80b2c224cd51556b14cfd52095559a38aaca25a943164e5a1bff04488',
+     armv7l: '0012a9c80b2c224cd51556b14cfd52095559a38aaca25a943164e5a1bff04488',
+       i686: '2c1fbea91e0287064e7a5323b5298af74dc5ae29ee53cb9636e90c7c4842c8d3',
+     x86_64: '6a213888ddd3ff584c8f354a107fdf00f11b8570b5a5dac909a95bc4c165a0cd'
   })
 
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure \
-      --prefix=#{CREW_PREFIX} \
-      --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.check
-    system 'make check'
+    # Build zlib proper
+    FileUtils.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja #{CREW_CMAKE_OPTIONS} .."
+    end
+    system 'samu -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # Install zlib
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
