@@ -10,6 +10,19 @@ class Gcc11 < Package
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz'
   source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
 
+  binary_url ({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_armv7l/gcc11-11.2.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_armv7l/gcc11-11.2.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_i686/gcc11-11.2.0-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_x86_64/gcc11-11.2.0-1-chromeos-x86_64.tpxz',
+  })
+  binary_sha256 ({
+    aarch64: 'd0fcbe0b65b9c0e724b17e229bc85e441a9dabaaeec97d97e0e102a58d562e63',
+     armv7l: 'd0fcbe0b65b9c0e724b17e229bc85e441a9dabaaeec97d97e0e102a58d562e63',
+       i686: 'a81f10cac350d24b9a7a050a88288c5703a9f93916aa1018502eafec5daa71cc',
+     x86_64: '21bbe0bb282d7d12acbbe5e9440f009c26223316c708ddd17cd32207649c5b91',
+  })
+
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
