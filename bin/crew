@@ -1318,6 +1318,12 @@ def install
     end
   end
 
+  # Make backup of installed packages json file.
+  # If this fails, the install should fail before we create any
+  # damage, and we should roughly be at maximal disk space usage at this
+  # point anyways.
+  FileUtils.cp "#{CREW_CONFIG_PATH}device.json","#{CREW_CONFIG_PATH}device.json.tmp"
+
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
@@ -1339,10 +1345,12 @@ def install
 
   #add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, is_dep: @pkg.is_dep)
-  File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
+  File.open(CREW_CONFIG_PATH + 'device.json.tmp', 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
+  # Only copy over original if the write to the tmp file succeeds.
+  FileUtils.cp "#{CREW_CONFIG_PATH}device.json.tmp","#{CREW_CONFIG_PATH}device.json"
   # Update shared library cache after install is complete.
   system "echo #{CREW_LIB_PREFIX} > #{CREW_PREFIX}/etc/ld.so.conf"
   system "#{CREW_PREFIX}/sbin/ldconfig -f #{CREW_PREFIX}/etc/ld.so.conf -C #{CREW_PREFIX}/etc/ld.so.cache"
