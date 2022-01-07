@@ -15,8 +15,8 @@ def setTermSize
     puts "Non-interactive terminals may not be able to be queried for size."
     # @termW = %x[tput cols].chomp.to_i
     # @termH = %x[tput lines].chomp.to_i
-    @termW = '80'
-    @termH = '25'
+    @termW = 80
+    @termH = 25
   end
   # space for progress bar after minus the reserved space for showing
   # the file size and progress percentage
