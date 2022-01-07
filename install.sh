@@ -24,7 +24,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="pixz jq ca_certificates git gmp ncurses libyaml ruby"
+BOOTSTRAP_PACKAGES="pixz jq ca_certificates git gmp ncurses libyaml ruby openssl"
 
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
@@ -35,7 +35,7 @@ MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
 # skip all checks if running on a docker container
-grep ':/docker' /proc/self/cgroup &> /dev/null && CREW_FORCE_INSTALL=1
+[[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
 
 # reject crostini
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
