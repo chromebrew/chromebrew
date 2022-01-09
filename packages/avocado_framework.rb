@@ -3,7 +3,7 @@ require 'package'
 class Avocado_framework < Package
   description 'Avocado is a next generation testing framework inspired by Autotest and modern development tools such as git.'
   homepage 'https://avocado-framework.github.io/'
-  @_ver = '91.0'
+  @_ver = '94.0'
   version @_ver
   license 'GPL-2 and GPL-2+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Avocado_framework < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/91.0_armv7l/avocado_framework-91.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/91.0_armv7l/avocado_framework-91.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/91.0_i686/avocado_framework-91.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/91.0_x86_64/avocado_framework-91.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/94.0_armv7l/avocado_framework-94.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/94.0_armv7l/avocado_framework-94.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/94.0_i686/avocado_framework-94.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/94.0_x86_64/avocado_framework-94.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '09256b27b731902f7f7caf43eafcbaa2fd0d0a8ca966bb0a7df1627f074bb8ca',
-     armv7l: '09256b27b731902f7f7caf43eafcbaa2fd0d0a8ca966bb0a7df1627f074bb8ca',
-       i686: '5a392ca22fc41847de0a86b5519c29942c1a481f4573044457739933bbdc5ff6',
-     x86_64: '2b2aeb3906b2e2f707ea1b696f433294984daf0b03bcabd5b1b9fd81dfe625c1'
+    aarch64: 'c687be4dd45ff08f79449baa438f8ba6eb27d9ec9a78759c63a2827c325e6ae3',
+     armv7l: 'c687be4dd45ff08f79449baa438f8ba6eb27d9ec9a78759c63a2827c325e6ae3',
+       i686: '2751e897254e5edc450a986ff98b7e07af21dfbff7c75d7ddf5cd16a3d0b65b7',
+     x86_64: '210640e2c6917979fd6b69ab54e2e786dfb5d0d26c7efba653e70253d266a571'
   })
 
   depends_on 'xdg_base'
