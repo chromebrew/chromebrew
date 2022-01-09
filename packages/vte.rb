@@ -3,7 +3,7 @@ require 'package'
 class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  @_ver = '0.64.2'
+  @_ver = '0.66.2'
   version @_ver
   license 'LGPL-2+ and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
@@ -11,29 +11,28 @@ class Vte < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_armv7l/vte-0.64.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.64.2_x86_64/vte-0.64.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.66.2_armv7l/vte-0.66.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.66.2_armv7l/vte-0.66.2-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.66.2_x86_64/vte-0.66.2-chromeos-x86_64.tar.xz',
   })
   binary_sha256({
-    aarch64: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
-     armv7l: '28d3e1ec594f547221c5a806b89017f4f44817053238a3c75eef000a856c7a29',
-     x86_64: '3c8d0ddce8365705d966bdc2b1102d77dd660c0265b0e36ff9a7848e400614e0'
+    aarch64: '3cf89ecf4e12bbf66ee8f9c68937f747404bcfaf66d6398d9e31941d27b8c3d8',
+     armv7l: '3cf89ecf4e12bbf66ee8f9c68937f747404bcfaf66d6398d9e31941d27b8c3d8',
+     x86_64: 'ddd47d9cff9640670b5fb09ad74a4f674b97f355fb5cc5127c62a47905b67620',
   })
 
   depends_on 'gobject_introspection' => :build
   depends_on 'fribidi'
   depends_on 'gtk3'
-  depends_on 'gtk4'
 
   def self.build
     system <<~CONFIGURE
       meson \
       #{CREW_MESON_FNO_LTO_OPTIONS.gsub('-fno-lto', '-fno-lto -fno-stack-protector')} \
+      -Dbuildtype=release \
       -D_systemd=false \
       -Dfribidi=true \
       -Dgtk3=true \
-      -Dgtk4=true \
       -Dgir=false \
       -Dvapi=false \
       builddir
