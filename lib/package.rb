@@ -129,6 +129,7 @@ class Package
     else
       env = CREW_ENV_OPTIONS_HASH
     end
+    if CREW_NO_ADD_ENV_TO_MAKE then env = { "CREW_NO_ADD_ENV_TO_MAKE " => '1' } end
 
     # after removing the env hash, all remaining args must be command args
     cmd_args = args.join(' ')
@@ -142,7 +143,7 @@ class Package
       exitstatus = $?.exitstatus
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{cmd_args}` exited with #{exitstatus}"
+      raise InstallError, "`#{env} #{cmd_args}` exited with #{exitstatus}"
     end
   end
 end
