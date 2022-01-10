@@ -20,6 +20,7 @@ Please link issues and other pull requests connected to this one.
 
 Works properly:
 - [x] x86_64
+- [ ] i686
 - [ ] aarch64 <!-- (reasons why it doesn't) -->
 
 ### Run the following to get this pull request's changes locally for testing.
