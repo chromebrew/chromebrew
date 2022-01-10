@@ -129,7 +129,7 @@ class Package
     else
       env = CREW_ENV_OPTIONS_HASH
     end
-    if CREW_NO_ADD_ENV_TO_MAKE then env = { "CREW_NO_ADD_ENV_TO_MAKE " => '1' } end
+    if CREW_DISABLE_ENV_OPTION then env = { "CREW_DISABLE_ENV_OPTION" => '1' } end
 
     # after removing the env hash, all remaining args must be command args
     cmd_args = args.join(' ')

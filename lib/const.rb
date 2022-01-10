@@ -225,4 +225,4 @@ CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
 # libatomic is in the gcc package
 CREW_ESSENTIAL_FILES = %x[LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby].scan(/\t([^ ]+)/).flatten
 
-CREW_NO_ADD_ENV_TO_MAKE = ENV['CREW_NO_ADD_ENV_TO_MAKE']
+CREW_DISABLE_ENV_OPTION = ENV['CREW_DISABLE_ENV_OPTION']
