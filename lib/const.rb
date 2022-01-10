@@ -127,13 +127,18 @@ CREW_COMMON_FNO_LTO_FLAGS = '-O2 -pipe -fno-lto -fPIC -fuse-ld=gold'
 CREW_LDFLAGS = '-flto'
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
-CREW_ENV_OPTIONS_HASH = {
-  'CFLAGS'   => CREW_COMMON_FLAGS,
-  'CXXFLAGS' => CREW_COMMON_FLAGS,
-  'FCFLAGS'  => CREW_COMMON_FLAGS,
-  'FFLAGS'   => CREW_COMMON_FLAGS,
-  'LDFLAGS'  => CREW_LDFLAGS
-}
+CREW_DISABLE_ENV_OPTIONS = ENV['CREW_DISABLE_ENV_OPTIONS']
+unless CREW_DISABLE_ENV_OPTIONS
+  CREW_ENV_OPTIONS_HASH = {
+    'CFLAGS'   => CREW_COMMON_FLAGS,
+    'CXXFLAGS' => CREW_COMMON_FLAGS,
+    'FCFLAGS'  => CREW_COMMON_FLAGS,
+    'FFLAGS'   => CREW_COMMON_FLAGS,
+    'LDFLAGS'  => CREW_LDFLAGS
+  }
+else
+  CREW_ENV_OPTIONS_HASH = { "CREW_DISABLE_ENV_OPTIONS" => '1' }
+end
 # parse from hash to shell readable string
 CREW_ENV_OPTIONS = CREW_ENV_OPTIONS_HASH.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')
 
@@ -224,5 +229,3 @@ CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
 # libssp is in the libssp package
 # libatomic is in the gcc package
 CREW_ESSENTIAL_FILES = %x[LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby].scan(/\t([^ ]+)/).flatten
-
-CREW_DISABLE_ENV_OPTION = ENV['CREW_DISABLE_ENV_OPTION']
