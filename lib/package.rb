@@ -142,7 +142,7 @@ class Package
       exitstatus = $?.exitstatus
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{env} #{cmd_args}` exited with #{exitstatus}"
+      raise InstallError, "`#{env.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')} #{cmd_args}` exited with #{exitstatus}"
     end
   end
 end
