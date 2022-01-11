@@ -29,83 +29,101 @@ class Docbook_xml50 < Package
   def self.install
     system "xmlcatalog --noout --create docbook-#{@_ver}.xml"
     # DTD
-    system "xmlcatalog --noout --add 'public' \
-      '-//OASIS//DTD DocBook XML #{@_ver}//EN' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/dtd/#{@_ver}/docbook.dtd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'system' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/dtd/docbook.dtd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/dtd/#{@_ver}/docbook.dtd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'system' \
-      'http://docbook.org/xml/#{@_ver}/dtd/docbook.dtd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/dtd/#{@_ver}/docbook.dtd' docbook-#{@_ver}.xml"
+    system <<~DTD
+      xmlcatalog --noout --add 'public' \
+        '-//OASIS//DTD DocBook XML #{@_ver}//EN' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/dtd/#{@_ver}/docbook.dtd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'system' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/dtd/docbook.dtd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/dtd/#{@_ver}/docbook.dtd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'system' \
+        'http://docbook.org/xml/#{@_ver}/dtd/docbook.dtd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/dtd/#{@_ver}/docbook.dtd' docbook-#{@_ver}.xml
+    DTD
     # RNG
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/rng/docbook.rng' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rng' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/rng/docbook.rng' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rng' docbook-#{@_ver}.xml"
+    system <<~RNG
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/rng/docbook.rng' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rng' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/rng/docbook.rng' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rng' docbook-#{@_ver}.xml
+    RNG
     # RNG+XInclude
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/rng/docbookxi.rng' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/rng/docbookxi.rng' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng' docbook-#{@_ver}.xml"
+    system <<~RNG_XINCLUDE
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/rng/docbookxi.rng' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/rng/docbookxi.rng' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng' docbook-#{@_ver}.xml
+    RNG_XINCLUDE
     # RNC
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/rnc/docbook.rnc' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rnc' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/rng/docbook.rnc' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rnc' docbook-#{@_ver}.xml"
+    system <<~RNC
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/rnc/docbook.rnc' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rnc' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/rng/docbook.rnc' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rnc' docbook-#{@_ver}.xml
+    RNC
     # RNC+XInclude
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/rnc/docbookxi.rnc' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/rng/docbookxi.rnc' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc' docbook-#{@_ver}.xml"
+    system <<~RNC_XINCLUDE
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/rnc/docbookxi.rnc' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/rng/docbookxi.rnc' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc' docbook-#{@_ver}.xml
+    RNC_XINCLUDE
     # XSD
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/docbook.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbook.xsd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/xsd/docbook.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbook.xsd' docbook-#{@_ver}.xml"
+    system <<~XSD
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/docbook.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbook.xsd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/xsd/docbook.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbook.xsd' docbook-#{@_ver}.xml
+    XSD
     # XSD + XInclude
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/docbookxi.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbookxi.xsd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/xsd/docbookxi.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbookxi.xsd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/xi.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xi.xsd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/xsd/xi.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xi.xsd' docbook-#{@_ver}.xml"
+    system <<~XSD_XINCLUDE
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/docbookxi.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbookxi.xsd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/xsd/docbookxi.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/docbookxi.xsd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/xi.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xi.xsd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/xsd/xi.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xi.xsd' docbook-#{@_ver}.xml
+    XSD_XINCLUDE
     # XLink + XML
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/xlink.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xlink.xsd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/xsd/xlink.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xlink.xsd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/xml.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xml.xsd' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/xsd/xml.xsd' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xml.xsd' docbook-#{@_ver}.xml"
+    system <<~XLINK_XML
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/xlink.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xlink.xsd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/xsd/xlink.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xlink.xsd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/xsd/xml.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xml.xsd' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/xsd/xml.xsd' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/xsd/#{@_ver}/xml.xsd' docbook-#{@_ver}.xml
+    XLINK_XML
     # Schematron
-    system "xmlcatalog --noout --add 'uri' \
-      'http://www.oasis-open.org/docbook/xml/#{@_ver}/sch/docbook.sch' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/sch/#{@_ver}/docbook.sch' docbook-#{@_ver}.xml"
-    system "xmlcatalog --noout --add 'uri' \
-      'http://docbook.org/xml/#{@_ver}/sch/docbook.sch' \
-      'file://#{CREW_PREFIX}/share/xml/docbook/schema/sch/#{@_ver}/docbook.sch' docbook-#{@_ver}.xml"
+    system <<~SCHEMATRON
+      xmlcatalog --noout --add 'uri' \
+        'http://www.oasis-open.org/docbook/xml/#{@_ver}/sch/docbook.sch' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/sch/#{@_ver}/docbook.sch' docbook-#{@_ver}.xml
+      xmlcatalog --noout --add 'uri' \
+        'http://docbook.org/xml/#{@_ver}/sch/docbook.sch' \
+        'file://#{CREW_PREFIX}/share/xml/docbook/schema/sch/#{@_ver}/docbook.sch' docbook-#{@_ver}.xml
+    SCHEMATRON
     # Build XML catalog files for each Schema
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
       for s in dtd rng sch xsd; do
