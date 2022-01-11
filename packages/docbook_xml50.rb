@@ -214,13 +214,13 @@ class Docbook_xml50 < Package
     end
     
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install mode: 0o755, 'tools/db4-entities.pl', "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'tools/db4-entities.pl', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5"
-    FileUtils.install mode:0o644, 'tools/db4-upgrade.xsl', "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/"
+    FileUtils.install 'tools/db4-upgrade.xsl', "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/", mode:0o644
 
     # catalog configuration
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/xml"
-    FileUtils.install mode: 0o755, "docbook-#{@_ver}.xml", "#{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml"
+    FileUtils.install "docbook-#{@_ver}.xml", "#{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml", mode: 0o755
   end
 
   def self.preinstall
