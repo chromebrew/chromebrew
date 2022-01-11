@@ -3,36 +3,33 @@ require 'package'
 class Xorg_proto < Package
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/'
-  version '2020.1-1'
+  version '2021.5'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2020.1.tar.bz2'
-  source_sha256 '54a153f139035a376c075845dd058049177212da94d7a9707cf9468367b699d2'
+  source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
+  git_hashtag "xorgproto-#{version}"
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_armv7l/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_armv7l/xorg_proto-2020.1-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_i686/xorg_proto-2020.1-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2020.1-1_x86_64/xorg_proto-2020.1-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_armv7l/xorg_proto-2021.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_armv7l/xorg_proto-2021.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_i686/xorg_proto-2021.5-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_x86_64/xorg_proto-2021.5-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: '3de61490afe9c9b45ad23abf007109b942e196aed3299f90da7ff6429400b687',
-      armv7l: '3de61490afe9c9b45ad23abf007109b942e196aed3299f90da7ff6429400b687',
-        i686: '521ca4cca07304bf9c18e050a98ad9fde912b1ecc6c5cf13aa223b969c617d09',
-      x86_64: '1ab0f6074972bafa33e78e945958b70c7886c0abff146bc8a020bfc499c7e14f',
+  binary_sha256({
+    aarch64: '1bc453ccee0bc6e0e4709502c09b0e6c86d72c50d9e1b16e00799e7ee7ab2e3d',
+     armv7l: '1bc453ccee0bc6e0e4709502c09b0e6c86d72c50d9e1b16e00799e7ee7ab2e3d',
+       i686: 'ddca69d7d028a8696f175ecae67dcff30e3139cc664b24b7977a20f482acb280',
+     x86_64: '20dd21738b3e2c1521f34a6993071ff797f99d81e4b5c154c560e9cf2f6062a8'
   })
-
-  depends_on 'llvm' => :build
 
   def self.build
-    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
-      -Dc_args='-fuse-ld=lld' \
+    system "meson #{CREW_MESON_OPTIONS} \
       builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-   system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

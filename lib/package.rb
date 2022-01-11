@@ -1,11 +1,24 @@
 require 'package_helpers'
 
 class Package
-  property :description, :homepage, :version, :license, :compatibility, :binary_url, :binary_sha256, :source_url, :source_sha256, :git_branch, :git_hashtag, :is_fake
+  property :description, :homepage, :version, :license, :compatibility,
+           :binary_url, :binary_sha256, :source_url, :source_sha256,
+           :git_branch, :git_hashtag, :is_fake
+
+  create_placeholder :preflight,   # Function for checks to see if install should occur.
+                     :patch,       # Function to perform patch operations prior to build from source.
+                     :prebuild,    # Function to perform pre-build operations prior to build from source.
+                     :build,       # Function to perform build from source.
+                     :postbuild,   # Function to perform post-build for both source build and binary distribution.
+                     :check,       # Function to perform check from source build. (executes only during `crew build`)
+                     :preinstall,  # Function to perform pre-install operations prior to install.
+                     :install,     # Function to perform install from source build.
+                     :postinstall, # Function to perform post-install for both source build and binary distribution.
+                     :remove       # Function to perform after package removal.
 
   class << self
     attr_reader :is_fake
-    attr_accessor :name, :in_build, :build_from_source
+    attr_accessor :name, :is_dep, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
 
@@ -97,53 +110,7 @@ class Package
     @is_fake
   end
 
-  # Function for checks to see if install should occur.
-  def self.preflight
-
-  end
-
-  # Function to perform patch operations prior to build from source.
-  def self.patch
-
-  end
-
-  # Function to perform pre-build operations prior to build from source.
-  def self.prebuild
-
-  end
-
-  # Function to perform build from source.
-  def self.build
-
-  end
-
-  # Function to perform check from source build.
-  # This executes only during `crew build`.
-  def self.check
-
-  end
-
-  # Function to perform pre-install operations prior to install.
-  def self.preinstall
-
-  end
-
-  # Function to perform install from source build.
-  def self.install
-
-  end
-
-  # Function to perform post-install for both source build and binary distribution.
-  def self.postinstall
-
-  end
-
-  # Function to perform after package removal.
-  def self.remove
-
-  end
-
-  def self.system(*args)
+  def self.system(*args, **opt_args)
     # add "-j#" argument to "make" at compile-time, if necessary
 
     # Order of precedence to assign the number of processors:
@@ -152,39 +119,30 @@ class Package
     # 3. The value of `nproc`.strip
     # See lib/const.rb for more details
 
-    if @in_build == true
-      nproc = ''
-      nproc_opt =  ''
-      args.each do |arg|
-        params = arg.split(/\W+/)
-        params.each do |param|
-          if param.match(/j(\d)+/)
-            nproc_opt = param
-            break
-          end
-        end
-      end
-      nproc = "#{CREW_NPROC}" if nproc_opt == ''
-      if args[0] == "make"
-        # modify ["make", "args", ...] into ["make", "-j#{nproc}", "args", ...]
-        args.insert(1, "-j#{nproc}") if nproc != ''
-        if @opt_verbose then
-          args.insert(1, "V=1")
-        else
-          args.insert(1, "V=0")
-        end
-      elsif args.length == 1
-        # modify ["make args..."] into ["make -j#{nproc} args..."]
-        args[0].gsub!(/^make /, "make -j#{nproc} ") if nproc != ''
-        if @opt_verbose then
-          args[0].gsub!(/^make /, "make V=1 ")
-        else
-          args[0].gsub!(/^make /, "make V=0 ")
-        end
-      end
+    # add exception option to opt_args
+    opt_args.merge!(exception: true)
+
+    # extract env hash
+    if args[0].is_a?(Hash)
+      env = CREW_ENV_OPTIONS_HASH.merge(args[0])
+      args.delete_at(0) # remove env hash from args array
+    else
+      env = CREW_ENV_OPTIONS_HASH
     end
-    Kernel.system(*args)
-    exitstatus = $?.exitstatus
-    raise InstallError.new("`#{args.join(" ")}` exited with #{exitstatus}") unless exitstatus == 0
+
+    # after removing the env hash, all remaining args must be command args
+    cmd_args = args.join(' ')
+
+    # Add -j arg to build commands.
+    cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+|cmake/
+
+    begin
+      Kernel.system(env, cmd_args, **opt_args)
+    rescue => e
+      exitstatus = $?.exitstatus
+      # print failed line number and error message
+      puts "#{e.backtrace[1]}: #{e.message}".orange
+      raise InstallError, "`#{env.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')} #{cmd_args}` exited with #{exitstatus}"
+    end
   end
 end

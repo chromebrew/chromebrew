@@ -4,28 +4,27 @@ require 'open3'
 class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.1.0-2'
+  version '11.2.0-1'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.1.0/gcc-11.1.0.tar.xz'
-  source_sha256 '4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz'
+  source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_armv7l/gcc11-11.1.0-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_i686/gcc11-11.1.0-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.1.0-2_x86_64/gcc11-11.1.0-2-chromeos-x86_64.tpxz'
+  binary_url ({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_armv7l/gcc11-11.2.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_armv7l/gcc11-11.2.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_i686/gcc11-11.2.0-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_x86_64/gcc11-11.2.0-1-chromeos-x86_64.tpxz',
   })
-  binary_sha256({
-    aarch64: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
-     armv7l: '5a245c4d158cc0c10fc7468d3fdc09cb5e38dd6a23646ceb658dce887c908dca',
-       i686: '9c1e13720a102c62bd0794e4872e9936d73c6c3bcb2934854c32798090035021',
-     x86_64: '91ed0f513618b8d548928d256e68219046c5dcf6726b79f1d71979e0ae5d64dc'
+  binary_sha256 ({
+    aarch64: 'd0fcbe0b65b9c0e724b17e229bc85e441a9dabaaeec97d97e0e102a58d562e63',
+     armv7l: 'd0fcbe0b65b9c0e724b17e229bc85e441a9dabaaeec97d97e0e102a58d562e63',
+       i686: 'a81f10cac350d24b9a7a050a88288c5703a9f93916aa1018502eafec5daa71cc',
+     x86_64: '21bbe0bb282d7d12acbbe5e9440f009c26223316c708ddd17cd32207649c5b91',
   })
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
-  # depends_on 'hashpipe' => :build
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
@@ -36,6 +35,7 @@ class Gcc11 < Package
   @gcc_version = version.split('-')[0].partition('.')[0]
 
   @gcc_global_opts = '--disable-bootstrap \
+  --disable-install-libiberty \
   --disable-libmpx \
   --disable-libssp \
   --disable-multilib \
@@ -86,9 +86,9 @@ class Gcc11 < Package
              installed_gccver.to_s == 'bash:' ||
              installed_gccver.to_s == @gcc_version.to_s ||
              installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
-        $stderr.puts "GCC version #{installed_gccver} is currently installed.".lightred
-        $stderr.puts "To use #{self.to_s.downcase} please run:".lightgreen
-        $stderr.puts "crew remove gcc#{installed_gccver} && crew install #{self.to_s.downcase}".lightgreen
+        warn "GCC version #{installed_gccver} is currently installed.".lightred
+        warn "To use #{to_s.downcase} please run:".lightgreen
+        warn "crew remove gcc#{installed_gccver} && crew install #{to_s.downcase}".lightgreen
         exit 1
       end
     end
@@ -103,6 +103,36 @@ class Gcc11 < Package
     system "grep  -q 4096 libsanitizer/asan/asan_linux.cpp || (sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
+  end
+
+  def self.prebuild
+    @C99 = <<~EOF
+      #!/usr/bin/env sh
+      fl="-std=c99"
+      for opt; do
+        case "$opt" in
+          -std=c99|-std=iso9899:1999) fl="";;
+          -std=*) echo "`basename $0` called with non ISO C99 option $opt" >&2
+              exit 1;;
+        esac
+      done
+      exec gcc $fl ${1+"$@"}
+    EOF
+
+    @C89 = <<~EOF
+      #!/usr/bin/env sh
+      fl="-std=c89"
+      for opt; do
+        case "$opt" in
+          -ansi|-std=c89|-std=iso9899:1990) fl="";;
+          -std=*) echo "`basename $0` called with non ANSI/ISO C option $opt" >&2
+                exit 1;;
+        esac
+      done
+      exec gcc $fl ${1+"$@"}
+    EOF
+    IO.write 'c99', @C99
+    IO.write 'c89', @C89
   end
 
   def self.build
@@ -153,6 +183,7 @@ class Gcc11 < Package
         ../configure #{CREW_OPTIONS} \
         #{@gcc_global_opts} \
         #{@archflags} \
+        --with-native-system-header-dir=#{CREW_PREFIX}/include \
         --enable-languages=#{@languages} \
         --program-suffix=-#{@gcc_version}"
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
@@ -160,7 +191,7 @@ class Gcc11 < Package
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
       system "env PATH=#{@path} \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-        make -j#{CREW_NPROC}"
+        make"
     end
   end
 
@@ -343,5 +374,7 @@ class Gcc11 < Package
       puts "Symlinking #{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so to #{CREW_DEST_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
     end
+    FileUtils.install 'c99', "#{CREW_DEST_PREFIX}/bin/c99", mode: 0o755
+    FileUtils.install 'c89', "#{CREW_DEST_PREFIX}/bin/c89", mode: 0o755
   end
 end

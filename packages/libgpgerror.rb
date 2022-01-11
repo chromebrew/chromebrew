@@ -3,27 +3,45 @@ require 'package'
 class Libgpgerror < Package
   description 'Libgpg-error is a small library that defines common error values for all GnuPG components.'
   homepage 'https://www.gnupg.org/related_software/libgpg-error/index.html'
-  @_ver = '1.42'
-  version "#{@_ver}-1"
+  @_ver = '1.43'
+  version @_ver
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{@_ver}.tar.bz2"
-  source_sha256 'fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23'
+  source_sha256 'a9ab83ca7acc442a5bd846a75b920285ff79bdb4e3d34aa382be88ed2c3aebaf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.42-1_armv7l/libgpgerror-1.42-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.42-1_armv7l/libgpgerror-1.42-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.42-1_i686/libgpgerror-1.42-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.42-1_x86_64/libgpgerror-1.42-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.43_armv7l/libgpgerror-1.43-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.43_armv7l/libgpgerror-1.43-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.43_i686/libgpgerror-1.43-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.43_x86_64/libgpgerror-1.43-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '46ca55616094f55ad7a071f06ea9b028d58ab8883407155ef472cf6b8bc105a7',
-     armv7l: '46ca55616094f55ad7a071f06ea9b028d58ab8883407155ef472cf6b8bc105a7',
-       i686: 'ef29d332a020b339c83492adf00b2aae6173d2a86b4b11922c48338dd73b9138',
-     x86_64: '87bdb815ac35effdf3a42e8dad56f947dcd51280590db3e64b59fc744908ce2d'
+    aarch64: '9b13df6ff89698f3a1f72a56fbd39b26f7f7929f5a0952481485151b4038f39e',
+     armv7l: '9b13df6ff89698f3a1f72a56fbd39b26f7f7929f5a0952481485151b4038f39e',
+       i686: 'a755f774182fd094f1327b4767118f072d6fa39443e37fe139cb88bb9c966aa6',
+     x86_64: '7eaf819b458f2ad35e66b1113fd9fdec0821d93289f41e670234e7137adb90da'
   })
 
   def self.patch
+    # See https://dev.gnupg.org/T5008#136664
+    @testmakefilepatch = <<~'TESTMAKEFILEPATCHEOF'
+      --- a/tests/Makefile.in	2022-01-04 18:58:45.185918510 +0000
+      +++ b/tests/Makefile.in	2022-01-04 18:55:16.184507622 +0000
+      @@ -662,6 +662,10 @@ distclean-tags:
+       check-TESTS: $(TESTS)
+       	@failed=0; all=0; xfail=0; xpass=0; skip=0; \
+       	srcdir=$(srcdir); export srcdir; \
+      +	gpgerror_libdir=`dirname $$PWD`/src/.libs; \
+      +	LD_LIBRARY_PATH=`echo "$$gpgerror_libdir:$$LD_LIBRARY_PATH" | $(SED) 's/:*$$//g'`; \
+      +	DYLD_LIBRARY_PATH=`echo "$$gpgerror_libdir:$$DYLD_LIBRARY_PATH" | $(SED) 's/:*$$//g'`; \
+      +	export LD_LIBRARY_PATH; export DYLD_LIBRARY_PATH; \
+       	list=' $(TESTS) '; \
+       	$(am__tty_colors); \
+       	if test -n "$$list"; then \
+    TESTMAKEFILEPATCHEOF
+    File.write('testmakefile.patch', @testmakefilepatch)
+    system 'patch -Np1 -i testmakefile.patch'
     system 'filefix'
   end
 
@@ -34,6 +52,12 @@ class Libgpgerror < Package
       --enable-shared \
       --disable-maintainer-mode"
     system 'make'
+  end
+
+  def self.check
+    Dir.chdir 'tests' do
+      system 'make check'
+    end
   end
 
   def self.install

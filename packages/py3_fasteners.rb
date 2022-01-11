@@ -3,7 +3,7 @@ require 'package'
 class Py3_fasteners < Package
   description 'Fasteners provides useful locks for python programs.'
   homepage 'https://github.com/harlowja/fasteners/'
-  @_ver = '0.15'
+  @_ver = '0.16.3'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_fasteners < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.15_armv7l/py3_fasteners-0.15-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.15_armv7l/py3_fasteners-0.15-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.15_x86_64/py3_fasteners-0.15-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.16.3_armv7l/py3_fasteners-0.16.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.16.3_armv7l/py3_fasteners-0.16.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.16.3_i686/py3_fasteners-0.16.3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_fasteners/0.16.3_x86_64/py3_fasteners-0.16.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '847f56cbe17a28de5bd78fcf9d69ea5db05fd011e035b70c28051444216460e4',
-     armv7l: '847f56cbe17a28de5bd78fcf9d69ea5db05fd011e035b70c28051444216460e4',
-     x86_64: 'cd2fdf2690b0acd28063048c4653f887237da16e44ea756f33af18916cbb0cd6'
+    aarch64: '033b5d05bc4541d543eaad6059ee38995d6b362b680402ff4cee7fb396353fa1',
+     armv7l: '033b5d05bc4541d543eaad6059ee38995d6b362b680402ff4cee7fb396353fa1',
+       i686: '74098c301e35a47d933968851b006fa4ae1cf86aa71c9dc92a6af6427b9a26cd',
+     x86_64: '98bfe6cd0c785de714d712d0f878334feb0356a5d55e18c4a6f81bd60268857e'
   })
 
   depends_on 'py3_six'

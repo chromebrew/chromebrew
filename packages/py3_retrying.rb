@@ -4,23 +4,23 @@ class Py3_retrying < Package
   description 'Retrying simplifies the task of adding retry behavior to just about anything.'
   homepage 'https://github.com/rholder/retrying/'
   @_ver = '1.3.3'
-  version @_ver
+  version "#{@_ver}-1"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/rholder/retrying.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_armv7l/py3_retrying-1.3.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_armv7l/py3_retrying-1.3.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_i686/py3_retrying-1.3.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3_x86_64/py3_retrying-1.3.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3-1_armv7l/py3_retrying-1.3.3-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3-1_armv7l/py3_retrying-1.3.3-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3-1_i686/py3_retrying-1.3.3-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_retrying/1.3.3-1_x86_64/py3_retrying-1.3.3-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'b740f5334db1044b55f4edc3876f7f88b631584abde4cb57f68f0a29285e4820',
-     armv7l: 'b740f5334db1044b55f4edc3876f7f88b631584abde4cb57f68f0a29285e4820',
-       i686: 'd0dcfc77dc868dda22e863de9d140384cb53fe010b9e67da9a13a217c6365e85',
-     x86_64: 'b96a36c91d9c3a54ec595ac9133cf62d45f03c6057a785cca907cae6006c55b7'
+    aarch64: 'c45e03cbf4d05c54a9461cee9da94b6529e3c0afcab28cd460a37783f3048441',
+     armv7l: 'c45e03cbf4d05c54a9461cee9da94b6529e3c0afcab28cd460a37783f3048441',
+       i686: 'ae1001d2b929b556f65802c12acc0be57cfae7d21f223232f4d1b252e3cf5bd5',
+     x86_64: 'e2959eed9284e9e306e1168b47bf81c242041359ca33311fc1c30c34b4a94b3b'
   })
 
   depends_on 'py3_six'

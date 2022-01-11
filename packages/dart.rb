@@ -3,20 +3,20 @@ require 'package'
 class Dart < Package
   description 'The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.'
   homepage 'https://dart.dev/'
-  @_ver = '2.14.1'
+  @_ver = '2.15.1'
   version @_ver
   license 'BSD-3'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-arm-release.zip"
-    source_sha256 'ce209720ff628c737067be8e55c86a3cf0257931107ad46142680c1d59dfb4b6'
+    source_sha256 '751935fc08dec2121410c3f2f33de8215d8a4e5f21192a4c42c4b81dd00f8659'
   when 'i686'
     source_url "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-ia32-release.zip"
-    source_sha256 '132d57b773fb81a2376490d8d3885e96d1ac18b87a4adadaf80eddcadf4ef22b'
+    source_sha256 '491ab94edc52f9bc02a95c5ad14d99867f09d56b66e0e9eafb7b904bef79d6cc'
   when 'x86_64'
     source_url "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-x64-release.zip"
-    source_sha256 'a615aec227431a6b15dd77c63904e505ba6b2882a48d4efad8fb20efe868a740'
+    source_sha256 '0f45dcaa53b4090b69b277b885ea9a4cb3a41589c9119113e1b978ad55ce335f'
   end
 
   def self.install

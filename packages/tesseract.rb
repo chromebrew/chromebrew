@@ -13,11 +13,13 @@ class Tesseract < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-2_armv7l/tesseract-4.1.1-2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-2_armv7l/tesseract-4.1.1-2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-2_i686/tesseract-4.1.1-2-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/4.1.1-2_x86_64/tesseract-4.1.1-2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'dd19e48f5511792037333cb2b6945c9dd37cc87233d815932cdbf8a43bb30d01',
      armv7l: 'dd19e48f5511792037333cb2b6945c9dd37cc87233d815932cdbf8a43bb30d01',
+       i686: 'eb365e5d43659b1ea285aaf81db2dc9c520fb00248212dae571571ec0d5a3d60',
      x86_64: '611623a2484006193d0a9506cc277f5ffb39a6c8de9229663c6d81da984d2b45'
   })
 

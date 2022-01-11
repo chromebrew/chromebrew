@@ -704,6 +704,11 @@ url: https://github.com/tianon/cgroupfs-mount/releases
 activity: low
 ---
 kind: url
+name: chafa
+url: https://github.com/hpjansson/chafa/releases
+activity: medium
+---
+kind: url
 name: check
 url: https://github.com/libcheck/check/releases
 activity: low
@@ -937,6 +942,11 @@ kind: url
 name: cronie
 url: https://github.com/cronie-crond/cronie/releases
 activity: medium
+---
+kind: url
+name: cros_adapta
+url: https://chromium.googlesource.com/chromiumos/third_party/cros-adapta.git
+activity: low
 ---
 kind: url
 name: cros_resize
@@ -2204,6 +2214,11 @@ url: https://github.com/GNOME/gnome-terminal/releases
 activity: medium
 ---
 kind: url
+name: gnome_text_editor
+url: https://gitlab.gnome.org/GNOME/gnome-text-editor/-/tags
+activity: medium
+---
+kind: url
 name: gnome_themes_standard
 url: https://github.com/GNOME/gnome-themes-extra/releases/
 activity: medium
@@ -2217,6 +2232,11 @@ kind: url
 name: gnome_weather
 url: https://github.com/GNOME/gnome-weather/releases
 activity: low
+---
+kind: url
+name: gnu_time
+url: https://ftpmirror.gnu.org/time/
+activity: none
 ---
 kind: url
 name: gnuchess
@@ -3242,6 +3262,11 @@ kind: url
 name: libcheck
 url: https://github.com/libcheck/check/releases
 activity: low
+---
+kind: url
+name: libcom_err
+url: https://sourceforge.net/projects/e2fsprogs/files/e2fsprogs/
+activity: medium
 ---
 kind: url
 name: libconfig
@@ -4492,6 +4517,11 @@ kind: url
 name: log4cplus
 url: https://sourceforge.net/projects/log4cplus/files/log4cplus-stable/
 activity: medium
+---
+kind: url
+name: logisim
+url: https://sourceforge.net/projects/circuit/files/
+activity: none
 ---
 kind: url
 name: lsb_release
@@ -6449,6 +6479,11 @@ url: http://kernel.ubuntu.com/~cking/tarballs/sluice
 activity: medium
 ---
 kind: url
+name: smallbasic
+url: https://github.com/smallbasic/SmallBASIC/releases
+activity: medium
+---
+kind: url
 name: smartmontools
 url: https://sourceforge.net/projects/smartmontools/files/smartmontools/
 activity: medium
@@ -7222,6 +7257,11 @@ kind: url
 name: vulkan_icd_loader
 url: https://github.com/KhronosGroup/Vulkan-Loader/releases
 activity: high
+---
+kind: url
+name: vuze
+url: https://sourceforge.net/projects/azureus/files/vuze/
+activity: none
 ---
 kind: url
 name: w3m

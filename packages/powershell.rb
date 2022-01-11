@@ -3,17 +3,19 @@ require 'package'
 class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
   homepage 'https://docs.microsoft.com/en-us/powershell/'
-  version '7.0.3'
+  version '7.2.0'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
-  case ARCH
-  when 'armv7l', 'aarch64'
-    source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell-7.0.3-linux-arm32.tar.gz'
-    source_sha256 'fe6da9f90fd5026c4ab446a31f565144342a8d507a73d428305bc36c1ad92644'
-  when 'x86_64'
-    source_url 'https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell-7.0.3-linux-x64.tar.gz'
-    source_sha256 'a9c023940c77a96a9f5135309e44c93ed627983bb1a66ecf5beb42bbba54ead6'
-  end
+  source_url ({
+    aarch64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.2.0/powershell-7.2.0-linux-arm32.tar.gz',
+     armv7l: 'https://github.com/PowerShell/PowerShell/releases/download/v7.2.0/powershell-7.2.0-linux-arm32.tar.gz',
+     x86_64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.2.0/powershell-7.2.0-linux-x64.tar.gz',
+  })
+  source_sha256 ({
+    aarch64: 'bb1e2ca5ff230721ed3d2579714a7cfe12ea27b7b27b22ae222b3515d9038b8c',
+     armv7l: 'bb1e2ca5ff230721ed3d2579714a7cfe12ea27b7b27b22ae222b3515d9038b8c',
+     x86_64: '15b67d0571d9891a10e541a1462c906084ab148614dd83c6bbddf90046a815a8',
+  })
 
   depends_on 'xdg_base'
 
@@ -25,8 +27,6 @@ class Powershell < Package
   end
 
   def self.postinstall
-    puts
-    puts "To get started, execute 'pwsh'".lightblue
-    puts
+    puts "\nTo get started, execute 'pwsh'.\n".lightblue
   end
 end

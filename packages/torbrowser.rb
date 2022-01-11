@@ -3,7 +3,7 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  @_ver = '10.0.16'
+  @_ver = '10.5.10'
   version @_ver
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
@@ -11,7 +11,7 @@ class Torbrowser < Package
   @_url = "https://www.torproject.org/dist/torbrowser/#{@_ver}"
   @_name = "tor-browser-linux64-#{@_ver}_en-US.tar.xz"
   source_url "#{@_url}/#{@_name}"
-  source_sha256 'fc0acea2d62767a67038296e0cc041dea2bc7b80ca5dc9333d0173ce4c7b021e'
+  source_sha256 '8279652de22c9842755196cd861687ba73a3d46a1d5c94dc2c1253e104a46c57'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
@@ -30,7 +30,7 @@ class Torbrowser < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     FileUtils.mv 'Browser/', "#{CREW_DEST_PREFIX}/share/"
     FileUtils.mv 'start-tor-browser.desktop', "#{CREW_DEST_PREFIX}/share"
-    FileUtils.install 'tor', "#{CREW_DEST_PREFIX}/bin/tor", mode: 0755
+    FileUtils.install 'tor', "#{CREW_DEST_PREFIX}/bin/tor", mode: 0o755
   end
 
   def self.postinstall
