@@ -51,6 +51,7 @@ class Docbook_xml51 < Package
 
     # Build XML catalog files for each Schema
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
+      #!/usr/bin/env bash -ex
       for s in schemas/rng schemas/sch; do
         _schema_catalog=${s}/catalog.xml
         xmlcatalog --noout --create ${_schema_catalog}
@@ -93,7 +94,7 @@ class Docbook_xml51 < Package
       done
     ADDFILES_HEREDOC
     IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
-    system "bash -x ./add_files.sh | true"
+    system './add_files.sh || true'
 
     ['rng', 'sch'].each do |type|
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
