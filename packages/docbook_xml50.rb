@@ -126,7 +126,9 @@ class Docbook_xml50 < Package
     SCHEMATRON
     # Build XML catalog files for each Schema
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
-      #!/usr/bin/env bash -ex
+      #!/usr/bin/env bash
+      set -ex
+
       for s in dtd rng sch xsd; do
         _schema_catalog=${s}/catalog.xml
         xmlcatalog --noout --create ${_schema_catalog}
