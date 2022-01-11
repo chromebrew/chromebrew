@@ -126,6 +126,7 @@ class Docbook_xml50 < Package
     SCHEMATRON
     # Build XML catalog files for each Schema
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
+      #!/usr/bin/env bash -ex
       for s in dtd rng sch xsd; do
         _schema_catalog=${s}/catalog.xml
         xmlcatalog --noout --create ${_schema_catalog}
@@ -206,7 +207,7 @@ class Docbook_xml50 < Package
       done
     ADDFILES_HEREDOC
     IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
-    system 'bash -x ./add_files.sh || true'
+    system './add_files.sh || true'
 
     %W[dtd rng sch xsd].each do |type|
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
