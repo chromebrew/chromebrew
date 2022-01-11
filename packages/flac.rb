@@ -3,35 +3,24 @@ require 'package'
 class Flac < Package
   description 'FLAC stands for Free Lossless Audio Codec, an audio format similar to MP3, but lossless, meaning that audio is compressed in FLAC without any loss in quality.'
   homepage 'https://xiph.org/flac/'
-  version '1.3.2'
+  version '1.3.3'
   license 'BSD, FDL-1.2, GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz'
-  source_sha256 '91cfc3ed61dc40f47f050a109b08610667d73477af6ef36dcad31c31a4a8d53f'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_armv7l/flac-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_armv7l/flac-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_i686/flac-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.3.2_x86_64/flac-1.3.2-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'adbc9e93a8d301f82c6cb9ede5392c787bd3994eaf1a963df9c36298f137e08b',
-     armv7l: 'adbc9e93a8d301f82c6cb9ede5392c787bd3994eaf1a963df9c36298f137e08b',
-       i686: '37d96f3aa15558f3bf2f2191db3b9c346785bc5d16a99027c5332f4fc2374681',
-     x86_64: 'f8868c2bcc493dcc7cf51d72531bf6e0be420d883b314847f20eed37251e251b',
-  })
+  source_url 'https://downloads.xiph.org/releases/flac/flac-1.3.3.tar.xz'
+  source_sha256 '213e82bd716c9de6db2f98bcadbc4c24c7e2efe8c75939a1a84e28539c4e1748'
 
   depends_on 'libogg'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end
