@@ -27,7 +27,7 @@ class Docbook_xsl_nons < Package
   depends_on 'xmlcatmgr'
 
   def self.patch
-    system 'curl -OLf "https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch"'
+    downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch'
     unless Digest::SHA256.hexdigest(File.read('765567_non-recursive_string_subst.patch')) == '193ec26dcb37bdf12037ed4ea98d68bd550500c8e96b719685d76d7096c3f9b3'
       abort 'Checksum mismatch. :/ Try again.'.lightred
     end
