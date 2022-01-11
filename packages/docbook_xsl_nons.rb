@@ -51,7 +51,6 @@ class Docbook_xsl_nons < Package
         done
       )
     ADDFILES_HEREDOC
-    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
     system 'bash ./add_files.sh || true'
   end
 
