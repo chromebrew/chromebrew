@@ -3,24 +3,11 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.14.4'
+  version '4.15.3'
   license 'GPLv3'
   compatibility 'all'
-  source_url "https://us1.samba.org/samba/ftp/stable/samba-#{version}.tar.gz"
-  source_sha256 '89af092a0b00f5354ed287f0aa37b8c2cf9ba2ce67ea6464192e2c18528f89b9'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_i686/smbclient-4.14.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_x86_64/smbclient-4.14.4-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
-     armv7l: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
-       i686: '2e50aa2792825d119143bd9cbeae10d167623d2ffee50f4e4b7d64ff69251b7e',
-     x86_64: '8f0f6e9e37d39b8893034af1e019bcf4c1c4fcf0c689edbb37da967658c7c1f4'
-  })
+  source_url 'https://download.samba.org/pub/samba/stable/samba-4.15.3.tar.gz'
+  source_sha256 '519399404391550345846768ea4dd0fe7fcb04e20c2b891b5eeb02e5554137db'
 
   depends_on 'avahi'
   depends_on 'cmocka'
