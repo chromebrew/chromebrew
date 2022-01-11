@@ -38,7 +38,9 @@ class Docbook_xsl_nons < Package
     ENV['XML_CATALOG_FILES'] = "#{CREW_DEST_PREFIX}/etc/xml/catalog"
     @pkgroot = "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}-nons"
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
-      #!/usr/bin/env bash -ex
+      #!/usr/bin/env bash
+      set -ex
+
       install -Dt @pkgroot -m644 VERSION{,.xsl}
       (
         shopt -s nullglob  # ignore missing files
