@@ -51,7 +51,9 @@ class Docbook_xml51 < Package
 
     # Build XML catalog files for each Schema
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
-      #!/usr/bin/env bash -ex
+      #!/usr/bin/env bash
+      set -ex
+
       for s in schemas/rng schemas/sch; do
         _schema_catalog=${s}/catalog.xml
         xmlcatalog --noout --create ${_schema_catalog}
