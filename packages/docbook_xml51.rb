@@ -101,13 +101,13 @@ class Docbook_xml51 < Package
     end
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install mode: 0o755, 'tools/db4-entities.pl', "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'tools/db4-entities.pl', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5"
     FileUtils.install 'tools/db4-upgrade.xsl', "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/"
 
     # catalog configuration
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/xml"
-    FileUtils.install mode: 0o644, "docbook-#{@_ver}.xml", "#{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml"
+    FileUtils.install "docbook-#{@_ver}.xml", "#{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml", mode: 0o644
   end
 
   def self.preinstall
@@ -134,7 +134,6 @@ class Docbook_xml51 < Package
 
   def self.postinstall
     { 'delegatePublic' => '-//OASIS//ENTITIES DocBook XML',
-      'delegatePublic' => '-//OASIS//ENTITIES DocBook XML',
       'delegateSystem' => 'http://www.oasis-open.org/docbook/',
       'delegateURI' => 'http://www.oasis-open.org/docbook/'
     }.each_pair do |k, v|
