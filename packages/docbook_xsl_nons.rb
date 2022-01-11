@@ -38,6 +38,7 @@ class Docbook_xsl_nons < Package
     ENV['XML_CATALOG_FILES'] = "#{CREW_DEST_PREFIX}/etc/xml/catalog"
     @pkgroot = "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}-nons"
     @ADDFILES_SH = <<~ADDFILES_HEREDOC
+      #!/usr/bin/env bash -ex
       install -Dt @pkgroot -m644 VERSION{,.xsl}
       (
         shopt -s nullglob  # ignore missing files
@@ -51,7 +52,8 @@ class Docbook_xsl_nons < Package
         done
       )
     ADDFILES_HEREDOC
-    system 'bash ./add_files.sh || true'
+    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
+    system './add_files.sh || true'
   end
 
   def self.preinstall
