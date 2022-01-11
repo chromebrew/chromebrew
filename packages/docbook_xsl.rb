@@ -51,7 +51,6 @@ class Docbook_xsl < Package
         done
       )
     ADDFILES_HEREDOC
-    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
     system 'bash ./add_files.sh || true'
     FileUtils.install 'VERSION.xsl', @pkgroot, mode:0o644
     FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
