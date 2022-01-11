@@ -1,40 +1,27 @@
-# Adapted from Arch Linux libnfs PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/libnfs/trunk/PKGBUILD
-
 require 'package'
 
 class Libnfs < Package
   description 'client library for accessing NFS shares'
   homepage 'https://github.com/sahlberg/libnfs'
-  version '4.0.0'
-  license 'GPLv2 & BSD'
+  @_ver = '4.0.0'
+  version @_ver + '-1'
+  license 'GPL-3, LGPL-2.1 and BSD'
   compatibility 'all'
-  source_url "https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-#{version}.tar.gz"
-  source_sha256 '6ee77e9fe220e2d3e3b1f53cfea04fb319828cc7dbb97dd9df09e46e901d797d'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_armv7l/libnfs-4.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_armv7l/libnfs-4.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_i686/libnfs-4.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0_x86_64/libnfs-4.0.0-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'c8aca50954bfbdf85d749655c98d940592cb0f0059375b0142974196a4eb1066',
-     armv7l: 'c8aca50954bfbdf85d749655c98d940592cb0f0059375b0142974196a4eb1066',
-       i686: 'a0efe68bbed97a19e0708c412b6ffc1ae2aa2d3e34b006e59b432218659d6e33',
-     x86_64: '5d51982578b523c791aa1cd4a6903603a41c75d7abfcfbc96aabab0c6fb8adf0'
-  })
+  source_url "https://github.com/sahlberg/libnfs.git"
+  git_hashtag 'libnfs-' + @_ver
 
   def self.build
-    system 'autoreconf -vif'
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+    system 'autoreconf -fiv'
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+            --enable-utils"
     system 'make'
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end
