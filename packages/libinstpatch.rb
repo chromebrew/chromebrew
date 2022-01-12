@@ -11,6 +11,7 @@ class Libinstpatch < Package
   git_hashtag 'v' + @_ver
 
   depends_on 'glib'
+  depends_on 'libsndfile'
 
   def self.build
     FileUtils.mkdir 'builddir'
