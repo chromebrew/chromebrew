@@ -11,7 +11,7 @@ class Libssh2 < Package
   source_sha256 '2d64e90f3ded394b91d3a2e774ca203a4179f69aebee03003e5a6fa621e41d51'
 
   def self.patch
-    system 'sed', '-i', '/TESTS =/s, mansyntax.sh,,g', 'tests/Makefile.in'
+    system "sed -i 's:/TESTS =/s:mansyntax.sh:g' tests/Makefile.in"
   end
 
   def self.build
