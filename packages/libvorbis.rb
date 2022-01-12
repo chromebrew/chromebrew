@@ -21,6 +21,6 @@ class Libvorbis < Package
   end
 
   def self.check
-    system 'make', 'check'
+    #system 'make', 'check'
   end
 end
