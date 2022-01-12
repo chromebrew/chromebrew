@@ -3,40 +3,34 @@ require 'package'
 class Libssh2 < Package
   description 'libssh2 is a client-side C library implementing the SSH2 protocol.'
   homepage 'https://www.libssh2.org/'
-  @_ver = '1.9.0'
-  version @_ver + '-3'
-  license 'BSD'
+  @_ver = '1.10.0'
+  version @_ver
   compatibility 'all'
-  source_url "https://www.libssh2.org/download/libssh2-#{@_ver}.tar.gz"
-  source_sha256 'd5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd'
+  license 'BSD'
+  source_url 'https://www.libssh2.org/download/libssh2-1.10.0.tar.gz'
+  source_sha256 '2d64e90f3ded394b91d3a2e774ca203a4179f69aebee03003e5a6fa621e41d51'
 
   binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.9.0-3_armv7l/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.9.0-3_armv7l/libssh2-1.9.0-3-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.9.0-3_i686/libssh2-1.9.0-3-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.9.0-3_x86_64/libssh2-1.9.0-3-chromeos-x86_64.tar.xz',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_armv7l/libssh2-1.10.0-chromeos-armv7l.tpxz',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_armv7l/libssh2-1.10.0-chromeos-armv7l.tpxz',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_i686/libssh2-1.10.0-chromeos-i686.tpxz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.10.0_x86_64/libssh2-1.10.0-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-     aarch64: 'a8b26892821ee9fae80de1c93d3f33171826e81849977227654d0ab91067ec25',
-      armv7l: 'a8b26892821ee9fae80de1c93d3f33171826e81849977227654d0ab91067ec25',
-        i686: '8004bd36ae1af0c9a2897881ad279f774b8dd72bf67b33f5e8ed7d792f36ba0b',
-      x86_64: 'aa7e4634d65400f17ab064ce8b9cd43703d3dd9393426e1155ea8627876cda8b',
+     aarch64: 'c31d6ee0243ce8b131d559c996a4d5d856a9ad4dfe412eb3b99af364d71157f5',
+      armv7l: 'c31d6ee0243ce8b131d559c996a4d5d856a9ad4dfe412eb3b99af364d71157f5',
+        i686: '6b65af8a14f9d2dfdcd8ee4006bd1c9ae35932108f0d9536394ce668c870cc30',
+      x86_64: 'fc86a278cfc296e49716bc02e25119504be4ee451e5d12da9d9941e1a3bc2eb9',
   })
 
   def self.patch
-    system 'sed', '-i', '/TESTS =/s, mansyntax.sh,,g', 'tests/Makefile.in'
+    system "sed -i 's:/TESTS =/s:mansyntax.sh:g' tests/Makefile.in"
   end
 
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --with-libz"
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+              --with-libz"
     system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
   end
 
   def self.install
