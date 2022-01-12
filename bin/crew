@@ -1132,18 +1132,18 @@ def install_package(pkgdir)
     end
 
     # check if the available rsync command support ACLs
-    rsync_available? = system 'command -v rsync && [ "$(rsync -V)" != *"no ACLs"* ]', out: '/dev/null'
+    rsync_available = system 'command -v rsync && [ "$(rsync -V)" != *"no ACLs"* ]', out: '/dev/null'
     puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred unless rsync_available? and !@opt_verbose
 
     if Dir.exists? "#{pkgdir}/home" then
-      if rsync_available?
+      if rsync_available
         system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
       else
         system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
       end
     end
     if Dir.exists? "#{pkgdir}/usr/local" then
-      if rsync_available?
+      if rsync_available
         # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
         system "rsync -ahHAXWx --remove-source-files ./usr/local/ #{CREW_PREFIX}"
       else
