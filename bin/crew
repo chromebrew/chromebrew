@@ -1132,8 +1132,8 @@ def install_package(pkgdir)
     end
 
     # check if the available rsync command support ACLs
-    rsync_available = system('command -v rsync', out: '/dev/null') and `rsync -V` !~ /no ACLs/
-    puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred if @opt_verbose and !rsync_available
+    rsync_available = system('command -v rsync', out: '/dev/null')
+    puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred unless rsync_available
 
     if Dir.exists? "#{pkgdir}/home" then
       if rsync_available
