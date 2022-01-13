@@ -16,7 +16,7 @@ class Libsndfile < Package
   depends_on 'flac'
   depends_on 'sqlite'
   depends_on 'alsa_lib'
-  depends_on 'nasm'
+  depends_on 'nasm' => :build
 
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
