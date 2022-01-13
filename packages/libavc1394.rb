@@ -3,36 +3,37 @@ require 'package'
 class Libavc1394 < Package
   description 'libavc1394 is a programming interface for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set.'
   homepage 'https://sourceforge.net/projects/libavc1394/'
-  version '0.5.4'
-  license 'LGPL-2.1'
+  version '0.5.4-1'
   compatibility 'all'
+  license 'LGPL-2.1'
   source_url 'https://downloads.sourceforge.net/project/libavc1394/libavc1394/libavc1394-0.5.4.tar.gz'
   source_sha256 '7cb1ff09506ae911ca9860bef4af08c2403f3e131f6c913a2cbd6ddca4215b53'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_armv7l/libavc1394-0.5.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_armv7l/libavc1394-0.5.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_i686/libavc1394-0.5.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4_x86_64/libavc1394-0.5.4-chromeos-x86_64.tar.xz',
+     aarch64: 'file:///usr/local/tmp/packages/libavc1394-0.5.4-1-chromeos-armv7l.tpxz',
+      armv7l: 'file:///usr/local/tmp/packages/libavc1394-0.5.4-1-chromeos-armv7l.tpxz',
+        i686: 'file:///usr/local/tmp/packages/libavc1394-0.5.4-1-chromeos-i686.tpxz',
+      x86_64: 'file:///usr/local/tmp/packages/libavc1394-0.5.4-1-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-    aarch64: '57ba75e9dd0cf910ec946b83626e3266401fa02a8673301a65b46be17fc60426',
-     armv7l: '57ba75e9dd0cf910ec946b83626e3266401fa02a8673301a65b46be17fc60426',
-       i686: '4ad13321cd0cbb9e15dfe8bf6834e1e29c6436acda8fcff55c2112f3b278e55b',
-     x86_64: '633edd7c131376ec1e76b8d4540fada425525f9f97d34107abe1a4cca7d45117',
+     aarch64: '58d8363b74e0bedfd11ae22835f0032a8f91f5bef61d0c06b146cc5bd13d51bd',
+      armv7l: '58d8363b74e0bedfd11ae22835f0032a8f91f5bef61d0c06b146cc5bd13d51bd',
+        i686: '0c18c2d74748e2cbb0c08f85741a71220909c0ffff020066cc307cf8878c0dad',
+      x86_64: '7c875d65b15e5cd43f51965743a7f79453982399aed94bcd0ed93e9104314ad1',
   })
 
   depends_on 'libraw1394'
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 end
