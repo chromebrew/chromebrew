@@ -3,7 +3,7 @@ require 'package'
 class Meson < Package
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '0.60.3'
+  @_ver = '0.61.0'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.60.3_armv7l/meson-0.60.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.60.3_armv7l/meson-0.60.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.60.3_i686/meson-0.60.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.60.3_x86_64/meson-0.60.3-chromeos-x86_64.tpxz'
+    aarch64: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-armv7l.tpxz',
+     armv7l: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-armv7l.tpxz',
+       i686: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-i686.tpxz',
+     x86_64: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5acf3747c967de025273d854612aec0a766c8429c4bc70439e9492f744ae45fc',
-     armv7l: '5acf3747c967de025273d854612aec0a766c8429c4bc70439e9492f744ae45fc',
-       i686: 'a6a87b0dca65adf2524339ac995841547eaedfc51b65a2f2606d2967506561d6',
-     x86_64: '8012c5627b2a6c75786168f7bab86697627c00ee63f588abf1d87bb37df91d93'
+    aarch64: '5829e292c2e6698101d980cd4f66063d82b2b7444d95f93edc2d6cdfbd75e6c0',
+     armv7l: '5829e292c2e6698101d980cd4f66063d82b2b7444d95f93edc2d6cdfbd75e6c0',
+       i686: '04ef88262a90a7b93f430c40ed16edd4688790782a645bb8c3408e2ea7839eeb',
+     x86_64: '322086d4553f6698a2112943eff7ac2a42f3f840e930a8a0ae863022a4fa4d39'
   })
 
   depends_on 'ninja'
