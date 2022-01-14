@@ -1126,13 +1126,13 @@ def install_package(pkgdir)
         end
       end
     end
-    if system 'command -v rdfind', out: '/dev/null'
-        puts 'Using rdfind to convert duplicate files to hard links.'
-        system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
+    if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+      puts 'Using rdfind to convert duplicate files to hard links.'
+      system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
     end
 
     # check if the available rsync command support ACLs
-    rsync_available = system('command -v rsync', out: '/dev/null')
+    rsync_available = File.exist?("#{CREW_PREFIX}/bin/rsync")
     puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred unless rsync_available
 
     if Dir.exists? "#{pkgdir}/#{HOME}" then
