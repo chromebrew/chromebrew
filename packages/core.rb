@@ -9,7 +9,6 @@ class Core < Package
 
   is_fake
 
-  depends_on 'binutils'
   depends_on 'brotli'
   depends_on 'bz2'
   depends_on 'c_ares'
