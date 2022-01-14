@@ -11,10 +11,10 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/meson-0.61.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_armv7l/meson-0.61.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_armv7l/meson-0.61.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_i686/meson-0.61.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_x86_64/meson-0.61.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5829e292c2e6698101d980cd4f66063d82b2b7444d95f93edc2d6cdfbd75e6c0',
