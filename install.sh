@@ -213,7 +213,7 @@ function extract_install () {
       LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
     fi
     echo -e "${BLUE}Installing ${1} ...${RESET}"
-    cp -a ./*/* "${CREW_PREFIX}"
+    cp -a ./usr/local/* "${CREW_PREFIX}"
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
