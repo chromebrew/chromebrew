@@ -3,23 +3,23 @@ require 'package'
 class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
-  version '1.4.3'
+  version '1.4.5'
   license 'GPL-3'
   compatibility 'all'
   source_url "https://www.samba.org/ftp/tdb/tdb-#{version}.tar.gz"
-  source_sha256 'c8058393dfa15f47e11ebd2f1d132693f0b3b3b8bf22d0201bfb305026f88a1b'
+  source_sha256 'bcfced884f7031080998b5c4b1c5dce57567055f79417f86dba40dcde99a0e41'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_armv7l/tdb-1.4.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_armv7l/tdb-1.4.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_i686/tdb-1.4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.3_x86_64/tdb-1.4.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.5_armv7l/tdb-1.4.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.5_armv7l/tdb-1.4.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.5_i686/tdb-1.4.5-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.5_x86_64/tdb-1.4.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '658452e796dffb16b9cc074f47bee90e5155cca0888f444cb13b716b577c5e60',
-     armv7l: '658452e796dffb16b9cc074f47bee90e5155cca0888f444cb13b716b577c5e60',
-       i686: '22c959f77a28a1b13d2603557b4d87b454dd04099682ba7a749ad99b7a945a43',
-     x86_64: '0040f43e9214ce035ca1eefca7923fce12aa8bc8710de383ca142c0eaaf12a9e'
+    aarch64: 'bba3ef3c4c68dc1933a1a33d1500752d745663742f96483998f043291c778450',
+     armv7l: 'bba3ef3c4c68dc1933a1a33d1500752d745663742f96483998f043291c778450',
+       i686: '17d6f6be8c555a20dc95f04d254477593373d5b37404b8ef714ddb03a685d2b2',
+     x86_64: 'f47f3199372d31c5abb9cf4c38e39d25bc229f20e85c71bb695e7c1db2d5fd82'
   })
 
   depends_on 'docbook_xsl'
@@ -27,10 +27,7 @@ class Tdb < Package
   depends_on 'libxslt'
 
   def self.build
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')}"
+    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')}"
     system 'make'
   end
 
