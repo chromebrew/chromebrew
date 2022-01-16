@@ -4,23 +4,21 @@ require 'open3'
 class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.2.0-1'
+  version '11.2.1-20220108'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz'
-  source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/11-20220108/gcc-11-20220108.tar.xz'
+  source_sha256 'a433837a85087c2357a456145ae140bd588e75d44a90031ed57c29de66e46468'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_armv7l/gcc11-11.2.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_armv7l/gcc11-11.2.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_i686/gcc11-11.2.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.0-1_x86_64/gcc11-11.2.0-1-chromeos-x86_64.tpxz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_armv7l/gcc11-11.2.1-20220108-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_armv7l/gcc11-11.2.1-20220108-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_x86_64/gcc11-11.2.1-20220108-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'd0fcbe0b65b9c0e724b17e229bc85e441a9dabaaeec97d97e0e102a58d562e63',
-     armv7l: 'd0fcbe0b65b9c0e724b17e229bc85e441a9dabaaeec97d97e0e102a58d562e63',
-       i686: 'a81f10cac350d24b9a7a050a88288c5703a9f93916aa1018502eafec5daa71cc',
-     x86_64: '21bbe0bb282d7d12acbbe5e9440f009c26223316c708ddd17cd32207649c5b91',
+  binary_sha256({
+    aarch64: 'cc48b179ccb035a15042e8a7534366ed0358cb69c84521659f7592b4ce08307b',
+     armv7l: 'cc48b179ccb035a15042e8a7534366ed0358cb69c84521659f7592b4ce08307b',
+     x86_64: 'f54549bbae4b15e8360cb73c72a168e168ce603ab4c16470c1b400efe8ca69f4'
   })
 
   depends_on 'ccache' => :build
@@ -31,6 +29,7 @@ class Gcc11 < Package
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
+  depends_on 'zstd' # R
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
@@ -68,31 +67,31 @@ class Gcc11 < Package
   @languages = 'c,c++,jit,objc,fortran,go'
   case ARCH
   when 'armv7l', 'aarch64'
-    @archflags = '--with-arch=armv7-a --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
+    @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
   when 'x86_64'
     @archflags = '--with-arch-64=x86-64'
   when 'i686'
     @archflags = '--with-arch-32=i686'
   end
 
-  def self.preflight
-    # Use full gcc path to bypass ccache
-    stdout_and_stderr, status = Open3.capture2e('bash', '-c',
-                                                "#{CREW_PREFIX}/bin/gcc -dumpversion 2>&1 | tail -1 | cut -d' ' -f1")
-    if status.success?
-      installed_gccver = stdout_and_stderr.chomp
-      # One gets "-dumpversion" or "bash:" with no gcc installed.
-      unless installed_gccver.to_s == '-dumpversion' ||
-             installed_gccver.to_s == 'bash:' ||
-             installed_gccver.to_s == @gcc_version.to_s ||
-             installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
-        warn "GCC version #{installed_gccver} is currently installed.".lightred
-        warn "To use #{to_s.downcase} please run:".lightgreen
-        warn "crew remove gcc#{installed_gccver} && crew install #{to_s.downcase}".lightgreen
-        exit 1
-      end
-    end
-  end
+  # def self.preflight
+  ## Use full gcc path to bypass ccache
+  # stdout_and_stderr, status = Open3.capture2e('bash', '-c',
+  # "#{CREW_PREFIX}/bin/gcc -dumpversion 2>&1 | tail -1 | cut -d' ' -f1")
+  # if status.success?
+  # installed_gccver = stdout_and_stderr.chomp
+  ## One gets "-dumpversion" or "bash:" with no gcc installed.
+  # unless installed_gccver.to_s == '-dumpversion' ||
+  # installed_gccver.to_s == 'bash:' ||
+  # installed_gccver.to_s == @gcc_version.to_s ||
+  # installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
+  # warn "GCC version #{installed_gccver} is currently installed.".lightred
+  # warn "To use #{to_s.downcase} please run:".lightgreen
+  # warn "crew remove gcc#{installed_gccver} && crew install #{to_s.downcase}".lightgreen
+  # exit 1
+  # end
+  # end
+  # end
 
   def self.patch
     # This fixes a PATH_MAX undefined error which breaks libsanitizer
@@ -131,8 +130,8 @@ class Gcc11 < Package
       done
       exec gcc $fl ${1+"$@"}
     EOF
-    IO.write 'c99', @C99
-    IO.write 'c89', @C89
+    File.write 'c99', @C99
+    File.write 'c89', @C89
   end
 
   def self.build
@@ -179,6 +178,7 @@ class Gcc11 < Package
     Dir.chdir('objdir') do
       system "env NM=gcc-nm AR=gcc-ar RANLIB=gcc-ranlib \
         CFLAGS='#{@cflags}' CXXFLAGS='#{@cxxflags}' \
+        LDFLAGS='-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}' \
         LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
         ../configure #{CREW_OPTIONS} \
         #{@gcc_global_opts} \
