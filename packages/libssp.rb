@@ -10,11 +10,13 @@ class Libssp < Package
   source_sha256 'a433837a85087c2357a456145ae140bd588e75d44a90031ed57c29de66e46468'
 
   binary_url({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_i686/libssp-11.2.1-20220108-chromeos-i686.tar.xz',
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_armv7l/libssp-11.2.1-20220108-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_armv7l/libssp-11.2.1-20220108-chromeos-armv7l.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_x86_64/libssp-11.2.1-20220108-chromeos-x86_64.tpxz'
   })
   binary_sha256({
+       i686: 'a8459db3bf278ca9cd120d3d7b166def4816fc112a42869968a2801eb4ceca81',
     aarch64: 'b7bdc82eca1ade26a484837a9b544852b9c3e5e5f4cbe571213e35e9c417398d',
      armv7l: 'b7bdc82eca1ade26a484837a9b544852b9c3e5e5f4cbe571213e35e9c417398d',
      x86_64: 'b443fabf868ac235e2b7e621c9eeec34389e469a87f180a9aaccaa01256b8038'

@@ -11,11 +11,13 @@ class Gcc11 < Package
   source_sha256 'a433837a85087c2357a456145ae140bd588e75d44a90031ed57c29de66e46468'
 
   binary_url({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_i686/gcc11-11.2.1-20220108-chromeos-i686.tar.xz',
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_armv7l/gcc11-11.2.1-20220108-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_armv7l/gcc11-11.2.1-20220108-chromeos-armv7l.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_x86_64/gcc11-11.2.1-20220108-chromeos-x86_64.tpxz'
   })
   binary_sha256({
+       i686: '96cbdec476c3c75a41ae01e9b63060cca42f5ccb262253840c0083f8f7571a54',
     aarch64: 'cc48b179ccb035a15042e8a7534366ed0358cb69c84521659f7592b4ce08307b',
      armv7l: 'cc48b179ccb035a15042e8a7534366ed0358cb69c84521659f7592b4ce08307b',
      x86_64: 'f54549bbae4b15e8360cb73c72a168e168ce603ab4c16470c1b400efe8ca69f4'
