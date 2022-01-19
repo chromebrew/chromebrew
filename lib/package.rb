@@ -132,6 +132,8 @@ class Package
 
     # after removing the env hash, all remaining args must be command args
     cmd_args = args.join(' ')
+    # escape all characters if cmd and cmd_args is passed separately
+    cmd_args.gsub(/(.)/, '\\\\\1')
 
     # Add -j arg to build commands.
     cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+|cmake/
