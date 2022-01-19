@@ -69,6 +69,7 @@ class Musl_getaddrinfo_test < Package
   end
 
   def self.check
+    puts 'Testing the musl resolver to see if it can resolve google.com:'.lightblue
     system './musl_getaddrinfo_test google.com set_ai_family'
     system './musl_getaddrinfo_test google.com'
   end

@@ -34,6 +34,14 @@ class Musl_libucontext < Package
   end
 
   def self.build
+    case ARCH
+    when 'aarch64', 'armv7l'
+      @arch = 'arm'
+    when 'i686'
+      @arch = 'X86'
+    when 'x86_64'
+      @arch = 'X86_64'
+    end
     system "#{MUSL_ENV_OPTIONS} make ARCH=#{@arch}"
   end
 
