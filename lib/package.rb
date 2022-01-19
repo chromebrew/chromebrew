@@ -131,12 +131,23 @@ class Package
     end
 
     # after removing the env hash, all remaining args must be command args
-    cmd_args = args.join(' ')
-    # escape all characters if cmd and cmd_args is passed separately
-    cmd_args.gsub(/(.)/, '\\\\\1')
+    cmd_args = args
 
-    # Add -j arg to build commands.
-    cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+|cmake/
+    if args.size == 1
+      # split cmdline to multi arguments if the command is passed in one single string
+      cmd_args = args[0].scan(/(?:\w|["'].*?["'])+/) if need_shell
+      # invlove a shell if the command is passed in one single string
+      cmd_args.unshift('bash', '-c')
+    end
+
+    # add -j arg to build commands
+    cmd_args.flat_map do |arg|
+      if args == 'make' and cmd_args != 'cmake'
+        [ arg, "-j#{CREW_NPROC}" ]
+      else
+        arg
+      end
+    end
 
     begin
       Kernel.system(env, cmd_args, **opt_args)
