@@ -35,7 +35,7 @@ class Musl_native_toolchain < Package
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
     ENV['CREW_NOT_STRIP'] = '1'
-    ENV['CREW_SHRINK_ARCHIVE'] = '0'
+    ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
     warn_level = $VERBOSE
     $VERBOSE = nil
     load "#{CREW_LIB_PATH}lib/const.rb"

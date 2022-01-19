@@ -15,7 +15,7 @@ class Brave < Package
   depends_on 'sommelier' # The hardware acceleration with Wayland is broken, so use x11
 
   def self.install
-    ENV['CREW_SHRINK_ARCHIVE'] = '0'
+    ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/brave"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/brave"
