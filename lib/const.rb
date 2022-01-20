@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.21.4'
+CREW_VERSION = '1.21.5'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -55,15 +55,15 @@ FileUtils.mkdir_p CREW_CACHE_DIR unless Dir.exist?(CREW_CACHE_DIR)
 CREW_NPROC = ( ENV['CREW_NPROC'].to_s.empty? ) ? `nproc`.chomp : ENV['CREW_NPROC']
 
 # Set following as boolean if environment variables exist.
-CREW_CACHE_ENABLED = ENV['CREW_CACHE_ENABLED'] == 'true'
-CREW_CONFLICTS_ONLY_ADVISORY = ENV['CREW_CONFLICTS_ONLY_ADVISORY'] == 'true'
-CREW_DISABLE_ENV_OPTIONS = ENV['CREW_DISABLE_ENV_OPTIONS'] == 'true'
-CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] == 'true'
-CREW_LA_RENAME_ENABLED = ENV['CREW_LA_RENAME_ENABLED'] == 'true'
-CREW_NOT_COMPRESS = ENV['CREW_NOT_COMPRESS'] == 'true'
-CREW_NOT_STRIP = ENV['CREW_NOT_STRIP'] == 'true'
-CREW_NOT_SHRINK_ARCHIVE = ENV['CREW_SHRINK_ARCHIVE'] == 'true'
-CREW_NOT_USE_PIXZ = ENV['CREW_USE_PIXZ'] == 'true'
+CREW_CACHE_ENABLED = ( ENV['CREW_CACHE_ENABLED'].to_s.empty? ) ? false : true
+CREW_CONFLICTS_ONLY_ADVISORY = ( ENV['CREW_CONFLICTS_ONLY_ADVISORY'].to_s.empty? ) ? false : true
+CREW_DISABLE_ENV_OPTIONS = ( ENV['CREW_DISABLE_ENV_OPTIONS'].to_s.empty? ) ? false : true
+CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ( ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].to_s.empty? ) ? false : true
+CREW_LA_RENAME_ENABLED = ( ENV['CREW_LA_RENAME_ENABLED'].to_s.empty? ) ? false : true
+CREW_NOT_COMPRESS = ( ENV['CREW_NOT_COMPRESS'].to_s.empty? ) ? false : true
+CREW_NOT_STRIP = ( ENV['CREW_NOT_STRIP'].to_s.empty? ) ? false : true
+CREW_NOT_SHRINK_ARCHIVE = ( ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? ) ? false : true
+CREW_NOT_USE_PIXZ = ( ENV['CREW_NOT_USE_PIXZ'].to_s.empty? ) ? false : true
 
 # Set testing constants from environment variables
 CREW_TESTING_BRANCH = ENV['CREW_TESTING_BRANCH']
