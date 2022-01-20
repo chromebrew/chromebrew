@@ -3,12 +3,13 @@ warn_level = $VERBOSE
 $VERBOSE = nil
 load "#{CREW_LIB_PATH}lib/const.rb"
 # Defines common musl build constants used in musl builds
-MUSL_ABI = ''
-MUSL_ARCH = ARCH
 MUSL_ARCH_SSP_CFLAGS = ''
 MUSL_ARCH_C_FLAGS = ''
 MUSL_ARCH_CXX_FLAGS = ''
 case ARCH
+when 'i686', 'x86_64'
+  MUSL_ABI = ''
+  MUSL_ARCH = ARCH
 when 'aarch64', 'armv7l'
   MUSL_ABI = 'eabihf'
   MUSL_ARCH = 'armhf'
@@ -77,20 +78,19 @@ class Musl
       return if @execfiles.empty? || @execfiles.nil?
 
       puts 'Running patchelf to patch binaries for musl paths'.lightblue
-      @execfiles.each_line do |execfiletopatch|
-        execfiletopatch.slice! '.'
-        execfiletopatch = `pwd`.chomp + execfiletopatch.chomp
+      @execfiles.each_line(chomp: true) do |execfiletopatch|
+        execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
         system "patchelf --set-interpreter #{CREW_MUSL_PREFIX}/lib/libc.so #{execfiletopatch}"
         system "patchelf --set-rpath #{CREW_MUSL_PREFIX}/lib #{execfiletopatch}"
-        @neededlibs = `patchelf --print-needed #{execfiletopatch}`.chomp
-        next if @neededlibs.empty? || @neededlibs.nil?
+        @neededlibs = `patchelf --print-needed #{execfiletopatch}`
+        next if @neededlibs.to_s.empty?
 
-        @neededlibs.each_line do |neededlibspatch|
+        @neededlibs.each_line(chomp: true) do |neededlibspatch|
           next if neededlibspatch.include?("#{CREW_MUSL_PREFIX}/lib")
 
           @neededlibspatchednamepath = "#{CREW_MUSL_PREFIX}/lib/" + File.basename(neededlibspatch)
-          puts "patchelf --replace-needed #{neededlibspatch.chomp} #{@neededlibspatchednamepath.chomp} #{execfiletopatch}"
-          system "patchelf --replace-needed #{neededlibspatch.chomp} #{@neededlibspatchednamepath.chomp} #{execfiletopatch}"
+          puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
+          system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
         end
       end
     end
