@@ -133,20 +133,19 @@ class Package
     # after removing the env hash, all remaining args must be command args
     cmd_args = args
 
-    # split cmdline to multi arguments if the command is passed in one single string
-    cmd_args = args[0].scan(/(?:\w|["'].*?["'])+/) if args.size == 1
-
     # add -j arg to build commands
-    cmd_args.map! do |arg|
-      if arg == 'make'
-        [ arg, "-j#{CREW_NPROC}" ]
-      else
-        arg
-      end
-    end.flatten
-
-    # involve a shell if the command is passed in one single string
-    cmd_args = [ 'bash', '-c', cmd_args.join(' ') ] if args.size == 1
+    if args.size == 1
+      # involve a shell if the command is passed in one single string
+      cmd_args = [ 'bash', '-c', cmd_args.sub(/\bmake\b/, "\\1 -j#{CREW_NPROC}") ]
+    else
+      cmd_args.map! do |arg|
+        if arg == 'make'
+          [ arg, "-j#{CREW_NPROC}" ]
+        else
+          arg
+        end
+      end.flatten
+    end
 
     begin
       Kernel.system(env, *cmd_args, **opt_args)
@@ -154,7 +153,7 @@ class Package
       exitstatus = $?.exitstatus
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{env.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')} #{cmd_args}` exited with #{exitstatus}"
+      raise InstallError, "`#{env.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')} #{*cmd_args}` exited with #{exitstatus}"
     end
   end
 end
