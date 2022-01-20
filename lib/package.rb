@@ -149,7 +149,7 @@ class Package
     cmd_args = [ 'bash', '-c', cmd_args.join(' ') ] if args.size == 1
 
     begin
-      Kernel.system(env, cmd_args, **opt_args)
+      Kernel.system(env, *cmd_args, **opt_args)
     rescue => e
       exitstatus = $?.exitstatus
       # print failed line number and error message
