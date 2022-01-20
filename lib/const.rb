@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.21.4'
+CREW_VERSION = '1.21.6'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -51,24 +51,19 @@ end
 
 FileUtils.mkdir_p CREW_CACHE_DIR unless Dir.exist?(CREW_CACHE_DIR)
 
-CREW_CACHE_ENABLED = ENV['CREW_CACHE_ENABLED']
-
-CREW_CONFLICTS_ONLY_ADVISORY = ENV['CREW_CONFLICTS_ONLY_ADVISORY']
-
-CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']
-
 # Set CREW_NPROC from environment variable or `nproc`
 CREW_NPROC = ( ENV['CREW_NPROC'].to_s.empty? ) ? `nproc`.chomp : ENV['CREW_NPROC']
 
-# Set CREW_NOT_COMPRESS from environment variable
-CREW_NOT_COMPRESS = ENV['CREW_NOT_COMPRESS']
-
-# Set CREW_NOT_STRIP from environment variable
-CREW_NOT_STRIP = ENV['CREW_NOT_STRIP']
-
-CREW_SHRINK_ARCHIVE = ENV['CREW_SHRINK_ARCHIVE']
-
-CREW_LA_RENAME_ENABLED = ENV['CREW_LA_RENAME_ENABLED']
+# Set following as boolean if environment variables exist.
+CREW_CACHE_ENABLED = ( ENV['CREW_CACHE_ENABLED'].to_s.empty? ) ? false : true
+CREW_CONFLICTS_ONLY_ADVISORY = ( ENV['CREW_CONFLICTS_ONLY_ADVISORY'].to_s.empty? ) ? false : true
+CREW_DISABLE_ENV_OPTIONS = ( ENV['CREW_DISABLE_ENV_OPTIONS'].to_s.empty? ) ? false : true
+CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ( ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].to_s.empty? ) ? false : true
+CREW_LA_RENAME_ENABLED = ( ENV['CREW_LA_RENAME_ENABLED'].to_s.empty? ) ? false : true
+CREW_NOT_COMPRESS = ( ENV['CREW_NOT_COMPRESS'].to_s.empty? ) ? false : true
+CREW_NOT_STRIP = ( ENV['CREW_NOT_STRIP'].to_s.empty? ) ? false : true
+CREW_NOT_SHRINK_ARCHIVE = ( ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? ) ? false : true
+CREW_NOT_USE_PIXZ = ( ENV['CREW_NOT_USE_PIXZ'].to_s.empty? ) ? false : true
 
 # Set testing constants from environment variables
 CREW_TESTING_BRANCH = ENV['CREW_TESTING_BRANCH']
@@ -76,7 +71,6 @@ CREW_TESTING_REPO = ENV['CREW_TESTING_REPO']
 
 CREW_TESTING = ( CREW_TESTING_BRANCH.to_s.empty? or CREW_TESTING_REPO.to_s.empty? ) ? '0' : ENV['CREW_TESTING']
 
-CREW_USE_PIXZ = ENV['CREW_USE_PIXZ']
 
 USER = `whoami`.chomp
 
@@ -127,7 +121,6 @@ CREW_COMMON_FNO_LTO_FLAGS = '-O2 -pipe -fno-lto -fPIC -fuse-ld=gold'
 CREW_LDFLAGS = '-flto'
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
-CREW_DISABLE_ENV_OPTIONS = ENV['CREW_DISABLE_ENV_OPTIONS']
 unless CREW_DISABLE_ENV_OPTIONS
   CREW_ENV_OPTIONS_HASH = {
     'CFLAGS'   => CREW_COMMON_FLAGS,
