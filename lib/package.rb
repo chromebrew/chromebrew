@@ -3,7 +3,7 @@ require 'package_helpers'
 class Package
   property :description, :homepage, :version, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag, :is_fake
+           :git_branch, :git_hashtag, :is_fake, :is_static
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -17,7 +17,7 @@ class Package
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_reader :is_fake
+    attr_reader :is_fake, :is_static
     attr_accessor :name, :is_dep, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
@@ -108,6 +108,14 @@ class Package
 
   def self.is_fake?
     @is_fake
+  end
+
+  def self.is_static
+    @is_static = true
+  end
+
+  def self.is_static?
+    @is_static
   end
 
   def self.system(*args, **opt_args)
