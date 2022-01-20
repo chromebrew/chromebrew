@@ -137,14 +137,8 @@ class Package
     if args.size == 1
       # involve a shell if the command is passed in one single string
       cmd_args = [ 'bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 -j#{CREW_NPROC}") ]
-    else
-      cmd_args.map! do |arg|
-        if arg == 'make'
-          [ arg, "-j#{CREW_NPROC}" ]
-        else
-          arg
-        end
-      end.flatten
+    elsif cmd_args[0] == 'make'
+      cmd_args.insert(1, "-j#{CREW_NPROC}")
     end
 
     begin
