@@ -131,18 +131,22 @@ class Package
     end
 
     # after removing the env hash, all remaining args must be command args
-    cmd_args = args.join(' ')
+    cmd_args = args
 
-    # Add -j arg to build commands.
-    cmd_args.sub!(/\b(?<=make)(?=\b)/, " -j#{CREW_NPROC}") unless cmd_args =~ /-j\s*\d+|cmake/
+    # add -j arg to build commands
+    if args.size == 1
+      # involve a shell if the command is passed in one single string
+      cmd_args = [ 'bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 -j#{CREW_NPROC}") ]
+    elsif cmd_args[0] == 'make'
+      cmd_args.insert(1, "-j#{CREW_NPROC}")
+    end
 
     begin
-      Kernel.system(env, cmd_args, **opt_args)
+      Kernel.system(env, *cmd_args, **opt_args)
     rescue => e
-      exitstatus = $?.exitstatus
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{env.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')} #{cmd_args}` exited with #{exitstatus}"
+      raise InstallError, "`#{env.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')} #{cmd_args.join(' ')}` exited with #{$?.exitstatus}"
     end
   end
 end
