@@ -1,5 +1,5 @@
 module DebUtils
-  def extract_deb(file, target)
+  def self.extract_deb(file, target)
     # extract_deb: unarchive .deb files
     # Usage: extract_deb(<file>, <target (optional)>)
     #   file: a .deb archive file
