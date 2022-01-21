@@ -1141,7 +1141,7 @@ def install_package(pkgdir)
       if rsync_available
         system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
       else
-        system "cp -a#{@verbose} ./#{HOME}/* #{HOME}"
+        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
       end
     end
     if Dir.exists? "#{pkgdir}/usr/local" then
@@ -1149,7 +1149,7 @@ def install_package(pkgdir)
         # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
         system "rsync -ahHAXWx --remove-source-files ./usr/local/ #{CREW_PREFIX}"
       else
-        system "cp -a#{@verbose} ./usr/local/* #{CREW_PREFIX}"
+        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
       end
     end
     if Dir.exists? "#{pkgdir}/#{CREW_PREFIX}"
