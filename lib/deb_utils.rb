@@ -1,4 +1,4 @@
-def extract_deb(file, target = nil)
+def extract_deb(file, target)
   # extract_deb: unarchive .deb files
   # Usage: extract_deb(<file>, <target (optional)>)
   #   file: a .deb archive file
@@ -6,9 +6,9 @@ def extract_deb(file, target = nil)
   #
   # Example:
   #   extract_deb('example.deb', /data\..*/) # extract files from example.deb with filenames matching the /data\..*/ regex
-  #   extract_deb('example.deb')             # extract all files in example.deb
+  #   extract_deb('example.deb', /*/)        # extract all files in example.deb
   #
-  file_found = false if target
+  file_found = false
   src_fileIO = File.open(file, 'rb')
   # get first line of the given file, should be a signature string (`!<arch>\n`) if it is a valid deb file
   signature = src_fileIO.gets
@@ -28,16 +28,12 @@ def extract_deb(file, target = nil)
     fileContent = src_fileIO.read(size.to_i)
 
     # filter filename if a target file is specified
-    if target and name =~ target
-      file_found = true
-    elsif target
-      next
-    end
+    file_found = true if name =~ target
 
     File.open(name, 'wb') do |dst_fileIO|
       # write to filesystem
       dst_fileIO.write(fileContent)
     end
   end
-  abort "#{target}: File not found in archive :/" if target and !file_found
+  abort "Target #{target.inspect} not found in archive. :/".lightred unless file_found
 end
