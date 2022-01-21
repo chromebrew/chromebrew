@@ -9,6 +9,7 @@ class Py3_numpy < Package
   compatibility 'all'
   source_url 'https://github.com/numpy/numpy.git'
   git_hashtag "v#{@_ver}"
+  git_fetchtags
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_armv7l/py3_numpy-1.21.4-chromeos-armv7l.tpxz',

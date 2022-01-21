@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.3'
+  @_ver = '21.3.4'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_armv7l/mesa-21.3.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_armv7l/mesa-21.3.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_i686/mesa-21.3.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.3_x86_64/mesa-21.3.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_armv7l/mesa-21.3.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_armv7l/mesa-21.3.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_i686/mesa-21.3.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_x86_64/mesa-21.3.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '38c59f391a0383975a1ab57acc29c6993f2f0955998f12104fc099b3bc148b78',
-     armv7l: '38c59f391a0383975a1ab57acc29c6993f2f0955998f12104fc099b3bc148b78',
-       i686: '87ea3c9b99428c61f8d5e632259d59637bbb0a5c05b44719b9ed16f8117f4b1e',
-     x86_64: 'f980a723ea8f70dc0110f42cbccd9ffa5dc372eb877726ee0e264c9f4f477e6a'
+    aarch64: 'ab9a19dd501715367d45e843b64b2aec16741538caa033f61133d9e78eca68df',
+     armv7l: 'ab9a19dd501715367d45e843b64b2aec16741538caa033f61133d9e78eca68df',
+       i686: '9d70ca4db18e06c3d63f867801171e3fc960b841a9e62218ce3ff91b3036bd63',
+     x86_64: 'bf3dff20994cdd88a1a242351c21bea4ce111410171ea5d39728fd6406ea40bf'
   })
 
   depends_on 'glslang' => :build

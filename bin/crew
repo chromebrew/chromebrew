@@ -724,12 +724,12 @@ def download
       # Recall repository from cache if requested
       if CREW_CACHE_ENABLED
         # No git branch specified, just a git commit or tag
-        if @pkg.git_branch.nil? || @pkg.git_branch.empty?
-          abort("No Git branch, commit, or tag specified!").lightred if @pkg.git_hashtag.nil? || @pkg.git_hashtag.empty?
+        if @pkg.git_branch.to_s.empty?
+          abort("No Git branch, commit, or tag specified!").lightred if @pkg.git_hashtag.to_s.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag.gsub('/', '_') + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         # Git branch and git commit specified
-        elsif ( ! @pkg.git_hashtag.nil? || ! @pkg.git_hashtag.empty )  and ( ! @pkg.git_branch.nil? || ! @pkg.git_branch.empty?)
+        elsif ! @pkg.git_hashtag.to_s.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + '_' + @pkg.git_hashtag.gsub('/', '_') + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         # Git branch specified, without a specific git commit.
@@ -753,7 +753,7 @@ def download
       # Download via git
       Dir.mkdir @extract_dir
       Dir.chdir @extract_dir do
-        unless @pkg.git_branch.nil? || @pkg.git_branch.empty?
+        unless @pkg.git_branch.to_s.empty?
           # Leave a message because this step can be slow.
           puts "Downloading src from a git branch. This may take a while..."
           system "git clone --branch #{@pkg.git_branch} --single-branch #{@pkg.source_url} tmpdir", exception: true
@@ -768,7 +768,9 @@ def download
           system 'git checkout FETCH_HEAD'
         end
         system 'git submodule update --init --recursive'
-        system 'git fetch --tags', exception: true
+        if @pkg.git_fetchtags?
+          system 'git fetch --tags', exception: true
+        end
         puts 'Repository downloaded.'.lightgreen
       end
       # Stow file in cache if requested and cache is writable.
@@ -952,7 +954,7 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY == '1'
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
         else
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
@@ -968,7 +970,7 @@ def prepare_package(destdir)
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      if CREW_CONFLICTS_ONLY_ADVISORY == '1'
+      if CREW_CONFLICTS_ONLY_ADVISORY
         puts "Warning: There is a conflict with the same file in another package.".orange
       else
         puts "Error: There is a conflict with the same file in another package.".lightred
@@ -1021,7 +1023,7 @@ def strip_dir(dir)
 end
 
 def shrink_dir(dir)
-  unless CREW_SHRINK_ARCHIVE == '0'
+  unless CREW_NOT_SHRINK_ARCHIVE
     Dir.chdir dir do
       if File.exist?("#{CREW_PREFIX}/bin/rdfind")
         puts "Using rdfind to convert duplicate files to hard links."
@@ -1046,7 +1048,7 @@ def shrink_dir(dir)
         # Also disable for sommelier.elf and Xwayland.elf since upx
         # breaks those binaries.
         @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'].chomp
-        unless @execfiles.empty? or @execfiles.nil?
+        unless @execfiles.to_s.empty?
           puts "Using upx to shrink binaries."
           # Copying in the ThreadPoolExecutor loop fails non-deterministically
           @execfiles.each_line do |execfilecp|
@@ -1109,7 +1111,7 @@ def install_package(pkgdir)
 
     @brokensymlinks = nil
     @brokensymlinks = %x[find . -type l -exec test ! -e {} \\; -print].chomp
-    unless @brokensymlinks.nil? or @brokensymlinks.empty?
+    unless @brokensymlinks.to_s.empty?
       puts "There are broken symlinks. Will try to fix.".orange if @opt_verbose
       @brokensymlinks.each_line do |fixlink|
         @brokentarget = nil
@@ -1424,7 +1426,7 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless CREW_USE_PIXZ == '0' || !File.exist?("#{CREW_PREFIX}/bin/pixz")
+  unless CREW_NOT_USE_PIXZ || !File.exist?("#{CREW_PREFIX}/bin/pixz")
     puts "Using pixz to compress archive."
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tpxz"
     Dir.chdir CREW_DEST_DIR do
