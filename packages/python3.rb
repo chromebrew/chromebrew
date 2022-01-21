@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.10.1'
+  @_ver = '3.10.2'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 'a7f1265b6e1a5de1ec5c3ec7019ab53413469934758311e9d240c46e5ae6e177'
+  source_sha256 '17de3ac7da9f2519aa9d64378c603a73a0e9ad58dffa8812e45160c086de64c7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_armv7l/python3-3.10.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_armv7l/python3-3.10.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_i686/python3-3.10.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.1_x86_64/python3-3.10.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_armv7l/python3-3.10.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_armv7l/python3-3.10.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_i686/python3-3.10.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_x86_64/python3-3.10.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1d9b9ddff46e783c73b1d4e7efb4962863fb6530ba0f5177882e933349491672',
-     armv7l: '1d9b9ddff46e783c73b1d4e7efb4962863fb6530ba0f5177882e933349491672',
-       i686: 'e713a032139323ecf1b69ef28dba4ce5504fb589abd5ee0abddee6bb3a0c54db',
-     x86_64: 'abc558170fc98b73d41c15b2fd36fc595a32479fa4a73ab9ffacfe34fa350b95'
+    aarch64: '46ebb382b432ee8000e0db434a20d35b1faf319bb1977e21795ce1edd515d404',
+     armv7l: '46ebb382b432ee8000e0db434a20d35b1faf319bb1977e21795ce1edd515d404',
+       i686: '63a4b7e887fd7b7ff611994f95da91fb8520cff19a5045a81f6fdc7b4da151f2',
+     x86_64: '10c93740a9865e840f31d4b8a1e9029e2d2406f4c9d83f00b8e0e4fe054bf0ac'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -32,6 +32,7 @@ class Python3 < Package
   depends_on 'glibc' # R
   depends_on 'libdb' # R
   depends_on 'libffi' # R
+  depends_on 'mpdecimal' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'readline' # R
@@ -125,16 +126,6 @@ class Python3 < Package
     Dir.chdir 'builddir' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
-
-    # remove static libraries
-    # system "find #{CREW_DEST_PREFIX} -name 'libpython*.a' -print | xargs -r rm"
-
-    # create symbolic links in lib64 for other applications which use libpython
-    # Not needed as --libdir is passed to ./configure
-    # unless Dir.exist? CREW_DEST_LIB_PREFIX
-    #  FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    #  system "cd #{CREW_DEST_LIB_PREFIX} && ln -s ../lib/libpython*.so* ."
-    # end
 
     # Remove conflicting binaries
     FileUtils.rm "#{CREW_DEST_PREFIX}/bin/wheel" if File.exist? "#{CREW_DEST_PREFIX}/bin/wheel"

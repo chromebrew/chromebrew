@@ -21,9 +21,9 @@ class Natron < Package
   depends_on 'sommelier'
 
   @strip = ENV['CREW_NOT_STRIP']
-  @shrink = ENV['CREW_SHRINK_ARCHIVE']
+  @shrink = ENV['CREW_NOT_SHRINK_ARCHIVE']
   ENV['CREW_NOT_STRIP'] = '1'
-  ENV['CREW_SHRINK_ARCHIVE'] = '0'
+  ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
 
   def self.install
     # IMPORTANT BUILD/INSTALL FROM SOURCE INSTRUCTIONS BELOW:
@@ -52,6 +52,6 @@ class Natron < Package
     end
   end
 
-  ENV['CREW_SHRINK_ARCHIVE'] = @shrink
+  ENV['CREW_NOT_SHRINK_ARCHIVE'] = @shrink
   ENV['CREW_NOT_STRIP'] = @strip
 end

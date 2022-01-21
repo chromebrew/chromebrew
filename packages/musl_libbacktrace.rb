@@ -18,52 +18,24 @@ class Musl_libbacktrace < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libbacktrace/d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a_x86_64/musl_libbacktrace-d0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '19bc88daa2ee3de04167a159d2a52d1f35e3f54e531847de9b441517cfef7d4b',
-     armv7l: '19bc88daa2ee3de04167a159d2a52d1f35e3f54e531847de9b441517cfef7d4b',
-       i686: '1dc24f90bd5cb0c86518f6843906fa28647f8e3c4c4c44ce33e41707e22cf967',
-     x86_64: '24b85b73f26b55343485cca8938aebfcd09c586ffba6cef5a7430b4a0336c82b'
+    aarch64: '6bbc858bbdaad878e275581442c17cae435cf936fec7bf1d98da24b93f46c729',
+     armv7l: '6bbc858bbdaad878e275581442c17cae435cf936fec7bf1d98da24b93f46c729',
+       i686: 'b2a40ba11af574e0a39cb2f3ec7e3befcc6640d44b474c4b04a558f1303a225d',
+     x86_64: '675283778411fed85ce6890f2bdce2d6e4f8b0956f8c1c3d2eb93c80ecc7e381'
   })
 
   depends_on 'musl_native_toolchain' => :build
 
-  @abi = ''
-  @arch_c_flags = ''
-  @arch_cxx_flags = ''
-  case ARCH
-  when 'aarch64', 'armv7l'
-    @abi = 'eabihf'
-  end
-
-  @cflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_c_flags} -fcommon"
-  @cxxflags = "-B#{CREW_PREFIX}/musl/include -flto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{@arch_cxx_flags} -fcommon -static"
-  @ldflags = "-L#{CREW_PREFIX}/musl/lib -flto -static"
-  @cmake_ldflags = '-flto'
-
-  @musldep_env_options = "PATH=#{CREW_PREFIX}/musl/bin:#{ENV['PATH']} \
-      LIBRARY_PATH='#{CREW_PREFIX}/musl/lib:$LIBRARY_PATH' \
-      CC='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-gcc' \
-      CXX='#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-g++' \
-      LD=#{CREW_PREFIX}/musl/bin/#{ARCH}-linux-musl#{@abi}-ld.gold \
-      PKG_CONFIG_LIBDIR=#{CREW_PREFIX}/musl/lib/pkgconfig \
-      CFLAGS='#{@cflags}' \
-      CXXFLAGS='#{@cxxflags}' \
-      CPPFLAGS='-I#{CREW_PREFIX}/musl/include -fcommon' \
-      LDFLAGS='#{@ldflags}'"
-
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}/musl \
-      #{@musldep_env_options} \
+    load "#{CREW_LIB_PATH}lib/musl.rb"
+    system "./configure --prefix=#{CREW_MUSL_PREFIX} \
+      #{MUSL_ENV_OPTIONS} \
       --enable-shared \
       --enable-static"
     system 'make'
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
     system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end
