@@ -3,7 +3,7 @@ require 'package_helpers'
 class Package
   property :description, :homepage, :version, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag, :is_fake, :is_static
+           :git_branch, :git_fetchtags, :git_hashtag, :is_fake, :is_static
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -84,6 +84,14 @@ class Package
 
   def self.get_extract_dir
     name + '.' + Time.now.utc.strftime("%Y%m%d%H%M%S") + '.dir'
+  end
+
+  def self.git_fetchtags
+    @git_fetchtags = true
+  end
+
+  def self.git_fetchtags?
+    @git_fetchtags
   end
 
   def self.is_binary? (architecture)
