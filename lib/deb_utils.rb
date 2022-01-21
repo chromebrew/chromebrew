@@ -2,11 +2,12 @@ def extract_deb(file, target)
   # extract_deb: unarchive .deb files
   # Usage: extract_deb(<file>, <target (optional)>)
   #   file: a .deb archive file
-  #   target: (optional) a specified file to extract from archive, should be passed in regex
+  #   target: (optional) a specified file to extract from archive, should be passed in regex or string
   #
   # Example:
+  #   extract_deb('example.deb', 'test.txt') # extract `test.txt` from example.deb
   #   extract_deb('example.deb', /data\..*/) # extract files from example.deb with filenames matching the /data\..*/ regex
-  #   extract_deb('example.deb', /*/)        # extract all files in example.deb
+  #   extract_deb('example.deb', /*/)        # extract all files from example.deb
   #
   file_found = false
   src_fileIO = File.open(file, 'rb')
