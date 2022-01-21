@@ -805,7 +805,7 @@ def unpack(meta)
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
       puts "Unpacking '.deb' archive, this may take a while..."
-      extract_deb(meta[:filename], /data\..*/)
+      DebUtils::extract_deb(meta[:filename], /data\..*/)
       system "tar x#{@verbose}f data.* -C #{@extract_dir}", exception: true
     when /\.AppImage$/i
       puts "Unpacking 'AppImage' archive, this may take a while..."
