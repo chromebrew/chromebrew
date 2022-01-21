@@ -729,7 +729,7 @@ def download
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag.gsub('/', '_') + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         # Git branch and git commit specified
-        elsif ! @pkg.git_hashtag.to_s.empty? and ! @pkg.git_branch.to_s.empty?
+        elsif ! @pkg.git_hashtag.to_s.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + '_' + @pkg.git_hashtag.gsub('/', '_') + '.tar.xz'
           puts "cachefile is #{cachefile}".orange if @opt_verbose
         # Git branch specified, without a specific git commit.
