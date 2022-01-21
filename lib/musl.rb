@@ -75,7 +75,7 @@ class Musl
       abort('No Patchelf found!').lightred unless File.exist?("#{CREW_PREFIX}/bin/patchelf")
 
       @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'`.chomp
-      return if @execfiles.empty? || @execfiles.nil?
+      return if @execfiles.to_s.empty?
 
       puts 'Running patchelf to patch binaries for musl paths'.lightblue
       @execfiles.each_line(chomp: true) do |execfiletopatch|
