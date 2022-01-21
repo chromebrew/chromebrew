@@ -28,11 +28,18 @@ def extract_deb(file, target)
     fileContent = src_fileIO.read(size.to_i)
 
     # filter filename if a target file is specified
-    file_found = true if name =~ target
-
-    File.open(name, 'wb') do |dst_fileIO|
+    if target.is_a?(String) and name == target
+      # if target is passed as string, write matched file to filesyetem and exit function
       # write to filesystem
-      dst_fileIO.write(fileContent)
+      File.open(name, 'wb') {|dst_fileIO| dst_fileIO.write(fileContent) }
+      # exit function
+      return true
+    elsif target.is_a?(Regexp) and name =~ target
+      # if target is passed as regex, write matched file to filesyetem and continue
+      # searching for another matched file until EOF
+      # write to filesystem
+      File.open(name, 'wb') {|dst_fileIO| dst_fileIO.write(fileContent) }
+      file_found = true
     end
   end
   abort "Target #{target.inspect} not found in archive. :/".lightred unless file_found
