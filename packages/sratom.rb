@@ -12,10 +12,10 @@ class Sratom < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/sratom-0.6.8-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/sratom-0.6.8-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/sratom-0.6.8-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/sratom-0.6.8-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sratom/0.6.8_armv7l/sratom-0.6.8-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sratom/0.6.8_armv7l/sratom-0.6.8-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sratom/0.6.8_i686/sratom-0.6.8-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sratom/0.6.8_x86_64/sratom-0.6.8-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'be65f506b6d36f893747ac861707f6ae8608bc87680b0534c201823c5cd8b039',

@@ -10,10 +10,10 @@ class Swig < Package
   source_sha256 'd53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.2_armv7l/swig-4.0.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.2_armv7l/swig-4.0.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.2_i686/swig-4.0.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.2_x86_64/swig-4.0.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '12f62e4758ab51ee5284a6124a633f416e16eeb35052ba7a34d208e6c75c37a0',

@@ -13,10 +13,10 @@ class Lilv < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/lilv-0.24.12-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/lilv-0.24.12-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/lilv-0.24.12-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/lilv-0.24.12-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.12_armv7l/lilv-0.24.12-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.12_armv7l/lilv-0.24.12-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.12_i686/lilv-0.24.12-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.12_x86_64/lilv-0.24.12-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5a0aacc4b651196a40f3be5c7595f819857d200ad0f58f08df94e25978900813',

@@ -12,10 +12,10 @@ class Sord < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/sord-0.16.8-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/sord-0.16.8-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/sord-0.16.8-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/sord-0.16.8-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.8_armv7l/sord-0.16.8-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.8_armv7l/sord-0.16.8-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.8_i686/sord-0.16.8-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.8_x86_64/sord-0.16.8-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '7b9964ca0db2f500f888dadf4305af8ec0205d54ee2136819abebf553466adf8',

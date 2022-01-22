@@ -12,10 +12,10 @@ class Serd < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/serd-0.30.10-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/serd-0.30.10-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/serd-0.30.10-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/serd-0.30.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_armv7l/serd-0.30.10-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_armv7l/serd-0.30.10-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_i686/serd-0.30.10-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_x86_64/serd-0.30.10-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '18bdc58281fc31baff1ad0fc464b70c78f8becd1b4efee39c1cddc17e419a88c',

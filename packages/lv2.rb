@@ -12,10 +12,10 @@ class Lv2 < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/lv2-1.18.2-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/lv2-1.18.2-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/lv2-1.18.2-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/lv2-1.18.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lv2/1.18.2_armv7l/lv2-1.18.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lv2/1.18.2_armv7l/lv2-1.18.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lv2/1.18.2_i686/lv2-1.18.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lv2/1.18.2_x86_64/lv2-1.18.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '01c2428272130e485d3064a44d580d20b4e08e9523743fde0facde659cf781ec',

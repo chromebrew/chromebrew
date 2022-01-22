@@ -10,10 +10,10 @@ class Waf < Package
   git_hashtag "waf-#{version}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-armv7l.tpxz',
-     armv7l: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-armv7l.tpxz',
-       i686: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-i686.tpxz',
-     x86_64: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_armv7l/waf-2.0.23-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_armv7l/waf-2.0.23-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_i686/waf-2.0.23-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_x86_64/waf-2.0.23-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '147ffce125636a9b1f2929a20169e07545211b7b80d4ac6bd757587b04a10697',
