@@ -1120,24 +1120,35 @@ def install_package(pkgdir)
       end
     end
     if File.exist?("#{CREW_PREFIX}/bin/rdfind")
-        puts "Using rdfind to convert duplicate files to hard links."
-        system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
+      puts 'Using rdfind to convert duplicate files to hard links.'
+      system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
     end
-    if Dir.exists? "#{pkgdir}/home" then
-      if system("#{CREW_PREFIX}/bin/rsync -V > /dev/null 2>&1")
+
+    # check if the available rsync command support ACLs
+    rsync_available = File.exist?("#{CREW_PREFIX}/bin/rsync")
+    puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred unless rsync_available
+
+    if Dir.exists? "#{pkgdir}/#{HOME}" then
+      if rsync_available
         system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
       else
-        puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred if @opt_verbose
-        system "tar -c#{@verbose}f - ./usr/* ./home/* | (cd /; tar xp --keep-directory-symlink -f -)"
+        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
       end
     end
     if Dir.exists? "#{pkgdir}/usr/local" then
-      if system("#{CREW_PREFIX}/bin/rsync -V > /dev/null 2>&1")
+      if rsync_available
         # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
         system "rsync -ahHAXWx --remove-source-files ./usr/local/ #{CREW_PREFIX}"
       else
-        puts 'rsync is not working. Please install it with \'crew install rsync\''.lightred if @opt_verbose
         system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+      end
+    end
+    if Dir.exists? "#{pkgdir}/#{CREW_PREFIX}"
+      if rsync_available
+        # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
+        system "rsync -ahHAXWx --remove-source-files ./#{CREW_PREFIX}/ #{CREW_PREFIX}"
+      else
+        system "cp -a#{@verbose} ./#{CREW_PREFIX}/* #{CREW_PREFIX}"
       end
     end
   end
