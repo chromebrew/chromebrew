@@ -3,34 +3,35 @@ require 'package'
 class Swig < Package
   description 'Simplified Wrapper and Interface Generator'
   homepage 'http://www.swig.org'
-  version '4.0.1'
+  version '4.0.2'
   license 'GPL-3, BSD and BSD-2'
   compatibility 'all'
-  source_url 'http://prdownloads.sourceforge.net/swig/swig-4.0.1.tar.gz'
-  source_sha256 '7a00b4d0d53ad97a14316135e2d702091cd5f193bb58bcfcd8bc59d41e7887a9'
+  source_url 'http://prdownloads.sourceforge.net/swig/swig-4.0.2.tar.gz'
+  source_sha256 'd53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_armv7l/swig-4.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_armv7l/swig-4.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_i686/swig-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.0.1_x86_64/swig-4.0.1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-armv7l.tpxz',
+     armv7l: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-armv7l.tpxz',
+       i686: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-i686.tpxz',
+     x86_64: 'file:///usr/local/tmp/packages/swig-4.0.2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'bfcc6357fed1a729192a5f94fcb0a42ce9a391c71e973a5c71663bcec5758409',
-     armv7l: 'bfcc6357fed1a729192a5f94fcb0a42ce9a391c71e973a5c71663bcec5758409',
-       i686: 'd6f872741b8f4c6fb572db6d4e62a4259c43d7de5c3b879db20db4f9799a5d19',
-     x86_64: '55ba83675fb3106cb101f487d5d758c845d8cea922abaec52307f5f261fea1b5',
+  binary_sha256({
+    aarch64: '12f62e4758ab51ee5284a6124a633f416e16eeb35052ba7a34d208e6c75c37a0',
+     armv7l: '12f62e4758ab51ee5284a6124a633f416e16eeb35052ba7a34d208e6c75c37a0',
+       i686: '3a2745de14603c0c998e3c9219a6ac76e0129068d8a7dae6b53a17f644f8f4b4',
+     x86_64: 'b2c9aff000d7e96df6c4a3ae98c0ca80ccdec8f03b2cec253f1991df189d47a8'
   })
 
+  depends_on 'boost'
   depends_on 'pcre'
   depends_on 'zlibpkg'
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system "./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

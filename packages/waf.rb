@@ -3,30 +3,30 @@ require 'package'
 class Waf < Package
   description 'The Waf build system'
   homepage 'https://waf.io/'
-  version '2.0.22'
+  version '2.0.23'
   license 'BSD-3'
   compatibility 'all'
-  source_url 'https://gitlab.com/ita1024/waf/-/archive/waf-2.0.22/waf-waf-2.0.22.tar.bz2'
-  source_sha256 '7368b14adba94467c920161aaca3e54384aca392acb7dc8ee37d53ce29dac781'
+  source_url 'https://gitlab.com/ita1024/waf.git'
+  git_hashtag "waf-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_armv7l/waf-2.0.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_armv7l/waf-2.0.22-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_i686/waf-2.0.22-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.22_x86_64/waf-2.0.22-chromeos-x86_64.tar.xz'
+    aarch64: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-armv7l.tpxz',
+     armv7l: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-armv7l.tpxz',
+       i686: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-i686.tpxz',
+     x86_64: 'file:///usr/local/tmp/packages/waf-2.0.23-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '732013cc9f066715cc03186d9d082d7096413b1fdd910ae71e93db6a4a162cc9',
-     armv7l: '732013cc9f066715cc03186d9d082d7096413b1fdd910ae71e93db6a4a162cc9',
-       i686: '531783e227612ebb76d64062f32769d92c1d21254397d2912d5dde8f40c3f685',
-     x86_64: '5645ec0c6c283f41dc5a7b4e5d28f40137c330c591a330b2d5e40b4a8d86bd30'
+    aarch64: '147ffce125636a9b1f2929a20169e07545211b7b80d4ac6bd757587b04a10697',
+     armv7l: '147ffce125636a9b1f2929a20169e07545211b7b80d4ac6bd757587b04a10697',
+       i686: 'd5d5f0efaa3e9fd0dd6d60bc9f5c0df71447b7cd498900a26defb75f0413a2d3',
+     x86_64: 'c415edd52cb5fa0de773b6ae6d6a4975742eee186e86171dc8899973a5e0a541'
   })
 
   depends_on 'help2man'
 
   def self.build
     system './waf-light configure build'
-    system './waf-light --tools=compat15'
+    system "./waf-light --tools=compat15 --prelude=\$'\tfrom waflib.extras import compat15\n'"
     system 'help2man -N ./waf > waf.1'
     case ARCH
     when 'x86_64'
@@ -35,19 +35,21 @@ class Waf < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
-    system "cp waf #{CREW_DEST_PREFIX}/bin"
-    system "cp waf-light #{CREW_DEST_PREFIX}/bin"
-    system "cp waf.1 #{CREW_DEST_PREFIX}/man/man1"
-    system "cp -r waflib/ #{CREW_DEST_LIB_PREFIX}"
+    @dest_dirs = %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/bin #{CREW_DEST_LIB_PREFIX}
+                    #{CREW_DEST_MAN_PREFIX}/man1]
+    @dest_dirs.each do |dir|
+      FileUtils.mkdir_p dir
+    end
+    FileUtils.cp 'waf', "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.cp 'waf-light', "#{CREW_DEST_PREFIX}/bin/"
+    FileUtils.cp 'waf.1', "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.cp_r 'waflib', "#{CREW_DEST_LIB_PREFIX}/"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @wafenv = <<~WAFEOF
       # waf build system configuration
       export WAFDIR=#{CREW_LIB_PREFIX}
     WAFEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/waf", @wafenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/waf", @wafenv)
   end
 end
