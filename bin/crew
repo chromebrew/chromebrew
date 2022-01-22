@@ -9,6 +9,7 @@ require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require 'tmpdir'
+require_relative '../lib/function'
 require_relative '../lib/const'
 require_relative '../lib/util'
 require_relative '../lib/convert_size'
@@ -104,9 +105,9 @@ end
 
 String.use_color = args["--color"] || !args["--no-color"]
 @opt_keep = args["--keep"]
-@opt_verbose = args["--verbose"]
+Verbose = args["--verbose"]
 
-if @opt_verbose then
+if Verbose then
   @fileutils_verbose = true
   @verbose = 'v'
   @short_verbose = '-v'
@@ -193,7 +194,7 @@ def list_available
 end
 
 def list_installed
-  unless @opt_verbose
+  unless Verbose
     Dir[CREW_META_PATH + '*.directorylist'].sort.map do |f|
       File.basename(f, '.directorylist').lightgreen
     end
@@ -232,7 +233,7 @@ def list_compatible(compat = true)
 end
 
 def generate_compatible
-  puts 'Generating compatible packages...'.orange if @opt_verbose
+  verbose_puts 'Generating compatible packages...'.orange
   @device[:compatible_packages] = []
   Dir[CREW_PACKAGES_PATH + '*.rb'].each do |filename|
     pkgName = File.basename filename, '.rb'
@@ -241,7 +242,7 @@ def generate_compatible
     rescue => e
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
-    puts "Checking #{pkgName} for compatibility.".orange if @opt_verbose
+    verbose_puts "Checking #{pkgName} for compatibility.".orange
     # If compatibility property does not exist, check if a binary package
     # exists, and if not, see if at least a source url exists.
     @compatibility = true
@@ -255,22 +256,22 @@ def generate_compatible
         #puts "url: #{@url}".green
         # If no source package is available, then package is not compatible.
         @compatibility = false unless @url
-        puts "#{pkgName} compatibility is #{@compatibility}" if @opt_verbose
+        verbose_puts "#{pkgName} compatibility is #{@compatibility}"
       end
     end
     if ( @pkg.compatibility&.include? 'all' or @pkg.compatibility&.include? ARCH or @pkg.compatibility.nil? ) and @compatibility
       #add to compatible packages
-      puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
+      verbose_puts "Adding #{pkgName} to compatible packages.".lightgreen
       @device[:compatible_packages].push(name: @pkg.name)
     else
-      puts "#{pkgName} is not a compatible package.".lightred if @opt_verbose
+      verbose_puts "#{pkgName} is not a compatible package.".lightred
     end
   end
   File.open(CREW_CONFIG_PATH + 'device.json', 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
-  puts 'Generating compatible packages done.'.orange if @opt_verbose
+  verbose_puts 'Generating compatible packages done.'.orange
 end
 
 def search (pkgName, silent = false)
@@ -291,7 +292,7 @@ def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
   results = Dir[CREW_PACKAGES_PATH + '*.rb'].sort \
     .select  { |f| File.basename(f, '.rb') =~ re } \
-    .each    { |f| print_package(f, @opt_verbose) }
+    .each    { |f| print_package(f, Verbose) }
   if results.empty?
     Dir[CREW_PACKAGES_PATH + '*.rb'].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
@@ -301,7 +302,7 @@ def regexp_search(pkgPat)
         puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
       end
       if ( @pkg.description =~ /#{pkgPat}/i )
-        print_current_package @opt_verbose
+        print_current_package Verbose
         results.push(packageName)
       end
     end
@@ -513,12 +514,12 @@ def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkgName
   #update package lists
   Dir.chdir CREW_LIB_PATH do
-    if CREW_TESTING == '1'
+    if $OPT[:TESTING] == '1'
       puts "Updating crew from testing repository..."
-      system "git remote add testing #{CREW_TESTING_REPO} 2>/dev/null || \
-        git remote set-url testing #{CREW_TESTING_REPO}"
-      system "git fetch testing #{CREW_TESTING_BRANCH}"
-      system "git reset --hard testing/#{CREW_TESTING_BRANCH}"
+      system "git remote add testing #{$OPT[:TESTING_REPO]} 2>/dev/null || \
+        git remote set-url testing #{$OPT[:TESTING_REPO]}"
+      system "git fetch testing #{$OPT[:TESTING_BRANCH]}"
+      system "git reset --hard testing/#{$OPT[:TESTING_BRANCH]}"
     else
       system 'git fetch origin master'
       system 'git reset --hard origin/master'
@@ -536,7 +537,7 @@ def update
   @device[:installed_packages].each do |package|
     search package[:name], true
     if @pkg.nil?
-      puts "Package file for #{package[:name]} not found. :(".lightred if @opt_verbose
+      verbose_puts "Package file for #{package[:name]} not found. :(".lightred
       next
     end 
     if package[:version].to_s != @pkg.version
@@ -620,7 +621,7 @@ def upgrade
       toBeUpdated.each do |package|
         search package
         print_current_package
-        puts "Updating " + @pkg.name + "..." if @opt_verbose
+        verbose_puts "Updating " + @pkg.name + "..."
         @pkg.in_upgrade = true
         resolve_dependencies_and_install
         @pkg.in_upgrade = false
@@ -661,22 +662,22 @@ def download
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
-        puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
+        verbose_puts "Looking for #{@pkg.name} archive in cache".orange
         cachefile = CREW_CACHE_DIR + filename
         if ! File.exist?(cachefile)
           puts 'Cannot find cached archive. 😔 Will download.'.lightred
           cachefile = ''
         else
-          puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
+          verbose_puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen
           if Digest::SHA256.hexdigest( File.read(cachefile) ) == sha256sum || sha256sum =~ /^SKIP$/i
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
-              puts "Archive hard linked from cache".green if @opt_verbose
+              verbose_puts "Archive hard linked from cache".green
             rescue
               # Copy cached file if hard link fails.
               FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose unless File.identical?(cachefile,CREW_BREW_DIR + '/' + filename)
-              puts "Archive copied from cache".green if @opt_verbose
+              verbose_puts "Archive copied from cache".green
             end
             puts "Archive found in cache".lightgreen
             return {source: source, filename: filename}
@@ -689,7 +690,7 @@ def download
       # Download file if not cached.
       # use curl if CURL environment variable set
       if CURL == 'curl'
-        downloader url, filename, @opt_verbose
+        downloader url, filename, Verbose
       else
         system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
       end
@@ -699,15 +700,15 @@ def download
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested, if file is not from cache,
       # and cache is writable.
-      if CREW_CACHE_ENABLED and cachefile.to_s.empty? and File.writable?(CREW_CACHE_DIR)
+      if $OPT[:CACHE_ENABLED] and cachefile.to_s.empty? and File.writable?(CREW_CACHE_DIR)
         begin
           # Hard link to cache if possible.
           FileUtils.ln filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
-          puts "Archive hard linked to cache".green if @opt_verbose
+          verbose_puts "Archive hard linked to cache".green
         rescue
           # Copy to cache if hard link fails.
           FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
-          puts "Archive copied to cache".green if @opt_verbose
+          verbose_puts "Archive copied to cache".green
         end
       end
       return {source: source, filename: filename}
@@ -723,21 +724,21 @@ def download
     # Handle git sources.
     if @git == true
       # Recall repository from cache if requested
-      if CREW_CACHE_ENABLED
+      if $OPT[:CACHE_ENABLED]
         # No git branch specified, just a git commit or tag
         if @pkg.git_branch.to_s.empty?
           abort("No Git branch, commit, or tag specified!").lightred if @pkg.git_hashtag.to_s.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_hashtag.gsub('/', '_') + '.tar.xz'
-          puts "cachefile is #{cachefile}".orange if @opt_verbose
+          verbose_puts "cachefile is #{cachefile}".orange
         # Git branch and git commit specified
         elsif ! @pkg.git_hashtag.to_s.empty?
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + '_' + @pkg.git_hashtag.gsub('/', '_') + '.tar.xz'
-          puts "cachefile is #{cachefile}".orange if @opt_verbose
+          verbose_puts "cachefile is #{cachefile}".orange
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
           cachefile = CREW_CACHE_DIR + filename + @pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_') + Time.now.strftime("%m%d%Y") + '.tar.xz'
-          puts "cachefile is #{cachefile}".orange if @opt_verbose
+          verbose_puts "cachefile is #{cachefile}".orange
         end
         if File.file?(cachefile)
           if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
@@ -775,7 +776,7 @@ def download
         puts 'Repository downloaded.'.lightgreen
       end
       # Stow file in cache if requested and cache is writable.
-      if CREW_CACHE_ENABLED and File.writable?(CREW_CACHE_DIR)
+      if $OPT[:CACHE_ENABLED] and File.writable?(CREW_CACHE_DIR)
         puts 'Caching downloaded git repo...'
         Dir.chdir "#{@extract_dir}" do
           # Do not use --exclude-vcs to exclude .git
@@ -798,7 +799,7 @@ def unpack(meta)
     case File.basename meta[:filename]
     when /\.zip$/i
       puts "Unpacking archive using 'unzip', this may take a while..."
-      _verbopt = @opt_verbose ? '-v' : '-qq'
+      _verbopt = Verbose ? '-v' : '-qq'
       system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
@@ -847,7 +848,7 @@ def build_and_preconfigure(target_dir)
   Dir.chdir target_dir do
     puts 'Building from source, this may take a while...'
 
-    if CREW_LA_RENAME_ENABLED
+    if $OPT[:LA_RENAME_ENABLED]
       # Rename *.la files temporarily to *.la_tmp to avoid
       # libtool: link: '*.la' is not a valid libtool archive.
       # See https://gnunet.org/faq-la-files and
@@ -867,7 +868,7 @@ def build_and_preconfigure(target_dir)
     puts 'Preconfiguring package...'
     @pkg.install
 
-    if CREW_LA_RENAME_ENABLED
+    if $OPT[:LA_RENAME_ENABLED]
       # Rename all *.la_tmp back to *.la to avoid
       # cannot access '*.la': No such file or directory
       puts 'Rename all *.la_tmp files back to *.la'.lightblue
@@ -899,7 +900,7 @@ end
 
 def compress_doc(dir)
   # check whether crew should compress
-  return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+  return if $OPT[:NOT_COMPRESS] || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
@@ -945,7 +946,7 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY
+        if $OPT[:FHS_NONCOMPLIANCE_ONLY_ADVISORY]
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
         else
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
@@ -961,7 +962,7 @@ def prepare_package(destdir)
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      if CREW_CONFLICTS_ONLY_ADVISORY
+      if $OPT[:CONFLICTS_ONLY_ADVISORY]
         puts "Warning: There is a conflict with the same file in another package.".orange
       else
         puts "Error: There is a conflict with the same file in another package.".lightred
@@ -990,7 +991,7 @@ end
 
 def strip_find_files(find_cmd, strip_option = "")
   # check whether crew should strip
-  return if CREW_NOT_STRIP || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
+  return if $OPT[:NOT_STRIP] || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
@@ -998,7 +999,7 @@ def strip_find_files(find_cmd, strip_option = "")
 end
 
 def strip_dir(dir)
-  unless CREW_NOT_STRIP
+  unless $OPT[:NOT_STRIP]
     Dir.chdir dir do
       # Strip libraries with -S
       puts "Stripping libraries..."
@@ -1014,7 +1015,7 @@ def strip_dir(dir)
 end
 
 def shrink_dir(dir)
-  unless CREW_NOT_SHRINK_ARCHIVE
+  unless $OPT[:NOT_SHRINK_ARCHIVE]
     Dir.chdir dir do
       if File.exist?("#{CREW_PREFIX}/bin/rdfind")
         puts "Using rdfind to convert duplicate files to hard links."
@@ -1068,11 +1069,11 @@ def shrink_dir(dir)
               puts "Attempting to compress #{execfile} ...".orange
               # Make tmp file for compression
               unless system "upx --lzma #{execfile}-crewupxtmp"
-                puts "Compression of #{execfile} failed...".orange if @opt_verbose
+                verbose_puts "Compression of #{execfile} failed...".orange
                 FileUtils.rm_f "#{execfile}-crewupxtmp"
               end
               if File.exist?("#{execfile}-crewupxtmp")
-                puts "Testing compressed #{execfile}...".lightblue if @opt_verbose
+                verbose_puts "Testing compressed #{execfile}...".lightblue
                 if system "upx -t #{execfile}-crewupxtmp && cp #{execfile}-crewupxtmp #{execfile}"
                   puts "#{execfile} successfully compressed...".lightgreen
                 else
@@ -1103,19 +1104,19 @@ def install_package(pkgdir)
     @brokensymlinks = nil
     @brokensymlinks = %x[find . -type l -exec test ! -e {} \\; -print].chomp
     unless @brokensymlinks.to_s.empty?
-      puts "There are broken symlinks. Will try to fix.".orange if @opt_verbose
+      verbose_puts "There are broken symlinks. Will try to fix.".orange
       @brokensymlinks.each_line do |fixlink|
         @brokentarget = nil
         @fixedtarget = nil
         @brokentarget = %x[readlink -n #{fixlink}].chomp
-        puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{@brokentarget}".orange if @opt_verbose
+        verbose_puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{@brokentarget}".orange
         @fixedtarget = @brokentarget.delete_prefix(CREW_DEST_DIR).chomp
         @fixedlink_loc = pkgdir + fixlink.delete_prefix('.')
         @fixedlink_loc = @fixedlink_loc.chomp
         # If no changes were made, don't replace symlink
         unless @fixedtarget == @brokentarget
           FileUtils.ln_sf "#{@fixedtarget}","#{@fixedlink_loc}"
-          puts "Fixed: #{@fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if @opt_verbose
+          verbose_puts "Fixed: #{@fixedtarget} -> #{fixlink.delete_prefix('.')}".orange
         end
       end
     end
@@ -1417,7 +1418,7 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless CREW_NOT_USE_PIXZ || !File.exist?("#{CREW_PREFIX}/bin/pixz")
+  unless $OPT[:NOT_USE_PIXZ] || !File.exist?("#{CREW_PREFIX}/bin/pixz")
     puts "Using pixz to compress archive."
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tpxz"
     Dir.chdir CREW_DEST_DIR do
@@ -1451,12 +1452,12 @@ def remove(pkgName)
         # These essential files are enumerated in const.rb as
         # CREW_ESSENTIAL_FILES.
         if CREW_ESSENTIAL_FILES.include?(line)
-          if @opt_verbose
+          if Verbose
             puts "Removing #{line} will break crew. It was " +
                  'NOT'.lightred + ' deleted.'
           end
         else
-          puts "Removing file #{line}".lightred if @opt_verbose
+          verbose_puts "Removing file #{line}".lightred
           begin
             File.unlink line.chomp
           rescue => exception #swallow exception
@@ -1467,7 +1468,7 @@ def remove(pkgName)
       #remove all directories installed by the package
       File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
         begin
-          puts 'Removing directory ' + line + ''.lightred if @opt_verbose
+          verbose_puts 'Removing directory ' + line + ''.lightred
           Dir.rmdir line
         rescue => exception #swallow exception
         end
@@ -1481,7 +1482,7 @@ def remove(pkgName)
   end
 
   #remove from installed packages
-  puts 'Removing package ' + pkgName + "".lightred if @opt_verbose
+  verbose_puts "Removing package #{pkgName}".lightred
   @device[:installed_packages].delete_if {|elem| elem[:name] == pkgName }
 
   #update the device manifest
@@ -1531,7 +1532,7 @@ def build_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    print_current_package @opt_verbose
+    print_current_package Verbose
     resolve_dependencies_and_build
   end
 end
@@ -1561,7 +1562,7 @@ def download_command(args)
   args["<name>"].each do |name|
     @pkgName = name
     search @pkgName
-    print_current_package @opt_verbose
+    print_current_package Verbose
     download
   end
 end
