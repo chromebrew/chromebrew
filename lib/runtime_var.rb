@@ -13,7 +13,7 @@ def setvar (hash = {})
     # add variable to $OPT hash
     $OPT[name] = value
     # for compatibility with existing packages
-    eval "CREW_#{name} = #{value}"
+    eval "CREW_#{name} = '#{value}'"
   end
 end
 
