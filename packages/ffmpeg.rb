@@ -44,7 +44,7 @@ class Ffmpeg < Package
   depends_on 'jack' # R
   depends_on 'libaom' # R
   depends_on 'libass' # R
-  depends_on 'lilv' => :build
+  depends_on 'lilv' # R
   depends_on 'leptonica' => :build
   depends_on 'libavc1394' # R
   depends_on 'libbluray' # R
