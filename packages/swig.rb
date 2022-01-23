@@ -6,7 +6,7 @@ class Swig < Package
   version '4.0.2'
   license 'GPL-3, BSD and BSD-2'
   compatibility 'all'
-  source_url 'http://prdownloads.sourceforge.net/swig/swig-4.0.2.tar.gz'
+  source_url 'https://downloads.sourceforge.net/project/swig/swig/swig-4.0.2/swig-4.0.2.tar.gz'
   source_sha256 'd53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc'
 
   binary_url({
