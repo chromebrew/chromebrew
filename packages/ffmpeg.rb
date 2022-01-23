@@ -3,7 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '4.4.1'
+  @_ver = '5.0'
   version @_ver
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
@@ -11,16 +11,16 @@ class Ffmpeg < Package
   git_hashtag "n#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4.1_armv7l/ffmpeg-4.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4.1_armv7l/ffmpeg-4.4.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4.1_i686/ffmpeg-4.4.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4.1_x86_64/ffmpeg-4.4.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_armv7l/ffmpeg-5.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_armv7l/ffmpeg-5.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_i686/ffmpeg-5.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_x86_64/ffmpeg-5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '03341a9d3c63a1973a37bd4c65f0e3231736e5ca31906f132bb03adb5c07da35',
-     armv7l: '03341a9d3c63a1973a37bd4c65f0e3231736e5ca31906f132bb03adb5c07da35',
-       i686: 'a0d9fbdd65f3fbc710240293df7562a6df31d01f479293b5cc1968f4af9093ac',
-     x86_64: '61edc8d4de679b88f525e47194b8fde634641ee34f18395ab30d1153df0f4448'
+    aarch64: '5f9ab043558a4a059bb7ae75b5b763179cca3b164729197c39bb8cd3397714dc',
+     armv7l: '5f9ab043558a4a059bb7ae75b5b763179cca3b164729197c39bb8cd3397714dc',
+       i686: 'ba11082bdc94dbd5d2e9939880dcbc3e3e0602661afdc0d3c16578928eda7b61',
+     x86_64: '47dcdcba48fd60d40856138eca3818c5bfdcb506d1a4261a7b5a2897c7d49575'
   })
 
   depends_on 'avisynthplus' # ?
@@ -44,6 +44,7 @@ class Ffmpeg < Package
   depends_on 'jack' # R
   depends_on 'libaom' # R
   depends_on 'libass' # R
+  depends_on 'lilv' # R
   depends_on 'leptonica' => :build
   depends_on 'libavc1394' # R
   depends_on 'libbluray' # R
@@ -73,6 +74,7 @@ class Ffmpeg < Package
   depends_on 'openal' # ?
   depends_on 'openjpeg' # R
   depends_on 'openmp' # R
+  depends_on 'openssl' # R
   depends_on 'opus' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
@@ -107,19 +109,20 @@ class Ffmpeg < Package
     # ChromeOS awk employs sandbox redirection protections which screw
     # up configure script generation, so use mawk.
     system "sed -i 's/awk/mawk/g' configure"
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
+    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
         CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
         LDFLAGS='-U_FORTIFY_SOURCE #{@lto}' \
         ./configure \
         --arch=#{ARCH} \
         --disable-debug \
+        --disable-doc \
         --disable-iconv \
+        --enable-avfilter \
         --enable-avisynth \
         --enable-ffplay \
         --enable-fontconfig \
         --enable-frei0r \
         --enable-gmp \
-        --enable-gnutls \
         --enable-gpl \
         --enable-ladspa \
         --enable-libaom \
@@ -127,13 +130,13 @@ class Ffmpeg < Package
         --enable-libbluray \
         --enable-libdav1d \
         --enable-libdrm \
+        --enable-libfdk-aac \
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
-        #{@mfx}  \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
@@ -162,14 +165,19 @@ class Ffmpeg < Package
         --enable-libxcb \
         --enable-libxml2 \
         --enable-libxvid \
-        --enable-libzmq \
         --enable-libzimg \
+        --enable-libzmq \
+        --enable-libzvbi \
         #{@enablelto} \
+        --enable-lv2 \
         --enable-lzma \
         --enable-nonfree \
+        --enable-opengl \
+        --enable-openssl \
         --enable-pthreads \
         --enable-shared \
         --enable-version3 \
+        #{@mfx}  \
         --host-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
         --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
         #{CREW_OPTIONS.sub(/--build=.*/, '')}"
