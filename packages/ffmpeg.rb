@@ -11,14 +11,14 @@ class Ffmpeg < Package
   git_hashtag "n#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4.1_armv7l/ffmpeg-4.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4.1_armv7l/ffmpeg-4.4.1-chromeos-armv7l.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_armv7l/ffmpeg-5.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_armv7l/ffmpeg-5.0-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_i686/ffmpeg-5.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0_x86_64/ffmpeg-5.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '03341a9d3c63a1973a37bd4c65f0e3231736e5ca31906f132bb03adb5c07da35',
-     armv7l: '03341a9d3c63a1973a37bd4c65f0e3231736e5ca31906f132bb03adb5c07da35',
+    aarch64: '5f9ab043558a4a059bb7ae75b5b763179cca3b164729197c39bb8cd3397714dc',
+     armv7l: '5f9ab043558a4a059bb7ae75b5b763179cca3b164729197c39bb8cd3397714dc',
        i686: 'ba11082bdc94dbd5d2e9939880dcbc3e3e0602661afdc0d3c16578928eda7b61',
      x86_64: '47dcdcba48fd60d40856138eca3818c5bfdcb506d1a4261a7b5a2897c7d49575'
   })
