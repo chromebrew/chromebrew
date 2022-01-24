@@ -21,10 +21,10 @@ class Glibc < Package
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
     binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-2_i686/glibc-2.23-2-chromeos-i686.tpxz'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-3_i686/glibc-2.23-3-chromeos-i686.tpxz'
     })
     binary_sha256({
-      i686: 'cb975c4ceee153b89a9a402d4bdd76b233e7ce3ae54f003a2875198039810f55'
+      i686: '3ee19cbb907eb219a2c1b02df6de1ca13b09b0d375101657d54a2485aacdc445'
     })
   elsif LIBC_VERSION == '2.27'
     version '2.27'
