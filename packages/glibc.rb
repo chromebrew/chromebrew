@@ -7,7 +7,6 @@ class Glibc < Package
   compatibility 'all'
 
   depends_on 'gawk' => :build
-  depends_on 'libgd' => :build
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
@@ -27,19 +26,19 @@ class Glibc < Package
       i686: '3ee19cbb907eb219a2c1b02df6de1ca13b09b0d375101657d54a2485aacdc445'
     })
   elsif LIBC_VERSION == '2.27'
-    version '2.27'
+    version '2.27-3'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_x86_64/glibc-2.27-chromeos-x86_64.tar.xz'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27-3_armv7l/glibc-2.27-3-chromeos-armv7l.tpxz',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27-3_armv7l/glibc-2.27-3-chromeos-armv7l.tpxz',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27-3_x86_64/glibc-2.27-3-chromeos-x86_64.tpxz'
     })
     binary_sha256({
-      aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
-       armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
-       x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
+      aarch64: '9d71c001feb52fbe7dd201c4ae5a4cadb7b7b3f3020b299ff023624e48aa06db',
+       armv7l: '9d71c001feb52fbe7dd201c4ae5a4cadb7b7b3f3020b299ff023624e48aa06db',
+       x86_64: '1f1bff5247b0e47b7d48e950d24bbce6f9df9f2418ca9aa7b9880cb2c708eef2'
     })
   elsif LIBC_VERSION == '2.32'.freeze # All architectures with updates past M92.
     version '2.32-2'
@@ -72,12 +71,6 @@ class Glibc < Package
        x86_64: '3e3eaa6551492ef0f1bc28600102503b721b19d0ee7396c4301771df402ea355'
     })
   end
-  puts "libc version is #{version}".lightblue
-  depends_on 'gawk' => :build
-  depends_on 'hashpipe' => :build
-  depends_on 'libgd' => :build
-  depends_on 'libidn2' => :build
-  depends_on 'texinfo' => :build
 
   def self.patch
     case LIBC_VERSION
@@ -261,19 +254,19 @@ class Glibc < Package
       when 'i686'
         File.write('glibc_223_i686.patch', @glibc_223_i686_patch)
         system 'patch -Np1 -i glibc_223_i686.patch'
-        # when 'armv7l', 'x86_64'
+      when 'armv7l', 'x86_64'
         # @googlesource_branch = 'release-R91-13904.B'
         # system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
         # Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{LIBC_VERSION}*.patch").each do |patch|
         # puts patch
         # system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch})"
         # end
-        ## Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
-        # system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" -o glibc_227_nss.patch'
-        # unless Digest::SHA256.hexdigest(File.read('glibc_227_nss.patch')) == '0c40630adf77292abb763362182158a87648e2c45904aebb5758b5ca38653ac9'
-        # abort 'Checksum mismatch :/ try again'
-        # end
-        # system 'patch -Np1 -i glibc_227_nss.patch || true'
+        # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
+        system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" -o glibc_227_nss.patch'
+        unless Digest::SHA256.hexdigest(File.read('glibc_227_nss.patch')) == '0c40630adf77292abb763362182158a87648e2c45904aebb5758b5ca38653ac9'
+        abort 'Checksum mismatch :/ try again'
+        end
+        system 'patch -Np1 -i glibc_227_nss.patch || true'
       end
       # Apply patch due to new version of binutils which causes compilation failure
       # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
@@ -323,8 +316,8 @@ class Glibc < Package
       system "sed -i 's,verbose,locale_verbose,g' fedora/build-locale-archive.c"
       system "sed -i 's,be_quiet,locale_be_quiet,g' fedora/build-locale-archive.c"
       FileUtils.mkdir_p 'gentoopatches'
-      system 'curl -Ls https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.32-patches-8.tar.xz | \
-        hashpipe sha256 6653f1d0aadad10bd288f3bae274bd4e0a013d47f09ce78199fb5989b2d8fd9b | \
+      system 'curl -Ls https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.33-patches-6.tar.xz | \
+        hashpipe sha256 29c2e4036c2b33b830a9588055c63fde5dd5255bcfd5fad2fc92f3bbd27456c1 | \
         tar -xJf - -C gentoopatches'
       Dir.glob('gentoopatches/patches/*.patch').each do |patch|
         system "patch -Np1 -i #{patch} || true"
@@ -353,6 +346,7 @@ class Glibc < Package
         system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
                  #{CREW_OPTIONS} \
                  --with-headers=#{CREW_PREFIX}/include \
+                 --without-gd \
                  --disable-werror \
                  --disable-sanity-checks \
                  --enable-shared \
@@ -368,6 +362,7 @@ class Glibc < Package
           system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
                    #{CREW_OPTIONS} \
                    --with-headers=#{CREW_PREFIX}/include \
+                   --without-gd \
                    --disable-werror \
                    --disable-sanity-checks \
                    --enable-shared \
@@ -380,6 +375,7 @@ class Glibc < Package
           system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
                    #{CREW_OPTIONS} \
                    --with-headers=#{CREW_PREFIX}/include \
+                   --without-gd \
                    --disable-werror \
                    --disable-sanity-checks \
                    --enable-shared \
@@ -400,6 +396,7 @@ class Glibc < Package
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --with-headers=#{CREW_PREFIX}/include \
+            --without-gd \
             ac_cv_header_cpuid_h=yes \
             ac_cv_lib_audit_audit_log_user_avc_message=no \
             ac_cv_lib_cap_cap_init=no \
@@ -446,6 +443,7 @@ class Glibc < Package
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --with-headers=#{CREW_PREFIX}/include \
+            --without-gd \
             ac_cv_header_cpuid_h=yes \
             ac_cv_lib_audit_audit_log_user_avc_message=no \
             ac_cv_lib_cap_cap_init=no \
