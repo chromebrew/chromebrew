@@ -11,10 +11,10 @@ class Glibc < Package
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
 
-  # @LIBC_VERSION = LIBC_VERSION
+  @LIBC_VERSION = LIBC_VERSION
   # Uncomment following line to build a version of glibc different
   # from the one ChromeOS ships with.
-  @LIBC_VERSION = '2.33'
+  # @LIBC_VERSION = '2.33'
   if @LIBC_VERSION == '2.23'.freeze
     version '2.23-3'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
@@ -64,12 +64,12 @@ class Glibc < Package
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32-2_armv7l/glibc-2.32-6-chromeos-armv7l.tpxz',
        armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32-2_armv7l/glibc-2.32-6-chromeos-armv7l.tpxz',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32-2_x86_64/glibc-2.32-6-chromeos-x86_64.tpxz'
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_x86_64/glibc-2.33-chromeos-x86_64.tpxz'
     })
     binary_sha256({
       aarch64: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
        armv7l: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
-       x86_64: '3e3eaa6551492ef0f1bc28600102503b721b19d0ee7396c4301771df402ea355'
+       x86_64: 'bbdd07d1a4a962aebf365786db48d1da41a84a6bef8b78eef86f051ad01a9980'
     })
   end
 
