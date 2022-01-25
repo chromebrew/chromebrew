@@ -62,13 +62,13 @@ class Glibc < Package
     source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
 
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32-2_armv7l/glibc-2.32-6-chromeos-armv7l.tpxz',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.32-2_armv7l/glibc-2.32-6-chromeos-armv7l.tpxz',
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_armv7l/glibc-2.33-chromeos-armv7l.tpxz',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_armv7l/glibc-2.33-chromeos-armv7l.tpxz',
        x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_x86_64/glibc-2.33-chromeos-x86_64.tpxz'
     })
     binary_sha256({
-      aarch64: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
-       armv7l: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
+      aarch64: '13aeaaa63cc2124e776a992f7f56453f9cae9c7fb21d30c38cd5958bd17d004e',
+       armv7l: '13aeaaa63cc2124e776a992f7f56453f9cae9c7fb21d30c38cd5958bd17d004e',
        x86_64: 'bbdd07d1a4a962aebf365786db48d1da41a84a6bef8b78eef86f051ad01a9980'
     })
   end
