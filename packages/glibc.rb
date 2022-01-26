@@ -57,7 +57,12 @@ class Glibc < Package
        armv7l: '9a75b9c77f8a131268f8df3db2066fe0e23513a40cdf45e6093d14e11ee2d394',
        x86_64: '6f27b75e77a2613fff24d36aa176f8a352a26adb8f58fbe7e75e400b84699719'
     })
-
+  else
+    puts "Chromebrew does not support glibc version #{LIBC_VERSION}".lightred
+    puts "Are you running on ChromeOS's stable channel? Chromebrew does not support beta, dev or canary channels.".yellow
+    puts "Are you running a ChromeOS variant like ChromiumOS, FydeOS or Cloudready? Chromebrew does not officially support these builds.".yellow
+    puts "Would you like your version of glibc supported? As always, we are happy to see your pull request.".yellow
+    abort
   end
 
   depends_on 'gawk' => :build
