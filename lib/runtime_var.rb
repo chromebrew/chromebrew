@@ -6,8 +6,9 @@ def setvar (hash = {})
   # otherwise set var_name to default_value (given)
   #
   # Examples:
-  #   setvar({ a: true }) # if env variable CREW_a is defined, set $OPT[:a] to ENV['CREW_a'],
-  #                       # otherwise set to the given default value (true)
+  #   setvar({ EXAMPLE: true }) # if env variable CREW_EXAMPLE is defined, 
+  #                             # set $OPT[:EXAMPLE] to ENV['CREW_EXAMPLE'],
+  #                             # otherwise set to the given default value (true)
   $OPT ||= Hash.new
   hash.each_pair do |name, default_value|
     # variable name must be passed in symbols
