@@ -4,6 +4,10 @@ require_relative './function.rb'
 def setvar (hash = {})
   # setvar: set var_name (given) from environment variables if exist,
   # otherwise set var_name to default_value (given)
+  #
+  # Examples:
+  #   setvar({ a: true }) # if env variable CREW_a is defined, set $OPT[:a] to ENV['CREW_a'],
+  #                       # otherwise set to the given default value (true)
   $OPT ||= Hash.new
   hash.each_pair do |name, default_value|
     # variable name must be passed in symbols
