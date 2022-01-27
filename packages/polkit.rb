@@ -29,7 +29,34 @@ class Polkit < Package
 
   def self.patch
     # Fix meson 0.60+ compatibility
-    system 'curl -OLf https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/99.patch'
+    # https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/99
+    @polkit_meson_patch = <<~'POLKIT_MESON_PATCH_HEREDOC'
+      diff --git a/actions/meson.build b/actions/meson.build
+      index 2abaaf3..1e3f370 100644
+      --- a/actions/meson.build
+      +++ b/actions/meson.build
+      @@ -1,7 +1,6 @@
+       policy = 'org.freedesktop.policykit.policy'
+
+       i18n.merge_file(
+      -  policy,
+         input: policy + '.in',
+         output: '@BASENAME@',
+         po_dir: po_dir,
+      diff --git a/src/examples/meson.build b/src/examples/meson.build
+      index c6305ab..8c18de5 100644
+      --- a/src/examples/meson.build
+      +++ b/src/examples/meson.build
+      @@ -1,7 +1,6 @@
+       policy = 'org.freedesktop.policykit.examples.pkexec.policy'
+
+       i18n.merge_file(
+      -  policy,
+         input: policy + '.in',
+         output: '@BASENAME@',
+         po_dir: po_dir,
+    POLKIT_MESON_PATCH_HEREDOC
+    File.write('99.patch', @polkit_meson_patch)
     system 'patch -F3 -Np1 -i 99.patch'
   end
 
