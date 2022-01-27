@@ -3,7 +3,7 @@ require 'package'
 class Meson < Package
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '0.61.0'
+  @_ver = '0.61.1'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_armv7l/meson-0.61.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_armv7l/meson-0.61.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_i686/meson-0.61.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.0_x86_64/meson-0.61.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.1_armv7l/meson-0.61.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.1_armv7l/meson-0.61.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.1_i686/meson-0.61.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.1_x86_64/meson-0.61.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5829e292c2e6698101d980cd4f66063d82b2b7444d95f93edc2d6cdfbd75e6c0',
-     armv7l: '5829e292c2e6698101d980cd4f66063d82b2b7444d95f93edc2d6cdfbd75e6c0',
-       i686: '04ef88262a90a7b93f430c40ed16edd4688790782a645bb8c3408e2ea7839eeb',
-     x86_64: '322086d4553f6698a2112943eff7ac2a42f3f840e930a8a0ae863022a4fa4d39'
+    aarch64: '89471f377e91165418858f9dfb13e524e816f878ea3944636af042c9ddb42ffb',
+     armv7l: '89471f377e91165418858f9dfb13e524e816f878ea3944636af042c9ddb42ffb',
+       i686: 'b941660b357c7c215ae2da568f74184106acf942ba5e3452058f6c1b57e53637',
+     x86_64: 'a17eb696f9f1ef5c6d03143f0f8c7ad2ee0b7454604660f302c738402e0f8197'
   })
 
   depends_on 'ninja'
