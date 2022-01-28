@@ -89,6 +89,10 @@ class Buildessential < Package
   # Pascal
   #depends_on 'fpc'
 
+  # Patchelf
+  # for setting library paths in packages
+  depends_on 'patchelf'
+
   # Perl
   depends_on 'perl'
   depends_on 'pcre'

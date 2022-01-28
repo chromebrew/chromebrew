@@ -2,8 +2,8 @@ require 'package_helpers'
 
 class Package
   property :description, :homepage, :version, :license, :compatibility,
-           :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_fetchtags, :git_hashtag, :is_fake, :is_static
+           :binary_url, :binary_sha256, :no_patchelf, :source_url, :source_sha256,
+           :git_branch, :git_fetchtags, :git_hashtag, :is_fake, :is_musl, :is_static
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
