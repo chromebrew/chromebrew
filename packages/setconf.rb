@@ -9,7 +9,7 @@ class Setconf < Package
   version '0.7.7'
   compatibility 'all'
   license 'GPL2'
-  source_url 'https://setconf.roboticoverlords.org/setconf-0.7.7.tar.xz'
+  source_url "https://setconf.roboticoverlords.org/setconf-#{version}.tar.xz"
   source_sha256 '19315574540b3181fec31a4059b9e058381e0192317f153d181e7e7e2aa84d86'
 
   binary_url({
@@ -28,7 +28,8 @@ class Setconf < Package
   depends_on 'python3'
 
   def self.install
-    system "install -Dm755 setconf.py #{CREW_DEST_PREFIX}/bin/setconf"
-    system "install -Dm644 setconf.1.gz #{CREW_DEST_MAN_PREFIX}/man1/setconf.1.gz"
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_MAN_PREFIX}/man1]
+    FileUtils.install 'setconf.py', "#{CREW_DEST_PREFIX}/bin/setconf", mode: 0o755
+    FileUtils.install 'setconf.1.gz', "#{CREW_DEST_MAN_PREFIX}/man1/setconf.1.gz", mode: 0o644
   end
 end
