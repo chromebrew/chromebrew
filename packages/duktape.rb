@@ -6,10 +6,11 @@ require 'package'
 class Duktape < Package
   description 'Embeddable Javascript engine'
   homepage 'https://duktape.org/'
-  version '2.6.0'
+  @_ver = '2.6.0'
+  version @_ver
   compatibility 'all'
   license 'MIT'
-  source_url "https://duktape.org/duktape-#{version}.tar.xz"
+  source_url "https://duktape.org/duktape-#{@_ver}.tar.xz"
   source_sha256 '96f4a05a6c84590e53b18c59bb776aaba80a205afbbd92b82be609ba7fe75fa7'
 
   binary_url({
@@ -40,7 +41,7 @@ class Duktape < Package
 
       Name: duktape
       Description: Embeddable Javascript engine
-      Version: 2.6.0
+      Version: #{@_ver}
       Libs: -L\${libdir} -lduktape
       Cflags: -I\${includedir}
     DUKTAPEPCEOF
