@@ -9,7 +9,7 @@ class Duktape < Package
   version '2.6.0'
   compatibility 'all'
   license 'MIT'
-  source_url 'https://duktape.org/duktape-2.6.0.tar.xz'
+  source_url "https://duktape.org/duktape-#{version}.tar.xz"
   source_sha256 '96f4a05a6c84590e53b18c59bb776aaba80a205afbbd92b82be609ba7fe75fa7'
 
   binary_url({
@@ -48,7 +48,8 @@ class Duktape < Package
   end
 
   def self.install
-    system "install -Dm644 duktape.pc #{CREW_DEST_LIB_PREFIX}/pkgconfig/duktape.pc"
+    FileUtils.mkdir_p %W[#{CREW_DEST_LIB_PREFIX}/pkgconfig]
+    FileUtils.install 'duktape.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/duktape.pc", mode: 0o644
     system 'make install'
   end
 end
