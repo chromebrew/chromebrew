@@ -18,10 +18,7 @@ class Mysql < Package
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/mysql"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
