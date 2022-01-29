@@ -985,7 +985,7 @@ def prepare_package(destdir)
 
     # Use patchelf to set need paths for all binaries
     # currently broken due to glibc issue on armv7l
-    unless ARCH == 'armv7l' || ARCH == 'aarch64'
+    unless ['aarch64', 'armv7l'].include?(ARCH)
        patchelf_set_need_paths destdir
     end
 
