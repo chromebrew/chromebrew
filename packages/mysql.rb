@@ -3,11 +3,11 @@ require 'package'
 class Mysql < Package
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '8.0.27'
+  version '8.0.28'
   license 'GPL-2'
   compatibility 'x86_64'
-  source_url 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.27-linux-glibc2.17-x86_64-minimal.tar.xz'
-  source_sha256 '45c683b233af3569ecad90ea7161b8e56bc5d85ef50a74d27811db99ed4d6fa9'
+  source_url 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.28-linux-glibc2.17-x86_64-minimal.tar.xz'
+  source_sha256 '39d58319a2d34b27dc229eb32c07f3902863fb5dfe25d25b5d537cc7299b4fed'
 
   binary_url ({
   })
@@ -48,8 +48,8 @@ class Mysql < Package
     puts "To reset the root password, see https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html#resetting-permissions-unix".lightblue
     puts
     puts "To start/stop mysqld, execute the following:".lightblue
-    puts "mysql.server start - to start mysqld".lightblue
-    puts "mysql.server stop - to stop mysqld".lightblue
+    puts "mysql.server start".lightblue
+    puts "mysql.server stop".lightblue
     puts
     puts "To start mysqld on login, execute the following:".lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/mysql.server ]; then' >> ~/.bashrc".lightblue
