@@ -86,14 +86,6 @@ class Package
     name + '.' + Time.now.utc.strftime("%Y%m%d%H%M%S") + '.dir'
   end
 
-  def self.git_fetchtags
-    @git_fetchtags = true
-  end
-
-  def self.git_fetchtags?
-    @git_fetchtags
-  end
-
   def self.is_binary? (architecture)
     if !@build_from_source and @binary_url and @binary_url.has_key?(architecture)
       return true
@@ -118,13 +110,6 @@ class Package
     @is_fake
   end
 
-  def self.is_static
-    @is_static = true
-  end
-
-  def self.is_static?
-    @is_static
-  end
 
   def self.system(*args, **opt_args)
     # add "-j#" argument to "make" at compile-time, if necessary
