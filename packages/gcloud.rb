@@ -30,10 +30,7 @@ class Gcloud < Package
 
   def self.install
     ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gcloud"
     FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/gcloud"

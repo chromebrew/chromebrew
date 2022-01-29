@@ -20,10 +20,7 @@ class Minecraft < Package
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/minecraft-launcher", "#{CREW_DEST_PREFIX}/bin/minecraft-launcher.elf"

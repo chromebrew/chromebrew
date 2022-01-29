@@ -21,3 +21,10 @@ def property (*properties)
     EOT
   end
 end
+
+def reload_constants
+  warn_level = $VERBOSE
+  $VERBOSE = nil
+  load "#{CREW_LIB_PATH}lib/const.rb"
+  $VERBOSE = warn_level
+end
