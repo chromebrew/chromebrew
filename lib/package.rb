@@ -17,7 +17,7 @@ class Package
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_reader :is_fake, :is_static
+    attr_reader :is_fake, :is_musl, :is_static, :no_patchelf
     attr_accessor :name, :is_dep, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end

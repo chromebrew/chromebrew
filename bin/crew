@@ -995,16 +995,16 @@ def prepare_package(destdir)
 end
 
 def patchelf_set_need_paths(dir)
-  return unless @pkg.no_patchelf.to_s.empty?
+  return if !!@pkg.no_patchelf?
 
   Dir.chdir dir do
     puts 'Running patchelf'.lightblue
     abort('No Patchelf found!').lightred unless File.exist?("#{CREW_PREFIX}/bin/patchelf")
 
-    @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'`.chomp
+    @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec sh -c \"[[ \"\$(head -c4 {})\" == \$'\x7FELF' ]]" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'`.chomp
     return if @execfiles.to_s.empty?
 
-    @patchelf_lib_prefix = @pkg.is_musl.to_s.empty? ? CREW_LIB_PREFIX : "#{CREW_MUSL_PREFIX}/lib"
+    @patchelf_lib_prefix = !!@pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
 
     puts 'Running patchelf to patch binaries for library paths'.lightblue
     @execfiles.each_line(chomp: true) do |execfiletopatch|
@@ -1020,7 +1020,7 @@ def patchelf_set_need_paths(dir)
         # The first check here can be changed to just check the dest_dir
         # hierarchy for @neededlib_basename if the intent is to allow 
         # using a different CREW_PREFIX during package installs.
-        if File.exist?("#{@neededlibspatchednamepath}") or File.exist?(Dir.pwd + @neededlibspatchednamepath)
+        if File.exist?(@neededlibspatchednamepath) or File.exist?(Dir.pwd + @neededlibspatchednamepath)
           puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
           system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
         else
