@@ -30,10 +30,7 @@ class Qtscript < Package
 
   def self.install
     ENV['CREW_CONFLICTS_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/Qt-5"
     FileUtils.cp_r Dir['lib/*'], "#{CREW_DEST_LIB_PREFIX}"

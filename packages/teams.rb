@@ -26,10 +26,7 @@ class Teams < Package
 
   def self.install
     ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mv 'share', CREW_DEST_PREFIX
     FileUtils.install 'teams.sh', "#{CREW_DEST_PREFIX}/bin/teams", mode: 0o755

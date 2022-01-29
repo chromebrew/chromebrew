@@ -37,10 +37,7 @@ class Linux_sources < Package
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     linux_src_dir = "#{CREW_DEST_PREFIX}/src/linux"
     FileUtils.mkdir_p(linux_src_dir)
     FileUtils.rm_rf('.git')

@@ -96,10 +96,7 @@ class Webkit2gtk_5 < Package
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir5 install"
   end
 end
