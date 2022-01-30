@@ -37,9 +37,9 @@ RESET='\e[0m'
 # simplify colors and print errors to stderr (2)
 echoerr() { echo -e "${RED}${*}${RESET}" >&2; }
 echoinfo() { echo -e "${YELLOW}${*}${RESET}" >&1; }
-echosucc() { echo -e "${GREEN}${*}${RESET}" >&1 }
-echointra() { echo -e "${BLUE}${*}${RESET}" >&1 }
-echoout() { echo -e "${GRAY}${*}${RESET}" >&1 }
+echosucc() { echo -e "${GREEN}${*}${RESET}" >&1; }
+echointra() { echo -e "${BLUE}${*}${RESET}" >&1; }
+echoout() { echo -e "${GRAY}${*}${RESET}" >&1; }
 
 # skip all checks if running on a docker container
 [[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
@@ -113,7 +113,7 @@ function curl () {
   for (( i = 0; i < 4; i++ )); do
     env LD_LIBRARY_PATH='' ${CURL} --ssl -C - "${@}" && \
       return 0 || \
-      echo -e "${YELLOW}Retrying, $((3-$i)) retries left.${RESET}"
+      echoinfo "Retrying, $((3-$i)) retries left."
   done
   # the download failed if we're still here
   echoerr "Download failed :/ Please check your network settings."
@@ -155,7 +155,7 @@ for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"
   fi
 done
 
-echo "\nDownloading information for Bootstrap packages..."
+echoinfo "\nDownloading information for Bootstrap packages..."
 echo -en "${GRAY}"
 # use parallel mode if available
 if [[ "$(curl --help curl)" =~ --parallel ]]; then
@@ -202,7 +202,7 @@ function download_check () {
     cd "$CREW_BREW_DIR"
     # use cached file if available and caching enabled
     if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
-      echointra -e "Verifying cached ${1}..."
+      echointra "Verifying cached ${1}..."
       echosucc "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
       case "${?}" in
       0)
@@ -214,7 +214,7 @@ function download_check () {
       esac
     fi
     #download
-    echointra -e "Downloading ${1}..."
+    echointra "Downloading ${1}..."
     curl '-#' -L "${2}" -o "${3}"
 
     #verify
@@ -246,7 +246,7 @@ function extract_install () {
     else
       LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
     fi
-    echo "Installing ${1} ..."
+    echointra "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
@@ -318,10 +318,10 @@ export LD_LIBRARY_PATH=$(crew const CREW_LIB_PREFIX | sed -e 's:CREW_LIB_PREFIX=
 # Since we just ran git, just update package compatibility information.
 crew update compatible
 
-echo -e "${YELLOW}Installing core Chromebrew packages...${RESET}\n"
+echoinfo "Installing core Chromebrew packages...\n"
 yes | crew install core
 
-echo -e "\n${YELLOW}Running Bootstrap package postinstall scripts...${RESET}\n"
+echoinfo "\nRunning Bootstrap package postinstall scripts...\n"
 crew postinstall $BOOTSTRAP_PACKAGES
 
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
