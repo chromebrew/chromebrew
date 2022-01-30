@@ -34,38 +34,43 @@ GRAY='\e[0;37m';   # Use Gray for program output.
 MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
+# simplify colors and print errors to stderr (2)
+echoerr() { echo -e "${RED}${*}${RESET}" >&2; }
+echoinfo() { echo -e "${YELLOW}${*}${RESET}" >&1; }
+echosucc() { echo -e "${GREEN}${*}${RESET}" >&1 }
+echointra() { echo -e "${BLUE}${*}${RESET}" >&1 }
+echoout() { echo -e "${GRAY}${*}${RESET}" >&1 }
+
 # skip all checks if running on a docker container
 [[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
 
 # reject crostini
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
-  echo -e "${RED}Crostini containers are not supported by Chromebrew :/${RESET}"
-  echo -e "${YELLOW}Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
+  echoerr "Crostini containers are not supported by Chromebrew :/"
+  echoinfo "Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway"
   exit 1
 fi
 
 # disallow non-stable channels Chrome OS
 if [ -f /etc/lsb-release ]; then
   if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
-    echo -e "${RED}The beta, dev, and canary channel are unsupported by Chromebrew${RESET}"
-    echo -e "${YELLOW}Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway${RESET}"
+    echoerr "The beta, dev, and canary channel are unsupported by Chromebrew"
+    echoinfo "Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway"
     exit 1
   fi
 else
-  echo -e "${YELLOW}Unable to detect system information, installation will continue.${RESET}"
+  echoinfo "Unable to detect system information, installation will continue."
 fi
 
 if [ "${EUID}" == "0" ]; then
-  echo -e "${RED}Chromebrew should not be installed or run as root.${RESET}"
+  echoerr "Chromebrew should not be installed or run as root."
   exit 1;
 fi
-
-echo -e "\n${GREEN}Welcome to Chromebrew!${RESET}\n"
 
 # prompt user to enter the sudo password if it set
 # if the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set
 if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
-  echo -e "${BLUE}Please enter the developer mode password${RESET}"
+  echointra "Please enter the developer mode password"
   # reset sudo timeout
   sudo -k
   sudo /bin/true
@@ -82,7 +87,7 @@ function curl () {
       echo -e "${YELLOW}Retrying, $((3-$i)) retries left.${RESET}"
   done
   # the download failed if we're still here
-  echo -e "${RED}Download failed :/ Please check your network settings.${RESET}"
+  echoerr "Download failed :/ Please check your network settings."
   return 1
 }
 
@@ -92,19 +97,19 @@ case "${ARCH}" in
   [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
   ;;
 *)
-  echo -e "${RED}Your device is not supported by Chromebrew yet :/${RESET}"
+  echoerr "Your device is not supported by Chromebrew yet :/"
   exit 1;;
 esac
 
-echo -e "\n\n${YELLOW}Doing initial setup for install in ${CREW_PREFIX}.${RESET}"
-echo -e "${YELLOW}This may take a while if there are preexisting files in ${CREW_PREFIX}...${RESET}\n"
+echoinfo "\n\nDoing initial setup for install in ${CREW_PREFIX}."
+echoinfo "This may take a while if there are preexisting files in ${CREW_PREFIX}...\n"
 
 # This will allow things to work without sudo
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
   if [ -d "${CREW_PREFIX}"/"${folder}" ]; then
-    echo -e "${BLUE}Resetting ownership of ${CREW_PREFIX}/${folder}${RESET}"
+    echointra "Resetting ownership of ${CREW_PREFIX}/${folder}"
     sudo chown -R "$(id -u)":"$(id -g)" "${CREW_PREFIX}"/"${folder}"
   fi
 done
@@ -121,7 +126,7 @@ for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}"
   fi
 done
 
-echo -e "\n${YELLOW}Downloading information for Bootstrap packages...${RESET}"
+echo "\nDownloading information for Bootstrap packages..."
 echo -en "${GRAY}"
 # use parallel mode if available
 if [[ "$(curl --help curl)" =~ --parallel ]]; then
@@ -147,7 +152,7 @@ esac
 # create the device.json file if it doesn't exist
 cd "${CREW_CONFIG_PATH}"
 if [ ! -f device.json ]; then
-  echo -e "\n${YELLOW}Creating new device.json.${RESET}"
+  echoinfo "\nCreating new device.json."
   jq --arg key0 'architecture' --arg value0 "${ARCH}" \
     --arg key1 'installed_packages' \
     '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
@@ -168,24 +173,24 @@ function download_check () {
     cd "$CREW_BREW_DIR"
     # use cached file if available and caching enabled
     if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
-      echo -e "${BLUE}Verifying cached ${1}...${RESET}"
-      echo -e "${GREEN}$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)${RESET}"
+      echointra -e "Verifying cached ${1}..."
+      echosucc "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
       case "${?}" in
       0)
         ln -sf "$CREW_CACHE_DIR/${3}" "$CREW_BREW_DIR/${3}" || true
         return
         ;;
       *)
-        echo -e "${RED}Verification of cached ${1} failed, downloading.${RESET}"
+        echoerr "Verification of cached ${1} failed, downloading."
       esac
     fi
     #download
-    echo -e "${BLUE}Downloading ${1}...${RESET}"
+    echointra -e "Downloading ${1}..."
     curl '-#' -L "${2}" -o "${3}"
 
     #verify
-    echo -e "${BLUE}Verifying ${1}...${RESET}"
-    echo -e "${GREEN}$(echo "${4}" "${3}" | sha256sum -c -)${RESET}"
+    echointra "Verifying ${1}..."
+    echosucc "$(echo "${4}" "${3}" | sha256sum -c -)"
     case "${?}" in
     0)
       if [ -n "$CREW_CACHE_ENABLED" ] ; then
@@ -194,7 +199,7 @@ function download_check () {
       return
       ;;
     *)
-      echo -e "${RED}Verification failed, something may be wrong with the download.${RESET}"
+      echoerr "Verification failed, something may be wrong with the download."
       exit 1;;
     esac
 }
@@ -206,13 +211,13 @@ function extract_install () {
     cd "${CREW_DEST_DIR}"
 
     #extract and install
-    echo -e "${BLUE}Extracting ${1} ...${RESET}"
+    echointra "Extracting ${1} ..."
     if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then
       tar xpf ../"${2}"
     else
       LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
     fi
-    echo -e "${BLUE}Installing ${1} ...${RESET}"
+    echo "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
@@ -222,14 +227,14 @@ function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
 
   if [[ $(jq --arg key "$1" -e '.installed_packages[] | select(.name == $key )' device.json) ]]; then
-    echo -e "${BLUE}Updating version number of ${1} in device.json...${RESET}"
+    echointra "Updating version number of ${1} in device.json..."
     cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json) > device.json
   else
-    echo -e "${BLUE}Adding new information on ${1} to device.json...${RESET}"
+    echointra "Adding new information on ${1} to device.json..."
     cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json
   fi
 }
-echo -e "${YELLOW}Downloading Bootstrap packages...${RESET}\n"
+echoinfo "Downloading Bootstrap packages...\n"
 # extract, install and register packages
 for i in $(seq 0 $((${#urls[@]} - 1))); do
   url="${urls["${i}"]}"
@@ -247,12 +252,12 @@ done
 
 ## workaround https://github.com/skycocker/chromebrew/issues/3305
 sudo ldconfig &> /dev/null || true
-echo -e "\n${YELLOW}Creating symlink to 'crew' in ${CREW_PREFIX}/bin/${RESET}"
+echoinfo "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 echo -e "${GRAY}"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 echo -e "${RESET}"
 
-echo -e "${YELLOW}Setup and synchronize local package repo...${RESET}"
+echoinfo "Setup and synchronize local package repo..."
 echo -e "${GRAY}"
 
 # Remove old git config directories if they exist
@@ -277,7 +282,7 @@ git sparse-checkout set packages lib bin crew tools install.sh
 git reset --hard origin/"${BRANCH}"
 echo -e "${RESET}"
 
-echo -e "${YELLOW}Updating crew package information...${RESET}\n"
+echoinfo "Updating crew package information...\n"
 # Without setting LD_LIBRARY_PATH, the mandb postinstall fails
 # from not being able to find the gdbm library.
 export LD_LIBRARY_PATH=$(crew const CREW_LIB_PREFIX | sed -e 's:CREW_LIB_PREFIX=::g')
@@ -291,25 +296,23 @@ echo -e "\n${YELLOW}Running Bootstrap package postinstall scripts...${RESET}\n"
 crew postinstall $BOOTSTRAP_PACKAGES
 
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
-  echo -e "\n${YELLOW}
+  echoinfo "\n$
 Since you have installed Chromebrew in a directory other than '/usr/local',
 you need to run these commands to complete your installation:
-${RESET}"
+"
 
-  echo -e "${BLUE}
+  echointra "
 echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc
 echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
-source ~/.bashrc
-${RESET}"
+source ~/.bashrc"
 fi
-echo -e "${BLUE}
+echointra "
 Edit ${CREW_PREFIX}/etc/env.d/02-pager to change the default PAGER.
 more is used by default
 
 You may wish to edit the ${CREW_PREFIX}/etc/env.d/01-editor file for an editor default.
 
-Chromebrew provides nano, vim and emacs as default TUI editor options.
+Chromebrew provides nano, vim and emacs as default TUI editor options."
 
-${RESET}"
-echo -e "${GREEN}Chromebrew installed successfully and package lists updated.${RESET}"
+echosucc "Chromebrew installed successfully and package lists updated."
