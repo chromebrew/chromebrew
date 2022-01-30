@@ -67,34 +67,7 @@ if [ "${EUID}" == "0" ]; then
   exit 1;
 fi
 
-echo "                       . .
-                   ..,:;;;::'..
-                 .':lllllllool,.
-                ...cl;..... ,::;'.
-               .'oc...;::::..0KKo.
-               .'od: .:::::, lolc.
-             .'lNMMMO ;ooc.,XMMWx;:;.
-            .dMMMMMMXkMMMMxoMMMMMMMMO.
-            .:O0NMMMMMMMMMM0MMMMMN0Oc.
-              .:xdloddddddoXMMMk:x:....
-              .xMNOKX0OOOOxcodlcXMN0O0XKc.
-              .OMXOKXOOOOOk;ol:OXMK...;N0.
-              'XMKOXXOOOOOk:docOKMW,  .kW;
-             .cMMKOXXOOOOOOOOOOO0MM;  .lMc.
-             .cMM00XKOOOOkkkkkkOOWMl. .cMo.
-             .lMWO0XKOOOkkkkkkkkONMo.  ;Wk.
-             .oMNO0X0OOkkkkkkkkkOXMd..,oW0'
-             .xMNO0X0OOkkkkkkkkkkXMWKXKOx;.
-             .0MXOOOOOOkkkkkkkkkOKM0..
-             'NMWNXXKK000000KKXNNMMX.
-             .;okk0XNWWMMMMWWNKOkdc'.
-                .....'cc:cc:''..."
-echo "  ___  _                               _
- / (_)| |                             | |
-|     | |     ,_    __   _  _  _    _ | |   ,_    _
-|     |/ \   /  |  /  \_/ |/ |/ |  |/ |/ \_/  |  |/  |  |  |_
- \___/|   |_/   |_/\__/   |  |  |_/|__/\_/    |_/|__/ \/ \/
-                                                             "
+echosucc "Welcome to Chroembrew!"
 
 # prompt user to enter the sudo password if it set
 # if the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set
@@ -323,6 +296,35 @@ yes | crew install core
 
 echoinfo "\nRunning Bootstrap package postinstall scripts...\n"
 crew postinstall $BOOTSTRAP_PACKAGES
+
+echo "                       . .
+                   ..,:;;;::'..
+                 .':lllllllool,.
+                ...cl;..... ,::;'.
+               .'oc...;::::..0KKo.
+               .'od: .:::::, lolc.
+             .'lNMMMO ;ooc.,XMMWx;:;.
+            .dMMMMMMXkMMMMxoMMMMMMMMO.
+            .:O0NMMMMMMMMMM0MMMMMN0Oc.
+              .:xdloddddddoXMMMk:x:....
+              .xMNOKX0OOOOxcodlcXMN0O0XKc.
+              .OMXOKXOOOOOk;ol:OXMK...;N0.
+              'XMKOXXOOOOOk:docOKMW,  .kW;
+             .cMMKOXXOOOOOOOOOOO0MM;  .lMc.
+             .cMM00XKOOOOkkkkkkOOWMl. .cMo.
+             .lMWO0XKOOOkkkkkkkkONMo.  ;Wk.
+             .oMNO0X0OOkkkkkkkkkOXMd..,oW0'
+             .xMNO0X0OOkkkkkkkkkkXMWKXKOx;.
+             .0MXOOOOOOkkkkkkkkkOKM0..
+             'NMWNXXKK000000KKXNNMMX.
+             .;okk0XNWWMMMMWWNKOkdc'.
+                .....'cc:cc:''..."
+echo "  ___  _                               _
+ / (_)| |                             | |
+|     | |     ,_    __   _  _  _    _ | |   ,_    _
+|     |/ \   /  |  /  \_/ |/ |/ |  |/ |/ \_/  |  |/  |  |  |_
+ \___/|   |_/   |_/\__/   |  |  |_/|__/\_/    |_/|__/ \/ \/
+                                                             "
 
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
   echoinfo "\n$
