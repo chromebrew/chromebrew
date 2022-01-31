@@ -3,27 +3,28 @@ require 'package'
 class Jdk11 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/javase-jdk11-downloads.html'
-  version '11.0.12'
+  version '11.0.14'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
   source_url 'SKIP'
 
   binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk11/11.0.12_x86_64/jdk11-11.0.12-chromeos-x86_64.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk11/11.0.14_x86_64/jdk11-11.0.14-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-    x86_64: '09c96d97915b7f31c8b0c2655e4bf1d342dcb2638b825cb497276c58ae5a0dff',
+    x86_64: 'dd2857ce811b0799c26199e919840bc50e646dce5fe7d1beef302df86eb174c0',
   })
 
   def self.preflight
     abort "JDK8 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk8"
     abort "JDK15 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk15"
     abort "JDK16 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk16"
+    abort "JDK17 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk17"
   end
 
   def self.install
     jdk_bin = "#{HOME}/Downloads/jdk-#{version}_linux-x64_bin.tar.gz"
-    jdk_sha256 = 'd5d45826f835bd1ea069f9ff8bcd0f23c9f05c8d063b7df821960cfa765ed2cb'
+    jdk_sha256 = '9732bdd946b393ec527e4d5ff1f7e4667dc5150685bc3c9c7b1d042c657929db'
     unless File.exists? jdk_bin then
       puts
       puts "Oracle now requires an account to download the JDK.".orange
@@ -37,14 +38,15 @@ class Jdk11 < Package
     end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(jdk_bin) ) == jdk_sha256
     system "tar xvf #{jdk_bin}"
+    jdk11_dir = "#{CREW_DEST_PREFIX}/share/jdk11"
+    FileUtils.mkdir_p "#{jdk11_dir}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/jdk11"
     FileUtils.cd "jdk-#{version}" do
       FileUtils.rm_f 'lib/src.zip'
-      FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/jdk11/"
+      FileUtils.mv Dir['*'], "#{jdk11_dir}/"
     end
-    FileUtils.cd "#{CREW_DEST_PREFIX}/share/jdk11/bin" do
-      system "find -type f -exec ln -s #{CREW_PREFIX}/share/jdk11/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
+    FileUtils.cd "#{jdk11_dir}/bin" do
+      system "find -type f -exec ln -s #{jdk11_dir}/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
     end
   end
 end
