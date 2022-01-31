@@ -1,27 +1,13 @@
 require 'package'
-require 'fileutils'
 
 class Wine < Package
   description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD.'
   homepage 'https://www.winehq.org/'
-  version '6.5'
+  version '6.23'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://dl.winehq.org/wine/source/6.x/wine-6.5.tar.xz'
-  source_sha256 '0600fd208c06925d6634d29f543bba0a64361c34e9bd7609c2f0e209610ad347'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_armv7l/wine-6.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_armv7l/wine-6.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_i686/wine-6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_x86_64/wine-6.5-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: 'b9be4a9acbe76ba54be0671952221a019240811a27e94f53c40e5fb67e0624a3',
-     armv7l: 'b9be4a9acbe76ba54be0671952221a019240811a27e94f53c40e5fb67e0624a3',
-       i686: '35ccf55f9abc5f022a6f5756db2ac97c0c9a6dd5f644e6421805c64b6a335ec3',
-     x86_64: '01113b6f570b01b8598b38a478ed1bfe55b9cec63ed5f1683a52153f51fb3b6d'
-  })
+  source_url 'https://dl.winehq.org/wine/source/6.x/wine-6.23.tar.xz'
+  source_sha256 'd96c7f31741e4251fb50f919309c604665267cfacee13f8f450a30c953620e0d'
 
   depends_on 'alsa_lib'
   depends_on 'eudev'
@@ -94,7 +80,7 @@ class Wine < Package
 
   def self.postinstall
     puts
-    puts "Type 'WINEPREFIX=#{@xdg_config_home}/.wine wine explorer' to get started using the file explorer.".lightblue
+    puts "To run an application with wine, type `wine myexecutable.exe` or `wine myinstaller.msi`.".lightblue
     puts
   end
 
@@ -107,9 +93,9 @@ class Wine < Package
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
-        puts "#{config_dir} saved.".lightgreen
+        puts "#{config_dir} saved.".lightblue
       end
     end
   end
