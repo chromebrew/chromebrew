@@ -9,16 +9,16 @@ class Jdk8 < Package
   source_url 'SKIP'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_armv7l/jdk8-8u321-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_armv7l/jdk8-8u321-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_i686/jdk8-8u321-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_x86_64/jdk8-8u321-chromeos-x86_64.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_armv7l/jdk8-8u321-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_armv7l/jdk8-8u321-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_i686/jdk8-8u321-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_x86_64/jdk8-8u321-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: '9d82b73079cd534ea25d2fd6e11f278dbb75f228386e41056af590148291b572',
-     armv7l: '9d82b73079cd534ea25d2fd6e11f278dbb75f228386e41056af590148291b572',
-       i686: '9d82b73079cd534ea25d2fd6e11f278dbb75f228386e41056af590148291b572',
-     x86_64: '9f98ab42cfbb44dab60f5f0e42899c8383b50e3a739d2fe76c73025f451b6df3',
+    aarch64: '640f0f71b00033c76ccdec780b5ea032b103686531aa086b4f1ebb591bff7e7b',
+     armv7l: '640f0f71b00033c76ccdec780b5ea032b103686531aa086b4f1ebb591bff7e7b',
+       i686: '640f0f71b00033c76ccdec780b5ea032b103686531aa086b4f1ebb591bff7e7b',
+     x86_64: 'd631ac9f3b6f30ebab391a3585deff17161f0faf22538d15b74b39db639d0897',
   })
 
   def self.preflight
@@ -32,10 +32,10 @@ class Jdk8 < Package
     case ARCH
     when 'aarch64', 'armv7l'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-arm32-vfp-hflt.tar.gz"
-      jdk_sha256 = 'd0748f7197fc49a73e50320699f1de4d3d3cd269bb4bdeb7dfd0a418ccfc1788'
+      jdk_sha256 = 'be6bc93a25292febe16c6c8705422db189042b2febb4b65c3d5cf695eee875ee'
     when 'i686'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-i586.tar.gz"
-      jdk_sha256 = '42d9a2a66db962f205f370167625235b1624afb18c56198158a519b63cba835e'
+      jdk_sha256 = '7074cf727cfd0cc81f75c15b09c5a9abda23cfd88c3afd38bb0102427778a522'
     when 'x86_64'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-x64.tar.gz"
       jdk_sha256 = '7262e6c7cf8cc8f2a9a5982edc26fa3025aa60101902424619c3bb0cff9bd89f'
