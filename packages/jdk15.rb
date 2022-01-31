@@ -19,6 +19,7 @@ class Jdk15 < Package
     abort "JDK8 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk8"
     abort "JDK11 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk11"
     abort "JDK16 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk16"
+    abort "JDK17 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk17"
   end
 
   def self.install
@@ -37,19 +38,20 @@ class Jdk15 < Package
     end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(jdk_bin) ) == jdk_sha256
     system "tar xvf #{jdk_bin}"
+    jdk15_dir = "#{CREW_DEST_PREFIX}/share/jdk15"
+    FileUtils.mkdir_p "#{jdk15_dir}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/jdk15"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
     FileUtils.cd "jdk-#{version}" do
       FileUtils.rm_f 'lib/src.zip'
-      FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/jdk15/"
+      FileUtils.mv Dir['*'], "#{jdk15_dir}/"
     end
-    FileUtils.cd "#{CREW_DEST_PREFIX}/share/jdk15/bin" do
-      system "find -type f -exec ln -s #{CREW_PREFIX}/share/jdk15/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
+    FileUtils.cd "#{jdk15_dir}/bin" do
+      system "find -type f -exec ln -s #{jdk15_dir}/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
     end
-    system "compressdoc --gzip -9 #{CREW_DEST_PREFIX}/share/jdk15/man/man1"
-    FileUtils.cd "#{CREW_DEST_PREFIX}/share/jdk15/man/man1" do
-      system "find -type f -exec ln -s #{CREW_PREFIX}/share/jdk15/man/man1/{} #{CREW_DEST_MAN_PREFIX}/man1/{} \\;"
+    system "compressdoc --gzip -9 #{jdk15_dir}/man/man1"
+    FileUtils.cd "#{jdk15_dir}/man/man1" do
+      system "find -type f -exec ln -s #{jdk15_dir}/man/man1/{} #{CREW_DEST_MAN_PREFIX}/man1/{} \\;"
     end
   end
 end
