@@ -769,7 +769,7 @@ def download
           system 'git checkout FETCH_HEAD'
         end
         system 'git submodule update --init --recursive'
-        if !!@pkg.git_fetchtags?
+        if !!@pkg.git_fetchtags
           system 'git fetch --tags', exception: true
         end
         puts 'Repository downloaded.'.lightgreen
@@ -995,17 +995,20 @@ def prepare_package(destdir)
 end
 
 def patchelf_set_need_paths(dir)
-  return if !!@pkg.no_patchelf?
+  puts "!!@pkg.no_patchelf is #{!!@pkg.no_patchelf}".lightblue
+  puts "@pkg.no_patchelf.to_s.empty? is #{@pkg.no_patchelf.to_s.empty?}".lightblue
+  return if !!@pkg.no_patchelf
 
   Dir.chdir dir do
     puts 'Running patchelf'.lightblue
     abort('No Patchelf found!').lightred unless File.exist?("#{CREW_PREFIX}/bin/patchelf")
-
-    @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec bash -c \"[[ \"\$(head -c4 {})\" == \$'\x7FELF' ]]" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'`.chomp
+    @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec head -c4 {} 2>/dev/null \\; -printf ' %i %p\\n'| grep ^.ELF | sort -u -n -s -k2,2 | awk '{print $3}'`.chomp
     return if @execfiles.to_s.empty?
 
-    @patchelf_lib_prefix = !!@pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
-
+    puts "!!@pkg.is_musl is #{!!@pkg.is_musl}".lightblue
+    puts "is_musl.to_s.empty? is #{@pkg.is_musl.to_s.empty?}".lightblue
+    @patchelf_lib_prefix = !!@pkg.is_musl ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
+    puts "@patchelf_lib_prefix is #{@patchelf_lib_prefix}"
     puts 'Running patchelf to patch binaries for library paths'.lightblue
     @execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
@@ -1081,7 +1084,7 @@ def shrink_dir(dir)
         # hard linked files multiple times.)
         # Also disable for sommelier.elf and Xwayland.elf since upx
         # breaks those binaries.
-        @execfiles = `find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec bash -c \"[[ \"\$(head -c4 {})\" == \$'\x7FELF' ]]" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'`.chomp
+        @execfiles = `find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec head -c4 {} 2>/dev/null \\; -printf ' %i %p\\n'| grep ^.ELF | sort -u -n -s -k2,2 | awk '{print $3}'`.chomp
         unless @execfiles.to_s.empty?
           puts "Using upx to shrink binaries."
           # Copying in the ThreadPoolExecutor loop fails non-deterministically
