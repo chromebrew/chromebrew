@@ -67,7 +67,7 @@ if [ "${EUID}" == "0" ]; then
   exit 1;
 fi
 
-echo_success "Welcome to Chroembrew!"
+echo_success "Welcome to Chromebrew!"
 
 # prompt user to enter the sudo password if it set
 # if the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set
@@ -319,12 +319,12 @@ echo "                       . .
              'NMWNXXKK000000KKXNNMMX.
              .;okk0XNWWMMMMWWNKOkdc'.
                 .....'cc:cc:''..."
-echo "  ___  _                               _
- / (_)| |                             | |
-|     | |_    ,_    __   _  _  _    _ | |   ,_    _
-|     |/  |  /  |  /  \_/ |/ |/ |  |/ |/ \_/  |  |/  |  |  |_
- \___/|   |_/   |_/\__/   |  |  |_/|__/\_/    |_/|__/ \/ \/
-                                                             "
+echo "  ___ _                               _
+ / (_)|\                              |\\
+|     ||__    ,_    __  _  _  _    __ |/_  ,_    __  _   _   _
+|     |/  |  /  |  /  \/ |/ |/ |  |_/ |  \/  |  |_/ /|   |   |\_
+ \___/|   |_/   |_/\__/  |  |  |_/|__/\__/   |_/|__/  \_/ \_/
+"
 
 if [[ "${CREW_PREFIX}" != "/usr/local" ]]; then
   echo_info "\n$
