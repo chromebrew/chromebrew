@@ -3,8 +3,9 @@ require 'package_helpers'
 class Package
   property :description, :homepage, :version, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag, :git_fetchtags, :is_fake,
-           :is_musl, :is_static, :no_patchelf
+           :git_branch, :git_hashtag
+
+  boolean_property = %i[git_fetchtags is_fake is_musl is_static no_patchelf]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -18,7 +19,6 @@ class Package
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_reader :git_fetchtags, :is_fake, :is_musl, :is_static, :no_patchelf
     attr_accessor :name, :is_dep, :in_build, :build_from_source
     attr_accessor :in_upgrade
   end
@@ -29,6 +29,27 @@ class Package
     # called from derived classees.
     @dependencies = Hash.new unless @dependencies
     @dependencies
+  end
+
+  boolean_property.each do |prop|
+    self.class.__send__(:attr_reader, "#{prop}")
+    self.class_eval <<~EOT
+      def self.#{prop} (#{prop} = nil)
+        puts "prop is #{prop}"
+        @#{prop} = true
+        !!@#{prop}
+      end
+    EOT
+    self.instance_eval <<~EOY
+      def self.#{prop}
+        @#{prop} = true
+      end
+    EOY
+     # Adds the symbol? method
+     self.define_singleton_method("#{prop}?") do
+      @prop = instance_variable_get("@" + prop.to_s)
+      !!@prop
+    end
   end
 
   def self.depends_on (dependency = nil)
@@ -102,15 +123,6 @@ class Package
       return true
     end
   end
-
-  def self.is_fake
-    @is_fake = true
-  end
-
-  def self.is_fake?
-    @is_fake
-  end
-
 
   def self.system(*args, **opt_args)
     # add "-j#" argument to "make" at compile-time, if necessary
