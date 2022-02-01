@@ -1023,7 +1023,7 @@ def patchelf_set_need_paths(dir)
           puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
           system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
         else
-          puts "Needed library #{@neededlib_basename} not found in #{@patchelf_lib_prefix} or #{Dir.pwd + @neededlibspatchednamepath}."
+          puts "#{execfiletopatch} needed library #{@neededlib_basename} not found in #{@patchelf_lib_prefix} or #{Dir.pwd + @neededlibspatchednamepath}."
         end
       end
     end
