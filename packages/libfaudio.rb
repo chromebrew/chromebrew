@@ -10,6 +10,8 @@ class Libfaudio < Package
   source_url 'https://github.com/fna-xna/faudio.git'
   git_hashtag @_ver
 
+  depends_on 'libsdl2'
+
   def self.build
     FileUtils.mkdir 'builddir'
     Dir.chdir 'builddir' do
