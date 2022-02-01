@@ -19,7 +19,7 @@ MUSL_CFLAGS = "-isysroot=#{CREW_MUSL_PREFIX} -B#{CREW_MUSL_PREFIX}/include -flto
 MUSL_CXXFLAGS = "-isysroot=#{CREW_MUSL_PREFIX} -B#{CREW_MUSL_PREFIX}/include -flto -pipe -O2 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{MUSL_ARCH_CXX_FLAGS} #{MUSL_ARCH_SSP_CFLAGS} -fcommon -fPIC -ffunction-sections -fdata-sections"
 # Setting -static & -flto in CMAKE LDFLAGS breaks builds
 MUSL_CMAKE_LDFLAGS = "-flto"
-unless !!@pkg.is_static?
+unless @pkg.is_static?
   MUSL_LDFLAGS = "-L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags -Wl,--dynamic-linker,#{CREW_MUSL_PREFIX}/lib/libc.so -Wl,--gc-sections -flto -isysroot=#{CREW_MUSL_PREFIX} "
   MUSL_PKG_CONFIG = 'pkg-config'
 else

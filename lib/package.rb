@@ -35,8 +35,7 @@ class Package
     self.class.__send__(:attr_reader, "#{prop}")
     self.class_eval <<~EOT
       def self.#{prop} (#{prop} = nil)
-        puts "prop is #{prop}"
-        @#{prop} = true
+        @#{prop} = true if #{prop}
         !!@#{prop}
       end
     EOT
