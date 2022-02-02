@@ -26,10 +26,7 @@ class Libsigsegv < Package
     system 'autoreconf -fiv'
     # libsigsegv fails to build with LTO.
     ENV['CREW_DISABLE_ENV_OPTIONS'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} \
     --enable-shared \
     --enable-static \

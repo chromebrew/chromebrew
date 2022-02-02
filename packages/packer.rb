@@ -21,10 +21,7 @@ class Packer < Package
 
   def self.install
     ENV['CREW_NOT_STRIP'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'packer', "#{CREW_DEST_PREFIX}/bin/packer", mode: 0o755
   end

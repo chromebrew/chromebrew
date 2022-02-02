@@ -39,10 +39,7 @@ class Linuxheaders < Package
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     linux_src_dir = "#{CREW_PREFIX}/src/linux"
     Dir.chdir(linux_src_dir) do
       system 'make',
