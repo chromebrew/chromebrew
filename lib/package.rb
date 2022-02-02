@@ -5,7 +5,7 @@ class Package
            :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag
 
-  boolean_property = %i[git_fetchtags is_fake is_musl is_static no_patchelf]
+  boolean_property = %i[git_fetchtags is_fake is_musl is_static no_patchelf patchelf]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -19,40 +19,39 @@ class Package
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_accessor :name, :is_dep, :in_build, :build_from_source
-    attr_accessor :in_upgrade
+    attr_accessor :name, :is_dep, :in_build, :build_from_source, :in_upgrade
   end
 
   def self.dependencies
     # We need instance variable in derived class, so not define it here,
     # base class.  Instead of define it, we initialize it in a function
     # called from derived classees.
-    @dependencies = Hash.new unless @dependencies
+    @dependencies ||= Hash.new
     @dependencies
   end
 
   boolean_property.each do |prop|
     self.class.__send__(:attr_reader, "#{prop}")
-    self.class_eval <<~EOT
+    class_eval <<~EOT, __FILE__, __LINE__ + 1
       def self.#{prop} (#{prop} = nil)
         @#{prop} = true if #{prop}
         !!@#{prop}
       end
     EOT
-    self.instance_eval <<~EOY
+    instance_eval <<~EOY, __FILE__, __LINE__ + 1
       def self.#{prop}
         @#{prop} = true
       end
     EOY
-     # Adds the symbol? method
-     self.define_singleton_method("#{prop}?") do
+    # Adds the symbol? method
+    define_singleton_method("#{prop}?") do
       @prop = instance_variable_get("@" + prop.to_s)
       !!@prop
     end
   end
 
   def self.depends_on (dependency = nil)
-    @dependencies = Hash.new unless @dependencies
+    @dependencies ||= Hash.new
     if dependency
       # add element in "[ name, [ tag1, tag2, ... ] ]" format
       if dependency.is_a?(Hash)
@@ -61,7 +60,7 @@ class Package
           @dependencies.store(dependency.first[0], dependency.first[1])
         else
           # parse "depends_on name => tag"
-          @dependencies.store(dependency.first[0], [ dependency.first[1] ])
+          @dependencies.store(dependency.first[0], [dependency.first[1]])
         end
       else
         # parse "depends_on name"
@@ -149,7 +148,7 @@ class Package
     # add -j arg to build commands
     if args.size == 1
       # involve a shell if the command is passed in one single string
-      cmd_args = [ 'bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 -j#{CREW_NPROC}") ]
+      cmd_args = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 -j#{CREW_NPROC}")]
     elsif cmd_args[0] == 'make'
       cmd_args.insert(1, "-j#{CREW_NPROC}")
     end
@@ -159,7 +158,7 @@ class Package
     rescue => e
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{env.map {|k, v| "#{k}=\"#{v}\"" } .join(' ')} #{cmd_args.join(' ')}` exited with #{$?.exitstatus}"
+      raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{cmd_args.join(' ')}` exited with #{$?.exitstatus}"
     end
   end
 end
