@@ -985,8 +985,8 @@ def prepare_package(destdir)
 
     # Use patchelf to set need paths for all binaries
     # currently broken due to glibc issue on armv7l
-    unless ['aarch64', 'armv7l'].include?(ARCH)
-       patchelf_set_need_paths destdir
+    unless %w[aarch64 armv7l].include?(ARCH)
+      patchelf_set_need_paths destdir
     end
 
     # use upx on executables
@@ -995,7 +995,9 @@ def prepare_package(destdir)
 end
 
 def patchelf_set_need_paths(dir)
-  return if @pkg.no_patchelf?
+  puts "@pkg.no_patchelf? is #{@pkg.no_patchelf?}".lightblue
+  puts "@pkg.patchelf? is #{@pkg.patchelf?}".lightblue
+  return if @pkg.no_patchelf? || !@pkg.patchelf?
 
   Dir.chdir dir do
     puts 'Running patchelf'.lightblue
@@ -1012,14 +1014,14 @@ def patchelf_set_need_paths(dir)
       next if @neededlibs.to_s.empty?
 
       @neededlibs.each_line(chomp: true) do |neededlibspatch|
-        next if neededlibspatch.include?("#{@patchelf_lib_prefix}")
+        next if neededlibspatch.include?(@patchelf_lib_prefix.to_s)
 
         @neededlib_basename = File.basename(neededlibspatch)
         @neededlibspatchednamepath = "#{@patchelf_lib_prefix}/" + @neededlib_basename
         # The first check here can be changed to just check the dest_dir
-        # hierarchy for @neededlib_basename if the intent is to allow 
+        # hierarchy for @neededlib_basename if the intent is to allow
         # using a different CREW_PREFIX during package installs.
-        if File.exist?(@neededlibspatchednamepath) or File.exist?(Dir.pwd + @neededlibspatchednamepath)
+        if File.exist?(@neededlibspatchednamepath) || File.exist?(Dir.pwd + @neededlibspatchednamepath)
           puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
           system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
         else
