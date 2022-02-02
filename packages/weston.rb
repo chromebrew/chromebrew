@@ -3,24 +3,24 @@ require 'package'
 class Weston < Package
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'http://wayland.freedesktop.org'
-  @_ver = '9.0.0'
-  version "#{@_ver}-2"
+  @_ver = '10.0.0'
+  version @_ver
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_armv7l/weston-9.0.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_armv7l/weston-9.0.0-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_i686/weston-9.0.0-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-2_x86_64/weston-9.0.0-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_armv7l/weston-10.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_armv7l/weston-10.0.0-chromeos-armv7l.tpxz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_i686/weston-10.0.0-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_x86_64/weston-10.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f6636182e1d0bbb228011c37f14691e3c8bb7481368f7a6841f3bc423cd78716',
-     armv7l: 'f6636182e1d0bbb228011c37f14691e3c8bb7481368f7a6841f3bc423cd78716',
-       i686: 'd43eb4eb14948ed70fdbd37da6ec3f91f2195c83471bc53d639c16a4298a4702',
-     x86_64: '10d807d0a7e218f9e8db4c105bd96512968bbc1b077c6538bf10e15b328aa877'
+    aarch64: 'cd733a24b9f957d1ee7fc3295ad39fa71d3af7088f89c487cb377cc5bc7bd09c',
+     armv7l: 'cd733a24b9f957d1ee7fc3295ad39fa71d3af7088f89c487cb377cc5bc7bd09c',
+    i686: 'c2e647df4ea31290175675df85549b8d1e44598a77e6938346b25fd2de7c04af',
+  x86_64: 'bc09f27481eb8da5f81d1f8dc9d522f747f2890d24d9d81ca672e26a756badbe'
   })
 
   depends_on 'harfbuzz'
@@ -53,7 +53,7 @@ class Weston < Package
         -Dcolor-management-lcms=false \
         -Dbackend-rdp=false \
         -Dlauncher-logind=false \
-        -Dweston-launch=false \
+        -Ddeprecated-weston-launch=true \
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland \
         builddir"
