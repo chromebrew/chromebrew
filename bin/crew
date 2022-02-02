@@ -995,8 +995,6 @@ def prepare_package(destdir)
 end
 
 def patchelf_set_need_paths(dir)
-  puts "@pkg.no_patchelf? is #{@pkg.no_patchelf?}".lightblue
-  puts "@pkg.patchelf? is #{@pkg.patchelf?}".lightblue
   return if @pkg.no_patchelf? || !@pkg.patchelf?
 
   Dir.chdir dir do
