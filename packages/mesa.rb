@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.4'
+  @_ver = '21.3.5'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_armv7l/mesa-21.3.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_armv7l/mesa-21.3.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_i686/mesa-21.3.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.4_x86_64/mesa-21.3.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_i686/mesa-21.3.5-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_x86_64/mesa-21.3.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'ab9a19dd501715367d45e843b64b2aec16741538caa033f61133d9e78eca68df',
-     armv7l: 'ab9a19dd501715367d45e843b64b2aec16741538caa033f61133d9e78eca68df',
-       i686: '9d70ca4db18e06c3d63f867801171e3fc960b841a9e62218ce3ff91b3036bd63',
-     x86_64: 'bf3dff20994cdd88a1a242351c21bea4ce111410171ea5d39728fd6406ea40bf'
+    aarch64: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
+     armv7l: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
+       i686: '598d0f51d38217f0846181aae988c13ca5b4f2869ea6de715210e14082b07bcd',
+     x86_64: '4fd1bb2096ccdf3c6fb23edd1ced3933295af5096a75f27022f1aa3b31c64ea7'
   })
 
   depends_on 'glslang' => :build
@@ -108,20 +108,24 @@ class Mesa < Package
       @vk = 'intel,swrast'
       @galliumdrivers = 'swrast,svga,virgl,swr,lima,zink'
       @lto = CREW_MESON_FNO_LTO_OPTIONS
+      @osmesa = 'false'
     when 'aarch64', 'armv7l'
       @vk = 'auto'
       @galliumdrivers = 'auto'
       @lto = CREW_MESON_OPTIONS
+      @osmesa = 'false'
     when 'x86_64'
       @vk = 'auto'
       @galliumdrivers = 'r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus'
       @lto = CREW_MESON_OPTIONS
+      @osmesa = 'true'
     end
     system "meson #{@lto} \
     -Db_asneeded=false \
     -Dvulkan-drivers=#{@vk} \
     -Dgallium-drivers=#{@galliumdrivers} \
     -Dprefer-crocus=true \
+    -Dosmesa=#{@osmesa} \
      builddir"
     system 'meson configure builddir'
     system 'samu -C builddir'
