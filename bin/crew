@@ -874,6 +874,9 @@ def build_and_preconfigure(target_dir)
       system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@short_verbose} {} {}_tmp"
     end
 
+    # Load musl options only if package is targeted at the musl toolchain
+    load "#{CREW_LIB_PATH}lib/musl.rb" if @pkg.is_musl?
+
     @pkg.in_build = true
     @pkg.patch
     @pkg.prebuild
