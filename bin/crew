@@ -1479,7 +1479,7 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless %x[tar --version | head -n 1 | awk '{print $4}'] > '1.31' || !File.exist?("#{CREW_PREFIX}/bin/zstd") || @pkg.no_zstd?
+  unless %x[tar --version | head -n 1 | awk '{print $4}'] < '1.31' || !File.exist?("#{CREW_PREFIX}/bin/zstd") || @pkg.no_zstd?
     puts "Using zstd to compress archive."
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.zst"
     Dir.chdir CREW_DEST_DIR do
