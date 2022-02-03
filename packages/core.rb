@@ -75,6 +75,7 @@ class Core < Package
   depends_on 'ruby'
   depends_on 'slang'
   depends_on 'sqlite'
+  depends_on 'tar'
   depends_on 'uchardet'
   depends_on 'unzip'
   depends_on 'xzutils'
