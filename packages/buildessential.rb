@@ -121,7 +121,7 @@ class Buildessential < Package
 
   # Tar
   # Version > 1.30 needed for zstd support
-  depends_on 'tar'
+  depends_on 'tar' if ARCH == 'i686'
 
   # xorg protocol headers
   #depends_on 'xorg_proto'
