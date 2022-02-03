@@ -5,7 +5,7 @@ class Package
            :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag
 
-  boolean_property = %i[git_fetchtags is_fake is_musl is_static no_patchelf patchelf]
+  boolean_property = %i[git_fetchtags is_fake is_musl is_static no_patchelf no_zstd patchelf]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
