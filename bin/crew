@@ -828,7 +828,7 @@ def unpack(meta)
         abort 'zstd is needed for this install. Please install it first with \'crew install zstd\''.lightred
       end
       puts "Unpacking archive using 'tar', this may take a while..."
-      system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+      system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
       puts "Unpacking '.deb' archive, this may take a while..."
       DebUtils::extract_deb(meta[:filename], /data\..*/)
@@ -1505,7 +1505,7 @@ def archive_package(pwd)
       # decompression speed over compression speed.
       # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
       # Use nice so that user can (possibly) do other things during compression.
-      system "tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
+      system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
     end
   else
     puts "Using xz to compress package. This may take some time.".lightblue
