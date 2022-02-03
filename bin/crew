@@ -675,7 +675,7 @@ def download
   Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
     # Sources that download with curl
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
@@ -817,7 +817,7 @@ def unpack(meta)
       puts "Unpacking archive using 'unzip', this may take a while..."
       _verbopt = @opt_verbose ? '-v' : '-qq'
       system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
-    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
+    when /\.(tar(\.(gz|bz2|xz|lz|zst))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
