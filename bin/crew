@@ -786,7 +786,7 @@ def download
           system 'git checkout FETCH_HEAD'
         end
         system 'git submodule update --init --recursive'
-        if @pkg.git_fetchtags?
+        if !!@pkg.git_fetchtags
           system 'git fetch --tags', exception: true
         end
         puts 'Repository downloaded.'.lightgreen
@@ -874,6 +874,9 @@ def build_and_preconfigure(target_dir)
       system "find #{CREW_LIB_PREFIX} -type f -name *.la -print0 | xargs --null -I{} mv #{@short_verbose} {} {}_tmp"
     end
 
+    # Load musl options only if package is targeted at the musl toolchain
+    load "#{CREW_LIB_PATH}lib/musl.rb" if @pkg.is_musl?
+
     @pkg.in_build = true
     @pkg.patch
     @pkg.prebuild
@@ -888,7 +891,7 @@ def build_and_preconfigure(target_dir)
       # Rename all *.la_tmp back to *.la to avoid
       # cannot access '*.la': No such file or directory
       puts 'Rename all *.la_tmp files back to *.la'.lightblue
-      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec sh -c 'mv #{@short_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
+      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec bash -c 'mv #{@short_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
     end
   end
 end
@@ -1000,8 +1003,50 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
+    # Use patchelf to set need paths for all binaries
+    # currently broken due to glibc issue on armv7l
+    unless %w[aarch64 armv7l].include?(ARCH)
+      patchelf_set_need_paths destdir
+    end
+
     # use upx on executables
     shrink_dir destdir
+  end
+end
+
+def patchelf_set_need_paths(dir)
+  return if @pkg.no_patchelf? || !@pkg.patchelf?
+
+  Dir.chdir dir do
+    puts 'Running patchelf'.lightblue
+    abort('No Patchelf found!').lightred unless File.exist?("#{CREW_PREFIX}/bin/patchelf")
+    @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec head -c4 {} 2>/dev/null \\; -printf ' %i %p\\n'| grep ^.ELF | sort -u -n -s -k2,2 | awk '{print $3}'`.chomp
+    return if @execfiles.to_s.empty?
+
+    @patchelf_lib_prefix = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
+    puts "@patchelf_lib_prefix is #{@patchelf_lib_prefix}" if @opt_verbose
+    puts 'Running patchelf to patch binaries for library paths'.lightblue
+    @execfiles.each_line(chomp: true) do |execfiletopatch|
+      execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
+      @neededlibs = `patchelf --print-needed #{execfiletopatch}`
+      next if @neededlibs.to_s.empty?
+
+      @neededlibs.each_line(chomp: true) do |neededlibspatch|
+        next if neededlibspatch.include?(@patchelf_lib_prefix.to_s)
+
+        @neededlib_basename = File.basename(neededlibspatch)
+        @neededlibspatchednamepath = "#{@patchelf_lib_prefix}/" + @neededlib_basename
+        # The first check here can be changed to just check the dest_dir
+        # hierarchy for @neededlib_basename if the intent is to allow
+        # using a different CREW_PREFIX during package installs.
+        if File.exist?(@neededlibspatchednamepath) || File.exist?(Dir.pwd + @neededlibspatchednamepath)
+          puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}" if @opt_verbose
+          system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
+        else
+          puts "#{execfiletopatch} needed library #{@neededlib_basename} not found in #{@patchelf_lib_prefix} or #{Dir.pwd + @neededlibspatchednamepath}.".lightred
+        end
+      end
+    end
   end
 end
 
@@ -1055,7 +1100,7 @@ def shrink_dir(dir)
         # hard linked files multiple times.)
         # Also disable for sommelier.elf and Xwayland.elf since upx
         # breaks those binaries.
-        @execfiles = %x[find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'].chomp
+        @execfiles = `find . -executable -type f ! \\( -name \"*.so*\" -o -name \"*.a\" -o -name \"Xwayland.elf\" -o -name \"sommelier.elf\" \\) -exec head -c4 {} 2>/dev/null \\; -printf ' %i %p\\n'| grep ^.ELF | sort -u -n -s -k2,2 | awk '{print $3}'`.chomp
         unless @execfiles.to_s.empty?
           puts "Using upx to shrink binaries."
           # Copying in the ThreadPoolExecutor loop fails non-deterministically
