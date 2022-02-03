@@ -158,7 +158,7 @@ class Package
     rescue => e
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
-      raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{cmd_args.join(' ')}` exited with #{$?.exitstatus}"
+      raise InstallError, "`#{env.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')} #{cmd_args.join(' ')}` exited with #{$?.exitstatus}".lightred
     end
   end
 end

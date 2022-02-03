@@ -1024,7 +1024,7 @@ def patchelf_set_need_paths(dir)
     return if @execfiles.to_s.empty?
 
     @patchelf_lib_prefix = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
-    puts "@patchelf_lib_prefix is #{@patchelf_lib_prefix}"
+    puts "@patchelf_lib_prefix is #{@patchelf_lib_prefix}" if @opt_verbose
     puts 'Running patchelf to patch binaries for library paths'.lightblue
     @execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
@@ -1040,10 +1040,10 @@ def patchelf_set_need_paths(dir)
         # hierarchy for @neededlib_basename if the intent is to allow
         # using a different CREW_PREFIX during package installs.
         if File.exist?(@neededlibspatchednamepath) || File.exist?(Dir.pwd + @neededlibspatchednamepath)
-          puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
+          puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}" if @opt_verbose
           system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
         else
-          puts "#{execfiletopatch} needed library #{@neededlib_basename} not found in #{@patchelf_lib_prefix} or #{Dir.pwd + @neededlibspatchednamepath}."
+          puts "#{execfiletopatch} needed library #{@neededlib_basename} not found in #{@patchelf_lib_prefix} or #{Dir.pwd + @neededlibspatchednamepath}." if @opt_verbose
         end
       end
     end
