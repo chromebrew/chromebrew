@@ -817,7 +817,13 @@ def unpack(meta)
       puts "Unpacking archive using 'unzip', this may take a while..."
       _verbopt = @opt_verbose ? '-v' : '-qq'
       system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
-    when /\.(tar(\.(gz|bz2|xz|lz|zst))?|tgz|tbz|txz)$/i
+    when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
+      puts "Unpacking archive using 'tar', this may take a while..."
+      system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+    when /\.tar\.zst$/i
+      if !File.exist?("#{CREW_PREFIX}/bin/tar") and %x[tar --version | head -n 1 | awk '{print $4}'] < '1.31'
+        abort 'A newer version of tar may be needed for this install. Please install it first with \'crew install tar\''.lightred
+      end
       puts "Unpacking archive using 'tar', this may take a while..."
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
