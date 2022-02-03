@@ -23,7 +23,7 @@ unless @pkg.is_static?
   MUSL_LDFLAGS = "-L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags -Wl,--dynamic-linker,#{CREW_MUSL_PREFIX}/lib/libc.so -Wl,--gc-sections -flto -isysroot=#{CREW_MUSL_PREFIX} "
   MUSL_PKG_CONFIG = 'pkg-config'
 else
-  MUSL_LDFLAGS = "-L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags -Wl,--gc-sections -flto -isysroot=#{CREW_MUSL_PREFIX} -static "
+  MUSL_LDFLAGS = "-L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags -Wl,--gc-sections -flto -isysroot=#{CREW_MUSL_PREFIX} -static --static"
   MUSL_PKG_CONFIG = 'pkg-config --static'
 end
 MUSL_ENV_OPTIONS = "PATH=#{CREW_MUSL_PREFIX}/bin:#{ENV['PATH']} \
@@ -65,6 +65,17 @@ MUSL_CMAKE_OPTIONS = "PATH=#{CREW_MUSL_PREFIX}/bin:#{CREW_MUSL_PREFIX}/#{ARCH}-l
       -DCMAKE_MODULE_LINKER_FLAGS='#{MUSL_CMAKE_LDFLAGS}' \
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
       -DCMAKE_BUILD_TYPE=Release"
+MUSL_MESON_OPTIONS = <<~OPT.chomp
+  -Dprefix=#{CREW_MUSL_PREFIX} \
+  -Dlibdir=#{CREW_MUSL_PREFIX}/lib \
+  -Dmandir=../man \
+  -Dbuildtype=release \
+  -Db_lto=true \
+  -Dstrip=true \
+  -Db_pie=true \
+  -Dcpp_args='-O2' \
+  -Dc_args='-O2'
+OPT
 
 $VERBOSE = warn_level
 

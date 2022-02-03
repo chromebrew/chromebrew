@@ -974,7 +974,7 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
         else
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
@@ -990,7 +990,7 @@ def prepare_package(destdir)
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      if CREW_CONFLICTS_ONLY_ADVISORY
+      if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
         puts "Warning: There is a conflict with the same file in another package.".orange
       else
         puts "Error: There is a conflict with the same file in another package.".lightred
@@ -1034,6 +1034,9 @@ def patchelf_set_need_paths(dir)
 
     @patchelf_lib_prefix = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
     puts "@patchelf_lib_prefix is #{@patchelf_lib_prefix}" if @opt_verbose
+    @patchelf_interpreter = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib/libc.so" : "CREW_LIB_PREFIX/libc.so.6"
+    puts "@patchelf_interpreter is #{@patchelf_interpreter}" if @opt_verbose
+
     puts 'Running patchelf to patch binaries for library paths'.lightblue
     @execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
@@ -1055,6 +1058,12 @@ def patchelf_set_need_paths(dir)
           puts "#{execfiletopatch} needed library #{@neededlib_basename} not found in #{@patchelf_lib_prefix} or #{Dir.pwd + @neededlibspatchednamepath}.".lightred
         end
       end
+      # Do not set interpreter for non-musl, as this can break apps if there
+      # is an issue with the crew glibc.
+      next if !@pkg.is_musl?
+
+      puts 'Running patchelf to patch binary interpreter paths'.lightblue
+      system "patchelf --set-interpreter #{@patchelf_interpreter} #{execfiletopatch}"
     end
   end
 end

@@ -5,7 +5,9 @@ class Package
            :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag
 
-  boolean_property = %i[git_fetchtags is_fake is_musl is_static no_patchelf no_zstd patchelf]
+  boolean_property = %i[conflicts_ok git_fetchtags is_fake is_musl
+                        is_static no_env_options no_fhs no_patchelf
+                        no_zstd patchelf]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -123,6 +125,13 @@ class Package
   end
 
   def self.system(*args, **opt_args)
+
+    if no_env_options?
+      @crew_env_options_hash = { "CREW_DISABLE_ENV_OPTIONS" => '1' }
+    else
+      @crew_env_options_hash = CREW_ENV_OPTIONS_HASH
+    end
+
     # add "-j#" argument to "make" at compile-time, if necessary
 
     # Order of precedence to assign the number of processors:
@@ -136,10 +145,10 @@ class Package
 
     # extract env hash
     if args[0].is_a?(Hash)
-      env = CREW_ENV_OPTIONS_HASH.merge(args[0])
+      env = @crew_env_options_hash.merge(args[0])
       args.delete_at(0) # remove env hash from args array
     else
-      env = CREW_ENV_OPTIONS_HASH
+      env = @crew_env_options_hash
     end
 
     # after removing the env hash, all remaining args must be command args
