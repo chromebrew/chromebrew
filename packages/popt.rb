@@ -22,6 +22,8 @@ class Popt < Package
      x86_64: 'b6f09b9dcca99c16e61a7c71333ce0454c38ad99c7dfa0893cce9c44f8335f77'
   })
 
+  no_zstd
+
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "env CFLAGS='-flto=auto' \

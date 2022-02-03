@@ -26,6 +26,8 @@ class Ruby < Package
   depends_on 'libyaml' # This is needed to install gems
   # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
 
+  no_zstd
+
   def self.build
     # The download from ruby-lang.org doesn't need autoconf run,
     # but the download from github does.
