@@ -40,7 +40,7 @@ if test $1; then
   done
 else
   packages=$(find ../release/*/*.xz -exec basename -s .tar.xz {} + | cut -d'-' -f1 | sort | uniq | xargs)" "
-  packages+=$(find ../release/*/*.tpxz -exec basename -s .tpxz {} + | cut -d'-' -f1 | sort | uniq | xargs)
+  packages+=$(find ../release/*/*.tpxz -exec basename -s .tpxz {} + | cut -d'-' -f1 | sort | uniq | xargs)" "
   packages+=$(find ../release/*/*.tar.zst -exec basename -s .tar.zst {} + | cut -d'-' -f1 | sort | uniq | xargs)
 fi
 [ -z "${packages}" ] && echo "No packages found." && exit 1
