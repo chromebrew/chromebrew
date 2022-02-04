@@ -675,7 +675,7 @@ def download
   Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
     # Sources that download with curl
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
@@ -820,6 +820,15 @@ def unpack(meta)
     when /\.(tar(\.(gz|bz2|xz|lz))?|tgz|tbz|txz)$/i
       puts "Unpacking archive using 'tar', this may take a while..."
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+    when /\.tar\.zst$/i
+      if !File.exist?("#{CREW_PREFIX}/bin/tar") and %x[tar --version | head -n 1 | awk '{print $4}'] < '1.31'
+        abort 'A newer version of tar may be needed for this install. Please install it first with \'crew install tar\''.lightred
+      end
+      if !File.exist?("#{CREW_PREFIX}/bin/zstd")
+        abort 'zstd is needed for this install. Please install it first with \'crew install zstd\''.lightred
+      end
+      puts "Unpacking archive using 'tar', this may take a while..."
+      system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.deb$/i
       puts "Unpacking '.deb' archive, this may take a while..."
       DebUtils::extract_deb(meta[:filename], /data\..*/)
@@ -965,7 +974,7 @@ def prepare_package(destdir)
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if filename == '.' or filename == '..'
       unless @fhs_compliant_prefix.include?(filename)
-        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY
+        if CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY || @pkg.no_fhs?
           puts "Warning: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".orange
         else
           puts "Error: #{CREW_PREFIX}/#{filename} in #{@pkg.name} is not FHS3 compliant.".lightred
@@ -981,7 +990,7 @@ def prepare_package(destdir)
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      if CREW_CONFLICTS_ONLY_ADVISORY
+      if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
         puts "Warning: There is a conflict with the same file in another package.".orange
       else
         puts "Error: There is a conflict with the same file in another package.".lightred
@@ -1025,6 +1034,9 @@ def patchelf_set_need_paths(dir)
 
     @patchelf_lib_prefix = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
     puts "@patchelf_lib_prefix is #{@patchelf_lib_prefix}" if @opt_verbose
+    @patchelf_interpreter = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib/libc.so" : "CREW_LIB_PREFIX/libc.so.6"
+    puts "@patchelf_interpreter is #{@patchelf_interpreter}" if @opt_verbose
+
     puts 'Running patchelf to patch binaries for library paths'.lightblue
     @execfiles.each_line(chomp: true) do |execfiletopatch|
       execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
@@ -1046,6 +1058,12 @@ def patchelf_set_need_paths(dir)
           puts "#{execfiletopatch} needed library #{@neededlib_basename} not found in #{@patchelf_lib_prefix} or #{Dir.pwd + @neededlibspatchednamepath}.".lightred
         end
       end
+      # Do not set interpreter for non-musl, as this can break apps if there
+      # is an issue with the crew glibc.
+      next if !@pkg.is_musl?
+
+      puts 'Running patchelf to patch binary interpreter paths'.lightblue
+      system "patchelf --set-interpreter #{@patchelf_interpreter} #{execfiletopatch}"
     end
   end
 end
@@ -1068,7 +1086,7 @@ def strip_dir(dir)
 
       # Strip binaries but not compressed archives
       puts "Stripping binaries..."
-      extensions = [ 'bz2', 'gz', 'lha', 'lz', 'lzh', 'rar', 'tar', 'tbz', 'tgz', 'tpxz', 'txz', 'xz', 'Z', 'zip' ]
+      extensions = %w[ bz2 gz lha lz lzh rar tar tbz tgz tpxz txz xz Z zip zst ]
       inames = extensions.join(' ! -iname *\.')
       strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
     end
@@ -1479,14 +1497,18 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless CREW_NOT_USE_PIXZ || !File.exist?("#{CREW_PREFIX}/bin/pixz")
-    puts "Using pixz to compress archive."
-    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tpxz"
+  unless %x[tar --version | head -n 1 | awk '{print $4}'] < '1.31' || !File.exist?("#{CREW_PREFIX}/bin/zstd") || @pkg.no_zstd?
+    puts "Using zstd to compress package. This may take some time.".lightblue
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.zst"
     Dir.chdir CREW_DEST_DIR do
-      # Use smaller blocks with "-f0.25" to make random access faster.
-      system "tar c#{@verbose} * | pixz -f0.25 -9 > #{pwd}/#{pkg_name}"
+      # Using same zstd compression options as Arch, which privilege
+      # decompression speed over compression speed.
+      # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
+      # Use nice so that user can (possibly) do other things during compression.
+      system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
     end
   else
+    puts "Using xz to compress package. This may take some time.".lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
       system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"

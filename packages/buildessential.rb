@@ -119,6 +119,10 @@ class Buildessential < Package
   # Samurai
   #depends_on 'samurai'
 
+  # Tar
+  # Version > 1.30 needed for zstd support
+  depends_on 'tar' if ARCH == 'i686'
+
   # xorg protocol headers
   #depends_on 'xorg_proto'
 
