@@ -11,16 +11,16 @@ class Docbook_xml50 < Package
   source_sha256 '3dcd65e1f5d9c0c891b3be204fa2bb418ce485d32310e1ca052e81d36623208e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_armv7l/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_armv7l/docbook_xml50-5.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_i686/docbook_xml50-5.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-2_x86_64/docbook_xml50-5.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_armv7l/docbook_xml50-5.0-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_armv7l/docbook_xml50-5.0-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_i686/docbook_xml50-5.0-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_x86_64/docbook_xml50-5.0-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2ab82950132df3cd03fa314553cd961aa22f559d95dca84943e75c55158a8a3b',
-     armv7l: '2ab82950132df3cd03fa314553cd961aa22f559d95dca84943e75c55158a8a3b',
-       i686: '0f60fb72a56090a498bf7959ec4c566f0e7b6b9e8ecb6eacaaeb7b115b08c2a0',
-     x86_64: '3206419c30af448462552a504c545b22f53b3acfc8806347c667d1bdba6d21f0'
+    aarch64: 'fcaedafc069a5be2f3eb4cf7dd051fef685baf6206c3fee32cbf8acc8b1ff87f',
+     armv7l: 'fcaedafc069a5be2f3eb4cf7dd051fef685baf6206c3fee32cbf8acc8b1ff87f',
+       i686: '4baf10466bdcb1c8a31626ecc7ba4fa02f89eda1c33a08639642d3d45af5210c',
+     x86_64: '3ac628bda7909fdaee75d7e0fc67a51b9c4bd931741910c069c31603c9de55d2'
   })
 
   depends_on 'docbook_xml'
@@ -208,26 +208,24 @@ class Docbook_xml50 < Package
         esac
       done
     ADDFILES_HEREDOC
-    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
+    File.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
     system './add_files.sh || true'
 
-    %W[dtd rng sch xsd].each do |type|
+    %w[dtd rng sch xsd].each do |type|
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
       FileUtils.cp Dir["#{type}/*"], "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
     end
-    
+
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'tools/db4-entities.pl', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
+    # Conflicts with docbook_xml51
+    # FileUtils.install 'tools/db4-entities.pl', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5"
-    FileUtils.install 'tools/db4-upgrade.xsl', "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/", mode:0o644
+    # Conflicts with docbook_xml51
+    # FileUtils.install 'tools/db4-upgrade.xsl', "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/", mode: 0o644
 
     # catalog configuration
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/xml"
     FileUtils.install "docbook-#{@_ver}.xml", "#{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml", mode: 0o755
-    
-    # remove conflicts with docbook_xml51
-    FileUtils.rm %W[#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/db4-upgrade.xsl 
-                    #{CREW_DEST_PREFIX}/bin/db4-entities.pl]
   end
 
   def self.preinstall

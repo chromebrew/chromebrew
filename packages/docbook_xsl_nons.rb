@@ -11,16 +11,16 @@ class Docbook_xsl_nons < Package
   source_sha256 'ba41126fbf4021e38952f3074dc87cdf1e50f3981280c7a619f88acf31456822'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_armv7l/docbook_xsl_nons-1.79.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_i686/docbook_xsl_nons-1.79.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-1_x86_64/docbook_xsl_nons-1.79.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_armv7l/docbook_xsl_nons-1.79.2-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_armv7l/docbook_xsl_nons-1.79.2-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_i686/docbook_xsl_nons-1.79.2-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_x86_64/docbook_xsl_nons-1.79.2-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dbc2f81d3557aea2e40e87f4d1d68adc0b36c4a549f20813e66ab54d6e357030',
-     armv7l: 'dbc2f81d3557aea2e40e87f4d1d68adc0b36c4a549f20813e66ab54d6e357030',
-       i686: '1ec31fedd6f78376aaf36c67ab6d8a985ad198fad674742b7a48654a9e687647',
-     x86_64: 'a0a9096b8900966146d924cd86ef43b10b973422186cc5f25520897417fdb707'
+    aarch64: '06af54afe6fc9395a43fd9ac1771d348f80e5914ecd0881313e5697dad3d11c5',
+     armv7l: '06af54afe6fc9395a43fd9ac1771d348f80e5914ecd0881313e5697dad3d11c5',
+       i686: '594d32e423a401d903c69c58e3c0f6c9397a1ce80d5da6e777739b25a37bbce3',
+     x86_64: 'b7e2266597a34c278188e8a0e6ff9efc1c3947db7ceb46d50f5f92ad3c8b9940'
   })
 
   depends_on 'docbook_xml'
@@ -54,7 +54,7 @@ class Docbook_xsl_nons < Package
         done
       )
     ADDFILES_HEREDOC
-    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
+    File.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
     system './add_files.sh || true'
   end
 

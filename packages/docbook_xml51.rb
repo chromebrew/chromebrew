@@ -11,16 +11,16 @@ class Docbook_xml51 < Package
   source_sha256 'b3f3413654003c1e773360d7fc60ebb8abd0e8c9af8e7d6c4b55f124f34d1e7f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_armv7l/docbook_xml51-5.1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_armv7l/docbook_xml51-5.1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_i686/docbook_xml51-5.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-2_x86_64/docbook_xml51-5.1-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_armv7l/docbook_xml51-5.1-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_armv7l/docbook_xml51-5.1-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_i686/docbook_xml51-5.1-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_x86_64/docbook_xml51-5.1-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ca2389bebf749c9697ba33405f85b41bd3272bff20d4b4640df05c29b675dac4',
-     armv7l: 'ca2389bebf749c9697ba33405f85b41bd3272bff20d4b4640df05c29b675dac4',
-       i686: 'b07d85d319d7ef992b23a1e11f2de204e7416650eeb3c65379328369adc99811',
-     x86_64: '9439627140b197a6d9d57897d206dcd75d2d64bbae74960411203be48d41bb68'
+    aarch64: '540df829dc7cba3edba8180004eceb50613e9b73300f34b87c1b4fe204b1ed2d',
+     armv7l: '540df829dc7cba3edba8180004eceb50613e9b73300f34b87c1b4fe204b1ed2d',
+       i686: 'ac490b002ad995daf9f79d532a72b548257cebec3bed3e134941d79773ed2599',
+     x86_64: '1922bb026b236b87ace2598753705817a32e32366ed5d20ad7c32c844191a75c'
   })
 
   depends_on 'docbook_xml'
@@ -28,23 +28,23 @@ class Docbook_xml51 < Package
 
   def self.install
     system "xmlcatalog --noout --create docbook-#{@_ver}.xml"
-    
-    { 
+
+    {
       # RNG
       "http://www.oasis-open.org/docbook/xml/#{@_ver}/rng/docbook.rng" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rng",
-      "http://docbook.org/xml/#{@_ver}/rng/docbook.rng" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rng",
-      # RNG+XInclude
-      "http://www.oasis-open.org/docbook/xml/#{@_ver}/rng/docbookxi.rng" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng",
-      "http://docbook.org/xml/#{@_ver}/rng/docbookxi.rng" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng",
+                     "http://docbook.org/xml/#{@_ver}/rng/docbook.rng" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rng",
+    # RNG+XInclude
+    "http://www.oasis-open.org/docbook/xml/#{@_ver}/rng/docbookxi.rng" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng",
+                   "http://docbook.org/xml/#{@_ver}/rng/docbookxi.rng" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rng",
       # RNC
       "http://www.oasis-open.org/docbook/xml/#{@_ver}/rnc/docbook.rnc" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rnc",
-      "http://docbook.org/xml/#{@_ver}/rng/docbook.rnc" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rnc",
-      # RNC+XInclude
-      "http://www.oasis-open.org/docbook/xml/#{@_ver}/rnc/docbookxi.rnc" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc",
-      "http://docbook.org/xml/#{@_ver}/rng/docbookxi.rnc" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc",
+                     "http://docbook.org/xml/#{@_ver}/rng/docbook.rnc" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbook.rnc",
+    # RNC+XInclude
+    "http://www.oasis-open.org/docbook/xml/#{@_ver}/rnc/docbookxi.rnc" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc",
+                   "http://docbook.org/xml/#{@_ver}/rng/docbookxi.rnc" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/rng/#{@_ver}/docbookxi.rnc",
       # Schematron
       "http://www.oasis-open.org/docbook/xml/#{@_ver}/sch/docbook.sch" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/sch/#{@_ver}/docbook.sch",
-      "http://docbook.org/xml/#{@_ver}/sch/docbook.sch" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/sch/#{@_ver}/docbook.sch"
+                     "http://docbook.org/xml/#{@_ver}/sch/docbook.sch" => "file://#{CREW_PREFIX}/share/xml/docbook/schema/sch/#{@_ver}/docbook.sch"
     }.each_pair do |k, v|
       system 'xmlcatalog', '--noout', '--add', 'uri', k, v, "docbook-#{@_ver}.xml"
     end
@@ -95,10 +95,10 @@ class Docbook_xml51 < Package
         esac
       done
     ADDFILES_HEREDOC
-    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
+    File.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
     system './add_files.sh || true'
 
-    ['rng', 'sch'].each do |type|
+    %w[rng sch].each do |type|
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
       FileUtils.cp Dir["schemas/#{type}/*"], "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
     end
@@ -138,9 +138,9 @@ class Docbook_xml51 < Package
   def self.postinstall
     { 'delegatePublic' => '-//OASIS//ENTITIES DocBook XML',
       'delegateSystem' => 'http://www.oasis-open.org/docbook/',
-      'delegateURI' => 'http://www.oasis-open.org/docbook/'
-    }.each_pair do |k, v|
-      system 'xmlcatalog', '--noout', '--add', k, v, "file://#{CREW_PREFIX}/etc/xml/docbook-xml", "#{CREW_PREFIX}/etc/xml/catalog"
+         'delegateURI' => 'http://www.oasis-open.org/docbook/' }.each_pair do |k, v|
+      system 'xmlcatalog', '--noout', '--add', k, v, "file://#{CREW_PREFIX}/etc/xml/docbook-xml",
+             "#{CREW_PREFIX}/etc/xml/catalog"
     end
   end
 end

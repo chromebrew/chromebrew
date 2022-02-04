@@ -11,16 +11,16 @@ class Docbook_xsl < Package
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-2_armv7l/docbook_xsl-1.79.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-2_armv7l/docbook_xsl-1.79.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-2_i686/docbook_xsl-1.79.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-2_x86_64/docbook_xsl-1.79.2-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_armv7l/docbook_xsl-1.79.2-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_armv7l/docbook_xsl-1.79.2-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_i686/docbook_xsl-1.79.2-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_x86_64/docbook_xsl-1.79.2-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '98cc13cd1883b26708624d253cb54325f523d2f4bf43089a1008c7500c81f37c',
-     armv7l: '98cc13cd1883b26708624d253cb54325f523d2f4bf43089a1008c7500c81f37c',
-       i686: 'ff237f1f8c2be2482391150492a03f49518a20c30d36b9c9fa6302b1f265e0eb',
-     x86_64: '4e53c3fe08e6b59c6e1a9bb2f1b9620e93af939c87a95ff3d97bb16095adde1a'
+    aarch64: '25e813ecd0cf7daab83923b012c47b3ac40f2f4d517d2c815d032ab027f8a4c5',
+     armv7l: '25e813ecd0cf7daab83923b012c47b3ac40f2f4d517d2c815d032ab027f8a4c5',
+       i686: 'c222857e21fa14143be3e945136649984af40d19c6205942d69f9b6202f667f0',
+     x86_64: '3306fa4d5b31758b2393e7e6c241e23c9a050fe748df6bff272c58d1e37c8540'
   })
 
   depends_on 'docbook_xml'
@@ -54,9 +54,9 @@ class Docbook_xsl < Package
         done
       )
     ADDFILES_HEREDOC
-    IO.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
+    File.write('add_files.sh', @ADDFILES_SH, perm: 0o755)
     system './add_files.sh || true'
-    FileUtils.install 'VERSION.xsl', @pkgroot, mode:0o644
+    FileUtils.install 'VERSION.xsl', @pkgroot, mode: 0o644
     FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
                    "#{CREW_DEST_PREFIX}/share/xml/docbook/xsl-stylesheets"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/"
