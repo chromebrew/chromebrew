@@ -224,6 +224,10 @@ class Docbook_xml50 < Package
     # catalog configuration
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/xml"
     FileUtils.install "docbook-#{@_ver}.xml", "#{CREW_DEST_PREFIX}/etc/xml/docbook-#{@_ver}.xml", mode: 0o755
+    
+    # remove conflicts with docbook_xml51
+    FileUtils.rm %W[#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook5/db4-upgrade.xsl 
+                    #{CREW_DEST_PREFIX}/bin/db4-entities.pl]
   end
 
   def self.preinstall
