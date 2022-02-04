@@ -1012,9 +1012,9 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
-    # Use patchelf to set need paths for all binaries
-    # currently broken due to glibc issue on armv7l
-    unless %w[aarch64 armv7l].include?(ARCH)
+    # Use patchelf to set need paths for all binaries.
+    # Currently broken with glibc on armv7l, but musl is fine.
+    unless %w[aarch64 armv7l].include?(ARCH) and !@pkg.is_musl?
       patchelf_set_need_paths destdir
     end
 
@@ -1525,16 +1525,28 @@ def remove(pkgName)
     return
   end
 
+  # Preserve CREW_ESSENTIAL_FILES and make sure they are real files
+  # and not symlinks, because preserving symlinked libraries does not
+  # prevent breakage.
+  CREW_ESSENTIAL_FILES.each do |file|
+    next if !File.symlink?("#{CREW_LIB_PREFIX}/#{file}")
+
+    @canonicalized_file = `readlink -m #{CREW_LIB_PREFIX}/#{file}`.chomp
+    if File.exist?(@canonicalized_file) and @canonicalized_file.include?(CREW_PREFIX)
+      puts "Replacing symlinked essential #{file} with hard link to #{@canonicalized_file} to avoid breakage.".lightblue if @opt_verbose
+      FileUtils.ln(@canonicalized_file, "#{CREW_LIB_PREFIX}/#{file}", force: true)
+    end
+  end
   #if the filelist exists, remove the files and directories installed by the package
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
       #remove all files installed by the package
       File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|
-        # Do not remove essential files from gcc or libssp which ruby
-        # relies on, especially during package upgrades or reinstalls.
+        # Do not remove essential files which crew (and dependencies)
+        # rely on, especially during package upgrades or reinstalls.
         # These essential files are enumerated in const.rb as
         # CREW_ESSENTIAL_FILES.
-        if CREW_ESSENTIAL_FILES.include?(line)
+        if CREW_ESSENTIAL_FILES.include?(File.basename(line))
           if @opt_verbose
             puts "Removing #{line} will break crew. It was " +
                  'NOT'.lightred + ' deleted.'
