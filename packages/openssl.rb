@@ -25,8 +25,6 @@ class Openssl < Package
 
   depends_on 'ccache' => :build
 
-  no_zstd
-
   case ARCH
   when 'aarch64', 'armv7l'
     # See https://sourceware.org/bugzilla/show_bug.cgi?id=27659

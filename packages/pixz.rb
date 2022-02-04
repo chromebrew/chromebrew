@@ -29,8 +29,6 @@ class Pixz < Package
   depends_on 'libarchive'
   depends_on 'xzutils'
 
-  no_zstd
-
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "env manpage=true \

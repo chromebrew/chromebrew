@@ -37,7 +37,6 @@ class Git < Package
   depends_on 'musl_expat' => :build
 
   is_static
-  no_zstd
 
   def self.patch
     load "#{CREW_LIB_PATH}lib/musl.rb"

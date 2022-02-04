@@ -28,8 +28,6 @@ class Rsync < Package
   depends_on 'popt'
   depends_on 'zstd'
 
-  no_zstd
-
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \

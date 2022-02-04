@@ -22,8 +22,6 @@ class Libyaml < Package
      x86_64: '157e3e7c7dad0cea905a78944270b7b1fdd58bd363eeb167784a6d90a8c362b8',
   })
 
-  no_zstd
-
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system 'make'

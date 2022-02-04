@@ -23,8 +23,6 @@ class Ca_certificates < Package
      x86_64: '4f3ef9802940646facd1408b34b378ef866829d1c60b3b23560465afff5b97c3'
   })
 
-  no_zstd
-
   def self.patch
     # Patch from:
     # https://gitweb.gentoo.org/repo/gentoo.git/plain/app-misc/ca-certificates/files/ca-certificates-20150426-root.patch
