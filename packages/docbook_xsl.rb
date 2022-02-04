@@ -115,7 +115,7 @@ class Docbook_xsl < Package
       xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl-ns/current/
       xmlcatalog #{CREW_PREFIX}/etc/xml/catalog http://docbook.sourceforge.net/release/xsl-ns/#{@_ver}/
     CMD
-      system cmd
+      system cmd if @opt_verbose
     end
   end
 end
