@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.22.6'
+CREW_VERSION = '1.22.7'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -218,8 +218,7 @@ PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version
 CREW_FIRST_PACKAGES = %w[libssh curl git pixz shared_mime_info]
 CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
 
-# libssp is in the libssp package
-# libatomic is in the gcc package
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
-                       `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rsync`.scan(/\t([^ ]+)/).flatten
+                       `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rsync`.scan(/\t([^ ]+)/).flatten +
+                       %w[libzstd.so.1]
 CREW_ESSENTIAL_FILES.uniq!
