@@ -106,7 +106,7 @@ class Musl_native_toolchain < Package
     return unless ARCH == 'i686'
 
     # perl needs this.
-    FileUtils.ln_s "#{CREW_MUSL_PREFIX}/#{@target_tuple}/include/locale.h",
-                   "#{CREW_MUSL_PREFIX}/#{@target_tuple}/include/xlocale.h"
+    FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/#{@target_tuple}/include/locale.h",
+                    "#{CREW_MUSL_PREFIX}/#{@target_tuple}/include/xlocale.h"
   end
 end
