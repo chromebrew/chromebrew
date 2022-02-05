@@ -126,4 +126,8 @@ class Buildessential < Package
   depends_on 'rdfind'
   depends_on 'symlinks'
   depends_on 'upx'
+
+  # Packages needed for compressing archives
+  depends_on 'zstd'
+
 end
