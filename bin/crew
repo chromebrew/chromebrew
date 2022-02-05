@@ -821,14 +821,26 @@ def unpack(meta)
       puts "Unpacking archive using 'tar', this may take a while..."
       system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     when /\.tar\.zst$/i
-      if !File.exist?("#{CREW_PREFIX}/bin/tar") and %x[tar --version | head -n 1 | awk '{print $4}'] < '1.31'
-        abort 'A newer version of tar may be needed for this install. Please install it first with \'crew install tar\''.lightred
+      # Check to see that there is a working zstd
+      if File.exist?("#{CREW_PREFIX}/bin/zstd")
+        @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
       end
-      if !File.exist?("#{CREW_PREFIX}/bin/zstd") and !File.exist?("#{CREW_MUSL_PREFIX}/bin/zstd")
+      if File.exist?("#{CREW_MUSL_PREFIX}/bin/zstd")
+        @crew_musl_prefix_zstd_available = `#{CREW_MUSL_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
+      end
+      unless @crew_prefix_zstd_available or @crew_musl_prefix_zstd_available
         abort 'zstd is needed for this install. Please (re)install it first with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install zstd\''.lightred
       end
       puts "Unpacking archive using 'tar', this may take a while..."
-      system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+      # Use the zstd found to be working. This should correct for
+      # situations where the libzstd library is unavailable.
+      if @crew_prefix_zstd_available
+        puts "Using standard zstd".lightblue if @opt_verbose
+        system "tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+      elsif @crew_musl_prefix_zstd_available
+        puts "Using musl zstd".lightblue if @opt_verbose
+        system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+      end
     when /\.deb$/i
       puts "Unpacking '.deb' archive, this may take a while..."
       DebUtils::extract_deb(meta[:filename], /data\..*/)
@@ -1496,7 +1508,14 @@ def build_package(pwd)
 end
 
 def archive_package(pwd)
-  unless %x[tar --version | head -n 1 | awk '{print $4}'] < '1.31' || !File.exist?("#{CREW_PREFIX}/bin/zstd") || @pkg.no_zstd?
+  # Check to see that there is a working zstd
+  if File.exist?("#{CREW_PREFIX}/bin/zstd")
+    @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
+  end
+  if File.exist?("#{CREW_MUSL_PREFIX}/bin/zstd")
+    @crew_musl_prefix_zstd_available = `#{CREW_MUSL_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
+  end
+  unless @pkg.no_zstd? || (!@crew_prefix_zstd_available && !@crew_musl_prefix_zstd_available)
     puts "Using zstd to compress package. This may take some time.".lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.zst"
     Dir.chdir CREW_DEST_DIR do
@@ -1504,7 +1523,13 @@ def archive_package(pwd)
       # decompression speed over compression speed.
       # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
       # Use nice so that user can (possibly) do other things during compression.
-      system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar c#{@verbose} * | nice -n 20 zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
+      if @crew_prefix_zstd_available
+        puts "Using standard zstd".lightblue if @opt_verbose
+        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
+      elsif @crew_musl_prefix_zstd_available
+        puts "Using musl zstd".lightblue if @opt_verbose
+        system "tar c#{@verbose} * | nice -n 20 #{CREW_MUSL_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
+      end
     end
   else
     puts "Using xz to compress package. This may take some time.".lightblue
