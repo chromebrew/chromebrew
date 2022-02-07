@@ -25,7 +25,6 @@ class Gst_editing_services < Package
 
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
-  depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'gtk_doc' => :build
   depends_on 'pygobject' => :build

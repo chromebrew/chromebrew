@@ -34,7 +34,7 @@ class Libvips < Package
   depends_on 'librsvg'
   depends_on 'libtiff'
   depends_on 'libwebp'
-  depends_on 'orc'
+  depends_on 'gstreamer'
   depends_on 'poppler'
 
   def self.build

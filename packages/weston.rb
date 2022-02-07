@@ -39,7 +39,6 @@ class Weston < Package
   depends_on 'libwebp'
   depends_on 'libva'
   depends_on 'gstreamer'
-  depends_on 'gst_plugins_base'
   depends_on 'libwacom'
 
   def self.build

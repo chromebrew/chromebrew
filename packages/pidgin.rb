@@ -23,7 +23,7 @@ class Pidgin < Package
   })
 
   depends_on 'glib'
-  depends_on 'gst_plugins_base'
+  depends_on 'gstreamer'
   depends_on 'gtk2'
   depends_on 'libidn2'
   depends_on 'sommelier'
