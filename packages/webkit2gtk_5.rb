@@ -33,7 +33,6 @@ class Webkit2gtk_5 < Package
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene'
-  depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'gtk4'
   depends_on 'gtk_doc' => :build

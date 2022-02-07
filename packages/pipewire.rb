@@ -29,7 +29,6 @@ class Pipewire < Package
   depends_on 'eudev' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' => :build
-  depends_on 'gst_plugins_base' # R
   depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'libsndfile' # R

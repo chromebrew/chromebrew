@@ -30,8 +30,7 @@ class Spice_gtk < Package
   depends_on 'libjpeg'
   depends_on 'opus'
   depends_on 'usbredir'
-  depends_on 'gst_plugins_base'
-  depends_on 'gst_plugins_good'
+  depends_on 'gstreamer'
   depends_on 'gobject_introspection' => :build
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pygments' => :build

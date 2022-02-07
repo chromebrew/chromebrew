@@ -21,7 +21,7 @@ class Wxwidgets < Package
      x86_64: 'fef36327456b2b3fe3aa73af54a028aef85bbd9e312f5ddce5954a8eb3900a22',
   })
 
-  depends_on 'gst_plugins_base'
+  depends_on 'gstreamer'
   depends_on 'libnotify'
   depends_on 'libsdl'
   depends_on 'libsecret'

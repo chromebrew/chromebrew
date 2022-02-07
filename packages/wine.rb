@@ -26,7 +26,6 @@ class Wine < Package
   depends_on 'alsa_lib'
   depends_on 'eudev'
   depends_on 'glib'
-  depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'lcms'
   depends_on 'libgphoto'
