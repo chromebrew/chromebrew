@@ -33,7 +33,6 @@ class Webkit2gtk_4 < Package
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
-  depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'gtk3'
   depends_on 'gtk_doc' => :build

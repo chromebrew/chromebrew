@@ -29,7 +29,6 @@ class Tracker3_miners < Package
   depends_on 'exempi'
   depends_on 'giflib'
   depends_on 'glib'
-  depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'libcue'
   depends_on 'libexif'

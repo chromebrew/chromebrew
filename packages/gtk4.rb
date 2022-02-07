@@ -51,8 +51,6 @@ class Gtk4 < Package
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'graphene' # R
-  depends_on 'gst_plugins_bad' # R
-  depends_on 'gst_plugins_base' # R
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
   depends_on 'json_glib' # R
