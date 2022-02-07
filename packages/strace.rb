@@ -3,36 +3,32 @@ require 'package'
 class Strace < Package
   description 'strace is a diagnostic, debugging and instructional userspace utility for Linux.'
   homepage 'https://strace.io/'
-  version '5.2-1'
+  version '5.16'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://strace.io/files/5.2/strace-5.2.tar.xz'
-  source_sha256 'd513bc085609a9afd64faf2ce71deb95b96faf46cd7bc86048bc655e4e4c24d2'
+  source_url 'https://strace.io/files/5.16/strace-5.16.tar.xz'
+  source_sha256 'dc7db230ff3e57c249830ba94acab2b862da1fcaac55417e9b85041a833ca285'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_armv7l/strace-5.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_i686/strace-5.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.2-1_x86_64/strace-5.2-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.16_armv7l/strace-5.16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.16_armv7l/strace-5.16-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.16_i686/strace-5.16-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/5.16_x86_64/strace-5.16-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-    aarch64: '2affe33b6758ed49fc50d140e7673f44e33fc72410597eb851fef5e9699a1afc',
-     armv7l: '2affe33b6758ed49fc50d140e7673f44e33fc72410597eb851fef5e9699a1afc',
-       i686: '233884ae2118bd1558f85a0bef68260bdc981075d7e5861233004c920438f3c4',
-     x86_64: 'e5e6704b6749417a141f0c925294e53c1f0ff6119cfcd703cd156e0109ad5981',
+  binary_sha256({
+    aarch64: '1dd689637846d2c9cdb322b89ae9f2ad8494cfb1ac9eea2d58c5c66a6b951288',
+     armv7l: '1dd689637846d2c9cdb322b89ae9f2ad8494cfb1ac9eea2d58c5c66a6b951288',
+       i686: '4725326b262e7700a07cae5a097d29fb2ac67d36a905b4c37d95c6c9c6f69704',
+     x86_64: 'd1792aadec94cec75b2f8433aba3be6b2fbff41a28f5f5240a2e84d417df03c9'
   })
 
   depends_on 'elfutils' # Needed for stack trace support
 
-  def self.patch
-    system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' strace-graph"
-  end
-
   def self.build
-    system './configure',
-           '--with-libdw',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system "./configure \
+      --with-libdw \
+      --disable-mpers \
+      #{CREW_OPTIONS}"
     system 'make'
   end
 
