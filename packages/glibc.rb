@@ -27,19 +27,19 @@ class Glibc < Package
       i686: '3ee19cbb907eb219a2c1b02df6de1ca13b09b0d375101657d54a2485aacdc445'
     })
   elsif @LIBC_VERSION == '2.27'
-    version '2.27-3'
+    version '2.27'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
 
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27-3_armv7l/glibc-2.27-3-chromeos-armv7l.tpxz',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27-3_armv7l/glibc-2.27-3-chromeos-armv7l.tpxz',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27-3_x86_64/glibc-2.27-3-chromeos-x86_64.tpxz'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_armv7l/glibc-2.27-chromeos-armv7l.tar.xz',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.27_x86_64/glibc-2.27-chromeos-x86_64.tar.xz'
     })
     binary_sha256({
-      aarch64: '9d71c001feb52fbe7dd201c4ae5a4cadb7b7b3f3020b299ff023624e48aa06db',
-       armv7l: '9d71c001feb52fbe7dd201c4ae5a4cadb7b7b3f3020b299ff023624e48aa06db',
-       x86_64: '1f1bff5247b0e47b7d48e950d24bbce6f9df9f2418ca9aa7b9880cb2c708eef2'
+      aarch64: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+       armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
+       x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
     })
   elsif @LIBC_VERSION == '2.32'.freeze # All architectures with updates past M92.
     version '2.32-2'
