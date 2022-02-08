@@ -287,13 +287,13 @@ class Glibc < Package
         hashpipe sha256 6653f1d0aadad10bd288f3bae274bd4e0a013d47f09ce78199fb5989b2d8fd9b | \
         tar -xJf - -C gentoopatches'
       Dir.glob('gentoopatches/patches/*.patch').each do |patch|
-        puts "patch -Np1 < #{patch}" if verbose
+        puts "patch -Np1 < #{patch}" if @verbose
         system "patch -Np1 < #{patch}"
       end
       @googlesource_branch = 'release-R96-14268.B'
       system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
       Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.32/*.patch').each do |patch|
-        puts "patch -Np1 < #{patch}" if verbose
+        puts "patch -Np1 < #{patch}" if @verbose
         system "patch -Np1 < #{patch}"
       end
     when '2.33'
