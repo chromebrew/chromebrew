@@ -262,7 +262,7 @@ class Glibc < Package
         @googlesource_branch = 'release-R91-13904.B'
         system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
         Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{@libc_version}*.patch").each do |patch|
-        puts patch
+        puts "patch -Np1 -i #{patch}" if @verbose
         system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch} || true)"
         end
         # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
