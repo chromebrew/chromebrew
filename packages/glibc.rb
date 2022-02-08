@@ -11,6 +11,9 @@ class Glibc < Package
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
 
+  no_env_options
+  conflicts_ok
+
   @LIBC_VERSION = LIBC_VERSION
   # Uncomment following line to build a version of glibc different
   # from the one ChromeOS ships with.
@@ -256,28 +259,16 @@ class Glibc < Package
         File.write('glibc_223_i686.patch', @glibc_223_i686_patch)
         system 'patch -Np1 -i glibc_223_i686.patch'
       when 'armv7l', 'x86_64'
-        # @googlesource_branch = 'release-R91-13904.B'
-        # system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
-        # Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{@LIBC_VERSION}*.patch").each do |patch|
-        # puts patch
-        # system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch})"
-        # end
+        @googlesource_branch = 'release-R91-13904.B'
+        system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
+        Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{@LIBC_VERSION}*.patch").each do |patch|
+        puts patch
+        system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch} || true)"
+        end
         # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
-        system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" -o glibc_227_nss.patch'
-        unless Digest::SHA256.hexdigest(File.read('glibc_227_nss.patch')) == '0c40630adf77292abb763362182158a87648e2c45904aebb5758b5ca38653ac9'
-        abort 'Checksum mismatch :/ try again'
-        end
-        system 'patch -Np1 -i glibc_227_nss.patch || true'
-      end
-      # Apply patch due to new version of binutils which causes compilation failure
-      # http://lists.busybox.net/pipermail/buildroot/2017-August/199812.html
-      Dir.chdir 'misc' do
-        unless File.readlines('regexp.c').grep(/monitor/).any?
-          system "sed -i 's,char \\*loc1,char \\*loc1 __attribute__ ((nocommon)),g' regexp.c"
-          system "sed -i 's,char \\*loc2,char \\*loc2 __attribute__ ((nocommon)),g' regexp.c"
-          system "sed -i 's,char \\*locs,char \\*locs __attribute__ ((nocommon)),g' regexp.c"
-          puts 'Patched!'.lightgreen
-        end
+        system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" \
+        hashpipe sha256 0c40630adf77292abb763362182158a87648e2c45904aebb5758b5ca38653ac9 | \
+        patch -Np1 --binary || true'
       end
     when '2.32'
       FileUtils.mkdir 'fedora'
@@ -360,17 +351,29 @@ class Glibc < Package
       when '2.27'
         case ARCH
         when 'armv7l', 'aarch64'
-          system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
-                   #{CREW_OPTIONS} \
-                   --with-headers=#{CREW_PREFIX}/include \
-                   --without-gd \
-                   --disable-werror \
-                   --disable-sanity-checks \
-                   --enable-shared \
-                   --with-binutils=binutils \
-                   --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
-                   libc_cv_forced_unwind=yes \
-                   --without-selinux"
+          IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
+          # enable-obsolete-rpc will cause a conflict with libtirpc
+          system "SYSROOT=''  CFLAGS='-O2 -fno-strict-aliasing -fno-stack-protector -march=armv7-a+fp' \
+                  LD=ld ../configure \
+                  #{CREW_OPTIONS} \
+                  --with-headers=#{CREW_PREFIX}/include \
+                  ac_cv_lib_cap_cap_init=no \
+                  --disable-sanity-checks \
+                  --disable-werror \
+                  --enable-bind-now \
+                  --enable-shared \
+                  --enable-static-pie \
+                  libc_cv_arm_tls=yes \
+                  libc_cv_asm_cfi_directives=yes \
+                  libc_cv_broken_visibility_attribute=no \
+                  libc_cv_c_cleanup=yes \
+                  libc_cv_forced_unwind=yes \
+                  libc_cv_gcc___thread=yes \
+                  libc_cv_hashstyle=no \
+                  --with-binutils=binutils \
+                  --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
+                  --without-cvs \
+                  --without-selinux"
         when 'x86_64'
           IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
@@ -501,7 +504,12 @@ class Glibc < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     Dir.chdir 'glibc_build' do
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
-      system "make DESTDIR=#{CREW_DEST_DIR} install" # "sln elf/symlink.list" fails on armv7l
+      case ARCH
+      when 'aarch64', 'armv7l'
+        system "make DESTDIR=#{CREW_DEST_DIR} install || true" # "sln elf/symlink.list" fails on armv7l
+      when 'i686', 'x86_64'
+        system "make DESTDIR=#{CREW_DEST_DIR} install"
+      end
       case @LIBC_VERSION
       when '2.23', '2.27'
         Dir.chdir 'localedata' do
