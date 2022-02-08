@@ -591,16 +591,14 @@ class Glibc < Package
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libresolv librlv librt libthread_db-1.0 libutil]
     Dir.chdir CREW_LIB_PREFIX do
-      if @crew_libc_version != LIBC_VERSION
-        puts "Package glibc version is #{@crew_libc_version}.".lightblue
-        puts "System glibc version is #{LIBC_VERSION}.".lightblue
-        puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
-        @libraries.each do |lib|
-          Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
-            if `file #{f} | grep "shared object"`
-              g = File.basename(f)
-              FileUtils.ln_sf f.to_s, g.to_s
-            end
+      puts "Package glibc version is #{@crew_libc_version}.".lightblue
+      puts "System glibc version is #{LIBC_VERSION}.".lightblue
+      puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
+      @libraries.each do |lib|
+        Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
+          if `file #{f} | grep "shared object"`
+            g = File.basename(f)
+            FileUtils.ln_sf f.to_s, g.to_s
           end
         end
       end
