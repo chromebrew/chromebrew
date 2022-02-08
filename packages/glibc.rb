@@ -14,11 +14,11 @@ class Glibc < Package
   no_env_options
   conflicts_ok
 
-  @LIBC_VERSION = LIBC_VERSION
+  @libc_version = LIBC_VERSION
   # Uncomment following line to build a version of glibc different
   # from the one ChromeOS ships with.
-  # @LIBC_VERSION = '2.33'
-  if @LIBC_VERSION == '2.23'.freeze
+  # @libc_version = '2.33'
+  if @libc_version == '2.23'.freeze
     version '2.23-3'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
@@ -29,7 +29,7 @@ class Glibc < Package
     binary_sha256({
       i686: '3ee19cbb907eb219a2c1b02df6de1ca13b09b0d375101657d54a2485aacdc445'
     })
-  elsif @LIBC_VERSION == '2.27'
+  elsif @libc_version == '2.27'
     version '2.27'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.27.tar.xz'
     source_sha256 '5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72'
@@ -44,7 +44,7 @@ class Glibc < Package
        armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
        x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
     })
-  elsif @LIBC_VERSION == '2.32'.freeze # All architectures with updates past M92.
+  elsif @libc_version == '2.32'.freeze # All architectures with updates past M92.
     version '2.32-2'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
     source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
@@ -59,7 +59,7 @@ class Glibc < Package
        armv7l: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
        x86_64: '3e3eaa6551492ef0f1bc28600102503b721b19d0ee7396c4301771df402ea355'
     })
-  elsif @LIBC_VERSION.to_f >= 2.33 # All architectures with updates past M97.
+  elsif @libc_version.to_f >= 2.33 # All architectures with updates past M97.
     version '2.33'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.33.tar.xz'
     source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
@@ -77,7 +77,7 @@ class Glibc < Package
   end
 
   def self.patch
-    case @LIBC_VERSION
+    case @libc_version
     when '2.23', '2.27'
       # Patch to avoid old ld issue on glibc 2.23 by using ld configure
       # portion from https://github.com/bminor/glibc/blob/master/configure
@@ -261,7 +261,7 @@ class Glibc < Package
       when 'armv7l', 'x86_64'
         @googlesource_branch = 'release-R91-13904.B'
         system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
-        Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{@LIBC_VERSION}*.patch").each do |patch|
+        Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{@libc_version}*.patch").each do |patch|
         puts patch
         system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch} || true)"
         end
@@ -333,7 +333,7 @@ class Glibc < Package
         FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}" if bin['/bin/']
       end
       FileUtils.cp 'binutils/ld.bfd', 'binutils/ld'
-      case @LIBC_VERSION
+      case @libc_version
       when '2.23' # This is only for glibc 2.23
         system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
                  #{CREW_OPTIONS} \
@@ -391,7 +391,7 @@ class Glibc < Package
                    libc_cv_ssp_strong=no"
         end
       end
-      if @LIBC_VERSION.to_f >= 2.32
+      if @libc_version.to_f >= 2.32
         # Optimization flags from https://github.com/InBetweenNames/gentooLTO
         case ARCH
         when 'armv7l', 'aarch64'
@@ -486,7 +486,7 @@ class Glibc < Package
         end
       end
       system 'make -k'
-      if @LIBC_VERSION.to_f >= 2.32
+      if @libc_version.to_f >= 2.32
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
           ../glibc_build/locale/md5.o \
@@ -510,7 +510,7 @@ class Glibc < Package
       when 'i686', 'x86_64'
         system "make DESTDIR=#{CREW_DEST_DIR} install"
       end
-      case @LIBC_VERSION
+      case @libc_version
       when '2.23', '2.27'
         Dir.chdir 'localedata' do
           system "mkdir -pv #{CREW_DEST_LIB_PREFIX}/locale"
@@ -543,7 +543,7 @@ class Glibc < Package
           system "localedef --prefix=#{CREW_DEST_DIR} -i zh_CN -f GB18030 zh_CN.GB18030"
         end
       end
-      if @LIBC_VERSION.to_f >= 2.32
+      if @libc_version.to_f >= 2.32
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
         system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'localedata/install-locales'
       end
@@ -554,7 +554,7 @@ class Glibc < Package
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
     # threads.h was introduced in glibc 2.28. This is a workaround for
     # pre-M92 systems.
-    return unless @LIBC_VERSION < '2.28'
+    return unless @libc_version < '2.28'
 
     system 'curl -Lf https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h -o threads.h'
     unless Digest::SHA256.hexdigest(File.read('threads.h')) == 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a'
@@ -577,7 +577,7 @@ class Glibc < Package
     return if ARCH == 'i686'
 
     Dir.chdir 'glibc_build' do
-      system "make check"
+      system 'make check'
     end
   end
 
@@ -603,7 +603,7 @@ class Glibc < Package
         end
       end
     end
-    if @LIBC_VERSION.to_f >= 2.32
+    if @libc_version.to_f >= 2.32
       puts 'Paring locales to a minimal set.'.lightblue
       system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive'
       FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
