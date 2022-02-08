@@ -312,12 +312,12 @@ class Glibc < Package
         hashpipe sha256 29c2e4036c2b33b830a9588055c63fde5dd5255bcfd5fad2fc92f3bbd27456c1 | \
         tar -xJf - -C gentoopatches'
       Dir.glob('gentoopatches/patches/*.patch').each do |patch|
-        system "patch -Np1 -i #{patch} || true"
+        system "patch -Np1 -i #{patch} || true" if @verbose
       end
       @googlesource_branch = 'release-R99-14469.B'
       system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
       Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.33/*.patch').each do |patch|
-        puts patch
+        puts patch if @verbose
         system "patch -Np1 < #{patch} || true"
       end
     end
@@ -564,6 +564,7 @@ class Glibc < Package
   end
 
   def self.check
+    # Tests on i686 fail.
     # /usr/local/bin/nm: /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/../string/rtld-memcpy-sse2-unaligned.os: no symbols
     # /usr/local/bin/nm: /usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23/glibc_build/elf/../string/rtld-memmove-sse2-unaligned.os: no symbols
     # make[2]: Target 'tests' not remade because of errors.
@@ -573,11 +574,11 @@ class Glibc < Package
     # make[1]: Target 'check' not remade because of errors.
     # make[1]: Leaving directory '/usr/local/tmp/crew/glibc.20211222010048.dir/glibc-2.23'
     # make: *** [Makefile:9: check] Error 2
-    # return if ARCH == 'i686'
+    return if ARCH == 'i686'
 
-    # Dir.chdir 'glibc_build' do
-    # system "make -k -j#{CREW_NPROC} check || true"
-    # end
+    Dir.chdir 'glibc_build' do
+      system "make check"
+    end
   end
 
   def self.postinstall
