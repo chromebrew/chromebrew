@@ -262,7 +262,7 @@ class Glibc < Package
         @googlesource_branch = 'release-R91-13904.B'
         system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
         Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{@libc_version}*.patch").each do |patch|
-        puts "patch -Np1 -i #{patch}" if @verbose
+        puts "patch -Np1 -i #{patch}" if @opt_verbose
         system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch} || true)"
         end
         # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
@@ -287,13 +287,13 @@ class Glibc < Package
         hashpipe sha256 6653f1d0aadad10bd288f3bae274bd4e0a013d47f09ce78199fb5989b2d8fd9b | \
         tar -xJf - -C gentoopatches'
       Dir.glob('gentoopatches/patches/*.patch').each do |patch|
-        puts "patch -Np1 < #{patch}" if @verbose
+        puts "patch -Np1 < #{patch}" if @opt_verbose
         system "patch -Np1 < #{patch}"
       end
       @googlesource_branch = 'release-R96-14268.B'
       system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
       Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.32/*.patch').each do |patch|
-        puts "patch -Np1 < #{patch}" if @verbose
+        puts "patch -Np1 < #{patch}" if @opt_verbose
         system "patch -Np1 < #{patch}"
       end
     when '2.33'
@@ -313,13 +313,13 @@ class Glibc < Package
         hashpipe sha256 29c2e4036c2b33b830a9588055c63fde5dd5255bcfd5fad2fc92f3bbd27456c1 | \
         tar -xJf - -C gentoopatches'
       Dir.glob('gentoopatches/patches/*.patch').each do |patch|
-        puts "patch -Np1 -i #{patch} || true" if @verbose
+        puts "patch -Np1 -i #{patch} || true" if @opt_verbose
         system "patch -Np1 -i #{patch} || true"
       end
       @googlesource_branch = 'release-R99-14469.B'
       system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
       Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.33/*.patch').each do |patch|
-        puts "patch -Np1 < #{patch} || true" if @verbose
+        puts "patch -Np1 < #{patch} || true" if @opt_verbose
         system "patch -Np1 < #{patch} || true"
       end
     end
