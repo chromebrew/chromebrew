@@ -63,6 +63,11 @@ class Ruby < Package
   end
 
   def self.postinstall
-    system 'gem update --silent -N --system'
+    puts 'Updating ruby gems. This may take a while...'
+    if Kernel.system 'grep', '-vq', 'gem: --no-document', "#{HOME}/.gemrc"
+      File.write("#{HOME}/.gemrc", "gem: --no-document\n", mode: 'a')
+    end
+    silent = @opt_verbose ? '' : '--silent'
+    system "gem update #{silent} -N --system"
   end
 end
