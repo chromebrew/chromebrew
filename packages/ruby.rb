@@ -64,8 +64,8 @@ class Ruby < Package
 
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
-    if `grep -c "gem: --no-document" #{HOME}/.gemrc`.to_i.zero?
-      system "echo 'gem: --no-document' >> #{HOME}/.gemrc"
+    if system 'grep', '-q', "gem: --no-document", "#{HOME}/.gemrc"
+      File.write("#{HOME}/.gemrc", "gem: --no-document\n", mode: 'a')
     end
     silent = @opt_verbose ? '' : '--silent'
     system "gem update #{silent} -N --system"
