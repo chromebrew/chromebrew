@@ -6,19 +6,27 @@ class Bash < Package
   version '5.1.16'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/bash/bash-5.1.16.tar.gz'
+  source_url 'https://ftpmirror.gnu.org/bash/bash-5.1.16.tar.gz'
   source_sha256 '5bac17218d3911834520dad13cd1f85ab944e1c09ae1aba55906be1f8192f558'
 
-  case ARCH
-  when 'i686'
-    @CONFIGUREFLAGS = '--without-bash-malloc'
-  when 'aarch64', 'armv7l', 'x86_64'
-    @CONFIGUREFLAGS = '--with-bash-malloc'
-  end
+  depends_on 'mimalloc' => :build if ARCH == 'i686'
+  no_env_options
 
   def self.build
+    case ARCH
+    when 'i686'
+      @configure_flags = '--without-bash-malloc'
+      # Use mimalloc since it is better than an OLD malloc from an old
+      # glibc
+      @bash_env_options = CREW_ENV_OPTIONS.gsub('LDFLAGS="',
+                                                "LDFLAGS=\"#{CREW_LIB_PREFIX}/libmimalloc.a ")
+    when 'aarch64', 'armv7l', 'x86_64'
+      @configure_flags = '--with-bash-malloc'
+      @bash_env_options = CREW_ENV_OPTIONS
+    end
+    puts @bash_env_options.lightblue
     system <<~BUILD
-      #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} #{@CONFIGUREFLAGS} \
+      #{@bash_env_options} ./configure #{CREW_OPTIONS} #{@configure_flags} \
         --with-curses --enable-readline \
         --enable-mem-scramble --enable-usg-echo-default \
         --enable-single-help-strings --enable-select \
