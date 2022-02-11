@@ -3,25 +3,11 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  @_ver = '5.8'
-  version @_ver
+  version '6.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://nano-editor.org/dist/v5/nano-#{@_ver}.tar.xz"
-  source_sha256 'e43b63db2f78336e2aa123e8d015dbabc1720a15361714bfd4b1bb4e5e87768c'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_armv7l/nano-5.8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_armv7l/nano-5.8-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_i686/nano-5.8-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/5.8_x86_64/nano-5.8-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: '23b77943e240929c4acf71ea4c0f40ef107524b6368bbcc35e8cc5f6bd751ee8',
-     armv7l: '23b77943e240929c4acf71ea4c0f40ef107524b6368bbcc35e8cc5f6bd751ee8',
-       i686: '0e21d468927c646e377e9aa848032b401eb7a6c160a564d45d4e809a7f20f8c7',
-     x86_64: '00651b1b81c2479b9b924325e5308530e49dacaa925f67903893347e8f295628'
-  })
+  source_url 'https://nano-editor.org/dist/v6/nano-6.1.tar.xz'
+  source_sha256 '3d57ec893fbfded12665b7f0d563d74431fc43abeaccacedea23b66af704db40'
 
   depends_on 'xdg_base'
 
