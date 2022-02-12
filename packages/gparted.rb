@@ -3,24 +3,24 @@ require 'package'
 class Gparted < Package
   description 'A Partition Magic clone, frontend to GNU Parted'
   homepage 'https://gparted.org/'
-  @_ver = '1.2.0'
-  version @_ver + '-1'
+  @_ver = '1.3.1'
+  version @_ver
   license 'GPL-2+ and FDL-1.2+'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{@_ver}/gparted-#{@_ver}.tar.gz"
-  source_sha256 '6c90715d254d7a7ec0208b29007b64160dd9fb7df4c4aa7f8ec2c9d23114c719'
+  source_sha256 '5eee2e6d74b15ef96b13b3a2310c868ed2298e03341021e7d12a5a98a1d1e109'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_armv7l/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_armv7l/gparted-1.2.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_i686/gparted-1.2.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.2.0-1_x86_64/gparted-1.2.0-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_armv7l/gparted-1.3.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_armv7l/gparted-1.3.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_i686/gparted-1.3.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_x86_64/gparted-1.3.1-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-     aarch64: '86ffa5a47aa41a0c7a443c122d70e7754c7ddf8347ccbf70f378048071c6808b',
-      armv7l: '86ffa5a47aa41a0c7a443c122d70e7754c7ddf8347ccbf70f378048071c6808b',
-        i686: '0518eface50e9f8b91ba9c0fd685823975b2d1773cdb0144cadb852ddb97f28e',
-      x86_64: 'a784a3d8481f6eff5de5474cd3d1baab160ace7ac907124b0d7f48caee6b684d',
+  binary_sha256({
+    aarch64: '9036f953c9fa9d23d4a1214c853a3c16ca995f4b5b31b8850cf4c83ff346ce35',
+     armv7l: '9036f953c9fa9d23d4a1214c853a3c16ca995f4b5b31b8850cf4c83ff346ce35',
+       i686: '570508eb7d9f970540a0160cd616ee49ed5554c24e378d1b3f89ba8616a4ee04',
+     x86_64: 'ed4c39343af25733424d215b8eeb51674371afb34d627829ae627e89d35b4a34'
   })
 
   depends_on 'parted'
@@ -39,13 +39,12 @@ class Gparted < Package
   depends_on 'sommelier'
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
       --sbindir=#{CREW_PREFIX}/bin \
       --enable-online-resize \
       --enable-libparted-dmraid \
       --enable-xhost-root"
-    system "make"
+    system 'make'
     system "cat <<'EOF'> gparted_
 #!/bin/sh
 xhost si:localuser:root
@@ -56,6 +55,6 @@ EOF"
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/gparted", "#{CREW_DEST_PREFIX}/bin/gparted.elf"
-    FileUtils.install 'gparted_', "#{CREW_DEST_PREFIX}/bin/gparted", mode: 0755
+    FileUtils.install 'gparted_', "#{CREW_DEST_PREFIX}/bin/gparted", mode: 0o755
   end
 end
