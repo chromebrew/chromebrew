@@ -3,44 +3,55 @@ require 'package'
 class Bash < Package
   description 'The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.'
   homepage 'https://www.gnu.org/software/bash/'
-  version '5.1.8'
+  version '5.1.16'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/bash/bash-5.1.8.tar.gz'
-  source_sha256 '0cfb5c9bb1a29f800a97bd242d19511c997a1013815b805e0fdd32214113d6be'
+  source_url 'https://ftpmirror.gnu.org/bash/bash-5.1.16.tar.gz'
+  source_sha256 '5bac17218d3911834520dad13cd1f85ab944e1c09ae1aba55906be1f8192f558'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_armv7l/bash-5.1.8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_armv7l/bash-5.1.8-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_i686/bash-5.1.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.8_x86_64/bash-5.1.8-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.16_armv7l/bash-5.1.16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.16_armv7l/bash-5.1.16-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.16_i686/bash-5.1.16-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.1.16_x86_64/bash-5.1.16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4b34aa31012294bbafdfb392e986d2220bf95d3472302af3debb160491e44021',
-     armv7l: '4b34aa31012294bbafdfb392e986d2220bf95d3472302af3debb160491e44021',
-       i686: '449eed047e9cf2304a14560c596e2d0061a11b6782856bb0815dbd1127088462',
-     x86_64: '8a63a3934b316589f590e5a68760cf928de1d563b075acb7b306a19a9cdb6c50'
+    aarch64: 'e81f33f36736aeba1d48ddffcc626dc0c9732cea529283e7c0abc80964c45641',
+     armv7l: 'e81f33f36736aeba1d48ddffcc626dc0c9732cea529283e7c0abc80964c45641',
+       i686: '0b1d3b6f3a6ca41e28bddf1838edd26fdacc20aa7f8ab4085665931247db7660',
+     x86_64: 'd92e0f2a8b44e93c6d6869a074039b74f7a4295583b8497637f058de56a28d32'
   })
 
-  case ARCH
-  when 'i686'
-    @CONFIGUREFLAGS = '--without-bash-malloc'
-  when 'aarch64', 'armv7l', 'x86_64'
-    @CONFIGUREFLAGS = '--with-bash-malloc'
-  end
+  depends_on 'mimalloc' => :build if ARCH == 'i686'
+  no_env_options
 
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS} #{@CONFIGUREFLAGS} --with-curses --enable-readline \
-      --enable-mem-scramble --enable-usg-echo-default \
-      --enable-single-help-strings --enable-select \
-      --enable-restricted --enable-progcomp --enable-process-substitution \
-      --enable-net-redirections --enable-multibyte --enable-job-control \
-      --enable-history --enable-help-builtin --enable-dparen-arithmetic \
-      --enable-directory-stack --enable-coprocesses --enable-cond-regexp \
-      --enable-cond-command --enable-command-timing --enable-casemod-expansions \
-      --enable-casemod-attributes --enable-brace-expansion --enable-bang-history \
-      --enable-array-variables --enable-arith-for-command --enable-alias"
+    case ARCH
+    when 'i686'
+      @configure_flags = '--without-bash-malloc'
+      # Use mimalloc since it is better than an OLD malloc from an old
+      # glibc
+      @bash_env_options = CREW_ENV_OPTIONS.gsub('LDFLAGS="',
+                                                "LDFLAGS=\"#{CREW_LIB_PREFIX}/libmimalloc.a ")
+    when 'aarch64', 'armv7l', 'x86_64'
+      @configure_flags = '--with-bash-malloc'
+      @bash_env_options = CREW_ENV_OPTIONS
+    end
+    puts @bash_env_options.lightblue
+    system <<~BUILD
+      #{@bash_env_options} ./configure #{CREW_OPTIONS} #{@configure_flags} \
+        --with-curses --enable-readline \
+        --enable-mem-scramble --enable-usg-echo-default \
+        --enable-single-help-strings --enable-select \
+        --enable-restricted --enable-progcomp --enable-process-substitution \
+        --enable-net-redirections --enable-multibyte --enable-job-control \
+        --enable-history --enable-help-builtin --enable-dparen-arithmetic \
+        --enable-directory-stack --enable-coprocesses --enable-cond-regexp \
+        --enable-cond-command --enable-command-timing --enable-casemod-expansions \
+        --enable-casemod-attributes --enable-brace-expansion --enable-bang-history \
+        --enable-array-variables --enable-arith-for-command --enable-alias
+    BUILD
+
     system 'make'
   end
 
@@ -51,9 +62,9 @@ class Bash < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @bashenv = <<~BASHEOF
       # Make Chromebrew's version of bash start automatically
-      # This currently seems to be broken, uncomment at your own risk
-      # #{CREW_PREFIX}/bin/bash
-      # PS1=$PS1
+      if [[ "$(coreutils --coreutils-prog=readlink "/proc/$$/exe")" != '#{CREW_PREFIX}/bin/bash' ]]; then
+        exec #{CREW_PREFIX}/bin/bash
+      fi
     BASHEOF
     IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash", @bashenv)
   end
