@@ -66,7 +66,12 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
           * Follow HTTP redirection: #{response['Location']}
           *
         EOT
-        return downloader(response['Location'], filename, retry_count, verbose)
+
+        redirect_uri = URI(response['Location'])
+        redirect_uri.scheme ||= uri.scheme
+        redirect_uri.host ||= uri.host
+
+        return downloader(redirect_uri.to_s, filename, retry_count, verbose)
       else
         abort "Download failed with error #{response.code}: #{response.msg}".lightred
       end
