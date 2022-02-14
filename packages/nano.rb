@@ -9,14 +9,28 @@ class Nano < Package
   source_url 'https://nano-editor.org/dist/v6/nano-6.1.tar.xz'
   source_sha256 '3d57ec893fbfded12665b7f0d563d74431fc43abeaccacedea23b66af704db40'
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_armv7l/nano-6.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_armv7l/nano-6.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_i686/nano-6.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_x86_64/nano-6.1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '5e1c05739831b22109ff5b342e26b2a6060a4d7eedbf85429071717b0e68dc6e',
+     armv7l: '5e1c05739831b22109ff5b342e26b2a6060a4d7eedbf85429071717b0e68dc6e',
+       i686: '213937bceb48bdd1e96fcc7e658183ee835ea98218a279748a4479048d5a4a7c',
+     x86_64: 'ef01d254db458f10046ad8ca64e90d486242ca737a32736d2656598c998a5c56'
+  })
+
   depends_on 'xdg_base'
+  no_env_options
 
   def self.patch
     system "sed -i '/SIGWINCH/d' src/nano.c"
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} \
+    system "CFLAGS=-flto LDFLAGS=-static \
       ./configure #{CREW_OPTIONS} \
       --enable-threads=posix \
       --enable-nls \
