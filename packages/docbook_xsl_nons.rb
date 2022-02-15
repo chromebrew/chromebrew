@@ -25,6 +25,7 @@ class Docbook_xsl_nons < Package
 
   depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
+  depends_on 'libxml2'
 
   def self.patch
     downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch'
