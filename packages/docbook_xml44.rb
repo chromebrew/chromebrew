@@ -25,6 +25,7 @@ class Docbook_xml44 < Package
 
   depends_on 'docbook_xml'
   depends_on 'xmlcatmgr'
+  depends_on 'libxml2'
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/xml-dtd-#{@_ver}"

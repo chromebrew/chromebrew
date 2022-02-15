@@ -24,6 +24,7 @@ class Docbook_xml51 < Package
   })
 
   depends_on 'docbook_xml'
+  depends_on 'libxml2'
   depends_on 'xmlcatmgr'
 
   def self.install
