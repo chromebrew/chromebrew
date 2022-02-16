@@ -3,7 +3,7 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '21.1.4'
+  @_ver = '22.1.0'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Xwayland < Package
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_armv7l/xwayland-21.1.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_i686/xwayland-21.1.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/21.1.4_x86_64/xwayland-21.1.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_armv7l/xwayland-22.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_armv7l/xwayland-22.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_i686/xwayland-22.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_x86_64/xwayland-22.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
-     armv7l: '1ccadc6a8b888b1d9b4da891f6cfac5122c2c19ec6523f8223dd4b0f02f6ad63',
-       i686: '0348da7ee28ef88978f3bde2777855ac8c1c7432affb890e8012b60b07d43f22',
-     x86_64: '4a10a2ee3d43f50dde1e9f038b72c17475f40bcdf1e4439cfa7be44cc326c43b'
+    aarch64: 'aa65bcfdb34edc61b04db0c5970f579a11621b597788c801695fb32bcd2b1a6c',
+     armv7l: 'aa65bcfdb34edc61b04db0c5970f579a11621b597788c801695fb32bcd2b1a6c',
+       i686: '4cc31306f6cef4254394ed7cacbd5375880660b27976e347377a0b08342b7efc',
+     x86_64: '80dc3f551c7c171f0b654c64437e298f84832cc4b170895c1bebfff376425157'
   })
 
   depends_on 'dbus'
@@ -34,6 +34,7 @@ class Xwayland < Package
   depends_on 'libtirpc' => :build
   depends_on 'libunwind' # Runtime dependency for sommelier
   depends_on 'libxau' # R
+  depends_on 'libxcvt' => :build
   depends_on 'libxdmcp' # R
   depends_on 'libxfont2' # R
   depends_on 'libxfont' # R
