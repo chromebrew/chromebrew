@@ -23,6 +23,8 @@ class Bison < Package
      x86_64: 'e671fd14e25757fd0fc45d65443ff55d13df428e34e80fc2f642d86aa5a9df14'
   })
 
+  depends_on 'gettext'
+
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
