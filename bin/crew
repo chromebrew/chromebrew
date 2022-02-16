@@ -744,7 +744,7 @@ def download
 
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
-      puts "#{@pkg.name.capitalize} file downloaded.".lightgreen
+      puts "#{filename}: File downloaded.".lightgreen
 
       FileUtils.mv filename, "#{@extract_dir}/#{filename}"
     end
