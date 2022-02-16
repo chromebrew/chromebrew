@@ -731,10 +731,20 @@ def download
 
     when /^SKIP$/i
       Dir.mkdir @extract_dir
-
-    # Source URLs which end with .git are git sources.
-    when /\.git$/i
+    when /\.git$/i # Source URLs which end with .git are git sources.
       @git = true
+    else
+      Dir.mkdir @extract_dir
+      # use curl if CURL environment variable set
+      if CURL == 'curl'
+        downloader url, filename, @opt_verbose
+      else
+        system "#{CURL} --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
+      end
+
+      abort 'Checksum mismatch. 😔 Try again.'.lightred unless
+        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
+      puts "#{@pkg.name.capitalize} file downloaded.".lightgreen
     end
 
     # Handle git sources.
