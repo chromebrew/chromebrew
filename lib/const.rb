@@ -80,7 +80,7 @@ else
   ENV['CHROMEOS_RELEASE_CHROME_MILESTONE']
 end
 
-# If CREW_USE_CURL environment variable exists use it in lieu of curl.
+# If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
 CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
 
 # set certificate file location for lib/downloader.rb
