@@ -1,7 +1,7 @@
 require 'package'
 
 class PKG_7_zip < Package
-  description 'File archiver with a high compression ratio.'
+  description 'Official implantation of 7za.exe in Linux. File archiver with a high compression ratio.'
   homepage 'https://www.7-zip.org'
   license 'LGPL-2.1+'
   version '21.07'
