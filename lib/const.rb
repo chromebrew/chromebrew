@@ -82,7 +82,7 @@ else
 end
 
 # If CURL environment variable exists use it in lieu of curl.
-CURL = ENV['CURL'] || 'curl'
+CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
 
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV['SSL_CERT_FILE'])
