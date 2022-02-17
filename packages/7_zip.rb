@@ -28,13 +28,7 @@ class PKG_7_zip < Package
     'Format7zF' => "#{CREW_DEST_LIB_PREFIX}/7z.so"
   }
 
-  @_bundle_dir = "CPP/7zip/Bundles"
-
-  def self.preflight
-    if File.exist?("#{CREW_META_PATH}/p7zip.filelist")
-      abort 'This package conflicts with package p7zip, please uninstall p7zip first.'.lightred
-    end
-  end
+  @_bundle_dir = 'CPP/7zip/Bundles'
 
   def self.patch
     system "sed -i 's#b/g_$(PLATFORM)#builddir#g' CPP/7zip/var_gcc*.mak"
