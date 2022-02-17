@@ -1,0 +1,55 @@
+require 'package'
+
+class PKG_7_zip < Package
+  description 'File archiver with a high compression ratio.'
+  homepage 'https://www.7-zip.org'
+  license 'LGPL-2.1+'
+  version '21.07'
+  compatibility 'all'
+  source_url 'https://www.7-zip.org/a/7z2107-src.tar.xz'
+  source_sha256 '213d594407cb8efcba36610b152ca4921eda14163310b43903d13e68313e1e39'
+
+  no_env_options
+
+  # needed for compiling the faster asm binary in x86/x64
+  depends_on 'asmc' => :build if ARCH =~ /^(x86_64|i686)$/
+
+  case ARCH
+  when 'x86_64'
+    @_makefile = 'cmpl_gcc_x64.mak'
+  when 'i686'
+    @_makefile = 'cmpl_gcc_x86.mak'
+  else
+    @_makefile = 'cmpl_gcc.mak'
+  end
+
+  @_bundles = {
+       'Alone2' => "#{CREW_DEST_PREFIX}/bin/7zz",
+    'Format7zF' => "#{CREW_DEST_LIB_PREFIX}/7z.so"
+  }
+
+  @_bundle_dir = "CPP/7zip/Bundles"
+
+  def self.patch
+    system "sed -i 's#b/g_$(PLATFORM)#builddir#g' CPP/7zip/var_gcc*.mak"
+  end
+
+  def self.build
+    @_bundles.each_pair do |bundle, bin_dest|
+      system 'make', '-f', "../../#{@_makefile}", chdir: "#{@_bundle_dir}/#{bundle}"
+    end
+  end
+
+  def self.install
+    FileUtils.mkdir_p [ "#{CREW_DEST_PREFIX}/bin", CREW_DEST_LIB_PREFIX ]
+
+    @_bundles.each_pair do |bundle, bin_dest|
+      bin = File.basename(bin_dest)
+      FileUtils.install "#{@_bundle_dir}/#{bundle}/builddir/#{bin}", bin_dest
+    end
+
+    FileUtils.ln_s '7zz', "#{CREW_DEST_PREFIX}/bin/7z"
+    FileUtils.ln_s '7zz', "#{CREW_DEST_PREFIX}/bin/7za"
+    FileUtils.ln_s '7zz', "#{CREW_DEST_PREFIX}/bin/7zr"
+  end
+end
