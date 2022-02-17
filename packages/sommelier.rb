@@ -49,8 +49,8 @@ class Sommelier < Package
   end
 
   def self.preflight
-    @container_check = `grep :/docker /proc/self/cgroup | wc -l`
-    unless File.socket?('/var/run/chrome/wayland-0') || !@container_check.to_i.zero?
+    @container_check = `/usr/bin/crossystem inside_vm` == '1' ? true : false
+    unless File.socket?('/var/run/chrome/wayland-0') || @container_check
       abort 'This package is not compatible with your device :/'.lightred
     end
   end
