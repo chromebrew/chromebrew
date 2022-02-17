@@ -181,8 +181,8 @@ def set_package(pkgName, pkgPath)
     puts "#{e.class}: #{e.message}".red
   end
 
-  # add an underscore to the beginning of pkgName if it starts with a digit
-  pkgName = '_' + pkgName if pkgName =~ /^[0-9]/
+  # add `PKG_` to the beginning of pkgName if it starts with a digit
+  pkgName = 'PKG_' + pkgName if pkgName =~ /^[0-9]/
 
   @pkg = Object.const_get(pkgName.capitalize)
   @pkg.build_from_source = true if @opt_recursive
