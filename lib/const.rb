@@ -71,7 +71,6 @@ CREW_TESTING_REPO = ENV['CREW_TESTING_REPO']
 
 CREW_TESTING = ( CREW_TESTING_BRANCH.to_s.empty? or CREW_TESTING_REPO.to_s.empty? ) ? '0' : ENV['CREW_TESTING']
 
-
 USER = `whoami`.chomp
 
 CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
@@ -81,7 +80,7 @@ else
   ENV['CHROMEOS_RELEASE_CHROME_MILESTONE']
 end
 
-# If CURL environment variable exists use it in lieu of curl.
+# If CREW_USE_CURL environment variable exists use it in lieu of curl.
 CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
 
 # set certificate file location for lib/downloader.rb
