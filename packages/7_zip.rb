@@ -12,7 +12,7 @@ class PKG_7_zip < Package
   no_env_options
 
   # needed for compiling the faster asm binary in x86/x64
-  depends_on 'asmc' => :build if ARCH =~ /^(x86_64|i686)$/
+  depends_on 'asmc' => :build if %W[i686 x86_64].include?(ARCH)
 
   case ARCH
   when 'x86_64'
