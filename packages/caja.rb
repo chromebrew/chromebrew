@@ -6,12 +6,12 @@ require 'package'
 class Caja < Package
   description 'Caja file manager for the MATE desktop'
   homepage 'https://mate-desktop.org'
-  @_ver = '1.25.2'
+  @_ver = '1.27.0'
   version @_ver
   compatibility 'all'
   license 'GPL-2+ LGPL-2+'
   source_url "https://pub.mate-desktop.org/releases/#{@_ver.rpartition('.')[0]}/caja-#{@_ver}.tar.xz"
-  source_sha256 'a0737ce87b53add2fc68285dbd52a3cf25ace20f0f56503ebe6dd47e7b5cc124'
+  source_sha256 '82aa0cc7a50a844d686ac3d29ca1866033ba4fb0c03e198838161337301de6d5'
 
   depends_on 'exempi'
   depends_on 'gvfs'
