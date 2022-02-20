@@ -3,13 +3,13 @@ require 'package'
 class Atom < Package
   description 'The hackable text editor'
   homepage 'https://atom.io/'
-  @_ver = '1.58.0'
-  version "#{@_ver}-1"
+  @_ver = '1.59.0'
+  version @_ver
   license 'MIT'
   compatibility 'x86_64'
 
   source_url "https://github.com/atom/atom/releases/download/v#{@_ver}/atom-amd64.deb"
-  source_sha256 '4310e1af8830952f4efe59349dfaacc39b0588f72449314bd795ed469421d2d5'
+  source_sha256 'f14423a80445f6e56ea7ac1cef788d0295617431cc4d428e3f5b247994a838b5'
 
   depends_on 'fakeroot'
   depends_on 'gtk3'
