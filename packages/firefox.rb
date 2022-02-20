@@ -6,14 +6,14 @@ class Firefox < Package
   version '97.0.1'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686'
-    source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 'c736080050a9715077a004add55dcb3dcb3be891d5870939709096bc81195eed'
-  when 'x86_64'
-    source_url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
-    source_sha256 'a63d28ae61926c0d7447f57d4e6fb514401d560abb50ce787bb6bd0e9b7b820f'
-  end
+  source_url ({
+      i686: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2",
+    x86_64: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
+  })
+  source_sha256 ({
+      i686: 'c736080050a9715077a004add55dcb3dcb3be891d5870939709096bc81195eed',
+    x86_64: 'a63d28ae61926c0d7447f57d4e6fb514401d560abb50ce787bb6bd0e9b7b820f'
+  })
 
   depends_on 'atk'
   depends_on 'cairo'
