@@ -1,32 +1,21 @@
 require 'package'
 
 class Box < Package
-  description 'An application for building and managing Phars.'
-  homepage 'https://box-project.github.io/box2/'
-  version '2.7.5'
+  description 'Fast, zero config application bundler with PHARs.'
+  homepage 'https://github.com/box-project/box'
+  version '3.16.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/box-project/box2/2.7.5/README.md'
-  source_sha256 'b60e231f431cefbd88fc4022af5408c2098242f45485180d87ad88dbd30e6d02'
+  source_url 'SKIP'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_armv7l/box-2.7.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_armv7l/box-2.7.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_i686/box-2.7.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/box/2.7.5_x86_64/box-2.7.5-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '2dd48393354f030d4324a9fde5ea1b57d809c14f87b96fd8e70af8b6c9c1b8a7',
-     armv7l: '2dd48393354f030d4324a9fde5ea1b57d809c14f87b96fd8e70af8b6c9c1b8a7',
-       i686: 'c4cedb50c2b0fe21ac7a38c73fe73c20914346eabb8f4d106cdaf2d59ef18e41',
-     x86_64: '97fa161d1715dac2b44d477e385bfa10bf55f182b7907d8ec125231ca82e6ca2',
-  })
-
-  depends_on 'php' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
 
   def self.install
-    system 'curl -#LO https://github.com/box-project/box2/releases/download/2.7.5/box-2.7.5.phar'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('box-2.7.5.phar') ) == '28b4b798ad4dcf8fbf9cd68aaff495d4bbeaec4363f5f319a222829d9b6abdfe'
-    system "install -Dm755 box-2.7.5.phar #{CREW_DEST_PREFIX}/bin/box"
+    downloader 'https://github.com/box-project/box/releases/download/3.16.0/box.phar'
+    unless Digest::SHA256.hexdigest( File.read('box.phar') ) == 'f508e28f309d7e95a319bdcd5f13dcfbb18eb91cb7a6cac9b69bc7799d78bdf9'
+      abort 'Checksum mismatch. :/ Try again.'.lightred
+    end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'box.phar', "#{CREW_DEST_PREFIX}/bin/box", mode: 0o755
   end
 end
