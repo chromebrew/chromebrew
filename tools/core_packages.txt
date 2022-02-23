@@ -1,7 +1,7 @@
 brotli
 bz2
-ca_certificates
 c_ares
+ca_certificates
 crew_profile_base
 docbook_xml
 docbook_xml412
