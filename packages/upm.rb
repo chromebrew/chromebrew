@@ -27,4 +27,11 @@ class Upm < Package
     FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/upm"
     FileUtils.install 'upm', "#{CREW_DEST_PREFIX}/bin/upm", mode: 0o755
   end
+
+  def self.postinstall
+    puts "\nThe database is located at .\n".lightblue
+  end
+
+  def self.remove
+  end
 end
