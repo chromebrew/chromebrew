@@ -3,19 +3,19 @@ require 'package'
 class Mutagen < Package
   description 'Mutagen provides real-time file synchronization and flexible network forwarding, extending the reach of your existing development tools to cloud-based containers and infrastructure.'
   homepage 'https://mutagen.io/'
-  version '0.13.0'
+  version '0.13.1'
   license 'GPL-2'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://github.com/mutagen-io/mutagen/releases/download/v0.13.0/mutagen_linux_arm_v0.13.0.tar.gz'
-    source_sha256 'be09d6cfe04ca6c9607914f7ec509608148a4209afe22d00be9b2c23b0d930d9'
+    source_url 'https://github.com/mutagen-io/mutagen/releases/download/v0.13.1/mutagen_linux_arm_v0.13.1.tar.gz'
+    source_sha256 '7947b2aa055e0884ea77e7588a1ba1d4bf943d42c92480ef90be6567c0881826'
   when 'i686'
-    source_url 'https://github.com/mutagen-io/mutagen/releases/download/v0.13.0/mutagen_linux_386_v0.13.0.tar.gz'
-    source_sha256 'a05c14dfeacbf56976983c4d513f4cd91f55e6e35fea86a4f3a44a1e2ed8808d'
+    source_url 'https://github.com/mutagen-io/mutagen/releases/download/v0.13.1/mutagen_linux_386_v0.13.1.tar.gz'
+    source_sha256 '0dbf0ea83b9fd8d7fca5aaa63f8e29a9041426464b3ad4cbe0dc3db112222d81'
   when 'x86_64'
-    source_url 'https://github.com/mutagen-io/mutagen/releases/download/v0.13.0/mutagen_linux_amd64_v0.13.0.tar.gz'
-    source_sha256 'bd4c009e4bbce76bf13823d8734b7ed951c1623026faedecb63f0f77aceefde1'
+    source_url 'https://github.com/mutagen-io/mutagen/releases/download/v0.13.1/mutagen_linux_amd64_v0.13.1.tar.gz'
+    source_sha256 '943b84502f2476e3b4c44e52b93e9cd2827e24f3f9c756e2240c0344c2fd2020'
   end
 
   def self.install
