@@ -3,17 +3,24 @@ require 'package'
 class Mysqltuner < Package
   description 'MySQLTuner is a script written in Perl that allows you to review a MySQL installation quickly and make adjustments to increase performance and stability.'
   homepage 'https://github.com/major/MySQLTuner-perl'
-  version '1.7.21'
+  version '1.8.3'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://github.com/major/MySQLTuner-perl/archive/1.8.3.tar.gz'
+  source_sha256 '9b8b1dff03550f03c659d2b850cb287d784f0d79f193c1d8a969516cc44738cb'
 
   depends_on 'perl'
 
+  def self.patch
+    system "sed -i 's,/usr/bin/env perl,#{CREW_PREFIX}/bin/perl,' mysqltuner.pl"
+  end
+
   def self.install
-    system "curl -#LO https://raw.githubusercontent.com/major/MySQLTuner-perl/1.7.21/mysqltuner.pl"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('mysqltuner.pl') ) == 'dd982083478a604ca0ada434b1b7d0323aa7c8302f4731d25a93cf0f77c46a27'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'mysqltuner.pl', "#{CREW_DEST_PREFIX}/bin/mysqltuner", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/mysqltuner"
+    FileUtils.install 'mysqltuner.pl', "#{CREW_DEST_PREFIX}/share/mysqltuner/mysqltuner.pl", mode: 0o755
+    FileUtils.install 'basic_passwords.txt', "#{CREW_DEST_PREFIX}/share/mysqltuner/basic_passwords.txt", mode: 0o644
+    FileUtils.install 'vulnerabilities.csv', "#{CREW_DEST_PREFIX}/share/mysqltuner/vulnerabilities.csv", mode: 0o644
+    FileUtils.ln_s "#{CREW_PREFIX}/share/mysqltuner/mysqltuner.pl", "#{CREW_DEST_PREFIX}/bin/mysqltuner"
   end
 end
