@@ -3,12 +3,12 @@ require 'package'
 class Openhab < Package
   description 'A vendor and technology agnostic open source automation software for your home'
   homepage 'https://www.openhab.org/'
-  @_ver = '3.1.0'
+  @_ver = '3.2.0'
   version @_ver
   license 'Eclipse Public License 2.0'
   compatibility 'x86_64'
-  source_url 'https://ci.openhab.org/job/openHAB3-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-3.1.0-SNAPSHOT.tar.gz'
-  source_sha256 'cecf5a13ba0d1003da5366eaa5d23c3adb93f574c4d471ecbca38763c36554f7'
+  source_url 'https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/3.2.0/openhab-3.2.0.tar.gz'
+  source_sha256 'e8185adcaabdec4b860c22ec854f37db0aa490d47e3f8654cef0f1dd7346d476'
 
   binary_url({
   })
