@@ -3,24 +3,24 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.13'
+  @_ver = '8.0.16'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'cd976805ec2e9198417651027dfe16854ba2c2c388151ab9d4d268513d52ed52'
+  source_sha256 'f27a2f25259e8c51e42dfd74e24a546ee521438ad7d9f6c6e794aa91f38bab0a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.13_armv7l/php80-8.0.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.13_armv7l/php80-8.0.13-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.13_i686/php80-8.0.13-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.13_x86_64/php80-8.0.13-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_armv7l/php80-8.0.16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_armv7l/php80-8.0.16-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_i686/php80-8.0.16-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_x86_64/php80-8.0.16-chromeos-x86_64.tar.zst',
   })
   binary_sha256({
-    aarch64: 'f07da9ccd3e1ebb88344de625aec2838bf8db286bf02db731ca87f06ae1ec20c',
-     armv7l: 'f07da9ccd3e1ebb88344de625aec2838bf8db286bf02db731ca87f06ae1ec20c',
-       i686: '2be622f609b637b36adf387f9dcf8a2bf42d6d05e96faf59cc7e07043c070f21',
-     x86_64: 'ecd26bf8176750114b43eaa6dfb3347b1deb4016107b8a306171ac42bc326b19',
+    aarch64: '2d583ebe7a7e83b76cac7a1dcea29315250e236de17ca88046ace6a065531fe3',
+     armv7l: '2d583ebe7a7e83b76cac7a1dcea29315250e236de17ca88046ace6a065531fe3',
+       i686: '6f997f85ad338b035dd2a3bcc47d799d747e93e3a69680a76d7a7643cb8fa054',
+     x86_64: 'e80178a6323529db17f8d2d6cdfdc37d21125e21847571de21578b219586e65a',
   })
 
   depends_on 'aspell_en'
@@ -71,8 +71,7 @@ class Php80 < Package
   end
 
   def self.build
-    system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} CFLAGS='-pipe' \
-      ./configure \
+    system "#{CREW_ENV_OPTIONS} CFLAGS='-pipe' ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
