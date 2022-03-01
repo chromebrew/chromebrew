@@ -20,12 +20,11 @@ class Wget < Package
   depends_on 'ca_certificates'
 
   def self.build
-    raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
+    puts 'libiconv installed, Will build with libiconv.'.yellow if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
     system CREW_ENV_OPTIONS_HASH, <<~BUILD
       ./configure #{CREW_OPTIONS} \
         --sysconfdir=#{CREW_PREFIX}/etc \
-        --without-libiconv-prefix \
         --with-ssl=openssl
     BUILD
     system 'make'
