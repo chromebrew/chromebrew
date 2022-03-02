@@ -3,28 +3,29 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.5'
+  @_ver = '21.3.7'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{@_ver}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_i686/mesa-21.3.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_x86_64/mesa-21.3.5-chromeos-x86_64.tpxz'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_x86_64/mesa-21.3.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
      armv7l: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
        i686: '598d0f51d38217f0846181aae988c13ca5b4f2869ea6de715210e14082b07bcd',
-     x86_64: '4fd1bb2096ccdf3c6fb23edd1ced3933295af5096a75f27022f1aa3b31c64ea7'
+    x86_64: 'b08114d79bb35c52f309224d3aa0a3d7c4497d1db8aa1f0101e65a6a24870877'
   })
+  git_hashtag "mesa-#{@_ver}"
 
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
+  depends_on 'libglvnd'
   depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind'
   depends_on 'libvdpau' => :build
@@ -126,6 +127,7 @@ class Mesa < Package
     -Dgallium-drivers=#{@galliumdrivers} \
     -Dprefer-crocus=true \
     -Dosmesa=#{@osmesa} \
+    -Dglvnd=true \
      builddir"
     system 'meson configure builddir'
     system 'samu -C builddir'
@@ -133,5 +135,14 @@ class Mesa < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
+      FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
+    end
+    return unless ARCH == 'x86_64'
+
+    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
+    Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+      FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+    end
   end
 end
