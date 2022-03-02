@@ -4,7 +4,7 @@ class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
   @_ver = '22.1.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -14,13 +14,13 @@ class Xwayland < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_armv7l/xwayland-22.1.0-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_armv7l/xwayland-22.1.0-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_i686/xwayland-22.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_x86_64/xwayland-22.1.0-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_x86_64/xwayland-22.1.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'aa65bcfdb34edc61b04db0c5970f579a11621b597788c801695fb32bcd2b1a6c',
      armv7l: 'aa65bcfdb34edc61b04db0c5970f579a11621b597788c801695fb32bcd2b1a6c',
        i686: '4cc31306f6cef4254394ed7cacbd5375880660b27976e347377a0b08342b7efc',
-     x86_64: '80dc3f551c7c171f0b654c64437e298f84832cc4b170895c1bebfff376425157'
+    x86_64: 'c3a0db3a9ead8a9a0662c4cd753533cfba00ce48b773cf80faaaddea4d9e0e52'
   })
 
   depends_on 'dbus'
@@ -31,6 +31,7 @@ class Xwayland < Package
   depends_on 'libbsd' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
+  depends_on 'libglvnd' # to enable acceleration
   depends_on 'libtirpc' => :build
   depends_on 'libunwind' # Runtime dependency for sommelier
   depends_on 'libxau' # R
