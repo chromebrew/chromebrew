@@ -3,26 +3,27 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-5'
+  version '20210109-6'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_armv7l/sommelier-20210109-5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_armv7l/sommelier-20210109-5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_i686/sommelier-20210109-5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-5_x86_64/sommelier-20210109-5-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_armv7l/sommelier-20210109-6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_armv7l/sommelier-20210109-6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_i686/sommelier-20210109-6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_x86_64/sommelier-20210109-6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2b270ec19410594ba6969f20e168cc91739f090315a8046a95e303cac71d723e',
-     armv7l: '2b270ec19410594ba6969f20e168cc91739f090315a8046a95e303cac71d723e',
-       i686: '0b8f8ee99968f1cd3c429c9a1a7ffb6577b8ec430b91c83d1f7fa1c3856e7a3b',
-     x86_64: 'b652d65be2330108b4232dbf79991cc27c755a4fed958480b62696f4499b036d',
+    aarch64: '1aef92912773dfde3107c39e68e3811c65e26a24e844e7d0665ef84f98cdc10f',
+     armv7l: '1aef92912773dfde3107c39e68e3811c65e26a24e844e7d0665ef84f98cdc10f',
+       i686: 'a0bb631634d22ec15779527609469a2466492f91df21c80ca4c04f1b312e958e',
+     x86_64: '42e1519e8e9a1194a9c09cd4d9b4ee6d6d094063c81f8497f1d7f722f16fec53'
   })
 
   depends_on 'libdrm'
+  depends_on 'libglvnd'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
   depends_on 'libxfixes' => :build
@@ -49,7 +50,12 @@ class Sommelier < Package
   end
 
   def self.preflight
-    @container_check = `/usr/bin/crossystem inside_vm` == '1' ? true : false
+    case ARCH
+    when 'armv7l', 'aarch64'
+      @container_check = File.exist?('/.dockerenv')
+    when 'i686', 'x86_64'
+      @container_check = `/usr/bin/crossystem inside_vm` == '1'
+    end
     unless File.socket?('/var/run/chrome/wayland-0') || @container_check
       abort 'This package is not compatible with your device :/'.lightred
     end
@@ -117,7 +123,7 @@ class Sommelier < Package
         # This file via:
         # crostini: /opt/google/cros-containers/bin/sommelier
         # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
-        IO.write 'sommelier_sh', <<~EOF
+        File.write 'sommelier_sh', <<~EOF
           #!/bin/bash
           function readlink(){
             coreutils --coreutils-prog=readlink "$@"
@@ -145,7 +151,7 @@ class Sommelier < Package
         EOF
 
         # sommelierd
-        IO.write 'sommelierd', <<~EOF
+        File.write 'sommelierd', <<~EOF
           #!/bin/bash -a
 
           source ${CREW_PREFIX}/etc/env.d/sommelier.env &>/dev/null
@@ -199,7 +205,7 @@ class Sommelier < Package
         EOF
 
         # startsommelier
-        IO.write 'startsommelier', <<~EOF
+        File.write 'startsommelier', <<~EOF
           #!/bin/bash -a
 
           source ~/.sommelier-default.env &>/dev/null
@@ -245,7 +251,7 @@ class Sommelier < Package
         EOF
 
         # stopsommelier
-        IO.write 'stopsommelier', <<~EOF
+        File.write 'stopsommelier', <<~EOF
           #!/bin/bash
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
@@ -264,7 +270,7 @@ class Sommelier < Package
         EOF
 
         # restartsommelier
-        IO.write 'restartsommelier', <<~EOF
+        File.write 'restartsommelier', <<~EOF
           #!/bin/bash
           stopsommelier && startsommelier
         EOF
@@ -294,8 +300,8 @@ class Sommelier < Package
       end
     end
 
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", @bashd_sommelier)
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @sommelierenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", @bashd_sommelier)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @sommelierenv)
   end
 
   def self.postinstall
@@ -327,5 +333,15 @@ class Sommelier < Package
       (If you are upgrading from an earlier version of sommelier,
       also run 'restartsommelier'.)
     EOT
+    # Fix mesa library needs
+    Dir.chdir("#{CREW_LIB_PREFIX}/dri") do
+      FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
+    end
+    return unless ARCH == 'x86_64'
+
+    FileUtils.mkdir_p "#{CREW_LIB_PREFIX}/gbm/tls"
+    Dir.chdir("#{CREW_LIB_PREFIX}/gbm/tls") do
+      FileUtils.ln_s "#{CREW_LIB_PREFIX}/libgbm.so", 'i915_gbm.so'
+    end
   end
 end
