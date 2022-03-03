@@ -11,16 +11,16 @@ class Xwayland < Package
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_armv7l/xwayland-22.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_armv7l/xwayland-22.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0_i686/xwayland-22.1.0-chromeos-i686.tar.zst',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_x86_64/xwayland-22.1.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_armv7l/xwayland-22.1.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_armv7l/xwayland-22.1.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_i686/xwayland-22.1.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_x86_64/xwayland-22.1.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'aa65bcfdb34edc61b04db0c5970f579a11621b597788c801695fb32bcd2b1a6c',
-     armv7l: 'aa65bcfdb34edc61b04db0c5970f579a11621b597788c801695fb32bcd2b1a6c',
-       i686: '4cc31306f6cef4254394ed7cacbd5375880660b27976e347377a0b08342b7efc',
-    x86_64: 'c3a0db3a9ead8a9a0662c4cd753533cfba00ce48b773cf80faaaddea4d9e0e52'
+    aarch64: 'a8a49db5e9c13e9e29209af6be9f18cd5ac2925cefe6e06181686883194db3de',
+     armv7l: 'a8a49db5e9c13e9e29209af6be9f18cd5ac2925cefe6e06181686883194db3de',
+       i686: '69d6c3462f3a16f9a46a0ac87e55fa68edcf5fcd9bb85101ab58c6c6833a32f6',
+     x86_64: 'cdb5e4540b3ab08fbb336561047d2b0b7b20eb32760f60fc703a403d1a296ee6'
   })
 
   depends_on 'dbus'
@@ -31,7 +31,6 @@ class Xwayland < Package
   depends_on 'libbsd' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
-  depends_on 'libglvnd' # to enable acceleration
   depends_on 'libtirpc' => :build
   depends_on 'libunwind' # Runtime dependency for sommelier
   depends_on 'libxau' # R
@@ -50,15 +49,6 @@ class Xwayland < Package
   depends_on 'xkbcomp'
   depends_on 'xorg_lib'
 
-  case ARCH
-  when 'armv7l', 'aarch64'
-    PEER_CMD_PREFIX = '/lib/ld-linux-armhf.so.3'.freeze
-  when 'i686'
-    PEER_CMD_PREFIX = '/lib/ld-linux.so.2'.freeze
-  when 'x86_64'
-    PEER_CMD_PREFIX = '/lib64/ld-linux-x86-64.so.2'.freeze
-  end
-
   def self.build
     system 'meson setup build'
     system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '')} \
@@ -70,30 +60,10 @@ class Xwayland < Package
               build"
     system 'meson configure build'
     system 'ninja -C build'
-    system "cat <<'EOF'> Xwayland_sh
-#!/bin/bash
-if base=$(readlink \"$0\" 2>/dev/null); then
-  case $base in
-  /*) base=$(readlink -f \"$0\" 2>/dev/null);; # if $0 is abspath symlink, make symlink fully resolved.
-  *)  base=$(dirname \"$0\")/\"${base}\";;
-  esac
-else
-  case $0 in
-  /*) base=$0;;
-  *)  base=${PWD:-`pwd`}/$0;;
-  esac
-fi
-basedir=${base%/*}
-# TODO(crbug/1003841): Remove LD_ARGV0 once
-# ld.so supports forwarding the binary name.
-LD_ARGV0=\"$0\" LD_ARGV0_REL=\"../bin/Xwayland.sh\" exec   \"${basedir}/..#{PEER_CMD_PREFIX}\"   --library-path \"${basedir}/../#{ARCH_LIB}\"   --inhibit-rpath ''   \"${base}.elf\"   \"$@\"
-EOF"
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/Xwayland", "#{CREW_DEST_PREFIX}/bin/Xwayland.elf"
-    system "install -Dm755 Xwayland_sh #{CREW_DEST_PREFIX}/bin/Xwayland"
     # Get these from xorg_server package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/X #{CREW_DEST_MAN_PREFIX}/man1/Xserver.1]
     @deletefiles.each do |f|

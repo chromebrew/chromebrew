@@ -8,24 +8,23 @@ class Mesa < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
+  git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_i686/mesa-21.3.5-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_x86_64/mesa-21.3.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_armv7l/mesa-21.3.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_armv7l/mesa-21.3.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_i686/mesa-21.3.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_x86_64/mesa-21.3.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
-     armv7l: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
-       i686: '598d0f51d38217f0846181aae988c13ca5b4f2869ea6de715210e14082b07bcd',
-    x86_64: 'b08114d79bb35c52f309224d3aa0a3d7c4497d1db8aa1f0101e65a6a24870877'
+    aarch64: '04d84c085f2be9415f95cf89d2601d6fb0f2cedade83933312082e669e4f1221',
+     armv7l: '04d84c085f2be9415f95cf89d2601d6fb0f2cedade83933312082e669e4f1221',
+       i686: '7ebbc2fd9a7af4712f634fb3ae9f9fa5c3d286fbe2632cacc5dc8dbbeb3ec03d',
+     x86_64: '05d91f448f095fd5bb89a1ddfb1284845ac20b7e4ee32b0201f1572eccf1f24c'
   })
-  git_hashtag "mesa-#{@_ver}"
 
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
-  depends_on 'libglvnd'
   depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind'
   depends_on 'libvdpau' => :build
@@ -127,7 +126,7 @@ class Mesa < Package
     -Dgallium-drivers=#{@galliumdrivers} \
     -Dprefer-crocus=true \
     -Dosmesa=#{@osmesa} \
-    -Dglvnd=true \
+    -Dglvnd=false \
      builddir"
     system 'meson configure builddir'
     system 'samu -C builddir'
@@ -135,14 +134,15 @@ class Mesa < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    # The following are hacks to keep sommelier from complaining.
     Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
       FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
     end
-    return unless ARCH == 'x86_64'
-
-    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
-    Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
-      FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+    if ARCH == 'x86_64'
+      FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
+      Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+        FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+      end
     end
   end
 end

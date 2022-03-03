@@ -16,14 +16,13 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_x86_64/sommelier-20210109-6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1aef92912773dfde3107c39e68e3811c65e26a24e844e7d0665ef84f98cdc10f',
-     armv7l: '1aef92912773dfde3107c39e68e3811c65e26a24e844e7d0665ef84f98cdc10f',
-       i686: 'a0bb631634d22ec15779527609469a2466492f91df21c80ca4c04f1b312e958e',
-     x86_64: '42e1519e8e9a1194a9c09cd4d9b4ee6d6d094063c81f8497f1d7f722f16fec53'
+    aarch64: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
+     armv7l: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
+       i686: 'b370bc7c96b6018b3c348ee37262eee7981af0b32520649c3e6d2f8680d6e753',
+     x86_64: '32ad19aba00b96889c936c8efec6e09c7eb739a5863742f4537d4bed91e306bc'
   })
 
   depends_on 'libdrm'
-  depends_on 'libglvnd'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
   depends_on 'libxfixes' => :build
@@ -333,15 +332,5 @@ class Sommelier < Package
       (If you are upgrading from an earlier version of sommelier,
       also run 'restartsommelier'.)
     EOT
-    # Fix mesa library needs
-    Dir.chdir("#{CREW_LIB_PREFIX}/dri") do
-      FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
-    end
-    return unless ARCH == 'x86_64'
-
-    FileUtils.mkdir_p "#{CREW_LIB_PREFIX}/gbm/tls"
-    Dir.chdir("#{CREW_LIB_PREFIX}/gbm/tls") do
-      FileUtils.ln_s "#{CREW_LIB_PREFIX}/libgbm.so", 'i915_gbm.so'
-    end
   end
 end
