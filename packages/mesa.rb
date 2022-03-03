@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.5'
+  @_ver = '21.3.7'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_armv7l/mesa-21.3.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_i686/mesa-21.3.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.5_x86_64/mesa-21.3.5-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_armv7l/mesa-21.3.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_armv7l/mesa-21.3.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_i686/mesa-21.3.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_x86_64/mesa-21.3.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
-     armv7l: '21a732fc08bba3dc19bceffe5cc2d315de32ffd519cb8603fc338cf05946bdda',
-       i686: '598d0f51d38217f0846181aae988c13ca5b4f2869ea6de715210e14082b07bcd',
-     x86_64: '4fd1bb2096ccdf3c6fb23edd1ced3933295af5096a75f27022f1aa3b31c64ea7'
+    aarch64: '04d84c085f2be9415f95cf89d2601d6fb0f2cedade83933312082e669e4f1221',
+     armv7l: '04d84c085f2be9415f95cf89d2601d6fb0f2cedade83933312082e669e4f1221',
+       i686: '7ebbc2fd9a7af4712f634fb3ae9f9fa5c3d286fbe2632cacc5dc8dbbeb3ec03d',
+     x86_64: '05d91f448f095fd5bb89a1ddfb1284845ac20b7e4ee32b0201f1572eccf1f24c'
   })
 
   depends_on 'glslang' => :build
@@ -126,6 +126,7 @@ class Mesa < Package
     -Dgallium-drivers=#{@galliumdrivers} \
     -Dprefer-crocus=true \
     -Dosmesa=#{@osmesa} \
+    -Dglvnd=false \
      builddir"
     system 'meson configure builddir'
     system 'samu -C builddir'
@@ -133,5 +134,15 @@ class Mesa < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    # The following are hacks to keep sommelier from complaining.
+    Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
+      FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
+    end
+    if ARCH == 'x86_64'
+      FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
+      Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+        FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+      end
+    end
   end
 end
