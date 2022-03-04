@@ -4,28 +4,28 @@ class Docbook_xsl_nons < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
-  version "#{@_ver}-2"
+  version "#{@_ver}-3"
   license 'custom'
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-nons-#{@_ver}.zip"
   source_sha256 'ba41126fbf4021e38952f3074dc87cdf1e50f3981280c7a619f88acf31456822'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_armv7l/docbook_xsl_nons-1.79.2-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_armv7l/docbook_xsl_nons-1.79.2-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_i686/docbook_xsl_nons-1.79.2-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-2_x86_64/docbook_xsl_nons-1.79.2-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_armv7l/docbook_xsl_nons-1.79.2-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_armv7l/docbook_xsl_nons-1.79.2-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_i686/docbook_xsl_nons-1.79.2-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_x86_64/docbook_xsl_nons-1.79.2-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '06af54afe6fc9395a43fd9ac1771d348f80e5914ecd0881313e5697dad3d11c5',
-     armv7l: '06af54afe6fc9395a43fd9ac1771d348f80e5914ecd0881313e5697dad3d11c5',
-       i686: '594d32e423a401d903c69c58e3c0f6c9397a1ce80d5da6e777739b25a37bbce3',
-     x86_64: 'b7e2266597a34c278188e8a0e6ff9efc1c3947db7ceb46d50f5f92ad3c8b9940'
+    aarch64: '8b2d037e40db4e9620283d65b54f74179e3ecdfc6aed68f8b6181b9f52f984c2',
+     armv7l: '8b2d037e40db4e9620283d65b54f74179e3ecdfc6aed68f8b6181b9f52f984c2',
+       i686: 'f9d1fe2df8bae0e071ba3634027cf1b9f4992c0b99b15d0b54459c74e6e337b4',
+     x86_64: 'eab7666304dd3ea6fc347523b3e341e805fa80c21b0598ac66adb9126e7c1bf6'
   })
 
   depends_on 'docbook_xml'
-  depends_on 'xmlcatmgr'
   depends_on 'libxml2'
+  depends_on 'xmlcatmgr'
 
   def self.patch
     downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/docbook-xsl/trunk/765567_non-recursive_string_subst.patch'
@@ -51,7 +51,7 @@ class Docbook_xsl_nons < Package
         manpages params profiling roundtrip slides template tests tools \
         webhelp website xhtml xhtml-1_1 xhtml5
         do
-        install -Dt "#{@pkgroot}"/"$fn" -m644 "$fn"/*.{xml,xsl,dtd,ent}
+        install -Dt "#{@pkgroot}"/"$fn" -m644 "$fn"/*.{xml,xsl,dtd,ent} || true
         done
       )
     ADDFILES_HEREDOC
