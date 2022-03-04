@@ -3,12 +3,11 @@ require 'package'
 class Libkmod < Package
   description 'Linux kernel module handling library'
   homepage 'https://kernel.org'
-  @_ver = '28'
-  version @_ver
+  version = '29'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-#{@_ver}.tar.xz"
-  source_sha256 '3969fc0f13daa98084256337081c442f8749310089e48aa695c9b4dfe1b3a26c'
+  source_url "https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
+  git_hashtag "v#{version}"
 
   binary_url ({
      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libkmod/28_armv7l/libkmod-28-chromeos-armv7l.tar.xz',
@@ -23,10 +22,19 @@ class Libkmod < Package
       x86_64: '258578c242a793bfda78e9dc98a9e029a8788e9971a809d0c6e42c2abe10b317',
   })
 
+  depends_on 'py3_cython'
   depends_on 'xzutils'
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --enable-python --disable-maintainer-mode --with-openssl --with-zlib --with-xz"
+    system './autogen.sh'
+    system 'filefix'
+    system "./configure #{CREW_OPTIONS} \
+    --disable-maintainer-mode \
+    --enable-python \
+    --with-openssl \
+    --with-xz \
+    --with-zlib \
+    --with-zstd"
     system 'make'
   end
 
