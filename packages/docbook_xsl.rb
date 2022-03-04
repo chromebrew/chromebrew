@@ -4,23 +4,23 @@ class Docbook_xsl < Package
   description 'The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files.'
   homepage 'https://github.com/docbook/xslt10-stylesheets'
   @_ver = '1.79.2'
-  version "#{@_ver}-3"
+  version "#{@_ver}-4"
   license 'custom'
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_armv7l/docbook_xsl-1.79.2-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_armv7l/docbook_xsl-1.79.2-3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_i686/docbook_xsl-1.79.2-3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-3_x86_64/docbook_xsl-1.79.2-3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_armv7l/docbook_xsl-1.79.2-4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_armv7l/docbook_xsl-1.79.2-4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_i686/docbook_xsl-1.79.2-4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_x86_64/docbook_xsl-1.79.2-4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '25e813ecd0cf7daab83923b012c47b3ac40f2f4d517d2c815d032ab027f8a4c5',
-     armv7l: '25e813ecd0cf7daab83923b012c47b3ac40f2f4d517d2c815d032ab027f8a4c5',
-       i686: 'c222857e21fa14143be3e945136649984af40d19c6205942d69f9b6202f667f0',
-     x86_64: '3306fa4d5b31758b2393e7e6c241e23c9a050fe748df6bff272c58d1e37c8540'
+    aarch64: '73221262b792d4e3539f9e5916b4b9d6213f2c396b04fca17932705d90ae9c75',
+     armv7l: '73221262b792d4e3539f9e5916b4b9d6213f2c396b04fca17932705d90ae9c75',
+       i686: '939fdab9fdfe243644b2144dc61e259874d1d4d4e1f0f0ec70d914c1ca28776e',
+     x86_64: '0f2158867eb01d15aac465273bbee82c30028dff0733d9b0a0448d3156f18b53'
   })
 
   depends_on 'docbook_xml'
@@ -51,7 +51,7 @@ class Docbook_xsl < Package
         manpages params profiling roundtrip slides template tests tools \
         webhelp website xhtml xhtml-1_1 xhtml5
         do
-        install -Dt "#{@pkgroot}"/"$fn" -m644 "$fn"/*.{xml,xsl,dtd,ent}
+        install -Dt "#{@pkgroot}"/"$fn" -m644 "$fn"/*.{xml,xsl,dtd,ent} || true
         done
       )
     ADDFILES_HEREDOC
@@ -64,6 +64,12 @@ class Docbook_xsl < Package
     # For moreutils
     FileUtils.ln_s "#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-#{@_ver}",
                    "#{CREW_DEST_PREFIX}/share/xml/docbook/stylesheet/docbook-xsl"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    @env = <<~EOF
+      # Docbook_xml configuration
+      XML_CATALOG_FILES=#{CREW_PREFIX}/etc/xml/catalog
+    EOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/docbook_xml", @env)
   end
 
   def self.preinstall
