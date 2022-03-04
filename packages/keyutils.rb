@@ -52,6 +52,10 @@ CXXFLAGS\t\t:= #{CREW_COMMON_FLAGS}
     system 'make'
   end
 
+  def self.check
+    system 'make test'
+  end
+
   def self.install
     system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
