@@ -3,11 +3,22 @@ require 'package'
 class Libblockdev < Package
   description 'A library for manipulating block devices.'
   homepage 'https://github.com/storaged-project/libblockdev'
-  version '2.26-1'    
+  version '2.26'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://github.com/storaged-project/libblockdev/releases/download/2.26-1/libblockdev-2.26.tar.gz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://github.com/storaged-project/libblockdev/releases/download/#{version}-1/libblockdev-#{version}.tar.gz"
   source_sha256 'c4c0e10b35ac632bda8ce6d200b5601184984dec387fe59185921eb42432e069'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libblockdev/2.26_armv7l/libblockdev-2.26-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libblockdev/2.26_armv7l/libblockdev-2.26-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libblockdev/2.26_x86_64/libblockdev-2.26-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '20413e951e4b4d593ca0ca42789932a1ea624f53a33a022c190a318ba868d718',
+     armv7l: '20413e951e4b4d593ca0ca42789932a1ea624f53a33a022c190a318ba868d718',
+     x86_64: 'f4ebe749826e5b659043b618d759891d5a6a1e9f2540e855ae2927b2dd9711a5'
+  })
 
   depends_on 'cryptsetup' => :build
   depends_on 'eudev' => :build
@@ -23,29 +34,14 @@ class Libblockdev < Package
   depends_on 'parted' => :build
   depends_on 'polkit' => :build
   depends_on 'volume_key' => :build
-    
-    ## crew install buildessential lvm2 cryptsetup libbytesize libdmraid volume_key
-#No package 'glib-2.0' found (solvable by glib)
-#No package 'gobject-2.0' found (solvable by glib but it still checks for gobject_introspection)
-#No package 'gio-2.0' found
-#No package 'libudev' found
-#No package 'libkmod' found (solvable by libkmod)
-#No package 'libcryptsetup' found
-#No package 'nss' found
-#libvolume_key.h not available
-#No package 'libparted' found (solvable by parted)
-#No package 'mount' found
-#No package 'blkid' found (solvable by util_linux)
-#No package 'uuid' found
-#No package 'libndctl' found
 
   def self.build
-   #system "ln -s /bin/sed /usr/local/bin/sed"
-    system "./configure"
-    system "make"
+    system 'filefix'
+    system "./configure #{CREW_OPTIONS} --with-gtk-doc=no"
+    system 'make'
   end
 
   def self.install
-    system "make install"
+    system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
 end

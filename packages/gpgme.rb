@@ -3,33 +3,30 @@ require 'package'
 class Gpgme < Package
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  @_ver = '1.15.1'
+  @_ver = '1.17.0'
   version @_ver
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{@_ver}.tar.bz2"
-  source_sha256 'eebc3c1b27f1c8979896ff361ba9bb4778b508b2496c2fc10e3775a40b1de1ad'
+  source_sha256 '4ed3f50ceb7be2fce2c291414256b20c9ebf4c03fddb922c88cda99c119a69f5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_armv7l/gpgme-1.15.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_armv7l/gpgme-1.15.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_i686/gpgme-1.15.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.15.1_x86_64/gpgme-1.15.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_armv7l/gpgme-1.17.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_armv7l/gpgme-1.17.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_i686/gpgme-1.17.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_x86_64/gpgme-1.17.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cefc164ba4ee3297c69c23c247c48cc26aea6f8bf060ff428d03d3288bffbffb',
-     armv7l: 'cefc164ba4ee3297c69c23c247c48cc26aea6f8bf060ff428d03d3288bffbffb',
-       i686: '828ebe648f313eb3849d0fc1b09f287159ec658438b0917d2cea9938da173924',
-     x86_64: '63a1accd77f24e417dc9ca519a142303d2083f1fa49af2bb3edb6b3fc08e0677'
+    aarch64: '37a3825a92c97935d1ec0aec7551ec0daae0c314db0428c6bba752ffd66e7c4c',
+     armv7l: '37a3825a92c97935d1ec0aec7551ec0daae0c314db0428c6bba752ffd66e7c4c',
+       i686: '6331885eac641a14e0bc47b9d01cc75a093b67acce0291e143e91345952ea486',
+     x86_64: 'dbe4671b83a5bae3696abc15f50ee6cb8226c11379d7f8a444a2d23aa8e754a4'
   })
 
   depends_on 'gnupg'
 
   def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
