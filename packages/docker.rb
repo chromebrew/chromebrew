@@ -25,6 +25,7 @@ class Docker < Package
   git_hashtag "v#{version}"
 
   depends_on 'bridge_utils'
+  depends_on 'containerd'
   depends_on 'eudev'
   depends_on 'iproute2'
   depends_on 'lvm2'
