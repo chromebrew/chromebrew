@@ -3,17 +3,17 @@ require 'package'
 class Libmfx < Package
   description 'Intel Media SDK dispatcher library'
   homepage 'https://github.com/lu-zero/mfx_dispatch/'
-  version '1.25'
+  version '1.35.1'
   license 'BSD'
   compatibility 'i686'
-  source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.25.tar.gz'
-  source_sha256 '853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42'
+  source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.35.1.tar.gz'
+  source_sha256 '673636da98a4fd5c3e3dc5267da5429e986f53089ed6c33cdca5751f56d9416b'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmfx/1.25_i686/libmfx-1.25-chromeos-i686.tar.xz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmfx/1.35.1_i686/libmfx-1.35.1-chromeos-i686.tar.zst',
   })
   binary_sha256({
-    i686: '3eab119d8be510a2786d31419c20c551a0629f3b8d8d4fa58a2fb31b3f66a960',
+    i686: '3491a2615abbe06c01ad6c6d17721f56415190068a899f6a7195de0ccbaac3ef',
   })
 
   depends_on 'libva'
@@ -34,6 +34,6 @@ class Libmfx < Package
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
     # fix version in pkg-config file"
-    system "sed -i /Version:/s/[0-9]\.[0-9]\{2\}/1.25/ #{CREW_DEST_LIB_PREFIX}/pkgconfig/libmfx.pc"
+    system "sed -i /Version:/s/[0-9]\.[0-9]\{2\}/#{version}/ #{CREW_DEST_LIB_PREFIX}/pkgconfig/libmfx.pc"
   end
 end
