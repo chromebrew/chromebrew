@@ -10,6 +10,7 @@ class Containerd < Package
   license 'Apache'
   compatibility 'all'
   source_url 'https://github.com/containerd/containerd.git'
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_armv7l/containerd-1.6.1-chromeos-armv7l.tar.zst',
@@ -21,7 +22,6 @@ class Containerd < Package
      armv7l: '8cff65fb4f5cae37d3c5a02adaca91828acd2278cd28ecc69ecec0c0ce3b8ef1',
      x86_64: 'e0416b16cc9cad8052ce5f139d339ec766f26ef1a630e4cf44a37a160cbc45ec'
   })
-  git_hashtag "v#{version}"
 
   depends_on 'docker_systemctl_replacement'
   depends_on 'runc'
