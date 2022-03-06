@@ -10,7 +10,6 @@ class Containerd < Package
   license 'Apache'
   compatibility 'all'
   source_url 'https://github.com/containerd/containerd.git'
-  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_armv7l/containerd-1.6.1-chromeos-armv7l.tar.zst',
@@ -18,10 +17,11 @@ class Containerd < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_x86_64/containerd-1.6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8836c25633fa7ef919c248783998f2da5f7fdd71823bb639c9e8186cdeace15b',
-     armv7l: '8836c25633fa7ef919c248783998f2da5f7fdd71823bb639c9e8186cdeace15b',
-     x86_64: '30cb7cb071671835d9083de91cf2873737cde2b1d7448fcc98898156d654d92a'
+    aarch64: '8cff65fb4f5cae37d3c5a02adaca91828acd2278cd28ecc69ecec0c0ce3b8ef1',
+     armv7l: '8cff65fb4f5cae37d3c5a02adaca91828acd2278cd28ecc69ecec0c0ce3b8ef1',
+     x86_64: 'e0416b16cc9cad8052ce5f139d339ec766f26ef1a630e4cf44a37a160cbc45ec'
   })
+  git_hashtag "v#{version}"
 
   depends_on 'docker_systemctl_replacement'
   depends_on 'runc'
@@ -34,6 +34,8 @@ class Containerd < Package
 
   def self.patch
     system "sed -i 's,/sbin,#{CREW_PREFIX}/bin,g' containerd.service"
+    system "sed -i 's,TasksMax=,#TasksMax=,g' containerd.service"
+    system "sed -i '/modprobe/d' containerd.service"
     system "sed -i 's,/run,/var/run/chrome,g' defaults/defaults_unix.go"
     system "sed -i 's,/var,#{CREW_PREFIX}/var,g' defaults/defaults_unix.go"
     system "sed -i 's,/etc,#{CREW_PREFIX}/etc,g' defaults/defaults_unix.go"
