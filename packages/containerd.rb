@@ -18,9 +18,9 @@ class Containerd < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_x86_64/containerd-1.6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3560445ba0e85f47cede9836cdcbfd34879251f60abb9ddb71cf8ad8e0cf403a',
-     armv7l: '3560445ba0e85f47cede9836cdcbfd34879251f60abb9ddb71cf8ad8e0cf403a',
-     x86_64: '6924a4ebf2d3f50a2e9d7f18e3c23a1733d9ad1441a5115e0810a070bc5a16e6'
+    aarch64: '8836c25633fa7ef919c248783998f2da5f7fdd71823bb639c9e8186cdeace15b',
+     armv7l: '8836c25633fa7ef919c248783998f2da5f7fdd71823bb639c9e8186cdeace15b',
+     x86_64: '30cb7cb071671835d9083de91cf2873737cde2b1d7448fcc98898156d654d92a'
   })
 
   depends_on 'docker_systemctl_replacement'
@@ -30,6 +30,7 @@ class Containerd < Package
   depends_on 'libseccomp' => ':build'
   depends_on 'containers_common' => ':build'
   depends_on 'go_md2man' => ':build'
+  no_fhs
 
   def self.patch
     system "sed -i 's,/sbin,#{CREW_PREFIX}/bin,g' containerd.service"

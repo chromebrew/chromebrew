@@ -143,8 +143,12 @@ class Iproute2 < Package
   end
 
   def self.install
+    FileUtils.mkdir_p %W[
+    #{CREW_DEST_PREFIX}/include
+    #{CREW_DEST_LIB_PREFIX}
+    ]
     system "make DESTDIR=#{CREW_DEST_DIR} SBINDIR=#{CREW_PREFIX}/bin install"
-    system "install -Dm0644 include/libnetlink.h #{CREW_DEST_PREFIX}/include/libnetlink.h"
-    system "install -Dm0644 lib/libnetlink.a #{CREW_DEST_LIB_PREFIX}/libnetlink.a"
+    FileUtils.install 'include/libnetlink.h', "#{CREW_DEST_PREFIX}/include/libnetlink.h", mode: 0o644
+    FileUtils.install 'lib/libnetlink.a', "#{CREW_DEST_LIB_PREFIX}/libnetlink.a", mode: 0o644
   end
 end

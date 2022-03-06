@@ -18,9 +18,9 @@ class Go_md2man < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_md2man/2.0.1_x86_64/go_md2man-2.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4074c6158cb50c394690443722a06e90f385b886ecfaaf4c9c8395eb639f5351',
-     armv7l: '4074c6158cb50c394690443722a06e90f385b886ecfaaf4c9c8395eb639f5351',
-     x86_64: 'ba48983b018cbf9d7e985e987dca4bb7ac6216064373b5a69a57c42ffc4ff56b'
+    aarch64: 'e12a504971810dee421ca4657a4af3c1be3ca82d4e319896e48d180c708e7679',
+     armv7l: 'e12a504971810dee421ca4657a4af3c1be3ca82d4e319896e48d180c708e7679',
+     x86_64: 'e1980595f9ff429ed47c7d8a2f57e5bf8a20e1d83277c0331d330d98b8558e97'
   })
 
   depends_on 'go'
@@ -31,7 +31,11 @@ class Go_md2man < Package
   end
 
   def self.install
-    system "install -Dm755 go-md2man #{CREW_DEST_PREFIX}/bin/go-md2man"
-    system "install -Dm755 go-md2man.1 #{CREW_DEST_MAN_PREFIX}/man1/go-md2man.1"
+    FileUtils.mkdir_p %W[
+      #{CREW_DEST_PREFIX}/bin
+      #{CREW_DEST_MAN_PREFIX}/man1
+    ]
+    FileUtils.install 'go-md2man', "#{CREW_DEST_PREFIX}/bin/go-md2man", mode: 0o755
+    FileUtils.install 'go-md2man.1', "#{CREW_DEST_MAN_PREFIX}/man1/go-md2man.1", mode: 0o644
   end
 end

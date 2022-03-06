@@ -82,35 +82,34 @@ class Containers_common < Package
       # containers-mounts.conf for further information)
     MOUNTS_CONF_EOF
     File.write("#{CREW_DEST_PREFIX}/etc/containers/mounts.conf", @mounts_conf, perm: 0o644)
-    system "install -vDm 644 pkg/config/containers.conf -t #{CREW_DEST_PREFIX}/etc/containers/"
-    system "install -vDm 644 pkg/config/containers.conf -t #{CREW_DEST_PREFIX}/share/containers/"
-    system "install -vDm 644 pkg/seccomp/seccomp.json -t #{CREW_DEST_PREFIX}/etc/containers/"
-    system "install -vDm 644 pkg/seccomp/seccomp.json -t #{CREW_DEST_PREFIX}/share/containers/"
-    system "install -vDm 644 docs/*.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+    FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+    FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+    FileUtils.install 'pkg/seccomp/seccomp.json', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+    FileUtils.install 'pkg/seccomp/seccomp.json', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+    FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
 
     Dir.chdir 'git' do
       Dir.chdir 'image' do
-        system "install -vDm 644 registries.conf -t #{CREW_DEST_PREFIX}/etc/containers/"
-
-        system "install -vDm 644 docs/*.1 -t #{CREW_DEST_MAN_PREFIX}/man1/"
-        system "install -vDm 644 docs/man5/*.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+        FileUtils.install 'registries.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+        FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+        FileUtils.install Dir['docs/man5/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
       Dir.chdir 'podman' do
-        system "install -vDm 644 *.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+        FileUtils.install Dir['*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
 
       Dir.chdir 'shortnames' do
-        system "install -vDm 644 shortnames.conf #{CREW_DEST_PREFIX}/etc/containers/registries.conf.d/00-shortnames.conf"
+        FileUtils.install 'shortnames.conf', "#{CREW_DEST_PREFIX}/etc/containers/registries.conf.d/00-shortnames.conf", mode: 0o644
       end
       Dir.chdir 'skopeo' do
-        system "install -vDm 644 default-policy.json #{CREW_DEST_PREFIX}/etc/containers/policy.json"
-        system "install -vDm 644 default.yaml -t #{CREW_DEST_PREFIX}/etc/containers/registries.d/"
+        FileUtils.install 'default-policy.json', "#{CREW_DEST_PREFIX}/etc/containers/policy.json", mode: 0o644
+        FileUtils.install 'default.yaml', "#{CREW_DEST_PREFIX}/etc/containers/registries.d/", mode: 0o644
       end
       Dir.chdir 'storage' do
-        system "install -vDm 644 storage.conf -t #{CREW_DEST_PREFIX}/etc/containers/"
-        system "install -vDm 644 storage.conf -t #{CREW_DEST_PREFIX}/share/containers/"
-        system "install -vDm 644 docs/*.1 -t #{CREW_DEST_MAN_PREFIX}/man1/"
-        system "install -vDm 644 docs/*.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+        FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+        FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+        FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+        FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
     end
   end

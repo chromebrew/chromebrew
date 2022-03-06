@@ -37,8 +37,8 @@ class Netavark < Package
 
   def self.install
     FileUtils.mkdir_p %W[{CREW_DEST_LIB_PREFIX}/podman #{CREW_DEST_PREFIX}/share/doc/netavark]
-    system "install -vDm 755 target/release/netavark -t #{CREW_DEST_LIB_PREFIX}/podman/"
     system "make DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} install -C docs"
-    system "install -vDm 644 README.md -t #{CREW_DEST_PREFIX}/share/doc/netavark/"
+    FileUtils.install 'target/release/netavark', "#{CREW_DEST_LIB_PREFIX}/podman/", mode: 0o755
+    FileUtils.install 'README.md', "#{CREW_DEST_PREFIX}/share/doc/netavark/", mode: 0o644
   end
 end
