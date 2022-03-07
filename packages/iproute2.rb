@@ -19,14 +19,17 @@ class Iproute2 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/5.16.0_x86_64/iproute2-5.16.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ce61bbe2bd40484edcafd1acad7a1a57a0a4666ff283055141093c48d2bfa709',
-     armv7l: 'ce61bbe2bd40484edcafd1acad7a1a57a0a4666ff283055141093c48d2bfa709',
-       i686: '42422341af0c46a6fea69cd03a46f31d9ed58c1755de34b516123d5b231f9b1f',
-     x86_64: '849fcfd35a20595c20683b143d4bc49a13322b638ab92fec37dfbfdd7e480ea2'
+    aarch64: '9a486ecdb8623c3c1e5806c2e3e3647e8ff263d9af8520c0d778203726ec9447',
+     armv7l: '9a486ecdb8623c3c1e5806c2e3e3647e8ff263d9af8520c0d778203726ec9447',
+       i686: '70fbd1ce18158a5ab4b8f2f66c21c4b76d1e15a56f11bfe6094f5d5929f8e9a1',
+     x86_64: '0132a24b88d0b736b3a1ee281b47846ac45ad3de7bfb82a16fe19f79097d40b9'
   })
 
-  depends_on 'iptables'
   depends_on 'elfutils'
+  depends_on 'iptables'
+  depends_on 'libbpf' unless ARCH == 'i686'
+  depends_on 'libcap'
+  depends_on 'libdb'
 
   def self.patch
     @iproute2_fhs_patch = <<~'IPROUTE2_FHS_EOF'
@@ -135,17 +138,23 @@ class Iproute2 < Package
     File.write('0001-make-iproute2-fhs-compliant.patch', @iproute2_fhs_patch)
     system 'patch -Np1 -i 0001-make-iproute2-fhs-compliant.patch'
     system "sed -i 's/-Werror//' Makefile"
+    system "sed -i 's,^PREFIX?=/usr,PREFIX?=#{CREW_PREFIX},g' Makefile"
+    system "sed -i 's,KERNEL_INCLUDE?=/usr/include,KERNEL_INCLUDE?=\$(PREFIX)/include,g' Makefile"
+    system "sed -i 's,DBM_INCLUDE:=$(DESTDIR)/usr/include,DBM_INCLUDE:=\$(PREFIX)/include,g' Makefile"
+    system "sed -i 's,/etc,\$(PREFIX)/etc,g' Makefile"
+    system "sed -i 's,/var,\$(PREFIX)/var,g' Makefile"
   end
 
   def self.build
-    system './configure'
+    system "./configure #{CREW_OPTIONS} \
+      --include_dir=#{CREW_PREFIX}/include"
     system 'make'
   end
 
   def self.install
     FileUtils.mkdir_p %W[
-    #{CREW_DEST_PREFIX}/include
-    #{CREW_DEST_LIB_PREFIX}
+      #{CREW_DEST_PREFIX}/include
+      #{CREW_DEST_LIB_PREFIX}
     ]
     system "make DESTDIR=#{CREW_DEST_DIR} SBINDIR=#{CREW_PREFIX}/bin install"
     FileUtils.install 'include/libnetlink.h', "#{CREW_DEST_PREFIX}/include/libnetlink.h", mode: 0o644
