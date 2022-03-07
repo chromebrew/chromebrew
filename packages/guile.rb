@@ -22,7 +22,6 @@ class Guile < Package
      x86_64: '11a28901148adef29d90c96b6b28e2ff0caee7479588683cf3a919b9cea825e9',
   })
 
-  depends_on 'diffutils' => :build
   depends_on 'libtool'
   depends_on 'bdwgc'
   depends_on 'libffi'

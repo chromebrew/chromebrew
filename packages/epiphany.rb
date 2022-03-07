@@ -33,7 +33,6 @@ class Epiphany < Package
   depends_on 'gmp' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk3' # R
-  depends_on 'help2man' => :build
   depends_on 'json_glib' # R
   depends_on 'libdazzle' # R
   depends_on 'libhandy' # R
@@ -43,7 +42,6 @@ class Epiphany < Package
   depends_on 'lsb_release' => :build
   depends_on 'pango' # R
   depends_on 'startup_notification' => :build
-  depends_on 'valgrind' => :build
   depends_on 'webkit2gtk_4' # R
 
   def self.build

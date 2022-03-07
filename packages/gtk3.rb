@@ -32,7 +32,6 @@ class Gtk3 < Package
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
-  depends_on 'valgrind' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
   depends_on 'libdeflate' => :build # Do we need this?

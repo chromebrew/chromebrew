@@ -22,9 +22,6 @@ class Libass < Package
      x86_64: '5d4f11533ac29592c4af827480bed3609ee8d4ee48e3b34bb3b68934da7e1248',
   })
 
-  #depends_on 'automake' => :build
-  #depends_on 'autoconf' => :build
-  #depends_on 'libtool' => :build
   depends_on 'fribidi'
   depends_on 'fontconfig'
 

@@ -22,9 +22,6 @@ class Ncat < Package
      x86_64: '5660ea321436f1b9642d318a77e9b0b5c379825ac0611daaf5f82dd794753598',
   })
 
-  depends_on 'buildessential' => :build
-  depends_on 'filecmd' => :build   #configure uses file
-
   def self.build
     #fixup "/usr/bin/file" -> "file" in the configure script
 

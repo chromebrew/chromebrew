@@ -22,8 +22,6 @@ class Ttf2pt1 < Package
      x86_64: 'e8faecc72638a7df553126f461d87b278ed0cb064a19bad8d9d1f28240ee8e76',
   })
 
-  depends_on 'help2man' => :build
-
   def self.patch
     system "sed -i '242,262d' Makefile"
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' scripts/inst_dir"

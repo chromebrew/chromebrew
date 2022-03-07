@@ -23,7 +23,6 @@ class Flex < Package
   })
 
   depends_on 'm4'
-  depends_on 'bison' => :build
 
   def self.build
     system "./configure", "--libdir=#{CREW_LIB_PREFIX}", "--with-pic", "--disable-static", "--enable-shared"

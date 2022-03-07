@@ -22,9 +22,6 @@ class Unzip < Package
       x86_64: 'a58e8a34a46721674ba16198fa943297c6fa80c5933b956bd1ebb6fe91ac6b89',
   })
 
-  depends_on 'compressdoc' => :build
-  depends_on 'patch' => :build
-
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-dupes/blob/master/unzip.rb
   # Upstream is unmaintained so we use the Ubuntu unzip_6.0-25ubuntu1 patchset:
   # https://changelogs.ubuntu.com/changelogs/pool/main/u/unzip/unzip_6.0-25ubuntu1/changelog

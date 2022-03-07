@@ -25,7 +25,6 @@ class Gparted < Package
 
   depends_on 'parted'
   depends_on 'gtkmm3'
-  depends_on 'intltool' => :build
   depends_on 'itstool' => :build
   depends_on 'yelp_tools' => :build
   depends_on 'xfsprogs'

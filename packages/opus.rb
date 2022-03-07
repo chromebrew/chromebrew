@@ -22,8 +22,6 @@ class Opus < Package
       x86_64: 'f77d89ba219257e2b2d97776b0df5407e40b33dcca0d0ca49d0970145009c31e',
   })
 
-  depends_on 'doxygen' => :build
-
   def self.build
     system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
               --enable-custom-modes"

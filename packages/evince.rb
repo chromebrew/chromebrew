@@ -44,7 +44,6 @@ class Evince < Package
   depends_on 'nautilus' # R
   depends_on 'pango' # R
   depends_on 'poppler' # R
-  depends_on 'valgrind' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

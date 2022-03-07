@@ -23,8 +23,6 @@ class Perl < Package
      x86_64: '8c12ba41052f0f49f1dccc7cc1de795d4b4c55ba70c4ed1eff866580405e300a'
   })
 
-  depends_on 'patch' => :build
-
   @perl_fullversion = @_ver.split('-')[0]
 
   @perl_version = @_ver.rpartition('.')[0]

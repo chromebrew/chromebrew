@@ -34,7 +34,6 @@ class Weston < Package
   depends_on 'pango'
   depends_on 'dbus'
   depends_on 'libxxf86vm'
-  depends_on 'llvm' => :build
   depends_on 'xdg_base'
   depends_on 'libwebp'
   depends_on 'libva'

@@ -24,7 +24,6 @@ class Js78 < Package
 
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
-  depends_on 'llvm' => :build
   depends_on 'nspr'
 
   case ARCH

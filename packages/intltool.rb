@@ -24,7 +24,6 @@ class Intltool < Package
 
   depends_on 'libtool'
   depends_on 'perl_xml_parser'
-  depends_on 'patch' => :build
 
   def self.patch
     system "curl -#LO https://raw.githubusercontent.com/Alexpux/MSYS2-packages/master/intltool/perl-5.22-compatibility.patch"

@@ -22,8 +22,6 @@ class Squashfs < Package
      x86_64: '6a3f77adbef01926ed731f7a69dab7607218dd13b31dda230556d5590dd7eea3'
   })
 
-  depends_on 'compressdoc' => :build
-  depends_on 'help2man' => :build
   depends_on 'lzo'
 
   def self.build

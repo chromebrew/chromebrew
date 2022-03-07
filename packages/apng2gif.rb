@@ -24,7 +24,6 @@ class Apng2gif < Package
   })
 
   depends_on 'libpng'
-  depends_on 'help2man' => :build
 
   def self.patch
     system "sed -i 's:CC         = gcc:CC         = #{CREW_TGT}-gcc:' Makefile"

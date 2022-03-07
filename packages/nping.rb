@@ -22,9 +22,6 @@ class Nping < Package
      x86_64: '558f8cc197f92003dfd44adab12ec4461b594f322e41d0498a8e961ae030f00a',
   })
 
-  depends_on 'buildessential' => :build
-  depends_on 'filecmd' => :build   #configure uses file
-
   def self.build
     #fixup "/usr/bin/file" -> "file" in the configure script
 

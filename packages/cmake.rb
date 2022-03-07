@@ -34,7 +34,6 @@ class Cmake < Package
   depends_on 'libcurl'
   depends_on 'librhash'
   depends_on 'libuv'
-  depends_on 'llvm' => :build
 
   def self.patch
     if Dir.exist? "#{CREW_PREFIX}/include/ncursesw"

@@ -25,7 +25,6 @@ class Libglvnd < Package
   depends_on 'libxext'
   depends_on 'libx11'
   depends_on 'glproto'
-  depends_on 'python3' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

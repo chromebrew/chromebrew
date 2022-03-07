@@ -24,7 +24,6 @@ class Inetutils < Package
   })
 
   depends_on 'linux_pam'
-  depends_on 'patchelf' => :build
   depends_on 'libcap'
 
   def self.build

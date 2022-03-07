@@ -23,7 +23,6 @@ class Zile < Package
   })
 
   depends_on 'bdwgc'
-  depends_on 'help2man' => :build
 
   def self.build
     system './configure',

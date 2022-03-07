@@ -24,8 +24,6 @@ class Amtk < Package
 
   depends_on 'gtk3'
   depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'llvm' => :build
 
 
   def self.build

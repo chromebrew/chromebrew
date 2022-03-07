@@ -22,7 +22,6 @@ class Dfc < Package
      x86_64: '9dccac46a97222d4f89002c7c5a8bc97b7b1d237b79a53251e03fdf9f4ff17e3',
   })
 
-  depends_on 'cmake' => :build
   depends_on 'gettext'
 
   def self.build

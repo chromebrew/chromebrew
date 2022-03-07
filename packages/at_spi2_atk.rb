@@ -22,7 +22,6 @@ class At_spi2_atk < Package
       x86_64: 'ce793ff57e4c0ba75b76e8f12934741f6cb26b4d02cc9080e647c28170b1f627',
   })
 
-  depends_on 'automake' => :build
   depends_on 'at_spi2_core'
   depends_on 'atk'
 

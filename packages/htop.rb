@@ -22,8 +22,6 @@ class Htop < Package
      x86_64: 'ae62201f3496fd3b64c94002af594c9650f3e345ed34db7f1d9d04d667e03d5c'
   })
 
-  depends_on 'buildessential' => :build
-
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "env #{CREW_ENV_OPTIONS} \

@@ -22,8 +22,6 @@ class Libmicrohttpd < Package
      x86_64: 'aa41e8d0577c54de70b7f830be5780d5b9f5d92ccafca54570d9a97a9b7fda15',
   })
 
-  depends_on 'diffutils' => :build
-
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
     system 'make'

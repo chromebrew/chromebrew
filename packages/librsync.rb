@@ -23,7 +23,6 @@ class Librsync < Package
      x86_64: 'fdcbab57b6c0ca16bbcb83a5d33577b6655d49c1ab3b8d86b243957f6ba76c05'
   })
 
-  depends_on 'cmake' => :build
   depends_on 'bz2'
   depends_on 'perl'
   depends_on 'popt'

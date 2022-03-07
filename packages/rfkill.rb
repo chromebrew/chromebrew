@@ -22,8 +22,6 @@ class Rfkill < Package
      x86_64: 'b491bd154ece2066272972c2110f8bc5d6c9a3ce4a0189fda5825d3cbddb0d71',
   })
 
-  depends_on 'buildessential' => :build
-
   def self.build
     system "make"
   end

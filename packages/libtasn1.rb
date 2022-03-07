@@ -22,10 +22,6 @@ class Libtasn1 < Package
      x86_64: '45bb14fceafe35899eb7d379a6c61347428f7acaca451dc24798eb463939e898'
   })
 
-  # bison, diff, cmp are required at compile-time
-  depends_on 'bison' => :build
-  depends_on 'diffutils' => :build
-
   def self.build
     system "./configure #{CREW_OPTIONS} \
       #{CREW_ENV_OPTIONS} \

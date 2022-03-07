@@ -21,7 +21,6 @@ class Geany_plugins < Package
   })
 
   depends_on 'libgit2' => :build
-  depends_on 'valgrind' => :build
   depends_on 'enchant' # R
   depends_on 'geany' # R
   depends_on 'libsoup2' # R

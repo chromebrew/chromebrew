@@ -26,10 +26,8 @@ class Gspell < Package
   depends_on 'iso_codes'
   depends_on 'gobject_introspection' => :build
   depends_on 'vala' => :build
-  depends_on 'gtk_doc' => :build
   depends_on 'graphite' => :build
   depends_on 'harfbuzz' => :build
-  depends_on 'llvm' => :build
   depends_on 'hunspell'
 
   ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"

@@ -22,7 +22,6 @@ class Sejda_console < Package
      x86_64: 'd59742c678df678145d00a86e82dca8ffa180299f099eafbc674d76641ea9506',
   })
 
-  depends_on 'help2man' => :build
   depends_on 'unzip' => :build
   depends_on 'jdk8'
 

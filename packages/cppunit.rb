@@ -22,7 +22,6 @@ class Cppunit < Package
      x86_64: 'e5f432ecd193119cb7201eec9881f3e89dd7bccbb78f3ba4cc8374471acbe236',
   })
 
-  depends_on 'doxygen' => :build
   depends_on 'graphviz' => :build
 
   def self.build

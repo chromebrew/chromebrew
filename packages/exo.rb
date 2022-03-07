@@ -25,7 +25,6 @@ class Exo < Package
 
   depends_on 'libxfce4ui'
   depends_on 'xfce4_dev_tools'
-  depends_on 'valgrind' => :build
 
   def self.patch
     FileUtils.mkdir_p 'm4'

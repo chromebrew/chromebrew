@@ -23,8 +23,6 @@ class Compressdoc < Package
      x86_64: '7ced0fd4fc946a5cfc1ea22821be18e23572228436736b7787cb1e86e9e202a0',
   })
 
-  depends_on 'help2man' => :build
-
   def self.build
     system 'make'
   end

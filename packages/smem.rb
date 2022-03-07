@@ -22,7 +22,6 @@ class Smem < Package
      x86_64: 'aff43254df620f1dcd080a5071a0f58b223d57b6f48d8545ed453062c115ada6',
   })
 
-  depends_on 'buildessential' => :build
   depends_on 'python27'
 
   def self.build

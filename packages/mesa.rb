@@ -41,10 +41,8 @@ class Mesa < Package
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
   # depends_on 'libva' => :build # Enable only during build to avoid circular dep.
-  depends_on 'llvm' => :build
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako'
-  depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
   depends_on 'wayland_protocols' => :build

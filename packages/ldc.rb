@@ -26,9 +26,7 @@ class Ldc < Package                 # The first character of the class name must
   depends_on 'ncurses'
   depends_on 'zlibpkg'
   depends_on 'libconfig' => :build
-  depends_on 'cmake' => :build
   depends_on 'libedit' => :build
-  depends_on 'llvm' => :build
 
   def self.build                   # the steps required to build the package
     system "mkdir", "build"

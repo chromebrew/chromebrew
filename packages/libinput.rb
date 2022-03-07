@@ -28,7 +28,6 @@ class Libinput < Package
   depends_on 'libwacom'
   depends_on 'libunwind'
   depends_on 'libcheck'
-  depends_on 'valgrind' => :build
 
   # If debug-gui feature is required, uncomment following lines and remove "-Ddebug-gui=false" to enable it
   # depends_on 'graphviz' => :build

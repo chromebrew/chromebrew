@@ -23,8 +23,6 @@ class Musl_perl < Package
      x86_64: '3e9f12c893b92fef6c38b57a22be90ff1d80a10156631fbdc8587031516983e8'
   })
 
-  depends_on 'patch' => :build
-  depends_on 'patchelf' => :build
   depends_on 'musl_native_toolchain'
   depends_on 'musl_zlib' => :build
   depends_on 'musl_bz2' => :build

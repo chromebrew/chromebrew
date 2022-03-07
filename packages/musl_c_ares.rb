@@ -29,7 +29,6 @@ class Musl_c_ares < Package
   depends_on 'musl_ncurses' => :build
   depends_on 'musl_openssl' => :build
   depends_on 'musl_krb5' => :build
-  depends_on 'patchelf' => :build
 
   is_static
 

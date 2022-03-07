@@ -33,7 +33,6 @@ class Gtk4 < Package
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
-  depends_on 'valgrind' => :build
   depends_on 'py3_pygments' => :build # Is this needed?
   depends_on 'py3_six' => :build # Is this needed?
   depends_on 'vulkan_headers' => :build

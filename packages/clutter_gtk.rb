@@ -26,7 +26,6 @@ class Clutter_gtk < Package
   depends_on 'gtk3'
   depends_on 'libgee'
   depends_on 'clutter'
-  depends_on 'valgrind' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"

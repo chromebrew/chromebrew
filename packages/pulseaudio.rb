@@ -52,7 +52,6 @@ class Pulseaudio < Package
   depends_on 'speexdsp' # R
   depends_on 'tcpwrappers' => :build
   depends_on 'tdb' # R
-  depends_on 'valgrind' => :build
   depends_on 'webrtc_audio_processing' # R
   depends_on 'xorg_lib' => :build
 

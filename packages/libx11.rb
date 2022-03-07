@@ -22,7 +22,6 @@ class Libx11 < Package
      x86_64: '329c60bc8ff483f079024654d81bcf932c54b79d7dd0314606a3f0d1b436be94'
   })
 
-  depends_on 'llvm' => :build
   depends_on 'xorg_proto'
   depends_on 'libxcb'
   depends_on 'libxtrans'

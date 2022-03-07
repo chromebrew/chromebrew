@@ -22,8 +22,6 @@ class Musl_bz2 < Package
      x86_64: '0491dda97107a65317cf6a6896d11654159623ed8f6107efdaafa710326723fe'
   })
 
-  depends_on 'patchelf' => :build
-
   def self.patch
     load "#{CREW_LIB_PATH}lib/musl.rb"
     # Modify Makefile from "ln -s $(PREFIX)/bin/xxx $(PREFIX)/bin/yyy" to

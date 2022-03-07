@@ -22,8 +22,6 @@ class Libcyrussasl < Package
      x86_64: 'f1bc40fa4566b8928447b59387a49268e4aa541a3e80d7f059e74e7d62e17a63'
   })
 
-  depends_on 'diffutils' => :build
-
   def self.patch
     system 'filefix'
   end

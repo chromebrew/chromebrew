@@ -22,8 +22,6 @@ class Cgroupfs_mount < Package
      x86_64: 'd01398e7d06e023f625bb36d5c80d20b25bd0db9d0d71d08bfa9e12c8cc36a2a',
   })
 
-  depends_on 'compressdoc' => :build
-
   def self.install
     system "install -Dm755 cgroupfs-mount #{CREW_DEST_PREFIX}/bin/cgroupfs-mount"
     system "install -Dm755 cgroupfs-umount #{CREW_DEST_PREFIX}/bin/cgroupfs-umount"

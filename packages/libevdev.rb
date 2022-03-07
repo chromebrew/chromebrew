@@ -22,9 +22,6 @@ class Libevdev < Package
      x86_64: '6afbae9d141ced6da39edb73127c4e247afd9abeae8a681b3dc8b62b7edc818d'
   })
 
-  depends_on 'doxygen' => :build
-  depends_on 'python3' => :build
-
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
       builddir"

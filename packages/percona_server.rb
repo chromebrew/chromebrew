@@ -22,7 +22,6 @@ class Percona_server < Package
      x86_64: '47431d59582a5be3361cbfd571de3da9a557b76cea40a01f4b58347988e7aa2c',
   })
 
-  depends_on 'cmake' => :build
   depends_on 'percona_boost'
   depends_on 'libaio'
   depends_on 'libtirpc'

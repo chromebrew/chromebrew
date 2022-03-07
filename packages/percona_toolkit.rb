@@ -23,7 +23,6 @@ class Percona_toolkit < Package
   })
 
   depends_on 'percona_server'
-  depends_on 'perl' => :build
 
   def self.build
     system "perl Makefile.PL PREFIX=#{CREW_PREFIX}"

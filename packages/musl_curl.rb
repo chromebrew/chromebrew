@@ -34,7 +34,6 @@ class Musl_curl < Package
   depends_on 'musl_zlib' => :build
   depends_on 'musl_zstd' => :build
   depends_on 'rust' => :build
-  depends_on 'valgrind' => :build
 
   is_static
 

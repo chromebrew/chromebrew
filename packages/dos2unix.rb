@@ -22,8 +22,6 @@ class Dos2unix < Package
      x86_64: '249077651ae479e1888742a2925d41e003331f8836392986ed58b3fd18a6d123',
   })
 
-  depends_on 'gettext' => :build
-
   def self.build
     system 'make'
   end
