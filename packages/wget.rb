@@ -3,41 +3,44 @@ require 'package'
 class Wget < Package
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
-  version '1.21.2'
+  version '1.21.3'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/wget/wget-1.21.2.tar.gz'
-  source_sha256 'e6d4c76be82c676dd7e8c61a29b2ac8510ae108a810b5d1d18fc9a1d2c9a2497'
+  source_url 'https://git.savannah.gnu.org/git/wget.git'
+  git_hashtag "v#{version}"
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_armv7l/wget-1.21.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_armv7l/wget-1.21.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_i686/wget-1.21.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.2_x86_64/wget-1.21.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.3_armv7l/wget-1.21.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.3_armv7l/wget-1.21.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.3_i686/wget-1.21.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/1.21.3_x86_64/wget-1.21.3-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-    aarch64: 'c2179f28acacdff15012005c0949712366045e1a40dc0682f8aa5b1758cffef6',
-     armv7l: 'c2179f28acacdff15012005c0949712366045e1a40dc0682f8aa5b1758cffef6',
-       i686: 'a80b25da86146cd54a35c534705e4dc2ccd5839f17e5c85f5ab3626018091dee',
-     x86_64: '792bbb12e594477ab1857749dab3f878edaa736307b100c235b987ce25bc144c',
+  binary_sha256({
+    aarch64: '53cb665d91a7b550087e6999c2b16289d57826fdeecef72644a8751613838585',
+     armv7l: '53cb665d91a7b550087e6999c2b16289d57826fdeecef72644a8751613838585',
+       i686: '0cf31261dbeae25995ca154afdd67c5833aeffdc3097ff74bc62c9b8a208888b',
+     x86_64: '2cc7ca9d41bb39971fef2c93b238ca6c8cfb0ffec0be54a830dea399369d8f96'
   })
 
-  depends_on 'gnutls'
+  depends_on 'autoconf_archive' => :build
+  depends_on 'gperf' => :build
+  depends_on 'mold' => :build
   depends_on 'libpsl'
-  depends_on 'libxdmcp'
-  depends_on 'libmetalink'
+  depends_on 'libidn2'
   depends_on 'pcre2'
   depends_on 'ca_certificates'
+  no_env_options
 
   def self.build
-    raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
+    puts 'libiconv installed, Will build with libiconv.'.yellow if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
-    system <<~BUILD
-      #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-        --sysconfdir=#{CREW_PREFIX}/etc \
-        --with-metalink \
-        --without-libiconv-prefix
-    BUILD
+    @lto = ARCH == 'i686' ? '' : '-flto'
+    @cc = ARCH == 'i686' ? 'clang' : 'gcc'
+    system './bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib'
+    system "CFLAGS='-O2 -pipe #{@lto} -fPIC' LDFLAGS=#{@lto} CC=#{@cc} LD=mold \
+      ./configure #{CREW_OPTIONS} \
+      --sysconfdir=#{CREW_PREFIX}/etc \
+      --with-ssl=openssl"
     system 'make'
   end
 
