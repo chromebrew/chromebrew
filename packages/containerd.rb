@@ -18,9 +18,9 @@ class Containerd < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_x86_64/containerd-1.6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3dba84f318f5cf7afc5ae8e2180a1f0cc932c2f5be9421ae02b284068141fe49',
-     armv7l: '3dba84f318f5cf7afc5ae8e2180a1f0cc932c2f5be9421ae02b284068141fe49',
-     x86_64: '9c54047cf84e44409c7d15d301a3fd260863b9e6ac3295303eb0ece54e010c8f'
+    aarch64: 'ba0e2edf47204f1dfb0dc009cfe9e92eaa51e269dd07333783d33e9fb6b7a73d',
+     armv7l: 'ba0e2edf47204f1dfb0dc009cfe9e92eaa51e269dd07333783d33e9fb6b7a73d',
+     x86_64: 'a16adc6e1e3bf5ab88439c5dc6c31a7d49e91e93f3b9e1e6e3f41644ec23ae44'
   })
 
   depends_on 'docker_systemctl_replacement'
@@ -46,17 +46,87 @@ class Containerd < Package
     system "GOFLAGS='-trimpath -mod=readonly -modcacherw' make VERSION=v#{version} GO_BUILD_FLAGS='-trimpath -mod=readonly -modcacherw' GO_GCFLAGS= EXTRA_LDFLAGS='-buildid='"
     system "GOFLAGS='-trimpath -mod=readonly -modcacherw' make VERSION=v#{version} man"
     @config_toml = <<~CONFIG_TOML_EOF
-      version = 2
-      root = "#{CREW_PREFIX}/.local/share/containerd"
-      state = "/var/run/chrome/containerd"
+          version = 2
+          root = "#{CREW_PREFIX}/.local/share/containerd"
+          state = "/var/run/chrome/containerd"
 
-      [grpc]
-        address = "/var/run/chrome/containerd/containerd.sock"
+          [grpc]
+            address = "/var/run/chrome/containerd/containerd.sock"
 
-      [proxy_plugins]
-        [proxy_plugins."fuse-overlayfs"]
-          type = "snapshot"
-          address = "/var/run/chrome/containerd/fuse-overlayfs.sock"
+          [proxy_plugins]
+            [proxy_plugins."fuse-overlayfs"]
+              type = "snapshot"
+              address = "/var/run/chrome/containerd/fuse-overlayfs.sock"
+
+      # 'plugins."io.containerd.grpc.v1.cri".cni' contains config related to cni
+          [plugins."io.containerd.grpc.v1.cri".cni]
+            # bin_dir is the directory in which the binaries for the plugin is kept.
+            bin_dir = "#{CREW_PREFIX}/cni/bin"
+
+            # conf_dir is the directory in which the admin places a CNI conf.
+            conf_dir = "#{CREW_PREFIX}/etc/cni/net.d"
+
+            # max_conf_num specifies the maximum number of CNI plugin config files to
+            # load from the CNI config directory. By default, only 1 CNI plugin config
+            # file will be loaded. If you want to load multiple CNI plugin config files
+            # set max_conf_num to the number desired. Setting max_config_num to 0 is
+            # interpreted as no limit is desired and will result in all CNI plugin
+            # config files being loaded from the CNI config directory.
+            max_conf_num = 1
+
+            # conf_template is the file path of golang template used to generate
+            # cni config.
+            # If this is set, containerd will generate a cni config file from the
+            # template. Otherwise, containerd will wait for the system admin or cni
+            # daemon to drop the config file into the conf_dir.
+            # This is a temporary backward-compatible solution for kubenet users
+            # who don't have a cni daemonset in production yet.
+            # This will be deprecated when kubenet is deprecated.
+            # See the "CNI Config Template" section for more details.
+            conf_template = ""
+            # ip_pref specifies the strategy to use when selecting the main IP address for a pod.
+            # options include:
+            # * ipv4, "" - (default) select the first ipv4 address
+            # * ipv6 - select the first ipv6 address
+            # * cni - use the order returned by the CNI plugins, returning the first IP address from the results
+            ip_pref = "ipv4"
+
+          # 'plugins."io.containerd.grpc.v1.cri".image_decryption' contains config related
+          # to handling decryption of encrypted container images.
+          [plugins."io.containerd.grpc.v1.cri".image_decryption]
+            # key_model defines the name of the key model used for how the cri obtains
+            # keys used for decryption of encrypted container images.
+            # The [decryption document](https://github.com/containerd/containerd/blob/main/docs/cri/decryption.md)
+            # contains additional information about the key models available.
+            #
+            # Set of available string options: {"", "node"}
+            # Omission of this field defaults to the empty string "", which indicates no key model,
+            # disabling image decryption.
+            #
+            # In order to use the decryption feature, additional configurations must be made.
+            # The [decryption document](https://github.com/containerd/containerd/blob/main/docs/cri/decryption.md)
+            # provides information of how to set up stream processors and the containerd imgcrypt decoder
+            # with the appropriate key models.
+            #
+            # Additional information:
+            # * Stream processors: https://github.com/containerd/containerd/blob/main/docs/stream_processors.md
+            # * Containerd imgcrypt: https://github.com/containerd/imgcrypt
+            key_model = "node"
+
+          # 'plugins."io.containerd.grpc.v1.cri".registry' contains config related to
+          # the registry
+          [plugins."io.containerd.grpc.v1.cri".registry]
+            # config_path specifies a directory to look for the registry hosts configuration.
+            #
+            # The cri plugin will look for and use config_path/host-namespace/hosts.toml
+            #   configs if present OR load certificate files as laid out in the Docker/Moby
+            #   specific layout https://docs.docker.com/engine/security/certificates/
+            #
+            # If config_path is not provided defaults are used.
+            #
+            # *** registry.configs and registry.mirrors that were a part of containerd 1.4
+            # are now DEPRECATED and will only be used if the config_path is not specified.
+            config_path = ""
     CONFIG_TOML_EOF
     File.write('config.toml', @config_toml)
     # system "sed -i 's,/var,#{CREW_PREFIX}/var,g' config.toml"
