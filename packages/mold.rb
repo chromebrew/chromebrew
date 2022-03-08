@@ -6,27 +6,26 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '1.0.2'
+  version '1.1.1'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.0.2_i686/mold-1.0.2-chromeos-i686.tpxz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.0.2_armv7l/mold-1.0.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.0.2_armv7l/mold-1.0.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.0.2_x86_64/mold-1.0.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.1.1_armv7l/mold-1.1.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.1.1_armv7l/mold-1.1.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.1.1_i686/mold-1.1.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.1.1_x86_64/mold-1.1.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: 'ed41e4e4ac350f821d7c0eed871a8970d7b39f4cf0f0c74078de357d3befa11a',
-    aarch64: 'e2b5d700b6915c10c677054f2b1e2191111468eaeeb4ac7b5d514382dcedb9c6',
-     armv7l: 'e2b5d700b6915c10c677054f2b1e2191111468eaeeb4ac7b5d514382dcedb9c6',
-     x86_64: '345bac27ef1f3323e33ad52efb13c9fe83a5cbea228ee882eb7059931bf936bc'
+    aarch64: 'af8d0ad4094a02d26508da23af2e8b000f40c982c3d4ee43e25b42806d139dbe',
+     armv7l: 'af8d0ad4094a02d26508da23af2e8b000f40c982c3d4ee43e25b42806d139dbe',
+       i686: '966053e7967f58f131d03d213f1e0f26d969a6d7296b90b78e245f471af5b34d',
+     x86_64: '622f44f74252163a17a418bdb7efe42c3a59d1956790260666268f462a3b8930'
   })
 
-  depends_on 'mimalloc'
-  depends_on 'tbb'
   depends_on 'xxhash' => ':build'
+  no_env_options
 
   def self.patch
     system "sed -i 's,PREFIX = /usr/local,PREFIX = #{CREW_PREFIX},g' Makefile"
@@ -34,8 +33,7 @@ class Mold < Package
   end
 
   def self.build
-    system "LTO=1 SYSTEM_MIMALLOC=1 SYSTEM_TBB=1 \
-      #{CREW_OPTIONS.sub(/--program-prefix=.*/, '').gsub('--', '')} make #{CREW_ENV_OPTIONS}"
+    system 'make LTO=1'
   end
 
   def self.install
