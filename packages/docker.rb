@@ -23,16 +23,17 @@ class Docker < Package
      x86_64: 'fe2a39d90ef0b37c33125cdcbdccf7a8b26255dff3ac46e790fa02126482ba69'
   })
 
-  depends_on 'docker_systemctl_replacement'
   depends_on 'bridge_utils'
   depends_on 'containerd'
+  depends_on 'docker_systemctl_replacement'
   depends_on 'eudev'
+  depends_on 'fuse_overlayfs'
   depends_on 'iproute2'
   depends_on 'lvm2'
   depends_on 'sqlite'
-  depends_on 'go' => ':build'
   depends_on 'btrfsprogs' => ':build'
   depends_on 'elogind' => ':build'
+  depends_on 'go' => ':build'
   depends_on 'go_md2man' => ':build'
   no_env_options
   no_fhs

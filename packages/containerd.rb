@@ -24,6 +24,7 @@ class Containerd < Package
   })
 
   depends_on 'docker_systemctl_replacement'
+  depends_on 'fuse_overlayfs'
   depends_on 'runc'
   depends_on 'go' => ':build'
   depends_on 'btrfsprogs' => ':build'
@@ -420,6 +421,7 @@ class Containerd < Package
     ]
     system "make PREFIX=#{CREW_PREFIX} DESTDIR=#{CREW_DEST_DIR} install"
     FileUtils.install 'config.toml', "#{CREW_DEST_PREFIX}/etc/containerd/config.toml", mode: 0o644
+    FileUtils.install 'config.toml', "#{CREW_DEST_PREFIX}/etc/containerd/debug.toml", mode: 0o644
     FileUtils.install 'containerd.service', "#{CREW_DEST_PREFIX}/.config/systemd/user/containerd.service", mode: 0o644
     FileUtils.install Dir['man/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5", mode: 0o644
     FileUtils.install Dir['man/*.8'], "#{CREW_DEST_MAN_PREFIX}/man8", mode: 0o644

@@ -3,7 +3,7 @@ require 'package'
 class Fuse3 < Package
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse/'
-  @_ver = '3.10.4'
+  @_ver = '3.10.5'
   version @_ver
   license 'GPL-2+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Fuse3 < Package
   git_hashtag "fuse-#{@_ver}"
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.2_i686/fuse3-3.10.2-chromeos-i686.tar.xz',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.4_armv7l/fuse3-3.10.4-chromeos-armv7l.tpxz',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.4_armv7l/fuse3-3.10.4-chromeos-armv7l.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.4_x86_64/fuse3-3.10.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.5_armv7l/fuse3-3.10.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.5_armv7l/fuse3-3.10.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.5_i686/fuse3-3.10.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.10.5_x86_64/fuse3-3.10.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'd202035312895ee3bd9d260775cabba729d67996b3a3c1ce3786c83120515efa',
- aarch64: 'a2bdd79da18341278a512a50406faa3fdb8bd400a508706fe5c8a9fdacf1ffb5',
-  armv7l: 'a2bdd79da18341278a512a50406faa3fdb8bd400a508706fe5c8a9fdacf1ffb5',
-  x86_64: '1930e0a48097c5e85a4f8b82acfa1e55c579d20677d5cdf6731dcca745bf6556'
+    aarch64: 'd14bba8e1c8af4cdebbf02f4be6ee860c7351c2ceb0a53a67606d26dfb76f3bc',
+     armv7l: 'd14bba8e1c8af4cdebbf02f4be6ee860c7351c2ceb0a53a67606d26dfb76f3bc',
+       i686: 'd0ec9909aa08547edc2371507e4c371ff9df9ba18330ba70ada4fd11979dd5ef',
+     x86_64: '95849855fa8d643efb20145cc25d4752ef10376d6656fda2d7f755bc5ac6977b'
   })
 
   depends_on 'py3_pytest' => :build
