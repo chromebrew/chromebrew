@@ -34,7 +34,8 @@ class Harfbuzz < Package
   no_env_options
 
   def self.build
-    if File.exist?("#{CREW_META_PATH}/freetype.filelist")
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    if @device[:installed_packages].any? 'freetype'
       puts 'Please reinstall freetype_sub after other dependencies are installed before building.'.yellow
     end
     case ARCH
