@@ -54,14 +54,14 @@ class Freetype_sub < Package
   def self.postinstall
     system "find #{CREW_BREW_DIR}/* -name freetype*.tar | xargs rm -rf"  # make sure to delete downloaded files
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    if @device[:installed_packages].any? 'freetype'
+    if @device[:installed_packages].any? do |elem| elem[:name] == 'freetype' end
       puts "Please reinstall freetype with 'crew reinstall freetype' as this installation may have broken freetype.".lightred
     end
   end
 
   def self.remove
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    if @device[:installed_packages].any? 'freetype'
+    if @device[:installed_packages].any? do |elem| elem[:name] == 'freetype' end
       puts "Please reinstall freetype with 'crew reinstall freetype' as this removal may have broken freetype.".lightred
     end
   end

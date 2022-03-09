@@ -35,7 +35,7 @@ class Harfbuzz < Package
 
   def self.build
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    if @device[:installed_packages].any? 'freetype'
+    if @device[:installed_packages].any? do |elem| elem[:name] == 'freetype' end
       puts 'Please reinstall freetype_sub after other dependencies are installed before building.'.yellow
     end
     case ARCH
