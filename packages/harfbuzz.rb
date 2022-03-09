@@ -27,7 +27,8 @@ class Harfbuzz < Package
   depends_on 'chafa' => :build
   depends_on 'glib' => :build
   depends_on 'gobject_introspection'
-  depends_on 'freetype_sub'
+  depends_on 'freetype_sub' => :build
+  # Hopefully regular freetype gets pulled in by some other package dep.
   depends_on 'py3_six' => :build
   depends_on 'graphite' => :build
   no_env_options
