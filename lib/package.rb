@@ -29,7 +29,41 @@ class Package
     # base class.  Instead of define it, we initialize it in a function
     # called from derived classees.
     @dependencies ||= Hash.new
-    @dependencies
+  end
+
+  def self.get_deps_list (pkgName = self.name, hash: false, include_build_deps: 'auto', include_self: false)
+    @checked_list ||= Array.new
+    @checked_list << pkgName
+
+    pkgObj = Object.const_get(pkgName.capitalize)
+    is_source = pkgObj.is_source?(ARCH.to_sym) or pkgObj.build_from_source
+    deps = pkgObj.dependencies
+
+    # append buildessential to deps if building from source is required
+    if include_build_deps == true or (include_build_deps == 'auto' and is_source)
+      deps = ({ 'buildessential' => [ :build ] }).merge(deps)
+    end
+
+    # parse dependencies recursively
+    expandedDeps = deps.map do |dep, tags|
+                     if include_build_deps == true or \
+                        (include_build_deps == 'auto' and is_source) or \
+                        !tags.include?(:build)
+
+                       unless @checked_list.include?(dep)
+                         require_relative "#{CREW_PACKAGES_PATH}/#{dep}.rb"
+                         next send(__method__, dep, hash: hash, include_build_deps: include_build_deps, include_self: true)
+                       end
+                     end
+                   end.reject(&:nil?)
+
+    if hash
+      return { pkgName => expandedDeps }
+    elsif include_self
+      return [ expandedDeps, pkgName ].flatten
+    else
+      return expandedDeps.flatten
+    end
   end
 
   boolean_property.each do |prop|

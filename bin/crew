@@ -25,7 +25,8 @@ Usage:
   crew autoremove [options]
   crew build [options] [-k|--keep] <name> ...
   crew const [options] [<name> ...]
-  crew deps [options] <name> ...
+  crew deps [options] [-b|--include-build-deps] <name> ...
+  crew deps_tree [options] [-b|--include-build-deps] <name> ...
   crew download [options] <name> ...
   crew files [options] <name> ...
   crew help [<command>]
@@ -39,15 +40,16 @@ Usage:
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides [options] <pattern> ...
 
-  -c --color              Use colors even if standard out is not a tty.
-  -d --no-color           Disable colors even if standard out is a tty.
-  -k --keep               Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
-  -L --license            Display the crew license.
-  -s --build-from-source  Build from source even if pre-compiled binary exists.
-  -S --recursive-build    Build from source, including all dependencies, even if pre-compiled binaries exist.
-  -v --verbose            Show extra information.
-  -V --version            Display the crew version.
-  -h --help               Show this screen.
+  -b --include-build-deps  Include build dependencies in output
+  -c --color               Use colors even if standard out is not a tty.
+  -d --no-color            Disable colors even if standard out is a tty.
+  -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
+  -L --license             Display the crew license.
+  -s --build-from-source   Build from source even if pre-compiled binary exists.
+  -S --recursive-build     Build from source, including all dependencies, even if pre-compiled binaries exist.
+  -v --verbose             Show extra information.
+  -V --version             Display the crew version.
+  -h --help                Show this screen.
 
 version #{CREW_VERSION}
 DOCOPT
@@ -1300,40 +1302,13 @@ def resolve_dependencies_and_install
 end
 
 def expand_dependencies
-  def push_dependencies
-    return unless @pkg
-    if @pkg.is_binary?(@device[:architecture]) ||
-      (!@pkg.in_upgrade && !@pkg.build_from_source && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name })
-      # retrieve name of dependencies that doesn't contain :build tag
-      check_deps = @pkg.dependencies.select {|k, v| !v.include?(:build)}.map {|k, v| k}
-    else
-      # retrieve name of all dependencies
-      check_deps = @pkg.dependencies.map {|k, v| k}
-    end
-    # check all dependencies recursively
-    check_deps.each do |dep|
-      # build unique dependencies list
-      unless @dependencies&.include?(dep) || dep == @pkgName
-        @dependencies << dep
-        search dep, true
-        push_dependencies
-      end
-    end
-  end
-  push_dependencies
+  @dependencies = @pkg.get_deps_list.reject {|depName| @device[:installed_packages].any? { |pkg| pkg[:name] == depName } }
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @device[:compatible_packages].any? do |elem| elem[:name] == @pkg.name end
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @device[:compatible_packages].any? {|elem| elem[:name] == @pkg.name }
 
   @dependencies = []
-  if @pkg.build_from_source
-    # make sure all buildessential packages are installed
-    pkgname = @pkg.name
-    search 'buildessential', true
-    expand_dependencies
-    search pkgname, true
-  end
   expand_dependencies
 
   # leave only not installed packages in dependencies
@@ -1343,39 +1318,14 @@ def resolve_dependencies
 
   puts 'The following packages also need to be installed: '
 
-  deps = @dependencies
-  # populate arrays with common elements
-  begin_packages = deps & CREW_FIRST_PACKAGES
-  end_packages = deps & CREW_LAST_PACKAGES
-
   @dependencies.each do |dep|
-    depends = nil
     unless File.exist?("#{CREW_PACKAGES_PATH}#{dep}.rb")
       abort "Dependency #{dep} was not found.".lightred
     end
-    File.open("#{CREW_PACKAGES_PATH}#{dep}.rb") do |f|
-      f.each_line do |line|
-        found = line[/depends_on/] if line.ascii_only?
-        if found
-          depends = true
-          break
-        end
-      end
-    end
-    # if a dependency package has no other dependencies, push to the front
-    begin_packages.push dep unless depends
-  end
-  # Remove elements in another array
-  deps -= begin_packages
-  deps -= end_packages
-
-  @dependencies = (begin_packages + deps + end_packages).uniq
-
-  @dependencies.each do |dep|
-    print dep + ' '
   end
 
-  puts
+  puts @dependencies.join(' ')
+
   print 'Do you agree? [Y/n] '
   response = STDIN.getc
   case response
@@ -1688,12 +1638,50 @@ end
 
 def deps_command(args)
   args["<name>"].each do |name|
-    @dependencies = []
     @pkgName = name
     search @pkgName
-    print_current_package
-    expand_dependencies
-    puts @dependencies
+
+    puts @pkg.get_deps_list( include_build_deps: (args["--include-build-deps"] || 'auto') )
+  end
+end
+
+def deps_tree_command(args)
+  args["<name>"].each do |name|
+    @pkgName = name
+    search @pkgName
+
+    depHash = @pkg.get_deps_list( hash: true, include_build_deps: (args["--include-build-deps"] || 'auto') )
+
+    # convert returned hash to json and format it
+    jsonView = JSON.pretty_generate(depHash)
+
+    # convert formatted json string to tree structure
+    treeView = jsonView.gsub(/\{\s*/m, '└───').gsub(/[\[\]\{\}\,\"\:]/, '').gsub(/^\s*$\n/, '').gsub('   ', ' ').gsub(/\s*$/, '')
+
+    index_with_pipe_char = treeView.lines.map {|line| line.index('└') } .reject(&:nil?).uniq
+
+    treeView = treeView.lines.each_with_index.map do |line, line_i|
+      index_with_pipe_char.each do |char_i|
+        next_arrow_line_offset = treeView.lines[line_i..-1].index {|l| l[char_i] == '└' }
+        have_line_with_non_empty_char = treeView.lines[line_i+1..line_i+next_arrow_line_offset.to_i-1].any? {|l| l[char_i].nil? or l[char_i] =~ /\S/ }
+
+        if next_arrow_line_offset and line[char_i] == ' ' and !have_line_with_non_empty_char
+          line[char_i] = '│'
+        end
+      end
+      next line
+    end.join
+
+    treeView = treeView.lines.each_with_index.map do |line, line_i|
+      orig_arrow_index_start = line.index('└')
+      orig_arrow_index_end = orig_arrow_index_start + 2
+
+      line[orig_arrow_index_start] = '├' if orig_arrow_index_start and treeView.lines[line_i+1].to_s[orig_arrow_index_start] =~ /[└│]/
+      line[orig_arrow_index_end] = '┬' if orig_arrow_index_end and treeView.lines[line_i+1].to_s[orig_arrow_index_end] =~ /[└├]/
+      next line
+    end.join
+
+    puts treeView
   end
 end
 
