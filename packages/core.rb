@@ -69,6 +69,7 @@ class Core < Package
   depends_on 'py3_wheel'
   depends_on 'python2'
   depends_on 'python3'
+  depends_on 'rdfind'
   depends_on 'readline'
   depends_on 'rsync'
   depends_on 'rtmpdump'
