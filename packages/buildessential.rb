@@ -26,6 +26,9 @@ class Buildessential < Package
   depends_on 'pkgconfig'
   depends_on 'binutils'
 
+  # Linkers
+  depends_on 'mold'
+
   # typically required libraries & tools to configure packages
   # e.g. using "./autogen.sh"
   depends_on 'automake'

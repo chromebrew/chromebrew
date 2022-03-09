@@ -220,5 +220,6 @@ CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
 
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
                        `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rsync`.scan(/\t([^ ]+)/).flatten +
+                       `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rdfind`.scan(/\t([^ ]+)/).flatten +
                        %w[libzstd.so.1]
 CREW_ESSENTIAL_FILES.uniq!

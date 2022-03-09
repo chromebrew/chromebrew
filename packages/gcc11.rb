@@ -4,23 +4,23 @@ require 'open3'
 class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.2.1-20220108'
+  version '11.2.1-20220305'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/11-20220108/gcc-11-20220108.tar.xz'
-  source_sha256 'a433837a85087c2357a456145ae140bd588e75d44a90031ed57c29de66e46468'
+  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/11-20220305/gcc-11-20220305.tar.xz'
+  source_sha256 '097a4369fb148044ee82fba5fa15f2224dee01218e0ca997ffcc99dd66eb71b6'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_i686/gcc11-11.2.1-20220108-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_armv7l/gcc11-11.2.1-20220108-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_armv7l/gcc11-11.2.1-20220108-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220108_x86_64/gcc11-11.2.1-20220108-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_armv7l/gcc11-11.2.1-20220305-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_armv7l/gcc11-11.2.1-20220305-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_i686/gcc11-11.2.1-20220305-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_x86_64/gcc11-11.2.1-20220305-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: '96cbdec476c3c75a41ae01e9b63060cca42f5ccb262253840c0083f8f7571a54',
-    aarch64: 'cc48b179ccb035a15042e8a7534366ed0358cb69c84521659f7592b4ce08307b',
-     armv7l: 'cc48b179ccb035a15042e8a7534366ed0358cb69c84521659f7592b4ce08307b',
-     x86_64: 'f54549bbae4b15e8360cb73c72a168e168ce603ab4c16470c1b400efe8ca69f4'
+    aarch64: '1bd3f9ff1a404c1af0dac747766a617d5110375e69f5e81661bb86743b42ac82',
+     armv7l: '1bd3f9ff1a404c1af0dac747766a617d5110375e69f5e81661bb86743b42ac82',
+       i686: '28c70e51a3c97078167f340df22ced293d752b8b166bbf5d914b9a5951d2f9e9',
+     x86_64: '5e8c934ccb5a4a18d7395904f81efbdc8376993f3b83228ebcaa373023ad561a'
   })
 
   depends_on 'ccache' => :build
@@ -32,67 +32,28 @@ class Gcc11 < Package
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
   depends_on 'zstd' # R
+  no_env_options
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
-  @gcc_global_opts = '--disable-bootstrap \
-  --disable-install-libiberty \
-  --disable-libmpx \
-  --disable-libssp \
-  --disable-multilib \
-  --disable-werror \
-  --enable-cet=auto \
-  --enable-checking=release \
-  --enable-clocale=gnu \
-  --enable-default-pie \
-  --enable-default-ssp \
-  --enable-gnu-indirect-function \
-  --enable-gnu-unique-object \
-  --enable-host-shared \
-  --enable-lto \
-  --enable-plugin \
-  --enable-shared \
-  --enable-symvers \
-  --enable-static \
-  --enable-threads=posix \
-  --with-gcc-major-version-only \
-  --with-gmp \
-  --with-isl \
-  --with-mpc \
-  --with-mpfr \
-  --with-pic \
-  --with-system-libunwind \
-  --with-system-zlib'
-
-  @cflags = '-fPIC -pipe'
-  @cxxflags = '-fPIC -pipe'
-  @languages = 'c,c++,jit,objc,fortran,go'
-  case ARCH
-  when 'armv7l', 'aarch64'
-    @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
-  when 'x86_64'
-    @archflags = '--with-arch-64=x86-64'
-  when 'i686'
-    @archflags = '--with-arch-32=i686'
-  end
-
+  # Reimplement gcc preflight section during gcc12 release cycle.
   # def self.preflight
-  ## Use full gcc path to bypass ccache
-  # stdout_and_stderr, status = Open3.capture2e('bash', '-c',
-  # "#{CREW_PREFIX}/bin/gcc -dumpversion 2>&1 | tail -1 | cut -d' ' -f1")
-  # if status.success?
-  # installed_gccver = stdout_and_stderr.chomp
-  ## One gets "-dumpversion" or "bash:" with no gcc installed.
-  # unless installed_gccver.to_s == '-dumpversion' ||
-  # installed_gccver.to_s == 'bash:' ||
-  # installed_gccver.to_s == @gcc_version.to_s ||
-  # installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
-  # warn "GCC version #{installed_gccver} is currently installed.".lightred
-  # warn "To use #{to_s.downcase} please run:".lightgreen
-  # warn "crew remove gcc#{installed_gccver} && crew install #{to_s.downcase}".lightgreen
-  # exit 1
-  # end
-  # end
+  #   # Use full gcc path to bypass ccache
+  #   stdout_and_stderr, status = Open3.capture2e('bash', '-c',
+  #                                               "#{CREW_PREFIX}/bin/gcc -dumpversion 2>&1 | tail -1 | cut -d' ' -f1")
+  #   if status.success?
+  #     installed_gccver = stdout_and_stderr.chomp
+  #     # One gets "-dumpversion" or "bash:" with no gcc installed.
+  #     unless installed_gccver.to_s == '-dumpversion' ||
+  #       installed_gccver.to_s == 'bash:' ||
+  #       installed_gccver.to_s == @gcc_version.to_s ||
+  #       installed_gccver.partition('.')[0].to_s == @gcc_version.partition('.')[0].to_s
+  #       warn "GCC version #{installed_gccver} is currently installed.".lightred
+  #       warn "To use #{to_s.downcase} please run:".lightgreen
+  #       warn "crew remove gcc#{installed_gccver} && crew install #{to_s.downcase}".lightgreen
+  #       exit 1
+  #     end
+  #   end
   # end
 
   def self.patch
@@ -104,6 +65,234 @@ class Gcc11 < Package
     system "grep  -q 4096 libsanitizer/asan/asan_linux.cpp || (sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp &&
     sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp)"
+
+    # Mold patches backported from GCC 12.
+    @mold_patch = <<~MOLD_PATCH_EOF
+      From ca60317a60ee20ce848b36588b905b5a63d81350 Mon Sep 17 00:00:00 2001
+      From: Martin Liska <mliska@suse.cz>
+      Date: Tue, 21 Dec 2021 17:43:55 +0100
+      Subject: [PATCH] Support ld.mold linker.
+
+      gcc/ChangeLog:
+
+      	* collect2.c (main): Add ld.mold.
+      	* common.opt: Add -fuse-ld=mold.
+      	* doc/invoke.texi: Document it.
+      	* gcc.c (driver_handle_option): Handle -fuse-ld=mold.
+      	* opts.c (common_handle_option): Likewise.
+      ---
+       gcc/collect2.c      | 10 +++++++---
+       gcc/common.opt      |  4 ++++
+       gcc/doc/invoke.texi |  4 ++++
+       gcc/gcc.c           |  4 ++++
+       gcc/opts.c          |  1 +
+       5 files changed, 20 insertions(+), 3 deletions(-)
+
+      diff --git a/gcc/collect2.c b/gcc/collect2.c
+      index d47fe3f9195..b322527847c 100644
+      --- a/gcc/collect2.c
+      +++ b/gcc/collect2.c
+      @@ -776,6 +776,7 @@ main (int argc, char **argv)
+             USE_GOLD_LD,
+             USE_BFD_LD,
+             USE_LLD_LD,
+      +      USE_MOLD_LD,
+             USE_LD_MAX
+           } selected_linker = USE_DEFAULT_LD;
+         static const char *const ld_suffixes[USE_LD_MAX] =
+      @@ -784,7 +785,8 @@ main (int argc, char **argv)
+             PLUGIN_LD_SUFFIX,
+             "ld.gold",
+             "ld.bfd",
+      -      "ld.lld"
+      +      "ld.lld",
+      +      "ld.mold"
+           };
+         static const char *const real_ld_suffix = "real-ld";
+         static const char *const collect_ld_suffix = "collect-ld";
+      @@ -957,6 +959,8 @@ main (int argc, char **argv)
+       	  selected_linker = USE_GOLD_LD;
+       	else if (strcmp (argv[i], "-fuse-ld=lld") == 0)
+       	  selected_linker = USE_LLD_LD;
+      +	else if (strcmp (argv[i], "-fuse-ld=mold") == 0)
+      +	  selected_linker = USE_MOLD_LD;
+       	else if (startswith (argv[i], "-o"))
+       	  {
+       	    /* Parse the output filename if it's given so that we can make
+      @@ -1048,7 +1052,7 @@ main (int argc, char **argv)
+         ld_file_name = 0;
+       #ifdef DEFAULT_LINKER
+         if (selected_linker == USE_BFD_LD || selected_linker == USE_GOLD_LD ||
+      -      selected_linker == USE_LLD_LD)
+      +      selected_linker == USE_LLD_LD || selected_linker == USE_MOLD_LD)
+           {
+             char *linker_name;
+       # ifdef HOST_EXECUTABLE_SUFFIX
+      @@ -1283,7 +1287,7 @@ main (int argc, char **argv)
+       	      else if (!use_collect_ld
+       		       && startswith (arg, "-fuse-ld="))
+       		{
+      -		  /* Do not pass -fuse-ld={bfd|gold|lld} to the linker. */
+      +		  /* Do not pass -fuse-ld={bfd|gold|lld|mold} to the linker. */
+       		  ld1--;
+       		  ld2--;
+       		}
+      diff --git a/gcc/common.opt b/gcc/common.opt
+      index 2ed818d6057..dba3fa886f9 100644
+      --- a/gcc/common.opt
+      +++ b/gcc/common.opt
+      @@ -3046,6 +3046,10 @@ fuse-ld=lld
+       Common Driver Negative(fuse-ld=lld)
+       Use the lld LLVM linker instead of the default linker.
+      #{' '}
+      +fuse-ld=mold
+      +Common Driver Negative(fuse-ld=mold)
+      +Use the Modern linker (MOLD) linker instead of the default linker.
+      +
+       fuse-linker-plugin
+       Common Undocumented Var(flag_use_linker_plugin)
+      #{' '}
+      diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+      index e644c63767b..54fa75ba138 100644
+      --- a/gcc/doc/invoke.texi
+      +++ b/gcc/doc/invoke.texi
+      @@ -16266,6 +16266,10 @@ Use the @command{gold} linker instead of the default linker.
+       @opindex fuse-ld=lld
+       Use the LLVM @command{lld} linker instead of the default linker.
+      #{' '}
+      +@item -fuse-ld=mold
+      +@opindex fuse-ld=mold
+      +Use the Modern Linker (@command{mold}) instead of the default linker.
+      +
+       @cindex Libraries
+       @item -l@var{library}
+       @itemx -l @var{library}
+      diff --git a/gcc/gcc.c b/gcc/gcc.c
+      index b75b50b87b2..06e18a75b52 100644
+      --- a/gcc/gcc.c
+      +++ b/gcc/gcc.c
+      @@ -4282,6 +4282,10 @@ driver_handle_option (struct gcc_options *opts,
+              use_ld = ".gold";
+              break;
+      #{' '}
+      +    case OPT_fuse_ld_mold:
+      +       use_ld = ".mold";
+      +       break;
+      +
+           case OPT_fcompare_debug_second:
+             compare_debug_second = 1;
+             break;
+      diff --git a/gcc/opts.c b/gcc/opts.c
+      index e4e47ff77b3..f820052307c 100644
+      --- a/gcc/opts.c
+      +++ b/gcc/opts.c
+      @@ -3105,6 +3105,7 @@ common_handle_option (struct gcc_options *opts,
+           case OPT_fuse_ld_bfd:
+           case OPT_fuse_ld_gold:
+           case OPT_fuse_ld_lld:
+      +    case OPT_fuse_ld_mold:
+           case OPT_fuse_linker_plugin:
+             /* No-op. Used by the driver and passed to us because it starts with f.*/
+             break;
+      --#{' '}
+      2.34.1
+
+      From: Martin Liska <mliska@suse.cz>
+      Date: Thu, 3 Mar 2022 15:47:19 +0100
+      Subject: [PATCH] configure: enable plugin support for ld.mold
+
+      gcc/ChangeLog:
+
+      	* configure.ac: Now ld.mold support LTO plugin API, use it.
+      	* configure: Regenerate.
+      ---
+       gcc/configure    | 2 ++
+       gcc/configure.ac | 2 ++
+       2 files changed, 4 insertions(+)
+
+      diff --git a/gcc/configure b/gcc/configure
+      index 22eb3451e3d..6f5fc20fcf3 100755
+      --- a/gcc/configure
+      +++ b/gcc/configure
+      @@ -26037,6 +26037,8 @@ if test -f liblto_plugin.la; then
+           # Allow -fuse-linker-plugin to enable plugin support in GNU gold 2.20.
+           elif test "$ld_is_gold" = yes -a "$ld_vers_major" -eq 2 -a "$ld_vers_minor" -eq 20; then
+             gcc_cv_lto_plugin=1
+      +    elif test "$ld_is_mold" = yes; then
+      +      gcc_cv_lto_plugin=1
+           fi
+         fi
+      #{' '}
+      diff --git a/gcc/configure.ac b/gcc/configure.ac
+      index 20da90901f8..3d85d33bc80 100644
+      --- a/gcc/configure.ac
+      +++ b/gcc/configure.ac
+      @@ -4278,6 +4278,8 @@ changequote([,])dnl
+           # Allow -fuse-linker-plugin to enable plugin support in GNU gold 2.20.
+           elif test "$ld_is_gold" = yes -a "$ld_vers_major" -eq 2 -a "$ld_vers_minor" -eq 20; then
+             gcc_cv_lto_plugin=1
+      +    elif test "$ld_is_mold" = yes; then
+      +      gcc_cv_lto_plugin=1
+           fi
+         fi
+      #{' '}
+      --#{' '}
+      2.27.0
+      From c083e654bd0f29a365ec957c4c0d4e713fb0b010 Mon Sep 17 00:00:00 2001
+      From: Martin Liska <mliska@suse.cz>
+      Date: Thu, 3 Mar 2022 17:28:45 +0100
+      Subject: [PATCH] configure: use linker plug-in by default for ld.mold
+
+      gcc/ChangeLog:
+
+      	* configure.ac: Use linker plug-in by default.
+      	* configure: Regenerate.
+      ---
+       gcc/configure    | 4 ++--
+       gcc/configure.ac | 4 ++--
+       2 files changed, 4 insertions(+), 4 deletions(-)
+
+      diff --git a/gcc/configure b/gcc/configure
+      index 6f5fc20fcf3..14b19c8fe0c 100755
+      --- a/gcc/configure
+      +++ b/gcc/configure
+      @@ -26034,11 +26034,11 @@ if test -f liblto_plugin.la; then
+           # Require GNU ld or gold 2.21+ for plugin support by default.
+           if test "$ld_vers_major" -eq 2 -a "$ld_vers_minor" -ge 21; then
+             gcc_cv_lto_plugin=2
+      +    elif test "$ld_is_mold" = yes; then
+      +      gcc_cv_lto_plugin=2
+           # Allow -fuse-linker-plugin to enable plugin support in GNU gold 2.20.
+           elif test "$ld_is_gold" = yes -a "$ld_vers_major" -eq 2 -a "$ld_vers_minor" -eq 20; then
+             gcc_cv_lto_plugin=1
+      -    elif test "$ld_is_mold" = yes; then
+      -      gcc_cv_lto_plugin=1
+           fi
+         fi
+      #{' '}
+      diff --git a/gcc/configure.ac b/gcc/configure.ac
+      index 3d85d33bc80..90cad309762 100644
+      --- a/gcc/configure.ac
+      +++ b/gcc/configure.ac
+      @@ -4275,11 +4275,11 @@ changequote([,])dnl
+           # Require GNU ld or gold 2.21+ for plugin support by default.
+           if test "$ld_vers_major" -eq 2 -a "$ld_vers_minor" -ge 21; then
+             gcc_cv_lto_plugin=2
+      +    elif test "$ld_is_mold" = yes; then
+      +      gcc_cv_lto_plugin=2
+           # Allow -fuse-linker-plugin to enable plugin support in GNU gold 2.20.
+           elif test "$ld_is_gold" = yes -a "$ld_vers_major" -eq 2 -a "$ld_vers_minor" -eq 20; then
+             gcc_cv_lto_plugin=1
+      -    elif test "$ld_is_mold" = yes; then
+      -      gcc_cv_lto_plugin=1
+           fi
+         fi
+      #{' '}
+      --#{' '}
+      2.27.0
+    MOLD_PATCH_EOF
+    File.write('mold.patch', @mold_patch)
+    system 'patch -Np1 -F3 -i mold.patch'
   end
 
   def self.prebuild
@@ -137,6 +326,49 @@ class Gcc11 < Package
   end
 
   def self.build
+    @gcc_global_opts = '--disable-bootstrap \
+      --disable-install-libiberty \
+      --disable-libmpx \
+      --disable-libssp \
+      --disable-multilib \
+      --disable-werror \
+      --enable-cet=auto \
+      --enable-checking=release \
+      --enable-clocale=gnu \
+      --enable-default-pie \
+      --enable-default-ssp \
+      --enable-gnu-indirect-function \
+      --enable-gnu-unique-object \
+      --enable-host-shared \
+      --enable-lto \
+      --enable-plugin \
+      --enable-shared \
+      --enable-symvers \
+      --enable-static \
+      --enable-threads=posix \
+      --with-gcc-major-version-only \
+      --with-gmp \
+      --with-isl \
+      --with-mpc \
+      --with-mpfr \
+      --with-pic \
+      --with-system-libunwind \
+      --with-system-zlib'
+
+    @cflags = '-fPIC -pipe'
+    @cxxflags = '-fPIC -pipe'
+    # @languages = 'c,c++,jit,objc,fortran,go'
+    # go build fails on 20220305 snapshot
+    @languages = 'c,c++,jit,objc,fortran'
+    case ARCH
+    when 'armv7l', 'aarch64'
+      @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
+    when 'x86_64'
+      @archflags = '--with-arch-64=x86-64'
+    when 'i686'
+      @archflags = '--with-arch-32=i686'
+    end
+
     # Set ccache sloppiness as per
     # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
     system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
