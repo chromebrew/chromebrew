@@ -25,7 +25,7 @@ class Openmp < Package
   })
 
   depends_on 'libffi'
-  depends_on 'llvm' => ':build'
+  depends_on 'llvm' => :build
 
   def self.build
     Dir.mkdir 'builddir'

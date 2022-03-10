@@ -26,7 +26,7 @@ class Duktape < Package
      x86_64: '5f5787b8f9893d2b838e41c9391022f7fd9f0f7bacf45059b40e061ec7654ed1'
   })
 
-  depends_on 'setconf' => ':build'
+  depends_on 'setconf' => :build
 
   def self.build
     FileUtils.mv 'Makefile.sharedlibrary', 'Makefile'

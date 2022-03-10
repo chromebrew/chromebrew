@@ -24,7 +24,7 @@ class Mold < Package
      x86_64: '622f44f74252163a17a418bdb7efe42c3a59d1956790260666268f462a3b8930'
   })
 
-  depends_on 'xxhash' => ':build'
+  depends_on 'xxhash' => :build
   no_env_options
 
   def self.patch

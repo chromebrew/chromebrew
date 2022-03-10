@@ -31,8 +31,8 @@ class Foot < Package
   depends_on 'utf8proc'
   depends_on 'ncurses'
   depends_on 'fcft'
-  depends_on 'wayland_protocols' => ':build'
-  depends_on 'tllist' => ':build'
+  depends_on 'wayland_protocols' => :build
+  depends_on 'tllist' => :build
 
   def self.patch
     # threads.h was introduced in glibc 2.28. This is a workaround for
