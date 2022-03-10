@@ -3,7 +3,7 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.11.1'
+  version '2.11.1' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
@@ -16,19 +16,26 @@ class Freetype < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.1_x86_64/freetype-2.11.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4c91e5b7cb45c37c7ee444a2cd182e303d5e287727e04facdebecf7071464b78',
-     armv7l: '4c91e5b7cb45c37c7ee444a2cd182e303d5e287727e04facdebecf7071464b78',
-       i686: '20a3049b57dc11db42c30c722ddfa6036845787daecd2c0841160f5a845e652c',
-     x86_64: 'b7fdf58d7b78165226c18223f6c3585cbb14f64212b372f8c352dbbe2a235144'
+    aarch64: '5fb990e84010805de92eda4efac6b0cf183c8dee02eda7b2d1ed183028d0e857',
+     armv7l: '5fb990e84010805de92eda4efac6b0cf183c8dee02eda7b2d1ed183028d0e857',
+       i686: '2961cc77104f9a1eccd75905e957644ef1b21ef93fab368cbd1ed31c022dc43c',
+     x86_64: '3c2492c222856b9a45bc8eaec55398f59e49062f8b3c9e45edc8b129d38c641b'
   })
 
   depends_on 'brotli'
-  depends_on 'expat'
-  depends_on 'libpng'  # freetype needs zlib optionally. zlib is also the dependency of libpng
   depends_on 'bz2'
+  depends_on 'expat'
+  depends_on 'gcc11'
+  depends_on 'glib'
+  depends_on 'graphite'
   depends_on 'harfbuzz'
-  conflicts_ok
+  depends_on 'pcre'
+  depends_on 'zlibpkg'
+  # to avoid resetting mold usage
   no_env_options
+  # This overwrites the freetype in harfbuzz, which have
+  # epicircular dependencies on each other.
+  conflicts_ok
 
   def self.build
     case ARCH
@@ -53,6 +60,7 @@ class Freetype < Package
   end
 
   def self.postinstall
-    system "find #{CREW_BREW_DIR}/* -name freetype*.tar | xargs rm -rf"  # make sure to delete downloaded files
+    # make sure to delete downloaded files
+    system "find #{CREW_BREW_DIR}/* -name freetype*.tar -exec rm -rf {} \+"
   end
 end
