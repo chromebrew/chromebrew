@@ -24,7 +24,7 @@ class Fontconfig < Package
   })
 
   depends_on 'gperf'
-  depends_on 'freetype_sub' => :build
+  depends_on 'harfbuzz' => :build
   depends_on 'jsonc'
   depends_on 'util_linux'
   depends_on 'graphite'
