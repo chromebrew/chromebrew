@@ -364,7 +364,7 @@ def help(pkgName)
 
       If `-t` or `--tree` specified, dependencies will be printed in a tree-structure format
       If `-b` or `--include-build-deps` specified, build dependencies will be included in output
-      It `--exclude-buildessential` specified, `buildessential` and it's dependencies will not be inserted automatically
+      It `--exclude-buildessential` specified, `buildessential` and its dependencies will not be inserted automatically
     EOT
   when "download"
     puts <<~EOT
