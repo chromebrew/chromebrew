@@ -7,7 +7,7 @@ class Freetype < Package
   license 'FTL or GPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
-  git_hashtag "VER-#{version.gsub('.', '-')}"
+  git_hashtag "VER-#{version.tr('.', '-')}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.1_armv7l/freetype-2.11.1-chromeos-armv7l.tar.zst',
