@@ -25,7 +25,7 @@ class Librsvg < Package
   depends_on 'cairo'
   depends_on 'fontconfig'
   depends_on 'freetype'
-  depends_on 'freetype_sub'
+  depends_on 'harfbuzz' => :build
   depends_on 'fribidi'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
