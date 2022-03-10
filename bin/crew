@@ -39,8 +39,8 @@ Usage:
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides [options] <pattern> ...
 
-  -b --include-build-deps  Include build dependencies in output
-  -t --tree                Print dependencies in a tree-structure format
+  -b --include-build-deps  Include build dependencies in output.
+  -t --tree                Print dependencies in a tree-structure format.
   -c --color               Use colors even if standard out is not a tty.
   -d --no-color            Disable colors even if standard out is a tty.
   -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
@@ -360,7 +360,11 @@ def help(pkgName)
   when "deps"
     puts <<~EOT
       Display dependencies of package(s).
-      Usage: crew deps <package1> [<package2> ...]
+      Usage: crew deps [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <package1> [<package2> ...]
+
+      If `-t` or `--tree` specified, dependencies will be printed in a tree-structure format
+      If `-b` or `--include-build-deps` specified, build dependencies will be included in output
+      It `--exclude-buildessential` specified, `buildessential` and it's dependencies will not be inserted automatically
     EOT
   when "download"
     puts <<~EOT
