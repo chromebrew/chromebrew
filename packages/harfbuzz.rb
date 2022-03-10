@@ -17,44 +17,39 @@ class Harfbuzz < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.0.0_x86_64/harfbuzz-4.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0efa561d9870cb8eab422f276de82ecfd37167abe29f8d183f01d6f330536940',
-     armv7l: '0efa561d9870cb8eab422f276de82ecfd37167abe29f8d183f01d6f330536940',
-       i686: 'bfa15553901736cc2a1b05f85b221763c0c3111b8da8bcf19d2c036bb595a8d7',
-     x86_64: '32d005399a05f64424ab682f77550c272f6df0932a7756b91cda3cb2cf732c8a'
+    aarch64: 'e69add397691fe19a99f8edc4978f6edfbd2d152e421b12f369533c49d97831b',
+     armv7l: 'e69add397691fe19a99f8edc4978f6edfbd2d152e421b12f369533c49d97831b',
+       i686: 'f50293058773d244afadb69e3a7935ac86e9ecba0ce099ce72783ff035d1fb61',
+     x86_64: '4cb0f15732365e61b9cc893432a51bb3099bb982208c33f167a7fcf46b376c43'
   })
 
-  depends_on 'cairo' => :build
+
+  # provides libpng, freetype (sans harfbuzz), and ragel
+  # depends_on 'cairo' => :build (only needed for tests and tools)
   depends_on 'chafa' => :build
   depends_on 'glib' => :build
   depends_on 'gobject_introspection'
-  depends_on 'freetype_sub' => :build
-  # Hopefully regular freetype gets pulled in by some other package dep.
   depends_on 'py3_six' => :build
   depends_on 'graphite' => :build
   no_env_options
 
+  def self.patch
+    system "sed -i 's,revision=VER-2-11-0,revision=VER-2-11-1,g' subprojects/freetype2.wrap"
+  end
+
   def self.build
-    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    if @device[:installed_packages].any? do |elem| elem[:name] == 'freetype' end
-      puts 'Please reinstall freetype_sub after other dependencies are installed before building.'.yellow
-    end
-    case ARCH
-    when 'aarch64', 'armv7l'
-      @meson_options = CREW_MESON_OPTIONS
-    when 'i686', 'x86_64'
-      @meson_options = CREW_MESON_OPTIONS.gsub('-Dc_args=\'-O2', '-Dc_args=\'-O2 -fuse-ld=mold').gsub('-Dcpp_args=\'-O2',
-                                                                                                      '-Dcpp_args=\'-O2 -fuse-ld=mold')
-    end
-    system "meson #{@meson_options} \
-    --default-library=both \
-    -Dintrospection=enabled \
-    -Dbenchmark=disabled \
-    -Dtests=disabled \
-    -Dgraphite2=enabled \
-    -Dfreetype=enabled \
-    -Dragel_subproject=true \
-    -Ddocs=disabled \
-    builddir"
+    system "meson #{CREW_MESON_OPTIONS} \
+      --wrap-mode=default \
+      --default-library=both \
+      -Dbenchmark=disabled \
+      -Dcairo=disabled \
+      -Ddocs=disabled \
+      -Dfreetype=enabled \
+      -Dgraphite2=enabled \
+      -Dintrospection=enabled \
+      -Dragel_subproject=true \
+      -Dtests=disabled \
+      builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end
