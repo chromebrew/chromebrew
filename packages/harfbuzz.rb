@@ -17,15 +17,14 @@ class Harfbuzz < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.0.0_x86_64/harfbuzz-4.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e69add397691fe19a99f8edc4978f6edfbd2d152e421b12f369533c49d97831b',
-     armv7l: 'e69add397691fe19a99f8edc4978f6edfbd2d152e421b12f369533c49d97831b',
-       i686: 'f50293058773d244afadb69e3a7935ac86e9ecba0ce099ce72783ff035d1fb61',
-     x86_64: '4cb0f15732365e61b9cc893432a51bb3099bb982208c33f167a7fcf46b376c43'
+    aarch64: 'fd912abd074e585e83fd13ae01cc5b816be8571bac45e0a3b026788456fae979',
+     armv7l: 'fd912abd074e585e83fd13ae01cc5b816be8571bac45e0a3b026788456fae979',
+       i686: '090fb8f6bac5538b809c64c49a1b57c39f14ad958f222899f5201e93f9d85271',
+     x86_64: '41222eb56ead7816f86ed6bb70f710c78799f140c699604d3385cc8b970f79d0'
   })
 
-
   # provides libpng, freetype (sans harfbuzz), and ragel
-  # depends_on 'cairo' => :build (only needed for tests and tools)
+  # depends_on 'cairo' => :build (cairo is only needed for tests and tools)
   depends_on 'chafa' => :build
   depends_on 'glib' => :build
   depends_on 'gobject_introspection'
@@ -34,6 +33,7 @@ class Harfbuzz < Package
   no_env_options
 
   def self.patch
+    # Update to new versions of freetype as they come out.
     system "sed -i 's,revision=VER-2-11-0,revision=VER-2-11-1,g' subprojects/freetype2.wrap"
   end
 
