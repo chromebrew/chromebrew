@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.23.0'
+CREW_VERSION = '1.23.1'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -115,8 +115,14 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_COMMON_FLAGS = '-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=gold'
-CREW_COMMON_FNO_LTO_FLAGS = '-O2 -pipe -fno-lto -fPIC -fuse-ld=gold'
+case ARCH
+when 'aarch64', 'armv7l'
+  CREW_LINKER = 'gold'
+when 'i686', 'x86_64'
+  CREW_LINKER = 'mold'
+end
+CREW_COMMON_FLAGS = "-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER}"
+CREW_COMMON_FNO_LTO_FLAGS = "-O2 -pipe -fno-lto -fPIC -fuse-ld=#{CREW_LINKER}"
 CREW_LDFLAGS = '-flto'
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
