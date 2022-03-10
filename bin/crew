@@ -812,7 +812,7 @@ def download
           system 'git checkout FETCH_HEAD'
         end
         system 'git submodule update --init --recursive'
-        if !!@pkg.git_fetchtags
+        if @pkg.git_fetchtags?
           system 'git fetch --tags', exception: true
         end
         puts 'Repository downloaded.'.lightgreen
