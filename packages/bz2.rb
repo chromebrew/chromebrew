@@ -12,14 +12,14 @@ class Bz2 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_armv7l/bz2-1.0.8-1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_armv7l/bz2-1.0.8-1-chromeos-armv7l.tar.zst',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_i686/bz2-1.0.8-1-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_x86_64/bz2-1.0.8-1-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_i686/bz2-1.0.8-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_x86_64/bz2-1.0.8-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '98fec974c6fda9d4f12988db8eed1338d136fe78866f80047db70fe0bab15bcf',
      armv7l: '98fec974c6fda9d4f12988db8eed1338d136fe78866f80047db70fe0bab15bcf',
-    i686: '2beb95c3ec8455c5eda6a4e6be3baa00a5f8ef24c9561f58750758ba62e9cc8e',
-  x86_64: 'e5dee3da36d88d602496925888f966d47453d4a52e684c4bc6a982906b3b9f32'
+       i686: '2beb95c3ec8455c5eda6a4e6be3baa00a5f8ef24c9561f58750758ba62e9cc8e',
+     x86_64: 'e5dee3da36d88d602496925888f966d47453d4a52e684c4bc6a982906b3b9f32'
   })
 
   def self.patch
