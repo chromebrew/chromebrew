@@ -25,8 +25,7 @@ Usage:
   crew autoremove [options]
   crew build [options] [-k|--keep] <name> ...
   crew const [options] [<name> ...]
-  crew deps [options] [-b|--include-build-deps] <name> ...
-  crew deps_tree [options] [-b|--include-build-deps] <name> ...
+  crew deps [options] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <name> ...
   crew download [options] <name> ...
   crew files [options] <name> ...
   crew help [<command>]
@@ -41,6 +40,7 @@ Usage:
   crew whatprovides [options] <pattern> ...
 
   -b --include-build-deps  Include build dependencies in output
+  -t --tree                Print dependencies in a tree-structure format
   -c --color               Use colors even if standard out is not a tty.
   -d --no-color            Disable colors even if standard out is a tty.
   -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
@@ -1583,6 +1583,83 @@ def remove(pkgName)
   puts "#{pkgName.capitalize} removed!".lightgreen
 end
 
+def print_deps_tree (args)
+  STDERR.puts 'Walking through dependencies recursively, this may take a while...', ''
+
+  # depHash: Hash object returned by @pkg.get_deps_list
+  depHash = @pkg.get_deps_list( hash: true, include_build_deps: (args['--include-build-deps'] || 'auto'), exclude_buildessential: args['--exclude-buildessential'] )
+
+  # convert returned hash to json and format it
+  jsonView = JSON.pretty_generate(depHash)
+
+  # convert formatted json string to tree structure
+  treeView = jsonView.gsub(/\{\s*/m, '└─────').gsub(/[\[\]\{\}\,\"\:]/, '').gsub(/^\s*$\n/, '').gsub(/\s*$/, '')
+
+  # add pipe char to connect endpoints and starting points, improve readability
+  # find the horizontal location of all arrow symbols
+  index_with_pipe_char = treeView.lines.map {|line| line.index('└') } .reject(&:nil?).uniq
+
+  # determine whatever a pipe char should be added according to the horizontal location of arrow symbols
+  treeView = treeView.lines.each_with_index.map do |line, line_i|
+    index_with_pipe_char.each do |char_i|
+      # check if there have any non-space char (pkgNames) between starting point ([line_i][char_i]) and endpoint vertically ([next_arrow_line_offset][char_i])
+      # (used to determine if the starting point and endpoint are in same branch, use pipe char to connect them if true)
+      next_arrow_line_offset = treeView.lines[line_i..-1].index {|l| l[char_i] == '└' }
+      have_line_with_non_empty_char = treeView.lines[line_i+1..line_i+next_arrow_line_offset.to_i-1].any? {|l| l[char_i].nil? or l[char_i] =~ /\S/ }
+
+      if next_arrow_line_offset and line[char_i] == ' ' and !have_line_with_non_empty_char
+        line[char_i] = '│'
+      end
+    end
+    next line
+  end.join
+
+  # replace arrow symbols with a tee symbol on branch intersection
+  treeView = treeView.lines.each_with_index.map do |line, line_i|
+    # orig_arrow_index_connecter: the horizontal location of the arrow symbol used to connect parent branch
+    #
+    # example:
+    # └───┬─chrome
+    #     └─────buildessential
+    #     ^
+    orig_arrow_index_connecter = line.index('└')
+    # orig_arrow_index_newbranch: the horizontal location of the "box drawing char" symbol MIGHT be
+    #                             required to convert to tee char in order to connect child branch,
+    #                             located at 3 chars later of orig_arrow_index_connecter
+    #
+    # example:
+    #     v
+    # └─────chrome
+    #     └─────buildessential
+    #
+    # which might need to be convert to:
+    # └───┬─chrome
+    #     └─────buildessential
+    orig_arrow_index_newbranch = orig_arrow_index_connecter + 4
+
+    # if the char under the processing arrow symbol (orig_arrow_index_connecter) is also arrow or pipe, change the processing char to tee symbol
+    line[orig_arrow_index_connecter] = '├' if orig_arrow_index_connecter and treeView.lines[line_i+1].to_s[orig_arrow_index_connecter] =~ /[└│]/
+    # if the char under the processing arrow symbol (orig_arrow_index_newbranch) is also arrow or pipe, change the processing char to tee symbol
+    line[orig_arrow_index_newbranch] = '┬' if orig_arrow_index_newbranch and treeView.lines[line_i+1].to_s[orig_arrow_index_newbranch] =~ /[└├]/
+    next line # return modified line
+  end.join
+
+  if String.use_color
+    puts <<~EOT, ''
+      #{'purple    -->'; "\e[45m \e[0m"}: satisfied dependency
+      #{'lightcyan -->'; "\e[46m \e[0m"}: build dependency
+      #{'white     -->'; "\e[47m \e[0m"}: runtime dependency
+    EOT
+    # (the first string in each #{} is used for commenting only, will not be included in output)
+
+    # replace special symbols returned by @pkg.get_deps_list to actual color code
+    treeView.gsub!(/\*(.+)\*/, '\1'.lightcyan)
+    treeView.gsub!(/\+(.+)\+/, "\e[45m\\1\e[0m")
+  end
+
+  puts treeView
+end
+
 def autoremove_command(args)
   deps_of_installed_pkgs = @device[:installed_packages].map do |pkg|
     # ignore deleted/non-exist package recipes
@@ -1641,47 +1718,13 @@ def deps_command(args)
     @pkgName = name
     search @pkgName
 
-    puts @pkg.get_deps_list( include_build_deps: (args["--include-build-deps"] || 'auto') )
-  end
-end
-
-def deps_tree_command(args)
-  args["<name>"].each do |name|
-    @pkgName = name
-    search @pkgName
-
-    depHash = @pkg.get_deps_list( hash: true, include_build_deps: (args["--include-build-deps"] || 'auto') )
-
-    # convert returned hash to json and format it
-    jsonView = JSON.pretty_generate(depHash)
-
-    # convert formatted json string to tree structure
-    treeView = jsonView.gsub(/\{\s*/m, '└───').gsub(/[\[\]\{\}\,\"\:]/, '').gsub(/^\s*$\n/, '').gsub('   ', ' ').gsub(/\s*$/, '')
-
-    index_with_pipe_char = treeView.lines.map {|line| line.index('└') } .reject(&:nil?).uniq
-
-    treeView = treeView.lines.each_with_index.map do |line, line_i|
-      index_with_pipe_char.each do |char_i|
-        next_arrow_line_offset = treeView.lines[line_i..-1].index {|l| l[char_i] == '└' }
-        have_line_with_non_empty_char = treeView.lines[line_i+1..line_i+next_arrow_line_offset.to_i-1].any? {|l| l[char_i].nil? or l[char_i] =~ /\S/ }
-
-        if next_arrow_line_offset and line[char_i] == ' ' and !have_line_with_non_empty_char
-          line[char_i] = '│'
-        end
-      end
-      next line
-    end.join
-
-    treeView = treeView.lines.each_with_index.map do |line, line_i|
-      orig_arrow_index_start = line.index('└')
-      orig_arrow_index_end = orig_arrow_index_start + 2
-
-      line[orig_arrow_index_start] = '├' if orig_arrow_index_start and treeView.lines[line_i+1].to_s[orig_arrow_index_start] =~ /[└│]/
-      line[orig_arrow_index_end] = '┬' if orig_arrow_index_end and treeView.lines[line_i+1].to_s[orig_arrow_index_end] =~ /[└├]/
-      next line
-    end.join
-
-    puts treeView
+    if args['--tree']
+      # call `print_deps_tree` (print dependency tree) if --tree is specified
+      print_deps_tree(args)
+    else
+      # print dependencies according to the install order if --tree is not specified
+      puts @pkg.get_deps_list( include_build_deps: (args['--include-build-deps'] || 'auto'), exclude_buildessential: args['--exclude-buildessential'] )
+    end
   end
 end
 
