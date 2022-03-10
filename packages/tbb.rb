@@ -25,7 +25,7 @@ class Tbb < Package
   })
 
   depends_on 'hwloc'
-  depends_on 'swig' => ':build'
+  depends_on 'swig' => :build
 
   def self.build
     @tbb_cmake_options = if ARCH == 'i686'

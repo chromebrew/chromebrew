@@ -25,9 +25,9 @@ class Sratom < Package
   })
 
   depends_on 'lv2'
-  depends_on 'serd' => ':build'
-  depends_on 'sord' => ':build'
-  depends_on 'waf' => ':build'
+  depends_on 'serd' => :build
+  depends_on 'sord' => :build
+  depends_on 'waf' => :build
 
   def self.build
     # let wscript(s) find the custom waf scripts

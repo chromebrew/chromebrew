@@ -29,7 +29,7 @@ class Fcft < Package
   depends_on 'harfbuzz'
   depends_on 'utf8proc'
   depends_on 'pixman'
-  depends_on 'tllist' => ':build'
+  depends_on 'tllist' => :build
 
   def self.patch
     # threads.h was introduced in glibc 2.28. This is a workaround for

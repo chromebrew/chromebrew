@@ -26,9 +26,9 @@ class Hwloc < Package
 
   depends_on 'libtool'
   depends_on 'libpciaccess'
-  depends_on 'cairo' => ':build'
-  depends_on 'libxml2' => ':build'
-  depends_on 'pciutils' => ':build'
+  depends_on 'cairo' => :build
+  depends_on 'libxml2' => :build
+  depends_on 'pciutils' => :build
 
   def self.build
     system './autogen.sh'
