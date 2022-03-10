@@ -26,9 +26,9 @@ class Lv2 < Package
 
   depends_on 'gtk2'
   depends_on 'py3_pygments' => :build
-  depends_on 'asciidoc' => ':build'
-  depends_on 'doxygen' => ':build'
-  depends_on 'libsndfile' => ':build'
+  depends_on 'asciidoc' => :build
+  depends_on 'doxygen' => :build
+  depends_on 'libsndfile' => :build
 
   def self.build
     # let wscript(s) find the custom waf scripts

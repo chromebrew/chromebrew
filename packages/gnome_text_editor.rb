@@ -31,10 +31,10 @@ class Gnome_text_editor < Package
   depends_on 'pango'
   depends_on 'pcre'
   depends_on 'pygobject'
-  depends_on 'yelp_tools' => ':build'
-  depends_on 'vala' => ':build'
-  depends_on 'gobject_introspection' => ':build'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'yelp_tools' => :build
+  depends_on 'vala' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

@@ -26,7 +26,7 @@ class Sord < Package
 
   depends_on 'serd'
   depends_on 'pcre'
-  depends_on 'waf' => ':build'
+  depends_on 'waf' => :build
 
   def self.build
     # let wscript(s) find the custom waf scripts
