@@ -29,7 +29,98 @@ class Package
     # base class.  Instead of define it, we initialize it in a function
     # called from derived classees.
     @dependencies ||= Hash.new
-    @dependencies
+  end
+
+  def self.get_deps_list (pkgName = self.name, hash: false, include_build_deps: 'auto', include_self: false,
+                          pkgTags: [], highlight_build_deps: true, exclude_buildessential: false, top_level: true)
+    # get_deps_list: get dependencies list of pkgName (current package by default)
+    #
+    #                pkgName: package to check dependencies, current package by default
+    #                   hash: return result in nested hash, used by `print_deps_tree` (`bin/crew`)
+    #
+    #     include_build_deps: if set to true, force all build dependencies to be returned.
+    #                         if set to false, all build dependencies will not be returned
+    #                         if set to "auto" (default), return build dependencies if pre-built binaries not available
+    #
+    #           include_self: include #{pkgName} itself in returned result, only used in recursive calls (see `expandedDeps` below)
+    #   highlight_build_deps: include corresponding symbols in return value, you can convert it to actual ascii color codes later
+    # exclude_buildessential: do not insert `buildessential` dependency automatically
+    #
+    #              top_level: if set to true, return satisfied dependencies 
+    #                         (dependencies that might be a sub-dependency of a dependency that checked before),
+    #                         always set to false if this function is called in recursive loop (see `expandedDeps` below)
+    #
+    @checked_list ||= Hash.new # create @checked_list placeholder if not exist
+
+    # add current package to @checked_list for preventing extra checks
+    @checked_list.merge!({ pkgName => pkgTags })
+
+    pkgObj = Object.const_get(pkgName.capitalize)
+    is_source = pkgObj.is_source?(ARCH.to_sym) or pkgObj.build_from_source
+    deps = pkgObj.dependencies
+
+    # append buildessential to deps if building from source is needed/specified
+    if ( include_build_deps == true or (include_build_deps == 'auto' and is_source) ) and \
+       !exclude_buildessential and \
+       !@checked_list.keys.include?('buildessential')
+
+      deps = ({ 'buildessential' => [ :build ] }).merge(deps)
+    end
+
+    # parse dependencies recursively
+    expandedDeps = deps.uniq.map do |dep, depTags|
+                     # check build dependencies only if building from source is needed/specified
+                     if include_build_deps == true or \
+                        (include_build_deps == 'auto' and is_source) or \
+                        !depTags.include?(:build)
+
+                       # overwrite tags if parent dependency is a build dependency
+                       # (for build dependencies highlighting)
+                       tags = (pkgTags.include?(:build)) ? pkgTags : depTags
+
+                       if @checked_list.keys.none?(dep)
+                         require_relative "#{CREW_PACKAGES_PATH}/#{dep}.rb"
+                         # check dependency by calling this function recursively
+                         next send(__method__, dep,
+                                                     hash: hash,
+                                                  pkgTags: tags,
+                                       include_build_deps: include_build_deps,
+                                     highlight_build_deps: highlight_build_deps,
+                                   exclude_buildessential: exclude_buildessential,
+                                             include_self: true,
+                                                top_level: false
+                                  )
+
+                       elsif hash and top_level
+                         # will be dropped here if current dependency is already checked and #{top_level} is set to true
+                         #
+                         # the '+' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "satisfied dependency"
+                         # the '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "build dependency"
+                         if highlight_build_deps and tags.include?(:build)
+                           next { "+*#{dep}*+" => [] }
+                         elsif highlight_build_deps
+                           next { "+#{dep}+" => [] }
+                         else
+                           next { dep => [] }
+                         end
+                       end
+                     end
+                   end.reject(&:nil?)
+
+    if hash
+      # the '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "build dependency"
+      if highlight_build_deps and pkgTags.include?(:build)
+        return { "*#{pkgName}*" => expandedDeps }
+      else
+        return { pkgName => expandedDeps }
+      end
+    elsif include_self
+      # return pkgName itself if this function is called as a recursive loop (see `expandedDeps`)
+      return [ expandedDeps, pkgName ].flatten
+    else
+      # if this function is called outside of this function, return parsed dependencies only
+      return expandedDeps.flatten
+    end
   end
 
   boolean_property.each do |prop|
