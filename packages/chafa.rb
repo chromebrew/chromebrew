@@ -28,7 +28,7 @@ class Chafa < Package
   depends_on 'imagemagick7' => :build
   depends_on 'freetype_sub' => :build
   depends_on 'libxslt'
-  depends_on 'gtk_doc' => ':build'
+  depends_on 'gtk_doc' => :build
 
   def self.patch
     system 'filefix'

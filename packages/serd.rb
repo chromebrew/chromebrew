@@ -24,7 +24,7 @@ class Serd < Package
      x86_64: '9d44f52a0f18e146458ccb8ef8478be1cba0e1fcd1d1ed76743bbd10d861bb4d'
   })
 
-  depends_on 'waf' => ':build'
+  depends_on 'waf' => :build
 
   def self.build
     # let wscript(s) find the custom waf scripts
