@@ -3,30 +3,31 @@ require 'package'
 class Libxdmcp < Package
   description 'The libXdmcp package contains a library implementing the X Display Manager Control Protocol.'
   homepage 'http://www.x.org'
-  @_ver = '1.1.3'
-  version "#{@_ver}-2"
+  @_ver = '4a71fdf'
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git'
-  git_hashtag "libXdmcp-#{@_ver}"
+  git_hashtag '4a71fdf6d34df67d3f1335590da6ae3050128fb2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-2_armv7l/libxdmcp-1.1.3-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-2_armv7l/libxdmcp-1.1.3-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-2_i686/libxdmcp-1.1.3-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/1.1.3-2_x86_64/libxdmcp-1.1.3-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/4a71fdf_armv7l/libxdmcp-4a71fdf-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/4a71fdf_armv7l/libxdmcp-4a71fdf-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/4a71fdf_i686/libxdmcp-4a71fdf-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/4a71fdf_x86_64/libxdmcp-4a71fdf-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a1540e554724bfb3f0eb2525e332c6a5b47d15827596c5d163af7b6efb7c16dd',
-     armv7l: 'a1540e554724bfb3f0eb2525e332c6a5b47d15827596c5d163af7b6efb7c16dd',
-       i686: 'c638d631e3b94580f8e4060a561bf1867e9daaf3ea05d3015469a982bf88b1ca',
-     x86_64: '7567bb45cc60b081c21b72c1526ffb3f9b5bb1016bb3737405bbcd5a4a85a3b7'
+    aarch64: '591a059b27c7095f45adf57a4d1ac4b045fb2e6be8ea55bac8aa2b2eef1b3c16',
+     armv7l: '591a059b27c7095f45adf57a4d1ac4b045fb2e6be8ea55bac8aa2b2eef1b3c16',
+       i686: 'a91f416ab907be4f4183b4c5da505e4d25586736b22185e3f58b64c36a1f9ca1',
+     x86_64: '553304325808a09bc564a989a1e727046000b892ce75d1dec437df7d67ade648'
   })
 
   depends_on 'xorg_proto'
 
   def self.build
     system './autogen.sh'
+    system 'filefix'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
