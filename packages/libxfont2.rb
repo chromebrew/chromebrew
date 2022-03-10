@@ -26,7 +26,7 @@ class Libxfont2 < Package
   depends_on 'libxtrans'
   depends_on 'libfontenc'
   depends_on 'libx11'
-  depends_on 'freetype_sub'
+  depends_on 'harfbuzz' => :build
   depends_on 'xmlto' => :build
 
   def self.build

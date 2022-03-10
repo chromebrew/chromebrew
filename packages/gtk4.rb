@@ -120,7 +120,7 @@ class Gtk4 < Package
     system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
     # update icon cache, but only if gdk_pixbuf is already installed.
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    return unless @device[:installed_packages].any? 'gdk_pixbuf'
+    return unless @device[:installed_packages].any? do |elem| elem[:name] == 'gdk_pixbuf' end
 
     system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end
