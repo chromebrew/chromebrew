@@ -115,7 +115,7 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-unless ENV['CREW_LINKER'].to_s.empty?
+if ENV['CREW_LINKER'].to_s.empty?
   case ARCH
   when 'aarch64', 'armv7l'
     CREW_LINKER = 'gold'
