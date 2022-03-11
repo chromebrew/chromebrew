@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.23.0'
+CREW_VERSION = '1.23.1'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -115,9 +115,23 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-CREW_COMMON_FLAGS = '-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=gold'
-CREW_COMMON_FNO_LTO_FLAGS = '-O2 -pipe -fno-lto -fPIC -fuse-ld=gold'
-CREW_LDFLAGS = '-flto'
+if ENV['CREW_LINKER'].to_s.empty?
+  case ARCH
+  when 'aarch64', 'armv7l'
+    CREW_LINKER = 'gold'
+    CREW_LINKER_FLAGS = "-Wl,--threads -Wl,--thread-count,#{CREW_NPROC}"
+  when 'i686', 'x86_64'
+    CREW_LINKER = 'mold'
+    CREW_LINKER_FLAGS = ''
+  end
+else
+  CREW_LINKER = ENV['CREW_LINKER']
+  CREW_LINKER_FLAGS = ENV['CREW_LINKER_FLAGS']
+end
+
+CREW_COMMON_FLAGS = "-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_COMMON_FNO_LTO_FLAGS = "-O2 -pipe -fno-lto -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_LDFLAGS = "-flto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
 unless CREW_DISABLE_ENV_OPTIONS
@@ -214,9 +228,6 @@ PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
 PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
-
-CREW_FIRST_PACKAGES = %w[libssh curl git pixz shared_mime_info]
-CREW_LAST_PACKAGES = %w[ghc mandb gtk3 gtk4 sommelier]
 
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
                        `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rsync`.scan(/\t([^ ]+)/).flatten +

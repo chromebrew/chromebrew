@@ -18,9 +18,10 @@ class Sommelier < Package
   binary_sha256({
     aarch64: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
      armv7l: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
-       i686: 'b370bc7c96b6018b3c348ee37262eee7981af0b32520649c3e6d2f8680d6e753',
+       i686: '3e1d4d7cae1551bb3f53f91b3eef887c1e13b34d1feeb1b4706d1f5382b70a3f',
      x86_64: '32ad19aba00b96889c936c8efec6e09c7eb739a5863742f4537d4bed91e306bc'
   })
+
 
   depends_on 'libdrm'
   depends_on 'libxcb'
@@ -43,7 +44,7 @@ class Sommelier < Package
   when 'armv7l', 'aarch64'
     @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
   when 'i686'
-    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
+    @peer_cmd_prefix = '/lib/ld-linux.so.2'
   when 'x86_64'
     @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end

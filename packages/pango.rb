@@ -3,24 +3,24 @@ require 'package'
 class Pango < Package
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'http://www.pango.org/'
-  @_ver = '1.49.1'
-  version "#{@_ver}-1"
+  @_ver = '1.50.5'
+  version @_ver
   license 'LGPL-2+ and FTL'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1-1_armv7l/pango-1.49.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1-1_armv7l/pango-1.49.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1-1_i686/pango-1.49.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.49.1-1_x86_64/pango-1.49.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.5_armv7l/pango-1.50.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.5_armv7l/pango-1.50.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.5_i686/pango-1.50.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.5_x86_64/pango-1.50.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5ac0e10a9a277da0c66477d153787f491ffc5c6a7c7fb8fd7329f939ab4601f2',
-     armv7l: '5ac0e10a9a277da0c66477d153787f491ffc5c6a7c7fb8fd7329f939ab4601f2',
-       i686: '5017a2dd7da73298ea89400e8be15d546e4cb5aa07f2bc253cd1aadfa762b1e1',
-     x86_64: '99a850bbfbac333ae89ec458a4a65109c341d3953e233149a25db960c2e27de5'
+    aarch64: 'f8b38d2b96f4da443d316f4fd45137324f51c91394c1e9c2a1849b1e04213ad2',
+     armv7l: 'f8b38d2b96f4da443d316f4fd45137324f51c91394c1e9c2a1849b1e04213ad2',
+       i686: '6e6c1b69695ba150cbeb20b72a57fc9de5f585a7d46432c2a1bc8c72d91af0a3',
+     x86_64: 'e0ac8c3dd0b95e6db046d2c3e68536d903a8ba8671dc01e1914852912e3ea082'
   })
 
   depends_on 'cairo'
