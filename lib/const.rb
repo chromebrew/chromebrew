@@ -126,6 +126,7 @@ unless ENV['CREW_LINKER'].to_s.empty?
   end
 else
   CREW_LINKER = ENV['CREW_LINKER']
+  CREW_LINKER_FLAGS = ENV['CREW_LINKER_FLAGS']
 end
 
 CREW_COMMON_FLAGS = "-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
