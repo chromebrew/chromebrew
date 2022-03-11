@@ -122,6 +122,6 @@ class Gtk4 < Package
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
     return unless @device[:installed_packages].any? { |elem| elem[:name] == 'gdk_pixbuf' }
 
-    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
+    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
   end
 end
