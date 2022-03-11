@@ -115,11 +115,15 @@ when 'x86_64'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
 end
 
-case ARCH
-when 'aarch64', 'armv7l'
-  CREW_LINKER = 'gold'
-when 'i686', 'x86_64'
-  CREW_LINKER = 'mold'
+unless ENV['CREW_LINKER'].to_s.empty?
+  case ARCH
+  when 'aarch64', 'armv7l'
+    CREW_LINKER = 'gold'
+  when 'i686', 'x86_64'
+    CREW_LINKER = 'mold'
+  end
+else
+  CREW_LINKER = ENV['CREW_LINKER']
 end
 CREW_COMMON_FLAGS = "-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER}"
 CREW_COMMON_FNO_LTO_FLAGS = "-O2 -pipe -fno-lto -fPIC -fuse-ld=#{CREW_LINKER}"
