@@ -231,5 +231,5 @@ PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version
 
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
                        `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rsync`.scan(/\t([^ ]+)/).flatten +
-                       %W[libzstd.so.1 libstdc++.so.6 #{CREW_PREFIX}/bin/rsync]
+                       %W[libzstd.so.1 libstdc++.so.6]
 CREW_ESSENTIAL_FILES.uniq!
