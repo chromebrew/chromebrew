@@ -24,7 +24,7 @@ class Containers_common < Package
   })
 
   depends_on 'netavark'
-  depends_on 'go_md2man' => ':build'
+  depends_on 'go_md2man' => :build
 
   def self.build
     @image_version = 'v5.20.0'
@@ -32,31 +32,26 @@ class Containers_common < Package
     @shortnames_version = 'v2022.02.08'
     @skopeo_version = 'v1.6.1'
     @storage_version = 'v1.38.2'
-    Dir.chdir 'docs' do
-      system 'for _man_page in *.md
-      do
-        go-md2man -in $_man_page -out ${_man_page//.md}
-      done'
+    
+    Dir.glob('docs/*.md') do |_man_page|
+      system "go-md2man -in #{_man_page} -out #{File.basename(_man_page, '.md')}"
     end
+
     FileUtils.mkdir_p 'git'
     Dir.chdir 'git' do
       system "git clone --depth 1 --branch #{@image_version} https://github.com/containers/image.git"
       Dir.chdir 'image/docs' do
         FileUtils.mkdir_p 'man5'
-        FileUtils.mv Dir.glob('*.5.md'), 'man5/'
-        system 'for _man_page in *.md
-        do
-          go-md2man -in $_man_page -out ${_man_page//.md}.1
-        done'
-        system 'for _man_page in man5/*.md
-        do
-          go-md2man -in $_man_page -out ${_man_page//.md}
-        done'
+        FileUtils.mv Dir['*.5.md'], 'man5/'
+
+        Dir.glob('*.md', 'man5/*.md') do |_man_page|
+          system "go-md2man -in #{_man_page} -out #{File.basename(_man_page, '.md')}.1"
+        end
       end
+
       system "git clone --depth 1 --branch #{@podman_version} https://github.com/containers/podman.git"
-      Dir.chdir 'podman' do
-        system 'go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out oci-hooks.5'
-      end
+      system 'go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out oci-hooks.5', chdir: 'podman'
+
       system "git clone --depth 1 --branch #{@shortnames_version} https://github.com/containers/shortnames.git"
       system "git clone --depth 1 --branch #{@skopeo_version} https://github.com/containers/skopeo.git"
       system "git clone --depth 1 --branch #{@storage_version} https://github.com/containers/storage.git"
