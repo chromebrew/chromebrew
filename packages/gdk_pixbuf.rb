@@ -10,6 +10,19 @@ class Gdk_pixbuf < Package
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6-1_armv7l/gdk_pixbuf-2.42.6-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6-1_armv7l/gdk_pixbuf-2.42.6-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6-1_i686/gdk_pixbuf-2.42.6-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.6-1_x86_64/gdk_pixbuf-2.42.6-1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '1c577ba59a852aaaffd4612ef72396b2d37f44c3cf81fcee85376b8b14b3bb7f',
+     armv7l: '1c577ba59a852aaaffd4612ef72396b2d37f44c3cf81fcee85376b8b14b3bb7f',
+       i686: '4aa97c61517ec11c151336b3a9ec9cd64db27f79bff70f321b0807effd5f663e',
+     x86_64: '441ce2ef5883ca7f98671f44498cc66f7f2be344473fd911c307d06c794e0f0f'
+  })
+
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'harfbuzz' # R

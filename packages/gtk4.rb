@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.6.0'
+  @_ver = '4.6.1'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_armv7l/gtk4-4.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_armv7l/gtk4-4.6.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_i686/gtk4-4.6.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.0_x86_64/gtk4-4.6.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_armv7l/gtk4-4.6.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_armv7l/gtk4-4.6.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_i686/gtk4-4.6.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_x86_64/gtk4-4.6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a90c62de22c3e1bda68d5f1618a323f1dffd26a4cbdcc50cbd7b2a913e868f65',
-     armv7l: 'a90c62de22c3e1bda68d5f1618a323f1dffd26a4cbdcc50cbd7b2a913e868f65',
-       i686: 'e5d022bb65e8346015ca25d26101a04307b59aa467ec2e29a2c1360ef2d1abd6',
-     x86_64: '2903de6c81e7d7fecba9a3ff6aa5425fce0f61a2ddb1eb5a6a9ae305cc982d30'
+    aarch64: '0822c46fdce44847664517eede126d7c4dde04f2a912c7ee395761e2a015365e',
+     armv7l: '0822c46fdce44847664517eede126d7c4dde04f2a912c7ee395761e2a015365e',
+       i686: '82c907d171ed166e98e420b10766ac85066f8f6154afc0c499b7bf2bd11cfbab',
+     x86_64: '348f052b349e1cecf1cb82396b8e999a43bc35f50ee2e2e48e8ec442175a955c'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -120,7 +120,7 @@ class Gtk4 < Package
     system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
     # update icon cache, but only if gdk_pixbuf is already installed.
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    return unless @device[:installed_packages].any? do |elem| elem[:name] == 'gdk_pixbuf' end
+    return unless @device[:installed_packages].any? { |elem| elem[:name] == 'gdk_pixbuf' }
 
     system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end

@@ -11,6 +11,19 @@ class Gtk3 < Package
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_armv7l/gtk3-3.24.33-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_armv7l/gtk3-3.24.33-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_i686/gtk3-3.24.33-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_x86_64/gtk3-3.24.33-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '651888d424ed031a023d9d7473bb2cb8f3996e4aeac262fa6bbad4c6643ddf22',
+     armv7l: '651888d424ed031a023d9d7473bb2cb8f3996e4aeac262fa6bbad4c6643ddf22',
+       i686: '6c62f793c25f0bbae8b1d7df68f1f187a315aaf2791a49ee74265d91fcbc7590',
+     x86_64: '433d3ec60a0582d31cc70f9b041ca309b7bc3182cafe2abc2ff759f3a1e2bb23'
+  })
+
   # L = Logical Dependency, R = Runtime Dependency
   depends_on 'adwaita_icon_theme' # L
   depends_on 'atk' # R
@@ -99,7 +112,7 @@ class Gtk3 < Package
     system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
     # update icon cache, but only if gdk_pixbuf is already installed.
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    return unless @device[:installed_packages].any? do |elem| elem[:name] == 'gdk_pixbuf' end
+    return unless @device[:installed_packages].any? { |elem| elem[:name] == 'gdk_pixbuf' }
 
     system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end

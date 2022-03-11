@@ -3,29 +3,29 @@ require 'package'
 class Cairo < Package
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
-  version '1.17.5-a047'
+  version '1.17.5-ec54603'
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
-  git_hashtag 'a04786b9330109ce54bf7f65c7068281419cec6a'
+  git_hashtag 'ec54603366a39a5ad12c489aaf0bbb85859fa7a9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-a047_armv7l/cairo-1.17.5-a047-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-a047_armv7l/cairo-1.17.5-a047-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-a047_i686/cairo-1.17.5-a047-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-a047_x86_64/cairo-1.17.5-a047-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-ec54603_armv7l/cairo-1.17.5-ec54603-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-ec54603_armv7l/cairo-1.17.5-ec54603-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-ec54603_i686/cairo-1.17.5-ec54603-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-ec54603_x86_64/cairo-1.17.5-ec54603-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '77e9eb5646d4c3db1faaf63223027bffb79cb4353a97dc1cabe94debfa8604a8',
-     armv7l: '77e9eb5646d4c3db1faaf63223027bffb79cb4353a97dc1cabe94debfa8604a8',
-       i686: 'cc91b1482cf26d5eb23b88225f644f364e721c5fabe213a132da88444c13ade4',
-     x86_64: '9d24a1127d2d7103a0be565bf773c8f49952524c53b8a17c356ea30b213b911c'
+    aarch64: '1afe2c4afb826e35c549f786db7983a961a7cb1ca14d079ee448463949ad4626',
+     armv7l: '1afe2c4afb826e35c549f786db7983a961a7cb1ca14d079ee448463949ad4626',
+       i686: 'cbd2b8faf20bbc08751be0e2e37d38d8df6007b93b46ec82c06a8878c730a06e',
+     x86_64: 'bf0cf34ce1bced53bb91aa0d43c0769c436afea02c78773d2ccdb1ad40c4f105'
   })
 
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'glib'
-  depends_on 'libpng'
+  depends_on 'harfbuzz'
   depends_on 'libx11'
   depends_on 'libxcb'
   depends_on 'libxrender'
