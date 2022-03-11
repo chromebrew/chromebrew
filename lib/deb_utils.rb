@@ -28,7 +28,7 @@ module DebUtils
       name.sub!(/\/$/, '')
 
       # check ending byte
-      abort 'Malformed archive :/' unless end_char == '`'
+      abort 'Malformed archive :/'.lightred unless end_char == '`'
 
       # capture file in archive with given offset bytes (file size)
       fileContent = src_fileIO.read(size.to_i)
