@@ -34,7 +34,7 @@ class Glew < Package
   end
 
   def self.build
-    ENV['GLEW_DEST'] = CREW_PREFIX.to_s
+    ENV['GLEW_DEST'] = CREW_PREFIX
     Dir.chdir 'glew-2.2.0/build' do
       system "cmake #{CREW_CMAKE_OPTIONS} cmake"
       system 'make', 'SYSTEM=linux-egl'
