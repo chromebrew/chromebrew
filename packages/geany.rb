@@ -39,8 +39,7 @@ class Geany < Package
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "#{CREW_ENV_OPTIONS} \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS} \
       --enable-api-docs=no \
       --enable-html-docs=no \
