@@ -15,7 +15,7 @@ module DebUtils
     # get first line of the given file, should be a signature string (`!<arch>\n`) if it is a valid deb file
     signature = src_fileIO.gets
 
-    abort 'Malformed archive :/' unless signature == "!<arch>\n"
+    abort 'Malformed archive :/'.lightred unless signature == "!<arch>\n"
 
     # process each file in archive
     while (line = src_fileIO.gets) do
