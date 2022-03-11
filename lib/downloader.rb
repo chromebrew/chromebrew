@@ -11,12 +11,13 @@ def setTermSize
   # get terminal window size
   begin
     @termH, @termW = IO.console.winsize
-  rescue => e
-    puts "Non-interactive terminals may not be able to be queried for size."
-    # @termW = %x[tput cols].chomp.to_i
-    # @termH = %x[tput lines].chomp.to_i
-    @termW = 80
-    @termH = 25
+  rescue NoMethodError => e
+    unless @warned
+      STDERR.puts 'Non-interactive terminals may not be able to be queried for size.'
+      @warned = true
+    end
+
+    @termH, @termW = [ 25, 80 ]
   end
   # space for progress bar after minus the reserved space for showing
   # the file size and progress percentage
@@ -24,34 +25,41 @@ def setTermSize
   return true
 end
 
-def downloader (url, filename = File.basename(url), retry_count = 0, verbose = false)
+def downloader (*args)
   setTermSize
   # reset width settings after terminal resized
   trap('WINCH') { setTermSize }
-  uri = URI(url)
 
-  case uri.scheme
-  when /http?/
-  when 'file'
-    # use FileUtils to copy if it is a local file (the url protocol is file://)
-    if File.exist?(uri.path)
-      return FileUtils.cp uri.path, filename
+  uri = URI(args[0]) # read url from given params
+
+  unless CREW_USE_CURL or !ENV['CREW_DOWNLOADER'].to_s.empty?
+    case uri.scheme
+    when 'http', 'https'
+      # use net/http if the url protocol is http(s)://
+      http_downloader(*args)
+    when 'file'
+      # use FileUtils to copy if it is a local file (the url protocol is file://)
+      if File.exist?(uri.path)
+        return FileUtils.cp uri.path, filename
+      else
+        abort "#{uri.path}: File not found :/".lightred
+      end
     else
-      abort "#{uri.path}: File not found :/".lightred
+      # use external downloader (curl by default) if the url protocol is not http(s):// or file://
+      external_downloader(*args)
     end
   else
-    # fallback to curl if the url protocol is not http(s):// or file://
-    0.step(3,1) do |i|
-      unless system "#{CURL} --ssl -#L -C - '#{uri.to_s}' -o '#{filename}'"
-        puts "Retrying, #{3-i} retries left.".yellow
-      else
-        return true
-      end
-    end
-    # the download failed if we're still here
-    abort 'Download failed :/ Please check your network settings.'.lightred
+    # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
+    external_downloader(*args)
   end
+end
 
+def http_downloader (url, filename = File.basename(url), retry_count = 0, verbose = false)
+  # http_downloader: Downloader based on net/http library
+
+  uri = URI(url)
+
+  # open http connection
   Net::HTTP.start(uri.host, uri.port, {
       max_retries: 3,
       use_ssl: uri.scheme.eql?('https'),
@@ -60,7 +68,7 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
   }) do |http|
     http.request( Net::HTTP::Get.new(uri) ) do |response|
       case
-      when response.is_a?(Net::HTTPOK)
+      when response.is_a?(Net::HTTPSuccess)
       when response.is_a?(Net::HTTPRedirection) # follow HTTP redirection
         puts <<~EOT if verbose
           * Follow HTTP redirection: #{response['Location']}
@@ -68,6 +76,8 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
         EOT
 
         redirect_uri = URI(response['Location'])
+
+        # add url scheme/host for redirected url based on original url if missing
         redirect_uri.scheme ||= uri.scheme
         redirect_uri.host ||= uri.host
 
@@ -77,8 +87,8 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
       end
 
       # get target file size (should be returned by the server)
-      file_size = response['Content-Length'].to_i
-      downloaded_size = 0
+      file_size = response['Content-Length'].to_f
+      downloaded_size = 0.0
 
       if verbose
         puts <<~EOT
@@ -87,28 +97,44 @@ def downloader (url, filename = File.basename(url), retry_count = 0, verbose = f
           *
         EOT
 
-        response.to_hash.each_pair do |k, v|
-          puts "> #{k}: #{v}"
-        end
+        # parse response's header to readable format
+        response.to_hash.each_pair {|k, v| puts "> #{k}: #{v}" }
+
         puts
       end
 
+      # read file chunks from server, write it to filesystem
       File.open(filename, 'wb') do |io|
         response.read_body do |chunk|
-          downloaded_size += chunk.size
+          downloaded_size += chunk.size # record downloaded size, used for showing progress bar
           if file_size.positive?
             # calculate downloading progress percentage with the given file size
-            percentage = (downloaded_size.to_f / file_size.to_f) * 100
+            percentage = (downloaded_size / file_size) * 100
             # show progress bar, file size and progress percentage
-            printf "\r[%-#{@progBarW}s] %9.9s %3d%%",
+            printf "\r""[%-#{@progBarW}.#{@progBarW}s] %9.9s %3d%%",
                    '#' * ( @progBarW * (percentage / 100) ).to_i,
                    human_size(file_size),
                    percentage
           end
-          io.write(chunk)
+          io.write(chunk) # write to file
         end
       end
       puts
     end
   end
+end
+
+def external_downloader (url, filename = File.basename(url), retry_count = 0, verbose = false)
+  # external_downloader: wrapper for external downloaders in CREW_DOWNLOADER (curl by default)
+
+  # default curl cmdline, CREW_DOWNLOADER should be in this format also
+  #   %<verbose>s: Will be substitute to "--verbose" if #{verbose} set to true, otherwise will be substitute to ""
+  #       %<url>s: Will be substitute to #{url}
+  #    %<output>s: Will be substitute to #{filename}
+  curl_cmdline = 'curl %<verbose>s -L -# --ssl --retry 3 %<url>s -o %<output>s'
+
+  # use CREW_DOWNLOADER if specified, use curl by default
+  downloader_cmdline = CREW_DOWNLOADER || curl_cmdline
+
+  return system (downloader_cmdline % { verbose: verbose ? '--verbose' : '', url: url, output: filename}), exception: true
 end

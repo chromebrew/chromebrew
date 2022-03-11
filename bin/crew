@@ -704,12 +704,7 @@ def download
         end
       end
       # Download file if not cached.
-      # use curl if CREW_USE_CURL environment variable is set to 1
-      unless CREW_USE_CURL
-        downloader url, filename, @opt_verbose
-      else
-        system "curl --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
-      end
+      downloader url, filename, @opt_verbose
 
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
@@ -735,12 +730,7 @@ def download
       @git = true
     else
       Dir.mkdir @extract_dir
-      # use curl if CREW_USE_CURL environment variable is set to 1
-      unless CREW_USE_CURL
-        downloader url, filename, @opt_verbose
-      else
-        system "curl --retry 3 -#{@verbose}#LC - --insecure \'#{url}\' --output #{filename}"
-      end
+      downloader url, filename, @opt_verbose
 
       abort 'Checksum mismatch. 😔 Try again.'.lightred unless
         Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
