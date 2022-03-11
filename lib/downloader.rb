@@ -112,7 +112,7 @@ def http_downloader (url, filename = File.basename(url), retry_count = 0, verbos
             percentage = (downloaded_size / file_size) * 100
             # show progress bar, file size and progress percentage
             printf "\r""[%-#{@progBarW}.#{@progBarW}s] %9.9s %3d%%",
-                   '#' * ( @progBarW * (percentage / 100) ).to_i,
+                   '#' * ( @progBarW * (percentage / 100) ),
                    human_size(file_size),
                    percentage
           end
