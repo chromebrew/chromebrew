@@ -1229,8 +1229,9 @@ def install_package(pkgdir)
     end
 
     # check if the available rsync command support ACLs
-    rsync_available = true if `#{CREW_PREFIX}/bin/rsync --version`.include? 'rsync  version'
-    puts 'rsync is not working. Please (re)install it with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install rsync\''.lightred unless rsync_available
+
+    rsync_available = true if File.exist?("#{CREW_PREFIX}/bin/rsync") and `#{CREW_PREFIX}/bin/rsync --version`.include? 'rsync  version'
+    puts 'rsync is not working. Please (re)install it with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install rsync\''.lightred unless rsync_available or @pkg.name == 'rsync'
     if Dir.exist? "#{pkgdir}/#{HOME}" then
       if rsync_available
         system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
