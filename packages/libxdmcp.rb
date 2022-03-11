@@ -26,7 +26,7 @@ class Libxdmcp < Package
   depends_on 'xorg_proto'
 
   def self.build
-    system './autogen.sh'
+    system 'NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
