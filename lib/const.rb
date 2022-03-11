@@ -119,15 +119,18 @@ unless ENV['CREW_LINKER'].to_s.empty?
   case ARCH
   when 'aarch64', 'armv7l'
     CREW_LINKER = 'gold'
+    CREW_LINKER_FLAGS = "-Wl,--threads -Wl,--thread-count,#{CREW_NPROC}"
   when 'i686', 'x86_64'
     CREW_LINKER = 'mold'
+    CREW_LINKER_FLAGS = ''
   end
 else
   CREW_LINKER = ENV['CREW_LINKER']
 end
-CREW_COMMON_FLAGS = "-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER}"
-CREW_COMMON_FNO_LTO_FLAGS = "-O2 -pipe -fno-lto -fPIC -fuse-ld=#{CREW_LINKER}"
-CREW_LDFLAGS = '-flto'
+
+CREW_COMMON_FLAGS = "-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_COMMON_FNO_LTO_FLAGS = "-O2 -pipe -fno-lto -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_LDFLAGS = "-flto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
 unless CREW_DISABLE_ENV_OPTIONS
