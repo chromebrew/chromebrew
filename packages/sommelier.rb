@@ -7,7 +7,7 @@ class Sommelier < Package
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-package-sommelier.git'
-  git_hashtag '3b79e69513d83fecf740b61ad1a73a22e410838d'
+  git_hashtag '076b9b547a8019e2db88241c68f5ad24bc7b4fed'
 
   depends_on 'libdrm'
   depends_on 'libxcb'
