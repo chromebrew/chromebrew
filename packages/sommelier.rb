@@ -14,13 +14,12 @@ class Sommelier < Package
   depends_on 'libxcomposite' => :build
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon'
-  depends_on 'llvm'
   depends_on 'mesa'
   depends_on 'pixman'
   depends_on 'psmisc'
   depends_on 'wayland'
   depends_on 'xauth'
-  depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
+  depends_on 'xdpyinfo' # for xdpyinfo in sommelierrc script
   depends_on 'xsetroot' # for xsetroot in sommelierrc script
   depends_on 'xhost' # for xhost in sommelierrc script
   depends_on 'xrdb' # for xrdb in sommelierrc script
@@ -29,13 +28,22 @@ class Sommelier < Package
   case ARCH
   when 'armv7l', 'aarch64'
     @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
-  when 'x86_64'
-    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   when 'i686'
     @peer_cmd_prefix = '/lib/ld-linux.so.2'
+  when 'x86_64'
+    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
   end
 
   def self.preflight
+    case ARCH
+    when 'armv7l', 'aarch64'
+      @container_check = File.exist?('/.dockerenv')
+    when 'i686', 'x86_64'
+      @container_check = `/usr/bin/crossystem inside_vm` == '1'
+    end
+    unless File.socket?('/var/run/chrome/wayland-0') || @container_check
+      abort 'This package is not compatible with your device :/'.lightred
+    end
   end
 
   def self.patch
