@@ -18,6 +18,8 @@ class Perl_date_format < Package
   x86_64: '21bac07991851bab2cb245661415a9803c00cdfe690c7a840642df6eebf54275'
   })
 
+  conflicts_ok #  conflicts with perl_xml_parser
+
   def self.prebuild
     system 'perl', 'Makefile.PL'
     system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"

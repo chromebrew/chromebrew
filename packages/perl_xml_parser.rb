@@ -19,6 +19,7 @@ class Perl_xml_parser < Package
   })
 
   depends_on 'expat'
+  conflicts_ok # conflicts with perl_date_format
 
   def self.prebuild
     system 'perl', 'Makefile.PL'
