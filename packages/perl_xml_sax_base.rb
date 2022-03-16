@@ -1,16 +1,13 @@
 require 'package'
 
-class Perl_xml_sax < Package
+class Perl_xml_sax_base < Package
   description 'XML::SAX - Simple API for XML'
   homepage 'https://metacpan.org/pod/XML::SAX'
-  version '1.02'
+  version '1.09'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz'
-  source_sha256 '4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a'
-
-  depends_on 'perl_xml_sax_base'
-  depends_on 'perl_xml_namespacesupport'
+  source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-1.09.tar.gz'
+  source_sha256 '66cb355ba4ef47c10ca738bd35999723644386ac853abbeb5132841f5e8a2ad0'
 
   def self.prebuild
     system 'perl', 'Makefile.PL'
