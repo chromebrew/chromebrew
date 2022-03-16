@@ -9,6 +9,15 @@ class Perl_module_build < Package
   source_url 'https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4231.tar.gz'
   source_sha256 '7e0f4c692c1740c1ac84ea14d7ea3d8bc798b2fb26c09877229e04f430b2b717'
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4231-2_i686/perl_module_build-0.4231-2-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4231-2_x86_64/perl_module_build-0.4231-2-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: '9060e0b4fc75e4285ad0f576c41c001538036af5f4d9f85778f2d77c73f5dc42',
+  x86_64: '5b0e542f3d7e05657ae7edf082cb6ed904310d211f997f7b2f976d0d97c0ae14'
+  })
+
   def self.prebuild
     system 'perl', 'Makefile.PL'
     system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"

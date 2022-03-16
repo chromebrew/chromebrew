@@ -9,6 +9,15 @@ class Perl_pod_parser < Package
   source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.63.tar.gz'
   source_sha256 'dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd'
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_i686/perl_pod_parser-1.63-2-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_x86_64/perl_pod_parser-1.63-2-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: '887a43228afe65ff3fadfd6187d82dacd325e2bcd18647ccde28cf93c345ee47',
+  x86_64: '50447fab41d9e1c1d18e6ff73fe111c5b340ef49ac5414940d2ad2c998bef6bd'
+  })
+
   def self.prebuild
     system 'perl', 'Makefile.PL'
     system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"

@@ -10,9 +10,19 @@ class Perl < Package
   source_url "https://www.cpan.org/src/5.0/perl-#{@_ver}.tar.xz"
   source_sha256 '6d52cf833ff1af27bb5e986870a2c30cec73c044b41e3458cd991f94374039f7'
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_i686/perl-5.34.1-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_x86_64/perl-5.34.1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'e0c08dfff35c805a4e03d8a0ba2ffbda28ec5952520c4a3dbffdfd6b1970f332',
+  x86_64: 'd61ffae41e25817580f5d7b9b0102c04ea0b670499f8593a78db96148e081008'
+  })
+
   depends_on 'patch' => :build
 
   def self.build
+    downloader 'https://cpanmin.us', 'cpanm'
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
     # Use system zlib and bzip2
     # Create shared library
@@ -50,6 +60,8 @@ class Perl < Package
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     # Avoid File conflict with tcl, ocaml
     FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3", "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3perl"
+
+    FileUtils.install 'cpanm', "#{CREW_DEST_PREFIX}/bin/cpanm", mode: 0o755
   end
 
   def self.check
@@ -71,6 +83,6 @@ diff -ur perl-5.22.1.orig/t/lib/warnings/regexec perl-5.22.1/t/lib/warnings/rege
 EOF'
 
     # test
-    system 'make test || true'
+    # || true'
   end
 end

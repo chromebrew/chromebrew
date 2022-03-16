@@ -9,6 +9,15 @@ class Perl_term_readkey < Package
   source_url 'https://cpan.metacpan.org/authors/id/J/JS/JSTOWE/TermReadKey-2.38.tar.gz'
   source_sha256 '5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290'
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-2_i686/perl_term_readkey-2.38-2-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-2_x86_64/perl_term_readkey-2.38-2-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'bc2946c9827d4d986c2fddb906545e2a100540b2548652ba701179ed7052f3ec',
+  x86_64: '7aa01f6ee9583f44efdf9fa3ffb9b9defbac3e52082f97d72acc1fc2bb7bd6a9'
+  })
+
   def self.prebuild
     system 'perl', 'Makefile.PL'
     system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"

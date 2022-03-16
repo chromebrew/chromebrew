@@ -6,8 +6,17 @@ class Perl_mozilla_ca < Package
   version '20211001'
   license 'GPL2'
   compatibility 'all'
-  source_url "https://cpan.metacpan.org/authors/id/A/AB/ABH/Mozilla-CA-20211001.tar.gz"
+  source_url 'https://cpan.metacpan.org/authors/id/A/AB/ABH/Mozilla-CA-20211001.tar.gz'
   source_sha256 '122c8900000a9d388aa8e44f911cab6c118fe8497417917a84a8ec183971b449'
+
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_mozilla_ca/20211001_i686/perl_mozilla_ca-20211001-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_mozilla_ca/20211001_x86_64/perl_mozilla_ca-20211001-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'b7b7376352fc4b2f6e7deebaced880eb5fcf986b1ee7b1678652de7c098edce3',
+  x86_64: '5bc064a7d5d2485fdc9837a70733d58e973dcb495b592435e05745f37ac9d441'
+  })
 
   def self.prebuild
     system 'perl', 'Makefile.PL'
