@@ -1,6 +1,6 @@
 require 'package'
 
-class Perl_yaml_tiny < Package
+class Perl_test_output < Package
   description 'Test::Output - Utilities to test STDOUT and STDERR messages.'
   homepage 'https://metacpan.org/pod/Test::Output'
   version '1.033'

@@ -10,7 +10,6 @@ class Perl_stow < Package
   source_sha256 '09d5d99671b78537fd9b2c0b39a5e9761a7a0e979f6fdb7eabfa58ee45f03d4b'
 
   depends_on 'perl_app_cpanminus' => :build
-  depends_on 'perl_test_output' => :build
 
   def self.build
     system "./configure #{CREW_OPTIONS} \

@@ -11,6 +11,11 @@ class Perl_sgmls < Package
 
   depends_on 'perl_module_build'
 
+  def self.patch
+    # For some reason this file doesn't have the proper permissions in the tarball
+    system 'chmod 0644 MYMETA.yml'
+  end
+
   def self.prebuild
     system 'perl', 'Makefile.PL'
     system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
