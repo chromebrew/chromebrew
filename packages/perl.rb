@@ -22,7 +22,6 @@ class Perl < Package
   depends_on 'patch' => :build
 
   def self.build
-    downloader 'https://cpanmin.us', 'cpanm'
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
     # Use system zlib and bzip2
     # Create shared library
@@ -60,8 +59,6 @@ class Perl < Package
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     # Avoid File conflict with tcl, ocaml
     FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3", "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3perl"
-
-    FileUtils.install 'cpanm', "#{CREW_DEST_PREFIX}/bin/cpanm", mode: 0o755
   end
 
   def self.check
@@ -83,6 +80,6 @@ diff -ur perl-5.22.1.orig/t/lib/warnings/regexec perl-5.22.1/t/lib/warnings/rege
 EOF'
 
     # test
-    # || true'
+    system 'make test || true'
   end
 end
