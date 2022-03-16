@@ -15,8 +15,8 @@ class Perl < Package
   x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_x86_64/perl-5.34.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'e0c08dfff35c805a4e03d8a0ba2ffbda28ec5952520c4a3dbffdfd6b1970f332',
-  x86_64: 'd61ffae41e25817580f5d7b9b0102c04ea0b670499f8593a78db96148e081008'
+    i686: '49c0701b82abe192ec20a22f435df153689c7269f36da9ab38299496a6360233',
+  x86_64: '09abf3ae359466bb0451e9ed890b4d95bc7721de05fa65f8acba5ee131797b46'
   })
 
   depends_on 'patch' => :build
@@ -80,6 +80,6 @@ diff -ur perl-5.22.1.orig/t/lib/warnings/regexec perl-5.22.1/t/lib/warnings/rege
 EOF'
 
     # test
-    system 'make test || true'
+    # system 'make test || true'
   end
 end
