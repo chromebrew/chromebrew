@@ -3,11 +3,12 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20220207'
+  @_ver = '20220207'
+  version @_ver
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-package-sommelier.git'
-  git_hashtag '076b9b547a8019e2db88241c68f5ad24bc7b4fed'
+  git_hashtag @_ver
 
   depends_on 'libdrm'
   depends_on 'libxcb'
