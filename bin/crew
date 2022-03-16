@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env -S ruby --yjit
 require_relative '../lib/color'
 
 # Disallow sudo
