@@ -12,10 +12,6 @@ class Perl < Package
 
   depends_on 'patch' => :build
 
-  def self.prebuild
-    downloader 'https://cpanmin.us', 'cpanm'
-  end
-
   def self.build
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
     # Use system zlib and bzip2
@@ -54,8 +50,6 @@ class Perl < Package
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     # Avoid File conflict with tcl, ocaml
     FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3", "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3perl"
-
-    FileUtils.install 'cpanm', "#{CREW_DEST_PREFIX}/bin/cpanm", mode: 0o755
   end
 
   def self.check
