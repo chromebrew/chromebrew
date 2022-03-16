@@ -14,8 +14,8 @@ class Perl_locale_gettext < Package
   x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-3_x86_64/perl_locale_gettext-1.07-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'fef52c8881d250360e06e2620acc4973fdd383ca0ec033d1c43d487368256c38',
-  x86_64: 'fed7d57b687fc8ec6b3705f85bed9fe510404f847207de4208e3886d3741e238'
+    i686: '741691fa07003c4a48271729f3132963347ce1fece484a3c7afbbdf181653fdd',
+  x86_64: '9ffa2023c67efa19ee4bce9f720b26e452a72110d675aeca7232a122338cea22'
   })
 
   def self.prebuild
