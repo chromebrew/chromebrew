@@ -10,6 +10,19 @@ class Sommelier < Package
   source_url 'https://github.com/chromebrew/crew-package-sommelier.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_armv7l/sommelier-20220207-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_armv7l/sommelier-20220207-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_i686/sommelier-20220207-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_x86_64/sommelier-20220207-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '74aa4a3bb9f2839426124d31fe947859903a9f076ac58fda6576aedb3a8295c4',
+     armv7l: '74aa4a3bb9f2839426124d31fe947859903a9f076ac58fda6576aedb3a8295c4',
+       i686: '158a719de95d18cb98ec842da1201c75803e5e16dbdc6e51ca467e1a104349f1',
+     x86_64: '94feec18f9c496f2ac0d6c6b77584d70492105425815224cafe59e9086b101fe'
+  })
+
   depends_on 'libdrm'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
@@ -72,11 +85,12 @@ class Sommelier < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[ #{CREW_DEST_PREFIX}/bin
-                          #{CREW_DEST_PREFIX}/sbin
-                          #{CREW_DEST_PREFIX}/etc/env.d
-                          #{CREW_DEST_PREFIX}/etc/bash.d
-                        ]
+    FileUtils.mkdir_p %W[
+      #{CREW_DEST_PREFIX}/bin
+      #{CREW_DEST_PREFIX}/sbin
+      #{CREW_DEST_PREFIX}/etc/env.d
+      #{CREW_DEST_PREFIX}/etc/bash.d
+    ]
 
     system "DESTDIR=#{CREW_DEST_DIR} samu -C sommelier_src/builddir install"
 
@@ -95,23 +109,23 @@ class Sommelier < Package
   end
 
   def self.postinstall
-    puts '', <<~EOT.orange
+    puts '', <<~RESTARTSOMMELIER_EOT.orange
       To complete the installation, execute the following:
       source #{CREW_PREFIX}/etc/profile
       restartsommelier
-    EOT
+    RESTARTSOMMELIER_EOT
 
-    puts <<~EOT.lightblue
+    puts <<~ENV_ADJUSTMENT_EOT.lightblue
       To adjust sommelier environment variables, edit #{CREW_PREFIX}/etc/env.d/sommelier
       Default values are in #{CREW_PREFIX}/etc/env.d/sommelier
 
       Run `startsommelier` to start sommelier daemon.
       Run `stopsommelier` to stop all sommelier daemon.
       Run `restartsommelier` to restart sommelier daemon
-    EOT
+    ENV_ADJUSTMENT_EOT
 
-    puts <<~EOT.orange
+    puts <<~GUI_WARNING_EOT.orange
       Please be aware that GUI applications may not work without the sommelier daemon running.
-    EOT
+    GUI_WARNING_EOT
   end
 end
