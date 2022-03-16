@@ -41,15 +41,17 @@ class Perl < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-#    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+    # Make libperl symlinks into standard locations
     libperl_so = "#{CREW_PREFIX}/lib/perl5/#{@perl_fullversion}/#{ARCH}-linux-thread-multi/CORE/libperl.so"
-    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver.sub(/^5\./, '')}" # e.g., libperl.so.34.1
-    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver.sub(/^5\./, '').sub(/\.\d$/, '')}" # e.g., libperl.so.34
+    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver}" # e.g., libperl.so.5.34.1
+    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver.sub(/\.\d$/, '')}" # e.g., libperl.so.5.34
+    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so#{@_ver.sub(/\.\d\.\d$/, '')}" # e.g., libperl.so.5
     FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so" # e.g., libperl.so
     # Consider adding this symlink to the glibc package
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     # Avoid File conflict with tcl, ocaml
     FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3", "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3perl"
+
     FileUtils.install 'cpanm', "#{CREW_DEST_PREFIX}/bin/cpanm", mode: 0o755
   end
 
