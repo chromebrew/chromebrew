@@ -9,6 +9,15 @@ class Perl_xml_namespacesupport < Package
   source_url 'https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-1.12.tar.gz'
   source_sha256 '47e995859f8dd0413aa3f22d350c4a62da652e854267aa0586ae544ae2bae5ef'
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_namespacesupport/1.12_i686/perl_xml_namespacesupport-1.12-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_namespacesupport/1.12_x86_64/perl_xml_namespacesupport-1.12-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'd9ed95a088dee03433450150a53d3a734255fb50ccbc6ec1341001280ed07c09',
+  x86_64: '5a7709014959928cfc89c3d9755d8c31e3243e37579b4e8dd94661e9a49166bc'
+  })
+
   def self.prebuild
     system 'perl', 'Makefile.PL'
     system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
