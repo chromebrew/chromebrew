@@ -7,7 +7,7 @@ class Perl_mozilla_ca < Package
   license 'GPL2'
   compatibility 'all'
   source_url "https://cpan.metacpan.org/authors/id/A/AB/ABH/Mozilla-CA-20211001.tar.gz"
-  source_sha256 'b3ca0002310bf24a16c0d5920bdea97a2f46e77e7be3e7377e850d033387c726'
+  source_sha256 '122c8900000a9d388aa8e44f911cab6c118fe8497417917a84a8ec183971b449'
 
   def self.prebuild
     system 'perl', 'Makefile.PL'
