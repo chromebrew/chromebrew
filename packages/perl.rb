@@ -11,10 +11,14 @@ class Perl < Package
   source_sha256 '6d52cf833ff1af27bb5e986870a2c30cec73c044b41e3458cd991f94374039f7'
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_armv7l/perl-5.34.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_armv7l/perl-5.34.1-chromeos-armv7l.tar.zst',
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_i686/perl-5.34.1-chromeos-i686.tar.zst',
   x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_x86_64/perl-5.34.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
+    aarch64: 'dfffdd358c4863f28a7865e7087f6a716478509b7ebeafab0b1200bc5e65fe3d',
+     armv7l: 'dfffdd358c4863f28a7865e7087f6a716478509b7ebeafab0b1200bc5e65fe3d',
     i686: '49c0701b82abe192ec20a22f435df153689c7269f36da9ab38299496a6360233',
   x86_64: '09abf3ae359466bb0451e9ed890b4d95bc7721de05fa65f8acba5ee131797b46'
   })
