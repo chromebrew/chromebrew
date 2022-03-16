@@ -12,8 +12,11 @@ class Perl < Package
 
   depends_on 'patch' => :build
 
-  def self.build
+  def self.prebuild
     downloader 'https://cpanmin.us', 'cpanm'
+  end
+
+  def self.build
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
     # Use system zlib and bzip2
     # Create shared library
