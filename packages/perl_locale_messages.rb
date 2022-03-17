@@ -10,12 +10,16 @@ class Perl_locale_messages < Package
   source_sha256 '80108298f2564ecbfc7110a3042008e665ed00c2e155b36b0188e6c1135ceba5'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.32_i686/perl_locale_messages-1.32-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.32_x86_64/perl_locale_messages-1.32-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.32_armv7l/perl_locale_messages-1.32-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.32_armv7l/perl_locale_messages-1.32-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.32_i686/perl_locale_messages-1.32-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.32_x86_64/perl_locale_messages-1.32-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '05ca31eeda58be92c2510c96702c0e8d9d9ee39a2ee2452445ca5f27c721a482',
-  x86_64: '4708965e84aba6bf3c46f342261b5972c44f5a33bcaf0686c37fe0412324a6f3'
+    aarch64: '2d6426086396e891db101df18b9ac96acd4826946582386b49989054a61d3725',
+     armv7l: '2d6426086396e891db101df18b9ac96acd4826946582386b49989054a61d3725',
+       i686: '05ca31eeda58be92c2510c96702c0e8d9d9ee39a2ee2452445ca5f27c721a482',
+     x86_64: '4708965e84aba6bf3c46f342261b5972c44f5a33bcaf0686c37fe0412324a6f3'
   })
 
   def self.prebuild
