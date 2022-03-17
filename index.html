@@ -29,7 +29,13 @@
 
       <div class="jumbotron">
         <div class="center">
-          <img src="images/brew-title.png" alt="centered image" width="29%" height="29%">
+          <img id="crew-icon" src="images/brew.png" alt="centered image" width="29%" height="29%">
+          <script>
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              // use brew-title.png (with transparent background) when in dark mode
+              document.getElementById('crew-icon').src = 'images/brew-title.png'
+            }
+          </script>
         </div>
         <h1>Chromebrew</h1>
         <p class="lead">The missing package manager for Chrome OS</p>
