@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The missing package manager for Chrome OS">
     <meta name="author" content="Michal Siwek">
-    <link rel="shortcut icon" href="https://skycocker.github.io/chromebrew/favicon.png">
 
     <title>Chromebrew - the software source you missed so much</title>
 
@@ -24,15 +23,13 @@
 
   <body>
     <div class="container">
-     
-<ul>
-          <a href="https://github.com/skycocker/chromebrew"><img class="forkme" src="images/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
-        </ul>
-      
+      <ul>
+        <a href="https://github.com/skycocker/chromebrew"><img class="forkme" src="images/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+      </ul>
 
       <div class="jumbotron">
         <div class="center">
-          <img src="images/brew.png" alt="centered image">
+          <img src="images/brew-title.png" alt="centered image" width="29%" height="29%">
         </div>
         <h1>Chromebrew</h1>
         <p class="lead">The missing package manager for Chrome OS</p>
@@ -112,15 +109,15 @@
         <p>
           The idea is that you may be on a weak internet connection and cannot download too much data, but you don't have Crouton and need just a few small packages. Also, you may be on a good internet connection and need just a few small packages. Also, why not use Chrome OS as the operating system?
         </p>
-<h3>Is GUI supported?</h3>
-<p>
-  Chromebrew supports most GUI apps with help from the sommelier daemon. We don't support i686 architecture, due to Google dropping support.
-</p>
+        <h3>Is GUI supported?</h3>
+          <p>
+            Chromebrew supports most GUI apps with help from the sommelier daemon. We don't support i686 architecture, due to Google dropping support.
+        </p>
         <h3 id="howcanihelp">How can I help?</h3>
         <p>
-          If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
+          If you have a compatible Chromebook, you can fork my Github repo and add new packages to the <code>packages/</code> directory if you managed to build them from source successfully on your device. Package recipes are simple Ruby files - here is an example:
         </p>
-<pre># It is recommended that you investigate other files in the 'packages/' directory
+        <pre># It is recommended that you investigate other files in the 'packages/' directory
 # to help get an idea of how existing packages are being installed through Chromebrew.
 
 require 'package'
@@ -129,16 +126,17 @@ class Template &lt; Package
   description ''
   homepage ''
   version ''
+  license '' # Package license
   compatibility '' # Package compatibility
-  source_url '*.tar.gz'
+  source_url '*.tar.{gz,bz2,lz,etc}'
   source_sha256 ''
 
 # Optional: Prebuilt binary
 #  binary_url ({
-#    aarch64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
-#     armv7l: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-armv7l.tar.xz',
-#       i686: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-i686.tar.xz',
-#     x86_64: 'https://dl.bintray.com/chromebrew/chromebrew/*-chromeos-x86_64.tar.xz',
+#    aarch64: '',
+#     armv7l: '',
+#       i686: '',
+#     x86_64: '',
 #  })
 #  binary_sha256 ({
 #    aarch64: '',
@@ -153,7 +151,11 @@ class Template &lt; Package
   # depends_on '*'
   #
 
+  # Function for checks to see if install should occur.
+  def self.preflight
 
+  end
+=
   # Function to perform pre-install operations prior to install for both source build and binary distribution.
   def self.preinstall
 
@@ -171,6 +173,10 @@ class Template &lt; Package
 
   end
 
+  # Function to perform pre-install operations prior to install.
+  def self.preinstall
+
+  end
 
   # Function to perform install from source build.
   def self.install
@@ -199,6 +205,4 @@ end
         <pre>© 2013-2022 Michal Siwek</pre>
       </div>
     </div> <!-- /container -->
-  
-
 </body></html>

@@ -14,10 +14,27 @@
 .footer .name-first {
   opacity: 0.7;
 }
-.container .jumbotron {
-  background-color: #fff;
-  color: #5F5F5F;
+
+@media (prefers-color-scheme: light) {
+  .container .jumbotron {
+    background-color: #1e1e1e;
+    color: #5F5F5F;
+  }
+
+  .highlight pre {
+    background-color: #D7E3FC;
+  }
 }
-.highlight pre {
-  background-color: #D7E3FC;
+
+@media (prefers-color-scheme: dark) {
+  .container, .jumbotron, body {
+    background-color: #1a1919;
+    color: #bdc1c6;
+  }
+
+  .highlight pre, pre, code {
+    background-color: #000;
+    color: rgb(209, 209, 209);
+    border: #000000;
+  }
 }
