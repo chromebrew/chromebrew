@@ -4,39 +4,34 @@ class Perl_locale_gettext < Package
   description 'Locale::gettext - message handling functions'
   homepage 'https://metacpan.org/pod/Locale::gettext'
   license 'GPL-1+ or Artistic'
-  version '1.07-2'
+  version '1.07-3'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/gettext-1.07.tar.gz'
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-2_armv7l/perl_locale_gettext-1.07-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-2_armv7l/perl_locale_gettext-1.07-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-2_i686/perl_locale_gettext-1.07-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-2_x86_64/perl_locale_gettext-1.07-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-3_armv7l/perl_locale_gettext-1.07-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-3_armv7l/perl_locale_gettext-1.07-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-3_i686/perl_locale_gettext-1.07-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-3_x86_64/perl_locale_gettext-1.07-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5ba4484084fe099eb2bb9c2db6ac7461fd9b951e41992bc4105cd68ae48094a8',
-     armv7l: '5ba4484084fe099eb2bb9c2db6ac7461fd9b951e41992bc4105cd68ae48094a8',
-       i686: 'de64c0415d97e2d0f5fd5cc6cee55f55f511d86528442c8b382eb7223214c13f',
-     x86_64: '9cf2b992dad51c31253e717dadc1ea3318efa56eb0261958e389d554bb6436b3'
+    aarch64: '4a5989e5abe52832555940fdd822060668995e90214af56863615d0f91b6da1f',
+     armv7l: '4a5989e5abe52832555940fdd822060668995e90214af56863615d0f91b6da1f',
+       i686: '741691fa07003c4a48271729f3132963347ce1fece484a3c7afbbdf181653fdd',
+     x86_64: '9ffa2023c67efa19ee4bce9f720b26e452a72110d675aeca7232a122338cea22'
   })
 
-  def self.build; end
-
-  def self.install
-    # install files to build directory
-    system 'cpanm', '-l', 'build', '--self-contained', '.'
-
-    # install lib
-    libdir = CREW_DEST_DIR + `perl -e 'require Config; print $Config::Config{'"'installsitelib'"'};'`
-    FileUtils.mkdir_p libdir
-    system "(cd build/lib/perl5; tar cf - .) | (cd #{libdir}; tar xfp -)"
-
-    # install man
-    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
+  def self.prebuild
+    system 'perl', 'Makefile.PL'
+    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
   end
 
-  def self.check; end
+  def self.build
+    system 'make'
+  end
+
+  def self.install
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
 end

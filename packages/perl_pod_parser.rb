@@ -3,40 +3,35 @@ require 'package'
 class Perl_pod_parser < Package
   description 'Perl Pod::Parser - base class for creating POD filters and translators'
   homepage 'https://metacpan.org/pod/Pod::Parser'
-  version '1.63-1'
+  version '1.63-2'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.63.tar.gz'
   source_sha256 'dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_armv7l/perl_pod_parser-1.63-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_armv7l/perl_pod_parser-1.63-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_i686/perl_pod_parser-1.63-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-1_x86_64/perl_pod_parser-1.63-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_armv7l/perl_pod_parser-1.63-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_armv7l/perl_pod_parser-1.63-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_i686/perl_pod_parser-1.63-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.63-2_x86_64/perl_pod_parser-1.63-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8ba74165129311c52ccf8add610eda8aba4ef5e7b24e4a7ed365fbe825837710',
-     armv7l: '8ba74165129311c52ccf8add610eda8aba4ef5e7b24e4a7ed365fbe825837710',
-       i686: 'a0ae78e4d2aafd3ef90d2b23fdf5bd5f43da4638b17183ac9e1cf7914e349625',
-     x86_64: '75ee5ada7995eb9c7bc6c5199069c944107fe555cd1ef2a9df67ac60b5269908'
+    aarch64: '97cd18fd9d32ee8b9d524e06d9735c21cf8c4a49ba312f035615f6d921649c98',
+     armv7l: '97cd18fd9d32ee8b9d524e06d9735c21cf8c4a49ba312f035615f6d921649c98',
+       i686: '887a43228afe65ff3fadfd6187d82dacd325e2bcd18647ccde28cf93c345ee47',
+     x86_64: '50447fab41d9e1c1d18e6ff73fe111c5b340ef49ac5414940d2ad2c998bef6bd'
   })
 
-  def self.build; end
-
-  def self.install
-    # install files to build directory
-    system 'cpanm', '-l', 'build', '--self-contained', '--force', '.'
-
-    # install lib
-    libdir = CREW_DEST_DIR + `perl -e 'require Config; print $Config::Config{'"'installsitelib'"'};'`
-    FileUtils.mkdir_p libdir
-    system "(cd build/lib/perl5; tar cf - .) | (cd #{libdir}; tar xfp -)"
-
-    # install man
-    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    system "(cd build/man; tar cf - .) | (cd #{CREW_DEST_MAN_PREFIX}; tar xfp -)"
+  def self.prebuild
+    system 'perl', 'Makefile.PL'
+    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
   end
 
-  def self.check; end
+  def self.build
+    system 'make'
+  end
+
+  def self.install
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
 end

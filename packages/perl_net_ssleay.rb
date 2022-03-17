@@ -1,33 +1,37 @@
 require 'package'
 
 class Perl_net_ssleay < Package
-  description 'Perl extension for using OpenSSL'
-  homepage 'https://search.cpan.org/dist/Net-SSLeay/'
-  version '1.90'
+  description 'Net::SSLeay - Perl bindings for OpenSSL and LibreSSL'
+  homepage 'https://metacpan.org/pod/Net::SSLeay'
+  version '1.92'
   license 'BSD'
   compatibility 'all'
-  source_url "https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-#{version}.tar.gz"
-  source_sha256 'f8696cfaca98234679efeedc288a9398fcf77176f1f515dbc589ada7c650dc93'
+  source_url 'https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.92.tar.gz'
+  source_sha256 '47c2f2b300f2e7162d71d699f633dd6a35b0625a00cbda8c50ac01144a9396a9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_armv7l/perl_net_ssleay-1.90-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_armv7l/perl_net_ssleay-1.90-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_i686/perl_net_ssleay-1.90-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.90_x86_64/perl_net_ssleay-1.90-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92_armv7l/perl_net_ssleay-1.92-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92_armv7l/perl_net_ssleay-1.92-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92_i686/perl_net_ssleay-1.92-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92_x86_64/perl_net_ssleay-1.92-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4ed9c05974afa9edf1006c363e3f7a58607b3bff2714013feacad40a6b071f1c',
-     armv7l: '4ed9c05974afa9edf1006c363e3f7a58607b3bff2714013feacad40a6b071f1c',
-       i686: '2418b10e45d07d03c76615eeaa7a4d247de4252f64672d5243e0e43cc053bfcf',
-     x86_64: '65271f786fbf6480fea9b9e95e05d15227add6cb418e1dae9ba97bfe7e35424e'
+    aarch64: '6e1556a75adbb106daa2c4378c238caefb783c0639868b8ebc66d32f1650e6eb',
+     armv7l: '6e1556a75adbb106daa2c4378c238caefb783c0639868b8ebc66d32f1650e6eb',
+       i686: 'a2d76b5d37e390359a50c5f8b61dfabd9e0860b7766f27ed8e4caa8d575e88d1',
+     x86_64: 'bcd0aa317e6c2f0edffec3e46cb8e5722280ed0ebc2d6d4eb382f66ea627ea7b'
   })
 
+  def self.prebuild
+    system 'perl', 'Makefile.PL'
+    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
+  end
+
   def self.build
-    system "yes | perl Makefile.PL PREFIX=#{CREW_PREFIX} DESTDIR=#{CREW_DEST_DIR}"
     system 'make'
   end
 
   def self.install
-    system 'make', 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
