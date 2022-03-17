@@ -10,6 +10,15 @@ class Meson < Package
   source_url 'https://github.com/mesonbuild/meson.git'
   git_hashtag @_ver
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.3_i686/meson-0.61.3-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.61.3_x86_64/meson-0.61.3-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: '18788f704936ea4780d23bf8c62cc92c285061f8234319f9cda94183aaf2f524',
+  x86_64: '4e6a6c90dd4bd7383c63d8b8e4c4bbddac0bf01b11cfcb371f991c2554ece7d6'
+  })
+
   depends_on 'ninja'
   depends_on 'samurai'
   depends_on 'py3_setuptools' => :build
