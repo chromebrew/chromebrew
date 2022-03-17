@@ -10,6 +10,7 @@ class Libproxy < Package
   source_url 'https://github.com/libproxy/libproxy.git'
   git_hashtag @_ver
 
+  # ninja/samu doesn't work, makefiles do.
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
