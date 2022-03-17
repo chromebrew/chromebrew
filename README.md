@@ -1,2 +1,2 @@
-# chromebrew-GH pages
-Package manager's Homepage for Chrome OS
+# Chromebrew GitHub pages
+Chromebrew's homepage, hosted on GitHub Pages
