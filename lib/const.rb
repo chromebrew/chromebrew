@@ -197,6 +197,13 @@ CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
   -Dc_args='-O2'
 OPT
 
+# Use ninja or samurai
+if ENV['CREW_NINJA'].to_s.downcase == 'ninja'
+  CREW_NINJA = 'ninja'
+else
+  CREW_NINJA = 'samu'
+end
+
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
