@@ -10,12 +10,16 @@ class Perl_date_manip < Package
   source_sha256 'b5203782d03c79aa5822cf33d1828aaa3b4db93a275d4a428c89f56f4713361f'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_i686/perl_date_manip-6.86-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_x86_64/perl_date_manip-6.86-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_armv7l/perl_date_manip-6.86-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_armv7l/perl_date_manip-6.86-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_i686/perl_date_manip-6.86-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_x86_64/perl_date_manip-6.86-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '76657f3f2cc037f83597b4ca2d01e8281b86b886365bd12ff2d824323f21fab9',
-  x86_64: '12f9ce224833afc565ab0818e6809752d88860f2b3d48a66ea60ab65d62f3e33'
+    aarch64: '6c728a87e7326bac9ce2c24941226395918d4547c50c4fbf65b0c2d85c0924a8',
+     armv7l: '6c728a87e7326bac9ce2c24941226395918d4547c50c4fbf65b0c2d85c0924a8',
+       i686: '76657f3f2cc037f83597b4ca2d01e8281b86b886365bd12ff2d824323f21fab9',
+     x86_64: '12f9ce224833afc565ab0818e6809752d88860f2b3d48a66ea60ab65d62f3e33'
   })
 
   def self.prebuild
