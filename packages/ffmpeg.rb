@@ -45,10 +45,11 @@ class Ffmpeg < Package
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'lilv' # R
-  depends_on 'leptonica' => :build
+  depends_on 'leptonica' # R
   depends_on 'libavc1394' # R
   depends_on 'libbluray' # R
   depends_on 'libdrm' # R
+  depends_on 'libfdk_aac' # R
   depends_on 'libiec61883' # R
   depends_on 'libmfx' if ARCH == 'i686' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive? # R
   depends_on 'libmodplug' # R
@@ -80,8 +81,11 @@ class Ffmpeg < Package
   depends_on 'pulseaudio' # R
   depends_on 'rav1e' # R
   depends_on 'rubberband' # R
+  depends_on 'serd' # R
   depends_on 'snappy' # R
+  depends_on 'sord' # R
   depends_on 'speex' # R
+  depends_on 'sratom' # R
   depends_on 'srt' # R
   depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
@@ -89,6 +93,7 @@ class Ffmpeg < Package
   depends_on 'vmaf' # R
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
+  depends_on 'zvbi' # R
 
   def self.build
     case ARCH
@@ -109,8 +114,8 @@ class Ffmpeg < Package
     # ChromeOS awk employs sandbox redirection protections which screw
     # up configure script generation, so use mawk.
     system "sed -i 's/awk/mawk/g' configure"
-    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
-        CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
+    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
+        CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
         LDFLAGS='-U_FORTIFY_SOURCE #{@lto}' \
         ./configure \
         --arch=#{ARCH} \
