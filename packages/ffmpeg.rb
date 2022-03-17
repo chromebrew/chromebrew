@@ -4,7 +4,7 @@ class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
   @_ver = '5.0'
-  version @_ver
+  version @_ver + '-1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
