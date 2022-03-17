@@ -13,16 +13,20 @@ class Libproxy < Package
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "cmake -G Ninja #{CREW_CMAKE_OPTIONS} .."
+      #system "cmake -G Ninja #{CREW_CMAKE_OPTIONS} .."
+      system "cmake -G 'Unix Makefiles' #{CREW_CMAKE_OPTIONS} .."
+      system 'make'
     end
-    system 'samu -C builddir'
+    #system 'samu -C builddir'
   end
 
   def self.install
-    system "samu -C builddir install"
+    #system "samu -C builddir install"
+    Dir.chdir 'builddir' do system "make DESTDIR=#{CREW_DEST_DIR} install" end
   end
 
   def self.check
-    system "samu -C builddir test"
+    #system "samu -C builddir test"
+    Dir.chdir 'builddir' do system "make check" end
   end
 end
