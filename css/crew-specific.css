@@ -17,7 +17,7 @@
 
 @media (prefers-color-scheme: light) {
   .container .jumbotron {
-    background-color: #1e1e1e;
+    background-color: #fff;
     color: #5F5F5F;
   }
 
