@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.10.2'
+  @_ver = '3.10.3'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '17de3ac7da9f2519aa9d64378c603a73a0e9ad58dffa8812e45160c086de64c7'
+  source_sha256 '596c72de998dc39205bc4f70ef0dbf7edec740a306d09b49a9bd0a77806730dc'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_armv7l/python3-3.10.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_armv7l/python3-3.10.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_i686/python3-3.10.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.2_x86_64/python3-3.10.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_armv7l/python3-3.10.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_armv7l/python3-3.10.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_i686/python3-3.10.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_x86_64/python3-3.10.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '46ebb382b432ee8000e0db434a20d35b1faf319bb1977e21795ce1edd515d404',
-     armv7l: '46ebb382b432ee8000e0db434a20d35b1faf319bb1977e21795ce1edd515d404',
-       i686: '63a4b7e887fd7b7ff611994f95da91fb8520cff19a5045a81f6fdc7b4da151f2',
-     x86_64: '10c93740a9865e840f31d4b8a1e9029e2d2406f4c9d83f00b8e0e4fe054bf0ac'
+    aarch64: '5b420fb5cf3fa3fb2bc4bc5abb15e212cf3b49d42bbea71997687af91aaaf597',
+     armv7l: '5b420fb5cf3fa3fb2bc4bc5abb15e212cf3b49d42bbea71997687af91aaaf597',
+       i686: '4d5d15fde337083bbdb2c1e00b89d22ab3c7de167f6e31af3882643b92f3bd8f',
+     x86_64: '0cbb6b71baff03210c0953f01671b5cfdf33bbcdbd5aeaa8fbf7bee74244a274'
   })
 
   depends_on 'autoconf_archive' => :build

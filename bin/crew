@@ -35,6 +35,7 @@ Usage:
   crew reinstall [options] [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] <name> ...
   crew remove [options] <name> ...
   crew search [options] [<name> ...]
+  crew sysinfo [options]
   crew update [options] [<compatible>]
   crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
   crew whatprovides [options] <pattern> ...
@@ -85,6 +86,7 @@ LICENSESTRING
   'reinstall',
   'remove',
   'search',
+  'sysinfo',
   'update',
   'upgrade',
   'whatprovides'
@@ -430,6 +432,12 @@ def help(pkgName)
         crew search audio".lightblue + " will display all packages with `audio` in the name.
         crew search | grep -i audio".lightblue + " will display all packages with `audio` in the name or description.
         crew search git -v".lightblue + " will display packages with `git` in the name along with homepage, version and license.
+    EOT
+  when "sysinfo"
+    puts <<~EOT
+      Show system infomation in Markdown style.
+
+      Usage: crew sysinfo
     EOT
   when "update"
     puts <<~EOT
@@ -1796,6 +1804,31 @@ def search_command(args)
   end.empty? and begin
     list_packages
   end
+end
+
+def sysinfo_command(args)
+  # newer version of Chrome OS exports info to env by default
+  if File.exist?('/etc/lsb-release')
+    lsb_release = File.read('/etc/lsb-release').scan(/^(.+?)=(.+)$/).to_h
+  else
+    # newer version of Chrome OS exports info to env by default
+    lsb_release = ENV
+  end
+
+  puts <<~MD
+    - Architecture: `#{ARCH_ACTUAL}` (`#{ARCH}`)
+    - Kernel version: `#{`uname -r`.chomp}`
+
+    - Chromebrew version: `#{CREW_VERSION}`
+    - Chromebrew prefix: `#{CREW_PREFIX}`
+    - Chromebrew libdir: `#{CREW_LIB_PREFIX}`
+
+    - Last update in local repository: `#{`git log --pretty=format:"%h: %s" HEAD^..HEAD`}`
+
+    - OS variant: `#{lsb_release['CHROMEOS_RELEASE_NAME']}`
+    - OS version: `#{lsb_release['CHROMEOS_RELEASE_BUILDER_PATH']}`
+    - OS channel: `#{lsb_release['CHROMEOS_RELEASE_TRACK']}`
+  MD
 end
 
 def update_command(args)

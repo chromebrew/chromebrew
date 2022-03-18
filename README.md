@@ -105,6 +105,7 @@ Where available commands are:
 | reinstall | remove and install package(s) |
 | remove | remove package(s) |
 | search | look for package(s) |
+| sysinfo | show system infomation in Markdown style |
 | update | update crew itself |
 | upgrade | update all or specific package(s) |
 | whatprovides | regex search for package(s) that contains file(s) |
