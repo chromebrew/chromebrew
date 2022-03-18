@@ -20,6 +20,7 @@ class Libpng < Package
 
   def self.patch
     downloader 'https://sourceforge.net/projects/libpng-apng/files/libpng16/1.6.37/libpng-1.6.37-apng.patch.gz'
+    abort 'Checksum mismatch :/ try again'.lightred unless Digest::SHA256.hexdigest(File.read('libpng-1.6.37-apng.patch.gz')) == '823bb2d1f09dc7dae4f91ff56d6c22b4b533e912cbd6c64e8762255e411100b6'
     system 'gunzip -c libpng-1.6.37-apng.patch.gz | patch -Np1'
   end
 
