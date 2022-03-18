@@ -3,22 +3,12 @@ require 'package'
 class Exa < Package
   description 'Modern replacement for \'ls\''
   homepage 'https://the.exa.website'
-  version '0.9.0'
+  @_ver = '0.10.1'
+  version @_ver
   license 'Apache-2.0, MIT and Unlicense'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://github.com/ogham/exa/archive/v0.9.0.tar.gz'
-  source_sha256 '96e743ffac0512a278de9ca3277183536ee8b691a46ff200ec27e28108fef783'
-
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.9.0_armv7l/exa-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.9.0_armv7l/exa-0.9.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.9.0_x86_64/exa-0.9.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '42133a358da6081dc28f67ce182ba414e14a1c73da85bdf8e573851b3bb8bf54',
-     armv7l: '42133a358da6081dc28f67ce182ba414e14a1c73da85bdf8e573851b3bb8bf54',
-     x86_64: '2d89beb090ae156c7c9192236e99c77c259885534cb200cb32ec2ae1dd2b525e',
-  })
+  source_url 'https://github.com/ogham/exa.git'
+  git_hashtag 'v' + @_ver
 
   depends_on 'rust' => :build
   depends_on 'libgit2'
@@ -28,7 +18,7 @@ class Exa < Package
   end
 
   def self.check
-#    system 'cargo test --all'
+    system 'cargo test --all'
   end
 
   def self.install
