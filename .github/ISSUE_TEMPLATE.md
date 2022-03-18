@@ -13,17 +13,11 @@ If you executed a specific command:
 
 Output:
 ```
-output of your command here
+# output of your command here
 ```
 
 ## Versions and system information
-Chromebrew: `crew --version`
-
-ChromeOS: `cat /etc/lsb-release`
-
-Model: <YOUR CHROMEBOOK MODEL HERE>
-
-Architecture: `uname -m`
+<!-- Paste the output of `crew sysinfo` here -->
 
 ## Additional information
 <!--
