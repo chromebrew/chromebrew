@@ -1,14 +1,23 @@
 require 'package'
 
 class Exa < Package
-  description 'Modern replacement for \'ls\''
-  homepage 'https://the.exa.website'
+  description "Exa is a modern replacement for ls"
+  homepage 'https://the.exa.website/'
   @_ver = '0.10.1'
   version @_ver
   license 'Apache-2.0, MIT and Unlicense'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'all'
   source_url 'https://github.com/ogham/exa.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_i686/exa-0.10.1-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_x86_64/exa-0.10.1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: '588f32e51731a5dd6b6b0009a35ac23b11c2ab54ef52dbb653892fd719d18521',
+  x86_64: '30085328379c821d79a317d75a8425c25938961335c15be9e3b3a16652f9a873'
+  })
 
   depends_on 'rust' => :build
   depends_on 'pandoc' => :build
