@@ -11,12 +11,16 @@ class Python3 < Package
   source_sha256 '596c72de998dc39205bc4f70ef0dbf7edec740a306d09b49a9bd0a77806730dc'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_i686/python3-3.10.3-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_x86_64/python3-3.10.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_armv7l/python3-3.10.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_armv7l/python3-3.10.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_i686/python3-3.10.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_x86_64/python3-3.10.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '4d5d15fde337083bbdb2c1e00b89d22ab3c7de167f6e31af3882643b92f3bd8f',
-  x86_64: '0cbb6b71baff03210c0953f01671b5cfdf33bbcdbd5aeaa8fbf7bee74244a274'
+    aarch64: '5b420fb5cf3fa3fb2bc4bc5abb15e212cf3b49d42bbea71997687af91aaaf597',
+     armv7l: '5b420fb5cf3fa3fb2bc4bc5abb15e212cf3b49d42bbea71997687af91aaaf597',
+       i686: '4d5d15fde337083bbdb2c1e00b89d22ab3c7de167f6e31af3882643b92f3bd8f',
+     x86_64: '0cbb6b71baff03210c0953f01671b5cfdf33bbcdbd5aeaa8fbf7bee74244a274'
   })
 
   depends_on 'autoconf_archive' => :build
