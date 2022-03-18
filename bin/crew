@@ -1807,7 +1807,13 @@ def search_command(args)
 end
 
 def sysinfo_command(args)
-  lsb_release = File.read('/etc/lsb-release').scan(/^(.+?)=(.+)$/).to_h
+  # newer version of Chrome OS exports info to env by default
+  if File.exist?('/etc/lsb-release')
+    lsb_release = File.read('/etc/lsb-release').scan(/^(.+?)=(.+)$/).to_h
+  else
+    # newer version of Chrome OS exports info to env by default
+    lsb_release = ENV
+  end
 
   puts <<~MD
     - Architecture: `#{ARCH_ACTUAL}` (`#{ARCH}`)
