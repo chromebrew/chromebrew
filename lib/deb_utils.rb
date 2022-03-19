@@ -12,6 +12,7 @@ module DebUtils
     #
     file_found = false
     src_fileIO = File.open(file, 'rb')
+    file_size = src_fileIO.size
     # get first line of the given file, should be a signature string (`!<arch>\n`) if it is a valid deb file
     signature = src_fileIO.gets
 
@@ -19,13 +20,21 @@ module DebUtils
 
     # process each file in archive
     while (line = src_fileIO.gets) do
+      # early return if trailing newline is detected
+      if line.chomp.empty? and (file_size - src_fileIO.tell) == 1
+        break
+      elsif line.chomp.empty?
+        STDERR.puts "Unexpected newline in offset #{src_fileIO.tell}, ignoring...".yellow
+        next
+      end
+
       # read file meta
       name, modtime, uid, gid, mode, size, end_char = \
         line.scan(/(.{16})(.{12})(.{6})(.{6})(.{8})(.{10})(.{1})/).flatten.map(&:strip)
 
       # remove slash suffix from filename (if any)
       # (a `.deb` ar archive does not support any directories, so we can confirm that all entries are normal files)
-      name.sub!(/\/$/, '')
+      name&.sub!(/\/$/, '')
 
       # check ending byte
       abort 'Malformed archive :/'.lightred unless end_char == '`'
