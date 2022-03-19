@@ -20,8 +20,8 @@ module DebUtils
 
     # process each file in archive
     while (line = src_fileIO.gets) do
-      # early return if trailing newline is detected
       if line.chomp.empty? and file_size == src_fileIO.tell
+        # early return if trailing newline is detected
         break
       elsif line.chomp.empty?
         STDERR.puts "Unexpected newline in offset #{src_fileIO.tell}, ignoring...".yellow
