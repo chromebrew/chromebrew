@@ -11,12 +11,16 @@ class Exa < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_i686/exa-0.10.1-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_x86_64/exa-0.10.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_armv7l/exa-0.10.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_armv7l/exa-0.10.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_i686/exa-0.10.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_x86_64/exa-0.10.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '588f32e51731a5dd6b6b0009a35ac23b11c2ab54ef52dbb653892fd719d18521',
-  x86_64: '30085328379c821d79a317d75a8425c25938961335c15be9e3b3a16652f9a873'
+    aarch64: 'e565a30749d5137ea0d74b55022518d062fdbe61b0ec628acd934a9302139060',
+     armv7l: 'e565a30749d5137ea0d74b55022518d062fdbe61b0ec628acd934a9302139060',
+       i686: '588f32e51731a5dd6b6b0009a35ac23b11c2ab54ef52dbb653892fd719d18521',
+     x86_64: '30085328379c821d79a317d75a8425c25938961335c15be9e3b3a16652f9a873'
   })
 
   depends_on 'rust' => :build
