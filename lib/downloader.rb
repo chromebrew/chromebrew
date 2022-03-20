@@ -42,6 +42,7 @@ def downloader (*args)
   trap('WINCH') { setTermSize }
 
   uri = URI(args[0]) # read url from given params
+  filename = args[1] || File.basename(uri.path)
 
   # verify with given checksum if checksum is provided in optional args (`downloader "url", sha256sum: "..."`)
   if args[-1].is_a?(Hash) and args[-1].has_key?(:sha256sum)
@@ -62,7 +63,7 @@ def downloader (*args)
     when 'file'
       # use FileUtils to copy if it is a local file (the url protocol is file://)
       if File.exist?(uri.path)
-        return FileUtils.cp uri.path, args[1] || File.basename(uri.path)
+        return FileUtils.cp uri.path, filename
       else
         abort "#{uri.path}: File not found :/".lightred
       end
