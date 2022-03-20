@@ -77,7 +77,7 @@ def downloader (*args)
 
   # verify with given checksum if checksum is provided in optional args (`downloader "url", sha256sum: "..."`)
   if check_sha256 and !( Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum )
-    abort 'Checksum mismatch :/'.lightred
+    abort 'Checksum mismatch :/ Try again?'.lightred
   end
 end
 
