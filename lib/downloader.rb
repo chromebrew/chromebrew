@@ -40,7 +40,7 @@ def downloader (*args)
     when 'file'
       # use FileUtils to copy if it is a local file (the url protocol is file://)
       if File.exist?(uri.path)
-        return FileUtils.cp uri.path, filename
+        return FileUtils.cp uri.path, args[1] || File.basename(uri.path)
       else
         abort "#{uri.path}: File not found :/".lightred
       end
