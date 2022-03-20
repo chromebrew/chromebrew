@@ -712,10 +712,12 @@ def download
         end
       end
       # Download file if not cached.
-      downloader url, filename, @opt_verbose
+      unless sha256sum =~ /^SKIP$/i
+        downloader url, filename, @opt_verbose, sha256sum: sha256sum
+      else
+        downloader url, filename, @opt_verbose
+      end
 
-      abort 'Checksum mismatch. 😔 Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested, if file is not from cache,
       # and cache is writable.
