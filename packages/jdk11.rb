@@ -3,16 +3,16 @@ require 'package'
 class Jdk11 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/javase-jdk11-downloads.html'
-  version '11.0.14'
+  version '11.0.14-1'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
   source_url 'SKIP'
 
   binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk11/11.0.14_x86_64/jdk11-11.0.14-chromeos-x86_64.tpxz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk11/11.0.14_x86_64/jdk11-11.0.14-chromeos-x86_64.tar.zst',
   })
   binary_sha256 ({
-    x86_64: 'dd2857ce811b0799c26199e919840bc50e646dce5fe7d1beef302df86eb174c0',
+    x86_64: '43d59131a67913446b6193f7cd65243eee7576f2d41f058721f87ca5214d7227',
   })
 
   def self.preflight
@@ -46,7 +46,7 @@ class Jdk11 < Package
       FileUtils.mv Dir['*'], "#{jdk11_dir}/"
     end
     FileUtils.cd "#{jdk11_dir}/bin" do
-      system "find -type f -exec ln -s #{jdk11_dir}/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
+      system "find -type f -exec ln -s #{CREW_PREFIX}/share/jdk11/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
     end
   end
 end
