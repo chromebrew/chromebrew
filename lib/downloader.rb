@@ -1,4 +1,5 @@
 require 'io/console'
+require 'digest/sha2'
 require 'net/http'
 require 'uri'
 require 'resolv-replace'
@@ -26,11 +27,32 @@ def setTermSize
 end
 
 def downloader (*args)
+  # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
+  # Usage: downloader <url>, <filename::optional>, <retry_count::optional>,
+  #                   <verbose::optional>, sha256sum: <optional>
+  #
+  #           <url>: URL that points to the target file
+  #      <filename>: (Optional) Output path/filename
+  #   <retry_count>: (Optional) Maximum retry times, default: 3
+  #       <verbose>: (Optional) Verbose output
+  #     <sha256sum>: (Optional) SHA256 checksum, verify downloaded file with given checksum (if provided)
+  #
   setTermSize
   # reset width settings after terminal resized
   trap('WINCH') { setTermSize }
 
   uri = URI(args[0]) # read url from given params
+
+  # verify with given checksum if checksum is provided in optional args (`downloader "url", sha256sum: "..."`)
+  if args[-1].is_a?(Hash) and args[-1].has_key?(:sha256sum)
+    check_sha256 = true
+    sha256sum = args[-1][:sha256sum]
+  else
+    check_sha256 = false
+  end
+
+  # remove all optional params (if any) (since it is only used in this function)
+  args.delete_at(-1) if args[-1].is_a?(Hash)
 
   unless CREW_USE_CURL or !ENV['CREW_DOWNLOADER'].to_s.empty?
     case uri.scheme
@@ -51,6 +73,11 @@ def downloader (*args)
   else
     # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
     external_downloader(*args)
+  end
+
+  # verify with given checksum if checksum is provided in optional args (`downloader "url", sha256sum: "..."`)
+  if check_sha256 and !( Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum )
+    abort 'Checksum mismatch :/'.lightred
   end
 end
 
