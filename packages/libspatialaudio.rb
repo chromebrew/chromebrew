@@ -28,10 +28,10 @@ class Libspatialaudio < Package
   def self.patch
     FileUtils.mkdir_p 'source/normal'
     Dir.chdir 'source/normal' do
-      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_44100.h'
-      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_48000.h'
-      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_88200.h'
-      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_96000.h'
+      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_44100.h', 'SKIP'
+      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_48000.h', 'SKIP'
+      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_88200.h', 'SKIP'
+      downloader 'https://github.com/greekgoddj/mit-hrtf-lib/raw/658657aebc58480d5511bd726b8dfa73b4f49ac7/source/normal/mit_hrtf_normal_96000.h', 'SKIP'
       @sha256sums = <<~EOF
         ffee6a5f1f1e771c863c1c02be3d01e7a23359d8553b1f5aa4dba014f1eb05dd  mit_hrtf_normal_44100.h
         807de23e95e299692516ccaebfb907e1d8caf554f38e87dd8fd07caee41aae7f  mit_hrtf_normal_48000.h

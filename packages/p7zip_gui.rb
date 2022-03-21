@@ -41,8 +41,7 @@ class P7zip_gui < Package
     patches.each do |url, sha256sum|
       patch_filename = File.basename(url)
 
-      downloader url, patch_filename
-      abort 'Checksum mismatch :/'.lightred unless Digest::SHA256.hexdigest( File.read(patch_filename) ) == sha256sum
+      downloader url, sha256sum, patch_filename
 
       system 'patch', '-p1', '-i', patch_filename
     end

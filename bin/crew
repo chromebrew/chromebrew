@@ -712,11 +712,7 @@ def download
         end
       end
       # Download file if not cached.
-      unless sha256sum =~ /^SKIP$/i
-        downloader url, filename, @opt_verbose, sha256sum: sha256sum
-      else
-        downloader url, filename, @opt_verbose
-      end
+      downloader url, filename, sha256sum, @opt_verbose
 
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested, if file is not from cache,

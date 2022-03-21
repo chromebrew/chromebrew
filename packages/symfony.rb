@@ -23,8 +23,8 @@ class Symfony < Package
       sha256 = '66c2daf21e3acbdda8d826a0484b02e59255401d54027cdbe2605406f77933a8'
     end
     symfony_file = "symfony_linux_#{arch}"
-    downloader "https://github.com/symfony/cli/releases/download/v#{version}/#{symfony_file}"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(symfony_file) ) == sha256
+    downloader "https://github.com/symfony/cli/releases/download/v#{version}/#{symfony_file}", sha256
+
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install symfony_file, "#{CREW_DEST_PREFIX}/bin/symfony", mode: 0o755
   end
