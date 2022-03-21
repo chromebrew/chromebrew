@@ -65,7 +65,7 @@ def downloader (url, sha256sum, filename = File.basename(url), retry_count = 0, 
   end
 
   # verify with given checksum
-  unless sha256sum =~ /^SKIP$/i or Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum )
+  unless sha256sum =~ /^SKIP$/i or Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum
     abort 'Checksum mismatch :/ Try again?'.lightred
   end
 end
