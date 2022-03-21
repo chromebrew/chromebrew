@@ -12,7 +12,7 @@ class Composer < Package
   depends_on 'xdg_base'
 
   def self.preinstall
-    if Dir.exists?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
+    if Dir.exist?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
       # Save any existing configuration
       FileUtils.cp_r "#{HOME}/.config", "#{CREW_PREFIX}", remove_destination: true unless Dir.empty? "#{HOME}/.config"
     else

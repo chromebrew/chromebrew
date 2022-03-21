@@ -40,7 +40,7 @@ class Android_studio < Package
     response = STDIN.getc
     config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]
     config_dirs.each { |config_dir|
-      if Dir.exists? config_dir
+      if Dir.exist? config_dir
         case response
         when "y", "Y"
           FileUtils.rm_rf config_dir

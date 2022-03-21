@@ -43,7 +43,7 @@ class Stellarium < Package
 
   def self.remove
     config_dir = "#{HOME}/.stellarium"
-    if Dir.exists? config_dir
+    if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
       case STDIN.getc
       when "y", "Y"

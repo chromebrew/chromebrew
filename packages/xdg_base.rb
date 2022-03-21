@@ -29,7 +29,7 @@ class Xdg_base < Package
     end
     if File.directory?("#{HOME}/.local") && !File.symlink?("#{HOME}/.local") && !FileUtils.cp_r("#{HOME}/.local/.",
                                                                                                 "#{CREW_PREFIX}/.config/")
-      # FileUtils.mkdir_p("#{CREW_PREFIX}/.config") unless Dir.exists? "#{CREW_PREFIX}/.config"
+      # FileUtils.mkdir_p("#{CREW_PREFIX}/.config") unless Dir.exist? "#{CREW_PREFIX}/.config"
       FileUtils.rm_rf("#{HOME}/.local")
     end
   end

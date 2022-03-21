@@ -36,7 +36,7 @@ class Flutter < Package
     response = STDIN.getc
     config_dirs = ["#{HOME}/.flutter", "#{CREW_PREFIX}/share/flutter"]
     config_dirs.each { |config_dir|
-      if Dir.exists? config_dir
+      if Dir.exist? config_dir
         case response
         when "y", "Y"
           FileUtils.rm_rf config_dir

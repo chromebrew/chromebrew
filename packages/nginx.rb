@@ -82,7 +82,7 @@ class Nginx < Package
   end
 
   def self.remove
-    if Dir.exists? "#{CREW_PREFIX}/share/nginx"
+    if Dir.exist? "#{CREW_PREFIX}/share/nginx"
       puts
       print "Would you like to remove #{CREW_PREFIX}/share/nginx? [y/N] "
       response = STDIN.getc

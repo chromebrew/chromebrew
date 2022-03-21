@@ -74,7 +74,7 @@ class Percona_server < Package
   end
 
   def self.postinstall
-    unless Dir.exists? "#{CREW_PREFIX}/data"
+    unless Dir.exist? "#{CREW_PREFIX}/data"
       system "mysqld --initialize-insecure --user=#{USER}"
       system "mysql_ssl_rsa_setup"
     end

@@ -40,7 +40,7 @@ class Dbeaver < Package
 
   def self.remove
     config_dir = "#{HOME}/.local/share/DBeaverData"
-    if Dir.exists? config_dir
+    if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "
       case STDIN.getc
       when "y", "Y"

@@ -22,7 +22,7 @@ class Leiningen < Package
 
   def self.remove
     config_dir = "#{HOME}/.lein"
-    if Dir.exists? config_dir
+    if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "
       case STDIN.getc
       when "y", "Y"

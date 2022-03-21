@@ -42,7 +42,7 @@ class Ferdi < Package
 
   def self.remove
     config_dir = "#{HOME}/.config/autostart"
-    if Dir.exists? config_dir
+    if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
       case STDIN.getc
       when "y", "Y"
