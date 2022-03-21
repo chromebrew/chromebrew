@@ -28,8 +28,8 @@ end
 
 def downloader (url, sha256sum, filename = File.basename(url), retry_count = 0, verbose = false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
-  # Usage: downloader <url>, <filename::optional>, <retry_count::optional>,
-  #                   <verbose::optional>, sha256sum: <optional>
+  # Usage: downloader <url>, <sha256sum>, <filename::optional>, <retry_count::optional>,
+  #                   <verbose::optional>
   #
   #           <url>: URL that points to the target file
   #     <sha256sum>: SHA256 checksum, verify downloaded file with given checksum
