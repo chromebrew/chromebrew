@@ -26,40 +26,28 @@ def setTermSize
   return true
 end
 
-def downloader (*args)
+def downloader (url, sha256sum, filename = File.basename(url), retry_count = 0, verbose = false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <filename::optional>, <retry_count::optional>,
   #                   <verbose::optional>, sha256sum: <optional>
   #
   #           <url>: URL that points to the target file
+  #     <sha256sum>: SHA256 checksum, verify downloaded file with given checksum
   #      <filename>: (Optional) Output path/filename
   #   <retry_count>: (Optional) Maximum retry times, default: 3
   #       <verbose>: (Optional) Verbose output
-  #     <sha256sum>: (Optional) SHA256 checksum, verify downloaded file with given checksum (if provided)
   #
   setTermSize
   # reset width settings after terminal resized
   trap('WINCH') { setTermSize }
 
-  uri = URI(args[0]) # read url from given params
-  filename = args[1] || File.basename(uri.path)
-
-  # verify with given checksum if checksum is provided in optional args (`downloader "url", sha256sum: "..."`)
-  if args[-1].is_a?(Hash) and args[-1].has_key?(:sha256sum)
-    check_sha256 = true
-    sha256sum = args[-1][:sha256sum]
-  else
-    check_sha256 = false
-  end
-
-  # remove all optional params (if any) (since it is only used in this function)
-  args.delete_at(-1) if args[-1].is_a?(Hash)
+  uri = URI(url)
 
   unless CREW_USE_CURL or !ENV['CREW_DOWNLOADER'].to_s.empty?
     case uri.scheme
     when 'http', 'https'
       # use net/http if the url protocol is http(s)://
-      http_downloader(*args)
+      http_downloader(url, filename, retry_count, verbose)
     when 'file'
       # use FileUtils to copy if it is a local file (the url protocol is file://)
       if File.exist?(uri.path)
@@ -69,15 +57,15 @@ def downloader (*args)
       end
     else
       # use external downloader (curl by default) if the url protocol is not http(s):// or file://
-      external_downloader(*args)
+      external_downloader(url, filename, retry_count, verbose)
     end
   else
     # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
-    external_downloader(*args)
+    external_downloader(url, filename, retry_count, verbose)
   end
 
-  # verify with given checksum if checksum is provided in optional args (`downloader "url", sha256sum: "..."`)
-  if check_sha256 and !( Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum )
+  # verify with given checksum
+  unless Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum )
     abort 'Checksum mismatch :/ Try again?'.lightred
   end
 end
