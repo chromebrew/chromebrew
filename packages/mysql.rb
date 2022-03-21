@@ -33,7 +33,7 @@ class Mysql < Package
   end
 
   def self.postinstall
-    unless Dir.exists? "#{CREW_PREFIX}/mysql/data"
+    unless Dir.exist? "#{CREW_PREFIX}/mysql/data"
       system "mysqld --initialize-insecure --user=#{USER}"
     end
     puts

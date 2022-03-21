@@ -23,7 +23,7 @@ class Vagrant < Package
   })
 
   def self.install
-    system "gem install bundle" unless File.exists? "#{CREW_PREFIX}/bin/bundle"
+    system "gem install bundle" unless File.exist? "#{CREW_PREFIX}/bin/bundle"
     system "bundle install"
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do

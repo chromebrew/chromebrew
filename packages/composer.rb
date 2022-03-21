@@ -8,11 +8,11 @@ class Composer < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
 
   def self.preinstall
-    if Dir.exists?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
+    if Dir.exist?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
       # Save any existing configuration
       FileUtils.cp_r "#{HOME}/.config", "#{CREW_PREFIX}", remove_destination: true unless Dir.empty? "#{HOME}/.config"
     else

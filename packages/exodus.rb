@@ -32,7 +32,7 @@ class Exodus < Package
 
   def self.remove
     config_dir = "#{CREW_PREFIX}/.config/Exodus"
-    if Dir.exists? config_dir
+    if Dir.exist? config_dir
       puts "WARNING: This will remove all Exodus data!".orange
       print "Would you like to remove the #{config_dir} directory? [y/N] "
       case STDIN.getc

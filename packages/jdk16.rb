@@ -16,16 +16,16 @@ class Jdk16 < Package
   })
 
   def self.preflight
-    abort "JDK8 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk8"
-    abort "JDK11 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk11"
-    abort "JDK15 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk15"
-    abort "JDK17 installed.".lightgreen if Dir.exists? "#{CREW_PREFIX}/share/jdk17"
+    abort "JDK8 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk8"
+    abort "JDK11 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk11"
+    abort "JDK15 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk15"
+    abort "JDK17 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk17"
   end
 
   def self.install
     jdk_bin = "#{HOME}/Downloads/jdk-#{version}_linux-x64_bin.tar.gz"
     jdk_sha256 = '630e3e56c58f45db3788343ce842756d5a5a401a63884242cc6a141071285a62'
-    unless File.exists? jdk_bin then
+    unless File.exist? jdk_bin then
       puts
       puts "Oracle now requires an account to download the JDK.".orange
       puts

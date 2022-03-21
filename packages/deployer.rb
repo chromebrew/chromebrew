@@ -22,7 +22,7 @@ class Deployer < Package
      x86_64: '57f072d4617d8dae9ab0d071aa5a29c66fb8453d08e9559a658d7c450a82f2dd',
   })
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'composer' => :build
 
   def self.install

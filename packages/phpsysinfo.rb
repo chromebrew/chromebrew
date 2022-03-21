@@ -9,7 +9,7 @@ class Phpsysinfo < Package
   source_url 'https://github.com/phpsysinfo/phpsysinfo/archive/v3.4.1.tar.gz'
   source_sha256 '377bafea4dc4f1f705cd35df5b95e55034045ab3e7971dc934d1f599157dc3aa'
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/phpsysinfo"
