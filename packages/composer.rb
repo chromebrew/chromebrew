@@ -8,7 +8,7 @@ class Composer < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
 
   def self.preinstall

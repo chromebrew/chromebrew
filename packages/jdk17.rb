@@ -25,7 +25,7 @@ class Jdk17 < Package
   def self.install
     jdk_bin = "#{HOME}/Downloads/jdk-17_linux-x64_bin.tar.gz"
     jdk_sha256 = '342e76bb9ded80aa1edd566efbae42f8f1c2366e19b9189e5941b45893b9861f'
-    unless File.exists? jdk_bin then
+    unless File.exist? jdk_bin then
       puts
       puts "Oracle now requires an account to download the JDK.".orange
       puts

@@ -8,7 +8,7 @@ class Platformsh < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
   def self.install
     system "curl -#LO https://github.com/platformsh/platformsh-cli/releases/download/v#{version}/platform.phar"

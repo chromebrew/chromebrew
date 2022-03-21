@@ -8,7 +8,7 @@ class Wp_cli < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
   def self.build
     system "curl -#LO https://github.com/wp-cli/wp-cli/releases/download/v#{version}/wp-cli-#{version}.phar"
