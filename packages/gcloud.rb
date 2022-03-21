@@ -61,7 +61,7 @@ class Gcloud < Package
     response = STDIN.getc
     config_dirs = ["#{HOME}/.config/gcloud", "#{CREW_PREFIX}/share/gcloud"]
     config_dirs.each { |config_dir|
-      if Dir.exists? config_dir
+      if Dir.exist? config_dir
         case response
         when "y", "Y"
           FileUtils.rm_rf config_dir

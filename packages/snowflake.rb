@@ -42,7 +42,7 @@ class Snowflake < Package
 
   def self.remove
     config_dir = "#{HOME}/snowflake-ssh"
-    if Dir.exists? config_dir
+    if Dir.exist? config_dir
       puts "WARNING: This will remove all saved ssh sessions!".orange
       print "Would you like to remove the #{config_dir} directory? [y/N] "
       case STDIN.getc

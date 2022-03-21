@@ -11,5 +11,5 @@ class Snap < Package
 
   depends_on 'nginx'
   depends_on 'sqlite'
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
 end

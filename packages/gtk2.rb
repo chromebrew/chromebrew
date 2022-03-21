@@ -59,7 +59,7 @@ class Gtk2 < Package
   end
 
   def self.postinstall
-    unless File.exists? "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
+    unless File.exist? "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
       Dir.chdir "#{CREW_PREFIX}/bin" do
         FileUtils.ln_s 'gtk2-update-icon-cache', 'gtk-update-icon-cache'
       end

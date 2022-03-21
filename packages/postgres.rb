@@ -74,13 +74,13 @@ class Postgres < Package
   end
 
   def self.remove
-    if Dir.exists? PGDATA
+    if Dir.exist? PGDATA
       puts "WARNING: This will delete all databases!".orange
       print "Would you like to remove #{PGDATA}? [y/N] "
       case STDIN.getc
       when 'y', 'Y'
         FileUtils.rm_rf PGDATA
-        if Dir.exists? "#{CREW_PREFIX}/pgsql"
+        if Dir.exist? "#{CREW_PREFIX}/pgsql"
           FileUtils.rm_rf "#{CREW_PREFIX}/pgsql"
         end
         puts "#{PGDATA} removed.".lightred

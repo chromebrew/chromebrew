@@ -39,7 +39,7 @@ class Electric < Package
 
   def self.remove
     log_file = "#{HOME}/electric.log"
-    if File.exists? log_file
+    if File.exist? log_file
       print "Would you like to remove #{log_file}? [y/N] "
       case STDIN.getc
       when "y", "Y"

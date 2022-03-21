@@ -22,7 +22,7 @@ class Byobu < Package
      x86_64: 'f0a2933be3634409f9405e33979b06068f734d4a7b100dac01776a288fa3c843',
   })
 
-  depends_on 'tmux' unless File.exists? "#{CREW_PREFIX}/bin/screen"
+  depends_on 'tmux' unless File.exist? "#{CREW_PREFIX}/bin/screen"
 
   def self.build
     system './configure'
