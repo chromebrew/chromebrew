@@ -712,7 +712,7 @@ def download
         end
       end
       # Download file if not cached.
-      downloader url, sha256sum, filename, 3, @opt_verbose
+      downloader url, sha256sum, filename, @opt_verbose
 
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested, if file is not from cache,
@@ -736,10 +736,8 @@ def download
       @git = true
     else
       Dir.mkdir @extract_dir
-      downloader url, filename, @opt_verbose
+      downloader url, sha256sum, filename, @opt_verbose
 
-      abort 'Checksum mismatch. 😔 Try again.'.lightred unless
-        Digest::SHA256.hexdigest( File.read(filename) ) == sha256sum || sha256sum =~ /^SKIP$/i
       puts "#{filename}: File downloaded.".lightgreen
 
       FileUtils.mv filename, "#{@extract_dir}/#{filename}"
