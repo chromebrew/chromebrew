@@ -87,6 +87,9 @@ CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
 CREW_DOWNLOADER = ( ENV['CREW_DOWNLOADER'].to_s.empty? ) ? nil : ENV['CREW_DOWNLOADER']
 
+# Downloader maximum retry count
+CREW_DOWNLOADER_RETRY = ( ENV['CREW_DOWNLOADER_RETRY'].to_s.empty? ) ? 3 : ENV['CREW_DOWNLOADER_RETRY'].to_i
+
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV['SSL_CERT_FILE'])
                   if File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
