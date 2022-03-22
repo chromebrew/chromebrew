@@ -28,8 +28,7 @@ end
 
 def downloader (url, sha256sum, filename = File.basename(url), verbose = false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
-  # Usage: downloader <url>, <sha256sum>, <filename::optional>, <retry_count::optional>,
-  #                   <verbose::optional>
+  # Usage: downloader <url>, <sha256sum>, <filename::optional>, <verbose::optional>
   #
   #           <url>: URL that points to the target file
   #     <sha256sum>: SHA256 checksum, verify downloaded file with given checksum
@@ -96,7 +95,7 @@ def http_downloader (url, filename = File.basename(url), verbose = false)
         redirect_uri.scheme ||= uri.scheme
         redirect_uri.host ||= uri.host
 
-        return downloader(redirect_uri.to_s, filename, verbose)
+        return send(__method__, redirect_uri.to_s, filename, verbose)
       else
         abort "Download failed with error #{response.code}: #{response.msg}".lightred
       end
