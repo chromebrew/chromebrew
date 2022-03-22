@@ -26,7 +26,7 @@ def setTermSize
   return true
 end
 
-def downloader (url, sha256sum, filename = File.basename(url), retry_count = 0, verbose = false)
+def downloader (url, sha256sum, filename = File.basename(url), verbose = false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <sha256sum>, <filename::optional>, <retry_count::optional>,
   #                   <verbose::optional>
@@ -34,7 +34,6 @@ def downloader (url, sha256sum, filename = File.basename(url), retry_count = 0, 
   #           <url>: URL that points to the target file
   #     <sha256sum>: SHA256 checksum, verify downloaded file with given checksum
   #      <filename>: (Optional) Output path/filename
-  #   <retry_count>: (Optional) Maximum retry times, default: 3
   #       <verbose>: (Optional) Verbose output
   #
   setTermSize
@@ -42,6 +41,7 @@ def downloader (url, sha256sum, filename = File.basename(url), retry_count = 0, 
   trap('WINCH') { setTermSize }
 
   uri = URI(url)
+  retry_count = CREW_DOWNLOADER_RETRY
 
   unless CREW_USE_CURL or !ENV['CREW_DOWNLOADER'].to_s.empty?
     case uri.scheme
