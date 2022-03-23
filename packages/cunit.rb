@@ -24,12 +24,14 @@ class Cunit < Package
   })
 
   def self.patch
-    downloader 'https://httpredir.debian.org/debian/pool/main/c/cunit/cunit_2.1-3-dfsg-2.4.debian.tar.xz'
-    unless Digest::SHA256.hexdigest(File.read('cunit_2.1-3-dfsg-2.4.debian.tar.xz')) == 'e7a09a24c7db0e2aa9feb444fe38957286ebfc63b355c308957794f064b5881d'
-      abort 'Checksum mismatch. :/ Try again.'.lightred
-    end
+    downloader 'https://httpredir.debian.org/debian/pool/main/c/cunit/cunit_2.1-3-dfsg-2.4.debian.tar.xz', 'e7a09a24c7db0e2aa9feb444fe38957286ebfc63b355c308957794f064b5881d'
+
     system 'tar xf cunit_2.1-3-dfsg-2.4.debian.tar.xz'
-    system "for i in \$(cat debian/patches/series); do patch -Np1 -i debian/patches/\${i}; done"
+
+    File.foreach 'debian/patches/series' do |patch|
+      system "patch -Np1 -i debian/patches/#{patch}"
+    end
+
     system "sed -i 's:<curses.h>:<ncursesw/curses.h>:' CUnit/Sources/Curses/Curses.c"
     system "sed -i 's:ncurses:ncursesw:g' configure.in"
   end

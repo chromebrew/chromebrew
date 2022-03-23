@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.23.4'
+CREW_VERSION = '1.23.5'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -86,6 +86,9 @@ CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
 CREW_DOWNLOADER = ( ENV['CREW_DOWNLOADER'].to_s.empty? ) ? nil : ENV['CREW_DOWNLOADER']
+
+# Downloader maximum retry count
+CREW_DOWNLOADER_RETRY = ( ENV['CREW_DOWNLOADER_RETRY'].to_s.empty? ) ? 3 : ENV['CREW_DOWNLOADER_RETRY'].to_i
 
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV['SSL_CERT_FILE'])
