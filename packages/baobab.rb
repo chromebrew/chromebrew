@@ -27,6 +27,7 @@ class Baobab < Package
   depends_on 'itstool' => :build
   depends_on 'vala' => :build
   depends_on 'sommelier'
+  gnome
 
   def self.build
     system "meson  --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
@@ -35,9 +36,5 @@ class Baobab < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.postinstall
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
   end
 end
