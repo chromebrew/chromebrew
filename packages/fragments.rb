@@ -3,7 +3,7 @@ require 'package'
 class Fragments < Package
   description 'Fragments is an easy to use BitTorrent client for the GNOME desktop environment.'
   homepage 'https://gitlab.gnome.org/World/Fragments'
-  @_ver = '2.0.1'
+  @_ver = '2.0.2'
   version @_ver
   license 'GPL-3'
   compatibility 'all'
