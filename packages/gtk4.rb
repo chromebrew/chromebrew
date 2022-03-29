@@ -71,6 +71,7 @@ class Gtk4 < Package
   depends_on 'rest' # R
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
+  gnome
 
   def self.patch
     case ARCH
@@ -111,17 +112,5 @@ class Gtk4 < Package
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-4.0"
     File.write("#{CREW_DEST_PREFIX}/etc/gtk-4.0/settings.ini", @gtk4settings)
-  end
-
-  def self.postinstall
-    # generate schemas
-    system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    # update mime database
-    system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
-    # update icon cache, but only if gdk_pixbuf is already installed.
-    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    return unless @device[:installed_packages].any? { |elem| elem[:name] == 'gdk_pixbuf' }
-
-    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
   end
 end

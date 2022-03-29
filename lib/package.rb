@@ -5,7 +5,7 @@ class Package
            :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag
 
-  boolean_property = %i[conflicts_ok git_fetchtags is_fake is_musl
+  boolean_property = %i[conflicts_ok git_fetchtags gnome is_fake is_musl
                         is_static no_env_options no_fhs no_patchelf
                         no_zstd patchelf]
 

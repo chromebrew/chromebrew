@@ -940,6 +940,21 @@ def post_install
     Dir.chdir post_install_tempdir do
       puts "Performing post-install for #{@pkg.name}...".lightblue
       @pkg.postinstall
+      if @pkg.gnome?
+        puts "Performing Gnome post-installs for #{@pkg.name}...".lightblue if @opt_verbose
+        # generate schemas
+        if @device[:installed_packages].any? { |elem| elem[:name] == 'glib' }
+          system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+        end
+        # update mime database
+        if @device[:installed_packages].any? { |elem| elem[:name] == 'shared_mime_info' }
+          system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
+        end
+        # update icon cache, but only if gdk_pixbuf is already installed.
+        if @device[:installed_packages].any? { |elem| elem[:name] == 'gdk_pixbuf' }
+          system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
+        end
+      end
     end
   end
 end
