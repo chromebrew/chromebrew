@@ -17,7 +17,13 @@ Output:
 ```
 
 ## Versions and system information
-<!-- Paste the output of `crew sysinfo` here -->
+<!-- 
+Paste the output of `crew sysinfo` between two `***` below
+
+*If `crew sysinfo` does not work, use `cat /etc/lsb-release` instead.
+-->
+***
+***
 
 ## Additional information
 <!--
