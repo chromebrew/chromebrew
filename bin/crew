@@ -941,9 +941,7 @@ def post_install
       puts "Performing post-install for #{@pkg.name}...".lightblue
       @pkg.postinstall
       if @pkg.gnome?
-        puts "Performing Gnome post-installs for #{@pkg.name}...".lightblue
-        # Is this needed here?
-        @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+        puts "Performing Gnome post-installs for #{@pkg.name}...".lightblue if @opt_verbose
         # generate schemas
         if @device[:installed_packages].any? { |elem| elem[:name] == 'glib' }
           system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
