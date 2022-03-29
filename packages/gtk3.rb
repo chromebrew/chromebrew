@@ -69,6 +69,7 @@ class Gtk3 < Package
   depends_on 'valgrind' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
+  gnome
 
   def self.patch
     # Use locally build subprojects
@@ -103,17 +104,5 @@ class Gtk3 < Package
     system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-3.0"
     File.write("#{CREW_DEST_PREFIX}/etc/gtk-3.0/settings.ini", @gtk3settings)
-  end
-
-  def self.postinstall
-    # generate schemas
-    system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    # update mime database
-    system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
-    # update icon cache, but only if gdk_pixbuf is already installed.
-    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    return unless @device[:installed_packages].any? { |elem| elem[:name] == 'gdk_pixbuf' }
-
-    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
   end
 end
