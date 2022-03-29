@@ -20,7 +20,7 @@ Output:
 <!-- 
 Paste the output of `crew sysinfo` between two `***` below
 
-*If `crew sysinfo` does not works, use `cat /etc/lsb-release` instead.
+*If `crew sysinfo` does not work, use `cat /etc/lsb-release` instead.
 -->
 ***
 ***
