@@ -1309,13 +1309,6 @@ def resolve_dependencies
   abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @device[:compatible_packages].any? {|elem| elem[:name] == @pkg.name }
 
   @dependencies = []
-  if @pkg.gnome?
-    GNOME_DEPS.each do |dep|
-      continue if @pkg.name == dep
-
-      @dependendencies.push(dep) unless @device[:installed_packages].any? { |pkg| pkg[:name] == dep }
-    end
-  end
   expand_dependencies
 
   # leave only not installed packages in dependencies
