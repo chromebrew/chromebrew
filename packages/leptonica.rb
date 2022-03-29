@@ -3,29 +3,29 @@ require 'package'
 class Leptonica < Package
   description 'Software that is broadly useful for image processing and image analysis applications'
   homepage 'http://www.leptonica.com/'
-  @_ver = '1.80.0'
-  version "#{@_ver}-1"
+  @_ver = '1.82.0'
+  version @_ver.to_s
   license 'Apache-2.0'
   compatibility 'all'
-  source_url "https://github.com/DanBloomberg/leptonica/archive/#{@_ver}.tar.gz"
-  source_sha256 '3952b974ec057d24267aae48c54bca68ead8275604bf084a73a4b953ff79196e'
+  source_url 'https://github.com/DanBloomberg/leptonica.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_armv7l/leptonica-1.80.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_armv7l/leptonica-1.80.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_i686/leptonica-1.80.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.80.0-1_x86_64/leptonica-1.80.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.82.0_armv7l/leptonica-1.82.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.82.0_armv7l/leptonica-1.82.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.82.0_i686/leptonica-1.82.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.82.0_x86_64/leptonica-1.82.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd4ae243ebd485e3bc061701f07bdd031f02916c79e6e7c0bc4353321c79ec66b',
-     armv7l: 'd4ae243ebd485e3bc061701f07bdd031f02916c79e6e7c0bc4353321c79ec66b',
-       i686: 'b7bc070a1fc98059cdb24339f7bc1dd5bbcacbc0c90a67ec5f35b20f8330a2d2',
-     x86_64: 'b9ab621fe8a76d9b38cc21af0f4ba4f3818b0be7af471baf1995064d20428496'
+    aarch64: 'e2a96595f055b95b9aa4692ce8e85a0871ecdf61c913bb7c880d6213f3be367f',
+     armv7l: 'e2a96595f055b95b9aa4692ce8e85a0871ecdf61c913bb7c880d6213f3be367f',
+       i686: 'd87be48dbc0a38bf17449b47683561006df9009087e50a14becdaa68bcef7e59',
+     x86_64: 'bd99bd57833ce674b0edd95223df38b7ca65cc1b2d357312f200d771a6d532c1'
   })
 
   depends_on 'giflib'
   depends_on 'libjpeg'
-  depends_on 'libpng'
+  depends_on 'harfbuzz'
   depends_on 'libtiff'
   depends_on 'libwebp'
   depends_on 'openjpeg'
