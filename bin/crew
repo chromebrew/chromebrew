@@ -1313,7 +1313,7 @@ def resolve_dependencies
   @dependencies = []
   if @pkg.gnome?
     GNOME_DEPS.each do |dep|
-      return if @pkg.name == dep
+      continue if @pkg.name == dep
 
       @dependendencies.push(dep) unless @device[:installed_packages].any? { |pkg| pkg[:name] == dep }
     end
