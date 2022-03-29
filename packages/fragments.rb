@@ -16,6 +16,7 @@ class Fragments < Package
   depends_on 'pango'
   depends_on 'libadwaita'
   depends_on 'rust' => :build
+  gnome
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"
