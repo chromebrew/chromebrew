@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.23.6'
+CREW_VERSION = '1.23.7'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -126,7 +126,7 @@ if ENV['CREW_LINKER'].to_s.empty?
   case ARCH
   when 'aarch64', 'armv7l'
     CREW_LINKER = 'gold'
-    CREW_LINKER_FLAGS = "-Wl,--threads -Wl,--thread-count,#{CREW_NPROC}"
+    CREW_LINKER_FLAGS = ''
   when 'i686', 'x86_64'
     CREW_LINKER = 'mold'
     CREW_LINKER_FLAGS = ''
