@@ -6,8 +6,8 @@ class Package
            :git_branch, :git_hashtag
 
   boolean_property = %i[conflicts_ok git_fetchtags gnome is_fake is_musl
-                        is_static no_env_options no_fhs no_patchelf
-                        no_zstd patchelf]
+                        is_static no_compile_needed no_env_options no_fhs 
+                        no_patchelf no_zstd patchelf]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -61,6 +61,7 @@ class Package
 
     # append buildessential to deps if building from source is needed/specified
     if ( include_build_deps == true or (include_build_deps == 'auto' and is_source) ) and \
+       !pkgObj.no_compile_needed? and \
        !exclude_buildessential and \
        !@checked_list.keys.include?('buildessential')
 

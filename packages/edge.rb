@@ -10,6 +10,8 @@ class Edge < Package
   source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_99.0.1150.52-1_amd64.deb'
   source_sha256 '30b671031d675925cdaddc55686e0a442fa08468c4cd1b560281aafdc52d778a'
 
+  no_compile_needed
+
   depends_on 'libcom_err'
   depends_on 'sommelier'
 
@@ -30,8 +32,9 @@ class Edge < Package
     FileUtils.ln_sf "#{CREW_MAN_PREFIX}/man1/microsoft-edge.1.gz", "#{CREW_DEST_MAN_PREFIX}/man1/msedge.1.gz"
 
     # Add icon for use with crew-launcher
-    system 'curl -L# https://cdn.icon-icons.com/icons2/2552/PNG/128/edge_browser_logo_icon_152998.png -o microsoft-edge.png'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('microsoft-edge.png') ) == 'ae7b1378a5d9d84314b459b6a16c3ec14aae0b88eeb78040f7bc28156cf2d753'
+    downloader 'https://cdn.icon-icons.com/icons2/2552/PNG/128/edge_browser_logo_icon_152998.png',
+               'ae7b1378a5d9d84314b459b6a16c3ec14aae0b88eeb78040f7bc28156cf2d753', 'microsoft-edge.png'
+
     icon_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor/128x128/apps"
     FileUtils.mkdir_p "#{icon_path}"
     FileUtils.mv 'microsoft-edge.png', "#{icon_path}"
